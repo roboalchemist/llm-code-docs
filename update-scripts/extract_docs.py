@@ -27,7 +27,16 @@ except ImportError as e:
 class DocumentationExtractor:
     """Handles extraction of documentation folders from git repositories."""
     
-    def __init__(self, config_file: str = "repo_config.yaml"):
+    def __init__(self, config_file: str = None):
+        # Auto-detect config file location
+        if config_file is None:
+            script_dir = Path(__file__).parent
+            config_file = script_dir / "repo_config.yaml"
+            
+            # Fallback to current directory for backward compatibility
+            if not config_file.exists():
+                config_file = Path("repo_config.yaml")
+        
         self.config_file = config_file
         self.config = self._load_config()
         self._setup_logging()
