@@ -17,4 +17,11 @@ repositories:
     repo_url: "https://github.com/adafruit/circuitpython"
     source_folder: "docs"
     target_folder: "circuitpython"
-    branch: "main"  # Default branch to use
+    branch: "main" # Default branch to use
+
+  - name: "Textual"
+    description: "Textual documentation and examples"
+    repo_url: "https://github.com/Textualize/textual.git"
+    source_folder: "docs"
+    target_folder: "textual"
+    branch: "main" # Default branch to use
