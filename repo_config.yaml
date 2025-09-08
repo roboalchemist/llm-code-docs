@@ -1,0 +1,20 @@
+# Repository Documentation Extraction Configuration
+# This file defines which repositories to extract documentation from
+
+# Global settings
+settings:
+  # Whether to overwrite existing target directories
+  overwrite_existing: true
+  # Timeout for git operations (seconds)
+  clone_timeout: 300
+  # Temporary directory base path (will use system temp if not specified)
+  temp_dir_base: null
+
+# Repository configurations
+repositories:
+  - name: "CircuitPython"
+    description: "CircuitPython documentation and examples"
+    repo_url: "https://github.com/adafruit/circuitpython"
+    source_folder: "docs"
+    target_folder: "circuitpython"
+    branch: "main"  # Default branch to use
