@@ -1,6 +1,6 @@
 [x] create a python script and a yaml config that takes a git repo, and extras the specified folder, and renames it to the documentation under a named folder. For example, an entry for "circuitpython" would take the repo specied as "https://github.com/adafruit/circuitpython" and then take the folder specified "docs", and then, in this repo, create (or update if does not exist already) the folder "circuitpython" that contains the contents of the "docs" folder. Do not add extra functionality not described. Create a the config and run it, inspecting the contents to make sure it worked. We should see a folder 'circuitpython' that contains the contents of the docs folder underneath it
 
 
-[-] Add a script to update-scripts/ that automatically adds and updates the notion documentation from https://developers.notion.com/reference, similar to how we did for the claude-code-sdk documetation
+[x] Add a script to update-scripts/ that automatically adds and updates the notion documentation from https://developers.notion.com/reference, similar to how we did for the claude-code-sdk documetation
 [ ] Add a script to update-scripts/ that automatically adds and updates the  perplexity docs from https://docs.perplexity.ai, similar to how we did for the claude-code-sdk documetation
 [ ] Add a script to update-scripts/ that automatically gets the complete listing of models from openrouter using the openrouter api (assume there's an openrouter key installed)
