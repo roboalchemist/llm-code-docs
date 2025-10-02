@@ -31,7 +31,7 @@ When you create a subscription, Notion sends a one-time POST request to your web
 **Example payload with `verification_token`**:
 ```
 {
-  "verification_token": "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"
+  "verification_token": "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"
 }
 ```
 **You’ll need to:**
@@ -68,9 +68,9 @@ To validate the request, you can use the `verification_token` along with the eve
     import { createHmac, timingSafeEqual } from "crypto"
     // Retrieve the `verification_token` from the initial request
     // (subscription verification; Step 2)
-    const verificationToken = "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"
+    const verificationToken = "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"
     // This body should come from your request body for subsequent validations
-    const body = {"verification_token":"secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"}
+    const body = {"verification_token":"secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"}
     const calculatedSignature = `sha256=${createHmac("sha256", verificationToken).update(JSON.stringify(body)).digest("hex")}`
     const isTrustedPayload = timingSafeEqual(
       Buffer.from(calculatedSignature),
@@ -86,9 +86,9 @@ import hashlib
 import json
 # Retrieve the `verification_token` from initial request
 # (subscription verification; Step 2)
-verification_token = "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"
+verification_token = "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"
 # This body should come from your request body for subsequent validations
-body = {"verification_token": "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"}
+body = {"verification_token": "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"}
 # Calculate the signature
 body_json = json.dumps(body, separators=(",", ":"))  # Minified JSON, matches JSON.stringify
 hmac_obj = hmac.new(
@@ -112,9 +112,9 @@ if not is_trusted_payload:
     require 'openssl'
     require 'json'
     # Retrieve the verification_token from initial request
-    verification_token = "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS"
+    verification_token = "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123"
     # This body should come from your request body for subsequent validations
-    body = { "verification_token" => "secret_EXAMPLE_TOKEN_FROM_NOTION_DOCS" }
+    body = { "verification_token" => "secret_EXAMPLE_NOTION_VERIFICATION_TOKEN_ABC123" }
     # Calculate the signature (minified JSON to match JSON.stringify)
     body_json = JSON.generate(body)
     digest = OpenSSL::HMAC.hexdigest("SHA256", verification_token, body_json)

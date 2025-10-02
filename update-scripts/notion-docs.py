@@ -377,12 +377,12 @@ def download_and_convert(url, output_path):
                 else:
                     print(f"⚠️  SKIPPED (JS-rendered, needs manual extraction): {url}")
                     print(f"    File exists but is incomplete: {output_path} ({file_size} bytes)")
-                    print(f"    This file requires manual extraction with Playwright")
+                    print(f"    Run: python3 update-scripts/notion-docs-playwright.py")
                     return None
             else:
                 print(f"⚠️  SKIPPED (JS-rendered, needs manual extraction): {url}")
                 print(f"    This page requires browser automation to extract content")
-                print(f"    Use Playwright MCP to manually extract this page")
+                print(f"    Run: python3 update-scripts/notion-docs-playwright.py")
                 return None
 
         print(f"Downloading: {url}")
@@ -770,6 +770,8 @@ def main():
         print("to prevent corruption of existing manually-extracted files.")
         print()
         print("These pages must be extracted using browser automation:")
+        print("Use the Playwright extraction script: update-scripts/notion-docs-playwright.py")
+        print()
         for js_url in KNOWN_JS_RENDERED_PAGES:
             relative_path = extract_file_path(js_url)
             output_path = output_dir / relative_path
