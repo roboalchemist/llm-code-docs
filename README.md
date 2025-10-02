@@ -14,8 +14,9 @@ This repository serves as a centralized hub for:
 ### Current Documentation Sets
 
 - **🌐 Textual Framework** (`textual/`) - Complete TUI framework documentation
-- **🔌 CircuitPython** (`circuitpython/`) - MicroPython for microcontrollers  
+- **🔌 CircuitPython** (`circuitpython/`) - MicroPython for microcontrollers
 - **🤖 Claude Code SDK** (`claude-code-sdk/`) - Anthropic's Claude Code development tools
+- **📝 Notion API** (`notion/`) - Notion API reference documentation
 
 ### Documentation Coverage
 
@@ -38,8 +39,11 @@ This repository serves as a centralized hub for:
 # Update CircuitPython docs
 python3 update-scripts/extract_docs.py
 
-# Update Claude Code SDK docs  
+# Update Claude Code SDK docs
 python3 update-scripts/claude-code-sdk-docs.py
+
+# Update Notion API docs (63 pages, skips 8 JS-rendered pages)
+python3 update-scripts/notion-docs.py --cached
 ```
 
 ## 🛠️ Update Scripts
@@ -53,6 +57,7 @@ The `update-scripts/` directory contains automated tools for maintaining current
 | `update.sh` | **Master updater** - runs all documentation scripts | Progress tracking, error handling, summary reporting |
 | `extract_docs.py` | **CircuitPython extractor** - clones and extracts docs from git repos | Configurable via YAML, preserves structure, handles updates |
 | `claude-code-sdk-docs.py` | **Claude Code SDK downloader** - downloads from official docs | Live sidebar extraction, automatic updates, change detection |
+| `notion-docs.py` | **Notion API reference downloader** - extracts API documentation | Skips JS-rendered pages, prevents corruption, detailed warnings |
 
 ### Script Features
 
@@ -71,10 +76,12 @@ llm-code-docs/
 │   ├── update.sh                      # Master update script
 │   ├── extract_docs.py                # CircuitPython documentation extractor
 │   ├── claude-code-sdk-docs.py        # Claude Code SDK documentation downloader
+│   ├── notion-docs.py                 # Notion API reference downloader
 │   └── repo_config.yaml               # Configuration for git repository extraction
 ├── textual/                           # Textual TUI framework documentation
-├── circuitpython/                     # CircuitPython microcontroller documentation  
-└── claude-code-sdk/                   # Claude Code SDK development documentation
+├── circuitpython/                     # CircuitPython microcontroller documentation
+├── claude-code-sdk/                   # Claude Code SDK development documentation
+└── notion/                            # Notion API reference documentation
 ```
 
 ## 🔧 Configuration
@@ -92,13 +99,29 @@ repositories:
 ### Claude Code SDK Updates
 The script automatically extracts the current sidebar structure from https://docs.anthropic.com/en/docs/claude-code/sdk to ensure complete coverage.
 
+### Notion API Updates
+The Notion API documentation extractor has special handling for JavaScript-rendered pages:
+
+**Known Limitation**: 8 pages require JavaScript rendering and are automatically skipped to prevent file corruption:
+- `revoke-token.md`
+- `introspect-token.md`
+- `list-file-uploads.md`
+- `complete-a-file-upload.md`
+- `retrieve-a-file-upload.md`
+- `refresh-a-token.md`
+- `create-a-data-source.md`
+- `create-a-file-upload.md`
+
+These pages must be manually extracted using browser automation tools (e.g., Playwright). The script will skip them and display warnings to prevent overwriting existing manually-extracted content.
+
 ## 📊 Statistics
 
 The repository currently contains:
+- **71 documentation files** for Notion API (63 fully extracted, 8 require manual extraction)
 - **37+ documentation files** for Claude Code SDK
 - **Complete CircuitPython docs** extracted from official repositories
 - **Comprehensive Textual framework** documentation
-- **400KB+ total documentation** optimized for AI consumption
+- **750KB+ total documentation** optimized for AI consumption
 
 ## 🎯 Usage with AI Systems
 
