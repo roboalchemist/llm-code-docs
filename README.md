@@ -19,8 +19,10 @@ This repository serves as a centralized hub for:
 ### In Progress
 - ✅ Notion API documentation (93% complete via Crawl4AI - 66/71 files)
 
+### Completed (Recent)
+- ✅ Perplexity API documentation extraction (50 files, 476KB)
+
 ### Planned
-- ⏳ Perplexity documentation extraction
 - ⏳ OpenRouter models API extraction
 
 See `todo.txt` for detailed task breakdown (21 tasks across 3 phases).
@@ -33,6 +35,7 @@ See `todo.txt` for detailed task breakdown (21 tasks across 3 phases).
 - **🔌 CircuitPython** (`circuitpython/`) - MicroPython for microcontrollers
 - **🤖 Claude Code SDK** (`claude-code-sdk/`) - Anthropic's Claude Code development tools
 - **📝 Notion API** (`notion/`) - Notion API reference documentation
+- **🔍 Perplexity API** (`perplexity/`) - Perplexity AI API reference and guides
 
 ### Documentation Coverage
 
@@ -60,6 +63,9 @@ python3 update-scripts/claude-code-sdk-docs.py
 
 # Update Notion API docs (71 pages, 93% complete via Crawl4AI)
 python3 update-scripts/notion-docs-crawl4ai.py
+
+# Update Perplexity API docs
+python3 update-scripts/perplexity-docs.py
 ```
 
 ## 🛠️ Update Scripts
@@ -74,6 +80,7 @@ The `update-scripts/` directory contains automated tools for maintaining current
 | `extract_docs.py` | **CircuitPython extractor** - clones and extracts docs from git repos | Configurable via YAML, preserves structure, handles updates |
 | `claude-code-sdk-docs.py` | **Claude Code SDK downloader** - downloads from official docs | Live sidebar extraction, automatic updates, change detection |
 | `notion-docs-crawl4ai.py` | **Notion API reference downloader** - extracts API documentation | Crawl4AI framework, handles JS rendering, complete content capture |
+| `perplexity-docs.py` | **Perplexity API extractor** - downloads API documentation | Crawl4AI framework, JavaScript rendering, 50 pages extracted |
 
 ### Script Features
 
@@ -97,7 +104,8 @@ llm-code-docs/
 ├── textual/                           # Textual TUI framework documentation
 ├── circuitpython/                     # CircuitPython microcontroller documentation
 ├── claude-code-sdk/                   # Claude Code SDK development documentation
-└── notion/                            # Notion API reference documentation
+├── notion/                            # Notion API reference documentation
+└── perplexity/                        # Perplexity API documentation
 ```
 
 ## 🔧 Configuration
@@ -125,14 +133,25 @@ python3 update-scripts/notion-docs-crawl4ai.py
 
 Crawl4AI successfully extracted 71 pages with 66 files containing complete content including examples, object schemas, and code samples. 5 OAuth endpoint files (revoke-token, introspect-token, complete-a-file-upload, retrieve-a-file-upload, list-file-uploads) have partial content due to complex page structure and may require manual extraction.
 
+### Perplexity API Updates
+
+Uses Crawl4AI for comprehensive documentation extraction:
+```bash
+# Extract all Perplexity API documentation
+python3 update-scripts/perplexity-docs.py
+```
+
+Successfully extracted 50 documentation pages covering API Reference, Getting Started, Guides, Cookbook, and Help sections with 100% success rate.
+
 ## 📊 Statistics
 
 The repository currently contains:
 - **71 documentation files** for Notion API (~596KB total via Crawl4AI, 93% complete)
+- **50 documentation files** for Perplexity API (~476KB total via Crawl4AI)
 - **37+ documentation files** for Claude Code SDK
 - **Complete CircuitPython docs** extracted from official repositories
 - **Comprehensive Textual framework** documentation
-- **5MB+ total documentation** optimized for AI consumption
+- **6MB+ total documentation** optimized for AI consumption
 
 ## 🗂️ Task Management
 
@@ -148,10 +167,10 @@ The project uses a comprehensive task list in `todo.txt` with **21 detailed task
 - ✅ Documentation updates (Task 6)
 - Note: 66/71 files successfully extracted; 5 OAuth endpoint files require manual extraction
 
-### Phase 2: Perplexity Documentation (Tasks 9-15)
-- Research and implement Perplexity docs extraction
-- Follow established patterns from existing scripts
-- Full extraction and verification
+### Phase 2: Perplexity Documentation (Tasks 9-15) - ✅ COMPLETE
+- ✅ Research and implement Perplexity docs extraction
+- ✅ Crawl4AI-based extraction script
+- ✅ Full extraction and verification (50 files, 476KB, 100% success rate)
 
 ### Phase 3: OpenRouter Models API (Tasks 16-20)
 - API-based extraction of model catalog
