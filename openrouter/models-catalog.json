@@ -2,8 +2,75 @@
   "metadata": {
     "source": "OpenRouter API",
     "api_endpoint": "https://openrouter.ai/api/v1/models",
-    "updated": "2025-10-03T04:44:23Z",
-    "total_models": 330
+    "updated": "2025-10-03T05:03:36Z",
+    "total_models": 330,
+    "providers": {
+      "total_providers": 53,
+      "top_providers": [
+        {
+          "provider": "qwen",
+          "count": 42
+        },
+        {
+          "provider": "openai",
+          "count": 42
+        },
+        {
+          "provider": "mistralai",
+          "count": 35
+        },
+        {
+          "provider": "google",
+          "count": 24
+        },
+        {
+          "provider": "meta-llama",
+          "count": 21
+        },
+        {
+          "provider": "deepseek",
+          "count": 20
+        },
+        {
+          "provider": "anthropic",
+          "count": 12
+        },
+        {
+          "provider": "microsoft",
+          "count": 9
+        },
+        {
+          "provider": "x-ai",
+          "count": 8
+        },
+        {
+          "provider": "nousresearch",
+          "count": 8
+        }
+      ]
+    },
+    "pricing": {
+      "free_models_count": 54,
+      "prompt_cost": {
+        "min": 0.0,
+        "max": 0.00015,
+        "avg": 1.567667172887538e-06
+      },
+      "completion_cost": {
+        "min": 0.0,
+        "max": 0.0006,
+        "avg": 5.641407294492401e-06
+      }
+    },
+    "context": {
+      "min_context": 2824,
+      "max_context": 2000000,
+      "avg_context": 188095
+    },
+    "capabilities": {
+      "multimodal_models": 101,
+      "text_only_models": 229
+    }
   },
   "models": [
     {

@@ -1,10 +1,29 @@
 # OpenRouter Models Catalog
 
 **Source:** OpenRouter API (https://openrouter.ai/api/v1/models)
-**Last Updated:** 2025-10-03 04:44:23 UTC
-**Total Models:** 330 (330 with pricing)
+**Last Updated:** 2025-10-03 05:03:36 UTC
+**Total Models:** 330
+**Free Models:** 54 (16%)
+**Providers:** 53
+
+## Quick Statistics
+
+- **Context Lengths:** 2,824 - 2,000,000 tokens
+- **Pricing Range:** Free - $0.000600 per token
+- **Multimodal Models:** 101 (30%)
+- **Text-only Models:** 229 (69%)
+
+## Top Providers
+
+- **qwen**: 42 models
+- **openai**: 42 models
+- **mistralai**: 35 models
+- **google**: 24 models
+- **meta-llama**: 21 models
 
 ---
+
+## All Models
 
 | Model ID | Name | Context Length | Prompt Cost | Completion Cost |
 |----------|------|----------------|-------------|------------------|
@@ -338,6 +357,54 @@
 | x-ai/grok-4-fast | xAI: Grok 4 Fast | 2,000,000 | $0.0000002000 | $0.0000005000 |
 | x-ai/grok-4-fast:free | xAI: Grok 4 Fast (free) | 2,000,000 | Free | Free |
 | x-ai/grok-code-fast-1 | xAI: Grok Code Fast 1 | 256,000 | $0.0000002000 | $0.000001500 |
+
+---
+
+## How to Use This Catalog
+
+### Finding a Model
+1. Browse the full table above (sorted alphabetically by name)
+2. Use Ctrl+F (Cmd+F on Mac) to search by provider, capability, or model name
+3. Look for models marked with ":free" suffix for zero-cost options
+4. Check the Quick Statistics section for overall metrics
+
+### Understanding Pricing
+- **Prompt Cost:** Price per input token in USD
+- **Completion Cost:** Price per output token in USD
+- **Free Models:** Models with $0 cost for both prompt and completion
+- Typical costs range from $0.0001 to $0.01 per 1,000 tokens
+- Premium models (e.g., o1-pro, Claude Opus) can cost up to $0.60 per 1,000 output tokens
+
+### Context Length
+- Range: 2,824 - 2,000,000 tokens
+- Larger context = ability to process longer documents and conversations
+- Consider both context length AND pricing for cost-effective choices
+- 1 token ≈ 0.75 words (varies by tokenizer)
+
+### Multimodal Capabilities
+- Models with image/audio input support are included in the multimodal count
+- Check the JSON catalog for detailed architecture information
+- Look for models from Google (Gemini), Anthropic (Claude), OpenAI (GPT-4) for vision capabilities
+
+---
+
+## Updating This Catalog
+
+To refresh this catalog with the latest models:
+
+```bash
+export OPENROUTER_API_KEY='your-key'
+cd /Users/joe/github/llm-code-docs/update-scripts
+python3 openrouter-models.py
+```
+
+## Additional Resources
+
+- [OpenRouter Documentation](https://openrouter.ai/docs)
+- [OpenRouter Models Page](https://openrouter.ai/models)
+- [Get API Keys](https://openrouter.ai/keys)
+- [Extraction Script](../update-scripts/openrouter-models.py)
+- [Implementation Notes](../update-scripts/OPENROUTER_EXTRACTION_NOTES.md)
 
 ---
 

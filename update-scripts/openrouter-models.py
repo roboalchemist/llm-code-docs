@@ -132,6 +132,141 @@ def fetch_models(api_key):
             sys.exit(1)
 
 
+def calculate_provider_stats(models):
+    """
+    Calculate provider statistics from models data.
+
+    Args:
+        models (list): List of model dictionaries
+
+    Returns:
+        dict: Provider statistics including count and top providers
+    """
+    providers = {}
+    for model in models:
+        provider = model.get('id', '').split('/')[0]
+        if provider:
+            providers[provider] = providers.get(provider, 0) + 1
+
+    # Sort by count and get top 10
+    top_providers = sorted(
+        providers.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )[:10]
+
+    return {
+        'total_providers': len(providers),
+        'top_providers': [{'provider': p, 'count': c} for p, c in top_providers]
+    }
+
+
+def calculate_pricing_stats(models):
+    """
+    Calculate pricing statistics from models data.
+
+    Args:
+        models (list): List of model dictionaries
+
+    Returns:
+        dict: Pricing statistics including min/max/avg costs
+    """
+    prompt_prices = []
+    completion_prices = []
+    free_count = 0
+
+    for model in models:
+        pricing = model.get('pricing', {})
+
+        # Prompt pricing
+        prompt = pricing.get('prompt', '0')
+        try:
+            prompt_val = float(prompt)
+            if prompt_val == 0:
+                free_count += 1
+            prompt_prices.append(prompt_val)
+        except (ValueError, TypeError):
+            pass
+
+        # Completion pricing
+        completion = pricing.get('completion', '0')
+        try:
+            completion_val = float(completion)
+            completion_prices.append(completion_val)
+        except (ValueError, TypeError):
+            pass
+
+    # Filter out negative prices (like Auto Router)
+    prompt_prices = [p for p in prompt_prices if p >= 0]
+    completion_prices = [c for c in completion_prices if c >= 0]
+
+    return {
+        'free_models_count': free_count,
+        'prompt_cost': {
+            'min': min(prompt_prices) if prompt_prices else 0,
+            'max': max(prompt_prices) if prompt_prices else 0,
+            'avg': sum(prompt_prices) / len(prompt_prices) if prompt_prices else 0
+        },
+        'completion_cost': {
+            'min': min(completion_prices) if completion_prices else 0,
+            'max': max(completion_prices) if completion_prices else 0,
+            'avg': sum(completion_prices) / len(completion_prices) if completion_prices else 0
+        }
+    }
+
+
+def calculate_context_stats(models):
+    """
+    Calculate context window statistics from models data.
+
+    Args:
+        models (list): List of model dictionaries
+
+    Returns:
+        dict: Context window statistics
+    """
+    context_lengths = []
+    for model in models:
+        context = model.get('context_length', 0)
+        if context and context > 0:
+            context_lengths.append(context)
+
+    return {
+        'min_context': min(context_lengths) if context_lengths else 0,
+        'max_context': max(context_lengths) if context_lengths else 0,
+        'avg_context': int(sum(context_lengths) / len(context_lengths)) if context_lengths else 0
+    }
+
+
+def calculate_capability_stats(models):
+    """
+    Calculate capability statistics (multimodal, text-only, etc).
+
+    Args:
+        models (list): List of model dictionaries
+
+    Returns:
+        dict: Capability statistics
+    """
+    multimodal_count = 0
+    text_only_count = 0
+
+    for model in models:
+        arch = model.get('architecture', {})
+        input_modalities = arch.get('input_modalities', [])
+
+        # Check if multimodal (has image or audio input)
+        if 'image' in input_modalities or 'audio' in input_modalities:
+            multimodal_count += 1
+        else:
+            text_only_count += 1
+
+    return {
+        'multimodal_models': multimodal_count,
+        'text_only_models': text_only_count
+    }
+
+
 def save_json(data, output_path):
     """
     Save raw JSON response with metadata wrapper.
@@ -140,15 +275,27 @@ def save_json(data, output_path):
         data (dict): API response data
         output_path (Path): Output file path
     """
-    # Wrap with metadata
+    models = data['data']
+
+    # Calculate enhanced metadata
+    provider_stats = calculate_provider_stats(models)
+    pricing_stats = calculate_pricing_stats(models)
+    context_stats = calculate_context_stats(models)
+    capability_stats = calculate_capability_stats(models)
+
+    # Wrap with enhanced metadata
     output = {
         "metadata": {
             "source": "OpenRouter API",
             "api_endpoint": API_ENDPOINT,
             "updated": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
-            "total_models": len(data['data'])
+            "total_models": len(models),
+            "providers": provider_stats,
+            "pricing": pricing_stats,
+            "context": context_stats,
+            "capabilities": capability_stats
         },
-        "models": data['data']
+        "models": models
     }
 
     log(f"Writing JSON to {output_path}")
@@ -211,6 +358,12 @@ def format_markdown(data):
 
     log("Generating markdown table")
 
+    # Calculate statistics for header
+    provider_stats = calculate_provider_stats(models)
+    pricing_stats = calculate_pricing_stats(models)
+    context_stats = calculate_context_stats(models)
+    capability_stats = calculate_capability_stats(models)
+
     # Filter models with pricing (exclude null pricing)
     models_with_pricing = [
         m for m in models
@@ -222,12 +375,37 @@ def format_markdown(data):
     # Sort by name
     models_sorted = sorted(models_with_pricing, key=lambda m: m.get('name', ''))
 
-    # Header
+    # Header with enhanced statistics
     md = "# OpenRouter Models Catalog\n\n"
     md += f"**Source:** OpenRouter API ({API_ENDPOINT})\n"
     md += f"**Last Updated:** {timestamp}\n"
-    md += f"**Total Models:** {len(models)} ({len(models_with_pricing)} with pricing)\n\n"
+    md += f"**Total Models:** {len(models)}\n"
+    md += f"**Free Models:** {pricing_stats['free_models_count']} ({pricing_stats['free_models_count']*100//len(models)}%)\n"
+    md += f"**Providers:** {provider_stats['total_providers']}\n\n"
+
+    # Quick Stats section
+    md += "## Quick Statistics\n\n"
+    md += f"- **Context Lengths:** {context_stats['min_context']:,} - {context_stats['max_context']:,} tokens\n"
+
+    # Format pricing range
+    max_prompt = pricing_stats['prompt_cost']['max']
+    max_completion = pricing_stats['completion_cost']['max']
+    if max_prompt > 0 or max_completion > 0:
+        md += f"- **Pricing Range:** Free - ${max(max_prompt, max_completion):.6f} per token\n"
+    else:
+        md += "- **Pricing Range:** Free - Variable\n"
+
+    md += f"- **Multimodal Models:** {capability_stats['multimodal_models']} ({capability_stats['multimodal_models']*100//len(models)}%)\n"
+    md += f"- **Text-only Models:** {capability_stats['text_only_models']} ({capability_stats['text_only_models']*100//len(models)}%)\n\n"
+
+    # Top Providers section
+    md += "## Top Providers\n\n"
+    for provider_data in provider_stats['top_providers'][:5]:
+        md += f"- **{provider_data['provider']}**: {provider_data['count']} models\n"
+    md += "\n"
+
     md += "---\n\n"
+    md += "## All Models\n\n"
 
     # Table header
     md += "| Model ID | Name | Context Length | Prompt Cost | Completion Cost |\n"
@@ -254,6 +432,50 @@ def format_markdown(data):
         md += f"| {model_id} | {name} | {context_str} | {prompt_cost} | {completion_cost} |\n"
 
     md += "\n---\n\n"
+
+    # Usage guide section
+    md += "## How to Use This Catalog\n\n"
+    md += "### Finding a Model\n"
+    md += "1. Browse the full table above (sorted alphabetically by name)\n"
+    md += "2. Use Ctrl+F (Cmd+F on Mac) to search by provider, capability, or model name\n"
+    md += "3. Look for models marked with \":free\" suffix for zero-cost options\n"
+    md += "4. Check the Quick Statistics section for overall metrics\n\n"
+
+    md += "### Understanding Pricing\n"
+    md += "- **Prompt Cost:** Price per input token in USD\n"
+    md += "- **Completion Cost:** Price per output token in USD\n"
+    md += "- **Free Models:** Models with $0 cost for both prompt and completion\n"
+    md += "- Typical costs range from $0.0001 to $0.01 per 1,000 tokens\n"
+    md += "- Premium models (e.g., o1-pro, Claude Opus) can cost up to $0.60 per 1,000 output tokens\n\n"
+
+    md += "### Context Length\n"
+    md += "- Range: 2,824 - 2,000,000 tokens\n"
+    md += "- Larger context = ability to process longer documents and conversations\n"
+    md += "- Consider both context length AND pricing for cost-effective choices\n"
+    md += "- 1 token ≈ 0.75 words (varies by tokenizer)\n\n"
+
+    md += "### Multimodal Capabilities\n"
+    md += "- Models with image/audio input support are included in the multimodal count\n"
+    md += "- Check the JSON catalog for detailed architecture information\n"
+    md += "- Look for models from Google (Gemini), Anthropic (Claude), OpenAI (GPT-4) for vision capabilities\n\n"
+
+    md += "---\n\n"
+    md += "## Updating This Catalog\n\n"
+    md += "To refresh this catalog with the latest models:\n\n"
+    md += "```bash\n"
+    md += "export OPENROUTER_API_KEY='your-key'\n"
+    md += "cd /Users/joe/github/llm-code-docs/update-scripts\n"
+    md += "python3 openrouter-models.py\n"
+    md += "```\n\n"
+
+    md += "## Additional Resources\n\n"
+    md += "- [OpenRouter Documentation](https://openrouter.ai/docs)\n"
+    md += "- [OpenRouter Models Page](https://openrouter.ai/models)\n"
+    md += "- [Get API Keys](https://openrouter.ai/keys)\n"
+    md += "- [Extraction Script](../update-scripts/openrouter-models.py)\n"
+    md += "- [Implementation Notes](../update-scripts/OPENROUTER_EXTRACTION_NOTES.md)\n\n"
+
+    md += "---\n\n"
     md += "*This catalog is automatically generated from the OpenRouter API.*\n"
     md += "*For the most up-to-date information, visit https://openrouter.ai/models*\n"
 
