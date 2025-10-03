@@ -4,7 +4,7 @@
 
 Claude Code consumes tokens for each interaction. The average cost is \$6 per developer per day, with daily costs remaining below \$12 for 90% of users.
 
-For team usage, Claude Code charges by API token consumption. On average, Claude Code costs \~\$100-200/developer per month with Sonnet 4 though there is large variance depending on how many instances users are running and whether they're using it in automation.
+For team usage, Claude Code charges by API token consumption. On average, Claude Code costs \~\$100-200/developer per month with Sonnet 4.5 though there is large variance depending on how many instances users are running and whether they're using it in automation.
 
 ## Track your costs
 
@@ -28,7 +28,7 @@ Total code changes:    0 lines added, 0 lines removed
 Check [historical usage](https://support.claude.com/en/articles/9534590-cost-and-usage-reporting-in-console) in the Claude Console (requires Admin or Billing role) and set [workspace spend limits](https://support.claude.com/en/articles/9796807-creating-and-managing-workspaces) for the Claude Code workspace (requires Admin role).
 
 <Note>
-  When you first authenticate Claude Code with your Claude Console account, a workspace called "Claude Code" is automatically created for you. This workspace provides centralized cost tracking and management for all Claude Code usage in your organization.
+  When you first authenticate Claude Code with your Claude Console account, a workspace called "Claude Code" is automatically created for you. This workspace provides centralized cost tracking and management for all Claude Code usage in your organization. You cannot create API keys for this workspace - it is exclusively for Claude Code authentication and usage.
 </Note>
 
 ## Managing costs for teams
@@ -87,13 +87,11 @@ Costs can vary significantly based on:
 * Number of files being searched or modified
 * Length of conversation history
 * Frequency of compacting conversations
-* Background processes (haiku generation, conversation summarization)
 
 ## Background token usage
 
 Claude Code uses tokens for some background functionality even when idle:
 
-* **Haiku generation**: Small creative messages that appear while you type (approximately 1 cent per day)
 * **Conversation summarization**: Background jobs that summarize previous conversations for the `claude --resume` feature
 * **Command processing**: Some commands like `/cost` may generate requests to check status
 
