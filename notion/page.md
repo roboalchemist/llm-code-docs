@@ -3,7 +3,6 @@
 The Page object contains the [page property values](https://developers.notion.com/reference/page-property-values) of a single Notion page.
 Example page object
 ```
-
 {
     "object": "page",
     "id": "be633bf1-dfa0-436d-b259-571129a590e5",
@@ -75,7 +74,6 @@ Example page object
 		"public_url": "https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"
 }
 
-
 ```
 
 All pages have a [Parent](https://developers.notion.com/reference/parent-object). If the parent is a [data source](https://developers.notion.com/reference/data-source), the property values conform to the schema laid out in the data source's [properties](https://developers.notion.com/reference/property-object). Otherwise, the only property value is the `title`.
@@ -108,8 +106,4 @@ Name of a property as it appears in Notion.
 See [Property value object](https://developers.notion.com/reference/property-value-object). | `{ "id": "A%40Hk" }`  
 `parent` | `object` | Information about the page's parent. See [Parent object](https://developers.notion.com/reference/parent-object). | `{ "type": "data_source_id", "data_source_id": "d9824bdc-8445-4327-be8b-5b47500af6ce" }`  
 `url` | `string` | The URL of the Notion page. | `"https://www.notion.so/Avocado-d093f1d200464ce78b36e58a3f0d8043"`  
-`public_url` | `string` | The public page URL if the page has been published to the web. Otherwise, `null`. | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`  
-* * *
-Did this page help you?
-Yes
-No
+`public_url` | `string` | The public page URL if the page has been published to the web. Otherwise, `null`. | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`

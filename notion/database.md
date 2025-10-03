@@ -34,13 +34,4 @@ See [rich text object](https://developers.notion.com/reference/rich-text)) for a
 `archived` | `boolean` | The archived status of the database. | `false`  
 `in_trash` | `boolean` | Whether the database has been deleted. | `false`  
 `is_inline` | `boolean` | Has the value `true` if the database appears in the page as an inline block. Otherwise has the value `false` if the database appears as a child page. | `false`  
-`public_url` | `string` | The public page URL if the page has been published to the web. Otherwise, `null`. | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`  
-* * *
-  * [Data source](https://developers.notion.com/reference/data-source)
-  * [Data source properties](https://developers.notion.com/reference/property-object)
-  * [Page](https://developers.notion.com/reference/page)
-
-
-Did this page help you?
-Yes
-No
+`public_url` | `string` | The public page URL if the page has been published to the web. Otherwise, `null`. | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`

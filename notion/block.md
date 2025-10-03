@@ -4,7 +4,6 @@ A block object represents a piece of content within Notion. The API translates t
 For example, the following block object represents a `Heading 2` in the Notion UI:
 Example Block Object
 ```
-
 {
 	"object": "block",
 	"id": "c02fc1d3-db8b-45c5-a222-27595b15aea7",
@@ -50,7 +49,6 @@ Example Block Object
     "is_toggleable": false
 	}
 }
-
 
 ```
 
@@ -134,7 +132,6 @@ Every block object has a key corresponding to the value of `type`. Under the key
 Audio block objects contain a [file object](https://developers.notion.com/reference/file-object) detailing information about the audio file. 
 Example Audio block object
 ```
-
 {
   "type": "audio",
   //...other keys excluded
@@ -145,7 +142,6 @@ Example Audio block object
     }
   }
 }
-
 
 ```
 
@@ -170,7 +166,6 @@ Field | Type | Description
 `url` | string | The link for the bookmark.  
 Example Bookmark block object
 ```
-
 {
   //...other keys excluded
   "type": "bookmark",
@@ -181,21 +176,18 @@ Example Bookmark block object
   }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#breadcrumb)
 Breadcrumb block objects do not contain any information within the `breadcrumb` property.
 Example Breadcrumb block object
 ```
-
 {
   //...other keys excluded
   "type": "breadcrumb",
   //...other keys excluded
   "breadcrumb": {}
 }
-
 
 ```
 
@@ -229,7 +221,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks (if any) of the `bulleted_list_item` block.  
 Example Bulleted list item block object
 ```
-
 {
   //...other keys excluded
   "type": "bulleted_list_item",
@@ -250,7 +241,6 @@ Example Bulleted list item block object
     }]
   }
 }
-
 
 ```
 
@@ -284,7 +274,6 @@ Field | Type | Description
 - `"yellow_background"`  
 Example Callout block object
 ```
-
 {
   //...other keys excluded
 	"type": "callout",
@@ -305,7 +294,6 @@ Example Callout block object
    }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#child-database)
@@ -315,7 +303,6 @@ Field | Type | Description
 `title` | `string` | The plain text title of the database.  
 Example Child database block
 ```
-
 {
   //...other keys excluded
   "type": "child_database",
@@ -324,7 +311,6 @@ Example Child database block
     "title": "My database"
   }
 }
-
 
 ```
 
@@ -338,7 +324,6 @@ Field | Type | Description
 `title` | `string` | The plain text `title` of the page.  
 Example Child page block object
 ```
-
 {
   //...other keys excluded
   "type": "child_page",
@@ -347,7 +332,6 @@ Example Child page block object
     "title": "Lacinato kale"
   }
 }
-
 
 ```
 
@@ -363,7 +347,6 @@ Field | Type | Description
 `language` | - `"abap"` - `"arduino"` - `"bash"` - `"basic"` - `"c"` - `"clojure"` - `"coffeescript"` - `"c++"` - `"c#"` - `"css"` - `"dart"` - `"diff"` - `"docker"` - `"elixir"` - `"elm"` - `"erlang"` - `"flow"` - `"fortran"` - `"f#"` - `"gherkin"` - `"glsl"` - `"go"` - `"graphql"` - `"groovy"` - `"haskell"` - `"html"` - `"java"` - `"javascript"` - `"json"` - `"julia"` - `"kotlin"` - `"latex"` - `"less"` - `"lisp"` - `"livescript"` - `"lua"` - `"makefile"` - `"markdown"` - `"markup"` - `"matlab"` - `"mermaid"` - `"nix"` - `"objective-c"` - `"ocaml"` - `"pascal"` - `"perl"` - `"php"` - `"plain text"` - `"powershell"` - `"prolog"` - `"protobuf"` - `"python"` - `"r"` - `"reason"` - `"ruby"` - `"rust"` - `"sass"` - `"scala"` - `"scheme"` - `"scss"` - `"shell"` - `"sql"` - `"swift"` - `"typescript"` - `"vb.net"` - `"verilog"` - `"vhdl"` - `"visual basic"` - `"webassembly"` - `"xml"` - `"yaml"` - `"java/c/c++/c#"` | The language of the code contained in the code block.  
 Example Code block object
 ```
-
 {
   // ... other keys excluded
   "type": "code",
@@ -380,14 +363,12 @@ Example Code block object
   }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#column-list-and-column)
 Column lists are parent blocks for columns. They do not contain any information within the `column_list` property. 
 Example Column list block object
 ```
-
 {
   // ... other keys excluded
   "type": "column_list",
@@ -395,14 +376,12 @@ Example Column list block object
   "column_list": {}
 }
 
-
 ```
 
 Columns are parent blocks for any block types listed in this reference except for other `column`s. They do not require any information within the `column` property, but a `width_ratio` number between 0 and 1 can be provided to customize the width of a column relative to others in the same column list. When omitted, the default is to use equal widths for all columns. When provided, `width_ratio`s should add up to 1.
 Columns can only be appended to `column_list`s.
 Example Column object
 ```
-
 {
   // ... other keys excluded
   "type": "column",
@@ -411,7 +390,6 @@ Example Column object
     "width_ratio": 0.25
   }
 }
-
 
 ```
 
@@ -427,14 +405,12 @@ Follow these steps to fetch the content in a `column_list`:
 Divider block objects do not contain any information within the `divider` property.
 Example Divider block object
 ```
-
 {
   //...other keys excluded
   "type": "divider",
   //...other keys excluded
   "divider": {}
 }
-
 
 ```
 
@@ -445,7 +421,6 @@ Field | Type | Description
 `url` | `string` | The link to the website that the embed block displays.  
 Example Embed block object
 ```
-
 {
   //...other keys excluded
   "type": "embed",
@@ -454,7 +429,6 @@ Example Embed block object
     "url": "https://companywebsite.com"
   }
 }
-
 
 ```
 
@@ -468,8 +442,7 @@ Example Embed block object
 > For example, the following object can be passed to the [Append block children endpoint](https://developers.notion.com/reference/patch-block-children):
 > JSON
 > ```
-
-> {
+{
   "children": [
     {
       "embed": {
@@ -479,7 +452,6 @@ Example Embed block object
   ]
 }
 
-> 
 ```
 
 > For other video sources, see [Supported video types](https://developers.notion.com/reference/block#supported-video-types).
@@ -490,7 +462,6 @@ Field | Type | Description
 `expression` | `string` | A KaTeX compatible string.  
 Example Equation object
 ```
-
 {
   //...other keys excluded
   "type": "equation",
@@ -499,7 +470,6 @@ Example Equation object
     "expression": "e=mc^2"
   }
 }
-
 
 ```
 
@@ -523,7 +493,6 @@ Only valid as a parameter if copied verbatim from the `file` field of a recent b
 When attaching a `file_upload`, the `name` parameter is not required.  
 Example File block
 ```
-
 {
   // ... other keys excluded
   "type": "file",
@@ -537,7 +506,6 @@ Example File block
     "name": "doc.txt"
   }
 }
-
 
 ```
 
@@ -571,7 +539,6 @@ Field | Type | Description
 `is_toggleable` | `boolean` | Whether or not the heading block is a toggle heading or not. If `true`, then the heading block toggles and can support children. If `false`, then the heading block is a static heading block.  
 Example Heading 1 block object
 ```
-
 {
   //...other keys excluded
   "type": "heading_1",
@@ -589,12 +556,10 @@ Example Heading 1 block object
   }
 }
 
-
 ```
 
 Example Heading 2 block object
 ```
-
 {
   //...other keys excluded
   "type": "heading_2",
@@ -612,12 +577,10 @@ Example Heading 2 block object
   }
 }
 
-
 ```
 
 Example Heading 3 block object
 ```
-
 {
   //...other keys excluded
   "type": "heading_3",
@@ -635,14 +598,12 @@ Example Heading 3 block object
   }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#image)
 Image block objects contain a [file object](https://developers.notion.com/reference/file-object) detailing information about the image. 
 Example Image block object
 ```
-
 {
   // ... other keys excluded
   "type": "image",
@@ -654,7 +615,6 @@ Example Image block object
     }
   }
 }
-
 
 ```
 
@@ -678,7 +638,6 @@ Image blocks only support file types in the "image" section of the table.
 [Link Preview](https://developers.notion.com/docs/link-previews) block objects contain the originally pasted `url`:
 Example Link preview block object
 ```
-
 {
   //...other keys excluded
   "type": "link_preview",
@@ -687,7 +646,6 @@ Example Link preview block object
     "url": "https://github.com/example/example-repo/pull/1234"
   }
 }
-
 
 ```
 
@@ -718,7 +676,6 @@ Field | Type | Description
 `"user"` | `object` | An object with type-specific information about the mention.  
 Example Mention object
 ```
-
 {
   //...other keys excluded
   "type": "page",
@@ -726,7 +683,6 @@ Example Mention object
     "id": "3c612f56-fdd0-4a30-a4d6-bda7d7426309"
   }
 }
-
 
 ```
 
@@ -760,7 +716,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks (if any) of the `numbered_list_item` block.  
 Example Numbered list item block
 ```
-
 {
   //...other keys excluded
   "type": "numbered_list_item",
@@ -777,7 +732,6 @@ Example Numbered list item block
     "color": "default"
   }
 }
-
 
 ```
 
@@ -811,7 +765,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks (if any) of the `paragraph` block.  
 Example Paragraph block object
 ```
-
 {
   //...other keys excluded
   "type": "paragraph",
@@ -827,12 +780,10 @@ Example Paragraph block object
     "color": "default"
 }
 
-
 ```
 
 Example Paragraph block object with a child Mention block object
 ```
-
 {
 //...other keys excluded
 	"type": "paragraph",
@@ -881,7 +832,6 @@ Example Paragraph block object with a child Mention block object
   	}
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#pdf)
@@ -899,7 +849,6 @@ Property | Type | Description
 `file_upload` | [file object](https://developers.notion.com/reference/file-object) | An object containing type-specific information about the PDF.  
 JSON
 ```
-
 {
   //...other keys excluded
   "type": "pdf",
@@ -911,7 +860,6 @@ JSON
     }
   }
 }
-
 
 ```
 
@@ -948,7 +896,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks, if any, of the quote block.  
 Example Quote block
 ```
-
 {
 	//...other keys excluded
 	"type": "quote",
@@ -967,7 +914,6 @@ Example Quote block
    }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#synced-block)
@@ -982,7 +928,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks, if any, of the `synced_block` block. These blocks will be mirrored in the duplicate `synced_block`.  
 Example Original synced block
 ```
-
 {
     //...other keys excluded
   	"type": "synced_block",
@@ -1005,7 +950,6 @@ Example Original synced block
     }
 }
 
-
 ```
 
 ### [](https://developers.notion.com/reference/block#duplicate-synced-block)
@@ -1020,7 +964,6 @@ Possible values are:
 `block_id` |  `string` (UUIDv4) | An identifier for the original `synced_block`.  
 Example Duplicate synced block object
 ```
-
 {
     //...other keys excluded
   	"type": "synced_block",
@@ -1030,7 +973,6 @@ Example Duplicate synced block object
         }
     }
 }
-
 
 ```
 
@@ -1047,7 +989,6 @@ Field | Type | Description
 `has_row_header` | `boolean` | Whether the table has a header row. If `true`, then the first column in the table appears visually distinct from the other columns.  
 Example Table block object
 ```
-
 {
   //...other keys excluded
   "type": "table",
@@ -1057,7 +998,6 @@ Example Table block object
     "has_row_header": false
   }
 }
-
 
 ```
 
@@ -1076,7 +1016,6 @@ Property | Type | Description
 `cells` |  `array` of array of [rich text objects](https://developers.notion.com/reference/rich-text) | An array of cell contents in horizontal display order. Each cell is an array of rich text objects.  
 Example Table row block object
 ```
-
 {
   //...other keys excluded
   "type": "table_row",
@@ -1143,7 +1082,6 @@ Example Table row block object
   }
 }
 
-
 ```
 
 > ## 📘
@@ -1176,7 +1114,6 @@ Property | Type | Description
 - `"yellow_background"`  
 Example Table of contents block object
 ```
-
 {
   //...other keys excluded
 	"type": "table_of_contents",
@@ -1184,7 +1121,6 @@ Example Table of contents block object
   	"color": "default"
   }
 }
-
 
 ```
 
@@ -1200,7 +1136,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks, if any, of the template block. These blocks are duplicated when the template block is used in the UI.  
 Example Template block object
 ```
-
 {
   //...other keys excluded
   "template": {
@@ -1220,7 +1155,6 @@ Example Template block object
     ]
   }
 }
-
 
 ```
 
@@ -1255,7 +1189,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks, if any, of the To do block.  
 Example To do block object
 ```
-
 {
   //...other keys excluded
   "type": "to_do",
@@ -1275,7 +1208,6 @@ Example To do block object
     }]
   }
 }
-
 
 ```
 
@@ -1309,7 +1241,6 @@ Field | Type | Description
 `children` |  `array` of [block objects](https://developers.notion.com/reference/block) | The nested child blocks, if any, of the Toggle block.  
 Toggle Block
 ```
-
 {
   //...other keys excluded
   "type": "toggle",
@@ -1330,14 +1261,12 @@ Toggle Block
   }
 }
 
-
 ```
 
 ## [](https://developers.notion.com/reference/block#video)
 Video block objects contain a [file object](https://developers.notion.com/reference/file-object) detailing information about the video. 
 Example Video block object
 ```
-
 {
   "type": "video",
   //...other keys excluded
@@ -1348,7 +1277,6 @@ Example Video block object
     }
   }
 }
-
 
 ```
 
@@ -1377,7 +1305,3 @@ E.g. `https://www.youtube.com/watch?v=[id]`, `https://www.youtube.com/embed/[id]
 ### [](https://developers.notion.com/reference/block#supported-file-upload-types-3)
 See the [file upload reference](https://developers.notion.com/reference/file-upload#file-types-and-sizes) for a list of supported file extensions and content types when attaching a File Upload to a block.
 Video blocks only support file types in the "video" section of the table.
-* * *
-Did this page help you?
-Yes
-No
