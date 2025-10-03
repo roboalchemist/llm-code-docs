@@ -9,6 +9,22 @@ This repository serves as a centralized hub for:
 - **Automated Documentation Sync**: Tools to keep documentation current with source projects
 - **Comprehensive Coverage**: Multiple frameworks and libraries in one location
 
+## 📋 Project Status
+
+### Completed
+- ✅ CircuitPython documentation extraction
+- ✅ Claude Code SDK documentation extraction
+- ✅ Textual framework documentation
+
+### In Progress
+- ✅ Notion API documentation (93% complete via Crawl4AI - 66/71 files)
+
+### Planned
+- ⏳ Perplexity documentation extraction
+- ⏳ OpenRouter models API extraction
+
+See `todo.txt` for detailed task breakdown (21 tasks across 3 phases).
+
 ## 📚 Available Documentation
 
 ### Current Documentation Sets
@@ -42,8 +58,8 @@ python3 update-scripts/extract_docs.py
 # Update Claude Code SDK docs
 python3 update-scripts/claude-code-sdk-docs.py
 
-# Update Notion API docs (63 pages, skips 8 JS-rendered pages)
-python3 update-scripts/notion-docs.py --cached
+# Update Notion API docs (71 pages, 93% complete via Crawl4AI)
+python3 update-scripts/notion-docs-crawl4ai.py
 ```
 
 ## 🛠️ Update Scripts
@@ -57,7 +73,7 @@ The `update-scripts/` directory contains automated tools for maintaining current
 | `update.sh` | **Master updater** - runs all documentation scripts | Progress tracking, error handling, summary reporting |
 | `extract_docs.py` | **CircuitPython extractor** - clones and extracts docs from git repos | Configurable via YAML, preserves structure, handles updates |
 | `claude-code-sdk-docs.py` | **Claude Code SDK downloader** - downloads from official docs | Live sidebar extraction, automatic updates, change detection |
-| `notion-docs.py` | **Notion API reference downloader** - extracts API documentation | Skips JS-rendered pages, prevents corruption, detailed warnings |
+| `notion-docs-crawl4ai.py` | **Notion API reference downloader** - extracts API documentation | Crawl4AI framework, handles JS rendering, complete content capture |
 
 ### Script Features
 
@@ -100,28 +116,49 @@ repositories:
 The script automatically extracts the current sidebar structure from https://docs.anthropic.com/en/docs/claude-code/sdk to ensure complete coverage.
 
 ### Notion API Updates
-The Notion API documentation extractor has special handling for JavaScript-rendered pages:
 
-**Known Limitation**: 8 pages require JavaScript rendering and are automatically skipped to prevent file corruption:
-- `revoke-token.md`
-- `introspect-token.md`
-- `list-file-uploads.md`
-- `complete-a-file-upload.md`
-- `retrieve-a-file-upload.md`
-- `refresh-a-token.md`
-- `create-a-data-source.md`
-- `create-a-file-upload.md`
+Uses Crawl4AI for content extraction with JavaScript rendering:
+```bash
+# Extract all 71 Notion API pages
+python3 update-scripts/notion-docs-crawl4ai.py
+```
 
-These pages must be manually extracted using browser automation tools (e.g., Playwright). The script will skip them and display warnings to prevent overwriting existing manually-extracted content.
+Crawl4AI successfully extracted 71 pages with 66 files containing complete content including examples, object schemas, and code samples. 5 OAuth endpoint files (revoke-token, introspect-token, complete-a-file-upload, retrieve-a-file-upload, list-file-uploads) have partial content due to complex page structure and may require manual extraction.
 
 ## 📊 Statistics
 
 The repository currently contains:
-- **71 documentation files** for Notion API (63 fully extracted, 8 require manual extraction)
+- **71 documentation files** for Notion API (~596KB total via Crawl4AI, 93% complete)
 - **37+ documentation files** for Claude Code SDK
 - **Complete CircuitPython docs** extracted from official repositories
 - **Comprehensive Textual framework** documentation
-- **750KB+ total documentation** optimized for AI consumption
+- **5MB+ total documentation** optimized for AI consumption
+
+## 🗂️ Task Management
+
+The project uses a comprehensive task list in `todo.txt` with **21 detailed tasks** organized in **3 phases**:
+
+### Phase 0: Current State Validation
+- Task 0: Validate existing Notion extraction and determine starting point
+
+### Phase 1: Notion API Documentation (Tasks 1-8) - ✅ SUBSTANTIALLY COMPLETE
+- ✅ Complete extraction using Crawl4AI framework (Tasks 1-3)
+- ✅ JavaScript-rendered content handling
+- ✅ Comprehensive QA and verification (Task 4)
+- ✅ Documentation updates (Task 6)
+- Note: 66/71 files successfully extracted; 5 OAuth endpoint files require manual extraction
+
+### Phase 2: Perplexity Documentation (Tasks 9-15)
+- Research and implement Perplexity docs extraction
+- Follow established patterns from existing scripts
+- Full extraction and verification
+
+### Phase 3: OpenRouter Models API (Tasks 16-20)
+- API-based extraction of model catalog
+- Metadata and documentation
+- Final project verification
+
+Each task is self-contained with complete instructions, verification steps, and success criteria for independent agent execution.
 
 ## 🎯 Usage with AI Systems
 
