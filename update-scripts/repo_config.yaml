@@ -25,3 +25,10 @@ repositories:
     source_folder: "docs"
     target_folder: "textual"
     branch: "main" # Default branch to use
+
+  - name: "MicroPython"
+    description: "MicroPython documentation"
+    repo_url: "https://github.com/micropython/micropython.git"
+    source_folder: "docs"
+    target_folder: "micropython"
+    branch: "master" # Default branch to use
