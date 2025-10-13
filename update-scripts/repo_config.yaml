@@ -32,3 +32,10 @@ repositories:
     source_folder: "docs"
     target_folder: "micropython"
     branch: "master" # Default branch to use
+
+  - name: "BuildBuddy"
+    description: "BuildBuddy documentation - Remote execution and caching platform"
+    repo_url: "https://github.com/buildbuddy-io/buildbuddy.git"
+    source_folder: "docs"
+    target_folder: "buildbuddy"
+    branch: "master" # Default branch to use
