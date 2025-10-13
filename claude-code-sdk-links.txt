@@ -40,3 +40,12 @@ https://docs.anthropic.com/en/docs/claude-code/terminal-config.md
 https://docs.anthropic.com/en/docs/claude-code/third-party-integrations.md
 https://docs.anthropic.com/en/docs/claude-code/troubleshooting.md
 https://docs.anthropic.com/en/docs/claude-code/plugins.md
+https://docs.anthropic.com/en/docs/claude-code/checkpointing.md
+https://docs.anthropic.com/en/docs/claude-code/gitlab-ci-cd.md
+https://docs.anthropic.com/en/docs/claude-code/headless.md
+https://docs.anthropic.com/en/docs/claude-code/jetbrains.md
+https://docs.anthropic.com/en/docs/claude-code/network-config.md
+https://docs.anthropic.com/en/docs/claude-code/plugin-marketplaces.md
+https://docs.anthropic.com/en/docs/claude-code/plugins-reference.md
+https://docs.anthropic.com/en/docs/claude-code/sdk/migration-guide.md
+https://docs.anthropic.com/en/docs/claude-code/vs-code.md
