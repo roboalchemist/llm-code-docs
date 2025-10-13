@@ -26,7 +26,7 @@ Code through hierarchical settings:
   * Linux and WSL: `/etc/claude-code/managed-mcp.json`
   * Windows: `C:\ProgramData\ClaudeCode\managed-mcp.json`
 
-```JSON Example settings.json
+```JSON Example settings.json theme={null}
 {
   "permissions": {
     "allow": [
@@ -125,7 +125,7 @@ This hierarchy ensures that enterprise security policies are always enforced whi
 
 To prevent Claude Code from accessing files containing sensitive information (e.g., API keys, secrets, environment files), use the `permissions.deny` setting in your `.claude/settings.json` file:
 
-```json
+```json  theme={null}
 {
   "permissions": {
     "deny": [
@@ -149,6 +149,102 @@ Claude Code supports custom AI subagents that can be configured at both user and
 * **Project subagents**: `.claude/agents/` - Specific to your project and can be shared with your team
 
 Subagent files define specialized AI assistants with custom prompts and tool permissions. Learn more about creating and using subagents in the [subagents documentation](/en/docs/claude-code/sub-agents).
+
+## Plugin configuration
+
+Claude Code supports a plugin system that lets you extend functionality with custom commands, agents, hooks, and MCP servers. Plugins are distributed through marketplaces and can be configured at both user and repository levels.
+
+### Plugin settings
+
+Plugin-related settings in `settings.json`:
+
+```json  theme={null}
+{
+  "enabledPlugins": {
+    "formatter@company-tools": true,
+    "deployer@company-tools": true,
+    "analyzer@security-plugins": false
+  },
+  "extraKnownMarketplaces": {
+    "company-tools": {
+      "source": "github",
+      "repo": "company/claude-plugins"
+    }
+  }
+}
+```
+
+#### `enabledPlugins`
+
+Controls which plugins are enabled. Format: `"plugin-name@marketplace-name": true/false`
+
+**Scopes**:
+
+* **User settings** (`~/.claude/settings.json`): Personal plugin preferences
+* **Project settings** (`.claude/settings.json`): Project-specific plugins shared with team
+* **Local settings** (`.claude/settings.local.json`): Per-machine overrides (not committed)
+
+**Example**:
+
+```json  theme={null}
+{
+  "enabledPlugins": {
+    "code-formatter@team-tools": true,
+    "deployment-tools@team-tools": true,
+    "experimental-features@personal": false
+  }
+}
+```
+
+#### `extraKnownMarketplaces`
+
+Defines additional marketplaces that should be made available for the repository. Typically used in repository-level settings to ensure team members have access to required plugin sources.
+
+**When a repository includes `extraKnownMarketplaces`**:
+
+1. Team members are prompted to install the marketplace when they trust the folder
+2. Team members are then prompted to install plugins from that marketplace
+3. Users can skip unwanted marketplaces or plugins (stored in user settings)
+4. Installation respects trust boundaries and requires explicit consent
+
+**Example**:
+
+```json  theme={null}
+{
+  "extraKnownMarketplaces": {
+    "company-tools": {
+      "source": {
+        "source": "github",
+        "repo": "company-org/claude-plugins"
+      }
+    },
+    "security-plugins": {
+      "source": {
+        "source": "git",
+        "url": "https://git.company.com/security/plugins.git"
+      }
+    }
+  }
+}
+```
+
+**Marketplace source types**:
+
+* `github`: GitHub repository (uses `repo`)
+* `git`: Any git URL (uses `url`)
+* `directory`: Local filesystem path (uses `path`, for development only)
+
+### Managing plugins
+
+Use the `/plugin` command to manage plugins interactively:
+
+* Browse available plugins from marketplaces
+* Install/uninstall plugins
+* Enable/disable plugins
+* View plugin details (commands, agents, hooks provided)
+* Add/remove marketplaces
+
+Learn more about the plugin system in the [plugins documentation](/en/docs/claude-code/plugins).
 
 ## Environment variables
 
@@ -192,6 +288,10 @@ Claude Code supports the following environment variables to control its behavior
 | `DISABLE_COST_WARNINGS`                    | Set to `1` to disable cost warning messages                                                                                                                                                                                                                                                                                                    |
 | `DISABLE_ERROR_REPORTING`                  | Set to `1` to opt out of Sentry error reporting                                                                                                                                                                                                                                                                                                |
 | `DISABLE_NON_ESSENTIAL_MODEL_CALLS`        | Set to `1` to disable model calls for non-critical paths like flavor text                                                                                                                                                                                                                                                                      |
+| `DISABLE_PROMPT_CACHING`                   | Set to `1` to disable prompt caching for all models (takes precedence over per-model settings)                                                                                                                                                                                                                                                 |
+| `DISABLE_PROMPT_CACHING_HAIKU`             | Set to `1` to disable prompt caching for Haiku models                                                                                                                                                                                                                                                                                          |
+| `DISABLE_PROMPT_CACHING_OPUS`              | Set to `1` to disable prompt caching for Opus models                                                                                                                                                                                                                                                                                           |
+| `DISABLE_PROMPT_CACHING_SONNET`            | Set to `1` to disable prompt caching for Sonnet models                                                                                                                                                                                                                                                                                         |
 | `DISABLE_TELEMETRY`                        | Set to `1` to opt out of Statsig telemetry (note that Statsig events do not include user data like code, file paths, or bash commands)                                                                                                                                                                                                         |
 | `HTTP_PROXY`                               | Specify HTTP proxy server for network connections                                                                                                                                                                                                                                                                                              |
 | `HTTPS_PROXY`                              | Specify HTTPS proxy server for network connections                                                                                                                                                                                                                                                                                             |
@@ -219,7 +319,6 @@ Claude Code has access to a set of powerful tools that help it understand and mo
 | **Edit**         | Makes targeted edits to specific files                                               | Yes                 |
 | **Glob**         | Finds files based on pattern matching                                                | No                  |
 | **Grep**         | Searches for patterns in file contents                                               | No                  |
-| **MultiEdit**    | Performs multiple edits on a single file atomically                                  | Yes                 |
 | **NotebookEdit** | Modifies Jupyter notebook cells                                                      | Yes                 |
 | **NotebookRead** | Reads and displays Jupyter notebook contents                                         | No                  |
 | **Read**         | Reads the contents of files                                                          | No                  |

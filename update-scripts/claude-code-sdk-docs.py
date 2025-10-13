@@ -55,11 +55,15 @@ def extract_file_path(url):
 def extract_sidebar_links():
     """Extract current sidebar links from the live documentation."""
     print("🔍 Extracting current sidebar links from documentation...")
-    
+
     # Use the live extraction script we created
     try:
+        # Get the directory where this script is located
+        script_dir = Path(__file__).parent
+        extraction_script = script_dir / 'extract_sidebar_links_automated.py'
+
         result = subprocess.run([
-            'python3', 'extract_sidebar_links_automated.py'
+            'python3', str(extraction_script)
         ], capture_output=True, text=True, timeout=30)
         
         if result.returncode == 0:

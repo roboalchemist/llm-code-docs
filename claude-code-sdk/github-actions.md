@@ -38,8 +38,9 @@ The easiest way to set up this action is through Claude Code in the terminal. Ju
 This command will guide you through setting up the GitHub app and required secrets.
 
 <Note>
-  * You must be a repository admin to install the GitHub app and add secrets -
-    This quickstart method is only available for direct Claude API users. If
+  * You must be a repository admin to install the GitHub app and add secrets
+  * The GitHub app will request read & write permissions for Contents, Issues, and Pull requests
+  * This quickstart method is only available for direct Claude API users. If
     you're using AWS Bedrock or Google Vertex AI, please see the [Using with AWS
     Bedrock & Google Vertex AI](#using-with-aws-bedrock-%26-google-vertex-ai)
     section.
@@ -50,6 +51,14 @@ This command will guide you through setting up the GitHub app and required secre
 If the `/install-github-app` command fails or you prefer manual setup, please follow these manual setup instructions:
 
 1. **Install the Claude GitHub app** to your repository: [https://github.com/apps/claude](https://github.com/apps/claude)
+
+   The Claude GitHub app requires the following repository permissions:
+
+   * **Contents**: Read & write (to modify repository files)
+   * **Issues**: Read & write (to respond to issues)
+   * **Pull requests**: Read & write (to create PRs and push changes)
+
+   For more details on security and permissions, see the [security documentation](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md).
 2. **Add ANTHROPIC\_API\_KEY** to your repository secrets ([Learn how to use secrets in GitHub Actions](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions))
 3. **Copy the workflow file** from [examples/claude.yml](https://github.com/anthropics/claude-code-action/blob/main/examples/claude.yml) into your repository's `.github/workflows/`
 
@@ -93,7 +102,7 @@ All beta users must make these changes to their workflow files in order to upgra
 
 **Beta version:**
 
-```yaml
+```yaml  theme={null}
 - uses: anthropics/claude-code-action@beta
   with:
     mode: "tag"
@@ -106,7 +115,7 @@ All beta users must make these changes to their workflow files in order to upgra
 
 **GA version (v1.0):**
 
-```yaml
+```yaml  theme={null}
 - uses: anthropics/claude-code-action@v1
   with:
     prompt: "Review this PR for security issues"
@@ -127,7 +136,7 @@ Claude Code GitHub Actions can help you with a variety of tasks. The [examples d
 
 ### Basic workflow
 
-```yaml
+```yaml  theme={null}
 name: Claude Code
 on:
   issue_comment:
@@ -146,7 +155,7 @@ jobs:
 
 ### Using slash commands
 
-```yaml
+```yaml  theme={null}
 name: Code Review
 on:
   pull_request:
@@ -164,7 +173,7 @@ jobs:
 
 ### Custom automation with prompts
 
-```yaml
+```yaml  theme={null}
 name: Daily Report
 on:
   schedule:
@@ -201,6 +210,8 @@ Create a `CLAUDE.md` file in your repository root to define code style guideline
 ### Security considerations
 
 <Warning>Never commit API keys directly to your repository!</Warning>
+
+For comprehensive security guidance including permissions, authentication, and best practices, see the [Claude Code Action security documentation](https://github.com/anthropics/claude-code-action/blob/main/docs/security.md).
 
 Always use GitHub Secrets for API keys:
 
@@ -241,7 +252,7 @@ When using Claude Code GitHub Actions, be aware of the associated costs:
 
 The Claude Code Action v1 simplifies configuration with unified parameters:
 
-```yaml
+```yaml  theme={null}
 - uses: anthropics/claude-code-action@v1
   with:
     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -456,7 +467,7 @@ Before setting up Claude Code GitHub Actions with cloud providers, you need:
         | `APP_ID`             | Your GitHub App ID (from app settings)            |
         | `APP_PRIVATE_KEY`    | The private key you generated for your GitHub App |
 
-        ```yaml
+        ```yaml  theme={null}
         name: Claude PR Action
 
         permissions:
@@ -527,7 +538,7 @@ Before setting up Claude Code GitHub Actions with cloud providers, you need:
         | `APP_ID`                         | Your GitHub App ID (from app settings)            |
         | `APP_PRIVATE_KEY`                | The private key you generated for your GitHub App |
 
-        ```yaml
+        ```yaml  theme={null}
         name: Claude PR Action
 
         permissions:
@@ -626,7 +637,7 @@ The Claude Code Action v1 uses a simplified configuration:
 
 The `claude_args` parameter accepts any Claude Code CLI arguments:
 
-```yaml
+```yaml  theme={null}
 claude_args: "--max-turns 5 --model claude-sonnet-4-5-20250929 --mcp-config /path/to/config.json"
 ```
 
@@ -646,7 +657,7 @@ While the `/install-github-app` command is the recommended approach, you can als
 * **Manual GitHub Actions**: Direct workflow configuration for maximum flexibility
 * **MCP Configuration**: Dynamic loading of Model Context Protocol servers
 
-See the [Claude Code Action repository](https://github.com/anthropics/claude-code-action) for detailed documentation.
+See the [Claude Code Action documentation](https://github.com/anthropics/claude-code-action/blob/main/docs) for detailed guides on authentication, security, and advanced configuration.
 
 ### Customizing Claude's behavior
 

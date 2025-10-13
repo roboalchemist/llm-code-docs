@@ -18,7 +18,7 @@ Make sure you have:
 
 If you have [Node.js 18 or newer installed](https://nodejs.org/en/download/):
 
-```sh
+```sh  theme={null}
 npm install -g @anthropic-ai/claude-code
 ```
 
@@ -28,21 +28,27 @@ npm install -g @anthropic-ai/claude-code
   Alternatively, try our new native install, now in beta.
 </Tip>
 
+**Homebrew (macOS, Linux):**
+
+```sh  theme={null}
+brew install --cask claude-code
+```
+
 **macOS, Linux, WSL:**
 
-```bash
+```bash  theme={null}
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 **Windows PowerShell:**
 
-```powershell
+```powershell  theme={null}
 irm https://claude.ai/install.ps1 | iex
 ```
 
 **Windows CMD:**
 
-```batch
+```batch  theme={null}
 curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
 ```
 
@@ -50,12 +56,12 @@ curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del in
 
 Claude Code requires an account to use. When you start an interactive session with the `claude` command, you'll need to log in:
 
-```bash
+```bash  theme={null}
 claude
 # You'll be prompted to log in on first use
 ```
 
-```bash
+```bash  theme={null}
 /login
 # Follow the prompts to log in with your account
 ```
@@ -79,7 +85,7 @@ Once logged in, your credentials are stored and you won't need to log in again.
 
 Open your terminal in any project directory and start Claude Code:
 
-```bash
+```bash  theme={null}
 cd /path/to/your/project
 claude
 ```
@@ -286,6 +292,7 @@ See the [CLI reference](/en/docs/claude-code/cli-reference) for a complete list 
   </Accordion>
 
   <Accordion title="Save time with shortcuts">
+    * Press `?` to see all available keyboard shortcuts
     * Use Tab for command completion
     * Press ↑ for command history
     * Type `/` to see all slash commands
