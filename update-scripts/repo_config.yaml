@@ -39,3 +39,17 @@ repositories:
     source_folder: "docs"
     target_folder: "buildbuddy"
     branch: "master" # Default branch to use
+
+  - name: "Linear"
+    description: "Linear API and SDK documentation"
+    repo_url: "https://github.com/linear/linear.git"
+    source_folder: "docs"
+    target_folder: "linear"
+    branch: "master" # Default branch to use
+
+  - name: "esptool"
+    description: "ESP8266 and ESP32 serial bootloader utility documentation"
+    repo_url: "https://github.com/espressif/esptool.git"
+    source_folder: "docs"
+    target_folder: "esptool"
+    branch: "master" # Default branch to use

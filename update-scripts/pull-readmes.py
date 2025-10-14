@@ -19,6 +19,10 @@ READMES = [
         "https://raw.githubusercontent.com/scientifichackers/ampy/refs/heads/master/README.md",
         "ampy.md"
     ),
+    (
+        "https://raw.githubusercontent.com/dhylands/rshell/refs/heads/master/README.rst",
+        "rshell.rst"
+    ),
 ]
 
 def download_readme(url, output_filename):
