@@ -1,0 +1,25 @@
+# llms.txt Site Configuration
+#
+# This file lists websites that follow the llms.txt standard (https://llmstxt.org/)
+# Each site provides:
+#   - /llms.txt - Index file with markdown links to documentation
+#   - /llms-full.txt - Comprehensive documentation in a single file
+#   - Individual .md files - Separate documentation pages
+#
+# Format:
+#   - name: Directory name for downloaded documentation
+#     base_url: Root URL where llms.txt and llms-full.txt are located
+#     description: Brief description of the site/project
+
+sites:
+  - name: claude-docs
+    base_url: https://docs.claude.com/
+    description: Anthropic Claude AI documentation
+
+  - name: augment-code
+    base_url: https://docs.augmentcode.com/
+    description: Augment Code AI coding assistant documentation
+
+  - name: graphite
+    base_url: https://graphite.com/docs/
+    description: Graphite stacked pull requests and developer workflow tools
