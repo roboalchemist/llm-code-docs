@@ -1,8 +1,14 @@
-# TypeScript SDK reference
+# Agent SDK reference - TypeScript
 
-> Complete API reference for the Claude Code TypeScript SDK, including all functions, types, and interfaces.
+> Complete API reference for the TypeScript Agent SDK, including all functions, types, and interfaces.
 
 <script src="/components/typescript-sdk-type-links.js" defer />
+
+## Installation
+
+```bash  theme={null}
+npm install @anthropic-ai/claude-agent-sdk
+```
 
 ## Functions
 
@@ -10,7 +16,7 @@
 
 The primary function for interacting with Claude Code. Creates an async generator that streams messages as they arrive.
 
-```ts
+```ts  theme={null}
 function query({
   prompt,
   options
@@ -35,7 +41,7 @@ Returns a [`Query`](#query-1) object that extends `AsyncGenerator<`[`SDKMessage`
 
 Creates a type-safe MCP tool definition for use with SDK MCP servers.
 
-```ts
+```ts  theme={null}
 function tool<Schema extends ZodRawShape>(
   name: string,
   description: string,
@@ -57,7 +63,7 @@ function tool<Schema extends ZodRawShape>(
 
 Creates an MCP server instance that runs in the same process as your application.
 
-```ts
+```ts  theme={null}
 function createSdkMcpServer(options: {
   name: string;
   version?: string;
@@ -79,40 +85,43 @@ function createSdkMcpServer(options: {
 
 Configuration object for the `query()` function.
 
-| Property                     | Type                                                                                              | Default                 | Description                                 |
-| :--------------------------- | :------------------------------------------------------------------------------------------------ | :---------------------- | :------------------------------------------ |
-| `abortController`            | `AbortController`                                                                                 | `new AbortController()` | Controller for cancelling operations        |
-| `additionalDirectories`      | `string[]`                                                                                        | `[]`                    | Additional directories Claude can access    |
-| `allowedTools`               | `string[]`                                                                                        | All tools               | List of allowed tool names                  |
-| `appendSystemPrompt`         | `string`                                                                                          | `undefined`             | Text to append to the default system prompt |
-| `canUseTool`                 | [`CanUseTool`](#canusetool)                                                                       | `undefined`             | Custom permission function for tool usage   |
-| `continue`                   | `boolean`                                                                                         | `false`                 | Continue the most recent conversation       |
-| `customSystemPrompt`         | `string`                                                                                          | `undefined`             | Replace the default system prompt entirely  |
-| `cwd`                        | `string`                                                                                          | `process.cwd()`         | Current working directory                   |
-| `disallowedTools`            | `string[]`                                                                                        | `[]`                    | List of disallowed tool names               |
-| `env`                        | `Dict<string>`                                                                                    | `process.env`           | Environment variables                       |
-| `executable`                 | `'bun' \| 'deno' \| 'node'`                                                                       | Auto-detected           | JavaScript runtime to use                   |
-| `executableArgs`             | `string[]`                                                                                        | `[]`                    | Arguments to pass to the executable         |
-| `extraArgs`                  | `Record<string, string \| null>`                                                                  | `{}`                    | Additional arguments                        |
-| `fallbackModel`              | `string`                                                                                          | `undefined`             | Model to use if primary fails               |
-| `hooks`                      | `Partial<Record<`[`HookEvent`](#hookevent)`, `[`HookCallbackMatcher`](#hookcallbackmatcher)`[]>>` | `{}`                    | Hook callbacks for events                   |
-| `includePartialMessages`     | `boolean`                                                                                         | `false`                 | Include partial message events              |
-| `maxThinkingTokens`          | `number`                                                                                          | `undefined`             | Maximum tokens for thinking process         |
-| `maxTurns`                   | `number`                                                                                          | `undefined`             | Maximum conversation turns                  |
-| `mcpServers`                 | `Record<string, [`McpServerConfig`](#mcpserverconfig)>`                                           | `{}`                    | MCP server configurations                   |
-| `model`                      | `string`                                                                                          | Default from CLI        | Claude model to use                         |
-| `pathToClaudeCodeExecutable` | `string`                                                                                          | Auto-detected           | Path to Claude Code executable              |
-| `permissionMode`             | [`PermissionMode`](#permissionmode)                                                               | `'default'`             | Permission mode for the session             |
-| `permissionPromptToolName`   | `string`                                                                                          | `undefined`             | MCP tool name for permission prompts        |
-| `resume`                     | `string`                                                                                          | `undefined`             | Session ID to resume                        |
-| `stderr`                     | `(data: string) => void`                                                                          | `undefined`             | Callback for stderr output                  |
-| `strictMcpConfig`            | `boolean`                                                                                         | `false`                 | Enforce strict MCP validation               |
+| Property                     | Type                                                                                              | Default                    | Description                                                                                                                                                                                                                                               |
+| :--------------------------- | :------------------------------------------------------------------------------------------------ | :------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `abortController`            | `AbortController`                                                                                 | `new AbortController()`    | Controller for cancelling operations                                                                                                                                                                                                                      |
+| `additionalDirectories`      | `string[]`                                                                                        | `[]`                       | Additional directories Claude can access                                                                                                                                                                                                                  |
+| `agents`                     | `Record<string, [`AgentDefinition`](#agentdefinition)>`                                           | `undefined`                | Programmatically define subagents                                                                                                                                                                                                                         |
+| `allowedTools`               | `string[]`                                                                                        | All tools                  | List of allowed tool names                                                                                                                                                                                                                                |
+| `canUseTool`                 | [`CanUseTool`](#canusetool)                                                                       | `undefined`                | Custom permission function for tool usage                                                                                                                                                                                                                 |
+| `continue`                   | `boolean`                                                                                         | `false`                    | Continue the most recent conversation                                                                                                                                                                                                                     |
+| `cwd`                        | `string`                                                                                          | `process.cwd()`            | Current working directory                                                                                                                                                                                                                                 |
+| `disallowedTools`            | `string[]`                                                                                        | `[]`                       | List of disallowed tool names                                                                                                                                                                                                                             |
+| `env`                        | `Dict<string>`                                                                                    | `process.env`              | Environment variables                                                                                                                                                                                                                                     |
+| `executable`                 | `'bun' \| 'deno' \| 'node'`                                                                       | Auto-detected              | JavaScript runtime to use                                                                                                                                                                                                                                 |
+| `executableArgs`             | `string[]`                                                                                        | `[]`                       | Arguments to pass to the executable                                                                                                                                                                                                                       |
+| `extraArgs`                  | `Record<string, string \| null>`                                                                  | `{}`                       | Additional arguments                                                                                                                                                                                                                                      |
+| `fallbackModel`              | `string`                                                                                          | `undefined`                | Model to use if primary fails                                                                                                                                                                                                                             |
+| `forkSession`                | `boolean`                                                                                         | `false`                    | When resuming with `resume`, fork to a new session ID instead of continuing the original session                                                                                                                                                          |
+| `hooks`                      | `Partial<Record<`[`HookEvent`](#hookevent)`, `[`HookCallbackMatcher`](#hookcallbackmatcher)`[]>>` | `{}`                       | Hook callbacks for events                                                                                                                                                                                                                                 |
+| `includePartialMessages`     | `boolean`                                                                                         | `false`                    | Include partial message events                                                                                                                                                                                                                            |
+| `maxThinkingTokens`          | `number`                                                                                          | `undefined`                | Maximum tokens for thinking process                                                                                                                                                                                                                       |
+| `maxTurns`                   | `number`                                                                                          | `undefined`                | Maximum conversation turns                                                                                                                                                                                                                                |
+| `mcpServers`                 | `Record<string, [`McpServerConfig`](#mcpserverconfig)>`                                           | `{}`                       | MCP server configurations                                                                                                                                                                                                                                 |
+| `model`                      | `string`                                                                                          | Default from CLI           | Claude model to use                                                                                                                                                                                                                                       |
+| `pathToClaudeCodeExecutable` | `string`                                                                                          | Auto-detected              | Path to Claude Code executable                                                                                                                                                                                                                            |
+| `permissionMode`             | [`PermissionMode`](#permissionmode)                                                               | `'default'`                | Permission mode for the session                                                                                                                                                                                                                           |
+| `permissionPromptToolName`   | `string`                                                                                          | `undefined`                | MCP tool name for permission prompts                                                                                                                                                                                                                      |
+| `plugins`                    | [`SdkPluginConfig`](#sdkpluginconfig)`[]`                                                         | `[]`                       | Load custom plugins from local paths. See [Plugins](/en/docs/agent-sdk/plugins) for details                                                                                                                                                               |
+| `resume`                     | `string`                                                                                          | `undefined`                | Session ID to resume                                                                                                                                                                                                                                      |
+| `settingSources`             | [`SettingSource`](#settingsource)`[]`                                                             | `[]` (no settings)         | Control which filesystem settings to load. When omitted, no settings are loaded. **Note:** Must include `'project'` to load CLAUDE.md files                                                                                                               |
+| `stderr`                     | `(data: string) => void`                                                                          | `undefined`                | Callback for stderr output                                                                                                                                                                                                                                |
+| `strictMcpConfig`            | `boolean`                                                                                         | `false`                    | Enforce strict MCP validation                                                                                                                                                                                                                             |
+| `systemPrompt`               | `string \| { type: 'preset'; preset: 'claude_code'; append?: string }`                            | `undefined` (empty prompt) | System prompt configuration. Pass a string for custom prompt, or `{ type: 'preset', preset: 'claude_code' }` to use Claude Code's system prompt. When using the preset object form, add `append` to extend the system prompt with additional instructions |
 
 ### `Query`
 
 Interface returned by the `query()` function.
 
-```ts
+```ts  theme={null}
 interface Query extends AsyncGenerator<SDKMessage, void> {
   interrupt(): Promise<void>;
   setPermissionMode(mode: PermissionMode): Promise<void>;
@@ -126,10 +135,130 @@ interface Query extends AsyncGenerator<SDKMessage, void> {
 | `interrupt()`         | Interrupts the query (only available in streaming input mode)        |
 | `setPermissionMode()` | Changes the permission mode (only available in streaming input mode) |
 
+### `AgentDefinition`
+
+Configuration for a subagent defined programmatically.
+
+```ts  theme={null}
+type AgentDefinition = {
+  description: string;
+  tools?: string[];
+  prompt: string;
+  model?: 'sonnet' | 'opus' | 'haiku' | 'inherit';
+}
+```
+
+| Field         | Required | Description                                                    |
+| :------------ | :------- | :------------------------------------------------------------- |
+| `description` | Yes      | Natural language description of when to use this agent         |
+| `tools`       | No       | Array of allowed tool names. If omitted, inherits all tools    |
+| `prompt`      | Yes      | The agent's system prompt                                      |
+| `model`       | No       | Model override for this agent. If omitted, uses the main model |
+
+### `SettingSource`
+
+Controls which filesystem-based configuration sources the SDK loads settings from.
+
+```ts  theme={null}
+type SettingSource = 'user' | 'project' | 'local';
+```
+
+| Value       | Description                                  | Location                      |
+| :---------- | :------------------------------------------- | :---------------------------- |
+| `'user'`    | Global user settings                         | `~/.claude/settings.json`     |
+| `'project'` | Shared project settings (version controlled) | `.claude/settings.json`       |
+| `'local'`   | Local project settings (gitignored)          | `.claude/settings.local.json` |
+
+#### Default behavior
+
+When `settingSources` is **omitted** or **undefined**, the SDK does **not** load any filesystem settings. This provides isolation for SDK applications.
+
+#### Why use settingSources?
+
+**Load all filesystem settings (legacy behavior):**
+
+```typescript  theme={null}
+// Load all settings like SDK v0.0.x did
+const result = query({
+  prompt: "Analyze this code",
+  options: {
+    settingSources: ['user', 'project', 'local']  // Load all settings
+  }
+});
+```
+
+**Load only specific setting sources:**
+
+```typescript  theme={null}
+// Load only project settings, ignore user and local
+const result = query({
+  prompt: "Run CI checks",
+  options: {
+    settingSources: ['project']  // Only .claude/settings.json
+  }
+});
+```
+
+**Testing and CI environments:**
+
+```typescript  theme={null}
+// Ensure consistent behavior in CI by excluding local settings
+const result = query({
+  prompt: "Run tests",
+  options: {
+    settingSources: ['project'],  // Only team-shared settings
+    permissionMode: 'bypassPermissions'
+  }
+});
+```
+
+**SDK-only applications:**
+
+```typescript  theme={null}
+// Define everything programmatically (default behavior)
+// No filesystem dependencies - settingSources defaults to []
+const result = query({
+  prompt: "Review this PR",
+  options: {
+    // settingSources: [] is the default, no need to specify
+    agents: { /* ... */ },
+    mcpServers: { /* ... */ },
+    allowedTools: ['Read', 'Grep', 'Glob']
+  }
+});
+```
+
+**Loading CLAUDE.md project instructions:**
+
+```typescript  theme={null}
+// Load project settings to include CLAUDE.md files
+const result = query({
+  prompt: "Add a new feature following project conventions",
+  options: {
+    systemPrompt: {
+      type: 'preset',
+      preset: 'claude_code'  // Required to use CLAUDE.md
+    },
+    settingSources: ['project'],  // Loads CLAUDE.md from project directory
+    allowedTools: ['Read', 'Write', 'Edit']
+  }
+});
+```
+
+#### Settings precedence
+
+When multiple sources are loaded, settings are merged with this precedence (highest to lowest):
+
+1. Local settings (`.claude/settings.local.json`)
+2. Project settings (`.claude/settings.json`)
+3. User settings (`~/.claude/settings.json`)
+
+Programmatic options (like `agents`, `allowedTools`) always override filesystem settings.
+
 ### `PermissionMode`
 
-```ts
-type PermissionMode = 
+```ts  theme={null}
+type PermissionMode =
   | 'default'           // Standard permission behavior
   | 'acceptEdits'       // Auto-accept file edits
   | 'bypassPermissions' // Bypass all permission checks
@@ -140,7 +269,7 @@ type PermissionMode =
 
 Custom permission function type for controlling tool usage.
 
-```ts
+```ts  theme={null}
 type CanUseTool = (
   toolName: string,
   input: ToolInput,
@@ -155,7 +284,7 @@ type CanUseTool = (
 
 Result of a permission check.
 
-```ts
+```ts  theme={null}
 type PermissionResult = 
   | {
       behavior: 'allow';
@@ -173,7 +302,7 @@ type PermissionResult =
 
 Configuration for MCP servers.
 
-```ts
+```ts  theme={null}
 type McpServerConfig = 
   | McpStdioServerConfig
   | McpSSEServerConfig
@@ -183,7 +312,7 @@ type McpServerConfig =
 
 #### `McpStdioServerConfig`
 
-```ts
+```ts  theme={null}
 type McpStdioServerConfig = {
   type?: 'stdio';
   command: string;
@@ -194,7 +323,7 @@ type McpStdioServerConfig = {
 
 #### `McpSSEServerConfig`
 
-```ts
+```ts  theme={null}
 type McpSSEServerConfig = {
   type: 'sse';
   url: string;
@@ -204,7 +333,7 @@ type McpSSEServerConfig = {
 
 #### `McpHttpServerConfig`
 
-```ts
+```ts  theme={null}
 type McpHttpServerConfig = {
   type: 'http';
   url: string;
@@ -214,7 +343,7 @@ type McpHttpServerConfig = {
 
 #### `McpSdkServerConfigWithInstance`
 
-```ts
+```ts  theme={null}
 type McpSdkServerConfigWithInstance = {
   type: 'sdk';
   name: string;
@@ -222,13 +351,40 @@ type McpSdkServerConfigWithInstance = {
 }
 ```
 
+### `SdkPluginConfig`
+
+Configuration for loading plugins in the SDK.
+
+```ts  theme={null}
+type SdkPluginConfig = {
+  type: 'local';
+  path: string;
+}
+```
+
+| Field  | Type      | Description                                                |
+| :----- | :-------- | :--------------------------------------------------------- |
+| `type` | `'local'` | Must be `'local'` (only local plugins currently supported) |
+| `path` | `string`  | Absolute or relative path to the plugin directory          |
+
+**Example:**
+
+```ts  theme={null}
+plugins: [
+  { type: 'local', path: './my-plugin' },
+  { type: 'local', path: '/absolute/path/to/plugin' }
+]
+```
+
+For complete information on creating and using plugins, see [Plugins](/en/docs/agent-sdk/plugins).
+
 ## Message Types
 
 ### `SDKMessage`
 
 Union type of all possible messages returned by the query.
 
-```ts
+```ts  theme={null}
 type SDKMessage = 
   | SDKAssistantMessage
   | SDKUserMessage
@@ -243,7 +399,7 @@ type SDKMessage =
 
 Assistant response message.
 
-```ts
+```ts  theme={null}
 type SDKAssistantMessage = {
   type: 'assistant';
   uuid: UUID;
@@ -257,7 +413,7 @@ type SDKAssistantMessage = {
 
 User input message.
 
-```ts
+```ts  theme={null}
 type SDKUserMessage = {
   type: 'user';
   uuid?: UUID;
@@ -271,7 +427,7 @@ type SDKUserMessage = {
 
 Replayed user message with required UUID.
 
-```ts
+```ts  theme={null}
 type SDKUserMessageReplay = {
   type: 'user';
   uuid: UUID;
@@ -285,7 +441,7 @@ type SDKUserMessageReplay = {
 
 Final result message.
 
-```ts
+```ts  theme={null}
 type SDKResultMessage = 
   | {
       type: 'result';
@@ -320,7 +476,7 @@ type SDKResultMessage =
 
 System initialization message.
 
-```ts
+```ts  theme={null}
 type SDKSystemMessage = {
   type: 'system';
   subtype: 'init';
@@ -344,7 +500,7 @@ type SDKSystemMessage = {
 
 Streaming partial message (only when `includePartialMessages` is true).
 
-```ts
+```ts  theme={null}
 type SDKPartialAssistantMessage = {
   type: 'stream_event';
   event: RawMessageStreamEvent; // From Anthropic SDK
@@ -358,7 +514,7 @@ type SDKPartialAssistantMessage = {
 
 Message indicating a conversation compaction boundary.
 
-```ts
+```ts  theme={null}
 type SDKCompactBoundaryMessage = {
   type: 'system';
   subtype: 'compact_boundary';
@@ -375,7 +531,7 @@ type SDKCompactBoundaryMessage = {
 
 Information about a denied tool use.
 
-```ts
+```ts  theme={null}
 type SDKPermissionDenial = {
   tool_name: string;
   tool_use_id: string;
@@ -389,7 +545,7 @@ type SDKPermissionDenial = {
 
 Available hook events.
 
-```ts
+```ts  theme={null}
 type HookEvent = 
   | 'PreToolUse'
   | 'PostToolUse'
@@ -406,7 +562,7 @@ type HookEvent =
 
 Hook callback function type.
 
-```ts
+```ts  theme={null}
 type HookCallback = (
   input: HookInput, // Union of all hook input types
   toolUseID: string | undefined,
@@ -418,7 +574,7 @@ type HookCallback = (
 
 Hook configuration with optional matcher.
 
-```ts
+```ts  theme={null}
 interface HookCallbackMatcher {
   matcher?: string;
   hooks: HookCallback[];
@@ -429,7 +585,7 @@ interface HookCallbackMatcher {
 
 Union type of all hook input types.
 
-```ts
+```ts  theme={null}
 type HookInput = 
   | PreToolUseHookInput
   | PostToolUseHookInput
@@ -446,7 +602,7 @@ type HookInput =
 
 Base interface that all hook input types extend.
 
-```ts
+```ts  theme={null}
 type BaseHookInput = {
   session_id: string;
   transcript_path: string;
@@ -457,7 +613,7 @@ type BaseHookInput = {
 
 #### `PreToolUseHookInput`
 
-```ts
+```ts  theme={null}
 type PreToolUseHookInput = BaseHookInput & {
   hook_event_name: 'PreToolUse';
   tool_name: string;
@@ -467,7 +623,7 @@ type PreToolUseHookInput = BaseHookInput & {
 
 #### `PostToolUseHookInput`
 
-```ts
+```ts  theme={null}
 type PostToolUseHookInput = BaseHookInput & {
   hook_event_name: 'PostToolUse';
   tool_name: string;
@@ -478,7 +634,7 @@ type PostToolUseHookInput = BaseHookInput & {
 
 #### `NotificationHookInput`
 
-```ts
+```ts  theme={null}
 type NotificationHookInput = BaseHookInput & {
   hook_event_name: 'Notification';
   message: string;
@@ -488,7 +644,7 @@ type NotificationHookInput = BaseHookInput & {
 
 #### `UserPromptSubmitHookInput`
 
-```ts
+```ts  theme={null}
 type UserPromptSubmitHookInput = BaseHookInput & {
   hook_event_name: 'UserPromptSubmit';
   prompt: string;
@@ -497,7 +653,7 @@ type UserPromptSubmitHookInput = BaseHookInput & {
 
 #### `SessionStartHookInput`
 
-```ts
+```ts  theme={null}
 type SessionStartHookInput = BaseHookInput & {
   hook_event_name: 'SessionStart';
   source: 'startup' | 'resume' | 'clear' | 'compact';
@@ -506,7 +662,7 @@ type SessionStartHookInput = BaseHookInput & {
 
 #### `SessionEndHookInput`
 
-```ts
+```ts  theme={null}
 type SessionEndHookInput = BaseHookInput & {
   hook_event_name: 'SessionEnd';
   reason: 'clear' | 'logout' | 'prompt_input_exit' | 'other';
@@ -515,7 +671,7 @@ type SessionEndHookInput = BaseHookInput & {
 
 #### `StopHookInput`
 
-```ts
+```ts  theme={null}
 type StopHookInput = BaseHookInput & {
   hook_event_name: 'Stop';
   stop_hook_active: boolean;
@@ -524,7 +680,7 @@ type StopHookInput = BaseHookInput & {
 
 #### `SubagentStopHookInput`
 
-```ts
+```ts  theme={null}
 type SubagentStopHookInput = BaseHookInput & {
   hook_event_name: 'SubagentStop';
   stop_hook_active: boolean;
@@ -533,7 +689,7 @@ type SubagentStopHookInput = BaseHookInput & {
 
 #### `PreCompactHookInput`
 
-```ts
+```ts  theme={null}
 type PreCompactHookInput = BaseHookInput & {
   hook_event_name: 'PreCompact';
   trigger: 'manual' | 'auto';
@@ -545,13 +701,13 @@ type PreCompactHookInput = BaseHookInput & {
 
 Hook return value.
 
-```ts
+```ts  theme={null}
 type HookJSONOutput = AsyncHookJSONOutput | SyncHookJSONOutput;
 ```
 
 #### `AsyncHookJSONOutput`
 
-```ts
+```ts  theme={null}
 type AsyncHookJSONOutput = {
   async: true;
   asyncTimeout?: number;
@@ -560,7 +716,7 @@ type AsyncHookJSONOutput = {
 
 #### `SyncHookJSONOutput`
 
-```ts
+```ts  theme={null}
 type SyncHookJSONOutput = {
   continue?: boolean;
   suppressOutput?: boolean;
@@ -591,19 +747,18 @@ type SyncHookJSONOutput = {
 
 ## Tool Input Types
 
-Documentation of input schemas for all built-in Claude Code tools. These types are exported from `@anthropic/claude-code-sdk` and can be used for type-safe tool interactions.
+Documentation of input schemas for all built-in Claude Code tools. These types are exported from `@anthropic-ai/claude-agent-sdk` and can be used for type-safe tool interactions.
 
 ### `ToolInput`
 
 **Note:** This is a documentation-only type for clarity. It represents the union of all tool input types.
 
-```ts
+```ts  theme={null}
 type ToolInput = 
   | AgentInput
   | BashInput
   | BashOutputInput
   | FileEditInput
-  | FileMultiEditInput
   | FileReadInput
   | FileWriteInput
   | GlobInput
@@ -622,7 +777,7 @@ type ToolInput =
 
 **Tool name:** `Task`
 
-```ts
+```ts  theme={null}
 interface AgentInput {
   /**
    * A short (3-5 word) description of the task
@@ -645,7 +800,7 @@ Launches a new agent to handle complex, multi-step tasks autonomously.
 
 **Tool name:** `Bash`
 
-```ts
+```ts  theme={null}
 interface BashInput {
   /**
    * The command to execute
@@ -672,7 +827,7 @@ Executes bash commands in a persistent shell session with optional timeout and b
 
 **Tool name:** `BashOutput`
 
-```ts
+```ts  theme={null}
 interface BashOutputInput {
   /**
    * The ID of the background shell to retrieve output from
@@ -691,7 +846,7 @@ Retrieves output from a running or completed background bash shell.
 
 **Tool name:** `Edit`
 
-```ts
+```ts  theme={null}
 interface FileEditInput {
   /**
    * The absolute path to the file to modify
@@ -714,43 +869,11 @@ interface FileEditInput {
 
 Performs exact string replacements in files.
 
-### MultiEdit
-
-**Tool name:** `MultiEdit`
-
-```ts
-interface FileMultiEditInput {
-  /**
-   * The absolute path to the file to modify
-   */
-  file_path: string;
-  /**
-   * Array of edit operations to perform sequentially
-   */
-  edits: Array<{
-    /**
-     * The text to replace
-     */
-    old_string: string;
-    /**
-     * The text to replace it with
-     */
-    new_string: string;
-    /**
-     * Replace all occurrences (default false)
-     */
-    replace_all?: boolean;
-  }>;
-}
-```
-
-Makes multiple edits to a single file in one operation.
-
 ### Read
 
 **Tool name:** `Read`
 
-```ts
+```ts  theme={null}
 interface FileReadInput {
   /**
    * The absolute path to the file to read
@@ -773,7 +896,7 @@ Reads files from the local filesystem, including text, images, PDFs, and Jupyter
 
 **Tool name:** `Write`
 
-```ts
+```ts  theme={null}
 interface FileWriteInput {
   /**
    * The absolute path to the file to write
@@ -792,7 +915,7 @@ Writes a file to the local filesystem, overwriting if it exists.
 
 **Tool name:** `Glob`
 
-```ts
+```ts  theme={null}
 interface GlobInput {
   /**
    * The glob pattern to match files against
@@ -811,7 +934,7 @@ Fast file pattern matching that works with any codebase size.
 
 **Tool name:** `Grep`
 
-```ts
+```ts  theme={null}
 interface GrepInput {
   /**
    * The regular expression pattern to search for
@@ -870,7 +993,7 @@ Powerful search tool built on ripgrep with regex support.
 
 **Tool name:** `KillBash`
 
-```ts
+```ts  theme={null}
 interface KillShellInput {
   /**
    * The ID of the background shell to kill
@@ -885,7 +1008,7 @@ Kills a running background bash shell by its ID.
 
 **Tool name:** `NotebookEdit`
 
-```ts
+```ts  theme={null}
 interface NotebookEditInput {
   /**
    * The absolute path to the Jupyter notebook file
@@ -916,7 +1039,7 @@ Edits cells in Jupyter notebook files.
 
 **Tool name:** `WebFetch`
 
-```ts
+```ts  theme={null}
 interface WebFetchInput {
   /**
    * The URL to fetch content from
@@ -935,7 +1058,7 @@ Fetches content from a URL and processes it with an AI model.
 
 **Tool name:** `WebSearch`
 
-```ts
+```ts  theme={null}
 interface WebSearchInput {
   /**
    * The search query to use
@@ -958,7 +1081,7 @@ Searches the web and returns formatted results.
 
 **Tool name:** `TodoWrite`
 
-```ts
+```ts  theme={null}
 interface TodoWriteInput {
   /**
    * The updated todo list
@@ -986,7 +1109,7 @@ Creates and manages a structured task list for tracking progress.
 
 **Tool name:** `ExitPlanMode`
 
-```ts
+```ts  theme={null}
 interface ExitPlanModeInput {
   /**
    * The plan to run by the user for approval
@@ -1001,7 +1124,7 @@ Exits planning mode and prompts the user to approve the plan.
 
 **Tool name:** `ListMcpResources`
 
-```ts
+```ts  theme={null}
 interface ListMcpResourcesInput {
   /**
    * Optional server name to filter resources by
@@ -1016,7 +1139,7 @@ Lists available MCP resources from connected servers.
 
 **Tool name:** `ReadMcpResource`
 
-```ts
+```ts  theme={null}
 interface ReadMcpResourceInput {
   /**
    * The MCP server name
@@ -1039,13 +1162,12 @@ Documentation of output schemas for all built-in Claude Code tools. These types 
 
 **Note:** This is a documentation-only type for clarity. It represents the union of all tool output types.
 
-```ts
+```ts  theme={null}
 type ToolOutput = 
   | TaskOutput
   | BashOutput
   | BashOutputToolOutput
   | EditOutput
-  | MultiEditOutput
   | ReadOutput
   | WriteOutput
   | GlobOutput
@@ -1064,7 +1186,7 @@ type ToolOutput =
 
 **Tool name:** `Task`
 
-```ts
+```ts  theme={null}
 interface TaskOutput {
   /**
    * Final result message from the subagent
@@ -1096,7 +1218,7 @@ Returns the final result from the subagent after completing the delegated task.
 
 **Tool name:** `Bash`
 
-```ts
+```ts  theme={null}
 interface BashOutput {
   /**
    * Combined stdout and stderr output
@@ -1123,7 +1245,7 @@ Returns command output with exit status. Background commands return immediately 
 
 **Tool name:** `BashOutput`
 
-```ts
+```ts  theme={null}
 interface BashOutputToolOutput {
   /**
    * New output since last check
@@ -1146,7 +1268,7 @@ Returns incremental output from background shells.
 
 **Tool name:** `Edit`
 
-```ts
+```ts  theme={null}
 interface EditOutput {
   /**
    * Confirmation message
@@ -1165,34 +1287,11 @@ interface EditOutput {
 
 Returns confirmation of successful edits with replacement count.
 
-### MultiEdit
-
-**Tool name:** `MultiEdit`
-
-```ts
-interface MultiEditOutput {
-  /**
-   * Success message
-   */
-  message: string;
-  /**
-   * Total number of edits applied
-   */
-  edits_applied: number;
-  /**
-   * File path that was edited
-   */
-  file_path: string;
-}
-```
-
-Returns confirmation after applying all edits sequentially.
-
 ### Read
 
 **Tool name:** `Read`
 
-```ts
+```ts  theme={null}
 type ReadOutput = 
   | TextFileOutput
   | ImageFileOutput
@@ -1270,7 +1369,7 @@ Returns file contents in format appropriate to file type.
 
 **Tool name:** `Write`
 
-```ts
+```ts  theme={null}
 interface WriteOutput {
   /**
    * Success message
@@ -1293,7 +1392,7 @@ Returns confirmation after successfully writing the file.
 
 **Tool name:** `Glob`
 
-```ts
+```ts  theme={null}
 interface GlobOutput {
   /**
    * Array of matching file paths
@@ -1316,7 +1415,7 @@ Returns file paths matching the glob pattern, sorted by modification time.
 
 **Tool name:** `Grep`
 
-```ts
+```ts  theme={null}
 type GrepOutput = 
   | GrepContentOutput
   | GrepFilesOutput
@@ -1371,7 +1470,7 @@ Returns search results in the format specified by output\_mode.
 
 **Tool name:** `KillBash`
 
-```ts
+```ts  theme={null}
 interface KillBashOutput {
   /**
    * Success message
@@ -1390,7 +1489,7 @@ Returns confirmation after terminating the background shell.
 
 **Tool name:** `NotebookEdit`
 
-```ts
+```ts  theme={null}
 interface NotebookEditOutput {
   /**
    * Success message
@@ -1417,7 +1516,7 @@ Returns confirmation after modifying the Jupyter notebook.
 
 **Tool name:** `WebFetch`
 
-```ts
+```ts  theme={null}
 interface WebFetchOutput {
   /**
    * AI model's response to the prompt
@@ -1444,7 +1543,7 @@ Returns the AI's analysis of the fetched web content.
 
 **Tool name:** `WebSearch`
 
-```ts
+```ts  theme={null}
 interface WebSearchOutput {
   /**
    * Search results
@@ -1475,7 +1574,7 @@ Returns formatted search results from the web.
 
 **Tool name:** `TodoWrite`
 
-```ts
+```ts  theme={null}
 interface TodoWriteOutput {
   /**
    * Success message
@@ -1499,7 +1598,7 @@ Returns confirmation with current task statistics.
 
 **Tool name:** `ExitPlanMode`
 
-```ts
+```ts  theme={null}
 interface ExitPlanModeOutput {
   /**
    * Confirmation message
@@ -1518,7 +1617,7 @@ Returns confirmation after exiting plan mode.
 
 **Tool name:** `ListMcpResources`
 
-```ts
+```ts  theme={null}
 interface ListMcpResourcesOutput {
   /**
    * Available resources
@@ -1543,7 +1642,7 @@ Returns list of available MCP resources.
 
 **Tool name:** `ReadMcpResource`
 
-```ts
+```ts  theme={null}
 interface ReadMcpResourceOutput {
   /**
    * Resource contents
@@ -1569,7 +1668,7 @@ Returns the contents of the requested MCP resource.
 
 Operations for updating permissions.
 
-```ts
+```ts  theme={null}
 type PermissionUpdate = 
   | {
       type: 'addRules';
@@ -1608,13 +1707,13 @@ type PermissionUpdate =
 
 ### `PermissionBehavior`
 
-```ts
+```ts  theme={null}
 type PermissionBehavior = 'allow' | 'deny' | 'ask';
 ```
 
 ### `PermissionUpdateDestination`
 
-```ts
+```ts  theme={null}
 type PermissionUpdateDestination = 
   | 'userSettings'     // Global user settings
   | 'projectSettings'  // Per-directory project settings
@@ -1624,7 +1723,7 @@ type PermissionUpdateDestination =
 
 ### `PermissionRuleValue`
 
-```ts
+```ts  theme={null}
 type PermissionRuleValue = {
   toolName: string;
   ruleContent?: string;
@@ -1635,13 +1734,13 @@ type PermissionRuleValue = {
 
 ### `ApiKeySource`
 
-```ts
+```ts  theme={null}
 type ApiKeySource = 'user' | 'project' | 'org' | 'temporary';
 ```
 
 ### `ConfigScope`
 
-```ts
+```ts  theme={null}
 type ConfigScope = 'local' | 'user' | 'project';
 ```
 
@@ -1649,7 +1748,7 @@ type ConfigScope = 'local' | 'user' | 'project';
 
 A version of [`Usage`](#usage) with all nullable fields made non-nullable.
 
-```ts
+```ts  theme={null}
 type NonNullableUsage = {
   [K in keyof Usage]: NonNullable<Usage[K]>;
 }
@@ -1659,7 +1758,7 @@ type NonNullableUsage = {
 
 Token usage statistics (from `@anthropic-ai/sdk`).
 
-```ts
+```ts  theme={null}
 type Usage = {
   input_tokens: number | null;
   output_tokens: number | null;
@@ -1672,7 +1771,7 @@ type Usage = {
 
 MCP tool result type (from `@modelcontextprotocol/sdk/types.js`).
 
-```ts
+```ts  theme={null}
 type CallToolResult = {
   content: Array<{
     type: 'text' | 'image' | 'resource';
@@ -1686,14 +1785,13 @@ type CallToolResult = {
 
 Custom error class for abort operations.
 
-```ts
+```ts  theme={null}
 class AbortError extends Error {}
 ```
 
 ## See also
 
-* [TypeScript SDK guide](/en/docs/claude-code/sdk/sdk-typescript) - Tutorial and examples
-* [SDK overview](/en/docs/claude-code/sdk/sdk-overview) - General SDK concepts
-* [Python SDK reference](/en/docs/claude-code/sdk/sdk-python) - Python SDK documentation
-* [CLI reference](/en/docs/claude-code/cli-reference) - Command-line interface
-* [Common workflows](/en/docs/claude-code/common-workflows) - Step-by-step guides
+* [SDK overview](/en/docs/agent-sdk/overview) - General SDK concepts
+* [Python SDK reference](/en/docs/agent-sdk/python) - Python SDK documentation
+* [CLI reference](https://code.claude.com/docs/en/cli-reference) - Command-line interface
+* [Common workflows](https://code.claude.com/docs/en/common-workflows) - Step-by-step guides

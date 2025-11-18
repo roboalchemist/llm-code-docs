@@ -82,6 +82,11 @@ if [[ -f "$SCRIPT_DIR/claude-code-sdk-docs.py" ]]; then
     run_script "Claude Code SDK Documentation Downloader" "$SCRIPT_DIR/claude-code-sdk-docs.py"
 fi
 
+# Run Graphite documentation download
+if [[ -f "$SCRIPT_DIR/graphite-docs.py" ]]; then
+    run_script "Graphite Documentation Downloader" "$SCRIPT_DIR/graphite-docs.py"
+fi
+
 # Run any other Python or shell scripts
 for script in "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/*.sh; do
     if [[ -f "$script" ]]; then
@@ -89,6 +94,7 @@ for script in "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/*.sh; do
         # Skip scripts we've already run and update.sh itself
         if [[ "$script_name" != "extract_docs.py" ]] && \
            [[ "$script_name" != "claude-code-sdk-docs.py" ]] && \
+           [[ "$script_name" != "graphite-docs.py" ]] && \
            [[ "$script_name" != "update.sh" ]]; then
             run_script "$script_name" "$script"
         fi
@@ -124,7 +130,7 @@ fi
 
 echo
 echo "📁 Generated documentation directories:"
-for dir in textual circuitpython claude-code-sdk; do
+for dir in textual circuitpython claude-code-sdk graphite; do
     if [[ -d "$dir" ]]; then
         file_count=$(find "$dir" -name "*.md" -o -name "*.rst" -o -name "*.py" | wc -l)
         dir_size=$(du -sh "$dir" 2>/dev/null | cut -f1 || echo "unknown")
