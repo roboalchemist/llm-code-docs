@@ -3,12 +3,16 @@
 Graphite Documentation Downloader
 
 Downloads LLM-friendly documentation from Graphite.
-Supports two modes:
-1. Full download: Single comprehensive file (llms-full.txt)
-2. Individual files: Parse llms.txt and download each markdown file separately
+By default, downloads both individual files (for efficient context management)
+and the comprehensive full documentation file.
+
+Modes:
+1. both (default): Download both individual files and comprehensive file
+2. individual: Parse llms.txt and download each markdown file separately
+3. full: Download only the comprehensive file (llms-full.txt)
 
 Usage:
-    python3 graphite-docs.py [--mode full|individual|both]
+    python3 graphite-docs.py [--mode both|individual|full]
 """
 
 import argparse
@@ -72,13 +76,14 @@ def parse_llms_txt() -> list[str]:
         response.raise_for_status()
         content = response.text
 
-        # Extract URLs - llms.txt format typically has URLs listed
-        # Looking for lines with .md URLs
+        # Extract URLs from markdown links: [Title](URL)
+        # Pattern matches markdown links with .md URLs
+        pattern = r'\[([^\]]+)\]\((https://[^\)]+\.md)\)'
         urls = []
-        for line in content.splitlines():
-            line = line.strip()
-            if line and line.startswith('http') and '.md' in line:
-                urls.append(line)
+
+        for match in re.finditer(pattern, content):
+            url = match.group(2)  # Extract URL from the second capture group
+            urls.append(url)
 
         print(f"Found {len(urls)} documentation URLs")
         return urls
@@ -132,8 +137,8 @@ def main():
     parser.add_argument(
         '--mode',
         choices=['full', 'individual', 'both'],
-        default='full',
-        help='Download mode: full (llms-full.txt), individual (separate files), or both (default: full)'
+        default='both',
+        help='Download mode: full (llms-full.txt), individual (separate files), or both (default: both)'
     )
 
     args = parser.parse_args()
