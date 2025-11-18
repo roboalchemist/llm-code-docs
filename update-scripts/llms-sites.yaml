@@ -55,3 +55,403 @@ sites:
   - name: mintlify
     base_url: https://mintlify.com/docs/
     description: Mintlify documentation platform
+
+  - name: stripe
+    base_url: https://docs.stripe.com/
+    description: Stripe payment processing platform API
+
+  - name: eventcatalog
+    base_url: https://www.eventcatalog.dev/
+    description: EventCatalog event-driven architecture documentation
+
+  - name: nuxt-content
+    base_url: https://content.nuxt.com/
+    description: Nuxt Content git-based CMS for Nuxt projects
+
+  - name: gitbook
+    base_url: https://gitbook.com/docs/
+    description: GitBook documentation platform
+
+  - name: neon
+    base_url: https://neon.com/
+    description: Neon serverless Postgres database platform
+
+  - name: answer-ai
+    base_url: https://www.answer.ai/
+    description: Answer.AI R&D lab for AI research and products
+
+  - name: plain
+    base_url: https://www.plain.com/docs/
+    description: Plain customer support platform
+
+  - name: better-auth
+    base_url: https://www.better-auth.com/
+    description: Better Auth authentication library
+
+  - name: configcat
+    base_url: https://configcat.com/docs/
+    description: ConfigCat feature flag service
+
+  - name: webflow
+    base_url: https://developers.webflow.com/
+    description: Webflow website builder developer platform
+
+  - name: inngest
+    base_url: https://www.inngest.com/
+    description: Inngest workflow orchestration platform
+
+  - name: flatfile
+    base_url: https://flatfile.com/docs/
+    description: Flatfile data import and transformation platform
+
+  - name: intelligems
+    base_url: https://docs.intelligems.io/
+    description: Intelligems A/B testing and optimization for Shopify
+
+  - name: windsurf
+    base_url: https://docs.windsurf.com/
+    description: Windsurf AI-powered code editor
+
+  - name: ideogram
+    base_url: https://docs.ideogram.ai/
+    description: Ideogram AI image generation platform
+
+  - name: agentql
+    base_url: https://docs.agentql.com/
+    description: AgentQL AI-powered data extraction and web automation
+
+  - name: ai-sdk
+    base_url: https://ai-sdk.dev/
+    description: AI SDK for building AI-powered applications
+
+  - name: aporia
+    base_url: https://docs.aporia.com/
+    description: Aporia ML observability and monitoring platform
+
+  - name: argil
+    base_url: https://docs.argil.ai/
+    description: Argil AI automation and workflow platform
+
+  - name: asapp
+    base_url: https://docs.asapp.com/
+    description: ASAPP AI-powered customer experience platform
+
+  - name: avaamo
+    base_url: https://docs.avaamo.com/
+    description: Avaamo conversational AI platform
+
+  - name: bika
+    base_url: https://bika.ai/
+    description: Bika AI productivity and automation platform
+
+  - name: bito
+    base_url: https://docs.bito.ai/
+    description: Bito AI code assistant and developer tools
+
+  - name: carv
+    base_url: https://docs.carv.io/
+    description: Carv gaming data and AI infrastructure
+
+  - name: chatling
+    base_url: https://docs.chatling.ai/
+    description: Chatling AI chatbot builder platform
+
+  - name: cohere
+    base_url: https://docs.cohere.com/
+    description: Cohere enterprise AI platform and language models
+
+  - name: crewai
+    base_url: https://docs.crewai.com/
+    description: CrewAI multi-agent orchestration framework
+
+  - name: dappier
+    base_url: https://docs.dappier.com/
+    description: Dappier real-time data platform for AI
+
+  - name: dat1
+    base_url: https://dat1.co/
+    description: Dat1 AI-powered analytics platform
+
+  - name: deepconverse
+    base_url: https://docs.deepconverse.com/
+    description: DeepConverse AI-powered customer support automation
+
+  - name: docetl
+    base_url: https://www.docetl.org/
+    description: DocETL document processing and transformation system
+
+  - name: elevenlabs
+    base_url: https://docs.elevenlabs.io/
+    description: ElevenLabs AI voice generation and text-to-speech
+
+  - name: embedchain
+    base_url: https://docs.embedchain.ai/
+    description: Embedchain RAG framework for LLM applications
+
+  - name: fireworks
+    base_url: https://docs.fireworks.ai/
+    description: Fireworks AI inference platform and API
+
+  - name: giselles
+    base_url: https://docs.giselles.ai/
+    description: Giselles AI automation and workflow platform
+
+  - name: groq
+    base_url: https://docs.groq.com/
+    description: Groq high-performance AI inference platform
+
+  - name: infera
+    base_url: https://docs.infera.org/
+    description: Infera AI inference optimization platform
+
+  - name: inkeep
+    base_url: https://docs.inkeep.com/
+    description: Inkeep AI-powered documentation search
+
+  - name: kaisar
+    base_url: https://docs.kaisar.io/
+    description: Kaisar AI development platform
+
+  - name: klarna
+    base_url: https://docs.klarna.com/
+    description: Klarna payment and shopping API
+
+  - name: langgraph
+    base_url: https://langchain-ai.github.io/langgraph/
+    description: LangGraph agent workflow orchestration framework
+
+  - name: lm-studio
+    base_url: https://lmstudio.ai/
+    description: LM Studio local LLM development and inference
+
+  - name: openpipe
+    base_url: https://docs.openpipe.ai/
+    description: OpenPipe LLM fine-tuning and deployment platform
+
+  - name: squared-ai
+    base_url: https://docs.squared.ai/
+    description: Squared AI analytics and business intelligence
+
+  - name: trigger-dev
+    base_url: https://docs.trigger.dev/
+    description: Trigger.dev background job orchestration platform
+
+  - name: vapi
+    base_url: https://docs.vapi.ai/
+    description: Vapi voice AI platform and API
+
+  - name: venice
+    base_url: https://docs.venice.ai/
+    description: Venice decentralized AI platform
+
+  - name: zenml
+    base_url: https://docs.zenml.io/
+    description: ZenML MLOps framework for ML pipelines
+
+  - name: readme
+    base_url: https://docs.readme.com/
+    description: ReadMe developer documentation platform
+
+  - name: fern
+    base_url: https://buildwithfern.com/
+    description: Fern API documentation and SDK generation
+
+  - name: mastercard
+    base_url: https://developer.mastercard.com/
+    description: Mastercard developer platform and APIs
+
+  - name: flitt
+    base_url: https://docs.flitt.com/
+    description: Flitt payment API platform
+
+  - name: fireflies
+    base_url: https://docs.fireflies.ai/
+    description: Fireflies AI meeting assistant and transcription
+
+  - name: vllm
+    base_url: https://docs.vllm.ai/
+    description: vLLM high-throughput LLM inference engine
+
+  - name: llamaindex
+    base_url: https://developers.llamaindex.ai/
+    description: LlamaIndex data framework for LLM applications
+
+  - name: serverlessllm
+    base_url: https://serverlessllm.github.io/
+    description: ServerlessLLM serverless LLM serving framework
+
+  - name: langchain
+    base_url: https://python.langchain.com/
+    description: LangChain framework for LLM application development
+
+  - name: truera
+    base_url: https://docs.truera.com/
+    description: TruEra AI quality and observability platform
+
+  - name: llm-datasette
+    base_url: https://llm.datasette.io/
+    description: LLM CLI utility and Python library by Simon Willison
+
+  - name: llm-gateway
+    base_url: https://docs.llmgateway.io/
+    description: LLM Gateway open-source API gateway for LLMs
+
+  - name: aimlapi
+    base_url: https://docs.aimlapi.com/
+    description: AIML API unified AI/ML model API platform
+
+  - name: framer
+    base_url: https://www.framer.com/
+    description: Framer website builder and design platform
+
+  - name: x-cmd
+    base_url: https://www.x-cmd.com/
+    description: x-cmd command-line toolkit and utilities
+
+  - name: anchorbrowser
+    base_url: https://docs.anchorbrowser.io/
+    description: Anchor Browser web automation and testing
+
+  - name: openai-cdn
+    base_url: https://cdn.openai.com/API/docs/txt/
+    description: OpenAI API documentation CDN
+
+  - name: vercel-ai-sdk
+    base_url: https://sdk.vercel.ai/
+    description: Vercel AI SDK for building AI applications
+
+  - name: eventcatalog-dev-tools
+    base_url: https://www.eventcatalog.dev/docs/development/developer-tools/
+    description: EventCatalog developer tools and integrations
+
+  - name: claudette
+    base_url: https://github.com/AnswerDotAI/claudette/blob/main/
+    description: Claudette - Answer.AI Claude API wrapper
+
+  - name: svelte-vercel-adapter
+    base_url: https://svelte.dev/docs/kit/adapter-vercel/
+    description: SvelteKit Vercel adapter documentation
+
+  - name: vercel-rest-api
+    base_url: https://vercel.com/docs/rest-api/reference/
+    description: Vercel REST API reference documentation
+
+  - name: aws-powertools-python
+    base_url: https://docs.aws.amazon.com/powertools/python/latest/
+    description: AWS Powertools for Python Lambda functions
+
+  - name: aws-powertools-typescript
+    base_url: https://docs.aws.amazon.com/powertools/typescript/latest/
+    description: AWS Powertools for TypeScript Lambda functions
+
+  - name: aws-powertools-java
+    base_url: https://docs.aws.amazon.com/powertools/java/1.x.x/
+    description: AWS Powertools for Java Lambda functions
+
+  - name: cosette
+    base_url: https://github.com/AnswerDotAI/cosette/blob/main/
+    description: Cosette - Answer.AI OpenAI API wrapper
+
+  - name: gaspard
+    base_url: https://github.com/AnswerDotAI/gaspard/blob/main/
+    description: Gaspard - Answer.AI Gemini API wrapper
+
+  - name: fireproof
+    base_url: https://github.com/fireproof-storage/
+    description: Fireproof embedded database for web apps
+
+  - name: gitlab-consulting
+    base_url: https://gitlab.consulting/
+    description: IDEA GitLab consulting and solutions
+
+  - name: notion
+    base_url: https://www.notion.so/
+    description: Notion workspace and productivity platform
+
+  - name: alexop
+    base_url: https://alexop.dev/
+    description: Alex Opitz developer blog and tutorials
+
+  - name: embednotionpages
+    base_url: https://www.embednotionpages.com/
+    description: Embed Notion pages into websites
+
+  - name: slack
+    base_url: https://docs.slack.dev/
+    description: Slack developer platform and API documentation
+
+  - name: prisma
+    base_url: https://www.prisma.io/docs/
+    description: Prisma next-generation ORM for Node.js and TypeScript
+
+  - name: retool
+    base_url: https://docs.retool.com/
+    description: Retool internal tool builder platform
+
+  - name: timescale-pgai
+    base_url: https://github.com/timescale/pgai/blob/main/
+    description: pgai - PostgreSQL AI extension by Timescale
+
+  - name: upstash
+    base_url: https://upstash.com/docs/
+    description: Upstash serverless data platform (Redis, Kafka, QStash)
+
+  - name: redis
+    base_url: https://redis.io/
+    description: Redis in-memory data structure store
+
+  - name: docker
+    base_url: https://docs.docker.com/
+    description: Docker containerization platform
+
+  - name: cog
+    base_url: https://cog.run/
+    description: Cog containers for machine learning
+
+  - name: cloudfleet
+    base_url: https://cloudfleet.ai/
+    description: CloudFleet AI/ML infrastructure platform
+
+  - name: clever-cloud
+    base_url: https://www.clever.cloud/developers/
+    description: Clever Cloud PaaS developer platform
+
+  - name: react-native
+    base_url: https://reactnative.dev/
+    description: React Native mobile app framework
+
+  - name: shadcn-vue
+    base_url: https://shadcn-vue.com/
+    description: Shadcn UI components for Vue.js
+
+  - name: nuxt
+    base_url: https://nuxt.com/
+    description: Nuxt Vue.js meta-framework
+
+  - name: vueschool
+    base_url: https://vueschool.io/
+    description: Vue School online learning platform
+
+  - name: angular
+    base_url: https://angular.dev/
+    description: Angular web application framework
+
+  - name: langchain-js
+    base_url: https://js.langchain.com/
+    description: LangChain JavaScript/TypeScript library
+
+  - name: nextjs
+    base_url: https://nextjs.org/docs/
+    description: Next.js React framework
+
+  - name: voltagent
+    base_url: https://voltagent.dev/
+    description: VoltAgent AI agent development platform
+
+  - name: svelte-typescript
+    base_url: https://svelte.dev/docs/svelte/typescript/
+    description: Svelte TypeScript integration documentation
+
+  - name: microsoft-genaiscript
+    base_url: https://microsoft.github.io/genaiscript/.well-known/
+    description: Microsoft GenAIScript AI scripting framework

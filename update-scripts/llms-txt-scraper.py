@@ -16,6 +16,7 @@ import argparse
 import re
 import sys
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
@@ -46,12 +47,44 @@ def load_config() -> dict:
         sys.exit(1)
 
 
-def download_file(url: str, output_path: Path, description: str = None) -> tuple[bool, int]:
+def is_file_recent(file_path: Path, max_age_hours: int = 23) -> bool:
+    """Check if a file was modified recently.
+
+    Args:
+        file_path: Path to file to check
+        max_age_hours: Maximum age in hours (default: 23)
+
+    Returns:
+        bool: True if file exists and is newer than max_age_hours
+    """
+    if not file_path.exists():
+        return False
+
+    current_time = time.time()
+    max_age_seconds = max_age_hours * 3600
+    file_age = current_time - file_path.stat().st_mtime
+
+    return file_age < max_age_seconds
+
+
+def download_file(url: str, output_path: Path, description: str = None, force: bool = False) -> tuple[bool, int]:
     """Download a file from URL to output_path.
+
+    Args:
+        url: URL to download from
+        output_path: Path to save the file
+        description: Optional description for logging
+        force: Force download even if file is recent
 
     Returns:
         tuple: (success: bool, file_size: int)
     """
+    # Check if file is recently downloaded (skip if not forced)
+    if not force and is_file_recent(output_path):
+        age_hours = (time.time() - output_path.stat().st_mtime) / 3600
+        with print_lock:
+            print(f"  ⏭ Skipping {output_path.name}: Downloaded {age_hours:.1f}h ago")
+        return (True, output_path.stat().st_size)
     try:
         desc = description or url
         with print_lock:
@@ -96,13 +129,14 @@ def parse_llms_txt(content: str) -> list[str]:
     return urls
 
 
-def download_individual_files(site_name: str, base_url: str, output_dir: Path) -> tuple[int, int]:
+def download_individual_files(site_name: str, base_url: str, output_dir: Path, force: bool = False) -> tuple[int, int]:
     """Download individual markdown files from llms.txt.
 
     Args:
         site_name: Name of the site (for display)
         base_url: Base URL where llms.txt is located
         output_dir: Directory to save downloaded files
+        force: Force download even if files are recent
 
     Returns:
         tuple: (success_count, fail_count)
@@ -143,12 +177,13 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path) -
 
         output_path = output_dir / filename
 
-        success, size = download_file(url, output_path, filename)
+        success, size = download_file(url, output_path, filename, force)
         if success:
-            # Add source header
+            # Add source header (only if not already present)
             content = output_path.read_text(encoding='utf-8')
-            header = f"# Source: {url}\n\n"
-            output_path.write_text(header + content, encoding='utf-8')
+            if not content.startswith(f"# Source: {url}"):
+                header = f"# Source: {url}\n\n"
+                output_path.write_text(header + content, encoding='utf-8')
             success_count += 1
         else:
             fail_count += 1
@@ -156,13 +191,14 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path) -
     return success_count, fail_count
 
 
-def download_full_file(site_name: str, base_url: str, output_dir: Path) -> bool:
+def download_full_file(site_name: str, base_url: str, output_dir: Path, force: bool = False) -> bool:
     """Download the comprehensive llms-full.txt file.
 
     Args:
         site_name: Name of the site
         base_url: Base URL where llms-full.txt is located
         output_dir: Directory to save the file
+        force: Force download even if file is recent
 
     Returns:
         bool: Success status
@@ -173,26 +209,29 @@ def download_full_file(site_name: str, base_url: str, output_dir: Path) -> bool:
     llms_full_url = urljoin(base_url, "llms-full.txt")
     output_path = output_dir / f"{site_name}-full.md"
 
-    success, size = download_file(llms_full_url, output_path, "llms-full.txt")
+    success, size = download_file(llms_full_url, output_path, "llms-full.txt", force)
 
     if success:
-        # Add source header
+        # Add source header (only if not already present)
         content = output_path.read_text(encoding='utf-8')
-        header = f"# {site_name.replace('-', ' ').title()} Documentation\n\n"
-        header += f"Source: {llms_full_url}\n\n---\n\n"
-        output_path.write_text(header + content, encoding='utf-8')
+        expected_title = f"# {site_name.replace('-', ' ').title()} Documentation"
+        if not content.startswith(expected_title):
+            header = f"{expected_title}\n\n"
+            header += f"Source: {llms_full_url}\n\n---\n\n"
+            output_path.write_text(header + content, encoding='utf-8')
         with print_lock:
             print(f"  ✓ Full documentation saved to: {output_path}")
 
     return success
 
 
-def process_site(site: dict, mode: str) -> dict:
+def process_site(site: dict, mode: str, force: bool = False) -> dict:
     """Process a single site configuration.
 
     Args:
         site: Site configuration dictionary
         mode: Download mode ('individual', 'full', or 'both')
+        force: Force re-download even if files are recent
 
     Returns:
         dict: Statistics about the download
@@ -223,14 +262,14 @@ def process_site(site: dict, mode: str) -> dict:
 
     # Download based on mode
     if mode in ['individual', 'both']:
-        success_count, fail_count = download_individual_files(name, base_url, output_dir)
+        success_count, fail_count = download_individual_files(name, base_url, output_dir, force)
         stats['individual_success'] = success_count
         stats['individual_fail'] = fail_count
         if fail_count > 0:
             stats['success'] = False
 
     if mode in ['full', 'both']:
-        full_success = download_full_file(name, base_url, output_dir)
+        full_success = download_full_file(name, base_url, output_dir, force)
         stats['full_success'] = full_success
         if not full_success:
             stats['success'] = False
@@ -245,7 +284,8 @@ def main():
     parser.add_argument(
         '--site',
         type=str,
-        help='Download only the specified site (use site name from config)'
+        action='append',
+        help='Download only the specified site(s) - can be used multiple times'
     )
     parser.add_argument(
         '--mode',
@@ -258,6 +298,11 @@ def main():
         type=int,
         default=10,
         help='Number of parallel workers for downloading multiple sites (default: 10)'
+    )
+    parser.add_argument(
+        '--force',
+        action='store_true',
+        help='Force re-download even if files were downloaded in last 23 hours'
     )
 
     args = parser.parse_args()
@@ -272,9 +317,9 @@ def main():
 
     # Filter sites if --site specified
     if args.site:
-        sites = [s for s in sites if s['name'] == args.site]
+        sites = [s for s in sites if s['name'] in args.site]
         if not sites:
-            print(f"Error: Site '{args.site}' not found in configuration", file=sys.stderr)
+            print(f"Error: Site(s) '{', '.join(args.site)}' not found in configuration", file=sys.stderr)
             print(f"Available sites: {', '.join([s['name'] for s in config['sites']])}")
             return 1
 
@@ -284,13 +329,14 @@ def main():
     print(f"Mode: {args.mode}")
     print(f"Sites to process: {len(sites)}")
     print(f"Parallel workers: {args.workers}")
+    print(f"Force re-download: {'Yes' if args.force else 'No (skip if <23hrs old)'}")
 
     # Process sites in parallel
     all_stats = []
     with ThreadPoolExecutor(max_workers=args.workers) as executor:
         # Submit all site processing tasks
         future_to_site = {
-            executor.submit(process_site, site, args.mode): site
+            executor.submit(process_site, site, args.mode, args.force): site
             for site in sites
         }
 
@@ -319,6 +365,7 @@ def main():
 
     for stats in all_stats:
         print(f"\n{stats['name']}:")
+
         if args.mode in ['individual', 'both']:
             print(f"  Individual files: {stats['individual_success']} successful, {stats['individual_fail']} failed")
         if args.mode in ['full', 'both']:

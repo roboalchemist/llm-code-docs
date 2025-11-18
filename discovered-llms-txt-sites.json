@@ -1,0 +1,370 @@
+[
+  {
+    "url": "https://docs.anthropic.com/llms-full.txt",
+    "title": "docs on LLMS.txt - Claude Docs - Anthropic",
+    "description": "docs on LLMS.txt - Claude Docs - Anthropic",
+    "source": "exa",
+    "base_url": "https://docs.anthropic.com/",
+    "name": "anthropic"
+  },
+  {
+    "url": "https://cdn.openai.com/API/docs/txt/llms.txt",
+    "title": "llms.txt",
+    "description": "# OpenAI LLMs.txt OpenAI provides LLM-friendly documentation in a variety of formats, including the ",
+    "source": "brave",
+    "base_url": "https://cdn.openai.com/API/docs/txt/",
+    "name": "cdn-api-docs-txt"
+  },
+  {
+    "url": "https://sdk.vercel.ai/llms.txt",
+    "title": "llms.txt - AI SDK",
+    "description": "llms.txt - AI SDK",
+    "source": "brave",
+    "base_url": "https://sdk.vercel.ai/",
+    "name": "sdk"
+  },
+  {
+    "url": "https://www.eventcatalog.dev/docs/development/developer-tools/llms.txt",
+    "title": "LLMS.txt - EventCatalog",
+    "description": "LLMS.txt - EventCatalog",
+    "source": "brave",
+    "base_url": "https://www.eventcatalog.dev/docs/development/developer-tools/",
+    "name": "eventcatalog-docs-development-developer-tools"
+  },
+  {
+    "url": "https://github.com/AnswerDotAI/claudette/blob/main/llms.txt",
+    "title": "claudette/llms.txt at main \u00b7 AnswerDotAI/claudette",
+    "description": "claudette/llms.txt at main \u00b7 AnswerDotAI/claudette",
+    "source": "brave",
+    "base_url": "https://github.com/AnswerDotAI/claudette/blob/main/",
+    "name": "github-answerdotai-claudette-blob-main"
+  },
+  {
+    "url": "https://svelte.dev/docs/kit/adapter-vercel/llms.txt",
+    "title": "llms.txt",
+    "description": "Defaults to `10` seconds for Hobby accounts, `15` for Pro and `900` for Enterprise - `isr`: configur",
+    "source": "brave",
+    "base_url": "https://svelte.dev/docs/kit/adapter-vercel/",
+    "name": "svelte-docs-kit-adapter-vercel"
+  },
+  {
+    "url": "https://vercel.com/docs/rest-api/reference/llms.txt",
+    "title": "llms.txt - Vercel",
+    "description": "llms.txt - Vercel",
+    "source": "exa",
+    "base_url": "https://vercel.com/docs/rest-api/reference/",
+    "name": "vercel-docs-rest-api-reference"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/powertools/python/latest/llms.txt",
+    "title": "llms.txt",
+    "description": "## Project Overview - [Homepage](https://docs.aws.amazon.com/powertools/python/latest/index.md) - [C",
+    "source": "brave",
+    "base_url": "https://docs.aws.amazon.com/powertools/python/latest/",
+    "name": "aws-powertools-python-latest"
+  },
+  {
+    "url": "https://docs.powertools.aws.dev/lambda/python/3.16.0/llms.txt",
+    "title": "llms.txt - Powertools for AWS",
+    "description": "llms.txt - Powertools for AWS",
+    "source": "exa",
+    "base_url": "https://docs.powertools.aws.dev/lambda/python/3.16.0/",
+    "name": "powertools-lambda-python-3160"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/powertools/typescript/latest/llms.txt",
+    "title": "llms.txt - Amazon.com",
+    "description": "llms.txt - Amazon.com",
+    "source": "exa",
+    "base_url": "https://docs.aws.amazon.com/powertools/typescript/latest/",
+    "name": "aws-powertools-typescript-latest"
+  },
+  {
+    "url": "https://github.com/AnswerDotAI/cosette/blob/main/llms.txt",
+    "title": "cosette/llms.txt at main \u00b7 AnswerDotAI/cosette",
+    "description": "cosette/llms.txt at main \u00b7 AnswerDotAI/cosette",
+    "source": "brave",
+    "base_url": "https://github.com/AnswerDotAI/cosette/blob/main/",
+    "name": "github-answerdotai-cosette-blob-main"
+  },
+  {
+    "url": "https://github.com/fireproof-storage/llms.txt",
+    "title": "GitHub - fireproof-storage/llms.txt: Documentation for LLMs to use Fireproof",
+    "description": "GitHub - fireproof-storage/llms.txt: Documentation for LLMs to use Fireproof",
+    "source": "brave",
+    "base_url": "https://github.com/fireproof-storage/",
+    "name": "github-fireproof-storage"
+  },
+  {
+    "url": "https://github.com/AnswerDotAI/gaspard/blob/main/llms.txt",
+    "title": "gaspard/llms.txt at main \u00b7 AnswerDotAI/gaspard",
+    "description": "gaspard/llms.txt at main \u00b7 AnswerDotAI/gaspard",
+    "source": "brave",
+    "base_url": "https://github.com/AnswerDotAI/gaspard/blob/main/",
+    "name": "github-answerdotai-gaspard-blob-main"
+  },
+  {
+    "url": "https://gitlab.consulting/llms.txt",
+    "title": "llms.txt - IDEA GitLab Solutions",
+    "description": "llms.txt - IDEA GitLab Solutions",
+    "source": "exa",
+    "base_url": "https://gitlab.consulting/",
+    "name": "gitlab"
+  },
+  {
+    "url": "https://gitlab.apidog.io/llms.txt",
+    "title": "https://gitlab.apidog.io/llms.txt",
+    "description": "https://gitlab.apidog.io/llms.txt",
+    "source": "tavily",
+    "base_url": "https://gitlab.apidog.io/",
+    "name": "gitlab"
+  },
+  {
+    "url": "https://www.notion.so/llms.txt",
+    "title": "llms.txt - Notion",
+    "description": "llms.txt - Notion",
+    "source": "exa",
+    "base_url": "https://www.notion.so/",
+    "name": "notion"
+  },
+  {
+    "url": "https://alexop.dev/llms.txt",
+    "title": "llms.txt - alexop.dev",
+    "description": "llms.txt - alexop.dev",
+    "source": "exa",
+    "base_url": "https://alexop.dev/",
+    "name": "alexop"
+  },
+  {
+    "url": "https://www.embednotionpages.com/llms.txt",
+    "title": "llms.txt",
+    "description": "Embed your Notion pages into your website with a simple iframe. Full customisation, password protect",
+    "source": "tavily",
+    "base_url": "https://www.embednotionpages.com/",
+    "name": "embednotionpages"
+  },
+  {
+    "url": "https://slack.com/llms.txt",
+    "title": "llms.txt - Slack",
+    "description": "llms.txt - Slack",
+    "source": "exa",
+    "base_url": "https://slack.com/",
+    "name": "slack"
+  },
+  {
+    "url": "https://www.prisma.io/docs/llms.txt",
+    "title": "llms.txt - Prisma",
+    "description": "llms.txt - Prisma",
+    "source": "brave",
+    "base_url": "https://www.prisma.io/docs/",
+    "name": "prisma"
+  },
+  {
+    "url": "https://docs.retool.com/llms.txt",
+    "title": "llms.txt - Retool Docs",
+    "description": "llms.txt - Retool Docs",
+    "source": "tavily",
+    "base_url": "https://docs.retool.com/",
+    "name": "retool"
+  },
+  {
+    "url": "https://github.com/timescale/pgai/blob/main/llms.txt",
+    "title": "pgai/llms.txt at main \u00b7 timescale/pgai",
+    "description": "pgai/llms.txt at main \u00b7 timescale/pgai",
+    "source": "brave",
+    "base_url": "https://github.com/timescale/pgai/blob/main/",
+    "name": "github-timescale-pgai-blob-main"
+  },
+  {
+    "url": "https://github.com/timescale/pgai/blob/released/llms.txt",
+    "title": "pgai/llms.txt at released \u00b7 timescale/pgai",
+    "description": "pgai/llms.txt at released \u00b7 timescale/pgai",
+    "source": "brave",
+    "base_url": "https://github.com/timescale/pgai/blob/released/",
+    "name": "github-timescale-pgai-blob-released"
+  },
+  {
+    "url": "https://www.prisma.io/llms-full.txt",
+    "title": "llms-full.txt - Prisma",
+    "description": "llms-full.txt - Prisma",
+    "source": "exa",
+    "base_url": "https://www.prisma.io/",
+    "name": "prisma"
+  },
+  {
+    "url": "https://upstash.com/docs/llms.txt",
+    "title": "llms-txt",
+    "description": "ons/celery.md) - [DrizzleORM with ... - [Getting Started](https://upstash.com/docs/redis/overall/get",
+    "source": "brave",
+    "base_url": "https://upstash.com/docs/",
+    "name": "upstash"
+  },
+  {
+    "url": "https://context7.com/websites/upstash-redis/llms.txt?tokens=200000",
+    "title": "Context7",
+    "description": "```bash # Atomic transaction (all or nothing) curl -X POST https://us1-merry-cat-32748.upstash.io/mu",
+    "source": "brave",
+    "base_url": "https://context7.com/websites/upstash-redis?tokens=200000/",
+    "name": "context7-websites-upstash-redis"
+  },
+  {
+    "url": "https://redis.io/llms.txt",
+    "title": "llms.txt - Redis",
+    "description": "llms.txt - Redis",
+    "source": "exa",
+    "base_url": "https://redis.io/",
+    "name": "redis"
+  },
+  {
+    "url": "https://docs.docker.com/llms.txt",
+    "title": "Read llms.txt",
+    "description": "Read llms.txt",
+    "source": "brave",
+    "base_url": "https://docs.docker.com/",
+    "name": "docker"
+  },
+  {
+    "url": "https://cog.run/llms.txt",
+    "title": "llms.txt - Cog",
+    "description": "llms.txt - Cog",
+    "source": "exa",
+    "base_url": "https://cog.run/",
+    "name": "cog"
+  },
+  {
+    "url": "https://cloudfleet.ai/llms.txt",
+    "title": "llms.txt",
+    "description": "### Machine Learning &amp; Artificial ...interpreter-into-your-llm-apps-with-llm-sandbox/): LLM Sand",
+    "source": "brave",
+    "base_url": "https://cloudfleet.ai/",
+    "name": "cloudfleet"
+  },
+  {
+    "url": "https://www.clever.cloud/developers/llms.txt",
+    "title": "https://www.clever.cloud/developers/llms.txt",
+    "description": "https://www.clever.cloud/developers/llms.txt",
+    "source": "exa",
+    "base_url": "https://www.clever.cloud/developers/",
+    "name": "clever-developers"
+  },
+  {
+    "url": "https://reactnative.dev/llms.txt",
+    "title": "llms.txt - React Native",
+    "description": "llms.txt - React Native",
+    "source": "exa",
+    "base_url": "https://reactnative.dev/",
+    "name": "reactnative"
+  },
+  {
+    "url": "https://shadcn-vue.com/llms.txt",
+    "title": "llms.txt",
+    "description": "# Shadcn for Vue &gt; Beautifully designed components built with Reka UI and Tailwind CSS. ## Table ",
+    "source": "brave",
+    "base_url": "https://shadcn-vue.com/",
+    "name": "shadcn-vue"
+  },
+  {
+    "url": "https://nuxt.com/llms-full.txt",
+    "title": "llms-full.txt",
+    "description": "llms-full.txt",
+    "source": "brave",
+    "base_url": "https://nuxt.com/",
+    "name": "nuxt"
+  },
+  {
+    "url": "https://vueschool.io/llms.txt",
+    "title": "llms.txt - Vue School",
+    "description": "llms.txt - Vue School",
+    "source": "tavily",
+    "base_url": "https://vueschool.io/",
+    "name": "vueschool"
+  },
+  {
+    "url": "https://angular.dev/context/llm-files/llms-full.txt",
+    "title": "llms-full.txt",
+    "description": "llms-full.txt",
+    "source": "brave",
+    "base_url": "https://angular.dev/context/llm-files/",
+    "name": "angular-context-llm-files"
+  },
+  {
+    "url": "https://github.com/angular/angular/blob/main/adev/src/llms.txt",
+    "title": "angular/adev/src/llms.txt at main \u00b7 angular/angular",
+    "description": "angular/adev/src/llms.txt at main \u00b7 angular/angular",
+    "source": "brave",
+    "base_url": "https://github.com/angular/angular/blob/main/adev/src/",
+    "name": "github-angular-angular-blob-main-adev-src"
+  },
+  {
+    "url": "https://angular.dev/llms.txt",
+    "title": "Angular",
+    "description": "# Angular Angular \u2014 Deliver web apps with confidence \ud83d\ude80 ## Table of Contents - [What is Angular](http",
+    "source": "brave",
+    "base_url": "https://angular.dev/",
+    "name": "angular"
+  },
+  {
+    "url": "https://js.langchain.com/llms.txt",
+    "title": "llms.txt",
+    "description": "The ecosystem includes multiple ... applications that can reason using LLMs.) ### Installation [How ",
+    "source": "brave",
+    "base_url": "https://js.langchain.com/",
+    "name": "js"
+  },
+  {
+    "url": "https://nextjs.org/docs/llms-full.txt",
+    "title": "llms-full.txt - Next.js",
+    "description": "llms-full.txt - Next.js",
+    "source": "exa",
+    "base_url": "https://nextjs.org/docs/",
+    "name": "nextjs"
+  },
+  {
+    "url": "https://voltagent.dev/llms.txt",
+    "title": "llms.txt",
+    "description": "It is <strong>intended for both human developers seeking deep understanding and Large Language Model",
+    "source": "brave",
+    "base_url": "https://voltagent.dev/",
+    "name": "voltagent"
+  },
+  {
+    "url": "https://svelte.dev/docs/svelte/typescript/llms.txt",
+    "title": "llms.txt",
+    "description": "This includes: - using enums - using `private`, `protected` or `public` modifiers in constructor fun",
+    "source": "brave",
+    "base_url": "https://svelte.dev/docs/svelte/typescript/",
+    "name": "svelte-docs-svelte-typescript"
+  },
+  {
+    "url": "https://microsoft.github.io/genaiscript/.well-known/llms.txt",
+    "title": "llms.txt - Microsoft Open Source",
+    "description": "llms.txt - Microsoft Open Source",
+    "source": "exa",
+    "base_url": "https://microsoft.github.io/genaiscript/.well-known/",
+    "name": "microsoft-genaiscript-well-known"
+  },
+  {
+    "url": "https://github.com/aljazceru/llms.txt/",
+    "title": "GitHub - aljazceru/llms.txt: llms.txt files for LLMs to have the context needed to work with new sdk's and api's",
+    "description": "GitHub - aljazceru/llms.txt: llms.txt files for LLMs to have the context needed to work with new sdk",
+    "source": "brave",
+    "base_url": "https://github.com/aljazceru/",
+    "name": "github-aljazceru"
+  },
+  {
+    "url": "https://github.com/spullara/mcp-server/blob/main/llms-full.txt",
+    "title": "mcp-server/llms-full.txt at main \u00b7 spullara/mcp-server",
+    "description": "mcp-server/llms-full.txt at main \u00b7 spullara/mcp-server",
+    "source": "brave",
+    "base_url": "https://github.com/spullara/mcp-server/blob/main/",
+    "name": "github-spullara-mcp-server-blob-main"
+  },
+  {
+    "url": "https://docs.aws.amazon.com/powertools/java/1.x.x/llms.txt",
+    "title": "llms.txt",
+    "description": "# Powertools for AWS Lambda (Java) &gt; Powertools for AWS Lambda (Java) Powertools for AWS Lambda (",
+    "source": "brave",
+    "base_url": "https://docs.aws.amazon.com/powertools/java/1.x.x/",
+    "name": "aws-powertools-java-1xx"
+  }
+]
