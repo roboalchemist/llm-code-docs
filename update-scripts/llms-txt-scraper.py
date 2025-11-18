@@ -194,8 +194,8 @@ def process_site(site: dict, mode: str) -> dict:
         print(f"Description: {description}")
     print('=' * 70)
 
-    # Create output directory
-    output_dir = REPO_ROOT / name
+    # Create output directory under llms-txt-docs/
+    output_dir = REPO_ROOT / "llms-txt-docs" / name
     output_dir.mkdir(parents=True, exist_ok=True)
 
     stats = {

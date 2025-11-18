@@ -130,13 +130,28 @@ fi
 
 echo
 echo "📁 Generated documentation directories:"
-for dir in textual circuitpython claude-code-sdk claude-docs augment-code graphite; do
+
+# Standard documentation (non-llms.txt)
+for dir in textual circuitpython claude-code-sdk; do
     if [[ -d "$dir" ]]; then
         file_count=$(find "$dir" -name "*.md" -o -name "*.rst" -o -name "*.py" | wc -l)
         dir_size=$(du -sh "$dir" 2>/dev/null | cut -f1 || echo "unknown")
         echo "    • $dir/ ($file_count files, $dir_size)"
     fi
 done
+
+# llms.txt-compliant documentation
+if [[ -d "llms-txt-docs" ]]; then
+    echo "    • llms-txt-docs/ (llms.txt standard sites):"
+    for subdir in llms-txt-docs/*; do
+        if [[ -d "$subdir" ]]; then
+            subdir_name=$(basename "$subdir")
+            file_count=$(find "$subdir" -name "*.md" | wc -l)
+            dir_size=$(du -sh "$subdir" 2>/dev/null | cut -f1 || echo "unknown")
+            echo "        - $subdir_name/ ($file_count files, $dir_size)"
+        fi
+    done
+fi
 
 echo
 if [[ ${#failed_scripts[@]} -eq 0 ]]; then
