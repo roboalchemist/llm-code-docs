@@ -2,6 +2,9 @@ sites:
 - name: agent
   base_url: https://docs.agent.ai/
   description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
+- name: agent-domain
+  base_url: https://agentdomain.xyz/
+  description: Agent Domain (.agent TLD) AI ecosystem
 - name: agentql
   base_url: https://docs.agentql.com/
   description: AgentQL AI-powered data extraction and web automation
@@ -35,12 +38,24 @@ sites:
 - name: asapp
   base_url: https://docs.asapp.com/
   description: ASAPP AI-powered customer experience platform
+- name: ast-grep
+  base_url: https://ast-grep.github.io/
+  description: ast-grep code search and transformation tool
+- name: astro
+  base_url: https://docs.astro.build/
+  description: Astro static site generator framework
 - name: augment-code
   base_url: https://docs.augmentcode.com/
   description: Augment Code AI coding assistant documentation
+- name: autodesk-aps
+  base_url: https://aps.autodesk.com/
+  description: Autodesk APS (AutoCAD) API platform
 - name: avaamo
   base_url: https://docs.avaamo.com/
   description: Avaamo conversational AI platform
+- name: avo
+  base_url: https://avohq.io/
+  description: Avo Rails admin UI framework
 - name: aws-powertools-java
   base_url: https://docs.aws.amazon.com/powertools/java/1.x.x/
   description: AWS Powertools for Java Lambda functions
@@ -59,9 +74,18 @@ sites:
 - name: bito
   base_url: https://docs.bito.ai/
   description: Bito AI code assistant and developer tools
+- name: bits-ui
+  base_url: https://bits-ui.com/
+  description: Bits UI headless component library
+- name: bun
+  base_url: https://bun.sh/
+  description: Bun JavaScript runtime and toolkit
 - name: carv
   base_url: https://docs.carv.io/
   description: Carv gaming data and AI infrastructure
+- name: cash-app
+  base_url: https://developers.cash.app/
+  description: Cash App payment API
 - name: chatling
   base_url: https://docs.chatling.ai/
   description: Chatling AI chatbot builder platform
@@ -95,6 +119,9 @@ sites:
 - name: crewai
   base_url: https://docs.crewai.com/
   description: CrewAI multi-agent orchestration framework
+- name: daisyui
+  base_url: https://daisyui.com/
+  description: DaisyUI Tailwind CSS component library
 - name: dappier
   base_url: https://docs.dappier.com/
   description: Dappier real-time data platform for AI
@@ -104,6 +131,9 @@ sites:
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
+- name: deno
+  base_url: https://deno.com/
+  description: Deno secure JavaScript/TypeScript runtime
 - name: developers-vectorize
   base_url: https://developers.cloudflare.com/vectorize/
   description: Vectorize llms-full.txt
@@ -113,6 +143,12 @@ sites:
 - name: docker
   base_url: https://docs.docker.com/
   description: Docker containerization platform
+- name: dspy
+  base_url: https://dspy.ai/
+  description: DSPy LLM programming framework
+- name: electric-sql
+  base_url: https://electric-sql.com/
+  description: Electric SQL PostgreSQL sync engine
 - name: elevenlabs
   base_url: https://docs.elevenlabs.io/
   description: ElevenLabs AI voice generation and text-to-speech
@@ -128,9 +164,15 @@ sites:
 - name: eventcatalog-dev-tools
   base_url: https://www.eventcatalog.dev/docs/development/developer-tools/
   description: EventCatalog developer tools and integrations
+- name: fastapi
+  base_url: https://fastapi.tiangolo.com/
+  description: FastAPI modern Python web framework
 - name: fastcore
   base_url: https://fastcore.fast.ai/
   description: llms.txt - fastcore - Fast.ai
+- name: fasthtml
+  base_url: https://docs.fastht.ml/
+  description: FastHTML Python web framework
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
@@ -143,6 +185,9 @@ sites:
 - name: fireworks
   base_url: https://docs.fireworks.ai/
   description: Fireworks AI inference platform and API
+- name: flask
+  base_url: https://flask.palletsprojects.com/
+  description: Flask Python web framework
 - name: flatfile
   base_url: https://flatfile.com/docs/
   description: Flatfile data import and transformation platform
@@ -152,6 +197,9 @@ sites:
 - name: framer
   base_url: https://www.framer.com/
   description: Framer website builder and design platform
+- name: galileo-ai
+  base_url: https://docs.galileo.ai/
+  description: Galileo AI LLM evaluation and observability
 - name: gaspard
   base_url: https://github.com/AnswerDotAI/gaspard/blob/main/
   description: Gaspard - Answer.AI Gemini API wrapper
@@ -170,12 +218,18 @@ sites:
 - name: gofastmcp
   base_url: https://gofastmcp.com/
   description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__i'
+- name: gradio
+  base_url: https://gradio.app/
+  description: Gradio ML web UI framework
 - name: graphite
   base_url: https://graphite.com/docs/
   description: Graphite stacked pull requests and developer workflow tools
 - name: groq
   base_url: https://docs.groq.com/
   description: Groq high-performance AI inference platform
+- name: htmx
+  base_url: https://htmx.org/
+  description: htmx HTML-driven AJAX library
 - name: huggingface-docs-hub
   base_url: https://huggingface.co/docs/hub/
   description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O'
@@ -185,6 +239,15 @@ sites:
 - name: ideogram
   base_url: https://docs.ideogram.ai/
   description: Ideogram AI image generation platform
+- name: imgly-react-native
+  base_url: https://img.ly/react-native/
+  description: IMG.LY graphics SDK for React Native
+- name: imgly-sveltekit
+  base_url: https://img.ly/sveltekit/
+  description: IMG.LY graphics SDK for SvelteKit
+- name: imgly-vue
+  base_url: https://img.ly/vue/
+  description: IMG.LY graphics SDK for Vue
 - name: infera
   base_url: https://docs.infera.org/
   description: Infera AI inference optimization platform
@@ -194,6 +257,9 @@ sites:
 - name: inngest
   base_url: https://www.inngest.com/
   description: Inngest workflow orchestration platform
+- name: instructor
+  base_url: https://python.useinstructor.com/
+  description: Instructor structured LLM output library
 - name: intelligems
   base_url: https://docs.intelligems.io/
   description: Intelligems A/B testing and optimization for Shopify
@@ -209,9 +275,15 @@ sites:
 - name: langchain-js
   base_url: https://js.langchain.com/
   description: LangChain JavaScript/TypeScript library
+- name: langfuse
+  base_url: https://langfuse.com/
+  description: Langfuse LLM observability platform
 - name: langgraph
   base_url: https://langchain-ai.github.io/langgraph/
   description: LangGraph agent workflow orchestration framework
+- name: langgraph-js
+  base_url: https://langchain-ai.github.io/langgraphjs/
+  description: LangGraph JS agent workflow framework
 - name: llamaindex
   base_url: https://developers.llamaindex.ai/
   description: LlamaIndex data framework for LLM applications
@@ -221,12 +293,21 @@ sites:
 - name: llm-gateway
   base_url: https://docs.llmgateway.io/
   description: LLM Gateway open-source API gateway for LLMs
+- name: llmstxt
+  base_url: https://llmstxt.org/
+  description: llms-txt official specification and CLI
 - name: lm-studio
   base_url: https://lmstudio.ai/
   description: LM Studio local LLM development and inference
+- name: mantine
+  base_url: https://mantine.dev/
+  description: Mantine React component library
 - name: mastercard
   base_url: https://developer.mastercard.com/
   description: Mastercard developer platform and APIs
+- name: mastra
+  base_url: https://mastra.ai/
+  description: Mastra AI agent framework
 - name: mcp
   base_url: https://modelcontextprotocol.io/
   description: Model Context Protocol for AI context management
@@ -236,6 +317,15 @@ sites:
 - name: mintlify
   base_url: https://mintlify.com/docs/
   description: Mintlify documentation platform
+- name: mkdocs-material
+  base_url: https://squidfunk.github.io/mkdocs-material/
+  description: Material for MkDocs documentation theme
+- name: modular
+  base_url: https://docs.modular.com/
+  description: Modular AI infrastructure and Mojo language
+- name: mux
+  base_url: https://mux.com/
+  description: Mux video streaming API
 - name: neon
   base_url: https://neon.com/
   description: Neon serverless Postgres database platform
@@ -272,18 +362,39 @@ sites:
 - name: plain
   base_url: https://www.plain.com/docs/
   description: Plain customer support platform
+- name: polar
+  base_url: https://polar.sh/
+  description: Polar SaaS billing and subscription platform
+- name: powertools-aws
+  base_url: https://docs.powertools.aws.dev/
+  description: AWS Powertools for Lambda utilities
 - name: prisma
   base_url: https://www.prisma.io/docs/
   description: Prisma next-generation ORM for Node.js and TypeScript
+- name: pydantic
+  base_url: https://docs.pydantic.dev/
+  description: Pydantic data validation library
+- name: pydantic-ai
+  base_url: https://ai.pydantic.dev/
+  description: Pydantic AI framework
 - name: react-native
   base_url: https://reactnative.dev/
   description: React Native mobile app framework
+- name: react-router
+  base_url: https://remix.run/
+  description: React Router and Remix framework
 - name: readme
   base_url: https://docs.readme.com/
   description: ReadMe developer documentation platform
 - name: redis
   base_url: https://redis.io/
   description: Redis in-memory data structure store
+- name: rescript-react
+  base_url: https://rescript-lang.org/docs/react/
+  description: ReScript React bindings
+- name: retejs
+  base_url: https://retejs.org/
+  description: Rete.js visual programming framework
 - name: retool
   base_url: https://docs.retool.com/
   description: Retool internal tool builder platform
@@ -296,18 +407,33 @@ sites:
 - name: slack
   base_url: https://docs.slack.dev/
   description: Slack developer platform and API documentation
+- name: sphinx-llms-txt
+  base_url: https://sphinx-llms-txt.readthedocs.io/
+  description: Sphinx llms-txt extension documentation
 - name: squared-ai
   base_url: https://docs.squared.ai/
   description: Squared AI analytics and business intelligence
+- name: starlette
+  base_url: https://starlette.io/
+  description: Starlette ASGI web framework
 - name: stripe
   base_url: https://docs.stripe.com/
   description: Stripe payment processing platform API
+- name: supabase
+  base_url: https://supabase.com/
+  description: Supabase open-source Firebase alternative
 - name: svelte-typescript
   base_url: https://svelte.dev/docs/svelte/typescript/
   description: Svelte TypeScript integration documentation
 - name: svelte-vercel-adapter
   base_url: https://svelte.dev/docs/kit/adapter-vercel/
   description: SvelteKit Vercel adapter documentation
+- name: tauri
+  base_url: https://tauri.app/
+  description: Tauri desktop application framework
+- name: temporal
+  base_url: https://temporal.io/docs/
+  description: Temporal workflow orchestration engine
 - name: timescale-pgai
   base_url: https://github.com/timescale/pgai/blob/main/
   description: pgai - PostgreSQL AI extension by Timescale
@@ -317,6 +443,9 @@ sites:
 - name: truera
   base_url: https://docs.truera.com/
   description: TruEra AI quality and observability platform
+- name: uno-platform
+  base_url: https://platform.uno/
+  description: Uno Platform .NET cross-platform framework
 - name: upstash
   base_url: https://upstash.com/docs/
   description: Upstash serverless data platform (Redis, Kafka, QStash)
@@ -341,6 +470,9 @@ sites:
 - name: voltagent
   base_url: https://voltagent.dev/
   description: VoltAgent AI agent development platform
+- name: vuejs
+  base_url: https://vuejs.org/
+  description: Vue.js progressive JavaScript framework
 - name: vueschool
   base_url: https://vueschool.io/
   description: Vue School online learning platform
@@ -353,6 +485,9 @@ sites:
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
+- name: zag
+  base_url: https://zagjs.com/
+  description: Zag headless UI component library
 - name: zapier
   base_url: https://docs.zapier.com/
   description: https://docs.zapier.com/llms-full.txt
