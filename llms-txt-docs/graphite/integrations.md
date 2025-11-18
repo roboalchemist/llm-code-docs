@@ -1,5 +1,3 @@
-# Source: https://graphite-58cc94ce.mintlify.dev/docs/integrations.md
-
 # Integrations
 
 > Personalize your workflow by connecting Graphite to your favorite apps.

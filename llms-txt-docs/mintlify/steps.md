@@ -1,0 +1,89 @@
+# Source: https://mintlify.com/docs/components/steps.md
+
+# Steps
+
+> Create numbered step-by-step procedures.
+
+Use steps to display a series of sequential actions or events. You can add as many steps as needed.
+
+<Steps>
+  <Step title="First Step">
+    These are instructions or content that only pertain to the first step.
+  </Step>
+
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
+  </Step>
+
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
+  </Step>
+</Steps>
+
+```mdx Steps example theme={null}
+<Steps>
+  <Step title="First Step">
+    These are instructions or content that only pertain to the first step.
+  </Step>
+  <Step title="Second Step">
+    These are instructions or content that only pertain to the second step.
+  </Step>
+  <Step title="Third Step">
+    These are instructions or content that only pertain to the third step.
+  </Step>
+</Steps>
+```
+
+## Steps properties
+
+<ResponseField name="children" type="ReactElement<StepProps>[]" required>
+  A list of `Step` components.
+</ResponseField>
+
+<ResponseField name="titleSize" type="string" default="p">
+  The size of the step titles. One of `p`, `h2`, and `h3`.
+</ResponseField>
+
+## Individual step properties
+
+<ResponseField name="children" type="string | ReactNode" required>
+  The content of a step either as plain text or components.
+</ResponseField>
+
+<ResponseField name="icon" type="string">
+  The icon to display.
+
+  Options:
+
+  * [Font Awesome icon](https://fontawesome.com/icons) name
+  * [Lucide icon](https://lucide.dev/icons) name
+  * JSX-compatible SVG code wrapped in curly braces
+  * URL to an externally hosted icon
+  * Path to an icon file in your project
+
+  For custom SVG icons:
+
+  1. Convert your SVG using the [SVGR converter](https://react-svgr.com/playground/).
+  2. Paste your SVG code into the SVG input field.
+  3. Copy the complete `<svg>...</svg>` element from the JSX output field.
+  4. Wrap the JSX-compatible SVG code in curly braces: `icon={<svg ...> ... </svg>}`.
+  5. Adjust `height` and `width` as needed.
+</ResponseField>
+
+<ResponseField name="iconType" type="string">
+  The [Font Awesome](https://fontawesome.com/icons) icon style. Only used with Font Awesome icons.
+
+  Options: `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, `brands`.
+</ResponseField>
+
+<ResponseField name="title" type="string">
+  The title is the primary text for the step and shows up next to the indicator.
+</ResponseField>
+
+<ResponseField name="stepNumber" type="number">
+  The number of the step.
+</ResponseField>
+
+<ResponseField name="titleSize" type="string" default="p">
+  The size of the step titles. One of `p`, `h2`, and `h3`.
+</ResponseField>

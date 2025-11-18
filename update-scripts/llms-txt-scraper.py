@@ -9,12 +9,14 @@ and comprehensive documentation.
 Standard: https://llmstxt.org/
 
 Usage:
-    python3 llms-txt-scraper.py [--site SITENAME] [--mode individual|full|both]
+    python3 llms-txt-scraper.py [--site SITENAME] [--mode individual|full|both] [--workers N]
 """
 
 import argparse
 import re
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
@@ -25,6 +27,9 @@ import yaml
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 CONFIG_FILE = SCRIPT_DIR / "llms-sites.yaml"
+
+# Thread-safe printing
+print_lock = threading.Lock()
 
 
 def load_config() -> dict:
@@ -49,7 +54,8 @@ def download_file(url: str, output_path: Path, description: str = None) -> tuple
     """
     try:
         desc = description or url
-        print(f"  Downloading: {desc}")
+        with print_lock:
+            print(f"  Downloading: {desc}")
         response = requests.get(url, timeout=30)
         response.raise_for_status()
 
@@ -57,11 +63,13 @@ def download_file(url: str, output_path: Path, description: str = None) -> tuple
         output_path.write_text(response.text, encoding='utf-8')
 
         size_kb = len(response.text) / 1024
-        print(f"    ✓ Saved: {output_path.name} ({size_kb:.1f} KB)")
+        with print_lock:
+            print(f"    ✓ Saved: {output_path.name} ({size_kb:.1f} KB)")
         return True, len(response.text)
 
     except requests.RequestException as e:
-        print(f"    ✗ Error downloading {url}: {e}", file=sys.stderr)
+        with print_lock:
+            print(f"    ✗ Error downloading {url}: {e}", file=sys.stderr)
         return False, 0
 
 
@@ -99,7 +107,8 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path) -
     Returns:
         tuple: (success_count, fail_count)
     """
-    print(f"\n  === Downloading Individual Files for {site_name} ===")
+    with print_lock:
+        print(f"\n  === Downloading Individual Files for {site_name} ===")
 
     # Download llms.txt
     llms_txt_url = urljoin(base_url, "llms.txt")
@@ -109,15 +118,18 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path) -
         response.raise_for_status()
         llms_content = response.text
     except requests.RequestException as e:
-        print(f"  ✗ Error fetching llms.txt from {llms_txt_url}: {e}", file=sys.stderr)
+        with print_lock:
+            print(f"  ✗ Error fetching llms.txt from {llms_txt_url}: {e}", file=sys.stderr)
         return 0, 0
 
     # Parse URLs
     urls = parse_llms_txt(llms_content)
-    print(f"  Found {len(urls)} documentation URLs")
+    with print_lock:
+        print(f"  Found {len(urls)} documentation URLs")
 
     if not urls:
-        print(f"  ⚠ Warning: No URLs found in llms.txt", file=sys.stderr)
+        with print_lock:
+            print(f"  ⚠ Warning: No URLs found in llms.txt", file=sys.stderr)
         return 0, 0
 
     success_count = 0
@@ -155,7 +167,8 @@ def download_full_file(site_name: str, base_url: str, output_dir: Path) -> bool:
     Returns:
         bool: Success status
     """
-    print(f"\n  === Downloading Full Documentation for {site_name} ===")
+    with print_lock:
+        print(f"\n  === Downloading Full Documentation for {site_name} ===")
 
     llms_full_url = urljoin(base_url, "llms-full.txt")
     output_path = output_dir / f"{site_name}-full.md"
@@ -168,7 +181,8 @@ def download_full_file(site_name: str, base_url: str, output_dir: Path) -> bool:
         header = f"# {site_name.replace('-', ' ').title()} Documentation\n\n"
         header += f"Source: {llms_full_url}\n\n---\n\n"
         output_path.write_text(header + content, encoding='utf-8')
-        print(f"  ✓ Full documentation saved to: {output_path}")
+        with print_lock:
+            print(f"  ✓ Full documentation saved to: {output_path}")
 
     return success
 
@@ -187,12 +201,13 @@ def process_site(site: dict, mode: str) -> dict:
     base_url = site['base_url']
     description = site.get('description', '')
 
-    print(f"\n{'=' * 70}")
-    print(f"Processing: {name}")
-    print(f"Base URL: {base_url}")
-    if description:
-        print(f"Description: {description}")
-    print('=' * 70)
+    with print_lock:
+        print(f"\n{'=' * 70}")
+        print(f"Processing: {name}")
+        print(f"Base URL: {base_url}")
+        if description:
+            print(f"Description: {description}")
+        print('=' * 70)
 
     # Create output directory under llms-txt-docs/
     output_dir = REPO_ROOT / "llms-txt-docs" / name
@@ -238,6 +253,12 @@ def main():
         default='both',
         help='Download mode: full (llms-full.txt), individual (separate files), or both (default: both)'
     )
+    parser.add_argument(
+        '--workers',
+        type=int,
+        default=10,
+        help='Number of parallel workers for downloading multiple sites (default: 10)'
+    )
 
     args = parser.parse_args()
 
@@ -262,12 +283,34 @@ def main():
     print(f"Configuration: {CONFIG_FILE}")
     print(f"Mode: {args.mode}")
     print(f"Sites to process: {len(sites)}")
+    print(f"Parallel workers: {args.workers}")
 
-    # Process each site
+    # Process sites in parallel
     all_stats = []
-    for site in sites:
-        stats = process_site(site, args.mode)
-        all_stats.append(stats)
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        # Submit all site processing tasks
+        future_to_site = {
+            executor.submit(process_site, site, args.mode): site
+            for site in sites
+        }
+
+        # Collect results as they complete
+        for future in as_completed(future_to_site):
+            try:
+                stats = future.result()
+                all_stats.append(stats)
+            except Exception as e:
+                site = future_to_site[future]
+                with print_lock:
+                    print(f"\n✗ Error processing {site['name']}: {e}", file=sys.stderr)
+                # Add failed stats
+                all_stats.append({
+                    'name': site['name'],
+                    'success': False,
+                    'individual_success': 0,
+                    'individual_fail': 0,
+                    'full_success': False
+                })
 
     # Print summary
     print("\n" + "=" * 70)

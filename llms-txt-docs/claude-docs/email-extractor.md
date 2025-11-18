@@ -1,5 +1,3 @@
-# Source: https://docs.claude.com/en/resources/prompt-library/email-extractor.md
-
 # Email extractor
 
 > Extract email addresses from a document into a JSON-formatted list.

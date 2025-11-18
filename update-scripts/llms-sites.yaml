@@ -23,3 +23,35 @@ sites:
   - name: graphite
     base_url: https://graphite.com/docs/
     description: Graphite stacked pull requests and developer workflow tools
+
+  - name: openrouter
+    base_url: https://openrouter.ai/docs/
+    description: OpenRouter AI model aggregator and API
+
+  - name: nuxt-ui
+    base_url: https://ui.nuxt.com/
+    description: Nuxt UI Vue.js component library
+
+  - name: humanloop
+    base_url: https://humanloop.com/docs/
+    description: Humanloop LLM evaluation and monitoring
+
+  - name: perplexity
+    base_url: https://docs.perplexity.ai/
+    description: Perplexity AI search and reasoning API
+
+  - name: cloudflare
+    base_url: https://developers.cloudflare.com/
+    description: Cloudflare developer platform and workers
+
+  - name: vercel
+    base_url: https://vercel.com/docs/
+    description: Vercel deployment platform and edge functions
+
+  - name: mcp
+    base_url: https://modelcontextprotocol.io/
+    description: Model Context Protocol for AI context management
+
+  - name: mintlify
+    base_url: https://mintlify.com/docs/
+    description: Mintlify documentation platform

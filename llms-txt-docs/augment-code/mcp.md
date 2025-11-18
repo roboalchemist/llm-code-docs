@@ -1,4 +1,4 @@
-# Source: https://docs.augmentcode.com/setup-augment/mcp.md
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
 
 # Setup Model Context Protocol servers
 
@@ -12,7 +12,7 @@ export const Keyboard = ({shortcut}) => <span className="inline-block border bor
 
 ## About Model Context Protocol servers
 
-Augment Agent can utilize external integrations through Model Context Protocol (MCP) to access external systems for information and integrate tools to take actions. MCP is an open protocol that provides a standardized way to connect AI models to different data sources and tools. MCP servers can be used to access local or remote databases, run automated browser testing, send messages to Slack, or even play music on Spotify.
+Augment Agent can utilize external integrations through Model Context Protocol (MCP) to access external systems for information and integrate tools to take actions. MCP is an open protocol that provides a standardized way to connect AI models to different data sources and tools. MCP servers can be used to access local or remote databases, run automated browser testing, send messages to Slack or even play music on Spotify.
 
 ## Easy MCP: One-Click Integrations
 
@@ -44,7 +44,7 @@ Easy MCP provides one-click access to these popular developer tools:
 
 ### Getting Started with Easy MCP
 
-1. Open the Augment Code extension in VS Code
+1. Open the Augment Code extension in your JetBrains IDE
 2. Navigate to the Easy MCP pane in the settings
 3. Click the "+" button next to your desired integration
 4. Paste an API token or approve OAuth
@@ -54,22 +54,11 @@ Easy MCP provides one-click access to these popular developer tools:
 
 From that moment on, Augment Code streams your tool's live context into every suggestion and autonomous Agent run.
 
-## Advanced MCP Configuration
+## Advanced Configuration: Settings Panel
 
-For developers who need custom MCP server configurations or want to use servers not available through Easy MCP, you can still configure MCP servers manually.
+For developers who need custom MCP server configurations or want to use servers not available through Easy MCP, you can configure MCP servers manually using the Augment Settings Panel.
 
-There are three ways to configure MCP servers in Augment:
-
-1. **Easy MCP** (recommended) - One-click integrations for popular tools
-2. **Augment Settings Panel** - Manual configuration with a GUI
-3. **Import from JSON** - Paste a JSON config to quickly add servers
-
-MCP servers configured through the Settings Panel or Import from JSON are managed in the same place. After importing, you can edit or remove servers in the Settings Panel.
-
-## Configure in the Augment Settings Panel
-
-The easiest way to configure MCP servers is to use the Augment Settings Panel.
-To access the settings panel, open the options menu in the upper right of the Augment panel and click the Settings option. Once the settings panel is open, you will see a section for MCP servers.
+To access the settings panel, select the gear icon in the upper right of the Augment panel. Once the settings panel is open, you will see a section for MCP servers.
 
 <img src="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=f34e3682127f6e6ba2dfc5a4ae7fd8a5" className="rounded-xl" data-og-width="1296" width="1296" data-og-height="556" height="556" data-path="images/settings-panel-mcp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=280&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=a6dff18658e5c7454fa009cc484467db 280w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=560&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=dbc7a07976708c4fc72a662b98c06c60 560w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=840&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=e382a538a495053c3ca1a3c01d5e85ba 840w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=1100&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=2efdfd04627b5a659795e5b74e672b4d 1100w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=1650&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=d0f3ce6ce06c668a2f3160a35c0586e5 1650w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp.png?w=2500&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=e4b1e413786735c373fb6ec386cd676e 2500w" />
 
@@ -78,7 +67,7 @@ Fill in the `name` and `command` fields. The `name` field must be a unique name 
 <img src="https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=20d9ffa2c683194ec1d66afe390f6f9d" className="rounded-xl" data-og-width="1090" width="1090" data-og-height="586" height="586" data-path="images/mcp-env.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=280&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=e9c87679180a6db78e05d7cce22845ff 280w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=560&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=e7e5805c874eb5e006c27ee3f52360fa 560w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=840&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=8930b7ececcdd06705dcc9d9ed86ef12 840w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=1100&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=8e9b4f557196621ab4d45dd52defbda7 1100w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=1650&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=bd0ff7868ab46ea8325a6b9ed1856294 1650w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/mcp-env.png?w=2500&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=4cba9d7e59969d4a48aa630ab14932a7 2500w" />
 
 To add additional servers, click the `+` button next to the `MCP` header.
-To edit a configuration, or to delete a server, click the `...` button next to the server name.
+To edit a configuration or to delete a server, click the `...` button next to the server name.
 
 ### Add a Remote MCP server
 
@@ -91,44 +80,6 @@ If your MCP server runs remotely (for example, a hosted service), click the "+ A
 * URL: the base URL to your MCP server (e.g., [https://api.example.com](https://api.example.com))
 
 Remote MCP servers appear alongside your local MCP servers in the list. You can edit or remove them using the "..." menu next to the server name.
-
-## Import from JSON
-
-You can quickly add MCP servers by importing a JSON configuration from the Augment Settings Panel:
-
-1. Open the Settings Panel (gear icon in the Augment panel)
-2. In the MCP section, click <strong>Import from JSON</strong>
-3. Paste a configuration like the following and click Save
-
-<img src="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=63f0f66b4c03a744d066509d2bd7d107" className="rounded-xl" data-og-width="1018" width="1018" data-og-height="512" height="512" data-path="images/settings-panel-mcp-json.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=280&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=c92854a977210732f7ce88365f420f13 280w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=560&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=13f3d3e3bd2ddd45511b24418908e37f 560w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=840&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=d26b8bcf4f9e592bf2b539a469de1dbe 840w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=1100&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=39eed3e27ae9dfeeb394146153648b2a 1100w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=1650&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=734fdddd4287a85ee69e6455b1af98b1 1650w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/settings-panel-mcp-json.png?w=2500&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=bf906af74ac296b11558e48a07e99caf 2500w" />
-
-**Example: Local command (Context7 via npx)**
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "Context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
-    }
-  }
-}
-```
-
-**Example: Remote SSE endpoint**
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "test": {
-      "url": "http://localhost:3001/sse",
-      "type": "sse"
-    }
-  }
-}
-```
-
-After importing, servers appear in the list where you can edit, test, or remove them. Ensure any required dependencies for the server are installed on your machine.
 
 ## Server compatibility
 
