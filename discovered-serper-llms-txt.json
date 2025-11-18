@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://docs.anthropic.com/llms-full.txt",
+    "title": "docs on LLMS.txt - Claude Docs - Anthropic",
+    "snippet": "",
+    "source": "serper",
+    "query": "llms-full.txt",
+    "base_url": "https://docs.anthropic.com/",
+    "name": "anthropic",
+    "description": "docs on LLMS.txt - Claude Docs - Anthropic"
+  }
+]
