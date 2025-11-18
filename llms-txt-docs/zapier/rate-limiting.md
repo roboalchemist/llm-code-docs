@@ -1,0 +1,14 @@
+# Source: https://docs.zapier.com/powered-by-zapier/api-reference/rate-limiting.md
+
+# Rate Limiting
+
+> Rate limits when accessing the Workflow API   
+
+Currently all endpoints are rate limited by the following, whichever occurs first:
+
+* IP address, and is limited to **60 requests per minute.**
+* Partner, and is limited to **150 requests per minute.**
+
+## Rate Limit Response
+
+If you hit the rate limit, you will receive a `429 Too Many Requests`. There will be a cooldown of 60 seconds before you can make any more requests.

@@ -1,4 +1,7 @@
 sites:
+- name: agent
+  base_url: https://docs.agent.ai/
+  description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
 - name: agentql
   base_url: https://docs.agentql.com/
   description: AgentQL AI-powered data extraction and web automation
@@ -101,6 +104,9 @@ sites:
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
+- name: developers-vectorize
+  base_url: https://developers.cloudflare.com/vectorize/
+  description: Vectorize llms-full.txt
 - name: docetl
   base_url: https://www.docetl.org/
   description: DocETL document processing and transformation system
@@ -122,6 +128,9 @@ sites:
 - name: eventcatalog-dev-tools
   base_url: https://www.eventcatalog.dev/docs/development/developer-tools/
   description: EventCatalog developer tools and integrations
+- name: fastcore
+  base_url: https://fastcore.fast.ai/
+  description: llms.txt - fastcore - Fast.ai
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
@@ -152,15 +161,24 @@ sites:
 - name: gitbook
   base_url: https://gitbook.com/docs/
   description: GitBook documentation platform
+- name: github-langgraph
+  base_url: https://github.langchain.ac.cn/langgraph/
+  description: It covers prerequisites, installation, agent creation, configuration of language models, and advance
 - name: gitlab-consulting
   base_url: https://gitlab.consulting/
   description: IDEA GitLab consulting and solutions
+- name: gofastmcp
+  base_url: https://gofastmcp.com/
+  description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__i'
 - name: graphite
   base_url: https://graphite.com/docs/
   description: Graphite stacked pull requests and developer workflow tools
 - name: groq
   base_url: https://docs.groq.com/
   description: Groq high-performance AI inference platform
+- name: huggingface-docs-hub
+  base_url: https://huggingface.co/docs/hub/
+  description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O'
 - name: humanloop
   base_url: https://humanloop.com/docs/
   description: Humanloop LLM evaluation and monitoring
@@ -236,6 +254,9 @@ sites:
 - name: nuxt-ui
   base_url: https://ui.nuxt.com/
   description: Nuxt UI Vue.js component library
+- name: nvidia
+  base_url: https://docs.nvidia.com/
+  description: High-throughput, low-latency inference framework designed for serving generative AI and reasoning mo
 - name: openai-cdn
   base_url: https://cdn.openai.com/API/docs/txt/
   description: OpenAI API documentation CDN
@@ -332,6 +353,9 @@ sites:
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
+- name: zapier
+  base_url: https://docs.zapier.com/
+  description: https://docs.zapier.com/llms-full.txt
 - name: zenml
   base_url: https://docs.zenml.io/
   description: ZenML MLOps framework for ML pipelines

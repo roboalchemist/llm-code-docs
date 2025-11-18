@@ -1,12 +1,82 @@
 [
   {
-    "url": "https://docs.anthropic.com/llms-full.txt",
-    "title": "docs on LLMS.txt - Claude Docs - Anthropic",
-    "snippet": "",
+    "url": "https://docs.zapier.com/llms-full.txt",
+    "title": "https://docs.zapier.com/llms-full.txt",
+    "snippet": "... full request object corresponding to `bundle.cleanedRequest` ```js const ... txt\", \"text/plain\" ); z.console.log(url); // https://zapier-dev-files.s3 ...",
     "source": "serper",
     "query": "llms-full.txt",
-    "base_url": "https://docs.anthropic.com/",
-    "name": "anthropic",
-    "description": "docs on LLMS.txt - Claude Docs - Anthropic"
+    "base_url": "https://docs.zapier.com/",
+    "name": "zapier",
+    "description": "https://docs.zapier.com/llms-full.txt"
+  },
+  {
+    "url": "https://docs.agent.ai/llms.txt",
+    "title": "llms.txt",
+    "snippet": "... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Convert file](https://docs.agent.ai/api-reference/advanced ...",
+    "source": "serper",
+    "query": "llms.txt api reference",
+    "base_url": "https://docs.agent.ai/",
+    "name": "agent",
+    "description": "... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co"
+  },
+  {
+    "url": "https://docs.nvidia.com/llms.txt",
+    "title": "llms.txt",
+    "snippet": "High-throughput, low-latency inference framework designed for serving generative AI and reasoning models in multi-node distributed environments. ## NVIDIA NeMo ...",
+    "source": "serper",
+    "query": "llms.txt framework",
+    "base_url": "https://docs.nvidia.com/",
+    "name": "nvidia",
+    "description": "High-throughput, low-latency inference framework designed for serving generative AI and reasoning mo"
+  },
+  {
+    "url": "https://fastcore.fast.ai/llms.txt",
+    "title": "llms.txt - fastcore - Fast.ai",
+    "snippet": "Here are some tips on using fastcore: - **Liberal imports**: Utilize `from fastcore.module import *` freely. The library is designed for safe wildcard imports.",
+    "source": "serper",
+    "query": "llms.txt library",
+    "base_url": "https://fastcore.fast.ai/",
+    "name": "fastcore",
+    "description": "llms.txt - fastcore - Fast.ai"
+  },
+  {
+    "url": "https://gofastmcp.com/llms.txt",
+    "title": "llms.txt",
+    "snippet": "... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__init__.md) - [cli](https://gofastmcp.com/python-sdk ...",
+    "source": "serper",
+    "query": "llms.txt python",
+    "base_url": "https://gofastmcp.com/",
+    "name": "gofastmcp",
+    "description": "... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__i"
+  },
+  {
+    "url": "https://github.langchain.ac.cn/langgraph/llms.txt",
+    "title": "llms.txt",
+    "snippet": "It covers prerequisites, installation, agent creation, configuration of language models, and advanced features like memory and structured output. Ideal for ...",
+    "source": "serper",
+    "query": "llms.txt langchain",
+    "base_url": "https://github.langchain.ac.cn/langgraph/",
+    "name": "github-langgraph",
+    "description": "It covers prerequisites, installation, agent creation, configuration of language models, and advance"
+  },
+  {
+    "url": "https://huggingface.co/docs/hub/llms.txt",
+    "title": "llms.txt",
+    "snippet": "... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use Ollama with any GGUF Model on Hugging Face Hub](https ...",
+    "source": "serper",
+    "query": "llms.txt huggingface",
+    "base_url": "https://huggingface.co/docs/hub/",
+    "name": "huggingface-docs-hub",
+    "description": "... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O"
+  },
+  {
+    "url": "https://developers.cloudflare.com/vectorize/llms-full.txt",
+    "title": "Vectorize llms-full.txt",
+    "snippet": "Vectorize is a globally distributed vector database that enables you to build full-stack, AI-powered applications with [Cloudflare Workers](https://developers.",
+    "source": "serper",
+    "query": "llms.txt vector database",
+    "base_url": "https://developers.cloudflare.com/vectorize/",
+    "name": "developers-vectorize",
+    "description": "Vectorize llms-full.txt"
   }
 ]

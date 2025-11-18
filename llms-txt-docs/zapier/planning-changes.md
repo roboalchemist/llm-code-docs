@@ -1,0 +1,73 @@
+# Source: https://docs.zapier.com/platform/manage/planning-changes.md
+
+# Planning and implementing integration changes
+
+> Before making updates to your integration, it's important to consider the potential impact on user migration and existing Zaps. Ensuring your API and Zapier integration remains backwards compatible is crucial to avoid disruption to users. However, we acknowledge certain changes are sometimes necessary and unavoidable. In such cases, consider the best practice for implementation.
+
+## Effects of Different Changes (Versioning Matrix)
+
+The matrix below illustrates the impact of different changes on your users. For public integrations, this will affect promotion and whether migration is possible. Refer to our best practices to facilitate the upgrade process for yourself and your users.
+
+Columns:
+
+* Add: Adding a net new component
+* Update: Making a change to an existing component
+* Replace: Deleting/deprecating an existing component and adding a new one in its place
+* Delete/Deprecate: Removing an existing component completely
+
+Matrix Key:
+
+* Breaking Change: A modification to the integration which renders existing Zaps incompatible with the new version
+* Depends: A modification which may render existing Zaps incompatible with the new version, depending on the implementation
+* <p>
+    {" "}
+
+    <Icon icon="check" /> : A modification to the integration which renders
+    existing Zaps compatible with the new version
+  </p>
+* \-: Not applicable
+
+Common changes that can affect the ability to migrate users are detailed in the documentation linked in the matrix. Look for your change and pay attention to the recommended best practices.
+
+Several change scenarios are validated by the platform when you try to *Migrate* after a version promotion, but always be aware of the effects of any changes you make before you even begin implementing those changes.
+
+Change scenarios marked as *Depends* with no linked best practice can vary widely across integrations, so a generalized best practice is not provided; reach out to [support](https://developer.zapier.com/contact) if you need help with your specific change scenario.
+
+| Integration Change                                        | Add                                               | Update                                             | Replace                                         | Delete/Deprecate                               | Validated by platform? |
+| --------------------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------- | ---------------------- |
+| **AUTHENTICATION CHANGES**                                |                                                   |                                                    |                                                 |                                                |                        |
+| **Authentication schemes**                                | [BREAKING CHANGE](/platform/manage/auth-scheme)   | -                                                  | [BREAKING CHANGE](/platform/manage/auth-scheme) | -                                              | <Icon icon="check" />  |
+| **Authentication fields - required**                      | [BREAKING CHANGE](/platform/manage/auth-required) | [Depends](/platform/manage/auth-required)          | -                                               | <Icon icon="check" />                          | -                      |
+| **Authentication fields - optional**                      | <Icon icon="check" />                             | <Icon icon="check" />                              | -                                               | <Icon icon="check" />                          | -                      |
+| **Authentication field key(s)**                           | -                                                 | [BREAKING CHANGE](/platform/manage/auth-keys)      | -                                               | -                                              | -                      |
+| **Authentication - token request**                        | -                                                 | <Icon icon="check" />                              | -                                               | -                                              | -                      |
+| **Authentication - test function**                        | -                                                 | <Icon icon="check" />                              | <Icon icon="check" />                           | -                                              | -                      |
+| **TRIGGER/ACTION CHANGES**                                |                                                   |                                                    |                                                 |                                                |                        |
+| **Trigger/Action - meta info (e.g.: label, description)** | -                                                 | <Icon icon="check" />                              | <Icon icon="check" />                           | -                                              | -                      |
+| **Trigger/Action - key**                                  | -                                                 | [BREAKING CHANGE](/platform/manage/change-keys)    | [BREAKING CHANGE](/platform/manage/change-keys) | -                                              | <Icon icon="check" />  |
+| **Trigger/Action - input field(s) - required**            | [Depends](/platform/manage/required-input)        | [Depends](/platform/manage/required-input)         | [Depends](/platform/manage/required-input)      | <Icon icon="check" />                          | -                      |
+| **Trigger/Action - input field(s) - optional**            | <Icon icon="check" />                             | <Icon icon="check" />                              | <Icon icon="check" />                           | <Icon icon="check" />                          | -                      |
+| **Trigger/Action - input field(s) - key**                 | -                                                 | [BREAKING CHANGE](/platform/manage/input-key)      | [BREAKING CHANGE](/platform/manage/input-key)   | -                                              | -                      |
+| **Trigger/Action - input field(s) - field type**          | -                                                 | Depends                                            | Depends                                         | -                                              | -                      |
+| **Trigger/Action - output data - key(s)**                 | <Icon icon="check" />                             | [BREAKING CHANGE](/platform/manage/output-key)     | [BREAKING CHANGE](/platform/manage/output-key)  | [BREAKING CHANGE](/platform/manage/output-key) | -                      |
+| **Trigger/Action - output data - response structure**     | -                                                 | [BREAKING CHANGE](/platform/manage/output)         | [BREAKING CHANGE](/platform/manage/output)      | -                                              | -                      |
+| **Trigger/Action - perform function**                     | -                                                 | Depends                                            | Depends                                         | -                                              | -                      |
+| **Trigger type - polling to hook type**                   | -                                                 | [BREAKING CHANGE](/platform/manage/change-trigger) | -                                               | -                                              | <Icon icon="check" />  |
+| **Trigger (polling) - perform function**                  | -                                                 | [Depends](/platform/manage/change-perform)         | [Depends](/platform/manage/change-perform)      | -                                              | -                      |
+| **Trigger (hook) - perform list**                         | -                                                 | Depends                                            | Depends                                         | -                                              | -                      |
+| **Trigger (hook) - performSubscribe**                     | -                                                 | <Icon icon="check" />                              | <Icon icon="check" />                           | -                                              | -                      |
+| **Trigger (hook) - performUnsubscribe**                   | -                                                 | <Icon icon="check" />                              | <Icon icon="check" />                           | -                                              | -                      |
+| **OTHER CHANGES**                                         |                                                   |                                                    |                                                 |                                                |                        |
+| **Middleware**                                            | Depends                                           | Depends                                            | Depends                                         | Depends                                        | -                      |
+| **Partner's API (overall)**                               | -                                                 | Depends                                            | Depends                                         | Depends                                        | -                      |
+| **Product feature**                                       | <Icon icon="check" />                             | -                                                  | -                                               | -                                              | -                      |
+| **Rebrand - (e.g. logo, app name)**                       | -                                                 | <Icon icon="check" />                              | -                                               | -                                              | -                      |
+| **Export UI to CLI**                                      | -                                                 | [Depends](/platform/manage/export-cli)             | <Icon icon="check" />                           | -                                              | -                      |
+| **Export CLI to UI**                                      | -                                                 | [Depends](/platform/manage/export-ui)              | -                                               | -                                              | -                      |
+| **Edit Legacy Web Builder integration**                   | -                                                 | [Depends](/platform/manage/versions-legacy)        | [Depends](/platform/manage/versions-legacy)     | -                                              | -                      |
+
+If your change is not listed, make sure to still consider whether it changes keys, requires users to provide *new* info, or revokes functionality.
+
+***
+
+*Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*

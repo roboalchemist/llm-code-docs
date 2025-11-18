@@ -312,12 +312,36 @@ def main():
     # Note: Can't use filetype: or inurl: operators - Serper blocks them
     # Also can't use quoted strings - they trigger blocking
     queries = [
-        '/llms.txt',  # Plain search for the path
-        'llms-full.txt',  # Alternative full docs file
-        'llms.txt documentation ai',  # Documentation context
-        'llms.txt api reference',  # API documentation
-        'llms.txt developer docs',  # Developer documentation
-        'llmstxt',  # Alternative spelling
+        '/llms.txt',
+        'llms-full.txt',
+        'llms.txt documentation ai',
+        'llms.txt api reference',
+        'llms.txt developer docs',
+        'llmstxt',
+        'llms.txt framework',
+        'llms.txt library',
+        'llms.txt sdk',
+        'llms.txt platform',
+        'llms.txt tool',
+        'llms.txt python',
+        'llms.txt javascript',
+        'llms.txt typescript',
+        'llms.txt api docs',
+        'llms.txt getting started',
+        'llms.txt tutorial',
+        'llms.txt guide',
+        'llms.txt reference',
+        'llms.txt examples',
+        'site:docs llms.txt',
+        'site:developer llms.txt',
+        'site:api llms.txt',
+        'llms.txt machine learning',
+        'llms.txt artificial intelligence',
+        'llms.txt openai',
+        'llms.txt anthropic',
+        'llms.txt langchain',
+        'llms.txt huggingface',
+        'llms.txt vector database',
     ]
 
     all_results = []
