@@ -11,6 +11,9 @@ sites:
 - name: ai-sdk
   base_url: https://ai-sdk.dev/
   description: AI SDK for building AI-powered applications
+- name: aigile-era-stitchllmstxt
+  base_url: https://github.com/aigile-era/stitch.llms.txt/
+  description: Github documentation
 - name: aimlapi
   base_url: https://docs.aimlapi.com/
   description: AIML API unified AI/ML model API platform
@@ -29,9 +32,18 @@ sites:
 - name: anthropic
   base_url: https://docs.anthropic.com/
   description: docs on LLMS.txt - Claude Docs - Anthropic
+- name: any-llm
+  base_url: https://mozilla-ai.github.io/any-llm/
+  description: Mozilla-Ai documentation
+- name: apibara
+  base_url: https://www.apibara.com/
+  description: Apibara documentation
 - name: aporia
   base_url: https://docs.aporia.com/
   description: Aporia ML observability and monitoring platform
+- name: aptible
+  base_url: https://www.aptible.com/docs/
+  description: Aptible documentation
 - name: argil
   base_url: https://docs.argil.ai/
   description: Argil AI automation and workflow platform
@@ -98,18 +110,27 @@ sites:
 - name: clever-cloud
   base_url: https://www.clever.cloud/developers/
   description: Clever Cloud PaaS developer platform
+- name: cloud
+  base_url: https://cloud.needle.tools/
+  description: Cloud documentation
 - name: cloudflare
   base_url: https://developers.cloudflare.com/
   description: Cloudflare developer platform and workers
 - name: cloudfleet
   base_url: https://cloudfleet.ai/
   description: CloudFleet AI/ML infrastructure platform
+- name: clueso-well-known
+  base_url: https://www.clueso.io/.well-known/
+  description: Clueso documentation
 - name: cog
   base_url: https://cog.run/
   description: Cog containers for machine learning
 - name: cohere
   base_url: https://docs.cohere.com/
   description: Cohere enterprise AI platform and language models
+- name: comet-docs-opik
+  base_url: https://www.comet.com/docs/opik/
+  description: Comet documentation
 - name: configcat
   base_url: https://configcat.com/docs/
   description: ConfigCat feature flag service
@@ -128,21 +149,111 @@ sites:
 - name: dat1
   base_url: https://dat1.co/
   description: Dat1 AI-powered analytics platform
+- name: daytona
+  base_url: https://www.daytona.io/docs/
+  description: Daytona documentation
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
+- name: deepset
+  base_url: https://deepset.ai/
+  description: Deepset documentation
 - name: deno
   base_url: https://deno.com/
   description: Deno secure JavaScript/TypeScript runtime
+- name: dev
+  base_url: https://dev.writer.com/
+  description: Writer developer resources
+- name: developers
+  base_url: https://developers.hubspot.com/docs/
+  description: Hubspot developer platform
+- name: developers-2
+  base_url: https://developers.raycast.com/
+  description: Raycast developer platform
+- name: developers-3
+  base_url: https://developers.sitecore.com/
+  description: Sitecore developer platform
 - name: developers-vectorize
   base_url: https://developers.cloudflare.com/vectorize/
   description: Vectorize llms-full.txt
+- name: directory
+  base_url: https://directory.llmstxt.cloud/
+  description: Directory documentation
 - name: docetl
   base_url: https://www.docetl.org/
   description: DocETL document processing and transformation system
 - name: docker
   base_url: https://docs.docker.com/
   description: Docker containerization platform
+- name: docs
+  base_url: https://docs.pinecone.io/
+  description: Pinecone documentation
+- name: docs-10
+  base_url: https://docs.litellm.ai/
+  description: Litellm documentation
+- name: docs-11
+  base_url: https://docs.sardine.ai/
+  description: Sardine documentation
+- name: docs-12
+  base_url: https://docs.baseten.co/
+  description: Baseten documentation
+- name: docs-13
+  base_url: https://docs.solidfi.com/
+  description: Solidfi documentation
+- name: docs-14
+  base_url: https://docs.servicestack.net/
+  description: Servicestack documentation
+- name: docs-15
+  base_url: https://docs.frigade.com/
+  description: Frigade documentation
+- name: docs-16
+  base_url: https://docs.tavus.io/
+  description: Tavus documentation
+- name: docs-17
+  base_url: https://docs.livekit.io/
+  description: Livekit documentation
+- name: docs-18
+  base_url: https://docs.analog.one/documentation/
+  description: Analog documentation
+- name: docs-19
+  base_url: https://docs.basehub.com/
+  description: Basehub documentation
+- name: docs-2
+  base_url: https://docs.datafold.com/
+  description: Datafold documentation
+- name: docs-20
+  base_url: https://docs.envoyer.io/
+  description: Envoyer documentation
+- name: docs-21
+  base_url: https://docs.unifygtm.com/
+  description: Unifygtm documentation
+- name: docs-22
+  base_url: https://docs.meshconnect.com/
+  description: Meshconnect documentation
+- name: docs-3
+  base_url: https://docs.turso.tech/
+  description: Turso documentation
+- name: docs-4
+  base_url: https://docs.duendesoftware.com/
+  description: Duendesoftware documentation
+- name: docs-5
+  base_url: https://docs.apify.com/
+  description: Apify documentation
+- name: docs-6
+  base_url: https://docs.hypermode.com/
+  description: Hypermode documentation
+- name: docs-7
+  base_url: https://docs.saaspegasus.com/
+  description: Saaspegasus documentation
+- name: docs-8
+  base_url: https://docs.near.org/
+  description: Near documentation
+- name: docs-9
+  base_url: https://docs.convex.dev/
+  description: Convex documentation
+- name: docs-home
+  base_url: https://docs.annoto.net/home/
+  description: Annoto documentation
 - name: dspy
   base_url: https://dspy.ai/
   description: DSPy LLM programming framework
@@ -176,6 +287,9 @@ sites:
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
+- name: firecrawl
+  base_url: https://www.firecrawl.dev/
+  description: Firecrawl documentation
 - name: fireflies
   base_url: https://docs.fireflies.ai/
   description: Fireflies AI meeting assistant and transcription
@@ -197,6 +311,9 @@ sites:
 - name: framer
   base_url: https://www.framer.com/
   description: Framer website builder and design platform
+- name: frontmatter
+  base_url: https://frontmatter.codes/
+  description: Frontmatter documentation
 - name: galileo-ai
   base_url: https://docs.galileo.ai/
   description: Galileo AI LLM evaluation and observability
@@ -221,18 +338,33 @@ sites:
 - name: gradio
   base_url: https://gradio.app/
   description: Gradio ML web UI framework
+- name: grafbase
+  base_url: https://grafbase.com/
+  description: Grafbase documentation
 - name: graphite
   base_url: https://graphite.com/docs/
   description: Graphite stacked pull requests and developer workflow tools
 - name: groq
   base_url: https://docs.groq.com/
   description: Groq high-performance AI inference platform
+- name: helicone
+  base_url: https://www.helicone.ai/
+  description: Helicone documentation
+- name: herd
+  base_url: https://herd.laravel.com/docs/
+  description: Herd documentation
+- name: htmlhint
+  base_url: https://htmlhint.com/
+  description: Htmlhint documentation
 - name: htmx
   base_url: https://htmx.org/
   description: htmx HTML-driven AJAX library
 - name: huggingface-docs-hub
   base_url: https://huggingface.co/docs/hub/
   description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O'
+- name: huggingface-mishig-txt
+  base_url: https://huggingface.co/mishig-txt/
+  description: Huggingface documentation
 - name: humanloop
   base_url: https://humanloop.com/docs/
   description: Humanloop LLM evaluation and monitoring
@@ -251,6 +383,9 @@ sites:
 - name: infera
   base_url: https://docs.infera.org/
   description: Infera AI inference optimization platform
+- name: infisical
+  base_url: https://infisical.com/docs/
+  description: Infisical documentation
 - name: inkeep
   base_url: https://docs.inkeep.com/
   description: Inkeep AI-powered documentation search
@@ -263,18 +398,30 @@ sites:
 - name: intelligems
   base_url: https://docs.intelligems.io/
   description: Intelligems A/B testing and optimization for Shopify
+- name: jam
+  base_url: https://jam.dev/docs/
+  description: Jam documentation
+- name: jetify
+  base_url: https://www.jetify.com/docs/
+  description: Jetify documentation
 - name: kaisar
   base_url: https://docs.kaisar.io/
   description: Kaisar AI development platform
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
+- name: lambdatest
+  base_url: https://www.lambdatest.com/
+  description: Lambdatest documentation
 - name: langchain
   base_url: https://python.langchain.com/
   description: LangChain framework for LLM application development
 - name: langchain-js
   base_url: https://js.langchain.com/
   description: LangChain JavaScript/TypeScript library
+- name: langflow
+  base_url: https://www.langflow.org/
+  description: Langflow documentation
 - name: langfuse
   base_url: https://langfuse.com/
   description: Langfuse LLM observability platform
@@ -284,6 +431,9 @@ sites:
 - name: langgraph-js
   base_url: https://langchain-ai.github.io/langgraphjs/
   description: LangGraph JS agent workflow framework
+- name: lingui
+  base_url: https://lingui.dev/
+  description: Lingui documentation
 - name: llamaindex
   base_url: https://developers.llamaindex.ai/
   description: LlamaIndex data framework for LLM applications
@@ -299,6 +449,12 @@ sites:
 - name: lm-studio
   base_url: https://lmstudio.ai/
   description: LM Studio local LLM development and inference
+- name: loops
+  base_url: https://loops.so/docs/
+  description: Loops documentation
+- name: loro
+  base_url: https://www.loro.dev/
+  description: Loro documentation
 - name: mantine
   base_url: https://mantine.dev/
   description: Mantine React component library
@@ -356,6 +512,9 @@ sites:
 - name: openrouter
   base_url: https://openrouter.ai/docs/
   description: OpenRouter AI model aggregator and API
+- name: parlance-labs-mcp-llmstxt
+  base_url: https://github.com/parlance-labs/mcp-llms.txt/
+  description: Github documentation
 - name: perplexity
   base_url: https://docs.perplexity.ai/
   description: Perplexity AI search and reasoning API
@@ -377,6 +536,9 @@ sites:
 - name: pydantic-ai
   base_url: https://ai.pydantic.dev/
   description: Pydantic AI framework
+- name: rainbowkit
+  base_url: https://rainbowkit.com/
+  description: Rainbowkit documentation
 - name: react-native
   base_url: https://reactnative.dev/
   description: React Native mobile app framework
@@ -389,6 +551,9 @@ sites:
 - name: redis
   base_url: https://redis.io/
   description: Redis in-memory data structure store
+- name: remult
+  base_url: https://remult.dev/
+  description: Remult documentation
 - name: rescript-react
   base_url: https://rescript-lang.org/docs/react/
   description: ReScript React bindings
@@ -398,15 +563,24 @@ sites:
 - name: retool
   base_url: https://docs.retool.com/
   description: Retool internal tool builder platform
+- name: seed-design-breeze
+  base_url: https://seed-design.io/breeze/
+  description: Seed-Design documentation
 - name: serverlessllm
   base_url: https://serverlessllm.github.io/
   description: ServerlessLLM serverless LLM serving framework
 - name: shadcn-vue
   base_url: https://shadcn-vue.com/
   description: Shadcn UI components for Vue.js
+- name: sherlockdomains
+  base_url: https://www.sherlockdomains.com/
+  description: Sherlockdomains documentation
 - name: slack
   base_url: https://docs.slack.dev/
   description: Slack developer platform and API documentation
+- name: speakeasy
+  base_url: https://www.speakeasy.com/
+  description: Speakeasy documentation
 - name: sphinx-llms-txt
   base_url: https://sphinx-llms-txt.readthedocs.io/
   description: Sphinx llms-txt extension documentation
@@ -437,12 +611,18 @@ sites:
 - name: timescale-pgai
   base_url: https://github.com/timescale/pgai/blob/main/
   description: pgai - PostgreSQL AI extension by Timescale
+- name: trigger
+  base_url: https://trigger.dev/docs/
+  description: Trigger documentation
 - name: trigger-dev
   base_url: https://docs.trigger.dev/
   description: Trigger.dev background job orchestration platform
 - name: truera
   base_url: https://docs.truera.com/
   description: TruEra AI quality and observability platform
+- name: txtorg-ctx
+  base_url: https:/txt.org-ctx/
+  description: ' documentation'
 - name: uno-platform
   base_url: https://platform.uno/
   description: Uno Platform .NET cross-platform framework
@@ -464,6 +644,12 @@ sites:
 - name: vercel-rest-api
   base_url: https://vercel.com/docs/rest-api/reference/
   description: Vercel REST API reference documentation
+- name: versus-latest
+  base_url: https://versus.readthedocs.io/latest/
+  description: Versus documentation
+- name: viem
+  base_url: https://viem.sh/
+  description: Viem documentation
 - name: vllm
   base_url: https://docs.vllm.ai/
   description: vLLM high-throughput LLM inference engine
