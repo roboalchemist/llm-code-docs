@@ -1,0 +1,13 @@
+# Source: https://www.plain.com/docs/webhooks/thread-status-transitioned.md
+
+# Thread status transitioned
+
+This event is fired when the status of a thread changes.
+
+## Schema
+
+[**View JSON Schema →**](https://core-api.uk.plain.com/webhooks/schema/latest.json)
+
+Example:
+
+<Snippet file="webhooks/thread-status-transitioned.mdx" />

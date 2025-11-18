@@ -1,293 +1,72 @@
-# Source: https://developers.cloudflare.com/agents/guides/remote-mcp-server/index.md
+# Source: https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md
 
 ---
-title: Build a Remote MCP server · Cloudflare Agents docs
-description: "This guide will show you how to deploy your own remote MCP server
-  on Cloudflare, with two options:"
-lastUpdated: 2025-10-08T16:13:27.000Z
+title: What is TURN? · Cloudflare Realtime docs
+description: TURN (Traversal Using Relays around NAT) is a protocol that assists
+  in traversing Network Address Translators (NATs) or firewalls in order to
+  facilitate peer-to-peer communications. It is an extension of the STUN
+  (Session Traversal Utilities for NAT) protocol and is defined in RFC 8656.
+lastUpdated: 2025-04-08T20:01:03.000Z
 chatbotDeprioritize: false
-tags: MCP
 source_url:
-  html: https://developers.cloudflare.com/agents/guides/remote-mcp-server/
-  md: https://developers.cloudflare.com/agents/guides/remote-mcp-server/index.md
+  html: https://developers.cloudflare.com/realtime/turn/what-is-turn/
+  md: https://developers.cloudflare.com/realtime/turn/what-is-turn/index.md
 ---
 
-## Deploy your first MCP server
+## What is TURN?
 
-This guide will show you how to deploy your own remote MCP server on Cloudflare, with two options:
+TURN (Traversal Using Relays around NAT) is a protocol that assists in traversing Network Address Translators (NATs) or firewalls in order to facilitate peer-to-peer communications. It is an extension of the STUN (Session Traversal Utilities for NAT) protocol and is defined in [RFC 8656](https://datatracker.ietf.org/doc/html/rfc8656).
 
-* **Without authentication** — anyone can connect and use the server (no login required).
-* **With [authentication and authorization](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#add-authentication)** — users sign in before accessing tools, and you can control which tools an agent can call based on the user's permissions.
+## How do I use TURN?
 
-You can start by deploying a [public MCP server](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless) without authentication, then add user authentication and scoped authorization later. If you already know your server will require authentication, you can skip ahead to the [next section](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#add-authentication).
+Just like you would use a web browser or cURL to use the HTTP protocol, you need to use a tool or a library to use TURN protocol in your application.
 
-The button below will guide you through everything you need to do to deploy this [example MCP server](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless) to your Cloudflare account:
+Most users of TURN will use it as part of a WebRTC library, such as the one in their browser or part of [Pion](https://github.com/pion/webrtc), [webrtc-rs](https://github.com/webrtc-rs/webrtc) or [libwebrtc](https://webrtc.googlesource.com/src/).
 
-[![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-authless)
+You can use TURN directly in your application too. [Pion](https://github.com/pion/turn) offers a TURN client library in Golang, so does [webrtc-rs](https://github.com/webrtc-rs/webrtc/tree/master/turn) in Rust.
 
-Once deployed, this server will be live at your workers.dev subdomain (e.g. remote-mcp-server-authless.your-account.workers.dev/sse). You can connect to it immediately using the [AI Playground](https://playground.ai.cloudflare.com/) (a remote MCP client), [MCP inspector](https://github.com/modelcontextprotocol/inspector) or [other MCP clients](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#connect-your-remote-mcp-server-to-claude-and-other-mcp-clients-via-a-local-proxy). Then, once you're ready, you can customize the MCP server and add your own [tools](https://developers.cloudflare.com/agents/model-context-protocol/tools/).
+## Key concepts to know when understanding TURN
 
-If you're using the "Deploy to Cloudflare" button, a new git repository will be set up on your GitHub or GitLab account for your MCP server, configured to automatically deploy to Cloudflare each time you push a change or merge a pull request to the main branch of the repository. You can then clone this repository, [develop locally](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#local-development), and start writing code and building.
+1. **NAT (Network Address Translation)**: A method used by routers to map multiple private IP addresses to a single public IP address. This is commonly done by home internet routers so multiple computers in the same network can share a single public IP address.
 
-### Set up and deploy your MCP server via CLI
+2. **TURN Server**: A relay server that acts as an intermediary for traffic between clients behind NATs. Cloudflare Realtime TURN service is a example of a TURN server.
 
-Alternatively, you can use the command line as shown below to create a new MCP Server on your local machine.
+3. **TURN Client**: An application or device that uses the TURN protocol to communicate through a TURN server. This is your application. It can be a web application using the WebRTC APIs or a native application running on mobile or desktop.
 
-* npm
+4. **Allocation**: When a TURN server creates an allocation, the TURN server reserves an IP and a port unique to that client.
 
-  ```sh
-  npm create cloudflare@latest -- my-mcp-server --template=cloudflare/ai/demos/remote-mcp-authless
-  ```
+5. **Relayed Transport Address**: The IP address and port reserved on the TURN server that others on the Internet can use to send data to the TURN client.
 
-* yarn
+## How TURN Works
 
-  ```sh
-  yarn create cloudflare my-mcp-server --template=cloudflare/ai/demos/remote-mcp-authless
-  ```
+1. A TURN client sends an Allocate request to a TURN server.
+2. The TURN server creates an allocation and returns a relayed transport address to the client.
+3. The client can then give this relayed address to its peers.
+4. When a peer sends data to the relayed address, the TURN server forwards it to the client.
+5. When the client wants to send data to a peer, it sends it through the TURN server, which then forwards it to the peer.
 
-* pnpm
+## TURN vs VPN
 
-  ```sh
-  pnpm create cloudflare@latest my-mcp-server --template=cloudflare/ai/demos/remote-mcp-authless
-  ```
+TURN works similar to a VPN (Virtual Private Network). However TURN servers and VPNs serve different purposes and operate in distinct ways.
 
-Now, you have the MCP server setup, with dependencies installed. Move into that project folder:
+A VPN is a general-purpose tool that encrypts all internet traffic from a device, routing it through a VPN server to enhance privacy, security, and anonymity. It operates at the network layer, affects all internet activities, and is often used to bypass geographical restrictions or secure connections on public Wi-Fi.
 
-```sh
-cd my-mcp-server
-```
+A TURN server is a specialized tool used by specific applications, particularly for real-time communication. It operates at the application layer, only affecting traffic for applications that use it, and serves as a relay to traverse NATs and firewalls when direct connections between peers are not possible. While a VPN impacts overall internet speed and provides anonymity, a TURN server only affects the performance of specific applications using it.
 
-#### Local development
+## Why is TURN Useful?
 
-In the directory of your new project, run the following command to start the development server:
+TURN is often valuable in scenarios where direct peer-to-peer communication is impossible due to NAT or firewall restrictions. Here are some key benefits:
 
-```sh
-npm start
-```
+1. **NAT Traversal**: TURN provides a way to establish connections between peers that are both behind NATs, which would otherwise be challenging or impossible.
 
-Your MCP server is now running on `http://localhost:8788/sse`.
+2. **Firewall Bypassing**: In environments with strict firewall policies, TURN can enable communication that would otherwise be blocked.
 
-In a new terminal, run the [MCP inspector](https://github.com/modelcontextprotocol/inspector). The MCP inspector is an interactive MCP client that allows you to connect to your MCP server and invoke tools from a web browser.
+3. **Consistent Connectivity**: TURN offers a reliable fallback method when direct or NAT-assisted connections fail.
 
-```sh
-npx @modelcontextprotocol/inspector@latest
-```
+4. **Privacy**: By relaying traffic through a TURN server, the actual IP addresses of the communicating parties can be hidden from each other.
 
-Open the MCP inspector in your web browser:
+5. **VoIP and Video Conferencing**: TURN is crucial for applications like Voice over IP (VoIP) and video conferencing, ensuring reliable connections regardless of network configuration.
 
-```sh
-open http://localhost:5173
-```
+6. **Online Gaming**: TURN can help online games establish peer-to-peer connections between players behind different types of NATs.
 
-In the inspector, enter the URL of your MCP server, `http://localhost:8788/sse`, and click **Connect**. You should see the "List Tools" button, which will list the tools that your MCP server exposes.
-
-![MCP inspector — authenticated](https://developers.cloudflare.com/_astro/mcp-inspector-authenticated.BCabYwDA_ezC3N.webp)
-
-#### Deploy your MCP server
-
-You can deploy your MCP server to Cloudflare using the following [Wrangler CLI command](https://developers.cloudflare.com/workers/wrangler) within the example project:
-
-```sh
-npx wrangler@latest deploy
-```
-
-If you have already [connected a git repository](https://developers.cloudflare.com/workers/ci-cd/builds/) to the Worker with your MCP server, you can deploy your MCP server by pushing a change or merging a pull request to the main branch of the repository.
-
-After deploying, take the URL of your deployed MCP server, and enter it in the MCP inspector running on `http://localhost:5173`. You now have a remote MCP server, deployed to Cloudflare, that MCP clients can connect to.
-
-### Connect your Remote MCP server to Claude and other MCP Clients via a local proxy
-
-Now that your MCP server is running, you can use the [`mcp-remote` local proxy](https://www.npmjs.com/package/mcp-remote) to connect Claude Desktop or other MCP clients to it — even though these tools aren't yet *remote* MCP clients, and don't support remote transport or authorization on the client side. This lets you test what an interaction with your MCP server will be like with a real MCP client.
-
-Update your Claude Desktop configuration to point to the URL of your MCP server. You can use either the `localhost:8787/sse` URL, or the URL of your deployed MCP server:
-
-```json
-{
-  "mcpServers": {
-    "math": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://your-worker-name.your-account.workers.dev/sse"
-      ]
-    }
-  }
-}
-```
-
-Restart Claude Desktop after updating your config file to load the MCP Server. Once this is done, Claude will be able to make calls to your remote MCP server. You can test this by asking Claude to use one of your tools. For example: "Could you use the math tool to add 23 and 19?". Claude should invoke the tool and show the result generated by the MCP server.
-
-Learn more about other ways of using remote MCP servers with MCP clients here in [this section](https://developers.cloudflare.com/agents/guides/test-remote-mcp-server).
-
-## Add Authentication
-
-Now that you’ve deployed a public MCP server, let’s walk through how to enable user authentication using OAuth.
-
-The public server example you deployed earlier allows any client to connect and invoke tools without logging in. To add authentication, you’ll update your MCP server to act as an OAuth provider, handling secure login flows and issuing access tokens that MCP clients can use to make authenticated tool calls.
-
-This is especially useful if users already need to log in to use your service. Once authentication is enabled, users can sign in with their existing account and grant their AI agent permission to interact with the tools exposed by your MCP server, using scoped permissions.
-
-In this example, we use GitHub as an OAuth provider, but you can connect your MCP server with any [OAuth provider](https://developers.cloudflare.com/agents/model-context-protocol/authorization/#2-third-party-oauth-provider) that supports the OAuth 2.0 specification, including Google, Slack, [Stytch](https://developers.cloudflare.com/agents/model-context-protocol/authorization/#stytch), [Auth0](https://developers.cloudflare.com/agents/model-context-protocol/authorization/#stytch), [WorkOS](https://developers.cloudflare.com/agents/model-context-protocol/authorization/#stytch), and more.
-
-### Step 1 — Create a new MCP server
-
-Run the following command to create a new MCP server:
-
-* npm
-
-  ```sh
-  npm create cloudflare@latest -- my-mcp-server-github-auth --template=cloudflare/ai/demos/remote-mcp-github-oauth
-  ```
-
-* yarn
-
-  ```sh
-  yarn create cloudflare my-mcp-server-github-auth --template=cloudflare/ai/demos/remote-mcp-github-oauth
-  ```
-
-* pnpm
-
-  ```sh
-  pnpm create cloudflare@latest my-mcp-server-github-auth --template=cloudflare/ai/demos/remote-mcp-github-oauth
-  ```
-
-Now, you have the MCP server setup, with dependencies installed. Move into that project folder:
-
-```sh
-cd my-mcp-server-github-auth
-```
-
-You'll notice that in the example MCP server, if you open `src/index.ts`, the primary difference is that the `defaultHandler` is set to the `GitHubHandler`:
-
-```ts
-import GitHubHandler from "./github-handler";
-
-
-export default new OAuthProvider({
-  apiRoute: "/sse",
-  apiHandler: MyMCP.Router,
-  defaultHandler: GitHubHandler,
-  authorizeEndpoint: "/authorize",
-  tokenEndpoint: "/token",
-  clientRegistrationEndpoint: "/register",
-});
-```
-
-This will ensure that your users are redirected to GitHub to authenticate. To get this working though, you need to create OAuth client apps in the steps below.
-
-### Step 2 — Create an OAuth App
-
-You'll need to create two [GitHub OAuth Apps](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) to use GitHub as an authentication provider for your MCP server — one for local development, and one for production.
-
-#### First create a new OAuth App for local development
-
-Navigate to [github.com/settings/developers](https://github.com/settings/developers) to create a new OAuth App with the following settings:
-
-* **Application name**: `My MCP Server (local)`
-* **Homepage URL**: `http://localhost:8788`
-* **Authorization callback URL**: `http://localhost:8788/callback`
-
-For the OAuth app you just created, add the client ID of the OAuth app as `GITHUB_CLIENT_ID` and generate a client secret, adding it as `GITHUB_CLIENT_SECRET` to a `.dev.vars` file in the root of your project, which [will be used to set secrets in local development](https://developers.cloudflare.com/workers/configuration/secrets/).
-
-```sh
-touch .dev.vars
-echo 'GITHUB_CLIENT_ID="your-client-id"' >> .dev.vars
-echo 'GITHUB_CLIENT_SECRET="your-client-secret"' >> .dev.vars
-cat .dev.vars
-```
-
-#### Next, run your MCP server locally
-
-Run the following command to start the development server:
-
-```sh
-npm start
-```
-
-Your MCP server is now running on `http://localhost:8788/sse`.
-
-In a new terminal, run the [MCP inspector](https://github.com/modelcontextprotocol/inspector). The MCP inspector is an interactive MCP client that allows you to connect to your MCP server and invoke tools from a web browser.
-
-```sh
-npx @modelcontextprotocol/inspector@latest
-```
-
-Open the MCP inspector in your web browser:
-
-```sh
-open http://localhost:5173
-```
-
-In the inspector, set **Transport Type** to `SSE` and enter the URL of your MCP server, `http://localhost:8788/sse`
-
-In the main panel on the right, click the **Open OAuth Settings** button and then click **Quick OAuth Flow**.
-
-You should be redirected to a GitHub login or authorization page. After authorizing the MCP Client (the inspector) access to your GitHub account, you will be redirected back to the inspector.
-
-Click **Connect** in the sidebar and you should see the "List Tools" button, which will list the tools that your MCP server exposes.
-
-#### Second — create a new OAuth App for production
-
-You'll need to repeat these steps to create a new OAuth App for production.
-
-Navigate to [github.com/settings/developers](https://github.com/settings/developers) to create a new OAuth App with the following settings:
-
-* **Application name**: `My MCP Server (production)`
-* **Homepage URL**: Enter the workers.dev URL of your deployed MCP server (ex: `worker-name.account-name.workers.dev`)
-* **Authorization callback URL**: Enter the `/callback` path of the workers.dev URL of your deployed MCP server (ex: `worker-name.account-name.workers.dev/callback`)
-
-For the OAuth app you just created, add the client ID and client secret, using Wrangler CLI:
-
-```sh
-wrangler secret put GITHUB_CLIENT_ID
-```
-
-```sh
-wrangler secret put GITHUB_CLIENT_SECRET
-```
-
-```plaintext
-npx wrangler secret put COOKIE_ENCRYPTION_KEY # add any random string here e.g. openssl rand -hex 32
-```
-
-Warning
-
-When you create the first secret, Wrangler will ask if you want to create a new Worker. Submit "Y" to create a new Worker and save the secret.
-
-#### Set up a KV namespace
-
-* Create the KV namespace:
-
-```bash
-npx wrangler kv namespace create "OAUTH_KV"
-```
-
-* Update the `wrangler.jsonc` file with the resulting KV ID:
-
-```json
-{
-  "kvNamespaces": [
-    {
-      "binding": "OAUTH_KV",
-      "id": "<YOUR_KV_NAMESPACE_ID>"
-    }
-  ]
-}
-```
-
-#### Deploy your server
-
-Deploy the MCP server to your Cloudflare `workers.dev` domain:
-
-```bash
-npm run deploy
-```
-
-#### Finally, connect to your MCP server
-
-Now that you've added the ID and secret of your production OAuth app, you should now be able to connect to your MCP server running at `worker-name.account-name.workers.dev/sse` using the [AI Playground](https://playground.ai.cloudflare.com/), MCP inspector or ([other MCP clients](https://developers.cloudflare.com/agents/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients)), and authenticate with GitHub.
-
-## Next steps
-
-* Add [tools](https://developers.cloudflare.com/agents/model-context-protocol/tools/) to your MCP server.
-* Customize your MCP Server's [authentication and authorization](https://developers.cloudflare.com/agents/model-context-protocol/authorization/).
+7. **IoT Device Communication**: Internet of Things (IoT) devices can use TURN to communicate when they're behind NATs or firewalls.

@@ -1,0 +1,32 @@
+# Source: https://www.plain.com/docs/graphql/pagination.md
+
+# Pagination
+
+Our GraphQL API follows the [Relay pagination spec](https://relay.dev/graphql/connections.htm).
+
+When fetching collections from our API you can control how much data is returned. We will return 25 records per request by default and the maximum page size is 100 records.
+
+We support two forms of page control arguments:
+
+1. Forward pagination with `after` (cursor) & `first` (numeric count)
+2. Reverse pagination with `before` (cursor) & `last` (numeric count)
+
+Note that these must not be mixed, e.g performing a query with values for first & before will result in a validation error.
+
+Endpoints which return paginated results will return a `pageInfo` object along with a `totalCount` field which allows you to make subsequent calls with page controls. Using the `getCustomers` API as an example this would look as follows:
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/page-info-after.mdx" />
+
+    Notice how we use the cursor information from the first page to fetch the second page. The returned `pageInfo` looks as follows:
+
+    <Snippet file="typescript-sdk/page-info-response.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    This will fetch a subsequent page of 50 entries by passing in the `endCursor` from an initial query.
+
+    <Snippet file="graphql/page-info-after.mdx" />
+  </Tab>
+</Tabs>

@@ -1,0 +1,341 @@
+# Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/list-all-the-domains.md
+
+# List all the domains
+
+> Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.
+
+## OpenAPI
+
+````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v5/domains
+paths:
+  path: /v5/domains
+  method: get
+  servers:
+    - url: https://api.vercel.com
+      description: Production API
+  request:
+    security:
+      - title: bearerToken
+        parameters:
+          query: {}
+          header:
+            Authorization:
+              type: http
+              scheme: bearer
+              description: Default authentication mechanism
+          cookie: {}
+    parameters:
+      path: {}
+      query:
+        limit:
+          schema:
+            - type: number
+              description: Maximum number of domains to list from a request.
+              example: 20
+        since:
+          schema:
+            - type: number
+              description: Get domains created after this JavaScript timestamp.
+              example: 1609499532000
+        until:
+          schema:
+            - type: number
+              description: Get domains created before this JavaScript timestamp.
+              example: 1612264332000
+        teamId:
+          schema:
+            - type: string
+              description: The Team identifier to perform the request on behalf of.
+              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        slug:
+          schema:
+            - type: string
+              description: The Team slug to perform the request on behalf of.
+              example: my-team-url-slug
+      header: {}
+      cookie: {}
+    body: {}
+    codeSamples:
+      - label: getDomains
+        lang: go
+        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Domains.GetDomains(ctx, operations.GetDomainsRequest{\n        Limit: vercel.Float64(20),\n        Since: vercel.Float64(1609499532000),\n        Until: vercel.Float64(1612264332000),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
+      - label: getDomains
+        lang: typescript
+        source: |-
+          import { Vercel } from "@vercel/sdk";
+
+          const vercel = new Vercel({
+            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+          });
+
+          async function run() {
+            const result = await vercel.domains.getDomains({
+              limit: 20,
+              since: 1609499532000,
+              until: 1612264332000,
+              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+              slug: "my-team-url-slug",
+            });
+
+            console.log(result);
+          }
+
+          run();
+  response:
+    '200':
+      application/json:
+        schemaArray:
+          - type: object
+            properties:
+              domains:
+                allOf:
+                  - items:
+                      properties:
+                        verified:
+                          type: boolean
+                          description: If the domain has the ownership verified.
+                          example: true
+                        nameservers:
+                          items:
+                            type: string
+                          type: array
+                          description: A list of the current nameservers of the domain.
+                          example:
+                            - ns1.nameserver.net
+                            - ns2.nameserver.net
+                        intendedNameservers:
+                          items:
+                            type: string
+                          type: array
+                          description: >-
+                            A list of the intended nameservers for the domain to
+                            point to Vercel DNS.
+                          example:
+                            - ns1.vercel-dns.com
+                            - ns2.vercel-dns.com
+                        customNameservers:
+                          items:
+                            type: string
+                          type: array
+                          description: >-
+                            A list of custom nameservers for the domain to point
+                            to. Only applies to domains purchased with Vercel.
+                          example:
+                            - ns1.nameserver.net
+                            - ns2.nameserver.net
+                        creator:
+                          properties:
+                            username:
+                              type: string
+                            email:
+                              type: string
+                            customerId:
+                              nullable: true
+                              type: string
+                            isDomainReseller:
+                              type: boolean
+                            id:
+                              type: string
+                          required:
+                            - username
+                            - email
+                            - id
+                          type: object
+                          description: >-
+                            An object containing information of the domain
+                            creator, including the user's id, username, and
+                            email.
+                          example:
+                            id: ZspSRT4ljIEEmMHgoDwKWDei
+                            username: vercel_user
+                            email: demo@example.com
+                        registrar:
+                          type: string
+                          enum:
+                            - new
+                          description: >-
+                            Whether or not the domain is registered with
+                            Name.com. If set to `true`, the domain is registered
+                            with Name.com.
+                        teamId:
+                          nullable: true
+                          type: string
+                        createdAt:
+                          type: number
+                          description: >-
+                            Timestamp in milliseconds when the domain was
+                            created in the registry.
+                          example: 1613602938882
+                        boughtAt:
+                          nullable: true
+                          type: number
+                          description: >-
+                            If it was purchased through Vercel, the timestamp in
+                            milliseconds when it was purchased.
+                          example: 1613602938882
+                        expiresAt:
+                          nullable: true
+                          type: number
+                          description: >-
+                            Timestamp in milliseconds at which the domain is set
+                            to expire. `null` if not bought with Vercel.
+                          example: 1613602938882
+                        id:
+                          type: string
+                          description: The unique identifier of the domain.
+                          example: EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1
+                        name:
+                          type: string
+                          description: The domain name.
+                          example: example.com
+                        orderedAt:
+                          type: number
+                          description: >-
+                            Timestamp in milliseconds at which the domain was
+                            ordered.
+                          example: 1613602938882
+                        renew:
+                          type: boolean
+                          description: >-
+                            Indicates whether the domain is set to automatically
+                            renew.
+                          example: true
+                        serviceType:
+                          type: string
+                          enum:
+                            - zeit.world
+                            - external
+                            - na
+                          description: >-
+                            The type of service the domain is handled by.
+                            `external` if the DNS is externally handled,
+                            `zeit.world` if handled with Vercel, or `na` if the
+                            service is not available.
+                          example: zeit.world
+                        transferredAt:
+                          nullable: true
+                          type: number
+                          description: >-
+                            Timestamp in milliseconds at which the domain was
+                            successfully transferred into Vercel. `null` if the
+                            transfer is still processing or was never
+                            transferred in.
+                          example: 1613602938882
+                        transferStartedAt:
+                          type: number
+                          description: >-
+                            If transferred into Vercel, timestamp in
+                            milliseconds when the domain transfer was initiated.
+                          example: 1613602938882
+                        userId:
+                          type: string
+                      required:
+                        - verified
+                        - nameservers
+                        - intendedNameservers
+                        - creator
+                        - teamId
+                        - createdAt
+                        - boughtAt
+                        - expiresAt
+                        - id
+                        - name
+                        - serviceType
+                        - userId
+                      type: object
+                    type: array
+              pagination:
+                allOf:
+                  - $ref: '#/components/schemas/Pagination'
+            requiredProperties:
+              - domains
+              - pagination
+        examples:
+          example:
+            value:
+              domains:
+                - verified: true
+                  nameservers:
+                    - ns1.nameserver.net
+                    - ns2.nameserver.net
+                  intendedNameservers:
+                    - ns1.vercel-dns.com
+                    - ns2.vercel-dns.com
+                  customNameservers:
+                    - ns1.nameserver.net
+                    - ns2.nameserver.net
+                  creator:
+                    id: ZspSRT4ljIEEmMHgoDwKWDei
+                    username: vercel_user
+                    email: demo@example.com
+                  registrar: new
+                  teamId: <string>
+                  createdAt: 1613602938882
+                  boughtAt: 1613602938882
+                  expiresAt: 1613602938882
+                  id: EmTbe5CEJyTk2yVAHBUWy4A3sRusca3GCwRjTC1bpeVnt1
+                  name: example.com
+                  orderedAt: 1613602938882
+                  renew: true
+                  serviceType: zeit.world
+                  transferredAt: 1613602938882
+                  transferStartedAt: 1613602938882
+                  userId: <string>
+              pagination:
+                count: 20
+                next: 1540095775951
+                prev: 1540095775951
+        description: Successful response retrieving a list of domains.
+    '400':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: One of the provided values in the request query is invalid.
+        examples: {}
+        description: One of the provided values in the request query is invalid.
+    '401':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: The request is not authorized.
+        examples: {}
+        description: The request is not authorized.
+    '403':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: You do not have permission to access this resource.
+        examples: {}
+        description: You do not have permission to access this resource.
+    '409': {}
+  deprecated: false
+  type: path
+components:
+  schemas:
+    Pagination:
+      properties:
+        count:
+          type: number
+          description: Amount of items in the current page.
+          example: 20
+        next:
+          nullable: true
+          type: number
+          description: Timestamp that must be used to request the next page.
+          example: 1540095775951
+        prev:
+          nullable: true
+          type: number
+          description: Timestamp that must be used to request the previous page.
+          example: 1540095775951
+      required:
+        - count
+        - next
+        - prev
+      type: object
+      description: >-
+        This object contains information related to the pagination of the
+        current request, including the necessary parameters to get the next or
+        previous page of data.
+
+````

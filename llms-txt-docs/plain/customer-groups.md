@@ -1,0 +1,60 @@
+# Source: https://www.plain.com/docs/graphql/customers/customer-groups.md
+
+# Customer groups
+
+Customer groups can be used to group and segment your customers. For example you could organise your customers by their tier "Free", "Growth, "Enterprise" or make use of groups to keep track of customers trialing beta features.
+
+Customers can belong to one or many groups. You can filter customer threads by group, allowing you to quickly focus on a subset of them.
+
+This guide will show you how to add customers to groups using the API. You can also do this with the UI in Plain if you prefer.
+
+This guide assumes you've already created some customer groups in **Settings** → **Customer Groups**.
+
+## Add a customer to groups
+
+A customer can be added to a customer group using the `addCustomerToCustomerGroup` mutation.
+
+Depending on what your customer groups are you may want to call this API at different times. For example if you are grouping them by their pricing tier you will want to do this every time their tier changes.
+
+This operation requires the following permissions:
+
+* `customer:create`
+* `customer:edit`
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/add-customer-to-group.mdx" />
+
+    Running the above would console.log:
+
+    <Snippet file="typescript-sdk/add-customer-to-group-response.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/add-customer-to-group.mdx" />
+
+    If you prefer you can also use the customer group id instead of the key. You can do this like so:
+
+    <Snippet file="graphql/add-customer-to-group-by-group-id.mdx" />
+  </Tab>
+</Tabs>
+
+## Remove a customer from groups
+
+A customer can be removed from a customer group by using the `removeCustomerFromGroup` mutation.
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/remove-customer-from-groups.mdx" />
+
+    Which if successful will console.log `null`
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/remove-customer-from-groups.mdx" />
+
+    If you prefer you can also use the customer group id instead of the key. You can do this like so:
+
+    <Snippet file="graphql/remove-customer-from-groups-by-group-id.mdx" />
+  </Tab>
+</Tabs>

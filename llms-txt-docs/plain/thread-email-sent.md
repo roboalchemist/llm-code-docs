@@ -1,0 +1,13 @@
+# Source: https://www.plain.com/docs/webhooks/thread-email-sent.md
+
+# Email sent
+
+This event is fired when an email is sent in your workspace.
+
+## Schema
+
+[**View JSON Schema →**](https://core-api.uk.plain.com/webhooks/schema/latest.json)
+
+Example:
+
+<Snippet file="webhooks/thread-email-sent.mdx" />

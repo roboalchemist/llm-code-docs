@@ -1,0 +1,687 @@
+# Source: https://configcat.com/docs/sdk-reference/unreal.md
+
+# Unreal Engine SDK Reference
+
+[![Star on GitHub](https://img.shields.io/github/stars/configcat/unreal-engine-sdk.svg?style=social)](https://github.com/configcat/unreal-engine-sdk/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/configcat/unreal-engine-sdk/plugin-ci.yml?logo=GitHub\&label=Unreal\&branch=main)](https://github.com/configcat/unreal-engine-sdk/actions/workflows/plugin-ci.yml)
+
+[ConfigCat Unreal SDK on GitHub](https://github.com/configcat/unreal-engine-sdk)
+
+## Getting Started[​](#getting-started "Direct link to Getting Started")
+
+### 1. Installing the ConfigCat plugin to your project[​](#1-installing-the-configcat-plugin-to-your-project "Direct link to 1. Installing the ConfigCat plugin to your project")
+
+Via **[Unreal Marketplace](https://www.unrealengine.com/marketplace/product/e142293a397d4ce4bf6a1f3053a2316d)**
+
+Via **[GitHub](https://github.com/configcat/unreal-engine-sdk)**
+
+Prequesities to building manually:
+
+* you are working in a [C++ project](https://docs.unrealengine.com/5.2/en-US/compiling-game-projects-in-unreal-engine-using-cplusplus/)
+* you've completed the [Visual Studio](https://docs.unrealengine.com/5.2/en-US/setting-up-visual-studio-development-environment-for-cplusplus-projects-in-unreal-engine/) or [Visual Studio Code](https://docs.unrealengine.com/5.2/en-US/setting-up-visual-studio-code-for-unreal-engine/) setup
+
+To download:
+
+* Create a `Plugins` folder in the root folder of your project (where the `.uproject` file is located).
+* Head to the download the latest [ConfigCat.zip](https://github.com/configcat/unreal-engine-sdk/releases/latest/download/ConfigCat.zip) archive or any of the previous versions from: [Releases](https://github.com/configcat/unreal-engine-sdk/releases)
+* Unzip the content inside the `Plugins` folder.
+
+Note: if you are using a locally built plugin, you will need to rebuild from source manually.
+
+### 2. Enable the ConfigCat plugin in your project[​](#2-enable-the-configcat-plugin-in-your-project "Direct link to 2. Enable the ConfigCat plugin in your project")
+
+![Unreal Engine enable plugin](/docs/assets/unreal/enable-plugin.png)
+
+Navigate to `Edit -> Plugins` and perform the following steps:
+
+1. Find the `ConfigCat` plugin and **tick** the enable checkbox.
+2. Press `Restart` to load up the editor.
+
+### 3. Set up the *ConfigCat* settings with your *SDK Key*[​](#3-set-up-the-configcat-settings-with-your-sdk-key "Direct link to 3-set-up-the-configcat-settings-with-your-sdk-key")
+
+You can configure all ConfigCat related settings inside the `Edit -> Project Settings -> Feature Flags -> ConfigCat`.
+
+![Unreal Engine plugin settings](/docs/assets/unreal/plugin-settings.png)
+
+| Properties                    | Description                                                                                                                                                                                                                                                                                                                         |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Sdk Key`                     | SDK Key to access your feature flags and settings. Get it from the *ConfigCat Dashboard*.                                                                                                                                                                                                                                           |
+| `Base Url`                    | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                           |
+| `Data Governance`             | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `Global`, `EuOnly`. |
+| `Connect Timeout`             | Optional, defaults to `8000ms`. Sets the amount of milliseconds to wait for the server to make the initial connection (i.e. completing the TCP connection handshake). `0` means it never times out during transfer                                                                                                                  |
+| `Read Timeout`                | Optional, defaults to `5000ms`. Sets the amount of milliseconds to wait for the server to respond before giving up. `0` means it never times out during transfer.                                                                                                                                                                   |
+| `Polling Mode`                | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                         |
+| `Auto Poll Interval`          | For PollingMode == Custom, sets at least how often this policy should fetch the latest config JSON and refresh the cache.                                                                                                                                                                                                           |
+| `Maximum Inititial Wait Time` | For PollingMode == Custom, sets the maximum waiting time between initialization and the first config acquisition in seconds.                                                                                                                                                                                                        |
+| `Cache Refresh Interval`      | For PollingMode == LazyLoad, sets how long the cache will store its value before fetching the latest from the network again.                                                                                                                                                                                                        |
+| `Proxies`                     | Optional, sets proxy addresses. e.g. { "https": "your\_proxy\_ip<!-- -->:your\_proxy\_port<!-- -->" } on each http request                                                                                                                                                                                                          |
+| `Proxy Authentications`       | Optional, sets proxy authentication on each http request.                                                                                                                                                                                                                                                                           |
+| `Start Offline`               | Optional, sets the SDK ot be initialized in offline mode.                                                                                                                                                                                                                                                                           |
+| `Auto Initialize`             | Optional, automatically initialization the SDK client. You can disable it if you want to manually initialize at a later stage.                                                                                                                                                                                                      |
+
+### 4. Get your setting value[​](#4-get-your-setting-value "Direct link to 4. Get your setting value")
+
+* Blueprints
+* C++
+
+![Unreal Engine Get Value](/docs/assets/unreal/blueprints-get-value.png)
+
+Add the ConfigCat Dependency to your `.Build.cs` file:
+
+```
+PrivateDependencyModuleNames.AddRange(new string[]
+{
+  "ConfigCat"
+});
+```
+
+Access feature flags:
+
+```
+#include "ConfigCatSubsystem.h"
+
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+bool bIsMyAwesomeFeatureEnabled = ConfigCat->GetBoolValue(TEXT("isMyAwesomeFeatureEnabled"), false);
+SetMyAwesomeFeatureEnabled(bIsMyAwesomeFeatureEnabled);
+```
+
+## Anatomy of `GetValue`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
+
+| Parameters      | Description                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
+| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+
+* Blueprints
+* C++
+
+![Unreal Engine Get Value Overloads](/docs/assets/unreal/blueprints-get-value-overloads.png)![Unreal Engine Get Values Targeted](/docs/assets/unreal/blueprints-get-value-targeted.png)
+
+Access value depending on type:
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+bool bMyFirstFeatureFlag = ConfigCat->GetBoolValue(TEXT("myFirstFeatureFlag"), false);
+int MySecondFeatureFlag = ConfigCat->GetIntValue(TEXT("mySecondFeatureFlag"), 0);
+double MyThirdFeatureFlag = ConfigCat->GetDoubleValue(TEXT("myThirdFeatureFlag"), 0.0);
+FString MyFourthFeatureFlag = ConfigCat->GetStringValue(TEXT("myForthFeatureFlag"), TEXT(""));
+```
+
+Access value depending on type targeting an user:
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#USER-IDENTIFIER#"));
+FString TargetValue = ConfigCat->GetStringValue(TEXT("targetValue"), TEXT(""), User);
+```
+
+## Anatomy of `GetValueDetails()`[​](#anatomy-of-getvaluedetails "Direct link to anatomy-of-getvaluedetails")
+
+`GetValueDetails()` is similar to `GetValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
+
+| Parameters      | Description                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Key`           | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
+| `Default Value` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+| `User`          | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+
+* Blueprints
+* C++
+
+![Unreal Engine Get Value Details](/docs/assets/unreal/blueprints-get-value-details.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#USER-IDENTIFIER#"));
+auto Details = ConfigCat->GetStringValueDetails(TEXT("myFeatureFlag"),  TEXT(""), User);
+```
+
+The `Details` result contains the following information:
+
+| Field                                | Description                                                                               |
+| ------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `Value`                              | The evaluated value of the feature flag or setting.                                       |
+| `Key`                                | The key of the evaluated feature flag or setting.                                         |
+| `Is Default Value`                   | True when the default value passed to `getValueDetails()` is returned due to an error.    |
+| `Error`                              | In case of an error, this field contains the error message.                               |
+| `User`                               | The User Object that was used for evaluation.                                             |
+| `Matched Evaluation Percentage Rule` | If the evaluation was based on a percentage rule, this field contains that specific rule. |
+| `Matched Evaluation Rule`            | If the evaluation was based on a Targeting Rule, this field contains that specific rule.  |
+| `FetchTime`                          | The last download time of the current config.                                             |
+
+## User Object[​](#user-object "Direct link to User Object")
+
+The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+
+* Blueprints
+* C++
+
+![Unreal Engine Create User](/docs/assets/unreal/blueprints-create-user.png)
+
+```
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+```
+
+### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
+
+| Argument  | Description                                                                                                                     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `Id`      | **REQUIRED.** Unique identifier of a user in your application. Can be any value, even an email address.                         |
+| `Email`   | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `Country` | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `Custom`  | Optional dictionary for custom attributes of a user for advanced Targeting Rule definitions. e.g. User role, Subscription type. |
+
+* Blueprints
+* C++
+
+![Unreal Engine Create User Custom](/docs/assets/unreal/blueprints-create-user-custom.png)
+
+```
+TMap<FString, FString> Attributes;
+Attributes.Emplace(TEXT("SubscriptionType"), TEXT("Pro"));
+Attributes.Emplace(TEXT("UserRole"), TEXT("Admin"));
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"), TEXT("john@example.com"), 
+  TEXT("United Kingdom"), Attributes);
+```
+
+### Default user[​](#default-user "Direct link to Default user")
+
+There's an option to set a default User Object that will be used at feature flag and setting evaluation. It can be useful when your application has a single user only, or rarely switches users.
+
+You can set the default User Object with the `setDefaultUser()` method of the ConfigCat client.
+
+* Blueprints
+* C++
+
+![Unreal Engine Set Default User](/docs/assets/unreal/blueprints-set-default-user.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+ConfigCat->SetDefaultUser(User);
+```
+
+Whenever the `GetValue()`, `GetValueDetails()`, `GetAllValues()`, or `GetAllValueDetails()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
+
+* Blueprints
+* C++
+
+![Unreal Engine Default User Example](/docs/assets/unreal/blueprints-default-user-example.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+ConfigCat->SetDefaultUser(User);
+
+// The default user will be used at the evaluation process.
+bool bMySetting = ConfigCat->GetBoolValue(TEXT("keyOfMySetting"), false);
+```
+
+When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
+
+* Blueprints
+* C++
+
+![Unreal Engine Other User Example](/docs/assets/unreal/blueprints-other-user-example.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+ConfigCat->SetDefaultUser(User);
+
+auto OtherUser = UConfigCatUserWrapper::CreateUser(TEXT("#OTHER-UNIQUE-USER-IDENTIFIER#"));
+
+// OtherUser will be used at the evaluation process.
+bool bMySetting = ConfigCat->GetBoolValue(TEXT("keyOfMySetting"), false, OtherUser);
+```
+
+For deleting the default user, you can do the following:
+
+* Blueprints
+* C++
+
+![Unreal Engine Clear Default User](/docs/assets/unreal/blueprints-clear-default-user.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+ConfigCat->ClearDefaultUser();
+```
+
+## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
+
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `GetValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+
+### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
+
+The *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN automatically every 60 seconds and stores it in the cache.
+
+![Unreal Engine Polling Mode Auto](/docs/assets/unreal/settings-polling-mode-auto.png)
+
+Available options:
+
+| Option Parameter          | Description                                                                                         | Default |
+| ------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
+| `Auto Poll Interval`      | Polling interval.                                                                                   | 60      |
+| `Max Inititial Wait Time` | Maximum waiting time between the client initialization and the first config acquisition in seconds. | 5       |
+
+### Lazy Loading[​](#lazy-loading "Direct link to Lazy Loading")
+
+When calling `getValue()`, the *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN only if it is not already present in the cache, or if the cache has expired. In this case `getValue()` will return the setting value after the cache is updated.
+
+![Unreal Engine Polling Mode Lazy](/docs/assets/unreal/settings-polling-mode-lazy.png)
+
+Available options:
+
+| Parameter                | Description | Default |
+| ------------------------ | ----------- | ------- |
+| `Cache Refresh Interval` | Cache TTL.  | 60      |
+
+### Manual Polling[​](#manual-polling "Direct link to Manual Polling")
+
+Manual polling gives you full control over when the config data is downloaded from the ConfigCat CDN. The *ConfigCat SDK* will not download it automatically. Calling `ForceRefresh()` is your application's responsibility.
+
+![Unreal Engine Polling Mode Manual](/docs/assets/unreal/settings-polling-mode-manual.png)
+
+* Blueprints
+* C++
+
+![Unreal Engine Manual Force Refresh](/docs/assets/unreal/blueprints-manual-force-refresh.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+ConfigCat->ForceRefresh();
+```
+
+> `GetValue()` returns `DefaultValue` if the cache is empty. Call `ForceRefresh()` to update the cache.
+
+## Delegates[​](#delegates "Direct link to Delegates")
+
+With the following delegates you can subscribe to particular events fired by the SDK:
+
+* `OnClientReady`: This event is sent when the SDK reaches the ready state. If the SDK is initialized with lazy load or manual polling, it's considered ready right after instantiation. If it's using auto polling, the ready state is reached when the SDK has a valid config JSON loaded into memory either from cache or from HTTP. If the config couldn't be loaded neither from cache nor from HTTP the `onClientReady` event fires when the auto polling's `maxInitWaitTimeInSeconds` is reached.
+
+* `OnConfigChanged`: This event is sent when the SDK loads a valid config JSON into memory from cache, and each subsequent time when the loaded config JSON changes via HTTP.
+
+* `OnFlagEvaluated`: This event is sent each time when the SDK evaluates a feature flag or setting. The event sends the same evaluation details that you would get from [`getValueDetails()`](#anatomy-of-getvaluedetails).
+
+* `OnError`: This event is sent when an error occurs within the ConfigCat SDK.
+
+You can subscribe to these events either on SDK initialization:
+
+* Blueprints
+* C++
+
+![Unreal Engine Blueprint Event Delegates](/docs/assets/unreal/blueprint-event-delegates.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+    
+ConfigCat->OnClientReady.AddWeakLambda(this, [](){ /* OnClientReady callback */ });
+ConfigCat->OnConfigChanged.AddWeakLambda(this, [](UConfigCatSettingsWrapper* Config){ /* OnConfigChanged callback */ });
+ConfigCat->OnFlagEvaluated.AddWeakLambda(this, [](UConfigCatEvaluationWrapper* Details){ /* OnFlagEvaluated callback */ });
+ConfigCat->OnError.AddWeakLambda(this, [](const FString& Error, const FString& Exception){ /* OnError callback */ });
+```
+
+## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
+
+In cases when you'd want to prevent the SDK from making HTTP calls, you can put it in offline mode with `SetOffline`.
+
+In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
+
+To put the SDK back in online mode, you can use `SetOnline`;
+
+> With `IsOffline` you can check whether the SDK is in offline mode.
+
+* Blueprints
+* C++
+
+![Unreal Engine Blueprint Offline Functionality](/docs/assets/unreal/blueprint-offline-functionality.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+ConfigCat->SetOffline();
+ConfigCat->SetOnline();
+bool bIsOffline = ConfigCat->IsOffline();
+```
+
+## Flag Overrides[​](#flag-overrides "Direct link to Flag Overrides")
+
+With flag overrides you can overwrite the feature flags & settings downloaded from the ConfigCat CDN with local values. Moreover, you can specify how the overrides should apply over the downloaded values. The following 3 behaviours are supported:
+
+* **Local only** (`OverrideBehaviour::LocalOnly`): When evaluating values, the SDK will not use feature flags & settings from the ConfigCat CDN, but it will use all feature flags & settings that are loaded from local-override sources.
+
+* **Local over remote** (`OverrideBehaviour::LocalOverRemote`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the local-override version will take precedence.
+
+* **Remote over local** (`OverrideBehaviour::RemoteOverLocal`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the downloaded version will take precedence.
+
+You can set up the SDK to load your feature flag & setting overrides from a file or a map.
+
+![Unreal Engine Settings Overrides](/docs/assets/unreal/settings-overrides.png)
+
+### JSON File[​](#json-file "Direct link to JSON File")
+
+The SDK can be set up to load your feature flag & setting overrides from a file.
+
+#### File[​](#file "Direct link to File")
+
+If specified the SDK will load the JSON data `%PROJECT_ROOT/Content/ConfigCat/flags.json` file. This file needs to be created manually in the specified folder to ensure it gets packaged in the final executable.
+
+Note: This file needs to be created in your file explorer and cannot be done within Unreal.
+
+#### JSON File Structure[​](#json-file-structure "Direct link to JSON File Structure")
+
+The SDK supports 2 types of JSON structures to describe feature flags & settings.
+
+##### 1. Simple (key-value) structure[​](#1-simple-key-value-structure "Direct link to 1. Simple (key-value) structure")
+
+```
+{
+  "flags": {
+    "enabledFeature": true,
+    "disabledFeature": false,
+    "intSetting": 5,
+    "doubleSetting": 3.14,
+    "stringSetting": "test"
+  }
+}
+```
+
+##### 2. Complex (full-featured) structure[​](#2-complex-full-featured-structure "Direct link to 2. Complex (full-featured) structure")
+
+This is the same format that the SDK downloads from the ConfigCat CDN. It allows the usage of all features that are available on the ConfigCat Dashboard.
+
+You can download your current config JSON from ConfigCat's CDN and use it as a baseline.
+
+A convenient way to get the config JSON for a specific SDK Key is to install the [ConfigCat CLI](https://github.com/configcat/cli) tool and execute the following command:
+
+```
+configcat config-json get -f v6 -p {YOUR-SDK-KEY} > config.json
+```
+
+(Depending on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings, you may need to add the `--eu` switch.)
+
+Alternatively, you can download the config JSON manually, based on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings:
+
+* GLOBAL: `https://cdn-global.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
+* EU: `https://cdn-eu.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
+
+```
+{
+  "p": {
+    // hash salt, required only when confidential text comparator(s) are used
+    "s": "80xCU/SlDz1lCiWFaxIBjyJeJecWjq46T4eu6GtozkM="
+  },
+  "s": [ // array of segments
+    {
+      "n": "Beta Users", // segment name
+      "r": [ // array of User Conditions (there is a logical AND relation between the elements)
+        {
+          "a": "Email", // comparison attribute
+          "c": 0, // comparator (see below)
+          "l": [ // comparison value (see below)
+            "john@example.com", "jane@example.com"
+          ]
+        }
+      ]
+    }
+  ],
+  "f": { // key-value map of feature flags & settings
+    "isFeatureEnabled": { // key of a particular flag / setting
+      "t": 0, // setting type, possible values:
+              // 0 -> on/off setting (feature flag)
+              // 1 -> text setting
+              // 2 -> whole number setting
+              // 3 -> decimal number setting
+      "r": [ // array of Targeting Rules (there is a logical OR relation between the elements)
+        {
+          "c": [ // array of conditions (there is a logical AND relation between the elements)
+            {
+              "u": { // User Condition
+                "a": "Email", // comparison attribute
+                "c": 2, // comparator, possible values and required comparison value types:
+                        // 0  -> IS ONE OF (cleartext) + string array comparison value ("l")
+                        // 1  -> IS NOT ONE OF (cleartext) + string array comparison value ("l")
+                        // 2  -> CONTAINS ANY OF (cleartext) + string array comparison value ("l")
+                        // 3  -> NOT CONTAINS ANY OF (cleartext) + string array comparison value ("l")
+                        // 4  -> IS ONE OF (semver) + semver string array comparison value ("l")
+                        // 5  -> IS NOT ONE OF (semver) + semver string array comparison value ("l")
+                        // 6  -> < (semver) + semver string comparison value ("s")
+                        // 7  -> <= (semver + semver string comparison value ("s")
+                        // 8  -> > (semver) + semver string comparison value ("s")
+                        // 9  -> >= (semver + semver string comparison value ("s")
+                        // 10 -> = (number) + number comparison value ("d")
+                        // 11 -> <> (number + number comparison value ("d")
+                        // 12 -> < (number) + number comparison value ("d")
+                        // 13 -> <= (number + number comparison value ("d")
+                        // 14 -> > (number) + number comparison value ("d")
+                        // 15 -> >= (number) + number comparison value ("d")
+                        // 16 -> IS ONE OF (hashed) + string array comparison value ("l")
+                        // 17 -> IS NOT ONE OF (hashed) + string array comparison value ("l")
+                        // 18 -> BEFORE (UTC datetime) + second-based Unix timestamp number comparison value ("d")
+                        // 19 -> AFTER (UTC datetime) + second-based Unix timestamp number comparison value ("d")
+                        // 20 -> EQUALS (hashed) + string comparison value ("s")
+                        // 21 -> NOT EQUALS (hashed) + string comparison value ("s")
+                        // 22 -> STARTS WITH ANY OF (hashed) + string array comparison value ("l")
+                        // 23 -> NOT STARTS WITH ANY OF (hashed) + string array comparison value ("l")
+                        // 24 -> ENDS WITH ANY OF (hashed) + string array comparison value ("l")
+                        // 25 -> NOT ENDS WITH ANY OF (hashed) + string array comparison value ("l")
+                        // 26 -> ARRAY CONTAINS ANY OF (hashed) + string array comparison value ("l")
+                        // 27 -> ARRAY NOT CONTAINS ANY OF (hashed) + string array comparison value ("l")
+                        // 28 -> EQUALS (cleartext) + string comparison value ("s")
+                        // 29 -> NOT EQUALS (cleartext) + string comparison value ("s")
+                        // 30 -> STARTS WITH ANY OF (cleartext) + string array comparison value ("l")
+                        // 31 -> NOT STARTS WITH ANY OF (cleartext) + string array comparison value ("l")
+                        // 32 -> ENDS WITH ANY OF (cleartext) + string array comparison value ("l")
+                        // 33 -> NOT ENDS WITH ANY OF (cleartext + string array comparison value ("l")
+                        // 34 -> ARRAY CONTAINS ANY OF (cleartext) + string array comparison value ("l")
+                        // 35 -> ARRAY NOT CONTAINS ANY OF (cleartext) + string array comparison value ("l")
+                "l": [ // comparison value - depending on the comparator, another type of value may need
+                       // to be specified (see above):
+                       // "s": string
+                       // "d": number
+                  "@example.com"
+                ]
+              }
+            },
+            {
+              "p": { // Flag Condition (Prerequisite)
+                "f": "mainIntFlag", // key of prerequisite flag
+                "c": 0, // comparator, possible values: 0 -> EQUALS, 1 -> NOT EQUALS
+                "v": { // comparison value (value's type must match the prerequisite flag's type)
+                  "i": 42
+                }
+              }
+            },
+            {
+              "s": { // Segment Condition
+                "s": 0, // segment index, a valid index into the top-level segment array ("s")
+                "c": 1 // comparator, possible values: 0 -> IS IN SEGMENT, 1 -> IS NOT IN SEGMENT
+              }
+            }
+          ],
+          "s": { // alternatively, an array of Percentage Options ("p", see below) can also be specified
+            "v": { // the value served when the rule is selected during evaluation
+              "b": true
+            },
+            "i": "bcfb84a7"
+          }
+        }
+      ],
+      "p": [ // array of Percentage Options
+        {
+          "p": 10, // % value
+          "v": { // the value served when the Percentage Option is selected during evaluation
+            "b": true
+          },
+          "i": "bcfb84a7"
+        },
+        {
+          "p": 90,
+          "v": {
+            "b": false
+          },
+          "i": "bddac6ae"
+        }
+      ],
+      "v": { // fallback value, served when none of the Targeting Rules match,
+             // no Percentage Options are defined or evaluation of these is not possible
+        "b": false // depending on the setting type, another type of value may need to be specified:
+                   // text setting -> "s": string
+                   // whole number setting -> "i": number
+                   // decimal number setting -> "d": number
+      },
+      "i": "430bded3" // variation id (for analytical purposes)
+    }
+  }
+}
+```
+
+For a more comprehensive specification of the config JSON v6 format, you may refer to [this JSON schema document](https://github.com/configcat/config-json/blob/main/V6/config.schema.json).
+
+### Map[​](#map "Direct link to Map")
+
+You can set up the SDK to load your feature flag & setting overrides from a map.
+
+**Coming soon**: [Support for Flag overrides via Map #8](https://github.com/configcat/unreal-engine-sdk/issues/8)
+
+info
+
+The Unreal Engine SDK doesn't support programmatically setting a flag map override currently.
+
+## `GetAllKeys()`[​](#getallkeys "Direct link to getallkeys")
+
+You can get the keys for all available feature flags and settings by calling the `getAllKeys()` method.
+
+* Blueprints
+* C++
+
+![Unreal Engine Get All Keys](/docs/assets/unreal/blueprints-get-all-keys.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+TArray<FString> Keys = ConfigCat->GetAllKeys();
+```
+
+## `GetAllValues()`[​](#getallvalues "Direct link to getallvalues")
+
+Evaluates and returns the values of all feature flags and settings. Passing a User Object is optional.
+
+* Blueprints
+* C++
+
+![Unreal Engine Get All Values](/docs/assets/unreal/blueprints-get-all-values.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+TMap<FString, UConfigCatValueWrapper*> SettingValues = ConfigCat->GetAllValues();
+
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+TMap<FString, UConfigCatValueWrapper*> SettingValuesTargeting = ConfigCat->GetAllValues(User);
+```
+
+## `GetAllValueDetails`[​](#getallvaluedetails "Direct link to getallvaluedetails")
+
+Evaluates and returns the detailed values of all feature flags and settings. Passing a [User Object](#user-object) is optional.
+
+* Blueprints
+* C++
+
+![Unreal Engine Get All Value Details](/docs/assets/unreal/blueprints-get-all-value-details.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+auto User = UConfigCatUserWrapper::CreateUser(TEXT("#UNIQUE-USER-IDENTIFIER#"));
+
+TArray<UConfigCatEvaluationWrapper*> AllValueDetails = ConfigCat->GetAllValueDetails(User);
+```
+
+## Custom Cache[​](#custom-cache "Direct link to Custom Cache")
+
+**Coming soon**: [Support for Custom Cache #9](https://github.com/configcat/unreal-engine-sdk/issues/9)
+
+info
+
+The Unreal Engine SDK doesn't support custom cache implementations currently.
+
+## Force refresh[​](#force-refresh "Direct link to Force refresh")
+
+Call the `forceRefresh()` method on the client to download the latest config JSON and update the cache.
+
+* Blueprints
+* C++
+
+![Unreal Engine Blueprint Force Refresh](/docs/assets/unreal/blueprints-force-refresh.png)
+
+```
+UConfigCatSubsystem* ConfigCat = UConfigCatSubsystem::Get(this);
+
+ConfigCat->ForceRefresh();
+```
+
+## Using ConfigCat behind a proxy[​](#using-configcat-behind-a-proxy "Direct link to Using ConfigCat behind a proxy")
+
+info
+
+The Unreal Engine HTTP module doesn't support running behinde a proxy.
+
+## Changing the default HTTP timeout[​](#changing-the-default-http-timeout "Direct link to Changing the default HTTP timeout")
+
+Set the maximum wait time for a ConfigCat HTTP response by changing the *ConnectTimeoutMs* or *ReadTimeoutMs* in the ConfigCat `ProjectSettings`. The default *ConnectTimeoutMs* is 8 seconds. The default *ReadTimeoutMs* is 5 seconds.
+
+![Unreal Engine Settings Http Timeout](/docs/assets/unreal/settings-http-timeout.png)
+
+## Logging[​](#logging "Direct link to Logging")
+
+All ConfigCat logs are inside the `LogConfigCat` category. By default the verbosity is set to `Log`, but it can be changed to any [Verbosity Level](https://docs.unrealengine.com/5.3/en-US/logging-in-unreal-engine/#logverbosity).
+
+The verbosity can be changed:
+
+Via **Command line arguments**:
+
+Run the executable with `-LogCmds="LogConfigCat VerbosityLevel"`. For example: `-LogCmds="LogConfigCat Warning"` to only show warnings and above.
+
+Via **DefaultEngine.ini**:
+
+In the `[Core.Log]` category add `LogConfigCat=VerbosityLevel` inside the `DefaultEngine.ini`. For example:
+
+```
+[Core.Log]
+LogConfigCat=Warning ;to only show warnings and above
+```
+
+Note: Since the Unreal Engine SDK is a wrapper of the CPP SDK, all logs coming from the CPP SDK are tagged wtih `[CPP-SDK]`.
+
+Info level logging helps to inspect how a feature flag was evaluated:
+
+```
+[Info]: Evaluating getValue(isPOCFeatureEnabled)
+User object: {
+    "Email": "john@example.com",
+    "Identifier": "435170f4-8a8b-4b67-a723-505ac7cdea92",
+}
+Evaluating rule: [Email:john@example.com] [CONTAINS] [@something.com] => no match
+Evaluating rule: [Email:john@example.com] [CONTAINS] [@example.com] => match, returning: true
+```
+
+## Sensitive information handling[​](#sensitive-information-handling "Direct link to Sensitive information handling")
+
+The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is [downloading a config JSON](https://configcat.com/docs/docs/requests/.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
+
+If you do not want to expose the SDK key or the content of the config JSON file, we recommend using the SDK in your backend components only. You can always create a backend endpoint using the ConfigCat SDK that can evaluate feature flags for a specific user, and call that backend endpoint from your frontend/mobile applications.
+
+Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
+
+## Sample Applications[​](#sample-applications "Direct link to Sample Applications")
+
+Check out our Sample Application how they use the ConfigCat SDK
+
+* [ConfigCat Unreal Engine SDK Sample App](https://github.com/configcat-labs/configcat-unreal-fps-sample)
+
+## Look Under the Hood[​](#look-under-the-hood "Direct link to Look Under the Hood")
+
+* [ConfigCat Unreal Engine SDK's repository on GitHub](https://github.com/configcat/unreal-engine-sdk)

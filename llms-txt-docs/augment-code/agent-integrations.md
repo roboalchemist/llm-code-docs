@@ -1,14 +1,24 @@
-# Source: https://docs.augmentcode.com/jetbrains/setup-augment/agent-integrations.md
+# Source: https://docs.augmentcode.com/setup-augment/agent-integrations.md
 
 # Agent Integrations
 
-> Configure integrations for Augment Agent to access external services like GitHub, Linear, Jira, Confluence, and Notion.
+> Configure integrations for Augment Agent to access external services like GitHub, Linear, Jira, Confluence, Notion, Sentry, and Stripe.
 
 export const Keyboard = ({shortcut}) => <span className="inline-block border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-gray-800 rounded-md text-xs text-gray font-bold px-1 py-0.5">
     {shortcut}
   </span>;
 
 export const Command = ({text}) => <span className="font-bold">{text}</span>;
+
+export const StripeLogo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.274 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" fill="currentColor" />
+  </svg>;
+
+export const SentryLogo = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor" />
+    <path d="M12 6c-3.31 0-6 2.69-6 6h2c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4v2c3.31 0 6-2.69 6-6s-2.69-6-6-6z" fill="currentColor" />
+    <circle cx="12" cy="12" r="2" fill="currentColor" />
+  </svg>;
 
 export const GleanLogo = () => <svg width="24" height="24" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" clip-rule="evenodd" d="M8.95113 2.67649L10.2775 1L11.887 2.24179L10.5704 3.906C11.25 4.70862 11.6591 5.74239 11.6591 6.87053C11.6591 9.42425 9.56277 11.4945 6.9768 11.4945C4.39084 11.4945 2.29451 9.42425 2.29451 6.87053C2.29451 4.31677 4.39084 2.24655 6.9768 2.24655C7.68222 2.24655 8.35119 2.4006 8.95113 2.67649ZM6.9768 9.50853C5.50146 9.50853 4.30546 8.32747 4.30546 6.87053C4.30546 5.41358 5.50146 4.23245 6.9768 4.23245C8.45215 4.23245 9.64814 5.41358 9.64814 6.87053C9.64814 8.32747 8.45215 9.50853 6.9768 9.50853ZM11.7135 10.8261C11.5975 10.9618 11.4753 11.0913 11.3477 11.2173C11.2202 11.3424 11.0873 11.4622 10.949 11.5758C10.8116 11.6894 10.6689 11.7969 10.5208 11.8982C10.3736 11.9995 10.2211 12.0955 10.065 12.1837C9.90978 12.2726 9.75012 12.3537 9.58684 12.4286C9.42448 12.5034 9.25856 12.5712 9.08906 12.6311C8.92046 12.6919 8.74919 12.7448 8.57434 12.7898C8.40217 12.8365 8.22645 12.8743 8.04892 12.9043C7.87319 12.9351 7.69478 12.958 7.51459 12.973C7.33706 12.988 7.15776 12.9959 6.97667 12.9959C6.79558 12.9959 6.61628 12.988 6.43876 12.973C6.25856 12.958 6.08016 12.9351 5.90441 12.9043C5.7269 12.8743 5.55116 12.8365 5.379 12.7898L4.85357 14.726C5.08194 14.7868 5.31565 14.838 5.55206 14.8784C5.78488 14.919 6.02217 14.9498 6.26213 14.9692C6.49763 14.9895 6.73582 15 6.97667 15C7.21753 15 7.4557 14.9895 7.69121 14.9692C7.93117 14.9498 8.16756 14.919 8.40129 14.8784C8.63768 14.838 8.87051 14.7868 9.09977 14.726C9.33171 14.6662 9.56007 14.5957 9.7831 14.5147C10.0088 14.4345 10.2291 14.3446 10.445 14.2451C10.6617 14.1455 10.8741 14.0372 11.0802 13.92C11.2871 13.802 11.4887 13.6751 11.684 13.5394C11.8803 13.4047 12.0704 13.2619 12.2532 13.1104C12.437 12.9589 12.6136 12.8003 12.7822 12.6338C12.9517 12.4673 13.1131 12.2946 13.2675 12.1141C13.4218 11.9343 13.5681 11.7467 13.7055 11.5538L12.0435 10.4041C11.9401 10.5495 11.8295 10.6905 11.7135 10.8261Z" fill="currentColor" />
@@ -41,26 +51,14 @@ Once set up, Augment Agent will automatically use the appropriate integration ba
 
 ## Setting Up Integrations
 
-To set up integrations with Augment Agent in JetBrains IDEs, follow these steps:
+To set up integrations with Augment Agent in VS Code, follow these steps:
 
-1. Click the Augment icon in the bottom right of your IDE and select <Command text="Tools Settings" />
+1. Click the settings icon in the top right of Augment's chat window or press <Keyboard shortcut="Cmd/Ctrl Shift P" /> and select <Command text="Show Settings Panel" />
 2. Click "Connect" for the integration you want to set up
 
 <img className="block rounded-xl" src="https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=8e1cb7e476ff72baf79853e1a396061a" alt="Set up integrations in the settings page" data-og-width="1096" width="1096" data-og-height="598" height="598" data-path="images/integration-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=280&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=6b58b42005ec712d925971f18e71f0df 280w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=560&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=b0347aaa6924edd4a61a6ed59e70f84c 560w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=840&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=50b67616fb88ab7b1620628cf09c5c40 840w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=1100&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=66664659b4ca1d32c356fbf0e72b2778 1100w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=1650&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=ccfd90b3fe548564b1c3482f5d4d0e95 1650w, https://mintcdn.com/augment-mtje7p526w/r-azeXhOS4FbEUi5/images/integration-settings.png?w=2500&fit=max&auto=format&n=r-azeXhOS4FbEUi5&q=85&s=f78ecdd094cea06ca826da1580683efc 2500w" />
 
 You'll be redirected to authorize the integration with the appropriate service. After authorization, the integration will be available for use with Augment Agent.
-
-## Easy MCP Integrations
-
-> **New:** Easy MCP launched ONLY July 30, 2025, providing one-click access to popular developer tools.
-
-Easy MCP transforms complex MCP server setup into a single click. Available integrations include:
-
-* **CircleCI** - Build logs, test insights, and flaky-test detection
-* **MongoDB** - Data exploration, database management, and context-aware code generation
-* **Redis** - Keyspace introspection, TTL audits, and migration helpers
-
-For detailed setup instructions and examples, see [Configure MCP servers](/jetbrains/setup-augment/mcp).
 
 ## Native Integrations
 
@@ -74,7 +72,7 @@ Add additional context to your requests and take actions. Pull in information fr
 * "Find all issues assigned to me"
 * "Check the CI status of my latest commit"
 
-For authorization details, see [GitHub documentation](https://docs.github.com/en/apps/using-github-apps/installing-a-github-app-from-a-third-party).
+For authorization details, see [GitHub documentation](https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/authorizing-oauth-apps).
 
 ## <div className="flex items-center gap-2"><div className="w-6 h-6"><LinearLogo /></div> Linear Integration</div>
 
@@ -141,7 +139,33 @@ The Glean integration lets the agent retrieve information from your team's inter
 * "Search Glean for past related incidents and how they were resolved"
 * "Search Glean for why we're migrating to a new payment processor"
 
+## Enhanced Native Integrations
+
+> **New:** Enhanced native integrations for Sentry and Stripe launched on July 30, 2025, providing deeper, more seamless access to your error tracking and payment data.
+
+### <div className="flex items-center gap-2"><div className="w-6 h-6"><SentryLogo /></div> Sentry Integration</div>
+
+Search issues, errors, traces, logs, and releases. Create RCAs and AI-Generated fixes with Seer integration for comprehensive error tracking and resolution.
+
+#### Examples
+
+* "Diagnose the top unresolved crashes in my React Native app and propose fixes"
+* "Show me all errors from the latest release and their impact"
+* "Create a root cause analysis for the payment processing errors"
+* "Find similar issues that were resolved and suggest fixes"
+
+### <div className="flex items-center gap-2"><div className="w-6 h-6"><StripeLogo /></div> Stripe Integration</div>
+
+Real-time payment events, refund status, subscription metrics, and secure tokenization. Available via both remote and local MCP servers with OAuth MCP support in public preview.
+
+#### Examples
+
+* "Create a dashboard showing failed payment intents in the last 24 hours and suggest retry logic"
+* "Analyze subscription churn patterns and recommend retention strategies"
+* "Show me all refunds processed this week and their reasons"
+* "Generate a report on payment method performance"
+
 ## Next Steps
 
-* [Configure additional tools with Easy MCP or advanced MCP setup](/jetbrains/setup-augment/mcp)
+* [Configure additional tools with Easy MCP or advanced MCP setup](/setup-augment/mcp)
 * Explore one-click integrations for CircleCI, MongoDB, and Redis through Easy MCP

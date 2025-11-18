@@ -1,0 +1,18 @@
+# Source: https://docs.embedchain.ai/components/data-sources/docx.md
+
+# 📄 Docx file
+
+### Docx file
+
+To add any doc/docx file, use the data\_type as `docx`. `docx` allows remote urls and conventional file paths. Eg:
+
+```python
+from embedchain import App
+
+app = App()
+app.add('https://example.com/content/intro.docx', data_type="docx")
+# Or add file using the local file path on your system
+# app.add('content/intro.docx', data_type="docx")
+
+app.query("Summarize the docx data?")
+```

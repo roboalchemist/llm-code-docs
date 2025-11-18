@@ -1,0 +1,49 @@
+# Source: https://configcat.com/docs/api/reference/members.md
+
+# Members
+
+With these endpoints you can manage your Members.
+
+[Here](https://configcat.com/docs/docs/advanced/team-management/team-management-basics/.md) you can read more about Team Management.
+
+<!-- -->
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Organization Members](https://configcat.com/docs/docs/api/reference/get-organization-members/.md)
+
+[This endpoint returns the list of Members that belongs](https://configcat.com/docs/docs/api/reference/get-organization-members/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Organization Members](https://configcat.com/docs/docs/api/reference/get-organization-members-v-2/.md)
+
+[This endpoint returns the list of Members that belongs](https://configcat.com/docs/docs/api/reference/get-organization-members-v-2/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Pending Invitations in Organization](https://configcat.com/docs/docs/api/reference/get-pending-invitations-org/.md)
+
+[This endpoint returns the list of pending invitations within the](https://configcat.com/docs/docs/api/reference/get-pending-invitations-org/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Pending Invitations in Product](https://configcat.com/docs/docs/api/reference/get-pending-invitations/.md)
+
+[This endpoint returns the list of pending invitations within the](https://configcat.com/docs/docs/api/reference/get-pending-invitations/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Product Members](https://configcat.com/docs/docs/api/reference/get-product-members/.md)
+
+[This endpoint returns the list of Members that belongs](https://configcat.com/docs/docs/api/reference/get-product-members/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Invite Member](https://configcat.com/docs/docs/api/reference/invite-member/.md)
+
+[This endpoint invites a Member into the given Product identified by the \`productId\` parameter.](https://configcat.com/docs/docs/api/reference/invite-member/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Update Member Permissions](https://configcat.com/docs/docs/api/reference/add-member-to-group/.md)
+
+[This endpoint updates the permissions of a Member identified by the \`userId\`.](https://configcat.com/docs/docs/api/reference/add-member-to-group/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Delete Member from Organization](https://configcat.com/docs/docs/api/reference/delete-organization-member/.md)
+
+[This endpoint removes a Member identified by the \`userId\` from the](https://configcat.com/docs/docs/api/reference/delete-organization-member/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Delete Invitation](https://configcat.com/docs/docs/api/reference/delete-invitation/.md)
+
+[This endpoint removes an Invitation identified by the \`invitationId\` parameter.](https://configcat.com/docs/docs/api/reference/delete-invitation/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Delete Member from Product](https://configcat.com/docs/docs/api/reference/delete-product-member/.md)
+
+[This endpoint removes a Member identified by the \`userId\` from the](https://configcat.com/docs/docs/api/reference/delete-product-member/.md)

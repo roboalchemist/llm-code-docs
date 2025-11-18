@@ -2233,7 +2233,7 @@ Each preset can manage:
 ## Quick Start
 
 1. [Create a preset](/settings/presets). For example, select a model and restrict provider routing to just a few providers.
-   ![Creating a new preset](file:21496e7b-341a-4cee-ad45-fc72ab7aaba8 "A new preset")
+   ![Creating a new preset](file:8697659e-4b3a-4e17-8a50-4347aa52875a "A new preset")
 
 2. Make an API request to the preset:
 
@@ -5259,6 +5259,10 @@ OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for vi
 <Info>
   **Important:** Video URL support varies by provider. OpenRouter only sends video URLs to providers that explicitly support them. For example, Google Gemini on AI Studio only supports YouTube links (not Vertex AI).
 </Info>
+
+<Warning>
+  **API Only:** Video inputs are currently only supported via the API. Video uploads are not available in the OpenRouter chatroom interface at this time.
+</Warning>
 
 ## Video Inputs
 
@@ -12009,32 +12013,6 @@ components:
     ProviderName:
       type: string
       enum:
-        - value: AnyScale
-        - value: Atoma
-        - value: Cent-ML
-        - value: CrofAI
-        - value: Enfer
-        - value: HuggingFace
-        - value: Hyperbolic 2
-        - value: InoCloud
-        - value: Kluster
-        - value: Lambda
-        - value: Lepton
-        - value: Lynn 2
-        - value: Lynn
-        - value: Mancer
-        - value: Meta
-        - value: Modal
-        - value: Nineteen
-        - value: OctoAI
-        - value: Recursal
-        - value: Reflection
-        - value: Replicate
-        - value: SambaNova 2
-        - value: SF Compute
-        - value: Together 2
-        - value: Ubicloud
-        - value: 01.AI
         - value: AI21
         - value: AionLabs
         - value: Alibaba
@@ -12045,6 +12023,7 @@ components:
         - value: Avian
         - value: Azure
         - value: BaseTen
+        - value: Black Forest Labs
         - value: Cerebras
         - value: Chutes
         - value: Cirrascale
@@ -14077,32 +14056,6 @@ components:
     ProviderName:
       type: string
       enum:
-        - value: AnyScale
-        - value: Atoma
-        - value: Cent-ML
-        - value: CrofAI
-        - value: Enfer
-        - value: HuggingFace
-        - value: Hyperbolic 2
-        - value: InoCloud
-        - value: Kluster
-        - value: Lambda
-        - value: Lepton
-        - value: Lynn 2
-        - value: Lynn
-        - value: Mancer
-        - value: Meta
-        - value: Modal
-        - value: Nineteen
-        - value: OctoAI
-        - value: Recursal
-        - value: Reflection
-        - value: Replicate
-        - value: SambaNova 2
-        - value: SF Compute
-        - value: Together 2
-        - value: Ubicloud
-        - value: 01.AI
         - value: AI21
         - value: AionLabs
         - value: Alibaba
@@ -14113,6 +14066,7 @@ components:
         - value: Avian
         - value: Azure
         - value: BaseTen
+        - value: Black Forest Labs
         - value: Cerebras
         - value: Chutes
         - value: Cirrascale
@@ -16545,32 +16499,6 @@ components:
     ProviderName:
       type: string
       enum:
-        - value: AnyScale
-        - value: Atoma
-        - value: Cent-ML
-        - value: CrofAI
-        - value: Enfer
-        - value: HuggingFace
-        - value: Hyperbolic 2
-        - value: InoCloud
-        - value: Kluster
-        - value: Lambda
-        - value: Lepton
-        - value: Lynn 2
-        - value: Lynn
-        - value: Mancer
-        - value: Meta
-        - value: Modal
-        - value: Nineteen
-        - value: OctoAI
-        - value: Recursal
-        - value: Reflection
-        - value: Replicate
-        - value: SambaNova 2
-        - value: SF Compute
-        - value: Together 2
-        - value: Ubicloud
-        - value: 01.AI
         - value: AI21
         - value: AionLabs
         - value: Alibaba
@@ -16581,6 +16509,7 @@ components:
         - value: Avian
         - value: Azure
         - value: BaseTen
+        - value: Black Forest Labs
         - value: Cerebras
         - value: Chutes
         - value: Cirrascale
@@ -16961,32 +16890,6 @@ components:
     ProviderName:
       type: string
       enum:
-        - value: AnyScale
-        - value: Atoma
-        - value: Cent-ML
-        - value: CrofAI
-        - value: Enfer
-        - value: HuggingFace
-        - value: Hyperbolic 2
-        - value: InoCloud
-        - value: Kluster
-        - value: Lambda
-        - value: Lepton
-        - value: Lynn 2
-        - value: Lynn
-        - value: Mancer
-        - value: Meta
-        - value: Modal
-        - value: Nineteen
-        - value: OctoAI
-        - value: Recursal
-        - value: Reflection
-        - value: Replicate
-        - value: SambaNova 2
-        - value: SF Compute
-        - value: Together 2
-        - value: Ubicloud
-        - value: 01.AI
         - value: AI21
         - value: AionLabs
         - value: Alibaba
@@ -16997,6 +16900,7 @@ components:
         - value: Avian
         - value: Azure
         - value: BaseTen
+        - value: Black Forest Labs
         - value: Cerebras
         - value: Chutes
         - value: Cirrascale
@@ -17347,6 +17251,7 @@ components:
         - value: Avian
         - value: Azure
         - value: BaseTen
+        - value: Black Forest Labs
         - value: Cerebras
         - value: Chutes
         - value: Cirrascale
@@ -27070,7 +26975,7 @@ The `code_challenge` parameter is optional but recommended.
 
 Your user will be prompted to log in to OpenRouter and authorize your app. After authorization, they will be redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](file:0df8224a-d421-4ed0-8d85-37993b5817ca)
+![Alt text](file:01011d67-295c-4b6f-8df6-217baa0874b9)
 
 <Tip title="Use SHA-256 for Maximum Security">
   For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
@@ -27108,7 +27013,7 @@ When moving to production, replace the localhost/private referrer URL with a pub
 
 After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:
 
-![Alt text](file:6ecfefb0-90df-4469-a1c9-2e7db4df8189)
+![Alt text](file:80699040-995b-4ba6-930c-75ab2edb4c38)
 
 Extract this code using the browser API:
 
@@ -28252,6 +28157,10 @@ effort\_ratio is 0.8 for high effort, 0.5 for medium effort, 0.2 for low effort,
     </li>
 
     <li>
+      All Gemini Reasoning models
+    </li>
+
+    <li>
       All xAI reasoning models
     </li>
 
@@ -28280,142 +28189,6 @@ Preserving reasoning blocks is useful specifically for tool calling. When models
   reasoning blocks must match the outputs generated by the model during the
   original request; you cannot rearrange or modify the sequence of these blocks.
 </Note>
-
-## Responses API Shape
-
-When reasoning models generate responses, the reasoning information is structured in a standardized format through the `reasoning_details` array. This section documents the API response structure for reasoning details in both streaming and non-streaming responses.
-
-### reasoning\_details Array Structure
-
-The `reasoning_details` field contains an array of reasoning detail objects. Each object in the array represents a specific piece of reasoning information and follows one of three possible types. The location of this array differs between streaming and non-streaming responses:
-
-* **Non-streaming responses**: `reasoning_details` appears in `choices[].message.reasoning_details`
-* **Streaming responses**: `reasoning_details` appears in `choices[].delta.reasoning_details` for each chunk
-
-#### Common Fields
-
-All reasoning detail objects share these common fields:
-
-* `id` (string | null): Unique identifier for the reasoning detail
-* `format` (string): The format of the reasoning detail, with possible values:
-  * `"unknown"` - Format is not specified
-  * `"openai-responses-v1"` - OpenAI responses format version 1
-  * `"xai-responses-v1"` - xAI responses format version 1
-  * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)
-* `index` (number, optional): Sequential index of the reasoning detail
-
-#### Reasoning Detail Types
-
-**1. Summary Type (`reasoning.summary`)**
-
-Contains a high-level summary of the reasoning process:
-
-```json
-{
-  "type": "reasoning.summary",
-  "summary": "The model analyzed the problem by first identifying key constraints, then evaluating possible solutions...",
-  "id": "reasoning-summary-1",
-  "format": "anthropic-claude-v1",
-  "index": 0
-}
-```
-
-**2. Encrypted Type (`reasoning.encrypted`)**
-
-Contains encrypted reasoning data that may be redacted or protected:
-
-```json
-{
-  "type": "reasoning.encrypted",
-  "data": "eyJlbmNyeXB0ZWQiOiJ0cnVlIiwiY29udGVudCI6IltSRURBQ1RFRF0ifQ==",
-  "id": "reasoning-encrypted-1",
-  "format": "anthropic-claude-v1",
-  "index": 1
-}
-```
-
-**3. Text Type (`reasoning.text`)**
-
-Contains raw text reasoning with optional signature verification:
-
-```json
-{
-  "type": "reasoning.text",
-  "text": "Let me think through this step by step:\n1. First, I need to understand the user's question...",
-  "signature": "sha256:abc123def456...",
-  "id": "reasoning-text-1",
-  "format": "anthropic-claude-v1",
-  "index": 2
-}
-```
-
-### Response Examples
-
-#### Non-Streaming Response
-
-In non-streaming responses, `reasoning_details` appears in the message:
-
-```json
-{
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "Based on my analysis, I recommend the following approach...",
-        "reasoning_details": [
-          {
-            "type": "reasoning.summary",
-            "summary": "Analyzed the problem by breaking it into components",
-            "id": "reasoning-summary-1",
-            "format": "anthropic-claude-v1",
-            "index": 0
-          },
-          {
-            "type": "reasoning.text",
-            "text": "Let me work through this systematically:\n1. First consideration...\n2. Second consideration...",
-            "signature": null,
-            "id": "reasoning-text-1",
-            "format": "anthropic-claude-v1",
-            "index": 1
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-#### Streaming Response
-
-In streaming responses, `reasoning_details` appears in delta chunks as the reasoning is generated:
-
-```json
-{
-  "choices": [
-    {
-      "delta": {
-        "reasoning_details": [
-          {
-            "type": "reasoning.text",
-            "text": "Let me think about this step by step...",
-            "signature": null,
-            "id": "reasoning-text-1",
-            "format": "anthropic-claude-v1",
-            "index": 0
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-**Streaming Behavior Notes:**
-
-* Each reasoning detail chunk is sent as it becomes available
-* The `reasoning_details` array in each chunk may contain one or more reasoning objects
-* For encrypted reasoning, the content may appear as `[REDACTED]` in streaming responses
-* The complete reasoning sequence is built by concatenating all chunks in order
 
 ### Example: Preserving Reasoning Blocks with OpenRouter and Claude
 
@@ -28571,6 +28344,142 @@ In streaming responses, `reasoning_details` appears in delta chunks as the reaso
 For more detailed information about thinking encryption, redacted blocks, and advanced use cases, see [Anthropic's documentation on extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/tool-use#extended-thinking).
 
 For more information about OpenAI reasoning models, see [OpenAI's reasoning documentation](https://platform.openai.com/docs/guides/reasoning#keeping-reasoning-items-in-context).
+
+## Responses API Shape
+
+When reasoning models generate responses, the reasoning information is structured in a standardized format through the `reasoning_details` array. This section documents the API response structure for reasoning details in both streaming and non-streaming responses.
+
+### reasoning\_details Array Structure
+
+The `reasoning_details` field contains an array of reasoning detail objects. Each object in the array represents a specific piece of reasoning information and follows one of three possible types. The location of this array differs between streaming and non-streaming responses:
+
+* **Non-streaming responses**: `reasoning_details` appears in `choices[].message.reasoning_details`
+* **Streaming responses**: `reasoning_details` appears in `choices[].delta.reasoning_details` for each chunk
+
+#### Common Fields
+
+All reasoning detail objects share these common fields:
+
+* `id` (string | null): Unique identifier for the reasoning detail
+* `format` (string): The format of the reasoning detail, with possible values:
+  * `"unknown"` - Format is not specified
+  * `"openai-responses-v1"` - OpenAI responses format version 1
+  * `"xai-responses-v1"` - xAI responses format version 1
+  * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)
+* `index` (number, optional): Sequential index of the reasoning detail
+
+#### Reasoning Detail Types
+
+**1. Summary Type (`reasoning.summary`)**
+
+Contains a high-level summary of the reasoning process:
+
+```json
+{
+  "type": "reasoning.summary",
+  "summary": "The model analyzed the problem by first identifying key constraints, then evaluating possible solutions...",
+  "id": "reasoning-summary-1",
+  "format": "anthropic-claude-v1",
+  "index": 0
+}
+```
+
+**2. Encrypted Type (`reasoning.encrypted`)**
+
+Contains encrypted reasoning data that may be redacted or protected:
+
+```json
+{
+  "type": "reasoning.encrypted",
+  "data": "eyJlbmNyeXB0ZWQiOiJ0cnVlIiwiY29udGVudCI6IltSRURBQ1RFRF0ifQ==",
+  "id": "reasoning-encrypted-1",
+  "format": "anthropic-claude-v1",
+  "index": 1
+}
+```
+
+**3. Text Type (`reasoning.text`)**
+
+Contains raw text reasoning with optional signature verification:
+
+```json
+{
+  "type": "reasoning.text",
+  "text": "Let me think through this step by step:\n1. First, I need to understand the user's question...",
+  "signature": "sha256:abc123def456...",
+  "id": "reasoning-text-1",
+  "format": "anthropic-claude-v1",
+  "index": 2
+}
+```
+
+### Response Examples
+
+#### Non-Streaming Response
+
+In non-streaming responses, `reasoning_details` appears in the message:
+
+```json
+{
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "Based on my analysis, I recommend the following approach...",
+        "reasoning_details": [
+          {
+            "type": "reasoning.summary",
+            "summary": "Analyzed the problem by breaking it into components",
+            "id": "reasoning-summary-1",
+            "format": "anthropic-claude-v1",
+            "index": 0
+          },
+          {
+            "type": "reasoning.text",
+            "text": "Let me work through this systematically:\n1. First consideration...\n2. Second consideration...",
+            "signature": null,
+            "id": "reasoning-text-1",
+            "format": "anthropic-claude-v1",
+            "index": 1
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+#### Streaming Response
+
+In streaming responses, `reasoning_details` appears in delta chunks as the reasoning is generated:
+
+```json
+{
+  "choices": [
+    {
+      "delta": {
+        "reasoning_details": [
+          {
+            "type": "reasoning.text",
+            "text": "Let me think about this step by step...",
+            "signature": null,
+            "id": "reasoning-text-1",
+            "format": "anthropic-claude-v1",
+            "index": 0
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Streaming Behavior Notes:**
+
+* Each reasoning detail chunk is sent as it becomes available
+* The `reasoning_details` array in each chunk may contain one or more reasoning objects
+* For encrypted reasoning, the content may appear as `[REDACTED]` in streaming responses
+* The complete reasoning sequence is built by concatenating all chunks in order
 
 
 # Usage Accounting
@@ -29981,7 +29890,7 @@ This integration allows you to use models from Anthropic, Google, Meta, and many
 
 Navigate to **Settings > Intelligence > Add a Model Provider** in your macOS system preferences.
 
-![Xcode Intelligence Settings](file:aa65b964-c1fd-46b5-a2a4-f2642787c068)
+![Xcode Intelligence Settings](file:00caf325-440b-4882-9e53-510c884eebb6)
 
 #### Step 2: Configure OpenRouter Provider
 
@@ -29995,13 +29904,13 @@ In the "Add a Model Provider" dialog, enter the following details:
 
 Click **Add** to save the configuration.
 
-![OpenRouter Configuration](file:1d6e6225-82a7-48eb-8ea0-a810e90fc897)
+![OpenRouter Configuration](file:3df955c8-b73d-4de2-a3d7-adcf8b5f3207)
 
 #### Step 3: Browse Available Models
 
 Once configured, click on **OpenRouter** to see all available models. Since OpenRouter offers hundreds of models, you should bookmark your favorite models for quick access. Bookmarked models will appear at the top of the list, making them easily accessible from within the pane whenever you need them.
 
-![Available Models](file:8c706630-3a34-49e3-97c5-e88bf1352837)
+![Available Models](file:d963a47b-6a9f-421c-bc97-446bdf9caf95)
 
 You'll have access to models from various providers including:
 
@@ -30011,13 +29920,13 @@ You'll have access to models from various providers including:
 * OpenAI GPT models
 * And hundreds more
 
-![Extended Model List](file:065963f2-d553-4a36-b48c-c3d6c5d31a37)
+![Extended Model List](file:59363da6-a477-47dc-8c02-d0a406527261)
 
 #### Step 4: Start Using AI in Xcode
 
 Head back to the chat interface (icon at the top) and start chatting with your selected models directly in Xcode.
 
-![Xcode Chat Interface](file:8dcc9ca5-c0a7-4add-9798-704bac8cdc00)
+![Xcode Chat Interface](file:e0d542f3-7851-4fd4-8453-05087d20b469)
 
 ### Using Apple Intelligence Features
 
@@ -30028,7 +29937,7 @@ Once configured, you can use Apple Intelligence features in Xcode with OpenRoute
 * **Refactoring Assistance**: Get help improving your code structure
 * **Documentation Generation**: Generate comments and documentation
 
-![Apple Intelligence Interface](file:b73c1984-74d0-4488-85ea-e7df4a7a6081)
+![Apple Intelligence Interface](file:db161951-c34d-4de6-bd19-6318837af4b5)
 
 *Image credit: [Apple Developer Documentation](https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode)*
 
@@ -30071,6 +29980,6 @@ The OpenRouter Zapier integration automatically handles authentication, model ro
 
 For more advanced use cases and detailed documentation, visit the [OpenRouter Zapier integration page](https://zapier.com/apps/openrouter/integrations).
 
-![Zapier Integration Screenshot](file:99b4e70a-41ae-4d1d-ae24-924ab331c91d)
+![Zapier Integration Screenshot](file:62c7f2a0-a525-43f7-8ead-cec1e112adec)
 
 

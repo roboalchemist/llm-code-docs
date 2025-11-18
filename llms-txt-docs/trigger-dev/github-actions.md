@@ -1,0 +1,191 @@
+# Source: https://trigger.dev/docs/github-actions.md
+
+# CI / GitHub Actions
+
+> You can easily deploy your tasks with GitHub actions and other CI environments.
+
+The instructions below are specific to GitHub Actions, but the same concepts can be used with other CI systems.
+
+<Tip>
+  Check out our new [GitHub integration](/github-integration) for automatic deployments, without adding any GitHub Actions workflows.
+</Tip>
+
+## GitHub Actions example
+
+This simple GitHub action workflow will deploy your Trigger.dev tasks when new code is pushed to the `main` branch and the `trigger` directory has changes in it.
+
+<Warning>
+  The deploy step will fail if any version mismatches are detected. Please see the [version
+  pinning](/github-actions#version-pinning) section for more details.
+</Warning>
+
+<CodeGroup>
+  ```yaml .github/workflows/release-trigger-prod.yml theme={null}
+  name: Deploy to Trigger.dev (prod)
+
+  on:
+    push:
+      branches:
+        - main
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Use Node.js 20.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: "20.x"
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: 🚀 Deploy Trigger.dev
+          env:
+            TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
+          run: |
+            npx trigger.dev@latest deploy
+  ```
+
+  ```yaml .github/workflows/release-trigger-staging.yml theme={null}
+  name: Deploy to Trigger.dev (staging)
+
+  # Requires manually calling the workflow from a branch / commit to deploy to staging
+  on:
+    workflow_dispatch:
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Use Node.js 20.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: "20.x"
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: 🚀 Deploy Trigger.dev
+          env:
+            TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
+          run: |
+            npx trigger.dev@latest deploy --env staging
+  ```
+</CodeGroup>
+
+If you already have a GitHub action file, you can just add the final step "🚀 Deploy Trigger.dev" to your existing file.
+
+## Creating a Personal Access Token
+
+<Steps>
+  <Step title="Create a new access token">
+    Go to your profile page and click on the ["Personal Access
+    Tokens"](https://cloud.trigger.dev/account/tokens) tab.
+  </Step>
+
+  <Step title="Go to your repository on GitHub.">
+    Click on 'Settings' -> 'Secrets and variables' -> 'Actions' -> 'New repository secret'
+  </Step>
+
+  <Step title="Add the TRIGGER_ACCESS_TOKEN">
+    Add the name `TRIGGER_ACCESS_TOKEN` and the value of your access token. <img src="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=6c516d32254c19937c0e7104753316a7" alt="Add TRIGGER_ACCESS_TOKEN
+    in GitHub" data-og-width="1373" width="1373" data-og-height="919" height="919" data-path="images/github-access-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=280&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=067664630f87c18f4f22ad7b1b4483e0 280w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=560&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=153409ea82e92f09591159880a32594a 560w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=840&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3088626084cb0a4a13f6155f7a6b56c2 840w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=1100&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=3845374b71af491ff1a43e8deca2f445 1100w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=1650&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=ebe6406d9a669c5e045378d24fbcb9c3 1650w, https://mintcdn.com/trigger/uys6iMwf9B_ojh8r/images/github-access-token.png?w=2500&fit=max&auto=format&n=uys6iMwf9B_ojh8r&q=85&s=f8a87db188028dc7b104f6cf9ddbde0a 2500w" />
+  </Step>
+</Steps>
+
+## CLI Version pinning
+
+The CLI and `@trigger.dev/*` package versions need to be in sync with the `trigger.dev` CLI, otherwise there will be errors and unpredictable behavior. Hence, the `deploy` command will automatically fail during CI on any version mismatches.
+Tip: add the `trigger.dev` CLI to your `devDependencies` and the deploy command to your `package.json` file to keep versions managed in the same place. For example:
+
+```json  theme={null}
+{
+  "scripts": {
+    "deploy:trigger-prod": "trigger deploy",
+    "deploy:trigger": "trigger deploy --env staging"
+  },
+  "devDependencies": {
+    "trigger.dev": "4.0.2"
+  }
+}
+```
+
+Your workflow file will follow the version specified in the `package.json` script, like so:
+
+```yaml .github/workflows/release-trigger.yml theme={null}
+- name: 🚀 Deploy Trigger.dev
+  env:
+    TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
+  run: |
+    npm run deploy:trigger
+```
+
+You should use the version you run locally during dev and manual deploy. The current version is displayed in the banner, but you can also check it by appending `--version` to any command.
+
+## Self-hosting
+
+When self-hosting, you will have to take a few additional steps:
+
+* Specify the `TRIGGER_API_URL` environment variable. You can add it to the GitHub secrets the same way as the access token. This should point at your webapp domain, for example: `https://trigger.example.com`
+* Setup docker as you will need to build and push the image to your registry. On [Trigger.dev Cloud](https://cloud.trigger.dev) this is all done remotely.
+* Add your registry credentials to the GitHub secrets.
+* Use the `--self-hosted` and `--push` flags when deploying.
+
+<Tip>If you're self-hosting v4, the `--self-hosted` and `--push` flags are **NOT** needed.</Tip>
+
+Other than that, your GitHub action file will look very similar to the one above:
+
+<CodeGroup>
+  ```yaml .github/workflows/release-trigger-self-hosted.yml theme={null}
+  name: Deploy to Trigger.dev (self-hosted)
+
+  on:
+    push:
+      branches:
+        - main
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Use Node.js 20.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: "20.x"
+
+        - name: Install dependencies
+          run: npm install
+
+        # docker setup - part 1
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v3
+          with:
+            version: latest
+
+        # docker setup - part 2
+        - name: Login to DockerHub
+          uses: docker/login-action@v3
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: 🚀 Deploy Trigger.dev
+          env:
+            TRIGGER_ACCESS_TOKEN: ${{ secrets.TRIGGER_ACCESS_TOKEN }}
+            # required when self-hosting
+            TRIGGER_API_URL: ${{ secrets.TRIGGER_API_URL }}
+          # deploy with additional flags
+          run: |
+            npx trigger.dev@latest deploy --self-hosted --push
+  ```
+</CodeGroup>

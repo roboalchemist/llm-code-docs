@@ -1,0 +1,64 @@
+# Source: https://www.plain.com/docs/graphql/threads/status-changes.md
+
+# Changing status
+
+Threads can be in one of 3 statuses:
+
+* `Todo`
+* `Snoozed`
+* `Done`
+
+When you log into Plain you can filter threads by these statuses.
+
+When threads are created they default to `Todo`.
+
+To change a threads status you need an API key with the following permissions:
+
+* `thread:edit`
+* `thread:read`
+
+### Mark thread as `Done`
+
+When any activity happens in a thread, it will move back to `Todo`.
+
+Unlike traditional ticketing software, we expect a ticket to move between `Todo` and `Done` a number of times in the course of helping a customer. This will not break or influence any metrics. `Done` in Plain means "I'm done for now, there is nothing left for me to do".
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/mark-thread-as-done.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/mark-thread-as-done.mdx" />
+  </Tab>
+</Tabs>
+
+### Snooze thread
+
+You can snooze threads for a duration of time defined in seconds.
+
+When any activity happens in a thread, it will be automatically unsnoozed and move to `Todo`. Otherwise threads will be unsnoozed when the timer runs out.
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/snooze-thread.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/snooze-thread.mdx" />
+  </Tab>
+</Tabs>
+
+### Mark thread as `Todo`
+
+This is useful if you mistakenly marked a thread as `Done` or snoozed a thread and want to unsnooze it. Otherwise just write a message or do what you want to do and the thread will be automatically moved back to do **Todo**.
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/mark-thread-as-todo.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/mark-thread-as-todo.mdx" />
+  </Tab>
+</Tabs>

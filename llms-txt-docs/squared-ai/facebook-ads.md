@@ -1,0 +1,53 @@
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/adtech/facebook-ads.md
+
+# Facebook Custom Audiences
+
+## Connect AI Squared to Facebook Custom Audiences
+
+This guide will walk you through configuring the Facebook Custom Audiences Connector in AI Squared to manage your custom audiences effectively.
+
+### Prerequisites
+
+Before you begin, make sure you have the following:
+
+1. **Get your [System User Token](https://developers.facebook.com/docs/marketing-api/system-users/overview) from Facebook Business Manager account:**
+
+   * Log in to your Facebook Business Manager account.
+   * Go to Business Settings > Users > System Users.
+   * Click "Add" to create a new system user if needed.
+   * After creating the system user, access its details.
+   * Generate a system user token by clicking "Generate New Token."
+   * Copy the token for later use in the authentication process.
+
+2. **Access to a Facebook Business Manager account:**
+
+   * If you don't have an account, create one at [business.facebook.com](https://business.facebook.com/) by following the sign-up instructions.
+
+3. **Custom Audiences:**
+
+   * Log in to your Facebook Business Manager account.
+   * Navigate to the Audiences section under Business Tools.
+   * Create new custom audiences or access existing ones.
+
+### Steps
+
+### Authentication
+
+Authentication is supported via two methods: System user token and Log in with Facebook account.
+
+1. **System User Token:**
+
+   * **[access\_token](https://developers.facebook.com/docs/marketing-api/system-users/create-retrieve-update)**: Obtain a system user token from your Facebook Business Manager account in step 1 of the prerequisites.
+   * **[ad\_account\_id](https://www.facebook.com/business/help/1492627900875762)**: Paste the system user token into the provided authentication field in AI Squared.
+   * **[audience\_id](https://developers.facebook.com/docs/marketing-api/reference/custom-audience/)**: Obtain the audience ID from step 3 of the prerequisites.
+
+2. **Log in with Facebook Account**
+
+   *Coming soon*
+
+### Supported Sync Modes
+
+| Mode             | Supported (Yes/No/Coming soon) |
+| ---------------- | ------------------------------ |
+| Incremental sync | YES                            |
+| Full refresh     | Coming soon                    |

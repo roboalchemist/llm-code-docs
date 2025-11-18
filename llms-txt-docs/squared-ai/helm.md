@@ -1,0 +1,318 @@
+# Source: https://docs.squared.ai/deployment-and-security/setup/helm.md
+
+# Helm Charts	
+
+## Description:
+
+This helm chart is designed to deploy AI Squared's Platform 2.0 into a Kubernetes cluster.
+
+Platform 2.0 is cloud-agnostic and can be deployed successfully into any Kubernetes cluster, including clusters deployed via Azure Kubernetes Service, Elastic Kubernetes Service, Microk8s, etc.
+
+Along with the platform containers, there are also a couple of additional support resources added to simplify and further automate the installation process. These include: the **nginx-ingress resources** to expose the platform to end-users and **cert-manager** to automate the
+creation and renewal of TLS certificates.
+
+### Coming Soon!
+
+We have a couple of useful features that are still in development that will further promote high availability, scalability and visibility into the platform pods!
+
+These features include **horizontal-pod autoscaling** based on pod CPU and memory utilization as well as in-cluster instances of both **Prometheus** and **Grafana**.
+
+## Prerequisites:
+
+* Access to a DNS record set
+* Kubernetes cluster
+* [Install Kubernetes 1.16+](https://kubernetes.io/docs/tasks/tools/)
+* [Install Helm 3.1.0+](https://kubernetes.io/docs/tasks/tools/)
+* Temporal Namespace (optional)
+
+## Overview of the Deployment Process
+
+1. Install kubectl and helm on your local machine
+2. Select required subdomains
+3. Deploy the Cert-Manager Helm chart
+4. Deploy the Multiwoven Helm Chart
+5. Deploy additional (required) Nginx Ingress resources
+6. Obtain the public IP address associated with your Nginx Ingress Controller
+7. Create A records in your DNS record set that resolve to the public IP address of your Nginx Ingress Controller.
+8. Wait for cert-manager to issue an invalid staging certificate to your K8s cluster
+9. Switch letsencrypt-staging to letsencrypt-prod and upgrade Multiwoven again, this time obtaining a valid TLS certificate
+
+## Installing Multiwoven via Helm
+
+Below is a shell script that can be used to deploy Multiwoven and its dependencies.
+
+### Chart Dependencies
+
+#### Cert-Manager
+
+Cert-Manager is used to automatically request, implement and rotate TLS certificates for your deployment. Enabling TLS is required.
+
+#### Nginx-Ingress
+
+Nginx-Ingress resources are added to provide the Multiwoven Ingress Controller with a external IP address.
+
+### Install Multiwoven
+
+#### Environment Variables:
+
+##### Generic
+
+1. <b>tls-admin-email-address</b> -> the email address that will receive email notifications about pending automatic TLS certificate rotations
+
+2. <b>api-host</b> -> api.your\_domain (ex. api.multiwoven.com)
+
+3. <b>ui-host</b> -> app.your\_domain (ex. app.multiwoven.com)
+
+##### Temporal - Please read the [Notes](#notes) section below
+
+4. <b>temporal-ui-host</b> -> temporal.your\_domain (ex. temporal.multiwoven.com)
+
+5. <b>temporalHost</b> -> your Temporal Cloud host name (ex. my.personal.tmprl.cloud)
+
+6. <b>temporalNamespace</b> -> your Temporal Namespace, verify within your Temporal Cloud account (ex. my.personal)
+
+#### Notes:
+
+* Deploying with the default In-cluster Temporal (<b>recommended for Development workloads</b>):
+  1. Only temporal-ui-host is required. You should leave multiwovenConfig.temporalHost, temporal.enabled and multiwovenConfig.temporalNamespace commented out. You should also leave the temporal-cloud secret commented out as well.
+* Deploying with Temporal Cloud (<b>HIGHLY recommended for Production workloads</b>):
+  1. comment out or remove the flag setting multiwovenConfig.temporalUiHost
+  2. Uncomment the flags setting multiwovenConfig.temporalHost, temporal.enabled and multiwovenConfig.temporalNamespace. Also uncomment the temporal-cloud secret.
+  3. Before running this script, you need to make sure that your Temporal Namespace authentication certificate key and pem files are in the same directory as the script. We recommend renaming these files to temporal.key and temporal.pem for simplicity.
+* Notice that for tlsCertIssuer, the value letsencrypt-staging is present. When the intial installation is done and cert-manager has successfully issued an invalid certificate for your 3 subdomains, you will switch this value to letsencrypt-prod to obtain a valid certificate. It is very important that you follow the steps written out here as LetsEncrypt's production server only allows 5 attempts per week to obtain a valid certificate. This switch should be done LAST after you have verified that everything is already working as expected.
+
+```
+#### Pull and deploy the cert-manager Helm chart
+cd charts/multiwoven
+echo "installing cert-manager"
+helm repo add jetstack https://charts.jetstack.io --force-update
+helm repo update
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.5 --set installCRDs=true
+
+#### Pull and deploy the Multiwoven Helm chart
+echo "installing Multiwoven"
+helm repo add multiwoven https://multiwoven.github.io/helm-charts
+helm upgrade -i multiwoven multiwoven/multiwoven \
+  --set multiwovenConfig.tlsAdminEmail=<tls-admin-email-address> \
+  --set multiwovenConfig.tlsCertIssuer=letsencrypt-staging \
+  --set multiwovenConfig.apiHost=<api-host> \
+  --set multiwovenConfig.uiHost=<ui-host> \
+  --set multiwovenWorker.multiwovenWorker.args={./app/temporal/cli/worker} \
+  --set multiwovenConfig.temporalUiHost=<temporal-ui-host>
+  # --set temporal.enabled=false \
+  # --set multiwovenConfig.temporalHost=<temporal-host> \
+  # --set multiwovenConfig.temporalNamespace=<temporal-namespace>
+
+# kubectl create secret generic temporal-cloud -n multiwoven \
+#     --from-file=temporal-root-cert=./temporal.pem \
+#     --from-file=temporal-client-key=./temporal.key
+
+# Install additional required Nginx ingress resources
+echo "installing ingress-nginx resources"
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+```
+
+#### Post Installation Steps
+
+1. Run the following command to find the external IP address of your Ingress Controller. Note that it may take a minute or two for this value to become available post installation.
+
+```
+kubectl get svc -n ingress-nginx
+```
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374296/Screenshot_2024-05-10_at_4.45.06_PM_k5bh0d.png" />
+</Frame>
+
+2. Once you have this IP address, go to your DNS record set and use that IP address to create three A records, one for each subdomain. Below are a list of Cloud Service Provider DNS tools but please refer to the documentation of your specific provider if not listed below.
+
+* [Adding a new record in Azure DNS Zones](https://learn.microsoft.com/en-us/azure/dns/dns-operations-recordsets-portal)
+* [Adding a new record in AWS Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+* [Adding a new record in GCP Cloud DNS](https://cloud.google.com/dns/docs/records)
+
+3. Run the following command, repeatedly, until an invalid LetsEncrypt staging certificate has been issued for your Ingress Controller.
+
+```
+kubectl describe certificate -n multiwoven mw-tls-cert
+```
+
+When the certificate has been issued, you will see the following output from the command above.
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.41.12_PM_b3mjhs.png" />
+</Frame>
+
+We also encourage you to further verify by navigating to your subdomain, app.your\_domain, and check the certificate received by the browser. You should see something similar to the image below:
+
+<Frame>
+  <img src="https://res.cloudinary.com/dspflukeu/image/upload/v1715374727/Screenshot_2024-05-10_at_4.43.02_PM_twq1gs.png" />
+</Frame>
+
+Once the invalid certificate has been successfully issued, you are ready for the final steps.
+
+4. Edit the shell script above by changing the tlsCertIssuer value from <b>letsencrypt-staging</b> to <b>letsencrypt-prod</b> and run the script again. Do not worry when you see Installation Failed for cert-manager, you are seeing this because it was installed on the intial run.
+
+5. Repeat Post Installation Step 3 until a valid certificate has been issued. Once issued, your deployment is complete and you can navigate to app.your\_domain to get started using Mutliwoven!
+
+Happy Helming!
+
+## Helm Chart Environment Values
+
+### Multiwoven Helm Configuration
+
+#### General Configuration
+
+* **kubernetesClusterDomain**: The domain used within the Kubernetes cluster.
+  * Default: `cluster.local`
+* **kubernetesNamespace**: The Kubernetes namespace for deployment.
+  * Default: `multiwoven`
+
+#### Multiwoven Configuration
+
+| Parameter                                         | Description                                                 | Default                                       |
+| ------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------- |
+| `multiwovenConfig.apiHost`                        | Hostname for the API service.                               | `api.multiwoven.com`                          |
+| `multiwovenConfig.appEnv`                         | Deployment environment.                                     | `community`                                   |
+| `multiwovenConfig.appRevision`                    | Latest github commit sha, identifies revision of deployment | \`\`                                          |
+| `multiwovenConfig.appsignalPushApiKey`            | AppSignal API key.                                          | `yourkey`                                     |
+| `multiwovenConfig.awsAccessKeyId`                 | AWS Access Key Id. Used to assume role in S3 connector.     | \`\`                                          |
+| `multiwovenConfig.awsSecretAccessKey`             | AWS Secret Access Key. Used to assume role in S3 connector. | \`\`                                          |
+| `multiwovenConfig.dbHost`                         | Hostname for the PostgreSQL database service.               | `multiwoven-postgresql`                       |
+| `multiwovenConfig.dbPassword`                     | Password for the database user.                             | `password`                                    |
+| `multiwovenConfig.dbPort`                         | Port on which the database service is running.              | `5432`                                        |
+| `multiwovenConfig.dbUsername`                     | Username for the database.                                  | `multiwoven`                                  |
+| `multiwovenConfig.grpcEnableForkSupport`          | GRPC\_ENABLE\_FORK\_SUPPORT env variable.                   | `1`                                           |
+| `multiwovenConfig.newRelicKey`                    | New Relic License Key.                                      | `yourkey`                                     |
+| `multiwovenConfig.railsEnv`                       | Rails environment setting.                                  | `development`                                 |
+| `multiwovenConfig.railsLogLevel`                  | Rails log level.                                            | `info`                                        |
+| `multiwovenConfig.smtpAddress`                    | SMTP server address.                                        | `smtp.yourdomain.com`                         |
+| `multiwovenConfig.smtpBrandName`                  | SMTP brand name used in From email.                         | `Multiwoven`                                  |
+| `multiwovenConfig.smtpHost`                       | SMTP server host.                                           | `yourdomain.com`                              |
+| `multiwovenConfig.smtpPassword`                   | SMTP server password.                                       | `yourpassword`                                |
+| `multiwovenConfig.smtpPort`                       | SMTP server port.                                           | `587`                                         |
+| `multiwovenConfig.smtpUsername`                   | SMTP server username.                                       | `yourusername`                                |
+| `multiwovenConfig.smtpSenderEmail`                | SMTP sender email.                                          | `admin@yourdomain.com`                        |
+| `multiwovenConfig.snowflakeDriverPath`            | Path to the Snowflake ODBC driver.                          | `/usr/lib/snowflake/odbc/lib/libSnowflake.so` |
+| `multiwovenConfig.syncExtractorBatchSize`         | Batch size for the sync extractor.                          | `1000`                                        |
+| `multiwovenConfig.syncExtractorThreadPoolSize`    | Thread pool size for the sync extractor.                    | `10`                                          |
+| `multiwovenConfig.syncLoaderBatchSize`            | Batch size for the sync loader.                             | `1000`                                        |
+| `multiwovenConfig.syncLoaderThreadPoolSize`       | Thread pool size for the sync loader.                       | `10`                                          |
+| `multiwovenConfig.temporalActivityThreadPoolSize` | Thread pool size for Temporal activities.                   | `20`                                          |
+| `multiwovenConfig.temporalClientChain`            | Path to Temporal client chain certificate.                  | `/certs/temporal.chain.pem`                   |
+| `multiwovenConfig.temporalClientKey`              | Path to Temporal client key.                                | `/certs/temporal.key`                         |
+| `multiwovenConfig.temporalHost`                   | Hostname for Temporal service.                              | `multiwoven-temporal`                         |
+| `multiwovenConfig.temporalNamespace`              | Namespace for Temporal service.                             | `multiwoven-dev`                              |
+| `multiwovenConfig.temporalPort`                   | Port for Temporal service.                                  | `7233`                                        |
+| `multiwovenConfig.temporalPostgresDefaultPort`    | Default port for Temporal's PostgreSQL database.            | `5432`                                        |
+| `multiwovenConfig.temporalPostgresPassword`       | Password for Temporal's PostgreSQL database.                | `password`                                    |
+| `multiwovenConfig.temporalPostgresUser`           | Username for Temporal's PostgreSQL database.                | `multiwoven`                                  |
+| `multiwovenConfig.temporalPostgresqlVersion`      | PostgreSQL version for Temporal.                            | `13`                                          |
+| `multiwovenConfig.temporalRootCert`               | Path to Temporal root certificate.                          | `/certs/temporal.pem`                         |
+| `multiwovenConfig.temporalTaskQueue`              | Task queue for Temporal workflows.                          | `sync-dev`                                    |
+| `multiwovenConfig.temporalUiVersion`              | Version of Temporal UI.                                     | `2.23.2`                                      |
+| `multiwovenConfig.temporalVersion`                | Version of Temporal service.                                | `1.22.4`                                      |
+| `multiwovenConfig.temporalWorkflowThreadPoolSize` | Thread pool size for Temporal workflows.                    | `10`                                          |
+| `multiwovenConfig.uiHost`                         | UI host for the application interface.                      | `app.multiwoven.com`                          |
+| `multiwovenConfig.viteApiHost`                    | API host for the web application.                           | `api.multiwoven.com`                          |
+| `multiwovenConfig.viteAppsignalPushApiKey`        | AppSignal API key.                                          | `yourkey`                                     |
+| `multiwovenConfig.viteBrandName`                  | Community Brand Name.                                       | `Multiwoven`                                  |
+| `multiwovenConfig.viteLogoUrl`                    | URL of Brand Logo.                                          |                                               |
+| `multiwovenConfig.viteBrandColor`                 | Community Theme Color.                                      |                                               |
+| `multiwovenConfig.viteBrandHoverColor`            | Community Theme Color On Hover.                             |                                               |
+| `multiwovenConfig.viteFavIconUrl`                 | URL of Brand Favicon.                                       |                                               |
+| 'multiwovenConfig.workerHost\`                    | Worker host for the worker service.                         | 'worker.multiwoven.com'                       |
+
+### Multiwoven PostgreSQL Configuration
+
+| Parameter                                        | Description                                        | Default     |
+| ------------------------------------------------ | -------------------------------------------------- | ----------- |
+| `multiwovenPostgresql.enabled`                   | Whether or not to deploy PostgreSQL.               | `true`      |
+| `multiwovenPostgresql.image.repository`          | Docker image repository for PostgreSQL.            | `postgres`  |
+| `multiwovenPostgresql.image.tag`                 | Docker image tag for PostgreSQL.                   | `13`        |
+| `multiwovenPostgresql.resources.limits.cpu`      | CPU resource limits for PostgreSQL pod.            | `1`         |
+| `multiwovenPostgresql.resources.limits.memory`   | Memory resource limits for PostgreSQL pod.         | `2Gi`       |
+| `multiwovenPostgresql.resources.requests.cpu`    | CPU resource requests for PostgreSQL pod.          | `500m`      |
+| `multiwovenPostgresql.resources.requests.memory` | Memory resource requests for PostgreSQL pod.       | `1Gi`       |
+| `multiwovenPostgresql.ports.name`                | Port name for PostgreSQL service.                  | `postgres`  |
+| `multiwovenPostgresql.ports.port`                | Port number for PostgreSQL service.                | `5432`      |
+| `multiwovenPostgresql.ports.targetPort`          | Target port for PostgreSQL service within the pod. | `5432`      |
+| `multiwovenPostgresql.replicas`                  | Number of PostgreSQL pod replicas.                 | `1`         |
+| `multiwovenPostgresql.type`                      | Service type for PostgreSQL.                       | `ClusterIP` |
+
+### Multiwoven Server Configuration
+
+| Parameter                                    | Description                                               | Default                        |
+| -------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
+| `multiwovenServer.image.repository`          | Docker image repository for Multiwoven server.            | `multiwoven/multiwoven-server` |
+| `multiwovenServer.image.tag`                 | Docker image tag for Multiwoven server.                   | `latest`                       |
+| `multiwovenServer.resources.limits.cpu`      | CPU resource limits for Multiwoven server pod.            | `2`                            |
+| `multiwovenServer.resources.limits.memory`   | Memory resource limits for Multiwoven server pod.         | `2Gi`                          |
+| `multiwovenServer.resources.requests.cpu`    | CPU resource requests for Multiwoven server pod.          | `1`                            |
+| `multiwovenServer.resources.requests.memory` | Memory resource requests for Multiwoven server pod.       | `1Gi`                          |
+| `multiwovenServer.ports.name`                | Port name for Multiwoven server service.                  | `3000`                         |
+| `multiwovenServer.ports.port`                | Port number for Multiwoven server service.                | `3000`                         |
+| `multiwovenServer.ports.targetPort`          | Target port for Multiwoven server service within the pod. | `3000`                         |
+| `multiwovenServer.replicas`                  | Number of Multiwoven server pod replicas.                 | `1`                            |
+| `multiwovenServer.type`                      | Service type for Multiwoven server.                       | `ClusterIP`                    |
+
+### Multiwoven Worker Configuration
+
+| Parameter                                    | Description                                               | Default                        |
+| -------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
+| `multiwovenWorker.args`                      | Command arguments for the Multiwoven worker.              | See value                      |
+| `multiwovenWorker.healthPort`                | The port in which the health check endpoint is exposed.   | `4567`                         |
+| `multiwovenWorker.image.repository`          | Docker image repository for Multiwoven worker.            | `multiwoven/multiwoven-server` |
+| `multiwovenWorker.image.tag`                 | Docker image tag for Multiwoven worker.                   | `latest`                       |
+| `multiwovenWorker.resources.limits.cpu`      | CPU resource limits for Multiwoven worker pod.            | `1`                            |
+| `multiwovenWorker.resources.limits.memory`   | Memory resource limits for Multiwoven worker pod.         | `1Gi`                          |
+| `multiwovenWorker.resources.requests.cpu`    | CPU resource requests for Multiwoven worker pod.          | `500m`                         |
+| `multiwovenWorker.resources.requests.memory` | Memory resource requests for Multiwoven worker pod.       | `512Mi`                        |
+| `multiwovenWorker.ports.name`                | Port name for Multiwoven worker service.                  | `4567`                         |
+| `multiwovenWorker.ports.port`                | Port number for Multiwoven worker service.                | `4567`                         |
+| `multiwovenWorker.ports.targetPort`          | Target port for Multiwoven worker service within the pod. | `4567`                         |
+| `multiwovenWorker.replicas`                  | Number of Multiwoven worker pod replicas.                 | `1`                            |
+| `multiwovenWorker.type`                      | Service type for Multiwoven worker.                       | `ClusterIP`                    |
+
+### Persistent Volume Claim (PVC)
+
+| Parameter            | Description                       | Default |
+| -------------------- | --------------------------------- | ------- |
+| `pvc.storageRequest` | Storage request size for the PVC. | `100Mi` |
+
+### Temporal Configuration
+
+| Parameter                                     | Description                                                | Default                 |
+| --------------------------------------------- | ---------------------------------------------------------- | ----------------------- |
+| `temporal.enabled`                            | Whether or not to deploy Temporal and Temporal UI service. | `true`                  |
+| `temporal.ports.name`                         | Port name for Temporal service.                            | `7233`                  |
+| `temporal.ports.port`                         | Port number for Temporal service.                          | `7233`                  |
+| `temporal.ports.targetPort`                   | Target port for Temporal service within the pod.           | `7233`                  |
+| `temporal.replicas`                           | Number of Temporal service pod replicas.                   | `1`                     |
+| `temporal.temporal.env.db`                    | Database type for Temporal.                                | `postgresql`            |
+| `temporal.temporal.image.repository`          | Docker image repository for Temporal.                      | `temporalio/auto-setup` |
+| `temporal.temporal.image.tag`                 | Docker image tag for Temporal.                             | `1.22.4`                |
+| `temporal.temporal.resources.limits.cpu`      | CPU resource limits for Temporal pod.                      | `1`                     |
+| `temporal.temporal.resources.limits.memory`   | Memory resource limits for Temporal pod.                   | `2Gi`                   |
+| `temporal.temporal.resources.requests.cpu`    | CPU resource requests for Temporal pod.                    | `500m`                  |
+| `temporal.temporal.resources.requests.memory` | Memory resource requests for Temporal pod.                 | `1Gi`                   |
+| `temporal.type`                               | Service type for Temporal.                                 | `ClusterIP`             |
+
+### Temporal UI Configuration
+
+| Parameter                                            | Description                                                     | Default                    |
+| ---------------------------------------------------- | --------------------------------------------------------------- | -------------------------- |
+| `temporalUi.ports.name`                              | Port name for Temporal UI service.                              | `8080`                     |
+| `temporalUi.ports.port`                              | Port number for Temporal UI service.                            | `8080`                     |
+| `temporalUi.ports.targetPort`                        | Target port for Temporal UI service within the pod.             | `8080`                     |
+| `temporalUi.replicas`                                | Number of Temporal UI service pod replicas.                     | `1`                        |
+| `temporalUi.temporalUi.env.temporalAddress`          | Temporal service address for UI.                                | `multiwoven-temporal:7233` |
+| `temporalUi.temporalUi.env.temporalAuthCallbackUrl`  | Authentication/authorization callback URL.                      |                            |
+| `temporalUi.temporalUi.env.temporalAuthClientId`     | Authentication/authorization client ID.                         |                            |
+| `temporalUi.temporalUi.env.temporalAuthClientSecret` | Authentication/authorization client secret.                     |                            |
+| `temporalUi.temporalUi.env.temporalAuthEnabled`      | Enable or disable authentication/authorization for Temporal UI. | `false`                    |
+| `temporalUi.temporalUi.env.temporalAuthProviderUrl`  | Authentication/authorization OIDC provider URL.                 |                            |
+| `temporalUi.temporalUi.env.temporalCorsOrigins`      | Allowed CORS origins for Temporal UI.                           | `http://localhost:3000`    |
+| `temporalUi.temporalUi.env.temporalUiPort`           | Port for Temporal UI service.                                   | `8080`                     |
+| `temporalUi.temporalUi.image.repository`             | Docker image repository for Temporal UI.                        | `temporalio/ui`            |
+| `temporalUi.temporalUi.image.tag`                    | Docker image tag for Temporal UI.                               | `2.22.3`                   |
+| `temporalUi.type`                                    | Service type for Temporal UI.                                   | `ClusterIP`                |

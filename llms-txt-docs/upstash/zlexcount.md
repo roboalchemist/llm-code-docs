@@ -1,0 +1,44 @@
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
+
+# ZLEXCOUNT
+
+> Returns the number of elements in the sorted set stored at key filtered by lex.
+
+## Arguments
+
+<ParamField body="key" type="string" required>
+  The key to get.
+</ParamField>
+
+<ParamField body="min" type="string" required>
+  The lower lexicographical bound to filter by.
+
+  Use `-` to disable the lower bound.
+</ParamField>
+
+<ParamField body="max" type="string" required>
+  The upper lexicographical bound to filter by.
+
+  Use `+` to disable the upper bound.
+</ParamField>
+
+## Response
+
+<ResponseField type="integer" required>
+  The number of matched.
+</ResponseField>
+
+<RequestExample>
+  ```ts Example theme={"system"}
+  await redis.zadd("key", 
+      { score: 1, member: "one"}, 
+      { score: 2, member: "two" },
+  );
+  const elements = await redis.zlexcount("key", "two", "+");
+  console.log(elements); // 1
+  ```
+</RequestExample>

@@ -1,0 +1,705 @@
+# Source: https://configcat.com/docs/sdk-reference/android.md
+
+# Android (Java) SDK Reference
+
+[![Star on GitHub](https://img.shields.io/github/stars/configcat/android-sdk.svg?style=social)](https://github.com/configcat/android-sdk/stargazers) [![Android CI](https://github.com/configcat/android-sdk/actions/workflows/android-ci.yml/badge.svg?branch=master)](https://github.com/configcat/android-sdk/actions/workflows/android-ci.yml) [![Maven Central](https://img.shields.io/maven-central/v/com.configcat/configcat-android-client)](https://central.sonatype.com/artifact/com.configcat/configcat-android-client) [![Javadocs](https://javadoc.io/badge/com.configcat/configcat-android-client.svg)](https://javadoc.io/doc/com.configcat/configcat-android-client) [![Coverage Status](https://img.shields.io/sonar/coverage/configcat_android-sdk?logo=SonarCloud\&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=configcat_android-sdk) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=configcat_android-sdk\&metric=alert_status)](https://sonarcloud.io/dashboard?id=configcat_android-sdk)
+
+info
+
+This SDK is mainly for Java-based Android applications. For a more modern Android development experience, check our [Kotlin Multiplatform SDK](https://configcat.com/docs/docs/sdk-reference/kotlin/.md).
+
+[ConfigCat Android (Java) SDK on GitHub](https://github.com/configcat/android-sdk)
+
+### Compatibility[​](#compatibility "Direct link to Compatibility")
+
+The minimum supported Android SDK version is 21 (Lollipop).
+
+### R8 (ProGuard)[​](#r8-proguard "Direct link to R8 (ProGuard)")
+
+When you use R8 or ProGuard, the aar artifact automatically applies the [included rules](https://github.com/configcat/android-sdk/blob/master/configcat-proguard-rules.pro) for the SDK.
+
+## Getting Started[​](#getting-started "Direct link to Getting Started")
+
+### 1. Add the ConfigCat SDK to your project[​](#1-add-the-configcat-sdk-to-your-project "Direct link to 1. Add the ConfigCat SDK to your project")
+
+build.gradle
+
+```
+dependencies {
+    implementation 'com.configcat:configcat-android-client:10.+'
+}
+```
+
+### 2. Import the ConfigCat SDK[​](#2-import-the-configcat-sdk "Direct link to 2. Import the ConfigCat SDK")
+
+```
+import com.configcat.*;
+```
+
+### 3. Create the *ConfigCat* client with your *SDK Key*[​](#3-create-the-configcat-client-with-your-sdk-key "Direct link to 3-create-the-configcat-client-with-your-sdk-key")
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#");
+```
+
+### 4. Get your setting value[​](#4-get-your-setting-value "Direct link to 4. Get your setting value")
+
+```
+boolean isMyAwesomeFeatureEnabled = client.getValue(Boolean.class, "<key-of-my-awesome-feature>", false);
+if (isMyAwesomeFeatureEnabled) {
+    doTheNewThing();
+} else {
+    doTheOldThing();
+}
+
+// Or asynchronously
+client.getValueAsync(Boolean.class, "<key-of-my-awesome-feature>", false)
+    .thenAccept(isMyAwesomeFeatureEnabled -> {
+        if (isMyAwesomeFeatureEnabled) {
+            doTheNewThing();
+        } else {
+            doTheOldThing();
+        }
+    });
+```
+
+### 5. Stop *ConfigCat* client[​](#5-stop-configcat-client "Direct link to 5-stop-configcat-client")
+
+You can safely shut down all clients at once or individually and release all associated resources on application exit.
+
+```
+ConfigCatClient.closeAll(); // closes all clients
+
+client.close(); // closes a specific client
+```
+
+## Creating the *ConfigCat Client*[​](#creating-the-configcat-client "Direct link to creating-the-configcat-client")
+
+*ConfigCat Client* is responsible for:
+
+* managing the communication between your application and ConfigCat servers.
+* caching your setting values and feature flags.
+* serving values quickly in a failsafe way.
+
+`ConfigCatClient.get("#YOUR-SDK-KEY#")` returns a client with default options.
+
+### Customizing the *ConfigCat Client*[​](#customizing-the-configcat-client "Direct link to customizing-the-configcat-client")
+
+To customize the SDK's behavior, you can pass an additional `Consumer<Options>` parameter to the `get()` static factory method where the `Options` class is used to set up the *ConfigCat Client*.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.pollingMode(PollingModes.autoPoll());
+    options.logLevel(LogLevel.INFO);
+});
+```
+
+These are the available options on the `Options` class:
+
+| Options                                                | Description                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dataGovernance(DataGovernance)`                       | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `Global`, `EuOnly`. |
+| `baseUrl(string)`                                      | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                           |
+| `httpClient(OkHttpClient)`                             | Optional, sets the underlying `OkHttpClient` used to download the feature flags and settings over HTTP. [More about the HTTP Client](#httpclient).                                                                                                                                                                                  |
+| `cache(ConfigCache)`                                   | Optional, sets a custom cache implementation for the client. [More about cache](#custom-cache).                                                                                                                                                                                                                                     |
+| `pollingMode(PollingMode)`                             | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                         |
+| `logLevel(LogLevel)`                                   | Optional, defaults to `WARNING`. Sets the internal log level. [More about logging](#logging).                                                                                                                                                                                                                                       |
+| `flagOverrides(OverrideDataSource, OverrideBehaviour)` | Optional, sets the local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                    |
+| `defaultUser(User)`                                    | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                          |
+| `offline(boolean)`                                     | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                                   |
+| `hooks()`                                              | Optional, used to subscribe events that the SDK sends in specific scenarios. [More about hooks](#hooks).                                                                                                                                                                                                                            |
+| `logFilter(LogFilterFunction)`                         | Optional, sets a custom log filter. [More about log filtering](#log-filtering).                                                                                                                                                                                                                                                     |
+
+caution
+
+We strongly recommend you to use the `ConfigCatClient` as a Singleton object in your application. The `ConfigCatClient.get("#YOUR-SDK-KEY#")` static factory method constructs singleton client instances for your SDK keys. These clients can be closed all at once with the `ConfigCatClient.closeAll()` method or individually with `client.close()`.
+
+## Anatomy of `getValue()`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `classOfT`     | **REQUIRED.** The type of the setting.                                                                                                                  |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                      |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+
+```
+boolean value = client.getValue(
+    Boolean.class, // Setting type
+    "keyOfMySetting", // Setting Key
+    User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#"), // Optional User Object
+    false // Default value
+);
+```
+
+caution
+
+It is important to provide an argument for the `classOfT` parameter, specifically for the `T` generic type parameter, that matches the type of the feature flag or setting you are evaluating. Please refer to the following table for the corresponding types.
+
+### Setting type mapping[​](#setting-type-mapping "Direct link to Setting type mapping")
+
+| Setting Kind   | Type parameter `T`    |
+| -------------- | --------------------- |
+| On/Off Toggle  | `boolean` / `Boolean` |
+| Text           | `String`              |
+| Whole Number   | `int` / `Integer`     |
+| Decimal Number | `double` / `Double`   |
+
+It's important to note that providing any other type for the type parameter will result in an `IllegalArgumentException`.
+
+If you specify an allowed type but it mismatches the setting kind, an error message will be logged and `defaultValue` will be returned.
+
+## Anatomy of `getValueAsync()`[​](#anatomy-of-getvalueasync "Direct link to anatomy-of-getvalueasync")
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `classOfT`     | **REQUIRED.** The type of the setting.                                                                                                                  |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                      |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+
+```
+client.getValueAsync(
+    Boolean.class, // Setting type
+    "keyOfMySetting", // Setting Key
+    User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#"), // Optional User Object
+    false // Default value
+).thenAccept(isMyAwesomeFeatureEnabled -> {
+    if (isMyAwesomeFeatureEnabled) {
+        doTheNewThing();
+    } else {
+        doTheOldThing();
+    }
+});
+```
+
+caution
+
+It is important to provide an argument for the `classOfT` parameter, specifically for the `T` generic type parameter, that matches the type of the feature flag or setting you are evaluating. Please refer to [this table](#setting-type-mapping) for the corresponding types.
+
+## Anatomy of `getValueDetails()`[​](#anatomy-of-getvaluedetails "Direct link to anatomy-of-getvaluedetails")
+
+`getValueDetails()` is similar to `getValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `classOfT`     | **REQUIRED.** The type of the setting.                                                                                                                  |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                      |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+
+```
+EvaluationDetails<Boolean> details = client.getValueDetails(
+    Boolean.class, // Setting type
+    "keyOfMySetting", // Setting Key
+    User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#"), // Optional User Object
+    false // Default value
+);
+
+// Or asynchronously
+client.getValueDetailsAsync(
+    Boolean.class, // Setting type
+    "keyOfMySetting", // Setting Key
+    User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#"), // Optional User Object
+    false // Default value
+).thenAccept(details -> {
+    // Use the details result
+});
+```
+
+caution
+
+It is important to provide an argument for the `classOfT` parameter, specifically for the `T` generic type parameter, that matches the type of the feature flag or setting you are evaluating. Please refer to [this table](#setting-type-mapping) for the corresponding types.
+
+The details result contains the following information:
+
+| Property                         | Type                                    | Description                                                                                                |
+| -------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `getValue()`                     | `boolean` / `String` / `int` / `double` | The evaluated value of the feature flag or setting.                                                        |
+| `getKey()`                       | `String`                                | The key of the evaluated feature flag or setting.                                                          |
+| `isDefaultValue()`               | `boolean`                               | True when the default value passed to `getValueDetails()` is returned due to an error.                     |
+| `getError()`                     | `String`                                | In case of an error, this property contains the error message.                                             |
+| `getUser()`                      | `User`                                  | The User Object that was used for evaluation.                                                              |
+| `getMatchedPercentageOption()`   | `PercentageOption`                      | The Percentage Option (if any) that was used to select the evaluated value.                                |
+| `getMatchedTargetingRule()`      | `TargetingRule`                         | The Targeting Rule (if any) that matched during the evaluation and was used to return the evaluated value. |
+| `getFetchTimeUnixMilliseconds()` | `long`                                  | The last download time of the current config in unix milliseconds format.                                  |
+
+## User Object[​](#user-object "Direct link to User Object")
+
+The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+
+```
+User user = User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#"); // Optional User Object
+```
+
+```
+User user = User.newBuilder().build("john@example.com");
+```
+
+### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
+
+| Builder options | Description                                                                                                                     |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `identifier()`  | **REQUIRED.** Unique identifier of a user in your application. Can be any value, even an email address.                         |
+| `email()`       | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `country()`     | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `custom()`      | Optional dictionary for custom attributes of a user for advanced Targeting Rule definitions. e.g. User role, Subscription type. |
+
+```
+java.util.Map<String,Object> customAttributes = new java.util.HashMap<String,Object>();
+customAttributes.put("SubscriptionType", "Pro");
+customAttributes.put("UserRole", "Admin");
+
+User user = User.newBuilder()
+    .email("john@example.com")
+    .country("United Kingdom")
+    .custom(customAttributes)
+    .build("#UNIQUE-USER-IDENTIFIER#"); // UserID
+```
+
+The `Custom` dictionary also allows attribute values other than `String` values:
+
+```
+java.util.Map<String,Object> customAttributes = new java.util.HashMap<String,Object>();
+customAttributes.put("Rating", 4.5);
+customAttributes.put("RegisteredAt", new Date("2023-11-22 12:34:56 +00:00"));
+customAttributes.put("Roles", new String[]{"Role1", "Role2"});
+
+User user = User.newBuilder()
+    .email("john@example.com")
+    .country("United Kingdom")
+    .custom(customAttributes)
+    .build("#UNIQUE-USER-IDENTIFIER#");
+```
+
+### User Object Attribute Types[​](#user-object-attribute-types "Direct link to User Object Attribute Types")
+
+All comparators support `String` values as User Object attribute (in some cases they need to be provided in a specific format though, see below), but some of them also support other types of values. It depends on the comparator how the values will be handled. The following rules apply:
+
+**Text-based comparators** (EQUALS, IS ONE OF, etc.)
+
+* accept `String` values,
+* all other values are automatically converted to `String` (a warning will be logged but evaluation will continue as normal).
+
+**SemVer-based comparators** (IS ONE OF, <, >=, etc.)
+
+* accept `String` values containing a properly formatted, valid semver value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Number-based comparators** (=, <, >=, etc.)
+
+* accept `Double` values and all other numeric values which can safely be converted to `Double`,
+* accept `String` values containing a properly formatted, valid `Double` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Date time-based comparators** (BEFORE / AFTER)
+
+* accept `Date` values, which are automatically converted to a second-based Unix timestamp,
+* accept `Double` values representing a second-based Unix timestamp and all other numeric values which can safely be converted to `Double`,
+* accept `String` values containing a properly formatted, valid `Double` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**String array-based comparators** (ARRAY CONTAINS ANY OF / ARRAY NOT CONTAINS ANY OF)
+
+* accept arrays and list of `String`,
+* accept `String` values containing a valid JSON string which can be deserialized to an array of `String`,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+### Default user[​](#default-user "Direct link to Default user")
+
+There's an option to set a default User Object that will be used at feature flag and setting evaluation. It can be useful when your application has a single user only, or rarely switches users.
+
+You can set the default User Object either on SDK initialization:
+
+```
+
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.defaultUser(User.newBuilder().build("john@example.com"));
+});
+```
+
+or with the `setDefaultUser()` method of the ConfigCat client.
+
+```
+client.setDefaultUser(User.newBuilder().build("john@example.com"));
+```
+
+Whenever the `getValue[Async]()`, `getValueDetails[Async]()`, or `getAllValues[Async]()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.defaultUser(User.newBuilder().build("john@example.com"));
+});
+
+// The default user will be used at the evaluation process.
+boolean value = client.getValue(Boolean.class, "keyOfMySetting", false);
+```
+
+When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.defaultUser(User.newBuilder().build("john@example.com"));
+});
+
+User otherUser = User.newBuilder().build("brian@example.com");
+
+// otherUser will be used at the evaluation process.
+boolean value = client.getValue(Boolean.class, "keyOfMySetting", otherUser, false);
+```
+
+For deleting the default user, you can do the following:
+
+```
+client.clearDefaultUser();
+```
+
+## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
+
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+
+### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
+
+The *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN automatically every 60 seconds and stores it in the cache.
+
+Use the the `autoPollIntervalInSeconds` option parameter of the `PollingModes.autoPoll()` to change the polling interval.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.pollingMode(PollingModes.autoPoll(60 /* polling interval in seconds */));
+});
+```
+
+Available options:
+
+| Option Parameter            | Description                                                                                         | Default |
+| --------------------------- | --------------------------------------------------------------------------------------------------- | ------- |
+| `autoPollIntervalInSeconds` | Polling interval.                                                                                   | 60      |
+| `maxInitWaitTimeSeconds`    | Maximum waiting time between the client initialization and the first config acquisition in seconds. | 5       |
+
+### Lazy loading[​](#lazy-loading "Direct link to Lazy loading")
+
+When calling `getValue()`, the *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN only if it is not already present in the cache, or if the cache has expired. In this case `getValue()` will return the setting value after the cache is updated.
+
+Use the `cacheRefreshIntervalInSeconds` parameter of the `PollingModes.lazyLoad()` to set cache lifetime.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.pollingMode(PollingModes.lazyLoad(60 /* the cache will expire in 120 seconds */));
+});
+```
+
+Available options:
+
+| Option Parameter                | Description | Default |
+| ------------------------------- | ----------- | ------- |
+| `cacheRefreshIntervalInSeconds` | Cache TTL.  | 60      |
+
+### Manual polling[​](#manual-polling "Direct link to Manual polling")
+
+Manual polling gives you full control over when the config data is downloaded from the ConfigCat CDN. The *ConfigCat SDK* will not download it automatically. Calling `forceRefresh()` is your application's responsibility.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.pollingMode(PollingModes.manualPoll());
+});
+
+client.forceRefresh();
+```
+
+> `getValue()` returns `defaultValue` if the cache is empty. Call `forceRefresh()` to update the cache.
+
+## Hooks[​](#hooks "Direct link to Hooks")
+
+The SDK provides several hooks (events), by means of which you can get notified of its actions. You can subscribe to the following events emitted by the *ConfigCat* client:
+
+* `onClientReady(ClientCacheState)`: This event is emitted when the client reaches the ready state, i.e. completes initialization.
+
+  * If Lazy Loading or Manual Polling is used, it's considered ready right after instantiation.
+
+  * If Auto Polling is used, the ready state is reached as soon as
+
+    <!-- -->
+
+    * the initial sync with the external cache yields up-to-date config data,
+    * otherwise, if the client is online (i.e. HTTP requests are allowed), the first config fetch operation completes (regardless of success or failure),
+    * or the time specified via Auto Polling's `maxInitWaitTimeSeconds` option has passed.
+
+  Reaching the ready state usually means the client is ready to evaluate feature flags and settings. However, please note that this is not guaranteed. In case of initialization failure or timeout, the internal cache may be empty or expired even after the ready state is reported. You can verify this by checking the `ClientCacheState` argument.
+
+* `onConfigChanged(Map<string, Setting>)`: This event is emitted first when the client's internal cache gets populated. Afterwards, it is emitted again each time the internally cached config is updated to a newer version, either as a result of synchronization with the external cache, or as a result of fetching a newer version from the ConfigCat CDN.
+
+* `onFlagEvaluated(EvaluationDetails)`: This event is emitted each time the client evaluates a feature flag or setting. The event provides the same evaluation details that you would get from [`getValueDetails()`](#anatomy-of-getvaluedetails).
+
+* `onError(String)`: This event is emitted when an error occurs within the client.
+
+You can subscribe to these events either on SDK initialization:
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.hooks().addOnFlagEvaluated(details -> {
+        /* handle the event */
+    });
+});
+```
+
+or with the `getHooks()` property of the ConfigCat client:
+
+```
+client.getHooks().addOnFlagEvaluated(details -> {
+    /* handle the event */
+});
+```
+
+## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
+
+In cases when you'd want to prevent the SDK from making HTTP calls, you can put it in offline mode:
+
+```
+client.setOffline();
+```
+
+In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
+
+To put the SDK back in online mode, you can do the following:
+
+```
+client.setOnline();
+```
+
+> With `client.isOffline()` you can check whether the SDK is in offline mode.
+
+## Flag Overrides[​](#flag-overrides "Direct link to Flag Overrides")
+
+With flag overrides you can overwrite the feature flags & settings downloaded from the ConfigCat CDN with local values. Moreover, you can specify how the overrides should apply over the downloaded values. The following 3 behaviours are supported:
+
+* **Local only** (`OverrideBehaviour.LOCAL_ONLY`): When evaluating values, the SDK will not use feature flags & settings from the ConfigCat CDN, but it will use all feature flags & settings that are loaded from local-override sources.
+
+* **Local over remote** (`OverrideBehaviour.LOCAL_OVER_REMOTE`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the local-override version will take precedence.
+
+* **Remote over local** (`OverrideBehaviour.REMOTE_OVER_LOCAL`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the downloaded version will take precedence.
+
+You can load your feature flag & setting overrides from a `Map<String, Object>` structure.
+
+```
+Map<String, Object> map = new HashMap<>();
+map.put("enabledFeature", true);
+map.put("disabledFeature", false);
+map.put("intSetting", 5);
+map.put("doubleSetting", 3.14);
+map.put("stringSetting", "test");
+
+ConfigCatClient client = ConfigCatClient.get("localhost", options -> {
+    options.flagOverrides(OverrideDataSource.map(map), OverrideBehaviour.LOCAL_ONLY);
+});
+```
+
+## `getAllKeys()`, `getAllKeysAsync()`[​](#getallkeys-getallkeysasync "Direct link to getallkeys-getallkeysasync")
+
+You can get the keys for all available feature flags and settings by calling the `getAllKeys()` or `getAllKeysAsync()` method of the `ConfigCatClient`.
+
+```
+ConfigCatClient client = new ConfigCatClient("#YOUR-SDK-KEY#");
+java.util.Collection<String> keys = client.getAllKeys();
+```
+
+```
+ConfigCatClient client = new ConfigCatClient("#YOUR-SDK-KEY#");
+client.getAllKeysAsync().thenAccept(keys -> {
+    // use the keys
+});
+```
+
+## `getAllValues()`, `getAllValuesAsync()`[​](#getallvalues-getallvaluesasync "Direct link to getallvalues-getallvaluesasync")
+
+Evaluates and returns the values of all feature flags and settings. Passing a User Object is optional.
+
+```
+ConfigCatClient client = new ConfigCatClient("#YOUR-SDK-KEY#");
+Map<String, Object> settingValues = client.getAllValues();
+
+// invoke with User Object
+User user = User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#")
+Map<String, Object> settingValuesTargeting = client.getAllValues(user);
+```
+
+```
+ConfigCatClient client = new ConfigCatClient("#YOUR-SDK-KEY#");
+client.getAllValuesAsync().thenAccept(settingValues -> { });
+
+// invoke with User Object
+User user = User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#")
+client.getAllValuesAsync(user).thenAccept(settingValuesTargeting -> { });
+```
+
+## `getAllValueDetails()`, `getAllValueDetailsAsync()`[​](#getallvaluedetails-getallvaluedetailsasync "Direct link to getallvaluedetails-getallvaluedetailsasync")
+
+Evaluates and returns the detailed values of all feature flags and settings. Passing a User Object is optional.
+
+```
+User user = User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#");
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#");
+List<EvaluationDetails<?>> allValueDetails = client.getAllValueDetails(user);
+```
+
+```
+User user = User.newBuilder().build("#UNIQUE-USER-IDENTIFIER#");
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#");
+client.getAllValueDetailsAsync(user).thenAccept(allValueDetails -> { });
+```
+
+## Cache[​](#cache "Direct link to Cache")
+
+The SDK by default uses a memory-only cache. If you want to change the default behavior, you can either use the built-in `SharedPreferencesCache` or your custom cache implementation.
+
+The `SharedPreferencesCache` implementation uses the Android `SharedPreferences` to store the downloaded `config JSON`. `SharedPreferencesCache` has a dependency on `android.content.Context`, so it won't be enabled by default. The cache can be explicitly set by providing an appropriate `Context`.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+        options.cache(new SharedPreferencesCache(getApplicationContext())); // Use ConfigCat's shared preferences cache.
+});
+```
+
+### Custom cache[​](#custom-cache "Direct link to Custom cache")
+
+The *ConfigCat SDK* stores the downloaded config data in a local cache to minimize network traffic and enhance client performance. If you prefer to use your own cache solution, such as an external or distributed cache in your system, you can subclass the [`ConfigCache`](https://github.com/configcat/android-sdk/blob/master/src/main/java/com/configcat/ConfigCache.java) abstract class and call the `cache` method with your implementation in the setup callback of `ConfigCatClient.get`. This allows you to seamlessly integrate ConfigCat with your existing caching infrastructure.
+
+```
+public class MyCustomCache extends ConfigCache {
+
+    @Override
+    public String read(String key) {
+        // here you have to return with the cached value
+    }
+
+    @Override
+    public void write(String key, String value) {
+        // here you have to store the new value in the cache
+    }
+}
+```
+
+Then use your custom cache implementation:
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.cache(new MyCustomCache()); // inject your custom cache
+});
+```
+
+info
+
+The Android SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/docs/advanced/caching/.md#shared-cache).
+
+## HttpClient[​](#httpclient "Direct link to HttpClient")
+
+The ConfigCat SDK internally uses an [OkHttpClient](https://github.com/square/okhttp) instance to fetch the latest config JSON over HTTP. You have the option to override the internal Http client with your customized one.
+
+### HTTP Proxy[​](#http-proxy "Direct link to HTTP Proxy")
+
+If your application runs behind a proxy you can do the following:
+
+```
+Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("proxyHost", proxyPort));
+
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.httpClient(new OkHttpClient.Builder()
+                .proxy(proxy)
+                .build());
+});
+```
+
+### HTTP Timeout[​](#http-timeout "Direct link to HTTP Timeout")
+
+You can set the maximum wait time for a ConfigCat HTTP response by using OkHttpClient's timeouts.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    .httpClient(new OkHttpClient.Builder()
+                .readTimeout(2, TimeUnit.SECONDS) // set the read timeout to 2 seconds
+                .build());
+});
+```
+
+OkHttpClient's default timeout is 10 seconds.
+
+> As the ConfigCatClient SDK maintains the whole lifetime of the internal http client, it's being closed simultaneously with the ConfigCatClient, refrain from closing the http client manually.
+
+### Force refresh[​](#force-refresh "Direct link to Force refresh")
+
+Call the `forceRefresh()` method on the client to download the latest config JSON and update the cache.
+
+## Logging[​](#logging "Direct link to Logging")
+
+The SDK uses the facade of [slf4j](https://www.slf4j.org) for logging, so you can use any of the slf4j implementation packages.
+
+You can change the verbosity of the logs by passing a `LogLevel` parameter to the ConfigCatClientBuilder's `logLevel` function.
+
+```
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
+    options.logLevel(LogLevel.INFO);
+});
+```
+
+Available log levels:
+
+| Level     | Description                                                                             |
+| --------- | --------------------------------------------------------------------------------------- |
+| `NO_LOG`  | Turn the logging off.                                                                   |
+| `ERROR`   | Only error level events are logged.                                                     |
+| `WARNING` | Default. Errors and Warnings are logged.                                                |
+| `INFO`    | Errors, Warnings and feature flag evaluation is logged.                                 |
+| `DEBUG`   | All of the above plus debug info is logged. Debug logs can be different for other SDKs. |
+
+Info level logging helps to inspect how a feature flag was evaluated:
+
+```
+INFO com.configcat.ConfigCatClient - [5000] Evaluating 'isPOCFeatureEnabled' for User '{"Identifier":"<SOME USERID>","Email":"configcat@example.com","Country":"US","SubscriptionType":"Pro","Role":"Admin","version":"1.0.0"}'
+  Evaluating targeting rules and applying the first match if any:
+  - IF User.Email CONTAINS ANY OF ['@something.com'] THEN 'False' => no match
+  - IF User.Email CONTAINS ANY OF ['@example.com'] THEN 'True' => MATCH, applying rule
+  Returning 'True'.
+```
+
+### Logging Implementation[​](#logging-implementation "Direct link to Logging Implementation")
+
+You have the flexibility to use any slf4j implementation for logging with ConfigCat. However, some logger implementations may not display debug level messages by default. In these cases, you simply need to adjust the logger configuration to receive all log messages from the ConfigCat SDK.
+
+Examples for [android-logger](https://github.com/configcat/android-sdk/blob/master/samples/android-kotlin/app/src/android-logger.properties) and [logback](https://github.com/configcat/android-sdk/blob/master/samples/android-java/app/src/main/assets/logback.xml) are available under the [Sample Apps](#sample-apps) section.
+
+### Log Filtering[​](#log-filtering "Direct link to Log Filtering")
+
+You can define a custom log filter by implementing the `LogFilterFunction` interface. The `apply` method will be called by the *ConfigCat SDK* each time a log event occurs (and the event passes the minimum log level specified by the `logLevel` option). That is, the `apply` method allows you to filter log events by `logLevel`, `eventId`, `message` or `exception`. The formatted message string can be obtained by calling `toString()` on the `message` parameter. If the `apply` method returns `true`, the event will be logged, otherwise it will be skipped.
+
+```
+// Filter out events with id 1001 from the log.
+LogFilterFunction filterLogFunction = ( LogLevel logLevel, int eventId, Object message, Throwable exception) -> eventId != 1001;
+
+ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> options.logFilter(filterLogFunction));
+```
+
+caution
+
+Please make sure that your log filter logic doesn't perform heavy computation and doesn't block the executing thread. A complex or incorrectly implemented log filter can degrade the performance of the SDK.
+
+## Sensitive information handling[​](#sensitive-information-handling "Direct link to Sensitive information handling")
+
+The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is downloading a [config JSON](https://configcat.com/docs/docs/requests/.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
+
+If you do not want to expose the SDK key or the content of the config JSON file, we recommend using the SDK in your backend components only. You can always create a backend endpoint using the ConfigCat SDK that can evaluate feature flags for a specific user, and call that backend endpoint from your frontend/mobile applications.
+
+Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
+
+## Sample App[​](#sample-apps "Direct link to Sample App")
+
+[Android App with auto polling and change listener](https://github.com/configcat/android-sdk/tree/master/samples)
+
+## Guides[​](#guides "Direct link to Guides")
+
+See [this](https://configcat.com/blog/2022/01/24/feature-flags-in-android/) guide on how to use ConfigCat's Android SDK.
+
+## Look under the hood[​](#look-under-the-hood "Direct link to Look under the hood")
+
+* [ConfigCat Android SDK's repository on GitHub](https://github.com/configcat/android-sdk)
+* [ConfigCat Android SDK's javadoc page](https://javadoc.io/doc/com.configcat/configcat-android-client)
+* [ConfigCat Android SDK on Maven Central](https://search.maven.org/artifact/com.configcat/configcat-android-client)

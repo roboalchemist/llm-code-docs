@@ -1,0 +1,374 @@
+# Source: https://upstash.com/docs/workflow/agents/features.md
+
+# Source: https://upstash.com/docs/vector/sdks/py/features.md
+
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/features.md
+
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/features.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/features.md
+
+# Source: https://upstash.com/docs/workflow/agents/features.md
+
+# null
+
+On this page, we explain the features of the Workflow Agents API in more detail.
+
+Prerequisites:
+
+* Setup your first Agent endpoint by following [the Getting Started page](/workflow/agents/getting-started).
+* Install the following packages to define tools:
+
+```bash  theme={"system"}
+npm i ai mathjs zod @agentic/ai-sdk @agentic/weather @langchain/core @langchain/community
+```
+
+## Models
+
+The `model` is responsible for deciding which tools to call and generating the final response
+
+First, add `QSTASH_TOKEN` and `OPENAI_API_KEY` to your environment:
+
+```
+QSTASH_TOKEN="<QSTASH_TOKEN>"
+OPENAI_API_KEY="<OPENAI_API_KEY>"
+```
+
+Next, define the model in your route:
+
+```ts  theme={"system"}
+import { serve } from "@upstash/workflow/nextjs";
+
+export const { POST } = serve(async (context) => {
+  const model = context.agents.openai('gpt-3.5-turbo')
+
+  // ...
+})
+```
+
+If you want to use an OpenAI compatible provider, you can do so by passing `baseURL` and `apiKey`:
+
+```ts  theme={"system"}
+const model = context.agents.openai('deepseek-chat', {
+  baseURL: "https://api.deepseek.com",
+  apiKey: process.env.DEEPSEEK_API_KEY
+})
+```
+
+If you want to use other providers available on AI SDK, you can import the `create<Provider>` methods exported from provider packages. For example, in order to use Anthropic you can do the following:
+
+```ts  theme={"system"}
+import { createAnthropic } from "@ai-sdk/anthropic";
+
+const model = context.agents.AISDKModel({
+  context,
+  provider: createAnthropic,
+  providerParams: {
+    apiKey: "<ANTHROPIC_API_KEY>",
+  },
+});
+```
+
+If you want to configure the calls made to the LLM APIs, you can use the `agentCallParams` parameter:
+
+```ts  theme={"system"}
+const model = context.agents.openai('gpt-3.5-turbo', {
+  callSettings: {
+    timeout: 1000, // optional request timeout
+    retries: 0,    // optional retries
+    flowControl: { // optional flow control
+      key: "flow-control-key",
+      rate: 10,
+      period: "10s",
+      parallelism: 10,
+    },
+  }
+})
+```
+
+Same parameter is available in `agents.AISDKModel` as the `agentCallParams` parameter.
+
+## Tools
+
+Next, we will define the tools that our agents will use. The **Agents API** is compatible with both **AI SDK** and **LangChain** tools. This means you can either:
+
+* Use existing tools that are compatible with these SDKs.
+* Define your own custom tools that are compatible with these SDKs.
+
+This flexibility allows you to tailor the tools to your specific needs while leveraging the power of these frameworks.
+
+<CodeGroup>
+  ```ts WorkflowTool (custom) theme={"system"}
+  import { WorkflowTool } from '@upstash/workflow'
+  import { z } from 'zod'
+  import * as mathjs from 'mathjs'
+
+  const tool = new WorkflowTool({
+    description:
+      'A tool for evaluating mathematical expressions. ' +
+      'Example expressions: ' +
+      "'1.2 * (2 + 4.5)', '12.7 cm to inch', 'sin(45 deg) ^ 2'.",
+    schema: z.object({ expression: z.string() }),
+    invoke: async ({ expression }) => mathjs.evaluate(expression),
+  })
+  ```
+
+  ```ts AI SDK (custom) theme={"system"}
+  import { z } from 'zod'
+  import { tool } from 'ai'
+  import * as mathjs from 'mathjs'
+
+  const mathTool = tool({
+    description:
+      'A tool for evaluating mathematical expressions. ' +
+      'Example expressions: ' +
+      "'1.2 * (2 + 4.5)', '12.7 cm to inch', 'sin(45 deg) ^ 2'.",
+    parameters: z.object({ expression: z.string() }),
+    execute: async ({ expression }) => mathjs.evaluate(expression),
+  })
+  ```
+
+  ```ts Agentic theme={"system"}
+  import { createAISDKTools } from '@agentic/ai-sdk'
+  import { WeatherClient } from '@agentic/weather'
+
+  const weather = new WeatherClient()
+  const tools = createAISDKTools(weather)
+  ```
+
+  ```ts LangChain (custom) theme={"system"}
+  import { DynamicStructuredTool } from "@langchain/core/tools";
+
+  const numberGenerator = new DynamicStructuredTool({
+    name: "random-number-generator",
+    description: "generates a random number between two input numbers",
+    schema: z.object({
+      low: z.number().describe("The lower bound of the generated number"),
+      high: z.number().describe("The upper bound of the generated number"),
+    }),
+    func: async ({ low, high }) =>
+      (Math.random() * (high - low) + low).toString(), // Outputs still must be strings
+  })
+  ```
+
+  ```ts LangChain theme={"system"}
+  import { WikipediaQueryRun } from '@langchain/community/tools/wikipedia_query_run'
+
+  const wikiTool = new WikipediaQueryRun({
+    topKResults: 1,
+    maxDocContentLength: 500,
+  })
+  ```
+</CodeGroup>
+
+For available toolkits, you can explore the [LangChain Toolkits](https://js.langchain.com/v0.1/docs/modules/agents/tools/toolkits/) or other AI SDK-compatible toolkits like [Agentic](https://agentic.so/sdks/ai-sdk).
+
+By default, the Workflow SDK will wrap the execute/invoke methods of the tools you pass with [`context.run`](/workflow/basics/context#context-run) to run them as a Workflow step. This means, you can't use steps like context.call, context.notify etc in execute/invoke right away. If you want to define steps in invoke/execute, you can use the `executeAsStep` option:
+
+```ts {12} theme={"system"}
+import { WorkflowTool } from '@upstash/workflow'
+import { serve } from '@upstash/workflow/nextjs'
+
+export const { POST } = serve(async (context) => {
+  const tool = new WorkflowTool({
+    description: ...,
+    schema: ...,
+    invoke: ( ... ) => {
+      // make HTTP call inside the tool with context.call:
+      await context.call( ... )
+    },
+    executeAsStep: false
+  })
+
+  // pass the tool to agent
+})
+```
+
+## Agents
+
+After defining a model and tools, we can define agents. Agents are essentially LLM models with access to a set of tools and background knowledge. In Upstash Workflow, agents are defined like this:
+
+```ts route.ts theme={"system"}
+import { serve } from "@upstash/workflow/nextjs";
+import { WikipediaQueryRun } from "@langchain/community/tools/wikipedia_query_run";
+
+export const { POST } = serve(async (context) => {
+  const model = context.agents.openai('gpt-3.5-turbo')
+
+  const researcherAgent = context.agents.agent({
+    model,
+    name: 'academic',
+    maxSteps: 2,
+    tools: {
+      wikiTool: new WikipediaQueryRun({
+        topKResults: 1,
+        maxDocContentLength: 500,
+      })
+    },
+    background:
+      'You are researcher agent with access to Wikipedia. ' +
+      'Utilize Wikipedia as much as possible for correct information',
+  })
+})
+```
+
+The parameters for defining an agent are as follows:
+
+* **`model`**: The LLM model that the agent will use.
+* **`name`**: The name of the agent. This name will be used when naming the [context.call steps](/workflow/basics/context#context-call) for this agent. `context.call` is used when calling the LLM provider (such as OpenAI).
+* **`maxSteps`**: The maximum number of times this agent can call the LLM provider (e.g., OpenAI).
+* **`tools`**: The list of tools available to the agent for completing tasks.
+* **`background`**: A description of the agent, which is used as a system prompt to provide context for the agent's behavior.
+
+## Tasks
+
+Now that we have agents defined, the only thing left is to assign tasks to them. A **task** is simply a prompt passed to the agent.
+
+There are two ways to create a task:
+
+1. **Single Agent Task**: The task is assigned to a single agent, which will complete it using the tools available to it.
+
+2. **Multiple Agent Task**: A **manager agent** is used to decide which agents will be involved and in what order. The manager agent makes this decision based on the task prompt, the agents' backgrounds, and the tools available to them.
+
+### Single Agent
+
+```ts Single Agent {22-27} theme={"system"}
+import { serve } from "@upstash/workflow/nextjs";
+import { WikipediaQueryRun } from "@langchain/community/tools/wikipedia_query_run";
+
+export const { POST } = serve(async (context) => {
+  const model = context.agents.openai('gpt-3.5-turbo');
+
+  const researcherAgent = context.agents.agent({
+    model,
+    name: 'academic',
+    maxSteps: 2,
+    tools: {
+      wikiTool: new WikipediaQueryRun({
+        topKResults: 1,
+        maxDocContentLength: 500,
+      })
+    },
+    background:
+      'You are researcher agent with access to Wikipedia. ' +
+      'Utilize Wikipedia as much as possible for correct information',
+  });
+
+  const task = context.agents.task({
+    agent: researcherAgent,
+    prompt: "Tell me about 5 topics in advanced physics.",
+  });
+  const { text } = await task.run();
+  console.log("result:", text)
+})
+```
+
+As response to the task, the agent generates the following response:
+
+```
+Here are summaries of 5 topics in advanced physics:
+
+1. **Quantum Mechanics**: Quantum mechanics is a fundamental theory that describes the behavior of nature at and below the scale of atoms. It is the foundation of all quantum physics, including quantum chemistry, quantum field theory, quantum technology, and quantum information science. Quantum mechanics can describe many systems that classical physics cannot.
+
+2. **General Relativity**: General relativity, also known as Einstein's theory of gravity, is the geometric theory of gravitation published by Albert Einstein in 1915. It is the current description of gravitation in modern physics, generalizing special relativity and refining Newton's law of universal gravitation. General relativity provides a unified description of gravity as a geometric property of space and time.
+
+3. **Particle Physics**: Particle physics, also known as high-energy physics, is the study of fundamental particles and forces that constitute matter and radiation. The field also studies combinations of elementary particles up to the scale of protons and neutrons. Fundamental particles in the universe are classified in the Standard Model as fermions (matter particles) and bosons (force-carrying particles).
+
+4. **Astrophysics**: Astrophysics is a science that applies the methods and principles of physics and chemistry to the study of astronomical objects and phenomena. It seeks to ascertain the nature of heavenly bodies and is distinct from celestial mechanics, which focuses on the positions and motions of objects in space. Subjects studied in astrophysics include the Sun, stars, galaxies, and the universe.
+
+5. **String Theory**: String theory is a theoretical framework in physics where point-like particles are replaced by one-dimensional objects called strings. These strings describe how they propagate through space and interact with each other. On distance scales larger than the string scale, a string behaves like a particle, with its properties determined by the vibrational state of the string
+```
+
+Here is the logs on Upstash Console:
+
+<img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=2eb392c33e06bfef35c7f9ba47a9d1d8" data-og-width="1688" width="1688" data-og-height="964" height="964" data-path="img/workflow/agents/logs/logs-single.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=91ac436abaf4ec503c22a76c14cf3836 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=b38e9d20fe78b1aed8364a2c95fe7353 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=00c4f3a3ed613b9130de190929baa5e8 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=ebb31a39aa7663d3f34d958eec309539 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=a69d7d379eb15452544cdbdef44a7f11 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-single.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=fcc21ebc01199a41529ca7eb6066f050 2500w" />
+
+In the logs, you can see that the **academic agent** was called. It decided to invoke **wikiTool** five times in parallel. Once the tool requests were completed, the agent summarized the results from the individual calls in one final response and returned the outcome.
+
+### Multi Agents
+
+```ts Multi Agents {45-53} theme={"system"}
+import { serve } from "@upstash/workflow/nextjs";
+import { WikipediaQueryRun } from "@langchain/community/tools/wikipedia_query_run";
+import * as mathjs from 'mathjs'
+import { tool } from "ai";
+import { z } from "zod";
+
+export const { POST } = serve(async (context) => {
+  const model = context.agents.openai('gpt-4o');
+
+  const researcherAgent = context.agents.agent({
+    model,
+    name: 'academic',
+    maxSteps: 2,
+    tools: {
+      wikiTool: new WikipediaQueryRun({
+        topKResults: 1,
+        maxDocContentLength: 500,
+      })
+    },
+    background:
+      'You are researcher agent with access to Wikipedia. ' +
+      'Utilize Wikipedia as much as possible for correct information',
+  });
+
+  const mathAgent = context.agents.agent({
+    model,
+    name: "mathematician",
+    maxSteps: 2,
+    tools: {
+      calculate: tool({
+        description:
+          'A tool for evaluating mathematical expressions. ' +
+          'Example expressions: ' +
+          "'1.2 * (2 + 4.5)', '12.7 cm to inch', 'sin(45 deg) ^ 2'." +
+          "only call this tool if you need to calculate a mathematical expression." +
+          "when writing an expression, don't use words like 'thousand' or 'million'",
+        parameters: z.object({ expression: z.string() }),
+        execute: async ({ expression }) => mathjs.evaluate(expression),
+      }),
+    },
+    background:
+      "You are a mathematician agent which can utilize" +
+      "a calculator to compute expressions"
+  })
+
+  const task = context.agents.task({
+    model,
+    maxSteps: 3,
+    agents: [researcherAgent, mathAgent],
+    prompt: "Tell me about 3 cities in Japan and calculate the sum of their populations",
+  });
+  const { text } = await task.run();
+  console.log("result:", text)
+})
+```
+
+As response to the task, the agents generate the following response:
+
+```
+Here is a brief overview of three cities in Japan:
+
+### Tokyo
+- **Official Name**: Tokyo Metropolis
+- **Population**: Over 14 million in the city proper as of 2023.
+- **Significance**: Capital of Japan and one of the most populous urban areas in the world.
+
+### Osaka
+- **Japanese Name**: å¤§éå¸ (Åsaka-shi)
+- **Population**: 2.7 million as per the 2020 census.
+- **Significance**: Capital and most populous city in Osaka Prefecture, third-most populous city in Japan.
+
+### Kyoto
+- **Japanese Name**: äº¬é½å¸ (KyÅto-shi)
+- **Population**: 1.46 million as of 2020.
+- **Significance**: Capital city of Kyoto Prefecture, ninth-most populous city in Japan.
+
+The sum of their populations is approximately 18.16 million.
+```
+
+Here are the logs on Upstash Console:
+
+<img src="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=227f8aedb17c44c05fc1a0f43d0c0edd" data-og-width="1432" width="1432" data-og-height="1128" height="1128" data-path="img/workflow/agents/logs/logs-multi.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=280&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=503c494bbc0762886cfac9b9795fb53d 280w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=560&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=147a11539d55081f9ec45f141a464aae 560w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=840&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=f65166e3d371f7c5c9841e76a59e666e 840w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=1100&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=62254d2c1a7a58db3857ddbc7c0cf37c 1100w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=1650&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=0953b2c9b8ba3103a9a13a5271d7b8ad 1650w, https://mintcdn.com/upstash/pBXejvUl5XQn4tWO/img/workflow/agents/logs/logs-multi.png?w=2500&fit=max&auto=format&n=pBXejvUl5XQn4tWO&q=85&s=21741030eeddaafbe2245e4e5b4d242f 2500w" />
+
+The logs show that the `Manager LLM` first called the `academic` agent. The `academic` agent used the `wikiTool` three times, each with a different Japanese city, and summarized the results. Next, the `Manager LLM` called the `mathematician` agent, which used its `calculate` tool to compute the total population of the three cities and returned the result to the `Manager LLM`. With information about the cities and their total population, the `Manager LLM` generated the final response.
