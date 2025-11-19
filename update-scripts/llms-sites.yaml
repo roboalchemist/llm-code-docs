@@ -17,6 +17,9 @@ sites:
 - name: angular
   base_url: https://angular.dev/
   description: Angular web application framework
+- name: annoto
+  base_url: https://docs.annoto.net/home/
+  description: Annoto documentation
 - name: answer-ai
   base_url: https://www.answer.ai/
   description: Answer.AI R&D lab for AI research and products
@@ -26,6 +29,9 @@ sites:
 - name: any-llm
   base_url: https://mozilla-ai.github.io/any-llm/
   description: Mozilla-Ai documentation
+- name: apify
+  base_url: https://docs.apify.com/
+  description: Apify documentation
 - name: aporia
   base_url: https://docs.aporia.com/
   description: Aporia ML observability and monitoring platform
@@ -65,6 +71,12 @@ sites:
 - name: aws-powertools-typescript
   base_url: https://docs.aws.amazon.com/powertools/typescript/latest/
   description: AWS Powertools for TypeScript Lambda functions
+- name: basehub
+  base_url: https://docs.basehub.com/
+  description: Basehub documentation
+- name: baseten
+  base_url: https://docs.baseten.co/
+  description: Baseten documentation
 - name: bika
   base_url: https://bika.ai/
   description: Bika AI productivity and automation platform
@@ -107,6 +119,9 @@ sites:
 - name: configcat
   base_url: https://configcat.com/docs/
   description: ConfigCat feature flag service
+- name: convex
+  base_url: https://docs.convex.dev/
+  description: Convex documentation
 - name: cosette
   base_url: https://github.com/AnswerDotAI/cosette/blob/main/
   description: Cosette - Answer.AI OpenAI API wrapper
@@ -119,6 +134,9 @@ sites:
 - name: dat1
   base_url: https://dat1.co/
   description: Dat1 AI-powered analytics platform
+- name: datafold
+  base_url: https://docs.datafold.com/
+  description: Datafold documentation
 - name: daytona
   base_url: https://www.daytona.io/docs/
   description: Daytona documentation
@@ -146,81 +164,21 @@ sites:
 - name: docetl
   base_url: https://www.docetl.org/
   description: DocETL document processing and transformation system
-- name: docs
-  base_url: https://docs.pinecone.io/
-  description: Pinecone documentation
-- name: docs-10
-  base_url: https://docs.litellm.ai/
-  description: Litellm documentation
-- name: docs-11
-  base_url: https://docs.sardine.ai/
-  description: Sardine documentation
-- name: docs-12
-  base_url: https://docs.baseten.co/
-  description: Baseten documentation
-- name: docs-13
-  base_url: https://docs.solidfi.com/
-  description: Solidfi documentation
-- name: docs-14
-  base_url: https://docs.servicestack.net/
-  description: Servicestack documentation
-- name: docs-15
-  base_url: https://docs.frigade.com/
-  description: Frigade documentation
-- name: docs-16
-  base_url: https://docs.tavus.io/
-  description: Tavus documentation
-- name: docs-17
-  base_url: https://docs.livekit.io/
-  description: Livekit documentation
-- name: docs-19
-  base_url: https://docs.basehub.com/
-  description: Basehub documentation
-- name: docs-2
-  base_url: https://docs.datafold.com/
-  description: Datafold documentation
-- name: docs-20
-  base_url: https://docs.envoyer.io/
-  description: Envoyer documentation
-- name: docs-21
-  base_url: https://docs.unifygtm.com/
-  description: Unifygtm documentation
-- name: docs-22
-  base_url: https://docs.meshconnect.com/
-  description: Meshconnect documentation
-- name: docs-3
-  base_url: https://docs.turso.tech/
-  description: Turso documentation
-- name: docs-4
-  base_url: https://docs.duendesoftware.com/
-  description: Duendesoftware documentation
-- name: docs-5
-  base_url: https://docs.apify.com/
-  description: Apify documentation
-- name: docs-6
-  base_url: https://docs.hypermode.com/
-  description: Hypermode documentation
-- name: docs-7
-  base_url: https://docs.saaspegasus.com/
-  description: Saaspegasus documentation
-- name: docs-8
-  base_url: https://docs.near.org/
-  description: Near documentation
-- name: docs-9
-  base_url: https://docs.convex.dev/
-  description: Convex documentation
-- name: docs-home
-  base_url: https://docs.annoto.net/home/
-  description: Annoto documentation
 - name: dspy
   base_url: https://dspy.ai/
   description: DSPy LLM programming framework
+- name: duendesoftware
+  base_url: https://docs.duendesoftware.com/
+  description: Duendesoftware documentation
 - name: elevenlabs
   base_url: https://docs.elevenlabs.io/
   description: ElevenLabs AI voice generation and text-to-speech
 - name: embedchain
   base_url: https://docs.embedchain.ai/
   description: Embedchain RAG framework for LLM applications
+- name: envoyer
+  base_url: https://docs.envoyer.io/
+  description: Envoyer documentation
 - name: fastcore
   base_url: https://fastcore.fast.ai/
   description: llms.txt - fastcore - Fast.ai
@@ -242,6 +200,9 @@ sites:
 - name: flitt
   base_url: https://docs.flitt.com/
   description: Flitt payment API platform
+- name: frigade
+  base_url: https://docs.frigade.com/
+  description: Frigade documentation
 - name: galileo-ai
   base_url: https://docs.galileo.ai/
   description: Galileo AI LLM evaluation and observability
@@ -281,6 +242,9 @@ sites:
 - name: humanloop
   base_url: https://humanloop.com/docs/
   description: Humanloop LLM evaluation and monitoring
+- name: hypermode
+  base_url: https://docs.hypermode.com/
+  description: Hypermode documentation
 - name: ideogram
   base_url: https://docs.ideogram.ai/
   description: Ideogram AI image generation platform
@@ -332,6 +296,12 @@ sites:
 - name: lingui
   base_url: https://lingui.dev/
   description: Lingui documentation
+- name: litellm
+  base_url: https://docs.litellm.ai/
+  description: Litellm documentation
+- name: livekit
+  base_url: https://docs.livekit.io/
+  description: Livekit documentation
 - name: llmstxt
   base_url: https://llmstxt.org/
   description: llms-txt official specification and CLI
@@ -350,12 +320,18 @@ sites:
 - name: mcp
   base_url: https://modelcontextprotocol.io/
   description: Model Context Protocol for AI context management
+- name: meshconnect
+  base_url: https://docs.meshconnect.com/
+  description: Meshconnect documentation
 - name: mintlify
   base_url: https://mintlify.com/docs/
   description: Mintlify documentation platform
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language
+- name: near
+  base_url: https://docs.near.org/
+  description: Near documentation
 - name: nextjs
   base_url: https://nextjs.org/docs/
   description: Next.js React framework
@@ -383,6 +359,9 @@ sites:
 - name: perplexity
   base_url: https://docs.perplexity.ai/
   description: Perplexity AI search and reasoning API
+- name: pinecone
+  base_url: https://docs.pinecone.io/
+  description: Pinecone documentation
 - name: plain
   base_url: https://www.plain.com/docs/
   description: Plain customer support platform
@@ -416,12 +395,24 @@ sites:
 - name: retool
   base_url: https://docs.retool.com/
   description: Retool internal tool builder platform
+- name: saaspegasus
+  base_url: https://docs.saaspegasus.com/
+  description: Saaspegasus documentation
+- name: sardine
+  base_url: https://docs.sardine.ai/
+  description: Sardine documentation
+- name: servicestack
+  base_url: https://docs.servicestack.net/
+  description: Servicestack documentation
 - name: sherlockdomains
   base_url: https://www.sherlockdomains.com/
   description: Sherlockdomains documentation
 - name: slack
   base_url: https://docs.slack.dev/
   description: Slack developer platform and API documentation
+- name: solidfi
+  base_url: https://docs.solidfi.com/
+  description: Solidfi documentation
 - name: speakeasy
   base_url: https://www.speakeasy.com/
   description: Speakeasy documentation
@@ -434,12 +425,21 @@ sites:
 - name: tauri
   base_url: https://tauri.app/
   description: Tauri desktop application framework
+- name: tavus
+  base_url: https://docs.tavus.io/
+  description: Tavus documentation
 - name: trigger
   base_url: https://trigger.dev/docs/
   description: Trigger documentation
 - name: trigger-dev
   base_url: https://docs.trigger.dev/
   description: Trigger.dev background job orchestration platform
+- name: turso
+  base_url: https://docs.turso.tech/
+  description: Turso documentation
+- name: unifygtm
+  base_url: https://docs.unifygtm.com/
+  description: Unifygtm documentation
 - name: uno-platform
   base_url: https://platform.uno/
   description: Uno Platform .NET cross-platform framework
