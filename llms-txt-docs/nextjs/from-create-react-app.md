@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/migrating/from-create-react-app.md
 
+# Source: https://nextjs.org/docs/app/guides/migrating/from-create-react-app.md
+
+# Source: https://nextjs.org/docs/pages/guides/migrating/from-create-react-app.md
+
 # How to migrate from Create React App to Next.js
 @doc-version: 16.0.3
 

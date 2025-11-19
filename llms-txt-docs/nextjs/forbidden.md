@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/forbidden.md
 
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/forbidden.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/forbidden.md
+
 # forbidden
 @doc-version: 16.0.3
 

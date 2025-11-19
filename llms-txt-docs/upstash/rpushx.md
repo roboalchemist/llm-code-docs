@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpushx.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpushx.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpushx.md
+
 # RPUSHX
 
 > Push an element at the end of the list only if the list exists.

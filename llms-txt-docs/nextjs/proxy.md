@@ -6,6 +6,12 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/file-conventions/proxy.md
 
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/proxy.md
+
+# Source: https://nextjs.org/docs/app/getting-started/proxy.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/proxy.md
+
 # proxy.js
 @doc-version: 16.0.3
 

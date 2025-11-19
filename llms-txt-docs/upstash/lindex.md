@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lindex.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lindex.md
+
 # LINDEX
 
 > Returns the element at index index in the list stored at key.

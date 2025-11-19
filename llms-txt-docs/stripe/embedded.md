@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/crypto/onramp/embedded.md
 
+# Source: https://docs.stripe.com/payments/mobile/embedded.md
+
+# Source: https://docs.stripe.com/crypto/onramp/embedded.md
+
 # Set up an Embedded onramp integration
 
 Use this guide to fully customize the embeddable onramp.

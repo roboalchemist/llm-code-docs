@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/unauthorized.md
 
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/unauthorized.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/unauthorized.md
+
 # unauthorized
 @doc-version: 16.0.3
 

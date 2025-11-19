@@ -1,5 +1,9 @@
 # Source: https://docs.claude.com/en/docs/build-with-claude/structured-outputs.md
 
+# Source: https://docs.claude.com/en/docs/agent-sdk/structured-outputs.md
+
+# Source: https://docs.claude.com/en/docs/build-with-claude/structured-outputs.md
+
 # Structured outputs
 
 Structured outputs constrain Claude's responses to follow a specific schema, ensuring valid, parseable output for downstream processing. Use **JSON outputs** (`output_format`) for structured data responses, or **strict tool use** (`strict: true`) for guaranteed schema validation on tool names and inputs.

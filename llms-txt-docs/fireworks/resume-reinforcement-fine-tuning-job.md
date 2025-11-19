@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/resume-reinforcement-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/resume-reinforcement-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/resume-reinforcement-fine-tuning-job.md
+
 # firectl resume reinforcement-fine-tuning-job
 
 > Resumes a failed reinforcement fine-tuning job.

@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/workflows.md
 
+# Source: https://docs.windsurf.com/plugins/cascade/workflows.md
+
+# Source: https://docs.windsurf.com/windsurf/cascade/workflows.md
+
 # Workflows
 
 Workflows enable users to define a series of steps to guide Cascade through a repetitive set of tasks, such as deploying a service or responding to PR comments.

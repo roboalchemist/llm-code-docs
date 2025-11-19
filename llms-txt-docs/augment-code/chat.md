@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/using-augment/chat.md
 
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat.md
+
+# Source: https://docs.augmentcode.com/using-augment/chat.md
+
 # Using Chat
 
 > Use Chat to explore your codebase, quickly get up to speed on unfamiliar code, and get help working through a technical problem.

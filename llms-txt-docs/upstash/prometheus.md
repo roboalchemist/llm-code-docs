@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/workflow/integrations/prometheus.md
 
+# Source: https://upstash.com/docs/redis/integrations/prometheus.md
+
+# Source: https://upstash.com/docs/qstash/integrations/prometheus.md
+
+# Source: https://upstash.com/docs/workflow/integrations/prometheus.md
+
 # Prometheus - Upstash QStash Integration
 
 To monitor your QStash metrics in Prometheus and visualize in Grafana, follow these steps:

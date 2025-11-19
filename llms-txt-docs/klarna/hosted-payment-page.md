@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/ios/hosted-payment-page.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/android/hosted-payment-page.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/ios/hosted-payment-page.md
+
 # Hosted Payment Page - iOS
 
 ## If the recommended integration approach of Klarna Mobile SDK is not possible, the guide below will guide you through how to integrate the Hosted Payment Page in your mobile app without the Mobile SDK.

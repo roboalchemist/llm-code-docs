@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/bite.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/bite.md
+
+# Source: https://docs.fireflies.ai/schema/bite.md
+
 # Bite
 
 > Schema for Bite

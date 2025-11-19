@@ -1,5 +1,19 @@
 # Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/australia/bnpl-promotion-rules-101.md
 
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/norway/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/spain/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/ireland/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/canada/bnpl-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/australia/bnpl-promotion-rules-101.md
+
 # BNPL promotion rules-Australia
 
 ## The Design and Distribution Obligations (DDO) are laws overseen by the Australian Securities and Investments Commission (ASIC), which came into effect on 5th October 2021. These laws aim to help consumers obtain appropriate financial products.

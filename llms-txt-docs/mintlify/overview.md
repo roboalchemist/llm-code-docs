@@ -1,5 +1,15 @@
 # Source: https://mintlify.com/docs/integrations/support/overview.md
 
+# Source: https://mintlify.com/docs/integrations/privacy/overview.md
+
+# Source: https://mintlify.com/docs/integrations/analytics/overview.md
+
+# Source: https://mintlify.com/docs/insights/overview.md
+
+# Source: https://mintlify.com/docs/api-playground/overview.md
+
+# Source: https://mintlify.com/docs/integrations/support/overview.md
+
 # Support integrations
 
 > Integrate with support platforms for customer assistance.

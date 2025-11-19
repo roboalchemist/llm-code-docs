@@ -12,6 +12,18 @@
 
 # Source: https://upstash.com/docs/vector/sdks/ts/commands/upsert.md
 
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/upsert.md
+
+# Source: https://upstash.com/docs/vector/api/endpoints/upsert.md
+
+# Source: https://upstash.com/docs/search/sdks/ts/commands/upsert.md
+
+# Source: https://upstash.com/docs/search/sdks/py/commands/upsert.md
+
+# Source: https://upstash.com/docs/qstash/api/queues/upsert.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/commands/upsert.md
+
 # Upsert
 
 Used to add new vectors or update an existing vector.

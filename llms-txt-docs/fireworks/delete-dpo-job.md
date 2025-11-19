@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dpo-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-dpo-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dpo-job.md
+
 # firectl delete dpo-job
 
 > Deletes a dpo job.

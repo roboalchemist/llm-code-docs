@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/radar/rules.md
 
+# Source: https://docs.stripe.com/revenue-recognition/rules.md
+
+# Source: https://docs.stripe.com/radar/rules.md
+
 # Fraud prevention rules
 
 Use fraud prevention rules to guard your business.

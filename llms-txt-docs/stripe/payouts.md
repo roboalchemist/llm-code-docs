@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/financial-accounts/connect/moving-money/payouts.md
 
+# Source: https://docs.stripe.com/payouts.md
+
+# Source: https://docs.stripe.com/financial-accounts/connect/moving-money/payouts.md
+
 # Payouts and top-ups from Stripe Payments
 
 Learn how to move money between Payments account balances and financial account balances.

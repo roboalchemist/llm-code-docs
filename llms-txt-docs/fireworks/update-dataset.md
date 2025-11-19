@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-dataset.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-dataset.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-dataset.md
+
 # firectl update dataset
 
 > Updates a dataset.

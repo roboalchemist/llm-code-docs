@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sinter.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sinter.md
+
 # SINTER
 
 > Return the intersection between sets

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
+
 # ZRANGE
 
 > Returns the specified range of elements in the sorted set stored at key.

@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/crm/odoo.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
+
 # Odoo
 
 ## Connect AI Squared to Odoo

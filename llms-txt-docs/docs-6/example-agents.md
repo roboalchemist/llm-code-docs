@@ -1,0 +1,92 @@
+# Source: https://docs.hypermode.com/agents/example-agents.md
+
+# Agent Gallery
+
+> Explore example agents built with Hypermode Agents
+
+## Agent gallery
+
+Discover powerful AI agents built to handle specific tasks and workflows. Each
+agent is designed with unique capabilities to help you automate processes,
+analyze data, and enhance productivity.
+
+<CardGroup cols={2}>
+  <Card title="GTM Engineer" icon="pen-to-square" href="/agents/agent-gallery/gtm-engineer">
+    Recruit an expert Go-to-Market Engineer to ensure your sales and marketing team have the best in data.
+  </Card>
+
+  <Card title="Market Research Expert" icon="calendar" href="/agents/agent-gallery/market-researcher">
+    Never go into a meeting unprepared again, understand what's important about
+    your peers, competitors and prospects.
+  </Card>
+
+  <Card title="ChannelPulse Marketing Insights" icon="chart-line" href="/agents/agent-gallery/channelpulse">
+    Analyzes weekly marketing campaign performance across email, social, and SEO
+    channels with actionable insights.
+  </Card>
+
+  <Card title="Persona Builder & Refiner" icon="user-group" href="/agents/agent-gallery/persona-builder">
+    Aggregates customer data to generate and refine buyer personas, identify
+    emerging segments, and optimize messaging.
+  </Card>
+
+  <Card title="Competitor Content Tracker" icon="binoculars" href="/agents/agent-gallery/competitor-content-tracker">
+    Tracks competitor content across social channels and blogs, identifies
+    trending topics, and recommends content opportunities.
+  </Card>
+
+  <Card title="PR Opportunity Scout" icon="bullhorn" href="/agents/agent-gallery/pr-opportunity-scout">
+    Identifies relevant journalists and media outlets for product launches, crafts
+    tailored pitch angles based on recent coverage.
+  </Card>
+
+  <Card title="Event & Webinar Optimizer" icon="people" href="/agents/agent-gallery/event-webinar-optimizer">
+    Reviews webinar performance metrics and attendee feedback to optimize future
+    event strategy and maximize engagement.
+  </Card>
+
+  <Card title="Music Recommendation Agent" icon="headphones" href="/agents/agent-gallery/music-recommendation">
+    Recommends music based on your preferences and creates new Spotify playlists.
+  </Card>
+
+  <Card title="Workout Scheduling Agent" icon="bicycle" href="/agents/agent-gallery/workout-scheduling">
+    Create a workout scheduling agent based on your Strava data.
+  </Card>
+
+  <Card title="Social Media Expert" icon="hashtag" href="/agents/agent-gallery/social-media">
+    Drafts social media content and campaigns based on your products and brand.
+  </Card>
+
+  <Card title="GitHub Review Bot" icon="code" href="/agents/agent-gallery/github-review-bot">
+    Automated code reviews and PR analysis to ensure code quality and best
+    practices.
+  </Card>
+
+  <Card title="LinkedIn Intelligence Agent" icon="users" href="/agents/agent-gallery/linkedin-intelligence">
+    Analyzes company LinkedIn profiles and provides strategic business
+    intelligence and competitive insights.
+  </Card>
+
+  <Card title="Inventory & Sales Tracker" icon="chart-bar" href="/agents/agent-gallery/inventory-tracker">
+    Monitors stock levels, tracks sales patterns, and provides operational
+    insights from Google Sheets data.
+  </Card>
+</CardGroup>
+
+## Getting started
+
+Each agent comes with:
+
+* **Pre-built workflows** that you can customize for your needs
+* **Integration capabilities** with popular tools and platforms
+* **Documentation** with setup guides and best practices
+
+## Build custom agents
+
+Don't see what you need? Our platform supports building custom agents tailored
+to your specific requirements.
+
+<Card title="Build Custom Agent" icon="wrench" href="/agents/create-agent">
+  Create your own AI agent with the Hypermode Concierge. Define custom
+  workflows, integrate with your tools, and deploy in minutes.
+</Card>

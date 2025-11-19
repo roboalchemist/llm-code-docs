@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-models.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-models.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-models.md
+
 # firectl list models
 
 > Prints all models in an account.

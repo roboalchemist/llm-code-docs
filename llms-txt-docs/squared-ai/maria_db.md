@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/maria_db.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
+
 # MariaDB
 
 ## Connect AI Squared to MariaDB

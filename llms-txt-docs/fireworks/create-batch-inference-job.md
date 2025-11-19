@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-batch-inference-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-batch-inference-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-batch-inference-job.md
+
 # firectl create batch-inference-job
 
 > Creates a batch inference job.

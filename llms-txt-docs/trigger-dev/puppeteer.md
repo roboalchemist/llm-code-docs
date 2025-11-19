@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/puppeteer.md
 
+# Source: https://trigger.dev/docs/config/extensions/puppeteer.md
+
+# Source: https://trigger.dev/docs/guides/examples/puppeteer.md
+
 # Puppeteer
 
 > These examples demonstrate how to use Puppeteer with Trigger.dev.

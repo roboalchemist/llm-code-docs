@@ -1,5 +1,27 @@
 # Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
 
+# Source: https://docs.perplexity.ai/cookbook/examples/financial-news-tracker/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/fact-checker-cli/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/disease-qa/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/discord-py-bot/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/daily-knowledge-bot/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/articles/openai-agents-integration/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-with-persistence/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/articles/memory-management/README.md
+
+# Source: https://docs.perplexity.ai/cookbook/examples/research-finder/README.md
+
 # Academic Research Finder CLI
 
 > A command-line tool that uses Perplexity's Sonar API to find and summarize academic literature

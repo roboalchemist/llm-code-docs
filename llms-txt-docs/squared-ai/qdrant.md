@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
 
+# Source: https://docs.squared.ai/activation/vector-search/qdrant.md
+
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/qdrant.md
+
 # Qdrant
 
 ## Connect AI Squared to Qdrant

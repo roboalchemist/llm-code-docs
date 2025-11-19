@@ -1,5 +1,11 @@
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/reactnative/native-view.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/native-view.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/ios/native-view.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/reactnative/native-view.md
+
 # Native View - React Native
 
 ## Adding Klarna payments to your application is as easy as adding a view and performing the payment operations on it.

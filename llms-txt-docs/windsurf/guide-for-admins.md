@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
 
+# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
+
+# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
+
 # Guide for Admins
 
 > Windsurf Guide for Enterprise Admins

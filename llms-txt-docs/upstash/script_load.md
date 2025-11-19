@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_load.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_load.md
+
 # SCRIPT LOAD
 
 > Load the specified Lua script into the script cache.

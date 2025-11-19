@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/help/legal.md
 
+# Source: https://upstash.com/docs/common/help/legal.md
+
+# Source: https://upstash.com/docs/redis/help/legal.md
+
 # Legal
 
 ## Upstash Legal Documents

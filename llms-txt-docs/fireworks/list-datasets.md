@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-datasets.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-datasets.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-datasets.md
+
 # firectl list datasets
 
 > Prints all datasets in an account.

@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/web-payments/before-you-start/prepare-your-integration.md
 
+# Source: https://docs.klarna.com/payments/in-store-payments/before-you-start/prepare-your-integration.md
+
+# Source: https://docs.klarna.com/payments/web-payments/before-you-start/prepare-your-integration.md
+
 # Prepare your integration web
 
 ## Ready to offer a smoooth purchase experience to your customers? Here's what you need to know before integrating Klarna payments into your store's website or mobile app.

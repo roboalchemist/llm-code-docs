@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/models-inference/what-factors-affect-the-number-of-simultaneous-requests-that-can-be-handled.md
 
+# Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/what-factors-affect-the-number-of-simultaneous-requests-that-can-be-handled.md
+
+# Source: https://docs.fireworks.ai/faq-new/models-inference/what-factors-affect-the-number-of-simultaneous-requests-that-can-be-handled.md
+
 # What factors affect the number of simultaneous requests that can be handled?
 
 Request handling capacity depends on several factors:

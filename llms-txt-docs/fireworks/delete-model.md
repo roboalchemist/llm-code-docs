@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
+
 # firectl delete model
 
 > Deletes a model.

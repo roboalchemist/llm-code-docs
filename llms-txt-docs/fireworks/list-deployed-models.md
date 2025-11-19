@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployed-models.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-deployed-models.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployed-models.md
+
 # firectl list deployed-models
 
 > Prints all deployed models in the account.

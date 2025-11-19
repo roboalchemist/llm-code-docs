@@ -4,6 +4,12 @@
 
 # Source: https://docs.agent.ai/builder/overview.md
 
+# Source: https://docs.agent.ai/recipes/overview.md
+
+# Source: https://docs.agent.ai/knowledge-agents/overview.md
+
+# Source: https://docs.agent.ai/builder/overview.md
+
 # Builder Overview
 
 The Agent.AI Builder is a no-code tool that allows users at all technical levels to build powerful agentic AI applications in minutes.

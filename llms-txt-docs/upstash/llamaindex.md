@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
 
+# Source: https://upstash.com/docs/vector/integrations/llamaindex.md
+
+# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
+
 # RAG with LlamaIndex
 
 In this tutorial, we’ll demonstrate how to use Upstash Vector with LlamaIndex to perform RAG (Retrieval-Augmented Generation). We will upload a document about global warming and generate responses to our questions based on the contents of the document.

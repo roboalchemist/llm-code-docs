@@ -6,6 +6,12 @@
 
 # Source: https://nextjs.org/docs/pages/guides/draft-mode.md
 
+# Source: https://nextjs.org/docs/app/api-reference/functions/draft-mode.md
+
+# Source: https://nextjs.org/docs/app/guides/draft-mode.md
+
+# Source: https://nextjs.org/docs/pages/guides/draft-mode.md
+
 # How to preview content with Draft Mode in Next.js
 @doc-version: 16.0.3
 

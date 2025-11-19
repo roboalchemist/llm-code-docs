@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/web-search.md
 
+# Source: https://docs.windsurf.com/plugins/cascade/web-search.md
+
+# Source: https://docs.windsurf.com/windsurf/cascade/web-search.md
+
 # Web and Docs Search
 
 Cascade can now intuitively parse through and chunk up web pages and documentation, providing realtime context to the models. The key way to understand this feature is that Cascade will browse the Internet as a human would.

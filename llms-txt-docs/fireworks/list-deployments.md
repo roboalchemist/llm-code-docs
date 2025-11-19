@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployments.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-deployments.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployments.md
+
 # firectl list deployments
 
 > Prints all deployments in the account.

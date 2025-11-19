@@ -1,5 +1,11 @@
 # Source: https://docs.augmentcode.com/codereview/overview.md
 
+# Source: https://docs.augmentcode.com/cli/overview.md
+
+# Source: https://docs.augmentcode.com/cli/automation/overview.md
+
+# Source: https://docs.augmentcode.com/codereview/overview.md
+
 # Using Augment Code Review
 
 > Use Augment Code Review to catch critical issues, comment on PRs, and collaborate on fixes.

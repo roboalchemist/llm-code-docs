@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcount.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zcount.md
+
 # ZCOUNT
 
 > Returns the number of elements in the sorted set stored at key filterd by score.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zlexcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zlexcount.md
+
 # ZLEXCOUNT
 
 > Returns the number of elements in the sorted set stored at key filtered by lex.

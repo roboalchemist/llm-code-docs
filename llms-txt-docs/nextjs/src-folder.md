@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder.md
 
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/src-folder.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder.md
+
 # src Folder
 @doc-version: 16.0.3
 

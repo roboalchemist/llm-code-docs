@@ -66,6 +66,72 @@
 
 # Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/troubleshooting/index.md
 
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/cicd-integration/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/performance-optimization/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/cross-platform/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/build-tools/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/getting-started/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/tutorial/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/jmespath_functions/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/middleware_factory/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/streaming/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/feature_flags/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/data_masking/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/idempotency/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/parser/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/data_classes/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/validation/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/kafka/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/typing/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/batch/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/utilities/parameters/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/bedrock_agents/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/appsync_events/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/appsync/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/event_handler/api_gateway/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/metrics/datadog/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/metrics/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/logger/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/core/tracer/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/roadmap/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/upgrade/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/changelog/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/python/latest/build_recipes/troubleshooting/index.md
+
 ## Common issues and solutions
 
 This section covers the most frequent issues encountered when building and deploying Lambda functions with Powertools for AWS Lambda (Python). Each issue includes symptoms to help identify the problem and practical solutions with working code examples.

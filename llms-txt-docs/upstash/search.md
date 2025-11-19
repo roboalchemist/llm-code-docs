@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
 
+# Source: https://upstash.com/docs/search/sdks/py/commands/search.md
+
+# Source: https://upstash.com/docs/search/sdks/ts/commands/search.md
+
 # Search
 
 The search method is designed to retrieve the most relevant documents from the database, using AI-powered search capabilities. This method supports a variety of options to configure the query to your needs.

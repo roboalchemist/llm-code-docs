@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/user-groups.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/user-groups.md
+
+# Source: https://docs.fireflies.ai/schema/user-groups.md
+
 # User Groups
 
 > Schema for User Groups

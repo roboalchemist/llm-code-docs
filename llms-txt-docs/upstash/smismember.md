@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smismember.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smismember.md
+
 # SMISMEMBER
 
 > Check if multiple members exist in a set

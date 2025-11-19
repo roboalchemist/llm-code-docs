@@ -1,5 +1,9 @@
 # Source: https://configcat.com/docs/sdk-reference/openfeature/go.md
 
+# Source: https://configcat.com/docs/sdk-reference/go.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/go.md
+
 # OpenFeature Provider for Go
 
 [ConfigCat OpenFeature Provider for Go on GitHub](https://github.com/open-feature/go-sdk-contrib/tree/main/providers/configcat)

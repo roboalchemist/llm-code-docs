@@ -1,5 +1,13 @@
 # Source: https://docs.stripe.com/tax/subscriptions.md
 
+# Source: https://docs.stripe.com/api/subscriptions.md
+
+# Source: https://docs.stripe.com/no-code/subscriptions.md
+
+# Source: https://docs.stripe.com/payments/subscriptions.md
+
+# Source: https://docs.stripe.com/tax/subscriptions.md
+
 # Collect taxes for recurring payments
 
 Learn how to collect and report taxes for recurring payments.

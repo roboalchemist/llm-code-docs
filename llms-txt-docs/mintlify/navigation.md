@@ -1,5 +1,9 @@
 # Source: https://mintlify.com/docs/organize/navigation.md
 
+# Source: https://mintlify.com/docs/guides/navigation.md
+
+# Source: https://mintlify.com/docs/organize/navigation.md
+
 # Navigation
 
 > Design information architecture that aligns with user needs.

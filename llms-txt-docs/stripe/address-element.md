@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/payments/mobile/address-element.md
 
+# Source: https://docs.stripe.com/elements/address-element.md
+
+# Source: https://docs.stripe.com/payments/mobile/address-element.md
+
 # Address Element
 
 Use the Address Element to collect complete billing and shipping addresses for in-app integrations.

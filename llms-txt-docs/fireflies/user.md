@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/user.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/user.md
+
+# Source: https://docs.fireflies.ai/schema/user.md
+
 # User
 
 > Schema for User

@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/tax/invoicing.md
 
+# Source: https://docs.stripe.com/payments/link/invoicing.md
+
+# Source: https://docs.stripe.com/tax/invoicing.md
+
 # Automatically collect tax on invoices
 
 Learn how to automatically calculate tax on your invoices.

@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/terminal/readers/bbpos-wisepad3.md
 
+# Source: https://docs.stripe.com/terminal/payments/setup-reader/bbpos-wisepad3.md
+
+# Source: https://docs.stripe.com/terminal/readers/bbpos-wisepad3.md
+
 # BBPOS WisePad 3
 
 Learn about the BBPOS WisePad 3 reader.

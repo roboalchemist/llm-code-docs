@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
+
 # JSON.FORGET
 
 > Delete a key from a JSON document.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/realtime/features/serverless.md
 
+# Source: https://upstash.com/docs/common/concepts/serverless.md
+
+# Source: https://upstash.com/docs/realtime/features/serverless.md
+
 # Deployment
 
 <Note>

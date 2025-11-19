@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/edge.md
 
+# Source: https://nextjs.org/docs/app/api-reference/edge.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/edge.md
+
 # Edge Runtime
 @doc-version: 16.0.3
 

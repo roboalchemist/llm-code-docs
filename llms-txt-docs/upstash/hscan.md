@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hscan.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hscan.md
+
 # HSCAN
 
 > Scan a hash for fields.

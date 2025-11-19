@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/upgrading/codemods.md
 
+# Source: https://nextjs.org/docs/app/guides/upgrading/codemods.md
+
+# Source: https://nextjs.org/docs/pages/guides/upgrading/codemods.md
+
 # Codemods
 @doc-version: 16.0.3
 

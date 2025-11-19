@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/features/filtering.md
 
+# Source: https://upstash.com/docs/search/features/filtering.md
+
+# Source: https://upstash.com/docs/vector/features/filtering.md
+
 # Metadata Filtering
 
 You can further restrict the vector similarity search by providing a filter based on a specific metadata criteria.

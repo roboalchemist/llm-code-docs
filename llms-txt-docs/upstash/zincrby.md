@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zincrby.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zincrby.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zincrby.md
+
 # ZINCRBY
 
 > Increment the score of a member.

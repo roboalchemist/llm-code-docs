@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decr.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decr.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decr.md
+
 # DECR
 
 > Decrement the integer value of a key by one

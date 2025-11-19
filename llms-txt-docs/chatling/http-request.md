@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
 
+# Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+
 # HTTP Request Block
 
 > Learn about the HTTP Request block and how to set it up in the Builder.

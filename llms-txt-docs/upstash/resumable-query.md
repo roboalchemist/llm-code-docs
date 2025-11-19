@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
 
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/resumable-query.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/commands/resumable-query.md
+
 # Resumable Query
 
 The resumableQuery method allows you to perform queries that can be resumed to fetch additional results. This is particularly useful for large result sets or when implementing pagination.

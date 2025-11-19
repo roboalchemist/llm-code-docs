@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference.md
 
+# Source: https://nextjs.org/docs/app/api-reference.md
+
+# Source: https://nextjs.org/docs/pages/api-reference.md
+
 # API Reference
 @doc-version: 16.0.3
 

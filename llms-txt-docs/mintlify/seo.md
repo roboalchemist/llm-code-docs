@@ -1,5 +1,9 @@
 # Source: https://mintlify.com/docs/optimize/seo.md
 
+# Source: https://mintlify.com/docs/guides/seo.md
+
+# Source: https://mintlify.com/docs/optimize/seo.md
+
 # SEO
 
 > Optimize SEO with meta tag configuration for better search visibility.

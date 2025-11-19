@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/autosummary.md
 
+# Source: https://docs.asapp.com/autosummary.md
+
+# Source: https://docs.asapp.com/changelog/autosummary.md
+
 # AutoSummary Updates
 
 > New updates and improvements across AutoSummary

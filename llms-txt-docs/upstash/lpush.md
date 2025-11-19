@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpush.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpush.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpush.md
+
 # LPUSH
 
 > Push an element at the head of the list.

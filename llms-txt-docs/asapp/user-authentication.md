@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/user-authentication.md
 
+# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/user-authentication.md
+
+# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/user-authentication.md
+
 # User Authentication
 
 ## Set an ASAPPUser with a Request Context Provider

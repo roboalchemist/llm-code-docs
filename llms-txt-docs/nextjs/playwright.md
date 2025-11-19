@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/testing/playwright.md
 
+# Source: https://nextjs.org/docs/app/guides/testing/playwright.md
+
+# Source: https://nextjs.org/docs/pages/guides/testing/playwright.md
+
 # How to set up Playwright with Next.js
 @doc-version: 16.0.3
 

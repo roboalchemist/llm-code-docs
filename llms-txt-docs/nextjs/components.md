@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/components.md
 
+# Source: https://nextjs.org/docs/app/api-reference/components.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/components.md
+
 # Components
 @doc-version: 16.0.3
 

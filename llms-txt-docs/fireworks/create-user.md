@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-user.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-user.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-user.md
+
 # firectl create user
 
 > Creates a new user.

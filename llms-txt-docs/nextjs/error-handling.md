@@ -2,6 +2,10 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/error-handling.md
 
+# Source: https://nextjs.org/docs/pages/building-your-application/configuring/error-handling.md
+
+# Source: https://nextjs.org/docs/app/getting-started/error-handling.md
+
 # Error Handling
 @doc-version: 16.0.3
 

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/qstash/api/authentication.md
 
+# Source: https://upstash.com/docs/devops/developer-api/authentication.md
+
+# Source: https://upstash.com/docs/qstash/api/authentication.md
+
 # Authentication
 
 > Authentication for the QStash API

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscore.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscore.md
+
 # ZSCORE
 
 > Returns the scores of a member.

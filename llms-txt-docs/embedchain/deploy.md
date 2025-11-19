@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/rest-api/deploy.md
 
+# Source: https://docs.embedchain.ai/api-reference/app/deploy.md
+
+# Source: https://docs.embedchain.ai/examples/rest-api/deploy.md
+
 # Deploy app
 
 > Deploy an existing app.

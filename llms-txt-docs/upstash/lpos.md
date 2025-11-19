@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
+
 # LPOS
 
 > Returns the index of matching elements inside a list.

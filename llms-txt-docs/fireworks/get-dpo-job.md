@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dpo-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-dpo-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dpo-job.md
+
 # firectl get dpo-job
 
 > Retrieves information about a dpo job.

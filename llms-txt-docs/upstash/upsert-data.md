@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
 
+# Source: https://upstash.com/docs/vector/api/endpoints/upsert-data.md
+
+# Source: https://upstash.com/docs/vector/sdks/php/commands/upsert-data.md
+
 # Upserting Data with Embedding Models
 
 Upstash Vector provides embedding models that can automatically generate vector embeddings for you.

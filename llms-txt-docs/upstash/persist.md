@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/persist.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/persist.md
+
 # PERSIST
 
 > Remove any timeout set on the key.

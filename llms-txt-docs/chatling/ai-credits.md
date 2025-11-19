@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/usage/ai-credits.md
 
+# Source: https://docs.chatling.ai/ai/ai-credits.md
+
+# Source: https://docs.chatling.ai/api-reference/v2/usage/ai-credits.md
+
 # AI Credits
 
 > Get the AI credits usage for the project.

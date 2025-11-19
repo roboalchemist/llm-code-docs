@@ -1,5 +1,13 @@
 # Source: https://docs.stripe.com/payments/no-code/collect-addresses.md
 
+# Source: https://docs.stripe.com/payments/mobile/collect-addresses.md
+
+# Source: https://docs.stripe.com/payments/advanced/collect-addresses.md
+
+# Source: https://docs.stripe.com/payments/collect-addresses.md
+
+# Source: https://docs.stripe.com/payments/no-code/collect-addresses.md
+
 # Collect physical addresses and phone numbers
 
 Learn how to collect addresses and phone numbers without writing code.

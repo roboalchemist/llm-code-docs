@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
 
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/queues.md
+
+# Source: https://upstash.com/docs/qstash/features/queues.md
+
+# Source: https://upstash.com/docs/qstash/sdks/ts/examples/queues.md
+
 # Queues
 
 #### Create a queue with parallelism 2

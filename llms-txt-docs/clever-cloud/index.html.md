@@ -288,6 +288,294 @@
 
 # Source: https://www.clever.cloud/developers/guides/tutorial-wordpress/index.html.md
 
+# Source: https://www.clever.cloud/developers/guides/tutorial-symfony/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/ruby-rack-app-tutorial/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/ruby-rack/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/ruby-on-rails/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/proxysql/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/pgpool/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/otree/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/nuxt/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/node-js-mongo-db/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/node-statsd-nodejs-metrics/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/moodle/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/mkdocs/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/mdbook/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/lume-deno/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/tutorial-laravel/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/kibana/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/hugo-static-s3/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/hugo/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/hexo/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/go-echoip/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/fluentd/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/eleventy/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/ekg-statsd-haskell-metrics/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/tutorial-drupal/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/docusaurus/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/docs/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/python-django-sample/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/astro/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/ssh-keys-management/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/organisations/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/notifications/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/manage-account/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/administrate-organisation/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/delete-account/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/create-account/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/reference/products-support/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/reference/reference-environment-variables/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/reference/common-configuration/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/reference/cli/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/metrics/warp10/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/metrics/new-relic/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/metrics/blackfire/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/find-help/troubleshooting/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/find-help/support/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/find-help/faq/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/workers/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/network-groups/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/env-variables/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/build-hooks/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/healthcheck/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/tasks/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/services-depedencies/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/operators/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/notifications-webhooks/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/network-groups/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/logs-drains/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/kv-stores/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/install/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/kubernetes/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/applications/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/addons/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/kubernetes/operator/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/account/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/reference/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/quickstart/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/metrics/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/marketplace/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/find-help/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/develop/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/contribute/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/cli/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/kubernetes/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/ci-cd/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/billing/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/ci-cd/custom-scripts/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/ci-cd/gitlab/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/ci-cd/github/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/billing/unified-invoices/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/billing/payments-invoicing/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/billing/analytics-consumption/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/tips_and_tricks/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/12-factors/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/load-testing/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/cloud-storage/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/best-practices/blue-green/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/v/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/static-apache/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/static/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/scala/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/rust/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/ruby/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/python/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/php/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/nodejs/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/meteor/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/linux/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/java/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/haskell/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/golang/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/frankenphp/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/elixir/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/docker/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/applications/dotnet/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/zone-migration/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/cache/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/tcp-redirections/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/ssh-clever-tools/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/service-dependencies/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/network/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/log-management/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/ssl/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/encryption-at-rest/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/domain-names/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/database-migration/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/cron/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/clamav/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/scalability/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/apps-management/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/administrate/activity/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/redis/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/pulsar/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/postgresql/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/otoroshi/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/mysql/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/mongodb/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/metabase/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/matomo/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/materia-kv/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/mailpace/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/keycloak/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/jenkins/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/heptapod/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/fs-bucket/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/elastic/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/couchbase/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/config-provider/index.html.md
+
+# Source: https://www.clever.cloud/developers/doc/addons/cellar/index.html.md
+
+# Source: https://www.clever.cloud/developers/api/howto/index.html.md
+
+# Source: https://www.clever.cloud/developers/api/v4/index.html.md
+
+# Source: https://www.clever.cloud/developers/guides/tutorial-wordpress/index.html.md
+
 ## Overview[](#overview)
 
 [WordPress](https://WordPress.org) applications almost work out of the box on Clever Cloud, you just have a few adjustments to make.

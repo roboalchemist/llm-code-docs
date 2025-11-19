@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrindex.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrindex.md
+
 # JSON.ARRINDEX
 
 > Search for the first occurrence of a JSON value in an array.

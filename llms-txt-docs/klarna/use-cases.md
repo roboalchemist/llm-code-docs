@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/payments/use-cases.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/payments/use-cases.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/payments/use-cases.md
+
 # Use Cases on SAP Commerce Cloud
 
 ## This section outlines the capabilities of Klarna Payments, covering pre-purchase messaging, flexible order placement, efficient order management, and secure settlement options like Virtual Card Numbers, enhancing both customer experience and operational workflows.

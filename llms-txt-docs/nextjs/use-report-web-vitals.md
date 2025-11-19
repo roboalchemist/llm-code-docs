@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
 
+# Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
+
 # useReportWebVitals
 @doc-version: 16.0.3
 

@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/apps.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/apps.md
+
+# Source: https://docs.fireflies.ai/schema/apps.md
+
 # AI Apps
 
 > Schema for Apps

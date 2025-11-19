@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
+
 # XTRIM
 
 > Trims the stream by removing entries to keep it at a reasonable size.

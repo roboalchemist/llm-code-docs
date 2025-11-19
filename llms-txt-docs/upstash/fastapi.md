@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/workflow/quickstarts/fastapi.md
 
+# Source: https://upstash.com/docs/redis/quickstarts/fastapi.md
+
+# Source: https://upstash.com/docs/workflow/quickstarts/fastapi.md
+
 # FastAPI
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-py/tree/master/examples/fastapi" horizontal>

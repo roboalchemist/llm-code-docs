@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js.md
 
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js.md
+
 # next.config.js
 @doc-version: 16.0.3
 

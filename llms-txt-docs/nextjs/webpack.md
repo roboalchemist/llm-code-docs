@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack.md
 
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack.md
+
 # Custom Webpack Config
 @doc-version: 16.0.3
 

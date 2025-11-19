@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
 
+# Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
+
+# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+
 # Human-in-the-Loop (HITL) Workflows
 
 > Learn how to implement Human-in-the-Loop workflows in CrewAI for enhanced decision-making

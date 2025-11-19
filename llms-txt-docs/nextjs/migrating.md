@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/migrating.md
 
+# Source: https://nextjs.org/docs/app/guides/migrating.md
+
+# Source: https://nextjs.org/docs/pages/guides/migrating.md
+
 # Migrating
 @doc-version: 16.0.3
 

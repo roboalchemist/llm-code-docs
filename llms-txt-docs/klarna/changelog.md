@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/before-you-start/changelog.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/before-you-start/changelog.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/before-you-start/changelog.md
+
 # Changelog of SAP Commerce Cloud Add-on
 
 ## List of changes to the Klarna add-on for SAP Commerce Cloud.

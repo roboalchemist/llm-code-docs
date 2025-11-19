@@ -1,0 +1,37 @@
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/deploy.md
+
+# Source: https://docs.hypermode.com/deploy.md
+
+# Deploy Project
+
+> A git-based flow for simple deployment
+
+Hypermode features a native GitHub integration for the deployment of Hypermode
+projects. The deployment includes your Modus app as well as any models defined
+in the [app manifest](/modus/app-manifest).
+
+<Note>
+  Preview environments for live validation of pull requests are in development.
+</Note>
+
+## Link your project to GitHub
+
+After you push your Modus app to GitHub, you can link your Hypermode project to
+the repo through the Hyp CLI.
+
+```sh
+hyp link
+```
+
+## Build
+
+When you link your project with Hypermode, the Hyp CLI adds a GitHub Actions
+workflow to your repo that builds your Modus app to Hypermode on commit.
+
+## Deploy
+
+On successful build of your project, Hypermode automatically deploys your
+project changes.
+
+You can view the deployment status from the Deployments tab within the Hypermode
+Console.

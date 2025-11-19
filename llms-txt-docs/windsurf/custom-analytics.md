@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics.md
+
 # Custom Analytics Query
 
 > Flexible analytics querying with custom selections, filters, and aggregations

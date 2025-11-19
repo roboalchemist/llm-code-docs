@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/testing/wallets.md
 
+# Source: https://docs.stripe.com/payments/wallets.md
+
+# Source: https://docs.stripe.com/testing/wallets.md
+
 # Test Apple and Google wallet rendering
 
 Compare your integration against working demo integrations to identify possible rendering issues.

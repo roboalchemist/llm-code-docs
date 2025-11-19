@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/third-party-libraries.md
 
+# Source: https://nextjs.org/docs/app/guides/third-party-libraries.md
+
+# Source: https://nextjs.org/docs/pages/guides/third-party-libraries.md
+
 # How to optimize third-party libraries
 @doc-version: 16.0.3
 

@@ -1,5 +1,13 @@
 # Source: https://docs.windsurf.com/tab/overview.md
 
+# Source: https://docs.windsurf.com/context-awareness/overview.md
+
+# Source: https://docs.windsurf.com/chat/overview.md
+
+# Source: https://docs.windsurf.com/autocomplete/overview.md
+
+# Source: https://docs.windsurf.com/tab/overview.md
+
 # Tab
 
 > A powerful next-intent prediction experience routed to a single keystroke.

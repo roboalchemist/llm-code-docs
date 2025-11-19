@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
 
+# Source: https://upstash.com/docs/qstash/quickstarts/deno-deploy.md
+
+# Source: https://upstash.com/docs/redis/quickstarts/deno-deploy.md
+
 # Deno Deploy
 
 This is a step-by-step guide on how to use Upstash Redis to create a view

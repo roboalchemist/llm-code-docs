@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/scripts.md
 
+# Source: https://nextjs.org/docs/app/guides/scripts.md
+
+# Source: https://nextjs.org/docs/pages/guides/scripts.md
+
 # How to load and optimize scripts
 @doc-version: 16.0.3
 

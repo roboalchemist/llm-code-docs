@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/billing/subscriptions/billing-cycle.md
 
+# Source: https://docs.stripe.com/payments/checkout/billing-cycle.md
+
+# Source: https://docs.stripe.com/billing/subscriptions/billing-cycle.md
+
 # Set the subscription billing renewal date
 
 Learn how to set the billing date for subscriptions.

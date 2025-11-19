@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lmove.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lmove.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lmove.md
+
 # LMOVE
 
 > Move an element from one list to another.

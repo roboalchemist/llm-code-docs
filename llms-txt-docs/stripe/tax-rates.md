@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/invoicing/taxes/tax-rates.md
 
+# Source: https://docs.stripe.com/billing/taxes/tax-rates.md
+
+# Source: https://docs.stripe.com/invoicing/taxes/tax-rates.md
+
 # Tax rates and IDs
 
 Assign tax rates to draft invoices for automatic tax calculation.

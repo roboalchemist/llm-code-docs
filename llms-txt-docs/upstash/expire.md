@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expire.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expire.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expire.md
+
 # EXPIRE
 
 > Sets a timeout on key. The key will automatically be deleted.

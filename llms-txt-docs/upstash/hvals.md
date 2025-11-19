@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hvals.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hvals.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hvals.md
+
 # HVALS
 
 > Returns all values in the hash stored at key.

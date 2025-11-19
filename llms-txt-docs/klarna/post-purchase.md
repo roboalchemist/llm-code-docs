@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/post-purchase.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/ios/post-purchase.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/post-purchase.md
+
 # Post-Purchase on Android
 
 ​To use Post Purchase SDK in your application, you need to create an instance of the SDK and perform some operations on it. You can read more about the flow [here](https://docs.klarna.com/payments/mobile-payments/before-you-start/post-purchase-overview). This guide will teach you how to:

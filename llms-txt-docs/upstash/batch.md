@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/qstash/features/batch.md
 
+# Source: https://upstash.com/docs/qstash/api/messages/batch.md
+
+# Source: https://upstash.com/docs/qstash/features/batch.md
+
 # Batching
 
 [Publishing](/qstash/howto/publishing) is great for sending one message

@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/keys.md
+
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/keys.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/keys.md
+
 # KEYS
 
 > Returns all keys matching pattern.

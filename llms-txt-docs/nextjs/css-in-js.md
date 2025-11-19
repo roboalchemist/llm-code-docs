@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/css-in-js.md
 
+# Source: https://nextjs.org/docs/app/guides/css-in-js.md
+
+# Source: https://nextjs.org/docs/pages/guides/css-in-js.md
+
 # How to use CSS-in-JS libraries
 @doc-version: 16.0.3
 

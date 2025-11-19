@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/sdks/php/laravel.md
 
+# Source: https://upstash.com/docs/redis/quickstarts/laravel.md
+
+# Source: https://upstash.com/docs/vector/sdks/php/laravel.md
+
 # Getting Started with Laravel
 
 `upstash/vector-laravel` is a dedicated Laravel SDK for Upstash Vector, that is built on top of our official PHP SDK.

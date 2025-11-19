@@ -1,5 +1,25 @@
 # Source: https://docs.stripe.com/api/payment-link/object.md
 
+# Source: https://docs.stripe.com/api/invoices/object.md
+
+# Source: https://docs.stripe.com/api/tax_ids/object.md
+
+# Source: https://docs.stripe.com/api/customer_balance_transactions/object.md
+
+# Source: https://docs.stripe.com/api/customers/object.md
+
+# Source: https://docs.stripe.com/api/subscriptions/object.md
+
+# Source: https://docs.stripe.com/api/sources/object.md
+
+# Source: https://docs.stripe.com/api/payment_methods/object.md
+
+# Source: https://docs.stripe.com/api/payment_intents/object.md
+
+# Source: https://docs.stripe.com/api/checkout/sessions/object.md
+
+# Source: https://docs.stripe.com/api/payment-link/object.md
+
 # The Payment Link object
 
 ## Attributes

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment-shape-version.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-deployment-shape-version.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment-shape-version.md
+
 # firectl get deployment-shape-version
 
 > Prints information about a deployment shape version.

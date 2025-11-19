@@ -1,5 +1,9 @@
 # Source: https://configcat.com/docs/sdk-reference/rust.md
 
+# Source: https://configcat.com/docs/sdk-reference/openfeature/rust.md
+
+# Source: https://configcat.com/docs/sdk-reference/rust.md
+
 # Rust SDK Reference
 
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/rust-sdk.svg?style=social)](https://github.com/configcat/rust-sdk/stargazers) [![Build Status](https://github.com/configcat/rust-sdk/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/configcat/rust-sdk/actions/workflows/ci.yml) [![crates.io](https://img.shields.io/crates/v/configcat.svg?logo=rust)](https://crates.io/crates/configcat) [![docs.rs](https://img.shields.io/badge/docs.rs-configcat-66c2a5?logo=docs.rs)](https://docs.rs/configcat)

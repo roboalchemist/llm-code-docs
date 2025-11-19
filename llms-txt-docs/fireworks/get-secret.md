@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-secret.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-secret.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-secret.md
+
 # firectl get secret
 
 > Retrieves a secret by name.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
+
 # ZREM
 
 > Remove one or more members from a sorted set

@@ -1,0 +1,86 @@
+# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/project-setup.md
+
+# Setting up your project
+
+**Create a new project with npm and Node.js. Install necessary libraries, and test that everything works before starting the next lesson.**
+
+***
+
+When you open a website in a browser, the browser first downloads the page's HTML. To do the same thing with Node.js, we will install a program - an npm module - to help us with it. npm modules are installed using `npm`, which is another program, automatically installed with Node.js.
+
+> The https://www.npmjs.com/ registry offers a huge collection of open-source libraries for Node.js. You can (and you should) utilize it to save time and tap into the amazing open-source community around JavaScript and Node.js.
+
+## Creating a new project with npm
+
+Before we can install npm modules, we need to create an npm project. To do that, you can create a new directory or use the one that you already have open in VSCode (you can delete the **hello.js** file now) and from that directory run this command in your terminal:
+
+
+```
+npm init -y
+```
+
+
+It will set up an empty npm project for you and create a file called **package.json**. This is a very important file in Node.js programming as it contains information about the project.
+
+![npm init with VSCode](/assets/images/vscode-npm-init-9a14ce01ee1ea6ec3e6d8c9bb7b27209.png)
+
+### Use modern JavaScript
+
+Node.js and npm support two types of projects, let's call them legacy and modern. For backwards compatibility, the legacy version is used by default. To switch to the modern version, open your **package.json** and add this line to the end of the JSON object. Don't forget to add a comma to the end of the previous line 😉
+
+
+```
+"type": "module"
+```
+
+
+![Update package.json with VSCode](/assets/images/vscode-type-module-4981eb4a264712ba7e0a951578b13c10.png)
+
+> More recent versions of npm might already have `"type": "commonjs",` pre-defined; if so, simply replace `commonjs` with `module`.
+
+If you want to learn more about JSON and its syntax, we recommend https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON.
+
+## Installing necessary libraries
+
+Now that we have a project set up, we can install npm modules into the project. Let's install libraries that will help us with downloading and processing websites' HTML. In the project directory, run the following command, which will install two libraries into your project. **got-scraping** and Cheerio.
+
+
+```
+npm install got-scraping cheerio
+```
+
+
+https://github.com/apify/got-scraping is a library that's made especially for scraping and downloading page's HTML. It's based on the popular https://github.com/sindresorhus/got, which means any features of **got** are also available in **got-scraping**. Both **got** and **got-scraping** are HTTP clients. To learn more about HTTP, https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP.
+
+https://github.com/cheeriojs/cheerio is a popular Node.js library for parsing and processing HTML. If you know how to work with https://jquery.com/, you'll find Cheerio familiar.
+
+## Test everything
+
+With the libraries installed, create a new file in the project's folder called **main.js**. This is where we will put all our code. Before we start scraping, though, let's do a check that everything was installed correctly. Add this piece of code inside **main.js**.
+
+
+```
+import { gotScraping } from 'got-scraping';
+import * as cheerio from 'cheerio';
+
+console.log('it works!');
+```
+
+
+Those `import` statements tell Node.js that it should give you access to the **got-scraping** library under the `gotScraping` variable and the Cheerio library under the `cheerio` variable.
+
+Now run this command in your terminal:
+
+
+```
+node main.js
+```
+
+
+If you see **it works!** printed in your terminal, great job! You set up everything correctly. If you see an error that says *Cannot use import statement outside a module*, go back to the  paragraph and add the `type` property to your **package.json**. If you see a different error, try copying and pasting it into Google, and you'll find a solution soon.
+
+![Test your setup with VSCode](/assets/images/vscode-test-setup-ee57f6c24936b1661402600019b6373a.png)
+
+## Next up
+
+With the project set up, the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/node-js-scraper.md will show you how to use **got-scraping** to download the website's HTML and extract data from it with Cheerio.

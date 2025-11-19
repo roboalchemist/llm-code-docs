@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/accounts/usage.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/usage.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/usage.md
+
 # Plans and Credit Usage
 
 Prompt credits are consumed whenever a message is sent to Cascade with a premium model. Every model has it's own credit multiplier with the default message costing 1 credit. You can view all available models and their associated costs on the [models page.](/windsurf/models)

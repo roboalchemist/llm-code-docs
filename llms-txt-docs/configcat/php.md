@@ -1,5 +1,9 @@
 # Source: https://configcat.com/docs/sdk-reference/php.md
 
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
 # PHP SDK Reference
 
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/php-sdk.svg?style=social)](https://github.com/configcat/php-sdk/stargazers) [![Build Status](https://github.com/configcat/php-sdk/actions/workflows/php-ci.yml/badge.svg?branch=master)](https://github.com/configcat/php-sdk/actions/workflows/php-ci.yml) [![Latest Stable Version](https://poser.pugx.org/configcat/configcat-client/version)](https://packagist.org/packages/configcat/configcat-client) [![Total Downloads](https://poser.pugx.org/configcat/configcat-client/downloads)](https://packagist.org/packages/configcat/configcat-client) [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/configcat_php-sdk?logo=sonarcloud\&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=configcat_php-sdk) [![Sonar Coverage](https://img.shields.io/sonar/coverage/configcat_php-sdk?logo=SonarCloud\&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=configcat_php-sdk)

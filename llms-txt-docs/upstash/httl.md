@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/httl.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/httl.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/httl.md
+
 # HTTL
 
 > Retrieves the remaining time-to-live (TTL) for field(s) in a hash in seconds.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
+
 # DBSIZE
 
 > Count the number of keys in the database.

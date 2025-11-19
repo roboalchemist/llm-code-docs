@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/triggering.md
 
+# Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
+
+# Source: https://trigger.dev/docs/triggering.md
+
 # Triggering
 
 > Tasks need to be triggered in order to run.

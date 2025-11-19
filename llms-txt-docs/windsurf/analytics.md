@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/accounts/analytics.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/analytics.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/analytics.md
+
 # Analytics
 
 ## Individuals

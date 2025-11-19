@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-batch-inference-jobs.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-batch-inference-jobs.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-batch-inference-jobs.md
+
 # firectl list batch-inference-jobs
 
 > Lists all batch inference jobs in an account.

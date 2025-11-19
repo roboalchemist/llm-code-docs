@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/env.md
 
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/env.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/env.md
+
 # env
 @doc-version: 16.0.3
 

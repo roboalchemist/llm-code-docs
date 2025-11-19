@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
 
+# Source: https://docs.giselles.ai/en/faq/security-support/privacy-security.md
+
+# Source: https://docs.giselles.ai/en/guides/learn-about/privacy-security.md
+
 # Privacy & Security
 
 > Manage your account security and privacy settings

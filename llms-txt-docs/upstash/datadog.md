@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/workflow/integrations/datadog.md
 
+# Source: https://upstash.com/docs/redis/howto/datadog.md
+
+# Source: https://upstash.com/docs/qstash/integrations/datadog.md
+
+# Source: https://upstash.com/docs/workflow/integrations/datadog.md
+
 # Datadog - Upstash QStash Integration
 
 This guide walks you through connecting your Datadog account with Upstash QStash for monitoring and analytics of your message delivery, retries, DLQ, and schedules.

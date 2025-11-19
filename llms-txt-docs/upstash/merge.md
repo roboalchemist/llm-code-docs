@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/merge.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/merge.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/merge.md
+
 # JSON.MERGE
 
 > Merges the JSON value at path in key with the provided value.

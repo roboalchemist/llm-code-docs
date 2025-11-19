@@ -2,6 +2,10 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes.md
 
+# Source: https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes.md
+
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes.md
+
 # Dynamic Route Segments
 @doc-version: 16.0.3
 

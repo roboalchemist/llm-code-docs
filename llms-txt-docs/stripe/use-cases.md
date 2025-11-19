@@ -1,5 +1,11 @@
 # Source: https://docs.stripe.com/financial-connections/use-cases.md
 
+# Source: https://docs.stripe.com/identity/use-cases.md
+
+# Source: https://docs.stripe.com/billing/subscriptions/use-cases.md
+
+# Source: https://docs.stripe.com/financial-connections/use-cases.md
+
 # Financial Connections use cases
 
 View options for integrating Financial Connections and common use cases.

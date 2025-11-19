@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/lazy-loading.md
 
+# Source: https://nextjs.org/docs/app/guides/lazy-loading.md
+
+# Source: https://nextjs.org/docs/pages/guides/lazy-loading.md
+
 # How to lazy load Client Components and libraries
 @doc-version: 16.0.3
 

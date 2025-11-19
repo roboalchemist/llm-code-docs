@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/connect/charges.md
 
+# Source: https://docs.stripe.com/payments/payment-intents/migration/charges.md
+
+# Source: https://docs.stripe.com/connect/charges.md
+
 # Create a charge
 
 Create a charge and split payments between your platform and your sellers or service providers.

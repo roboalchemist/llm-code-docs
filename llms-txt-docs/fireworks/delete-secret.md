@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-secret.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-secret.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-secret.md
+
 # firectl delete secret
 
 > Deletes a secret.

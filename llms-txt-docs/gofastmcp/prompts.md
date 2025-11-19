@@ -2,6 +2,10 @@
 
 # Source: https://gofastmcp.com/clients/prompts.md
 
+# Source: https://gofastmcp.com/servers/prompts.md
+
+# Source: https://gofastmcp.com/clients/prompts.md
+
 # Prompts
 
 > Use server-side prompt templates with automatic argument serialization.

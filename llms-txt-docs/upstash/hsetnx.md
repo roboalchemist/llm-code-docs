@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hsetnx.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hsetnx.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hsetnx.md
+
 # HSETNX
 
 > Write a field to a hash but only if the field does not exist.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
 
+# Source: https://upstash.com/docs/qstash/quickstarts/vercel-nextjs.md
+
+# Source: https://upstash.com/docs/workflow/quickstarts/vercel-nextjs.md
+
 # Next.js
 
 This guide provides step-by-step instructions on how to use and deploy Upstash Workflow with Next.js.

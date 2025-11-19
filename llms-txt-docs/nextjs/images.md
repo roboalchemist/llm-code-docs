@@ -8,6 +8,14 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/images.md
 
+# Source: https://nextjs.org/docs/pages/getting-started/images.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/images.md
+
+# Source: https://nextjs.org/docs/app/getting-started/images.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/images.md
+
 # images
 @doc-version: 16.0.3
 

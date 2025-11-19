@@ -2,6 +2,10 @@
 
 # Source: https://gofastmcp.com/clients/progress.md
 
+# Source: https://gofastmcp.com/servers/progress.md
+
+# Source: https://gofastmcp.com/clients/progress.md
+
 # Progress Monitoring
 
 > Handle progress notifications from long-running server operations.

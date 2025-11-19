@@ -2,6 +2,10 @@
 
 # Source: https://docs.zapier.com/platform/build/errors.md
 
+# Source: https://docs.zapier.com/powered-by-zapier/api-reference/common-types/errors.md
+
+# Source: https://docs.zapier.com/platform/build/errors.md
+
 # Add error response handling
 
 > If your API returns responses with a status code above 400 that should not automatically throw an error then Zapier recommends enabling skipThrowForStatus.

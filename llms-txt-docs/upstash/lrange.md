@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrange.md
+
 # LRANGE
 
 > Returns the specified elements of the list stored at key.

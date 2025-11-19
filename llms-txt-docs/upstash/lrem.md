@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrem.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lrem.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lrem.md
+
 # LREM
 
 > Remove the first `count` occurrences of an element from a list.

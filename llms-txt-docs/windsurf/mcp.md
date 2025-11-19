@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
 
+# Source: https://docs.windsurf.com/plugins/cascade/mcp.md
+
+# Source: https://docs.windsurf.com/windsurf/cascade/mcp.md
+
 # Model Context Protocol (MCP)
 
 **MCP (Model Context Protocol)** is a protocol that enables LLMs to access custom tools and services.

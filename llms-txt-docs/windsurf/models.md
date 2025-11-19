@@ -1,5 +1,11 @@
 # Source: https://docs.windsurf.com/windsurf/models.md
 
+# Source: https://docs.windsurf.com/plugins/cascade/models.md
+
+# Source: https://docs.windsurf.com/chat/models.md
+
+# Source: https://docs.windsurf.com/windsurf/models.md
+
 # Models
 
 export const ModelsTable = () => {

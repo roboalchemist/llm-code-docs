@@ -8,6 +8,14 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation.md
 
+# Source: https://nextjs.org/docs/pages/guides/instrumentation.md
+
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation.md
+
+# Source: https://nextjs.org/docs/app/guides/instrumentation.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/instrumentation.md
+
 # instrumentation.js
 @doc-version: 16.0.3
 

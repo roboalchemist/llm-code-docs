@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
+
 # RPOP
 
 > Remove and return the last element(s) of a list

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dataset.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-dataset.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-dataset.md
+
 # firectl get dataset
 
 > Prints information about a dataset.

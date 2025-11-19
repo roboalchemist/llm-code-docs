@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/eval.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/eval.md
+
 # EVAL
 
 > Evaluate a Lua script server side.

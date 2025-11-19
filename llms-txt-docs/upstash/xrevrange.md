@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrevrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrevrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrevrange.md
+
 # XREVRANGE
 
 > Returns stream entries matching a given range of IDs in reverse order.

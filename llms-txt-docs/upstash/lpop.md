@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpop.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpop.md
+
 # LPOP
 
 > Remove and return the first element(s) of a list

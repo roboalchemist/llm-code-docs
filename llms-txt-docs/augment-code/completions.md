@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/using-augment/completions.md
 
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/completions.md
+
+# Source: https://docs.augmentcode.com/using-augment/completions.md
+
 # Completions
 
 > Use code completions to get more done. Augment's radical context awareness means more relevant suggestions, fewer hallucinations, and less time hunting down documentation.

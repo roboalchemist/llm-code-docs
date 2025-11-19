@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/numincrby.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/numincrby.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/numincrby.md
+
 # JSON.NUMINCRBY
 
 > Increment the number value stored at `path` by number.

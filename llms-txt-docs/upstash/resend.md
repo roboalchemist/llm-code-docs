@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/workflow/integrations/resend.md
 
+# Source: https://upstash.com/docs/qstash/integrations/resend.md
+
+# Source: https://upstash.com/docs/workflow/integrations/resend.md
+
 # Resend
 
 The standard way to call a third-party endpoint in your workflow is by using [`context.call`](/workflow/basics/context#context-call).

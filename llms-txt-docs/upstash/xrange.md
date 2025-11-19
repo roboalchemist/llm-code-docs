@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xrange.md
+
 # XRANGE
 
 > Returns stream entries matching a given range of IDs.

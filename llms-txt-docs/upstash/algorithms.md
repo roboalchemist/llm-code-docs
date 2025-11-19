@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
 
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-py/algorithms.md
+
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/algorithms.md
+
 # Ratelimiting Algorithms
 
 We provide different algorithms to use out of the box. Each has pros and cons.

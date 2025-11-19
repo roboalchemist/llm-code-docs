@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getdel.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getdel.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getdel.md
+
 # GETDEL
 
 > Return the value of the specified key and delete the key.

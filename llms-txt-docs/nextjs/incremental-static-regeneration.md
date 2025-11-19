@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/incremental-static-regeneration.md
 
+# Source: https://nextjs.org/docs/app/guides/incremental-static-regeneration.md
+
+# Source: https://nextjs.org/docs/pages/guides/incremental-static-regeneration.md
+
 # How to implement Incremental Static Regeneration (ISR)
 @doc-version: 16.0.3
 

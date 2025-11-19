@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/internationalization.md
 
+# Source: https://nextjs.org/docs/app/guides/internationalization.md
+
+# Source: https://nextjs.org/docs/pages/guides/internationalization.md
+
 # Internationalization
 @doc-version: 16.0.3
 

@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
 
+# Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+
 # Retrieve Contact
 
 > Retrieve contacts from HubSpot to use in your chatbot.

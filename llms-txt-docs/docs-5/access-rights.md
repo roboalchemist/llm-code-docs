@@ -1,0 +1,15 @@
+# Source: https://docs.apify.com/platform/collaboration/access-rights.md
+
+# Access rights
+
+**Manage permissions for your private resources such as Actors, Actor runs, and storages. Allow other users to read, run, modify, or build new versions.**
+
+***
+
+You can easily and securely share your own resources - Actors, tasks, key-value stores, datasets, and request queues - with other users by using a https://www.google.com/search?q=define+granular+permissions permissions system. This enables you, for example, to let your colleague run an https://docs.apify.com/platform/actors.md or view a https://docs.apify.com/platform/storage/dataset.md but not modify it.
+
+You can also grant permission to update an Actor and build a new version. https://docs.apify.com/platform/storage.md (key-value stores, request queues, and datasets) are sharable in the same way as a **read** permission or a combination of both **read** and **write** permissions.
+
+To share an Actor, task, key-value store, request queue, or dataset, click on the **Actions** button in the top-right corner and select **Share**. You can add a collaborator by using their **user ID**, **email**, or **username**. Once you have added the collaborator, you can configure their permissions.
+
+![Access rights configuration](/assets/images/access-rights-76dfb5c1630309ea547eeb6fbde3b509.png)

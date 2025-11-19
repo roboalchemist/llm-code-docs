@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitcount.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitcount.md
+
 # BITCOUNT
 
 > Count the number of set bits.

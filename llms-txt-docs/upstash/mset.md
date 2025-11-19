@@ -8,6 +8,14 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
 
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/mset.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/mset.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/mset.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/mset.md
+
 # MSET
 
 > Set multiple keys in one go.

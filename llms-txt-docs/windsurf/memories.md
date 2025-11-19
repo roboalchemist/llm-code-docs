@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/memories.md
 
+# Source: https://docs.windsurf.com/plugins/cascade/memories.md
+
+# Source: https://docs.windsurf.com/windsurf/cascade/memories.md
+
 # Memories & Rules
 
 `Memories` is the system for sharing and persisting context across conversations.

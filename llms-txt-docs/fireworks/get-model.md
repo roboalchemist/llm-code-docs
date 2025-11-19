@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-model.md
+
 # firectl get model
 
 > Prints information about a model.

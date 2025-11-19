@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/autotranscribe.md
 
+# Source: https://docs.asapp.com/autotranscribe.md
+
+# Source: https://docs.asapp.com/changelog/autotranscribe.md
+
 # AutoTranscribe Updates
 
 > New updates and improvements across AutoTranscribe

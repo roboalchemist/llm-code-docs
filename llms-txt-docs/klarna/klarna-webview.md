@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/reactnative/klarna-webview.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/ios/klarna-webview.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/reactnative/klarna-webview.md
+
 # Klarna WebView - React Native
 
 ## This guide will walk you through the steps required to add the Klarna WebView to your React Native app and how to use it.

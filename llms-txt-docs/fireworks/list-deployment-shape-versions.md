@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployment-shape-versions.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-deployment-shape-versions.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-deployment-shape-versions.md
+
 # firectl list deployment-shape-versions
 
 > Prints all deployment shape versions of this deployment shape.

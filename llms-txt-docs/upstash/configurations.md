@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
 
+# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/configurations.md
+
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/configurations.md
+
 # Configure Upstash Ratelimit Strapi Plugin
 
 After setting up the plugin, it's possible to customize the ratelimiter algorithm and rates. You can also define different rate limits and rate limit algorithms for different routes.

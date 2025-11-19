@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/qstash/api/url-groups/remove.md
 
+# Source: https://upstash.com/docs/qstash/api/schedules/remove.md
+
+# Source: https://upstash.com/docs/qstash/api/queues/remove.md
+
+# Source: https://upstash.com/docs/qstash/api/url-groups/remove.md
+
 # Remove URL Group
 
 > Remove a URL group and all its endpoints

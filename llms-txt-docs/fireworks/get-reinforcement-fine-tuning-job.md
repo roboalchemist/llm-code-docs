@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-reinforcement-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-reinforcement-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-reinforcement-fine-tuning-job.md
+
 # firectl get reinforcement-fine-tuning-job
 
 > Retrieves information about a reinforcement fine-tuning job.

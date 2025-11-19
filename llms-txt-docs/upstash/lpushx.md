@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpushx.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpushx.md
+
 # LPUSHX
 
 > Push an element at the head of the list only if the list exists.

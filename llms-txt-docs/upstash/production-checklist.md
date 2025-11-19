@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/help/production-checklist.md
 
+# Source: https://upstash.com/docs/common/help/production-checklist.md
+
+# Source: https://upstash.com/docs/redis/help/production-checklist.md
+
 # Production Checklist
 
 This checklist provides essential recommendations for securing and optimizing your Upstash databases for production workloads.

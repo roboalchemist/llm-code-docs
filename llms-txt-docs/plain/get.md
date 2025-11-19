@@ -1,5 +1,11 @@
 # Source: https://www.plain.com/docs/graphql/tiers/get.md
 
+# Source: https://www.plain.com/docs/graphql/tenants/get.md
+
+# Source: https://www.plain.com/docs/graphql/customers/get.md
+
+# Source: https://www.plain.com/docs/graphql/tiers/get.md
+
 # Get tiers
 
 For all of these queries you need the following permission:

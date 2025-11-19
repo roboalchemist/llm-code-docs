@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/renamenx.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/renamenx.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/renamenx.md
+
 # RENAMENX
 
 > Rename a key if it does not already exist.

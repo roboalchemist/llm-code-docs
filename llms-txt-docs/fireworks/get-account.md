@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-account.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-account.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-account.md
+
 # firectl get account
 
 > Prints information about an account.

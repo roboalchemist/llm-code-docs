@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/amazon-connect.md
 
+# Source: https://docs.asapp.com/autotranscribe/amazon-connect.md
+
+# Source: https://docs.asapp.com/generativeagent/integrate/amazon-connect.md
+
 # Amazon Connect
 
 > Learn how to integrate GenerativeAgent into Amazon Connect

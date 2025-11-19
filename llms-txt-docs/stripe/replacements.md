@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/capital/replacements.md
 
+# Source: https://docs.stripe.com/issuing/cards/replacements.md
+
+# Source: https://docs.stripe.com/capital/replacements.md
+
 # Replacements
 
 Learn how to handle financing offer replacements.

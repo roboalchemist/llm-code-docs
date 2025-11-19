@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/cancel-reinforcement-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/cancel-reinforcement-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/cancel-reinforcement-fine-tuning-job.md
+
 # firectl cancel reinforcement-fine-tuning-job
 
 > Cancels a running reinforcement fine-tuning job.

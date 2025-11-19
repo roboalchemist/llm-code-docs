@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-reinforcement-fine-tuning-jobs.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-reinforcement-fine-tuning-jobs.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-reinforcement-fine-tuning-jobs.md
+
 # firectl list reinforcement-fine-tuning-jobs
 
 > Lists all reinforcement fine-tuning jobs in an account.

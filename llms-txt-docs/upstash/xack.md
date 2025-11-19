@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xack.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xack.md
+
 # XACK
 
 > Removes one or multiple messages from the pending entries list of a stream consumer group.

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/sdks/ts/contributing.md
 
+# Source: https://upstash.com/docs/search/sdks/ts/contributing.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/contributing.md
+
 # Contributing
 
 ## Preparing the environment

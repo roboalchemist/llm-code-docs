@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk.md
 
+# Source: https://docs.asapp.com/generativeagent/integrate/web-sdk.md
+
+# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk.md
+
 # Web SDK Overview
 
 Welcome to the ASAPP Chat SDK Web Overview!

@@ -1,5 +1,11 @@
 # Source: https://docs.augmentcode.com/using-augment/agent.md
 
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/agent.md
+
+# Source: https://docs.augmentcode.com/cli/acp/agent.md
+
+# Source: https://docs.augmentcode.com/using-augment/agent.md
+
 # Using Agent
 
 > Use Agent to complete simple and complex tasks across your workflow–implementing a feature, upgrade a dependency, or writing a pull request.

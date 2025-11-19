@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
+
 # HPERSIST
 
 > Remove the expiration from one or more fields in a hash.

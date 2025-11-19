@@ -1,5 +1,11 @@
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/conversion-boosters/express-checkout.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/conversion-boosters/express-checkout.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/conversion-boosters/express-checkout.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/conversion-boosters/express-checkout.md
+
 # Express Checkout on SAP Commerce Cloud
 
 ## This guide provides step-by-step instructions to install and configure the Klarna On-Site Messaging (KOSM) add-on for SAP Commerce.

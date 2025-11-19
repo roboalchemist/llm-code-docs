@@ -2,6 +2,10 @@
 
 # Source: https://gofastmcp.com/clients/tools.md
 
+# Source: https://gofastmcp.com/servers/tools.md
+
+# Source: https://gofastmcp.com/clients/tools.md
+
 # Tool Operations
 
 > Discover and execute server-side tools with the FastMCP client.

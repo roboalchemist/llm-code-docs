@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/genesys-audiohook.md
 
+# Source: https://docs.asapp.com/autotranscribe/genesys-audiohook.md
+
+# Source: https://docs.asapp.com/generativeagent/integrate/genesys-audiohook.md
+
 # Genesys AudioConnector for GenerativeAgent
 
 > Learn how to integrate GenerativeAgent into Genesys Cloud using our Genesys AudioConnector integration.

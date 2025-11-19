@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/components/font.md
 
+# Source: https://nextjs.org/docs/app/api-reference/components/font.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/components/font.md
+
 # Font Module
 @doc-version: 16.0.3
 

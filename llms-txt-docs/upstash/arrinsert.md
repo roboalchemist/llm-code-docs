@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrinsert.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrinsert.md
+
 # JSON.ARRINSERT
 
 > Insert the json values into the array at path before the index (shifts to the right).

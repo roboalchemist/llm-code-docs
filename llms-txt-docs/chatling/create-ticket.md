@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/zendesk/create-ticket.md
 
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-ticket.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/zendesk/create-ticket.md
+
 # Create Ticket
 
 > Learn how to create tickets in Zendesk from your chatbot.

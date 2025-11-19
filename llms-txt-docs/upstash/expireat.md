@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/expireat.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/expireat.md
+
 # EXPIREAT
 
 > Sets a timeout on key. The key will automatically be deleted.

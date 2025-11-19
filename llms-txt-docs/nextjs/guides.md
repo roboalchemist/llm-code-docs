@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides.md
 
+# Source: https://nextjs.org/docs/app/guides.md
+
+# Source: https://nextjs.org/docs/pages/guides.md
+
 # Guides
 @doc-version: 16.0.3
 

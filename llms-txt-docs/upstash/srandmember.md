@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/srandmember.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/srandmember.md
+
 # SRANDMEMBER
 
 > Returns one or more random members from a set.

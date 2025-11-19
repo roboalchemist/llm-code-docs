@@ -40,6 +40,46 @@
 
 # Source: https://docs.aws.amazon.com/powertools/typescript/latest/upgrade/index.md
 
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/environment-variables/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/kafka/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/validation/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/parser/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/jmespath/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/batch/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/event-handler/bedrock-agents/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/event-handler/appsync-graphql/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/event-handler/appsync-events/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/event-handler/rest/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/metrics/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/lambda-layers/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/typescript-settings/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/usage-patterns/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/installation/index.md
+
+# Source: https://docs.aws.amazon.com/powertools/typescript/latest/upgrade/index.md
+
 ## End of support v1
 
 On March 13th, 2024, Powertools for AWS Lambda (TypeScript) v1 entered maintenance mode, and has reached End-of-Life on September 1st, 2024. If you are still using v1, we strongly recommend you to upgrade to the latest version.

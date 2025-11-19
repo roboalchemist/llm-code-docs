@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/getbit.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/getbit.md
+
 # GETBIT
 
 > Retrieve a single bit.

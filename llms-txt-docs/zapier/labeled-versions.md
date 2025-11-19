@@ -2,6 +2,10 @@
 
 # Source: https://docs.zapier.com/platform/manage/labeled-versions.md
 
+# Source: https://docs.zapier.com/platform/news/2025/labeled-versions.md
+
+# Source: https://docs.zapier.com/platform/manage/labeled-versions.md
+
 # Work with labeled versions
 
 > Use labeled versions to iterate on integration changes without committing to a semantic version number.

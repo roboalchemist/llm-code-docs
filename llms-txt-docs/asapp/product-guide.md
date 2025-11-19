@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/autotranscribe/product-guide.md
 
+# Source: https://docs.asapp.com/autocompose/product-guide.md
+
+# Source: https://docs.asapp.com/autotranscribe/product-guide.md
+
 # AutoTranscribe Product Guide
 
 > Learn more about the use of AutoTranscribe and its features

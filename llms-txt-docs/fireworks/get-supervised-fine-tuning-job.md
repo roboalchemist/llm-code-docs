@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-supervised-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-supervised-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-supervised-fine-tuning-job.md
+
 # firectl get supervised-fine-tuning-job
 
 > Retrieves information about a supervised fine-tuning job.

@@ -1,0 +1,27 @@
+# Source: https://infisical.com/docs/documentation/platform/pki/certificates/profiles.md
+
+# Certificate Profiles
+
+## Concept
+
+A certificate profile is a configuration set specifying how leaf certificates should be issued for a group of end-entities including the [issuing CA](/documentation/platform/pki/ca/overview), a [certificate template](/documentation/platform/pki/certificates/templates), and the [enrollment method](/documentation/platform/pki/enrollment-methods/overview) (e.g. ACME, EST, API, etc.) used to enroll certificates.
+
+You typically request certificates against a certificate profile through its associated enrollment method. Each method defines its own interaction flow which you can read more about in its respective documentation.
+
+## Guide to Creating a Certificate Profile
+
+To create a certificate profile, head to your Certificate Management Project > Certificates > Certificate Profiles and press **Create Profile**.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-profile.png" alt="pki certificate profile" />
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/pki/certificate/cert-profile-modal.png" alt="pki certificate profile modal" />
+
+Here's some guidance on each field:
+
+* Name: A slug-friendly name for the profile such as `web-servers`.
+* Description: An optional description for the profile.
+* Issuing CA: The [issuing CA](/documentation/platform/pki/ca/overview) that should be used to issue certificates for the profile.
+* Certificate Template: The [certificate template](/documentation/platform/pki/certificates/templates) that should be used to validate certificate requests for the profile.
+* Enrollment Method: The enrollment method that should be used to enroll certificates for the profile such as ACME, EST, API, etc.
+
+Depending on which enrollment method you choose, you may be presented with additional enrollment-specific configuration fields.

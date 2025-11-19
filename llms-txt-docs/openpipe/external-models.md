@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/external-models.md
 
+# Source: https://docs.openpipe.ai/features/chat-completions/external-models.md
+
+# Source: https://docs.openpipe.ai/features/external-models.md
+
 # External Models
 
 <Info>

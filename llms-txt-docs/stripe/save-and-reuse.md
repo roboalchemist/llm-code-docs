@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/payments/save-and-reuse.md
 
+# Source: https://docs.stripe.com/payments/checkout/save-and-reuse.md
+
+# Source: https://docs.stripe.com/payments/save-and-reuse.md
+
 # Save a customer's payment method without making a payment
 
 Learn how to save a payment method and charge it later.

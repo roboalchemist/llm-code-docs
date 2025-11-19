@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/api-reference/cli/next.md
 
+# Source: https://nextjs.org/docs/app/api-reference/cli/next.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/cli/next.md
+
 # next CLI
 @doc-version: 16.0.3
 

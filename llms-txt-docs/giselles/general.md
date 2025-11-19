@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/settings/team/general.md
 
+# Source: https://docs.giselles.ai/en/guides/settings/account/general.md
+
+# Source: https://docs.giselles.ai/en/guides/settings/team/general.md
+
 # Team Settings
 
 > Manage your team's profile, plan, and other settings.

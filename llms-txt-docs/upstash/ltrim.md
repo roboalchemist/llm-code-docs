@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/ltrim.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/ltrim.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/ltrim.md
+
 # LTRIM
 
 > Trim a list to the specified range

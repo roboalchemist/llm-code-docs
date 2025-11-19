@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/decrby.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/decrby.md
+
 # DECRBY
 
 > Decrement the integer value of a key by a given number.

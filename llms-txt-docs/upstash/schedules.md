@@ -6,6 +6,12 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
 
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/schedules.md
+
+# Source: https://upstash.com/docs/qstash/features/schedules.md
+
+# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
+
 # Schedules
 
 #### Create a schedule that runs every 5 minutes

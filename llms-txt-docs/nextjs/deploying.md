@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/getting-started/deploying.md
 
+# Source: https://nextjs.org/docs/app/getting-started/deploying.md
+
+# Source: https://nextjs.org/docs/pages/getting-started/deploying.md
+
 # Deploying
 @doc-version: 16.0.3
 

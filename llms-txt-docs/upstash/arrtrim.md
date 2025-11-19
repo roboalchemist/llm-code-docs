@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrtrim.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrtrim.md
+
 # JSON.ARRTRIM
 
 > Trim an array so that it contains only the specified inclusive range of elements.

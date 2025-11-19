@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/android/web-checkout.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/ios/web-checkout.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-without-mobile-sdk/android/web-checkout.md
+
 # Web Checkout - Android
 
 ## When the recommended integration approach of Klarna Mobile SDK is not possible, the guide below will guide you through how to integrate your web checkout in your mobile app without the Mobile SDK.

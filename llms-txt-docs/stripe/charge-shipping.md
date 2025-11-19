@@ -1,5 +1,11 @@
 # Source: https://docs.stripe.com/payments/no-code/charge-shipping.md
 
+# Source: https://docs.stripe.com/payments/mobile/charge-shipping.md
+
+# Source: https://docs.stripe.com/payments/during-payment/charge-shipping.md
+
+# Source: https://docs.stripe.com/payments/no-code/charge-shipping.md
+
 # Charge for shipping
 
 Create different shipping rates for your customers.

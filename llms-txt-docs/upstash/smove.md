@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smove.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smove.md
+
 # SMOVE
 
 > Move a member from one set to another

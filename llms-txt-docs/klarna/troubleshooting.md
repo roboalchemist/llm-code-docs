@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/klarna-osm-app-for-shopify/troubleshooting.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/payments/troubleshooting.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/klarna-osm-app-for-shopify/troubleshooting.md
+
 # Shopify troubleshooting
 
 ## In this section you can read about some common issues with the Klarna On-site messaging Shopify app and learn how to fix them in your store.

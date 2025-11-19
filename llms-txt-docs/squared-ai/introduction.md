@@ -1,5 +1,13 @@
 # Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
 
+# Source: https://docs.squared.ai/getting-started/introduction.md
+
+# Source: https://docs.squared.ai/api-reference/introduction.md
+
+# Source: https://docs.squared.ai/activation/ai-modelling/introduction.md
+
+# Source: https://docs.squared.ai/open-source/guides/architecture/introduction.md
+
 # Architecture Overview
 
 Multiwoven is structured into two primary components: the server and the connectors.

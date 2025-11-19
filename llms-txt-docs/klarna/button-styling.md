@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/additional-resources/button-styling.md
 
+# Source: https://docs.klarna.com/conversion-boosters/express-checkout/additional-resources/button-styling.md
+
+# Source: https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/additional-resources/button-styling.md
+
 # Button Styling
 
 ## This section explains how to adjust the Sign in with Klarna button to match your store’s look and feel while adhering to our brand requirements.

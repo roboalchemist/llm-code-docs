@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hrandfield.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hrandfield.md
+
 # HRANDFIELD
 
 > Return a random field from a hash

@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitop.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitop.md
+
 # BITOP
 
 > Perform bitwise operations between strings.

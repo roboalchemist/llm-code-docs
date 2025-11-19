@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
+
 # HPEXPIRE
 
 > Sets an expiration time for a field in a hash in milliseconds.

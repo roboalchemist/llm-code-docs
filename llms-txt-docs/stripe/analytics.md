@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/radar/analytics.md
 
+# Source: https://docs.stripe.com/payments/analytics.md
+
+# Source: https://docs.stripe.com/radar/analytics.md
+
 # Radar analytics center
 
 Review fraud patterns and their impact on your business in the Dashboard.

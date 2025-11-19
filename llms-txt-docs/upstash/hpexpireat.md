@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpireat.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpireat.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpireat.md
+
 # HPEXPIREAT
 
 > Sets an expiration time for field(s) in a hash in milliseconds since the Unix epoch.

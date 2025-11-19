@@ -1,5 +1,13 @@
 # Source: https://flatfile.com/docs/guides/overview.md
 
+# Source: https://flatfile.com/docs/embedding/overview.md
+
+# Source: https://flatfile.com/docs/core-concepts/overview.md
+
+# Source: https://flatfile.com/docs/coding-tutorial/overview.md
+
+# Source: https://flatfile.com/docs/guides/overview.md
+
 # Guides Overview
 
 > Comprehensive guides to help you master Flatfile's features and capabilities

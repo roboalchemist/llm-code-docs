@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-supervised-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-supervised-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-supervised-fine-tuning-job.md
+
 # firectl delete supervised-fine-tuning-job
 
 > Deletes a supervised fine-tuning job.

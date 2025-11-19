@@ -8,6 +8,14 @@
 
 # Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
 
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/query.md
+
+# Source: https://upstash.com/docs/vector/sdks/php/commands/query.md
+
+# Source: https://upstash.com/docs/vector/api/endpoints/query.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+
 # Query
 
 The query method is designed to retrieve the most similar vectors from the index, using the specific distance metric defined for your index. This method supports a variety of options to configure the query to your needs.

@@ -2,6 +2,10 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/linking-and-navigating.md
 
+# Source: https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating.md
+
+# Source: https://nextjs.org/docs/app/getting-started/linking-and-navigating.md
+
 # Linking and Navigating
 @doc-version: 16.0.3
 

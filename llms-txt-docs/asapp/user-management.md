@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/messaging-platform/integrations/user-management.md
 
+# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/user-management.md
+
+# Source: https://docs.asapp.com/messaging-platform/integrations/user-management.md
+
 # User Management
 
 This section provides an overview of User Management (Roles and Permissions). These roles dictate if an ASAPP user can authenticate to *Agent Desk*, *Admin Dashboard*, or both. In addition, roles determine what view and data users see in the Admin Dashboard. You can pass User Data to ASAPP via *SSO*, AD/LDAP, or other approved integration.

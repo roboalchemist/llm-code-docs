@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/customization.md
 
+# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/customization.md
+
+# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/customization.md
+
 # Customization
 
 ## Styling

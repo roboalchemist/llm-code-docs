@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pttl.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pttl.md
+
 # PTTL
 
 > Return the expiration in milliseconds of a key.

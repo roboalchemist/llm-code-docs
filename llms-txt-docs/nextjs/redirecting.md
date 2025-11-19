@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/redirecting.md
 
+# Source: https://nextjs.org/docs/app/guides/redirecting.md
+
+# Source: https://nextjs.org/docs/pages/guides/redirecting.md
+
 # How to handle redirects in Next.js
 @doc-version: 16.0.3
 

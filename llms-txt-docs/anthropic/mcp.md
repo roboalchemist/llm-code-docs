@@ -2,6 +2,10 @@
 
 # Source: https://docs.claude.com/en/docs/agent-sdk/mcp.md
 
+# Source: https://docs.claude.com/en/docs/mcp.md
+
+# Source: https://docs.claude.com/en/docs/agent-sdk/mcp.md
+
 # MCP in the SDK
 
 > Extend Claude Code with custom tools using Model Context Protocol servers

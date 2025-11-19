@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
+
 # LSET
 
 > Set a value at a specific index.

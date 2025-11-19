@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpireat.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpireat.md
+
 # PEXPIREAT
 
 > Sets a timeout on key. After the timeout has expired, the key will automatically be deleted.

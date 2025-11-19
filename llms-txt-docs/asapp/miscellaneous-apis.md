@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/miscellaneous-apis.md
 
+# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/miscellaneous-apis.md
+
+# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/miscellaneous-apis.md
+
 # Miscellaneous APIs
 
 ## Conversation Status

@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/getting-started/installation.md
 
+# Source: https://nextjs.org/docs/app/getting-started/installation.md
+
+# Source: https://nextjs.org/docs/pages/getting-started/installation.md
+
 # Installation
 @doc-version: 16.0.3
 

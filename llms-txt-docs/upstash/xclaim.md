@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xclaim.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xclaim.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xclaim.md
+
 # XCLAIM
 
 > Changes the ownership of pending messages from one consumer to another in a stream consumer group.

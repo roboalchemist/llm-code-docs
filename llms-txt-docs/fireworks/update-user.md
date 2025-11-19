@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-user.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-user.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-user.md
+
 # firectl update user
 
 > Updates a user.

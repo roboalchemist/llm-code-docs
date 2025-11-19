@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/terminal/readers/stripe-m2.md
 
+# Source: https://docs.stripe.com/terminal/payments/setup-reader/stripe-m2.md
+
+# Source: https://docs.stripe.com/terminal/readers/stripe-m2.md
+
 # Stripe Reader M2
 
 Learn about the Stripe Reader M2 Bluetooth reader.

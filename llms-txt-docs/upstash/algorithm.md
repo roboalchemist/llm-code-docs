@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/vector/features/algorithm.md
 
+# Source: https://upstash.com/docs/search/features/algorithm.md
+
+# Source: https://upstash.com/docs/vector/features/algorithm.md
+
 # Algorithm
 
 ## Approximate Nearest Neighbor Search

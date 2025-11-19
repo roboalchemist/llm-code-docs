@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
+
 # APPEND
 
 > Append a value to a string stored at key.

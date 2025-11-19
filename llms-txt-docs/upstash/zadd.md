@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
+
 # ZADD
 
 > Add a member to a sorted set, or update its score if it already exists.

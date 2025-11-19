@@ -2,6 +2,10 @@
 
 # Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/retrieve-action-run.md
 
+# Source: https://docs.zapier.com/powered-by-zapier/running-actions/retrieve-action-run.md
+
+# Source: https://docs.zapier.com/powered-by-zapier/api-reference/actions/retrieve-action-run.md
+
 # Retrieve Action Run
 
 > Retrieves an Action Run.

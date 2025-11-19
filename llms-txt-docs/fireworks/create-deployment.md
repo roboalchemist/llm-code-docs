@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-deployment.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-deployment.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-deployment.md
+
 # firectl create deployment
 
 > Creates a new deployment.

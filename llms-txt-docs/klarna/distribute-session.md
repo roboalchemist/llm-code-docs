@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/integrate-via-hpp/before-you-start/distribute-session.md
 
+# Source: https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/integrate-via-hpp/api-documentation/distribute-session.md
+
+# Source: https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/integrate-via-hpp/before-you-start/distribute-session.md
+
 # Distribute Session with Hosted Payment Page
 
 After creating the HPP Session, it will be necessary to get the Consumer to access it so that they can complete the payment. This distribution of the HPP Session will change depending on the use case you are trying to achieve. Technical constraints are defined by the use case (eCommerce, In-store, or Telesales) and would most likely be covered by these cases:

@@ -1,5 +1,13 @@
 # Source: https://docs.augmentcode.com/vim/setup-augment/workspace-indexing.md
 
+# Source: https://docs.augmentcode.com/setup-augment/workspace-indexing.md
+
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/workspace-indexing.md
+
+# Source: https://docs.augmentcode.com/cli/setup-auggie/workspace-indexing.md
+
+# Source: https://docs.augmentcode.com/vim/setup-augment/workspace-indexing.md
+
 # Index your workspace
 
 > When your workspace is indexed, Augment can provide tailored code suggestions and answers based on your unique codebase, best practices, coding patterns, and preferences. You can always control what files are indexed.

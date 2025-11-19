@@ -1,0 +1,486 @@
+# Source: https://docs.hypermode.com/modus/data-fetching.md
+
+# Data Fetching
+
+> Pull data into your app
+
+Modus makes it simple to fetch data from external sources. The specific data
+source you're retrieving from determines the method you use to interact with it.
+
+## Fetching from databases
+
+### PostgreSQL
+
+PostgreSQL is a powerful, open source relational database system. Modus provides
+a simple way to interact with PostgreSQL databases with the `postgresql` APIs.
+
+Here is an example of fetching a person from a PostgreSQL database using the
+Modus SDK:
+
+<CodeGroup>
+  ```go Go
+  package main
+
+  import (
+    "github.com/hypermodeinc/modus/sdk/go/pkg/postgresql"
+  )
+
+  // the name of the PostgreSQL connection, as specified in the modus.json manifest
+  const connection = "my-database"
+
+  type Person struct {
+    Name string `json:"name"`
+    Age  int    `json:"age"`
+  }
+
+  func GetPerson(name string) (*Person, error) {
+    const query = "select * from persons where name = $1"
+    rows, _, _ := postgresql.Query[Person](connection, query, name)
+    return &rows[0], nil
+  }
+  ```
+
+  ```ts AssemblyScript
+  import { postgresql } from "@hypermode/modus-sdk-as"
+
+  // the name of the PostgreSQL connection, as specified in the modus.json manifest
+  const connection = "my-database"
+
+  @json
+  class Person {
+    name!: string
+    age!: i32
+  }
+
+  export function getPerson(name: string): Person {
+    const query = "select * from persons where name = $1"
+
+    const params = new postgresql.Params()
+    params.push(name)
+
+    const response = postgresql.query<Person>(connection, query, params)
+    return response.rows[0]
+  }
+  ```
+</CodeGroup>
+
+### Dgraph
+
+Dgraph is a distributed, transactional graph database. Modus offers an easy way
+to query and mutate data in Dgraph with the `dgraph` APIs.
+
+Here is an example of fetching a person from a Dgraph database using the Modus
+SDK:
+
+<CodeGroup>
+  ```go Go
+  package main
+
+  import (
+    "encoding/json"
+    "github.com/hypermodeinc/modus/sdk/go/pkg/dgraph"
+  )
+
+  // the name of the Dgraph connection, as specified in the modus.json manifest
+  const connection = "my-dgraph"
+
+  // declare structures used to parse the JSON document returned by Dgraph query.
+  type Person struct {
+    Name string `json:"name,omitempty"`
+    Age  int32  `json:"age,omitempty"`
+  }
+
+  // Dgraph returns an array of Persons
+  type GetPersonResponse struct {
+    Persons []*Person `json:"persons"`
+  }
+
+  func GetPerson(name string) (*Person, error) {
+    statement := `query getPerson($name: string!) {
+      persons(func: eq(name, $name))  {
+        name
+        age
+      }
+    }
+    `
+    variables := map[string]string{
+      "$name": name,
+    }
+
+    response, _ := dgraph.Execute(connection, &dgraph.Request{
+      Query: &dgraph.Query{
+        Query:     statement,
+        Variables: variables,
+      },
+    })
+
+    var data GetPersonResponse
+    json.Unmarshal([]byte(response.Json), &data)
+
+    return data.Persons[0], nil
+  }
+
+  ```
+
+  ```ts AssemblyScript
+  import { dgraph } from "@hypermode/modus-sdk-as"
+  import { JSON } from "json-as"
+
+  // the name of the Dgraph connection, as specified in the modus.json manifest
+  const connection: string = "my-dgraph"
+
+  // declare classes used to parse the JSON document returned by Dgraph query.
+  @json
+  class Person {
+    name: string = ""
+    age: i32 = 0
+  }
+
+  // Dgraph returns an array of objects
+  @json
+  class GetPersonResponse {
+    persons: Person[] = []
+  }
+
+  export function getPerson(name: string): Person {
+    const statement = `  
+    query getPerson($name: string) {
+      persons(func: eq(name, $name))  {
+          name
+          age
+      }
+    }`
+
+    const vars = new dgraph.Variables()
+    vars.set("$name", name)
+
+    const resp = dgraph.execute(
+      connection,
+      new dgraph.Request(new dgraph.Query(statement, vars)),
+    )
+    const persons = JSON.parse<GetPersonResponse>(resp.Json).persons
+    return persons[0]
+  }
+  ```
+</CodeGroup>
+
+### Neo4j
+
+Neo4j is a graph database management system. Modus provides a simple way to
+query and mutate data in Neo4j with the `neo4j` APIs.
+
+Here is an example of mutating & fetching a person from a Neo4j database using
+the Modus SDK:
+
+<CodeGroup>
+  ```go Go
+  package main
+
+  import (
+    "github.com/hypermodeinc/modus/sdk/go/pkg/neo4j"
+  )
+
+
+  const host = "my-database"
+
+  func CreatePeopleAndRelationships() (string, error) {
+    people := []map[string]any{
+      {"name": "Alice", "age": 42, "friends": []string{"Bob", "Peter", "Anna"}},
+      {"name": "Bob", "age": 19},
+      {"name": "Peter", "age": 50},
+      {"name": "Anna", "age": 30},
+    }
+
+    for _, person := range people {
+      _, err := neo4j.ExecuteQuery(host,
+        "MERGE (p:Person {name: $person.name, age: $person.age})",
+        map[string]any{"person": person})
+      if err != nil {
+        return "", err
+      }
+    }
+
+    for _, person := range people {
+      if person["friends"] != "" {
+        _, err := neo4j.ExecuteQuery(host, `
+          MATCH (p:Person {name: $person.name})
+                  UNWIND $person.friends AS friend_name
+                  MATCH (friend:Person {name: friend_name})
+                  MERGE (p)-[:KNOWS]->(friend)
+        `, map[string]any{
+          "person": person,
+        })
+        if err != nil {
+          return "", err
+        }
+      }
+    }
+
+    return "People and relationships created successfully", nil
+  }
+
+  type Person struct {
+    Name string `json:"name"`
+    Age  int64  `json:"age"`
+  }
+
+  func GetAliceFriendsUnder40() ([]Person, error) {
+    response, err := neo4j.ExecuteQuery(host, `
+          MATCH (p:Person {name: $name})-[:KNOWS]-(friend:Person)
+          WHERE friend.age < $age
+          RETURN friend
+          `,
+      map[string]any{
+        "name": "Alice",
+        "age":  40,
+      },
+      neo4j.WithDbName("neo4j"),
+    )
+    if err != nil {
+      return nil, err
+    }
+
+    nodeRecords := make([]Person, len(response.Records))
+
+    for i, record := range response.Records {
+      node, _ := neo4j.GetRecordValue[neo4j.Node](record, "friend")
+      name, err := neo4j.GetProperty[string](&node, "name")
+      if err != nil {
+        return nil, err
+      }
+      age, err := neo4j.GetProperty[int64](&node, "age")
+      if err != nil {
+        return nil, err
+      }
+      nodeRecords[i] = Person{
+        Name: name,
+        Age:  age,
+      }
+    }
+
+    return nodeRecords, nil
+  }
+  ```
+
+  ```ts AssemblyScript
+  import { neo4j } from "@hypermode/modus-sdk-as"
+
+  // This host name should match one defined in the modus.json manifest file.
+  const hostName: string = "my-database"
+
+  @json
+  class Person {
+    name: string
+    age: i32
+    friends: string[] | null
+
+    constructor(name: string, age: i32, friends: string[] | null = null) {
+      this.name = name
+      this.age = age
+      this.friends = friends
+    }
+  }
+
+  export function CreatePeopleAndRelationships(): string {
+    const people: Person[] = [
+      new Person("Alice", 42, ["Bob", "Peter", "Anna"]),
+      new Person("Bob", 19),
+      new Person("Peter", 50),
+      new Person("Anna", 30),
+    ]
+
+    for (let i = 0; i < people.length; i++) {
+      const createPersonQuery = `
+        MATCH (p:Person {name: $person.name})
+        UNWIND $person.friends AS friend_name
+        MATCH (friend:Person {name: friend_name})
+        MERGE (p)-[:KNOWS]->(friend)
+      `
+      const peopleVars = new neo4j.Variables()
+      peopleVars.set("person", people[i])
+      const result = neo4j.executeQuery(hostName, createPersonQuery, peopleVars)
+      if (!result) {
+        throw new Error("Error creating person.")
+      }
+    }
+
+    return "People and relationships created successfully"
+  }
+
+  export function GetAliceFriendsUnder40(): Person[] {
+    const vars = new neo4j.Variables()
+    vars.set("name", "Alice")
+    vars.set("age", 40)
+
+    const query = `
+      MATCH (p:Person {name: $name})-[:KNOWS]-(friend:Person)
+          WHERE friend.age < $age
+          RETURN friend
+    `
+
+    const result = neo4j.executeQuery(hostName, query, vars)
+    if (!result) {
+      throw new Error("Error getting friends.")
+    }
+
+    const personNodes: Person[] = []
+
+    for (let i = 0; i < result.Records.length; i++) {
+      const record = result.Records[i]
+      const node = record.getValue<neo4j.Node>("friend")
+      const person = new Person(
+        node.getProperty<string>("name"),
+        node.getProperty<i32>("age"),
+      )
+      personNodes.push(person)
+    }
+
+    return personNodes
+  }
+  ```
+</CodeGroup>
+
+## Fetching from APIs
+
+### HTTP
+
+HTTP protocols underpin RESTful APIs with OpenAPI schemas. Modus provides a
+convenient way to interact with any external HTTP API using the `http` APIs in
+the Modus SDK.
+
+Here is an example of fetching a person from an HTTP API using the Modus SDK:
+
+<CodeGroup>
+  ```go Go
+  package main
+
+  import (
+    "encoding/json"
+    "fmt"
+    "github.com/hypermodeinc/modus/sdk/go/pkg/http"
+  )
+
+  // declare structures used to parse the JSON document returned by the REST API
+  type Person struct {
+    Name string    `json:"name,omitempty"`
+    Age  int32     `json:"age,omitempty"`
+  }
+
+  func GetPerson(name string) (*Person, error) {
+    url := fmt.Sprintf("https://example.com/api/person?name=%s", name)
+    response, _ := http.Fetch(url)
+
+    // The API returns Person object as JSON
+    var person Person
+    response.JSON(&person)
+
+    return person, nil
+  }
+
+  ```
+
+  ```ts AssemblyScript
+  import { http } from "@hypermode/modus-sdk-as"
+
+  @json
+  class Person {
+    name: string = ""
+    age: i32 = 0
+  }
+
+  export function getPerson(name: string): Person {
+    const url = `https://example.com/api/people?name=${name}`
+
+    const response = http.fetch(url)
+
+    // the API returns Person object as JSON
+    return response.json<Person>()
+  }
+  ```
+</CodeGroup>
+
+### GraphQL
+
+GraphQL is a data-centric query language for APIs that allows you to fetch only
+the data you need. With the `graphql` APIs in the Modus SDK, you can easily
+fetch data from any GraphQL endpoint.
+
+Here is an example of fetching a person from a GraphQL API using the Modus SDK:
+
+<CodeGroup>
+  ```go Go
+  import (
+    "encoding/json"
+    "github.com/hypermodeinc/modus/sdk/go/pkg/graphql"
+  )
+
+  // the name of the GraphQL connection, as specified in the modus.json manifest
+  const connection = "my-graphql-api"
+
+  // declare structures used to parse the JSON document returned
+  type Person struct {
+    Name string    `json:"name,omitempty"`
+    Age  int32     `json:"age,omitempty"`
+  }
+
+  type GetPersonResponse struct {
+    Person *Person `json:"getPerson"`
+  }
+
+  func GetPerson(name string) (*Person, error) {
+    statement := `query getPerson($name: String!) {
+        getPerson(name: $name) {
+          age
+          name
+        }
+      }`
+
+    vars := map[string]any{
+       "name": name,
+    }
+
+    response, _ := graphql.Execute[GetPersonResponse](connection, statement, vars)
+
+    return response.Data.Person, nil
+  }
+  ```
+
+  ```ts AssemblyScript
+  import { graphql } from "@hypermode/modus-sdk-as"
+
+  // the name of the GraphQL connection, as specified in the modus.json manifest
+  const connection: string = "my-graphql-api"
+
+  // declare classes used to parse the JSON document returned
+  @json
+  class Person {
+    name: string = ""
+    age: i32 = 0
+  }
+  @json
+  class GetPersonResponse {
+    getPerson: Person | null
+  }
+
+  export function getPerson(name: string): Person | null {
+    const statement = `
+      query getPerson($name: String!) {
+        getPerson(name: $name) {
+          age
+          name
+        }
+      }`
+
+    const vars = new graphql.Variables()
+    vars.set("name", name)
+
+    const response = graphql.execute<GetPersonResponse>(
+      connection,
+      statement,
+      vars,
+    )
+
+    return response.data!.getPerson
+  }
+  ```
+</CodeGroup>

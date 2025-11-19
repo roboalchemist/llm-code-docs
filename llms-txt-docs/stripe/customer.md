@@ -1,5 +1,9 @@
 # Source: https://docs.stripe.com/invoicing/customer.md
 
+# Source: https://docs.stripe.com/billing/customer.md
+
+# Source: https://docs.stripe.com/invoicing/customer.md
+
 # Customers
 
 Learn how to use the Customer resource with Stripe Invoicing.

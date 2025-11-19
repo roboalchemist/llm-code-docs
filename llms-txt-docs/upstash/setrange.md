@@ -4,6 +4,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/setrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/setrange.md
+
 # SETRANGE
 
 > Writes the value of key at offset.

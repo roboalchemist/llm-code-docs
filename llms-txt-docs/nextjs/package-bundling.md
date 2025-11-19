@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/package-bundling.md
 
+# Source: https://nextjs.org/docs/app/guides/package-bundling.md
+
+# Source: https://nextjs.org/docs/pages/guides/package-bundling.md
+
 # How to optimize package bundling
 @doc-version: 16.0.3
 

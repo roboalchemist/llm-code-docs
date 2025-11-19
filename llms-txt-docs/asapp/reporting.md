@@ -1,5 +1,11 @@
 # Source: https://docs.asapp.com/reporting.md
 
+# Source: https://docs.asapp.com/generativeagent/reporting.md
+
+# Source: https://docs.asapp.com/changelog/reporting.md
+
+# Source: https://docs.asapp.com/reporting.md
+
 # Reporting and Insights
 
 ASAPP reports data back via several channels, each with different use cases:

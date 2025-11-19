@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-deployment.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-deployment.md
+
 # firectl delete deployment
 
 > Deletes a deployment.

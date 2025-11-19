@@ -4,6 +4,10 @@
 
 # Source: https://nextjs.org/docs/pages/guides/production-checklist.md
 
+# Source: https://nextjs.org/docs/app/guides/production-checklist.md
+
+# Source: https://nextjs.org/docs/pages/guides/production-checklist.md
+
 # How to optimize your Next.js application for production
 @doc-version: 16.0.3
 

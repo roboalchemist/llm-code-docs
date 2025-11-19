@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-supervised-fine-tuning-jobs.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-supervised-fine-tuning-jobs.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-supervised-fine-tuning-jobs.md
+
 # firectl list supervised-fine-tuning-jobs
 
 > Lists all supervised fine-tuning jobs in an account.

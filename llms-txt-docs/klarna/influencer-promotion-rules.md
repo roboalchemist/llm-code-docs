@@ -1,5 +1,9 @@
 # Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/influencer-promotion-rules.md
 
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/ireland/influencer-promotion-rules.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/influencer-promotion-rules.md
+
 # Influencer promotion rules - United Kingdom
 
 ## Ensure influencer promotions in the UK comply with Klarna’s guidelines by updating FRN references, clearly disclosing paid endorsements, and using the approved tools and terms from Klarna’s influencer marketing resources.

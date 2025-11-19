@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/autocompose.md
 
+# Source: https://docs.asapp.com/autocompose.md
+
+# Source: https://docs.asapp.com/changelog/autocompose.md
+
 # AutoCompose Updates
 
 > New updates and improvements across AutoCompose

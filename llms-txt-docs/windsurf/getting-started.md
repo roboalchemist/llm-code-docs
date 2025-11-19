@@ -1,5 +1,9 @@
 # Source: https://docs.windsurf.com/windsurf/getting-started.md
 
+# Source: https://docs.windsurf.com/plugins/getting-started.md
+
+# Source: https://docs.windsurf.com/windsurf/getting-started.md
+
 # Welcome to Windsurf
 
 Tomorrow's editor, today.

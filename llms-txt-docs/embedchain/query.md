@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/rest-api/query.md
 
+# Source: https://docs.embedchain.ai/api-reference/app/query.md
+
+# Source: https://docs.embedchain.ai/examples/rest-api/query.md
+
 # Query app
 
 > Query an app
