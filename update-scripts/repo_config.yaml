@@ -60,3 +60,10 @@ repositories:
     source_folder: "docs"
     target_folder: "mcp-jest"
     branch: "main" # Default branch to use
+
+  - name: "LibreChat"
+    description: "LibreChat - Enhanced ChatGPT clone with multi-AI support"
+    repo_url: "https://github.com/LibreChat-AI/librechat.ai.git"
+    source_folder: "pages/docs"
+    target_folder: "librechat"
+    branch: "main" # Default branch to use
