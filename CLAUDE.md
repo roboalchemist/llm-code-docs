@@ -1,183 +1,340 @@
-# LLM Code Documentation Repository - Project Context
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-This is a centralized repository for AI-readable documentation extracted from various codebases and frameworks. The repository provides automated tools to keep documentation current and comprehensive.
 
-## Current Status
-- ✅ CircuitPython documentation extraction (complete)
-- ✅ Claude Code SDK documentation extraction (complete)
-- 🔄 Notion API documentation extraction (in progress - migrating to Crawl4AI)
-- ⏳ Perplexity documentation extraction (planned)
-- ⏳ OpenRouter models API extraction (planned)
+This repository provides centralized, AI-readable documentation extracted from 160+ frameworks, libraries, and developer tools. It includes automated extraction tools that keep documentation current with upstream sources.
 
-## Architecture
+**Purpose**: Serve as a comprehensive documentation hub optimized for LLM consumption and AI-assisted development.
 
-### Documentation Sets
-- `/circuitpython/` - MicroPython for microcontrollers documentation
-- `/claude-code-sdk/` - Claude Code development tools documentation
-- `/notion/` - Notion API reference documentation (71 pages)
-- `/textual/` - Textual TUI framework documentation
-- Future: `/perplexity/`, `/openrouter/`
+## Repository Architecture
 
-### Update Scripts (`/update-scripts/`)
-- `extract_docs.py` - Git repository documentation extractor (CircuitPython)
-- `claude-code-sdk-docs.py` - Claude Code SDK downloader with live sidebar extraction
-- `notion-docs-crawl4ai.py` - Crawl4AI-based Notion API extractor (NEW - handles JS-rendered content)
-- `notion-docs.py` - DEPRECATED - Old HTTP-based extractor with incompleteness issues
-- `notion-docs-playwright.py` - DEPRECATED - Playwright attempt with incomplete extraction
-- `update.sh` - Master update script for all documentation
+### Two-Tier Documentation Structure
 
-### Configuration
-- `repo_config.yaml` - Git repository extraction configuration
-- `notion-api-links.txt` - Cached list of 71 Notion API URLs
+1. **Legacy Documentation Sets** (root directories)
+   - `circuitpython/` - MicroPython for microcontrollers (git-based extraction)
+   - `claude-code-sdk/` - Anthropic's Claude Code SDK (HTML scraping)
+   - `textual/` - TUI framework documentation
+   - `notion/`, `perplexity/`, `openrouter/` - Individual project extractions
 
-## Task Management
+2. **llms.txt-Compliant Documentation** (`llms-txt-docs/`)
+   - **227 sites** following the llms.txt standard (https://llmstxt.org/)
+   - Each site in its own subdirectory: `llms-txt-docs/{site-name}/`
+   - Parallel downloads with 15 concurrent workers
+   - File-level caching with 23-hour freshness window
+   - Examples: `llms-txt-docs/anthropic/`, `llms-txt-docs/vercel-ai-sdk/`, `llms-txt-docs/bun/`
 
-### todo.txt Structure
-The project uses a comprehensive `todo.txt` file with 21 tasks organized in 3 phases:
-1. **Phase 0** (Task 0): Current state validation
-2. **Phase 1** (Tasks 1-8): Complete Notion API extraction with Crawl4AI
-3. **Phase 2** (Tasks 9-15): Perplexity documentation extraction
-4. **Phase 3** (Tasks 16-20): OpenRouter models API extraction
+### Configuration Files
 
-### Task Execution Guidelines
-- Tasks are designed for independent agents to execute serially
-- Each task is self-contained with complete context and instructions
-- Testing is integrated into each task (not separate)
-- Tasks include detailed verification steps and success criteria
-- Use `[ ]` for pending, `[-]` for in progress, `[x]` for complete
+- **`update-scripts/llms-sites.yaml`** - Central registry of 163 llms.txt-compliant sites
+  - Structure: `name`, `base_url`, `description`
+  - Alphabetically sorted by name
+  - Used by `llms-txt-scraper.py` for bulk downloads
 
-## Critical Context: Notion Extraction Evolution
+- **`update-scripts/repo_config.yaml`** - Git repository extraction config (CircuitPython)
 
-### Problem History
-1. **First attempt**: `notion-docs.py` using requests + BeautifulSoup + pandoc
-   - Issue: Missed collapsible sections, JavaScript-rendered content
-   - Result: Incomplete files (block.md only 40KB, 0 example matches)
+### Update Scripts Architecture
 
-2. **Second attempt**: `notion-docs-playwright.py` using Playwright browser automation
-   - Issue: Still incomplete extraction, missing expanded sections
-   - Result: Partial improvement but not complete
+**Primary Scripts:**
+- `llms-txt-scraper.py` - **Main workhorse** - Downloads from 160+ llms.txt sites in parallel
+- `extract_docs.py` - Git repository cloner/extractor (CircuitPython)
+- `update.sh` - Master orchestrator that runs all update scripts sequentially
 
-3. **Current solution**: `notion-docs-crawl4ai.py` using Crawl4AI framework
-   - Fully renders JavaScript content
-   - Expands all collapsible sections
-   - Expected: Complete content capture (block.md >100KB, multiple examples)
+**Discovery Scripts** (research tools, not run automatically):
+- `discover-llms-txt-sites.py` - Multi-API discovery (Brave, Exa, Tavily)
+- `discover-llms-txt-serper.py` - Serper API-based discovery
+- Various sidebar extractors for specific sites
 
-### Key Files to Monitor
-- `notion/block.md` - Critical test file (should be >100KB with examples)
-- `notion/page.md` - Should be >15KB
-- `notion/database.md` - Should be >15KB
-- Files previously problematic: create-a-data-source.md, create-a-file-upload.md, revoke-token.md, introspect-token.md
+## Common Development Workflows
 
-## Development Workflow
+### Update All Documentation
 
-### When Working on Extraction Scripts
-1. **Always test on 3 sample pages first** (block, page, intro)
-2. **Verify completeness** before full extraction:
-   - File size significantly larger
-   - Code examples present (grep for "example", "```")
-   - Visual inspection of markdown quality
-3. **Back up before major changes**: Use `git stash push -m 'description' path/`
-4. **Full extraction only after sample validation**
-5. **Comprehensive QA on all files** after full extraction
-
-### Quality Assurance Checklist
-- [ ] File sizes appropriate (>2KB minimum, critical files >15KB)
-- [ ] Source headers present (`# Source: URL`)
-- [ ] Code examples present (grep for ``` markers)
-- [ ] No extraction artifacts (javascript:, void(0), CSS classes)
-- [ ] Markdown formatting correct (headers, lists, tables)
-- [ ] Content completeness (compare with live pages)
-
-### Testing Sub-Agents
-When delegating to sub-agents:
-- **task-research-analyst**: Research approaches, analyze patterns
-- **task-executor**: Implement scripts, run extractions
-- **code-verification-qa**: Verify quality, test functionality
-- **git-cleanup-agent**: Clean up obsolete files before commits
-
-## Dependencies
-
-### Required Python Packages
-- `beautifulsoup4` - HTML parsing
-- `requests` - HTTP requests
-- `pyyaml` - Configuration parsing
-- `crawl4ai` - Modern web crawling with JS rendering (for Notion)
-- `playwright` - Browser automation (optional, for complex pages)
-
-### System Requirements
-- `pandoc` - HTML to Markdown conversion
-- `git` - Version control and repository cloning
-- Python 3.8+
-
-## API Keys and Configuration
-
-### Environment Variables
-- `OPENROUTER_API_KEY` - Required for OpenRouter models extraction
-- May be in: `~/.bashrc`, `~/.zshrc`, `~/.config/openrouter/config`
-
-### MCP Tools Available
-- Playwright MCP tools for browser automation
-- Perplexity MCP for research and documentation queries
-- Joplin MCP for note-taking (optional)
-
-## Common Commands
-
-### Run Specific Extraction
 ```bash
-# Update CircuitPython docs
-python3 update-scripts/extract_docs.py
-
-# Update Claude Code SDK docs
-python3 update-scripts/claude-code-sdk-docs.py
-
-# Update Notion docs (new Crawl4AI approach)
-python3 update-scripts/notion-docs-crawl4ai.py
-
-# Update all documentation
+# Run master update script
 ./update-scripts/update.sh
+
+# This executes in order:
+# 1. extract_docs.py (CircuitPython)
+# 2. claude-code-sdk-docs.py
+# 3. llms-txt-scraper.py (163 sites in parallel)
 ```
 
-### Verify Documentation Quality
+### Update Specific llms.txt Sites
+
 ```bash
-# Check file sizes
-ls -lh notion/*.md | awk '{print $5, $9}' | sort -h
+# Update single site
+python3 update-scripts/llms-txt-scraper.py --site anthropic
 
-# Count files
-ls -1 notion/*.md | wc -l
+# Update multiple sites
+python3 update-scripts/llms-txt-scraper.py --site vercel-ai-sdk --site langchain
 
-# Check for examples
-grep -l "example" -i notion/*.md | wc -l
+# Force re-download (ignore 23hr cache)
+python3 update-scripts/llms-txt-scraper.py --force
 
-# Check for code blocks
-grep -l '```' notion/*.md | wc -l
+# Control parallelism
+python3 update-scripts/llms-txt-scraper.py --workers 20
+
+# Download modes
+python3 update-scripts/llms-txt-scraper.py --mode full        # Only llms-full.txt
+python3 update-scripts/llms-txt-scraper.py --mode individual  # Only individual .md files
+python3 update-scripts/llms-txt-scraper.py --mode both        # Default: both files
 ```
 
-### Backup and Restore
+### Add New llms.txt Site
+
+1. **Add to YAML configuration:**
+   ```bash
+   # Edit update-scripts/llms-sites.yaml
+   # Add new entry in alphabetical order:
+   - name: new-site-name
+     base_url: https://example.com/
+     description: Site description
+   ```
+
+2. **Download documentation:**
+   ```bash
+   python3 update-scripts/llms-txt-scraper.py --site new-site-name
+   ```
+
+3. **Verify extraction:**
+   ```bash
+   ls -lh llms-txt-docs/new-site-name/
+   grep -l '```' llms-txt-docs/new-site-name/*.md | wc -l  # Check for code examples
+   ```
+
+### Remove Sites with No Documentation
+
+When sites don't have working llms.txt files:
+
 ```bash
-# Backup before major changes
-git stash push -m 'Pre-extraction backup' notion/
+# Create cleanup script
+cat > /tmp/remove-empty-sites.py << 'EOF'
+import yaml
+from pathlib import Path
 
-# Restore if needed
-git stash pop
+config_file = Path('update-scripts/llms-sites.yaml')
+docs_dir = Path('llms-txt-docs')
+
+with open(config_file) as f:
+    config = yaml.safe_load(f)
+
+empty_sites = []
+for site in config['sites']:
+    site_dir = docs_dir / site['name']
+    if not site_dir.exists() or len(list(site_dir.glob('*.md'))) == 0:
+        empty_sites.append(site['name'])
+
+print(f"Found {len(empty_sites)} sites with no documentation")
+print('\n'.join(empty_sites))
+
+# Remove from config
+config['sites'] = [s for s in config['sites'] if s['name'] not in empty_sites]
+
+with open(config_file, 'w') as f:
+    yaml.dump(config, f, default_flow_style=False, sort_keys=False)
+EOF
+
+python3 /tmp/remove-empty-sites.py
 ```
 
-## Project Goals
-1. Provide comprehensive, AI-readable documentation for multiple frameworks
-2. Automate documentation updates to stay current with source projects
-3. Ensure complete content capture (no missing sections or examples)
-4. Maintain high quality markdown formatting
-5. Enable easy addition of new documentation sources
+### Rename Incorrectly Named Folders
 
-## Success Criteria
-- All extraction scripts run without errors
-- Documentation files are complete with examples and schemas
-- File sizes indicate comprehensive content capture
-- Markdown is clean, readable, and well-formatted
-- Automated updates work reliably
-- Documentation stays synchronized with upstream sources
+When generic folder names like `docs-*` need proper site names:
 
----
+```python
+import yaml
+from pathlib import Path
 
-**Last Updated**: 2025-10-02
-**Current Focus**: Completing Notion API extraction with Crawl4AI, then adding Perplexity and OpenRouter documentation
+renames = {
+    'docs-5': 'apify',
+    'docs-10': 'litellm',
+    # ... more renames
+}
+
+# Update YAML
+config_file = Path('update-scripts/llms-sites.yaml')
+with open(config_file) as f:
+    config = yaml.safe_load(f)
+
+for site in config['sites']:
+    if site['name'] in renames:
+        site['name'] = renames[site['name']]
+
+config['sites'] = sorted(config['sites'], key=lambda x: x['name'])
+
+with open(config_file, 'w') as f:
+    yaml.dump(config, f, default_flow_style=False, sort_keys=False)
+
+# Rename directories
+docs_dir = Path('llms-txt-docs')
+for old_name, new_name in renames.items():
+    old_dir = docs_dir / old_name
+    new_dir = docs_dir / new_name
+    if old_dir.exists() and not new_dir.exists():
+        old_dir.rename(new_dir)
+```
+
+## File-Level Caching System
+
+The scraper implements smart caching to avoid redundant downloads:
+
+- **Cache Duration**: 23 hours (configurable in `is_file_recent()`)
+- **Behavior**: Files downloaded within last 23 hours are skipped unless `--force` is used
+- **Logging**: Shows skip reason with file age: `"⏭ Skipping file.md: Downloaded 5.2h ago"`
+- **Override**: Use `--force` flag to re-download all files regardless of age
+
+This reduces server load and speeds up incremental updates from hours to minutes.
+
+## Parallel Download Strategy
+
+The scraper uses Python's `ThreadPoolExecutor` for concurrent downloads:
+
+- **Default workers**: 15 concurrent threads
+- **Thread-safe printing**: All console output uses `print_lock` to prevent garbled output
+- **Error handling**: Individual site failures don't stop the entire run
+- **Progress tracking**: Real-time status updates for each site as downloads complete
+
+Typical performance: **163 sites downloaded in ~5-10 minutes** (vs. 2+ hours serial).
+
+## Quality Verification
+
+After downloading documentation, verify completeness:
+
+```bash
+# Check file sizes (small files may be incomplete)
+ls -lh llms-txt-docs/*/[a-z]*.md | awk '{print $5, $9}' | sort -h | tail -20
+
+# Count total files per site
+for dir in llms-txt-docs/*; do
+    echo "$(basename $dir): $(find $dir -name '*.md' | wc -l) files"
+done
+
+# Check for code examples (should have ```  markers)
+grep -l '```' llms-txt-docs/anthropic/*.md | wc -l
+
+# Verify source headers are present
+grep -L "^# Source:" llms-txt-docs/vercel-ai-sdk/*.md
+```
+
+**Expected characteristics:**
+- Files should have `# Source: URL` headers at the top
+- Code-heavy docs should contain ``` markers
+- Critical files (API references) typically >15KB
+- No extraction artifacts like `javascript:void(0)` or CSS class names
+
+## Git Workflow
+
+### Committing Documentation Updates
+
+When adding/updating large documentation sets:
+
+```bash
+# Stage changes
+git add llms-txt-docs/ update-scripts/llms-sites.yaml
+
+# Commit with descriptive message
+git commit -m "Add 62 new documentation sites from llms.txt discovery
+
+- Added sites: anthropic, vercel-ai-sdk, langchain, ...
+- Total sites: 163 (was 101)
+- Documentation downloaded: 8,000+ markdown files"
+
+# Push (may encounter GitHub secret scanning)
+git push origin master
+```
+
+### Handling GitHub Push Protection
+
+If push fails due to test API keys in documentation:
+
+```bash
+# Identify secrets from error message
+# Example: Discord bot token at line 32 in bun/discordjs.md
+
+# Redact exact secret values
+sed -i 's/NzkyNzE1NDU0MTk2MDg4ODQy\.X-hvzA\.Ovy4MCQywSkoMRRclStW4xAYK7I/DISCORD_TOKEN_REDACTED/g' llms-txt-docs/bun/discordjs.md
+
+# Amend commit with redactions
+git add llms-txt-docs/bun/discordjs.md
+git commit --amend --no-edit
+
+# Push again
+git push origin master
+```
+
+**Common test credentials to redact:**
+- Stripe test keys: `sk_test_[A-Za-z0-9]{24,}`
+- Discord bot tokens: Long base64-like strings
+- API proxy passwords: `auto_[a-z0-9]{32}`
+
+## Discovery Workflow
+
+When expanding the documentation catalog:
+
+1. **Discover new sites** using multi-API search:
+   ```bash
+   python3 update-scripts/discover-llms-txt-sites.py
+   # Uses: Brave Search, Exa AI, Tavily, Serper (fallback)
+   ```
+
+2. **Extract unique URLs** from search results
+
+3. **Add to YAML** with proper metadata:
+   ```python
+   # Generate site names from URLs
+   def generate_site_name(url):
+       domain = urlparse(url).netloc.replace('www.', '')
+       return re.sub(r'[^a-z0-9-]', '', domain.lower())
+   ```
+
+4. **Test download** on new sites:
+   ```bash
+   python3 update-scripts/llms-txt-scraper.py --site new-site --mode both
+   ```
+
+5. **Clean up failures** - remove sites with 404s or empty content
+
+## Special Cases
+
+### CircuitPython (Git-Based Extraction)
+
+Uses `extract_docs.py` with git clone instead of HTTP downloads:
+
+```bash
+# Configuration in repo_config.yaml
+repositories:
+  circuitpython:
+    url: "https://github.com/adafruit/circuitpython"
+    source_folder: "docs"
+    target_folder: "circuitpython"
+```
+
+### Claude Code SDK (Custom HTML Scraper)
+
+Downloads from Anthropic docs with live sidebar extraction:
+
+```bash
+python3 update-scripts/claude-code-sdk-docs.py
+# Parses sidebar for complete file list
+# Downloads as markdown using pandoc if available
+```
+
+## Repository Statistics
+
+Current scale:
+- **163 active llms.txt sites** in YAML configuration
+- **227 documentation directories** in llms-txt-docs/
+- **8,000+ markdown files** across all sites
+- **7MB+ total documentation** optimized for AI consumption
+
+Updated: 2025-11-23
+
+## Key Design Principles
+
+1. **Idempotent updates** - Re-running scripts is safe and efficient
+2. **Fail-soft** - Individual site failures don't stop bulk operations
+3. **Smart caching** - Avoid redundant downloads with time-based freshness checks
+4. **Parallel execution** - Maximize throughput with concurrent workers
+5. **Quality verification** - Post-download checks ensure complete content capture
+6. **Git-friendly naming** - Descriptive folder names, not generic "docs-N" patterns
