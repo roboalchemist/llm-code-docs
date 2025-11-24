@@ -220,6 +220,9 @@ sites:
 - name: giselles
   base_url: https://docs.giselles.ai/
   description: Giselles AI automation and workflow platform
+- name: gitingest
+  base_url: https://gitingest.com/
+  description: Turn Git repositories into prompt-ready text digests for AI agents
 - name: gitbook
   base_url: https://gitbook.com/docs/
   description: GitBook documentation platform

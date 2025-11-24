@@ -3,7 +3,8 @@
 Libraries identified from local projects that would benefit from AI-readable documentation.
 
 **Legend:**
-- [x] = Already have llms.txt in config
+- [x] = Already in llms-sites.yaml (llms.txt)
+- [G] = Already in repo_config.yaml (GitHub extraction)
 - [ ] = Not yet added
 
 ---
@@ -39,15 +40,15 @@ Libraries identified from local projects that would benefit from AI-readable doc
 - [ ] google-generativeai - ai.google.dev/api
 
 ### Web Frameworks
-- [ ] fastapi - fastapi.tiangolo.com
-- [ ] flask - flask.palletsprojects.com
+- [G] fastapi - fastapi.tiangolo.com (GitHub: fastapi/fastapi)
+- [G] flask - flask.palletsprojects.com (GitHub: pallets/flask)
 - [x] streamlit - docs.streamlit.io
 - [x] gradio - gradio.app
 - [ ] celery - docs.celeryq.dev
 
 ### Data/ORM
 - [ ] pydantic - docs.pydantic.dev
-- [ ] sqlalchemy - docs.sqlalchemy.org
+- [G] sqlalchemy - docs.sqlalchemy.org (GitHub: sqlalchemy/sqlalchemy)
 - [ ] alembic - alembic.sqlalchemy.org
 - [x] redis - redis.io
 
@@ -56,10 +57,10 @@ Libraries identified from local projects that would benefit from AI-readable doc
 - [ ] playwright - playwright.dev
 
 ### CLI/TUI
-- [ ] click - click.palletsprojects.com
+- [G] click - click.palletsprojects.com (GitHub: pallets/click)
 - [ ] typer - typer.tiangolo.com
 - [ ] rich - rich.readthedocs.io
-- [ ] textual - textual.textualize.io
+- [G] textual - textual.textualize.io (GitHub: Textualize/textual)
 - [ ] colorama - github.com/tartley/colorama
 - [ ] tqdm - tqdm.github.io
 - [ ] tabulate - github.com/astanin/python-tabulate
@@ -176,3 +177,23 @@ Libraries identified from local projects that would benefit from AI-readable doc
 
 ### Video
 - [ ] hls.js - github.com/video-dev/hls.js
+
+---
+
+## AI/Dev Tools
+
+### LLM Runtimes & Interfaces
+- [x] ollama - docs.ollama.com
+- [x] lm-studio - lmstudio.ai
+- [G] goose - block/goose (GitHub: AI-powered developer agent)
+- [x] gitingest - gitingest.com (repo-to-prompt tool for AI agents)
+
+---
+
+## Language Documentation
+
+### Official Language Docs
+- [G] go - golang/website (Go official documentation)
+- [G] python - python/cpython Doc/ (Python 3.13 official docs)
+- [G] circuitpython - adafruit/circuitpython (MicroPython variant)
+- [G] micropython - micropython/micropython (Python for microcontrollers)
