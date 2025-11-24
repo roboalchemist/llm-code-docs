@@ -386,6 +386,9 @@ sites:
 - name: pinecone
   base_url: https://docs.pinecone.io/
   description: Pinecone documentation
+- name: pixijs
+  base_url: https://pixijs.com/
+  description: PixiJS 2D WebGL renderer and graphics library
 - name: plain
   base_url: https://www.plain.com/docs/
   description: Plain customer support platform
@@ -449,6 +452,9 @@ sites:
 - name: stripe
   base_url: https://docs.stripe.com/
   description: Stripe payment processing platform API
+- name: streamlit
+  base_url: https://docs.streamlit.io/
+  description: Streamlit Python framework for data apps and dashboards
 - name: tauri
   base_url: https://tauri.app/
   description: Tauri desktop application framework
@@ -495,6 +501,9 @@ sites:
   base_url: https://vite.dev/
   description: Next generation frontend build tool with instant server start and lightning
     fast HMR
+- name: vitest
+  base_url: https://vitest.dev/
+  description: Vitest next generation testing framework powered by Vite
 - name: vuejs
   base_url: https://vuejs.org/
   description: Vue.js progressive JavaScript framework
@@ -519,3 +528,6 @@ sites:
 - name: zenml
   base_url: https://docs.zenml.io/
   description: ZenML MLOps framework for ML pipelines
+- name: zod
+  base_url: https://zod.dev/
+  description: Zod TypeScript-first schema validation library
