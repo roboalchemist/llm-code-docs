@@ -200,6 +200,36 @@ Libraries identified from local projects that would benefit from AI-readable doc
 
 ---
 
+## Maker Hardware & IoT
+
+### Hardware Vendors
+- [x] adafruit - learn.adafruit.com (Adafruit Learning System - tutorials, CircuitPython)
+- [ ] sparkfun - learn.sparkfun.com (SparkFun tutorials and hookup guides)
+- [ ] seeed-studio - wiki.seeedstudio.com (Seeed Studio Wiki - Grove, XIAO, etc.)
+- [ ] waveshare - waveshare.com/wiki (Waveshare displays, HATs, modules)
+- [ ] pimoroni - learn.pimoroni.com (Pimoroni tutorials - Pico, Pi HATs)
+- [ ] dfrobot - wiki.dfrobot.com (DFRobot sensors and modules)
+
+### Development Platforms
+- [ ] arduino - docs.arduino.cc (Arduino IDE, boards, libraries)
+- [ ] raspberry-pi - raspberrypi.com/documentation (Raspberry Pi OS, hardware)
+- [ ] platformio - docs.platformio.org (PlatformIO IDE and build system)
+- [ ] espressif - docs.espressif.com (ESP32, ESP8266 official docs)
+
+### Firmware & Frameworks
+- [G] circuitpython - adafruit/circuitpython (MicroPython for Adafruit boards)
+- [G] micropython - micropython/micropython (Python for microcontrollers)
+- [ ] esphome - esphome.io (ESPHome YAML-based firmware)
+- [ ] tasmota - tasmota.github.io/docs (Tasmota smart device firmware)
+- [ ] meshtastic - meshtastic.org/docs (LoRa mesh networking)
+
+### Home Automation
+- [ ] home-assistant - home-assistant.io (Home Assistant integration docs)
+- [ ] zigbee2mqtt - zigbee2mqtt.io (Zigbee to MQTT bridge)
+- [ ] mqtt - mqtt.org (MQTT protocol specification)
+
+---
+
 ## Future: Bulk Documentation Sources
 
 Ideas for expanding documentation coverage through automated discovery and scraping.
