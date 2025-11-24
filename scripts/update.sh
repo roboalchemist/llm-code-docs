@@ -131,14 +131,31 @@ fi
 echo
 echo "📁 Generated documentation directories:"
 
-# Standard documentation (non-llms.txt)
-for dir in textual circuitpython claude-code-sdk; do
-    if [[ -d "$dir" ]]; then
-        file_count=$(find "$dir" -name "*.md" -o -name "*.rst" -o -name "*.py" | wc -l)
-        dir_size=$(du -sh "$dir" 2>/dev/null | cut -f1 || echo "unknown")
-        echo "    • $dir/ ($file_count files, $dir_size)"
-    fi
-done
+# GitHub-scraped documentation
+if [[ -d "docs/github-scraped" ]]; then
+    echo "    • docs/github-scraped/ (Git repository extractions):"
+    for subdir in docs/github-scraped/*; do
+        if [[ -d "$subdir" ]]; then
+            subdir_name=$(basename "$subdir")
+            file_count=$(find "$subdir" -name "*.md" -o -name "*.rst" | wc -l)
+            dir_size=$(du -sh "$subdir" 2>/dev/null | cut -f1 || echo "unknown")
+            echo "        - $subdir_name/ ($file_count files, $dir_size)"
+        fi
+    done
+fi
+
+# Web-scraped documentation
+if [[ -d "docs/web-scraped" ]]; then
+    echo "    • docs/web-scraped/ (Custom web scrapers):"
+    for subdir in docs/web-scraped/*; do
+        if [[ -d "$subdir" ]]; then
+            subdir_name=$(basename "$subdir")
+            file_count=$(find "$subdir" -name "*.md" | wc -l)
+            dir_size=$(du -sh "$subdir" 2>/dev/null | cut -f1 || echo "unknown")
+            echo "        - $subdir_name/ ($file_count files, $dir_size)"
+        fi
+    done
+fi
 
 # llms.txt-compliant documentation
 if [[ -d "docs/llms-txt" ]]; then
