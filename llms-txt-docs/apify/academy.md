@@ -6,11 +6,11 @@ Learn everything about web scraping and automation with our free courses that wi
 
 ## Beginner courses
 
-https://docs.apify.com/academy/web-scraping-for-beginners.md
+https://docs.apify.com/academy/scraping-basics-javascript.md
 
-#### https://docs.apify.com/academy/web-scraping-for-beginners.md
+#### https://docs.apify.com/academy/scraping-basics-javascript.md
 
-https://docs.apify.com/academy/web-scraping-for-beginners.md
+https://docs.apify.com/academy/scraping-basics-javascript.md
 
 https://docs.apify.com/academy/scraping-basics-python.md
 

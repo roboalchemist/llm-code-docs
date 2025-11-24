@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/knowledge-base.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/knowledge-base.md
 
 # Knowledge Base
 

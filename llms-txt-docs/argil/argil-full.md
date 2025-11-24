@@ -1014,11 +1014,7 @@ If you uploaded an audio instead of typing a script, we use a different way to g
 # Contact Support & Community
 Source: https://docs.argil.ai/resources/contactsupport
 
-
-
-<Card title="Get personalized support via Typeform" icon="bolt" color="purple" horizontal={200} href="https://pdquqq8bz5k.typeform.com/to/WxepPisB?utm_source=xxxxx">
-  This is how you get the most complete and quick support
-</Card>
+Get help from the support and the community here
 
 <div data-tf-live="01JGXDX8VPGNCBWGMMQ75DDKPV" />
 
@@ -1027,13 +1023,13 @@ Source: https://docs.argil.ai/resources/contactsupport
 <script src="//embed.typeform.com/next/embed.js" />
 
 <script src="//embed.typeform.com/next/embed.js" />
-
-<Card title="Join our community on Discord!" icon="robot" color="purple" horizontal={200} href="https://discord.gg/E4E3WFVzTw">
-  Learn from our hundreds of other users and use cases
-</Card>
 
 <Card title="Send us an email" icon="inbox" color="purple" horizontal={200} href="mailto:support@argil.ai">
   Click on here to send us an email ([support@argil.ai](mailto:support@argil.ai))
+</Card>
+
+<Card title="Join our community on Discord!" icon="robot" color="purple" horizontal={200} href="https://discord.gg/E4E3WFVzTw">
+  Learn from our hundreds of other users and use cases
 </Card>
 
 
@@ -1052,10 +1048,13 @@ A personal avatar is based on your own image or picture. An AI influencer is cre
 
 The picture you should take of yourself needs to check the following boxes:
 
-* Have great lighting (put yourself in front of a window)
-* Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence
-* All of your face should be within the frame
-* **The closer you are to the camera, the better the output will be**
+1. **Have great lighting (put yourself in front of a window)**
+
+2. **Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence**
+
+3. **All of your face should be within the frame**
+
+4. **The closer you are to the camera, the better the output will be**
 
 <Tip>
   The pictures that work best are with a single human-like face. Avoid animals or multiple people on screen (even on posters).

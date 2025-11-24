@@ -1,8 +1,8 @@
-# Source: https://docs.asapp.com/autosummary/salesforce-plugin.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/salesforce-plugin.md
 
-# Deploying AutoSummary for Salesforce
+# Deploying AI Summary for Salesforce
 
-> Learn how to use the AutoSummary Salesforce plugin.
+> Learn how to use the AI Summary Salesforce plugin.
 
 ## Using This Guide
 
@@ -10,20 +10,20 @@
 
 ## Overview
 
-ASAPP AutoSummary generates a summary of each voice or messaging (chat) interaction between a customer and an agent. AutoSummary also generates Structured Data and intent outputs.
+ASAPP AI Summary generates a summary of each voice or messaging (chat) interaction between a customer and an agent. AI Summary also generates Structured Data and intent outputs.
 
 With automated interaction summaries, organizations reduce agent time and effort both during and after calls, and gain high-coverage summary data for future reference by agents, supervisors and quality teams.
 
 <Note>
-  AutoSummary currently supports English-language conversations only.
+  AI Summary currently supports English-language conversations only.
 </Note>
 
 ### Technology
 
-ASAPP AutoSummary has the following technical components:
+ASAPP AI Summary has the following technical components:
 
-* An AutoSummary model that ASAPP uses to generate summary text
-* An ASAPP component that interfaces between ASAPP's AutoSummary and
+* An AI Summary model that ASAPP uses to generate summary text
+* An ASAPP component that interfaces between ASAPP's AI Summary and
 
 Conversation APIs to generate summaries for each conversation.
 
@@ -36,7 +36,7 @@ Conversation APIs to generate summaries for each conversation.
 ### Requirements
 
 **Browser Support**
-ASAPP AutoSummary is supported in Google Chrome and Microsoft Edge
+ASAPP AI Summary is supported in Google Chrome and Microsoft Edge
 <Note>This support covers the latest version of each browser and extends to the previous two versions</Note>
 
 Please consult your ASAPP account contact if your installation requires support for other browsers
@@ -53,10 +53,10 @@ ASAPP supports Lightning-based chat (cf. classic)
 </Frame>
 
 **SSO Support**
-AutoSummary supports SP-initiated SSO with either OIDC (preferred method) or SAML.
+AI Summary supports SP-initiated SSO with either OIDC (preferred method) or SAML.
 **Domain Whitelisting**
 
-In order for AutoSummary to interact with ASAPP's backend and third-party support services, the following domains need to be accessible from end-user environments:
+In order for AI Summary to interact with ASAPP's backend and third-party support services, the following domains need to be accessible from end-user environments:
 
 | Domain                                       | Description                                                        |
 | :------------------------------------------- | :----------------------------------------------------------------- |
@@ -68,7 +68,7 @@ In order for AutoSummary to interact with ASAPP's backend and third-party suppor
 
 ### Procedure
 
-There are two parts to the AutoSummary setup process. Use the links below to skip to information about a specific part of the process:
+There are two parts to the AI Summary setup process. Use the links below to skip to information about a specific part of the process:
 
 1. [Configure the Salesforce organization](#1-configure-the-salesforce-organization-centrally-35766 "1. Configure the Salesforce Organization Centrally") centrally using an administrator account
 2. [Setup agent/user authentication](#2-set-up-single-sign-on-sso-user-authentication-35766 "2. Set Up Single Sign-On (SSO) User Authentication") through the existing single sign-on (SSO) service
@@ -90,9 +90,9 @@ You will need the following information to configure ASAPP for Salesforce:
 * A URL for the ASAPP installation package, which will be provided by ASAPP.
 
 <Note>
-  ASAPP provides the same install package for implementing both AutoCompose and AutoSummary in Salesforce. Use this guide to configure AutoSummary.
+  ASAPP provides the same install package for implementing both AI Compose and AI Summary in Salesforce. Use this guide to configure AI Summary.
 
-  If you're looking to implement AutoCompose, [use this guide](/autocompose/deploying-autocompose-for-salesforce).
+  If you're looking to implement AI Compose, [use this guide](/ai-productivity/ai-compose/deploying-ai-compose-for-salesforce).
 </Note>
 
 * API Id and API URL values, which can be found in your ASAPP Developer Portal account (developer.asapp.com) in the **Apps** section.
@@ -171,8 +171,8 @@ You will need the following information to configure ASAPP for Salesforce:
     <img src="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=54389209b9d389168ef13571c6303701" data-og-width="1916" width="1916" data-og-height="974" height="974" data-path="image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=280&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=4f2ef3f9c309abe1b0a3d7c68dd7d110 280w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=560&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=66b8f050d1458b76bf33736ea0bc75ee 560w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=840&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=28104196bcb19593d0d33eaf2337eeaf 840w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=1100&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=032488b1d123f2bc2159a85229e44c3f 1100w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=1650&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=3524028b6645b30ae9d7a2b8f4769d50 1650w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-419161db-4848-c498-a3b7-60faa0d0df6d.png?w=2500&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=ff4bb692cd5a10ed5331980143f8d560 2500w" />
   </Frame>
 
-**3. Add a new Salesforce field to populate AutoSummary results**
-AutoSummary writes only to the **Chat Transcript** object. You need to create a new field on the Chat Transcript object that will be used by the ASAPP component.
+**3. Add a new Salesforce field to populate AI Summary results**
+AI Summary writes only to the **Chat Transcript** object. You need to create a new field on the Chat Transcript object that will be used by the ASAPP component.
 
 * Go to **Setup** > **Object Manager** > **Chat Transcript** > **Fields & Relationships** page (in this specific example, we choose to add the field for summarization on the Chat Transcript page).
 * Click on the **New** button.
@@ -183,7 +183,7 @@ AutoSummary writes only to the **Chat Transcript** object. You need to create a 
 * **Enter the field details (Step 2)**: Add a **Field Label** and a **Field Name**. Click **Next**.
 
 <Note>
-  Take note of this **Field Name**, as it will be needed when setting up the AutoSummary widget.
+  Take note of this **Field Name**, as it will be needed when setting up the AI Summary widget.
 </Note>
 
 <Frame>
@@ -197,7 +197,7 @@ AutoSummary writes only to the **Chat Transcript** object. You need to create a 
     <img src="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=8f73c918c5be01c9067b38639fbd715b" data-og-width="1600" width="1600" data-og-height="521" height="521" data-path="image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=280&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=ef8e0826d88e1833b90bf14d5601babd 280w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=560&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=3ad90232381134eb1a6313c92b300211 560w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=840&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=0d4a6443ed8429d50843ac7c65d8a905 840w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=1100&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=9f0e9eb44260ced7a9af2f87f1a6281a 1100w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=1650&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=1c651b6ce84c78bf882dce1caec7c1ec 1650w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a15836c-3204-4032-82fc-1cf486a1532f.png?w=2500&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=2595885a1bd1597f441e81b00669e34e 2500w" />
   </Frame>
 
-**4. Configure AutoSummary Widget**
+**4. Configure AI Summary Widget**
 
 * On the Service Console page, click on **Configuration** (gear icon) and then click **Edit Page**.
   <Frame>
@@ -206,8 +206,8 @@ AutoSummary writes only to the **Chat Transcript** object. You need to create a 
 * Click the **ASAPP** panel. Then the configuration panel will appear on the right of the page. Enter the following information into the fields:
   * **API key**: this is the **API Id** found in the ASAPP Developer Portal.
   * **API URL**: this is found in the ASAPP Developer Portal; use `https://api.sandbox.asapp.com` in lower environments and `https://api.asapp.com`in production.
-  * Select the checkbox for **ASAPP AutoSummary**.
-  * **ASAPP AutoSummary field**: enter the **Field Name** created as part of Step 3. This is the field where the ASAPP-generated summary will appear.
+  * Select the checkbox for **ASAPP AI Summary**.
+  * **ASAPP AI Summary field**: enter the **Field Name** created as part of Step 3. This is the field where the ASAPP-generated summary will appear.
   <Frame>
     <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=60ea6e6f6d35f50399f17700bd49951e" data-og-width="1599" width="1599" data-og-height="936" height="936" data-path="image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=7895e1b85a773de0d201dec2d5255d88 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=77cd9e9398efd4eb6006ed8a6ce042d4 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=5537610d5bab9ed985816157773d60ea 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=409737410f58485022a05fcbcfb86bbf 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=2c926f3499331331f07c8a4ac65c21e4 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b35fadc-df1f-2b55-8428-d1918d2a4f3b.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=384c8eb3807ea72de051b44a3390e624 2500w" />
   </Frame>
@@ -215,12 +215,12 @@ AutoSummary writes only to the **Chat Transcript** object. You need to create a 
     <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=f56609585aaa9b7f190543665486c806" data-og-width="695" width="695" data-og-height="520" height="520" data-path="image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=88b2674298d70f687c52ffc0631c99a0 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=2061d79c286f4d698eb1a70e4ae01486 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=c208f57717733e9f40c010edc177ee8b 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=f3eb3bc9316519a8133f7fd7de64cdab 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=c3d612336f57ff01ca94636294c982cf 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-96d8db8f-687d-5672-2a44-28c8021f4ef7.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=6491b319f44205dc0e258849fccbecd2 2500w" />
   </Frame>
 * Click on the **Save** button to apply the changes.
-  These configuration steps add the AutoSummary field to the Chat Transcript object. From this point forward, you may use this summary field as part of your agent-facing or internal summary data use case. A common use case is to display this field to the agent in the Record Detail widget.
+  These configuration steps add the AI Summary field to the Chat Transcript object. From this point forward, you may use this summary field as part of your agent-facing or internal summary data use case. A common use case is to display this field to the agent in the Record Detail widget.
   **5. Add Record Detail Widget (OPTIONAL)**
 * If the Record Detail widget is not already on the Chat Transcript page, drag the **Record Detail** widget from the left panel and place it on the page.
 * Click on the **Save** button to apply the changes.
 * Refresh the page to see the changes applied to the page.
-  The AutoSummary field should now be visible under the **Transcription** section of the Record Detail widget. Once the conversation is ended, summarization will be displayed in this newly configured field in the Record Detail widget.
+  The AI Summary field should now be visible under the **Transcription** section of the Record Detail widget. Once the conversation is ended, summarization will be displayed in this newly configured field in the Record Detail widget.
 
 #### 2. Set Up Single Sign-On (SSO) User Authentication
 
@@ -323,7 +323,7 @@ When message text in the conversation transcript is sent to ASAPP, ASAPP applies
 ### Data Security
 
 ASAPP's security protocols protect data at each point of transmission from first user authentication, to secure communications, to our auditing and logging system, all the way to securing the environment when data is at rest in the data logging system. Access to data by ASAPP teams is tightly constrained and monitored. Strict security protocols protect both ASAPP and our customers.
-The following security controls are particularly relevant to AutoCompose:
+The following security controls are particularly relevant to AI Compose:
 
 1. Client sessions are controlled using a time-limited authorization token. Privileges for each active session are controlled server-side to mitigate potential elevation-of-privilege and information disclosure risks.
 2. To avoid unauthorized disclosure of information, unique, non-guessable IDs are used to identify conversations. These conversations can only be accessed using a valid client session.

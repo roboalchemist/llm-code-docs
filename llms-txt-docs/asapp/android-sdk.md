@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk.md
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk.md
 
 # Android SDK Overview
 
@@ -89,7 +89,7 @@ gpg --verify chat-sdk-<version>.aar.asc chat-sdk-<version>.aar
 
 Use the code below to create a configuration, and initialize the SDK with it. You must pass your `Application` instance.
 
-Refer to the aforementioned [required information](/messaging-platform/integrations/ios-sdk/ios-quick-start). ASAPP recommends you initialize the SDK in your `Application.onCreate`.
+Refer to the aforementioned [required information](/agent-desk/integrations/ios-sdk/ios-quick-start). ASAPP recommends you initialize the SDK in your `Application.onCreate`.
 
 ```json  theme={null}
 import com.asapp.chatsdk.ASAPP
@@ -134,13 +134,13 @@ Once the chat interface is open, you should see an initial state similar to the 
 ## Next Steps
 
 <CardGroup>
-  <Card title="Customization" href="/messaging-platform/integrations/android-sdk/customization" />
+  <Card title="Customization" href="/agent-desk/integrations/android-sdk/customization" />
 
-  <Card title="User Authentication" href="/messaging-platform/integrations/android-sdk/user-authentication" />
+  <Card title="User Authentication" href="/agent-desk/integrations/android-sdk/user-authentication" />
 
-  <Card title="Miscellaneous APIs" href="/messaging-platform/integrations/android-sdk/miscellaneous-apis" />
+  <Card title="Miscellaneous APIs" href="/agent-desk/integrations/android-sdk/miscellaneous-apis" />
 
-  <Card title="Deep Links and Web Links" href="/messaging-platform/integrations/android-sdk/deep-links-and-web-links" />
+  <Card title="Deep Links and Web Links" href="/agent-desk/integrations/android-sdk/deep-links-and-web-links" />
 
-  <Card title="Notifications" href="/messaging-platform/integrations/android-sdk/notifications" />
+  <Card title="Notifications" href="/agent-desk/integrations/android-sdk/notifications" />
 </CardGroup>

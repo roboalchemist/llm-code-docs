@@ -293,6 +293,9 @@ sites:
 - name: langgraph
   base_url: https://langchain-ai.github.io/langgraph/
   description: LangGraph agent workflow orchestration framework
+- name: linear
+  base_url: https://linear.app/
+  description: Linear project management and issue tracking
 - name: lingui
   base_url: https://lingui.dev/
   description: Lingui documentation

@@ -1,154 +1,250 @@
-# Source: https://docs.asapp.com/generativeagent/getting-started.md
-
-# Source: https://docs.asapp.com/autosummary/getting-started.md
-
-# Source: https://docs.asapp.com/generativeagent/getting-started.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/getting-started.md
 
 # Getting Started
 
-To get started with GenerativeAgent, let's create a GenerativeAgent that can help a customer from your knowledge base. By the end, you'll have a working GenerativeAgent that can answer customer questions using your own content.
+> Learn how to get started with AI Summary
 
-<Note>
-  This is a basic example to get you started quickly. As you develop more sophisticated GenerativeAgent solutions, you'll want to explore [additional use cases](/generativeagent/build/adding-a-use-case) and consider the [comprehensive design](/generativeagent/build-overview) of your implementation.
-</Note>
+To start using AI Summary, choose your integration method:
 
-## Before you begin
+<AccordionGroup>
+  <Accordion title="API (Real Time)">
+    * Upload transcripts or use a conversation from AI Transcribe and receive the insights instantly.
+    * Ideal for real-time experiences like conversation routing and form pre-filling.
+    * For digital channels: Provide the chat messages directly.
+    * For voice channels: Use AI Transcribe or your own transcription service.
 
-Before you begin, make sure you have:
+    This integration is covered in this Getting Started guide.
+  </Accordion>
 
-* Followed the [Set up your account](/getting-started/setup) guide to get access to the ASAPP AI Console.
-* A customer-facing knowledge base URL (such as your help center or support documentation)
+  <Accordion title="Salesforce plugin">
+    * Only supports Salesforce Chat.
+    * Inserts free-text summaries into conversation objects.
 
-## Step 1: Connect Your Knowledge Base
+    <Card horizontal={true} title="Salesforce Plugin" href="/ai-productivity/ai-summary/salesforce-plugin">Learn how to use the Salesforce Plugin</Card>
+  </Accordion>
+</AccordionGroup>
 
-The first step is to import your knowledge base content so GenerativeAgent can use it to answer customer questions.
+The following instructions cover the **API (Real Time) Integration** as it is the most common method.
 
-We will use the Import from URL to import your knowledge base content but you have other options on how to [connect your knowledge base](/generativeagent/configuring/connecting-your-knowledge-base).
+To use AI Summary via API:
 
-<Steps>
-  <Step title="Navigate to 'GenerativeAgent > Knowledge' in the AI Console" />
+1. Provide transcripts
+2. Extract insights with AI Summary API
 
-  <Step title="Click 'Add content' and select 'Import from URL'">
-    <Frame>
-      <img src="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=f38db99a6a736c50832f5be91b581fa9" alt="Import from URL" data-og-width="678" width="678" data-og-height="292" height="292" data-path="images/generativeagent/getting-started/import-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=280&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=d6e28412897daa4422fe3be5673864c7 280w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=560&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=55c23f6ffbc31eab59489e5c95aa4dd3 560w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=840&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=b80874bf801cf7bec3dc7ce7df3cece0 840w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=1100&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=7f8c998368271be05b55233971f2e25b 1100w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=1650&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=a92e3e4c3e9312b8e914f7f4b0bde529 1650w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/import-url.png?w=2500&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=6b196116bc7fe97378dd025a6f7afb69 2500w" />
-    </Frame>
-  </Step>
+## Before you Begin
 
-  <Step title="Enter your knowledge base URL in the 'External content URL' field">
-    Optionally, you can import specific sections of your site by specifying [allowed URL Prefix or Excluded URLs](/generativeagent/configuring/connecting-your-knowledge-base#step-1%3A-importing-your-knowledge-base).
-  </Step>
+Before you start integrating AI Summary, you need to:
 
-  <Step title="Click 'Import content' to start the process">
-    Your content will be imported and placed in a **Pending Review** state.
-  </Step>
-</Steps>
+* Get your API Key Id and Secret
+* Ensure your account and API key have been configured to access AI Summary. Reach out to your ASAPP team if you are unsure.
 
-## Step 2: Review and Publish Your Content
+## Step 1: Provide transcripts
 
-After crawling your knowledge base, we will create a list of articles that could be added to the GenerativeAgent knowledge base.
+How you provide transcripts depends on the conversation channel.
 
-You need to review and publish the articles:
+**For digital channels:**
 
-<Steps>
-  <Step title="Look for the notification">
-    At the top of the Knowledge Base page, look for the notification indicating articles need review.
+* Use the **conversation API** to upload the messages directly.
 
-    <Frame>
-      <img src="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=634df9e3941bec57684f2b7adcec8ee5" alt="New notification" data-og-width="737" width="737" data-og-height="284" height="284" data-path="images/generativeagent/getting-started/new-notification.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=280&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=9fdfd4c033680897248cbc9851eb6835 280w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=560&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=182cb870174121c8ebcee1ef63a0a0d0 560w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=840&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=5763bd40307aabaf7fadd5f44f152b4d 840w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=1100&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=52c5910861aa6ab06f4e1693cbf30160 1100w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=1650&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=39739b7d39cdbf7da16959c89b7a1fac 1650w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/new-notification.png?w=2500&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=50c4c7e690535490f59cfb2bb7882f54 2500w" />
-    </Frame>
-  </Step>
+**For voice channels:**
 
-  <Step title="Click to review the imported articles" />
+* Use **AI Transcribe** Service to transcribe the audio, or
+* Upload utterances via Conversation API if using your own transcription service.
 
-  <Step title="Review each article:">
-    For each article:
+<Tabs>
+  <Tab title="Use Conversation API">
+    To send transcripts via Conversation API, you need to
 
-    * Choose between the cleaned-up or raw version
-    * Add relevant query examples that customers might ask (e.g., "What is your return policy?")
-    * Click **Publish** when you're satisfied with the content
-  </Step>
-</Steps>
+    1. Create a `conversation`.
+    2. Add `messages` to the `conversation`.
 
-## Step 3: Create a Basic Task
+    To create a `conversation`. Provide your Ids for the conversation and customer.
 
-Now that your knowledge base is set up, let's create a simple task for GenerativeAgent to handle customer inquiries.
+    ```bash  theme={null}
+    curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations' \
+    --header 'asapp-api-id: \<API KEY ID\>' \
+    --header 'asapp-api-secret: \<API TOKEN\>' \
+    --header 'Content-Type: application/json' \
+    --data '{ 
+      "externalId": "\[Your id for the conversation\]",
+      "customer": {   
+        "externalId": "\[Your id for the customer\]",
+        "name": "customer name" 
+      },
+      "timestamp": "2024-01-23T11:42:42Z"
+    }'
+    ```
 
-A task is a set of instructions that tells GenerativeAgent what to do. We go into more detail about tasks and functions in the [Learn More About Tasks and Functions](/generativeagent/configuring) guide.
+    This conversation represents a thread of messages between an end user and one or more agents. A successfully created conversation returns a status code of 200 and the `id` of the conversation.
 
-<Steps>
-  <Step title="Navigate to 'GenerativeAgent > Tasks'" />
+    ```json  theme={null}
+    {"id":"01HNE48VMKNZ0B0SG3CEFV24WM"}
+    ```
 
-  <Step title="Click 'Create task'" />
+    Each time your end user or an agent sends a message, you need to add the messages of the conversation by creating a `message` on the `conversation`. This may either be the chat messages in digital channels, or the audio transcript from your transcription service.
 
-  <Step title="Define the task">
-    Here we provide sample names and instructions, but you are in full control of GenerativeAgent's behavior and can customize them to fit your needs.
+    You have the choice to add a **single message** for each turn of the conversation, or can upload a **batch of messages** a conversation.
 
-    Fill in the following fields:
+    <Tabs>
+      <Tab title="Single message">
+        ```bash  theme={null}
+        curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations/01HNE48VMKNZ0B0SG3CEFV24WM/messages' \
+        --header 'asapp-api-id: \<API KEY ID\>' \
+        --header 'asapp-api-secret: \<API TOKEN\>' \
+        --header 'Content-Type: application/json' \
+        --data '{ 
+          "text": "Hello, I would like to upgrade my internet plan to GOLD.",
+          "sender": {   
+            "role": "customer",
+            "externalId": "\[Your id for the customer\]" 
+          },
+          "timestamp": "2024-01-23T11:42:42Z"
+        }'
+        ```
 
-    * **Task name**: "Answer\_Customer\_Questions"
-    * **Task selector description**: "Use this task when customers ask questions about our products, services, or policies."
-    * **General Instructions**: "Answer customer questions clearly and concisely using information from the knowledge base. If the answer isn't in the knowledge base, politely explain that you don't have that information and offer to help them find other information."
+        A successfully created message returns a status code of 200 and the id of the message.
 
-    <Frame>
-      <img src="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=6fe52f0b70a1030edb19a788b87adc5b" alt="Dashboard Create task" data-og-width="1202" width="1202" data-og-height="507" height="507" data-path="images/generativeagent/getting-started/create-task.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=280&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=857fdb3b4fab44a3ffa1b8abf51bd3c6 280w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=560&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=d0b2962eccd2bcd8f7ce3031f457817c 560w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=840&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=2bdd59b47484f9e6e9d7e9487f48eef3 840w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=1100&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=446cc897b2d9448a2a48f737d7ece00e 1100w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=1650&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=02bdfb9f76341877fbf8155de92e219b 1650w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/create-task.png?w=2500&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=38b1834e5b96fdc6ed167c1c2781197f 2500w" />
-    </Frame>
-  </Step>
+        <Warning>We only show one message as an example, though you would create many messages over the source of the conversation.</Warning>
+      </Tab>
 
-  <Step title="Save the task" />
-</Steps>
+      <Tab title="Batched messages">
+        Use the `/messages/batch` endpoint to send multiple messages at once for a given conversation.
 
-## Step 4: Try It Out in the Previewer
+        ```javascript  theme={null}
+        curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations/5544332211/messages/batch' \
+        --header 'asapp-api-id: <API KEY ID>' \
+        --header 'asapp-api-secret: <API TOKEN>' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "messages": [
+            {
+              "text": "Hello, thank you for contacting XYZ Insurance. How can I assist you today?",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:00:00Z"
+            },
+            {
+              "text": "Hi, I want to check the status of my payout for my claim.",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:01:00Z"
+            },
+            {
+              "text": "Sure, can you please provide me with the claim number?",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:02:00Z"
+            },
+            {
+              "text": "It\'s H123456789.",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:03:00Z"
+            },
+            {
+              "text": "Thank you. Could you also provide the last 4 digits of your account number?",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:04:00Z"
+            },
+            {
+              "text": "****",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:05:00Z"
+            },
+            {
+              "text": "Let me check the details for you. One moment, please.",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:06:00Z"
+            },
+            {
+              "text": "I see that your claim was approved on June 10, ****, for ****. The payout has been processed.",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:07:00Z"
+            },
+            {
+              "text": "Great! When will I receive the money?",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:08:00Z"
+            },
+            {
+              "text": "The payout will be credited to your account within 3-5 business days.",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:09:00Z"
+            },
+            {
+              "text": "Perfect, thank you so much for your help.",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:10:00Z"
+            },
+            {
+              "text": "You\'re welcome! Is there anything else I can assist you with?",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:11:00Z"
+            },
+            {
+              "text": "No, that\'s all. Have a nice day.",
+              "sender": {"role": "customer", "externalId": "cust_1234"},
+              "timestamp": "2024-09-09T10:12:00Z"
+            },
+            {
+              "text": "You too. Goodbye!",
+              "sender": {"role": "agent", "externalId": "agent_1234"},
+              "timestamp": "2024-09-09T10:13:00Z"
+            }
+          ]
+        }'
+        ```
+      </Tab>
+    </Tabs>
+  </Tab>
 
-Now let's test your GenerativeAgent with the [Previewer](/generativeagent/configuring/previewer):
+  <Tab title="Use Autotranscribe">
+    AI Transcribe converts audio streams into real-time transcripts. Regardless of the platform you use:
 
-1. Navigate to **GenerativeAgent > Previewer**
-2. Select **Draft** environment from the dropdown
-3. Type a test question related to your knowledge base content (e.g., "What is your return policy?")
-4. Send the message and observe GenerativeAgent's response
-5. Use the Turn Inspector panel on the right to see which knowledge base articles were used and how GenerativeAgent processed the request
+    1. AI Transcribe generates a `conversation` object for each transcribed interaction.
+    2. You'll receive a unique `conversation` id.
+    3. Use this `conversation` id to extract insights via the AI Summary API.
 
-<Frame>
-  <img src="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=6c80e7762e3e8ea2885a4b1e63630364" alt="The previewer side panel" data-og-width="1209" width="1209" data-og-height="673" height="673" data-path="images/generativeagent/getting-started/try-out-previewer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=280&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=733b9cf2d08713422fe7aa5bf6eb42ad 280w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=560&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=988c3ef189a9c60da9216b23eda36632 560w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=840&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=620d4e7794cfadc0a64fe00dfde8f9f1 840w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=1100&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=ceee1b86cfac0acf81d14184cd237a40 1100w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=1650&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=ce98c2c6d751322a4424fc816c857599 1650w, https://mintcdn.com/asapp/c-LDHupSgFxlqz3x/images/generativeagent/getting-started/try-out-previewer.png?w=2500&fit=max&auto=format&n=c-LDHupSgFxlqz3x&q=85&s=1e1fba185d3861977151983b28d0d80c 2500w" />
-</Frame>
+    Platform-specific integration steps vary. Refer to the AI Transcribe documentation for detailed instructions for your chosen platform.
+  </Tab>
+</Tabs>
 
-## Safety
+## Step 2: Extract Insight
 
-GenerativeAgent is has been developed with a safety-first approach.
+AI Summary offers three types of insights, each with its own API endpoint:
 
-ASAPP ensures GenerativeAgent's accuracy and quality with rigorous testing and continuous updates, preventing hallucinations through advanced validation. Our team has incorporated Safety Layers that provide benefits such as reliability and response trust.
+* **Free text summary**
+* **Insight**
+* **Structured Data**
 
-Our safety standards include:
+All APIs require the conversation ID to extract the relevant insight.
 
-* Safety Layers
-* Hallucination Control
-* Data Redaction
-* IP Blocking
-* Customer Info and Sensitive Data Protection
+### Example: Generate a free text summary
 
-<Tip>
-  You can learn more about this in [Safety and Troubleshooting](/generativeagent/configuring/safety-and-troubleshooting).
-</Tip>
+To generate a free text summary, use the following API call:
 
-## What's Next
+```javascript  theme={null}
+curl -X GET 'https://api.sandbox.asapp.com/autosummary/v1/free-text-summaries/[conversationId]' \
+--header 'asapp-api-id: <API KEY ID>' \
+--header 'asapp-api-secret: <API TOKEN>'
+```
 
-Congratulations on setting up a basic GenerativeAgent to answer customer questions using your knowledge base!
+A successful free text summary generation returns 200 and the summary
 
-Now that you have a working GenerativeAgent, here are the recommended next steps to understand GenerativeAgent more holistically and build a complete solution:
+```javascript  theme={null}
+{
+  "conversationId": "5544332211",
+  "summaryId": "0992d936-ff70-49fc-ac88-76f1246d8t27",
+  "summaryText": "Customer called in saying their internet was slow. Customer wasn't home so couldn't run a speed test. Agent recommended calling back once they could run the speed test."
+}
+```
+
+## Next Steps
+
+Now that you understand the fundamentals of using AI Summary, explore further
 
 <CardGroup>
-  <Card title="Build Overview" href="/generativeagent/build-overview">
-    Get a comprehensive understanding of how GenerativeAgent works and the complete build process.
-  </Card>
+  <Card title="Example Use Cases" href="/ai-productivity/ai-summary/example-use-cases" />
 
-  <Card title="Adding a Use Case" href="/generativeagent/build/adding-a-use-case">
-    Learn how to design and implement specific use cases for your contact center needs.
-  </Card>
+  <Card title="Free Text Summary" href="/ai-productivity/ai-summary/free-text-summary" />
 
-  <Card title="Previewer" href="/generativeagent/configuring/previewer">
-    Test and refine your GenerativeAgent before deploying to production.
-  </Card>
+  <Card title="Intent" href="/ai-productivity/ai-summary/intent" />
 
-  <Card title="Integrate" href="/generativeagent/integrate">
-    Connect your CCaaS and backend systems to create a complete GenerativeAgent solution.
-  </Card>
+  <Card title="Structured Data" href="/ai-productivity/ai-summary/structured-data" />
 </CardGroup>

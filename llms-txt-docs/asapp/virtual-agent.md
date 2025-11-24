@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent.md
 
 # Virtual Agent
 
@@ -26,7 +26,7 @@ Virtual Agent is fully customizable to fit your brand's unique needs. This inclu
 
 ### Access
 
-The Virtual Agent is configured through the AI-Console. To access AI-Console, log into [Insights Manager](/messaging-platform/insights-manager "Insights Manager"), click on your user icon, and then **Go to AI-Console**. This option will only be available if your organization has granted you permission to access AI-Console.
+The Virtual Agent is configured through the AI-Console. To access AI-Console, log into [Insights Manager](/agent-desk/insights-manager "Insights Manager"), click on your user icon, and then **Go to AI-Console**. This option will only be available if your organization has granted you permission to access AI-Console.
 
 ## How It Works
 
@@ -50,9 +50,9 @@ Once an intent has been recognized, the next question is "so what?". Intent rout
 * Alternatively, an intent route can be used to specify a pre-defined flow for the Virtual Agent to execute, which can be used to collect additional information, offer solutions, or link a customer out to self-serve elsewhere.
 * To promote flexibility, intent routes can point to different flows based on conditional logic that uses contextual data, like customer channels.
 
-<Card title="Intent Routing" href="/messaging-platform/virtual-agent/intent-routing">For a comprehensive breakdown of the intent list and routes, please refer to the Intent Routing Selection.</Card>
+<Card title="Intent Routing" href="/agent-desk/virtual-agent/intent-routing">For a comprehensive breakdown of the intent list and routes, please refer to the Intent Routing Selection.</Card>
 
-For a comprehensive breakdown of the intent list and routes, please refer to the [Intent Routing](/messaging-platform/virtual-agent/intent-routing "Intent Routing") section.
+For a comprehensive breakdown of the intent list and routes, please refer to the [Intent Routing](/agent-desk/virtual-agent/intent-routing "Intent Routing") section.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=750bd8da7d24b350f9d01873ee95e48f" data-og-width="1999" width="1999" data-og-height="615" height="615" data-path="image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=7205d555edc46d4f3fa9c1d5fcfea5a0 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c88dee1bd2e6faecfaad54ce13dfceb1 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c7774eca5ae6003605aafc1a6fd848bb 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=c648d428fbfd4006af7f93f09b5762cf 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=d67f0e1f076a2140f39d270bdbb1f735 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-b369a8e5-13a9-51fc-4c3e-566c3a983a31.jpg?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=4ccd7dd454353e8c1797f6ca34e07939 2500w" />
@@ -62,7 +62,7 @@ For a comprehensive breakdown of the intent list and routes, please refer to the
 
 Flows define how the Virtual Agent interacts with the customer given a specific situation. They can be as simple as an answer to an FAQ, or as complex as a multi-turn dialog used to offer self-service recommendations. Flows are built through a series of [nodes](#flow-nodes "Flow Nodes") that dictate the flow of the conversation as well as any business logic it needs to perform. Once built, flows can be reached through [intent routing](#intent-routes "Intent Routes"), or redirected to from other flows.
 
-<Card title="Flows" href="/messaging-platform/virtual-agent/flows">For more information on how flows are built, see our Flow Building Guide</Card>
+<Card title="Flows" href="/agent-desk/virtual-agent/flows">For more information on how flows are built, see our Flow Building Guide</Card>
 
 ### Core Dialog
 

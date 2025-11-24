@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/push-notifications.md
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/push-notifications.md
 
 # Push Notifications
 

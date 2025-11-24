@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/flows.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/flows.md
 
 # Flows
 
@@ -17,8 +17,8 @@ In the flows page, you will find a list of existing flows for your business. The
 * **Flow Description**
   A brief description that describes the objective of the flow.
 * **Traffic from Intent**
-  Intents can be routed to specific flows through [intent routing](/messaging-platform/virtual-agent/intent-routing "Intent Routing"). In this column, you will see which intents route to the respective flow.
-  You can click the intent to navigate to the specific [intent routing detail page](/messaging-platform/virtual-agent/intent-routing#intent-routing-detail-page "Intent Routing Detail Page") to view routing behavior details.
+  Intents can be routed to specific flows through [intent routing](/agent-desk/virtual-agent/intent-routing "Intent Routing"). In this column, you will see which intents route to the respective flow.
+  You can click the intent to navigate to the specific [intent routing detail page](/agent-desk/virtual-agent/intent-routing#intent-routing-detail-page "Intent Routing Detail Page") to view routing behavior details.
 * **Traffic from Redirect**
   Flows have the ability to link to one another through the use of [redirect nodes](#redirect-node "Redirect Node"). In this column, you will be able to see which existing flows redirect to the respective flow. You can click the flow to navigate to the specific [flow builder page](#flow-builder "Flow Builder") to view flow details.
 
@@ -119,8 +119,8 @@ Any response text you specify will be sent to the customer when they reach the n
 
 After selecting **Deeplink** from the **Add Content** menu, the following additional fields will appear:
 
-* **Link to**: select an existing link from the dropdown or directly [create a new link](/messaging-platform/virtual-agent/links#create-a-link "Create a Link").
-  If you select an existing link, you can click **View link definition** to open the specific [link details](/messaging-platform/virtual-agent/links#edit-a-link "Edit a Link") in a new tab.
+* **Link to**: select an existing link from the dropdown or directly [create a new link](/agent-desk/virtual-agent/links#create-a-link "Create a Link").
+  If you select an existing link, you can click **View link definition** to open the specific [link details](/agent-desk/virtual-agent/links#edit-a-link "Edit a Link") in a new tab.
 * **Call to action**: define the accompanying text that the customer will click on in order to navigate to the link.
 * **Hide button after new message**: choose to remove the deeplink after a new response appears to prevent users from navigating to the link past this node.
 
@@ -161,7 +161,7 @@ There are two types of branch classifiers that you can use:
   </Frame>
 
 * **Custom classifiers**
-  If pre-trained classifiers do not meet your needs, define your own custom branches and supply training utterances. You must give your branch classifier a **Display Name** and supply at least five training utterances to train this custom classification. Learn more about how to best train your custom branches in the [Training response route](/messaging-platform/virtual-agent/best-practices#2-training-response-routes "2. Training Response Routes") section.
+  If pre-trained classifiers do not meet your needs, define your own custom branches and supply training utterances. You must give your branch classifier a **Display Name** and supply at least five training utterances to train this custom classification. Learn more about how to best train your custom branches in the [Training response route](/agent-desk/virtual-agent/best-practices#2-training-response-routes "2. Training Response Routes") section.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-1cff1b12-002a-49ee-254d-1a0a13a0faa2.gif?s=0715120cf8969daddfd3b89a453526b9" data-og-width="1039" width="1039" data-og-height="677" height="677" data-path="image/uuid-1cff1b12-002a-49ee-254d-1a0a13a0faa2.gif" data-optimize="true" data-opv="3" />
@@ -181,7 +181,7 @@ In the **Advanced Settings** section, you can set flow success reporting for the
 
 #### Flow Success
 
-Flow success attempts to accurately measure whether a customer has successfully self-served through the virtual agent. You measure this by setting the appropriate flow reporting status on certain nodes within a flow. Learn more: [How do I determine flow success?](/messaging-platform/virtual-agent/best-practices#measuring-virtual-agents "Measuring Virtual Agents")
+Flow success attempts to accurately measure whether a customer has successfully self-served through the virtual agent. You measure this by setting the appropriate flow reporting status on certain nodes within a flow. Learn more: [How do I determine flow success?](/agent-desk/virtual-agent/best-practices#measuring-virtual-agents "Measuring Virtual Agents")
 
 To set flow reporting status for response nodes:
 
@@ -340,7 +340,7 @@ In this node, you can define the following:
 The **Destination** section allows you to define where to redirect the customer. You can redirect to an existing **flow** or an **intent**.
 
 * Select **Flow** to redirect to an individual flow destination.
-* Select **Intent** to redirect the customer to solve for a broader issue intent that may route them to different flows depending on the [intent routing rules](/messaging-platform/virtual-agent/intent-routing "Intent Routing").
+* Select **Intent** to redirect the customer to solve for a broader issue intent that may route them to different flows depending on the [intent routing rules](/agent-desk/virtual-agent/intent-routing "Intent Routing").
 
 Depending on the option you select, you will be able to select the destination flow or intent from the dropdown.
 
@@ -358,7 +358,7 @@ In the Advanced Settings section, you can set flow success reporting for the age
 
 ##### Flow Success
 
-Flow success attempts to accurately measure whether a customer has successfully self-served through the virtual agent. This is measured by setting the appropriate flow reporting status on certain nodes within a flow. Learn more: [How do I determine flow success?](/messaging-platform/virtual-agent/best-practices#measuring-virtual-agents "Measuring Virtual Agents")
+Flow success attempts to accurately measure whether a customer has successfully self-served through the virtual agent. This is measured by setting the appropriate flow reporting status on certain nodes within a flow. Learn more: [How do I determine flow success?](/agent-desk/virtual-agent/best-practices#measuring-virtual-agents "Measuring Virtual Agents")
 
 For agent nodes, this is always considered a failure.
 
@@ -488,7 +488,7 @@ To save your new flow, select **Save**.
 
 ### Deploy New Flow
 
-Newly created flows (i.e. the initial version) will **immediately deploy to test environments and production**. These new flows can be deployed without harm since customers will not be able to invoke the flow unless there are incoming routes due to [intent routing](/messaging-platform/virtual-agent/intent-routing "Intent Routing").
+Newly created flows (i.e. the initial version) will **immediately deploy to test environments and production**. These new flows can be deployed without harm since customers will not be able to invoke the flow unless there are incoming routes due to [intent routing](/agent-desk/virtual-agent/intent-routing "Intent Routing").
 
 <Frame>
   <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=b9ee9361edb6f3fd8ba0d08847ff375e" data-og-width="946" width="946" data-og-height="750" height="750" data-path="image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=5e1813d45e03d0282e6b039f1d668075 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=bccb7b08058abd01676167896b0d6246 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=310858554d9340f4f92080bb5b201893 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=2463b8cdddd458d687274effb8f1b502 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=e36416467468b551da0fa51c22d3d921 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-8b66727a-30bd-703f-b094-cbd7ead452eb.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=3cdced370940fdb5c876a4597db21dd7 2500w" />
@@ -558,7 +558,7 @@ After deploying your flow to test, navigate to your respective test environment 
 
 ### Deploy Version to Prod
 
-After verifying the expected flow behavior in **Test**, you can deploy the flow version to production, which will impact customers if there the [flow is routed from an intent](/messaging-platform/virtual-agent/intent-routing "Intent Routing"):
+After verifying the expected flow behavior in **Test**, you can deploy the flow version to production, which will impact customers if there the [flow is routed from an intent](/agent-desk/virtual-agent/intent-routing "Intent Routing"):
 
 1. Select the version you want to deploy in the version dropdown for **Prod**.
 2. After selection, click **Save**.
@@ -576,7 +576,7 @@ When you are simply viewing a flow without making any changes, **Manage Versions
   <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=8cc1b060e2052c2c5a9b1e6dd163c736" data-og-width="946" width="946" data-og-height="762" height="762" data-path="image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=e2c7062e61deefdabc218a0c033c13b4 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=3ab1fde913292699ac52ffce6b0b0df1 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=6d3ddbedd9946e8802882616123501aa 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=16720aa7fabc6e8c6af285c7e32d2e5f 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=a3a3d9ed4fc22f15b60d85e8e433806d 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-259c265c-031d-8f63-ee2f-aadc8e9760a9.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=0930f2f545a3a3c3b17437c72ef2b3e9 2500w" />
 </Frame>
 
-In addition to version deployments, you can view any existing [intents that route to this flow](/messaging-platform/virtual-agent/intent-routing "Intent Routing") in **Incoming Routes**. Upon selection, you will be directed to the specific [intent detail](/messaging-platform/virtual-agent/intent-routing#intent-routing-detail-page "Intent Routing Detail Page") page where you can view the intent routing rules.
+In addition to version deployments, you can view any existing [intents that route to this flow](/agent-desk/virtual-agent/intent-routing "Intent Routing") in **Incoming Routes**. Upon selection, you will be directed to the specific [intent detail](/agent-desk/virtual-agent/intent-routing#intent-routing-detail-page "Intent Routing Detail Page") page where you can view the intent routing rules.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-d955ad2e-56f9-1792-02cc-85b016188de7.gif?s=ab950a3e5adfc8e2c0b5dff3b981613e" data-og-width="1224" width="1224" data-og-height="702" height="702" data-path="image/uuid-d955ad2e-56f9-1792-02cc-85b016188de7.gif" data-optimize="true" data-opv="3" />

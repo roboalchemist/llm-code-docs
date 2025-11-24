@@ -10,7 +10,7 @@ Hot Module Replacement (HMR) allows you to update modules in a running applicati
 
 ## `import.meta.hot` API Reference
 
-Bun implements a client-side HMR API modeled after [Vite's `import.meta.hot` API](https://vitejs.dev/guide/api-hmr.html). It can be checked for with `if (import.meta.hot)`, tree-shaking it in production.
+Bun implements a client-side HMR API modeled after [Vite's `import.meta.hot` API](https://vite.dev/guide/api-hmr). It can be checked for with `if (import.meta.hot)`, tree-shaking it in production.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (import.meta.hot) {
@@ -144,7 +144,7 @@ Indicates that multiple dependencies' modules can be accepted. This variant acce
 
 `import.meta.hot.data` maintains state between module instances during hot replacement, enabling data transfer from previous to new versions. When `import.meta.hot.data` is written into, Bun will also mark this module as capable of self-accepting (equivalent of calling `import.meta.hot.accept()`).
 
-```jsx title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx title="index.tsx" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createRoot } from "react-dom/client";
 import { App } from "./app";
 

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/ios-sdk-release-notes.md
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/ios-sdk-release-notes.md
 
 # iOS SDK Release Notes
 

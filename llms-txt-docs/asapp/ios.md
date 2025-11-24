@@ -1,10 +1,10 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/chat-instead/ios.md
+# Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/ios.md
 
 # iOS
 
 ## Pre-requisites
 
-* ASAPP iOS SDK 9.4.0 or later, correctly configured and initialized [see more here](/messaging-platform/integrations/ios-sdk/ios-quick-start).
+* ASAPP iOS SDK 9.4.0 or later, correctly configured and initialized [see more here](/agent-desk/integrations/ios-sdk/ios-quick-start).
 
 ## Getting Started
 

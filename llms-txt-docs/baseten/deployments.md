@@ -1,5 +1,3 @@
-# Source: https://docs.baseten.co/troubleshooting/deployments.md
-
 # Source: https://docs.baseten.co/deployment/deployments.md
 
 # Deployments

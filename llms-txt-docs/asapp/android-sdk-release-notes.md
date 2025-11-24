@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/android-sdk-release-notes.md
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/android-sdk-release-notes.md
 
 # Android SDK Release Notes
 

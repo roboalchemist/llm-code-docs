@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/chat-instead.md
+# Source: https://docs.asapp.com/agent-desk/integrations/chat-instead.md
 
 # Chat Instead Overview
 
@@ -14,6 +14,6 @@ To enable this feature:
 
 See the following sections for more information:
 
-* [Android](/messaging-platform/integrations/chat-instead/android "Android")
-* [iOS](/messaging-platform/integrations/chat-instead/ios "iOS")
-* [Web](/messaging-platform/integrations/chat-instead/web "Web")
+* [Android](/agent-desk/integrations/chat-instead/android "Android")
+* [iOS](/agent-desk/integrations/chat-instead/ios "iOS")
+* [Web](/agent-desk/integrations/chat-instead/web "Web")

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations.md
+# Source: https://docs.asapp.com/agent-desk/integrations.md
 
 # Integration Channels
 
@@ -10,42 +10,42 @@ These integrations are divided into two main categories: [Customer Channels](#cu
 
 **Customer Channels** are the direct touchpoints where your customers can interact with your brand.
 
-<Note>Regardless of which channels you choose to integrate, [Digital Agent Desk](/messaging-platform/digital-agent-desk) standardizes the interaction for your agents into a single interface.</Note>
+<Note>Regardless of which channels you choose to integrate, [Digital Agent Desk](/agent-desk/digital-agent-desk) standardizes the interaction for your agents into a single interface.</Note>
 
 **Applications Integrations** are designed to enhance the functionality and efficiency of your customer service operations. These integrations cover various aspects such as agent authentication, routing, knowledge management, and user management.
 
 ## Customer Channels
 
 <CardGroup>
-  <Card title="Android SDK" href="/messaging-platform/integrations/android-sdk" />
+  <Card title="Android SDK" href="/agent-desk/integrations/android-sdk" />
 
-  <Card title="Apple Messages for Business" href="/messaging-platform/integrations/apple-messages-for-business" />
+  <Card title="Apple Messages for Business" href="/agent-desk/integrations/apple-messages-for-business" />
 
-  <Card title="iOS SDK" href="/messaging-platform/integrations/ios-sdk" />
+  <Card title="iOS SDK" href="/agent-desk/integrations/ios-sdk" />
 
-  <Card title="Voice" href="/messaging-platform/integrations/voice" />
+  <Card title="Voice" href="/agent-desk/integrations/voice" />
 
-  <Card title="Web SDK" href="/messaging-platform/integrations/web-sdk" />
+  <Card title="Web SDK" href="/agent-desk/integrations/web-sdk" />
 
-  <Card title="WhatsApp Business" href="/messaging-platform/integrations/whatsapp-business" />
+  <Card title="WhatsApp Business" href="/agent-desk/integrations/whatsapp-business" />
 </CardGroup>
 
 ## Applications Integrations
 
 <CardGroup>
-  <Card title="Agent SSO" href="/messaging-platform/digital-agent-desk/agent-sso" />
+  <Card title="Agent SSO" href="/agent-desk/digital-agent-desk/agent-sso" />
 
-  <Card title="API Integration" href="/messaging-platform/digital-agent-desk/api-integration" />
+  <Card title="API Integration" href="/agent-desk/digital-agent-desk/api-integration" />
 
-  <Card title="Attributes Based Routing" href="/messaging-platform/digital-agent-desk/queues-and-routing/attributes-based-routing" />
+  <Card title="Attributes Based Routing" href="/agent-desk/digital-agent-desk/queues-and-routing/attributes-based-routing" />
 
-  <Card title="Chat Instead" href="/messaging-platform/integrations/chat-instead" />
+  <Card title="Chat Instead" href="/agent-desk/integrations/chat-instead" />
 
-  <Card title="Customer Authentication" href="/messaging-platform/integrations/customer-authentication" />
+  <Card title="Customer Authentication" href="/agent-desk/integrations/customer-authentication" />
 
-  <Card title="Knowledge Base" href="/messaging-platform/digital-agent-desk/knowledge-base" />
+  <Card title="Knowledge Base" href="/agent-desk/digital-agent-desk/knowledge-base" />
 
-  <Card title="Push Notifications and the Mobile SDKs" href="/messaging-platform/integrations/push-notifications-and-the-mobile-sdks" />
+  <Card title="Push Notifications and the Mobile SDKs" href="/agent-desk/integrations/push-notifications-and-the-mobile-sdks" />
 
-  <Card title="User Management" href="/messaging-platform/integrations/user-management" />
+  <Card title="User Management" href="/agent-desk/integrations/user-management" />
 </CardGroup>

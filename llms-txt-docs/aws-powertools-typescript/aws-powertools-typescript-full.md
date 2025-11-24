@@ -12,7 +12,7 @@ Powertools for AWS Lambda (TypeScript) is a developer toolkit to implement Serve
 
 # Getting Started
 
-You can use Powertools for AWS Lambda (TypeScript) by installing it with your favorite dependency management, or via [Lambda Layers](../lambda-layers/).
+You can use Powertools for AWS Lambda (TypeScript) by installing it with your favorite dependency management, or via [Lambda Layers](https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/lambda-layers/index.md).
 
 The toolkit is compatible with both TypeScript and JavaScript code bases, and supports both CommonJS and ES modules.
 
@@ -23,23 +23,13 @@ All features are available as individual packages, so you can install only the o
 - **Metrics**: `npm i @aws-lambda-powertools/metrics`
 - **Tracer**: `npm i @aws-lambda-powertools/tracer`
 
-See the [Features](../../features/) page for a complete list of available utilities.
+See the [Features](https://docs.aws.amazon.com/powertools/typescript/latest/features/index.md) page for a complete list of available utilities.
 
-### Extra dependencies
+## Extra dependencies
 
 Some features use additional dependencies like the AWS SDK for JavaScript v3, which might you need to install separately. Below is a list of utilities that use external dependencies, and the packages you need to install to use them.
 
-| Feature                                                        | Install                                                                                       | Default dependency  |
-| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------- |
-| **[Tracer](../../features/tracer/)**                           | **`npm i @aws-lambda-powertools/tracer`**                                                     | `aws-xray-sdk-core` |
-| **[Idempotency](../../features/idempotency/)**                 | **`npm i @aws-lambda-powertools/idempotency @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb`** |                     |
-| **[Parameters (SSM)](../../features/parameters/)**             | **`npm i @aws-lambda-powertools/parameters @aws-sdk/client-ssm`**                             |                     |
-| **[Parameters (Secrets Manager)](../../features/parameters/)** | **`npm i @aws-lambda-powertools/parameters @aws-sdk/client-secrets-manager`**                 |                     |
-| **[Parameters (AppConfig)](../../features/parameters/)**       | **`npm i @aws-lambda-powertools/parameters @aws-sdk/client-appconfigdata`**                   |                     |
-| **[Parser](../../features/parser/)**                           | **`npm i @aws-lambda-powertools/parser zod`**                                                 |                     |
-| **[Validation](../../features/validation/)**                   | **`npm i @aws-lambda-powertools/validation`**                                                 | `ajv`               |
-| **[Kafka (Protocol Buffers)](../../features/kafka/)**          | **`npm i @aws-lambda-powertools/kafka protobufjs`**                                           |                     |
-| **[Kafka (Avro)](../../features/kafka/)**                      | **`npm i @aws-lambda-powertools/kafka avro-js`**                                              |                     |
+||Feature |Install |Default dependency || | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------- | ||**[Tracer](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md)** |**`npm i @aws-lambda-powertools/tracer`** |`aws-xray-sdk-core` || ||**[Idempotency](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md)** |**`npm i @aws-lambda-powertools/idempotency @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb`** | || ||**[Parameters (SSM)](https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md)** |**`npm i @aws-lambda-powertools/parameters @aws-sdk/client-ssm`** | || ||**[Parameters (Secrets Manager)](https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md)** |**`npm i @aws-lambda-powertools/parameters @aws-sdk/client-secrets-manager`** | || ||**[Parameters (AppConfig)](https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md)** |**`npm i @aws-lambda-powertools/parameters @aws-sdk/client-appconfigdata`** | || ||**[Parser](https://docs.aws.amazon.com/powertools/typescript/latest/features/parser/index.md)** |**`npm i @aws-lambda-powertools/parser zod`** | || ||**[Validation](https://docs.aws.amazon.com/powertools/typescript/latest/features/validation/index.md)** |**`npm i @aws-lambda-powertools/validation`** |`ajv` || ||**[Kafka (Protocol Buffers)](https://docs.aws.amazon.com/powertools/typescript/latest/features/kafka/index.md)** |**`npm i @aws-lambda-powertools/kafka protobufjs`** | || ||**[Kafka (Avro)](https://docs.aws.amazon.com/powertools/typescript/latest/features/kafka/index.md)** |**`npm i @aws-lambda-powertools/kafka avro-js`** | ||
 
 Powertools for AWS Lambda (TypeScript) is a collection of utilities designed to help you build serverless applications on AWS.
 
@@ -57,7 +47,7 @@ This pattern works well when you want to integrate Powertools for AWS into an ex
 
 Note
 
-This approach relies on TypeScript's experimental decorator feature, see [TypeScript Settings](../typescript-settings/) for more information.
+This approach relies on TypeScript's experimental decorator feature, see [TypeScript Settings](https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/typescript-settings/index.md) for more information.
 
 ```
 import type { LambdaInterface } from '@aws-lambda-powertools/commons/types';
@@ -196,7 +186,7 @@ A [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-laye
 
 You can add our layer both in the [AWS Lambda Console *(under `Layers`)*](https://docs.aws.amazon.com/lambda/latest/dg/adding-layers.html), or via your favorite infrastructure as code framework with the ARN value. You can use the Lambda Layer both with CommonJS and ESM (ECMAScript modules).
 
-### Layer ARNs
+## Layer ARNs
 
 We publish the Lambda Layer for Powertools for AWS Lambda in all commercial regions and AWS GovCloud (US) regions.
 
@@ -206,41 +196,41 @@ Open an [issue](https://github.com/aws-powertools/powertools-lambda-typescript/i
 
 | Region           | Layer ARN                                                                                      |
 | ---------------- | ---------------------------------------------------------------------------------------------- |
-| `us-east-1`      | [arn:aws:lambda:us-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `us-east-2`      | [arn:aws:lambda:us-east-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `us-west-1`      | [arn:aws:lambda:us-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `us-west-2`      | [arn:aws:lambda:us-west-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `ap-south-1`     | [arn:aws:lambda:ap-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `ap-south-2`     | [arn:aws:lambda:ap-south-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `ap-east-1`      | [arn:aws:lambda:ap-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `ap-northeast-1` | [arn:aws:lambda:ap-northeast-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-northeast-2` | [arn:aws:lambda:ap-northeast-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-northeast-3` | [arn:aws:lambda:ap-northeast-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-1` | [arn:aws:lambda:ap-southeast-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-2` | [arn:aws:lambda:ap-southeast-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-3` | [arn:aws:lambda:ap-southeast-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-4` | [arn:aws:lambda:ap-southeast-4:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-5` | [arn:aws:lambda:ap-southeast-5:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `ap-southeast-7` | [arn:aws:lambda:ap-southeast-7:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)       |
-| `eu-central-1`   | [arn:aws:lambda:eu-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `eu-central-2`   | [arn:aws:lambda:eu-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `eu-west-1`      | [arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `eu-west-2`      | [arn:aws:lambda:eu-west-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `eu-west-3`      | [arn:aws:lambda:eu-west-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `eu-north-1`     | [arn:aws:lambda:eu-north-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `eu-south-1`     | [arn:aws:lambda:eu-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `eu-south-2`     | [arn:aws:lambda:eu-south-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `ca-central-1`   | [arn:aws:lambda:ca-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `ca-west-1`      | [arn:aws:lambda:ca-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `sa-east-1`      | [arn:aws:lambda:sa-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)            |
-| `af-south-1`     | [arn:aws:lambda:af-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `me-south-1`     | [arn:aws:lambda:me-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)           |
-| `me-central-1`   | [arn:aws:lambda:me-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `il-central-1`   | [arn:aws:lambda:il-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `mx-central-1`   | [arn:aws:lambda:mx-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)         |
-| `us-gov-west-1`  | [arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsTypeScriptV2:40](#) |
-| `us-gov-east-1`  | [arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsTypeScriptV2:40](#) |
-| `cn-north-1`     | [arn:aws-aws-cn:lambda:cn-north-1:498634801083:layer:AWSLambdaPowertoolsTypeScriptV2:40](#)    |
+| `us-east-1`      | [arn:aws:lambda:us-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `us-east-2`      | [arn:aws:lambda:us-east-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `us-west-1`      | [arn:aws:lambda:us-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `us-west-2`      | [arn:aws:lambda:us-west-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `ap-south-1`     | [arn:aws:lambda:ap-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `ap-south-2`     | [arn:aws:lambda:ap-south-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `ap-east-1`      | [arn:aws:lambda:ap-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `ap-northeast-1` | [arn:aws:lambda:ap-northeast-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-northeast-2` | [arn:aws:lambda:ap-northeast-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-northeast-3` | [arn:aws:lambda:ap-northeast-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-1` | [arn:aws:lambda:ap-southeast-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-2` | [arn:aws:lambda:ap-southeast-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-3` | [arn:aws:lambda:ap-southeast-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-4` | [arn:aws:lambda:ap-southeast-4:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-5` | [arn:aws:lambda:ap-southeast-5:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `ap-southeast-7` | [arn:aws:lambda:ap-southeast-7:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)       |
+| `eu-central-1`   | [arn:aws:lambda:eu-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `eu-central-2`   | [arn:aws:lambda:eu-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `eu-west-1`      | [arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `eu-west-2`      | [arn:aws:lambda:eu-west-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `eu-west-3`      | [arn:aws:lambda:eu-west-3:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `eu-north-1`     | [arn:aws:lambda:eu-north-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `eu-south-1`     | [arn:aws:lambda:eu-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `eu-south-2`     | [arn:aws:lambda:eu-south-2:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `ca-central-1`   | [arn:aws:lambda:ca-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `ca-west-1`      | [arn:aws:lambda:ca-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `sa-east-1`      | [arn:aws:lambda:sa-east-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)            |
+| `af-south-1`     | [arn:aws:lambda:af-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `me-south-1`     | [arn:aws:lambda:me-south-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)           |
+| `me-central-1`   | [arn:aws:lambda:me-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `il-central-1`   | [arn:aws:lambda:il-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `mx-central-1`   | [arn:aws:lambda:mx-central-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)         |
+| `us-gov-west-1`  | [arn:aws-us-gov:lambda:us-gov-west-1:165093116878:layer:AWSLambdaPowertoolsTypeScriptV2:41](#) |
+| `us-gov-east-1`  | [arn:aws-us-gov:lambda:us-gov-east-1:165087284144:layer:AWSLambdaPowertoolsTypeScriptV2:41](#) |
+| `cn-north-1`     | [arn:aws-aws-cn:lambda:cn-north-1:498634801083:layer:AWSLambdaPowertoolsTypeScriptV2:41](#)    |
 
 ### Lookup Layer ARN via AWS SSM Parameter Store
 
@@ -258,7 +248,7 @@ Parameter:
   LastModifiedDate: '2025-02-11T11:08:45.070000+01:00'
   Name: /aws/service/powertools/typescript/generic/all/2.14.0
   Type: String
-  Value: arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40
+  Value: arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41
   Version: 1
 
 ```
@@ -277,7 +267,7 @@ The pre-signed URL to download this Lambda Layer will be within `Location` key i
 Change `{aws::region}` to your AWS region, e.g. `eu-west-1`, and run the following command:
 
 ```
-aws lambda get-layer-version-by-arn --arn arn:aws:lambda:{aws::region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40 --region {aws::region}
+aws lambda get-layer-version-by-arn --arn arn:aws:lambda:{aws::region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41 --region {aws::region}
 
 ```
 
@@ -289,13 +279,14 @@ aws lambda get-layer-version-by-arn --arn arn:aws:lambda:{aws::region}:094274105
         "CodeSize": 3548324
     },
     "LayerArn": "arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2",
-    "LayerVersionArn": "arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40",
+    "LayerVersionArn": "arn:aws:lambda:eu-west-1:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41",
     "Description": "Powertools for AWS Lambda (TypeScript) version 2.18.0",
     "CreatedDate": "2025-04-08T07:38:30.424+0000",
     "Version": 24,
     "CompatibleRuntimes": [
         "nodejs20.x",
-        "nodejs22.x"
+        "nodejs22.x",
+        "nodejs24.x"
     ],
     "LicenseInfo": "MIT-0",
     "CompatibleArchitectures": [
@@ -322,11 +313,11 @@ export class SampleFunctionWithLayer extends Construct {
     const powertoolsLayer = LayerVersion.fromLayerVersionArn(
       this,
       'PowertoolsLayer',
-      `arn:aws:lambda:${Stack.of(this).region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40`
+      `arn:aws:lambda:${Stack.of(this).region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41`
     );
 
     new NodejsFunction(this, 'Function', {
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       // Add the Layer to a Lambda function
       layers: [powertoolsLayer],
       code: Code.fromInline(`...`),
@@ -377,7 +368,7 @@ export class SampleFunctionWithLayer extends Construct {
     );
 
     new NodejsFunction(this, 'Function', {
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       // Add the Layer to a Lambda function
       layers: [powertoolsLayer],
       code: Code.fromInline(`...`),
@@ -393,7 +384,7 @@ MyLambdaFunction:
   Type: AWS::Serverless::Function
     Properties:
       Layers:
-        - !Sub arn:aws:lambda:${AWS::Region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40
+        - !Sub arn:aws:lambda:${AWS::Region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41
 
 ```
 
@@ -433,7 +424,7 @@ functions:
   hello:
     handler: lambda_function.lambda_handler
     layers:
-      - arn:aws:lambda:${aws:region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40
+      - arn:aws:lambda:${aws:region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41
 
 ```
 
@@ -467,8 +458,8 @@ resource "aws_lambda_function" "test_lambda" {
   function_name = "lambda_function_name"
   role          = ...
   handler       = "index.handler"
-  runtime       = "nodejs22.x"
-  layers        = ["arn:aws:lambda:{aws::region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40"]
+  runtime       = "nodejs24.x"
+  layers        = ["arn:aws:lambda:{aws::region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41"]
   source_code_hash = filebase64sha256("lambda_function_payload.zip")
 }
 
@@ -485,7 +476,7 @@ You can use [data sources](https://developer.hashicorp.com/terraform/language/da
   resource "aws_lambda_function" "test_lambda" {
     ...
 
-    runtime = "nodejs22.x"
+    runtime = "nodejs24.x"
 
     layers = [data.aws_ssm_parameter.powertools_version.value]
   }
@@ -503,13 +494,13 @@ const role = new aws.iam.Role('role', {
 
 const lambdaFunction = new aws.lambda.Function('function', {
     layers: [
-        pulumi.interpolate`arn:aws:lambda:${aws.getRegionOutput().name}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40`
+        pulumi.interpolate`arn:aws:lambda:${aws.getRegionOutput().name}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41`
     ],
     code: new pulumi.asset.FileArchive('lambda_function_payload.zip'),
     tracingConfig: {
         mode: 'Active'
     },
-    runtime: aws.lambda.Runtime.NodeJS22dX,
+    runtime: aws.lambda.Runtime.NodeJS24dX,
     handler: 'index.handler',
     role: role.arn,
     architectures: ['x86_64']
@@ -526,7 +517,7 @@ export const myFunction = defineFunction({
   name: "my-function",
   layers: {
     "@aws-lambda-powertools/*":
-      "arn:aws:lambda:${AWS::Region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:40",
+      "arn:aws:lambda:${AWS::Region}:094274105915:layer:AWSLambdaPowertoolsTypeScriptV2:41",
   },
 });
 
@@ -534,7 +525,7 @@ export const myFunction = defineFunction({
 
 ### Dependency management
 
-When using the Lambda Layer, the Powertools for AWS Lambda packages are already included in your Lambda runtime environment. However, you still need to [install these packages](../installation/) locally for development, testing, and IDE support.
+When using the Lambda Layer, the Powertools for AWS Lambda packages are already included in your Lambda runtime environment. However, you still need to [install these packages](https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/installation/index.md) locally for development, testing, and IDE support.
 
 Since the packages are provided by the Lambda Layer at runtime, install them as `devDependencies` in your `package.json` file:
 
@@ -614,7 +605,7 @@ public constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     const handler = new NodejsFunction(this, 'helloWorldFunction', {
-    runtime: Runtime.NODEJS_22_X,
+    runtime: Runtime.NODEJS_24_X,
     handler: 'handler',
     entry: 'src/index.ts',
     bundling: {
@@ -640,7 +631,7 @@ Resources:
 HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Handler: src/index.handler
     Metadata:
     BuildMethod: esbuild
@@ -697,7 +688,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Tracing: Active
       Environment:
         Variables:
@@ -829,8 +820,8 @@ export const handler = async (
 
 ```
 
-1. When Lambda starts an invocation [the X-Ray SDk creates a segment called `facade`](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-nodejs-subsegments.html#xray-sdk-nodejs-subsegments-lambda). This segment cannot be annotated or modified by your code, so you need to create a new subsegment. This is done automatically by Tracer when using the [decorator or middleware patterns](./#lambda-handler)
-1. To correctly trace the current and subsequent invocations you need to restore the original segment, this is done automatically by Tracer when using the [decorator or middleware patterns](./#lambda-handler).
+1. When Lambda starts an invocation [the X-Ray SDk creates a segment called `facade`](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-nodejs-subsegments.html#xray-sdk-nodejs-subsegments-lambda). This segment cannot be annotated or modified by your code, so you need to create a new subsegment. This is done automatically by Tracer when using the [decorator or middleware patterns](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/#lambda-handler)
+1. To correctly trace the current and subsequent invocations you need to restore the original segment, this is done automatically by Tracer when using the [decorator or middleware patterns](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/#lambda-handler).
 
 You can add metadata using `putMetadata` method.
 
@@ -856,8 +847,8 @@ export const handler = async (
 
 ```
 
-1. When Lambda starts an invocation [the X-Ray SDk creates a segment called `facade`](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-nodejs-subsegments.html#xray-sdk-nodejs-subsegments-lambda). This segment cannot be modified by your code, so you need to create a new subsegment. This is done automatically by Tracer when using the [decorator or middleware patterns](./#lambda-handler)
-1. To correctly trace the current and subsequent invocations you need to restore the original segment, this is done automatically by Tracer when using the [decorator or middleware patterns](./#lambda-handler).
+1. When Lambda starts an invocation [the X-Ray SDk creates a segment called `facade`](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-nodejs-subsegments.html#xray-sdk-nodejs-subsegments-lambda). This segment cannot be modified by your code, so you need to create a new subsegment. This is done automatically by Tracer when using the [decorator or middleware patterns](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/#lambda-handler)
+1. To correctly trace the current and subsequent invocations you need to restore the original segment, this is done automatically by Tracer when using the [decorator or middleware patterns](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/#lambda-handler).
 
 Tracer showcase - Handler Metadata
 
@@ -1253,7 +1244,7 @@ Info
 
 When `POWERTOOLS_DEV` environment variable is present and set to `"true"` or `"1"`, Logger will pretty-print log messages for easier readability. We recommend to use this setting only when debugging on local environments.
 
-See all environment variables in the [Environment variables](../../environment-variables/) section.
+See all environment variables in the [Environment variables](https://docs.aws.amazon.com/powertools/typescript/latest/environment-variables/index.md) section.
 
 Check API docs to learn more about [Logger constructor options](https://docs.aws.amazon.com/powertools/typescript/latest/api/types/_aws-lambda-powertools_logger.types.ConstructorOptions.html).
 
@@ -1279,7 +1270,7 @@ Resources:
   ShoppingCartApiFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Environment:
         Variables:
           POWERTOOLS_LOG_LEVEL: WARN
@@ -3071,7 +3062,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Environment:
       Variables:
         POWERTOOLS_SERVICE_NAME: orders
@@ -3084,7 +3075,7 @@ You can initialize Metrics anywhere in your code - It'll keep track of your aggr
 
 ### Creating metrics
 
-You can create metrics using the `addMetric` method, and you can create dimensions for all your aggregate metrics using the `addDimension` method.
+You can create metrics using the `addMetric` method. Metrics are automatically associated with your configured namespace and dimensions.
 
 ```
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
@@ -3103,6 +3094,37 @@ export const handler = async (
 };
 
 ```
+
+```
+{
+  "_aws": {
+    "Timestamp": 1763409658885,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders",
+  "successfulBooking": 1
+}
+
+```
+
+### Adding dimensions
+
+By default, Powertools adds a `service` dimension in a [DimensionSet](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format_Specification.html). You can append additional dimensions for all your aggregate metrics using the `addDimension` method.
+
+Note
+
+The `addDimension` method appends the dimension to the first `DimensionSet` in the `DimensionSet` array. To create a new `DimensionSet`, use the `addDimensions` method.
 
 ```
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
@@ -3123,11 +3145,35 @@ export const handler = async (
 
 ```
 
-### Creating dimension sets
+```
+{
+  "_aws": {
+    "Timestamp": 1763409658885,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [["service", "environment"]],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders",
+  "environment": "prod",
+  "successfulBooking": 1
+}
 
-You can create separate dimension sets for your metrics using the `addDimensions` method. This allows you to group metrics by different dimension combinations.
+```
 
-When you call `addDimensions()`, it creates a new dimension set rather than adding to the existing dimensions. This is useful when you want to track the same metric across different dimension combinations.
+### Creating a `DimensionSet`
+
+You can create a separate `DimensionSet` for your metrics using the `addDimensions` method. This allows you to group metrics by different dimension combinations.
+
+When you call `addDimensions()`, it creates a new `DimensionSet` rather than adding to the first set. This is useful when you want to track the same metric across different dimension combinations.
 
 ```
 import { Metrics, MetricUnit } from '@aws-lambda-powertools/metrics';
@@ -3160,6 +3206,38 @@ export const handler = async (
   metrics.addMetric('successfulBooking', MetricUnit.Count, 1);
   metrics.publishStoredMetrics();
 };
+
+```
+
+```
+{
+  "_aws": {
+    "Timestamp": 1763409658885,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [
+          ["service", "environment"],
+          ["dimension1", "dimension2"],
+          ["region", "category"]
+        ],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders",
+  "environment": "prod",
+  "dimension1": "1",
+  "dimension2": "2",
+  "region": "us-east-1",
+  "category": "books",
+  "successfulBooking": 1
+}
 
 ```
 
@@ -3238,30 +3316,23 @@ export const handler = async (
 
 ```
 {
-    "performedActionA": [
-        2,
-        1
-    ],
-    "_aws": {
-        "Timestamp": 1592234975665,
-        "CloudWatchMetrics": [
-            {
-            "Namespace": "serverlessAirline",
-            "Dimensions": [
-                [
-                "service"
-                ]
-            ],
-            "Metrics": [
-                {
-                "Name": "performedActionA",
-                "Unit": "Count"
-                }
-            ]
-            }
+  "performedActionA": [2, 1],
+  "_aws": {
+    "Timestamp": 1592234975665,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Name": "performedActionA",
+            "Unit": "Count"
+          }
         ]
-    },
-    "service": "orders"
+      }
+    ]
+  },
+  "service": "orders"
 }
 
 ```
@@ -3438,21 +3509,23 @@ export const handler = middy(lambdaHandler).use(logMetrics(metrics));
 
 ```
 {
-    "successfulBooking": 1.0,
-    "_aws": {
-        "Timestamp": 1592234975665,
-        "CloudWatchMetrics": [{
-            "Namespace": "serverlessAirline",
-            "Dimensions": [
-                [ "service" ]
-            ],
-            "Metrics": [{
-                "Name": "successfulBooking",
-                "Unit": "Count"
-            }]
-        }]
-    },
-    "service": "orders"
+  "successfulBooking": 1.0,
+  "_aws": {
+    "Timestamp": 1592234975665,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders"
 }
 
 ```
@@ -3494,21 +3567,23 @@ export const handler = handlerClass.handler.bind(handlerClass); // (1)
 
 ```
 {
-    "successfulBooking": 1.0,
-    "_aws": {
-        "Timestamp": 1592234975665,
-        "CloudWatchMetrics": [{
-            "Namespace": "successfulBooking",
-            "Dimensions": [
-                [ "service" ]
-            ],
-            "Metrics": [{
-                "Name": "successfulBooking",
-                "Unit": "Count"
-            }]
-        }]
-    },
-    "service": "orders"
+  "successfulBooking": 1.0,
+  "_aws": {
+    "Timestamp": 1592234975665,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "successfulBooking",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders"
 }
 
 ```
@@ -3541,21 +3616,23 @@ export const handler = async (
 
 ```
 {
-    "successfulBooking": 1.0,
-    "_aws": {
-        "Timestamp": 1592234975665,
-        "CloudWatchMetrics": [{
-            "Namespace": "successfulBooking",
-            "Dimensions": [
-                [ "service" ]
-            ],
-            "Metrics": [{
-                "Name": "successfulBooking",
-                "Unit": "Count"
-            }]
-        }]
-    },
-    "service": "orders"
+  "successfulBooking": 1.0,
+  "_aws": {
+    "Timestamp": 1592234975665,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "successfulBooking",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Name": "successfulBooking",
+            "Unit": "Count"
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders"
 }
 
 ```
@@ -3728,28 +3805,30 @@ export const handler = middy(lambdaHandler).use(logMetrics(metrics));
 
 ```
 {
-    "successfulBooking": 1.0,
-    "_aws": {
-        "Timestamp": 1592234975665,
-        "CloudWatchMetrics": [{
-            "Namespace": "serverlessAirline",
-            "Dimensions": [
-                [ "service" ]
-            ],
-            "Metrics": [{
-                "Namespace": "exampleApplication",
-                "Dimensions": [
-                    [ "service" ]
-                ],
-                "Metrics": [{
-                    "Name": "successfulBooking",
-                    "Unit": "Count"
-                }]
-            }]
-        }]
-    },
-    "service": "orders",
-    "bookingId": "7051cd10-6283-11ec-90d6-0242ac120003"
+  "successfulBooking": 1.0,
+  "_aws": {
+    "Timestamp": 1592234975665,
+    "CloudWatchMetrics": [
+      {
+        "Namespace": "serverlessAirline",
+        "Dimensions": [["service"]],
+        "Metrics": [
+          {
+            "Namespace": "exampleApplication",
+            "Dimensions": [["service"]],
+            "Metrics": [
+              {
+                "Name": "successfulBooking",
+                "Unit": "Count"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "service": "orders",
+  "bookingId": "7051cd10-6283-11ec-90d6-0242ac120003"
 }
 
 ```
@@ -3835,15 +3914,11 @@ describe('Metrics tests', () => {
 
 ```
 
-Feature status
-
-This feature is under active development and may undergo significant changes. We recommend using it in non-critical workloads and [providing feedback](https://github.com/aws-powertools/powertools-lambda-typescript/issues/new/choose) to help us improve it.
-
-Event handler for Amazon API Gateway REST .
+Event handler for Amazon API Gateway REST and HTTP APIs, Application Loader Balancer (ALB), and Lambda Function URLs.
 
 ## Key Features
 
-- Lightweight routing to reduce boilerplate for API Gateway REST (HTTP API, ALB and Lambda Function URLs coming soon)
+- Lightweight routing to reduce boilerplate for API Gateway REST/HTTP API, ALB and Lambda Function URLs.
 - Built-in middleware engine for request/response transformation (validation coming soon).
 - Works with micro function (one or a few routes) and monolithic functions (see [Considerations](#considerations)).
 
@@ -3858,16 +3933,25 @@ npm install @aws-lambda-powertools/event-handler
 
 ### Required resources
 
-If you're using any API Gateway integration, you must have an existing [API Gateway Proxy integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html) configured to invoke your Lambda function.
+The event handler works with different types of events. It can process events from API Gateway REST APIs, HTTP APIs, ALB, Lambda Function URLs, and will soon support VPC Lattice as well.
 
-This is the sample infrastructure for API Gateway we are using for the examples in this documentation. There is no additional permissions or dependencies required to use this utility.
+You must have an existing integration configured to invoke your Lambda function depending on what you are using:
+
+| Integration               | Documentation                                                                                                               |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| API Gateway REST API      | [Proxy integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html)     |
+| API Gateway HTTP API      | [Proxy integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html) |
+| Application Load Balancer | [ALB configuration](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html)              |
+| Lambda Function URL       | [Function URL configuration](https://docs.aws.amazon.com/lambda/latest/dg/urls-configuration.html)                          |
+
+This is the sample infrastructure for the different integrations we are using for the examples in this documentation. There is no additional permissions or dependencies required to use this utility.
 
 See Infrastructure as Code (IaC) examples
 
 ```
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: Hello world event handler API Gateway
+Description: Hello world event handler API Gateway REST API
 
 Globals:
   Api:
@@ -3886,7 +3970,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Tracing: Active
     Environment:
       Variables:
@@ -3921,11 +4005,97 @@ Resources:
 
 ```
 
+```
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Hello world event handler API Gateway HTTP API
+
+Globals:
+  HttpApi:
+    CorsConfiguration:
+      AllowOrigins:
+        - https://example.com
+      AllowHeaders:
+        - Content-Type
+        - Authorization
+        - X-Amz-Date
+      MaxAge: 300
+
+  Function:
+    Timeout: 5
+    MemorySize: 256
+    Runtime: nodejs22.x
+    Tracing: Active
+    Environment:
+      Variables:
+        POWERTOOLS_LOG_LEVEL: INFO
+        POWERTOOLS_SERVICE_NAME: hello
+
+Resources:
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      CodeUri: hello_world
+      Description: API handler function
+      Events:
+        AnyApiEvent:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+        GetAllTodos:
+           Type: HttpApi
+           Properties:
+             Path: /todos
+             Method: GET
+        GetTodoById:
+           Type: HttpApi
+           Properties:
+             Path: /todos/{todo_id}
+             Method: GET
+
+```
+
+```
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Hello world event handler Lambda Function URL
+
+Globals:
+  Function:
+    Timeout: 5
+    MemorySize: 256
+    Runtime: nodejs24.x
+    Tracing: Active
+    Environment:
+      Variables:
+        POWERTOOLS_LOG_LEVEL: INFO
+        POWERTOOLS_SERVICE_NAME: hello
+    FunctionUrlConfig:
+      Cors: # see CORS section
+        # Notice that values here are Lists of Strings, vs comma-separated values on API Gateway
+        AllowOrigins: ["https://example.com"]
+        AllowHeaders: ["Content-Type", "Authorization", "X-Amz-Date"]
+        MaxAge: 300
+
+Resources:
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      CodeUri: hello_world
+      Description: API handler function
+      FunctionUrlConfig:
+        AuthType: NONE # AWS_IAM for added security beyond sample documentation
+
+```
+
 ### Route events
 
-Before you start defining your routes, it's important to understand how the event handler works with different types of events. The event handler can process events from API Gateway REST APIs, and will soon support HTTP APIs, ALB, Lambda Function URLs, and VPC Lattice as well.
+When a request is received, the event handler automatically detects the event type and converts it into a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.
 
-When a request is received, the event handler will automatically convert the event into a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object and give you access to the current request context, including headers, query parameters, and request body, as well as path parameters via typed arguments.
+You get access to headers, query parameters, request body, and path parameters via typed arguments. The response type is determined automatically based on the event.
 
 #### Response auto-serialization
 
@@ -3939,7 +4109,7 @@ For your convenience, when you return a JavaScript object from your route handle
 - Set the HTTP status code to 200 (OK)
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -3967,6 +4137,10 @@ export const handler = async (event: unknown, context: Context) =>
 
 ```
 
+Automatic response format transformation
+
+The event handler automatically ensures the correct response format is returned based on the event type received. For example, if your handler returns an API Gateway v1 proxy response but processes an ALB event, we'll automatically transform it into an ALB-compatible response. This allows you to swap integrations with little to no code changes.
+
 ### Dynamic routes
 
 You can use `/todos/:todoId` to configure dynamic URL paths, where `:todoId` will be resolved at runtime.
@@ -3974,7 +4148,7 @@ You can use `/todos/:todoId` to configure dynamic URL paths, where `:todoId` wil
 All dynamic route parameters will be available as typed object properties in the first argument of your route handler.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import { Logger } from '@aws-lambda-powertools/logger';
 import {
   correlationPaths,
@@ -4012,12 +4186,62 @@ export const handler = async (event: unknown, context: Context) => {
 
 You can also nest dynamic paths, for example `/todos/:todoId/comments/:commentId`, where both `:todoId` and `:commentId` will be resolved at runtime.
 
+#### Catch-all routes
+
+For scenarios where you need to handle arbitrary or deeply nested paths, you can use regex patterns directly in your route definitions. These are particularly useful for proxy routes or when dealing with file paths.
+
+**We recommend** having explicit routes whenever possible; use catch-all routes sparingly.
+
+##### Using Regex Patterns
+
+You can use standard [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) in your route definitions, for example:
+
+| Pattern   | Description                              | Examples                                                    |
+| --------- | ---------------------------------------- | ----------------------------------------------------------- |
+| `/.+/`    | Matches one or more characters (greedy)  | `/\/proxy\/.+/` matches `/proxy/any/deep/path`              |
+| `/.*/`    | Matches zero or more characters (greedy) | `/\/files\/.*/` matches `/files/` and `/files/deep/path`    |
+| `/[^/]+/` | Matches one or more non-slash characters | `/\/api\/[^\/]+/` matches `/api/v1` but not `/api/v1/users` |
+| `/\w+/`   | Matches one or more word characters      | `/\/users\/\w+/` matches `/users/john123`                   |
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import type { APIGatewayProxyEvent, Context } from 'aws-lambda';
+
+const app = new Router();
+
+// File path proxy
+app.get(/\/files\/.+/, () => 'Catch any GET method under /files');
+
+// API versioning with any format
+app.get(/\/api\/v\d+\/.*/, () => 'Catch any GET method under /api/vX');
+
+// Mixed: dynamic parameter + regex catch-all
+app.get(/\/users\/:userId\/files\/.+/, (reqCtx) => {
+  return {
+    userId: reqCtx.params.userId,
+  };
+});
+
+// Catch all route
+app.get(/.+/, () => 'Catch any GET method');
+
+export const handler = async (event: APIGatewayProxyEvent, context: Context) =>
+  app.resolve(event, context);
+
+```
+
+Route Matching Priority
+
+- For non-regex routes, routes are matched in **order of specificity**, not registration order
+- More specific routes (exact matches) take precedence over regex patterns
+- Among regex routes, registration order determines matching precedence, therefore, always place catch-all routes `/.*/` last
+
 ### HTTP Methods
 
 You can use dedicated methods to specify the HTTP method that should be handled in each resolver. That is, `app.<httpMethod>()`, where the HTTP method could be `delete`, `get`, `head`, `patch`, `post`, `put`, `options`.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import { Logger } from '@aws-lambda-powertools/logger';
 import {
   correlationPaths,
@@ -4059,7 +4283,7 @@ export const handler = async (event: unknown, context: Context) => {
 If you need to accept multiple HTTP methods in a single function, or support an HTTP method for which no dedicated method exists (i.e. [`TRACE`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/TRACE)), you can use the `route()` method and pass a list of HTTP methods.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import { Logger } from '@aws-lambda-powertools/logger';
 import {
   correlationPaths,
@@ -4110,40 +4334,6 @@ Please [check this issue](https://github.com/aws-powertools/powertools-lambda-ty
 
 You can access request details such as headers, query parameters, and body using the `Request` object provided to your route handlers and middleware functions via `reqCtx.req`.
 
-### Handling not found routes
-
-By default, we return a `404 Not Found` response for any unmatched routes.
-
-You can use the `notFound()` method as a higher-order function or class method decorator to override this behavior, and return a custom response.
-
-```
-import {
-  HttpStatusCodes,
-  Router,
-} from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { Logger } from '@aws-lambda-powertools/logger';
-import type { Context } from 'aws-lambda/handler';
-
-const logger = new Logger();
-const app = new Router({ logger });
-
-app.notFound(async (error, reqCtx) => {
-  logger.error('Unable to get todo', { error });
-
-  return {
-    statusCode: HttpStatusCodes.IM_A_TEAPOT,
-    body: "I'm a teapot!",
-    headers: {
-      'x-correlation-id': reqCtx.req.headers.get('x-correlation-id'),
-    },
-  };
-});
-
-export const handler = async (event: unknown, context: Context) =>
-  app.resolve(event, context);
-
-```
-
 ### Error handling
 
 You can use the `errorHandler()` method as a higher-order function or class method decorator to define a custom error handler for errors thrown in your route handlers or middleware.
@@ -4158,7 +4348,7 @@ You can also pass a list of error classes to the `errorHandler()` method.
 import {
   HttpStatusCodes,
   Router,
-} from '@aws-lambda-powertools/event-handler/experimental-rest';
+} from '@aws-lambda-powertools/event-handler/http';
 import { Logger } from '@aws-lambda-powertools/logger';
 import type { Context } from 'aws-lambda/handler';
 
@@ -4184,6 +4374,50 @@ export const handler = async (event: unknown, context: Context) =>
 
 ```
 
+### Built-in Error Handlers
+
+We provide built-in error handlers for common routing errors so you don't have to specify the Error type explicitly.
+
+You can use the `notFound()` and `methodNotAllowed()` methods as higher-order functions or class method decorators to customize error responses for unmatched routes and unsupported HTTP methods.
+
+By default, we return a `404 Not Found` response for unmatched routes.
+
+```
+import {
+  HttpStatusCodes,
+  Router,
+} from '@aws-lambda-powertools/event-handler/http';
+import { Logger } from '@aws-lambda-powertools/logger';
+import type { Context } from 'aws-lambda/handler';
+
+const logger = new Logger();
+const app = new Router({ logger });
+
+app.notFound(async (error, reqCtx) => {
+  logger.error('Unable to get todo', { error });
+
+  return {
+    statusCode: HttpStatusCodes.IM_A_TEAPOT,
+    body: "I'm a teapot!",
+    headers: {
+      'x-correlation-id': reqCtx.req.headers.get('x-correlation-id'),
+    },
+  };
+});
+
+app.methodNotAllowed(async (error) => {
+  logger.error('Method not allowed', { error });
+
+  return {
+    body: 'This method is not allowed',
+  };
+});
+
+export const handler = async (event: unknown, context: Context) =>
+  app.resolve(event, context);
+
+```
+
 ### Throwing HTTP errors
 
 You can throw HTTP errors in your route handlers to stop execution and return specific HTTP status codes and messages. Event Handler provides a set of built-in HTTP error classes that you can use to throw common HTTP errors.
@@ -4198,7 +4432,7 @@ You can throw HTTP errors in your route handlers, middleware, or custom error ha
 import {
   Router,
   UnauthorizedError,
-} from '@aws-lambda-powertools/event-handler/experimental-rest';
+} from '@aws-lambda-powertools/event-handler/http';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -4250,7 +4484,7 @@ For example, if you have a custom domain `api.example.com` and you want to map i
 To avoid repeating the prefix in each route definition, you can use the `prefix` constructor parameter when creating a new `Router` instance, and we'll automatically strip it from the request path before matching routes. After mapping a path prefix, the new root path will automatically be mapped to the path argument of `/`.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Context } from 'aws-lambda';
 
 const app = new Router({ prefix: '/todos' });
@@ -4314,7 +4548,7 @@ sequenceDiagram
 You can use `app.use()` to register middleware that should always run regardless of the route and you can apply middleware to specific routes by passing them as arguments before the route handler.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Middleware } from '@aws-lambda-powertools/event-handler/types';
 import { Logger } from '@aws-lambda-powertools/logger';
 import type { Context } from 'aws-lambda';
@@ -4399,7 +4633,7 @@ sequenceDiagram
 ```
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Middleware } from '@aws-lambda-powertools/event-handler/types';
 import { Logger } from '@aws-lambda-powertools/logger';
 import type { Context } from 'aws-lambda';
@@ -4548,7 +4782,7 @@ import { getStringFromEnv } from '@aws-lambda-powertools/commons/utils/env';
 import {
   Router,
   UnauthorizedError,
-} from '@aws-lambda-powertools/event-handler/experimental-rest';
+} from '@aws-lambda-powertools/event-handler/http';
 import type { Middleware } from '@aws-lambda-powertools/event-handler/types';
 import { Logger } from '@aws-lambda-powertools/logger';
 import type { Context } from 'aws-lambda';
@@ -4644,8 +4878,8 @@ During the middleware execution chain, the response object (`reqCtx.res`) can be
 You can create reusable middleware stacks by using the `composeMiddleware` function to combine multiple middleware into a single middleware function. This is useful for creating standardized middleware combinations that can be shared across different routes or applications.
 
 ```
-import { composeMiddleware } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { cors } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { composeMiddleware } from '@aws-lambda-powertools/event-handler/http';
+import { cors } from '@aws-lambda-powertools/event-handler/http/middleware';
 import type { Middleware } from '@aws-lambda-powertools/event-handler/types';
 import { Logger } from '@aws-lambda-powertools/logger';
 
@@ -4671,7 +4905,7 @@ export { apiMiddleware };
 ```
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Context } from 'aws-lambda';
 import { apiMiddleware } from './advanced_mw_compose_middleware_shared.js';
 
@@ -4717,7 +4951,7 @@ Keep the following in mind when authoring middleware for Event Handler:
 You can use the Web API's `Response` object to have full control over the response. For example, you might want to add additional headers, cookies, or set a custom content type.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import { Logger } from '@aws-lambda-powertools/logger';
 import type { Context } from 'aws-lambda';
 
@@ -4775,8 +5009,8 @@ You can configure CORS (Cross-Origin Resource Sharing) by using the `cors` middl
 This will ensure that CORS headers are returned as part of the response when your functions match the path invoked and the Origin matches one of the allowed values.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { cors } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import { cors } from '@aws-lambda-powertools/event-handler/http/middleware';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -4846,19 +5080,18 @@ Always set the `origin` option to a specific domain or list of domains in produc
 | Key             | Default Value                                                                | Description                                                                                                                                              |
 | --------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `origin`        | `*`                                                                          | Specifies the allowed origin(s) that can access the resource. Use `*` to allow all origins.                                                              |
-| `methods`       | `GET,HEAD,PUT,PATCH,POST,DELETE`                                             | Specifies the allowed HTTP methods.                                                                                                                      |
+| `methods`       | `['DELETE', 'GET', 'HEAD', 'PATCH', 'POST', 'PUT']`                          | Specifies the allowed HTTP methods.                                                                                                                      |
 | `allowHeaders`  | `[Authorization, Content-Type, X-Amz-Date, X-Api-Key, X-Amz-Security-Token]` | Specifies the allowed headers that can be used in the actual request.                                                                                    |
 | `exposeHeaders` | `[]`                                                                         | Any additional header beyond the [safe listed by CORS specification](https://developer.mozilla.org/en-US/docs/Glossary/CORS-safelisted_response_header). |
 | `credentials`   | `false`                                                                      | Only necessary when you need to expose cookies, authorization headers or TLS client certificates.                                                        |
-| `maxAge`        | `0`                                                                          | Indicates how long the results of a preflight request can be cached. Value is in seconds.                                                                |
 
 #### Per-route overrides
 
 You can override the global CORS settings on a per-route basis by passing options to the `cors` middleware when applying it to a specific route.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { cors } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import { cors } from '@aws-lambda-powertools/event-handler/http/middleware';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -4902,8 +5135,8 @@ export const handler = async (event: unknown, context: Context) =>
 You can enable response compression by using the `compress` middleware. This will automatically compress responses using gzip and base64 encode them when the client indicates support via the `Accept-Encoding` header.
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { compress } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import { compress } from '@aws-lambda-powertools/event-handler/http/middleware';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -4947,21 +5180,109 @@ export const handler = async (event: unknown, context: Context) =>
 
 ### Binary responses
 
-Coming soon
+If you need to return binary data, there are several ways you can do so based on how much control you require.
+
+#### Auto serialization
 
 As described in the [response auto serialization](#response-auto-serialization) section, when you return a JavaScript object from your route handler, we automatically serialize it to JSON and set the `Content-Type` header to `application/json`.
 
-If you need to return binary data (e.g. images, PDFs, etc), you will need to return an API Gateway Proxy result directly, setting the `isBase64Encoded` flag to `true` and base64 encoding the binary data, as well as setting the appropriate `Content-Type` header.
+A similar pattern applies to binary data where you can return an `ArrayBuffer`, a [Nodejs stream](https://nodejs.org/api/stream.html), or a [Web stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API#browser_compatibility) directly from your handler. We will automatically serialize the response by setting the `isBase64Encoded` flag to `true` and `base64` encoding the binary data.
+
+Content types
+
+The default header will be set to `application/json`. If you wish to change this, e.g., in the case of images, PDFs, videos, etc, then you should use the `reqCtx.res.headers` object to set the appropriate header.
 
 ```
-import { readFile } from 'node:fs/promises';
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { compress } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { createReadStream } from 'node:fs';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
 
-app.get('/logo', [compress()], async () => {
+app.get('/logo', async (reqCtx) => {
+  reqCtx.res.headers.set('Content-Type', 'image/png');
+  return createReadStream(`${process.env.LAMBDA_TASK_ROOT}/logo.png`);
+});
+
+export const handler = async (event: unknown, context: Context) =>
+  app.resolve(event, context);
+
+```
+
+```
+{
+  "resource": "/logo",
+  "path": "/logo",
+  "httpMethod": "GET"
+}
+
+```
+
+```
+{
+  "body": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjU2cHgiIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KICAgIDx0aXRsZT5BV1MgTGFtYmRhPC90aXRsZT4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCB4MT0iMCUiIHkxPSIxMDAlIiB4Mj0iMTAwJSIgeTI9IjAlIiBpZD0ibGluZWFyR3JhZGllbnQtMSI+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNDODUxMUIiIG9mZnNldD0iMCUiPjwvc3RvcD4KICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOTkwMCIgb2Zmc2V0PSIxMDAlIj48L3N0b3A+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnPgogICAgICAgIDxyZWN0IGZpbGw9InVybCgjbGluZWFyR3JhZGllbnQtMSkiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij48L3JlY3Q+CiAgICAgICAgPHBhdGggZD0iTTg5LjYyNDExMjYsMjExLjIgTDQ5Ljg5MDMyNzcsMjExLjIgTDkzLjgzNTQ4MzIsMTE5LjM0NzIgTDExMy43NDcyOCwxNjAuMzM5MiBMODkuNjI0MTEyNiwyMTEuMiBaIE05Ni43MDI5MzU3LDExMC41Njk2IEM5Ni4xNjQwODU4LDEwOS40NjU2IDk1LjA0MTQ4MTMsMTA4Ljc2NDggOTMuODE2MjM4NCwxMDguNzY0OCBMOTMuODA2NjE2MywxMDguNzY0OCBDOTIuNTcxNzUxNCwxMDguNzY4IDkxLjQ0OTE0NjYsMTA5LjQ3NTIgOTAuOTE5OTE4NywxMTAuNTg1NiBMNDEuOTEzNDIwOCwyMTMuMDIwOCBDNDEuNDM4NzE5NywyMTQuMDEyOCA0MS41MDYwNzU4LDIxNS4xNzc2IDQyLjA5NjI0NTEsMjE2LjEwODggQzQyLjY3OTk5OTQsMjE3LjAzNjggNDMuNzA2MzgwNSwyMTcuNiA0NC44MDY1MzMxLDIxNy42IEw5MS42NTQ0MjMsMjE3LjYgQzkyLjg5NTcwMjcsMjE3LjYgOTQuMDIxNTE0OSwyMTYuODg2NCA5NC41NTM5NTAxLDIxNS43Njk2IEwxMjAuMjAzODU5LDE2MS42ODk2IEMxMjAuNjE3NjE5LDE2MC44MTI4IDEyMC42MTQ0MTIsMTU5Ljc5ODQgMTIwLjE4NzgyMiwxNTguOTI4IEw5Ni43MDI5MzU3LDExMC41Njk2IFogTTIwNy45ODUxMTcsMjExLjIgTDE2OC41MDc5MjgsMjExLjIgTDEwNS4xNzM3ODksNzguNjI0IEMxMDQuNjQ0NTYxLDc3LjUxMDQgMTAzLjUxNTU0MSw3Ni44IDEwMi4yNzc0NjksNzYuOCBMNzYuNDQ3OTQzLDc2LjggTDc2LjQ3NjgwOTksNDQuOCBMMTI3LjEwMzA2Niw0NC44IEwxOTAuMTQ1MzI4LDE3Ny4zNzI4IEMxOTAuNjc0NTU2LDE3OC40ODY0IDE5MS44MDM1NzUsMTc5LjIgMTkzLjA0MTY0NywxNzkuMiBMMjA3Ljk4NTExNywxNzkuMiBMMjA3Ljk4NTExNywyMTEuMiBaIE0yMTEuMTkyNTU4LDE3Mi44IEwxOTUuMDcxOTU4LDE3Mi44IEwxMzIuMDI5Njk2LDQwLjIyNzIgQzEzMS41MDA0NjgsMzkuMTEzNiAxMzAuMzcxNDQ5LDM4LjQgMTI5LjEzMDE2OSwzOC40IEw3My4yNzI1NzYsMzguNCBDNzEuNTA1Mjc1OCwzOC40IDcwLjA2ODM0MjEsMzkuODMwNCA3MC4wNjUxMzQ0LDQxLjU5NjggTDcwLjAyOTg1MjgsNzkuOTk2OCBDNzAuMDI5ODUyOCw4MC44NDggNzAuMzYzNDI2Niw4MS42NjA4IDcwLjk2OTYzMyw4Mi4yNjI0IEM3MS41Njk0MjQ2LDgyLjg2NCA3Mi4zODQxMTQ2LDgzLjIgNzMuMjM3Mjk0MSw4My4yIEwxMDAuMjUzNTczLDgzLjIgTDE2My41OTA5MiwyMTUuNzc2IEMxNjQuMTIzMzU1LDIxNi44ODk2IDE2NS4yNDU5NiwyMTcuNiAxNjYuNDg0MDMyLDIxNy42IEwyMTEuMTkyNTU4LDIxNy42IEMyMTIuOTY2Mjc0LDIxNy42IDIxNC40LDIxNi4xNjY0IDIxNC40LDIxNC40IEwyMTQuNCwxNzYgQzIxNC40LDE3NC4yMzM2IDIxMi45NjYyNzQsMTcyLjggMjExLjE5MjU1OCwxNzIuOCBMMjExLjE5MjU1OCwxNzIuOCBaIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==",
+  "headers": {
+    "Content-Type": "image/png"
+  },
+  "isBase64Encoded": true,
+  "statusCode": 200
+}
+
+```
+
+#### Set `isBase64Encoded` parameter
+
+You can indicate that you wish to `base64` encode any response, regardless of type, by setting the `isBase64Encoded` field in `reqCtx` to `true`.
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import type { Context } from 'aws-lambda';
+
+const app = new Router();
+
+app.get('/json64', async (reqCtx) => {
+  reqCtx.isBase64Encoded = true;
+  return { message: 'Hello World!' };
+});
+
+export const handler = async (event: unknown, context: Context) =>
+  app.resolve(event, context);
+
+```
+
+```
+{
+  "resource": "/json64",
+  "path": "/json64",
+  "httpMethod": "GET"
+}
+
+```
+
+```
+{
+  "body": "eyJtZXNzYWdlIjoiSGVsbG8gV29ybGQifQ==",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "isBase64Encoded": true,
+  "statusCode": 200
+}
+
+```
+
+#### Manual serialization
+
+For complete control you can return an `APIGatewayProxyEvent` (`v1` or `v2`) and this will be handled transparently by the resolver.
+
+```
+import { readFile } from 'node:fs/promises';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import type { Context } from 'aws-lambda';
+
+const app = new Router();
+
+app.get('/logo', async () => {
   const logoFile = await readFile(`${process.env.LAMBDA_TASK_ROOT}/logo.png`);
   return {
     body: logoFile.toString('base64'),
@@ -4980,10 +5301,6 @@ export const handler = async (event: unknown, context: Context) =>
 
 ```
 {
-  "headers": {
-    "Accept": "image/png",
-    "Accept-Encoding": "gzip"
-  },
   "resource": "/logo",
   "path": "/logo",
   "httpMethod": "GET"
@@ -4994,9 +5311,8 @@ export const handler = async (event: unknown, context: Context) =>
 ```
 {
   "body": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjU2cHgiIGhlaWdodD0iMjU2cHgiIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4KICAgIDx0aXRsZT5BV1MgTGFtYmRhPC90aXRsZT4KICAgIDxkZWZzPgogICAgICAgIDxsaW5lYXJHcmFkaWVudCB4MT0iMCUiIHkxPSIxMDAlIiB4Mj0iMTAwJSIgeTI9IjAlIiBpZD0ibGluZWFyR3JhZGllbnQtMSI+CiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNDODUxMUIiIG9mZnNldD0iMCUiPjwvc3RvcD4KICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0ZGOTkwMCIgb2Zmc2V0PSIxMDAlIj48L3N0b3A+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnPgogICAgICAgIDxyZWN0IGZpbGw9InVybCgjbGluZWFyR3JhZGllbnQtMSkiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij48L3JlY3Q+CiAgICAgICAgPHBhdGggZD0iTTg5LjYyNDExMjYsMjExLjIgTDQ5Ljg5MDMyNzcsMjExLjIgTDkzLjgzNTQ4MzIsMTE5LjM0NzIgTDExMy43NDcyOCwxNjAuMzM5MiBMODkuNjI0MTEyNiwyMTEuMiBaIE05Ni43MDI5MzU3LDExMC41Njk2IEM5Ni4xNjQwODU4LDEwOS40NjU2IDk1LjA0MTQ4MTMsMTA4Ljc2NDggOTMuODE2MjM4NCwxMDguNzY0OCBMOTMuODA2NjE2MywxMDguNzY0OCBDOTIuNTcxNzUxNCwxMDguNzY4IDkxLjQ0OTE0NjYsMTA5LjQ3NTIgOTAuOTE5OTE4NywxMTAuNTg1NiBMNDEuOTEzNDIwOCwyMTMuMDIwOCBDNDEuNDM4NzE5NywyMTQuMDEyOCA0MS41MDYwNzU4LDIxNS4xNzc2IDQyLjA5NjI0NTEsMjE2LjEwODggQzQyLjY3OTk5OTQsMjE3LjAzNjggNDMuNzA2MzgwNSwyMTcuNiA0NC44MDY1MzMxLDIxNy42IEw5MS42NTQ0MjMsMjE3LjYgQzkyLjg5NTcwMjcsMjE3LjYgOTQuMDIxNTE0OSwyMTYuODg2NCA5NC41NTM5NTAxLDIxNS43Njk2IEwxMjAuMjAzODU5LDE2MS42ODk2IEMxMjAuNjE3NjE5LDE2MC44MTI4IDEyMC42MTQ0MTIsMTU5Ljc5ODQgMTIwLjE4NzgyMiwxNTguOTI4IEw5Ni43MDI5MzU3LDExMC41Njk2IFogTTIwNy45ODUxMTcsMjExLjIgTDE2OC41MDc5MjgsMjExLjIgTDEwNS4xNzM3ODksNzguNjI0IEMxMDQuNjQ0NTYxLDc3LjUxMDQgMTAzLjUxNTU0MSw3Ni44IDEwMi4yNzc0NjksNzYuOCBMNzYuNDQ3OTQzLDc2LjggTDc2LjQ3NjgwOTksNDQuOCBMMTI3LjEwMzA2Niw0NC44IEwxOTAuMTQ1MzI4LDE3Ny4zNzI4IEMxOTAuNjc0NTU2LDE3OC40ODY0IDE5MS44MDM1NzUsMTc5LjIgMTkzLjA0MTY0NywxNzkuMiBMMjA3Ljk4NTExNywxNzkuMiBMMjA3Ljk4NTExNywyMTEuMiBaIE0yMTEuMTkyNTU4LDE3Mi44IEwxOTUuMDcxOTU4LDE3Mi44IEwxMzIuMDI5Njk2LDQwLjIyNzIgQzEzMS41MDA0NjgsMzkuMTEzNiAxMzAuMzcxNDQ5LDM4LjQgMTI5LjEzMDE2OSwzOC40IEw3My4yNzI1NzYsMzguNCBDNzEuNTA1Mjc1OCwzOC40IDcwLjA2ODM0MjEsMzkuODMwNCA3MC4wNjUxMzQ0LDQxLjU5NjggTDcwLjAyOTg1MjgsNzkuOTk2OCBDNzAuMDI5ODUyOCw4MC44NDggNzAuMzYzNDI2Niw4MS42NjA4IDcwLjk2OTYzMyw4Mi4yNjI0IEM3MS41Njk0MjQ2LDgyLjg2NCA3Mi4zODQxMTQ2LDgzLjIgNzMuMjM3Mjk0MSw4My4yIEwxMDAuMjUzNTczLDgzLjIgTDE2My41OTA5MiwyMTUuNzc2IEMxNjQuMTIzMzU1LDIxNi44ODk2IDE2NS4yNDU5NiwyMTcuNiAxNjYuNDg0MDMyLDIxNy42IEwyMTEuMTkyNTU4LDIxNy42IEMyMTIuOTY2Mjc0LDIxNy42IDIxNC40LDIxNi4xNjY0IDIxNC40LDIxNC40IEwyMTQuNCwxNzYgQzIxNC40LDE3NC4yMzM2IDIxMi45NjYyNzQsMTcyLjggMjExLjE5MjU1OCwxNzIuOCBMMjExLjE5MjU1OCwxNzIuOCBaIiBmaWxsPSIjRkZGRkZGIj48L3BhdGg+CiAgICA8L2c+Cjwvc3ZnPg==",
-  "multiValueHeaders": {
-    "Content-Type": ["image/png"],
-    "Content-Encoding": ["gzip"]
+  "headers": {
+    "Content-Type": "image/png"
   },
   "isBase64Encoded": true,
   "statusCode": 200
@@ -5004,17 +5320,47 @@ export const handler = async (event: unknown, context: Context) =>
 
 ```
 
-You can use binary responses together with the [`compress`](#compress) feature, and the client must send the `Accept` header with the correct media type.
+Compression
 
-We plan to add first-class support for binary responses in a future release. Please [check this issue](https://github.com/aws-powertools/powertools-lambda-typescript/issues/4514) for more details and examples, and add ð if you would like us to prioritize it.
+If you wish to use binary responses together with the [`compress`](#compress) feature, the client must send the `Accept` header with the correct media type.
 
 ### Response streaming
 
-Coming soon
+Compatibility
 
-At the moment, Event Handler does not support streaming responses. This means that the entire response must be generated and returned by the route handler before it can be sent to the client.
+Response streaming is only available for [API Gateway REST APIs](https://docs.aws.amazon.com/apigateway/latest/developerguide/response-transfer-mode.html) and [Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/configuration-response-streaming.html).
 
-Please [check this issue](https://github.com/aws-powertools/powertools-lambda-typescript/issues/4476) for more details and add ð if you would like us to prioritize it.
+You can send responses to the client using HTTP streaming by wrapping your router with the `streamify` function to turn all the associated route handlers into stream compatible handlers. This is useful when you need to send large payloads or want to start sending data before the entire response is ready.
+
+In order to gain the most benefit, you should return either a readable [Nodejs stream](https://nodejs.org/api/stream.html#readable-streams), a duplex [Nodejs stream](https://nodejs.org/api/stream.html#class-streamduplex), or a [Web stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) from your handlers. However, you can also return other types and these will also be delivered via HTTP streaming.
+
+```
+import { Router, streamify } from '@aws-lambda-powertools/event-handler/http';
+
+const app = new Router();
+
+app.get('/video-stream', async (reqCtx) => {
+  reqCtx.res.headers.set('content-type', 'video/mp4');
+  return createVideoStream();
+});
+
+app.get('/hello', () => {
+  return { message: 'Hello World' };
+});
+
+export const handler = streamify(app);
+
+```
+
+When to use streaming
+
+Consider response streaming when:
+
+- Returning large payloads (> 6MB)
+- Processing data that can be sent incrementally
+- Reducing time-to-first-byte for long-running operations is a requirement
+
+For most use cases, the standard `resolve` method is sufficient.
 
 ### Debug mode
 
@@ -5072,15 +5418,73 @@ Please [check this issue](https://github.com/aws-powertools/powertools-lambda-ty
 
 ### Split routers
 
-Coming soon
-
 As applications grow and the number of routes a Lambda function handles increases, it becomes natural to either break it into smaller Lambda functions or split routes into separate files to ease maintenance.
 
-Currently, the TypeScript event-handler's Router class doesn't provide a way to compose multiple router instances, forcing developers to define all routes in a single file or manually merge route definitions.
+The `Router` class provide an `includeRouter` method to compose multiple router instances allowing developers to define routes in multiple files and merge route definitions. You will be able to define routes in separate files and import them into a main router file, improving code organization and maintainability.
 
-Once this feature is available, you will be able to define routes in separate files and import them into a main router file, improving code organization and maintainability.
+Merging with Global Middleware
 
-Please [check this issue](https://github.com/aws-powertools/powertools-lambda-typescript/issues/4481) for more details and examples, and add ð if you would like us to prioritize it.
+When merging two `Router` instances together, if you have a global middleware defined in one of your instances, the global middleware gets applied to the all the merged routes.
+
+Let's assume you have `index.ts` as your Lambda function entrypoint and routes in `split_route.ts`. This is how you'd use the `includeRouter` feature.
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+
+const router = new Router();
+router.get('/todos', () => 'Get all todos');
+router.get('/todos/:id', () => 'Get a single todo item');
+
+export { router };
+
+```
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import type { APIGatewayProxyEvent, Context } from 'aws-lambda';
+import { router } from './split_route';
+
+const app = new Router();
+
+// Split Routers
+app.includeRouter(router);
+
+export const handler = async (event: APIGatewayProxyEvent, context: Context) =>
+  app.resolve(event, context);
+
+```
+
+#### Route Prefix
+
+In the previous example, `split_route.ts` routes had a `/todos` prefix. This might grow over time and become repetitive.
+
+When necessary, you can set a prefix when including a `Router` instance. This means you can remove `/todos` prefix altogether.
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+
+const router = new Router();
+router.get('/', () => 'Get all todos');
+router.get('/:id', () => 'Get a single todo item');
+
+export { router };
+
+```
+
+```
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import type { APIGatewayProxyEvent, Context } from 'aws-lambda';
+import { router } from './split_route';
+
+const app = new Router();
+
+// Split Routers
+app.includeRouter(router, { prefix: '/todos' });
+
+export const handler = async (event: APIGatewayProxyEvent, context: Context) =>
+  app.resolve(event, context);
+
+```
 
 ### Considerations
 
@@ -5209,8 +5613,8 @@ export { createTestEvent };
 ```
 
 ```
-import { Router } from '@aws-lambda-powertools/event-handler/experimental-rest';
-import { cors } from '@aws-lambda-powertools/event-handler/experimental-rest/middleware';
+import { Router } from '@aws-lambda-powertools/event-handler/http';
+import { cors } from '@aws-lambda-powertools/event-handler/http/middleware';
 import type { Context } from 'aws-lambda';
 
 const app = new Router();
@@ -5298,7 +5702,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Tracing: Active
     Environment:
       Variables:
@@ -5958,7 +6362,7 @@ You can change this behavior by passing a custom logger instance to the `AppSync
 
 When debug logging is enabled, the resolver will emit logs that show the underlying handler resolution process. This is useful for understanding how your handlers are being resolved and invoked and can help you troubleshoot issues with your event processing.
 
-For example, when using the [Powertools for AWS Lambda logger](../../logger/), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the `AppSyncEventsResolver` constructor to enable debug logging.
+For example, when using the [Powertools for AWS Lambda logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the `AppSyncEventsResolver` constructor to enable debug logging.
 
 ```
 import { AppSyncEventsResolver } from '@aws-lambda-powertools/event-handler/appsync-events';
@@ -6331,7 +6735,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Environment:
       Variables:
         # Powertools for AWS Lambda (TypeScript) env vars: https://docs.aws.amazon.com/powertools/typescript/latest/environment-variables/
@@ -6567,7 +6971,7 @@ export const handler = async (event: unknown, context: Context) =>
 
 #### Using decorators
 
-If you prefer to use the decorator syntax, you can instead use the same methods on a class method to register your handlers. Learn more about how Powertools for TypeScript supports [decorators](../../../getting-started/usage-patterns/).
+If you prefer to use the decorator syntax, you can instead use the same methods on a class method to register your handlers. Learn more about how Powertools for TypeScript supports [decorators](https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/usage-patterns/index.md).
 
 ```
 import type { LambdaInterface } from '@aws-lambda-powertools/commons/types';
@@ -6972,7 +7376,7 @@ You can change this behavior by passing a custom logger instance to the `AppSync
 
 When debug logging is enabled, the resolver will emit logs that show the underlying handler resolution process. This is useful for understanding how your handlers are being resolved and invoked and can help you troubleshoot issues with your event processing.
 
-For example, when using the [Powertools for AWS Lambda logger](../../logger/), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the constructor to enable debug logging.
+For example, when using the [Powertools for AWS Lambda logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the constructor to enable debug logging.
 
 ```
 import { AppSyncGraphQLResolver } from '@aws-lambda-powertools/event-handler/appsync-graphql';
@@ -7166,7 +7570,7 @@ Globals:
   Function:
     Timeout: 30
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
 
 Resources:
   HelloWorldFunction:
@@ -7261,7 +7665,7 @@ export class BedrockAgentsStack extends Stack {
     const fn = new NodejsFunction(this, 'AirlineAgentFunction', {
       functionName: fnName,
       logGroup,
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       entry: './src/index.ts',
       handler: 'handler',
       bundling: {
@@ -7523,7 +7927,7 @@ You can change this behavior by passing a custom logger instance to the `Bedrock
 
 When debug logging is enabled, the resolver will emit logs that show the underlying handler registration and the routing process. This is useful for understanding how the agent resolves the tools and routes the requests.
 
-For example, when using the [Powertools for AWS Lambda logger](../../logger/), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the `BedrockAgentFunctionResolver` constructor to enable debug logging.
+For example, when using the [Powertools for AWS Lambda logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md), you can set the `LOG_LEVEL` to `DEBUG` in your environment variables or at the logger level and pass the logger instance to the `BedrockAgentFunctionResolver` constructor to enable debug logging.
 
 ```
 import { BedrockAgentFunctionResolver } from '@aws-lambda-powertools/event-handler/bedrock-agent';
@@ -8462,7 +8866,7 @@ You can use the `awsSdkV3Client` parameter via any of the available [Provider Cl
 
 When is this useful?
 
-Injecting a custom AWS SDK v3 client allows you to [apply tracing](../tracer/#patching-aws-sdk-clients) or make unit/snapshot testing easier, including SDK customizations.
+Injecting a custom AWS SDK v3 client allows you to [apply tracing](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/#patching-aws-sdk-clients) or make unit/snapshot testing easier, including SDK customizations.
 
 ```
 import { SSMProvider } from '@aws-lambda-powertools/parameters/ssm';
@@ -8895,7 +9299,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Handler: index.js
       Policies:
         - Statement:
@@ -9075,7 +9479,7 @@ export class ValkeyStack extends Stack {
     const valkeyLayer = new LayerVersion(this, 'ValkeyLayer', {
       removalPolicy: RemovalPolicy.DESTROY,
       compatibleArchitectures: [Architecture.ARM_64],
-      compatibleRuntimes: [Runtime.NODEJS_22_X],
+      compatibleRuntimes: [Runtime.NODEJS_22_X, Runtime.NODEJS_24_X],
       code: Code.fromAsset('./lib/layers/valkey-glide'),
     });
 
@@ -9088,7 +9492,7 @@ export class ValkeyStack extends Stack {
     const fn = new NodejsFunction(this, 'MyFunction', {
       functionName: fnName,
       logGroup,
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       architecture: Architecture.ARM_64,
       memorySize: 512,
       timeout: Duration.seconds(30),
@@ -9144,7 +9548,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Handler: index.js
       VpcConfig: # (3)!
         SecurityGroupIds:
@@ -9467,7 +9871,7 @@ Deserializing JSON strings in payloads for increased accuracy.
 
 The payload extracted by the `eventKeyJmesPath` is treated as a string by default. This means there could be differences in whitespace even when the JSON payload itself is identical.
 
-To alter this behaviour, we can use the [JMESPath built-in function `powertools_json()`](../jmespath/#powertools_json-function) to treat the payload as a JSON object rather than a string.
+To alter this behaviour, we can use the [JMESPath built-in function `powertools_json()`](https://docs.aws.amazon.com/powertools/typescript/latest/features/jmespath/#powertools_json-function) to treat the payload as a JSON object rather than a string.
 
 ```
 import { randomUUID } from 'node:crypto';
@@ -10027,17 +10431,7 @@ export const handler = middy(
 
 When using DynamoDB as a persistence layer, you can alter the attribute names by passing these parameters when initializing the persistence layer:
 
-| Parameter                | Required | Default                              | Description                                                                                              |
-| ------------------------ | -------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| **tableName**            |          |                                      | Table name to store state                                                                                |
-| **keyAttr**              |          | `id`                                 | Partition key of the table. Hashed representation of the payload (unless **sort_key_attr** is specified) |
-| **expiryAttr**           |          | `expiration`                         | Unix timestamp of when record expires                                                                    |
-| **inProgressExpiryAttr** |          | `in_progress_expiration`             | Unix timestamp of when record expires while in progress (in case of the invocation times out)            |
-| **statusAttr**           |          | `status`                             | Stores status of the lambda execution during and after invocation                                        |
-| **dataAttr**             |          | `data`                               | Stores results of successfully executed Lambda handlers                                                  |
-| **validationKeyAttr**    |          | `validation`                         | Hashed representation of the parts of the event used for validation                                      |
-| **sortKeyAttr**          |          |                                      | Sort key of the table (if table is configured with a sort key).                                          |
-| **staticPkValue**        |          | `idempotency#{LAMBDA_FUNCTION_NAME}` | Static value to use as the partition key. Only used when **sort_key_attr** is set.                       |
+||Parameter |Required |Default |Description || | ------------------------ | ------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------- | ||**tableName** | | |Table name to store state || ||**keyAttr** | |`id` |Partition key of the table. Hashed representation of the payload (unless **sort_key_attr** is specified) || ||**expiryAttr** | |`expiration` |Unix timestamp of when record expires || ||**inProgressExpiryAttr** | |`in_progress_expiration` |Unix timestamp of when record expires while in progress (in case of the invocation times out) || ||**statusAttr** | |`status` |Stores status of the lambda execution during and after invocation || ||**dataAttr** | |`data` |Stores results of successfully executed Lambda handlers || ||**validationKeyAttr** | |`validation` |Hashed representation of the parts of the event used for validation || ||**sortKeyAttr** | | |Sort key of the table (if table is configured with a sort key). || ||**staticPkValue** | |`idempotency#{LAMBDA_FUNCTION_NAME}` |Static value to use as the partition key. Only used when **sort_key_attr** is set. ||
 
 #### CachePersistenceLayer
 
@@ -10121,14 +10515,7 @@ export const handler = middy(async (_event: unknown, _context: Context) => {
 
 When using Cache as a persistence layer, you can alter the attribute names by passing these parameters when initializing the persistence layer:
 
-| Parameter                | Required | Default                  | Description                                                                                   |
-| ------------------------ | -------- | ------------------------ | --------------------------------------------------------------------------------------------- |
-| **client**               |          |                          | A connected Redis-compatible client instance                                                  |
-| **expiryAttr**           |          | `expiration`             | Unix timestamp of when record expires                                                         |
-| **inProgressExpiryAttr** |          | `in_progress_expiration` | Unix timestamp of when record expires while in progress (in case of the invocation times out) |
-| **statusAttr**           |          | `status`                 | Stores status of the lambda execution during and after invocation                             |
-| **dataAttr**             |          | `data`                   | Stores results of successfully executed Lambda handlers                                       |
-| **validationKeyAttr**    |          | `validation`             | Hashed representation of the parts of the event used for validation                           |
+||Parameter |Required |Default |Description || | ------------------------ | ------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------- | ||**client** | | |A connected Redis-compatible client instance || ||**expiryAttr** | |`expiration` |Unix timestamp of when record expires || ||**inProgressExpiryAttr** | |`in_progress_expiration` |Unix timestamp of when record expires while in progress (in case of the invocation times out) || ||**statusAttr** | |`status` |Stores status of the lambda execution during and after invocation || ||**dataAttr** | |`data` |Stores results of successfully executed Lambda handlers || ||**validationKeyAttr** | |`validation` |Hashed representation of the parts of the event used for validation ||
 
 ```
 import { CachePersistenceLayer } from '@aws-lambda-powertools/idempotency/cache';
@@ -10179,17 +10566,7 @@ export const handler = middy(async (_event: unknown, _context: Context) => {
 
 Idempotent decorator can be further configured with **`IdempotencyConfig`** as seen in the previous examples. These are the available options for further configuration
 
-| Parameter                     | Default     | Description                                                                                                                                                                                                                    |
-| ----------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **eventKeyJmespath**          | `''`        | JMESPath expression to extract the idempotency key from the event record using [built-in functions](../jmespath/#built-in-jmespath-functions)                                                                                  |
-| **payloadValidationJmespath** | `''`        | JMESPath expression to validate that the specified fields haven't changed across requests for the same idempotency key *e.g., payload tampering.*                                                                              |
-| **jmesPathOptions**           | `undefined` | Custom JMESPath functions to use when parsing the JMESPath expressions. See [Custom JMESPath Functions](./#custom-jmespath-functions)                                                                                          |
-| **throwOnNoIdempotencyKey**   | `false`     | Throw an error if no idempotency key was found in the request                                                                                                                                                                  |
-| **expiresAfterSeconds**       | 3600        | The number of seconds to wait before a record is expired, allowing a new transaction with the same idempotency key                                                                                                             |
-| **useLocalCache**             | `false`     | Whether to cache idempotency results in-memory to save on persistence storage latency and costs                                                                                                                                |
-| **localCacheMaxItems**        | 256         | Max number of items to store in local cache                                                                                                                                                                                    |
-| **hashFunction**              | `md5`       | Function to use for calculating hashes, as provided by the [crypto](https://nodejs.org/api/crypto.html#cryptocreatehashalgorithm-options) module in the standard library.                                                      |
-| **responseHook**              | `undefined` | Function to use for processing the stored Idempotent response. This function hook is called when an existing idempotent response is found. See [Manipulating The Idempotent Response](./#manipulating-the-idempotent-response) |
+||Parameter |Default |Description || | ----------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ||**eventKeyJmespath** |`''` |JMESPath expression to extract the idempotency key from the event record using [built-in functions](https://docs.aws.amazon.com/powertools/typescript/latest/features/jmespath/#built-in-jmespath-functions){target="*blank"} || ||**payloadValidationJmespath** |`''` |JMESPath expression to validate that the specified fields haven't changed across requests for the same idempotency key \_e.g., payload tampering.* || ||**jmesPathOptions** |`undefined` |Custom JMESPath functions to use when parsing the JMESPath expressions. See [Custom JMESPath Functions](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/#custom-jmespath-functions) || ||**throwOnNoIdempotencyKey** |`false` |Throw an error if no idempotency key was found in the request || ||**expiresAfterSeconds** |3600 |The number of seconds to wait before a record is expired, allowing a new transaction with the same idempotency key || ||**useLocalCache** |`false` |Whether to cache idempotency results in-memory to save on persistence storage latency and costs || ||**localCacheMaxItems** |256 |Max number of items to store in local cache || ||**hashFunction** |`md5` |Function to use for calculating hashes, as provided by the [crypto](https://nodejs.org/api/crypto.html#cryptocreatehashalgorithm-options) module in the standard library. || ||**responseHook** |`undefined` |Function to use for processing the stored Idempotent response. This function hook is called when an existing idempotent response is found. See [Manipulating The Idempotent Response](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/#manipulating-the-idempotent-response) ||
 
 ### Handling concurrent executions with the same payload
 
@@ -10588,7 +10965,7 @@ export const handler = middy()
 
 ### Batch integration
 
-You can easily integrate with [Batch](../batch/) utility by using idempotency wrapper around your processing function. This ensures that you process each record in an idempotent manner, and guard against a [Lambda timeout](#lambda-timeouts) idempotent situation.
+You can easily integrate with [Batch](https://docs.aws.amazon.com/powertools/typescript/latest/features/batch/index.md) utility by using idempotency wrapper around your processing function. This ensures that you process each record in an idempotent manner, and guard against a [Lambda timeout](#lambda-timeouts) idempotent situation.
 
 Choosing a unique batch record attribute
 
@@ -10780,11 +11157,7 @@ export const handler = middy(
 
 The example function above would cause data to be stored in DynamoDB like this:
 
-| id                           | sort_key                         | expiration | status      | data                                                             |
-| ---------------------------- | -------------------------------- | ---------- | ----------- | ---------------------------------------------------------------- |
-| idempotency#MyLambdaFunction | 1e956ef7da78d0cb890be999aecc0c9e | 1636549553 | COMPLETED   | {"paymentId": "12345, "message": "success", "statusCode": 200}   |
-| idempotency#MyLambdaFunction | 2b2cdb5f86361e97b4383087c1ffdf27 | 1636549571 | COMPLETED   | {"paymentId": "527212", "message": "success", "statusCode": 200} |
-| idempotency#MyLambdaFunction | f091d2527ad1c78f05d54cc3f363be80 | 1636549585 | IN_PROGRESS |                                                                  |
+||id |sort_key |expiration |status |data || | ---------------------------- | -------------------------------- | ---------- | ----------- | ---------------------------------------------------------------- | ||idempotency#MyLambdaFunction |1e956ef7da78d0cb890be999aecc0c9e |1636549553 |COMPLETED |{"paymentId": "12345, "message": "success", "statusCode": 200} || ||idempotency#MyLambdaFunction |2b2cdb5f86361e97b4383087c1ffdf27 |1636549571 |COMPLETED |{"paymentId": "527212", "message": "success", "statusCode": 200} || ||idempotency#MyLambdaFunction |f091d2527ad1c78f05d54cc3f363be80 |1636549585 |IN_PROGRESS | ||
 
 ### Bring your own persistent store
 
@@ -11355,7 +11728,7 @@ This behavior changes when you enable the [ReportBatchItemFailures feature](http
 
 Warning: This utility lowers the chance of processing records more than once; it does not guarantee it
 
-We recommend implementing processing logic in an [idempotent manner](../idempotency/) whenever possible.
+We recommend implementing processing logic in an [idempotent manner](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md) whenever possible.
 
 You can find more details on how Lambda works with either [SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html), [Kinesis](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html), or [DynamoDB](https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html) in the AWS Documentation.
 
@@ -11389,7 +11762,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Tracing: Active
     Environment:
       Variables:
@@ -11436,7 +11809,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Tracing: Active
     Environment:
       Variables:
@@ -11496,7 +11869,7 @@ Globals:
   Function:
     Timeout: 5
     MemorySize: 256
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Tracing: Active
     Environment:
       Variables:
@@ -12124,9 +12497,9 @@ sequenceDiagram
 
 ### Parser integration
 
-The Batch Processing utility integrates with the [Parser utility](../parser/) to automatically validate and parse each batch record before processing. This ensures your record handler receives properly typed and validated data, eliminating the need for manual parsing and validation.
+The Batch Processing utility integrates with the [Parser utility](https://docs.aws.amazon.com/powertools/typescript/latest/features/parser/index.md) to automatically validate and parse each batch record before processing. This ensures your record handler receives properly typed and validated data, eliminating the need for manual parsing and validation.
 
-To enable parser integration, import the `parser` function from `@aws-lambda-powertools/batch/parser` and pass it along with a schema when instantiating the `BatchProcessor`. This requires you to also [install the Parser utility](../parser/#getting-started).
+To enable parser integration, import the `parser` function from `@aws-lambda-powertools/batch/parser` and pass it along with a schema when instantiating the `BatchProcessor`. This requires you to also [install the Parser utility](https://docs.aws.amazon.com/powertools/typescript/latest/features/parser/#getting-started).
 
 ```
 import { parser } from '@aws-lambda-powertools/batch/parser';
@@ -12956,7 +13329,7 @@ npm install @aws-lambda-powertools/jmespath
 
 You might have events that contain encoded JSON payloads as string, base64, or even in compressed format. It is a common use case to decode and extract them partially or fully as part of your Lambda function invocation.
 
-Powertools for AWS Lambda (TypeScript) also have utilities like [idempotency](../idempotency/) where you might need to extract a portion of your data before using them.
+Powertools for AWS Lambda (TypeScript) also have utilities like [idempotency](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md) where you might need to extract a portion of your data before using them.
 
 Terminology
 
@@ -13104,7 +13477,7 @@ Use `powertools_json` function to decode any JSON string anywhere a JMESPath exp
 
 > **Idempotency scenario**
 
-This sample will deserialize the JSON string within the `body` key before [Idempotency](../idempotency/) processes it.
+This sample will deserialize the JSON string within the `body` key before [Idempotency](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md) processes it.
 
 ```
 import { randomUUID } from 'node:crypto';
@@ -14538,7 +14911,35 @@ export { orderSchema, type Order };
 
 ```
 
+## Should I use this or Validation?
+
+One of Powertools for AWS Lambda [tenets](https://docs.aws.amazon.com/powertools/typescript/latest/#tenets) is to be progressive. This means that our utilities are designed to be incrementally adopted by customers at any stage of their serverless journey.
+
+For new projects, especially those using TypeScript, we recommend using the Parser utility. Thanks to its integration with [Zod](http://zod.dev), it provides an expressive and type-safe way to validate and parse payloads.
+
+If instead you are already using JSON Schema, or simply feel more comfortable with it, the [Validation](https://docs.aws.amazon.com/powertools/typescript/latest/features/validation/index.md) utility is a great choice. It provides an opinionated thin layer on top of the popular [ajv](https://ajv.js.org) library, with built-in support for JMESPath and AWS service envelopes.
+
+When it comes to feature set, besides the type-safe parsing, the Parser utility also provides a rich collection of built-in schemas and envelopes for AWS services. The Validation utility, on the other hand, follows a more bring-your-own-schema approach, with built-in support for JMESPath and AWS service envelopes to help you unwrap events before validation.
+
+Additionally, while both utilities serve specific use cases, understanding your project requirements will help you choose the right tool for your validation needs.
+
+Finally, in terms of bundle size, the Validation utility is slightly heavier than the Parser utility primarily due to ajv not providing ESM builds. However, even with this, the Validation utility still clocks in at under ~100KB when minified and bundled.
+
 This utility provides [JSON Schema](https://json-schema.org) validation for events and responses, including JMESPath support to unwrap events before validation.
+
+## Should I use this or Parser?
+
+One of Powertools for AWS Lambda [tenets](https://docs.aws.amazon.com/powertools/typescript/latest/#tenets) is to be progressive. This means that our utilities are designed to be incrementally adopted by customers at any stage of their serverless journey.
+
+For new projects, especially those using TypeScript, we recommend using the [Parser](https://docs.aws.amazon.com/powertools/typescript/latest/features/parser/index.md) utility. Thanks to its integration with [Zod](http://zod.dev), it provides an expressive and type-safe way to validate and parse payloads.
+
+If instead you are already using JSON Schema, or simply feel more comfortable with it, the Validation utility is a great choice. It provides an opinionated thin layer on top of the popular [ajv](https://ajv.js.org) library, with built-in support for JMESPath and AWS service envelopes.
+
+When it comes to feature set, besides the type-safe parsing, the Parser utility also provides a rich collection of built-in schemas and envelopes for AWS services. The Validation utility, on the other hand, follows a more bring-your-own-schema approach, with built-in support for JMESPath and AWS service envelopes to help you unwrap events before validation.
+
+Additionally, while both utilities serve specific use cases, understanding your project requirements will help you choose the right tool for your validation needs.
+
+Finally, in terms of bundle size, the Validation utility is slightly heavier than the Parser utility primarily due to ajv not providing ESM builds. However, even with this, the Validation utility still clocks in at under ~100KB when minified and bundled.
 
 ## Key features
 
@@ -15226,20 +15627,6 @@ export const handler = async (event: unknown) => {
 
 1. You can pass your own `ajv` instance to any of the validation methods. This is useful if you want to configure `ajv` with custom options like keywords and more.
 
-## Should I use this or Parser?
-
-One of Powertools for AWS Lambda [tenets](../../#tenets) is to be progressive. This means that our utilities are designed to be incrementally adopted by customers at any stage of their serverless journey.
-
-For new projects, especially those using TypeScript, we recommend using the [Parser](../parser/) utility. Thanks to its integration with [Zod](http://zod.dev), it provides an expressive and type-safe way to validate and parse payloads.
-
-If instead you are already using JSON Schema, or simply feel more comfortable with it, the Validation utility is a great choice. It provides an opinionated thin layer on top of the popular [ajv](https://ajv.js.org) library, with built-in support for JMESPath and AWS service envelopes.
-
-When it comes to feature set, besides the type-safe parsing, the Parser utility also provides a rich collection of built-in schemas and envelopes for AWS services. The Validation utility, on the other hand, follows a more bring-your-own-schema approach, with built-in support for JMESPath and AWS service envelopes to help you unwrap events before validation.
-
-Additionally, while both utilities serve specific use cases, understanding your project requirements will help you choose the right tool for your validation needs.
-
-Finally, in terms of bundle size, the Validation utility is slightly heavier than the Parser utility primarily due to ajv not providing ESM builds. However, even with this, the Validation utility still clocks in at under ~100KB when minified and bundled.
-
 The Kafka Consumer utility transparently handles message deserialization, provides an intuitive developer experience, and integrates seamlessly with the rest of the Powertools for AWS Lambda ecosystem.
 
 ```
@@ -15326,7 +15713,7 @@ Resources:
   KafkaConsumerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Handler: index.js
       Timeout: 30
       Events:
@@ -16020,7 +16407,7 @@ export const handler = kafkaConsumer(async (event, _context) => {
 
 ### Integrating with Idempotency
 
-When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The [Idempotency utility](../idempotency/) prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.
+When processing Kafka messages in Lambda, failed batches can result in message reprocessing. The [Idempotency utility](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md) prevents duplicate processing by tracking which messages have already been handled, ensuring each message is processed exactly once.
 
 The Idempotency utility automatically stores the result of each successful operation, returning the cached result if the same message is processed again, which prevents potentially harmful duplicate operations like double-charging customers or double-counting metrics.
 
@@ -16147,7 +16534,7 @@ Resources:
 OrderProcessingFunction:
     Type: AWS::Serverless::Function
     Properties:
-    Runtime: nodejs22.x
+    Runtime: nodejs24.x
     Handler: index.js
     Events:
         KafkaEvent:
@@ -16384,23 +16771,23 @@ Info
 
 Explicit parameters in your code take precedence over environment variables
 
-| Environment variable                         | Description                                                                              | Utility                                 | Default                                                |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------ |
-| **POWERTOOLS_SERVICE_NAME**                  | Set service name used for tracing namespace, metrics dimension and structured logging    | All                                     | `service_undefined`                                    |
-| **POWERTOOLS_METRICS_NAMESPACE**             | Set namespace used for metrics                                                           | [Metrics](../features/metrics/)         | `default_namespace`                                    |
-| **POWERTOOLS_METRICS_FUNCTION_NAME**         | Function name used as dimension for the `ColdStart` metric                               | [Metrics](../features/metrics/)         | [See docs](../features/metrics/#setting-function-name) |
-| **POWERTOOLS_METRICS_DISABLED**              | Explicitly disables emitting metrics to stdout                                           | [Metrics](../features/metrics/)         | `false`                                                |
-| **POWERTOOLS_TRACE_ENABLED**                 | Explicitly disables tracing                                                              | [Tracer](../features/tracer/)           | `true`                                                 |
-| **POWERTOOLS_TRACER_CAPTURE_RESPONSE**       | Capture Lambda or method return as metadata.                                             | [Tracer](../features/tracer/)           | `true`                                                 |
-| **POWERTOOLS_TRACER_CAPTURE_ERROR**          | Capture Lambda or method exception as metadata.                                          | [Tracer](../features/tracer/)           | `true`                                                 |
-| **POWERTOOLS_TRACER_CAPTURE_HTTPS_REQUESTS** | Capture HTTP(s) requests as segments.                                                    | [Tracer](../features/tracer/)           | `true`                                                 |
-| **POWERTOOLS_LOGGER_LOG_EVENT**              | Log incoming event                                                                       | [Logger](../features/logger/)           | `false`                                                |
-| **POWERTOOLS_LOGGER_SAMPLE_RATE**            | Debug log sampling                                                                       | [Logger](../features/logger/)           | `0`                                                    |
-| **POWERTOOLS_DEV**                           | Pretty-print logs, disable metrics flushing, and disable traces - use for dev only       | See section below                       | `false`                                                |
-| **POWERTOOLS_LOG_LEVEL**                     | Sets how verbose Logger should be, from the most verbose to the least verbose (no logs)  | [Logger](../features/logger/)           | `INFO`                                                 |
-| **POWERTOOLS_PARAMETERS_MAX_AGE**            | Adjust how long values are kept in cache (in seconds)                                    | [Parameters](../features/parameters/)   | `5`                                                    |
-| **POWERTOOLS_PARAMETERS_SSM_DECRYPT**        | Set whether to decrypt or not values retrieved from AWS Systems Manager Parameters Store | [Parameters](../features/parameters/)   | `false`                                                |
-| **POWERTOOLS_IDEMPOTENCY_DISABLED**          | Disable the Idempotency logic without changing your code, useful for testing             | [Idempotency](../features/idempotency/) | `false`                                                |
+| Environment variable                         | Description                                                                              | Utility                                                                                               | Default                                                                                                      |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **POWERTOOLS_SERVICE_NAME**                  | Set service name used for tracing namespace, metrics dimension and structured logging    | All                                                                                                   | `service_undefined`                                                                                          |
+| **POWERTOOLS_METRICS_NAMESPACE**             | Set namespace used for metrics                                                           | [Metrics](https://docs.aws.amazon.com/powertools/typescript/latest/features/metrics/index.md)         | `default_namespace`                                                                                          |
+| **POWERTOOLS_METRICS_FUNCTION_NAME**         | Function name used as dimension for the `ColdStart` metric                               | [Metrics](https://docs.aws.amazon.com/powertools/typescript/latest/features/metrics/index.md)         | [See docs](https://docs.aws.amazon.com/powertools/typescript/latest/features/metrics/#setting-function-name) |
+| **POWERTOOLS_METRICS_DISABLED**              | Explicitly disables emitting metrics to stdout                                           | [Metrics](https://docs.aws.amazon.com/powertools/typescript/latest/features/metrics/index.md)         | `false`                                                                                                      |
+| **POWERTOOLS_TRACE_ENABLED**                 | Explicitly disables tracing                                                              | [Tracer](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md)           | `true`                                                                                                       |
+| **POWERTOOLS_TRACER_CAPTURE_RESPONSE**       | Capture Lambda or method return as metadata.                                             | [Tracer](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md)           | `true`                                                                                                       |
+| **POWERTOOLS_TRACER_CAPTURE_ERROR**          | Capture Lambda or method exception as metadata.                                          | [Tracer](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md)           | `true`                                                                                                       |
+| **POWERTOOLS_TRACER_CAPTURE_HTTPS_REQUESTS** | Capture HTTP(s) requests as segments.                                                    | [Tracer](https://docs.aws.amazon.com/powertools/typescript/latest/features/tracer/index.md)           | `true`                                                                                                       |
+| **POWERTOOLS_LOGGER_LOG_EVENT**              | Log incoming event                                                                       | [Logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md)           | `false`                                                                                                      |
+| **POWERTOOLS_LOGGER_SAMPLE_RATE**            | Debug log sampling                                                                       | [Logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md)           | `0`                                                                                                          |
+| **POWERTOOLS_DEV**                           | Pretty-print logs, disable metrics flushing, and disable traces - use for dev only       | See section below                                                                                     | `false`                                                                                                      |
+| **POWERTOOLS_LOG_LEVEL**                     | Sets how verbose Logger should be, from the most verbose to the least verbose (no logs)  | [Logger](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/index.md)           | `INFO`                                                                                                       |
+| **POWERTOOLS_PARAMETERS_MAX_AGE**            | Adjust how long values are kept in cache (in seconds)                                    | [Parameters](https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md)   | `5`                                                                                                          |
+| **POWERTOOLS_PARAMETERS_SSM_DECRYPT**        | Set whether to decrypt or not values retrieved from AWS Systems Manager Parameters Store | [Parameters](https://docs.aws.amazon.com/powertools/typescript/latest/features/parameters/index.md)   | `false`                                                                                                      |
+| **POWERTOOLS_IDEMPOTENCY_DISABLED**          | Disable the Idempotency logic without changing your code, useful for testing             | [Idempotency](https://docs.aws.amazon.com/powertools/typescript/latest/features/idempotency/index.md) | `false`                                                                                                      |
 
 Each Utility page provides information on example values and allowed values.
 
@@ -16429,22 +16816,14 @@ V2 is focused on official support for ESM (ECMAScript modules). We've made other
 
 ### Quick summary
 
-| Area                  | Change                                                                                                                                  | Code change required |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| **ESM support**       | Added ESM support via dual CommonJS and ESM bundling, enabling top-level `await` and tree-shaking.                                      | -                    |
-| **Middy.js**          | Updated import path for Middy.js middlewares to leverage subpath exports - i.e. `@aws-lambda-powertools/tracer/middleware`.             | Yes                  |
-| **Types imports**     | Updated import path for TypeScript types to leverage subpath exports - i.e. `@aws-lambda-powertools/logger/types`.                      | Yes                  |
-| **Logger**            | Changed [log sampling](../features/logger/#sampling-debug-logs) to dynamically switch log level to `DEBUG` on a percentage of requests. | -                    |
-| **Logger**            | Updated [custom log formatter](#custom-log-formatter) to include standard as well as persistent keys.                                   | Yes                  |
-| **Logger**            | Removed `ContextExamples` from `@aws-lambda-powertools/commons` package.                                                                | Yes                  |
-| **Logger and Tracer** | Removed deprecated `createLogger` and `createTracer` helper functions in favor of direct instantiation.                                 | Yes                  |
+||Area |Change |Code change required || | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ||**ESM support** |Added ESM support via dual CommonJS and ESM bundling, enabling top-level `await` and tree-shaking. |- || ||**Middy.js** |Updated import path for Middy.js middlewares to leverage subpath exports - i.e. `@aws-lambda-powertools/tracer/middleware`. |Yes || ||**Types imports** |Updated import path for TypeScript types to leverage subpath exports - i.e. `@aws-lambda-powertools/logger/types`. |Yes || ||**Logger** |Changed [log sampling](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#sampling-debug-logs) to dynamically switch log level to `DEBUG` on a percentage of requests. |- || ||**Logger** |Updated [custom log formatter](#custom-log-formatter) to include standard as well as persistent keys. |Yes || ||**Logger** |Removed `ContextExamples` from `@aws-lambda-powertools/commons` package. |Yes || ||**Logger and Tracer** |Removed deprecated `createLogger` and `createTracer` helper functions in favor of direct instantiation. |Yes ||
 
 ### First steps
 
 Before you start, we suggest making a copy of your current working project or create a new git branch.
 
 1. Upgrade Node.js to v18 or higher, Node.js v20 is recommended.
-1. Ensure that you have the latest Powertools for AWS Lambda (TypeScript) version via [Lambda Layer](../getting-started/lambda-layers/) or npm.
+1. Ensure that you have the latest Powertools for AWS Lambda (TypeScript) version via [Lambda Layer](https://docs.aws.amazon.com/powertools/typescript/latest/getting-started/lambda-layers/index.md) or npm.
 1. Review the following sections to confirm whether they apply to your codebase.
 
 ## ESM support
@@ -16488,7 +16867,7 @@ export class MyStack extends Stack {
     super(scope, id, props);
 
     const handler = new NodejsFunction(this, 'helloWorldFunction', {
-      runtime: Runtime.NODEJS_22_X,
+      runtime: Runtime.NODEJS_24_X,
       handler: 'handler',
       entry: 'src/index.ts',
       bundling: {
@@ -16514,7 +16893,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Runtime: nodejs22.x
+      Runtime: nodejs24.x
       Handler: src/index.handler
     Metadata:
       BuildMethod: esbuild
@@ -16605,26 +16984,23 @@ Below is an example of how to configure your `.eslintrc.json` file:
 
 ### Log sampling
 
-Disregard if you are not using the [log sampling feature](../features/logger/#sampling-debug-logs).
+Disregard if you are not using the [log sampling feature](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#sampling-debug-logs).
 
 In v1, log sampling implementation was inconsistent from other Powertools for AWS Lambda languages *(Python, .NET, and Java)*.
 
 In v2, we changed these behaviors for consistency across languages:
 
-| Behavior                | v1                                                           | v2                                            |
-| ----------------------- | ------------------------------------------------------------ | --------------------------------------------- |
-| Log Level               | Log level remains unchanged but any log statement is printed | Log level changes to `DEBUG`                  |
-| Log sampling indication | No indication                                                | Debug message indicates sampling is in effect |
+||Behavior |v1 |v2 || | ----------------------- | ------------------------------------------------------------ | --------------------------------------------- | ||Log Level |Log level remains unchanged but any log statement is printed |Log level changes to `DEBUG` || ||Log sampling indication |No indication |Debug message indicates sampling is in effect ||
 
 Logger `sampleRateValue` **continues** to determine the percentage of concurrent/cold start invocations that logs will be sampled, *e.g., log level set to `DEBUG`*.
 
 ### Custom log formatter
 
-Disregard if you are not customizing log output with a [custom log formatter](../features/logger/#custom-log-formatter).
+Disregard if you are not customizing log output with a [custom log formatter](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#custom-log-formatter).
 
-In v1, `Logger` exposed the [standard](../features/logger/#standard-structured-keys) as a single argument, *e.g., `formatAttributes(attributes: UnformattedAttributes)`*. It expected a plain object with keys and values you wanted in the final log output.
+In v1, `Logger` exposed the [standard](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#standard-structured-keys) as a single argument, *e.g., `formatAttributes(attributes: UnformattedAttributes)`*. It expected a plain object with keys and values you wanted in the final log output.
 
-In v2, you have more control over **standard** (`attributes`) and [**custom keys**](../features/logger/#appending-additional-keys) (`additionalLogAttributes`) in the `formatAttributes` method. Also, you now return a `LogItem` object to increase type safety when defining the final log output.
+In v2, you have more control over **standard** (`attributes`) and [**custom keys**](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#appending-additional-keys) (`additionalLogAttributes`) in the `formatAttributes` method. Also, you now return a `LogItem` object to increase type safety when defining the final log output.
 
 ```
 import { LogFormatter } from '@aws-lambda-powertools/logger';
@@ -16710,7 +17086,7 @@ export { MyCompanyLogFormatter };
 
 ```
 
-1. This new argument contains all [your custom keys](../features/logger/#appending-additional-keys).
+1. This new argument contains all [your custom keys](https://docs.aws.amazon.com/powertools/typescript/latest/features/logger/#appending-additional-keys).
 
 1. `LogItem` is the new return object instead of a plain object.
 

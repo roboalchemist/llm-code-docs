@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/intent-routing.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/intent-routing.md
 
 # Intent Routing
 
@@ -66,7 +66,7 @@ To add a new conditional route:
 
 1. Select **Add Conditional Route**.
 2. Define a conditional statement in the **Conditional Route** editor by:
-   a. Selecting an available [attribute](/messaging-platform/virtual-agent/attributes) as target from the drop-down menu and choose the value to validate against. E.g. authentication equals true.
+   a. Selecting an available [attribute](/agent-desk/virtual-agent/attributes) as target from the drop-down menu and choose the value to validate against. E.g. authentication equals true.
    i. Multiple conditions can be added by clicking **Add Conditions**. Once added, they can be reordered by dragging, or deleted by clicking the trash can icon.
    b. Selecting the flow to route customers to, if the conditions are validated in the dropdown.
    c. Click **Apply** to save your changes.

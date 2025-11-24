@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/notifications.md
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/notifications.md
 
 # Notifications
 

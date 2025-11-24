@@ -2202,8 +2202,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![ElianCodes](https://avatars.githubusercontent.com/u/15145918?s=64 "ElianCodes")](https://github.com/ElianCodes)
 * [![Princesseuh](https://avatars.githubusercontent.com/u/3019731?s=64 "Princesseuh")](https://github.com/Princesseuh)
 * [![matthewp](https://avatars.githubusercontent.com/u/361671?s=64 "matthewp")](https://github.com/matthewp)
-* [![jonathantneal](https://avatars.githubusercontent.com/u/188426?s=64 "jonathantneal")](https://github.com/jonathantneal)
 * [![agustinmulet](https://avatars.githubusercontent.com/u/31162600?s=64 "agustinmulet")](https://github.com/agustinmulet)
+* [![jonathantneal](https://avatars.githubusercontent.com/u/188426?s=64 "jonathantneal")](https://github.com/jonathantneal)
 * [![at-the-vr](https://avatars.githubusercontent.com/u/88548999?s=64 "at-the-vr")](https://github.com/at-the-vr)
 * [![Genteure](https://avatars.githubusercontent.com/u/11240579?s=64 "Genteure")](https://github.com/Genteure)
 * [![HiDeoo](https://avatars.githubusercontent.com/u/494699?s=64 "HiDeoo")](https://github.com/HiDeoo)
@@ -2214,33 +2214,33 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![natemoo-re](https://avatars.githubusercontent.com/u/7118177?s=64 "natemoo-re")](https://github.com/natemoo-re)
 * [![Hanawa02](https://avatars.githubusercontent.com/u/11237366?s=64 "Hanawa02")](https://github.com/Hanawa02)
 * [![aFuzzyBear](https://avatars.githubusercontent.com/u/28299972?s=64 "aFuzzyBear")](https://github.com/aFuzzyBear)
-* [![JuanPabloDiaz](https://avatars.githubusercontent.com/u/25883220?s=64 "JuanPabloDiaz")](https://github.com/JuanPabloDiaz)
 * [![MoustaphaDev](https://avatars.githubusercontent.com/u/81974850?s=64 "MoustaphaDev")](https://github.com/MoustaphaDev)
-* [![pioupia](https://avatars.githubusercontent.com/u/49518790?s=64 "pioupia")](https://github.com/pioupia)
-* [![fredoist](https://avatars.githubusercontent.com/u/7684330?s=64 "fredoist")](https://github.com/fredoist)
+* [![JuanPabloDiaz](https://avatars.githubusercontent.com/u/25883220?s=64 "JuanPabloDiaz")](https://github.com/JuanPabloDiaz)
 * [![florian-lefebvre](https://avatars.githubusercontent.com/u/69633530?s=64 "florian-lefebvre")](https://github.com/florian-lefebvre)
-* [![sasoria](https://avatars.githubusercontent.com/u/7903076?s=64 "sasoria")](https://github.com/sasoria)
+* [![fredoist](https://avatars.githubusercontent.com/u/7684330?s=64 "fredoist")](https://github.com/fredoist)
+* [![pioupia](https://avatars.githubusercontent.com/u/49518790?s=64 "pioupia")](https://github.com/pioupia)
 * [![renovate\[bot\]](https://avatars.githubusercontent.com/u/29139614?s=64 "renovate\[bot\]")](https://github.com/renovate\[bot])
+* [![sasoria](https://avatars.githubusercontent.com/u/7903076?s=64 "sasoria")](https://github.com/sasoria)
 * [![maxchang3](https://avatars.githubusercontent.com/u/36927158?s=64 "maxchang3")](https://github.com/maxchang3)
-* [![piro-hiroki](https://avatars.githubusercontent.com/u/103011756?s=64 "piro-hiroki")](https://github.com/piro-hiroki)
-* [![sarasate](https://avatars.githubusercontent.com/u/1528803?s=64 "sarasate")](https://github.com/sarasate)
 * [![roikat](https://avatars.githubusercontent.com/u/243017214?s=64 "roikat")](https://github.com/roikat)
+* [![bjohansebas](https://avatars.githubusercontent.com/u/103585995?s=64 "bjohansebas")](https://github.com/bjohansebas)
+* [![sarasate](https://avatars.githubusercontent.com/u/1528803?s=64 "sarasate")](https://github.com/sarasate)
+* [![piro-hiroki](https://avatars.githubusercontent.com/u/103011756?s=64 "piro-hiroki")](https://github.com/piro-hiroki)
 * [![JuanM04](https://avatars.githubusercontent.com/u/16712703?s=64 "JuanM04")](https://github.com/JuanM04)
 * [![mrienstra](https://avatars.githubusercontent.com/u/669326?s=64 "mrienstra")](https://github.com/mrienstra)
-* [![bjohansebas](https://avatars.githubusercontent.com/u/103585995?s=64 "bjohansebas")](https://github.com/bjohansebas)
 * [![VoxelMC](https://avatars.githubusercontent.com/u/20650404?s=64 "VoxelMC")](https://github.com/VoxelMC)
 * [![ascorbic](https://avatars.githubusercontent.com/u/213306?s=64 "ascorbic")](https://github.com/ascorbic)
 * [![dragomano](https://avatars.githubusercontent.com/u/229402?s=64 "dragomano")](https://github.com/dragomano)
 * [![kirii86](https://avatars.githubusercontent.com/u/47194884?s=64 "kirii86")](https://github.com/kirii86)
+* [![antonyfaris](https://avatars.githubusercontent.com/u/11766500?s=64 "antonyfaris")](https://github.com/antonyfaris)
 * [![glopzel](https://avatars.githubusercontent.com/u/74939915?s=64 "glopzel")](https://github.com/glopzel)
 * [![tarikrital](https://avatars.githubusercontent.com/u/52907282?s=64 "tarikrital")](https://github.com/tarikrital)
-* [![antonyfaris](https://avatars.githubusercontent.com/u/11766500?s=64 "antonyfaris")](https://github.com/antonyfaris)
 * [![afucher](https://avatars.githubusercontent.com/u/3756185?s=64 "afucher")](https://github.com/afucher)
-* [![kimulaco](https://avatars.githubusercontent.com/u/11986753?s=64 "kimulaco")](https://github.com/kimulaco)
 * [![shuuji3](https://avatars.githubusercontent.com/u/1425259?s=64 "shuuji3")](https://github.com/shuuji3)
-* [![helmerdx](https://avatars.githubusercontent.com/u/11061182?s=64 "helmerdx")](https://github.com/helmerdx)
-* [![DerTimonius](https://avatars.githubusercontent.com/u/103483059?s=64 "DerTimonius")](https://github.com/DerTimonius)
+* [![kimulaco](https://avatars.githubusercontent.com/u/11986753?s=64 "kimulaco")](https://github.com/kimulaco)
 * [![martrapp](https://avatars.githubusercontent.com/u/94928215?s=64 "martrapp")](https://github.com/martrapp)
+* [![DerTimonius](https://avatars.githubusercontent.com/u/103483059?s=64 "DerTimonius")](https://github.com/DerTimonius)
+* [![helmerdx](https://avatars.githubusercontent.com/u/11061182?s=64 "helmerdx")](https://github.com/helmerdx)
 * [![luoingly](https://avatars.githubusercontent.com/u/101558384?s=64 "luoingly")](https://github.com/luoingly)
 * [![mayank99](https://avatars.githubusercontent.com/u/9084735?s=64 "mayank99")](https://github.com/mayank99)
 * [![AbrahamX3](https://avatars.githubusercontent.com/u/78459953?s=64 "AbrahamX3")](https://github.com/AbrahamX3)
@@ -2401,10 +2401,10 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![emjio](https://avatars.githubusercontent.com/u/26915891?s=64 "emjio")](https://github.com/emjio)
 * [![breadadams](https://avatars.githubusercontent.com/u/5795227?s=64 "breadadams")](https://github.com/breadadams)
 * [![Because789](https://avatars.githubusercontent.com/u/867257?s=64 "Because789")](https://github.com/Because789)
-* [![ahmed-n-abdeltwab](https://avatars.githubusercontent.com/u/62723180?s=64 "ahmed-n-abdeltwab")](https://github.com/ahmed-n-abdeltwab)
 * [![0xflotus](https://avatars.githubusercontent.com/u/26602940?s=64 "0xflotus")](https://github.com/0xflotus)
-* [![leen-neel](https://avatars.githubusercontent.com/u/49027876?s=64 "leen-neel")](https://github.com/leen-neel)
+* [![ahmed-n-abdeltwab](https://avatars.githubusercontent.com/u/62723180?s=64 "ahmed-n-abdeltwab")](https://github.com/ahmed-n-abdeltwab)
 * [![nicdun](https://avatars.githubusercontent.com/u/28926450?s=64 "nicdun")](https://github.com/nicdun)
+* [![leen-neel](https://avatars.githubusercontent.com/u/49027876?s=64 "leen-neel")](https://github.com/leen-neel)
 * [![Morritz](https://avatars.githubusercontent.com/u/12800230?s=64 "Morritz")](https://github.com/Morritz)
 * [![pReya](https://avatars.githubusercontent.com/u/4677417?s=64 "pReya")](https://github.com/pReya)
 * [![mhdcodes](https://avatars.githubusercontent.com/u/9967336?s=64 "mhdcodes")](https://github.com/mhdcodes)
@@ -2421,8 +2421,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![jhuleatt](https://avatars.githubusercontent.com/u/3759507?s=64 "jhuleatt")](https://github.com/jhuleatt)
 * [![Je12emy](https://avatars.githubusercontent.com/u/34408108?s=64 "Je12emy")](https://github.com/Je12emy)
 * [![RobertAKARobin](https://avatars.githubusercontent.com/u/6268177?s=64 "RobertAKARobin")](https://github.com/RobertAKARobin)
-* [![inwardmovement](https://avatars.githubusercontent.com/u/9438102?s=64 "inwardmovement")](https://github.com/inwardmovement)
 * [![millette](https://avatars.githubusercontent.com/u/50741?s=64 "millette")](https://github.com/millette)
+* [![ld-web](https://avatars.githubusercontent.com/u/46715342?s=64 "ld-web")](https://github.com/ld-web)
 * [![Rolanddoda](https://avatars.githubusercontent.com/u/18482346?s=64 "Rolanddoda")](https://github.com/Rolanddoda)
 * [![RolginRoman](https://avatars.githubusercontent.com/u/5978625?s=64 "RolginRoman")](https://github.com/RolginRoman)
 * [![ffxsam](https://avatars.githubusercontent.com/u/12532733?s=64 "ffxsam")](https://github.com/ffxsam)
@@ -2435,7 +2435,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![motss](https://avatars.githubusercontent.com/u/10607759?s=64 "motss")](https://github.com/motss)
 * [![tem235](https://avatars.githubusercontent.com/u/5091416?s=64 "tem235")](https://github.com/tem235)
 * [![tobySolutions](https://avatars.githubusercontent.com/u/96334363?s=64 "tobySolutions")](https://github.com/tobySolutions)
-* [![aaronlamz](https://avatars.githubusercontent.com/u/3964466?s=64 "aaronlamz")](https://github.com/aaronlamz)
+* [![inwardmovement](https://avatars.githubusercontent.com/u/9438102?s=64 "inwardmovement")](https://github.com/inwardmovement)
+* [![coding-in-public](https://avatars.githubusercontent.com/u/86967271?s=64 "coding-in-public")](https://github.com/coding-in-public)
 * [![lukemcdonald](https://avatars.githubusercontent.com/u/299173?s=64 "lukemcdonald")](https://github.com/lukemcdonald)
 * [![MareStare](https://avatars.githubusercontent.com/u/193320883?s=64 "MareStare")](https://github.com/MareStare)
 * [![MaxTheTurtle0](https://avatars.githubusercontent.com/u/129096443?s=64 "MaxTheTurtle0")](https://github.com/MaxTheTurtle0)
@@ -2452,7 +2453,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![serhalp](https://avatars.githubusercontent.com/u/1377702?s=64 "serhalp")](https://github.com/serhalp)
 * [![Scalamando](https://avatars.githubusercontent.com/u/16595528?s=64 "Scalamando")](https://github.com/Scalamando)
 * [![wobsoriano](https://avatars.githubusercontent.com/u/13049130?s=64 "wobsoriano")](https://github.com/wobsoriano)
-* [![XinChou16](https://avatars.githubusercontent.com/u/24493056?s=64 "XinChou16")](https://github.com/XinChou16)
 * [![lhz960904](https://avatars.githubusercontent.com/u/29157111?s=64 "lhz960904")](https://github.com/lhz960904)
 * [![lstephensca](https://avatars.githubusercontent.com/u/31998110?s=64 "lstephensca")](https://github.com/lstephensca)
 * [![my-astro](https://avatars.githubusercontent.com/u/190968675?s=64 "my-astro")](https://github.com/my-astro)
@@ -2469,6 +2469,7 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![Tsukistar](https://avatars.githubusercontent.com/u/36409869?s=64 "Tsukistar")](https://github.com/Tsukistar)
 * [![zhuchentong](https://avatars.githubusercontent.com/u/4535888?s=64 "zhuchentong")](https://github.com/zhuchentong)
 * [![abhikjain360](https://avatars.githubusercontent.com/u/43034252?s=64 "abhikjain360")](https://github.com/abhikjain360)
+* [![XinChou16](https://avatars.githubusercontent.com/u/24493056?s=64 "XinChou16")](https://github.com/XinChou16)
 * [![vitoriapena](https://avatars.githubusercontent.com/u/16581093?s=64 "vitoriapena")](https://github.com/vitoriapena)
 * [![vivitt](https://avatars.githubusercontent.com/u/91918142?s=64 "vivitt")](https://github.com/vivitt)
 * [![Zastinian](https://avatars.githubusercontent.com/u/82119938?s=64 "Zastinian")](https://github.com/Zastinian)
@@ -2485,12 +2486,12 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![eiis](https://avatars.githubusercontent.com/u/88193046?s=64 "eiis")](https://github.com/eiis)
 * [![jose8a](https://avatars.githubusercontent.com/u/817855?s=64 "jose8a")](https://github.com/jose8a)
 * [![kikonavarro](https://avatars.githubusercontent.com/u/78880702?s=64 "kikonavarro")](https://github.com/kikonavarro)
-* [![coding-in-public](https://avatars.githubusercontent.com/u/86967271?s=64 "coding-in-public")](https://github.com/coding-in-public)
 * [![colbyfayock](https://avatars.githubusercontent.com/u/1045274?s=64 "colbyfayock")](https://github.com/colbyfayock)
 * [![conradagramont](https://avatars.githubusercontent.com/u/41589731?s=64 "conradagramont")](https://github.com/conradagramont)
 * [![WooDaeHyun](https://avatars.githubusercontent.com/u/113018070?s=64 "WooDaeHyun")](https://github.com/WooDaeHyun)
 * [![DavidEGiraldo](https://avatars.githubusercontent.com/u/113148688?s=64 "DavidEGiraldo")](https://github.com/DavidEGiraldo)
 * [![Sparkhand](https://avatars.githubusercontent.com/u/39919361?s=64 "Sparkhand")](https://github.com/Sparkhand)
+* [![DevVali](https://avatars.githubusercontent.com/u/90271108?s=64 "DevVali")](https://github.com/DevVali)
 * [![ekafyi](https://avatars.githubusercontent.com/u/6597211?s=64 "ekafyi")](https://github.com/ekafyi)
 * [![estruyf](https://avatars.githubusercontent.com/u/2900833?s=64 "estruyf")](https://github.com/estruyf)
 * [![emma-sg](https://avatars.githubusercontent.com/u/5727389?s=64 "emma-sg")](https://github.com/emma-sg)
@@ -2500,7 +2501,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![falvarador](https://avatars.githubusercontent.com/u/8008909?s=64 "falvarador")](https://github.com/falvarador)
 * [![felixsanz](https://avatars.githubusercontent.com/u/6182099?s=64 "felixsanz")](https://github.com/felixsanz)
 * [![ogabrielp](https://avatars.githubusercontent.com/u/15015260?s=64 "ogabrielp")](https://github.com/ogabrielp)
-* [![gaeulbyul](https://avatars.githubusercontent.com/u/830515?s=64 "gaeulbyul")](https://github.com/gaeulbyul)
+* [![jazzypants1989](https://avatars.githubusercontent.com/u/102560332?s=64 "jazzypants1989")](https://github.com/jazzypants1989)
+* [![aaronlamz](https://avatars.githubusercontent.com/u/3964466?s=64 "aaronlamz")](https://github.com/aaronlamz)
 * [![addonion](https://avatars.githubusercontent.com/u/51356696?s=64 "addonion")](https://github.com/addonion)
 * [![AdamPrendergast](https://avatars.githubusercontent.com/u/550193?s=64 "AdamPrendergast")](https://github.com/AdamPrendergast)
 * [![afonsojramos](https://avatars.githubusercontent.com/u/19473034?s=64 "afonsojramos")](https://github.com/afonsojramos)
@@ -2517,7 +2519,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![branberry](https://avatars.githubusercontent.com/u/20285369?s=64 "branberry")](https://github.com/branberry)
 * [![calebeby](https://avatars.githubusercontent.com/u/13206945?s=64 "calebeby")](https://github.com/calebeby)
 * [![CheukTsai](https://avatars.githubusercontent.com/u/58281730?s=64 "CheukTsai")](https://github.com/CheukTsai)
-* [![neotherapper](https://avatars.githubusercontent.com/u/1514154?s=64 "neotherapper")](https://github.com/neotherapper)
 * [![Jhon-H](https://avatars.githubusercontent.com/u/88730883?s=64 "Jhon-H")](https://github.com/Jhon-H)
 * [![jcha0713](https://avatars.githubusercontent.com/u/29053796?s=64 "jcha0713")](https://github.com/jcha0713)
 * [![Jvictorvieira](https://avatars.githubusercontent.com/u/62016742?s=64 "Jvictorvieira")](https://github.com/Jvictorvieira)
@@ -2534,6 +2535,8 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![leohxj](https://avatars.githubusercontent.com/u/1506900?s=64 "leohxj")](https://github.com/leohxj)
 * [![LuMiSxh](https://avatars.githubusercontent.com/u/76248448?s=64 "LuMiSxh")](https://github.com/LuMiSxh)
 * [![Trombach](https://avatars.githubusercontent.com/u/19306765?s=64 "Trombach")](https://github.com/Trombach)
+* [![gaeulbyul](https://avatars.githubusercontent.com/u/830515?s=64 "gaeulbyul")](https://github.com/gaeulbyul)
+* [![neotherapper](https://avatars.githubusercontent.com/u/1514154?s=64 "neotherapper")](https://github.com/neotherapper)
 * [![HALQME](https://avatars.githubusercontent.com/u/68320771?s=64 "HALQME")](https://github.com/HALQME)
 * [![TKDev7](https://avatars.githubusercontent.com/u/30705623?s=64 "TKDev7")](https://github.com/TKDev7)
 * [![X7md](https://avatars.githubusercontent.com/u/54203033?s=64 "X7md")](https://github.com/X7md)
@@ -2549,29 +2552,28 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![DerYeger](https://avatars.githubusercontent.com/u/7950094?s=64 "DerYeger")](https://github.com/DerYeger)
 * [![JEverhart383](https://avatars.githubusercontent.com/u/7818951?s=64 "JEverhart383")](https://github.com/JEverhart383)
 * [![jeffdrumgod](https://avatars.githubusercontent.com/u/504327?s=64 "jeffdrumgod")](https://github.com/jeffdrumgod)
-* [![jazzypants1989](https://avatars.githubusercontent.com/u/102560332?s=64 "jazzypants1989")](https://github.com/jazzypants1989)
-* [![alex-drocks](https://avatars.githubusercontent.com/u/69808183?s=64 "alex-drocks")](https://github.com/alex-drocks)
-* [![haasal](https://avatars.githubusercontent.com/u/104835302?s=64 "haasal")](https://github.com/haasal)
 * [![AlexNodex](https://avatars.githubusercontent.com/u/17162626?s=64 "AlexNodex")](https://github.com/AlexNodex)
 * [![alexpdraper](https://avatars.githubusercontent.com/u/6441503?s=64 "alexpdraper")](https://github.com/alexpdraper)
 * [![amaimus](https://avatars.githubusercontent.com/u/35699916?s=64 "amaimus")](https://github.com/amaimus)
 * [![albertogiunta](https://avatars.githubusercontent.com/u/5568337?s=64 "albertogiunta")](https://github.com/albertogiunta)
 * [![wonderbeel](https://avatars.githubusercontent.com/u/1643060?s=64 "wonderbeel")](https://github.com/wonderbeel)
 * [![altano](https://avatars.githubusercontent.com/u/1009?s=64 "altano")](https://github.com/altano)
+* [![aboudard](https://avatars.githubusercontent.com/u/767767?s=64 "aboudard")](https://github.com/aboudard)
+* [![AishaBlake](https://avatars.githubusercontent.com/u/7365296?s=64 "AishaBlake")](https://github.com/AishaBlake)
 * [![notjb](https://avatars.githubusercontent.com/u/3164034?s=64 "notjb")](https://github.com/notjb)
+* [![haasal](https://avatars.githubusercontent.com/u/104835302?s=64 "haasal")](https://github.com/haasal)
+* [![alex-drocks](https://avatars.githubusercontent.com/u/69808183?s=64 "alex-drocks")](https://github.com/alex-drocks)
 * [![thekidisalright](https://avatars.githubusercontent.com/u/125706322?s=64 "thekidisalright")](https://github.com/thekidisalright)
 * [![alextison](https://avatars.githubusercontent.com/u/59065561?s=64 "alextison")](https://github.com/alextison)
 * [![hrynko](https://avatars.githubusercontent.com/u/28267443?s=64 "hrynko")](https://github.com/hrynko)
 * [![heldinz](https://avatars.githubusercontent.com/u/851278?s=64 "heldinz")](https://github.com/heldinz)
 * [![gachikuku](https://avatars.githubusercontent.com/u/11743804?s=64 "gachikuku")](https://github.com/gachikuku)
 * [![alvarosabu](https://avatars.githubusercontent.com/u/4699008?s=64 "alvarosabu")](https://github.com/alvarosabu)
-* [![amxmln](https://avatars.githubusercontent.com/u/15271679?s=64 "amxmln")](https://github.com/amxmln)
-* [![amirzezo201](https://avatars.githubusercontent.com/u/104027530?s=64 "amirzezo201")](https://github.com/amirzezo201)
-* [![yoyo837](https://avatars.githubusercontent.com/u/6134547?s=64 "yoyo837")](https://github.com/yoyo837)
 * [![3w36zj6](https://avatars.githubusercontent.com/u/52315048?s=64 "3w36zj6")](https://github.com/3w36zj6)
 * [![aaronkai](https://avatars.githubusercontent.com/u/1002694?s=64 "aaronkai")](https://github.com/aaronkai)
 * [![arafays](https://avatars.githubusercontent.com/u/6192554?s=64 "arafays")](https://github.com/arafays)
 * [![alfawal](https://avatars.githubusercontent.com/u/61620817?s=64 "alfawal")](https://github.com/alfawal)
+* [![AceCodePt](https://avatars.githubusercontent.com/u/19394616?s=64 "AceCodePt")](https://github.com/AceCodePt)
 * [![adamlevoy](https://avatars.githubusercontent.com/u/81095429?s=64 "adamlevoy")](https://github.com/adamlevoy)
 * [![AdamGEmerson](https://avatars.githubusercontent.com/u/35545129?s=64 "AdamGEmerson")](https://github.com/AdamGEmerson)
 * [![adamgajzlerowicz](https://avatars.githubusercontent.com/u/675615?s=64 "adamgajzlerowicz")](https://github.com/adamgajzlerowicz)
@@ -2583,8 +2585,6 @@ These docs are brought to you by all these helpful people. [Join us on GitHub!](
 * [![apz-gh](https://avatars.githubusercontent.com/u/20273871?s=64 "apz-gh")](https://github.com/apz-gh)
 * [![ahmedrowaihi](https://avatars.githubusercontent.com/u/67356781?s=64 "ahmedrowaihi")](https://github.com/ahmedrowaihi)
 * [![aidankmcalister](https://avatars.githubusercontent.com/u/105178005?s=64 "aidankmcalister")](https://github.com/aidankmcalister)
-* [![AishaBlake](https://avatars.githubusercontent.com/u/7365296?s=64 "AishaBlake")](https://github.com/AishaBlake)
-* [![aboudard](https://avatars.githubusercontent.com/u/767767?s=64 "aboudard")](https://github.com/aboudard)
 
 # Editor setup
 
@@ -5037,7 +5037,7 @@ You might want to consider a backend service if your project has complex server-
 
 [Firebase](https://firebase.google.com/) is an app development platform that provides a NoSQL database, authentication, realtime subscriptions, functions, and storage.
 
-See our separate guide for [deploying to Firebase hosting](/en/guides/deploy/google-firebase/).
+See our separate guide for [deploying to Firebase hosting](/en/guides/deploy/firebase/).
 
 ## Initializing Firebase in Astro
 
@@ -7774,6 +7774,31 @@ Install by clicking the button below:
 [Add to Raycast](raycast://mcp/install?%7B%22name%22%3A%22Astro%20docs%22%2C%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%20%22mcp-remote%22%2C%20%22https%3A%2F%2Fmcp.docs.astro.build%2Fmcp%22%5D%7D)
 
 [More info on using MCP servers with Raycast](https://manual.raycast.com/model-context-protocol)
+
+#### Opencode AI
+
+[Section titled “Opencode AI”](#opencode-ai)
+
+[Opencode AI](https://opencode.ai/) is an open-source, terminal-based AI coding tool that can use the Astro Docs MCP server to access documentation while generating Astro code.
+
+You can configure MCP servers in your Opencode configuration file, typically named `opencode.json`, located in your project root or your global configuration directory (e.g. `~/.config/opencode/opencode.json`).
+
+MCP Configuration
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "Astro docs": {
+      "type": "remote",
+      "url": "https://mcp.docs.astro.build/mcp",
+      "enabled": true
+    }
+  }
+}
+```
+
+[More info on using Opencode AI](https://opencode.ai/)
 
 ### Usage
 
@@ -17687,21 +17712,87 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
 [Section titled “Deployment Guides”](#deployment-guides)
 
-* ![](/logos/netlify.svg)
+* ![](/logos/aws.svg)
 
-  ### [Netlify](/en/guides/deploy/netlify/)
+  ### [AWS](/en/guides/deploy/aws/)
+
+  On demand Static
+
+* ![](/logos/flightcontrol.svg)
+
+  ### [AWS via Flightcontrol](/en/guides/deploy/aws-via-flightcontrol/)
 
   On demand Static
 
-* ![](/logos/vercel.svg)
+* ![](/logos/sst.svg)
 
-  ### [Vercel](/en/guides/deploy/vercel/)
+  ### [AWS via SST](/en/guides/deploy/aws-via-sst/)
 
   On demand Static
+
+* ![](/logos/azion.svg)
+
+  ### [Azion](/en/guides/deploy/azion/)
+
+  On demand Static
+
+* ![](/logos/buddy.svg)
+
+  ### [Buddy](/en/guides/deploy/buddy/)
+
+  Static
+
+* ![](/logos/cleavr.svg)
+
+  ### [Cleavr](/en/guides/deploy/cleavr/)
+
+  On demand Static
+
+* ![](/logos/clever-cloud.svg)
+
+  ### [Clever Cloud](/en/guides/deploy/clever-cloud/)
+
+  Static On demand
+
+* ![](/logos/cloudflare-pages.svg)
+
+  ### [Cloudflare](/en/guides/deploy/cloudflare/)
+
+  On demand Static
+
+* ![](/logos/cloudray.svg)
+
+  ### [CloudRay](/en/guides/deploy/cloudray/)
+
+  Static
 
 * ![](/logos/deno.svg)
 
   ### [Deno Deploy](/en/guides/deploy/deno/)
+
+  On demand Static
+
+* ![](/logos/deployhq.svg)
+
+  ### [DeployHQ](/en/guides/deploy/deployhq/)
+
+  Static
+
+* ![](/logos/firebase.svg)
+
+  ### [Firebase](/en/guides/deploy/firebase/)
+
+  On demand Static
+
+* ![](/logos/fleek.svg)
+
+  ### [Fleek](/en/guides/deploy/fleek/)
+
+  Static
+
+* ![](/logos/flyio.svg)
+
+  ### [Fly.io](/en/guides/deploy/flyio/)
 
   On demand Static
 
@@ -17717,51 +17808,9 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
   Static
 
-* ![](/logos/cloudflare-pages.svg)
-
-  ### [Cloudflare Pages](/en/guides/deploy/cloudflare/)
-
-  On demand Static
-
-* ![](/logos/aws.svg)
-
-  ### [AWS](/en/guides/deploy/aws/)
-
-  On demand Static
-
-* ![](/logos/flightcontrol.svg)
-
-  ### [AWS via Flightcontrol](/en/guides/deploy/flightcontrol/)
-
-  On demand Static
-
-* ![](/logos/sst.svg)
-
-  ### [AWS via SST](/en/guides/deploy/sst/)
-
-  On demand Static
-
-* ![](/logos/clever-cloud.svg)
-
-  ### [Clever Cloud](/en/guides/deploy/clever-cloud/)
-
-  On demand Static
-
-* ![](/logos/azion.svg)
-
-  ### [Azion](/en/guides/deploy/azion/)
-
-  On demand Static
-
 * ![](/logos/google-cloud.svg)
 
   ### [Google Cloud](/en/guides/deploy/google-cloud/)
-
-  On demand Static
-
-* ![](/logos/firebase.svg)
-
-  ### [Google Firebase](/en/guides/deploy/google-firebase/)
 
   On demand Static
 
@@ -17771,41 +17820,29 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
   Static
 
+* ![](/logos/juno.svg)
+
+  ### [Juno](/en/guides/deploy/juno/)
+
+  Static
+
+* ![](/logos/kinsta.svg)
+
+  ### [Kinsta](/en/guides/deploy/kinsta/)
+
+  On demand Static
+
 * ![](/logos/microsoft-azure.svg)
 
   ### [Microsoft Azure](/en/guides/deploy/microsoft-azure/)
 
   Static
 
-* ![](/logos/buddy.svg)
+* ![](/logos/netlify.svg)
 
-  ### [Buddy](/en/guides/deploy/buddy/)
-
-  Static
-
-* ![](/logos/deployhq.svg)
-
-  ### [DeployHQ](/en/guides/deploy/deployhq/)
-
-  Static
-
-* ![](/logos/fleek.svg)
-
-  ### [Fleek](/en/guides/deploy/fleek/)
-
-  Static
-
-* ![](/logos/flyio.svg)
-
-  ### [Fly.io](/en/guides/deploy/flyio/)
+  ### [Netlify](/en/guides/deploy/netlify/)
 
   On demand Static
-
-* ![](/logos/juno.svg)
-
-  ### [Juno](/en/guides/deploy/juno/)
-
-  Static
 
 * ![](/logos/railway.svg)
 
@@ -17819,6 +17856,12 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
   Static
 
+* ![](/logos/seenode.svg)
+
+  ### [Seenode](/en/guides/deploy/seenode/)
+
+  On demand
+
 * ![](/logos/stormkit.svg)
 
   ### [Stormkit](/en/guides/deploy/stormkit/)
@@ -17831,15 +17874,9 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
   Static
 
-* ![](/logos/cleavr.svg)
+* ![](/logos/vercel.svg)
 
-  ### [Cleavr](/en/guides/deploy/cleavr/)
-
-  On demand Static
-
-* ![](/logos/kinsta.svg)
-
-  ### [Kinsta](/en/guides/deploy/kinsta/)
+  ### [Vercel](/en/guides/deploy/vercel/)
 
   On demand Static
 
@@ -17849,29 +17886,17 @@ See our [CMS Guides](/en/guides/cms/) for full details on integrating Astro with
 
   On demand Static
 
+* ![](/logos/zephyr.svg)
+
+  ### [Zephyr Cloud](/en/guides/deploy/zephyr/)
+
+  Static
+
 * ![](/logos/zerops.svg)
 
   ### [Zerops](/en/guides/deploy/zerops/)
 
   On demand Static
-
-* ![](/logos/cloudray.svg)
-
-  ### [CloudRay](/en/guides/deploy/cloudray/)
-
-  Static
-
-* ![](/logos/seenode.svg)
-
-  ### [Seenode](/en/guides/deploy/seenode/)
-
-  On demand
-
-* ![](/logos/zephyr.svg)
-
-  ### [Zephyr](/en/guides/deploy/zephyr/)
-
-  Static
 
 ## Quick Deploy Options
 
@@ -18345,6 +18370,91 @@ There are many ways to set up continuous deployment for AWS. One possibility for
 * [Deploy Astro to Amazon ECS on AWS Fargate](https://www.launchfa.st/blog/deploy-astro-aws-fargate)
 * [Troubleshooting SSR Amplify Deployments](https://docs.aws.amazon.com/amplify/latest/userguide/troubleshooting-ssr-deployment.html)
 
+# Deploy your Astro Site to AWS with Flightcontrol
+
+> How to deploy your Astro site to AWS with Flightcontrol
+
+You can deploy an Astro site using [Flightcontrol](https://www.flightcontrol.dev?ref=astro), which provides fully-automated deployments to your AWS account.
+
+Supports both static and SSR Astro sites.
+
+## How to Deploy
+
+[Section titled “How to Deploy”](#how-to-deploy)
+
+1. Create a Flightcontrol account at [app.flightcontrol.dev/signup](https://app.flightcontrol.dev/signup?ref=astro)
+
+2. Go to [app.flightcontrol.dev/projects/new/1](https://app.flightcontrol.dev/projects/new/1)
+
+3. Connect your GitHub account and select your repo
+
+4. Select your desired “Config Type”:
+
+   * `GUI` (all config managed through Flightcontrol dashboard) where you will select the `Astro Static` or `Astro SSR` preset
+   * `flightcontrol.json` (“infrastructure as code” option where all config is in your repo) where you will select an Astro example config, then add it to your codebase as `flightcontrol.json`
+
+5. Adjust any configuration as needed
+
+6. Click “Create Project” and complete any required steps (like linking your AWS account).
+
+### SSR Setup
+
+[Section titled “SSR Setup”](#ssr-setup)
+
+To deploy with SSR support, make sure you first set up the [`@astrojs/node`](/en/guides/integrations-guide/node/) adapter. Then, follow the steps above, choosing the appropriate configurations for Astro SSR.
+
+# Deploy your Astro Site to AWS with SST
+
+> How to deploy your Astro site to AWS with SST
+
+You can deploy an Astro site to AWS using [SST](https://sst.dev), an open-source framework for deploying modern full-stack applications with SSG and SSR support.
+
+You can also use any additional SST components like cron jobs, Buckets, Queues, etc while maintaining type-safety.
+
+## Quickstart
+
+[Section titled “Quickstart”](#quickstart)
+
+1. Create an astro project.
+
+2. Run `npx sst@latest init`.
+
+3. It should detect that you are using Astro and ask you to confirm.
+
+4. Once you’re ready for deployment you can run `npx sst deploy --stage production`.
+
+You can also read [the full Astro on AWS with SST tutorial](https://sst.dev/docs/start/aws/astro) that will guide you through the steps.
+
+### SST components
+
+[Section titled “SST components”](#sst-components)
+
+To use any [additional SST components](https://sst.dev/docs/), add them to `sst.config.ts`.
+
+sst.config.ts
+
+```ts
+const bucket = new sst.aws.Bucket("MyBucket", {
+  access: "public",
+});
+new sst.aws.Astro("MyWeb", {
+  link: [bucket],
+});
+```
+
+And then access them in your `.astro` file.
+
+```astro
+---
+import { Resource } from "sst"
+console.log(Resource.MyBucket.name)
+---
+```
+
+Consult the [SST docs on linking resources](https://sst.dev/docs/linking) to learn more.
+
+If you have any questions, you can [ask in the SST Discord](https://discord.gg/sst).
+
 # Deploy your Astro Site to Azion
 
 > How to deploy your Astro site to the web using Azion.
@@ -18754,7 +18864,6 @@ To get started, you will need:
        "name": "my-astro-app",
        "compatibility_date": "YYYY-MM-DD", // Update to the day you deploy
        "assets": {
-         "binding": "ASSETS",
          "directory": "./dist",
        }
      }
@@ -19437,6 +19546,140 @@ Your Astro site will be built and deployed to your server. You can enable automa
 
 See [DeployHQ’s documentation](https://www.deployhq.com/support) for more info on advanced deployment features.
 
+# Deploy your Astro Site to Google’s Firebase Hosting
+
+> How to deploy your Astro site to the web using Google’s Firebase Hosting.
+
+[Firebase Hosting](https://firebase.google.com/products/hosting) is a service provided by Google’s [Firebase](https://firebase.google.com/) app development platform, which can be used to deploy an Astro site.
+
+See our separate guide for [adding Firebase backend services](/en/guides/backend/google-firebase/) such as databases, authentication, and storage.
+
+## Project Configuration
+
+[Section titled “Project Configuration”](#project-configuration)
+
+Your Astro project can be deployed to Firebase as a static site, or as a server-side rendered site (SSR).
+
+### Static Site
+
+[Section titled “Static Site”](#static-site)
+
+Your Astro project is a static site by default. You don’t need any extra configuration to deploy a static Astro site to Firebase.
+
+### Adapter for SSR
+
+[Section titled “Adapter for SSR”](#adapter-for-ssr)
+
+To enable SSR in your Astro project and deploy on Firebase add the [Node.js adapter](/en/guides/integrations-guide/node/).
+
+Note
+
+Deploying an SSR Astro site to Firebase requires the [Blaze plan](https://firebase.google.com/pricing) or higher.
+
+## How to deploy
+
+[Section titled “How to deploy”](#how-to-deploy)
+
+1. Install the [Firebase CLI](https://github.com/firebase/firebase-tools). This is a command-line tool that allows you to interact with Firebase from the terminal.
+
+   * npm
+
+     ```shell
+     npm install firebase-tools
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm add firebase-tools
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn add firebase-tools
+     ```
+
+2. Authenticate the Firebase CLI with your Google account. This will open a browser window where you can log in to your Google account.
+
+   * npm
+
+     ```shell
+     npx firebase login
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm exec firebase login
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn firebase login
+     ```
+
+3. Enable experimental web frameworks support. This is an experimental feature that allows the Firebase CLI to detect and configure your deployment settings for Astro.
+
+   * npm
+
+     ```shell
+     npx firebase experiments:enable webframeworks
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm exec firebase experiments:enable webframeworks
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn firebase experiments:enable webframeworks
+     ```
+
+4. Initialize Firebase Hosting in your project. This will create a `firebase.json` and `.firebaserc` file in your project root.
+
+   * npm
+
+     ```shell
+     npx firebase init hosting
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm exec firebase init hosting
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn firebase init hosting
+     ```
+
+5. Deploy your site to Firebase Hosting. This will build your Astro site and deploy it to Firebase.
+
+   * npm
+
+     ```shell
+     npx firebase deploy --only hosting
+     ```
+
+   * pnpm
+
+     ```shell
+     pnpm exec firebase deploy --only hosting
+     ```
+
+   * Yarn
+
+     ```shell
+     yarn firebase deploy --only hosting
+     ```
+
 # Deploy your Astro Site to Fleek
 
 > How to deploy your Astro site to the web on Fleek.
@@ -19515,39 +19758,6 @@ You can deploy to Fleek through the website UI or using Fleek’s CLI (command l
 [Deploy site from Fleek UI](https://fleek.xyz/docs/platform/deployments/)
 
 [Deploy site from Fleek CLI](https://fleek.xyz/docs/cli/hosting/)
-
-# Deploy your Astro Site to AWS with Flightcontrol
-
-> How to deploy your Astro site to AWS with Flightcontrol
-
-You can deploy an Astro site using [Flightcontrol](https://www.flightcontrol.dev?ref=astro), which provides fully-automated deployments to your AWS account.
-
-Supports both static and SSR Astro sites.
-
-## How to Deploy
-
-[Section titled “How to Deploy”](#how-to-deploy)
-
-1. Create a Flightcontrol account at [app.flightcontrol.dev/signup](https://app.flightcontrol.dev/signup?ref=astro)
-
-2. Go to [app.flightcontrol.dev/projects/new/1](https://app.flightcontrol.dev/projects/new/1)
-
-3. Connect your GitHub account and select your repo
-
-4. Select your desired “Config Type”:
-
-   * `GUI` (all config managed through Flightcontrol dashboard) where you will select the `Astro Static` or `Astro SSR` preset
-   * `flightcontrol.json` (“infrastructure as code” option where all config is in your repo) where you will select an Astro example config, then add it to your codebase as `flightcontrol.json`
-
-5. Adjust any configuration as needed
-
-6. Click “Create Project” and complete any required steps (like linking your AWS account).
-
-### SSR Setup
-
-[Section titled “SSR Setup”](#ssr-setup)
-
-To deploy with SSR support, make sure you first set up the [`@astrojs/node`](/en/guides/integrations-guide/node/) adapter. Then, follow the steps above, choosing the appropriate configurations for Astro SSR.
 
 # Deploy your Astro Site to Fly.io
 
@@ -20002,140 +20212,6 @@ Deployment can be handled manually in your terminal [using `gcloud`](https://clo
 Need public access?
 
 Don’t forget to add the permission `Cloud Run Invoker` to the `allUsers` group in the Cloud Run permissions settings!
-
-# Deploy your Astro Site to Google’s Firebase Hosting
-
-> How to deploy your Astro site to the web using Google’s Firebase Hosting.
-
-[Firebase Hosting](https://firebase.google.com/products/hosting) is a service provided by Google’s [Firebase](https://firebase.google.com/) app development platform, which can be used to deploy an Astro site.
-
-See our separate guide for [adding Firebase backend services](/en/guides/backend/google-firebase/) such as databases, authentication, and storage.
-
-## Project Configuration
-
-[Section titled “Project Configuration”](#project-configuration)
-
-Your Astro project can be deployed to Firebase as a static site, or as a server-side rendered site (SSR).
-
-### Static Site
-
-[Section titled “Static Site”](#static-site)
-
-Your Astro project is a static site by default. You don’t need any extra configuration to deploy a static Astro site to Firebase.
-
-### Adapter for SSR
-
-[Section titled “Adapter for SSR”](#adapter-for-ssr)
-
-To enable SSR in your Astro project and deploy on Firebase add the [Node.js adapter](/en/guides/integrations-guide/node/).
-
-Note
-
-Deploying an SSR Astro site to Firebase requires the [Blaze plan](https://firebase.google.com/pricing) or higher.
-
-## How to deploy
-
-[Section titled “How to deploy”](#how-to-deploy)
-
-1. Install the [Firebase CLI](https://github.com/firebase/firebase-tools). This is a command-line tool that allows you to interact with Firebase from the terminal.
-
-   * npm
-
-     ```shell
-     npm install firebase-tools
-     ```
-
-   * pnpm
-
-     ```shell
-     pnpm add firebase-tools
-     ```
-
-   * Yarn
-
-     ```shell
-     yarn add firebase-tools
-     ```
-
-2. Authenticate the Firebase CLI with your Google account. This will open a browser window where you can log in to your Google account.
-
-   * npm
-
-     ```shell
-     npx firebase login
-     ```
-
-   * pnpm
-
-     ```shell
-     pnpm exec firebase login
-     ```
-
-   * Yarn
-
-     ```shell
-     yarn firebase login
-     ```
-
-3. Enable experimental web frameworks support. This is an experimental feature that allows the Firebase CLI to detect and configure your deployment settings for Astro.
-
-   * npm
-
-     ```shell
-     npx firebase experiments:enable webframeworks
-     ```
-
-   * pnpm
-
-     ```shell
-     pnpm exec firebase experiments:enable webframeworks
-     ```
-
-   * Yarn
-
-     ```shell
-     yarn firebase experiments:enable webframeworks
-     ```
-
-4. Initialize Firebase Hosting in your project. This will create a `firebase.json` and `.firebaserc` file in your project root.
-
-   * npm
-
-     ```shell
-     npx firebase init hosting
-     ```
-
-   * pnpm
-
-     ```shell
-     pnpm exec firebase init hosting
-     ```
-
-   * Yarn
-
-     ```shell
-     yarn firebase init hosting
-     ```
-
-5. Deploy your site to Firebase Hosting. This will build your Astro site and deploy it to Firebase.
-
-   * npm
-
-     ```shell
-     npx firebase deploy --only hosting
-     ```
-
-   * pnpm
-
-     ```shell
-     pnpm exec firebase deploy --only hosting
-     ```
-
-   * Yarn
-
-     ```shell
-     yarn firebase deploy --only hosting
-     ```
 
 # Deploy your Astro Site to Heroku
 
@@ -20891,58 +20967,6 @@ You can deploy to Seenode through the web interface by connecting your Git repos
 * [Seenode Documentation](https://seenode.com/docs) — complete platform documentation
 * [Seenode Astro Guide](https://seenode.com/docs/frameworks/javascript/astro/) — detailed deployment guide and troubleshooting
 * [Seenode Astro Template](https://github.com/seenode/example-astro) — pre-configured starter template
-
-# Deploy your Astro Site to AWS with SST
-
-> How to deploy your Astro site to AWS with SST
-
-You can deploy an Astro site to AWS using [SST](https://sst.dev), an open-source framework for deploying modern full-stack applications with SSG and SSR support.
-
-You can also use any additional SST components like cron jobs, Buckets, Queues, etc while maintaining type-safety.
-
-## Quickstart
-
-[Section titled “Quickstart”](#quickstart)
-
-1. Create an astro project.
-
-2. Run `npx sst@latest init`.
-
-3. It should detect that you are using Astro and ask you to confirm.
-
-4. Once you’re ready for deployment you can run `npx sst deploy --stage production`.
-
-You can also read [the full Astro on AWS with SST tutorial](https://sst.dev/docs/start/aws/astro) that will guide you through the steps.
-
-### SST components
-
-[Section titled “SST components”](#sst-components)
-
-To use any [additional SST components](https://sst.dev/docs/), add them to `sst.config.ts`.
-
-sst.config.ts
-
-```ts
-const bucket = new sst.aws.Bucket("MyBucket", {
-  access: "public",
-});
-new sst.aws.Astro("MyWeb", {
-  link: [bucket],
-});
-```
-
-And then access them in your `.astro` file.
-
-```astro
----
-import { Resource } from "sst"
-console.log(Resource.MyBucket.name)
----
-```
-
-Consult the [SST docs on linking resources](https://sst.dev/docs/linking) to learn more.
-
-If you have any questions, you can [ask in the SST Discord](https://discord.gg/sst).
 
 # Deploy your Astro Site to Stormkit
 
@@ -22807,13 +22831,13 @@ Find even more [community-maintained framework integrations](https://astro.build
 
   ### [@astrojs/​alpinejs](/en/guides/integrations-guide/alpinejs/)
 
-* ![](/logos/react.svg)
-
-  ### [@astrojs/​react](/en/guides/integrations-guide/react/)
-
 * ![](/logos/preact.svg)
 
   ### [@astrojs/​preact](/en/guides/integrations-guide/preact/)
+
+* ![](/logos/react.svg)
+
+  ### [@astrojs/​react](/en/guides/integrations-guide/react/)
 
 * ![](/logos/solid.svg)
 
@@ -24375,13 +24399,13 @@ The following integrations are maintained by Astro.
 
   ### [@astrojs/​alpinejs](/en/guides/integrations-guide/alpinejs/)
 
-* ![](/logos/react.svg)
-
-  ### [@astrojs/​react](/en/guides/integrations-guide/react/)
-
 * ![](/logos/preact.svg)
 
   ### [@astrojs/​preact](/en/guides/integrations-guide/preact/)
+
+* ![](/logos/react.svg)
+
+  ### [@astrojs/​react](/en/guides/integrations-guide/react/)
 
 * ![](/logos/solid.svg)
 
@@ -50597,7 +50621,7 @@ export default function createIntegration() {
 
 **Type:** `{ internalFetchHeaders?: Record<string, string> | () => Record<string, string>; assetQueryParams?: URLSearchParams; }`
 
-**Added in:** `astro@5.15.0` New
+**Added in:** `astro@5.15.0`
 
 A configuration object for Astro’s client-side code.
 
@@ -50736,7 +50760,7 @@ You will need to create a file that executes during server-side requests to enab
 
 [Section titled “createExports()”](#createexports)
 
-Type: `(manifest: SSRManifest, options: any) => Record<string, any>`
+**Type:** `(manifest: SSRManifest, options: any) => Record<string, any>`
 
 An exported function that takes an SSR manifest as its first argument and an object containing your adapter [`args`](#args) as its second argument. This should provide the exports required by your host.
 
@@ -50807,7 +50831,7 @@ export function createExports(manifest, args) {
 
 [Section titled “start()”](#start)
 
-Type: `(manifest: SSRManifest, options: any) => Record<string, any>`
+**Type:** `(manifest: SSRManifest, options: any) => Record<string, any>`
 
 An exported function that takes an SSR manifest as its first argument and an object containing your adapter [`args`](#args) as its second argument.
 
@@ -51108,7 +51132,7 @@ export function start(manifest) {
 
 **Type:** `(hostname: string | undefined) => string | undefined`
 
-**Added in:** `astro@5.15.5` New
+**Added in:** `astro@5.15.5`
 
 Validates a hostname by rejecting any name containing path separators. When a hostname is invalid, this static method will return `undefined`.
 
@@ -51129,7 +51153,7 @@ export function start(manifest) {
 
 **Type:** `(forwardedProtocol?: string, forwardedHost?: string, forwardedPort?: string, allowedDomains?: Partial<RemotePattern>[]) => { protocol?: string; host?: string; port?: string }`
 
-**Added in:** `astro@5.15.5` New
+**Added in:** `astro@5.15.5`
 
 Validates the forwarded protocol, host, and port against the `allowedDomains`. This static method returns validated values or `undefined` for rejected headers.
 
@@ -53548,8 +53572,6 @@ Builds your site for deployment. By default, this will generate static files and
 
 ### Flags
 
-[Section titled “Flags”](#flags)
-
 The command accepts [common flags](#common-flags) and the following additional flags:
 
 #### `--devOutput`
@@ -53568,9 +53590,12 @@ Starts a local server to serve the contents of your static directory (`dist/` by
 
 This command allows you to preview your site locally [after building](#astro-build) to catch any errors in your build output before deploying it. It is not designed to be run in production. For help with production hosting, check out our guide on [Deploying an Astro Website](/en/guides/deploy/).
 
-Since Astro 1.5.0, the [Node adapter](/en/guides/integrations-guide/node/) supports `astro preview` for builds generated with on-demand rendering.
+The following hotkeys can be used in the terminal where the Astro preview server is running:
 
-Can be combined with the [common flags](#common-flags) documented below.
+* `o` + `enter` to open your Astro site in the browser.
+* `q` + `enter` to quit the preview server.
+
+The `astro preview` command can be combined with the [common flags](#common-flags) documented below to further control the preview experience.
 
 ## `astro check`
 
@@ -53683,6 +53708,16 @@ Output                   static
 Adapter                  none
 Integrations             @astrojs/starlight (v0.35.3)
 ```
+
+### Flags
+
+Use the following flags to customize the behavior of the command.
+
+#### `--copy`
+
+[Section titled “--copy”](#--copy)
+
+The command will copy the output to the clipboard without prompting.
 
 ## `astro preferences`
 
@@ -58415,6 +58450,8 @@ The following reference is a complete list of the errors you may encounter while
   Session storage was enabled but not configured.
 * [**SessionConfigWithoutFlagError**](/en/reference/errors/session-config-without-flag-error/)\
   Session flag not set
+* [**CannotOptimizeSvg**](/en/reference/errors/cannot-optimize-svg/)\
+  Cannot optimize SVG
 
 # Action unexpected called from the server.
 
@@ -58607,6 +58644,10 @@ Cannot fetch the given font file
 [Section titled “What went wrong?”](#what-went-wrong)
 
 Cannot load font provider
+
+# Cannot optimize SVG
+
+> An error occurred while optimizing the SVG file with SVGO.
 
 # Astro can't render the route.
 
@@ -61349,7 +61390,7 @@ With the `preload` directive, the browser will immediately begin downloading all
 
 [Section titled “Granular preloads”](#granular-preloads)
 
-**Added in:** `astro@5.15.0` New
+**Added in:** `astro@5.15.0`
 
 You may not always want to preload every font link, as this can block loading other important resources or may download fonts that are not needed for the current page.
 
@@ -61812,7 +61853,7 @@ export default defineConfig({
 
 [Section titled “Granular remote font configuration”](#granular-remote-font-configuration)
 
-**Added in:** `astro@5.15.6` New
+**Added in:** `astro@5.15.6`
 
 A font family is defined by a combination of properties such as weights and styles (e.g. `weights: [500, 600]` and `styles: ["normal", "bold"]`), but you may want to download only certain combinations of these.
 
@@ -62916,6 +62957,215 @@ interface ImportMeta {
 ```
 
 If you need more control over environment variables in Astro, we recommend you use [`astro:env`](/en/guides/environment-variables/).
+
+# Experimental SVG optimization
+
+**Type:** `boolean | object`\
+**Default:** `false`
+
+**Added in:** `astro@5.16.0` New
+
+This experimental feature enables automatic optimization of your [SVG components](/en/guides/images/#svg-components) using [SVGO](https://svgo.dev/) during build time.
+
+When enabled, your imported SVG files used as components will be optimized for smaller file sizes and better performance while maintaining visual quality. This can significantly reduce the size of your SVG assets by removing unnecessary metadata, comments, and redundant code.
+
+To enable this feature with default settings, set it to `true` in your Astro config:
+
+astro.config.mjs
+
+```diff
+import { defineConfig } from "astro/config"
+
+
+export default defineConfig({
+  experimental: {
++    svgo: true
+  }
+})
+```
+
+## Usage
+
+[Section titled “Usage”](#usage)
+
+No change to using SVG components is required to take advantage of this feature. With experimental `svgo` enabled, all your SVG component import files will be automatically optimized:
+
+src/pages/index.astro
+
+```astro
+---
+import Logo from '../assets/logo.svg';
+---
+
+
+<Logo />
+```
+
+The SVG will be optimized during the build process, resulting in smaller file sizes in your production build.
+
+Note that this optimization applies to every SVG component import in your project. It is not possible to opt out on a per-component basis.
+
+## Configuration
+
+[Section titled “Configuration”](#configuration)
+
+You can pass a [SVGO configuration object](https://github.com/svg/svgo/blob/66d503a48c6c95661726262a3068053c429b06a9/lib/types.ts#L335) to customize optimization behavior:
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      plugins: [
+        'preset-default',
+        {
+          name: 'removeViewBox',
+          active: false
+        }
+      ]
+    }
+  }
+})
+```
+
+### `plugins`
+
+[Section titled “plugins”](#plugins)
+
+**Type:** `Array<string | PluginConfig>`\
+**Default:** `[]`
+
+An array of [SVGO plugins](https://svgo.dev/docs/plugins/) that will be used to optimize your SVG component imports.
+
+This can include any plugins by ID name, including SVGO’s `preset-default` collection of plugins. A plugin can optionally be passed as an object including both its `name` and `active` status, to enable or disable as necessary.
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      plugins: [
+        'preset-default',
+        {
+          name: 'removeViewBox',
+          active: false
+        }
+      ]
+    }
+  }
+})
+```
+
+### Other configuration options
+
+[Section titled “Other configuration options”](#other-configuration-options)
+
+You can also pass [other SVGO configuration options](https://github.com/svg/svgo/blob/66d503a48c6c95661726262a3068053c429b06a9/lib/types.ts#L335), such as `floatPrecision` and `multipass`, directly to your config object:
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      floatPrecision: 2,
+      multipass: true
+    }
+  }
+})
+```
+
+## Common use cases
+
+[Section titled “Common use cases”](#common-use-cases)
+
+SVGO provides an extensive [default plugin list](https://svgo.dev/docs/preset-default/) with opinionated optimizations that is more convenient than adding each plugin individually. However, you may need to customize it further for your needs. For example, it may remove items or clean up too aggressively for your situation.
+
+### Preserve specific attributes
+
+[Section titled “Preserve specific attributes”](#preserve-specific-attributes)
+
+You may want to preserve certain SVG attributes, such as the `viewBox`, that SVGO removes by default:
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      plugins: [
+        'preset-default',
+        {
+          name: 'removeViewBox',
+          active: false // Preserve viewBox attribute
+        }
+      ]
+    }
+  }
+})
+```
+
+### Remove specific elements
+
+[Section titled “Remove specific elements”](#remove-specific-elements)
+
+You can configure plugins to remove specific unwanted elements like metadata or hidden layers. Note that many plugins are already included in `preset-default`, so you typically only need to configure their behavior:
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      plugins: [
+        'preset-default',
+        {
+          name: 'removeMetadata',
+          active: true
+        }
+      ]
+    }
+  }
+})
+```
+
+### Custom precision
+
+[Section titled “Custom precision”](#custom-precision)
+
+Control the precision of numeric values in path data:
+
+astro.config.mjs
+
+```js
+export default defineConfig({
+  experimental: {
+    svgo: {
+      floatPrecision: 2
+    }
+  }
+})
+```
+
+## How it works
+
+[Section titled “How it works”](#how-it-works)
+
+SVG optimization happens during the build process, not at runtime:
+
+* In **development mode**, SVG files are not optimized to ensure faster rebuild times and a smoother development experience.
+* In **production builds**, all imported SVG files are optimized once during the build process, resulting in smaller file sizes.
+* There is **no runtime overhead** - optimized SVGs are served as pre-processed static assets.
+
+While the optimization process may slightly increase your build times, the result is smaller file sizes and faster page loads for your users.
+
+## Further reading
+
+[Section titled “Further reading”](#further-reading)
+
+* [SVGO documentation](https://svgo.dev/)
 
 # Image Service API
 
@@ -66078,6 +66328,7 @@ import type {
   ActionAPIContext,
   ActionClient,
   ActionErrorCode,
+  ActionInputSchema,
   ActionReturnType,
   SafeResult,
  } from 'astro:actions';
@@ -66192,6 +66443,36 @@ button?.addEventListener('click', async () => {
 **Type:** `string`
 
 A union type of standard HTTP status codes [defined by IANA](https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) using the human-readable versions as uppercase strings separated by an underscore (e.g. `BAD_REQUEST` or `PAYLOAD_TOO_LARGE`).
+
+### `ActionInputSchema`
+
+[Section titled “ActionInputSchema”](#actioninputschema)
+
+**Type:** `ZodType`
+
+**Added in:** `astro@5.16.0` New
+
+A utility type that automatically infers the TypeScript type of an action’s input based on its Zod schema. This can be useful to reference an action’s [`input` validator type](#input-validator) as an object in your own type definitions.
+
+Returns `never` when [`input` validator](#input-validator) is omitted.
+
+The following example uses `ActionInputSchema` on an action named `contact` to:
+
+* Retrieve the Zod schema type for the input of the action.
+* Retrieve the expected input type of the action’s validator.
+
+src/components/Form.astro
+
+```astro
+---
+import { actions, ActionInputSchema } from 'astro:actions';
+import { z } from 'astro/zod';
+
+
+type ContactSchema = ActionInputSchema<typeof actions.contact>;
+type ContactInput = z.input<ContactSchema>;
+---
+```
 
 ### `ActionReturnType`
 
@@ -70090,7 +70371,7 @@ This tutorial will use **Netlify**, but you are welcome to use your preferred ho
 
    Make a note of your username. You will view your dashboard and any sites you create at `https://app.netlify.com/teams/username`
 
-2. Click `Add new site` > `Import an existing project`.
+2. Click `Add new project` > `Import an existing project`.
 
    You will be asked to connect to a Git provider. Choose GitHub and follow the steps onscreen to authenticate your GitHub account. Then, choose your Astro project’s GitHub repository from the list provided.
 
@@ -74656,7 +74937,7 @@ This guide covers how to update your version of Astro and related dependencies, 
 
 [Section titled “What has changed?”](#what-has-changed)
 
-The latest release of Astro is v5.15.9.
+The latest release of Astro is v5.16.0.
 
 You can find an exhaustive list of all changes in [Astro’s changelog](https://github.com/withastro/astro/blob/main/packages/astro/CHANGELOG.md), and important instructions for upgrading to each new [major version](#major-changes) in our [upgrade guides](#upgrade-guides).
 

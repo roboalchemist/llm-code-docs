@@ -1,19 +1,19 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk.md
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk.md
 
 # iOS SDK Overview
 
 Welcome to the ASAPP iOS SDK Overview! This document guides you through the process of integrating ASAPP functionality into your iOS application. It includes the following sections:
 
-* [Quick Start](/messaging-platform/integrations/ios-sdk/ios-quick-start "iOS Quick Start")
-* [Customization](/messaging-platform/integrations/ios-sdk/customization "Customization")
-* [User Authentication](/messaging-platform/integrations/ios-sdk/user-authentication "User Authentication")
-* [Miscellaneous APIs](/messaging-platform/integrations/ios-sdk/miscellaneous-apis "Miscellaneous APIs")
-* [Deep Links and Web Links](/messaging-platform/integrations/ios-sdk/deep-links-and-web-links "Deep Links and Web Links")
-* [Push Notifications](/messaging-platform/integrations/ios-sdk/push-notifications "Push Notifications")
+* [Quick Start](/agent-desk/integrations/ios-sdk/ios-quick-start "iOS Quick Start")
+* [Customization](/agent-desk/integrations/ios-sdk/customization "Customization")
+* [User Authentication](/agent-desk/integrations/ios-sdk/user-authentication "User Authentication")
+* [Miscellaneous APIs](/agent-desk/integrations/ios-sdk/miscellaneous-apis "Miscellaneous APIs")
+* [Deep Links and Web Links](/agent-desk/integrations/ios-sdk/deep-links-and-web-links "Deep Links and Web Links")
+* [Push Notifications](/agent-desk/integrations/ios-sdk/push-notifications "Push Notifications")
 
 In addition, you can view the following documentation:
 
-* [iOS SDK Release Notes](/messaging-platform/integrations/ios-sdk/ios-sdk-release-notes "iOS SDK Release Notes")
+* [iOS SDK Release Notes](/agent-desk/integrations/ios-sdk/ios-sdk-release-notes "iOS SDK Release Notes")
 
 ## Requirements
 

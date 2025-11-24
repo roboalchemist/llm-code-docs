@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/live-agent-summary.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/live-agent-summary.md
 
 # Live Agent Summary - GenAgent
 
@@ -64,15 +64,15 @@ After setting up Live Agent Summary, you're ready to improve agent efficiency an
 You may find the following sections helpful in advancing your Digital Agent Desk capabilities:
 
 <CardGroup>
-  <Card href="/messaging-platform/digital-agent-desk/knowledge-base" title="Knowledge Base">
+  <Card href="/agent-desk/digital-agent-desk/knowledge-base" title="Knowledge Base">
     Learn how to configure and optimize your knowledge base for better agent support.
   </Card>
 
-  <Card href="/messaging-platform/digital-agent-desk/user-management" title="User Management">
+  <Card href="/agent-desk/digital-agent-desk/user-management" title="User Management">
     Configure user roles and permissions to optimize agent access and capabilities.
   </Card>
 
-  <Card href="/messaging-platform/digital-agent-desk/queues-and-routing" title="Queues and Routing">
+  <Card href="/agent-desk/digital-agent-desk/queues-and-routing" title="Queues and Routing">
     Set up efficient queue management and routing to complement summary capabilities.
   </Card>
 

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-quick-start.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-quick-start.md
 
 # Web Quick Start
 
@@ -27,13 +27,13 @@ To enable the ASAPP Chat SDK, you'll first need to paste the [ASAPP Chat SDK Web
 This snippet does two things:
 
 1. Creates a `<script>` element that asynchronously downloads the `https://sdk.asapp.com/chat-sdk.js` JavaScript.
-2. Creates a global `ASAPP` function that enables you to interact with [ASAPP's JavaScript API](/messaging-platform/integrations/web-sdk/web-javascript-api "Web JavaScript API").
+2. Creates a global `ASAPP` function that enables you to interact with [ASAPP's JavaScript API](/agent-desk/integrations/web-sdk/web-javascript-api "Web JavaScript API").
 
 If you're curious, feel free to view the [Full Snippet](#full-snippet "Full Snippet").
 
 ## 2. Initialize the SDK
 
-After you [Embed the Script](#1-embed-the-script "1. Embed the Script") into the page, you can start using the [JavaScript API](/messaging-platform/integrations/web-sdk/web-javascript-api "Web JavaScript API") to initialize and display the application.
+After you [Embed the Script](#1-embed-the-script "1. Embed the Script") into the page, you can start using the [JavaScript API](/agent-desk/integrations/web-sdk/web-javascript-api "Web JavaScript API") to initialize and display the application.
 
 To initialize the ASAPP Chat SDK, call the `ASAPP('load')` method as seen below:
 
@@ -57,15 +57,15 @@ To initialize the ASAPP Chat SDK, call the `ASAPP('load')` method as seen below:
 
 Calling `ASAPP('load')` will make a network request to your APIHostname and determine whether or not it should display the Chat SDK Badge. The Badge will display based on your company's business hours, your trigger settings, and whether or not you have enabled the SDK in your Admin control panel.
 
-For more advanced ways to display the ASAPP Chat SDK, see the [JavaScript API Documentation](/messaging-platform/integrations/web-sdk/web-javascript-api "Web JavaScript API").
+For more advanced ways to display the ASAPP Chat SDK, see the [JavaScript API Documentation](/agent-desk/integrations/web-sdk/web-javascript-api "Web JavaScript API").
 
 ## 3. Customize the SDK
 
-After you  Embed the Script and Initialize the SDK, the ASAPP Chat SDK should display and function on your web page. You may wish to head to the [Customization](/messaging-platform/integrations/web-sdk/web-customization "Web Customization") section of the documentation to learn how to customize the appearance of the ASAPP Chat SDK.
+After you  Embed the Script and Initialize the SDK, the ASAPP Chat SDK should display and function on your web page. You may wish to head to the [Customization](/agent-desk/integrations/web-sdk/web-customization "Web Customization") section of the documentation to learn how to customize the appearance of the ASAPP Chat SDK.
 
 ## 4. Authenticate Users
 
-Some integrations of the ASAPP Chat SDK allow users to access sensitive account information. If any of your use cases fall under this category, please read the [Authentication](/messaging-platform/integrations/web-sdk/web-authentication "Web Authentication") section to ensure your users experience a secure and seamless session.
+Some integrations of the ASAPP Chat SDK allow users to access sensitive account information. If any of your use cases fall under this category, please read the [Authentication](/agent-desk/integrations/web-sdk/web-authentication "Web Authentication") section to ensure your users experience a secure and seamless session.
 
 ## Full Snippet
 

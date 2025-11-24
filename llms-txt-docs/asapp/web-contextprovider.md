@@ -1,10 +1,10 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-contextprovider.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-contextprovider.md
 
 # Web ContextProvider
 
-This section details the various ways you can use the ASAPP ContextProvider with the Chat SDK API. Before using the ContextProvider, make sure you've [integrated the ASAPP SDK](/messaging-platform/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page.
+This section details the various ways you can use the ASAPP ContextProvider with the Chat SDK API. Before using the ContextProvider, make sure you've [integrated the ASAPP SDK](/agent-desk/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page.
 
-The ASAPP `ContextProvider` is used for passing various information about your users or their sessions to the Chat SDK. It is a key that may be set in the [Load and SetCustomer](/messaging-platform/integrations/web-sdk/web-javascript-api) APIs. The key must be assigned a function that will receive two arguments.
+The ASAPP `ContextProvider` is used for passing various information about your users or their sessions to the Chat SDK. It is a key that may be set in the [Load and SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api) APIs. The key must be assigned a function that will receive two arguments.
 
 The first argument is a `callback` function. The second argument is a `needsRefresh` boolean indicating whether or not the authorization information needs to be refreshed.
 
@@ -50,7 +50,7 @@ The `ContextProvider` plays an important role in authorizing your users with the
   Your site is responsible for retrieving and providing all authorization information. Once provided to ASAPP, your user will be allowed secure access to any integrated use cases.
 </Note>
 
-Along with providing a [CustomerId](/messaging-platform/integrations/web-sdk/web-app-settings#customerid "CustomerId"), you'll need to provide any request body with information, cookies, headers, or access tokens required for ASAPP to authorize with your systems.
+Along with providing a [CustomerId](/agent-desk/integrations/web-sdk/web-app-settings#customerid "CustomerId"), you'll need to provide any request body with information, cookies, headers, or access tokens required for ASAPP to authorize with your systems.
 
 You may provide this information using the `Auth` key and the following set of nested properties:
 
@@ -82,7 +82,7 @@ Each key within the `Auth` object is optional, but you must provide any necessar
 * The `Scopes` key accepts an array of strings defining which services may be updated with the provided token.
 * The `Token` key accepts a single access token string.
 
-Please see the [Authentication](/messaging-platform/integrations/web-sdk/web-authentication "Web Authentication") section for full details on using the `ContextProvider` for authenticating your users.
+Please see the [Authentication](/agent-desk/integrations/web-sdk/web-authentication "Web Authentication") section for full details on using the `ContextProvider` for authenticating your users.
 
 ## Customer Info
 
@@ -166,7 +166,7 @@ An object containing a set of key:value pairs that you wish to provide as analyt
 
 ## Segments
 
-If your company needs to group users at a more granular level than [AppId](/messaging-platform/integrations/web-sdk/web-app-settings#appid "AppId") or [CompanySubdivision](#company-subdivisions "Company Subdivisions"), you may use the `Segments` key to apply labels to your reports.
+If your company needs to group users at a more granular level than [AppId](/agent-desk/integrations/web-sdk/web-app-settings#appid "AppId") or [CompanySubdivision](#company-subdivisions "Company Subdivisions"), you may use the `Segments` key to apply labels to your reports.
 
 Each key you provide allows you to filter your reporting dashboard by those values.
 

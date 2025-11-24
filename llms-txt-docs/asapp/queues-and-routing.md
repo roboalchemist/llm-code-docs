@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/queues-and-routing.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/queues-and-routing.md
 
 # Queues and Routing
 
@@ -23,7 +23,7 @@ An **Intent** classifies each customer conversation (Issue) and serves as the pr
 
 During runtime, Machine Learning (ML) models automatically assign the most appropriate Intent to each new Issue.
 
-**Queue Routing** uses these Intents along with other defined criteria to direct conversations to specific Queues (Referred to as [Attributes Based Routing](/messaging-platform/digital-agent-desk/queues-and-routing/attributes-based-routing)). Each **Queue** represents a group of agents qualified to handle particular types of Issues.
+**Queue Routing** uses these Intents along with other defined criteria to direct conversations to specific Queues (Referred to as [Attributes Based Routing](/agent-desk/digital-agent-desk/queues-and-routing/attributes-based-routing)). Each **Queue** represents a group of agents qualified to handle particular types of Issues.
 
 <Note>
   ASAPP manages the configuration and maintenance of Intents and Queue Routing. Work with your ASAPP account team to optimize these settings for your business needs.

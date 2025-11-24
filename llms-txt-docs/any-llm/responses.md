@@ -2,6 +2,10 @@
 
 # Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/responses.md
 
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/types/responses.md
+
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/responses.md
+
 ## Responses
 
 

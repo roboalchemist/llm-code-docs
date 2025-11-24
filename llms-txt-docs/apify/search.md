@@ -1,15 +1,3 @@
-# Source: https://docs.apify.com/cli/search.md
-
-# Source: https://docs.apify.com/sdk/python/search.md
-
-# Source: https://docs.apify.com/sdk/js/search.md
-
-# Source: https://docs.apify.com/api/client/python/search.md
-
-# Source: https://docs.apify.com/api/client/js/search.md
-
-# Source: https://docs.apify.com/platform/integrations/make/search.md
-
 # Source: https://docs.apify.com/search.md
 
 

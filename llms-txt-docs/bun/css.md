@@ -73,7 +73,7 @@ Bun's CSS bundler automatically converts this nested syntax into traditional fla
 
 You can also nest media queries and other at-rules inside selectors, eliminating the need to repeat selector patterns:
 
-```css title="styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```scss title="styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 .responsive-element {
   display: block;
 

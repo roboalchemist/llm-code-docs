@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk.md
 
 # Digital Agent Desk
 
@@ -9,8 +9,8 @@ The Digital Agent Desk for chat is the main application where agents can communi
 * Send and receive messages across multiple channels.
 * Manage concurrent conversations with intelligent prioritization.
 * Access interaction history for context-aware support.
-* Use AI tools like AutoCompose, Autopilot, and AutoSummary for faster Average Handle Time (AHT).
-* Intuitive interface with integrated [knowledge base](/messaging-platform/digital-agent-desk/knowledge-base) and customer info.
+* Use AI tools like AI Compose, Autopilot, and AI Summary for faster Average Handle Time (AHT).
+* Intuitive interface with integrated [knowledge base](/agent-desk/digital-agent-desk/knowledge-base) and customer info.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=261dcb2ec42b798d65c3fa878c9df8d9" data-og-width="2880" width="2880" data-og-height="1888" height="1888" data-path="image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=cd5459f603bc5d5f8e021e58662ed38b 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=a01ef25fc2bc7747d5440d9866b8895a 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=060cdd9d488bf095d7d928ec94c42da3 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=d8ac8cb9caa3fff109d7600d477dfbf5 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=cc5da49067b117e79fd0ad4712456b58 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-93f27193-68fc-f3ac-f3ae-e392d9ad012e.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=95f8eadc910f56a59f68cbe3e126ac58 2500w" />
@@ -65,7 +65,7 @@ Digital Agent Desk capture agent conversations and actions to power Machine Lear
     </Frame>
   </Accordion>
 
-  <Accordion title="AutoSummary">
+  <Accordion title="AI Summary">
     Streamline the post-call work by automatically summarizing the conversation.
 
     <Frame>
@@ -87,7 +87,7 @@ This data can be directly from ASAPP, or from your own CRM or other systems.
 ## Next Steps
 
 <CardGroup>
-  <Card title="Agent Desk Navigation" href="/messaging-platform/digital-agent-desk/agent-desk-navigation">Learn how to navigate the Agent Desk</Card>
-  <Card title="Knowledge Base" href="/messaging-platform/digital-agent-desk/knowledge-base">Learn how to set up and use the Knowledge Base</Card>
-  <Card title="API Integration" href="/messaging-platform/digital-agent-desk/api-integration">Connect your own systems and CRMs to the Agent Desk</Card>
+  <Card title="Agent Desk Navigation" href="/agent-desk/digital-agent-desk/agent-desk-navigation">Learn how to navigate the Agent Desk</Card>
+  <Card title="Knowledge Base" href="/agent-desk/digital-agent-desk/knowledge-base">Learn how to set up and use the Knowledge Base</Card>
+  <Card title="API Integration" href="/agent-desk/digital-agent-desk/api-integration">Connect your own systems and CRMs to the Agent Desk</Card>
 </CardGroup>

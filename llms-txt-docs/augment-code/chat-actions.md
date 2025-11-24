@@ -2,8 +2,6 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-actions.md
 
-# Source: https://docs.augmentcode.com/using-augment/chat-actions.md
-
 # Using Actions in Chat
 
 > Actions let you take common actions on code blocks without leaving Chat. Explain, improve, or find everything you need to know about your codebase.

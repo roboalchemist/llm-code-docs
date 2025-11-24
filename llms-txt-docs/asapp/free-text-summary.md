@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/autosummary/free-text-summary.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/free-text-summary.md
 
 # Free text Summary
 
@@ -6,7 +6,7 @@
 
 A Free text summary is a generated summary or description from a conversation.
 
-AutoSummary generates high-quality, free-text summaries that are fully configurable in both format and content. You have the flexibility to include or exclude targeted elements based on your needs.
+AI Summary generates high-quality, free-text summaries that are fully configurable in both format and content. You have the flexibility to include or exclude targeted elements based on your needs.
 
 This eliminates the need for agents to take notes during, or after calls, and to minimize post-call forms.
 
@@ -37,13 +37,13 @@ Here is an example summary generated from the above conversation:
 
 > The customer inquired about the status of a payout for an approved claim. The agent confirmed that the claim was approved and the payout has been processed and will be credited within 3-5 business days.
 
-For conversations that involve transfers or multiple agents, AutoSummary can generate summaries for both the entire multi-leg conversation and specific legs.
+For conversations that involve transfers or multiple agents, AI Summary can generate summaries for both the entire multi-leg conversation and specific legs.
 
 ## Generate a free text summary
 
 To generate a free text summary, provide the conversation transcript into ASAPP first.
 
-This example uses our conversation API, but you have options to use AutoTranscribe or batch integration options.
+This example uses our conversation API, but you have options to use AI Transcribe or batch integration options.
 
 ### Step 1: Create a conversation
 
@@ -179,7 +179,7 @@ This summary is for the entire conversation, regardless of the number of agents.
 
 ## Multi-leg summaries
 
-You may have a conversation where one end user talks to multiple agents about different topics. With AutoSummary, you can generate summaries for a conversation based on which agent you want to summarize.
+You may have a conversation where one end user talks to multiple agents about different topics. With AI Summary, you can generate summaries for a conversation based on which agent you want to summarize.
 
 To generate a summary for one leg, provide the id of the conversation in the path, and the agent id as a query parameter.
 
@@ -193,7 +193,7 @@ This generates a summary for the conversation, only for the parts of conversatio
 
 ## Customization
 
-AutoSummary allows for extensive customization for the free text summary to meet your specific needs. Whether you want to highlight particular aspects of conversations or adhere to industry-specific standards, this feature provides the flexibility to tailor summaries in a way that aligns with your operational goals.
+AI Summary allows for extensive customization for the free text summary to meet your specific needs. Whether you want to highlight particular aspects of conversations or adhere to industry-specific standards, this feature provides the flexibility to tailor summaries in a way that aligns with your operational goals.
 
 To customize your free text summaries, work with your ASAPP account team to refine what you want from your summaries.
 

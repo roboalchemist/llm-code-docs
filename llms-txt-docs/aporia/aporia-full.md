@@ -283,7 +283,7 @@ However, here are some questions you should consider while deciding - What is th
 
 Depending on your use case, you might want to use different performance metrics in order to decide how well our model performs. For example, nDCG is common when you want to understand the quality of your ranking model. AUC-ROC is useful when you want to evaluate you binary classification model.
 
-You can read more about all the different metrics and the use cases which you will find useful in our [metric glossary.](https://docs.aporia.com/api-reference/metrics-glossary)\\
+You can read more about all the different metrics and the use cases which you will find useful in our [metric glossary.](https://docs.aporia.com/api-reference/metrics-glossary)<br>
 
 ## Actuals / Ground Truth
 
@@ -2056,7 +2056,7 @@ Let’s start with an example. For each entity, you can log the word count of th
 
 For example, you might expect `country` entities to be 1-2 words, but `organization` entities to have a distribution of 1-5 words, with most organizations having 2-3 words. If suddenly you see an `organization` with 10 words - it is an outlier and probably not really an organization :)
 
-But word count is just a simple example, and depending on your application, you can add various types of metadata to make monitoring really great :tada:\\
+But word count is just a simple example, and depending on your application, you can add various types of metadata to make monitoring really great :tada:<br>
 
 
 # Example: Question Answering
@@ -2411,7 +2411,7 @@ In order to provide access to S3, create a IAM role with the necessary API permi
 13. In the **Audience** field, select “sts.amazonaws.com”.
 14. Click the **Next** button.
 15. Click the **Next** button.
-16. In the **Role name** field, enter a role name.\\
+16. In the **Role name** field, enter a role name.<br>
 
     <figure><img src="https://1009457926-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCiBXs570GNM7Jbx4EBQ9%2Fuploads%2FYFOg5wQf3BHHCbzreYJF%2Fimage.png?alt=media&#x26;token=0961b19b-6ca4-4033-b454-6457edd3e22e" alt=""><figcaption></figcaption></figure>
 
@@ -2423,7 +2423,7 @@ In order to provide access to S3, create a IAM role with the necessary API permi
    &#x20;
 
    <figure><img src="https://1009457926-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCiBXs570GNM7Jbx4EBQ9%2Fuploads%2F4teEdAjRoqlk1cw94NPC%2Fimage.png?alt=media&#x26;token=df3dffce-a9b0-4159-bdd7-663dd1ecd3ae" alt=""><figcaption></figcaption></figure>
-4. In the policy editor, click the **JSON** tab.\\
+4. In the policy editor, click the **JSON** tab.<br>
 
    <figure><img src="https://1009457926-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCiBXs570GNM7Jbx4EBQ9%2Fuploads%2F0NuUgeP9TB5WdqvELpuC%2Fimage.png?alt=media&#x26;token=fdb4c43c-c15c-45d7-a48b-509d8c9024bd" alt=""><figcaption></figcaption></figure>
 5. Copy the following access policy, and make sure to fill your correct bucket name.
@@ -4105,7 +4105,7 @@ Aporia allows you to send alerts generated from Aporia’s monitors to any syste
 
 ### Add a Webhook integration
 
-1. Log into Aporia’s console. On the navbar on the left, click on **Integrations** and choose **Webhook**. \\
+1. Log into Aporia’s console. On the navbar on the left, click on **Integrations** and choose **Webhook**. <br>
 
    <figure><img src="https://1009457926-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCiBXs570GNM7Jbx4EBQ9%2Fuploads%2FLbhs43nMEYbWRYjR4BDp%2Fwebhook-integration.png?alt=media" alt=""><figcaption></figcaption></figure>
 2. Enter your **Integration Name**, **Webhook URL** and **Custom Headers**(optional). The url should include the schema (http/ https).
@@ -5311,7 +5311,7 @@ Where RELi is the list of top i objects ordered by their rank.
 
 The normalized version of the metric (nDCG) gives you the ability to compare between two rankings of different lengths.
 
-nDCG is calculated using the following formula:\\
+nDCG is calculated using the following formula:<br>
 
 $$
 nDCG = \frac{DCG\_p}{IDCG\_p}
@@ -5377,7 +5377,7 @@ Choose your data source, and click continue.
 
 Now you'll need to enter a regex to define the path of the files to ingest from your bucket. Notice that the regex should include the file extension. In addition, you should select the file format of the ingested files.
 
-Click "Test" to see validate the ingestion, and to check the auto infer of the types.\\
+Click "Test" to see validate the ingestion, and to check the auto infer of the types.<br>
 
 <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2F9qWFA9vuz6fK3l67MKe2%2Fimage.png?alt=media&#x26;token=27819db3-314e-4e27-830e-be6d4013a961" alt=""><figcaption><p>Link A Dataset</p></figcaption></figure>
 
@@ -5562,7 +5562,7 @@ However, here are some questions you should consider while deciding - What is th
 
 Depending on your use case, you might want to use different performance metrics in order to decide how well our model performs. For example, nDCG is common when you want to understand the quality of your ranking model. AUC-ROC is useful when you want to evaluate you binary classification model.
 
-You can read more about all the different metrics and the use cases which you will find useful in our [metric glossary.](https://docs.aporia.com/api-reference/metrics-glossary)\\
+You can read more about all the different metrics and the use cases which you will find useful in our [metric glossary.](https://docs.aporia.com/api-reference/metrics-glossary)<br>
 
 ## Actuals / Ground Truth
 
@@ -6485,7 +6485,7 @@ The `embedding` as the name suggested, should be used with your embedding column
 * **Visualize NLP drift using Aporia's Embeddings Projector** - Use the Embedding Projector widget within the investigation room, to view drift between different datasets in production, using UMAP for dimension reduction.
 * **Set up monitors to get notified for ML issues** - Including data integrity issues, model performance degradation, and model drift. For example:
   * Make sure the distribution of the different entity labels doesn’t drift across time
-  * Make sure the distribution of the embedding vector doesn’t drift across time\\
+  * Make sure the distribution of the embedding vector doesn’t drift across time<br>
 
 
 # Example: Question Answering
@@ -6657,7 +6657,7 @@ Use the same role used for the Aporia deployment. If someone else on your team h
    &#x20;
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FONX0CFlfRgcdoWsPK3rv%2Fimage.png?alt=media&#x26;token=df3dffce-a9b0-4159-bdd7-663dd1ecd3ae" alt=""><figcaption></figcaption></figure>
-4. In the policy editor, click the **JSON** tab.\\
+4. In the policy editor, click the **JSON** tab.<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2F1CGD943weVL2NbxN6Fg8%2Fimage.png?alt=media&#x26;token=fdb4c43c-c15c-45d7-a48b-509d8c9024bd" alt=""><figcaption></figcaption></figure>
 5. Copy the following access policy, and make sure to fill your correct bucket name.
@@ -6881,27 +6881,27 @@ Use the same service account used for the Aporia deployment. If someone else on 
 #### Step 2: Grant read access to the relevant project
 
 1. Go to the [IAM console](https://console.cloud.google.com/iam-admin/) and login.
-2. Find the Aporia service account you obtain in the previous step and click on 🖋 **Edit Principle**\\
+2. Find the Aporia service account you obtain in the previous step and click on 🖋 **Edit Principle**<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FoyGqcuJUNqwSagV4mBTI%2Fimage.png?alt=media&#x26;token=48fd35fa-ed3b-4cb2-a3c2-33a2d96721aa" alt=""><figcaption></figcaption></figure>
-3. In the "Edit access" window click on **ADD ANOTHER ROLE**\\
+3. In the "Edit access" window click on **ADD ANOTHER ROLE**<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FOxCIRvkqCRYU5ZWbFkG9%2Fimage.png?alt=media&#x26;token=0dd0e13a-d6da-4b15-81ba-c3fab444e3e6" alt=""><figcaption></figcaption></figure>
-4. Add the `BigQuery Data Viewer` and `BigQuery Job User` roles and click **Save**\\
+4. Add the `BigQuery Data Viewer` and `BigQuery Job User` roles and click **Save**<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2F5oHuIXXxdd38qmVSLlOB%2Fimage.png?alt=media&#x26;token=e603e9aa-b39e-4da2-88a2-13f37175aab9" alt=""><figcaption></figcaption></figure>
 
 #### Step 3: Grant access to the materialization dataset
 
 1. Go to the [BigQuery console](https://console.cloud.google.com/bigquery) and login.
-2. In the left-hand panel, expand the relevant project and find the materialization dataset you created in the previous steps.\\
+2. In the left-hand panel, expand the relevant project and find the materialization dataset you created in the previous steps.<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FerW3P1DCbZPEputlVJ2c%2Fimage.png?alt=media&#x26;token=2daec3a1-c34c-4126-9186-99954964339b" alt=""><figcaption></figcaption></figure>
 3. Click on "**...**" by the dataset name, then click on **Share**
-4. In the "Share permissions" window click on **Add Principal**\\
+4. In the "Share permissions" window click on **Add Principal**<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FZ1NBLqHjwYDKZjnwWkWN%2Fimage.png?alt=media&#x26;token=009b0c71-ef54-45bd-b9b7-f2cb2a5f7366" alt=""><figcaption></figcaption></figure>
-5. In the "New principal" box, enter the email of the Aporia service account you have obtained. Choose the `BigQuery Data Editor` role and click **Save**.\\
+5. In the "New principal" box, enter the email of the Aporia service account you have obtained. Choose the `BigQuery Data Editor` role and click **Save**.<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FfWgUeqKTrJBzMDSt8Imo%2Fimage.png?alt=media&#x26;token=a8ab4455-d96e-4471-82f6-d62373a837a8" alt=""><figcaption></figcaption></figure>
 
@@ -7332,7 +7332,7 @@ This authentication method is currently supported for databricks deployments onl
 #### Step 1: Create a new application for Aporia access in your Azure Active Directory
 
 1. Go the Azure Active Directory portal and login
-2. Click on **+ Add** and choose **App registration**\\
+2. Click on **+ Add** and choose **App registration**<br>
 
    <figure><img src="https://691195388-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMGlr0qI6TBrhv4rIjaKP%2Fuploads%2FAh7RKoG9XRtKec5XV4T4%2Fimage.png?alt=media&#x26;token=288b32c5-8309-4741-a1c8-4e9a48d25566" alt=""><figcaption></figcaption></figure>
 3. Insert a display name for the Aporia app and click on **Register**

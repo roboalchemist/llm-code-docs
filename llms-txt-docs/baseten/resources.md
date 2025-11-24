@@ -120,11 +120,11 @@ Accelerated inference for LLMs, diffusion models, and Whisper.
 | A100:6x72x864  | \$0.61440 | 72   | 864 GiB  | 6 NVIDIA A100s         | 480 GiB |
 | A100:7x84x1008 | \$0.71680 | 84   | 1008 GiB | 7 NVIDIA A100s         | 560 GiB |
 | A100:8x96x1152 | \$0.81920 | 96   | 1152 GiB | 8 NVIDIA A100s         | 640 GiB |
-| H100           | \$0.16640 | -    | -        | 1 NVIDIA H100          | 80 GiB  |
-| H100:2         | \$0.33280 | -    | -        | 2 NVIDIA H100s         | 160 GiB |
-| H100:4         | \$0.66560 | -    | -        | 4 NVIDIA H100s         | 320 GiB |
-| H100:8         | \$1.33120 | -    | -        | 8 NVIDIA H100s         | 640 GiB |
-| H100MIG        | \$0.08250 | -    | -        | Fractional NVIDIA H100 | 40 GiB  |
+| H100           | \$0.10833 | -    | -        | 1 NVIDIA H100          | 80 GiB  |
+| H100:2         | \$0.21667 | -    | -        | 2 NVIDIA H100s         | 160 GiB |
+| H100:4         | \$0.43333 | -    | -        | 4 NVIDIA H100s         | 320 GiB |
+| H100:8         | \$0.86667 | -    | -        | 8 NVIDIA H100s         | 640 GiB |
+| H100MIG        | \$0.06250 | -    | -        | Fractional NVIDIA H100 | 40 GiB  |
 
 ## GPU Details & Workloads
 

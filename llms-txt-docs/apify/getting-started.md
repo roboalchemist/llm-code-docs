@@ -1,9 +1,3 @@
-# Source: https://docs.apify.com/api/client/python/docs/overview/getting-started.md
-
-# Source: https://docs.apify.com/academy/getting-started.md
-
-# Source: https://docs.apify.com/academy/apify-scrapers/getting-started.md
-
 # Source: https://docs.apify.com/api/v2/getting-started.md
 
 # Getting started with Apify API

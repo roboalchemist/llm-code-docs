@@ -1,5 +1,3 @@
-# Source: https://docs.apify.com/platform/schedules.md
-
 # Source: https://docs.apify.com/api/v2/schedules.md
 
 # Schedules - Introduction

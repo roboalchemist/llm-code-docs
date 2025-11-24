@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/chat-instead/web.md
+# Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/web.md
 
 # Web
 

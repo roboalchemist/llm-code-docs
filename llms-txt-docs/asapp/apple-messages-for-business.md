@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/apple-messages-for-business.md
+# Source: https://docs.asapp.com/agent-desk/integrations/apple-messages-for-business.md
 
 # Apple Messages for Business
 
@@ -33,7 +33,7 @@ Apple supports multiple entry points for customers to engage using the Messages 
 
 #### ASAPP Entry Point
 
-ASAPP supports the Chat Instead entry point. See the [Chat Instead](/messaging-platform/integrations/chat-instead "Chat Instead") documentation for more information.
+ASAPP supports the Chat Instead entry point. See the [Chat Instead](/agent-desk/integrations/chat-instead "Chat Instead") documentation for more information.
 
 ### Complete User Experience Review
 

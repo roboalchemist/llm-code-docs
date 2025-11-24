@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/insights-manager/live-insights/navigation.md
+# Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/navigation.md
 
 # Navigation
 

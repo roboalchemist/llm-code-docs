@@ -482,6 +482,123 @@ This improvement allows developers to quickly assess the severity and nature of 
 Refer [JS errors,](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/js-errors) for more information.
 
 
+# Fix patch releases (v9.1.1)
+
+This article summarizes a list of fix patch releases made in the Avaamo Conversational AI Platform version 9.1.1. The following are some of the key fixes included in this release:
+
+1. [Custom formatting instructions for LLaMB responses](#custom-formatting-instructions-for-llamb-responses)
+2. [Enhanced support for multilingual document ingestion](#enhanced-support-for-multilingual-document-ingestion)
+3. [Enhanced document filters and statuses in DataSync](#enhanced-document-filters-and-statuses-in-datasync)
+4. [Multilingual document ingestion support for DataSync](#multilingual-document-ingestion-support-for-datasync)
+5. [SSO flow improvements for Microsoft Teams](#sso-flow-improvements-for-microsoft-teams)
+6. [Enhanced security validation for SMS channel](#enhanced-security-validation-for-sms-channel)
+7. [Response cutoff message translation](#response-cutoff-message-translation)
+8. [Improved filtering options in the JS errors page](#improved-filtering-options-in-the-js-errors-page)
+9. [File transfer capture support for custom live agent integrations](#file-transfer-capture-support-for-custom-live-agent-integrations)
+
+### Custom formatting instructions for LLaMB responses
+
+In this release, we are introducing `Custom Formatting Instructions` for LLaMB responses. This feature allows teams to define the tone, structure, and layout of every generated response, ensuring consistent communication that aligns with organizational guidelines and specific use-case requirements.
+
+To configure custom formatting instructions, navigate to the `Advanced settings` section within the LLaMB skill page.
+
+Click `Edit`
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FVQpI9e6GrcpdcmRqH06G%2FScreenshot%202025-11-18%20at%203.09.55%E2%80%AFPM.png?alt=media&#x26;token=5afb6970-9495-4bf5-9371-c409c1801f12" alt=""><figcaption></figcaption></figure>
+
+After writing the message, click `Save`.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FvRE71GOeTEN1Yt532ah0%2FScreenshot%202025-11-18%20at%203.10.42%E2%80%AFPM.png?alt=media&#x26;token=8ed18489-3217-450e-82ed-61df45be344e" alt=""><figcaption></figcaption></figure>
+
+Refer [Advanced Settings](https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content), for more information.
+
+### Enhanced multilingual document ingestion support for LLaMB
+
+In this release, multilingual document ingestion is expanded to support documents uploaded via the platform UI, previously limited to API-based ingestion.
+
+**Key enhancements include:**
+
+**UI-based auto-detection control:** You can now enable or disable language auto-detection for all selected documents uploaded via the UI.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fxu90WPKxeUmO65l1qhJu%2FScreenshot%202025-11-19%20at%205.40.47%E2%80%AFPM.png?alt=media&#x26;token=90d68333-bb7b-465f-a541-5d5ec0301ac0" alt=""><figcaption></figcaption></figure>
+
+**Language selection when auto-detection is off:** If you turn off auto-detection, you can manually select the document’s language from a dropdown. The dropdown displays all [languages configured](https://docs.avaamo.com/user-guide/configuration/language) for the agent, allowing accurate classification of the uploaded document.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FRaoNjm5g8iqCYgrNjVZP%2FScreenshot%202025-11-19%20at%205.40.17%E2%80%AFPM.png?alt=media&#x26;token=e9259298-23b7-4ecf-a784-e047264f3f4b" alt=""><figcaption></figcaption></figure>
+
+**Header editing improvements:** For multilingual documents, the original header remains non-editable while the translated (English) header can be edited. English documents continue to behave as before.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F9Aum3VJj6LZkbiVjlO5T%2FScreenshot%202025-11-04%20at%2012.48.03%E2%80%AFPM.png?alt=media&#x26;token=e75d8d23-9d0f-4188-83e9-cba349751486" alt=""><figcaption></figcaption></figure>
+
+**Original and translated view toggle:** A new toggle allows you to switch between the original and translated tables for easier review and editing.
+
+<div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FwrQkgvqGqxsNzEI5GWSM%2FScreenshot%202025-11-20%20at%207.49.26%E2%80%AFAM.png?alt=media&#x26;token=36c55487-38af-4722-9cc4-010ac4878ddb" alt=""><figcaption></figcaption></figure></div>
+
+### Enhanced document filters and statuses in DataSync
+
+This release introduces multiple improvements to document filtering, status visibility, and ingestion transparency within the DataSync UI:
+
+**Multi-select status filter:** A new multi-select dropdown lets users apply multiple document statuses simultaneously, enabling more flexible, efficient filtering.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FmfGWhTbCAjLfXkdsy0yC%2FScreenshot%202025-11-20%20at%201.06.44%E2%80%AFPM.png?alt=media&#x26;token=d0aef170-69c9-4f8d-943e-3acd35351d4e" alt=""><figcaption></figcaption></figure>
+
+**New “Others” category in top statistics:** A new `Others` tile appears alongside existing categories, helping teams quickly identify document counts that do not fall under ingestion, failed, or progressing statuses. This ensures alignment between categorized counts and the total document count. The Others category count represents the combined total of all `Skipped` and `Warning` statuses.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fjv53z2P2JvuwNPPfaWhx%2FScreenshot%202025-11-20%20at%201.25.25%E2%80%AFPM.png?alt=media&#x26;token=ec8e4882-0277-4825-95ad-e9185750a0ef" alt=""><figcaption></figcaption></figure>
+
+**Detailed status insights:** Hovering over **Warning**, **Error**, and **Skipped** statuses reveals the underlying issue or reason.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FpTJChZLzmV23oEzk3l1r%2FScreenshot%202025-11-20%20at%201.07.31%E2%80%AFPM.png?alt=media&#x26;token=2e138116-b1a0-44a3-8fa5-f32705564a23" alt=""><figcaption></figcaption></figure>
+
+**Introducing the Skipped status:**\
+The new `Skipped` status identifies documents that are intentionally ignored during the ingestion. This status includes a tooltip explaining why the content was skipped.
+
+For example, suppose the content remains unchanged in Web, ServiceNow, or SharePoint sources between runs, whether triggered manually via Sync Now or via auto-sync. In that case, the system skips the ingestion process.
+
+{% hint style="info" %}
+**Key points:**
+
+* URLs imported via CSV are always processed and marked as **Ingested**, and do not show **Skipped**.
+* Force re-ingesting a single document from the menu overrides existing states, moving the document to **Ingested**.
+  {% endhint %}
+
+### Multilingual document ingestion support for DataSync
+
+In this release, multilingual document ingestion is added to DataSync, allowing it to process documents in any language supported by the platform. You can now upload documents or files in any language supported by the platform, expanding flexibility for global and multilingual use cases.
+
+You can also use the **Auto Detect Language** toggle if you want the system to automatically identify the language of the uploaded document.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2Fufekv242vgiY2dg5GrO5%2FScreenshot%202025-11-20%20at%202.06.30%E2%80%AFPM.png?alt=media&#x26;token=53b3739c-084d-4a58-91a1-822c5e9bff7e" alt=""><figcaption></figcaption></figure>
+
+### SSO flow improvements for Microsoft Teams
+
+In this release, the SSO flow for the **Microsoft Teams channel** has been enhanced as part of the transition away from the deprecated SDK and the upgrade to the new cloud adapter. These changes were necessary because Microsoft deprecated the previously used SSO process, requiring internal updates to maintain compatibility and provide a smoother authentication experience for users.
+
+Refer [Deprecation details](https://learn.microsoft.com/en-us/azure/bot-service/what-is-new?view=azure-bot-service-4.0) from Microsoft for more information.
+
+### Enhanced security validation for the SMS channel
+
+In this release, an extra security layer has been added to the SMS channel to verify the authenticity of requests originating from Twilio. This enhancement improves protection against unauthorized or spoofed traffic and ensures more reliable message handling.
+
+### Response cutoff message translation
+
+In this release, the **Response Cutoff Message** is automatically translated based on the user’s query language. This ensures a consistent and seamless multilingual experience, allowing users to receive cutoff notifications in the same language as their interaction.
+
+### Improved filtering options in the JS errors page
+
+In this release, enhanced filtering capabilities have been added to the **JS errors** page. Users can now filter errors by type, such as **Warning** or **Error,** making it easier to isolate specific issues, focus on relevant problem areas, and streamline debugging and analysis.
+
+Additionally, file exports now include **only the log results that match the currently applied filter**, ensuring clean, relevant, and targeted exports for further review or reporting.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F94LSCKwVpVFYAFzE2dsj%2FScreenshot%202025-11-18%20at%2012.51.30%E2%80%AFPM.png?alt=media&#x26;token=13f424d6-5521-485a-b782-22c3707a5f61" alt=""><figcaption></figcaption></figure>
+
+Refer [JS errors](https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/js-errors), for more information.
+
+### **File transfer capture support for custom live agent integrations**
+
+In this release, support for capturing file transfers in custom live agent integrations has been introduced. Previously, file transfer events were not recorded. With this enhancement, all file transfers are now fully tracked to provide complete visibility into conversation activity.
+
+
 # Introducing the DataSync 2.0
 
 **DataSync 2.0** is a robust content integration and synchronization capability within the Avaamo Conversational AI Platform, designed to empower agents by seamlessly ingesting, processing, and managing information from multiple content sources. This ensures that agents deliver accurate, context-aware, and up-to-date responses.
@@ -3274,7 +3391,7 @@ The first step is to choose the type of content source from which information mu
 
 After selecting the content source from which you wish to import articles or documents, you can configure and ingest it by entering the necessary connection details. This ensures a smooth setup for your chosen content source.
 
-Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content), for more information.\\
+Refer to [Step 2: Configure content source and ingest content](https://docs.avaamo.com/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content), for more information.<br>
 
 
 # Step 2: Configure content source and ingest content
@@ -3598,7 +3715,7 @@ Refer to this article [Test your agent](https://docs.avaamo.com/user-guide/llamb
 
 <div align="left"><figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FFKzoweC8UCvsFkPnFg8o%2FScreenshot%202024-08-20%20at%202.32.38%E2%80%AFPM.png?alt=media&#x26;token=b882c005-6091-40c7-affb-a946bae55bdc" alt="" width="375"><figcaption></figcaption></figure></div>
 
-\\
+<br>
 
 
 # Common actions
@@ -4254,15 +4371,14 @@ Use console.log to log messages at specific steps in the script. This helps to v
 
 You can check the user query from the [Conversation history](https://docs.avaamo.com/user-guide/debug/conversation-history) to view the complete flow that caused an error or unexpected response.
 
-\\
+<br>
 
 
 # Configuration
 
 Add getting started message, persistent menu, define environment variables, switch to live agent, and configure to deploy in different channels.
 
-[\
-](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy)
+[<br>](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy)
 
 
 # Channels
@@ -4369,9 +4485,9 @@ After you save your web channel configuration settings, click **Test.**&#x20;
 
 # Microsoft Teams (MS Teams)
 
-**Microsoft Teams** is a proprietary business communication platform developed by [Microsoft](https://en.wikipedia.org/wiki/Microsoft), as part of the [Microsoft 365](https://en.wikipedia.org/wiki/Microsoft_365) family of products. Microsoft Teams is a chat-based collaboration platform complete with document sharing, online meetings, and many more extremely useful features for business communications.
+**Microsoft Teams** is a proprietary business communication platform developed by [Microsoft](https://en.wikipedia.org/wiki/Microsoft), as part of the [Microsoft 365](https://en.wikipedia.org/wiki/Microsoft_365) family of products. Microsoft Teams is a chat-based collaboration platform that includes document sharing, online meetings, and numerous other valuable features for business communications.
 
-The agents developed on the Avaamo platform can be deployed on the Microsoft teams channel.
+The agents developed on the Avaamo platform can be deployed on the Microsoft Teams channel.
 
 Refer [Microsoft Teams (MS Teams)](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/microsoft-teams-ms-teams), for more information.
 
@@ -4387,9 +4503,31 @@ Refer [SIP](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-age
 
 # Conversational IVR (C-IVR) or Phone
 
-You can deploy the agents built on the Avaamo Platform into your phone channel. This allows the callers to converse naturally with the agents via interactive voice responses (IVR) to get the desired results without having to navigate long audio menus. This feature can help to reduce live-agent calls, improve call routing, and provide a good user experience.
+You can deploy the agents built on the Avaamo Platform into your phone channel. This allows callers to converse naturally with agents via interactive voice responses (IVR) to achieve the desired results without having to navigate lengthy audio menus. This feature can help to reduce live-agent calls, improve call routing, and provide a good user experience.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FlnHDFa0tqno2kVjFDA9t%2FScreenshot%202025-04-14%20at%209.35.07%E2%80%AFPM.png?alt=media&#x26;token=59e1164c-e34d-4aa7-8748-5c60a962cc6f" alt=""><figcaption></figcaption></figure>
+**To configure a C-IVR channel:**
+
+After a successful configuration, a phone number is generated in the **Activated phone number** area, and this is the number that can be used to connect to your agent via the C-IVR channel.
+
+* In the **Agent** page, navigate to the **Configure -> Channels** option in the left navigation menu.
+* On the Channels page, click **Connect** in the C-IVR Channel.
+* Specify the following channel setting details:
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FhRKNkZ0vsbeLCCXRXaWP%2FScreenshot%202025-09-02%20at%202.00.17%E2%80%AFPM.png?alt=media&#x26;token=e3860229-2a9d-4c05-a705-57c9597fb984" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="167">Parameter</th><th>Descriptions</th></tr></thead><tbody><tr><td>Name</td><td>Indicates the <strong>Name</strong> used to identify the C-IVR channel. Note that you can have upto 150 characters in the channel name.</td></tr><tr><td><p>Languages and </p><p>Playback Voice for</p></td><td><p>Select the language and configure the voice or the persona to be used by your agent in the interactive phone conversations with the user. Each language has a different set of voice personas that you can choose from. Select the persona from the options provided in the "Playback voice for &#x3C;&#x3C;language>>" section:</p><p></p><ul><li>As with any enterprise voice, audio, or video application, each region or country has its phone number to dial. Similarly, in the C-IVR channel, you choose the language of the region or country where you wish to share the configured number. If you wish to share the number in multiple regions, then set up the C-IVR channel specific to each language. Note that one C-IVR channel is specific to only one language.</li><li>To hear the voice preview, type any text in the text area and click the play button. You can also download the voice preview if required.</li><li>You can select only those languages for which the agent is configured and those that are supported in the C-IVR channel. If you have switched to a language that is not supported in the C-IVR channel, then the agent responds in the default language.</li></ul><p>See <a href="../../how-to/build-agents/configure-agents/add-languages">Add languages</a> and <a href="../../how-to/build-agents/configure-agents/deploy/voice-supported-languages">Supported languages</a>, for more information. </p></td></tr><tr><td>Live agent transfer mode</td><td>Defines how a live agent is invited into the conversation when escalation is required. Supports <strong>Invite</strong> (conference style where the bot stays in the call) or <strong>Refer</strong> (the call is handed over to the agent directly).</td></tr><tr><td>ASR Configuration</td><td>Allows selection of the Automatic Speech Recognition (ASR) provider version for speech-to-text processing. Available options are <strong>V1, V2, V3, V4, V5, V6</strong>. Choose the version based on performance and compatibility.</td></tr><tr><td>Enable Noise Filter</td><td>When enabled, background noise is filtered out during user input. This improves recognition accuracy by reducing interference from non-speech sounds.</td></tr><tr><td>Fallback Forward Configuration</td><td>Defines the backup handling flow when the AI agent cannot process the user’s request. The request is forwarded to the specified destination along with the required headers.</td></tr><tr><td>Forward Destination</td><td>Specifies the phone number to which incoming calls will be forwarded.</td></tr><tr><td>Forward Headers</td><td>Custom headers to be included while forwarding the request. Headers should be specified in JSON object format. </td></tr><tr><td>Speech timeout</td><td><p>Indicates a maximum wait time of the agent within which a user response is expected. If the user response is not received within the time-out period, then an automated message is rendered back to the user indicating that the agent is awaiting the user response. Currently, this is a standard message and cannot be customized.</p><ul><li>The default value is 1 second.</li><li>Use the up and down arrows to increase or decrease time as required.</li></ul></td></tr><tr><td>SMS message options</td><td>Enable this option and specify a message, if you wish to send an SMS message to the caller when the call gets disconnected and/or when the call is completed. Specify the SMS text message in the respective options as required. Note that a single SMS can have upto 150 characters.</td></tr><tr><td>Send an SMS after completion of call</td><td>Enable this option and specify a message, if you wish to send an SMS message to the caller when the call is completed. Note that a single SMS can have upto 150 characters. If a call is hung up after a successful dialogue between the user and the agent, that is a user asks a query and the agent responds back to the query, then it is considered as complete.</td></tr><tr><td>Send an SMS if call disconnects</td><td>Enable this option and specify a message if you wish to send an SMS message to the caller when the call gets disconnected. Note that a single SMS can have up to 150 characters. A call is considered disconnected when the user asks a query and, before the agent's response is received, the call is hung up. This is the case when the user is between conversation flows.</td></tr><tr><td>Enable custom user authentication</td><td>Use this if you wish to enable custom authentication for your agents deployed on the phone channels using JavaScript code. See <a href="../../../how-to/build-agents/configure-agents/define-settings#user-authentication-handler">User authentication handler</a>, for more information.</td></tr><tr><td>Enable wait time tone</td><td><p>Use this option if you wish to play an idle tone to the user in case the agent is taking a little longer to respond. </p><p></p><p>Rather than experiencing silence or a lack of input, the introduction of a tone serves to engage the user actively and assures that the agent will respond shortly. For example, the system generates a typing tone when processing DTMF/keypad input.</p></td></tr><tr><td>Select file</td><td><p>Once you enable the wait time tone, the option to upload a file becomes available. You can customize the wait time tone by uploading an audio file that plays an idle tone for the user. The file must not exceed 10 seconds and should be within 5 MB in size.<br></p><p>Click <strong>Select File</strong>, then choose and upload the desired file for the wait time tone.</p></td></tr></tbody></table>
+
+* Click **Save** to save the C-IVR channel configuration details. A phone number is generated in the **Activated phone number** area and this is the number that can be used to connect to your agent.
+
+![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-MObDJReaiTqqzn81xT6%2F-MObDyyKrmG8GjgSpKrn%2Fc-ivr-channel-settings-save.png?alt=media\&token=cba0dad3-39e7-40e5-95fc-479939d40e06)
+
+{% hint style="success" %}
+**Key Points**:&#x20;
+
+* After successfully saving the C-IVR configuration, you have the option to add "Agent voice", "Voice menu", and "Voice hints" to the agent responses. See [Build skill responses](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses) and [Advanced settings](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings), for more information.
+* If you have deployed your agent in the C-IVR or Phone channel and masking is enabled, then the audio files from the user responses are not available in the conversation history, since it can contain PII data. See [Information masking](https://docs.avaamo.com/user-guide/overview-and-concepts/advanced-concepts/information-masking), for information.
+* You can also enable custom voice for your C-IVR agents in the Avaamo Platform. Contact Avaamo Support for more information.
+  {% endhint %}
 
 Refer [Conversational IVR (C-IVR) or Phone](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/deploy/conversational-ivr-c-ivr-phone), for more information.
 
@@ -4659,8 +4797,7 @@ The following are the authentication keys generated by the Platform for an agent
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FtlqbwerzUaWumz25sZEG%2FScreenshot%2029-10-2025%20at%2016.42%20(1).png?alt=media&#x26;token=1ec76c5e-690a-4662-a754-444f28b455ef" alt=""><figcaption></figcaption></figure>
 
-[\
-](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters)
+[<br>](https://docs.avaamo.com/user-guide/how-to/build-agents/configure-agents/add-response-filters)
 
 
 # Tags
@@ -4742,7 +4879,7 @@ The **Conversation history** page displays the records of the agent and all of i
 **Notes**:&#x20;
 
 * Currently, list view responses are not displayed in the conversation history.
-* Conversation history is not real-time and it may take upto 2 minutes for the Conversation history to be updated.
+* Conversation history is not real-time, and it may take up to 2 minutes for the Conversation history to be updated.
   {% endhint %}
 
 The **Conversation history** page includes a search bar, agent profile icon, and user profile icon.
@@ -4968,15 +5105,6 @@ The `Top Prompt Skills` analytics board displays the report of the frequently tr
 The `Top Documents Searched` widget displays a report of the most frequently searched documents across various skill responses based on the selected filter criteria. See [Select filter criteria](#select-filter-criteria), for more information on the available filter criteria.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FiSPrdo90QCp8iCI0GHkN%2FScreenshot%202025-04-02%20at%206.44.13%E2%80%AFPM.png?alt=media&#x26;token=27096ff2-703c-4861-8fdd-9499b2e58bc0" alt=""><figcaption></figcaption></figure>
-
-
-# Query insights
-
-The query insights feature helps gives you a closer look into the conversations that users have with your agent. You can also use the insights to search and export the data for these words/phrases.
-
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FKxVJy0LQly1BsYtqZiam%2FScreenshot%202025-04-14%20at%209.33.16%E2%80%AFPM.png?alt=media&#x26;token=b80e604d-06d5-4872-908f-22322be86f35" alt=""><figcaption></figcaption></figure>
-
-Refer [Query insights](https://docs.avaamo.com/user-guide/how-to/build-agents/monitor-and-analyze/query-insights), for more information.
 
 
 

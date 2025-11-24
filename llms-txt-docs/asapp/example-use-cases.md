@@ -1,18 +1,18 @@
-# Source: https://docs.asapp.com/autosummary/example-use-cases.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/example-use-cases.md
 
 # Example Use Cases
 
-> See examples on how AutoSummary can be used
+> See examples on how AI Summary can be used
 
-AutoSummary can be applied to various industries and use cases. This section provides examples of how AutoSummary can be implemented to solve specific business challenges.
+AI Summary can be applied to various industries and use cases. This section provides examples of how AI Summary can be implemented to solve specific business challenges.
 
 Each use case includes a brief overview, key components, and a high-level architecture diagram.
 
 ## Regulatory Compliance Monitoring
 
-AutoSummary can be used to automatically flag customer conversations that trigger regulatory compliance requirements, such as Regulation Z (Truth in Lending Act) and Regulation E (Electronic Funds Transfer Act) in the financial services industry.
+AI Summary can be used to automatically flag customer conversations that trigger regulatory compliance requirements, such as Regulation Z (Truth in Lending Act) and Regulation E (Electronic Funds Transfer Act) in the financial services industry.
 
-| Industry           | Category   | AutoSummary Features                                                        |
+| Industry           | Category   | AI Summary Features                                                         |
 | :----------------- | :--------- | :-------------------------------------------------------------------------- |
 | Financial Services | Compliance | <ul><li>Structured Data extraction </li><li>Intent identification</li></ul> |
 
@@ -31,11 +31,11 @@ AutoSummary can be used to automatically flag customer conversations that trigge
 
 ## Real-time Product Quality Monitoring (Retail, Telecommunications)
 
-AutoSummary can generate free-text summaries of customer complaints about product quality, allowing for real-time identification of defects and issues. This could be data such as specific products, complaint or issue types.
+AI Summary can generate free-text summaries of customer complaints about product quality, allowing for real-time identification of defects and issues. This could be data such as specific products, complaint or issue types.
 
-| Industry                  | Category          | AutoSummary Features |
-| :------------------------ | :---------------- | :------------------- |
-| Retail Telecommunications | Quality Assurance | Entity Extraction    |
+| Industry                  | Category          | AI Summary Features |
+| :------------------------ | :---------------- | :------------------ |
+| Retail Telecommunications | Quality Assurance | Entity Extraction   |
 
 ### Implementation
 
@@ -51,11 +51,11 @@ AutoSummary can generate free-text summaries of customer complaints about produc
 
 ## Automated Call Wrap-up (Multiple Industries)
 
-AutoSummary can automate the process of summarizing customer interactions, eliminating the need for manual note-taking by agents and providing consistent, high-quality call summaries.
+AI Summary can automate the process of summarizing customer interactions, eliminating the need for manual note-taking by agents and providing consistent, high-quality call summaries.
 
 The summary and specific data elements can be directly inserted into your contact center or CRM tool to remove manual steps.
 
-| Industry                                                                                                       | Category                                                            | AutoSummary Features                                                                                                  |
+| Industry                                                                                                       | Category                                                            | AI Summary Features                                                                                                   |
 | :------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------- |
 | <ul><li>Retail </li><li>Telco </li><li>Insurance Travel </li><li>Financial Services </li><li>\*Any\*</li></ul> | <ul><li>Call Center Operations </li><li>Quality Assurance</li></ul> | <ul><li>Free Text Summary generation</li><li>Targeted Structured Data (Questions)</li><li>Entity Extraction</li></ul> |
 
@@ -74,11 +74,11 @@ The summary and specific data elements can be directly inserted into your contac
 
 ## Trade Confirmations (Financial Services)
 
-AutoSummary can be used to ensure compliance with financial regulations like FINRA by automatically verifying if agents have confirmed trade details with customers before entering orders into the system. Structured Data can be use to extract price, type of order, the security being bought or sold, etc.
+AI Summary can be used to ensure compliance with financial regulations like FINRA by automatically verifying if agents have confirmed trade details with customers before entering orders into the system. Structured Data can be use to extract price, type of order, the security being bought or sold, etc.
 
-| Industry           | Category   | AutoSummary Features |
-| :----------------- | :--------- | :------------------- |
-| Financial Services | Compliance | Entity Extraction    |
+| Industry           | Category   | AI Summary Features |
+| :----------------- | :--------- | :------------------ |
+| Financial Services | Compliance | Entity Extraction   |
 
 ### Implementation
 

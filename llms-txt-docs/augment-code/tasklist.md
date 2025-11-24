@@ -2,19 +2,17 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/tasklist.md
 
-# Source: https://docs.augmentcode.com/using-augment/tasklist.md
-
 # Using Tasklist
 
 > Use Tasklist to break down complex problems into manageable steps, track progress, and collaborate with Agent on multi-step tasks.
 
-## About the Tasklist?
+## What is the Tasklist?
 
-Augment's Tasklist helps the Agent in the IDE create and refine a step-by-step plan for you to review. The Tasklist provides a structured interface for collaboration between you and the Agent, allowing you to break down complex problems into manageable, sequential steps.
+Augment's Tasklist helps the Agent create and refine a step-by-step plan for you to review. The Tasklist provides a structured interface for collaboration between you and the Agent, allowing you to break down complex problems into manageable, sequential steps.
 
 <img src="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=7b57f10306d17d7a01769a36f1f08888" alt="Tasklist Overview" className="rounded-xl" data-og-width="473" width="473" data-og-height="208" height="208" data-path="images/tasklist-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=280&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=cfe6643999d0f51858bdc307a405e706 280w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=560&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=707d717d48b17655f8de15a57e17efb2 560w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=840&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=28a71d28a31963133145d84dd4c6dc6e 840w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=1100&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=2d8afe47cdba513cacd3b1510212c099 1100w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=1650&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=fb50e40cef51f5c43b392b283ac52626 1650w, https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-overview.png?w=2500&fit=max&auto=format&n=IEgTogsPIebDB-Bu&q=85&s=2b21a1b7e583664dc6eac0559d0129ac 2500w" />
 
-## Getting started with Tasklist?
+## Why Tasklist?
 
 Tasklist improves agent effectiveness on long or complex tasks by:
 
@@ -25,6 +23,10 @@ Tasklist improves agent effectiveness on long or complex tasks by:
 * **Streamlining your approach** to nebulous problems by deleting irrelevant steps once the path forward is clear
 
 Tasklist provides a structured interface for collaboration and opens up possibilities for agent-to-agent collaboration. We hypothesize that an interface such as Tasklist could be a preferred way to interact with coding agents in the future.
+
+## Tasklist in Action
+
+<img src="https://mintcdn.com/augment-mtje7p526w/IEgTogsPIebDB-Bu/images/tasklist-demo.gif?s=c230baeaa51a97a59401b85417a71686" alt="Tasklist demonstration" className="rounded-xl" data-og-width="800" width="800" data-og-height="542" height="542" data-path="images/tasklist-demo.gif" data-optimize="true" data-opv="3" />
 
 ## Creating a New Task
 
@@ -104,5 +106,5 @@ Don't use an issue tracker? No problem - use Tasklist to track issues you need t
 
 ## Next Steps
 
-* [Learn more about Agent](/using-augment/agent)
-* [Configure Agent Integrations](/setup-augment/agent-integrations)
+* [Learn more about Agent](/jetbrains/using-augment/agent)
+* [Configure Agent Integrations](/jetbrains/setup-augment/agent-integrations)

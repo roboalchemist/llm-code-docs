@@ -2,8 +2,6 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-apply.md
 
-# Source: https://docs.augmentcode.com/using-augment/chat-apply.md
-
 # Applying code blocks from Chat
 
 > Use Chat to explore your codebase, quickly get up to speed on unfamiliar code, and get help working through a technical problem.

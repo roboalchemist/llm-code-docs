@@ -144,6 +144,11 @@ This guide walks you through both options to help you determine which deployment
 <p align="center"><a href="ai-code-reviews-in-git/install-run-as-a-self-hosted-service" class="button primary">Install/run as a self-hosted service</a></p>
 
 
+# Try Bito's AI code review
+
+Coming soon...
+
+
 # Privacy and security
 
 Bito doesn't read or store your code. Nor do we use your code for AI model training.
@@ -6602,25 +6607,25 @@ By the way, you can continue using Bito while indexing is in progress in the bac
 {% endhint %}
 
 
-# AI Architect
+# Overview
 
 AI that understands your codebase inside out — and codes like your team.
 
-Bito’s **AI Architect** builds a knowledge graph of your entire codebase.&#x20;
+Bito’s **AI Architect** builds a knowledge graph of your entire codebase.
 
-It analyzes all your repositories (whether you have 50 or 5000 repos) to learn about your codebase architecture, microservices, modules, API endpoints, design patterns, and more.&#x20;
+It analyzes all your repositories (whether you have 50 or 5000 repos) to learn about your codebase architecture, microservices, modules, API endpoints, design patterns, and more.
 
-AI Architect can then provide accurate and well-written code.&#x20;
+AI Architect can then provide accurate and well-written code.
 
-This fundamentally changes the game for enterprises with many microservices or large, complex codebases.&#x20;
+This fundamentally changes the game for enterprises with many microservices or large, complex codebases.
 
-We believe AI Architect provides an ability to perform a code review similar to how a principal engineer or an architect would be able to help connect the dots on the impact of your changes across your codebase.&#x20;
+We believe AI Architect provides an ability to perform a code review similar to how a principal engineer or an architect would be able to help connect the dots on the impact of your changes across your codebase.
 
 ## How you can use AI Architect
 
 AI Architect is designed to be flexible and can power multiple use cases across different AI coding tools and workflows.
 
-* [**Integrate via MCP server**](#getting-started) – Use AI Architect as an **MCP (Model Context Protocol) server** to connect with tools like [Claude Code](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-claude-code), [Cursor](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-cursor), [Windsurf](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-windsurf), and [GitHub Copilot (VS Code)](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-github-copilot-vs-code). It helps connected tools understand your codebase and workflows better, resulting in accurate and more reliable suggestions.
+* [**Integrate via MCP server**](#getting-started) – Use AI Architect as an **MCP (Model Context Protocol) server** to connect with tools like [Claude Code](https://docs.bito.ai/ai-architect/guide-for-claude-code), [Cursor](https://docs.bito.ai/ai-architect/guide-for-cursor), [Windsurf](https://docs.bito.ai/ai-architect/guide-for-windsurf), and [GitHub Copilot (VS Code)](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code). It helps connected tools understand your codebase and workflows better, resulting in accurate and more reliable suggestions.
 * [**Example: Bito’s AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) – One example of AI Architect in action is **Bito’s AI Code Review Agent**, which uses AI Architect to deliver smarter, context-aware code reviews directly in your pull requests and IDEs.
 
 ## Why use AI Architect?
@@ -6664,17 +6669,17 @@ AI Architect, on the other hand:&#x20;
 
    Select your AI coding tool from the options below and follow the step-by-step installation guide to seamlessly set up AI Architect.
 
-   * [**Guide for Claude Code**](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-claude-code)
-   * [**Guide for Cursor**](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-cursor)
-   * [**Guide for Windsurf**](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-windsurf)
-   * [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/other-bito-ai-tools/ai-architect/guide-for-github-copilot-vs-code)
+   * [**Guide for Claude Code**](https://docs.bito.ai/ai-architect/guide-for-claude-code)
+   * [**Guide for Cursor**](https://docs.bito.ai/ai-architect/guide-for-cursor)
+   * [**Guide for Windsurf**](https://docs.bito.ai/ai-architect/guide-for-windsurf)
+   * [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
 
 
 # Guide for Claude Code
 
 Integrate Claude Code with AI Architect for more accurate, codebase-aware AI assistance.
 
-Use Bito's [**AI Architect**](https://docs.bito.ai/other-bito-ai-tools/ai-architect) with **Claude Code** to enhance your AI-powered coding experience.
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Claude Code** to enhance your AI-powered coding experience.
 
 Once connected via MCP (Model Context Protocol), Claude Code can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
@@ -6960,7 +6965,7 @@ Close and reopen Claude Code.
 
 Integrate Cursor with AI Architect for more accurate, codebase-aware AI assistance.
 
-Use Bito's [**AI Architect**](https://docs.bito.ai/other-bito-ai-tools/ai-architect) with **Cursor** to enhance your AI-powered coding experience.
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Cursor** to enhance your AI-powered coding experience.
 
 Once connected via MCP (Model Context Protocol), Cursor can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
@@ -7248,7 +7253,7 @@ Close and reopen Cursor.
 
 Integrate Windsurf with AI Architect for more accurate, codebase-aware AI assistance.
 
-Use Bito's [**AI Architect**](https://docs.bito.ai/other-bito-ai-tools/ai-architect) with **Windsurf** to enhance your AI-powered coding experience.
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Windsurf** to enhance your AI-powered coding experience.
 
 Once connected via MCP (Model Context Protocol), Windsurf can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
@@ -7548,7 +7553,7 @@ Close and reopen Windsurf.
 
 Integrate GitHub Copilot in VS Code with AI Architect for more accurate, codebase-aware AI assistance.
 
-Use Bito's [**AI Architect**](https://docs.bito.ai/other-bito-ai-tools/ai-architect) with **GitHub Copilot in VS Code** to enhance your AI-powered coding experience.
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **GitHub Copilot in VS Code** to enhance your AI-powered coding experience.
 
 Once connected via MCP (Model Context Protocol), GitHub Copilot can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
 
@@ -8036,7 +8041,7 @@ nano .github/copilot-instructions.md
 
 From single-repo reviews to system-wide insights
 
-The [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) becomes significantly more powerful when paired with [**AI Architect**](https://docs.bito.ai/other-bito-ai-tools/ai-architect).
+The [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) becomes significantly more powerful when paired with [**AI Architect**](https://docs.bito.ai/ai-architect/overview).
 
 Below is a clear explanation of how the agent behaves in each setup and why AI Architect unlocks much deeper, system-level insights.
 
@@ -10095,13 +10100,6 @@ Stripe's Radar uses machine learning algorithms to detect and prevent fraudulent
 ### 8. Continuous Monitoring&#x20;
 
 Stripe conducts regular security assessments and audits to identify vulnerabilities and address potential weaknesses in its systems. This continuous monitoring approach allows them to stay proactive in the face of emerging security risks.
-
-
-# Refund policy
-
-We Currently Do Not Give Refunds
-
-To ensure that you are not billed for the upcoming month, kindly cancel your subscription before the 1st day of the upcoming month.
 
 
 

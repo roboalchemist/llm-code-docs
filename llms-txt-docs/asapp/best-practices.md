@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/best-practices.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/best-practices.md
 
 # Best Practices
 
@@ -289,7 +289,7 @@ With flow success, chronology matters. If a customer starts a flow, and is prese
 
 ### How It Works
 
-Flow success is an event that can be emitted on a [node](/messaging-platform/virtual-agent/flows#node-types "Node Types").
+Flow success is an event that can be emitted on a [node](/agent-desk/virtual-agent/flows#node-types "Node Types").
 
 <Frame>
   <img src="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=3c138f6f290497d892e37749288efaee" data-og-width="973" width="973" data-og-height="1999" height="1999" data-path="image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=280&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=941b7de05375a34cbc491993a7e9ab36 280w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=560&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=b29ff59b969b4c48a15b8d56b2a8daf5 560w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=840&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=11584f7c6fced35373f6979a56b2901b 840w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=1100&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=7729d8c09535f034f6496238852dddb5 1100w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=1650&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=726a4478c9b1afcac096a70fb534140c 1650w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-13212102-24e9-2e15-aef8-86c92ff5f2a5.jpg?w=2500&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=7648c220dc96e32831076f15186459fe 2500w" />

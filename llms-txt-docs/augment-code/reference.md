@@ -75,10 +75,9 @@ See [Custom Commands](/cli/custom-commands) for detailed information on creating
 
 List out available models and their short names to be passed into the `--model` flag
 
-| Command                | Description                   |
-| :--------------------- | :---------------------------- |
-| `auggie --list-models` | List available models         |
-| `auggie -lm`           | Shorthand for `--list-models` |
+| Command              | Description           |
+| :------------------- | :-------------------- |
+| `auggie models list` | List available models |
 
 <Note>Tool permissions can be configured in settings.json files. See [Permissions](/cli/permissions) for detailed configuration.</Note>
 

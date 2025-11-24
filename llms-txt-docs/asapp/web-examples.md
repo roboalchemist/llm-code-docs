@@ -1,10 +1,10 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-examples.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-examples.md
 
 # Web Examples
 
 This section provides a few common integration scenarios with the ASAPP Chat SDK.
 
-Before continuing, make sure you've [integrated the ASAPP SDK](/messaging-platform/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page. You must have the initial script available before utilizing any of the examples below. Also, be sure that you have a [Trigger](/messaging-platform/integrations/web-sdk/web-features#triggers "Triggers") enabled for the page(s) you wish to display the Chat SDK.
+Before continuing, make sure you've [integrated the ASAPP SDK](/agent-desk/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page. You must have the initial script available before utilizing any of the examples below. Also, be sure that you have a [Trigger](/agent-desk/integrations/web-sdk/web-features#triggers "Triggers") enabled for the page(s) you wish to display the Chat SDK.
 
 * [Basic Integration (no Authentication)](#basic-integration-no-authentication "Basic Integration (no Authentication)")
 * [Basic Integration (With Authentication)](#basic-integration-with-authentication "Basic Integration (With Authentication)")
@@ -15,7 +15,7 @@ Before continuing, make sure you've [integrated the ASAPP SDK](/messaging-platfo
 
 The most basic integrations are ones with no customizations to the ASAPP interface and no integrated use cases. If your company is simply providing an un-authed user experience, an integration like the one below may suffice.
 
-ee the [App Settings](/messaging-platform/integrations/web-sdk/web-app-settings "Web App Settings") page for details on the [APIHostname](/messaging-platform/integrations/web-sdk/web-app-settings#apihostname "APIHostName") and [AppId](/messaging-platform/integrations/web-sdk/web-app-settings#appid "AppId") settings. The following code snippet is an example of a non-authenticated integration with the ASAPP Chat SDK.
+ee the [App Settings](/agent-desk/integrations/web-sdk/web-app-settings "Web App Settings") page for details on the [APIHostname](/agent-desk/integrations/web-sdk/web-app-settings#apihostname "APIHostName") and [AppId](/agent-desk/integrations/web-sdk/web-app-settings#appid "AppId") settings. The following code snippet is an example of a non-authenticated integration with the ASAPP Chat SDK.
 
 ```json  theme={null}
 document.addEventListener('DOMContentLoaded', function () {
@@ -36,7 +36,7 @@ With the above information set, a user will be able to access integrated use cas
 
 Integrating the Chat SDK with authenticated users requires the addition of the `CustomerId`, `ContextProvider`, and `UserLoginHandler` keys.
 
-See the [App Settings](/messaging-platform/integrations/web-sdk/web-app-settings "Web App Settings") page for more detailed information on their usage. With each of these keys set, a user will be able to access integrated use cases or be capable of logging in if they are not already.
+See the [App Settings](/agent-desk/integrations/web-sdk/web-app-settings "Web App Settings") page for more detailed information on their usage. With each of these keys set, a user will be able to access integrated use cases or be capable of logging in if they are not already.
 
 The following code snippet is an example of providing user credentials for allowing a user to enter integrated use cases.
 
@@ -77,7 +77,7 @@ Here's a sample of what the Sign In button looks like.
 
 The Chat SDK offers a few basic keys for customizing the interface to your liking.
 
-The `Display` key enables you to perform those customizations as needed. Please see the [Display Settings](/messaging-platform/integrations/web-sdk/web-app-settings#display "Display") section for detailed information on each of the available keys.
+The `Display` key enables you to perform those customizations as needed. Please see the [Display Settings](/agent-desk/integrations/web-sdk/web-app-settings#display "Display") section for detailed information on each of the available keys.
 
 The following code snippet shows how to add the Display key to your integration to customize the display settings of the Chat SDK.
 
@@ -128,9 +128,9 @@ With the above customizations in place, the Chat SDK Badge will look like the fo
 
 Here's a more robust example showing how to utilize most of the ASAPP Chat SDK settings.
 
-In the examples below we will define a few helper methods, then pass those helpers to the [Load](/messaging-platform/integrations/web-sdk/web-javascript-api#load "'load'") or [SetCustomer](/messaging-platform/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") APIs.
+In the examples below we will define a few helper methods, then pass those helpers to the [Load](/agent-desk/integrations/web-sdk/web-javascript-api#load "'load'") or [SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") APIs.
 
-The following example showcases a [ContextProvider](/messaging-platform/integrations/web-sdk/web-contextprovider "Web ContextProvider") that sets some basic session information, then sets any available user authentication information. Once that information is retrieved, it passes the prepared context to the `callback` so that ASAPP can process each Chat SDK request.
+The following example showcases a [ContextProvider](/agent-desk/integrations/web-sdk/web-contextprovider "Web ContextProvider") that sets some basic session information, then sets any available user authentication information. Once that information is retrieved, it passes the prepared context to the `callback` so that ASAPP can process each Chat SDK request.
 
 The following code snippet is a ContextProvider example utilizing session expiration conditionals.
 
@@ -161,7 +161,7 @@ The next example shows conditional logic for logging a user in on single or mult
 
 If a user enters a use case they are not authorized for, they will be presented with a "Sign In" button within the SDK.
 
-When the user clicks that link, it will trigger your provided [UserLoginHandler](/messaging-platform/integrations/web-sdk/web-app-settings#userloginhandler "UserLoginHandler") so you can allow the user to authenticate.
+When the user clicks that link, it will trigger your provided [UserLoginHandler](/agent-desk/integrations/web-sdk/web-app-settings#userloginhandler "UserLoginHandler") so you can allow the user to authenticate.
 
 The following code snippet shows a UserLoginHandler utilizing page redirection or modals to log a user in.
 
@@ -183,11 +183,11 @@ function asappUserLoginHandler () {
 }
 ```
 
-The next helper defines the [onLoadComplete](/messaging-platform/integrations/web-sdk/web-app-settings#onloadcomplete "onLoadComplete") handler.
+The next helper defines the [onLoadComplete](/agent-desk/integrations/web-sdk/web-app-settings#onloadcomplete "onLoadComplete") handler.
 
-It is used for preparing any additional logic you wish to tie to ASAPP or your own page functionality. The below example checks whether the Chat SDK loaded via a [Trigger](/messaging-platform/integrations/web-sdk/web-features#triggers "Triggers") (via the `isDisplayingChat` argument).
+It is used for preparing any additional logic you wish to tie to ASAPP or your own page functionality. The below example checks whether the Chat SDK loaded via a [Trigger](/agent-desk/integrations/web-sdk/web-features#triggers "Triggers") (via the `isDisplayingChat` argument).
 
-If it's configured to display, it prepares some event bindings through the [Action API](/messaging-platform/integrations/web-sdk/web-javascript-api#action-on-or-off "action: 'on' or 'off'") which in turn call an example metrics service.
+If it's configured to display, it prepares some event bindings through the [Action API](/agent-desk/integrations/web-sdk/web-javascript-api#action-on-or-off "action: 'on' or 'off'") which in turn call an example metrics service.
 
 The following code snippet shows an `onLoadComplete` handler being used with the isDisplayingChat conditional and Action API.
 
@@ -222,9 +222,9 @@ function asappOnLoadComplete (isDisplayingChat) {
 }
 ```
 
-Finally, we tie everything together. The example below shows a combination of adding the above helper functions to the ASAPP [Load API](/messaging-platform/integrations/web-sdk/web-javascript-api#load "'load'").
+Finally, we tie everything together. The example below shows a combination of adding the above helper functions to the ASAPP [Load API](/agent-desk/integrations/web-sdk/web-javascript-api#load "'load'").
 
-It also combines many of the [App Settings](/messaging-platform/integrations/web-sdk/web-app-settings "Web App Settings") available to you and your integration.
+It also combines many of the [App Settings](/agent-desk/integrations/web-sdk/web-app-settings "Web App Settings") available to you and your integration.
 
 ```javascript  theme={null}
 document.addEventListener('DOMContentLoaded', function () {

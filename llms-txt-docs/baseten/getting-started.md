@@ -1,5 +1,3 @@
-# Source: https://docs.baseten.co/training/getting-started.md
-
 # Source: https://docs.baseten.co/development/chain/getting-started.md
 
 # Your first Chain

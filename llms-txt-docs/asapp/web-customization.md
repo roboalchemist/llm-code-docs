@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-customization.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-customization.md
 
 # Web Customization
 
@@ -13,7 +13,7 @@ This section details how these elements function. In addition, it describes how 
 
 The ASAPP Chat SDK Badge is the default interface element your customers can use to open or close the ASAPP Chat iframe.
 
-When a user clicks on this element, it will trigger the [ASAPP('Show')](/messaging-platform/integrations/web-sdk/web-javascript-api#show "'show'") or [ASAPP('Hide')](/messaging-platform/integrations/web-sdk/web-javascript-api#hide"'hide'") APIs.
+When a user clicks on this element, it will trigger the [ASAPP('Show')](/agent-desk/integrations/web-sdk/web-javascript-api#show "'show'") or [ASAPP('Hide')](/agent-desk/integrations/web-sdk/web-javascript-api#hide"'hide'") APIs.
 
 This toggles the display of the ASAPP Chat SDK iframe.
 
@@ -32,7 +32,7 @@ However, if you wish to customize the badge, you can do so by either manipulatin
 
 ### ASAPP Badge Styling
 
-You can customize the ASAPP Chat SDK Badge with CSS using the ID `#asapp-chat-sdk-badge` or classname `.asappChatSDKBadge` selectors. ASAPP recommends that you use [BadgeColor](/messaging-platform/integrations/web-sdk/web-app-settings#display "Display").
+You can customize the ASAPP Chat SDK Badge with CSS using the ID `#asapp-chat-sdk-badge` or classname `.asappChatSDKBadge` selectors. ASAPP recommends that you use [BadgeColor](/agent-desk/integrations/web-sdk/web-app-settings#display "Display").
 
 The following snippet is an example of how you might use these selectors to customize the element to meet your brand needs:
 
@@ -60,9 +60,9 @@ The following snippet is an example of how you might use these selectors to cust
 
 You can hide the ASAPP Chat SDK Badge and provide your own interface for opening the ASAPP Chat SDK iframe.
 
-* Set [BadgeType](/messaging-platform/integrations/web-sdk/web-app-settings#display "Display") to none.
-* Call [`ASAPP('show')`](/messaging-platform/integrations/web-sdk/web-javascript-api#show "'show'") and/or [`ASAPP('hide')`](/messaging-platform/integrations/web-sdk/web-javascript-api#hide "'hide'")  when your custom badge is clicked to open/close the iframe.
-* In order to ensure that the Chat SDK is ready, ASAPP recommends to display your custom badge disabled/loading state at first and then utilize [onLoadComplete](/messaging-platform/integrations/web-sdk/web-app-settings#onloadcomplete "onLoadComplete") to enable it.
+* Set [BadgeType](/agent-desk/integrations/web-sdk/web-app-settings#display "Display") to none.
+* Call [`ASAPP('show')`](/agent-desk/integrations/web-sdk/web-javascript-api#show "'show'") and/or [`ASAPP('hide')`](/agent-desk/integrations/web-sdk/web-javascript-api#hide "'hide'")  when your custom badge is clicked to open/close the iframe.
+* In order to ensure that the Chat SDK is ready, ASAPP recommends to display your custom badge disabled/loading state at first and then utilize [onLoadComplete](/agent-desk/integrations/web-sdk/web-app-settings#onloadcomplete "onLoadComplete") to enable it.
 
 **Example:**
 

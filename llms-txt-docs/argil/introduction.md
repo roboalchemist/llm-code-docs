@@ -4,132 +4,46 @@
 
 # Source: https://docs.argil.ai/pages/get-started/introduction.md
 
-# Source: https://docs.argil.ai/resources/introduction.md
+# Source: https://docs.argil.ai/pages/webhook-events/introduction.md
 
-# Getting started with Argil
+# Source: https://docs.argil.ai/pages/get-started/introduction.md
 
-> Here's how to start leveraging video avatars to reach your goals
+# Introduction
 
-Welcome to Argil! Argil is your content creator sidekick that uses AI avatars to generate engaging videos in a few clicks.
+> Welcome to Argil's API documentation
 
-<Note>
-  For high-volume API licenses, please pick a [call slot here](https://calendly.com/laodis-argil/15min) - otherwise check the [API pricings here](https://docs.argil.ai/resources/api-pricings)
-</Note>
+<Frame>
+  <img className="block dark:hidden" src="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=cb59bfa370195ca2f8c50d3f4c42033f" style={{ borderRadius: "8px" }} alt="Hero Light" data-og-width="2880" width="2880" data-og-height="1000" height="1000" data-path="images/doc-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=280&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=c9f5bfea812f10ad20785287348fbd67 280w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=560&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=959daf0204155c29b29d7a92dc7ba64e 560w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=840&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=fb7236b2ee85d307a0a042ce94c89588 840w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1100&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=2e6d3dae1db2840caa5dc2ffa2d3af95 1100w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1650&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=f8addb860df00cf38d494769d80a9e5d 1650w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=2500&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=a2164cbc061288750af2d081fb94e91a 2500w" />
 
-## Getting Started
+  <img className="hidden dark:block" src="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=cb59bfa370195ca2f8c50d3f4c42033f" style={{ borderRadius: "8px" }} alt="Hero Dark" data-og-width="2880" width="2880" data-og-height="1000" height="1000" data-path="images/doc-hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=280&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=c9f5bfea812f10ad20785287348fbd67 280w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=560&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=959daf0204155c29b29d7a92dc7ba64e 560w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=840&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=fb7236b2ee85d307a0a042ce94c89588 840w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1100&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=2e6d3dae1db2840caa5dc2ffa2d3af95 1100w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=1650&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=f8addb860df00cf38d494769d80a9e5d 1650w, https://mintcdn.com/argil/BBUki6oAamfarwsT/images/doc-hero.png?w=2500&fit=max&auto=format&n=BBUki6oAamfarwsT&q=85&s=a2164cbc061288750af2d081fb94e91a 2500w" />
+</Frame>
 
-<Card title="Create your account" icon="user" color="purple" href="https://app.argil.ai/">
-  Create a free account to start generating AI videos
-</Card>
+This service allows content creators to seamlessly integrate video generation capabilities into their workflow, leveraging their AI Clone for personalized videos creation. Whether you're looking to enhance your social media presence, boost user engagement, or offer personalized content, Argil makes it simple and efficient.
 
-<Card title="Watch this full video tutorial to get the best out of Argil" icon="clapperboard-play" color="#9e0983" href="https://youtu.be/raWKq7SwD6k?si=bBUYMDpKst9lVtSg" />
+## Setting Up
 
-## Setup Your Account
+Get started with Argil's API by setting up your credentials and generate your first avatar video using our API service.
 
 <CardGroup cols={2}>
-  <Card title="Sign up and sign in" icon="user-plus" color="purple" href="/resources/sign-up-sign-in">
-    Create your account and sign in to access all features
+  <Card title="Manage API Keys" icon="key" href="/pages/get-started/credentials">
+    Create, manage and safely store your Argil's credentials
   </Card>
 
-  <Card title="Choose your plan" icon="credit-card" color="purple" href="/resources/subscription-and-plans">
-    Select a subscription plan that fits your needs
+  <Card title="Quickstart" icon="flag-checkered" href="/pages/get-started/quickstart">
+    Jump straight into video creation with our quick start guide
   </Card>
 </CardGroup>
 
-## Create Your First Video
+## Build something on top of Argil
 
-<CardGroup cols={2}>
-  <Card title="Create a video" icon="video" color="purple" href="/resources/create-a-video">
-    Start creating your first AI-powered video
+Elaborate complex infrastructures with on-demand avatar video generation capabilities using our `Public API` and `Webhooks`.
+
+<CardGroup>
+  <Card title="Reference APIs" icon="square-code" href="/api-reference">
+    Integrate your on-demand avatar anywhere.
   </Card>
 
-  <Card title="Write your script" icon="pen" color="purple" href="/resources/create-a-video#writing-script">
-    Create your first text script for the video
-  </Card>
-
-  <Card title="Record your voice" icon="microphone" color="purple" href="/resources/audio-and-voicetovoice">
-    Record and transform your voice into any avatar's voice
-  </Card>
-
-  <Card title="Production settings" icon="sliders" color="purple" href="/resources/create-a-video#production-settings">
-    Configure your video production settings
-  </Card>
-
-  <Card title="Use templates" icon="copy" color="purple" href="/resources/article-to-video">
-    Generate a video quickly by pasting an article link
+  <Card title="Webhooks" icon="webhook" href="/pages/webhook-events">
+    Subscribe to events and get notified on generation success and other events
   </Card>
 </CardGroup>
-
-## Control Your Avatar
-
-<CardGroup cols={2}>
-  <Card title="Body language" icon="person-walking" color="purple" href="/resources/body-language">
-    Add natural movements and gestures to your avatar
-  </Card>
-
-  <Card title="Camera control" icon="camera" color="purple" href="/resources/cameras-angles">
-    Master camera angles and zoom effects
-  </Card>
-</CardGroup>
-
-## Make Your Video Dynamic
-
-<CardGroup cols={2}>
-  <Card title="Add media" icon="photo-film" color="purple" href="/resources/brolls">
-    Enhance your video with B-rolls and media
-  </Card>
-
-  <Card title="Add captions" icon="closed-captioning" color="purple" href="/resources/captions">
-    Make your content accessible with captions
-  </Card>
-
-  <Card title="Add music" icon="music" color="purple" href="/resources/music">
-    Set the mood with background music
-  </Card>
-
-  <Card title="Editing tips" icon="wand-magic-sparkles" color="purple" href="/resources/editingtips">
-    Learn pro editing techniques
-  </Card>
-</CardGroup>
-
-## Train Your Avatar
-
-<CardGroup cols={2}>
-  <Card title="Create avatar" icon="user-plus" color="purple" href="/resources/create-avatar-from-image">
-    Create a custom avatar from scratch
-  </Card>
-
-  <Card title="Training tips" icon="graduation-cap" color="purple" href="/resources/training-tips">
-    Learn best practices for avatar training
-  </Card>
-
-  <Card title="Style & camera" icon="camera-retro" color="purple" href="/resources/styles-and-cameras">
-    Add custom styles and camera angles
-  </Card>
-
-  <Card title="Body language" icon="person-rays" color="purple" href="/resources/create-body-language">
-    Add expressive movements to your avatar
-  </Card>
-
-  <Card title="Voice setup" icon="microphone-lines" color="purple" href="/resources/link-a-voice">
-    Link and customize your avatar's voice
-  </Card>
-</CardGroup>
-
-## Manage Your Account
-
-<CardGroup cols={2}>
-  <Card title="Account settings" icon="gear" color="purple" href="/resources/account-settings">
-    Configure your account preferences
-  </Card>
-
-  <Card title="Affiliate program" icon="handshake" color="purple" href="/resources/affiliates">
-    Join our affiliate program
-  </Card>
-</CardGroup>
-
-## Developers
-
-<Card title="API Documentation" icon="code" color="purple" href="/resources/api-pricings">
-  Access our API documentation and pricing
-</Card>

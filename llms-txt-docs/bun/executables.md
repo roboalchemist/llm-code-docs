@@ -117,7 +117,7 @@ These constants are embedded directly into your compiled binary at build time, p
 
 <Note>
   For comprehensive examples and advanced patterns, see the [Build-time constants
-  guide](https://bun.com/guides/runtime/build-time-constants).
+  guide](/guides/runtime/build-time-constants).
 </Note>
 
 ***
@@ -178,6 +178,35 @@ bun build --compile --compile-exec-argv="--smol --user-agent=MyBot" ./app.ts --o
 ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // In the compiled app
 console.log(process.execArgv); // ["--smol", "--user-agent=MyBot"]
+```
+
+***
+
+## Disabling automatic config loading
+
+By default, standalone executables look for `.env` and `bunfig.toml` files in the directory where the executable is run. You can disable this behavior at build time for deterministic execution regardless of the user's working directory.
+
+```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Disable .env loading
+bun build --compile --no-compile-autoload-dotenv ./app.ts --outfile myapp
+
+# Disable bunfig.toml loading
+bun build --compile --no-compile-autoload-bunfig ./app.ts --outfile myapp
+
+# Disable both
+bun build --compile --no-compile-autoload-dotenv --no-compile-autoload-bunfig ./app.ts --outfile myapp
+```
+
+You can also configure this via the JavaScript API:
+
+```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+await Bun.build({
+  entrypoints: ["./app.ts"],
+  compile: {
+    autoloadDotenv: false, // Disable .env loading
+    autoloadBunfig: false, // Disable bunfig.toml loading
+  },
+});
 ```
 
 ***
@@ -257,12 +286,12 @@ Bun's `--compile` flag can create standalone executables that contain both serve
     </head>
     <body>
       <h1>Hello World</h1>
-      <script src="./app.js"></script>
+      <script src="./app.ts"></script>
     </body>
   </html>
   ```
 
-  ```ts app.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts app.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
   console.log("Hello from the client!");
   ```
 

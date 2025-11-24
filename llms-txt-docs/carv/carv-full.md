@@ -159,7 +159,7 @@ That's it! You have successfully set Backpack to use CARV SVM RPC.
 
 #### Sepolia ETH
 
-You will need Sepolia ETH as the native gas token on CARV's SVM chain. There are multiple different ways you can get Sepolia ETH:\\
+You will need Sepolia ETH as the native gas token on CARV's SVM chain. There are multiple different ways you can get Sepolia ETH:<br>
 
 * <https://faucet.soo.network/>
 * <https://www.alchemy.com/faucets/ethereum-sepolia>
@@ -198,7 +198,7 @@ Use the following link to access
 
 ## SOON Explorer
 
-You can check CARV SVM's explorer by going to link: <https://explorer.testnet.carv.io/>\\
+You can check CARV SVM's explorer by going to link: <https://explorer.testnet.carv.io/><br>
 
 <figure><img src="https://758822945-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6A1MZN6YkMg4U1B64H4g%2Fuploads%2FWggkY1j2eeLh9o7NpzbL%2F%E6%88%AA%E5%B1%8F2025-03-17%20%E4%B8%8A%E5%8D%8811.27.06.png?alt=media&#x26;token=c60ea9ca-1bee-4339-8f05-4d45a6eb846c" alt=""><figcaption><p>CARV SVM Chain Explorer</p></figcaption></figure>
 
@@ -210,7 +210,7 @@ You will be able to check the SVM Chain's status including txs, slots, block hei
 
 <figure><img src="https://758822945-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6A1MZN6YkMg4U1B64H4g%2Fuploads%2FDGWqeMEP5OniaOKEgF9g%2F%E6%88%AA%E5%B1%8F2025-01-13%20%E4%B8%8A%E5%8D%8812.04.02.png?alt=media&#x26;token=dddaf93a-eafe-4433-8cdc-3bcacee66352" alt=""><figcaption><p>Local mode explorer</p></figcaption></figure>
 
-You will need to turn on the developer mode or put CARV's RPC endpoint manually by click the localhost button on the top right:\\
+You will need to turn on the developer mode or put CARV's RPC endpoint manually by click the localhost button on the top right:<br>
 
 <figure><img src="https://758822945-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6A1MZN6YkMg4U1B64H4g%2Fuploads%2FjM6Bvot6bFZxF66lkUfG%2F%E6%88%AA%E5%B1%8F2025-01-13%20%E4%B8%8A%E5%8D%8812.05.21.png?alt=media&#x26;token=8f18f9c1-9e35-4275-9b95-f6e097e21e16" alt=""><figcaption><p>Settings in the Explorer</p></figcaption></figure>
 
@@ -1244,7 +1244,7 @@ Once the D.A.T.A plugin is integrated, the plugin will enhance your Eliza agents
 
 * **Providers**: Fetch on-chain and off-chain data (e.g., blockchain activity, wallet balances, user tags, etc.).
 * **Evaluators**: Analyze fetched data and add actionable insights, such as detecting whales, traders, or identifying suspicious activity.
-* **Actions**: Trigger actions based on insights—like sending alerts or executing on-chain transactions (e.g., airdrops or transfers).\\
+* **Actions**: Trigger actions based on insights—like sending alerts or executing on-chain transactions (e.g., airdrops or transfers).<br>
 
 For more details you can check <https://github.com/carv-protocol/eliza-d.a.t.a>.
 
@@ -4891,7 +4891,7 @@ A single honest node can detect fraudulent activity, but achieving significant e
 
 Looking ahead to Q3 2024, these nodes will take on additional responsibilities such as verifying CARV DB, an Autonomous Virtual Storage (AVS) built on Eigenlayer, to ensure reliable content storage for each operator. By Q4 2024, the scope will broaden to include securing CARV Link, an on-chain Oracle/Attestation service that seamlessly imports data from both web2 and web3 sources into the CARV protocol, thereby creating value for users and businesses. Expanding our community node base is vital to support these growing responsibilities and ensure the ongoing robustness of the CARV ecosystem.
 
-\\
+<br>
 
 
 # How do Verifier Nodes Work
@@ -7591,11 +7591,11 @@ This algorithm draws inspiration from parts of the Curve algorithm and has been 
 
 1. To aid understanding, we establish a two-dimensional coordinate system, with the horizontal axis representing time and the vertical axis representing the quantity of veCarv(s).
 2. First, let's consider the simplest scenario where only one user has created a single position. The relationship between the global veCarv(s) quantity and time is given by:\
-   $$TotalSupply = slope \* (t - t\_{end})$$, where `slope` is the rate of decline: $$slope = \frac{0-initialSupply}{t\_{end} - t\_{begin}}$$, where ​`t` is the time variable, and its valid range is $$t\_{begin} ～ t\_{end}$$. `initialSupply` is the initial veCarv(s) quantity after the user creates the position, as shown in the figure below:\\
+   $$TotalSupply = slope \* (t - t\_{end})$$, where `slope` is the rate of decline: $$slope = \frac{0-initialSupply}{t\_{end} - t\_{begin}}$$, where ​`t` is the time variable, and its valid range is $$t\_{begin} ～ t\_{end}$$. `initialSupply` is the initial veCarv(s) quantity after the user creates the position, as shown in the figure below:<br>
 
    <figure><img src="https://758822945-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6A1MZN6YkMg4U1B64H4g%2Fuploads%2FD4qGPiT1P7bWYOAxcvGl%2Fimage.png?alt=media&#x26;token=f6473b8b-04c2-476d-a70b-d4f5042839d8" alt=""><figcaption></figcaption></figure>
 3. At this point, we can easily calculate the `totalSupply` of veCarv(s) at any time between $$t\_{begin} ～ t\_{end}$$ using this formula.
-4. However, when the system has multiple positions simultaneously, the graph will look like the one below, where each black solid line represents the decay curve of a single position.\\
+4. However, when the system has multiple positions simultaneously, the graph will look like the one below, where each black solid line represents the decay curve of a single position.<br>
 
    <figure><img src="https://758822945-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F6A1MZN6YkMg4U1B64H4g%2Fuploads%2FRJ5mOb4pcId712zXySJ5%2Fimage.png?alt=media&#x26;token=4003dbac-2305-4123-864c-f981f21d4f3c" alt=""><figcaption></figcaption></figure>
 5. By summing the functions of these three black solid lines, we can obtain the global decay function of `totalSupply`. It's also evident that the slope of the global decay function changes at each time point t1 to t6, which correspond to the start and end times of each position. These are the points where the slope of the global decay curve changes.

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/insights-manager.md
+# Source: https://docs.asapp.com/agent-desk/insights-manager.md
 
 # Insights Manager Overview
 
@@ -26,7 +26,7 @@ Live Insights is your go-to platform to track and monitor agents, conversations,
 * Keep an eye on all your live performance metrics such as handle time, queue volume, and resolution rate
 * Mitigate high queue volume to better manage instances of high traffic
 
-<Card title="Live Insights" href="/messaging-platform/insights-manager/live-insights "> Visit Live Insights for a functional breakdown of reporting interfaces and metrics.</Card>
+<Card title="Live Insights" href="/agent-desk/insights-manager/live-insights "> Visit Live Insights for a functional breakdown of reporting interfaces and metrics.</Card>
 
 ## Historical Insights
 

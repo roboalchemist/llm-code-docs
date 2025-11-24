@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/surveys.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/surveys.md
 
 # Surveys
 
@@ -132,11 +132,11 @@ Events will be created for when a survey is displayed and when a survey is submi
 ## Next Steps
 
 <CardGroup>
-  <Card title="Flows" href="/messaging-platform/virtual-agent/flows">
+  <Card title="Flows" href="/agent-desk/virtual-agent/flows">
     Learn how to build and configure flows for your Virtual Agent interactions.
   </Card>
 
-  <Card title="Intent Routing" href="/messaging-platform/virtual-agent/intent-routing">
+  <Card title="Intent Routing" href="/agent-desk/virtual-agent/intent-routing">
     Understand how to route customer intents to appropriate flows and surveys.
   </Card>
 </CardGroup>

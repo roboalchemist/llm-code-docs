@@ -14,10 +14,13 @@ A personal avatar is based on your own image or picture. An AI influencer is cre
 
 The picture you should take of yourself needs to check the following boxes:
 
-* Have great lighting (put yourself in front of a window)
-* Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence
-* All of your face should be within the frame
-* **The closer you are to the camera, the better the output will be**
+1. **Have great lighting (put yourself in front of a window)**
+
+2. **Don't smile and if possible, have your mouth slitghtly opened like in the middle of a sentence**
+
+3. **All of your face should be within the frame**
+
+4. **The closer you are to the camera, the better the output will be**
 
 <Tip>
   The pictures that work best are with a single human-like face. Avoid animals or multiple people on screen (even on posters).

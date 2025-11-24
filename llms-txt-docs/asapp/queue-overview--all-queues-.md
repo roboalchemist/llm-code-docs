@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/insights-manager/live-insights/queue-overview--all-queues-.md
+# Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/queue-overview--all-queues-.md
 
 # Queue Overview (All Queues)
 

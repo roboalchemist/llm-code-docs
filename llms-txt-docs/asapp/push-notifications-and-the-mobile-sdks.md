@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/push-notifications-and-the-mobile-sdks.md
+# Source: https://docs.asapp.com/agent-desk/integrations/push-notifications-and-the-mobile-sdks.md
 
 # Push Notifications and the Mobile SDKs
 
@@ -9,7 +9,7 @@ In ASAPP Chat, users can receive Push Notifications (a.k.a. ASAPP background mes
 * **New live messages**: if a customer is talking to a live agent and leaves the chat interface, new messages can be delivered via Push Notifications.
 * **Proactive messages**: used to notify customers about promotions, reminders, or other relevant information, depending on the requirements of the implementation.
 
-If you are looking for a way to get the most recent Conversation Status, please see the [Android](/messaging-platform/integrations/android-sdk/miscellaneous-apis "Miscellaneous APIs") or [iOS](/messaging-platform/integrations/ios-sdk/miscellaneous-apis "Miscellaneous APIs") documentation.
+If you are looking for a way to get the most recent Conversation Status, please see the [Android](/agent-desk/integrations/android-sdk/miscellaneous-apis "Miscellaneous APIs") or [iOS](/agent-desk/integrations/ios-sdk/miscellaneous-apis "Miscellaneous APIs") documentation.
 
 ## Overall Architecture
 
@@ -63,7 +63,7 @@ Please refer to Figure 1 for a high level overview. There are usually two situat
   After you initialize the ASAPP SDK and set up the ASAPP User properly, register the Device Token.
 * **Token update**
   In case the Device Token changes, register the token again.
-  Please refer to the specific [Android](/messaging-platform/integrations/android-sdk/notifications#push-notifications "Push Notifications") and [iOS](/messaging-platform/integrations/ios-sdk/push-notifications "Push Notifications") docs for more detailed information.
+  Please refer to the specific [Android](/agent-desk/integrations/android-sdk/notifications#push-notifications "Push Notifications") and [iOS](/agent-desk/integrations/ios-sdk/push-notifications "Push Notifications") docs for more detailed information.
 
 #### Deregister for Disable Push Notifications
 
@@ -77,7 +77,7 @@ If the user signs out of the Customer App, it is important to call the SDK API t
   If the device token de-registration isn't done properly, there's risk that the device will continue to receive Push Notifications for the user who previously signed out.
 </Note>
 
-Please refer to the specific [Android](/messaging-platform/integrations/android-sdk/notifications#push-notifications "Push Notifications") and [iOS](/messaging-platform/integrations/ios-sdk/push-notifications "Push Notifications") docs for more detailed information.
+Please refer to the specific [Android](/agent-desk/integrations/android-sdk/notifications#push-notifications "Push Notifications") and [iOS](/agent-desk/integrations/ios-sdk/push-notifications "Push Notifications") docs for more detailed information.
 
 #### Receive Messages in the Foreground
 
@@ -99,7 +99,7 @@ When the App is in the background (or the device is locked), a system push notif
 
 When the user opens the push notification:
 
-* On **Android**: the App opens with an Android Intent. The Customer App can verify if the Intent is from an ASAPP generated Push Notification by calling the utility method `ASAPP.instance.shouldOpenChat` . This should open chat. See more details and code examples in the Android SDK [Handle Push Notifications](/messaging-platform/integrations/android-sdk/notifications#handle-push-notifications "Handle Push Notifications") section.
+* On **Android**: the App opens with an Android Intent. The Customer App can verify if the Intent is from an ASAPP generated Push Notification by calling the utility method `ASAPP.instance.shouldOpenChat` . This should open chat. See more details and code examples in the Android SDK [Handle Push Notifications](/agent-desk/integrations/android-sdk/notifications#handle-push-notifications "Handle Push Notifications") section.
 * On **iOS**: if the app is running in the background, it calls [application(\_:didReceiveRemoteNotification:fetchCompletionHandler:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623013-application) as above. If the app is not running, the app will start and call [application(\_:didFinishLaunchingWithOptions:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application), with the notification's payload accessible at `launchOptions[.remoteNotification]`. Once again, call `ASAPP.canHandleNotification(with:)` to determine if ASAPP generated the notification.
 
 ### Customer Backend

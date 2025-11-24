@@ -77,7 +77,7 @@ You can create a subagent manually by creating a configuration file. The configu
 ---
 name: code-review
 description: Code review agent
-model: claude-sonnet-4.5
+model: claude-sonnet-4-5
 color: purple
 ---
 

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-authentication.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-authentication.md
 
 # Web Authentication
 
@@ -8,10 +8,10 @@ This section details the process for authenticating your users to the ASAPP Chat
 * [Authenticating Asynchronously](#authenticating-asynchronously "Authenticating Asynchronously")
 * [Using the 'UserLoginHandler' Method](#using-the-userloginhandler-method "Using the 'UserLoginHandler' Method")
 
-Before getting started, make sure you've [embedded the ASAPP Chat SDK](/messaging-platform/integrations/web-sdk/web-quick-start#1-embed-the-script "1. Embed the Script") into your site.
+Before getting started, make sure you've [embedded the ASAPP Chat SDK](/agent-desk/integrations/web-sdk/web-quick-start#1-embed-the-script "1. Embed the Script") into your site.
 
 <Note>
-  Your site is responsible for the entirety of the user authentication process. This includes the presentation of an interface for login and the maintenance of a session, and for the retrieval and formatting of context data about that user. Please read the section on using the [Authentication with the ContextProvider](/messaging-platform/integrations/web-sdk/web-contextprovider#authentication "Authentication") to understand how you can pass authorization information to the Chat SDK.
+  Your site is responsible for the entirety of the user authentication process. This includes the presentation of an interface for login and the maintenance of a session, and for the retrieval and formatting of context data about that user. Please read the section on using the [Authentication with the ContextProvider](/agent-desk/integrations/web-sdk/web-contextprovider#authentication "Authentication") to understand how you can pass authorization information to the Chat SDK.
 </Note>
 
 Once your site has authenticated a user, you can securely pass that authentication forward to the ASAPP Chat environment by making certain calls to the ASAPP Chat SDK (more on those calls below). Your user can then be authenticated both on your web site and in the ASAPP Chat Environment, enabling them to execute within the ASAPP Chat use cases that require authentication.
@@ -19,7 +19,7 @@ Once your site has authenticated a user, you can securely pass that authenticati
 ASAPP provides two methods for authenticating a user to the ASAPP Chat SDK.
 
 * You can proactively [authenticate your user at page load](#authenticating-at-page-load "Authenticating at Page Load").
-* You can [authenticate your user midway through a session](#authenticating-asynchronously "Authenticating Asynchronously") using the [SetCustomer API](/messaging-platform/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'").
+* You can [authenticate your user midway through a session](#authenticating-asynchronously "Authenticating Asynchronously") using the [SetCustomer API](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'").
 
 With rare exceptions, you must also configure [UserLoginHandler](#using-the-userloginhandler-method "Using the 'UserLoginHandler' Method") to enable ASAPP to handle cases where a user requires authentication or re-authentication in the midst of a chat session (e.g., if a user's authentication credentials expire during a chat session.)
 
@@ -31,7 +31,7 @@ With rare exceptions, you must also configure [UserLoginHandler](#using-the-user
 
 If a user who is already authenticated with your site requests a page that includes ASAPP chat functionality, you can proactively authenticate that user to the ASAPP SDK at page load time. This allows an authenticated user who initiates a chat session to have immediate access to their account details without having to login again.
 
-To authenticate a user to the ASAPP Chat SDK on page load, use the ASAPP [Load API](/messaging-platform/integrations/web-sdk/web-javascript-api#load "'load'") providing both [ContextProvider](/messaging-platform/integrations/web-sdk/web-app-settings#contextprovider "ContextProvider") and [CustomerId](/messaging-platform/integrations/web-sdk/web-app-settings#customerid "CustomerId") as additional keys in the [Load method](/messaging-platform/integrations/web-sdk/web-javascript-api#load "'load'").
+To authenticate a user to the ASAPP Chat SDK on page load, use the ASAPP [Load API](/agent-desk/integrations/web-sdk/web-javascript-api#load "'load'") providing both [ContextProvider](/agent-desk/integrations/web-sdk/web-app-settings#contextprovider "ContextProvider") and [CustomerId](/agent-desk/integrations/web-sdk/web-app-settings#customerid "CustomerId") as additional keys in the [Load method](/agent-desk/integrations/web-sdk/web-javascript-api#load "'load'").
 
 For example:
 
@@ -63,7 +63,7 @@ When a user opens the ASAPP Chat SDK, they will already be authenticated to the 
 
 ## Authenticating Asynchronously
 
-If a user's authentication credentials are not available at page load time, you can authenticate asynchronously using the ASAPP [SetCustomer](/messaging-platform/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") API.
+If a user's authentication credentials are not available at page load time, you can authenticate asynchronously using the ASAPP [SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") API.
 
 After you've retrieved your user's credentials, you can call the API to authenticate that user with the ASAPP Chat SDK mid-session.
 
@@ -87,10 +87,10 @@ ASAPP('setCustomer', {
 </script>
 ```
 
-Once you call the [SetCustomer](/messaging-platform/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") method is called, and as long as the provided `Auth` information remains valid on your backend, any ASAPP Chat SDK actions that require authentication will be properly authenticated.
+Once you call the [SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") method is called, and as long as the provided `Auth` information remains valid on your backend, any ASAPP Chat SDK actions that require authentication will be properly authenticated.
 
 <Note>
-  The SetCustomer method is typically called as part of the [UserLoginHandler](/messaging-platform/integrations/web-sdk/web-app-settings#userloginhandler-11877 "UserLoginHandler").
+  The SetCustomer method is typically called as part of the [UserLoginHandler](/agent-desk/integrations/web-sdk/web-app-settings#userloginhandler-11877 "UserLoginHandler").
 
   See the section on [Using the 'UserLoginHandler' Method](#using-the-userloginhandler-method "Using the 'UserLoginHandler' Method") for a complete picture of how you may want to authenticate a user during an ASAPP Chat SDK session.
 </Note>

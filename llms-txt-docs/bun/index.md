@@ -1,11 +1,3 @@
-# Source: https://bun.com/docs/test/index.md
-
-# Source: https://bun.com/docs/runtime/index.md
-
-# Source: https://bun.com/docs/index.md
-
-# Source: https://bun.com/docs/guides/index.md
-
 # Source: https://bun.com/docs/bundler/index.md
 
 # Bundler
@@ -109,7 +101,7 @@ For each file specified in `entrypoints`, Bun will generate a new bundle. This b
 
 The contents of `out/index.js` will look something like this:
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // out/index.js
 // ...
 // ~20k lines of code
@@ -529,7 +521,7 @@ Injects environment variables into the bundled output by converting `process.env
 
 For the input below:
 
-```ts title="input.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="input.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // input.js
 console.log(process.env.FOO);
 console.log(process.env.BAZ);
@@ -537,7 +529,7 @@ console.log(process.env.BAZ);
 
 The generated bundle will contain the following code:
 
-```ts title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // output.js
 console.log("bar");
 console.log("123");
@@ -583,7 +575,7 @@ console.log(process.env.BAZ);
 
 The generated bundle will contain the following code:
 
-```ts title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(process.env.FOO);
 console.log("https://acme.com");
 console.log(process.env.BAZ);
@@ -730,7 +722,7 @@ Normally, bundling `index.tsx` would generate a bundle containing the entire sou
 
 The generated bundle will look something like this:
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { z } from "zod";
 
 // ...
@@ -1041,7 +1033,7 @@ Setting `publicPath` will prefix all file paths with the specified value.
 
 The output file would now look something like this.
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 var logo = "https://cdn.example.com/logo-a7305bdef.svg";
 ```
 
@@ -1375,10 +1367,12 @@ interface BuildConfig {
    * JSX configuration object for controlling JSX transform behavior
    */
   jsx?: {
+    runtime?: "automatic" | "classic";
+    importSource?: string;
     factory?: string;
     fragment?: string;
-    importSource?: string;
-    runtime?: "automatic" | "classic";
+    sideEffects?: boolean;
+    development?: boolean;
   };
   naming?:
     | string
@@ -1462,13 +1456,20 @@ interface BuildConfig {
   drop?: string[];
 
   /**
-   * When set to `true`, the returned promise rejects with an AggregateError when a build failure happens.
-   * When set to `false`, the `success` property of the returned object will be `false` when a build failure happens.
+   * - When set to `true`, the returned promise rejects with an AggregateError when a build failure happens.
+   * - When set to `false`, returns a {@link BuildOutput} with `{success: false}`
    *
-   * This defaults to `false` in Bun 1.1 and will change to `true` in Bun 1.2
-   * as most usage of `Bun.build` forgets to check for errors.
+   * @default true
    */
   throw?: boolean;
+
+  /**
+   * Custom tsconfig.json file path to use for path resolution.
+   * Equivalent to `--tsconfig-override` in the CLI.
+   */
+  tsconfig?: string;
+
+  outdir?: string;
 }
 
 interface BuildOutput {

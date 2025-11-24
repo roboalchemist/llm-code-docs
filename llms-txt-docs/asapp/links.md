@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/links.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/links.md
 
 # Links
 

@@ -1,7 +1,3 @@
-# Source: https://docs.apify.com/platform/integrations/api.md
-
-# Source: https://docs.apify.com/academy/api.md
-
 # Source: https://docs.apify.com/api.md
 
 

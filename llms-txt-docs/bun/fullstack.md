@@ -634,7 +634,7 @@ const server = serve({
 console.log(`🚀 Server running on ${server.url}`);
 ```
 
-```html title="public/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="public/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <head>
@@ -759,7 +759,7 @@ export function App() {
 }
 ```
 
-```css title="src/styles.css" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css title="src/styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 * {
   margin: 0;
   padding: 0;
@@ -1001,7 +1001,7 @@ CMD ["bun", "index.js"]
 
 ### Environment Variables
 
-```bash title=".env.production" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini title=".env.production" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NODE_ENV=production
 PORT=3000
 DATABASE_URL=postgresql://user:pass@localhost:5432/myapp

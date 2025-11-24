@@ -304,7 +304,7 @@ The `html` loader processes HTML files and bundles any referenced assets. It wil
 
 For example, given this HTML file:
 
-```html title="src/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="src/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <body>
@@ -317,7 +317,7 @@ For example, given this HTML file:
 
 It will output a new HTML file with the bundled assets:
 
-```html title="dist/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="dist/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <body>

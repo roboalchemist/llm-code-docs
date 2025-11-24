@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/whatsapp-business.md
+# Source: https://docs.asapp.com/agent-desk/integrations/whatsapp-business.md
 
 # WhatsApp Business
 
@@ -94,7 +94,7 @@ Entry points are where your customers start conversations with your business. Yo
 You can also direct to WhatsApp from social media pages or using Meta's Ads platform to provide an entry point. Ads are fully configurable within the Meta suite of products and will result in no costs incurred for conversations that originate via interactions with them.
 
 <Note>
-  ASAPP does not currently support [Chat Instead](/messaging-platform/integrations/chat-instead "Chat Instead") functionality for WhatsApp.
+  ASAPP does not currently support [Chat Instead](/agent-desk/integrations/chat-instead "Chat Instead") functionality for WhatsApp.
 </Note>
 
 ### Determine Launch and Throttling Strategy

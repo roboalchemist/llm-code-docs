@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-features.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-features.md
 
 # Web Features
 
@@ -7,11 +7,11 @@ This section describes various features that are unique to the ASAPP Web SDK:
 * [Triggers](#triggers "Triggers")
 * [Deeplinks](#deeplinks-11865 "Deeplinks")
 
-In addition, please see [Chat Instead](/messaging-platform/integrations/chat-instead/web "Web").
+In addition, please see [Chat Instead](/agent-desk/integrations/chat-instead/web "Web").
 
 ## Triggers
 
-A Trigger is an ASAPP feature that allows you to specify which pages display the ASAPP Chat UI. You may choose to show the ASAPP Chat UI on all pages where the ASAPP Chat SDK is [embedded and loaded](/messaging-platform/integrations/web-sdk/web-quick-start "Web Quick Start"), or on just a subset of those pages.
+A Trigger is an ASAPP feature that allows you to specify which pages display the ASAPP Chat UI. You may choose to show the ASAPP Chat UI on all pages where the ASAPP Chat SDK is [embedded and loaded](/agent-desk/integrations/web-sdk/web-quick-start "Web Quick Start"), or on just a subset of those pages.
 
 <Note>
   You must enable at least one Trigger in order for the ASAPP Chat UI to display anywhere on your site. Until you define at least one Trigger, the ASAPP Chat UI will not display on your site.
@@ -21,7 +21,7 @@ A Trigger is an ASAPP feature that allows you to specify which pages display the
   <img src="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=1ff5ea2b8397950374873dbe0202a0c3" data-og-width="632" width="632" data-og-height="884" height="884" data-path="image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=280&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=8518e4e6111704b81700fb71a9dc96ff 280w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=560&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=b78cab6753a77335c0dc7825c9a3ac3d 560w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=840&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=9302afa5632a899f8480d9152f407c77 840w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=1100&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=900b9c026c22d5110bc7d3cb29f5f680 1100w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=1650&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=9b6f90f484968532937c5f9ff6750dcd 1650w, https://mintcdn.com/asapp/NE5s_J_rgoRPqQQt/image/uuid-3a889a32-4401-ec1b-0f96-b73a2243d09a.png?w=2500&fit=max&auto=format&n=NE5s_J_rgoRPqQQt&q=85&s=007cf78f9b947a72178db960b97efd1c 2500w" />
 </Frame>
 
-Once you've [embedded](/messaging-platform/integrations/web-sdk/web-quick-start#1-embed-the-script "1. Embed the Script") and [loaded](/messaging-platform/integrations/web-sdk/web-javascript-api#load "'load'") the Chat SDK on your web pages, ASAPP will determine whether or not to display the Chat UI on the user's current URL.
+Once you've [embedded](/agent-desk/integrations/web-sdk/web-quick-start#1-embed-the-script "1. Embed the Script") and [loaded](/agent-desk/integrations/web-sdk/web-javascript-api#load "'load'") the Chat SDK on your web pages, ASAPP will determine whether or not to display the Chat UI on the user's current URL.
 
 URLs that are enabled for displaying the UI are configured by a feature known as Triggers.
 

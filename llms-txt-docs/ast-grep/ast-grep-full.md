@@ -11178,6 +11178,90 @@ let width = (lines + num).checked_ilog10().unwrap_or(0) + 1; // [!code ++]
 
 [Herrington Darkholme](https://twitter.com/hd_nvim), inspired by [dogfooding ast-grep](https://github.com/ast-grep/ast-grep/issues/550)
 
+## Unsafe Function Without Unsafe Block
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InJ1c3QiLCJxdWVyeSI6IntcbiAgZGVzY3JpcHRpb24gPSAkQVxufSIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoic21hcnQiLCJzZWxlY3RvciI6ImJpbmRpbmciLCJjb25maWciOiIgIGlkOiByZWR1bmRhbnQtdW5zYWZlLWZ1bmN0aW9uXG4gIGxhbmd1YWdlOiBydXN0XG4gIHNldmVyaXR5OiBlcnJvclxuICBtZXNzYWdlOiBVbnNhZmUgZnVuY3Rpb24gd2l0aG91dCB1bnNhZmUgYmxvY2sgaW5zaWRlXG4gIG5vdGU6IHxcbiAgICBDb25zaWRlciB3aGV0aGVyIHRoaXMgZnVuY3Rpb24gbmVlZHMgdG8gYmUgbWFya2VkIHVuc2FmZSBcbiAgICBvciBpZiB1bnNhZmUgb3BlcmF0aW9ucyBzaG91bGQgYmUgd3JhcHBlZCBpbiBhbiB1bnNhZmUgYmxvY2tcbiAgcnVsZTpcbiAgICBhbGw6XG4gICAgICAtIGtpbmQ6IGZ1bmN0aW9uX2l0ZW1cbiAgICAgIC0gaGFzOlxuICAgICAgICAgIGtpbmQ6IGZ1bmN0aW9uX21vZGlmaWVyc1xuICAgICAgICAgIHJlZ2V4OiBcIl51bnNhZmVcIlxuICAgICAgLSBub3Q6XG4gICAgICAgICAgaGFzOlxuICAgICAgICAgICAga2luZDogdW5zYWZlX2Jsb2NrXG4gICAgICAgICAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6IiAgLy8gU2hvdWxkIG1hdGNoIC0gdW5zYWZlIGZ1bmN0aW9uIHdpdGhvdXQgdW5zYWZlIGJsb2NrIChubyByZXR1cm4gdHlwZSlcbiAgdW5zYWZlIGZuIHJlZHVuZGFudF91bnNhZmUoKSB7XG4gICAgICBwcmludGxuIShcIk5vIHVuc2FmZSBvcGVyYXRpb25zIGhlcmVcIik7XG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgZnVuY3Rpb24gd2l0aCByZXR1cm4gdHlwZSwgbm8gdW5zYWZlIGJsb2NrXG4gIHVuc2FmZSBmbiByZWR1bmRhbnRfd2l0aF9yZXR1cm4oKSAtPiBpMzIge1xuICAgICAgbGV0IHggPSA1O1xuICAgICAgeCArIDEwXG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgZnVuY3Rpb24gd2l0aCBjb21wbGV4IHJldHVybiB0eXBlXG4gIHVuc2FmZSBmbiByZWR1bmRhbnRfY29tcGxleF9yZXR1cm4oKSAtPiBSZXN1bHQ8U3RyaW5nLCBzdGQ6OmlvOjpFcnJvcj4ge1xuICAgICAgT2soU3RyaW5nOjpmcm9tKFwic2FmZSBvcGVyYXRpb25cIikpXG4gIH1cblxuICAvLyBTaG91bGQgTk9UIG1hdGNoIC0gdW5zYWZlIGZ1bmN0aW9uIHdpdGggdW5zYWZlIGJsb2NrXG4gIHVuc2FmZSBmbiBwcm9wZXJfdW5zYWZlKCkgLT4gKmNvbnN0IGkzMiB7XG4gICAgICB1bnNhZmUge1xuICAgICAgICAgIGxldCBwdHIgPSAweDEyMzQgYXMgKmNvbnN0IGkzMjtcbiAgICAgICAgICBwdHJcbiAgICAgIH1cbiAgfVxuXG4gIC8vIFNob3VsZCBtYXRjaCAtIHVuc2FmZSBhc3luYyBmdW5jdGlvbiB3aXRob3V0IHVuc2FmZSBibG9ja1xuICB1bnNhZmUgYXN5bmMgZm4gYXN5bmNfcmVkdW5kYW50KCkgLT4gaTMyIHtcbiAgICAgIDQyXG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgY29uc3QgZnVuY3Rpb25cbiAgdW5zYWZlIGNvbnN0IGZuIGNvbnN0X3JlZHVuZGFudCgpIC0+IGkzMiB7XG4gICAgICAxMDBcbiAgfVxuXG4gIC8vIFNob3VsZCBOT1QgbWF0Y2ggLSByZWd1bGFyIGZ1bmN0aW9uXG4gIGZuIHJlZ3VsYXJfZnVuY3Rpb24oKSAtPiBpMzIge1xuICAgICAgNDJcbiAgfSJ9)
+
+### Description
+
+This rule detects functions marked with the `unsafe` keyword that do not contain any `unsafe` blocks in their body.
+
+When a function is marked `unsafe`, it indicates that the function contains operations that the compiler cannot verify as safe. However, if the function body doesn't contain any `unsafe` blocks, it may be unnecessarily marked as `unsafe`. This could be a sign that:
+
+1. The function should not be marked `unsafe` if it doesn't perform any unsafe operations
+2. Or if there are unsafe operations, they should be explicitly wrapped in `unsafe` blocks for clarity
+
+This rule helps identify such cases so developers can review whether the `unsafe` marker is truly necessary or if the code needs to be refactored.
+
+### YAML
+
+```yaml
+id: redundant-unsafe-function
+language: rust
+severity: error
+message: Unsafe function without unsafe block inside
+note: |
+  Consider whether this function needs to be marked unsafe 
+  or if unsafe operations should be wrapped in an unsafe block
+rule:
+  all:
+    - kind: function_item
+    - has:
+        kind: function_modifiers
+        regex: "^unsafe"
+    - not:
+        has:
+          kind: unsafe_block
+          stopBy: end
+```
+
+### Example
+
+```rs {2,7,12,24,29}
+// Should match - unsafe function without unsafe block (no return type)
+unsafe fn redundant_unsafe() {
+    println!("No unsafe operations here");
+}
+
+// Should match - unsafe function with return type, no unsafe block
+unsafe fn redundant_with_return() -> i32 {
+    let x = 5;
+    x + 10
+}
+
+// Should match - unsafe function with complex return type
+unsafe fn redundant_complex_return() -> Result<String, std::io::Error> {
+    Ok(String::from("safe operation"))
+}
+
+// Should NOT match - unsafe function with unsafe block
+unsafe fn proper_unsafe() -> *const i32 {
+    unsafe {
+        let ptr = 0x1234 as *const i32;
+        ptr
+    }
+}
+
+// Should match - unsafe async function without unsafe block
+unsafe async fn async_redundant() -> i32 {
+    42
+}
+
+// Should match - unsafe const function
+unsafe const fn const_redundant() -> i32 {
+    100
+}
+
+// Should NOT match - regular function
+fn regular_function() -> i32 {
+    42
+}
+```
+
+### Contributed by
+
+Inspired by [@hd\_nvim's Tweet](https://x.com/hd_nvim/status/1992810384072585397?s=20)
+
 ## Rewrite `indoc!` macro&#x20;
 
 * [Playground Link](/playground.html#eyJtb2RlIjoiUGF0Y2giLCJsYW5nIjoicnVzdCIsInF1ZXJ5IjoiaW5kb2MhIHsgciNcIiQkJEFcIiMgfSIsInJld3JpdGUiOiJgJCQkQWAiLCJzdHJpY3RuZXNzIjoicmVsYXhlZCIsInNlbGVjdG9yIjoiIiwiY29uZmlnIjoicnVsZTogXG4gYW55OlxuIC0gcGF0dGVybjogJFYgPT09ICRTRU5TRVRJVkVXT1JEXG4gLSBwYXR0ZXJuOiAkU0VOU0VUSVZFV09SRCA9PT0gJFZcbmNvbnN0cmFpbnRzOlxuICBTRU5TRVRJVkVXT1JEOlxuICAgIHJlZ2V4OiBwYXNzd29yZCIsInNvdXJjZSI6ImZuIG1haW4oKSB7XG4gICAgaW5kb2MhIHtyI1wiXG4gICAgICAgIC5mb28ge1xuICAgICAgICAgICAgb3JkZXI6IDE7XG4gICAgICAgIH1cbiAgICBcIiN9O1xufSJ9)
@@ -13621,57 +13705,6 @@ void test_func() {
 ---
 
 ---
-url: /catalog/c/yoda-condition.md
----
-## Rewrite Check to Yoda Condition&#x20;
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImMiLCJxdWVyeSI6IiRDOiAkVCA9IHJlbGF0aW9uc2hpcCgkJCRBLCB1c2VsaXN0PVRydWUsICQkJEIpIiwicmV3cml0ZSI6IiRDOiBMaXN0WyRUXSA9IHJlbGF0aW9uc2hpcCgkJCRBLCB1c2VsaXN0PVRydWUsICQkJEIpIiwiY29uZmlnIjoiaWQ6IG1heS10aGUtZm9yY2UtYmUtd2l0aC15b3Vcbmxhbmd1YWdlOiBjXG5ydWxlOlxuICBwYXR0ZXJuOiAkQSA9PSAkQiBcbiAgaW5zaWRlOlxuICAgIGtpbmQ6IHBhcmVudGhlc2l6ZWRfZXhwcmVzc2lvblxuICAgIGluc2lkZToge2tpbmQ6IGlmX3N0YXRlbWVudH1cbmNvbnN0cmFpbnRzOlxuICBCOiB7IGtpbmQ6IG51bWJlcl9saXRlcmFsIH1cbmZpeDogJEIgPT0gJEEiLCJzb3VyY2UiOiJpZiAobXlOdW1iZXIgPT0gNDIpIHsgLyogLi4uICovfVxuaWYgKG5vdE1hdGNoID09IGFub3RoZXIpIHt9XG5pZiAobm90TWF0Y2gpIHt9In0=)
-
-### Description
-
-In programming jargon, a [Yoda condition](https://en.wikipedia.org/wiki/Yoda_conditions) is a style that places the constant portion of the expression on the left side of the conditional statement. It is used to prevent assignment errors that may occur in languages like C.
-
-### YAML
-
-```yaml
-id: may-the-force-be-with-you
-language: c
-rule:
-  pattern: $A == $B                 # Find equality comparison
-  inside:                           # inside an if_statement
-    kind: parenthesized_expression
-    inside: {kind: if_statement}
-constraints:                        # with the constraint that
-  B: { kind: number_literal }       # right side is a number
-fix: $B == $A
-```
-
-The rule targets an equality comparison, denoted by the [pattern](/guide/pattern-syntax.html) `$A == $B`. This comparison must occur [inside](/reference/rule.html#inside) an `if_statement`. Additionally, there’s a [constraint](/reference/yaml.html#constraints) that the right side of the comparison, `$B`, must be a number\_literal like `42`.
-
-### Example
-
-```c {1}
-if (myNumber == 42) { /* ... */}
-if (notMatch == another) { /* ... */}
-if (notMatch) { /* ... */}
-```
-
-### Diff
-
-```c
-if (myNumber == 42) { /* ... */} // [!code --]
-if (42 == myNumber) { /* ... */} // [!code ++]
-if (notMatch == another) { /* ... */}
-if (notMatch) { /* ... */}
-```
-
-### Contributed by
-
-Inspired by this [thread](https://x.com/cocoa1han/status/1763020689303581141)
-
----
-
----
 url: /catalog/cpp/find-struct-inheritance.md
 ---
 ## Find Struct Inheritance
@@ -13725,6 +13758,57 @@ struct Bar: Baz {
 ### Contributed by
 
 Inspired by this [tweet](https://x.com/techno_bog/status/1885421768384331871)
+
+---
+
+---
+url: /catalog/c/yoda-condition.md
+---
+## Rewrite Check to Yoda Condition&#x20;
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImMiLCJxdWVyeSI6IiRDOiAkVCA9IHJlbGF0aW9uc2hpcCgkJCRBLCB1c2VsaXN0PVRydWUsICQkJEIpIiwicmV3cml0ZSI6IiRDOiBMaXN0WyRUXSA9IHJlbGF0aW9uc2hpcCgkJCRBLCB1c2VsaXN0PVRydWUsICQkJEIpIiwiY29uZmlnIjoiaWQ6IG1heS10aGUtZm9yY2UtYmUtd2l0aC15b3Vcbmxhbmd1YWdlOiBjXG5ydWxlOlxuICBwYXR0ZXJuOiAkQSA9PSAkQiBcbiAgaW5zaWRlOlxuICAgIGtpbmQ6IHBhcmVudGhlc2l6ZWRfZXhwcmVzc2lvblxuICAgIGluc2lkZToge2tpbmQ6IGlmX3N0YXRlbWVudH1cbmNvbnN0cmFpbnRzOlxuICBCOiB7IGtpbmQ6IG51bWJlcl9saXRlcmFsIH1cbmZpeDogJEIgPT0gJEEiLCJzb3VyY2UiOiJpZiAobXlOdW1iZXIgPT0gNDIpIHsgLyogLi4uICovfVxuaWYgKG5vdE1hdGNoID09IGFub3RoZXIpIHt9XG5pZiAobm90TWF0Y2gpIHt9In0=)
+
+### Description
+
+In programming jargon, a [Yoda condition](https://en.wikipedia.org/wiki/Yoda_conditions) is a style that places the constant portion of the expression on the left side of the conditional statement. It is used to prevent assignment errors that may occur in languages like C.
+
+### YAML
+
+```yaml
+id: may-the-force-be-with-you
+language: c
+rule:
+  pattern: $A == $B                 # Find equality comparison
+  inside:                           # inside an if_statement
+    kind: parenthesized_expression
+    inside: {kind: if_statement}
+constraints:                        # with the constraint that
+  B: { kind: number_literal }       # right side is a number
+fix: $B == $A
+```
+
+The rule targets an equality comparison, denoted by the [pattern](/guide/pattern-syntax.html) `$A == $B`. This comparison must occur [inside](/reference/rule.html#inside) an `if_statement`. Additionally, there’s a [constraint](/reference/yaml.html#constraints) that the right side of the comparison, `$B`, must be a number\_literal like `42`.
+
+### Example
+
+```c {1}
+if (myNumber == 42) { /* ... */}
+if (notMatch == another) { /* ... */}
+if (notMatch) { /* ... */}
+```
+
+### Diff
+
+```c
+if (myNumber == 42) { /* ... */} // [!code --]
+if (42 == myNumber) { /* ... */} // [!code ++]
+if (notMatch == another) { /* ... */}
+if (notMatch) { /* ... */}
+```
+
+### Contributed by
+
+Inspired by this [thread](https://x.com/cocoa1han/status/1763020689303581141)
 
 ---
 
@@ -13795,50 +13879,6 @@ sprintf(buf1, "%s", Text_String(TXT_WAITING_FOR_CONNECTIONS));
 ---
 
 ---
-url: /catalog/go/find-func-declaration-with-prefix.md
----
-## Find function declarations with names of certain pattern
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJyJ15bQS1aYS16MC05Xy1dKyciLCJyZXdyaXRlIjoiIiwiY29uZmlnIjoiaWQ6IHRlc3QtZnVuY3Rpb25zXG5sYW5ndWFnZTogZ29cbnJ1bGU6XG4gIGtpbmQ6IGZ1bmN0aW9uX2RlY2xhcmF0aW9uXG4gIGhhczpcbiAgICBmaWVsZDogbmFtZVxuICAgIHJlZ2V4OiBUZXN0LipcbiIsInNvdXJjZSI6InBhY2thZ2UgYWJzXG5pbXBvcnQgXCJ0ZXN0aW5nXCJcbmZ1bmMgVGVzdEFicyh0ICp0ZXN0aW5nLlQpIHtcbiAgICBnb3QgOj0gQWJzKC0xKVxuICAgIGlmIGdvdCAhPSAxIHtcbiAgICAgICAgdC5FcnJvcmYoXCJBYnMoLTEpID0gJWQ7IHdhbnQgMVwiLCBnb3QpXG4gICAgfVxufVxuIn0=)
-
-### Description
-
-ast-grep can find function declarations by their names. But not all names can be matched by a meta variable pattern. For instance, you cannot use a meta variable pattern to find function declarations whose names start with a specific prefix, e.g. `TestAbs` with the prefix `Test`. Attempting `Test$_` will fail because it is not a valid syntax.
-
-Instead, you can use a [YAML rule](/reference/rule.html) to use the [`regex`](/guide/rule-config/atomic-rule.html#regex) atomic rule.
-
-### YAML
-
-```yaml
-id: test-functions
-language: go
-rule:
-  kind: function_declaration
-  has:
-    field: name
-    regex: Test.*
-```
-
-### Example
-
-```go{3-8}
-package abs
-import "testing"
-func TestAbs(t *testing.T) {
-    got := Abs(-1)
-    if got != 1 {
-        t.Errorf("Abs(-1) = %d; want 1", got)
-    }
-}
-```
-
-### Contributed by
-
-[kevinkjt2000](https://twitter.com/kevinkjt2000) on [Discord](https://discord.com/invite/4YZjf6htSQ).
-
----
-
----
 url: /catalog/go/defer-func-call-antipattern.md
 ---
 ## Detect problematic defer statements with function calls
@@ -13903,45 +13943,46 @@ Inspired by [YangKeao's tweet](https://x.com/YangKeao/status/1671420857565212672
 ---
 
 ---
-url: /catalog/go/match-function-call.md
+url: /catalog/go/find-func-declaration-with-prefix.md
 ---
-## Match Function Call in Golang
+## Find function declarations with names of certain pattern
 
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJhd2FpdCAkQSIsInJld3JpdGUiOiJ0cnkge1xuICAgIGF3YWl0ICRBXG59IGNhdGNoKGUpIHtcbiAgICAvLyB0b2RvXG59IiwiY29uZmlnIjoicnVsZTpcbiAgcGF0dGVybjpcbiAgICBjb250ZXh0OiAnZnVuYyB0KCkgeyBmbXQuUHJpbnRsbigkJCRBKSB9J1xuICAgIHNlbGVjdG9yOiBjYWxsX2V4cHJlc3Npb25cbiIsInNvdXJjZSI6ImZ1bmMgbWFpbigpIHtcbiAgICBmbXQuUHJpbnRsbihcIk9LXCIpXG59In0=)
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJyJ15bQS1aYS16MC05Xy1dKyciLCJyZXdyaXRlIjoiIiwiY29uZmlnIjoiaWQ6IHRlc3QtZnVuY3Rpb25zXG5sYW5ndWFnZTogZ29cbnJ1bGU6XG4gIGtpbmQ6IGZ1bmN0aW9uX2RlY2xhcmF0aW9uXG4gIGhhczpcbiAgICBmaWVsZDogbmFtZVxuICAgIHJlZ2V4OiBUZXN0LipcbiIsInNvdXJjZSI6InBhY2thZ2UgYWJzXG5pbXBvcnQgXCJ0ZXN0aW5nXCJcbmZ1bmMgVGVzdEFicyh0ICp0ZXN0aW5nLlQpIHtcbiAgICBnb3QgOj0gQWJzKC0xKVxuICAgIGlmIGdvdCAhPSAxIHtcbiAgICAgICAgdC5FcnJvcmYoXCJBYnMoLTEpID0gJWQ7IHdhbnQgMVwiLCBnb3QpXG4gICAgfVxufVxuIn0=)
 
 ### Description
 
-One of the common questions of ast-grep is to match function calls in Golang.
+ast-grep can find function declarations by their names. But not all names can be matched by a meta variable pattern. For instance, you cannot use a meta variable pattern to find function declarations whose names start with a specific prefix, e.g. `TestAbs` with the prefix `Test`. Attempting `Test$_` will fail because it is not a valid syntax.
 
-A plain pattern like `fmt.Println($A)` will not work. This is because Golang syntax also allows type conversions, e.g. `int(3.14)`, that look like function calls. Tree-sitter, ast-grep's parser, will prefer parsing `func_call(arg)` as a type conversion instead of a call expression.
-
-To avoid this ambiguity, ast-grep lets us write a [contextual pattern](/guide/rule-config/atomic-rule.html#pattern), which is a pattern inside a larger code snippet.
-We can use `context` to write a pattern like this: `func t() { fmt.Println($A) }`. Then, we can use the selector `call_expression` to match only function calls.
-
-Please also read the [deep dive](/advanced/pattern-parse.html) on [ambiguous pattern](/advanced/pattern-parse.html#ambiguous-pattern-code).
+Instead, you can use a [YAML rule](/reference/rule.html) to use the [`regex`](/guide/rule-config/atomic-rule.html#regex) atomic rule.
 
 ### YAML
 
 ```yaml
-id: match-function-call
+id: test-functions
 language: go
 rule:
-  pattern:
-    context: 'func t() { fmt.Println($A) }'
-    selector: call_expression
+  kind: function_declaration
+  has:
+    field: name
+    regex: Test.*
 ```
 
 ### Example
 
-```go{2}
-func main() {
-    fmt.Println("OK")
+```go{3-8}
+package abs
+import "testing"
+func TestAbs(t *testing.T) {
+    got := Abs(-1)
+    if got != 1 {
+        t.Errorf("Abs(-1) = %d; want 1", got)
+    }
 }
 ```
 
 ### Contributed by
 
-Inspired by [QuantumGhost](https://github.com/QuantumGhost) from [ast-grep/ast-grep#646](https://github.com/ast-grep/ast-grep/issues/646)
+[kevinkjt2000](https://twitter.com/kevinkjt2000) on [Discord](https://discord.com/invite/4YZjf6htSQ).
 
 ---
 
@@ -14002,6 +14043,49 @@ func main() {
 ### Contributed by
 
 [Sudesh Gutta](https://github.com/sudeshgutta)
+
+---
+
+---
+url: /catalog/go/match-function-call.md
+---
+## Match Function Call in Golang
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6ImdvIiwicXVlcnkiOiJhd2FpdCAkQSIsInJld3JpdGUiOiJ0cnkge1xuICAgIGF3YWl0ICRBXG59IGNhdGNoKGUpIHtcbiAgICAvLyB0b2RvXG59IiwiY29uZmlnIjoicnVsZTpcbiAgcGF0dGVybjpcbiAgICBjb250ZXh0OiAnZnVuYyB0KCkgeyBmbXQuUHJpbnRsbigkJCRBKSB9J1xuICAgIHNlbGVjdG9yOiBjYWxsX2V4cHJlc3Npb25cbiIsInNvdXJjZSI6ImZ1bmMgbWFpbigpIHtcbiAgICBmbXQuUHJpbnRsbihcIk9LXCIpXG59In0=)
+
+### Description
+
+One of the common questions of ast-grep is to match function calls in Golang.
+
+A plain pattern like `fmt.Println($A)` will not work. This is because Golang syntax also allows type conversions, e.g. `int(3.14)`, that look like function calls. Tree-sitter, ast-grep's parser, will prefer parsing `func_call(arg)` as a type conversion instead of a call expression.
+
+To avoid this ambiguity, ast-grep lets us write a [contextual pattern](/guide/rule-config/atomic-rule.html#pattern), which is a pattern inside a larger code snippet.
+We can use `context` to write a pattern like this: `func t() { fmt.Println($A) }`. Then, we can use the selector `call_expression` to match only function calls.
+
+Please also read the [deep dive](/advanced/pattern-parse.html) on [ambiguous pattern](/advanced/pattern-parse.html#ambiguous-pattern-code).
+
+### YAML
+
+```yaml
+id: match-function-call
+language: go
+rule:
+  pattern:
+    context: 'func t() { fmt.Println($A) }'
+    selector: call_expression
+```
+
+### Example
+
+```go{2}
+func main() {
+    fmt.Println("OK")
+}
+```
+
+### Contributed by
+
+Inspired by [QuantumGhost](https://github.com/QuantumGhost) from [ast-grep/ast-grep#646](https://github.com/ast-grep/ast-grep/issues/646)
 
 ---
 
@@ -15080,6 +15164,95 @@ let width = (lines + num).checked_ilog10().unwrap_or(0) + 1; // [!code ++]
 ---
 
 ---
+url: /catalog/rust/redundant-unsafe-function.md
+---
+## Unsafe Function Without Unsafe Block
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InJ1c3QiLCJxdWVyeSI6IntcbiAgZGVzY3JpcHRpb24gPSAkQVxufSIsInJld3JpdGUiOiIiLCJzdHJpY3RuZXNzIjoic21hcnQiLCJzZWxlY3RvciI6ImJpbmRpbmciLCJjb25maWciOiIgIGlkOiByZWR1bmRhbnQtdW5zYWZlLWZ1bmN0aW9uXG4gIGxhbmd1YWdlOiBydXN0XG4gIHNldmVyaXR5OiBlcnJvclxuICBtZXNzYWdlOiBVbnNhZmUgZnVuY3Rpb24gd2l0aG91dCB1bnNhZmUgYmxvY2sgaW5zaWRlXG4gIG5vdGU6IHxcbiAgICBDb25zaWRlciB3aGV0aGVyIHRoaXMgZnVuY3Rpb24gbmVlZHMgdG8gYmUgbWFya2VkIHVuc2FmZSBcbiAgICBvciBpZiB1bnNhZmUgb3BlcmF0aW9ucyBzaG91bGQgYmUgd3JhcHBlZCBpbiBhbiB1bnNhZmUgYmxvY2tcbiAgcnVsZTpcbiAgICBhbGw6XG4gICAgICAtIGtpbmQ6IGZ1bmN0aW9uX2l0ZW1cbiAgICAgIC0gaGFzOlxuICAgICAgICAgIGtpbmQ6IGZ1bmN0aW9uX21vZGlmaWVyc1xuICAgICAgICAgIHJlZ2V4OiBcIl51bnNhZmVcIlxuICAgICAgLSBub3Q6XG4gICAgICAgICAgaGFzOlxuICAgICAgICAgICAga2luZDogdW5zYWZlX2Jsb2NrXG4gICAgICAgICAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6IiAgLy8gU2hvdWxkIG1hdGNoIC0gdW5zYWZlIGZ1bmN0aW9uIHdpdGhvdXQgdW5zYWZlIGJsb2NrIChubyByZXR1cm4gdHlwZSlcbiAgdW5zYWZlIGZuIHJlZHVuZGFudF91bnNhZmUoKSB7XG4gICAgICBwcmludGxuIShcIk5vIHVuc2FmZSBvcGVyYXRpb25zIGhlcmVcIik7XG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgZnVuY3Rpb24gd2l0aCByZXR1cm4gdHlwZSwgbm8gdW5zYWZlIGJsb2NrXG4gIHVuc2FmZSBmbiByZWR1bmRhbnRfd2l0aF9yZXR1cm4oKSAtPiBpMzIge1xuICAgICAgbGV0IHggPSA1O1xuICAgICAgeCArIDEwXG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgZnVuY3Rpb24gd2l0aCBjb21wbGV4IHJldHVybiB0eXBlXG4gIHVuc2FmZSBmbiByZWR1bmRhbnRfY29tcGxleF9yZXR1cm4oKSAtPiBSZXN1bHQ8U3RyaW5nLCBzdGQ6OmlvOjpFcnJvcj4ge1xuICAgICAgT2soU3RyaW5nOjpmcm9tKFwic2FmZSBvcGVyYXRpb25cIikpXG4gIH1cblxuICAvLyBTaG91bGQgTk9UIG1hdGNoIC0gdW5zYWZlIGZ1bmN0aW9uIHdpdGggdW5zYWZlIGJsb2NrXG4gIHVuc2FmZSBmbiBwcm9wZXJfdW5zYWZlKCkgLT4gKmNvbnN0IGkzMiB7XG4gICAgICB1bnNhZmUge1xuICAgICAgICAgIGxldCBwdHIgPSAweDEyMzQgYXMgKmNvbnN0IGkzMjtcbiAgICAgICAgICBwdHJcbiAgICAgIH1cbiAgfVxuXG4gIC8vIFNob3VsZCBtYXRjaCAtIHVuc2FmZSBhc3luYyBmdW5jdGlvbiB3aXRob3V0IHVuc2FmZSBibG9ja1xuICB1bnNhZmUgYXN5bmMgZm4gYXN5bmNfcmVkdW5kYW50KCkgLT4gaTMyIHtcbiAgICAgIDQyXG4gIH1cblxuICAvLyBTaG91bGQgbWF0Y2ggLSB1bnNhZmUgY29uc3QgZnVuY3Rpb25cbiAgdW5zYWZlIGNvbnN0IGZuIGNvbnN0X3JlZHVuZGFudCgpIC0+IGkzMiB7XG4gICAgICAxMDBcbiAgfVxuXG4gIC8vIFNob3VsZCBOT1QgbWF0Y2ggLSByZWd1bGFyIGZ1bmN0aW9uXG4gIGZuIHJlZ3VsYXJfZnVuY3Rpb24oKSAtPiBpMzIge1xuICAgICAgNDJcbiAgfSJ9)
+
+### Description
+
+This rule detects functions marked with the `unsafe` keyword that do not contain any `unsafe` blocks in their body.
+
+When a function is marked `unsafe`, it indicates that the function contains operations that the compiler cannot verify as safe. However, if the function body doesn't contain any `unsafe` blocks, it may be unnecessarily marked as `unsafe`. This could be a sign that:
+
+1. The function should not be marked `unsafe` if it doesn't perform any unsafe operations
+2. Or if there are unsafe operations, they should be explicitly wrapped in `unsafe` blocks for clarity
+
+This rule helps identify such cases so developers can review whether the `unsafe` marker is truly necessary or if the code needs to be refactored.
+
+### YAML
+
+```yaml
+id: redundant-unsafe-function
+language: rust
+severity: error
+message: Unsafe function without unsafe block inside
+note: |
+  Consider whether this function needs to be marked unsafe 
+  or if unsafe operations should be wrapped in an unsafe block
+rule:
+  all:
+    - kind: function_item
+    - has:
+        kind: function_modifiers
+        regex: "^unsafe"
+    - not:
+        has:
+          kind: unsafe_block
+          stopBy: end
+```
+
+### Example
+
+```rs {2,7,12,24,29}
+// Should match - unsafe function without unsafe block (no return type)
+unsafe fn redundant_unsafe() {
+    println!("No unsafe operations here");
+}
+
+// Should match - unsafe function with return type, no unsafe block
+unsafe fn redundant_with_return() -> i32 {
+    let x = 5;
+    x + 10
+}
+
+// Should match - unsafe function with complex return type
+unsafe fn redundant_complex_return() -> Result<String, std::io::Error> {
+    Ok(String::from("safe operation"))
+}
+
+// Should NOT match - unsafe function with unsafe block
+unsafe fn proper_unsafe() -> *const i32 {
+    unsafe {
+        let ptr = 0x1234 as *const i32;
+        ptr
+    }
+}
+
+// Should match - unsafe async function without unsafe block
+unsafe async fn async_redundant() -> i32 {
+    42
+}
+
+// Should match - unsafe const function
+unsafe const fn const_redundant() -> i32 {
+    100
+}
+
+// Should NOT match - regular function
+fn regular_function() -> i32 {
+    42
+}
+```
+
+### Contributed by
+
+Inspired by [@hd\_nvim's Tweet](https://x.com/hd_nvim/status/1992810384072585397?s=20)
+
+---
+
+---
 url: /catalog/rust/rewrite-indoc-macro.md
 ---
 ## Rewrite `indoc!` macro&#x20;
@@ -15157,51 +15330,6 @@ fn main() {
 ---
 
 ---
-url: /catalog/tsx/avoid-nested-links.md
----
-## Avoid nested links
-
-* [Playground Link](https://ast-grep.github.io/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiaWYgKCRBKSB7ICQkJEIgfSIsInJld3JpdGUiOiJpZiAoISgkQSkpIHtcbiAgICByZXR1cm47XG59XG4kJCRCIiwic3RyaWN0bmVzcyI6InNtYXJ0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogbm8tbmVzdGVkLWxpbmtzXG5sYW5ndWFnZTogdHN4XG5zZXZlcml0eTogZXJyb3JcbnJ1bGU6XG4gIHBhdHRlcm46IDxhICQkJD4kJCRBPC9hPlxuICBoYXM6XG4gICAgcGF0dGVybjogPGEgJCQkPiQkJDwvYT5cbiAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6ImZ1bmN0aW9uIENvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgPGEgaHJlZj0nL2Fub3RoZXJkZXN0aW5hdGlvbic+TmVzdGVkIGxpbmshPC9hPlxuICA8L2E+O1xufVxuZnVuY3Rpb24gT2theUNvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgSSBhbSBqdXN0IGEgbGluay5cbiAgPC9hPjtcbn0ifQ==)
-
-### Description
-
-React will produce a warning message if you nest a link element inside of another link element. This rule will catch this mistake!
-
-### YAML
-
-```yaml
-id: no-nested-links
-language: tsx
-severity: error
-rule:
-  pattern: <a $$$>$$$A</a>
-  has:
-    pattern: <a $$$>$$$</a>
-    stopBy: end
-```
-
-### Example
-
-```tsx {1-5}
-function Component() {
-  return <a href='/destination'>
-    <a href='/anotherdestination'>Nested link!</a>
-  </a>;
-}
-function OkayComponent() {
-  return <a href='/destination'>
-    I am just a link.
-  </a>;
-}
-```
-
-### Contributed by
-
-[Tom MacWright](https://macwright.com/)
-
----
-
----
 url: /catalog/tsx/avoid-jsx-short-circuit.md
 ---
 ## Avoid `&&` short circuit in JSX&#x20;
@@ -15246,6 +15374,51 @@ fix: "{$A ? $B : null}"
 ### Contributed by
 
 [Herrington Darkholme](https://twitter.com/hd_nvim), inspired by [@Brooooook\_lyn](https://twitter.com/Brooooook_lyn/status/1666637274757595141)
+
+---
+
+---
+url: /catalog/tsx/avoid-nested-links.md
+---
+## Avoid nested links
+
+* [Playground Link](https://ast-grep.github.io/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiaWYgKCRBKSB7ICQkJEIgfSIsInJld3JpdGUiOiJpZiAoISgkQSkpIHtcbiAgICByZXR1cm47XG59XG4kJCRCIiwic3RyaWN0bmVzcyI6InNtYXJ0Iiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogbm8tbmVzdGVkLWxpbmtzXG5sYW5ndWFnZTogdHN4XG5zZXZlcml0eTogZXJyb3JcbnJ1bGU6XG4gIHBhdHRlcm46IDxhICQkJD4kJCRBPC9hPlxuICBoYXM6XG4gICAgcGF0dGVybjogPGEgJCQkPiQkJDwvYT5cbiAgICBzdG9wQnk6IGVuZCIsInNvdXJjZSI6ImZ1bmN0aW9uIENvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgPGEgaHJlZj0nL2Fub3RoZXJkZXN0aW5hdGlvbic+TmVzdGVkIGxpbmshPC9hPlxuICA8L2E+O1xufVxuZnVuY3Rpb24gT2theUNvbXBvbmVudCgpIHtcbiAgcmV0dXJuIDxhIGhyZWY9Jy9kZXN0aW5hdGlvbic+XG4gICAgSSBhbSBqdXN0IGEgbGluay5cbiAgPC9hPjtcbn0ifQ==)
+
+### Description
+
+React will produce a warning message if you nest a link element inside of another link element. This rule will catch this mistake!
+
+### YAML
+
+```yaml
+id: no-nested-links
+language: tsx
+severity: error
+rule:
+  pattern: <a $$$>$$$A</a>
+  has:
+    pattern: <a $$$>$$$</a>
+    stopBy: end
+```
+
+### Example
+
+```tsx {1-5}
+function Component() {
+  return <a href='/destination'>
+    <a href='/anotherdestination'>Nested link!</a>
+  </a>;
+}
+function OkayComponent() {
+  return <a href='/destination'>
+    I am just a link.
+  </a>;
+}
+```
+
+### Contributed by
+
+[Tom MacWright](https://macwright.com/)
 
 ---
 
@@ -15300,6 +15473,116 @@ function Component() {
 ### Contributed by
 
 [Herrington Darkholme](https://twitter.com/hd_nvim)
+
+---
+
+---
+url: /catalog/tsx/reverse-react-compiler.md
+---
+## Reverse React Compiler™&#x20;
+
+* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiIiwicmV3cml0ZSI6IiIsInN0cmljdG5lc3MiOiJyZWxheGVkIiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcmV3cml0ZS1jYWNoZSBcbmxhbmd1YWdlOiB0c3hcbnJ1bGU6XG4gIGFueTpcbiAgLSBwYXR0ZXJuOiB1c2VDYWxsYmFjaygkRk4sICQkJClcbiAgLSBwYXR0ZXJuOiBtZW1vKCRGTiwgJCQkKVxuZml4OiAkRk5cblxuLS0tXG5cbmlkOiByZXdyaXRlLXVzZS1tZW1vXG5sYW5ndWFnZTogdHN4XG5ydWxlOiB7IHBhdHRlcm46ICd1c2VNZW1vKCRGTiwgJCQkKScgfVxuZml4OiAoJEZOKSgpIiwic291cmNlIjoiY29uc3QgQ29tcG9uZW50ID0gKCkgPT4ge1xuICBjb25zdCBbY291bnQsIHNldENvdW50XSA9IHVzZVN0YXRlKDApXG4gIGNvbnN0IGluY3JlbWVudCA9IHVzZUNhbGxiYWNrKCgpID0+IHtcbiAgICBzZXRDb3VudCgocHJldkNvdW50KSA9PiBwcmV2Q291bnQgKyAxKVxuICB9LCBbXSlcbiAgY29uc3QgZXhwZW5zaXZlQ2FsY3VsYXRpb24gPSB1c2VNZW1vKCgpID0+IHtcbiAgICAvLyBtb2NrIEV4cGVuc2l2ZSBjYWxjdWxhdGlvblxuICAgIHJldHVybiBjb3VudCAqIDJcbiAgfSwgW2NvdW50XSlcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8cD5FeHBlbnNpdmUgUmVzdWx0OiB7ZXhwZW5zaXZlQ2FsY3VsYXRpb259PC9wPlxuICAgICAgPGJ1dHRvbiBvbkNsaWNrPXtpbmNyZW1lbnR9Pntjb3VudH08L2J1dHRvbj5cbiAgICA8Lz5cbiAgKVxufSJ9)
+
+### Description
+
+React Compiler is a build-time only tool that automatically optimizes your React app, working with plain JavaScript and understanding the Rules of React without requiring a rewrite. It optimizes apps by automatically memoizing code, similar to `useMemo`, `useCallback`, and `React.memo`, reducing unnecessary recomputation due to incorrect or forgotten memoization.
+
+Reverse React Compiler™ is a [parody tweet](https://x.com/aidenybai/status/1881397529369034997) that works in the opposite direction. It takes React code and removes memoization,  guaranteed to make your code slower. ([not](https://x.com/kentcdodds/status/1881404373646880997) [necessarily](https://dev.to/prathamisonline/are-you-over-using-usememo-and-usecallback-hooks-in-react-5lp))
+
+It is originally written in Babel and this is an [ast-grep version](https://x.com/hd_nvim/status/1881402678493970620) of it.
+
+:::details The Original Babel Implementation
+For comparison purposes only. Note the original code [does not correctly rewrite](https://x.com/hd_nvim/status/1881404893136896415) `useMemo`.
+
+```js
+const ReverseReactCompiler = ({ types: t }) => ({
+  visitor: {
+    CallExpression(path) {
+      const callee = path.node.callee;
+      if (
+        t.isIdentifier(callee, { name: "useMemo" }) ||
+        t.isIdentifier(callee, { name: "useCallback" }) ||
+        t.isIdentifier(callee, { name: "memo" })
+      ) {
+        path.replaceWith(args[0]);
+      }
+    },
+  },
+});
+```
+
+:::
+
+### YAML
+
+```yaml
+id: rewrite-cache
+language: tsx
+rule:
+  any:
+  - pattern: useCallback($FN, $$$)
+  - pattern: memo($FN, $$$)
+fix: $FN
+---
+id: rewrite-use-memo
+language: tsx
+rule: { pattern: 'useMemo($FN, $$$)' }
+fix: ($FN)()   # need IIFE to wrap memo function
+```
+
+### Example
+
+```tsx {3-5,6-9}
+const Component = () => {
+  const [count, setCount] = useState(0)
+  const increment = useCallback(() => {
+    setCount((prevCount) => prevCount + 1)
+  }, [])
+  const expensiveCalculation = useMemo(() => {
+    // mock Expensive calculation
+    return count * 2
+  }, [count])
+
+  return (
+    <>
+      <p>Expensive Result: {expensiveCalculation}</p>
+      <button onClick={increment}>{count}</button>
+    </>
+  )
+}
+```
+
+### Diff
+
+```tsx
+const Component = () => {
+  const [count, setCount] = useState(0)
+  const increment = useCallback(() => {     // [!code --]
+    setCount((prevCount) => prevCount + 1)  // [!code --]
+  }, [])                                 // [!code --]
+  const increment = () => {         // [!code ++]
+    setCount((prevCount) => prevCount + 1) // [!code ++]
+  } // [!code ++]
+  const expensiveCalculation = useMemo(() => { // [!code --]
+    // mock Expensive calculation             // [!code --]
+    return count * 2                        // [!code --]
+  }, [count])                             // [!code --]
+  const expensiveCalculation = (() => { // [!code ++]
+    // mock Expensive calculation      // [!code ++]
+    return count * 2                 // [!code ++]
+  })()                            // [!code ++]
+  return (
+    <>
+      <p>Expensive Result: {expensiveCalculation}</p>
+      <button onClick={increment}>{count}</button>
+    </>
+  )
+}
+```
+
+### Contributed by
+
+Inspired by [Aiden Bai](https://twitter.com/aidenybai)
 
 ---
 
@@ -15426,116 +15709,6 @@ export const Example = observer(BaseExample) // [!code ++]
 ### Contributed by
 
 [Bryan Lee](https://twitter.com/meetliby/status/1698601672568901723)
-
----
-
----
-url: /catalog/tsx/reverse-react-compiler.md
----
-## Reverse React Compiler™&#x20;
-
-* [Playground Link](/playground.html#eyJtb2RlIjoiQ29uZmlnIiwibGFuZyI6InRzeCIsInF1ZXJ5IjoiIiwicmV3cml0ZSI6IiIsInN0cmljdG5lc3MiOiJyZWxheGVkIiwic2VsZWN0b3IiOiIiLCJjb25maWciOiJpZDogcmV3cml0ZS1jYWNoZSBcbmxhbmd1YWdlOiB0c3hcbnJ1bGU6XG4gIGFueTpcbiAgLSBwYXR0ZXJuOiB1c2VDYWxsYmFjaygkRk4sICQkJClcbiAgLSBwYXR0ZXJuOiBtZW1vKCRGTiwgJCQkKVxuZml4OiAkRk5cblxuLS0tXG5cbmlkOiByZXdyaXRlLXVzZS1tZW1vXG5sYW5ndWFnZTogdHN4XG5ydWxlOiB7IHBhdHRlcm46ICd1c2VNZW1vKCRGTiwgJCQkKScgfVxuZml4OiAoJEZOKSgpIiwic291cmNlIjoiY29uc3QgQ29tcG9uZW50ID0gKCkgPT4ge1xuICBjb25zdCBbY291bnQsIHNldENvdW50XSA9IHVzZVN0YXRlKDApXG4gIGNvbnN0IGluY3JlbWVudCA9IHVzZUNhbGxiYWNrKCgpID0+IHtcbiAgICBzZXRDb3VudCgocHJldkNvdW50KSA9PiBwcmV2Q291bnQgKyAxKVxuICB9LCBbXSlcbiAgY29uc3QgZXhwZW5zaXZlQ2FsY3VsYXRpb24gPSB1c2VNZW1vKCgpID0+IHtcbiAgICAvLyBtb2NrIEV4cGVuc2l2ZSBjYWxjdWxhdGlvblxuICAgIHJldHVybiBjb3VudCAqIDJcbiAgfSwgW2NvdW50XSlcblxuICByZXR1cm4gKFxuICAgIDw+XG4gICAgICA8cD5FeHBlbnNpdmUgUmVzdWx0OiB7ZXhwZW5zaXZlQ2FsY3VsYXRpb259PC9wPlxuICAgICAgPGJ1dHRvbiBvbkNsaWNrPXtpbmNyZW1lbnR9Pntjb3VudH08L2J1dHRvbj5cbiAgICA8Lz5cbiAgKVxufSJ9)
-
-### Description
-
-React Compiler is a build-time only tool that automatically optimizes your React app, working with plain JavaScript and understanding the Rules of React without requiring a rewrite. It optimizes apps by automatically memoizing code, similar to `useMemo`, `useCallback`, and `React.memo`, reducing unnecessary recomputation due to incorrect or forgotten memoization.
-
-Reverse React Compiler™ is a [parody tweet](https://x.com/aidenybai/status/1881397529369034997) that works in the opposite direction. It takes React code and removes memoization,  guaranteed to make your code slower. ([not](https://x.com/kentcdodds/status/1881404373646880997) [necessarily](https://dev.to/prathamisonline/are-you-over-using-usememo-and-usecallback-hooks-in-react-5lp))
-
-It is originally written in Babel and this is an [ast-grep version](https://x.com/hd_nvim/status/1881402678493970620) of it.
-
-:::details The Original Babel Implementation
-For comparison purposes only. Note the original code [does not correctly rewrite](https://x.com/hd_nvim/status/1881404893136896415) `useMemo`.
-
-```js
-const ReverseReactCompiler = ({ types: t }) => ({
-  visitor: {
-    CallExpression(path) {
-      const callee = path.node.callee;
-      if (
-        t.isIdentifier(callee, { name: "useMemo" }) ||
-        t.isIdentifier(callee, { name: "useCallback" }) ||
-        t.isIdentifier(callee, { name: "memo" })
-      ) {
-        path.replaceWith(args[0]);
-      }
-    },
-  },
-});
-```
-
-:::
-
-### YAML
-
-```yaml
-id: rewrite-cache
-language: tsx
-rule:
-  any:
-  - pattern: useCallback($FN, $$$)
-  - pattern: memo($FN, $$$)
-fix: $FN
----
-id: rewrite-use-memo
-language: tsx
-rule: { pattern: 'useMemo($FN, $$$)' }
-fix: ($FN)()   # need IIFE to wrap memo function
-```
-
-### Example
-
-```tsx {3-5,6-9}
-const Component = () => {
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => {
-    setCount((prevCount) => prevCount + 1)
-  }, [])
-  const expensiveCalculation = useMemo(() => {
-    // mock Expensive calculation
-    return count * 2
-  }, [count])
-
-  return (
-    <>
-      <p>Expensive Result: {expensiveCalculation}</p>
-      <button onClick={increment}>{count}</button>
-    </>
-  )
-}
-```
-
-### Diff
-
-```tsx
-const Component = () => {
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => {     // [!code --]
-    setCount((prevCount) => prevCount + 1)  // [!code --]
-  }, [])                                 // [!code --]
-  const increment = () => {         // [!code ++]
-    setCount((prevCount) => prevCount + 1) // [!code ++]
-  } // [!code ++]
-  const expensiveCalculation = useMemo(() => { // [!code --]
-    // mock Expensive calculation             // [!code --]
-    return count * 2                        // [!code --]
-  }, [count])                             // [!code --]
-  const expensiveCalculation = (() => { // [!code ++]
-    // mock Expensive calculation      // [!code ++]
-    return count * 2                 // [!code ++]
-  })()                            // [!code ++]
-  return (
-    <>
-      <p>Expensive Result: {expensiveCalculation}</p>
-      <button onClick={increment}>{count}</button>
-    </>
-  )
-}
-```
-
-### Contributed by
-
-Inspired by [Aiden Bai](https://twitter.com/aidenybai)
 
 ---
 

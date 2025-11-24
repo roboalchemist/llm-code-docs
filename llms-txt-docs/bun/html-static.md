@@ -26,7 +26,7 @@ bun ./index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -52,7 +52,7 @@ bun index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -82,7 +82,7 @@ bun ./index.html ./about.html
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -105,7 +105,7 @@ bun ./**/*.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -123,7 +123,7 @@ bun ./index.html ./about/index.html ./about/foo/index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -164,7 +164,7 @@ For example:
   }
   ```
 
-  ```css abc.css theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```css abc.css icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
   body {
     background-color: red;
   }
@@ -173,7 +173,7 @@ For example:
 
 This outputs:
 
-```css  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css styles.css icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 body {
   background-color: red;
 }
@@ -268,7 +268,7 @@ bun ./index.html --console
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -383,7 +383,7 @@ All paths are resolved relative to your HTML file, making it easy to organize yo
   * Need more configuration options for things like asset handling
   * Need a way to configure CORS, headers, etc.
 
-  If you want to submit a PR, most of the code is [here](https://github.com/oven-sh/bun/blob/main/src/bun.js/api/bun/html-rewriter.ts). You could even copy paste that file into your project and use it as a starting point.
+  {/* If you want to submit a PR, most of the code is [here](https://github.com/oven-sh/bun/blob/main/src/bun.js/api/bun/html-rewriter.ts). You could even copy paste that file into your project and use it as a starting point. */}
 </Warning>
 
 ## How this works

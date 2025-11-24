@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/api-integration.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/api-integration.md
 
 # API Integration
 
@@ -49,7 +49,7 @@ curl -X POST https://api.example.com/auth/customer_authenticate \
 
 #### Communicating Customer Identifier with ASAPP
 
-The customer may wish to implement any mechanism to authenticate their customers, as long as they can pass the identifier (cookie, JWT etc.) to ASAPP. The methods of passing this value to ASAPP depend on the chat channel used, either for [Web](/messaging-platform/integrations/web-sdk/web-authentication), [iOS](/messaging-platform/integrations/ios-sdk/user-authentication), and [Android](/messaging-platform/integrations/android-sdk/user-authentication).
+The customer may wish to implement any mechanism to authenticate their customers, as long as they can pass the identifier (cookie, JWT etc.) to ASAPP. The methods of passing this value to ASAPP depend on the chat channel used, either for [Web](/agent-desk/integrations/web-sdk/web-authentication), [iOS](/agent-desk/integrations/ios-sdk/user-authentication), and [Android](/agent-desk/integrations/android-sdk/user-authentication).
 
 #### Customer Identifier Requirements
 

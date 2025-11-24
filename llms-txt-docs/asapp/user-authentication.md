@@ -1,39 +1,64 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/user-authentication.md
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
 
-# Source: https://docs.asapp.com/messaging-platform/integrations/android-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/user-authentication.md
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
 
 # User Authentication
 
-## Set an ASAPPUser with a Request Context Provider
+As in the Quick Start section, you can connect to chat as an anonymous user by not setting a user, or initializing an `ASAPPUser` with a null customer identifier. However, many chat use cases might require ASAPP to know the identity of the user.
 
-As in the Quick Start section, you can connect to chat as an anonymous user by specifying a nil user identifier when initializing an `ASAPPUser`. However, many use cases might require ASAPP to know the identity of the customer.
-To connect as an identified user, please specify a user identifier string and a request context provider function. This provider will be called from a background thread when the SDK makes requests that require customer authentication with your company's servers. The request context provider is a function that returns a dictionary with keys and values agreed upon with ASAPP. Please ask your Implementation Manager if you have questions.
-**Example:**
+To connect as an identified user, please specify a customer identifier string and a request context provider function. This provider will be called from a background thread, when the SDK makes requests that require customer authentication with your company's servers. The request context provider is a function that returns a map with keys and values agreed upon with ASAPP. Please ask your Implementation Manager if you have questions.
 
-```json  theme={null}
-let requestContextProvider = { needsRefresh in
-    return [
-        "Auth": [
-            "Token": "exampleValue"
-        ]
-    ]
+## Example:
+
+```kotlin  theme={null}
+val requestContextProvider = object : ASAPPRequestContextProvider {
+    override fun getASAPPRequestContext(user: ASAPPUser,
+                                        refreshContext:Boolean): Map<String, Any>? {
+        return mapOf(
+            "Auth" to mapOf(
+                "Token" to "example-token"
+            )
+        )
+    }
 }
-ASAPP.user = ASAPPUser(userIdentifier: "testuser@example.com",
-requestContextProvider)
+ASAPP.instance.user = ASAPPUser("testuser@example.com", requestContextProvider)
 ```
 
 ## Handle Login Buttons
 
-If a customer connects to chat anonymously, they may be asked to log in when necessary by being shown a message button:
+If you connect to chat anonymously, you may be asked to log in when necessary by being shown a message button:
 
 <Frame>
-  <img src="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=96e6df2db899576bf842c00d7278ead6" data-og-width="660" width="660" data-og-height="334" height="334" data-path="image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=280&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=b3011bd07ad81b26bb8da042c0d2b8ad 280w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=560&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=f3dd690f8488f79288e05c634d03c994 560w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=840&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=68db17ac322df05db8e2a0eecf8f3380 840w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=1100&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=cd472cf0ff2bc039576dbf6cb083016a 1100w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=1650&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=e21f62728eb104218101d7d3241b909f 1650w, https://mintcdn.com/asapp/BoXlOITRW7VjgmOG/image/uuid-38220938-03e4-8029-538b-b2a4e5c694ac.png?w=2500&fit=max&auto=format&n=BoXlOITRW7VjgmOG&q=85&s=a46c8ce8d38b664e0e529f68d1d453eb 2500w" />
+  <img src="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=f7ba73739835eeba130b45ae70053f49" data-og-width="660" width="660" data-og-height="334" height="334" data-path="image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=280&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=699f9d4122431625334daa96275a1998 280w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=560&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=e890c2c78c10c7f155777235340a15a6 560w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=840&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=e2dec323e8db7d2f7b1686e1f0fdd44d 840w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=1100&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=f46aab6913530212a15827fefc839887 1100w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=1650&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=3dd55dbdc1b7ad83d326977b23e39f60 1650w, https://mintcdn.com/asapp/V0FXHedP7HW51oOw/image/uuid-bbfa4b7a-ca23-7407-c592-a8d5df402b5c.png?w=2500&fit=max&auto=format&n=V0FXHedP7HW51oOw&q=85&s=1d09f528400968afb8cd8f44329729e8 2500w" />
 </Frame>
 
-If the customer then taps on the **Sign In** button, the SDK will call a delegate method: `chatViewControllerDidTapUserLoginButton()`. Please implement this method and set `ASAPP.user` once the customer has logged in. The SDK will detect the change and then authenticate the user. You may set `ASAPP.user` in any thread. Make sure to set the delegate as well: for example, `ASAPP.delegate = self`. See `ASAPPDelegate` for more details.
+If you then tap the **Sign In** button, the SDK will use the `ASAPPUserLoginHandler` to call to the application. Due to the asynchronous nature of this flow, your application should use the activity lifecycle to provide a result to the SDK.
 
-## Token Expiration and Refresh the Context
+How to Implement the Sign In Flow
 
-In the event that the provided token has expired, the SDK will call the request context provider with an argument that is true, indicating that you must refresh the context. In that case, please make sure to return a dictionary with fresh credentials that the SDK can use to authenticate the user. If the SDK requires an API call to refresh the credentials, please make sure to block the calling thread until you can return the updated context.
+1. Implement the `ASAPPUserLoginHandler` and start your application's `LoginActivity`, including the given request code.
+   ```kotlin  theme={null}
+   ASAPP.instance.userLoginHandler = object: ASAPPUserLoginHandler {
+       override fun loginASAPPUser(requestCode: Int, activity: Activity) {
+           val loginIntent = new Intent(activity, LoginActivity::class.java)
+           activity.startActivityForResult(loginIntent, requestCode)
+       }
+   }
+   ```
+2. If a user successfully signs into your application, update the user instance and then finish your `LoginActivity` with `Activity.RESULT_OK`.
+   ```kotlin  theme={null}
+   ASAPP.instance.user = ASAPPUser(userIdentifier, contextProvider) 
+   setResult(Activity.RESULT_OK)
+   finish()
+   ```
+3. In case a user cancels the operation, finish your `LoginActivity` with `Activity.RESULT_CANCELED`.
+   ```kotlin  theme={null}
+   setResult(Activity.RESULT_CANCELED)
+   finish()
+   ```
+
+After your `LoginActivity` finishes, the SDK will capture the result and resume the chat conversation.
+
+## Token Expiration and Refreshing the Context
+
+If the provided token has expired, the SDK will call the [ASAPPRequestContextProvider](https://docs-sdk.asapp.com/api/chatsdk/android/latest/chatsdk/com.asapp.chatsdk/-a-s-a-p-p-request-context-provider) with an `refreshContext` parameter set to `true` indicating that the context must be refreshed. In that case, please make sure to return a map with fresh credentials that can be used to authenticate the user. In case an API call is required to refresh the credentials, make sure to block the calling thread until the updated context can be returned.

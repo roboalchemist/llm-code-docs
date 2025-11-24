@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/ios-sdk/ios-quick-start.md
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/ios-quick-start.md
 
 # iOS Quick Start
 
@@ -64,7 +64,7 @@ ASAPP provides the signature alongside the SDK in each release.
 
 ## 4. Configure the SDK
 
-Use the code below to create a config, initialize the SDK with the config, and set an anonymous user. Refer to the aforementioned [Required Information](#1-gather-required-information-15931 "1. Gather Required Information") for more details. ASAPP recommends that you initialize the SDK on launch in `application(_:didFinishLaunchingWithOptions…)`. Please see the [User Authentication](/messaging-platform/integrations/ios-sdk/user-authentication "User Authentication") section for details about how to authenticate an identified user.
+Use the code below to create a config, initialize the SDK with the config, and set an anonymous user. Refer to the aforementioned [Required Information](#1-gather-required-information-15931 "1. Gather Required Information") for more details. ASAPP recommends that you initialize the SDK on launch in `application(_:didFinishLaunchingWithOptions…)`. Please see the [User Authentication](/agent-desk/integrations/ios-sdk/user-authentication "User Authentication") section for details about how to authenticate an identified user.
 
 ```json  theme={null}
 import ASAPPSDK

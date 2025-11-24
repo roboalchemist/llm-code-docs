@@ -1,10 +1,10 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/web-sdk/web-javascript-api.md
+# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-javascript-api.md
 
 # Web JavaScript API
 
 This section details the various API methods you can call to the ASAPP Chat SDK.
 
-Before making any API calls, make sure you've [integrated the ASAPP SDK](/messaging-platform/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page.
+Before making any API calls, make sure you've [integrated the ASAPP SDK](/agent-desk/integrations/web-sdk/web-quick-start "Web Quick Start") script on your page.
 
 Once you've integrated the SDK with your site, you can use the JavaScript API to toggle settings in the Chat SDK, trigger events, or send information to ASAPP.
 
@@ -148,11 +148,11 @@ The state object contains the following keys which give you insight into the use
 
 `hasContext` (Object)
 
-Returns the current [context](/messaging-platform/integrations/web-sdk/web-contextprovider "Web ContextProvider") known by the SDK.
+Returns the current [context](/agent-desk/integrations/web-sdk/web-contextprovider "Web ContextProvider") known by the SDK.
 
 `hasCustomerId` (Boolean)
 
-Returns true when the SDK has been provided with a [CustomerId](/messaging-platform/integrations/web-sdk/web-app-settings#customerid "CustomerId") setting.
+Returns true when the SDK has been provided with a [CustomerId](/agent-desk/integrations/web-sdk/web-app-settings#customerid "CustomerId") setting.
 
 `isFullscreen` (Boolean)
 
@@ -188,16 +188,16 @@ ASAPP('hide');
 
 ## load
 
-This API initializes the ASAPP Chat SDK for display on your pages and typically specify a [`contextProviderHandler`](/messaging-platform/integrations/web-sdk/web-contextprovider).
+This API initializes the ASAPP Chat SDK for display on your pages and typically specify a [`contextProviderHandler`](/agent-desk/integrations/web-sdk/web-contextprovider).
 
-To call the `load` the API and initialize the SDK, specify any of the [Web App Settings](/messaging-platform/integrations/web-sdk/web-app-settings), though the following are required:
+To call the `load` the API and initialize the SDK, specify any of the [Web App Settings](/agent-desk/integrations/web-sdk/web-app-settings), though the following are required:
 
-* [APIHostname](/messaging-platform/integrations/web-sdk/web-app-settings#apihostname): The Hostname for connection customers with customer support.
-* [AppId](/messaging-platform/integrations/web-sdk/web-app-settings#appid "AppId"): Your unique Company Identifier (or company marker).
+* [APIHostname](/agent-desk/integrations/web-sdk/web-app-settings#apihostname): The Hostname for connection customers with customer support.
+* [AppId](/agent-desk/integrations/web-sdk/web-app-settings#appid "AppId"): Your unique Company Identifier (or company marker).
 
 Work with your ASAPP Account Team to determine the correct values for these settings.
 
-Typically, you'll also specify a [`ContextProvider` handler](/messaging-platform/integrations/web-sdk/web-contextprovider) to provide context to the SDK such as user authentication information or other customer information.
+Typically, you'll also specify a [`ContextProvider` handler](/agent-desk/integrations/web-sdk/web-contextprovider) to provide context to the SDK such as user authentication information or other customer information.
 
 ```javascript Load with CustomerInfo And Authentication Token theme={null}
 ASAPP('load', {
@@ -218,11 +218,11 @@ ASAPP('load', {
 });
 ```
 
-Please see the [Web App Settings](/messaging-platform/integrations/web-sdk/web-app-settings) page for a list of all the available properties that can be passed to the `Load` API.
+Please see the [Web App Settings](/agent-desk/integrations/web-sdk/web-app-settings) page for a list of all the available properties that can be passed to the `Load` API.
 
 ## refresh
 
-This API checks to make sure that [Triggers](/messaging-platform/integrations/web-sdk/web-features#triggers) work properly when a page URL changes in a SPA (Single-Page Application). You should call this API every time the page URL changes if your website is a SPA.
+This API checks to make sure that [Triggers](/agent-desk/integrations/web-sdk/web-features#triggers) work properly when a page URL changes in a SPA (Single-Page Application). You should call this API every time the page URL changes if your website is a SPA.
 
 ```javascript  theme={null}
 ASAPP('refresh')
@@ -232,7 +232,7 @@ ASAPP('refresh')
 
 Use this API to update the `customerInfo` object at any time, regardless of whether the user is currently typing in the Chat SDK.
 
-Typically, the `customerInfo` is updated as part of your [`contextProviderHandler`](/messaging-platform/integrations/web-sdk/web-app-settings#contextprovider) function defined in your [`load`](#'load') call, which is called whenever the user types in the Chat SDK.
+Typically, the `customerInfo` is updated as part of your [`contextProviderHandler`](/agent-desk/integrations/web-sdk/web-app-settings#contextprovider) function defined in your [`load`](#'load') call, which is called whenever the user types in the Chat SDK.
 
 This API is primarily used to send information that is used to show a proactive chat prompt when a specific criteria or set of criteria are met. The `send` API is rate limited to one request for every 5 seconds.
 
@@ -265,11 +265,11 @@ ASAPP('set', 'Auth', { Token: '3858f62230ac3c915f300c664312c63f' });
 ASAPP('set', 'ExternalSessionId', 'j6oAOxCWZh...');
 ```
 
-Please see the [Context Provider](/messaging-platform/integrations/web-sdk/web-contextprovider "Web ContextProvider") page for a list of all the properties you can provide to this API.
+Please see the [Context Provider](/agent-desk/integrations/web-sdk/web-contextprovider "Web ContextProvider") page for a list of all the properties you can provide to this API.
 
 ## setCustomer
 
-This API provides an access token with your customers account after the Chat SDK has already loaded. This method is useful if a customer logs into their account or if you need to refresh your customers auth token from time to time. See the [SDK Settings](/messaging-platform/integrations/web-sdk/web-app-settings "Web App Settings") section for details on the [CustomerId](/messaging-platform/integrations/web-sdk/web-app-settings#customerid "CustomerId") (Required), [ContextProvider](/messaging-platform/integrations/web-sdk/web-app-settings#contextprovider "ContextProvider") (Required), and [UserLoginHandler](/messaging-platform/integrations/web-sdk/web-app-settings#userloginhandler "UserLoginHandler") properties accepted for SetCustomers second argument.
+This API provides an access token with your customers account after the Chat SDK has already loaded. This method is useful if a customer logs into their account or if you need to refresh your customers auth token from time to time. See the [SDK Settings](/agent-desk/integrations/web-sdk/web-app-settings "Web App Settings") section for details on the [CustomerId](/agent-desk/integrations/web-sdk/web-app-settings#customerid "CustomerId") (Required), [ContextProvider](/agent-desk/integrations/web-sdk/web-app-settings#contextprovider "ContextProvider") (Required), and [UserLoginHandler](/agent-desk/integrations/web-sdk/web-app-settings#userloginhandler "UserLoginHandler") properties accepted for SetCustomers second argument.
 
 ```javascript  theme={null}
 ASAPP('setCustomer', {
@@ -287,7 +287,7 @@ ASAPP('setCustomer', {
 
 ## setIntent
 
-This API lets you set an intent after Chat SDK has already been loaded and will take effect even if the user is in chat. ASAPP recommends that you use [Intent](/messaging-platform/integrations/web-sdk/web-app-settings#intent "Intent") via App Settings during load.
+This API lets you set an intent after Chat SDK has already been loaded and will take effect even if the user is in chat. ASAPP recommends that you use [Intent](/agent-desk/integrations/web-sdk/web-app-settings#intent "Intent") via App Settings during load.
 
 This method takes an object as a parameter, with a required key of `Code`. `Code` accepts a string. Your team and your ASAPP Implementation Manager will determine the available values.
 
@@ -330,17 +330,17 @@ In order to enable this feature, please integrate with the `showChatInstead` API
     </tr>
 
     <tr>
-      <td class="td"><p><a class="link linktype-component" href="/messaging-platform/integrations/web-sdk/web-app-settings.html#apihostname" title="APIHostName"><code class="code">APIHostName</code></a></p></td>
+      <td class="td"><p><a class="link linktype-component" href="/agent-desk/integrations/web-sdk/web-app-settings.html#apihostname" title="APIHostName"><code class="code">APIHostName</code></a></p></td>
       <td class="td"><p>Sets the ASAPP APIHostName for connecting customers with customer support.</p></td>
 
       <td class="td" rowspan="2">
         <p>No</p>
-        <p>(Required if you have not initialized the WebSDK via the <a class="link linktype-component" href="/messaging-platform/integrations/web-sdk/web-javascript-api.html#-load-" title="'load'"><code class="code">Load</code></a> API on the page)</p>
+        <p>(Required if you have not initialized the WebSDK via the <a class="link linktype-component" href="/agent-desk/integrations/web-sdk/web-javascript-api.html#-load-" title="'load'"><code class="code">Load</code></a> API on the page)</p>
       </td>
     </tr>
 
     <tr>
-      <td class="td"><p><a class="link linktype-component" href="/messaging-platform/integrations/web-sdk/web-app-settings.html#appid" title="AppId"><code class="code">AppId</code></a></p></td>
+      <td class="td"><p><a class="link linktype-component" href="/agent-desk/integrations/web-sdk/web-app-settings.html#appid" title="AppId"><code class="code">AppId</code></a></p></td>
       <td class="td"><p>Your unique Company Identifier.</p></td>
     </tr>
   </tbody>

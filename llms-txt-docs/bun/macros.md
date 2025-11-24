@@ -88,7 +88,7 @@ macro();
 
 When shipping a library containing a macro to npm or another package registry, use the `"macro"` export condition to provide a special version of your package exclusively for the macro environment.
 
-```json title="package.json" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json title="package.json" icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "my-package",
   "exports": {

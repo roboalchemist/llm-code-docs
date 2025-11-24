@@ -1,8 +1,8 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/attributes.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/attributes.md
 
 # Attributes
 
-ASAPP supports attributes that can be routed on to funnel customers to the right flow through [intent routing](/messaging-platform/virtual-agent/intent-routing "Intent Routing").
+ASAPP supports attributes that can be routed on to funnel customers to the right flow through [intent routing](/agent-desk/virtual-agent/intent-routing "Intent Routing").
 
 Attributes tell the virtual agent who the customer is. For example, they indicate if a customer is currently authenticated, which channel the customer is using to communicate with your business, or which services and products the customer is engaged with.
 

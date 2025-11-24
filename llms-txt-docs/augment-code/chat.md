@@ -2,8 +2,6 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat.md
 
-# Source: https://docs.augmentcode.com/using-augment/chat.md
-
 # Using Chat
 
 > Use Chat to explore your codebase, quickly get up to speed on unfamiliar code, and get help working through a technical problem.
@@ -55,10 +53,6 @@ Access the Chat sidebar by clicking the Augment icon <img src="https://mintcdn.c
 
 To use Chat, simply type your question or command into the input field at the bottom of the Chat panel. You will see the currently included context which includes the workspace and current file by default. Use Chat to explain your code, investigate a bug, or use a new library. See [Example Prompts for Chat](/using-augment/chat-prompts) for more ideas on using Chat.
 
-### Conversations about code
-
-To get the best possible results, you can go beyond asking simple questions or commands, and instead have a back and forth conversation with Chat about your code. For example, you can ask Chat to explain a specific function and then ask follow-up questions about possible refactoring options. Chat can act as a pair programmer, helping you work through a technical problem or understand unfamiliar code.
-
 ### Enhancing your prompt
 
 You can improve the quality of your {type_0} by starting with a well crafted prompt. You can start with a quick or incomplete prompt and use the prompt enhancer to add relevant references, structure, and conventions from your codebase to improve the prompt before it is sent.
@@ -67,6 +61,10 @@ You can improve the quality of your {type_0} by starting with a well crafted pro
 2. Click the Enhance Prompt ✨ button
 3. Review and edit the enhanced prompt
 4. Submit your prompt
+
+### Conversations about code
+
+To get the best possible results, you can go beyond asking simple questions or commands, and instead have a back and forth conversation with Chat about your code. For example, you can ask Chat to explain a specific function and then ask follow-up questions about possible refactoring options. Chat can act as a pair programmer, helping you work through a technical problem or understand unfamiliar code.
 
 ### Starting a new chat
 

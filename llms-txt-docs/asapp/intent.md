@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/autosummary/intent.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/intent.md
 
 # Intent
 
@@ -29,7 +29,7 @@ To help understand how intent identification works, let's use an example convers
 > **Customer**: No, that's all. Have a nice day.\
 > **Agent**: You too. Goodbye!
 
-AutoSummary analyzes the conversation, focusing primarily on the initial exchanges, to determine the customer's main reason for contact. This is represented by the `name` of the intent and the `code`, a machine readable identifier for that intent.
+AI Summary analyzes the conversation, focusing primarily on the initial exchanges, to determine the customer's main reason for contact. This is represented by the `name` of the intent and the `code`, a machine readable identifier for that intent.
 
 In this case, the intent might be identified as:
 
@@ -46,7 +46,7 @@ The intent is determined based on the customer's initial statement about checkin
 
 To generate an intent, provide the conversation transcript to ASAPP.
 
-This example uses our **Conversation API** to provide the transcript, but you have options to use [AutoTranscribe](/autotranscribe) integration if you have voice conversations you want to send to ASAPP.
+This example uses our **Conversation API** to provide the transcript, but you have options to use [AI Transcribe](/ai-productivity/ai-transcribe) integration if you have voice conversations you want to send to ASAPP.
 
 ### Step 1: Create a conversation
 
@@ -211,7 +211,7 @@ This intent represents the primary reason for the customer's contact, regardless
 
 ## Customization
 
-AutoSummary allows for extensive customization of the intent identification to meet your specific needs. Whether you want to use industry-specific intents or adhere to your company's unique categorization, this feature provides the flexibility to tailor intents in a way that aligns with your operational goals.
+AI Summary allows for extensive customization of the intent identification to meet your specific needs. Whether you want to use industry-specific intents or adhere to your company's unique categorization, this feature provides the flexibility to tailor intents in a way that aligns with your operational goals.
 
 To customize your intents, you can use the Self-Service Configuration tool in ASAPP's AI Console. This tool allows you to:
 

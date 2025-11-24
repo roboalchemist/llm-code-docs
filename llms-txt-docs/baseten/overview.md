@@ -1,25 +1,3 @@
-# Source: https://docs.baseten.co/training/overview.md
-
-# Source: https://docs.baseten.co/reference/training-api/overview.md
-
-# Source: https://docs.baseten.co/reference/overview.md
-
-# Source: https://docs.baseten.co/reference/management-api/overview.md
-
-# Source: https://docs.baseten.co/reference/inference-api/overview.md
-
-# Source: https://docs.baseten.co/reference/cli/truss/overview.md
-
-# Source: https://docs.baseten.co/overview.md
-
-# Source: https://docs.baseten.co/observability/export-metrics/overview.md
-
-# Source: https://docs.baseten.co/examples/overview.md
-
-# Source: https://docs.baseten.co/examples/models/overview.md
-
-# Source: https://docs.baseten.co/development/model/overview.md
-
 # Source: https://docs.baseten.co/development/model-apis/overview.md
 
 # Source: https://docs.baseten.co/development/chain/overview.md

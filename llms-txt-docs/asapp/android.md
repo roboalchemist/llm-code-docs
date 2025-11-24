@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/chat-instead/android.md
+# Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/android.md
 
 # Android
 
@@ -8,7 +8,7 @@
 
 ## Requirements
 
-Chat Instead requires ASAPP Android Chat SDK 8.0.0 or later, and a valid phone number. Before you proceed, make sure you configure it [correctly](/messaging-platform/integrations/android-sdk).
+Chat Instead requires ASAPP Android Chat SDK 8.0.0 or later, and a valid phone number. Before you proceed, make sure you configure it [correctly](/agent-desk/integrations/android-sdk).
 
 ## Phone Formats
 

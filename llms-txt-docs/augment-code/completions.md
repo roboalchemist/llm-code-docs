@@ -2,8 +2,6 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/completions.md
 
-# Source: https://docs.augmentcode.com/using-augment/completions.md
-
 # Completions
 
 > Use code completions to get more done. Augment's radical context awareness means more relevant suggestions, fewer hallucinations, and less time hunting down documentation.
@@ -26,7 +24,7 @@ Augment's Code Completions integrates with your IDE's native completions system 
 
 ## Using Code Completions
 
-To use code completions, simply start typing in your IDE. Augment will provide suggestions based on the context of your code. You can accept a suggestion by pressing <Keyboard shortcut="Cmd/Ctrl →" />, or ignore it by continuing to type.
+To use code completions, simply start typing in your IDE. Augment will provide suggestions based on the context of your code. You can accept a suggestion by pressing <Keyboard shortcut="Tab" />, or ignore it by continuing to type.
 
 For example, add the following function to a TypeScript file:
 

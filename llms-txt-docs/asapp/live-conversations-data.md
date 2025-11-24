@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/insights-manager/live-insights/live-conversations-data.md
+# Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/live-conversations-data.md
 
 # Live Conversations Data
 
@@ -28,7 +28,7 @@ Furthermore, you can access live transcripts for each conversation currently ass
 6. **Alerts**: When an event is recorded, it displays in the column. Not all conversations will include an event.
 
 <Tip>
-  See [Alerts, Signals & Mitigation](/messaging-platform/insights-manager/live-insights/alerts,-signals---mitigation "Alerts, Signals & Mitigation") for more information.
+  See [Alerts, Signals & Mitigation](/agent-desk/insights-manager/live-insights/alerts,-signals---mitigation "Alerts, Signals & Mitigation") for more information.
 </Tip>
 
 ## Conversation Data Anatomy

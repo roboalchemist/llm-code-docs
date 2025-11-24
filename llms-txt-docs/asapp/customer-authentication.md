@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/customer-authentication.md
+# Source: https://docs.asapp.com/agent-desk/integrations/customer-authentication.md
 
 # Customer Authentication
 
@@ -50,9 +50,9 @@ Once a customer authenticates a user on their website or app, the customer must 
 
 You can find more details for your specific integration in the following sections:
 
-* [Web SDK - Web Authentication](/messaging-platform/integrations/web-sdk/web-authentication "Web Authentication")
-* [Android SDK - Chat User Authentication in the Android Integration Walkthrough](/messaging-platform/integrations/android-sdk/user-authentication)
-* [iOS SDK - Basic Usage in the iOS SDK Quick Start](/messaging-platform/integrations/ios-sdk/ios-quick-start)iOS SDK
+* [Web SDK - Web Authentication](/agent-desk/integrations/web-sdk/web-authentication "Web Authentication")
+* [Android SDK - Chat User Authentication in the Android Integration Walkthrough](/agent-desk/integrations/android-sdk/user-authentication)
+* [iOS SDK - Basic Usage in the iOS SDK Quick Start](/agent-desk/integrations/ios-sdk/ios-quick-start)iOS SDK
 
 ## Tokens
 
@@ -99,9 +99,9 @@ You need to refresh expired tokens on either the client side, via the ASAPP SDK,
 
 You can find SDK token refresh implementation examples at:
 
-* [Web SDK - Web Context Provider](/messaging-platform/integrations/web-sdk/web-contextprovider#authentication "Web ContextProvider")
-* [Web SDK - Set Customer](/messaging-platform/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'")
-* [Android SDK - Context Provider](/messaging-platform/integrations/android-sdk/user-authentication)
+* [Web SDK - Web Context Provider](/agent-desk/integrations/web-sdk/web-contextprovider#authentication "Web ContextProvider")
+* [Web SDK - Set Customer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'")
+* [Android SDK - Context Provider](/agent-desk/integrations/android-sdk/user-authentication)
 * [iOS SDK - Type Aliases](https://docs-sdk.asapp.com/api/chatsdk/ios/latest/Typealiases.html)
 
 #### Token Validation

@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/autosummary/structured-data.md
+# Source: https://docs.asapp.com/ai-productivity/ai-summary/structured-data.md
 
 # Structured Data
 
@@ -37,7 +37,7 @@ To illustrate how Structured Data works, let's use an example conversation:
 > **Customer**: No, that's all. Have a nice day.\
 > **Agent**: You too. Goodbye!
 
-AutoSummary analyzes this conversation and extracts structured data in two ways:
+AI Summary analyzes this conversation and extracts structured data in two ways:
 
 <Tabs>
   <Tab title="Entity">
@@ -95,7 +95,7 @@ AutoSummary analyzes this conversation and extracts structured data in two ways:
 
 To generate Structured Data, you first need to provide the conversation transcript to ASAPP.
 
-This example uses our **Conversation API** to provide the transcript, but you have options to use [AutoTranscribe](/autotranscribe) integration if you have voice conversations you want to send to ASAPP.
+This example uses our **Conversation API** to provide the transcript, but you have options to use [AI Transcribe](/ai-productivity/ai-transcribe) integration if you have voice conversations you want to send to ASAPP.
 
 <Steps>
   <Step title="Step 1: Configure your structured data fields">
@@ -303,4 +303,4 @@ Structured Data questions and entities are fully customizable according to your 
 
 We have a list of potential questions and entities per industry that you can start with. Work with your ASAPP account team to determine whether one of our out-of-the-box configurations work for you, or if you need to create custom structured data.
 
-We offer [APIs to self-serve custom structured data fields](/autosummary/structured-data/segments-and-customization).
+We offer [APIs to self-serve custom structured data fields](/ai-productivity/ai-summary/structured-data/segments-and-customization).

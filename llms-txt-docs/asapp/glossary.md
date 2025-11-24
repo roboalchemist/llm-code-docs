@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/virtual-agent/glossary.md
+# Source: https://docs.asapp.com/agent-desk/virtual-agent/glossary.md
 
 # Glossary
 

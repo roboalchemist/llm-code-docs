@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/insights-manager/live-insights/performance-data.md
+# Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/performance-data.md
 
 # Performance Data
 
@@ -33,7 +33,7 @@ These two views provide you with a fuller picture of queue performance and facil
 
 Some metrics are not available in this configuration.
 
-<Card title="Metrics Definitions" href="/messaging-platform/insights-manager/live-insights/metric-definitions">See Metrics Definitions for more information</Card>
+<Card title="Metrics Definitions" href="/agent-desk/insights-manager/live-insights/metric-definitions">See Metrics Definitions for more information</Card>
 
 ## Filter by Channel
 

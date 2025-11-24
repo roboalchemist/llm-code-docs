@@ -1,12 +1,14 @@
-# Source: https://docs.asapp.com/messaging-platform/integrations/user-management.md
+# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
 
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/user-management.md
-
-# Source: https://docs.asapp.com/messaging-platform/integrations/user-management.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
 
 # User Management
 
-This section provides an overview of User Management (Roles and Permissions). These roles dictate if an ASAPP user can authenticate to *Agent Desk*, *Admin Dashboard*, or both. In addition, roles determine what view and data users see in the Admin Dashboard. You can pass User Data to ASAPP via *SSO*, AD/LDAP, or other approved integration.
+> Learn how to manage users and roles in the Digital Agent Desk.
+
+You control the User Management (Roles and Permissions) within the Digital Agent Desk.
+
+These roles dictate if a user can authenticate to *Agent Desk*, *Admin Dashboard*, or both. In addition, roles determine what view and data users see in the Admin Dashboard. You can pass User Data to ASAPP via *SSO*, AD/LDAP, or other approved integration.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=54905ac24ba5ff2ed16b53aa4a0b1366" data-og-width="1462" width="1462" data-og-height="1132" height="1132" data-path="image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=8057d5387d513182f84c55e36cf6ad75 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=af2e242729027b50e9ff3d063d9fa93e 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=bbc0fc19332416a9b08de3a57236c7ac 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=6bc45940f020776738e87bf79c84b0e0 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=81821f2d659c03c9911a3dc7e7ac4e1b 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=292f998e4aef93e57aae1783abee6bd9 2500w" />
@@ -287,3 +289,41 @@ The following table defines the key terms related to ASAPP Roles & Permissions.
     </tr>
   </tbody>
 </table>
+
+## Grouping and Data Filtering via SSO
+
+You can use attributes from your SSO/SAML configuration to control what chats and metrics users see within Live Insights, Conversation Manager, and User Management. This ensures users only see information relevant to their role and responsibilities.
+
+These attributes create a hierarchical structure where:
+
+* BPOs only see their service chats
+* Workforce Management users see all chats and metrics for their BPO
+* Agents see only their own chats and data
+* Managers see chats for their assigned teams
+
+To use this grouping, you need to:
+
+<Steps>
+  <Step title="Define attribute group mapping">
+    Define groups using the following attributes:
+
+    * BPO
+    * Product
+    * Role
+    * Location
+
+    Make sure to define a name for each group.
+
+    Reach out to your ASAPP account team with the groups you define. ASAPP will implement the groups for you.
+  </Step>
+
+  <Step title="Send attributes to ASAPP">
+    Ensure that your SSO/SAML System sends the necessary attributes to ASAPP.
+
+    You can reach out to your ASAPP account team with any questions.
+  </Step>
+
+  <Step title="Use groups for filtering and queue association">
+    Within Live Insights, Conversation Manager, and User Management, you can map the groups you defined to filters and queues. The groups will be applied to filter data and control access based on your defined mappings.
+  </Step>
+</Steps>

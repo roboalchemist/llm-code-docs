@@ -1,4 +1,4 @@
-# Source: https://docs.asapp.com/messaging-platform/digital-agent-desk/queues-and-routing/attributes-based-routing.md
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/queues-and-routing/attributes-based-routing.md
 
 # Attributes Based Routing
 
@@ -44,10 +44,10 @@ If you are going to use multiple attributes in any different combinations, then 
 
 ASAPP will assume that Excel attribute names that do not follow the ASAPP standard are custom defined and passed in 'Customer Information'.
 
-See the [User Management](/messaging-platform/digital-agent-desk/user-management) section for more information.
+See the [User Management](/agent-desk/digital-agent-desk/user-management) section for more information.
 
 ## Queue Management
 
 You can define Queues based on business or technical needs. You can define any number of queues and can follow any desired naming convention. You can apply Business Hours to queues individually. For more information on other features and functionality, please contact your Implementation Manager.
 
-You can assign Agents to one or more queues based on skills and/or requirements. Please refer to [User Management](/messaging-platform/digital-agent-desk/user-management) for more details.
+You can assign Agents to one or more queues based on skills and/or requirements. Please refer to [User Management](/agent-desk/digital-agent-desk/user-management) for more details.
