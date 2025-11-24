@@ -67,3 +67,52 @@ repositories:
     source_folder: "readme"
     target_folder: "joplin"
     branch: "dev" # Default branch to use
+
+  - name: "SQLAlchemy"
+    description: "SQLAlchemy - The Python SQL Toolkit and ORM"
+    repo_url: "https://github.com/sqlalchemy/sqlalchemy.git"
+    source_folder: "doc/build"
+    target_folder: "sqlalchemy"
+    branch: "main" # Default branch to use
+
+  - name: "Go"
+    description: "Go Programming Language - Official documentation website"
+    repo_url: "https://github.com/golang/website.git"
+    source_folder: "_content"
+    target_folder: "go-docs"
+    branch: "master" # Default branch to use
+
+  - name: "Flask"
+    description: "Flask - Lightweight WSGI web application framework"
+    repo_url: "https://github.com/pallets/flask.git"
+    source_folder: "docs"
+    target_folder: "flask"
+    branch: "main" # Default branch to use
+
+  - name: "Click"
+    description: "Python CLI framework - Command-line interface creation toolkit"
+    repo_url: "https://github.com/pallets/click.git"
+    source_folder: "docs"
+    target_folder: "click"
+    branch: "main" # Default branch to use
+
+  - name: "FastAPI"
+    description: "FastAPI - Modern, fast Python web framework"
+    repo_url: "https://github.com/fastapi/fastapi.git"
+    source_folder: "docs/en/docs"
+    target_folder: "fastapi"
+    branch: "master" # Default branch to use
+
+  - name: "Python"
+    description: "Python official documentation - Language reference and standard library"
+    repo_url: "https://github.com/python/cpython.git"
+    source_folder: "Doc"
+    target_folder: "python-docs"
+    branch: "3.13"
+
+  - name: "Goose"
+    description: "Goose - AI-powered developer agent by Block"
+    repo_url: "https://github.com/block/goose.git"
+    source_folder: "documentation/docs"
+    target_folder: "goose"
+    branch: "main"

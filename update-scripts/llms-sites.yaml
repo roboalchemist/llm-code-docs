@@ -2,9 +2,11 @@ sites:
 - name: adafruit
   base_url: https://learn.adafruit.com/
   description: Adafruit Learning System - CircuitPython and hardware documentation
+  rate_limit_seconds: 5
 - name: agent
   base_url: https://docs.agent.ai/
-  description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
+  description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics
+    of AI agents for beginners - [Co'
 - name: agent-domain
   base_url: https://agentdomain.xyz/
   description: Agent Domain (.agent TLD) AI ecosystem
@@ -26,6 +28,9 @@ sites:
 - name: answer-ai
   base_url: https://www.answer.ai/
   description: Answer.AI R&D lab for AI research and products
+- name: ant-design
+  base_url: https://ant.design/
+  description: Enterprise-class React UI component library with 64+ components
 - name: anthropic
   base_url: https://docs.anthropic.com/
   description: docs on LLMS.txt - Claude Docs - Anthropic
@@ -223,7 +228,11 @@ sites:
   description: IDEA GitLab consulting and solutions
 - name: gofastmcp
   base_url: https://gofastmcp.com/
-  description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__i'
+  description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle
+    ... python-sdk/fastmcp-cli-__i'
+- name: gradio
+  base_url: https://www.gradio.app/
+  description: Python library for building ML web apps with comprehensive API reference
 - name: grafbase
   base_url: https://grafbase.com/
   description: Grafbase documentation
@@ -241,7 +250,8 @@ sites:
   description: Htmlhint documentation
 - name: huggingface-docs-hub
   base_url: https://huggingface.co/docs/hub/
-  description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O'
+  description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker
+    ... llm.md) - [Use O'
 - name: humanloop
   base_url: https://humanloop.com/docs/
   description: Humanloop LLM evaluation and monitoring
@@ -352,7 +362,12 @@ sites:
   description: Nuxt UI Vue.js component library
 - name: nvidia
   base_url: https://docs.nvidia.com/
-  description: High-throughput, low-latency inference framework designed for serving generative AI and reasoning mo
+  description: High-throughput, low-latency inference framework designed for serving
+    generative AI and reasoning mo
+- name: ollama
+  base_url: https://docs.ollama.com/
+  description: Local LLM runtime with API reference, capabilities, integrations, and
+    CLI documentation
 - name: openai-cdn
   base_url: https://cdn.openai.com/API/docs/txt/
   description: OpenAI API documentation CDN
@@ -386,6 +401,9 @@ sites:
 - name: rainbowkit
   base_url: https://rainbowkit.com/
   description: Rainbowkit documentation
+- name: react
+  base_url: https://react.dev/
+  description: 'React library for web and native user interfaces (from PR #8130)'
 - name: readme
   base_url: https://docs.readme.com/
   description: ReadMe developer documentation platform
@@ -470,6 +488,10 @@ sites:
 - name: viem
   base_url: https://viem.sh/
   description: Viem documentation
+- name: vite
+  base_url: https://vite.dev/
+  description: Next generation frontend build tool with instant server start and lightning
+    fast HMR
 - name: vuejs
   base_url: https://vuejs.org/
   description: Vue.js progressive JavaScript framework

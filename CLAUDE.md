@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This repository provides centralized, AI-readable documentation extracted from 160+ frameworks, libraries, and developer tools. It includes automated extraction tools that keep documentation current with upstream sources.
+This repository provides centralized, AI-readable documentation extracted from 175+ frameworks, libraries, and developer tools. It includes automated extraction tools that keep documentation current with upstream sources.
 
 **Purpose**: Serve as a comprehensive documentation hub optimized for LLM consumption and AI-assisted development.
 
@@ -12,33 +12,43 @@ This repository provides centralized, AI-readable documentation extracted from 1
 
 ### Two-Tier Documentation Structure
 
-1. **Legacy Documentation Sets** (root directories)
-   - `circuitpython/` - MicroPython for microcontrollers (git-based extraction)
+1. **Git-Based Documentation Extractions** (root directories)
+   - `circuitpython/` - MicroPython for microcontrollers
+   - `click/` - Python CLI framework (Pallets)
+   - `fastapi/` - Modern Python web framework
+   - `flask/` - Lightweight WSGI web framework (Pallets)
+   - `go-docs/` - Go programming language official docs
+   - `goose/` - AI-powered developer agent (Block)
+   - `python-docs/` - Python 3.13 official documentation
+   - `sqlalchemy/` - Python SQL toolkit and ORM
    - `claude-code-sdk/` - Anthropic's Claude Code SDK (HTML scraping)
    - `textual/` - TUI framework documentation
    - `notion/`, `perplexity/`, `openrouter/` - Individual project extractions
 
 2. **llms.txt-Compliant Documentation** (`llms-txt-docs/`)
-   - **227 sites** following the llms.txt standard (https://llmstxt.org/)
+   - **233 sites** following the llms.txt standard (https://llmstxt.org/)
    - Each site in its own subdirectory: `llms-txt-docs/{site-name}/`
    - Parallel downloads with 15 concurrent workers
    - File-level caching with 23-hour freshness window
+   - Recent additions: `gradio/`, `vite/`, `ant-design/`, `ollama/`, `react/`
    - Examples: `llms-txt-docs/anthropic/`, `llms-txt-docs/vercel-ai-sdk/`, `llms-txt-docs/bun/`
 
 ### Configuration Files
 
-- **`update-scripts/llms-sites.yaml`** - Central registry of 163 llms.txt-compliant sites
-  - Structure: `name`, `base_url`, `description`
+- **`update-scripts/llms-sites.yaml`** - Central registry of 170 llms.txt-compliant sites
+  - Structure: `name`, `base_url`, `description`, optional `rate_limit_seconds`
   - Alphabetically sorted by name
   - Used by `llms-txt-scraper.py` for bulk downloads
 
-- **`update-scripts/repo_config.yaml`** - Git repository extraction config (CircuitPython)
+- **`update-scripts/repo_config.yaml`** - Git repository extraction config
+  - 15 repositories: CircuitPython, Click, FastAPI, Flask, SQLAlchemy, Go, Python, Goose, and more
+  - Each repo specifies: `repo_url`, `source_folder`, `target_folder`, `branch`
 
 ### Update Scripts Architecture
 
 **Primary Scripts:**
-- `llms-txt-scraper.py` - **Main workhorse** - Downloads from 160+ llms.txt sites in parallel
-- `extract_docs.py` - Git repository cloner/extractor (CircuitPython)
+- `llms-txt-scraper.py` - **Main workhorse** - Downloads from 170+ llms.txt sites in parallel
+- `extract_docs.py` - Git repository cloner/extractor (15 repositories)
 - `update.sh` - Master orchestrator that runs all update scripts sequentially
 
 **Discovery Scripts** (research tools, not run automatically):
@@ -55,9 +65,9 @@ This repository provides centralized, AI-readable documentation extracted from 1
 ./update-scripts/update.sh
 
 # This executes in order:
-# 1. extract_docs.py (CircuitPython)
+# 1. extract_docs.py (15 Git repositories)
 # 2. claude-code-sdk-docs.py
-# 3. llms-txt-scraper.py (163 sites in parallel)
+# 3. llms-txt-scraper.py (170 sites in parallel)
 ```
 
 ### Update Specific llms.txt Sites
@@ -195,7 +205,7 @@ The scraper uses Python's `ThreadPoolExecutor` for concurrent downloads:
 - **Error handling**: Individual site failures don't stop the entire run
 - **Progress tracking**: Real-time status updates for each site as downloads complete
 
-Typical performance: **163 sites downloaded in ~5-10 minutes** (vs. 2+ hours serial).
+Typical performance: **170 sites downloaded in ~5-10 minutes** (vs. 2+ hours serial).
 
 ## Quality Verification
 
@@ -234,11 +244,12 @@ When adding/updating large documentation sets:
 git add llms-txt-docs/ update-scripts/llms-sites.yaml
 
 # Commit with descriptive message
-git commit -m "Add 62 new documentation sites from llms.txt discovery
+git commit -m "Add new documentation sources
 
-- Added sites: anthropic, vercel-ai-sdk, langchain, ...
-- Total sites: 163 (was 101)
-- Documentation downloaded: 8,000+ markdown files"
+- Added llms.txt sites: gradio, vite, ant-design, ollama, react
+- Added Git repos: click, fastapi, flask, sqlalchemy, go-docs, python-docs, goose
+- Total llms.txt sites: 170 (was 165)
+- Documentation directories: 233 (was 227)"
 
 # Push (may encounter GitHub secret scanning)
 git push origin master
@@ -297,18 +308,27 @@ When expanding the documentation catalog:
 
 ## Special Cases
 
-### CircuitPython (Git-Based Extraction)
+### Git-Based Documentation Extraction
 
-Uses `extract_docs.py` with git clone instead of HTTP downloads:
+Uses `extract_docs.py` with git clone instead of HTTP downloads for 15 repositories:
 
 ```bash
-# Configuration in repo_config.yaml
-repositories:
-  circuitpython:
-    url: "https://github.com/adafruit/circuitpython"
-    source_folder: "docs"
-    target_folder: "circuitpython"
+# Run all Git extractions
+python3 update-scripts/extract_docs.py
+
+# Configuration examples in repo_config.yaml:
+# - CircuitPython: adafruit/circuitpython (docs/)
+# - FastAPI: fastapi/fastapi (docs/en/docs/)
+# - Go: golang/website (_content/)
+# - Python: python/cpython (Doc/, branch: 3.13)
+# - SQLAlchemy: sqlalchemy/sqlalchemy (doc/build/)
 ```
+
+**Why Git extraction over llms.txt:**
+- More detailed/comprehensive documentation
+- Access to unreleased docs (specific branches)
+- Better structured source files
+- Full control over extraction process
 
 ### Claude Code SDK (Custom HTML Scraper)
 
@@ -323,12 +343,18 @@ python3 update-scripts/claude-code-sdk-docs.py
 ## Repository Statistics
 
 Current scale:
-- **163 active llms.txt sites** in YAML configuration
-- **227 documentation directories** in llms-txt-docs/
-- **8,000+ markdown files** across all sites
-- **7MB+ total documentation** optimized for AI consumption
+- **170 active llms.txt sites** in YAML configuration
+- **233 documentation directories** in llms-txt-docs/
+- **15 Git-based repository extractions** in root directories
+- **12,000+ markdown/RST files** across all sources
+- **300MB+ total documentation** optimized for AI consumption
 
-Updated: 2025-11-23
+### Notable Additions (2025-11-24)
+- **llms.txt sites**: Gradio (272KB), Vite (480KB), Ant Design (1.2MB), Ollama (592KB), React (3.1MB)
+- **Git repos**: Click (280KB), FastAPI (19MB), Flask (992KB), SQLAlchemy (6.2MB), Go (197MB), Python 3.13 (18MB), Goose (37MB)
+- **Total new docs**: 255MB+ across 4,675+ files
+
+Updated: 2025-11-24
 
 ## Key Design Principles
 
@@ -338,3 +364,4 @@ Updated: 2025-11-23
 4. **Parallel execution** - Maximize throughput with concurrent workers
 5. **Quality verification** - Post-download checks ensure complete content capture
 6. **Git-friendly naming** - Descriptive folder names, not generic "docs-N" patterns
+- llms.txt are considered of better/higher priority than github derived docs
