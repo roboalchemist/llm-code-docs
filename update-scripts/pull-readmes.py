@@ -27,7 +27,7 @@ READMES = [
 
 def download_readme(url, output_filename):
     """Download a README file from URL and save to readmes directory."""
-    output_dir = Path("readmes")
+    output_dir = Path("web-scraped-docs/readmes")
     output_path = output_dir / output_filename
 
     try:
@@ -90,10 +90,10 @@ def main():
     print(f"✅ Successful downloads:  {successful}")
     print(f"❌ Failed downloads:      {failed}")
     print(f"⏱️  Total time:            {elapsed:.1f} seconds")
-    print(f"📁 Output directory:      readmes/")
+    print(f"📁 Output directory:      web-scraped-docs/readmes/")
 
     # Calculate total size
-    readme_dir = Path("readmes")
+    readme_dir = Path("web-scraped-docs/readmes")
     if readme_dir.exists():
         total_size = sum(f.stat().st_size for f in readme_dir.glob("*.md"))
         print(f"💾 Total documentation:   {total_size:,} bytes ({total_size/1024:.1f} KB)")

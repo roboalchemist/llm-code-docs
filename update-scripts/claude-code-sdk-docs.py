@@ -153,7 +153,7 @@ def main():
     print()
     
     # Output directory
-    output_dir = Path("claude-code-sdk")
+    output_dir = Path("web-scraped-docs/claude-code-sdk")
     
     # Check existing files
     existing_status = check_existing_files(output_dir)

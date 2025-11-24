@@ -10,9 +10,17 @@ This repository provides centralized, AI-readable documentation extracted from 1
 
 ## Repository Architecture
 
-### Two-Tier Documentation Structure
+### Three-Tier Documentation Structure
 
-1. **Git-Based Documentation Extractions** (root directories)
+1. **llms.txt-Compliant Documentation** (`llms-txt-docs/`) - **HIGHEST PRIORITY**
+   - **233 sites** following the llms.txt standard (https://llmstxt.org/)
+   - Each site in its own subdirectory: `llms-txt-docs/{site-name}/`
+   - Parallel downloads with 15 concurrent workers
+   - File-level caching with 23-hour freshness window
+   - Recent additions: `gradio/`, `vite/`, `ant-design/`, `ollama/`, `react/`
+   - Examples: `llms-txt-docs/anthropic/`, `llms-txt-docs/vercel-ai-sdk/`, `llms-txt-docs/bun/`
+
+2. **Git-Based Documentation Extractions** (`github-scraped-docs/`)
    - `circuitpython/` - MicroPython for microcontrollers
    - `click/` - Python CLI framework (Pallets)
    - `fastapi/` - Modern Python web framework
@@ -21,17 +29,15 @@ This repository provides centralized, AI-readable documentation extracted from 1
    - `goose/` - AI-powered developer agent (Block)
    - `python-docs/` - Python 3.13 official documentation
    - `sqlalchemy/` - Python SQL toolkit and ORM
-   - `claude-code-sdk/` - Anthropic's Claude Code SDK (HTML scraping)
    - `textual/` - TUI framework documentation
-   - `notion/`, `perplexity/`, `openrouter/` - Individual project extractions
+   - And more (15 total repositories)
 
-2. **llms.txt-Compliant Documentation** (`llms-txt-docs/`)
-   - **233 sites** following the llms.txt standard (https://llmstxt.org/)
-   - Each site in its own subdirectory: `llms-txt-docs/{site-name}/`
-   - Parallel downloads with 15 concurrent workers
-   - File-level caching with 23-hour freshness window
-   - Recent additions: `gradio/`, `vite/`, `ant-design/`, `ollama/`, `react/`
-   - Examples: `llms-txt-docs/anthropic/`, `llms-txt-docs/vercel-ai-sdk/`, `llms-txt-docs/bun/`
+3. **Web-Scraped Documentation** (`web-scraped-docs/`)
+   - `claude-code-sdk/` - Anthropic's Claude Code SDK (HTML scraping)
+   - `notion/` - Notion API documentation
+   - `perplexity/` - Perplexity API documentation
+   - `openrouter/` - OpenRouter models catalog
+   - `readmes/` - Individual README files from GitHub
 
 ### Configuration Files
 
@@ -43,6 +49,7 @@ This repository provides centralized, AI-readable documentation extracted from 1
 - **`update-scripts/repo_config.yaml`** - Git repository extraction config
   - 15 repositories: CircuitPython, Click, FastAPI, Flask, SQLAlchemy, Go, Python, Goose, and more
   - Each repo specifies: `repo_url`, `source_folder`, `target_folder`, `branch`
+  - All target folders now under `github-scraped-docs/`
 
 ### Update Scripts Architecture
 
@@ -241,15 +248,14 @@ When adding/updating large documentation sets:
 
 ```bash
 # Stage changes
-git add llms-txt-docs/ update-scripts/llms-sites.yaml
+git add llms-txt-docs/ github-scraped-docs/ web-scraped-docs/ update-scripts/
 
 # Commit with descriptive message
-git commit -m "Add new documentation sources
+git commit -m "Update documentation sources
 
-- Added llms.txt sites: gradio, vite, ant-design, ollama, react
-- Added Git repos: click, fastapi, flask, sqlalchemy, go-docs, python-docs, goose
-- Total llms.txt sites: 170 (was 165)
-- Documentation directories: 233 (was 227)"
+- Updated llms.txt sites in llms-txt-docs/
+- Updated Git repos in github-scraped-docs/
+- Updated web scrapers in web-scraped-docs/"
 
 # Push (may encounter GitHub secret scanning)
 git push origin master
@@ -343,16 +349,27 @@ python3 update-scripts/claude-code-sdk-docs.py
 ## Repository Statistics
 
 Current scale:
-- **170 active llms.txt sites** in YAML configuration
+- **170 active llms.txt sites** in YAML configuration (`llms-txt-docs/`)
 - **233 documentation directories** in llms-txt-docs/
-- **15 Git-based repository extractions** in root directories
+- **15 Git-based repository extractions** in `github-scraped-docs/`
+- **5 web-scraped documentation sets** in `web-scraped-docs/`
 - **12,000+ markdown/RST files** across all sources
 - **300MB+ total documentation** optimized for AI consumption
+
+### Directory Structure
+```
+llm-code-docs/
+├── llms-txt-docs/           # llms.txt standard docs (233 sites)
+├── github-scraped-docs/     # Git repository extractions (15 repos)
+├── web-scraped-docs/        # Custom web scrapers (5 sets)
+└── update-scripts/          # All extraction and update scripts
+```
 
 ### Notable Additions (2025-11-24)
 - **llms.txt sites**: Gradio (272KB), Vite (480KB), Ant Design (1.2MB), Ollama (592KB), React (3.1MB)
 - **Git repos**: Click (280KB), FastAPI (19MB), Flask (992KB), SQLAlchemy (6.2MB), Go (197MB), Python 3.13 (18MB), Goose (37MB)
 - **Total new docs**: 255MB+ across 4,675+ files
+- **Reorganization**: Moved all docs into organized subdirectories
 
 Updated: 2025-11-24
 

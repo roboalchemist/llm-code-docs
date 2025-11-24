@@ -27,7 +27,7 @@ from datetime import datetime
 
 # Configuration
 API_ENDPOINT = "https://openrouter.ai/api/v1/models"
-OUTPUT_DIR = Path(__file__).parent.parent / "openrouter"
+OUTPUT_DIR = Path(__file__).parent.parent / "web-scraped-docs/openrouter"
 TIMEOUT = 10  # seconds
 RETRY_DELAY = 2  # seconds
 MAX_RETRIES = 1

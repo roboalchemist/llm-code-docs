@@ -14,7 +14,7 @@ from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode
 # Read URLs from links file
 SCRIPT_DIR = Path(__file__).parent
 LINKS_FILE = SCRIPT_DIR / "notion-api-links.txt"
-OUTPUT_DIR = SCRIPT_DIR.parent / "notion"
+OUTPUT_DIR = SCRIPT_DIR.parent / "web-scraped-docs/notion"
 
 def load_urls():
     """Load URLs from the links file."""

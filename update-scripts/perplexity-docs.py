@@ -12,7 +12,7 @@ from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode
 # Paths
 SCRIPT_DIR = Path(__file__).parent
 LINKS_FILE = SCRIPT_DIR / "perplexity-docs-links.txt"
-OUTPUT_DIR = SCRIPT_DIR.parent / "perplexity"
+OUTPUT_DIR = SCRIPT_DIR.parent / "web-scraped-docs/perplexity"
 
 def load_urls():
     """Load URLs from the links file."""

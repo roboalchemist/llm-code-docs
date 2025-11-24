@@ -16,103 +16,103 @@ repositories:
     description: "CircuitPython documentation and examples"
     repo_url: "https://github.com/adafruit/circuitpython"
     source_folder: "docs"
-    target_folder: "circuitpython"
+    target_folder: "github-scraped-docs/circuitpython"
     branch: "main" # Default branch to use
 
   - name: "Textual"
     description: "Textual documentation and examples"
     repo_url: "https://github.com/Textualize/textual.git"
     source_folder: "docs"
-    target_folder: "textual"
+    target_folder: "github-scraped-docs/textual"
     branch: "main" # Default branch to use
 
   - name: "MicroPython"
     description: "MicroPython documentation"
     repo_url: "https://github.com/micropython/micropython.git"
     source_folder: "docs"
-    target_folder: "micropython"
+    target_folder: "github-scraped-docs/micropython"
     branch: "master" # Default branch to use
 
   - name: "BuildBuddy"
     description: "BuildBuddy documentation - Remote execution and caching platform"
     repo_url: "https://github.com/buildbuddy-io/buildbuddy.git"
     source_folder: "docs"
-    target_folder: "buildbuddy"
+    target_folder: "github-scraped-docs/buildbuddy"
     branch: "master" # Default branch to use
 
   - name: "esptool"
     description: "ESP8266 and ESP32 serial bootloader utility documentation"
     repo_url: "https://github.com/espressif/esptool.git"
     source_folder: "docs"
-    target_folder: "esptool"
+    target_folder: "github-scraped-docs/esptool"
     branch: "master" # Default branch to use
 
   - name: "mcp-jest"
     description: "MCP Jest - Model Context Protocol testing utilities"
     repo_url: "https://github.com/josharsh/mcp-jest.git"
     source_folder: "docs"
-    target_folder: "mcp-jest"
+    target_folder: "github-scraped-docs/mcp-jest"
     branch: "main" # Default branch to use
 
   - name: "LibreChat"
     description: "LibreChat - Enhanced ChatGPT clone with multi-AI support"
     repo_url: "https://github.com/LibreChat-AI/librechat.ai.git"
     source_folder: "pages/docs"
-    target_folder: "librechat"
+    target_folder: "github-scraped-docs/librechat"
     branch: "main" # Default branch to use
 
   - name: "Joplin"
     description: "Joplin - Open source note taking and to-do application"
     repo_url: "https://github.com/laurent22/joplin.git"
     source_folder: "readme"
-    target_folder: "joplin"
+    target_folder: "github-scraped-docs/joplin"
     branch: "dev" # Default branch to use
 
   - name: "SQLAlchemy"
     description: "SQLAlchemy - The Python SQL Toolkit and ORM"
     repo_url: "https://github.com/sqlalchemy/sqlalchemy.git"
     source_folder: "doc/build"
-    target_folder: "sqlalchemy"
+    target_folder: "github-scraped-docs/sqlalchemy"
     branch: "main" # Default branch to use
 
   - name: "Go"
     description: "Go Programming Language - Official documentation website"
     repo_url: "https://github.com/golang/website.git"
     source_folder: "_content"
-    target_folder: "go-docs"
+    target_folder: "github-scraped-docs/go-docs"
     branch: "master" # Default branch to use
 
   - name: "Flask"
     description: "Flask - Lightweight WSGI web application framework"
     repo_url: "https://github.com/pallets/flask.git"
     source_folder: "docs"
-    target_folder: "flask"
+    target_folder: "github-scraped-docs/flask"
     branch: "main" # Default branch to use
 
   - name: "Click"
     description: "Python CLI framework - Command-line interface creation toolkit"
     repo_url: "https://github.com/pallets/click.git"
     source_folder: "docs"
-    target_folder: "click"
+    target_folder: "github-scraped-docs/click"
     branch: "main" # Default branch to use
 
   - name: "FastAPI"
     description: "FastAPI - Modern, fast Python web framework"
     repo_url: "https://github.com/fastapi/fastapi.git"
     source_folder: "docs/en/docs"
-    target_folder: "fastapi"
+    target_folder: "github-scraped-docs/fastapi"
     branch: "master" # Default branch to use
 
   - name: "Python"
     description: "Python official documentation - Language reference and standard library"
     repo_url: "https://github.com/python/cpython.git"
     source_folder: "Doc"
-    target_folder: "python-docs"
+    target_folder: "github-scraped-docs/python-docs"
     branch: "3.13"
 
   - name: "Goose"
     description: "Goose - AI-powered developer agent by Block"
     repo_url: "https://github.com/block/goose.git"
     source_folder: "documentation/docs"
-    target_folder: "goose"
+    target_folder: "github-scraped-docs/goose"
     branch: "main"

@@ -129,7 +129,7 @@ def parse_llms_txt(content: str) -> list[str]:
     return urls
 
 
-def download_individual_files(site_name: str, base_url: str, output_dir: Path, force: bool = False) -> tuple[int, int]:
+def download_individual_files(site_name: str, base_url: str, output_dir: Path, force: bool = False, rate_limit_seconds: float = 0) -> tuple[int, int]:
     """Download individual markdown files from llms.txt.
 
     Args:
@@ -137,6 +137,7 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
         base_url: Base URL where llms.txt is located
         output_dir: Directory to save downloaded files
         force: Force download even if files are recent
+        rate_limit_seconds: Optional delay between requests in seconds
 
     Returns:
         tuple: (success_count, fail_count)
@@ -160,6 +161,8 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
     urls = parse_llms_txt(llms_content)
     with print_lock:
         print(f"  Found {len(urls)} documentation URLs")
+        if rate_limit_seconds > 0:
+            print(f"  Rate limit: {rate_limit_seconds}s between requests")
 
     if not urls:
         with print_lock:
@@ -169,7 +172,7 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
     success_count = 0
     fail_count = 0
 
-    for url in urls:
+    for i, url in enumerate(urls):
         # Extract filename from URL
         filename = Path(urlparse(url).path).name
         if not filename.endswith('.md'):
@@ -187,6 +190,10 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
             success_count += 1
         else:
             fail_count += 1
+
+        # Apply rate limiting (but not after the last request)
+        if rate_limit_seconds > 0 and i < len(urls) - 1:
+            time.sleep(rate_limit_seconds)
 
     return success_count, fail_count
 
@@ -239,6 +246,7 @@ def process_site(site: dict, mode: str, force: bool = False) -> dict:
     name = site['name']
     base_url = site['base_url']
     description = site.get('description', '')
+    rate_limit_seconds = site.get('rate_limit_seconds', 0)
 
     with print_lock:
         print(f"\n{'=' * 70}")
@@ -246,6 +254,8 @@ def process_site(site: dict, mode: str, force: bool = False) -> dict:
         print(f"Base URL: {base_url}")
         if description:
             print(f"Description: {description}")
+        if rate_limit_seconds > 0:
+            print(f"Rate limit: {rate_limit_seconds}s between requests")
         print('=' * 70)
 
     # Create output directory under llms-txt-docs/
@@ -262,7 +272,7 @@ def process_site(site: dict, mode: str, force: bool = False) -> dict:
 
     # Download based on mode
     if mode in ['individual', 'both']:
-        success_count, fail_count = download_individual_files(name, base_url, output_dir, force)
+        success_count, fail_count = download_individual_files(name, base_url, output_dir, force, rate_limit_seconds)
         stats['individual_success'] = success_count
         stats['individual_fail'] = fail_count
         if fail_count > 0:

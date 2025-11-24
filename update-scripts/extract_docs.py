@@ -119,6 +119,9 @@ class DocumentationExtractor:
                 return False
         
         try:
+            # Ensure parent directories exist
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+
             # Copy the folder
             self.logger.info(f"Copying '{source_folder}' to '{target_folder}'...")
             shutil.copytree(source_path, target_path)
