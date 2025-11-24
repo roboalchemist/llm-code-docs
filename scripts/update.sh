@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Master Documentation Update Script
-# Runs all documentation generation scripts in the update-scripts folder
+# Runs all documentation generation scripts in the scripts folder
 #
 
 set -e  # Exit on any error
@@ -55,7 +55,7 @@ run_script() {
     echo
 }
 
-# Find and run all executable scripts in update-scripts directory
+# Find and run all executable scripts in scripts directory
 echo "🔍 Scanning for documentation update scripts..."
 
 # Count total scripts
@@ -141,9 +141,9 @@ for dir in textual circuitpython claude-code-sdk; do
 done
 
 # llms.txt-compliant documentation
-if [[ -d "llms-txt-docs" ]]; then
-    echo "    • llms-txt-docs/ (llms.txt standard sites):"
-    for subdir in llms-txt-docs/*; do
+if [[ -d "docs/llms-txt" ]]; then
+    echo "    • docs/llms-txt/ (llms.txt standard sites):"
+    for subdir in docs/llms-txt/*; do
         if [[ -d "$subdir" ]]; then
             subdir_name=$(basename "$subdir")
             file_count=$(find "$subdir" -name "*.md" | wc -l)

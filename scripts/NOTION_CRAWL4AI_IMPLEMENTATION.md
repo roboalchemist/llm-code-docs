@@ -36,7 +36,7 @@ The final implementation uses Crawl4AI AsyncWebCrawler which:
 ## Implementation Details
 
 ### Script Location
-`/Users/joe/github/llm-code-docs/update-scripts/notion-docs-crawl4ai.py`
+`/Users/joe/github/llm-code-docs/scripts/notion-docs-crawl4ai.py`
 
 **File Size**: 3,790 bytes (125 lines)
 
@@ -201,7 +201,7 @@ These files may require manual extraction or alternative rendering strategies.
 
 ### Basic Extraction
 ```bash
-cd /Users/joe/github/llm-code-docs/update-scripts
+cd /Users/joe/github/llm-code-docs/scripts
 python3 notion-docs-crawl4ai.py
 ```
 
@@ -245,7 +245,7 @@ Average size: 8,394 bytes per file
 ### How to Update
 Simply re-run the extraction script:
 ```bash
-python3 update-scripts/notion-docs-crawl4ai.py
+python3 scripts/notion-docs-crawl4ai.py
 ```
 
 The script always fetches fresh content (cache mode: BYPASS).
@@ -384,9 +384,9 @@ Manually inspect 5-10 random files for:
 
 - **Crawl4AI Documentation:** https://github.com/unclecode/crawl4ai
 - **Notion API Reference:** https://developers.notion.com/reference
-- **URL List:** `/Users/joe/github/llm-code-docs/update-scripts/notion-api-links.txt`
+- **URL List:** `/Users/joe/github/llm-code-docs/scripts/notion-api-links.txt`
 - **Output Directory:** `/Users/joe/github/llm-code-docs/notion/`
-- **Script Location:** `/Users/joe/github/llm-code-docs/update-scripts/notion-docs-crawl4ai.py`
+- **Script Location:** `/Users/joe/github/llm-code-docs/scripts/notion-docs-crawl4ai.py`
 
 ## Archived Scripts
 

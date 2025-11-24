@@ -16,103 +16,103 @@ repositories:
     description: "CircuitPython documentation and examples"
     repo_url: "https://github.com/adafruit/circuitpython"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/circuitpython"
+    target_folder: "docs/github-scraped/circuitpython"
     branch: "main" # Default branch to use
 
   - name: "Textual"
     description: "Textual documentation and examples"
     repo_url: "https://github.com/Textualize/textual.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/textual"
+    target_folder: "docs/github-scraped/textual"
     branch: "main" # Default branch to use
 
   - name: "MicroPython"
     description: "MicroPython documentation"
     repo_url: "https://github.com/micropython/micropython.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/micropython"
+    target_folder: "docs/github-scraped/micropython"
     branch: "master" # Default branch to use
 
   - name: "BuildBuddy"
     description: "BuildBuddy documentation - Remote execution and caching platform"
     repo_url: "https://github.com/buildbuddy-io/buildbuddy.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/buildbuddy"
+    target_folder: "docs/github-scraped/buildbuddy"
     branch: "master" # Default branch to use
 
   - name: "esptool"
     description: "ESP8266 and ESP32 serial bootloader utility documentation"
     repo_url: "https://github.com/espressif/esptool.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/esptool"
+    target_folder: "docs/github-scraped/esptool"
     branch: "master" # Default branch to use
 
   - name: "mcp-jest"
     description: "MCP Jest - Model Context Protocol testing utilities"
     repo_url: "https://github.com/josharsh/mcp-jest.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/mcp-jest"
+    target_folder: "docs/github-scraped/mcp-jest"
     branch: "main" # Default branch to use
 
   - name: "LibreChat"
     description: "LibreChat - Enhanced ChatGPT clone with multi-AI support"
     repo_url: "https://github.com/LibreChat-AI/librechat.ai.git"
     source_folder: "pages/docs"
-    target_folder: "github-scraped-docs/librechat"
+    target_folder: "docs/github-scraped/librechat"
     branch: "main" # Default branch to use
 
   - name: "Joplin"
     description: "Joplin - Open source note taking and to-do application"
     repo_url: "https://github.com/laurent22/joplin.git"
     source_folder: "readme"
-    target_folder: "github-scraped-docs/joplin"
+    target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
   - name: "SQLAlchemy"
     description: "SQLAlchemy - The Python SQL Toolkit and ORM"
     repo_url: "https://github.com/sqlalchemy/sqlalchemy.git"
     source_folder: "doc/build"
-    target_folder: "github-scraped-docs/sqlalchemy"
+    target_folder: "docs/github-scraped/sqlalchemy"
     branch: "main" # Default branch to use
 
   - name: "Go"
     description: "Go Programming Language - Official documentation website"
     repo_url: "https://github.com/golang/website.git"
     source_folder: "_content"
-    target_folder: "github-scraped-docs/go-docs"
+    target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
   - name: "Flask"
     description: "Flask - Lightweight WSGI web application framework"
     repo_url: "https://github.com/pallets/flask.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/flask"
+    target_folder: "docs/github-scraped/flask"
     branch: "main" # Default branch to use
 
   - name: "Click"
     description: "Python CLI framework - Command-line interface creation toolkit"
     repo_url: "https://github.com/pallets/click.git"
     source_folder: "docs"
-    target_folder: "github-scraped-docs/click"
+    target_folder: "docs/github-scraped/click"
     branch: "main" # Default branch to use
 
   - name: "FastAPI"
     description: "FastAPI - Modern, fast Python web framework"
     repo_url: "https://github.com/fastapi/fastapi.git"
     source_folder: "docs/en/docs"
-    target_folder: "github-scraped-docs/fastapi"
+    target_folder: "docs/github-scraped/fastapi"
     branch: "master" # Default branch to use
 
   - name: "Python"
     description: "Python official documentation - Language reference and standard library"
     repo_url: "https://github.com/python/cpython.git"
     source_folder: "Doc"
-    target_folder: "github-scraped-docs/python-docs"
+    target_folder: "docs/github-scraped/python-docs"
     branch: "3.13"
 
   - name: "Goose"
     description: "Goose - AI-powered developer agent by Block"
     repo_url: "https://github.com/block/goose.git"
     source_folder: "documentation/docs"
-    target_folder: "github-scraped-docs/goose"
+    target_folder: "docs/github-scraped/goose"
     branch: "main"

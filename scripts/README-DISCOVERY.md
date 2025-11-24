@@ -20,19 +20,19 @@ The script uses all available API keys from your environment:
 
 ```bash
 # Discover new sites with default settings
-python3 update-scripts/discover-llms-txt-sites.py
+python3 scripts/discover-llms-txt-sites.py
 
 # Limit results per API
-python3 update-scripts/discover-llms-txt-sites.py --limit 20
+python3 scripts/discover-llms-txt-sites.py --limit 20
 
 # Control pagination depth (default: 5 pages per API)
-python3 update-scripts/discover-llms-txt-sites.py --max-pages 3
+python3 scripts/discover-llms-txt-sites.py --max-pages 3
 
 # Custom output file
-python3 update-scripts/discover-llms-txt-sites.py --output new-sites.json
+python3 scripts/discover-llms-txt-sites.py --output new-sites.json
 
 # Custom search queries
-python3 update-scripts/discover-llms-txt-sites.py --queries "llms.txt documentation" "llms-full.txt api"
+python3 scripts/discover-llms-txt-sites.py --queries "llms.txt documentation" "llms-full.txt api"
 ```
 
 ### Default Queries
@@ -93,14 +93,14 @@ After running the discovery script, review the results and manually add promisin
 
 ```bash
 # Run discovery
-python3 update-scripts/discover-llms-txt-sites.py
+python3 scripts/discover-llms-txt-sites.py
 
 # Review results
 cat discovered-llms-txt-sites.json | jq '.[:10]'
 
 # Manually add sites to llms-sites.yaml
 # Then test with the scraper
-python3 update-scripts/llms-txt-scraper.py --site new-site-name
+python3 scripts/llms-txt-scraper.py --site new-site-name
 ```
 
 ## Rate Limiting
@@ -245,7 +245,7 @@ jq '[.[] | .source] | group_by(.) | map({source: .[0], count: length})' discover
 ```bash
 # Run with multiple query sets
 for query in "llms.txt ai" "llms.txt api" "llms.txt docs"; do
-    python3 update-scripts/discover-llms-txt-sites.py \
+    python3 scripts/discover-llms-txt-sites.py \
         --queries "$query" \
         --output "discovered-${query// /-}.json"
     sleep 60  # Rate limiting between runs

@@ -399,7 +399,7 @@ def main():
                 print()
                 print(f"✓ Successfully added {added} new sites to {CONFIG_FILE}")
                 print("  Run the scraper to download documentation:")
-                print(f"  python3 update-scripts/llms-txt-scraper.py --workers 15")
+                print(f"  python3 scripts/llms-txt-scraper.py --workers 15")
         else:
             print("Tip: Use --add-to-yaml to automatically add these to the config")
 

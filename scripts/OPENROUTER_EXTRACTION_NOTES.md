@@ -11,7 +11,7 @@ The OpenRouter models extraction fetches the complete catalog of available model
 ## Implementation Details
 
 ### Script Location
-`/Users/joe/github/llm-code-docs/update-scripts/openrouter-models.py`
+`/Users/joe/github/llm-code-docs/scripts/openrouter-models.py`
 
 ### API Details
 - **Method:** GET
@@ -120,7 +120,7 @@ The script now calculates comprehensive statistics:
 ### Execution
 ```bash
 # Standard run (quiet mode)
-cd /Users/joe/github/llm-code-docs/update-scripts
+cd /Users/joe/github/llm-code-docs/scripts
 python3 openrouter-models.py
 
 # Verbose mode (shows debug info)
@@ -208,7 +208,7 @@ export OPENROUTER_API_KEY='sk-or-...'
 ## Maintenance
 
 ### Script Updates
-- **Location:** `/Users/joe/github/llm-code-docs/update-scripts/openrouter-models.py`
+- **Location:** `/Users/joe/github/llm-code-docs/scripts/openrouter-models.py`
 - **Version Control:** Committed in git repository
 - **Testing:** Run with `--verbose` flag after changes
 

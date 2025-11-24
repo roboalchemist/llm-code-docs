@@ -258,8 +258,8 @@ def process_site(site: dict, mode: str, force: bool = False) -> dict:
             print(f"Rate limit: {rate_limit_seconds}s between requests")
         print('=' * 70)
 
-    # Create output directory under llms-txt-docs/
-    output_dir = REPO_ROOT / "llms-txt-docs" / name
+    # Create output directory under docs/llms-txt/
+    output_dir = REPO_ROOT / "docs/llms-txt" / name
     output_dir.mkdir(parents=True, exist_ok=True)
 
     stats = {
