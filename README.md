@@ -11,11 +11,16 @@ llm-code-docs/
 │   ├── github-scraped/     # 15 Git repository extractions
 │   └── web-scraped/        # Custom web scrapers (Claude Code SDK, READMEs)
 ├── scripts/                # All extraction and update tools
+├── AGENTS.md               # Guide for AI agents using these docs
 ├── CLAUDE.md               # AI assistant instructions
 ├── index.yaml              # Index of all documentation sources
 ├── todo.md                 # Wishlist and future ideas
 └── README.md               # This file
 ```
+
+## For AI Agents
+
+See [AGENTS.md](./AGENTS.md) for detailed guidance on finding and using documentation in this repository.
 
 ## Documentation Sources
 
@@ -128,12 +133,25 @@ Configuration for Git-based documentation extraction:
 - **12,000+** markdown/RST files
 - **300MB+** total documentation
 
-## Adding Documentation
+## Contributing
 
-- **`index.yaml`** - Index of all current documentation sources with paths and status
-- **`todo.md`** - Wishlist of libraries to add and tools for expansion
+### Add a New llms.txt Site
 
-Priority order:
+1. Check if the site has llms.txt support (visit `{docs-url}/llms.txt`)
+2. Edit `scripts/llms-sites.yaml` with the new entry
+3. Run `python3 scripts/llms-txt-scraper.py --site new-site`
+4. Verify extraction: `ls -lh docs/llms-txt/new-site/`
+
+### Add a GitHub Repository
+
+1. Edit `scripts/repo_config.yaml` with repo details
+2. Run `python3 scripts/extract_docs.py`
+
+### Suggest a Library
+
+Check `index.yaml` under `not_yet_fetched` for libraries we've identified but haven't extracted. See `todo.md` for ideas and expansion strategies.
+
+**Priority order:**
 1. **llms.txt** - Highest quality, official AI-optimized format
 2. **Git repos** - Comprehensive but requires custom configuration
 3. **Web scraping** - Last resort for critical documentation

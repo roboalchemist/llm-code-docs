@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+**See also:** [AGENTS.md](./AGENTS.md) for quick guidance on finding and using documentation in this repository.
+
 ## Project Overview
 
 This repository provides centralized, AI-readable documentation extracted from 175+ frameworks, libraries, and developer tools. It includes automated extraction tools that keep documentation current with upstream sources.
