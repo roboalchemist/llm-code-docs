@@ -67,3 +67,10 @@ repositories:
     source_folder: "pages/docs"
     target_folder: "librechat"
     branch: "main" # Default branch to use
+
+  - name: "Joplin"
+    description: "Joplin - Open source note taking and to-do application"
+    repo_url: "https://github.com/laurent22/joplin.git"
+    source_folder: "readme"
+    target_folder: "joplin"
+    branch: "dev" # Default branch to use
