@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/trailingSlash.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/trailingSlash.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/trailingSlash.md
-
 # trailingSlash
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 By default Next.js will redirect URLs with trailing slashes to their counterpart without a trailing slash. For example `/about/` will redirect to `/about`. You can configure this behavior to act the opposite way, where URLs without trailing slashes are redirected to their counterparts with trailing slashes.

@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/mdx.md
 
-# Source: https://nextjs.org/docs/pages/guides/mdx.md
-
-# Source: https://nextjs.org/docs/app/guides/mdx.md
-
-# Source: https://nextjs.org/docs/pages/guides/mdx.md
-
 # How to use markdown and MDX in Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 [Markdown](https://daringfireball.net/projects/markdown/syntax) is a lightweight markup language used to format text. It allows you to write using plain text syntax and convert it to structurally valid HTML. It's commonly used for writing content on websites and blogs.
@@ -112,13 +106,16 @@ You can render MDX using Next.js's file based routing or by importing MDX files 
 
 When using file based routing, you can use MDX pages like any other page.
 
-Create a new MDX page within the `/pages` directory:
+In App Router apps, that includes being able to use [metadata](/docs/app/getting-started/metadata-and-og-images.md).
+
+Create a new MDX page within the `/app` directory:
 
 ```txt
   my-project
+  ├── app
+  │   └── mdx-page
+  │       └── page.(mdx/md)
   |── mdx-components.(tsx/js)
-  ├── pages
-  │   └── mdx-page.(mdx/md)
   └── package.json
 ```
 
@@ -146,14 +143,15 @@ Navigating to the `/mdx-page` route should display your rendered MDX page.
 
 ### Using imports
 
-Create a new page within the `/pages` directory and an MDX file wherever you'd like:
+Create a new page within the `/app` directory and an MDX file wherever you'd like:
 
 ```txt
   .
+  ├── app/
+  │   └── mdx-page/
+  │       └── page.(tsx/js)
   ├── markdown/
   │   └── welcome.(mdx/md)
-  ├── pages/
-  │   └── mdx-page.(tsx/js)
   ├── mdx-components.(tsx/js)
   └── package.json
 ```
@@ -180,7 +178,7 @@ Checkout my React component:
 
 Import the MDX file inside the page to display the content:
 
-```tsx filename="pages/mdx-page.tsx" switcher
+```tsx filename="app/mdx-page/page.tsx" switcher
 import Welcome from '@/markdown/welcome.mdx'
 
 export default function Page() {
@@ -188,7 +186,7 @@ export default function Page() {
 }
 ```
 
-```jsx filename="pages/mdx-page.js" switcher
+```jsx filename="app/mdx-page/page.js" switcher
 import Welcome from '@/markdown/welcome.mdx'
 
 export default function Page() {
@@ -197,6 +195,52 @@ export default function Page() {
 ```
 
 Navigating to the `/mdx-page` route should display your rendered MDX page.
+
+### Using dynamic imports
+
+You can import dynamic MDX components instead of using filesystem routing for MDX files.
+
+For example, you can have a dynamic route segment which loads MDX components from a separate directory:
+
+![Route segments for dynamic MDX components](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/mdx-files.png)
+
+[`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md) can be used to prerender the provided routes. By marking `dynamicParams` as `false`, accessing a route not defined in `generateStaticParams` will 404.
+
+```tsx filename="app/blog/[slug]/page.tsx" switcher
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const { default: Post } = await import(`@/content/${slug}.mdx`)
+
+  return <Post />
+}
+
+export function generateStaticParams() {
+  return [{ slug: 'welcome' }, { slug: 'about' }]
+}
+
+export const dynamicParams = false
+```
+
+```jsx filename="app/blog/[slug]/page.js" switcher
+export default async function Page({ params }) {
+  const { slug } = await params
+  const { default: Post } = await import(`@/content/${slug}.mdx`)
+
+  return <Post />
+}
+
+export function generateStaticParams() {
+  return [{ slug: 'welcome' }, { slug: 'about' }]
+}
+
+export const dynamicParams = false
+```
+
+> **Good to know**: Ensure you specify the `.mdx` file extension in your import. While it is not required to use [module path aliases](/docs/app/getting-started/installation.md#set-up-absolute-imports-and-module-path-aliases) (e.g., `@/content`), it does simplify your import path.
 
 ## Using custom styles and components
 
@@ -287,7 +331,7 @@ export function useMDXComponents() {
 
 You can apply local styles and components to specific pages by passing them into imported MDX components. These will merge with and override [global styles and components](#global-styles-and-components).
 
-```tsx filename="pages/mdx-page.tsx" switcher
+```tsx filename="app/mdx-page/page.tsx" switcher
 import Welcome from '@/markdown/welcome.mdx'
 
 function CustomH1({ children }) {
@@ -303,7 +347,7 @@ export default function Page() {
 }
 ```
 
-```jsx filename="pages/mdx-page.js" switcher
+```jsx filename="app/mdx-page/page.js" switcher
 import Welcome from '@/markdown/welcome.mdx'
 
 function CustomH1({ children }) {
@@ -321,32 +365,19 @@ export default function Page() {
 
 ### Shared layouts
 
-To share a layout around MDX pages, create a layout component:
+To share a layout across MDX pages, you can use the [built-in layouts support](/docs/app/api-reference/file-conventions/layout.md) with the App Router.
 
-```tsx filename="components/mdx-layout.tsx" switcher
+```tsx filename="app/mdx-page/layout.tsx" switcher
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
   return <div style={{ color: 'blue' }}>{children}</div>
 }
 ```
 
-```jsx filename="components/mdx-layout.js" switcher
+```jsx filename="app/mdx-page/layout.js" switcher
 export default function MdxLayout({ children }) {
   // Create any shared layout or styles here
   return <div style={{ color: 'blue' }}>{children}</div>
-}
-```
-
-Then, import the layout component into the MDX page, wrap the MDX content in the layout, and export it:
-
-```mdx
-import MdxLayout from '../components/mdx-layout'
-
-# Welcome to my MDX page!
-
-export default function MDXPage({ children }) {
-  return <MdxLayout>{children}</MdxLayout>
-
 }
 ```
 
@@ -358,9 +389,7 @@ The plugin adds a set of `prose` classes that can be used to add typographic sty
 
 [Install Tailwind typography](https://github.com/tailwindlabs/tailwindcss-typography?tab=readme-ov-file#installation) and use with [shared layouts](#shared-layouts) to add the `prose` you want.
 
-To share a layout around MDX pages, create a layout component:
-
-```tsx filename="components/mdx-layout.tsx" switcher
+```tsx filename="app/mdx-page/layout.tsx" switcher
 export default function MdxLayout({ children }: { children: React.ReactNode }) {
   // Create any shared layout or styles here
   return (
@@ -371,7 +400,7 @@ export default function MdxLayout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-```jsx filename="components/mdx-layout.js" switcher
+```jsx filename="app/mdx-page/layout.js" switcher
 export default function MdxLayout({ children }) {
   // Create any shared layout or styles here
   return (
@@ -379,19 +408,6 @@ export default function MdxLayout({ children }) {
       {children}
     </div>
   )
-}
-```
-
-Then, import the layout component into the MDX page, wrap the MDX content in the layout, and export it:
-
-```mdx
-import MdxLayout from '../components/mdx-layout'
-
-# Welcome to my MDX page!
-
-export default function MDXPage({ children }) {
-  return <MdxLayout>{children}</MdxLayout>
-
 }
 ```
 
@@ -415,7 +431,7 @@ export const metadata = {
 
 Metadata can now be referenced outside of the MDX file:
 
-```tsx filename="pages/blog.tsx" switcher
+```tsx filename="app/blog/page.tsx" switcher
 import BlogPost, { metadata } from '@/content/blog-post.mdx'
 
 export default function Page() {
@@ -425,7 +441,7 @@ export default function Page() {
 }
 ```
 
-```jsx filename="pages/blog.js" switcher
+```jsx filename="app/blog/page.js" switcher
 import BlogPost, { metadata } from '@/content/blog-post.mdx'
 
 export default function Page() {
@@ -517,50 +533,25 @@ If your MDX files or content lives *somewhere else*, you can fetch it dynamicall
 
 The following example uses `next-mdx-remote-client`:
 
-```tsx filename="pages/mdx-page-remote.tsx" switcher
-import {
-  serialize,
-  type SerializeResult,
-} from 'next-mdx-remote-client/serialize'
-import { MDXClient } from 'next-mdx-remote-client'
+```tsx filename="app/mdx-page-remote/page.tsx" switcher
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
 
-type Props = {
-  mdxSource: SerializeResult
-}
-
-export default function RemoteMdxPage({ mdxSource }: Props) {
-  if ('error' in mdxSource) {
-    // either render error UI or throw `mdxSource.error`
-  }
-  return <MDXClient {...mdxSource} />
-}
-
-export async function getStaticProps() {
+export default async function RemoteMdxPage() {
   // MDX text - can be from a database, CMS, fetch, anywhere...
-  const res = await fetch('https:...')
-  const mdxText = await res.text()
-  const mdxSource = await serialize({ source: mdxText })
-  return { props: { mdxSource } }
+  const res = await fetch('https://...')
+  const markdown = await res.text()
+  return <MDXRemote source={markdown} />
 }
 ```
 
-```jsx filename="pages/mdx-page-remote.js" switcher
-import { serialize } from 'next-mdx-remote-client/serialize'
-import { MDXClient } from 'next-mdx-remote-client'
+```jsx filename="app/mdx-page-remote/page.js" switcher
+import { MDXRemote } from 'next-mdx-remote-client/rsc'
 
-export default function RemoteMdxPage({ mdxSource }) {
-  if ('error' in mdxSource) {
-    // either render error UI or throw `mdxSource.error`
-  }
-  return <MDXClient {...mdxSource} />
-}
-
-export async function getStaticProps() {
+export default async function RemoteMdxPage() {
   // MDX text - can be from a database, CMS, fetch, anywhere...
-  const res = await fetch('https:...')
-  const mdxText = await res.text()
-  const mdxSource = await serialize({ source: mdxText })
-  return { props: { mdxSource } }
+  const res = await fetch('https://...')
+  const markdown = await res.text()
+  return <MDXRemote source={markdown} />
 }
 ```
 

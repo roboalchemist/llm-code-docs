@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/public-folder.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder.md
-
-# Source: https://nextjs.org/docs/app/api-reference/file-conventions/public-folder.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder.md
-
 # public Folder
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js can serve static files, like images, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`).
@@ -38,4 +32,4 @@ Cache-Control: public, max-age=0
 
 ## Robots, Favicons, and others
 
-The folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verification, and any other static files (including `.html`). But make sure to not have a static file with the same name as a file in the `pages/` directory, as this will result in an error. [Read more](/docs/messages/conflicting-public-file-page.md).
+For static metadata files, such as `robots.txt`, `favicon.ico`, etc, you should use [special metadata files](/docs/app/api-reference/file-conventions/metadata.md) inside the `app` folder.

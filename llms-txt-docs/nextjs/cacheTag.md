@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/cacheTag.md
 
 # cacheTag
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `cacheTag` function allows you to tag cached data for on-demand invalidation. By associating tags with cache entries, you can selectively purge or revalidate specific cache entries without affecting other cached data.

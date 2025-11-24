@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/compress.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/compress.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/compress.md
-
 # compress
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 By default, Next.js uses `gzip` to compress rendered content and static files when using `next start` or a custom server. This is an optimization for applications that do not have compression configured. If compression is *already* configured in your application via a custom server, Next.js will not add compression.

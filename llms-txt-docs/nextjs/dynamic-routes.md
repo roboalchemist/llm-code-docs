@@ -2,12 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes.md
 
-# Source: https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes.md
-
-# Source: https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes.md
-
 # Dynamic Route Segments
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 When you don't know the exact route segment names ahead of time and want to create routes from dynamic data, you can use Dynamic Segments that are filled in at request time or prerendered at build time.

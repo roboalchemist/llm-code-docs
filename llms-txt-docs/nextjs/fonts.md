@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/fonts.md
-
-# Source: https://nextjs.org/docs/app/getting-started/fonts.md
-
-# Source: https://nextjs.org/docs/pages/getting-started/fonts.md
-
 # Font Optimization
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The [`next/font`](/docs/app/api-reference/components/font.md) module automatically optimizes your fonts and removes external network requests for improved privacy and performance.

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/sassOptions.md
 
 # sassOptions
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `sassOptions` allow you to configure the Sass compiler.

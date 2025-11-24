@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/next-request.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/functions/next-request.md
-
-# Source: https://nextjs.org/docs/app/api-reference/functions/next-request.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/functions/next-request.md
-
 # NextRequest
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 NextRequest extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional convenience methods.
@@ -93,18 +87,14 @@ request.nextUrl.searchParams
 
 The following options are available:
 
-| Property          | Type                      | Description                                                                                                                            |
-| ----------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `basePath`        | `string`                  | The [base path](/docs/pages/api-reference/config/next-config-js/basePath.md) of the URL.                                                  |
-| `buildId`         | `string` | `undefined`   | The build identifier of the Next.js application. Can be [customized](/docs/pages/api-reference/config/next-config-js/generateBuildId.md). |
-| `defaultLocale`   | `string` | `undefined`   | The default locale for [internationalization](/docs/pages/guides/internationalization.md).                                                |
-| `domainLocale`    |                           |                                                                                                                                        |
-| - `defaultLocale` | `string`                  | The default locale within a domain.                                                                                                    |
-| - `domain`        | `string`                  | The domain associated with a specific locale.                                                                                          |
-| - `http`          | `boolean` | `undefined`  | Indicates if the domain is using HTTP.                                                                                                 |
-| `locales`         | `string[]` | `undefined` | An array of available locales.                                                                                                         |
-| `locale`          | `string` | `undefined`   | The currently active locale.                                                                                                           |
-| `url`             | `URL`                     | The URL object.                                                                                                                        |
+| Property       | Type                    | Description                                                                                                                          |
+| -------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `basePath`     | `string`                | The [base path](/docs/app/api-reference/config/next-config-js/basePath.md) of the URL.                                                  |
+| `buildId`      | `string` | `undefined` | The build identifier of the Next.js application. Can be [customized](/docs/app/api-reference/config/next-config-js/generateBuildId.md). |
+| `pathname`     | `string`                | The pathname of the URL.                                                                                                             |
+| `searchParams` | `Object`                | The search parameters of the URL.                                                                                                    |
+
+> **Note:** The internationalization properties from the Pages Router are not available for usage in the App Router. Learn more about [internationalization with the App Router](/docs/app/guides/internationalization.md).
 
 ## Version History
 

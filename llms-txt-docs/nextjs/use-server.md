@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/directives/use-server.md
 
 # use server
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `use server` directive designates a function or file to be executed on the **server side**. It can be used at the top of a file to indicate that all functions in the file are server-side, or inline at the top of a function to mark the function as a [Server Function](https://19.react.dev/reference/rsc/server-functions). This is a React feature.

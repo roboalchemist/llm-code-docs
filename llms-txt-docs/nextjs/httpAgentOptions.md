@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/httpAgentOptions.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/httpAgentOptions.md
-
 # httpAgentOptions
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 In Node.js versions prior to 18, Next.js automatically polyfills `fetch()` with [undici](/docs/architecture/supported-browsers.md#polyfills) and enables [HTTP Keep-Alive](https://developer.mozilla.org/docs/Web/HTTP/Headers/Keep-Alive) by default.

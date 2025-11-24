@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/internationalization.md
 
-# Source: https://nextjs.org/docs/pages/guides/internationalization.md
-
-# Source: https://nextjs.org/docs/app/guides/internationalization.md
-
-# Source: https://nextjs.org/docs/pages/guides/internationalization.md
-
 # Internationalization
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js enables you to configure the routing and rendering of content to support multiple languages. Making your site adaptive to different locales includes translated content (localization) and internationalized routes.

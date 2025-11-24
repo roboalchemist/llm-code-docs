@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/mdx-components.md
 
 # mdx-components.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `mdx-components.js|tsx` file is **required** to use [`@next/mdx` with App Router](/docs/app/guides/mdx.md) and will not work without it. Additionally, you can use it to [customize styles](/docs/app/guides/mdx.md#using-custom-styles-and-components).

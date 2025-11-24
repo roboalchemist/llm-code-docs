@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/upgrading/codemods.md
 
-# Source: https://nextjs.org/docs/pages/guides/upgrading/codemods.md
-
-# Source: https://nextjs.org/docs/app/guides/upgrading/codemods.md
-
-# Source: https://nextjs.org/docs/pages/guides/upgrading/codemods.md
-
 # Codemods
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Codemods are transformations that run on your codebase programmatically. This allows a large number of changes to be programmatically applied without having to manually go through every file.
@@ -504,7 +498,7 @@ Dangerously migrates from `next/legacy/image` to the new `next/image` by adding 
 npx @next/codemod@latest new-link .
 ```
 
-Remove `<a>` tags inside [Link Components](/docs/pages/api-reference/components/link.md).
+Remove `<a>` tags inside [Link Components](/docs/app/api-reference/components/link.md).
 
 For example:
 

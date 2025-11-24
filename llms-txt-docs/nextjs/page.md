@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/page.md
 
 # page.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `page` file allows you to define UI that is **unique** to a route. You can create a page by default exporting a component from the file:

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/generate-static-params.md
 
 # generateStaticParams
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `generateStaticParams` function can be used in combination with [dynamic route segments](/docs/app/api-reference/file-conventions/dynamic-routes.md) to [**statically generate**](/docs/app/guides/caching.md#static-rendering) routes at build time instead of on-demand at request time.

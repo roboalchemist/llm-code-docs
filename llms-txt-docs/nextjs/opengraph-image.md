@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image.md
 
 # opengraph-image and twitter-image
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `opengraph-image` and `twitter-image` file conventions allow you to set Open Graph and Twitter images for a route segment.

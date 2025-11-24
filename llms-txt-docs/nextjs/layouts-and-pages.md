@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/getting-started/layouts-and-pages.md
 
 # Layouts and Pages
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js uses **file-system based routing**, meaning you can use folders and files to define routes. This page will guide you through how to create layouts and pages, and link between them.

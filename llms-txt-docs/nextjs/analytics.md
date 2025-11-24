@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/analytics.md
 
-# Source: https://nextjs.org/docs/pages/guides/analytics.md
-
-# Source: https://nextjs.org/docs/app/guides/analytics.md
-
-# Source: https://nextjs.org/docs/pages/guides/analytics.md
-
 # How to add analytics to your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js has built-in support for measuring and reporting performance metrics. You can either use the [`useReportWebVitals`](/docs/app/api-reference/functions/use-report-web-vitals.md) hook to manage reporting yourself, or alternatively, Vercel provides a [managed service](https://vercel.com/analytics?utm_source=next-site\&utm_medium=docs\&utm_campaign=next-website) to automatically collect and visualize metrics for you.
@@ -33,19 +27,36 @@ window.addEventListener('error', (event) => {
 
 ## Build Your Own
 
-```jsx filename="pages/_app.js"
+```jsx filename="app/_components/web-vitals.js"
+'use client'
+
 import { useReportWebVitals } from 'next/web-vitals'
 
-function MyApp({ Component, pageProps }) {
+export function WebVitals() {
   useReportWebVitals((metric) => {
     console.log(metric)
   })
-
-  return <Component {...pageProps} />
 }
 ```
 
-View the [API Reference](/docs/pages/api-reference/functions/use-report-web-vitals.md) for more information.
+```jsx filename="app/layout.js"
+import { WebVitals } from './_components/web-vitals'
+
+export default function Layout({ children }) {
+  return (
+    <html>
+      <body>
+        <WebVitals />
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+> Since the `useReportWebVitals` hook requires the `'use client'` directive, the most performant approach is to create a separate component that the root layout imports. This confines the client boundary exclusively to the `WebVitals` component.
+
+View the [API Reference](/docs/app/api-reference/functions/use-report-web-vitals.md) for more information.
 
 ## Web Vitals
 
@@ -61,10 +72,12 @@ experience of a web page. The following web vitals are all included:
 
 You can handle all the results of these metrics using the `name` property.
 
-```jsx filename="pages/_app.js"
+```tsx filename="app/_components/web-vitals.tsx" switcher
+'use client'
+
 import { useReportWebVitals } from 'next/web-vitals'
 
-function MyApp({ Component, pageProps }) {
+export function WebVitals() {
   useReportWebVitals((metric) => {
     switch (metric.name) {
       case 'FCP': {
@@ -76,42 +89,28 @@ function MyApp({ Component, pageProps }) {
       // ...
     }
   })
-
-  return <Component {...pageProps} />
 }
 ```
 
-## Custom Metrics
+```jsx filename="app/_components/web-vitals.js" switcher
+'use client'
 
-In addition to the core metrics listed above, there are some additional custom metrics that
-measure the time it takes for the page to hydrate and render:
+import { useReportWebVitals } from 'next/web-vitals'
 
-* `Next.js-hydration`: Length of time it takes for the page to start and finish hydrating (in ms)
-* `Next.js-route-change-to-render`: Length of time it takes for a page to start rendering after a
-  route change (in ms)
-* `Next.js-render`: Length of time it takes for a page to finish render after a route change (in ms)
-
-You can handle all the results of these metrics separately:
-
-```js
-export function reportWebVitals(metric) {
-  switch (metric.name) {
-    case 'Next.js-hydration':
-      // handle hydration results
-      break
-    case 'Next.js-route-change-to-render':
-      // handle route-change to render results
-      break
-    case 'Next.js-render':
-      // handle render results
-      break
-    default:
-      break
-  }
+export function WebVitals() {
+  useReportWebVitals((metric) => {
+    switch (metric.name) {
+      case 'FCP': {
+        // handle FCP results
+      }
+      case 'LCP': {
+        // handle LCP results
+      }
+      // ...
+    }
+  })
 }
 ```
-
-These metrics work in all browsers that support the [User Timing API](https://caniuse.com/#feat=user-timing).
 
 ## Sending results to external systems
 

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/route-groups.md
 
 # Route Groups
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Route Groups are a folder convention that let you organize routes by category or team.

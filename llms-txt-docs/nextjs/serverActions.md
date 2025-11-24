@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverActions.md
 
 # serverActions
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Options for configuring Server Actions behavior in your Next.js application.

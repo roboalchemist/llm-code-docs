@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/prefetching.md
 
 # Prefetching
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Prefetching makes navigating between different routes in your application feel instant. Next.js tries to intelligently prefetch by default, based on the links used in your application code.

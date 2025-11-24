@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/eslint.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/eslint.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/eslint.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/eslint.md
-
 # ESLint Plugin
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js provides an ESLint configuration package, [`eslint-config-next`](https://www.npmjs.com/package/eslint-config-next), that makes it easy to catch common issues in your application. It includes the [`@next/eslint-plugin-next`](https://www.npmjs.com/package/@next/eslint-plugin-next) plugin along with recommended rule-sets from [`eslint-plugin-react`](https://www.npmjs.com/package/eslint-plugin-react) and [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks).

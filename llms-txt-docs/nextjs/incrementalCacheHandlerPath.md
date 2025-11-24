@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath.md
 
 # Custom Next.js Cache Handler
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 You can configure the Next.js cache location if you want to persist cached pages and data to durable storage, or share the cache across multiple containers or instances of your Next.js application.

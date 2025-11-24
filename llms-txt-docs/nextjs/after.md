@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/after.md
 
 # after
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `after` allows you to schedule work to be executed after a response (or prerender) is finished. This is useful for tasks and other side effects that should not block the response, such as logging and analytics.

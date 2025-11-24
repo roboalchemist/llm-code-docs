@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-search-params.md
 
 # useSearchParams
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `useSearchParams` is a **Client Component** hook that lets you read the current URL's **query string**.

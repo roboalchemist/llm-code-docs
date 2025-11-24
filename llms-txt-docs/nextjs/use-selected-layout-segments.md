@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments.md
 
 # useSelectedLayoutSegments
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `useSelectedLayoutSegments` is a **Client Component** hook that lets you read the active route segments **below** the Layout it is called from.

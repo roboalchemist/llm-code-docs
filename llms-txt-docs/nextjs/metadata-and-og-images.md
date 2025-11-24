@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/getting-started/metadata-and-og-images.md
 
 # Metadata and OG images
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The Metadata APIs can be used to define your application metadata for improved SEO and web shareability and include:

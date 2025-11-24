@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots.md
 
 # robots.txt
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Add or generate a `robots.txt` file that matches the [Robots Exclusion Standard](https://en.wikipedia.org/wiki/Robots.txt#Standard) in the **root** of `app` directory to tell search engine crawlers which URLs they can access on your site.

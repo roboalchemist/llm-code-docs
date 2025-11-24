@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/debugging.md
 
-# Source: https://nextjs.org/docs/pages/guides/debugging.md
-
-# Source: https://nextjs.org/docs/app/guides/debugging.md
-
-# Source: https://nextjs.org/docs/pages/guides/debugging.md
-
 # How to use debugging tools with Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 This documentation explains how you can debug your Next.js frontend and backend code with full source maps support using the [VS Code debugger](https://code.visualstudio.com/docs/editor/debugging), [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools), or [Firefox DevTools](https://firefox-source-docs.mozilla.org/devtools-user/).

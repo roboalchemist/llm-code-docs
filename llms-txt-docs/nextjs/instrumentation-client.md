@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation-client.md
 
 # instrumentation-client.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `instrumentation-client.js|ts` file allows you to add monitoring, analytics code, and other side-effects that run before your application becomes interactive. This is useful for setting up performance tracking, error monitoring, polyfills, or any other client-side observability tools.

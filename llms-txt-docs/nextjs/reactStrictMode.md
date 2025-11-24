@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/reactStrictMode.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/reactStrictMode.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/reactStrictMode.md
-
 # reactStrictMode
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 > **Good to know**: Since Next.js 13.5.1, Strict Mode is `true` by default with `app` router, so the above configuration is only necessary for `pages`. You can still disable Strict Mode by setting `reactStrictMode: false`.

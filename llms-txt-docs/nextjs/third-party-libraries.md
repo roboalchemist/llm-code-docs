@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/third-party-libraries.md
 
-# Source: https://nextjs.org/docs/pages/guides/third-party-libraries.md
-
-# Source: https://nextjs.org/docs/app/guides/third-party-libraries.md
-
-# Source: https://nextjs.org/docs/pages/guides/third-party-libraries.md
-
 # How to optimize third-party libraries
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 **`@next/third-parties`** is a library that provides a collection of components and utilities that improve the performance and developer experience of loading popular third-party libraries in your Next.js application.
@@ -34,25 +28,41 @@ All supported third-party libraries from Google can be imported from `@next/thir
 
 The `GoogleTagManager` component can be used to instantiate a [Google Tag Manager](https://developers.google.com/tag-platform/tag-manager) container to your page. By default, it fetches the original inline script after hydration occurs on the page.
 
-To load Google Tag Manager for all routes, include the component directly in your custom `_app` and
-pass in your GTM container ID:
+To load Google Tag Manager for all routes, include the component directly in your root layout and pass in your GTM container ID:
 
-```jsx filename="pages/_app.js"
+```tsx filename="app/layout.tsx" switcher
 import { GoogleTagManager } from '@next/third-parties/google'
 
-export default function MyApp({ Component, pageProps }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <>
-      <Component {...pageProps} />
+    <html lang="en">
       <GoogleTagManager gtmId="GTM-XYZ" />
-    </>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { GoogleTagManager } from '@next/third-parties/google'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <GoogleTagManager gtmId="GTM-XYZ" />
+      <body>{children}</body>
+    </html>
   )
 }
 ```
 
 To load Google Tag Manager for a single route, include the component in your page file:
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
 import { GoogleTagManager } from '@next/third-parties/google'
 
 export default function Page() {
@@ -66,7 +76,9 @@ The `sendGTMEvent` function can be used to track user interactions on your page 
 using the `dataLayer` object. For this function to work, the `<GoogleTagManager />` component must be
 included in either a parent layout, page, or component, or directly in the same file.
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
+'use client'
+
 import { sendGTMEvent } from '@next/third-parties/google'
 
 export function EventButton() {
@@ -119,25 +131,42 @@ The `GoogleAnalytics` component can be used to include [Google Analytics
 > [documentation](https://developers.google.com/analytics/devguides/collection/ga4/tag-options#what-is-gtm)
 > to learn more about the differences between Tag Manager and `gtag.js`.
 
-To load Google Analytics for all routes, include the component directly in your custom `_app` and
-pass in your measurement ID:
+To load Google Analytics for all routes, include the component directly in your root layout and pass
+in your measurement ID:
 
-```jsx filename="pages/_app.js"
+```tsx filename="app/layout.tsx" switcher
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-export default function MyApp({ Component, pageProps }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <>
-      <Component {...pageProps} />
+    <html lang="en">
+      <body>{children}</body>
       <GoogleAnalytics gaId="G-XYZ" />
-    </>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import { GoogleAnalytics } from '@next/third-parties/google'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+      <GoogleAnalytics gaId="G-XYZ" />
+    </html>
   )
 }
 ```
 
 To load Google Analytics for a single route, include the component in your page file:
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export default function Page() {
@@ -151,7 +180,9 @@ The `sendGAEvent` function can be used to measure user interactions on your page
 using the `dataLayer` object. For this function to work, the `<GoogleAnalytics />` component must be
 included in either a parent layout, page, or component, or directly in the same file.
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
+'use client'
+
 import { sendGAEvent } from '@next/third-parties/google'
 
 export function EventButton() {
@@ -202,7 +233,7 @@ The `GoogleMapsEmbed` component can be used to add a [Google Maps
 Embed](https://developers.google.com/maps/documentation/embed/embedding-map) to your page. By
 default, it uses the `loading` attribute to lazy-load the embed below the fold.
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
 import { GoogleMapsEmbed } from '@next/third-parties/google'
 
 export default function Page() {
@@ -245,7 +276,7 @@ The `YouTubeEmbed` component can be used to load and display a YouTube embed. Th
 faster by using [`lite-youtube-embed`](https://github.com/paulirish/lite-youtube-embed) under the
 hood.
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
 import { YouTubeEmbed } from '@next/third-parties/google'
 
 export default function Page() {

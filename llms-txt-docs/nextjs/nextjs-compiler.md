@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/architecture/nextjs-compiler.md
 
 # Next.js Compiler
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The Next.js Compiler, written in Rust using [SWC](https://swc.rs/), allows Next.js to transform and minify your JavaScript code for production. This replaces Babel for individual files and Terser for minifying output bundles.

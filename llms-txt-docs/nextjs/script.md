@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/components/script.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/components/script.md
-
-# Source: https://nextjs.org/docs/app/api-reference/components/script.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/components/script.md
-
 # Script Component
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 This API reference will help you understand how to use [props](#props) available for the Script Component. For features and usage, please see the [Optimizing Scripts](/docs/app/guides/scripts.md) page.
@@ -77,27 +71,46 @@ Scripts that load with the `beforeInteractive` strategy are injected into the in
 
 Scripts denoted with this strategy are preloaded and fetched before any first-party code, but their execution **does not block page hydration from occurring**.
 
-`beforeInteractive` scripts must be placed inside the `Document` Component (`pages/_document.js`) and are designed to load scripts that are needed by the entire site (i.e. the script will load when any page in the application has been loaded server-side).
+`beforeInteractive` scripts must be placed inside the root layout (`app/layout.tsx`) and are designed to load scripts that are needed by the entire site (i.e. the script will load when any page in the application has been loaded server-side).
 
 **This strategy should only be used for critical scripts that need to be fetched as soon as possible.**
 
-```jsx filename="pages/_document.js"
-import { Html, Head, Main, NextScript } from 'next/document'
+```tsx filename="app/layout.tsx" switcher
 import Script from 'next/script'
 
-export default function Document() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <Html>
-      <Head />
+    <html lang="en">
       <body>
-        <Main />
-        <NextScript />
+        {children}
         <Script
           src="https://example.com/script.js"
           strategy="beforeInteractive"
         />
       </body>
-    </Html>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import Script from 'next/script'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Script
+          src="https://example.com/script.js"
+          strategy="beforeInteractive"
+        />
+      </body>
+    </html>
   )
 }
 ```
@@ -251,7 +264,36 @@ Some third-party scripts require users to run JavaScript code after the script h
 
 Here's an example of how to re-instantiate a Google Maps JS embed every time the component is mounted:
 
-```jsx
+```tsx filename="app/page.tsx" switcher
+'use client'
+
+import { useRef } from 'react'
+import Script from 'next/script'
+
+export default function Page() {
+  const mapRef = useRef()
+
+  return (
+    <>
+      <div ref={mapRef}></div>
+      <Script
+        id="google-maps"
+        src="https://maps.googleapis.com/maps/api/js"
+        onReady={() => {
+          new google.maps.Map(mapRef.current, {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+          })
+        }}
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+'use client'
+
 import { useRef } from 'react'
 import Script from 'next/script'
 
@@ -282,7 +324,9 @@ export default function Page() {
 
 Sometimes it is helpful to catch when a script fails to load. These errors can be handled with the `onError` property:
 
-```jsx
+```tsx filename="app/page.tsx" switcher
+'use client'
+
 import Script from 'next/script'
 
 export default function Page() {
@@ -291,6 +335,25 @@ export default function Page() {
       <Script
         src="https://example.com/script.js"
         onError={(e: Error) => {
+          console.error('Script failed to load', e)
+        }}
+      />
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+'use client'
+
+import Script from 'next/script'
+
+export default function Page() {
+  return (
+    <>
+      <Script
+        src="https://example.com/script.js"
+        onError={(e) => {
           console.error('Script failed to load', e)
         }}
       />

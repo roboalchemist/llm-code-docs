@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/deploying.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/deploying.md
-
-# Source: https://nextjs.org/docs/app/getting-started/deploying.md
-
-# Source: https://nextjs.org/docs/pages/getting-started/deploying.md
-
 # Deploying
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js can be deployed as a Node.js server, Docker container, static export, or adapted to run on different platforms.

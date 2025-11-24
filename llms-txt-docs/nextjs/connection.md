@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/connection.md
 
 # connection
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `connection()` function allows you to indicate rendering should wait for an incoming user request before continuing.

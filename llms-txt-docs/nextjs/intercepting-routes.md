@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes.md
 
 # Intercepting Routes
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Intercepting routes allows you to load a route from another part of your application within the current layout. This routing paradigm can be useful when you want to display the content of a route without the user switching to a different context.

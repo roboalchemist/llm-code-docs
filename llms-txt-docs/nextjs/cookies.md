@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/cookies.md
 
 # cookies
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `cookies` is an **async** function that allows you to read the HTTP incoming request cookies in [Server Components](/docs/app/getting-started/server-and-client-components.md), and read/write outgoing request cookies in [Server Actions](/docs/app/getting-started/updating-data.md) or [Route Handlers](/docs/app/api-reference/file-conventions/route.md).

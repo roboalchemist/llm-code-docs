@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md
-
 # serverExternalPackages
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Dependencies used inside [Server Components](/docs/app/getting-started/server-and-client-components.md) and [Route Handlers](/docs/app/api-reference/file-conventions/route.md) will automatically be bundled by Next.js.
@@ -25,7 +19,7 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.json) that currently are working on compatibility and automatically opt-ed out:
+Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc) that currently are working on compatibility and automatically opt-ed out:
 
 * `@appsignal/nodejs`
 * `@aws-sdk/client-s3`

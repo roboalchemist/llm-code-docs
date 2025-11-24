@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/environment-variables.md
 
-# Source: https://nextjs.org/docs/pages/guides/environment-variables.md
-
-# Source: https://nextjs.org/docs/app/guides/environment-variables.md
-
-# Source: https://nextjs.org/docs/pages/guides/environment-variables.md
-
 # How to use environment variables in Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js comes with built-in support for environment variables, which allows you to do the following:
@@ -29,12 +23,29 @@ DB_USER=myuser
 DB_PASS=mypassword
 ```
 
-This loads `process.env.DB_HOST`, `process.env.DB_USER`, and `process.env.DB_PASS` into the Node.js environment automatically allowing you to use them in [Next.js data fetching methods](/docs/pages/building-your-application/data-fetching.md) and [API routes](/docs/pages/building-your-application/routing/api-routes.md).
+> **Note**: Next.js also supports multiline variables inside of your `.env*` files:
+>
+> ```bash
+> # .env
+>
+> # you can write with line breaks
+> PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----
+> ...
+> Kh9NV...
+> ...
+> -----END DSA PRIVATE KEY-----"
+>
+> # or with `\n` inside double quotes
+> PRIVATE_KEY="-----BEGIN RSA PRIVATE KEY-----\nKh9NV...\n-----END DSA PRIVATE KEY-----\n"
+> ```
 
-For example, using [`getStaticProps`](/docs/pages/building-your-application/data-fetching/get-static-props.md):
+> **Note**: If you are using a `/src` folder, please note that Next.js will load the .env files **only** from the parent folder and **not** from the `/src` folder.
+> This loads `process.env.DB_HOST`, `process.env.DB_USER`, and `process.env.DB_PASS` into the Node.js environment automatically allowing you to use them in [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
 
-```js filename="pages/index.js"
-export async function getStaticProps() {
+For example:
+
+```js filename="app/api/route.js"
+export async function GET() {
   const db = await myDB.connect({
     host: process.env.DB_HOST,
     username: process.env.DB_USER,
@@ -151,7 +162,33 @@ Next.js can support both build time and runtime environment variables.
 
 **By default, environment variables are only available on the server**. To expose an environment variable to the browser, it must be prefixed with `NEXT_PUBLIC_`. However, these public environment variables will be inlined into the JavaScript bundle during `next build`.
 
-To read runtime environment variables, we recommend using `getServerSideProps` or [incrementally adopting the App Router](/docs/app/guides/migrating/app-router-migration.md).
+You can safely read environment variables on the server during dynamic rendering:
+
+```tsx filename="app/page.ts" switcher
+import { connection } from 'next/server'
+
+export default async function Component() {
+  await connection()
+  // cookies, headers, and other Dynamic APIs
+  // will also opt into dynamic rendering, meaning
+  // this env variable is evaluated at runtime
+  const value = process.env.MY_VALUE
+  // ...
+}
+```
+
+```jsx filename="app/page.js" switcher
+import { connection } from 'next/server'
+
+export default async function Component() {
+  await connection()
+  // cookies, headers, and other Dynamic APIs
+  // will also opt into dynamic rendering, meaning
+  // this env variable is evaluated at runtime
+  const value = process.env.MY_VALUE
+  // ...
+}
+```
 
 This allows you to use a singular Docker image that can be promoted through multiple environments with different values.
 

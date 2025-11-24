@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-params.md
 
 # useParams
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `useParams` is a **Client Component** hook that lets you read a route's [dynamic params](/docs/app/api-reference/file-conventions/dynamic-routes.md) filled in by the current URL.

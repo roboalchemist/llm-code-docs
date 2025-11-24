@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/css.md
-
-# Source: https://nextjs.org/docs/app/getting-started/css.md
-
-# Source: https://nextjs.org/docs/pages/getting-started/css.md
-
 # CSS
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js provides several ways to style your application using CSS, including:
@@ -55,24 +49,44 @@ export default {
 
 Import Tailwind in your global CSS file:
 
-```css filename="styles/globals.css"
+```css filename="app/globals.css"
 @import 'tailwindcss';
 ```
 
-Import the CSS file in your `pages/_app.js` file:
+Import the CSS file in your root layout:
 
-```jsx filename="pages/_app.js"
-import '@/styles/globals.css'
+```tsx filename="app/layout.tsx" switcher
+import './globals.css'
 
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import './globals.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
 }
 ```
 
 Now you can start using Tailwind's utility classes in your application:
 
-```tsx filename="pages/index.tsx" switcher
-export default function Home() {
+```tsx filename="app/page.tsx" switcher
+export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-4xl font-bold">Welcome to Next.js!</h1>
@@ -81,8 +95,8 @@ export default function Home() {
 }
 ```
 
-```jsx filename="pages/index.js" switcher
-export default function Home() {
+```jsx filename="app/page.js" switcher
+export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-4xl font-bold">Welcome to Next.js!</h1>
@@ -97,15 +111,15 @@ export default function Home() {
 
 CSS Modules locally scope CSS by generating unique class names. This allows you to use the same class in different files without worrying about naming collisions.
 
-To start using CSS Modules, create a new file with the extension `.module.css` and import it into any component inside the `pages` directory:
+To start using CSS Modules, create a new file with the extension `.module.css` and import it into any component inside the `app` directory:
 
-```css filename="/styles/blog.module.css"
+```css filename="app/blog/blog.module.css"
 .blog {
   padding: 24px;
 }
 ```
 
-```tsx filename="pages/blog/index.tsx" switcher
+```tsx filename="app/blog/page.tsx" switcher
 import styles from './blog.module.css'
 
 export default function Page() {
@@ -113,10 +127,10 @@ export default function Page() {
 }
 ```
 
-```jsx filename="pages/blog/index.js" switcher
+```jsx filename="app/blog/page.js" switcher
 import styles from './blog.module.css'
 
-export default function Page() {
+export default function Layout() {
   return <main className={styles.blog}></main>
 }
 ```
@@ -125,63 +139,81 @@ export default function Page() {
 
 You can use global CSS to apply styles across your application.
 
-Import the stylesheet in the `pages/_app.js` file to apply the styles to **every route** in your application:
+Create a `app/global.css` file and import it in the root layout to apply the styles to **every route** in your application:
 
-```tsx filename="pages/_app.js"
-import '@/styles/global.css'
-
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+```css filename="app/global.css"
+body {
+  padding: 20px 20px 60px;
+  max-width: 680px;
+  margin: 0 auto;
 }
 ```
 
-Due to the global nature of stylesheets, and to avoid conflicts, you should import them inside [`pages/_app.js`](/docs/pages/building-your-application/routing/custom-app.md).
+```tsx filename="app/layout.tsx" switcher
+// These styles apply to every route in the application
+import './global.css'
 
-## External stylesheets
-
-Next.js allows you to import CSS files from a JavaScript file. This is possible because Next.js extends the concept of [`import`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.
-
-### Import styles from `node_modules`
-
-Since Next.js **9.5.4**, importing a CSS file from `node_modules` is permitted anywhere in your application.
-
-For global stylesheets, like `bootstrap` or `nprogress`, you should import the file inside `pages/_app.js`. For example:
-
-```jsx filename="pages/_app.js"
-import 'bootstrap/dist/css/bootstrap.css'
-
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-```
-
-To import CSS required by a third-party component, you can do so in your component. For example:
-
-```jsx filename="components/example-dialog.js"
-import { useState } from 'react'
-import { Dialog } from '@reach/dialog'
-import VisuallyHidden from '@reach/visually-hidden'
-import '@reach/dialog/styles.css'
-
-function ExampleDialog(props) {
-  const [showDialog, setShowDialog] = useState(false)
-  const open = () => setShowDialog(true)
-  const close = () => setShowDialog(false)
-
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div>
-      <button onClick={open}>Open Dialog</button>
-      <Dialog isOpen={showDialog} onDismiss={close}>
-        <button className="close-button" onClick={close}>
-          <VisuallyHidden>Close</VisuallyHidden>
-          <span aria-hidden>×</span>
-        </button>
-        <p>Hello there. I am a dialog</p>
-      </Dialog>
-    </div>
+    <html lang="en">
+      <body>{children}</body>
+    </html>
   )
 }
 ```
+
+```jsx filename="app/layout.js" switcher
+// These styles apply to every route in the application
+import './global.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+> **Good to know:** Global styles can be imported into any layout, page, or component inside the `app` directory. However, since Next.js uses React's built-in support for stylesheets to integrate with Suspense, this currently does not remove stylesheets as you navigate between routes which can lead to conflicts. We recommend using global styles for *truly* global CSS (like Tailwind's base styles), [Tailwind CSS](#tailwind-css) for component styling, and [CSS Modules](#css-modules) for custom scoped CSS when needed.
+
+## External stylesheets
+
+Stylesheets published by external packages can be imported anywhere in the `app` directory, including colocated components:
+
+```tsx filename="app/layout.tsx" switcher
+import 'bootstrap/dist/css/bootstrap.css'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body className="container">{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import 'bootstrap/dist/css/bootstrap.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className="container">{children}</body>
+    </html>
+  )
+}
+```
+
+> **Good to know:** In React 19, `<link rel="stylesheet" href="..." />` can also be used. See the [React `link` documentation](https://react.dev/reference/react-dom/components/link) for more information.
 
 ## Ordering and Merging
 

@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/onDemandEntries.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/onDemandEntries.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/onDemandEntries.md
-
 # onDemandEntries
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js exposes some options that give you some control over how the server will dispose or keep in memory built pages in development.

@@ -2,15 +2,43 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/installation.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/installation.md
-
-# Source: https://nextjs.org/docs/app/getting-started/installation.md
-
-# Source: https://nextjs.org/docs/pages/getting-started/installation.md
-
 # Installation
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
+
+Create a new Next.js app and run it locally.
+
+## Quick start
+
+1. Create a new Next.js app named `my-app`
+2. `cd my-app` and start the dev server.
+3. Visit `http://localhost:3000`.
+
+```bash package="pnpm"
+pnpm create next-app@latest my-app --yes
+cd my-app
+pnpm dev
+```
+
+```bash package="npm"
+npx create-next-app@latest my-app --yes
+cd my-app
+npm run dev
+```
+
+```bash package="yarn"
+yarn create next-app@latest my-app --yes
+cd my-app
+yarn dev
+```
+
+```bash package="bun"
+bun create next-app@latest my-app --yes
+cd my-app
+bun dev
+```
+
+* `--yes` skips prompts using saved preferences or defaults. The default setup enables TypeScript, Tailwind, ESLint, App Router, and Turbopack, with import alias `@/*`.
 
 ## System requirements
 
@@ -108,73 +136,58 @@ These scripts refer to the different stages of developing an application:
 
 Turbopack is now the default bundler. To use Webpack run `next dev --webpack` or `next build --webpack`. See the [Turbopack docs](/docs/app/api-reference/turbopack.md) for configuration details.
 
-### Create the `pages` directory
+### Create the `app` directory
 
 Next.js uses file-system routing, which means the routes in your application are determined by how you structure your files.
 
-Create a `pages` directory at the root of your project. Then, add an `index.tsx` file inside your `pages` folder. This will be your home page (`/`):
+Create an `app` folder. Then, inside `app`, create a `layout.tsx` file. This file is the [root layout](/docs/app/api-reference/file-conventions/layout.md#root-layout). It's required and must contain the `<html>` and `<body>` tags.
 
-```tsx filename="pages/index.tsx" switcher
+```tsx filename="app/layout.tsx" switcher
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+Create a home page `app/page.tsx` with some initial content:
+
+```tsx filename="app/page.tsx" switcher
 export default function Page() {
   return <h1>Hello, Next.js!</h1>
 }
 ```
 
-```jsx filename="pages/index.js" switcher
+```jsx filename="app/page.js" switcher
 export default function Page() {
   return <h1>Hello, Next.js!</h1>
 }
 ```
 
-Next, add an `_app.tsx` file inside `pages/` to define the global layout. Learn more about the [custom App file](/docs/pages/building-your-application/routing/custom-app.md).
+Both `layout.tsx` and `page.tsx` will be rendered when the user visits the root of your application (`/`).
 
-```tsx filename="pages/_app.tsx" switcher
-import type { AppProps } from 'next/app'
+![App Folder Structure](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/app-getting-started.png)
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
-```
-
-```jsx filename="pages/_app.js" switcher
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-```
-
-Finally, add a `_document.tsx` file inside `pages/` to control the initial response from the server. Learn more about the [custom Document file](/docs/pages/building-your-application/routing/custom-document.md).
-
-```tsx filename="pages/_document.tsx" switcher
-import { Html, Head, Main, NextScript } from 'next/document'
-
-export default function Document() {
-  return (
-    <Html>
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
-}
-```
-
-```jsx filename="pages/_document.js" switcher
-import { Html, Head, Main, NextScript } from 'next/document'
-
-export default function Document() {
-  return (
-    <Html>
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  )
-}
-```
+> **Good to know**:
+>
+> * If you forget to create the root layout, Next.js will automatically create this file when running the development server with `next dev`.
+> * You can optionally use a [`src` folder](/docs/app/api-reference/file-conventions/src-folder.md) in the root of your project to separate your application's code from configuration files.
 
 ### Create the `public` folder (optional)
 
@@ -202,13 +215,25 @@ export default function Page() {
 
 1. Run `npm run dev` to start the development server.
 2. Visit `http://localhost:3000` to view your application.
-3. Edit the `pages/index.tsx` file and save it to see the updated result in your browser.
+3. Edit the `app/page.tsx` file and save it to see the updated result in your browser.
 
 ## Set up TypeScript
 
 > Minimum TypeScript version: `v5.1.0`
 
 Next.js comes with built-in TypeScript support. To add TypeScript to your project, rename a file to `.ts` / `.tsx` and run `next dev`. Next.js will automatically install the necessary dependencies and add a `tsconfig.json` file with the recommended config options.
+
+### IDE Plugin
+
+Next.js includes a custom TypeScript plugin and type checker, which VSCode and other code editors can use for advanced type-checking and auto-completion.
+
+You can enable the plugin in VS Code by:
+
+1. Opening the command palette (`Ctrl/⌘` + `Shift` + `P`)
+2. Searching for "TypeScript: Select TypeScript Version"
+3. Selecting "Use Workspace Version"
+
+![TypeScript Command Palette](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/typescript-command-palette.png)
 
 See the [TypeScript reference](/docs/app/api-reference/config/next-config-js/typescript.md) page for more information.
 

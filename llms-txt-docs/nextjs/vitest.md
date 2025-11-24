@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing/vitest.md
 
-# Source: https://nextjs.org/docs/pages/guides/testing/vitest.md
-
-# Source: https://nextjs.org/docs/app/guides/testing/vitest.md
-
-# Source: https://nextjs.org/docs/pages/guides/testing/vitest.md
-
 # How to set up Vitest with Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Vitest and React Testing Library are frequently used together for **Unit Testing**. This guide will show you how to setup Vitest with Next.js and write your first tests.
@@ -83,7 +77,7 @@ When you run `npm run test`, Vitest will **watch** for changes in your project b
 
 Check that everything is working by creating a test to check if the `<Page />` component successfully renders a heading:
 
-```tsx filename="pages/index.tsx" switcher
+```tsx filename="app/page.tsx" switcher
 import Link from 'next/link'
 
 export default function Page() {
@@ -96,7 +90,7 @@ export default function Page() {
 }
 ```
 
-```jsx filename="pages/index.jsx" switcher
+```jsx filename="app/page.jsx" switcher
 import Link from 'next/link'
 
 export default function Page() {
@@ -109,10 +103,10 @@ export default function Page() {
 }
 ```
 
-```tsx filename="__tests__/index.test.tsx" switcher
+```tsx filename="__tests__/page.test.tsx" switcher
 import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import Page from '../pages/index'
+import Page from '../app/page'
 
 test('Page', () => {
   render(<Page />)
@@ -120,16 +114,18 @@ test('Page', () => {
 })
 ```
 
-```jsx filename="__tests__/index.test.jsx" switcher
+```jsx filename="__tests__/page.test.jsx" switcher
 import { expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import Page from '../pages/index'
+import Page from '../app/page'
 
 test('Page', () => {
   render(<Page />)
   expect(screen.getByRole('heading', { level: 1, name: 'Home' })).toBeDefined()
 })
 ```
+
+> **Good to know**: The example above uses the common `__tests__` convention, but test files can also be colocated inside the `app` router.
 
 ## Running your tests
 

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/generate-image-metadata.md
 
 # generateImageMetadata
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 You can use `generateImageMetadata` to generate different versions of one image or return multiple images for one route segment. This is useful for when you want to avoid hard-coding metadata values, such as for icons.

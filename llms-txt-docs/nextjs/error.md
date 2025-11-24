@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/error.md
 
 # error.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 An **error** file allows you to handle unexpected runtime errors and display fallback UI.

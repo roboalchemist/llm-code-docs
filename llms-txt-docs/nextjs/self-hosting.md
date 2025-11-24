@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/self-hosting.md
 
-# Source: https://nextjs.org/docs/pages/guides/self-hosting.md
-
-# Source: https://nextjs.org/docs/app/guides/self-hosting.md
-
-# Source: https://nextjs.org/docs/pages/guides/self-hosting.md
-
 # How to self-host your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 When [deploying](/docs/app/getting-started/deploying.md) your Next.js app, you may want to configure how different features are handled based on your infrastructure.
@@ -46,7 +40,33 @@ Next.js can support both build time and runtime environment variables.
 
 **By default, environment variables are only available on the server**. To expose an environment variable to the browser, it must be prefixed with `NEXT_PUBLIC_`. However, these public environment variables will be inlined into the JavaScript bundle during `next build`.
 
-To read runtime environment variables, we recommend using `getServerSideProps` or [incrementally adopting the App Router](/docs/app/guides/migrating/app-router-migration.md).
+You safely read environment variables on the server during dynamic rendering.
+
+```tsx filename="app/page.ts" switcher
+import { connection } from 'next/server'
+
+export default async function Component() {
+  await connection()
+  // cookies, headers, and other Dynamic APIs
+  // will also opt into dynamic rendering, meaning
+  // this env variable is evaluated at runtime
+  const value = process.env.MY_VALUE
+  // ...
+}
+```
+
+```jsx filename="app/page.js" switcher
+import { connection } from 'next/server'
+
+export default async function Component() {
+  await connection()
+  // cookies, headers, and other Dynamic APIs
+  // will also opt into dynamic rendering, meaning
+  // this env variable is evaluated at runtime
+  const value = process.env.MY_VALUE
+  // ...
+}
+```
 
 This allows you to use a singular Docker image that can be promoted through multiple environments with different values.
 
@@ -156,33 +176,44 @@ Next.js will automatically mitigate most instances of [version skew](https://www
 
 When the application is reloaded, there may be a loss of application state if it's not designed to persist between page navigations. For example, using URL state or local storage would persist state after a page refresh. However, component state like `useState` would be lost in such navigations.
 
-## Manual Graceful Shutdowns
+## Streaming and Suspense
 
-When self-hosting, you might want to run code when the server shuts down on `SIGTERM` or `SIGINT` signals.
+The Next.js App Router supports [streaming responses](/docs/app/api-reference/file-conventions/loading.md) when self-hosting. If you are using nginx or a similar proxy, you will need to configure it to disable buffering to enable streaming.
 
-You can set the env variable `NEXT_MANUAL_SIG_HANDLE` to `true` and then register a handler for that signal inside your `_document.js` file. You will need to register the environment variable directly in the `package.json` script, and not in the `.env` file.
+For example, you can disable buffering in nginx by setting `X-Accel-Buffering` to `no`:
 
-> **Good to know**: Manual signal handling is not available in `next dev`.
-
-```json filename="package.json"
-{
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "NEXT_MANUAL_SIG_HANDLE=true next start"
-  }
+```js filename="next.config.js"
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: '/:path*{/}?',
+        headers: [
+          {
+            key: 'X-Accel-Buffering',
+            value: 'no',
+          },
+        ],
+      },
+    ]
+  },
 }
 ```
 
-```js filename="pages/_document.js"
-if (process.env.NEXT_MANUAL_SIG_HANDLE) {
-  process.on('SIGTERM', () => {
-    console.log('Received SIGTERM: cleaning up')
-    process.exit(0)
-  })
-  process.on('SIGINT', () => {
-    console.log('Received SIGINT: cleaning up')
-    process.exit(0)
-  })
-}
-```
+## Cache Components
+
+[Cache Components](/docs/app/getting-started/cache-components.md) works by default with Next.js and is not a CDN-only feature. This includes deployment as a Node.js server (through `next start`) and when used with a Docker container.
+
+## Usage with CDNs
+
+When using a CDN in front on your Next.js application, the page will include `Cache-Control: private` response header when dynamic APIs are accessed. This ensures that the resulting HTML page is marked as non-cacheable. If the page is fully prerendered to static, it will include `Cache-Control: public` to allow the page to be cached on the CDN.
+
+If you don't need a mix of both static and dynamic components, you can make your entire route static and cache the output HTML on a CDN. This Automatic Static Optimization is the default behavior when running `next build` if dynamic APIs are not used.
+
+As Partial Prerendering moves to stable, we will provide support through the Deployment Adapters API.
+
+## `after`
+
+[`after`](/docs/app/api-reference/functions/after.md) is fully supported when self-hosting with `next start`.
+
+When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIGTERM` signals and waiting. This allows the Next.js server to wait until after pending callback functions or promises used inside `after` have finished.

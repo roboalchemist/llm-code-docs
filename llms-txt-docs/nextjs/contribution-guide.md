@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/community/contribution-guide.md
 
 # Docs Contribution Guide
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Welcome to the Next.js Docs Contribution Guide! We're excited to have you here.

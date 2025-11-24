@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/output.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/output.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/output.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/output.md
-
 # output
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 During a build, Next.js will automatically trace each page and its dependencies to determine all of the files that are needed for deploying a production version of your application.
@@ -56,7 +50,6 @@ node .next/standalone/server.js
 
 > **Good to know**:
 >
-> * `next.config.js` is read during `next build` and serialized into the `server.js` output file.
 > * If your project needs to listen to a specific port or hostname, you can define `PORT` or `HOSTNAME` environment variables before running `server.js`. For example, run `PORT=8080 HOSTNAME=0.0.0.0 node server.js` to start the server on `http://0.0.0.0:8080`.
 
 ## Caveats

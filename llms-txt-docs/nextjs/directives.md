@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/directives.md
 
 # Directives
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The following directives are available:

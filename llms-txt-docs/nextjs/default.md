@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/default.md
 
 # default.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `default.js` file is used to render a fallback within [Parallel Routes](/docs/app/api-reference/file-conventions/parallel-routes.md) when Next.js cannot recover a [slot's](/docs/app/api-reference/file-conventions/parallel-routes.md#slots) active state after a full-page load.

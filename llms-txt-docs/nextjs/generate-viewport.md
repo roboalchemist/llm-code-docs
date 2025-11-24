@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/generate-viewport.md
 
 # generateViewport
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 You can customize the initial viewport of the page with the static `viewport` object or the dynamic `generateViewport` function.

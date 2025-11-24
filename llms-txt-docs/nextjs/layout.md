@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/layout.md
 
 # layout.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `layout` file is used to define a layout in your Next.js application.

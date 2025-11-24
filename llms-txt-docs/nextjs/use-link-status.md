@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-link-status.md
 
 # useLinkStatus
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `useLinkStatus` hook lets you track the **pending** state of a `<Link>`. Use it for subtle, inline feedback, for example a shimmer effect over the clicked link, while navigation completes. Prefer route-level fallbacks with `loading.js`, and prefetching for instant transitions.

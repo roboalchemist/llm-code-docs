@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-pathname.md
 
 # usePathname
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `usePathname` is a **Client Component** hook that lets you read the current URL's **pathname**.

@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/sass.md
 
-# Source: https://nextjs.org/docs/pages/guides/sass.md
-
-# Source: https://nextjs.org/docs/app/guides/sass.md
-
-# Source: https://nextjs.org/docs/pages/guides/sass.md
-
 # How to use Sass
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js has built-in support for integrating with Sass after the package is installed using both the `.scss` and `.sass` extensions. You can use component-level Sass via CSS Modules and the `.module.scss`or `.module.sass` extension.
@@ -99,14 +93,12 @@ $primary-color: #64ff00;
 }
 ```
 
-```jsx filename="pages/_app.js"
-import variables from '../styles/variables.module.scss'
+```jsx filename="app/page.js"
+// maps to root `/` URL
 
-export default function MyApp({ Component, pageProps }) {
-  return (
-    <Layout color={variables.primaryColor}>
-      <Component {...pageProps} />
-    </Layout>
-  )
+import variables from './variables.module.scss'
+
+export default function Page() {
+  return <h1 style={{ color: variables.primaryColor }}>Hello, Next.js!</h1>
 }
 ```

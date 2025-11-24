@@ -2,17 +2,11 @@
 
 # Source: https://nextjs.org/docs/app/guides/package-bundling.md
 
-# Source: https://nextjs.org/docs/pages/guides/package-bundling.md
-
-# Source: https://nextjs.org/docs/app/guides/package-bundling.md
-
-# Source: https://nextjs.org/docs/pages/guides/package-bundling.md
-
 # How to optimize package bundling
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
-Bundling external packages can significantly improve the performance of your application.  By default, packages imported into your application are not bundled. This can impact performance or might not work if external packages are not pre-bundled, for example, if imported from a monorepo or `node_modules`. This page will guide you through how to analyze and configure package bundling.
+Bundling external packages can significantly improve the performance of your application. By default, packages imported inside Server Components and Route Handlers are automatically bundled by Next.js. This page will guide you through how to analyze and further optimize package bundling.&#x20;
 
 ## Analyzing JavaScript bundles
 
@@ -76,47 +70,20 @@ module.exports = nextConfig
 
 Next.js also optimizes some libraries automatically, thus they do not need to be included in the optimizePackageImports list. See the [full list](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md).
 
-## Bundling specific packages
-
-To bundle specific packages, you can use the [`transpilePackages`](/docs/app/api-reference/config/next-config-js/transpilePackages.md) option in your `next.config.js`. This option is useful for bundling external packages that are not pre-bundled, for example, in a monorepo or imported from `node_modules`.
-
-```js filename="next.config.js"
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  transpilePackages: ['package-name'],
-}
-
-module.exports = nextConfig
-```
-
-## Bundling all packages
-
-To automatically bundle all packages (default behavior in the App Router), you can use the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md) option in your `next.config.js`.
-
-```js filename="next.config.js"
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  bundlePagesRouterDependencies: true,
-}
-
-module.exports = nextConfig
-```
-
 ## Opting specific packages out of bundling
 
-If you have the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md) option enabled, you can opt specific packages out of automatic bundling using the [`serverExternalPackages`](/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`:
+Since packages imported inside Server Components and Route Handlers are automatically bundled by Next.js, you can opt specific packages out of bundling using the [`serverExternalPackages`](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Automatically bundle external packages in the Pages Router:
-  bundlePagesRouterDependencies: true,
-  // Opt specific packages out of bundling for both App and Pages Router:
   serverExternalPackages: ['package-name'],
 }
 
 module.exports = nextConfig
 ```
+
+Next.js includes a list of popular packages that currently are working on compatibility and automatically opt-ed out. See the [full list](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md).
 
 
 Learn more about optimizing your application for production.

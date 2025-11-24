@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/backend-for-frontend.md
 
 # How to use Next.js as a backend for your frontend
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js supports the "Backend for Frontend" pattern. This lets you create public endpoints to handle HTTP requests and return any content type—not just HTML. You can also access data sources and perform side effects like updating remote data.

@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/generateBuildId.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/generateBuildId.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/generateBuildId.md
-
 # generateBuildId
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js generates an ID during `next build` to identify which version of your application is being served. The same build should be used and boot up multiple containers.

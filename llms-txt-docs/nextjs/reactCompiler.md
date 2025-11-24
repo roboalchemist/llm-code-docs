@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler.md
 
 # reactCompiler
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js includes support for the [React Compiler](https://react.dev/learn/react-compiler/introduction), a tool designed to improve performance by automatically optimizing component rendering. This reduces the need for manual memoization using `useMemo` and `useCallback`.

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/image-response.md
 
 # ImageResponse
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `ImageResponse` constructor allows you to generate dynamic images using JSX and CSS. This is useful for generating social media images such as Open Graph images, Twitter cards, and more.

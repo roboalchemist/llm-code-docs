@@ -2,12 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/error-handling.md
 
-# Source: https://nextjs.org/docs/pages/building-your-application/configuring/error-handling.md
-
-# Source: https://nextjs.org/docs/app/getting-started/error-handling.md
-
 # Error Handling
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Errors can be divided into two categories: [expected errors](#handling-expected-errors) and [uncaught exceptions](#handling-uncaught-exceptions). This page will walk you through how you can handle these errors in your Next.js application.

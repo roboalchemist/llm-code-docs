@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/caching.md
 
 # Caching in Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js improves your application's performance and reduces costs by caching rendering work and data requests. This page provides an in-depth look at Next.js caching mechanisms, the APIs you can use to configure them, and how they interact with each other.

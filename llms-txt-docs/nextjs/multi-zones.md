@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/multi-zones.md
 
-# Source: https://nextjs.org/docs/pages/guides/multi-zones.md
-
-# Source: https://nextjs.org/docs/app/guides/multi-zones.md
-
-# Source: https://nextjs.org/docs/pages/guides/multi-zones.md
-
 # How to build micro-frontends using multi-zones and Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 <details>
@@ -120,3 +114,19 @@ Links to paths in a different zone should use an `a` tag instead of the Next.js 
 The Next.js applications that make up the different zones can live in any repository. However, it is often convenient to put these zones in a [monorepo](https://en.wikipedia.org/wiki/Monorepo) to more easily share code. For zones that live in different repositories, code can also be shared using public or private NPM packages.
 
 Since the pages in different zones may be released at different times, feature flags can be useful for enabling or disabling features in unison across the different zones.
+
+## Server Actions
+
+When using [Server Actions](/docs/app/getting-started/updating-data.md) with Multi-Zones, you must explicitly allow the user-facing origin since your user facing domain may serve multiple applications. In your `next.config.js` file, add the following lines:
+
+```js filename="next.config.js"
+const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['your-production-domain.com'],
+    },
+  },
+}
+```
+
+See [`serverActions.allowedOrigins`](/docs/app/api-reference/config/next-config-js/serverActions.md#allowedorigins) for more information.

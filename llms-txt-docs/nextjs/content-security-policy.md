@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/content-security-policy.md
 
-# Source: https://nextjs.org/docs/pages/guides/content-security-policy.md
-
-# Source: https://nextjs.org/docs/app/guides/content-security-policy.md
-
-# Source: https://nextjs.org/docs/pages/guides/content-security-policy.md
-
 # How to set a Content Security Policy (CSP) for your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 [Content Security Policy (CSP)](https://developer.mozilla.org/docs/Web/HTTP/CSP) is important to guard your Next.js application against various security threats such as cross-site scripting (XSS), clickjacking, and other code injection attacks.
@@ -216,15 +210,15 @@ export default async function Page() {
 
 ### Reading the nonce
 
-You can provide the nonce to your page using
-[`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props.md):
+You can read the nonce from a [Server Component](/docs/app/getting-started/server-and-client-components.md) using [`headers`](/docs/app/api-reference/functions/headers.md):
 
-```tsx filename="pages/index.tsx" switcher
+```tsx filename="app/page.tsx" switcher
+import { headers } from 'next/headers'
 import Script from 'next/script'
 
-import type { GetServerSideProps } from 'next'
+export default async function Page() {
+  const nonce = (await headers()).get('x-nonce')
 
-export default function Page({ nonce }) {
   return (
     <Script
       src="https://www.googletagmanager.com/gtag/js"
@@ -233,16 +227,15 @@ export default function Page({ nonce }) {
     />
   )
 }
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const nonce = req.headers['x-nonce']
-  return { props: { nonce } }
-}
 ```
 
-```jsx filename="pages/index.jsx" switcher
+```jsx filename="app/page.jsx" switcher
+import { headers } from 'next/headers'
 import Script from 'next/script'
-export default function Page({ nonce }) {
+
+export default async function Page() {
+  const nonce = (await headers()).get('x-nonce')
+
   return (
     <Script
       src="https://www.googletagmanager.com/gtag/js"
@@ -251,90 +244,6 @@ export default function Page({ nonce }) {
     />
   )
 }
-
-export async function getServerSideProps({ req }) {
-  const nonce = req.headers['x-nonce']
-  return { props: { nonce } }
-}
-```
-
-You can also access the nonce in `_document.tsx` for Pages Router applications:
-
-```tsx filename="pages/_document.tsx" switcher
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document'
-
-interface ExtendedDocumentProps extends DocumentInitialProps {
-  nonce?: string
-}
-
-class MyDocument extends Document<ExtendedDocumentProps> {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<ExtendedDocumentProps> {
-    const initialProps = await Document.getInitialProps(ctx)
-    const nonce = ctx.req?.headers?.['x-nonce'] as string | undefined
-
-    return {
-      ...initialProps,
-      nonce,
-    }
-  }
-
-  render() {
-    const { nonce } = this.props
-
-    return (
-      <Html lang="en">
-        <Head nonce={nonce} />
-        <body>
-          <Main />
-          <NextScript nonce={nonce} />
-        </body>
-      </Html>
-    )
-  }
-}
-
-export default MyDocument
-```
-
-```jsx filename="pages/_document.jsx" switcher
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    const nonce = ctx.req?.headers?.['x-nonce']
-
-    return {
-      ...initialProps,
-      nonce,
-    }
-  }
-
-  render() {
-    const { nonce } = this.props
-
-    return (
-      <Html lang="en">
-        <Head nonce={nonce} />
-        <body>
-          <Main />
-          <NextScript nonce={nonce} />
-        </body>
-      </Html>
-    )
-  }
-}
-
-export default MyDocument
 ```
 
 ## Static vs Dynamic Rendering with CSP
@@ -404,6 +313,89 @@ module.exports = {
 }
 ```
 
+## Subresource Integrity (Experimental)
+
+As an alternative to nonces, Next.js offers experimental support for hash-based CSP using Subresource Integrity (SRI). This approach allows you to maintain static generation while still having a strict CSP.
+
+> **Good to know**: This feature is experimental and only available with webpack bundler in App Router applications.
+
+### How SRI works
+
+Instead of using nonces, SRI generates cryptographic hashes of your JavaScript files at build time. These hashes are added as `integrity` attributes to script tags, allowing browsers to verify that files haven't been modified during transit.
+
+### Enabling SRI
+
+Add the experimental SRI configuration to your `next.config.js`:
+
+```js filename="next.config.js"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    sri: {
+      algorithm: 'sha256', // or 'sha384' or 'sha512'
+    },
+  },
+}
+
+module.exports = nextConfig
+```
+
+### CSP configuration with SRI
+
+When SRI is enabled, you can continue using your existing CSP policies. SRI works independently by adding `integrity` attributes to your assets:
+
+> **Good to know**: For dynamic rendering scenarios, you can still generate nonces with proxy if needed, combining both SRI integrity attributes and nonce-based CSP approaches.
+
+```js filename="next.config.js"
+const cspHeader = `
+    default-src 'self';
+    script-src 'self';
+    style-src 'self';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+`
+
+module.exports = {
+  experimental: {
+    sri: {
+      algorithm: 'sha256',
+    },
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader.replace(/\n/g, ''),
+          },
+        ],
+      },
+    ]
+  },
+}
+```
+
+### Benefits of SRI over nonces
+
+* **Static generation**: Pages can be statically generated and cached
+* **CDN compatibility**: Static pages work with CDN caching
+* **Better performance**: No server-side rendering required for each request
+* **Build-time security**: Hashes are generated at build time, ensuring integrity
+
+### Limitations of SRI
+
+* **Experimental**: Feature may change or be removed
+* **Webpack only**: Not available with Turbopack
+* **App Router only**: Not supported in Pages Router
+* **Build-time only**: Cannot handle dynamically generated scripts
+
 ## Development vs Production Considerations
 
 CSP implementation differs between development and production environments:
@@ -468,43 +460,44 @@ Common issues in production:
 
 ### Third-party Scripts
 
-When using third-party scripts with CSP, ensure you add the necessary domains and pass the nonce:
+When using third-party scripts with CSP:
 
-```tsx filename="pages/_app.tsx" switcher
-import type { AppProps } from 'next/app'
-import Script from 'next/script'
+```tsx filename="app/layout.tsx" switcher
+import { GoogleTagManager } from '@next/third-parties/google'
+import { headers } from 'next/headers'
 
-export default function App({ Component, pageProps }: AppProps) {
-  const nonce = pageProps.nonce
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const nonce = (await headers()).get('x-nonce')
 
   return (
-    <>
-      <Component {...pageProps} />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js"
-        strategy="afterInteractive"
-        nonce={nonce}
-      />
-    </>
+    <html lang="en">
+      <body>
+        {children}
+        <GoogleTagManager gtmId="GTM-XYZ" nonce={nonce} />
+      </body>
+    </html>
   )
 }
 ```
 
-```jsx filename="pages/_app.jsx" switcher
-import Script from 'next/script'
+```jsx filename="app/layout.jsx" switcher
+import { GoogleTagManager } from '@next/third-parties/google'
+import { headers } from 'next/headers'
 
-export default function App({ Component, pageProps }) {
-  const nonce = pageProps.nonce
+export default async function RootLayout({ children }) {
+  const nonce = (await headers()).get('x-nonce')
 
   return (
-    <>
-      <Component {...pageProps} />
-      <Script
-        src="https://www.googletagmanager.com/gtag/js"
-        strategy="afterInteractive"
-        nonce={nonce}
-      />
-    </>
+    <html lang="en">
+      <body>
+        {children}
+        <GoogleTagManager gtmId="GTM-XYZ" nonce={nonce} />
+      </body>
+    </html>
   )
 }
 ```

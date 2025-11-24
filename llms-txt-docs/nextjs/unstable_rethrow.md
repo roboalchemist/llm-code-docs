@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow.md
 
 # unstable_rethrow
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 

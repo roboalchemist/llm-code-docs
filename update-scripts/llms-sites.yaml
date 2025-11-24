@@ -351,6 +351,9 @@ sites:
 - name: nextjs
   base_url: https://nextjs.org/docs/
   description: Next.js React framework
+- name: notion
+  base_url: https://developers.notion.com/
+  description: Notion API documentation
 - name: nuxt
   base_url: https://nuxt.com/
   description: Nuxt Vue.js meta-framework

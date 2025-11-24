@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack.md
-
 # Custom Webpack Config
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 > **Good to know**: changes to webpack config are not covered by semver so proceed at your own risk
@@ -17,10 +11,9 @@
 Before continuing to add custom webpack configuration to your application make sure Next.js doesn't already support your use-case:
 
 * [CSS imports](/docs/app/getting-started/css.md)
-* [CSS modules](/docs/app/getting-started/css.md)
-* [Sass/SCSS imports](/docs/pages/guides/sass.md)
-* [Sass/SCSS modules](/docs/pages/guides/sass.md)
-* [Customizing babel configuration](/docs/pages/guides/babel.md)
+* [CSS modules](/docs/app/getting-started/css.md#css-modules)
+* [Sass/SCSS imports](/docs/app/guides/sass.md)
+* [Sass/SCSS modules](/docs/app/guides/sass.md)
 
 Some commonly asked for features are available as plugins:
 

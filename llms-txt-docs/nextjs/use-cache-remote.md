@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/directives/use-cache-remote.md
 
 # use cache: remote
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `'use cache: remote'` directive enables caching of **shared data** in dynamic contexts where regular [`use cache`](/docs/app/api-reference/directives/use-cache.md) would not work, for example after calling [`await connection()`](/docs/app/api-reference/functions/connection.md), [`await cookies()`](/docs/app/api-reference/functions/cookies.md) or [`await headers()`](/docs/app/api-reference/functions/headers.md).

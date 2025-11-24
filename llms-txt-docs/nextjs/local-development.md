@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/local-development.md
 
 # How to optimize your local development environment
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js is designed to provide a great developer experience. As your application grows, you might notice slower compilation times during local development. This guide will help you identify and fix common compile-time performance issues.

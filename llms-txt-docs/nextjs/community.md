@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/community.md
 
 # Next.js Community
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 With over 5 million weekly downloads, Next.js has a large and active community of developers across the world. Here's how you can get involved in our community:

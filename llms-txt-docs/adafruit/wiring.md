@@ -1,111 +1,111 @@
-# Source: https://learn.adafruit.com/096-mini-color-oled/wiring.md
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/wiring.md
 
-# 0.96" mini Color OLED
+# Adafruit INA219 Current Sensor Breakout
 
 ## Wiring
 
-## New Model
-If your display has a single row header across the top, it is the newer version. For wiring instructions, skip down to "Wiring Up the Newer Version"![lcds___displays_684top_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/009/647/medium640/lcds___displays_684top_LRG.jpg?1396894657)
+The INA219 breakout board can be powered by the&nbsp;5V or 3V pin on your Arduino&nbsp;and communicates via I2C.
 
-## Older Model
-If your display has a row of header pins down each side, it is the older model. See "Wiring the OLDER design" below.![lcds___displays_parts.jpg](https://cdn-learn.adafruit.com/assets/assets/000/009/648/medium640/lcds___displays_parts.jpg?1396894670)
+To wire up the STEMMA QT version:
 
-# Wiring the OLDER design (two rows of pins on either side)
-The older breakout does not have a 5V level shifter on board, so its a little more complex to wire up!  
+- Connect&nbsp;**board VIN (red wire)** to&nbsp; **Arduino 5V** &nbsp;if you are running a **5V** board Arduino (Mega, etc.). If your board is **3V,** connect to that instead.
+- Connect **board GND (black wire)&nbsp;**to&nbsp; **Arduino**  **GND**
+- Connect **board SCL (yellow wire)&nbsp;**to&nbsp; **Arduino**  **SCL**
+- Connect **board SDA (blue wire)&nbsp;**to&nbsp; **Arduino**  **SDA**
+- Connect **Vin+** to the **positive terminal of the power supply for the circuit under test**
+- Connect **Vin-** to the **positive terminal or lead of the load**
+
+![adafruit_products_INA219QT_Arduino_STEMMA_bb.jpg](https://cdn-learn.adafruit.com/assets/assets/000/104/420/medium640/adafruit_products_INA219QT_Arduino_STEMMA_bb.jpg?1631131311)
+
+![adafruit_products_INA219QT_Arduino_breadboard_bb.jpg](https://cdn-learn.adafruit.com/assets/assets/000/104/421/medium640/adafruit_products_INA219QT_Arduino_breadboard_bb.jpg?1631131331)
+
+To wire up the original version:
+
+## Connect to the microcontroller
+
+- Connect **GND** to **GND**
+- Connect **VCC** to **5v**
+- Then connect **SDA** to **SDA** (Analog pin 4 on pre-R3 Arduinos)
+- And connect **SCL** to **SCL** (Analog pin 5 on pre-R3&nbsp;Arduinos)
+
+![adafruit_products_Current_Measurement_Alternate_Signals_bb.jpg](https://cdn-learn.adafruit.com/assets/assets/000/002/461/medium640/adafruit_products_Current_Measurement_Alternate_Signals_bb.jpg?1550283333)
+
+On R3 and later Arduinos, you can connect to the new dedicated SDA & SCL pins next to the AREF pin. &nbsp;On pre-R3 Megas, SDA & SCL are on pins 20 & 21.
+
   
-The OLED module supports 3 methods of communication: 4 wire SPI, 8-bit parallel in 8080 and 6800 format. Since the display is small and we like to save pins, we'll be using the SPI protocol. Our tutorial, wiring and example code is all for SPI so if you need 8-bit, check the datasheets for details on how to wire up for 8-bit parallel. ![](https://cdn-learn.adafruit.com/assets/assets/000/000/840/medium800/lcds___displays_parts.jpg?1396766345)
-
-Since the OLED is 3.3V and also uses 3.3V logic, we need to use a logic shifter. We include a DIP logic shifter, the 74LVX245 with the OLED. If you're using a 3.3V logic chip, you can skip the logic shifter. Arduinos are all 5.0V so we'll be demonstrating that.
+Next we must insert the INA219 current sensor into the circuit we want to measure: ![](https://cdn-learn.adafruit.com/assets/assets/000/010/941/medium800/adafruit_products_INA219_WS2812_bb.jpg?1378995140)
 
 Danger: 
 
-Plug in the OLED and the '245 chip. The Chip has the notch closest to the OLED. Click on the image to see a large photo if you need help orienting
+## Connect to the circuit
 
-Starting from the top pin of the OLED (closest to the Adafruit flower) Connect the following OLED pins:
+- Connect V+ to the positive terminal of the power supply for the circuit under test.
+- Connect V- to the positive terminal or lead of the load. &nbsp;This puts the sense resistor&nbsp;in-line with&nbsp;the circuit.
+- Finally, connect a wire from the negative terminal of the power supply to GND. &nbsp;This allows the sensor to measure the load voltage as well as the load current.
 
-- Common ground - black wire
-- 3.3V (red wires from the Arduino)
-- **SD CS Pin** - don't connect (microSD card, we'll get to this later)
-- **OLED CS Pin** &nbsp;- purple wire - 74LVC245 pin #17
-- **OLED Reset Pin** &nbsp;- blue wire - 74LVC245 pin #16
-- **OLED D/C Pin** &nbsp;- yellow wire - 74LVC245 pin #15
-- **OLED SCLK Pin** &nbsp;- orange wire - 74LVC245 pin #14
-- **OLED DATA Pin** &nbsp;- brown - 74LVC245 pin #13
-- **SD Detect Pin** - not used, don't connect. Later on, if you wish, you can use this pin to detect if a card is inserted, it will be shorted to ground when a card is in the holder  
+The photo below shows an INA219 breakout board configured to measure the motor supply current on an Adafruit Motor&nbsp;Shield.
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/841/medium800/lcds___displays_wiring.jpg?1396766354)
+Primary: 
 
-Next we'll connect the remaining 74LVC245 pins to the Arduino
+![](https://cdn-learn.adafruit.com/assets/assets/000/002/459/medium800/adafruit_products_2012_10_26_IMG_0725-1024.jpg?1396783330)
 
-- Pin #1 goes to 3.3V (red wire)
-- Skip
-- Purple wire - goes to Digital #10
-- Blue wire - goes to Digital #9
-- Yellow wire - goes to Digital #8
-- Orange wire - goes to Digital #13
-- Brown wires - goes to Digital #11
-- Skip
-- Skip
-- Connect to common ground
-
-Then connect pin #20 of the 74LVC245 to 3.3V and pin #19 to Ground.
-
-Digital #12 isn't used yet (we'll connect this to the SD card later
-
-# Wiring up the newer version (With one row of pins on top)
-
-The updated 5v ready version of this display includes on-board level-shifting. So the 74LVC245 chip is not required and the wiring is much simpler! For the level shifter we use the [CD74HC4050](http://www.ti.com/product/CD74HC4050/) which has a typical propagation delay of ~10ns  
-  
-The full pin names are marked on the back of the board, but there are abbreviations on the front to help identify pins when it is plugged into the breadboard. The chart below lists the full pin name, the abbreviated name (in parentheses) and the Arduino pin name to connect it to. Wire colors are as shown in the photo.
-
-- **GND** (G) - Gnd (Black Wire)
-- **VCC** (+) - 5v (Red Wire)
-- **SDCS** (SC) - skip
-- **OCS** (OC) - Digital #10 (Orange Wire)
-- **RST** (R) - Digital #9 (Green Wire)
-- **D/C** (DC) - Digital #8 (Brown Wire)
-- **SCK** (CK) - Digital #13 (White Wire)
-- **MOSI** (SI) - Digital #11 (Blue Wire)
-- **MISO** (SO) - skip
-- **CD** (CD) - skip
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/009/650/medium800/lcds___displays_2013_07_14_IMG_2035.jpg?1396894695)
-
-# Installing and running Arduino software
-
-Now we can run the test software on the Arduino. We'll need to download the library first and install it
-
-_Three_ libraries need to be installed&nbsp;using the **Arduino Library Manager** …this is the preferred and modern way. From the Arduino “Sketch” menu, select “Include Library” then “Manage Libraries…”
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/067/417/medium800/arduino_compatibles_manage-libraries.png?1544587619)
-
-Type “gfx” in the search field to quickly find the first library — **Adafruit\_GFX** :
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/067/418/medium800/arduino_compatibles_adafruit-gfx-library-manager.png?1544587640)
-
-Repeat the search and install steps, looking for the **Adafruit\_BusIO** and **Adafruit\_SSD1331&nbsp;** libraries.
-
-After you restart, you should be able to select **File→Examples→Adafruit\_SSD1331→**** test** - this is the example sketch that just tests the display by drawing text and shapes. Upload the sketch and you should see the following:
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/842/medium800/lcds___displays_triangles.jpg?1396766360)
-
-If alls working, then you can start looking through the test sketch for demonstrations on how to print text, circles, lines, etc.  
-  
-[**For a detailed tutorial on the Adafruit GFX library, including all the functions available please visit the GFX tutorial page**](http://learn.adafruit.com/adafruit-gfx-graphics-library "Link: http://learn.adafruit.com/adafruit-gfx-graphics-library")
-
-- [Previous Page](https://learn.adafruit.com/096-mini-color-oled/power.md)
-- [Next Page](https://learn.adafruit.com/096-mini-color-oled/drawing-bitmaps.md)
+- [Previous Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/assembly.md)
+- [Next Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md)
 
 ## Featured Products
 
-### OLED Breakout Board - 16-bit Color 0.96" w/microSD holder
+### INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max
 
-[OLED Breakout Board - 16-bit Color 0.96" w/microSD holder](https://www.adafruit.com/product/684)
-We love our black and white monochrome displays but we also like to dabble with some color now and then. Our new 0.96" color OLED displays are perfect when you need an ultra-small display with vivid, high-contrast 16-bit color. The visible portion of the OLED measures 0.96" diagonal...
+[INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max](https://www.adafruit.com/product/904)
+This breakout board will solve all your power-monitoring problems. Instead of struggling with two multimeters, you can just use the handy INA219 chip on this breakout to both measure both the high side voltage and DC current draw over I2C with ±1% precision.
+
+**Please...**
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/684)
-[Related Guides to the Product](https://learn.adafruit.com/products/684/guides)
+[Buy Now](https://www.adafruit.com/product/904)
+[Related Guides to the Product](https://learn.adafruit.com/products/904/guides)
+### STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long
+
+[STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long](https://www.adafruit.com/product/4210)
+This 4-wire cable is a little over 100mm / 4" long and fitted with JST-SH female 4-pin connectors on both ends. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert and remove.
+
+<a...></a...>
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/4210)
+[Related Guides to the Product](https://learn.adafruit.com/products/4210/guides)
+### STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable
+
+[STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable](https://www.adafruit.com/product/4209)
+This 4-wire cable is a little over 150mm / 6" long and fitted with JST-SH female 4-pin connectors on one end and premium Dupont male headers on the other. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/4209)
+[Related Guides to the Product](https://learn.adafruit.com/products/4209/guides)
+### Premium Male/Male Jumper Wires - 40 x 6" (150mm)
+
+[Premium Male/Male Jumper Wires - 40 x 6" (150mm)](https://www.adafruit.com/product/758)
+Handy for making wire harnesses or jumpering between headers on PCB's. These premium jumper wires are 6" (150mm) long and come in a 'strip' of 40 (4 pieces of each of ten rainbow colors). They have 0.1" male header contacts on either end and fit cleanly next to each other...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/758)
+[Related Guides to the Product](https://learn.adafruit.com/products/758/guides)
+### Full Sized Premium Breadboard - 830 Tie Points
+
+[Full Sized Premium Breadboard - 830 Tie Points](https://www.adafruit.com/product/239)
+This is a 'full-size' premium quality breadboard, 830 tie points. Good for small and medium projects. It's 2.2" x 7" (5.5 cm x 17 cm) with a standard double-strip in the middle and two power rails on both sides. You can pull the power rails off easily to make the...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/239)
+[Related Guides to the Product](https://learn.adafruit.com/products/239/guides)
+### Adafruit INA219 FeatherWing
+
+[Adafruit INA219 FeatherWing](https://www.adafruit.com/product/3650)
+The **INA219 FeatherWing** makes power-monitoring problems a thing of the past. Instead of struggling with two multimeters, you can just use the handy INA219&nbsp;chip on this breakout to&nbsp;measure both the high side voltage and DC current draw over I2C with 1% precision....
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/3650)
+[Related Guides to the Product](https://learn.adafruit.com/products/3650/guides)
 ### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
 
 [Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
@@ -114,29 +114,21 @@ We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;f
 Out of Stock
 [Buy Now](https://www.adafruit.com/product/50)
 [Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
-### Breadboarding wire bundle
-
-[Breadboarding wire bundle](https://www.adafruit.com/product/153)
-75 flexible stranded core wires with stiff ends molded on in red, orange, yellow, green, blue, brown, black and white. These are a major improvement over the "box of bent wires" that are sometimes sold with breadboards, and faster than stripping your own solid core wires. Makes...
-
-In Stock
-[Buy Now](https://www.adafruit.com/product/153)
-[Related Guides to the Product](https://learn.adafruit.com/products/153/guides)
 
 ## Related Guides
 
-- [Ladyada's Bento Box](https://learn.adafruit.com/lady-adas-bento-box.md)
-- [OLED TRON Clock](https://learn.adafruit.com/oled-tron-clock.md)
-- [LSM303 Accelerometer + Compass Breakout](https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout.md)
-- [Programming Arduino with Android and Windows Tablets](https://learn.adafruit.com/programming-arduino-with-android-and-windows-tablets.md)
-- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
-- [Making Adabot: Part 2](https://learn.adafruit.com/making-adabot-part-2.md)
-- [Current Limiting Stepper Driver with DRV8871](https://learn.adafruit.com/current-limiting-stepper-driver-with-drv8871.md)
-- [Bluetooth Temperature & Humidity Sensor](https://learn.adafruit.com/bluetooth-temperature-and-humidity-sensor.md)
-- [Trinket Audio Player](https://learn.adafruit.com/trinket-audio-player.md)
+- [Geofencing with the FONA 808 & Adafruit IO](https://learn.adafruit.com/geofencing-with-the-fona-808-and-adafruit-io.md)
+- [Nokia 5110/3310 Monochrome LCD](https://learn.adafruit.com/nokia-5110-3310-monochrome-lcd.md)
+- [Create an Internet of Things Dashboard with Adafruit IO](https://learn.adafruit.com/create-an-internet-of-things-dashboard-with-adafruit-dot-io.md)
+- [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
+- [Smart Cocktail Shaker](https://learn.adafruit.com/smart-cocktail-shaker.md)
 - [Adafruit Proto Shield for Arduino](https://learn.adafruit.com/adafruit-proto-shield-arduino.md)
-- [Arduino Lesson 17. Email Sending Movement Detector](https://learn.adafruit.com/arduino-lesson-17-email-sending-movement-detector.md)
-- [Bluefruit LE Connect for iOS and Android](https://learn.adafruit.com/bluefruit-le-connect.md)
+- [How to Build a Testing Jig](https://learn.adafruit.com/how-to-build-a-testing-fixture.md)
+- [Arduino Lesson 0. Getting Started](https://learn.adafruit.com/lesson-0-getting-started.md)
+- [Using NeoPixels and Servos Together](https://learn.adafruit.com/neopixels-and-servos.md)
+- [Arduino Lesson 4. Eight LEDs and a Shift Register](https://learn.adafruit.com/adafruit-arduino-lesson-4-eight-leds.md)
+- [1,500 NeoPixel LED Curtain with Raspberry Pi and Fadecandy](https://learn.adafruit.com/1500-neopixel-led-curtain-with-raspberry-pi-fadecandy.md)
+- [2.8" TFT Touchscreen](https://learn.adafruit.com/2-8-tft-touchscreen.md)
 - [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
-- [Adafruit CC3000 WiFi and Xively](https://learn.adafruit.com/adafruit-cc3000-wifi-and-xively.md)
-- [Trellis 3D Printed Enclosure](https://learn.adafruit.com/trellis-3d-printed-enclosure.md)
+- [WiFi Controlled LED Christmahanukwanzaa Tree](https://learn.adafruit.com/wifi-controlled-led-christmahanukwanzaa-tree.md)
+- [Multi-tasking the Arduino - Part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1.md)

@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/cli/create-next-app.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/cli/create-next-app.md
-
-# Source: https://nextjs.org/docs/app/api-reference/cli/create-next-app.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/cli/create-next-app.md
-
 # create-next-app
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `create-next-app` CLI allow you to create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository. It is the easiest way to get started with Next.js.

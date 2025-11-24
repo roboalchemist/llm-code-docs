@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/data-security.md
 
 # How to think about data security in Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 [React Server Components](https://react.dev/reference/rsc/server-components) improve performance and simplify data fetching, but also shift where and how data is accessed, changing some of the traditional security assumptions for handling data in frontend apps.

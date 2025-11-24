@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/template.md
 
 # template.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 A **template** file is similar to a [layout](/docs/app/getting-started/layouts-and-pages.md#creating-a-layout) in that it wraps a layout or page. Unlike layouts that persist across routes and maintain state, templates are given a unique key, meaning children Client Components reset their state on navigation.

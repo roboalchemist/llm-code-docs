@@ -2,22 +2,16 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/env.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/env.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/env.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/env.md
-
 # env
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 
 > This is a legacy API and no longer recommended. It is still supported for backward compatibility.
 
-> Since the release of [Next.js 9.4](https://nextjs.org/blog/next-9-4) we now have a more intuitive and ergonomic experience for [adding environment variables](/docs/pages/guides/environment-variables.md). Give it a try!
+> Since the release of [Next.js 9.4](https://nextjs.org/blog/next-9-4) we now have a more intuitive and ergonomic experience for [adding environment variables](/docs/app/guides/environment-variables.md). Give it a try!
 
-> **Good to know**: environment variables specified in this way will **always** be included in the JavaScript bundle, prefixing the environment variable name with `NEXT_PUBLIC_` only has an effect when specifying them [through the environment or .env files](/docs/pages/guides/environment-variables.md).
+> **Good to know**: environment variables specified in this way will **always** be included in the JavaScript bundle, prefixing the environment variable name with `NEXT_PUBLIC_` only has an effect when specifying them [through the environment or .env files](/docs/app/guides/environment-variables.md).
 
 To add environment variables to the JavaScript bundle, open `next.config.js` and add the `env` config:
 

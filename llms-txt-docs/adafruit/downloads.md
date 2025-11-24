@@ -1,68 +1,82 @@
-# Source: https://learn.adafruit.com/096-mini-color-oled/downloads.md
+# Source: https://learn.adafruit.com/thermocouple/downloads.md
 
-# 0.96" mini Color OLED
+# MAX31855 Thermocouple
 
 ## Downloads
 
-# Files
+# Datasheets & Files
 
-- [Datasheet for the SSD1331 driver](http://www.adafruit.com/datasheets/SSD1331_1.2.pdf)
-- [Datasheet for the raw OLED module itself](http://www.adafruit.com/datasheets/UG-9664HDDAG01.pdf)
-- [Adafruit SSD1331 Arduino Library repository](https://github.com/adafruit/Adafruit-SSD1331-OLED-Driver-Library-for-Arduino)
-- You'll also have to install the&nbsp;[Adafruit GFX graphics core library at this github repo](https://github.com/adafruit/Adafruit-GFX-Library)&nbsp;and install it after you've gotten the OLED driver library.
-- [Adafruit breakout board PCB files](https://github.com/adafruit/Adafruit-96x64-RGB-OLED-Breakout-PCB)
-- [Fritzing object in the Adafruit Fritzing Library](https://github.com/adafruit/Fritzing-Library)
+- [MAX31855 Datasheet](https://cdn-shop.adafruit.com/datasheets/MAX31855.pdf)
+- [MAX6675 Schematic and layout files can be found at GitHub](http://github.com/adafruit/Adafruit-MAX6675-breakout-board)
+- [MAX31855 Schematic and layout files can be found at GitHub](http://github.com/adafruit/Adafruit-MAX31855-breakout-board)
+- [Fritzing objects for both in the Adafruit Fritzing library](https://github.com/adafruit/Fritzing-Library)
 
-# Schematic & Fabrication Print
-![](https://cdn-learn.adafruit.com/assets/assets/000/040/756/medium800/lcds___displays_schem.png?1491926494)
+# Schematic
 
-For the level shifter we use the [CD74HC4050](http://www.ti.com/product/CD74HC4050/) which has a typical propagation delay of ~10ns
+Click to embiggen
 
-![](https://cdn-learn.adafruit.com/assets/assets/000/040/757/medium800/lcds___displays_fabprint.png?1491926618)
+![](https://cdn-learn.adafruit.com/assets/assets/000/035/637/medium800/temperature_schem.png?1473452098)
 
-- [Previous Page](https://learn.adafruit.com/096-mini-color-oled/python-usage.md)
+# Fabrication Print
+
+Dimensions in Inches
+
+![](https://cdn-learn.adafruit.com/assets/assets/000/035/636/medium800/temperature_fabprint.png?1473452088)
+
+- [Previous Page](https://learn.adafruit.com/thermocouple/project-examples.md)
+
+## Primary Products
+
+### Adafruit Universal Thermocouple Amplifier MAX31856 Breakout
+
+[Adafruit Universal Thermocouple Amplifier MAX31856 Breakout](https://www.adafruit.com/product/3263)
+Thermocouples are very sensitive, requiring a good amplifier with a cold-compensation reference, as well as calculations to handle any non-linearities. For a long time we've [suggested our MAX31855K breakout, which works great but is only for...](https://www.adafruit.com/products/269)
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/3263)
+[Related Guides to the Product](https://learn.adafruit.com/products/3263/guides)
 
 ## Featured Products
 
-### OLED Breakout Board - 16-bit Color 0.96" w/microSD holder
+### Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)
 
-[OLED Breakout Board - 16-bit Color 0.96" w/microSD holder](https://www.adafruit.com/product/684)
-We love our black and white monochrome displays but we also like to dabble with some color now and then. Our new 0.96" color OLED displays are perfect when you need an ultra-small display with vivid, high-contrast 16-bit color. The visible portion of the OLED measures 0.96" diagonal...
-
-In Stock
-[Buy Now](https://www.adafruit.com/product/684)
-[Related Guides to the Product](https://learn.adafruit.com/products/684/guides)
-### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
-
-[Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
-We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;for our own projects. The processor has plenty of GPIO, Analog inputs, hardware UART SPI and I2C, timers and PWM galore - just enough for most simple projects. When we need to go small, we use a <a...></a...>
+[Thermocouple Amplifier MAX31855 breakout board (MAX6675 upgrade)](https://www.adafruit.com/product/269)
+Thermocouples are very sensitive, requiring a good amplifier with a cold-compensation reference. The MAX31855K does everything for you, and can be easily interfaced with any microcontroller, even one without an analog input. This breakout board has the chip itself, a 3.3V regulator with 10uF...
 
 Out of Stock
-[Buy Now](https://www.adafruit.com/product/50)
-[Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
-### Breadboarding wire bundle
+[Buy Now](https://www.adafruit.com/product/269)
+[Related Guides to the Product](https://learn.adafruit.com/products/269/guides)
+### Thermocouple Type-K Glass Braid Insulated
 
-[Breadboarding wire bundle](https://www.adafruit.com/product/153)
-75 flexible stranded core wires with stiff ends molded on in red, orange, yellow, green, blue, brown, black and white. These are a major improvement over the "box of bent wires" that are sometimes sold with breadboards, and faster than stripping your own solid core wires. Makes...
+[Thermocouple Type-K Glass Braid Insulated](https://www.adafruit.com/product/270)
+Thermocouples are best used for measuring temperatures that can go above 100 °C. This is a bare wires bead-probe which can measure air or surface temperatures. Most inexpensive thermocouples have a vinyl covering which can melt at around 200 °C, this one uses a fiberglass braid so it...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/153)
-[Related Guides to the Product](https://learn.adafruit.com/products/153/guides)
+[Buy Now](https://www.adafruit.com/product/270)
+[Related Guides to the Product](https://learn.adafruit.com/products/270/guides)
+### Thermocouple Type-K Glass Braid Insulated Stainless Steel Tip
+
+[Thermocouple Type-K Glass Braid Insulated Stainless Steel Tip](https://www.adafruit.com/product/3245)
+Thermocouples are best used for measuring temperatures that can go above 100°C. This is a bare wires stainless-steel tip probe which can measure air or surface temperatures. Most inexpensive thermocouples have a vinyl covering which can melt at around 200°C, this one uses a fiberglass...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/3245)
+[Related Guides to the Product](https://learn.adafruit.com/products/3245/guides)
 
 ## Related Guides
 
-- [Ladyada's Bento Box](https://learn.adafruit.com/lady-adas-bento-box.md)
-- [OLED TRON Clock](https://learn.adafruit.com/oled-tron-clock.md)
-- [LSM303 Accelerometer + Compass Breakout](https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout.md)
-- [Programming Arduino with Android and Windows Tablets](https://learn.adafruit.com/programming-arduino-with-android-and-windows-tablets.md)
-- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
-- [Making Adabot: Part 2](https://learn.adafruit.com/making-adabot-part-2.md)
-- [Current Limiting Stepper Driver with DRV8871](https://learn.adafruit.com/current-limiting-stepper-driver-with-drv8871.md)
-- [Bluetooth Temperature & Humidity Sensor](https://learn.adafruit.com/bluetooth-temperature-and-humidity-sensor.md)
-- [Trinket Audio Player](https://learn.adafruit.com/trinket-audio-player.md)
-- [Adafruit Proto Shield for Arduino](https://learn.adafruit.com/adafruit-proto-shield-arduino.md)
-- [Arduino Lesson 17. Email Sending Movement Detector](https://learn.adafruit.com/arduino-lesson-17-email-sending-movement-detector.md)
-- [Bluefruit LE Connect for iOS and Android](https://learn.adafruit.com/bluefruit-le-connect.md)
-- [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
-- [Adafruit CC3000 WiFi and Xively](https://learn.adafruit.com/adafruit-cc3000-wifi-and-xively.md)
-- [Trellis 3D Printed Enclosure](https://learn.adafruit.com/trellis-3d-printed-enclosure.md)
+- [Google Docs Sensor Logging From Your PC](https://learn.adafruit.com/gdocs-sensor-logging-from-your-pc.md)
+- [Calibrating Sensors](https://learn.adafruit.com/calibrating-sensors.md)
+- [CircuitPython Libraries on Linux and the 96Boards DragonBoard 410c](https://learn.adafruit.com/circuitpython-libraries-on-linux-and-the-96boards-dragonboard-410c.md)
+- [Connecting the MAX31855 Thermocouple Amplifier breakout to an Electric Imp](https://learn.adafruit.com/connecting-the-max31855-thermocouple-amplifier-breakout-to-an-electric-imp.md)
+- [ Analog IC Insights On-the-Go by Maxim Integrated](https://learn.adafruit.com/maxim-app.md)
+- [Adafruit 1-Wire Thermocouple Amplifier - MAX31850K](https://learn.adafruit.com/adafruit-1-wire-thermocouple-amplifier-max31850k.md)
+- [Adding a Single Board Computer to Blinka](https://learn.adafruit.com/adding-a-single-board-computer-to-blinka.md)
+- [MicroPython Hardware: SPI Devices](https://learn.adafruit.com/micropython-hardware-spi-devices.md)
+- [CircuitPython I2C and SPI Under the Hood](https://learn.adafruit.com/circuitpython-basics-i2c-and-spi.md)
+- [MAX31855 Thermocouple Sensor Python Library](https://learn.adafruit.com/max31855-thermocouple-python-library.md)
+- [Adafruit FT232H With SPI & I2C Devices](https://learn.adafruit.com/adafruit-ft232h-with-spi-and-i2c-libraries.md)
+- [MLX90640 Thermal Camera with Image Recording](https://learn.adafruit.com/mlx90640-thermal-image-recording.md)
+- [EZ Make Oven](https://learn.adafruit.com/ez-make-oven.md)
+- [Adafruit BME680](https://learn.adafruit.com/adafruit-bme680-humidity-temperature-barometic-pressure-voc-gas.md)
+- [My Mini Race Car](https://learn.adafruit.com/my-mini-race-car.md)

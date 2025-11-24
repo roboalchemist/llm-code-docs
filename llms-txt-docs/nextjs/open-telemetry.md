@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/open-telemetry.md
 
-# Source: https://nextjs.org/docs/pages/guides/open-telemetry.md
-
-# Source: https://nextjs.org/docs/app/guides/open-telemetry.md
-
-# Source: https://nextjs.org/docs/pages/guides/open-telemetry.md
-
 # How to set up instrumentation with OpenTelemetry
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Observability is crucial for understanding and optimizing the behavior and performance of your Next.js app.
@@ -24,9 +18,6 @@ This documentation uses terms like *Span*, *Trace* or *Exporter* throughout this
 
 Next.js supports OpenTelemetry instrumentation out of the box, which means that we already instrumented Next.js itself.
 
-When you enable OpenTelemetry we will automatically wrap all your code like
-`getStaticProps` in *spans* with helpful attributes.
-
 ## Getting Started
 
 OpenTelemetry is extensible but setting it up properly can be quite verbose.
@@ -40,7 +31,7 @@ To get started, install the following packages:
 npm install @vercel/otel @opentelemetry/sdk-logs @opentelemetry/api-logs @opentelemetry/instrumentation
 ```
 
-Next, create a custom [`instrumentation.ts`](/docs/pages/guides/instrumentation.md) (or `.js`) file in the **root directory** of the project (or inside `src` folder if using one):
+Next, create a custom [`instrumentation.ts`](/docs/app/guides/instrumentation.md) (or `.js`) file in the **root directory** of the project (or inside `src` folder if using one):
 
 ```ts filename="your-project/instrumentation.ts" switcher
 import { registerOTel } from '@vercel/otel'
@@ -63,7 +54,7 @@ See the [`@vercel/otel` documentation](https://www.npmjs.com/package/@vercel/ote
 > **Good to know**:
 >
 > * The `instrumentation` file should be in the root of your project and not inside the `app` or `pages` directory. If you're using the `src` folder, then place the file inside `src` alongside `pages` and `app`.
-> * If you use the [`pageExtensions` config option](/docs/pages/api-reference/config/next-config-js/pageExtensions.md) to add a suffix, you will also need to update the `instrumentation` filename to match.
+> * If you use the [`pageExtensions` config option](/docs/app/api-reference/config/next-config-js/pageExtensions.md) to add a suffix, you will also need to update the `instrumentation` filename to match.
 > * We have created a basic [with-opentelemetry](https://github.com/vercel/next.js/tree/canary/examples/with-opentelemetry) example that you can use.
 
 ### Manual OpenTelemetry configuration

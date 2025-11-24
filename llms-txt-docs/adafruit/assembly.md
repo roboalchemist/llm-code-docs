@@ -1,51 +1,99 @@
-# Source: https://learn.adafruit.com/arduino-prototyping-mounting-plate/assembly.md
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/assembly.md
 
-# Arduino Prototyping Mounting Plate
+# Adafruit INA219 Current Sensor Breakout
 
 ## Assembly
 
-Start by peeling the paper backing off of the plastic plate. Begin at a corner, it should come off easily.
+# Breakout Assembly
+The board comes with all surface-mount components pre-soldered. &nbsp;Additional parts are included to help integrate the INA219 breakout board into your project.
 
-![adafruit_products_peel.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/820/medium640/adafruit_products_peel.jpg?1396766176)
+![adafruit_products_ID904_LRG.jpg](https://cdn-learn.adafruit.com/assets/assets/000/002/455/medium640/adafruit_products_ID904_LRG.jpg?1396783300)
 
-There are little holes and cutouts, you may need to poke them out using a screwdriver or pen
+Wires can be soldered directly to the holes on the edge of the board. But for breadboard use, you will want to solder on the included 6-pin header.
 
-![adafruit_products_poke.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/821/medium640/adafruit_products_poke.jpg?1396766187)
+![adafruit_products_2012_10_25_IMG_0715-1024.jpg](https://cdn-learn.adafruit.com/assets/assets/000/002/456/medium640/adafruit_products_2012_10_25_IMG_0715-1024.jpg?1396783315)
 
-There are outlines showing how the Arduino and breadboard go on, make sure the print is right way up or it'll be confusing!
+The load can be connected via the header, or using the included 2-pin screw-terminal.
 
-![adafruit_products_placement.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/822/medium640/adafruit_products_placement.jpg?1396766195)
+![adafruit_products_2012_10_25_IMG_0717-1024.jpg](https://cdn-learn.adafruit.com/assets/assets/000/002/457/medium640/adafruit_products_2012_10_25_IMG_0717-1024.jpg?1396783322)
 
-There are four mounting holes for various Arduinos. Unfortunately, each Arduino revision has slightly different 'preferred' mounting holes. Here we show what we consider the preferred holes for the Uno R3 which is likely what you have. Place the screws into the plate from the bottom of the plate so they stick up. Screw on two hex nuts to keep them in place
+# FeatherWing Assembly
+Solder the headers and the screw terminal to the board in the appropriate locations.
 
-![adafruit_products_bolts.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/823/medium640/adafruit_products_bolts.jpg?1396766207)
+The pin labels are small, so here’s an annotated diagram.
 
-Place the Arduino on top, it should slide onto the bolts
+![adafruit_products_INA219_FeatherWing_Headers.jpg](https://cdn-learn.adafruit.com/assets/assets/000/104/038/medium640/adafruit_products_INA219_FeatherWing_Headers.jpg?1629844735)
 
-![adafruit_products_place.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/824/medium640/adafruit_products_place.jpg?1396766220)
+![adafruit_products_INA219-FeatherWing-Pinout.png](https://cdn-learn.adafruit.com/assets/assets/000/104/039/medium640/adafruit_products_INA219-FeatherWing-Pinout.png?1629844788)
 
-Attach the Arduino securely by screwing on the last two hex nuts  
-The bolts are made of nylon so they will flex a little if necessary. Use pliers to get a grip on the hex nut near the DC power jack
-
-![adafruit_products_plier.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/830/medium640/adafruit_products_plier.jpg?1396766253)
-
-![adafruit_products_attached.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/835/medium640/adafruit_products_attached.jpg?1396766301)
-
-Remove the paper backing from the half size breadboard and stick it on next to the Arduino.   
+## Addressing&nbsp;the Boards
+If more than one INA219 breakout board is used, each board must be assigned&nbsp;a unique address. &nbsp;This is done with the address jumpers on the right edge of the board. &nbsp;The I2C base address for each board is 0x40. &nbsp;The binary address that you program with the address jumpers is added to the base I2C address.  
   
-Watch that the bumpy side is not next to the Arduino so it it will flat against it.
+To program the address offset, use a drop of solder to bridge the corresponding address jumper for each binary '1' in the address. ![](https://cdn-learn.adafruit.com/assets/assets/000/002/458/medium800/adafruit_products_2012_10_25_IMG_0721-1024.jpg?1396783305)
 
-![adafruit_products_half.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/832/medium640/adafruit_products_half.jpg?1396766260)
+Up to 4 boards may be connected. Addressing is as follows:  
+**Board 0** : Address = 0x40 Offset = binary 00000 (no jumpers required)  
+**Board 1** : Address = 0x41 Offset = binary 00001 (bridge A0 as in the photo above)  
+**Board 2** : Address = 0x44 Offset = binary 00100 (bridge A1)  
+**Board 3** : Address = 0x45 Offset = binary 00101 (bridge A0 & A1)
 
-![adafruit_products_done.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/833/medium640/adafruit_products_done.jpg?1396766268)
-
-Finally, place four bumpers on the bottom!
-
-![adafruit_products_bumper.jpg](https://cdn-learn.adafruit.com/assets/assets/000/000/836/medium640/adafruit_products_bumper.jpg?1396766309)
-
+- [Previous Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/pinouts.md)
+- [Next Page](https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/wiring.md)
 
 ## Featured Products
 
+### INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max
+
+[INA219  High Side DC Current Sensor Breakout - 26V ±3.2A Max](https://www.adafruit.com/product/904)
+This breakout board will solve all your power-monitoring problems. Instead of struggling with two multimeters, you can just use the handy INA219 chip on this breakout to both measure both the high side voltage and DC current draw over I2C with ±1% precision.
+
+**Please...**
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/904)
+[Related Guides to the Product](https://learn.adafruit.com/products/904/guides)
+### STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long
+
+[STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long](https://www.adafruit.com/product/4210)
+This 4-wire cable is a little over 100mm / 4" long and fitted with JST-SH female 4-pin connectors on both ends. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert and remove.
+
+<a...></a...>
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/4210)
+[Related Guides to the Product](https://learn.adafruit.com/products/4210/guides)
+### STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable
+
+[STEMMA QT / Qwiic JST SH 4-pin to Premium Male Headers Cable](https://www.adafruit.com/product/4209)
+This 4-wire cable is a little over 150mm / 6" long and fitted with JST-SH female 4-pin connectors on one end and premium Dupont male headers on the other. Compared with the chunkier JST-PH these are 1mm pitch instead of 2mm, but still have a nice latching feel, while being easy to insert...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/4209)
+[Related Guides to the Product](https://learn.adafruit.com/products/4209/guides)
+### Premium Male/Male Jumper Wires - 40 x 6" (150mm)
+
+[Premium Male/Male Jumper Wires - 40 x 6" (150mm)](https://www.adafruit.com/product/758)
+Handy for making wire harnesses or jumpering between headers on PCB's. These premium jumper wires are 6" (150mm) long and come in a 'strip' of 40 (4 pieces of each of ten rainbow colors). They have 0.1" male header contacts on either end and fit cleanly next to each other...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/758)
+[Related Guides to the Product](https://learn.adafruit.com/products/758/guides)
+### Full Sized Premium Breadboard - 830 Tie Points
+
+[Full Sized Premium Breadboard - 830 Tie Points](https://www.adafruit.com/product/239)
+This is a 'full-size' premium quality breadboard, 830 tie points. Good for small and medium projects. It's 2.2" x 7" (5.5 cm x 17 cm) with a standard double-strip in the middle and two power rails on both sides. You can pull the power rails off easily to make the...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/239)
+[Related Guides to the Product](https://learn.adafruit.com/products/239/guides)
+### Adafruit INA219 FeatherWing
+
+[Adafruit INA219 FeatherWing](https://www.adafruit.com/product/3650)
+The **INA219 FeatherWing** makes power-monitoring problems a thing of the past. Instead of struggling with two multimeters, you can just use the handy INA219&nbsp;chip on this breakout to&nbsp;measure both the high side voltage and DC current draw over I2C with 1% precision....
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/3650)
+[Related Guides to the Product](https://learn.adafruit.com/products/3650/guides)
 ### Adafruit METRO 328 Fully Assembled - Arduino IDE compatible
 
 [Adafruit METRO 328 Fully Assembled - Arduino IDE compatible](https://www.adafruit.com/product/50)
@@ -54,45 +102,21 @@ We sure love the ATmega328 here at Adafruit, and we use them&nbsp;_a lot_&nbsp;f
 Out of Stock
 [Buy Now](https://www.adafruit.com/product/50)
 [Related Guides to the Product](https://learn.adafruit.com/products/50/guides)
-### Half Sized Premium Breadboard - 400 Tie Points
-
-[Half Sized Premium Breadboard - 400 Tie Points](https://www.adafruit.com/product/64)
-This is a cute, half-size breadboard with&nbsp;400 tie points, good for small projects. It's 3.25" x 2.2" / 8.3cm&nbsp;x 5.5cm&nbsp;with a standard double-strip in the middle and two power rails on both sides.&nbsp;You can pull the power rails off easily to make the breadboard as...
-
-In Stock
-[Buy Now](https://www.adafruit.com/product/64)
-[Related Guides to the Product](https://learn.adafruit.com/products/64/guides)
-### Plastic mounting plate for breadboard and Arduino - rubber feet!
-
-[Plastic mounting plate for breadboard and Arduino - rubber feet!](https://www.adafruit.com/product/275)
-By popular demand! We now have the plates from the [ARDX](http://www.adafruit.com/products/170) available separately. Acrylic plate is engraved and cut here at the Adafruit factory. There are mounting holes for your [Arduino](http://www.adafruit.com/products/50) and a...
-
-In Stock
-[Buy Now](https://www.adafruit.com/product/275)
-[Related Guides to the Product](https://learn.adafruit.com/products/275/guides)
-### Adafruit MetroX Classic Kit - Experimentation Kit for Metro 328
-
-[Adafruit MetroX Classic Kit - Experimentation Kit for Metro 328](https://www.adafruit.com/product/170)
-Interested in making neat stuff with an Arduino-compatible board but not sure where to start? This kit includes all the pieces needed to complete over 20 different circuit and projects. Basically everything you need to be playing within minutes of its arrival. **No soldering required,...**
-
-No Longer Stocked
-[Buy Now](https://www.adafruit.com/product/170)
-[Related Guides to the Product](https://learn.adafruit.com/products/170/guides)
 
 ## Related Guides
 
+- [Geofencing with the FONA 808 & Adafruit IO](https://learn.adafruit.com/geofencing-with-the-fona-808-and-adafruit-io.md)
+- [Nokia 5110/3310 Monochrome LCD](https://learn.adafruit.com/nokia-5110-3310-monochrome-lcd.md)
+- [Create an Internet of Things Dashboard with Adafruit IO](https://learn.adafruit.com/create-an-internet-of-things-dashboard-with-adafruit-dot-io.md)
+- [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
+- [Smart Cocktail Shaker](https://learn.adafruit.com/smart-cocktail-shaker.md)
+- [Adafruit Proto Shield for Arduino](https://learn.adafruit.com/adafruit-proto-shield-arduino.md)
+- [How to Build a Testing Jig](https://learn.adafruit.com/how-to-build-a-testing-fixture.md)
+- [Arduino Lesson 0. Getting Started](https://learn.adafruit.com/lesson-0-getting-started.md)
 - [Using NeoPixels and Servos Together](https://learn.adafruit.com/neopixels-and-servos.md)
-- [FTDI Friend](https://learn.adafruit.com/ftdi-friend.md)
-- [Trellis 3D Printed Enclosure](https://learn.adafruit.com/trellis-3d-printed-enclosure.md)
-- [Silicone Robo-Tentacle](https://learn.adafruit.com/silicone-robo-tentacle.md)
-- [SMS Texting Pet Food Dish](https://learn.adafruit.com/sms-texting-pet-food-dish.md)
-- [Laser-Cut Enclosure Design](https://learn.adafruit.com/laser-cut-enclosure-design.md)
-- [Memories of an Arduino](https://learn.adafruit.com/memories-of-an-arduino.md)
-- [20mm LED Pixels](https://learn.adafruit.com/20mm-led-pixels.md)
-- [Circuit Playground Sound-Controlled Robot](https://learn.adafruit.com/circuit-playground-sound-controlled-robot.md)
-- [Naughty or Nice Machine](https://learn.adafruit.com/naughty-or-nice-machine.md)
+- [Arduino Lesson 4. Eight LEDs and a Shift Register](https://learn.adafruit.com/adafruit-arduino-lesson-4-eight-leds.md)
+- [1,500 NeoPixel LED Curtain with Raspberry Pi and Fadecandy](https://learn.adafruit.com/1500-neopixel-led-curtain-with-raspberry-pi-fadecandy.md)
 - [2.8" TFT Touchscreen](https://learn.adafruit.com/2-8-tft-touchscreen.md)
-- [Program an AVR or Arduino Using Raspberry Pi GPIO](https://learn.adafruit.com/program-an-avr-or-arduino-using-raspberry-pi-gpio-pins.md)
-- [Arduino Lesson 10. Making Sounds](https://learn.adafruit.com/adafruit-arduino-lesson-10-making-sounds.md)
-- [Adafruit Ultimate GPS](https://learn.adafruit.com/adafruit-ultimate-gps.md)
-- [LSM303 Accelerometer + Compass Breakout](https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout.md)
+- [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
+- [WiFi Controlled LED Christmahanukwanzaa Tree](https://learn.adafruit.com/wifi-controlled-led-christmahanukwanzaa-tree.md)
+- [Multi-tasking the Arduino - Part 1](https://learn.adafruit.com/multi-tasking-the-arduino-part-1.md)

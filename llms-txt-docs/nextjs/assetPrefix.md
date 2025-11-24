@@ -2,17 +2,11 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/assetPrefix.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/assetPrefix.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/assetPrefix.md
-
 # assetPrefix
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
-> **Attention**: [Deploying to Vercel](/docs/pages/getting-started/deploying.md) automatically configures a global CDN for your Next.js project.
+> **Attention**: [Deploying to Vercel](/docs/app/getting-started/deploying.md) automatically configures a global CDN for your Next.js project.
 > You do not need to manually setup an Asset Prefix.
 
 > **Good to know**: Next.js 9.5+ added support for a customizable [Base Path](/docs/app/api-reference/config/next-config-js/basePath.md), which is better
@@ -57,6 +51,4 @@ The exact configuration for uploading your files to a given CDN will depend on y
 
 While `assetPrefix` covers requests to `_next/static`, it does not influence the following paths:
 
-* Files in the [public](/docs/pages/api-reference/file-conventions/public-folder.md) folder; if you want to serve those assets over a CDN, you'll have to introduce the prefix yourself
-* `/_next/data/` requests for `getServerSideProps` pages. These requests will always be made against the main domain since they're not static.
-* `/_next/data/` requests for `getStaticProps` pages. These requests will always be made against the main domain to support [Incremental Static Generation](/docs/pages/guides/incremental-static-regeneration.md), even if you're not using it (for consistency).
+* Files in the [public](/docs/app/api-reference/file-conventions/public-folder.md) folder; if you want to serve those assets over a CDN, you'll have to introduce the prefix yourself

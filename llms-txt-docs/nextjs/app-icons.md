@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons.md
 
 # favicon, icon, and apple-icon
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `favicon`, `icon`, or `apple-icon` file conventions allow you to set icons for your application.

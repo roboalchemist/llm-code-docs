@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/memory-usage.md
 
 # How to optimize memory usage
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 As applications grow and become more feature rich, they can demand more resources when developing locally or creating production builds.

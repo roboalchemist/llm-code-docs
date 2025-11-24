@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/redirect.md
 
 # redirect
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `redirect` function allows you to redirect the user to another URL. `redirect` can be used while rendering in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).

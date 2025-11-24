@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/refresh.md
 
 # refresh
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `refresh` allows you to refresh the client router from within a [Server Action](/docs/app/getting-started/updating-data.md).

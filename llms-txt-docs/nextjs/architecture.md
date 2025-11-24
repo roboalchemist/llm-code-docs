@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/architecture.md
 
 # Architecture
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Learn about the Next.js architecture and how it works under the hood.

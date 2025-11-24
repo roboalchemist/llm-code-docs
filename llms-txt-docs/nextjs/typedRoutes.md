@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/typedRoutes.md
 
 # typedRoutes
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 > **Note**: This option has been marked as stable, so you should use `typedRoutes` instead of `experimental.typedRoutes`.

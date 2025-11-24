@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/components/image.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/components/image.md
-
-# Source: https://nextjs.org/docs/app/api-reference/components/image.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/components/image.md
-
 # Image Component
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The Next.js Image component extends the HTML `<img>` element for automatic image optimization.
@@ -28,8 +22,6 @@ export default function Page() {
   )
 }
 ```
-
-> **Good to know**: If you are using a version of Next.js prior to 13, you'll want to use the [next/legacy/image](/docs/pages/api-reference/components/image-legacy.md) documentation since the component was renamed.
 
 ## Reference
 
@@ -122,6 +114,8 @@ A custom function used to generate the image URL. The function receives the foll
 * [`quality`](#quality)
 
 ```js
+'use client'
+
 import Image from 'next/image'
 
 const imageLoader = ({ src, width, quality }) => {
@@ -140,6 +134,8 @@ export default function Page() {
   )
 }
 ```
+
+> **Good to know**: Using props like `onLoad`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
 
 Alternatively, you can use the [loaderFile](#loaderfile) configuration in `next.config.js` to configure every instance of `next/image` in your application, without passing a prop.
 
@@ -315,6 +311,8 @@ A callback function that is invoked once the image is completely loaded and the 
 
 The callback function will be called with one argument, the event which has a `target` that references the underlying `<img>` element.
 
+> **Good to know**: Using props like `onLoad`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
+
 #### `onError`
 
 A callback function that is invoked if the image fails to load.
@@ -322,6 +320,8 @@ A callback function that is invoked if the image fails to load.
 ```jsx
 <Image onError={(e) => console.error(e.target.id)} />
 ```
+
+> **Good to know**: Using props like `onError`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
 
 #### `unoptimized`
 
@@ -417,8 +417,12 @@ A callback function that is invoked once the image is completely loaded and the 
 The callback function will be called with one argument, a reference to the underlying `<img>` element.
 
 ```jsx
+'use client'
+
 <Image onLoadingComplete={(img) => console.log(img.naturalWidth)} />
 ```
+
+> **Good to know**: Using props like `onLoadingComplete`, which accept a function, requires using [Client Components](https://react.dev/reference/rsc/use-client) to serialize the provided function.
 
 ### Configuration options
 
@@ -539,6 +543,8 @@ module.exports = {
 The path must be relative to the project root. The file must export a default function that returns a URL string:
 
 ```js filename="my/image/loader.js"
+'use client'
+
 export default function myImageLoader({ src, width, quality }) {
   return `https://example.com/${src}?w=${width}&q=${quality || 75}`
 }
@@ -651,10 +657,21 @@ module.exports = {
 }
 ```
 
+You can also enable both AVIF and WebP formats together. AVIF will be preferred for browsers that support it, with WebP as a fallback:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+}
+```
+
 > **Good to know**:
 >
 > * We still recommend using WebP for most use cases.
 > * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower, but subsequent requests that are cached will be faster.
+> * When using multiple formats, Next.js will cache each format separately. This means increased storage requirements compared to using a single format, as both AVIF and WebP versions of images will be stored for different browser support.
 > * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.
 
 #### `minimumCacheTTL`

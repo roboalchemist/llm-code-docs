@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/src-folder.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder.md
-
-# Source: https://nextjs.org/docs/app/api-reference/file-conventions/src-folder.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder.md
-
 # src Folder
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 As an alternative to having the special Next.js `app` or `pages` directories in the root of your project, Next.js also supports the common pattern of placing application code under the `src` folder.

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/progressive-web-apps.md
 
 # How to build a Progressive Web Application (PWA) with Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Progressive Web Applications (PWAs) offer the reach and accessibility of web applications combined with the features and user experience of native mobile apps. With Next.js, you can create PWAs that provide a seamless, app-like experience across all platforms without the need for multiple codebases or app store approvals.

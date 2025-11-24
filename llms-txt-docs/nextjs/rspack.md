@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/community/rspack.md
 
 # Rspack Integration
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap.md
 
 # sitemap.xml
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `sitemap.(xml|js|ts)` is a special file that matches the [Sitemaps XML format](https://www.sitemaps.org/protocol.html) to help search engine crawlers index your site more efficiently.

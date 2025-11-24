@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/userAgent.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/functions/userAgent.md
-
-# Source: https://nextjs.org/docs/app/api-reference/functions/userAgent.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/functions/userAgent.md
-
 # userAgent
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `userAgent` helper extends the [Web Request API](https://developer.mozilla.org/docs/Web/API/Request) with additional properties and methods to interact with the user agent object from the request.

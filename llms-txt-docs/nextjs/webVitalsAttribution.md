@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/webVitalsAttribution.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/webVitalsAttribution.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/webVitalsAttribution.md
-
 # webVitalsAttribution
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 

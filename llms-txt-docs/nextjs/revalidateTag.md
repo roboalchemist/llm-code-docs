@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/revalidateTag.md
 
 # revalidateTag
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `revalidateTag` allows you to invalidate [cached data](/docs/app/guides/caching.md) on-demand for a specific cache tag.

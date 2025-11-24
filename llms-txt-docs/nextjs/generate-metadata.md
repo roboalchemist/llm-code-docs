@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/generate-metadata.md
 
 # generateMetadata
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 You can use the `metadata` object or the `generateMetadata` function to define metadata.

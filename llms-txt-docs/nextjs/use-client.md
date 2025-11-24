@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/directives/use-client.md
 
 # use client
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `'use client'` directive declares an entry point for the components to be rendered on the **client side** and should be used when creating interactive user interfaces (UI) that require client-side JavaScript capabilities, such as state management, event handling, and access to browser APIs. This is a React feature.

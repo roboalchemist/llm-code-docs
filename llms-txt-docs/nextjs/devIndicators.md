@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/devIndicators.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators.md
-
 # devIndicators
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `devIndicators` allows you to configure the on-screen indicator that gives context about the current route you're viewing during development.
@@ -42,7 +36,12 @@ Route (app)
 ƒ  (Dynamic)  server-rendered on demand
 ```
 
-When exporting [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props.md) or [`getInitialProps`](/docs/pages/api-reference/functions/get-initial-props.md) from a page, it will be marked as dynamic.
+There are two reasons a route might opt out of static rendering:
+
+* The presence of [Dynamic APIs](/docs/app/guides/caching.md#dynamic-rendering) which rely on runtime information.
+* An [uncached data request](/docs/app/getting-started/fetching-data.md), like a call to an ORM or database driver.
+
+Check your route for any of these conditions, and if you are not able to statically render the route, then consider using [`loading.js`](/docs/app/api-reference/file-conventions/loading.md) or [`<Suspense />`](https://react.dev/reference/react/Suspense) to leverage [streaming](/docs/app/getting-started/linking-and-navigating.md#streaming).
 
 ## Version History
 

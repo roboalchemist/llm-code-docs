@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing/cypress.md
 
-# Source: https://nextjs.org/docs/pages/guides/testing/cypress.md
-
-# Source: https://nextjs.org/docs/app/guides/testing/cypress.md
-
-# Source: https://nextjs.org/docs/pages/guides/testing/cypress.md
-
 # How to set up Cypress with Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 [Cypress](https://www.cypress.io/) is a test runner used for **End-to-End (E2E)** and **Component Testing**. This page will show you how to set up Cypress with Next.js and write your first tests.
@@ -17,6 +11,14 @@
 > **Warning:**
 >
 > * Cypress versions below 13.6.3 do not support [TypeScript version 5](https://github.com/cypress-io/cypress/issues/27731) with `moduleResolution:"bundler"`. However, this issue has been resolved in Cypress version 13.6.3 and later. [cypress v13.6.3](https://docs.cypress.io/guides/references/changelog#13-6-3)
+
+## Quickstart
+
+You can use `create-next-app` with the [with-cypress example](https://github.com/vercel/next.js/tree/canary/examples/with-cypress) to quickly get started.
+
+```bash filename="Terminal"
+npx create-next-app@latest --example with-cypress with-cypress-app
+```
 
 ## Manual setup
 
@@ -78,10 +80,10 @@ module.exports = defineConfig({
 
 Then, create two new Next.js files:
 
-```jsx filename="pages/index.js"
+```jsx filename="app/page.js"
 import Link from 'next/link'
 
-export default function Home() {
+export default function Page() {
   return (
     <div>
       <h1>Home</h1>
@@ -91,10 +93,10 @@ export default function Home() {
 }
 ```
 
-```jsx filename="pages/about.js"
+```jsx filename="app/about/page.js"
 import Link from 'next/link'
 
-export default function About() {
+export default function Page() {
   return (
     <div>
       <h1>About</h1>
@@ -171,20 +173,20 @@ module.exports = defineConfig({
 
 Assuming the same components from the previous section, add a test to validate a component is rendering the expected output:
 
-```jsx filename="cypress/component/about.cy.js"
-import AboutPage from '../../pages/about'
+```tsx filename="cypress/component/about.cy.tsx"
+import Page from '../../app/page'
 
-describe('<AboutPage />', () => {
+describe('<Page />', () => {
   it('should render and display expected content', () => {
-    // Mount the React component for the About page
-    cy.mount(<AboutPage />)
+    // Mount the React component for the Home page
+    cy.mount(<Page />)
 
-    // The new page should contain an h1 with "About page"
-    cy.get('h1').contains('About')
+    // The new page should contain an h1 with "Home"
+    cy.get('h1').contains('Home')
 
     // Validate that a link with the expected URL is present
-    // *Following* the link is better suited to an E2E test
-    cy.get('a[href="/"]').should('be.visible')
+    // Following the link is better suited to an E2E test
+    cy.get('a[href="/about"]').should('be.visible')
   })
 })
 ```

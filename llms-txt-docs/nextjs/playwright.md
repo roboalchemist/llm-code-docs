@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing/playwright.md
 
-# Source: https://nextjs.org/docs/pages/guides/testing/playwright.md
-
-# Source: https://nextjs.org/docs/app/guides/testing/playwright.md
-
-# Source: https://nextjs.org/docs/pages/guides/testing/playwright.md
-
 # How to set up Playwright with Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Playwright is a testing framework that lets you automate Chromium, Firefox, and WebKit with a single API. You can use it to write **End-to-End (E2E)** testing. This guide will show you how to set up Playwright with Next.js and write your first tests.
@@ -40,10 +34,10 @@ This will take you through a series of prompts to setup and configure Playwright
 
 Create two new Next.js pages:
 
-```tsx filename="pages/index.ts"
+```tsx filename="app/page.tsx"
 import Link from 'next/link'
 
-export default function Home() {
+export default function Page() {
   return (
     <div>
       <h1>Home</h1>
@@ -53,10 +47,10 @@ export default function Home() {
 }
 ```
 
-```tsx filename="pages/about.ts"
+```tsx filename="app/about/page.tsx"
 import Link from 'next/link'
 
-export default function About() {
+export default function Page() {
   return (
     <div>
       <h1>About</h1>

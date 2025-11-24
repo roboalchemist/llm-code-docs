@@ -2,30 +2,130 @@
 
 # Source: https://nextjs.org/docs/app/guides/redirecting.md
 
-# Source: https://nextjs.org/docs/pages/guides/redirecting.md
-
-# Source: https://nextjs.org/docs/app/guides/redirecting.md
-
-# Source: https://nextjs.org/docs/pages/guides/redirecting.md
-
 # How to handle redirects in Next.js
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 There are a few ways you can handle redirects in Next.js. This page will go through each available option, use cases, and how to manage large numbers of redirects.
 
-| API                                                           | Purpose                                           | Where                 | Status Code                        |
-| ------------------------------------------------------------- | ------------------------------------------------- | --------------------- | ---------------------------------- |
-| [`useRouter`](#userouter-hook)                                | Perform a client-side navigation                  | Components            | N/A                                |
-| [`redirects` in `next.config.js`](#redirects-in-nextconfigjs) | Redirect an incoming request based on a path      | `next.config.js` file | 307 (Temporary) or 308 (Permanent) |
-| [`NextResponse.redirect`](#nextresponseredirect-in-proxy)     | Redirect an incoming request based on a condition | Proxy                 | Any                                |
+| API                                                           | Purpose                                           | Where                                             | Status Code                            |
+| ------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | -------------------------------------- |
+| [`redirect`](#redirect-function)                              | Redirect user after a mutation or event           | Server Components, Server Actions, Route Handlers | 307 (Temporary) or 303 (Server Action) |
+| [`permanentRedirect`](#permanentredirect-function)            | Redirect user after a mutation or event           | Server Components, Server Actions, Route Handlers | 308 (Permanent)                        |
+| [`useRouter`](#userouter-hook)                                | Perform a client-side navigation                  | Event Handlers in Client Components               | N/A                                    |
+| [`redirects` in `next.config.js`](#redirects-in-nextconfigjs) | Redirect an incoming request based on a path      | `next.config.js` file                             | 307 (Temporary) or 308 (Permanent)     |
+| [`NextResponse.redirect`](#nextresponseredirect-in-proxy)     | Redirect an incoming request based on a condition | Proxy                                             | Any                                    |
+
+## `redirect` function
+
+The `redirect` function allows you to redirect the user to another URL. You can call `redirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+
+`redirect` is often used after a mutation or event. For example, creating a post:
+
+```ts filename="app/actions.ts" switcher
+'use server'
+
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
+
+export async function createPost(id: string) {
+  try {
+    // Call database
+  } catch (error) {
+    // Handle errors
+  }
+
+  revalidatePath('/posts') // Update cached posts
+  redirect(`/post/${id}`) // Navigate to the new post page
+}
+```
+
+```js filename="app/actions.js" switcher
+'use server'
+
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
+
+export async function createPost(id) {
+  try {
+    // Call database
+  } catch (error) {
+    // Handle errors
+  }
+
+  revalidatePath('/posts') // Update cached posts
+  redirect(`/post/${id}`) // Navigate to the new post page
+}
+```
+
+> **Good to know**:
+>
+> * `redirect` returns a 307 (Temporary Redirect) status code by default. When used in a Server Action, it returns a 303 (See Other), which is commonly used for redirecting to a success page as a result of a POST request.
+> * `redirect` throws an error so it should be called **outside** the `try` block when using `try/catch` statements.
+> * `redirect` can be called in Client Components during the rendering process but not in event handlers. You can use the [`useRouter` hook](#userouter-hook) instead.
+> * `redirect` also accepts absolute URLs and can be used to redirect to external links.
+> * If you'd like to redirect before the render process, use [`next.config.js`](#redirects-in-nextconfigjs) or [Proxy](#nextresponseredirect-in-proxy).
+
+See the [`redirect` API reference](/docs/app/api-reference/functions/redirect.md) for more information.
+
+## `permanentRedirect` function
+
+The `permanentRedirect` function allows you to **permanently** redirect the user to another URL. You can call `permanentRedirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+
+`permanentRedirect` is often used after a mutation or event that changes an entity's canonical URL, such as updating a user's profile URL after they change their username:
+
+```ts filename="app/actions.ts" switcher
+'use server'
+
+import { permanentRedirect } from 'next/navigation'
+import { revalidateTag } from 'next/cache'
+
+export async function updateUsername(username: string, formData: FormData) {
+  try {
+    // Call database
+  } catch (error) {
+    // Handle errors
+  }
+
+  revalidateTag('username') // Update all references to the username
+  permanentRedirect(`/profile/${username}`) // Navigate to the new user profile
+}
+```
+
+```js filename="app/actions.js" switcher
+'use server'
+
+import { permanentRedirect } from 'next/navigation'
+import { revalidateTag } from 'next/cache'
+
+export async function updateUsername(username, formData) {
+  try {
+    // Call database
+  } catch (error) {
+    // Handle errors
+  }
+
+  revalidateTag('username') // Update all references to the username
+  permanentRedirect(`/profile/${username}`) // Navigate to the new user profile
+}
+```
+
+> **Good to know**:
+>
+> * `permanentRedirect` returns a 308 (permanent redirect) status code by default.
+> * `permanentRedirect` also accepts absolute URLs and can be used to redirect to external links.
+> * If you'd like to redirect before the render process, use [`next.config.js`](#redirects-in-nextconfigjs) or [Proxy](#nextresponseredirect-in-proxy).
+
+See the [`permanentRedirect` API reference](/docs/app/api-reference/functions/permanentRedirect.md) for more information.
 
 ## `useRouter()` hook
 
-If you need to redirect inside a component, you can use the `push` method from the `useRouter` hook. For example:
+If you need to redirect inside an event handler in a Client Component, you can use the `push` method from the `useRouter` hook. For example:
 
 ```tsx filename="app/page.tsx" switcher
-import { useRouter } from 'next/router'
+'use client'
+
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
   const router = useRouter()
@@ -39,7 +139,9 @@ export default function Page() {
 ```
 
 ```jsx filename="app/page.js" switcher
-import { useRouter } from 'next/router'
+'use client'
+
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
   const router = useRouter()
@@ -56,7 +158,7 @@ export default function Page() {
 >
 > * If you don't need to programmatically navigate a user, you should use a [`<Link>`](/docs/app/api-reference/components/link.md) component.
 
-See the [`useRouter` API reference](/docs/pages/api-reference/functions/use-router.md) for more information.
+See the [`useRouter` API reference](/docs/app/api-reference/functions/use-router.md) for more information.
 
 ## `redirects` in `next.config.js`
 
@@ -258,7 +360,7 @@ Reading a large dataset for every incoming request can be slow and expensive. Th
 
 Considering the previous example, you can import a generated bloom filter file into Proxy, then, check if the incoming request pathname exists in the bloom filter.
 
-If it does, forward the request to a  [API Routes](/docs/pages/building-your-application/routing/api-routes.md) which will check the actual file and redirect the user to the appropriate URL. This avoids importing a large redirects file into Proxy, which can slow down every incoming request.
+If it does, forward the request to a [Route Handler](/docs/app/api-reference/file-conventions/route.md)  which will check the actual file and redirect the user to the appropriate URL. This avoids importing a large redirects file into Proxy, which can slow down every incoming request.
 
 ```ts filename="proxy.ts" switcher
 import { NextResponse, NextRequest } from 'next/server'
@@ -356,10 +458,10 @@ export async function proxy(request) {
 }
 ```
 
-Then, in the API Route:
+Then, in the Route Handler:
 
-```ts filename="pages/api/redirects.ts" switcher
-import type { NextApiRequest, NextApiResponse } from 'next'
+```ts filename="app/api/redirects/route.ts" switcher
+import { NextRequest, NextResponse } from 'next/server'
 import redirects from '@/app/redirects/redirects.json'
 
 type RedirectEntry = {
@@ -367,10 +469,10 @@ type RedirectEntry = {
   permanent: boolean
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const pathname = req.query.pathname
+export function GET(request: NextRequest) {
+  const pathname = request.nextUrl.searchParams.get('pathname')
   if (!pathname) {
-    return res.status(400).json({ message: 'Bad Request' })
+    return new Response('Bad Request', { status: 400 })
   }
 
   // Get the redirect entry from the redirects.json file
@@ -378,21 +480,22 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   // Account for bloom filter false positives
   if (!redirect) {
-    return res.status(400).json({ message: 'No redirect' })
+    return new Response('No redirect', { status: 400 })
   }
 
   // Return the redirect entry
-  return res.json(redirect)
+  return NextResponse.json(redirect)
 }
 ```
 
-```js filename="pages/api/redirects.js" switcher
+```js filename="app/api/redirects/route.js" switcher
+import { NextResponse } from 'next/server'
 import redirects from '@/app/redirects/redirects.json'
 
-export default function handler(req, res) {
-  const pathname = req.query.pathname
+export function GET(request) {
+  const pathname = request.nextUrl.searchParams.get('pathname')
   if (!pathname) {
-    return res.status(400).json({ message: 'Bad Request' })
+    return new Response('Bad Request', { status: 400 })
   }
 
   // Get the redirect entry from the redirects.json file
@@ -400,11 +503,11 @@ export default function handler(req, res) {
 
   // Account for bloom filter false positives
   if (!redirect) {
-    return res.status(400).json({ message: 'No redirect' })
+    return new Response('No redirect', { status: 400 })
   }
 
   // Return the redirect entry
-  return res.json(redirect)
+  return NextResponse.json(redirect)
 }
 ```
 

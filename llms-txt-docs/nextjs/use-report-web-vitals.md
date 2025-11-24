@@ -2,33 +2,46 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
-
-# Source: https://nextjs.org/docs/app/api-reference/functions/use-report-web-vitals.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals.md
-
 # useReportWebVitals
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `useReportWebVitals` hook allows you to report [Core Web Vitals](https://web.dev/vitals/), and can be used in combination with your analytics service.
 
 New functions passed to `useReportWebVitals` are called with the available metrics up to that point. To prevent reporting duplicated data, ensure that the callback function reference does not change (as shown in the code examples below).
 
-```jsx filename="pages/_app.js"
+```jsx filename="app/_components/web-vitals.js"
+'use client'
+
 import { useReportWebVitals } from 'next/web-vitals'
 
 const logWebVitals = (metric) => {
   console.log(metric)
 }
 
-function MyApp({ Component, pageProps }) {
+export function WebVitals() {
   useReportWebVitals(logWebVitals)
 
-  return <Component {...pageProps} />
+  return null
 }
 ```
+
+```jsx filename="app/layout.js"
+import { WebVitals } from './_components/web-vitals'
+
+export default function Layout({ children }) {
+  return (
+    <html>
+      <body>
+        <WebVitals />
+        {children}
+      </body>
+    </html>
+  )
+}
+```
+
+> Since the `useReportWebVitals` hook requires the `'use client'` directive, the most performant approach is to create a separate component that the root layout imports. This confines the client boundary exclusively to the `WebVitals` component.
 
 ## useReportWebVitals
 
@@ -56,7 +69,33 @@ experience of a web page. The following web vitals are all included:
 
 You can handle all the results of these metrics using the `name` property.
 
-```jsx filename="pages/_app.js"
+```tsx filename="app/components/web-vitals.tsx" switcher
+'use client'
+
+import { useReportWebVitals } from 'next/web-vitals'
+
+type ReportWebVitalsCallback = Parameters<typeof useReportWebVitals>[0]
+
+const handleWebVitals: ReportWebVitalsCallback = (metric) => {
+  switch (metric.name) {
+    case 'FCP': {
+      // handle FCP results
+    }
+    case 'LCP': {
+      // handle LCP results
+    }
+    // ...
+  }
+}
+
+export function WebVitals() {
+  useReportWebVitals(handleWebVitals)
+}
+```
+
+```jsx filename="app/components/web-vitals.js" switcher
+'use client'
+
 import { useReportWebVitals } from 'next/web-vitals'
 
 const handleWebVitals = (metric) => {
@@ -71,52 +110,10 @@ const handleWebVitals = (metric) => {
   }
 }
 
-function MyApp({ Component, pageProps }) {
+export function WebVitals() {
   useReportWebVitals(handleWebVitals)
-
-  return <Component {...pageProps} />
 }
 ```
-
-## Custom Metrics
-
-In addition to the core metrics listed above, there are some additional custom metrics that
-measure the time it takes for the page to hydrate and render:
-
-* `Next.js-hydration`: Length of time it takes for the page to start and finish hydrating (in ms)
-* `Next.js-route-change-to-render`: Length of time it takes for a page to start rendering after a
-  route change (in ms)
-* `Next.js-render`: Length of time it takes for a page to finish render after a route change (in ms)
-
-You can handle all the results of these metrics separately:
-
-```jsx filename="pages/_app.js"
-import { useReportWebVitals } from 'next/web-vitals'
-
-function handleCustomMetrics(metrics) {
-  switch (metric.name) {
-    case 'Next.js-hydration':
-      // handle hydration results
-      break
-    case 'Next.js-route-change-to-render':
-      // handle route-change to render results
-      break
-    case 'Next.js-render':
-      // handle render results
-      break
-    default:
-      break
-  }
-}
-
-function MyApp({ Component, pageProps }) {
-  useReportWebVitals(handleCustomMetrics)
-
-  return <Component {...pageProps} />
-}
-```
-
-These metrics work in all browsers that support the [User Timing API](https://caniuse.com/#feat=user-timing).
 
 ## Sending results to external systems
 

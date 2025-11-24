@@ -195,307 +195,6 @@ The API also supports [streaming](/docs/api-reference/streaming).
 For information about using third-party SDKs and frameworks with OpenRouter, please [see our frameworks documentation.](/docs/community/frameworks-and-integrations-overview)
 
 
-# Frequently Asked Questions
-
-> Find answers to commonly asked questions about OpenRouter's unified API, model access, pricing, and integration.
-
-## Getting started
-
-<AccordionGroup>
-  <Accordion title="Why should I use OpenRouter?">
-    OpenRouter provides a unified API to access all the major LLM models on the
-    market. It also allows users to aggregate their billing in one place and
-    keep track of all of their usage using our analytics.
-
-    OpenRouter passes through the pricing of the underlying providers, while pooling their uptime,
-    so you get the same pricing you'd get from the provider directly, with a
-    unified API and fallbacks so that you get much better uptime.
-  </Accordion>
-
-  <Accordion title="How do I get started with OpenRouter?">
-    To get started, create an account and add credits on the
-    [Credits](https://openrouter.ai/settings/credits) page. Credits are simply
-    deposits on OpenRouter that you use for LLM inference.
-    When you use the API or chat interface, we deduct the request cost from your
-    credits. Each model and provider has a different price per million tokens.
-
-    Once you have credits you can either use the chat room, or create API keys
-    and start using the API. You can read our [quickstart](/docs/quickstart)
-    guide for code samples and more.
-  </Accordion>
-
-  <Accordion title="How do I get support?">
-    The best way to get technical support is to join our
-    [Discord](https://discord.gg/openrouter) and ask the community in the #help forum.
-
-    For billing and account management questions, please contact us at [support@openrouter.ai](mailto:support@openrouter.ai).
-  </Accordion>
-
-  <Accordion title="How do I get billed for my usage on OpenRouter?">
-    For each model we have the pricing displayed per million tokens. There is
-    usually a different price for prompt and completion tokens. There are also
-    models that charge per request, for images and for reasoning tokens. All of
-    these details will be visible on the models page.
-
-    When you make a request to OpenRouter, we receive the total number of tokens processed
-    by the provider. We then calculate the corresponding cost and deduct it from your credits.
-    You can review your complete usage history in the [Activity tab](https://openrouter.ai/activity).
-
-    You can also add the `usage: {include: true}` parameter to your chat request
-    to get the usage information in the response.
-
-    We pass through the pricing of the underlying providers; there is no markup
-    on inference pricing (however we do charge a [fee](/docs/faq#pricing-and-fees) when purchasing credits).
-  </Accordion>
-</AccordionGroup>
-
-## Pricing and Fees
-
-<AccordionGroup>
-  <Accordion title="What are the fees for using OpenRouter?">
-    OpenRouter charges a {getTotalFeeString('stripe')} fee when you purchase credits. We pass through
-    the pricing of the underlying model providers without any markup, so you pay
-    the same rate as you would directly with the provider.
-
-    Crypto payments are charged a fee of {getTotalFeeString('coinbase')}.
-  </Accordion>
-
-  <Accordion title="Is there a fee for using my own provider keys (BYOK)?">
-    Yes, if you choose to use your own provider API keys (Bring Your Own Key -
-    BYOK), the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK
-    requests per-month are free, and for all subsequent usage there is a fee
-    of {bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same
-    model and provider would normally cost on OpenRouter. This fee is deducted
-    from your OpenRouter credits. This allows you to manage your rate limits and
-    costs directly with the provider while still leveraging OpenRouter's unified
-    interface.
-  </Accordion>
-</AccordionGroup>
-
-## Models and Providers
-
-<AccordionGroup>
-  <Accordion title="What LLM models does OpenRouter support?">
-    OpenRouter provides access to a wide variety of LLM models, including frontier models from major AI labs.
-    For a complete list of models you can visit the [models browser](https://openrouter.ai/models) or fetch the list through the [models api](https://openrouter.ai/api/v1/models).
-  </Accordion>
-
-  <Accordion title="How frequently are new models added?">
-    We work on adding models as quickly as we can. We often have partnerships with
-    the labs releasing models and can release models as soon as they are
-    available. If there is a model missing that you'd like OpenRouter to support, feel free to message us on
-    [Discord](https://discord.gg/openrouter).
-  </Accordion>
-
-  <Accordion title="What are model variants?">
-    Variants are suffixes that can be added to the model slug to change its behavior.
-
-    Static variants can only be used with specific models and these are listed in our [models api](https://openrouter.ai/api/v1/models).
-
-    1. `:free` - The model is always provided for free and has low rate limits.
-    2. `:beta` - The model is not moderated by OpenRouter.
-    3. `:extended` - The model has longer than usual context length.
-    4. `:exacto` - The model only uses OpenRouter-curated high-quality endpoints.
-    5. `:thinking` - The model supports reasoning by default.
-
-    Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
-
-    1. `:online` - All requests will run a query to extract web results that are attached to the prompt.
-    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times.
-    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options.
-  </Accordion>
-
-  <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">
-    You can read our requirements at the [Providers
-    page](/docs/use-cases/for-providers). If you would like to contact us, the best
-    place to reach us is over email.
-  </Accordion>
-
-  <Accordion title="What is the expected latency/response time for different models?">
-    For each model on OpenRouter we show the latency (time to first token) and the token
-    throughput for all providers. You can use this to estimate how long requests
-    will take. If you would like to optimize for throughput you can use the
-    `:nitro` variant to route to the fastest provider.
-  </Accordion>
-
-  <Accordion title="How does model fallback work if a provider is unavailable?">
-    If a provider returns an error OpenRouter will automatically fall back to the
-    next provider. This happens transparently to the user and allows production
-    apps to be much more resilient. OpenRouter has a lot of options to configure
-    the provider routing behavior. The full documentation can be found [here](/docs/features/provider-routing).
-  </Accordion>
-</AccordionGroup>
-
-## API Technical Specifications
-
-<AccordionGroup>
-  <Accordion title="What authentication methods are supported?">
-    OpenRouter uses three authentication methods:
-
-    1. Cookie-based authentication for the web interface and chatroom
-    2. API keys (passed as Bearer tokens) for accessing the completions API and other core endpoints
-    3. [Provisioning API keys](/docs/features/provisioning-api-keys) for programmatically managing API keys through the key management endpoints
-  </Accordion>
-
-  <Accordion title="How are rate limits calculated?">
-    For free models, rate limits are determined by the credits that you have purchased.
-    If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits, your free model rate limit will be {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
-    Otherwise, you will be rate limited to {FREE_MODEL_NO_CREDITS_RPD} free model API requests per day.
-
-    You can learn more about how rate limits work for paid accounts in our [rate limits documentation](/docs/api-reference/limits).
-  </Accordion>
-
-  <Accordion title="What API endpoints are available?">
-    OpenRouter implements the OpenAI API specification for /completions and
-    /chat/completions endpoints, allowing you to use any model with the same
-    request/response format. Additional endpoints like /api/v1/models are also
-    available. See our [API documentation](/docs/api-reference/overview) for
-    detailed specifications.
-  </Accordion>
-
-  <Accordion title="What are the supported formats?">
-    The API supports text and images.
-    [Images](/docs/api-reference/overview#images--multimodal) can be passed as
-    URLs or base64 encoded images. PDF and other file types are coming soon.
-  </Accordion>
-
-  <Accordion title="How does streaming work?">
-    Streaming uses server-sent events (SSE) for real-time token delivery. Set
-    `stream: true` in your request to enable streaming responses.
-  </Accordion>
-
-  <Accordion title="What SDK support is available?">
-    OpenRouter is a drop-in replacement for OpenAI. Therefore, any SDKs that
-    support OpenAI by default also support OpenRouter. Check out our
-    [docs](/docs/community/open-ai-sdk) for more details.
-  </Accordion>
-</AccordionGroup>
-
-## Privacy and Data Logging
-
-Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Policy](https://openrouter.ai/privacy).
-
-<AccordionGroup>
-  <Accordion title="What data is logged during API use?">
-    We log basic request metadata (timestamps, model used, token counts). Prompt
-    and completion are not logged by default. We do zero logging of your prompts/completions,
-    even if an error occurs, unless you opt-in to logging them.
-
-    We have an opt-in [setting](https://openrouter.ai/settings/privacy) that
-    lets users opt-in to log their prompts and completions in exchange for a 1%
-    discount on usage costs.
-  </Accordion>
-
-  <Accordion title="What data is logged during Chatroom use?">
-    The same data privacy applies to the chatroom as the API. All conversations
-    in the chatroom are stored locally on your device. Conversations will not sync across devices.
-    It is possible to export and import conversations using the settings menu in the chatroom.
-  </Accordion>
-
-  <Accordion title="What third-party sharing occurs?">
-    OpenRouter is a proxy that sends your requests to the model provider for it to be completed.
-    We work with all providers to, when possible, ensure that prompts and completions are not logged or used for training.
-    Providers that do log, or where we have been unable to confirm their policy, will not be routed to unless the model training
-    toggle is switched on in the [privacy settings](https://openrouter.ai/settings/privacy) tab.
-
-    If you specify [provider routing](/docs/features/provider-routing) in your request, but none of the providers
-    match the level of privacy specified in your account settings, you will get an error and your request will not complete.
-  </Accordion>
-</AccordionGroup>
-
-## Credit and Billing Systems
-
-<AccordionGroup>
-  <Accordion title="What purchase options exist?">
-    OpenRouter uses a credit system where the base currency is US dollars. All
-    of the pricing on our site and API is denoted in dollars. Users can top up
-    their balance manually or set up auto top up so that the balance is
-    replenished when it gets below the set threshold.
-  </Accordion>
-
-  <Accordion title="Do credits expire?">
-    Per our [terms](https://openrouter.ai/terms), we reserve the right to expire
-    unused credits after one year of purchase.
-  </Accordion>
-
-  <Accordion title="My credits haven't showed up in my account">
-    If you paid using Stripe, sometimes there is an issue with the Stripe
-    integration and credits can get delayed in showing up on your account. Please allow up to one hour.
-    If your credits still have not appeared after an hour, check to confirm you have not been charged and
-    that you do not have a stripe receipt email. If you do not have a receipt email or have not been charged,
-    your card may have been declined. Please try again with a different card or payment method.
-
-    If you have been charged and still do not have credits, please reach out to us via email
-    at [support@openrouter.ai](mailto:support@openrouter.ai) with details of the purchase.
-
-    If you paid using crypto, please reach out to us via email at [support@openrouter.ai](mailto:support@openrouter.ai)
-    and we will look into it.
-  </Accordion>
-
-  <Accordion title="What's the refund policy?">
-    Refunds for unused Credits may be requested within twenty-four (24) hours from the time the transaction was processed. If no refund request is received within twenty-four (24) hours following the purchase, any unused Credits become non-refundable. To request a refund within the eligible period, you can use the refund button on the [Credits](https://openrouter.ai/settings/credits) page. The unused credit amount will be refunded to your payment method; the platform fees are non-refundable. Note that cryptocurrency payments are never refundable.
-  </Accordion>
-
-  <Accordion title="How to monitor credit usage?">
-    The [Activity](https://openrouter.ai/activity) page allows users to view
-    their historic usage and filter the usage by model, provider and api key.
-
-    We also provide a [credits api](/docs/api-reference/get-credits) that has
-    live information about the balance and remaining credits for the account.
-  </Accordion>
-
-  <Accordion title="What free tier options exist?">
-    All new users receive a very small free allowance to be able to test out OpenRouter.
-    There are many [free models](https://openrouter.ai/models?max_price=0) available
-    on OpenRouter, it is important to note that these models have low rate limits ({FREE_MODEL_NO_CREDITS_RPD} requests per day total)
-    and are usually not suitable for production use. If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits,
-    the free models will be limited to {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
-  </Accordion>
-
-  <Accordion title="How do volume discounts work?">
-    OpenRouter does not currently offer volume discounts, but you can reach out to us
-    over email if you think you have an exceptional use case.
-  </Accordion>
-
-  <Accordion title="What payment methods are accepted?">
-    We accept all major credit cards, AliPay and cryptocurrency payments in
-    USDC. We are working on integrating PayPal soon, if there are any payment
-    methods that you would like us to support please reach out on [Discord](https://discord.gg/openrouter).
-  </Accordion>
-
-  <Accordion title="How does OpenRouter make money?">
-    We charge a small [fee](/docs/faq#pricing-and-fees) when purchasing credits. We never mark-up the pricing
-    of the underlying providers, and you'll always pay the same as the provider's
-    listed price.
-  </Accordion>
-</AccordionGroup>
-
-## Account Management
-
-<AccordionGroup>
-  <Accordion title="How can I delete my account?">
-    Go to the [Settings](https://openrouter.ai/settings/preferences) page and click Manage Account.
-    In the modal that opens, select the Security tab. You'll find an option there to delete your account.
-
-    Note that unused credits will be lost and cannot be reclaimed if you delete and later recreate your account.
-  </Accordion>
-
-  <Accordion title="How does team access work?">
-    Organization management information can be found in our [organization management documentation](/docs/use-cases/organization-management).
-  </Accordion>
-
-  <Accordion title="What analytics are available?">
-    Our [activity dashboard](https://openrouter.ai/activity) provides real-time
-    usage metrics. If you would like any specific reports or metrics please
-    contact us.
-  </Accordion>
-
-  <Accordion title="How can I contact support?">
-    For account and billing questions, please contact us at [support@openrouter.ai](mailto:support@openrouter.ai).
-  </Accordion>
-</AccordionGroup>
-
-
 # Principles
 
 > Learn about OpenRouter's guiding principles and mission. Understand our commitment to price optimization, standardized APIs, and high availability in AI model deployment.
@@ -506,7 +205,7 @@ OpenRouter helps developers source and optimize AI usage. We believe the future 
 
 **Price and Performance**. OpenRouter scouts for the best prices, the lowest latencies, and the highest throughput across dozens of providers, and lets you choose how to [prioritize](/docs/features/provider-routing) them.
 
-**Standardized API**. No need to change code when switching between models or providers. You can even let your users [choose and pay for their own](/docs/use-cases/oauth-pkce).
+**Standardized API**. No need to change code when switching between models or providers. You can even let your users [choose and pay for their own](/docs/auth/oauth).
 
 **Real-World Insights**. Be the first to take advantage of new models. See real-world data of [how often models are used](https://openrouter.ai/rankings) for different purposes. Keep up to date in our [Discord channel](https://discord.com/channels/1091220969173028894/1094454198688546826).
 
@@ -629,3083 +328,6 @@ If there are models or providers you are interested in that OpenRouter doesn't h
 ## For Providers
 
 If you're interested in working with OpenRouter, you can learn more on our [providers page](/docs/use-cases/for-providers).
-
-
-# Privacy, Logging, and Data Collection
-
-> Learn how OpenRouter & its providers handle your data, including logging and data collection.
-
-When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You have control over how your data is handled at each step.
-
-This page is designed to give a practical overview of how your data is handled, stored, and used. More information is available in the [privacy policy](/privacy) and [terms of service](/terms).
-
-## Within OpenRouter
-
-OpenRouter does not store your prompts or responses, *unless* you have explicitly opted in to prompt logging in your account settings. It's as simple as that.
-
-OpenRouter samples a small number of prompts for categorization to power our reporting and model ranking. If you are not opted in to prompt logging, any categorization of your prompts is stored completely anonymously and never associated with your account or user ID. The categorization is done by model with a zero-data-retention policy.
-
-OpenRouter does store metadata (e.g. number of prompt and completion tokens, latency, etc) for each request. This is used to power our reporting and model ranking, and your [activity feed](/activity).
-
-## Provider Policies
-
-### Training on Prompts
-
-Each provider on OpenRouter has its own data handling policies. We reflect those policies in structured data on each AI endpoint that we offer.
-
-On your account settings page, you can set whether you would like to allow routing to providers that may train on your data (according to their own policies). There are separate settings for paid and free models.
-
-Wherever possible, OpenRouter works with providers to ensure that prompts will not be trained on, but there are exceptions. If you opt out of training in your account settings, OpenRouter will not route to providers that train. This setting has no bearing on OpenRouter's own policies and what we do with your prompts.
-
-<Tip title="Data Policy Filtering">
-  You can [restrict individual requests](/docs/features/provider-routing#requiring-providers-to-comply-with-data-policies)
-  to only use providers with a certain data policy.
-
-  This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
-</Tip>
-
-### Data Retention & Logging
-
-Providers also have their own data retention policies, often for compliance reasons. OpenRouter does not have routing rules that change based on data retention policies of providers, but the retention policies as reflected in each provider's terms are shown below. Any user of OpenRouter can ignore providers that don't meet their own data retention requirements.
-
-The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/docs/features/provider-routing#terms-of-service).
-
-<ProviderDataRetentionTable />
-
-## Enterprise EU in-region routing
-
-For enterprise customers, OpenRouter supports EU in-region routing. When enabled for your account, your prompts and completions are processed within the European Union and do not leave the EU. Use the base URL [http://eu.openrouter.ai](http://eu.openrouter.ai) for API requests to keep traffic and data within Europe. This feature is only enabled for enterprise customers by request.
-
-If you’re interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).
-
-
-# Zero Data Retention
-
-> Learn how OpenRouter gives you control over your data
-
-Zero Data Retention (ZDR) means that a provider will not store your data for any period of time.
-
-OpenRouter has a [setting](/settings/privacy) that, when enabled, only allows you to route to endpoints that have a Zero Data Retention policy.
-
-Providers that do not retain your data are also unable to train on your data. However we do have some endpoints & providers who do not train on your data but *do* retain it (e.g. to scan for abuse or for legal reasons). OpenRouter gives you controls over both of these policies.
-
-## How OpenRouter Manages Data Policies
-
-OpenRouter works with providers to understand each of their data policies and structures the policy data in a way that gives you control over which providers you want to route to.
-
-Note that a provider's general policy may differ from the specific policy for a given endpoint. OpenRouter keeps track of the specific policy for each endpoint, works with providers to keep these policies up to date, and in some cases creates special agreements with providers to ensure data retention or training policies that are more privacy-focused than their default policies.
-
-<Note>
-  If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
-</Note>
-
-A full list of providers and their data policies can be found [here](/docs/features/privacy-and-logging#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
-
-## Per-Request ZDR Enforcement
-
-In addition to the global ZDR setting in your [privacy settings](/settings/privacy), you can enforce Zero Data Retention on a per-request basis using the `zdr` parameter in your API calls.
-
-The request-level `zdr` parameter operates as an "OR" with your account-wide ZDR setting - if either is enabled, ZDR enforcement will be applied. This means the per-request parameter can only be used to ensure ZDR is enabled for a specific request, not to override or disable account-wide ZDR enforcement.
-
-This is useful for customers who don't want to globally enforce ZDR but need to ensure specific requests only route to ZDR endpoints.
-
-### Usage
-
-Include the `zdr` parameter in your provider preferences:
-
-```json
-{
-  "model": "gpt-4",
-  "messages": [...],
-  "provider": {
-    "zdr": true
-  }
-}
-```
-
-When `zdr` is set to `true`, the request will only be routed to endpoints that have a Zero Data Retention policy. When `zdr` is `false` or not provided, ZDR enforcement will still apply if enabled in your account settings.
-
-## Caching
-
-Some endpoints/models provide implicit caching of prompts. This keeps repeated prompt data in an in-memory cache in the provider's datacenter, so that the repeated part of the prompt does not need to be re-processed. This can lead to considerable cost savings.
-
-OpenRouter has taken the stance that in-memory caching of prompts is *not* considered "retaining" data, and we therefore allow endpoints/models with implicit caching to be hit when a ZDR routing policy is in effect.
-
-## OpenRouter's Retention Policy
-
-OpenRouter itself has a ZDR policy; your prompts are not retained unless you specifically opt in to prompt logging.
-
-## Zero Retention Endpoints
-
-The following endpoints have a ZDR policy. Note that this list is also available progammatically via [https://openrouter.ai/api/v1/endpoints/zdr](https://openrouter.ai/api/v1/endpoints/zdr). It is automatically updated when there are changes to a provider's data policy.:
-
-<ZDREndpointsTable />
-
-
-# Model Routing
-
-> Route requests dynamically between AI models. Learn how to use OpenRouter's Auto Router and model fallback features for optimal performance and reliability.
-
-OpenRouter provides two options for model routing.
-
-## Auto Router
-
-The [Auto Router](https://openrouter.ai/openrouter/auto), a special model ID that you can use to choose between selected high-quality models based on your prompt, powered by [NotDiamond](https://www.notdiamond.ai/).
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'openrouter/auto',
-    messages: [
-      {
-        role: 'user',
-        content: 'What is the meaning of life?',
-      },
-    ],
-  });
-
-  console.log(completion.choices[0].message.content);
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openrouter/auto',
-      messages: [
-        {
-          role: 'user',
-          content: 'What is the meaning of life?',
-        },
-      ],
-    }),
-  });
-
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
-  ```
-
-  ```python title="Python"
-  import requests
-  import json
-
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "model": "openrouter/auto",
-      "messages": [
-        {
-          "role": "user",
-          "content": "What is the meaning of life?"
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print(data['choices'][0]['message']['content'])
-  ```
-</CodeGroup>
-
-The resulting generation will have `model` set to the model that was used.
-
-## The `models` parameter
-
-The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
-    messages: [
-      {
-        role: 'user',
-        content: 'What is the meaning of life?',
-      },
-    ],
-  });
-
-  console.log(completion.choices[0].message.content);
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
-      messages: [
-        {
-          role: 'user',
-          content: 'What is the meaning of life?',
-        },
-      ],
-    }),
-  });
-
-  const data = await response.json();
-  console.log(data.choices[0].message.content);
-  ```
-
-  ```python title="Python"
-  import requests
-  import json
-
-  response = requests.post(
-    url="https://openrouter.ai/api/v1/chat/completions",
-    headers={
-      "Authorization": "Bearer <OPENROUTER_API_KEY>",
-      "Content-Type": "application/json",
-    },
-    data=json.dumps({
-      "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
-      "messages": [
-        {
-          "role": "user",
-          "content": "What is the meaning of life?"
-        }
-      ]
-    })
-  )
-
-  data = response.json()
-  print(data['choices'][0]['message']['content'])
-  ```
-</CodeGroup>
-
-If the model you selected returns an error, OpenRouter will try to use the fallback model instead. If the fallback model is down or returns an error, OpenRouter will return that error.
-
-By default, any error can trigger the use of a fallback model, including context length validation errors, moderation flags for filtered models, rate-limiting, and downtime.
-
-Requests are priced using the model that was ultimately used, which will be returned in the `model` attribute of the response body.
-
-## Using with OpenAI SDK
-
-To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, gpt-4o will be tried first, and the `models` array will be tried in order as fallbacks.
-
-<Template
-  data={{
-  API_KEY_REF,
-}}
->
-  <CodeGroup>
-    ```python
-    from openai import OpenAI
-
-    openai_client = OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key={{API_KEY_REF}},
-    )
-
-    completion = openai_client.chat.completions.create(
-        model="openai/gpt-4o",
-        extra_body={
-            "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
-        },
-        messages=[
-            {
-                "role": "user",
-                "content": "What is the meaning of life?"
-            }
-        ]
-    )
-
-    print(completion.choices[0].message.content)
-    ```
-
-    ```typescript
-    import OpenAI from 'openai';
-
-    const openrouterClient = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function main() {
-      // @ts-expect-error
-      const completion = await openrouterClient.chat.completions.create({
-        model: 'openai/gpt-4o',
-        models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
-        messages: [
-          {
-            role: 'user',
-            content: 'What is the meaning of life?',
-          },
-        ],
-      });
-      console.log(completion.choices[0].message);
-    }
-
-    main();
-    ```
-  </CodeGroup>
-</Template>
-
-
-# Provider Routing
-
-> Route AI model requests across multiple providers intelligently. Learn how to optimize for cost, performance, and reliability with OpenRouter's provider routing.
-
-OpenRouter routes requests to the best available providers for your model. By default, [requests are load balanced](#price-based-load-balancing-default-strategy) across the top providers to maximize uptime.
-
-You can customize how your requests are routed using the `provider` object in the request body for [Chat Completions](/docs/api-reference/chat-completion) and [Completions](/docs/api-reference/completion).
-
-The `provider` object can contain the following fields:
-
-| Field                      | Type              | Default | Description                                                                                                                       |
-| -------------------------- | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `order`                    | string\[]         | -       | List of provider slugs to try in order (e.g. `["anthropic", "openai"]`). [Learn more](#ordering-specific-providers)               |
-| `allow_fallbacks`          | boolean           | `true`  | Whether to allow backup providers when the primary is unavailable. [Learn more](#disabling-fallbacks)                             |
-| `require_parameters`       | boolean           | `false` | Only use providers that support all parameters in your request. [Learn more](#requiring-providers-to-support-all-parameters-beta) |
-| `data_collection`          | "allow" \| "deny" | "allow" | Control whether to use providers that may store data. [Learn more](#requiring-providers-to-comply-with-data-policies)             |
-| `zdr`                      | boolean           | -       | Restrict routing to only ZDR (Zero Data Retention) endpoints. [Learn more](#zero-data-retention-enforcement)                      |
-| `enforce_distillable_text` | boolean           | -       | Restrict routing to only models that allow text distillation. [Learn more](#distillable-text-enforcement)                         |
-| `only`                     | string\[]         | -       | List of provider slugs to allow for this request. [Learn more](#allowing-only-specific-providers)                                 |
-| `ignore`                   | string\[]         | -       | List of provider slugs to skip for this request. [Learn more](#ignoring-providers)                                                |
-| `quantizations`            | string\[]         | -       | List of quantization levels to filter by (e.g. `["int4", "int8"]`). [Learn more](#quantization)                                   |
-| `sort`                     | string            | -       | Sort providers by price or throughput. (e.g. `"price"` or `"throughput"`). [Learn more](#provider-sorting)                        |
-| `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#maximum-price)                                                |
-
-<Note title="EU data residency (Enterprise)">
-  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/features/privacy-and-logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
-</Note>
-
-## Price-Based Load Balancing (Default Strategy)
-
-For each model in your request, OpenRouter's default behavior is to load balance requests across providers, prioritizing price.
-
-If you are more sensitive to throughput than price, you can use the `sort` field to explicitly prioritize throughput.
-
-<Tip>
-  When you send a request with `tools` or `tool_choice`, OpenRouter will only
-  route to providers that support tool use. Similarly, if you set a
-  `max_tokens`, then OpenRouter will only route to providers that support a
-  response of that length.
-</Tip>
-
-Here is OpenRouter's default load balancing strategy:
-
-1. Prioritize providers that have not seen significant outages in the last 30 seconds.
-2. For the stable providers, look at the lowest-cost candidates and select one weighted by inverse square of the price (example below).
-3. Use the remaining providers as fallbacks.
-
-<Note title="A Load Balancing Example">
-  If Provider A costs \$1 per million tokens, Provider B costs \$2, and Provider C costs \$3, and Provider B recently saw a few outages.
-
-  * Your request is routed to Provider A. Provider A is 9x more likely to be first routed to Provider A than Provider C because $(1 / 3^2 = 1/9)$ (inverse square of the price).
-  * If Provider A fails, then Provider C will be tried next.
-  * If Provider C also fails, Provider B will be tried last.
-</Note>
-
-If you have `sort` or `order` set in your provider preferences, load balancing will be disabled.
-
-## Provider Sorting
-
-As described above, OpenRouter load balances based on price, while taking uptime into account.
-
-If you instead want to *explicitly* prioritize a particular provider attribute, you can include the `sort` field in the `provider` preferences. Load balancing will be disabled, and the router will try providers in order.
-
-The three sort options are:
-
-* `"price"`: prioritize lowest price
-* `"throughput"`: prioritize highest throughput
-* `"latency"`: prioritize lowest latency
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      sort: 'throughput',
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.1-70b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        sort: 'throughput',
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.1-70b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'sort': 'throughput',
-    },
-  })
-  ```
-</CodeGroup>
-
-To *always* prioritize low prices, and not apply any load balancing, set `sort` to `"price"`.
-
-To *always* prioritize low latency, and not apply any load balancing, set `sort` to `"latency"`.
-
-## Nitro Shortcut
-
-You can append `:nitro` to any model slug as a shortcut to sort by throughput. This is exactly equivalent to setting `provider.sort` to `"throughput"`.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-70b-instruct:nitro',
-    messages: [{ role: 'user', content: 'Hello' }],
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.1-70b-instruct:nitro',
-      messages: [{ role: 'user', content: 'Hello' }],
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.1-70b-instruct:nitro',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-  })
-  ```
-</CodeGroup>
-
-## Floor Price Shortcut
-
-You can append `:floor` to any model slug as a shortcut to sort by price. This is exactly equivalent to setting `provider.sort` to `"price"`.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-70b-instruct:floor',
-    messages: [{ role: 'user', content: 'Hello' }],
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.1-70b-instruct:floor',
-      messages: [{ role: 'user', content: 'Hello' }],
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.1-70b-instruct:floor',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-  })
-  ```
-</CodeGroup>
-
-## Ordering Specific Providers
-
-You can set the providers that OpenRouter will prioritize for your request using the `order` field.
-
-| Field   | Type      | Default | Description                                                              |
-| ------- | --------- | ------- | ------------------------------------------------------------------------ |
-| `order` | string\[] | -       | List of provider slugs to try in order (e.g. `["anthropic", "openai"]`). |
-
-The router will prioritize providers in this list, and in this order, for the model you're using. If you don't set this field, the router will [load balance](#price-based-load-balancing-default-strategy) across the top providers to maximize uptime.
-
-<Tip>
-  You can use the copy button next to provider names on model pages to get the exact provider slug,
-  including any variants like "/turbo". See [Targeting Specific Provider Endpoints](#targeting-specific-provider-endpoints) for details.
-</Tip>
-
-OpenRouter will try them one at a time and proceed to other providers if none are operational. If you don't want to allow any other providers, you should [disable fallbacks](#disabling-fallbacks) as well.
-
-### Example: Specifying providers with fallbacks
-
-This example skips over OpenAI (which doesn't host Mixtral), tries Together, and then falls back to the normal list of providers on OpenRouter:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'mistralai/mixtral-8x7b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['openai', 'together'],
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'mistralai/mixtral-8x7b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        order: ['openai', 'together'],
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'mistralai/mixtral-8x7b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'order': ['openai', 'together'],
-    },
-  })
-  ```
-</CodeGroup>
-
-### Example: Specifying providers with fallbacks disabled
-
-Here's an example with `allow_fallbacks` set to `false` that skips over OpenAI (which doesn't host Mixtral), tries Together, and then fails if Together fails:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'mistralai/mixtral-8x7b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['openai', 'together'],
-      allowFallbacks: false,
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'mistralai/mixtral-8x7b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        order: ['openai', 'together'],
-        allow_fallbacks: false,
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'mistralai/mixtral-8x7b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'order': ['openai', 'together'],
-      'allow_fallbacks': False,
-    },
-  })
-  ```
-</CodeGroup>
-
-## Targeting Specific Provider Endpoints
-
-Each provider on OpenRouter may host multiple endpoints for the same model, such as a default endpoint and a specialized "turbo" endpoint. To target a specific endpoint, you can use the copy button next to the provider name on the model detail page to obtain the exact provider slug.
-
-For example, DeepInfra offers DeepSeek R1 through multiple endpoints:
-
-* Default endpoint with slug `deepinfra`
-* Turbo endpoint with slug `deepinfra/turbo`
-
-By copying the exact provider slug and using it in your request's `order` array, you can ensure your request is routed to the specific endpoint you want:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'deepseek/deepseek-r1',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      order: ['deepinfra/turbo'],
-      allowFallbacks: false,
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'deepseek/deepseek-r1',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        order: ['deepinfra/turbo'],
-        allow_fallbacks: false,
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'deepseek/deepseek-r1',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'order': ['deepinfra/turbo'],
-      'allow_fallbacks': False,
-    },
-  })
-  ```
-</CodeGroup>
-
-This approach is especially useful when you want to consistently use a specific variant of a model from a particular provider.
-
-## Requiring Providers to Support All Parameters
-
-You can restrict requests only to providers that support all parameters in your request using the `require_parameters` field.
-
-| Field                | Type    | Default | Description                                                     |
-| -------------------- | ------- | ------- | --------------------------------------------------------------- |
-| `require_parameters` | boolean | `false` | Only use providers that support all parameters in your request. |
-
-With the default routing strategy, providers that don't support all the [LLM parameters](/docs/api-reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
-
-### Example: Excluding providers that don't support JSON formatting
-
-For example, to only use providers that support JSON formatting:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      requireParameters: true,
-    },
-    responseFormat: { type: 'json_object' },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        require_parameters: true,
-      },
-      response_format: { type: 'json_object' },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'require_parameters': True,
-    },
-    'response_format': { 'type': 'json_object' },
-  })
-  ```
-</CodeGroup>
-
-## Requiring Providers to Comply with Data Policies
-
-You can restrict requests only to providers that comply with your data policies using the `data_collection` field.
-
-| Field             | Type              | Default | Description                                           |
-| ----------------- | ----------------- | ------- | ----------------------------------------------------- |
-| `data_collection` | "allow" \| "deny" | "allow" | Control whether to use providers that may store data. |
-
-* `allow`: (default) allow providers which store user data non-transiently and may train on it
-* `deny`: use only providers which do not collect user data
-
-Some model providers may log prompts, so we display them with a **Data Policy** tag on model pages. This is not a definitive source of third party data policies, but represents our best knowledge.
-
-<Tip title="Account-Wide Data Policy Filtering">
-  This is also available as an account-wide setting in [your privacy
-  settings](https://openrouter.ai/settings/privacy). You can disable third party
-  model providers that store inputs for training.
-</Tip>
-
-### Example: Excluding providers that don't comply with data policies
-
-To exclude providers that don't comply with your data policies, set `data_collection` to `deny`:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      dataCollection: 'deny', // or "allow"
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        data_collection: 'deny', // or "allow"
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'data_collection': 'deny', # or "allow"
-    },
-  })
-  ```
-</CodeGroup>
-
-## Zero Data Retention Enforcement
-
-You can enforce Zero Data Retention (ZDR) on a per-request basis using the `zdr` parameter, ensuring your request only routes to endpoints that do not retain prompts.
-
-| Field | Type    | Default | Description                                                   |
-| ----- | ------- | ------- | ------------------------------------------------------------- |
-| `zdr` | boolean | -       | Restrict routing to only ZDR (Zero Data Retention) endpoints. |
-
-When `zdr` is set to `true`, the request will only be routed to endpoints that have a Zero Data Retention policy. When `zdr` is `false` or not provided, it has no effect on routing.
-
-<Tip title="Account-Wide ZDR Setting">
-  This is also available as an account-wide setting in [your privacy
-  settings](https://openrouter.ai/settings/privacy). The per-request `zdr` parameter
-  operates as an "OR" with your account-wide ZDR setting - if either is enabled, ZDR enforcement will be applied. The request-level parameter can only ensure ZDR is enabled, not override account-wide enforcement.
-</Tip>
-
-### Example: Enforcing ZDR for a specific request
-
-To ensure a request only uses ZDR endpoints, set `zdr` to `true`:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'gpt-4',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      zdr: true,
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'gpt-4',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        zdr: true,
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'gpt-4',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'zdr': True,
-    },
-  })
-  ```
-</CodeGroup>
-
-This is useful for customers who don't want to globally enforce ZDR but need to ensure specific requests only route to ZDR endpoints.
-
-## Distillable Text Enforcement
-
-You can enforce distillable text filtering on a per-request basis using the `enforce_distillable_text` parameter, ensuring your request only routes to models where the author has allowed text distillation.
-
-| Field                      | Type    | Default | Description                                                   |
-| -------------------------- | ------- | ------- | ------------------------------------------------------------- |
-| `enforce_distillable_text` | boolean | -       | Restrict routing to only models that allow text distillation. |
-
-When `enforce_distillable_text` is set to `true`, the request will only be routed to models where the author has explicitly enabled text distillation. When `enforce_distillable_text` is `false` or not provided, it has no effect on routing.
-
-This parameter is useful for applications that need to ensure their requests only use models that allow text distillation for training purposes, such as when building datasets for model fine-tuning or distillation workflows.
-
-### Example: Enforcing distillable text for a specific request
-
-To ensure a request only uses models that allow text distillation, set `enforce_distillable_text` to `true`:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      enforceDistillableText: true,
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.1-70b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        enforce_distillable_text: true,
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.1-70b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'enforce_distillable_text': True,
-    },
-  })
-  ```
-</CodeGroup>
-
-## Disabling Fallbacks
-
-To guarantee that your request is only served by the top (lowest-cost) provider, you can disable fallbacks.
-
-This is combined with the `order` field from [Ordering Specific Providers](#ordering-specific-providers) to restrict the providers that OpenRouter will prioritize to just your chosen list.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      allowFallbacks: false,
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        allow_fallbacks: false,
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'allow_fallbacks': False,
-    },
-  })
-  ```
-</CodeGroup>
-
-## Allowing Only Specific Providers
-
-You can allow only specific providers for a request by setting the `only` field in the `provider` object.
-
-| Field  | Type      | Default | Description                                       |
-| ------ | --------- | ------- | ------------------------------------------------- |
-| `only` | string\[] | -       | List of provider slugs to allow for this request. |
-
-<Warning>
-  Only allowing some providers may significantly reduce fallback options and
-  limit request recovery.
-</Warning>
-
-<Tip title="Account-Wide Allowed Providers">
-  You can allow providers for all account requests by configuring your [preferences](/settings/preferences). This configuration applies to all API requests and chatroom messages.
-
-  Note that when you allow providers for a specific request, the list of allowed providers is merged with your account-wide allowed providers.
-</Tip>
-
-### Example: Allowing Azure for a request calling GPT-4 Omni
-
-Here's an example that will only use Azure for a request calling GPT-4 Omni:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'openai/gpt-4o',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      only: ['azure'],
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/gpt-4o',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        only: ['azure'],
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'openai/gpt-4o',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'only': ['azure'],
-    },
-  })
-  ```
-</CodeGroup>
-
-## Ignoring Providers
-
-You can ignore providers for a request by setting the `ignore` field in the `provider` object.
-
-| Field    | Type      | Default | Description                                      |
-| -------- | --------- | ------- | ------------------------------------------------ |
-| `ignore` | string\[] | -       | List of provider slugs to skip for this request. |
-
-<Warning>
-  Ignoring multiple providers may significantly reduce fallback options and
-  limit request recovery.
-</Warning>
-
-<Tip title="Account-Wide Ignored Providers">
-  You can ignore providers for all account requests by configuring your [preferences](/settings/preferences). This configuration applies to all API requests and chatroom messages.
-
-  Note that when you ignore providers for a specific request, the list of ignored providers is merged with your account-wide ignored providers.
-</Tip>
-
-### Example: Ignoring DeepInfra for a request calling Llama 3.3 70b
-
-Here's an example that will ignore DeepInfra for a request calling Llama 3.3 70b:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.3-70b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      ignore: ['deepinfra'],
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.3-70b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        ignore: ['deepinfra'],
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.3-70b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'ignore': ['deepinfra'],
-    },
-  })
-  ```
-</CodeGroup>
-
-## Quantization
-
-Quantization reduces model size and computational requirements while aiming to preserve performance. Most LLMs today use FP16 or BF16 for training and inference, cutting memory requirements in half compared to FP32. Some optimizations use FP8 or quantization to reduce size further (e.g., INT8, INT4).
-
-| Field           | Type      | Default | Description                                                                                     |
-| --------------- | --------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `quantizations` | string\[] | -       | List of quantization levels to filter by (e.g. `["int4", "int8"]`). [Learn more](#quantization) |
-
-<Warning>
-  Quantized models may exhibit degraded performance for certain prompts,
-  depending on the method used.
-</Warning>
-
-Providers can support various quantization levels for open-weight models.
-
-### Quantization Levels
-
-By default, requests are load-balanced across all available providers, ordered by price. To filter providers by quantization level, specify the `quantizations` field in the `provider` parameter with the following values:
-
-* `int4`: Integer (4 bit)
-* `int8`: Integer (8 bit)
-* `fp4`: Floating point (4 bit)
-* `fp6`: Floating point (6 bit)
-* `fp8`: Floating point (8 bit)
-* `fp16`: Floating point (16 bit)
-* `bf16`: Brain floating point (16 bit)
-* `fp32`: Floating point (32 bit)
-* `unknown`: Unknown
-
-### Example: Requesting FP8 Quantization
-
-Here's an example that will only use providers that support FP8 quantization:
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'meta-llama/llama-3.1-8b-instruct',
-    messages: [{ role: 'user', content: 'Hello' }],
-    provider: {
-      quantizations: ['fp8'],
-    },
-    stream: false,
-  });
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-      'HTTP-Referer': '<YOUR_SITE_URL>',
-      'X-Title': '<YOUR_SITE_NAME>',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'meta-llama/llama-3.1-8b-instruct',
-      messages: [{ role: 'user', content: 'Hello' }],
-      provider: {
-        quantizations: ['fp8'],
-      },
-    }),
-  });
-  ```
-
-  ```python title="Python"
-  import requests
-
-  headers = {
-    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
-    'HTTP-Referer': '<YOUR_SITE_URL>',
-    'X-Title': '<YOUR_SITE_NAME>',
-    'Content-Type': 'application/json',
-  }
-
-  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
-    'model': 'meta-llama/llama-3.1-8b-instruct',
-    'messages': [{ 'role': 'user', 'content': 'Hello' }],
-    'provider': {
-      'quantizations': ['fp8'],
-    },
-  })
-  ```
-</CodeGroup>
-
-### Max Price
-
-To filter providers by price, specify the `max_price` field in the `provider` parameter with a JSON object specifying the highest provider pricing you will accept.
-
-For example, the value `{"prompt": 1, "completion": 2}` will route to any provider with a price of `<= $1/m` prompt tokens, and `<= $2/m` completion tokens or less.
-
-Some providers support per request pricing, in which case you can use the `request` attribute of max\_price. Lastly, `image` is also available, which specifies the max price per image you will accept.
-
-Practically, this field is often combined with a provider `sort` to express, for example, "Use the provider with the highest throughput, as long as it doesn't cost more than `$x/m` tokens."
-
-## Terms of Service
-
-You can view the terms of service for each provider below. You may not violate the terms of service or policies of third-party providers that power the models on OpenRouter.
-
-<TermsOfServiceDescriptions />
-
-
-# Exacto Variant
-
-> Learn how to target OpenRouter-selected providers by using the :exacto model variant.
-
-Introducing a new set of endpoints, `:exacto`, focused on higher tool‑calling accuracy by routing to a sub‑group of providers with measurably better tool‑use success rates. It uses the same request payloads as any other variant, but filters endpoints so that only vetted providers for the chosen model are considered. To learn more, read our [blog post](https://openrouter.ai/announcements/provider-variance-introducing-exacto).
-
-## Using the Exacto Variant
-
-Add `:exacto` to the end of any supported model slug. The curated allowlist is enforced before provider sorting, fallback, or load balancing — no extra provider preference config is required.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: process.env.OPENROUTER_API_KEY,
-  });
-
-  const completion = await openRouter.chat.send({
-    model: "moonshotai/kimi-k2-0905:exacto",
-    messages: [
-      {
-        role: "user",
-        content: "Draft a concise changelog entry for the Exacto launch.",
-      },
-    ],
-    stream: false,
-  });
-
-  console.log(completion.choices[0].message.content);
-  ```
-
-  ```typescript title="TypeScript (OpenAI SDK)"
-  import OpenAI from "openai";
-
-  const client = new OpenAI({
-    baseURL: "https://openrouter.ai/api/v1",
-    apiKey: process.env.OPENROUTER_API_KEY,
-  });
-
-  const completion = await client.chat.completions.create({
-    model: "moonshotai/kimi-k2-0905:exacto",
-    messages: [
-      {
-        role: "user",
-        content: "Draft a concise changelog entry for the Exacto launch.",
-      },
-    ],
-  });
-  ```
-
-  ```shell title="cURL"
-  curl https://openrouter.ai/api/v1/chat/completions \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
-    -d '{
-    "model": "moonshotai/kimi-k2-0905:exacto",
-    "messages": [
-      {
-        "role": "user",
-        "content": "Summarize the latest release notes for me."
-      }
-    ]
-  }'
-  ```
-</CodeGroup>
-
-<Tip>
-  You can still supply fallback models with the `models` array. Any model that
-  carries the `:exacto` suffix will enforce the curated provider list when it is
-  selected.
-</Tip>
-
-## What Is the Exacto Variant?
-
-Exacto is a curated routing variant specifically focused on tool‑calling accuracy. Unlike standard routing, which considers all available providers for a model, Exacto restricts routing to providers that demonstrate higher tool‑use accuracy and normal tool‑use propensity on real workloads.
-
-## Why Use Exacto?
-
-### Why We Built It
-
-Providers running the same model can differ in accuracy due to implementation details in production inference. OpenRouter sees billions of requests monthly, giving us a unique vantage point to observe these differences and minimize surprises for users. Exacto combines benchmark results with real‑world tool‑calling telemetry to select the best‑performing providers.
-
-### Recommended Use Cases
-
-Exacto is optimized for quality‑sensitive, agentic workflows where tool‑calling accuracy and reliability are critical.
-
-## Supported Models
-
-Exacto endpoints are available for:
-
-* Kimi K2 (`moonshotai/kimi-k2-0905:exacto`)
-* DeepSeek v3.1 Terminus (`deepseek/deepseek-v3.1-terminus:exacto`)
-* GLM 4.6 (`z-ai/glm-4.6:exacto`)
-* GPT‑OSS 120B (`openai/gpt-oss-120b:exacto`)
-* Qwen3 Coder (`qwen/qwen3-coder:exacto`)
-
-## How We Select Providers
-
-We use three inputs:
-
-* Tool‑calling accuracy from real traffic across billions of calls
-* Real‑time provider preferences (pins/ignores) from users making tool calls
-* Benchmarking (internal eval suites, Groq OpenBench running LiveMCPBench, official tau2bench, and similar)
-
-You will be routed only to providers that:
-
-1. Are top‑tier on tool‑calling accuracy
-2. Fall within a normal range of tool‑calling propensity
-3. Are not frequently ignored or blacklisted by users when tools are provided
-
-In our evaluations and open‑source benchmarks (e.g., tau2‑Bench, LiveMCPBench), Exacto shows materially fewer tool‑calling failures and more reliable tool use.
-
-We will continue working with providers not currently in the Exacto pool to help them improve and be included. Exacto targets tool‑calling specifically and is not a broad statement on overall provider quality.
-
-<Note>
-  If you have feedback on the Exacto variant, please fill out this form:
-  [https://openrouter.notion.site/2932fd57c4dc8097ba74ffb6d27f39d1?pvs=105](https://openrouter.notion.site/2932fd57c4dc8097ba74ffb6d27f39d1?pvs=105)
-</Note>
-
-
-# Latency and Performance
-
-> Learn about OpenRouter's performance characteristics, latency optimizations, and best practices for achieving optimal response times.
-
-OpenRouter is designed with performance as a top priority. OpenRouter is heavily optimized to add as little latency as possible to your requests.
-
-## Base Latency
-
-Under typical production conditions, OpenRouter adds approximately 15ms of latency to your requests. This minimal overhead is achieved through:
-
-* Edge computing using Cloudflare Workers to stay as close as possible to your application
-* Efficient caching of user and API key data at the edge
-* Optimized routing logic that minimizes processing time
-
-## Performance Considerations
-
-### Cache Warming
-
-When OpenRouter's edge caches are cold (typically during the first 1-2 minutes of operation in a new region), you may experience slightly higher latency as the caches warm up. This normalizes once the caches are populated.
-
-### Credit Balance Checks
-
-To maintain accurate billing and prevent overages, OpenRouter performs additional database checks when:
-
-* A user's credit balance is low (single digit dollars)
-* An API key is approaching its configured credit limit
-
-OpenRouter expires caches more aggressively under these conditions to ensure proper billing, which increases latency until additional credits are added.
-
-### Model Fallback
-
-When using [model routing](/docs/features/model-routing) or [provider routing](/docs/features/provider-routing), if the primary model or provider fails, OpenRouter will automatically try the next option. A failed initial completion unsurprisingly adds latency to the specific request. OpenRouter tracks provider failures, and will attempt to intelligently route around unavailable providers so that this latency is not incurred on every request.
-
-## Best Practices
-
-To achieve optimal performance with OpenRouter:
-
-1. **Maintain Healthy Credit Balance**
-   * Set up auto-topup with a higher threshold and amount
-   * This helps avoid forced credit checks and reduces the risk of hitting zero balance
-   * Recommended minimum balance: \$10-20 to ensure smooth operation
-
-2. **Use Provider Preferences**
-   * If you have specific latency requirements (whether time to first token, or time to last), there are [provider routing](/docs/features/provider-routing) features to help you achieve your performance and cost goals.
-
-
-# Presets
-
-> Learn how to use OpenRouter's presets to manage model configurations, system prompts, and parameters across your applications.
-
-[Presets](/settings/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
-
-## What are Presets?
-
-Presets are named configurations that encapsulate all the settings needed for a specific use case. For example, you might create:
-
-* An "email-copywriter" preset for generating marketing copy
-* An "inbound-classifier" preset for categorizing customer inquiries
-* A "code-reviewer" preset for analyzing pull requests
-
-Each preset can manage:
-
-* Provider routing preferences (sort by price, latency, etc.)
-* Model selection (specific model or array of models with fallbacks)
-* System prompts
-* Generation parameters (temperature, top\_p, etc.)
-* Provider inclusion/exclusion rules
-
-## Quick Start
-
-1. [Create a preset](/settings/presets). For example, select a model and restrict provider routing to just a few providers.
-   ![Creating a new preset](file:8697659e-4b3a-4e17-8a50-4347aa52875a "A new preset")
-
-2. Make an API request to the preset:
-
-```json
-{
-  "model": "@preset/ravenel-bridge",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What's your opinion of the Golden Gate Bridge? Isn't it beautiful?"
-    }
-  ]
-}
-```
-
-## Benefits
-
-### Separation of Concerns
-
-Presets help you maintain a clean separation between your application code and LLM configuration. This makes your code more semantic and easier to maintain.
-
-### Rapid Iteration
-
-Update your LLM configuration without deploying code changes:
-
-* Switch to new model versions
-* Adjust system prompts
-* Modify parameters
-* Change provider preferences
-
-## Using Presets
-
-There are three ways to use presets in your API requests.
-
-1. **Direct Model Reference**
-
-You can reference the preset as if it was a model by sending requests to `@preset/preset-slug`
-
-```json
-{
-  "model": "@preset/email-copywriter",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Write a marketing email about our new feature"
-    }
-  ]
-}
-```
-
-2. **Preset Field**
-
-```json
-{
-  "model": "openai/gpt-4",
-  "preset": "email-copywriter",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Write a marketing email about our new feature"
-    }
-  ]
-}
-```
-
-3. **Combined Model and Preset**
-
-```json
-{
-  "model": "openai/gpt-4@preset/email-copywriter",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Write a marketing email about our new feature"
-    }
-  ]
-}
-```
-
-## Other Notes
-
-1. If you're using an organization account, all members can access organization presets. This is a great way to share best practices across teams.
-2. Version history is kept in order to understand changes that were made, and to be able to roll back. However when addressing a preset through the API, the latest version is always used.
-3. If you provide parameters in the request, they will be shallow-merged with the options configured in the preset.
-
-
-# Prompt Caching
-
-> Reduce your AI model costs with OpenRouter's prompt caching feature. Learn how to cache and reuse responses across OpenAI, Anthropic Claude, and DeepSeek models.
-
-To save on inference costs, you can enable prompt caching on supported providers and models.
-
-Most providers automatically enable prompt caching, but note that some (see Anthropic below) require you to enable it on a per-message basis.
-
-When using caching (whether automatically in supported models, or via the `cache_control` property), OpenRouter will make a best-effort to continue routing to the same provider to make use of the warm cache. In the event that the provider with your cached prompt is not available, OpenRouter will try the next-best provider.
-
-## Inspecting cache usage
-
-To see how much caching saved on each generation, you can:
-
-1. Click the detail button on the [Activity](/activity) page
-2. Use the `/api/v1/generation` API, [documented here](/api-reference/overview#querying-cost-and-stats)
-3. Use `usage: {include: true}` in your request to get the cache tokens at the end of the response (see [Usage Accounting](/use-cases/usage-accounting) for details)
-
-The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
-
-## OpenAI
-
-Caching price changes:
-
-* **Cache writes**: no cost
-* **Cache reads**: (depending on the model) charged at 0.25x or 0.50x the price of the original input pricing
-
-[Click here to view OpenAI's cache pricing per model.](https://platform.openai.com/docs/pricing)
-
-Prompt caching with OpenAI is automated and does not require any additional configuration. There is a minimum prompt size of 1024 tokens.
-
-[Click here to read more about OpenAI prompt caching and its limitation.](https://platform.openai.com/docs/guides/prompt-caching)
-
-## Grok
-
-Caching price changes:
-
-* **Cache writes**: no cost
-* **Cache reads**: charged at {GROK_CACHE_READ_MULTIPLIER}x the price of the original input pricing
-
-[Click here to view Grok's cache pricing per model.](https://docs.x.ai/docs/models#models-and-pricing)
-
-Prompt caching with Grok is automated and does not require any additional configuration.
-
-## Moonshot AI
-
-Caching price changes:
-
-* **Cache writes**: no cost
-* **Cache reads**: charged at {MOONSHOT_CACHE_READ_MULTIPLIER}x the price of the original input pricing
-
-Prompt caching with Moonshot AI is automated and does not require any additional configuration.
-
-[Click here to view Moonshot AI's caching documentation.](https://platform.moonshot.ai/docs/api/caching)
-
-## Groq
-
-Caching price changes:
-
-* **Cache writes**: no cost
-* **Cache reads**: charged at {GROQ_CACHE_READ_MULTIPLIER}x the price of the original input pricing
-
-Prompt caching with Groq is automated and does not require any additional configuration. Currently available on Kimi K2 models.
-
-[Click here to view Groq's documentation.](https://console.groq.com/docs/prompt-caching)
-
-## Anthropic Claude
-
-Caching price changes:
-
-* **Cache writes**: charged at {ANTHROPIC_CACHE_WRITE_MULTIPLIER}x the price of the original input pricing
-* **Cache reads**: charged at {ANTHROPIC_CACHE_READ_MULTIPLIER}x the price of the original input pricing
-
-Prompt caching with Anthropic requires the use of `cache_control` breakpoints. There is a limit of four breakpoints, and the cache will expire within five minutes. Therefore, it is recommended to reserve the cache breakpoints for large bodies of text, such as character cards, CSV data, RAG data, book chapters, etc.
-
-[Click here to read more about Anthropic prompt caching and its limitation.](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
-
-The `cache_control` breakpoint can only be inserted into the text part of a multipart message.
-
-System message caching example:
-
-```json
-{
-  "messages": [
-    {
-      "role": "system",
-      "content": [
-        {
-          "type": "text",
-          "text": "You are a historian studying the fall of the Roman Empire. You know the following book very well:"
-        },
-        {
-          "type": "text",
-          "text": "HUGE TEXT BODY",
-          "cache_control": {
-            "type": "ephemeral"
-          }
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "What triggered the collapse?"
-        }
-      ]
-    }
-  ]
-}
-```
-
-User message caching example:
-
-```json
-{
-  "messages": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Given the book below:"
-        },
-        {
-          "type": "text",
-          "text": "HUGE TEXT BODY",
-          "cache_control": {
-            "type": "ephemeral"
-          }
-        },
-        {
-          "type": "text",
-          "text": "Name all the characters in the above book"
-        }
-      ]
-    }
-  ]
-}
-```
-
-## DeepSeek
-
-Caching price changes:
-
-* **Cache writes**: charged at the same price as the original input pricing
-* **Cache reads**: charged at {DEEPSEEK_CACHE_READ_MULTIPLIER}x the price of the original input pricing
-
-Prompt caching with DeepSeek is automated and does not require any additional configuration.
-
-## Google Gemini
-
-### Implicit Caching
-
-Gemini 2.5 Pro and 2.5 Flash models now support **implicit caching**, providing automatic caching functionality similar to OpenAI’s automatic caching. Implicit caching works seamlessly — no manual setup or additional `cache_control` breakpoints required.
-
-Pricing Changes:
-
-* No cache write or storage costs.
-* Cached tokens are charged at {GOOGLE_CACHE_READ_MULTIPLIER}x the original input token cost.
-
-Note that the TTL is on average 3-5 minutes, but will vary. There is a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_FLASH} tokens for Gemini 2.5 Flash, and {GOOGLE_CACHE_MIN_TOKENS_2_5_PRO} tokens for Gemini 2.5 Pro for requests to be eligible for caching.
-
-[Official announcement from Google](https://developers.googleblog.com/en/gemini-2-5-models-now-support-implicit-caching/)
-
-<Tip>
-  To maximize implicit cache hits, keep the initial portion of your message
-  arrays consistent between requests. Push variations (such as user questions or
-  dynamic context elements) toward the end of your prompt/requests.
-</Tip>
-
-### Pricing Changes for Cached Requests:
-
-* **Cache Writes:** Charged at the input token cost plus 5 minutes of cache storage, calculated as follows:
-
-```
-Cache write cost = Input token price + (Cache storage price × (5 minutes / 60 minutes))
-```
-
-* **Cache Reads:** Charged at {GOOGLE_CACHE_READ_MULTIPLIER}× the original input token cost.
-
-### Supported Models and Limitations:
-
-Only certain Gemini models support caching. Please consult Google's [Gemini API Pricing Documentation](https://ai.google.dev/gemini-api/docs/pricing) for the most current details.
-
-Cache Writes have a 5 minute Time-to-Live (TTL) that does not update. After 5 minutes, the cache expires and a new cache must be written.
-
-Gemini models have typically have a 4096 token minimum for cache write to occur. Cached tokens count towards the model's maximum token usage. Gemini 2.5 Pro has a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_PRO} tokens, and Gemini 2.5 Flash has a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_FLASH} tokens.
-
-### How Gemini Prompt Caching works on OpenRouter:
-
-OpenRouter simplifies Gemini cache management, abstracting away complexities:
-
-* You **do not** need to manually create, update, or delete caches.
-* You **do not** need to manage cache names or TTL explicitly.
-
-### How to Enable Gemini Prompt Caching:
-
-Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints explicitly within message content, similar to Anthropic. We recommend using caching primarily for large content pieces (such as CSV files, lengthy character cards, retrieval augmented generation (RAG) data, or extensive textual sources).
-
-<Tip>
-  There is not a limit on the number of `cache_control` breakpoints you can
-  include in your request. OpenRouter will use only the last breakpoint for
-  Gemini caching. Including multiple breakpoints is safe and can help maintain
-  compatibility with Anthropic, but only the final one will be used for Gemini.
-</Tip>
-
-### Examples:
-
-#### System Message Caching Example
-
-```json
-{
-  "messages": [
-    {
-      "role": "system",
-      "content": [
-        {
-          "type": "text",
-          "text": "You are a historian studying the fall of the Roman Empire. Below is an extensive reference book:"
-        },
-        {
-          "type": "text",
-          "text": "HUGE TEXT BODY HERE",
-          "cache_control": {
-            "type": "ephemeral"
-          }
-        }
-      ]
-    },
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "What triggered the collapse?"
-        }
-      ]
-    }
-  ]
-}
-```
-
-#### User Message Caching Example
-
-```json
-{
-  "messages": [
-    {
-      "role": "user",
-      "content": [
-        {
-          "type": "text",
-          "text": "Based on the book text below:"
-        },
-        {
-          "type": "text",
-          "text": "HUGE TEXT BODY HERE",
-          "cache_control": {
-            "type": "ephemeral"
-          }
-        },
-        {
-          "type": "text",
-          "text": "List all main characters mentioned in the text above."
-        }
-      ]
-    }
-  ]
-}
-```
-
-
-# Structured Outputs
-
-> Enforce JSON Schema validation on AI model responses. Get consistent, type-safe outputs and avoid parsing errors with OpenRouter's structured output feature.
-
-OpenRouter supports structured outputs for compatible models, ensuring responses follow a specific JSON Schema format. This feature is particularly useful when you need consistent, well-formatted responses that can be reliably parsed by your application.
-
-## Overview
-
-Structured outputs allow you to:
-
-* Enforce specific JSON Schema validation on model responses
-* Get consistent, type-safe outputs
-* Avoid parsing errors and hallucinated fields
-* Simplify response handling in your application
-
-## Using Structured Outputs
-
-To use structured outputs, include a `response_format` parameter in your request, with `type` set to `json_schema` and the `json_schema` object containing your schema:
-
-```typescript
-{
-  "messages": [
-    { "role": "user", "content": "What's the weather like in London?" }
-  ],
-  "response_format": {
-    "type": "json_schema",
-    "json_schema": {
-      "name": "weather",
-      "strict": true,
-      "schema": {
-        "type": "object",
-        "properties": {
-          "location": {
-            "type": "string",
-            "description": "City or location name"
-          },
-          "temperature": {
-            "type": "number",
-            "description": "Temperature in Celsius"
-          },
-          "conditions": {
-            "type": "string",
-            "description": "Weather conditions description"
-          }
-        },
-        "required": ["location", "temperature", "conditions"],
-        "additionalProperties": false
-      }
-    }
-  }
-}
-```
-
-The model will respond with a JSON object that strictly follows your schema:
-
-```json
-{
-  "location": "London",
-  "temperature": 18,
-  "conditions": "Partly cloudy with light drizzle"
-}
-```
-
-## Model Support
-
-Structured outputs are supported by select models.
-
-You can find a list of models that support structured outputs on the [models page](https://openrouter.ai/models?order=newest\&supported_parameters=structured_outputs).
-
-* OpenAI models (GPT-4o and later versions) [Docs](https://platform.openai.com/docs/guides/structured-outputs)
-* Google Gemini models [Docs](https://ai.google.dev/gemini-api/docs/structured-output)
-* Anthropic models (Sonnet 4.5 and Opus 4.1) [Docs](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
-* Most open-source models
-* All Fireworks provided models [Docs](https://docs.fireworks.ai/structured-responses/structured-response-formatting#structured-response-modes)
-
-To ensure your chosen model supports structured outputs:
-
-1. Check the model's supported parameters on the [models page](https://openrouter.ai/models)
-2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/features/provider-routing))
-3. Include `response_format` and set `type: json_schema` in the required parameters
-
-## Best Practices
-
-1. **Include descriptions**: Add clear descriptions to your schema properties to guide the model
-
-2. **Use strict mode**: Always set `strict: true` to ensure the model follows your schema exactly
-
-## Example Implementation
-
-Here's a complete example using the Fetch API:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'openai/gpt-4'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        { role: 'user', content: 'What is the weather like in London?' },
-      ],
-      responseFormat: {
-        type: 'json_schema',
-        jsonSchema: {
-          name: 'weather',
-          strict: true,
-          schema: {
-            type: 'object',
-            properties: {
-              location: {
-                type: 'string',
-                description: 'City or location name',
-              },
-              temperature: {
-                type: 'number',
-                description: 'Temperature in Celsius',
-              },
-              conditions: {
-                type: 'string',
-                description: 'Weather conditions description',
-              },
-            },
-            required: ['location', 'temperature', 'conditions'],
-            additionalProperties: false,
-          },
-        },
-      },
-      stream: false,
-    });
-
-    const weatherInfo = response.choices[0].message.content;
-    ```
-
-    ```python title="Python"
-    import requests
-    import json
-
-    response = requests.post(
-      "https://openrouter.ai/api/v1/chat/completions",
-      headers={
-        "Authorization": f"Bearer {{API_KEY_REF}}",
-        "Content-Type": "application/json",
-      },
-
-      json={
-        "model": "{{MODEL}}",
-        "messages": [
-          {"role": "user", "content": "What is the weather like in London?"},
-        ],
-        "response_format": {
-          "type": "json_schema",
-          "json_schema": {
-            "name": "weather",
-            "strict": True,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "location": {
-                  "type": "string",
-                  "description": "City or location name",
-                },
-                "temperature": {
-                  "type": "number",
-                  "description": "Temperature in Celsius",
-                },
-                "conditions": {
-                  "type": "string",
-                  "description": "Weather conditions description",
-                },
-              },
-              "required": ["location", "temperature", "conditions"],
-              "additionalProperties": False,
-            },
-          },
-        },
-      },
-    )
-
-    data = response.json()
-    weather_info = data["choices"][0]["message"]["content"]
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer {{API_KEY_REF}}',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          { role: 'user', content: 'What is the weather like in London?' },
-        ],
-        response_format: {
-          type: 'json_schema',
-          json_schema: {
-            name: 'weather',
-            strict: true,
-            schema: {
-              type: 'object',
-              properties: {
-                location: {
-                  type: 'string',
-                  description: 'City or location name',
-                },
-                temperature: {
-                  type: 'number',
-                  description: 'Temperature in Celsius',
-                },
-                conditions: {
-                  type: 'string',
-                  description: 'Weather conditions description',
-                },
-              },
-              required: ['location', 'temperature', 'conditions'],
-              additionalProperties: false,
-            },
-          },
-        },
-      }),
-    });
-
-    const data = await response.json();
-    const weatherInfo = data.choices[0].message.content;
-    ```
-  </CodeGroup>
-</Template>
-
-## Streaming with Structured Outputs
-
-Structured outputs are also supported with streaming responses. The model will stream valid partial JSON that, when complete, forms a valid response matching your schema.
-
-To enable streaming with structured outputs, simply add `stream: true` to your request:
-
-```typescript
-{
-  "stream": true,
-  "response_format": {
-    "type": "json_schema",
-    // ... rest of your schema
-  }
-}
-```
-
-## Error Handling
-
-When using structured outputs, you may encounter these scenarios:
-
-1. **Model doesn't support structured outputs**: The request will fail with an error indicating lack of support
-2. **Invalid schema**: The model will return an error if your JSON Schema is invalid
-
-
-# Tool & Function Calling
-
-> Use tools (or functions) in your prompts with OpenRouter. Learn how to use tools with OpenAI, Anthropic, and other models that support tool calling.
-
-Tool calls (also known as function calls) give an LLM access to external tools. The LLM does not call the tools directly. Instead, it suggests the tool to call. The user then calls the tool separately and provides the results back to the LLM. Finally, the LLM formats the response into an answer to the user's original question.
-
-OpenRouter standardizes the tool calling interface across models and providers, making it easy to integrate external tools with any supported model.
-
-**Supported Models**: You can find models that support tool calling by filtering on [openrouter.ai/models?supported\_parameters=tools](https://openrouter.ai/models?supported_parameters=tools).
-
-If you prefer to learn from a full end-to-end example, keep reading.
-
-## Request Body Examples
-
-Tool calling with OpenRouter involves three key steps. Here are the essential request body formats for each step:
-
-### Step 1: Inference Request with Tools
-
-```json
-{
-  "model": "google/gemini-2.0-flash-001",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What are the titles of some James Joyce books?"
-    }
-  ],
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "search_gutenberg_books",
-        "description": "Search for books in the Project Gutenberg library",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "search_terms": {
-              "type": "array",
-              "items": {"type": "string"},
-              "description": "List of search terms to find books"
-            }
-          },
-          "required": ["search_terms"]
-        }
-      }
-    }
-  ]
-}
-```
-
-### Step 2: Tool Execution (Client-Side)
-
-After receiving the model's response with `tool_calls`, execute the requested tool locally and prepare the result:
-
-```javascript
-// Model responds with tool_calls, you execute the tool locally
-const toolResult = await searchGutenbergBooks(["James", "Joyce"]);
-```
-
-### Step 3: Inference Request with Tool Results
-
-```json
-{
-  "model": "google/gemini-2.0-flash-001",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What are the titles of some James Joyce books?"
-    },
-    {
-      "role": "assistant",
-      "content": null,
-      "tool_calls": [
-        {
-          "id": "call_abc123",
-          "type": "function",
-          "function": {
-            "name": "search_gutenberg_books",
-            "arguments": "{\"search_terms\": [\"James\", \"Joyce\"]}"
-          }
-        }
-      ]
-    },
-    {
-      "role": "tool",
-      "tool_call_id": "call_abc123",
-      "content": "[{\"id\": 4300, \"title\": \"Ulysses\", \"authors\": [{\"name\": \"Joyce, James\"}]}]"
-    }
-  ],
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "search_gutenberg_books",
-        "description": "Search for books in the Project Gutenberg library",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "search_terms": {
-              "type": "array",
-              "items": {"type": "string"},
-              "description": "List of search terms to find books"
-            }
-          },
-          "required": ["search_terms"]
-        }
-      }
-    }
-  ]
-}
-```
-
-**Note**: The `tools` parameter must be included in every request (Steps 1 and 3) so the router can validate the tool schema on each call.
-
-### Tool Calling Example
-
-Here is Python code that gives LLMs the ability to call an external API -- in this case Project Gutenberg, to search for books.
-
-First, let's do some basic setup:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-
-    const OPENROUTER_API_KEY = "{{API_KEY_REF}}";
-
-    // You can use any model that supports tool calling
-    const MODEL = "{{MODEL}}";
-
-    const openRouter = new OpenRouter({
-      apiKey: OPENROUTER_API_KEY,
-    });
-
-    const task = "What are the titles of some James Joyce books?";
-
-    const messages = [
-      {
-        role: "system",
-        content: "You are a helpful assistant."
-      },
-      {
-        role: "user",
-        content: task,
-      }
-    ];
-    ```
-
-    ```python
-    import json, requests
-    from openai import OpenAI
-
-    OPENROUTER_API_KEY = f"{{API_KEY_REF}}"
-
-    # You can use any model that supports tool calling
-    MODEL = "{{MODEL}}"
-
-    openai_client = OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key=OPENROUTER_API_KEY,
-    )
-
-    task = "What are the titles of some James Joyce books?"
-
-    messages = [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": task,
-      }
-    ]
-
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer {{API_KEY_REF}}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages: [
-          { role: 'system', content: 'You are a helpful assistant.' },
-          {
-            role: 'user',
-            content: 'What are the titles of some James Joyce books?',
-          },
-        ],
-      }),
-    });
-    ```
-  </CodeGroup>
-</Template>
-
-### Define the Tool
-
-Next, we define the tool that we want to call. Remember, the tool is going to get *requested* by the LLM, but the code we are writing here is ultimately responsible for executing the call and returning the results to the LLM.
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    async function searchGutenbergBooks(searchTerms: string[]): Promise<Book[]> {
-      const searchQuery = searchTerms.join(' ');
-      const url = 'https://gutendex.com/books';
-      const response = await fetch(`${url}?search=${searchQuery}`);
-      const data = await response.json();
-
-      return data.results.map((book: any) => ({
-        id: book.id,
-        title: book.title,
-        authors: book.authors,
-      }));
-    }
-
-    const tools = [
-      {
-        type: 'function',
-        function: {
-          name: 'searchGutenbergBooks',
-          description:
-            'Search for books in the Project Gutenberg library based on specified search terms',
-          parameters: {
-            type: 'object',
-            properties: {
-              search_terms: {
-                type: 'array',
-                items: {
-                  type: 'string',
-                },
-                description:
-                  "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)",
-              },
-            },
-            required: ['search_terms'],
-          },
-        },
-      },
-    ];
-
-    const TOOL_MAPPING = {
-      searchGutenbergBooks,
-    };
-    ```
-
-    ```python
-    def search_gutenberg_books(search_terms):
-        search_query = " ".join(search_terms)
-        url = "https://gutendex.com/books"
-        response = requests.get(url, params={"search": search_query})
-
-        simplified_results = []
-        for book in response.json().get("results", []):
-            simplified_results.append({
-                "id": book.get("id"),
-                "title": book.get("title"),
-                "authors": book.get("authors")
-            })
-
-        return simplified_results
-
-    tools = [
-      {
-        "type": "function",
-        "function": {
-          "name": "search_gutenberg_books",
-          "description": "Search for books in the Project Gutenberg library based on specified search terms",
-          "parameters": {
-            "type": "object",
-            "properties": {
-              "search_terms": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)"
-              }
-            },
-            "required": ["search_terms"]
-          }
-        }
-      }
-    ]
-
-    TOOL_MAPPING = {
-        "search_gutenberg_books": search_gutenberg_books
-    }
-
-    ```
-  </CodeGroup>
-</Template>
-
-Note that the "tool" is just a normal function. We then write a JSON "spec" compatible with the OpenAI function calling parameter. We'll pass that spec to the LLM so that it knows this tool is available and how to use it. It will request the tool when needed, along with any arguments. We'll then marshal the tool call locally, make the function call, and return the results to the LLM.
-
-### Tool use and tool results
-
-Let's make the first OpenRouter API call to the model:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    const result = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      tools,
-      messages,
-      stream: false,
-    });
-
-    const response_1 = result.choices[0].message;
-    ```
-
-    ```python
-    request_1 = {
-        "model": {{MODEL}},
-        "tools": tools,
-        "messages": messages
-    }
-
-    response_1 = openai_client.chat.completions.create(**request_1).message
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const request_1 = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer {{API_KEY_REF}}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        tools,
-        messages,
-      }),
-    });
-
-    const data = await request_1.json();
-    const response_1 = data.choices[0].message;
-    ```
-  </CodeGroup>
-</Template>
-
-The LLM responds with a finish reason of `tool_calls`, and a `tool_calls` array. In a generic LLM response-handler, you would want to check the `finish_reason` before processing tool calls, but here we will assume it's the case. Let's keep going, by processing the tool call:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    // Append the response to the messages array so the LLM has the full context
-    // It's easy to forget this step!
-    messages.push(response_1);
-
-    // Now we process the requested tool calls, and use our book lookup tool
-    for (const toolCall of response_1.tool_calls) {
-      const toolName = toolCall.function.name;
-      const { search_params } = JSON.parse(toolCall.function.arguments);
-      const toolResponse = await TOOL_MAPPING[toolName](search_params);
-      messages.push({
-        role: 'tool',
-        toolCallId: toolCall.id,
-        name: toolName,
-        content: JSON.stringify(toolResponse),
-      });
-    }
-    ```
-
-    ```python
-    # Append the response to the messages array so the LLM has the full context
-    # It's easy to forget this step!
-    messages.append(response_1)
-
-    # Now we process the requested tool calls, and use our book lookup tool
-    for tool_call in response_1.tool_calls:
-        '''
-        In this case we only provided one tool, so we know what function to call.
-        When providing multiple tools, you can inspect `tool_call.function.name`
-        to figure out what function you need to call locally.
-        '''
-        tool_name = tool_call.function.name
-        tool_args = json.loads(tool_call.function.arguments)
-        tool_response = TOOL_MAPPING[tool_name](**tool_args)
-        messages.append({
-          "role": "tool",
-          "tool_call_id": tool_call.id,
-          "content": json.dumps(tool_response),
-        })
-    ```
-  </CodeGroup>
-</Template>
-
-The messages array now has:
-
-1. Our original request
-2. The LLM's response (containing a tool call request)
-3. The result of the tool call (a json object returned from the Project Gutenberg API)
-
-Now, we can make a second OpenRouter API call, and hopefully get our result!
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    const response_2 = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages,
-      tools,
-      stream: false,
-    });
-
-    console.log(response_2.choices[0].message.content);
-    ```
-
-    ```python
-    request_2 = {
-      "model": MODEL,
-      "messages": messages,
-      "tools": tools
-    }
-
-    response_2 = openai_client.chat.completions.create(**request_2)
-
-    print(response_2.choices[0].message.content)
-    ```
-
-    ```typescript title="TypeScript (fetch)"
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer {{API_KEY_REF}}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: '{{MODEL}}',
-        messages,
-        tools,
-      }),
-    });
-
-    const data = await response.json();
-    console.log(data.choices[0].message.content);
-    ```
-  </CodeGroup>
-</Template>
-
-The output will be something like:
-
-```text
-Here are some books by James Joyce:
-
-*   *Ulysses*
-*   *Dubliners*
-*   *A Portrait of the Artist as a Young Man*
-*   *Chamber Music*
-*   *Exiles: A Play in Three Acts*
-```
-
-We did it! We've successfully used a tool in a prompt.
-
-## Interleaved Thinking
-
-Interleaved thinking allows models to reason between tool calls, enabling more sophisticated decision-making after receiving tool results. This feature helps models chain multiple tool calls with reasoning steps in between and make nuanced decisions based on intermediate results.
-
-**Important**: Interleaved thinking increases token usage and response latency. Consider your budget and performance requirements when enabling this feature.
-
-### How Interleaved Thinking Works
-
-With interleaved thinking, the model can:
-
-* Reason about the results of a tool call before deciding what to do next
-* Chain multiple tool calls with reasoning steps in between
-* Make more nuanced decisions based on intermediate results
-* Provide transparent reasoning for its tool selection process
-
-### Example: Multi-Step Research with Reasoning
-
-Here's an example showing how a model might use interleaved thinking to research a topic across multiple sources:
-
-**Initial Request:**
-
-```json
-{
-  "model": "anthropic/claude-3.5-sonnet",
-  "messages": [
-    {
-      "role": "user",
-      "content": "Research the environmental impact of electric vehicles and provide a comprehensive analysis."
-    }
-  ],
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "search_academic_papers",
-        "description": "Search for academic papers on a given topic",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "query": {"type": "string"},
-            "field": {"type": "string"}
-          },
-          "required": ["query"]
-        }
-      }
-    },
-    {
-      "type": "function",
-      "function": {
-        "name": "get_latest_statistics",
-        "description": "Get latest statistics on a topic",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "topic": {"type": "string"},
-            "year": {"type": "integer"}
-          },
-          "required": ["topic"]
-        }
-      }
-    }
-  ]
-}
-```
-
-**Model's Reasoning and Tool Calls:**
-
-1. **Initial Thinking**: "I need to research electric vehicle environmental impact. Let me start with academic papers to get peer-reviewed research."
-
-2. **First Tool Call**: `search_academic_papers({"query": "electric vehicle lifecycle environmental impact", "field": "environmental science"})`
-
-3. **After First Tool Result**: "The papers show mixed results on manufacturing impact. I need current statistics to complement this academic research."
-
-4. **Second Tool Call**: `get_latest_statistics({"topic": "electric vehicle carbon footprint", "year": 2024})`
-
-5. **After Second Tool Result**: "Now I have both academic research and current data. Let me search for manufacturing-specific studies to address the gaps I found."
-
-6. **Third Tool Call**: `search_academic_papers({"query": "electric vehicle battery manufacturing environmental cost", "field": "materials science"})`
-
-7. **Final Analysis**: Synthesizes all gathered information into a comprehensive response.
-
-### Best Practices for Interleaved Thinking
-
-* **Clear Tool Descriptions**: Provide detailed descriptions so the model can reason about when to use each tool
-* **Structured Parameters**: Use well-defined parameter schemas to help the model make precise tool calls
-* **Context Preservation**: Maintain conversation context across multiple tool interactions
-* **Error Handling**: Design tools to provide meaningful error messages that help the model adjust its approach
-
-### Implementation Considerations
-
-When implementing interleaved thinking:
-
-* Models may take longer to respond due to additional reasoning steps
-* Token usage will be higher due to the reasoning process
-* The quality of reasoning depends on the model's capabilities
-* Some models may be better suited for this approach than others
-
-## A Simple Agentic Loop
-
-In the example above, the calls are made explicitly and sequentially. To handle a wide variety of user inputs and tool calls, you can use an agentic loop.
-
-Here's an example of a simple agentic loop (using the same `tools` and initial `messages` as above):
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'google/gemini-2.0-flash-001'
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    async function callLLM(messages: Message[]): Promise<ChatResponse> {
-      const result = await openRouter.chat.send({
-        model: '{{MODEL}}',
-        tools,
-        messages,
-        stream: false,
-      });
-
-      messages.push(result.choices[0].message);
-      return result;
-    }
-
-    async function getToolResponse(response: ChatResponse): Promise<Message> {
-      const toolCall = response.choices[0].message.toolCalls[0];
-      const toolName = toolCall.function.name;
-      const toolArgs = JSON.parse(toolCall.function.arguments);
-
-      // Look up the correct tool locally, and call it with the provided arguments
-      // Other tools can be added without changing the agentic loop
-      const toolResult = await TOOL_MAPPING[toolName](toolArgs);
-
-      return {
-        role: 'tool',
-        toolCallId: toolCall.id,
-        content: toolResult,
-      };
-    }
-
-    const maxIterations = 10;
-    let iterationCount = 0;
-
-    while (iterationCount < maxIterations) {
-      iterationCount++;
-      const response = await callLLM(messages);
-
-      if (response.choices[0].message.toolCalls) {
-        messages.push(await getToolResponse(response));
-      } else {
-        break;
-      }
-    }
-
-    if (iterationCount >= maxIterations) {
-      console.warn("Warning: Maximum iterations reached");
-    }
-
-    console.log(messages[messages.length - 1].content);
-    ```
-
-    ```python
-
-    def call_llm(msgs):
-        resp = openai_client.chat.completions.create(
-            model={{MODEL}},
-            tools=tools,
-            messages=msgs
-        )
-        msgs.append(resp.choices[0].message.dict())
-        return resp
-
-    def get_tool_response(response):
-        tool_call = response.choices[0].message.tool_calls[0]
-        tool_name = tool_call.function.name
-        tool_args = json.loads(tool_call.function.arguments)
-
-        # Look up the correct tool locally, and call it with the provided arguments
-        # Other tools can be added without changing the agentic loop
-        tool_result = TOOL_MAPPING[tool_name](**tool_args)
-
-        return {
-            "role": "tool",
-            "tool_call_id": tool_call.id,
-            "content": tool_result,
-        }
-
-    max_iterations = 10
-    iteration_count = 0
-
-    while iteration_count < max_iterations:
-        iteration_count += 1
-        resp = call_llm(_messages)
-
-        if resp.choices[0].message.tool_calls is not None:
-            messages.append(get_tool_response(resp))
-        else:
-            break
-
-    if iteration_count >= max_iterations:
-        print("Warning: Maximum iterations reached")
-
-    print(messages[-1]['content'])
-
-    ```
-  </CodeGroup>
-</Template>
-
-## Best Practices and Advanced Patterns
-
-### Function Definition Guidelines
-
-When defining tools for LLMs, follow these best practices:
-
-**Clear and Descriptive Names**: Use descriptive function names that clearly indicate the tool's purpose.
-
-```json
-// Good: Clear and specific
-{ "name": "get_weather_forecast" }
-```
-
-```json
-// Avoid: Too vague
-{ "name": "weather" }
-```
-
-**Comprehensive Descriptions**: Provide detailed descriptions that help the model understand when and how to use the tool.
-
-```json
-{
-  "description": "Get current weather conditions and 5-day forecast for a specific location. Supports cities, zip codes, and coordinates.",
-  "parameters": {
-    "type": "object",
-    "properties": {
-      "location": {
-        "type": "string",
-        "description": "City name, zip code, or coordinates (lat,lng). Examples: 'New York', '10001', '40.7128,-74.0060'"
-      },
-      "units": {
-        "type": "string",
-        "enum": ["celsius", "fahrenheit"],
-        "description": "Temperature unit preference",
-        "default": "celsius"
-      }
-    },
-    "required": ["location"]
-  }
-}
-```
-
-### Streaming with Tool Calls
-
-When using streaming responses with tool calls, handle the different content types appropriately:
-
-```typescript
-const stream = await fetch('/api/chat/completions', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    model: 'anthropic/claude-3.5-sonnet',
-    messages: messages,
-    tools: tools,
-    stream: true
-  })
-});
-
-const reader = stream.body.getReader();
-let toolCalls = [];
-
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) {
-    break;
-  }
-
-  const chunk = new TextDecoder().decode(value);
-  const lines = chunk.split('\n').filter(line => line.trim());
-
-  for (const line of lines) {
-    if (line.startsWith('data: ')) {
-      const data = JSON.parse(line.slice(6));
-
-      if (data.choices[0].delta.tool_calls) {
-        toolCalls.push(...data.choices[0].delta.tool_calls);
-      }
-
-      if (data.choices[0].delta.finish_reason === 'tool_calls') {
-        await handleToolCalls(toolCalls);
-      } else if (data.choices[0].delta.finish_reason === 'stop') {
-        // Regular completion without tool calls
-        break;
-      }
-    }
-  }
-}
-```
-
-### Tool Choice Configuration
-
-Control tool usage with the `tool_choice` parameter:
-
-```json
-// Let model decide (default)
-{ "tool_choice": "auto" }
-```
-
-```json
-// Disable tool usage
-{ "tool_choice": "none" }
-```
-
-```json
-// Force specific tool
-{
-  "tool_choice": {
-    "type": "function",
-    "function": {"name": "search_database"}
-  }
-}
-```
-
-### Parallel Tool Calls
-
-Control whether multiple tools can be called simultaneously with the `parallel_tool_calls` parameter (default is true for most models):
-
-```json
-// Disable parallel tool calls - tools will be called sequentially
-{ "parallel_tool_calls": false }
-```
-
-When `parallel_tool_calls` is `false`, the model will only request one tool call at a time instead of potentially multiple calls in parallel.
-
-### Multi-Tool Workflows
-
-Design tools that work well together:
-
-```json
-{
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "search_products",
-        "description": "Search for products in the catalog"
-      }
-    },
-    {
-      "type": "function",
-      "function": {
-        "name": "get_product_details",
-        "description": "Get detailed information about a specific product"
-      }
-    },
-    {
-      "type": "function",
-      "function": {
-        "name": "check_inventory",
-        "description": "Check current inventory levels for a product"
-      }
-    }
-  ]
-}
-```
-
-This allows the model to naturally chain operations: search → get details → check inventory.
-
-For more details on OpenRouter's message format and tool parameters, see the [API Reference](https://openrouter.ai/docs/api-reference/overview).
 
 
 # Multimodal Capabilities
@@ -5616,295 +2238,165 @@ Video URL support varies significantly by provider:
 * Check if the video content is clearly visible and well-lit
 
 
-# Message Transforms
+# OAuth PKCE
 
-> Transform and optimize messages before sending them to AI models. Learn about middle-out compression and context window optimization with OpenRouter.
+> Implement secure user authentication with OpenRouter using OAuth PKCE. Complete guide to setting up and managing OAuth authentication flows.
 
-To help with prompts that exceed the maximum context size of a model, OpenRouter supports a custom parameter called `transforms`:
+Users can connect to OpenRouter in one click using [Proof Key for Code Exchange (PKCE)](https://oauth.net/2/pkce/).
 
-```typescript
-{
-  transforms: ["middle-out"], // Compress prompts that are > context size.
-  messages: [...],
-  model // Works with any model
-}
-```
+Here's a step-by-step guide:
 
-This can be useful for situations where perfect recall is not required. The transform works by removing or truncating messages from the middle of the prompt, until the prompt fits within the model's context window.
+## PKCE Guide
 
-In some cases, the issue is not the token context length, but the actual number of messages. The transform addresses this as well: For instance, Anthropic's Claude models enforce a maximum of {anthropicMaxMessagesCount} messages. When this limit is exceeded with middle-out enabled, the transform will keep half of the messages from the start and half from the end of the conversation.
+### Step 1: Send your user to OpenRouter
 
-When middle-out compression is enabled, OpenRouter will first try to find models whose context length is at least half of your total required tokens (input + completion). For example, if your prompt requires 10,000 tokens total, models with at least 5,000 context length will be considered. If no models meet this criteria, OpenRouter will fall back to using the model with the highest available context length.
+To start the PKCE flow, send your user to OpenRouter's `/auth` URL with a `callback_url` parameter pointing back to your site:
 
-The compression will then attempt to fit your content within the chosen model's context window by removing or truncating content from the middle of the prompt. If middle-out compression is disabled and your total tokens exceed the model's context length, the request will fail with an error message suggesting you either reduce the length or enable middle-out compression.
+<CodeGroup>
+  ```txt title="With S256 Code Challenge (Recommended)" wordWrap
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256
+  ```
 
-<Note>
-  [All OpenRouter endpoints](/models) with 8k (8,192 tokens) or less context
-  length will default to using `middle-out`. To disable this, set `transforms:   []` in the request body.
-</Note>
+  ```txt title="With Plain Code Challenge" wordWrap
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=plain
+  ```
 
-The middle of the prompt is compressed because [LLMs pay less attention](https://arxiv.org/abs/2307.03172) to the middle of sequences.
+  ```txt title="Without Code Challenge" wordWrap
+  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>
+  ```
+</CodeGroup>
 
+The `code_challenge` parameter is optional but recommended.
 
-# Uptime Optimization
+Your user will be prompted to log in to OpenRouter and authorize your app. After authorization, they will be redirected back to your site with a `code` parameter in the URL:
 
-> Learn how OpenRouter maximizes AI model uptime through real-time monitoring, intelligent routing, and automatic fallbacks across multiple providers.
+![Alt text](file:39674db9-a14b-459b-99b3-6c9bdcedcce2)
 
-OpenRouter continuously monitors the health and availability of AI providers to ensure maximum uptime for your applications. We track response times, error rates, and availability across all providers in real-time, and route based on this feedback.
+<Tip title="Use SHA-256 for Maximum Security">
+  For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
 
-## How It Works
+  For more info, [visit Auth0's docs](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#parameters).
+</Tip>
 
-OpenRouter tracks response times, error rates, and availability across all providers in real-time. This data helps us make intelligent routing decisions and provides transparency about service reliability.
+#### How to Generate a Code Challenge
 
-## Uptime Example: Claude 4 Sonnet
+The following example leverages the Web Crypto API and the Buffer API to generate a code challenge for the S256 method. You will need a bundler to use the Buffer API in the web browser:
 
-<UptimeChart permaslug="anthropic/claude-4-sonnet-20250522" />
+<CodeGroup>
+  ```typescript title="Generate Code Challenge"
+  import { Buffer } from 'buffer';
 
-## Uptime Example: Llama 3.3 70B Instruct
+  async function createSHA256CodeChallenge(input: string) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(input);
+    const hash = await crypto.subtle.digest('SHA-256', data);
+    return Buffer.from(hash).toString('base64url');
+  }
 
-<UptimeChart permaslug="meta-llama/llama-3.3-70b-instruct" />
+  const codeVerifier = 'your-random-string';
+  const generatedCodeChallenge = await createSHA256CodeChallenge(codeVerifier);
+  ```
+</CodeGroup>
 
-## Customizing Provider Selection
+#### Localhost Apps
 
-While our smart routing helps maintain high availability, you can also customize provider selection using request parameters. This gives you control over which providers handle your requests while still benefiting from automatic fallback when needed.
+If your app is a local-first app or otherwise doesn't have a public URL, it is recommended to test with `http://localhost:3000` as the callback and referrer URLs.
 
-Learn more about customizing provider selection in our [Provider Routing documentation](/docs/features/provider-routing).
+When moving to production, replace the localhost/private referrer URL with a public GitHub repo or a link to your project website.
 
+### Step 2: Exchange the code for a user-controlled API key
 
-# Web Search
+After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:
 
-> Enable real-time web search capabilities in your AI model responses. Add factual, up-to-date information to any model's output with OpenRouter's web search feature.
+![Alt text](file:3729a1d5-8641-4428-8b81-a0e0f8d155a3)
 
-You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
+Extract this code using the browser API:
 
-```json
-{
-  "model": "openai/gpt-4o:online"
-}
-```
+<CodeGroup>
+  ```typescript title="Extract Code"
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  ```
+</CodeGroup>
 
-This is a shortcut for using the `web` plugin, and is exactly equivalent to:
+Then use it to make an API call to `https://openrouter.ai/api/v1/auth/keys` to exchange the code for a user-controlled API key:
 
-```json
-{
-  "model": "openrouter/auto",
-  "plugins": [{ "id": "web" }]
-}
-```
+<CodeGroup>
+  ```typescript title="Exchange Code"
+  const response = await fetch('https://openrouter.ai/api/v1/auth/keys', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      code: '<CODE_FROM_QUERY_PARAM>',
+      code_verifier: '<CODE_VERIFIER>', // If code_challenge was used
+      code_challenge_method: '<CODE_CHALLENGE_METHOD>', // If code_challenge was used
+    }),
+  });
 
-The web search plugin is powered by native search for Anthropic and OpenAI natively and by [Exa](https://exa.ai) for other models. For Exa, it uses their ["auto"](https://docs.exa.ai/reference/how-exa-search-works#combining-neural-and-keyword-the-best-of-both-worlds-through-exa-auto-search) method (a combination of keyword search and embeddings-based web search) to find the most relevant results and augment/ground your prompt.
+  const { key } = await response.json();
+  ```
+</CodeGroup>
 
-## Parsing web search results
+And that's it for the PKCE flow!
 
-Web search results for all models (including native-only models like Perplexity and OpenAI Online) are available in the API and standardized by OpenRouterto follow the same annotation schema in the [OpenAI Chat Completion Message type](https://platform.openai.com/docs/api-reference/chat/object):
+### Step 3: Use the API key
 
-```json
-{
-  "message": {
-    "role": "assistant",
-    "content": "Here's the latest news I found: ...",
-    "annotations": [
+Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/api-reference/completion).
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: key, // The key from Step 2
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'openai/gpt-4o',
+    messages: [
       {
-        "type": "url_citation",
-        "url_citation": {
-          "url": "https://www.example.com/web-search-result",
-          "title": "Title of the web search result",
-          "content": "Content of the web search result", // Added by OpenRouter if available
-          "start_index": 100, // The index of the first character of the URL citation in the message.
-          "end_index": 200 // The index of the last character of the URL citation in the message.
-        }
-      }
-    ]
-  }
-}
-```
+        role: 'user',
+        content: 'Hello!',
+      },
+    ],
+    stream: false,
+  });
 
-## Customizing the Web Plugin
+  console.log(completion.choices[0].message);
+  ```
 
-The maximum results allowed by the web plugin and the prompt used to attach them to your message stream can be customized:
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-4o',
+      messages: [
+        {
+          role: 'user',
+          content: 'Hello!',
+        },
+      ],
+    }),
+  });
+  ```
+</CodeGroup>
 
-```json
-{
-  "model": "openai/gpt-4o:online",
-  "plugins": [
-    {
-      "id": "web",
-      "engine": "exa", // Optional: "native", "exa", or undefined
-      "max_results": 1, // Defaults to 5
-      "search_prompt": "Some relevant web results:" // See default below
-    }
-  ]
-}
-```
+## Error Codes
 
-By default, the web plugin uses the following search prompt, using the current date:
+* `400 Invalid code_challenge_method`: Make sure you're using the same code challenge method in step 1 as in step 2.
+* `403 Invalid code or code_verifier`: Make sure your user is logged in to OpenRouter, and that `code_verifier` and `code_challenge_method` are correct.
+* `405 Method Not Allowed`: Make sure you're using `POST` and `HTTPS` for your request.
 
-```
-A web search was conducted on `date`. Incorporate the following web search results into your response.
+## External Tools
 
-IMPORTANT: Cite them using markdown links named using the domain of the source.
-Example: [nytimes.com](https://nytimes.com/some-page).
-```
-
-## Engine Selection
-
-The web search plugin supports the following options for the `engine` parameter:
-
-* **`native`**: Always uses the model provider's built-in web search capabilities
-* **`exa`**: Uses Exa's search API for web results
-* **`undefined` (not specified)**: Uses native search if available for the provider, otherwise falls back to Exa
-
-### Default Behavior
-
-When the `engine` parameter is not specified:
-
-* **Native search is used by default** for OpenAI and Anthropic models that support it
-* **Exa search is used** for all other models or when native search is not supported
-
-When you explicitly specify `"engine": "native"`, it will always attempt to use the provider's native search, even if the model doesn't support it (which may result in an error).
-
-### Forcing Engine Selection
-
-You can explicitly specify which engine to use:
-
-```json
-{
-  "model": "openai/gpt-4o",
-  "plugins": [
-    {
-      "id": "web",
-      "engine": "native"
-    }
-  ]
-}
-```
-
-Or force Exa search even for models that support native search:
-
-```json
-{
-  "model": "openai/gpt-4o",
-  "plugins": [
-    {
-      "id": "web",
-      "engine": "exa",
-      "max_results": 3
-    }
-  ]
-}
-```
-
-### Engine-Specific Pricing
-
-* **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing sections below)
-* **Exa search**: Uses OpenRouter credits at \$4 per 1000 results (default 5 results = \$0.02 per request)
-
-## Pricing
-
-### Exa Search Pricing
-
-When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$4 per 1000 results*. By default, `max_results` set to 5, this comes out to a maximum of \$0.02 per request, in addition to the LLM usage for the search result prompt tokens.
-
-### Native Search Pricing (Provider Passthrough)
-
-Some models have built-in web search. These models charge a fee based on the search context size, which determines how much search data is retrieved and processed for a query.
-
-### Search Context Size Thresholds
-
-Search context can be 'low', 'medium', or 'high' and determines how much search context is retrieved for a query:
-
-* **Low**: Minimal search context, suitable for basic queries
-* **Medium**: Moderate search context, good for general queries
-* **High**: Extensive search context, ideal for detailed research
-
-### Specifying Search Context Size
-
-You can specify the search context size in your API request using the `web_search_options` parameter:
-
-```json
-{
-  "model": "openai/gpt-4.1",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What are the latest developments in quantum computing?"
-    }
-  ],
-  "web_search_options": {
-    "search_context_size": "high"
-  }
-}
-```
-
-### OpenAI Model Pricing
-
-For GPT-4.1, GPT-4o, and GPT-4o search preview Models:
-
-| Search Context Size | Price per 1000 Requests |
-| ------------------- | ----------------------- |
-| Low                 | \$30.00                 |
-| Medium              | \$35.00                 |
-| High                | \$50.00                 |
-
-For GPT-4.1-Mini, GPT-4o-Mini, and GPT-4o-Mini-Search-Preview Models:
-
-| Search Context Size | Price per 1000 Requests |
-| ------------------- | ----------------------- |
-| Low                 | \$25.00                 |
-| Medium              | \$27.50                 |
-| High                | \$30.00                 |
-
-### Perplexity Model Pricing
-
-For Sonar and SonarReasoning:
-
-| Search Context Size | Price per 1000 Requests |
-| ------------------- | ----------------------- |
-| Low                 | \$5.00                  |
-| Medium              | \$8.00                  |
-| High                | \$12.00                 |
-
-For SonarPro and SonarReasoningPro:
-
-| Search Context Size | Price per 1000 Requests |
-| ------------------- | ----------------------- |
-| Low                 | \$6.00                  |
-| Medium              | \$10.00                 |
-| High                | \$14.00                 |
-
-<Note title="Engine Parameter">
-  The pricing above applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing (\$4 per 1000 results) applies instead.
-</Note>
-
-<Note title="Pricing Documentation">
-  For more detailed information about pricing models, refer to the official documentation:
-
-  * [OpenAI Pricing](https://platform.openai.com/docs/pricing#web-search)
-  * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
-  * [Perplexity Pricing](https://docs.perplexity.ai/guides/pricing)
-</Note>
-
-
-# Zero Completion Insurance
-
-> Learn how OpenRouter protects users from being charged for failed or empty AI responses with zero completion insurance.
-
-OpenRouter provides zero completion insurance to protect users from being charged for failed or empty responses. When a response contains no output tokens and either has a blank finish reason or an error, you will not be charged for the request, even if the underlying provider charges for prompt processing.
-
-<Note>
-  Zero completion insurance is automatically enabled for all accounts and requires no configuration.
-</Note>
-
-## How It Works
-
-Zero completion insurance automatically applies to all requests across all models and providers. When a response meets either of these conditions, no credits will be deducted from your account:
-
-* The response has zero completion tokens AND a blank/null finish reason
-* The response has an error finish reason
-
-## Viewing Protected Requests
-
-On your activity page, requests that were protected by zero completion insurance will show zero credits deducted. This applies even in cases where OpenRouter may have been charged by the provider for prompt processing.
+* [PKCE Tools](https://example-app.com/pkce)
+* [Online PKCE Generator](https://tonyxu-io.github.io/pkce-generator/)
 
 
 # Provisioning API Keys
@@ -6145,6 +2637,4191 @@ API responses return JSON objects containing key information:
 When creating a new key, the response will include the key string itself. Read more in the [API reference](/docs/api-reference/api-keys/create-api-key).
 
 
+# BYOK
+
+> Learn how to use your existing AI provider keys with OpenRouter. Integrate your own API keys while leveraging OpenRouter's unified interface and features.
+
+## Bring your own API Keys
+
+OpenRouter supports both OpenRouter credits and the option to bring your own provider keys (BYOK).
+
+When you use OpenRouter credits, your rate limits for each provider are managed by OpenRouter.
+
+Using provider keys enables direct control over rate limits and costs via your provider account.
+
+Your provider keys are securely encrypted and used for all requests routed through the specified provider.
+
+Manage keys in your [account settings](/settings/integrations).
+
+The cost of using custom provider keys on OpenRouter is **{bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same model/provider would cost normally on OpenRouter** and will be deducted from your OpenRouter credits.
+This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK requests per-month.
+
+### Key Priority and Fallback
+
+OpenRouter always prioritizes using your provider keys when available. By default, if your key encounters a rate limit or failure, OpenRouter will fall back to using shared OpenRouter credits.
+
+You can configure individual keys with "Always use this key" to prevent any fallback to OpenRouter credits. When this option is enabled, OpenRouter will only use your key for requests to that provider, which may result in rate limit errors if your key is exhausted, but ensures all requests go through your account.
+
+### Azure API Keys
+
+To use Azure AI Services with OpenRouter, you'll need to provide your Azure API key configuration in JSON format. Each key configuration requires the following fields:
+
+```json
+{
+  "model_slug": "the-openrouter-model-slug",
+  "endpoint_url": "https://<resource>.services.ai.azure.com/deployments/<model-id>/chat/completions?api-version=<api-version>",
+  "api_key": "your-azure-api-key",
+  "model_id": "the-azure-model-id"
+}
+```
+
+You can find these values in your Azure AI Services resource:
+
+1. **endpoint\_url**: Navigate to your Azure AI Services resource in the Azure portal. In the "Overview" section, you'll find your endpoint URL. Make sure to append `/chat/completions` to the base URL. You can read more in the [Azure Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/endpoints?tabs=python).
+
+2. **api\_key**: In the same "Overview" section of your Azure AI Services resource, you can find your API key under "Keys and Endpoint".
+
+3. **model\_id**: This is the name of your model deployment in Azure AI Services.
+
+4. **model\_slug**: This is the OpenRouter model identifier you want to use this key for.
+
+Since Azure supports multiple model deployments, you can provide an array of configurations for different models:
+
+```json
+[
+  {
+    "model_slug": "mistralai/mistral-large",
+    "endpoint_url": "https://example-project.openai.azure.com/openai/deployments/mistral-large/chat/completions?api-version=2024-08-01-preview",
+    "api_key": "your-azure-api-key",
+    "model_id": "mistral-large"
+  },
+  {
+    "model_slug": "openai/gpt-4o",
+    "endpoint_url": "https://example-project.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview",
+    "api_key": "your-azure-api-key",
+    "model_id": "gpt-4o"
+  }
+]
+```
+
+Make sure to replace the url with your own project url. Also the url should end with /chat/completions with the api version that you would like to use.
+
+### AWS Bedrock API Keys
+
+To use Amazon Bedrock with OpenRouter, you can authenticate using either Bedrock API keys or traditional AWS credentials.
+
+#### Option 1: Bedrock API Keys (Recommended)
+
+Amazon Bedrock API keys provide a simpler authentication method. Simply provide your Bedrock API key as a string:
+
+```
+your-bedrock-api-key-here
+```
+
+**Note:** Bedrock API keys are tied to a specific AWS region and cannot be used to change regions. If you need to use models in different regions, use the AWS credentials option below.
+
+You can generate Bedrock API keys in the AWS Management Console. Learn more in the [Amazon Bedrock API keys documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html).
+
+#### Option 2: AWS Credentials
+
+Alternatively, you can use traditional AWS credentials in JSON format. This option allows you to specify the region and provides more flexibility:
+
+```json
+{
+  "accessKeyId": "your-aws-access-key-id",
+  "secretAccessKey": "your-aws-secret-access-key",
+  "region": "your-aws-region"
+}
+```
+
+You can find these values in your AWS account:
+
+1. **accessKeyId**: This is your AWS Access Key ID. You can create or find your access keys in the AWS Management Console under "Security Credentials" in your AWS account.
+
+2. **secretAccessKey**: This is your AWS Secret Access Key, which is provided when you create an access key.
+
+3. **region**: The AWS region where your Amazon Bedrock models are deployed (e.g., "us-east-1", "us-west-2").
+
+Make sure your AWS IAM user or role has the necessary permissions to access Amazon Bedrock services. At minimum, you'll need permissions for:
+
+* `bedrock:InvokeModel`
+* `bedrock:InvokeModelWithResponseStream` (for streaming responses)
+
+Example IAM policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+For enhanced security, we recommend creating dedicated IAM users with limited permissions specifically for use with OpenRouter.
+
+Learn more in the [AWS Bedrock Getting Started with the API](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started-api.html) documentation, [IAM Permissions Setup](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html) guide, or the [AWS Bedrock API Reference](https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html).
+
+### Google Vertex API Keys
+
+To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region.
+
+```json
+{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "private_key_id": "your-private-key-id",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
+  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+  "client_id": "your-client-id",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account@your-project.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com",
+  "region": "global"
+}
+```
+
+You can find these values in your Google Cloud Console:
+
+1. **Service Account Key**: Navigate to the Google Cloud Console, go to "IAM & Admin" > "Service Accounts", select your service account, and create/download a JSON key.
+
+2. **region** (optional): Specify the region for your Vertex AI deployment. Use `"global"` to allow requests to run in any available region, or specify a specific region like `"us-central1"` or `"europe-west1"`.
+
+Make sure your service account has the necessary permissions to access Vertex AI services:
+
+* `aiplatform.endpoints.predict`
+* `aiplatform.endpoints.streamingPredict` (for streaming responses)
+
+Example IAM policy:
+
+```json
+{
+  "bindings": [
+    {
+      "role": "roles/aiplatform.user",
+      "members": [
+        "serviceAccount:your-service-account@your-project.iam.gserviceaccount.com"
+      ]
+    }
+  ]
+}
+```
+
+Learn more in the [Google Cloud Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) and [Service Account setup guide](https://cloud.google.com/iam/docs/service-accounts-create).
+
+
+# Frequently Asked Questions
+
+> Find answers to commonly asked questions about OpenRouter's unified API, model access, pricing, and integration.
+
+## Getting started
+
+<AccordionGroup>
+  <Accordion title="Why should I use OpenRouter?">
+    OpenRouter provides a unified API to access all the major LLM models on the
+    market. It also allows users to aggregate their billing in one place and
+    keep track of all of their usage using our analytics.
+
+    OpenRouter passes through the pricing of the underlying providers, while pooling their uptime,
+    so you get the same pricing you'd get from the provider directly, with a
+    unified API and fallbacks so that you get much better uptime.
+  </Accordion>
+
+  <Accordion title="How do I get started with OpenRouter?">
+    To get started, create an account and add credits on the
+    [Credits](https://openrouter.ai/settings/credits) page. Credits are simply
+    deposits on OpenRouter that you use for LLM inference.
+    When you use the API or chat interface, we deduct the request cost from your
+    credits. Each model and provider has a different price per million tokens.
+
+    Once you have credits you can either use the chat room, or create API keys
+    and start using the API. You can read our [quickstart](/docs/quickstart)
+    guide for code samples and more.
+  </Accordion>
+
+  <Accordion title="How do I get support?">
+    The best way to get technical support is to join our
+    [Discord](https://discord.gg/openrouter) and ask the community in the #help forum.
+
+    For billing and account management questions, please contact us at [support@openrouter.ai](mailto:support@openrouter.ai).
+  </Accordion>
+
+  <Accordion title="How do I get billed for my usage on OpenRouter?">
+    For each model we have the pricing displayed per million tokens. There is
+    usually a different price for prompt and completion tokens. There are also
+    models that charge per request, for images and for reasoning tokens. All of
+    these details will be visible on the models page.
+
+    When you make a request to OpenRouter, we receive the total number of tokens processed
+    by the provider. We then calculate the corresponding cost and deduct it from your credits.
+    You can review your complete usage history in the [Activity tab](https://openrouter.ai/activity).
+
+    You can also add the `usage: {include: true}` parameter to your chat request
+    to get the usage information in the response.
+
+    We pass through the pricing of the underlying providers; there is no markup
+    on inference pricing (however we do charge a [fee](/docs/faq#pricing-and-fees) when purchasing credits).
+  </Accordion>
+</AccordionGroup>
+
+## Pricing and Fees
+
+<AccordionGroup>
+  <Accordion title="What are the fees for using OpenRouter?">
+    OpenRouter charges a {getTotalFeeString('stripe')} fee when you purchase credits. We pass through
+    the pricing of the underlying model providers without any markup, so you pay
+    the same rate as you would directly with the provider.
+
+    Crypto payments are charged a fee of {getTotalFeeString('coinbase')}.
+  </Accordion>
+
+  <Accordion title="Is there a fee for using my own provider keys (BYOK)?">
+    Yes, if you choose to use your own provider API keys (Bring Your Own Key -
+    BYOK), the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK
+    requests per-month are free, and for all subsequent usage there is a fee
+    of {bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same
+    model and provider would normally cost on OpenRouter. This fee is deducted
+    from your OpenRouter credits. This allows you to manage your rate limits and
+    costs directly with the provider while still leveraging OpenRouter's unified
+    interface.
+  </Accordion>
+</AccordionGroup>
+
+## Models and Providers
+
+<AccordionGroup>
+  <Accordion title="What LLM models does OpenRouter support?">
+    OpenRouter provides access to a wide variety of LLM models, including frontier models from major AI labs.
+    For a complete list of models you can visit the [models browser](https://openrouter.ai/models) or fetch the list through the [models api](https://openrouter.ai/api/v1/models).
+  </Accordion>
+
+  <Accordion title="How frequently are new models added?">
+    We work on adding models as quickly as we can. We often have partnerships with
+    the labs releasing models and can release models as soon as they are
+    available. If there is a model missing that you'd like OpenRouter to support, feel free to message us on
+    [Discord](https://discord.gg/openrouter).
+  </Accordion>
+
+  <Accordion title="What are model variants?">
+    Variants are suffixes that can be added to the model slug to change its behavior.
+
+    Static variants can only be used with specific models and these are listed in our [models api](https://openrouter.ai/api/v1/models).
+
+    1. `:free` - The model is always provided for free and has low rate limits.
+    2. `:beta` - The model is not moderated by OpenRouter.
+    3. `:extended` - The model has longer than usual context length.
+    4. `:exacto` - The model only uses OpenRouter-curated high-quality endpoints.
+    5. `:thinking` - The model supports reasoning by default.
+
+    Dynamic variants can be used on all models and they change the behavior of how the request is routed or used.
+
+    1. `:online` - All requests will run a query to extract web results that are attached to the prompt.
+    2. `:nitro` - Providers will be sorted by throughput rather than the default sort, optimizing for faster response times.
+    3. `:floor` - Providers will be sorted by price rather than the default sort, prioritizing the most cost-effective options.
+  </Accordion>
+
+  <Accordion title="I am an inference provider, how can I get listed on OpenRouter?">
+    You can read our requirements at the [Providers
+    page](/docs/use-cases/for-providers). If you would like to contact us, the best
+    place to reach us is over email.
+  </Accordion>
+
+  <Accordion title="What is the expected latency/response time for different models?">
+    For each model on OpenRouter we show the latency (time to first token) and the token
+    throughput for all providers. You can use this to estimate how long requests
+    will take. If you would like to optimize for throughput you can use the
+    `:nitro` variant to route to the fastest provider.
+  </Accordion>
+
+  <Accordion title="How does model fallback work if a provider is unavailable?">
+    If a provider returns an error OpenRouter will automatically fall back to the
+    next provider. This happens transparently to the user and allows production
+    apps to be much more resilient. OpenRouter has a lot of options to configure
+    the provider routing behavior. The full documentation can be found [here](/docs/features/provider-routing).
+  </Accordion>
+</AccordionGroup>
+
+## API Technical Specifications
+
+<AccordionGroup>
+  <Accordion title="What authentication methods are supported?">
+    OpenRouter uses three authentication methods:
+
+    1. Cookie-based authentication for the web interface and chatroom
+    2. API keys (passed as Bearer tokens) for accessing the completions API and other core endpoints
+    3. [Provisioning API keys](/docs/auth/provisioning-api-keys) for programmatically managing API keys through the key management endpoints
+  </Accordion>
+
+  <Accordion title="How are rate limits calculated?">
+    For free models, rate limits are determined by the credits that you have purchased.
+    If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits, your free model rate limit will be {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
+    Otherwise, you will be rate limited to {FREE_MODEL_NO_CREDITS_RPD} free model API requests per day.
+
+    You can learn more about how rate limits work for paid accounts in our [rate limits documentation](/docs/api-reference/limits).
+  </Accordion>
+
+  <Accordion title="What API endpoints are available?">
+    OpenRouter implements the OpenAI API specification for /completions and
+    /chat/completions endpoints, allowing you to use any model with the same
+    request/response format. Additional endpoints like /api/v1/models are also
+    available. See our [API documentation](/docs/api-reference/overview) for
+    detailed specifications.
+  </Accordion>
+
+  <Accordion title="What are the supported formats?">
+    The API supports text and images.
+    [Images](/docs/api-reference/overview#images--multimodal) can be passed as
+    URLs or base64 encoded images. PDF and other file types are coming soon.
+  </Accordion>
+
+  <Accordion title="How does streaming work?">
+    Streaming uses server-sent events (SSE) for real-time token delivery. Set
+    `stream: true` in your request to enable streaming responses.
+  </Accordion>
+
+  <Accordion title="What SDK support is available?">
+    OpenRouter is a drop-in replacement for OpenAI. Therefore, any SDKs that
+    support OpenAI by default also support OpenRouter. Check out our
+    [docs](/docs/community/open-ai-sdk) for more details.
+  </Accordion>
+</AccordionGroup>
+
+## Privacy and Data Logging
+
+Please see our [Terms of Service](https://openrouter.ai/terms) and [Privacy Policy](https://openrouter.ai/privacy).
+
+<AccordionGroup>
+  <Accordion title="What data is logged during API use?">
+    We log basic request metadata (timestamps, model used, token counts). Prompt
+    and completion are not logged by default. We do zero logging of your prompts/completions,
+    even if an error occurs, unless you opt-in to logging them.
+
+    We have an opt-in [setting](https://openrouter.ai/settings/privacy) that
+    lets users opt-in to log their prompts and completions in exchange for a 1%
+    discount on usage costs.
+  </Accordion>
+
+  <Accordion title="What data is logged during Chatroom use?">
+    The same data privacy applies to the chatroom as the API. All conversations
+    in the chatroom are stored locally on your device. Conversations will not sync across devices.
+    It is possible to export and import conversations using the settings menu in the chatroom.
+  </Accordion>
+
+  <Accordion title="What third-party sharing occurs?">
+    OpenRouter is a proxy that sends your requests to the model provider for it to be completed.
+    We work with all providers to, when possible, ensure that prompts and completions are not logged or used for training.
+    Providers that do log, or where we have been unable to confirm their policy, will not be routed to unless the model training
+    toggle is switched on in the [privacy settings](https://openrouter.ai/settings/privacy) tab.
+
+    If you specify [provider routing](/docs/features/provider-routing) in your request, but none of the providers
+    match the level of privacy specified in your account settings, you will get an error and your request will not complete.
+  </Accordion>
+</AccordionGroup>
+
+## Credit and Billing Systems
+
+<AccordionGroup>
+  <Accordion title="What purchase options exist?">
+    OpenRouter uses a credit system where the base currency is US dollars. All
+    of the pricing on our site and API is denoted in dollars. Users can top up
+    their balance manually or set up auto top up so that the balance is
+    replenished when it gets below the set threshold.
+  </Accordion>
+
+  <Accordion title="Do credits expire?">
+    Per our [terms](https://openrouter.ai/terms), we reserve the right to expire
+    unused credits after one year of purchase.
+  </Accordion>
+
+  <Accordion title="My credits haven't showed up in my account">
+    If you paid using Stripe, sometimes there is an issue with the Stripe
+    integration and credits can get delayed in showing up on your account. Please allow up to one hour.
+    If your credits still have not appeared after an hour, check to confirm you have not been charged and
+    that you do not have a stripe receipt email. If you do not have a receipt email or have not been charged,
+    your card may have been declined. Please try again with a different card or payment method.
+
+    If you have been charged and still do not have credits, please reach out to us via email
+    at [support@openrouter.ai](mailto:support@openrouter.ai) with details of the purchase.
+
+    If you paid using crypto, please reach out to us via email at [support@openrouter.ai](mailto:support@openrouter.ai)
+    and we will look into it.
+  </Accordion>
+
+  <Accordion title="What's the refund policy?">
+    Refunds for unused Credits may be requested within twenty-four (24) hours from the time the transaction was processed. If no refund request is received within twenty-four (24) hours following the purchase, any unused Credits become non-refundable. To request a refund within the eligible period, you can use the refund button on the [Credits](https://openrouter.ai/settings/credits) page. The unused credit amount will be refunded to your payment method; the platform fees are non-refundable. Note that cryptocurrency payments are never refundable.
+  </Accordion>
+
+  <Accordion title="How to monitor credit usage?">
+    The [Activity](https://openrouter.ai/activity) page allows users to view
+    their historic usage and filter the usage by model, provider and api key.
+
+    We also provide a [credits api](/docs/api-reference/get-credits) that has
+    live information about the balance and remaining credits for the account.
+  </Accordion>
+
+  <Accordion title="What free tier options exist?">
+    All new users receive a very small free allowance to be able to test out OpenRouter.
+    There are many [free models](https://openrouter.ai/models?max_price=0) available
+    on OpenRouter, it is important to note that these models have low rate limits ({FREE_MODEL_NO_CREDITS_RPD} requests per day total)
+    and are usually not suitable for production use. If you have purchased at least {FREE_MODEL_CREDITS_THRESHOLD} credits,
+    the free models will be limited to {FREE_MODEL_HAS_CREDITS_RPD} requests per day.
+  </Accordion>
+
+  <Accordion title="How do volume discounts work?">
+    OpenRouter does not currently offer volume discounts, but you can reach out to us
+    over email if you think you have an exceptional use case.
+  </Accordion>
+
+  <Accordion title="What payment methods are accepted?">
+    We accept all major credit cards, AliPay and cryptocurrency payments in
+    USDC. We are working on integrating PayPal soon, if there are any payment
+    methods that you would like us to support please reach out on [Discord](https://discord.gg/openrouter).
+  </Accordion>
+
+  <Accordion title="How does OpenRouter make money?">
+    We charge a small [fee](/docs/faq#pricing-and-fees) when purchasing credits. We never mark-up the pricing
+    of the underlying providers, and you'll always pay the same as the provider's
+    listed price.
+  </Accordion>
+</AccordionGroup>
+
+## Account Management
+
+<AccordionGroup>
+  <Accordion title="How can I delete my account?">
+    Go to the [Settings](https://openrouter.ai/settings/preferences) page and click Manage Account.
+    In the modal that opens, select the Security tab. You'll find an option there to delete your account.
+
+    Note that unused credits will be lost and cannot be reclaimed if you delete and later recreate your account.
+  </Accordion>
+
+  <Accordion title="How does team access work?">
+    Organization management information can be found in our [organization management documentation](/docs/use-cases/organization-management).
+  </Accordion>
+
+  <Accordion title="What analytics are available?">
+    Our [activity dashboard](https://openrouter.ai/activity) provides real-time
+    usage metrics. If you would like any specific reports or metrics please
+    contact us.
+  </Accordion>
+
+  <Accordion title="How can I contact support?">
+    For account and billing questions, please contact us at [support@openrouter.ai](mailto:support@openrouter.ai).
+  </Accordion>
+</AccordionGroup>
+
+
+# Auto Model Selection
+
+> Automatically select the best AI model for your prompts using OpenRouter's Auto Router powered by NotDiamond.
+
+The [Auto Router](https://openrouter.ai/openrouter/auto) is a special model ID that automatically chooses between selected high-quality models based on your prompt, powered by [NotDiamond](https://www.notdiamond.ai/).
+
+## How to Use
+
+Simply set your model to `openrouter/auto` and OpenRouter will intelligently select the best model for your specific prompt.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/auto',
+    messages: [
+      {
+        role: 'user',
+        content: 'What is the meaning of life?',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openrouter/auto',
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python title="Python"
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "openrouter/auto",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the meaning of life?"
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print(data['choices'][0]['message']['content'])
+  ```
+</CodeGroup>
+
+## Response
+
+The resulting generation will have `model` set to the model that was actually used for your request, allowing you to track which model was selected.
+
+
+# Model Fallbacks
+
+> Configure automatic failover between AI models when providers are down, rate-limited, or refuse requests.
+
+The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
+
+## How It Works
+
+Provide an array of model IDs in priority order. If the first model returns an error, OpenRouter will automatically try the next model in the list.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+    messages: [
+      {
+        role: 'user',
+        content: 'What is the meaning of life?',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python title="Python"
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the meaning of life?"
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print(data['choices'][0]['message']['content'])
+  ```
+</CodeGroup>
+
+## Fallback Behavior
+
+If the model you selected returns an error, OpenRouter will try to use the fallback model instead. If the fallback model is down or returns an error, OpenRouter will return that error.
+
+By default, any error can trigger the use of a fallback model, including:
+
+* Context length validation errors
+* Moderation flags for filtered models
+* Rate-limiting
+* Downtime
+
+## Pricing
+
+Requests are priced using the model that was ultimately used, which will be returned in the `model` attribute of the response body.
+
+## Using with OpenAI SDK
+
+To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, gpt-4o will be tried first, and the `models` array will be tried in order as fallbacks.
+
+<Template
+  data={{
+  API_KEY_REF,
+}}
+>
+  <CodeGroup>
+    ```python
+    from openai import OpenAI
+
+    openai_client = OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key={{API_KEY_REF}},
+    )
+
+    completion = openai_client.chat.completions.create(
+        model="openai/gpt-4o",
+        extra_body={
+            "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+        },
+        messages=[
+            {
+                "role": "user",
+                "content": "What is the meaning of life?"
+            }
+        ]
+    )
+
+    print(completion.choices[0].message.content)
+    ```
+
+    ```typescript
+    import OpenAI from 'openai';
+
+    const openrouterClient = new OpenAI({
+      baseURL: 'https://openrouter.ai/api/v1',
+      apiKey: '{{API_KEY_REF}}',
+    });
+
+    async function main() {
+      // @ts-expect-error
+      const completion = await openrouterClient.chat.completions.create({
+        model: 'openai/gpt-4o',
+        models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+        messages: [
+          {
+            role: 'user',
+            content: 'What is the meaning of life?',
+          },
+        ],
+      });
+      console.log(completion.choices[0].message);
+    }
+
+    main();
+    ```
+  </CodeGroup>
+</Template>
+
+
+# Provider Routing
+
+> Route AI model requests across multiple providers intelligently. Learn how to optimize for cost, performance, and reliability with OpenRouter's provider routing.
+
+OpenRouter routes requests to the best available providers for your model. By default, [requests are load balanced](#price-based-load-balancing-default-strategy) across the top providers to maximize uptime.
+
+You can customize how your requests are routed using the `provider` object in the request body for [Chat Completions](/docs/api-reference/chat-completion) and [Completions](/docs/api-reference/completion).
+
+The `provider` object can contain the following fields:
+
+| Field                      | Type              | Default | Description                                                                                                                       |
+| -------------------------- | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `order`                    | string\[]         | -       | List of provider slugs to try in order (e.g. `["anthropic", "openai"]`). [Learn more](#ordering-specific-providers)               |
+| `allow_fallbacks`          | boolean           | `true`  | Whether to allow backup providers when the primary is unavailable. [Learn more](#disabling-fallbacks)                             |
+| `require_parameters`       | boolean           | `false` | Only use providers that support all parameters in your request. [Learn more](#requiring-providers-to-support-all-parameters-beta) |
+| `data_collection`          | "allow" \| "deny" | "allow" | Control whether to use providers that may store data. [Learn more](#requiring-providers-to-comply-with-data-policies)             |
+| `zdr`                      | boolean           | -       | Restrict routing to only ZDR (Zero Data Retention) endpoints. [Learn more](#zero-data-retention-enforcement)                      |
+| `enforce_distillable_text` | boolean           | -       | Restrict routing to only models that allow text distillation. [Learn more](#distillable-text-enforcement)                         |
+| `only`                     | string\[]         | -       | List of provider slugs to allow for this request. [Learn more](#allowing-only-specific-providers)                                 |
+| `ignore`                   | string\[]         | -       | List of provider slugs to skip for this request. [Learn more](#ignoring-providers)                                                |
+| `quantizations`            | string\[]         | -       | List of quantization levels to filter by (e.g. `["int4", "int8"]`). [Learn more](#quantization)                                   |
+| `sort`                     | string            | -       | Sort providers by price or throughput. (e.g. `"price"` or `"throughput"`). [Learn more](#provider-sorting)                        |
+| `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#maximum-price)                                                |
+
+<Note title="EU data residency (Enterprise)">
+  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/privacy/data-collection#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
+</Note>
+
+## Price-Based Load Balancing (Default Strategy)
+
+For each model in your request, OpenRouter's default behavior is to load balance requests across providers, prioritizing price.
+
+If you are more sensitive to throughput than price, you can use the `sort` field to explicitly prioritize throughput.
+
+<Tip>
+  When you send a request with `tools` or `tool_choice`, OpenRouter will only
+  route to providers that support tool use. Similarly, if you set a
+  `max_tokens`, then OpenRouter will only route to providers that support a
+  response of that length.
+</Tip>
+
+Here is OpenRouter's default load balancing strategy:
+
+1. Prioritize providers that have not seen significant outages in the last 30 seconds.
+2. For the stable providers, look at the lowest-cost candidates and select one weighted by inverse square of the price (example below).
+3. Use the remaining providers as fallbacks.
+
+<Note title="A Load Balancing Example">
+  If Provider A costs \$1 per million tokens, Provider B costs \$2, and Provider C costs \$3, and Provider B recently saw a few outages.
+
+  * Your request is routed to Provider A. Provider A is 9x more likely to be first routed to Provider A than Provider C because $(1 / 3^2 = 1/9)$ (inverse square of the price).
+  * If Provider A fails, then Provider C will be tried next.
+  * If Provider C also fails, Provider B will be tried last.
+</Note>
+
+If you have `sort` or `order` set in your provider preferences, load balancing will be disabled.
+
+## Provider Sorting
+
+As described above, OpenRouter load balances based on price, while taking uptime into account.
+
+If you instead want to *explicitly* prioritize a particular provider attribute, you can include the `sort` field in the `provider` preferences. Load balancing will be disabled, and the router will try providers in order.
+
+The three sort options are:
+
+* `"price"`: prioritize lowest price
+* `"throughput"`: prioritize highest throughput
+* `"latency"`: prioritize lowest latency
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-70b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      sort: 'throughput',
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        sort: 'throughput',
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-70b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'sort': 'throughput',
+    },
+  })
+  ```
+</CodeGroup>
+
+To *always* prioritize low prices, and not apply any load balancing, set `sort` to `"price"`.
+
+To *always* prioritize low latency, and not apply any load balancing, set `sort` to `"latency"`.
+
+## Nitro Shortcut
+
+You can append `:nitro` to any model slug as a shortcut to sort by throughput. This is exactly equivalent to setting `provider.sort` to `"throughput"`.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-70b-instruct:nitro',
+    messages: [{ role: 'user', content: 'Hello' }],
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-70b-instruct:nitro',
+      messages: [{ role: 'user', content: 'Hello' }],
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-70b-instruct:nitro',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+  })
+  ```
+</CodeGroup>
+
+## Floor Price Shortcut
+
+You can append `:floor` to any model slug as a shortcut to sort by price. This is exactly equivalent to setting `provider.sort` to `"price"`.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-70b-instruct:floor',
+    messages: [{ role: 'user', content: 'Hello' }],
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-70b-instruct:floor',
+      messages: [{ role: 'user', content: 'Hello' }],
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-70b-instruct:floor',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+  })
+  ```
+</CodeGroup>
+
+## Ordering Specific Providers
+
+You can set the providers that OpenRouter will prioritize for your request using the `order` field.
+
+| Field   | Type      | Default | Description                                                              |
+| ------- | --------- | ------- | ------------------------------------------------------------------------ |
+| `order` | string\[] | -       | List of provider slugs to try in order (e.g. `["anthropic", "openai"]`). |
+
+The router will prioritize providers in this list, and in this order, for the model you're using. If you don't set this field, the router will [load balance](#price-based-load-balancing-default-strategy) across the top providers to maximize uptime.
+
+<Tip>
+  You can use the copy button next to provider names on model pages to get the exact provider slug,
+  including any variants like "/turbo". See [Targeting Specific Provider Endpoints](#targeting-specific-provider-endpoints) for details.
+</Tip>
+
+OpenRouter will try them one at a time and proceed to other providers if none are operational. If you don't want to allow any other providers, you should [disable fallbacks](#disabling-fallbacks) as well.
+
+### Example: Specifying providers with fallbacks
+
+This example skips over OpenAI (which doesn't host Mixtral), tries Together, and then falls back to the normal list of providers on OpenRouter:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'mistralai/mixtral-8x7b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      order: ['openai', 'together'],
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'mistralai/mixtral-8x7b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['openai', 'together'],
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'mistralai/mixtral-8x7b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'order': ['openai', 'together'],
+    },
+  })
+  ```
+</CodeGroup>
+
+### Example: Specifying providers with fallbacks disabled
+
+Here's an example with `allow_fallbacks` set to `false` that skips over OpenAI (which doesn't host Mixtral), tries Together, and then fails if Together fails:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'mistralai/mixtral-8x7b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      order: ['openai', 'together'],
+      allowFallbacks: false,
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'mistralai/mixtral-8x7b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['openai', 'together'],
+        allow_fallbacks: false,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'mistralai/mixtral-8x7b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'order': ['openai', 'together'],
+      'allow_fallbacks': False,
+    },
+  })
+  ```
+</CodeGroup>
+
+## Targeting Specific Provider Endpoints
+
+Each provider on OpenRouter may host multiple endpoints for the same model, such as a default endpoint and a specialized "turbo" endpoint. To target a specific endpoint, you can use the copy button next to the provider name on the model detail page to obtain the exact provider slug.
+
+For example, DeepInfra offers DeepSeek R1 through multiple endpoints:
+
+* Default endpoint with slug `deepinfra`
+* Turbo endpoint with slug `deepinfra/turbo`
+
+By copying the exact provider slug and using it in your request's `order` array, you can ensure your request is routed to the specific endpoint you want:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'deepseek/deepseek-r1',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      order: ['deepinfra/turbo'],
+      allowFallbacks: false,
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'deepseek/deepseek-r1',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        order: ['deepinfra/turbo'],
+        allow_fallbacks: false,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'deepseek/deepseek-r1',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'order': ['deepinfra/turbo'],
+      'allow_fallbacks': False,
+    },
+  })
+  ```
+</CodeGroup>
+
+This approach is especially useful when you want to consistently use a specific variant of a model from a particular provider.
+
+## Requiring Providers to Support All Parameters
+
+You can restrict requests only to providers that support all parameters in your request using the `require_parameters` field.
+
+| Field                | Type    | Default | Description                                                     |
+| -------------------- | ------- | ------- | --------------------------------------------------------------- |
+| `require_parameters` | boolean | `false` | Only use providers that support all parameters in your request. |
+
+With the default routing strategy, providers that don't support all the [LLM parameters](/docs/api-reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
+
+### Example: Excluding providers that don't support JSON formatting
+
+For example, to only use providers that support JSON formatting:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      requireParameters: true,
+    },
+    responseFormat: { type: 'json_object' },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        require_parameters: true,
+      },
+      response_format: { type: 'json_object' },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'require_parameters': True,
+    },
+    'response_format': { 'type': 'json_object' },
+  })
+  ```
+</CodeGroup>
+
+## Requiring Providers to Comply with Data Policies
+
+You can restrict requests only to providers that comply with your data policies using the `data_collection` field.
+
+| Field             | Type              | Default | Description                                           |
+| ----------------- | ----------------- | ------- | ----------------------------------------------------- |
+| `data_collection` | "allow" \| "deny" | "allow" | Control whether to use providers that may store data. |
+
+* `allow`: (default) allow providers which store user data non-transiently and may train on it
+* `deny`: use only providers which do not collect user data
+
+Some model providers may log prompts, so we display them with a **Data Policy** tag on model pages. This is not a definitive source of third party data policies, but represents our best knowledge.
+
+<Tip title="Account-Wide Data Policy Filtering">
+  This is also available as an account-wide setting in [your privacy
+  settings](https://openrouter.ai/settings/privacy). You can disable third party
+  model providers that store inputs for training.
+</Tip>
+
+### Example: Excluding providers that don't comply with data policies
+
+To exclude providers that don't comply with your data policies, set `data_collection` to `deny`:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      dataCollection: 'deny', // or "allow"
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        data_collection: 'deny', // or "allow"
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'data_collection': 'deny', # or "allow"
+    },
+  })
+  ```
+</CodeGroup>
+
+## Zero Data Retention Enforcement
+
+You can enforce Zero Data Retention (ZDR) on a per-request basis using the `zdr` parameter, ensuring your request only routes to endpoints that do not retain prompts.
+
+| Field | Type    | Default | Description                                                   |
+| ----- | ------- | ------- | ------------------------------------------------------------- |
+| `zdr` | boolean | -       | Restrict routing to only ZDR (Zero Data Retention) endpoints. |
+
+When `zdr` is set to `true`, the request will only be routed to endpoints that have a Zero Data Retention policy. When `zdr` is `false` or not provided, it has no effect on routing.
+
+<Tip title="Account-Wide ZDR Setting">
+  This is also available as an account-wide setting in [your privacy
+  settings](https://openrouter.ai/settings/privacy). The per-request `zdr` parameter
+  operates as an "OR" with your account-wide ZDR setting - if either is enabled, ZDR enforcement will be applied. The request-level parameter can only ensure ZDR is enabled, not override account-wide enforcement.
+</Tip>
+
+### Example: Enforcing ZDR for a specific request
+
+To ensure a request only uses ZDR endpoints, set `zdr` to `true`:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'gpt-4',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      zdr: true,
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        zdr: true,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'gpt-4',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'zdr': True,
+    },
+  })
+  ```
+</CodeGroup>
+
+This is useful for customers who don't want to globally enforce ZDR but need to ensure specific requests only route to ZDR endpoints.
+
+## Distillable Text Enforcement
+
+You can enforce distillable text filtering on a per-request basis using the `enforce_distillable_text` parameter, ensuring your request only routes to models where the author has allowed text distillation.
+
+| Field                      | Type    | Default | Description                                                   |
+| -------------------------- | ------- | ------- | ------------------------------------------------------------- |
+| `enforce_distillable_text` | boolean | -       | Restrict routing to only models that allow text distillation. |
+
+When `enforce_distillable_text` is set to `true`, the request will only be routed to models where the author has explicitly enabled text distillation. When `enforce_distillable_text` is `false` or not provided, it has no effect on routing.
+
+This parameter is useful for applications that need to ensure their requests only use models that allow text distillation for training purposes, such as when building datasets for model fine-tuning or distillation workflows.
+
+### Example: Enforcing distillable text for a specific request
+
+To ensure a request only uses models that allow text distillation, set `enforce_distillable_text` to `true`:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-70b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      enforceDistillableText: true,
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        enforce_distillable_text: true,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-70b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'enforce_distillable_text': True,
+    },
+  })
+  ```
+</CodeGroup>
+
+## Disabling Fallbacks
+
+To guarantee that your request is only served by the top (lowest-cost) provider, you can disable fallbacks.
+
+This is combined with the `order` field from [Ordering Specific Providers](#ordering-specific-providers) to restrict the providers that OpenRouter will prioritize to just your chosen list.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      allowFallbacks: false,
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        allow_fallbacks: false,
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'allow_fallbacks': False,
+    },
+  })
+  ```
+</CodeGroup>
+
+## Allowing Only Specific Providers
+
+You can allow only specific providers for a request by setting the `only` field in the `provider` object.
+
+| Field  | Type      | Default | Description                                       |
+| ------ | --------- | ------- | ------------------------------------------------- |
+| `only` | string\[] | -       | List of provider slugs to allow for this request. |
+
+<Warning>
+  Only allowing some providers may significantly reduce fallback options and
+  limit request recovery.
+</Warning>
+
+<Tip title="Account-Wide Allowed Providers">
+  You can allow providers for all account requests by configuring your [preferences](/settings/preferences). This configuration applies to all API requests and chatroom messages.
+
+  Note that when you allow providers for a specific request, the list of allowed providers is merged with your account-wide allowed providers.
+</Tip>
+
+### Example: Allowing Azure for a request calling GPT-4 Omni
+
+Here's an example that will only use Azure for a request calling GPT-4 Omni:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'openai/gpt-4o',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      only: ['azure'],
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openai/gpt-4o',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        only: ['azure'],
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'openai/gpt-4o',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'only': ['azure'],
+    },
+  })
+  ```
+</CodeGroup>
+
+## Ignoring Providers
+
+You can ignore providers for a request by setting the `ignore` field in the `provider` object.
+
+| Field    | Type      | Default | Description                                      |
+| -------- | --------- | ------- | ------------------------------------------------ |
+| `ignore` | string\[] | -       | List of provider slugs to skip for this request. |
+
+<Warning>
+  Ignoring multiple providers may significantly reduce fallback options and
+  limit request recovery.
+</Warning>
+
+<Tip title="Account-Wide Ignored Providers">
+  You can ignore providers for all account requests by configuring your [preferences](/settings/preferences). This configuration applies to all API requests and chatroom messages.
+
+  Note that when you ignore providers for a specific request, the list of ignored providers is merged with your account-wide ignored providers.
+</Tip>
+
+### Example: Ignoring DeepInfra for a request calling Llama 3.3 70b
+
+Here's an example that will ignore DeepInfra for a request calling Llama 3.3 70b:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.3-70b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      ignore: ['deepinfra'],
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.3-70b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        ignore: ['deepinfra'],
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.3-70b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'ignore': ['deepinfra'],
+    },
+  })
+  ```
+</CodeGroup>
+
+## Quantization
+
+Quantization reduces model size and computational requirements while aiming to preserve performance. Most LLMs today use FP16 or BF16 for training and inference, cutting memory requirements in half compared to FP32. Some optimizations use FP8 or quantization to reduce size further (e.g., INT8, INT4).
+
+| Field           | Type      | Default | Description                                                                                     |
+| --------------- | --------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `quantizations` | string\[] | -       | List of quantization levels to filter by (e.g. `["int4", "int8"]`). [Learn more](#quantization) |
+
+<Warning>
+  Quantized models may exhibit degraded performance for certain prompts,
+  depending on the method used.
+</Warning>
+
+Providers can support various quantization levels for open-weight models.
+
+### Quantization Levels
+
+By default, requests are load-balanced across all available providers, ordered by price. To filter providers by quantization level, specify the `quantizations` field in the `provider` parameter with the following values:
+
+* `int4`: Integer (4 bit)
+* `int8`: Integer (8 bit)
+* `fp4`: Floating point (4 bit)
+* `fp6`: Floating point (6 bit)
+* `fp8`: Floating point (8 bit)
+* `fp16`: Floating point (16 bit)
+* `bf16`: Brain floating point (16 bit)
+* `fp32`: Floating point (32 bit)
+* `unknown`: Unknown
+
+### Example: Requesting FP8 Quantization
+
+Here's an example that will only use providers that support FP8 quantization:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'meta-llama/llama-3.1-8b-instruct',
+    messages: [{ role: 'user', content: 'Hello' }],
+    provider: {
+      quantizations: ['fp8'],
+    },
+    stream: false,
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'HTTP-Referer': '<YOUR_SITE_URL>',
+      'X-Title': '<YOUR_SITE_NAME>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'meta-llama/llama-3.1-8b-instruct',
+      messages: [{ role: 'user', content: 'Hello' }],
+      provider: {
+        quantizations: ['fp8'],
+      },
+    }),
+  });
+  ```
+
+  ```python title="Python"
+  import requests
+
+  headers = {
+    'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+    'HTTP-Referer': '<YOUR_SITE_URL>',
+    'X-Title': '<YOUR_SITE_NAME>',
+    'Content-Type': 'application/json',
+  }
+
+  response = requests.post('https://openrouter.ai/api/v1/chat/completions', headers=headers, json={
+    'model': 'meta-llama/llama-3.1-8b-instruct',
+    'messages': [{ 'role': 'user', 'content': 'Hello' }],
+    'provider': {
+      'quantizations': ['fp8'],
+    },
+  })
+  ```
+</CodeGroup>
+
+### Max Price
+
+To filter providers by price, specify the `max_price` field in the `provider` parameter with a JSON object specifying the highest provider pricing you will accept.
+
+For example, the value `{"prompt": 1, "completion": 2}` will route to any provider with a price of `<= $1/m` prompt tokens, and `<= $2/m` completion tokens or less.
+
+Some providers support per request pricing, in which case you can use the `request` attribute of max\_price. Lastly, `image` is also available, which specifies the max price per image you will accept.
+
+Practically, this field is often combined with a provider `sort` to express, for example, "Use the provider with the highest throughput, as long as it doesn't cost more than `$x/m` tokens."
+
+## Terms of Service
+
+You can view the terms of service for each provider below. You may not violate the terms of service or policies of third-party providers that power the models on OpenRouter.
+
+<TermsOfServiceDescriptions />
+
+
+# Free Variant
+
+> Access free models using the :free variant suffix.
+
+The `:free` variant allows you to access free versions of models on OpenRouter.
+
+## Usage
+
+Append `:free` to any model ID:
+
+```json
+{
+  "model": "meta-llama/llama-3.2-3b-instruct:free"
+}
+```
+
+## Details
+
+Free variants provide access to models without cost, but may have different rate limits or availability compared to paid versions.
+
+
+# Extended Variant
+
+> Access extended context window versions of models using the :extended variant.
+
+The `:extended` variant provides access to model versions with extended context windows.
+
+## Usage
+
+Append `:extended` to any model ID:
+
+```json
+{
+  "model": "anthropic/claude-3.5-sonnet:extended"
+}
+```
+
+## Details
+
+Extended variants offer larger context windows than the standard model versions, allowing you to process longer inputs and maintain more conversation history.
+
+
+# Exacto Variant
+
+> Learn how to target OpenRouter-selected providers by using the :exacto model variant.
+
+Introducing a new set of endpoints, `:exacto`, focused on higher tool‑calling accuracy by routing to a sub‑group of providers with measurably better tool‑use success rates. It uses the same request payloads as any other variant, but filters endpoints so that only vetted providers for the chosen model are considered. To learn more, read our [blog post](https://openrouter.ai/announcements/provider-variance-introducing-exacto).
+
+## Using the Exacto Variant
+
+Add `:exacto` to the end of any supported model slug. The curated allowlist is enforced before provider sorting, fallback, or load balancing — no extra provider preference config is required.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
+  const completion = await openRouter.chat.send({
+    model: "moonshotai/kimi-k2-0905:exacto",
+    messages: [
+      {
+        role: "user",
+        content: "Draft a concise changelog entry for the Exacto launch.",
+      },
+    ],
+    stream: false,
+  });
+
+  console.log(completion.choices[0].message.content);
+  ```
+
+  ```typescript title="TypeScript (OpenAI SDK)"
+  import OpenAI from "openai";
+
+  const client = new OpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: process.env.OPENROUTER_API_KEY,
+  });
+
+  const completion = await client.chat.completions.create({
+    model: "moonshotai/kimi-k2-0905:exacto",
+    messages: [
+      {
+        role: "user",
+        content: "Draft a concise changelog entry for the Exacto launch.",
+      },
+    ],
+  });
+  ```
+
+  ```shell title="cURL"
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    -d '{
+    "model": "moonshotai/kimi-k2-0905:exacto",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Summarize the latest release notes for me."
+      }
+    ]
+  }'
+  ```
+</CodeGroup>
+
+<Tip>
+  You can still supply fallback models with the `models` array. Any model that
+  carries the `:exacto` suffix will enforce the curated provider list when it is
+  selected.
+</Tip>
+
+## What Is the Exacto Variant?
+
+Exacto is a curated routing variant specifically focused on tool‑calling accuracy. Unlike standard routing, which considers all available providers for a model, Exacto restricts routing to providers that demonstrate higher tool‑use accuracy and normal tool‑use propensity on real workloads.
+
+## Why Use Exacto?
+
+### Why We Built It
+
+Providers running the same model can differ in accuracy due to implementation details in production inference. OpenRouter sees billions of requests monthly, giving us a unique vantage point to observe these differences and minimize surprises for users. Exacto combines benchmark results with real‑world tool‑calling telemetry to select the best‑performing providers.
+
+### Recommended Use Cases
+
+Exacto is optimized for quality‑sensitive, agentic workflows where tool‑calling accuracy and reliability are critical.
+
+## Supported Models
+
+Exacto endpoints are available for:
+
+* Kimi K2 (`moonshotai/kimi-k2-0905:exacto`)
+* DeepSeek v3.1 Terminus (`deepseek/deepseek-v3.1-terminus:exacto`)
+* GLM 4.6 (`z-ai/glm-4.6:exacto`)
+* GPT‑OSS 120B (`openai/gpt-oss-120b:exacto`)
+* Qwen3 Coder (`qwen/qwen3-coder:exacto`)
+
+## How We Select Providers
+
+We use three inputs:
+
+* Tool‑calling accuracy from real traffic across billions of calls
+* Real‑time provider preferences (pins/ignores) from users making tool calls
+* Benchmarking (internal eval suites, Groq OpenBench running LiveMCPBench, official tau2bench, and similar)
+
+You will be routed only to providers that:
+
+1. Are top‑tier on tool‑calling accuracy
+2. Fall within a normal range of tool‑calling propensity
+3. Are not frequently ignored or blacklisted by users when tools are provided
+
+In our evaluations and open‑source benchmarks (e.g., tau2‑Bench, LiveMCPBench), Exacto shows materially fewer tool‑calling failures and more reliable tool use.
+
+We will continue working with providers not currently in the Exacto pool to help them improve and be included. Exacto targets tool‑calling specifically and is not a broad statement on overall provider quality.
+
+<Note>
+  If you have feedback on the Exacto variant, please fill out this form:
+  [https://openrouter.notion.site/2932fd57c4dc8097ba74ffb6d27f39d1?pvs=105](https://openrouter.notion.site/2932fd57c4dc8097ba74ffb6d27f39d1?pvs=105)
+</Note>
+
+
+# Self-Moderated Variant
+
+> Access self-moderated model versions using the :beta variant.
+
+The `:beta` variant (also known as self-moderated) provides access to models with self-moderation capabilities.
+
+## Usage
+
+Append `:beta` to any model ID:
+
+```json
+{
+  "model": "meta-llama/llama-guard-3-8b:beta"
+}
+```
+
+## Details
+
+Self-moderated variants allow models to apply their own content filtering and safety guidelines, rather than relying on external moderation systems. This can provide more nuanced and context-aware moderation decisions.
+
+
+# Thinking Variant
+
+> Enable extended reasoning capabilities using the :thinking variant.
+
+The `:thinking` variant enables extended reasoning capabilities for complex problem-solving tasks.
+
+## Usage
+
+Append `:thinking` to any model ID:
+
+```json
+{
+  "model": "deepseek/deepseek-r1:thinking"
+}
+```
+
+## Details
+
+Thinking variants provide access to models with extended reasoning capabilities, allowing for more thorough analysis and step-by-step problem solving. This is particularly useful for complex tasks that benefit from chain-of-thought reasoning.
+
+See also: [Reasoning Tokens](/docs/best-practices/reasoning-tokens)
+
+
+# Online Variant
+
+> Enable real-time web search capabilities using the :online variant.
+
+The `:online` variant enables real-time web search capabilities for any model on OpenRouter.
+
+## Usage
+
+Append `:online` to any model ID:
+
+```json
+{
+  "model": "openai/gpt-4o:online"
+}
+```
+
+This is a shortcut for using the `web` plugin, and is exactly equivalent to:
+
+```json
+{
+  "model": "openrouter/auto",
+  "plugins": {
+    "web": {}
+  }
+}
+```
+
+## Details
+
+The Online variant incorporates relevant web search results into model responses, providing access to real-time information and current events. This is particularly useful for queries that require up-to-date information beyond the model's training data.
+
+For more details, see: [Web Search](/docs/features/web-search)
+
+
+# Nitro Variant
+
+> Access high-speed model inference using the :nitro variant.
+
+The `:nitro` variant provides high-speed inference for faster response times.
+
+## Usage
+
+Append `:nitro` to any model ID:
+
+```json
+{
+  "model": "openai/gpt-4o:nitro"
+}
+```
+
+## Details
+
+Nitro variants prioritize speed and low latency, making them ideal for real-time applications where fast response times are critical.
+
+
+# Presets
+
+> Learn how to use OpenRouter's presets to manage model configurations, system prompts, and parameters across your applications.
+
+[Presets](/settings/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
+
+## What are Presets?
+
+Presets are named configurations that encapsulate all the settings needed for a specific use case. For example, you might create:
+
+* An "email-copywriter" preset for generating marketing copy
+* An "inbound-classifier" preset for categorizing customer inquiries
+* A "code-reviewer" preset for analyzing pull requests
+
+Each preset can manage:
+
+* Provider routing preferences (sort by price, latency, etc.)
+* Model selection (specific model or array of models with fallbacks)
+* System prompts
+* Generation parameters (temperature, top\_p, etc.)
+* Provider inclusion/exclusion rules
+
+## Quick Start
+
+1. [Create a preset](/settings/presets). For example, select a model and restrict provider routing to just a few providers.
+   ![Creating a new preset](file:1a609797-5792-4534-b179-180b25c4e8e0 "A new preset")
+
+2. Make an API request to the preset:
+
+```json
+{
+  "model": "@preset/ravenel-bridge",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What's your opinion of the Golden Gate Bridge? Isn't it beautiful?"
+    }
+  ]
+}
+```
+
+## Benefits
+
+### Separation of Concerns
+
+Presets help you maintain a clean separation between your application code and LLM configuration. This makes your code more semantic and easier to maintain.
+
+### Rapid Iteration
+
+Update your LLM configuration without deploying code changes:
+
+* Switch to new model versions
+* Adjust system prompts
+* Modify parameters
+* Change provider preferences
+
+## Using Presets
+
+There are three ways to use presets in your API requests.
+
+1. **Direct Model Reference**
+
+You can reference the preset as if it was a model by sending requests to `@preset/preset-slug`
+
+```json
+{
+  "model": "@preset/email-copywriter",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write a marketing email about our new feature"
+    }
+  ]
+}
+```
+
+2. **Preset Field**
+
+```json
+{
+  "model": "openai/gpt-4",
+  "preset": "email-copywriter",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write a marketing email about our new feature"
+    }
+  ]
+}
+```
+
+3. **Combined Model and Preset**
+
+```json
+{
+  "model": "openai/gpt-4@preset/email-copywriter",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write a marketing email about our new feature"
+    }
+  ]
+}
+```
+
+## Other Notes
+
+1. If you're using an organization account, all members can access organization presets. This is a great way to share best practices across teams.
+2. Version history is kept in order to understand changes that were made, and to be able to roll back. However when addressing a preset through the API, the latest version is always used.
+3. If you provide parameters in the request, they will be shallow-merged with the options configured in the preset.
+
+
+# Tool & Function Calling
+
+> Use tools (or functions) in your prompts with OpenRouter. Learn how to use tools with OpenAI, Anthropic, and other models that support tool calling.
+
+Tool calls (also known as function calls) give an LLM access to external tools. The LLM does not call the tools directly. Instead, it suggests the tool to call. The user then calls the tool separately and provides the results back to the LLM. Finally, the LLM formats the response into an answer to the user's original question.
+
+OpenRouter standardizes the tool calling interface across models and providers, making it easy to integrate external tools with any supported model.
+
+**Supported Models**: You can find models that support tool calling by filtering on [openrouter.ai/models?supported\_parameters=tools](https://openrouter.ai/models?supported_parameters=tools).
+
+If you prefer to learn from a full end-to-end example, keep reading.
+
+## Request Body Examples
+
+Tool calling with OpenRouter involves three key steps. Here are the essential request body formats for each step:
+
+### Step 1: Inference Request with Tools
+
+```json
+{
+  "model": "google/gemini-2.0-flash-001",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are the titles of some James Joyce books?"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_gutenberg_books",
+        "description": "Search for books in the Project Gutenberg library",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "search_terms": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "List of search terms to find books"
+            }
+          },
+          "required": ["search_terms"]
+        }
+      }
+    }
+  ]
+}
+```
+
+### Step 2: Tool Execution (Client-Side)
+
+After receiving the model's response with `tool_calls`, execute the requested tool locally and prepare the result:
+
+```javascript
+// Model responds with tool_calls, you execute the tool locally
+const toolResult = await searchGutenbergBooks(["James", "Joyce"]);
+```
+
+### Step 3: Inference Request with Tool Results
+
+```json
+{
+  "model": "google/gemini-2.0-flash-001",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are the titles of some James Joyce books?"
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_abc123",
+          "type": "function",
+          "function": {
+            "name": "search_gutenberg_books",
+            "arguments": "{\"search_terms\": [\"James\", \"Joyce\"]}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_abc123",
+      "content": "[{\"id\": 4300, \"title\": \"Ulysses\", \"authors\": [{\"name\": \"Joyce, James\"}]}]"
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_gutenberg_books",
+        "description": "Search for books in the Project Gutenberg library",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "search_terms": {
+              "type": "array",
+              "items": {"type": "string"},
+              "description": "List of search terms to find books"
+            }
+          },
+          "required": ["search_terms"]
+        }
+      }
+    }
+  ]
+}
+```
+
+**Note**: The `tools` parameter must be included in every request (Steps 1 and 3) so the router can validate the tool schema on each call.
+
+### Tool Calling Example
+
+Here is Python code that gives LLMs the ability to call an external API -- in this case Project Gutenberg, to search for books.
+
+First, let's do some basic setup:
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    import { OpenRouter } from '@openrouter/sdk';
+
+    const OPENROUTER_API_KEY = "{{API_KEY_REF}}";
+
+    // You can use any model that supports tool calling
+    const MODEL = "{{MODEL}}";
+
+    const openRouter = new OpenRouter({
+      apiKey: OPENROUTER_API_KEY,
+    });
+
+    const task = "What are the titles of some James Joyce books?";
+
+    const messages = [
+      {
+        role: "system",
+        content: "You are a helpful assistant."
+      },
+      {
+        role: "user",
+        content: task,
+      }
+    ];
+    ```
+
+    ```python
+    import json, requests
+    from openai import OpenAI
+
+    OPENROUTER_API_KEY = f"{{API_KEY_REF}}"
+
+    # You can use any model that supports tool calling
+    MODEL = "{{MODEL}}"
+
+    openai_client = OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key=OPENROUTER_API_KEY,
+    )
+
+    task = "What are the titles of some James Joyce books?"
+
+    messages = [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": task,
+      }
+    ]
+
+    ```
+
+    ```typescript title="TypeScript (fetch)"
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          { role: 'system', content: 'You are a helpful assistant.' },
+          {
+            role: 'user',
+            content: 'What are the titles of some James Joyce books?',
+          },
+        ],
+      }),
+    });
+    ```
+  </CodeGroup>
+</Template>
+
+### Define the Tool
+
+Next, we define the tool that we want to call. Remember, the tool is going to get *requested* by the LLM, but the code we are writing here is ultimately responsible for executing the call and returning the results to the LLM.
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    async function searchGutenbergBooks(searchTerms: string[]): Promise<Book[]> {
+      const searchQuery = searchTerms.join(' ');
+      const url = 'https://gutendex.com/books';
+      const response = await fetch(`${url}?search=${searchQuery}`);
+      const data = await response.json();
+
+      return data.results.map((book: any) => ({
+        id: book.id,
+        title: book.title,
+        authors: book.authors,
+      }));
+    }
+
+    const tools = [
+      {
+        type: 'function',
+        function: {
+          name: 'searchGutenbergBooks',
+          description:
+            'Search for books in the Project Gutenberg library based on specified search terms',
+          parameters: {
+            type: 'object',
+            properties: {
+              search_terms: {
+                type: 'array',
+                items: {
+                  type: 'string',
+                },
+                description:
+                  "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)",
+              },
+            },
+            required: ['search_terms'],
+          },
+        },
+      },
+    ];
+
+    const TOOL_MAPPING = {
+      searchGutenbergBooks,
+    };
+    ```
+
+    ```python
+    def search_gutenberg_books(search_terms):
+        search_query = " ".join(search_terms)
+        url = "https://gutendex.com/books"
+        response = requests.get(url, params={"search": search_query})
+
+        simplified_results = []
+        for book in response.json().get("results", []):
+            simplified_results.append({
+                "id": book.get("id"),
+                "title": book.get("title"),
+                "authors": book.get("authors")
+            })
+
+        return simplified_results
+
+    tools = [
+      {
+        "type": "function",
+        "function": {
+          "name": "search_gutenberg_books",
+          "description": "Search for books in the Project Gutenberg library based on specified search terms",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "search_terms": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of search terms to find books in the Gutenberg library (e.g. ['dickens', 'great'] to search for books by Dickens with 'great' in the title)"
+              }
+            },
+            "required": ["search_terms"]
+          }
+        }
+      }
+    ]
+
+    TOOL_MAPPING = {
+        "search_gutenberg_books": search_gutenberg_books
+    }
+
+    ```
+  </CodeGroup>
+</Template>
+
+Note that the "tool" is just a normal function. We then write a JSON "spec" compatible with the OpenAI function calling parameter. We'll pass that spec to the LLM so that it knows this tool is available and how to use it. It will request the tool when needed, along with any arguments. We'll then marshal the tool call locally, make the function call, and return the results to the LLM.
+
+### Tool use and tool results
+
+Let's make the first OpenRouter API call to the model:
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    const result = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      tools,
+      messages,
+      stream: false,
+    });
+
+    const response_1 = result.choices[0].message;
+    ```
+
+    ```python
+    request_1 = {
+        "model": {{MODEL}},
+        "tools": tools,
+        "messages": messages
+    }
+
+    response_1 = openai_client.chat.completions.create(**request_1).message
+    ```
+
+    ```typescript title="TypeScript (fetch)"
+    const request_1 = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        tools,
+        messages,
+      }),
+    });
+
+    const data = await request_1.json();
+    const response_1 = data.choices[0].message;
+    ```
+  </CodeGroup>
+</Template>
+
+The LLM responds with a finish reason of `tool_calls`, and a `tool_calls` array. In a generic LLM response-handler, you would want to check the `finish_reason` before processing tool calls, but here we will assume it's the case. Let's keep going, by processing the tool call:
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    // Append the response to the messages array so the LLM has the full context
+    // It's easy to forget this step!
+    messages.push(response_1);
+
+    // Now we process the requested tool calls, and use our book lookup tool
+    for (const toolCall of response_1.tool_calls) {
+      const toolName = toolCall.function.name;
+      const { search_params } = JSON.parse(toolCall.function.arguments);
+      const toolResponse = await TOOL_MAPPING[toolName](search_params);
+      messages.push({
+        role: 'tool',
+        toolCallId: toolCall.id,
+        name: toolName,
+        content: JSON.stringify(toolResponse),
+      });
+    }
+    ```
+
+    ```python
+    # Append the response to the messages array so the LLM has the full context
+    # It's easy to forget this step!
+    messages.append(response_1)
+
+    # Now we process the requested tool calls, and use our book lookup tool
+    for tool_call in response_1.tool_calls:
+        '''
+        In this case we only provided one tool, so we know what function to call.
+        When providing multiple tools, you can inspect `tool_call.function.name`
+        to figure out what function you need to call locally.
+        '''
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+        tool_response = TOOL_MAPPING[tool_name](**tool_args)
+        messages.append({
+          "role": "tool",
+          "tool_call_id": tool_call.id,
+          "content": json.dumps(tool_response),
+        })
+    ```
+  </CodeGroup>
+</Template>
+
+The messages array now has:
+
+1. Our original request
+2. The LLM's response (containing a tool call request)
+3. The result of the tool call (a json object returned from the Project Gutenberg API)
+
+Now, we can make a second OpenRouter API call, and hopefully get our result!
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    const response_2 = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      messages,
+      tools,
+      stream: false,
+    });
+
+    console.log(response_2.choices[0].message.content);
+    ```
+
+    ```python
+    request_2 = {
+      "model": MODEL,
+      "messages": messages,
+      "tools": tools
+    }
+
+    response_2 = openai_client.chat.completions.create(**request_2)
+
+    print(response_2.choices[0].message.content)
+    ```
+
+    ```typescript title="TypeScript (fetch)"
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer {{API_KEY_REF}}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages,
+        tools,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data.choices[0].message.content);
+    ```
+  </CodeGroup>
+</Template>
+
+The output will be something like:
+
+```text
+Here are some books by James Joyce:
+
+*   *Ulysses*
+*   *Dubliners*
+*   *A Portrait of the Artist as a Young Man*
+*   *Chamber Music*
+*   *Exiles: A Play in Three Acts*
+```
+
+We did it! We've successfully used a tool in a prompt.
+
+## Interleaved Thinking
+
+Interleaved thinking allows models to reason between tool calls, enabling more sophisticated decision-making after receiving tool results. This feature helps models chain multiple tool calls with reasoning steps in between and make nuanced decisions based on intermediate results.
+
+**Important**: Interleaved thinking increases token usage and response latency. Consider your budget and performance requirements when enabling this feature.
+
+### How Interleaved Thinking Works
+
+With interleaved thinking, the model can:
+
+* Reason about the results of a tool call before deciding what to do next
+* Chain multiple tool calls with reasoning steps in between
+* Make more nuanced decisions based on intermediate results
+* Provide transparent reasoning for its tool selection process
+
+### Example: Multi-Step Research with Reasoning
+
+Here's an example showing how a model might use interleaved thinking to research a topic across multiple sources:
+
+**Initial Request:**
+
+```json
+{
+  "model": "anthropic/claude-3.5-sonnet",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Research the environmental impact of electric vehicles and provide a comprehensive analysis."
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_academic_papers",
+        "description": "Search for academic papers on a given topic",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {"type": "string"},
+            "field": {"type": "string"}
+          },
+          "required": ["query"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_latest_statistics",
+        "description": "Get latest statistics on a topic",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "topic": {"type": "string"},
+            "year": {"type": "integer"}
+          },
+          "required": ["topic"]
+        }
+      }
+    }
+  ]
+}
+```
+
+**Model's Reasoning and Tool Calls:**
+
+1. **Initial Thinking**: "I need to research electric vehicle environmental impact. Let me start with academic papers to get peer-reviewed research."
+
+2. **First Tool Call**: `search_academic_papers({"query": "electric vehicle lifecycle environmental impact", "field": "environmental science"})`
+
+3. **After First Tool Result**: "The papers show mixed results on manufacturing impact. I need current statistics to complement this academic research."
+
+4. **Second Tool Call**: `get_latest_statistics({"topic": "electric vehicle carbon footprint", "year": 2024})`
+
+5. **After Second Tool Result**: "Now I have both academic research and current data. Let me search for manufacturing-specific studies to address the gaps I found."
+
+6. **Third Tool Call**: `search_academic_papers({"query": "electric vehicle battery manufacturing environmental cost", "field": "materials science"})`
+
+7. **Final Analysis**: Synthesizes all gathered information into a comprehensive response.
+
+### Best Practices for Interleaved Thinking
+
+* **Clear Tool Descriptions**: Provide detailed descriptions so the model can reason about when to use each tool
+* **Structured Parameters**: Use well-defined parameter schemas to help the model make precise tool calls
+* **Context Preservation**: Maintain conversation context across multiple tool interactions
+* **Error Handling**: Design tools to provide meaningful error messages that help the model adjust its approach
+
+### Implementation Considerations
+
+When implementing interleaved thinking:
+
+* Models may take longer to respond due to additional reasoning steps
+* Token usage will be higher due to the reasoning process
+* The quality of reasoning depends on the model's capabilities
+* Some models may be better suited for this approach than others
+
+## A Simple Agentic Loop
+
+In the example above, the calls are made explicitly and sequentially. To handle a wide variety of user inputs and tool calls, you can use an agentic loop.
+
+Here's an example of a simple agentic loop (using the same `tools` and initial `messages` as above):
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'google/gemini-2.0-flash-001'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    async function callLLM(messages: Message[]): Promise<ChatResponse> {
+      const result = await openRouter.chat.send({
+        model: '{{MODEL}}',
+        tools,
+        messages,
+        stream: false,
+      });
+
+      messages.push(result.choices[0].message);
+      return result;
+    }
+
+    async function getToolResponse(response: ChatResponse): Promise<Message> {
+      const toolCall = response.choices[0].message.toolCalls[0];
+      const toolName = toolCall.function.name;
+      const toolArgs = JSON.parse(toolCall.function.arguments);
+
+      // Look up the correct tool locally, and call it with the provided arguments
+      // Other tools can be added without changing the agentic loop
+      const toolResult = await TOOL_MAPPING[toolName](toolArgs);
+
+      return {
+        role: 'tool',
+        toolCallId: toolCall.id,
+        content: toolResult,
+      };
+    }
+
+    const maxIterations = 10;
+    let iterationCount = 0;
+
+    while (iterationCount < maxIterations) {
+      iterationCount++;
+      const response = await callLLM(messages);
+
+      if (response.choices[0].message.toolCalls) {
+        messages.push(await getToolResponse(response));
+      } else {
+        break;
+      }
+    }
+
+    if (iterationCount >= maxIterations) {
+      console.warn("Warning: Maximum iterations reached");
+    }
+
+    console.log(messages[messages.length - 1].content);
+    ```
+
+    ```python
+
+    def call_llm(msgs):
+        resp = openai_client.chat.completions.create(
+            model={{MODEL}},
+            tools=tools,
+            messages=msgs
+        )
+        msgs.append(resp.choices[0].message.dict())
+        return resp
+
+    def get_tool_response(response):
+        tool_call = response.choices[0].message.tool_calls[0]
+        tool_name = tool_call.function.name
+        tool_args = json.loads(tool_call.function.arguments)
+
+        # Look up the correct tool locally, and call it with the provided arguments
+        # Other tools can be added without changing the agentic loop
+        tool_result = TOOL_MAPPING[tool_name](**tool_args)
+
+        return {
+            "role": "tool",
+            "tool_call_id": tool_call.id,
+            "content": tool_result,
+        }
+
+    max_iterations = 10
+    iteration_count = 0
+
+    while iteration_count < max_iterations:
+        iteration_count += 1
+        resp = call_llm(_messages)
+
+        if resp.choices[0].message.tool_calls is not None:
+            messages.append(get_tool_response(resp))
+        else:
+            break
+
+    if iteration_count >= max_iterations:
+        print("Warning: Maximum iterations reached")
+
+    print(messages[-1]['content'])
+
+    ```
+  </CodeGroup>
+</Template>
+
+## Best Practices and Advanced Patterns
+
+### Function Definition Guidelines
+
+When defining tools for LLMs, follow these best practices:
+
+**Clear and Descriptive Names**: Use descriptive function names that clearly indicate the tool's purpose.
+
+```json
+// Good: Clear and specific
+{ "name": "get_weather_forecast" }
+```
+
+```json
+// Avoid: Too vague
+{ "name": "weather" }
+```
+
+**Comprehensive Descriptions**: Provide detailed descriptions that help the model understand when and how to use the tool.
+
+```json
+{
+  "description": "Get current weather conditions and 5-day forecast for a specific location. Supports cities, zip codes, and coordinates.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "City name, zip code, or coordinates (lat,lng). Examples: 'New York', '10001', '40.7128,-74.0060'"
+      },
+      "units": {
+        "type": "string",
+        "enum": ["celsius", "fahrenheit"],
+        "description": "Temperature unit preference",
+        "default": "celsius"
+      }
+    },
+    "required": ["location"]
+  }
+}
+```
+
+### Streaming with Tool Calls
+
+When using streaming responses with tool calls, handle the different content types appropriately:
+
+```typescript
+const stream = await fetch('/api/chat/completions', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    model: 'anthropic/claude-3.5-sonnet',
+    messages: messages,
+    tools: tools,
+    stream: true
+  })
+});
+
+const reader = stream.body.getReader();
+let toolCalls = [];
+
+while (true) {
+  const { done, value } = await reader.read();
+  if (done) {
+    break;
+  }
+
+  const chunk = new TextDecoder().decode(value);
+  const lines = chunk.split('\n').filter(line => line.trim());
+
+  for (const line of lines) {
+    if (line.startsWith('data: ')) {
+      const data = JSON.parse(line.slice(6));
+
+      if (data.choices[0].delta.tool_calls) {
+        toolCalls.push(...data.choices[0].delta.tool_calls);
+      }
+
+      if (data.choices[0].delta.finish_reason === 'tool_calls') {
+        await handleToolCalls(toolCalls);
+      } else if (data.choices[0].delta.finish_reason === 'stop') {
+        // Regular completion without tool calls
+        break;
+      }
+    }
+  }
+}
+```
+
+### Tool Choice Configuration
+
+Control tool usage with the `tool_choice` parameter:
+
+```json
+// Let model decide (default)
+{ "tool_choice": "auto" }
+```
+
+```json
+// Disable tool usage
+{ "tool_choice": "none" }
+```
+
+```json
+// Force specific tool
+{
+  "tool_choice": {
+    "type": "function",
+    "function": {"name": "search_database"}
+  }
+}
+```
+
+### Parallel Tool Calls
+
+Control whether multiple tools can be called simultaneously with the `parallel_tool_calls` parameter (default is true for most models):
+
+```json
+// Disable parallel tool calls - tools will be called sequentially
+{ "parallel_tool_calls": false }
+```
+
+When `parallel_tool_calls` is `false`, the model will only request one tool call at a time instead of potentially multiple calls in parallel.
+
+### Multi-Tool Workflows
+
+Design tools that work well together:
+
+```json
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_products",
+        "description": "Search for products in the catalog"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_product_details",
+        "description": "Get detailed information about a specific product"
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "check_inventory",
+        "description": "Check current inventory levels for a product"
+      }
+    }
+  ]
+}
+```
+
+This allows the model to naturally chain operations: search → get details → check inventory.
+
+For more details on OpenRouter's message format and tool parameters, see the [API Reference](https://openrouter.ai/docs/api-reference/overview).
+
+
+# Web Search
+
+> Enable real-time web search capabilities in your AI model responses. Add factual, up-to-date information to any model's output with OpenRouter's web search feature.
+
+You can incorporate relevant web search results for *any* model on OpenRouter by activating and customizing the `web` plugin, or by appending `:online` to the model slug:
+
+```json
+{
+  "model": "openai/gpt-4o:online"
+}
+```
+
+This is a shortcut for using the `web` plugin, and is exactly equivalent to:
+
+```json
+{
+  "model": "openrouter/auto",
+  "plugins": [{ "id": "web" }]
+}
+```
+
+The web search plugin is powered by native search for Anthropic and OpenAI natively and by [Exa](https://exa.ai) for other models. For Exa, it uses their ["auto"](https://docs.exa.ai/reference/how-exa-search-works#combining-neural-and-keyword-the-best-of-both-worlds-through-exa-auto-search) method (a combination of keyword search and embeddings-based web search) to find the most relevant results and augment/ground your prompt.
+
+## Parsing web search results
+
+Web search results for all models (including native-only models like Perplexity and OpenAI Online) are available in the API and standardized by OpenRouterto follow the same annotation schema in the [OpenAI Chat Completion Message type](https://platform.openai.com/docs/api-reference/chat/object):
+
+```json
+{
+  "message": {
+    "role": "assistant",
+    "content": "Here's the latest news I found: ...",
+    "annotations": [
+      {
+        "type": "url_citation",
+        "url_citation": {
+          "url": "https://www.example.com/web-search-result",
+          "title": "Title of the web search result",
+          "content": "Content of the web search result", // Added by OpenRouter if available
+          "start_index": 100, // The index of the first character of the URL citation in the message.
+          "end_index": 200 // The index of the last character of the URL citation in the message.
+        }
+      }
+    ]
+  }
+}
+```
+
+## Customizing the Web Plugin
+
+The maximum results allowed by the web plugin and the prompt used to attach them to your message stream can be customized:
+
+```json
+{
+  "model": "openai/gpt-4o:online",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "exa", // Optional: "native", "exa", or undefined
+      "max_results": 1, // Defaults to 5
+      "search_prompt": "Some relevant web results:" // See default below
+    }
+  ]
+}
+```
+
+By default, the web plugin uses the following search prompt, using the current date:
+
+```
+A web search was conducted on `date`. Incorporate the following web search results into your response.
+
+IMPORTANT: Cite them using markdown links named using the domain of the source.
+Example: [nytimes.com](https://nytimes.com/some-page).
+```
+
+## Engine Selection
+
+The web search plugin supports the following options for the `engine` parameter:
+
+* **`native`**: Always uses the model provider's built-in web search capabilities
+* **`exa`**: Uses Exa's search API for web results
+* **`undefined` (not specified)**: Uses native search if available for the provider, otherwise falls back to Exa
+
+### Default Behavior
+
+When the `engine` parameter is not specified:
+
+* **Native search is used by default** for OpenAI and Anthropic models that support it
+* **Exa search is used** for all other models or when native search is not supported
+
+When you explicitly specify `"engine": "native"`, it will always attempt to use the provider's native search, even if the model doesn't support it (which may result in an error).
+
+### Forcing Engine Selection
+
+You can explicitly specify which engine to use:
+
+```json
+{
+  "model": "openai/gpt-4o",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "native"
+    }
+  ]
+}
+```
+
+Or force Exa search even for models that support native search:
+
+```json
+{
+  "model": "openai/gpt-4o",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "exa",
+      "max_results": 3
+    }
+  ]
+}
+```
+
+### Engine-Specific Pricing
+
+* **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing sections below)
+* **Exa search**: Uses OpenRouter credits at \$4 per 1000 results (default 5 results = \$0.02 per request)
+
+## Pricing
+
+### Exa Search Pricing
+
+When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$4 per 1000 results*. By default, `max_results` set to 5, this comes out to a maximum of \$0.02 per request, in addition to the LLM usage for the search result prompt tokens.
+
+### Native Search Pricing (Provider Passthrough)
+
+Some models have built-in web search. These models charge a fee based on the search context size, which determines how much search data is retrieved and processed for a query.
+
+### Search Context Size Thresholds
+
+Search context can be 'low', 'medium', or 'high' and determines how much search context is retrieved for a query:
+
+* **Low**: Minimal search context, suitable for basic queries
+* **Medium**: Moderate search context, good for general queries
+* **High**: Extensive search context, ideal for detailed research
+
+### Specifying Search Context Size
+
+You can specify the search context size in your API request using the `web_search_options` parameter:
+
+```json
+{
+  "model": "openai/gpt-4.1",
+  "messages": [
+    {
+      "role": "user",
+      "content": "What are the latest developments in quantum computing?"
+    }
+  ],
+  "web_search_options": {
+    "search_context_size": "high"
+  }
+}
+```
+
+### OpenAI Model Pricing
+
+For GPT-4.1, GPT-4o, and GPT-4o search preview Models:
+
+| Search Context Size | Price per 1000 Requests |
+| ------------------- | ----------------------- |
+| Low                 | \$30.00                 |
+| Medium              | \$35.00                 |
+| High                | \$50.00                 |
+
+For GPT-4.1-Mini, GPT-4o-Mini, and GPT-4o-Mini-Search-Preview Models:
+
+| Search Context Size | Price per 1000 Requests |
+| ------------------- | ----------------------- |
+| Low                 | \$25.00                 |
+| Medium              | \$27.50                 |
+| High                | \$30.00                 |
+
+### Perplexity Model Pricing
+
+For Sonar and SonarReasoning:
+
+| Search Context Size | Price per 1000 Requests |
+| ------------------- | ----------------------- |
+| Low                 | \$5.00                  |
+| Medium              | \$8.00                  |
+| High                | \$12.00                 |
+
+For SonarPro and SonarReasoningPro:
+
+| Search Context Size | Price per 1000 Requests |
+| ------------------- | ----------------------- |
+| Low                 | \$6.00                  |
+| Medium              | \$10.00                 |
+| High                | \$14.00                 |
+
+<Note title="Engine Parameter">
+  The pricing above applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing (\$4 per 1000 results) applies instead.
+</Note>
+
+<Note title="Pricing Documentation">
+  For more detailed information about pricing models, refer to the official documentation:
+
+  * [OpenAI Pricing](https://platform.openai.com/docs/pricing#web-search)
+  * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
+  * [Perplexity Pricing](https://docs.perplexity.ai/guides/pricing)
+</Note>
+
+
+# Structured Outputs
+
+> Enforce JSON Schema validation on AI model responses. Get consistent, type-safe outputs and avoid parsing errors with OpenRouter's structured output feature.
+
+OpenRouter supports structured outputs for compatible models, ensuring responses follow a specific JSON Schema format. This feature is particularly useful when you need consistent, well-formatted responses that can be reliably parsed by your application.
+
+## Overview
+
+Structured outputs allow you to:
+
+* Enforce specific JSON Schema validation on model responses
+* Get consistent, type-safe outputs
+* Avoid parsing errors and hallucinated fields
+* Simplify response handling in your application
+
+## Using Structured Outputs
+
+To use structured outputs, include a `response_format` parameter in your request, with `type` set to `json_schema` and the `json_schema` object containing your schema:
+
+```typescript
+{
+  "messages": [
+    { "role": "user", "content": "What's the weather like in London?" }
+  ],
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "weather",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+            "description": "City or location name"
+          },
+          "temperature": {
+            "type": "number",
+            "description": "Temperature in Celsius"
+          },
+          "conditions": {
+            "type": "string",
+            "description": "Weather conditions description"
+          }
+        },
+        "required": ["location", "temperature", "conditions"],
+        "additionalProperties": false
+      }
+    }
+  }
+}
+```
+
+The model will respond with a JSON object that strictly follows your schema:
+
+```json
+{
+  "location": "London",
+  "temperature": 18,
+  "conditions": "Partly cloudy with light drizzle"
+}
+```
+
+## Model Support
+
+Structured outputs are supported by select models.
+
+You can find a list of models that support structured outputs on the [models page](https://openrouter.ai/models?order=newest\&supported_parameters=structured_outputs).
+
+* OpenAI models (GPT-4o and later versions) [Docs](https://platform.openai.com/docs/guides/structured-outputs)
+* Google Gemini models [Docs](https://ai.google.dev/gemini-api/docs/structured-output)
+* Anthropic models (Sonnet 4.5 and Opus 4.1) [Docs](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
+* Most open-source models
+* All Fireworks provided models [Docs](https://docs.fireworks.ai/structured-responses/structured-response-formatting#structured-response-modes)
+
+To ensure your chosen model supports structured outputs:
+
+1. Check the model's supported parameters on the [models page](https://openrouter.ai/models)
+2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/features/provider-routing))
+3. Include `response_format` and set `type: json_schema` in the required parameters
+
+## Best Practices
+
+1. **Include descriptions**: Add clear descriptions to your schema properties to guide the model
+
+2. **Use strict mode**: Always set `strict: true` to ensure the model follows your schema exactly
+
+## Example Implementation
+
+Here's a complete example using the Fetch API:
+
+<Template
+  data={{
+  API_KEY_REF,
+  MODEL: 'openai/gpt-4'
+}}
+>
+  <CodeGroup>
+    ```typescript title="TypeScript SDK"
+    import { OpenRouter } from '@openrouter/sdk';
+
+    const openRouter = new OpenRouter({
+      apiKey: '{{API_KEY_REF}}',
+    });
+
+    const response = await openRouter.chat.send({
+      model: '{{MODEL}}',
+      messages: [
+        { role: 'user', content: 'What is the weather like in London?' },
+      ],
+      responseFormat: {
+        type: 'json_schema',
+        jsonSchema: {
+          name: 'weather',
+          strict: true,
+          schema: {
+            type: 'object',
+            properties: {
+              location: {
+                type: 'string',
+                description: 'City or location name',
+              },
+              temperature: {
+                type: 'number',
+                description: 'Temperature in Celsius',
+              },
+              conditions: {
+                type: 'string',
+                description: 'Weather conditions description',
+              },
+            },
+            required: ['location', 'temperature', 'conditions'],
+            additionalProperties: false,
+          },
+        },
+      },
+      stream: false,
+    });
+
+    const weatherInfo = response.choices[0].message.content;
+    ```
+
+    ```python title="Python"
+    import requests
+    import json
+
+    response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+        "Authorization": f"Bearer {{API_KEY_REF}}",
+        "Content-Type": "application/json",
+      },
+
+      json={
+        "model": "{{MODEL}}",
+        "messages": [
+          {"role": "user", "content": "What is the weather like in London?"},
+        ],
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "weather",
+            "strict": True,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "string",
+                  "description": "City or location name",
+                },
+                "temperature": {
+                  "type": "number",
+                  "description": "Temperature in Celsius",
+                },
+                "conditions": {
+                  "type": "string",
+                  "description": "Weather conditions description",
+                },
+              },
+              "required": ["location", "temperature", "conditions"],
+              "additionalProperties": False,
+            },
+          },
+        },
+      },
+    )
+
+    data = response.json()
+    weather_info = data["choices"][0]["message"]["content"]
+    ```
+
+    ```typescript title="TypeScript (fetch)"
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer {{API_KEY_REF}}',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: '{{MODEL}}',
+        messages: [
+          { role: 'user', content: 'What is the weather like in London?' },
+        ],
+        response_format: {
+          type: 'json_schema',
+          json_schema: {
+            name: 'weather',
+            strict: true,
+            schema: {
+              type: 'object',
+              properties: {
+                location: {
+                  type: 'string',
+                  description: 'City or location name',
+                },
+                temperature: {
+                  type: 'number',
+                  description: 'Temperature in Celsius',
+                },
+                conditions: {
+                  type: 'string',
+                  description: 'Weather conditions description',
+                },
+              },
+              required: ['location', 'temperature', 'conditions'],
+              additionalProperties: false,
+            },
+          },
+        },
+      }),
+    });
+
+    const data = await response.json();
+    const weatherInfo = data.choices[0].message.content;
+    ```
+  </CodeGroup>
+</Template>
+
+## Streaming with Structured Outputs
+
+Structured outputs are also supported with streaming responses. The model will stream valid partial JSON that, when complete, forms a valid response matching your schema.
+
+To enable streaming with structured outputs, simply add `stream: true` to your request:
+
+```typescript
+{
+  "stream": true,
+  "response_format": {
+    "type": "json_schema",
+    // ... rest of your schema
+  }
+}
+```
+
+## Error Handling
+
+When using structured outputs, you may encounter these scenarios:
+
+1. **Model doesn't support structured outputs**: The request will fail with an error indicating lack of support
+2. **Invalid schema**: The model will return an error if your JSON Schema is invalid
+
+
+# Message Transforms
+
+> Transform and optimize messages before sending them to AI models. Learn about middle-out compression and context window optimization with OpenRouter.
+
+To help with prompts that exceed the maximum context size of a model, OpenRouter supports a custom parameter called `transforms`:
+
+```typescript
+{
+  transforms: ["middle-out"], // Compress prompts that are > context size.
+  messages: [...],
+  model // Works with any model
+}
+```
+
+This can be useful for situations where perfect recall is not required. The transform works by removing or truncating messages from the middle of the prompt, until the prompt fits within the model's context window.
+
+In some cases, the issue is not the token context length, but the actual number of messages. The transform addresses this as well: For instance, Anthropic's Claude models enforce a maximum of {anthropicMaxMessagesCount} messages. When this limit is exceeded with middle-out enabled, the transform will keep half of the messages from the start and half from the end of the conversation.
+
+When middle-out compression is enabled, OpenRouter will first try to find models whose context length is at least half of your total required tokens (input + completion). For example, if your prompt requires 10,000 tokens total, models with at least 5,000 context length will be considered. If no models meet this criteria, OpenRouter will fall back to using the model with the highest available context length.
+
+The compression will then attempt to fit your content within the chosen model's context window by removing or truncating content from the middle of the prompt. If middle-out compression is disabled and your total tokens exceed the model's context length, the request will fail with an error message suggesting you either reduce the length or enable middle-out compression.
+
+<Note>
+  [All OpenRouter endpoints](/models) with 8k (8,192 tokens) or less context
+  length will default to using `middle-out`. To disable this, set `transforms:   []` in the request body.
+</Note>
+
+The middle of the prompt is compressed because [LLMs pay less attention](https://arxiv.org/abs/2307.03172) to the middle of sequences.
+
+
+# Prompt Caching
+
+> Reduce your AI model costs with OpenRouter's prompt caching feature. Learn how to cache and reuse responses across OpenAI, Anthropic Claude, and DeepSeek models.
+
+To save on inference costs, you can enable prompt caching on supported providers and models.
+
+Most providers automatically enable prompt caching, but note that some (see Anthropic below) require you to enable it on a per-message basis.
+
+When using caching (whether automatically in supported models, or via the `cache_control` property), OpenRouter will make a best-effort to continue routing to the same provider to make use of the warm cache. In the event that the provider with your cached prompt is not available, OpenRouter will try the next-best provider.
+
+## Inspecting cache usage
+
+To see how much caching saved on each generation, you can:
+
+1. Click the detail button on the [Activity](/activity) page
+2. Use the `/api/v1/generation` API, [documented here](/api-reference/overview#querying-cost-and-stats)
+3. Use `usage: {include: true}` in your request to get the cache tokens at the end of the response (see [Usage Accounting](/use-cases/usage-accounting) for details)
+
+The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
+
+## OpenAI
+
+Caching price changes:
+
+* **Cache writes**: no cost
+* **Cache reads**: (depending on the model) charged at 0.25x or 0.50x the price of the original input pricing
+
+[Click here to view OpenAI's cache pricing per model.](https://platform.openai.com/docs/pricing)
+
+Prompt caching with OpenAI is automated and does not require any additional configuration. There is a minimum prompt size of 1024 tokens.
+
+[Click here to read more about OpenAI prompt caching and its limitation.](https://platform.openai.com/docs/guides/prompt-caching)
+
+## Grok
+
+Caching price changes:
+
+* **Cache writes**: no cost
+* **Cache reads**: charged at {GROK_CACHE_READ_MULTIPLIER}x the price of the original input pricing
+
+[Click here to view Grok's cache pricing per model.](https://docs.x.ai/docs/models#models-and-pricing)
+
+Prompt caching with Grok is automated and does not require any additional configuration.
+
+## Moonshot AI
+
+Caching price changes:
+
+* **Cache writes**: no cost
+* **Cache reads**: charged at {MOONSHOT_CACHE_READ_MULTIPLIER}x the price of the original input pricing
+
+Prompt caching with Moonshot AI is automated and does not require any additional configuration.
+
+[Click here to view Moonshot AI's caching documentation.](https://platform.moonshot.ai/docs/api/caching)
+
+## Groq
+
+Caching price changes:
+
+* **Cache writes**: no cost
+* **Cache reads**: charged at {GROQ_CACHE_READ_MULTIPLIER}x the price of the original input pricing
+
+Prompt caching with Groq is automated and does not require any additional configuration. Currently available on Kimi K2 models.
+
+[Click here to view Groq's documentation.](https://console.groq.com/docs/prompt-caching)
+
+## Anthropic Claude
+
+Caching price changes:
+
+* **Cache writes**: charged at {ANTHROPIC_CACHE_WRITE_MULTIPLIER}x the price of the original input pricing
+* **Cache reads**: charged at {ANTHROPIC_CACHE_READ_MULTIPLIER}x the price of the original input pricing
+
+Prompt caching with Anthropic requires the use of `cache_control` breakpoints. There is a limit of four breakpoints, and the cache will expire within five minutes. Therefore, it is recommended to reserve the cache breakpoints for large bodies of text, such as character cards, CSV data, RAG data, book chapters, etc.
+
+[Click here to read more about Anthropic prompt caching and its limitation.](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+
+The `cache_control` breakpoint can only be inserted into the text part of a multipart message.
+
+System message caching example:
+
+```json
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": [
+        {
+          "type": "text",
+          "text": "You are a historian studying the fall of the Roman Empire. You know the following book very well:"
+        },
+        {
+          "type": "text",
+          "text": "HUGE TEXT BODY",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What triggered the collapse?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+User message caching example:
+
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Given the book below:"
+        },
+        {
+          "type": "text",
+          "text": "HUGE TEXT BODY",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Name all the characters in the above book"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## DeepSeek
+
+Caching price changes:
+
+* **Cache writes**: charged at the same price as the original input pricing
+* **Cache reads**: charged at {DEEPSEEK_CACHE_READ_MULTIPLIER}x the price of the original input pricing
+
+Prompt caching with DeepSeek is automated and does not require any additional configuration.
+
+## Google Gemini
+
+### Implicit Caching
+
+Gemini 2.5 Pro and 2.5 Flash models now support **implicit caching**, providing automatic caching functionality similar to OpenAI’s automatic caching. Implicit caching works seamlessly — no manual setup or additional `cache_control` breakpoints required.
+
+Pricing Changes:
+
+* No cache write or storage costs.
+* Cached tokens are charged at {GOOGLE_CACHE_READ_MULTIPLIER}x the original input token cost.
+
+Note that the TTL is on average 3-5 minutes, but will vary. There is a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_FLASH} tokens for Gemini 2.5 Flash, and {GOOGLE_CACHE_MIN_TOKENS_2_5_PRO} tokens for Gemini 2.5 Pro for requests to be eligible for caching.
+
+[Official announcement from Google](https://developers.googleblog.com/en/gemini-2-5-models-now-support-implicit-caching/)
+
+<Tip>
+  To maximize implicit cache hits, keep the initial portion of your message
+  arrays consistent between requests. Push variations (such as user questions or
+  dynamic context elements) toward the end of your prompt/requests.
+</Tip>
+
+### Pricing Changes for Cached Requests:
+
+* **Cache Writes:** Charged at the input token cost plus 5 minutes of cache storage, calculated as follows:
+
+```
+Cache write cost = Input token price + (Cache storage price × (5 minutes / 60 minutes))
+```
+
+* **Cache Reads:** Charged at {GOOGLE_CACHE_READ_MULTIPLIER}× the original input token cost.
+
+### Supported Models and Limitations:
+
+Only certain Gemini models support caching. Please consult Google's [Gemini API Pricing Documentation](https://ai.google.dev/gemini-api/docs/pricing) for the most current details.
+
+Cache Writes have a 5 minute Time-to-Live (TTL) that does not update. After 5 minutes, the cache expires and a new cache must be written.
+
+Gemini models have typically have a 4096 token minimum for cache write to occur. Cached tokens count towards the model's maximum token usage. Gemini 2.5 Pro has a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_PRO} tokens, and Gemini 2.5 Flash has a minimum of {GOOGLE_CACHE_MIN_TOKENS_2_5_FLASH} tokens.
+
+### How Gemini Prompt Caching works on OpenRouter:
+
+OpenRouter simplifies Gemini cache management, abstracting away complexities:
+
+* You **do not** need to manually create, update, or delete caches.
+* You **do not** need to manage cache names or TTL explicitly.
+
+### How to Enable Gemini Prompt Caching:
+
+Gemini caching in OpenRouter requires you to insert `cache_control` breakpoints explicitly within message content, similar to Anthropic. We recommend using caching primarily for large content pieces (such as CSV files, lengthy character cards, retrieval augmented generation (RAG) data, or extensive textual sources).
+
+<Tip>
+  There is not a limit on the number of `cache_control` breakpoints you can
+  include in your request. OpenRouter will use only the last breakpoint for
+  Gemini caching. Including multiple breakpoints is safe and can help maintain
+  compatibility with Anthropic, but only the final one will be used for Gemini.
+</Tip>
+
+### Examples:
+
+#### System Message Caching Example
+
+```json
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": [
+        {
+          "type": "text",
+          "text": "You are a historian studying the fall of the Roman Empire. Below is an extensive reference book:"
+        },
+        {
+          "type": "text",
+          "text": "HUGE TEXT BODY HERE",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "What triggered the collapse?"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### User Message Caching Example
+
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Based on the book text below:"
+        },
+        {
+          "type": "text",
+          "text": "HUGE TEXT BODY HERE",
+          "cache_control": {
+            "type": "ephemeral"
+          }
+        },
+        {
+          "type": "text",
+          "text": "List all main characters mentioned in the text above."
+        }
+      ]
+    }
+  ]
+}
+```
+
+
+# Model Routing
+
+> Route requests dynamically between AI models. Learn how to use OpenRouter's Auto Router and model fallback features for optimal performance and reliability.
+
+OpenRouter provides two options for model routing.
+
+## Auto Router
+
+The [Auto Router](https://openrouter.ai/openrouter/auto), a special model ID that you can use to choose between selected high-quality models based on your prompt, powered by [NotDiamond](https://www.notdiamond.ai/).
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/auto',
+    messages: [
+      {
+        role: 'user',
+        content: 'What is the meaning of life?',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openrouter/auto',
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python title="Python"
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "openrouter/auto",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the meaning of life?"
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print(data['choices'][0]['message']['content'])
+  ```
+</CodeGroup>
+
+The resulting generation will have `model` set to the model that was used.
+
+## The `models` parameter
+
+The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: '<OPENROUTER_API_KEY>',
+  });
+
+  const completion = await openRouter.chat.send({
+    models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+    messages: [
+      {
+        role: 'user',
+        content: 'What is the meaning of life?',
+      },
+    ],
+  });
+
+  console.log(completion.choices[0].message.content);
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+      messages: [
+        {
+          role: 'user',
+          content: 'What is the meaning of life?',
+        },
+      ],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python title="Python"
+  import requests
+  import json
+
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the meaning of life?"
+        }
+      ]
+    })
+  )
+
+  data = response.json()
+  print(data['choices'][0]['message']['content'])
+  ```
+</CodeGroup>
+
+If the model you selected returns an error, OpenRouter will try to use the fallback model instead. If the fallback model is down or returns an error, OpenRouter will return that error.
+
+By default, any error can trigger the use of a fallback model, including context length validation errors, moderation flags for filtered models, rate-limiting, and downtime.
+
+Requests are priced using the model that was ultimately used, which will be returned in the `model` attribute of the response body.
+
+## Using with OpenAI SDK
+
+To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, gpt-4o will be tried first, and the `models` array will be tried in order as fallbacks.
+
+<Template
+  data={{
+  API_KEY_REF,
+}}
+>
+  <CodeGroup>
+    ```python
+    from openai import OpenAI
+
+    openai_client = OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key={{API_KEY_REF}},
+    )
+
+    completion = openai_client.chat.completions.create(
+        model="openai/gpt-4o",
+        extra_body={
+            "models": ["anthropic/claude-3.5-sonnet", "gryphe/mythomax-l2-13b"],
+        },
+        messages=[
+            {
+                "role": "user",
+                "content": "What is the meaning of life?"
+            }
+        ]
+    )
+
+    print(completion.choices[0].message.content)
+    ```
+
+    ```typescript
+    import OpenAI from 'openai';
+
+    const openrouterClient = new OpenAI({
+      baseURL: 'https://openrouter.ai/api/v1',
+      apiKey: '{{API_KEY_REF}}',
+    });
+
+    async function main() {
+      // @ts-expect-error
+      const completion = await openrouterClient.chat.completions.create({
+        model: 'openai/gpt-4o',
+        models: ['anthropic/claude-3.5-sonnet', 'gryphe/mythomax-l2-13b'],
+        messages: [
+          {
+            role: 'user',
+            content: 'What is the meaning of life?',
+          },
+        ],
+      });
+      console.log(completion.choices[0].message);
+    }
+
+    main();
+    ```
+  </CodeGroup>
+</Template>
+
+
+# Latency and Performance
+
+> Learn about OpenRouter's performance characteristics, latency optimizations, and best practices for achieving optimal response times.
+
+OpenRouter is designed with performance as a top priority. OpenRouter is heavily optimized to add as little latency as possible to your requests.
+
+## Base Latency
+
+Under typical production conditions, OpenRouter adds approximately 15ms of latency to your requests. This minimal overhead is achieved through:
+
+* Edge computing using Cloudflare Workers to stay as close as possible to your application
+* Efficient caching of user and API key data at the edge
+* Optimized routing logic that minimizes processing time
+
+## Performance Considerations
+
+### Cache Warming
+
+When OpenRouter's edge caches are cold (typically during the first 1-2 minutes of operation in a new region), you may experience slightly higher latency as the caches warm up. This normalizes once the caches are populated.
+
+### Credit Balance Checks
+
+To maintain accurate billing and prevent overages, OpenRouter performs additional database checks when:
+
+* A user's credit balance is low (single digit dollars)
+* An API key is approaching its configured credit limit
+
+OpenRouter expires caches more aggressively under these conditions to ensure proper billing, which increases latency until additional credits are added.
+
+### Model Fallback
+
+When using [model routing](/docs/routing/auto-model-selection) or [provider routing](/docs/features/provider-routing), if the primary model or provider fails, OpenRouter will automatically try the next option. A failed initial completion unsurprisingly adds latency to the specific request. OpenRouter tracks provider failures, and will attempt to intelligently route around unavailable providers so that this latency is not incurred on every request.
+
+## Best Practices
+
+To achieve optimal performance with OpenRouter:
+
+1. **Maintain Healthy Credit Balance**
+   * Set up auto-topup with a higher threshold and amount
+   * This helps avoid forced credit checks and reduces the risk of hitting zero balance
+   * Recommended minimum balance: \$10-20 to ensure smooth operation
+
+2. **Use Provider Preferences**
+   * If you have specific latency requirements (whether time to first token, or time to last), there are [provider routing](/docs/features/provider-routing) features to help you achieve your performance and cost goals.
+
+
+# Uptime Optimization
+
+> Learn how OpenRouter maximizes AI model uptime through real-time monitoring, intelligent routing, and automatic fallbacks across multiple providers.
+
+OpenRouter continuously monitors the health and availability of AI providers to ensure maximum uptime for your applications. We track response times, error rates, and availability across all providers in real-time, and route based on this feedback.
+
+## How It Works
+
+OpenRouter tracks response times, error rates, and availability across all providers in real-time. This data helps us make intelligent routing decisions and provides transparency about service reliability.
+
+## Uptime Example: Claude 4 Sonnet
+
+<UptimeChart permaslug="anthropic/claude-4-sonnet-20250522" />
+
+## Uptime Example: Llama 3.3 70B Instruct
+
+<UptimeChart permaslug="meta-llama/llama-3.3-70b-instruct" />
+
+## Customizing Provider Selection
+
+While our smart routing helps maintain high availability, you can also customize provider selection using request parameters. This gives you control over which providers handle your requests while still benefiting from automatic fallback when needed.
+
+Learn more about customizing provider selection in our [Provider Routing documentation](/docs/features/provider-routing).
+
+
+# Zero Completion Insurance
+
+> Learn how OpenRouter protects users from being charged for failed or empty AI responses with zero completion insurance.
+
+OpenRouter provides zero completion insurance to protect users from being charged for failed or empty responses. When a response contains no output tokens and either has a blank finish reason or an error, you will not be charged for the request, even if the underlying provider charges for prompt processing.
+
+<Note>
+  Zero completion insurance is automatically enabled for all accounts and requires no configuration.
+</Note>
+
+## How It Works
+
+Zero completion insurance automatically applies to all requests across all models and providers. When a response meets either of these conditions, no credits will be deducted from your account:
+
+* The response has zero completion tokens AND a blank/null finish reason
+* The response has an error finish reason
+
+## Viewing Protected Requests
+
+On your activity page, requests that were protected by zero completion insurance will show zero credits deducted. This applies even in cases where OpenRouter may have been charged by the provider for prompt processing.
+
+
+# Zero Data Retention
+
+> Learn how OpenRouter gives you control over your data
+
+Zero Data Retention (ZDR) means that a provider will not store your data for any period of time.
+
+OpenRouter has a [setting](/settings/privacy) that, when enabled, only allows you to route to endpoints that have a Zero Data Retention policy.
+
+Providers that do not retain your data are also unable to train on your data. However we do have some endpoints & providers who do not train on your data but *do* retain it (e.g. to scan for abuse or for legal reasons). OpenRouter gives you controls over both of these policies.
+
+## How OpenRouter Manages Data Policies
+
+OpenRouter works with providers to understand each of their data policies and structures the policy data in a way that gives you control over which providers you want to route to.
+
+Note that a provider's general policy may differ from the specific policy for a given endpoint. OpenRouter keeps track of the specific policy for each endpoint, works with providers to keep these policies up to date, and in some cases creates special agreements with providers to ensure data retention or training policies that are more privacy-focused than their default policies.
+
+<Note>
+  If OpenRouter is not able to establish or ascertain a clear policy for a provider or endpoint, we take a conservative stance and assume that the endpoint both retains and trains on data and mark it as such.
+</Note>
+
+A full list of providers and their data policies can be found [here](/docs/privacy/data-collection#data-retention--logging). Note that this list shows the default policy for each provider; if there is a particular endpoint that has a policy that differs from the provider default, it may not be available if "ZDR Only" is enabled.
+
+## Per-Request ZDR Enforcement
+
+In addition to the global ZDR setting in your [privacy settings](/settings/privacy), you can enforce Zero Data Retention on a per-request basis using the `zdr` parameter in your API calls.
+
+The request-level `zdr` parameter operates as an "OR" with your account-wide ZDR setting - if either is enabled, ZDR enforcement will be applied. This means the per-request parameter can only be used to ensure ZDR is enabled for a specific request, not to override or disable account-wide ZDR enforcement.
+
+This is useful for customers who don't want to globally enforce ZDR but need to ensure specific requests only route to ZDR endpoints.
+
+### Usage
+
+Include the `zdr` parameter in your provider preferences:
+
+```json
+{
+  "model": "gpt-4",
+  "messages": [...],
+  "provider": {
+    "zdr": true
+  }
+}
+```
+
+When `zdr` is set to `true`, the request will only be routed to endpoints that have a Zero Data Retention policy. When `zdr` is `false` or not provided, ZDR enforcement will still apply if enabled in your account settings.
+
+## Caching
+
+Some endpoints/models provide implicit caching of prompts. This keeps repeated prompt data in an in-memory cache in the provider's datacenter, so that the repeated part of the prompt does not need to be re-processed. This can lead to considerable cost savings.
+
+OpenRouter has taken the stance that in-memory caching of prompts is *not* considered "retaining" data, and we therefore allow endpoints/models with implicit caching to be hit when a ZDR routing policy is in effect.
+
+## OpenRouter's Retention Policy
+
+OpenRouter itself has a ZDR policy; your prompts are not retained unless you specifically opt in to prompt logging.
+
+## Zero Retention Endpoints
+
+The following endpoints have a ZDR policy. Note that this list is also available progammatically via [https://openrouter.ai/api/v1/endpoints/zdr](https://openrouter.ai/api/v1/endpoints/zdr). It is automatically updated when there are changes to a provider's data policy.:
+
+<ZDREndpointsTable />
+
+
 # App Attribution
 
 > Learn how to attribute your API usage to your app and appear in OpenRouter's app rankings and model analytics.
@@ -6369,6 +7046,1425 @@ Once your app is tracked, you can access detailed analytics at `openrouter.ai/ap
 * [Quickstart Guide](/docs/quickstart) - Basic setup with attribution headers
 * [API Reference](/docs/api-reference/overview) - Complete header documentation
 * [Usage Accounting](/docs/use-cases/usage-accounting) - Understanding your API usage
+
+
+# Privacy, Logging, and Data Collection
+
+> Learn how OpenRouter & its providers handle your data, including logging and data collection.
+
+When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You have control over how your data is handled at each step.
+
+This page is designed to give a practical overview of how your data is handled, stored, and used. More information is available in the [privacy policy](/privacy) and [terms of service](/terms).
+
+## Within OpenRouter
+
+OpenRouter does not store your prompts or responses, *unless* you have explicitly opted in to prompt logging in your account settings. It's as simple as that.
+
+OpenRouter samples a small number of prompts for categorization to power our reporting and model ranking. If you are not opted in to prompt logging, any categorization of your prompts is stored completely anonymously and never associated with your account or user ID. The categorization is done by model with a zero-data-retention policy.
+
+OpenRouter does store metadata (e.g. number of prompt and completion tokens, latency, etc) for each request. This is used to power our reporting and model ranking, and your [activity feed](/activity).
+
+## Provider Policies
+
+### Training on Prompts
+
+Each provider on OpenRouter has its own data handling policies. We reflect those policies in structured data on each AI endpoint that we offer.
+
+On your account settings page, you can set whether you would like to allow routing to providers that may train on your data (according to their own policies). There are separate settings for paid and free models.
+
+Wherever possible, OpenRouter works with providers to ensure that prompts will not be trained on, but there are exceptions. If you opt out of training in your account settings, OpenRouter will not route to providers that train. This setting has no bearing on OpenRouter's own policies and what we do with your prompts.
+
+<Tip title="Data Policy Filtering">
+  You can [restrict individual requests](/docs/features/provider-routing#requiring-providers-to-comply-with-data-policies)
+  to only use providers with a certain data policy.
+
+  This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
+</Tip>
+
+### Data Retention & Logging
+
+Providers also have their own data retention policies, often for compliance reasons. OpenRouter does not have routing rules that change based on data retention policies of providers, but the retention policies as reflected in each provider's terms are shown below. Any user of OpenRouter can ignore providers that don't meet their own data retention requirements.
+
+The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/docs/features/provider-routing#terms-of-service).
+
+<ProviderDataRetentionTable />
+
+## Enterprise EU in-region routing
+
+For enterprise customers, OpenRouter supports EU in-region routing. When enabled for your account, your prompts and completions are processed within the European Union and do not leave the EU. Use the base URL [http://eu.openrouter.ai](http://eu.openrouter.ai) for API requests to keep traffic and data within Europe. This feature is only enabled for enterprise customers by request.
+
+If you’re interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).
+
+
+# Provisioning API Keys
+
+> Manage OpenRouter API keys programmatically through dedicated management endpoints. Create, read, update, and delete API keys for automated key distribution and control.
+
+OpenRouter provides endpoints to programmatically manage your API keys, enabling key creation and management for applications that need to distribute or rotate keys automatically.
+
+## Creating a Provisioning API Key
+
+To use the key management API, you first need to create a Provisioning API key:
+
+1. Go to the [Provisioning API Keys page](https://openrouter.ai/settings/provisioning-keys)
+2. Click "Create New Key"
+3. Complete the key creation process
+
+Provisioning keys cannot be used to make API calls to OpenRouter's completion endpoints - they are exclusively for key management operations.
+
+## Use Cases
+
+Common scenarios for programmatic key management include:
+
+* **SaaS Applications**: Automatically create unique API keys for each customer instance
+* **Key Rotation**: Regularly rotate API keys for security compliance
+* **Usage Monitoring**: Track key usage and automatically disable keys that exceed limits (with optional daily/weekly/monthly limit resets)
+
+## Example Usage
+
+All key management endpoints are under `/api/v1/keys` and require a Provisioning API key in the Authorization header.
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK"
+  import { OpenRouter } from '@openrouter/sdk';
+
+  const openRouter = new OpenRouter({
+    apiKey: 'your-provisioning-key', // Use your Provisioning API key
+  });
+
+  // List the most recent 100 API keys
+  const keys = await openRouter.apiKeys.list();
+
+  // You can paginate using the offset parameter
+  const keysPage2 = await openRouter.apiKeys.list({ offset: 100 });
+
+  // Create a new API key
+  const newKey = await openRouter.apiKeys.create({
+    name: 'Customer Instance Key',
+    limit: 1000, // Optional credit limit
+  });
+
+  // Get a specific key
+  const keyHash = '<YOUR_KEY_HASH>';
+  const key = await openRouter.apiKeys.get(keyHash);
+
+  // Update a key
+  const updatedKey = await openRouter.apiKeys.update(keyHash, {
+    name: 'Updated Key Name',
+    disabled: true, // Optional: Disable the key
+    includeByokInLimit: false, // Optional: control BYOK usage in limit
+    limitReset: 'daily', // Optional: reset limit every day at midnight UTC
+  });
+
+  // Delete a key
+  await openRouter.apiKeys.delete(keyHash);
+  ```
+
+  ```python title="Python"
+  import requests
+
+  PROVISIONING_API_KEY = "your-provisioning-key"
+  BASE_URL = "https://openrouter.ai/api/v1/keys"
+
+  # List the most recent 100 API keys
+  response = requests.get(
+      BASE_URL,
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # You can paginate using the offset parameter
+  response = requests.get(
+      f"{BASE_URL}?offset=100",
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # Create a new API key
+  response = requests.post(
+      f"{BASE_URL}/",
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      },
+      json={
+          "name": "Customer Instance Key",
+          "limit": 1000  # Optional credit limit
+      }
+  )
+
+  # Get a specific key
+  key_hash = "<YOUR_KEY_HASH>"
+  response = requests.get(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+
+  # Update a key
+  response = requests.patch(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      },
+      json={
+          "name": "Updated Key Name",
+          "disabled": True,  # Optional: Disable the key
+          "include_byok_in_limit": False,  # Optional: control BYOK usage in limit
+          "limit_reset": "daily"  # Optional: reset limit every day at midnight UTC
+      }
+  )
+
+  # Delete a key
+  response = requests.delete(
+      f"{BASE_URL}/{key_hash}",
+      headers={
+          "Authorization": f"Bearer {PROVISIONING_API_KEY}",
+          "Content-Type": "application/json"
+      }
+  )
+  ```
+
+  ```typescript title="TypeScript (fetch)"
+  const PROVISIONING_API_KEY = 'your-provisioning-key';
+  const BASE_URL = 'https://openrouter.ai/api/v1/keys';
+
+  // List the most recent 100 API keys
+  const listKeys = await fetch(BASE_URL, {
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // You can paginate using the `offset` query parameter
+  const listKeys = await fetch(`${BASE_URL}?offset=100`, {
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Create a new API key
+  const createKey = await fetch(`${BASE_URL}`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: 'Customer Instance Key',
+      limit: 1000, // Optional credit limit
+    }),
+  });
+
+  // Get a specific key
+  const keyHash = '<YOUR_KEY_HASH>';
+  const getKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // Update a key
+  const updateKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: 'Updated Key Name',
+      disabled: true, // Optional: Disable the key
+      include_byok_in_limit: false, // Optional: control BYOK usage in limit
+      limit_reset: 'daily', // Optional: reset limit every day at midnight UTC
+    }),
+  });
+
+  // Delete a key
+  const deleteKey = await fetch(`${BASE_URL}/${keyHash}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${PROVISIONING_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  ```
+</CodeGroup>
+
+## Response Format
+
+API responses return JSON objects containing key information:
+
+```json
+{
+  "data": [
+    {
+      "created_at": "2025-02-19T20:52:27.363244+00:00",
+      "updated_at": "2025-02-19T21:24:11.708154+00:00",
+      "hash": "<YOUR_KEY_HASH>",
+      "label": "sk-or-v1-abc...123",
+      "name": "Customer Key",
+      "disabled": false,
+      "limit": 10,
+      "limit_remaining": 10,
+      "limit_reset": null,
+      "include_byok_in_limit": false,
+      "usage": 0,
+      "usage_daily": 0,
+      "usage_weekly": 0,
+      "usage_monthly": 0,
+      "byok_usage": 0,
+      "byok_usage_daily": 0,
+      "byok_usage_weekly": 0,
+      "byok_usage_monthly": 0
+    }
+  ]
+}
+```
+
+When creating a new key, the response will include the key string itself. Read more in the [API reference](/docs/api-reference/api-keys/create-api-key).
+
+
+# Data Collection
+
+> Learn what data OpenRouter collects and how it's used.
+
+When using AI through OpenRouter, whether via the chat interface or the API, your prompts and responses go through multiple touchpoints. You have control over how your data is handled at each step.
+
+This page is designed to give a practical overview of how your data is handled, stored, and used by OpenRouter. More information is available in the [privacy policy](/privacy) and [terms of service](/terms).
+
+## Within OpenRouter
+
+OpenRouter does not store your prompts or responses, *unless* you have explicitly opted in to prompt logging in your account settings. It's as simple as that.
+
+OpenRouter samples a small number of prompts for categorization to power our reporting and model ranking. If you are not opted in to prompt logging, any categorization of your prompts is stored completely anonymously and never associated with your account or user ID. The categorization is done by model with a zero-data-retention policy.
+
+## Metadata Collection
+
+OpenRouter does store metadata (e.g. number of prompt and completion tokens, latency, etc) for each request. This is used to power our reporting and model ranking, and your [activity feed](/activity).
+
+This metadata does not include the content of your prompts or responses, only information about the request itself.
+
+
+# Logging
+
+> Understand how AI providers handle logging and data retention when you use OpenRouter.
+
+Each AI provider on OpenRouter has its own data handling policies for logging and retention. This page explains how to control which providers can access your data.
+
+## Provider Policies
+
+### Training on Prompts
+
+Each provider on OpenRouter has its own data handling policies. We reflect those policies in structured data on each AI endpoint that we offer.
+
+On your account settings page, you can set whether you would like to allow routing to providers that may train on your data (according to their own policies). There are separate settings for paid and free models.
+
+Wherever possible, OpenRouter works with providers to ensure that prompts will not be trained on, but there are exceptions. If you opt out of training in your account settings, OpenRouter will not route to providers that train. This setting has no bearing on OpenRouter's own policies and what we do with your prompts.
+
+<Tip title="Data Policy Filtering">
+  You can [restrict individual requests](/docs/features/provider-routing#requiring-providers-to-comply-with-data-policies)
+  to only use providers with a certain data policy.
+
+  This is also available as an account-wide setting in [your privacy settings](https://openrouter.ai/settings/privacy).
+</Tip>
+
+### Data Retention & Logging
+
+Providers also have their own data retention policies, often for compliance reasons. OpenRouter does not have routing rules that change based on data retention policies of providers, but the retention policies as reflected in each provider's terms are shown below. Any user of OpenRouter can ignore providers that don't meet their own data retention requirements.
+
+The full terms of service for each provider are linked from the provider's page, and aggregated in the [documentation](/docs/features/provider-routing#terms-of-service).
+
+<ProviderDataRetentionTable />
+
+## Enterprise EU in-region routing
+
+For enterprise customers, OpenRouter supports EU in-region routing. When enabled for your account, your prompts and completions are processed within the European Union and do not leave the EU. Use the base URL [http://eu.openrouter.ai](http://eu.openrouter.ai) for API requests to keep traffic and data within Europe. This feature is only enabled for enterprise customers by request.
+
+If you're interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).
+
+
+# Frameworks and Integrations Overview
+
+> Integrate OpenRouter using popular frameworks and SDKs. Complete guides for OpenAI SDK, LangChain, PydanticAI, and Vercel AI SDK integration.
+
+OpenRouter integrates seamlessly with popular AI frameworks and SDKs. Choose your preferred framework below for detailed integration guides:
+
+## Available Framework Integrations
+
+* **[Effect AI SDK](/docs/community/effect-ai-sdk)** - Integration with TypeScript Effect applications using the Effect AI SDK
+* **[LangChain](/docs/community/lang-chain)** - Integration with LangChain for Python and JavaScript applications
+* **[LlamaIndex](https://developers.llamaindex.ai/python/framework-api-reference/llms/openrouter/)** - Integration with LlamaIndex for Python and TypeScript RAG applications
+* **[Mastra](/docs/community/mastra)** - Unified interface for AI model access through Mastra framework
+* **[OpenAI SDK](/docs/community/open-ai-sdk)** - Direct integration using the official OpenAI SDK for Python and TypeScript
+* **[PydanticAI](/docs/community/pydantic-ai)** - High-level interface for Python applications using PydanticAI
+* **[Vercel AI SDK](/docs/community/vercel-ai-sdk)** - Integration with Next.js applications using the Vercel AI SDK
+
+## Other Integrations:
+
+* **[Aider](https://aider.chat/docs/llms/openrouter.html)** - Integration with Aider coding assistant
+* **[Cline](https://docs.cline.bot/provider-config/openrouter)** - Integration with Cline coding assistant
+* **[Kilo Code](https://kilocode.ai/docs/providers/openrouter)** - Integration with KiloCode coding assistant
+* **[Langfuse](/docs/community/langfuse)** - Integration with Langfuse Observability and Tracing
+* **[Roo Code](https://docs.roocode.com/providers/openrouter?_highlight=openrouter)** - Integration with Roo Code coding assistant
+* **[VSCode Copilot](https://code.visualstudio.com/docs/copilot/customization/language-models#_bring-your-own-language-model-key)** - Integration with VSCode Copilot
+* **[Xcode](/docs/community/xcode)** - Integration with Xcode coding assistant
+
+You can also find additional examples in our [GitHub repository](https://github.com/OpenRouterTeam/openrouter-examples).
+
+
+# Effect AI SDK
+
+> Integrate OpenRouter using the Effect AI SDK. Complete guide for integrating the Effect AI SDK with OpenRouter.
+
+# Effect AI SDK
+
+> Integrate OpenRouter using the Effect AI SDK. Complete guide for integrating the Effect AI SDK with OpenRouter.
+
+## Effect AI SDK
+
+You can use the [Effect AI SDK](https://www.npmjs.com/package/@effect/ai) to integrate OpenRouter with your Effect applications. To get started, install the following packages:
+
+* [effect](https://www.npmjs.com/package/effect): the Effect core (if not already installed)
+* [@effect/ai](https://www.npmjs.com/package/@effect/ai): the core Effect AI SDK abstractions
+* [@effect/ai-openrouter](https://www.npmjs.com/package/@effect/ai-openrouter): the Effect AI provider integration for OpenRouter
+* [@effect/platform](https://www.npmjs.com/package/@effect/platform): platform-agnostic abstractions for Effect
+
+```bash
+npm install effect @effect/ai @effect/ai-openrouter @effect/platform
+```
+
+Once that's done you can use the [LanguageModel](https://effect.website/docs/ai/getting-started/#define-an-interaction-with-a-language-model) module to define interactions with a large language model via OpenRouter.
+
+<CodeGroup>
+  ```typescript title="TypeScript"
+  import { LanguageModel } from "@effect/ai"
+  import { OpenRouterClient, OpenRouterLanguageModel } from "@effect/ai-openrouter"
+  import { FetchHttpClient } from "@effect/platform"
+  import { Config, Effect, Layer, Stream } from "effect"
+
+  const Gpt4o = OpenRouterLanguageModel.model("openai/gpt-4o")
+
+  const program = LanguageModel.streamText({
+    prompt: [
+      { role: "system", content: "You are a comedian with a penchant for groan-inducing puns" },
+      { role: "user", content: [{ type: "text", text: "Tell me a dad joke" }] }
+    ]
+  }).pipe(
+    Stream.filter((part) => part.type === "text-delta"),
+    Stream.runForEach((part) => Effect.sync(() => process.stdout.write(part.delta))),
+    Effect.provide(Gpt4o)
+  )
+
+  const OpenRouter = OpenRouterClient.layerConfig({
+    apiKey: Config.redacted("OPENROUTER_API_KEY")
+  }).pipe(Layer.provide(FetchHttpClient.layer))
+
+  program.pipe(
+    Effect.provide(OpenRouter),
+    Effect.runPromise
+  )
+  ```
+</CodeGroup>
+
+
+# Arize
+
+> Integrate OpenRouter using Arize for observability and tracing. Complete guide for Arize integration with OpenRouter for Python and JavaScript applications.
+
+## Using Arize
+
+[Arize](https://arize.com/) provides observability and tracing for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Arize's OpenInference auto-instrumentation with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
+
+### Installation
+
+```bash
+pip install openinference-instrumentation-openai openai arize-otel
+```
+
+### Prerequisites
+
+* OpenRouter account and API key
+* Arize account with Space ID and API Key
+
+### Why OpenRouter Works with Arize
+
+Arize's OpenInference auto-instrumentation works with OpenRouter because:
+
+1. **OpenRouter provides a fully OpenAI-API-compatible endpoint** - The `/v1` endpoint mirrors OpenAI's schema
+2. **Reuse official OpenAI SDKs** - Point the OpenAI client's `base_url` to OpenRouter
+3. **Automatic instrumentation** - OpenInference hooks into OpenAI SDK calls seamlessly
+
+### Configuration
+
+Set up your environment variables:
+
+<CodeGroup>
+  ```python title="Environment Setup"
+  import os
+
+  # Set your OpenRouter API key
+  os.environ["OPENAI_API_KEY"] = "${API_KEY_REF}"
+  ```
+</CodeGroup>
+
+### Simple LLM Call
+
+Initialize Arize and instrument your OpenAI client to automatically trace OpenRouter calls:
+
+<CodeGroup>
+  ```python title="Basic Integration"
+  from arize.otel import register
+  from openinference.instrumentation.openai import OpenAIInstrumentor
+  import openai
+
+  # Initialize Arize and register the tracer provider
+  tracer_provider = register(
+      space_id="your-space-id",
+      api_key="your-arize-api-key",
+      project_name="your-project-name",
+  )
+
+  # Instrument OpenAI SDK
+  OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
+
+  # Configure OpenAI client for OpenRouter
+  client = openai.OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      api_key="your_openrouter_api_key",
+      default_headers={
+          "HTTP-Referer": "<YOUR_SITE_URL>",  # Optional: Your site URL
+          "X-Title": "<YOUR_SITE_NAME>",      # Optional: Your site name
+      }
+  )
+
+  # Make a traced chat completion request
+  response = client.chat.completions.create(
+      model="meta-llama/llama-3.1-8b-instruct:free",
+      messages=[
+          {"role": "user", "content": "Write a haiku about observability."}
+      ],
+  )
+
+  # Print the assistant's reply
+  print(response.choices[0].message.content)
+  ```
+</CodeGroup>
+
+### What Gets Traced
+
+All OpenRouter model calls are automatically traced and include:
+
+* Request/response data and timing
+* Model name and provider information
+* Token usage and cost data (when supported)
+* Error handling and debugging information
+
+### JavaScript/TypeScript Support
+
+OpenInference also provides instrumentation for the OpenAI JavaScript/TypeScript SDK, which works with OpenRouter. For setup and examples, please refer to the [OpenInference JavaScript examples for OpenAI](https://github.com/Arize-ai/openinference/tree/main/js).
+
+### Common Issues
+
+* **API Key**: Use your OpenRouter API key, not OpenAI's
+* **Model Names**: Use exact model names from [OpenRouter's model list](https://openrouter.ai/models)
+* **Rate Limits**: Check your OpenRouter dashboard for usage limits
+
+### Learn More
+
+* **Arize OpenRouter Integration**: [https://arize.com/docs/ax/integrations/llm-providers/openrouter/openrouter-tracing](https://arize.com/docs/ax/integrations/llm-providers/openrouter/openrouter-tracing)
+* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart)
+* **OpenInference OpenAI Instrumentation**: [https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai)
+
+
+# LangChain
+
+> Integrate OpenRouter using LangChain framework. Complete guide for LangChain integration with OpenRouter for Python and JavaScript.
+
+## Using LangChain
+
+* Using [LangChain for Python](https://github.com/langchain-ai/langchain): [github](https://github.com/alexanderatallah/openrouter-streamlit/blob/main/pages/2_Langchain_Quickstart.py)
+* Using [LangChain.js](https://github.com/langchain-ai/langchainjs): [github](https://github.com/OpenRouterTeam/openrouter-examples/blob/main/examples/langchain/index.ts)
+* Using [Streamlit](https://streamlit.io/): [github](https://github.com/alexanderatallah/openrouter-streamlit)
+
+<CodeGroup>
+  ```typescript title="TypeScript"
+  import { ChatOpenAI } from "@langchain/openai";
+  import { HumanMessage, SystemMessage } from "@langchain/core/messages";
+
+  const chat = new ChatOpenAI(
+    {
+      model: '<model_name>',
+      temperature: 0.8,
+      streaming: true,
+      apiKey: '${API_KEY_REF}',
+    },
+    {
+      baseURL: 'https://openrouter.ai/api/v1',
+      defaultHeaders: {
+        'HTTP-Referer': '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
+        'X-Title': '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
+      },
+    },
+  );
+
+  // Example usage
+  const response = await chat.invoke([
+    new SystemMessage("You are a helpful assistant."),
+    new HumanMessage("Hello, how are you?"),
+  ]);
+  ```
+
+  ```python title="Python"
+  from langchain_openai import ChatOpenAI
+  from langchain_core.prompts import PromptTemplate
+  from langchain.chains import LLMChain
+  from os import getenv
+  from dotenv import load_dotenv
+
+  load_dotenv()
+
+  template = """Question: {question}
+  Answer: Let's think step by step."""
+
+  prompt = PromptTemplate(template=template, input_variables=["question"])
+
+  llm = ChatOpenAI(
+    api_key=getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1",
+    model="<model_name>",
+    default_headers={
+      "HTTP-Referer": getenv("YOUR_SITE_URL"), # Optional. Site URL for rankings on openrouter.ai.
+      "X-Title": getenv("YOUR_SITE_NAME"), # Optional. Site title for rankings on openrouter.ai.
+    }
+  )
+
+  llm_chain = LLMChain(prompt=prompt, llm=llm)
+
+  question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
+
+  print(llm_chain.run(question))
+  ```
+</CodeGroup>
+
+
+# LiveKit
+
+> Integrate OpenRouter using LiveKit Agents framework. Complete guide for LiveKit integration with OpenRouter to build voice AI agents with access to 500+ models.
+
+## Using LiveKit Agents
+
+[LiveKit Agents](https://docs.livekit.io/agents/) is an open-source framework for building voice AI agents. The OpenRouter plugin allows you to access 500+ AI models from multiple providers through a unified API, with automatic fallback support and intelligent routing.
+
+### Installation
+
+Install the OpenAI plugin to add OpenRouter support:
+
+```bash
+uv add "livekit-agents[openai]~=1.2"
+```
+
+### Authentication
+
+The OpenRouter plugin requires an [OpenRouter API key](https://openrouter.ai/settings/keys). Set `OPENROUTER_API_KEY` in your `.env` file.
+
+### Basic Usage
+
+Create an OpenRouter LLM using the `with_openrouter` method:
+
+<CodeGroup>
+  ```python title="Python"
+  from livekit.plugins import openai
+
+  session = AgentSession(
+      llm=openai.LLM.with_openrouter(model="anthropic/claude-sonnet-4.5"),
+      # ... tts, stt, vad, turn_detection, etc.
+  )
+  ```
+</CodeGroup>
+
+### Advanced Features
+
+#### Fallback Models
+
+Configure multiple fallback models to use if the primary model is unavailable:
+
+<CodeGroup>
+  ```python title="Python"
+  from livekit.plugins import openai
+
+  llm = openai.LLM.with_openrouter(
+      model="openai/gpt-4o",
+      fallback_models=[
+          "anthropic/claude-sonnet-4",
+          "openai/gpt-5-mini",
+      ],
+  )
+  ```
+</CodeGroup>
+
+#### Provider Routing
+
+Control which providers are used for model inference:
+
+<CodeGroup>
+  ```python title="Python"
+  from livekit.plugins import openai
+
+  llm = openai.LLM.with_openrouter(
+      model="deepseek/deepseek-chat-v3.1",
+      provider={
+          "order": ["novita/fp8", "gmicloud/fp8", "google-vertex"],
+          "allow_fallbacks": True,
+          "sort": "latency",
+      },
+  )
+  ```
+</CodeGroup>
+
+#### Web Search Plugin
+
+Enable OpenRouter's web search capabilities:
+
+<CodeGroup>
+  ```python title="Python"
+  from livekit.plugins import openai
+
+  llm = openai.LLM.with_openrouter(
+      model="google/gemini-2.5-flash-preview-09-2025",
+      plugins=[
+          openai.OpenRouterWebPlugin(
+              max_results=5,
+              search_prompt="Search for relevant information",
+          )
+      ],
+  )
+  ```
+</CodeGroup>
+
+#### Analytics Integration
+
+Include site and app information for OpenRouter analytics:
+
+<CodeGroup>
+  ```python title="Python"
+  from livekit.plugins import openai
+
+  llm = openai.LLM.with_openrouter(
+      model="openrouter/auto",
+      site_url="https://myapp.com",
+      app_name="My Voice Agent",
+  )
+  ```
+</CodeGroup>
+
+### Resources
+
+* [LiveKit OpenRouter Plugin Documentation](https://docs.livekit.io/agents/models/llm/plugins/openrouter/)
+* [LiveKit Agents GitHub](https://github.com/livekit/agents)
+* [OpenRouter Models](https://openrouter.ai/models)
+
+
+# Langfuse
+
+> Integrate OpenRouter using Langfuse for observability and tracing. Complete guide for Langfuse integration with OpenRouter for Python applications.
+
+## Using Langfuse
+
+[Langfuse](https://langfuse.com/) provides observability and analytics for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Langfuse's native integration with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
+
+### Installation
+
+```bash
+pip install langfuse openai
+```
+
+### Configuration
+
+Set up your environment variables:
+
+<CodeGroup>
+  ```python title="Environment Setup"
+  import os
+
+  # Set your Langfuse API keys
+  LANGFUSE_SECRET_KEY="sk-lf-..."
+  LANGFUSE_PUBLIC_KEY="pk-lf-..."
+  # EU region
+  LANGFUSE_HOST="https://cloud.langfuse.com"
+  # US region
+  # LANGFUSE_HOST="https://us.cloud.langfuse.com"
+
+  # Set your OpenRouter API key
+  os.environ["OPENAI_API_KEY"] = "${API_KEY_REF}"
+  ```
+</CodeGroup>
+
+### Simple LLM Call
+
+Since OpenRouter provides an OpenAI-compatible API, you can use the Langfuse OpenAI SDK wrapper to automatically log OpenRouter calls as generations in Langfuse:
+
+<CodeGroup>
+  ```python title="Basic Integration"
+  # Import the Langfuse OpenAI SDK wrapper
+  from langfuse.openai import openai
+
+  # Create an OpenAI client with OpenRouter's base URL
+  client = openai.OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+      default_headers={
+          "HTTP-Referer": "<YOUR_SITE_URL>",  # Optional: Your site URL
+          "X-Title": "<YOUR_SITE_NAME>",      # Optional: Your site name
+      }
+  )
+
+  # Make a chat completion request
+  response = client.chat.completions.create(
+      model="anthropic/claude-3.5-sonnet",
+      messages=[
+          {"role": "system", "content": "You are a helpful assistant."},
+          {"role": "user", "content": "Tell me a fun fact about space."}
+      ],
+      name="fun-fact-request"  # Optional: Name of the generation in Langfuse
+  )
+
+  # Print the assistant's reply
+  print(response.choices[0].message.content)
+  ```
+</CodeGroup>
+
+### Advanced Tracing with Nested Calls
+
+Use the `@observe()` decorator to capture execution details of functions with nested LLM calls:
+
+<CodeGroup>
+  ```python title="Nested Function Tracing"
+  from langfuse import observe
+  from langfuse.openai import openai
+
+  # Create an OpenAI client with OpenRouter's base URL
+  client = openai.OpenAI(
+      base_url="https://openrouter.ai/api/v1",
+  )
+
+  @observe()  # This decorator enables tracing of the function
+  def analyze_text(text: str):
+      # First LLM call: Summarize the text
+      summary_response = summarize_text(text)
+      summary = summary_response.choices[0].message.content
+
+      # Second LLM call: Analyze the sentiment of the summary
+      sentiment_response = analyze_sentiment(summary)
+      sentiment = sentiment_response.choices[0].message.content
+
+      return {
+          "summary": summary,
+          "sentiment": sentiment
+      }
+
+  @observe()  # Nested function to be traced
+  def summarize_text(text: str):
+      return client.chat.completions.create(
+          model="openai/gpt-3.5-turbo",
+          messages=[
+              {"role": "system", "content": "You summarize texts in a concise manner."},
+              {"role": "user", "content": f"Summarize the following text:\n{text}"}
+          ],
+          name="summarize-text"
+      )
+
+  @observe()  # Nested function to be traced
+  def analyze_sentiment(summary: str):
+      return client.chat.completions.create(
+          model="openai/gpt-3.5-turbo",
+          messages=[
+              {"role": "system", "content": "You analyze the sentiment of texts."},
+              {"role": "user", "content": f"Analyze the sentiment of the following summary:\n{summary}"}
+          ],
+          name="analyze-sentiment"
+      )
+
+  # Example usage
+  text_to_analyze = "OpenRouter's unified API has significantly advanced the field of AI development, setting new standards for model accessibility."
+  result = analyze_text(text_to_analyze)
+  print(result)
+  ```
+</CodeGroup>
+
+### Learn More
+
+* **Langfuse OpenRouter Integration**: [https://langfuse.com/docs/integrations/other/openrouter](https://langfuse.com/docs/integrations/other/openrouter)
+* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart)
+* **Langfuse `@observe()` Decorator**: [https://langfuse.com/docs/sdk/python/decorators](https://langfuse.com/docs/sdk/python/decorators)
+
+
+# Mastra
+
+> Integrate OpenRouter using Mastra framework. Complete guide for Mastra integration with OpenRouter for unified AI model access.
+
+## Mastra
+
+Integrate OpenRouter with Mastra to access a variety of AI models through a unified interface. This guide provides complete examples from basic setup to advanced configurations.
+
+### Step 1: Initialize a new Mastra project
+
+The simplest way to start is using the automatic project creation:
+
+```bash
+# Create a new project using create-mastra
+npx create-mastra@latest
+```
+
+You'll be guided through prompts to set up your project. For this example, select:
+
+* Name your project: my-mastra-openrouter-app
+* Components: Agents (recommended)
+* For default provider, select OpenAI (recommended) - we'll configure OpenRouter manually later
+* Optionally include example code
+
+For detailed instructions on setting up a Mastra project manually or adding Mastra to an existing project, refer to the [official Mastra documentation](https://mastra.ai/en/docs/getting-started/installation).
+
+### Step 2: Configure your environment variables
+
+After creating your project with `create-mastra`, you'll find a `.env.development` file in your project root. Since we selected OpenAI during setup but will be using OpenRouter instead:
+
+1. Open the `.env.development` file
+2. Remove or comment out the `OPENAI_API_KEY` line
+3. Add your OpenRouter API key:
+
+```
+# .env.development
+# OPENAI_API_KEY=your-openai-key  # Comment out or remove this line
+OPENROUTER_API_KEY=sk-or-your-api-key-here
+```
+
+You can also remove the `@ai-sdk/openai` package since we'll be using OpenRouter instead:
+
+```bash
+npm uninstall @ai-sdk/openai
+```
+
+```bash
+npm install @openrouter/ai-sdk-provider
+```
+
+### Step 3: Configure your agent to use OpenRouter
+
+After setting up your Mastra project, you'll need to modify the agent files to use OpenRouter instead of the default OpenAI provider.
+
+If you used `create-mastra`, you'll likely have a file at `src/mastra/agents/agent.ts` or similar. Replace its contents with:
+
+```typescript
+import { Agent } from '@mastra/core/agent';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
+// Initialize OpenRouter provider
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
+// Create an agent
+export const assistant = new Agent({
+  model: openrouter('anthropic/claude-3-opus'),
+  name: 'Assistant',
+  instructions:
+    'You are a helpful assistant with expertise in technology and science.',
+});
+```
+
+Also make sure to update your Mastra entry point at `src/mastra/index.ts` to use your renamed agent:
+
+```typescript
+import { Mastra } from '@mastra/core';
+
+import { assistant } from './agents/agent'; // Update the import path if you used a different filename
+
+export const mastra = new Mastra({
+  agents: { assistant }, // Use the same name here as you exported from your agent file
+});
+```
+
+### Step 4: Running the Application
+
+Once you've configured your agent to use OpenRouter, you can run the Mastra development server:
+
+```bash
+npm run dev
+```
+
+This will start the Mastra development server and make your agent available at:
+
+* REST API endpoint: `http://localhost:4111/api/agents/assistant/generate`
+* Interactive playground: `http://localhost:4111`
+
+The Mastra playground provides a user-friendly interface where you can interact with your agent and test its capabilities without writing any additional code.
+
+You can also test the API endpoint using curl if needed:
+
+```bash
+curl -X POST http://localhost:4111/api/agents/assistant/generate \
+-H "Content-Type: application/json" \
+-d '{"messages": ["What are the latest advancements in quantum computing?"]}'
+```
+
+### Basic Integration with Mastra
+
+The simplest way to integrate OpenRouter with Mastra is by using the OpenRouter AI provider with Mastra's Agent system:
+
+```typescript
+import { Agent } from '@mastra/core/agent';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
+// Initialize the OpenRouter provider
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
+// Create an agent using OpenRouter
+const assistant = new Agent({
+  model: openrouter('anthropic/claude-3-opus'),
+  name: 'Assistant',
+  instructions: 'You are a helpful assistant.',
+});
+
+// Generate a response
+const response = await assistant.generate([
+  {
+    role: 'user',
+    content: 'Tell me about renewable energy sources.',
+  },
+]);
+
+console.log(response.text);
+```
+
+### Advanced Configuration
+
+For more control over your OpenRouter requests, you can pass additional configuration options:
+
+```typescript
+import { Agent } from '@mastra/core/agent';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
+// Initialize with advanced options
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  extraBody: {
+    reasoning: {
+      max_tokens: 10,
+    },
+  },
+});
+
+// Create an agent with model-specific options
+const chefAgent = new Agent({
+  model: openrouter('anthropic/claude-3.7-sonnet', {
+    extraBody: {
+      reasoning: {
+        max_tokens: 10,
+      },
+    },
+  }),
+  name: 'Chef',
+  instructions: 'You are a chef assistant specializing in French cuisine.',
+});
+```
+
+### Provider-Specific Options
+
+You can also pass provider-specific options in your requests:
+
+```typescript
+// Get a response with provider-specific options
+const response = await chefAgent.generate([
+  {
+    role: 'system',
+    content:
+      'You are Chef Michel, a culinary expert specializing in ketogenic (keto) diet...',
+    providerOptions: {
+      // Provider-specific options - key can be 'anthropic' or 'openrouter'
+      anthropic: {
+        cacheControl: { type: 'ephemeral' },
+      },
+    },
+  },
+  {
+    role: 'user',
+    content: 'Can you suggest a keto breakfast?',
+  },
+]);
+```
+
+### Using Multiple Models with OpenRouter
+
+OpenRouter gives you access to various models from different providers. Here's how to use multiple models:
+
+```typescript
+import { Agent } from '@mastra/core/agent';
+import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+
+const openrouter = createOpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY,
+});
+
+// Create agents using different models
+const claudeAgent = new Agent({
+  model: openrouter('anthropic/claude-3-opus'),
+  name: 'ClaudeAssistant',
+  instructions: 'You are a helpful assistant powered by Claude.',
+});
+
+const gptAgent = new Agent({
+  model: openrouter('openai/gpt-4'),
+  name: 'GPTAssistant',
+  instructions: 'You are a helpful assistant powered by GPT-4.',
+});
+
+// Use different agents based on your needs
+const claudeResponse = await claudeAgent.generate([
+  {
+    role: 'user',
+    content: 'Explain quantum mechanics simply.',
+  },
+]);
+console.log(claudeResponse.text);
+
+const gptResponse = await gptAgent.generate([
+  {
+    role: 'user',
+    content: 'Explain quantum mechanics simply.',
+  },
+]);
+console.log(gptResponse.text);
+```
+
+### Resources
+
+For more information and detailed documentation, check out these resources:
+
+* [OpenRouter Documentation](https://openrouter.ai/docs) - Learn about OpenRouter's capabilities and available models
+* [Mastra Documentation](https://mastra.ai/docs) - Comprehensive documentation for the Mastra framework
+* [AI SDK Documentation](https://sdk.vercel.ai/docs) - Detailed information about the AI SDK that powers Mastra's model interactions
+
+
+# OpenAI SDK
+
+> Integrate OpenRouter using the official OpenAI SDK. Complete guide for OpenAI SDK integration with OpenRouter for Python and TypeScript.
+
+## Using the OpenAI SDK
+
+* Using `pip install openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples-python/blob/main/src/openai_test.py).
+* Using `npm i openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples/blob/main/examples/openai/index.ts).
+  <Tip>
+    You can also use
+    [Grit](https://app.grit.io/studio?key=RKC0n7ikOiTGTNVkI8uRS) to
+    automatically migrate your code. Simply run `npx @getgrit/launcher
+      openrouter`.
+  </Tip>
+
+<CodeGroup>
+  ```typescript title="TypeScript"
+  import OpenAI from "openai"
+
+  const openai = new OpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: "${API_KEY_REF}",
+    defaultHeaders: {
+      ${getHeaderLines().join('\n        ')}
+    },
+  })
+
+  async function main() {
+    const completion = await openai.chat.completions.create({
+      model: "${Model.GPT_4_Omni}",
+      messages: [
+        { role: "user", content: "Say this is a test" }
+      ],
+    })
+
+    console.log(completion.choices[0].message)
+  }
+  main();
+  ```
+
+  ```python title="Python"
+  from openai import OpenAI
+  from os import getenv
+
+  # gets API Key from environment variable OPENAI_API_KEY
+  client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=getenv("OPENROUTER_API_KEY"),
+  )
+
+  completion = client.chat.completions.create(
+    model="${Model.GPT_4_Omni}",
+    extra_headers={
+      "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
+      "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
+    },
+    # pass extra_body to access OpenRouter-only arguments.
+    # extra_body={
+      # "models": [
+      #   "${Model.GPT_4_Omni}",
+      #   "${Model.Mixtral_8x_22B_Instruct}"
+      # ]
+    # },
+    messages=[
+      {
+        "role": "user",
+        "content": "Say this is a test",
+      },
+    ],
+  )
+  print(completion.choices[0].message.content)
+  ```
+</CodeGroup>
+
+
+# PydanticAI
+
+> Integrate OpenRouter using PydanticAI framework. Complete guide for PydanticAI integration with OpenRouter for Python applications.
+
+## Using PydanticAI
+
+[PydanticAI](https://github.com/pydantic/pydantic-ai) provides a high-level interface for working with various LLM providers, including OpenRouter.
+
+### Installation
+
+```bash
+pip install 'pydantic-ai-slim[openai]'
+```
+
+### Configuration
+
+You can use OpenRouter with PydanticAI through its OpenAI-compatible interface:
+
+```python
+from pydantic_ai import Agent
+from pydantic_ai.models.openai import OpenAIModel
+
+model = OpenAIModel(
+    "anthropic/claude-3.5-sonnet",  # or any other OpenRouter model
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-...",
+)
+
+agent = Agent(model)
+result = await agent.run("What is the meaning of life?")
+print(result)
+```
+
+For more details about using PydanticAI with OpenRouter, see the [PydanticAI documentation](https://ai.pydantic.dev/models/#api_key-argument).
+
+
+# Vercel AI SDK
+
+> Integrate OpenRouter using Vercel AI SDK. Complete guide for Vercel AI SDK integration with OpenRouter for Next.js applications.
+
+## Vercel AI SDK
+
+You can use the [Vercel AI SDK](https://www.npmjs.com/package/ai) to integrate OpenRouter with your Next.js app. To get started, install [@openrouter/ai-sdk-provider](https://github.com/OpenRouterTeam/ai-sdk-provider):
+
+```bash
+npm install @openrouter/ai-sdk-provider
+```
+
+And then you can use [streamText()](https://sdk.vercel.ai/docs/reference/ai-sdk-core/stream-text) API to stream text from OpenRouter.
+
+<CodeGroup>
+  ```typescript title="TypeScript"
+  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+  import { streamText } from 'ai';
+  import { z } from 'zod';
+
+  export const getLasagnaRecipe = async (modelName: string) => {
+    const openrouter = createOpenRouter({
+      apiKey: '${API_KEY_REF}',
+    });
+
+    const response = streamText({
+      model: openrouter(modelName),
+      prompt: 'Write a vegetarian lasagna recipe for 4 people.',
+    });
+
+    await response.consumeStream();
+    return response.text;
+  };
+
+  export const getWeather = async (modelName: string) => {
+    const openrouter = createOpenRouter({
+      apiKey: '${API_KEY_REF}',
+    });
+
+    const response = streamText({
+      model: openrouter(modelName),
+      prompt: 'What is the weather in San Francisco, CA in Fahrenheit?',
+      tools: {
+        getCurrentWeather: {
+          description: 'Get the current weather in a given location',
+          parameters: z.object({
+            location: z
+              .string()
+              .describe('The city and state, e.g. San Francisco, CA'),
+            unit: z.enum(['celsius', 'fahrenheit']).optional(),
+          }),
+          execute: async ({ location, unit = 'celsius' }) => {
+            // Mock response for the weather
+            const weatherData = {
+              'Boston, MA': {
+                celsius: '15°C',
+                fahrenheit: '59°F',
+              },
+              'San Francisco, CA': {
+                celsius: '18°C',
+                fahrenheit: '64°F',
+              },
+            };
+
+            const weather = weatherData[location];
+            if (!weather) {
+              return `Weather data for ${location} is not available.`;
+            }
+
+            return `The current weather in ${location} is ${weather[unit]}.`;
+          },
+        },
+      },
+    });
+
+    await response.consumeStream();
+    return response.text;
+  };
+  ```
+</CodeGroup>
+
+
+# Xcode
+
+> Integrate OpenRouter with Apple Intelligence in Xcode 26. Complete setup guide for accessing hundreds of AI models directly in your Xcode development environment.
+
+## Using Xcode with Apple Intelligence
+
+[Apple Intelligence](https://developer.apple.com/apple-intelligence/) in Xcode 26 provides built-in AI assistance for coding. By integrating OpenRouter, you can access hundreds of AI models directly in your Xcode development environment, going far beyond the default ChatGPT integration.
+
+This integration allows you to use models from Anthropic, Google, Meta, and many other providers without leaving your development environment.
+
+### Prerequisites
+
+<Callout intent="warn">
+  Apple Intelligence on Xcode is currently in Beta and requires:
+
+  * **macOS Tahoe 26.0 Beta** or later
+  * **[Xcode 26 beta 4](https://developer.apple.com/download/applications/)** or later
+</Callout>
+
+### Setup Instructions
+
+#### Step 1: Access Intelligence Settings
+
+Navigate to **Settings > Intelligence > Add a Model Provider** in your macOS system preferences.
+
+![Xcode Intelligence Settings](file:542d66ad-a79e-4448-a473-abc7ec7ee439)
+
+#### Step 2: Configure OpenRouter Provider
+
+In the "Add a Model Provider" dialog, enter the following details:
+
+* **URL**: `https://openrouter.ai/api`
+  * **Important**: Do not add `/v1` at the end of the endpoint like you typically would for direct API calls
+* **API Key Header**: `api_key`
+* **API Key**: Your OpenRouter API key (starts with `sk-or-v1-`)
+* **Description**: `OpenRouter` (or any name you prefer)
+
+Click **Add** to save the configuration.
+
+![OpenRouter Configuration](file:c7db6504-2ca1-479a-8aca-8923598df882)
+
+#### Step 3: Browse Available Models
+
+Once configured, click on **OpenRouter** to see all available models. Since OpenRouter offers hundreds of models, you should bookmark your favorite models for quick access. Bookmarked models will appear at the top of the list, making them easily accessible from within the pane whenever you need them.
+
+![Available Models](file:3bf92f6c-fc6c-4f6d-83b7-4b79a9b6b772)
+
+You'll have access to models from various providers including:
+
+* Anthropic Claude models
+* Google Gemini models
+* Meta Llama models
+* OpenAI GPT models
+* And hundreds more
+
+![Extended Model List](file:3264d80d-ec03-4cc5-ba45-c3f901aee9a7)
+
+#### Step 4: Start Using AI in Xcode
+
+Head back to the chat interface (icon at the top) and start chatting with your selected models directly in Xcode.
+
+![Xcode Chat Interface](file:7897d754-b17c-4ed0-91a0-225c07d1d8f7)
+
+### Using Apple Intelligence Features
+
+Once configured, you can use Apple Intelligence features in Xcode with OpenRouter models:
+
+* **Code Completion**: Get intelligent code suggestions
+* **Code Explanation**: Ask questions about your code
+* **Refactoring Assistance**: Get help improving your code structure
+* **Documentation Generation**: Generate comments and documentation
+
+![Apple Intelligence Interface](file:4a25ccf7-89a3-45bc-a6fc-eb27ac816a3c)
+
+*Image credit: [Apple Developer Documentation](https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode)*
+
+### Learn More
+
+* **Apple Intelligence Documentation**: [Writing Code with Intelligence in Xcode](https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode)
+* **OpenRouter Quick Start**: [Getting Started with OpenRouter](https://openrouter.ai/docs/quickstart)
+* **Available Models**: [Browse OpenRouter Models](https://openrouter.ai/models)
+
+
+# Zapier
+
+> Build powerful AI automations by connecting OpenRouter with 8000+ apps through Zapier. Access 500+ AI models in your workflows.
+
+With OpenRouter you have access to over 500+ AI models through one API, and with Zapier you can connect to 8000+ apps to automate workflows, no coding required!
+
+This page embeds Zapier Elements so your users can create Zaps that use OpenRouter-powered AI.
+
+<Tip>
+  Combine OpenRouter's model routing with Zapier's integrations to automate tasks across CRMs, spreadsheets, messaging, and more.
+</Tip>
+
+## Set up your Integration
+
+Get started by exploring available automations and creating your first Zap with OpenRouter. The integration supports all OpenRouter models and features, including streaming responses, function calling, and multimodal capabilities.
+
+<ZapierIframe />
+
+## Using OpenRouter in Zapier
+
+Once you've set up the integration, you can use OpenRouter in your Zaps to:
+
+* **Generate content** with models like GPT-4, Claude, or Gemini
+* **Analyze data** using specialized models for different domains
+* **Process images** with vision-capable models
+* **Create structured outputs** with JSON mode and function calling
+* **Stream responses** for real-time applications
+
+The OpenRouter Zapier integration automatically handles authentication, model routing, and error handling, so you can focus on building your automation logic.
+
+For more advanced use cases and detailed documentation, visit the [OpenRouter Zapier integration page](https://zapier.com/apps/openrouter/integrations).
+
+![Zapier Integration Screenshot](file:38bf2caa-64bd-4660-9e6b-daf9669d752b)
 
 
 # API Reference
@@ -7852,7 +9948,7 @@ Our API authenticates requests using Bearer tokens. This allows you to use `curl
 <Warning>
   API keys on OpenRouter are more powerful than keys used directly for model APIs.
 
-  They allow users to set credit limits for apps, and they can be used in [OAuth](/docs/use-cases/oauth-pkce) flows.
+  They allow users to set credit limits for apps, and they can be used in [OAuth](/docs/auth/oauth) flows.
 </Warning>
 
 ## Using an API key
@@ -10956,7 +13052,7 @@ Content-Type: application/json
 
 Creates a streaming or non-streaming response using OpenResponses API format
 
-Reference: https://openrouter.ai/docs/api-reference/beta-responses/create-responses
+Reference: https://openrouter.ai/docs/api/api-reference/responses/create-responses
 
 ## OpenAPI Specification
 
@@ -11085,6 +13181,7 @@ components:
         - value: openai-responses-v1
         - value: xai-responses-v1
         - value: anthropic-claude-v1
+        - value: google-gemini-v1
     OpenResponsesReasoning:
       type: object
       properties:
@@ -13132,13 +15229,532 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 dataTask.resume()
 ```
 
+# Exchange authorization code for API key
+
+POST https://openrouter.ai/api/v1/auth/keys
+Content-Type: application/json
+
+Exchange an authorization code from the PKCE flow for a user-controlled API key
+
+Reference: https://openrouter.ai/docs/api/api-reference/o-auth/exchange-auth-code-for-api-key
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.1.1
+info:
+  title: Exchange authorization code for API key
+  version: endpoint_oAuth.exchangeAuthCodeForAPIKey
+paths:
+  /auth/keys:
+    post:
+      operationId: exchange-auth-code-for-api-key
+      summary: Exchange authorization code for API key
+      description: >-
+        Exchange an authorization code from the PKCE flow for a user-controlled
+        API key
+      tags:
+        - - subpackage_oAuth
+      parameters:
+        - name: Authorization
+          in: header
+          description: API key as bearer token in Authorization header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully exchanged code for an API key
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/OAuth_exchangeAuthCodeForAPIKey_Response_200
+        '400':
+          description: Bad Request - Invalid request parameters or malformed input
+          content: {}
+        '403':
+          description: Forbidden - Authentication successful but insufficient permissions
+          content: {}
+        '500':
+          description: Internal Server Error - Unexpected server error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                code_verifier:
+                  type: string
+                code_challenge_method:
+                  oneOf:
+                    - $ref: >-
+                        #/components/schemas/AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
+                    - type: 'null'
+              required:
+                - code
+components:
+  schemas:
+    AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
+      type: string
+      enum:
+        - value: S256
+        - value: plain
+    OAuth_exchangeAuthCodeForAPIKey_Response_200:
+      type: object
+      properties:
+        key:
+          type: string
+        user_id:
+          type:
+            - string
+            - 'null'
+      required:
+        - key
+        - user_id
+
+```
+
+## SDK Code Examples
+
+```python
+import requests
+
+url = "https://openrouter.ai/api/v1/auth/keys"
+
+payload = {
+    "code": "auth_code_abc123def456",
+    "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+    "code_challenge_method": "S256"
+}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.json())
+```
+
+```javascript
+const url = 'https://openrouter.ai/api/v1/auth/keys';
+const options = {
+  method: 'POST',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{"code":"auth_code_abc123def456","code_verifier":"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk","code_challenge_method":"S256"}'
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://openrouter.ai/api/v1/auth/keys"
+
+	payload := strings.NewReader("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://openrouter.ai/api/v1/auth/keys")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```java
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys")
+  .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
+  .asString();
+```
+
+```php
+<?php
+
+$client = new \GuzzleHttp\Client();
+
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys', [
+  'body' => '{
+  "code": "auth_code_abc123def456",
+  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+  "code_challenge_method": "S256"
+}',
+  'headers' => [
+    'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
+  ],
+]);
+
+echo $response->getBody();
+```
+
+```csharp
+var client = new RestClient("https://openrouter.ai/api/v1/auth/keys");
+var request = new RestRequest(Method.POST);
+request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [
+  "code": "auth_code_abc123def456",
+  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+  "code_challenge_method": "S256"
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
+# Create authorization code
+
+POST https://openrouter.ai/api/v1/auth/keys/code
+Content-Type: application/json
+
+Create an authorization code for the PKCE flow to generate a user-controlled API key
+
+Reference: https://openrouter.ai/docs/api/api-reference/o-auth/create-auth-keys-code
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.1.1
+info:
+  title: Create authorization code
+  version: endpoint_oAuth.createAuthKeysCode
+paths:
+  /auth/keys/code:
+    post:
+      operationId: create-auth-keys-code
+      summary: Create authorization code
+      description: >-
+        Create an authorization code for the PKCE flow to generate a
+        user-controlled API key
+      tags:
+        - - subpackage_oAuth
+      parameters:
+        - name: Authorization
+          in: header
+          description: API key as bearer token in Authorization header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully created authorization code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth_createAuthKeysCode_Response_200'
+        '400':
+          description: Bad Request - Invalid request parameters or malformed input
+          content: {}
+        '401':
+          description: Unauthorized - Authentication required or invalid credentials
+          content: {}
+        '500':
+          description: Internal Server Error - Unexpected server error
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callback_url:
+                  type: string
+                  format: uri
+                code_challenge:
+                  type: string
+                code_challenge_method:
+                  $ref: >-
+                    #/components/schemas/AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
+                limit:
+                  type: number
+                  format: double
+                expires_at:
+                  type:
+                    - string
+                    - 'null'
+                  format: date-time
+              required:
+                - callback_url
+components:
+  schemas:
+    AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
+      type: string
+      enum:
+        - value: S256
+        - value: plain
+    AuthKeysCodePostResponsesContentApplicationJsonSchemaData:
+      type: object
+      properties:
+        id:
+          type: string
+        app_id:
+          type: number
+          format: double
+        created_at:
+          type: string
+      required:
+        - id
+        - app_id
+        - created_at
+    OAuth_createAuthKeysCode_Response_200:
+      type: object
+      properties:
+        data:
+          $ref: >-
+            #/components/schemas/AuthKeysCodePostResponsesContentApplicationJsonSchemaData
+      required:
+        - data
+
+```
+
+## SDK Code Examples
+
+```python
+import requests
+
+url = "https://openrouter.ai/api/v1/auth/keys/code"
+
+payload = {
+    "callback_url": "https://myapp.com/auth/callback",
+    "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+    "code_challenge_method": "S256",
+    "limit": 100
+}
+headers = {
+    "Authorization": "Bearer <token>",
+    "Content-Type": "application/json"
+}
+
+response = requests.post(url, json=payload, headers=headers)
+
+print(response.json())
+```
+
+```javascript
+const url = 'https://openrouter.ai/api/v1/auth/keys/code';
+const options = {
+  method: 'POST',
+  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
+  body: '{"callback_url":"https://myapp.com/auth/callback","code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM","code_challenge_method":"S256","limit":100}'
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://openrouter.ai/api/v1/auth/keys/code"
+
+	payload := strings.NewReader("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
+
+	req, _ := http.NewRequest("POST", url, payload)
+
+	req.Header.Add("Authorization", "Bearer <token>")
+	req.Header.Add("Content-Type", "application/json")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://openrouter.ai/api/v1/auth/keys/code")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = 'Bearer <token>'
+request["Content-Type"] = 'application/json'
+request.body = "{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}"
+
+response = http.request(request)
+puts response.read_body
+```
+
+```java
+HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys/code")
+  .header("Authorization", "Bearer <token>")
+  .header("Content-Type", "application/json")
+  .body("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
+  .asString();
+```
+
+```php
+<?php
+
+$client = new \GuzzleHttp\Client();
+
+$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys/code', [
+  'body' => '{
+  "callback_url": "https://myapp.com/auth/callback",
+  "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+  "code_challenge_method": "S256",
+  "limit": 100
+}',
+  'headers' => [
+    'Authorization' => 'Bearer <token>',
+    'Content-Type' => 'application/json',
+  ],
+]);
+
+echo $response->getBody();
+```
+
+```csharp
+var client = new RestClient("https://openrouter.ai/api/v1/auth/keys/code");
+var request = new RestRequest(Method.POST);
+request.AddHeader("Authorization", "Bearer <token>");
+request.AddHeader("Content-Type", "application/json");
+request.AddParameter("application/json", "{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}", ParameterType.RequestBody);
+IRestResponse response = client.Execute(request);
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "Authorization": "Bearer <token>",
+  "Content-Type": "application/json"
+]
+let parameters = [
+  "callback_url": "https://myapp.com/auth/callback",
+  "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+  "code_challenge_method": "S256",
+  "limit": 100
+] as [String : Any]
+
+let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys/code")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "POST"
+request.allHTTPHeaderFields = headers
+request.httpBody = postData as Data
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```
+
 # Get user activity grouped by endpoint
 
 GET https://openrouter.ai/api/v1/activity
 
 Returns user activity data grouped by endpoint for the last 30 (completed) UTC days
 
-Reference: https://openrouter.ai/docs/api-reference/analytics/get-user-activity
+Reference: https://openrouter.ai/docs/api/api-reference/analytics/get-user-activity
 
 ## OpenAPI Specification
 
@@ -13374,7 +15990,7 @@ GET https://openrouter.ai/api/v1/credits
 
 Get total credits purchased and used for the authenticated user
 
-Reference: https://openrouter.ai/docs/api-reference/credits/get-credits
+Reference: https://openrouter.ai/docs/api/api-reference/credits/get-credits
 
 ## OpenAPI Specification
 
@@ -13416,9 +16032,26 @@ paths:
           content: {}
 components:
   schemas:
+    CreditsGetResponsesContentApplicationJsonSchemaData:
+      type: object
+      properties:
+        total_credits:
+          type: number
+          format: double
+        total_usage:
+          type: number
+          format: double
+      required:
+        - total_credits
+        - total_usage
     Credits_getCredits_Response_200:
       type: object
-      properties: {}
+      properties:
+        data:
+          $ref: >-
+            #/components/schemas/CreditsGetResponsesContentApplicationJsonSchemaData
+      required:
+        - data
 
 ```
 
@@ -13551,7 +16184,7 @@ Content-Type: application/json
 
 Create a Coinbase charge for crypto payment
 
-Reference: https://openrouter.ai/docs/api-reference/credits/create-coinbase-charge
+Reference: https://openrouter.ai/docs/api/api-reference/credits/create-coinbase-charge
 
 ## OpenAPI Specification
 
@@ -13885,7 +16518,7 @@ Content-Type: application/json
 
 Submits an embedding request to the embeddings router
 
-Reference: https://openrouter.ai/docs/api-reference/embeddings/create-embeddings
+Reference: https://openrouter.ai/docs/api/api-reference/embeddings/create-embeddings
 
 ## OpenAPI Specification
 
@@ -13954,6 +16587,8 @@ paths:
                 encoding_format:
                   $ref: >-
                     #/components/schemas/EmbeddingsPostRequestBodyContentApplicationJsonSchemaEncodingFormat
+                dimensions:
+                  type: integer
                 user:
                   type: string
                 provider:
@@ -14455,7 +17090,7 @@ GET https://openrouter.ai/api/v1/embeddings/models
 
 Returns a list of all available embeddings models and their properties
 
-Reference: https://openrouter.ai/docs/api-reference/embeddings/list-embeddings-models
+Reference: https://openrouter.ai/docs/api/api-reference/embeddings/list-embeddings-models
 
 ## OpenAPI Specification
 
@@ -14511,6 +17146,8 @@ components:
         request:
           $ref: '#/components/schemas/BigNumberUnion'
         image:
+          $ref: '#/components/schemas/BigNumberUnion'
+        image_token:
           $ref: '#/components/schemas/BigNumberUnion'
         image_output:
           $ref: '#/components/schemas/BigNumberUnion'
@@ -14880,7 +17517,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/generation
 
-Reference: https://openrouter.ai/docs/api-reference/generations/get-generation
+Reference: https://openrouter.ai/docs/api/api-reference/generations/get-generation
 
 ## OpenAPI Specification
 
@@ -15249,7 +17886,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/models/count
 
-Reference: https://openrouter.ai/docs/api-reference/models/list-models-count
+Reference: https://openrouter.ai/docs/api/api-reference/models/list-models-count
 
 ## OpenAPI Specification
 
@@ -15428,7 +18065,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/models
 
-Reference: https://openrouter.ai/docs/api-reference/models/get-models
+Reference: https://openrouter.ai/docs/api/api-reference/models/get-models
 
 ## OpenAPI Specification
 
@@ -15503,6 +18140,8 @@ components:
         request:
           $ref: '#/components/schemas/BigNumberUnion'
         image:
+          $ref: '#/components/schemas/BigNumberUnion'
+        image_token:
           $ref: '#/components/schemas/BigNumberUnion'
         image_output:
           $ref: '#/components/schemas/BigNumberUnion'
@@ -15872,7 +18511,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/models/user
 
-Reference: https://openrouter.ai/docs/api-reference/models/list-models-user
+Reference: https://openrouter.ai/docs/api/api-reference/models/list-models-user
 
 ## OpenAPI Specification
 
@@ -15927,6 +18566,8 @@ components:
         request:
           $ref: '#/components/schemas/BigNumberUnion'
         image:
+          $ref: '#/components/schemas/BigNumberUnion'
+        image_token:
           $ref: '#/components/schemas/BigNumberUnion'
         image_output:
           $ref: '#/components/schemas/BigNumberUnion'
@@ -16296,7 +18937,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/models/{author}/{slug}/endpoints
 
-Reference: https://openrouter.ai/docs/api-reference/endpoints/list-endpoints
+Reference: https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints
 
 ## OpenAPI Specification
 
@@ -16475,6 +19116,8 @@ components:
         request:
           $ref: '#/components/schemas/BigNumberUnion'
         image:
+          $ref: '#/components/schemas/BigNumberUnion'
+        image_token:
           $ref: '#/components/schemas/BigNumberUnion'
         image_output:
           $ref: '#/components/schemas/BigNumberUnion'
@@ -16814,7 +19457,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/endpoints/zdr
 
-Reference: https://openrouter.ai/docs/api-reference/endpoints/list-endpoints-zdr
+Reference: https://openrouter.ai/docs/api/api-reference/endpoints/list-endpoints-zdr
 
 ## OpenAPI Specification
 
@@ -16866,6 +19509,8 @@ components:
         request:
           $ref: '#/components/schemas/BigNumberUnion'
         image:
+          $ref: '#/components/schemas/BigNumberUnion'
+        image_token:
           $ref: '#/components/schemas/BigNumberUnion'
         image_output:
           $ref: '#/components/schemas/BigNumberUnion'
@@ -17182,7 +19827,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/parameters/{author}/{slug}
 
-Reference: https://openrouter.ai/docs/api-reference/parameters/get-parameters
+Reference: https://openrouter.ai/docs/api/api-reference/parameters/get-parameters
 
 ## OpenAPI Specification
 
@@ -17479,7 +20124,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/providers
 
-Reference: https://openrouter.ai/docs/api-reference/providers/list-providers
+Reference: https://openrouter.ai/docs/api/api-reference/providers/list-providers
 
 ## OpenAPI Specification
 
@@ -17676,7 +20321,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/keys
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/list
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/list
 
 ## OpenAPI Specification
 
@@ -17950,7 +20595,7 @@ dataTask.resume()
 POST https://openrouter.ai/api/v1/keys
 Content-Type: application/json
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/create-keys
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/create-keys
 
 ## OpenAPI Specification
 
@@ -18293,7 +20938,7 @@ dataTask.resume()
 
 GET https://openrouter.ai/api/v1/keys/{hash}
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/get-key
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/get-key
 
 ## OpenAPI Specification
 
@@ -18561,7 +21206,7 @@ dataTask.resume()
 
 DELETE https://openrouter.ai/api/v1/keys/{hash}
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/delete-keys
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/delete-keys
 
 ## OpenAPI Specification
 
@@ -18751,7 +21396,7 @@ dataTask.resume()
 PATCH https://openrouter.ai/api/v1/keys/{hash}
 Content-Type: application/json
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/update-keys
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/update-keys
 
 ## OpenAPI Specification
 
@@ -19097,7 +21742,7 @@ GET https://openrouter.ai/api/v1/key
 
 Get information on the API key associated with the current authentication session
 
-Reference: https://openrouter.ai/docs/api-reference/api-keys/get-current-key
+Reference: https://openrouter.ai/docs/api/api-reference/api-keys/get-current-key
 
 ## OpenAPI Specification
 
@@ -19358,525 +22003,6 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 dataTask.resume()
 ```
 
-# Exchange authorization code for API key
-
-POST https://openrouter.ai/api/v1/auth/keys
-Content-Type: application/json
-
-Exchange an authorization code from the PKCE flow for a user-controlled API key
-
-Reference: https://openrouter.ai/docs/api-reference/o-auth/exchange-auth-code-for-api-key
-
-## OpenAPI Specification
-
-```yaml
-openapi: 3.1.1
-info:
-  title: Exchange authorization code for API key
-  version: endpoint_oAuth.exchangeAuthCodeForAPIKey
-paths:
-  /auth/keys:
-    post:
-      operationId: exchange-auth-code-for-api-key
-      summary: Exchange authorization code for API key
-      description: >-
-        Exchange an authorization code from the PKCE flow for a user-controlled
-        API key
-      tags:
-        - - subpackage_oAuth
-      parameters:
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successfully exchanged code for an API key
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/OAuth_exchangeAuthCodeForAPIKey_Response_200
-        '400':
-          description: Bad Request - Invalid request parameters or malformed input
-          content: {}
-        '403':
-          description: Forbidden - Authentication successful but insufficient permissions
-          content: {}
-        '500':
-          description: Internal Server Error - Unexpected server error
-          content: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                code:
-                  type: string
-                code_verifier:
-                  type: string
-                code_challenge_method:
-                  oneOf:
-                    - $ref: >-
-                        #/components/schemas/AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
-                    - type: 'null'
-              required:
-                - code
-components:
-  schemas:
-    AuthKeysPostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
-      type: string
-      enum:
-        - value: S256
-        - value: plain
-    OAuth_exchangeAuthCodeForAPIKey_Response_200:
-      type: object
-      properties:
-        key:
-          type: string
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - key
-        - user_id
-
-```
-
-## SDK Code Examples
-
-```python
-import requests
-
-url = "https://openrouter.ai/api/v1/auth/keys"
-
-payload = {
-    "code": "auth_code_abc123def456",
-    "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-    "code_challenge_method": "S256"
-}
-headers = {
-    "Authorization": "Bearer <token>",
-    "Content-Type": "application/json"
-}
-
-response = requests.post(url, json=payload, headers=headers)
-
-print(response.json())
-```
-
-```javascript
-const url = 'https://openrouter.ai/api/v1/auth/keys';
-const options = {
-  method: 'POST',
-  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"code":"auth_code_abc123def456","code_verifier":"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk","code_challenge_method":"S256"}'
-};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/auth/keys"
-
-	payload := strings.NewReader("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-	req.Header.Add("Content-Type", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/auth/keys")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Post.new(url)
-request["Authorization"] = 'Bearer <token>'
-request["Content-Type"] = 'application/json'
-request.body = "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys")
-  .header("Authorization", "Bearer <token>")
-  .header("Content-Type", "application/json")
-  .body("{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}")
-  .asString();
-```
-
-```php
-<?php
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys', [
-  'body' => '{
-  "code": "auth_code_abc123def456",
-  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-  "code_challenge_method": "S256"
-}',
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-    'Content-Type' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp
-var client = new RestClient("https://openrouter.ai/api/v1/auth/keys");
-var request = new RestRequest(Method.POST);
-request.AddHeader("Authorization", "Bearer <token>");
-request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"code\": \"auth_code_abc123def456\",\n  \"code_verifier\": \"dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk\",\n  \"code_challenge_method\": \"S256\"\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```swift
-import Foundation
-
-let headers = [
-  "Authorization": "Bearer <token>",
-  "Content-Type": "application/json"
-]
-let parameters = [
-  "code": "auth_code_abc123def456",
-  "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-  "code_challenge_method": "S256"
-] as [String : Any]
-
-let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "POST"
-request.allHTTPHeaderFields = headers
-request.httpBody = postData as Data
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
-
-# Create authorization code
-
-POST https://openrouter.ai/api/v1/auth/keys/code
-Content-Type: application/json
-
-Create an authorization code for the PKCE flow to generate a user-controlled API key
-
-Reference: https://openrouter.ai/docs/api-reference/o-auth/create-auth-keys-code
-
-## OpenAPI Specification
-
-```yaml
-openapi: 3.1.1
-info:
-  title: Create authorization code
-  version: endpoint_oAuth.createAuthKeysCode
-paths:
-  /auth/keys/code:
-    post:
-      operationId: create-auth-keys-code
-      summary: Create authorization code
-      description: >-
-        Create an authorization code for the PKCE flow to generate a
-        user-controlled API key
-      tags:
-        - - subpackage_oAuth
-      parameters:
-        - name: Authorization
-          in: header
-          description: API key as bearer token in Authorization header
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successfully created authorization code
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OAuth_createAuthKeysCode_Response_200'
-        '400':
-          description: Bad Request - Invalid request parameters or malformed input
-          content: {}
-        '401':
-          description: Unauthorized - Authentication required or invalid credentials
-          content: {}
-        '500':
-          description: Internal Server Error - Unexpected server error
-          content: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                callback_url:
-                  type: string
-                  format: uri
-                code_challenge:
-                  type: string
-                code_challenge_method:
-                  $ref: >-
-                    #/components/schemas/AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod
-                limit:
-                  type: number
-                  format: double
-                expires_at:
-                  type:
-                    - string
-                    - 'null'
-                  format: date-time
-              required:
-                - callback_url
-components:
-  schemas:
-    AuthKeysCodePostRequestBodyContentApplicationJsonSchemaCodeChallengeMethod:
-      type: string
-      enum:
-        - value: S256
-        - value: plain
-    AuthKeysCodePostResponsesContentApplicationJsonSchemaData:
-      type: object
-      properties:
-        id:
-          type: string
-        app_id:
-          type: number
-          format: double
-        created_at:
-          type: string
-      required:
-        - id
-        - app_id
-        - created_at
-    OAuth_createAuthKeysCode_Response_200:
-      type: object
-      properties:
-        data:
-          $ref: >-
-            #/components/schemas/AuthKeysCodePostResponsesContentApplicationJsonSchemaData
-      required:
-        - data
-
-```
-
-## SDK Code Examples
-
-```python
-import requests
-
-url = "https://openrouter.ai/api/v1/auth/keys/code"
-
-payload = {
-    "callback_url": "https://myapp.com/auth/callback",
-    "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-    "code_challenge_method": "S256",
-    "limit": 100
-}
-headers = {
-    "Authorization": "Bearer <token>",
-    "Content-Type": "application/json"
-}
-
-response = requests.post(url, json=payload, headers=headers)
-
-print(response.json())
-```
-
-```javascript
-const url = 'https://openrouter.ai/api/v1/auth/keys/code';
-const options = {
-  method: 'POST',
-  headers: {Authorization: 'Bearer <token>', 'Content-Type': 'application/json'},
-  body: '{"callback_url":"https://myapp.com/auth/callback","code_challenge":"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM","code_challenge_method":"S256","limit":100}'
-};
-
-try {
-  const response = await fetch(url, options);
-  const data = await response.json();
-  console.log(data);
-} catch (error) {
-  console.error(error);
-}
-```
-
-```go
-package main
-
-import (
-	"fmt"
-	"strings"
-	"net/http"
-	"io"
-)
-
-func main() {
-
-	url := "https://openrouter.ai/api/v1/auth/keys/code"
-
-	payload := strings.NewReader("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
-
-	req, _ := http.NewRequest("POST", url, payload)
-
-	req.Header.Add("Authorization", "Bearer <token>")
-	req.Header.Add("Content-Type", "application/json")
-
-	res, _ := http.DefaultClient.Do(req)
-
-	defer res.Body.Close()
-	body, _ := io.ReadAll(res.Body)
-
-	fmt.Println(res)
-	fmt.Println(string(body))
-
-}
-```
-
-```ruby
-require 'uri'
-require 'net/http'
-
-url = URI("https://openrouter.ai/api/v1/auth/keys/code")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Post.new(url)
-request["Authorization"] = 'Bearer <token>'
-request["Content-Type"] = 'application/json'
-request.body = "{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}"
-
-response = http.request(request)
-puts response.read_body
-```
-
-```java
-HttpResponse<String> response = Unirest.post("https://openrouter.ai/api/v1/auth/keys/code")
-  .header("Authorization", "Bearer <token>")
-  .header("Content-Type", "application/json")
-  .body("{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}")
-  .asString();
-```
-
-```php
-<?php
-
-$client = new \GuzzleHttp\Client();
-
-$response = $client->request('POST', 'https://openrouter.ai/api/v1/auth/keys/code', [
-  'body' => '{
-  "callback_url": "https://myapp.com/auth/callback",
-  "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-  "code_challenge_method": "S256",
-  "limit": 100
-}',
-  'headers' => [
-    'Authorization' => 'Bearer <token>',
-    'Content-Type' => 'application/json',
-  ],
-]);
-
-echo $response->getBody();
-```
-
-```csharp
-var client = new RestClient("https://openrouter.ai/api/v1/auth/keys/code");
-var request = new RestRequest(Method.POST);
-request.AddHeader("Authorization", "Bearer <token>");
-request.AddHeader("Content-Type", "application/json");
-request.AddParameter("application/json", "{\n  \"callback_url\": \"https://myapp.com/auth/callback\",\n  \"code_challenge\": \"E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM\",\n  \"code_challenge_method\": \"S256\",\n  \"limit\": 100\n}", ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-```
-
-```swift
-import Foundation
-
-let headers = [
-  "Authorization": "Bearer <token>",
-  "Content-Type": "application/json"
-]
-let parameters = [
-  "callback_url": "https://myapp.com/auth/callback",
-  "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-  "code_challenge_method": "S256",
-  "limit": 100
-] as [String : Any]
-
-let postData = JSONSerialization.data(withJSONObject: parameters, options: [])
-
-let request = NSMutableURLRequest(url: NSURL(string: "https://openrouter.ai/api/v1/auth/keys/code")! as URL,
-                                        cachePolicy: .useProtocolCachePolicy,
-                                    timeoutInterval: 10.0)
-request.httpMethod = "POST"
-request.allHTTPHeaderFields = headers
-request.httpBody = postData as Data
-
-let session = URLSession.shared
-let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-  if (error != nil) {
-    print(error as Any)
-  } else {
-    let httpResponse = response as? HTTPURLResponse
-    print(httpResponse)
-  }
-})
-
-dataTask.resume()
-```
-
 # Create a chat completion
 
 POST https://openrouter.ai/api/v1/chat/completions
@@ -19884,7 +22010,7 @@ Content-Type: application/json
 
 Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
 
-Reference: https://openrouter.ai/docs/api-reference/chat/send-chat-completion-request
+Reference: https://openrouter.ai/docs/api/api-reference/chat/send-chat-completion-request
 
 ## OpenAPI Specification
 
@@ -19937,6 +22063,23 @@ paths:
               $ref: '#/components/schemas/ChatGenerationParams'
 components:
   schemas:
+    ChatMessageContentItemCacheControlTtl:
+      type: string
+      enum:
+        - value: 5m
+        - value: 1h
+    ChatMessageContentItemCacheControl:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - type: stringLiteral
+              value: ephemeral
+        ttl:
+          $ref: '#/components/schemas/ChatMessageContentItemCacheControlTtl'
+      required:
+        - type
     ChatMessageContentItemText:
       type: object
       properties:
@@ -19948,6 +22091,8 @@ components:
               value: text
         text:
           type: string
+        cache_control:
+          $ref: '#/components/schemas/ChatMessageContentItemCacheControl'
       required:
         - type
         - text
@@ -20059,6 +22204,8 @@ components:
                 - *ref_0
             text:
               type: string
+            cache_control:
+              $ref: '#/components/schemas/ChatMessageContentItemCacheControl'
           required:
             - type
             - text
@@ -20882,7 +23029,7 @@ Content-Type: application/json
 
 Creates a completion for the provided prompt and parameters. Supports both streaming and non-streaming modes.
 
-Reference: https://openrouter.ai/docs/api-reference/completions/create-completions
+Reference: https://openrouter.ai/docs/api/api-reference/completions/create-completions
 
 ## OpenAPI Specification
 
@@ -21187,6 +23334,12 @@ components:
             - type: 'null'
         finish_reason:
           $ref: '#/components/schemas/CompletionFinishReason'
+        native_finish_reason:
+          type: string
+        reasoning:
+          type:
+            - string
+            - 'null'
       required:
         - text
         - index
@@ -21222,6 +23375,8 @@ components:
           type: number
           format: double
         model:
+          type: string
+        provider:
           type: string
         system_fingerprint:
           type: string
@@ -21390,1552 +23545,6 @@ let dataTask = session.dataTask(with: request as URLRequest, completionHandler: 
 
 dataTask.resume()
 ```
-
-# Python SDK
-
-> Complete guide to using the OpenRouter Python SDK. Learn how to integrate AI models into your Python applications.
-
-The OpenRouter Python SDK is a type-safe toolkit for building AI applications with access to 300+ language models through a unified API.
-
-## Why use the OpenRouter SDK?
-
-Integrating AI models into applications involves handling different provider APIs, managing model-specific requirements, and avoiding common implementation mistakes. The OpenRouter SDK standardizes these integrations and protects you from footguns.
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY")
-) as client:
-    response = client.chat.send(
-        model="minimax/minimax-m2",
-        messages=[
-            {"role": "user", "content": "Explain quantum computing"}
-        ]
-    )
-```
-
-The SDK provides three core benefits:
-
-### Auto-generated from API specifications
-
-The SDK is automatically generated from OpenRouter's OpenAPI specs and updated with every API change. New models, parameters, and features appear in your IDE autocomplete immediately. No manual updates. No version drift.
-
-```python
-# When new models launch, they're available instantly
-response = client.chat.send(
-    model="minimax/minimax-m2"
-)
-```
-
-### Type-safe by default
-
-Every parameter, response field, and configuration option is fully typed with Python type hints and validated with Pydantic. Invalid configurations are caught at runtime with clear error messages.
-
-```python
-response = client.chat.send(
-    model="minimax/minimax-m2",
-    messages=[
-        {"role": "user", "content": "Hello"}
-        # ← Pydantic validates message structure
-    ],
-    temperature=0.7,  # ← Type-checked and validated
-    stream=True       # ← Response type changes based on this
-)
-```
-
-**Actionable error messages:**
-
-```python
-# Instead of generic errors, get specific guidance:
-# "Model 'openai/o1-preview' requires at least 2 messages.
-#  You provided 1 message. Add a system or user message."
-```
-
-**Type-safe streaming:**
-
-```python
-stream = client.chat.send(
-    model="minimax/minimax-m2",
-    messages=[{"role": "user", "content": "Write a story"}],
-    stream=True
-)
-
-for event in stream:
-    # Full type information for streaming responses
-    content = event.choices[0].delta.content if event.choices else None
-```
-
-**Async support:**
-
-```python
-import asyncio
-
-async def main():
-    async with OpenRouter(
-        api_key=os.getenv("OPENROUTER_API_KEY")
-    ) as client:
-        response = await client.chat.send_async(
-            model="minimax/minimax-m2",
-            messages=[{"role": "user", "content": "Hello"}]
-        )
-        print(response.choices[0].message.content)
-
-asyncio.run(main())
-```
-
-## Installation
-
-```bash
-# Using uv (recommended)
-uv add openrouter
-
-# Using pip
-pip install openrouter
-
-# Using poetry
-poetry add openrouter
-```
-
-**Requirements:** Python 3.9 or higher
-
-Get your API key from [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
-
-## Quick start
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY")
-) as client:
-    response = client.chat.send(
-        model="minimax/minimax-m2",
-        messages=[
-            {"role": "user", "content": "Hello!"}
-        ]
-    )
-
-    print(response.choices[0].message.content)
-```
-
-
-# Analytics - Python SDK
-
-> Analytics method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*analytics*)
-
-## Overview
-
-Analytics and usage endpoints
-
-### Available Operations
-
-* [get\_user\_activity](#get_user_activity) - Get user activity grouped by endpoint
-
-## get\_user\_activity
-
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getUserActivity" method="get" path="/activity" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.analytics.get_user_activity(date_="2025-08-24")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                          | Example    |
-| --------- | ------------------------------------------------------------------ | -------------------- | -------------------------------------------------------------------- | ---------- |
-| `date_`   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format). | 2025-08-24 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.  |            |
-
-### Response
-
-**[operations.GetUserActivityResponse](/docs/sdks/python/operations/getuseractivityresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.ForbiddenResponseError      | 403         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# APIKeys - Python SDK
-
-> APIKeys method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*api\_keys*)
-
-## Overview
-
-API key management endpoints
-
-### Available Operations
-
-* [list](#list) - List API keys
-* [create](#create) - Create a new API key
-* [update](#update) - Update an API key
-* [delete](#delete) - Delete an API key
-* [get](#get) - Get a single API key
-* [get\_current\_key\_metadata](#get_current_key_metadata) - Get current API key
-
-## list
-
-List API keys
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="list" method="get" path="/keys" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.list(include_disabled="false", offset="0")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter          | Type                                                               | Required             | Description                                                         | Example |
-| ------------------ | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------- |
-| `include_disabled` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                | false   |
-| `offset`           | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of API keys to skip for pagination                           | 0       |
-| `retries`          | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |         |
-
-### Response
-
-**[operations.ListResponse](/docs/sdks/python/operations/listresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## create
-
-Create a new API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createKeys" method="post" path="/keys" */}
-
-```python
-from openrouter import OpenRouter
-from openrouter.utils import parse_datetime
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.create(name="My New API Key", limit=50, limit_reset="monthly", include_byok_in_limit=True, expires_at=parse_datetime("2027-12-31T23:59:59Z"))
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter               | Type                                                                                            | Required             | Description                                                                                                                                                           | Example              |
-| ----------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
-| `name`                  | *str*                                                                                           | :heavy\_check\_mark: | Name for the new API key                                                                                                                                              | My New API Key       |
-| `limit`                 | *OptionalNullable\[float]*                                                                      | :heavy\_minus\_sign: | Optional spending limit for the API key in USD                                                                                                                        | 50                   |
-| `limit_reset`           | [OptionalNullable\[operations.CreateKeysLimitReset\]](../../operations/createkeyslimitreset.md) | :heavy\_minus\_sign: | Type of limit reset for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | monthly              |
-| `include_byok_in_limit` | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                            | true                 |
-| `expires_at`            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                            | :heavy\_minus\_sign: | Optional ISO 8601 UTC timestamp when the API key should expire. Must be UTC, other timezones will be rejected                                                         | 2027-12-31T23:59:59Z |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                   |                      |
-
-### Response
-
-**[operations.CreateKeysResponse](/docs/sdks/python/operations/createkeysresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## update
-
-Update an API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.update(hash="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", name="Updated API Key Name", disabled=False, limit=75, limit_reset="daily", include_byok_in_limit=True)
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter               | Type                                                                                            | Required             | Description                                                                                                                                                            | Example                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `hash`                  | *str*                                                                                           | :heavy\_check\_mark: | The hash identifier of the API key to update                                                                                                                           | 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 |
-| `name`                  | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | New name for the API key                                                                                                                                               | Updated API Key Name                                                      |
-| `disabled`              | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to disable the API key                                                                                                                                         | false                                                                     |
-| `limit`                 | *OptionalNullable\[float]*                                                                      | :heavy\_minus\_sign: | New spending limit for the API key in USD                                                                                                                              | 75                                                                        |
-| `limit_reset`           | [OptionalNullable\[operations.UpdateKeysLimitReset\]](../../operations/updatekeyslimitreset.md) | :heavy\_minus\_sign: | New limit reset type for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | daily                                                                     |
-| `include_byok_in_limit` | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                             | true                                                                      |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                    |                                                                           |
-
-### Response
-
-**[operations.UpdateKeysResponse](/docs/sdks/python/operations/updatekeysresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## delete
-
-Delete an API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="deleteKeys" method="delete" path="/keys/{hash}" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.delete(hash="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")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         | Example                                                                   |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `hash`    | *str*                                                              | :heavy\_check\_mark: | The hash identifier of the API key to delete                        | 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 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |                                                                           |
-
-### Response
-
-**[operations.DeleteKeysResponse](/docs/sdks/python/operations/deletekeysresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## get
-
-Get a single API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getKey" method="get" path="/keys/{hash}" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.get(hash="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")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         | Example                                                                   |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `hash`    | *str*                                                              | :heavy\_check\_mark: | The hash identifier of the API key to retrieve                      | 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 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |                                                                           |
-
-### Response
-
-**[operations.GetKeyResponse](/docs/sdks/python/operations/getkeyresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-## get\_current\_key\_metadata
-
-Get information on the API key associated with the current authentication session
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getCurrentKey" method="get" path="/key" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.api_keys.get_current_key_metadata()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.GetCurrentKeyResponse](/docs/sdks/python/operations/getcurrentkeyresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Chat - Python SDK
-
-> Chat method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*chat*)
-
-## Overview
-
-### Available Operations
-
-* [send](#send) - Create a chat completion
-
-## send
-
-Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="sendChatCompletionRequest" method="post" path="/chat/completions" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.chat.send(messages=[], stream=False)
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-
-```
-
-### Parameters
-
-| Parameter               | Type                                                                                                                          | Required             | Description                                                         |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `messages`              | List\[[components.Message](/docs/sdks/python/components/message)]                                                             | :heavy\_check\_mark: | N/A                                                                 |
-| `model`                 | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
-| `models`                | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `frequency_penalty`     | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `logit_bias`            | Dict\[str, *float*]                                                                                                           | :heavy\_minus\_sign: | N/A                                                                 |
-| `logprobs`              | *OptionalNullable\[bool]*                                                                                                     | :heavy\_minus\_sign: | N/A                                                                 |
-| `top_logprobs`          | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `max_completion_tokens` | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `max_tokens`            | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `metadata`              | Dict\[str, *str*]                                                                                                             | :heavy\_minus\_sign: | N/A                                                                 |
-| `presence_penalty`      | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `reasoning`             | [Optional\[components.Reasoning\]](../../components/reasoning.md)                                                             | :heavy\_minus\_sign: | N/A                                                                 |
-| `response_format`       | [Optional\[components.ChatGenerationParamsResponseFormatUnion\]](../../components/chatgenerationparamsresponseformatunion.md) | :heavy\_minus\_sign: | N/A                                                                 |
-| `seed`                  | *OptionalNullable\[int]*                                                                                                      | :heavy\_minus\_sign: | N/A                                                                 |
-| `stop`                  | [OptionalNullable\[components.ChatGenerationParamsStop\]](../../components/chatgenerationparamsstop.md)                       | :heavy\_minus\_sign: | N/A                                                                 |
-| `stream`                | *Optional\[bool]*                                                                                                             | :heavy\_minus\_sign: | N/A                                                                 |
-| `stream_options`        | [OptionalNullable\[components.ChatStreamOptions\]](../../components/chatstreamoptions.md)                                     | :heavy\_minus\_sign: | N/A                                                                 |
-| `temperature`           | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `tool_choice`           | *Optional\[Any]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
-| `tools`                 | List\[[components.ToolDefinitionJSON](/docs/sdks/python/components/tooldefinitionjson)]                                       | :heavy\_minus\_sign: | N/A                                                                 |
-| `top_p`                 | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
-| `user`                  | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                            | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.SendChatCompletionRequestResponse](/docs/sdks/python/operations/sendchatcompletionrequestresponse)**
-
-### Errors
-
-| Error Type                    | Status Code   | Content Type     |
-| ----------------------------- | ------------- | ---------------- |
-| errors.ChatError              | 400, 401, 429 | application/json |
-| errors.ChatError              | 500           | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX      | \*/\*            |
-
-
-# Completions - Python SDK
-
-> Completions method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*completions*)
-
-## Overview
-
-### Available Operations
-
-* [generate](#generate) - Create a completion
-
-## generate
-
-Creates a completion for the provided prompt and parameters. Supports both streaming and non-streaming modes.
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createCompletions" method="post" path="/completions" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.completions.generate(prompt=[], stream=False)
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter           | Type                                                                                                                                      | Required             | Description                                                         |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `prompt`            | [components.Prompt](/docs/sdks/python/components/prompt)                                                                                  | :heavy\_check\_mark: | N/A                                                                 |
-| `model`             | *Optional\[str]*                                                                                                                          | :heavy\_minus\_sign: | N/A                                                                 |
-| `models`            | List\[*str*]                                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
-| `best_of`           | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `echo`              | *OptionalNullable\[bool]*                                                                                                                 | :heavy\_minus\_sign: | N/A                                                                 |
-| `frequency_penalty` | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
-| `logit_bias`        | Dict\[str, *float*]                                                                                                                       | :heavy\_minus\_sign: | N/A                                                                 |
-| `logprobs`          | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `max_tokens`        | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `n`                 | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `presence_penalty`  | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
-| `seed`              | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `stop`              | [OptionalNullable\[components.CompletionCreateParamsStop\]](../../components/completioncreateparamsstop.md)                               | :heavy\_minus\_sign: | N/A                                                                 |
-| `stream`            | *Optional\[bool]*                                                                                                                         | :heavy\_minus\_sign: | N/A                                                                 |
-| `stream_options`    | [OptionalNullable\[components.StreamOptions\]](../../components/streamoptions.md)                                                         | :heavy\_minus\_sign: | N/A                                                                 |
-| `suffix`            | *OptionalNullable\[str]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
-| `temperature`       | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
-| `top_p`             | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
-| `user`              | *Optional\[str]*                                                                                                                          | :heavy\_minus\_sign: | N/A                                                                 |
-| `metadata`          | Dict\[str, *str*]                                                                                                                         | :heavy\_minus\_sign: | N/A                                                                 |
-| `response_format`   | [OptionalNullable\[components.CompletionCreateParamsResponseFormatUnion\]](../../components/completioncreateparamsresponseformatunion.md) | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`           | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[components.CompletionResponse](/docs/sdks/python/components/completionresponse)**
-
-### Errors
-
-| Error Type                    | Status Code   | Content Type     |
-| ----------------------------- | ------------- | ---------------- |
-| errors.ChatError              | 400, 401, 429 | application/json |
-| errors.ChatError              | 500           | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX      | \*/\*            |
-
-
-# Credits - Python SDK
-
-> Credits method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*credits*)
-
-## Overview
-
-Credit management endpoints
-
-### Available Operations
-
-* [get\_credits](#get_credits) - Get remaining credits
-* [create\_coinbase\_charge](#create_coinbase_charge) - Create a Coinbase charge for crypto payment
-
-## get\_credits
-
-Get total credits purchased and used for the authenticated user
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getCredits" method="get" path="/credits" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.credits.get_credits()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.GetCreditsResponse](/docs/sdks/python/operations/getcreditsresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.ForbiddenResponseError      | 403         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## create\_coinbase\_charge
-
-Create a Coinbase charge for crypto payment
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createCoinbaseCharge" method="post" path="/credits/coinbase" */}
-
-```python
-from openrouter import OpenRouter, operations
-import os
-
-with OpenRouter() as open_router:
-
-    res = open_router.credits.create_coinbase_charge(security=operations.CreateCoinbaseChargeSecurity(
-        bearer=os.getenv("OPENROUTER_BEARER", ""),
-    ), amount=100, sender="0x1234567890123456789012345678901234567890", chain_id=1)
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter  | Type                                                                                                 | Required             | Description                                                         |
-| ---------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `security` | [operations.CreateCoinbaseChargeSecurity](/docs/sdks/python/operations/createcoinbasechargesecurity) | :heavy\_check\_mark: | N/A                                                                 |
-| `amount`   | *float*                                                                                              | :heavy\_check\_mark: | N/A                                                                 |
-| `sender`   | *str*                                                                                                | :heavy\_check\_mark: | N/A                                                                 |
-| `chain_id` | [components.ChainID](/docs/sdks/python/components/chainid)                                           | :heavy\_check\_mark: | N/A                                                                 |
-| `retries`  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                   | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.CreateCoinbaseChargeResponse](/docs/sdks/python/operations/createcoinbasechargeresponse)**
-
-### Errors
-
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
-
-
-# Embeddings - Python SDK
-
-> Embeddings method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*embeddings*)
-
-## Overview
-
-Text embedding endpoints
-
-### Available Operations
-
-* [generate](#generate) - Submit an embedding request
-* [list\_models](#list_models) - List all embeddings models
-
-## generate
-
-Submits an embedding request to the embeddings router
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createEmbeddings" method="post" path="/embeddings" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.embeddings.generate(input="<value>", model="Taurus", provider={
-        "data_collection": "deny",
-        "zdr": True,
-        "enforce_distillable_text": True,
-        "order": [
-            "OpenAI",
-        ],
-        "only": [
-            "OpenAI",
-        ],
-        "ignore": [
-            "OpenAI",
-        ],
-        "quantizations": [
-            "fp16",
-        ],
-        "sort": "price",
-    })
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter         | Type                                                                                            | Required             | Description                                                         |
-| ----------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `input`           | [operations.Input](/docs/sdks/python/operations/input)                                          | :heavy\_check\_mark: | N/A                                                                 |
-| `model`           | *str*                                                                                           | :heavy\_check\_mark: | N/A                                                                 |
-| `provider`        | [Optional\[operations.CreateEmbeddingsProvider\]](../../operations/createembeddingsprovider.md) | :heavy\_minus\_sign: | N/A                                                                 |
-| `encoding_format` | [Optional\[operations.EncodingFormat\]](../../operations/encodingformat.md)                     | :heavy\_minus\_sign: | N/A                                                                 |
-| `user`            | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`         | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.CreateEmbeddingsResponse](/docs/sdks/python/operations/createembeddingsresponse)**
-
-### Errors
-
-| Error Type                             | Status Code | Content Type     |
-| -------------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError         | 400         | application/json |
-| errors.UnauthorizedResponseError       | 401         | application/json |
-| errors.PaymentRequiredResponseError    | 402         | application/json |
-| errors.NotFoundResponseError           | 404         | application/json |
-| errors.TooManyRequestsResponseError    | 429         | application/json |
-| errors.InternalServerResponseError     | 500         | application/json |
-| errors.BadGatewayResponseError         | 502         | application/json |
-| errors.ServiceUnavailableResponseError | 503         | application/json |
-| errors.EdgeNetworkTimeoutResponseError | 524         | application/json |
-| errors.ProviderOverloadedResponseError | 529         | application/json |
-| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
-
-## list\_models
-
-Returns a list of all available embeddings models and their properties
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEmbeddingsModels" method="get" path="/embeddings/models" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.embeddings.list_models()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[components.ModelsListResponse](/docs/sdks/python/components/modelslistresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Endpoints - Python SDK
-
-> Endpoints method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*endpoints*)
-
-## Overview
-
-Endpoint information
-
-### Available Operations
-
-* [list](#list) - List all endpoints for a model
-* [list\_zdr\_endpoints](#list_zdr_endpoints) - Preview the impact of ZDR on the available endpoints
-
-## list
-
-List all endpoints for a model
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEndpoints" method="get" path="/models/{author}/{slug}/endpoints" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.endpoints.list(author="<value>", slug="<value>")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `author`  | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
-| `slug`    | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.ListEndpointsResponse](/docs/sdks/python/operations/listendpointsresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.NotFoundResponseError       | 404         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## list\_zdr\_endpoints
-
-Preview the impact of ZDR on the available endpoints
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.endpoints.list_zdr_endpoints()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.ListEndpointsZdrResponse](/docs/sdks/python/operations/listendpointszdrresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Generations - Python SDK
-
-> Generations method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*generations*)
-
-## Overview
-
-Generation history endpoints
-
-### Available Operations
-
-* [get\_generation](#get_generation) - Get request & usage metadata for a generation
-
-## get\_generation
-
-Get request & usage metadata for a generation
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getGeneration" method="get" path="/generation" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.generations.get_generation(id="<id>")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `id`      | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.GetGenerationResponse](/docs/sdks/python/operations/getgenerationresponse)**
-
-### Errors
-
-| Error Type                             | Status Code | Content Type     |
-| -------------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError       | 401         | application/json |
-| errors.PaymentRequiredResponseError    | 402         | application/json |
-| errors.NotFoundResponseError           | 404         | application/json |
-| errors.TooManyRequestsResponseError    | 429         | application/json |
-| errors.InternalServerResponseError     | 500         | application/json |
-| errors.BadGatewayResponseError         | 502         | application/json |
-| errors.EdgeNetworkTimeoutResponseError | 524         | application/json |
-| errors.ProviderOverloadedResponseError | 529         | application/json |
-| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
-
-
-# Models - Python SDK
-
-> Models method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*models*)
-
-## Overview
-
-Model information endpoints
-
-### Available Operations
-
-* [count](#count) - Get total count of available models
-* [list](#list) - List all models and their properties
-* [list\_for\_user](#list_for_user) - List models filtered by user provider preferences
-
-## count
-
-Get total count of available models
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listModelsCount" method="get" path="/models/count" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.models.count()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[components.ModelsCountResponse](/docs/sdks/python/components/modelscountresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## list
-
-List all models and their properties
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getModels" method="get" path="/models" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.models.list()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter              | Type                                                               | Required             | Description                                                         |
-| ---------------------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `category`             | *Optional\[str]*                                                   | :heavy\_minus\_sign: | N/A                                                                 |
-| `supported_parameters` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`              | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[components.ModelsListResponse](/docs/sdks/python/components/modelslistresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## list\_for\_user
-
-List models filtered by user provider preferences
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listModelsUser" method="get" path="/models/user" */}
-
-```python
-from openrouter import OpenRouter, operations
-import os
-
-with OpenRouter() as open_router:
-
-    res = open_router.models.list_for_user(security=operations.ListModelsUserSecurity(
-        bearer=os.getenv("OPENROUTER_BEARER", ""),
-    ))
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter  | Type                                                                                     | Required             | Description                                                         |
-| ---------- | ---------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `security` | [operations.ListModelsUserSecurity](/docs/sdks/python/operations/listmodelsusersecurity) | :heavy\_check\_mark: | The security requirements to use for the request.                   |
-| `retries`  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                       | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[components.ModelsListResponse](/docs/sdks/python/components/modelslistresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# OAuth - Python SDK
-
-> OAuth method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*o\_auth*)
-
-## Overview
-
-OAuth authentication endpoints
-
-### Available Operations
-
-* [exchange\_auth\_code\_for\_api\_key](#exchange_auth_code_for_api_key) - Exchange authorization code for API key
-* [create\_auth\_code](#create_auth_code) - Create authorization code
-
-## exchange\_auth\_code\_for\_api\_key
-
-Exchange an authorization code from the PKCE flow for a user-controlled API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="exchangeAuthCodeForAPIKey" method="post" path="/auth/keys" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.o_auth.exchange_auth_code_for_api_key(code="auth_code_abc123def456", code_verifier="dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk", code_challenge_method="S256")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter               | Type                                                                                                                                            | Required             | Description                                                                | Example                                      |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | -------------------------------------------- |
-| `code`                  | *str*                                                                                                                                           | :heavy\_check\_mark: | The authorization code received from the OAuth redirect                    | auth\_code\_abc123def456                     |
-| `code_verifier`         | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The code verifier if code\_challenge was used in the authorization request | dBjftJeZ4CVP-mB92K27uhbUJU1p1r\_wW1gFWFOEjXk |
-| `code_challenge_method` | [OptionalNullable\[operations.ExchangeAuthCodeForAPIKeyCodeChallengeMethod\]](../../operations/exchangeauthcodeforapikeycodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                             | S256                                         |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.        |                                              |
-
-### Response
-
-**[operations.ExchangeAuthCodeForAPIKeyResponse](/docs/sdks/python/operations/exchangeauthcodeforapikeyresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.ForbiddenResponseError      | 403         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-## create\_auth\_code
-
-Create an authorization code for the PKCE flow to generate a user-controlled API key
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createAuthKeysCode" method="post" path="/auth/keys/code" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.o_auth.create_auth_code(callback_url="https://myapp.com/auth/callback", code_challenge="E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM", code_challenge_method="S256", limit=100)
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter               | Type                                                                                                                      | Required             | Description                                                                                                   | Example                                                            |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `callback_url`          | *str*                                                                                                                     | :heavy\_check\_mark: | The callback URL to redirect to after authorization. Note, only https URLs on ports 443 and 3000 are allowed. | [https://myapp.com/auth/callback](https://myapp.com/auth/callback) |
-| `code_challenge`        | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | PKCE code challenge for enhanced security                                                                     | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                        |
-| `code_challenge_method` | [Optional\[operations.CreateAuthKeysCodeCodeChallengeMethod\]](../../operations/createauthkeyscodecodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                | S256                                                               |
-| `limit`                 | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                    | 100                                                                |
-| `expires_at`            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                        |                                                                    |
-| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                           |                                                                    |
-
-### Response
-
-**[operations.CreateAuthKeysCodeResponse](/docs/sdks/python/operations/createauthkeyscoderesponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError     | 400         | application/json |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Parameters - Python SDK
-
-> Parameters method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*parameters*)
-
-## Overview
-
-Parameters endpoints
-
-### Available Operations
-
-* [get\_parameters](#get_parameters) - Get a model's supported parameters and data about which are most popular
-
-## get\_parameters
-
-Get a model's supported parameters and data about which are most popular
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="getParameters" method="get" path="/parameters/{author}/{slug}" */}
-
-```python
-from openrouter import OpenRouter, operations
-import os
-
-with OpenRouter() as open_router:
-
-    res = open_router.parameters.get_parameters(security=operations.GetParametersSecurity(
-        bearer=os.getenv("OPENROUTER_BEARER", ""),
-    ), author="<value>", slug="<value>")
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter  | Type                                                                                      | Required             | Description                                                         |
-| ---------- | ----------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
-| `security` | [operations.GetParametersSecurity](/docs/sdks/python/operations/getparameterssecurity)    | :heavy\_check\_mark: | N/A                                                                 |
-| `author`   | *str*                                                                                     | :heavy\_check\_mark: | N/A                                                                 |
-| `slug`     | *str*                                                                                     | :heavy\_check\_mark: | N/A                                                                 |
-| `provider` | [Optional\[operations.GetParametersProvider\]](../../operations/getparametersprovider.md) | :heavy\_minus\_sign: | N/A                                                                 |
-| `retries`  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.GetParametersResponse](/docs/sdks/python/operations/getparametersresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError   | 401         | application/json |
-| errors.NotFoundResponseError       | 404         | application/json |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Providers - Python SDK
-
-> Providers method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*providers*)
-
-## Overview
-
-Provider information endpoints
-
-### Available Operations
-
-* [list](#list) - List all providers
-
-## list
-
-List all providers
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="listProviders" method="get" path="/providers" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.providers.list()
-
-    # Handle response
-    print(res)
-
-```
-
-### Parameters
-
-| Parameter | Type                                                               | Required             | Description                                                         |
-| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
-| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
-
-### Response
-
-**[operations.ListProvidersResponse](/docs/sdks/python/operations/listprovidersresponse)**
-
-### Errors
-
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| errors.InternalServerResponseError | 500         | application/json |
-| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
-
-
-# Responses - Python SDK
-
-> Responses method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
-
-(*beta.responses*)
-
-## Overview
-
-beta.responses endpoints
-
-### Available Operations
-
-* [send](#send) - Create a response
-
-## send
-
-Creates a streaming or non-streaming response using OpenResponses API format
-
-### Example Usage
-
-{/* UsageSnippet language="python" operationID="createResponses" method="post" path="/responses" */}
-
-```python
-from openrouter import OpenRouter
-import os
-
-with OpenRouter(
-    api_key=os.getenv("OPENROUTER_API_KEY", ""),
-) as open_router:
-
-    res = open_router.beta.responses.send(input=[
-        {
-            "type": "message",
-            "role": "user",
-            "content": "Hello, how are you?",
-        },
-    ], metadata={
-        "user_id": "123",
-        "session_id": "abc-def-ghi",
-    }, tools=[
-        {
-            "type": "function",
-            "name": "get_current_weather",
-            "description": "Get the current weather in a given location",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "location": {
-                        "type": "string",
-                    },
-                },
-            },
-        },
-    ], model="anthropic/claude-4.5-sonnet-20250929", text={
-        "format_": {
-            "type": "text",
-        },
-        "verbosity": "medium",
-    }, reasoning={
-        "summary": "auto",
-        "enabled": True,
-    }, temperature=0.7, top_p=0.9, prompt={
-        "id": "<id>",
-        "variables": {
-            "key": {
-                "type": "input_text",
-                "text": "Hello, how can I help you?",
-            },
-        },
-    }, service_tier="auto", truncation="auto", stream=False, provider={
-        "data_collection": "deny",
-        "zdr": True,
-        "enforce_distillable_text": True,
-        "order": [
-            "OpenAI",
-        ],
-        "only": [
-            "OpenAI",
-        ],
-        "ignore": [
-            "OpenAI",
-        ],
-        "quantizations": None,
-        "sort": "price",
-    })
-
-    with res as event_stream:
-        for event in event_stream:
-            # handle event
-            print(event, flush=True)
-
-```
-
-### Parameters
-
-| Parameter              | Type                                                                                                            | Required             | Description                                                                                                                                                                                                                                                                                          | Example                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `input`                | [Optional\[components.OpenResponsesInput\]](../../components/openresponsesinput.md)                             | :heavy\_minus\_sign: | Input for a response request - can be a string or array of items                                                                                                                                                                                                                                     | \[<br />`{"role": "user","content": "What is the weather today?"}`<br />] |
-| `instructions`         | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `metadata`             | Dict\[str, *str*]                                                                                               | :heavy\_minus\_sign: | Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.                                                                                                                                         | `{"user_id": "123","session_id": "abc-def-ghi"}`                          |
-| `tools`                | List\[[components.OpenResponsesRequestToolUnion](/docs/sdks/python/components/openresponsesrequesttoolunion)]   | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `tool_choice`          | [Optional\[components.OpenAIResponsesToolChoiceUnion\]](../../components/openairesponsestoolchoiceunion.md)     | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `parallel_tool_calls`  | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `model`                | *Optional\[str]*                                                                                                | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `models`               | List\[*str*]                                                                                                    | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `text`                 | [Optional\[components.OpenResponsesResponseText\]](../../components/openresponsesresponsetext.md)               | :heavy\_minus\_sign: | Text output configuration including format and verbosity                                                                                                                                                                                                                                             | `{"format": {"type": "text"}`,<br />"verbosity": "medium"<br />}          |
-| `reasoning`            | [OptionalNullable\[components.OpenResponsesReasoningConfig\]](../../components/openresponsesreasoningconfig.md) | :heavy\_minus\_sign: | Configuration for reasoning mode in the response                                                                                                                                                                                                                                                     | `{"summary": "auto","enabled": true}`                                     |
-| `max_output_tokens`    | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `temperature`          | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `top_p`                | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `top_k`                | *Optional\[float]*                                                                                              | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `prompt_cache_key`     | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `previous_response_id` | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `prompt`               | [OptionalNullable\[components.OpenAIResponsesPrompt\]](../../components/openairesponsesprompt.md)               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `include`              | List\[[components.OpenAIResponsesIncludable](/docs/sdks/python/components/openairesponsesincludable)]           | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `background`           | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `safety_identifier`    | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `store`                | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `service_tier`         | [OptionalNullable\[components.ServiceTier\]](../../components/servicetier.md)                                   | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  | auto                                                                      |
-| `truncation`           | [OptionalNullable\[components.Truncation\]](../../components/truncation.md)                                     | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  | auto                                                                      |
-| `stream`               | *Optional\[bool]*                                                                                               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
-| `provider`             | [OptionalNullable\[components.Provider\]](../../components/provider.md)                                         | :heavy\_minus\_sign: | When multiple model providers are available, optionally indicate your routing preference.                                                                                                                                                                                                            |                                                                           |
-| `plugins`              | List\[[components.Plugin](/docs/sdks/python/components/plugin)]                                                 | :heavy\_minus\_sign: | Plugins you want to enable for this request, including their settings.                                                                                                                                                                                                                               |                                                                           |
-| `user`                 | *Optional\[str]*                                                                                                | :heavy\_minus\_sign: | A unique identifier representing your end-user, which helps distinguish between different users of your app. This allows your app to identify specific users in case of abuse reports, preventing your entire app from being affected by the actions of individual users. Maximum of 128 characters. |                                                                           |
-| `retries`              | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                  |                                                                           |
-
-### Response
-
-**[operations.CreateResponsesResponse](/docs/sdks/python/operations/createresponsesresponse)**
-
-### Errors
-
-| Error Type                              | Status Code | Content Type     |
-| --------------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError          | 400         | application/json |
-| errors.UnauthorizedResponseError        | 401         | application/json |
-| errors.PaymentRequiredResponseError     | 402         | application/json |
-| errors.NotFoundResponseError            | 404         | application/json |
-| errors.RequestTimeoutResponseError      | 408         | application/json |
-| errors.PayloadTooLargeResponseError     | 413         | application/json |
-| errors.UnprocessableEntityResponseError | 422         | application/json |
-| errors.TooManyRequestsResponseError     | 429         | application/json |
-| errors.InternalServerResponseError      | 500         | application/json |
-| errors.BadGatewayResponseError          | 502         | application/json |
-| errors.ServiceUnavailableResponseError  | 503         | application/json |
-| errors.EdgeNetworkTimeoutResponseError  | 524         | application/json |
-| errors.ProviderOverloadedResponseError  | 529         | application/json |
-| errors.OpenRouterDefaultError           | 4XX, 5XX    | \*/\*            |
-
 
 # TypeScript SDK
 
@@ -25755,4231 +26364,1409 @@ import {
 | errors.OpenRouterDefaultError           | 4XX, 5XX    | \*/\*            |
 
 
-# BYOK
+# Python SDK
 
-> Learn how to use your existing AI provider keys with OpenRouter. Integrate your own API keys while leveraging OpenRouter's unified interface and features.
+> Complete guide to using the OpenRouter Python SDK. Learn how to integrate AI models into your Python applications.
 
-## Bring your own API Keys
+The OpenRouter Python SDK is a type-safe toolkit for building AI applications with access to 300+ language models through a unified API.
 
-OpenRouter supports both OpenRouter credits and the option to bring your own provider keys (BYOK).
+## Why use the OpenRouter SDK?
 
-When you use OpenRouter credits, your rate limits for each provider are managed by OpenRouter.
+Integrating AI models into applications involves handling different provider APIs, managing model-specific requirements, and avoiding common implementation mistakes. The OpenRouter SDK standardizes these integrations and protects you from footguns.
 
-Using provider keys enables direct control over rate limits and costs via your provider account.
+```python
+from openrouter import OpenRouter
+import os
 
-Your provider keys are securely encrypted and used for all requests routed through the specified provider.
-
-Manage keys in your [account settings](/settings/integrations).
-
-The cost of using custom provider keys on OpenRouter is **{bn(openRouterBYOKFee.fraction).times(100).toString()}% of what the same model/provider would cost normally on OpenRouter** and will be deducted from your OpenRouter credits.
-This fee is waived for the first {toHumanNumber(BYOK_FEE_MONTHLY_REQUEST_THRESHOLD)} BYOK requests per-month.
-
-### Key Priority and Fallback
-
-OpenRouter always prioritizes using your provider keys when available. By default, if your key encounters a rate limit or failure, OpenRouter will fall back to using shared OpenRouter credits.
-
-You can configure individual keys with "Always use this key" to prevent any fallback to OpenRouter credits. When this option is enabled, OpenRouter will only use your key for requests to that provider, which may result in rate limit errors if your key is exhausted, but ensures all requests go through your account.
-
-### Azure API Keys
-
-To use Azure AI Services with OpenRouter, you'll need to provide your Azure API key configuration in JSON format. Each key configuration requires the following fields:
-
-```json
-{
-  "model_slug": "the-openrouter-model-slug",
-  "endpoint_url": "https://<resource>.services.ai.azure.com/deployments/<model-id>/chat/completions?api-version=<api-version>",
-  "api_key": "your-azure-api-key",
-  "model_id": "the-azure-model-id"
-}
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY")
+) as client:
+    response = client.chat.send(
+        model="minimax/minimax-m2",
+        messages=[
+            {"role": "user", "content": "Explain quantum computing"}
+        ]
+    )
 ```
 
-You can find these values in your Azure AI Services resource:
+The SDK provides three core benefits:
 
-1. **endpoint\_url**: Navigate to your Azure AI Services resource in the Azure portal. In the "Overview" section, you'll find your endpoint URL. Make sure to append `/chat/completions` to the base URL. You can read more in the [Azure Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/model-inference/concepts/endpoints?tabs=python).
+### Auto-generated from API specifications
 
-2. **api\_key**: In the same "Overview" section of your Azure AI Services resource, you can find your API key under "Keys and Endpoint".
+The SDK is automatically generated from OpenRouter's OpenAPI specs and updated with every API change. New models, parameters, and features appear in your IDE autocomplete immediately. No manual updates. No version drift.
 
-3. **model\_id**: This is the name of your model deployment in Azure AI Services.
-
-4. **model\_slug**: This is the OpenRouter model identifier you want to use this key for.
-
-Since Azure supports multiple model deployments, you can provide an array of configurations for different models:
-
-```json
-[
-  {
-    "model_slug": "mistralai/mistral-large",
-    "endpoint_url": "https://example-project.openai.azure.com/openai/deployments/mistral-large/chat/completions?api-version=2024-08-01-preview",
-    "api_key": "your-azure-api-key",
-    "model_id": "mistral-large"
-  },
-  {
-    "model_slug": "openai/gpt-4o",
-    "endpoint_url": "https://example-project.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-08-01-preview",
-    "api_key": "your-azure-api-key",
-    "model_id": "gpt-4o"
-  }
-]
+```python
+# When new models launch, they're available instantly
+response = client.chat.send(
+    model="minimax/minimax-m2"
+)
 ```
 
-Make sure to replace the url with your own project url. Also the url should end with /chat/completions with the api version that you would like to use.
+### Type-safe by default
 
-### AWS Bedrock API Keys
+Every parameter, response field, and configuration option is fully typed with Python type hints and validated with Pydantic. Invalid configurations are caught at runtime with clear error messages.
 
-To use Amazon Bedrock with OpenRouter, you can authenticate using either Bedrock API keys or traditional AWS credentials.
-
-#### Option 1: Bedrock API Keys (Recommended)
-
-Amazon Bedrock API keys provide a simpler authentication method. Simply provide your Bedrock API key as a string:
-
-```
-your-bedrock-api-key-here
-```
-
-**Note:** Bedrock API keys are tied to a specific AWS region and cannot be used to change regions. If you need to use models in different regions, use the AWS credentials option below.
-
-You can generate Bedrock API keys in the AWS Management Console. Learn more in the [Amazon Bedrock API keys documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html).
-
-#### Option 2: AWS Credentials
-
-Alternatively, you can use traditional AWS credentials in JSON format. This option allows you to specify the region and provides more flexibility:
-
-```json
-{
-  "accessKeyId": "your-aws-access-key-id",
-  "secretAccessKey": "your-aws-secret-access-key",
-  "region": "your-aws-region"
-}
+```python
+response = client.chat.send(
+    model="minimax/minimax-m2",
+    messages=[
+        {"role": "user", "content": "Hello"}
+        # ← Pydantic validates message structure
+    ],
+    temperature=0.7,  # ← Type-checked and validated
+    stream=True       # ← Response type changes based on this
+)
 ```
 
-You can find these values in your AWS account:
+**Actionable error messages:**
 
-1. **accessKeyId**: This is your AWS Access Key ID. You can create or find your access keys in the AWS Management Console under "Security Credentials" in your AWS account.
-
-2. **secretAccessKey**: This is your AWS Secret Access Key, which is provided when you create an access key.
-
-3. **region**: The AWS region where your Amazon Bedrock models are deployed (e.g., "us-east-1", "us-west-2").
-
-Make sure your AWS IAM user or role has the necessary permissions to access Amazon Bedrock services. At minimum, you'll need permissions for:
-
-* `bedrock:InvokeModel`
-* `bedrock:InvokeModelWithResponseStream` (for streaming responses)
-
-Example IAM policy:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "bedrock:InvokeModel",
-        "bedrock:InvokeModelWithResponseStream"
-      ],
-      "Resource": "*"
-    }
-  ]
-}
+```python
+# Instead of generic errors, get specific guidance:
+# "Model 'openai/o1-preview' requires at least 2 messages.
+#  You provided 1 message. Add a system or user message."
 ```
 
-For enhanced security, we recommend creating dedicated IAM users with limited permissions specifically for use with OpenRouter.
+**Type-safe streaming:**
 
-Learn more in the [AWS Bedrock Getting Started with the API](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started-api.html) documentation, [IAM Permissions Setup](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html) guide, or the [AWS Bedrock API Reference](https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html).
+```python
+stream = client.chat.send(
+    model="minimax/minimax-m2",
+    messages=[{"role": "user", "content": "Write a story"}],
+    stream=True
+)
 
-### Google Vertex API Keys
-
-To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region.
-
-```json
-{
-  "type": "service_account",
-  "project_id": "your-project-id",
-  "private_key_id": "your-private-key-id",
-  "private_key": "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n",
-  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
-  "client_id": "your-client-id",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account@your-project.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com",
-  "region": "global"
-}
+for event in stream:
+    # Full type information for streaming responses
+    content = event.choices[0].delta.content if event.choices else None
 ```
 
-You can find these values in your Google Cloud Console:
-
-1. **Service Account Key**: Navigate to the Google Cloud Console, go to "IAM & Admin" > "Service Accounts", select your service account, and create/download a JSON key.
-
-2. **region** (optional): Specify the region for your Vertex AI deployment. Use `"global"` to allow requests to run in any available region, or specify a specific region like `"us-central1"` or `"europe-west1"`.
-
-Make sure your service account has the necessary permissions to access Vertex AI services:
-
-* `aiplatform.endpoints.predict`
-* `aiplatform.endpoints.streamingPredict` (for streaming responses)
-
-Example IAM policy:
-
-```json
-{
-  "bindings": [
-    {
-      "role": "roles/aiplatform.user",
-      "members": [
-        "serviceAccount:your-service-account@your-project.iam.gserviceaccount.com"
-      ]
-    }
-  ]
-}
-```
-
-Learn more in the [Google Cloud Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) and [Service Account setup guide](https://cloud.google.com/iam/docs/service-accounts-create).
-
-
-# Crypto API
-
-> Learn how to purchase OpenRouter credits using cryptocurrency. Complete guide to Coinbase integration, supported chains, and automated credit purchases.
-
-You can purchase credits using cryptocurrency through our Coinbase integration. This can either happen through the UI, on your [credits page](https://openrouter.ai/settings/credits), or through our API as described below. While other forms of payment are possible, this guide specifically shows how to pay with the chain's native token.
-
-Headless credit purchases involve three steps:
-
-1. Getting the calldata for a new credit purchase
-2. Sending a transaction on-chain using that data
-3. Detecting low account balance, and purchasing more
-
-## Getting Credit Purchase Calldata
-
-Make a POST request to `/api/v1/credits/coinbase` to create a new charge. You'll include the amount of credits you want to purchase (in USD, up to \${maxCryptoDollarPurchase}), the address you'll be sending the transaction from, and the EVM chain ID of the network you'll be sending on.
-
-Currently, we only support the following chains (mainnet only):
-
-* Ethereum ({SupportedChainIDs.Ethereum})
-* Polygon ({SupportedChainIDs.Polygon})
-* Base ({SupportedChainIDs.Base}) ***recommended***
-
-```typescript
-const response = await fetch('https://openrouter.ai/api/v1/credits/coinbase', {
-  method: 'POST',
-  headers: {
-    Authorization: 'Bearer <OPENROUTER_API_KEY>',
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    amount: 10, // Target credit amount in USD
-    sender: '0x9a85CB3bfd494Ea3a8C9E50aA6a3c1a7E8BACE11',
-    chain_id: 8453,
-  }),
-});
-const responseJSON = await response.json();
-```
-
-The response includes the charge details and transaction data needed to execute the on-chain payment:
-
-```json
-{
-  "data": {
-    "id": "...",
-    "created_at": "2024-01-01T00:00:00Z",
-    "expires_at": "2024-01-01T01:00:00Z",
-    "web3_data": {
-      "transfer_intent": {
-        "metadata": {
-          "chain_id": 8453,
-          "contract_address": "0x03059433bcdb6144624cc2443159d9445c32b7a8",
-          "sender": "0x9a85CB3bfd494Ea3a8C9E50aA6a3c1a7E8BACE11"
-        },
-        "call_data": {
-          "recipient_amount": "...",
-          "deadline": "...",
-          "recipient": "...",
-          "recipient_currency": "...",
-          "refund_destination": "...",
-          "fee_amount": "...",
-          "id": "...",
-          "operator": "...",
-          "signature": "...",
-          "prefix": "..."
-        }
-      }
-    }
-  }
-}
-```
-
-## Sending the Transaction
-
-You can use [viem](https://viem.sh) (or another similar evm client) to execute the transaction on-chain.
-
-In this example, we'll be fulfilling the charge using the [swapAndTransferUniswapV3Native()](https://github.com/coinbase/commerce-onchain-payment-protocol/blob/d891289bd1f41bb95f749af537f2b6a36b17f889/contracts/interfaces/ITransfers.sol#L168-L171) function. Other methods of swapping are also available, and you can learn more by checking out Coinbase's [onchain payment protocol here](https://github.com/coinbase/commerce-onchain-payment-protocol/tree/master). Note, if you are trying to pay in a less common ERC-20, there is added complexity in needing to make sure that there is sufficient liquidity in the pool to swap the tokens.
-
-```typescript
-import { createPublicClient, createWalletClient, http, parseEther } from 'viem';
-import { privateKeyToAccount } from 'viem/accounts';
-import { base } from 'viem/chains';
-
-// The ABI for Coinbase's onchain payment protocol
-const abi = [
-  {
-    inputs: [
-      {
-        internalType: 'contract IUniversalRouter',
-        name: '_uniswap',
-        type: 'address',
-      },
-      { internalType: 'contract Permit2', name: '_permit2', type: 'address' },
-      { internalType: 'address', name: '_initialOperator', type: 'address' },
-      {
-        internalType: 'address',
-        name: '_initialFeeDestination',
-        type: 'address',
-      },
-      {
-        internalType: 'contract IWrappedNativeCurrency',
-        name: '_wrappedNativeCurrency',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'nonpayable',
-    type: 'constructor',
-  },
-  { inputs: [], name: 'AlreadyProcessed', type: 'error' },
-  { inputs: [], name: 'ExpiredIntent', type: 'error' },
-  {
-    inputs: [
-      { internalType: 'address', name: 'attemptedCurrency', type: 'address' },
-    ],
-    name: 'IncorrectCurrency',
-    type: 'error',
-  },
-  { inputs: [], name: 'InexactTransfer', type: 'error' },
-  {
-    inputs: [{ internalType: 'uint256', name: 'difference', type: 'uint256' }],
-    name: 'InsufficientAllowance',
-    type: 'error',
-  },
-  {
-    inputs: [{ internalType: 'uint256', name: 'difference', type: 'uint256' }],
-    name: 'InsufficientBalance',
-    type: 'error',
-  },
-  {
-    inputs: [{ internalType: 'int256', name: 'difference', type: 'int256' }],
-    name: 'InvalidNativeAmount',
-    type: 'error',
-  },
-  { inputs: [], name: 'InvalidSignature', type: 'error' },
-  { inputs: [], name: 'InvalidTransferDetails', type: 'error' },
-  {
-    inputs: [
-      { internalType: 'address', name: 'recipient', type: 'address' },
-      { internalType: 'uint256', name: 'amount', type: 'uint256' },
-      { internalType: 'bool', name: 'isRefund', type: 'bool' },
-      { internalType: 'bytes', name: 'data', type: 'bytes' },
-    ],
-    name: 'NativeTransferFailed',
-    type: 'error',
-  },
-  { inputs: [], name: 'NullRecipient', type: 'error' },
-  { inputs: [], name: 'OperatorNotRegistered', type: 'error' },
-  { inputs: [], name: 'PermitCallFailed', type: 'error' },
-  {
-    inputs: [{ internalType: 'bytes', name: 'reason', type: 'bytes' }],
-    name: 'SwapFailedBytes',
-    type: 'error',
-  },
-  {
-    inputs: [{ internalType: 'string', name: 'reason', type: 'string' }],
-    name: 'SwapFailedString',
-    type: 'error',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'operator',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'feeDestination',
-        type: 'address',
-      },
-    ],
-    name: 'OperatorRegistered',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'operator',
-        type: 'address',
-      },
-    ],
-    name: 'OperatorUnregistered',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'previousOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
-    ],
-    name: 'OwnershipTransferred',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
-    ],
-    name: 'Paused',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'operator',
-        type: 'address',
-      },
-      { indexed: false, internalType: 'bytes16', name: 'id', type: 'bytes16' },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'recipient',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'sender',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'spentAmount',
-        type: 'uint256',
-      },
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'spentCurrency',
-        type: 'address',
-      },
-    ],
-    name: 'Transferred',
-    type: 'event',
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
-    ],
-    name: 'Unpaused',
-    type: 'event',
-  },
-  {
-    inputs: [],
-    name: 'owner',
-    outputs: [{ internalType: 'address', name: '', type: 'address' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'pause',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'paused',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'permit2',
-    outputs: [{ internalType: 'contract Permit2', name: '', type: 'address' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'registerOperator',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_feeDestination', type: 'address' },
-    ],
-    name: 'registerOperatorWithFeeDestination',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'renounceOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [{ internalType: 'address', name: 'newSweeper', type: 'address' }],
-    name: 'setSweeper',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      {
-        components: [
-          { internalType: 'address', name: 'owner', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-        ],
-        internalType: 'struct EIP2612SignatureTransferData',
-        name: '_signatureTransferData',
-        type: 'tuple',
-      },
-    ],
-    name: 'subsidizedTransferToken',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      { internalType: 'uint24', name: 'poolFeesTier', type: 'uint24' },
-    ],
-    name: 'swapAndTransferUniswapV3Native',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      {
-        components: [
-          {
-            components: [
-              {
-                components: [
-                  { internalType: 'address', name: 'token', type: 'address' },
-                  { internalType: 'uint256', name: 'amount', type: 'uint256' },
-                ],
-                internalType: 'struct ISignatureTransfer.TokenPermissions',
-                name: 'permitted',
-                type: 'tuple',
-              },
-              { internalType: 'uint256', name: 'nonce', type: 'uint256' },
-              { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-            ],
-            internalType: 'struct ISignatureTransfer.PermitTransferFrom',
-            name: 'permit',
-            type: 'tuple',
-          },
-          {
-            components: [
-              { internalType: 'address', name: 'to', type: 'address' },
-              {
-                internalType: 'uint256',
-                name: 'requestedAmount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct ISignatureTransfer.SignatureTransferDetails',
-            name: 'transferDetails',
-            type: 'tuple',
-          },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-        ],
-        internalType: 'struct Permit2SignatureTransferData',
-        name: '_signatureTransferData',
-        type: 'tuple',
-      },
-      { internalType: 'uint24', name: 'poolFeesTier', type: 'uint24' },
-    ],
-    name: 'swapAndTransferUniswapV3Token',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      { internalType: 'address', name: '_tokenIn', type: 'address' },
-      { internalType: 'uint256', name: 'maxWillingToPay', type: 'uint256' },
-      { internalType: 'uint24', name: 'poolFeesTier', type: 'uint24' },
-    ],
-    name: 'swapAndTransferUniswapV3TokenPreApproved',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address payable', name: 'destination', type: 'address' },
-    ],
-    name: 'sweepETH',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address payable', name: 'destination', type: 'address' },
-      { internalType: 'uint256', name: 'amount', type: 'uint256' },
-    ],
-    name: 'sweepETHAmount',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_token', type: 'address' },
-      { internalType: 'address', name: 'destination', type: 'address' },
-    ],
-    name: 'sweepToken',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_token', type: 'address' },
-      { internalType: 'address', name: 'destination', type: 'address' },
-      { internalType: 'uint256', name: 'amount', type: 'uint256' },
-    ],
-    name: 'sweepTokenAmount',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'sweeper',
-    outputs: [{ internalType: 'address', name: '', type: 'address' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-    ],
-    name: 'transferNative',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-  },
-  {
-    inputs: [{ internalType: 'address', name: 'newOwner', type: 'address' }],
-    name: 'transferOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      {
-        components: [
-          {
-            components: [
-              {
-                components: [
-                  { internalType: 'address', name: 'token', type: 'address' },
-                  { internalType: 'uint256', name: 'amount', type: 'uint256' },
-                ],
-                internalType: 'struct ISignatureTransfer.TokenPermissions',
-                name: 'permitted',
-                type: 'tuple',
-              },
-              { internalType: 'uint256', name: 'nonce', type: 'uint256' },
-              { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-            ],
-            internalType: 'struct ISignatureTransfer.PermitTransferFrom',
-            name: 'permit',
-            type: 'tuple',
-          },
-          {
-            components: [
-              { internalType: 'address', name: 'to', type: 'address' },
-              {
-                internalType: 'uint256',
-                name: 'requestedAmount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct ISignatureTransfer.SignatureTransferDetails',
-            name: 'transferDetails',
-            type: 'tuple',
-          },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-        ],
-        internalType: 'struct Permit2SignatureTransferData',
-        name: '_signatureTransferData',
-        type: 'tuple',
-      },
-    ],
-    name: 'transferToken',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-    ],
-    name: 'transferTokenPreApproved',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'unpause',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'unregisterOperator',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-      {
-        components: [
-          {
-            components: [
-              {
-                components: [
-                  { internalType: 'address', name: 'token', type: 'address' },
-                  { internalType: 'uint256', name: 'amount', type: 'uint256' },
-                ],
-                internalType: 'struct ISignatureTransfer.TokenPermissions',
-                name: 'permitted',
-                type: 'tuple',
-              },
-              { internalType: 'uint256', name: 'nonce', type: 'uint256' },
-              { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-            ],
-            internalType: 'struct ISignatureTransfer.PermitTransferFrom',
-            name: 'permit',
-            type: 'tuple',
-          },
-          {
-            components: [
-              { internalType: 'address', name: 'to', type: 'address' },
-              {
-                internalType: 'uint256',
-                name: 'requestedAmount',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct ISignatureTransfer.SignatureTransferDetails',
-            name: 'transferDetails',
-            type: 'tuple',
-          },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-        ],
-        internalType: 'struct Permit2SignatureTransferData',
-        name: '_signatureTransferData',
-        type: 'tuple',
-      },
-    ],
-    name: 'unwrapAndTransfer',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-    ],
-    name: 'unwrapAndTransferPreApproved',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        components: [
-          { internalType: 'uint256', name: 'recipientAmount', type: 'uint256' },
-          { internalType: 'uint256', name: 'deadline', type: 'uint256' },
-          {
-            internalType: 'address payable',
-            name: 'recipient',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'recipientCurrency',
-            type: 'address',
-          },
-          {
-            internalType: 'address',
-            name: 'refundDestination',
-            type: 'address',
-          },
-          { internalType: 'uint256', name: 'feeAmount', type: 'uint256' },
-          { internalType: 'bytes16', name: 'id', type: 'bytes16' },
-          { internalType: 'address', name: 'operator', type: 'address' },
-          { internalType: 'bytes', name: 'signature', type: 'bytes' },
-          { internalType: 'bytes', name: 'prefix', type: 'bytes' },
-        ],
-        internalType: 'struct TransferIntent',
-        name: '_intent',
-        type: 'tuple',
-      },
-    ],
-    name: 'wrapAndTransfer',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-  },
-  { stateMutability: 'payable', type: 'receive' },
-];
-
-// Set up viem clients
-const publicClient = createPublicClient({
-  chain: base,
-  transport: http(),
-});
-const account = privateKeyToAccount('0x...');
-const walletClient = createWalletClient({
-  chain: base,
-  transport: http(),
-  account,
-});
-
-// Use the calldata included in the charge response
-const { contract_address } =
-  responseJSON.data.web3_data.transfer_intent.metadata;
-const call_data = responseJSON.data.web3_data.transfer_intent.call_data;
-
-// When transacting in ETH, a pool fees tier of 500 (the lowest) is very
-// likely to be sufficient. However, if you plan to swap with a different
-// contract method, using less-common ERC-20 tokens, it is recommended to
-// call that chain's Uniswap QuoterV2 contract to check its liquidity.
-// Depending on the results, choose the lowest fee tier which has enough
-// liquidity in the pool.
-const poolFeesTier = 500;
-
-// Simulate the transaction first to prevent most common revert reasons
-const { request } = await publicClient.simulateContract({
-  abi,
-  account,
-  address: contract_address,
-  functionName: 'swapAndTransferUniswapV3Native',
-  args: [
-    {
-      recipientAmount: BigInt(call_data.recipient_amount),
-      deadline: BigInt(
-        Math.floor(new Date(call_data.deadline).getTime() / 1000),
-      ),
-      recipient: call_data.recipient,
-      recipientCurrency: call_data.recipient_currency,
-      refundDestination: call_data.refund_destination,
-      feeAmount: BigInt(call_data.fee_amount),
-      id: call_data.id,
-      operator: call_data.operator,
-      signature: call_data.signature,
-      prefix: call_data.prefix,
-    },
-    poolFeesTier,
-  ],
-  // Transaction value in ETH. You'll want to include a little extra to
-  // ensure the transaction & swap is successful. All excess funds return
-  // back to your sender address afterwards.
-  value: parseEther('0.004'),
-});
-
-// Send the transaction on chain
-const txHash = await walletClient.writeContract(request);
-console.log('Transaction hash:', txHash);
-```
-
-Once the transaction succeeds on chain, we'll add credits to your account. You can track the transaction status using the returned transaction hash.
-
-Credit purchases lower than \$500 will be immediately credited once the transaction is on chain. Above \$500, there is a \~15 minute confirmation delay, ensuring the chain does not re-org your purchase.
-
-## Detecting Low Balance
-
-While it is possible to simply run down the balance until your app starts receiving 402 error codes for insufficient credits, this gap in service while topping up might not be desirable.
-
-To avoid this, you can periodically call the `GET /api/v1/credits` endpoint to check your available credits.
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: '<OPENROUTER_API_KEY>',
-  });
-
-  const credits = await openRouter.credits.get();
-  console.log('Available credits:', credits.totalCredits - credits.totalUsage);
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  const response = await fetch('https://openrouter.ai/api/v1/credits', {
-    method: 'GET',
-    headers: { Authorization: 'Bearer <OPENROUTER_API_KEY>' },
-  });
-  const { data } = await response.json();
-  ```
-</CodeGroup>
-
-The response includes your total credits purchased and usage, where your current balance is the difference between the two:
-
-```json
-{
-  "data": {
-    "total_credits": 50.0,
-    "total_usage": 42.0
-  }
-}
-```
-
-Note that these values are cached, and may be up to 60 seconds stale.
-
-
-# OAuth PKCE
-
-> Implement secure user authentication with OpenRouter using OAuth PKCE. Complete guide to setting up and managing OAuth authentication flows.
-
-Users can connect to OpenRouter in one click using [Proof Key for Code Exchange (PKCE)](https://oauth.net/2/pkce/).
-
-Here's a step-by-step guide:
-
-## PKCE Guide
-
-### Step 1: Send your user to OpenRouter
-
-To start the PKCE flow, send your user to OpenRouter's `/auth` URL with a `callback_url` parameter pointing back to your site:
-
-<CodeGroup>
-  ```txt title="With S256 Code Challenge (Recommended)" wordWrap
-  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256
-  ```
-
-  ```txt title="With Plain Code Challenge" wordWrap
-  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>&code_challenge=<CODE_CHALLENGE>&code_challenge_method=plain
-  ```
-
-  ```txt title="Without Code Challenge" wordWrap
-  https://openrouter.ai/auth?callback_url=<YOUR_SITE_URL>
-  ```
-</CodeGroup>
-
-The `code_challenge` parameter is optional but recommended.
-
-Your user will be prompted to log in to OpenRouter and authorize your app. After authorization, they will be redirected back to your site with a `code` parameter in the URL:
-
-![Alt text](file:01011d67-295c-4b6f-8df6-217baa0874b9)
-
-<Tip title="Use SHA-256 for Maximum Security">
-  For maximum security, set `code_challenge_method` to `S256`, and set `code_challenge` to the base64 encoding of the sha256 hash of `code_verifier`.
-
-  For more info, [visit Auth0's docs](https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#parameters).
-</Tip>
-
-#### How to Generate a Code Challenge
-
-The following example leverages the Web Crypto API and the Buffer API to generate a code challenge for the S256 method. You will need a bundler to use the Buffer API in the web browser:
-
-<CodeGroup>
-  ```typescript title="Generate Code Challenge"
-  import { Buffer } from 'buffer';
-
-  async function createSHA256CodeChallenge(input: string) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(input);
-    const hash = await crypto.subtle.digest('SHA-256', data);
-    return Buffer.from(hash).toString('base64url');
-  }
-
-  const codeVerifier = 'your-random-string';
-  const generatedCodeChallenge = await createSHA256CodeChallenge(codeVerifier);
-  ```
-</CodeGroup>
-
-#### Localhost Apps
-
-If your app is a local-first app or otherwise doesn't have a public URL, it is recommended to test with `http://localhost:3000` as the callback and referrer URLs.
-
-When moving to production, replace the localhost/private referrer URL with a public GitHub repo or a link to your project website.
-
-### Step 2: Exchange the code for a user-controlled API key
-
-After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:
-
-![Alt text](file:80699040-995b-4ba6-930c-75ab2edb4c38)
-
-Extract this code using the browser API:
-
-<CodeGroup>
-  ```typescript title="Extract Code"
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  ```
-</CodeGroup>
-
-Then use it to make an API call to `https://openrouter.ai/api/v1/auth/keys` to exchange the code for a user-controlled API key:
-
-<CodeGroup>
-  ```typescript title="Exchange Code"
-  const response = await fetch('https://openrouter.ai/api/v1/auth/keys', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      code: '<CODE_FROM_QUERY_PARAM>',
-      code_verifier: '<CODE_VERIFIER>', // If code_challenge was used
-      code_challenge_method: '<CODE_CHALLENGE_METHOD>', // If code_challenge was used
-    }),
-  });
-
-  const { key } = await response.json();
-  ```
-</CodeGroup>
-
-And that's it for the PKCE flow!
-
-### Step 3: Use the API key
-
-Store the API key securely within the user's browser or in your own database, and use it to [make OpenRouter requests](/api-reference/completion).
-
-<CodeGroup>
-  ```typescript title="TypeScript SDK"
-  import { OpenRouter } from '@openrouter/sdk';
-
-  const openRouter = new OpenRouter({
-    apiKey: key, // The key from Step 2
-  });
-
-  const completion = await openRouter.chat.send({
-    model: 'openai/gpt-4o',
-    messages: [
-      {
-        role: 'user',
-        content: 'Hello!',
-      },
-    ],
-    stream: false,
-  });
-
-  console.log(completion.choices[0].message);
-  ```
-
-  ```typescript title="TypeScript (fetch)"
-  fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${key}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'openai/gpt-4o',
-      messages: [
-        {
-          role: 'user',
-          content: 'Hello!',
-        },
-      ],
-    }),
-  });
-  ```
-</CodeGroup>
-
-## Error Codes
-
-* `400 Invalid code_challenge_method`: Make sure you're using the same code challenge method in step 1 as in step 2.
-* `403 Invalid code or code_verifier`: Make sure your user is logged in to OpenRouter, and that `code_verifier` and `code_challenge_method` are correct.
-* `405 Method Not Allowed`: Make sure you're using `POST` and `HTTPS` for your request.
-
-## External Tools
-
-* [PKCE Tools](https://example-app.com/pkce)
-* [Online PKCE Generator](https://tonyxu-io.github.io/pkce-generator/)
-
-
-# Using MCP Servers with OpenRouter
-
-> Learn how to use MCP Servers with OpenRouter
-
-MCP servers are a popular way of providing LLMs with tool calling abilities, and are an alternative to using OpenAI-compatible tool calling.
-
-By converting MCP (Anthropic) tool definitions to OpenAI-compatible tool definitions, you can use MCP servers with OpenRouter.
-
-In this example, we'll use [Anthropic's MCP client SDK](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients) to interact with the File System MCP, all with OpenRouter under the hood.
-
-<Warning>
-  Note that interacting with MCP servers is more complex than calling a REST
-  endpoint. The MCP protocol is stateful and requires session management. The
-  example below uses the MCP client SDK, but is still somewhat complex.
-</Warning>
-
-First, some setup. In order to run this you will need to pip install the packages, and create a `.env` file with OPENAI\_API\_KEY set. This example also assumes the directory `/Applications` exists.
+**Async support:**
 
 ```python
 import asyncio
-from typing import Optional
-from contextlib import AsyncExitStack
-
-from mcp import ClientSession, StdioServerParameters
-from mcp.client.stdio import stdio_client
-
-from openai import OpenAI
-from dotenv import load_dotenv
-import json
-
-load_dotenv()  # load environment variables from .env
-
-MODEL = "anthropic/claude-3-7-sonnet"
-
-SERVER_CONFIG = {
-    "command": "npx",
-    "args": ["-y",
-              "@modelcontextprotocol/server-filesystem",
-              f"/Applications/"],
-    "env": None
-}
-```
-
-Next, our helper function to convert MCP tool definitions to OpenAI tool definitions:
-
-```python
-
-def convert_tool_format(tool):
-    converted_tool = {
-        "type": "function",
-        "function": {
-            "name": tool.name,
-            "description": tool.description,
-            "parameters": {
-                "type": "object",
-                "properties": tool.inputSchema["properties"],
-                "required": tool.inputSchema["required"]
-            }
-        }
-    }
-    return converted_tool
-
-```
-
-And, the MCP client itself; a regrettable \~100 lines of code. Note that the SERVER\_CONFIG is hard-coded into the client, but of course could be parameterized for other MCP servers.
-
-```python
-class MCPClient:
-    def __init__(self):
-        self.session: Optional[ClientSession] = None
-        self.exit_stack = AsyncExitStack()
-        self.openai = OpenAI(
-            base_url="https://openrouter.ai/api/v1"
-        )
-
-    async def connect_to_server(self, server_config):
-        server_params = StdioServerParameters(**server_config)
-        stdio_transport = await self.exit_stack.enter_async_context(stdio_client(server_params))
-        self.stdio, self.write = stdio_transport
-        self.session = await self.exit_stack.enter_async_context(ClientSession(self.stdio, self.write))
-
-        await self.session.initialize()
-
-        # List available tools from the MCP server
-        response = await self.session.list_tools()
-        print("\nConnected to server with tools:", [tool.name for tool in response.tools])
-
-        self.messages = []
-
-    async def process_query(self, query: str) -> str:
-
-        self.messages.append({
-            "role": "user",
-            "content": query
-        })
-
-        response = await self.session.list_tools()
-        available_tools = [convert_tool_format(tool) for tool in response.tools]
-
-        response = self.openai.chat.completions.create(
-            model=MODEL,
-            tools=available_tools,
-            messages=self.messages
-        )
-        self.messages.append(response.choices[0].message.model_dump())
-
-        final_text = []
-        content = response.choices[0].message
-        if content.tool_calls is not None:
-            tool_name = content.tool_calls[0].function.name
-            tool_args = content.tool_calls[0].function.arguments
-            tool_args = json.loads(tool_args) if tool_args else {}
-
-            # Execute tool call
-            try:
-                result = await self.session.call_tool(tool_name, tool_args)
-                final_text.append(f"[Calling tool {tool_name} with args {tool_args}]")
-            except Exception as e:
-                print(f"Error calling tool {tool_name}: {e}")
-                result = None
-
-            self.messages.append({
-                "role": "tool",
-                "tool_call_id": content.tool_calls[0].id,
-                "name": tool_name,
-                "content": result.content
-            })
-
-            response = self.openai.chat.completions.create(
-                model=MODEL,
-                max_tokens=1000,
-                messages=self.messages,
-            )
-
-            final_text.append(response.choices[0].message.content)
-        else:
-            final_text.append(content.content)
-
-        return "\n".join(final_text)
-
-    async def chat_loop(self):
-        """Run an interactive chat loop"""
-        print("\nMCP Client Started!")
-        print("Type your queries or 'quit' to exit.")
-
-        while True:
-            try:
-                query = input("\nQuery: ").strip()
-                result = await self.process_query(query)
-                print("Result:")
-                print(result)
-
-            except Exception as e:
-                print(f"Error: {str(e)}")
-
-    async def cleanup(self):
-        await self.exit_stack.aclose()
 
 async def main():
-    client = MCPClient()
-    try:
-        await client.connect_to_server(SERVER_CONFIG)
-        await client.chat_loop()
-    finally:
-        await client.cleanup()
+    async with OpenRouter(
+        api_key=os.getenv("OPENROUTER_API_KEY")
+    ) as client:
+        response = await client.chat.send_async(
+            model="minimax/minimax-m2",
+            messages=[{"role": "user", "content": "Hello"}]
+        )
+        print(response.choices[0].message.content)
 
-if __name__ == "__main__":
-    import sys
-    asyncio.run(main())
+asyncio.run(main())
 ```
 
-Assembling all of the above code into mcp-client.py, you get a client that behaves as follows (some outputs truncated for brevity):
+## Installation
 
 ```bash
-% python mcp-client.py
+# Using uv (recommended)
+uv add openrouter
 
-Secure MCP Filesystem Server running on stdio
-Allowed directories: [ '/Applications' ]
+# Using pip
+pip install openrouter
 
-Connected to server with tools: ['read_file', 'read_multiple_files', 'write_file'...]
-
-MCP Client Started!
-Type your queries or 'quit' to exit.
-
-Query: Do I have microsoft office installed?
-
-Result:
-[Calling tool list_allowed_directories with args {}]
-I can check if Microsoft Office is installed in the Applications folder:
-
-Query: continue
-
-Result:
-[Calling tool search_files with args {'path': '/Applications', 'pattern': 'Microsoft'}]
-Now let me check specifically for Microsoft Office applications:
-
-Query: continue
-
-Result:
-I can see from the search results that Microsoft Office is indeed installed on your system.
-The search found the following main Microsoft Office applications:
-
-1. Microsoft Excel - /Applications/Microsoft Excel.app
-2. Microsoft PowerPoint - /Applications/Microsoft PowerPoint.app
-3. Microsoft Word - /Applications/Microsoft Word.app
-4. OneDrive - /Applications/OneDrive.app (which includes Microsoft SharePoint integration)
+# Using poetry
+poetry add openrouter
 ```
 
+**Requirements:** Python 3.9 or higher
 
-# Organization Management
+Get your API key from [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
 
-> Learn how to create and manage organizations on OpenRouter for team collaboration, shared credits, and centralized API management.
+## Quick start
 
-OpenRouter organizations enable teams and companies to collaborate effectively by sharing credits, managing API keys centrally, and tracking usage across all team members. Organizations are ideal for companies that want to pool resources, manage inference costs centrally, and maintain oversight of AI usage across their team.
+```python
+from openrouter import OpenRouter
+import os
 
-## Getting Started with Organizations
-
-### Creating an Organization
-
-To create an organization:
-
-1. Navigate to [Settings > Preferences](https://openrouter.ai/settings/preferences)
-2. In the Organization section, click **Create Organization**
-3. Follow the setup process to configure your organization details
-4. Invite team members to join your organization
-
-<Tip>
-  You must have a verified email address to create an organization.
-</Tip>
-
-### Switching Between Personal and Organization Accounts
-
-Once you're part of an organization, you can easily switch between your personal account and organization context:
-
-* Use the **organization switcher** at the top of the web application
-* When in organization mode, all actions (API usage, credit purchases, key management) are performed on behalf of the organization
-* When in personal mode, you're working with your individual account resources
-
-## Credit Management
-
-### Shared Credit Pool
-
-Organizations maintain a shared credit pool that offers several advantages:
-
-* **Centralized Billing**: All credits purchased in the organization account can be used by any organization member
-* **Simplified Accounting**: Track all AI inference costs in one place
-* **Budget Control**: Administrators can manage spending and monitor usage across the entire team
-
-### Admin-Only Credit Management
-
-Only organization administrators can:
-
-* Purchase credits for the organization
-* View detailed billing information
-* Manage payment methods and invoicing settings
-
-<Warning>
-  Regular organization members cannot purchase credits or access billing information. Contact your organization administrator for credit-related requests.
-</Warning>
-
-### Transferring Credits from Personal to Organization
-
-If you need to transfer credits from your personal account to your organization account:
-
-1. Email [support@openrouter.ai](mailto:support@openrouter.ai) with your request
-2. Include your organization details and the amount you wish to transfer
-3. Our support team will process the transfer manually
-
-<Info>
-  Credit transfers from personal to organization accounts require manual processing by our support team and cannot be done automatically through the interface.
-</Info>
-
-## API Key Management
-
-Organizations provide flexible API key management with role-based permissions:
-
-### Member Permissions
-
-* **Create API Keys**: All organization members can create API keys
-* **View Own Keys**: Members can only view and manage API keys they created
-* **Use Organization Keys**: Keys created by any organization member can be used by all members
-* **Shared Usage**: API usage from any organization key is billed to the organization's credit pool
-
-### Administrator Permissions
-
-* **View All Keys**: Administrators can view all API keys created within the organization
-* **Manage All Keys**: Full access to edit, disable, or delete any organization API key
-* **Monitor Usage**: Access to detailed usage analytics for all organization keys
-
-<Tip>
-  When creating API keys within an organization, consider using descriptive names that indicate the key's purpose or the team member responsible for it.
-</Tip>
-
-## Activity and Usage Tracking
-
-### Organization-Wide Activity Feed
-
-When viewing your activity feed while in organization context, you'll see:
-
-* **All Member Activity**: Usage data from all organization members appears in the activity feed
-* **Metadata Only**: Activity shows model usage, costs, and request metadata
-* **Key Filtering**: Activity can be filtered by a specific API key to view usage for that key only
-
-<Warning>
-  **Known Limitation**: The activity feed currently shows all organization member activity when in organization context, not just your individual activity. Usage metadata (model used, cost, timing) is visible to all organization members.
-</Warning>
-
-### Usage Analytics
-
-Organizations benefit from comprehensive usage analytics:
-
-* Track spending across all team members
-* Monitor model usage patterns
-* Identify cost optimization opportunities
-* Generate reports for budget planning
-
-## Administrative Controls
-
-### Admin-Only Settings
-
-Organization administrators have exclusive access to:
-
-* **Provider Settings**: Configure preferred model providers and routing preferences
-* **Privacy Settings**: Manage data retention and privacy policies for the organization
-* **Member Management**: Add, remove, and manage member roles
-* **Billing Configuration**: Set up invoicing, payment methods, and billing contacts
-
-### Member Role Management
-
-Organizations support role-based access control:
-
-* **Admin**: Full access to all organization features and settings
-* **Member**: Access to create keys, use organization resources, and view own activity
-
-## Use Cases and Benefits
-
-### For Development Teams
-
-* **Shared Resources**: Pool credits across multiple developers and projects
-* **Centralized Management**: Manage all API keys and usage from a single dashboard
-* **Cost Tracking**: Monitor spending per project or team member
-* **Simplified Onboarding**: New team members can immediately access organization resources
-
-### For Companies
-
-* **Budget Control**: Administrators control spending and resource allocation
-* **Compliance**: Centralized logging and usage tracking for audit purposes
-* **Scalability**: Easy to add new team members and projects
-* **Cost Optimization**: Identify usage patterns and optimize model selection
-
-### For Research Organizations
-
-* **Resource Sharing**: Share expensive model access across research teams
-* **Usage Monitoring**: Track research spending and resource utilization
-* **Collaboration**: Enable seamless collaboration on AI projects
-* **Reporting**: Generate usage reports for grant applications and budget planning
-
-## Frequently Asked Questions
-
-<AccordionGroup>
-  <Accordion title="Can I convert my personal account to an organization?">
-    No, organizations are separate entities. You'll need to create a new organization and transfer resources as needed. Contact [support@openrouter.ai](mailto:support@openrouter.ai) for assistance with credit transfers.
-  </Accordion>
-
-  <Accordion title="How many members can an organization have?">
-    An organization can only have 10 members. Contact support if you need more.
-  </Accordion>
-
-  <Accordion title="Can organization members see each other's usage data?">
-    Organization members can see usage metadata (model used, cost, timing) for all organization activity in the activity feed. OpenRouter does not store prompts or responses.
-  </Accordion>
-
-  <Accordion title="What happens if I leave an organization?">
-    When you leave an organization, you lose access to organization resources, credits, and API keys. Your personal account remains unaffected.
-  </Accordion>
-
-  <Accordion title="Can I be a member of multiple organizations?">
-    Yes, you can be a member of multiple organizations and switch between them using the organization switcher.
-  </Accordion>
-</AccordionGroup>
-
-## Getting Help
-
-If you need assistance with organization management:
-
-* **General Questions**: Check our [FAQ](/docs/faq) for common questions
-* **Technical Support**: Email [support@openrouter.ai](mailto:support@openrouter.ai)
-* **Credit Transfers**: Email [support@openrouter.ai](mailto:support@openrouter.ai) with transfer requests
-* **Enterprise Sales**: Contact our sales team for large organization needs
-
-Organizations make it easy to collaborate on AI projects while maintaining control over costs and resources. Get started by creating your organization today!
-
-
-# Provider Integration
-
-> Learn how to integrate your AI models with OpenRouter. Complete guide for providers to make their models available through OpenRouter's unified API.
-
-## For Providers
-
-If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/how-to-list) to get started.
-
-To be eligible to provide inference on OpenRouter you must have the following:
-
-### 1. List Models Endpoint
-
-You must implement an endpoint that returns all models that should be served by OpenRouter. At this endpoint, please return a list of all available models on your platform. Below is an example of the response format:
-
-```json
-{
-  "data": [
-    {
-      // Required
-      "id": "anthropic/claude-sonnet-4",
-      "hugging_face_id": "", // required if the model is on Hugging Face
-      "name": "Anthropic: Claude Sonnet 4",
-      "created": 1690502400,
-      "input_modalities": ["text", "image", "file"],
-      "output_modalities": ["text", "image", "file"],
-      "quantization": "fp8",
-      "context_length": 1000000,
-      "max_output_length": 128000,
-      "pricing": {
-        "prompt": "0.000008", // pricing per 1 token
-        "completion": "0.000024", // pricing per 1 token
-        "image": "0", // pricing per 1 image
-        "request": "0", // pricing per 1 request
-        "input_cache_reads": "0", // pricing per 1 token
-        "input_cache_writes": "0" // pricing per 1 token
-      },
-      "supported_sampling_parameters": ["temperature", "stop"],
-      "supported_features": [
-        "tools",
-        "json_mode",
-        "structured_outputs",
-        "web_search",
-        "reasoning"
-      ],
-      // Optional
-      "description": "Anthropic's flagship model...",
-      "openrouter": {
-        "slug": "anthropic/claude-sonnet-4"
-      },
-      "datacenters": [
-        {
-          "country_code": "US" // `Iso3166Alpha2Code`
-        }
-      ]
-    }
-  ]
-}
-```
-
-NOTE: `pricing` fields are in string format to avoid floating point precision issues, and must be in USD.
-
-Valid quantization values are: `int4`, `int8`, `fp4`, `fp6`, `fp8`, `fp16`, `bf16`, `fp32`.
-
-Valid sampling parameters are: `temperature`, `top_p`, `top_k`, `repetition_penalty`, `frequency_penalty`, `presence_penalty`, `stop`, `seed`.
-
-Valid features are: `tools`, `json_mode`, `structured_outputs`, `web_search`, `reasoning`.
-
-### 2. Auto Top Up or Invoicing
-
-For OpenRouter to use the provider we must be able to pay for inference automatically. This can be done via auto top up or invoicing.
-
-### 3. Uptime Monitoring & Traffic Routing
-
-OpenRouter automatically monitors provider reliability and adjusts traffic routing based on uptime metrics. Your endpoint's uptime is calculated as: **successful requests ÷ total requests** (excluding user errors).
-
-**Errors that affect your uptime:**
-
-* Authentication issues (401)
-* Payment failures (402)
-* Model not found (404)
-* All server errors (500+)
-* Mid-stream errors
-* Successful requests with error finish reasons
-
-**Errors that DON'T affect uptime:**
-
-* Bad requests (400) - user input errors
-* Oversized payloads (413) - user input errors
-* Rate limiting (429) - tracked separately
-* Geographic restrictions (403) - tracked separately
-
-**Traffic routing thresholds:**
-
-* **Minimum data**: 100+ requests required before uptime calculation begins
-* **Normal routing**: 95%+ uptime
-* **Degraded status**: 80-94% uptime → receives lower priority
-* **Down status**: \<80% uptime → only used as fallback
-
-This system ensures traffic automatically flows to the most reliable providers while giving temporary issues time to resolve.
-
-
-# Reasoning Tokens
-
-> Learn how to use reasoning tokens to enhance AI model outputs. Implement step-by-step reasoning traces for better decision making and transparency.
-
-For models that support it, the OpenRouter API can return **Reasoning Tokens**, also known as thinking tokens. OpenRouter normalizes the different ways of customizing the amount of reasoning tokens that the model will use, providing a unified interface across different providers.
-
-Reasoning tokens provide a transparent look into the reasoning steps taken by a model. Reasoning tokens are considered output tokens and charged accordingly.
-
-Reasoning tokens are included in the response by default if the model decides to output them. Reasoning tokens will appear in the `reasoning` field of each message, unless you decide to exclude them.
-
-<Note title="Some reasoning models do not return their reasoning tokens">
-  While most models and providers make reasoning tokens available in the
-  response, some (like the OpenAI o-series and Gemini Flash Thinking) do not.
-</Note>
-
-## Controlling Reasoning Tokens
-
-You can control reasoning tokens in your requests using the `reasoning` parameter:
-
-```json
-{
-  "model": "your-model",
-  "messages": [],
-  "reasoning": {
-    // One of the following (not both):
-    "effort": "high", // Can be "high", "medium", "low", "minimal" or "none" (OpenAI-style)
-    "max_tokens": 2000, // Specific token limit (Anthropic-style)
-
-    // Optional: Default is false. All models support this.
-    "exclude": false, // Set to true to exclude reasoning tokens from response
-
-    // Or enable reasoning with the default parameters:
-    "enabled": true // Default: inferred from `effort` or `max_tokens`
-  }
-}
-```
-
-The `reasoning` config object consolidates settings for controlling reasoning strength across different models. See the Note for each option below to see which models are supported and how other models will behave.
-
-### Max Tokens for Reasoning
-
-<Note title="Supported models">
-  Currently supported by:
-
-  <ul>
-    <li>
-      Gemini thinking models
-    </li>
-
-    <li>
-      Anthropic reasoning models (by using the <code>reasoning.max\_tokens</code>{' '}
-      parameter)
-    </li>
-
-    <li>
-      Some Alibaba Qwen thinking models (mapped to 
-
-      <code>thinking_budget</code>
-
-      )
-    </li>
-  </ul>
-
-  For Alibaba, support varies by model — please check the individual model descriptions to confirm
-  whether <code>reasoning.max\_tokens</code> (via <code>thinking\_budget</code>) is available.
-</Note>
-
-For models that support reasoning token allocation, you can control it like this:
-
-* `"max_tokens": 2000` - Directly specifies the maximum number of tokens to use for reasoning
-
-For models that only support `reasoning.effort` (see below), the `max_tokens` value will be used to determine the effort level.
-
-### Reasoning Effort Level
-
-<Note title="Supported models">
-  Currently supported by OpenAI reasoning models (o1 series, o3 series, GPT-5 series) and Grok models
-</Note>
-
-* `"effort": "high"` - Allocates a large portion of tokens for reasoning (approximately 80% of max\_tokens)
-* `"effort": "medium"` - Allocates a moderate portion of tokens (approximately 50% of max\_tokens)
-* `"effort": "low"` - Allocates a smaller portion of tokens (approximately 20% of max\_tokens)
-* `"effort": "minimal"` - Allocates an even smaller portion of tokens (approximately 10% of max\_tokens)
-* `"effort": "none"` - Disables reasoning entirely
-
-For models that only support `reasoning.max_tokens`, the effort level will be set based on the percentages above.
-
-### Excluding Reasoning Tokens
-
-If you want the model to use reasoning internally but not include it in the response:
-
-* `"exclude": true` - The model will still use reasoning, but it won't be returned in the response
-
-Reasoning tokens will appear in the `reasoning` field of each message.
-
-### Enable Reasoning with Default Config
-
-To enable reasoning with the default parameters:
-
-* `"enabled": true` - Enables reasoning at the "medium" effort level with no exclusions.
-
-## Legacy Parameters
-
-For backward compatibility, OpenRouter still supports the following legacy parameters:
-
-* `include_reasoning: true` - Equivalent to `reasoning: {}`
-* `include_reasoning: false` - Equivalent to `reasoning: { exclude: true }`
-
-However, we recommend using the new unified `reasoning` parameter for better control and future compatibility.
-
-## Examples
-
-### Basic Usage with Reasoning Tokens
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "openai/o3-mini"
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: "How would you build the world's tallest skyscraper?",
-        },
-      ],
-      reasoning: {
-        effort: 'high',
-      },
-      stream: false,
-    });
-
-    console.log('REASONING:', response.choices[0].message.reasoning);
-    console.log('CONTENT:', response.choices[0].message.content);
-    ```
-
-    ```python title="Python (OpenAI SDK)"
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY")
+) as client:
+    response = client.chat.send(
+        model="minimax/minimax-m2",
         messages=[
-            {"role": "user", "content": "How would you build the world's tallest skyscraper?"}
-        ],
-        extra_body={
-            "reasoning": {
-                "effort": "high"
-            }
-        },
-    )
-
-    msg = response.choices[0].message
-    print(getattr(msg, "reasoning", None))
-    ```
-
-    ```typescript title="TypeScript (OpenAI SDK)"
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function getResponseWithReasoning() {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: "How would you build the world's tallest skyscraper?",
-          },
-        ],
-        reasoning: {
-          effort: 'high',
-        },
-      });
-
-      type ORChatMessage = (typeof response)['choices'][number]['message'] & {
-        reasoning?: string;
-        reasoning_details?: unknown;
-      };
-
-      const msg = response.choices[0].message as ORChatMessage;
-      console.log('REASONING:', msg.reasoning);
-      console.log('CONTENT:', msg.content);
-    }
-
-    getResponseWithReasoning();
-    ```
-  </CodeGroup>
-</Template>
-
-### Using Max Tokens for Reasoning
-
-For models that support direct token allocation (like Anthropic models), you can specify the exact number of tokens to use for reasoning:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "anthropic/claude-3.7-sonnet"
-}}
->
-  <CodeGroup>
-    ```python Python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=[
-            {"role": "user", "content": "What's the most efficient algorithm for sorting a large dataset?"}
-        ],
-        extra_body={
-            "reasoning": {
-                "max_tokens": 2000
-            }
-        },
-    )
-
-    msg = response.choices[0].message
-    print(getattr(msg, "reasoning", None))
-    print(getattr(msg, "content", None))
-    ```
-
-    ```typescript TypeScript
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function getResponseWithReasoning() {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: "How would you build the world's tallest skyscraper?",
-          },
-        ],
-        reasoning: {
-          max_tokens: 2000,
-        },
-      });
-
-      type ORChatMessage = (typeof response)['choices'][number]['message'] & {
-        reasoning?: string;
-      };
-      const msg = response.choices[0].message as ORChatMessage;
-
-      console.log('REASONING:', msg.reasoning);
-      console.log('CONTENT:', msg.content);
-    }
-
-    getResponseWithReasoning();
-    ```
-  </CodeGroup>
-</Template>
-
-### Excluding Reasoning Tokens from Response
-
-If you want the model to use reasoning internally but not include it in the response:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "deepseek/deepseek-r1"
-}}
->
-  <CodeGroup>
-    ```python Python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=[
-            {"role": "user", "content": "Explain quantum computing in simple terms."}
-        ],
-        extra_body={
-            "reasoning": {
-                "effort": "high",
-                "exclude": True
-            }
-        },
-    )
-
-    msg = response.choices[0].message
-    print(getattr(msg, "content", None))
-    ```
-
-    ```typescript TypeScript
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function getResponseWithReasoning() {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: "How would you build the world's tallest skyscraper?",
-          },
-        ],
-        reasoning: {
-          effort: 'high',
-          exclude: true,
-        },
-      });
-
-      const msg = response.choices[0].message as {
-        content?: string | null;
-      };
-      console.log('CONTENT:', msg.content);
-    }
-
-    getResponseWithReasoning();
-    ```
-  </CodeGroup>
-</Template>
-
-### Advanced Usage: Reasoning Chain-of-Thought
-
-This example shows how to use reasoning tokens in a more complex workflow. It injects one model's reasoning into another model to improve its response quality:
-
-<Template
-  data={{
-  API_KEY_REF,
-}}
->
-  <CodeGroup>
-    ```python Python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    question = "Which is bigger: 9.11 or 9.9?"
-
-    def do_req(model: str, content: str, reasoning_config: dict | None = None):
-        payload = {
-            "model": model,
-            "messages": [{"role": "user", "content": content}],
-            "stop": "</think>",
-        }
-        if reasoning_config:
-            payload.update(reasoning_config)
-        return client.chat.completions.create(**payload)
-
-    # Get reasoning from a capable model
-    content = f"{question} Please think this through, but don't output an answer"
-    reasoning_response = do_req("deepseek/deepseek-r1", content)
-    reasoning = getattr(reasoning_response.choices[0].message, "reasoning", "")
-
-    # Let's test! Here's the naive response:
-    simple_response = do_req("openai/gpt-4o-mini", question)
-    print(getattr(simple_response.choices[0].message, "content", None))
-
-    # Here's the response with the reasoning token injected:
-    content = f"{question}. Here is some context to help you: {reasoning}"
-    smart_response = do_req("openai/gpt-4o-mini", content)
-    print(getattr(smart_response.choices[0].message, "content", None))
-    ```
-
-    ```typescript TypeScript
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function doReq(model, content, reasoningConfig) {
-      const payload = {
-        model,
-        messages: [{ role: 'user', content }],
-        stop: '</think>',
-        ...reasoningConfig,
-      };
-
-      return openai.chat.completions.create(payload);
-    }
-
-    async function getResponseWithReasoning() {
-      const question = 'Which is bigger: 9.11 or 9.9?';
-      const reasoningResponse = await doReq(
-        'deepseek/deepseek-r1',
-        `${question} Please think this through, but don't output an answer`,
-      );
-      const reasoning = reasoningResponse.choices[0].message.reasoning;
-
-      // Let's test! Here's the naive response:
-      const simpleResponse = await doReq('openai/gpt-4o-mini', question);
-      console.log(simpleResponse.choices[0].message.content);
-
-      // Here's the response with the reasoning token injected:
-      const content = `${question}. Here is some context to help you: ${reasoning}`;
-      const smartResponse = await doReq('openai/gpt-4o-mini', content);
-      console.log(smartResponse.choices[0].message.content);
-    }
-
-    getResponseWithReasoning();
-    ```
-  </CodeGroup>
-</Template>
-
-## Provider-Specific Reasoning Implementation
-
-### Anthropic Models with Reasoning Tokens
-
-The latest Claude models, such as [anthropic/claude-3.7-sonnet](https://openrouter.ai/anthropic/claude-3.7-sonnet), support working with and returning reasoning tokens.
-
-You can enable reasoning on Anthropic models **only** using the unified `reasoning` parameter with either `effort` or `max_tokens`.
-
-**Note:** The `:thinking` variant is no longer supported for Anthropic models. Use the `reasoning` parameter instead.
-
-#### Reasoning Max Tokens for Anthropic Models
-
-When using Anthropic models with reasoning:
-
-* When using the `reasoning.max_tokens` parameter, that value is used directly with a minimum of 1024 tokens.
-* When using the `reasoning.effort` parameter, the budget\_tokens are calculated based on the `max_tokens` value.
-
-The reasoning token allocation is capped at 32,000 tokens maximum and 1024 tokens minimum. The formula for calculating the budget\_tokens is: `budget_tokens = max(min(max_tokens * {effort_ratio}, 32000), 1024)`
-
-effort\_ratio is 0.8 for high effort, 0.5 for medium effort, 0.2 for low effort, and 0.1 for minimal effort.
-
-**Important**: `max_tokens` must be strictly higher than the reasoning budget to ensure there are tokens available for the final response after thinking.
-
-<Note title="Token Usage and Billing">
-  Please note that reasoning tokens are counted as output tokens for billing
-  purposes. Using reasoning tokens will increase your token usage but can
-  significantly improve the quality of model responses.
-</Note>
-
-### Examples with Anthropic Models
-
-#### Example 1: Streaming mode with reasoning tokens
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "anthropic/claude-3.7-sonnet"
-}}
->
-  <CodeGroup>
-    ```python Python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    def chat_completion_with_reasoning(messages):
-        response = client.chat.completions.create(
-            model="{{MODEL}}",
-            messages=messages,
-            max_tokens=10000,
-            extra_body={
-                "reasoning": {
-                    "max_tokens": 8000
-                }
-            },
-            stream=True
-        )
-        return response
-
-    for chunk in chat_completion_with_reasoning([
-        {"role": "user", "content": "What's bigger, 9.9 or 9.11?"}
-    ]):
-        if hasattr(chunk.choices[0].delta, 'reasoning_details') and chunk.choices[0].delta.reasoning_details:
-            print(f"REASONING_DETAILS: {chunk.choices[0].delta.reasoning_details}")
-        elif getattr(chunk.choices[0].delta, 'content', None):
-            print(f"CONTENT: {chunk.choices[0].delta.content}")
-    ```
-
-    ```typescript TypeScript
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function chatCompletionWithReasoning(messages) {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages,
-        max_tokens: 10000,
-        reasoning: {
-          max_tokens: 8000,
-        },
-        stream: true,
-      });
-
-      return response;
-    }
-
-    (async () => {
-      for await (const chunk of chatCompletionWithReasoning([
-        { role: 'user', content: "What's bigger, 9.9 or 9.11?" },
-      ])) {
-        if (chunk.choices[0].delta?.reasoning_details) {
-          console.log(`REASONING_DETAILS:`, chunk.choices[0].delta.reasoning_details);
-        } else if (chunk.choices[0].delta?.content) {
-          console.log(`CONTENT: ${chunk.choices[0].delta.content}`);
-        }
-      }
-    })();
-    ```
-  </CodeGroup>
-</Template>
-
-## Preserving Reasoning Blocks
-
-<Note title="Model Support">
-  Preserving reasoning with reasoning\_details is currently supported by:
-
-  <ul>
-    <li>
-      All OpenAI reasoning models (o1 series, o3 series, GPT-5 series)
-    </li>
-
-    <li>
-      All Anthropic reasoning models (Claude 3.7, Claude 4, and Claude 4.1 series)
-    </li>
-
-    <li>
-      All Gemini Reasoning models
-    </li>
-
-    <li>
-      All xAI reasoning models
-    </li>
-
-    <li>
-      MiniMax M2
-    </li>
-
-    <li>
-      Kimi K2 Thinking
-    </li>
-  </ul>
-</Note>
-
-The reasoning\_details functionality works identically across all supported reasoning models. You can easily switch between OpenAI reasoning models (like `openai/gpt-5-mini`) and Anthropic reasoning models (like `anthropic/claude-sonnet-4`) without changing your code structure.
-
-If you want to pass reasoning back in context, you must pass reasoning blocks back to the API. This is useful for maintaining the model's reasoning flow and conversation integrity.
-
-Preserving reasoning blocks is useful specifically for tool calling. When models like Claude invoke tools, it is pausing its construction of a response to await external information. When tool results are returned, the model will continue building that existing response. This necessitates preserving reasoning blocks during tool use, for a couple of reasons:
-
-**Reasoning continuity**: The reasoning blocks capture the model's step-by-step reasoning that led to tool requests. When you post tool results, including the original reasoning ensures the model can continue its reasoning from where it left off.
-
-**Context maintenance**: While tool results appear as user messages in the API structure, they're part of a continuous reasoning flow. Preserving reasoning blocks maintains this conceptual flow across multiple API calls.
-
-<Note title="Important for Reasoning Models">
-  When providing reasoning\_details blocks, the entire sequence of consecutive
-  reasoning blocks must match the outputs generated by the model during the
-  original request; you cannot rearrange or modify the sequence of these blocks.
-</Note>
-
-### Example: Preserving Reasoning Blocks with OpenRouter and Claude
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: 'anthropic/claude-sonnet-4'
-}}
->
-  <CodeGroup>
-    ```python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    # Define tools once and reuse
-    tools = [{
-        "type": "function",
-        "function": {
-            "name": "get_weather",
-            "description": "Get current weather",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "location": {"type": "string"}
-                },
-                "required": ["location"]
-            }
-        }
-    }]
-
-    # First API call with tools
-    # Note: You can use 'openai/gpt-5-mini' instead of 'anthropic/claude-sonnet-4' - they're completely interchangeable
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=[
-            {"role": "user", "content": "What's the weather like in Boston? Then recommend what to wear."}
-        ],
-        tools=tools,
-        extra_body={"reasoning": {"max_tokens": 2000}}
-    )
-
-    # Extract the assistant message with reasoning_details
-    message = response.choices[0].message
-
-    # Preserve the complete reasoning_details when passing back
-    messages = [
-        {"role": "user", "content": "What's the weather like in Boston? Then recommend what to wear."},
-        {
-            "role": "assistant",
-            "content": message.content,
-            "tool_calls": message.tool_calls,
-            "reasoning_details": message.reasoning_details  # Pass back unmodified
-        },
-        {
-            "role": "tool",
-            "tool_call_id": message.tool_calls[0].id,
-            "content": '{"temperature": 45, "condition": "rainy", "humidity": 85}'
-        }
-    ]
-
-    # Second API call - Claude continues reasoning from where it left off
-    response2 = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=messages,  # Includes preserved thinking blocks
-        tools=tools
-    )
-    ```
-
-    ```typescript
-    import OpenAI from 'openai';
-
-    const client = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    // Define tools once and reuse
-    const tools = [
-      {
-        type: 'function',
-        function: {
-          name: 'get_weather',
-          description: 'Get current weather',
-          parameters: {
-            type: 'object',
-            properties: {
-              location: { type: 'string' },
-            },
-            required: ['location'],
-          },
-        },
-      },
-    ] as const;
-
-    // First API call with tools
-    // Note: You can use 'openai/gpt-5-mini' instead of 'anthropic/claude-sonnet-4' - they're completely interchangeable
-    const response = await client.chat.completions.create({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content:
-            "What's the weather like in Boston? Then recommend what to wear.",
-        },
-      ],
-      tools,
-      reasoning: { max_tokens: 2000 },
-    });
-
-    // Extract the assistant message with reasoning_details
-    type ORChatMessage = (typeof response)['choices'][number]['message'] & {
-      reasoning_details?: unknown;
-    };
-    const message = response.choices[0].message as ORChatMessage;
-
-    // Preserve the complete reasoning_details when passing back
-    const messages = [
-      {
-        role: 'user' as const,
-        content: "What's the weather like in Boston? Then recommend what to wear.",
-      },
-      {
-        role: 'assistant' as const,
-        content: message.content,
-        tool_calls: message.tool_calls,
-        reasoning_details: message.reasoning_details, // Pass back unmodified
-      },
-      {
-        role: 'tool' as const,
-        tool_call_id: message.tool_calls?.[0]?.id,
-        content: JSON.stringify({
-          temperature: 45,
-          condition: 'rainy',
-          humidity: 85,
-        }),
-      },
-    ];
-
-    // Second API call - Claude continues reasoning from where it left off
-    const response2 = await client.chat.completions.create({
-      model: '{{MODEL}}',
-      messages, // Includes preserved thinking blocks
-      tools,
-    });
-    ```
-  </CodeGroup>
-</Template>
-
-For more detailed information about thinking encryption, redacted blocks, and advanced use cases, see [Anthropic's documentation on extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/tool-use#extended-thinking).
-
-For more information about OpenAI reasoning models, see [OpenAI's reasoning documentation](https://platform.openai.com/docs/guides/reasoning#keeping-reasoning-items-in-context).
-
-## Responses API Shape
-
-When reasoning models generate responses, the reasoning information is structured in a standardized format through the `reasoning_details` array. This section documents the API response structure for reasoning details in both streaming and non-streaming responses.
-
-### reasoning\_details Array Structure
-
-The `reasoning_details` field contains an array of reasoning detail objects. Each object in the array represents a specific piece of reasoning information and follows one of three possible types. The location of this array differs between streaming and non-streaming responses:
-
-* **Non-streaming responses**: `reasoning_details` appears in `choices[].message.reasoning_details`
-* **Streaming responses**: `reasoning_details` appears in `choices[].delta.reasoning_details` for each chunk
-
-#### Common Fields
-
-All reasoning detail objects share these common fields:
-
-* `id` (string | null): Unique identifier for the reasoning detail
-* `format` (string): The format of the reasoning detail, with possible values:
-  * `"unknown"` - Format is not specified
-  * `"openai-responses-v1"` - OpenAI responses format version 1
-  * `"xai-responses-v1"` - xAI responses format version 1
-  * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)
-* `index` (number, optional): Sequential index of the reasoning detail
-
-#### Reasoning Detail Types
-
-**1. Summary Type (`reasoning.summary`)**
-
-Contains a high-level summary of the reasoning process:
-
-```json
-{
-  "type": "reasoning.summary",
-  "summary": "The model analyzed the problem by first identifying key constraints, then evaluating possible solutions...",
-  "id": "reasoning-summary-1",
-  "format": "anthropic-claude-v1",
-  "index": 0
-}
-```
-
-**2. Encrypted Type (`reasoning.encrypted`)**
-
-Contains encrypted reasoning data that may be redacted or protected:
-
-```json
-{
-  "type": "reasoning.encrypted",
-  "data": "eyJlbmNyeXB0ZWQiOiJ0cnVlIiwiY29udGVudCI6IltSRURBQ1RFRF0ifQ==",
-  "id": "reasoning-encrypted-1",
-  "format": "anthropic-claude-v1",
-  "index": 1
-}
-```
-
-**3. Text Type (`reasoning.text`)**
-
-Contains raw text reasoning with optional signature verification:
-
-```json
-{
-  "type": "reasoning.text",
-  "text": "Let me think through this step by step:\n1. First, I need to understand the user's question...",
-  "signature": "sha256:abc123def456...",
-  "id": "reasoning-text-1",
-  "format": "anthropic-claude-v1",
-  "index": 2
-}
-```
-
-### Response Examples
-
-#### Non-Streaming Response
-
-In non-streaming responses, `reasoning_details` appears in the message:
-
-```json
-{
-  "choices": [
-    {
-      "message": {
-        "role": "assistant",
-        "content": "Based on my analysis, I recommend the following approach...",
-        "reasoning_details": [
-          {
-            "type": "reasoning.summary",
-            "summary": "Analyzed the problem by breaking it into components",
-            "id": "reasoning-summary-1",
-            "format": "anthropic-claude-v1",
-            "index": 0
-          },
-          {
-            "type": "reasoning.text",
-            "text": "Let me work through this systematically:\n1. First consideration...\n2. Second consideration...",
-            "signature": null,
-            "id": "reasoning-text-1",
-            "format": "anthropic-claude-v1",
-            "index": 1
-          }
+            {"role": "user", "content": "Hello!"}
         ]
-      }
-    }
-  ]
-}
-```
-
-#### Streaming Response
-
-In streaming responses, `reasoning_details` appears in delta chunks as the reasoning is generated:
-
-```json
-{
-  "choices": [
-    {
-      "delta": {
-        "reasoning_details": [
-          {
-            "type": "reasoning.text",
-            "text": "Let me think about this step by step...",
-            "signature": null,
-            "id": "reasoning-text-1",
-            "format": "anthropic-claude-v1",
-            "index": 0
-          }
-        ]
-      }
-    }
-  ]
-}
-```
-
-**Streaming Behavior Notes:**
-
-* Each reasoning detail chunk is sent as it becomes available
-* The `reasoning_details` array in each chunk may contain one or more reasoning objects
-* For encrypted reasoning, the content may appear as `[REDACTED]` in streaming responses
-* The complete reasoning sequence is built by concatenating all chunks in order
-
-
-# Usage Accounting
-
-> Learn how to track AI model usage including prompt tokens, completion tokens, and cached tokens without additional API calls.
-
-The OpenRouter API provides built-in **Usage Accounting** that allows you to track AI model usage without making additional API calls. This feature provides detailed information about token counts, costs, and caching status directly in your API responses.
-
-## Usage Information
-
-When enabled, the API will return detailed usage information including:
-
-1. Prompt and completion token counts using the model's native tokenizer
-2. Cost in credits
-3. Reasoning token counts (if applicable)
-4. Cached token counts (if available)
-
-This information is included in the last SSE message for streaming responses, or in the complete response for non-streaming requests.
-
-## Enabling Usage Accounting
-
-You can enable usage accounting in your requests by including the `usage` parameter:
-
-```json
-{
-  "model": "your-model",
-  "messages": [],
-  "usage": {
-    "include": true
-  }
-}
-```
-
-## Response Format
-
-When usage accounting is enabled, the response will include a `usage` object with detailed token information:
-
-```json
-{
-  "object": "chat.completion.chunk",
-  "usage": {
-    "completion_tokens": 2,
-    "completion_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "cost": 0.95,
-    "cost_details": {
-      "upstream_inference_cost": 19
-    },
-    "prompt_tokens": 194,
-    "prompt_tokens_details": {
-      "cached_tokens": 0,
-      "audio_tokens": 0
-    },
-    "total_tokens": 196
-  }
-}
-```
-
-`cached_tokens` is the number of tokens that were *read* from the cache. At this point in time, we do not support retrieving the number of tokens that were *written* to the cache.
-
-## Cost Breakdown
-
-The usage response includes detailed cost information:
-
-* `cost`: The total amount charged to your account
-* `cost_details.upstream_inference_cost`: The actual cost charged by the upstream AI provider
-
-**Note:** The `upstream_inference_cost` field only applies to BYOK (Bring Your Own Key) requests.
-
-<Note title="Performance Impact">
-  Enabling usage accounting will add a few hundred milliseconds to the last
-  response as the API calculates token counts and costs. This only affects the
-  final message and does not impact overall streaming performance.
-</Note>
-
-## Benefits
-
-1. **Efficiency**: Get usage information without making separate API calls
-2. **Accuracy**: Token counts are calculated using the model's native tokenizer
-3. **Transparency**: Track costs and cached token usage in real-time
-4. **Detailed Breakdown**: Separate counts for prompt, completion, reasoning, and cached tokens
-
-## Best Practices
-
-1. Enable usage tracking when you need to monitor token consumption or costs
-2. Account for the slight delay in the final response when usage accounting is enabled
-3. Consider implementing usage tracking in development to optimize token usage before production
-4. Use the cached token information to optimize your application's performance
-
-## Alternative: Getting Usage via Generation ID
-
-You can also retrieve usage information asynchronously by using the generation ID returned from your API calls. This is particularly useful when you want to fetch usage statistics after the completion has finished or when you need to audit historical usage.
-
-To use this method:
-
-1. Make your chat completion request as normal
-2. Note the `id` field in the response
-3. Use that ID to fetch usage information via the `/generation` endpoint
-
-For more details on this approach, see the [Get a Generation](/docs/api-reference/get-a-generation) documentation.
-
-## Examples
-
-### Basic Usage with Token Tracking
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "anthropic/claude-3-opus"
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: 'What is the capital of France?',
-        },
-      ],
-      usage: {
-        include: true,
-      },
-      stream: false,
-    });
-
-    console.log('Response:', response.choices[0].message.content);
-    console.log('Usage Stats:', response.usage);
-    ```
-
-    ```python title="Python (OpenAI SDK)"
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=[
-            {"role": "user", "content": "What is the capital of France?"}
-        ],
-        extra_body={
-            "usage": {
-                "include": True
-            }
-        }
-    )
-
-    print("Response:", response.choices[0].message.content)
-    print("Usage Stats:", getattr(response, "usage", None))
-    ```
-
-    ```typescript title="TypeScript (OpenAI SDK)"
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function getResponseWithUsage() {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: 'What is the capital of France?',
-          },
-        ],
-        usage: {
-          include: true,
-        },
-      });
-
-      console.log('Response:', response.choices[0].message.content);
-      console.log('Usage Stats:', response.usage);
-    }
-
-    getResponseWithUsage();
-    ```
-  </CodeGroup>
-</Template>
-
-### Streaming with Usage Information
-
-This example shows how to handle usage information in streaming mode:
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "anthropic/claude-3-opus"
-}}
->
-  <CodeGroup>
-    ```python Python
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    def chat_completion_with_usage(messages):
-        response = client.chat.completions.create(
-            model="{{MODEL}}",
-            messages=messages,
-            extra_body={
-                "usage": {
-                    "include": True
-                }
-            },
-            stream=True
-        )
-        return response
-
-    for chunk in chat_completion_with_usage([
-        {"role": "user", "content": "Write a haiku about Paris."}
-    ]):
-        if hasattr(chunk, 'usage'):
-            if hasattr(chunk.usage, 'total_tokens'):
-                print(f"\nUsage Statistics:")
-                print(f"Total Tokens: {chunk.usage.total_tokens}")
-                print(f"Prompt Tokens: {chunk.usage.prompt_tokens}")
-                print(f"Completion Tokens: {chunk.usage.completion_tokens}")
-                print(f"Cost: {chunk.usage.cost} credits")
-        elif chunk.choices[0].delta.content:
-            print(chunk.choices[0].delta.content, end="")
-    ```
-
-    ```typescript TypeScript
-    import OpenAI from 'openai';
-
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    async function chatCompletionWithUsage(messages) {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages,
-        usage: {
-          include: true,
-        },
-        stream: true,
-      });
-
-      return response;
-    }
-
-    (async () => {
-      for await (const chunk of chatCompletionWithUsage([
-        { role: 'user', content: 'Write a haiku about Paris.' },
-      ])) {
-        if (chunk.usage) {
-          console.log('\nUsage Statistics:');
-          console.log(`Total Tokens: ${chunk.usage.total_tokens}`);
-          console.log(`Prompt Tokens: ${chunk.usage.prompt_tokens}`);
-          console.log(`Completion Tokens: ${chunk.usage.completion_tokens}`);
-          console.log(`Cost: ${chunk.usage.cost} credits`);
-        } else if (chunk.choices[0].delta.content) {
-          process.stdout.write(chunk.choices[0].delta.content);
-        }
-      }
-    })();
-    ```
-  </CodeGroup>
-</Template>
-
-
-# User Tracking
-
-> Learn how to use the user parameter to track your own user IDs with OpenRouter. Improve caching performance and get detailed reporting on your sub-users.
-
-The OpenRouter API supports **User Tracking** through the optional `user` parameter, allowing you to track your own user IDs and improve your application's performance and reporting capabilities.
-
-## What is User Tracking?
-
-User tracking enables you to specify an arbitrary string identifier for your end-users in API requests. This optional metadata helps OpenRouter understand your sub-users, leading to several benefits:
-
-1. **Improved Caching**: OpenRouter can make caches sticky to your individual users, improving load-balancing and throughput
-2. **Enhanced Reporting**: View detailed analytics and activity feeds broken down by your user IDs
-
-## How It Works
-
-Simply include a `user` parameter in your API requests with any string identifier that represents your end-user. This could be a user ID, email hash, session identifier, or any other stable identifier you use in your application.
-
-```json
-{
-  "model": "openai/gpt-4o",
-  "messages": [
-    {"role": "user", "content": "Hello, how are you?"}
-  ],
-  "user": "user_12345"
-}
-```
-
-## Benefits
-
-### Improved Caching Performance
-
-When you consistently use the same user identifier for a specific user, OpenRouter can optimize caching to be "sticky" to that user. This means:
-
-* A given user of your application (assuming you are using caching) will always get routed to the same provider and the cache will stay warm
-* But separate users can be spread over different providers, improving load-balancing and throughput
-
-### Enhanced Reporting and Analytics
-
-The user parameter is available in the /activity page, in the exports from that page, and in the /generations API.
-
-* **Activity Feed**: View requests broken down by user ID in your OpenRouter dashboard
-* **Usage Analytics**: Understand which users are making the most requests
-* **Export Data**: Get detailed exports that include user-level breakdowns
-
-## Implementation Example
-
-<Template
-  data={{
-  API_KEY_REF,
-  MODEL: "openai/gpt-4o"
-}}
->
-  <CodeGroup>
-    ```typescript title="TypeScript SDK"
-    import { OpenRouter } from '@openrouter/sdk';
-
-    const openRouter = new OpenRouter({
-      apiKey: '{{API_KEY_REF}}',
-    });
-
-    const response = await openRouter.chat.send({
-      model: '{{MODEL}}',
-      messages: [
-        {
-          role: 'user',
-          content: "What's the weather like today?",
-        },
-      ],
-      user: 'user_12345', // Your user identifier
-      stream: false,
-    });
-
-    console.log(response.choices[0].message.content);
-    ```
-
-    ```python title="Python (OpenAI SDK)"
-    from openai import OpenAI
-
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key="{{API_KEY_REF}}",
-    )
-
-    response = client.chat.completions.create(
-        model="{{MODEL}}",
-        messages=[
-            {"role": "user", "content": "What's the weather like today?"}
-        ],
-        user="user_12345",  # Your user identifier
     )
 
     print(response.choices[0].message.content)
-    ```
+```
 
-    ```typescript title="TypeScript (OpenAI SDK)"
-    import OpenAI from 'openai';
 
-    const openai = new OpenAI({
-      baseURL: 'https://openrouter.ai/api/v1',
-      apiKey: '{{API_KEY_REF}}',
-    });
+# Analytics - Python SDK
 
-    async function chatWithUserTracking() {
-      const response = await openai.chat.completions.create({
-        model: '{{MODEL}}',
-        messages: [
-          {
-            role: 'user',
-            content: "What's the weather like today?",
-          },
-        ],
-        user: 'user_12345', // Your user identifier
-      });
+> Analytics method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
 
-      console.log(response.choices[0].message.content);
-    }
+(*analytics*)
 
-    chatWithUserTracking();
-    ```
-  </CodeGroup>
-</Template>
+## Overview
 
-## Best Practices
+Analytics and usage endpoints
 
-### Choose Stable Identifiers
+### Available Operations
 
-Use consistent, stable identifiers for the same user across requests:
+* [get\_user\_activity](#get_user_activity) - Get user activity grouped by endpoint
 
-* **Good**: `user_12345`, `customer_abc123`, `account_xyz789`
-* **Avoid**: Random strings that change between requests
+## get\_user\_activity
 
-### Consider Privacy
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days
 
-When using user identifiers, consider privacy implications:
+### Example Usage
 
-* Use internal user IDs rather than exposing personal information
-* Avoid including personally identifiable information in user identifiers
-* Consider using anonymized identifiers for better privacy protection
-
-### Be Consistent
-
-Use the same user identifier format throughout your application:
+{/* UsageSnippet language="python" operationID="getUserActivity" method="get" path="/activity" */}
 
 ```python
-# Consistent format
-user_id = f"app_{internal_user_id}"
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.analytics.get_user_activity(date_="2025-08-24")
+
+    # Handle response
+    print(res)
+
 ```
 
+### Parameters
 
-# Frameworks and Integrations Overview
+| Parameter | Type                                                               | Required             | Description                                                          | Example    |
+| --------- | ------------------------------------------------------------------ | -------------------- | -------------------------------------------------------------------- | ---------- |
+| `date_`   | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format). | 2025-08-24 |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.  |            |
 
-> Integrate OpenRouter using popular frameworks and SDKs. Complete guides for OpenAI SDK, LangChain, PydanticAI, and Vercel AI SDK integration.
+### Response
 
-OpenRouter integrates seamlessly with popular AI frameworks and SDKs. Choose your preferred framework below for detailed integration guides:
+**[operations.GetUserActivityResponse](/docs/sdks/python/operations/getuseractivityresponse)**
 
-## Available Framework Integrations
+### Errors
 
-* **[Effect AI SDK](/docs/community/effect-ai-sdk)** - Integration with TypeScript Effect applications using the Effect AI SDK
-* **[LangChain](/docs/community/lang-chain)** - Integration with LangChain for Python and JavaScript applications
-* **[LlamaIndex](https://developers.llamaindex.ai/python/framework-api-reference/llms/openrouter/)** - Integration with LlamaIndex for Python and TypeScript RAG applications
-* **[Mastra](/docs/community/mastra)** - Unified interface for AI model access through Mastra framework
-* **[OpenAI SDK](/docs/community/open-ai-sdk)** - Direct integration using the official OpenAI SDK for Python and TypeScript
-* **[PydanticAI](/docs/community/pydantic-ai)** - High-level interface for Python applications using PydanticAI
-* **[Vercel AI SDK](/docs/community/vercel-ai-sdk)** - Integration with Next.js applications using the Vercel AI SDK
-
-## Other Integrations:
-
-* **[Aider](https://aider.chat/docs/llms/openrouter.html)** - Integration with Aider coding assistant
-* **[Cline](https://docs.cline.bot/provider-config/openrouter)** - Integration with Cline coding assistant
-* **[Kilo Code](https://kilocode.ai/docs/providers/openrouter)** - Integration with KiloCode coding assistant
-* **[Langfuse](/docs/community/langfuse)** - Integration with Langfuse Observability and Tracing
-* **[Roo Code](https://docs.roocode.com/providers/openrouter?_highlight=openrouter)** - Integration with Roo Code coding assistant
-* **[VSCode Copilot](https://code.visualstudio.com/docs/copilot/customization/language-models#_bring-your-own-language-model-key)** - Integration with VSCode Copilot
-* **[Xcode](/docs/community/xcode)** - Integration with Xcode coding assistant
-
-You can also find additional examples in our [GitHub repository](https://github.com/OpenRouterTeam/openrouter-examples).
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.ForbiddenResponseError      | 403         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
 
-# Effect AI SDK
+# APIKeys - Python SDK
 
-> Integrate OpenRouter using the Effect AI SDK. Complete guide for integrating the Effect AI SDK with OpenRouter.
+> APIKeys method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
 
-# Effect AI SDK
+(*api\_keys*)
 
-> Integrate OpenRouter using the Effect AI SDK. Complete guide for integrating the Effect AI SDK with OpenRouter.
+## Overview
 
-## Effect AI SDK
+API key management endpoints
 
-You can use the [Effect AI SDK](https://www.npmjs.com/package/@effect/ai) to integrate OpenRouter with your Effect applications. To get started, install the following packages:
+### Available Operations
 
-* [effect](https://www.npmjs.com/package/effect): the Effect core (if not already installed)
-* [@effect/ai](https://www.npmjs.com/package/@effect/ai): the core Effect AI SDK abstractions
-* [@effect/ai-openrouter](https://www.npmjs.com/package/@effect/ai-openrouter): the Effect AI provider integration for OpenRouter
-* [@effect/platform](https://www.npmjs.com/package/@effect/platform): platform-agnostic abstractions for Effect
+* [list](#list) - List API keys
+* [create](#create) - Create a new API key
+* [update](#update) - Update an API key
+* [delete](#delete) - Delete an API key
+* [get](#get) - Get a single API key
+* [get\_current\_key\_metadata](#get_current_key_metadata) - Get current API key
 
-```bash
-npm install effect @effect/ai @effect/ai-openrouter @effect/platform
+## list
+
+List API keys
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="list" method="get" path="/keys" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.api_keys.list(include_disabled="false", offset="0")
+
+    # Handle response
+    print(res)
+
 ```
 
-Once that's done you can use the [LanguageModel](https://effect.website/docs/ai/getting-started/#define-an-interaction-with-a-language-model) module to define interactions with a large language model via OpenRouter.
+### Parameters
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import { LanguageModel } from "@effect/ai"
-  import { OpenRouterClient, OpenRouterLanguageModel } from "@effect/ai-openrouter"
-  import { FetchHttpClient } from "@effect/platform"
-  import { Config, Effect, Layer, Stream } from "effect"
+| Parameter          | Type                                                               | Required             | Description                                                         | Example |
+| ------------------ | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------- |
+| `include_disabled` | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Whether to include disabled API keys in the response                | false   |
+| `offset`           | *Optional\[str]*                                                   | :heavy\_minus\_sign: | Number of API keys to skip for pagination                           | 0       |
+| `retries`          | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |         |
 
-  const Gpt4o = OpenRouterLanguageModel.model("openai/gpt-4o")
+### Response
 
-  const program = LanguageModel.streamText({
-    prompt: [
-      { role: "system", content: "You are a comedian with a penchant for groan-inducing puns" },
-      { role: "user", content: [{ type: "text", text: "Tell me a dad joke" }] }
-    ]
-  }).pipe(
-    Stream.filter((part) => part.type === "text-delta"),
-    Stream.runForEach((part) => Effect.sync(() => process.stdout.write(part.delta))),
-    Effect.provide(Gpt4o)
-  )
+**[operations.ListResponse](/docs/sdks/python/operations/listresponse)**
 
-  const OpenRouter = OpenRouterClient.layerConfig({
-    apiKey: Config.redacted("OPENROUTER_API_KEY")
-  }).pipe(Layer.provide(FetchHttpClient.layer))
+### Errors
 
-  program.pipe(
-    Effect.provide(OpenRouter),
-    Effect.runPromise
-  )
-  ```
-</CodeGroup>
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
+## create
 
-# Arize
+Create a new API key
 
-> Integrate OpenRouter using Arize for observability and tracing. Complete guide for Arize integration with OpenRouter for Python and JavaScript applications.
+### Example Usage
 
-## Using Arize
+{/* UsageSnippet language="python" operationID="createKeys" method="post" path="/keys" */}
 
-[Arize](https://arize.com/) provides observability and tracing for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Arize's OpenInference auto-instrumentation with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
+```python
+from openrouter import OpenRouter
+from openrouter.utils import parse_datetime
+import os
 
-### Installation
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
 
-```bash
-pip install openinference-instrumentation-openai openai arize-otel
+    res = open_router.api_keys.create(name="My New API Key", limit=50, limit_reset="monthly", include_byok_in_limit=True, expires_at=parse_datetime("2027-12-31T23:59:59Z"))
+
+    # Handle response
+    print(res)
+
 ```
 
-### Prerequisites
+### Parameters
 
-* OpenRouter account and API key
-* Arize account with Space ID and API Key
+| Parameter               | Type                                                                                            | Required             | Description                                                                                                                                                           | Example              |
+| ----------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| `name`                  | *str*                                                                                           | :heavy\_check\_mark: | Name for the new API key                                                                                                                                              | My New API Key       |
+| `limit`                 | *OptionalNullable\[float]*                                                                      | :heavy\_minus\_sign: | Optional spending limit for the API key in USD                                                                                                                        | 50                   |
+| `limit_reset`           | [OptionalNullable\[operations.CreateKeysLimitReset\]](../../operations/createkeyslimitreset.md) | :heavy\_minus\_sign: | Type of limit reset for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | monthly              |
+| `include_byok_in_limit` | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                            | true                 |
+| `expires_at`            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                            | :heavy\_minus\_sign: | Optional ISO 8601 UTC timestamp when the API key should expire. Must be UTC, other timezones will be rejected                                                         | 2027-12-31T23:59:59Z |
+| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                   |                      |
 
-### Why OpenRouter Works with Arize
+### Response
 
-Arize's OpenInference auto-instrumentation works with OpenRouter because:
+**[operations.CreateKeysResponse](/docs/sdks/python/operations/createkeysresponse)**
 
-1. **OpenRouter provides a fully OpenAI-API-compatible endpoint** - The `/v1` endpoint mirrors OpenAI's schema
-2. **Reuse official OpenAI SDKs** - Point the OpenAI client's `base_url` to OpenRouter
-3. **Automatic instrumentation** - OpenInference hooks into OpenAI SDK calls seamlessly
+### Errors
 
-### Configuration
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
-Set up your environment variables:
+## update
 
-<CodeGroup>
-  ```python title="Environment Setup"
-  import os
+Update an API key
 
-  # Set your OpenRouter API key
-  os.environ["OPENAI_API_KEY"] = "${API_KEY_REF}"
-  ```
-</CodeGroup>
+### Example Usage
 
-### Simple LLM Call
+{/* UsageSnippet language="python" operationID="updateKeys" method="patch" path="/keys/{hash}" */}
 
-Initialize Arize and instrument your OpenAI client to automatically trace OpenRouter calls:
+```python
+from openrouter import OpenRouter
+import os
 
-<CodeGroup>
-  ```python title="Basic Integration"
-  from arize.otel import register
-  from openinference.instrumentation.openai import OpenAIInstrumentor
-  import openai
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
 
-  # Initialize Arize and register the tracer provider
-  tracer_provider = register(
-      space_id="your-space-id",
-      api_key="your-arize-api-key",
-      project_name="your-project-name",
-  )
+    res = open_router.api_keys.update(hash="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", name="Updated API Key Name", disabled=False, limit=75, limit_reset="daily", include_byok_in_limit=True)
 
-  # Instrument OpenAI SDK
-  OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
+    # Handle response
+    print(res)
 
-  # Configure OpenAI client for OpenRouter
-  client = openai.OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      api_key="your_openrouter_api_key",
-      default_headers={
-          "HTTP-Referer": "<YOUR_SITE_URL>",  # Optional: Your site URL
-          "X-Title": "<YOUR_SITE_NAME>",      # Optional: Your site name
-      }
-  )
-
-  # Make a traced chat completion request
-  response = client.chat.completions.create(
-      model="meta-llama/llama-3.1-8b-instruct:free",
-      messages=[
-          {"role": "user", "content": "Write a haiku about observability."}
-      ],
-  )
-
-  # Print the assistant's reply
-  print(response.choices[0].message.content)
-  ```
-</CodeGroup>
-
-### What Gets Traced
-
-All OpenRouter model calls are automatically traced and include:
-
-* Request/response data and timing
-* Model name and provider information
-* Token usage and cost data (when supported)
-* Error handling and debugging information
-
-### JavaScript/TypeScript Support
-
-OpenInference also provides instrumentation for the OpenAI JavaScript/TypeScript SDK, which works with OpenRouter. For setup and examples, please refer to the [OpenInference JavaScript examples for OpenAI](https://github.com/Arize-ai/openinference/tree/main/js).
-
-### Common Issues
-
-* **API Key**: Use your OpenRouter API key, not OpenAI's
-* **Model Names**: Use exact model names from [OpenRouter's model list](https://openrouter.ai/models)
-* **Rate Limits**: Check your OpenRouter dashboard for usage limits
-
-### Learn More
-
-* **Arize OpenRouter Integration**: [https://arize.com/docs/ax/integrations/llm-providers/openrouter/openrouter-tracing](https://arize.com/docs/ax/integrations/llm-providers/openrouter/openrouter-tracing)
-* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart)
-* **OpenInference OpenAI Instrumentation**: [https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai](https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-openai)
-
-
-# LangChain
-
-> Integrate OpenRouter using LangChain framework. Complete guide for LangChain integration with OpenRouter for Python and JavaScript.
-
-## Using LangChain
-
-* Using [LangChain for Python](https://github.com/langchain-ai/langchain): [github](https://github.com/alexanderatallah/openrouter-streamlit/blob/main/pages/2_Langchain_Quickstart.py)
-* Using [LangChain.js](https://github.com/langchain-ai/langchainjs): [github](https://github.com/OpenRouterTeam/openrouter-examples/blob/main/examples/langchain/index.ts)
-* Using [Streamlit](https://streamlit.io/): [github](https://github.com/alexanderatallah/openrouter-streamlit)
-
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import { ChatOpenAI } from "@langchain/openai";
-  import { HumanMessage, SystemMessage } from "@langchain/core/messages";
-
-  const chat = new ChatOpenAI(
-    {
-      model: '<model_name>',
-      temperature: 0.8,
-      streaming: true,
-      apiKey: '${API_KEY_REF}',
-    },
-    {
-      baseURL: 'https://openrouter.ai/api/v1',
-      defaultHeaders: {
-        'HTTP-Referer': '<YOUR_SITE_URL>', // Optional. Site URL for rankings on openrouter.ai.
-        'X-Title': '<YOUR_SITE_NAME>', // Optional. Site title for rankings on openrouter.ai.
-      },
-    },
-  );
-
-  // Example usage
-  const response = await chat.invoke([
-    new SystemMessage("You are a helpful assistant."),
-    new HumanMessage("Hello, how are you?"),
-  ]);
-  ```
-
-  ```python title="Python"
-  from langchain_openai import ChatOpenAI
-  from langchain_core.prompts import PromptTemplate
-  from langchain.chains import LLMChain
-  from os import getenv
-  from dotenv import load_dotenv
-
-  load_dotenv()
-
-  template = """Question: {question}
-  Answer: Let's think step by step."""
-
-  prompt = PromptTemplate(template=template, input_variables=["question"])
-
-  llm = ChatOpenAI(
-    api_key=getenv("OPENROUTER_API_KEY"),
-    base_url="https://openrouter.ai/api/v1",
-    model="<model_name>",
-    default_headers={
-      "HTTP-Referer": getenv("YOUR_SITE_URL"), # Optional. Site URL for rankings on openrouter.ai.
-      "X-Title": getenv("YOUR_SITE_NAME"), # Optional. Site title for rankings on openrouter.ai.
-    }
-  )
-
-  llm_chain = LLMChain(prompt=prompt, llm=llm)
-
-  question = "What NFL team won the Super Bowl in the year Justin Beiber was born?"
-
-  print(llm_chain.run(question))
-  ```
-</CodeGroup>
-
-
-# LiveKit
-
-> Integrate OpenRouter using LiveKit Agents framework. Complete guide for LiveKit integration with OpenRouter to build voice AI agents with access to 500+ models.
-
-## Using LiveKit Agents
-
-[LiveKit Agents](https://docs.livekit.io/agents/) is an open-source framework for building voice AI agents. The OpenRouter plugin allows you to access 500+ AI models from multiple providers through a unified API, with automatic fallback support and intelligent routing.
-
-### Installation
-
-Install the OpenAI plugin to add OpenRouter support:
-
-```bash
-uv add "livekit-agents[openai]~=1.2"
 ```
 
-### Authentication
+### Parameters
 
-The OpenRouter plugin requires an [OpenRouter API key](https://openrouter.ai/settings/keys). Set `OPENROUTER_API_KEY` in your `.env` file.
+| Parameter               | Type                                                                                            | Required             | Description                                                                                                                                                            | Example                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `hash`                  | *str*                                                                                           | :heavy\_check\_mark: | The hash identifier of the API key to update                                                                                                                           | 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 |
+| `name`                  | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | New name for the API key                                                                                                                                               | Updated API Key Name                                                      |
+| `disabled`              | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to disable the API key                                                                                                                                         | false                                                                     |
+| `limit`                 | *OptionalNullable\[float]*                                                                      | :heavy\_minus\_sign: | New spending limit for the API key in USD                                                                                                                              | 75                                                                        |
+| `limit_reset`           | [OptionalNullable\[operations.UpdateKeysLimitReset\]](../../operations/updatekeyslimitreset.md) | :heavy\_minus\_sign: | New limit reset type for the API key (daily, weekly, monthly, or null for no reset). Resets happen automatically at midnight UTC, and weeks are Monday through Sunday. | daily                                                                     |
+| `include_byok_in_limit` | *Optional\[bool]*                                                                               | :heavy\_minus\_sign: | Whether to include BYOK usage in the limit                                                                                                                             | true                                                                      |
+| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                    |                                                                           |
 
-### Basic Usage
+### Response
 
-Create an OpenRouter LLM using the `with_openrouter` method:
+**[operations.UpdateKeysResponse](/docs/sdks/python/operations/updatekeysresponse)**
 
-<CodeGroup>
-  ```python title="Python"
-  from livekit.plugins import openai
+### Errors
 
-  session = AgentSession(
-      llm=openai.LLM.with_openrouter(model="anthropic/claude-sonnet-4.5"),
-      # ... tts, stt, vad, turn_detection, etc.
-  )
-  ```
-</CodeGroup>
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.NotFoundResponseError        | 404         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
-### Advanced Features
+## delete
 
-#### Fallback Models
+Delete an API key
 
-Configure multiple fallback models to use if the primary model is unavailable:
+### Example Usage
 
-<CodeGroup>
-  ```python title="Python"
-  from livekit.plugins import openai
+{/* UsageSnippet language="python" operationID="deleteKeys" method="delete" path="/keys/{hash}" */}
 
-  llm = openai.LLM.with_openrouter(
-      model="openai/gpt-4o",
-      fallback_models=[
-          "anthropic/claude-sonnet-4",
-          "openai/gpt-5-mini",
-      ],
-  )
-  ```
-</CodeGroup>
+```python
+from openrouter import OpenRouter
+import os
 
-#### Provider Routing
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
 
-Control which providers are used for model inference:
+    res = open_router.api_keys.delete(hash="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")
 
-<CodeGroup>
-  ```python title="Python"
-  from livekit.plugins import openai
+    # Handle response
+    print(res)
 
-  llm = openai.LLM.with_openrouter(
-      model="deepseek/deepseek-chat-v3.1",
-      provider={
-          "order": ["novita/fp8", "gmicloud/fp8", "google-vertex"],
-          "allow_fallbacks": True,
-          "sort": "latency",
-      },
-  )
-  ```
-</CodeGroup>
-
-#### Web Search Plugin
-
-Enable OpenRouter's web search capabilities:
-
-<CodeGroup>
-  ```python title="Python"
-  from livekit.plugins import openai
-
-  llm = openai.LLM.with_openrouter(
-      model="google/gemini-2.5-flash-preview-09-2025",
-      plugins=[
-          openai.OpenRouterWebPlugin(
-              max_results=5,
-              search_prompt="Search for relevant information",
-          )
-      ],
-  )
-  ```
-</CodeGroup>
-
-#### Analytics Integration
-
-Include site and app information for OpenRouter analytics:
-
-<CodeGroup>
-  ```python title="Python"
-  from livekit.plugins import openai
-
-  llm = openai.LLM.with_openrouter(
-      model="openrouter/auto",
-      site_url="https://myapp.com",
-      app_name="My Voice Agent",
-  )
-  ```
-</CodeGroup>
-
-### Resources
-
-* [LiveKit OpenRouter Plugin Documentation](https://docs.livekit.io/agents/models/llm/plugins/openrouter/)
-* [LiveKit Agents GitHub](https://github.com/livekit/agents)
-* [OpenRouter Models](https://openrouter.ai/models)
-
-
-# Langfuse
-
-> Integrate OpenRouter using Langfuse for observability and tracing. Complete guide for Langfuse integration with OpenRouter for Python applications.
-
-## Using Langfuse
-
-[Langfuse](https://langfuse.com/) provides observability and analytics for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Langfuse's native integration with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
-
-### Installation
-
-```bash
-pip install langfuse openai
 ```
 
-### Configuration
+### Parameters
 
-Set up your environment variables:
+| Parameter | Type                                                               | Required             | Description                                                         | Example                                                                   |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `hash`    | *str*                                                              | :heavy\_check\_mark: | The hash identifier of the API key to delete                        | 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 |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |                                                                           |
 
-<CodeGroup>
-  ```python title="Environment Setup"
-  import os
+### Response
 
-  # Set your Langfuse API keys
-  LANGFUSE_SECRET_KEY="sk-lf-..."
-  LANGFUSE_PUBLIC_KEY="pk-lf-..."
-  # EU region
-  LANGFUSE_HOST="https://cloud.langfuse.com"
-  # US region
-  # LANGFUSE_HOST="https://us.cloud.langfuse.com"
+**[operations.DeleteKeysResponse](/docs/sdks/python/operations/deletekeysresponse)**
 
-  # Set your OpenRouter API key
-  os.environ["OPENAI_API_KEY"] = "${API_KEY_REF}"
-  ```
-</CodeGroup>
+### Errors
 
-### Simple LLM Call
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.NotFoundResponseError        | 404         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
-Since OpenRouter provides an OpenAI-compatible API, you can use the Langfuse OpenAI SDK wrapper to automatically log OpenRouter calls as generations in Langfuse:
+## get
 
-<CodeGroup>
-  ```python title="Basic Integration"
-  # Import the Langfuse OpenAI SDK wrapper
-  from langfuse.openai import openai
+Get a single API key
 
-  # Create an OpenAI client with OpenRouter's base URL
-  client = openai.OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-      default_headers={
-          "HTTP-Referer": "<YOUR_SITE_URL>",  # Optional: Your site URL
-          "X-Title": "<YOUR_SITE_NAME>",      # Optional: Your site name
-      }
-  )
+### Example Usage
 
-  # Make a chat completion request
-  response = client.chat.completions.create(
-      model="anthropic/claude-3.5-sonnet",
-      messages=[
-          {"role": "system", "content": "You are a helpful assistant."},
-          {"role": "user", "content": "Tell me a fun fact about space."}
-      ],
-      name="fun-fact-request"  # Optional: Name of the generation in Langfuse
-  )
+{/* UsageSnippet language="python" operationID="getKey" method="get" path="/keys/{hash}" */}
 
-  # Print the assistant's reply
-  print(response.choices[0].message.content)
-  ```
-</CodeGroup>
+```python
+from openrouter import OpenRouter
+import os
 
-### Advanced Tracing with Nested Calls
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
 
-Use the `@observe()` decorator to capture execution details of functions with nested LLM calls:
+    res = open_router.api_keys.get(hash="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")
 
-<CodeGroup>
-  ```python title="Nested Function Tracing"
-  from langfuse import observe
-  from langfuse.openai import openai
-
-  # Create an OpenAI client with OpenRouter's base URL
-  client = openai.OpenAI(
-      base_url="https://openrouter.ai/api/v1",
-  )
-
-  @observe()  # This decorator enables tracing of the function
-  def analyze_text(text: str):
-      # First LLM call: Summarize the text
-      summary_response = summarize_text(text)
-      summary = summary_response.choices[0].message.content
-
-      # Second LLM call: Analyze the sentiment of the summary
-      sentiment_response = analyze_sentiment(summary)
-      sentiment = sentiment_response.choices[0].message.content
-
-      return {
-          "summary": summary,
-          "sentiment": sentiment
-      }
-
-  @observe()  # Nested function to be traced
-  def summarize_text(text: str):
-      return client.chat.completions.create(
-          model="openai/gpt-3.5-turbo",
-          messages=[
-              {"role": "system", "content": "You summarize texts in a concise manner."},
-              {"role": "user", "content": f"Summarize the following text:\n{text}"}
-          ],
-          name="summarize-text"
-      )
-
-  @observe()  # Nested function to be traced
-  def analyze_sentiment(summary: str):
-      return client.chat.completions.create(
-          model="openai/gpt-3.5-turbo",
-          messages=[
-              {"role": "system", "content": "You analyze the sentiment of texts."},
-              {"role": "user", "content": f"Analyze the sentiment of the following summary:\n{summary}"}
-          ],
-          name="analyze-sentiment"
-      )
-
-  # Example usage
-  text_to_analyze = "OpenRouter's unified API has significantly advanced the field of AI development, setting new standards for model accessibility."
-  result = analyze_text(text_to_analyze)
-  print(result)
-  ```
-</CodeGroup>
-
-### Learn More
-
-* **Langfuse OpenRouter Integration**: [https://langfuse.com/docs/integrations/other/openrouter](https://langfuse.com/docs/integrations/other/openrouter)
-* **OpenRouter Quick Start Guide**: [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart)
-* **Langfuse `@observe()` Decorator**: [https://langfuse.com/docs/sdk/python/decorators](https://langfuse.com/docs/sdk/python/decorators)
-
-
-# Mastra
-
-> Integrate OpenRouter using Mastra framework. Complete guide for Mastra integration with OpenRouter for unified AI model access.
-
-## Mastra
-
-Integrate OpenRouter with Mastra to access a variety of AI models through a unified interface. This guide provides complete examples from basic setup to advanced configurations.
-
-### Step 1: Initialize a new Mastra project
-
-The simplest way to start is using the automatic project creation:
-
-```bash
-# Create a new project using create-mastra
-npx create-mastra@latest
-```
-
-You'll be guided through prompts to set up your project. For this example, select:
-
-* Name your project: my-mastra-openrouter-app
-* Components: Agents (recommended)
-* For default provider, select OpenAI (recommended) - we'll configure OpenRouter manually later
-* Optionally include example code
-
-For detailed instructions on setting up a Mastra project manually or adding Mastra to an existing project, refer to the [official Mastra documentation](https://mastra.ai/en/docs/getting-started/installation).
-
-### Step 2: Configure your environment variables
-
-After creating your project with `create-mastra`, you'll find a `.env.development` file in your project root. Since we selected OpenAI during setup but will be using OpenRouter instead:
-
-1. Open the `.env.development` file
-2. Remove or comment out the `OPENAI_API_KEY` line
-3. Add your OpenRouter API key:
+    # Handle response
+    print(res)
 
 ```
-# .env.development
-# OPENAI_API_KEY=your-openai-key  # Comment out or remove this line
-OPENROUTER_API_KEY=sk-or-your-api-key-here
+
+### Parameters
+
+| Parameter | Type                                                               | Required             | Description                                                         | Example                                                                   |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `hash`    | *str*                                                              | :heavy\_check\_mark: | The hash identifier of the API key to retrieve                      | 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 |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |                                                                           |
+
+### Response
+
+**[operations.GetKeyResponse](/docs/sdks/python/operations/getkeyresponse)**
+
+### Errors
+
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.NotFoundResponseError        | 404         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+
+## get\_current\_key\_metadata
+
+Get information on the API key associated with the current authentication session
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getCurrentKey" method="get" path="/key" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.api_keys.get_current_key_metadata()
+
+    # Handle response
+    print(res)
+
 ```
 
-You can also remove the `@ai-sdk/openai` package since we'll be using OpenRouter instead:
+### Parameters
 
-```bash
-npm uninstall @ai-sdk/openai
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.GetCurrentKeyResponse](/docs/sdks/python/operations/getcurrentkeyresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+
+# Chat - Python SDK
+
+> Chat method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*chat*)
+
+## Overview
+
+### Available Operations
+
+* [send](#send) - Create a chat completion
+
+## send
+
+Sends a request for a model response for the given chat conversation. Supports both streaming and non-streaming modes.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="sendChatCompletionRequest" method="post" path="/chat/completions" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.chat.send(messages=[], stream=False)
+
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
+
 ```
 
-```bash
-npm install @openrouter/ai-sdk-provider
+### Parameters
+
+| Parameter               | Type                                                                                                                          | Required             | Description                                                         |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `messages`              | List\[[components.Message](/docs/sdks/python/components/message)]                                                             | :heavy\_check\_mark: | N/A                                                                 |
+| `model`                 | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
+| `models`                | List\[*str*]                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `frequency_penalty`     | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `logit_bias`            | Dict\[str, *float*]                                                                                                           | :heavy\_minus\_sign: | N/A                                                                 |
+| `logprobs`              | *OptionalNullable\[bool]*                                                                                                     | :heavy\_minus\_sign: | N/A                                                                 |
+| `top_logprobs`          | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `max_completion_tokens` | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `max_tokens`            | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `metadata`              | Dict\[str, *str*]                                                                                                             | :heavy\_minus\_sign: | N/A                                                                 |
+| `presence_penalty`      | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `reasoning`             | [Optional\[components.Reasoning\]](../../components/reasoning.md)                                                             | :heavy\_minus\_sign: | N/A                                                                 |
+| `response_format`       | [Optional\[components.ChatGenerationParamsResponseFormatUnion\]](../../components/chatgenerationparamsresponseformatunion.md) | :heavy\_minus\_sign: | N/A                                                                 |
+| `seed`                  | *OptionalNullable\[int]*                                                                                                      | :heavy\_minus\_sign: | N/A                                                                 |
+| `stop`                  | [OptionalNullable\[components.ChatGenerationParamsStop\]](../../components/chatgenerationparamsstop.md)                       | :heavy\_minus\_sign: | N/A                                                                 |
+| `stream`                | *Optional\[bool]*                                                                                                             | :heavy\_minus\_sign: | N/A                                                                 |
+| `stream_options`        | [OptionalNullable\[components.ChatStreamOptions\]](../../components/chatstreamoptions.md)                                     | :heavy\_minus\_sign: | N/A                                                                 |
+| `temperature`           | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `tool_choice`           | *Optional\[Any]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
+| `tools`                 | List\[[components.ToolDefinitionJSON](/docs/sdks/python/components/tooldefinitionjson)]                                       | :heavy\_minus\_sign: | N/A                                                                 |
+| `top_p`                 | *OptionalNullable\[float]*                                                                                                    | :heavy\_minus\_sign: | N/A                                                                 |
+| `user`                  | *Optional\[str]*                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
+| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                            | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.SendChatCompletionRequestResponse](/docs/sdks/python/operations/sendchatcompletionrequestresponse)**
+
+### Errors
+
+| Error Type                    | Status Code   | Content Type     |
+| ----------------------------- | ------------- | ---------------- |
+| errors.ChatError              | 400, 401, 429 | application/json |
+| errors.ChatError              | 500           | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX      | \*/\*            |
+
+
+# Completions - Python SDK
+
+> Completions method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*completions*)
+
+## Overview
+
+### Available Operations
+
+* [generate](#generate) - Create a completion
+
+## generate
+
+Creates a completion for the provided prompt and parameters. Supports both streaming and non-streaming modes.
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="createCompletions" method="post" path="/completions" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.completions.generate(prompt=[], stream=False)
+
+    # Handle response
+    print(res)
+
 ```
 
-### Step 3: Configure your agent to use OpenRouter
+### Parameters
 
-After setting up your Mastra project, you'll need to modify the agent files to use OpenRouter instead of the default OpenAI provider.
+| Parameter           | Type                                                                                                                                      | Required             | Description                                                         |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `prompt`            | [components.Prompt](/docs/sdks/python/components/prompt)                                                                                  | :heavy\_check\_mark: | N/A                                                                 |
+| `model`             | *Optional\[str]*                                                                                                                          | :heavy\_minus\_sign: | N/A                                                                 |
+| `models`            | List\[*str*]                                                                                                                              | :heavy\_minus\_sign: | N/A                                                                 |
+| `best_of`           | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `echo`              | *OptionalNullable\[bool]*                                                                                                                 | :heavy\_minus\_sign: | N/A                                                                 |
+| `frequency_penalty` | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `logit_bias`        | Dict\[str, *float*]                                                                                                                       | :heavy\_minus\_sign: | N/A                                                                 |
+| `logprobs`          | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `max_tokens`        | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `n`                 | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `presence_penalty`  | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `seed`              | *OptionalNullable\[int]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `stop`              | [OptionalNullable\[components.CompletionCreateParamsStop\]](../../components/completioncreateparamsstop.md)                               | :heavy\_minus\_sign: | N/A                                                                 |
+| `stream`            | *Optional\[bool]*                                                                                                                         | :heavy\_minus\_sign: | N/A                                                                 |
+| `stream_options`    | [OptionalNullable\[components.StreamOptions\]](../../components/streamoptions.md)                                                         | :heavy\_minus\_sign: | N/A                                                                 |
+| `suffix`            | *OptionalNullable\[str]*                                                                                                                  | :heavy\_minus\_sign: | N/A                                                                 |
+| `temperature`       | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `top_p`             | *OptionalNullable\[float]*                                                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `user`              | *Optional\[str]*                                                                                                                          | :heavy\_minus\_sign: | N/A                                                                 |
+| `metadata`          | Dict\[str, *str*]                                                                                                                         | :heavy\_minus\_sign: | N/A                                                                 |
+| `response_format`   | [OptionalNullable\[components.CompletionCreateParamsResponseFormatUnion\]](../../components/completioncreateparamsresponseformatunion.md) | :heavy\_minus\_sign: | N/A                                                                 |
+| `retries`           | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
 
-If you used `create-mastra`, you'll likely have a file at `src/mastra/agents/agent.ts` or similar. Replace its contents with:
+### Response
 
-```typescript
-import { Agent } from '@mastra/core/agent';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
+**[components.CompletionResponse](/docs/sdks/python/components/completionresponse)**
 
-// Initialize OpenRouter provider
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
+### Errors
 
-// Create an agent
-export const assistant = new Agent({
-  model: openrouter('anthropic/claude-3-opus'),
-  name: 'Assistant',
-  instructions:
-    'You are a helpful assistant with expertise in technology and science.',
-});
+| Error Type                    | Status Code   | Content Type     |
+| ----------------------------- | ------------- | ---------------- |
+| errors.ChatError              | 400, 401, 429 | application/json |
+| errors.ChatError              | 500           | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX      | \*/\*            |
+
+
+# Credits - Python SDK
+
+> Credits method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*credits*)
+
+## Overview
+
+Credit management endpoints
+
+### Available Operations
+
+* [get\_credits](#get_credits) - Get remaining credits
+* [create\_coinbase\_charge](#create_coinbase_charge) - Create a Coinbase charge for crypto payment
+
+## get\_credits
+
+Get total credits purchased and used for the authenticated user
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getCredits" method="get" path="/credits" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.credits.get_credits()
+
+    # Handle response
+    print(res)
+
 ```
 
-Also make sure to update your Mastra entry point at `src/mastra/index.ts` to use your renamed agent:
+### Parameters
 
-```typescript
-import { Mastra } from '@mastra/core';
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
 
-import { assistant } from './agents/agent'; // Update the import path if you used a different filename
+### Response
 
-export const mastra = new Mastra({
-  agents: { assistant }, // Use the same name here as you exported from your agent file
-});
+**[operations.GetCreditsResponse](/docs/sdks/python/operations/getcreditsresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.ForbiddenResponseError      | 403         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## create\_coinbase\_charge
+
+Create a Coinbase charge for crypto payment
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="createCoinbaseCharge" method="post" path="/credits/coinbase" */}
+
+```python
+from openrouter import OpenRouter, operations
+import os
+
+with OpenRouter() as open_router:
+
+    res = open_router.credits.create_coinbase_charge(security=operations.CreateCoinbaseChargeSecurity(
+        bearer=os.getenv("OPENROUTER_BEARER", ""),
+    ), amount=100, sender="0x1234567890123456789012345678901234567890", chain_id=1)
+
+    # Handle response
+    print(res)
+
 ```
 
-### Step 4: Running the Application
+### Parameters
 
-Once you've configured your agent to use OpenRouter, you can run the Mastra development server:
+| Parameter  | Type                                                                                                 | Required             | Description                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `security` | [operations.CreateCoinbaseChargeSecurity](/docs/sdks/python/operations/createcoinbasechargesecurity) | :heavy\_check\_mark: | N/A                                                                 |
+| `amount`   | *float*                                                                                              | :heavy\_check\_mark: | N/A                                                                 |
+| `sender`   | *str*                                                                                                | :heavy\_check\_mark: | N/A                                                                 |
+| `chain_id` | [components.ChainID](/docs/sdks/python/components/chainid)                                           | :heavy\_check\_mark: | N/A                                                                 |
+| `retries`  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                   | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
 
-```bash
-npm run dev
-```
+### Response
 
-This will start the Mastra development server and make your agent available at:
+**[operations.CreateCoinbaseChargeResponse](/docs/sdks/python/operations/createcoinbasechargeresponse)**
 
-* REST API endpoint: `http://localhost:4111/api/agents/assistant/generate`
-* Interactive playground: `http://localhost:4111`
+### Errors
 
-The Mastra playground provides a user-friendly interface where you can interact with your agent and test its capabilities without writing any additional code.
-
-You can also test the API endpoint using curl if needed:
-
-```bash
-curl -X POST http://localhost:4111/api/agents/assistant/generate \
--H "Content-Type: application/json" \
--d '{"messages": ["What are the latest advancements in quantum computing?"]}'
-```
-
-### Basic Integration with Mastra
-
-The simplest way to integrate OpenRouter with Mastra is by using the OpenRouter AI provider with Mastra's Agent system:
-
-```typescript
-import { Agent } from '@mastra/core/agent';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-
-// Initialize the OpenRouter provider
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
-
-// Create an agent using OpenRouter
-const assistant = new Agent({
-  model: openrouter('anthropic/claude-3-opus'),
-  name: 'Assistant',
-  instructions: 'You are a helpful assistant.',
-});
-
-// Generate a response
-const response = await assistant.generate([
-  {
-    role: 'user',
-    content: 'Tell me about renewable energy sources.',
-  },
-]);
-
-console.log(response.text);
-```
-
-### Advanced Configuration
-
-For more control over your OpenRouter requests, you can pass additional configuration options:
-
-```typescript
-import { Agent } from '@mastra/core/agent';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-
-// Initialize with advanced options
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-  extraBody: {
-    reasoning: {
-      max_tokens: 10,
-    },
-  },
-});
-
-// Create an agent with model-specific options
-const chefAgent = new Agent({
-  model: openrouter('anthropic/claude-3.7-sonnet', {
-    extraBody: {
-      reasoning: {
-        max_tokens: 10,
-      },
-    },
-  }),
-  name: 'Chef',
-  instructions: 'You are a chef assistant specializing in French cuisine.',
-});
-```
-
-### Provider-Specific Options
-
-You can also pass provider-specific options in your requests:
-
-```typescript
-// Get a response with provider-specific options
-const response = await chefAgent.generate([
-  {
-    role: 'system',
-    content:
-      'You are Chef Michel, a culinary expert specializing in ketogenic (keto) diet...',
-    providerOptions: {
-      // Provider-specific options - key can be 'anthropic' or 'openrouter'
-      anthropic: {
-        cacheControl: { type: 'ephemeral' },
-      },
-    },
-  },
-  {
-    role: 'user',
-    content: 'Can you suggest a keto breakfast?',
-  },
-]);
-```
-
-### Using Multiple Models with OpenRouter
-
-OpenRouter gives you access to various models from different providers. Here's how to use multiple models:
-
-```typescript
-import { Agent } from '@mastra/core/agent';
-import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-});
-
-// Create agents using different models
-const claudeAgent = new Agent({
-  model: openrouter('anthropic/claude-3-opus'),
-  name: 'ClaudeAssistant',
-  instructions: 'You are a helpful assistant powered by Claude.',
-});
-
-const gptAgent = new Agent({
-  model: openrouter('openai/gpt-4'),
-  name: 'GPTAssistant',
-  instructions: 'You are a helpful assistant powered by GPT-4.',
-});
-
-// Use different agents based on your needs
-const claudeResponse = await claudeAgent.generate([
-  {
-    role: 'user',
-    content: 'Explain quantum mechanics simply.',
-  },
-]);
-console.log(claudeResponse.text);
-
-const gptResponse = await gptAgent.generate([
-  {
-    role: 'user',
-    content: 'Explain quantum mechanics simply.',
-  },
-]);
-console.log(gptResponse.text);
-```
-
-### Resources
-
-For more information and detailed documentation, check out these resources:
-
-* [OpenRouter Documentation](https://openrouter.ai/docs) - Learn about OpenRouter's capabilities and available models
-* [Mastra Documentation](https://mastra.ai/docs) - Comprehensive documentation for the Mastra framework
-* [AI SDK Documentation](https://sdk.vercel.ai/docs) - Detailed information about the AI SDK that powers Mastra's model interactions
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
 
 
-# OpenAI SDK
+# Embeddings - Python SDK
 
-> Integrate OpenRouter using the official OpenAI SDK. Complete guide for OpenAI SDK integration with OpenRouter for Python and TypeScript.
+> Embeddings method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
 
-## Using the OpenAI SDK
+(*embeddings*)
 
-* Using `pip install openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples-python/blob/main/src/openai_test.py).
-* Using `npm i openai`: [github](https://github.com/OpenRouterTeam/openrouter-examples/blob/main/examples/openai/index.ts).
-  <Tip>
-    You can also use
-    [Grit](https://app.grit.io/studio?key=RKC0n7ikOiTGTNVkI8uRS) to
-    automatically migrate your code. Simply run `npx @getgrit/launcher
-      openrouter`.
-  </Tip>
+## Overview
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import OpenAI from "openai"
+Text embedding endpoints
 
-  const openai = new OpenAI({
-    baseURL: "https://openrouter.ai/api/v1",
-    apiKey: "${API_KEY_REF}",
-    defaultHeaders: {
-      ${getHeaderLines().join('\n        ')}
-    },
-  })
+### Available Operations
 
-  async function main() {
-    const completion = await openai.chat.completions.create({
-      model: "${Model.GPT_4_Omni}",
-      messages: [
-        { role: "user", content: "Say this is a test" }
-      ],
+* [generate](#generate) - Submit an embedding request
+* [list\_models](#list_models) - List all embeddings models
+
+## generate
+
+Submits an embedding request to the embeddings router
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="createEmbeddings" method="post" path="/embeddings" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.embeddings.generate(input="<value>", model="Taurus", provider={
+        "data_collection": "allow",
+        "zdr": True,
+        "enforce_distillable_text": True,
+        "order": [
+            "OpenAI",
+        ],
+        "only": [
+            "OpenAI",
+        ],
+        "ignore": [
+            "OpenAI",
+        ],
+        "quantizations": [
+            "fp16",
+        ],
+        "sort": "price",
     })
 
-    console.log(completion.choices[0].message)
-  }
-  main();
-  ```
+    # Handle response
+    print(res)
 
-  ```python title="Python"
-  from openai import OpenAI
-  from os import getenv
-
-  # gets API Key from environment variable OPENAI_API_KEY
-  client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=getenv("OPENROUTER_API_KEY"),
-  )
-
-  completion = client.chat.completions.create(
-    model="${Model.GPT_4_Omni}",
-    extra_headers={
-      "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
-      "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
-    },
-    # pass extra_body to access OpenRouter-only arguments.
-    # extra_body={
-      # "models": [
-      #   "${Model.GPT_4_Omni}",
-      #   "${Model.Mixtral_8x_22B_Instruct}"
-      # ]
-    # },
-    messages=[
-      {
-        "role": "user",
-        "content": "Say this is a test",
-      },
-    ],
-  )
-  print(completion.choices[0].message.content)
-  ```
-</CodeGroup>
-
-
-# PydanticAI
-
-> Integrate OpenRouter using PydanticAI framework. Complete guide for PydanticAI integration with OpenRouter for Python applications.
-
-## Using PydanticAI
-
-[PydanticAI](https://github.com/pydantic/pydantic-ai) provides a high-level interface for working with various LLM providers, including OpenRouter.
-
-### Installation
-
-```bash
-pip install 'pydantic-ai-slim[openai]'
 ```
 
-### Configuration
+### Parameters
 
-You can use OpenRouter with PydanticAI through its OpenAI-compatible interface:
+| Parameter         | Type                                                                                            | Required             | Description                                                         |
+| ----------------- | ----------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `input`           | [operations.InputUnion](/docs/sdks/python/operations/inputunion)                                | :heavy\_check\_mark: | N/A                                                                 |
+| `model`           | *str*                                                                                           | :heavy\_check\_mark: | N/A                                                                 |
+| `encoding_format` | [Optional\[operations.EncodingFormat\]](../../operations/encodingformat.md)                     | :heavy\_minus\_sign: | N/A                                                                 |
+| `dimensions`      | *Optional\[int]*                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `user`            | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `provider`        | [Optional\[operations.CreateEmbeddingsProvider\]](../../operations/createembeddingsprovider.md) | :heavy\_minus\_sign: | N/A                                                                 |
+| `input_type`      | *Optional\[str]*                                                                                | :heavy\_minus\_sign: | N/A                                                                 |
+| `retries`         | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.CreateEmbeddingsResponse](/docs/sdks/python/operations/createembeddingsresponse)**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.PaymentRequiredResponseError    | 402         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.EdgeNetworkTimeoutResponseError | 524         | application/json |
+| errors.ProviderOverloadedResponseError | 529         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
+
+## list\_models
+
+Returns a list of all available embeddings models and their properties
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listEmbeddingsModels" method="get" path="/embeddings/models" */}
 
 ```python
-from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIModel
+from openrouter import OpenRouter
+import os
 
-model = OpenAIModel(
-    "anthropic/claude-3.5-sonnet",  # or any other OpenRouter model
-    base_url="https://openrouter.ai/api/v1",
-    api_key="sk-or-...",
-)
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
 
-agent = Agent(model)
-result = await agent.run("What is the meaning of life?")
-print(result)
+    res = open_router.embeddings.list_models()
+
+    # Handle response
+    print(res)
+
 ```
 
-For more details about using PydanticAI with OpenRouter, see the [PydanticAI documentation](https://ai.pydantic.dev/models/#api_key-argument).
+### Parameters
+
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[components.ModelsListResponse](/docs/sdks/python/components/modelslistresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
 
-# Vercel AI SDK
+# Endpoints - Python SDK
 
-> Integrate OpenRouter using Vercel AI SDK. Complete guide for Vercel AI SDK integration with OpenRouter for Next.js applications.
+> Endpoints method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
 
-## Vercel AI SDK
+(*endpoints*)
 
-You can use the [Vercel AI SDK](https://www.npmjs.com/package/ai) to integrate OpenRouter with your Next.js app. To get started, install [@openrouter/ai-sdk-provider](https://github.com/OpenRouterTeam/ai-sdk-provider):
+## Overview
 
-```bash
-npm install @openrouter/ai-sdk-provider
+Endpoint information
+
+### Available Operations
+
+* [list](#list) - List all endpoints for a model
+* [list\_zdr\_endpoints](#list_zdr_endpoints) - Preview the impact of ZDR on the available endpoints
+
+## list
+
+List all endpoints for a model
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listEndpoints" method="get" path="/models/{author}/{slug}/endpoints" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.endpoints.list(author="<value>", slug="<value>")
+
+    # Handle response
+    print(res)
+
 ```
 
-And then you can use [streamText()](https://sdk.vercel.ai/docs/reference/ai-sdk-core/stream-text) API to stream text from OpenRouter.
+### Parameters
 
-<CodeGroup>
-  ```typescript title="TypeScript"
-  import { createOpenRouter } from '@openrouter/ai-sdk-provider';
-  import { streamText } from 'ai';
-  import { z } from 'zod';
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `author`  | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
+| `slug`    | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
 
-  export const getLasagnaRecipe = async (modelName: string) => {
-    const openrouter = createOpenRouter({
-      apiKey: '${API_KEY_REF}',
-    });
+### Response
 
-    const response = streamText({
-      model: openrouter(modelName),
-      prompt: 'Write a vegetarian lasagna recipe for 4 people.',
-    });
+**[operations.ListEndpointsResponse](/docs/sdks/python/operations/listendpointsresponse)**
 
-    await response.consumeStream();
-    return response.text;
-  };
+### Errors
 
-  export const getWeather = async (modelName: string) => {
-    const openrouter = createOpenRouter({
-      apiKey: '${API_KEY_REF}',
-    });
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
 
-    const response = streamText({
-      model: openrouter(modelName),
-      prompt: 'What is the weather in San Francisco, CA in Fahrenheit?',
-      tools: {
-        getCurrentWeather: {
-          description: 'Get the current weather in a given location',
-          parameters: z.object({
-            location: z
-              .string()
-              .describe('The city and state, e.g. San Francisco, CA'),
-            unit: z.enum(['celsius', 'fahrenheit']).optional(),
-          }),
-          execute: async ({ location, unit = 'celsius' }) => {
-            // Mock response for the weather
-            const weatherData = {
-              'Boston, MA': {
-                celsius: '15°C',
-                fahrenheit: '59°F',
-              },
-              'San Francisco, CA': {
-                celsius: '18°C',
-                fahrenheit: '64°F',
-              },
-            };
+## list\_zdr\_endpoints
 
-            const weather = weatherData[location];
-            if (!weather) {
-              return `Weather data for ${location} is not available.`;
-            }
+Preview the impact of ZDR on the available endpoints
 
-            return `The current weather in ${location} is ${weather[unit]}.`;
-          },
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listEndpointsZdr" method="get" path="/endpoints/zdr" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.endpoints.list_zdr_endpoints()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.ListEndpointsZdrResponse](/docs/sdks/python/operations/listendpointszdrresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+
+# Generations - Python SDK
+
+> Generations method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*generations*)
+
+## Overview
+
+Generation history endpoints
+
+### Available Operations
+
+* [get\_generation](#get_generation) - Get request & usage metadata for a generation
+
+## get\_generation
+
+Get request & usage metadata for a generation
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getGeneration" method="get" path="/generation" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.generations.get_generation(id="<id>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `id`      | *str*                                                              | :heavy\_check\_mark: | N/A                                                                 |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.GetGenerationResponse](/docs/sdks/python/operations/getgenerationresponse)**
+
+### Errors
+
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.PaymentRequiredResponseError    | 402         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.EdgeNetworkTimeoutResponseError | 524         | application/json |
+| errors.ProviderOverloadedResponseError | 529         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
+
+
+# OAuth - Python SDK
+
+> OAuth method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*o\_auth*)
+
+## Overview
+
+OAuth authentication endpoints
+
+### Available Operations
+
+* [exchange\_auth\_code\_for\_api\_key](#exchange_auth_code_for_api_key) - Exchange authorization code for API key
+* [create\_auth\_code](#create_auth_code) - Create authorization code
+
+## exchange\_auth\_code\_for\_api\_key
+
+Exchange an authorization code from the PKCE flow for a user-controlled API key
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="exchangeAuthCodeForAPIKey" method="post" path="/auth/keys" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.o_auth.exchange_auth_code_for_api_key(code="auth_code_abc123def456", code_verifier="dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk", code_challenge_method="S256")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter               | Type                                                                                                                                            | Required             | Description                                                                | Example                                      |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------- | -------------------------------------------- |
+| `code`                  | *str*                                                                                                                                           | :heavy\_check\_mark: | The authorization code received from the OAuth redirect                    | auth\_code\_abc123def456                     |
+| `code_verifier`         | *Optional\[str]*                                                                                                                                | :heavy\_minus\_sign: | The code verifier if code\_challenge was used in the authorization request | dBjftJeZ4CVP-mB92K27uhbUJU1p1r\_wW1gFWFOEjXk |
+| `code_challenge_method` | [OptionalNullable\[operations.ExchangeAuthCodeForAPIKeyCodeChallengeMethod\]](../../operations/exchangeauthcodeforapikeycodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                             | S256                                         |
+| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.        |                                              |
+
+### Response
+
+**[operations.ExchangeAuthCodeForAPIKeyResponse](/docs/sdks/python/operations/exchangeauthcodeforapikeyresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.ForbiddenResponseError      | 403         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## create\_auth\_code
+
+Create an authorization code for the PKCE flow to generate a user-controlled API key
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="createAuthKeysCode" method="post" path="/auth/keys/code" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.o_auth.create_auth_code(callback_url="https://myapp.com/auth/callback", code_challenge="E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM", code_challenge_method="S256", limit=100)
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter               | Type                                                                                                                      | Required             | Description                                                                                                   | Example                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `callback_url`          | *str*                                                                                                                     | :heavy\_check\_mark: | The callback URL to redirect to after authorization. Note, only https URLs on ports 443 and 3000 are allowed. | [https://myapp.com/auth/callback](https://myapp.com/auth/callback) |
+| `code_challenge`        | *Optional\[str]*                                                                                                          | :heavy\_minus\_sign: | PKCE code challenge for enhanced security                                                                     | E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM                        |
+| `code_challenge_method` | [Optional\[operations.CreateAuthKeysCodeCodeChallengeMethod\]](../../operations/createauthkeyscodecodechallengemethod.md) | :heavy\_minus\_sign: | The method used to generate the code challenge                                                                | S256                                                               |
+| `limit`                 | *Optional\[float]*                                                                                                        | :heavy\_minus\_sign: | Credit limit for the API key to be created                                                                    | 100                                                                |
+| `expires_at`            | [date](https://docs.python.org/3/library/datetime.html#date-objects)                                                      | :heavy\_minus\_sign: | Optional expiration time for the API key to be created                                                        |                                                                    |
+| `retries`               | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                           |                                                                    |
+
+### Response
+
+**[operations.CreateAuthKeysCodeResponse](/docs/sdks/python/operations/createauthkeyscoderesponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+
+# Parameters - Python SDK
+
+> Parameters method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*parameters*)
+
+## Overview
+
+Parameters endpoints
+
+### Available Operations
+
+* [get\_parameters](#get_parameters) - Get a model's supported parameters and data about which are most popular
+
+## get\_parameters
+
+Get a model's supported parameters and data about which are most popular
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="getParameters" method="get" path="/parameters/{author}/{slug}" */}
+
+```python
+from openrouter import OpenRouter, operations
+import os
+
+with OpenRouter() as open_router:
+
+    res = open_router.parameters.get_parameters(security=operations.GetParametersSecurity(
+        bearer=os.getenv("OPENROUTER_BEARER", ""),
+    ), author="<value>", slug="<value>")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter  | Type                                                                                      | Required             | Description                                                         |
+| ---------- | ----------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `security` | [operations.GetParametersSecurity](/docs/sdks/python/operations/getparameterssecurity)    | :heavy\_check\_mark: | N/A                                                                 |
+| `author`   | *str*                                                                                     | :heavy\_check\_mark: | N/A                                                                 |
+| `slug`     | *str*                                                                                     | :heavy\_check\_mark: | N/A                                                                 |
+| `provider` | [Optional\[operations.GetParametersProvider\]](../../operations/getparametersprovider.md) | :heavy\_minus\_sign: | N/A                                                                 |
+| `retries`  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                        | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.GetParametersResponse](/docs/sdks/python/operations/getparametersresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+
+# Providers - Python SDK
+
+> Providers method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*providers*)
+
+## Overview
+
+Provider information endpoints
+
+### Available Operations
+
+* [list](#list) - List all providers
+
+## list
+
+List all providers
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="listProviders" method="get" path="/providers" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.providers.list()
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter | Type                                                               | Required             | Description                                                         |
+| --------- | ------------------------------------------------------------------ | -------------------- | ------------------------------------------------------------------- |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[operations.ListProvidersResponse](/docs/sdks/python/operations/listprovidersresponse)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+
+# Responses - Python SDK
+
+> Responses method documentation for the OpenRouter Python SDK. Learn how to use this API endpoint with code examples.
+
+(*beta.responses*)
+
+## Overview
+
+beta.responses endpoints
+
+### Available Operations
+
+* [send](#send) - Create a response
+
+## send
+
+Creates a streaming or non-streaming response using OpenResponses API format
+
+### Example Usage
+
+{/* UsageSnippet language="python" operationID="createResponses" method="post" path="/responses" */}
+
+```python
+from openrouter import OpenRouter
+import os
+
+with OpenRouter(
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.beta.responses.send(input=[
+        {
+            "type": "message",
+            "role": "user",
+            "content": "Hello, how are you?",
         },
-      },
-    });
+    ], metadata={
+        "user_id": "123",
+        "session_id": "abc-def-ghi",
+    }, tools=[
+        {
+            "type": "function",
+            "name": "get_current_weather",
+            "description": "Get the current weather in a given location",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                    },
+                },
+            },
+        },
+    ], model="anthropic/claude-4.5-sonnet-20250929", text={
+        "format_": {
+            "type": "text",
+        },
+        "verbosity": "medium",
+    }, reasoning={
+        "summary": "auto",
+        "enabled": True,
+    }, temperature=0.7, top_p=0.9, prompt={
+        "id": "<id>",
+        "variables": {
+            "key": {
+                "type": "input_text",
+                "text": "Hello, how can I help you?",
+            },
+        },
+    }, service_tier="auto", truncation="auto", stream=False, provider={
+        "data_collection": "allow",
+        "zdr": True,
+        "enforce_distillable_text": True,
+        "order": [
+            "OpenAI",
+        ],
+        "only": [
+            "OpenAI",
+        ],
+        "ignore": [
+            "OpenAI",
+        ],
+        "quantizations": None,
+        "sort": "price",
+    })
 
-    await response.consumeStream();
-    return response.text;
-  };
-  ```
-</CodeGroup>
+    with res as event_stream:
+        for event in event_stream:
+            # handle event
+            print(event, flush=True)
 
+```
 
-# Xcode
+### Parameters
 
-> Integrate OpenRouter with Apple Intelligence in Xcode 26. Complete setup guide for accessing hundreds of AI models directly in your Xcode development environment.
+| Parameter              | Type                                                                                                            | Required             | Description                                                                                                                                                                                                                                                                                          | Example                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `input`                | [Optional\[components.OpenResponsesInput\]](../../components/openresponsesinput.md)                             | :heavy\_minus\_sign: | Input for a response request - can be a string or array of items                                                                                                                                                                                                                                     | \[<br />`{"role": "user","content": "What is the weather today?"}`<br />] |
+| `instructions`         | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `metadata`             | Dict\[str, *str*]                                                                                               | :heavy\_minus\_sign: | Metadata key-value pairs for the request. Keys must be ≤64 characters and cannot contain brackets. Values must be ≤512 characters. Maximum 16 pairs allowed.                                                                                                                                         | `{"user_id": "123","session_id": "abc-def-ghi"}`                          |
+| `tools`                | List\[[components.OpenResponsesRequestToolUnion](/docs/sdks/python/components/openresponsesrequesttoolunion)]   | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `tool_choice`          | [Optional\[components.OpenAIResponsesToolChoiceUnion\]](../../components/openairesponsestoolchoiceunion.md)     | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `parallel_tool_calls`  | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `model`                | *Optional\[str]*                                                                                                | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `models`               | List\[*str*]                                                                                                    | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `text`                 | [Optional\[components.OpenResponsesResponseText\]](../../components/openresponsesresponsetext.md)               | :heavy\_minus\_sign: | Text output configuration including format and verbosity                                                                                                                                                                                                                                             | `{"format": {"type": "text"}`,<br />"verbosity": "medium"<br />}          |
+| `reasoning`            | [OptionalNullable\[components.OpenResponsesReasoningConfig\]](../../components/openresponsesreasoningconfig.md) | :heavy\_minus\_sign: | Configuration for reasoning mode in the response                                                                                                                                                                                                                                                     | `{"summary": "auto","enabled": true}`                                     |
+| `max_output_tokens`    | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `temperature`          | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `top_p`                | *OptionalNullable\[float]*                                                                                      | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `top_k`                | *Optional\[float]*                                                                                              | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `prompt_cache_key`     | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `previous_response_id` | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `prompt`               | [OptionalNullable\[components.OpenAIResponsesPrompt\]](../../components/openairesponsesprompt.md)               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `include`              | List\[[components.OpenAIResponsesIncludable](/docs/sdks/python/components/openairesponsesincludable)]           | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `background`           | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `safety_identifier`    | *OptionalNullable\[str]*                                                                                        | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `store`                | *OptionalNullable\[bool]*                                                                                       | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `service_tier`         | [OptionalNullable\[components.ServiceTier\]](../../components/servicetier.md)                                   | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  | auto                                                                      |
+| `truncation`           | [OptionalNullable\[components.Truncation\]](../../components/truncation.md)                                     | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  | auto                                                                      |
+| `stream`               | *Optional\[bool]*                                                                                               | :heavy\_minus\_sign: | N/A                                                                                                                                                                                                                                                                                                  |                                                                           |
+| `provider`             | [OptionalNullable\[components.Provider\]](../../components/provider.md)                                         | :heavy\_minus\_sign: | When multiple model providers are available, optionally indicate your routing preference.                                                                                                                                                                                                            |                                                                           |
+| `plugins`              | List\[[components.Plugin](/docs/sdks/python/components/plugin)]                                                 | :heavy\_minus\_sign: | Plugins you want to enable for this request, including their settings.                                                                                                                                                                                                                               |                                                                           |
+| `user`                 | *Optional\[str]*                                                                                                | :heavy\_minus\_sign: | A unique identifier representing your end-user, which helps distinguish between different users of your app. This allows your app to identify specific users in case of abuse reports, preventing your entire app from being affected by the actions of individual users. Maximum of 128 characters. |                                                                           |
+| `retries`              | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.md)                                              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                  |                                                                           |
 
-## Using Xcode with Apple Intelligence
+### Response
 
-[Apple Intelligence](https://developer.apple.com/apple-intelligence/) in Xcode 26 provides built-in AI assistance for coding. By integrating OpenRouter, you can access hundreds of AI models directly in your Xcode development environment, going far beyond the default ChatGPT integration.
+**[operations.CreateResponsesResponse](/docs/sdks/python/operations/createresponsesresponse)**
 
-This integration allows you to use models from Anthropic, Google, Meta, and many other providers without leaving your development environment.
+### Errors
 
-### Prerequisites
-
-<Callout intent="warn">
-  Apple Intelligence on Xcode is currently in Beta and requires:
-
-  * **macOS Tahoe 26.0 Beta** or later
-  * **[Xcode 26 beta 4](https://developer.apple.com/download/applications/)** or later
-</Callout>
-
-### Setup Instructions
-
-#### Step 1: Access Intelligence Settings
-
-Navigate to **Settings > Intelligence > Add a Model Provider** in your macOS system preferences.
-
-![Xcode Intelligence Settings](file:00caf325-440b-4882-9e53-510c884eebb6)
-
-#### Step 2: Configure OpenRouter Provider
-
-In the "Add a Model Provider" dialog, enter the following details:
-
-* **URL**: `https://openrouter.ai/api`
-  * **Important**: Do not add `/v1` at the end of the endpoint like you typically would for direct API calls
-* **API Key Header**: `api_key`
-* **API Key**: Your OpenRouter API key (starts with `sk-or-v1-`)
-* **Description**: `OpenRouter` (or any name you prefer)
-
-Click **Add** to save the configuration.
-
-![OpenRouter Configuration](file:3df955c8-b73d-4de2-a3d7-adcf8b5f3207)
-
-#### Step 3: Browse Available Models
-
-Once configured, click on **OpenRouter** to see all available models. Since OpenRouter offers hundreds of models, you should bookmark your favorite models for quick access. Bookmarked models will appear at the top of the list, making them easily accessible from within the pane whenever you need them.
-
-![Available Models](file:d963a47b-6a9f-421c-bc97-446bdf9caf95)
-
-You'll have access to models from various providers including:
-
-* Anthropic Claude models
-* Google Gemini models
-* Meta Llama models
-* OpenAI GPT models
-* And hundreds more
-
-![Extended Model List](file:59363da6-a477-47dc-8c02-d0a406527261)
-
-#### Step 4: Start Using AI in Xcode
-
-Head back to the chat interface (icon at the top) and start chatting with your selected models directly in Xcode.
-
-![Xcode Chat Interface](file:e0d542f3-7851-4fd4-8453-05087d20b469)
-
-### Using Apple Intelligence Features
-
-Once configured, you can use Apple Intelligence features in Xcode with OpenRouter models:
-
-* **Code Completion**: Get intelligent code suggestions
-* **Code Explanation**: Ask questions about your code
-* **Refactoring Assistance**: Get help improving your code structure
-* **Documentation Generation**: Generate comments and documentation
-
-![Apple Intelligence Interface](file:db161951-c34d-4de6-bd19-6318837af4b5)
-
-*Image credit: [Apple Developer Documentation](https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode)*
-
-### Learn More
-
-* **Apple Intelligence Documentation**: [Writing Code with Intelligence in Xcode](https://developer.apple.com/documentation/Xcode/writing-code-with-intelligence-in-xcode)
-* **OpenRouter Quick Start**: [Getting Started with OpenRouter](https://openrouter.ai/docs/quickstart)
-* **Available Models**: [Browse OpenRouter Models](https://openrouter.ai/models)
-
-
-# Zapier
-
-> Build powerful AI automations by connecting OpenRouter with 8000+ apps through Zapier. Access 500+ AI models in your workflows.
-
-With OpenRouter you have access to over 500+ AI models through one API, and with Zapier you can connect to 8000+ apps to automate workflows, no coding required!
-
-This page embeds Zapier Elements so your users can create Zaps that use OpenRouter-powered AI.
-
-<Tip>
-  Combine OpenRouter's model routing with Zapier's integrations to automate tasks across CRMs, spreadsheets, messaging, and more.
-</Tip>
-
-## Set up your Integration
-
-Get started by exploring available automations and creating your first Zap with OpenRouter. The integration supports all OpenRouter models and features, including streaming responses, function calling, and multimodal capabilities.
-
-<ZapierIframe />
-
-## Using OpenRouter in Zapier
-
-Once you've set up the integration, you can use OpenRouter in your Zaps to:
-
-* **Generate content** with models like GPT-4, Claude, or Gemini
-* **Analyze data** using specialized models for different domains
-* **Process images** with vision-capable models
-* **Create structured outputs** with JSON mode and function calling
-* **Stream responses** for real-time applications
-
-The OpenRouter Zapier integration automatically handles authentication, model routing, and error handling, so you can focus on building your automation logic.
-
-For more advanced use cases and detailed documentation, visit the [OpenRouter Zapier integration page](https://zapier.com/apps/openrouter/integrations).
-
-![Zapier Integration Screenshot](file:62c7f2a0-a525-43f7-8ead-cec1e112adec)
+| Error Type                              | Status Code | Content Type     |
+| --------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError          | 400         | application/json |
+| errors.UnauthorizedResponseError        | 401         | application/json |
+| errors.PaymentRequiredResponseError     | 402         | application/json |
+| errors.NotFoundResponseError            | 404         | application/json |
+| errors.RequestTimeoutResponseError      | 408         | application/json |
+| errors.PayloadTooLargeResponseError     | 413         | application/json |
+| errors.UnprocessableEntityResponseError | 422         | application/json |
+| errors.TooManyRequestsResponseError     | 429         | application/json |
+| errors.InternalServerResponseError      | 500         | application/json |
+| errors.BadGatewayResponseError          | 502         | application/json |
+| errors.ServiceUnavailableResponseError  | 503         | application/json |
+| errors.EdgeNetworkTimeoutResponseError  | 524         | application/json |
+| errors.ProviderOverloadedResponseError  | 529         | application/json |
+| errors.OpenRouterDefaultError           | 4XX, 5XX    | \*/\*            |
 
 

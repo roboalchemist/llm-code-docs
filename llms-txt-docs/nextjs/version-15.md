@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/upgrading/version-15.md
 
 # How to upgrade to version 15
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 ## Upgrading from 14 to 15

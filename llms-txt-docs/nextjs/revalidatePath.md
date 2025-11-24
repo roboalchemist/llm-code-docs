@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/revalidatePath.md
 
 # revalidatePath
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 `revalidatePath` allows you to invalidate [cached data](/docs/app/guides/caching.md) on-demand for a specific path.

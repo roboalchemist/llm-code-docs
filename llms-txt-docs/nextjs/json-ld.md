@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/json-ld.md
 
 # How to implement JSON-LD in your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 [JSON-LD](https://json-ld.org/) is a format for structured data that can be used by search engines and AI to help them understand the structure of the page beyond pure content. For example, you can use it to describe a person, an event, an organization, a movie, a book, a recipe, and many other types of entities.

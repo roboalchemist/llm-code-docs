@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/directives/use-cache-private.md
 
 # use cache: private
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `'use cache: private'` directive works just like [`use cache`](/docs/app/api-reference/directives/use-cache.md), but allows you to use runtime APIs like cookies, headers, or search params.

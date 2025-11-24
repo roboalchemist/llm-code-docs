@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/ci-build-caching.md
 
-# Source: https://nextjs.org/docs/pages/guides/ci-build-caching.md
-
-# Source: https://nextjs.org/docs/app/guides/ci-build-caching.md
-
-# Source: https://nextjs.org/docs/pages/guides/ci-build-caching.md
-
 # How to configure Continuous Integration (CI) build caching
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 To improve build performance, Next.js saves a cache to `.next/cache` that is shared between builds.

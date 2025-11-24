@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing.md
 
-# Source: https://nextjs.org/docs/pages/guides/testing.md
-
-# Source: https://nextjs.org/docs/app/guides/testing.md
-
-# Source: https://nextjs.org/docs/pages/guides/testing.md
-
 # Testing
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 In React and Next.js, there are a few different types of tests you can write, each with its own purpose and use cases. This page provides an overview of types and commonly used tools you can use to test your application.
@@ -21,6 +15,10 @@ In React and Next.js, there are a few different types of tests you can write, ea
   * **Integration Testing** involves testing how multiple units work together. This can be a combination of components, hooks, and functions.
 * **End-to-End (E2E) Testing** involves testing user flows in an environment that simulates real user scenarios, like the browser. This means testing specific tasks (e.g. signup flow) in a production-like environment.
 * **Snapshot Testing** involves capturing the rendered output of a component and saving it to a snapshot file. When tests run, the current rendered output of the component is compared against the saved snapshot. Changes in the snapshot are used to indicate unexpected changes in behavior.
+
+## Async Server Components
+
+Since `async` Server Components are new to the React ecosystem, some tools do not fully support them. In the meantime, we recommend using **End-to-End Testing** over **Unit Testing** for `async` components.
 
 ## Guides
 

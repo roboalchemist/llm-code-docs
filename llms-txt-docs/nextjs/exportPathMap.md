@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap.md
-
 # exportPathMap
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 
@@ -77,7 +71,7 @@ module.exports = {
 
 ## Customizing the output directory
 
-[`next export`](/docs/pages/guides/static-exports.md) will use `out` as the default output directory, you can customize this using the `-o` argument, like so:
+[`next export`](/docs/app/guides/static-exports.md) will use `out` as the default output directory, you can customize this using the `-o` argument, like so:
 
 ```bash filename="Terminal"
 next export -o outdir

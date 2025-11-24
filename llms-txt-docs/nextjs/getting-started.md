@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/getting-started.md
 
-# Source: https://nextjs.org/docs/pages/getting-started.md
-
-# Source: https://nextjs.org/docs/app/getting-started.md
-
-# Source: https://nextjs.org/docs/pages/getting-started.md
-
 # Getting Started
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Welcome to the Next.js documentation!

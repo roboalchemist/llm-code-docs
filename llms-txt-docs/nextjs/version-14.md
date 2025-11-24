@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/upgrading/version-14.md
 
-# Source: https://nextjs.org/docs/pages/guides/upgrading/version-14.md
-
-# Source: https://nextjs.org/docs/app/guides/upgrading/version-14.md
-
-# Source: https://nextjs.org/docs/pages/guides/upgrading/version-14.md
-
 # How to upgrade to version 14
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 ## Upgrading from 13 to 14

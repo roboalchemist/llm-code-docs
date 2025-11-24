@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/architecture/fast-refresh.md
 
 # Fast Refresh
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Fast refresh is a React feature integrated into Next.js that allows you to live reload the browser page while maintaining temporary client-side state when you save changes to a file. It's enabled by default in all Next.js applications on **9.4 or newer**. With Fast Refresh enabled, most edits should be visible within a second.

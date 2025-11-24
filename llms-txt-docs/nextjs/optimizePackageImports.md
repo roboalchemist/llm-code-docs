@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/optimizePackageImports.md
-
 # optimizePackageImports
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production.

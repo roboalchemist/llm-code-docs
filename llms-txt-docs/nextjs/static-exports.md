@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/static-exports.md
 
-# Source: https://nextjs.org/docs/pages/guides/static-exports.md
-
-# Source: https://nextjs.org/docs/app/guides/static-exports.md
-
-# Source: https://nextjs.org/docs/pages/guides/static-exports.md
-
 # How to create a static export of your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
@@ -44,20 +38,105 @@ module.exports = nextConfig
 
 After running `next build`, Next.js will create an `out` folder with the HTML/CSS/JS assets for your application.
 
-You can utilize [`getStaticProps`](/docs/pages/building-your-application/data-fetching/get-static-props.md) and [`getStaticPaths`](/docs/pages/building-your-application/data-fetching/get-static-paths.md) to generate an HTML file for each page in your `pages` directory (or more for [dynamic routes](/docs/app/api-reference/file-conventions/dynamic-routes.md)).
-
 ## Supported Features
 
-The majority of core Next.js features needed to build a static site are supported, including:
+The core of Next.js has been designed to support static exports.
 
-* [Dynamic Routes when using `getStaticPaths`](/docs/app/api-reference/file-conventions/dynamic-routes.md)
-* Prefetching with `next/link`
-* Preloading JavaScript
-* [Dynamic Imports](/docs/pages/guides/lazy-loading.md)
-* Any styling options (e.g. CSS Modules, styled-jsx)
-* [Client-side data fetching](/docs/pages/building-your-application/data-fetching/client-side.md)
-* [`getStaticProps`](/docs/pages/building-your-application/data-fetching/get-static-props.md)
-* [`getStaticPaths`](/docs/pages/building-your-application/data-fetching/get-static-paths.md)
+### Server Components
+
+When you run `next build` to generate a static export, Server Components consumed inside the `app` directory will run during the build, similar to traditional static-site generation.
+
+The resulting component will be rendered into static HTML for the initial page load and a static payload for client navigation between routes. No changes are required for your Server Components when using the static export, unless they consume [dynamic server functions](#unsupported-features).
+
+```tsx filename="app/page.tsx" switcher
+export default async function Page() {
+  // This fetch will run on the server during `next build`
+  const res = await fetch('https://api.example.com/...')
+  const data = await res.json()
+
+  return <main>...</main>
+}
+```
+
+### Client Components
+
+If you want to perform data fetching on the client, you can use a Client Component with [SWR](https://github.com/vercel/swr) to memoize requests.
+
+```tsx filename="app/other/page.tsx" switcher
+'use client'
+
+import useSWR from 'swr'
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json())
+
+export default function Page() {
+  const { data, error } = useSWR(
+    `https://jsonplaceholder.typicode.com/posts/1`,
+    fetcher
+  )
+  if (error) return 'Failed to load'
+  if (!data) return 'Loading...'
+
+  return data.title
+}
+```
+
+```jsx filename="app/other/page.js" switcher
+'use client'
+
+import useSWR from 'swr'
+
+const fetcher = (url) => fetch(url).then((r) => r.json())
+
+export default function Page() {
+  const { data, error } = useSWR(
+    `https://jsonplaceholder.typicode.com/posts/1`,
+    fetcher
+  )
+  if (error) return 'Failed to load'
+  if (!data) return 'Loading...'
+
+  return data.title
+}
+```
+
+Since route transitions happen client-side, this behaves like a traditional SPA. For example, the following index route allows you to navigate to different posts on the client:
+
+```tsx filename="app/page.tsx" switcher
+import Link from 'next/link'
+
+export default function Page() {
+  return (
+    <>
+      <h1>Index Page</h1>
+      <hr />
+      <ul>
+        <li>
+          <Link href="/post/1">Post 1</Link>
+        </li>
+        <li>
+          <Link href="/post/2">Post 2</Link>
+        </li>
+      </ul>
+    </>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import Link from 'next/link'
+
+export default function Page() {
+  return (
+    <>
+      <h1>Index Page</h1>
+      <p>
+        <Link href="/other">Other Page</Link>
+      </p>
+    </>
+  )
+}
+```
 
 ### Image Optimization
 
@@ -122,22 +201,68 @@ export default function Page() {
 }
 ```
 
+### Route Handlers
+
+Route Handlers will render a static response when running `next build`. Only the `GET` HTTP verb is supported. This can be used to generate static HTML, JSON, TXT, or other files from cached or uncached data. For example:
+
+```ts filename="app/data.json/route.ts" switcher
+export async function GET() {
+  return Response.json({ name: 'Lee' })
+}
+```
+
+```js filename="app/data.json/route.js" switcher
+export async function GET() {
+  return Response.json({ name: 'Lee' })
+}
+```
+
+The above file `app/data.json/route.ts` will render to a static file during `next build`, producing `data.json` containing `{ name: 'Lee' }`.
+
+If you need to read dynamic values from the incoming request, you cannot use a static export.
+
+### Browser APIs
+
+Client Components are pre-rendered to HTML during `next build`. Because [Web APIs](https://developer.mozilla.org/docs/Web/API) like `window`, `localStorage`, and `navigator` are not available on the server, you need to safely access these APIs only when running in the browser. For example:
+
+```jsx
+'use client';
+
+import { useEffect } from 'react';
+
+export default function ClientComponent() {
+  useEffect(() => {
+    // You now have access to `window`
+    console.log(window.innerHeight);
+  }, [])
+
+  return ...;
+}
+```
+
 ## Unsupported Features
 
 Features that require a Node.js server, or dynamic logic that cannot be computed during the build process, are **not** supported:
 
-* [Internationalized Routing](/docs/pages/guides/internationalization.md)
-* [API Routes](/docs/pages/building-your-application/routing/api-routes.md)
-* [Rewrites](/docs/pages/api-reference/config/next-config-js/rewrites.md)
-* [Redirects](/docs/pages/api-reference/config/next-config-js/redirects.md)
-* [Headers](/docs/pages/api-reference/config/next-config-js/headers.md)
-* [Proxy](/docs/pages/api-reference/file-conventions/proxy.md)
-* [Incremental Static Regeneration](/docs/pages/guides/incremental-static-regeneration.md)
-* [Image Optimization](/docs/pages/api-reference/components/image.md) with the default `loader`
-* [Draft Mode](/docs/pages/guides/draft-mode.md)
-* [`getStaticPaths` with `fallback: true`](/docs/pages/api-reference/functions/get-static-paths.md#fallback-true)
-* [`getStaticPaths` with `fallback: 'blocking'`](/docs/pages/api-reference/functions/get-static-paths.md#fallback-blocking)
-* [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props.md)
+* [Dynamic Routes](/docs/app/api-reference/file-conventions/dynamic-routes.md) with `dynamicParams: true`
+* [Dynamic Routes](/docs/app/api-reference/file-conventions/dynamic-routes.md) without `generateStaticParams()`
+* [Route Handlers](/docs/app/api-reference/file-conventions/route.md) that rely on Request
+* [Cookies](/docs/app/api-reference/functions/cookies.md)
+* [Rewrites](/docs/app/api-reference/config/next-config-js/rewrites.md)
+* [Redirects](/docs/app/api-reference/config/next-config-js/redirects.md)
+* [Headers](/docs/app/api-reference/config/next-config-js/headers.md)
+* [Proxy](/docs/app/api-reference/file-conventions/proxy.md)
+* [Incremental Static Regeneration](/docs/app/guides/incremental-static-regeneration.md)
+* [Image Optimization](/docs/app/api-reference/components/image.md) with the default `loader`
+* [Draft Mode](/docs/app/guides/draft-mode.md)
+* [Server Actions](/docs/app/getting-started/updating-data.md)
+* [Intercepting Routes](/docs/app/api-reference/file-conventions/intercepting-routes.md)
+
+Attempting to use any of these features with `next dev` will result in an error, similar to setting the [`dynamic`](/docs/app/api-reference/file-conventions/route-segment-config.md#dynamic) option to `error` in the root layout.
+
+```jsx
+export const dynamic = 'error'
+```
 
 ## Deploying
 

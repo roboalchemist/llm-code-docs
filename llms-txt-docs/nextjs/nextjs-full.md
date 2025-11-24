@@ -2028,255 +2028,360 @@ source: "https://nextjs.org/docs/app/getting-started/cache-components"
 
 # Cache Components
 
-Cache Components is a new approach to rendering and caching in Next.js that provides fine-grained control over what gets cached and when, while ensuring a great user experience through **Partial Prerendering (PPR)**.
+> **Good to know:** Cache Components is an opt-in feature. Enable it by setting the `cacheComponents` flag to `true` in your Next config file. See [Enabling Cache Components](#enabling-cache-components) for more details.
 
-## Cache Components
+Cache Components lets you mix static, cached, and dynamic content in a single route, giving you the speed of static sites with the flexibility of dynamic rendering.
 
-When developing dynamic applications, you have to balance two primary approaches:
+Server-rendered applications typically force a choice between static pages (fast but stale) and dynamic pages (fresh but slow). Moving this work to the client trades server load for larger bundles and slower initial rendering.
 
-* **Fully static pages** load fast but can't show personalized or real-time data
-* **Fully dynamic pages** can show fresh data but require rendering everything on each request, leading to slower initial loads
-
-With Cache Components enabled, Next.js treats all routes as **dynamic by default**. Every request renders with the latest available data. However, most pages are made up of both static and dynamic parts, and not all dynamic data needs to be resolved from source on every request.
-
-Cache Components allows you to mark data, and even parts of your UI as cacheable, which includes them in the pre-render pass alongside static parts of the page.
-
-> **Before Cache Components**, Next.js tried to statically optimize **entire** pages automatically, which could lead to unexpected behavior when adding dynamic code.
-
-Cache Components implements **Partial Prerendering (PPR)**, and `use cache` to give you the best of both worlds:
+Cache Components eliminates these tradeoffs by prerendering routes into a **static HTML shell** that's immediately sent to the browser, with dynamic content updating the UI as it becomes ready.
 
 ![Partially re-rendered Product Page showing static nav and product information, and dynamic cart and recommended products](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/learn/light/thinking-in-ppr.png)
 
-When a user visits a route:
+## How rendering works with Cache Components
 
-* The server sends a **static shell** containing cached content, ensuring a fast initial load
-* Dynamic sections wrapped in `Suspense` boundaries display fallback UI in the shell
-* Only the dynamic parts render to replace their fallbacks, streaming in parallel as they become ready
-* You can include otherwise-dynamic data in the initial shell by caching it with `use cache`
+At build time, Next.js renders your route's component tree. As long as components don't access network resources, certain system APIs, or require an incoming request to render, their output is **automatically added to the static shell**. Otherwise, you must choose how to handle them:
 
-> **🎥 Watch:** Why PPR and how it works → [YouTube (10 minutes)](https://www.youtube.com/watch?v=MTcPrTIBkpA).
+* Defer rendering to request time by wrapping components in React's [`<Suspense>`](https://react.dev/reference/react/Suspense), [showing fallback UI](#defer-rendering-to-request-time) until the content is ready, or
+* Cache the result using the [`use cache`](/docs/app/api-reference/directives/use-cache.md) directive to [include it in the static shell](#using-use-cache) (if no request data is needed)
 
-## How it works
+Because this happens ahead of time, before a request arrives, we refer to it as prerendering. This generates a static shell consisting of HTML for initial page loads and a serialized [RSC Payload](/docs/app/getting-started/server-and-client-components.md#on-the-server) for client-side navigation, ensuring the browser receives fully rendered content instantly whether users navigate directly to the URL or transition from another page.
 
-> **Good to know:** Cache Components is an opt-in feature. Enable it by setting the `cacheComponents` flag to `true` in your Next config file. See [Enabling Cache Components](#enabling-cache-components) for more details.
+Next.js requires you to explicitly handle components that can't complete during prerendering. If they aren't wrapped in `<Suspense>` or marked with `use cache`, you'll see an [`Uncached data was accessed outside of <Suspense>`](https://nextjs.org/docs/messages/blocking-route) error during development and build time.
 
-Cache Components gives you three key tools to control rendering:
-
-### 1. Suspense for runtime data
-
-Some data is only available at runtime when an actual user makes a request. APIs like [`cookies`](/docs/app/api-reference/functions/cookies.md), [`headers`](/docs/app/api-reference/functions/headers.md), and [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional) access request-specific information. Wrap components using these APIs in `Suspense` boundaries so the rest of the page can be pre-rendered as a static shell.
-
-**Runtime APIs include:**
-
-* [`cookies`](/docs/app/api-reference/functions/cookies.md)
-* [`headers`](/docs/app/api-reference/functions/headers.md)
-* [`searchParams` prop](/docs/app/api-reference/file-conventions/page.md#searchparams-optional)
-* [`params` prop](/docs/app/api-reference/file-conventions/page.md#params-optional) - This is runtime data unless you provide at least one example value through [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md). When provided, those specific param values are treated as static for prerendered paths, while other values remain runtime
-
-### 2. Suspense for dynamic data
-
-Dynamic data like [`fetch`](/docs/app/api-reference/functions/fetch.md) calls or database queries (`db.query(...)`) can change between requests but isn't user-specific. The [`connection`](/docs/app/api-reference/functions/connection.md) API is meta-dynamic—it represents waiting for a user navigation even though there's no actual data to return. Wrap components that use these in `Suspense` boundaries to enable streaming.
-
-**Dynamic data patterns include:**
-
-* [`fetch`](/docs/app/api-reference/functions/fetch.md) requests
-* Database queries
-* [`connection`](/docs/app/api-reference/functions/connection.md)
-
-### 3. Cached data with `use cache`
-
-Add `use cache` to any Server Component to make it cached and include it in the pre-rendered shell. You cannot use runtime APIs from inside a cached component. You can also mark utility functions as `use cache` and call them from Server Components.
-
-```tsx
-export async function getProducts() {
-  'use cache'
-  const data = await db.query('SELECT * FROM products')
-  return data
-}
-```
-
-## Using Suspense boundaries
-
-React [Suspense](https://react.dev/reference/react/Suspense) boundaries let you define what fallback UI to use when it wraps dynamic or runtime data.
-
-Content outside the boundary, including the fallback UI, is pre-rendered as a static shell, while content inside the boundary streams in when ready.
-
-Here's how to use `Suspense` with Cache Components:
-
-```tsx filename="app/page.tsx" switcher
-import { Suspense } from 'react'
-
-export default function Page() {
-  return (
-    <>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<Skeleton />}>
-        <DynamicContent />
-      </Suspense>
-    </>
-  )
-}
-
-async function DynamicContent() {
-  const res = await fetch('http://api.cms.com/posts')
-  const { posts } = await res.json()
-  return <div>{/* ... */}</div>
-}
-```
-
-```jsx filename="app/page.js" switcher
-import { Suspense } from 'react'
-
-export default function Page() {
-  return (
-    <>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<Skeleton />}>
-        <DynamicContent />
-      </Suspense>
-    </>
-  )
-}
-
-async function DynamicContent() {
-  const res = await fetch('http://api.cms.com/posts')
-  const { posts } = await res.json()
-  return <div>{/* ... */}</div>
-}
-```
-
-At build time, Next.js pre-renders the static content and the `fallback` UI, while the dynamic content is postponed until a user requests the route.
-
-> **Good to know**: Wrapping a component in `Suspense` doesn't make it dynamic; your API usage does. `Suspense` acts as a boundary that encapsulates dynamic content and enables streaming.
-
-### Missing Suspense boundaries
-
-Cache Components enforces that dynamic code must be wrapped in a `Suspense` boundary. If you forget, you'll see the [Uncached data was accessed outside of `<Suspense>`](https://nextjs.org/docs/messages/blocking-route) error:
-
-> **Uncached data was accessed outside of `<Suspense>`**
->
-> This delays the entire page from rendering, resulting in a slow user
-> experience. Next.js uses this error to ensure your app loads instantly
-> on every navigation.
->
-> To fix this, you can either:
->
-> **Wrap the component in a `<Suspense>`** boundary. This allows Next.js to stream its contents to the user as soon as it's ready, without blocking the rest of the app.
->
-> or
->
-> **Move the asynchronous await into a Cache Component("use cache")**. This allows Next.js to statically prerender the component as part of the HTML document, so it's instantly visible to the user.
->
-> Note that request-specific information, such as params, cookies, and headers, is not available during static prerendering, so it must be wrapped in `<Suspense>`.
-
-This error helps prevent a situation where, instead of getting a static shell instantly, users would hit a blocking runtime render with nothing to show. To fix it, add a `Suspense` boundary or use `use cache` to cache the work instead.
-
-### How streaming works
-
-Streaming splits the route into chunks and progressively streams them to the client as they become ready.
-This allows the user to see parts of the page immediately, before the entire content has finished
-rendering.
+> **Good to know**: Caching can be applied at the component or function level, while fallback UI can be defined around any subtree, which means you can compose static, cached, and dynamic content within a single route.
 
 ![Diagram showing partially rendered page on the client, with loading UI for chunks that are being streamed.](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/server-rendering-with-streaming.png)
 
-With partial pre-rendering, the initial UI can be sent immediately to the browser while the dynamic parts render. This decreases time to UI and may decrease total request time depending on how much of your UI is pre-rendered.
+This rendering approach is called **Partial Prerendering**, and it's the default behavior with Cache Components. For the rest of this document, we simply refer to it as "prerendering" which can produce a partial or complete output.
 
-![Diagram showing parallelization of route segments during streaming, showing data fetching,rendering, and hydration of individual chunks.](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/sequential-parallel-data-fetching.png)
+> **🎥 Watch:** Why Partial Prerendering and how it works → [YouTube (10 minutes)](https://www.youtube.com/watch?v=MTcPrTIBkpA).
 
-To reduce network overhead, the full response, including static HTML and streamed dynamic parts, is sent in a **single HTTP request**. This avoids extra round-trips and improves both initial load and overall performance.
+## Automatically prerendered content
+
+Operations like synchronous I/O, module imports, and pure computations can complete during prerendering. Components using only these operations have their rendered output included in the static HTML shell.
+
+Because all operations in the `Page` component below complete during rendering, its rendered output is automatically included in the static shell. When both the layout and page prerender successfully, the entire route is the static shell.
+
+```tsx filename="page.tsx"
+import fs from 'node:fs'
+
+export default async function Page() {
+  // Synchronous file system read
+  const content = fs.readFileSync('./config.json', 'utf-8')
+
+  // Module imports
+  const constants = await import('./constants.json')
+
+  // Pure computations
+  const processed = JSON.parse(content).items.map((item) => item.value * 2)
+
+  return (
+    <div>
+      <h1>{constants.appName}</h1>
+      <ul>
+        {processed.map((value, i) => (
+          <li key={i}>{value}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+```
+
+> **Good to know**: You can verify that a route was fully prerendered by checking the build output summary. Alternatively see what content was added to the static shell of any page by viewing the page source in your browser.
+
+## Defer rendering to request time
+
+During prerendering, when Next.js encounters work it can't complete (like network requests, accessing request data, or async operations), it requires you to explicitly handle it. To defer rendering to request time, a parent component must provide fallback UI using a Suspense boundary. The fallback becomes part of the static shell while the actual content resolves at request time.
+
+Place Suspense boundaries as close as possible to the components that need them. This maximizes the amount of content in the static shell, since everything outside the boundary can still prerender normally.
+
+> **Good to know**: With Suspense boundaries, multiple dynamic sections can render in parallel rather than blocking each other, reducing total load time.
+
+### Dynamic content
+
+External systems provide content asynchronously, which often takes an unpredictable time to resolve and may even fail. This is why prerendering doesn't execute them automatically.
+
+In general, when you need the latest data from the source on each request (like real-time feeds or personalized content), defer rendering by providing fallback UI with a Suspense boundary.
+
+For example the `DynamicContent` component below uses multiple operations that are not automatically prerendered.
+
+```tsx filename="page.tsx"
+import { Suspense } from 'react'
+import fs from 'node:fs/promises'
+import { setTimeout } from 'node:timers/promises'
+
+async function DynamicContent() {
+  // Network request
+  const data = await fetch('https://api.example.com/data')
+
+  // Database query
+  const users = await db.query('SELECT * FROM users')
+
+  // Async file system operation
+  const file = await fs.readFile('..', 'utf-8')
+
+  // Simulating external system delay
+  await setTimeout(100) // from 'node:timers/promises'
+
+  return <div>Not in the static shell</div>
+}
+```
+
+To use `DynamicContent` within a page, wrap it in `<Suspense>` to define fallback UI:
+
+```tsx filename="page.tsx"
+export default async function Page(props) {
+  return (
+    <>
+      <h1>Part of the static shell</h1>
+      {/* <p>Loading..</p> is part of the static shell */}
+      <Suspense fallback={<p>Loading..</p>}>
+        <DynamicContent />
+        <div>Sibling excluded from static shell</div>
+      </Suspense>
+    </>
+  )
+}
+```
+
+Prerendering stops at the `fetch` request. The request itself is not started, and any code after it is not executed.
+
+The fallback (`<p>Loading...</p>`) is included in the static shell, while the component's content streams at request time.
+
+In this example, since all operations (network request, database query, file read, and timeout) run sequentially within the same component, the content won't appear until they all complete.
+
+> **Good to know**: For dynamic content that doesn't change frequently, you can use `use cache` to include the dynamic data in the static shell instead of streaming it. See the [during prerendering](#during-prerendering) section for an example.
+
+### Runtime data
+
+A specific type of dynamic data that requires request context, only available when a user makes a request.
+
+* [`cookies()`](/docs/app/api-reference/functions/cookies.md) - User's cookie data
+* [`headers()`](/docs/app/api-reference/functions/headers.md) - Request headers
+* [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional) - URL query parameters
+* [`params`](/docs/app/api-reference/file-conventions/page.md#params-optional) - Dynamic route parameters (unless at least one sample is provided via [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md))
+
+```tsx filename="page.tsx"
+import { cookies, headers } from 'next/headers'
+import { Suspense } from 'react'
+
+async function RuntimeData({ searchParams }) {
+  // Accessing request data
+  const cookieStore = await cookies()
+  const headerStore = await headers()
+  const search = await searchParams
+
+  return <div>Not in the static shell</div>
+}
+```
+
+To use the `RuntimeData` component in, wrap it in a `<Suspense>` boundary:
+
+```tsx filename="page.tsx"
+export default async function Page(props) {
+  return (
+    <>
+      <h1>Part of the static shell</h1>
+      {/* <p>Loading..</p> is part of the static shell */}
+      <Suspense fallback={<p>Loading..</p>}>
+        <RuntimeData searchParams={props.searchParams} />
+        <div>Sibling excluded from static shell</div>
+      </Suspense>
+    </>
+  )
+}
+```
+
+Use [`connection()`](/docs/app/api-reference/functions/connection.md) if you need to defer to request time without accessing any of the runtime APIs above.
+
+> **Good to know**: Runtime data cannot be cached with `use cache` because it requires request context. Components that access runtime APIs must always be wrapped in `<Suspense>`. However, you can extract values from runtime data and pass them as arguments to cached functions. See the [with runtime data](#with-runtime-data) section for an example.
+
+### Non-deterministic operations
+
+Operations like `Math.random()`, `Date.now()`, or `crypto.randomUUID()` produce different values each time they execute. To ensure these run at request time (generating unique values per request), Cache Components requires you to explicitly signal this intent by calling these operations after dynamic or runtime data access.
+
+```tsx
+import { connection } from 'next/server'
+import { Suspense } from 'react'
+
+async function UniqueContent() {
+  // Explicitly defer to request time
+  await connection()
+
+  // Non-deterministic operations
+  const random = Math.random()
+  const now = Date.now()
+  const date = new Date()
+  const uuid = crypto.randomUUID()
+  const bytes = crypto.getRandomValues(new Uint8Array(16))
+
+  return (
+    <div>
+      <p>{random}</p>
+      <p>{now}</p>
+      <p>{date.getTime()}</p>
+      <p>{uuid}</p>
+      <p>{bytes}</p>
+    </div>
+  )
+}
+```
+
+Because the `UniqueContent` component defers to request time, to use it within a route, it must be wrapped in `<Suspense>`:
+
+```tsx filename="page.tsx"
+export default async function Page() {
+  return (
+    // <p>Loading..</p> is part of the static shell
+    <Suspense fallback={<p>Loading..</p>}>
+      <UniqueContent />
+    </Suspense>
+  )
+}
+```
+
+Every incoming request would see different random numbers, date, etc.
+
+> **Good to know**: You can cache non-deterministic operations with `use cache`. See the [with non-deterministic operations](#with-non-deterministic-operations) section for examples.
 
 ## Using `use cache`
 
-While `Suspense` boundaries manage dynamic content, the [`use cache`](/docs/app/api-reference/directives/use-cache.md) directive is available for caching data or computations that don't change often.
+The [`use cache`](/docs/app/api-reference/directives/use-cache.md) directive caches the return value of async functions and components. You can apply it at the function, component, or file level.
 
-### Basic usage
+Arguments and any closed-over values from parent scopes automatically become part of the [cache key](/docs/app/api-reference/directives/use-cache.md#cache-keys), which means different inputs produce separate cache entries. This enables personalized or parameterized cached content.
 
-Add `use cache` to cache a page, component, or async function, and define a lifetime with [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md):
+When [dynamic content](#dynamic-content) doesn't need to be fetched fresh from the source on every request, caching it lets you include the content in the static shell during prerendering, or reuse the result at runtime across multiple requests.
 
-```tsx filename="app/page.tsx" highlight={1,4,5} switcher
+Cached content can be revalidated in two ways: automatically based on the cache lifetime, or on-demand using tags with [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) or [`updateTag`](/docs/app/api-reference/functions/updateTag.md).
+
+> **Good to know**: See [serialization requirements and constraints](/docs/app/api-reference/directives/use-cache.md#constraints) for details on what can be cached and how arguments work.
+
+### During prerendering
+
+While [dynamic content](#dynamic-content) is fetched from external sources, it's often unlikely to change between accesses. Product catalog data updates with inventory changes, blog post content rarely changes after publishing, and analytics reports for past dates remain static.
+
+If this data doesn't depend on [runtime data](#runtime-data), you can use the `use cache` directive to include it in the static HTML shell. Use [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) to define how long to use the cached data.
+
+When revalidation occurs, the static shell is updated with fresh content. See [Tagging and revalidating](#tagging-and-revalidating) for details on on-demand revalidation.
+
+```tsx filename="app/page.tsx" highlight={1,4,5}
 import { cacheLife } from 'next/cache'
 
 export default async function Page() {
   'use cache'
   cacheLife('hours')
-  // fetch or compute
-  return <div>...</div>
+
+  const users = await db.query('SELECT * FROM users')
+
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  )
 }
 ```
 
-```jsx filename="app/page.js" highlight={1,4,5} switcher
+The `cacheLife` function accepts a cache profile name (like `'hours'`, `'days'`, or `'weeks'`) or a custom configuration object to control cache behavior:
+
+```tsx filename="app/page.tsx" highlight={1,4-8}
 import { cacheLife } from 'next/cache'
 
 export default async function Page() {
   'use cache'
-  cacheLife('hours')
-  // fetch or compute
-  return <div>...</div>
+  cacheLife({
+    stale: 3600, // 1 hour until considered stale
+    revalidate: 7200, // 2 hours until revalidated
+    expire: 86400, // 1 day until expired
+  })
+
+  const users = await db.query('SELECT * FROM users')
+
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  )
 }
 ```
 
-### Caveats
+See the [`cacheLife` API reference](/docs/app/api-reference/functions/cacheLife.md) for available profiles and custom configuration options.
 
-When using `use cache`, keep these constraints in mind:
+### With runtime data
 
-#### Arguments must be serializable
+Runtime data and [`use cache`](/docs/app/api-reference/directives/use-cache.md) cannot be used in the same scope. However, you can extract values from runtime APIs and pass them as arguments to cached functions.
 
-Like Server Actions, arguments to cached functions must be serializable. This means you can pass primitives, plain objects, and arrays, but not class instances, functions, or other complex types.
+```tsx filename="app/profile/page.tsx"
+import { cookies } from 'next/headers'
+import { Suspense } from 'react'
 
-#### Accepting unserializable values without introspection
-
-You can accept unserializable values as arguments as long as you don't introspect them. However, you can return them. This allows patterns like cached components that accept Server or Client Components as children:
-
-```tsx filename="app/cached-wrapper.tsx" switcher
-import type { ReactNode } from 'react'
-import { setTimeout } from 'node:timers/promises'
-
-async function getSiteTitle() {
-  // Simulate a slow database or API call
-  await setTimeout(1000) // from 'node:timers/promises'
-  return 'My Website'
+export default function Page() {
+  // Page itself creates the dynamic boundary
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProfileContent />
+    </Suspense>
+  )
 }
 
-export async function CachedWrapper({ children }: { children: ReactNode }) {
-  'use cache'
-  const title = await getSiteTitle()
+// Component (not cached) reads runtime data
+async function ProfileContent() {
+  const session = (await cookies()).get('session')?.value
 
-  // Don't introspect children, just pass it through
+  return <CachedContent sessionId={session} />
+}
+
+// Cached component/function receives data as props
+async function CachedContent({ sessionId }: { sessionId: string }) {
+  'use cache'
+  // sessionId becomes part of cache key
+  const data = await fetchUserData(sessionId)
+  return <div>{data}</div>
+}
+```
+
+At request time, `CachedContent` executes if no matching cache entry is found, and stores the result for future requests.
+
+### With non-deterministic operations
+
+Within a `use cache` scope, non-deterministic operations execute during prerendering. This is useful when you want the same rendered output served to all users:
+
+```tsx
+export default async function Page() {
+  'use cache'
+
+  // Execute once, then cached for all requests
+  const random = Math.random()
+  const random2 = Math.random()
+  const now = Date.now()
+  const date = new Date()
+  const uuid = crypto.randomUUID()
+  const bytes = crypto.getRandomValues(new Uint8Array(16))
+
   return (
-    <div className="wrapper">
-      <h1>{title}</h1>
-      {children}
+    <div>
+      <p>
+        {random} and {random2}
+      </p>
+      <p>{now}</p>
+      <p>{date.getTime()}</p>
+      <p>{uuid}</p>
+      <p>{bytes}</p>
     </div>
   )
 }
 ```
 
-```jsx filename="app/cached-wrapper.js" switcher
-import { setTimeout } from 'node:timers/promises'
-
-async function getSiteTitle() {
-  // Simulate a slow database or API call
-  await setTimeout(1000) // from 'node:timers/promises'
-  return 'My Website'
-}
-
-export async function CachedWrapper({ children }) {
-  'use cache'
-  const title = await getSiteTitle()
-
-  // Don't introspect children, just pass it through
-  return (
-    <div className="wrapper">
-      <h1>{title}</h1>
-      {children}
-    </div>
-  )
-}
-```
+All requests will be served a route containing same random numbers, timestamp, and UUID until the cache is revalidated.
 
 ### Tagging and revalidating
 
-Tag cached data with [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md) and revalidate it after mutations using [`updateTag`](/docs/app/api-reference/functions/updateTag.md) in Server Actions for immediate updates, or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) delay in updates are acceptable.
+Tag cached data with [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md) and revalidate it after mutations using [`updateTag`](/docs/app/api-reference/functions/updateTag.md) in Server Actions for immediate updates, or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) when delays in updates are acceptable.
 
 #### With `updateTag`
 
@@ -2321,6 +2426,87 @@ export async function createPost(post: FormData) {
 
 For more detailed explanation and usage examples, see the [`use cache` API reference](/docs/app/api-reference/directives/use-cache.md).
 
+### What should I cache?
+
+What you cache should be a function of what you want your UI loading states to be. If data doesn't depend on runtime data and you're okay with a cached value being served for multiple requests over a period of time, use `use cache` with `cacheLife` to describe that behavior.
+
+For content management systems with update mechanisms, consider using tags with longer cache durations and rely on `revalidateTag` to mark static initial UI as ready for revalidation. This pattern allows you to serve fast, cached responses while still updating content when it actually changes, rather than expiring the cache preemptively.
+
+## Putting it all together
+
+Here's a complete example showing static content, cached dynamic content, and streaming dynamic content working together on a single page:
+
+```tsx filename="app/blog/page.tsx"
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+import { cacheLife } from 'next/cache'
+import Link from 'next/link'
+
+export default function BlogPage() {
+  return (
+    <>
+      {/* Static content - prerendered automatically */}
+      <header>
+        <h1>Our Blog</h1>
+        <nav>
+          <Link href="/">Home</Link> | <Link href="/about">About</Link>
+        </nav>
+      </header>
+
+      {/* Cached dynamic content - included in the static shell */}
+      <BlogPosts />
+
+      {/* Runtime dynamic content - streams at request time */}
+      <Suspense fallback={<p>Loading your preferences...</p>}>
+        <UserPreferences />
+      </Suspense>
+    </>
+  )
+}
+
+// Everyone sees the same blog posts (revalidated every hour)
+async function BlogPosts() {
+  'use cache'
+  cacheLife('hours')
+
+  const res = await fetch('https://api.vercel.app/blog')
+  const posts = await res.json()
+
+  return (
+    <section>
+      <h2>Latest Posts</h2>
+      <ul>
+        {posts.slice(0, 5).map((post: any) => (
+          <li key={post.id}>
+            <h3>{post.title}</h3>
+            <p>
+              By {post.author} on {post.date}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+// Personalized per user based on their cookie
+async function UserPreferences() {
+  const theme = (await cookies()).get('theme')?.value || 'light'
+  const favoriteCategory = (await cookies()).get('category')?.value
+
+  return (
+    <aside>
+      <p>Your theme: {theme}</p>
+      {favoriteCategory && <p>Favorite category: {favoriteCategory}</p>}
+    </aside>
+  )
+}
+```
+
+During prerendering the header (static) and the blog posts fetched from the API (cached with `use cache`), both become part of the static shell along with the fallback UI for user preferences.
+
+When a user visits the page, they instantly see this prerendered shell with the header and blog posts. Only the personalized preferences need to stream in at request time since they depend on the user's cookies. This ensures fast initial page loads while still providing personalized content.
+
 ## Enabling Cache Components
 
 You can enable Cache Components (which includes PPR) by adding the [`cacheComponents`](/docs/app/api-reference/config/next-config-js/cacheComponents.md) option to your Next config file:
@@ -2344,7 +2530,9 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-### Navigation with Cache Components
+> **Good to know:** When Cache Components is enabled, `GET` Route Handlers follow the same prerendering model as pages. See [Route Handlers with Cache Components](/docs/app/getting-started/route-handlers.md#with-cache-components) for details.
+
+## Navigation uses Activity
 
 When the [`cacheComponents`](/docs/app/api-reference/config/next-config-js/cacheComponents.md) flag is enabled, Next.js uses React's [`<Activity>`](https://react.dev/reference/react/Activity) component to preserve component state during client-side navigation.
 
@@ -2356,17 +2544,17 @@ Rather than unmounting the previous route when you navigate away, Next.js sets t
 
 This behavior improves the navigation experience by maintaining UI state (form inputs, or expanded sections) when users navigate back and forth between routes.
 
-> **Good to know**: Next.js uses heuristics to keep a few recently visited routes [`"hidden"`](https://react.dev/reference/react/Activity#activity), while older routes are removed from the DOM to prevent excessive growth.
+> **Good to know**: Next.js uses heuristics to keep a few recently visited routes `"hidden"`, while older routes are removed from the DOM to prevent excessive growth.
 
-### Effect on route segment config
+## Migrating route segment configs
 
-When Cache Components is enabled, several route segment config options are no longer needed or supported. Here's what changes and how to migrate:
+When Cache Components is enabled, several route segment config options are no longer needed or supported:
 
-#### `dynamic = "force-dynamic"`
+### `dynamic = "force-dynamic"`
 
-**Not needed.** All pages are dynamic by default with Cache Components enabled, so this configuration is unnecessary.
+**Not needed.** All pages are dynamic by default.
 
-```tsx
+```tsx filename="app/page.tsx"
 // Before - No longer needed
 export const dynamic = 'force-dynamic'
 
@@ -2375,20 +2563,22 @@ export default function Page() {
 }
 ```
 
-```tsx
-// After - Just remove it, pages are dynamic by default
+```tsx filename="app/page.tsx"
+// After - Just remove it
 export default function Page() {
   return <div>...</div>
 }
 ```
 
-#### `dynamic = "force-static"`
+### `dynamic = "force-static"`
 
-**Replace with `use cache`.** You must add `use cache` to each Layout and Page for the associated route instead.
+Start by removing it. When unhandled dynamic or runtime data access is detected during development and built time, Next.js raises an error. Otherwise, the [prerendering](#automatically-prerendered-content) step automatically extracts the static HTML shell.
 
-Note: `force-static` previously allowed the use of runtime APIs like `cookies()`, but this is no longer supported. If you add `use cache` and see an error related to runtime data, you must remove the use of runtime APIs.
+For dynamic data access, add [`use cache`](#using-use-cache) as close to the data access as possible with a long [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) like `'max'` to maintain cached behavior. If needed, add it at the top of the page or layout.
 
-```tsx
+For runtime data access (`cookies()`, `headers()`, etc.), errors will direct you to [wrap it with `Suspense`](#runtime-data). Since you started by using `force-static`, you must remove the runtime data access to prevent any request time work.
+
+```tsx filename="app/page.tsx"
 // Before
 export const dynamic = 'force-static'
 
@@ -2398,16 +2588,19 @@ export default async function Page() {
 }
 ```
 
-```tsx
+```tsx filename="app/page.tsx"
+import { cacheLife } from 'next/cache'
+
 // After - Use 'use cache' instead
 export default async function Page() {
   'use cache'
+  cacheLife('max')
   const data = await fetch('https://api.example.com/data')
   return <div>...</div>
 }
 ```
 
-#### `revalidate`
+### `revalidate`
 
 **Replace with `cacheLife`.** Use the `cacheLife` function to define cache duration instead of the route segment config.
 
@@ -2420,7 +2613,7 @@ export default async function Page() {
 }
 ```
 
-```tsx
+```tsx filename="app/page.tsx"
 // After - Use cacheLife
 import { cacheLife } from 'next/cache'
 
@@ -2431,16 +2624,16 @@ export default async function Page() {
 }
 ```
 
-#### `fetchCache`
+### `fetchCache`
 
 **Not needed.** With `use cache`, all data fetching within a cached scope is automatically cached, making `fetchCache` unnecessary.
 
-```tsx
+```tsx filename="app/page.tsx"
 // Before
 export const fetchCache = 'force-cache'
 ```
 
-```tsx
+```tsx filename="app/page.tsx"
 // After - Use 'use cache' to control caching behavior
 export default async function Page() {
   'use cache'
@@ -2449,219 +2642,9 @@ export default async function Page() {
 }
 ```
 
-#### `runtime = 'edge'`
+### `runtime = 'edge'`
 
 **Not supported.** Cache Components requires Node.js runtime and will throw errors with [Edge Runtime](/docs/app/api-reference/edge.md).
-
-## Before vs. after Cache Components
-
-Understanding how Cache Components changes your mental model:
-
-### Before Cache Components
-
-* **Static by default**: Next.js tried to pre-render and cache as much as possible for you unless you opted out
-* **Route-level controls**: Switches like `dynamic`, `revalidate`, `fetchCache` controlled caching for the whole page
-* **Limits of `fetch`**: Using `fetch` alone was incomplete, as it didn't cover direct database clients or other server-side IO. A nested `fetch` switching to dynamic (e.g., `{ cache: 'no-store' }`) could unintentionally change the entire route behavior
-
-### With Cache Components
-
-* **Dynamic by default**: Everything is dynamic by default. You decide which parts to cache by adding [`use cache`](/docs/app/api-reference/directives/use-cache.md) where it helps
-* **Fine-grained control**: File/component/function-level [`use cache`](/docs/app/api-reference/directives/use-cache.md) and [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) control caching exactly where you need it
-* **Streaming stays**: Use `<Suspense>` or a `loading.(js|tsx)` file to stream dynamic parts while the shell shows immediately
-* **Beyond `fetch`**: Using the `use cache` directive caching can be applied to all server IO (database calls, APIs, computations), not just `fetch`. Nested `fetch` calls won't silently flip an entire route because behavior is governed by explicit cache boundaries and `Suspense`
-
-## Examples
-
-### Dynamic APIs
-
-When accessing runtime APIs like `cookies()`, Next.js will only pre-render the fallback UI above this component.
-
-In this example, we have no fallback defined, so Next.js shows an error instructing us to provide one. The `<User />` component needs to be wrapped in `Suspense` because it uses the `cookies` API:
-
-```jsx filename="app/user.js" switcher
-import { cookies } from 'next/headers'
-
-export async function User() {
-  const session = (await cookies()).get('session')?.value
-  return '...'
-}
-```
-
-```tsx filename="app/user.tsx" switcher
-import { cookies } from 'next/headers'
-
-export async function User() {
-  const session = (await cookies()).get('session')?.value
-  return '...'
-}
-```
-
-Now we have a `Suspense` boundary around our User component we can pre-render the Page with a Skeleton UI and stream in the `<User />` UI when a specific user makes a request
-
-```tsx filename="app/page.tsx" switcher
-import { Suspense } from 'react'
-import { User, AvatarSkeleton } from './user'
-
-export default function Page() {
-  return (
-    <section>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<AvatarSkeleton />}>
-        <User />
-      </Suspense>
-    </section>
-  )
-}
-```
-
-```jsx filename="app/page.js" switcher
-import { Suspense } from 'react'
-import { User, AvatarSkeleton } from './user'
-
-export default function Page() {
-  return (
-    <section>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<AvatarSkeleton />}>
-        <User />
-      </Suspense>
-    </section>
-  )
-}
-```
-
-### Passing dynamic props
-
-Components that access runtime values like `cookies` or `searchParams` cannot be prerendered. To prerender more of a page's content, you can pass these props down and access their values lower in the tree. For example, if you are reading `searchParams` from a `<Page />` component, you can forward this value to another component as a prop:
-
-```tsx filename="app/page.tsx" switcher
-import { Table, TableSkeleton } from './table'
-import { Suspense } from 'react'
-
-export default function Page({
-  searchParams,
-}: {
-  searchParams: Promise<{ sort: string }>
-}) {
-  return (
-    <section>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<TableSkeleton />}>
-        <Table searchParams={searchParams.then((search) => search.sort)} />
-      </Suspense>
-    </section>
-  )
-}
-```
-
-```jsx filename="app/page.js" switcher
-import { Table, TableSkeleton } from './table'
-import { Suspense } from 'react'
-
-export default function Page({ searchParams }) {
-  return (
-    <section>
-      <h1>This will be pre-rendered</h1>
-      <Suspense fallback={<TableSkeleton />}>
-        <Table searchParams={searchParams.then((search) => search.sort)} />
-      </Suspense>
-    </section>
-  )
-}
-```
-
-Inside of the table component, accessing the value from `searchParams` will make the component dynamic while the rest of the page will be pre-rendered.
-
-```tsx filename="app/table.tsx" switcher
-export async function Table({ sortPromise }: { sortPromise: Promise<string> }) {
-  const sort = (await sortPromise) === 'true'
-  return '...'
-}
-```
-
-```jsx filename="app/table.js" switcher
-export async function Table({ sortPromise }) {
-  const sort = (await sortPromise) === 'true'
-  return '...'
-}
-```
-
-## Route Handlers with Cache Components
-
-`GET` Route Handlers follow the same model as normal UI routes in your application. They are dynamic by default, can be pre-rendered when deterministic, and you can `use cache` to include more dynamic data in the cached response.
-
-Dynamic example, returns a different number for every request:
-
-```tsx filename="app/api/random-number/route.ts"
-export async function GET() {
-  return Response.json({
-    randomNumber: Math.random(),
-  })
-}
-```
-
-A handler that returns only static data will be pre-rendered at build time:
-
-```tsx filename="app/api/project-info/route.ts"
-export async function GET() {
-  return Response.json({
-    projectName: 'Next.js',
-  })
-}
-```
-
-If you had a route that returned fresh dynamic data on every request, say products from a database:
-
-```tsx filename="app/api/products/route.ts"
-export async function GET() {
-  const products = await db.query('SELECT * FROM products')
-
-  return Response.json(products)
-}
-```
-
-To cache this and avoid hitting the database on every request, extract the dynamic work into a `use cache` function and set `cacheLife('hours')` so the database is queried at most once per hour:
-
-```tsx filename="app/api/products/route.ts"
-import { cacheLife } from 'next/cache'
-
-export async function GET() {
-  const products = await getProducts()
-
-  return Response.json(products)
-}
-
-async function getProducts() {
-  'use cache'
-  cacheLife('hours')
-
-  return await db.query('SELECT * FROM products')
-}
-```
-
-> **Good to know**
->
-> * `use cache` cannot be used directly inside a Route Handler body; extract to a helper.
-> * Cached responses revalidate according to `cacheLife` when a new request arrives.
-> * Using runtime APIs like [`cookies()`](/docs/app/api-reference/functions/cookies.md) or [`headers()`](/docs/app/api-reference/functions/headers.md), or calling [`connection()`](/docs/app/api-reference/functions/connection.md), always defers to request time (no pre-rendering).
-
-## Frequently Asked Questions
-
-### Does this replace Partial Prerendering (PPR)?
-
-No. Cache Components **implements** PPR as a feature. The old experimental PPR flag has been removed but PPR is here to stay.
-
-PPR provides the static shell and streaming infrastructure; `use cache` lets you include optimized dynamic output in that shell when beneficial.
-
-### What should I cache first?
-
-What you cache should be a function of what you want your UI loading states to be. If data doesn't depend on runtime data and you're okay with a cached value being served for multiple requests over a period of time, use `use cache` with `cacheLife` to describe that behavior.
-
-For content management systems with update mechanisms, consider using tags with longer cache durations and rely on `revalidateTag` to mark static initial UI as ready for revalidation. This pattern allows you to serve fast, cached responses while still updating content when it actually changes, rather than expiring the cache preemptively.
-
-### How do I update cached content quickly?
-
-Use [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md) to tag your cached data, then trigger [`updateTag`](/docs/app/api-reference/functions/updateTag.md) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md).
 ## Next Steps
 
 Learn more about the config option for Cache Components.
@@ -5653,43 +5636,62 @@ export async function GET() {
 
 #### With Cache Components
 
-When using [Cache Components](/docs/app/getting-started/cache-components.md), you can use the [`use cache`](/docs/app/api-reference/directives/use-cache.md) directive to cache data fetching within your Route Handlers. Route Handlers are dynamic by default, but can be pre-rendered at build time if they don't use runtime or dynamic data.
+When [Cache Components](/docs/app/getting-started/cache-components.md) is enabled, `GET` Route Handlers follow the same model as normal UI routes in your application. They run at request time by default, can be prerendered when they don't access dynamic or runtime data, and you can use `use cache` to include dynamic data in the static response.
 
-```ts filename="app/api/posts/route.ts" switcher
-import { cacheTag } from 'next/cache'
+**Static example** - doesn't access dynamic or runtime data, so it will be prerendered at build time:
 
-async function getPosts() {
-  'use cache'
-  cacheTag('posts')
-
-  const posts = await fetchPosts()
-  return posts
-}
-
+```tsx filename="app/api/project-info/route.ts"
 export async function GET() {
-  const posts = await getPosts()
-  return Response.json(posts)
+  return Response.json({
+    projectName: 'Next.js',
+  })
 }
 ```
 
-```js filename="app/api/posts/route.js" switcher
-import { cacheTag } from 'next/cache'
+**Dynamic example** - accesses non-deterministic operations. During the build, prerendering stops when `Math.random()` is called, deferring to request-time rendering:
 
-async function getPosts() {
-  'use cache'
-  cacheTag('posts')
-
-  const posts = await fetchPosts()
-  return posts
-}
-
+```tsx filename="app/api/random-number/route.ts"
 export async function GET() {
-  const posts = await getPosts()
-  return Response.json(posts)
+  return Response.json({
+    randomNumber: Math.random(),
+  })
 }
 ```
 
-See the [Cache Components documentation](/docs/app/getting-started/cache-components.md#route-handlers-with-cache-components) for more details on caching strategies and revalidation.
+**Runtime data example** - accesses request-specific data. Prerendering terminates when runtime APIs like `headers()` are called:
+
+```tsx filename="app/api/user-agent/route.ts"
+import { headers } from 'next/headers'
+
+export async function GET() {
+  const headersList = await headers()
+  const userAgent = headersList.get('user-agent')
+
+  return Response.json({ userAgent })
+}
+```
+
+> **Good to know**: Prerendering stops if the `GET` handler accesses network requests, database queries, async file system operations, request object properties (like `req.url`, `request.headers`, `request.cookies`, `request.body`), runtime APIs like [`cookies()`](/docs/app/api-reference/functions/cookies.md), [`headers()`](/docs/app/api-reference/functions/headers.md), [`connection()`](/docs/app/api-reference/functions/connection.md), or non-deterministic operations.
+
+**Cached example** - accesses dynamic data (database query) but caches it with `use cache`, allowing it to be included in the prerendered response:
+
+```tsx filename="app/api/products/route.ts"
+import { cacheLife } from 'next/cache'
+
+export async function GET() {
+  const products = await getProducts()
+  return Response.json(products)
+}
+
+async function getProducts() {
+  'use cache'
+  cacheLife('hours')
+
+  return await db.query('SELECT * FROM products')
+}
+```
+
+> **Good to know**: `use cache` cannot be used directly inside a Route Handler body; extract it to a helper function. Cached responses revalidate according to `cacheLife` when a new request arrives.
 
 ### Special Route Handlers
 
@@ -5939,10 +5941,16 @@ source: "https://nextjs.org/docs/app/getting-started/upgrading"
 
 ## Latest version
 
-To update to the latest version of Next.js, you can use the `upgrade` codemod:
+To update to the latest version of Next.js, you can use the `upgrade` command:
 
 ```bash filename="Terminal"
-npx @next/codemod@latest upgrade latest
+next upgrade
+```
+
+Next.js 15 and earlier do not support the `upgrade` command and need to use a separate package instead:
+
+```bash filename="Terminal"
+npx @next/codemod@canary upgrade latest
 ```
 
 If you prefer to upgrade manually, install the latest Next.js and React versions:
@@ -7310,51 +7318,96 @@ For example, consider a shared layout that fetches the user data and displays th
 
 This guarantees that wherever `getUser()` is called within your application, the auth check is performed, and prevents developers forgetting to check the user is authorized to access the data.
 
-```tsx filename="app/layout.tsx" switcher
-export default async function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const user = await getUser();
+#### Auth checks in page components
+
+For example, in a dashboard page, you can verify the user session and fetch the user data:
+
+```tsx filename="app/dashboard/page.tsx" switcher
+import { verifySession } from '@/app/lib/dal'
+
+export default async function DashboardPage() {
+  const session = await verifySession()
+
+  // Fetch user-specific data from your database or data source
+  const user = await getUserData(session.userId)
 
   return (
-    // ...
+    <div>
+      <h1>Welcome, {user.name}</h1>
+      {/* Dashboard content */}
+    </div>
   )
 }
 ```
 
-```jsx filename="app/layout.js" switcher
-export default async function Layout({ children }) {
-  const user = await getUser();
+```jsx filename="app/dashboard/page.jsx" switcher
+import { verifySession } from '@/app/lib/dal'
+
+export default async function DashboardPage() {
+  const session = await verifySession()
+
+  // Fetch user-specific data from your database or data source
+  const user = await getUserData(session.userId)
 
   return (
-    // ...
+    <div>
+      <h1>Welcome, {user.name}</h1>
+      {/* Dashboard content */}
+    </div>
   )
 }
 ```
 
-```ts filename="app/lib/dal.ts" switcher
-export const getUser = cache(async () => {
-  const session = await verifySession()
-  if (!session) return null
+#### Auth checks in leaf components
 
-  // Get user ID from session and fetch data
-})
+You can also perform auth checks in leaf components that conditionally render UI elements based on user permissions. For example, a component that displays admin-only actions:
+
+```tsx filename="app/ui/admin-actions.tsx" switcher
+import { verifySession } from '@/app/lib/dal'
+
+export default async function AdminActions() {
+  const session = await verifySession()
+  const userRole = session?.user?.role
+
+  if (userRole !== 'admin') {
+    return null
+  }
+
+  return (
+    <div>
+      <button>Delete User</button>
+      <button>Edit Settings</button>
+    </div>
+  )
+}
 ```
 
-```js filename="app/lib/dal.js" switcher
-export const getUser = cache(async () => {
-  const session = await verifySession()
-  if (!session) return null
+```jsx filename="app/ui/admin-actions.jsx" switcher
+import { verifySession } from '@/app/lib/dal'
 
-  // Get user ID from session and fetch data
-})
+export default async function AdminActions() {
+  const session = await verifySession()
+  const userRole = session?.user?.role
+
+  if (userRole !== 'admin') {
+    return null
+  }
+
+  return (
+    <div>
+      <button>Delete User</button>
+      <button>Edit Settings</button>
+    </div>
+  )
+}
 ```
+
+This pattern allows you to show or hide UI elements based on user permissions while ensuring the auth check happens at render time in each component.
 
 > **Good to know:**
 >
 > * A common pattern in SPAs is to `return null` in a layout or a top-level component if a user is not authorized. This pattern is **not recommended** since Next.js applications have multiple entry points, which will not prevent nested route segments and Server Actions from being accessed.
+> * Ensure that any Server Actions called from these components also perform their own authorization checks, as client-side UI restrictions alone are not sufficient for security.
 
 ### Server Actions
 
@@ -23449,7 +23502,11 @@ source: "https://nextjs.org/docs/app/api-reference/directives/use-cache"
 
 The `use cache` directive allows you to mark a route, React component, or a function as cacheable. It can be used at the top of a file to indicate that all exports in the file should be cached, or inline at the top of function or component to cache the return value.
 
-> **Good to know:** For caching user-specific content that requires access to cookies or headers, see [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md).
+> **Good to know:**
+>
+> * To use cookies or headers, read them outside cached scopes and pass values as arguments. This is the preferred pattern.
+> * If the in-memory cache isn't sufficient for runtime data, [`'use cache: remote'`](/docs/app/api-reference/directives/use-cache-remote.md) allows platforms to provide a dedicated cache handler, though it requires a network roundtrip to check the cache and typically incurs platform fees.
+> * For compliance requirements or when you can't refactor to pass runtime data as arguments to a `use cache` scope, see [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md).
 
 ## Usage
 
@@ -23498,68 +23555,207 @@ export async function getData() {
 }
 ```
 
+> **Good to know**: When used at file level, all function exports must be async functions.
+
 ## How `use cache` works
 
 ### Cache keys
 
 A cache entry's key is generated using a serialized version of its inputs, which includes:
 
-* Build ID (generated for each build)
-* Function ID (a secure identifier unique to the function)
-* The [serializable](https://react.dev/reference/rsc/use-server#serializable-parameters-and-return-values) function arguments (or props).
+1. **Build ID** - Unique per build, changing this invalidates all cache entries
+2. **Function ID** - A secure hash of the function's location and signature in the codebase
+3. **Serializable arguments** - Props (for components) or function arguments
+4. **HMR refresh hash** (development only) - Invalidates cache on hot module replacement
 
-The arguments passed to the cached function, as well as any values it reads from the parent scope automatically become a part of the key. This means, the same cache entry will be reused as long as its inputs are the same.
+When a cached function references variables from outer scopes, those variables are automatically captured and bound as arguments, making them part of the cache key.
 
-## Non-serializable arguments
+```tsx filename="lib/data.ts"
+async function Component({ userId }: { userId: string }) {
+  const getData = async (filter: string) => {
+    'use cache'
+    // Cache key includes both userId (from closure) and filter (argument)
+    return fetch(`/api/users/${userId}/data?filter=${filter}`)
+  }
 
-Any non-serializable arguments, props, or closed-over values will turn into references inside the cached function, and can be only passed through and not inspected nor modified. These non-serializable values will be filled in at the request time and won't become a part of the cache key.
-
-For example, a cached function can take in JSX as a `children` prop and return `<div>{children}</div>`, but it won't be able to introspect the actual `children` object. This allows you to nest uncached content inside a cached component.
-
-```tsx filename="app/ui/cached-component.tsx" switcher
-async function CachedComponent({ children }: { children: ReactNode }) {
-  'use cache'
-  return <div>{children}</div>
+  return getData('active')
 }
 ```
 
-```jsx filename="app/ui/cached-component.js" switcher
-async function CachedComponent({ children }) {
+In the snippet above, `userId` is captured from the outer scope and `filter` is passed as an argument, so both become part of the `getData` function's cache key. This means different user and filter combinations will have separate cache entries.
+
+## Serialization
+
+Arguments to cached functions and their return values must be serializable.
+
+For a complete reference, see:
+
+* [Serializable arguments](https://react.dev/reference/rsc/use-server#serializable-parameters-and-return-values) - Uses **React Server Components** serialization
+* [Serializable return types](https://react.dev/reference/rsc/use-client#serializable-types) - Uses **React Client Components** serialization
+
+> **Good to know:** Arguments and return values use different serialization systems. Server Component serialization (for arguments) is more restrictive than Client Component serialization (for return values). This means you can return JSX elements but cannot accept them as arguments unless using pass-through patterns.
+
+### Supported types
+
+**Arguments:**
+
+* Primitives: `string`, `number`, `boolean`, `null`, `undefined`
+* Plain objects: `{ key: value }`
+* Arrays: `[1, 2, 3]`
+* Dates, Maps, Sets, TypedArrays, ArrayBuffers
+* React elements (as pass-through only)
+
+**Return values:**
+
+* Same as arguments, plus JSX elements
+
+### Unsupported types
+
+* Class instances
+* Functions (except as pass-through)
+* Symbols, WeakMaps, WeakSets
+* URL instances
+
+```tsx filename="app/components/user-card.tsx"
+// Valid - primitives and plain objects
+async function UserCard({
+  id,
+  config,
+}: {
+  id: string
+  config: { theme: string }
+}) {
   'use cache'
-  return <div>{children}</div>
+  return <div>{id}</div>
+}
+
+// Invalid - class instance
+async function UserProfile({ user }: { user: UserClass }) {
+  'use cache'
+  // Error: Cannot serialize class instance
+  return <div>{user.name}</div>
 }
 ```
 
-## Return values
+### Pass-through (non-serializable arguments)
 
-The return value of the cacheable function must be serializable props. This ensures that the cached data can be stored and retrieved correctly.
+You can accept non-serializable values **as long as you don't introspect them**. This enables composition patterns with `children` and Server Actions:
 
-> **Good to know:** The supported types for arguments and the supported types for returned values are **not the same**. For more details, refer to [Serializable Parameters and Return Values](https://react.dev/reference/rsc/use-server#serializable-parameters-and-return-values) for function arguments and [Serializable Types](https://react.dev/reference/rsc/use-client#serializable-types) for return values.
+```tsx filename="app/components/cached-wrapper.tsx"
+async function CachedWrapper({ children }: { children: ReactNode }) {
+  'use cache'
+  // Don't read or modify children - just pass it through
+  return (
+    <div className="wrapper">
+      <header>Cached Header</header>
+      {children}
+    </div>
+  )
+}
 
-## `use cache` at build time
+// Usage: children can be dynamic
+export default function Page() {
+  return (
+    <CachedWrapper>
+      <DynamicComponent /> {/* Not cached, passed through */}
+    </CachedWrapper>
+  )
+}
+```
 
-When used at the top of a [layout](/docs/app/api-reference/file-conventions/layout.md) or [page](/docs/app/api-reference/file-conventions/page.md), the route segment will be prerendered, allowing it to later be [revalidated](#during-revalidation).
+You can also pass Server Actions through cached components:
 
-This means `use cache` cannot be used with [runtime data](/docs/app/getting-started/cache-components.md#1-suspense-for-runtime-data) like `cookies` or `headers`.
+```tsx filename="app/components/cached-form.tsx"
+async function CachedForm({ action }: { action: () => Promise<void> }) {
+  'use cache'
+  // Don't call action here - just pass it through
+  return <form action={action}>{/* ... */}</form>
+}
+```
 
-> **Note:** If you need to cache content that depends on cookies, headers, or search params, use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead.
+## Constraints
+
+Cached functions and components **cannot** directly access runtime APIs like `cookies()`, `headers()`, or `searchParams`. Instead, read these values outside the cached scope and pass them as arguments.
+
+### Runtime caching considerations
+
+While `use cache` is designed primarily to include dynamic data in the static shell, it can also cache data at runtime using in-memory LRU (Least Recently Used) storage.
+
+Runtime cache behavior depends on your hosting environment:
+
+| Environment     | Runtime Caching Behavior                                                                                                                                          |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Serverless**  | Cache entries typically don't persist across requests (each request can be a different instance). Build-time caching works normally.                              |
+| **Self-hosted** | Cache entries persist across requests. Control cache size with [`cacheMaxMemorySize`](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath.md). |
+
+If the default in-memory cache isn't enough, consider **[`use cache: remote`](/docs/app/api-reference/directives/use-cache-remote.md)** which allows platforms to provide a dedicated cache handler (like Redis or KV database). This helps reduce hits against data sources not scaled to your total traffic, though it comes with costs (storage, network latency, platform fees).
+
+Very rarely, for compliance requirements or when you can't refactor your code to pass runtime data as arguments to a `use cache` scope, you might need [`use cache: private`](/docs/app/api-reference/directives/use-cache-private.md).
 
 ## `use cache` at runtime
 
-On the **server**, the cache entries of individual components or functions will be cached in-memory by default. You can customize the cache storage by configuring [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers.md) in your `next.config.js` file.
+On the **server**, cache entries are stored in-memory and respect the `revalidate` and `expire` times from your `cacheLife` configuration. You can customize the cache storage by configuring [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers.md) in your `next.config.js` file.
 
-Then, on the **client**, any content returned from the server cache will be stored in the browser's memory for the duration of the session or until [revalidated](#during-revalidation).
+On the **client**, content from the server cache is stored in the browser's memory for the duration defined by the `stale` time. The client router enforces a **minimum 30-second stale time**, regardless of configuration.
 
-## During revalidation
+The `x-nextjs-stale-time` response header communicates cache lifetime from server to client, ensuring coordinated behavior.
 
-By default, `use cache` has server-side revalidation period of **15 minutes**. While this period may be useful for content that doesn't require frequent updates, you can use the `cacheLife` and `cacheTag` APIs to configure when the individual cache entries should be revalidated.
+## Revalidation
 
-* [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md): Configure the cache entry lifetime.
-* [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md): Create tags for on-demand revalidation.
+By default, `use cache` uses the `default` profile with these settings:
 
-Both of these APIs integrate across the client and server caching layers, meaning you can configure your caching semantics in one place and have them apply everywhere.
+* **stale**: 5 minutes (client-side)
+* **revalidate**: 15 minutes (server-side)
+* **expire**: Never expires by time
 
-See the [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) and [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md) API docs for more information.
+```tsx filename="lib/data.ts"
+async function getData() {
+  'use cache'
+  // Implicitly uses default profile
+  return fetch('/api/data')
+}
+```
+
+### Customizing cache lifetime
+
+Use the [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) function to customize cache duration:
+
+```tsx filename="lib/data.ts"
+import { cacheLife } from 'next/cache'
+
+async function getData() {
+  'use cache'
+  cacheLife('hours') // Use built-in 'hours' profile
+  return fetch('/api/data')
+}
+```
+
+### On-demand revalidation
+
+Use [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md), [`updateTag`](/docs/app/api-reference/functions/updateTag.md), or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) for on-demand cache invalidation:
+
+```tsx filename="lib/data.ts"
+import { cacheTag } from 'next/cache'
+
+async function getProducts() {
+  'use cache'
+  cacheTag('products')
+  return fetch('/api/products')
+}
+```
+
+```tsx filename="app/actions.ts"
+'use server'
+
+import { updateTag } from 'next/cache'
+
+export async function updateProduct() {
+  await db.products.update(...)
+  updateTag('products') // Invalidates all 'products' caches
+}
+```
+
+Both `cacheLife` and `cacheTag` integrate across client and server caching layers, meaning you configure your caching semantics in one place and they apply everywhere.
 
 ## Examples
 
@@ -23575,7 +23771,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
 }
 ```
 
-```jsx filename="app/page.tsx" switcher
+```jsx filename="app/layout.js" switcher
 'use cache'
 
 export default async function Layout({ children }) {
@@ -23622,7 +23818,6 @@ export default async function Page() {
 > **Good to know**:
 >
 > * If `use cache` is added only to the `layout` or the `page`, only that route segment and any components imported into it will be cached.
-> * If any of the nested children in the route use [Dynamic APIs](/docs/app/guides/caching.md#dynamic-rendering), then the route will opt out of pre-rendering.
 
 ### Caching a component's output with `use cache`
 
@@ -23753,7 +23948,7 @@ export default async function Page() {
     await db.update(...)
   }
 
-  return <CacheComponent performUpdate={performUpdate} />
+  return <CachedComponent performUpdate={performUpdate} />
 }
 
 async function CachedComponent({
@@ -23777,7 +23972,7 @@ export default async function Page() {
     await db.update(...)
   }
 
-  return <CacheComponent performUpdate={performUpdate} />
+  return <CachedComponent performUpdate={performUpdate} />
 }
 
 async function CachedComponent({ performUpdate }) {
@@ -23806,6 +24001,84 @@ export default function ClientComponent({ action }) {
   return <button onClick={action}>Update</button>
 }
 ```
+
+## Troubleshooting
+
+### Build Hangs (Cache Timeout)
+
+If your build hangs, you're accessing Promises that resolve to dynamic or runtime data, created outside a `use cache` boundary. The cached function waits for data that can't resolve during the build, causing a timeout after 50 seconds.
+
+When the build timeouts you'll see this error message:
+
+> Error: Filling a cache during prerender timed out, likely because request-specific arguments such as params, searchParams, cookies() or dynamic data were used inside "use cache".
+
+Common ways this happens: passing such Promises as props, accessing them via closure, or retrieving them from shared storage (Maps).
+
+> **Good to know:** Directly calling `cookies()` or `headers()` inside `use cache` fails immediately with a [different error](/docs/messages/next-request-in-use-cache.md), not a timeout.
+
+**Passing runtime data Promises as props:**
+
+```tsx filename="app/page.tsx"
+import { cookies } from 'next/headers'
+import { Suspense } from 'react'
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Dynamic />
+    </Suspense>
+  )
+}
+
+async function Dynamic() {
+  const cookieStore = cookies()
+  return <Cached promise={cookieStore} /> // Build hangs
+}
+
+async function Cached({ promise }: { promise: Promise<unknown> }) {
+  'use cache'
+  const data = await promise // Waits for runtime data during build
+  return <p>..</p>
+}
+```
+
+Await the `cookies` store in the `Dynamic` component, and pass a cookie value to the `Cached` component.
+
+**Shared deduplication storage:**
+
+```tsx filename="app/page.tsx"
+// Problem: Map stores dynamic Promises, accessed by cached code
+import { Suspense } from 'react'
+
+const cache = new Map<string, Promise<string>>()
+
+export default function Page() {
+  return (
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Dynamic id="data" />
+      </Suspense>
+      <Cached id="data" />
+    </>
+  )
+}
+
+async function Dynamic({ id }: { id: string }) {
+  // Stores dynamic Promise in shared Map
+  cache.set(
+    id,
+    fetch(`https://api.example.com/${id}`).then((r) => r.text())
+  )
+  return <p>Dynamic</p>
+}
+
+async function Cached({ id }: { id: string }) {
+  'use cache'
+  return <p>{await cache.get(id)}</p> // Build hangs - retrieves dynamic Promise
+}
+```
+
+Use Next.js's built-in `fetch()` deduplication or use separate Maps for cached and uncached contexts.
 
 ## Platform Support
 
@@ -26750,10 +27023,21 @@ module.exports = {
 }
 ```
 
+You can also enable both AVIF and WebP formats together. AVIF will be preferred for browsers that support it, with WebP as a fallback:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+}
+```
+
 > **Good to know**:
 >
 > * We still recommend using WebP for most use cases.
 > * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower, but subsequent requests that are cached will be faster.
+> * When using multiple formats, Next.js will cache each format separately. This means increased storage requirements compared to using a single format, as both AVIF and WebP versions of images will be stored for different browser support.
 > * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.
 
 #### `minimumCacheTTL`
@@ -35163,6 +35447,13 @@ const nextConfig = {
 export default nextConfig
 ```
 
+`cacheLife` requires the `use cache` directive, which must be placed at the file level or at the top of an async function or component.
+
+> **Good to know**:
+>
+> * If used, `cacheLife` should be placed within the function whose output is being cached, even when the `use cache` directive is at file level
+> * Only one `cacheLife` call should execute per function invocation. You can call `cacheLife` in different control flow branches, but ensure only one executes per run. See the [conditional cache lifetimes](#conditional-cache-lifetimes) example
+
 ### Using preset profiles
 
 Next.js provides preset cache profiles that cover common caching needs. Each profile balances three factors:
@@ -35194,9 +35485,7 @@ export default async function BlogPage() {
 }
 ```
 
-The profile name tells Next.js how to cache the entire function's output. If you need more control over timing values, see the [Reference](#reference) section below.
-
-> **Good to know**: The `use cache` directive can be placed at the file level or at the top of a function or component, and `cacheLife` must be called within its scope.
+The profile name tells Next.js how to cache the entire function's output. If you don't call `cacheLife`, the `default` profile is used. See [preset cache profiles](#preset-cache-profiles) for timing details.
 
 ## Reference
 
@@ -35494,40 +35783,112 @@ export async function getRealtimeStats() {
 
 ### Nested caching behavior
 
-When components with different cache profiles are nested, Next.js respects the shortest duration among them:
+When you nest `use cache` directives (a cached function or component using another cached function or component), the outer cache's behavior depends on whether it has an explicit `cacheLife`.
+
+#### With explicit outer cacheLife
+
+The outer cache uses its own lifetime, regardless of inner cache lifetimes. When the outer cache hits, it returns the complete output including all nested data. An explicit `cacheLife` always takes precedence, whether it's longer or shorter than inner lifetimes.
 
 ```tsx filename="app/dashboard/page.tsx"
 import { cacheLife } from 'next/cache'
-import { RealtimeWidget } from './realtime-widget'
+import { Widget } from './widget'
 
 export default async function Dashboard() {
   'use cache'
-  cacheLife('hours') // Dashboard cached for hours
+  cacheLife('hours') // Outer scope sets its own lifetime
 
   return (
     <div>
       <h1>Dashboard</h1>
-      <RealtimeWidget />
+      <Widget /> {/* Inner scope has 'minutes' lifetime */}
     </div>
   )
 }
 ```
 
-```tsx filename="app/dashboard/realtime-widget.tsx"
-import { cacheLife } from 'next/cache'
+#### Without explicit outer cacheLife
 
-export async function RealtimeWidget() {
+If you don't call `cacheLife` in the outer cache, it uses the `default` profile (15 min revalidate). Inner caches with shorter lifetimes can reduce the outer cache's `default` lifetime. Inner caches with longer lifetimes cannot extend it beyond the default.
+
+```tsx filename="app/dashboard/page.tsx"
+import { Widget } from './widget'
+
+export default async function Dashboard() {
   'use cache'
-  cacheLife('seconds') // Widget needs fresh data
+  // No cacheLife call - uses default (15 min)
+  // If Widget has 5 min → Dashboard becomes 5 min
+  // If Widget has 1 hour → Dashboard stays 15 min
 
-  const data = await fetchRealtimeData()
-  return <div>{data.value}</div>
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <Widget />
+    </div>
+  )
 }
 ```
 
-In this example, the outer `Dashboard` component specifies the `hours` profile, but it contains `RealtimeWidget` which uses the `seconds` profile. The shortest duration from the nested profiles takes precedence, ensuring the widget gets fresh data while the rest of the dashboard can be cached longer.
+**It is recommended to specify an explicit `cacheLife`.** With explicit lifetime values, you can inspect a cached function or component and immediately know its behavior without tracing through nested caches. Without explicit lifetime values, the behavior becomes dependent on inner cache lifetimes, making it harder to reason about.
 
-> **Good to know**: This shortest-duration behavior ensures that no part of your page serves stale data longer than its most frequently updated component requires.
+### Conditional cache lifetimes
+
+You can call `cacheLife` conditionally in different code paths to set different cache durations based on your application logic:
+
+```tsx filename="lib/posts.ts" highlight={14,19}
+import { cacheLife, cacheTag } from 'next/cache'
+
+async function getPostContent(slug: string) {
+  'use cache'
+
+  const post = await fetchPost(slug)
+
+  // Tag the cache entry for targeted revalidation
+  cacheTag(`post-${slug}`)
+
+  if (!post) {
+    // Content may not be published yet or could be in draft
+    // Cache briefly to reduce database load
+    cacheLife('minutes')
+    return null
+  }
+
+  // Published content can be cached longer
+  cacheLife('days')
+
+  // Return only the necessary data to keep cache size minimal
+  return post.data
+}
+```
+
+This pattern is useful when different outcomes need different cache durations, for example, when an item is missing but is likely to be available later.
+
+#### Using dynamic cache lifetimes from data
+
+If you want to calculate cache lifetime at runtime, for example by reading it from the fetched data, use an [inline cache profile](#inline-cache-profiles) object:
+
+```tsx filename="lib/posts.ts" highlight={15,16,17}
+import { cacheLife, cacheTag } from 'next/cache'
+
+async function getPostContent(slug: string) {
+  'use cache'
+
+  const post = await fetchPost(slug)
+  cacheTag(`post-${slug}`)
+
+  if (!post) {
+    cacheLife('minutes')
+    return null
+  }
+
+  // Use cache timing from CMS data directly as an object
+  cacheLife({
+    // Ensure post.revalidateSeconds is a number in seconds
+    revalidate: post.revalidateSeconds ?? 3600,
+  })
+
+  return post.data
+}
+```
 ## Related
 
 View related API references.
@@ -43481,8 +43842,8 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   cacheHandlers: {
-    default: './cache-handlers/default-handler.js',
-    remote: './cache-handlers/remote-handler.js',
+    default: require.resolve('./cache-handlers/default-handler.js'),
+    remote: require.resolve('./cache-handlers/remote-handler.js'),
   },
 }
 
@@ -43492,8 +43853,8 @@ export default nextConfig
 ```js filename="next.config.js" switcher
 module.exports = {
   cacheHandlers: {
-    default: './cache-handlers/default-handler.js',
-    remote: './cache-handlers/remote-handler.js',
+    default: require.resolve('./cache-handlers/default-handler.js'),
+    remote: require.resolve('./cache-handlers/remote-handler.js'),
   },
 }
 ```
@@ -43531,7 +43892,7 @@ Returns a `CacheEntry` object if found, or `undefined` if not found or expired.
 Your `get` method should retrieve the cache entry from storage, check if it has expired based on the `revalidate` time, and return `undefined` for missing or expired entries.
 
 ```js
-class CacheHandler {
+const cacheHandler = {
   async get(cacheKey, softTags) {
     const entry = cache.get(cacheKey)
     if (!entry) return undefined
@@ -43543,7 +43904,7 @@ class CacheHandler {
     }
 
     return entry
-  }
+  },
 }
 ```
 
@@ -43567,14 +43928,14 @@ Returns `Promise<void>`.
 Your `set` method must await the `pendingEntry` promise before storing it, since the cache entry may still be generating when this method is called. Once resolved, store the entry in your cache system.
 
 ```js
-class CacheHandler {
+const cacheHandler = {
   async set(cacheKey, pendingEntry) {
     // Wait for the entry to be ready
     const entry = await pendingEntry
 
     // Store in your cache system
     cache.set(cacheKey, entry)
-  }
+  },
 }
 ```
 
@@ -43593,11 +43954,11 @@ Returns `Promise<void>`.
 For in-memory caches, this can be a no-op. For distributed caches, use this to sync tag state from an external service or database before processing requests.
 
 ```js
-class CacheHandler {
+const cacheHandler = {
   async refreshTags() {
     // For in-memory cache, no action needed
     // For distributed cache, sync tag state from external service
-  }
+  },
 }
 ```
 
@@ -43622,14 +43983,14 @@ Returns:
 If you're not tracking tag revalidation timestamps, return `0`. Otherwise, find the most recent revalidation timestamp across all the provided tags. Return `Infinity` if you prefer to handle soft tag checking in the `get` method.
 
 ```js
-class CacheHandler {
+const cacheHandler = {
   async getExpiration(tags) {
     // Return 0 if not tracking tag revalidation
     return 0
 
     // Or return the most recent revalidation timestamp
     // return Math.max(...tags.map(tag => tagTimestamps.get(tag) || 0));
-  }
+  },
 }
 ```
 
@@ -43653,7 +44014,7 @@ Returns `Promise<void>`.
 When tags are revalidated, your handler should invalidate all cache entries that have any of those tags. Iterate through your cache and remove entries whose tags match the provided list.
 
 ```js
-class CacheHandler {
+const cacheHandler = {
   async updateTags(tags, durations) {
     // Invalidate all cache entries with matching tags
     for (const [key, entry] of cache.entries()) {
@@ -43661,7 +44022,7 @@ class CacheHandler {
         cache.delete(key)
       }
     }
-  }
+  },
 }
 ```
 
@@ -43704,7 +44065,7 @@ Here's a minimal implementation using a `Map` for storage. This example demonstr
 const cache = new Map()
 const pendingSets = new Map()
 
-module.exports = class MemoryCacheHandler {
+module.exports = {
   async get(cacheKey, softTags) {
     // Wait for any pending set operation to complete
     const pendingPromise = pendingSets.get(cacheKey)
@@ -43724,7 +44085,7 @@ module.exports = class MemoryCacheHandler {
     }
 
     return entry
-  }
+  },
 
   async set(cacheKey, pendingEntry) {
     // Create a promise to track this set operation
@@ -43744,16 +44105,16 @@ module.exports = class MemoryCacheHandler {
       resolvePending()
       pendingSets.delete(cacheKey)
     }
-  }
+  },
 
   async refreshTags() {
     // No-op for in-memory cache
-  }
+  },
 
   async getExpiration(tags) {
     // Return 0 to indicate no tags have been revalidated
     return 0
-  }
+  },
 
   async updateTags(tags, durations) {
     // Implement tag-based invalidation
@@ -43762,7 +44123,7 @@ module.exports = class MemoryCacheHandler {
         cache.delete(key)
       }
     }
-  }
+  },
 }
 ```
 
@@ -43773,15 +44134,13 @@ For durable storage like Redis or a database, you'll need to serialize the cache
 ```js filename="cache-handlers/redis-handler.js"
 const { createClient } = require('redis')
 
-module.exports = class RedisCacheHandler {
-  constructor() {
-    this.client = createClient({ url: process.env.REDIS_URL })
-    this.client.connect()
-  }
+const client = createClient({ url: process.env.REDIS_URL })
+client.connect()
 
+module.exports = {
   async get(cacheKey, softTags) {
     // Retrieve from Redis
-    const stored = await this.client.get(cacheKey)
+    const stored = await client.get(cacheKey)
     if (!stored) return undefined
 
     // Deserialize the entry
@@ -43801,7 +44160,7 @@ module.exports = class RedisCacheHandler {
       expire: data.expire,
       revalidate: data.revalidate,
     }
-  }
+  },
 
   async set(cacheKey, pendingEntry) {
     const entry = await pendingEntry
@@ -43823,7 +44182,7 @@ module.exports = class RedisCacheHandler {
     // Combine chunks and serialize for Redis storage
     const data = Buffer.concat(chunks.map((chunk) => Buffer.from(chunk)))
 
-    await this.client.set(
+    await client.set(
       cacheKey,
       JSON.stringify({
         value: data.toString('base64'),
@@ -43835,23 +44194,23 @@ module.exports = class RedisCacheHandler {
       }),
       { EX: entry.expire } // Use Redis TTL for automatic expiration
     )
-  }
+  },
 
   async refreshTags() {
     // No-op for basic Redis implementation
     // Could sync with external tag service if needed
-  }
+  },
 
   async getExpiration(tags) {
     // Return 0 to indicate no tags have been revalidated
     // Could query Redis for tag expiration timestamps if tracking them
     return 0
-  }
+  },
 
   async updateTags(tags, durations) {
     // Implement tag-based invalidation if needed
     // Could iterate over keys with matching tags and delete them
-  }
+  },
 }
 ```
 
@@ -46947,7 +47306,7 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.json) that currently are working on compatibility and automatically opt-ed out:
+Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc) that currently are working on compatibility and automatically opt-ed out:
 
 * `@appsignal/nodejs`
 * `@aws-sdk/client-s3`
@@ -49127,6 +49486,7 @@ The following commands are available:
 | [`info`](#next-info-options)           | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
 | [`telemetry`](#next-telemetry-options) | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
 | [`typegen`](#next-typegen-options)     | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
+| [`upgrade`](#next-upgrade-options)     | Upgrades your Next.js application to the latest version.                                                      |
 
 > **Good to know**: Running `next` without a command is an alias for `next dev`.
 
@@ -49278,6 +49638,19 @@ The `next-env.d.ts` file is included into your `tsconfig.json` file, to make Nex
 To ensure `next-env.d.ts` is present before type-checking run `next typegen`. The commands `next dev` and `next build` also generate the `next-env.d.ts` file, but it is often undesirable to run these just to type-check, for example in CI/CD environments.
 
 > **Good to know**: `next typegen` loads your Next.js config (`next.config.js`, `next.config.mjs`, or `next.config.ts`) using the production build phase. Ensure any required environment variables and dependencies are available so the config can load correctly.
+
+## `next upgrade` options
+
+`next upgrade` upgrades your Next.js application to the latest version.
+
+The following options are available for the `next upgrade` command:
+
+| Option                  | Description                                                                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h, --help`            | Show all available options.                                                                                                                        |
+| `[directory]`           | A directory with the Next.js application to upgrade. If not provided, the current directory will be used.                                          |
+| `--revision <revision>` | Specify a Next.js version or tag to upgrade to (e.g., `latest`, `canary`, `15.0.0`). Defaults to the release channel you have currently installed. |
+| `--verbose`             | Show verbose output during the upgrade process.                                                                                                    |
 
 ## Examples
 
@@ -66169,10 +66542,21 @@ module.exports = {
 }
 ```
 
+You can also enable both AVIF and WebP formats together. AVIF will be preferred for browsers that support it, with WebP as a fallback:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+}
+```
+
 > **Good to know**:
 >
 > * We still recommend using WebP for most use cases.
 > * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower, but subsequent requests that are cached will be faster.
+> * When using multiple formats, Next.js will cache each format separately. This means increased storage requirements compared to using a single format, as both AVIF and WebP versions of images will be stored for different browser support.
 > * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.
 
 #### `minimumCacheTTL`
@@ -67291,10 +67675,21 @@ module.exports = {
 }
 ```
 
+You can also enable both AVIF and WebP formats together. AVIF will be preferred for browsers that support it, with WebP as a fallback:
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+}
+```
+
 > **Good to know**:
 >
 > * We still recommend using WebP for most use cases.
 > * AVIF generally takes 50% longer to encode but it compresses 20% smaller compared to WebP. This means that the first time an image is requested, it will typically be slower and then subsequent requests that are cached will be faster.
+> * When using multiple formats, Next.js will cache each format separately. This means increased storage requirements compared to using a single format, as both AVIF and WebP versions of images will be stored for different browser support.
 > * If you self-host with a Proxy/CDN in front of Next.js, you must configure the Proxy to forward the `Accept` header.
 
 ## Caching Behavior
@@ -69335,7 +69730,7 @@ export default function Page({ stars }) {
 >
 > * Data returned from `getInitialProps` is serialized when server rendering. Ensure the returned object from `getInitialProps` is a plain `Object`, and not using `Date`, `Map` or `Set`.
 > * For the initial page load, `getInitialProps` will run on the server only. `getInitialProps` will then also run on the client when navigating to a different route with the [`next/link`](/docs/pages/api-reference/components/link.md) component or by using [`next/router`](/docs/pages/api-reference/functions/use-router.md).
-> * If `getInitialProps` is used in a custom `_app.js`, and the page being navigated to is using `getServerSideProps`, then `getInitialProps` will also run on the server.
+> * If `getInitialProps` is used in a custom `_app.js`, and the page being navigated to is using `getServerSideProps`, then `getInitialProps` will **only** run on the server.
 
 ## Context Object
 
@@ -74390,7 +74785,7 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.json) that currently are working on compatibility and automatically opt-ed out:
+Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc) that currently are working on compatibility and automatically opt-ed out:
 
 * `@appsignal/nodejs`
 * `@aws-sdk/client-s3`
@@ -76144,6 +76539,7 @@ The following commands are available:
 | [`info`](#next-info-options)           | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
 | [`telemetry`](#next-telemetry-options) | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
 | [`typegen`](#next-typegen-options)     | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
+| [`upgrade`](#next-upgrade-options)     | Upgrades your Next.js application to the latest version.                                                      |
 
 > **Good to know**: Running `next` without a command is an alias for `next dev`.
 
@@ -76295,6 +76691,19 @@ The `next-env.d.ts` file is included into your `tsconfig.json` file, to make Nex
 To ensure `next-env.d.ts` is present before type-checking run `next typegen`. The commands `next dev` and `next build` also generate the `next-env.d.ts` file, but it is often undesirable to run these just to type-check, for example in CI/CD environments.
 
 > **Good to know**: `next typegen` loads your Next.js config (`next.config.js`, `next.config.mjs`, or `next.config.ts`) using the production build phase. Ensure any required environment variables and dependencies are available so the config can load correctly.
+
+## `next upgrade` options
+
+`next upgrade` upgrades your Next.js application to the latest version.
+
+The following options are available for the `next upgrade` command:
+
+| Option                  | Description                                                                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h, --help`            | Show all available options.                                                                                                                        |
+| `[directory]`           | A directory with the Next.js application to upgrade. If not provided, the current directory will be used.                                          |
+| `--revision <revision>` | Specify a Next.js version or tag to upgrade to (e.g., `latest`, `canary`, `15.0.0`). Defaults to the release channel you have currently installed. |
+| `--verbose`             | Show verbose output during the upgrade process.                                                                                                    |
 
 ## Examples
 

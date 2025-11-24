@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/permanentRedirect.md
 
 # permanentRedirect
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The `permanentRedirect` function allows you to redirect the user to another URL. `permanentRedirect` can be used in Server Components, Client Components, [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).

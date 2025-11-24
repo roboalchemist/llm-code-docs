@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/architecture/supported-browsers.md
 
 # Supported Browsers
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js supports **modern browsers** with zero configuration.

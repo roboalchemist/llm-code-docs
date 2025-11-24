@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/guides/tailwind-v3-css.md
 
-# Source: https://nextjs.org/docs/pages/guides/tailwind-v3-css.md
-
-# Source: https://nextjs.org/docs/app/guides/tailwind-v3-css.md
-
-# Source: https://nextjs.org/docs/pages/guides/tailwind-v3-css.md
-
 # How to install Tailwind CSS v3 in your Next.js application
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 This guide will walk you through how to install [Tailwind CSS v3](https://v3.tailwindcss.com/) in your Next.js application.
@@ -48,9 +42,9 @@ Configure your template paths in your `tailwind.config.js` file:
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {},
@@ -61,19 +55,39 @@ module.exports = {
 
 Add the Tailwind directives to your global CSS file:
 
-```css filename="styles/globals.css"
+```css filename="app/globals.css"
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-Import the CSS file in your `pages/_app.js` file:
+Import the CSS file in your root layout:
 
-```jsx filename="pages/_app.js"
-import '@/styles/globals.css'
+```tsx filename="app/layout.tsx" switcher
+import './globals.css'
 
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import './globals.css'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
 }
 ```
 
@@ -81,13 +95,13 @@ export default function MyApp({ Component, pageProps }) {
 
 After installing Tailwind CSS and adding the global styles, you can use Tailwind's utility classes in your application.
 
-```tsx filename="pages/index.tsx" switcher
+```tsx filename="app/page.tsx" switcher
 export default function Page() {
   return <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
 }
 ```
 
-```jsx filename="pages/index.js" switcher
+```jsx filename="app/page.js" switcher
 export default function Page() {
   return <h1 className="text-3xl font-bold underline">Hello, Next.js!</h1>
 }

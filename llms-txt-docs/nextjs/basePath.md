@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/basePath.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/basePath.md
-
 # basePath
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 To deploy a Next.js application under a sub-path of a domain you can use the `basePath` config option.
@@ -50,7 +44,7 @@ This makes sure that you don't have to change all links in your application when
 
 ### Images
 
-When using the [`next/image`](/docs/pages/api-reference/components/image.md) component, you will need to add the `basePath` in front of `src`.
+When using the [`next/image`](/docs/app/api-reference/components/image.md) component, you will need to add the `basePath` in front of `src`.
 
 For example, using `/docs/me.png` will properly serve your image when `basePath` is set to `/docs`.
 

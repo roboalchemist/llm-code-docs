@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/redirects.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/redirects.md
-
 # redirects
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Redirects allow you to redirect an incoming request path to a different destination path.
@@ -261,48 +255,36 @@ module.exports = {
 
 ### Redirects with i18n support
 
-When leveraging [`i18n` support](/docs/pages/guides/internationalization.md) with redirects each `source` and `destination` is automatically prefixed to handle the configured `locales` unless you add `locale: false` to the redirect. If `locale: false` is used you must prefix the `source` and `destination` with a locale for it to be matched correctly.
+When implementing redirects with internationalization in the App Router, you can include locales in `next.config.js` redirects, but only as hardcoded paths.
+
+For dynamic or per-request locale handling, use [dynamic route segments and proxy](/docs/app/guides/internationalization.md), which can redirect based on the user's preferred language.
 
 ```js filename="next.config.js"
 module.exports = {
-  i18n: {
-    locales: ['en', 'fr', 'de'],
-    defaultLocale: 'en',
-  },
-
   async redirects() {
     return [
       {
-        source: '/with-locale', // automatically handles all locales
-        destination: '/another', // automatically passes the locale on
+        // Manually handle locale prefixes for App Router
+        source: '/en/old-path',
+        destination: '/en/new-path',
         permanent: false,
       },
       {
-        // does not handle locales automatically since locale: false is set
-        source: '/nl/with-locale-manual',
-        destination: '/nl/another',
-        locale: false,
+        // Redirect for all locales using a parameter
+        source: '/:locale/old-path',
+        destination: '/:locale/new-path',
         permanent: false,
       },
       {
-        // this matches '/' since `en` is the defaultLocale
-        source: '/en',
-        destination: '/en/another',
-        locale: false,
+        // Redirect from one locale to another
+        source: '/de/old-path',
+        destination: '/en/new-path',
         permanent: false,
       },
-      // it's possible to match all locales even when locale: false is set
       {
-        source: '/:locale/page',
-        destination: '/en/newpage',
-        permanent: false,
-        locale: false,
-      },
-      {
-        // this gets converted to /(en|fr|de)/(.*) so will not match the top-level
-        // `/` or `/fr` routes like /:path* would
-        source: '/(.*)',
-        destination: '/another',
+        // Catch-all redirect for multiple locales
+        source: '/:locale(en|fr|de)/:path*',
+        destination: '/:locale/new-section/:path*',
         permanent: false,
       },
     ]

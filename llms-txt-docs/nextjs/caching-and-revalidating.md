@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/getting-started/caching-and-revalidating.md
 
 # Caching and Revalidating
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Caching is a technique for storing the result of data fetching and other computations so that future requests for the same data can be served faster, without doing the work again. While revalidation allows you to update cache entries without having to rebuild your entire application.

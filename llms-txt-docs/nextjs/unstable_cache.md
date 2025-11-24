@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/unstable_cache.md
 
 # unstable_cache
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 > **Warning:** This API will be replaced by [`use cache`](/docs/app/api-reference/directives/use-cache.md) when it reaches stability.

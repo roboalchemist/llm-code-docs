@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/allowedDevOrigins.md
-
 # allowedDevOrigins
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js does not automatically block cross-origin requests during development, but will block by default in a future major version of Next.js to prevent unauthorized requesting of internal assets/endpoints that are available in development mode.

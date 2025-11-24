@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/guides/mcp.md
 
 # Enabling Next.js MCP Server for Coding Agents
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 The [Model Context Protocol (MCP)](https://modelcontextprotocol.io) is an open standard that allows AI agents and coding assistants to interact with your applications through a standardized interface.

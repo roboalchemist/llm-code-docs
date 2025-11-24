@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/adapterPath.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath.md
-
 # experimental.adapterPath
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js provides an experimental API that allows you to create custom adapters to hook into the build process. This is useful for deployment platforms or custom build integrations that need to modify the Next.js configuration or process the build output.

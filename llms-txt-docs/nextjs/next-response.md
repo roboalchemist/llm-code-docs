@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/next-response.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/functions/next-response.md
-
-# Source: https://nextjs.org/docs/app/api-reference/functions/next-response.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/functions/next-response.md
-
 # NextResponse
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 NextResponse extends the [Web Response API](https://developer.mozilla.org/docs/Web/API/Response) with additional convenience methods.

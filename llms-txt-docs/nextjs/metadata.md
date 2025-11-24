@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/metadata.md
 
 # Metadata Files API Reference
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 This section of the docs covers **Metadata file conventions**. File-based metadata can be defined by adding special metadata files to route segments.

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/functions/fetch.md
 
 # fetch
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Next.js extends the [Web `fetch()` API](https://developer.mozilla.org/docs/Web/API/Fetch_API) to allow each request on the server to set its own persistent caching and revalidation semantics.

@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/getting-started/server-and-client-components.md
 
 # Server and Client Components
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 By default, layouts and pages are [Server Components](https://react.dev/reference/rsc/server-components), which lets you fetch data and render parts of your UI on the server, optionally cache the result, and stream it to the client. When you need interactivity or browser APIs, you can use [Client Components](https://react.dev/reference/rsc/use-client) to layer in functionality.

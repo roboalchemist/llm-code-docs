@@ -1,7 +1,7 @@
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/expireTime.md
 
 # expireTime
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 You can specify a custom `stale-while-revalidate` expire time for CDNs to consume in the `Cache-Control` header for ISR enabled pages.

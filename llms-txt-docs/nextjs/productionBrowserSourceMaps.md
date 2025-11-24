@@ -2,14 +2,8 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps.md
-
-# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps.md
-
-# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps.md
-
 # productionBrowserSourceMaps
-@doc-version: 16.0.3
+@doc-version: 16.0.4
 
 
 Source Maps are enabled by default during development. During production builds, they are disabled to prevent you leaking your source on the client, unless you specifically opt-in with the configuration flag.
