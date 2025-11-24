@@ -101,6 +101,23 @@ for script in "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/*.sh; do
     fi
 done
 
+# Update the index.yaml with current documentation state
+echo "═══════════════════════════════════════════════════════════════"
+echo "▶ Updating documentation index"
+echo "═══════════════════════════════════════════════════════════════"
+if [[ -f "$SCRIPT_DIR/update-index.py" ]]; then
+    if python3 "$SCRIPT_DIR/update-index.py"; then
+        successful_scripts+=("Documentation Index Update")
+        echo
+        echo "✅ Documentation index updated successfully"
+    else
+        failed_scripts+=("Documentation Index Update")
+        echo
+        echo "❌ Documentation index update failed"
+    fi
+fi
+echo
+
 # Final summary
 echo "═══════════════════════════════════════════════════════════════"
 echo "📊 Documentation Update Summary"
