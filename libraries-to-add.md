@@ -197,3 +197,23 @@ Libraries identified from local projects that would benefit from AI-readable doc
 - [G] python - python/cpython Doc/ (Python 3.13 official docs)
 - [G] circuitpython - adafruit/circuitpython (MicroPython variant)
 - [G] micropython - micropython/micropython (Python for microcontrollers)
+
+---
+
+## Future: Bulk Documentation Sources
+
+Ideas for expanding documentation coverage through automated discovery and scraping.
+
+### Documentation Platforms to Crawl
+- [ ] **MkDocs sites** - 10,959 current MkDocs websites tracked by BuiltWith Trends
+- [ ] **Sphinx sites** - Python documentation generator (used by most Python projects)
+- [ ] **Read the Docs** - readthedocs.io hosts thousands of project docs
+- [ ] **GitHub /docs folders** - Crawl repos for /docs folders conforming to RTD format
+
+### llms.txt Discovery Sources
+Directories and hubs tracking sites with llms.txt:
+- [ ] https://llmstxthub.com/
+- [ ] https://github.com/thedaviddias/llms-txt-hub/blob/main/data/websites.json
+- [ ] https://github.com/SecretiveShell/Awesome-llms-txt
+- [ ] https://directory.llmstxt.cloud/
+- [ ] https://llmstxt.site/
