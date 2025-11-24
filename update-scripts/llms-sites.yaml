@@ -1,4 +1,7 @@
 sites:
+- name: adafruit
+  base_url: https://learn.adafruit.com/
+  description: Adafruit Learning System - CircuitPython and hardware documentation
 - name: agent
   base_url: https://docs.agent.ai/
   description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
