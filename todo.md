@@ -1,15 +1,10 @@
-# Libraries to Add
+# Documentation Wishlist & Ideas
 
-Libraries identified from local projects that would benefit from AI-readable documentation.
-
-**Legend:**
-- [x] = Already in llms-sites.yaml (llms.txt)
-- [G] = Already in repo_config.yaml (GitHub extraction)
-- [ ] = Not yet added
+Libraries and documentation sources to potentially add, plus tools and strategies for expanding coverage.
 
 ---
 
-## Python
+## Python Libraries (Wishlist)
 
 ### ML/AI Frameworks
 - [ ] torch / torchaudio / torchvision - pytorch.org
@@ -29,38 +24,28 @@ Libraries identified from local projects that would benefit from AI-readable doc
 - [ ] sentence-transformers - sbert.net
 
 ### LLM/AI APIs & Frameworks
-- [ ] langchain - python.langchain.com/docs
 - [ ] langgraph - langchain-ai.github.io/langgraph
 - [ ] litellm - docs.litellm.ai
 - [ ] sglang - github.com/sgl-project/sglang
 - [ ] vllm - docs.vllm.ai
-- [ ] groq - console.groq.com/docs
 - [ ] mistralai - docs.mistral.ai
 - [ ] huggingface-hub - huggingface.co/docs/huggingface_hub
 - [ ] google-generativeai - ai.google.dev/api
 
 ### Web Frameworks
-- [G] fastapi - fastapi.tiangolo.com (GitHub: fastapi/fastapi)
-- [G] flask - flask.palletsprojects.com (GitHub: pallets/flask)
-- [x] streamlit - docs.streamlit.io
-- [x] gradio - gradio.app
 - [ ] celery - docs.celeryq.dev
 
 ### Data/ORM
 - [ ] pydantic - docs.pydantic.dev
-- [G] sqlalchemy - docs.sqlalchemy.org (GitHub: sqlalchemy/sqlalchemy)
 - [ ] alembic - alembic.sqlalchemy.org
-- [x] redis - redis.io
 
 ### Testing
 - [ ] pytest - docs.pytest.org
 - [ ] playwright - playwright.dev
 
 ### CLI/TUI
-- [G] click - click.palletsprojects.com (GitHub: pallets/click)
 - [ ] typer - typer.tiangolo.com
 - [ ] rich - rich.readthedocs.io
-- [G] textual - textual.textualize.io (GitHub: Textualize/textual)
 - [ ] colorama - github.com/tartley/colorama
 - [ ] tqdm - tqdm.github.io
 - [ ] tabulate - github.com/astanin/python-tabulate
@@ -122,33 +107,26 @@ Libraries identified from local projects that would benefit from AI-readable doc
 
 ---
 
-## Node.js
+## Node.js Libraries (Wishlist)
 
 ### Frameworks
-- [x] react / react-dom - react.dev
-- [x] next - nextjs.org
 - [ ] express - expressjs.com
 - [ ] electron - electronjs.org
 
 ### Build Tools
 - [ ] webpack - webpack.js.org
-- [x] vite - vitejs.dev
 - [ ] typescript - typescriptlang.org
 - [ ] babel - babeljs.io
 
 ### Testing
 - [ ] jest - jestjs.io
-- [ ] playwright - playwright.dev
-- [x] vitest - vitest.dev
 - [ ] @testing-library/react - testing-library.com/docs/react-testing-library
 
 ### UI/Styling
 - [ ] tailwindcss - tailwindcss.com
 - [ ] @radix-ui - radix-ui.com
-- [x] antd - ant.design
 - [ ] three.js - threejs.org
 - [ ] d3 - d3js.org
-- [x] pixi.js - pixijs.com
 - [ ] recharts - recharts.org
 - [ ] styled-components - styled-components.com/docs
 - [ ] lit - lit.dev/docs
@@ -156,7 +134,6 @@ Libraries identified from local projects that would benefit from AI-readable doc
 ### State/Data
 - [ ] zustand - docs.pmnd.rs/zustand
 - [ ] @reduxjs/toolkit - redux-toolkit.js.org
-- [x] zod - zod.dev
 - [ ] react-hook-form - react-hook-form.com
 
 ### HTTP/Utils
@@ -180,32 +157,11 @@ Libraries identified from local projects that would benefit from AI-readable doc
 
 ---
 
-## AI/Dev Tools
-
-### LLM Runtimes & Interfaces
-- [x] ollama - docs.ollama.com
-- [x] lm-studio - lmstudio.ai
-- [G] goose - block/goose (GitHub: AI-powered developer agent)
-- [x] gitingest - gitingest.com (repo-to-prompt tool for AI agents)
-
----
-
-## Language Documentation
-
-### Official Language Docs
-- [G] go - golang/website (Go official documentation)
-- [G] python - python/cpython Doc/ (Python 3.13 official docs)
-- [G] circuitpython - adafruit/circuitpython (MicroPython variant)
-- [G] micropython - micropython/micropython (Python for microcontrollers)
-
----
-
-## Maker Hardware & IoT
+## Maker Hardware & IoT (Wishlist)
 
 ### Hardware Vendors
-- [x] adafruit - learn.adafruit.com (Adafruit Learning System - tutorials, CircuitPython)
 - [ ] sparkfun - learn.sparkfun.com (SparkFun tutorials and hookup guides)
-- [ ] seeed-studio - wiki.seeedstudio.com (Seeed Studio Wiki - Grove, XIAO, etc.)
+- [ ] seeed-studio - wiki.seeedstudio.com (Seeed Studio Wiki - Grove, XIAO)
 - [ ] waveshare - waveshare.com/wiki (Waveshare displays, HATs, modules)
 - [ ] pimoroni - learn.pimoroni.com (Pimoroni tutorials - Pico, Pi HATs)
 - [ ] dfrobot - wiki.dfrobot.com (DFRobot sensors and modules)
@@ -217,8 +173,6 @@ Libraries identified from local projects that would benefit from AI-readable doc
 - [ ] espressif - docs.espressif.com (ESP32, ESP8266 official docs)
 
 ### Firmware & Frameworks
-- [G] circuitpython - adafruit/circuitpython (MicroPython for Adafruit boards)
-- [G] micropython - micropython/micropython (Python for microcontrollers)
 - [ ] esphome - esphome.io (ESPHome YAML-based firmware)
 - [ ] tasmota - tasmota.github.io/docs (Tasmota smart device firmware)
 - [ ] meshtastic - meshtastic.org/docs (LoRa mesh networking)
@@ -230,9 +184,15 @@ Libraries identified from local projects that would benefit from AI-readable doc
 
 ---
 
-## Future: Bulk Documentation Sources
+## Bulk Documentation Discovery
 
-Ideas for expanding documentation coverage through automated discovery and scraping.
+### llms.txt Hub Sites
+Directories and hubs that track sites with llms.txt:
+- [ ] https://llmstxthub.com/
+- [ ] https://github.com/thedaviddias/llms-txt-hub/blob/main/data/websites.json
+- [ ] https://github.com/SecretiveShell/Awesome-llms-txt
+- [ ] https://directory.llmstxt.cloud/
+- [ ] https://llmstxt.site/
 
 ### Documentation Platforms to Crawl
 - [ ] **MkDocs sites** - 10,959 current MkDocs websites tracked by BuiltWith Trends
@@ -240,10 +200,56 @@ Ideas for expanding documentation coverage through automated discovery and scrap
 - [ ] **Read the Docs** - readthedocs.io hosts thousands of project docs
 - [ ] **GitHub /docs folders** - Crawl repos for /docs folders conforming to RTD format
 
-### llms.txt Discovery Sources
-Directories and hubs tracking sites with llms.txt:
-- [ ] https://llmstxthub.com/
-- [ ] https://github.com/thedaviddias/llms-txt-hub/blob/main/data/websites.json
-- [ ] https://github.com/SecretiveShell/Awesome-llms-txt
-- [ ] https://directory.llmstxt.cloud/
-- [ ] https://llmstxt.site/
+### Google Dorking for Discovery
+Use advanced search operators to find documentation sites:
+- Reference: https://gist.github.com/sundowndev/283efaddbcf896ab405488330d1bbc06
+
+Example queries:
+```
+site:readthedocs.io "API reference"
+site:github.com inurl:/docs "getting started"
+filetype:md site:github.com "installation"
+"llms.txt" OR "llms-full.txt" site:*
+```
+
+---
+
+## Tools for Converting Sites to llms.txt
+
+### HTML to Markdown Converters
+Tools that can extract and convert documentation sites:
+
+- **mdream** - https://github.com/harlan-zw/mdream
+  - Markdown extraction and conversion tool
+
+- **create-llmstxt-py** - https://github.com/firecrawl/create-llmstxt-py
+  - Firecrawl's tool for generating llms.txt from websites
+
+- **codecrawl** - https://github.com/revokslab/codecrawl
+  - Code-focused web crawler for documentation
+
+- **llm-docs-builder** - https://github.com/mensfeld/llm-docs-builder
+  - Build LLM-friendly documentation from various sources
+
+### AI-Powered Conversion
+For complex sites with JavaScript rendering or difficult HTML structures:
+
+- **Jina Reader LM** - https://huggingface.co/collections/mlx-community/jina-reader-lm-678c207486653df590a90352
+  - AI model for converting HTML to clean markdown
+  - Useful for sites that are hard to scrape traditionally
+  - Can handle complex layouts and extract meaningful content
+
+---
+
+## Notes
+
+### Priority Order for Adding Sources
+1. **llms.txt** - Highest quality, official AI-optimized format
+2. **GitHub repos** - Comprehensive docs, requires custom config
+3. **Web scraping** - Last resort for critical documentation
+
+### Current Stats (as of 2024-11-24)
+- **176** llms.txt sites configured
+- **15** GitHub repositories
+- **2** web-scraped sources
+- **~255** total documentation sources

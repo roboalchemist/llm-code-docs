@@ -12,7 +12,8 @@ llm-code-docs/
 │   └── web-scraped/        # Custom web scrapers (Claude Code SDK, READMEs)
 ├── scripts/                # All extraction and update tools
 ├── CLAUDE.md               # AI assistant instructions
-├── libraries-to-add.md     # Tracking list for future additions
+├── index.yaml              # Index of all documentation sources
+├── todo.md                 # Wishlist and future ideas
 └── README.md               # This file
 ```
 
@@ -129,7 +130,8 @@ Configuration for Git-based documentation extraction:
 
 ## Adding Documentation
 
-See `libraries-to-add.md` for tracked libraries awaiting documentation.
+- **`index.yaml`** - Index of all current documentation sources with paths and status
+- **`todo.md`** - Wishlist of libraries to add and tools for expansion
 
 Priority order:
 1. **llms.txt** - Highest quality, official AI-optimized format

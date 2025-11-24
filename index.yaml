@@ -1,0 +1,379 @@
+# Documentation Index
+# Central registry of all documentation sources in this repository
+#
+# Status values:
+#   - llms-txt: Downloaded from site's llms.txt endpoint
+#   - github: Extracted from GitHub repository
+#   - web-scraped: Custom web scraper
+#   - pending: Identified but not yet fetched
+
+metadata:
+  last_updated: "2024-11-24"
+  total_sources: 255
+  llms_txt_count: 176
+  github_count: 15
+  web_scraped_count: 2
+
+# =============================================================================
+# LLMS.TXT SOURCES (176 sites)
+# Configuration: scripts/llms-sites.yaml
+# Location: docs/llms-txt/{name}/
+# =============================================================================
+
+llms_txt:
+  # AI/LLM Providers & Tools
+  - name: anthropic
+    description: Claude AI documentation and API reference
+    url: https://docs.anthropic.com/
+    path: docs/llms-txt/anthropic/
+    status: llms-txt
+
+  - name: openai
+    description: OpenAI API documentation
+    url: https://platform.openai.com/docs/
+    path: docs/llms-txt/openai/
+    status: llms-txt
+
+  - name: ollama
+    description: Run LLMs locally - installation, API, and model library
+    url: https://docs.ollama.com/
+    path: docs/llms-txt/ollama/
+    status: llms-txt
+
+  - name: lm-studio
+    description: LM Studio local LLM interface
+    url: https://lmstudio.ai/
+    path: docs/llms-txt/lm-studio/
+    status: llms-txt
+
+  - name: vercel-ai-sdk
+    description: Vercel AI SDK for building AI applications
+    url: https://sdk.vercel.ai/docs/
+    path: docs/llms-txt/vercel-ai-sdk/
+    status: llms-txt
+
+  - name: langchain
+    description: LangChain framework for LLM applications
+    url: https://python.langchain.com/docs/
+    path: docs/llms-txt/langchain/
+    status: llms-txt
+
+  - name: groq
+    description: Groq LPU inference platform
+    url: https://console.groq.com/docs/
+    path: docs/llms-txt/groq/
+    status: llms-txt
+
+  # Web Frameworks
+  - name: nextjs
+    description: Next.js React framework
+    url: https://nextjs.org/docs/
+    path: docs/llms-txt/nextjs/
+    status: llms-txt
+
+  - name: react
+    description: React library for web and native UIs
+    url: https://react.dev/
+    path: docs/llms-txt/react/
+    status: llms-txt
+
+  - name: vite
+    description: Next generation frontend build tool
+    url: https://vite.dev/
+    path: docs/llms-txt/vite/
+    status: llms-txt
+
+  - name: astro
+    description: Content-focused web framework
+    url: https://astro.build/
+    path: docs/llms-txt/astro/
+    status: llms-txt
+
+  - name: remix
+    description: Full-stack web framework
+    url: https://remix.run/docs/
+    path: docs/llms-txt/remix/
+    status: llms-txt
+
+  - name: sveltekit
+    description: Svelte web application framework
+    url: https://svelte.dev/docs/kit/
+    path: docs/llms-txt/sveltekit/
+    status: llms-txt
+
+  # Python Libraries
+  - name: streamlit
+    description: Python framework for data apps and dashboards
+    url: https://docs.streamlit.io/
+    path: docs/llms-txt/streamlit/
+    status: llms-txt
+
+  - name: gradio
+    description: Python library for ML web interfaces
+    url: https://www.gradio.app/
+    path: docs/llms-txt/gradio/
+    status: llms-txt
+
+  - name: pydantic-ai
+    description: Pydantic AI framework
+    url: https://ai.pydantic.dev/
+    path: docs/llms-txt/pydantic-ai/
+    status: llms-txt
+
+  # JavaScript/TypeScript
+  - name: bun
+    description: Fast JavaScript runtime and toolkit
+    url: https://bun.sh/docs/
+    path: docs/llms-txt/bun/
+    status: llms-txt
+
+  - name: deno
+    description: Secure JavaScript/TypeScript runtime
+    url: https://deno.land/
+    path: docs/llms-txt/deno/
+    status: llms-txt
+
+  - name: zod
+    description: TypeScript-first schema validation
+    url: https://zod.dev/
+    path: docs/llms-txt/zod/
+    status: llms-txt
+
+  - name: vitest
+    description: Vite-powered testing framework
+    url: https://vitest.dev/
+    path: docs/llms-txt/vitest/
+    status: llms-txt
+
+  # UI Libraries
+  - name: ant-design
+    description: Enterprise React UI component library
+    url: https://ant.design/
+    path: docs/llms-txt/ant-design/
+    status: llms-txt
+
+  - name: pixijs
+    description: 2D WebGL renderer and graphics library
+    url: https://pixijs.com/
+    path: docs/llms-txt/pixijs/
+    status: llms-txt
+
+  # Databases & Infrastructure
+  - name: supabase
+    description: Open source Firebase alternative
+    url: https://supabase.com/docs/
+    path: docs/llms-txt/supabase/
+    status: llms-txt
+
+  - name: redis
+    description: In-memory data store
+    url: https://redis.io/docs/
+    path: docs/llms-txt/redis/
+    status: llms-txt
+
+  - name: turso
+    description: Edge SQLite database
+    url: https://turso.tech/docs/
+    path: docs/llms-txt/turso/
+    status: llms-txt
+
+  - name: planetscale
+    description: Serverless MySQL platform
+    url: https://planetscale.com/docs/
+    path: docs/llms-txt/planetscale/
+    status: llms-txt
+
+  - name: neon
+    description: Serverless Postgres
+    url: https://neon.tech/docs/
+    path: docs/llms-txt/neon/
+    status: llms-txt
+
+  # Cloud & Deployment
+  - name: cloudflare
+    description: Cloudflare developer platform
+    url: https://developers.cloudflare.com/
+    path: docs/llms-txt/cloudflare/
+    status: llms-txt
+
+  - name: vercel
+    description: Frontend cloud platform
+    url: https://vercel.com/docs/
+    path: docs/llms-txt/vercel/
+    status: llms-txt
+
+  - name: fly-io
+    description: Deploy apps close to users
+    url: https://fly.io/docs/
+    path: docs/llms-txt/fly-io/
+    status: llms-txt
+
+  - name: railway
+    description: Infrastructure platform
+    url: https://railway.app/
+    path: docs/llms-txt/railway/
+    status: llms-txt
+
+  # Maker Hardware
+  - name: adafruit
+    description: Adafruit Learning System tutorials and CircuitPython
+    url: https://learn.adafruit.com/
+    path: docs/llms-txt/adafruit/
+    status: llms-txt
+
+  # Developer Tools
+  - name: gitingest
+    description: Turn Git repos into prompt-ready text for AI agents
+    url: https://gitingest.com/
+    path: docs/llms-txt/gitingest/
+    status: llms-txt
+
+  # Note: 176 total sites in scripts/llms-sites.yaml
+  # This file shows representative examples - see llms-sites.yaml for complete list
+
+# =============================================================================
+# GITHUB EXTRACTED SOURCES (15 repositories)
+# Configuration: scripts/repo_config.yaml
+# Location: docs/github-scraped/{name}/
+# =============================================================================
+
+github:
+  - name: circuitpython
+    description: CircuitPython - MicroPython for Adafruit boards
+    repo: adafruit/circuitpython
+    branch: main
+    source_folder: docs
+    path: docs/github-scraped/circuitpython/
+    status: github
+
+  - name: micropython
+    description: MicroPython - Python for microcontrollers
+    repo: micropython/micropython
+    branch: master
+    source_folder: docs
+    path: docs/github-scraped/micropython/
+    status: github
+
+  - name: textual
+    description: Textual - Modern TUI framework
+    repo: Textualize/textual
+    branch: main
+    source_folder: docs
+    path: docs/github-scraped/textual/
+    status: github
+
+  - name: fastapi
+    description: FastAPI - Modern Python web framework
+    repo: fastapi/fastapi
+    branch: master
+    source_folder: docs/en/docs
+    path: docs/github-scraped/fastapi/
+    status: github
+
+  - name: flask
+    description: Flask - Lightweight WSGI web framework
+    repo: pallets/flask
+    branch: main
+    source_folder: docs
+    path: docs/github-scraped/flask/
+    status: github
+
+  - name: click
+    description: Click - Python CLI framework
+    repo: pallets/click
+    branch: main
+    source_folder: docs
+    path: docs/github-scraped/click/
+    status: github
+
+  - name: sqlalchemy
+    description: SQLAlchemy - Python SQL toolkit and ORM
+    repo: sqlalchemy/sqlalchemy
+    branch: main
+    source_folder: doc/build
+    path: docs/github-scraped/sqlalchemy/
+    status: github
+
+  - name: go-docs
+    description: Go Programming Language official documentation
+    repo: golang/website
+    branch: master
+    source_folder: _content
+    path: docs/github-scraped/go-docs/
+    status: github
+
+  - name: python-docs
+    description: Python 3.13 official documentation
+    repo: python/cpython
+    branch: "3.13"
+    source_folder: Doc
+    path: docs/github-scraped/python-docs/
+    status: github
+
+  - name: goose
+    description: Goose - AI-powered developer agent by Block
+    repo: block/goose
+    branch: main
+    source_folder: documentation/docs
+    path: docs/github-scraped/goose/
+    status: github
+
+  - name: librechat
+    description: LibreChat - Multi-AI chat interface
+    repo: LibreChat-AI/librechat.ai
+    branch: main
+    source_folder: pages/docs
+    path: docs/github-scraped/librechat/
+    status: github
+
+  - name: joplin
+    description: Joplin - Note-taking application
+    repo: laurent22/joplin
+    branch: dev
+    source_folder: readme
+    path: docs/github-scraped/joplin/
+    status: github
+
+  - name: buildbuddy
+    description: BuildBuddy - Remote execution and caching
+    repo: buildbuddy-io/buildbuddy
+    branch: master
+    source_folder: docs
+    path: docs/github-scraped/buildbuddy/
+    status: github
+
+  - name: esptool
+    description: ESP8266/ESP32 bootloader utility
+    repo: espressif/esptool
+    branch: master
+    source_folder: docs
+    path: docs/github-scraped/esptool/
+    status: github
+
+  - name: mcp-jest
+    description: MCP Jest - Model Context Protocol testing
+    repo: josharsh/mcp-jest
+    branch: main
+    source_folder: docs
+    path: docs/github-scraped/mcp-jest/
+    status: github
+
+# =============================================================================
+# WEB-SCRAPED SOURCES (2 sources)
+# Custom scrapers in scripts/
+# Location: docs/web-scraped/{name}/
+# =============================================================================
+
+web_scraped:
+  - name: claude-code-sdk
+    description: Anthropic Claude Code SDK documentation
+    url: https://docs.anthropic.com/en/docs/claude-code/
+    script: scripts/claude-code-sdk-docs.py
+    path: docs/web-scraped/claude-code-sdk/
+    status: web-scraped
+
+  - name: readmes
+    description: Individual README files from various projects
+    script: scripts/pull-readmes.py
+    path: docs/web-scraped/readmes/
+    status: web-scraped
