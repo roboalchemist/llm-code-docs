@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/how-to.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/how-to.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to.md
+
 # How-To Guide | Galileo Evaluate
 
 > Follow step-by-step instructions in Galileo Evaluate to assess generative AI models, configure metrics, and analyze performance effectively.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/no-code/research.md
 
+# Source: https://dev.writer.com/home/research.md
+
+# Source: https://dev.writer.com/no-code/research.md
+
 # Research
 
 A no-code agent with the research capability can perform web research on a specific topic. You can use the pre-built research type or create a custom one that can be tailored to a specific topic and writing style.

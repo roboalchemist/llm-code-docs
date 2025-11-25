@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/smembers.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/smembers.md
+
 # SMEMBERS
 
 > Return all the members of a set

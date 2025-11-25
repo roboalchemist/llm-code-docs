@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/home/cloud.md
 
+# Source: https://docs.livekit.io/sip/cloud.md
+
+# Source: https://docs.livekit.io/home/cloud.md
+
 LiveKit docs › LiveKit Cloud › Overview
 
 ---

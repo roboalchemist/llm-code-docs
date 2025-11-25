@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/cloud/digital-ocean-app-platform.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/digital-ocean-app-platform.md
+
+# Source: https://infisical.com/docs/integrations/cloud/digital-ocean-app-platform.md
+
 # Digital Ocean App Platform
 
 > How to sync secrets from Infisical to Digital Ocean App Platform

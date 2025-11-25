@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/renew.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/certificates/renew.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/renew.md
+
 # Renew
 
 > Perform CA certificate renewal

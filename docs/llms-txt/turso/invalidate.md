@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
 
+# Source: https://docs.turso.tech/cli/group/tokens/invalidate.md
+
+# Source: https://docs.turso.tech/cli/db/tokens/invalidate.md
+
 # db tokens invalidate
 
 You can invalidate all tokens for a database by running the following command:

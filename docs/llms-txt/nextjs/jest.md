@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing/jest.md
 
+# Source: https://nextjs.org/docs/pages/guides/testing/jest.md
+
+# Source: https://nextjs.org/docs/app/guides/testing/jest.md
+
+# Source: https://nextjs.org/docs/pages/guides/testing/jest.md
+
+# Source: https://nextjs.org/docs/app/guides/testing/jest.md
+
 # How to set up Jest with Next.js
 @doc-version: 16.0.4
 

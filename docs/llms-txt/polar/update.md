@@ -24,6 +24,36 @@
 
 # Source: https://polar.sh/docs/api-reference/benefits/update.md
 
+# Source: https://polar.sh/docs/api-reference/checkout-links/update.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/update.md
+
+# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/update.md
+
+# Source: https://polar.sh/docs/api-reference/subscriptions/update.md
+
+# Source: https://polar.sh/docs/api-reference/products/update.md
+
+# Source: https://polar.sh/docs/api-reference/organizations/update.md
+
+# Source: https://polar.sh/docs/api-reference/meters/update.md
+
+# Source: https://polar.sh/docs/api-reference/license-keys/update.md
+
+# Source: https://polar.sh/docs/api-reference/files/update.md
+
+# Source: https://polar.sh/docs/api-reference/discounts/update.md
+
+# Source: https://polar.sh/docs/api-reference/customers/update.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/subscriptions/update.md
+
+# Source: https://polar.sh/docs/api-reference/custom-fields/update.md
+
+# Source: https://polar.sh/docs/api-reference/checkout-links/update.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/update.md
+
 # Update Benefit
 
 > Update a benefit.

@@ -6,6 +6,10 @@
 
 # Source: https://docs.zapier.com/mcp/home.md
 
+# Source: https://docs.zapier.com/platform/home.md
+
+# Source: https://docs.zapier.com/mcp/home.md
+
 # null
 
 # Zapier MCP

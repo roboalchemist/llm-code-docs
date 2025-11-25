@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/toggle.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/toggle.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/toggle.md
+
 # JSON.TOGGLE
 
 > Toggle a boolean value stored at `path`.

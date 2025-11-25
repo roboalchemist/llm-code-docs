@@ -2,6 +2,14 @@
 
 # Source: https://docs.baseten.co/deployment/environments.md
 
+# Source: https://docs.baseten.co/development/model/environments.md
+
+# Source: https://docs.baseten.co/deployment/environments.md
+
+# Source: https://docs.baseten.co/development/model/environments.md
+
+# Source: https://docs.baseten.co/deployment/environments.md
+
 # Environments
 
 > Manage your model’s release cycles with environments.

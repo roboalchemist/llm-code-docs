@@ -6,6 +6,10 @@
 
 # Source: https://gofastmcp.com/clients/resources.md
 
+# Source: https://gofastmcp.com/servers/resources.md
+
+# Source: https://gofastmcp.com/clients/resources.md
+
 # Resource Operations
 
 > Access static and templated resources from MCP servers.

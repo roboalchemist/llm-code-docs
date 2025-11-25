@@ -4,6 +4,10 @@
 
 # Source: https://docs.livekit.io/agents/ops/deployment.md
 
+# Source: https://docs.livekit.io/home/self-hosting/deployment.md
+
+# Source: https://docs.livekit.io/agents/ops/deployment.md
+
 LiveKit docs › Agent deployment › Deploying to LiveKit Cloud › Getting started
 
 ---

@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/file-system.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/file-system.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/file-system.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/file-system.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/file-system.md
+
 ## FileSystem
 
 ```python

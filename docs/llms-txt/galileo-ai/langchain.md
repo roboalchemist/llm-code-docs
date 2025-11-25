@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/integrations/langchain.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/integrations/langchain.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/langchain.md
+
 # LangChain Integration | Galileo Evaluate
 
 > Galileo allows you to integrate with your Langchain application natively through callbacks

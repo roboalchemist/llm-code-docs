@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/guides/examples/lightpanda.md
 
+# Source: https://trigger.dev/docs/config/extensions/lightpanda.md
+
+# Source: https://trigger.dev/docs/guides/examples/lightpanda.md
+
 # Lightpanda
 
 > These examples demonstrate how to use Lightpanda with Trigger.dev.

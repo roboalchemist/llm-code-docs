@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/upgrade-billing-plan.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/upgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/upgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/upgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/upgrade-billing-plan.md
+
 # Upgrade your plan
 
 > Upgrade to a paid plan to access advanced features and limits.

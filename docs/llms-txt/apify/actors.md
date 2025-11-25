@@ -1,3 +1,9 @@
+# Source: https://docs.apify.com/platform/integrations/actors.md
+
+# Source: https://docs.apify.com/platform/actors.md
+
+# Source: https://docs.apify.com/academy/getting-started/actors.md
+
 # Source: https://docs.apify.com/api/v2/actors.md
 
 # Actors - Introduction

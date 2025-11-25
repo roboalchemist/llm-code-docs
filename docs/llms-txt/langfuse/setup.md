@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/observability/sdk/python/setup.md
 
+# Source: https://langfuse.com/docs/observability/sdk/typescript/setup.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/setup.md
+
+# Source: https://langfuse.com/docs/observability/sdk/typescript/setup.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/setup.md
+
 ---
 title: Setup of the Langfuse Python SDK
 description: Setup the Langfuse Python SDK for tracing your application and ingesting data into Langfuse.

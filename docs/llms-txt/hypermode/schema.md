@@ -4,6 +4,16 @@
 
 # Source: https://docs.hypermode.com/dgraph/admin/schema.md
 
+# Source: https://docs.hypermode.com/dgraph/dql/schema.md
+
+# Source: https://docs.hypermode.com/dgraph/admin/schema.md
+
+# Source: https://docs.hypermode.com/dgraph/ratel/schema.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/schema.md
+
+# Source: https://docs.hypermode.com/dgraph/admin/schema.md
+
 # Retrieve Schema
 
 <Info>

@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/update_assistant.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/update_assistant.md
 
 # Update an assistant

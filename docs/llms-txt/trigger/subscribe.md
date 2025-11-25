@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/realtime/backend/subscribe.md
 
+# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+
+# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+
 # Subscribe functions
 
 > Subscribe to run updates using async iterators

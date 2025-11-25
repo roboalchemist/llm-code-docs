@@ -26,6 +26,32 @@
 
 # Source: https://docs.klarna.com/conversion-boosters/on-site-messaging/before-you-start.md
 
+# Source: https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/before-you-start.md
+
+# Source: https://docs.klarna.com/conversion-boosters/express-checkout/before-you-start.md
+
+# Source: https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/integrate-via-hpp/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/vtex/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/prestashop/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/woocommerce/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/wix/before-you-start.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/before-you-start.md
+
+# Source: https://docs.klarna.com/conversion-boosters/on-site-messaging/before-you-start.md
+
 # Before you start with On-site Messaging
 
 ## Ready to make the most of On-site messaging? Here's what you need to know before integrating this solution into your store's website or mobile app.

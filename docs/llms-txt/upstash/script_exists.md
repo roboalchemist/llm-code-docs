@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_exists.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_exists.md
+
 # SCRIPT EXISTS
 
 > Check if scripts exist in the script cache.

@@ -2,6 +2,14 @@
 
 # Source: https://docs.hypermode.com/dgraph/concepts/facets.md
 
+# Source: https://docs.hypermode.com/dgraph/dql/facets.md
+
+# Source: https://docs.hypermode.com/dgraph/concepts/facets.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/facets.md
+
+# Source: https://docs.hypermode.com/dgraph/concepts/facets.md
+
 # Facets
 
 <Info>

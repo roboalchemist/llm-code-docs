@@ -4,6 +4,14 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/action/send-email.md
 
+# Source: https://docs.chatling.ai/ai-agent/actions/send-email.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/send-email.md
+
+# Source: https://docs.chatling.ai/ai-agent/actions/send-email.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/send-email.md
+
 # Send Email Block
 
 > Learn about the Send Email block and how to set it up in the Builder.

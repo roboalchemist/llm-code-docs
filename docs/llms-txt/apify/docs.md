@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/docs.md
 
+# Source: https://docs.apify.com/cli/docs.md
+
+# Source: https://docs.apify.com/api/client/js/docs.md
+
 # Apify API client for JavaScript
 
 Copy for LLM

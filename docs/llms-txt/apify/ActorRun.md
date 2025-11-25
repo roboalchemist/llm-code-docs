@@ -4,6 +4,12 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/ActorRun.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/ActorRun.md
+
+# Source: https://docs.apify.com/sdk/js/reference/interface/ActorRun.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/ActorRun.md
+
 # ActorRun<!-- -->
 
 ### Hierarchy

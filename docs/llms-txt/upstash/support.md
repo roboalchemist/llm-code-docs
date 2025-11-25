@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/help/support.md
 
+# Source: https://upstash.com/docs/common/help/support.md
+
+# Source: https://upstash.com/docs/redis/help/support.md
+
 # Support & Contact Us
 
 ## Community

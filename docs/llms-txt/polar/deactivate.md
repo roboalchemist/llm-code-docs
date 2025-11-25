@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
 
+# Source: https://polar.sh/docs/api-reference/license-keys/deactivate.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
+
 # Deactivate License Key
 
 > Deactivate a license key instance.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/elements/appearance-api/mobile.md
 
+# Source: https://docs.stripe.com/dashboard/mobile.md
+
+# Source: https://docs.stripe.com/elements/appearance-api/mobile.md
+
 # Customize appearance
 
 Customize your mobile integration with the Appearance API.

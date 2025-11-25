@@ -6,6 +6,14 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
 
+# Source: https://infisical.com/docs/documentation/platform/sso/jumpcloud.md
+
+# Source: https://infisical.com/docs/documentation/platform/scim/jumpcloud.md
+
+# Source: https://infisical.com/docs/documentation/platform/ldap/jumpcloud.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
+
 # JumpCloud
 
 > Learn how to authenticate with Infisical using LDAP with JumpCloud.

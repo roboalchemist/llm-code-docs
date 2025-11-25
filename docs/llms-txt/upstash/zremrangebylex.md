@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebylex.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebylex.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebylex.md
+
 # ZREMRANGEBYLEX
 
 > Remove all members in a sorted set between the given lexicographical range.

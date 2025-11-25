@@ -1,3 +1,11 @@
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/chef/sync-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/sync-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-secrets-manager/sync-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/sync-certificates.md
+
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/sync-certificates.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/sync-certificates.md

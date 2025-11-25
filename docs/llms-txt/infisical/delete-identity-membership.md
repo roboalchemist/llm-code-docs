@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/delete-identity-membership.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/delete-identity-membership.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/delete-identity-membership.md
+
 # Delete Identity Membership
 
 > Delete project identity memberships

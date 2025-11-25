@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/prepare-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/prepare-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/prepare-model.md
+
 # firectl prepare-model
 
 > Prepare models for different precisions

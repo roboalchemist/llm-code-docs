@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/cli/db/show.md
 
+# Source: https://docs.turso.tech/cli/plan/show.md
+
+# Source: https://docs.turso.tech/cli/db/show.md
+
 # db show
 
 You can obtain details about the database, including the name, ID, libSQL server version, group, size and location.

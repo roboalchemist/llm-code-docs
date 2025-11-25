@@ -2,6 +2,10 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
 
+# Source: https://docs.augmentcode.com/using-augment/chat-context.md
+
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-context.md
+
 # Focusing Context in Chat
 
 > You can specify context from files, folders, and external documentation in your conversation to focus your chat responses.

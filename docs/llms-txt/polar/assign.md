@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/seats/assign.md
 
+# Source: https://polar.sh/docs/api-reference/customer-seats/assign.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/seats/assign.md
+
 # Assign Seat
 
 > **Scopes**: `customer_portal:write`

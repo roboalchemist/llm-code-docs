@@ -4,6 +4,10 @@
 
 # Source: https://docs.claude.com/en/release-notes/system-prompts.md
 
+# Source: https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/system-prompts.md
+
+# Source: https://docs.claude.com/en/release-notes/system-prompts.md
+
 # System Prompts
 
 > See updates to the core system prompts on [Claude.ai](https://www.claude.ai) and the Claude [iOS](http://anthropic.com/ios) and [Android](http://anthropic.com/android) apps.

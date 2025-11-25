@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/inference/describe_model.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/inference/describe_model.md
 
 # Describe a model

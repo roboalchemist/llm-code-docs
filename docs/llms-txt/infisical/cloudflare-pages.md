@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/cloud/cloudflare-pages.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/cloudflare-pages.md
+
+# Source: https://infisical.com/docs/integrations/cloud/cloudflare-pages.md
+
 # Cloudflare Pages
 
 > How to sync secrets from Infisical to Cloudflare Pages

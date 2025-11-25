@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/tokens/revoke.md
 
+# Source: https://docs.turso.tech/cli/auth/api-tokens/revoke.md
+
+# Source: https://docs.turso.tech/api-reference/tokens/revoke.md
+
 # Revoke API Token
 
 > Revokes the provided API token belonging to a user.

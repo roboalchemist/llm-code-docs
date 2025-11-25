@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objkeys.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/objkeys.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/objkeys.md
+
 # JSON.OBJKEYS
 
 > Return the keys in the object that`s referenced by path.

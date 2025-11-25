@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/errors-computing-metrics.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/errors-computing-metrics.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/errors-computing-metrics.md
+
 # Error Computing Metrics | Galileo Evaluate FAQ
 
 > Find solutions to common errors in computing metrics within Galileo Evaluate, including missing integrations and rate limit issues, to streamline your AI evaluations.

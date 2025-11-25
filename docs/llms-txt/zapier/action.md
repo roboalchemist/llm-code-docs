@@ -6,6 +6,10 @@
 
 # Source: https://docs.zapier.com/platform/build/action.md
 
+# Source: https://docs.zapier.com/powered-by-zapier/api-reference/common-types/action.md
+
+# Source: https://docs.zapier.com/platform/build/action.md
+
 # Action
 
 > Every Zap starts with a single trigger that watches for new or updated data, starting the user's workflow. Action steps then make use of that data.

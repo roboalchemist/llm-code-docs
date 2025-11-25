@@ -2,6 +2,10 @@
 
 # Source: https://docs.datafold.com/security/single-sign-on/okta.md
 
+# Source: https://docs.datafold.com/security/single-sign-on/saml/examples/okta.md
+
+# Source: https://docs.datafold.com/security/single-sign-on/okta.md
+
 # Okta (OIDC)
 
 <Info>

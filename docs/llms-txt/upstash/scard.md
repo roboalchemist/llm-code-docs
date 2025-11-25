@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/scard.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/scard.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/scard.md
+
 # SCARD
 
 > Return how many members are in a set

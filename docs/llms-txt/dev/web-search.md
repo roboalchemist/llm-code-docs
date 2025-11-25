@@ -4,6 +4,12 @@
 
 # Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
 
+# Source: https://dev.writer.com/home/web-search.md
+
+# Source: https://dev.writer.com/api-reference/tool-api/web-search.md
+
+# Source: https://dev.writer.com/api-reference/migration-guides/web-search.md
+
 # Migrate from web search API to web search tool
 
 This guide shows you how to migrate from the deprecated [web search API endpoint](/api-reference/tool-api/web-search) to the [web search tool](/home/web-search-tool) in chat completions. After completing these steps, you can search the web using the web search tool, which provides the same capabilities within a chat completion workflow.

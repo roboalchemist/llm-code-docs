@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/tax/checkout.md
 
+# Source: https://docs.stripe.com/payments/checkout.md
+
+# Source: https://docs.stripe.com/tax/checkout.md
+
 # Automatically collect tax on Checkout sessions
 
 Learn how to automatically calculate taxes in Checkout.

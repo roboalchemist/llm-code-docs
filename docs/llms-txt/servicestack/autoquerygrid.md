@@ -1,5 +1,9 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoquerygrid.md
 
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/autoquerygrid.md
+
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoquerygrid.md
+
 ---
 title: AutoQueryGrid Component
 group: Component Gallery

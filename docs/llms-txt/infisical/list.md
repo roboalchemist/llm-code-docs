@@ -120,6 +120,284 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/list.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/chef/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-secrets-manager/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kms/keys/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v2/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v1/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identities/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/folders/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/dynamic-secrets/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secret-tags/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secret-imports/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-roles/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-groups/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/folders/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificates/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-templates-v2/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/internal/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/acme/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/zabbix/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/windmill/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/vercel/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/terraform-cloud/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/teamcity/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/supabase/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/render/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/redis/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/railway/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/postgres/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oracledb/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/okta/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oci/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/northflank/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/netlify/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mysql/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mssql/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/ldap/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/laravel-forge/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/humanitec/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/heroku/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/hashicorp-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gitlab/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github-radar/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gcp/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/flyio/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/digital-ocean/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/databricks/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/checkly/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/checkly/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/hosts/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/groups/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/certificate-templates/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/ca/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secrets/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-tags/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/terraform-cloud/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/supabase/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/netlify/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/humanitec/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/heroku/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gitlab/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/github/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/flyio/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/digital-ocean-app-platform/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/databricks/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-workers/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-pages/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/checkly/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/camunda/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/findings/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/gitlab/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/github/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-imports/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-templates/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-roles/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-groups/list.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/list.md
+
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/list.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/list.md

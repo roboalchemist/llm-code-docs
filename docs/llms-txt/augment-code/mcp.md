@@ -2,6 +2,14 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
 
+# Source: https://docs.augmentcode.com/setup-augment/mcp.md
+
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
+
+# Source: https://docs.augmentcode.com/setup-augment/mcp.md
+
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/mcp.md
+
 # Setup Model Context Protocol servers
 
 > Use Model Context Protocol (MCP) servers with Augment to expand Augment's capabilities with external tools and data sources.

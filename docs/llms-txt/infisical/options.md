@@ -8,6 +8,16 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/app-connections/options.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/options.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/options.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/options.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/options.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/options.md
+
 # Options
 
 > List the available App Connection Options.

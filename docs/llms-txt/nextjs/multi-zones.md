@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/multi-zones.md
 
+# Source: https://nextjs.org/docs/pages/guides/multi-zones.md
+
+# Source: https://nextjs.org/docs/app/guides/multi-zones.md
+
+# Source: https://nextjs.org/docs/pages/guides/multi-zones.md
+
+# Source: https://nextjs.org/docs/app/guides/multi-zones.md
+
 # How to build micro-frontends using multi-zones and Next.js
 @doc-version: 16.0.4
 

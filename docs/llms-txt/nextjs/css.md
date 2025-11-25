@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
+# Source: https://nextjs.org/docs/pages/getting-started/css.md
+
+# Source: https://nextjs.org/docs/app/getting-started/css.md
+
+# Source: https://nextjs.org/docs/pages/getting-started/css.md
+
+# Source: https://nextjs.org/docs/app/getting-started/css.md
+
 # CSS
 @doc-version: 16.0.4
 

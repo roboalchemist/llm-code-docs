@@ -2,6 +2,14 @@
 
 # Source: https://grafbase.com/docs/gateway/security/complexity-control.md
 
+# Source: https://grafbase.com/docs/gateway/configuration/complexity-control.md
+
+# Source: https://grafbase.com/docs/gateway/security/complexity-control.md
+
+# Source: https://grafbase.com/docs/gateway/configuration/complexity-control.md
+
+# Source: https://grafbase.com/docs/gateway/security/complexity-control.md
+
 # Complexity Control
 
 GraphQL queries offer lots of flexiblity to build the queries you need. But

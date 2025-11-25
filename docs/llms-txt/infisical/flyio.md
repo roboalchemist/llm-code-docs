@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/flyio.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/flyio.md
+
+# Source: https://infisical.com/docs/integrations/cloud/flyio.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/flyio.md
+
 # Fly.io Connection
 
 > Learn how to configure a Fly.io Connection for Infisical.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/UserClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
+
 # UserClient<!-- -->
 
 ### Hierarchy

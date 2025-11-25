@@ -1,0 +1,143 @@
+# Source: https://getlago.com/docs/guide/plans/charges/prorated-vs-full.md
+
+# Prorated vs Full
+
+> Usage-based charges can be either billed fully or prorated based on the number of days used.
+
+You can **determine whether a charge is prorated or fully-billed**. Understanding the distinction between these two types of charges is crucial for effectively managing your billing processes. In this documentation, we will delve into the differences between prorated and fully-billed charges and their implications within the Lago system.
+
+## Prorated charges
+
+<Tabs>
+  <Tab title="Dashboard">
+    <Warning>
+      Only charges that are [recurring](#2-recurring-charges) (billable metric with `recurring` argument sets to `true`), invoiced [in arrears](https://docs.getlago.com/guide/plans/charges/arrears-vs-advance), with a `charge_model` defined to `standard`, `graduated` or `volume` can be prorated. If your charge is pay-in-advance, it can only be prorated if the `charge_model` is `standard`.
+    </Warning>
+
+    When creating a prorated charge in Lago with the `prorated` parameter set to `true`, an important behavior is triggered. Adding a new unit during the billing period results in the amount due for that unit being prorated based on the number of days it was used.
+
+    This means that your customers will only be charged for the actual number of days they utilized a billing unit. Let's **consider the example of prorated** `Seats`, where each seat costs \$10. If a new seat is added on July 10th, the unit will be prorated for 22 days, resulting in a corresponding prorated charge for that duration. This ensures fair and accurate billing based on the usage period.
+
+    *Example: (1 Seat x \$10), used for 22 days = \$7.33*
+
+    By leveraging prorated charges in Lago, you can provide transparent and cost-effective billing for services that are added or removed mid-billing cycle, adjusting the charges according to the actual duration of usage.
+  </Tab>
+
+  <Tab title="API">
+    Create a charge that is prorated by setting `prorated` to `true`.
+
+    <Warning>
+      Only charges that are [recurring](#2-recurring-charges) (billable metric with `recurring` argument sets to `true`), invoiced [in arrears](https://docs.getlago.com/guide/plans/charges/arrears-vs-advance), with a `charge_model` defined to `standard`, `graduated` or `volume` can be prorated. If your charge is pay-in-advance, it can only be prorated if the `charge_model` is `standard`.
+    </Warning>
+
+    <CodeGroup>
+      ```bash Prorated charges {25} theme={"dark"}
+        LAGO_URL="https://api.getlago.com"
+        API_KEY="__YOUR_API_KEY__"
+
+        curl --location --request POST "$LAGO_URL/api/v1/plans" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "plan": {
+            "name": "Startup",
+            "code": "startup",
+            "interval": "monthly",
+            "description": "This is a basic plan description",
+            "amount_cents": 10000,
+            "amount_currency": "USD",
+            "trial_period": 3.0,
+            "pay_in_advance": true,
+            "bill_charges_monthly": false,
+            "charges": [
+              {
+                "billable_metric_id": "__BILLABLE_METRIC_ID__",
+                "charge_model": "standard",
+                "pay_in_advance": true,
+                "invoiceable": true,
+                "min_amount_cents": 0,
+                "prorated": true,
+                "group_properties": [
+                  {
+                    "group_id": "__GROUP_ID__",
+                    "values": {
+                      "amount": "10"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Fully-billed charges
+
+<Tabs>
+  <Tab title="Dashboard">
+    <Warning>
+      Note that metered charges (billable metrics with `recurring` set to `false`) are automatically fully-billed.
+    </Warning>
+
+    When creating a fully-billed charge in Lago with the `prorated` parameter set to `false`, an important behavior occurs. If a new unit is added during the billing period, the amount due for that unit is billed in full, regardless of the number of days it was used.
+
+    This means that your customers will be charged for the entire billing period, even if they only utilized the billing unit for a few days. \*\*Let's consider the example of fully-billed \*\*`Seats`, where each seat costs \$10. If a new seat is added on July 10th, it will be billed for the full billing period. For instance, if there is one seat that was used for 22 days in the billing period, the charge would be calculated as follows:
+
+    *(1 Seat x \$10), used for 22 days = \$10.*
+
+    By utilizing fully-billed charges in Lago, you ensure that you do not lose revenue by billing customers for the entire billing period, regardless of the actual duration of usage.
+  </Tab>
+
+  <Tab title="API">
+    Create a charge that is billed fully by setting `prorated` to `false`.
+
+    <Warning>
+      Note that metered charges (billable metrics with `recurring` set to `false`) are automatically fully-billed.
+    </Warning>
+
+    <CodeGroup>
+      ```bash Fully-billed charges theme={"dark"}
+        LAGO_URL="https://api.getlago.com"
+        API_KEY="__YOUR_API_KEY__"
+
+        curl --location --request POST "$LAGO_URL/api/v1/plans" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "plan": {
+            "name": "Startup",
+            "code": "startup",
+            "interval": "monthly",
+            "description": "This is a basic plan description",
+            "amount_cents": 10000,
+            "amount_currency": "USD",
+            "trial_period": 3.0,
+            "pay_in_advance": true,
+            "bill_charges_monthly": false,
+            "charges": [
+              {
+                "billable_metric_id": "__BILLABLE_METRIC_ID__",
+                "charge_model": "standard",
+                "pay_in_advance": true,
+                "invoiceable": true,
+                "min_amount_cents": 0,
+                "prorated": false,
+                "group_properties": [
+                  {
+                    "group_id": "__GROUP_ID__",
+                    "values": {
+                      "amount": "10"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>

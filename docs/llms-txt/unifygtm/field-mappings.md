@@ -2,6 +2,14 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
 
+# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/salesforce/field-mappings.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/hubspot/field-mappings.md
+
 # Field Mappings
 
 > Understand how to configure and use HubSpot field mappings in Unify.

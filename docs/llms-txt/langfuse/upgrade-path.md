@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/observability/sdk/python/upgrade-path.md
 
+# Source: https://langfuse.com/docs/observability/sdk/typescript/upgrade-path.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/upgrade-path.md
+
+# Source: https://langfuse.com/docs/observability/sdk/typescript/upgrade-path.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/upgrade-path.md
+
 ---
 title: Upgrade path from v2 to v3 of the Langfuse Python SDK
 description: Upgrade path from v2 to v3 of the Langfuse Python SDK.

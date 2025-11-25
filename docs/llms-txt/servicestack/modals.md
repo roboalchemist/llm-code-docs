@@ -1,5 +1,9 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/modals.md
 
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/modals.md
+
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/modals.md
+
 ---
 title: Modal Components
 group: Component Gallery

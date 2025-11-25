@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployed-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-deployed-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployed-model.md
+
 # firectl update deployed-model
 
 > Update a deployed model.

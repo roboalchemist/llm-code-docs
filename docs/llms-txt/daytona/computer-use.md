@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/computer-use.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/computer-use.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/computer-use.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/computer-use.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/computer-use.md
+
 ## ComputerUse
 
 ```python

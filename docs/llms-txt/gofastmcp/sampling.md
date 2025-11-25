@@ -6,6 +6,10 @@
 
 # Source: https://gofastmcp.com/clients/sampling.md
 
+# Source: https://gofastmcp.com/servers/sampling.md
+
+# Source: https://gofastmcp.com/clients/sampling.md
+
 # LLM Sampling
 
 > Handle server-initiated LLM sampling requests.

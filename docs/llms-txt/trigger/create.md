@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/management/envvars/create.md
 
+# Source: https://trigger.dev/docs/management/schedules/create.md
+
+# Source: https://trigger.dev/docs/management/envvars/create.md
+
 # Create Env Var
 
 > Create a new environment variable for a specific project and environment.

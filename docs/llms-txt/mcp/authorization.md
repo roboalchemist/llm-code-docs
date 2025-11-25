@@ -4,6 +4,18 @@
 
 # Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization.md
 
+# Source: https://modelcontextprotocol.io/docs/tutorials/security/authorization.md
+
+# Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization.md
+
+# Source: https://modelcontextprotocol.io/docs/tutorials/security/authorization.md
+
+# Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization.md
+
+# Source: https://modelcontextprotocol.io/docs/tutorials/security/authorization.md
+
+# Source: https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization.md
+
 # Authorization
 
 <div id="enable-section-numbers" />

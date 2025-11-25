@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/cli/commands/dynamic-secrets.md
 
+# Source: https://infisical.com/docs/integrations/dynamic-secrets.md
+
+# Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/concepts/dynamic-secrets.md
+
+# Source: https://infisical.com/docs/cli/commands/dynamic-secrets.md
+
 # infisical dynamic-secrets
 
 > Perform dynamic secret operations directly with the CLI

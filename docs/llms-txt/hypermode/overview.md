@@ -36,6 +36,50 @@
 
 # Source: https://docs.hypermode.com/agents/30-days-of-agents/overview.md
 
+# Source: https://docs.hypermode.com/badger/overview.md
+
+# Source: https://docs.hypermode.com/apps/overview.md
+
+# Source: https://docs.hypermode.com/agents/30-days-of-agents/overview.md
+
+# Source: https://docs.hypermode.com/modus/sdk/go/overview.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/overview.md
+
+# Source: https://docs.hypermode.com/modus/overview.md
+
+# Source: https://docs.hypermode.com/graphs/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/self-managed/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/sdks/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/ratel/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/security/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/schema/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/schema/directives/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/query/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/mutation/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/lambda/overview.md
+
+# Source: https://docs.hypermode.com/dgraph/enterprise/overview.md
+
+# Source: https://docs.hypermode.com/badger/overview.md
+
+# Source: https://docs.hypermode.com/apps/overview.md
+
+# Source: https://docs.hypermode.com/agents/30-days-of-agents/overview.md
+
 # Agents Bootcamp: level up your agent skills in 30 days
 
 > A 30-day journey to build AI agents that act, not just chat—from natural conversation to production-ready code

@@ -1,5 +1,9 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
 
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/autoform.md
+
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
+
 ---
 title: Auto Form Components
 group: Component Gallery

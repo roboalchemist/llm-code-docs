@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/config/extensions/lightpanda.md
 
+# Source: https://trigger.dev/docs/guides/examples/lightpanda.md
+
+# Source: https://trigger.dev/docs/config/extensions/lightpanda.md
+
 # Lightpanda
 
 > Use the lightpanda build extension to add Lightpanda browser to your project

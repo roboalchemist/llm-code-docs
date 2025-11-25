@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
 
+# Source: https://upstash.com/docs/qstash/api/messages/bulk-cancel.md
+
+# Source: https://upstash.com/docs/workflow/rest/runs/bulk-cancel.md
+
 # Bulk Cancel Workflows
 
 > Cancel multiple workflow runs

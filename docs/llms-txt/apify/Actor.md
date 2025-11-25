@@ -4,6 +4,12 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/Actor.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/Actor.md
+
+# Source: https://docs.apify.com/sdk/js/reference/class/Actor.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/Actor.md
+
 # Actor<!-- -->
 
 ## Index[**](#Index)

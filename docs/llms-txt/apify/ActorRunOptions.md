@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/ActorRunOptions.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/ActorRunOptions.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/ActorRunOptions.md
+
 # ActorRunOptions<!-- -->
 
 ## Index[**](#Index)

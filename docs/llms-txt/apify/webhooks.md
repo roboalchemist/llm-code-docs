@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/integrations/webhooks.md
 
+# Source: https://docs.apify.com/sdk/python/docs/concepts/webhooks.md
+
+# Source: https://docs.apify.com/platform/integrations/webhooks.md
+
 # Webhook integration
 
 **Learn how to integrate multiple Apify Actors or external systems with your Actor or task run. Send alerts when your Actor run succeeds or fails.**

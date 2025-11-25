@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/list_restore_jobs.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/list_restore_jobs.md
 
 # List restore jobs

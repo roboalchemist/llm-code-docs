@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getrange.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getrange.md
+
 # GETRANGE
 
 > Return a substring of value at the specified key.

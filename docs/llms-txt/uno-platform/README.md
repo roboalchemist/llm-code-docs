@@ -1,3 +1,7 @@
+# Source: https://raw.githubusercontent.com/unoplatform/uno/refs/heads/master/doc/articles/external/workshops/tube-player/README.md
+
+# Source: https://raw.githubusercontent.com/unoplatform/uno/refs/heads/master/doc/articles/external/workshops/simple-calc/README.md
+
 # Source: https://raw.githubusercontent.com/unoplatform/workshops/refs/heads/master/simple-calc/README.md
 
 # Source: https://raw.githubusercontent.com/unoplatform/workshops/refs/heads/master/tube-player/README.md

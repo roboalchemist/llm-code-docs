@@ -1,0 +1,93 @@
+# Source: https://docs.unstructured.io/ui/supported-file-types.md
+
+# Source: https://docs.unstructured.io/open-source/introduction/supported-file-types.md
+
+# Source: https://docs.unstructured.io/open-source/ingestion/supported-file-types.md
+
+# Source: https://docs.unstructured.io/api-reference/supported-file-types.md
+
+# Supported file types
+
+The Unstructured API supports processing of the following file types:
+
+By file extension:
+
+| File extension |
+| -------------- |
+| `.abw`         |
+| `.bmp`         |
+| `.csv`         |
+| `.cwk`         |
+| `.dbf`         |
+| `.dif`\*       |
+| `.doc`         |
+| `.docx`        |
+| `.dot`         |
+| `.dotm`        |
+| `.eml`         |
+| `.epub`        |
+| `.et`          |
+| `.eth`         |
+| `.fods`        |
+| `.heic`        |
+| `.htm`         |
+| `.html`        |
+| `.hwp`         |
+| `.jpeg`        |
+| `.jpg`         |
+| `.md`          |
+| `.mcw`         |
+| `.msg`         |
+| `.mw`          |
+| `.odt`         |
+| `.org`         |
+| `.p7s`         |
+| `.pbd`         |
+| `.pdf`         |
+| `.png`         |
+| `.pot`         |
+| `.ppt`         |
+| `.pptm`        |
+| `.pptx`        |
+| `.prn`         |
+| `.rst`         |
+| `.rtf`         |
+| `.sdp`         |
+| `.sxg`         |
+| `.tiff`        |
+| `.txt`         |
+| `.tsv`         |
+| `.xls`         |
+| `.xlsx`        |
+| `.xml`         |
+| `.zabw`        |
+
+By file type:
+
+| Category          | File types                                                |
+| ----------------- | --------------------------------------------------------- |
+| Apple             | `.cwk`, `.mcw`                                            |
+| CSV               | `.csv`                                                    |
+| Data Interchange  | `.dif`\*                                                  |
+| dBase             | `.dbf`                                                    |
+| E-mail            | `.eml`, `.msg`, `.p7s`                                    |
+| EPUB              | `.epub`                                                   |
+| HTML              | `.htm`, `.html`                                           |
+| Image             | `.bmp`, `.heic`, `.jpeg`, `.jpg`, `.png`, `.prn`, `.tiff` |
+| Markdown          | `.md`                                                     |
+| OpenOffice        | `.odt`                                                    |
+| Org Mode          | `.org`                                                    |
+| Other             | `.eth`, `.pbd`, `.sdp`                                    |
+| PDF               | `.pdf`                                                    |
+| Plain text        | `.txt`                                                    |
+| PowerPoint        | `.pot`, `.ppt`, `.pptm`, `.pptx`                          |
+| reStructured Text | `.rst`                                                    |
+| Rich Text         | `.rtf`                                                    |
+| Spreadsheet       | `.et`, `.fods`, `.mw`, `.xls`, `.xlsx`                    |
+| StarOffice        | `.sxg`                                                    |
+| TSV               | `.tsv`                                                    |
+| Word processing   | `.abw`, `.doc`, `.docx`, `.dot`, `.dotm`, `.hwp`, `.zabw` |
+| XML               | `.xml`                                                    |
+
+`*` For `.dif`, `\n` characters in `.dif` files are supported, but `\r\n` characters will raise the error
+`UnsupportedFileFormatError: Partitioning is not supported for the FileType.UNK file type`.

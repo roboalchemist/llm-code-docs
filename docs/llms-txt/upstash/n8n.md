@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/integrations/n8n.md
 
+# Source: https://upstash.com/docs/qstash/integrations/n8n.md
+
+# Source: https://upstash.com/docs/redis/integrations/n8n.md
+
 # n8n with Upstash Redis
 
 ## Quickstart

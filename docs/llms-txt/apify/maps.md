@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
 
+# Source: https://docs.apify.com/platform/integrations/make/maps.md
+
+# Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
+
 # Gumloop - Google maps Actor integration
 
 Search, extract, and enrich business data from Google Maps in Gumloop.

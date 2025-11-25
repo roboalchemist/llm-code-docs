@@ -1,5 +1,9 @@
 # Source: https://linear.app/developers/integration-directory.md
 
+# Source: https://linear.app/docs/integration-directory.md
+
+# Source: https://linear.app/developers/integration-directory.md
+
 # Integration Directory
 
 Discover Linear add-ons or build your own

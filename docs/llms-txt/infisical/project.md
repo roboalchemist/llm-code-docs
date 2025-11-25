@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/project.md
 
+# Source: https://infisical.com/docs/documentation/platform/secrets-mgmt/project.md
+
+# Source: https://infisical.com/docs/documentation/platform/project.md
+
 # Overview
 
 > Learn more and understand the concept of Infisical projects.

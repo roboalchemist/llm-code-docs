@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/common/errors.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/errors.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/errors.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/errors.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/errors.md
+
 ## DaytonaError
 
 ```python

@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/guides/python.md
 
+# Source: https://infisical.com/docs/sdks/languages/python.md
+
+# Source: https://infisical.com/docs/documentation/guides/python.md
+
 # Python
 
 This guide demonstrates how to use Infisical to manage secrets for your Python stack from local development to production. It uses:

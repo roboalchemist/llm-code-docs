@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/platforms/docker-compose.md
 
+# Source: https://infisical.com/docs/self-hosting/deployment-options/docker-compose.md
+
+# Source: https://infisical.com/docs/integrations/platforms/docker-compose.md
+
 # Docker Compose
 
 > Find out how to use Infisical to inject environment variables into services defined in your Docker Compose file.

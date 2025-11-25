@@ -12,6 +12,26 @@
 
 # Source: https://docs.stripe.com/api/checkout/sessions/create.md
 
+# Source: https://docs.stripe.com/api/payment_methods/create.md
+
+# Source: https://docs.stripe.com/api/payment_intents/create.md
+
+# Source: https://docs.stripe.com/api/checkout/sessions/create.md
+
+# Source: https://docs.stripe.com/api/subscriptions/create.md
+
+# Source: https://docs.stripe.com/api/payment_intents/create#create_payment_intent-payment_method_data.md
+
+# Source: https://docs.stripe.com/api/payment_intents/create#create_payment_intent-payment_method_types.md
+
+# Source: https://docs.stripe.com/api/charges/create.md
+
+# Source: https://docs.stripe.com/api/payment_methods/create.md
+
+# Source: https://docs.stripe.com/api/payment_intents/create.md
+
+# Source: https://docs.stripe.com/api/checkout/sessions/create.md
+
 # Source: https://docs.stripe.com/api/subscriptions/create.md
 
 # Create a subscription

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/laravel-forge.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/laravel-forge.md
+
+# Source: https://infisical.com/docs/integrations/cloud/laravel-forge.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/laravel-forge.md
+
 # Laravel Forge Connection
 
 > Learn how to configure a Laravel Forge Connection for Infisical.

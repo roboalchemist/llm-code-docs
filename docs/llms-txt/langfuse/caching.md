@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/prompt-management/features/caching.md
 
+# Source: https://langfuse.com/self-hosting/configuration/caching.md
+
+# Source: https://langfuse.com/docs/prompt-management/features/caching.md
+
+# Source: https://langfuse.com/self-hosting/configuration/caching.md
+
+# Source: https://langfuse.com/docs/prompt-management/features/caching.md
+
 ---
 title: Caching in Client SDKs
 sidebarTitle: Caching

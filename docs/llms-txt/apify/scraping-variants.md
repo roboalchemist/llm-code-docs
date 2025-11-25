@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/scraping-variants.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/scraping-variants.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/scraping-variants.md
 
 # Scraping product variants with Node.js

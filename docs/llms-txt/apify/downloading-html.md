@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/downloading-html.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/downloading-html.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/downloading-html.md
 
 # Downloading HTML with Node.js

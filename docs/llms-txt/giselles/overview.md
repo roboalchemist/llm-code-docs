@@ -6,6 +6,18 @@
 
 # Source: https://docs.giselles.ai/en/prompts/overview.md
 
+# Source: https://docs.giselles.ai/en/models/providers/overview.md
+
+# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
+
+# Source: https://docs.giselles.ai/en/prompts/overview.md
+
+# Source: https://docs.giselles.ai/en/models/providers/overview.md
+
+# Source: https://docs.giselles.ai/en/guides/settings/account/overview.md
+
+# Source: https://docs.giselles.ai/en/prompts/overview.md
+
 # Overview
 
 > Prompt Engineering in Giselle’s Node-Based UI.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/variables.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/query/variables.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/variables.md
+
 # Variables
 
 <Info>

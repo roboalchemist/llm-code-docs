@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/headless-browser.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/headless-browser.md
 
 # Headless browsers

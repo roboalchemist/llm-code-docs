@@ -6,6 +6,26 @@
 
 # Source: https://langfuse.com/docs/evaluation/evaluation-methods/data-model.md
 
+# Source: https://langfuse.com/docs/evaluation/experiments/data-model.md
+
+# Source: https://langfuse.com/docs/evaluation/evaluation-methods/data-model.md
+
+# Source: https://langfuse.com/docs/prompt-management/data-model.md
+
+# Source: https://langfuse.com/docs/observability/data-model.md
+
+# Source: https://langfuse.com/docs/evaluation/experiments/data-model.md
+
+# Source: https://langfuse.com/docs/evaluation/evaluation-methods/data-model.md
+
+# Source: https://langfuse.com/docs/prompt-management/data-model.md
+
+# Source: https://langfuse.com/docs/observability/data-model.md
+
+# Source: https://langfuse.com/docs/evaluation/experiments/data-model.md
+
+# Source: https://langfuse.com/docs/evaluation/evaluation-methods/data-model.md
+
 ---
 title: Langfuse Evaluation / Scores Data Model
 description: This page describes the data model of the Langfuse Score object used for LLM evaluation.

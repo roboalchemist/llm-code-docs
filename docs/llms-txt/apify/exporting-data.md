@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/exporting-data.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/exporting-data.md
 
 # Exporting data

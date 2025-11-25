@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
 
+# Source: https://docs.apify.com/academy/getting-started/inputs-outputs.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
+
 # Managing Actor inputs and outputs
 
 **Learn to accept input into your Actor, process it, and return output. This concept applies to Actors in any language.**

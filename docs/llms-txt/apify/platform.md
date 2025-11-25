@@ -2,6 +2,12 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-python/platform.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/platform.md
+
+# Source: https://docs.apify.com/platform.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/platform.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/platform.md
 
 # Using a scraping platform with Node.js

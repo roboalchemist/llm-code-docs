@@ -1,5 +1,9 @@
 # Source: https://learn.adafruit.com/thermocouple/python-circuitpython.md
 
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-circuitpython.md
+
+# Source: https://learn.adafruit.com/thermocouple/python-circuitpython.md
+
 # MAX31855 Thermocouple
 
 ## Python & CircuitPython

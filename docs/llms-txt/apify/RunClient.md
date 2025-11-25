@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/RunClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/RunClient.md
+
 # RunClient<!-- -->
 
 ### Hierarchy

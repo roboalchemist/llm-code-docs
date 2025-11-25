@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/example-projects.md
+
 # Source: https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/example-projects.md
 
 # PIR Motion Sensor

@@ -2,6 +2,10 @@
 
 # Source: https://docs.datafold.com/data-explorer/how-it-works.md
 
+# Source: https://docs.datafold.com/deployment-testing/how-it-works.md
+
+# Source: https://docs.datafold.com/data-explorer/how-it-works.md
+
 # How It Works
 
 > The UI visually maps workflows and tracks column-level or tabular lineages, helping users understand the impact of upstream changes.

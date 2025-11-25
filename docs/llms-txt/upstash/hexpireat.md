@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpireat.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpireat.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpireat.md
+
 # HEXPIREAT
 
 > Sets an expiration time for field(s) in a hash in seconds since the Unix epoch.

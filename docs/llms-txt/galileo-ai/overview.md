@@ -8,6 +8,16 @@
 
 # Source: https://docs.galileo.ai/client-reference/overview.md
 
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/overview.md
+
+# Source: https://docs.galileo.ai/galileo-ai-research/overview.md
+
+# Source: https://docs.galileo.ai/examples/overview.md
+
+# Source: https://docs.galileo.ai/deployments/overview.md
+
+# Source: https://docs.galileo.ai/client-reference/overview.md
+
 # Client References
 
 > Explore Galileo's client references, including Python and TypeScript integrations, to streamline Evaluate, Observe, and Protect module implementations.

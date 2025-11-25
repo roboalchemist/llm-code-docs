@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/observability/get-started.md
 
+# Source: https://langfuse.com/docs/prompt-management/get-started.md
+
+# Source: https://langfuse.com/docs/observability/get-started.md
+
+# Source: https://langfuse.com/docs/prompt-management/get-started.md
+
+# Source: https://langfuse.com/docs/observability/get-started.md
+
 ---
 description: Get started with LLM observability with Langfuse in minutes before diving into all platform features.
 ---

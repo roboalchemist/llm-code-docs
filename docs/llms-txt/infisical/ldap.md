@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
 
+# Source: https://infisical.com/docs/integrations/app-connections/ldap.md
+
+# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
+
 # LDAP
 
 > Learn how to dynamically generate user credentials via LDAP.

@@ -1,5 +1,9 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/auth/encrypted-messaging.md
 
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/encrypted-messaging.md
+
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/auth/encrypted-messaging.md
+
 ---
 slug: encrypted-messaging
 title: Encrypted Messaging

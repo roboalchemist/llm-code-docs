@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
 
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
+
 # How to write Actor input schema
 
 **Learn how to generate a user interface on the platform for your Actor's input with a single file - the INPUT\_SCHEMA.json file.**

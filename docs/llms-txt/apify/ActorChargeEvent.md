@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/ActorChargeEvent.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/ActorChargeEvent.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/ActorChargeEvent.md
+
 # ActorChargeEvent<!-- -->
 
 ## Index[**](#Index)

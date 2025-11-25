@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/known-constraints.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/known-constraints.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/known-constraints.md
+
 # Known constraints for On-site Messaging in Shopify
 
 ## Read about some limitations that can affect the Klarna On-site messaging in your Shopify store.

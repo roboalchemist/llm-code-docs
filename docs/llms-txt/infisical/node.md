@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/guides/node.md
 
+# Source: https://infisical.com/docs/sdks/languages/node.md
+
+# Source: https://infisical.com/docs/documentation/guides/node.md
+
 # Node
 
 This guide demonstrates how to use Infisical to manage secrets for your Node stack from local development to production. It uses:

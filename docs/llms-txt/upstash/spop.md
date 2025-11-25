@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/set/spop.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/set/spop.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/spop.md
+
 # SPOP
 
 > Removes and returns one or more random members from a set.

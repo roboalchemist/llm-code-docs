@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/add-identity-membership.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/add-identity-membership.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/add-identity-membership.md
+
 # Create Identity Membership
 
 > Create project identity membership

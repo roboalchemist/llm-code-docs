@@ -4,6 +4,10 @@
 
 # Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
 
+# Source: https://docs.asapp.com/apis/autotranscribe-media-gateway/get-twilio-media-stream-url.md
+
+# Source: https://docs.asapp.com/apis/genagent-media-gateway/get-twilio-media-stream-url.md
+
 # Get Twilio media stream url
 
 > Returns url where Twilio media stream should be sent to.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/PricePerDatasetItemActorPricingInfo.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/PricePerDatasetItemActorPricingInfo.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/PricePerDatasetItemActorPricingInfo.md
+
 # PricePerDatasetItemActorPricingInfo<!-- -->
 
 ### Hierarchy

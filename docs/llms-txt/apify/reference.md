@@ -8,6 +8,16 @@
 
 # Source: https://docs.apify.com/api/client/js/reference.md
 
+# Source: https://docs.apify.com/cli/docs/reference.md
+
+# Source: https://docs.apify.com/sdk/python/reference.md
+
+# Source: https://docs.apify.com/sdk/js/reference.md
+
+# Source: https://docs.apify.com/api/client/python/reference.md
+
+# Source: https://docs.apify.com/api/client/js/reference.md
+
 # apify-client<!-- -->
 
 ## Index[**](#Index)

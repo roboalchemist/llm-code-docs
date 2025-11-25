@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/get-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project.md
+
 # Get Project
 
 > Get project

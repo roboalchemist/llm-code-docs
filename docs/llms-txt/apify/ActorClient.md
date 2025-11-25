@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/ActorClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/ActorClient.md
+
 # ActorClient<!-- -->
 
 ### Hierarchy

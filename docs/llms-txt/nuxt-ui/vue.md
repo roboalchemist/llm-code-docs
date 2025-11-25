@@ -8,6 +8,22 @@
 
 # Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
 
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/vue.md
+
+# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/vue.md
+
 # Internationalization (i18n)
 
 > Nuxt UI supports 50+ locales and multi-directional (LTR/RTL) internationalization.

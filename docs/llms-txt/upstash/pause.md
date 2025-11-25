@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/qstash/api/schedules/pause.md
 
+# Source: https://upstash.com/docs/qstash/api/queues/pause.md
+
+# Source: https://upstash.com/docs/qstash/api/schedules/pause.md
+
 # Pause Schedule
 
 > Pause an active schedule

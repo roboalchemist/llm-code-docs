@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/payments/installation.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/payments/installation.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/payments/installation.md
+
 # Installation of SAP Commerce Cloud Add-on
 
 ## This guide will help you install Klarna add-ons for SAP Commerce Suite to enable Klarna payment solutions. Follow the steps outlined below to ensure a successful installation.

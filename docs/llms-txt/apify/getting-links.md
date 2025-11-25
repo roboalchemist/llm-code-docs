@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/getting-links.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/getting-links.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/getting-links.md
 
 # Getting links from HTML with Node.js

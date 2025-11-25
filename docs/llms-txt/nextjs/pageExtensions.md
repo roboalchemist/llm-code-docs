@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/pageExtensions.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/pageExtensions.md
+
 # pageExtensions
 @doc-version: 16.0.4
 

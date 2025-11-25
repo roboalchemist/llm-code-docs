@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/supabase.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/supabase.md
+
+# Source: https://infisical.com/docs/integrations/cloud/supabase.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/supabase.md
+
 # Supabase Connection
 
 > Learn how to configure a Supabase Connection for Infisical.

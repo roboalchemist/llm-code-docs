@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/list_indexes.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/list_indexes.md
 
 # List indexes

@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/organizations/manage-service-accounts.md
 
+# Source: https://docs.pinecone.io/guides/projects/manage-service-accounts.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-service-accounts.md
+
+# Source: https://docs.pinecone.io/guides/projects/manage-service-accounts.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-service-accounts.md
+
 # Manage service accounts at the organization-level
 
 > Create service accounts for organization-level API access.

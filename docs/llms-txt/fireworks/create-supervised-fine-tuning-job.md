@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-supervised-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-supervised-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-supervised-fine-tuning-job.md
+
 # firectl create supervised-fine-tuning-job
 
 > Creates a supervised fine-tuning job.

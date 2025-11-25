@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/deploy.md
 
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/deploy.md
+
+# Source: https://docs.hypermode.com/deploy.md
+
 # Deploy Project
 
 > A git-based flow for simple deployment

@@ -16,6 +16,14 @@
 
 # Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
 
+# Source: https://upstash.com/docs/workflow/basics/serve/advanced.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/advanced.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/advanced.md
+
+# Source: https://upstash.com/docs/workflow/features/failureFunction/advanced.md
+
 # Advanced failureUrl Option
 
 The `failureUrl` is an advanced option that sends failure callback to a different endpoint rather than to the workflow endpoint (failure function).

@@ -16,6 +16,14 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
 
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/type.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/type.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/type.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/type.md
+
 # JSON.TYPE
 
 > Report the type of JSON value at `path`.

@@ -1,0 +1,89 @@
+# Source: https://docs.oxla.com/sql-reference/sql-functions/math-functions/round.md
+
+# ROUND
+
+## Overview
+
+The `ROUND()` function rounds numbers using round half to even method (bankers rounding).
+
+## Syntax
+
+The following illustrates the syntax of the `ROUND()` function:
+
+```sql  theme={null}
+ROUND(number);
+```
+
+Where:
+
+* `number`: The number to round, it can be positive, negative, or zero, and it can be an [Integer](/sql-reference/sql-data-types/numeric-type/numeric) or a [Double Precision](/sql-reference/sql-data-types/numeric-type/numeric).
+
+## **Examples**
+
+Let's explore some examples to see how the `ROUND()` function works.
+
+### Case #1: **Basic Usage**
+
+In this example, we round decimal numbers to integers:
+
+```sql  theme={null}
+SELECT
+    round(28.11) AS "round(28.11)",
+    round(12.51) AS "round(12.51)",
+    round(-9.11) AS "round(-9.11)",
+    round(102.5) AS "round(102.5)",
+    round(101.5) AS "round(101.5)",
+    round(-40.51) AS "round(-40.51)";
+```
+
+The query will return the nearest integer for all provided values.
+
+```sql  theme={null}
+ round(28.11) | round(12.51) | round(-9.11) | round(102.5) | round(101.5) | round(-40.51) 
+--------------+--------------+--------------+--------------+---------------+---------------
+           28 |           13 |           -9 |          102 |          102 |           -41
+```
+
+### Case #2: Using `ROUND` with Table
+
+Suppose you have a table named **Product** that stores product prices with multiple decimal places. You want to round the prices.
+
+```sql  theme={null}
+CREATE TABLE Product (
+    ProductID INT,
+    ProductName TEXT,
+    Price DOUBLE PRECISION
+);
+
+INSERT INTO Product (ProductID, ProductName, Price)
+VALUES
+    (1, 'Widget A', 12.345),
+    (2, 'Widget B', 34.678),
+    (3, 'Widget C', 9.99),
+    (4, 'Widget D', 45.00),
+    (5, 'Widget E', 7.12345),
+    (6, 'Widget F', 19.876), 
+    (7, 'Widget G', 3.5),
+    (8, 'Widget H', 29.999);
+```
+
+We use the `ROUND()` function to round the Price column when retrieving the data.
+
+```sql  theme={null}
+SELECT ProductName, ROUND(Price) AS RoundedPrice FROM Product;
+```
+
+The result will display the product names along with their prices rounded.
+
+```sql  theme={null}
+ productname | roundedprice 
+-------------+--------------
+ Widget A    |           12
+ Widget B    |           35
+ Widget C    |           10
+ Widget D    |           45
+ Widget E    |            7
+ Widget F    |           20
+ Widget G    |            4
+ Widget H    |           30
+```

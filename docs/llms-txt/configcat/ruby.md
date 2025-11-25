@@ -4,6 +4,14 @@
 
 # Source: https://configcat.com/docs/sdk-reference/ruby.md
 
+# Source: https://configcat.com/docs/sdk-reference/openfeature/ruby.md
+
+# Source: https://configcat.com/docs/sdk-reference/ruby.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/ruby.md
+
+# Source: https://configcat.com/docs/sdk-reference/ruby.md
+
 # Ruby SDK Reference
 
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/ruby-sdk.svg?style=social)](https://github.com/configcat/ruby-sdk/stargazers) [![Ruby CI](https://github.com/configcat/ruby-sdk/actions/workflows/ruby-ci.yml/badge.svg?branch=master)](https://github.com/configcat/ruby-sdk/actions/workflows/ruby-ci.yml) [![Coverage Status](https://coveralls.io/repos/github/configcat/ruby-sdk/badge.svg?branch=master)](https://coveralls.io/github/configcat/ruby-sdk?branch=master) [![Gem version](https://badge.fury.io/rb/configcat.svg)](https://rubygems.org/gems/configcat)

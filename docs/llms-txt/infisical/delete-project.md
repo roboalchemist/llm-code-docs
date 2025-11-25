@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/delete-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/delete-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/delete-project.md
+
 # Delete Project
 
 > Delete project

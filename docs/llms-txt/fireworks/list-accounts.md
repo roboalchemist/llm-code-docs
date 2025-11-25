@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-accounts.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-accounts.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-accounts.md
+
 # firectl list accounts
 
 > Prints all accounts the current signed-in user has access to.

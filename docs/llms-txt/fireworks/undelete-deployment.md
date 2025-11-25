@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/undelete-deployment.md
 
+# Source: https://docs.fireworks.ai/api-reference/undelete-deployment.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/undelete-deployment.md
+
 # firectl undelete deployment
 
 > Undeletes a deployment.

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmget.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hmget.md
+
 # HMGET
 
 > Return the requested fields and their values.

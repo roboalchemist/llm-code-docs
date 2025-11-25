@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/data-plane/deletenamespace.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/data-plane/deletenamespace.md
 
 # Delete a namespace

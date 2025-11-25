@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-batch-inference-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-batch-inference-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-batch-inference-job.md
+
 # firectl get batch-inference-job
 
 > Retrieves information about a batch inference job.

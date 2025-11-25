@@ -1,0 +1,35 @@
+# Source: https://docs.unstructured.io/open-source/ingestion/ingest-configuration/processor-configuration.md
+
+# Processor configuration
+
+A common process configuration plays a pivotal role in overseeing the entire ingest process, encompassing various aspects to ensure efficiency and reliability. This configuration includes parameters for managing a pool of workers, which allows for parallelization of the ingest process to maximize throughput. Additionally, it addresses the storage and retrieval of intermediate results, supporting caching strategies that enable replayability in case of errors or interruptions. By configuring worker pools, the process can efficiently handle multiple tasks concurrently, enhancing performance. Furthermore, saving intermediate results allows for the resumption of the process from a known state, reducing data loss and ensuring robustness in the face of unexpected errors or system failures. This comprehensive configuration promotes an organized and resilient approach to data ingestion, improving overall system reliability and efficiency.
+
+## Configs
+
+* `disable_parallelism`: `True` if the `INGEST_DISABLE_PARALLELISM` environment variable is set to `True` (case-insensitive), otherwise `False` (the default).
+
+* `download_only`: Default: `False`. If set to `True`, downloads any files that are not already present in the connector's specified download directory (`download_dir`), or `work_dir` if `download_dir` is not specified, or the default file path for `work_dir` if `work_dir` is not specified.
+
+* `max_connections`: The maximum of connections allowed when running an asynchronous step in the ingest pipeline.
+
+* `max_docs`: The maximum number of documents to be pulled in for the entire ingest process.
+
+* `num_processes`: Default: `2`. For every step that can use a pool of workers to increase throughput, how many workers to configure in the pool.
+
+* `output_dir`: Where the final results will be located when the process is finished. This is regardless of whether a destination is configured. If a directory is not specified, by default a folder named `structured-output`, relative to the current working directory, is used.
+
+* `preserve_downloads`: When set to `False` (the default), will remove downloaded files after they are successfully processed.
+
+* `raise_on_error`: `False `(default) for any single document that fails in the process, causes the error to be logged but allows for all other documents to proceed in the process. If `True`, causes the entire process to fail and raise the error if any one document fails.
+
+* `re_download`: When set to `False` (the default), will not re-download files if they are already present in the download directory. Setting this to `True` downloads the files even if they exist in the download directory. `True` is useful in cases where for some reason you suspect that the files in the remote location might have changed, and you want to be sure that the file copies in the download directory are the most current ones.
+
+* `reprocess`: Default: `False`. If set to `True`, will ignore all content that may have been cached and rerun each step.
+
+* `tqdm`: When set to `False` (the default), will not show a progress bar.
+
+* `uncompress`: When set to `False` (the default), will not uncompress any archived ZIP or TAR files. If set to `True`, and the specified partitioner provides support for compressed ZIP and TAR files, these files will be uncompressed.
+
+* `verbose`: Default: `False`. If set to `True`, debug logging should be included in the output.
+
+* `work_dir`: The file path for where intermediate results should be saved. If a file path is not set, a default file path will be used relative to the user's home directory (`/home/username/.cache/unstructured/ingest/pipeline` or `C:\Users\username\.cache\unstructured\ingest\pipeline`).

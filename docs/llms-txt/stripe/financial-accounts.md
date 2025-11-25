@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
 
+# Source: https://docs.stripe.com/financial-accounts/connect/account-management/financial-accounts.md
+
+# Source: https://docs.stripe.com/financial-accounts/connect/examples/financial-accounts.md
+
 # Use Financial Accounts for platforms and Issuing to set up financial accounts and cards
 
 Follow a sample Financial Accounts for platforms and Issuing integration that sets up a financial account and creates cards.

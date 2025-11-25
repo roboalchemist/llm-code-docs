@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/actors/development/permissions.md
 
+# Source: https://docs.apify.com/platform/actors/running/permissions.md
+
+# Source: https://docs.apify.com/platform/actors/development/permissions.md
+
 # Permissions
 
 **Learn how to declare and manage permissions for your Actor, what permission levels mean, and how to build secure, trusted Actors for Apify users.**

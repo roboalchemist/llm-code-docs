@@ -4,6 +4,12 @@
 
 # Source: https://dev.writer.com/api-reference/completion-api/text-generation.md
 
+# Source: https://dev.writer.com/no-code/text-generation.md
+
+# Source: https://dev.writer.com/home/text-generation.md
+
+# Source: https://dev.writer.com/api-reference/completion-api/text-generation.md
+
 # Text generation
 
 > Generate text completions using the specified model and prompt. This endpoint is useful for text generation tasks that don't require conversational context.

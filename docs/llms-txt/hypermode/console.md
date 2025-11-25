@@ -4,6 +4,12 @@
 
 # Source: https://docs.hypermode.com/dgraph/ratel/console.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/console.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/console.md
+
+# Source: https://docs.hypermode.com/dgraph/ratel/console.md
+
 # Console
 
 <Info>

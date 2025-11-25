@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/amazon_s3.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/amazon_s3.md
+
 # S3
 
 ## Connect AI Squared to S3

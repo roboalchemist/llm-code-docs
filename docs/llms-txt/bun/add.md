@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/install/add.md
 
+# Source: https://bun.com/docs/pm/cli/add.md
+
+# Source: https://bun.com/docs/guides/install/add.md
+
 # Add a dependency
 
 To add an npm package as a dependency, use `bun add`.

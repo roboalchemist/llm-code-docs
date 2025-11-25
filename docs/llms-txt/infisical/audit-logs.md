@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/getting-started/concepts/audit-logs.md
 
+# Source: https://infisical.com/docs/documentation/platform/audit-logs.md
+
+# Source: https://infisical.com/docs/documentation/getting-started/concepts/audit-logs.md
+
 # Audit Logs
 
 > Understand how Infisical logs activity and supports external audit streaming.

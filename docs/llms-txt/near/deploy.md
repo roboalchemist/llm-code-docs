@@ -2,6 +2,14 @@
 
 # Source: https://docs.near.org/smart-contracts/release/deploy.md
 
+# Source: https://docs.near.org/tutorials/auction/deploy.md
+
+# Source: https://docs.near.org/smart-contracts/release/deploy.md
+
+# Source: https://docs.near.org/tutorials/auction/deploy.md
+
+# Source: https://docs.near.org/smart-contracts/release/deploy.md
+
 ---
 id: deploy
 title: Deploying

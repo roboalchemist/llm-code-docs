@@ -4,6 +4,14 @@
 
 # Source: https://configcat.com/docs/sdk-reference/react.md
 
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
 # React SDK Reference
 
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/react-sdk.svg?style=social)](https://github.com/configcat/react-sdk/stargazers) [![REACT CI](https://github.com/configcat/react-sdk/actions/workflows/react-ci.yml/badge.svg)](https://github.com/configcat/react-sdk/actions/workflows/react-ci.yml) [![codecov](https://codecov.io/gh/configcat/react-sdk/branch/main/graph/badge.svg?token=X9kFVT7xXL)](https://codecov.io/gh/configcat/react-sdk) [![Known Vulnerabilities](https://snyk.io/test/github/configcat/react-sdk/badge.svg?targetFile=package.json)](https://snyk.io/test/github/configcat/react-sdk?targetFile=package.json) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=configcat_react-sdk\&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=configcat_react-sdk) [![JSDELIVR](https://data.jsdelivr.com/v1/package/npm/configcat-react/badge)](https://www.jsdelivr.com/package/npm/configcat-react)

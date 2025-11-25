@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/runtime/shell.md
 
+# Source: https://bun.com/docs/runtime/shell.md
+
+# Source: https://bun.com/docs/guides/runtime/shell.md
+
 # Run a Shell Command
 
 Bun Shell is a cross-platform bash-like shell built in to Bun.

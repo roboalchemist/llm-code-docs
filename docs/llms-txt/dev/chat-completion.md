@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/completion-api/chat-completion.md
 
+# Source: https://dev.writer.com/home/chat-completion.md
+
+# Source: https://dev.writer.com/api-reference/completion-api/chat-completion.md
+
 # Chat completion
 
 > Generate a chat completion based on the provided messages. The response shown below is for non-streaming. To learn about streaming responses, see the [chat completion guide](https://dev.writer.com/home/chat-completion).

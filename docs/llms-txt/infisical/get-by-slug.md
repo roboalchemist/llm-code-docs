@@ -8,6 +8,16 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/get-by-slug.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-tags/get-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-roles/get-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secret-tags/get-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-roles/get-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/get-by-slug.md
+
 # Get by Slug
 
 ## OpenAPI

@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/home/client/events.md
 
+# Source: https://docs.livekit.io/agents/build/events.md
+
+# Source: https://docs.livekit.io/home/client/events.md
+
 LiveKit docs › LiveKit SDKs › Handling events
 
 ---

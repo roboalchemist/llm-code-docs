@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-dpo-jobs.md
 
+# Source: https://docs.fireworks.ai/api-reference/list-dpo-jobs.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/list-dpo-jobs.md
+
 # firectl list dpo-jobs
 
 > Lists all dpo jobs in an account.

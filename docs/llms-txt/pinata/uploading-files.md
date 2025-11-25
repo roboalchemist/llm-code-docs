@@ -1,0 +1,1002 @@
+# Source: https://docs.pinata.cloud/files/uploading-files.md
+
+# Uploading Files
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/QmaHVPUAt5iqhCGHgMcbyRh4dkcoFNod8B38ZUaZ3urxRU?img-format=webp" />
+
+At the core of Pinata's services is our IPFS APIs which allow you to upload files to either public or private IPFS. You can read more about the difference between the two [here](/files/private-ipfs).
+
+Let's look at the multiple ways you can upload files!
+
+## How to Upload Files
+
+Uploading files with Pinata is simple, whether you want to use the SDK or the API. Key things to know:
+
+* Uploads are done through `multipart/form-data` requests
+* The SDK and API accept File objects per the [Web API Standard for Files]()
+* You can add additional info to your upload such as a custom name for the file, keyvalue metadata, and a target group destination for organization
+
+Here is a simple example of how you might upload a file in Typescript
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const file = new File(["hello"], "Testing.txt", { type: "text/plain" });
+  const upload = await pinata.upload.public.file(file);
+  ```
+
+  ```typescript API theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const file = new File(["hello"], "Testing.txt", { type: "text/plain" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+This will return the following response
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  {
+      id: "349f1bb2-5d59-4cab-9966-e94c028a05b7",
+      name: "file.txt",
+      cid: "bafybeihgxdzljxb26q6nf3r3eifqeedsvt2eubqtskghpme66cgjyw4fra",
+      size: 4682779,
+      number_of_files: 1,
+      mime_type: "text/plain",
+      group_id: null
+  }
+  ```
+
+  ```JSON API theme={null}
+  {
+    "data": {
+      "id": "349f1bb2-5d59-4cab-9966-e94c028a05b7",
+      "name": "file.txt",
+      "cid": "bafybeihgxdzljxb26q6nf3r3eifqeedsvt2eubqtskghpme66cgjyw4fra",
+      "size": 4682779,
+      "number_of_files": 1,
+      "mime_type": "text/plain",
+      "group_id": null
+    }
+  }
+  ```
+</CodeGroup>
+
+* `id`: The ID of the file used for getting info, updating, or deleting
+* `name`: The name of the file or the provided name in the `addMetadata` method
+* `cid`: A cryptographic hash based on the contents of the file
+* `size`: The size of the file in bytes
+* `number_of_files`: The number of files in a reference
+* `mime_type`: The mime type of the uploaded file
+* `group_id`: The group the file was uploaded to if applicable
+
+### Metadata
+
+When uploading a file you can add additional metadata using the `name` or `keyvalues` methods after the selected upload method. This can include an optional `name` override or `keyvalue` pairs that can be used to searching the file later on
+
+<Tip>
+  [Check out the Key-Values doc for more info](/files/key-values)
+</Tip>
+
+<CodeGroup>
+  ```typescript SDK {3-8} theme={null}
+  const upload = await pinata.upload.public
+    .file(file)
+    .name("hello.txt")
+    .keyvalues({
+      env: "prod"
+    })
+  ```
+
+  ```typescript API {13,15-19, 21} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const file = new File(["hello"], "Testing.txt", { type: "text/plain" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      formData.append("name", "hello.txt");
+
+      const keyvalues = JSON.stringify({
+        keyvalues: {
+          env: "prod"
+        }
+      })
+
+      formData.append("keyvalues", keyvalues);
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### Groups
+
+Pinata offers Private IPFS Groups to organize your content. You can upload a file to a group by using the `group` method.
+
+<Tip>
+  [Check out the Groups doc for more info](/files/file-groups)
+</Tip>
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const upload = await pinata.upload.public
+    .file(file)
+    .group("b07da1ff-efa4-49af-bdea-9d95d8881103")
+  ```
+
+  ```typescript API {13} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const file = new File(["hello"], "Testing.txt", { type: "text/plain" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      formData.append("group", "b07da1ff-efa4-49af-bdea-9d95d8881103");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### Client Side Uploads
+
+There are situations where you may need to upload a file client side instead of server side. A great example is in Next.js where there is a 4MB file size restriction for files passed through Next's API routes. To solve this you can create a signed upload URL on the server and then pass it to the client for it to be consumed. This way your admin API key stays safe behind a server. Creating signed upload URLs can be done with either the [SDK](/sdk/upload/public/create-signed-url) or the [API](/api-reference/endpoint/create-signed-upload-url), and you can designate how long the URL is valid for or if there is other infromation you want to include such as metadata or a group ID.
+
+Setting up a server side API endpoint might look something like this:
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  import { type NextRequest, NextResponse } from "next/server";
+  import { pinata } from "@/utils/config"; // Import the Files SDK instance
+
+  export const dynamic = "force-dynamic";
+
+  export async function GET() {
+    // Handle your auth here to protect the endpoint
+    try {
+      const url = await pinata.upload.public.createSignedURL({
+        expires: 30, // The only required param
+        name: "Client File",
+        group: "my-group-id"
+      })
+      return NextResponse.json({ url: url }, { status: 200 }); // Returns the signed upload URL
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json({ text: "Error creating signed URL:" }, { status: 500 });
+    }
+  }
+  ```
+
+  ```typescript API theme={null}
+  import { type NextRequest, NextResponse } from "next/server";
+
+  export const dynamic = "force-dynamic";
+
+  export async function GET() {
+    // Handle your auth here to protect the endpoint
+    try {
+      // Prepare payload data for request
+      const data = JSON.stringify({
+        network: "public",
+        expires: 30,
+        filename: "Client file",
+        group_id: "my-group-id"
+      })
+      // send request and parse response
+      const urlRequest = await fetch("https://uploads.pinata.cloud/v3/files/sign", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.PINATA_JWT}`
+        },
+        body: data
+      })
+      const urlResponse = await urlRequest.json()
+      return NextResponse.json({ url: urlResponse.data }, { status: 200 }); // Returns the key data
+    } catch (error) {
+      console.log(error);
+      return NextResponse.json({ text: "Error creating API Key:" }, { status: 500 });
+    }
+  }
+  ```
+</CodeGroup>
+
+Then back on the client side code, you can upload using the signed URL instead of the regular upload endpoint.
+
+<Note>
+  If you're using the SDK you can use the `.url()` parameter on any of the upload methods and pass in the signed upload URL there. If you are using the API you can simply make the upload request using the signed URL as the endpoint.
+</Note>
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const urlRequest = await fetch("/api/url"); // Fetches the temporary upload URL
+  const urlResponse = await urlRequest.json(); // Parse response
+  const upload = await pinata.upload.public
+    .file(file)
+    .url(urlResponse.url); // Upload the file with the signed URL
+  ```
+
+  ```typescript API {1-2,13} theme={null}
+  const urlRequest = await fetch("/api/url"); // Fetches the temporary upload URL
+  const urlResponse = await urlRequest.json(); // Parse response
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const file = new File(["hello"], "Testing.txt", { type: "text/plain" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public")
+
+      const request = await fetch(urlResponse.url, {
+        method: "POST",
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+<Tip>
+  For more information on client side uploads check out our [Presigned URLs Guide](/files/presigned-urls)
+</Tip>
+
+### Upload Progress
+
+If you happen to use the API as well as local files you can also track the progress of the upload using a library like `got`. Better support for upload progress will come in later versions of the SDK!
+
+```typescript  theme={null}
+import fs from "fs";
+import FormData from "form-data";
+import got from "got";
+
+async function upload() {
+  const url = `https://uploads.pinata.cloud/v3/files`;
+  try {
+    let data = new FormData();
+    data.append(`file`, fs.createReadStream("path/to/file"));
+    const response = await got(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.PINATA_JWT}`,
+      },
+      body: data,
+    }).on("uploadProgress", (progress) => {
+      console.log(progress);
+    });
+    console.log(JSON.parse(response.body));
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+If your file is larger than 100MB then a better approach is to follow the [Resumable Upload Guide](#resumable-uploads)
+
+## Common File Recipes
+
+Below are some common recipes for uploading a file.
+
+### Blob
+
+Usually you can pass a Blob directly into the request but to help guarantee success we recommend passing it into a `File` object.
+
+<CodeGroup>
+  ```typescript SDK {8-10} theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const text = "Hello World!";
+  const blob = new Blob([text]);
+  const file = new File([blob], "hello.txt", { type: "text/plain" });
+  const upload = await pinata.upload.public.file(file);
+  ```
+
+  ```typescript API {7-9} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const text = "Hello World!";
+      const blob = new Blob([text]);
+      const file = new File([blob], "Testing.txt", { type: "text/plain" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### JSON
+
+Pinata makes it easy to upload JSON objects using the [json](/sdk/upload/public/json) method.
+
+<CodeGroup>
+  ```typescript SDK {8-15} theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const upload = await pinata.upload.public.json({
+    id: 2,
+    name: "Bob Smith",
+    email: "bob.smith@example.com",
+    age: 34,
+    isActive: false,
+    roles: ["user"],
+  });
+  ```
+
+  ```typescript API {7-16} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const json = JSON.stringify({
+        id: 2,
+        name: "Bob Smith",
+        email: "bob.smith@example.com",
+        age: 34,
+        isActive: false,
+        roles: ["user"],
+      })
+      const blob = new Blob([json]);
+      const file = new File([blob], "bob.json", { type: "application/json" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### Local Files
+
+If you need to upload files from a local file source you can use `fs` to feed a file into a `blob`, then turn that `blob` into a `File`. Due to the buffer limit in Node.js you may have issues going beyond 2GB with this approach. Using [Resumable Uploads](#resumable-uploads) with a client side file picker will help increase this.
+
+<Note>
+  Support for file streams will be coming in a later version of the SDK.
+</Note>
+
+<CodeGroup>
+  ```typescript SDK {10-11} theme={null}
+  const { PinataSDK } = require("pinata");
+  const fs = require("fs");
+  const { Blob } = require("buffer");
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const blob = new Blob([fs.readFileSync("./hello-world.txt")]);
+  const file = new File([blob], "hello-world.txt", { type: "text/plain" });
+  const upload = await pinata.upload.public.file(file);
+  ```
+
+  ```typescript API {9} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+  const fs = require("fs");
+  const { Blob } = require("buffer");
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      formData.append("file", fs.createReadStream("./hello-world.txt"));
+
+      formData.append("network", "public")
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### Folders
+
+The SDK can accept an array of files using the [fileArray](/sdk/upload/public/file-array) method. Folders can also be uploaded via the API by creating an array of files and mapping over them to add them to the form data. This is different then having a single `file` entry and having multiple files for that one entry, which does not work.
+
+<Warning>
+  Folder uploads are currently only supported on Public IPFS
+</Warning>
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  import { PinataSDK } from "pinata-web3";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const file1 = new File(["hello world!"], "hello.txt", { type: "text/plain" })
+  const file2 = new File(["hello world again!"], "hello2.txt", { type: "text/plain" })
+  const upload = await pinata.upload.public.fileArray([file1, file2])
+  ```
+
+  ```javascript Node.js theme={null}
+  import fs from "fs"
+  import FormData from "form-data"
+  import rfs from "recursive-fs"
+  import basePathConverter from "base-path-converter"
+  import got from 'got'
+
+  const pinDirectoryToPinata = async () => {
+    const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
+    const src = "PATH_TO_FOLDER";
+    var status = 0;
+    try {
+
+      const { dirs, files } = await rfs.read(src);
+
+      let data = new FormData();
+
+      for (const file of files) {
+        data.append(`file`, fs.createReadStream(file), {
+          filepath: basePathConverter(src, file),
+        });
+      }
+
+      const response = await got(url, {
+        method: 'POST',
+        headers: {
+          "Authorization": "Bearer PINATA_API_JWT"
+        },
+        body: data
+    })
+  		.on('uploadProgress', progress => {
+  			console.log(progress);
+  		});
+
+  	console.log(JSON.parse(response.body));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  pinDirectoryToPinata()
+  ```
+
+  ```javascript React theme={null}
+  import { useState } from "react";
+  import { pinata } from "./utils/config"
+
+  function App() {
+    const [selectedFiles, setSelectedFiles] = useState<File[]>();
+
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSelectedFiles(event.target?.files);
+    };
+
+    const handleSubmission = async () => {
+      try {
+        const upload = await pinata.upload.public.fileArray(selectedFiles)
+        console.log(upload);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    return (
+      <>
+        <label className="form-label"> Choose File</label>
+        <input
+          directory=""
+          webkitdirectory=""
+          type="file"
+          onChange={changeHandler}
+        />
+        <button onClick={handleSubmission}>Submit</button>
+      </>
+    );
+  }
+
+  export default App;
+  ```
+
+  ```javascript Javascript theme={null}
+  import FormData from "form-data"
+
+  const pinDirectoryToIPFS = async () => {
+    try {
+      const folder = "json";
+      const json1 = { hello: "world" };
+      const json2 = { hello: "world2" };
+      const blob1 = new Blob([JSON.stringify(json1, null, 2)], {
+        type: "application/json",
+      });
+      const blob2 = new Blob([JSON.stringify(json2, null, 2)], {
+        type: "application/json",
+      });
+
+      const files = [
+        new File([blob1], "hello.json", { type: "application/json" }),
+        new File([blob2], "hello2.json", { type: "application/json" }),
+      ];
+
+      const data = new FormData();
+
+      Array.from(files).forEach((file) => {
+        // If you are not using `fs` you might need to specify the folder path along with the filename
+        data.append("file", file, `${folder}/${file.name}`);
+      });
+
+      const pinataMetadata = JSON.stringify({
+        name: `${folder}`,
+      });
+      data.append("pinataMetadata", pinataMetadata);
+
+      const res = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${PINATA_JWT}`,
+        },
+        body: data,
+      });
+      const resData = await res.json();
+      console.log(resData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  pinDirectoryToIPFS();
+  ```
+</CodeGroup>
+
+<br />
+
+<Info>
+  We also have other tools like the [Pinata IPFS CLI](/tools/ipfs-cli) which can be used to upload using [API Keys](/account-managemnet/api-keys)!
+</Info>
+
+### URL
+
+To upload a file from an external URL you can stream the contents into an `arrayBuffer`, which then gets passed into a new `Blob` that can then be uploaded to Pinata. This has been abstracted in the SDK using the [url](/sdk/upload/public/url) method.
+
+<CodeGroup>
+  ```typescript SDK {8} theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const upload = await pinata.upload.public.url("https://i.imgur.com/u4mGk5b.gif");
+  ```
+
+  ```typescript API {7-10} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const stream = await fetch("https://i.imgur.com/u4mGk5b.gif")
+    	const arrayBuffer = await stream.arrayBuffer();
+    	const blob = new Blob([arrayBuffer]);
+      const file = new File([blob], "name.gif");
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+### base64
+
+To upload a file in base64 simply turn the contents into a `buffer` that is passed into a `Blob`. Alternatively you can use the SDK for this as well using the [base64](/sdk/upload/public/base64) method.
+
+<CodeGroup>
+  ```typescript SDK {8} theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const upload = await pinata.upload.public.base64("SGVsbG8gV29ybGQh");
+  ```
+
+  ```typescript API {7-11} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+     	const buffer = Buffer.from("SGVsbG8gV29ybGQh", "base64");
+
+    	const blob = new Blob([buffer]);
+
+      const file = new File([blob], "hello.txt");
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+## Resumable Uploads
+
+The upload endpoint `https://uploads.pinata.cloud/v3/files` is fully [TUS](https://tus.io) compatible, so it can support larger files with the ability to resume uploads. Any file upload larger than 100MB needs to be uploaded through the TUS method, or through the legacy [/pinFileToIPFS](/api-reference/endpoint/ipfs/pin-file-to-ipfs) endpoint. The [SDK](/sdk) handles this automatically when you use `pinata.upload.<network>.file()` by checking the file size before uploading.
+
+<Warning>
+  At this time folder uploads must go through [/pinFileToIPFS](/api-reference/endpoint/ipfs/pin-file-to-ipfs). Read the [Folder Guide](#folders) for more info!
+</Warning>
+
+```typescript {6} theme={null}
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const upload = await pinata.upload.public.file(massiveFile);
+```
+
+If you want to take advantage of resumable uploads then we would recommend using one of the [TUS clients](https://tus.io/implementations) and taking note of the following:
+
+* Upload chunk size must be smaller than 50MB
+* Instead of using the form data fields for `group_id` or `keyvalues` these can be passed directly into the upload metadata (see example below)
+* Headers must include the Authorization with your [Pinata JWT](/account-managemnet/api-keys)
+
+Here is an example of an upload to Pinata using the `tus-js-client`
+
+```typescript tus-js-client [expandable] theme={null}
+import * as tus from "tus-js-client";
+
+async function resumeUpload(file) {
+  try {
+    const upload = new tus.Upload(file, {
+      endpoint: "https://uploads.pinata.cloud/v3/files",
+      chunkSize: 50 * 1024 * 1024, // 50MiB chunk size
+      retryDelays: [0, 3000, 5000, 10000, 20000],
+      onUploadUrlAvailable: async function () {
+        if (upload.url) {
+          console.log("Upload URL is available! URL: ", upload.url);
+        }
+      },
+      metadata: {
+        filename: "candyroad-demo.mp4", // name
+        filetype: "video/mp4",
+        group_id: "0192868e-6144-7685-9fc5-af68a1e48f29", // group ID
+        network: "public",
+        keyvalues: JSON.stringifiy({ env: "prod" }), // keyvalues
+      },
+      headers: { Authorization: `Bearer ${process.env.PINATA_JWT}` }, // auth header
+      uploadSize: fileStats.size,
+      onError: function (error) {
+        console.log("Failed because: " + error);
+      },
+      onProgress: function (bytesUploaded, bytesTotal) {
+        const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+        console.log(percentage + "%");
+      },
+      onSuccess: function () {
+        console.log("Upload completed!");
+      },
+    });
+
+    upload.start();
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+## Upload by CAR File
+
+You can upload content to Pinata using a raw CAR file. A **CAR (Content Addressed Archive)** file bundles together IPFS blocks in a portable format.
+
+To upload a CAR file, set the `car` parameter to **true** in your upload request. CAR file uploads are supported across all Pinata upload methods.
+
+<CodeGroup>
+  ```typescript SDK {4} theme={null}
+  const upload = await pinata.upload.public
+    .file(file)
+    .name("test.car")
+    .car()
+  ```
+
+  ```typescript API {15} theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function upload() {
+    try {
+      const formData = new FormData();
+
+      const file = new File(["test_car"], "test.car", { type: "application/vnd.ipld.car" });
+
+      formData.append("file", file);
+
+      formData.append("network", "public");
+
+      formData.append("name", "test.car");
+
+      formData.append("car", "true");
+
+      const request = await fetch("https://uploads.pinata.cloud/v3/files", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        },
+        body: formData,
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+Requirements
+
+* Paid plan required - CAR uploads are not available on free plans
+* Public network only - CAR files cannot be uploaded as private content
+* Valid structure - Files must be properly formatted CAR files with valid IPFS blocks
+* Single Root CID - Pinata does not support CAR files with multiple root CIDs
+
+File Availability
+
+CAR file processing is **asynchronous**. After a successful upload, Pinata validates the CAR file structure and IPFS blocks before preparing the file for indexing. A webhook notification is then sent to report the outcome, indicating whether the CAR file was successfully imported or if the process failed.
+
+## Pin by CID
+
+Another way you can upload content to Pinata is by transferring content that is already on IPFS. This could be CIDs that are on your own local IPFS node or another IPFS pinning service! You can do this with the “Import from IPFS” button in the web app, like so:
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeid6k42hboh543sgw7svsnn4aj52lzqnp7gz2vedwa7wzic6w4debu" />
+
+Or you can pin by CID with the SDK using the [cid](/sdk/upload/public/cid) method.
+
+```typescript  theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const pin = await pinata.upload.public.cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
+```
+
+This will result in a `request_id` and Pinata will start looking for the file. Progress can be checked by using the [queue](/sdk/files/public/queue) method.
+
+```typescript  theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const jobs = await pinata.files.public.queue().status("prechecking")
+```
+
+All possible filters are included in the API reference below, but these are the possible "status" filters:
+
+<ParamField query="status" type="string">
+  Filter by the status of the job in the pinning queue (see potential statuses
+  below)
+
+  * `prechecking` Pinata is running preliminary validations on your pin request.
+  * `searching` Pinata is actively searching for your content on the IPFS network. This may take some time if your content is isolated.
+  * `retrieving` Pinata has located your content and is now in the process of retrieving it.
+  * `expired` Pinata wasn't able to find your content after a day of searching the IPFS network. Please make sure your content is hosted on the IPFS network before trying to pin again.
+  * `backfilled` Pinata can only search 250 files at a time per account, so if you have more than 250 items in your queue then the extra items will sit in a backfilled status. Once the queue goes down it will automatically start working on the next items in the backfill queue.
+  * `over_free_limit` Pinning this object would put you over the free tier limit. Please add a credit card to continue pinning content.
+  * `over_max_size` This object is too large of an item to pin. If you're seeing this, please contact us for a more custom solution.
+  * `invalid_object` The object you're attempting to pin isn't readable by IPFS nodes. Please contact us if you receive this, as we'd like to better understand what you're attempting to pin.
+  * `bad_host_node` You provided a host node that was either invalid or unreachable. Please make sure all provided host nodes are online and reachable.
+</ParamField>
+
+## Predetermining the CID
+
+If you find yourself in a position where you want to pre-determine the CID before uploading you can use a combination of the `ipfs-unixfx-importer` and `blockstore-core` libraries.
+
+```typescript  theme={null}
+import { importer } from "ipfs-unixfs-importer";
+import { MemoryBlockstore } from "blockstore-core/memory";
+
+export const predictCID = async (file: File, version: 0 | 1 = 1) => {
+    try {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const blockstore = new MemoryBlockstore();
+
+        let rootCid: any;
+
+        for await (const result of importer([{ content: buffer }], blockstore, {
+            cidVersion: version,
+            hashAlg: "sha2-256",
+            rawLeaves: version === 1,
+        })) {
+            rootCid = result.cid;
+        }
+
+        return rootCid.toString();
+    } catch (err) {
+        return err;
+    }
+};
+```
+
+Usage will just require passing in a file object and the version of the CID you want to predict. Here is an example using a local file.
+
+```typescript  theme={null}
+import fs from "fs"
+
+const file = new File([fs.readFileSync("path/to-file")], "filename.extension");
+const cid = await predictCID(file, 1);
+console.log(cid);
+```
+
+## Peering with Pinata
+
+If you run IPFS infrastructure and would like to peer with Pinata's nodes you can do so with the [Kubo](https://docs.ipfs.tech/reference/kubo/cli/) commands listed below. Rather than using full multiaddresses for our node IDs we use a DNS setup that is more stable and allows our infrastructure to be flexible.
+
+```bash  theme={null}
+ipfs swarm connect /dnsaddr/bitswap.pinata.cloud
+```
+
+```bash  theme={null}
+ipfs config --json Peering.Peers '[{ "ID": "Qma8ddFEQWEU8ijWvdxXm3nxU7oHsRtCykAaVz8WUYhiKn", "Addrs": ["/dnsaddr/bitswap.pinata.cloud"] }]'
+```
+
+If you have any issues feel free to [reach out](mailto:team@pinata.cloud)!
+
+## Web App
+
+You can also use the **[Pinata App](https://app.pinata.cloud/)** to upload files. It’s as simple as clicking the “Add” button in the top right corner of the **[files page](https://app.pinata.cloud/ipfs/files)**. Select your file, give it a name, then upload. Once it's complete you’ll see it listed in the files page.
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeih5leperkpn2thy2xbebh3zqqmvqhx6p5nl5n7buj73w62yoha6ki" />
+
+Start uploading by [signing up for a free account](https://app.pinata.cloud/register)!

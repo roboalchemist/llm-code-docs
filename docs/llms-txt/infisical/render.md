@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/render.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/render.md
+
+# Source: https://infisical.com/docs/integrations/cloud/render.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/render.md
+
 # Render Connection
 
 > Learn how to configure a Render Connection for Infisical.

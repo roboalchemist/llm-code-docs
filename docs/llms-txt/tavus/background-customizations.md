@@ -2,6 +2,10 @@
 
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
 
+# Source: https://docs.tavus.io/sections/video/background-customizations.md
+
+# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
+
 # Background Customizations
 
 > Apply a green screen or custom background for a personalized visual experience.

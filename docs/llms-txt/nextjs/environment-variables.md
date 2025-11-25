@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/environment-variables.md
 
+# Source: https://nextjs.org/docs/pages/guides/environment-variables.md
+
+# Source: https://nextjs.org/docs/app/guides/environment-variables.md
+
+# Source: https://nextjs.org/docs/pages/guides/environment-variables.md
+
+# Source: https://nextjs.org/docs/app/guides/environment-variables.md
+
 # How to use environment variables in Next.js
 @doc-version: 16.0.4
 

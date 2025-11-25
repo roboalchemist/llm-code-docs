@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/create_index_from_backup.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/create_index_from_backup.md
 
 # Create an index from a backup

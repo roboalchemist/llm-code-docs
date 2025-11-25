@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/azure-devops.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/azure-devops.md
+
+# Source: https://infisical.com/docs/integrations/cloud/azure-devops.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/azure-devops.md
+
 # Azure DevOps Connection
 
 > Learn how to configure an Azure DevOps Connection for Infisical.

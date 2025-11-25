@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/debugging.md
 
+# Source: https://nextjs.org/docs/pages/guides/debugging.md
+
+# Source: https://nextjs.org/docs/app/guides/debugging.md
+
+# Source: https://nextjs.org/docs/pages/guides/debugging.md
+
+# Source: https://nextjs.org/docs/app/guides/debugging.md
+
 # How to use debugging tools with Next.js
 @doc-version: 16.0.4
 

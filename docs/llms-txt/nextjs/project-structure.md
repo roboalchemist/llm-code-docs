@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/project-structure.md
 
+# Source: https://nextjs.org/docs/pages/getting-started/project-structure.md
+
+# Source: https://nextjs.org/docs/app/getting-started/project-structure.md
+
+# Source: https://nextjs.org/docs/pages/getting-started/project-structure.md
+
+# Source: https://nextjs.org/docs/app/getting-started/project-structure.md
+
 # Project structure and organization
 @doc-version: 16.0.4
 

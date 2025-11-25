@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/management/envvars/delete.md
 
+# Source: https://trigger.dev/docs/management/schedules/delete.md
+
+# Source: https://trigger.dev/docs/management/envvars/delete.md
+
 # Delete Env Var
 
 > Delete a specific environment variable for a specific project and environment.

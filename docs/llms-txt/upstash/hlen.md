@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
+
 # HLEN
 
 > Returns the number of fields contained in the hash stored at key.

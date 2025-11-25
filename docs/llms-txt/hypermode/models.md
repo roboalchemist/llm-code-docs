@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/modus/sdk/assemblyscript/models.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/models.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/models.md
+
 # AI Model APIs
 
 > Invoke AI models from your functions

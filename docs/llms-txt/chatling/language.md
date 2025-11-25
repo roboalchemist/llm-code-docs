@@ -4,6 +4,10 @@
 
 # Source: https://docs.chatling.ai/web-widget/language.md
 
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/condition/language.md
+
+# Source: https://docs.chatling.ai/web-widget/language.md
+
 # Set the language of your chatbot widget
 
 > Set the language of your chatbot widget.

@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/http/tls.md
 
+# Source: https://bun.com/docs/runtime/http/tls.md
+
+# Source: https://bun.com/docs/guides/http/tls.md
+
 # Configure TLS on an HTTP server
 
 Set the `tls` key to configure TLS. Both `key` and `cert` are required. The `key` should be the contents of your private key; `cert` should be the contents of your issued certificate. Use [`Bun.file()`](https://bun.com/docs/api/file-io#reading-files-bun-file) to read the contents.

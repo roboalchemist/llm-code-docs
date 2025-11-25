@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/update-membership.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-users/update-membership.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/organizations/update-membership.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/update-membership.md
+
 # Update User Membership
 
 > Update project user membership

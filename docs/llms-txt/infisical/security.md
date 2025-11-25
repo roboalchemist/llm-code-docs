@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/gateways/security.md
 
+# Source: https://infisical.com/docs/internals/security.md
+
+# Source: https://infisical.com/docs/documentation/platform/gateways/security.md
+
 # Security Architecture
 
 > Security model, tenant isolation, and best practices for Infisical Gateways and Relays

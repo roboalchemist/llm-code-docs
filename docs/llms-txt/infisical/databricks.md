@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/databricks.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/databricks.md
+
+# Source: https://infisical.com/docs/integrations/cloud/databricks.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/databricks.md
+
 # Databricks Connection
 
 > Learn how to configure a Databricks Connection for Infisical.

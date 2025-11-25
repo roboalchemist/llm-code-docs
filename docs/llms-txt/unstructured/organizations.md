@@ -1,0 +1,230 @@
+# Source: https://docs.unstructured.io/ui/account/organizations.md
+
+# Organizational accounts
+
+<Note>
+  The following information applies only to Unstructured **Business** accounts. To upgrade from an Unstructured **Let's Go** or **Pay-As-You-Go** account
+  to a **Business** account, contact your Unstructured sales representative, or
+  email Unstructured Sales at [sales@unstructured.io](mailto:sales@unstructured.io).
+</Note>
+
+An *organizational account* is an Unstructured account that allows multiple users to access Unstructured resources and share billing.
+An organizational account contains a collection of Unstructured [workspaces](/ui/account/workspaces) that can share resources
+with subsets of users within the account. An organizational account manages access its organization and the organization's workspaces by inviting Unstructured
+*personal account* users. Any usage that occurs in an organizational account by any of its invited users is applied to the shared billing for that
+organizational account.
+
+A *workspace* is a collection of Unstructured resources (such as connectors, workflows, jobs, and API keys) within an organization.
+This is different from a *personal workspace*, which is a collection of resources within an Unstructured personal account. An organizational account
+can have multiple workspaces.
+
+## Organizational account architecture
+
+Each organizational account operates independently of all other organizational accounts.
+
+Each organizational account can have multiple workspaces. Each workspace operates independently of all other workspaces.
+
+```mermaid  theme={null}
+graph LR
+    Org1[Organization 1]
+    Org2[Organization 2]
+    Org3[Organization 3]
+    WS1A[Workspace 1A]
+    WS2A[Workspace 2A]
+    WS2B[Workspace 2B]
+    WS3A[Workspace 3A]
+    WS3B[Workspace 3B]
+    WS3C[Workspace 3C]
+
+    Org1 --> WS1A
+    
+    Org2 --> WS2A
+    Org2 --> WS2B
+
+    Org3 --> WS3A
+    Org3 --> WS3B
+    Org3 --> WS3C
+```
+
+Each organizational account can have multiple users. Users can have access to multiple organizational accounts.
+
+```mermaid  theme={null}
+graph LR
+    User1[User 1]
+    User2[User 2]
+    User3[User 3]
+    Org1[Organization 1]
+    Org2[Organization 2]
+    Org3[Organization 3]
+
+    User1 -.-> Org1
+    User2 -.-> Org1
+    User2 -.-> Org2
+    User3 -.-> Org1
+    User3 -.-> Org2
+    User3 -.-> Org3
+```
+
+Each user also has a *personal account*, which operates independently of all other organizational accounts and personal accounts. Each personal account has a
+*personal workspace*, which operates independently of all other workspaces. Each user can add a seprate billing method to their personal account that
+will be applied only to usage in their personal account.
+
+```mermaid  theme={null}
+graph LR
+    User1[User 1]
+    User2[User 2]
+    User3[User 3]
+    PA1[Personal Account for User 1]
+    PA2[Personal Account for User 2]
+    PA3[Personal Account for User 3]
+    Org1[Organization 1]
+    Org2[Organization 2]
+    Org3[Organization 3]
+
+    User1 --> PA1
+    User2 --> PA2
+    User3 --> PA3
+    User1 -.-> Org1
+    User2 -.-> Org1
+    User2 -.-> Org2
+    User3 -.-> Org1
+    User3 -.-> Org2
+    User3 -.-> Org3
+```
+
+Within an organizational account, an invited user (also known as a *member*) can have access to multiple workspaces within that organizational account.
+
+```mermaid  theme={null}
+graph LR
+    User1[User 1]
+    User2_Org1[User 2]
+    User2_Org2[User 2]
+    User3_Org1[User 3] 
+    User3_Org2[User 3]
+    User3_Org3[User 3]
+
+    Org1[Organization 1]
+    Org2[Organization 2]
+    Org3[Organization 3]
+
+    WS1A[Workspace 1A]
+    WS2A[Workspace 2A]
+    WS2B[Workspace 2B]
+    WS3A[Workspace 3A]
+    WS3B[Workspace 3B]
+    WS3C[Workspace 3C]
+    
+    Org1 --> WS1A
+    Org1 -.-> User1
+    Org1 -.-> User2_Org1
+    Org1 -.-> User3_Org1
+    User1 -.-> WS1A
+    User2_Org1 -.-> WS1A
+    User3_Org1 -.-> WS1A
+    
+    Org2 --> WS2A
+    Org2 --> WS2B
+    Org2 -.-> User2_Org2
+    Org2 -.-> User3_Org2
+    User2_Org2 -.-> WS2A
+    User2_Org2 -.-> WS2B
+    User3_Org2 -.-> WS2B
+    
+    Org3 --> WS3A
+    Org3 --> WS3B
+    Org3 --> WS3C
+    Org3 -.-> User3_Org3
+    User3_Org3 -.-> WS3A
+    User3_Org3 -.-> WS3B
+    User3_Org3 -.-> WS3C
+```
+
+Each user must be explicitly added to the organizational accounts—and workspaces within those organizational accounts—that they are allowed to access.
+
+## Create an organizational account
+
+Only authorized Unstructured representatives can create organizational accounts. To request an organizational account to be created, contact your Unstructured
+sales representative, or email Unstructured Sales at [sales@unstructured.io](mailto:sales@unstructured.io).
+
+## Access an organizational account
+
+1. Sign in to your Unstructured account.
+2. In the top navigation bar, in the organizational account selector, select the name of the organizational account that you want to access.
+
+   If the organizational account selector is not shown, or if the selector does not show the organizational account you want to access, then
+   your user has not been added to that organizational account. To be added to the organizational account, contact one of the organizational account's administrators.
+
+## Add a member to an organizational account
+
+<Info>
+  Your user must have the **Super Administrator** [role](/ui/account/roles) in the organizational account to add members to that organizational account.
+</Info>
+
+To add a user to an organizational account as a member:
+
+1. Sign in to your Unstructured account.
+2. In the top navigation bar, in the organizational account selector, select the name of the organizational account that you want to add the member to.
+3. In the sidebar, above your user icon, click the **Settings** (gear) icon.
+4. Click **Manage Account**.
+5. In the top navigation bar, click **Members**.
+6. Click **New Member**.
+7. In the **Add New Member** dialog, enter the email address for the organizational account's new member.
+8. In the role selector, select the new member's [role](/ui/account/roles) for this organizational account.
+9. Click **Continue**.
+
+## Change an organizational account role for a member
+
+<Info>
+  Your user must have the **Super Administrator** role in the organizational account to change its members' organizational account roles.
+</Info>
+
+1. Sign in to your Unstructured account.
+2. In the top navigation bar, in the organizational account selector, select the name of the organizational account that contains the member you want to change roles for.
+3. In the sidebar, above your user icon, click the **Settings** (gear) icon.
+4. Click **Manage Account**.
+5. In the top navigation bar, click **Members**.
+6. Click the member you want to change roles for.
+7. Next to **Role** click the **Edit** (pencil) icon.
+8. Select the new role.
+9. Click the **Accept** (check mark) icon.
+
+## Remove a member from an organizational account
+
+<Warning>
+  Removing a member from an organizational account also removes the member from all of the organizational account's workspaces. The member will no longer
+  have access to the organizational account or any of its workspaces. The member will continue to be able to use their personal account and personal workspace.
+
+  Any connectors, workflows, jobs, or other resources that were created by the member within the organizational accounts's workspaces will not be removed.
+
+  The only way to reverse removing a member from an organizational account is to add the member back to the organizational account—and to each of the workspaces that the member might have previously
+  been a member of in that organizational account.
+</Warning>
+
+<Info>
+  Your user must have the **Super Administrator** [role](/ui/account/roles) in the organizational account to remove members from that organizational account.
+</Info>
+
+1. Sign in to your Unstructured account.
+2. In the top navigation bar, in the organizational account selector, select the name of the organizational account that you want to remove the member from.
+3. In the sidebar, above your user icon, click the **Settings** (gear) icon.
+4. Click **Manage Account**.
+5. In the top navigation bar, click **Members**.
+6. In the list of members, click the member you want to remove.
+7. In the member's settings pane, click **Remove Member**.
+8. Confirm the removal by clicking **Continue**.
+
+## Permanently delete an organizational account
+
+<Warning>
+  Deleting an organizational account is a permanent action and is not recoverable. Once an organizational account is deleted, all workspaces associated with that
+  organizational account are also deleted and are not recoverable.
+
+  The organizational account's members will no longer have access to the deleted organizational account or any of its workspaces.
+  Each member will continue to be able to use their personal account and personal workspace.
+
+  Any code or scripts that reference connectors, workflows, jobs, or workflow API keys that are associated with workflows in the deleted
+  organizational account will fail.
+</Warning>
+
+Only authorized Unstructured representatives can delete organizational accounts. To request an organizational account to be permanently deleted, contact your Unstructured
+sales representative, or email Unstructured Sales at [sales@unstructured.io](mailto:sales@unstructured.io).

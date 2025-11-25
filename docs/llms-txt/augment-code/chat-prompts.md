@@ -2,6 +2,10 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-prompts.md
 
+# Source: https://docs.augmentcode.com/using-augment/chat-prompts.md
+
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/chat-prompts.md
+
 # Example Prompts for Chat
 
 > Using natural language to interact with your codebase unlocks a whole new way of working. Learn how to get the most out of Chat with the following example prompts.

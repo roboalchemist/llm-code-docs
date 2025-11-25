@@ -10,6 +10,18 @@
 
 # Source: https://docs.galileo.ai/api-reference/getting-started.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/getting-started.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/getting-started.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/getting-started.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/getting-started.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/multi-label-text-classification/getting-started.md
+
+# Source: https://docs.galileo.ai/api-reference/getting-started.md
+
 # API Reference | Getting Started with Galileo
 
 > Get started with Galileo's REST API: learn about base URLs, authentication methods, and how to verify your API setup for seamless integration.

@@ -4,6 +4,14 @@
 
 # Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
 
+# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
+
+# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
+
+# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md
+
+# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/okta.md
+
 # (Beta) User Provisioning (SCIM) with Okta
 
 info

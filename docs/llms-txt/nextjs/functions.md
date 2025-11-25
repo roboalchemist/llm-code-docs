@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/functions.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/functions.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions.md
+
 # Functions
 @doc-version: 16.0.4
 

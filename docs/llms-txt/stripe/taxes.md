@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/invoicing/taxes.md
 
+# Source: https://docs.stripe.com/payments/checkout/taxes.md
+
+# Source: https://docs.stripe.com/invoicing/taxes.md
+
 # Taxes
 
 Learn about Stripe Tax and how to use it with invoices.

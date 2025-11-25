@@ -8,6 +8,14 @@
 
 # Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
 
+# Source: https://docs.stripe.com/tax/invoicing/tax-ids.md
+
+# Source: https://docs.stripe.com/tax/checkout/tax-ids.md
+
+# Source: https://docs.stripe.com/billing/customer/tax-ids.md
+
+# Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
+
 # Customer tax IDs
 
 Store, validate, and render customer tax ID numbers with Stripe Invoicing.

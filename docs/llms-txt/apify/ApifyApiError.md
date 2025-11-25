@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/ApifyApiError.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
+
 # ApifyApiError<!-- -->
 
 An `ApifyApiError` is thrown for successful HTTP requests that reach the API, but the API responds with an error response. Typically, those are rate limit errors and internal errors, which are automatically retried, or validation errors, which are thrown immediately, because a correction by the user is needed.

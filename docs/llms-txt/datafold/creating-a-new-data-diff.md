@@ -2,6 +2,14 @@
 
 # Source: https://docs.datafold.com/data-diff/cross-database-diffing/creating-a-new-data-diff.md
 
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/creating-a-new-data-diff.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/creating-a-new-data-diff.md
+
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/creating-a-new-data-diff.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/creating-a-new-data-diff.md
+
 # Creating a New Data Diff
 
 > Datafold's Data Diff can compare data across databases (e.g., PostgreSQL <> Snowflake, or between two SQL Server instances) to validate migrations, meet regulatory and compliance requirements, or ensure data is flowing successfully from source to target.

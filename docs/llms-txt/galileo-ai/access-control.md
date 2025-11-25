@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/access-control.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/how-to/access-control.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/access-control.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/access-control.md
+
 # Access Control Features | Galileo NLP Studio
 
 > Discover Galileo NLP Studio's access control features, including user roles and group management, to securely share and manage projects within your organization.

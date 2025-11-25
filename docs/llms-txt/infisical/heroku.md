@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/heroku.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/heroku.md
+
+# Source: https://infisical.com/docs/integrations/cloud/heroku.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/heroku.md
+
 # Heroku Connection
 
 > Learn how to configure a Heroku Connection for Infisical using OAuth or Auth Token methods.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
 
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/logging-data-to-galileo.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/logging-data-to-galileo.md
+
 # Logging Data | Natural Language Inference in Galileo
 
 > The fastest way to find data errors in Galileo.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
 
+# Source: https://docs.squared.ai/activation/vector-search/pinecone_db.md
+
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/pinecone_db.md
+
 # Pinecone DB
 
 ## Connect AI Squared to Pinecone DB

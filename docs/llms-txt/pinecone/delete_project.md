@@ -1,3 +1,7 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin/delete_project.md
+
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/delete_project.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin/delete_project.md
 
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/delete_project.md

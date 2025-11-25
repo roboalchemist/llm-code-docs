@@ -1,0 +1,192 @@
+# Source: https://docs.upsun.com/define-routes/https.md
+
+# HTTPS
+
+Using HTTPS for your site helps ensure your users' information remains secure.
+HTTPS provides enhanced security thanks to the following characteristics:
+
+- With HTTPS, data is encrypted so user activity can't be tracked and user information can't be stolen.
+- HTTPS prevents the corruption of files transferred from a web server to a website and vice-versa.
+- HTTPS also authenticates websites, which helps build trust with your users.
+
+To enable HTTPS on your site, you need [Transport Layer Security (TLS) certificates](#tls-certificates).
+
+## TLS certificates
+
+Upsun automatically provides TLS certificates for all sites and environments.
+These certificates are issued at no charge by [Let's Encrypt](https://letsencrypt.org/) and cover most needs.
+They're valid for 90 days and automatically renewed 28 days before expiration.
+
+To use them, you only need to [specify HTTPS routes](https://docs.upsun.com../define-routes/https.md#enable-https).
+Note that [limitations](https://docs.upsun.com../define-routes/https.md#lets-encrypt-limitations) apply.
+If you encounter issues with the TLS certificates provided by Upsun,
+check that [TLS encryption is up-and-running](https://docs.upsun.com../domains/troubleshoot.md#verify-ssltls-encryption).
+
+If you don't want to use the TLS certificates provided by Upsun,
+configure your own [third-party TLS certificates](https://docs.upsun.com../domains/steps/tls.md).
+
+### Let's Encrypt limitations
+
+When you use the Let's Encrypt [TLS certificates](#tls-certificates) provided by Upsun,
+the following limitations apply.
+
+Let's Encrypt allows a maximum of 100 hostnames per certificate.
+You can have 1 Let's Encrypt certificate for each of your environments.
+If you define both a `{default}` and a `www.{default}` route for each domain you use,
+you can add up to 50 hostnames.
+Going over this limitation results in a warning on deploy and no new TLS certificates are issued.
+
+If you need more hostnames, you can obtain additional certificates
+or a wildcard certificate from a [third-party issuer](https://docs.upsun.com../domains/steps/tls.md).
+Alternatively, consider splitting your project up into multiple Upsun projects.
+
+Please note that when using multiple domains, the Common Name (CN) to which the certificate is issued to
+is not guaranteed to be the same on each certificate renewal.
+
+### Certificate renewals
+
+When you use the [TLS certificates](#tls-certificates) provided by Upsun,
+certificate renewals are automatic.
+They trigger a redeployment of your environment.
+During this redeployment, required security and system upgrades are applied to your containers.
+So the duration of the redeployment depends on what needs to be upgraded.
+
+## Enable HTTPS
+
+To enable HTTPS, add a routing configuration similar to the following:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    type: upstream
+    upstream: "myapp:http"
+
+  "https://www.{default}/":
+    type: redirect
+    to: "https://{default}/"
+```
+
+All traffic to your domain is then sent to your app.
+The `www` subdomain redirects to the [default domain](https://docs.upsun.com../define-routes.md#default).
+This also includes redirecting requests from HTTP to HTTPS.
+
+For more information, see how to [define routes](https://docs.upsun.com../define-routes.md).
+
+## Optional: Configure TLS connections
+
+When you [specify HTTPS routes](#enable-https),
+you can use the `tls` setting to further configure your TLS connections.
+
+### Enforce TLS 1.3
+
+Although you can still use TLS 1.2, TLS 1.3 is faster and more secure.
+To instruct your web server to automatically reject TLS 1.2 connections,
+enforce TLS 1.3 using the `min_version` setting:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      min_version: TLSv1.3
+```
+
+Note that TLS versions older than 1.2 are deprecated and are rejected by default.
+
+### Enable HTTP Strict Transport Security (HSTS)
+
+[HSTS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security) forces clients to always communicate with your site over HTTPS.
+To enable HSTS, use `strict_transport_security` in a configuration similar to the following:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      strict_transport_security:
+        enabled: true
+        include_subdomains: true
+        preload: true
+```
+
+The following table presents the possible properties for `strict_transport_security`:
+
+| Name                 | Type      | Default | Description                                                                                    |
+|----------------------|-----------|---------|------------------------------------------------------------------------------------------------|
+| `enabled`            | `boolean` | `null`  | If set to `true`, HSTS is enabled for 1 year. If set to `false`, other properties are ignored. |
+| `include_subdomains` | `boolean` | `false` | To specify whether HSTS applies to all subdomains.                                             |
+| `preload`            | `boolean` | `false` | To add your website to the [HSTS preload list](https://hstspreload.org/). Thanks to this list, most browsers are informed that your site requires HSTS before an HSTS header response is even issued. |
+
+Note that when you enable or disable HSTS, the entire domain is affected.
+Make sure you only add the HSTS configuration to a single route.
+Having different routes with conflicting HSTS configurations can cause issues.
+
+### Enable mTLS
+
+Standard TLS connections are useful to verify the identity of web servers and their certificates.
+But you can also instruct your web server to verify the identity of clients and their certificates.
+This allows you to restrict access to trusted users.
+
+To do so, enable mTLS by adding the following configuration:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      client_authentication: "require"
+```
+
+By default, all valid TLS certificates issued by a legitimate certificate authority are accepted.
+But you can instruct your web server to only accept TLS certificates issued by specific or even custom certificate authorities.
+
+To do so, add a configuration similar to the following:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      client_authentication: "require"
+      client_certificate_authorities:
+        - !include
+          type: string
+          path: root-ca1.crt
+        - !include
+          type: string
+          path: root-ca2.crt
+```
+
+In this case, the certificate files are resolved relative to the `.upsun` directory.
+Alternatively, you can specify the certificates inline in the file:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      client_authentication: "require"
+      client_certificate_authorities:
+        - |
+          -----BEGIN CERTIFICATE-----
+          ### Several lines of characters here ###
+          -----END CERTIFICATE-----
+        - |
+          -----BEGIN CERTIFICATE-----
+          ### Several lines of different characters here ###
+          -----END CERTIFICATE-----
+```
+
+If you want to request a client certificate without _requiring_ the client to send one, you can set this by using `request` as a value for `client_authentication`:
+
+```yaml  {location=".upsun/config.yaml"}
+routes:
+  "https://{default}/":
+    # ...
+    tls:
+      client_authentication: "request"
+    # ...
+```
+
+Requests on routes with mTLS configured that are passed through to your app will contain additional headers such as `X-Client-Verify` (with values like `Success` or `None` depending on whether a client certificate was presented and validated or not) and `X-Client-Cert` (with information about the client certificate that was used) that your application can use as required.
+

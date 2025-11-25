@@ -4,6 +4,18 @@
 
 # Source: https://docs.solidfi.com/accounts/controls.md
 
+# Source: https://docs.solidfi.com/payments/controls.md
+
+# Source: https://docs.solidfi.com/card-issuance/controls.md
+
+# Source: https://docs.solidfi.com/accounts/controls.md
+
+# Source: https://docs.solidfi.com/payments/controls.md
+
+# Source: https://docs.solidfi.com/card-issuance/controls.md
+
+# Source: https://docs.solidfi.com/accounts/controls.md
+
 # Controls
 
 > A guide to Account Controls

@@ -6,6 +6,14 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/cartesia.md
+
+# Source: https://docs.livekit.io/agents/models/tts/inference/cartesia.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/cartesia.md
+
+# Source: https://docs.livekit.io/agents/models/stt/inference/cartesia.md
+
 LiveKit docs › Models › Speech-to-text (STT) › LiveKit Inference › Cartesia
 
 ---

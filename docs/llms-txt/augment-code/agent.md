@@ -4,6 +4,16 @@
 
 # Source: https://docs.augmentcode.com/cli/acp/agent.md
 
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/agent.md
+
+# Source: https://docs.augmentcode.com/cli/acp/agent.md
+
+# Source: https://docs.augmentcode.com/using-augment/agent.md
+
+# Source: https://docs.augmentcode.com/jetbrains/using-augment/agent.md
+
+# Source: https://docs.augmentcode.com/cli/acp/agent.md
+
 # ACP Mode
 
 > Auggie is a fully compatible Agent Client Protocol (ACP) agent enabling you to bring the power of Augment to any compatible client.

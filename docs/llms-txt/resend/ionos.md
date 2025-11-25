@@ -1,0 +1,140 @@
+# Source: https://resend.com/docs/knowledge-base/ionos.md
+
+# IONOS
+
+> Verify your domain on IONOS with Resend.
+
+## Add Domain to Resend
+
+First, log in to your [Resend Account](https://resend.com/login) and [add a domain](https://resend.com/domains).
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=418dd93c2f2ead0b0d83d1b7c2fb0970" data-og-width="3360" width="3360" data-og-height="2100" height="2100" data-path="images/dashboard-domains-resend-add-domain.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=28a4feab47f2b86c34c7b1314f636f0c 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=bf121272193472fdd2c882fe4b29ced5 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=950e2318cb41511a6f7105afa50be42c 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=e5a7d9a4d237a3435e8fffb85c3650f1 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=a4944168fa1595f1843c8789944f1ef3 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=17d0c63a766375cab10239e4025c8dac 2500w" />
+
+<Tip>
+  It is [best practice to use a
+  subdomain](/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
+  (updates.example.com) instead of the root domain (example.com). This allows
+  for proper reputation segmentation based on topics or purpose (e.g.
+  transactional and marketing).
+</Tip>
+
+## Log in to IONOS
+
+Log in to your [IONOS account](https://my.ionos.com/domains):
+
+1. Choose your Domain from the `Domain` list.
+2. Select the `DNS` tab to get to the page to manage DNS records.
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=ad87e97d0b64b83ef7076abdcca7f032" data-og-width="2956" width="2956" data-og-height="1848" height="1848" data-path="images/dashboard-domains-ionos-domains.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=458e236a3112f9f831af331f71f2610f 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=c9d809f5d95a03a23297ecd5d7429b8a 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=12e4432ec5613e6113c4b29ea24e708f 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=ecb6e8738326bb4d291635dc0dbb2d41 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=34d63e2bf81fa3ca864c71218bbb450c 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-domains.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=f439f3042847f807c83d0818298ce506 2500w" />
+
+## Add MX SPF Record
+
+Select “Add record” on IONOS to copy and paste the values MX from Resend.
+
+1. On the `Add a DNS Record` page, select `MX`.
+2. Type `send` for the `Name` of the record.
+3. Copy the MX Value from Resend into the `Points to` field.
+4. Use the default `Priority` of `10`.
+5. Use the default TTL of `1 hour`.
+6. Select `Save`.
+
+<Info>
+  Omit your domain from the record values in Resend when you paste. Instead of
+  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+  subdomain).
+</Info>
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=bb0db2dd2809135194cfb62b695225cd" data-og-width="3024" width="3024" data-og-height="1888" height="1888" data-path="images/dashboard-domains-resend-spf-mx.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=a95639f0752fdbaefd0eae3b93ec6255 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=9e579bee139584def82c0a8688466681 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=80c20d31f9598b0f8aeb4b267725b4fe 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=f66dc758dec3ac85919063c4bb66f4d5 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=187033c1e79e5f6f3b47fa0466def756 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=2a0531e4d1d25117efaef896d40331e3 2500w" />
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=1769321e813bf9a6d6ebe30105d1dc43" data-og-width="2954" width="2954" data-og-height="1848" height="1848" data-path="images/dashboard-domains-ionos-spf-mx.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=0bdf3604a875b6a28210e25f5b9f212c 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=1edec6a4c37967092e9d9e3c7b85818a 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=e83f1a77119d2e2d388c61fe6feaee26 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=b9575434e0354257c6ae48ba508a9358 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=c8fc4046e92d7ec5110ed18c1d4b8e56 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-mx.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=cc7e5c5fcfb17bbad7ded67d9c3f7b2b 2500w" />
+
+Below is a mapping of the record fields from Resend to IONOS:
+
+| IONOS     | Resend   | Example Value                           |
+| --------- | -------- | --------------------------------------- |
+| Type      | Type     | `MX Record`                             |
+| Name      | Name     | `send`                                  |
+| Points to | Value    | `feedback-smtp.us-east-1.amazonses.com` |
+| TTL       | -        | `1 hour`                                |
+| Priority  | Priority | `10`                                    |
+
+<Info>
+  Do not use the same priority for multiple records. If Priority `10` is already
+  in use on another record, try a number slightly higher like `11` or `12`.
+</Info>
+
+## Add TXT SPF Record
+
+In the same section, select “Add record” again.
+
+1. On the `Add a DNS Record` page, select `TXT`.
+2. Type `send` for the `Host name` of the record.
+3. Copy the TXT Value Resend into the `TXT value` field.
+4. Use the default TTL of `1 hour`.
+5. Select `Save`.
+
+<Info>
+  Omit your domain from the record values in Resend when you paste. Instead of
+  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+  subdomain).
+</Info>
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=747425d0a224baeee2846c9a707d5bbc" data-og-width="3024" width="3024" data-og-height="1888" height="1888" data-path="images/dashboard-domains-resend-spf-txt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=04f13a4953c918b5ffa05474c6e6190c 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=fa09e290427c24278edb3306e241e2f0 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=4e796dc0356e2176d0dfa9467aa9af8f 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=5e27ef23ba82f5fe62d483849c5a8ec5 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=991e5fe09e65097107fafe4de36c0bda 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=6fd70252df24dce6a9768e38d5c75ae0 2500w" />
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=b41183957e0b51879bf42e16f1927f91" data-og-width="2956" width="2956" data-og-height="1848" height="1848" data-path="images/dashboard-domains-ionos-spf-txt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=95f76b7f445b5325074c32bf2d612b88 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=0c4886df1ab4bb5017cf4eb9e1133b16 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=2ee21850050b4b228c5591adb2cf6ea8 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=10a0fe9576696d2878b2f9e53ddb9b47 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=cc94f8d35f05817fb878b3eb103d7ee6 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-spf-txt.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=a8c40ea977f249fb6aef90ffed760b4d 2500w" />
+
+Below is a mapping of the record fields from Resend to IONOS:
+
+| IONOS     | Resend | Example Value                         |
+| --------- | ------ | ------------------------------------- |
+| Type      | Type   | `TXT Record`                          |
+| Host name | Name   | `send`                                |
+| TXT value | Value  | `"v=spf1 include:amazonses.com ~all"` |
+| TTL       | -      | `1 hour`                              |
+
+## Add TXT DKIM Records
+
+In the same section, select “Add record” again.
+
+1. On the `Add a DNS Record` page, select `TXT`.
+2. Type `resend._domainkey` for the `Host name` of the record.
+3. Copy the record value from Resend into the `TXT value` field.
+4. Use the default TTL of `1 hour`.
+5. Select `Save`.
+
+<Info>
+  Omit your domain from the record values in Resend when you paste. Instead of
+  `resend._domainkey.example.com`, paste only `resend._domainkey` (or
+  `resend._domainkey.subdomain` if you're using a subdomain).
+</Info>
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=345d1dc6b7c138dbd92bd6928c634bd9" data-og-width="2992" width="2992" data-og-height="1868" height="1868" data-path="images/dashboard-domains-resend-dkim.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=37e5d282deda4e727e9f002cf5b8f0dd 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=978f4a7f13387c0d721acd80a944123c 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=cd473e4cdd467d31c1e2d4a507f5d914 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=784706a47cae7451a0200c461831bc30 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=9780d5ff17771270ed33a0176bd7bd55 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=46f59e55a1a791b4a32e13bc49e5f0cd 2500w" />
+
+<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=f824ef363e11048dd685cf8afad2cf53" data-og-width="2955" width="2955" data-og-height="1848" height="1848" data-path="images/dashboard-domains-ionos-dkim-txt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=280&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=be04733f8430819fa2ab9df5d0432c80 280w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=560&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=35fe34001b0274c09590a1cdd09aa4a3 560w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=840&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=a778c9c741fa68dd8deaca7a3bc4eedc 840w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=1100&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=ea691d8671f894943a3905842d700670 1100w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=1650&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=0771e50817112a4d7d74f9ad344babba 1650w, https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-ionos-dkim-txt.png?w=2500&fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=e786f819deb06e5b02f4d1251031b705 2500w" />
+
+Below is a mapping of the record fields from Resend to IONOS:
+
+| IONOS     | Resend | Example Value                |
+| --------- | ------ | ---------------------------- |
+| Type      | Type   | `TXT Record`                 |
+| Host name | Name   | `send`                       |
+| TXT value | Value  | `p=example_demain_key_value` |
+| TTL       | -      | `1 hour`                     |
+
+## Complete Verification
+
+Now click [Verify DNS Records](https://resend.com/domains) on your Domain in Resend. It may take a few hours to complete the verification process (often much faster).
+
+## Troubleshooting
+
+If your domain is not successfully verified, these are some common troubleshooting methods.
+
+<AccordionGroup>
+  <Accordion title="Resend shows my domain verification failed.">
+    Review the records you added to IONOS to rule out copy and paste errors.
+  </Accordion>
+
+  <Accordion title="It has been longer than 72 hours and my domain is still Pending.">
+    [Review our guide on a domain not verifying](/knowledge-base/what-if-my-domain-is-not-verifying).
+  </Accordion>
+</AccordionGroup>

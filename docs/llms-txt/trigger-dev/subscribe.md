@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
 
+# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+
+# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
+
 # Subscribing to runs
 
 > Get live updates from runs, batches, metadata, and more in your frontend application.

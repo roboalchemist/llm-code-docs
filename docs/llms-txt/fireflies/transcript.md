@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireflies.ai/schema/transcript.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/transcript.md
+
+# Source: https://docs.fireflies.ai/schema/transcript.md
+
 # Transcript
 
 > Schema for Transcript

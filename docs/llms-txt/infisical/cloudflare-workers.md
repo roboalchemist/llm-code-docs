@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/cloud/cloudflare-workers.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/cloudflare-workers.md
+
+# Source: https://infisical.com/docs/integrations/cloud/cloudflare-workers.md
+
 # Cloudflare Workers
 
 > How to sync secrets from Infisical to Cloudflare Workers

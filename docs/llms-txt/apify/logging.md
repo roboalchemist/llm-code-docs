@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/python/docs/concepts/logging.md
 
+# Source: https://docs.apify.com/sdk/python/docs/concepts/logging.md
+
+# Source: https://docs.apify.com/api/client/python/docs/concepts/logging.md
+
 # Logging
 
 Copy for LLM

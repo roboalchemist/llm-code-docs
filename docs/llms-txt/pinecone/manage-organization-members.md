@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-organization-members.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-members.md
+
 # Manage organization members
 
 > Invite and control organization member access levels.

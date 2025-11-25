@@ -24,6 +24,32 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/revoke.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/universal-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/token-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/tls-cert-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oidc-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oci-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ldap-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kubernetes-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/jwt-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/gcp-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificates/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/azure-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/aws-auth/revoke.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/revoke.md
+
 # Revoke
 
 > Delete Alibaba Cloud Auth configuration on machine identity

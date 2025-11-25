@@ -1,0 +1,29 @@
+# Source: https://livecodes.io/docs/api/internal/type-aliases/WatchReady.html.md
+
+# Type Alias: WatchReady()
+
+> **WatchReady**: (`event`, `fn`) => `object`
+
+Called when a new project is loaded (including when [imported](https://livecodes.io/docs/features/import)) and the playground is ready to run.
+
+## Parameters
+
+• **event**: `"ready"`
+
+• **fn**
+
+## Returns
+
+`object`
+
+### remove()
+
+> **remove**: () => `void`
+
+#### Returns
+
+`void`
+
+## Defined in
+
+[models.ts:230](https://github.com/live-codes/livecodes/blob/1f84d1b27bc55a00aefc468ad1efbe0b8a17528c/src/sdk/models.ts#L230)

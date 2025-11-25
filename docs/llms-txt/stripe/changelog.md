@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/changelog.md
 
+# Source: https://docs.stripe.com/checkout/elements-with-checkout-sessions-api/changelog.md
+
+# Source: https://docs.stripe.com/changelog.md
+
 # Changelog
 
 Keep track of changes and upgrades to the Stripe API.

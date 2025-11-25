@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/metrics_alignment.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/metrics_alignment.md
 
 # Evaluate an answer

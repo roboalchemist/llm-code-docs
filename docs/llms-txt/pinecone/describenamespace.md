@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/data-plane/describenamespace.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/data-plane/describenamespace.md
 
 # Describe a namespace

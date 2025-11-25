@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/ts/examples/receiver.md
 
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/receiver.md
+
+# Source: https://upstash.com/docs/qstash/sdks/ts/examples/receiver.md
+
 # Receiver
 
 When receiving a message from QStash, you should [verify the signature](/qstash/howto/signature).

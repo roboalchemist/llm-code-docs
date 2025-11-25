@@ -4,6 +4,12 @@
 
 # Source: https://docs.hypermode.com/dgraph/graphql/schema/directives/dgraph.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/dgraph.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/dgraph.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/schema/directives/dgraph.md
+
 # @dgraph
 
 <Info>

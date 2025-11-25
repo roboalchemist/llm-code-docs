@@ -8,6 +8,20 @@
 
 # Source: https://docs.stripe.com/payments/cards/overview.md
 
+# Source: https://docs.stripe.com/products-prices/overview.md
+
+# Source: https://docs.stripe.com/payments/cards/overview.md
+
+# Source: https://docs.stripe.com/terminal/features/apps-on-devices/overview.md
+
+# Source: https://docs.stripe.com/terminal/features/saving-payment-details/overview.md
+
+# Source: https://docs.stripe.com/use-stripe-apps/netsuite/overview.md
+
+# Source: https://docs.stripe.com/products-prices/overview.md
+
+# Source: https://docs.stripe.com/payments/cards/overview.md
+
 # Source: https://docs.stripe.com/terminal/features/apps-on-devices/overview.md
 
 # Apps on Devices

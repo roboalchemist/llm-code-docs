@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
 
+# Source: https://docs.apify.com/platform/integrations/make/tiktok.md
+
+# Source: https://docs.apify.com/platform/integrations/gumloop/tiktok.md
+
 # Gumloop - TikTok Actor integration
 
 Get TikTok hashtag videos, profile videos, followers, video details, and search results in Gumloop.

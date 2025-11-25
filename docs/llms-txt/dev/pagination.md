@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/pagination.md
 
+# Source: https://dev.writer.com/components/pagination.md
+
+# Source: https://dev.writer.com/api-reference/pagination.md
+
 # Paginate API results
 
 The Writer API supports pagination for list endpoints. By default, the API returns 50 results per page. See below for more information about how to paginate your API requests.

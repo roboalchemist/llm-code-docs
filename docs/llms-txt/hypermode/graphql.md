@@ -4,6 +4,12 @@
 
 # Source: https://docs.hypermode.com/dgraph/concepts/graphql.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/graphql.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/graphql.md
+
+# Source: https://docs.hypermode.com/dgraph/concepts/graphql.md
+
 # GraphQL
 
 <Info>

@@ -1,3 +1,9 @@
+# Source: https://docs.apify.com/academy/scraping-basics-python/crawling.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md
 
 # Source: https://docs.apify.com/academy/scraping-basics-python/crawling.md

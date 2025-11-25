@@ -20,6 +20,16 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/pubsub/publish.md
+
+# Source: https://upstash.com/docs/qstash/sdks/ts/examples/publish.md
+
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
+
+# Source: https://upstash.com/docs/qstash/api/publish.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+
 # PUBLISH
 
 > Publish a message to a channel

@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/create_assistant.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/create_assistant.md
 
 # Create an assistant

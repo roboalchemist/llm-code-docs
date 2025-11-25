@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zdiffstore.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zdiffstore.md
+
 # ZDIFFSTORE
 
 > Writes the difference between sets to a new key.

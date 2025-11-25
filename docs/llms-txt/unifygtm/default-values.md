@@ -2,6 +2,14 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
 
+# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
+
 # Configure Default Values
 
 > Learn how to set default values writing to HubSpot.

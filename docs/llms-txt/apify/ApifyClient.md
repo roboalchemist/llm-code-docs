@@ -4,6 +4,12 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ApifyClient.md
 
+# Source: https://docs.apify.com/sdk/js/reference/class/ApifyClient.md
+
+# Source: https://docs.apify.com/api/client/python/reference/class/ApifyClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/ApifyClient.md
+
 # ApifyClient<!-- -->
 
 ApifyClient is the official library to access [Apify API](https://docs.apify.com/api/v2) from your JavaScript applications. It runs both in Node.js and browser.

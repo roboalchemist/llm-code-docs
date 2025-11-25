@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/pm/lifecycle.md
 
+# Source: https://bun.com/docs/test/lifecycle.md
+
+# Source: https://bun.com/docs/pm/lifecycle.md
+
 # Lifecycle scripts
 
 > How Bun handles package lifecycle scripts securely

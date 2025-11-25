@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/connect/rust.md
 
+# Source: https://docs.turso.tech/agentfs/sdk/rust.md
+
+# Source: https://docs.turso.tech/connect/rust.md
+
 # Connect to Turso using Rust
 
 <Steps>

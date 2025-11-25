@@ -6,6 +6,10 @@
 
 # Source: https://docs.zapier.com/mcp/usage/overview.md
 
+# Source: https://docs.zapier.com/platform/build-cli/overview.md
+
+# Source: https://docs.zapier.com/mcp/usage/overview.md
+
 # Usage & Billing Overview
 
 > Understand how Zapier MCP usage works, rate limits, and pricing during beta

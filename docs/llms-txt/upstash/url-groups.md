@@ -12,6 +12,12 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/ts/examples/url-groups.md
 
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/url-groups.md
+
+# Source: https://upstash.com/docs/qstash/features/url-groups.md
+
+# Source: https://upstash.com/docs/qstash/sdks/ts/examples/url-groups.md
+
 # URL Groups
 
 #### Create a URL Group and add 2 endpoints

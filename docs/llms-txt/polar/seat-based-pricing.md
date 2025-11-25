@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/features/seat-based-pricing.md
 
+# Source: https://polar.sh/docs/guides/seat-based-pricing.md
+
+# Source: https://polar.sh/docs/features/seat-based-pricing.md
+
 # Seat-Based Pricing
 
 > Sell team products with assignable seats and tiered pricing

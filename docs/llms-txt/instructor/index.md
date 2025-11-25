@@ -94,6 +94,278 @@
 
 # Source: https://python.useinstructor.com/concepts/models/index.md
 
+# Source: https://python.useinstructor.com/concepts/migration/index.md
+
+# Source: https://python.useinstructor.com/concepts/maybe/index.md
+
+# Source: https://python.useinstructor.com/concepts/logging/index.md
+
+# Source: https://python.useinstructor.com/concepts/lists/index.md
+
+# Source: https://python.useinstructor.com/concepts/iterable/index.md
+
+# Source: https://python.useinstructor.com/concepts/hooks/index.md
+
+# Source: https://python.useinstructor.com/concepts/from_provider/index.md
+
+# Source: https://python.useinstructor.com/concepts/fields/index.md
+
+# Source: https://python.useinstructor.com/concepts/fastapi/index.md
+
+# Source: https://python.useinstructor.com/concepts/error_handling/index.md
+
+# Source: https://python.useinstructor.com/concepts/enums/index.md
+
+# Source: https://python.useinstructor.com/concepts/distillation/index.md
+
+# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
+
+# Source: https://python.useinstructor.com/concepts/caching/index.md
+
+# Source: https://python.useinstructor.com/concepts/batch/index.md
+
+# Source: https://python.useinstructor.com/concepts/alias/index.md
+
+# Source: https://python.useinstructor.com/concepts/index.md
+
+# Source: https://python.useinstructor.com/installation/index.md
+
+# Source: https://python.useinstructor.com/getting-started/index.md
+
+# Source: https://python.useinstructor.com/index.md
+
+# Source: https://python.useinstructor.com/integrations/xai/index.md
+
+# Source: https://python.useinstructor.com/integrations/writer/index.md
+
+# Source: https://python.useinstructor.com/integrations/vertex/index.md
+
+# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
+
+# Source: https://python.useinstructor.com/integrations/together/index.md
+
+# Source: https://python.useinstructor.com/integrations/sambanova/index.md
+
+# Source: https://python.useinstructor.com/integrations/perplexity/index.md
+
+# Source: https://python.useinstructor.com/integrations/openrouter/index.md
+
+# Source: https://python.useinstructor.com/integrations/openai/index.md
+
+# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
+
+# Source: https://python.useinstructor.com/integrations/ollama/index.md
+
+# Source: https://python.useinstructor.com/integrations/mistral/index.md
+
+# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
+
+# Source: https://python.useinstructor.com/integrations/litellm/index.md
+
+# Source: https://python.useinstructor.com/integrations/groq/index.md
+
+# Source: https://python.useinstructor.com/integrations/google/index.md
+
+# Source: https://python.useinstructor.com/integrations/genai/index.md
+
+# Source: https://python.useinstructor.com/integrations/fireworks/index.md
+
+# Source: https://python.useinstructor.com/integrations/deepseek/index.md
+
+# Source: https://python.useinstructor.com/integrations/databricks/index.md
+
+# Source: https://python.useinstructor.com/integrations/cortex/index.md
+
+# Source: https://python.useinstructor.com/integrations/cohere/index.md
+
+# Source: https://python.useinstructor.com/integrations/cerebras/index.md
+
+# Source: https://python.useinstructor.com/integrations/bedrock/index.md
+
+# Source: https://python.useinstructor.com/integrations/azure/index.md
+
+# Source: https://python.useinstructor.com/integrations/anyscale/index.md
+
+# Source: https://python.useinstructor.com/integrations/anthropic/index.md
+
+# Source: https://python.useinstructor.com/integrations/index.md
+
+# Source: https://python.useinstructor.com/concepts/validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/usage/index.md
+
+# Source: https://python.useinstructor.com/concepts/unions/index.md
+
+# Source: https://python.useinstructor.com/concepts/union/index.md
+
+# Source: https://python.useinstructor.com/concepts/types/index.md
+
+# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
+
+# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
+
+# Source: https://python.useinstructor.com/concepts/templating/index.md
+
+# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/retrying/index.md
+
+# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/raw_response/index.md
+
+# Source: https://python.useinstructor.com/concepts/prompting/index.md
+
+# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
+
+# Source: https://python.useinstructor.com/concepts/philosophy/index.md
+
+# Source: https://python.useinstructor.com/concepts/patching/index.md
+
+# Source: https://python.useinstructor.com/concepts/partial/index.md
+
+# Source: https://python.useinstructor.com/concepts/parallel/index.md
+
+# Source: https://python.useinstructor.com/concepts/multimodal/index.md
+
+# Source: https://python.useinstructor.com/concepts/models/index.md
+
+# Source: https://python.useinstructor.com/concepts/migration/index.md
+
+# Source: https://python.useinstructor.com/concepts/maybe/index.md
+
+# Source: https://python.useinstructor.com/concepts/logging/index.md
+
+# Source: https://python.useinstructor.com/concepts/lists/index.md
+
+# Source: https://python.useinstructor.com/concepts/iterable/index.md
+
+# Source: https://python.useinstructor.com/concepts/hooks/index.md
+
+# Source: https://python.useinstructor.com/concepts/from_provider/index.md
+
+# Source: https://python.useinstructor.com/concepts/fields/index.md
+
+# Source: https://python.useinstructor.com/concepts/fastapi/index.md
+
+# Source: https://python.useinstructor.com/concepts/error_handling/index.md
+
+# Source: https://python.useinstructor.com/concepts/enums/index.md
+
+# Source: https://python.useinstructor.com/concepts/distillation/index.md
+
+# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
+
+# Source: https://python.useinstructor.com/concepts/caching/index.md
+
+# Source: https://python.useinstructor.com/concepts/batch/index.md
+
+# Source: https://python.useinstructor.com/concepts/alias/index.md
+
+# Source: https://python.useinstructor.com/concepts/index.md
+
+# Source: https://python.useinstructor.com/installation/index.md
+
+# Source: https://python.useinstructor.com/getting-started/index.md
+
+# Source: https://python.useinstructor.com/index.md
+
+# Source: https://python.useinstructor.com/integrations/xai/index.md
+
+# Source: https://python.useinstructor.com/integrations/writer/index.md
+
+# Source: https://python.useinstructor.com/integrations/vertex/index.md
+
+# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
+
+# Source: https://python.useinstructor.com/integrations/together/index.md
+
+# Source: https://python.useinstructor.com/integrations/sambanova/index.md
+
+# Source: https://python.useinstructor.com/integrations/perplexity/index.md
+
+# Source: https://python.useinstructor.com/integrations/openrouter/index.md
+
+# Source: https://python.useinstructor.com/integrations/openai/index.md
+
+# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
+
+# Source: https://python.useinstructor.com/integrations/ollama/index.md
+
+# Source: https://python.useinstructor.com/integrations/mistral/index.md
+
+# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
+
+# Source: https://python.useinstructor.com/integrations/litellm/index.md
+
+# Source: https://python.useinstructor.com/integrations/groq/index.md
+
+# Source: https://python.useinstructor.com/integrations/google/index.md
+
+# Source: https://python.useinstructor.com/integrations/genai/index.md
+
+# Source: https://python.useinstructor.com/integrations/fireworks/index.md
+
+# Source: https://python.useinstructor.com/integrations/deepseek/index.md
+
+# Source: https://python.useinstructor.com/integrations/databricks/index.md
+
+# Source: https://python.useinstructor.com/integrations/cortex/index.md
+
+# Source: https://python.useinstructor.com/integrations/cohere/index.md
+
+# Source: https://python.useinstructor.com/integrations/cerebras/index.md
+
+# Source: https://python.useinstructor.com/integrations/bedrock/index.md
+
+# Source: https://python.useinstructor.com/integrations/azure/index.md
+
+# Source: https://python.useinstructor.com/integrations/anyscale/index.md
+
+# Source: https://python.useinstructor.com/integrations/anthropic/index.md
+
+# Source: https://python.useinstructor.com/integrations/index.md
+
+# Source: https://python.useinstructor.com/concepts/validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/usage/index.md
+
+# Source: https://python.useinstructor.com/concepts/unions/index.md
+
+# Source: https://python.useinstructor.com/concepts/union/index.md
+
+# Source: https://python.useinstructor.com/concepts/types/index.md
+
+# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
+
+# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
+
+# Source: https://python.useinstructor.com/concepts/templating/index.md
+
+# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/retrying/index.md
+
+# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
+
+# Source: https://python.useinstructor.com/concepts/raw_response/index.md
+
+# Source: https://python.useinstructor.com/concepts/prompting/index.md
+
+# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
+
+# Source: https://python.useinstructor.com/concepts/philosophy/index.md
+
+# Source: https://python.useinstructor.com/concepts/patching/index.md
+
+# Source: https://python.useinstructor.com/concepts/partial/index.md
+
+# Source: https://python.useinstructor.com/concepts/parallel/index.md
+
+# Source: https://python.useinstructor.com/concepts/multimodal/index.md
+
+# Source: https://python.useinstructor.com/concepts/models/index.md
+
 # Source: https://python.useinstructor.com/concepts/maybe/index.md
 
 # Source: https://python.useinstructor.com/concepts/logging/index.md

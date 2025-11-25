@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/migrating/from-vite.md
 
+# Source: https://nextjs.org/docs/pages/guides/migrating/from-vite.md
+
+# Source: https://nextjs.org/docs/app/guides/migrating/from-vite.md
+
+# Source: https://nextjs.org/docs/pages/guides/migrating/from-vite.md
+
+# Source: https://nextjs.org/docs/app/guides/migrating/from-vite.md
+
 # How to migrate from Vite to Next.js
 @doc-version: 16.0.4
 

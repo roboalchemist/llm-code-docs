@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/analytics.md
 
+# Source: https://nextjs.org/docs/pages/guides/analytics.md
+
+# Source: https://nextjs.org/docs/app/guides/analytics.md
+
+# Source: https://nextjs.org/docs/pages/guides/analytics.md
+
+# Source: https://nextjs.org/docs/app/guides/analytics.md
+
 # How to add analytics to your Next.js application
 @doc-version: 16.0.4
 

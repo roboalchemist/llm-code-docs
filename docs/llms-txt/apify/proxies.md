@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md
 
+# Source: https://docs.apify.com/academy/puppeteer-playwright/proxies.md
+
+# Source: https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md
+
 # Proxies
 
 **Learn all about proxies, how they work, and how they can be leveraged in a scraper to avoid blocking and other anti-scraping tactics.**

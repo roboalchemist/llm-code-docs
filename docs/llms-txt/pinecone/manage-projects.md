@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-projects.md
 
+# Source: https://docs.pinecone.io/guides/projects/manage-projects.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-projects.md
+
+# Source: https://docs.pinecone.io/guides/projects/manage-projects.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-projects.md
+
 # Manage projects
 
 > View, rename, and delete projects in your organization.

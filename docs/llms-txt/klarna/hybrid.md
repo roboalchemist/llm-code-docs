@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/hybrid.md
 
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/ios/hybrid.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/hybrid.md
+
 # Hybrid - Android
 
 ## ​​​You can hook up your web view to the SDK in only a few steps and immediately provide a much more pleasant experience when using Klarna products on mobile.

@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/inference/generate-embeddings.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/inference/generate-embeddings.md
 
 # Generate vectors

@@ -80,6 +80,114 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/available.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/databricks/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/zabbix/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/windmill/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/vercel/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/terraform-cloud/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/teamcity/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/supabase/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/render/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/redis/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/railway/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/postgres/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oracledb/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/okta/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oci/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/northflank/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/netlify/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mysql/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mssql/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/ldap/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/laravel-forge/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/humanitec/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/heroku/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/hashicorp-vault/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gitlab/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github-radar/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gcp/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/flyio/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/digital-ocean/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/databricks/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/available.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/available.md
+
 # Available
 
 > List the 1Password Connections the current user has permission to establish connections within this project.

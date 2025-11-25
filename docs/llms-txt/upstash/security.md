@@ -12,6 +12,12 @@
 
 # Source: https://upstash.com/docs/workflow/howto/security.md
 
+# Source: https://upstash.com/docs/redis/features/security.md
+
+# Source: https://upstash.com/docs/qstash/features/security.md
+
+# Source: https://upstash.com/docs/workflow/howto/security.md
+
 # Secure a Workflow
 
 To prevent unauthorized access to your workflow endpoint, you can add an authorization layer.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-model.md
+
 # firectl create model
 
 > Creates and uploads a model.

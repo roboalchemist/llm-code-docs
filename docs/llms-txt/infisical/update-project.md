@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/update-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/update-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/update-project.md
+
 # Update Project
 
 > Update project

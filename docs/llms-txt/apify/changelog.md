@@ -10,6 +10,18 @@
 
 # Source: https://docs.apify.com/api/client/js/docs/changelog.md
 
+# Source: https://docs.apify.com/cli/docs/changelog.md
+
+# Source: https://docs.apify.com/sdk/python/docs/changelog.md
+
+# Source: https://docs.apify.com/sdk/js/reference/changelog.md
+
+# Source: https://docs.apify.com/sdk/js/docs/changelog.md
+
+# Source: https://docs.apify.com/api/client/python/docs/changelog.md
+
+# Source: https://docs.apify.com/api/client/js/docs/changelog.md
+
 # Changelog
 
 ### [2.19.0](https://github.com/apify/apify-client-js/releases/tag/v2.19.0)[](#2190)

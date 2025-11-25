@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zinterstore.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zinterstore.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zinterstore.md
+
 # ZINTERSTORE
 
 > Writes the intersection between sets to a new key.

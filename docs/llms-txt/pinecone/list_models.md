@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/inference/list_models.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/inference/list_models.md
 
 # List available models

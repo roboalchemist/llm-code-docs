@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/user-page-analytics.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/user-page-analytics.md
+
 # Get User Page Analytics
 
 > Retrieve user activity data from the teams page

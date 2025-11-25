@@ -4,6 +4,12 @@
 
 # Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
 
+# Source: https://docs.apify.com/sdk/python/docs/concepts/pay-per-event.md
+
+# Source: https://docs.apify.com/sdk/js/docs/guides/pay-per-event.md
+
+# Source: https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md
+
 # Pay per event
 
 **Learn how to monetize your Actor with pay-per-event (PPE) pricing, charging users for specific actions like Actor starts, dataset items, or API calls, and understand how to set profitable, transparent event-based pricing.**

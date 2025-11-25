@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/describe_file.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/describe_file.md
 
 # Describe a file upload

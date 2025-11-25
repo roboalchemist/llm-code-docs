@@ -2,6 +2,14 @@
 
 # Source: https://docs.ollama.com/api/streaming.md
 
+# Source: https://docs.ollama.com/capabilities/streaming.md
+
+# Source: https://docs.ollama.com/api/streaming.md
+
+# Source: https://docs.ollama.com/capabilities/streaming.md
+
+# Source: https://docs.ollama.com/api/streaming.md
+
 # Streaming
 
 Certain API endpoints stream responses by default, such as `/api/generate`. These responses are provided in the newline-delimited JSON format (i.e. the `application/x-ndjson` content type). For example:

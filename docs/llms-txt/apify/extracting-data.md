@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/extracting-data.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/extracting-data.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/extracting-data.md
 
 # Extracting data from HTML with Node.js

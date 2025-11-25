@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/testing/vitest.md
 
+# Source: https://nextjs.org/docs/pages/guides/testing/vitest.md
+
+# Source: https://nextjs.org/docs/app/guides/testing/vitest.md
+
+# Source: https://nextjs.org/docs/pages/guides/testing/vitest.md
+
+# Source: https://nextjs.org/docs/app/guides/testing/vitest.md
+
 # How to set up Vitest with Next.js
 @doc-version: 16.0.4
 

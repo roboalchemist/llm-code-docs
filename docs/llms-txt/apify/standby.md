@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
 
+# Source: https://docs.apify.com/platform/actors/running/standby.md
+
+# Source: https://docs.apify.com/platform/actors/development/programming-interface/standby.md
+
 # Standby mode
 
 **Use Actors as an API server for fast response times.**

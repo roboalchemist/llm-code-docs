@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/create_for_model.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/create_for_model.md
 
 # Create an index with integrated embedding

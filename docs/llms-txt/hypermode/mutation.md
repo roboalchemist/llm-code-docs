@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/mutation.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/lambda/mutation.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/mutation.md
+
 # Mutation
 
 <Info>

@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/cloud/gcp-secret-manager.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/gcp-secret-manager.md
+
+# Source: https://infisical.com/docs/integrations/cloud/gcp-secret-manager.md
+
 # GCP Secret Manager
 
 > How to sync secrets from Infisical to GCP Secret Manager

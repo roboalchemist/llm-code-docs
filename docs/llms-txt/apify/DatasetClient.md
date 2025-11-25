@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/DatasetClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/DatasetClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/DatasetClient.md
+
 # DatasetClient<!-- --> \<Data>
 
 ### Hierarchy

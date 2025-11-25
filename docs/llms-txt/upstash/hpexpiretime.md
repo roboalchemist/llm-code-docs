@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpiretime.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpiretime.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpiretime.md
+
 # HPEXPIRETIME
 
 > Retrieves the expiration time of a field in a hash in milliseconds.

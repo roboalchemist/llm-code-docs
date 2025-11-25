@@ -2,6 +2,14 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
 
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/customization.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/customization.md
+
 # Customization
 
 ## Styling

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/cli/usage.md
 
+# Source: https://infisical.com/docs/documentation/platform/ssh/usage.md
+
+# Source: https://infisical.com/docs/documentation/platform/secret-scanning/usage.md
+
+# Source: https://infisical.com/docs/cli/usage.md
+
 # Quickstart
 
 > Manage secrets with Infisical CLI

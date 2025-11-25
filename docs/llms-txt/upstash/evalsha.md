@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha.md
+
 # EVALSHA
 
 > Evaluate a cached Lua script server side.

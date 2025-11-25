@@ -4,6 +4,14 @@
 
 # Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/payments/data-handling.md
 
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/data-handling.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/payments/data-handling.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/data-handling.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/payments/data-handling.md
+
 # Data handling with Stripe
 
 ## Data handling

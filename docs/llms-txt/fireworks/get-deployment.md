@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-deployment.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployment.md
+
 # firectl get deployment
 
 > Prints information about a deployment.

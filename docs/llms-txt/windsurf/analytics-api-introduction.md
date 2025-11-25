@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
+
 # Analytics API
 
 > Enterprise analytics API for querying Windsurf usage data

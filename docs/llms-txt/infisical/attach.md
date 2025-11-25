@@ -22,6 +22,30 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/attach.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/universal-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/token-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/tls-cert-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oidc-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oci-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ldap-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kubernetes-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/jwt-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/gcp-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/azure-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/aws-auth/attach.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/attach.md
+
 # Attach
 
 > Attach Alibaba Cloud Auth configuration onto machine identity

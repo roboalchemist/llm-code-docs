@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
+
 # Downgrade your plan
 
 > Downgrade from a paid plan to the free Starter plan.

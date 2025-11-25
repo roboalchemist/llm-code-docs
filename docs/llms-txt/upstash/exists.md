@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/exists.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/exists.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/exists.md
+
 # EXISTS
 
 > Check if a key exists.

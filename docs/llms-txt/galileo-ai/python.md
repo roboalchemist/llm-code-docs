@@ -4,6 +4,18 @@
 
 # Source: https://docs.galileo.ai/client-reference/evaluate/python.md
 
+# Source: https://docs.galileo.ai/client-reference/protect/python.md
+
+# Source: https://docs.galileo.ai/client-reference/observe/python.md
+
+# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
+
+# Source: https://docs.galileo.ai/client-reference/protect/python.md
+
+# Source: https://docs.galileo.ai/client-reference/observe/python.md
+
+# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
+
 # Python Client Reference | Galileo Evaluate
 
 > Integrate Galileo's Evaluate module into your Python applications with this guide, featuring installation steps and examples for prompt quality assessment.

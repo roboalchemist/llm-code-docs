@@ -2,6 +2,14 @@
 
 # Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
 
+# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
+
+# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
+
+# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
+
+# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
+
 ---
 id: deploying
 title: Deploying an Agent

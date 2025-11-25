@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
 
+# Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
+
+# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
+
 # Cloudflare Workers
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-js/tree/main/examples/cloudflare-workers" horizontal>

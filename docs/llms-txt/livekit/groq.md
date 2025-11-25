@@ -12,6 +12,18 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
+
+# Source: https://docs.livekit.io/agents/integrations/groq.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
+
 LiveKit docs › Partner spotlight › Groq › Groq STT Plugin
 
 ---

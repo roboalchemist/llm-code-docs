@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
 
+# Source: https://docs.pinecone.io/guides/production/security-overview.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
+
+# Source: https://docs.pinecone.io/guides/production/security-overview.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/security-overview.md
+
 # Security overview
 
 > Understand Pinecone's security features, including authentication, encryption, and audit logs.

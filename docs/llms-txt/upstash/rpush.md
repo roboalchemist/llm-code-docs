@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpush.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpush.md
+
 # RPUSH
 
 > Push an element at the end of the list.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireflies.ai/schema/analytics.md
 
+# Source: https://docs.fireflies.ai/graphql-api/query/analytics.md
+
+# Source: https://docs.fireflies.ai/schema/analytics.md
+
 # Analytics
 
 > Schema for Analytics

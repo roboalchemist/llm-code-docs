@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/mysql.md
 
+# Source: https://infisical.com/docs/integrations/app-connections/mysql.md
+
+# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/mysql.md
+
 # MySQL
 
 > Learn how to dynamically generate MySQL Database user credentials.

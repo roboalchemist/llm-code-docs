@@ -1,5 +1,9 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/use-metadata.md
 
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/use-metadata.md
+
+# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/use-metadata.md
+
 ---
 title: App Metadata
 group: Library

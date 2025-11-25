@@ -2,6 +2,10 @@
 
 # Source: https://loops.so/docs/api-reference/intro.md
 
+# Source: https://loops.so/docs/guides/intro.md
+
+# Source: https://loops.so/docs/api-reference/intro.md
+
 # API Introduction
 
 > The Loops REST API lets you manage your contacts, send events and send transactional email.

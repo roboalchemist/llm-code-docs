@@ -12,6 +12,18 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
+
+# Source: https://docs.livekit.io/agents/integrations/aws.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
+
 LiveKit docs › Partner spotlight › AWS › Amazon Transcribe STT Plugin
 
 ---

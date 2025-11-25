@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/functions.md
 
+# Source: https://docs.hypermode.com/modus/functions.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/functions.md
+
 # Functions
 
 <Info>

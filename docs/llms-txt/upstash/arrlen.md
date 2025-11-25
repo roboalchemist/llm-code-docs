@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrlen.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrlen.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrlen.md
+
 # JSON.ARRLEN
 
 > Report the length of the JSON array at `path` in `key`.

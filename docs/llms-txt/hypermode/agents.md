@@ -4,6 +4,12 @@
 
 # Source: https://docs.hypermode.com/modus/agents.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/agents.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/agents.md
+
+# Source: https://docs.hypermode.com/modus/agents.md
+
 # What's an Agent?
 
 > Learn about stateful agents in Modus

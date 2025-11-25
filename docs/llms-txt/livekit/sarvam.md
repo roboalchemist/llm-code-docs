@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/sarvam.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/sarvam.md
+
 LiveKit docs › Models › Speech-to-text (STT) › Plugins › Sarvam
 
 ---

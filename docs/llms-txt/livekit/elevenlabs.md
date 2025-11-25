@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/tts/inference/elevenlabs.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/elevenlabs.md
+
+# Source: https://docs.livekit.io/agents/models/tts/inference/elevenlabs.md
+
 LiveKit docs › Models › Text-to-speech (TTS) › LiveKit Inference › ElevenLabs
 
 ---

@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/oracle.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/oracle.md
+
 # Oracle
 
 ## Connect AI Squared to Oracle

@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/cli/faq.md
 
+# Source: https://infisical.com/docs/self-hosting/faq.md
+
+# Source: https://infisical.com/docs/cli/faq.md
+
 # FAQ
 
 > Frequently Asked Questions about Infisical CLI

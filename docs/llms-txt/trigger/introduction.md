@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/guides/introduction.md
 
+# Source: https://trigger.dev/docs/introduction.md
+
+# Source: https://trigger.dev/docs/guides/introduction.md
+
 # Frameworks, guides and examples
 
 > A growing list of guides and examples to get the most out of Trigger.dev.

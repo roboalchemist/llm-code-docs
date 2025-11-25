@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/describe_backup.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/describe_backup.md
 
 # Describe a backup

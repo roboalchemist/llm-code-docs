@@ -1,5 +1,9 @@
 # Source: https://learn.adafruit.com/thermocouple/f-a-q.md
 
+# Source: https://learn.adafruit.com/ttl-serial-camera/f-a-q.md
+
+# Source: https://learn.adafruit.com/thermocouple/f-a-q.md
+
 # MAX31855 Thermocouple
 
 ## F.A.Q.

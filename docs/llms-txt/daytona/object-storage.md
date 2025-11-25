@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/object-storage.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/object-storage.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/object-storage.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/object-storage.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/object-storage.md
+
 ## ObjectStorage
 
 ```python

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/strappend.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/strappend.md
+
 # JSON.STRAPPEND
 
 > Append the json-string values to the string at path.

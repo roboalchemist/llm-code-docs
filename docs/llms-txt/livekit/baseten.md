@@ -4,6 +4,12 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/baseten.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/baseten.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/baseten.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/baseten.md
+
 LiveKit docs › Models › Speech-to-text (STT) › Plugins › Baseten
 
 ---

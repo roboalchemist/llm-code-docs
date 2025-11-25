@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/tailwind-v3-css.md
 
+# Source: https://nextjs.org/docs/pages/guides/tailwind-v3-css.md
+
+# Source: https://nextjs.org/docs/app/guides/tailwind-v3-css.md
+
+# Source: https://nextjs.org/docs/pages/guides/tailwind-v3-css.md
+
+# Source: https://nextjs.org/docs/app/guides/tailwind-v3-css.md
+
 # How to install Tailwind CSS v3 in your Next.js application
 @doc-version: 16.0.4
 

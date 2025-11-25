@@ -4,6 +4,14 @@
 
 # Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/conversion-boosters/considerations-for-conversion-boosters.md
 
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/conversion-boosters/considerations-for-conversion-boosters.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/conversion-boosters/considerations-for-conversion-boosters.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/conversion-boosters/considerations-for-conversion-boosters.md
+
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/conversion-boosters/considerations-for-conversion-boosters.md
+
 # Considerations for conversion boosters with Stripe
 
 ## On-site messaging

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/workflow/howto/events.md
 
+# Source: https://upstash.com/docs/qstash/sdks/py/examples/events.md
+
+# Source: https://upstash.com/docs/workflow/howto/events.md
+
 # Waiting for Events
 
 <Note>

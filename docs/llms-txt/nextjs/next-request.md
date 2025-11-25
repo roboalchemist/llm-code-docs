@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/functions/next-request.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/functions/next-request.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/next-request.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/functions/next-request.md
+
+# Source: https://nextjs.org/docs/app/api-reference/functions/next-request.md
+
 # NextRequest
 @doc-version: 16.0.4
 

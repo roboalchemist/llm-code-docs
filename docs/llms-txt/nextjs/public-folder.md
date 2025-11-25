@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/file-conventions/public-folder.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder.md
+
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/public-folder.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder.md
+
+# Source: https://nextjs.org/docs/app/api-reference/file-conventions/public-folder.md
+
 # public Folder
 @doc-version: 16.0.4
 

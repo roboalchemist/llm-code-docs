@@ -1,3 +1,7 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin/list_projects.md
+
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/list_projects.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin/list_projects.md
 
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/list_projects.md

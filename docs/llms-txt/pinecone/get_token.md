@@ -1,3 +1,7 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin/get_token.md
+
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/get_token.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin/get_token.md
 
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/get_token.md

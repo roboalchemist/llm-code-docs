@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
+
 # ZREVRANK
 
 > Returns the rank of a member in a sorted set, with scores ordered from high to low.

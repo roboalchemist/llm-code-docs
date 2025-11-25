@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/browser-devtools.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/browser-devtools.md
 
 # Starting with browser DevTools

@@ -1,0 +1,39 @@
+# Source: https://docs.pinata.cloud/account-management/billing.md
+
+# Billing
+
+The billing page is where you can upgrade your account, view your current usage, or make changes to your billing info.
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeihntdys3bepoxpnmppvx7lvyt5npwy4w2vx6coh2nl432kvr5vcsu" />
+
+## Usage
+
+Heading over to the "Usage" tab, this is where you can view how much of your plan has been used in the month. Gateway Bandwidth and Requests are reset each month on your billing cycle date.
+
+<Warning>
+  If you reach 80% percent of your usage available, then you will start to
+  receive emails and warnings that you are close to running out of space. If you
+  are on the Free plan, then your account will no longer be able to upload or
+  use the Dedicated Gateway once your account has gone above the limit by 25%.
+</Warning>
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeibn4buugdjr5mhun7xnjms53izpieopm27vlpku2krggtqrrr6zxy" />
+
+## Payment Info
+
+Clicking the 'Manage Billing' button will show you the current card in use and if it's the default. If you want to remove a card, then you will need to add a new one first and set it as default before removing the old one.
+
+<Note>Pinata currently only accepts standard debit and credit cards</Note>
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://files.readme.io/4f3170a-Screenshot-Arc-07-29-2023-00-032x.png" />
+
+## Plan Selection
+
+From the plan selection you can choose a plan that fits your need the most, whether that be upgrading or downgrading.
+
+<Note>
+  If you upgrade in the middle of a billing cycle, then you will only be charged
+  the prorated amount
+</Note>
+
+<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreicli4byl2l3iqgyuaziysxrxzd5b6a4jnp6tlnmx7fyp2isu5gw4y" />

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xreadgroup.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xreadgroup.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xreadgroup.md
+
 # XREADGROUP
 
 > Reads data from a stream as part of a consumer group.

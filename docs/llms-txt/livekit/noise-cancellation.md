@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/home/client/tracks/noise-cancellation.md
 
+# Source: https://docs.livekit.io/home/cloud/noise-cancellation.md
+
+# Source: https://docs.livekit.io/home/client/tracks/noise-cancellation.md
+
 LiveKit docs › LiveKit SDKs › Realtime media › Noise & echo cancellation
 
 ---

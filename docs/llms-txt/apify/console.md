@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/console.md
 
+# Source: https://docs.apify.com/platform/integrations/airtable/console.md
+
+# Source: https://docs.apify.com/platform/console.md
+
 # Apify Console
 
 **Learn about Apify Console's easy account creation and user-friendly homepage for efficient web scraping management.**

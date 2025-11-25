@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
 
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/dataset-schema.md
+
 # Creating dataset schema
 
 **Learn how to generate an appealing Overview table interface to preview your Actor results in real time on the Apify platform.**

@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-project-members.md
 
+# Source: https://docs.pinecone.io/guides/projects/manage-project-members.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-project-members.md
+
+# Source: https://docs.pinecone.io/guides/projects/manage-project-members.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-project-members.md
+
 # Manage project members
 
 > Add and manage team members in your project.

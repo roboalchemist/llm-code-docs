@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/remove-member-from-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-users/remove-member-from-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/remove-member-from-project.md
+
 # Remove Member
 
 > Remove members from project

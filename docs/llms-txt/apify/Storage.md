@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/sdk/python/reference/class/Storage.md
+
 # Source: https://docs.apify.com/platform/storage.md
 
 # Storage

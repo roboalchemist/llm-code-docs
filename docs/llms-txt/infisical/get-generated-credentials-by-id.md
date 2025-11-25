@@ -18,6 +18,26 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/get-generated-credentials-by-id.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/get-generated-credentials-by-id.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/get-generated-credentials-by-id.md
+
 # Get Credentials by ID
 
 > Get the generated credentials for the specified Auth0 Client Secret Rotation.

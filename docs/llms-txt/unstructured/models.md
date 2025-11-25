@@ -1,0 +1,61 @@
+# Source: https://docs.unstructured.io/open-source/concepts/models.md
+
+# Models
+
+> Depending on your need, `Unstructured` provides OCR-based and Transformer-based models to detect elements in the documents. The models are useful to detect the complex layout in the documents and predict the element types.
+
+**Basic usage:**
+
+```python  theme={null}
+elements = partition(filename=filename,
+                     strategy="hi_res",
+                     hi_res_model_name="yolox")
+```
+
+<Note>
+  * To use any model with the partition, set the `strategy` to `hi_res` as shown above.
+
+  * To maintain the consistency between the `unstructured` and `unstructured-api` libraries, we are deprecating the `model_name` parameter. Please use `hi_res_model_name` parameter when specifying a model.
+</Note>
+
+The `hi_res_model_name` parameter supports the `yolox` and `detectron2_onnx` arguments.
+
+## Using a Non-Default Model
+
+`Unstructured` will download the model specified in `UNSTRUCTURED_HI_RES_MODEL_NAME` environment variable. If not defined, it will download the default model.
+
+There are three ways you can use the non-default model as follows:
+
+1. Store the model name in the environment variable
+
+```python  theme={null}
+import os
+from unstructured.partition.pdf import partition_pdf
+
+os.environ["UNSTRUCTURED_HI_RES_MODEL_NAME"] = "yolox"
+
+out_yolox = partition_pdf("example-docs/pdf/layout-parser-paper-fast.pdf", strategy="hi_res")
+
+```
+
+2. Pass the model name in the `partition` function.
+
+```python  theme={null}
+filename = "example-docs/pdf/layout-parser-paper-fast.pdf"
+
+elements = partition(filename=filename,
+                     strategy="hi_res",
+                     hi_res_model_name="yolox")
+
+```
+
+3. Use [unstructured-inference](https://github.com/Unstructured-IO/unstructured-inference) library.
+
+```python  theme={null}
+from unstructured_inference.models.base import get_model
+from unstructured_inference.inference.layout import DocumentLayout
+
+model = get_model("yolox")
+layout = DocumentLayout.from_file("sample-docs/layout-parser-paper.pdf", detection_model=model)
+
+```

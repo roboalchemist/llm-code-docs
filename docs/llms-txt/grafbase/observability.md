@@ -1,3 +1,9 @@
+# Source: https://grafbase.com/docs/platform/self-hosting/observability.md
+
+# Source: https://grafbase.com/docs/gateway/observability.md
+
+# Source: https://grafbase.com/docs/platform/self-hosting/observability.md
+
 # Source: https://grafbase.com/docs/gateway/observability.md
 
 # Observability in the Grafbase Gateway

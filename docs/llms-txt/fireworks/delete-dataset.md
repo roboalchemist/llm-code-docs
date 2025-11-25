@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-dataset.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-dataset.md
+
 # firectl delete dataset
 
 > Deletes a dataset.

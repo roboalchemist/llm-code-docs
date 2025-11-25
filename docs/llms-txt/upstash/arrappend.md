@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrappend.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrappend.md
+
 # JSON.ARRAPPEND
 
 > Append values to the array at path in the JSON document at key.

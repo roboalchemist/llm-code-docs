@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/teams-getting-started.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/teams-getting-started.md
+
 # Getting started with Teams and Enterprise
 
 Windsurf scales from solo projects to large-scale enterprise codebases. Our Teams and Enterprise plans unlock collaboration features such as team management, Single Sign-On (SSO), advanced analytics, and priority support.

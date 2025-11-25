@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/vercel.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/vercel.md
+
+# Source: https://infisical.com/docs/integrations/cloud/vercel.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/vercel.md
+
 # Vercel Connection
 
 > Learn how to configure a Vercel Connection for Infisical.

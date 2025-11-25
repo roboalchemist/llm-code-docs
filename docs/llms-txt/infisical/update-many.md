@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/update-many.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secrets/update-many.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/update-many.md
+
 # Bulk Update
 
 > Update many secrets

@@ -8,6 +8,14 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
+
+# Source: https://docs.livekit.io/agents/integrations/google.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/google.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/google.md
+
 LiveKit docs › Partner spotlight › Google › Google Cloud STT Plugin
 
 ---

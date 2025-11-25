@@ -6,6 +6,14 @@
 
 # Source: https://huggingface.co/docs/hub/index.md
 
+# Source: https://huggingface.co/docs/hub/xet/index.md
+
+# Source: https://huggingface.co/docs/hub/index.md
+
+# Source: https://huggingface.co/docs/hub/xet/index.md
+
+# Source: https://huggingface.co/docs/hub/index.md
+
 # Hugging Face Hub documentation
 
 The Hugging Face Hub is a platform with over 2M models, 500k datasets, and 1M demo apps (Spaces), all open source and publicly available, in an online platform where people can easily collaborate and build ML together. The Hub works as a central place where anyone can explore, experiment, collaborate, and build technology with Machine Learning. Are you ready to join the path towards open source Machine Learning? 🤗

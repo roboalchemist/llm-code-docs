@@ -2,6 +2,14 @@
 
 # Source: https://docs.datafold.com/data-diff/cross-database-diffing/results.md
 
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/results.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/results.md
+
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/results.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/results.md
+
 # Results
 
 > Once your data diff is complete, Datafold provides a concise, high-level summary of the detected changes in the Overview tab.

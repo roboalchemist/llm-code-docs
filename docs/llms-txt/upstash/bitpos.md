@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
+
 # BITPOS
 
 > Find the position of the first set or clear bit (bit with a value of 1 or 0) in a Redis string key.

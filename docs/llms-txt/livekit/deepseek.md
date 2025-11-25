@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
 
+# Source: https://docs.livekit.io/agents/models/llm/plugins/deepseek.md
+
+# Source: https://docs.livekit.io/agents/models/llm/inference/deepseek.md
+
 LiveKit docs › Models › Large language models (LLM) › LiveKit Inference › DeepSeek
 
 ---

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hdel.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hdel.md
+
 # HDEL
 
 > Deletes one or more hash fields.

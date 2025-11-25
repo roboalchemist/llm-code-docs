@@ -1,0 +1,112 @@
+# Source: https://docs.pinata.cloud/files/vectors.md
+
+# File Vectors (Beta)
+
+<Warning>
+  The file vectors feature is still in beta and is only available on Private IPFS. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+</Warning>
+
+## Overview
+
+A common nusance when building AI apps is context embeddings. If you use a traditional stack you generall have to store an embedding, vectorize it, store the vector, then when you query a vector you'll get another reference to the file which you then have to fetch again. Pinata's solution is much more elegant. With Pinata's file vectoring you can upload a file and vector it at the same time.
+
+```typescript  theme={null}
+const upload = await pinata.upload.private
+  .file(file)
+  .group("GROUP_ID")
+  .vectorize()
+```
+
+When it comes time to query a vector, you have the option to either list your query results and judge the matching score, or just return the highest scoring file itself.
+
+```typescript  theme={null}
+const { data, contentType } = await pinata.files.private
+  .queryVectors({
+    groupId: "GROUP_ID",
+    query: "Hello World!",
+    returnFile: true
+  })
+```
+
+This enables develops to build AI applications faster and with less code!
+
+### Pinata Vector Storage: Public Beta Limits
+
+During the public beta, Pinata Vector Storage has the following limits:
+
+* File Vectorization Limit: You can vectorize up to 10,000 files.
+* Index Limit: You can create a maximum of 5 indexes, managed using Pinata Groups.
+* Results Limit: You can query a vector and get a max of 20 files returned in one request.
+
+**What this means**
+
+You can organize your vector embeddings into up to 5 searchable indexes using Pinata Groups. Across all these groups, you can store a total of 10,000 vector embeddings corresponding to files stored on Pinata.
+
+## Vectorizing Files
+
+There are two ways you can vectorize file uploads, and with both options **files must be part of a group** in order for vectors and queries to work.
+
+### Vectorize on Upload
+
+If you use the [Files SDK](/sdk/getting-started) you can vectorize a file on upload.
+
+```typescript {4} theme={null}
+const upload = await pinata.upload.private
+  .file(file)
+  .group("GROUP_ID")
+  .vectorize()
+```
+
+### Vectorize After Upload
+
+If you already have a file that's been uploaded and it's [part of a group](/files/file-groups) then you can vectorize it.
+
+```typescript  theme={null}
+const update = await pinata.files.private.vectorize("FILE_ID")
+```
+
+## Querying Vectors
+
+After a file has been vectorized and it's part of a group, you can query vectors for a given group.
+
+```typescript  theme={null}
+const results = await pinata.files.private.queryVectors({
+  groupId: "52681e41-86f4-407b-8f79-33a7e7e5df68",
+  query: "Hello World"
+})
+```
+
+This will return the following type:
+
+```typescript  theme={null}
+type VectorizeQueryResponse = {
+	count: number;
+	matches: VectorQueryMatch[];
+};
+
+type VectorQueryMatch = {
+	file_id: string;
+	cid: string;
+	score: number;
+};
+```
+
+### Returning the Top Match File
+
+A unique feature in the SDK is if you pass in the `returnFile` flag then you will get the file and it's contents rather than just the reference to the file.
+
+```typescript {4} theme={null}
+const { data, contentType }  = await pinata.files.private.queryVectors({
+  groupId: "52681e41-86f4-407b-8f79-33a7e7e5df68",
+  query: "Hello World",
+  returnFile: true
+})
+```
+
+## Deleting Vectors
+
+If at any point you need to delete vectors for a file you can do so with the `deleteVectors` method in the SDK.
+
+```typescript  theme={null}
+const update = await pinata.files.private.deleteVectors("FILE_ID")
+```

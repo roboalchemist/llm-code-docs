@@ -4,6 +4,16 @@
 
 # Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
 
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
+
+# Source: https://docs.datafold.com/deployment-testing/best-practices.md
+
+# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
+
+# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
+
 # Best Practices
 
 > When dealing with large datasets, it's crucial to approach diffing with specific optimization strategies in mind. We share best practices that will help you get the most accurate and efficient results from your data diffs.

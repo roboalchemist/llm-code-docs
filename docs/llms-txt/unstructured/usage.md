@@ -1,0 +1,54 @@
+# Source: https://docs.unstructured.io/ui/account/usage.md
+
+# Account usage
+
+## View usage details for an Unstructured account
+
+To view usage details for an Unstructured **Let's Go** or **Pay-As-You-Go** account, do the following:
+
+1. If you are not already signed in, sign in to your Unstructured account.
+2. On the sidebar, click your user icon, and then click **Account Settings**.
+3. In the top navigation bar, click the **Usage History** tab. Your account's usage details are displayed.
+
+To view usage details for an Unstructured **Business** account, do the following:
+
+1. If you are not already signed in, sign in to Unstructured.
+2. In the top navigation bar, in the list of available accounts, select the name of the [organizational account](/ui/account/organizations) that you want to view usage details for.
+3. In the top navigation bar, click the **Usage History** tab. The account's usage details are displayed.
+
+## View usage details for a workspace within an organizational account
+
+<Note>
+  The following information applies only to Unstructured **Business** accounts.
+
+  Unstructured **Let's Go** and **Pay-As-You-Go** accounts do not support multiple workspaces. See the
+  [previous section](#view-usage-details-for-an-unstructured-account) to view all usage details for
+  the single personal workspace within a **Let's Go** or **Pay-As-You-Go** account.
+</Note>
+
+To view usage details for a specific [workspace](/ui/account/workspaces) within an [organizational account](/ui/account/organizations), do the following:
+
+1. If you are not already signed in, sign in to your Unstructured account.
+
+2. In the top navigation bar, in the list of available accounts, select the name of the organizational account that contains the workspace you want to view usage details for.
+
+3. In the top navigation bar, in the list of available workspaces for the selected account, select the name of the workspace you want to view usage details for.
+
+   <Note>
+     If a list of available workspaces is not visible in the top navigation bar, click the gear (**Settings**) icon on the sidebar, click **View All Workspaces**, and then click the arrow next to the workspace you want to view usage details for.
+   </Note>
+
+4. In the upper navigation bar, click the **Usage** tab.
+
+## How is usage calculated for billing purposes?
+
+Unstructured calculates a page as follows:
+
+* For these file types, a page is a page, slide, or image: `.pdf`, `.pptx`, and `.tiff`.
+* For `.docx` files that have page metadata, Unstructured calculates the number of pages based on that metadata.
+* For all other file types, Unstructured calculates the number of pages as the file's size divided by 100 KB.
+* For non-file data, Unstructured calculates a page as 100 KB of incoming data to be processed.
+
+The **Billing** tab shows your account's current billing rate per page.
+
+To complete billing-related tasks in your account, see [Account billing](/ui/account/billing).

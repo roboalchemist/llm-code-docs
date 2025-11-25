@@ -6,6 +6,14 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/scan.md
 
+# Source: https://infisical.com/docs/cli/commands/scan.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/gitlab/scan.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/github/scan.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/scan.md
+
 # Scan
 
 > Trigger a scan for the specified Bitbucket Data Source.

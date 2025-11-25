@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/interface/ActorPricingInfo.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/ActorPricingInfo.md
+
+# Source: https://docs.apify.com/sdk/js/reference/interface/ActorPricingInfo.md
+
 # ActorPricingInfo<!-- -->
 
 ## Index[**](#Index)

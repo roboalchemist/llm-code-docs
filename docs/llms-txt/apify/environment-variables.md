@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md
 
+# Source: https://docs.apify.com/sdk/js/docs/guides/environment-variables.md
+
+# Source: https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md
+
 # Actor environment variables
 
 **Learn how to provide your Actor with context that determines its behavior through a plethora of pre-defined environment variables set by the Apify platform.**

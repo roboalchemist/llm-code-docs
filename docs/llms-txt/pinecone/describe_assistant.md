@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/describe_assistant.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/describe_assistant.md
 
 # Check assistant status

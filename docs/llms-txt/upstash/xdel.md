@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xdel.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xdel.md
+
 # XDEL
 
 > Removes the specified entries from a stream, and returns the number of entries deleted.

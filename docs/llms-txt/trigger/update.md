@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/management/envvars/update.md
 
+# Source: https://trigger.dev/docs/management/schedules/update.md
+
+# Source: https://trigger.dev/docs/management/envvars/update.md
+
 # Update Env Var
 
 > Update a specific environment variable for a specific project and environment.

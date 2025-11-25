@@ -6,6 +6,12 @@
 
 # Source: https://docs.stripe.com/disputes/api.md
 
+# Source: https://docs.stripe.com/revenue-recognition/api.md
+
+# Source: https://docs.stripe.com/api.md
+
+# Source: https://docs.stripe.com/disputes/api.md
+
 # Use the API to respond to disputes
 
 Learn how to manage disputes programmatically.

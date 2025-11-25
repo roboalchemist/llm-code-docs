@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/management/schedules/create.md
 
+# Source: https://trigger.dev/docs/management/envvars/create.md
+
+# Source: https://trigger.dev/docs/management/schedules/create.md
+
 # Create Schedule
 
 > Create a new `IMPERATIVE` schedule based on the specified options.

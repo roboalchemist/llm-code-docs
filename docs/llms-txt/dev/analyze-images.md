@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/vision-api/analyze-images.md
 
+# Source: https://dev.writer.com/home/analyze-images.md
+
+# Source: https://dev.writer.com/api-reference/vision-api/analyze-images.md
+
 # Analyze images
 
 > Submit images and documents with a prompt to generate an analysis. Supports JPG, PNG, PDF, and TXT files up to 7MB each.

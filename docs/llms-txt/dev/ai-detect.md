@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/tool-api/ai-detect.md
 
+# Source: https://dev.writer.com/home/ai-detect.md
+
+# Source: https://dev.writer.com/api-reference/tool-api/ai-detect.md
+
 # AI detection
 
 > Detects if content is AI- or human-generated, with a confidence score. Content must have at least 350 characters

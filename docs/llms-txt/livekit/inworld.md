@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/inworld.md
+
+# Source: https://docs.livekit.io/agents/models/tts/inference/inworld.md
+
 LiveKit docs › Models › Text-to-speech (TTS) › LiveKit Inference › Inworld
 
 ---

@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/read-file/stream.md
 
+# Source: https://bun.com/docs/guides/write-file/stream.md
+
+# Source: https://bun.com/docs/guides/read-file/stream.md
+
 # Read a file as a ReadableStream
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob` and allows you to lazily read the file in a variety of formats. Use `.stream()` to consume the file incrementally as a `ReadableStream`.

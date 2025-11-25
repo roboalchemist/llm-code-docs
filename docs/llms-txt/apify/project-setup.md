@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/project-setup.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/project-setup.md
 
 # Setting up your project

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/vector/tutorials/langchain.md
 
+# Source: https://upstash.com/docs/vector/integrations/langchain.md
+
+# Source: https://upstash.com/docs/vector/tutorials/langchain.md
+
 # Implement Semantic Search with LangChain
 
 In this tutorial, we'll demonstrate how to use Upstash Vector with LangChain to perform a similarity search. We will upload a document about global warming and perform a search query to find the most semantically similar documents using embeddings generated automatically by Upstash.

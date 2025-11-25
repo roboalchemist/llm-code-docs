@@ -1,3 +1,5 @@
+# Source: https://docs.chatling.ai/web-widget/whitelist-domains.md
+
 # Source: https://docs.chatling.ai/general-settings/whitelist-domains.md
 
 # Whitelist domains

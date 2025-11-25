@@ -6,6 +6,12 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/conversion-boosters/sign-in-with-klarna.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/conversion-boosters/sign-in-with-klarna.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/conversion-boosters/sign-in-with-klarna.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/sap-commerce-cloud/conversion-boosters/sign-in-with-klarna.md
+
 # Sign in with Klarna on SAP Commerce Cloud
 
 ## The *Sign in with Klarna* feature is included in the **Klarna Add-on**, so no separate installation is necessary. However, a clean build of the package and an update of the database schema are required to generate new data models and data transfer objects (DTOs).

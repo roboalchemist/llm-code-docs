@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/databases/create-token.md
 
+# Source: https://docs.turso.tech/api-reference/groups/create-token.md
+
+# Source: https://docs.turso.tech/api-reference/databases/create-token.md
+
 # Generate Database Auth Token
 
 > Generates an authorization token for the specified database.

@@ -8,6 +8,24 @@
 
 # Source: https://docs.near.org/chain-abstraction/what-is.md
 
+# Source: https://docs.near.org/primitives/what-is.md
+
+# Source: https://docs.near.org/web3-apps/what-is.md
+
+# Source: https://docs.near.org/smart-contracts/what-is.md
+
+# Source: https://docs.near.org/chain-abstraction/what-is.md
+
+# Source: https://docs.near.org/data-infrastructure/what-is.md
+
+# Source: https://docs.near.org/primitives/what-is.md
+
+# Source: https://docs.near.org/web3-apps/what-is.md
+
+# Source: https://docs.near.org/smart-contracts/what-is.md
+
+# Source: https://docs.near.org/chain-abstraction/what-is.md
+
 ---
 id: what-is
 title: What is Chain Abstraction?

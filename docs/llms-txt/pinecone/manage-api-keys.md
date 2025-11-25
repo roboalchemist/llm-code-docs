@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
 
+# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
+
+# Source: https://docs.pinecone.io/guides/projects/manage-api-keys.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/manage-api-keys.md
+
 # Manage API keys
 
 > Create and manage API keys with custom permissions.

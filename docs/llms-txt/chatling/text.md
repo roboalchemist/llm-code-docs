@@ -4,6 +4,14 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
 
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/text.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/send/text.md
+
 # Text Block
 
 > Learn about the Text block and how to set it up in the builder

@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/modus/sdk/assemblyscript/mysql.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/mysql.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/mysql.md
+
 # MySQL APIs
 
 > Execute queries against a MySQL database

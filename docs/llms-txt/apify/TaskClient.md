@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/TaskClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/TaskClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/TaskClient.md
+
 # TaskClient<!-- -->
 
 ### Hierarchy

@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/databases/invalidate-tokens.md
 
+# Source: https://docs.turso.tech/api-reference/groups/invalidate-tokens.md
+
+# Source: https://docs.turso.tech/api-reference/databases/invalidate-tokens.md
+
 # Invalidate All Database Auth Tokens
 
 > Invalidates all authorization tokens for the specified database.

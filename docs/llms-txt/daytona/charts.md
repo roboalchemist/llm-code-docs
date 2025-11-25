@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/common/charts.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/charts.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/charts.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/charts.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/charts.md
+
 ## Chart
 
 ```python

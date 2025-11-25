@@ -2,6 +2,14 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/nooks/salesforce-setup.md
 
+# Source: https://docs.unifygtm.com/reference/integrations/orum/salesforce-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/nooks/salesforce-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/orum/salesforce-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/nooks/salesforce-setup.md
+
 # Nooks Salesforce Setup
 
 > Configure Nooks integration with Salesforce for call task synchronization.

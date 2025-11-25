@@ -10,6 +10,18 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/github.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/github.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/github.md
+
+# Source: https://infisical.com/docs/documentation/platform/sso/github.md
+
+# Source: https://infisical.com/docs/documentation/platform/secret-scanning/github.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/github.md
+
+# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/github.md
+
 # GitHub
 
 > Learn how to dynamically generate GitHub App tokens.

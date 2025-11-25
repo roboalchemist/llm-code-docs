@@ -16,6 +16,14 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
 
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/del.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/del.md
+
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/del.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/del.md
+
 # JSON.DEL
 
 > Delete a key from a JSON document.

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
 
+# Source: https://infisical.com/docs/documentation/platform/ldap/general.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/general.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/general.md
+
 # General
 
 > Learn how to authenticate with Infisical using LDAP.

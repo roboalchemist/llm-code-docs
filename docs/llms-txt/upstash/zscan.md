@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscan.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zscan.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zscan.md
+
 # ZSCAN
 
 > Scan a sorted set

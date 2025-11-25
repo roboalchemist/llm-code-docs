@@ -4,6 +4,14 @@
 
 # Source: https://configcat.com/docs/sdk-reference/python.md
 
+# Source: https://configcat.com/docs/sdk-reference/openfeature/python.md
+
+# Source: https://configcat.com/docs/sdk-reference/python.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/python.md
+
+# Source: https://configcat.com/docs/sdk-reference/python.md
+
 # Python SDK Reference
 
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/python-sdk.svg?style=social)](https://github.com/configcat/python-sdk/stargazers) [![Python CI](https://github.com/configcat/python-sdk/actions/workflows/python-ci.yml/badge.svg?branch=master)](https://github.com/configcat/python-sdk/actions/workflows/python-ci.yml) [![codecov](https://codecov.io/gh/ConfigCat/python-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/ConfigCat/python-sdk) [![PyPI](https://img.shields.io/pypi/v/configcat-client.svg)](https://pypi.python.org/pypi/configcat-client) [![PyPI](https://img.shields.io/pypi/pyversions/configcat-client.svg)](https://pypi.python.org/pypi/configcat-client) [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=configcat_python-sdk\&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=configcat_python-sdk)

@@ -6,6 +6,12 @@
 
 # Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
 
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/sweden/regulated-financing-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-kingdom/regulated-financing-promotion-rules-101.md
+
+# Source: https://docs.klarna.com/resources/marketing-tools/partner-marketing-legal-guidelines/united-states/regulated-financing-promotion-rules-101.md
+
 # Regulated financing promotion rules 101
 
 ## Financial services are highly regulated. This means that Klarna and our merchants who advertise with us need to follow the laws and regulations that govern advertising financial products.

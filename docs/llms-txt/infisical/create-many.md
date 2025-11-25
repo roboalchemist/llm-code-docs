@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/create-many.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secrets/create-many.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/create-many.md
+
 # Bulk Create
 
 > Create many secrets

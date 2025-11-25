@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
 
+# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
+
+# Source: https://docs.pinecone.io/guides/projects/create-a-project.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/create-a-project.md
+
 # Create a project
 
 > Create a new Pinecone project in your organization.

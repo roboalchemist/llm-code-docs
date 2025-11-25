@@ -2,6 +2,10 @@
 
 # Source: https://docs.near.org/smart-contracts/global-contracts.md
 
+# Source: https://docs.near.org/tutorials/examples/global-contracts.md
+
+# Source: https://docs.near.org/smart-contracts/global-contracts.md
+
 ---
 id: global-contracts
 title: Global Contracts

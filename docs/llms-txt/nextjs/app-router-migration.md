@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/migrating/app-router-migration.md
 
+# Source: https://nextjs.org/docs/pages/guides/migrating/app-router-migration.md
+
+# Source: https://nextjs.org/docs/app/guides/migrating/app-router-migration.md
+
+# Source: https://nextjs.org/docs/pages/guides/migrating/app-router-migration.md
+
+# Source: https://nextjs.org/docs/app/guides/migrating/app-router-migration.md
+
 # How to migrate from Pages to the App Router
 @doc-version: 16.0.4
 

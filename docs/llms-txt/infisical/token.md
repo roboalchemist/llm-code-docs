@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/cli/commands/token.md
 
+# Source: https://infisical.com/docs/documentation/platform/token.md
+
+# Source: https://infisical.com/docs/cli/commands/token.md
+
 # infisical token
 
 > Manage your Infisical identity access tokens

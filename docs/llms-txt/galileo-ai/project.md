@@ -2,6 +2,10 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/concepts/project.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/concepts/project.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/concepts/project.md
+
 # Project Concepts | Galileo Evaluate
 
 > Understand project concepts in Galileo Evaluate, including organization of datasets, metrics, and workflows for AI evaluation.

@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
 
+# Source: https://dev.writer.com/api-reference/tool-api/comprehend-medical.md
+
+# Source: https://dev.writer.com/api-reference/migration-guides/comprehend-medical.md
+
 # Migrate from medical comprehend API to LLM tool
 
 This guide shows you how to migrate from the deprecated [medical comprehend API endpoint](/api-reference/tool-api/comprehend-medical) to chat completions that can [delegate medical analysis tasks to the `palmyra-med` model](/home/model-delegation). After completing these steps, you can analyze medical text using the `palmyra-med` model, which provides medical analysis capabilities within a chat completion workflow.

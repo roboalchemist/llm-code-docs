@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/devtools-locating-elements.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-locating-elements.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-locating-elements.md
 
 # Locating HTML elements on a web page with browser DevTools

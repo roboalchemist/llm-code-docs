@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
 
+# Source: https://docs.livekit.io/agents/integrations/cerebras.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
+
 LiveKit docs › Models › Large language models (LLM) › Plugins › Cerebras
 
 ---

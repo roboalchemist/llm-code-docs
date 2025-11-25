@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/secret-snapshots.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/secret-snapshots.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/secret-snapshots.md
+
 # Get Snapshots
 
 > Return project secret snapshots ids

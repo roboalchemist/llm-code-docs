@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/windmill.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/windmill.md
+
+# Source: https://infisical.com/docs/integrations/cloud/windmill.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/windmill.md
+
 # Windmill Connection
 
 > Learn how to configure a Windmill Connection for Infisical.

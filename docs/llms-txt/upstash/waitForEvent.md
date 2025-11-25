@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/workflow/examples/waitForEvent.md
 
+# Source: https://upstash.com/docs/workflow/basics/context/waitForEvent.md
+
+# Source: https://upstash.com/docs/workflow/examples/waitForEvent.md
+
 # Waiting for Events
 
 <Note>

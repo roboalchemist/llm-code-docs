@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/process.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/process.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/process.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/process.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/process.md
+
 ## Process
 
 ```python

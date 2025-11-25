@@ -4,6 +4,16 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/quickstart.md
 
+# Source: https://docs.pinecone.io/guides/get-started/quickstart.md
+
+# Source: https://docs.pinecone.io/guides/assistant/quickstart.md
+
+# Source: https://docs.pinecone.io/reference/cli/quickstart.md
+
+# Source: https://docs.pinecone.io/guides/get-started/quickstart.md
+
+# Source: https://docs.pinecone.io/guides/assistant/quickstart.md
+
 # Pinecone Assistant quickstart
 
 > Get started with Pinecone Assistant manually or with no-code tools.

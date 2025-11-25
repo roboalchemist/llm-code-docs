@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
 
+# Source: https://polar.sh/docs/api-reference/license-keys/validate.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/validate.md
+
 # Validate License Key
 
 > Validate a license key.

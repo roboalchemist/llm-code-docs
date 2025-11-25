@@ -1,0 +1,45 @@
+# Source: https://www.activepieces.com/docs/operations/audit-logs/overview.md
+
+# Source: https://www.activepieces.com/docs/install/overview.md
+
+# Source: https://www.activepieces.com/docs/install/configuration/overview.md
+
+# Source: https://www.activepieces.com/docs/install/architecture/overview.md
+
+# Source: https://www.activepieces.com/docs/handbook/teams/overview.md
+
+# Source: https://www.activepieces.com/docs/handbook/overview.md
+
+# Source: https://www.activepieces.com/docs/handbook/engineering/overview.md
+
+# Source: https://www.activepieces.com/docs/handbook/customer-support/overview.md
+
+# Source: https://www.activepieces.com/docs/endpoints/overview.md
+
+# Source: https://www.activepieces.com/docs/embedding/overview.md
+
+# Source: https://www.activepieces.com/docs/developers/sharing-pieces/overview.md
+
+# Source: https://www.activepieces.com/docs/developers/piece-reference/triggers/overview.md
+
+# Source: https://www.activepieces.com/docs/developers/building-pieces/overview.md
+
+# Source: https://www.activepieces.com/docs/admin-console/overview.md
+
+# Overview
+
+<Snippet file="enterprise-feature.mdx" />
+
+The platform is the admin panel for managing your instance. It's suitable for SaaS, Embed, or agencies that want to white-label Activepieces and offer it to their customers. With this platform, you can:
+
+1. **Custom Branding:** Tailor the appearance of the software to align with your brand's identity by selecting your own branding colors and fonts.
+
+2. **Projects Management:** Manage your projects, including creating, editing, and deleting projects.
+
+3. **Piece Management:** Take full control over Activepieces pieces. You can show or hide existing pieces and create your own unique pieces to customize the platform according to your specific needs.
+
+4. **User Authentication Management:** adding and removing users, and assigning roles to users.
+
+5. **Template Management:** Control prebuilt templates and add your own unique templates to meet the requirements of your users.
+
+6. **AI Provider Management:** Manage the AI providers that you want to use in your flows.

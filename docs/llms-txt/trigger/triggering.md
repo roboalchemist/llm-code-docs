@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
 
+# Source: https://trigger.dev/docs/triggering.md
+
+# Source: https://trigger.dev/docs/realtime/react-hooks/triggering.md
+
 # Trigger hooks
 
 > Triggering tasks from your frontend application.

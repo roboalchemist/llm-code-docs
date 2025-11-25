@@ -6,6 +6,12 @@
 
 # Source: https://trigger.dev/docs/management/schedules/list.md
 
+# Source: https://trigger.dev/docs/management/runs/list.md
+
+# Source: https://trigger.dev/docs/management/envvars/list.md
+
+# Source: https://trigger.dev/docs/management/schedules/list.md
+
 # List Schedules
 
 > List all schedules. You can also paginate the results.

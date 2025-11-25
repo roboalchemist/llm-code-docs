@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/components/link.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/components/link.md
+
+# Source: https://nextjs.org/docs/app/api-reference/components/link.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/components/link.md
+
+# Source: https://nextjs.org/docs/app/api-reference/components/link.md
+
 # Link Component
 @doc-version: 16.0.4
 

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/teamcity.md
+
+# Source: https://infisical.com/docs/integrations/cloud/teamcity.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/teamcity.md
+
 # TeamCity Connection
 
 > Learn how to configure a TeamCity Connection for Infisical.

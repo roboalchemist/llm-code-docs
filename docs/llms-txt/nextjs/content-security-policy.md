@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/content-security-policy.md
 
+# Source: https://nextjs.org/docs/pages/guides/content-security-policy.md
+
+# Source: https://nextjs.org/docs/app/guides/content-security-policy.md
+
+# Source: https://nextjs.org/docs/pages/guides/content-security-policy.md
+
+# Source: https://nextjs.org/docs/app/guides/content-security-policy.md
+
 # How to set a Content Security Policy (CSP) for your Next.js application
 @doc-version: 16.0.4
 

@@ -2,6 +2,14 @@
 
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
 
+# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
+
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
+
+# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
+
 # User Management
 
 > Learn how to manage users and roles in the Digital Agent Desk.

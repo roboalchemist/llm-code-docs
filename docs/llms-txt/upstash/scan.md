@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/scan.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/scan.md
+
 # SCAN
 
 > Scan the database for keys.

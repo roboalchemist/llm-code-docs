@@ -12,6 +12,18 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
+
+# Source: https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
+
 LiveKit docs › Partner spotlight › Azure › Azure OpenAI STT Plugin
 
 ---

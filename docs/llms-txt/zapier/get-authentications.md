@@ -6,6 +6,10 @@
 
 # Source: https://docs.zapier.com/powered-by-zapier/api-reference/authentications/get-authentications.md
 
+# Source: https://docs.zapier.com/powered-by-zapier/managing-app-authentication/get-authentications.md
+
+# Source: https://docs.zapier.com/powered-by-zapier/api-reference/authentications/get-authentications.md
+
 # Get Authentications
 
 > Fetch the available Authentications for the provided App. This will only return Authentications that are owned by the user and not those that are shared with them, since it's not possible to create Zaps with Authentications you don't own.

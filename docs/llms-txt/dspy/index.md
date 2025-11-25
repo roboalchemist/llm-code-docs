@@ -36,6 +36,82 @@
 
 # Source: https://dspy.ai/index.md
 
+# Source: https://dspy.ai/tutorials/observability/index.md
+
+# Source: https://dspy.ai/tutorials/deployment/index.md
+
+# Source: https://dspy.ai/api/primitives/Example/index.md
+
+# Source: https://dspy.ai/api/signatures/Signature/index.md
+
+# Source: https://dspy.ai/api/modules/ReAct/index.md
+
+# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
+
+# Source: https://dspy.ai/api/modules/Predict/index.md
+
+# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
+
+# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
+
+# Source: https://dspy.ai/learn/optimization/overview/index.md
+
+# Source: https://dspy.ai/tutorials/agents/index.md
+
+# Source: https://dspy.ai/tutorials/classification/index.md
+
+# Source: https://dspy.ai/tutorials/rag/index.md
+
+# Source: https://dspy.ai/learn/programming/language_models/index.md
+
+# Source: https://dspy.ai/learn/programming/modules/index.md
+
+# Source: https://dspy.ai/learn/programming/signatures/index.md
+
+# Source: https://dspy.ai/learn/programming/overview/index.md
+
+# Source: https://dspy.ai/cheatsheet/index.md
+
+# Source: https://dspy.ai/index.md
+
+# Source: https://dspy.ai/tutorials/observability/index.md
+
+# Source: https://dspy.ai/tutorials/deployment/index.md
+
+# Source: https://dspy.ai/api/primitives/Example/index.md
+
+# Source: https://dspy.ai/api/signatures/Signature/index.md
+
+# Source: https://dspy.ai/api/modules/ReAct/index.md
+
+# Source: https://dspy.ai/api/modules/ChainOfThought/index.md
+
+# Source: https://dspy.ai/api/modules/Predict/index.md
+
+# Source: https://dspy.ai/api/optimizers/BootstrapFewShot/index.md
+
+# Source: https://dspy.ai/tutorials/optimize_ai_program/index.md
+
+# Source: https://dspy.ai/learn/optimization/overview/index.md
+
+# Source: https://dspy.ai/tutorials/agents/index.md
+
+# Source: https://dspy.ai/tutorials/classification/index.md
+
+# Source: https://dspy.ai/tutorials/rag/index.md
+
+# Source: https://dspy.ai/learn/programming/language_models/index.md
+
+# Source: https://dspy.ai/learn/programming/modules/index.md
+
+# Source: https://dspy.ai/learn/programming/signatures/index.md
+
+# Source: https://dspy.ai/learn/programming/overview/index.md
+
+# Source: https://dspy.ai/cheatsheet/index.md
+
+# Source: https://dspy.ai/index.md
+
 # *Programming*—not prompting—*LMs*
 
 DSPy is a declarative framework for building modular AI software. It allows you to **iterate fast on structured code**, rather than brittle strings, and offers algorithms that **compile AI programs into effective prompts and weights** for your language models, whether you're building simple classifiers, sophisticated RAG pipelines, or Agent loops.

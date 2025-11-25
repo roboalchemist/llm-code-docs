@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/changelog.md
 
+# Source: https://docs.hypermode.com/modus/changelog.md
+
+# Source: https://docs.hypermode.com/dgraph/changelog.md
+
 # Changelog
 
 <Info>

@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/groups/transfer.md
 
+# Source: https://docs.turso.tech/cli/group/transfer.md
+
+# Source: https://docs.turso.tech/api-reference/groups/transfer.md
+
 # Transfer Group
 
 > Transfer a group to another organization that you own or a member of.

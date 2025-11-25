@@ -1,5 +1,15 @@
 # Source: https://learn.adafruit.com/thermocouple/python-docs.md
 
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-docs.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/python-docs.md
+
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/python-docs.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/python-docs.md
+
+# Source: https://learn.adafruit.com/thermocouple/python-docs.md
+
 # MAX31855 Thermocouple
 
 ## Python Docs

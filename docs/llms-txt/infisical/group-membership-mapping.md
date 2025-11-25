@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/group-membership-mapping.md
 
+# Source: https://infisical.com/docs/documentation/platform/sso/keycloak-oidc/group-membership-mapping.md
+
+# Source: https://infisical.com/docs/documentation/platform/sso/general-oidc/group-membership-mapping.md
+
 # General OIDC Group Membership Mapping
 
 > Learn how to sync OIDC group members to matching groups in Infisical.

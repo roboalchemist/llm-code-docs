@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/management/schedules/delete.md
 
+# Source: https://trigger.dev/docs/management/envvars/delete.md
+
+# Source: https://trigger.dev/docs/management/schedules/delete.md
+
 # Delete Schedule
 
 > Delete a schedule by its ID. This will only work on `IMPERATIVE` schedules that were created in the dashboard or using the imperative SDK functions like `schedules.create()`.

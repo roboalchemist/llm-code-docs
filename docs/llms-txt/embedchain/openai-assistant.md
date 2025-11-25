@@ -4,6 +4,10 @@
 
 # Source: https://docs.embedchain.ai/examples/openai-assistant.md
 
+# Source: https://docs.embedchain.ai/api-reference/store/openai-assistant.md
+
+# Source: https://docs.embedchain.ai/examples/openai-assistant.md
+
 # OpenAI Assistant
 
 <img src="https://blogs.swarthmore.edu/its/wp-content/uploads/2022/05/openai.jpg" align="center" width="500" alt="OpenAI Logo" />

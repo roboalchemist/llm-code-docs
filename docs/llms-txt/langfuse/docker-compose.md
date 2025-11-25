@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
 
+# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
+
+# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
+
+# Source: https://langfuse.com/self-hosting/v2/docker-compose.md
+
+# Source: https://langfuse.com/self-hosting/deployment/docker-compose.md
+
 ---
 title: Docker Compose (self-hosted)
 description: Step-by-step guide to run Langfuse on a VM using docker compose.

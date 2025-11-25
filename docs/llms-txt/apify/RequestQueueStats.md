@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/RequestQueueStats.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/RequestQueueStats.md
+
 # RequestQueueStats<!-- -->
 
 ## Index[**](#Index)

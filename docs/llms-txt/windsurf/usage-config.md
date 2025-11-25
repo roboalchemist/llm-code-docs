@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
+
 # Set Usage Configuration
 
 > Configure usage caps for add-on credits

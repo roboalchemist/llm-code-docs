@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/introduction.md
 
+# Source: https://trigger.dev/docs/guides/introduction.md
+
+# Source: https://trigger.dev/docs/introduction.md
+
 # Welcome to the Trigger.dev docs
 
 > Find all the resources and guides you need to get started

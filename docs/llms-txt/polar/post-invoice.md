@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/orders/post-invoice.md
 
+# Source: https://polar.sh/docs/api-reference/orders/post-invoice.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/orders/post-invoice.md
+
 # Generate Order Invoice
 
 > Trigger generation of an order's invoice.

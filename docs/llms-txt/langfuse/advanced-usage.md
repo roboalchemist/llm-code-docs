@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/observability/sdk/python/advanced-usage.md
 
+# Source: https://langfuse.com/docs/observability/sdk/typescript/advanced-usage.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/advanced-usage.md
+
+# Source: https://langfuse.com/docs/observability/sdk/typescript/advanced-usage.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/advanced-usage.md
+
 ---
 title: Advanced usage of the Langfuse Python SDK
 description: Advanced usage of the Langfuse Python SDK for data masking, logging, sampling, filtering, and more.

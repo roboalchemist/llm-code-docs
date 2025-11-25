@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/open-telemetry.md
 
+# Source: https://nextjs.org/docs/pages/guides/open-telemetry.md
+
+# Source: https://nextjs.org/docs/app/guides/open-telemetry.md
+
+# Source: https://nextjs.org/docs/pages/guides/open-telemetry.md
+
+# Source: https://nextjs.org/docs/app/guides/open-telemetry.md
+
 # How to set up instrumentation with OpenTelemetry
 @doc-version: 16.0.4
 

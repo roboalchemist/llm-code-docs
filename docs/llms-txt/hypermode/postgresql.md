@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/modus/sdk/assemblyscript/postgresql.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/postgresql.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/postgresql.md
+
 # PostgreSQL APIs
 
 > Execute queries against a PostgreSQL database

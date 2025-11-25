@@ -8,6 +8,14 @@
 
 # Source: https://upstash.com/docs/api-reference/vector/get-index-stats.md
 
+# Source: https://upstash.com/docs/api-reference/search/get-index-stats.md
+
+# Source: https://upstash.com/docs/api-reference/vector/get-index-stats.md
+
+# Source: https://upstash.com/docs/api-reference/search/get-index-stats.md
+
+# Source: https://upstash.com/docs/api-reference/vector/get-index-stats.md
+
 # Get Index Stats
 
 > Retrieves statistics and metrics for a specific vector index

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/azure-app-configuration.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/azure-app-configuration.md
+
+# Source: https://infisical.com/docs/integrations/cloud/azure-app-configuration.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/azure-app-configuration.md
+
 # Azure App Configuration Connection
 
 > Learn how to configure a Azure App Configuration Connection for Infisical.

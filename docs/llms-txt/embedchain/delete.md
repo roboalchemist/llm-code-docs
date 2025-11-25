@@ -4,6 +4,10 @@
 
 # Source: https://docs.embedchain.ai/examples/rest-api/delete.md
 
+# Source: https://docs.embedchain.ai/api-reference/app/delete.md
+
+# Source: https://docs.embedchain.ai/examples/rest-api/delete.md
+
 # Delete app
 
 > Delete an existing app

@@ -2,6 +2,14 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/nooks/hubspot-setup.md
 
+# Source: https://docs.unifygtm.com/reference/integrations/orum/hubspot-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/nooks/hubspot-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/orum/hubspot-setup.md
+
+# Source: https://docs.unifygtm.com/reference/integrations/nooks/hubspot-setup.md
+
 # Nooks HubSpot Setup
 
 > Configure Nooks integration with HubSpot for seamless call task management.

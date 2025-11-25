@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/management/schedules/update.md
 
+# Source: https://trigger.dev/docs/management/envvars/update.md
+
+# Source: https://trigger.dev/docs/management/schedules/update.md
+
 # Update Schedule
 
 > Update a schedule by its ID. This will only work on `IMPERATIVE` schedules that were created in the dashboard or using the imperative SDK functions like `schedules.create()`.

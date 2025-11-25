@@ -1,0 +1,63 @@
+# Source: https://getlago.com/docs/guide/lago-self-hosted/commands.md
+
+# Useful commands
+
+> Useful commands for self-hosted users.
+
+Below is a compilation of essential commands tailored for open-source enthusiasts, primarily designed for managing invoicing tasks,
+whether for immediate processing or scheduling.
+
+These commands are designed to execute a Rails console (rails c) within a Docker container named api, which is managed by Docker Compose.
+
+```
+docker-compose exec api rails c
+```
+
+## Dry-run invoice in the future
+
+Use this to simulate a dry run invoice for a future date. Ensure to specify the correct subscription `external_id` and the targeted invoice issuance date.
+
+```ruby  theme={"dark"}
+# In the rails Console
+subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
+date = DateTime.parse('2024-10-01').to_i
+
+BillSubscriptionJob.perform_later([subscription], date)
+```
+
+## Issue invoice immediately
+
+Use this to issue an invoice immmediately. Ensure to specify the correct subscription `external_id` and the current date.
+
+```ruby  theme={"dark"}
+# In the rails Console
+subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
+timestamp = DateTime.parse('2024-04-01').to_i
+BillSubscriptionJob.perform_now([subscription], timestamp, invoicing_reason: :subscription_periodic)
+```
+
+## Remove cache for a subscription
+
+Use this to remove the cache on a specific subscription.
+
+```ruby  theme={"dark"}
+# In the rails Console
+Subscriptions::ChargeCacheService.expire_for_subscription(Subscription.find('YOUR_SUB_EXTERNAL_ID'))
+```
+
+To remove the cache for all subscriptions, you can alternatively use this command:
+
+```ruby  theme={"dark"}
+# In the rails Console
+Subscription.find_each {|s| Subscriptions::ChargeCacheService.expire_for_subscription(s) }
+```
+
+## Audit logs of a subscription
+
+Use this to view all changes applied to a subscription and identify which membership made those changes.
+
+```ruby  theme={"dark"}
+# In the rails Console
+subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
+subscription.versions
+```

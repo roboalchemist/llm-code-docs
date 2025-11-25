@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/WebhookClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/WebhookClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/WebhookClient.md
+
 # WebhookClient<!-- -->
 
 ### Hierarchy

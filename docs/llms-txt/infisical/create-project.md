@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/create-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/create-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/create-project.md
+
 # Create Project
 
 > Create a new project

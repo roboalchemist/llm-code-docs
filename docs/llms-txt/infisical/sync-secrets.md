@@ -64,6 +64,72 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/sync-secrets.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/terraform-cloud/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/supabase/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/netlify/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/humanitec/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/heroku/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gitlab/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/github/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/flyio/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/digital-ocean-app-platform/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/databricks/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-workers/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-pages/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/checkly/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/camunda/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/sync-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/sync-secrets.md
+
 # Sync Secrets
 
 > Trigger a sync for the specified 1Password Sync.

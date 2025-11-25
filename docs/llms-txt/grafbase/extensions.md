@@ -2,6 +2,14 @@
 
 # Source: https://grafbase.com/docs/gateway/extensions.md
 
+# Source: https://grafbase.com/docs/gateway/configuration/extensions.md
+
+# Source: https://grafbase.com/docs/gateway/extensions.md
+
+# Source: https://grafbase.com/docs/gateway/configuration/extensions.md
+
+# Source: https://grafbase.com/docs/gateway/extensions.md
+
 # Extensions
 
 Extensions are a powerful feature of the Grafbase Gateway that lets you extend its functionality with custom code. You write extensions in Rust and compile them into a WebAssembly module that the [Grafbase Gateway](https://grafbase.com/docs/gateway/installation.md) loads. Extensions implement custom authentication, authorization, and resolving logic, and integrate with external services and APIs.

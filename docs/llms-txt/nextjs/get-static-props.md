@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/functions/get-static-props.md
+
+# Source: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/functions/get-static-props.md
+
+# Source: https://nextjs.org/docs/pages/building-your-application/data-fetching/get-static-props.md
+
 # getStaticProps
 
 

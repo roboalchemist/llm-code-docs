@@ -8,6 +8,16 @@
 
 # Source: https://docs.apify.com/api/client/js/index.md
 
+# Source: https://docs.apify.com/cli/index.md
+
+# Source: https://docs.apify.com/sdk/python/index.md
+
+# Source: https://docs.apify.com/sdk/js/index.md
+
+# Source: https://docs.apify.com/api/client/python/index.md
+
+# Source: https://docs.apify.com/api/client/js/index.md
+
 [Skip to main content](#__docusaurus_skipToContent_fallback)
 
 [![](/api/client/js/img/apify_sdk.svg)![](/api/client/js/img/apify_sdk_white.svg)](https://docs.apify.com)

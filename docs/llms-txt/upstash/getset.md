@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getset.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/getset.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/getset.md
+
 # GETSET
 
 > Return the value of the specified key and replace it with a new value.

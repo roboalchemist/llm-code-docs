@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/update-identity-membership.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/update-identity-membership.md
+
 # Update Identity Membership
 
 > Update project identity memberships

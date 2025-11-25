@@ -24,6 +24,36 @@
 
 # Source: https://polar.sh/docs/api-reference/benefits/create.md
 
+# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/create.md
+
+# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/create.md
+
+# Source: https://polar.sh/docs/api-reference/subscriptions/create.md
+
+# Source: https://polar.sh/docs/api-reference/refunds/create.md
+
+# Source: https://polar.sh/docs/api-reference/products/create.md
+
+# Source: https://polar.sh/docs/api-reference/organizations/create.md
+
+# Source: https://polar.sh/docs/api-reference/meters/create.md
+
+# Source: https://polar.sh/docs/api-reference/files/create.md
+
+# Source: https://polar.sh/docs/api-reference/discounts/create.md
+
+# Source: https://polar.sh/docs/api-reference/customers/create.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/sessions/create.md
+
+# Source: https://polar.sh/docs/api-reference/custom-fields/create.md
+
+# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/create.md
+
 # Create Benefit
 
 > Create a benefit.

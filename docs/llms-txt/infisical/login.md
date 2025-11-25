@@ -22,6 +22,30 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/login.md
 
+# Source: https://infisical.com/docs/cli/commands/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/universal-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/tls-cert-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oidc-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oci-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ldap-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kubernetes-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/jwt-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/gcp-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/azure-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/aws-auth/login.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/login.md
+
 # Login
 
 > Login with Alibaba Cloud Auth for machine identity

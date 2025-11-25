@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/KeyValueStoreRecord.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/KeyValueStoreRecord.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/KeyValueStoreRecord.md
+
 # KeyValueStoreRecord<!-- --> \<T>
 
 ## Index[**](#Index)

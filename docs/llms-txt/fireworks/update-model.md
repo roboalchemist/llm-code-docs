@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-model.md
+
 # firectl update model
 
 > Updates a model.

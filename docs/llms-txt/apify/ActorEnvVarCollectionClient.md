@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/ActorEnvVarCollectionClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/ActorEnvVarCollectionClient.md
+
 # ActorEnvVarCollectionClient<!-- -->
 
 ### Hierarchy

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/setbit.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/setbit.md
+
 # SETBIT
 
 > Set a single bit in a string.

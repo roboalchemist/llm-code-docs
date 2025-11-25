@@ -4,6 +4,14 @@
 
 # Source: https://docs.stripe.com/payments/save-during-payment.md
 
+# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
+
+# Source: https://docs.stripe.com/payments/save-during-payment.md
+
+# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
+
+# Source: https://docs.stripe.com/payments/save-during-payment.md
+
 # Save a customer's payment method when they use it for a payment
 
 Learn how to save your customer's payment details for future purchases when they make a payment.

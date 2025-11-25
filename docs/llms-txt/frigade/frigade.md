@@ -2,6 +2,14 @@
 
 # Source: https://docs.frigade.com/sdk/hooks/frigade.md
 
+# Source: https://docs.frigade.com/sdk/js/frigade.md
+
+# Source: https://docs.frigade.com/sdk/hooks/frigade.md
+
+# Source: https://docs.frigade.com/sdk/js/frigade.md
+
+# Source: https://docs.frigade.com/sdk/hooks/frigade.md
+
 # useFrigade
 
 The `useFrigade()` hook exposes the underlying [Frigade JS SDK]() instance that powers the React SDK.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/StoreCollectionClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/StoreCollectionClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/StoreCollectionClient.md
+
 # StoreCollectionClient<!-- -->
 
 ### Hierarchy

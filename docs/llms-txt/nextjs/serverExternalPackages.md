@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/serverExternalPackages.md
+
 # serverExternalPackages
 @doc-version: 16.0.4
 

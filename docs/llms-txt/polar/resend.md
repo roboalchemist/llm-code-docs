@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/seats/resend.md
 
+# Source: https://polar.sh/docs/api-reference/customer-seats/resend.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/seats/resend.md
+
 # Resend Invitation
 
 > **Scopes**: `customer_portal:write`

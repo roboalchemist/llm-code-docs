@@ -4,6 +4,12 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/inference/deepgram.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/deepgram.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/deepgram.md
+
+# Source: https://docs.livekit.io/agents/models/stt/inference/deepgram.md
+
 LiveKit docs › Models › Speech-to-text (STT) › LiveKit Inference › Deepgram
 
 ---

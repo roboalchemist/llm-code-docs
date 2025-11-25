@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
+
 # XADD
 
 > Appends one or more new entries to a stream.

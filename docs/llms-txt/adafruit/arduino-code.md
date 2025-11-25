@@ -1,5 +1,13 @@
 # Source: https://learn.adafruit.com/thermocouple/arduino-code.md
 
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
+
+# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
+
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/arduino-code.md
+
+# Source: https://learn.adafruit.com/thermocouple/arduino-code.md
+
 # MAX31855 Thermocouple
 
 ## Arduino Code

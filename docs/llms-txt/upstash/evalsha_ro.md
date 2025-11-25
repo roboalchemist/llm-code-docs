@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
+
 # EVALSHA_RO
 
 > Evaluate a cached read-only Lua script server side.

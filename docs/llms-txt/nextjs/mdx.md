@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/mdx.md
 
+# Source: https://nextjs.org/docs/pages/guides/mdx.md
+
+# Source: https://nextjs.org/docs/app/guides/mdx.md
+
+# Source: https://nextjs.org/docs/pages/guides/mdx.md
+
+# Source: https://nextjs.org/docs/app/guides/mdx.md
+
 # How to use markdown and MDX in Next.js
 @doc-version: 16.0.4
 

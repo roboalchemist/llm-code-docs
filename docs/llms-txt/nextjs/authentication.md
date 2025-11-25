@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/authentication.md
 
+# Source: https://nextjs.org/docs/pages/guides/authentication.md
+
+# Source: https://nextjs.org/docs/app/guides/authentication.md
+
+# Source: https://nextjs.org/docs/pages/guides/authentication.md
+
+# Source: https://nextjs.org/docs/app/guides/authentication.md
+
 # How to implement authentication in Next.js
 @doc-version: 16.0.4
 

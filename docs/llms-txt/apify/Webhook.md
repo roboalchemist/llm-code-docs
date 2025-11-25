@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/Webhook.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/Webhook.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/Webhook.md
+
 # Webhook<!-- -->
 
 ## Index[**](#Index)

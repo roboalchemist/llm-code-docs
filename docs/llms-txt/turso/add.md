@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/organizations/members/add.md
 
+# Source: https://docs.turso.tech/cli/org/members/add.md
+
+# Source: https://docs.turso.tech/api-reference/organizations/members/add.md
+
 # Add Member
 
 > Add an existing Turso user to an organization.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/KeyValueStoreClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/KeyValueStoreClient.md
+
 # KeyValueStoreClient<!-- -->
 
 ### Hierarchy

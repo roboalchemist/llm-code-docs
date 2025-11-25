@@ -6,6 +6,14 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/terraform-cloud.md
+
+# Source: https://infisical.com/docs/integrations/cloud/terraform-cloud.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/terraform-cloud.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/terraform-cloud.md
+
 # Terraform Cloud
 
 > How to authenticate with Infisical from Terraform Cloud using OIDC.

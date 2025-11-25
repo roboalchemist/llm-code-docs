@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/self-hosting.md
 
+# Source: https://nextjs.org/docs/pages/guides/self-hosting.md
+
+# Source: https://nextjs.org/docs/app/guides/self-hosting.md
+
+# Source: https://nextjs.org/docs/pages/guides/self-hosting.md
+
+# Source: https://nextjs.org/docs/app/guides/self-hosting.md
+
 # How to self-host your Next.js application
 @doc-version: 16.0.4
 

@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
 
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/model-monitoring-and-data-drift.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/natural-language-inference/model-monitoring-and-data-drift.md
+
+# Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/named-entity-recognition/model-monitoring-and-data-drift.md
+
 # Model Monitoring & Data Drift | Named Entity Recognition
 
 > Learn how to monitor Named Entity Recognition models in production with Galileo NLP Studio, detecting data drift and maintaining model health effectively.

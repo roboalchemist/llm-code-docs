@@ -2,6 +2,10 @@
 
 # Source: https://docs.tavus.io/sections/replica/quickstart.md
 
+# Source: https://docs.tavus.io/sections/video/quickstart.md
+
+# Source: https://docs.tavus.io/sections/replica/quickstart.md
+
 # Quickstart
 
 > Create high-quality Personal or Non-human Replicas for use in conversations.

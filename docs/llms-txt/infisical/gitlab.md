@@ -10,6 +10,18 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/gitlab.md
+
+# Source: https://infisical.com/docs/integrations/cicd/gitlab.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/gitlab.md
+
+# Source: https://infisical.com/docs/documentation/platform/sso/gitlab.md
+
+# Source: https://infisical.com/docs/documentation/platform/secret-scanning/gitlab.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/gitlab.md
+
 # GitLab
 
 > Learn how to authenticate GitLab pipelines with Infisical using OpenID Connect (OIDC).

@@ -24,6 +24,18 @@
 
 # Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
 
+# Source: https://upstash.com/docs/vector/sdks/ts/commands/delete.md
+
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/delete.md
+
+# Source: https://upstash.com/docs/vector/api/endpoints/delete.md
+
+# Source: https://upstash.com/docs/search/sdks/ts/commands/delete.md
+
+# Source: https://upstash.com/docs/search/sdks/py/commands/delete.md
+
+# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
+
 # Delete a failed workflow run from the DLQ
 
 > Manually remove a failed workflow run from the DLQ

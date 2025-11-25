@@ -8,6 +8,14 @@
 
 # Source: https://docs.stripe.com/financial-accounts/connect/examples/webhooks.md
 
+# Source: https://docs.stripe.com/climate/orders/webhooks.md
+
+# Source: https://docs.stripe.com/connect/webhooks.md
+
+# Source: https://docs.stripe.com/webhooks.md
+
+# Source: https://docs.stripe.com/financial-accounts/connect/examples/webhooks.md
+
 # Webhooks for Stripe Issuing and Financial Accounts for platforms
 
 Learn about webhook events for Stripe Issuing and Financial Accounts for platforms and why they occur.

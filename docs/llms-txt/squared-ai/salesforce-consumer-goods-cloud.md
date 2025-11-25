@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/sources/data-sources/salesforce-consumer-goods-cloud.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/retail/salesforce-consumer-goods-cloud.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/salesforce-consumer-goods-cloud.md
+
 # Salesforce Consumer Goods Cloud
 
 ## Overview

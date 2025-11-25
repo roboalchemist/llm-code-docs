@@ -4,6 +4,12 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
 
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/context-adherence-vs-instruction-adherence.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/context-adherence-vs-instruction-adherence.md
+
+# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
+
 # Context vs. Instruction Adherence | Galileo Evaluate FAQ
 
 > Understand the distinctions between Context Adherence and Instruction Adherence metrics in Galileo Evaluate to assess generative AI outputs accurately.

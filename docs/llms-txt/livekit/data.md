@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/home/client/data.md
 
+# Source: https://docs.livekit.io/agents/observability/data.md
+
+# Source: https://docs.livekit.io/home/client/data.md
+
 LiveKit docs › LiveKit SDKs › Realtime text & data › Overview
 
 ---

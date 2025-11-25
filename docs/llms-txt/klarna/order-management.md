@@ -6,6 +6,12 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/payments-for-shopify/order-management.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/order-management.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/adobe-commerce/payments/order-management.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/payments-for-shopify/order-management.md
+
 # Shopify order management
 
 ## This article details the order operations you can manage in the Klarna payments app integration for Shopify.

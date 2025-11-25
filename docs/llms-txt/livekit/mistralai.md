@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/mistralai.md
 
+# Source: https://docs.livekit.io/agents/models/llm/plugins/mistralai.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/mistralai.md
+
 LiveKit docs › Models › Speech-to-text (STT) › Plugins › Mistral AI
 
 ---

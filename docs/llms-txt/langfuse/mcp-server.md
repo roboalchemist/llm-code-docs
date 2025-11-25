@@ -1,5 +1,13 @@
 # Source: https://langfuse.com/docs/prompt-management/features/mcp-server.md
 
+# Source: https://langfuse.com/docs/api-and-data-platform/features/mcp-server.md
+
+# Source: https://langfuse.com/docs/prompt-management/features/mcp-server.md
+
+# Source: https://langfuse.com/docs/api-and-data-platform/features/mcp-server.md
+
+# Source: https://langfuse.com/docs/prompt-management/features/mcp-server.md
+
 ---
 title: Open Source MCP Server for Langfuse Prompts
 sidebarTitle: MCP Server

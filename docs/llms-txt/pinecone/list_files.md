@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/list_files.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/list_files.md
 
 # List Files

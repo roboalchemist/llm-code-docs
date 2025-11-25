@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
 
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/adyen/payments/order-management-and-disputes.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/shopify-payments/order-management-and-disputes.md
+
 # Order Management and Disputes
 
 ## Manage Klarna orders on Shopify effectively by configuring payment capture, handling refunds within set timelines, and responding promptly to chargebacks through Klarna’s dispute process.

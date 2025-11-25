@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/how-it-works.md
 
+# Source: https://trigger.dev/docs/realtime/how-it-works.md
+
+# Source: https://trigger.dev/docs/how-it-works.md
+
 # How it works
 
 > Understand how Trigger.dev works and how it can help you.

@@ -2,6 +2,14 @@
 
 # Source: https://grafbase.com/docs/gateway/security/authentication.md
 
+# Source: https://grafbase.com/docs/gateway/configuration/authentication.md
+
+# Source: https://grafbase.com/docs/gateway/security/authentication.md
+
+# Source: https://grafbase.com/docs/gateway/configuration/authentication.md
+
+# Source: https://grafbase.com/docs/gateway/security/authentication.md
+
 # Authentication
 
 Authentication extensions are available in the [Marketplace](/extensions):

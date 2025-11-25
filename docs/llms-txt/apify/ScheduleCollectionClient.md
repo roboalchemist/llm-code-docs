@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ScheduleCollectionClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/ScheduleCollectionClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/ScheduleCollectionClient.md
+
 # ScheduleCollectionClient<!-- -->
 
 ### Hierarchy

@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/list-certificates.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/list-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/list-certificates.md
+
 # List Certificates
 
 ## OpenAPI

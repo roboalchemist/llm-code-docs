@@ -2,6 +2,10 @@
 
 # Source: https://docs.meshconnect.com/api-reference/managed-transfers/get-deposit-address.md
 
+# Source: https://docs.meshconnect.com/api-reference/transfers/get-deposit-address.md
+
+# Source: https://docs.meshconnect.com/api-reference/managed-transfers/get-deposit-address.md
+
 # Get deposit address
 
 > Get or generate a cryptocurrency deposit address that can be used to transfer assets to the financial institution

@@ -24,6 +24,18 @@
 
 # Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
 
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/reset.md
+
+# Source: https://upstash.com/docs/vector/sdks/php/commands/reset.md
+
+# Source: https://upstash.com/docs/vector/api/endpoints/reset.md
+
+# Source: https://upstash.com/docs/search/sdks/ts/commands/reset.md
+
+# Source: https://upstash.com/docs/search/sdks/py/commands/reset.md
+
+# Source: https://upstash.com/docs/vector/sdks/ts/commands/reset.md
+
 # Reset
 
 The `reset` method allows you to clear all vectors and metadata from a particular

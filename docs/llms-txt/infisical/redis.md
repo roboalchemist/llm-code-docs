@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/redis.md
 
+# Source: https://infisical.com/docs/integrations/app-connections/redis.md
+
+# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/redis.md
+
 # Redis
 
 > Learn how to dynamically generate Redis Database user credentials.

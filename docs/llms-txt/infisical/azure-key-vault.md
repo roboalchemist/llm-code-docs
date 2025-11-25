@@ -6,6 +6,14 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/azure-key-vault.md
+
+# Source: https://infisical.com/docs/integrations/cloud/azure-key-vault.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/azure-key-vault.md
+
+# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/azure-key-vault.md
+
 # Azure Key Vault
 
 > Learn how to configure an Azure Key Vault Certificate Sync for Infisical PKI.

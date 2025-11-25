@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/linsert.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/linsert.md
+
 # LINSERT
 
 > Insert an element before or after another element in a list

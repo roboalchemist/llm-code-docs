@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md
 
 # Basics of data extraction

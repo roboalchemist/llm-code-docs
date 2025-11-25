@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/activate.md
 
+# Source: https://polar.sh/docs/api-reference/license-keys/activate.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/activate.md
+
 # Activate License Key
 
 > Activate a license key instance.

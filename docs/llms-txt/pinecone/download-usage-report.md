@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
+
 # Download a usage report
 
 > Export organization usage and cost reports.

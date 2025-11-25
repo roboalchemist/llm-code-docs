@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/concepts/relationships.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/schema/relationships.md
+
+# Source: https://docs.hypermode.com/dgraph/concepts/relationships.md
+
 # Relationships
 
 <Info>

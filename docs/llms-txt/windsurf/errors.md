@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
+
 # Error Handling
 
 > Common error messages and debugging tips for the Analytics API

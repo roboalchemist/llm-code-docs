@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/http/simple.md
 
+# Source: https://bun.com/docs/guides/websocket/simple.md
+
+# Source: https://bun.com/docs/guides/http/simple.md
+
 # Write a simple HTTP server
 
 This starts an HTTP server listening on port `3000`. It responds to all requests with a `Response` with status `200` and body `"Welcome to Bun!"`.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dpo-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-dpo-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dpo-job.md
+
 # firectl create dpo-job
 
 > Creates a dpo job.

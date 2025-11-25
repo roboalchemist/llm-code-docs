@@ -4,6 +4,14 @@
 
 # Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md
+
+# Source: https://docs.apify.com/sdk/python/docs/overview/introduction.md
+
+# Source: https://docs.apify.com/sdk/js/docs/readme/introduction.md
+
+# Source: https://docs.apify.com/api/client/python/docs/overview/introduction.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/introduction.md
 
 # Introduction

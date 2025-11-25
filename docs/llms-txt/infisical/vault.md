@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/cli/commands/vault.md
 
+# Source: https://infisical.com/docs/documentation/platform/external-migrations/vault.md
+
+# Source: https://infisical.com/docs/cli/commands/vault.md
+
 # infisical vault
 
 > Change the vault type in Infisical

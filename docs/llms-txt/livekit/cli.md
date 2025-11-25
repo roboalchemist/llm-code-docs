@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/home/cli.md
 
+# Source: https://docs.livekit.io/agents/ops/deployment/cli.md
+
+# Source: https://docs.livekit.io/home/cli.md
+
 LiveKit docs › LiveKit CLI › Getting started
 
 ---

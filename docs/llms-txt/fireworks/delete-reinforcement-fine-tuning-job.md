@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-reinforcement-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-reinforcement-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-reinforcement-fine-tuning-job.md
+
 # firectl delete reinforcement-fine-tuning-job
 
 > Deletes a reinforcement fine-tuning job.

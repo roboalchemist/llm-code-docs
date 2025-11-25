@@ -1,0 +1,119 @@
+# Source: https://docs.unstructured.io/ui/account/api-key-url.md
+
+# Source: https://docs.unstructured.io/api-reference/troubleshooting/api-key-url.md
+
+# Troubleshooting Unstructured API keys and URLs
+
+## Issue
+
+When you run script or code to call an Unstructured API, you might get one of the following warnings or errors:
+
+```
+UserWarning: If intending to use the paid API, please define `server_url` in your request.
+```
+
+```
+ERROR: Server responded with 404 - {"detail":"Not Found"}
+```
+
+You might also get the following related warnings or errors in your logs:
+
+```
+SDKError: API error occurred: Status 401
+{"detail":"API key is malformed, please type the API key correctly in the header."}
+```
+
+```
+API error occurred: Status 404
+{"detail":"Not Found"}
+```
+
+## Possible causes
+
+1. The Unstructured API key, API URL, or both are missing or malformed in your script or code.
+2. The API key, API URL, or both are not present in your current session.
+3. The API key is no longer valid, or the API key and API URL combination is not valid.
+
+## Suggested solutions
+
+For the API URL, this URL was provided to you when your Unstructured account was created.
+If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+
+<Note>
+  The default URL for the Unstructured Workflow Endpoint is `https://platform.unstructuredapp.io/api/v1`.
+
+  The default URL for the Unstructured Partition Endpoint is `https://api.unstructuredapp.io/general/v0/general`.
+
+  However, you should always use the URLs that were provided to you when your Unstructured account was created.
+</Note>
+
+For the API key, the same API key works for both the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) and the [Unstructured Partition Endpoint](/api-reference/partition/overview). To access your key:
+
+1. If you are not already signed in, sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business SaaS** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
+
+   <Note>
+     For other types of **Business** accounts, see your Unstructured account administrator for sign-in instructions,
+     or email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
+
+2. Get your Unstructured API key:<br />
+
+   a. After you sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business SaaS** account, click **API Keys** on the sidebar.<br />
+
+   <Note>
+     For other types of **Business** accounts, before you click **API Keys**, make sure you have selected the organizational workspace you want to create an API key
+     for. Each API key works with one and only one organizational workspace. [Learn more](/ui/account/workspaces#create-an-api-key-for-a-workspace).
+   </Note>
+
+   b. Click **Generate API Key**.<br />
+   c. Follow the on-screen instructions to finish generating the key.<br />
+   d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
+
+For the API URL, note the value of the Unstructured API URL for the Endpoint that you want to call. To access these API URLs:
+
+1. If you are not already signed in, sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business SaaS** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
+
+   <Note>
+     For other types of **Business** accounts, see your Unstructured account administrator for sign-in instructions,
+     or email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
+
+2. After you sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business SaaS** account, click **API Keys** on the sidebar.<br />
+
+   <Note>
+     For a **Business** account, before you click **API Keys**, make sure you have selected the organizational workspace you want to get the API URL for.
+   </Note>
+
+3. Note the API URL for the **Unstructured Workflow Endpoint** or the **Unstructured Partition Endpoint**, depending on whether you want to call the
+   [Unstructured Workflow Endpoint](/api-reference/workflow/overview) or the [Unstructured Partition Endpoint](/api-reference/partition/overview), respectively.
+
+If you still believe you have the correct API URL and API key, try the following steps:
+
+1. Check your script or code to see where the API URL and API key are specified, as follows:
+
+   **For a POST request**
+
+   * Check the target URL. Make sure it is set to the right API URL.
+   * Check the value of the `unstructured-api-key` header. Make sure it is set to the right API key, or an environment variable representing the right API key.
+
+   **For the Unstructured Python SDK**
+
+   * Check the value of the `server_url` parameter. Make sure it is set to the right API URL, or an environment variable representing the right API URL.
+   * Check the value of the `api_key_auth` parameter. Make sure it is set to the right API key, or an environment variable representing the right API key.
+
+   <Note>
+     If you are using the Unstructured Python SDK to call the Workflow Endpoint or the Partition Endpoint, you should not need to set the value of the
+     `server_url` parameter if you are using these Endpoints' default API URL. However, you might want to try setting this value anyway to see if it otherwise resolves your issue.
+   </Note>
+
+   **For the Unstructured JavaScript/TypeScript SDK**
+
+   * Check the value of the `UnstructuredClient` object's `serverURL` parameter. Make sure it is set to the right API URL, or an environment variable representing the right API URL.
+   * Check the value of the `UnstructuredClient` object's `security: { apiKeyAuth }` parameter. Make sure it is set to the right API key, or an environment variable representing the right API key.
+
+2. If you follow the recommended approach to use environment variables to represent the API key and API URL instead of hard-coding them into your script or code, check your session to see if these environment variables have been loaded, for example:
+
+   * Run the command for your operating system to list all environment variables. Make sure the API key and API URL are listed and are set to the right ones. Make sure the names and cases of these environment variables match the ones in your script or code exactly.
+   * If you use an integrated development environment (IDE) to run your script or code, check the IDE's documentation for how to specify and load environment variables at run time or debug time. Make sure the names and cases of these environment variables match the ones in your script or code exactly.
+
+3. If you are still getting this issue, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).

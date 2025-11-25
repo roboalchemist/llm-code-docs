@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/randomkey.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/randomkey.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/randomkey.md
+
 # RANDOMKEY
 
 > Returns a random key from database

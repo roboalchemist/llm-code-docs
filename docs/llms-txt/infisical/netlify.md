@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/netlify.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/netlify.md
+
+# Source: https://infisical.com/docs/integrations/cloud/netlify.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/netlify.md
+
 # Netlify Connection
 
 > Learn how to configure a Netlify Connection for Infisical.

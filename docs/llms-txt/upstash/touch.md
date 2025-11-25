@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/touch.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/touch.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/touch.md
+
 # TOUCH
 
 > Alters the last access time of one or more keys

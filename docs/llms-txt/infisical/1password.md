@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/1password.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/1password.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/1password.md
+
 # 1Password Connection
 
 > Learn how to configure a 1Password Connection for Infisical.

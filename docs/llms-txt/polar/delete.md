@@ -12,6 +12,24 @@
 
 # Source: https://polar.sh/docs/api-reference/benefits/delete.md
 
+# Source: https://polar.sh/docs/api-reference/checkout-links/delete.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/delete.md
+
+# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/delete.md
+
+# Source: https://polar.sh/docs/api-reference/files/delete.md
+
+# Source: https://polar.sh/docs/api-reference/discounts/delete.md
+
+# Source: https://polar.sh/docs/api-reference/customers/delete.md
+
+# Source: https://polar.sh/docs/api-reference/custom-fields/delete.md
+
+# Source: https://polar.sh/docs/api-reference/checkout-links/delete.md
+
+# Source: https://polar.sh/docs/api-reference/benefits/delete.md
+
 # Delete Benefit
 
 > Delete a benefit.

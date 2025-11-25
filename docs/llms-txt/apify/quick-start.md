@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/actors/development/quick-start.md
 
+# Source: https://docs.apify.com/cli/docs/quick-start.md
+
+# Source: https://docs.apify.com/platform/actors/development/quick-start.md
+
 # Actor development quick start
 
 **Create your first Actor using the Apify Web IDE or locally in your IDE.**

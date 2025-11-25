@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
 
+# Source: https://upstash.com/docs/vector/api/endpoints/update.md
+
+# Source: https://upstash.com/docs/vector/sdks/py/example_calls/update.md
+
 # Update
 
 ## Methods

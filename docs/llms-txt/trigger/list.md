@@ -4,6 +4,12 @@
 
 # Source: https://trigger.dev/docs/management/envvars/list.md
 
+# Source: https://trigger.dev/docs/management/schedules/list.md
+
+# Source: https://trigger.dev/docs/management/runs/list.md
+
+# Source: https://trigger.dev/docs/management/envvars/list.md
+
 # List Env Vars
 
 > List all environment variables for a specific project and environment.

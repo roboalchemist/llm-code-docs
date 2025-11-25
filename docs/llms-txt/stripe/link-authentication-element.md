@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/payments/elements/link-authentication-element.md
 
+# Source: https://docs.stripe.com/payments/link/link-authentication-element.md
+
+# Source: https://docs.stripe.com/payments/elements/link-authentication-element.md
+
 # Link Authentication Element
 
 Use the Link Authentication Element to integrate Link.

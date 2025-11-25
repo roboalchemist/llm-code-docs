@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
 
+# Source: https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md
+
+# Source: https://docs.livekit.io/agents/models/stt/inference/assemblyai.md
+
 LiveKit docs › Models › Speech-to-text (STT) › LiveKit Inference › AssemblyAI
 
 ---

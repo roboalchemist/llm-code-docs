@@ -2,6 +2,14 @@
 
 # Source: https://docs.near.org/smart-contracts/quickstart.md
 
+# Source: https://docs.near.org/web3-apps/quickstart.md
+
+# Source: https://docs.near.org/smart-contracts/quickstart.md
+
+# Source: https://docs.near.org/web3-apps/quickstart.md
+
+# Source: https://docs.near.org/smart-contracts/quickstart.md
+
 ---
 id: quickstart
 title: Your First Smart Contract

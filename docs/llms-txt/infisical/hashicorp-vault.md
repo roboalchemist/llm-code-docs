@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/hashicorp-vault.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/hashicorp-vault.md
+
+# Source: https://infisical.com/docs/integrations/cloud/hashicorp-vault.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/hashicorp-vault.md
+
 # Hashicorp Vault Connection
 
 > Learn how to configure a Hashicorp Vault Connection for Infisical.

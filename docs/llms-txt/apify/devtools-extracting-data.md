@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/devtools-extracting-data.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-extracting-data.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-extracting-data.md
 
 # Extracting data from a web page with browser DevTools

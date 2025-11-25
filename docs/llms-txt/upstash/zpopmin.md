@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmin.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zpopmin.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zpopmin.md
+
 # ZPOPMIN
 
 > Removes and returns up to count members with the lowest scores in the sorted set stored at key.

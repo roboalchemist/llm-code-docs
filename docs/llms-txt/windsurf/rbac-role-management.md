@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management.md
+
 # Role Based Access & Management
 
 > Configure and manage role-based access controls, permissions, and user management for your Windsurf team

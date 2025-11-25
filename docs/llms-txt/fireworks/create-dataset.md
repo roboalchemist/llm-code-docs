@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dataset.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-dataset.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-dataset.md
+
 # firectl create dataset
 
 > Creates and uploads a dataset.

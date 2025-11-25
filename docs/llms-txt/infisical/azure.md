@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
 
+# Source: https://infisical.com/docs/documentation/platform/sso/azure.md
+
+# Source: https://infisical.com/docs/documentation/platform/scim/azure.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/azure.md
+
 # Azure
 
 > Learn how to authenticate Azure pipelines with Infisical using OpenID Connect (OIDC).

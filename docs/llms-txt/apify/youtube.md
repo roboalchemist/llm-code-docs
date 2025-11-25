@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
 
+# Source: https://docs.apify.com/platform/integrations/make/youtube.md
+
+# Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
+
 # Gumloop - YouTube Actor integration
 
 Get YouTube search results, video details, channel videos, playlists, and channel metadata in Gumloop.

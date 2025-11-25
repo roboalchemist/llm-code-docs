@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployed-model.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-deployed-model.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-deployed-model.md
+
 # firectl get deployed-model
 
 > Prints information about a deployed model.

@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/databases/configuration.md
 
+# Source: https://docs.turso.tech/api-reference/groups/configuration.md
+
+# Source: https://docs.turso.tech/api-reference/databases/configuration.md
+
 # Retrieve Database Configuration
 
 > Retrieve an individual database configuration belonging to the organization or user.

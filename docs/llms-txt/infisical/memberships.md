@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-users/memberships.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/organizations/memberships.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
+
 # Get User Memberships
 
 > Return project user memberships

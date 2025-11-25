@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/secret-syncs/aws-secrets-manager.md
 
+# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/aws-secrets-manager.md
+
+# Source: https://infisical.com/docs/integrations/secret-syncs/aws-secrets-manager.md
+
 # AWS Secrets Manager Sync
 
 > Learn how to configure an AWS Secrets Manager Sync for Infisical.

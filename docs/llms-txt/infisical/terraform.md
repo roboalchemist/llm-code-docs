@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/gateways/relay-deployment/terraform.md
 
+# Source: https://infisical.com/docs/integrations/frameworks/terraform.md
+
+# Source: https://infisical.com/docs/documentation/platform/gateways/relay-deployment/terraform.md
+
 # Terraform
 
 > How to deploy Infisical Relay Servers using Terraform

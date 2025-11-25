@@ -8,6 +8,16 @@
 
 # Source: https://docs.hypermode.com/agents/introduction.md
 
+# Source: https://docs.hypermode.com/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/to-do-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/introduction.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/get-started-with-dgraph/introduction.md
+
+# Source: https://docs.hypermode.com/agents/introduction.md
+
 # Hypermode Agents
 
 > Build AI agents that act—from natural language toproduction-ready code

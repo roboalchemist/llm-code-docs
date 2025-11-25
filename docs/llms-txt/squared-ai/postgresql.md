@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
+
 # PostgreSQL
 
 > PostgreSQL popularly known as Postgres, is a powerful, open-source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale data workloads.

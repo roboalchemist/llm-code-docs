@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/components/script.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/components/script.md
+
+# Source: https://nextjs.org/docs/app/api-reference/components/script.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/components/script.md
+
+# Source: https://nextjs.org/docs/app/api-reference/components/script.md
+
 # Script Component
 @doc-version: 16.0.4
 

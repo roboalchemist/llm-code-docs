@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/proxy/usage.md
 
+# Source: https://docs.apify.com/platform/storage/usage.md
+
+# Source: https://docs.apify.com/platform/proxy/usage.md
+
 # Proxy usage
 
 **Learn how to configure and use Apify Proxy. See the required parameters such as the correct username and password.**

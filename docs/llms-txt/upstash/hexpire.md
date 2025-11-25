@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpire.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexpire.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexpire.md
+
 # HEXPIRE
 
 > Sets an expiration time for one or more fields in a hash.

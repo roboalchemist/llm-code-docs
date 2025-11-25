@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/FlatPricePerMonthActorPricingInfo.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md
+
 # FlatPricePerMonthActorPricingInfo<!-- -->
 
 ### Hierarchy

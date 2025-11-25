@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_flush.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/script_flush.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/script_flush.md
+
 # SCRIPT FLUSH
 
 > Removes all scripts from the script cache.

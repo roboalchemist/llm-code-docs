@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/humanitec.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/humanitec.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/humanitec.md
+
 # Humanitec Connection
 
 > Learn how to configure a Humanitec Connection for Infisical.

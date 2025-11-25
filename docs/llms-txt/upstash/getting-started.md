@@ -24,6 +24,18 @@
 
 # Source: https://upstash.com/docs/workflow/agents/getting-started.md
 
+# Source: https://upstash.com/docs/vector/sdks/ts/getting-started.md
+
+# Source: https://upstash.com/docs/vector/sdks/php/getting-started.md
+
+# Source: https://upstash.com/docs/search/sdks/ts/getting-started.md
+
+# Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/integrations/strapi/getting-started.md
+
+# Source: https://upstash.com/docs/redis/integrations/ratelimit/strapi/getting-started.md
+
+# Source: https://upstash.com/docs/workflow/agents/getting-started.md
+
 # Getting Started
 
 In this guide, we will be using **Next.js**. If you're working with a different supported framework, you can find instructions on how to define a workflow endpoint in the [quickstarts](/workflow/quickstarts/platforms).

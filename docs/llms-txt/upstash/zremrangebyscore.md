@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyscore.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyscore.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyscore.md
+
 # ZREMRANGEBYSCORE
 
 > Remove all members in a sorted set between the given scores.

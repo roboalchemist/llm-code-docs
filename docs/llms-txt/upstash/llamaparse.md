@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
 
+# Source: https://upstash.com/docs/vector/integrations/llamaparse.md
+
+# Source: https://upstash.com/docs/vector/tutorials/llamaparse.md
+
 # Parsing and Querying Documents with LlamaParse
 
 In this tutorial, we’ll learn how to parse a document using LlamaParse and then query it using an LLM with Upstash Vector.

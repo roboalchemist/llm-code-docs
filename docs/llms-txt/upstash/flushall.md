@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/server/flushall.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/server/flushall.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/flushall.md
+
 # FLUSHALL
 
 <Warning>

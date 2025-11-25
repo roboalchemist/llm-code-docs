@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/delete-many.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secrets/delete-many.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/delete-many.md
+
 # Bulk Delete
 
 > Delete many secrets

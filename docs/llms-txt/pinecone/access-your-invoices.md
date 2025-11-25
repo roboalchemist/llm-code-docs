@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/access-your-invoices.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/access-your-invoices.md
+
 # Access your invoices
 
 > View and download billing invoices from Pinecone.

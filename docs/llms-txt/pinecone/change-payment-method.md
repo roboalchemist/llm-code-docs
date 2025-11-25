@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
 
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
+
+# Source: https://docs.pinecone.io/guides/organizations/manage-billing/change-payment-method.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/change-payment-method.md
+
 # Change your payment method
 
 > Update billing payment method for your organization.

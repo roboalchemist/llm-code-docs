@@ -6,6 +6,14 @@
 
 # Source: https://docs.hypermode.com/badger/quickstart.md
 
+# Source: https://docs.hypermode.com/quickstart.md
+
+# Source: https://docs.hypermode.com/dgraph/quickstart.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/quickstart.md
+
+# Source: https://docs.hypermode.com/badger/quickstart.md
+
 # Quickstart
 
 > Everything you need to get started with Badger

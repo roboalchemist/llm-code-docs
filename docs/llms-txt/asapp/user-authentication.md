@@ -2,6 +2,14 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
 
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
+
+# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
+
 # User Authentication
 
 As in the Quick Start section, you can connect to chat as an anonymous user by not setting a user, or initializing an `ASAPPUser` with a null customer identifier. However, many chat use cases might require ASAPP to know the identity of the user.

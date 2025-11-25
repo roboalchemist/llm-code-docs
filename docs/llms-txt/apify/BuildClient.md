@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/BuildClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
+
 # BuildClient<!-- -->
 
 ### Hierarchy

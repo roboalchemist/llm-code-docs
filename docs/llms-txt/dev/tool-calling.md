@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/agent-builder/tool-calling.md
 
+# Source: https://dev.writer.com/home/tool-calling.md
+
+# Source: https://dev.writer.com/agent-builder/tool-calling.md
+
 # Use tool calling in Agent Builder
 
 > Add tool calling to Agent Builder blueprints and chatbots. Connect Knowledge Graphs and define custom functions with JSON Schema.

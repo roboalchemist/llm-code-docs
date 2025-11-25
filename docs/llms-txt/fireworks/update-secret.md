@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-secret.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
+
 # firectl update secret
 
 > Updates an existing secret.

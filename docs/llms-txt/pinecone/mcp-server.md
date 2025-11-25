@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/mcp-server.md
 
+# Source: https://docs.pinecone.io/guides/operations/mcp-server.md
+
+# Source: https://docs.pinecone.io/guides/assistant/mcp-server.md
+
+# Source: https://docs.pinecone.io/guides/operations/mcp-server.md
+
+# Source: https://docs.pinecone.io/guides/assistant/mcp-server.md
+
 # Use an Assistant MCP server
 
 > Connect AI agents to Pinecone Assistant via Model Context Protocol.

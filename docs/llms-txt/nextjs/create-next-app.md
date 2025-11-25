@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/cli/create-next-app.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/cli/create-next-app.md
+
+# Source: https://nextjs.org/docs/app/api-reference/cli/create-next-app.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/cli/create-next-app.md
+
+# Source: https://nextjs.org/docs/app/api-reference/cli/create-next-app.md
+
 # create-next-app
 @doc-version: 16.0.4
 

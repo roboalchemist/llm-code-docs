@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/circleci.md
 
+# Source: https://infisical.com/docs/integrations/cicd/circleci.md
+
+# Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/circleci.md
+
 # CircleCI
 
 > Learn how to authenticate CircleCI jobs with Infisical using OpenID Connect (OIDC).

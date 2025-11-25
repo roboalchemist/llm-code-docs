@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/orders/patch.md
 
+# Source: https://polar.sh/docs/api-reference/orders/patch.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/orders/patch.md
+
 # Update Order
 
 > Update an order for the authenticated customer.

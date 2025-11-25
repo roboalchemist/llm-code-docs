@@ -4,6 +4,10 @@
 
 # Source: https://trigger.dev/docs/realtime/how-it-works.md
 
+# Source: https://trigger.dev/docs/how-it-works.md
+
+# Source: https://trigger.dev/docs/realtime/how-it-works.md
+
 # How it works
 
 > Technical details about how the Trigger.dev Realtime API works

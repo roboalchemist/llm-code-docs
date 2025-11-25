@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
+
 # HGETALL
 
 > Retrieves all fields from a hash.

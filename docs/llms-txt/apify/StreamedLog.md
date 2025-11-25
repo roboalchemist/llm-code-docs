@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/api/client/python/reference/class/StreamedLog.md
 
+# Source: https://docs.apify.com/api/client/js/reference/class/StreamedLog.md
+
+# Source: https://docs.apify.com/api/client/python/reference/class/StreamedLog.md
+
 # StreamedLog<!-- -->
 
 Utility class for streaming logs from another Actor.

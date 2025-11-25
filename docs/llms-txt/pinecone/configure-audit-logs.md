@@ -2,6 +2,14 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
 
+# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
+
+# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
+
+# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
+
 # Configure audit logs
 
 > Track user and API actions with audit log configuration.

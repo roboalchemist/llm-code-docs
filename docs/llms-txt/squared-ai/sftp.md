@@ -4,6 +4,10 @@
 
 # Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
 
+# Source: https://docs.squared.ai/guides/destinations/retl-destinations/file-storage/sftp.md
+
+# Source: https://docs.squared.ai/guides/sources/data-sources/sftp.md
+
 # SFTP
 
 ## Connect AI Squared to SFTP

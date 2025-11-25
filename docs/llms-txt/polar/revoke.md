@@ -4,6 +4,12 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
 
+# Source: https://polar.sh/docs/api-reference/subscriptions/revoke.md
+
+# Source: https://polar.sh/docs/api-reference/customer-seats/revoke.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke.md
+
 # Revoke Seat
 
 > **Scopes**: `customer_portal:write`

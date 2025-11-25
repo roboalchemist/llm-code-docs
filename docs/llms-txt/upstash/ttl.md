@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
+
 # TTL
 
 > Return the expiration in seconds of a key.

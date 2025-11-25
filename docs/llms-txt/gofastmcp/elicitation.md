@@ -6,6 +6,10 @@
 
 # Source: https://gofastmcp.com/clients/elicitation.md
 
+# Source: https://gofastmcp.com/servers/elicitation.md
+
+# Source: https://gofastmcp.com/clients/elicitation.md
+
 # User Elicitation
 
 > Handle server-initiated user input requests with structured schemas.

@@ -18,6 +18,38 @@
 
 # Source: https://docs.stripe.com/checkout/quickstart.md
 
+# Source: https://docs.stripe.com/checkout/embedded/quickstart.md
+
+# Source: https://docs.stripe.com/checkout/quickstart.md
+
+# Source: https://docs.stripe.com/webhooks/quickstart.md
+
+# Source: https://docs.stripe.com/billing/quickstart.md
+
+# Source: https://docs.stripe.com/payments/quickstart.md
+
+# Source: https://docs.stripe.com/checkout/quickstart.md
+
+# Source: https://docs.stripe.com/terminal/quickstart.md
+
+# Source: https://docs.stripe.com/invoicing/integration/quickstart.md
+
+# Source: https://docs.stripe.com/climate/orders/quickstart.md
+
+# Source: https://docs.stripe.com/billing/quickstart.md
+
+# Source: https://docs.stripe.com/checkout/embedded/quickstart.md
+
+# Source: https://docs.stripe.com/checkout/quickstart.md
+
+# Source: https://docs.stripe.com/webhooks/quickstart.md
+
+# Source: https://docs.stripe.com/billing/quickstart.md
+
+# Source: https://docs.stripe.com/payments/quickstart.md
+
+# Source: https://docs.stripe.com/checkout/quickstart.md
+
 # Source: https://docs.stripe.com/terminal/quickstart.md
 
 # Accept in-person payments

@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/list-resources.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/gitlab/list-resources.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/github/list-resources.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/list-resources.md
+
 # List Resources
 
 > Get the resources associated with the specified Bitbucket Data Source by ID.

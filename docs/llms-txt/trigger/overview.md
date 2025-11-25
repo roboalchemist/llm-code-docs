@@ -18,6 +18,26 @@
 
 # Source: https://trigger.dev/docs/config/extensions/overview.md
 
+# Source: https://trigger.dev/docs/tasks/overview.md
+
+# Source: https://trigger.dev/docs/self-hosting/overview.md
+
+# Source: https://trigger.dev/docs/realtime/react-hooks/overview.md
+
+# Source: https://trigger.dev/docs/realtime/overview.md
+
+# Source: https://trigger.dev/docs/realtime/backend/overview.md
+
+# Source: https://trigger.dev/docs/management/overview.md
+
+# Source: https://trigger.dev/docs/guides/use-cases/overview.md
+
+# Source: https://trigger.dev/docs/guides/ai-agents/overview.md
+
+# Source: https://trigger.dev/docs/deployment/overview.md
+
+# Source: https://trigger.dev/docs/config/extensions/overview.md
+
 # Build extensions
 
 > Customize how your project is built and deployed to Trigger.dev with build extensions

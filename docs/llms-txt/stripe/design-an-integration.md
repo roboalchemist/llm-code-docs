@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/billing/subscriptions/design-an-integration.md
 
+# Source: https://docs.stripe.com/connect/design-an-integration.md
+
+# Source: https://docs.stripe.com/billing/subscriptions/design-an-integration.md
+
 # Design a subscriptions integration
 
 Learn about the configuration options for a subscriptions integration.

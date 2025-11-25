@@ -1,5 +1,15 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/remove-certificates.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/chef/remove-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/remove-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-secrets-manager/remove-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/remove-certificates.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/remove-certificates.md
+
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/remove-certificates.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/remove-certificates.md

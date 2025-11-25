@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-api-key.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-api-key.md
+
 # firectl create api-key
 
 > Creates an API key for the signed in user or a specified service account user.

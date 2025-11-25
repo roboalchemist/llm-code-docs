@@ -4,6 +4,10 @@
 
 # Source: https://docs.stripe.com/financial-accounts/connect/examples/sample-app.md
 
+# Source: https://docs.stripe.com/baas/start-integration/sample-app.md
+
+# Source: https://docs.stripe.com/financial-accounts/connect/examples/sample-app.md
+
 # Issuing and Financial Accounts for platforms sample app
 
 Use the Stripe Next.js sample app to start your own Issuing and Financial Accounts for platforms integration.

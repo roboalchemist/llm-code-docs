@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/nummultby.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/nummultby.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/nummultby.md
+
 # JSON.NUMMULTBY
 
 > Multiply the number value stored at `path` by number.

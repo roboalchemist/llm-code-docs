@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/control-plane/delete_collection.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/control-plane/delete_collection.md
 
 # Delete a collection

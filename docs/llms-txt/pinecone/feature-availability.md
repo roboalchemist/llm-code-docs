@@ -2,6 +2,10 @@
 
 # Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
 
+# Source: https://docs.pinecone.io/release-notes/feature-availability.md
+
+# Source: https://docs.pinecone.io/assistant-release-notes/feature-availability.md
+
 # Feature availability
 
 This page defines the different availability phases of a feature in Pinecone.

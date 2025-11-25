@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/string/msetnx.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/string/msetnx.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/msetnx.md
+
 # MSETNX
 
 > Set multiple keys in one go unless they exist already.

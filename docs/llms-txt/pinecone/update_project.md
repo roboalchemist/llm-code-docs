@@ -1,3 +1,7 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin/update_project.md
+
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/update_project.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin/update_project.md
 
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/update_project.md

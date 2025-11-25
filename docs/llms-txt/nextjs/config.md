@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/config.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config.md
+
 # Configuration
 @doc-version: 16.0.4
 

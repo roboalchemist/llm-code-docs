@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-reinforcement-fine-tuning-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-reinforcement-fine-tuning-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-reinforcement-fine-tuning-job.md
+
 # firectl create reinforcement-fine-tuning-job
 
 > Creates a reinforcement fine-tuning job.

@@ -4,6 +4,12 @@
 
 # Source: https://docs.turso.tech/api-reference/organizations/members/update.md
 
+# Source: https://docs.turso.tech/cli/group/update.md
+
+# Source: https://docs.turso.tech/api-reference/organizations/update.md
+
+# Source: https://docs.turso.tech/api-reference/organizations/members/update.md
+
 # Update Member Role
 
 > Update the role of an organization member. Only organization admins or owners can perform this action.

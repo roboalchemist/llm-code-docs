@@ -8,6 +8,20 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/overview.md
 
+# Source: https://docs.pinecone.io/guides/get-started/overview.md
+
+# Source: https://docs.pinecone.io/guides/assistant/overview.md
+
+# Source: https://docs.pinecone.io/reference/cli/overview.md
+
+# Source: https://docs.pinecone.io/models/overview.md
+
+# Source: https://docs.pinecone.io/integrations/overview.md
+
+# Source: https://docs.pinecone.io/guides/get-started/overview.md
+
+# Source: https://docs.pinecone.io/guides/assistant/overview.md
+
 # Pinecone Assistant
 
 > Pinecone Assistant is a service that allow you to build production-grade chat and agent-based applications quickly.

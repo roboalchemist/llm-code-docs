@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/get-started.md
 
+# Source: https://docs.klarna.com/platform-solutions/acquiring-partners/stripe/get-started.md
+
+# Source: https://docs.klarna.com/payments/mobile-payments/integrate-with-mobile-sdk/android/get-started.md
+
 # Getting started
 
 ## Get started integrating Klarna Mobile SDK for Android

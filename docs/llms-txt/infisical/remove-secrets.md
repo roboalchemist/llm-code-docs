@@ -64,6 +64,72 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/remove-secrets.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/terraform-cloud/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/supabase/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/netlify/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/humanitec/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/heroku/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gitlab/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/github/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/flyio/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/digital-ocean-app-platform/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/databricks/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-workers/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-pages/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/checkly/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/camunda/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/remove-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/remove-secrets.md
+
 # Remove Secrets
 
 > Remove previously synced secrets from the specified 1Password Sync destination.

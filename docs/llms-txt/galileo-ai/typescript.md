@@ -2,6 +2,14 @@
 
 # Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
 
+# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
+
+# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
+
+# Source: https://docs.galileo.ai/client-reference/observe/typescript.md
+
+# Source: https://docs.galileo.ai/client-reference/evaluate/typescript.md
+
 # TypeScript Client Reference | Galileo Evaluate
 
 > Incorporate Galileo's Evaluate module into your TypeScript projects with this guide, providing setup instructions and workflow logging examples.

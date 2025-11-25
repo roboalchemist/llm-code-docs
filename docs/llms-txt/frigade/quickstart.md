@@ -4,6 +4,18 @@
 
 # Source: https://docs.frigade.com/quickstart.md
 
+# Source: https://docs.frigade.com/sdk/quickstart.md
+
+# Source: https://docs.frigade.com/sdk/js/quickstart.md
+
+# Source: https://docs.frigade.com/quickstart.md
+
+# Source: https://docs.frigade.com/sdk/quickstart.md
+
+# Source: https://docs.frigade.com/sdk/js/quickstart.md
+
+# Source: https://docs.frigade.com/quickstart.md
+
 # Quickstart Guide
 
 > Get set up with Frigade in less than 15 minutes

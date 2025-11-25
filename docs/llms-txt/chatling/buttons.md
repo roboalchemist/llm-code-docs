@@ -4,6 +4,14 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
 
+# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+
+# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+
+# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+
 # Buttons Block
 
 > Learn about the Buttons input block and how to set it up in the Builder.

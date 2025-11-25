@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/static-exports.md
 
+# Source: https://nextjs.org/docs/pages/guides/static-exports.md
+
+# Source: https://nextjs.org/docs/app/guides/static-exports.md
+
+# Source: https://nextjs.org/docs/pages/guides/static-exports.md
+
+# Source: https://nextjs.org/docs/app/guides/static-exports.md
+
 # How to create a static export of your Next.js application
 @doc-version: 16.0.4
 

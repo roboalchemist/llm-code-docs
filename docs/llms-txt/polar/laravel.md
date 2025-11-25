@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/guides/laravel.md
 
+# Source: https://polar.sh/docs/integrate/sdk/adapters/laravel.md
+
+# Source: https://polar.sh/docs/guides/laravel.md
+
 # Integrate Polar with Laravel
 
 > In this guide, we'll show you how to integrate Polar with Laravel.

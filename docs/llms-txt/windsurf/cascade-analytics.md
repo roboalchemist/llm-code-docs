@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
+
 # Get Cascade Analytics
 
 > Query Cascade-specific usage metrics and data

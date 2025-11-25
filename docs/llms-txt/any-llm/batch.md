@@ -6,6 +6,14 @@
 
 # Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/batch.md
 
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/types/batch.md
+
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/batch.md
+
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/types/batch.md
+
+# Source: https://raw.githubusercontent.com/mozilla-ai/any-llm/refs/heads/main/docs/api/batch.md
+
 # Batch
 
 !!! warning "Experimental API"

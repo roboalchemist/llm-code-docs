@@ -4,6 +4,12 @@
 
 # Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
 
+# Source: https://docs.pinecone.io/reference/cli/authentication.md
+
+# Source: https://docs.pinecone.io/reference/api/authentication.md
+
+# Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
+
 # Authentication
 
 All requests to the [Pinecone Assistant API](/reference/api/assistant/introduction) must contain a valid [API key](/guides/production/security-overview#api-keys) for the target project.

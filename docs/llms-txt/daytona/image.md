@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/image.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/common/image.md
+
 ## Image
 
 ```python

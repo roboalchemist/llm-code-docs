@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-api-key.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-api-key.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-api-key.md
+
 # firectl delete api-key
 
 > Deletes an API key.

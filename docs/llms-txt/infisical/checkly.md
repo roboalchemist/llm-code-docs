@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/checkly.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/checkly.md
+
+# Source: https://infisical.com/docs/integrations/cloud/checkly.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/checkly.md
+
 # Checkly Connection
 
 > Learn how to configure a Checkly Connection for Infisical.

@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/guides/sass.md
 
+# Source: https://nextjs.org/docs/pages/guides/sass.md
+
+# Source: https://nextjs.org/docs/app/guides/sass.md
+
+# Source: https://nextjs.org/docs/pages/guides/sass.md
+
+# Source: https://nextjs.org/docs/app/guides/sass.md
+
 # How to use Sass
 @doc-version: 16.0.4
 

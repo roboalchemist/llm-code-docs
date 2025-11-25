@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/lsp-server.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/lsp-server.md
+
 ## LspServer
 
 ```python

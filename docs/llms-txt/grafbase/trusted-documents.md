@@ -2,6 +2,14 @@
 
 # Source: https://grafbase.com/docs/gateway/security/trusted-documents.md
 
+# Source: https://grafbase.com/docs/gateway/configuration/trusted-documents.md
+
+# Source: https://grafbase.com/docs/gateway/security/trusted-documents.md
+
+# Source: https://grafbase.com/docs/gateway/configuration/trusted-documents.md
+
+# Source: https://grafbase.com/docs/gateway/security/trusted-documents.md
+
 # Trusted Documents
 
 GraphQL APIs provide clients with considerable flexibility to query any data they need. This flexibility represents one of GraphQL's major strengths, but it also introduces vulnerabilities. When any client can query any data, malicious or careless queries can create excessive load on the server. Trusted Documents solve this problem.

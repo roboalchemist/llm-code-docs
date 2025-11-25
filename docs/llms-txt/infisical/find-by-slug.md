@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v1/find-by-slug.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v2/find-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v1/find-by-slug.md
+
 # Find By Slug
 
 > Retrieve details of a specific privilege by privilege slug.

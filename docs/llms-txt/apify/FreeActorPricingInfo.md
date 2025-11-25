@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/interface/FreeActorPricingInfo.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/FreeActorPricingInfo.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/FreeActorPricingInfo.md
+
 # FreeActorPricingInfo<!-- -->
 
 ### Hierarchy

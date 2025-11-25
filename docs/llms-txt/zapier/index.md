@@ -6,6 +6,10 @@
 
 # Source: https://docs.zapier.com/index.md
 
+# Source: https://docs.zapier.com/platform/news/2025/index.md
+
+# Source: https://docs.zapier.com/index.md
+
 # Zapier Docs
 
 <div class="hero-container">

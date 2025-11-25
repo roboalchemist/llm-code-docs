@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/RequestQueueClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/RequestQueueClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/RequestQueueClient.md
+
 # RequestQueueClient<!-- -->
 
 ### Hierarchy

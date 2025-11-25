@@ -2,6 +2,10 @@
 
 # Source: https://bun.com/docs/guides/test/watch-mode.md
 
+# Source: https://bun.com/docs/runtime/watch-mode.md
+
+# Source: https://bun.com/docs/guides/test/watch-mode.md
+
 # Run tests in watch mode with Bun
 
 Use the `--watch` flag to run your tests in watch mode.

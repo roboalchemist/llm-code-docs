@@ -22,6 +22,30 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/retrieve.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/universal-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/token-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/tls-cert-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oidc-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oci-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ldap-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kubernetes-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/jwt-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/gcp-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/azure-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/aws-auth/retrieve.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/retrieve.md
+
 # Retrieve
 
 > Retrieve Alibaba Cloud Auth configuration on machine identity

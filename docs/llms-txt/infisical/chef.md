@@ -2,6 +2,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/chef.md
 
+# Source: https://infisical.com/docs/documentation/platform/pki/certificate-syncs/chef.md
+
+# Source: https://infisical.com/docs/integrations/secret-syncs/chef.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/chef.md
+
 # Chef Connection
 
 > Learn how to configure a Chef Connection for Infisical.

@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/workflow/quickstarts/flask.md
 
+# Source: https://upstash.com/docs/redis/quickstarts/flask.md
+
+# Source: https://upstash.com/docs/workflow/quickstarts/flask.md
+
 # Flask
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-py/tree/master/examples/flask" horizontal>

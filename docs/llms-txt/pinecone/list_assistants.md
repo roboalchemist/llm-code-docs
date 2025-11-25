@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/assistant/list_assistants.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/assistant/list_assistants.md
 
 # List assistants

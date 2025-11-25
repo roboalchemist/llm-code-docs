@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/api-reference/application-api/applications.md
 
+# Source: https://dev.writer.com/home/applications.md
+
+# Source: https://dev.writer.com/api-reference/application-api/applications.md
+
 # Generate from application
 
 > Generate content from an existing no-code agent (formerly called no-code applications) with inputs.

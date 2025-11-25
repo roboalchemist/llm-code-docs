@@ -2,6 +2,10 @@
 
 # Source: https://docs.pinecone.io/reference/api/assistant/introduction.md
 
+# Source: https://docs.pinecone.io/reference/api/introduction.md
+
+# Source: https://docs.pinecone.io/reference/api/assistant/introduction.md
+
 # Assistant API reference
 
 Use the [Assistant API](/guides/assistant/quickstart) to upload documents, ask questions, and receive responses that reference your documents. This is known as [retrieval-augmented generation (RAG)](https://www.pinecone.io/learn/retrieval-augmented-generation/).

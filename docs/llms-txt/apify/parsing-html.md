@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/parsing-html.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/parsing-html.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/parsing-html.md
 
 # Parsing HTML with Node.js

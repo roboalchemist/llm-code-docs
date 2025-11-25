@@ -1,0 +1,116 @@
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-secret.md
+
+# Source: https://docs.fireworks.ai/api-reference/update-secret.md
+
+# null
+
+## OpenAPI
+
+````yaml patch /v1/accounts/{account_id}/secrets/{secret_id}
+paths:
+  path: /v1/accounts/{account_id}/secrets/{secret_id}
+  method: patch
+  servers:
+    - url: https://api.fireworks.ai
+  request:
+    security:
+      - title: BearerAuth
+        parameters:
+          query: {}
+          header:
+            Authorization:
+              type: http
+              scheme: bearer
+              description: >-
+                Bearer authentication using your Fireworks API key. Format:
+                Bearer <API_KEY>
+          cookie: {}
+    parameters:
+      path:
+        account_id:
+          schema:
+            - type: string
+              required: true
+              description: The Account Id
+        secret_id:
+          schema:
+            - type: string
+              required: true
+              description: The Secret Id
+      query: {}
+      header: {}
+      cookie: {}
+    body:
+      application/json:
+        schemaArray:
+          - type: object
+            properties:
+              keyName:
+                allOf:
+                  - type: string
+                    title: >-
+                      name of the key. In this case, it can be
+                      WOLFRAM_ALPHA_API_KEY
+              value:
+                allOf:
+                  - type: string
+                    example: sk-1234567890abcdef
+                    description: >-
+                      The secret value. This field is INPUT_ONLY and will not be
+                      returned in GET or LIST responses
+
+                      for security reasons. The value is only accepted when
+                      creating or updating secrets.
+            required: true
+            requiredProperties:
+              - keyName
+        examples:
+          example:
+            value:
+              keyName: <string>
+              value: sk-1234567890abcdef
+  response:
+    '200':
+      application/json:
+        schemaArray:
+          - type: object
+            properties:
+              name:
+                allOf:
+                  - type: string
+                    title: |-
+                      name follows the convention
+                      accounts/account-id/secrets/unkey-key-id
+              keyName:
+                allOf:
+                  - type: string
+                    title: >-
+                      name of the key. In this case, it can be
+                      WOLFRAM_ALPHA_API_KEY
+              value:
+                allOf:
+                  - type: string
+                    example: sk-1234567890abcdef
+                    description: >-
+                      The secret value. This field is INPUT_ONLY and will not be
+                      returned in GET or LIST responses
+
+                      for security reasons. The value is only accepted when
+                      creating or updating secrets.
+            refIdentifier: '#/components/schemas/gatewaySecret'
+            requiredProperties:
+              - name
+              - keyName
+        examples:
+          example:
+            value:
+              name: <string>
+              keyName: <string>
+              value: sk-1234567890abcdef
+        description: A successful response.
+  deprecated: false
+  type: path
+components:
+  schemas: {}
+
+````

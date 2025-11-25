@@ -6,6 +6,10 @@
 
 # Source: https://docs.claude.com/en/docs/agent-sdk/structured-outputs.md
 
+# Source: https://docs.claude.com/en/docs/build-with-claude/structured-outputs.md
+
+# Source: https://docs.claude.com/en/docs/agent-sdk/structured-outputs.md
+
 # Structured outputs in the SDK
 
 > Get validated JSON results from agent workflows

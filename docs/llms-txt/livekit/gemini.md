@@ -12,6 +12,20 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
 
+# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
+
+# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
+
 LiveKit docs › Partner spotlight › Google › Gemini in LiveKit Inference
 
 ---

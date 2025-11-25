@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/InvalidResponseBodyError.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/InvalidResponseBodyError.md
+
 # InvalidResponseBodyError<!-- -->
 
 This error exists for the quite common situation, where only a partial JSON response is received and an attempt to parse the JSON throws an error. In most cases this can be resolved by retrying the request. We do that by identifying this error in HttpClient.

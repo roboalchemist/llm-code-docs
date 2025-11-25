@@ -36,6 +36,44 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/import-secrets.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
+
 # Import Secrets
 
 > Import secrets from the specified 1Password Sync destination.

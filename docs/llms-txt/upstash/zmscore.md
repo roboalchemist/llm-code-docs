@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zmscore.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zmscore.md
+
 # ZMSCORE
 
 > Returns the scores of multiple members.

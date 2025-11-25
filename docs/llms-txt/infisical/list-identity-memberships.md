@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/list-identity-memberships.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-identities-membership/list-identity-memberships.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/organizations/list-identity-memberships.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-identities-v2/list-identity-memberships.md
+
 # List Identity Memberships
 
 > Return project identity memberships

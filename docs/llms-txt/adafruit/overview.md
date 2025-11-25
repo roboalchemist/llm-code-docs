@@ -1,3 +1,39 @@
+# Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/overview.md
+
+# Source: https://learn.adafruit.com/usb-snes-gamepad/overview.md
+
+# Source: https://learn.adafruit.com/thermocouple/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview.md
+
+# Source: https://learn.adafruit.com/smt-manufacturing/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-led-backpack/overview.md
+
+# Source: https://learn.adafruit.com/beaglebone/overview.md
+
+# Source: https://learn.adafruit.com/hacking-the-kinect/overview.md
+
+# Source: https://learn.adafruit.com/el-wire/overview.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
+
+# Source: https://learn.adafruit.com/thermocouple/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/overview.md
+
+# Source: https://learn.adafruit.com/smt-manufacturing/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-led-backpack/overview.md
+
+# Source: https://learn.adafruit.com/beaglebone/overview.md
+
+# Source: https://learn.adafruit.com/hacking-the-kinect/overview.md
+
+# Source: https://learn.adafruit.com/el-wire/overview.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/overview.md
+
 # Source: https://learn.adafruit.com/usb-snes-gamepad/overview.md
 
 # USB SNES Gamepad

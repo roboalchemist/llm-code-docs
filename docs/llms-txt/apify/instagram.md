@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
 
+# Source: https://docs.apify.com/platform/integrations/make/instagram.md
+
+# Source: https://docs.apify.com/platform/integrations/gumloop/instagram.md
+
 # Gumloop - Instagram Actor integration
 
 Get Instagram profile posts, details, stories, reels, post comments and hashtags, users, and tagged posts in Gumloop.

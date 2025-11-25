@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/get-by-username.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-users/get-by-username.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/get-by-username.md
+
 # Get By Username
 
 > Return project user memberships

@@ -1,0 +1,458 @@
+# Source: https://docs.unstructured.io/ui/sources/snowflake.md
+
+# Source: https://docs.unstructured.io/ui/destinations/snowflake.md
+
+# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/snowflake.md
+
+# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/snowflake.md
+
+# Source: https://docs.unstructured.io/api-reference/workflow/sources/snowflake.md
+
+# Source: https://docs.unstructured.io/api-reference/workflow/destinations/snowflake.md
+
+# Source: https://docs.unstructured.io/api-reference/workflow/sources/snowflake.md
+
+# Source: https://docs.unstructured.io/api-reference/workflow/destinations/snowflake.md
+
+# Snowflake
+
+<Note>
+  If you're new to Unstructured, read this note first.
+
+  Before you can create a destination connector, you must first sign in to your Unstructured account:
+
+  * If you do not already have an Unstructured account, [sign up for free](https://unstructured.io/?modal=try-for-free).
+    After you sign up, you are automatically signed in to your new Unstructured **Let's Go** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
+    To sign up for a **Business** account instead, [contact Unstructured Sales](https://unstructured.io/?modal=contact-sales), or [learn more](/api-reference/overview#pricing).
+  * If you already have an Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business SaaS** account and are not already signed in, sign in to your account at
+    [https://platform.unstructured.io](https://platform.unstructured.io). For other types of **Business** accounts, see your Unstructured account administrator for sign-in instructions,
+    or email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+
+  After you sign in, the [Unstructured user interface](/ui/overview) (UI) appears, which you use to get your Unstructured API key.
+
+  1. After you sign in to your Unstructured **Let's Go**, **Pay-As-You-Go**, or **Business** account, click **API Keys** on the sidebar.<br />
+
+     For a **Business** account, before you click **API Keys**, make sure you have selected the organizational workspace you want to create an API key
+     for. Each API key works with one and only one organizational workspace. [Learn more](/ui/account/workspaces#create-an-api-key-for-a-workspace).
+
+  2. Click **Generate API Key**.<br />
+
+  3. Follow the on-screen instructions to finish generating the key.<br />
+
+  4. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
+
+  After you create the destination connector, add it along with a
+  [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
+  Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
+  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
+  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
+
+  You can also create destination connectors with the Unstructured user interface (UI).
+  [Learn how](/ui/destinations/overview).
+
+  If you need help, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
+
+  You are now ready to start creating a destination connector! Keep reading to learn how.
+</Note>
+
+Send processed data from Unstructured to Snowflake.
+
+The requirements are as follows.
+
+* A Snowflake [account](https://signup.snowflake.com/) and its account identifier.
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/LgCjLyClg3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  To get the identifier for the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click your username, and then click **Account > View account details**.
+  3. On the **Account** tab, note the value of the **Account Identifier** field.
+
+  Alternatively, the following Snowflake query returns the current account's identifier:
+
+  ```text  theme={null}
+  SELECT CURRENT_ORGANIZATION_NAME() || '-' || CURRENT_ACCOUNT_NAME() AS "Account Identifier"
+  ```
+
+* A Snowflake user, which can be a service user (recommended) or a human user.
+
+  To create a service user entry and get their login name (not username):
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/n755MKunb0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+
+  2. In Snowsight, on the navigation menu, click **Projects > Worksheets**.
+
+  3. Click the **+** button to create a SQL worksheet.
+
+  4. In the worksheet, enter the following Snowflake query to create a service user, replacing the following placeholders:
+
+     * Replace `<service-user-name>` with some name for the service user.
+     * Replace `<default-role-name>` with the name of any default role for the service user to use.
+
+     ```sql  theme={null}
+     CREATE USER <service-user-name>
+     DEFAULT_ROLE = "<default-role-name>"
+     TYPE = SERVICE
+     ```
+
+  5. Click the arrow icon to run the worksheet, which creates the service user.
+
+  6. To get their login name, on the navigation menu, click **Admin > Users & Roles**.
+
+  7. On the **Users** tab, in the list of available users, click the name of the target user.
+
+  8. In the **About** tile, note the **Login Name** for the user.
+
+  To create a human user entry and get their login name (not username):
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/CECTR2QE__w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Admin > Users & roles**.
+  3. Click the **Users** tab.
+  4. Click **+ User**.
+  5. Follow the on-screen guidance to specify the user's settings.
+  6. Click **Create User**.
+  7. To get their login name, on the navigation menu, click **Admin > Users & Roles**.
+  8. On the **Users** tab, in the list of available users, click the name of the target user.
+  9. In the **About** tile, note the **Login Name** for the user.
+
+* A programmatic access token (PAT) for the Snowflake user.
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/8u41UJ8lN3w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  To create a programmatic access token (PAT) for a user:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+
+  2. In Snowsight, on the navigation menu, click **Admin > Users & Roles**.
+
+  3. On the **Users** tab, in the list of available users, click the name of the target user.
+
+  4. In the **Programmatic access tokens** tile, click the **Generate new token** button.
+
+  5. Follow the on-screen guidance to specify the PAT's settings.
+
+     <Warning>
+       You must set an expiration date for the PAT. This expiration date can be as soon as one day after the PAT is created or up to one year or even later.
+       Once this PAT expires, the connector will stop working.
+       To make sure that your connector continues to work, before your current PAT expires, you must follow this procedure again to generate a new PAT and
+       update your connector's settings with your new PAT's value.
+
+       Unstructured does not notify you when a PAT is about to expire or has already expired.
+       You are responsible for tracking your PATs' expiration dates and taking corrective action before they expire.
+     </Warning>
+
+  6. Click **Generate**.
+
+  7. Copy the generated PAT's value to a secure location, as you will not be able to access it again. If you lose this PAT's value,
+     you will need to repeat this procedure to generate a new, replacement one.
+
+  The PAT will not work unless the Snowflake account also has a valid
+  [network rule](https://docs.snowflake.com/en/user-guide/network-rules) along with a valid
+  [network policy](https://docs.snowflake.com/en/user-guide/network-policies) attached to that rule.
+  The network rule must also be activated on the Snowflake account to begin taking effect.
+
+  To create a valid network rule:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+
+  2. In Snowsight, on the navigation menu, click **Admin > Security > Network Rules**.
+
+  3. Click **+ Network Rule**.
+
+  4. Enter some name for the network rule.
+
+  5. For **Type**, select **IPv4**.
+
+  6. For **Mode**, select **Ingress**.
+
+  7. For **Identifiers**, next to the magnifying glass icon, enter `0.0.0.0/0`, and then press **Enter**.
+
+     <Note>
+       The `0.0.0.0/0` value allows all IP addresses to access the Snowflake account.
+       You can specify a more specific IP address range if you prefer. However, this more specific IP address range
+       will apply to all users, including the user for which you created the PAT.
+     </Note>
+
+  8. Click **Create Network Rule**.
+
+  To create a valid network policy, attaching the preceding network rule to this policy at the same time:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Admin > Security > Network Policies**.
+  3. Click **+ Network Policy**.
+  4. Enter some name for the network policy.
+  5. Make sure **Allowed** is selected.
+  6. In the **Select rule** drop-down list, select the precedingnetwork rule to attach to this network policy.
+  7. Click **Create Network Policy**.
+
+  To activate the network rule in the account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Admin > Security > Network Policies**.
+  3. Click the name of the precedingnetwork policy to activate.
+  4. In the policy's side panel, click the ellipsis (three dots) icon, and then click **Activate On Account**.
+  5. Click **Activate policy**.
+
+* (No longer recommended, as passwords are being deprecated by Snowflake—use PATs instead) The Snowflake [user's login name (not username) and the user's password](https://docs.snowflake.com/user-guide/admin-user-management#creating-users) in the account.
+  This user must be a human user. Passwords are not supported for service users.
+
+* The name of the Snowflake [role](https://docs.snowflake.com/sql-reference/sql/create-role) that the user belongs to and that also has sufficient access to the Snowflake database, schema, table, and host.
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/cxe2Ed_-qkM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  * To create a database in Snowflake, the role needs to be granted `CREATE DATABASE` privilege at the current account level; and `USAGE` privilege on the warehouse that is used to create the database.
+  * To create a schema in a database in Snowflake, the role needs to be granted `USAGE` privilege on the database and the warehouse that is used to create the schema; and `CREATE SCHEMA` on the database.
+  * To create a table in a schema in Snowflake, the role needs to be granted `USAGE` privilege on the database and schema and the warehouse that is used to create the table; and `CREATE TABLE` on the schema.
+  * To write to a table in Snowflake, the role needs to be granted `USAGE` privilege on the database and schema and the warehouse that is used to write to the table; and `INSERT` on the table.
+  * To read from a table in Snowflake, the role needs to be granted `USAGE` privilege on the database and schema and the warehouse that is used to write to the table; and `SELECT` on the table.
+
+  To view a list of available roles in the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Admin > Users & Roles**.
+  3. Click the **Roles** tab.
+
+  Alternatively, the following Snowflake query returns a list of available roles in the current account:
+
+  ```text  theme={null}
+  SHOW ROLES;
+  ```
+
+  [Grant privileges to a role](https://docs.snowflake.com/sql-reference/sql/grant-privilege). [Learn more](https://docs.snowflake.com/user-guide/security-access-control-privileges).
+
+* The Snowflake warehouse's [hostname and its port number](https://docs.snowflake.com/sql-reference/functions/system_allowlist) in the account.
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/ItLW0N1uEOI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  To view a list of available warehouses in the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Admin > Warehouses**. This view does not provide access to the warehouses' hostnames or port numbers. To get this information, you must run a Snowflake query.
+
+  The following Snowflake query returns a list of available warehouse types, hostnames, and port numbers in the current account. Look for the row with a `type` of `SNOWFLAKE_DEPLOYMENT`:
+
+  ```text  theme={null}
+  SELECT t.VALUE:type::VARCHAR as type,
+         t.VALUE:host::VARCHAR as host,
+         t.VALUE:port as port
+  FROM TABLE(FLATTEN(input => PARSE_JSON(SYSTEM$ALLOWLIST()))) AS t;
+  ```
+
+* The name of the Snowflake [database](https://docs.snowflake.com/sql-reference/sql/create-database) in the account.
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/f49tin_Pehs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+
+  To view a list of available databases in the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Data > Databases**.
+
+  Alternatively, the following Snowflake query returns a list of available databases in the current account:
+
+  ```text  theme={null}
+  SHOW DATABASES;
+  ```
+
+* The name of the [schema](https://docs.snowflake.com/sql-reference/sql/create-schema) in the database.
+
+  To view a list of available schemas for a database in the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Data > Databases**.
+  3. Expand the name of the target database.
+
+  Alternatively, the following Snowflake query returns a list of available schemas in the current account:
+
+  ```text  theme={null}
+  SHOW SCHEMAS;
+  ```
+
+  The following Snowflake query returns a list of available schemas for the database named `<database_name>` in the current account:
+
+  ```text  theme={null}
+  SHOW SCHEMAS IN DATABASE <database_name>;
+  ```
+
+* The name of the [table](https://docs.snowflake.com/sql-reference/sql/create-table) in the schema.
+
+  To view a list of available tables for a schema in a database in the current Snowflake account:
+
+  1. Log in to [Snowsight](https://docs.snowflake.com/user-guide/ui-snowsight-homepage) with your Snowflake account.
+  2. In Snowsight, on the navigation menu, click **Data > Databases**.
+  3. Expand the name of the database that contains the target schema.
+  4. Expand the name of the target schema.
+  5. Expand **Tables**.
+
+  Alternatively, the following Snowflake query returns a list of available tables for the schema named `<schema_name>` in the datbase named
+  `<database_name>` in the current account:
+
+  ```text  theme={null}
+  SHOW TABLES IN SCHEMA <database_name>.<schema_name>;
+  ```
+
+  Snowflake requires the target table to have a defined schema before Unstructured can write to the table. The recommended table
+  schema for Unstructured is as follows. In the following `CREATE TABLE` statement, replace the following placeholders with the appropriate values:
+
+  * `<database_name>`: The name of the target database in the Snowflake account.
+  * `<schema_name>`: The name of the target schema in the database.
+  * `<number-of-dimensions>`: The number of dimensions for any embeddings that you plan to use. This value must match the number of dimensions for any embeddings that are\
+    specified in your related Unstructured workflows or pipelines. If you plan to use Snowflake vector embedding generation or Snowflake vector search,
+    this value must match the number of dimensions that you plan to have Snowflake generate or search against.
+
+  ```sql SQL theme={null}
+  CREATE TABLE <database_name>.<schema_name>.ELEMENTS (
+    ID VARCHAR(36) PRIMARY KEY NOT NULL DEFAULT UUID_STRING(),
+    RECORD_ID VARCHAR,
+    ELEMENT_ID VARCHAR,
+    TEXT VARCHAR,
+    EMBEDDINGS VECTOR(FLOAT, <number-of-dimensions>),
+    TYPE VARCHAR,
+    SYSTEM VARCHAR,
+    LAYOUT_WIDTH DECIMAL,
+    LAYOUT_HEIGHT DECIMAL,
+    POINTS VARCHAR,
+    URL VARCHAR,
+    VERSION VARCHAR,
+    DATE_CREATED TIMESTAMP_TZ,
+    DATE_MODIFIED TIMESTAMP_TZ,
+    DATE_PROCESSED TIMESTAMP_TZ,
+    PERMISSIONS_DATA VARCHAR,
+    RECORD_LOCATOR VARCHAR,
+    CATEGORY_DEPTH INTEGER,
+    PARENT_ID VARCHAR,
+    ATTACHED_FILENAME VARCHAR,
+    FILETYPE VARCHAR,
+    LAST_MODIFIED TIMESTAMP_TZ,
+    FILE_DIRECTORY VARCHAR,
+    FILENAME VARCHAR,
+    LANGUAGES ARRAY,
+    PAGE_NUMBER VARCHAR,
+    LINKS VARCHAR,
+    PAGE_NAME VARCHAR,
+    LINK_URLS ARRAY,
+    LINK_TEXTS ARRAY,
+    SENT_FROM ARRAY,
+    SENT_TO ARRAY,
+    SUBJECT VARCHAR,
+    SECTION VARCHAR,
+    HEADER_FOOTER_TYPE VARCHAR,
+    EMPHASIZED_TEXT_CONTENTS ARRAY,
+    EMPHASIZED_TEXT_TAGS ARRAY,
+    TEXT_AS_HTML VARCHAR,
+    REGEX_METADATA VARCHAR,
+    DETECTION_CLASS_PROB DECIMAL,
+    IMAGE_BASE64 VARCHAR,
+    IMAGE_MIME_TYPE VARCHAR,
+    ORIG_ELEMENTS VARCHAR,
+    IS_CONTINUATION BOOLEAN
+  );
+  ```
+
+* The name of the column in the table that uniquely identifies each record (for example, `RECORD_ID`).
+
+To create a Snowflake destination connector, see the following examples.
+
+<CodeGroup>
+  ```python Python SDK theme={null}
+  import os
+
+  from unstructured_client import UnstructuredClient
+  from unstructured_client.models.operations import CreateDestinationRequest
+  from unstructured_client.models.shared import CreateDestinationConnector
+
+  with UnstructuredClient(api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")) as client:
+      response = client.destinations.create_destination(
+          request=CreateDestinationRequest(
+              create_destination_connector=CreateDestinationConnector(
+                  name="<name>",
+                  type="snowflake",
+                  config={
+                      "account": "<account>",
+                      "user": "<user>",
+                      "host": "<host>",
+                      "port": <port>,
+                      "database": "<database>",
+                      "schema": "<schema>",
+                      "role": "<role>",
+                      "password": "<programmatic-access-token>",
+                      "record_id_key": "<record-id-key>",
+                      "table_name": "<table_name>",
+                      "batch_size": <batch-size>
+                  }
+              )
+          )
+      )
+
+      print(response.destination_connector_information)
+  ```
+
+  ```bash curl theme={null}
+  curl --request 'POST' --location \
+  "$UNSTRUCTURED_API_URL/destinations" \
+  --header 'accept: application/json' \
+  --header "unstructured-api-key: $UNSTRUCTURED_API_KEY" \
+  --header 'content-type: application/json' \
+  --data \
+  '{
+      "name": "<name>",
+      "type": "snowflake",
+      "config": {
+          "account": "<account>",
+          "user": "<user>",
+          "host": "<host>",
+          "port": <port>,
+          "database": "<database>",
+          "schema": "<schema>",
+          "role": "<role>",
+          "password": "<programmatic-access-token>",
+          "record_id_key": "<record-id-key>",
+          "table_name": "<table_name>",
+          "batch_size": <batch-size>
+      }
+  }'
+  ```
+</CodeGroup>
+
+Replace the preceding placeholders as follows:
+
+* `<name>` (*required*) - A unique name for this connector.
+
+* `<account>` (*required*): The target Snowflake account's identifier.
+
+* `<role>` (*required*): The name of the Snowflake role that the user belongs to. This role must have the appropriate access to the target Snowflake warehouse, database, schema, and table.
+
+* `<user>` (*required*): The target Snowflake user's login name (not their username).
+
+* `<programmatic-access-token>` (*required*): The user's programmatic access token (PAT).
+
+  <Note>
+    Specifying a password is no longer recommended, as passwords are being deprecated by Snowflake. Use a PAT instead.
+  </Note>
+
+* `<host>` (*required*): The hostname of the target Snowflake warehouse.
+
+* `<port>` (*required*): The warehouse's port number. The default is `443` if not otherwise specified.
+
+* `<database>` (*required*): The name of the target Snowflake database.
+
+* `<schema>` (*required*): The name of the target Snowflake schema within the database.
+
+* `<table_name>`: The name of the target Snowflake table within the database's schema. For the destination connector, the default is `elements` if not otherwise specified.
+
+* `<columns>` (source connector only): A comma-separated list of columns to fetch from the table. By default, all columns are fetched unless otherwise specified.
+
+* `<id-column>` (*required*, source connector only): The name of the column that uniquely identifies each record in the table.
+
+* `<record-id-key>` (destination connector only): The name of the column that uniquely identifies each record in the table. The default is `record_id` if not otherwise specified.
+
+* `<batch-size>` (*required*): The maximum number of rows to fetch for each batch. The default is `50` if not otherwise specified.
+
+## Learn more
+
+* <Icon icon="blog" />  [Powering Enterprise RAG: Unstructured's New Snowflake Integration](https://unstructured.io/blog/powering-enterprise-rag-unstructured-s-new-snowflake-integration)

@@ -1,3 +1,5 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/inference/rerank.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/inference/rerank.md
 
 # Rerank documents

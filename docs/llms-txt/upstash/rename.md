@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/rename.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/rename.md
+
 # RENAME
 
 > Rename a key

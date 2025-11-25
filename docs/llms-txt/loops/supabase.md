@@ -2,6 +2,10 @@
 
 # Source: https://loops.so/docs/integrations/supabase.md
 
+# Source: https://loops.so/docs/smtp/supabase.md
+
+# Source: https://loops.so/docs/integrations/supabase.md
+
 # Supabase
 
 > Sync contacts and send emails triggered by events in Supabase.

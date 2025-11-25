@@ -2,6 +2,10 @@
 
 # Source: https://docs.near.org/smart-contracts/security/welcome.md
 
+# Source: https://docs.near.org/tutorials/welcome.md
+
+# Source: https://docs.near.org/smart-contracts/security/welcome.md
+
 ---
 id: welcome
 title: Security

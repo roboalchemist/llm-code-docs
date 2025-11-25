@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/guides/nextjs.md
 
+# Source: https://polar.sh/docs/integrate/sdk/adapters/nextjs.md
+
+# Source: https://polar.sh/docs/guides/nextjs.md
+
 # Integrate Polar with Next.js
 
 > In this guide, we'll show you how to integrate Polar with Next.js.

@@ -4,6 +4,12 @@
 
 # Source: https://docs.hypermode.com/agents/connections/neo4j.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/neo4j.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/neo4j.md
+
+# Source: https://docs.hypermode.com/agents/connections/neo4j.md
+
 # Using Neo4j with Hypermode
 
 > Connect your Hypermode agent to Neo4j for graph database operations

@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/saving-data.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/saving-data.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/saving-data.md
 
 # Saving data with Node.js

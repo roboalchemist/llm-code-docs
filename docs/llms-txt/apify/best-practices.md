@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/best-practices.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/best-practices.md
 
 # Best practices when writing scrapers

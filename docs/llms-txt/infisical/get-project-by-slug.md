@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/projects/get-project-by-slug.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/projects/get-project-by-slug.md
+
 # Get Project By Slug
 
 > Get project details by slug

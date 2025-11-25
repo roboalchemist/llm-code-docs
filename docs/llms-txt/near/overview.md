@@ -6,6 +6,22 @@
 
 # Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/overview.md
 
+# Source: https://docs.near.org/tutorials/crosswords/01-basics/overview.md
+
+# Source: https://docs.near.org/chain-abstraction/omnibridge/overview.md
+
+# Source: https://docs.near.org/chain-abstraction/intents/overview.md
+
+# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/overview.md
+
+# Source: https://docs.near.org/tutorials/crosswords/01-basics/overview.md
+
+# Source: https://docs.near.org/chain-abstraction/omnibridge/overview.md
+
+# Source: https://docs.near.org/chain-abstraction/intents/overview.md
+
+# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/overview.md
+
 ---
 id: overview
 title: Overview

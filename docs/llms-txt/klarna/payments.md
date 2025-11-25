@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/resources/business-tools/merchant-portal-guide/payments.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/salesforce-commerce-cloud/payments.md
+
+# Source: https://docs.klarna.com/resources/business-tools/merchant-portal-guide/payments.md
+
 # Payments
 
 ## Explore the Payment sections within the Klarna portal!

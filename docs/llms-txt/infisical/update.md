@@ -120,6 +120,310 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/project-groups/update.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/chef/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-secrets-manager/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/pki-collections/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oidc-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/oci-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ldap-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kubernetes-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/kms/keys/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/jwt-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/integrations/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v2/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identity-specific-privilege/v1/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/identities/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/groups/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/gcp-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/folders/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/environments/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/dynamic-secrets/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secret-tags/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secret-imports/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-roles/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-groups/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/folders/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/environments/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-templates-v2/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-profiles/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/internal/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/certificate-authorities/acme/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/azure-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/aws-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/zabbix/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/windmill/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/vercel/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/terraform-cloud/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/teamcity/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/supabase/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/render/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/redis/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/railway/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/postgres/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oracledb/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/okta/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/oci/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/northflank/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/netlify/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mysql/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/mssql/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/ldap/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/laravel-forge/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/humanitec/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/heroku/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/hashicorp-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gitlab/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/github-radar/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/gcp/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/flyio/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/digital-ocean/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/databricks/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/checkly/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/cloudflare/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/chef/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/checkly/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/camunda/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/bitbucket/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-key-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-devops/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-client-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-app-configuration/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/azure-adcs/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/aws/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/auth0/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/app-connections/1password/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/alicloud-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/universal-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/token-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/tls-cert-auth/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/hosts/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/groups/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/certificate-templates/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/ssh/ca/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secrets/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-tags/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/terraform-cloud/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/supabase/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/netlify/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/humanitec/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/heroku/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gitlab/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/github/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/flyio/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/digital-ocean-app-platform/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/databricks/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-workers/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/cloudflare-pages/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/checkly/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/camunda/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/findings/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/gitlab/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/github/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/data-sources/bitbucket/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-scanning/config/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/redis-credentials/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/postgres-credentials/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/oracledb-credentials/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/okta-client-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mysql-credentials/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/mssql-credentials/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/ldap-password/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/azure-client-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/aws-iam-user-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-rotations/auth0-client-secret/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/secret-imports/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-templates/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-roles/update.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/project-groups/update.md
+
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/azure-key-vault/update.md
 
 # Source: https://infisical.com/docs/api-reference/endpoints/pki/syncs/aws-certificate-manager/update.md

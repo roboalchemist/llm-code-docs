@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/academy/apify-platform.md
 
+# Source: https://docs.apify.com/sdk/js/docs/guides/apify-platform.md
+
+# Source: https://docs.apify.com/academy/apify-platform.md
+
 # Introduction to the Apify platform
 
 **Learn all about the Apify platform, all of the tools it offers, and how it can improve your overall development experience.**

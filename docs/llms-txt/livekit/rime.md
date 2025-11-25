@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/rime.md
+
+# Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
+
 LiveKit docs › Models › Text-to-speech (TTS) › LiveKit Inference › Rime
 
 ---

@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/features/benefits/credits.md
 
+# Source: https://polar.sh/docs/features/usage-based-billing/credits.md
+
+# Source: https://polar.sh/docs/features/benefits/credits.md
+
 # Credits Benefit
 
 > Create your own Credits benefit

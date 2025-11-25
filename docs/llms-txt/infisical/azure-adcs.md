@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
 
+# Source: https://infisical.com/docs/integrations/app-connections/azure-adcs.md
+
+# Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
+
 # Microsoft AD CS
 
 > Learn how to issue and manage certificates using Microsoft Active Directory Certificate Services (ADCS) with Infisical.

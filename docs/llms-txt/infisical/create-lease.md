@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/dynamic-secrets/create-lease.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/dynamic-secrets/kubernetes/create-lease.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/dynamic-secrets/create-lease.md
+
 # Create Lease
 
 ## OpenAPI

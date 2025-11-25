@@ -4,6 +4,10 @@
 
 # Source: https://www.plain.com/docs/graphql/tenants/upsert.md
 
+# Source: https://www.plain.com/docs/graphql/customers/upsert.md
+
+# Source: https://www.plain.com/docs/graphql/tenants/upsert.md
+
 # Upserting tenants
 
 When upserting a tenant you need to specify an `externalId` which matches the id of the tenant in your own backend.

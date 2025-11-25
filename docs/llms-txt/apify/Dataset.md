@@ -1,3 +1,9 @@
+# Source: https://docs.apify.com/sdk/python/reference/class/Dataset.md
+
+# Source: https://docs.apify.com/sdk/js/reference/class/Dataset.md
+
+# Source: https://docs.apify.com/api/client/js/reference/interface/Dataset.md
+
 # Source: https://docs.apify.com/platform/storage/dataset.md
 
 # Dataset

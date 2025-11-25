@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/framework.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/framework.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/framework.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/framework.md
 
 # Using a scraping framework with Node.js

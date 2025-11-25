@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/snapshot.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/snapshot.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md
+
 ## Snapshot
 
 ```python

@@ -1,5 +1,25 @@
 # Source: https://learn.adafruit.com/thermocouple/downloads.md
 
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/downloads.md
+
+# Source: https://learn.adafruit.com/adafruit-led-backpack/downloads.md
+
+# Source: https://learn.adafruit.com/beaglebone/downloads.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/downloads.md
+
+# Source: https://learn.adafruit.com/thermocouple/downloads.md
+
+# Source: https://learn.adafruit.com/adafruit-ina219-current-sensor-breakout/downloads.md
+
+# Source: https://learn.adafruit.com/adafruit-led-backpack/downloads.md
+
+# Source: https://learn.adafruit.com/beaglebone/downloads.md
+
+# Source: https://learn.adafruit.com/ttl-serial-camera/downloads.md
+
+# Source: https://learn.adafruit.com/thermocouple/downloads.md
+
 # MAX31855 Thermocouple
 
 ## Downloads

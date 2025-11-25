@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/pty.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
+
+# Source: https://www.daytona.io/docs/en/pty.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/pty.md
+
+# Source: https://www.daytona.io/docs/en/pty.md
+
 The Daytona SDK provides powerful pseudo terminal (PTY) capabilities through the `process` module in Sandboxes. PTY sessions allow you to create interactive terminal sessions that can execute commands, handle user input, and manage terminal operations.
 
 ## What is PTY?

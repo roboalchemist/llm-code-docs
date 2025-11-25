@@ -16,6 +16,14 @@
 
 # Source: https://upstash.com/docs/vector/help/faq.md
 
+# Source: https://upstash.com/docs/search/help/faq.md
+
+# Source: https://upstash.com/docs/redis/help/faq.md
+
+# Source: https://upstash.com/docs/common/account/faq.md
+
+# Source: https://upstash.com/docs/vector/help/faq.md
+
 # FAQ
 
 **Account and Usage:**

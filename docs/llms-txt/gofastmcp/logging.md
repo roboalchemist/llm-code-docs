@@ -6,6 +6,10 @@
 
 # Source: https://gofastmcp.com/clients/logging.md
 
+# Source: https://gofastmcp.com/servers/logging.md
+
+# Source: https://gofastmcp.com/clients/logging.md
+
 # Server Logging
 
 > Receive and handle log messages from MCP servers.

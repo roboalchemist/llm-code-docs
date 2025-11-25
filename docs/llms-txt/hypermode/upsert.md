@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/upsert.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/mutation/upsert.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/upsert.md
+
 # Upsert
 
 <Info>

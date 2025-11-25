@@ -6,6 +6,14 @@
 
 # Source: https://docs.hypermode.com/dgraph/graphql/http.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/http.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/http.md
+
+# Source: https://docs.hypermode.com/dgraph/http.md
+
+# Source: https://docs.hypermode.com/dgraph/graphql/http.md
+
 # HTTP Protocol
 
 > Get the structure for GraphQL requests and responses, how to enable compression for them, and configuration options for extensions

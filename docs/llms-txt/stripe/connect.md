@@ -6,6 +6,12 @@
 
 # Source: https://docs.stripe.com/revenue-recognition/connect.md
 
+# Source: https://docs.stripe.com/tax/connect.md
+
+# Source: https://docs.stripe.com/connect.md
+
+# Source: https://docs.stripe.com/revenue-recognition/connect.md
+
 # Revenue Recognition for Connect platforms
 
 Learn how revenue recognition works with Connect platforms.

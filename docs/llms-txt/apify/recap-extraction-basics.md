@@ -1,3 +1,5 @@
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/recap-extraction-basics.md
+
 # Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/recap-extraction-basics.md
 
 # Recap of data extraction basics

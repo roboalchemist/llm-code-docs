@@ -2,6 +2,14 @@
 
 # Source: https://docs.augmentcode.com/jetbrains/setup-augment/agent-integrations.md
 
+# Source: https://docs.augmentcode.com/setup-augment/agent-integrations.md
+
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/agent-integrations.md
+
+# Source: https://docs.augmentcode.com/setup-augment/agent-integrations.md
+
+# Source: https://docs.augmentcode.com/jetbrains/setup-augment/agent-integrations.md
+
 # Agent Integrations
 
 > Configure integrations for Augment Agent to access external services like GitHub, Linear, Jira, Confluence, and Notion.

@@ -184,6 +184,318 @@
 
 # Source: https://ai.pydantic.dev/models/outlines/index.md
 
+# Source: https://ai.pydantic.dev/models/openrouter/index.md
+
+# Source: https://ai.pydantic.dev/models/openai/index.md
+
+# Source: https://ai.pydantic.dev/models/mistral/index.md
+
+# Source: https://ai.pydantic.dev/models/huggingface/index.md
+
+# Source: https://ai.pydantic.dev/models/groq/index.md
+
+# Source: https://ai.pydantic.dev/models/google/index.md
+
+# Source: https://ai.pydantic.dev/models/cohere/index.md
+
+# Source: https://ai.pydantic.dev/models/bedrock/index.md
+
+# Source: https://ai.pydantic.dev/models/anthropic/index.md
+
+# Source: https://ai.pydantic.dev/toolsets/index.md
+
+# Source: https://ai.pydantic.dev/tools/index.md
+
+# Source: https://ai.pydantic.dev/tools-advanced/index.md
+
+# Source: https://ai.pydantic.dev/third-party-tools/index.md
+
+# Source: https://ai.pydantic.dev/thinking/index.md
+
+# Source: https://ai.pydantic.dev/retries/index.md
+
+# Source: https://ai.pydantic.dev/output/index.md
+
+# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
+
+# Source: https://ai.pydantic.dev/message-history/index.md
+
+# Source: https://ai.pydantic.dev/input/index.md
+
+# Source: https://ai.pydantic.dev/direct/index.md
+
+# Source: https://ai.pydantic.dev/dependencies/index.md
+
+# Source: https://ai.pydantic.dev/deferred-tools/index.md
+
+# Source: https://ai.pydantic.dev/common-tools/index.md
+
+# Source: https://ai.pydantic.dev/builtin-tools/index.md
+
+# Source: https://ai.pydantic.dev/agents/index.md
+
+# Source: https://ai.pydantic.dev/a2a/index.md
+
+# Source: https://ai.pydantic.dev/troubleshooting/index.md
+
+# Source: https://ai.pydantic.dev/install/index.md
+
+# Source: https://ai.pydantic.dev/help/index.md
+
+# Source: https://ai.pydantic.dev/index.md
+
+# Source: https://ai.pydantic.dev/graph/index.md
+
+# Source: https://ai.pydantic.dev/models/overview/index.md
+
+# Source: https://ai.pydantic.dev/models/outlines/index.md
+
+# Source: https://ai.pydantic.dev/models/openrouter/index.md
+
+# Source: https://ai.pydantic.dev/models/openai/index.md
+
+# Source: https://ai.pydantic.dev/models/mistral/index.md
+
+# Source: https://ai.pydantic.dev/models/huggingface/index.md
+
+# Source: https://ai.pydantic.dev/models/groq/index.md
+
+# Source: https://ai.pydantic.dev/models/google/index.md
+
+# Source: https://ai.pydantic.dev/models/cohere/index.md
+
+# Source: https://ai.pydantic.dev/models/bedrock/index.md
+
+# Source: https://ai.pydantic.dev/models/anthropic/index.md
+
+# Source: https://ai.pydantic.dev/toolsets/index.md
+
+# Source: https://ai.pydantic.dev/tools/index.md
+
+# Source: https://ai.pydantic.dev/tools-advanced/index.md
+
+# Source: https://ai.pydantic.dev/third-party-tools/index.md
+
+# Source: https://ai.pydantic.dev/thinking/index.md
+
+# Source: https://ai.pydantic.dev/retries/index.md
+
+# Source: https://ai.pydantic.dev/output/index.md
+
+# Source: https://ai.pydantic.dev/multi-agent-applications/index.md
+
+# Source: https://ai.pydantic.dev/message-history/index.md
+
+# Source: https://ai.pydantic.dev/input/index.md
+
+# Source: https://ai.pydantic.dev/direct/index.md
+
+# Source: https://ai.pydantic.dev/dependencies/index.md
+
+# Source: https://ai.pydantic.dev/deferred-tools/index.md
+
+# Source: https://ai.pydantic.dev/common-tools/index.md
+
+# Source: https://ai.pydantic.dev/builtin-tools/index.md
+
+# Source: https://ai.pydantic.dev/agents/index.md
+
+# Source: https://ai.pydantic.dev/a2a/index.md
+
+# Source: https://ai.pydantic.dev/troubleshooting/index.md
+
+# Source: https://ai.pydantic.dev/install/index.md
+
+# Source: https://ai.pydantic.dev/help/index.md
+
+# Source: https://ai.pydantic.dev/index.md
+
+# Source: https://ai.pydantic.dev/examples/weather-agent/index.md
+
+# Source: https://ai.pydantic.dev/examples/stream-whales/index.md
+
+# Source: https://ai.pydantic.dev/examples/stream-markdown/index.md
+
+# Source: https://ai.pydantic.dev/examples/sql-gen/index.md
+
+# Source: https://ai.pydantic.dev/examples/slack-lead-qualifier/index.md
+
+# Source: https://ai.pydantic.dev/examples/setup/index.md
+
+# Source: https://ai.pydantic.dev/examples/rag/index.md
+
+# Source: https://ai.pydantic.dev/examples/question-graph/index.md
+
+# Source: https://ai.pydantic.dev/examples/pydantic-model/index.md
+
+# Source: https://ai.pydantic.dev/examples/flight-booking/index.md
+
+# Source: https://ai.pydantic.dev/examples/data-analyst/index.md
+
+# Source: https://ai.pydantic.dev/examples/chat-app/index.md
+
+# Source: https://ai.pydantic.dev/examples/bank-support/index.md
+
+# Source: https://ai.pydantic.dev/examples/ag-ui/index.md
+
+# Source: https://ai.pydantic.dev/version-policy/index.md
+
+# Source: https://ai.pydantic.dev/testing/index.md
+
+# Source: https://ai.pydantic.dev/logfire/index.md
+
+# Source: https://ai.pydantic.dev/contributing/index.md
+
+# Source: https://ai.pydantic.dev/cli/index.md
+
+# Source: https://ai.pydantic.dev/changelog/index.md
+
+# Source: https://ai.pydantic.dev/ui/vercel-ai/index.md
+
+# Source: https://ai.pydantic.dev/ui/overview/index.md
+
+# Source: https://ai.pydantic.dev/ui/ag-ui/index.md
+
+# Source: https://ai.pydantic.dev/mcp/server/index.md
+
+# Source: https://ai.pydantic.dev/mcp/overview/index.md
+
+# Source: https://ai.pydantic.dev/mcp/fastmcp-client/index.md
+
+# Source: https://ai.pydantic.dev/mcp/client/index.md
+
+# Source: https://ai.pydantic.dev/durable_execution/temporal/index.md
+
+# Source: https://ai.pydantic.dev/durable_execution/prefect/index.md
+
+# Source: https://ai.pydantic.dev/durable_execution/overview/index.md
+
+# Source: https://ai.pydantic.dev/durable_execution/dbos/index.md
+
+# Source: https://ai.pydantic.dev/evals/index.md
+
+# Source: https://ai.pydantic.dev/api/ui/vercel_ai/index.md
+
+# Source: https://ai.pydantic.dev/api/ui/base/index.md
+
+# Source: https://ai.pydantic.dev/api/ui/ag_ui/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/persistence/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/nodes/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/mermaid/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/graph/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/exceptions/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_step/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_node/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_join/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph_builder/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_graph/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta_decision/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_graph/beta/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_evals/reporting/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_evals/otel/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_evals/generation/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_evals/evaluators/index.md
+
+# Source: https://ai.pydantic.dev/api/pydantic_evals/dataset/index.md
+
+# Source: https://ai.pydantic.dev/api/models/wrapper/index.md
+
+# Source: https://ai.pydantic.dev/api/models/test/index.md
+
+# Source: https://ai.pydantic.dev/api/models/outlines/index.md
+
+# Source: https://ai.pydantic.dev/api/models/openai/index.md
+
+# Source: https://ai.pydantic.dev/api/models/mistral/index.md
+
+# Source: https://ai.pydantic.dev/api/models/mcp-sampling/index.md
+
+# Source: https://ai.pydantic.dev/api/models/instrumented/index.md
+
+# Source: https://ai.pydantic.dev/api/models/huggingface/index.md
+
+# Source: https://ai.pydantic.dev/api/models/groq/index.md
+
+# Source: https://ai.pydantic.dev/api/models/google/index.md
+
+# Source: https://ai.pydantic.dev/api/models/function/index.md
+
+# Source: https://ai.pydantic.dev/api/models/fallback/index.md
+
+# Source: https://ai.pydantic.dev/api/models/cohere/index.md
+
+# Source: https://ai.pydantic.dev/api/models/bedrock/index.md
+
+# Source: https://ai.pydantic.dev/api/models/base/index.md
+
+# Source: https://ai.pydantic.dev/api/models/anthropic/index.md
+
+# Source: https://ai.pydantic.dev/api/usage/index.md
+
+# Source: https://ai.pydantic.dev/api/toolsets/index.md
+
+# Source: https://ai.pydantic.dev/api/tools/index.md
+
+# Source: https://ai.pydantic.dev/api/settings/index.md
+
+# Source: https://ai.pydantic.dev/api/run/index.md
+
+# Source: https://ai.pydantic.dev/api/retries/index.md
+
+# Source: https://ai.pydantic.dev/api/result/index.md
+
+# Source: https://ai.pydantic.dev/api/providers/index.md
+
+# Source: https://ai.pydantic.dev/api/profiles/index.md
+
+# Source: https://ai.pydantic.dev/api/output/index.md
+
+# Source: https://ai.pydantic.dev/api/messages/index.md
+
+# Source: https://ai.pydantic.dev/api/mcp/index.md
+
+# Source: https://ai.pydantic.dev/api/format_prompt/index.md
+
+# Source: https://ai.pydantic.dev/api/fasta2a/index.md
+
+# Source: https://ai.pydantic.dev/api/ext/index.md
+
+# Source: https://ai.pydantic.dev/api/exceptions/index.md
+
+# Source: https://ai.pydantic.dev/api/durable_exec/index.md
+
+# Source: https://ai.pydantic.dev/api/direct/index.md
+
+# Source: https://ai.pydantic.dev/api/common_tools/index.md
+
+# Source: https://ai.pydantic.dev/api/builtin_tools/index.md
+
+# Source: https://ai.pydantic.dev/api/agent/index.md
+
+# Source: https://ai.pydantic.dev/api/ag_ui/index.md
+
+# Source: https://ai.pydantic.dev/graph/index.md
+
+# Source: https://ai.pydantic.dev/models/overview/index.md
+
+# Source: https://ai.pydantic.dev/models/outlines/index.md
+
 # Source: https://ai.pydantic.dev/models/openai/index.md
 
 # Source: https://ai.pydantic.dev/models/mistral/index.md

@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/guides/message-board-app/graphql/index.md
 
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/react-ui/index.md
+
+# Source: https://docs.hypermode.com/dgraph/guides/message-board-app/graphql/index.md
+
 # Working in GraphQL
 
 > Developing a Message Board App in React with Dgraph Learn. Step 2: GraphQL schema design and loading, queries, and mutations.

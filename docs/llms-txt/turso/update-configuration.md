@@ -2,6 +2,10 @@
 
 # Source: https://docs.turso.tech/api-reference/databases/update-configuration.md
 
+# Source: https://docs.turso.tech/api-reference/groups/update-configuration.md
+
+# Source: https://docs.turso.tech/api-reference/databases/update-configuration.md
+
 # Update Database Configuration
 
 > Update a database configuration belonging to the organization or user.

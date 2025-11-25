@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
+
 # HINCRBYFLOAT
 
 > Increments the value of a hash field by a given float value.

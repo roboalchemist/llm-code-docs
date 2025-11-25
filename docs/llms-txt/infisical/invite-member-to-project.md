@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/invite-member-to-project.md
 
+# Source: https://infisical.com/docs/api-reference/endpoints/project-users/invite-member-to-project.md
+
+# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/invite-member-to-project.md
+
 # Invite Member
 
 > Invite members to project

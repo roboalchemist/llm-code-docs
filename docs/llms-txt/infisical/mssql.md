@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/mssql.md
 
+# Source: https://infisical.com/docs/integrations/app-connections/mssql.md
+
+# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/mssql.md
+
 # MS SQL
 
 > Learn how to dynamically generate MS SQL database user credentials.

@@ -2,6 +2,14 @@
 
 # Source: https://langfuse.com/docs/observability/sdk/python/instrumentation.md
 
+# Source: https://langfuse.com/docs/observability/sdk/typescript/instrumentation.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/instrumentation.md
+
+# Source: https://langfuse.com/docs/observability/sdk/typescript/instrumentation.md
+
+# Source: https://langfuse.com/docs/observability/sdk/python/instrumentation.md
+
 ---
 title: Instrument your application with the Langfuse Python SDK
 description: Instrument your application with the Langfuse Python SDK to trace your application and ingest data into Langfuse.

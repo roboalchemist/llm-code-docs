@@ -20,6 +20,16 @@
 
 # Source: https://upstash.com/docs/workflow/pricing.md
 
+# Source: https://upstash.com/docs/vector/overall/pricing.md
+
+# Source: https://upstash.com/docs/search/overall/pricing.md
+
+# Source: https://upstash.com/docs/redis/overall/pricing.md
+
+# Source: https://upstash.com/docs/qstash/overall/pricing.md
+
+# Source: https://upstash.com/docs/workflow/pricing.md
+
 # Pricing
 
 Upstash Workflow is based on QStash and uses a "pay-as-you-go" pricing model. You only incur costs when your app receives traffic, meaning there's no charge when it's not in use. Click [here](https://upstash.com/pricing/workflow) to view the pricing.

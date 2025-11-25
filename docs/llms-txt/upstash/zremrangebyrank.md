@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zremrangebyrank.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zremrangebyrank.md
+
 # ZREMRANGEBYRANK
 
 > Remove all members in a sorted set between the given ranks.

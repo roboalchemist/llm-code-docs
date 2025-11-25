@@ -4,6 +4,12 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/northflank.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/northflank.md
+
+# Source: https://infisical.com/docs/integrations/cloud/northflank.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/northflank.md
+
 # Northflank Connection
 
 > Learn how to configure a Northflank Connection for Infisical.

@@ -8,6 +8,14 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
+
+# Source: https://docs.livekit.io/agents/integrations/azure.md
+
+# Source: https://docs.livekit.io/agents/models/tts/plugins/azure.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/azure.md
+
 LiveKit docs › Partner spotlight › Azure › Azure AI Speech STT Plugin
 
 ---

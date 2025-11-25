@@ -2,6 +2,14 @@
 
 # Source: https://docs.baseten.co/development/model/secrets.md
 
+# Source: https://docs.baseten.co/observability/secrets.md
+
+# Source: https://docs.baseten.co/development/model/secrets.md
+
+# Source: https://docs.baseten.co/observability/secrets.md
+
+# Source: https://docs.baseten.co/development/model/secrets.md
+
 # Security and secrets
 
 > Using secrets securely in your ML models

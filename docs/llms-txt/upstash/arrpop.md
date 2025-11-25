@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrpop.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/arrpop.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/arrpop.md
+
 # JSON.ARRPOP
 
 > Remove and return an element from the index in the array. By default the last element from an array is popped.

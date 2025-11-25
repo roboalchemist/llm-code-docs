@@ -4,6 +4,22 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/upgrading.md
 
+# Source: https://nextjs.org/docs/app/guides/upgrading.md
+
+# Source: https://nextjs.org/docs/app/getting-started/upgrading.md
+
+# Source: https://nextjs.org/docs/pages/guides/upgrading.md
+
+# Source: https://nextjs.org/docs/app/guides/upgrading.md
+
+# Source: https://nextjs.org/docs/app/getting-started/upgrading.md
+
+# Source: https://nextjs.org/docs/pages/guides/upgrading.md
+
+# Source: https://nextjs.org/docs/app/guides/upgrading.md
+
+# Source: https://nextjs.org/docs/app/getting-started/upgrading.md
+
 # Upgrading
 @doc-version: 16.0.4
 

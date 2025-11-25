@@ -2,6 +2,14 @@
 
 # Source: https://docs.near.org/web3-apps/tutorials/web-login/wallet-selector.md
 
+# Source: https://docs.near.org/tools/wallet-selector.md
+
+# Source: https://docs.near.org/web3-apps/tutorials/web-login/wallet-selector.md
+
+# Source: https://docs.near.org/tools/wallet-selector.md
+
+# Source: https://docs.near.org/web3-apps/tutorials/web-login/wallet-selector.md
+
 ---
 id: wallet-selector
 title: Wallet Selector Tutorial

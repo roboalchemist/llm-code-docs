@@ -2,6 +2,14 @@
 
 # Source: https://docs.frigade.com/guides/custom/collections.md
 
+# Source: https://docs.frigade.com/platform/collections.md
+
+# Source: https://docs.frigade.com/guides/custom/collections.md
+
+# Source: https://docs.frigade.com/platform/collections.md
+
+# Source: https://docs.frigade.com/guides/custom/collections.md
+
 # Using Custom Components in Collections
 
 [Collections](/platform/collections) allow you to deploy [Flows](/platform/flows) without having to manually embed them in your app code, which is great! Who doesn't love no-code deploys? But you may be asking "How do I use Custom Components if I'm not rendering React components directly?" Great question, let's dig in to how to use Custom Components in Collections.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployment.md
 
+# Source: https://docs.fireworks.ai/api-reference/update-deployment.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/update-deployment.md
+
 # firectl update deployment
 
 > Update a deployment.

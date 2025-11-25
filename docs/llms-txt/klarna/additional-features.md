@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/payments/web-payments/additional-resources/use-cases/additional-features.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/payments-for-shopify/additional-features.md
+
+# Source: https://docs.klarna.com/payments/web-payments/additional-resources/use-cases/additional-features.md
+
 # Additional features
 
 ## Depending on the market and the details of your Klarna deal, you may be able to add some extra features to your store.

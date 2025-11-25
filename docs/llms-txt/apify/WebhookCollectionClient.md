@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/WebhookCollectionClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/WebhookCollectionClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/WebhookCollectionClient.md
+
 # WebhookCollectionClient<!-- -->
 
 ### Hierarchy

@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/sdk/js/docs/guides/proxy-management.md
 
+# Source: https://docs.apify.com/sdk/python/docs/concepts/proxy-management.md
+
+# Source: https://docs.apify.com/sdk/js/docs/guides/proxy-management.md
+
 # Proxy Management
 
 Copy for LLM

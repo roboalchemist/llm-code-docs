@@ -2,6 +2,10 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
 
+# Source: https://polar.sh/docs/api-reference/orders/get-invoice.md
+
+# Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
+
 # Get Order Invoice
 
 > Get an order's invoice data.

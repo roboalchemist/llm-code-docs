@@ -4,6 +4,12 @@
 
 # Source: https://docs.turso.tech/api-reference/authentication.md
 
+# Source: https://docs.turso.tech/sdk/authentication.md
+
+# Source: https://docs.turso.tech/cli/authentication.md
+
+# Source: https://docs.turso.tech/api-reference/authentication.md
+
 # Authentication
 
 The Turso API uses API tokens to authenticate requests. You can create and revoke API tokens using the [Turso CLI](/cli) and [Authentication API](/api-reference/tokens/create).

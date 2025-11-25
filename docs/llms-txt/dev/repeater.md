@@ -4,6 +4,12 @@
 
 # Source: https://dev.writer.com/agent-builder/repeater.md
 
+# Source: https://dev.writer.com/framework/repeater.md
+
+# Source: https://dev.writer.com/components/repeater.md
+
+# Source: https://dev.writer.com/agent-builder/repeater.md
+
 # Build dynamic UI components with Repeaters
 
 > Display dynamic lists of data in Agent Builder UI with Repeaters. Create repeating components for lists, dictionaries, and nested data structures.

@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/klarna-osm-app-for-shopify/frequently-asked-questions.md
 
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/wix/payments/frequently-asked-questions.md
+
+# Source: https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/conversion-boosters/klarna-osm-app-for-shopify/frequently-asked-questions.md
+
 # Shopify FAQ
 
 ## Get answers to common questions about Klarna’s On-site Messaging App for Shopify, including integration, localization, and customization to match your store’s branding.

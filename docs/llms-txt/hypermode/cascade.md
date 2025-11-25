@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/cascade.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/query/cascade.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/cascade.md
+
 # cascade
 
 <Info>

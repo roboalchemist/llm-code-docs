@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/daytona.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/daytona.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/daytona.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/daytona.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/daytona.md
+
 ## Daytona
 
 ```python

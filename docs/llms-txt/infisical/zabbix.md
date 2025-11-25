@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/zabbix.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/zabbix.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/zabbix.md
+
 # Zabbix Connection
 
 > Learn how to configure a Zabbix Connection for Infisical.

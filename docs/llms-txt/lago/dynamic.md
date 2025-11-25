@@ -1,0 +1,75 @@
+# Source: https://getlago.com/docs/guide/plans/charges/charge-models/dynamic.md
+
+# Dynamic
+
+<Note>
+  Only the `sum` aggregation type is compatible with the `dynamic` charge model.
+  If you have a different use case, please reach out to the Lago team for assistance.
+</Note>
+
+Select the dynamic charge model if you calculate the price manually or if prices fluctuate during a billing period (e.g., for SMS APIs, AI models, etc.), and you want to apply a specific **total amount** per event using the property `precise_total_amount_cents`.
+
+Let’s take the example of our AI company. You may want to charge a custom price per event. Consider the following list of events:
+
+<Tabs>
+  <Tab title="Table view">
+    | Event         | Metric             | Unit | Total amount |
+    | ------------- | ------------------ | ---- | ------------ |
+    | Transaction 1 | Dedicated Instance | 7    | \$0.70       |
+    | Transaction 2 | Dedicated Instance | 5    | \$0.55       |
+    | Transaction 3 | Dedicated Instance | 10   | \$2.20       |
+  </Tab>
+
+  <Tab title="Events payload">
+    <CodeGroup>
+      ```bash List of events theme={"dark"}
+      {
+        "events": [
+          {
+            "transaction_id": "transaction_1",
+            "external_subscription_id": "123456789",
+            "code": "dedicated_instance",
+            "timestamp": 1728554400,
+            "precise_total_amount_cents": "70", //event total amount
+            "properties": {
+              "unit": "7"
+            }
+          },
+          {
+            "transaction_id": "transaction_2",
+            "external_subscription_id": "123456789",
+            "code": "dedicated_instance",
+            "timestamp": 1728558000,
+            "precise_total_amount_cents": "55", //event total amount
+            "properties": {
+              "unit": "5"
+            }
+          },
+          {
+            "transaction_id": "transaction_3",
+            "external_subscription_id": "123456789",
+            "code": "dedicated_instance",
+            "timestamp": 1728561600,
+            "precise_total_amount_cents": "220", //event total amount
+            "properties": {
+              "unit": "10"
+            }
+          }
+        ]
+      }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+At the end of the period, the invoice will generate **one fee of \$3.435** (see example bellow).
+
+| Item               | Unit | Unit price | Amount |
+| ------------------ | ---- | ---------- | ------ |
+| Dedicated Instance | 22   | \$0,156818 | \$3.45 |
+
+To display more detailed information on fees, please refer to the [custom invoice grouping](/guide/invoicing/overview#custom-invoice-grouping) or the [pay in advance](/guide/plans/charges/arrears-vs-advance#charges-paid-in-advance) option.
+
+<Note>
+  Only the `standard` & `dynamic` charge models support the [custom invoice grouping](/guide/invoicing/overview#custom-invoice-grouping).
+</Note>

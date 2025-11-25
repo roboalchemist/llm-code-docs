@@ -41,3 +41,8 @@ Thumbs.db
 *.log
 .cache/
 tmp/
+
+# Documentation files with example credentials that trigger GitHub secret scanning
+docs/llms-txt/screenshotone/screenshotone-full.md
+docs/llms-txt/servicestack/servicestack-full.md
+docs/llms-txt/openphone/openphone-full.md

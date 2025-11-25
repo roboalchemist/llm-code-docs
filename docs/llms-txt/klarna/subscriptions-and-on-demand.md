@@ -4,6 +4,10 @@
 
 # Source: https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/integrate-sign-in-with-klarna/use-cases/subscriptions-and-on-demand.md
 
+# Source: https://docs.klarna.com/payments/web-payments/integrate-with-klarna-payments/tokenized-payments/subscriptions-and-on-demand.md
+
+# Source: https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/integrate-sign-in-with-klarna/use-cases/subscriptions-and-on-demand.md
+
 # Subscriptions and on-demand
 
 ## How to combine login and tokenized payments

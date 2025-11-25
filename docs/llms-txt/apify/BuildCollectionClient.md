@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/BuildCollectionClient.md
 
+# Source: https://docs.apify.com/api/client/python/reference/class/BuildCollectionClient.md
+
+# Source: https://docs.apify.com/api/client/js/reference/class/BuildCollectionClient.md
+
 # BuildCollectionClient<!-- -->
 
 ### Hierarchy

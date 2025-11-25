@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-secret.md
 
+# Source: https://docs.fireworks.ai/api-reference/create-secret.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/create-secret.md
+
 # firectl create secret
 
 > Creates a secret for the signed in user.

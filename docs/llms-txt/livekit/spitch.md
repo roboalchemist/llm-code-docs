@@ -2,6 +2,10 @@
 
 # Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
 
+# Source: https://docs.livekit.io/agents/models/tts/plugins/spitch.md
+
+# Source: https://docs.livekit.io/agents/models/stt/plugins/spitch.md
+
 LiveKit docs › Models › Speech-to-text (STT) › Plugins › Spitch
 
 ---

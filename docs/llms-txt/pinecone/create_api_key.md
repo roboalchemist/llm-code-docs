@@ -1,3 +1,7 @@
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin/create_api_key.md
+
+# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/create_api_key.md
+
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin/create_api_key.md
 
 # Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/create_api_key.md

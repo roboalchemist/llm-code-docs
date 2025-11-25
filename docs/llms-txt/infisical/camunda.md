@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/app-connections/camunda.md
 
+# Source: https://infisical.com/docs/integrations/secret-syncs/camunda.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/camunda.md
+
 # Camunda Connection
 
 > Learn how to configure a Camunda Connection for Infisical.

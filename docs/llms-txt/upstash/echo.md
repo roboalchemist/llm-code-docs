@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/echo.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/auth/echo.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/echo.md
+
 # ECHO
 
 Returns a message back to you. Useful for debugging the connection.

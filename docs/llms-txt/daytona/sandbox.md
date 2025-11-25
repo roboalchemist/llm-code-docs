@@ -2,6 +2,14 @@
 
 # Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
 
+# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
+
+# Source: https://www.daytona.io/docs/en/typescript-sdk/sandbox.md
+
+# Source: https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md
+
 ## Sandbox
 
 ```python

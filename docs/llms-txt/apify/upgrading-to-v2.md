@@ -4,6 +4,12 @@
 
 # Source: https://docs.apify.com/api/client/python/docs/upgrading/upgrading-to-v2.md
 
+# Source: https://docs.apify.com/sdk/python/docs/upgrading/upgrading-to-v2.md
+
+# Source: https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v2.md
+
+# Source: https://docs.apify.com/api/client/python/docs/upgrading/upgrading-to-v2.md
+
 # Upgrading to v2
 
 Copy for LLM

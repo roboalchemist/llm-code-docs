@@ -2,6 +2,14 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap.md
 
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap.md
+
+# Source: https://nextjs.org/docs/pages/api-reference/config/next-config-js/exportPathMap.md
+
+# Source: https://nextjs.org/docs/app/api-reference/config/next-config-js/exportPathMap.md
+
 # exportPathMap
 @doc-version: 16.0.4
 

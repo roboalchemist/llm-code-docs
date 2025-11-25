@@ -2,6 +2,10 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/interface/ProxyInfo.md
 
+# Source: https://docs.apify.com/sdk/python/reference/class/ProxyInfo.md
+
+# Source: https://docs.apify.com/sdk/js/reference/interface/ProxyInfo.md
+
 # ProxyInfo<!-- -->
 
 The main purpose of the ProxyInfo object is to provide information about the current proxy connection used by the crawler for the request. Outside of crawlers, you can get this object by calling [ProxyConfiguration.newProxyInfo](https://docs.apify.com/sdk/js/sdk/js/reference/class/ProxyConfiguration.md#newProxyInfo).

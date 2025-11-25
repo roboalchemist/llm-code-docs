@@ -2,6 +2,10 @@
 
 # Source: https://loops.so/docs/contacts/properties.md
 
+# Source: https://loops.so/docs/events/properties.md
+
+# Source: https://loops.so/docs/contacts/properties.md
+
 # Contact properties
 
 > How to add, edit and delete contact properties.

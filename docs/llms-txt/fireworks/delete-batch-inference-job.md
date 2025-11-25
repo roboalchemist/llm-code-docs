@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-batch-inference-job.md
 
+# Source: https://docs.fireworks.ai/api-reference/delete-batch-inference-job.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-batch-inference-job.md
+
 # firectl delete batch-inference-job
 
 > Deletes a batch inference job.

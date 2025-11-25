@@ -2,6 +2,10 @@
 
 # Source: https://loops.so/docs/api-reference/examples/events.md
 
+# Source: https://loops.so/docs/events.md
+
+# Source: https://loops.so/docs/api-reference/examples/events.md
+
 # Events API examples
 
 > Code examples for sending events with the Loops API and SDKs.

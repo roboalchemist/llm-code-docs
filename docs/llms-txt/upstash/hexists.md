@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hexists.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hexists.md
+
 # HEXISTS
 
 > Checks if a field exists in a hash.

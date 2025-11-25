@@ -2,6 +2,10 @@
 
 # Source: https://trigger.dev/docs/config/extensions/puppeteer.md
 
+# Source: https://trigger.dev/docs/guides/examples/puppeteer.md
+
+# Source: https://trigger.dev/docs/config/extensions/puppeteer.md
+
 # Puppeteer
 
 > Use the puppeteer build extension to enable support for Puppeteer in your project

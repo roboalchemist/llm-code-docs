@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/modus/sdk/assemblyscript/localtime.md
 
+# Source: https://docs.hypermode.com/modus/sdk/go/localtime.md
+
+# Source: https://docs.hypermode.com/modus/sdk/assemblyscript/localtime.md
+
 # Local Time APIs
 
 > Access the user's local time and time zone in your functions

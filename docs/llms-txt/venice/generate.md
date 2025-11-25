@@ -4,6 +4,14 @@
 
 # Source: https://docs.venice.ai/api-reference/endpoint/image/generate.md
 
+# Source: https://docs.venice.ai/api-reference/endpoint/embeddings/generate.md
+
+# Source: https://docs.venice.ai/api-reference/endpoint/image/generate.md
+
+# Source: https://docs.venice.ai/api-reference/endpoint/embeddings/generate.md
+
+# Source: https://docs.venice.ai/api-reference/endpoint/image/generate.md
+
 # Generate Images
 
 > Generate an image based on input parameters

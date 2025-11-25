@@ -2,6 +2,14 @@
 
 # Source: https://docs.hypermode.com/dgraph/admin/debug.md
 
+# Source: https://docs.hypermode.com/dgraph/dql/debug.md
+
+# Source: https://docs.hypermode.com/dgraph/admin/debug.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/debug.md
+
+# Source: https://docs.hypermode.com/dgraph/admin/debug.md
+
 # Debugging
 
 <Info>

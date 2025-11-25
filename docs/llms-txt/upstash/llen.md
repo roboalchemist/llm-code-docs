@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
+
 # LLEN
 
 > Returns the length of the list stored at key.

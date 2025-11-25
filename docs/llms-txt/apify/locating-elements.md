@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/locating-elements.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/locating-elements.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/locating-elements.md
 
 # Locating HTML elements with Node.js

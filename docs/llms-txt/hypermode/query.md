@@ -2,6 +2,10 @@
 
 # Source: https://docs.hypermode.com/dgraph/dql/query.md
 
+# Source: https://docs.hypermode.com/dgraph/graphql/lambda/query.md
+
+# Source: https://docs.hypermode.com/dgraph/dql/query.md
+
 # Query Structure
 
 <Info>

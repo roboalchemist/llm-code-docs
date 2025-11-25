@@ -1,5 +1,9 @@
 # Source: https://docs.apify.com/academy/scraping-basics-python/devtools-inspecting.md
 
+# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
+
+# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-inspecting.md
+
 # Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-inspecting.md
 
 # Inspecting web pages with browser DevTools

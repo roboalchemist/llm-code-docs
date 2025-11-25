@@ -2,6 +2,10 @@
 
 # Source: https://infisical.com/docs/integrations/frameworks/dotnet.md
 
+# Source: https://infisical.com/docs/sdks/languages/dotnet.md
+
+# Source: https://infisical.com/docs/integrations/frameworks/dotnet.md
+
 # .NET
 
 > How to use Infisical to inject environment variables and secrets into a .NET app.

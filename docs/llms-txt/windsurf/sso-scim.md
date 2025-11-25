@@ -4,6 +4,10 @@
 
 # Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
 
+# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
+
+# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
+
 # Setting up SSO & SCIM
 
 This feature is only available to Teams and Enterprise users.

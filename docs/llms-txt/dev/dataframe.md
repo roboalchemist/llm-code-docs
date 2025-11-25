@@ -2,6 +2,10 @@
 
 # Source: https://dev.writer.com/components/dataframe.md
 
+# Source: https://dev.writer.com/framework/dataframe.md
+
+# Source: https://dev.writer.com/components/dataframe.md
+
 # DataFrame
 
 A component to display Pandas DataFrames.

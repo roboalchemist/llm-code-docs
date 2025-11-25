@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/pexpire.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/pexpire.md
+
 # PEXPIRE
 
 > Sets a timeout on key. After the timeout has expired, the key will automatically be deleted.

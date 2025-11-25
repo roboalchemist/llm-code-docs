@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xpending.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xpending.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xpending.md
+
 # XPENDING
 
 > Returns information about pending messages in a stream consumer group.

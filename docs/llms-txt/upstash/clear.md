@@ -8,6 +8,10 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
 
+# Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
+
+# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
+
 # JSON.CLEAR
 
 > Clear container values (arrays/objects) and set numeric values to 0.

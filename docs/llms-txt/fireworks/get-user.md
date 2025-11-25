@@ -4,6 +4,10 @@
 
 # Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-user.md
 
+# Source: https://docs.fireworks.ai/api-reference/get-user.md
+
+# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/get-user.md
+
 # firectl get user
 
 > Prints information about a user.
