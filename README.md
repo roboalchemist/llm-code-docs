@@ -1,6 +1,6 @@
 # LLM Code Documentation Repository
 
-Centralized, AI-readable documentation extracted from 175+ frameworks, libraries, and developer tools. Automated extraction tools keep documentation current with upstream sources.
+Centralized, AI-readable documentation extracted from 243+ frameworks, libraries, and developer tools. Automated extraction tools keep documentation current with upstream sources.
 
 ## Repository Structure
 
