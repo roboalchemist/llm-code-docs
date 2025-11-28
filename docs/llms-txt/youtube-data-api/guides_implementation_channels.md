@@ -1,0 +1,109 @@
+# Source: https://developers.google.com/youtube/v3/guides/implementation/channels.md.txt
+
+# Implementation: Channels
+
+This page explains how to use the YouTube Data API (v3) to perform functions related to retrieving and updating channel data. A `channel` resource includes playlist IDs that identify a channel's uploaded and liked videos. To fetch this information when calling the `channels.list` method, make sure the [part](https://developers.google.com/youtube/v3/docs/channels/list#part) parameter value includes the `contentDetails` resource part.
+
+## Retrieve information about a channel
+
+Call the [channels.list](https://developers.google.com/youtube/v3/docs/channels/list) method to retrieve information about a particular channel. There are a few ways to identify the channel:
+
+- Set the [mine](https://developers.google.com/youtube/v3/docs/channels/list#mine) parameter value to `true` to retrieve information for the currently authenticated user's YouTube channel. Your request must be authorized using OAuth 2.0.
+
+  ```
+  https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channels.list?
+          part=snippet,contentDetails,brandingSettings
+          &mine=true
+  ```
+- Set the [forUsername](https://developers.google.com/youtube/v3/docs/channels/list#forUsername) parameter to a YouTube username to retrieve information for the channel associated with that username. This example sets the `forUsername` parameter value to `Google` to retrieve information for Google's official YouTube channel.
+
+  ```
+  https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channels.list?
+          part=snippet,contentDetails
+          &forUsername=Google
+  ```
+- Set the [id](https://developers.google.com/youtube/v3/docs/channels/list#id) parameter to the YouTube channel ID that uniquely identifies the channel for which you are retrieving information. This example sets the `id` parameter to `UCK8sQmJBp8GCxrOtXWBpyEA`, which also identifies Google's official YouTube channel.
+
+  ```
+  https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channels.list?
+          part=snippet,contentDetails
+          &id=UCK8sQmJBp8GCxrOtXWBpyEA
+  ```
+
+## Set a channel's branding information
+
+This example updates a channel's branding options. The example has two steps:
+
+- **Step 1: Retrieve the channel's branding options**
+
+  Call the `channels.list` method and set the [part](https://developers.google.com/youtube/v3/docs/channels/list#part) parameter value to `brandingSettings` and the [mine](https://developers.google.com/youtube/v3/docs/channels/list#mine) parameter value to `true`.  
+
+  ```
+  https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channels.list?
+          part=brandingSettings
+          &mine=true
+  ```
+
+  Your application could display the retrieved settings, allowing the user to modify the settings to update.
+- **Step 2: Update the channel's branding options**
+
+  Call the `channels.list` method and set the following values:
+
+  <br />
+
+  - Set the [id](https://developers.google.com/youtube/v3/docs/channels#id) property to the channel's unique YouTube channel ID. The ID can be extracted from the API response in step 1.
+  - Set the [part](https://developers.google.com/youtube/v3/docs/channels/update#part) parameter value to `brandingSettings`.
+
+  <br />
+
+  The link to the API Explorer below creates a `channel` resource with the following branding settings:  
+
+  ```
+  {
+    "id": "CHANNEL_ID",
+    "brandingSettings": {
+      "channel": {
+        "description": "A great channel to be enjoyed by all.",
+        "moderateComments": true,
+        "showRelatedChannels": true,
+        "showBrowseView": true,
+        "featuredChannelsTitle": "Featured Channel Stuff",
+        "featuredChannelsUrls": [
+          "UC_x5XG1OV2P6uZZ5FSM9Ttw",
+          "UCBR8-60-B28hp2BmDPdntcQ",
+          "UCK8sQmJBp8GCxrOtXWBpyEA"
+        ],
+        "profileColor": "#006600"
+      }
+    }
+  }
+  ```
+
+  To complete the request in the APIs Explorer, you need to set the `id` property's value to the channel ID of the authenticated user's channel. You should also set the image properties to match your current settings.  
+
+  ```
+  https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.videos.update?
+          part=brandingSettings
+  ```
+
+## Manage channel sections
+
+The API supports the [channelSections.list](https://developers.google.com/youtube/v3/docs/channelSections/list), [channelSections.insert](https://developers.google.com/youtube/v3/docs/channelSections/insert), [channelSections.update](https://developers.google.com/youtube/v3/docs/channelSections/update), and [channelSections.delete](https://developers.google.com/youtube/v3/docs/channelSections/delete) methods for managing channel sections. A channel section is a set of videos that are featured on a channel. For example, a section could include a channel's latest uploads, most popular uploads, or videos from one or more playlists.
+
+The example below retrieves the channel sections for Google's official YouTube channel. The request calls the `channelSections.list` method and sets the [channelId](https://developers.google.com/youtube/v3/docs/channelSections/list#channelId) parameter value to `UCK8sQmJBp8GCxrOtXWBpyEA`, which is the channel ID for Google's channel.  
+
+```
+https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.channelSections.list?
+part=snippet,contentDetails
+&channelId=UCK8sQmJBp8GCxrOtXWBpyEA
+```
+
+This request requires authorization if, instead of using the `channelId` parameter, you set the `mine` parameter value to `true`. That parameter indicates that you are retrieving channel sections for the currently authenticated user's channel.
+
+## Upload and set a watermark image for a channel
+
+You can call the [watermarks.set](https://developers.google.com/youtube/v3/docs/watermarks/set) method to upload a watermark image and set it for a channel. The image then displays during playbacks of the specified channel's videos. You can also specify a target channel to which the image will link as well as timing details that determine when the watermark appears and how long it is visible.
+
+The [watermarks.unset](https://developers.google.com/youtube/v3/docs/watermarks/unset) method deletes a channel's watermark image.
+
+Unfortunately, this query cannot be tested using the APIs Explorer because the APIs Explorer does not support the ability to upload media files, which is a requirement for this method.

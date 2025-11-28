@@ -792,6 +792,9 @@ sites:
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
+- name: youtube-data-api
+  base_url: https://developers.google.com/youtube/v3/
+  description: YouTube Data API v3 - manage videos, playlists, channels
 - name: zag
   base_url: https://zagjs.com/
   description: Zag headless UI component library
