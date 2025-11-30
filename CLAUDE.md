@@ -61,6 +61,7 @@ This repository provides centralized, AI-readable documentation extracted from 1
 - `update.sh` - Master orchestrator that runs all update scripts sequentially
 
 **Discovery Scripts** (research tools, not run automatically):
+- `find-llms-txt.sh` - **Quick probe** - Check if a domain has llms.txt (tries common subdomain/path combinations)
 - `discover-llms-txt-sites.py` - Multi-API discovery (Brave, Exa, Tavily)
 - `discover-llms-txt-serper.py` - Serper API-based discovery
 - Various sidebar extractors for specific sites
@@ -290,6 +291,20 @@ git push origin master
 ## Discovery Workflow
 
 When expanding the documentation catalog:
+
+### Check if a Specific Domain Has llms.txt
+
+Use the quick probe script to check common subdomain/path combinations:
+
+```bash
+./scripts/find-llms-txt.sh example.com
+
+# Checks these subdomains: (root), www., docs., developers., developer., api., dev.
+# Checks these paths: /llms.txt, /llms-full.txt, /docs/llms.txt, /docs/llms-full.txt, /.well-known/llms.txt
+# Returns exit code 0 if found, 1 if not found
+```
+
+### Bulk Discovery of New Sites
 
 1. **Discover new sites** using multi-API search:
    ```bash
