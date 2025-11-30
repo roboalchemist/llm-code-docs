@@ -1,0 +1,8 @@
+# Source: https://www.electronjs.org/docs/latest/api/structures/keyboard-input-event
+
+# KeyboardInputEvent Object extends `InputEvent`
+
+- `type` string - The type of the event, can be `rawKeyDown`, `keyDown`, `keyUp` or `char`.
+- `keyCode` string - The character that will be sent as the keyboard event. Should only use valid [Accelerator](/docs/latest/tutorial/keyboard-shortcuts#accelerators) key codes.
+
+[![](data:image/svg+xml;base64,PHN2ZyBmaWxsPSJjdXJyZW50Q29sb3IiIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld2JveD0iMCAwIDQwIDQwIiBjbGFzcz0iaWNvbkVkaXRfWjlTdyIgYXJpYS1oaWRkZW49InRydWUiPjxnPjxwYXRoIGQ9Im0zNC41IDExLjdsLTMgMy4xLTYuMy02LjMgMy4xLTNxMC41LTAuNSAxLjItMC41dDEuMSAwLjVsMy45IDMuOXEwLjUgMC40IDAuNSAxLjF0LTAuNSAxLjJ6IG0tMjkuNSAxNy4xbDE4LjQtMTguNSA2LjMgNi4zLTE4LjQgMTguNGgtNi4zdi02LjJ6IiAvPjwvZz48L3N2Zz4=)Edit this page](https://github.com/electron/electron/edit/main/docs/api/structures/keyboard-input-event.md)
