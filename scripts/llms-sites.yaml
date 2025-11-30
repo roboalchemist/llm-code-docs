@@ -504,6 +504,9 @@ sites:
 - name: moondream
   base_url: https://docs.moondream.ai/
   description: Moondream tiny vision-language model
+- name: mozilla-data-collective
+  base_url: https://datacollective.mozillafoundation.org/
+  description: Mozilla Data Collective API for accessing community-driven datasets
 - name: mui-material
   base_url: https://mui.com/material-ui/
   description: Material UI React component library
