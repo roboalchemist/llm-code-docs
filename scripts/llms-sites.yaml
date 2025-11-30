@@ -704,6 +704,9 @@ sites:
 - name: tauri
   base_url: https://tauri.app/
   description: Tauri desktop application framework
+- name: tavily
+  base_url: https://docs.tavily.com/
+  description: Tavily AI-powered search API for LLM applications
 - name: tavus
   base_url: https://docs.tavus.io/
   description: Tavus documentation
