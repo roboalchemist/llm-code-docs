@@ -2,6 +2,10 @@
 
 # Source: https://docs.exa.ai/websets/api/get-started.md
 
+# Source: https://docs.exa.ai/websets/dashboard/get-started.md
+
+# Source: https://docs.exa.ai/websets/api/get-started.md
+
 # Get started
 
 > Create your first Webset

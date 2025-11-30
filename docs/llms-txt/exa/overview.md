@@ -4,6 +4,12 @@
 
 # Source: https://docs.exa.ai/websets/api/overview.md
 
+# Source: https://docs.exa.ai/websets/overview.md
+
+# Source: https://docs.exa.ai/websets/api/websets/overview.md
+
+# Source: https://docs.exa.ai/websets/api/overview.md
+
 # Overview
 
 > The Websets API helps you find, verify, and process web data at scale to build your unique collection of web content.
