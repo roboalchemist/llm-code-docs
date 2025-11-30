@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-11-30 14:17
+  last_updated: 2025-11-30 14:18
   total_sources: 291
   total_fetched: 251
   llms_txt_count: 270
@@ -2229,8 +2229,8 @@ web_scraped:
   description: common-voice documentation
   path: docs/web-scraped/common-voice/
   status: fetched
-  file_count: 22
-  size: 104.1KB
+  file_count: 39
+  size: 157.5KB
   last_updated: 2025-11-30 14:17
 - name: electron
   description: electron documentation
