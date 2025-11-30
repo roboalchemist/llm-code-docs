@@ -247,6 +247,9 @@ sites:
 - name: envoyer
   base_url: https://docs.envoyer.io/
   description: Envoyer documentation
+- name: exa
+  base_url: https://docs.exa.ai/
+  description: Exa AI-powered search API for LLM applications
 - name: expo
   base_url: https://docs.expo.dev/
   description: Expo React Native development platform

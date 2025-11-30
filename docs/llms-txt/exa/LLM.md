@@ -1,0 +1,5306 @@
+# Source: https://docs.exa.ai/websets/api/LLM.md
+
+# LLM prompt for writing Python
+
+> To teach LLMs how to use the Websets API. Best with powerful reasoning models.
+
+The following text is a Git repository with code. The structure of the text are sections that begin with ----, followed by a single line containing the file path and file name, followed by a variable amount of lines containing the file contents. The text representing the Git repository ends when the symbols --END-- are encounted. Any further text beyond --END-- are meant to be interpreted as instructions using the aforementioned Git repository as context.
+
+***
+
+```
+
+[client.py](http://client.py)
+
+from **future** import annotations
+
+import time
+
+from datetime import datetime
+
+from typing import List, Optional, Literal, Dict, Any, Union
+
+from .types import (
+
+    Webset,
+
+    ListWebsetsResponse,
+
+    GetWebsetResponse,
+
+    UpdateWebsetRequest,
+
+    WebsetStatus,
+
+    CreateWebsetParameters,
+
+)
+
+from .core.base import WebsetsBaseClient
+
+from .items import WebsetItemsClient
+
+from .searches import WebsetSearchesClient
+
+from .enrichments import WebsetEnrichmentsClient
+
+from .webhooks import WebsetWebhooksClient
+
+class WebsetsClient(WebsetsBaseClient):
+
+    """Client for managing Websets."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+        self.items = WebsetItemsClient(client)
+
+        self.searches = WebsetSearchesClient(client)
+
+        self.enrichments = WebsetEnrichmentsClient(client)
+
+        self.webhooks = WebsetWebhooksClient(client)
+
+    def create(self, params: Union[Dict[str, Any], CreateWebsetParameters]) -\> Webset:
+
+        """Create a new Webset.
+
+        
+
+        Args:
+
+            params (CreateWebsetParameters): The parameters for creating a webset.
+
+        
+
+        Returns:
+
+            Webset: The created webset.
+
+        """
+
+        response = self.request("/v0/websets", data=params)
+
+        return Webset.model_validate(response)
+
+    def get(self, id: str, \*, expand: Optional[List[Literal["items"]]] = None) -\> GetWebsetResponse:
+
+        """Get a Webset by ID.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            expand (List[Literal["items"]], optional): Expand the response with specified resources.
+
+                Allowed values: ["items"]
+
+        
+
+        Returns:
+
+            GetWebsetResponse: The retrieved webset.
+
+        """
+
+        params = {"expand": expand} if expand else {}
+
+        response = self.request(f"/v0/websets/{id}", params=params, method="GET")
+
+        return GetWebsetResponse.model_validate(response)
+
+    def list(self, \*, cursor: Optional[str] = None, limit: Optional[int] = None) -\> ListWebsetsResponse:
+
+        """List all Websets.
+
+        
+
+        Args:
+
+            cursor (str, optional): The cursor to paginate through the results.
+
+            limit (int, optional): The number of results to return (max 200).
+
+        
+
+        Returns:
+
+            ListWebsetsResponse: List of websets.
+
+        """
+
+        params = {k: v for k, v in {"cursor": cursor, "limit": limit}.items() if v is not None}
+
+        response = self.request("/v0/websets", params=params, method="GET")
+
+        return ListWebsetsResponse.model_validate(response)
+
+    def update(self, id: str, params: Union[Dict[str, Any], UpdateWebsetRequest]) -\> Webset:
+
+        """Update a Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            params (UpdateWebsetRequest): The parameters for updating a webset.
+
+        
+
+        Returns:
+
+            Webset: The updated webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}", data=params, method="POST")
+
+        return Webset.model_validate(response)
+
+    def delete(self, id: str) -\> Webset:
+
+        """Delete a Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+        
+
+        Returns:
+
+            Webset: The deleted webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}", method="DELETE")
+
+        return Webset.model_validate(response)
+
+    def cancel(self, id: str) -\> Webset:
+
+        """Cancel a running Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+        
+
+        Returns:
+
+            Webset: The canceled webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}/cancel", method="POST")
+
+        return Webset.model_validate(response)
+
+    def wait_until_idle(self, id: str, \*, timeout: int = 3600, poll_interval: int = 5) -\> Webset:
+
+        """Wait until a Webset is idle.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            timeout (int, optional): Maximum time to wait in seconds. Defaults to 3600.
+
+            poll_interval (int, optional): Time to wait between polls in seconds. Defaults to 5.
+
+            
+
+        Returns:
+
+            Webset: The webset once it's idle.
+
+            
+
+        Raises:
+
+            TimeoutError: If the webset does not become idle within the timeout period.
+
+        """
+
+        start_time = time.time()
+
+        while True:
+
+            webset = self.get(id)
+
+            if webset.status == WebsetStatus.idle.value:
+
+                return webset
+
+                
+
+            if time.time() - start_time \> timeout:
+
+                raise TimeoutError(f"Webset {id} did not become idle within {timeout} seconds")
+
+                
+
+            time.sleep(poll_interval)
+
+----
+
+**init**.py
+
+from .client import WebsetsClient
+
+**all** = [
+
+    "WebsetsClient",
+
+] 
+
+----
+
+[types.py](http://types.py)
+
+from **future** import annotations
+
+from datetime import datetime
+
+from enum import Enum
+
+from typing import Any, Dict, List, Literal, Optional, Union
+
+from pydantic import AnyUrl, Field, confloat, constr
+
+from .core.base import ExaBaseModel
+
+class CanceledReason(Enum):
+
+    """
+
+    The reason the search was canceled
+
+    """
+
+    webset_deleted = 'webset_deleted'
+
+    webset_canceled = 'webset_canceled'
+
+class CreateCriterionParameters(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    The description of the criterion
+
+    """
+
+class CreateEnrichmentParameters(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    Provide a description of the enrichment task you want to perform to each Webset Item.
+
+    """
+
+    format: Optional[Format] = None
+
+    """
+
+    Format of the enrichment response.
+
+    We automatically select the best format based on the description. If you want to explicitly specify the format, you can do so here.
+
+    """
+
+    options: Optional[List[Option]] = Field(None, max_items=20, min_items=1)
+
+    """
+
+    When the format is options, the different options for the enrichment agent to choose from.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebhookParameters(ExaBaseModel):
+
+    events: List[EventType] = Field(..., max_items=12, min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebsetParameters(ExaBaseModel):
+
+    search: Search
+
+    """
+
+    Create initial search for the Webset.
+
+    """
+
+    enrichments: Optional[List[CreateEnrichmentParameters]] = Field(None, max_items=10)
+
+    """
+
+    Add Enrichments for the Webset.
+
+    """
+
+    external_id: Optional[str] = Field(None, alias='externalId')
+
+    """
+
+    The external identifier for the webset.
+
+    You can use this to reference the Webset by your own internal identifiers.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebsetSearchParameters(ExaBaseModel):
+
+    count: confloat(ge=1.0)
+
+    """
+
+    Number of Items the Search will attempt to find.
+
+    The actual number of Items found may be less than this number depending on the query complexity.
+
+    """
+
+    query: constr(min_length=1) = Field(
+
+        ...,
+
+        examples=[
+
+            'Marketing agencies based in the US, that focus on consumer products. Get brands worked with and city'
+
+        ],
+
+    )
+
+    """
+
+    Query describing what you are looking for.
+
+    Any URL provided will be crawled and used as context for the search.
+
+    """
+
+    entity: Optional[
+
+        Union[
+
+            WebsetCompanyEntity,
+
+            WebsetPersonEntity,
+
+            WebsetArticleEntity,
+
+            WebsetResearchPaperEntity,
+
+            WebsetCustomEntity,
+
+        ]
+
+    ] = None
+
+    """
+
+    Entity the Webset will return results for.
+
+    It is not required to provide it, we automatically detect the entity from all the information provided in the query.
+
+    """
+
+    criteria: Optional[List[CreateCriterionParameters]] = Field(
+
+        None, max_items=5, min_items=1
+
+    )
+
+    """
+
+    Criteria every item is evaluated against.
+
+    It's not required to provide your own criteria, we automatically detect the criteria from all the information provided in the query.
+
+    """
+
+    behaviour: Optional[WebsetSearchBehaviour] = Field(
+
+        'override', title='WebsetSearchBehaviour'
+
+    )
+
+    """
+
+    The behaviour of the Search when it is added to a Webset.
+
+    - `override`: the search will reuse the existing Items found in the Webset and evaluate them against the new criteria. Any Items that don't match the new criteria will be discarded.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class Criterion(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    The description of the criterion
+
+    """
+
+    success_rate: confloat(ge=0.0, le=100.0) = Field(..., alias='successRate')
+
+    """
+
+    Value between 0 and 100 representing the percentage of results that meet the criterion.
+
+    """
+
+class EnrichmentResult(ExaBaseModel):
+
+    object: Literal['enrichment_result']
+
+    format: WebsetEnrichmentFormat
+
+    result: Optional[List[str]] = None
+
+    """
+
+    The result of the enrichment. None if the enrichment wasn't successful.
+
+    """
+
+    reasoning: Optional[str] = None
+
+    """
+
+    The reasoning for the result when an Agent is used.
+
+    """
+
+    references: List[Reference]
+
+    """
+
+    The references used to generate the result.
+
+    """
+
+    enrichment_id: str = Field(..., alias='enrichmentId')
+
+    """
+
+    The id of the Enrichment that generated the result
+
+    """
+
+class EventType(Enum):
+
+    webset_created = 'webset.created'
+
+    webset_deleted = 'webset.deleted'
+
+    webset_paused = 'webset.paused'
+
+    webset_idle = 'webset.idle'
+
+    webset_search_created = '[webset.search](http://webset.search).created'
+
+    webset_search_canceled = '[webset.search](http://webset.search).canceled'
+
+    webset_search_completed = '[webset.search](http://webset.search).completed'
+
+    webset_search_updated = '[webset.search](http://webset.search).updated'
+
+    webset_export_created = 'webset.export.created'
+
+    webset_export_completed = 'webset.export.completed'
+
+    webset_item_created = 'webset.item.created'
+
+    webset_item_enriched = 'webset.item.enriched'
+
+class Format(Enum):
+
+    """
+
+    Format of the enrichment response.
+
+    We automatically select the best format based on the description. If you want to explicitly specify the format, you can do so here.
+
+    """
+
+    text = 'text'
+
+    date = 'date'
+
+    number = 'number'
+
+    options = 'options'
+
+    email = 'email'
+
+    phone = 'phone'
+
+class ListEventsResponse(ExaBaseModel):
+
+    data: List[
+
+        Union[
+
+            WebsetCreatedEvent,
+
+            WebsetDeletedEvent,
+
+            WebsetIdleEvent,
+
+            WebsetPausedEvent,
+
+            WebsetItemCreatedEvent,
+
+            WebsetItemEnrichedEvent,
+
+            WebsetSearchCreatedEvent,
+
+            WebsetSearchUpdatedEvent,
+
+            WebsetSearchCanceledEvent,
+
+            WebsetSearchCompletedEvent,
+
+        ]
+
+    ] = Field(..., discriminator='type')
+
+    """
+
+    The list of events
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebhookAttemptsResponse(ExaBaseModel):
+
+    data: List[WebhookAttempt]
+
+    """
+
+    The list of webhook attempts
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebhooksResponse(ExaBaseModel):
+
+    data: List[Webhook]
+
+    """
+
+    The list of webhooks
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebsetItemResponse(ExaBaseModel):
+
+    data: List[WebsetItem]
+
+    """
+
+    The list of webset items
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more Items to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of Items
+
+    """
+
+class ListWebsetsResponse(ExaBaseModel):
+
+    data: List[Webset]
+
+    """
+
+    The list of websets
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class Option(ExaBaseModel):
+
+    label: str
+
+    """
+
+    The label of the option
+
+    """
+
+class Progress(ExaBaseModel):
+
+    """
+
+    The progress of the search
+
+    """
+
+    found: float
+
+    """
+
+    The number of results found so far
+
+    """
+
+    completion: confloat(ge=0.0, le=100.0)
+
+    """
+
+    The completion percentage of the search
+
+    """
+
+class Reference(ExaBaseModel):
+
+    title: Optional[str] = None
+
+    """
+
+    The title of the reference
+
+    """
+
+    snippet: Optional[str] = None
+
+    """
+
+    The relevant snippet of the reference content
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL of the reference
+
+    """
+
+class Satisfied(Enum):
+
+    """
+
+    The satisfaction of the criterion
+
+    """
+
+    yes = 'yes'
+
+    no = 'no'
+
+    unclear = 'unclear'
+
+class Search(ExaBaseModel):
+
+    """
+
+    Create initial search for the Webset.
+
+    """
+
+    query: constr(min_length=1) = Field(
+
+        ...,
+
+        examples=[
+
+            'Marketing agencies based in the US, that focus on consumer products.'
+
+        ],
+
+    )
+
+    """
+
+    Your search query.
+
+    Use this to describe what you are looking for.
+
+    Any URL provided will be crawled and used as context for the search.
+
+    """
+
+    count: Optional[confloat(ge=1.0)] = 10
+
+    """
+
+    Number of Items the Webset will attempt to find.
+
+    The actual number of Items found may be less than this number depending on the search complexity.
+
+    """
+
+    entity: Optional[
+
+        Union[
+
+            WebsetCompanyEntity,
+
+            WebsetPersonEntity,
+
+            WebsetArticleEntity,
+
+            WebsetResearchPaperEntity,
+
+            WebsetCustomEntity,
+
+        ]
+
+    ] = Field(None, discriminator='type')
+
+    """
+
+    Entity the Webset will return results for.
+
+    It is not required to provide it, we automatically detect the entity from all the information provided in the query. Only use this when you need more fine control.
+
+    """
+
+    criteria: Optional[List[CreateCriterionParameters]] = Field(
+
+        None, max_items=5, min_items=1
+
+    )
+
+    """
+
+    Criteria every item is evaluated against.
+
+    It's not required to provide your own criteria, we automatically detect the criteria from all the information provided in the query. Only use this when you need more fine control.
+
+    """
+
+class Source(Enum):
+
+    """
+
+    The source of the Item
+
+    """
+
+    search = 'search'
+
+class UpdateWebhookParameters(ExaBaseModel):
+
+    events: Optional[List[EventType]] = Field(None, max_items=12, min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: Optional[AnyUrl] = None
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class UpdateWebsetRequest(ExaBaseModel):
+
+    metadata: Optional[Dict[str, str]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class Webhook(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webhook
+
+    """
+
+    object: Literal['webhook']
+
+    status: WebhookStatus = Field(..., title='WebhookStatus')
+
+    """
+
+    The status of the webhook
+
+    """
+
+    events: List[EventType] = Field(..., min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    secret: Optional[str] = None
+
+    """
+
+    The secret to verify the webhook signature. Only returned on Webhook creation.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    The metadata of the webhook
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the webhook was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the webhook was last updated
+
+    """
+
+class WebhookAttempt(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webhook attempt
+
+    """
+
+    object: Literal['webhook_attempt']
+
+    event_id: str = Field(..., alias='eventId')
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    event_type: EventType = Field(..., alias='eventType')
+
+    """
+
+    The type of event
+
+    """
+
+    webhook_id: str = Field(..., alias='webhookId')
+
+    """
+
+    The unique identifier for the webhook
+
+    """
+
+    url: str
+
+    """
+
+    The URL that was used during the attempt
+
+    """
+
+    successful: bool
+
+    """
+
+    Whether the attempt was successful
+
+    """
+
+    response_headers: Dict[str, Any] = Field(..., alias='responseHeaders')
+
+    """
+
+    The headers of the response
+
+    """
+
+    response_body: str = Field(..., alias='responseBody')
+
+    """
+
+    The body of the response
+
+    """
+
+    response_status_code: float = Field(..., alias='responseStatusCode')
+
+    """
+
+    The status code of the response
+
+    """
+
+    attempt: float
+
+    """
+
+    The attempt number of the webhook
+
+    """
+
+    attempted_at: datetime = Field(..., alias='attemptedAt')
+
+    """
+
+    The date and time the webhook attempt was made
+
+    """
+
+class WebhookStatus(Enum):
+
+    """
+
+    The status of the webhook
+
+    """
+
+    active = 'active'
+
+    inactive = 'inactive'
+
+class Webset(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webset
+
+    """
+
+    object: Literal['webset']
+
+    status: WebsetStatus = Field(..., title='WebsetStatus')
+
+    """
+
+    The status of the webset
+
+    """
+
+    external_id: Optional[str] = Field(..., alias='externalId')
+
+    """
+
+    The external identifier for the webset
+
+    """
+
+    searches: List[WebsetSearch]
+
+    """
+
+    The searches that have been performed on the webset.
+
+    """
+
+    enrichments: List[WebsetEnrichment]
+
+    """
+
+    The Enrichments to apply to the Webset Items.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the webset was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the webset was updated
+
+    """
+
+class WebsetArticleEntity(ExaBaseModel):
+
+    type: Literal['article']
+
+class WebsetCompanyEntity(ExaBaseModel):
+
+    type: Literal['company']
+
+class WebsetCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.created']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetCustomEntity(ExaBaseModel):
+
+    type: Literal['custom']
+
+    description: constr(min_length=2)
+
+    """
+
+    When you decide to use a custom entity, this is the description of the entity.
+
+    The entity represents what type of results the Webset will return. For example, if you want results to be Job Postings, you might use "Job Postings" as the entity description.
+
+    """
+
+class WebsetDeletedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.deleted']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetEnrichment(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the enrichment
+
+    """
+
+    object: Literal['webset_enrichment']
+
+    status: WebsetEnrichmentStatus = Field(..., title='WebsetEnrichmentStatus')
+
+    """
+
+    The status of the enrichment
+
+    """
+
+    webset_id: str = Field(..., alias='websetId')
+
+    """
+
+    The unique identifier for the Webset this enrichment belongs to.
+
+    """
+
+    title: Optional[str] = None
+
+    """
+
+    The title of the enrichment.
+
+    This will be automatically generated based on the description and format.
+
+    """
+
+    description: str
+
+    """
+
+    The description of the enrichment task provided during the creation of the enrichment.
+
+    """
+
+    format: Optional[WebsetEnrichmentFormat]
+
+    """
+
+    The format of the enrichment response.
+
+    """
+
+    options: Optional[List[WebsetEnrichmentOption]] = Field(
+
+        ..., title='WebsetEnrichmentOptions'
+
+    )
+
+    """
+
+    When the format is options, the different options for the enrichment agent to choose from.
+
+    """
+
+    instructions: Optional[str] = None
+
+    """
+
+    The instructions for the enrichment Agent.
+
+    This will be automatically generated based on the description and format.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    The metadata of the enrichment
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the enrichment was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the enrichment was updated
+
+    """
+
+class WebsetEnrichmentFormat(Enum):
+
+    text = 'text'
+
+    date = 'date'
+
+    number = 'number'
+
+    options = 'options'
+
+    email = 'email'
+
+    phone = 'phone'
+
+class WebsetEnrichmentOption(Option):
+
+    pass
+
+class WebsetEnrichmentStatus(Enum):
+
+    """
+
+    The status of the enrichment
+
+    """
+
+    pending = 'pending'
+
+    canceled = 'canceled'
+
+    completed = 'completed'
+
+class WebsetIdleEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.idle']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItem(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the Webset Item
+
+    """
+
+    object: Literal['webset_item']
+
+    source: Source
+
+    """
+
+    The source of the Item
+
+    """
+
+    source_id: str = Field(..., alias='sourceId')
+
+    """
+
+    The unique identifier for the source
+
+    """
+
+    webset_id: str = Field(..., alias='websetId')
+
+    """
+
+    The unique identifier for the Webset this Item belongs to.
+
+    """
+
+    properties: Union[
+
+        WebsetItemPersonProperties,
+
+        WebsetItemCompanyProperties,
+
+        WebsetItemArticleProperties,
+
+        WebsetItemResearchPaperProperties,
+
+        WebsetItemCustomProperties,
+
+    ]
+
+    """
+
+    The properties of the Item
+
+    """
+
+    evaluations: List[WebsetItemEvaluation]
+
+    """
+
+    The criteria evaluations of the item
+
+    """
+
+    enrichments: List[EnrichmentResult]
+
+    """
+
+    The enrichments results of the Webset item
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the item was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the item was last updated
+
+    """
+
+class WebsetItemArticleProperties(ExaBaseModel):
+
+    type: Literal['article']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the article
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the article
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content for the article
+
+    """
+
+    article: WebsetItemArticlePropertiesFields = Field(
+
+        ..., title='WebsetItemArticlePropertiesFields'
+
+    )
+
+class WebsetItemArticlePropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the article
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the article was published
+
+    """
+
+class WebsetItemCompanyProperties(ExaBaseModel):
+
+    type: Literal['company']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the company website
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the company
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the company website
+
+    """
+
+    company: WebsetItemCompanyPropertiesFields = Field(
+
+        ..., title='WebsetItemCompanyPropertiesFields'
+
+    )
+
+class WebsetItemCompanyPropertiesFields(ExaBaseModel):
+
+    name: str
+
+    """
+
+    The name of the company
+
+    """
+
+    location: Optional[str] = None
+
+    """
+
+    The main location of the company
+
+    """
+
+    employees: Optional[float] = None
+
+    """
+
+    The number of employees of the company
+
+    """
+
+    industry: Optional[str] = None
+
+    """
+
+    The industry of the company
+
+    """
+
+    about: Optional[str] = None
+
+    """
+
+    A short description of the company
+
+    """
+
+    logo_url: Optional[AnyUrl] = Field(..., alias='logoUrl')
+
+    """
+
+    The logo URL of the company
+
+    """
+
+class WebsetItemCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.item.created']
+
+    data: WebsetItem
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItemCustomProperties(ExaBaseModel):
+
+    type: Literal['custom']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the Item
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the Item
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the Item
+
+    """
+
+    custom: WebsetItemCustomPropertiesFields = Field(
+
+        ..., title='WebsetItemCustomPropertiesFields'
+
+    )
+
+class WebsetItemCustomPropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the website
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the website was published
+
+    """
+
+class WebsetItemEnrichedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.item.enriched']
+
+    data: WebsetItem
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItemEvaluation(ExaBaseModel):
+
+    criterion: str
+
+    """
+
+    The description of the criterion
+
+    """
+
+    reasoning: str
+
+    """
+
+    The reasoning for the result of the evaluation
+
+    """
+
+    satisfied: Satisfied
+
+    """
+
+    The satisfaction of the criterion
+
+    """
+
+    references: List[Reference] = []
+
+    """
+
+    The references used to generate the result. `null` if the evaluation is not yet completed.
+
+    """
+
+class WebsetItemPersonProperties(ExaBaseModel):
+
+    type: Literal['person']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the person profile
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the person
+
+    """
+
+    person: WebsetItemPersonPropertiesFields = Field(
+
+        ..., title='WebsetItemPersonPropertiesFields'
+
+    )
+
+class WebsetItemPersonPropertiesFields(ExaBaseModel):
+
+    name: str
+
+    """
+
+    The name of the person
+
+    """
+
+    location: Optional[str] = None
+
+    """
+
+    The location of the person
+
+    """
+
+    position: Optional[str] = None
+
+    """
+
+    The current work position of the person
+
+    """
+
+    picture_url: Optional[AnyUrl] = Field(..., alias='pictureUrl')
+
+    """
+
+    The image URL of the person
+
+    """
+
+class WebsetItemResearchPaperProperties(ExaBaseModel):
+
+    type: Literal['research_paper']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the research paper
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the research paper
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the research paper
+
+    """
+
+    research_paper: WebsetItemResearchPaperPropertiesFields = Field(
+
+        ..., alias='researchPaper', title='WebsetItemResearchPaperPropertiesFields'
+
+    )
+
+class WebsetItemResearchPaperPropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the research paper
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the research paper was published
+
+    """
+
+class WebsetPausedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.paused']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetPersonEntity(ExaBaseModel):
+
+    type: Literal['person']
+
+class WebsetResearchPaperEntity(ExaBaseModel):
+
+    type: Literal['research_paper']
+
+class WebsetSearch(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the search
+
+    """
+
+    object: Literal['webset_search']
+
+    status: WebsetSearchStatus = Field(..., title='WebsetSearchStatus')
+
+    """
+
+    The status of the search
+
+    """
+
+    query: constr(min_length=1)
+
+    """
+
+    The query used to create the search.
+
+    """
+
+    entity: Union[
+
+        WebsetCompanyEntity,
+
+        WebsetPersonEntity,
+
+        WebsetArticleEntity,
+
+        WebsetResearchPaperEntity,
+
+        WebsetCustomEntity,
+
+    ]
+
+    """
+
+    The entity the search will return results for.
+
+    When no entity is provided during creation, we will automatically select the best entity based on the query.
+
+    """
+
+    criteria: List[Criterion]
+
+    """
+
+    The criteria the search will use to evaluate the results. If not provided, we will automatically generate them for you.
+
+    """
+
+    count: confloat(ge=1.0)
+
+    """
+
+    The number of results the search will attempt to find. The actual number of results may be less than this number depending on the search complexity.
+
+    """
+
+    progress: Progress
+
+    """
+
+    The progress of the search
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+    canceled_at: Optional[datetime] = Field(..., alias='canceledAt')
+
+    """
+
+    The date and time the search was canceled
+
+    """
+
+    canceled_reason: Optional[CanceledReason] = Field(..., alias='canceledReason')
+
+    """
+
+    The reason the search was canceled
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the search was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the search was updated
+
+    """
+
+class WebsetSearchBehaviour(Enum):
+
+    """
+
+    The behaviour of the Search when it is added to a Webset.
+
+    - `override`: the search will reuse the existing Items found in the Webset and evaluate them against the new criteria. Any Items that don't match the new criteria will be discarded.
+
+    """
+
+    override = 'override'
+
+class WebsetSearchCanceledEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).canceled']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchCompletedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).completed']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).created']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchStatus(Enum):
+
+    """
+
+    The status of the search
+
+    """
+
+    created = 'created'
+
+    running = 'running'
+
+    completed = 'completed'
+
+    canceled = 'canceled'
+
+class WebsetSearchUpdatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).updated']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetStatus(Enum):
+
+    """
+
+    The status of the webset
+
+    """
+
+    idle = 'idle'
+
+    running = 'running'
+
+    paused = 'paused'
+
+class GetWebsetResponse(Webset):
+
+    items: Optional[List[WebsetItem]] = None
+
+    """
+
+    When expand query parameter contains `items`, this will contain the items in the webset
+
+    """
+
+----
+
+output.txt
+
+The following text is a Git repository with code. The structure of the text are sections that begin with ----, followed by a single line containing the file path and file name, followed by a variable amount of lines containing the file contents. The text representing the Git repository ends when the symbols --END-- are encounted. Any further text beyond --END-- are meant to be interpreted as instructions using the aforementioned Git repository as context.
+
+----
+
+[client.py](http://client.py)
+
+from **future** import annotations
+
+import time
+
+from datetime import datetime
+
+from typing import List, Optional, Literal, Dict, Any, Union
+
+from .types import (
+
+    Webset,
+
+    ListWebsetsResponse,
+
+    GetWebsetResponse,
+
+    UpdateWebsetRequest,
+
+    WebsetStatus,
+
+    CreateWebsetParameters,
+
+)
+
+from .core.base import WebsetsBaseClient
+
+from .items import WebsetItemsClient
+
+from .searches import WebsetSearchesClient
+
+from .enrichments import WebsetEnrichmentsClient
+
+from .webhooks import WebsetWebhooksClient
+
+class WebsetsClient(WebsetsBaseClient):
+
+    """Client for managing Websets."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+        self.items = WebsetItemsClient(client)
+
+        self.searches = WebsetSearchesClient(client)
+
+        self.enrichments = WebsetEnrichmentsClient(client)
+
+        self.webhooks = WebsetWebhooksClient(client)
+
+    def create(self, params: Union[Dict[str, Any], CreateWebsetParameters]) -\> Webset:
+
+        """Create a new Webset.
+
+        
+
+        Args:
+
+            params (CreateWebsetParameters): The parameters for creating a webset.
+
+        
+
+        Returns:
+
+            Webset: The created webset.
+
+        """
+
+        response = self.request("/v0/websets", data=params)
+
+        return Webset.model_validate(response)
+
+    def get(self, id: str, \*, expand: Optional[List[Literal["items"]]] = None) -\> GetWebsetResponse:
+
+        """Get a Webset by ID.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            expand (List[Literal["items"]], optional): Expand the response with specified resources.
+
+                Allowed values: ["items"]
+
+        
+
+        Returns:
+
+            GetWebsetResponse: The retrieved webset.
+
+        """
+
+        params = {"expand": expand} if expand else {}
+
+        response = self.request(f"/v0/websets/{id}", params=params, method="GET")
+
+        return GetWebsetResponse.model_validate(response)
+
+    def list(self, \*, cursor: Optional[str] = None, limit: Optional[int] = None) -\> ListWebsetsResponse:
+
+        """List all Websets.
+
+        
+
+        Args:
+
+            cursor (str, optional): The cursor to paginate through the results.
+
+            limit (int, optional): The number of results to return (max 200).
+
+        
+
+        Returns:
+
+            ListWebsetsResponse: List of websets.
+
+        """
+
+        params = {k: v for k, v in {"cursor": cursor, "limit": limit}.items() if v is not None}
+
+        response = self.request("/v0/websets", params=params, method="GET")
+
+        return ListWebsetsResponse.model_validate(response)
+
+    def update(self, id: str, params: Union[Dict[str, Any], UpdateWebsetRequest]) -\> Webset:
+
+        """Update a Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            params (UpdateWebsetRequest): The parameters for updating a webset.
+
+        
+
+        Returns:
+
+            Webset: The updated webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}", data=params, method="POST")
+
+        return Webset.model_validate(response)
+
+    def delete(self, id: str) -\> Webset:
+
+        """Delete a Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+        
+
+        Returns:
+
+            Webset: The deleted webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}", method="DELETE")
+
+        return Webset.model_validate(response)
+
+    def cancel(self, id: str) -\> Webset:
+
+        """Cancel a running Webset.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+        
+
+        Returns:
+
+            Webset: The canceled webset.
+
+        """
+
+        response = self.request(f"/v0/websets/{id}/cancel", method="POST")
+
+        return Webset.model_validate(response)
+
+    def wait_until_idle(self, id: str, \*, timeout: int = 3600, poll_interval: int = 5) -\> Webset:
+
+        """Wait until a Webset is idle.
+
+        
+
+        Args:
+
+            id (str): The id or externalId of the Webset.
+
+            timeout (int, optional): Maximum time to wait in seconds. Defaults to 3600.
+
+            poll_interval (int, optional): Time to wait between polls in seconds. Defaults to 5.
+
+            
+
+        Returns:
+
+            Webset: The webset once it's idle.
+
+            
+
+        Raises:
+
+            TimeoutError: If the webset does not become idle within the timeout period.
+
+        """
+
+        start_time = time.time()
+
+        while True:
+
+            webset = self.get(id)
+
+            if webset.status == WebsetStatus.idle.value:
+
+                return webset
+
+                
+
+            if time.time() - start_time \> timeout:
+
+                raise TimeoutError(f"Webset {id} did not become idle within {timeout} seconds")
+
+                
+
+            time.sleep(poll_interval)
+
+----
+
+**init**.py
+
+from .client import WebsetsClient
+
+**all** = [
+
+    "WebsetsClient",
+
+] 
+
+----
+
+[types.py](http://types.py)
+
+from **future** import annotations
+
+from datetime import datetime
+
+from enum import Enum
+
+from typing import Any, Dict, List, Literal, Optional, Union
+
+from pydantic import AnyUrl, Field, confloat, constr
+
+from .core.base import ExaBaseModel
+
+class CanceledReason(Enum):
+
+    """
+
+    The reason the search was canceled
+
+    """
+
+    webset_deleted = 'webset_deleted'
+
+    webset_canceled = 'webset_canceled'
+
+class CreateCriterionParameters(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    The description of the criterion
+
+    """
+
+class CreateEnrichmentParameters(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    Provide a description of the enrichment task you want to perform to each Webset Item.
+
+    """
+
+    format: Optional[Format] = None
+
+    """
+
+    Format of the enrichment response.
+
+    We automatically select the best format based on the description. If you want to explicitly specify the format, you can do so here.
+
+    """
+
+    options: Optional[List[Option]] = Field(None, max_items=20, min_items=1)
+
+    """
+
+    When the format is options, the different options for the enrichment agent to choose from.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebhookParameters(ExaBaseModel):
+
+    events: List[EventType] = Field(..., max_items=12, min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebsetParameters(ExaBaseModel):
+
+    search: Search
+
+    """
+
+    Create initial search for the Webset.
+
+    """
+
+    enrichments: Optional[List[CreateEnrichmentParameters]] = Field(None, max_items=10)
+
+    """
+
+    Add Enrichments for the Webset.
+
+    """
+
+    external_id: Optional[str] = Field(None, alias='externalId')
+
+    """
+
+    The external identifier for the webset.
+
+    You can use this to reference the Webset by your own internal identifiers.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class CreateWebsetSearchParameters(ExaBaseModel):
+
+    count: confloat(ge=1.0)
+
+    """
+
+    Number of Items the Search will attempt to find.
+
+    The actual number of Items found may be less than this number depending on the query complexity.
+
+    """
+
+    query: constr(min_length=1) = Field(
+
+        ...,
+
+        examples=[
+
+            'Marketing agencies based in the US, that focus on consumer products. Get brands worked with and city'
+
+        ],
+
+    )
+
+    """
+
+    Query describing what you are looking for.
+
+    Any URL provided will be crawled and used as context for the search.
+
+    """
+
+    entity: Optional[
+
+        Union[
+
+            WebsetCompanyEntity,
+
+            WebsetPersonEntity,
+
+            WebsetArticleEntity,
+
+            WebsetResearchPaperEntity,
+
+            WebsetCustomEntity,
+
+        ]
+
+    ] = None
+
+    """
+
+    Entity the Webset will return results for.
+
+    It is not required to provide it, we automatically detect the entity from all the information provided in the query.
+
+    """
+
+    criteria: Optional[List[CreateCriterionParameters]] = Field(
+
+        None, max_items=5, min_items=1
+
+    )
+
+    """
+
+    Criteria every item is evaluated against.
+
+    It's not required to provide your own criteria, we automatically detect the criteria from all the information provided in the query.
+
+    """
+
+    behaviour: Optional[WebsetSearchBehaviour] = Field(
+
+        'override', title='WebsetSearchBehaviour'
+
+    )
+
+    """
+
+    The behaviour of the Search when it is added to a Webset.
+
+    - `override`: the search will reuse the existing Items found in the Webset and evaluate them against the new criteria. Any Items that don't match the new criteria will be discarded.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class Criterion(ExaBaseModel):
+
+    description: constr(min_length=1)
+
+    """
+
+    The description of the criterion
+
+    """
+
+    success_rate: confloat(ge=0.0, le=100.0) = Field(..., alias='successRate')
+
+    """
+
+    Value between 0 and 100 representing the percentage of results that meet the criterion.
+
+    """
+
+class EnrichmentResult(ExaBaseModel):
+
+    object: Literal['enrichment_result']
+
+    format: WebsetEnrichmentFormat
+
+    result: Optional[List[str]] = None
+
+    """
+
+    The result of the enrichment. None if the enrichment wasn't successful.
+
+    """
+
+    reasoning: Optional[str] = None
+
+    """
+
+    The reasoning for the result when an Agent is used.
+
+    """
+
+    references: List[Reference]
+
+    """
+
+    The references used to generate the result.
+
+    """
+
+    enrichment_id: str = Field(..., alias='enrichmentId')
+
+    """
+
+    The id of the Enrichment that generated the result
+
+    """
+
+class EventType(Enum):
+
+    webset_created = 'webset.created'
+
+    webset_deleted = 'webset.deleted'
+
+    webset_paused = 'webset.paused'
+
+    webset_idle = 'webset.idle'
+
+    webset_search_created = '[webset.search](http://webset.search).created'
+
+    webset_search_canceled = '[webset.search](http://webset.search).canceled'
+
+    webset_search_completed = '[webset.search](http://webset.search).completed'
+
+    webset_search_updated = '[webset.search](http://webset.search).updated'
+
+    webset_export_created = 'webset.export.created'
+
+    webset_export_completed = 'webset.export.completed'
+
+    webset_item_created = 'webset.item.created'
+
+    webset_item_enriched = 'webset.item.enriched'
+
+class Format(Enum):
+
+    """
+
+    Format of the enrichment response.
+
+    We automatically select the best format based on the description. If you want to explicitly specify the format, you can do so here.
+
+    """
+
+    text = 'text'
+
+    date = 'date'
+
+    number = 'number'
+
+    options = 'options'
+
+    email = 'email'
+
+    phone = 'phone'
+
+class ListEventsResponse(ExaBaseModel):
+
+    data: List[
+
+        Union[
+
+            WebsetCreatedEvent,
+
+            WebsetDeletedEvent,
+
+            WebsetIdleEvent,
+
+            WebsetPausedEvent,
+
+            WebsetItemCreatedEvent,
+
+            WebsetItemEnrichedEvent,
+
+            WebsetSearchCreatedEvent,
+
+            WebsetSearchUpdatedEvent,
+
+            WebsetSearchCanceledEvent,
+
+            WebsetSearchCompletedEvent,
+
+        ]
+
+    ] = Field(..., discriminator='type')
+
+    """
+
+    The list of events
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebhookAttemptsResponse(ExaBaseModel):
+
+    data: List[WebhookAttempt]
+
+    """
+
+    The list of webhook attempts
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebhooksResponse(ExaBaseModel):
+
+    data: List[Webhook]
+
+    """
+
+    The list of webhooks
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class ListWebsetItemResponse(ExaBaseModel):
+
+    data: List[WebsetItem]
+
+    """
+
+    The list of webset items
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more Items to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of Items
+
+    """
+
+class ListWebsetsResponse(ExaBaseModel):
+
+    data: List[Webset]
+
+    """
+
+    The list of websets
+
+    """
+
+    has_more: bool = Field(..., alias='hasMore')
+
+    """
+
+    Whether there are more results to paginate through
+
+    """
+
+    next_cursor: Optional[str] = Field(..., alias='nextCursor')
+
+    """
+
+    The cursor to paginate through the next set of results
+
+    """
+
+class Option(ExaBaseModel):
+
+    label: str
+
+    """
+
+    The label of the option
+
+    """
+
+class Progress(ExaBaseModel):
+
+    """
+
+    The progress of the search
+
+    """
+
+    found: float
+
+    """
+
+    The number of results found so far
+
+    """
+
+    completion: confloat(ge=0.0, le=100.0)
+
+    """
+
+    The completion percentage of the search
+
+    """
+
+class Reference(ExaBaseModel):
+
+    title: Optional[str] = None
+
+    """
+
+    The title of the reference
+
+    """
+
+    snippet: Optional[str] = None
+
+    """
+
+    The relevant snippet of the reference content
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL of the reference
+
+    """
+
+class Satisfied(Enum):
+
+    """
+
+    The satisfaction of the criterion
+
+    """
+
+    yes = 'yes'
+
+    no = 'no'
+
+    unclear = 'unclear'
+
+class Search(ExaBaseModel):
+
+    """
+
+    Create initial search for the Webset.
+
+    """
+
+    query: constr(min_length=1) = Field(
+
+        ...,
+
+        examples=[
+
+            'Marketing agencies based in the US, that focus on consumer products.'
+
+        ],
+
+    )
+
+    """
+
+    Your search query.
+
+    Use this to describe what you are looking for.
+
+    Any URL provided will be crawled and used as context for the search.
+
+    """
+
+    count: Optional[confloat(ge=1.0)] = 10
+
+    """
+
+    Number of Items the Webset will attempt to find.
+
+    The actual number of Items found may be less than this number depending on the search complexity.
+
+    """
+
+    entity: Optional[
+
+        Union[
+
+            WebsetCompanyEntity,
+
+            WebsetPersonEntity,
+
+            WebsetArticleEntity,
+
+            WebsetResearchPaperEntity,
+
+            WebsetCustomEntity,
+
+        ]
+
+    ] = Field(None, discriminator='type')
+
+    """
+
+    Entity the Webset will return results for.
+
+    It is not required to provide it, we automatically detect the entity from all the information provided in the query. Only use this when you need more fine control.
+
+    """
+
+    criteria: Optional[List[CreateCriterionParameters]] = Field(
+
+        None, max_items=5, min_items=1
+
+    )
+
+    """
+
+    Criteria every item is evaluated against.
+
+    It's not required to provide your own criteria, we automatically detect the criteria from all the information provided in the query. Only use this when you need more fine control.
+
+    """
+
+class Source(Enum):
+
+    """
+
+    The source of the Item
+
+    """
+
+    search = 'search'
+
+class UpdateWebhookParameters(ExaBaseModel):
+
+    events: Optional[List[EventType]] = Field(None, max_items=12, min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: Optional[AnyUrl] = None
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class UpdateWebsetRequest(ExaBaseModel):
+
+    metadata: Optional[Dict[str, str]] = None
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+class Webhook(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webhook
+
+    """
+
+    object: Literal['webhook']
+
+    status: WebhookStatus = Field(..., title='WebhookStatus')
+
+    """
+
+    The status of the webhook
+
+    """
+
+    events: List[EventType] = Field(..., min_items=1)
+
+    """
+
+    The events to trigger the webhook
+
+    """
+
+    url: AnyUrl
+
+    """
+
+    The URL to send the webhook to
+
+    """
+
+    secret: Optional[str] = None
+
+    """
+
+    The secret to verify the webhook signature. Only returned on Webhook creation.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    The metadata of the webhook
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the webhook was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the webhook was last updated
+
+    """
+
+class WebhookAttempt(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webhook attempt
+
+    """
+
+    object: Literal['webhook_attempt']
+
+    event_id: str = Field(..., alias='eventId')
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    event_type: EventType = Field(..., alias='eventType')
+
+    """
+
+    The type of event
+
+    """
+
+    webhook_id: str = Field(..., alias='webhookId')
+
+    """
+
+    The unique identifier for the webhook
+
+    """
+
+    url: str
+
+    """
+
+    The URL that was used during the attempt
+
+    """
+
+    successful: bool
+
+    """
+
+    Whether the attempt was successful
+
+    """
+
+    response_headers: Dict[str, Any] = Field(..., alias='responseHeaders')
+
+    """
+
+    The headers of the response
+
+    """
+
+    response_body: str = Field(..., alias='responseBody')
+
+    """
+
+    The body of the response
+
+    """
+
+    response_status_code: float = Field(..., alias='responseStatusCode')
+
+    """
+
+    The status code of the response
+
+    """
+
+    attempt: float
+
+    """
+
+    The attempt number of the webhook
+
+    """
+
+    attempted_at: datetime = Field(..., alias='attemptedAt')
+
+    """
+
+    The date and time the webhook attempt was made
+
+    """
+
+class WebhookStatus(Enum):
+
+    """
+
+    The status of the webhook
+
+    """
+
+    active = 'active'
+
+    inactive = 'inactive'
+
+class Webset(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the webset
+
+    """
+
+    object: Literal['webset']
+
+    status: WebsetStatus = Field(..., title='WebsetStatus')
+
+    """
+
+    The status of the webset
+
+    """
+
+    external_id: Optional[str] = Field(..., alias='externalId')
+
+    """
+
+    The external identifier for the webset
+
+    """
+
+    searches: List[WebsetSearch]
+
+    """
+
+    The searches that have been performed on the webset.
+
+    """
+
+    enrichments: List[WebsetEnrichment]
+
+    """
+
+    The Enrichments to apply to the Webset Items.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the webset was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the webset was updated
+
+    """
+
+class WebsetArticleEntity(ExaBaseModel):
+
+    type: Literal['article']
+
+class WebsetCompanyEntity(ExaBaseModel):
+
+    type: Literal['company']
+
+class WebsetCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.created']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetCustomEntity(ExaBaseModel):
+
+    type: Literal['custom']
+
+    description: constr(min_length=2)
+
+    """
+
+    When you decide to use a custom entity, this is the description of the entity.
+
+    The entity represents what type of results the Webset will return. For example, if you want results to be Job Postings, you might use "Job Postings" as the entity description.
+
+    """
+
+class WebsetDeletedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.deleted']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetEnrichment(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the enrichment
+
+    """
+
+    object: Literal['webset_enrichment']
+
+    status: WebsetEnrichmentStatus = Field(..., title='WebsetEnrichmentStatus')
+
+    """
+
+    The status of the enrichment
+
+    """
+
+    webset_id: str = Field(..., alias='websetId')
+
+    """
+
+    The unique identifier for the Webset this enrichment belongs to.
+
+    """
+
+    title: Optional[str] = None
+
+    """
+
+    The title of the enrichment.
+
+    This will be automatically generated based on the description and format.
+
+    """
+
+    description: str
+
+    """
+
+    The description of the enrichment task provided during the creation of the enrichment.
+
+    """
+
+    format: Optional[WebsetEnrichmentFormat]
+
+    """
+
+    The format of the enrichment response.
+
+    """
+
+    options: Optional[List[WebsetEnrichmentOption]] = Field(
+
+        ..., title='WebsetEnrichmentOptions'
+
+    )
+
+    """
+
+    When the format is options, the different options for the enrichment agent to choose from.
+
+    """
+
+    instructions: Optional[str] = None
+
+    """
+
+    The instructions for the enrichment Agent.
+
+    This will be automatically generated based on the description and format.
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    The metadata of the enrichment
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the enrichment was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the enrichment was updated
+
+    """
+
+class WebsetEnrichmentFormat(Enum):
+
+    text = 'text'
+
+    date = 'date'
+
+    number = 'number'
+
+    options = 'options'
+
+    email = 'email'
+
+    phone = 'phone'
+
+class WebsetEnrichmentOption(Option):
+
+    pass
+
+class WebsetEnrichmentStatus(Enum):
+
+    """
+
+    The status of the enrichment
+
+    """
+
+    pending = 'pending'
+
+    canceled = 'canceled'
+
+    completed = 'completed'
+
+class WebsetIdleEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.idle']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItem(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the Webset Item
+
+    """
+
+    object: Literal['webset_item']
+
+    source: Source
+
+    """
+
+    The source of the Item
+
+    """
+
+    source_id: str = Field(..., alias='sourceId')
+
+    """
+
+    The unique identifier for the source
+
+    """
+
+    webset_id: str = Field(..., alias='websetId')
+
+    """
+
+    The unique identifier for the Webset this Item belongs to.
+
+    """
+
+    properties: Union[
+
+        WebsetItemPersonProperties,
+
+        WebsetItemCompanyProperties,
+
+        WebsetItemArticleProperties,
+
+        WebsetItemResearchPaperProperties,
+
+        WebsetItemCustomProperties,
+
+    ]
+
+    """
+
+    The properties of the Item
+
+    """
+
+    evaluations: List[WebsetItemEvaluation]
+
+    """
+
+    The criteria evaluations of the item
+
+    """
+
+    enrichments: List[EnrichmentResult]
+
+    """
+
+    The enrichments results of the Webset item
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the item was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the item was last updated
+
+    """
+
+class WebsetItemArticleProperties(ExaBaseModel):
+
+    type: Literal['article']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the article
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the article
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content for the article
+
+    """
+
+    article: WebsetItemArticlePropertiesFields = Field(
+
+        ..., title='WebsetItemArticlePropertiesFields'
+
+    )
+
+class WebsetItemArticlePropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the article
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the article was published
+
+    """
+
+class WebsetItemCompanyProperties(ExaBaseModel):
+
+    type: Literal['company']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the company website
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the company
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the company website
+
+    """
+
+    company: WebsetItemCompanyPropertiesFields = Field(
+
+        ..., title='WebsetItemCompanyPropertiesFields'
+
+    )
+
+class WebsetItemCompanyPropertiesFields(ExaBaseModel):
+
+    name: str
+
+    """
+
+    The name of the company
+
+    """
+
+    location: Optional[str] = None
+
+    """
+
+    The main location of the company
+
+    """
+
+    employees: Optional[float] = None
+
+    """
+
+    The number of employees of the company
+
+    """
+
+    industry: Optional[str] = None
+
+    """
+
+    The industry of the company
+
+    """
+
+    about: Optional[str] = None
+
+    """
+
+    A short description of the company
+
+    """
+
+    logo_url: Optional[AnyUrl] = Field(..., alias='logoUrl')
+
+    """
+
+    The logo URL of the company
+
+    """
+
+class WebsetItemCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.item.created']
+
+    data: WebsetItem
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItemCustomProperties(ExaBaseModel):
+
+    type: Literal['custom']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the Item
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the Item
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the Item
+
+    """
+
+    custom: WebsetItemCustomPropertiesFields = Field(
+
+        ..., title='WebsetItemCustomPropertiesFields'
+
+    )
+
+class WebsetItemCustomPropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the website
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the website was published
+
+    """
+
+class WebsetItemEnrichedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.item.enriched']
+
+    data: WebsetItem
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetItemEvaluation(ExaBaseModel):
+
+    criterion: str
+
+    """
+
+    The description of the criterion
+
+    """
+
+    reasoning: str
+
+    """
+
+    The reasoning for the result of the evaluation
+
+    """
+
+    satisfied: Satisfied
+
+    """
+
+    The satisfaction of the criterion
+
+    """
+
+    references: List[Reference] = []
+
+    """
+
+    The references used to generate the result. `null` if the evaluation is not yet completed.
+
+    """
+
+class WebsetItemPersonProperties(ExaBaseModel):
+
+    type: Literal['person']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the person profile
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the person
+
+    """
+
+    person: WebsetItemPersonPropertiesFields = Field(
+
+        ..., title='WebsetItemPersonPropertiesFields'
+
+    )
+
+class WebsetItemPersonPropertiesFields(ExaBaseModel):
+
+    name: str
+
+    """
+
+    The name of the person
+
+    """
+
+    location: Optional[str] = None
+
+    """
+
+    The location of the person
+
+    """
+
+    position: Optional[str] = None
+
+    """
+
+    The current work position of the person
+
+    """
+
+    picture_url: Optional[AnyUrl] = Field(..., alias='pictureUrl')
+
+    """
+
+    The image URL of the person
+
+    """
+
+class WebsetItemResearchPaperProperties(ExaBaseModel):
+
+    type: Literal['research_paper']
+
+    url: AnyUrl
+
+    """
+
+    The URL of the research paper
+
+    """
+
+    description: str
+
+    """
+
+    Short description of the relevance of the research paper
+
+    """
+
+    content: Optional[str] = None
+
+    """
+
+    The text content of the research paper
+
+    """
+
+    research_paper: WebsetItemResearchPaperPropertiesFields = Field(
+
+        ..., alias='researchPaper', title='WebsetItemResearchPaperPropertiesFields'
+
+    )
+
+class WebsetItemResearchPaperPropertiesFields(ExaBaseModel):
+
+    author: Optional[str] = None
+
+    """
+
+    The author(s) of the research paper
+
+    """
+
+    published_at: Optional[str] = Field(..., alias='publishedAt')
+
+    """
+
+    The date and time the research paper was published
+
+    """
+
+class WebsetPausedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['webset.paused']
+
+    data: Webset
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetPersonEntity(ExaBaseModel):
+
+    type: Literal['person']
+
+class WebsetResearchPaperEntity(ExaBaseModel):
+
+    type: Literal['research_paper']
+
+class WebsetSearch(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the search
+
+    """
+
+    object: Literal['webset_search']
+
+    status: WebsetSearchStatus = Field(..., title='WebsetSearchStatus')
+
+    """
+
+    The status of the search
+
+    """
+
+    query: constr(min_length=1)
+
+    """
+
+    The query used to create the search.
+
+    """
+
+    entity: Union[
+
+        WebsetCompanyEntity,
+
+        WebsetPersonEntity,
+
+        WebsetArticleEntity,
+
+        WebsetResearchPaperEntity,
+
+        WebsetCustomEntity,
+
+    ]
+
+    """
+
+    The entity the search will return results for.
+
+    When no entity is provided during creation, we will automatically select the best entity based on the query.
+
+    """
+
+    criteria: List[Criterion]
+
+    """
+
+    The criteria the search will use to evaluate the results. If not provided, we will automatically generate them for you.
+
+    """
+
+    count: confloat(ge=1.0)
+
+    """
+
+    The number of results the search will attempt to find. The actual number of results may be less than this number depending on the search complexity.
+
+    """
+
+    progress: Progress
+
+    """
+
+    The progress of the search
+
+    """
+
+    metadata: Optional[Dict[str, Any]] = {}
+
+    """
+
+    Set of key-value pairs you want to associate with this object.
+
+    """
+
+    canceled_at: Optional[datetime] = Field(..., alias='canceledAt')
+
+    """
+
+    The date and time the search was canceled
+
+    """
+
+    canceled_reason: Optional[CanceledReason] = Field(..., alias='canceledReason')
+
+    """
+
+    The reason the search was canceled
+
+    """
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the search was created
+
+    """
+
+    updated_at: datetime = Field(..., alias='updatedAt')
+
+    """
+
+    The date and time the search was updated
+
+    """
+
+class WebsetSearchBehaviour(Enum):
+
+    """
+
+    The behaviour of the Search when it is added to a Webset.
+
+    - `override`: the search will reuse the existing Items found in the Webset and evaluate them against the new criteria. Any Items that don't match the new criteria will be discarded.
+
+    """
+
+    override = 'override'
+
+class WebsetSearchCanceledEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).canceled']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchCompletedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).completed']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchCreatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).created']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetSearchStatus(Enum):
+
+    """
+
+    The status of the search
+
+    """
+
+    created = 'created'
+
+    running = 'running'
+
+    completed = 'completed'
+
+    canceled = 'canceled'
+
+class WebsetSearchUpdatedEvent(ExaBaseModel):
+
+    id: str
+
+    """
+
+    The unique identifier for the event
+
+    """
+
+    object: Literal['event']
+
+    type: Literal['[webset.search](http://webset.search).updated']
+
+    data: WebsetSearch
+
+    created_at: datetime = Field(..., alias='createdAt')
+
+    """
+
+    The date and time the event was created
+
+    """
+
+class WebsetStatus(Enum):
+
+    """
+
+    The status of the webset
+
+    """
+
+    idle = 'idle'
+
+    running = 'running'
+
+    paused = 'paused'
+
+class GetWebsetResponse(Webset):
+
+    items: Optional[List[WebsetItem]] = None
+
+    """
+
+    When expand query parameter contains `items`, this will contain the items in the webset
+
+    """
+
+----
+
+searches/[client.py](http://client.py)
+
+from **future** import annotations
+
+from typing import Dict, Any, Union
+
+from ..types import (
+
+    CreateWebsetSearchParameters,
+
+    WebsetSearch,
+
+)
+
+from ..core.base import WebsetsBaseClient
+
+class WebsetSearchesClient(WebsetsBaseClient):
+
+    """Client for managing Webset Searches."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+    def create(self, webset_id: str, params: Union[Dict[str, Any], CreateWebsetSearchParameters]) -\> WebsetSearch:
+
+        """Create a new Search for the Webset.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            params (CreateWebsetSearchParameters): The parameters for creating a search.
+
+        
+
+        Returns:
+
+            WebsetSearch: The created search.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/searches", data=params)
+
+        return WebsetSearch.model_validate(response)
+
+    def get(self, webset_id: str, id: str) -\> WebsetSearch:
+
+        """Get a Search by ID.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            id (str): The id of the Search.
+
+        
+
+        Returns:
+
+            WebsetSearch: The retrieved search.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/searches/{id}", method="GET")
+
+        return WebsetSearch.model_validate(response)
+
+    def cancel(self, webset_id: str, id: str) -\> WebsetSearch:
+
+        """Cancel a running Search.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            id (str): The id of the Search.
+
+        
+
+        Returns:
+
+            WebsetSearch: The canceled search.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/searches/{id}/cancel", method="POST")
+
+        return WebsetSearch.model_validate(response) 
+
+----
+
+searches/\__init_\_.py
+
+from .client import WebsetSearchesClient
+
+**all** = ["WebsetSearchesClient"] 
+
+----
+
+core/\__init_\_.py
+
+from ..types import \*
+
+import sys
+
+# Get all public names from model module that don't start with underscore
+
+model_module = sys.modules[\__name_\_]
+
+**all** = ['WebsetsBaseClient', 'ExaBaseModel'] \+ [
+
+    name for name in dir(model_module)
+
+    if not name.startswith('\_') and name not in ('WebsetsBaseClient', 'ExaBaseModel')
+
+]
+
+----
+
+core/[base.py](http://base.py)
+
+from **future** import annotations
+
+import json
+
+from pydantic import ConfigDict, BaseModel, AnyUrl
+
+from enum import Enum
+
+from typing import Any, Dict, Optional, TypeVar, Generic, Type, get_origin, get_args, Union
+
+# Generic type var for any Enum
+
+EnumT = TypeVar('EnumT', bound=Enum)
+
+# Generic type for any ExaBaseModel
+
+ModelT = TypeVar('ModelT', bound='ExaBaseModel')
+
+# Custom JSON encoder for handling AnyUrl
+
+class ExaJSONEncoder(json.JSONEncoder):
+
+    def default(self, obj):
+
+        if isinstance(obj, AnyUrl):
+
+            return str(obj)
+
+        return super().default(obj)
+
+class ExaBaseModel(BaseModel):
+
+    """Base model for all Exa models with common configuration."""
+
+    model_config = ConfigDict(
+
+        populate_by_name=True,
+
+        use_enum_values=True,
+
+        coerce_numbers_to_str=False,  # Don't convert numbers to strings
+
+        str_strip_whitespace=True,  # Strip whitespace from strings
+
+        str_to_lower=False,  # Don't convert strings to lowercase
+
+        str_to_upper=False,  # Don't convert strings to uppercase
+
+        from_attributes=True,  # Allow initialization from attributes
+
+        validate_assignment=True,  # Validate on assignment
+
+        extra='forbid',  # Forbid extra fields
+
+        json_encoders={AnyUrl: str}  # Convert AnyUrl to string when serializing to JSON
+
+    )
+
+class WebsetsBaseClient:
+
+    base_url: str
+
+    """Base client for Exa API resources."""
+
+    def **init**(self, client):
+
+        """Initialize the client.
+
+        
+
+        Args:
+
+            client: The parent Exa client.
+
+        """
+
+        self.\_client = client
+
+        
+
+    def _prepare_data(self, data: Union[Dict[str, Any], ExaBaseModel, str], model_class: Optional[Type[ModelT]] = None) -\> Union[Dict[str, Any], str]:
+
+        """Prepare data for API request, converting dict to model if needed.
+
+        
+
+        Args:
+
+            data: Either a dictionary, model instance, or string
+
+            model_class: The model class to use if data is a dictionary
+
+            
+
+        Returns:
+
+            Dictionary prepared for API request or string if string data was provided
+
+        """
+
+        if isinstance(data, str):
+
+            # Return string as is
+
+            return data
+
+        elif isinstance(data, dict) and model_class:
+
+            # Convert dict to model instance
+
+            model_instance = model_class.model_validate(data)
+
+            return model_instance.model_dump(by_alias=True, exclude_none=True)
+
+        elif isinstance(data, ExaBaseModel):
+
+            # Use model's dump method
+
+            return data.model_dump(by_alias=True, exclude_none=True)
+
+        elif isinstance(data, dict):
+
+            # Use dict directly
+
+            return data
+
+        else:
+
+            raise TypeError(f"Expected dict, ExaBaseModel, or str, got {type(data)}")
+
+        
+
+    def request(self, endpoint: str, data: Optional[Union[Dict[str, Any], ExaBaseModel, str]] = None, 
+
+                method: str = "POST", params: Optional[Dict[str, Any]] = None) -\> Dict[str, Any]:
+
+        """Make a request to the Exa API.
+
+        
+
+        Args:
+
+            endpoint (str): The API endpoint to request.
+
+            data (Union[Dict[str, Any], ExaBaseModel, str], optional): The request data. Can be a dictionary, model instance, or string. Defaults to None.
+
+            method (str, optional): The HTTP method. Defaults to "POST".
+
+            params (Dict[str, Any], optional): The query parameters. Defaults to None.
+
+            
+
+        Returns:
+
+            Dict[str, Any]: The API response.
+
+        """
+
+        if isinstance(data, str):
+
+            # If data is a string, pass it as is
+
+            pass
+
+        elif data is not None and isinstance(data, ExaBaseModel):
+
+            # If data is a model instance, convert it to a dict
+
+            data = data.model_dump(by_alias=True, exclude_none=True)
+
+            
+
+        return self.\_client.request("/websets/" \+ endpoint, data=data, method=method, params=params) 
+
+    
+
+----
+
+enrichments/[client.py](http://client.py)
+
+from **future** import annotations
+
+from typing import Dict, Any, Union
+
+from ..types import (
+
+    CreateEnrichmentParameters,
+
+    WebsetEnrichment,
+
+)
+
+from ..core.base import WebsetsBaseClient
+
+class WebsetEnrichmentsClient(WebsetsBaseClient):
+
+    """Client for managing Webset Enrichments."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+    def create(self, webset_id: str, params: Union[Dict[str, Any], CreateEnrichmentParameters]) -\> WebsetEnrichment:
+
+        """Create an Enrichment for a Webset.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            params (CreateEnrichmentParameters): The parameters for creating an enrichment.
+
+        
+
+        Returns:
+
+            WebsetEnrichment: The created enrichment.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/enrichments", data=params)
+
+        return WebsetEnrichment.model_validate(response)
+
+    def get(self, webset_id: str, id: str) -\> WebsetEnrichment:
+
+        """Get an Enrichment by ID.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            id (str): The id of the Enrichment.
+
+        
+
+        Returns:
+
+            WebsetEnrichment: The retrieved enrichment.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/enrichments/{id}", method="GET")
+
+        return WebsetEnrichment.model_validate(response)
+
+    def delete(self, webset_id: str, id: str) -\> WebsetEnrichment:
+
+        """Delete an Enrichment.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            id (str): The id of the Enrichment.
+
+        
+
+        Returns:
+
+            WebsetEnrichment: The deleted enrichment.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/enrichments/{id}", method="DELETE")
+
+        return WebsetEnrichment.model_validate(response)
+
+    def cancel(self, webset_id: str, id: str) -\> WebsetEnrichment:
+
+        """Cancel a running Enrichment.
+
+        
+
+        Args:
+
+            webset_id (str): The id of the Webset.
+
+            id (str): The id of the Enrichment.
+
+        
+
+        Returns:
+
+            WebsetEnrichment: The canceled enrichment.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/enrichments/{id}/cancel", method="POST")
+
+        return WebsetEnrichment.model_validate(response) 
+
+----
+
+enrichments/\__init_\_.py
+
+from .client import WebsetEnrichmentsClient
+
+**all** = ["WebsetEnrichmentsClient"] 
+
+----
+
+\_generator/pydantic/BaseModel.jinja2
+
+{% for decorator in decorators -%}
+
+{{ decorator }}
+
+{% endfor -%}
+
+class {{ class_name }}({{ base_class }}):{% if comment is defined %}  # {{ comment }}{% endif %}
+
+{%- if description %}
+
+    """
+
+    {{ description | indent(4) }}
+
+    """
+
+{%- endif %}
+
+{%- if not fields and not description %}
+
+    pass
+
+{%- endif %}
+
+{%- if config %}
+
+{%- filter indent(4) %}
+
+{%- endfilter %}
+
+{%- endif %}
+
+{%- for field in fields -%}
+
+    {%- if [field.name](http://field.name) == "type" and field.field %}
+
+    type: Literal['{{ field.default }}']
+
+    {%- elif [field.name](http://field.name) == "object" and field.field %}
+
+    object: Literal['{{ field.default }}']
+
+    {%- elif not field.annotated and field.field %}
+
+    {{ [field.name](http://field.name) }}: {{ field.type_hint }} = {{ field.field }}
+
+    {%- else %}
+
+    {%- if field.annotated %}
+
+    {{ [field.name](http://field.name) }}: {{ field.annotated }}
+
+    {%- else %}
+
+    {{ [field.name](http://field.name) }}: {{ field.type_hint }}
+
+    {%- endif %}
+
+    {%- if not (field.required or (field.represented_default == 'None' and field.strip_default_none)) or [field.data](http://field.data)\_[type.is](http://type.is)\_optional
+
+            %} = {{ field.represented_default }}
+
+    {%- endif -%}
+
+    {%- endif %}
+
+    {%- if field.docstring %}
+
+    """
+
+    {{ field.docstring | indent(4) }}
+
+    """
+
+    {%- endif %}
+
+{%- for method in methods -%}
+
+    {{ method }}
+
+{%- endfor -%}
+
+{%- endfor -%}
+
+----
+
+items/[client.py](http://client.py)
+
+from **future** import annotations
+
+from typing import  Optional, Iterator
+
+from ..types import (
+
+    WebsetItem,
+
+    ListWebsetItemResponse,
+
+)
+
+from ..core.base import WebsetsBaseClient
+
+class WebsetItemsClient(WebsetsBaseClient):
+
+    """Client for managing Webset Items."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+    def list(self, webset_id: str, \*, cursor: Optional[str] = None, 
+
+             limit: Optional[int] = None) -\> ListWebsetItemResponse:
+
+        """List all Items for a Webset.
+
+        
+
+        Args:
+
+            webset_id (str): The id or externalId of the Webset.
+
+            cursor (str, optional): The cursor to paginate through the results.
+
+            limit (int, optional): The number of results to return (max 200).
+
+        
+
+        Returns:
+
+            ListWebsetItemResponse: List of webset items.
+
+        """
+
+        params = {k: v for k, v in {"cursor": cursor, "limit": limit}.items() if v is not None}
+
+        response = self.request(f"/v0/websets/{webset_id}/items", params=params, method="GET")
+
+        return ListWebsetItemResponse.model_validate(response)
+
+    def list_all(self, webset_id: str, \*, limit: Optional[int] = None) -\> Iterator[WebsetItem]:
+
+        """Iterate through all Items in a Webset, handling pagination automatically.
+
+        
+
+        Args:
+
+            webset_id (str): The id or externalId of the Webset.
+
+            limit (int, optional): The number of results to return per page (max 200).
+
+            
+
+        Yields:
+
+            WebsetItem: Each item in the webset.
+
+        """
+
+        cursor = None
+
+        while True:
+
+            response = self.list(webset_id, cursor=cursor, limit=limit)
+
+            for item in [response.data](http://response.data):
+
+                yield item
+
+            
+
+            if not response.has_more or not [response.next](http://response.next)\_cursor:
+
+                break
+
+                
+
+            cursor = [response.next](http://response.next)\_cursor
+
+    def get(self, webset_id: str, id: str) -\> WebsetItem:
+
+        """Get an Item by ID.
+
+        
+
+        Args:
+
+            webset_id (str): The id or externalId of the Webset.
+
+            id (str): The id of the Webset item.
+
+        
+
+        Returns:
+
+            WebsetItem: The retrieved item.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/items/{id}", method="GET")
+
+        return WebsetItem.model_validate(response)
+
+    def delete(self, webset_id: str, id: str) -\> WebsetItem:
+
+        """Delete an Item.
+
+        
+
+        Args:
+
+            webset_id (str): The id or externalId of the Webset.
+
+            id (str): The id of the Webset item.
+
+        
+
+        Returns:
+
+            WebsetItem: The deleted item.
+
+        """
+
+        response = self.request(f"/v0/websets/{webset_id}/items/{id}", method="DELETE")
+
+        return WebsetItem.model_validate(response) 
+
+----
+
+items/\__init_\_.py
+
+from .client import WebsetItemsClient
+
+**all** = ["WebsetItemsClient"] 
+
+----
+
+webhooks/[client.py](http://client.py)
+
+from **future** import annotations
+
+from typing import Optional, Dict, Any, Union, Literal
+
+from ..types import (
+
+    CreateWebhookParameters,
+
+    Webhook,
+
+    ListWebhooksResponse,
+
+    UpdateWebhookParameters,
+
+    ListWebhookAttemptsResponse,
+
+    EventType,
+
+)
+
+from ..core.base import WebsetsBaseClient
+
+class WebhookAttemptsClient(WebsetsBaseClient):
+
+    """Client for managing Webhook Attempts."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+    
+
+    def list(self, webhook_id: str, \*, cursor: Optional[str] = None, 
+
+             limit: Optional[int] = None, event_type: Optional[Union[EventType, str]] = None) -\> ListWebhookAttemptsResponse:
+
+        """List all attempts made by a Webhook ordered in descending order.
+
+        
+
+        Args:
+
+            webhook_id (str): The ID of the webhook.
+
+            cursor (str, optional): The cursor to paginate through the results.
+
+            limit (int, optional): The number of results to return (max 200).
+
+            event_type (Union[EventType, str], optional): The type of event to filter by.
+
+        
+
+        Returns:
+
+            ListWebhookAttemptsResponse: List of webhook attempts.
+
+        """
+
+        event_type_value = None
+
+        if event_type is not None:
+
+            if isinstance(event_type, EventType):
+
+                event_type_value = event_type.value
+
+            else:
+
+                event_type_value = event_type
+
+                
+
+        params = {k: v for k, v in {
+
+            "cursor": cursor, 
+
+            "limit": limit,
+
+            "eventType": event_type_value
+
+        }.items() if v is not None}
+
+        
+
+        response = self.request(f"/v0/webhooks/{webhook_id}/attempts", params=params, method="GET")
+
+        return ListWebhookAttemptsResponse.model_validate(response)
+
+class WebsetWebhooksClient(WebsetsBaseClient):
+
+    """Client for managing Webset Webhooks."""
+
+    
+
+    def **init**(self, client):
+
+        super().\__init_\_(client)
+
+        self.attempts = WebhookAttemptsClient(client)
+
+    def create(self, params: Union[Dict[str, Any], CreateWebhookParameters]) -\> Webhook:
+
+        """Create a Webhook.
+
+        
+
+        Args:
+
+            params (CreateWebhookParameters): The parameters for creating a webhook.
+
+        
+
+        Returns:
+
+            Webhook: The created webhook.
+
+        """
+
+        response = self.request("/v0/webhooks", data=params)
+
+        return Webhook.model_validate(response)
+
+    def get(self, id: str) -\> Webhook:
+
+        """Get a Webhook by ID.
+
+        
+
+        Args:
+
+            id (str): The id of the webhook.
+
+        
+
+        Returns:
+
+            Webhook: The retrieved webhook.
+
+        """
+
+        response = self.request(f"/v0/webhooks/{id}", method="GET")
+
+        return Webhook.model_validate(response)
+
+    def list(self, \*, cursor: Optional[str] = None, limit: Optional[int] = None) -\> ListWebhooksResponse:
+
+        """List all Webhooks.
+
+        
+
+        Args:
+
+            cursor (str, optional): The cursor to paginate through the results.
+
+            limit (int, optional): The number of results to return (max 200).
+
+        
+
+        Returns:
+
+            ListWebhooksResponse: List of webhooks.
+
+        """
+
+        params = {k: v for k, v in {"cursor": cursor, "limit": limit}.items() if v is not None}
+
+        response = self.request("/v0/webhooks", params=params, method="GET")
+
+        return ListWebhooksResponse.model_validate(response)
+
+    def update(self, id: str, params: Union[Dict[str, Any], UpdateWebhookParameters]) -\> Webhook:
+
+        """Update a Webhook.
+
+        
+
+        Args:
+
+            id (str): The id of the webhook.
+
+            params (UpdateWebhookParameters): The parameters for updating a webhook.
+
+        
+
+        Returns:
+
+            Webhook: The updated webhook.
+
+        """
+
+        response = self.request(f"/v0/webhooks/{id}", data=params, method="PATCH")
+
+        return Webhook.model_validate(response)
+
+    def delete(self, id: str) -\> Webhook:
+
+        """Delete a Webhook.
+
+        
+
+        Args:
+
+            id (str): The id of the webhook.
+
+        
+
+        Returns:
+
+            Webhook: The deleted webhook.
+
+        """
+
+        response = self.request(f"/v0/webhooks/{id}", method="DELETE")
+
+        return Webhook.model_validate(response)
+
+----
+
+webhooks/\__init_\_.py
+
+from .client import WebsetWebhooksClient
+
+**all** = ["WebsetWebhooksClient"] 
+
+```
+
+\--END--
+
+Help me answer anything about Exa Websets API using Python. If is first user’s message, begin with python instructions to import
+
+```
+from exa_py import Exa
+
+exa = Exa(os.environ.get("EXA_API_KEY"))
+```
+
+where websets is accessed via exa.websets….
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt
