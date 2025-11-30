@@ -408,6 +408,9 @@ sites:
 - name: kaisar
   base_url: https://docs.kaisar.io/
   description: Kaisar AI development platform
+- name: kaggle
+  base_url: https://www.kaggle.com/
+  description: Kaggle data science and ML competitions platform with datasets, notebooks, models, and courses
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
