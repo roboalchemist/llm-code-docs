@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-11-30 13:52
-  total_sources: 288
-  total_fetched: 248
+  last_updated: 2025-11-30 14:10
+  total_sources: 289
+  total_fetched: 249
   llms_txt_count: 269
   llms_txt_fetched: 230
   github_count: 15
   github_fetched: 14
-  web_scraped_count: 4
-  web_scraped_fetched: 4
+  web_scraped_count: 5
+  web_scraped_fetched: 5
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2201,6 +2201,13 @@ github:
   size: 907.4KB
   last_updated: 2025-11-24 14:35
 web_scraped:
+- name: 1password
+  description: 1password documentation
+  path: docs/web-scraped/1password/
+  status: fetched
+  file_count: 84
+  size: 1.2MB
+  last_updated: 2025-11-30 14:10
 - name: claude-code-sdk
   description: Anthropic Claude Code SDK documentation
   path: docs/web-scraped/claude-code-sdk/
