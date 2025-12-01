@@ -361,8 +361,9 @@ sites:
   base_url: https://huggingface-projects-docs-llms-txt.hf.space/huggingface_hub/
   description: Hugging Face Hub Python client
 - name: huggingface-transformers
-  base_url: https://huggingface-projects-docs-llms-txt.hf.space/transformers/
-  description: Hugging Face Transformers library
+  base_url: https://huggingface.co/docs/transformers/
+  description: Hugging Face Transformers library for NLP, vision, audio, and multimodal ML models
+  rate_limit_seconds: 2
 - name: humanloop
   base_url: https://humanloop.com/docs/
   description: Humanloop LLM evaluation and monitoring

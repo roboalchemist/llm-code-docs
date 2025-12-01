@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-11-30 15:13
+  last_updated: 2025-11-30 16:01
   total_sources: 293
   total_fetched: 253
   llms_txt_count: 271
@@ -928,13 +928,13 @@ llms_txt:
   size: 746.4KB
   last_updated: 2025-11-25 09:05
 - name: huggingface-transformers
-  description: Hugging Face Transformers library
-  url: https://huggingface-projects-docs-llms-txt.hf.space/transformers/
+  description: Hugging Face Transformers library for NLP, vision, audio, and multimodal ML models
+  url: https://huggingface.co/docs/transformers/
   path: docs/llms-txt/huggingface-transformers/
   status: fetched
-  file_count: 5
-  size: 1.0MB
-  last_updated: 2025-11-25 09:16
+  file_count: 96
+  size: 1.9MB
+  last_updated: 2025-11-30 16:01
 - name: humanloop
   description: Humanloop LLM evaluation and monitoring
   url: https://humanloop.com/docs/
