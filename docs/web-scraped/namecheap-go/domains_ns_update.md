@@ -1,13 +1,16 @@
-# Namecheap API: Domains Ns Delete
+# Domains Ns Update
 
-Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_ns_delete.go
-
-
-
-## Type: NameserversDeleteResponse
+Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_ns_update.go
 
 ```go
-type NameserversDeleteResponse struct {
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
+type NameserversUpdateResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
 		Message *string `xml:",chardata"`
@@ -16,33 +19,26 @@ type NameserversDeleteResponse struct {
 	CommandResponse *NameserversCreateCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: NameserversDeleteCommandResponse
-
-```go
-type NameserversDeleteCommandResponse struct {
-	DomainNameserverDeleteResult *DomainsNSDeleteResult `xml:"DomainNSDeleteResult"`
+type NameserversUpdateCommandResponse struct {
+	DomainNameserverUpdateResult *DomainsNSUpdateResult `xml:"DomainNSUpdateResult"`
 }
 
-## Type: DomainsNSDeleteResult
-
-```go
-type DomainsNSDeleteResult struct {
+type DomainsNSUpdateResult struct {
 	Domain     *string `xml:"Domain,attr"`
 	Nameserver *string `xml:"Nameserver,attr"`
 	IsSuccess  *bool   `xml:"IsSuccess,attr"`
 }
 
-## Method: DomainsNSService.Delete
-
-```go
-func (s *DomainsNSService) Delete(sld, tld, nameserver string) (*NameserversCreateCommandResponse, error) {
-	var response NameserversDeleteResponse
+func (s *DomainsNSService) Update(sld, tld, nameserver, oldIP, ip string) (*NameserversCreateCommandResponse, error) {
+	var response NameserversUpdateResponse
 
 	params := map[string]string{
-		"Command":    "namecheap.domains.ns.delete",
+		"Command":    "namecheap.domains.ns.update",
 		"SLD":        sld,
 		"TLD":        tld,
 		"Nameserver": nameserver,
+		"OldIP":      oldIP,
+		"IP":         ip,
 	}
 
 	_, err := s.client.DoXML(params, &response)
@@ -57,3 +53,5 @@ func (s *DomainsNSService) Delete(sld, tld, nameserver string) (*NameserversCrea
 
 	return response.CommandResponse, nil
 }
+
+```

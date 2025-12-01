@@ -1,12 +1,15 @@
-# Namecheap API: Domains Dns Set Default
+# Domains Dns Set Default
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_dns_set_default.go
 
-
-
-## Type: DomainsDNSSetDefaultResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
 type DomainsDNSSetDefaultResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -16,24 +19,15 @@ type DomainsDNSSetDefaultResponse struct {
 	CommandResponse *DomainsDNSSetDefaultCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsDNSSetDefaultCommandResponse
-
-```go
 type DomainsDNSSetDefaultCommandResponse struct {
 	DomainDNSSetDefaultResult *DomainDNSSetDefaultResult `xml:"DomainDNSSetDefaultResult"`
 }
 
-## Type: DomainDNSSetDefaultResult
-
-```go
 type DomainDNSSetDefaultResult struct {
 	Domain  *string `xml:"Domain,attr"`
 	Updated *bool   `xml:"Updated,attr"`
 }
 
-## Method: DomainDNSSetDefaultResult.String
-
-```go
 func (d DomainDNSSetDefaultResult) String() string {
 	return fmt.Sprintf("{Domain: %s, Updated: %t}", *d.Domain, *d.Updated)
 }
@@ -42,9 +36,6 @@ func (d DomainDNSSetDefaultResult) String() string {
 // Required for free services like Host record management, URL forwarding, email forwarding, dynamic dns and other value added services.
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains-dns/set-default/
-## Method: DomainsDNSService.SetDefault
-
-```go
 func (dds *DomainsDNSService) SetDefault(domain string) (*DomainsDNSSetDefaultCommandResponse, error) {
 	var response DomainsDNSSetDefaultResponse
 
@@ -71,3 +62,5 @@ func (dds *DomainsDNSService) SetDefault(domain string) (*DomainsDNSSetDefaultCo
 
 	return response.CommandResponse, nil
 }
+
+```

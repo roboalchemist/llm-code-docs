@@ -1,18 +1,22 @@
-# Namecheap API Documentation
+# Namecheap API Documentation (namecheap-python)
 
-This documentation is extracted from the official [Namecheap Go SDK](https://github.com/namecheap/go-namecheap-sdk).
+Modern Python SDK with CLI and TUI tools
 
-## Official Resources
+## Source Repository
+
+- GitHub: https://github.com/adriangalilea/namecheap-python
+
+## Official Namecheap Resources
 
 - [Namecheap API Documentation](https://www.namecheap.com/support/api/intro/)
 - [API Sandbox](https://www.sandbox.namecheap.com/)
-- [Go SDK on GitHub](https://github.com/namecheap/go-namecheap-sdk)
 
 ## API Methods
 
 ### Domains
 - `namecheap.domains.getList` - Returns list of domains for user
 - `namecheap.domains.getInfo` - Get domain details
+- `namecheap.domains.check` - Check domain availability
 
 ### DNS
 - `namecheap.domains.dns.getHosts` - Get DNS host records
@@ -30,10 +34,10 @@ This documentation is extracted from the official [Namecheap Go SDK](https://git
 ## Authentication
 
 All API calls require:
-- `ApiUser` - Your Namecheap username
-- `ApiKey` - Your API key (from account settings)
-- `UserName` - Username on whose behalf the call is made
-- `ClientIp` - Your whitelisted IP address
+- `ApiUser` / `api_user` - Your Namecheap username
+- `ApiKey` / `api_key` - Your API key (from account settings)
+- `UserName` / `username` - Username on whose behalf the call is made
+- `ClientIp` / `client_ip` - Your whitelisted IP address
 
 ## Environments
 
@@ -42,20 +46,13 @@ All API calls require:
 
 ## Files in this directory
 
-- [CONTRIBUTING](CONTRIBUTING.md)
+- [CLI](CLI.md)
 - [README](README.md)
+- [__init__](__init__.md)
+- [client](client.md)
+- [dns](dns.md)
 - [domains](domains.md)
-- [domains_dns](domains_dns.md)
-- [domains_dns_get_hosts](domains_dns_get_hosts.md)
-- [domains_dns_get_list](domains_dns_get_list.md)
-- [domains_dns_set_custom](domains_dns_set_custom.md)
-- [domains_dns_set_default](domains_dns_set_default.md)
-- [domains_dns_set_hosts](domains_dns_set_hosts.md)
-- [domains_get_info](domains_get_info.md)
-- [domains_get_list](domains_get_list.md)
-- [domains_ns](domains_ns.md)
-- [domains_ns_create](domains_ns_create.md)
-- [domains_ns_delete](domains_ns_delete.md)
-- [domains_ns_get_info](domains_ns_get_info.md)
-- [domains_ns_update](domains_ns_update.md)
-- [namecheap](namecheap.md)
+- [errors](errors.md)
+- [examples-README](examples-README.md)
+- [models](models.md)
+- [quickstart](quickstart.md)

@@ -1,7 +1,9 @@
-# Namecheap API: Domains Dns
+# Domains Dns
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_dns.go
 
+```go
+package namecheap
 
 // DomainsDNSService includes the following methods:
 // DomainsDNSService.GetHosts - retrieves DNS host record settings for the requested domain
@@ -12,3 +14,5 @@ Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/doma
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains-dns/
 type DomainsDNSService service
+
+```

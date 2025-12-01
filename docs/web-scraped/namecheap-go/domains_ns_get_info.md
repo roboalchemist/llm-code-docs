@@ -1,12 +1,15 @@
-# Namecheap API: Domains Ns Get Info
+# Domains Ns Get Info
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_ns_get_info.go
 
-
-
-## Type: NameserversGetInfoResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
 type NameserversGetInfoResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -16,16 +19,10 @@ type NameserversGetInfoResponse struct {
 	CommandResponse *NameserversGetInfoCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: NameserversGetInfoCommandResponse
-
-```go
 type NameserversGetInfoCommandResponse struct {
 	DomainNameserverInfoResult *DomainNSInfoResult `xml:"DomainNSInfoResult"`
 }
 
-## Type: DomainNSInfoResult
-
-```go
 type DomainNSInfoResult struct {
 	Domain             *string `xml:"Domain,attr"`
 	Nameserver         *string `xml:"Nameserver,attr"`
@@ -35,9 +32,6 @@ type DomainNSInfoResult struct {
 	} `xml:"NameserverStatuses"`
 }
 
-## Method: DomainsNSService.GetInfo
-
-```go
 func (s *DomainsNSService) GetInfo(sld, tld, nameserver string) (*NameserversGetInfoCommandResponse, error) {
 	var response NameserversGetInfoResponse
 
@@ -60,3 +54,5 @@ func (s *DomainsNSService) GetInfo(sld, tld, nameserver string) (*NameserversGet
 
 	return response.CommandResponse, nil
 }
+
+```

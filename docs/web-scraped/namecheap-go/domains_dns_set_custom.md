@@ -1,12 +1,16 @@
-# Namecheap API: Domains Dns Set Custom
+# Domains Dns Set Custom
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_dns_set_custom.go
 
-
-
-## Type: DomainsDNSSetCustomResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+	"strings"
+)
+
 type DomainsDNSSetCustomResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -16,24 +20,15 @@ type DomainsDNSSetCustomResponse struct {
 	CommandResponse *DomainsDNSSetCustomCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsDNSSetCustomCommandResponse
-
-```go
 type DomainsDNSSetCustomCommandResponse struct {
 	DomainDNSSetCustomResult *DomainsDNSSetCustomResult `xml:"DomainDNSSetCustomResult"`
 }
 
-## Type: DomainsDNSSetCustomResult
-
-```go
 type DomainsDNSSetCustomResult struct {
 	Domain  *string `xml:"Domain,attr"`
 	Updated *bool   `xml:"Updated,attr"`
 }
 
-## Method: DomainsDNSSetCustomResult.String
-
-```go
 func (d DomainsDNSSetCustomResult) String() string {
 	return fmt.Sprintf("{Domain: %s, Updated: %t}", *d.Domain, *d.Updated)
 }
@@ -42,9 +37,6 @@ func (d DomainsDNSSetCustomResult) String() string {
 // NOTE: Services like URL forwarding, Email forwarding, Dynamic DNS will not work for domains using custom nameservers
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains-dns/set-custom/
-## Method: DomainsDNSService.SetCustom
-
-```go
 func (dds *DomainsDNSService) SetCustom(domain string, nameservers []string) (*DomainsDNSSetCustomCommandResponse, error) {
 	var response DomainsDNSSetCustomResponse
 
@@ -87,3 +79,5 @@ func validateAndParseCustomNameservers(nameservers []string) (*string, error) {
 	nameserversJoin := strings.Join(nameservers, ",")
 	return &nameserversJoin, nil
 }
+
+```

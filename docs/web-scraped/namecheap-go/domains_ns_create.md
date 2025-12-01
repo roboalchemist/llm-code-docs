@@ -1,12 +1,15 @@
-# Namecheap API: Domains Ns Create
+# Domains Ns Create
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_ns_create.go
 
-
-
-## Type: NameserversCreateResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
 type NameserversCreateResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -16,16 +19,10 @@ type NameserversCreateResponse struct {
 	CommandResponse *NameserversCreateCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: NameserversCreateCommandResponse
-
-```go
 type NameserversCreateCommandResponse struct {
 	DomainNameserverInfoResult *DomainsNSCreateResult `xml:"DomainNSCreateResult"`
 }
 
-## Type: DomainsNSCreateResult
-
-```go
 type DomainsNSCreateResult struct {
 	Domain     *string `xml:"Domain,attr"`
 	Nameserver *string `xml:"Nameserver,attr"`
@@ -33,9 +30,6 @@ type DomainsNSCreateResult struct {
 	IsSuccess  *bool   `xml:"IsSuccess,attr"`
 }
 
-## Method: DomainsNSService.Create
-
-```go
 func (s *DomainsNSService) Create(sld, tld, nameserver, ipAddress string) (*NameserversCreateCommandResponse, error) {
 	var response NameserversCreateResponse
 
@@ -59,3 +53,5 @@ func (s *DomainsNSService) Create(sld, tld, nameserver, ipAddress string) (*Name
 
 	return response.CommandResponse, nil
 }
+
+```

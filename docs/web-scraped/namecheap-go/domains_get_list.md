@@ -1,15 +1,19 @@
-# Namecheap API: Domains Get List
+# Domains Get List
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_get_list.go
 
+```go
+package namecheap
 
+import (
+	"encoding/xml"
+	"fmt"
+	"strconv"
+)
 
 var allowedListTypeValues = []string{"ALL", "EXPIRING", "EXPIRED"}
 var allowedSortByValues = []string{"NAME", "NAME_DESC", "EXPIREDATE", "EXPIREDATE_DESC", "CREATEDATE", "CREATEDATE_DESC"}
 
-## Type: DomainsGetListResponse
-
-```go
 type DomainsGetListResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -19,26 +23,17 @@ type DomainsGetListResponse struct {
 	CommandResponse *DomainsGetListCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsGetListCommandResponse
-
-```go
 type DomainsGetListCommandResponse struct {
 	Domains *[]Domain             `xml:"DomainGetListResult>Domain"`
 	Paging  *DomainsGetListPaging `xml:"Paging"`
 }
 
-## Type: DomainsGetListPaging
-
-```go
 type DomainsGetListPaging struct {
 	TotalItems  *int `xml:"TotalItems"`
 	CurrentPage *int `xml:"CurrentPage"`
 	PageSize    *int `xml:"PageSize"`
 }
 
-## Type: Domain
-
-```go
 type Domain struct {
 	ID         *string   `xml:"ID,attr"`
 	Name       *string   `xml:"Name,attr"`
@@ -53,9 +48,6 @@ type Domain struct {
 	IsOurDNS   *bool     `xml:"IsOurDNS,attr"`
 }
 
-## Method: Domain.String
-
-```go
 func (d Domain) String() string {
 	return fmt.Sprintf("{ID: %s, Name: %s, User: %s, Created: %s, Expires: %s, IsExpired: %t, IsLocked: %t, AutoRenew: %t, WhoisGuard: %s, IsPremium: %t, IsOurDNS: %t}",
 		*d.ID, *d.Name, *d.User, *d.Created, d.Expires.Time, *d.IsExpired, *d.IsLocked, *d.AutoRenew, *d.WhoisGuard, *d.IsPremium, *d.IsOurDNS)
@@ -63,9 +55,6 @@ func (d Domain) String() string {
 
 // DomainsGetListArgs struct is an input arguments for Client.DomainsGetList function
 // Please consider Page and PageSize parameters to be set.
-## Type: DomainsGetListArgs
-
-```go
 type DomainsGetListArgs struct {
 	// Possible values are ALL, EXPIRING, or EXPIRED
 	// Default Value: ALL
@@ -88,9 +77,6 @@ type DomainsGetListArgs struct {
 // In this case revert to the official documentation to check defaults
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains/get-list/
-## Method: DomainsService.GetList
-
-```go
 func (ds *DomainsService) GetList(args *DomainsGetListArgs) (*DomainsGetListCommandResponse, error) {
 	var domainsResponse DomainsGetListResponse
 	params := map[string]string{
@@ -183,3 +169,5 @@ func isValidSortBy(sortBy string) bool {
 	}
 	return false
 }
+
+```

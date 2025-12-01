@@ -1,12 +1,18 @@
-# Namecheap API: Domains Dns Set Hosts
+# Domains Dns Set Hosts
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_dns_set_hosts.go
 
-
-
-## Constants
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+	"regexp"
+	"strconv"
+	"strings"
+)
+
 const (
 	MinTTL int = 60
 	MaxTTL int = 60000
@@ -30,6 +36,7 @@ const (
 	RecordTypeURL    = "URL"
 	RecordTypeURL301 = "URL301"
 	RecordTypeFrame  = "FRAME"
+)
 
 var AllowedRecordTypeValues = []string{RecordTypeA, RecordTypeAAAA, RecordTypeAlias, RecordTypeCAA, RecordTypeCNAME, RecordTypeMX, RecordTypeMXE, RecordTypeNS, RecordTypeTXT, RecordTypeURL, RecordTypeURL301, RecordTypeFrame}
 var AllowedEmailTypeValues = []string{EmailTypeNone, EmailTypeMXE, EmailTypeMX, EmailTypeForward, EmailTypePrivate, EmailTypeGmail}
@@ -38,9 +45,6 @@ var allowedTagValues = []string{"issue", "issuewild", "iodef"}
 var validMailProtocolPrefix = regexp.MustCompile("mailto:.*@.*")
 var validURLProtocolPrefix = regexp.MustCompile("[a-z]+://")
 
-## Type: DomainsDNSHostRecord
-
-```go
 type DomainsDNSHostRecord struct {
 	// Sub-domain/hostname to create the record for
 	HostName *string
@@ -55,9 +59,6 @@ type DomainsDNSHostRecord struct {
 	TTL *int
 }
 
-## Type: DomainsDNSSetHostsArgs
-
-```go
 type DomainsDNSSetHostsArgs struct {
 	// Domain to setHosts
 	Domain *string
@@ -79,9 +80,6 @@ type DomainsDNSSetHostsArgs struct {
 	Tag *string
 }
 
-## Type: DomainsDNSSetHostsResponse
-
-```go
 type DomainsDNSSetHostsResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -91,24 +89,15 @@ type DomainsDNSSetHostsResponse struct {
 	CommandResponse *DomainsDNSSetHostsCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsDNSSetHostsCommandResponse
-
-```go
 type DomainsDNSSetHostsCommandResponse struct {
 	DomainDNSSetHostsResult *DomainDNSSetHostsResult `xml:"DomainDNSSetHostsResult"`
 }
 
-## Type: DomainDNSSetHostsResult
-
-```go
 type DomainDNSSetHostsResult struct {
 	Domain    *string `xml:"Domain,attr"`
 	IsSuccess *bool   `xml:"IsSuccess,attr"`
 }
 
-## Method: DomainDNSSetHostsResult.String
-
-```go
 func (d DomainDNSSetHostsResult) String() string {
 	return fmt.Sprintf("{Domain: %s, IsSuccess: %t}", *d.Domain, *d.IsSuccess)
 }
@@ -116,9 +105,6 @@ func (d DomainDNSSetHostsResult) String() string {
 // SetHosts sets DNS host records settings for the requested domain
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains-dns/set-hosts/
-## Method: DomainsDNSService.SetHosts
-
-```go
 func (dds DomainsDNSService) SetHosts(args *DomainsDNSSetHostsArgs) (*DomainsDNSSetHostsCommandResponse, error) {
 	var response DomainsDNSSetHostsResponse
 
@@ -313,3 +299,5 @@ func isValidRecordType(recordType string) bool {
 	}
 	return false
 }
+
+```

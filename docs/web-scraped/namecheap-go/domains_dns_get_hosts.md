@@ -1,12 +1,15 @@
-# Namecheap API: Domains Dns Get Hosts
+# Domains Dns Get Hosts
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_dns_get_hosts.go
 
-
-
-## Type: DomainsDNSGetHostsResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
 type DomainsDNSGetHostsResponse struct {
 	XMLName xml.Name `xml:"ApiResponse"`
 	Errors  []struct {
@@ -16,16 +19,10 @@ type DomainsDNSGetHostsResponse struct {
 	CommandResponse *DomainsDNSGetHostsCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsDNSGetHostsCommandResponse
-
-```go
 type DomainsDNSGetHostsCommandResponse struct {
 	DomainDNSGetHostsResult *DomainDNSGetHostsResult `xml:"DomainDNSGetHostsResult"`
 }
 
-## Type: DomainDNSGetHostsResult
-
-```go
 type DomainDNSGetHostsResult struct {
 	Domain        *string                         `xml:"Domain,attr"`
 	EmailType     *string                         `xml:"EmailType,attr"`
@@ -33,9 +30,6 @@ type DomainDNSGetHostsResult struct {
 	Hosts         *[]DomainsDNSHostRecordDetailed `xml:"host"`
 }
 
-## Type: DomainsDNSHostRecordDetailed
-
-```go
 type DomainsDNSHostRecordDetailed struct {
 	HostId             *int    `xml:"HostId,attr"` // nolint: stylecheck,revive
 	Name               *string `xml:"Name,attr"`
@@ -49,9 +43,6 @@ type DomainsDNSHostRecordDetailed struct {
 	IsDDNSEnabled      *bool   `xml:"IsDDNSEnabled,attr"`
 }
 
-## Method: DomainsDNSHostRecordDetailed.String
-
-```go
 func (d DomainsDNSHostRecordDetailed) String() string {
 	return fmt.Sprintf("{HostId: %d, Name: %s, Type: %s, Address: %s, MXPref: %d, TTL: %d, AssociatedAppTitle: %s, FriendlyName: %s, IsActive: %t, IsDDNSEnabled: %t}",
 		*d.HostId, *d.Name, *d.Type, *d.Address, *d.MXPref, *d.TTL, *d.AssociatedAppTitle, *d.FriendlyName, *d.IsActive, *d.IsDDNSEnabled)
@@ -60,9 +51,6 @@ func (d DomainsDNSHostRecordDetailed) String() string {
 // GetHosts retrieves DNS host record settings for the requested domain.
 //
 // Namecheap doc: https://www.namecheap.com/support/api/methods/domains-dns/get-hosts/
-## Method: DomainsDNSService.GetHosts
-
-```go
 func (dds *DomainsDNSService) GetHosts(domain string) (*DomainsDNSGetHostsCommandResponse, error) {
 	var response DomainsDNSGetHostsResponse
 
@@ -89,3 +77,5 @@ func (dds *DomainsDNSService) GetHosts(domain string) (*DomainsDNSGetHostsComman
 
 	return response.CommandResponse, nil
 }
+
+```

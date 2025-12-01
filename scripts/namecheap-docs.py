@@ -1,184 +1,170 @@
 #!/usr/bin/env python3
 """
 Namecheap API Documentation Scraper
-Downloads the official Go SDK source files which contain API documentation.
-Since Namecheap's website is behind Cloudflare, we extract docs from their GitHub SDK.
+Downloads documentation from both Go and Python SDKs.
+Since Namecheap's website is behind Cloudflare, we extract docs from GitHub.
 """
 
-import os
 import sys
 import subprocess
-import shutil
 from pathlib import Path
 import tempfile
 import re
 
-# GitHub repository for Namecheap Go SDK
-SDK_REPO = "https://github.com/namecheap/go-namecheap-sdk.git"
-SDK_BRANCH = "master"
+# SDK configurations
+SDKS = {
+    "namecheap-go": {
+        "repo": "https://github.com/namecheap/go-namecheap-sdk.git",
+        "branch": "master",
+        "description": "Official Go SDK for Namecheap API",
+        "files": [
+            "README.md",
+            "CONTRIBUTING.md",
+            "namecheap/namecheap.go",
+            "namecheap/domains.go",
+            "namecheap/domains_get_list.go",
+            "namecheap/domains_get_info.go",
+            "namecheap/domains_dns.go",
+            "namecheap/domains_dns_get_hosts.go",
+            "namecheap/domains_dns_get_list.go",
+            "namecheap/domains_dns_set_hosts.go",
+            "namecheap/domains_dns_set_custom.go",
+            "namecheap/domains_dns_set_default.go",
+            "namecheap/domains_ns.go",
+            "namecheap/domains_ns_create.go",
+            "namecheap/domains_ns_delete.go",
+            "namecheap/domains_ns_get_info.go",
+            "namecheap/domains_ns_update.go",
+        ],
+    },
+    "namecheap-python": {
+        "repo": "https://github.com/adriangalilea/namecheap-python.git",
+        "branch": "main",
+        "description": "Modern Python SDK with CLI and TUI tools",
+        "files": [
+            "README.md",
+            "CLI.md",
+            "examples/README.md",
+            "examples/quickstart.py",
+            "src/namecheap/__init__.py",
+            "src/namecheap/client.py",
+            "src/namecheap/models.py",
+            "src/namecheap/errors.py",
+            "src/namecheap/_api/domains.py",
+            "src/namecheap/_api/dns.py",
+            "src/namecheap/_api/users.py",
+        ],
+    },
+}
 
-# Files to extract (Go source files with API documentation)
-GO_SOURCE_FILES = [
-    "namecheap/namecheap.go",
-    "namecheap/domains.go",
-    "namecheap/domains_get_list.go",
-    "namecheap/domains_get_info.go",
-    "namecheap/domains_dns.go",
-    "namecheap/domains_dns_get_hosts.go",
-    "namecheap/domains_dns_get_list.go",
-    "namecheap/domains_dns_set_hosts.go",
-    "namecheap/domains_dns_set_custom.go",
-    "namecheap/domains_dns_set_default.go",
-    "namecheap/domains_ns.go",
-    "namecheap/domains_ns_create.go",
-    "namecheap/domains_ns_delete.go",
-    "namecheap/domains_ns_get_info.go",
-    "namecheap/domains_ns_update.go",
-    "README.md",
-    "CONTRIBUTING.md",
-]
 
-
-def clone_sdk(temp_dir: Path) -> bool:
-    """Clone the Namecheap Go SDK repository."""
-    print(f"Cloning {SDK_REPO}...")
+def clone_repo(repo_url: str, branch: str, temp_dir: Path) -> bool:
+    """Clone a repository."""
+    print(f"  Cloning {repo_url}...")
     try:
         result = subprocess.run(
-            ["git", "clone", "--depth", "1", "--branch", SDK_BRANCH, SDK_REPO, str(temp_dir)],
+            ["git", "clone", "--depth", "1", "--branch", branch, repo_url, str(temp_dir)],
             capture_output=True,
             text=True,
             timeout=60
         )
         if result.returncode != 0:
-            print(f"Error cloning: {result.stderr}")
+            print(f"  Error cloning: {result.stderr}")
             return False
         return True
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"  Error: {e}")
         return False
 
 
-def go_to_markdown(content: str, filename: str) -> str:
-    """Convert Go source file to markdown documentation format."""
-    lines = content.split('\n')
-    md_lines = []
+def source_to_markdown(content: str, filename: str, repo_url: str) -> str:
+    """Convert source file to markdown with proper formatting."""
+    ext = Path(filename).suffix
 
-    # Add header
+    # Determine language for code blocks
+    lang_map = {".go": "go", ".py": "python"}
+    lang = lang_map.get(ext, "")
+
+    # Build GitHub URL
+    github_url = repo_url.replace(".git", "") + f"/blob/main/{filename}"
+    if "go-namecheap-sdk" in repo_url:
+        github_url = repo_url.replace(".git", "") + f"/blob/master/{filename}"
+
     base_name = Path(filename).stem
-    title = base_name.replace('_', ' ').title()
-    md_lines.append(f"# Namecheap API: {title}")
-    md_lines.append("")
-    md_lines.append(f"Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/{filename}")
-    md_lines.append("")
+    title = base_name.replace('_', ' ').replace('-', ' ').title()
 
-    # Process the Go source
-    in_struct = False
-    struct_name = ""
+    md = f"# {title}\n\n"
+    md += f"Source: {github_url}\n\n"
 
-    for line in lines:
-        # Skip package and import statements for cleaner output
-        if line.startswith('package ') or line.startswith('import '):
-            continue
-        if line.strip() == '(' or line.strip() == ')':
-            continue
-        if line.strip().startswith('"') and line.strip().endswith('"'):
-            continue
+    if ext in [".go", ".py"]:
+        md += f"```{lang}\n{content}\n```\n"
+    else:
+        md += content
 
-        # Detect const blocks
-        if line.startswith('const ('):
-            md_lines.append("## Constants")
-            md_lines.append("")
-            md_lines.append("```go")
-            md_lines.append(line)
-            continue
-
-        # Detect type definitions (structs)
-        struct_match = re.match(r'^type (\w+) struct \{', line)
-        if struct_match:
-            struct_name = struct_match.group(1)
-            in_struct = True
-            md_lines.append(f"## Type: {struct_name}")
-            md_lines.append("")
-            md_lines.append("```go")
-            md_lines.append(line)
-            continue
-
-        # Detect function definitions
-        func_match = re.match(r'^func \((\w+) \*?(\w+)\) (\w+)\((.*?)\)', line)
-        if func_match:
-            receiver_var, receiver_type, func_name, params = func_match.groups()
-            md_lines.append(f"## Method: {receiver_type}.{func_name}")
-            md_lines.append("")
-            md_lines.append("```go")
-            md_lines.append(line)
-            continue
-
-        # Add line as-is
-        md_lines.append(line)
-
-    # Close any open code blocks
-    result = '\n'.join(md_lines)
-
-    # Clean up: ensure code blocks are properly closed
-    open_blocks = result.count('```go') + result.count('```')
-    if open_blocks % 2 != 0:
-        result += "\n```"
-
-    return result
+    return md
 
 
-def extract_docs(temp_dir: Path, output_dir: Path) -> int:
-    """Extract documentation from SDK source files."""
+def extract_docs(temp_dir: Path, output_dir: Path, files: list, repo_url: str) -> int:
+    """Extract documentation from source files."""
     output_dir.mkdir(parents=True, exist_ok=True)
 
     successful = 0
 
-    for file_path in GO_SOURCE_FILES:
+    for file_path in files:
         src_path = temp_dir / file_path
 
         if not src_path.exists():
-            print(f"  Skipping (not found): {file_path}")
+            print(f"    Skipping (not found): {file_path}")
             continue
 
-        # Read source file
         content = src_path.read_text(encoding='utf-8')
 
-        # Determine output filename
+        # Determine output filename (flatten paths)
         if file_path.endswith('.md'):
-            # Keep markdown files as-is
-            out_name = Path(file_path).name
-            out_content = f"# Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/{file_path}\n\n{content}"
+            if '/' in file_path:
+                out_name = file_path.replace('/', '-')
+            else:
+                out_name = file_path
+            # Add source header to markdown files
+            github_url = repo_url.replace(".git", "")
+            branch = "main" if "namecheap-python" in repo_url else "master"
+            out_content = f"# Source: {github_url}/blob/{branch}/{file_path}\n\n{content}"
         else:
-            # Convert Go files to markdown
             out_name = Path(file_path).stem + ".md"
-            out_content = go_to_markdown(content, file_path)
+            out_content = source_to_markdown(content, file_path, repo_url)
 
-        # Write output
         out_path = output_dir / out_name
         out_path.write_text(out_content, encoding='utf-8')
-        print(f"  Extracted: {out_name}")
+        print(f"    Extracted: {out_name}")
         successful += 1
 
     return successful
 
 
-def create_index(output_dir: Path):
-    """Create an index file for all documentation."""
-    index_content = """# Namecheap API Documentation
+def create_index(output_dir: Path, sdk_name: str, sdk_config: dict):
+    """Create an index file for documentation."""
+    repo_url = sdk_config["repo"].replace(".git", "")
+    description = sdk_config["description"]
 
-This documentation is extracted from the official [Namecheap Go SDK](https://github.com/namecheap/go-namecheap-sdk).
+    index_content = f"""# Namecheap API Documentation ({sdk_name})
 
-## Official Resources
+{description}
+
+## Source Repository
+
+- GitHub: {repo_url}
+
+## Official Namecheap Resources
 
 - [Namecheap API Documentation](https://www.namecheap.com/support/api/intro/)
 - [API Sandbox](https://www.sandbox.namecheap.com/)
-- [Go SDK on GitHub](https://github.com/namecheap/go-namecheap-sdk)
 
 ## API Methods
 
 ### Domains
 - `namecheap.domains.getList` - Returns list of domains for user
 - `namecheap.domains.getInfo` - Get domain details
+- `namecheap.domains.check` - Check domain availability
 
 ### DNS
 - `namecheap.domains.dns.getHosts` - Get DNS host records
@@ -196,10 +182,10 @@ This documentation is extracted from the official [Namecheap Go SDK](https://git
 ## Authentication
 
 All API calls require:
-- `ApiUser` - Your Namecheap username
-- `ApiKey` - Your API key (from account settings)
-- `UserName` - Username on whose behalf the call is made
-- `ClientIp` - Your whitelisted IP address
+- `ApiUser` / `api_user` - Your Namecheap username
+- `ApiKey` / `api_key` - Your API key (from account settings)
+- `UserName` / `username` - Username on whose behalf the call is made
+- `ClientIp` / `client_ip` - Your whitelisted IP address
 
 ## Environments
 
@@ -210,13 +196,12 @@ All API calls require:
 
 """
 
-    # List all markdown files
     for md_file in sorted(output_dir.glob("*.md")):
         if md_file.name != "index.md":
             index_content += f"- [{md_file.stem}]({md_file.name})\n"
 
     (output_dir / "index.md").write_text(index_content, encoding='utf-8')
-    print("  Created: index.md")
+    print(f"    Created: index.md")
 
 
 def main():
@@ -224,44 +209,45 @@ def main():
     print("=" * 60)
     print("Namecheap API Documentation Scraper")
     print("=" * 60)
-    print(f"Source: {SDK_REPO}")
-    print()
 
-    # Output directory
     script_dir = Path(__file__).parent.parent
-    output_dir = script_dir / "docs" / "web-scraped" / "namecheap"
+    base_output_dir = script_dir / "docs" / "web-scraped"
 
-    print(f"Output: {output_dir}")
-    print()
+    total_files = 0
 
-    # Create temp directory and clone
-    with tempfile.TemporaryDirectory() as temp_dir:
-        temp_path = Path(temp_dir)
+    for sdk_name, sdk_config in SDKS.items():
+        print(f"\n{sdk_name}:")
+        print(f"  {sdk_config['description']}")
 
-        if not clone_sdk(temp_path):
-            print("Failed to clone SDK repository")
-            sys.exit(1)
+        output_dir = base_output_dir / sdk_name
 
-        print()
-        print("Extracting documentation...")
-        successful = extract_docs(temp_path, output_dir)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_path = Path(temp_dir)
 
-        print()
-        print("Creating index...")
-        create_index(output_dir)
+            if not clone_repo(sdk_config["repo"], sdk_config["branch"], temp_path):
+                print(f"  Failed to clone {sdk_name}")
+                continue
 
-    # Calculate total size
-    total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
+            print("  Extracting documentation...")
+            count = extract_docs(temp_path, output_dir, sdk_config["files"], sdk_config["repo"])
 
-    print()
-    print("=" * 60)
+            print("  Creating index...")
+            create_index(output_dir, sdk_name, sdk_config)
+
+            total_files += count + 1  # +1 for index
+
+            # Calculate size
+            total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
+            print(f"  Size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
+
+    print("\n" + "=" * 60)
     print("Summary")
     print("=" * 60)
-    print(f"Files extracted: {successful + 1}")  # +1 for index
-    print(f"Total size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
-    print(f"Output: {output_dir}")
-    print()
-    print("Done!")
+    print(f"Total files: {total_files}")
+    print(f"Output directories:")
+    for sdk_name in SDKS:
+        print(f"  - docs/web-scraped/{sdk_name}/")
+    print("\nDone!")
 
 
 if __name__ == "__main__":

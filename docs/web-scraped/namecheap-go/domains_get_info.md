@@ -1,12 +1,15 @@
-# Namecheap API: Domains Get Info
+# Domains Get Info
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_get_info.go
 
-
-
-## Type: DomainsGetInfoResponse
-
 ```go
+package namecheap
+
+import (
+	"encoding/xml"
+	"fmt"
+)
+
 type DomainsGetInfoResponse struct {
 	XMLName *xml.Name `xml:"ApiResponse"`
 	Errors  *[]struct {
@@ -16,16 +19,10 @@ type DomainsGetInfoResponse struct {
 	CommandResponse *DomainsGetInfoCommandResponse `xml:"CommandResponse"`
 }
 
-## Type: DomainsGetInfoCommandResponse
-
-```go
 type DomainsGetInfoCommandResponse struct {
 	DomainDNSGetListResult *DomainsGetInfoResult `xml:"DomainGetInfoResult"`
 }
 
-## Type: DomainsGetInfoResult
-
-```go
 type DomainsGetInfoResult struct {
 	DomainName             *string                 `xml:"DomainName,attr"`
 	IsPremium              *bool                   `xml:"IsPremium,attr"`
@@ -33,25 +30,16 @@ type DomainsGetInfoResult struct {
 	DnsDetails             *DnsDetails             `xml:"DnsDetails"`             // nolint: stylecheck,revive
 }
 
-## Type: PremiumDnsSubscription
-
-```go
 type PremiumDnsSubscription struct { // nolint: stylecheck,revive
 	IsActive *bool `xml:"IsActive"`
 }
 
-## Type: DnsDetails
-
-```go
 type DnsDetails struct { // nolint: stylecheck,revive
 	ProviderType  *string   `xml:"ProviderType,attr"`
 	IsUsingOurDNS *bool     `xml:"IsUsingOurDNS,attr"`
 	Nameservers   *[]string `xml:"Nameserver"`
 }
 
-## Method: DomainsService.GetInfo
-
-```go
 func (ds *DomainsService) GetInfo(domain string) (*DomainsGetInfoCommandResponse, error) {
 	var response DomainsGetInfoResponse
 
@@ -73,3 +61,5 @@ func (ds *DomainsService) GetInfo(domain string) (*DomainsGetInfoCommandResponse
 
 	return response.CommandResponse, nil
 }
+
+```

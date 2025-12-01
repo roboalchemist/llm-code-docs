@@ -1,20 +1,31 @@
-# Namecheap API: Namecheap
+# Namecheap
 
 Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/namecheap.go
 
-
-
-
-## Constants
-
 ```go
+package namecheap
+
+import (
+	"bytes"
+	"encoding/xml"
+	"errors"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"regexp"
+	"strconv"
+
+	"github.com/hashicorp/go-cleanhttp"
+	"github.com/namecheap/go-namecheap-sdk/v2/namecheap/internal/syncretry"
+	"github.com/weppos/publicsuffix-go/publicsuffix"
+)
+
 const (
 	namecheapProductionAPIURL = "https://api.namecheap.com/xml.response"
 	namecheapSandboxAPIURL    = "https://api.sandbox.namecheap.com/xml.response"
+)
 
-## Type: ClientOptions
-
-```go
 type ClientOptions struct {
 	UserName   string
 	ApiUser    string // nolint: stylecheck,revive
@@ -23,9 +34,6 @@ type ClientOptions struct {
 	UseSandbox bool
 }
 
-## Type: Client
-
-```go
 type Client struct {
 	http   *http.Client
 	common service
@@ -39,9 +47,6 @@ type Client struct {
 	DomainsDNS *DomainsDNSService
 }
 
-## Type: service
-
-```go
 type service struct {
 	client *Client
 }
@@ -69,9 +74,6 @@ func NewClient(options *ClientOptions) *Client {
 }
 
 // NewRequest creates a new request with the params
-## Method: Client.NewRequest
-
-```go
 func (c *Client) NewRequest(body map[string]string) (*http.Request, error) {
 	u, err := url.Parse(c.BaseURL)
 
@@ -99,9 +101,6 @@ func (c *Client) NewRequest(body map[string]string) (*http.Request, error) {
 	return req, nil
 }
 
-## Method: Client.DoXML
-
-```go
 func (c *Client) DoXML(body map[string]string, obj interface{}) (*http.Response, error) {
 	var requestResponse *http.Response
 	err := c.sr.Do(func() error {
@@ -183,3 +182,5 @@ func String(v string) *string { return &v }
 // UInt8 is a helper routine that allocates a new uint8 value
 // to store v and returns a pointer to it.
 func UInt8(v uint8) *uint8 { return &v }
+
+```
