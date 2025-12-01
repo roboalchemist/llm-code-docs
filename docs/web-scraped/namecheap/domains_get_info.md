@@ -1,0 +1,75 @@
+# Namecheap API: Domains Get Info
+
+Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_get_info.go
+
+
+
+## Type: DomainsGetInfoResponse
+
+```go
+type DomainsGetInfoResponse struct {
+	XMLName *xml.Name `xml:"ApiResponse"`
+	Errors  *[]struct {
+		Message *string `xml:",chardata"`
+		Number  *string `xml:"Number,attr"`
+	} `xml:"Errors>Error"`
+	CommandResponse *DomainsGetInfoCommandResponse `xml:"CommandResponse"`
+}
+
+## Type: DomainsGetInfoCommandResponse
+
+```go
+type DomainsGetInfoCommandResponse struct {
+	DomainDNSGetListResult *DomainsGetInfoResult `xml:"DomainGetInfoResult"`
+}
+
+## Type: DomainsGetInfoResult
+
+```go
+type DomainsGetInfoResult struct {
+	DomainName             *string                 `xml:"DomainName,attr"`
+	IsPremium              *bool                   `xml:"IsPremium,attr"`
+	PremiumDnsSubscription *PremiumDnsSubscription `xml:"PremiumDnsSubscription"` // nolint: stylecheck,revive
+	DnsDetails             *DnsDetails             `xml:"DnsDetails"`             // nolint: stylecheck,revive
+}
+
+## Type: PremiumDnsSubscription
+
+```go
+type PremiumDnsSubscription struct { // nolint: stylecheck,revive
+	IsActive *bool `xml:"IsActive"`
+}
+
+## Type: DnsDetails
+
+```go
+type DnsDetails struct { // nolint: stylecheck,revive
+	ProviderType  *string   `xml:"ProviderType,attr"`
+	IsUsingOurDNS *bool     `xml:"IsUsingOurDNS,attr"`
+	Nameservers   *[]string `xml:"Nameserver"`
+}
+
+## Method: DomainsService.GetInfo
+
+```go
+func (ds *DomainsService) GetInfo(domain string) (*DomainsGetInfoCommandResponse, error) {
+	var response DomainsGetInfoResponse
+
+	params := map[string]string{
+		"Command":    "namecheap.domains.getInfo",
+		"DomainName": domain,
+		"HostName":   domain,
+	}
+
+	_, err := ds.client.DoXML(params, &response)
+	if err != nil {
+		return nil, err
+	}
+	if response.Errors != nil && len(*response.Errors) > 0 {
+		apiErr := (*response.Errors)[0]
+
+		return nil, fmt.Errorf("%s (%s)", *apiErr.Message, *apiErr.Number)
+	}
+
+	return response.CommandResponse, nil
+}

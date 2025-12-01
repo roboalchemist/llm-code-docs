@@ -1,0 +1,59 @@
+# Namecheap API: Domains Ns Delete
+
+Source: https://github.com/namecheap/go-namecheap-sdk/blob/master/namecheap/domains_ns_delete.go
+
+
+
+## Type: NameserversDeleteResponse
+
+```go
+type NameserversDeleteResponse struct {
+	XMLName *xml.Name `xml:"ApiResponse"`
+	Errors  *[]struct {
+		Message *string `xml:",chardata"`
+		Number  *string `xml:"Number,attr"`
+	} `xml:"Errors>Error"`
+	CommandResponse *NameserversCreateCommandResponse `xml:"CommandResponse"`
+}
+
+## Type: NameserversDeleteCommandResponse
+
+```go
+type NameserversDeleteCommandResponse struct {
+	DomainNameserverDeleteResult *DomainsNSDeleteResult `xml:"DomainNSDeleteResult"`
+}
+
+## Type: DomainsNSDeleteResult
+
+```go
+type DomainsNSDeleteResult struct {
+	Domain     *string `xml:"Domain,attr"`
+	Nameserver *string `xml:"Nameserver,attr"`
+	IsSuccess  *bool   `xml:"IsSuccess,attr"`
+}
+
+## Method: DomainsNSService.Delete
+
+```go
+func (s *DomainsNSService) Delete(sld, tld, nameserver string) (*NameserversCreateCommandResponse, error) {
+	var response NameserversDeleteResponse
+
+	params := map[string]string{
+		"Command":    "namecheap.domains.ns.delete",
+		"SLD":        sld,
+		"TLD":        tld,
+		"Nameserver": nameserver,
+	}
+
+	_, err := s.client.DoXML(params, &response)
+	if err != nil {
+		return nil, err
+	}
+
+	if response.Errors != nil && len(*response.Errors) > 0 {
+		apiErr := (*response.Errors)[0]
+		return nil, fmt.Errorf("%s (%s)", *apiErr.Message, *apiErr.Number)
+	}
+
+	return response.CommandResponse, nil
+}
