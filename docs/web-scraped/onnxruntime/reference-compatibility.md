@@ -1,0 +1,144 @@
+# Source: https://onnxruntime.ai/docs/reference/compatibility.html
+
+# [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#onnx-runtime-compatibility) ONNX Runtime compatibility 
+
+## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#contents) Contents 
+
+- [Backwards compatibility](#backwards-compatibility)
+- [Environment compatibility](#environment-compatibility)
+  - [Platforms](#platforms)
+  - [Compilers](#compilers)
+  - [Dependent Libraries](#dependent-libraries)
+- [ONNX opset support](#onnx-opset-support)
+
+## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#backwards-compatibility) Backwards compatibility
+
+Newer versions of ONNX Runtime support all models that worked with prior versions, so updates should not break integrations.
+
+## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#environment-compatibility) Environment compatibility
+
+ONNX Runtime is not explicitly tested with every variation/combination of environments and dependencies, so this list is not comprehensive. Please use this as starting reference. For specific questions or requests, please [file an issue](https://github.com/microsoft/onnxruntime/issues) on GitHub.
+
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#platforms) Platforms
+
+- Windows
+
+  - Tested with Windows 10 and Windows Server 2019
+  - May be compatible with Windows 7+
+  - Windows Machine Learning ([Windows](/docs/get-started/with-windows.html))
+    - CPU: Windows 8.1+
+    - GPU: Windows 10 1709+
+
+- Linux
+  - Tested with CentOS 7
+  - Should be compatible with [distributions supported by .NET Core](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
+
+- Mac
+  - Tested with 10.14 (Mojave)
+  - May be compatible with 10.12+ (Sierra)
+
+- Android
+  - Tested with API level 28 (v9 "Pie")
+  - May be compatible with API level 21+ (v5 "Lollipop")
+
+- iOS
+  - Tested with iOS 12
+  - May be compatible with any 64bit iOS version (5S+)
+
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#compilers) Compilers
+
+- Windows 10: Visual C++ 2019
+- Linux: gcc\>=4.8
+
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#dependent-libraries) Dependent Libraries
+
+- [Submodules](https://github.com/microsoft/onnxruntime/tree/main/cgmanifests)
+- See the [Execution Provider page](../execution-providers) for details on specific hardware libary version requirements
+
+## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#onnx-opset-support) ONNX opset support
+
+ONNX Runtime supports all opsets from the latest released version of the [ONNX](https://onnx.ai) spec. All versions of ONNX Runtime support ONNX opsets from ONNX v1.2.1+ (opset version 7 and higher).
+
+- For example: if an ONNX Runtime release implements ONNX opset 9, it can run models stamped with ONNX opset versions in the range \[7-9\].
+
+- [Supported Operator Data Types](https://github.com/microsoft/onnxruntime/blob/main/docs/OperatorKernels.md)
+
+  - *Operators not supported in the current ONNX spec may be available as a [Contrib Operator](https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md)*
+  - [How to add a custom operator/kernel](/docs/reference/operators/add-custom-op.html)
+
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ONNX Runtime version   [ONNX version](https://github.com/onnx/onnx/blob/master/docs/Versioning.md)   ONNX opset version   ONNX ML opset version   ONNX IR version
+  ---------------------- ----------------------------------------------------------------------------- -------------------- ----------------------- -----------------
+  1.20                   **1.16.1**                                                                    21                   4                       10
+
+  1.19                   **1.16.1**                                                                    21                   4                       10
+
+  1.18                   **1.16**                                                                      21                   4                       10
+
+  1.17                   **1.15**                                                                      20                   4                       9
+
+  1.16                   **1.14.1**                                                                    19                   3                       9
+
+  1.15                   **1.14**                                                                      19                   3                       8
+
+  1.14                   **1.13**                                                                      18                   3                       8
+
+  1.13                   **1.12**                                                                      17                   3                       8
+
+  1.12                   **1.12**                                                                      17                   3                       8
+
+  1.11                   **1.11**                                                                      16                   2                       8
+
+  1.10                   **1.10**                                                                      15                   2                       8
+
+  1.9                    **1.10**                                                                      15                   2                       8
+
+  1.8                    **1.9**                                                                       14                   2                       7
+
+  1.7                    **1.8**                                                                       13                   2                       7
+
+  1.6                    **1.8**                                                                       13                   2                       7
+
+  1.5                    **1.7**                                                                       12                   2                       7
+
+  1.4                    **1.7**                                                                       12                   2                       7
+
+  1.3                    **1.7**                                                                       12                   2                       7
+
+  1.2\                   **1.6**                                                                       11                   2                       6
+  1.1                                                                                                                                               
+
+  1.0                    **1.6**                                                                       11                   2                       6
+
+  0.5                    **1.5**                                                                       10                   1                       5
+
+  0.4                    **1.5**                                                                       10                   1                       5
+
+  0.3                    **1.4**                                                                       9                    1                       3
+
+  0.2                    **1.3**                                                                       8                    1                       3
+
+  0.1                    **1.3**                                                                       8                    1                       3
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Unless otherwise noted, please use the latest released version of the tools to convert/export the ONNX model. Most tools are backwards compatible and support multiple ONNX versions. Join this with the table above to evaluate ONNX Runtime compatibility.
+
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Tool                                                                                                     Recommended Version
+  -------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------
+  [PyTorch](https://pytorch.org/)                                                                          [Latest stable](https://pytorch.org/get-started/locally/)
+
+  [Tensorflow-ONNX](https://pypi.org/project/tf2onnx/)                                                     [Latest stable](https://github.com/onnx/tensorflow-onnx/releases)
+
+  [ONNXMLTools](https://pypi.org/project/onnxmltools/)\                                                    [Latest stable](https://github.com/onnx/onnxmltools/releases)
+  CatBoost, CoreML, LightGBM, XGBoost, LibSVM, SparkML                                                     
+
+  [SKLearn-ONNX](https://pypi.org/project/skl2onnx/)                                                       [Latest stable](https://github.com/onnx/sklearn-onnx/releases)
+
+  [WinMLTools](https://docs.microsoft.com/en-us/windows/ai/windows-ml/convert-model-winmltools)            [Latest stable](https://pypi.org/project/winmltools/)
+
+  [AzureML AutoML](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-automated-ml)   [1.0.39+](https://pypi.org/project/azureml-automl-core) (ONNX v1.5)\
+                                                                                                           [1.0.33](https://pypi.org/project/azureml-automl-core/1.0.33/) (ONNX v1.4)
+
+  [Paddle2ONNX](https://pypi.org/project/paddle2onnx/)                                                     [Latest stable](https://github.com/PaddlePaddle/Paddle2ONNX/releases)
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
