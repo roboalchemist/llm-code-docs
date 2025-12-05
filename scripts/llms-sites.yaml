@@ -523,6 +523,9 @@ sites:
 - name: near
   base_url: https://docs.near.org/
   description: Near documentation
+- name: nemo-framework
+  base_url: https://docs.nvidia.com/nemo-framework/
+  description: NVIDIA NeMo Framework for LLM, multimodal, and speech AI development
 - name: netlify
   base_url: https://docs.netlify.com/
   description: Netlify web deployment platform
