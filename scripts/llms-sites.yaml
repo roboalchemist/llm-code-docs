@@ -581,6 +581,9 @@ sites:
 - name: paysafe
   base_url: https://developer.paysafe.com/
   description: Paysafe payment gateway API
+- name: pgvector
+  base_url: https://pgvector.dev/
+  description: pgvector open-source vector similarity search extension for PostgreSQL
 - name: perplexity
   base_url: https://docs.perplexity.ai/
   description: Perplexity AI search and reasoning API
