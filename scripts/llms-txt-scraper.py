@@ -106,25 +106,47 @@ def download_file(url: str, output_path: Path, description: str = None, force: b
         return False, 0
 
 
-def parse_llms_txt(content: str) -> list[str]:
-    """Parse llms.txt content and extract all .md URLs.
+def parse_llms_txt(content: str, base_url: str = "") -> list[str]:
+    """Parse llms.txt content and extract all documentation URLs.
 
-    Follows llms.txt standard: extracts URLs from markdown links [title](url.md)
+    Follows llms.txt standard: extracts URLs from markdown links [title](url)
 
     Args:
         content: Raw text content of llms.txt file
+        base_url: Base URL to resolve relative URLs (optional)
 
     Returns:
-        list: URLs to markdown documentation files
+        list: URLs to documentation files
     """
     # Extract URLs from markdown links: [Title](URL)
-    # Pattern matches markdown links with .md URLs
-    pattern = r'\[([^\]]+)\]\((https?://[^\)]+\.md)\)'
+    # Pattern matches markdown links with .md URLs (both absolute and relative)
+    pattern_absolute_md = r'\[([^\]]+)\]\((https?://[^\)]+\.md)\)'
+    pattern_relative_md = r'\[([^\]]+)\]\((/[^\)]+\.md)\)'
+    # Pattern for URLs without .md extension (some sites use path-based URLs)
+    pattern_relative_path = r'\[([^\]]+)\]\((/[^\)]+)\)'
     urls = []
 
-    for match in re.finditer(pattern, content):
-        url = match.group(2)  # Extract URL from the second capture group
+    # First try absolute .md URLs
+    for match in re.finditer(pattern_absolute_md, content):
+        url = match.group(2)
         urls.append(url)
+
+    # If no absolute .md URLs found, try relative .md URLs
+    if not urls and base_url:
+        for match in re.finditer(pattern_relative_md, content):
+            relative_url = match.group(2)
+            url = urljoin(base_url, relative_url)
+            urls.append(url)
+
+    # If still no URLs, try relative path-based URLs (without .md extension)
+    if not urls and base_url:
+        for match in re.finditer(pattern_relative_path, content):
+            relative_url = match.group(2)
+            # Skip anchor links and javascript
+            if relative_url.startswith('#') or relative_url.startswith('javascript:'):
+                continue
+            url = urljoin(base_url, relative_url)
+            urls.append(url)
 
     return urls
 
@@ -158,7 +180,7 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
         return 0, 0
 
     # Parse URLs
-    urls = parse_llms_txt(llms_content)
+    urls = parse_llms_txt(llms_content, base_url)
     with print_lock:
         print(f"  Found {len(urls)} documentation URLs")
         if rate_limit_seconds > 0:
@@ -174,7 +196,15 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
 
     for i, url in enumerate(urls):
         # Extract filename from URL
-        filename = Path(urlparse(url).path).name
+        path = urlparse(url).path
+        filename = Path(path).name
+
+        # If no filename (path ends with /), use the last directory as filename
+        if not filename:
+            parts = [p for p in path.split('/') if p]
+            filename = parts[-1] if parts else 'index'
+
+        # Ensure .md extension
         if not filename.endswith('.md'):
             filename += '.md'
 
