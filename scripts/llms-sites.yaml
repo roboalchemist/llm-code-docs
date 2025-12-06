@@ -407,6 +407,9 @@ sites:
 - name: jetify
   base_url: https://www.jetify.com/docs/
   description: Jetify documentation
+- name: jina
+  base_url: https://docs.jina.ai/
+  description: Jina AI embeddings, rerankers, and multimodal AI models
 - name: juno
   base_url: https://juno.build/docs/
   description: Juno blockchain web development
@@ -623,6 +626,9 @@ sites:
 - name: pydantic-ai
   base_url: https://ai.pydantic.dev/
   description: Pydantic AI framework
+- name: qdrant
+  base_url: https://qdrant.tech/
+  description: Qdrant open-source vector database and search engine written in Rust
 - name: rainbowkit
   base_url: https://rainbowkit.com/
   description: Rainbowkit documentation
@@ -807,6 +813,9 @@ sites:
 - name: warp
   base_url: https://docs.warp.dev/
   description: Warp AI-powered terminal
+- name: weaviate
+  base_url: https://docs.weaviate.io/
+  description: Weaviate open-source vector database and cloud platform
 - name: webflow
   base_url: https://developers.webflow.com/
   description: Webflow website builder developer platform
