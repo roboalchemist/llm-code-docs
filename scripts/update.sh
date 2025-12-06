@@ -82,6 +82,11 @@ if [[ -f "$SCRIPT_DIR/claude-code-sdk-docs.py" ]]; then
     run_script "Claude Code SDK Documentation Downloader" "$SCRIPT_DIR/claude-code-sdk-docs.py"
 fi
 
+# Run Nomic AI documentation download
+if [[ -f "$SCRIPT_DIR/nomic-docs.py" ]]; then
+    run_script "Nomic AI Documentation Downloader" "$SCRIPT_DIR/nomic-docs.py"
+fi
+
 # Run llms.txt sites documentation download (Graphite, Claude, Augment, etc.)
 if [[ -f "$SCRIPT_DIR/llms-txt-scraper.py" ]]; then
     run_script "llms.txt Documentation Scraper" "$SCRIPT_DIR/llms-txt-scraper.py"
@@ -94,6 +99,7 @@ for script in "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/*.sh; do
         # Skip scripts we've already run and update.sh itself
         if [[ "$script_name" != "extract_docs.py" ]] && \
            [[ "$script_name" != "claude-code-sdk-docs.py" ]] && \
+           [[ "$script_name" != "nomic-docs.py" ]] && \
            [[ "$script_name" != "llms-txt-scraper.py" ]] && \
            [[ "$script_name" != "update.sh" ]]; then
             run_script "$script_name" "$script"
