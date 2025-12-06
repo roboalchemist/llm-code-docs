@@ -782,6 +782,9 @@ sites:
 - name: venice
   base_url: https://docs.venice.ai/
   description: Venice decentralized AI platform
+- name: vespa
+  base_url: https://docs.vespa.ai/
+  description: Vespa search engine and vector database for AI applications
 - name: vercel
   base_url: https://vercel.com/docs/
   description: Vercel deployment platform and edge functions
