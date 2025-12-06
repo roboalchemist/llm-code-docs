@@ -140,15 +140,15 @@ repositories:
 
   - name: "FAISS"
     description: "Facebook AI Similarity Search - Efficient similarity search and clustering of dense vectors"
-    repo_url: "https://github.com/facebookresearch/faiss.git"
+    repo_url: "https://github.com/facebookresearch/faiss.wiki.git"
     source_folder: "."
     target_folder: "docs/github-scraped/faiss"
-    branch: "main"
+    branch: "master"
 
   - name: "Chroma"
     description: "Chroma - Open-source vector database for AI applications with embeddings support"
     repo_url: "https://github.com/chroma-core/chroma.git"
-    source_folder: "."
+    source_folder: "docs/docs.trychroma.com/markdoc/content"
     target_folder: "docs/github-scraped/chroma"
     branch: "main"
 
