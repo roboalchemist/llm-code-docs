@@ -133,6 +133,9 @@ sites:
 - name: claude-docs
   base_url: https://docs.claude.com/
   description: Anthropic Claude AI documentation
+- name: claude-platform
+  base_url: https://platform.claude.com/
+  description: Claude Developer Platform - API docs, Agent SDK, tool use, prompt engineering
 - name: claudette
   base_url: https://github.com/AnswerDotAI/claudette/blob/main/
   description: Claudette - Answer.AI Claude API wrapper
@@ -362,7 +365,8 @@ sites:
   description: Hugging Face Hub Python client
 - name: huggingface-transformers
   base_url: https://huggingface.co/docs/transformers/
-  description: Hugging Face Transformers library for NLP, vision, audio, and multimodal ML models
+  description: Hugging Face Transformers library for NLP, vision, audio, and multimodal
+    ML models
   rate_limit_seconds: 2
 - name: humanloop
   base_url: https://humanloop.com/docs/
@@ -406,12 +410,13 @@ sites:
 - name: juno
   base_url: https://juno.build/docs/
   description: Juno blockchain web development
+- name: kaggle
+  base_url: https://www.kaggle.com/
+  description: Kaggle data science and ML competitions platform with datasets, notebooks,
+    models, and courses
 - name: kaisar
   base_url: https://docs.kaisar.io/
   description: Kaisar AI development platform
-- name: kaggle
-  base_url: https://www.kaggle.com/
-  description: Kaggle data science and ML competitions platform with datasets, notebooks, models, and courses
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
