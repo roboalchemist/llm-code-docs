@@ -199,8 +199,72 @@ URL or a predefined endpoint name for the model's icon.
   ]}
 />
 
-**Description:**  
+**Description:**
 A brief description of the model and its intended use or role, shown in the header dropdown menu.
+
+---
+
+### group
+
+<OptionTable
+  options={[
+    ['group', 'String', 'Optional group name for organizing model specs in the UI selector. Controls where the spec appears in the menu hierarchy.', 'No default. Optional.'],
+  ]}
+/>
+
+**Description:**
+Optional group name for organizing model specs in the UI selector. The `group` field provides flexible control over how model specs are organized:
+
+- **If `group` matches an endpoint name** (e.g., `"openAI"`, `"groq"`): The model spec appears nested under that endpoint in the selector menu
+- **If `group` is a custom name** (doesn't match any endpoint): Creates a separate collapsible section with that name
+- **If `group` is omitted**: The model spec appears as a standalone item at the top level
+
+This feature is particularly useful when you want to add descriptions to models without losing the organizational structure of the selector menu.
+
+**Example:**
+
+```yaml filename="modelSpecs with group field examples"
+modelSpecs:
+  list:
+    # Example 1: Nested under an endpoint
+    # When group matches an endpoint name, the spec appears under that endpoint
+    - name: "gpt-4o-optimized"
+      label: "GPT-4 Optimized"
+      description: "Most capable GPT-4 model with multimodal support"
+      group: "openAI"  # Appears nested under the OpenAI endpoint
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+
+    # Example 2: Custom group section
+    # When group is a custom name, it creates a separate collapsible section
+    - name: "coding-assistant"
+      label: "Coding Assistant"
+      description: "Specialized for coding tasks"
+      group: "my-assistants"  # Creates a custom "my-assistants" section
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+
+    # Multiple specs with the same group name are grouped together
+    - name: "writing-assistant"
+      label: "Writing Assistant"
+      description: "Specialized for creative writing"
+      group: "my-assistants"  # Grouped together with coding-assistant
+      preset:
+        endpoint: "anthropic"
+        model: "claude-sonnet-4"
+
+    # Example 3: Standalone (no group)
+    # When group is omitted, the spec appears at the top level
+    - name: "general-assistant"
+      label: "General Assistant"
+      description: "General purpose assistant"
+      # No group field - appears as standalone item at top level
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o-mini"
+```
 
 ---
 
@@ -227,6 +291,122 @@ Controls whether the model's icon appears in the header dropdown menu. Defaults 
 
 **Description:**  
 Controls whether the model's icon appears in the header dropdown button, left of its name. Defaults to `true`.
+
+---
+
+### authType
+
+<OptionTable
+  options={[
+    ['authType', 'String', 'Authentication type required for the model spec.', 'Optional. Possible values: "override_auth", "user_provided", "system_defined"'],
+  ]}
+/>
+
+**Description:**  
+Authentication type required for the model spec. Determines whether authentication is overridden, provided by the user, or defined by the system.
+
+---
+
+### webSearch
+
+<OptionTable
+  options={[
+    ['webSearch', 'Boolean', 'Enables web search capability for this model spec.', 'When true, the model can perform web searches.'],
+  ]}
+/>
+
+**Description:**  
+Enables web search capability for this model spec. When set to `true`, the model can perform web searches to retrieve current information.
+
+**Example:**
+```yaml filename="modelSpecs / webSearch"
+modelSpecs:
+  list:
+    - name: "research-assistant"
+      label: "Research Assistant"
+      webSearch: true
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+```
+
+---
+
+### fileSearch
+
+<OptionTable
+  options={[
+    ['fileSearch', 'Boolean', 'Enables file search capability for this model spec.', 'When true, the model can search through uploaded files.'],
+  ]}
+/>
+
+**Description:**  
+Enables file search capability for this model spec. When set to `true`, the model can search through and reference uploaded files.
+
+**Example:**
+```yaml filename="modelSpecs / fileSearch"
+modelSpecs:
+  list:
+    - name: "document-analyst"
+      label: "Document Analyst"
+      fileSearch: true
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+```
+
+---
+
+### executeCode
+
+<OptionTable
+  options={[
+    ['executeCode', 'Boolean', 'Enables code execution capability for this model spec.', 'When true, the model can execute code.'],
+  ]}
+/>
+
+**Description:**  
+Enables code execution capability for this model spec. When set to `true`, the model can execute code in a sandboxed environment.
+
+**Example:**
+```yaml filename="modelSpecs / executeCode"
+modelSpecs:
+  list:
+    - name: "code-assistant"
+      label: "Code Assistant"
+      executeCode: true
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+```
+
+---
+
+### mcpServers
+
+<OptionTable
+  options={[
+    ['mcpServers', 'Array of Strings', 'List of Model Context Protocol (MCP) server names to enable for this model spec.', 'Each string should match a configured MCP server name.'],
+  ]}
+/>
+
+**Description:**  
+List of Model Context Protocol (MCP) server names to enable for this model spec. MCP servers extend the model's capabilities with custom tools and resources.
+
+**Example:**
+```yaml filename="modelSpecs / mcpServers"
+modelSpecs:
+  list:
+    - name: "enhanced-assistant"
+      label: "Enhanced Assistant"
+      mcpServers:
+        - "filesystem"
+        - "sequential-thinking"
+        - "fetch"
+      preset:
+        endpoint: "openAI"
+        model: "gpt-4o"
+```
 
 ---
 
@@ -512,7 +692,8 @@ preset:
 
 > **Note:** Each parameter below includes a note on which endpoints support it.  
 > **OpenAI / AzureOpenAI / Custom** typically support `temperature`, `presence_penalty`, `frequency_penalty`, `stop`, `top_p`, `max_tokens`.  
-> **Google / Anthropic** typically support `topP`, `topK`, `maxOutputTokens`, `promptCache` (Anthropic only).  
+> **Google / Anthropic** typically support `topP`, `topK`, `maxOutputTokens`.  
+> **Anthropic / Bedrock (Anthropic models)** support `promptCache`.  
 > **Bedrock** supports `region`, `maxTokens`, and a few others.  
 
 #### model
@@ -709,7 +890,7 @@ preset:
 
 #### promptCache
 
-> **Supported by:** `anthropic`  
+> **Supported by:** `anthropic`, `bedrock` (Anthropic models)  
 > (Toggle Anthropic’s “prompt-caching” feature)
 
 <OptionTable
