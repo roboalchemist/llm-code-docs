@@ -426,6 +426,9 @@ sites:
 - name: lambdatest
   base_url: https://www.lambdatest.com/
   description: LambdaTest cross-browser testing
+- name: lancedb
+  base_url: https://docs.lancedb.com/
+  description: LanceDB serverless vector database for AI applications
 - name: langchain
   base_url: https://python.langchain.com/
   description: LangChain framework for LLM application development
