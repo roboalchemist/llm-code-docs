@@ -162,7 +162,7 @@ repositories:
   - name: "sqlite-vss"
     description: "sqlite-vss - SQLite extension for vector similarity search based on FAISS (deprecated in favor of sqlite-vec)"
     repo_url: "https://github.com/asg017/sqlite-vss.git"
-    source_folder: "."
+    source_folder: "site"
     target_folder: "docs/github-scraped/sqlite-vss"
     branch: "main"
 
