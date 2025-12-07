@@ -172,3 +172,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/qwen3-embedding"
     branch: "main"
+
+  - name: "OpenSearch"
+    description: "OpenSearch - Open-source search and analytics suite with vector DB, observability, and security analytics"
+    repo_url: "https://github.com/opensearch-project/documentation-website.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/opensearch"
+    branch: "main"

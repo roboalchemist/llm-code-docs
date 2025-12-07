@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-06 14:42
-  total_sources: 315
-  total_fetched: 275
+  last_updated: 2025-12-06 18:22
+  total_sources: 316
+  total_fetched: 276
   llms_txt_count: 279
   llms_txt_fetched: 240
-  github_count: 23
-  github_fetched: 22
+  github_count: 24
+  github_fetched: 23
   web_scraped_count: 13
   web_scraped_fetched: 13
 llms_txt:
@@ -2344,12 +2344,12 @@ github:
   description: sqlite-vss - SQLite extension for vector similarity search based on FAISS (deprecated in favor of sqlite-vec)
   repo: asg017/sqlite-vss
   branch: main
-  source_folder: .
+  source_folder: site
   path: docs/github-scraped/sqlite-vss/
   status: fetched
-  file_count: 42
-  size: 75.8KB
-  last_updated: 2025-12-06 14:37
+  file_count: 22
+  size: 46.0KB
+  last_updated: 2025-12-06 18:18
 - name: qwen3-embedding
   description: Qwen3 Embedding - Text embedding and reranking models from Alibaba's Qwen team
   repo: QwenLM/Qwen3-Embedding
@@ -2360,6 +2360,16 @@ github:
   file_count: 3
   size: 41.0KB
   last_updated: 2025-12-06 14:29
+- name: opensearch
+  description: OpenSearch - Open-source search and analytics suite with vector DB, observability, and security analytics
+  repo: opensearch-project/documentation-website
+  branch: main
+  source_folder: .
+  path: docs/github-scraped/opensearch/
+  status: fetched
+  file_count: 1537
+  size: 10.7MB
+  last_updated: 2025-12-06 18:21
 web_scraped:
 - name: 1password
   description: 1password documentation
