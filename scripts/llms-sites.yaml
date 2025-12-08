@@ -67,6 +67,12 @@ sites:
 - name: ast-grep
   base_url: https://ast-grep.github.io/
   description: ast-grep code search and transformation tool
+- name: aws
+  base_url: https://docs.aws.amazon.com/
+  description: Amazon Web Services documentation (all services including DynamoDB, EC2, Lambda, S3)
+- name: aws-dynamodb
+  base_url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
+  description: Amazon DynamoDB NoSQL database developer guide
 - name: astro
   base_url: https://docs.astro.build/
   description: Astro static site generator framework
