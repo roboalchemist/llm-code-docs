@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-09 01:49
-  total_sources: 319
-  total_fetched: 278
+  last_updated: 2025-12-09 23:55
+  total_sources: 320
+  total_fetched: 279
   llms_txt_count: 282
   llms_txt_fetched: 243
   github_count: 24
   github_fetched: 22
-  web_scraped_count: 13
-  web_scraped_fetched: 13
+  web_scraped_count: 14
+  web_scraped_fetched: 14
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2472,6 +2472,13 @@ web_scraped:
   file_count: 1
   size: 4.6KB
   last_updated: 2025-10-13 20:14
+- name: rustdesk
+  description: rustdesk documentation
+  path: docs/web-scraped/rustdesk/
+  status: fetched
+  file_count: 43
+  size: 189.6KB
+  last_updated: 2025-12-09 23:55
 - name: sentence-transformers
   description: sentence-transformers documentation
   path: docs/web-scraped/sentence-transformers/
