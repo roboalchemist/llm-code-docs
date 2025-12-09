@@ -70,6 +70,9 @@ sites:
 - name: aws
   base_url: https://docs.aws.amazon.com/
   description: Amazon Web Services documentation (all services including DynamoDB, EC2, Lambda, S3)
+- name: aws-cli
+  base_url: https://docs.aws.amazon.com/cli/latest/userguide/
+  description: AWS Command Line Interface (CLI) v2 User Guide - installation, configuration, authentication, and usage
 - name: aws-dynamodb
   base_url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
   description: Amazon DynamoDB NoSQL database developer guide
