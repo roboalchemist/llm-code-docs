@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-10 22:04
+  last_updated: 2025-12-10 22:09
   total_sources: 321
   total_fetched: 280
   llms_txt_count: 283
