@@ -698,6 +698,9 @@ sites:
 - name: servicestack
   base_url: https://docs.servicestack.net/
   description: Servicestack documentation
+- name: shadcn-ui
+  base_url: https://ui.shadcn.com/
+  description: shadcn/ui React component library with Tailwind CSS and Radix UI primitives
 - name: sherlockdomains
   base_url: https://www.sherlockdomains.com/
   description: Sherlockdomains documentation

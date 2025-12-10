@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-10 21:05
-  total_sources: 320
-  total_fetched: 279
-  llms_txt_count: 282
-  llms_txt_fetched: 243
+  last_updated: 2025-12-10 22:04
+  total_sources: 321
+  total_fetched: 280
+  llms_txt_count: 283
+  llms_txt_fetched: 244
   github_count: 24
   github_fetched: 22
   web_scraped_count: 14
@@ -1761,6 +1761,14 @@ llms_txt:
   file_count: 389
   size: 13.2MB
   last_updated: 2025-12-01 20:12
+- name: shadcn-ui
+  description: shadcn/ui React component library with Tailwind CSS and Radix UI primitives
+  url: https://ui.shadcn.com/
+  path: docs/llms-txt/shadcn-ui/
+  status: fetched
+  file_count: 1
+  size: 10.5KB
+  last_updated: 2025-12-10 22:04
 - name: sherlockdomains
   description: Sherlockdomains documentation
   url: https://www.sherlockdomains.com/
