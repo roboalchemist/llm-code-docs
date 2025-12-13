@@ -519,6 +519,9 @@ sites:
 - name: mintlify
   base_url: https://mintlify.com/docs/
   description: Mintlify documentation platform
+- name: mistral
+  base_url: https://docs.mistral.ai/
+  description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language

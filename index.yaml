@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-12 23:17
-  total_sources: 322
-  total_fetched: 281
-  llms_txt_count: 283
-  llms_txt_fetched: 244
+  last_updated: 2025-12-13 00:02
+  total_sources: 324
+  total_fetched: 283
+  llms_txt_count: 284
+  llms_txt_fetched: 245
   github_count: 24
   github_fetched: 22
-  web_scraped_count: 15
-  web_scraped_fetched: 15
+  web_scraped_count: 16
+  web_scraped_fetched: 16
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -1331,6 +1331,14 @@ llms_txt:
   file_count: 124
   size: 1.6MB
   last_updated: 2025-12-01 20:12
+- name: mistral
+  description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
+  url: https://docs.mistral.ai/
+  path: docs/llms-txt/mistral/
+  status: fetched
+  file_count: 1
+  size: 969.5KB
+  last_updated: 2025-12-13 00:01
 - name: modular
   description: Modular AI infrastructure and Mojo language
   url: https://docs.modular.com/
@@ -2444,6 +2452,13 @@ web_scraped:
   file_count: 251
   size: 2.1MB
   last_updated: 2025-12-01 20:12
+- name: mistral-vibe
+  description: mistral-vibe documentation
+  path: docs/web-scraped/mistral-vibe/
+  status: fetched
+  file_count: 6
+  size: 61.3KB
+  last_updated: 2025-12-13 00:01
 - name: namecheap-go
   description: namecheap-go documentation
   path: docs/web-scraped/namecheap-go/
