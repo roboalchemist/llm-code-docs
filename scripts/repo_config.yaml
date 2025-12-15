@@ -193,3 +193,17 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/pikvm"
     branch: "master"
+
+  - name: "Penpot"
+    description: "Penpot - Open source design and prototyping platform (Figma alternative)"
+    repo_url: "https://github.com/penpot/penpot-docs.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/penpot"
+    branch: "main"
+
+  - name: "Draw.io"
+    description: "Draw.io - JavaScript diagramming application (flowcharts, network diagrams, UML)"
+    repo_url: "https://github.com/jgraph/drawio-docs.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/drawio"
+    branch: "master"

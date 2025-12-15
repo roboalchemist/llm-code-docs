@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-15 13:23
-  total_sources: 326
-  total_fetched: 286
+  last_updated: 2025-12-15 13:28
+  total_sources: 328
+  total_fetched: 288
   llms_txt_count: 284
   llms_txt_fetched: 245
-  github_count: 26
-  github_fetched: 25
+  github_count: 28
+  github_fetched: 27
   web_scraped_count: 16
   web_scraped_fetched: 16
 llms_txt:
@@ -2182,7 +2182,7 @@ github:
   status: fetched
   file_count: 30
   size: 145.1KB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2192,7 +2192,7 @@ github:
   status: fetched
   file_count: 292
   size: 869.7KB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: micropython
   description: MicroPython documentation
   repo: micropython/micropython
@@ -2202,7 +2202,7 @@ github:
   status: fetched
   file_count: 243
   size: 1.4MB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: buildbuddy
   description: BuildBuddy documentation - Remote execution and caching platform
   repo: buildbuddy-io/buildbuddy
@@ -2212,7 +2212,7 @@ github:
   status: fetched
   file_count: 58
   size: 287.7KB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: esptool
   description: ESP8266 and ESP32 serial bootloader utility documentation
   repo: espressif/esptool
@@ -2222,7 +2222,7 @@ github:
   status: fetched
   file_count: 55
   size: 502.1KB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: mcp-jest
   description: MCP Jest - Model Context Protocol testing utilities
   repo: josharsh/mcp-jest
@@ -2232,7 +2232,7 @@ github:
   status: fetched
   file_count: 16
   size: 196.2KB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: librechat
   description: LibreChat - Enhanced ChatGPT clone with multi-AI support
   repo: LibreChat-AI/librechat.ai
@@ -2249,7 +2249,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2259,7 +2259,7 @@ github:
   status: fetched
   file_count: 281
   size: 5.2MB
-  last_updated: 2025-12-15 13:20
+  last_updated: 2025-12-15 13:26
 - name: go
   description: Go Programming Language - Official documentation website
   repo: golang/website
@@ -2269,7 +2269,7 @@ github:
   status: fetched
   file_count: 578
   size: 5.6MB
-  last_updated: 2025-12-15 13:21
+  last_updated: 2025-12-15 13:26
 - name: flask
   description: Flask - Lightweight WSGI web application framework
   repo: pallets/flask
@@ -2279,7 +2279,7 @@ github:
   status: fetched
   file_count: 75
   size: 434.5KB
-  last_updated: 2025-12-15 13:21
+  last_updated: 2025-12-15 13:26
 - name: click
   description: Python CLI framework - Command-line interface creation toolkit
   repo: pallets/click
@@ -2289,7 +2289,7 @@ github:
   status: fetched
   file_count: 35
   size: 172.5KB
-  last_updated: 2025-12-15 13:21
+  last_updated: 2025-12-15 13:26
 - name: fastapi
   description: FastAPI - Modern, fast Python web framework
   repo: fastapi/fastapi
@@ -2299,7 +2299,7 @@ github:
   status: fetched
   file_count: 145
   size: 1.4MB
-  last_updated: 2025-12-15 13:21
+  last_updated: 2025-12-15 13:27
 - name: python
   description: Python official documentation - Language reference and standard library
   repo: python/cpython
@@ -2309,7 +2309,7 @@ github:
   status: fetched
   file_count: 525
   size: 11.2MB
-  last_updated: 2025-12-15 13:21
+  last_updated: 2025-12-15 13:27
 - name: goose
   description: Goose - AI-powered developer agent by Block
   repo: block/goose
@@ -2319,7 +2319,7 @@ github:
   status: fetched
   file_count: 121
   size: 974.8KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:27
 - name: milvus
   description: Milvus - Open source vector database for AI applications
   repo: milvus-io/milvus-docs
@@ -2329,7 +2329,7 @@ github:
   status: fetched
   file_count: 450
   size: 4.4MB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:27
 - name: flagembedding
   description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
   repo: FlagOpen/FlagEmbedding
@@ -2339,7 +2339,7 @@ github:
   status: fetched
   file_count: 183
   size: 547.8KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:27
 - name: txtai
   description: txtai - All-in-one embeddings database for semantic search, LLM orchestration and language model workflows
   repo: neuml/txtai
@@ -2349,7 +2349,7 @@ github:
   status: fetched
   file_count: 75
   size: 250.3KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:27
 - name: faiss
   description: Facebook AI Similarity Search - Efficient similarity search and clustering of dense vectors
   repo: facebookresearch/faiss.wiki
@@ -2359,7 +2359,7 @@ github:
   status: fetched
   file_count: 56
   size: 2.3MB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   repo: chroma-core/chroma
@@ -2369,7 +2369,7 @@ github:
   status: fetched
   file_count: 107
   size: 584.2KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: sqlite-vec
   description: sqlite-vec - Vector search SQLite extension written in pure C
   repo: asg017/sqlite-vec
@@ -2379,7 +2379,7 @@ github:
   status: fetched
   file_count: 28
   size: 67.1KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: sqlite-vss
   description: sqlite-vss - SQLite extension for vector similarity search based on FAISS (deprecated in favor of sqlite-vec)
   repo: asg017/sqlite-vss
@@ -2389,7 +2389,7 @@ github:
   status: fetched
   file_count: 21
   size: 32.7KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: qwen3-embedding
   description: Qwen3 Embedding - Text embedding and reranking models from Alibaba's Qwen team
   repo: QwenLM/Qwen3-Embedding
@@ -2409,7 +2409,7 @@ github:
   status: fetched
   file_count: 1575
   size: 10.9MB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: gitea
   description: Gitea - Self-hosted Git service with issue tracking, code review, and CI/CD
   repo: go-gitea/docs
@@ -2419,7 +2419,7 @@ github:
   status: fetched
   file_count: 53
   size: 88.8KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
 - name: pikvm
   description: PiKVM - Open source DIY IP-KVM based on Raspberry Pi
   repo: pikvm/pikvm
@@ -2429,7 +2429,27 @@ github:
   status: fetched
   file_count: 181
   size: 628.9KB
-  last_updated: 2025-12-15 13:22
+  last_updated: 2025-12-15 13:28
+- name: penpot
+  description: Penpot - Open source design and prototyping platform (Figma alternative)
+  repo: penpot/penpot-docs
+  branch: main
+  source_folder: .
+  path: docs/github-scraped/penpot/
+  status: fetched
+  file_count: 30
+  size: 224.9KB
+  last_updated: 2025-12-15 13:28
+- name: draw.io
+  description: Draw.io - JavaScript diagramming application (flowcharts, network diagrams, UML)
+  repo: jgraph/drawio-docs
+  branch: master
+  source_folder: .
+  path: docs/github-scraped/drawio/
+  status: fetched
+  file_count: 9
+  size: 16.2KB
+  last_updated: 2025-12-15 13:28
 web_scraped:
 - name: 1password
   description: 1password documentation
