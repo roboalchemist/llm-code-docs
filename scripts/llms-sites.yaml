@@ -148,6 +148,9 @@ sites:
 - name: claudette
   base_url: https://github.com/AnswerDotAI/claudette/blob/main/
   description: Claudette - Answer.AI Claude API wrapper
+- name: claude-code
+  base_url: https://code.claude.com/docs/
+  description: Claude Code - Anthropic's agentic coding CLI tool
 - name: clerk
   base_url: https://clerk.com/docs/
   description: Clerk authentication and user management

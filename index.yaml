@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-15 13:28
-  total_sources: 328
-  total_fetched: 288
-  llms_txt_count: 284
-  llms_txt_fetched: 245
+  last_updated: 2025-12-15 14:05
+  total_sources: 329
+  total_fetched: 289
+  llms_txt_count: 285
+  llms_txt_fetched: 246
   github_count: 28
   github_fetched: 27
   web_scraped_count: 16
@@ -394,6 +394,14 @@ llms_txt:
   file_count: 3
   size: 136.9KB
   last_updated: 2025-11-24 14:35
+- name: claude-code
+  description: Claude Code - Anthropic's agentic coding CLI tool
+  url: https://code.claude.com/docs/
+  path: docs/llms-txt/claude-code/
+  status: fetched
+  file_count: 48
+  size: 1.2MB
+  last_updated: 2025-12-15 14:04
 - name: clerk
   description: Clerk authentication and user management
   url: https://clerk.com/docs/
@@ -2464,7 +2472,7 @@ web_scraped:
   status: fetched
   file_count: 6
   size: 90.1KB
-  last_updated: 2025-12-15 12:47
+  last_updated: 2025-12-15 14:02
 - name: claude-code-sdk
   description: Anthropic Claude Code SDK documentation
   path: docs/web-scraped/claude-code-sdk/
@@ -2472,8 +2480,8 @@ web_scraped:
   url: https://docs.anthropic.com/en/docs/claude-code/
   script: scripts/claude-code-sdk-docs.py
   file_count: 46
-  size: 617.7KB
-  last_updated: 2025-11-24 14:35
+  size: 729.8KB
+  last_updated: 2025-12-15 14:02
 - name: common-voice
   description: common-voice documentation
   path: docs/web-scraped/common-voice/
