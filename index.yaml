@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-15 14:05
-  total_sources: 329
-  total_fetched: 289
+  last_updated: 2025-12-15 14:10
+  total_sources: 328
+  total_fetched: 288
   llms_txt_count: 285
   llms_txt_fetched: 246
   github_count: 28
   github_fetched: 27
-  web_scraped_count: 16
-  web_scraped_fetched: 16
+  web_scraped_count: 15
+  web_scraped_fetched: 15
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2472,15 +2472,6 @@ web_scraped:
   status: fetched
   file_count: 6
   size: 90.1KB
-  last_updated: 2025-12-15 14:02
-- name: claude-code-sdk
-  description: Anthropic Claude Code SDK documentation
-  path: docs/web-scraped/claude-code-sdk/
-  status: fetched
-  url: https://docs.anthropic.com/en/docs/claude-code/
-  script: scripts/claude-code-sdk-docs.py
-  file_count: 46
-  size: 729.8KB
   last_updated: 2025-12-15 14:02
 - name: common-voice
   description: common-voice documentation
