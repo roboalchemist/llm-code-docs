@@ -113,7 +113,7 @@ For more details on cloud execution, see [Claude Code on the web](/en/claude-cod
 
 ### Team security
 
-* Use [enterprise managed policies](/en/iam#enterprise-managed-policy-settings) to enforce organizational standards
+* Use [enterprise managed settings](/en/iam#enterprise-managed-settings) to enforce organizational standards
 * Share approved permission configurations through version control
 * Train team members on security best practices
 * Monitor Claude Code usage through [OpenTelemetry metrics](/en/monitoring-usage)
@@ -134,3 +134,8 @@ If you discover a security vulnerability in Claude Code:
 * [Monitoring usage](/en/monitoring-usage) - Track and audit Claude Code activity
 * [Development containers](/en/devcontainer) - Secure, isolated environments
 * [Anthropic Trust Center](https://trust.anthropic.com) - Security certifications and compliance
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt
