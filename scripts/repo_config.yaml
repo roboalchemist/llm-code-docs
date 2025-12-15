@@ -186,3 +186,10 @@ repositories:
     source_folder: "content/doc"
     target_folder: "docs/github-scraped/gitea"
     branch: "master"
+
+  - name: "PiKVM"
+    description: "PiKVM - Open source DIY IP-KVM based on Raspberry Pi"
+    repo_url: "https://github.com/pikvm/pikvm.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/pikvm"
+    branch: "master"
