@@ -179,3 +179,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/opensearch"
     branch: "main"
+
+  - name: "Gitea"
+    description: "Gitea - Self-hosted Git service with issue tracking, code review, and CI/CD"
+    repo_url: "https://github.com/go-gitea/docs.git"
+    source_folder: "content/doc"
+    target_folder: "docs/github-scraped/gitea"
+    branch: "master"
