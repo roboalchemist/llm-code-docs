@@ -2,6 +2,8 @@
 
 Agent specialized for working with the llm-code-docs repository - a centralized AI-readable documentation hub.
 
+**Important:** Use the `llm-code-docs` skill for detailed command examples and workflows.
+
 ## Repository Location
 
 `~/github/llm-code-docs/`
