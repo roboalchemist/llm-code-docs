@@ -6,7 +6,7 @@
 
 ## SPLADE Pooling[ïƒ?](#splade-pooling "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SpladePooling]][(]*[[pooling_strategy]][[:]][ ][[Literal][[\[]][[\'max\']][[,]][ ][[\'sum\']][[\]]]][ ][[=]][ ][[\'max\']]*, *[[activation_function]][[:]][ ][[Literal][[\[]][[\'relu\']][[,]][ ][[\'log1p_relu\']][[\]]]][ ][[=]][ ][[\'relu\']]*, *[[word_embedding_dimension]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\models\SpladePooling.py#L13-L147)[ïƒ?](#sentence_transformers.sparse_encoder.models.SpladePooling "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SpladePooling]][(]*[[pooling_strategy]][[:]][ ][[Literal][[\[]][[\'max\']][[,]][ ][[\'sum\']][[\]]]][ ][[=]][ ][[\'max\']]*, *[[activation_function]][[:]][ ][[Literal][[\[]][[\'relu\']][[,]][ ][[\'log1p_relu\']][[\]]]][ ][[=]][ ][[\'relu\']]*, *[[word_embedding_dimension]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\models\SpladePooling.py#L13-L147)[ïƒ?](#sentence_transformers.sparse_encoder.models.SpladePooling "Link to this definition")
 
 :   SPLADE Pooling module for creating the sparse embeddings.
 
@@ -48,7 +48,7 @@
 
 ## MLM Transformer[ïƒ?](#mlm-transformer "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[MLMTransformer]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[max_seq_length]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[do_lower_case]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[tokenizer_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[str]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\models\MLMTransformer.py#L26-L398)[ïƒ?](#sentence_transformers.sparse_encoder.models.MLMTransformer "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[MLMTransformer]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[max_seq_length]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[do_lower_case]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[tokenizer_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[str]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\models\MLMTransformer.py#L26-L398)[ïƒ?](#sentence_transformers.sparse_encoder.models.MLMTransformer "Link to this definition")
 
 :   MLMTransformer adapts a Masked Language Model (MLM) for sparse encoding applications.
 
@@ -78,7 +78,7 @@
 
 ## SparseAutoEncoder[ïƒ?](#sparseautoencoder "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SparseAutoEncoder]][(]*[[input_dim]][[:]][ ][[int]]*, *[[hidden_dim]][[:]][ ][[int]][ ][[=]][ ][[512]]*, *[[k]][[:]][ ][[int]][ ][[=]][ ][[8]]*, *[[k_aux]][[:]][ ][[int]][ ][[=]][ ][[512]]*, *[[normalize]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[dead_threshold]][[:]][ ][[int]][ ][[=]][ ][[30]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\models\SparseAutoEncoder.py#L33-L236)[ïƒ?](#sentence_transformers.sparse_encoder.models.SparseAutoEncoder "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SparseAutoEncoder]][(]*[[input_dim]][[:]][ ][[int]]*, *[[hidden_dim]][[:]][ ][[int]][ ][[=]][ ][[512]]*, *[[k]][[:]][ ][[int]][ ][[=]][ ][[8]]*, *[[k_aux]][[:]][ ][[int]][ ][[=]][ ][[512]]*, *[[normalize]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[dead_threshold]][[:]][ ][[int]][ ][[=]][ ][[30]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\models\SparseAutoEncoder.py#L33-L236)[ïƒ?](#sentence_transformers.sparse_encoder.models.SparseAutoEncoder "Link to this definition")
 
 :   This module implements the Sparse AutoEncoder architecture based on the paper: Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation, [https://huggingface.co/papers/2503.01776](https://huggingface.co/papers/2503.01776)
 
@@ -106,7 +106,7 @@
 
 ## SparseStaticEmbedding[ïƒ?](#sparsestaticembedding "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SparseStaticEmbedding]][(]*[[tokenizer]][[:]][ ][[PreTrainedTokenizer]]*, *[[weight]][[:]][ ][[[torch.Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[frozen]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\models\SparseStaticEmbedding.py#L24-L228)[ïƒ?](#sentence_transformers.sparse_encoder.models.SparseStaticEmbedding "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.models.]][[SparseStaticEmbedding]][(]*[[tokenizer]][[:]][ ][[PreTrainedTokenizer]]*, *[[weight]][[:]][ ][[[torch.Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[frozen]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\models\SparseStaticEmbedding.py#L24-L228)[ïƒ?](#sentence_transformers.sparse_encoder.models.SparseStaticEmbedding "Link to this definition")
 
 :   SparseStaticEmbedding module for efficient sparse representations.
 

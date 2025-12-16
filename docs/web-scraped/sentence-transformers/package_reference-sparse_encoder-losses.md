@@ -12,7 +12,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SpladeLoss[ïƒ?](#spladeloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SpladeLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")]*, *[[document_regularizer_weight]][[:]][ ][[float]]*, *[[query_regularizer_weight]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[document_regularizer]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_regularizer]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[document_regularizer_threshold]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_regularizer_threshold]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[use_document_regularizer_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SpladeLoss.py#L15-L203)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SpladeLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SpladeLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")]*, *[[document_regularizer_weight]][[:]][ ][[float]]*, *[[query_regularizer_weight]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[document_regularizer]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_regularizer]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[document_regularizer_threshold]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_regularizer_threshold]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[use_document_regularizer_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SpladeLoss.py#L15-L203)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SpladeLoss "Link to this definition")
 
 :   SpladeLoss implements the loss function for the SPLADE (Sparse Lexical and Expansion) model, which combines a main loss function with regularization terms to control efficiency.
 
@@ -83,7 +83,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## FlopsLoss[ïƒ?](#flopsloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[FlopsLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[threshold]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\FlopsLoss.py#L11-L64)[ïƒ?](#sentence_transformers.sparse_encoder.losses.FlopsLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[FlopsLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[threshold]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\FlopsLoss.py#L11-L64)[ïƒ?](#sentence_transformers.sparse_encoder.losses.FlopsLoss "Link to this definition")
 
 :   FlopsLoss implements a regularization technique to promote sparsity in sparse encoder models. It calculates the squared L2 norm of the mean embedding vector, which helps reduce the number of floating-point operations (FLOPs) required during inference by encouraging more zero values in the embeddings. It can use a threshold to ignore embeddings with too few non-zero (active) elements.
 
@@ -109,7 +109,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## CSRLoss[ïƒ?](#csrloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[CSRLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[beta]][[:]][ ][[float]][ ][[=]][ ][[0.1]]*, *[[gamma]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\CSRLoss.py#L129-L228)[ïƒ?](#sentence_transformers.sparse_encoder.losses.CSRLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[CSRLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[beta]][[:]][ ][[float]][ ][[=]][ ][[0.1]]*, *[[gamma]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\CSRLoss.py#L129-L228)[ïƒ?](#sentence_transformers.sparse_encoder.losses.CSRLoss "Link to this definition")
 
 :   CSRLoss implements a combined loss function for Contrastive Sparse Representation (CSR) models.
 
@@ -175,7 +175,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## CSRReconstructionLoss[ïƒ?](#csrreconstructionloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[CSRReconstructionLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[beta]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\CSRLoss.py#L28-L126)[ïƒ?](#sentence_transformers.sparse_encoder.losses.CSRReconstructionLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[CSRReconstructionLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[beta]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\CSRLoss.py#L28-L126)[ïƒ?](#sentence_transformers.sparse_encoder.losses.CSRReconstructionLoss "Link to this definition")
 
 :   CSRReconstructionLoss implements the reconstruction loss component for Contrastive Sparse Representation (CSR) models.
 
@@ -213,7 +213,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseMultipleNegativesRankingLoss[ïƒ?](#sparsemultiplenegativesrankingloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMultipleNegativesRankingLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[scale:] [float] [=] [1.0]]*, *[[similarity_fct=\<function] [dot_score\>]]*, *[[gather_across_devices:] [bool] [=] [False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseMultipleNegativesRankingLoss.py#L12-L102)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMultipleNegativesRankingLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[scale:] [float] [=] [1.0]]*, *[[similarity_fct=\<function] [dot_score\>]]*, *[[gather_across_devices:] [bool] [=] [False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseMultipleNegativesRankingLoss.py#L12-L102)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss "Link to this definition")
 
 :   Given a list of (anchor, positive) pairs or (anchor, positive, negative) triplets, this loss optimizes the following:
 
@@ -283,7 +283,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseMarginMSELoss[ïƒ?](#sparsemarginmseloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMarginMSELoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[similarity_fct=\<function] [pairwise_dot_score\>]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseMarginMSELoss.py#L12-L176)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMarginMSELoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[similarity_fct=\<function] [pairwise_dot_score\>]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseMarginMSELoss.py#L12-L176)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss "Link to this definition")
 
 :   Compute the MSE loss between the [`|sim(Query,`]` `[`Pos)`]` `[`-`]` `[`sim(Query,`]` `[`Neg)|`] and [`|gold_sim(Query,`]` `[`Pos)`]` `[`-`]` `[`gold_sim(Query,`]` `[`Neg)|`]. By default, sim() is the dot-product. The gold_sim is often the similarity score from a teacher model.
 
@@ -411,7 +411,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseDistillKLDivLoss[ïƒ?](#sparsedistillkldivloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseDistillKLDivLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[similarity_fct=\<function] [pairwise_dot_score\>]]*, *[[temperature:] [float] [=] [2.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseDistillKLDivLoss.py#L12-L139)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseDistillKLDivLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseDistillKLDivLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[similarity_fct=\<function] [pairwise_dot_score\>]]*, *[[temperature:] [float] [=] [2.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseDistillKLDivLoss.py#L12-L139)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseDistillKLDivLoss "Link to this definition")
 
 :   Compute the KL divergence loss between probability distributions derived from student and teacher modelsâ€™ similarity scores. By default, similarity is calculated using the dot-product. This loss is designed for knowledge distillation where a smaller student model learns from a more powerful teacher model.
 
@@ -529,7 +529,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseTripletLoss[ïƒ?](#sparsetripletloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseTripletLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[distance_metric=\<function] [TripletDistanceMetric.\<lambda\>\>]]*, *[[triplet_margin:] [float] [=] [5]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseTripletLoss.py#L11-L71)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseTripletLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseTripletLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[distance_metric=\<function] [TripletDistanceMetric.\<lambda\>\>]]*, *[[triplet_margin:] [float] [=] [5]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseTripletLoss.py#L11-L71)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseTripletLoss "Link to this definition")
 
 :   This class implements triplet loss. Given a triplet of (anchor, positive, negative), the loss minimizes the distance between anchor and positive while it maximizes the distance between anchor and negative. It compute the following loss function:
 
@@ -585,7 +585,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseCosineSimilarityLoss[ïƒ?](#sparsecosinesimilarityloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseCosineSimilarityLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss_fct]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[MSELoss()]]*, *[[cos_score_transformation]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseCosineSimilarityLoss.py#L12-L76)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseCosineSimilarityLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseCosineSimilarityLoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[loss_fct]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[MSELoss()]]*, *[[cos_score_transformation]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseCosineSimilarityLoss.py#L12-L76)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseCosineSimilarityLoss "Link to this definition")
 
 :   SparseCosineSimilarityLoss expects that the InputExamples consists of two texts and a float label. It computes the vectors [`u`]` `[`=`]` `[`model(sentence_A)`] and [`v`]` `[`=`]` `[`model(sentence_B)`] and measures the cosine-similarity between the two. By default, it minimizes the following loss: [`||input_label`]` `[`-`]` `[`cos_score_transformation(cosine_sim(u,v))||_2`].
 
@@ -639,7 +639,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseCoSENTLoss[ïƒ?](#sparsecosentloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseCoSENTLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[scale:] [float] [=] [20.0]]*, *[[similarity_fct=\<function] [cos_sim\>]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseCoSENTLoss.py#L12-L76)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseCoSENTLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseCoSENTLoss]][(]*[[model:] [\~sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder]]*, *[[scale:] [float] [=] [20.0]]*, *[[similarity_fct=\<function] [cos_sim\>]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseCoSENTLoss.py#L12-L76)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseCoSENTLoss "Link to this definition")
 
 :   This class implements CoSENT (Cosine Sentence). It expects that each of the InputExamples consists of a pair of texts and a float valued label, representing the expected similarity score between the pair.
 
@@ -699,7 +699,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseAnglELoss[ïƒ?](#sparseangleloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseAnglELoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[scale]][[:]][ ][[float]][ ][[=]][ ][[20.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseAnglELoss.py#L12-L78)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseAnglELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseAnglELoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[scale]][[:]][ ][[float]][ ][[=]][ ][[20.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseAnglELoss.py#L12-L78)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseAnglELoss "Link to this definition")
 
 :   This class implements AnglE (Angle Optimized). This is a modification of [[`SparseCoSENTLoss`]](#sentence_transformers.sparse_encoder.losses.SparseCoSENTLoss "sentence_transformers.sparse_encoder.losses.SparseCoSENTLoss"), designed to address the following issue: The cosine functionâ€™s gradient approaches 0 as the wave approaches the top or bottom of its form. This can hinder the optimization process, so AnglE proposes to instead optimize the angle difference in complex space in order to mitigate this effect.
 
@@ -759,7 +759,7 @@ To train a [[`SparseEncoder`]](SparseEncoder.html#sentence_transformers.sparse_e
 
 ## SparseMSELoss[ïƒ?](#sparsemseloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMSELoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\losses\SparseMSELoss.py#L7-L59)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMSELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.losses.]][[SparseMSELoss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\losses\SparseMSELoss.py#L7-L59)[ïƒ?](#sentence_transformers.sparse_encoder.losses.SparseMSELoss "Link to this definition")
 
 :   Computes the MSE loss between the computed sentence embedding and a target sentence embedding. This loss is used when extending sentence embeddings to new languages as described in our publication Making Monolingual Sentence Embeddings Multilingual using Knowledge Distillation.
 

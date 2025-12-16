@@ -8,7 +8,7 @@
 
 ## Helper Functions[ïƒ?](#module-sentence_transformers.util "Link to this heading")
 
-[[sentence_transformers.util.]][[community_detection]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray]]*, *[[threshold]][[:]][ ][[float]][ ][[=]][ ][[0.75]]*, *[[min_community_size]][[:]][ ][[int]][ ][[=]][ ][[10]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[1024]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[list][[\[]][list][[\[]][int][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\retrieval.py#L258-L357)[ïƒ?](#sentence_transformers.util.community_detection "Link to this definition")
+[[sentence_transformers.util.]][[community_detection]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray]]*, *[[threshold]][[:]][ ][[float]][ ][[=]][ ][[0.75]]*, *[[min_community_size]][[:]][ ][[int]][ ][[=]][ ][[10]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[1024]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[list][[\[]][list][[\[]][int][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\retrieval.py#L258-L357)[ïƒ?](#sentence_transformers.util.community_detection "Link to this definition")
 
 :   Function for Fast Community Detection.
 
@@ -36,7 +36,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[http_get]][(]*[[url]][[:]][ ][[str]]*, *[[path]][[:]][ ][[str]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\file_io.py#L160-L194)[ïƒ?](#sentence_transformers.util.http_get "Link to this definition")
+[[sentence_transformers.util.]][[http_get]][(]*[[url]][[:]][ ][[str]]*, *[[path]][[:]][ ][[str]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\file_io.py#L160-L194)[ïƒ?](#sentence_transformers.util.http_get "Link to this definition")
 
 :   Downloads a URL to a given path on disk.
 
@@ -56,13 +56,13 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[is_training_available]][(][)] [[→] [[bool]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\environment.py#L71-L76)[ïƒ?](#sentence_transformers.util.is_training_available "Link to this definition")
+[[sentence_transformers.util.]][[is_training_available]][(][)] [[→] [[bool]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\environment.py#L71-L76)[ïƒ?](#sentence_transformers.util.is_training_available "Link to this definition")
 
 :   Returns True if we have the required dependencies for training Sentence Transformers models, i.e. Huggingface datasets and Huggingface accelerate.
 
 <!-- -->
 
-[[sentence_transformers.util.]][[mine_hard_negatives]][(]*[[dataset]][[:]][ ][[Dataset]]*, *[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[anchor_column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[positive_column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cross_encoder]][[:]][ ][[[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[range_min]][[:]][ ][[int]][ ][[=]][ ][[0]]*, *[[range_max]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_score]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[min_score]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[absolute_margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[relative_margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[num_negatives]][[:]][ ][[int]][ ][[=]][ ][[3]]*, *[[sampling_strategy]][[:]][ ][[Literal][[\[]][[\'random\']][[,]][ ][[\'top\']][[\]]]][ ][[=]][ ][[\'top\']]*, *[[query_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus_prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[include_positives]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[output_format]][[:]][ ][[Literal][[\[]][[\'triplet\']][[,]][ ][[\'n-tuple\']][[,]][ ][[\'n-tuple-scores\']][[,]][ ][[\'labeled-pair\']][[,]][ ][[\'labeled-list\']][[\]]]][ ][[=]][ ][[\'triplet\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[faiss_batch_size]][[:]][ ][[int]][ ][[=]][ ][[16384]]*, *[[use_faiss]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[use_multi_process]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][bool]][ ][[=]][ ][[False]]*, *[[verbose]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[as_triplets]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[Dataset]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\hard_negatives.py#L25-L773)[ïƒ?](#sentence_transformers.util.mine_hard_negatives "Link to this definition")
+[[sentence_transformers.util.]][[mine_hard_negatives]][(]*[[dataset]][[:]][ ][[Dataset]]*, *[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[anchor_column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[positive_column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cross_encoder]][[:]][ ][[[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[range_min]][[:]][ ][[int]][ ][[=]][ ][[0]]*, *[[range_max]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_score]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[min_score]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[absolute_margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[relative_margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[num_negatives]][[:]][ ][[int]][ ][[=]][ ][[3]]*, *[[sampling_strategy]][[:]][ ][[Literal][[\[]][[\'random\']][[,]][ ][[\'top\']][[\]]]][ ][[=]][ ][[\'top\']]*, *[[query_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[query_prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[corpus_prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[include_positives]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[output_format]][[:]][ ][[Literal][[\[]][[\'triplet\']][[,]][ ][[\'n-tuple\']][[,]][ ][[\'labeled-pair\']][[,]][ ][[\'labeled-list\']][[\]]]][ ][[=]][ ][[\'triplet\']]*, *[[output_scores]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[faiss_batch_size]][[:]][ ][[int]][ ][[=]][ ][[16384]]*, *[[use_faiss]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[use_multi_process]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][bool]][ ][[=]][ ][[False]]*, *[[verbose]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[as_triplets]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[margin]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[Dataset]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\hard_negatives.py#L25-L851)[ïƒ?](#sentence_transformers.util.mine_hard_negatives "Link to this definition")
 
 :   Add hard negatives to a dataset of (anchor, positive) pairs to create (anchor, positive, negative) triplets or (anchor, positive, negative_1, â€¦, negative_n) tuples.
 
@@ -139,6 +139,7 @@
         Batches: 100%|ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ| 588/588 [00:32<00:00, 18.07it/s]
         Batches: 100%|ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ| 784/784 [00:08<00:00, 96.41it/s]
         Querying FAISS index: 100%|âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ| 7/7 [00:06<00:00,  1.06it/s]
+        Negative candidates mined, preparing dataset...
         Metric       Positive       Negative     Difference
         Count         100,231        487,865
         Mean           0.6866         0.4194         0.2752
@@ -156,6 +157,15 @@
         Dataset()
         >>> dataset[0]
         
+        >>> # To include similarity scores, use output_scores=True
+        >>> dataset_with_scores = mine_hard_negatives(
+        ...     dataset=dataset,
+        ...     model=model,
+        ...     output_scores=True,
+        ...     # ... other parameters
+        ... )
+        >>> dataset_with_scores
+        Dataset()
         >>> dataset.push_to_hub("natural-questions-hard-negatives", "triplet-all")
     :::
     ::::
@@ -210,21 +220,21 @@
 
         - **include_positives** (*bool*) â€" Whether to include the positives in the negative candidates. Setting this to True is primarily useful for creating Reranking evaluation datasets for CrossEncoder models, where it can be useful to get a full ranking (including the positives) from a first-stage retrieval model. Defaults to False.
 
-        - **output_format** (*Literal\[\"triplet\",* *\"n-tuple\",* *\"n-tuple-scores\",* *\"labeled-pair\",* *\"labeled-list\"\]*) â€"
+        - **output_format** (*Literal\[\"triplet\",* *\"n-tuple\",* *\"labeled-pair\",* *\"labeled-list\"\]*) â€"
 
-          Output format for the datasets.Dataset. Options are:
+          Output format for the datasets.Dataset. When [`output_scores=False`] (default), options are:
 
           - â€?tripletâ€?: (anchor, positive, negative) triplets, i.e. 3 columns. Useful for e.g. [[`CachedMultipleNegativesRankingLoss`]](cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss "sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss").
 
           - â€?n-tupleâ€?: (anchor, positive, negative_1, â€¦, negative_n) tuples, i.e. 2 + num_negatives columns. Useful for e.g. [[`CachedMultipleNegativesRankingLoss`]](cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss "sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss").
 
-          - â€?n-tuple-scoresâ€?: (anchor, positive, negative_1, â€¦, negative_n, score) tuples, i.e. 2 + num_negatives columns, but with one score value thatâ€™s a list of similarities for the query-positive and each of the query-negative pairs. Useful for e.g. [[`SparseMarginMSELoss`]](sparse_encoder/losses.html#sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss "sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss").
-
           - â€?labeled-pairâ€?: (anchor, passage, label) text tuples with a label of 0 for negative and 1 for positive, i.e. 3 columns. Useful for e.g. [[`BinaryCrossEntropyLoss`]](cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss "sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss").
 
-          - â€?labeled-listâ€?: (anchor, \[doc1, doc2, â€¦, docN\], \[label1, label2, â€¦, labelN\]) triplets with labels of 0 for negative and 1 for positive, i.e. 3 columns. Useful for e.g. [[`LambdaLoss`]](cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.LambdaLoss "sentence_transformers.cross_encoder.losses.LambdaLoss").
+          - â€?labeled-listâ€?: (anchor, \[doc1, doc2, â€¦, docN\], \[label1, label2, â€¦, labelN\]) tuples with labels of 0 for negative and 1 for positive, i.e. 3 columns. Useful for e.g. [[`LambdaLoss`]](cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.LambdaLoss "sentence_transformers.cross_encoder.losses.LambdaLoss").
 
-          Defaults to â€œtripletâ€?.
+          Defaults to â€œtripletâ€?. See [`output_scores`] for the output formats when [`output_scores=True`].
+
+        - **output_scores** (*bool*) â€" Whether to include similarity scores in the output dataset. When True, adds score fields to the output: - For â€œtripletâ€? format: adds scores column with query-positive and query-negative similarity scores, for 4 columns total. - For â€œn-tupleâ€? format: adds scores column with a list of similarity scores for the query-positive and each of the query-negative pairs, for 3 + num_negatives columns total. Useful for e.g. [[`SparseMarginMSELoss`]](sparse_encoder/losses.html#sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss "sentence_transformers.sparse_encoder.losses.SparseMarginMSELoss"). - For â€œlabeled-pairâ€? format: replaces the label column with a score column. Labels are binary (1 for positive, 0 for negative), but scores contain the actual similarity scores computed by the model or cross_encoder. The output has 3 columns. - For â€œlabeled-listâ€? format: replaces the labels column with a scores column. Labels are binary (1 for positive, 0 for negative), but scores contain the actual similarity scores computed by the model or cross_encoder. The output has 3 columns. Defaults to False.
 
         - **batch_size** (*int*) â€" Batch size for encoding the dataset. Defaults to 32.
 
@@ -244,7 +254,25 @@
 
     Returns[:]
 
-    :   A dataset containing (anchor, positive, negative) triplets, (anchor, passage, label) text tuples with a label, or (anchor, positive, negative_1, â€¦, negative_n) tuples.
+    :   A dataset containing the specified output format. If output_scores=False (default), the formats are:
+
+        - â€?tripletâ€?: (anchor, positive, negative)
+
+        - â€?n-tupleâ€?: (anchor, positive, negative_1, â€¦, negative_n)
+
+        - â€?labeled-pairâ€?: (anchor, passage, label)
+
+        - â€?labeled-listâ€?: (anchor, \[passages\], \[labels\])
+
+        And if output_scores=True, the formats are:
+
+        - â€?tripletâ€?: (anchor, positive, negative, \[scores\])
+
+        - â€?n-tupleâ€?: (anchor, positive, negative_1, â€¦, negative_n, \[scores\])
+
+        - â€?labeled-pairâ€?: (anchor, passage, score)
+
+        - â€?labeled-listâ€?: (anchor, \[passages\], \[scores\])
 
     Return type[:]
 
@@ -252,7 +280,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[normalize_embeddings]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\tensor.py#L68-L94)[ïƒ?](#sentence_transformers.util.normalize_embeddings "Link to this definition")
+[[sentence_transformers.util.]][[normalize_embeddings]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\tensor.py#L68-L94)[ïƒ?](#sentence_transformers.util.normalize_embeddings "Link to this definition")
 
 :   Normalizes the embeddings matrix, so that each sentence embedding has unit length.
 
@@ -270,7 +298,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[paraphrase_mining]][(]*[model:] [SentenceTransformer,] [sentences:] [list\[str\],] [show_progress_bar:] [bool] [=] [False,] [batch_size:] [int] [=] [32,] [query_chunk_size:] [int] [=] [5000,] [corpus_chunk_size:] [int] [=] [100000,] [max_pairs:] [int] [=] [500000,] [top_k:] [int] [=] [100,] [score_function:] [Callable\[\[Tensor,] [Tensor\],] [Tensor\]] [=] [\<function] [cos_sim\>,] [truncate_dim:] [int] [\|] [None] [=] [None,] [prompt_name:] [str] [\|] [None] [=] [None,] [prompt:] [str] [\|] [None] [=] [None]*[)] [[→] [[list][[\[]][list][[\[]][float][ ][[\|]][ ][int][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\retrieval.py#L23-L86)[ïƒ?](#sentence_transformers.util.paraphrase_mining "Link to this definition")
+[[sentence_transformers.util.]][[paraphrase_mining]][(]*[model:] [SentenceTransformer,] [sentences:] [list\[str\],] [show_progress_bar:] [bool] [=] [False,] [batch_size:] [int] [=] [32,] [query_chunk_size:] [int] [=] [5000,] [corpus_chunk_size:] [int] [=] [100000,] [max_pairs:] [int] [=] [500000,] [top_k:] [int] [=] [100,] [score_function:] [Callable\[\[Tensor,] [Tensor\],] [Tensor\]] [=] [\<function] [cos_sim\>,] [truncate_dim:] [int] [\|] [None] [=] [None,] [prompt_name:] [str] [\|] [None] [=] [None,] [prompt:] [str] [\|] [None] [=] [None]*[)] [[→] [[list][[\[]][list][[\[]][float][ ][[\|]][ ][int][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\retrieval.py#L23-L86)[ïƒ?](#sentence_transformers.util.paraphrase_mining "Link to this definition")
 
 :   Given a list of sentences / texts, this function performs paraphrase mining. It compares all sentences against all other sentences and returns a list with the pairs that have the highest cosine similarity score.
 
@@ -318,7 +346,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[semantic_search]][(]*[query_embeddings:] [\~torch.Tensor,] [corpus_embeddings:] [\~torch.Tensor,] [query_chunk_size:] [int] [=] [100,] [corpus_chunk_size:] [int] [=] [500000,] [top_k:] [int] [=] [10,] [score_function:] [\~collections.abc.Callable\[\[\~torch.Tensor,] [\~torch.Tensor\],] [\~torch.Tensor\]] [=] [\<function] [cos_sim\>]*[)] [[→] [[list][[\[]][list][[\[]][dict][[\[]][str][[,]][ ][int][ ][[\|]][ ][float][[\]]][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\retrieval.py#L167-L255)[ïƒ?](#sentence_transformers.util.semantic_search "Link to this definition")
+[[sentence_transformers.util.]][[semantic_search]][(]*[query_embeddings:] [\~torch.Tensor,] [corpus_embeddings:] [\~torch.Tensor,] [query_chunk_size:] [int] [=] [100,] [corpus_chunk_size:] [int] [=] [500000,] [top_k:] [int] [=] [10,] [score_function:] [\~collections.abc.Callable\[\[\~torch.Tensor,] [\~torch.Tensor\],] [\~torch.Tensor\]] [=] [\<function] [cos_sim\>]*[)] [[→] [[list][[\[]][list][[\[]][dict][[\[]][str][[,]][ ][int][ ][[\|]][ ][float][[\]]][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\retrieval.py#L167-L255)[ïƒ?](#sentence_transformers.util.semantic_search "Link to this definition")
 
 :   This function performs by default a cosine similarity search between a list of query embeddings and a list of corpus embeddings. It can be used for Information Retrieval / Semantic Search for corpora up to about 1 Million entries.
 
@@ -346,7 +374,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[truncate_embeddings]][(]*[[embeddings]][[:]][ ][[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[truncate_dim]][[:]][ ][[int][ ][[\|]][ ][None]]*[)] [[→] [[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\tensor.py#L105-L134)[ïƒ?](#sentence_transformers.util.truncate_embeddings "Link to this definition")
+[[sentence_transformers.util.]][[truncate_embeddings]][(]*[[embeddings]][[:]][ ][[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[truncate_dim]][[:]][ ][[int][ ][[\|]][ ][None]]*[)] [[→] [[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\tensor.py#L105-L134)[ïƒ?](#sentence_transformers.util.truncate_embeddings "Link to this definition")
 
 :   Truncates the embeddings matrix.
 
@@ -391,7 +419,7 @@
 
 ## Model Optimization[ïƒ?](#module-sentence_transformers.backend "Link to this heading")
 
-[[sentence_transformers.backend.]][[export_dynamic_quantized_onnx_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[quantization_config]][[:]][ ][[QuantizationConfig][ ][[\|]][ ][Literal][[\[]][[\'arm64\']][[,]][ ][[\'avx2\']][[,]][ ][[\'avx512\']][[,]][ ][[\'avx512_vnni\']][[\]]]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\backend\quantize.py#L24-L121)[ïƒ?](#sentence_transformers.backend.export_dynamic_quantized_onnx_model "Link to this definition")
+[[sentence_transformers.backend.]][[export_dynamic_quantized_onnx_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[quantization_config]][[:]][ ][[QuantizationConfig][ ][[\|]][ ][Literal][[\[]][[\'arm64\']][[,]][ ][[\'avx2\']][[,]][ ][[\'avx512\']][[,]][ ][[\'avx512_vnni\']][[\]]]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\backend\quantize.py#L24-L121)[ïƒ?](#sentence_transformers.backend.export_dynamic_quantized_onnx_model "Link to this definition")
 
 :   Export a quantized ONNX model from a SentenceTransformer, SparseEncoder, or CrossEncoder model.
 
@@ -431,7 +459,7 @@
 
 <!-- -->
 
-[[sentence_transformers.backend.]][[export_optimized_onnx_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[optimization_config]][[:]][ ][[OptimizationConfig][ ][[\|]][ ][Literal][[\[]][[\'O1\']][[,]][ ][[\'O2\']][[,]][ ][[\'O3\']][[,]][ ][[\'O4\']][[\]]]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\backend\optimize.py#L19-L120)[ïƒ?](#sentence_transformers.backend.export_optimized_onnx_model "Link to this definition")
+[[sentence_transformers.backend.]][[export_optimized_onnx_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[optimization_config]][[:]][ ][[OptimizationConfig][ ][[\|]][ ][Literal][[\[]][[\'O1\']][[,]][ ][[\'O2\']][[,]][ ][[\'O3\']][[,]][ ][[\'O4\']][[\]]]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\backend\optimize.py#L19-L120)[ïƒ?](#sentence_transformers.backend.export_optimized_onnx_model "Link to this definition")
 
 :   Export an optimized ONNX model from a SentenceTransformer, SparseEncoder, or CrossEncoder model.
 
@@ -481,7 +509,7 @@
 
 <!-- -->
 
-[[sentence_transformers.backend.]][[export_static_quantized_openvino_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[quantization_config]][[:]][ ][[OVQuantizationConfig][ ][[\|]][ ][dict][ ][[\|]][ ][None]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_config_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_split]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str]][ ][[=]][ ][[\'qint8_quantized\']]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\backend\quantize.py#L124-L254)[ïƒ?](#sentence_transformers.backend.export_static_quantized_openvino_model "Link to this definition")
+[[sentence_transformers.backend.]][[export_static_quantized_openvino_model]][(]*[[model]][[:]][ ][[[SentenceTransformer]](sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")[ ][[\|]][ ][[SparseEncoder]](sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")[ ][[\|]][ ][[CrossEncoder]](cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")]*, *[[quantization_config]][[:]][ ][[OVQuantizationConfig][ ][[\|]][ ][dict][ ][[\|]][ ][None]]*, *[[model_name_or_path]][[:]][ ][[str]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_config_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_split]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[column_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[push_to_hub]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[file_suffix]][[:]][ ][[str]][ ][[=]][ ][[\'qint8_quantized\']]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\backend\quantize.py#L124-L254)[ïƒ?](#sentence_transformers.backend.export_static_quantized_openvino_model "Link to this definition")
 
 :   Export a quantized OpenVINO model from a SentenceTransformer, SparseEncoder, or CrossEncoder model.
 
@@ -531,7 +559,7 @@
 
 ## Similarity Metrics[ïƒ?](#module-sentence_transformers.util "Link to this heading")
 
-[[sentence_transformers.util.]][[cos_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L29-L45)[ïƒ?](#sentence_transformers.util.cos_sim "Link to this definition")
+[[sentence_transformers.util.]][[cos_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L29-L45)[ïƒ?](#sentence_transformers.util.cos_sim "Link to this definition")
 
 :   Computes the cosine similarity between two tensors.
 
@@ -551,7 +579,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[dot_score]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L71-L85)[ïƒ?](#sentence_transformers.util.dot_score "Link to this definition")
+[[sentence_transformers.util.]][[dot_score]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L71-L85)[ïƒ?](#sentence_transformers.util.dot_score "Link to this definition")
 
 :   Computes the dot-product dot_prod(a\[i\], b\[j\]) for all i and j.
 
@@ -571,7 +599,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[euclidean_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L149-L177)[ïƒ?](#sentence_transformers.util.euclidean_sim "Link to this definition")
+[[sentence_transformers.util.]][[euclidean_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L149-L177)[ïƒ?](#sentence_transformers.util.euclidean_sim "Link to this definition")
 
 :   Computes the euclidean similarity (i.e., negative distance) between two tensors. Handles sparse tensors without converting to dense when possible.
 
@@ -591,7 +619,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[manhattan_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L105-L129)[ïƒ?](#sentence_transformers.util.manhattan_sim "Link to this definition")
+[[sentence_transformers.util.]][[manhattan_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L105-L129)[ïƒ?](#sentence_transformers.util.manhattan_sim "Link to this definition")
 
 :   Computes the manhattan similarity (i.e., negative distance) between two tensors. Handles sparse tensors without converting to dense when possible.
 
@@ -611,7 +639,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[pairwise_cos_sim]][(]*[[a]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L48-L68)[ïƒ?](#sentence_transformers.util.pairwise_cos_sim "Link to this definition")
+[[sentence_transformers.util.]][[pairwise_cos_sim]][(]*[[a]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L48-L68)[ïƒ?](#sentence_transformers.util.pairwise_cos_sim "Link to this definition")
 
 :   Computes the pairwise cosine similarity cos_sim(a\[i\], b\[i\]).
 
@@ -631,7 +659,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[pairwise_dot_score]][(]*[[a]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L88-L102)[ïƒ?](#sentence_transformers.util.pairwise_dot_score "Link to this definition")
+[[sentence_transformers.util.]][[pairwise_dot_score]][(]*[[a]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L88-L102)[ïƒ?](#sentence_transformers.util.pairwise_dot_score "Link to this definition")
 
 :   Computes the pairwise dot-product dot_prod(a\[i\], b\[i\]).
 
@@ -651,7 +679,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[pairwise_euclidean_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L180-L194)[ïƒ?](#sentence_transformers.util.pairwise_euclidean_sim "Link to this definition")
+[[sentence_transformers.util.]][[pairwise_euclidean_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L180-L194)[ïƒ?](#sentence_transformers.util.pairwise_euclidean_sim "Link to this definition")
 
 :   Computes the euclidean distance (i.e., negative distance) between pairs of tensors.
 
@@ -671,7 +699,7 @@
 
 <!-- -->
 
-[[sentence_transformers.util.]][[pairwise_manhattan_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\util\similarity.py#L132-L146)[ïƒ?](#sentence_transformers.util.pairwise_manhattan_sim "Link to this definition")
+[[sentence_transformers.util.]][[pairwise_manhattan_sim]][(]*[[a]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[b]][[:]][ ][[list][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\util\similarity.py#L132-L146)[ïƒ?](#sentence_transformers.util.pairwise_manhattan_sim "Link to this definition")
 
 :   Computes the manhattan similarity (i.e., negative distance) between pairs of tensors.
 

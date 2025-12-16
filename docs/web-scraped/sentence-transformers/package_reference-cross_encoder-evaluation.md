@@ -6,11 +6,11 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
 
 ## CrossEncoderRerankingEvaluator[ïƒ?](#crossencoderrerankingevaluator "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderRerankingEvaluator]][(]*[[samples]][[:]][ ][[list][[\[]][dict][[\[]][str][[,]][ ][str][ ][[\|]][ ][list][[\[]][str][[\]]][[\]]][[\]]]]*, *[[at_k]][[:]][ ][[int]][ ][[=]][ ][[10]]*, *[[always_rerank_positives]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[64]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[mrr_at_k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\evaluation\reranking.py#L20-L304)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderRerankingEvaluator]][(]*[[samples]][[:]][ ][[list][[\[]][dict][[\[]][str][[,]][ ][str][ ][[\|]][ ][list][[\[]][str][[\]]][[\]]][[\]]]]*, *[[at_k]][[:]][ ][[int]][ ][[=]][ ][[10]]*, *[[always_rerank_positives]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[64]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[mrr_at_k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\evaluation\reranking.py#L20-L304)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator "Link to this definition")
 
 :   This class evaluates a CrossEncoder model for the task of re-ranking.
 
-    Given a query and a list of documents, it computes the score \[query, doc_i\] for all possible documents and sorts them in decreasing order. Then, [MRR@10](/cdn-cgi/l/email-protection#29647b7b0f0a1a1e120f0a1c1b120f0a1d11121819), [NDCG@10](/cdn-cgi/l/email-protection#98d6dcdbdfbebbabafa3bebbadaaa3bebbaca0a3a9a8) and MAP are computed to measure the quality of the ranking.
+    Given a query and a list of documents, it computes the score \[query, doc_i\] for all possible documents and sorts them in decreasing order. Then, [`MRR@10`], [`NDCG@10`] and [`MAP`] are computed to measure the quality of the ranking.
 
     The evaluator expects a list of samples. Each sample is a dictionary with the mandatory â€œqueryâ€? and â€œpositiveâ€? keys, and either a â€œnegativeâ€? or a â€œdocumentsâ€? key. The â€œqueryâ€? is the search query, the â€œpositiveâ€? is a list of relevant documents, and the â€œnegativeâ€? is a list of irrelevant documents. Alternatively, the â€œdocumentsâ€? key can be used to provide a list of all documents, including the positive ones. In this case, the evaluator will assume that the list is already ranked by similarity, with the most similar documents first, and will report both the reranking performance as well as the performance before reranking. This can be useful to measure the improvement of the reranking on top of a first-stage retrieval (e.g. a SentenceTransformer model).
 
@@ -83,11 +83,11 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
 
 ## CrossEncoderNanoBEIREvaluator[ïƒ?](#crossencodernanobeirevaluator "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderNanoBEIREvaluator]][(]*[dataset_names:] [list\[\~typing.Literal\[\'climatefever\',] [\'dbpedia\',] [\'fever\',] [\'fiqa2018\',] [\'hotpotqa\',] [\'msmarco\',] [\'nfcorpus\',] [\'nq\',] [\'quoraretrieval\',] [\'scidocs\',] [\'arguana\',] [\'scifact\',] [\'touche2020\'\]\]] [\|] [None] [=] [None,] [rerank_k:] [int] [=] [100,] [at_k:] [int] [=] [10,] [always_rerank_positives:] [bool] [=] [True,] [batch_size:] [int] [=] [32,] [show_progress_bar:] [bool] [=] [False,] [write_csv:] [bool] [=] [True,] [aggregate_fn:] [\~collections.abc.Callable\[\[list\[float\]\],] [float\]] [=] [\<function] [mean\>,] [aggregate_key:] [str] [=] [\'mean\']*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\evaluation\nano_beir.py#L69-L348)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderNanoBEIREvaluator]][(]*[dataset_names:] [list\[\~typing.Literal\[\'climatefever\',] [\'dbpedia\',] [\'fever\',] [\'fiqa2018\',] [\'hotpotqa\',] [\'msmarco\',] [\'nfcorpus\',] [\'nq\',] [\'quoraretrieval\',] [\'scidocs\',] [\'arguana\',] [\'scifact\',] [\'touche2020\'\]] [\|] [str\]] [\|] [None] [=] [None,] [dataset_id:] [str] [=] [\'sentence-transformers/NanoBEIR-en\',] [rerank_k:] [int] [=] [100,] [at_k:] [int] [=] [10,] [always_rerank_positives:] [bool] [=] [True,] [batch_size:] [int] [=] [32,] [show_progress_bar:] [bool] [=] [False,] [write_csv:] [bool] [=] [True,] [aggregate_fn:] [\~collections.abc.Callable\[\[list\[float\]\],] [float\]] [=] [\<function] [mean\>,] [aggregate_key:] [str] [=] [\'mean\']*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\evaluation\nano_beir.py#L53-L425)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator "Link to this definition")
 
 :   This class evaluates a CrossEncoder model on the NanoBEIR collection of Information Retrieval datasets.
 
-    The collection is a set of datasets based on the BEIR collection, but with a significantly smaller size, so it can be used for quickly evaluating the retrieval performance of a model before committing to a full evaluation. The datasets are available on Hugging Face in the [NanoBEIR with BM25 collection](https://huggingface.co/collections/sentence-transformers/nanobeir-with-bm25-rankings-67bdcbc629f007c15bf358d8). This evaluator will return the same metrics as the CrossEncoderRerankingEvaluator (i.e., MRR@k, nDCG@k, MAP), for each dataset and on average.
+    The collection is a set of datasets based on the BEIR collection, but with a significantly smaller size, so it can be used for quickly evaluating the retrieval performance of a model before committing to a full evaluation. The datasets are available on Hugging Face in the [NanoBEIR collection](https://huggingface.co/collections/sentence-transformers/nanobeir-datasets). This evaluator will return the same metrics as the [[`CrossEncoderRerankingEvaluator`]](#sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator "sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator") (i.e., MRR@k, nDCG@k, MAP), for each dataset and on average.
 
     Rather than reranking all documents for each query, the evaluator will only rerank the [`rerank_k`] documents from a BM25 ranking. When your logging is set to INFO, the evaluator will print the MAP, MRR@k, and nDCG@k for each dataset and the average over all datasets.
 
@@ -103,9 +103,17 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
     These can be used as [`metric_for_best_model`] alongside [`load_best_model_at_end=True`] in the [[`CrossEncoderTrainingArguments`]](training_args.html#sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments "sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments") to automatically load the best model based on a specific metric of interest.
     :::
 
+    ::: 
+    Warning
+
+    When not specifying the [`dataset_names`] manually, the evaluator will exclude the [`arguana`] and [`touche2020`] datasets as their Argument Retrieval task differs meaningfully from the other datasets. This differs from [[`NanoBEIREvaluator`]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.NanoBEIREvaluator "sentence_transformers.evaluation.NanoBEIREvaluator") and [[`SparseNanoBEIREvaluator`]](../sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseNanoBEIREvaluator "sentence_transformers.sparse_encoder.evaluation.SparseNanoBEIREvaluator"), which include all datasets by default.
+    :::
+
     Parameters[:]
 
-    :   - **dataset_names** (*List\[str\]*) â€" The names of the datasets to evaluate on. If not specified, use all datasets except arguana and touche2020.
+    :   - **dataset_names** (*List\[str\]*) â€" The short names of the datasets to evaluate on (e.g., â€œclimatefeverâ€?, â€œmsmarcoâ€?). If not specified, all predefined NanoBEIR datasets except arguana and touche2020 are used. The full list of available datasets is: â€œclimatefeverâ€?, â€œdbpediaâ€?, â€œfeverâ€?, â€œfiqa2018â€?, â€œhotpotqaâ€?, â€œmsmarcoâ€?, â€œnfcorpusâ€?, â€œnqâ€?, â€œquoraretrievalâ€?, â€œscidocsâ€?, â€œarguanaâ€?, â€œscifactâ€?, and â€œtouche2020â€?.
+
+        - **dataset_id** (*str*) â€" The HuggingFace dataset ID to load the datasets from. Defaults to â€œsentence-transformers/NanoBEIR-enâ€?. The dataset must contain â€œcorpusâ€?, â€œqueriesâ€?, â€œqrelsâ€?, and â€œbm25â€? subsets for each NanoBEIR dataset, stored under splits named [`Nano`] (for example, [`NanoMSMARCO`] or [`NanoNFCorpus`]).
 
         - **rerank_k** (*int*) â€" The number of documents to rerank from the BM25 ranking. Defaults to 100.
 
@@ -122,6 +130,12 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
         - **aggregate_fn** (*Callable\[\[list\[float\]\],* *float\]*) â€" The function to aggregate the scores. Defaults to np.mean.
 
         - **aggregate_key** (*str*) â€" The key to use for the aggregated score. Defaults to â€œmeanâ€?.
+
+    ::: 
+    Tip
+
+    See this [NanoBEIR datasets collection on Hugging Face](https://huggingface.co/collections/sentence-transformers/nanobeir-datasets) with valid NanoBEIR [`dataset_id`] options for different languages. The datasets must contain a â€œbm25â€? subset with BM25 rankings for the reranking evaluation to work.
+    :::
 
     Example
 
@@ -178,9 +192,36 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
     :::
     ::::
 
+    Evaluating on custom/translated datasets:
+
+    :::: 
+    ::: highlight
+        import logging
+        from pprint import pprint
+
+        from sentence_transformers.cross_encoder import CrossEncoder
+        from sentence_transformers.cross_encoder.evaluation import CrossEncoderNanoBEIREvaluator
+
+        logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
+
+        # Load a model
+        model = CrossEncoder("cross-encoder/mmarco-mMiniLMv2-L12-H384-v1")
+
+        # Load & run the evaluator
+        evaluator = CrossEncoderNanoBEIREvaluator(
+            ["msmarco", "nq"],
+            dataset_id="Serbian-AI-Society/NanoBEIR-sr",
+            batch_size=16,
+        )
+        results = evaluator(model)
+        print(results[evaluator.primary_metric])
+        pprint()
+    :::
+    ::::
+
 ## CrossEncoderClassificationEvaluator[ïƒ?](#crossencoderclassificationevaluator "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderClassificationEvaluator]][(]*[[sentence_pairs]][[:]][ ][[list][[\[]][list][[\[]][str][[\]]][[\]]]]*, *[[labels]][[:]][ ][[list][[\[]][int][[\]]]]*, *[[\*]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\evaluation\classification.py#L20-L181)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderClassificationEvaluator "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderClassificationEvaluator]][(]*[[sentence_pairs]][[:]][ ][[list][[\[]][list][[\[]][str][[\]]][[\]]]]*, *[[labels]][[:]][ ][[list][[\[]][int][[\]]]]*, *[[\*]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\evaluation\classification.py#L20-L181)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderClassificationEvaluator "Link to this definition")
 
 :   Evaluate a CrossEncoder model based on the accuracy of the predicted class vs. the gold labels. The evaluator expects a list of sentence pairs and a list of gold labels. If the model has a single output, it is assumed to be a binary classification model and the evaluator will calculate accuracy, F1, precision, recall, and average precision. If the model has multiple outputs, the evaluator will calculate macro F1, micro F1, and weighted F1.
 
@@ -239,7 +280,7 @@ CrossEncoder have their own evaluation classes in [`sentence_transformers.cross_
 
 ## CrossEncoderCorrelationEvaluator[ïƒ?](#crossencodercorrelationevaluator "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderCorrelationEvaluator]][(]*[[sentence_pairs]][[:]][ ][[list][[\[]][list][[\[]][str][[\]]][[\]]]]*, *[[scores]][[:]][ ][[list][[\[]][float][[\]]]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\evaluation\correlation.py#L19-L132)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderCorrelationEvaluator "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.evaluation.]][[CrossEncoderCorrelationEvaluator]][(]*[[sentence_pairs]][[:]][ ][[list][[\[]][list][[\[]][str][[\]]][[\]]]]*, *[[scores]][[:]][ ][[list][[\[]][float][[\]]]]*, *[[name]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[write_csv]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\evaluation\correlation.py#L19-L132)[ïƒ?](#sentence_transformers.cross_encoder.evaluation.CrossEncoderCorrelationEvaluator "Link to this definition")
 
 :   This evaluator can be used with the CrossEncoder class. Given sentence pairs and continuous scores, it compute the pearson & spearman correlation between the predicted score for the sentence pair and the gold score.
 

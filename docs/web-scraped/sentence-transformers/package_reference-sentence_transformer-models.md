@@ -6,7 +6,7 @@
 
 ## Main Modules[ïƒ?](#main-modules "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.models.]][[Transformer]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[max_seq_length]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[do_lower_case]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[tokenizer_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[str]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Transformer.py#L38-L470)[ïƒ?](#sentence_transformers.models.Transformer "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Transformer]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[max_seq_length]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_args]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[do_lower_case]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[tokenizer_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[str]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Transformer.py#L38-L470)[ïƒ?](#sentence_transformers.models.Transformer "Link to this definition")
 
 :   Hugging Face AutoModel to generate token embeddings. Loads the correct class, e.g. BERT / RoBERTa etc.
 
@@ -32,7 +32,7 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[Pooling]][(]*[[word_embedding_dimension]][[:]][ ][[int]]*, *[[pooling_mode]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pooling_mode_cls_token]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_max_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_mean_tokens]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[pooling_mode_mean_sqrt_len_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_weightedmean_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_lasttoken]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[include_prompt]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Pooling.py#L9-L247)[ïƒ?](#sentence_transformers.models.Pooling "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Pooling]][(]*[[word_embedding_dimension]][[:]][ ][[int]]*, *[[pooling_mode]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pooling_mode_cls_token]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_max_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_mean_tokens]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[pooling_mode_mean_sqrt_len_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_weightedmean_tokens]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[pooling_mode_lasttoken]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[include_prompt]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Pooling.py#L9-L247)[ïƒ?](#sentence_transformers.models.Pooling "Link to this definition")
 
 :   Performs pooling (max or mean) on the token embeddings.
 
@@ -62,7 +62,7 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[Dense]][(]*[[in_features]][[:]][ ][[int]]*, *[[out_features]][[:]][ ][[int]]*, *[[bias]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[activation_function]][[:]][ ][[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[Tanh()]]*, *[[init_weight]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[init_bias]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Dense.py#L16-L105)[ïƒ?](#sentence_transformers.models.Dense "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Dense]][(]*[[in_features]][[:]][ ][[int]]*, *[[out_features]][[:]][ ][[int]]*, *[[bias]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[activation_function]][[:]][ ][[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[Tanh()]]*, *[[init_weight]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[init_bias]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Dense.py#L16-L105)[ïƒ?](#sentence_transformers.models.Dense "Link to this definition")
 
 :   Feed-forward function with activation function.
 
@@ -84,13 +84,13 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[Normalize]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Normalize.py#L14-L29)[ïƒ?](#sentence_transformers.models.Normalize "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Normalize]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Normalize.py#L14-L29)[ïƒ?](#sentence_transformers.models.Normalize "Link to this definition")
 
 :   This layer normalizes embeddings to unit length
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[Router]][(]*[[sub_modules]][[:]][ ][[dict][[\[]][str][[,]][ ][list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]][[\]]]]*, *[[default_route]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[allow_empty_key]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Router.py#L22-L413)[ïƒ?](#sentence_transformers.models.Router "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Router]][(]*[[sub_modules]][[:]][ ][[dict][[\[]][str][[,]][ ][list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]][[\]]]]*, *[[default_route]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[allow_empty_key]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Router.py#L22-L413)[ïƒ?](#sentence_transformers.models.Router "Link to this definition")
 
 :   This model allows to create asymmetric SentenceTransformer models that apply different modules depending on the specified route, such as â€œqueryâ€? or â€œdocumentâ€?. Especially useful for models that have different encoders for queries and documents.
 
@@ -227,7 +227,7 @@
 
         - **allow_empty_key** â€" If True, allows the default route to be set to the first key in sub_modules if [`default_route`] is None. Defaults to True.
 
-    *[classmethod][ ]*[[for_query_document]][(]*[[query_modules]][[:]][ ][[list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]]]*, *[[document_modules]][[:]][ ][[list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]]]*, *[[default_route]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[allow_empty_key]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[Self]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Router.py#L187-L215)[ïƒ?](#sentence_transformers.models.Router.for_query_document "Link to this definition")
+    *[classmethod][ ]*[[for_query_document]][(]*[[query_modules]][[:]][ ][[list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]]]*, *[[document_modules]][[:]][ ][[list][[\[]][[Module]](#sentence_transformers.models.Module "sentence_transformers.models.Module.Module")[[\]]]]*, *[[default_route]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[allow_empty_key]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[Self]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Router.py#L187-L215)[ïƒ?](#sentence_transformers.models.Router.for_query_document "Link to this definition")
 
     :   Creates a Router model specifically for query and document modules, allowing convenient usage via model.encode_query and model.encode_document.
 
@@ -251,7 +251,7 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[StaticEmbedding]][(]*[[tokenizer]][[:]][ ][[Tokenizer][ ][[\|]][ ][PreTrainedTokenizerFast]]*, *[[embedding_weights]][[:]][ ][[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[embedding_dim]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\StaticEmbedding.py#L28-L268)[ïƒ?](#sentence_transformers.models.StaticEmbedding "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[StaticEmbedding]][(]*[[tokenizer]][[:]][ ][[Tokenizer][ ][[\|]][ ][PreTrainedTokenizerFast]]*, *[[embedding_weights]][[:]][ ][[ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[embedding_dim]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\StaticEmbedding.py#L28-L268)[ïƒ?](#sentence_transformers.models.StaticEmbedding "Link to this definition")
 
 :   Initializes the StaticEmbedding model given a tokenizer. The model is a simple embedding bag model that takes the mean of trained per-token embeddings to compute text embeddings.
 
@@ -301,7 +301,7 @@
 
         - **ValueError** â€" If neither embedding_weights nor embedding_dim is provided.
 
-    *[classmethod][ ]*[[from_distillation]][(]*[[model_name]][[:]][ ][[str]]*, *[[vocabulary]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pca_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[256]]*, *[[apply_zipf]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[sif_coefficient]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[0.0001]]*, *[[token_remove_pattern]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[\'\\\\\[unused\\\\d+\\\\\]\']]*, *[[quantize_to]][[:]][ ][[str]][ ][[=]][ ][[\'float32\']]*, *[[use_subword]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[[StaticEmbedding]](#sentence_transformers.models.StaticEmbedding "sentence_transformers.models.StaticEmbedding.StaticEmbedding")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\StaticEmbedding.py#L164-L237)[ïƒ?](#sentence_transformers.models.StaticEmbedding.from_distillation "Link to this definition")
+    *[classmethod][ ]*[[from_distillation]][(]*[[model_name]][[:]][ ][[str]]*, *[[vocabulary]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pca_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[256]]*, *[[apply_zipf]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[sif_coefficient]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[0.0001]]*, *[[token_remove_pattern]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[\'\\\\\[unused\\\\d+\\\\\]\']]*, *[[quantize_to]][[:]][ ][[str]][ ][[=]][ ][[\'float32\']]*, *[[use_subword]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[[StaticEmbedding]](#sentence_transformers.models.StaticEmbedding "sentence_transformers.models.StaticEmbedding.StaticEmbedding")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\StaticEmbedding.py#L164-L237)[ïƒ?](#sentence_transformers.models.StaticEmbedding.from_distillation "Link to this definition")
 
     :   Creates a StaticEmbedding instance from a distillation process using the model2vec package.
 
@@ -341,7 +341,7 @@
 
         :   **ImportError** â€" If the model2vec package is not installed.
 
-    *[classmethod][ ]*[[from_model2vec]][(]*[[model_id_or_path]][[:]][ ][[str]]*[)] [[→] [[[StaticEmbedding]](#sentence_transformers.models.StaticEmbedding "sentence_transformers.models.StaticEmbedding.StaticEmbedding")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\StaticEmbedding.py#L239-L268)[ïƒ?](#sentence_transformers.models.StaticEmbedding.from_model2vec "Link to this definition")
+    *[classmethod][ ]*[[from_model2vec]][(]*[[model_id_or_path]][[:]][ ][[str]]*[)] [[→] [[[StaticEmbedding]](#sentence_transformers.models.StaticEmbedding "sentence_transformers.models.StaticEmbedding.StaticEmbedding")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\StaticEmbedding.py#L239-L268)[ïƒ?](#sentence_transformers.models.StaticEmbedding.from_model2vec "Link to this definition")
 
     :   Create a StaticEmbedding instance from a model2vec model. This method loads a pre-trained model2vec model and extracts the embedding weights and tokenizer to create a StaticEmbedding instance.
 
@@ -367,7 +367,7 @@
 
 ## Further Modules[ïƒ?](#further-modules "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.models.]][[BoW]][(]*[[vocab]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[word_weights]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]][ ][[=]][ ][[]]*, *[[unknown_word_weight]][[:]][ ][[float]][ ][[=]][ ][[1]]*, *[[cumulative_term_frequency]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\BoW.py#L16-L87)[ïƒ?](#sentence_transformers.models.BoW "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[BoW]][(]*[[vocab]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[word_weights]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]][ ][[=]][ ][[]]*, *[[unknown_word_weight]][[:]][ ][[float]][ ][[=]][ ][[1]]*, *[[cumulative_term_frequency]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\BoW.py#L16-L87)[ïƒ?](#sentence_transformers.models.BoW "Link to this definition")
 
 :   Implements a Bag-of-Words (BoW) model to derive sentence embeddings.
 
@@ -375,31 +375,31 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[CNN]][(]*[[in_word_embedding_dimension]][[:]][ ][[int]]*, *[[out_channels]][[:]][ ][[int]][ ][[=]][ ][[256]]*, *[[kernel_sizes]][[:]][ ][[list][[\[]][int][[\]]]][ ][[=]][ ][[\[1,] [3,] [5\]]]*, *[[stride_sizes]][[:]][ ][[list][[\[]][int][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\CNN.py#L14-L88)[ïƒ?](#sentence_transformers.models.CNN "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[CNN]][(]*[[in_word_embedding_dimension]][[:]][ ][[int]]*, *[[out_channels]][[:]][ ][[int]][ ][[=]][ ][[256]]*, *[[kernel_sizes]][[:]][ ][[list][[\[]][int][[\]]]][ ][[=]][ ][[\[1,] [3,] [5\]]]*, *[[stride_sizes]][[:]][ ][[list][[\[]][int][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\CNN.py#L14-L88)[ïƒ?](#sentence_transformers.models.CNN "Link to this definition")
 
 :   CNN-layer with multiple kernel-sizes over the word embeddings
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[LSTM]][(]*[[word_embedding_dimension]][[:]][ ][[int]]*, *[[hidden_dim]][[:]][ ][[int]]*, *[[num_layers]][[:]][ ][[int]][ ][[=]][ ][[1]]*, *[[dropout]][[:]][ ][[float]][ ][[=]][ ][[0]]*, *[[bidirectional]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\LSTM.py#L14-L94)[ïƒ?](#sentence_transformers.models.LSTM "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[LSTM]][(]*[[word_embedding_dimension]][[:]][ ][[int]]*, *[[hidden_dim]][[:]][ ][[int]]*, *[[num_layers]][[:]][ ][[int]][ ][[=]][ ][[1]]*, *[[dropout]][[:]][ ][[float]][ ][[=]][ ][[0]]*, *[[bidirectional]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\LSTM.py#L14-L94)[ïƒ?](#sentence_transformers.models.LSTM "Link to this definition")
 
 :   Bidirectional LSTM running over word embeddings.
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[WeightedLayerPooling]][(]*[[word_embedding_dimension]]*, *[[num_hidden_layers]][[:]][ ][[int]][ ][[=]][ ][[12]]*, *[[layer_start]][[:]][ ][[int]][ ][[=]][ ][[4]]*, *[[layer_weights]][[=]][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\WeightedLayerPooling.py#L14-L72)[ïƒ?](#sentence_transformers.models.WeightedLayerPooling "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[WeightedLayerPooling]][(]*[[word_embedding_dimension]]*, *[[num_hidden_layers]][[:]][ ][[int]][ ][[=]][ ][[12]]*, *[[layer_start]][[:]][ ][[int]][ ][[=]][ ][[4]]*, *[[layer_weights]][[=]][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\WeightedLayerPooling.py#L14-L72)[ïƒ?](#sentence_transformers.models.WeightedLayerPooling "Link to this definition")
 
 :   Token embeddings are weighted mean of their different hidden layer representations
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[WordEmbeddings]][(]*[[tokenizer]][[:]][ ][[WordTokenizer][ ][[\|]][ ][PreTrainedTokenizerBase]]*, *[[embedding_weights]]*, *[[update_embeddings]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[max_seq_length]][[:]][ ][[int]][ ][[=]][ ][[1000000]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\WordEmbeddings.py#L27-L193)[ïƒ?](#sentence_transformers.models.WordEmbeddings "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[WordEmbeddings]][(]*[[tokenizer]][[:]][ ][[WordTokenizer][ ][[\|]][ ][PreTrainedTokenizerBase]]*, *[[embedding_weights]]*, *[[update_embeddings]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[max_seq_length]][[:]][ ][[int]][ ][[=]][ ][[1000000]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\WordEmbeddings.py#L27-L193)[ïƒ?](#sentence_transformers.models.WordEmbeddings "Link to this definition")
 
 :   
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[WordWeights]][(]*[[vocab]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[word_weights]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]]*, *[[unknown_word_weight]][[:]][ ][[float]][ ][[=]][ ][[1]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\WordWeights.py#L13-L70)[ïƒ?](#sentence_transformers.models.WordWeights "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[WordWeights]][(]*[[vocab]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[word_weights]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]]*, *[[unknown_word_weight]][[:]][ ][[float]][ ][[=]][ ][[1]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\WordWeights.py#L13-L70)[ïƒ?](#sentence_transformers.models.WordWeights "Link to this definition")
 
 :   This model can weight word embeddings, for example, with idf-values.
 
@@ -415,7 +415,7 @@
 
 ## Base Modules[ïƒ?](#base-modules "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.models.]][[Module]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L21-L411)[ïƒ?](#sentence_transformers.models.Module "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[Module]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L21-L411)[ïƒ?](#sentence_transformers.models.Module "Link to this definition")
 
 :   Base class for all modules in the Sentence Transformers library.
 
@@ -463,7 +463,7 @@
 
     :   A list of keys used to save the moduleâ€™s configuration. These keys are used to save the moduleâ€™s configuration when saving the model to disk.
 
-    *[abstract][ ]*[[forward]][(]*[[features]][[:]][ ][[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L77-L102)[ïƒ?](#sentence_transformers.models.Module.forward "Link to this definition")
+    *[abstract][ ]*[[forward]][(]*[[features]][[:]][ ][[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L77-L102)[ïƒ?](#sentence_transformers.models.Module.forward "Link to this definition")
 
     :   Forward pass of the module. This method should be overridden by subclasses to implement the specific behavior of the module.
 
@@ -497,7 +497,7 @@
 
         :   dict\[str, [torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)") \| Any\]
 
-    [[get_config_dict]][(][)] [[→] [[dict][[\[]][str][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L104-L115)[ïƒ?](#sentence_transformers.models.Module.get_config_dict "Link to this definition")
+    [[get_config_dict]][(][)] [[→] [[dict][[\[]][str][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L104-L115)[ïƒ?](#sentence_transformers.models.Module.get_config_dict "Link to this definition")
 
     :   Returns a dictionary of the configuration parameters of the module.
 
@@ -511,7 +511,7 @@
 
         :   dict\[str, Any\]
 
-    *[classmethod][ ]*[[load]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[Self]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L117-L157)[ïƒ?](#sentence_transformers.models.Module.load "Link to this definition")
+    *[classmethod][ ]*[[load]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[Self]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L117-L157)[ïƒ?](#sentence_transformers.models.Module.load "Link to this definition")
 
     :   Load this module from a model checkpoint. The checkpoint can be either a local directory or a model id on Hugging Face.
 
@@ -539,7 +539,7 @@
 
         :   Self
 
-    *[classmethod][ ]*[[load_config]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[config_filename]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[dict][[\[]][str][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L159-L207)[ïƒ?](#sentence_transformers.models.Module.load_config "Link to this definition")
+    *[classmethod][ ]*[[load_config]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[config_filename]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[dict][[\[]][str][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L159-L207)[ïƒ?](#sentence_transformers.models.Module.load_config "Link to this definition")
 
     :   Load the configuration of the module from a model checkpoint. The checkpoint can be either a local directory or a model id on Hugging Face. The configuration is loaded from a JSON file, which contains the parameters used to initialize the module.
 
@@ -567,7 +567,7 @@
 
         :   dict\[str, Any\]
 
-    *[static][ ]*[[load_dir_path]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L250-L285)[ïƒ?](#sentence_transformers.models.Module.load_dir_path "Link to this definition")
+    *[static][ ]*[[load_dir_path]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L250-L285)[ïƒ?](#sentence_transformers.models.Module.load_dir_path "Link to this definition")
 
     :   A utility function to load a directory from a model checkpoint. The checkpoint can be either a local directory or a model id on Hugging Face.
 
@@ -593,7 +593,7 @@
 
         :   str
 
-    *[static][ ]*[[load_file_path]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[filename]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L209-L248)[ïƒ?](#sentence_transformers.models.Module.load_file_path "Link to this definition")
+    *[static][ ]*[[load_file_path]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[filename]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L209-L248)[ïƒ?](#sentence_transformers.models.Module.load_file_path "Link to this definition")
 
     :   A utility function to load a file from a model checkpoint. The checkpoint can be either a local directory or a model id on Hugging Face. The file is loaded from the specified subfolder within the model directory.
 
@@ -621,7 +621,7 @@
 
         :   str \| None
 
-    *[classmethod][ ]*[[load_torch_weights]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[model]][[:]][ ][[Self][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L287-L364)[ïƒ?](#sentence_transformers.models.Module.load_torch_weights "Link to this definition")
+    *[classmethod][ ]*[[load_torch_weights]][(]*[[model_name_or_path]][[:]][ ][[str]]*, *[[subfolder]][[:]][ ][[str]][ ][[=]][ ][[\'\']]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[model]][[:]][ ][[Self][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L287-L364)[ïƒ?](#sentence_transformers.models.Module.load_torch_weights "Link to this definition")
 
     :   A utility function to load the PyTorch weights of a model from a checkpoint. The checkpoint can be either a local directory or a model id on Hugging Face. The weights are loaded from either a [`model.safetensors`] file or a [`pytorch_model.bin`] file, depending on which one is available. This method either loads the weights into the model or returns the weights as a state dictionary.
 
@@ -657,7 +657,7 @@
 
         :   Self \| dict\[str, [torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")\]
 
-    *[abstract][ ]*[[save]][(]*[[output_path]][[:]][ ][[str]]*, *[[\*]][[args]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L366-L377)[ïƒ?](#sentence_transformers.models.Module.save "Link to this definition")
+    *[abstract][ ]*[[save]][(]*[[output_path]][[:]][ ][[str]]*, *[[\*]][[args]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L366-L377)[ïƒ?](#sentence_transformers.models.Module.save "Link to this definition")
 
     :   Save the module to disk. This method should be overridden by subclasses to implement the specific behavior of the module.
 
@@ -671,7 +671,7 @@
 
             - **\*\*kwargs** â€" Additional keyword arguments that can be used to pass additional information to the save method.
 
-    [[save_config]][(]*[[output_path]][[:]][ ][[str]]*, *[[filename]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L379-L394)[ïƒ?](#sentence_transformers.models.Module.save_config "Link to this definition")
+    [[save_config]][(]*[[output_path]][[:]][ ][[str]]*, *[[filename]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L379-L394)[ïƒ?](#sentence_transformers.models.Module.save_config "Link to this definition")
 
     :   Save the configuration of the module to a JSON file.
 
@@ -689,7 +689,7 @@
 
     :   Whether to save the moduleâ€™s configuration in the root directory of the model or in a subdirectory named after the module.
 
-    [[save_torch_weights]][(]*[[output_path]][[:]][ ][[str]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\Module.py#L396-L411)[ïƒ?](#sentence_transformers.models.Module.save_torch_weights "Link to this definition")
+    [[save_torch_weights]][(]*[[output_path]][[:]][ ][[str]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\Module.py#L396-L411)[ïƒ?](#sentence_transformers.models.Module.save_torch_weights "Link to this definition")
 
     :   Save the PyTorch weights of the module to disk.
 
@@ -705,7 +705,7 @@
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.models.]][[InputModule]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\InputModule.py#L13-L92)[ïƒ?](#sentence_transformers.models.InputModule "Link to this definition")
+*[class][ ]*[[sentence_transformers.models.]][[InputModule]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\InputModule.py#L13-L92)[ïƒ?](#sentence_transformers.models.InputModule "Link to this definition")
 
 :   Subclass of [[`sentence_transformers.models.Module`]](#sentence_transformers.models.Module "sentence_transformers.models.Module"), base class for all input modules in the Sentence Transformers library, i.e. modules that are used to process inputs and optionally also perform processing in the forward pass.
 
@@ -755,7 +755,7 @@
 
     :   Whether to save the moduleâ€™s configuration in the root directory of the model or in a subdirectory named after the module.
 
-    [[save_tokenizer]][(]*[[output_path]][[:]][ ][[str]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\InputModule.py#L74-L92)[ïƒ?](#sentence_transformers.models.InputModule.save_tokenizer "Link to this definition")
+    [[save_tokenizer]][(]*[[output_path]][[:]][ ][[str]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\InputModule.py#L74-L92)[ïƒ?](#sentence_transformers.models.InputModule.save_tokenizer "Link to this definition")
 
     :   Saves the tokenizer to the specified output path.
 
@@ -769,7 +769,7 @@
 
         :   None
 
-    *[abstract][ ]*[[tokenize]][(]*[[texts]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\models\InputModule.py#L60-L72)[ïƒ?](#sentence_transformers.models.InputModule.tokenize "Link to this definition")
+    *[abstract][ ]*[[tokenize]][(]*[[texts]][[:]][ ][[list][[\[]][str][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\models\InputModule.py#L60-L72)[ïƒ?](#sentence_transformers.models.InputModule.tokenize "Link to this definition")
 
     :   Tokenizes the input texts and returns a dictionary of tokenized features.
 

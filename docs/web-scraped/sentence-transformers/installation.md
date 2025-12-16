@@ -90,7 +90,7 @@ Development
 
 ## Install from Source[ïƒ?](#install-from-source "Link to this heading")
 
-You can install [`sentence-transformers`] directly from source to take advantage of the bleeding edge [`master`] branch rather than the latest stable release:
+You can install [`sentence-transformers`] directly from source to take advantage of the bleeding edge [`main`] branch rather than the latest stable release:
 
 Default
 

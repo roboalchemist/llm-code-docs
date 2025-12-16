@@ -64,6 +64,11 @@ Splade
 
 Splade models use the [[`MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer "sentence_transformers.sparse_encoder.models.MLMTransformer") followed by a [[`SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling "sentence_transformers.sparse_encoder.models.SpladePooling") modules. The former loads a pretrained [Masked Language Modeling transformer model](https://huggingface.co/models?pipeline_tag=fill-mask) (e.g. [BERT](https://huggingface.co/google-bert/bert-base-uncased), [RoBERTa](https://huggingface.co/FacebookAI/roberta-base), [DistilBERT](https://huggingface.co/distilbert/distilbert-base-uncased), [ModernBERT](https://huggingface.co/answerdotai/ModernBERT-base), etc.) and the latter pools the output of the MLMHead to produce a single sparse embedding of the size of the vocabulary.
 
+Documentation
+
+- [[`sentence_transformers.sparse_encoder.models.MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer)
+- [[`sentence_transformers.sparse_encoder.models.SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling)
+
     from sentence_transformers import models, SparseEncoder
     from sentence_transformers.sparse_encoder.models import MLMTransformer, SpladePooling
 
@@ -89,6 +94,13 @@ This architecture is the default if you provide a fill-mask model architecture t
 Inference-free Splade
 
 Inference-free Splade uses a [[`Router`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Router "sentence_transformers.models.Router") module with different modules for queries and documents. Usually for this type of architecture, the documents part is a traditional Splade architecture (a [[`MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer "sentence_transformers.sparse_encoder.models.MLMTransformer") followed by a [[`SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling "sentence_transformers.sparse_encoder.models.SpladePooling") module) and the query part is an [[`SparseStaticEmbedding`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SparseStaticEmbedding "sentence_transformers.sparse_encoder.models.SparseStaticEmbedding") module, which just returns a pre-computed score for every token in the query.
+
+Documentation
+
+- [[`sentence_transformers.models.Router`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Router)
+- [[`sentence_transformers.sparse_encoder.models.SparseStaticEmbedding`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SparseStaticEmbedding)
+- [[`sentence_transformers.sparse_encoder.models.MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer)
+- [[`sentence_transformers.sparse_encoder.models.SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling)
 
     from sentence_transformers import SparseEncoder
     from sentence_transformers.models import Router
@@ -141,6 +153,12 @@ Contrastive Sparse Representation (CSR)
 
 Contrastive Sparse Representation (CSR) models apply a [[`SparseAutoEncoder`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SparseAutoEncoder "sentence_transformers.sparse_encoder.models.SparseAutoEncoder") module on top of a dense Sentence Transformer model, which usually consist of a [[`Transformer`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Transformer "sentence_transformers.models.Transformer") followed by a [[`Pooling`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Pooling "sentence_transformers.models.Pooling") module. You can initialize one from scratch like so:
 
+Documentation
+
+- [[`sentence_transformers.models.Transformer`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Transformer)
+- [[`sentence_transformers.models.Pooling`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Pooling)
+- [[`sentence_transformers.sparse_encoder.models.SparseAutoEncoder`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SparseAutoEncoder)
+
     from sentence_transformers import models, SparseEncoder
     from sentence_transformers.sparse_encoder.models import SparseAutoEncoder
 
@@ -185,6 +203,12 @@ Data on ðŸ¤--- Hugging Face Hub
 
 If you want to load data from the [Hugging Face Datasets](https://huggingface.co/datasets), then you should use [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
 
+Documentation
+
+- [Datasets, Loading from the Hugging Face Hub](https://huggingface.co/docs/datasets/main/en/loading#hugging-face-hub)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
+
     from datasets import load_dataset
 
     train_dataset = load_dataset("sentence-transformers/all-nli", "triplet", split="train")
@@ -205,6 +229,11 @@ Local Data (CSV, JSON, Parquet, Arrow, SQL)
 
 If you have local data in common file-formats, then you can load this data easily using [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
 
+Documentation
+
+- [Datasets, Loading local files](https://huggingface.co/docs/datasets/main/en/loading#local-and-remote-files)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
     from datasets import load_dataset
 
     dataset = load_dataset("csv", data_files="my_file.csv")
@@ -218,6 +247,10 @@ or:
 Local Data that requires pre-processing
 
 If you have local data that requires some extra pre-processing, my recommendation is to initialize your dataset using [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)") and a dictionary of lists, like so:
+
+Documentation
+
+- [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)")
 
     from datasets import Dataset
 
@@ -356,6 +389,10 @@ Sometimes you donâ€™t have the required evaluation data to prepare one of t
 
 SparseNanoBEIREvaluator
 
+Documentation
+
+- [[`sentence_transformers.sparse_encoder.evaluation.SparseNanoBEIREvaluator`]](../package_reference/sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseNanoBEIREvaluator "sentence_transformers.sparse_encoder.evaluation.SparseNanoBEIREvaluator")
+
     from sentence_transformers.sparse_encoder.evaluation import SparseNanoBEIREvaluator
 
     # Initialize the evaluator. Unlike most other evaluators, this one loads the relevant datasets
@@ -365,6 +402,12 @@ SparseNanoBEIREvaluator
     # results = dev_evaluator(model)
 
 SparseEmbeddingSimilarityEvaluator with STSb
+
+Documentation
+
+- [sentence-transformers/stsb](https://huggingface.co/datasets/sentence-transformers/stsb)
+- [[`sentence_transformers.sparse_encoder.evaluation.SparseEmbeddingSimilarityEvaluator`]](../package_reference/sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseEmbeddingSimilarityEvaluator "sentence_transformers.sparse_encoder.evaluation.SparseEmbeddingSimilarityEvaluator")
+- [[`sentence_transformers.SimilarityFunction`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SimilarityFunction "sentence_transformers.SimilarityFunction")
 
     from datasets import load_dataset
     from sentence_transformers.evaluation import SimilarityFunction
@@ -385,6 +428,12 @@ SparseEmbeddingSimilarityEvaluator with STSb
     # results = dev_evaluator(model)
 
 SparseTripletEvaluator with AllNLI
+
+Documentation
+
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
+- [[`sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator`]](../package_reference/sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator "sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator")
+- [[`sentence_transformers.SimilarityFunction`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SimilarityFunction "sentence_transformers.SimilarityFunction")
 
     from datasets import load_dataset
     from sentence_transformers.evaluation import SimilarityFunction
@@ -420,6 +469,32 @@ When using [Distributed Training](../sentence_transformer/training/distributed.h
 The [[`SparseEncoderTrainer`]](../package_reference/sparse_encoder/trainer.html#sentence_transformers.sparse_encoder.SparseEncoderTrainer "sentence_transformers.sparse_encoder.trainer.SparseEncoderTrainer") is where all previous components come together. We only have to specify the trainer with the model, training arguments (optional), training dataset, evaluation dataset (optional), loss function, evaluator (optional) and we can start training. Letâ€™s have a look at a script where all of these components come together:
 
 SPLADE
+
+Documentation
+
+1.  [[`SparseEncoder`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")
+
+    1.  [[`MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer "sentence_transformers.sparse_encoder.models.MLMTransformer")
+
+    2.  [[`SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling "sentence_transformers.sparse_encoder.models.SpladePooling")
+
+2.  [[`SparseEncoderModelCardData`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData")
+
+3.  [[`load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
+4.  [[`SparseMultipleNegativesRankingLoss`]](../package_reference/sparse_encoder/losses.html#sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss "sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss")
+
+5.  [[`SparseEncoderTrainingArguments`]](../package_reference/sparse_encoder/training_args.html#sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments "sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments")
+
+6.  [[`SparseTripletEvaluator`]](../package_reference/sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator "sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator")
+
+7.  [[`SparseEncoderTrainer`]](../package_reference/sparse_encoder/trainer.html#sentence_transformers.sparse_encoder.SparseEncoderTrainer "sentence_transformers.sparse_encoder.trainer.SparseEncoderTrainer")
+
+8.  [[`SparseEncoder.save_pretrained`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained "sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained")
+
+9.  [[`SparseEncoder.push_to_hub`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub "sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub")
+
+- [Training Examples](training/examples.html)
 
     import logging
 
@@ -509,6 +584,36 @@ SPLADE
     model.push_to_hub(run_name)
 
 Inference-free SPLADE
+
+Documentation
+
+1.  [[`SparseEncoder`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")
+
+    1.  [[`SparseStaticEmbedding`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SparseStaticEmbedding "sentence_transformers.sparse_encoder.models.SparseStaticEmbedding")
+
+    2.  [[`MLMTransformer`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.MLMTransformer "sentence_transformers.sparse_encoder.models.MLMTransformer")
+
+    3.  [[`SpladePooling`]](../package_reference/sparse_encoder/models.html#sentence_transformers.sparse_encoder.models.SpladePooling "sentence_transformers.sparse_encoder.models.SpladePooling")
+
+    4.  [[`Router`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Router "sentence_transformers.models.Router")
+
+2.  [[`SparseEncoderModelCardData`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData")
+
+3.  [[`load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
+4.  [[`SparseMultipleNegativesRankingLoss`]](../package_reference/sparse_encoder/losses.html#sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss "sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss")
+
+5.  [[`SparseEncoderTrainingArguments`]](../package_reference/sparse_encoder/training_args.html#sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments "sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments")
+
+6.  [[`SparseTripletEvaluator`]](../package_reference/sparse_encoder/evaluation.html#sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator "sentence_transformers.sparse_encoder.evaluation.SparseTripletEvaluator")
+
+7.  [[`SparseEncoderTrainer`]](../package_reference/sparse_encoder/trainer.html#sentence_transformers.sparse_encoder.SparseEncoderTrainer "sentence_transformers.sparse_encoder.trainer.SparseEncoderTrainer")
+
+8.  [[`SparseEncoder.save_pretrained`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained "sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained")
+
+9.  [[`SparseEncoder.push_to_hub`]](../package_reference/sparse_encoder/SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub "sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub")
+
+- [Training Examples](training/examples.html)
 
     import logging
 

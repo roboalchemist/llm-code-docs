@@ -4,7 +4,7 @@
 
 ## SparseEncoder[ïƒ?](#id1 "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.]][[SparseEncoder]][(]*[[model_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[modules]][[:]][ ][[Iterable][[\[]][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[default_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[similarity_fn_name]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[trust_remote_code]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_card_data]][[:]][ ][[[SparseEncoderModelCardData]](#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[Literal][[\[]][[\'torch\']][[,]][ ][[\'onnx\']][[,]][ ][[\'openvino\']][[\]]]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L27-L1428)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.]][[SparseEncoder]][(]*[[model_name_or_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[modules]][[:]][ ][[Iterable][[\[]][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[default_prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[similarity_fn_name]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[cache_folder]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[trust_remote_code]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_files_only]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[token]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[config_kwargs]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_card_data]][[:]][ ][[[SparseEncoderModelCardData]](#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[backend]][[:]][ ][[Literal][[\[]][[\'torch\']][[,]][ ][[\'onnx\']][[,]][ ][[\'openvino\']][[\]]]][ ][[=]][ ][[\'torch\']]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L27-L1428)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder "Link to this definition")
 
 :   Loads or creates a SparseEncoder model that can be used to map sentences / text to sparse embeddings.
 
@@ -94,7 +94,7 @@
 
     Initializes internal Module state, shared by both nn.Module and ScriptModule.
 
-    [[active_adapters]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L107-L119)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.active_adapters "Link to this definition")
+    [[active_adapters]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L107-L119)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.active_adapters "Link to this definition")
 
     :   If you are not familiar with adapters and PEFT methods, we invite you to read more about them on the PEFT official documentation: [https://huggingface.co/docs/peft](https://huggingface.co/docs/peft)
 
@@ -102,7 +102,7 @@
 
         For previous PEFT versions (that does not support multi-adapter inference), module.active_adapter will return a single string.
 
-    [[add_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L58-L76)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.add_adapter "Link to this definition")
+    [[add_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L58-L76)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.add_adapter "Link to this definition")
 
     :   Adds a fresh new adapter to the current model for training purposes. If no adapter name is passed, a default name is assigned to the adapter to follow the convention of PEFT library (in PEFT we use â€œdefaultâ€? as the default adapter name).
 
@@ -182,7 +182,7 @@
 
         :   [Module](../sentence_transformer/models.html#sentence_transformers.models.Module "sentence_transformers.models.Module")
 
-    [[decode]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[top_k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[list][[\[]][tuple][[\[]][str][[,]][ ][float][[\]]][[\]]][ ][[\|]][ ][list][[\[]][list][[\[]][tuple][[\[]][str][[,]][ ][float][[\]]][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L1314-L1428)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.decode "Link to this definition")
+    [[decode]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[top_k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[list][[\[]][tuple][[\[]][str][[,]][ ][float][[\]]][[\]]][ ][[\|]][ ][list][[\[]][list][[\[]][tuple][[\[]][str][[,]][ ][float][[\]]][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L1314-L1428)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.decode "Link to this definition")
 
     :   Decode top K tokens and weights from a sparse embedding. If none will just return the all tokens and weights
 
@@ -200,7 +200,7 @@
 
         :   list\[tuple\[str, float\]\] \| list\[list\[tuple\[str, float\]\]\]
 
-    [[delete_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L143-L158)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.delete_adapter "Link to this definition")
+    [[delete_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L143-L158)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.delete_adapter "Link to this definition")
 
     :   If you are not familiar with adapters and PEFT methods, we invite you to read more about them on the PEFT official documentation: [https://huggingface.co/docs/peft](https://huggingface.co/docs/peft)
 
@@ -216,7 +216,7 @@
 
     :   Get torch.device from module, assuming that the whole module has one device. In case there are no PyTorch parameters, fall back to CPU.
 
-    [[disable_adapters]][(][)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L93-L98)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.disable_adapters "Link to this definition")
+    [[disable_adapters]][(][)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L93-L98)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.disable_adapters "Link to this definition")
 
     :   Disable all adapters that are attached to the model. This leads to inferring with the base model only.
 
@@ -238,11 +238,11 @@
 
         :   [Module](../sentence_transformer/models.html#sentence_transformers.models.Module "sentence_transformers.models.Module")
 
-    [[enable_adapters]][(][)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L100-L105)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.enable_adapters "Link to this definition")
+    [[enable_adapters]][(][)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L100-L105)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.enable_adapters "Link to this definition")
 
     :   Enable adapters that are attached to the model. The model will use self.active_adapter()
 
-    [[encode]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L412-L623)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode "Link to this definition")
+    [[encode]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L412-L623)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode "Link to this definition")
 
     :   Computes sparse sentence embeddings.
 
@@ -319,7 +319,7 @@
         :::
         ::::
 
-    [[encode_document]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L295-L410)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode_document "Link to this definition")
+    [[encode_document]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L295-L410)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode_document "Link to this definition")
 
     :   Computes sentence embeddings specifically optimized for document/passage representation.
 
@@ -402,7 +402,7 @@
         :::
         ::::
 
-    [[encode_query]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L181-L293)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode_query "Link to this definition")
+    [[encode_query]][(]*[[sentences]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][ndarray]]*, *[[prompt_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompt]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[convert_to_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[convert_to_sparse_tensor]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[save_to_cpu]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[device]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][ ][[\|]][ ][[device]](https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[max_active_dims]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[chunk_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]][[:]][ ][[Any]]*[)] [[→] [[list][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][ndarray][ ][[\|]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][list][[\[]][dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L181-L293)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.encode_query "Link to this definition")
 
     :   Computes sentence embeddings specifically optimized for query representation.
 
@@ -503,7 +503,7 @@
 
         :   [Module](../sentence_transformer/models.html#sentence_transformers.models.Module "sentence_transformers.models.Module")
 
-    [[evaluate]][(]*[[evaluator]][[:]][ ][[[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")]*, *[[output_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]][ ][[\|]][ ][float]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L2052-L2065)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.evaluate "Link to this definition")
+    [[evaluate]][(]*[[evaluator]][[:]][ ][[[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")]*, *[[output_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]][ ][[\|]][ ][float]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L2052-L2065)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.evaluate "Link to this definition")
 
     :   Evaluate the model based on an evaluator
 
@@ -535,7 +535,7 @@
 
         :   [Module](../sentence_transformer/models.html#sentence_transformers.models.Module "sentence_transformers.models.Module")
 
-    [[get_adapter_state_dict]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L124-L141)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_adapter_state_dict "Link to this definition")
+    [[get_adapter_state_dict]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L124-L141)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_adapter_state_dict "Link to this definition")
 
     :   If you are not familiar with adapters and PEFT methods, we invite you to read more about them on the PEFT official documentation: [https://huggingface.co/docs/peft](https://huggingface.co/docs/peft)
 
@@ -547,7 +547,7 @@
 
             - **\*\*kwargs** â€" Keyword arguments to pass to the underlying AutoModel get_adapter_state_dict function. More information can be found in the transformers documentation [https://huggingface.co/docs/transformers/main/en/main_classes/peft#transformers.integrations.PeftAdapterMixin.get_adapter_state_dict](https://huggingface.co/docs/transformers/main/en/main_classes/peft#transformers.integrations.PeftAdapterMixin.get_adapter_state_dict)
 
-    [[get_backend]][(][)] [[→] [[Literal][[\[]][[\'torch\']][[,]][ ][[\'onnx\']][[,]][ ][[\'openvino\']][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L408-L414)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_backend "Link to this definition")
+    [[get_backend]][(][)] [[→] [[Literal][[\[]][[\'torch\']][[,]][ ][[\'onnx\']][[,]][ ][[\'openvino\']][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L408-L414)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_backend "Link to this definition")
 
     :   Return the backend used for inference, which can be one of â€œtorchâ€?, â€œonnxâ€?, or â€œopenvinoâ€?.
 
@@ -559,7 +559,7 @@
 
         :   str
 
-    [[get_max_seq_length]][(][)] [[→] [[int][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L1597-L1607)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_max_seq_length "Link to this definition")
+    [[get_max_seq_length]][(][)] [[→] [[int][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L1597-L1607)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_max_seq_length "Link to this definition")
 
     :   Returns the maximal sequence length that the model accepts. Longer inputs will be truncated.
 
@@ -571,7 +571,7 @@
 
         :   Optional\[int\]
 
-    [[get_model_kwargs]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L416-L444)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_model_kwargs "Link to this definition")
+    [[get_model_kwargs]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L416-L444)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_model_kwargs "Link to this definition")
 
     :   Get the keyword arguments specific to this model for the encode, encode_query, or encode_document methods.
 
@@ -597,7 +597,7 @@
 
         :   list\[str\]
 
-    [[get_sentence_embedding_dimension]][(][)] [[→] [[int][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L824-L839)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_sentence_embedding_dimension "Link to this definition")
+    [[get_sentence_embedding_dimension]][(][)] [[→] [[int][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L824-L839)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.get_sentence_embedding_dimension "Link to this definition")
 
     :   Returns the number of dimensions in the output of [[`SparseEncoder.encode`]](#sentence_transformers.sparse_encoder.SparseEncoder.encode "sentence_transformers.sparse_encoder.SparseEncoder.encode"). We override the function without updating regarding the truncate dim as for sparse model the dimension of the output is the same, only the active dimensions number changes.
 
@@ -627,7 +627,7 @@
 
         :   [Module](../sentence_transformer/models.html#sentence_transformers.models.Module "sentence_transformers.models.Module")
 
-    [[intersection]][(]*[[embeddings_1]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[embeddings_2]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L1272-L1312)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.intersection "Link to this definition")
+    [[intersection]][(]*[[embeddings_1]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*, *[[embeddings_2]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L1272-L1312)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.intersection "Link to this definition")
 
     :   Compute the intersection of two sparse embeddings.
 
@@ -645,7 +645,7 @@
 
         :   [torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")
 
-    [[load_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L40-L56)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.load_adapter "Link to this definition")
+    [[load_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L40-L56)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.load_adapter "Link to this definition")
 
     :   Load adapter weights from file or remote Hub folder.â€? If you are not familiar with adapters and PEFT methods, we invite you to read more about them on PEFT official documentation: [https://huggingface.co/docs/peft](https://huggingface.co/docs/peft)
 
@@ -681,11 +681,11 @@
         :::
         ::::
 
-    [[model_card_data_class]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\model_card.py#L22-L131)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.model_card_data_class "Link to this definition")
+    [[model_card_data_class]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\model_card.py#L22-L131)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.model_card_data_class "Link to this definition")
 
     :   alias of [[`SparseEncoderModelCardData`]](#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData")
 
-    [[push_to_hub]][(]*[[repo_id]][[:]][ ][[str]]*, *[[token]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[private]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[commit_message]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_model_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[exist_ok]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[replace_model_card]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[train_datasets]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L912-L957)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub "Link to this definition")
+    [[push_to_hub]][(]*[[repo_id]][[:]][ ][[str]]*, *[[token]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[private]][[:]][ ][[bool][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[commit_message]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[local_model_path]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[exist_ok]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[replace_model_card]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[train_datasets]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[create_pr]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)] [[→] [[str]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L912-L957)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.push_to_hub "Link to this definition")
 
     :   Uploads all elements of this Sparse Encoder to a new HuggingFace Hub repository.
 
@@ -721,7 +721,7 @@
 
         :   str
 
-    [[save_pretrained]][(]*[[path]][[:]][ ][[str]]*, *[[model_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[create_model_card]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[train_datasets]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L876-L902)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained "Link to this definition")
+    [[save_pretrained]][(]*[[path]][[:]][ ][[str]]*, *[[model_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[create_model_card]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[train_datasets]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[safe_serialization]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L876-L902)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.save_pretrained "Link to this definition")
 
     :   Saves a model and its configuration files to a directory, so that it can be loaded with [`SparseEncoder(path)`] again.
 
@@ -737,7 +737,7 @@
 
             - **safe_serialization** (*bool,* *optional*) â€" If True, save the model using safetensors. If False, save the model the traditional (but unsafe) PyTorch way.
 
-    [[set_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\peft_mixin.py#L78-L91)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.set_adapter "Link to this definition")
+    [[set_adapter]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\peft_mixin.py#L78-L91)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.set_adapter "Link to this definition")
 
     :   Sets a specific adapter by forcing the model to use a that adapter and disable the other adapters.
 
@@ -747,7 +747,7 @@
 
             - **\*\*kwargs** â€" Keyword arguments to pass to the underlying AutoModel set_adapter function. More information can be found in the transformers documentation [https://huggingface.co/docs/transformers/main/en/main_classes/peft#transformers.integrations.PeftAdapterMixin.set_adapter](https://huggingface.co/docs/transformers/main/en/main_classes/peft#transformers.integrations.PeftAdapterMixin.set_adapter)
 
-    [[set_pooling_include_prompt]][(]*[[include_prompt]][[:]][ ][[bool]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L1558-L1574)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.set_pooling_include_prompt "Link to this definition")
+    [[set_pooling_include_prompt]][(]*[[include_prompt]][[:]][ ][[bool]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L1558-L1574)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.set_pooling_include_prompt "Link to this definition")
 
     :   Sets the include_prompt attribute in the pooling layer in the model, if there is one.
 
@@ -873,7 +873,7 @@
         :::
         ::::
 
-    [[smart_batching_collate]][(]*[[batch]][[:]][ ][[list][[\[]][InputExample][[\]]]]*[)] [[→] [[tuple][[\[]][list][[\[]][dict][[\[]][str][[,]][ ][Tensor][[\]]][[\]]][[,]][ ][Tensor][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\fit_mixin.py#L441-L463)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.smart_batching_collate "Link to this definition")
+    [[smart_batching_collate]][(]*[[batch]][[:]][ ][[list][[\[]][InputExample][[\]]]]*[)] [[→] [[tuple][[\[]][list][[\[]][dict][[\[]][str][[,]][ ][Tensor][[\]]][[\]]][[,]][ ][Tensor][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\fit_mixin.py#L441-L463)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.smart_batching_collate "Link to this definition")
 
     :   Transforms a batch from a SmartBatchingDataset to a batch of tensors for the model Here, batch is a list of InputExample instances: \[InputExample(â€¦), â€¦\]
 
@@ -885,7 +885,7 @@
 
         :   a batch of tensors for the model
 
-    *[static][ ]*[[sparsity]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\SparseEncoder.py#L1130-L1191)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.sparsity "Link to this definition")
+    *[static][ ]*[[sparsity]][(]*[[embeddings]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\SparseEncoder.py#L1130-L1191)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.sparsity "Link to this definition")
 
     :   Calculate sparsity statistics for the given embeddings, including the mean number of active dimensions and the mean sparsity ratio.
 
@@ -927,7 +927,7 @@
 
         :   Optional\[int\]
 
-    [[start_multi_process_pool]][(]*[[target_devices]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L1304-L1351)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.start_multi_process_pool "Link to this definition")
+    [[start_multi_process_pool]][(]*[[target_devices]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L1304-L1351)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.start_multi_process_pool "Link to this definition")
 
     :   Starts a multi-process pool to process the encoding with several independent processes via [[`SentenceTransformer.encode_multi_process`]](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer.encode_multi_process "sentence_transformers.SentenceTransformer.encode_multi_process").
 
@@ -945,7 +945,7 @@
 
         :   Dict\[str, Any\]
 
-    *[static][ ]*[[stop_multi_process_pool]][(]*[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L1353-L1372)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.stop_multi_process_pool "Link to this definition")
+    *[static][ ]*[[stop_multi_process_pool]][(]*[[pool]][[:]][ ][[dict][[\[]][Literal][[\[]][[\'input\']][[,]][ ][[\'output\']][[,]][ ][[\'processes\']][[\]]][[,]][ ][Any][[\]]]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L1353-L1372)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.stop_multi_process_pool "Link to this definition")
 
     :   Stops all processes started with start_multi_process_pool.
 
@@ -1051,7 +1051,7 @@
         :::
         ::::
 
-    [[tokenize]][(]*[[texts]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][list][[\[]][dict][[\]]][ ][[\|]][ ][list][[\[]][tuple][[\[]][str][[,]][ ][str][[\]]][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\SentenceTransformer.py#L1609-L1623)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.tokenize "Link to this definition")
+    [[tokenize]][(]*[[texts]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][list][[\[]][dict][[\]]][ ][[\|]][ ][list][[\[]][tuple][[\[]][str][[,]][ ][str][[\]]][[\]]]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\SentenceTransformer.py#L1609-L1623)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoder.tokenize "Link to this definition")
 
     :   Tokenizes the texts.
 
@@ -1122,7 +1122,7 @@
 
 ## SparseEncoderModelCardData[ïƒ?](#sparseencodermodelcarddata "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.sparse_encoder.model_card.]][[SparseEncoderModelCardData]][(]*[[language:] [str] [\|] [list\[str\]] [\|] [None] [=] [\<factory\>]]*, *[[license:] [str] [\|] [None] [=] [None]]*, *[[model_name:] [str] [\|] [None] [=] [None]]*, *[[model_id:] [str] [\|] [None] [=] [None]]*, *[[train_datasets:] [list\[dict\[str]]*, *[[str\]\]] [=] [\<factory\>]]*, *[[eval_datasets:] [list\[dict\[str]]*, *[[str\]\]] [=] [\<factory\>]]*, *[[task_name:] [str] [\|] [None] [=] [None]]*, *[[tags:] [list\[str\]] [\|] [None] [=] [\<factory\>]]*, *[[local_files_only:] [bool] [=] [False]]*, *[[generate_widget_examples:] [bool] [=] [True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\sparse_encoder\model_card.py#L22-L131)[ïƒ?](#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.model_card.]][[SparseEncoderModelCardData]][(]*[[language:] [str] [\|] [list\[str\]] [\|] [None] [=] [\<factory\>]]*, *[[license:] [str] [\|] [None] [=] [None]]*, *[[model_name:] [str] [\|] [None] [=] [None]]*, *[[model_id:] [str] [\|] [None] [=] [None]]*, *[[train_datasets:] [list\[dict\[str]]*, *[[str\]\]] [=] [\<factory\>]]*, *[[eval_datasets:] [list\[dict\[str]]*, *[[str\]\]] [=] [\<factory\>]]*, *[[task_name:] [str] [\|] [None] [=] [None]]*, *[[tags:] [list\[str\]] [\|] [None] [=] [\<factory\>]]*, *[[local_files_only:] [bool] [=] [False]]*, *[[generate_widget_examples:] [bool] [=] [True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\model_card.py#L22-L131)[ïƒ?](#sentence_transformers.sparse_encoder.model_card.SparseEncoderModelCardData "Link to this definition")
 
 :   A dataclass storing data used in the model card.
 
@@ -1181,7 +1181,7 @@
 
 ## SimilarityFunction[ïƒ?](#similarityfunction "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.]][[SimilarityFunction]][(]*[[value]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\similarity_functions.py#L21-L129)[ïƒ?](#sentence_transformers.SimilarityFunction "Link to this definition")
+*[class][ ]*[[sentence_transformers.]][[SimilarityFunction]][(]*[[value]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\similarity_functions.py#L21-L129)[ïƒ?](#sentence_transformers.SimilarityFunction "Link to this definition")
 
 :   Enum class for supported similarity functions. The following functions are supported:
 
@@ -1193,7 +1193,7 @@
 
     - [`SimilarityFunction.MANHATTAN`] ([`"manhattan"`]): Manhattan distance
 
-    *[static][ ]*[[possible_values]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\similarity_functions.py#L116-L129)[ïƒ?](#sentence_transformers.SimilarityFunction.possible_values "Link to this definition")
+    *[static][ ]*[[possible_values]][(][)] [[→] [[list][[\[]][str][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\similarity_functions.py#L116-L129)[ïƒ?](#sentence_transformers.SimilarityFunction.possible_values "Link to this definition")
 
     :   Returns a list of possible values for the SimilarityFunction enum.
 
@@ -1215,7 +1215,7 @@
         :::
         ::::
 
-    *[static][ ]*[[to_similarity_fn]][(]*[[similarity_function]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")]*[)] [[→] [[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\similarity_functions.py#L37-L73)[ïƒ?](#sentence_transformers.SimilarityFunction.to_similarity_fn "Link to this definition")
+    *[static][ ]*[[to_similarity_fn]][(]*[[similarity_function]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")]*[)] [[→] [[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\similarity_functions.py#L37-L73)[ïƒ?](#sentence_transformers.SimilarityFunction.to_similarity_fn "Link to this definition")
 
     :   Converts a similarity function name or enum value to the corresponding similarity function.
 
@@ -1247,7 +1247,7 @@
         :::
         ::::
 
-    *[static][ ]*[[to_similarity_pairwise_fn]][(]*[[similarity_function]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")]*[)] [[→] [[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\similarity_functions.py#L75-L114)[ïƒ?](#sentence_transformers.SimilarityFunction.to_similarity_pairwise_fn "Link to this definition")
+    *[static][ ]*[[to_similarity_pairwise_fn]][(]*[[similarity_function]][[:]][ ][[str][ ][[\|]][ ][[SimilarityFunction]](#sentence_transformers.SimilarityFunction "sentence_transformers.similarity_functions.SimilarityFunction")]*[)] [[→] [[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][ndarray][[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\similarity_functions.py#L75-L114)[ïƒ?](#sentence_transformers.SimilarityFunction.to_similarity_pairwise_fn "Link to this definition")
 
     :   Converts a similarity function into a pairwise similarity function.
 

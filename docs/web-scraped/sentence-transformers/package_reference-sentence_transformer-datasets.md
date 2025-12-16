@@ -16,7 +16,7 @@ The [`sentence_transformers.datasets`] classes have been deprecated, and only ex
 
 [`ParallelSentencesDataset`] is used for multilingual training. For details, see [[multilingual training]](../../../examples/sentence_transformer/training/multilingual/README.html).
 
-*[class][ ]*[[sentence_transformers.datasets.]][[ParallelSentencesDataset]][(]*[[student_model]][[:]][ ][[[SentenceTransformer]](SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[teacher_model]][[:]][ ][[[SentenceTransformer]](SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[8]]*, *[[use_embedding_cache]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\datasets\ParallelSentencesDataset.py#L25-L204)[ïƒ?](#sentence_transformers.datasets.ParallelSentencesDataset "Link to this definition")
+*[class][ ]*[[sentence_transformers.datasets.]][[ParallelSentencesDataset]][(]*[[student_model]][[:]][ ][[[SentenceTransformer]](SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[teacher_model]][[:]][ ][[[SentenceTransformer]](SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[batch_size]][[:]][ ][[int]][ ][[=]][ ][[8]]*, *[[use_embedding_cache]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\datasets\ParallelSentencesDataset.py#L25-L204)[ïƒ?](#sentence_transformers.datasets.ParallelSentencesDataset "Link to this definition")
 
 :   This dataset reader can be used to read-in parallel sentences, i.e., it reads in a file with tab-seperated sentences with the same sentence in different languages. For example, the file can look like this (EN DE ES): hello world hallo welt hola mundo second sentence zweiter satz segunda oraciÃ³n
 
@@ -42,7 +42,7 @@ The [`sentence_transformers.datasets`] classes have been deprecated, and only ex
 
 [`SentenceLabelDataset`] can be used if you have labeled sentences and want to train with triplet loss.
 
-*[class][ ]*[[sentence_transformers.datasets.]][[SentenceLabelDataset]][(]*[[examples]][[:]][ ][[list][[\[]][InputExample][[\]]]]*, *[[samples_per_label]][[:]][ ][[int]][ ][[=]][ ][[2]]*, *[[with_replacement]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\datasets\SentenceLabelDataset.py#L23-L111)[ïƒ?](#sentence_transformers.datasets.SentenceLabelDataset "Link to this definition")
+*[class][ ]*[[sentence_transformers.datasets.]][[SentenceLabelDataset]][(]*[[examples]][[:]][ ][[list][[\[]][InputExample][[\]]]]*, *[[samples_per_label]][[:]][ ][[int]][ ][[=]][ ][[2]]*, *[[with_replacement]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\datasets\SentenceLabelDataset.py#L23-L111)[ïƒ?](#sentence_transformers.datasets.SentenceLabelDataset "Link to this definition")
 
 :   This dataset can be used for some specific Triplet Losses like BATCH_HARD_TRIPLET_LOSS which requires multiple examples with the same label in a batch.
 
@@ -66,7 +66,7 @@ The [`sentence_transformers.datasets`] classes have been deprecated, and only ex
 
 [`DenoisingAutoEncoderDataset`] is used for unsupervised training with the TSDAE method.
 
-*[class][ ]*[[sentence_transformers.datasets.]][[DenoisingAutoEncoderDataset]][(]*[sentences:] [list\[str\],] [noise_fn=\<function] [DenoisingAutoEncoderDataset.\<lambda\>\>]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\datasets\DenoisingAutoEncoderDataset.py#L21-L62)[ïƒ?](#sentence_transformers.datasets.DenoisingAutoEncoderDataset "Link to this definition")
+*[class][ ]*[[sentence_transformers.datasets.]][[DenoisingAutoEncoderDataset]][(]*[sentences:] [list\[str\],] [noise_fn=\<function] [DenoisingAutoEncoderDataset.\<lambda\>\>]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\datasets\DenoisingAutoEncoderDataset.py#L21-L62)[ïƒ?](#sentence_transformers.datasets.DenoisingAutoEncoderDataset "Link to this definition")
 
 :   The DenoisingAutoEncoderDataset returns InputExamples in the format: texts=\[noise_fn(sentence), sentence\] It is used in combination with the DenoisingAutoEncoderLoss: Here, a decoder tries to re-construct the sentence without noise.
 
@@ -80,6 +80,6 @@ The [`sentence_transformers.datasets`] classes have been deprecated, and only ex
 
 [`NoDuplicatesDataLoader`]can be used together with MultipleNegativeRankingLoss to ensure that no duplicates are within the same batch.
 
-*[class][ ]*[[sentence_transformers.datasets.]][[NoDuplicatesDataLoader]][(]*[[train_examples]]*, *[[batch_size]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\datasets\NoDuplicatesDataLoader.py#L17-L60)[ïƒ?](#sentence_transformers.datasets.NoDuplicatesDataLoader "Link to this definition")
+*[class][ ]*[[sentence_transformers.datasets.]][[NoDuplicatesDataLoader]][(]*[[train_examples]]*, *[[batch_size]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\datasets\NoDuplicatesDataLoader.py#L17-L60)[ïƒ?](#sentence_transformers.datasets.NoDuplicatesDataLoader "Link to this definition")
 
 :   A special data loader to be used with MultipleNegativesRankingLoss. The data loader ensures that there are no duplicate sentences within the same batch

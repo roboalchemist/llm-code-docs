@@ -1,12 +1,12 @@
-# Source: https://www.sbert.net/docs/package_reference/cross_encoder/trainer.html
+# Source: https://www.sbert.net/docs/package_reference/sparse_encoder/trainer.html
 
 # Trainer[ïƒ?](#trainer "Link to this heading")
 
-## CrossEncoderTrainer[ïƒ?](#crossencodertrainer "Link to this heading")
+## SparseEncoderTrainer[ïƒ?](#sparseencodertrainer "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.trainer.]][[CrossEncoderTrainer]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[args]][[:]][ ][[[CrossEncoderTrainingArguments]](training_args.html#sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments "sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[train_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][Callable][[\[]][[\[]][[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")[[\]]][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Callable][[\[]][[\[]][[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")[[\]]][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[evaluator]][[:]][ ][[[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")[ ][[\|]][ ][list][[\[]][[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[data_collator]][[:]][ ][[DataCollator][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer]][[:]][ ][[PreTrainedTokenizerBase][ ][[\|]][ ][Callable][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_init]][[:]][ ][[Callable][[\[]][[\[]][[\]]][[,]][ ][[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[compute_metrics]][[:]][ ][[Callable][[\[]][[\[]][EvalPrediction][[\]]][[,]][ ][dict][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[callbacks]][[:]][ ][[list][[\[]][TrainerCallback][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[optimizers]][[:]][ ][[tuple][[\[]][[Optimizer]](https://docs.pytorch.org/docs/stable/optim.html#torch.optim.Optimizer "(in PyTorch v2.9)")[[,]][ ][[LambdaLR]](https://docs.pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.LambdaLR.html#torch.optim.lr_scheduler.LambdaLR "(in PyTorch v2.9)")[[\]]]][ ][[=]][ ][[(None,] [None)]]*, *[[preprocess_logits_for_metrics]][[:]][ ][[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\trainer.py#L32-L348)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer "Link to this definition")
+*[class][ ]*[[sentence_transformers.sparse_encoder.]][[SparseEncoderTrainer]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[args]][[:]][ ][[[SparseEncoderTrainingArguments]](training_args.html#sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments "sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[train_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[loss]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][dict][[\[]][str][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][Callable][[\[]][[\[]][[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")[[\]]][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Callable][[\[]][[\[]][[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")[[\]]][[,]][ ][[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[evaluator]][[:]][ ][[[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")[ ][[\|]][ ][list][[\[]][[SentenceEvaluator]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator.SentenceEvaluator")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[data_collator]][[:]][ ][[SparseEncoderDataCollator][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tokenizer]][[:]][ ][[PreTrainedTokenizerBase][ ][[\|]][ ][Callable][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_init]][[:]][ ][[Callable][[\[]][[\[]][[\]]][[,]][ ][[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[compute_metrics]][[:]][ ][[Callable][[\[]][[\[]][EvalPrediction][[\]]][[,]][ ][dict][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[callbacks]][[:]][ ][[list][[\[]][TrainerCallback][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[optimizers]][[:]][ ][[tuple][[\[]][[Optimizer]](https://docs.pytorch.org/docs/stable/optim.html#torch.optim.Optimizer "(in PyTorch v2.9)")[[,]][ ][[LambdaLR]](https://docs.pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.LambdaLR.html#torch.optim.lr_scheduler.LambdaLR "(in PyTorch v2.9)")[[\]]]][ ][[=]][ ][[(None,] [None)]]*, *[[preprocess_logits_for_metrics]][[:]][ ][[Callable][[\[]][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\trainer.py#L32-L415)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer "Link to this definition")
 
-:   CrossEncoderTrainer is a simple but feature-complete training and eval loop for PyTorch based on the ðŸ¤--- Transformers [[`Trainer`]](https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer "(in transformers vmain)").
+:   SparseEncoderTrainer is a simple but feature-complete training and eval loop for PyTorch based on the SentenceTransformerTrainer that based on ðŸ¤--- Transformers [[`Trainer`]](https://huggingface.co/docs/transformers/main/en/main_classes/trainer#transformers.Trainer "(in transformers vmain)").
 
     This trainer integrates support for various [[`transformers.TrainerCallback`]](https://huggingface.co/docs/transformers/main/en/main_classes/callback#transformers.TrainerCallback "(in transformers vmain)") subclasses, such as:
 
@@ -24,9 +24,9 @@
 
     Parameters[:]
 
-    :   - **model** ([[`SentenceTransformer`]](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer"), *optional*) â€" The model to train, evaluate or use for predictions. If not provided, a model_init must be passed.
+    :   - **model** ([`SparseEncoder`], *optional*) â€" The model to train, evaluate or use for predictions. If not provided, a model_init must be passed.
 
-        - **args** ([[`SentenceTransformerTrainingArguments`]](../sentence_transformer/training_args.html#sentence_transformers.training_args.SentenceTransformerTrainingArguments "sentence_transformers.training_args.SentenceTransformerTrainingArguments"), *optional*) â€" The arguments to tweak for training. Will default to a basic instance of [[`SentenceTransformerTrainingArguments`]](../sentence_transformer/training_args.html#sentence_transformers.training_args.SentenceTransformerTrainingArguments "sentence_transformers.training_args.SentenceTransformerTrainingArguments") with the output_dir set to a directory named *tmp_trainer* in the current directory if not provided.
+        - **args** ([[`SparseEncoderTrainingArguments`]](training_args.html#sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments "sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments"), *optional*) â€" The arguments to tweak for training. Will default to a basic instance of [[`SparseEncoderTrainingArguments`]](training_args.html#sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments "sentence_transformers.sparse_encoder.training_args.SparseEncoderTrainingArguments") with the output_dir set to a directory named *tmp_trainer* in the current directory if not provided.
 
         - **train_dataset** (Union\[[[`datasets.Dataset`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset "(in datasets vmain)"), [[`datasets.DatasetDict`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.DatasetDict "(in datasets vmain)"), [[`datasets.IterableDataset`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.IterableDataset "(in datasets vmain)"), Dict\[str, [[`datasets.Dataset`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset "(in datasets vmain)")\]\], *optional*) â€" The dataset to use for training. Must have a format accepted by your loss function, see [Training Overview \> Dataset Format](../../../docs/sentence_transformer/training_overview.html#dataset-format).
 
@@ -34,7 +34,7 @@
 
           The dataset to use for evaluation. Must have a format accepted by your loss function, see [Training Overview \> Dataset Format](../../../docs/sentence_transformer/training_overview.html#dataset-format).
 
-        - **loss** (Optional\[Union\[[[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)"), Dict\[str, [[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")\], Callable\[\[[[`SentenceTransformer`]](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")\], [[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")\], Dict\[str, Callable\[\[[[`SentenceTransformer`]](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")\]\]\]\], *optional*) â€" The loss function to use for training. Can either be a loss class instance, a dictionary mapping dataset names to loss class instances, a function that returns a loss class instance given a model, or a dictionary mapping dataset names to functions that return a loss class instance given a model. In practice, the latter two are primarily used for hyper-parameter optimization. Will default to [[`CoSENTLoss`]](../sentence_transformer/losses.html#sentence_transformers.losses.CoSENTLoss "sentence_transformers.losses.CoSENTLoss") if no [`loss`] is provided.
+        - **loss** (Optional\[Union\[[[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)"), Dict\[str, [[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")\], Callable\[\[[`SparseEncoder`]\], [[`torch.nn.Module`]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")\], Dict\[str, Callable\[\[[`SparseEncoder`]\]\]\]\], *optional*) â€" The loss function to use for training. Can either be a loss class instance, a dictionary mapping dataset names to loss class instances, a function that returns a loss class instance given a model, or a dictionary mapping dataset names to functions that return a loss class instance given a model. In practice, the latter two are primarily used for hyper-parameter optimization. Will default to [[`SparseMultipleNegativesRankingLoss`]](losses.html#sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss "sentence_transformers.sparse_encoder.losses.SparseMultipleNegativesRankingLoss") if no [`loss`] is provided.
 
         - **evaluator** (Union\[[[`SentenceEvaluator`]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator"), List\[[[`SentenceEvaluator`]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SentenceEvaluator "sentence_transformers.evaluation.SentenceEvaluator")\]\], *optional*) â€" The evaluator instance for useful evaluation metrics during training. You can use an [`evaluator`] with or without an [`eval_dataset`], and vice versa. Generally, the metrics that an [`evaluator`] returns are more useful than the loss value returned from the [`eval_dataset`]. A list of evaluators will be wrapped in a [[`SequentialEvaluator`]](../sentence_transformer/evaluation.html#sentence_transformers.evaluation.SequentialEvaluator "sentence_transformers.evaluation.SequentialEvaluator") to run them sequentially.
 
@@ -60,7 +60,7 @@
     > - **is_in_train** â€" Whether or not a model is currently running train (e.g. when evaluate is called while in train)
     > :::
 
-    [[add_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.add_callback "Link to this definition")
+    [[add_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.add_callback "Link to this definition")
 
     :   Add a callback to the current list of \[\~transformers.TrainerCallback\].
 
@@ -68,7 +68,7 @@
 
         :   **callback** (type or \[\~transformers.TrainerCallback\]) â€" A \[\~transformers.TrainerCallback\] class or an instance of a \[\~transformers.TrainerCallback\]. In the first case, will instantiate a member of that class.
 
-    *[static][ ]*[[add_dataset_name_transform]][(]*[[batch]][[:]][ ][[dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[transform]][[:]][ ][[Callable][[\[]][[\[]][dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]][[\]]][[,]][ ][dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L1165-L1197)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.add_dataset_name_transform "Link to this definition")
+    *[static][ ]*[[add_dataset_name_transform]][(]*[[batch]][[:]][ ][[dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[transform]][[:]][ ][[Callable][[\[]][[\[]][dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]][[\]]][[,]][ ][dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[dict][[\[]][str][[,]][ ][list][[\[]][Any][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L1165-L1197)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.add_dataset_name_transform "Link to this definition")
 
     :   A transform/map function that adds prompts or dataset names to the batch.
 
@@ -88,31 +88,25 @@
 
         :   dict\[str, list\[Any\]\]
 
-    [[add_model_card_callback]][(]*[[default_args_dict]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\trainer.py#L285-L303)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.add_model_card_callback "Link to this definition")
+    [[add_model_card_callback]][(]*[[default_args_dict]][[:]][ ][[dict][[\[]][str][[,]][ ][Any][[\]]]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\trainer.py#L313-L327)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.add_model_card_callback "Link to this definition")
 
     :   Add a callback responsible for automatically tracking data required for the automatic model card generation
 
-        This method is called in the [`__init__`] method of the [[`SentenceTransformerTrainer`]](../sentence_transformer/trainer.html#sentence_transformers.trainer.SentenceTransformerTrainer "sentence_transformers.trainer.SentenceTransformerTrainer") class.
+        This method is called in the [`__init__`] method of the [[`SparseEncoderTrainer`]](#sentence_transformers.sparse_encoder.SparseEncoderTrainer "sentence_transformers.sparse_encoder.trainer.SparseEncoderTrainer") class.
 
         Parameters[:]
 
         :   **default_args_dict** (*Dict\[str,* *Any\]*) â€" A dictionary of the default training arguments, so we can determine which arguments have been changed for the model card.
 
-        ::: 
-        Note
+    [[compute_loss]][(]*[[model]][[:]][ ][[[SparseEncoder]](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder.SparseEncoder")]*, *[[inputs]][[:]][ ][[dict][[\[]][str][[,]][ ][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]*, *[[return_outputs]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[num_items_in_batch]][[=]][[None]]*[)] [[→] [[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][tuple][[\[]][[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[,]][ ][dict][[\[]][str][[,]][ ][Any][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\sparse_encoder\trainer.py#L376-L403)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.compute_loss "Link to this definition")
 
-        This method can be overridden by subclassing the trainer to remove/customize this callback in custom uses cases
-        :::
+    :   Computes the loss for the SparseEncoder model.
 
-    [[compute_loss]][(]*[[model]][[:]][ ][[[SentenceTransformer]](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")]*, *[[inputs]][[:]][ ][[dict][[\[]][str][[,]][ ][[torch.Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][Any][[\]]]]*, *[[return_outputs]][[:]][ ][[bool]][ ][[=]][ ][[False]]*, *[[num_items_in_batch]][[=]][[None]]*[)] [[→] [[[torch.Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][tuple][[\[]][[torch.Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[[,]][ ][dict][[\[]][str][[,]][ ][Any][[\]]][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L394-L444)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.compute_loss "Link to this definition")
-
-    :   Computes the loss for the SentenceTransformer model.
-
-        It uses [`self.loss`] to compute the loss, which can be a single loss function or a dictionary of loss functions for different datasets. If the loss is a dictionary, the dataset name is expected to be passed in the inputs under the key â€œdataset_nameâ€?. This is done automatically in the [`add_dataset_name_column`] method. Note that even if [`return_outputs`]` `[`=`]` `[`True`], the outputs will be empty, as the SentenceTransformers losses do not return outputs.
+        It uses [`self.loss`] to compute the loss, which can be a single loss function or a dictionary of loss functions for different datasets. If the loss is a dictionary, the dataset name is expected to be passed in the inputs under the key â€œdataset_nameâ€?. This is done automatically in the [`add_dataset_name_column`] method. Note that even if [`return_outputs`]` `[`=`]` `[`True`], the outputs will be empty, as the SparseEncoder losses do not return outputs.
 
         Parameters[:]
 
-        :   - **model** ([*SentenceTransformer*](../sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")) â€" The SentenceTransformer model.
+        :   - **model** ([*SparseEncoder*](SparseEncoder.html#sentence_transformers.sparse_encoder.SparseEncoder "sentence_transformers.sparse_encoder.SparseEncoder")) â€" The SparseEncoder model.
 
             - **inputs** (*Dict\[str,* *Union\[*[*torch.Tensor*](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")*,* *Any\]\]*) â€" The input data for the model.
 
@@ -128,7 +122,7 @@
 
         :   Union\[[torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)"), Tuple\[[torch.Tensor](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)"), Dict\[str, Any\]\]\]
 
-    [[create_model_card]][(]*[[language]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[license]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tags]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[finetuned_from]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tasks]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_tags]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_args]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L1199-L1222)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.create_model_card "Link to this definition")
+    [[create_model_card]][(]*[[language]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[license]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tags]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[model_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[finetuned_from]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[tasks]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_tags]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_args]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L1199-L1222)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.create_model_card "Link to this definition")
 
     :   Creates a draft of a model card using the information available to the Trainer.
 
@@ -152,19 +146,19 @@
 
             - **dataset_args** (str or List\[str\], *optional*) â€" One or several dataset arguments, to be included in the metadata of the model card.
 
-    [[create_optimizer]][(][)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.create_optimizer "Link to this definition")
+    [[create_optimizer]][(][)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.create_optimizer "Link to this definition")
 
     :   Setup the optimizer.
 
         We provide a reasonable default that works well. If you want to use something else, you can pass a tuple in the Trainerâ€™s init through optimizers, or subclass and override this method in a subclass.
 
-    [[create_optimizer_and_scheduler]][(]*[[num_training_steps]][[:]][ ][[int]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.create_optimizer_and_scheduler "Link to this definition")
+    [[create_optimizer_and_scheduler]][(]*[[num_training_steps]][[:]][ ][[int]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.create_optimizer_and_scheduler "Link to this definition")
 
     :   Setup the optimizer and the learning rate scheduler.
 
         We provide a reasonable default that works well. If you want to use something else, you can pass a tuple in the Trainerâ€™s init through optimizers, or subclass and override this method (or create_optimizer and/or create_scheduler) in a subclass.
 
-    [[create_scheduler]][(]*[[num_training_steps]][[:]][ ][[int]]*, *[[optimizer]][[:]][ ][[[Optimizer]](https://docs.pytorch.org/docs/stable/optim.html#torch.optim.Optimizer "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.create_scheduler "Link to this definition")
+    [[create_scheduler]][(]*[[num_training_steps]][[:]][ ][[int]]*, *[[optimizer]][[:]][ ][[[Optimizer]](https://docs.pytorch.org/docs/stable/optim.html#torch.optim.Optimizer "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.create_scheduler "Link to this definition")
 
     :   Setup the scheduler. The optimizer of the trainer must have been set up either before this method is called or passed as an argument.
 
@@ -172,7 +166,7 @@
 
         :   **num_training_steps** (*int*) â€" The number of training steps to do.
 
-    [[evaluate]][(]*[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[ignore_keys]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[metric_key_prefix]][[:]][ ][[str]][ ][[=]][ ][[\'eval\']]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L534-L546)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.evaluate "Link to this definition")
+    [[evaluate]][(]*[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Dataset][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[ignore_keys]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[metric_key_prefix]][[:]][ ][[str]][ ][[=]][ ][[\'eval\']]*[)] [[→] [[dict][[\[]][str][[,]][ ][float][[\]]]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L534-L546)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.evaluate "Link to this definition")
 
     :   Run evaluation and returns metrics.
 
@@ -200,7 +194,7 @@
 
         :   A dictionary containing the evaluation loss and the potential metrics computed from the predictions. The dictionary also contains the epoch number which comes from the training state.
 
-    [[get_batch_sampler]][(]*[[dataset]][[:]][ ][[Dataset]]*, *[[batch_size]][[:]][ ][[int]]*, *[[drop_last]][[:]][ ][[bool]]*, *[[valid_label_columns]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[generator]][[:]][ ][[[Generator]](https://docs.pytorch.org/docs/stable/generated/torch.Generator.html#torch.Generator "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[seed]][[:]][ ][[int]][ ][[=]][ ][[0]]*[)] [[→] [[[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")[ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L626-L686)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_batch_sampler "Link to this definition")
+    [[get_batch_sampler]][(]*[[dataset]][[:]][ ][[Dataset]]*, *[[batch_size]][[:]][ ][[int]]*, *[[drop_last]][[:]][ ][[bool]]*, *[[valid_label_columns]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[generator]][[:]][ ][[[Generator]](https://docs.pytorch.org/docs/stable/generated/torch.Generator.html#torch.Generator "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[seed]][[:]][ ][[int]][ ][[=]][ ][[0]]*[)] [[→] [[[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")[ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L626-L686)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_batch_sampler "Link to this definition")
 
     :   Returns the appropriate batch sampler based on the [`batch_sampler`] argument in [`self.args`]. This batch sampler class supports [`__len__`] and [`__iter__`] methods, and is used as the [`batch_sampler`] to create the [[`torch.utils.data.DataLoader`]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)").
 
@@ -224,7 +218,7 @@
 
             - **seed** (*int*) â€" Seed for the random number generator to ensure reproducibility. Defaults to 0.
 
-    [[get_eval_dataloader]][(]*[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][IterableDataset][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L822-L912)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_eval_dataloader "Link to this definition")
+    [[get_eval_dataloader]][(]*[[eval_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][IterableDataset][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L822-L912)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_eval_dataloader "Link to this definition")
 
     :   Returns the evaluation \[\~torch.utils.data.DataLoader\].
 
@@ -234,11 +228,11 @@
 
         :   **eval_dataset** (torch.utils.data.Dataset, *optional*) â€" If provided, will override self.eval_dataset. If it is a \[\~datasets.Dataset\], columns not accepted by the model.forward() method are automatically removed. It must implement \_\_len\_\_.
 
-    [[get_learning_rates]][(][)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_learning_rates "Link to this definition")
+    [[get_learning_rates]][(][)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_learning_rates "Link to this definition")
 
     :   Returns the learning rate of each parameter from self.optimizer.
 
-    [[get_multi_dataset_batch_sampler]][(]*[[dataset]][[:]][ ][[[ConcatDataset]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.ConcatDataset "(in PyTorch v2.9)")]*, *[[batch_samplers]][[:]][ ][[list][[\[]][[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")[[\]]]]*, *[[generator]][[:]][ ][[[Generator]](https://docs.pytorch.org/docs/stable/generated/torch.Generator.html#torch.Generator "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[seed]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[0]]*[)] [[→] [[[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L688-L730)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_multi_dataset_batch_sampler "Link to this definition")
+    [[get_multi_dataset_batch_sampler]][(]*[[dataset]][[:]][ ][[[ConcatDataset]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.ConcatDataset "(in PyTorch v2.9)")]*, *[[batch_samplers]][[:]][ ][[list][[\[]][[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")[[\]]]]*, *[[generator]][[:]][ ][[[Generator]](https://docs.pytorch.org/docs/stable/generated/torch.Generator.html#torch.Generator "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[seed]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[0]]*[)] [[→] [[[BatchSampler]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.BatchSampler "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L688-L730)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_multi_dataset_batch_sampler "Link to this definition")
 
     :   Returns the appropriate multi-dataset batch sampler based on the [`multi_dataset_batch_sampler`] argument in [`self.args`]. This batch sampler class supports [`__len__`] and [`__iter__`] methods, and is used as the [`batch_sampler`] to create the [[`torch.utils.data.DataLoader`]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)").
 
@@ -258,11 +252,11 @@
 
             - **seed** (*int,* *optional*) â€" Optional seed for the random number generator
 
-    [[get_num_trainable_parameters]][(][)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_num_trainable_parameters "Link to this definition")
+    [[get_num_trainable_parameters]][(][)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_num_trainable_parameters "Link to this definition")
 
     :   Get the number of trainable parameters.
 
-    [[get_optimizer_group]][(]*[[param]][[:]][ ][[str][ ][[\|]][ ][[Parameter]](https://docs.pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_optimizer_group "Link to this definition")
+    [[get_optimizer_group]][(]*[[param]][[:]][ ][[str][ ][[\|]][ ][[Parameter]](https://docs.pytorch.org/docs/stable/generated/torch.nn.parameter.Parameter.html#torch.nn.parameter.Parameter "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_optimizer_group "Link to this definition")
 
     :   Returns optimizer group for a parameter if given, else returns all optimizer groups for params.
 
@@ -270,7 +264,7 @@
 
         :   **param** (str or torch.nn.parameter.Parameter, *optional*) â€" The parameter for which optimizer group needs to be returned.
 
-    [[get_test_dataloader]][(]*[[test_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][IterableDataset]]*[)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L914-L998)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_test_dataloader "Link to this definition")
+    [[get_test_dataloader]][(]*[[test_dataset]][[:]][ ][[Dataset][ ][[\|]][ ][DatasetDict][ ][[\|]][ ][IterableDataset]]*[)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L914-L998)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_test_dataloader "Link to this definition")
 
     :   Returns the training \[\~torch.utils.data.DataLoader\].
 
@@ -280,7 +274,7 @@
 
         :   **test_dataset** (torch.utils.data.Dataset, *optional*) â€" The test dataset to use. If it is a \[\~datasets.Dataset\], columns not accepted by the model.forward() method are automatically removed. It must implement \_\_len\_\_.
 
-    [[get_train_dataloader]][(][)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L732-L820)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.get_train_dataloader "Link to this definition")
+    [[get_train_dataloader]][(][)] [[→] [[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L732-L820)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.get_train_dataloader "Link to this definition")
 
     :   Returns the training \[\~torch.utils.data.DataLoader\].
 
@@ -288,7 +282,7 @@
 
         Subclass and override this method if you want to inject some custom behavior.
 
-    [[hyperparameter_search]][(]*[[hp_space]][[:]][ ][[Callable][[\[]][[\[]][optuna.Trial][[\]]][[,]][ ][dict][[\[]][str][[,]][ ][float][[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[compute_objective]][[:]][ ][[Callable][[\[]][[\[]][dict][[\[]][str][[,]][ ][float][[\]]][[\]]][[,]][ ][float][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[n_trials]][[:]][ ][[int]][ ][[=]][ ][[20]]*, *[[direction]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]]][ ][[=]][ ][[\'minimize\']]*, *[[backend]][[:]][ ][[str][ ][[\|]][ ][HPSearchBackend][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[hp_name]][[:]][ ][[Callable][[\[]][[\[]][optuna.Trial][[\]]][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[BestRun][ ][[\|]][ ][list][[\[]][BestRun][[\]]]]][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.hyperparameter_search "Link to this definition")
+    [[hyperparameter_search]][(]*[[hp_space]][[:]][ ][[Callable][[\[]][[\[]][optuna.Trial][[\]]][[,]][ ][dict][[\[]][str][[,]][ ][float][[\]]][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[compute_objective]][[:]][ ][[Callable][[\[]][[\[]][dict][[\[]][str][[,]][ ][float][[\]]][[\]]][[,]][ ][float][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[n_trials]][[:]][ ][[int]][ ][[=]][ ][[20]]*, *[[direction]][[:]][ ][[str][ ][[\|]][ ][list][[\[]][str][[\]]]][ ][[=]][ ][[\'minimize\']]*, *[[backend]][[:]][ ][[str][ ][[\|]][ ][HPSearchBackend][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[hp_name]][[:]][ ][[Callable][[\[]][[\[]][optuna.Trial][[\]]][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[BestRun][ ][[\|]][ ][list][[\[]][BestRun][[\]]]]][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.hyperparameter_search "Link to this definition")
 
     :   Launch an hyperparameter search using optuna or Ray Tune or SigOpt. The optimized quantity is determined by compute_objective, which defaults to a function returning the evaluation loss when no metric is provided, the sum of all metrics otherwise.
 
@@ -330,15 +324,15 @@
 
         :   \[trainer_utils.BestRun or List\[trainer_utils.BestRun\]\]
 
-    [[is_local_process_zero]][(][)] [[→] [[bool]]][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.is_local_process_zero "Link to this definition")
+    [[is_local_process_zero]][(][)] [[→] [[bool]]][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.is_local_process_zero "Link to this definition")
 
     :   Whether or not this process is the local (e.g., on one machine if training in a distributed fashion on several machines) main process.
 
-    [[is_world_process_zero]][(][)] [[→] [[bool]]][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.is_world_process_zero "Link to this definition")
+    [[is_world_process_zero]][(][)] [[→] [[bool]]][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.is_world_process_zero "Link to this definition")
 
     :   Whether or not this process is the global main process (when training in a distributed fashion on several machines, this is only going to be True for one process).
 
-    [[log]][(]*[[logs]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]]*, *[[start_time]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L467-L497)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.log "Link to this definition")
+    [[log]][(]*[[logs]][[:]][ ][[dict][[\[]][str][[,]][ ][float][[\]]]]*, *[[start_time]][[:]][ ][[float][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L467-L497)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.log "Link to this definition")
 
     :   Log logs on the various objects watching training.
 
@@ -350,7 +344,7 @@
 
             - **start_time** (Optional\[float\]) â€" The start of training.
 
-    [[maybe_add_dataset_name_column]][(]*[[dataset]][[:]][ ][[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[router_mapping]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L1075-L1115)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.maybe_add_dataset_name_column "Link to this definition")
+    [[maybe_add_dataset_name_column]][(]*[[dataset]][[:]][ ][[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[router_mapping]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L1075-L1115)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.maybe_add_dataset_name_column "Link to this definition")
 
     :   Maybe add a dataset name column to the dataset, if
 
@@ -376,7 +370,7 @@
 
         :   DatasetDict \| Dataset \| None
 
-    [[pop_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.pop_callback "Link to this definition")
+    [[pop_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.pop_callback "Link to this definition")
 
     :   Remove a callback from the current list of \[\~transformers.TrainerCallback\] and returns it.
 
@@ -394,7 +388,7 @@
 
         :   \[\~transformers.TrainerCallback\]
 
-    [[preprocess_dataset]][(]*[[dataset]][[:]][ ][[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[router_mapping]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\trainer.py#L1036-L1073)[ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.preprocess_dataset "Link to this definition")
+    [[preprocess_dataset]][(]*[[dataset]][[:]][ ][[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[prompts]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[router_mapping]][[:]][ ][[dict][[\[]][str][[,]][ ][dict][[\[]][str][[,]][ ][str][[\]]][[\]]][ ][[\|]][ ][dict][[\[]][str][[,]][ ][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[dataset_name]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)] [[→] [[DatasetDict][ ][[\|]][ ][Dataset][ ][[\|]][ ][None]]][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\trainer.py#L1036-L1073)[ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.preprocess_dataset "Link to this definition")
 
     :   Preprocess the dataset by optionally lazily adding a dataset name column, required for multi-dataset training with multiple losses, for dataset-specific prompts, or for dataset-specific router mappings.
 
@@ -416,11 +410,11 @@
 
         :   DatasetDict \| Dataset \| None
 
-    [[propagate_args_to_deepspeed]][(]*[[auto_find_batch_size]][[=]][[False]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.propagate_args_to_deepspeed "Link to this definition")
+    [[propagate_args_to_deepspeed]][(]*[[auto_find_batch_size]][[=]][[False]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.propagate_args_to_deepspeed "Link to this definition")
 
     :   Sets values in the deepspeed plugin based on the Trainer args
 
-    [[push_to_hub]][(]*[[commit_message]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[\'End] [of] [training\']]*, *[[blocking]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[token]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[str]]][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.push_to_hub "Link to this definition")
+    [[push_to_hub]][(]*[[commit_message]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[\'End] [of] [training\']]*, *[[blocking]][[:]][ ][[bool]][ ][[=]][ ][[True]]*, *[[token]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[revision]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[str]]][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.push_to_hub "Link to this definition")
 
     :   Upload self.model and self.processing_class to the ðŸ¤--- model hub on the repo self.args.hub_model_id.
 
@@ -440,7 +434,7 @@
 
         :   The URL of the repository where the model was pushed if blocking=False, or a Future object tracking the progress of the commit if blocking=True.
 
-    [[remove_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.remove_callback "Link to this definition")
+    [[remove_callback]][(]*[[callback]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.remove_callback "Link to this definition")
 
     :   Remove a callback from the current list of \[\~transformers.TrainerCallback\].
 
@@ -448,17 +442,17 @@
 
         :   **callback** (type or \[\~transformers.TrainerCallback\]) â€" A \[\~transformers.TrainerCallback\] class or an instance of a \[\~transformers.TrainerCallback\]. In the first case, will remove the first member of that class found in the list of callbacks.
 
-    [[save_model]][(]*[[output_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\_internal_call]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.save_model "Link to this definition")
+    [[save_model]][(]*[[output_dir]][[:]][ ][[str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\_internal_call]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.save_model "Link to this definition")
 
     :   Will save the model, so you can reload it using from_pretrained().
 
         Will only save from the main process.
 
-    [[set_initial_training_values]][(]*[[args]][[:]][ ][[TrainingArguments]]*, *[[dataloader]][[:]][ ][[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]*, *[[total_train_batch_size]][[:]][ ][[int]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.set_initial_training_values "Link to this definition")
+    [[set_initial_training_values]][(]*[[args]][[:]][ ][[TrainingArguments]]*, *[[dataloader]][[:]][ ][[[DataLoader]](https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader "(in PyTorch v2.9)")]*, *[[total_train_batch_size]][[:]][ ][[int]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.set_initial_training_values "Link to this definition")
 
     :   Calculates and returns the following values: - num_train_epochs - num_update_steps_per_epoch - num_examples - num_train_samples - epoch_based - len_dataloader - max_steps
 
-    [[train]][(]*[[resume_from_checkpoint]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[trial]][[:]][ ][[optuna.Trial][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[ignore_keys_for_eval]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][ïƒ?](#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.train "Link to this definition")
+    [[train]][(]*[[resume_from_checkpoint]][[:]][ ][[bool][ ][[\|]][ ][str][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[trial]][[:]][ ][[optuna.Trial][ ][[\|]][ ][dict][[\[]][str][[,]][ ][Any][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[ignore_keys_for_eval]][[:]][ ][[list][[\[]][str][[\]]][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][ïƒ?](#sentence_transformers.sparse_encoder.SparseEncoderTrainer.train "Link to this definition")
 
     :   Main training entry point.
 

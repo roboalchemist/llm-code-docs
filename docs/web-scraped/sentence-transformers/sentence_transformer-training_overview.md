@@ -64,6 +64,11 @@ Transformers
 
 Most Sentence Transformer models use the [[`Transformer`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Transformer "sentence_transformers.models.Transformer") and [[`Pooling`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Pooling "sentence_transformers.models.Pooling") modules. The former loads a pretrained transformer model (e.g. [BERT](https://huggingface.co/google-bert/bert-base-uncased), [RoBERTa](https://huggingface.co/FacebookAI/roberta-base), [DistilBERT](https://huggingface.co/distilbert/distilbert-base-uncased), [ModernBERT](https://huggingface.co/answerdotai/ModernBERT-base), etc.) and the latter pools the output of the transformer to produce a single vector representation for each input sentence.
 
+Documentation
+
+- [[`sentence_transformers.models.Transformer`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Transformer)
+- [[`sentence_transformers.models.Pooling`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.Pooling)
+
     from sentence_transformers import models, SentenceTransformer
 
     transformer = models.Transformer("google-bert/bert-base-uncased")
@@ -93,6 +98,13 @@ Static
 
 Static Embedding models ([blogpost](https://huggingface.co/blog/static-embeddings)) use the [[`StaticEmbedding`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.StaticEmbedding "sentence_transformers.models.StaticEmbedding") module, and are encoder models that donâ€™t use slow transformers or attention mechanisms. For these models, computing embeddings is simply: given the input token, return the pre-computed token embedding. These models are orders of magnitude faster, but cannot capture complex semantics as token embeddings are computed separate from the context.
 
+Documentation
+
+- [Static Embedding Models](https://huggingface.co/blog/static-embeddings)
+- [[`sentence_transformers.models.StaticEmbedding`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.StaticEmbedding)
+- [[`sentence_transformers.models.StaticEmbedding.from_model2vec`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.StaticEmbedding.from_model2vec)
+- [[`sentence_transformers.models.StaticEmbedding.from_distillation`]](../package_reference/sentence_transformer/models.html#sentence_transformers.models.StaticEmbedding.from_distillation)
+
     from sentence_transformers import models, SentenceTransformer
     from tokenizers import Tokenizer
 
@@ -110,6 +122,12 @@ The [`SentenceTransformerTrainer`] trains and evaluates using [[`datasets.Datase
 Data on ðŸ¤--- Hugging Face Hub
 
 If you want to load data from the [Hugging Face Datasets](https://huggingface.co/datasets), then you should use [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
+
+Documentation
+
+- [Datasets, Loading from the Hugging Face Hub](https://huggingface.co/docs/datasets/main/en/loading#hugging-face-hub)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset)
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
 
     from datasets import load_dataset
 
@@ -131,6 +149,11 @@ Local Data (CSV, JSON, Parquet, Arrow, SQL)
 
 If you have local data in common file-formats, then you can load this data easily using [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
 
+Documentation
+
+- [Datasets, Loading local files](https://huggingface.co/docs/datasets/main/en/loading#local-and-remote-files)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
     from datasets import load_dataset
 
     dataset = load_dataset("csv", data_files="my_file.csv")
@@ -144,6 +167,10 @@ or:
 Local Data that requires pre-processing
 
 If you have local data that requires some extra pre-processing, my recommendation is to initialize your dataset using [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)") and a dictionary of lists, like so:
+
+Documentation
+
+- [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)")
 
     from datasets import Dataset
 
@@ -160,9 +187,9 @@ Each key from the dictionary will become a column in the resulting dataset.
 
 It is important that your dataset format matches your loss function (or that you choose a loss function that matches your dataset format). Verifying whether a dataset format works with a loss function involves two steps:
 
-1.  If your loss function requires a *Label* according to the [Loss Overview](loss_overview.html) table, then your dataset must have a **column named â€œlabelâ€? or â€œscoreâ€?**. This column is automatically taken as the label.
+1.  If your loss function requires a *Label* according to the [Loss Overview](loss_overview.html) table, then your dataset must have a **column named â€œlabelâ€?, â€œlabelsâ€?, â€œscoreâ€? or â€œscoresâ€?**. This column is automatically taken as the label.
 
-2.  All columns not named â€œlabelâ€? or â€œscoreâ€? are considered *Inputs* according to the [Loss Overview](loss_overview.html) table. The number of remaining columns must match the number of valid inputs for your chosen loss. The names of these columns are **irrelevant**, only the **order matters**.
+2.  All columns not named â€œlabelâ€?, â€œlabelsâ€?, â€œscoreâ€? or â€œscoresâ€? are considered *Inputs* according to the [Loss Overview](loss_overview.html) table. The number of remaining columns must match the number of valid inputs for your chosen loss. The names of these columns are **irrelevant**, only the **order matters**.
 
 For example, given a dataset with columns [`["text1",`]` `[`"text2",`]` `[`"label"]`] where the â€œlabelâ€? column has float similarity score between 0 and 1, we can use it with [[`CoSENTLoss`]](../package_reference/sentence_transformer/losses.html#sentence_transformers.losses.CoSENTLoss "sentence_transformers.losses.CoSENTLoss"), [[`AnglELoss`]](../package_reference/sentence_transformer/losses.html#sentence_transformers.losses.AnglELoss "sentence_transformers.losses.AnglELoss"), and [[`CosineSimilarityLoss`]](../package_reference/sentence_transformer/losses.html#sentence_transformers.losses.CosineSimilarityLoss "sentence_transformers.losses.CosineSimilarityLoss") because it:
 
@@ -271,6 +298,12 @@ Sometimes you donâ€™t have the required evaluation data to prepare one of t
 
 EmbeddingSimilarityEvaluator with STSb
 
+Documentation
+
+- [sentence-transformers/stsb](https://huggingface.co/datasets/sentence-transformers/stsb)
+- [[`sentence_transformers.evaluation.EmbeddingSimilarityEvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.EmbeddingSimilarityEvaluator "sentence_transformers.evaluation.EmbeddingSimilarityEvaluator")
+- [[`sentence_transformers.SimilarityFunction`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SimilarityFunction "sentence_transformers.SimilarityFunction")
+
     from datasets import load_dataset
     from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator, SimilarityFunction
 
@@ -289,6 +322,12 @@ EmbeddingSimilarityEvaluator with STSb
     # results = dev_evaluator(model)
 
 TripletEvaluator with AllNLI
+
+Documentation
+
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
+- [[`sentence_transformers.evaluation.TripletEvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.TripletEvaluator "sentence_transformers.evaluation.TripletEvaluator")
+- [[`sentence_transformers.SimilarityFunction`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SimilarityFunction "sentence_transformers.SimilarityFunction")
 
     from datasets import load_dataset
     from sentence_transformers.evaluation import TripletEvaluator, SimilarityFunction
@@ -309,6 +348,10 @@ TripletEvaluator with AllNLI
     # results = dev_evaluator(model)
 
 NanoBEIREvaluator
+
+Documentation
+
+- [[`sentence_transformers.evaluation.NanoBEIREvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.NanoBEIREvaluator "sentence_transformers.evaluation.NanoBEIREvaluator")
 
     from sentence_transformers.evaluation import NanoBEIREvaluator
 
@@ -500,9 +543,9 @@ Documentation
 
 **Training Examples:**
 
-- [Quora Duplicate Questions \> Multi-task learning](https://github.com/huggingface/sentence-transformers/blob/master/examples/sentence_transformer/training/quora_duplicate_questions/training_multi-task-learning.py)
+- [Quora Duplicate Questions \> Multi-task learning](https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/training/quora_duplicate_questions/training_multi-task-learning.py)
 
-- [AllNLI + STSb \> Multi-task learning](https://github.com/huggingface/sentence-transformers/blob/master/examples/sentence_transformer/training/other/training_multi-task.py)
+- [AllNLI + STSb \> Multi-task learning](https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/training/other/training_multi-task.py)
 
     from datasets import load_dataset
     from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer
@@ -600,7 +643,7 @@ In case there are issues with the updated [[`SentenceTransformer.fit()`]](../pac
 
 The quality of your text embedding model depends on which transformer model you choose. Sadly we cannot infer from a better performance on e.g. the GLUE or SuperGLUE benchmark that this model will also yield better representations.
 
-To test the suitability of transformer models, I use the [training_nli_v2.py](https://github.com/huggingface/sentence-transformers/blob/master/examples/sentence_transformer/training/nli/training_nli_v2.py) script and train on 560k (anchor, positive, negative)-triplets for 1 epoch with batch size 64. I then evaluate on 14 diverse text similarity tasks (clustering, semantic search, duplicate detection etc.) from various domains.
+To test the suitability of transformer models, I use the [training_nli_v2.py](https://github.com/huggingface/sentence-transformers/blob/main/examples/sentence_transformer/training/nli/training_nli_v2.py) script and train on 560k (anchor, positive, negative)-triplets for 1 epoch with batch size 64. I then evaluate on 14 diverse text similarity tasks (clustering, semantic search, duplicate detection etc.) from various domains.
 
 In the following table you find the performance for different models and their performance on this benchmark:
 
@@ -623,8 +666,6 @@ In the following table you find the performance for different models and their p
 ## Comparisons with CrossEncoder Training[ïƒ?](#comparisons-with-crossencoder-training "Link to this heading")
 
 Training [[`SentenceTransformer`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer") models is very similar as training [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder") models, with some key differences:
-
-- Instead of [`score`], [`scores`], [`label`] and [`labels`] columns being considered â€œlabel columnsâ€?, only [`score`] and [`label`] are. As you can see in the [Loss Overview](loss_overview.html) documentation, some losses require specific labels/scores in a column with one of these names.
 
 - For [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder") training, you can use (variably sized) lists of texts in a column. In [[`SentenceTransformer`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer") training, you **cannot** use lists of inputs (e.g. texts) in a column of the training/evaluation dataset(s). In short: training with a variable number of negatives is not supported.
 

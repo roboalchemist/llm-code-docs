@@ -215,4 +215,4 @@ All other Instructor models either 1) will not load as they refer to [`Instructo
 
 [SPECTER](https://huggingface.co/papers/2004.07180) is a model trained on scientific citations and can be used to estimate the similarity of two publications. We can use it to find similar papers.
 
-- **[allenai-specter](https://huggingface.co/sentence-transformers/allenai-specter)** - [[Semantic Search Python Example]](https://github.com/huggingface/sentence-transformers/tree/master/docs/sentence_transformer/../../examples/sentence_transformer/applications/semantic-search/semantic_search_publications.py) / [Semantic Search Colab Example](https://colab.research.google.com/drive/12hfBveGHRsxhPIUMmJYrll2lFU4fOX06)
+- **[allenai-specter](https://huggingface.co/sentence-transformers/allenai-specter)** - [[Semantic Search Python Example]](https://github.com/huggingface/sentence-transformers/tree/main/docs/sentence_transformer/../../examples/sentence_transformer/applications/semantic-search/semantic_search_publications.py) / [Semantic Search Colab Example](https://colab.research.google.com/drive/12hfBveGHRsxhPIUMmJYrll2lFU4fOX06)

@@ -2,145 +2,99 @@
 """
 Sentence Transformers Documentation Scraper
 Downloads all sbert.net documentation pages and converts to markdown.
-Sentence Transformers is a Python library for sentence, text and image embeddings.
+Sentence Transformers is the Python library for state-of-the-art sentence, text and image embeddings.
 """
 
 import os
 import sys
 import requests
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 import time
 import re
 import subprocess
 
-# Sentence Transformers documentation pages from sbert.net
+# sbert.net documentation pages from sitemap analysis
 SBERT_DOC_PAGES = [
-    # Core docs
-    "index.html",
-    "docs/installation.html",
-    "docs/quickstart.html",
-    "docs/migration_guide.html",
+    # Getting Started
+    "/docs/installation.html",
+    "/docs/quickstart.html",
+    "/docs/migration_guide.html",
 
-    # Sentence Transformer docs
-    "docs/sentence_transformer/usage/usage.html",
-    "docs/sentence_transformer/usage/semantic_textual_similarity.html",
-    "docs/sentence_transformer/usage/custom_models.html",
-    "docs/sentence_transformer/usage/efficiency.html",
-    "docs/sentence_transformer/usage/mteb_evaluation.html",
-    "docs/sentence_transformer/pretrained_models.html",
-    "docs/sentence_transformer/training_overview.html",
-    "docs/sentence_transformer/training/examples.html",
-    "docs/sentence_transformer/training/distributed.html",
-    "docs/sentence_transformer/dataset_overview.html",
-    "docs/sentence_transformer/loss_overview.html",
+    # Sentence Transformer - Usage
+    "/docs/sentence_transformer/usage/usage.html",
+    "/examples/sentence_transformer/applications/computing-embeddings/README.html",
+    "/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+    "/examples/sentence_transformer/applications/semantic-search/README.html",
+    "/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+    "/examples/sentence_transformer/applications/clustering/README.html",
+    "/examples/sentence_transformer/applications/paraphrase-mining/README.html",
+    "/examples/sentence_transformer/applications/parallel-sentence-mining/README.html",
+    "/examples/sentence_transformer/applications/image-search/README.html",
+    "/examples/sentence_transformer/applications/embedding-quantization/README.html",
+    "/docs/sentence_transformer/usage/custom_models.html",
+    "/docs/sentence_transformer/usage/mteb_evaluation.html",
+    "/docs/sentence_transformer/usage/efficiency.html",
 
-    # Cross Encoder docs
-    "docs/cross_encoder/usage/usage.html",
-    "docs/cross_encoder/usage/efficiency.html",
-    "docs/cross_encoder/pretrained_models.html",
-    "docs/cross_encoder/training_overview.html",
-    "docs/cross_encoder/training/examples.html",
-    "docs/cross_encoder/loss_overview.html",
+    # Sentence Transformer - Models & Training
+    "/docs/sentence_transformer/pretrained_models.html",
+    "/docs/sentence_transformer/training_overview.html",
+    "/docs/sentence_transformer/dataset_overview.html",
+    "/docs/sentence_transformer/loss_overview.html",
+    "/docs/sentence_transformer/training/examples.html",
+    "/docs/sentence_transformer/training/distributed.html",
 
-    # Sparse Encoder docs
-    "docs/sparse_encoder/usage/usage.html",
-    "docs/sparse_encoder/usage/efficiency.html",
-    "docs/sparse_encoder/pretrained_models.html",
-    "docs/sparse_encoder/training_overview.html",
-    "docs/sparse_encoder/training/examples.html",
-    "docs/sparse_encoder/loss_overview.html",
+    # Cross Encoder
+    "/docs/cross_encoder/usage/usage.html",
+    "/docs/cross_encoder/pretrained_models.html",
+    "/docs/cross_encoder/training_overview.html",
+    "/docs/cross_encoder/loss_overview.html",
+    "/docs/cross_encoder/training/examples.html",
 
-    # Package reference - Sentence Transformer
-    "docs/package_reference/sentence_transformer/index.html",
-    "docs/package_reference/sentence_transformer/SentenceTransformer.html",
-    "docs/package_reference/sentence_transformer/datasets.html",
-    "docs/package_reference/sentence_transformer/evaluation.html",
-    "docs/package_reference/sentence_transformer/losses.html",
-    "docs/package_reference/sentence_transformer/models.html",
-    "docs/package_reference/sentence_transformer/quantization.html",
-    "docs/package_reference/sentence_transformer/sampler.html",
-    "docs/package_reference/sentence_transformer/trainer.html",
-    "docs/package_reference/sentence_transformer/training_args.html",
+    # Sparse Encoder
+    "/docs/sparse_encoder/usage/usage.html",
+    "/docs/sparse_encoder/pretrained_models.html",
+    "/docs/sparse_encoder/training_overview.html",
+    "/docs/sparse_encoder/loss_overview.html",
+    "/docs/sparse_encoder/training/examples.html",
 
-    # Package reference - Cross Encoder
-    "docs/package_reference/cross_encoder/index.html",
-    "docs/package_reference/cross_encoder/cross_encoder.html",
-    "docs/package_reference/cross_encoder/evaluation.html",
-    "docs/package_reference/cross_encoder/losses.html",
-    "docs/package_reference/cross_encoder/trainer.html",
-    "docs/package_reference/cross_encoder/training_args.html",
+    # Package Reference
+    "/docs/package_reference/sentence_transformer/index.html",
+    "/docs/package_reference/sentence_transformer/SentenceTransformer.html",
+    "/docs/package_reference/sentence_transformer/models.html",
+    "/docs/package_reference/sentence_transformer/losses.html",
+    "/docs/package_reference/sentence_transformer/datasets.html",
+    "/docs/package_reference/sentence_transformer/evaluation.html",
+    "/docs/package_reference/sentence_transformer/training_args.html",
+    "/docs/package_reference/sentence_transformer/trainer.html",
+    "/docs/package_reference/cross_encoder/index.html",
+    "/docs/package_reference/cross_encoder/CrossEncoder.html",
+    "/docs/package_reference/cross_encoder/losses.html",
+    "/docs/package_reference/cross_encoder/evaluation.html",
+    "/docs/package_reference/cross_encoder/training_args.html",
+    "/docs/package_reference/cross_encoder/trainer.html",
+    "/docs/package_reference/sparse_encoder/index.html",
+    "/docs/package_reference/sparse_encoder/SparseEncoder.html",
+    "/docs/package_reference/sparse_encoder/models.html",
+    "/docs/package_reference/sparse_encoder/losses.html",
+    "/docs/package_reference/sparse_encoder/evaluation.html",
+    "/docs/package_reference/sparse_encoder/training_args.html",
+    "/docs/package_reference/sparse_encoder/trainer.html",
+    "/docs/package_reference/util.html",
 
-    # Package reference - Sparse Encoder
-    "docs/package_reference/sparse_encoder/index.html",
-    "docs/package_reference/sparse_encoder/SparseEncoder.html",
-    "docs/package_reference/sparse_encoder/evaluation.html",
-    "docs/package_reference/sparse_encoder/losses.html",
-    "docs/package_reference/sparse_encoder/models.html",
-    "docs/package_reference/sparse_encoder/search_engines.html",
-    "docs/package_reference/sparse_encoder/trainer.html",
-    "docs/package_reference/sparse_encoder/training_args.html",
-    "docs/package_reference/sparse_encoder/callbacks.html",
-
-    # Package reference - Util
-    "docs/package_reference/util.html",
-
-    # Examples - Sentence Transformer Applications
-    "examples/sentence_transformer/applications/computing-embeddings/README.html",
-    "examples/sentence_transformer/applications/semantic-search/README.html",
-    "examples/sentence_transformer/applications/retrieve_rerank/README.html",
-    "examples/sentence_transformer/applications/clustering/README.html",
-    "examples/sentence_transformer/applications/paraphrase-mining/README.html",
-    "examples/sentence_transformer/applications/parallel-sentence-mining/README.html",
-    "examples/sentence_transformer/applications/image-search/README.html",
-    "examples/sentence_transformer/applications/embedding-quantization/README.html",
-
-    # Examples - Sentence Transformer Training
-    "examples/sentence_transformer/training/sts/README.html",
-    "examples/sentence_transformer/training/nli/README.html",
-    "examples/sentence_transformer/training/paraphrases/README.html",
-    "examples/sentence_transformer/training/quora_duplicate_questions/README.html",
-    "examples/sentence_transformer/training/ms_marco/README.html",
-    "examples/sentence_transformer/training/multilingual/README.html",
-    "examples/sentence_transformer/training/distillation/README.html",
-    "examples/sentence_transformer/training/data_augmentation/README.html",
-    "examples/sentence_transformer/training/matryoshka/README.html",
-    "examples/sentence_transformer/training/adaptive_layer/README.html",
-    "examples/sentence_transformer/training/prompts/README.html",
-    "examples/sentence_transformer/training/peft/README.html",
-    "examples/sentence_transformer/training/hpo/README.html",
-    "examples/sentence_transformer/domain_adaptation/README.html",
-    "examples/sentence_transformer/unsupervised_learning/README.html",
-
-    # Examples - Cross Encoder
-    "examples/cross_encoder/applications/README.html",
-    "examples/cross_encoder/training/sts/README.html",
-    "examples/cross_encoder/training/nli/README.html",
-    "examples/cross_encoder/training/quora_duplicate_questions/README.html",
-    "examples/cross_encoder/training/ms_marco/README.html",
-    "examples/cross_encoder/training/distillation/README.html",
-    "examples/cross_encoder/training/rerankers/README.html",
-
-    # Examples - Sparse Encoder
-    "examples/sparse_encoder/applications/computing_embeddings/README.html",
-    "examples/sparse_encoder/applications/semantic_search/README.html",
-    "examples/sparse_encoder/applications/retrieve_rerank/README.html",
-    "examples/sparse_encoder/applications/semantic_textual_similarity/README.html",
-    "examples/sparse_encoder/evaluation/README.html",
-    "examples/sparse_encoder/training/sts/README.html",
-    "examples/sparse_encoder/training/nli/README.html",
-    "examples/sparse_encoder/training/quora_duplicate_questions/README.html",
-    "examples/sparse_encoder/training/ms_marco/README.html",
-    "examples/sparse_encoder/training/distillation/README.html",
-    "examples/sparse_encoder/training/retrievers/README.html",
+    # Main index
+    "/index.html",
 ]
 
 BASE_URL = "https://www.sbert.net"
 
 
 def html_to_markdown(html_content, url):
-    """Convert HTML to markdown using pandoc, falling back to basic extraction."""
-    # Extract main content - sbert.net uses ReadTheDocs/Sphinx structure
+    """Convert HTML to markdown, extracting main content only."""
+    # Sphinx ReadTheDocs theme uses different selectors
+    # Try to extract main content area
+
+    # Primary: Look for main content div
     main_match = re.search(
         r'<div[^>]*class="[^"]*rst-content[^"]*"[^>]*>(.*?)<footer',
         html_content, flags=re.DOTALL | re.IGNORECASE
@@ -149,19 +103,31 @@ def html_to_markdown(html_content, url):
     if main_match:
         html_content = main_match.group(1)
     else:
-        # Try article tag
+        # Fallback: Look for article/section
         article_match = re.search(
             r'<article[^>]*>(.*?)</article>',
             html_content, flags=re.DOTALL | re.IGNORECASE
         )
         if article_match:
             html_content = article_match.group(1)
+        else:
+            # Another fallback: role="main"
+            role_main = re.search(
+                r'<div[^>]*role="main"[^>]*>(.*?)</div>\s*(?:<footer|<div[^>]*class="[^"]*footer)',
+                html_content, flags=re.DOTALL | re.IGNORECASE
+            )
+            if role_main:
+                html_content = role_main.group(1)
 
     # Remove navigation elements
+    html_content = re.sub(r'<nav[^>]*>.*?</nav>', '', html_content, flags=re.DOTALL)
     html_content = re.sub(r'<div[^>]*class="[^"]*toctree[^"]*"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
-    html_content = re.sub(r'<div[^>]*class="[^"]*sidebar[^"]*"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
 
-    # Try pandoc first
+    # Remove "Edit on GitHub" and other meta links
+    html_content = re.sub(r'<a[^>]*class="[^"]*edit-link[^"]*"[^>]*>.*?</a>', '', html_content, flags=re.DOTALL)
+    html_content = re.sub(r'<a[^>]*href="[^"]*github\.com[^"]*"[^>]*>\s*Edit on GitHub\s*</a>', '', html_content, flags=re.DOTALL)
+
+    # Try pandoc on cleaned content
     try:
         result = subprocess.run(
             ['pandoc', '-f', 'html', '-t', 'markdown', '--wrap=none'],
@@ -173,20 +139,24 @@ def html_to_markdown(html_content, url):
         if result.returncode == 0:
             markdown = result.stdout
             # Clean up pandoc artifacts
-            markdown = re.sub(r'^::+.*$', '', markdown, flags=re.MULTILINE)
-            markdown = re.sub(r'\{[^}]*\}', '', markdown)
-            markdown = re.sub(r'\n{3,}', '\n\n', markdown)
+            markdown = re.sub(r'^::+.*$', '', markdown, flags=re.MULTILINE)  # Remove ::: div markers
+            markdown = re.sub(r'\{[^}]*\}', '', markdown)  # Remove {.class} attributes
+            markdown = re.sub(r'\n{3,}', '\n\n', markdown)  # Normalize whitespace
             markdown = markdown.strip()
             return f"# Source: {url}\n\n{markdown}"
     except (FileNotFoundError, subprocess.TimeoutExpired):
         pass
 
     # Fallback: basic HTML to text extraction
+    # Remove script and style elements
     html_content = re.sub(r'<script[^>]*>.*?</script>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
     html_content = re.sub(r'<style[^>]*>.*?</style>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
     html_content = re.sub(r'<nav[^>]*>.*?</nav>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
+    html_content = re.sub(r'<header[^>]*>.*?</header>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
+    html_content = re.sub(r'<footer[^>]*>.*?</footer>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
 
-    # Convert headers
+    # Convert common HTML elements to markdown
+    # Headers
     for i in range(6, 0, -1):
         html_content = re.sub(rf'<h{i}[^>]*>(.*?)</h{i}>', r'\n' + '#' * i + r' \1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
 
@@ -199,30 +169,33 @@ def html_to_markdown(html_content, url):
 
     # Bold and italic
     html_content = re.sub(r'<strong[^>]*>(.*?)</strong>', r'**\1**', html_content, flags=re.DOTALL | re.IGNORECASE)
+    html_content = re.sub(r'<b[^>]*>(.*?)</b>', r'**\1**', html_content, flags=re.DOTALL | re.IGNORECASE)
     html_content = re.sub(r'<em[^>]*>(.*?)</em>', r'*\1*', html_content, flags=re.DOTALL | re.IGNORECASE)
+    html_content = re.sub(r'<i[^>]*>(.*?)</i>', r'*\1*', html_content, flags=re.DOTALL | re.IGNORECASE)
 
     # Lists
     html_content = re.sub(r'<li[^>]*>(.*?)</li>', r'- \1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
     html_content = re.sub(r'<[ou]l[^>]*>', '\n', html_content, flags=re.IGNORECASE)
     html_content = re.sub(r'</[ou]l>', '\n', html_content, flags=re.IGNORECASE)
 
-    # Paragraphs
+    # Paragraphs and line breaks
     html_content = re.sub(r'<p[^>]*>(.*?)</p>', r'\n\1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
     html_content = re.sub(r'<br\s*/?>', '\n', html_content, flags=re.IGNORECASE)
     html_content = re.sub(r'<div[^>]*>', '\n', html_content, flags=re.IGNORECASE)
     html_content = re.sub(r'</div>', '\n', html_content, flags=re.IGNORECASE)
 
-    # Remove remaining tags
+    # Remove remaining HTML tags
     html_content = re.sub(r'<[^>]+>', '', html_content)
 
-    # Decode entities
+    # Decode HTML entities
     html_content = html_content.replace('&nbsp;', ' ')
     html_content = html_content.replace('&lt;', '<')
     html_content = html_content.replace('&gt;', '>')
     html_content = html_content.replace('&amp;', '&')
     html_content = html_content.replace('&quot;', '"')
+    html_content = html_content.replace('&#39;', "'")
 
-    # Clean up
+    # Clean up whitespace
     html_content = re.sub(r'\n\s*\n\s*\n', '\n\n', html_content)
     html_content = html_content.strip()
 
@@ -237,14 +210,17 @@ def download_page(url, output_path):
         response = requests.get(url, timeout=15)
         response.raise_for_status()
 
+        # Convert HTML to markdown
         markdown = html_to_markdown(response.text, url)
 
+        # Create directory if needed
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
+        # Write markdown file
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(markdown)
 
-        print(f"  -> Saved: {output_path.name}")
+        print(f"  -> Saved: {output_path}")
         return True
 
     except requests.exceptions.RequestException as e:
@@ -257,21 +233,34 @@ def download_page(url, output_path):
 
 def path_to_filename(path):
     """Convert URL path to filename."""
-    if path == "index.html":
+    if path == "/" or path == "" or path == "/index.html":
         return "index.md"
 
-    # Remove .html extension and convert path to flat filename
-    clean_path = path.replace('.html', '').replace('README', 'readme')
+    # Remove leading/trailing slashes and .html extension
+    clean_path = path.strip("/")
+    if clean_path.endswith(".html"):
+        clean_path = clean_path[:-5]
 
-    # Convert to flat filename: docs/sentence_transformer/usage -> docs-sentence_transformer-usage.md
-    return clean_path.replace('/', '-') + ".md"
+    # Handle nested paths - flatten to single filename
+    # e.g., docs/sentence_transformer/usage/usage -> sentence_transformer-usage-usage.md
+    # Remove common prefixes for cleaner names
+    clean_path = re.sub(r'^docs/', '', clean_path)
+    clean_path = re.sub(r'^examples/', 'examples-', clean_path)
+
+    # Convert slashes to hyphens
+    filename = clean_path.replace("/", "-")
+
+    # Handle README files
+    filename = re.sub(r'-README$', '', filename)
+
+    return filename + ".md"
 
 
 def main():
-    """Main function to download all sentence-transformers documentation."""
-    print("=" * 70)
+    """Main function to download all Sentence Transformers documentation."""
+    print("=" * 60)
     print("Sentence Transformers Documentation Scraper")
-    print("=" * 70)
+    print("=" * 60)
     print(f"Base URL: {BASE_URL}")
     print(f"Pages to download: {len(SBERT_DOC_PAGES)}")
     print()
@@ -289,30 +278,32 @@ def main():
     start_time = time.time()
 
     for i, page_path in enumerate(SBERT_DOC_PAGES, 1):
-        url = f"{BASE_URL}/{page_path}"
+        url = BASE_URL + page_path
         filename = path_to_filename(page_path)
         output_path = output_dir / filename
 
-        print(f"[{i:3d}/{len(SBERT_DOC_PAGES)}] ", end="")
+        print(f"[{i:2d}/{len(SBERT_DOC_PAGES)}] ", end="")
 
         if download_page(url, output_path):
             successful += 1
         else:
             failed += 1
 
-        time.sleep(0.3)  # Be respectful
+        # Be respectful with rate limiting
+        time.sleep(0.5)
 
     elapsed = time.time() - start_time
 
     print()
-    print("=" * 70)
+    print("=" * 60)
     print("Download Summary")
-    print("=" * 70)
+    print("=" * 60)
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
     print(f"Time: {elapsed:.1f} seconds")
     print(f"Output: {output_dir}")
 
+    # Calculate total size
     total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
     print(f"Total size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
 

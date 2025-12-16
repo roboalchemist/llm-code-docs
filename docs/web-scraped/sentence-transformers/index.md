@@ -1,12 +1,12 @@
 # Source: https://www.sbert.net/index.html
 
+Note
+
+Sentence Transformers v5.2 recently released, introducing multi-processing for CrossEncoder, multilingual NanoBEIR evaluators, similarity score outputs in [[`mine_hard_negatives`]](docs/package_reference/util.html#sentence_transformers.util.mine_hard_negatives "sentence_transformers.util.mine_hard_negatives"), Transformers v5 support, and more. Read the [v5.2 Release Notes](https://github.com/huggingface/sentence-transformers/releases/tag/v5.2.0) for more information.
+
 Attention
 
 Sentence Transformers is transitioning from [UKP Lab](http://www.ukp.tu-darmstadt.de/) to [ðŸ¤--- Hugging Face](https://huggingface.co). This formalizes the existing maintenance structure, as Hugging Face has been maintaining the project for the past two years. The projectâ€™s development roadmap, support, and commitment to the community remain unchanged. Read the [full announcement](https://huggingface.co/blog/sentence-transformers-joins-hf) for more details!
-
-Note
-
-Sentence Transformers v5.1 recently released, bringing the ONNX and OpenVINO backends to SparseEncoder models. Read [SparseEncoder \> Usage \> Speeding up Inference](docs/sparse_encoder/usage/efficiency.html) to read more about the performance boosts that you can expect, or read the [v5.1 Release Notes](https://github.com/huggingface/sentence-transformers/releases/tag/v5.1.0) for information on the other changes.
 
 # SentenceTransformers Documentation[ïƒ?](#sentencetransformers-documentation "Link to this heading")
 
@@ -186,7 +186,7 @@ If you use one of the multilingual models, feel free to cite our publication [Ma
 > ::::
 > :::::
 
-If you use the code for [data augmentation](https://github.com/huggingface/sentence-transformers/tree/master/examples/sentence_transformer/training/data_augmentation), feel free to cite our publication [Augmented SBERT: Data Augmentation Method for Improving Bi-Encoders for Pairwise Sentence Scoring Tasks](https://huggingface.co/papers/2010.08240):
+If you use the code for [data augmentation](https://github.com/huggingface/sentence-transformers/tree/main/examples/sentence_transformer/training/data_augmentation), feel free to cite our publication [Augmented SBERT: Data Augmentation Method for Improving Bi-Encoders for Pairwise Sentence Scoring Tasks](https://huggingface.co/papers/2010.08240):
 
 > ::::: 
 > :::: 

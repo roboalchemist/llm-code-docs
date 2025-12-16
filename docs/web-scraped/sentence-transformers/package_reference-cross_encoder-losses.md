@@ -8,7 +8,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## BinaryCrossEntropyLoss[ïƒ?](#binarycrossentropyloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[BinaryCrossEntropyLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[pos_weight]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\BinaryCrossEntropyLoss.py#L9-L116)[ïƒ?](#sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[BinaryCrossEntropyLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[pos_weight]][[:]][ ][[[Tensor]](https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\BinaryCrossEntropyLoss.py#L9-L116)[ïƒ?](#sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss "Link to this definition")
 
 :   Computes the Binary Cross Entropy Loss for a CrossEncoder model. This loss is used to train a model to predict a high logit for positive pairs and a low logit for negative pairs. The model should be initialized with [`num_labels`]` `[`=`]` `[`1`] (a.k.a. the default) to predict one class.
 
@@ -74,7 +74,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## CrossEntropyLoss[ïƒ?](#crossentropyloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[CrossEntropyLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\CrossEntropyLoss.py#L8-L84)[ïƒ?](#sentence_transformers.cross_encoder.losses.CrossEntropyLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[CrossEntropyLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\CrossEntropyLoss.py#L8-L84)[ïƒ?](#sentence_transformers.cross_encoder.losses.CrossEntropyLoss "Link to this definition")
 
 :   Computes the Cross Entropy Loss for a CrossEncoder model. This loss is used to train a model to predict the correct class label for a given pair of sentences. The number of classes should be equal to the number of model output labels.
 
@@ -127,7 +127,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## LambdaLoss[ïƒ?](#lambdaloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[LambdaLoss]][(]*[[model:] [\~sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder]]*, *[[weighting_scheme:] [\~sentence_transformers.cross_encoder.losses.LambdaLoss.BaseWeightingScheme] [\|] [None] [=] [NDCGLoss2PPScheme(]   [(ndcg_loss2):] [NDCGLoss2Scheme()]   [(lambda_rank):] [LambdaRankScheme()] [)]]*, *[[k:] [int] [\|] [None] [=] [None]]*, *[[sigma:] [float] [=] [1.0]]*, *[[eps:] [float] [=] [1e-10]]*, *[[reduction_log:] [\~typing.Literal\[\'natural\']]*, *[[\'binary\'\]] [=] [\'binary\']]*, *[[activation_fn:] [\~torch.nn.modules.module.Module] [\|] [None] [=] [Identity()]]*, *[[mini_batch_size:] [int] [\|] [None] [=] [None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L103-L360)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[LambdaLoss]][(]*[[model:] [\~sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder]]*, *[[weighting_scheme:] [\~sentence_transformers.cross_encoder.losses.LambdaLoss.BaseWeightingScheme] [\|] [None] [=] [NDCGLoss2PPScheme(]   [(ndcg_loss2):] [NDCGLoss2Scheme()]   [(lambda_rank):] [LambdaRankScheme()] [)]]*, *[[k:] [int] [\|] [None] [=] [None]]*, *[[sigma:] [float] [=] [1.0]]*, *[[eps:] [float] [=] [1e-10]]*, *[[reduction_log:] [\~typing.Literal\[\'natural\']]*, *[[\'binary\'\]] [=] [\'binary\']]*, *[[activation_fn:] [\~torch.nn.modules.module.Module] [\|] [None] [=] [Identity()]]*, *[[mini_batch_size:] [int] [\|] [None] [=] [None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L103-L360)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaLoss "Link to this definition")
 
 :   The LambdaLoss Framework for Ranking Metric Optimization. This loss function implements the LambdaLoss framework for ranking metric optimization, which provides various weighting schemes including LambdaRank and NDCG variations. The implementation is optimized to handle padded documents efficiently by only processing valid documents during model inference.
 
@@ -230,19 +230,19 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.LambdaLoss.]][[BaseWeightingScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L12-L31)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaLoss.BaseWeightingScheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.LambdaLoss.]][[BaseWeightingScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L12-L31)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaLoss.BaseWeightingScheme "Link to this definition")
 
 :   Base class for implementing weighting schemes in LambdaLoss.
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NoWeightingScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L34-L38)[ïƒ?](#sentence_transformers.cross_encoder.losses.NoWeightingScheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NoWeightingScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L34-L38)[ïƒ?](#sentence_transformers.cross_encoder.losses.NoWeightingScheme "Link to this definition")
 
 :   Implementation of no weighting scheme (weights = 1.0).
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss1Scheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L41-L50)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss1Scheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss1Scheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L41-L50)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss1Scheme "Link to this definition")
 
 :   Implementation of NDCG Loss1 weighting scheme.
 
@@ -250,7 +250,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss2Scheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L53-L69)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss2Scheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss2Scheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L53-L69)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss2Scheme "Link to this definition")
 
 :   Implementation of NDCG Loss2 weighting scheme.
 
@@ -258,7 +258,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[LambdaRankScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L72-L81)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaRankScheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[LambdaRankScheme]][(]*[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L72-L81)[ïƒ?](#sentence_transformers.cross_encoder.losses.LambdaRankScheme "Link to this definition")
 
 :   Implementation of LambdaRank weighting scheme.
 
@@ -266,7 +266,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss2PPScheme]][(]*[[mu]][[:]][ ][[float]][ ][[=]][ ][[10.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L84-L100)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss2PPScheme "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[NDCGLoss2PPScheme]][(]*[[mu]][[:]][ ][[float]][ ][[=]][ ][[10.0]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\LambdaLoss.py#L84-L100)[ïƒ?](#sentence_transformers.cross_encoder.losses.NDCGLoss2PPScheme "Link to this definition")
 
 :   Implementation of NDCG Loss2++ weighting scheme.
 
@@ -274,7 +274,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## ListMLELoss[ïƒ?](#listmleloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[ListMLELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[respect_input_order]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\ListMLELoss.py#L9-L126)[ïƒ?](#sentence_transformers.cross_encoder.losses.ListMLELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[ListMLELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[respect_input_order]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\ListMLELoss.py#L9-L126)[ïƒ?](#sentence_transformers.cross_encoder.losses.ListMLELoss "Link to this definition")
 
 :   This loss function implements the ListMLE learning to rank algorithm, which uses a list-wise approach based on maximum likelihood estimation of permutations. It maximizes the likelihood of the permutation induced by the ground truth labels.
 
@@ -359,7 +359,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## PListMLELoss[ïƒ?](#plistmleloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[PListMLELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[lambda_weight]][[:]][ ][[[PListMLELambdaWeight]](#sentence_transformers.cross_encoder.losses.PListMLELambdaWeight "sentence_transformers.cross_encoder.losses.PListMLELoss.PListMLELambdaWeight")[ ][[\|]][ ][None]][ ][[=]][ ][[PListMLELambdaWeight()]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[respect_input_order]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\PListMLELoss.py#L45-L294)[ïƒ?](#sentence_transformers.cross_encoder.losses.PListMLELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[PListMLELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[lambda_weight]][[:]][ ][[[PListMLELambdaWeight]](#sentence_transformers.cross_encoder.losses.PListMLELambdaWeight "sentence_transformers.cross_encoder.losses.PListMLELoss.PListMLELambdaWeight")[ ][[\|]][ ][None]][ ][[=]][ ][[PListMLELambdaWeight()]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[respect_input_order]][[:]][ ][[bool]][ ][[=]][ ][[True]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\PListMLELoss.py#L45-L294)[ïƒ?](#sentence_transformers.cross_encoder.losses.PListMLELoss "Link to this definition")
 
 :   PListMLE loss for learning to rank with position-aware weighting. This loss function implements the ListMLE ranking algorithm which uses a list-wise approach based on maximum likelihood estimation of permutations. It maximizes the likelihood of the permutation induced by the ground truth labels with position-aware weighting.
 
@@ -455,7 +455,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 <!-- -->
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[PListMLELambdaWeight]][(]*[[rank_discount_fn]][[=]][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\PListMLELoss.py#L10-L42)[ïƒ?](#sentence_transformers.cross_encoder.losses.PListMLELambdaWeight "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[PListMLELambdaWeight]][(]*[[rank_discount_fn]][[=]][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\PListMLELoss.py#L10-L42)[ïƒ?](#sentence_transformers.cross_encoder.losses.PListMLELambdaWeight "Link to this definition")
 
 :   Base class for implementing weighting schemes in Position-Aware ListMLE Loss.
 
@@ -467,7 +467,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## ListNetLoss[ïƒ?](#listnetloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[ListNetLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\ListNetLoss.py#L10-L197)[ïƒ?](#sentence_transformers.cross_encoder.losses.ListNetLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[ListNetLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\ListNetLoss.py#L10-L197)[ïƒ?](#sentence_transformers.cross_encoder.losses.ListNetLoss "Link to this definition")
 
 :   ListNet loss for learning to rank. This loss function implements the ListNet ranking algorithm which uses a list-wise approach to learn ranking models. It minimizes the cross entropy between the predicted ranking distribution and the ground truth ranking distribution. The implementation is optimized to handle padded documents efficiently by only processing valid documents during model inference.
 
@@ -546,7 +546,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## MultipleNegativesRankingLoss[ïƒ?](#multiplenegativesrankingloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MultipleNegativesRankingLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[num_negatives]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[4]]*, *[[scale]][[:]][ ][[int]][ ][[=]][ ][[10.0]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Sigmoid()]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\MultipleNegativesRankingLoss.py#L12-L191)[ïƒ?](#sentence_transformers.cross_encoder.losses.MultipleNegativesRankingLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MultipleNegativesRankingLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[num_negatives]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[4]]*, *[[scale]][[:]][ ][[int]][ ][[=]][ ][[10.0]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Sigmoid()]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\MultipleNegativesRankingLoss.py#L12-L191)[ïƒ?](#sentence_transformers.cross_encoder.losses.MultipleNegativesRankingLoss "Link to this definition")
 
 :   Given a list of (anchor, positive) pairs or (anchor, positive, negative) triplets, this loss optimizes the following:
 
@@ -623,7 +623,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## CachedMultipleNegativesRankingLoss[ïƒ?](#cachedmultiplenegativesrankingloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[CachedMultipleNegativesRankingLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[num_negatives]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[4]]*, *[[scale]][[:]][ ][[float]][ ][[=]][ ][[10.0]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Sigmoid()]]*, *[[mini_batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\CachedMultipleNegativesRankingLoss.py#L62-L281)[ïƒ?](#sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[CachedMultipleNegativesRankingLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[num_negatives]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[4]]*, *[[scale]][[:]][ ][[float]][ ][[=]][ ][[10.0]]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Sigmoid()]]*, *[[mini_batch_size]][[:]][ ][[int]][ ][[=]][ ][[32]]*, *[[show_progress_bar]][[:]][ ][[bool]][ ][[=]][ ][[False]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\CachedMultipleNegativesRankingLoss.py#L62-L281)[ïƒ?](#sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss "Link to this definition")
 
 :   Boosted version of [[`MultipleNegativesRankingLoss`]](#sentence_transformers.cross_encoder.losses.MultipleNegativesRankingLoss "sentence_transformers.cross_encoder.losses.MultipleNegativesRankingLoss") that caches the gradients of the logits wrt. the loss. This allows for much higher batch sizes without extra memory usage. However, it is slightly slower.
 
@@ -726,7 +726,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## MSELoss[ïƒ?](#mseloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MSELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\MSELoss.py#L9-L110)[ïƒ?](#sentence_transformers.cross_encoder.losses.MSELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MSELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\MSELoss.py#L9-L110)[ïƒ?](#sentence_transformers.cross_encoder.losses.MSELoss "Link to this definition")
 
 :   Computes the MSE loss between the computed query-passage score and a target query-passage score. This loss is used to distill a cross-encoder model from a teacher cross-encoder model or gold labels.
 
@@ -795,7 +795,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## MarginMSELoss[ïƒ?](#marginmseloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MarginMSELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\MarginMSELoss.py#L10-L177)[ïƒ?](#sentence_transformers.cross_encoder.losses.MarginMSELoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[MarginMSELoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")][ ][[=]][ ][[Identity()]]*, *[[\*\*]][[kwargs]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\MarginMSELoss.py#L10-L177)[ïƒ?](#sentence_transformers.cross_encoder.losses.MarginMSELoss "Link to this definition")
 
 :   Computes the MSE loss between [`|sim(Query,`]` `[`Pos)`]` `[`-`]` `[`sim(Query,`]` `[`Neg)|`] and [`|gold_sim(Query,`]` `[`Pos)`]` `[`-`]` `[`gold_sim(Query,`]` `[`Neg)|`]. This loss is often used to distill a cross-encoder model from a teacher cross-encoder model or gold labels.
 
@@ -871,7 +871,7 @@ Sadly, there is no â€œone size fits allâ€? loss function. Which loss func
 
 ## RankNetLoss[ïƒ?](#ranknetloss "Link to this heading")
 
-*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[RankNetLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[sigma]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*, *[[eps]][[:]][ ][[float]][ ][[=]][ ][[1e-10]]*, *[[reduction_log]][[:]][ ][[Literal][[\[]][[\'natural\']][[,]][ ][[\'binary\']][[\]]]][ ][[=]][ ][[\'binary\']]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/master/sentence_transformers\cross_encoder\losses\RankNetLoss.py#L11-L123)[ïƒ?](#sentence_transformers.cross_encoder.losses.RankNetLoss "Link to this definition")
+*[class][ ]*[[sentence_transformers.cross_encoder.losses.]][[RankNetLoss]][(]*[[model]][[:]][ ][[[CrossEncoder]](cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder.CrossEncoder")]*, *[[k]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*, *[[sigma]][[:]][ ][[float]][ ][[=]][ ][[1.0]]*, *[[eps]][[:]][ ][[float]][ ][[=]][ ][[1e-10]]*, *[[reduction_log]][[:]][ ][[Literal][[\[]][[\'natural\']][[,]][ ][[\'binary\']][[\]]]][ ][[=]][ ][[\'binary\']]*, *[[activation_fn]][[:]][ ][[[Module]](https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module "(in PyTorch v2.9)")[ ][[\|]][ ][None]][ ][[=]][ ][[Identity()]]*, *[[mini_batch_size]][[:]][ ][[int][ ][[\|]][ ][None]][ ][[=]][ ][[None]]*[)][[[\[source\]]]](https://github.com/huggingface/sentence-transformers/blob/main/sentence_transformers\cross_encoder\losses\RankNetLoss.py#L11-L123)[ïƒ?](#sentence_transformers.cross_encoder.losses.RankNetLoss "Link to this definition")
 
 :   RankNet loss implementation for learning to rank. This loss function implements the RankNet algorithm, which learns a ranking function by optimizing pairwise document comparisons using a neural network. The implementation is optimized to handle padded documents efficiently by only processing valid documents during model inference.
 

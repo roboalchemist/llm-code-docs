@@ -77,6 +77,12 @@ Data on ðŸ¤--- Hugging Face Hub
 
 If you want to load data from the [Hugging Face Datasets](https://huggingface.co/datasets), then you should use [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
 
+Documentation
+
+- [Datasets, Loading from the Hugging Face Hub](https://huggingface.co/docs/datasets/main/en/loading#hugging-face-hub)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
+
     from datasets import load_dataset
 
     train_dataset = load_dataset("sentence-transformers/all-nli", "pair-class", split="train")
@@ -97,6 +103,11 @@ Local Data (CSV, JSON, Parquet, Arrow, SQL)
 
 If you have local data in common file-formats, then you can load this data easily using [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)"):
 
+Documentation
+
+- [Datasets, Loading local files](https://huggingface.co/docs/datasets/main/en/loading#local-and-remote-files)
+- [[`datasets.load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
     from datasets import load_dataset
 
     dataset = load_dataset("csv", data_files="my_file.csv")
@@ -110,6 +121,10 @@ or:
 Local Data that requires pre-processing
 
 If you have local data that requires some extra pre-processing, my recommendation is to initialize your dataset using [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)") and a dictionary of lists, like so:
+
+Documentation
+
+- [[`datasets.Dataset.from_dict()`]](https://huggingface.co/docs/datasets/main/en/package_reference/main_classes#datasets.Dataset.from_dict "(in datasets vmain)")
 
     from datasets import Dataset
 
@@ -316,6 +331,11 @@ Sometimes you donâ€™t have the required evaluation data to prepare one of t
 
 CrossEncoderNanoBEIREvaluator
 
+Documentation
+
+- [cross-encoder/ms-marco-MiniLM-L6-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2)
+- [[`sentence_transformers.evaluation.CrossEncoderNanoBEIREvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.CrossEncoderNanoBEIREvaluator "sentence_transformers.evaluation.CrossEncoderNanoBEIREvaluator")
+
     from sentence_transformers import CrossEncoder
     from sentence_transformers.cross_encoder.evaluation import CrossEncoderNanoBEIREvaluator
 
@@ -353,6 +373,13 @@ You can enable the realistic behaviour by setting [`always_rerank_positives=Fals
     MAP:      53.28 -> 66.12
     MRR@10:   52.40 -> 65.61
     NDCG@10:  59.12 -> 70.10
+
+Documentation
+
+- [cross-encoder/ms-marco-MiniLM-L6-v2](https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2)
+- [sentence-transformers/gooaq](https://huggingface.co/datasets/sentence-transformers/gooaq)
+- [[`sentence_transformers.util.mine_hard_negatives`]](../package_reference/util.html#sentence_transformers.util.mine_hard_negatives "sentence_transformers.util.mine_hard_negatives")
+- [[`sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator`]](../package_reference/cross_encoder/evaluation.html#sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator "sentence_transformers.cross_encoder.evaluation.CrossEncoderRerankingEvaluator")
 
     from datasets import load_dataset
     from sentence_transformers import SentenceTransformer
@@ -412,6 +439,12 @@ You can enable the realistic behaviour by setting [`always_rerank_positives=Fals
 
 CrossEncoderCorrelationEvaluator with STSb
 
+Documentation
+
+- [cross-encoder/stsb-TinyBERT-L4](https://huggingface.co/cross-encoder/stsb-TinyBERT-L4)
+- [sentence-transformers/stsb](https://huggingface.co/datasets/sentence-transformers/stsb)
+- [[`sentence_transformers.cross_encoder.evaluation.CrossEncoderCorrelationEvaluator`]](../package_reference/cross_encoder/evaluation.html#sentence_transformers.cross_encoder.evaluation.CrossEncoderCorrelationEvaluator "sentence_transformers.cross_encoder.evaluation.CrossEncoderCorrelationEvaluator")
+
     from datasets import load_dataset
     from sentence_transformers import CrossEncoder
     from sentence_transformers.cross_encoder.evaluation import CrossEncoderCorrelationEvaluator
@@ -433,6 +466,12 @@ CrossEncoderCorrelationEvaluator with STSb
     # results = dev_evaluator(model)
 
 CrossEncoderClassificationEvaluator with AllNLI
+
+Documentation
+
+- [cross-encoder/nli-deberta-v3-base](https://huggingface.co/cross-encoder/nli-deberta-v3-base)
+- [sentence-transformers/all-nli](https://huggingface.co/datasets/sentence-transformers/all-nli)
+- [[`sentence_transformers.evaluation.TripletEvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.TripletEvaluator "sentence_transformers.evaluation.TripletEvaluator")
 
     from datasets import load_dataset
     from sentence_transformers import CrossEncoder
@@ -468,6 +507,30 @@ When using [Distributed Training](training/distributed.html), the evaluator only
 The [[`CrossEncoderTrainer`]](../package_reference/cross_encoder/trainer.html#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer "sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer") is where all previous components come together. We only have to specify the trainer with the model, training arguments (optional), training dataset, evaluation dataset (optional), loss function, evaluator (optional) and we can start training. Letâ€™s have a look at a script where all of these components come together:
 
 Simple Example
+
+Documentation
+
+1.  [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")
+
+2.  [[`CrossEncoderModelCardData`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.model_card.CrossEncoderModelCardData "sentence_transformers.cross_encoder.model_card.CrossEncoderModelCardData")
+
+3.  [[`load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
+4.  [sentence-transformers/gooaq](https://huggingface.co/datasets/sentence-transformers/gooaq)
+
+5.  [[`CachedMultipleNegativesRankingLoss`]](../package_reference/cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss "sentence_transformers.cross_encoder.losses.CachedMultipleNegativesRankingLoss")
+
+6.  [[`CrossEncoderNanoBEIREvaluator`]](../package_reference/cross_encoder/evaluation.html#sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator "sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator")
+
+7.  [[`CrossEncoderTrainingArguments`]](../package_reference/cross_encoder/training_args.html#sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments "sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments")
+
+8.  [[`CrossEncoderTrainer`]](../package_reference/cross_encoder/trainer.html#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer "sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer")
+
+9.  [[`CrossEncoderTrainer.train()`]](../package_reference/cross_encoder/trainer.html#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.train "sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.train")
+
+10. [[`CrossEncoder.save_pretrained()`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder.save_pretrained "sentence_transformers.cross_encoder.CrossEncoder.save_pretrained")
+
+11. [[`CrossEncoder.push_to_hub()`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder.push_to_hub "sentence_transformers.cross_encoder.CrossEncoder.push_to_hub")
 
     import logging
     import traceback
@@ -582,6 +645,38 @@ Simple Example
         )
 
 Extensive Example
+
+Documentation
+
+1.  [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder")
+
+2.  [[`CrossEncoderModelCardData`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.model_card.CrossEncoderModelCardData "sentence_transformers.cross_encoder.model_card.CrossEncoderModelCardData")
+
+3.  [[`load_dataset()`]](https://huggingface.co/docs/datasets/main/en/package_reference/loading_methods#datasets.load_dataset "(in datasets vmain)")
+
+4.  [sentence-transformers/gooaq](https://huggingface.co/datasets/sentence-transformers/gooaq)
+
+5.  [[`SentenceTransformer`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer")
+
+6.  [[`mine_hard_negatives`]](../package_reference/util.html#sentence_transformers.util.mine_hard_negatives "sentence_transformers.util.mine_hard_negatives")
+
+7.  [[`BinaryCrossEntropyLoss`]](../package_reference/cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss "sentence_transformers.cross_encoder.losses.BinaryCrossEntropyLoss")
+
+8.  [[`CrossEncoderNanoBEIREvaluator`]](../package_reference/cross_encoder/evaluation.html#sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator "sentence_transformers.cross_encoder.evaluation.CrossEncoderNanoBEIREvaluator")
+
+9.  [`CrossEncoderRerankingEvaluators`]
+
+10. [[`SequentialEvaluator`]](../package_reference/sentence_transformer/evaluation.html#sentence_transformers.evaluation.SequentialEvaluator "sentence_transformers.evaluation.SequentialEvaluator")
+
+11. [[`CrossEncoderTrainingArguments`]](../package_reference/cross_encoder/training_args.html#sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments "sentence_transformers.cross_encoder.training_args.CrossEncoderTrainingArguments")
+
+12. [[`CrossEncoderTrainer`]](../package_reference/cross_encoder/trainer.html#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer "sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer")
+
+13. [[`CrossEncoderTrainer.train()`]](../package_reference/cross_encoder/trainer.html#sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.train "sentence_transformers.cross_encoder.trainer.CrossEncoderTrainer.train")
+
+14. [[`CrossEncoder.save_pretrained()`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder.save_pretrained "sentence_transformers.cross_encoder.CrossEncoder.save_pretrained")
+
+15. [[`CrossEncoder.push_to_hub()`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder.push_to_hub "sentence_transformers.cross_encoder.CrossEncoder.push_to_hub")
 
     import logging
     import traceback
@@ -829,8 +924,6 @@ In case there are issues with the updated [[`CrossEncoder.fit()`]](../package_re
 ## Comparisons with SentenceTransformer Training[ïƒ?](#comparisons-with-sentencetransformer-training "Link to this heading")
 
 Training [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder") models is very similar as training [[`SentenceTransformer`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer") models, with some key differences:
-
-- Instead of just [`score`] and [`label`], columns named [`scores`] and [`labels`] will also be considered â€œlabel columnsâ€? for [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder") training. As you can see in the [Loss Overview](loss_overview.html) documentation, some losses require specific labels/scores in a column with one of these names.
 
 - In [[`SentenceTransformer`]](../package_reference/sentence_transformer/SentenceTransformer.html#sentence_transformers.SentenceTransformer "sentence_transformers.SentenceTransformer") training, you cannot use lists of inputs (e.g. texts) in a column of the training/evaluation dataset(s). For [[`CrossEncoder`]](../package_reference/cross_encoder/cross_encoder.html#sentence_transformers.cross_encoder.CrossEncoder "sentence_transformers.cross_encoder.CrossEncoder") training, you **can** use (variably sized) lists of texts in a column. This is required for the [[`ListNetLoss`]](../package_reference/cross_encoder/losses.html#sentence_transformers.cross_encoder.losses.ListNetLoss "sentence_transformers.cross_encoder.losses.ListNetLoss") class, for example.
 

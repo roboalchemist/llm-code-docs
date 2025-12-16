@@ -18,7 +18,9 @@ Additionally, [[`mine_hard_negatives()`]](../package_reference/util.html#sentenc
 
 - [`(anchor,`]` `[`passage,`]` `[`label)`]` `[`labeled`]` `[`pairs`] with a label of 0 for negative and 1 for positive with [`output_format="labeled-pair"`],
 
-- [`(anchor,`]` `[`[doc1,`]` `[`doc2,`]` `[`...,`]` `[`docN],`]` `[`[label1,`]` `[`label2,`]` `[`...,`]` `[`labelN])`]` `[`triplets`] with labels of 0 for negative and 1 for positive with [`output_format="labeled-list"`],
+- [`(anchor,`]` `[`[doc1,`]` `[`doc2,`]` `[`...,`]` `[`docN],`]` `[`[label1,`]` `[`label2,`]` `[`...,`]` `[`labelN])`]` `[`triplets`] with labels of 0 for negative and 1 for positive with [`output_format="labeled-list"`]
+
+As well as formats with similarity scores instead of binarized labels, by setting [`output_scores=True`].
 
 +---------------------------------------------------+------------------------------------------+-------------------------------+---------------------------------------------------------------------------------------------------------------------------+
 | Inputs                                            | Labels                                   | Number of Model Output Labels | Appropriate Loss Functions                                                                                                |
