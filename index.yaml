@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-16 21:08
-  total_sources: 329
-  total_fetched: 288
+  last_updated: 2025-12-16 21:46
+  total_sources: 330
+  total_fetched: 289
   llms_txt_count: 286
   llms_txt_fetched: 247
   github_count: 28
   github_fetched: 26
-  web_scraped_count: 15
-  web_scraped_fetched: 15
+  web_scraped_count: 16
+  web_scraped_fetched: 16
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2506,6 +2506,13 @@ web_scraped:
   file_count: 6
   size: 61.3KB
   last_updated: 2025-12-13 00:01
+- name: mkdocs
+  description: mkdocs documentation
+  path: docs/web-scraped/mkdocs/
+  status: fetched
+  file_count: 19
+  size: 471.4KB
+  last_updated: 2025-12-16 21:45
 - name: namecheap-go
   description: namecheap-go documentation
   path: docs/web-scraped/namecheap-go/
