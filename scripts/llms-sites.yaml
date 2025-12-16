@@ -404,6 +404,9 @@ sites:
 - name: inspira-ui
   base_url: https://inspira-ui.com/docs/
   description: Inspira UI Vue component library
+- name: iterm2
+  base_url: https://iterm2.com/docs/
+  description: iTerm2 macOS terminal emulator with advanced features
 - name: instructor
   base_url: https://python.useinstructor.com/
   description: Instructor structured LLM output library
