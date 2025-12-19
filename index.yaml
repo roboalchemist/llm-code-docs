@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-16 22:06
-  total_sources: 331
-  total_fetched: 290
+  last_updated: 2025-12-19 20:05
+  total_sources: 332
+  total_fetched: 291
   llms_txt_count: 286
   llms_txt_fetched: 247
   github_count: 28
   github_fetched: 26
-  web_scraped_count: 17
-  web_scraped_fetched: 17
+  web_scraped_count: 18
+  web_scraped_fetched: 18
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2499,6 +2499,13 @@ web_scraped:
   file_count: 251
   size: 2.1MB
   last_updated: 2025-12-01 20:12
+- name: gokapi
+  description: gokapi documentation
+  path: docs/web-scraped/gokapi/
+  status: fetched
+  file_count: 8
+  size: 119.8KB
+  last_updated: 2025-12-19 20:05
 - name: metabase
   description: metabase documentation
   path: docs/web-scraped/metabase/
