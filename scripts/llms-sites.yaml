@@ -581,9 +581,15 @@ sites:
   base_url: https://docs.ollama.com/
   description: Local LLM runtime with API reference, capabilities, integrations, and
     CLI documentation
+- name: openai
+  base_url: https://developers.openai.com/
+  description: OpenAI API documentation including GPT, Whisper, DALL-E, and embeddings
 - name: openai-cdn
   base_url: https://cdn.openai.com/API/docs/txt/
   description: OpenAI API documentation CDN
+- name: openai-platform
+  base_url: https://platform.openai.com/.well-known/
+  description: OpenAI Platform API reference including Whisper, GPT, DALL-E, TTS, and embeddings
 - name: openphone
   base_url: https://www.openphone.com/docs/
   description: OpenPhone business phone API
