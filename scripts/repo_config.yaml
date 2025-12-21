@@ -207,3 +207,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/drawio"
     branch: "master"
+
+  - name: "ChromeDevToolsMCP"
+    description: "Chrome DevTools MCP - Model Context Protocol server for controlling Chrome browser via DevTools API"
+    repo_url: "https://github.com/ChromeDevTools/chrome-devtools-mcp.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/chrome-devtools-mcp"
+    branch: "main"
