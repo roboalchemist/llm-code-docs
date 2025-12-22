@@ -1,0 +1,91 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/howto/manage-data.shards.inspect.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/howto/manage-data.collections.py';
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.classes.java';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageCollectionsTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageCollectionsTest.cs";
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START InspectCollectionShards"
+    endMarker="END InspectCollectionShards"
+    language="py"
+  />
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```js
+let articles = client.collections.use('Article')
+
+// highlight-start
+const shards = await articles.config.getShards()
+// highlight-end
+console.log(JSON.stringify(shards, null, 2));
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+  shards, err := client.Schema().
+    ShardsGetter().
+    WithClassName("Article").
+    Do(context.Background())
+  if err != nil {
+    panic(err)
+  }
+  fmt.Printf("%v", shards)
+}
+```
+
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START InspectCollectionShards"
+      endMarker="// END InspectCollectionShards"
+      language="java"
+    />
+  </TabItem>
+ <TabItem value="java" label="Java v5 (Deprecated)">
+     <FilteredTextBlock
+       text={JavaCode}
+       startMarker="// InspectShard START"
+       endMarker="// InspectShard END"
+       language="java"
+     />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START InspectCollectionShards"
+      endMarker="// END InspectCollectionShards"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>

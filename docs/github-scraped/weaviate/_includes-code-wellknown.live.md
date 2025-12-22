@@ -1,0 +1,95 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/wellknown.live.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/rest.well-known.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START GetLiveness"
+    endMarker="END GetLiveness"
+    language="py"
+  />
+</TabItem>
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```js
+import weaviate from 'weaviate-client';
+
+const client = await weaviate.connectToLocal()
+const response = await client.isLive()
+
+console.log(response)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+
+  isLive, err := client.Misc().LiveChecker().Do(context.Background())
+  if err != nil {
+    panic(err)
+  }
+  fmt.Printf("%v", isLive)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("http", "localhost:8080");
+    WeaviateClient client = new WeaviateClient(config);
+
+    Result<Boolean> result = client.misc().liveChecker().run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl http://localhost:8080/v1/.well-known/live
+```
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,186 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/tutorial.schema.create.mdx
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/starter-guides/schema.py";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/StarterGuidesCollectionsTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/StarterGuidesCollectionsTest.cs";
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+<FilteredTextBlock
+  text={PyCode}
+  startMarker="# START BasicSchema"
+  endMarker="# END BasicSchema"
+  language="py"
+/>
+
+</TabItem>
+<TabItem value="java6" label="Java v6">
+  <FilteredTextBlock
+    text={JavaV6Code}
+    startMarker="// START BasicSchema"
+    endMarker="// END BasicSchema"
+    language="java"
+  />
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BasicSchema"
+      endMarker="// END BasicSchema"
+      language="csharp"
+    />
+  </TabItem>
+{/* <TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate/entities/models"
+
+)
+
+func main() {
+    cfg := weaviate.Config{
+        Host:   "WEAVIATE_INSTANCE_URL/",  // Replace with the URL
+        Scheme: "https",
+    }
+
+    client, err := weaviate.NewClient(cfg)
+    if err != nil {
+        panic(err)
+    }
+
+    // we will create the class "Question"
+    classObj := &models.Class{
+        Class:       "Question",
+        Description: "Information from a Jeopardy! question",  // description of the class
+        Properties: []*models.Property{
+            {
+                DataType:    []string{"string"},
+                Description: "The question",
+                Name:        "question",
+            },
+            {
+                DataType:    []string{"string"},
+                Description: "The answer",
+                Name:        "answer",
+            },
+        },
+    }
+
+    // add the schema
+    err := client.Schema().ClassCreator().WithClass(classObj).Do(context.Background())
+    if err != nil {
+        panic(err)
+    }
+
+    // get the schema
+    schema, err := client.Schema().Getter().Do(context.Background())
+    if err != nil {
+        panic(err)
+    }
+
+    // print the schema
+    fmt.Printf("%v", schema)
+}
+```
+
+</TabItem> */}
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import java.util.ArrayList;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.schema.model.DataType;
+import io.weaviate.client.v1.schema.model.Property;
+import io.weaviate.client.v1.schema.model.WeaviateClass;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/");
+    // Replace WEAVIATE_INSTANCE_URL with the URL
+
+    WeaviateClient client = new WeaviateClient(config);
+
+    // we will create the class "Question"
+    WeaviateClass clazz = WeaviateClass.builder()
+      .className("Question")
+      .description("Information from a Jeopardy! question")
+      .properties(new ArrayList() { {
+        add(Property.builder()
+          .dataType(new ArrayList(){ { add(DataType.STRING); } })
+          .description("The question")
+          .name("question")
+          .build());
+        add(Property.builder()
+          .dataType(new ArrayList(){ { add(DataType.STRING); } })
+          .description("The answer")
+          .name("answer")
+          .build());
+      } })
+      .build();
+
+    // add the schema
+    Result<Boolean> result = client.schema().classCreator().withClass(clazz).run();
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    // get the schema
+    Result<Schema> result = client.schema().getter().run();
+    if (result.hasErrors()) {
+        System.out.println(result.getError());
+        return;
+    }
+
+    // print the schema
+    System.out.println(result.getResult());
+
+  }
+}
+```
+
+</TabItem> */}
+{/* <TabItem value="curl" label="Curl">
+
+```bash
+# Edit ${WEAVIATE_INSTANCE_URL} to provide your instance URL.
+
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{
+    "class": "Question",
+    "description": "Information from a Jeopardy! question",
+    "properties": [
+        {
+            "dataType": ["text"],
+            "description": "The question",
+            "name": "question"
+        },
+        {
+            "dataType": ["text"],
+            "description": "The answer",
+            "name": "answer"
+        }
+    ]
+}' \
+https://${WEAVIATE_INSTANCE_URL}/v1/schema
+
+curl https://${WEAVIATE_INSTANCE_URL}/v1/schema
+```
+
+</TabItem> */}
+</Tabs>

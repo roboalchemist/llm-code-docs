@@ -1,0 +1,6 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/wcs.update-to-125-downtime.mdx
+
+:::note Cluster downtime
+
+Weaviate introduces [Raft](/weaviate/concepts/replication-architecture/cluster-architecture#metadata-replication-raft), an improved cluster synchronization mechanism, in v1.25. There is some downtime when you upgrade an HA cluster to 1.25 while the cluster switches to the new mechanism.
+:::

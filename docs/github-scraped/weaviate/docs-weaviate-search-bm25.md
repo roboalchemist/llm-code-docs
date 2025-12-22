@@ -1,0 +1,831 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/search/bm25.md
+
+---
+title: Keyword search
+description: Weaviate BM25 keyword search documentation covering basic queries, search operators, scoring, property targeting, weighting, tokenization, filtering and fuzzy matching.
+sidebar_position: 40
+image: og/docs/howto.jpg
+# tags: ['how to', 'similarity search']
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/\_includes/code/howto/search.bm25.py';
+import PyCodeV3 from '!!raw-loader!/\_includes/code/howto/search.bm25-v3.py';
+import TSCode from '!!raw-loader!/\_includes/code/howto/search.bm25.ts';
+import GoCode from '!!raw-loader!/\_includes/code/howto/go/docs/mainpkg/search-bm25_test.go';
+import JavaCode from '!!raw-loader!/\_includes/code/howto/java/src/test/java/io/weaviate/docs/search/KeywordSearchTest.java';
+import JavaV6Code from "!!raw-loader!/\_includes/code/java-v6/src/test/java/SearchKeywordTest.java";
+import CSharpCode from "!!raw-loader!/\_includes/code/csharp/SearchKeywordTest.cs";
+import GQLCode from '!!raw-loader!/\_includes/code/howto/search.bm25.gql.py';
+
+`Keyword` search, also called "BM25 (Best match 25)" or "sparse vector" search, returns objects that have the highest BM25F scores.
+
+import QueryAgentTip from '/_includes/query-agent-tip.mdx';
+
+<QueryAgentTip/>
+
+## Basic BM25 search
+
+To use BM25 keyword search, define a search string.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BM25BasicPython"
+      endMarker="# END BM25BasicPython"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START Basic"
+      endMarker="// END Basic"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START Basic"
+      endMarker="// END Basic"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25Basic"
+      endMarker="// END BM25Basic"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START Basic"
+      endMarker="// END Basic"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25Basic"
+      endMarker="// END BM25Basic"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# BM25BasicGraphQL"
+      endMarker="# END BM25BasicGraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# Expected BM25Basic results"
+  endMarker="# END Expected BM25Basic results"
+  language="json"
+/>
+
+</details>
+
+## Search operators
+
+:::info Added in `v1.31`
+:::
+
+Search operators define the minimum number of query [tokens](#set-tokenization) that must be present in the object to be returned. The options are `and`, or `or` (default).
+
+### `or`
+
+With the `or` operator, the search returns objects that contain at least `minimumOrTokensMatch` of the tokens in the search string.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BM25OperatorOrWithMin"
+      endMarker="# END BM25OperatorOrWithMin"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25OperatorOrWithMin"
+      endMarker="// END BM25OperatorOrWithMin"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25OperatorOrWithMin"
+      endMarker="// END BM25OperatorOrWithMin"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={GQLCode}
+      startMarker="# START BM25OperatorOrWithMin"
+      endMarker="# END BM25OperatorOrWithMin"
+      language="python"
+    />
+  </TabItem>
+</Tabs>
+
+### `and`
+
+With the `and` operator, the search returns objects that contain all tokens in the search string.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BM25OperatorAnd"
+      endMarker="# END BM25OperatorAnd"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25OperatorAnd"
+      endMarker="// END BM25OperatorAnd"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25OperatorAnd"
+      endMarker="// END BM25OperatorAnd"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={GQLCode}
+      startMarker="# START BM25OperatorAnd"
+      endMarker="# END BM25OperatorAnd"
+      language="python"
+    />
+  </TabItem>
+</Tabs>
+
+## Retrieve BM25F scores
+
+You can retrieve the BM25F `score` values for each returned object.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BM25WithScorePython"
+      endMarker="# END BM25WithScorePython"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START Score"
+      endMarker="// END Score"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START Score"
+      endMarker="// END Score"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25WithScore"
+      endMarker="// END BM25WithScore"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START Score"
+      endMarker="// END Score"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25WithScore"
+      endMarker="// END BM25WithScore"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# BM25WithScoreGraphQL"
+      endMarker="# END BM25WithScoreGraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# Expected BM25WithScore results"
+  endMarker="# END Expected BM25WithScore results"
+  language="json"
+/>
+
+</details>
+
+## Search on selected properties only
+
+A keyword search can be directed to only search a subset of object properties. In this example, the BM25 search only uses the `question` property to produce the BM25F score.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BM25WithPropertiesPython"
+      endMarker="# END BM25WithPropertiesPython"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START Properties"
+      endMarker="// END Properties"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START Properties"
+      endMarker="// END Properties"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25WithProperties"
+      endMarker="// END BM25WithProperties"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START Properties"
+      endMarker="// END Properties"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25WithProperties"
+      endMarker="// END BM25WithProperties"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# BM25WithPropertiesGraphQL"
+      endMarker="# END BM25WithPropertiesGraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# Expected BM25WithProperties results"
+  endMarker="# END Expected BM25WithProperties results"
+  language="json"
+/>
+
+</details>
+
+## Use weights to boost properties
+
+You can weight how much each property affects the overall BM25F score. This example boosts the `question` property by a factor of 2 while the `answer` property remains static.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BM25WithBoostedPropertiesPython"
+      endMarker="# END BM25WithBoostedPropertiesPython"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START Boost"
+      endMarker="// END Boost"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START Boost"
+      endMarker="// END Boost"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25WithBoostedProperties"
+      endMarker="// END BM25WithBoostedProperties"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START Boost"
+      endMarker="// END Boost"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25WithBoostedProperties"
+      endMarker="// END BM25WithBoostedProperties"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# BM25WithBoostedPropertiesGraphQL"
+      endMarker="# END BM25WithBoostedPropertiesGraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# Expected BM25WithBoostedProperties results"
+  endMarker="# END Expected BM25WithBoostedProperties results"
+  language="json"
+/>
+
+</details>
+
+## Set tokenization
+
+The BM25 query string is [tokenized](../config-refs/collections.mdx#tokenization) before it is used to search for objects using the inverted index.
+
+You must specify the tokenization method in the collection definition for [each property](../manage-collections/vector-config.mdx#property-level-settings).
+
+import TknPyCode from '!!raw-loader!/\_includes/code/howto/manage-data.collections.py';
+import TknPyCodeV3 from '!!raw-loader!/\_includes/code/howto/manage-data.collections-v3.py';
+import TknTsCode from '!!raw-loader!/\_includes/code/howto/manage-data.collections.ts';
+import TknJavaV6Code from "!!raw-loader!/\_includes/code/java-v6/src/test/java/ManageCollectionsTest.java";
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={TknPyCode}
+      startMarker="# START PropModuleSettings"
+      endMarker="# END PropModuleSettings"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TknTsCode}
+      startMarker="// START PropModuleSettings"
+      endMarker="// END PropModuleSettings"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={TknJavaV6Code}
+      startMarker="// START PropModuleSettings"
+      endMarker="// END PropModuleSettings"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START PropModuleSettings"
+      endMarker="// END PropModuleSettings"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START PropModuleSettings"
+      endMarker="// END PropModuleSettings"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+:::tip Tokenization and fuzzy matching
+
+For fuzzy matching and typo tolerance, use `trigram` tokenization. See the [fuzzy matching section](#fuzzy-matching) above for details.
+
+:::
+
+## `limit` & `offset`
+
+Use `limit` to set a fixed maximum number of objects to return.
+
+Optionally, use `offset` to paginate the results.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START limit Python"
+      endMarker="# END limit Python"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START limit"
+      endMarker="// END limit"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START limit"
+      endMarker="// END limit"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START limit"
+      endMarker="// END limit"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START limit"
+      endMarker="// END limit"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START limit"
+      endMarker="// END limit"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# START limit GraphQL"
+      endMarker="# END limit GraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+## Limit result groups
+
+To limit results to groups of similar distances to the query, use the [`autocut`](../api/graphql/additional-operators.md#autocut) filter to set the number of groups to return.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START autocut Python"
+      endMarker="# END autocut Python"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START autocut"
+      endMarker="// END autocut"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START autocut"
+      endMarker="// END autocut"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START autocut"
+      endMarker="// END autocut"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START autocut"
+      endMarker="// END autocut"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START autocut"
+      endMarker="// END autocut"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# START autocut GraphQL"
+      endMarker="# END autocut GraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# START Expected autocut results"
+  endMarker="# END Expected autocut results"
+  language="json"
+/>
+
+</details>
+
+## Group results
+
+:::info Added in `v1.25`
+:::
+
+Define criteria to group search results.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BM25GroupByPy4"
+      endMarker="# END BM25GroupByPy4"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JS/TS">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START BM25GroupBy"
+      endMarker="// END BM25GroupBy"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25GroupBy"
+      endMarker="// END BM25GroupBy"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START BM25GroupBy"
+      endMarker="// END BM25GroupBy"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25GroupBy"
+      endMarker="// END BM25GroupBy"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+```
+'Jeopardy!'
+'Double Jeopardy!'
+```
+
+</details>
+
+## Filter results
+
+For more specific results, use a [`filter`](../api/graphql/filters.md) to narrow your search.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BM25WithFilterPython"
+      endMarker="# END BM25WithFilterPython"
+      language="python"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START Filter"
+      endMarker="// END Filter"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START Filter"
+      endMarker="// END Filter"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BM25WithFilter"
+      endMarker="// END BM25WithFilter"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START Filter"
+      endMarker="// END Filter"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BM25WithFilter"
+      endMarker="// END BM25WithFilter"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="graphql" label="GraphQL">
+    <FilteredTextBlock
+      text={PyCodeV3}
+      startMarker="# BM25WithFilterGraphQL"
+      endMarker="# END BM25WithFilterGraphQL"
+      language="graphql"
+    />
+  </TabItem>
+</Tabs>
+
+<details>
+  <summary>Example response</summary>
+
+The response is like this:
+
+<FilteredTextBlock
+  text={PyCodeV3}
+  startMarker="# Expected BM25WithFilter results"
+  endMarker="# END Expected BM25WithFilter results"
+  language="json"
+/>
+
+</details>
+
+### Tokenization
+
+import TokenizationNote from '/\_includes/tokenization.mdx'
+
+<TokenizationNote />
+
+## Fuzzy matching
+
+You can enable fuzzy matching and typo tolerance in BM25 searches by using [`trigram` tokenization](../config-refs/collections.mdx#tokenization). This technique breaks text into overlapping 3-character sequences, allowing BM25 to find matches even when there are spelling errors or variations.
+
+This enables matching between similar but not identical strings because they share many trigrams:
+
+- `"Morgn"` and `"Morgan"` share trigrams like `"org", "rga", "gan"`
+
+Set the tokenization method to `trigram` at the property level when creating your collection:
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={TknPyCode}
+      startMarker="# START TrigramTokenization"
+      endMarker="# END TrigramTokenization"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TknTsCode}
+      startMarker="// START TrigramTokenization"
+      endMarker="// END TrigramTokenization"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={TknJavaV6Code}
+      startMarker="// START TrigramTokenization"
+      endMarker="// END TrigramTokenization"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START TrigramTokenization"
+      endMarker="// END TrigramTokenization"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+:::tip Best practices
+
+- Use trigram tokenization selectively on fields that need fuzzy matching. Filtering behavior will change significantly, as text filtering will be done based on trigram-tokenized text, instead of whole words
+- Keep exact-match fields with `word` or `field` tokenization for precision.
+
+:::
+
+## Further resources
+
+- [Connect to Weaviate](../connections/index.mdx)
+- [API References: Search operators # BM25](../api/graphql/search-operators.md#bm25)
+- [Reference: Tokenization options](../config-refs/collections.mdx#tokenization)
+
+## Questions and feedback
+
+import DocsFeedback from '/\_includes/docs-feedback.mdx';
+
+<DocsFeedback/>

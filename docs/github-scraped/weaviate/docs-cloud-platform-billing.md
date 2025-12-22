@@ -1,0 +1,73 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/cloud/platform/billing.mdx
+
+---
+title: Billing
+sidebar_position: 3
+description: "Billing information for Weaviate Cloud services, including free Sandbox clusters and paid Shared Cloud plans."
+image: og/wcd/user_guides.jpg
+---
+
+Sandbox clusters are free. You do not need a billing account to create a Sandbox cluster.
+
+Shared Cloud clusters are charged for resource usage. The monthly charge is determined by your usage and your [support plan](https://weaviate.io/support-plans). You have to have a billing account to create a Shared Cloud cluster.
+
+To estimate costs for different usage plans, see the [pricing page](https://weaviate.io/pricing).
+
+:::note
+
+If you have signed up for Weaviate Cloud through an external cloud provider like [AWS](https://aws.amazon.com/marketplace/pp/prodview-ng2dfhb4yjoic) or [GCP](https://console.cloud.google.com/marketplace/product/weaviate-gcp-mktplace/weaviate?inv=1&invt=AbwjlA), the billing will be managed through that cloud provider's marketplace.
+
+:::
+
+## Create an account
+
+Weaviate Cloud (WCD) uses [Stripe](https://stripe.com/) for billing. To create a Stripe account, follow these steps:
+
+import EditOrganization from '/_includes/wcs/weaviate-cloud-edit-organization.mdx'
+
+<EditOrganization/>
+
+import BillingSection from '/docs/cloud/img/weaviate-cloud-billing-section.png';
+
+<ol start="4">
+  <li>
+    Under the <code>Billing</code> section, click on the{' '}
+    <code>Add payment method</code> button (<span class="callout">3</span>).
+  </li>
+  <li>Fill in the needed personal information.</li>
+  <li>Create your Stripe account.</li>
+</ol>
+
+<div class="row">
+  <div class="card">
+    <div class="card__image">
+      <img src={BillingSection} alt="Add payment method to Weaviate Cloud" />
+    </div>
+    <div class="card__body">
+      <p>Add payment method to Weaviate Cloud.</p>
+    </div>
+  </div>
+</div>
+<br />
+
+## Usage charges
+
+For details on usage charges, see the [pricing page](https://weaviate.io/pricing).
+
+## Support & feedback levels
+
+Weaviate offers [multiple support plans at multiple levels](https://weaviate.io/support-plans) with specific support options. Refer to the page for further details.
+
+## High availability
+
+All paid plans include highly available (HA) clusters by default.
+
+## Billing cycles
+
+Charges are calculated and invoiced for active clusters on the 1st day of each month.
+
+## Support & feedback
+
+import SupportAndTrouble from '/_includes/wcs/support-and-troubleshoot.mdx';
+
+<SupportAndTrouble />

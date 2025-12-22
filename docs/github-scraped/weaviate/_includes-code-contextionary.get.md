@@ -1,0 +1,89 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/contextionary.get.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+
+client = weaviate.Client("http://localhost:8080")
+
+concept_info = client.contextionary.get_concept_vector("fashionMagazine")
+print(concept_info)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+
+  concept, err := client.C11y().
+    ConceptsGetter().
+    WithConcept("fashionMagazine").
+    Do(context.Background())
+
+  if err != nil {
+    panic(err)
+  }
+
+  fmt.Printf("%v", concept)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.contextionary.model.C11yWordsResponse;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("http", "localhost:8080");
+    WeaviateClient client = new WeaviateClient(config);
+
+    Result<C11yWordsResponse> result = client.c11y().conceptsGetter().withConcept("fashionMagazine").run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl http://localhost:8080/v1/modules/text2vec-contextionary/concepts/fashionMagazine
+```
+
+</TabItem>
+</Tabs>

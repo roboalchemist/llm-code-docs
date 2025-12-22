@@ -1,0 +1,113 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/quickstart.query.rag.mdx
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/python/quickstart.query.rag.py";
+import TSCode from "!!raw-loader!/_includes/code/typescript/quickstart.query.rag.ts";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/quickstart/3_2_rag/main.go";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/QuickstartTest.cs";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/QuickstartTest.java";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/quickstart/RAG.java";
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# RAG"
+      endMarker="# END RAG"
+      language="py"
+      title="quickstart_rag.py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// RAG"
+      endMarker="// END RAG"
+      language="ts"
+      title="quickstart_rag.ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// RAG"
+      endMarker="// END RAG"
+      language="goraw"
+      title="quickstart/3_2_rag/main.go"
+    />
+  </TabItem>
+
+  <TabItem value="java6" label="Java v6">
+  <FilteredTextBlock
+    text={JavaV6Code}
+    startMarker="// START RAG"
+    endMarker="// END RAG"
+    language="java"
+  />
+  </TabItem>
+
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START RAG"
+      endMarker="// END RAG"
+      language="javaraw"
+      title="quickstart/RAG.java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START RAG"
+      endMarker="// END RAG"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="curl" label="Curl">
+
+```bash
+# Best practice: store your credentials in environment variables
+# export WEAVIATE_URL="YOUR_INSTANCE_URL"    # Your Weaviate instance URL
+# export WEAVIATE_API_KEY="YOUR_API_KEY"     # Your Weaviate instance API key
+# export COHERE_APIKEY="YOUR_API_KEY"   # Your Cohere API key
+
+echo '{
+  "query": "{
+    Get {
+      Question (
+        limit: 2
+        nearText: {
+          concepts: [\"biology\"],
+        }
+      ) {
+        question
+        answer
+        category
+        _additional {
+          generate(
+            groupedResult: {
+              task: \"\"\"
+                Write a tweet with emojis about these facts.
+              \"\"\"
+            }
+          ) {
+            groupedResult
+            error
+          }
+        }
+      }
+    }
+  }"
+}' | tr -d "\n" | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $WEAVIATE_API_KEY" \
+    -H "X-Cohere-Api-Key: $COHERE_APIKEY" \
+    -d @- \
+    $WEAVIATE_URL/v1/graphql
+```
+
+  </TabItem>
+</Tabs>

@@ -1,0 +1,3 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/restart-warning.mdx
+
+This action restarts the cluster. If you have a stand-alone cluster, there is a short downtime while the cluster restarts. There is no downtime if you have a high availability cluster.

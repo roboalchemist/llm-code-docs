@@ -1,0 +1,39 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/connections/connect-embedded.mdx
+
+---
+title: Embedded Weaviate
+sidebar_position: 30
+image: og/docs/connect.jpg
+# tags: ['getting started', 'connect']
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCodeV4 from '!!raw-loader!/_includes/code/connections/connect-python-v4.py';
+import TsCodeV3 from '!!raw-loader!/_includes/code/connections/connect-ts-v3.ts';
+
+import EMBDIntro from '/_includes/embedded-intro.mdx';
+
+<EMBDIntro />
+
+For more details on using Embedded Weaviate, see [Embedded Weaviate](/deploy/installation-guides/embedded).
+
+## Start an Embedded Weaviate instance
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+   <FilteredTextBlock
+     text={PyCodeV4}
+     startMarker="# START Embedded"
+     endMarker="# END Embedded"
+     language="py"
+   />
+</TabItem>
+</Tabs>
+
+## Questions and feedback
+
+import DocsFeedback from '/_includes/docs-feedback.mdx';
+
+<DocsFeedback/>

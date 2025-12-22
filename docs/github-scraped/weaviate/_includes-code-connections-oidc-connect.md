@@ -1,0 +1,45 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/connections/oidc-connect.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyV4Code from '!!raw-loader!/_includes/code/connections/connect-python-v4.py';
+import TsV3Code from '!!raw-loader!/_includes/code/connections/connect-ts-v3.ts';
+import JavaCode from '!!raw-loader!/_includes/code/connections/connect.java';
+import GoCode from '!!raw-loader!/_includes/code/connections/connect.go';
+
+<Tabs className="code" groupId="languages">
+    <TabItem value="py" label="Python">
+         <FilteredTextBlock
+         text={PyV4Code}
+         startMarker="# START OIDCConnect"
+         endMarker="# END OIDCConnect"
+         language="py"
+         />
+    </TabItem>
+    <TabItem value="ts" label="JavaScript/TypeScript">
+         <FilteredTextBlock
+         text={TsV3Code}
+         startMarker="// START OIDCConnect"
+         endMarker="// END OIDCConnect"
+         language="ts"
+         />
+    </TabItem>
+    <TabItem value="go" label="Go">
+         <FilteredTextBlock
+         text={GoCode}
+         startMarker="// START OIDCConnect"
+         endMarker="// END OIDCConnect"
+         language="ts"
+         />
+    </TabItem>
+    <TabItem value="java" label="Java v5 (Deprecated)">
+         <FilteredTextBlock
+         text={JavaCode}
+         startMarker="// START OIDCConnect"
+         endMarker="// END OIDCConnect"
+         language="java"
+         />
+    </TabItem>
+</Tabs>

@@ -1,0 +1,81 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/wcs.authentication.api.key.edu-demo.mdx
+
+<!-- Delete these imports if already imported in the file -->
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+
+# Instantiate the client with the auth config
+client = weaviate.Client(
+    url='https://edu-demo.weaviate.network',
+    auth_client_secret=weaviate.auth.AuthApiKey(api_key='learn-weaviate'),
+    additional_headers={
+        # Only needed if using an inference service (e.g. `nearText`, `hybrid` or `generative` queries)
+        'X-OpenAI-Api-Key': 'YOUR-OPENAI-API-KEY',
+    },
+)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+// Instantiate the client with the auth config
+cfg := weaviate.Config{
+  Host:"edu-demo.weaviate.network",
+  Scheme: "https",
+  AuthConfig: auth.ApiKey{Value: "learn-weaviate"},
+  Headers: map[string]string{
+    // Only needed if using an inference service (e.g. `nearText`, `hybrid` or `generative` queries)
+    "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY",
+    },
+}
+
+client, err := weaviate.NewClient(cfg)
+if err != nil{
+  fmt.Println(err)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateAuthClient;
+
+Map<String, String> headers = new HashMap<String, String>() { {
+  // Only needed if using an inference service (e.g. `nearText`, `hybrid` or `generative` queries)
+  put("X-OpenAI-Api-Key", "YOUR-OPENAI-API-KEY");
+} };
+
+Config config = new Config("https", "edu-demo.weaviate.network", headers);
+WeaviateClient client = WeaviateAuthClient.apiKey(config, "learn-weaviate");
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+Note: Inference (e.g. OpenAI) API key only needed if using an inference service (e.g. `nearText`, `hybrid` or `generative` queries)
+```bash
+curl https://edu-demo.weaviate.network/v1/meta \
+-H 'Content-Type: application/json' \
+-H "X-OpenAI-Api-Key: YOUR-OPENAI-API-KEY" \
+-H "Authorization: Bearer YOUR-WEAVIATE-API-KEY" | jq
+```
+
+</TabItem>
+</Tabs>

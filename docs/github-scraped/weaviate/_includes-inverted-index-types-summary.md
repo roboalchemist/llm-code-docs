@@ -1,0 +1,7 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/inverted-index-types-summary.mdx
+
+| Inverted index type | Description | Applicable data types | Default | Availability |
+| --- | --- | --- | --- | --- |
+| `indexSearchable` | A searchable index for BM25-suitable Map index for BM25 or hybrid searching. | `text`, `text[]`,  | `true` | `v1.19` |
+| `indexFilterable` | A Roaring Bitmap index for match-based filtering. | Everything except `blob`, `geoCoordinates`, `object` and `phoneNumber` data types including arrays thereof | `true` | `v1.19` |
+| `indexRangeFilters` | A Roaring Bitmap index for numerical range-based filtering. | `int`, `number` and `date` only | `false` | `v1.26` |

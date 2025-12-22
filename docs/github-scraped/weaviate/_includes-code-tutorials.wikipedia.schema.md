@@ -1,0 +1,50 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/tutorials.wikipedia.schema.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+# client.schema.delete_all()  # ⚠️ uncomment to start from scratch by deleting ALL data
+
+# ===== Create Article class for the schema =====
+article_class = {
+    "class": "Article",
+    "description": "An article from the Simple English Wikipedia data set",
+    "vectorizer": "text2vec-openai",
+    "moduleConfig": {
+        # Match how OpenAI created the embeddings for the `content` (`text`) field
+        "text2vec-openai": {
+            "model": "ada",
+            "modelVersion": "002",
+            "type": "text",
+            "vectorizeClassName": False
+        }
+    },
+    "properties": [
+        {
+            "name": "title",
+            "description": "The title of the article",
+            "dataType": ["text"],
+            # Don't vectorize the title
+            "moduleConfig": {"text2vec-openai": {"skip": True}}
+        },
+        {
+            "name": "content",
+            "description": "The content of the article",
+            "dataType": ["text"],
+        }
+    ]
+}
+
+# Add the Article class to the schema
+client.schema.create_class(article_class)
+print('Created schema');
+```
+
+</TabItem>
+
+
+</Tabs>

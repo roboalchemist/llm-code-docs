@@ -1,0 +1,67 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/howto/manage-data.shards.update.mdx
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+
+import PyCode from "!!raw-loader!/_includes/code/howto/manage-data.collections.py";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/manage-data.shards_test.go";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.classes.java";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageCollectionsTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageCollectionsTest.cs";
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START UpdateCollectionShards"
+    endMarker="END UpdateCollectionShards"
+    language="py"
+  />
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```js
+let articles = client.collections.use("Article");
+
+// highlight-start
+const shards = await articles.config.updateShards("READY", "shard-1234");
+// highlight-end
+console.log(JSON.stringify(shards, null, 2));
+```
+
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// UpdateShardStatus START"
+      endMarker="// UpdateShardStatus END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START UpdateCollectionShards"
+      endMarker="// END UpdateCollectionShards"
+      language="java"
+    />
+  </TabItem>
+ <TabItem value="java" label="Java v5 (Deprecated)">
+     <FilteredTextBlock
+       text={JavaCode}
+       startMarker="// UpdateShardStatus START"
+       endMarker="// UpdateShardStatus END"
+       language="java"
+     />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START UpdateCollectionShards"
+      endMarker="// END UpdateCollectionShards"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>

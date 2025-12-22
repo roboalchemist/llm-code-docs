@@ -1,0 +1,68 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/weaviate-embeddings-vectorizer-parameters.mdx
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/docs/weaviate/model-providers/_includes/provider.vectorizer.py";
+import TSCode from "!!raw-loader!/docs/weaviate/model-providers/_includes/provider.vectorizer.ts";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/model-providers/2-usage-text/main.go";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ModelProvidersTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ModelProvidersTest.cs";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/model_providers/UsageWeaviateTextEmbeddings.java";
+
+- `model` (optional): The name of the model to use for embedding generation.
+- `dimensions` (optional): The number of dimensions to use for the generated embeddings.
+- `base_url` (optional): The base URL for the Weaviate Embeddings service. (Not required in most cases.)
+
+The following examples show how to configure Weaviate Embeddings-specific options.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START SnowflakeArcticEmbedMV15"
+      endMarker="# END SnowflakeArcticEmbedMV15"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START SnowflakeArcticEmbedMV15"
+      endMarker="// END SnowflakeArcticEmbedMV15"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START SnowflakeArcticEmbedMV15"
+      endMarker="// END SnowflakeArcticEmbedMV15"
+      language="goraw"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START SnowflakeArcticEmbedMV15"
+      endMarker="// END SnowflakeArcticEmbedMV15"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START SnowflakeArcticEmbedMV15"
+      endMarker="// END SnowflakeArcticEmbedMV15"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START SnowflakeArcticEmbedMV15"
+      endMarker="// END SnowflakeArcticEmbedMV15"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>

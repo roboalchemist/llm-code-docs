@@ -1,0 +1,27 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/embedded.instantiate.simple.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/tutorials/connect.py';
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+     <FilteredTextBlock
+       text={PyCode}
+       startMarker="# START ConnectEmbedded"
+       endMarker="# END ConnectEmbedded"
+       language="py"
+     />
+
+  </TabItem>
+
+  <TabItem value="ts" label="JavaScript/TypeScript">
+
+  ```js
+  // Coming soon
+  ```
+
+  </TabItem>
+
+</Tabs>

@@ -1,0 +1,91 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/wcs.client.is_ready.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyClientCode from '!!raw-loader!/_includes/code/wcs.client.is_ready.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyClientCode}
+    startMarker="# WCDQuickStartInstantiation"
+    endMarker="# END WCDQuickStartInstantiation"
+    language="py"
+  />
+</TabItem>
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```js
+import weaviate, { WeaviateClient } from 'weaviate-client';
+
+const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
+  'https://WEAVIATE_INSTANCE_URL', {                    // Replace with your Weaviate endpoint
+  authCredentials: new weaviate.ApiKey('YOUR-WEAVIATE-API-KEY'), // Replace with your Weaviate instance API key
+});
+
+const response = await client.isReady();
+console.log(response);
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+func main() {
+    cfg := weaviate.Config{
+        Host:   "WEAVIATE_INSTANCE_URL/",  // Replace with your Weaviate endpoint
+        Scheme: "https",
+        AuthConfig: auth.ApiKey{Value: "YOUR-WEAVIATE-API-KEY"}, // Replace with your Weaviate instance API key
+    }
+
+    client, err := weaviate.NewClient(cfg)
+    if err != nil {
+      panic(err)
+    }
+
+    isReady, err := client.Misc().ReadyChecker().Do(context.Background())
+    if err != nil {
+      panic(err)
+    }
+    fmt.Printf("%v", isReady)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateAuthClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.misc.model.Meta;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/");  // Replace with your Weaviate endpoint
+    WeaviateClient client = WeaviateAuthClient.apiKey(config, "YOUR-WEAVIATE-API-KEY");  // Replace with your Weaviate instance API key
+
+    Result<Boolean> result = client.misc().readyChecker().run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem>
+</Tabs>

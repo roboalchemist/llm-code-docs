@@ -1,0 +1,210 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/connections/connect-cloud.mdx
+
+---
+title: Weaviate Cloud
+sidebar_position: 10
+image: og/docs/connect.jpg
+# tags: ['getting started', 'connect']
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+
+import PyCodeV4 from "!!raw-loader!/_includes/code/connections/connect-python-v4.py";
+import TsCodeV3 from "!!raw-loader!/_includes/code/connections/connect-ts-v3.ts";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ConnectionTest.java";
+import JavaCode from "!!raw-loader!/_includes/code/connections/connect.java";
+import ShellCode from "!!raw-loader!/_includes/code/connections/connect.sh";
+import GoCode from "!!raw-loader!/_includes/code/connections/connect.go";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ConnectionTest.cs";
+
+<CloudOnlyBadge />
+
+Follow these steps to connect to a [Weaviate Cloud (WCD)](/go/console?utm_content=howto/) instance.
+
+## Retrieve your API key and REST endpoint
+
+Open the [Weaviate Cloud console](/go/console?utm_content=howto/) and follow the steps below:
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="ok8l954sxr"
+    src="https://app.guideflow.com/embed/ok8l954sxr"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="ok8l954sxr"
+  ></script>
+</div>
+
+<br />
+
+## Connection example
+
+<!-- TODO[g-despot] Refactor into an import and reuse in Cloud docs to avoid duplication -->
+
+To connect, use the `REST Endpoint` and the `Admin` API key stored as [environment variables](#environment-variables):
+
+import HostnameWarning from "/_includes/wcs/hostname-warning.mdx";
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START APIKeyWCD"
+      endMarker="# END APIKeyWCD"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="py"
+    />
+    <HostnameWarning />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="py"
+    />
+    <HostnameWarning />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START APIKeyWCD"
+      endMarker="# END APIKeyWCD"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+## Third party API keys
+
+If you use API-based models for vectorization or RAG, you must provide an API key for the service. To add third party API keys, follow these examples:
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START ThirdPartyAPIKeys"
+      endMarker="# END ThirdPartyAPIKeys"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START ThirdPartyAPIKeys"
+      endMarker="// END ThirdPartyAPIKeys"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START ThirdPartyAPIKeys"
+      endMarker="// END ThirdPartyAPIKeys"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ThirdPartyAPIKeys"
+      endMarker="// END ThirdPartyAPIKeys"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START ThirdPartyAPIKeys"
+      endMarker="// END ThirdPartyAPIKeys"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START ThirdPartyAPIKeys"
+      endMarker="// END ThirdPartyAPIKeys"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START ThirdPartyAPIKeys"
+      endMarker="# END ThirdPartyAPIKeys"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+## Environment variables
+
+import EnvVarsHowto from "/_includes/environment-variables.mdx";
+
+<EnvVarsHowto />
+
+## gRPC timeouts
+
+import GRPCTimeoutIntro from "/_includes/connect/timeouts-intro.mdx";
+
+<GRPCTimeoutIntro />
+
+import GRPCTimeouts from "/_includes/code/connections/timeouts-cloud.mdx";
+
+<GRPCTimeouts />
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

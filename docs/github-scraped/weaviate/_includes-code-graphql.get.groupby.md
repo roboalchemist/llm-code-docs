@@ -1,0 +1,30 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.get.groupby.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.get.simple.py';
+import PyCodeV3 from '!!raw-loader!/_includes/code/graphql.get.simple.v3.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START GroupByExample"
+    endMarker="END GroupByExample"
+    language="py"
+  />
+</TabItem>
+<TabItem value="gql" label="Raw GraphQL">
+
+  The other clients do not yet natively support groupby operations. Please use "raw" graphql queries to perform groupby operations.
+
+  <FilteredTextBlock
+    text={PyCodeV3}
+    startMarker="START GroupByExampleGQL"
+    endMarker="END GroupByExampleGQL"
+    language="graphql"
+  />
+</TabItem>
+</Tabs>

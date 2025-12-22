@@ -846,9 +846,6 @@ sites:
 - name: warp
   base_url: https://docs.warp.dev/
   description: Warp AI-powered terminal
-- name: weaviate
-  base_url: https://docs.weaviate.io/
-  description: Weaviate open-source vector database and cloud platform
 - name: webflow
   base_url: https://developers.webflow.com/
   description: Webflow website builder developer platform

@@ -1,0 +1,104 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.filters.hybrid.properties.mdx
+
+<!-- Imported from /docs/weaviate/api/graphql/search-operators/#hybrid -->
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.search-operators.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START GraphQLHybridWithPropertiesSpecified"
+    endMarker="END GraphQLHybridWithPropertiesSpecified"
+    language="py"
+  />
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+HybridArgument hybrid = client.graphQL().arguments().HybridArgBuilder()
+  .query("Fisherman that catches salmon")
+  .alpha(0.25f)  // closer to pure keyword search
+// highlight-start
+  .properties(String[]{"question"})  // changing to "answer" will yield a different result set
+// highlight-end
+  .build();
+Field name = Field.builder().name("question" "answer").build();
+Field _additional = Field.builder()
+  .name("_additional")
+  .fields(new Field[]{Field.builder().name("score").build()})
+  .build();
+// when
+testGenerics.createTestSchemaAndData(client);
+Result<GraphQLResponse> result = client.graphQL().get().withClassName("JeopardyQuestion")
+  .withHybrid(hybrid)
+  .withFields(name, _additional)
+  .withLimit(3)
+  .run();
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+  "query": "{
+      Get {
+        JeopardyQuestion (
+          hybrid: {
+            query: \"Venus\"
+            alpha: 0.25
+# highlight-start
+            properties: [\"question\"]
+# highlight-end
+          }
+          limit: 3
+        )
+        {
+          question
+          answer
+          _additional { score }
+      }
+    }
+  }"
+}' | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer learn-weaviate' \
+    -H "X-OpenAI-Api-Key: $OPENAI_API_KEY" \
+    -d @- \
+    https://edu-demo.weaviate.network/v1/graphql
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Get {
+    JeopardyQuestion(
+      hybrid: {
+        query: "Venus"
+        alpha: 0.25  # closer to pure keyword search
+# highlight-start
+        properties: ["question"]  # changing to "answer" will yield a different result set
+# highlight-end
+      }
+      limit: 3
+    ) {
+      question
+      answer
+      _additional {
+        score
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

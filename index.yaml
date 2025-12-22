@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-22 07:58
-  total_sources: 337
-  total_fetched: 296
-  llms_txt_count: 288
-  llms_txt_fetched: 249
+  last_updated: 2025-12-22 08:30
+  total_sources: 336
+  total_fetched: 295
+  llms_txt_count: 287
+  llms_txt_fetched: 248
   github_count: 30
   github_fetched: 28
   web_scraped_count: 19
@@ -2131,14 +2131,6 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 628.5KB
-  last_updated: 2025-12-21 22:24
-- name: weaviate
-  description: Weaviate open-source vector database and cloud platform
-  url: https://docs.weaviate.io/
-  path: docs/llms-txt/weaviate/
-  status: fetched
-  file_count: 325
-  size: 31.9MB
   last_updated: 2025-12-21 22:24
 - name: webflow
   description: Webflow website builder developer platform

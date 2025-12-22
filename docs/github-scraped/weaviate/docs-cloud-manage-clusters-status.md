@@ -1,0 +1,127 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/cloud/manage-clusters/status.mdx
+
+---
+title: Cluster status
+sidebar_position: 3
+description: "Monitor and check the operational status of your Weaviate Cloud clusters through multiple methods."
+image: og/wcd/user_guides.jpg
+---
+
+[Weaviate Cloud (WCD)](/go/console?utm_content=cloud) exposes two ways of checking the cluster status:
+
+- A **[web interface](#select-a-cluster)** in the Weaviate Cloud console.
+- An **[API endpoint](#api-endpoint)** that provides information about your Weaviate instance.
+
+## Select a cluster
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="qp7x9q6fjr"
+    src="https://app.guideflow.com/embed/qp7x9q6fjr"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="qp7x9q6fjr"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Select your cluster</summary>
+
+1. Open the [Weaviate Cloud console](/go/console?utm_content=cloud).
+2. Open the `Clusters` list from the left sidebar.
+3. Select the cluster you want to inspect.
+4. The cluster details panel will open to the right.
+
+</details>
+
+## Cluster status information
+
+You can see the following cluster statistics at the top of the page:
+
+- `Dimensions stored`
+- `Object count`
+- `Cluster expires on` (only for Sandbox cluster)
+
+You can find the following information on the cluster details page:
+
+- `Name of the cluster`
+- `REST Endpoint`
+- `gRPC Endpoint`
+- `API Keys`
+- `Roles`
+- `Weaviate Database version`
+- `Cloud provider`
+- `Cloud region`
+- `Created at`
+- `Type` (Shared Cloud or Sandbox)
+- `Backup retention days` (only for Shared Cloud cluster)
+- `Availability SLA` (only for Shared Cloud cluster)
+
+Clusters also have an `Advanced configuration` section to configure or check the status of these additional settings:
+
+- `Enable auto schema generation`
+- `Allow all CORS origins`
+
+## API Endpoint {#api-endpoint}
+
+To get cluster details programmatically, use the [`nodes`](/deploy/configuration/nodes.md) REST endpoint.
+
+import APIOutputs from "/_includes/rest/node-endpoint-info.mdx";
+
+<APIOutputs />
+
+## Enabled modules
+
+Each Weaviate instance has a set of enabled modules. This list will vary depending on the instance, due to the Weaviate version and Weaviate Cloud policies.
+
+To see the list of enabled modules on a Weaviate Cloud instance:
+
+import ClusterStatusModules from "/docs/cloud/img/weaviate-cloud-available-modules.png";
+
+<div class="row">
+  <div class="col col--4">
+    <ol>
+      <li>Open the Weaviate Cloud console.</li>
+      <li>
+        Click on <code>Clusters</code> and select the cluster you want to check.
+      </li>
+      <li>
+        Scroll to the <code>Available modules</code> section under{" "}
+        <code>Advanced options</code>.
+      </li>
+      <li>You can click on a module to open its documentation.</li>
+    </ol>
+  </div>
+  <div class="col col--8">
+    <div class="card">
+      <div class="card__image">
+        <img src={ClusterStatusModules} alt="Create a cluster" />
+      </div>
+      <div class="card__body">Available modules for your cluster.</div>
+    </div>
+  </div>
+</div>
+
+## Support & feedback
+
+import SupportAndTrouble from "/_includes/wcs/support-and-troubleshoot.mdx";
+
+<SupportAndTrouble />

@@ -1,0 +1,32 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/support-and-troubleshoot.mdx
+
+For help with **Shared Cloud** and **Dedicated Cloud**, contact [Weaviate support](mailto:support@weaviate.io) directly to open a support ticket. To add a [support plan](https://weaviate.io/support-plans), contact [Weaviate sales](https://weaviate.io/pricing#contact-sales).
+
+If you have any questions or feedback, let us know in the [user forum](https://forum.weaviate.io/).
+
+import CardsSection from "/src/components/CardsSection";
+import styles from "/src/components/CardsSection/styles.module.scss";
+
+export const feedbackCardsData = [
+  {
+    id: "new",
+    title: "Technical questions",
+    description: (
+      <>
+        If you have questions feel free to post on our{" "}
+        <span className={styles.highlight}>Community forum</span>.
+      </>
+    ),
+    link: "https://forum.weaviate.io/new-topic?title=%5BQuestion%5D%20YOUR%20TOPIC&body=Details%20here&category=support&tags=technical",
+    icon: "fas fa-comments",
+  },
+  {
+    id: "concepts",
+    title: "Documentation feedback",
+    description: "Leave feedback by opening a GitHub issue.",
+    link: "https://github.com/weaviate/docs/issues",
+    icon: "fa-brands fa-github",
+  },
+];
+
+<CardsSection items={feedbackCardsData} className={styles.smallCards} />

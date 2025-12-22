@@ -1,0 +1,22 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/response.biology.where.questions.mdx
+
+```json
+{
+    "data": {
+        "Get": {
+            "Question": [
+                {
+                    "answer": "Elephant",
+                    "category": "ANIMALS",
+                    "question": "It's the only living mammal in the order Proboseidea"
+                },
+                {
+                    "answer": "the nose or snout",
+                    "category": "ANIMALS",
+                    "question": "The gavial looks very much like a crocodile except for this bodily feature"
+                }
+            ]
+        }
+    }
+}
+```

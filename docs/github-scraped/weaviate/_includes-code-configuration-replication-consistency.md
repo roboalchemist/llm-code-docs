@@ -1,0 +1,56 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/configuration/replication-consistency.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import PyCode from '!!raw-loader!/_includes/code/howto/manage-data.collections.py';
+import TSCode from '!!raw-loader!/_includes/code/howto/manage-data.collections.ts';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START AsyncRepair"
+      endMarker="# END AsyncRepair"
+      language="py"
+    />
+  </TabItem>
+
+
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START AsyncRepair"
+      endMarker="// END AsyncRepair"
+      language="ts"
+    />
+  </TabItem>
+
+  <TabItem value="curl" label="cURL">
+
+```bash
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{
+    "class": "Article",
+    "properties": [
+        {
+            "dataType": [
+                "string"
+            ],
+            "description": "Title of the article",
+            "name": "title"
+        }
+    ],
+    "replicationConfig": {
+      "factor": 3,
+      "asyncEnabled": true
+    }
+}' \
+http://localhost:8080/v1/schema
+```
+
+</TabItem>
+</Tabs>

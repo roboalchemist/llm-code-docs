@@ -1,0 +1,144 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/howto/manage-data.read.check.existence.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/howto/manage-data.create.py';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageObjectsReadTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageObjectsReadTest.cs";
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START CheckForAnObject"
+    endMarker="END CheckForAnObject"
+    language="py"
+  />
+</TabItem>
+
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```js
+import { generateUuid5 } from 'weaviate-client';
+
+// generate uuid based on the key properties used during data insert
+// highlight-start
+const object_uuid = generateUuid5(
+  JSON.stringify({ name: "Author to fetch"})
+)
+// highlight-end
+
+const authors = await client.collections.use('Author')
+// highlight-start
+const authorExists = await authors.data.exists(object_uuid)
+// highlight-end
+
+console.log('Author exists: ' + authorExists)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate-go-client/v5/weaviate/data/replication"  // for consistency levels
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+
+  exists, err := client.Data().Checker().
+    WithClassName("MyClass").
+    WithID("36ddd591-2dee-4e7e-a3cc-eb86d30a0923").
+    WithConsistencyLevel(replication.ConsistencyLevel.ONE).  // default QUORUM
+    Do(context.Background())
+
+  if err != nil {
+    panic(err)
+  }
+  fmt.Printf("%v", exists)
+}
+
+// The parameter passed to "WithConsistencyLevel" can be one of:
+// * replication.ConsistencyLevel.ALL,
+// * replication.ConsistencyLevel.QUORUM, or
+// * replication.ConsistencyLevel.ONE.
+//
+// It determines how many replicas must acknowledge a request
+// before it is considered successful.
+```
+
+</TabItem>
+<TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START CheckForAnObject"
+      endMarker="// END CheckForAnObject"
+      language="java"
+    />
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.data.replication.model.ConsistencyLevel;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("http", "localhost:8080");
+    WeaviateClient client = new WeaviateClient(config);
+
+    Result<Boolean> result = client.data().checker()
+      .withClassName("MyClass")
+      .withID("36ddd591-2dee-4e7e-a3cc-eb86d30a4303")
+      .withConsistencyLevel(ConsistencyLevel.ONE)  // default QUORUM
+      .run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+
+// The parameter passed to `withConsistencyLevel` can be one of:
+// * ConsistencyLevel.ALL,
+// * ConsistencyLevel.QUORUM, or
+// * ConsistencyLevel.ONE.
+//
+// It determines how many replicas must acknowledge a request
+// before it is considered successful.
+
+```
+
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START CheckForAnObject"
+      endMarker="// END CheckForAnObject"
+      language="csharp"
+    />
+  </TabItem>
+
+</Tabs>

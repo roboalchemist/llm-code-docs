@@ -1,0 +1,31 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/wcs-landing-get-started.mdx
+
+To get started, visit the following resources:
+
+import CardsSection from "/src/components/CardsSection";
+
+export const nextStepsData = [
+  {
+    title: "Weaviate Cloud: Console",
+    description:
+      " Go directly to the Weaviate Cloud console and create your first cluster.",
+    link: "/go/console?utm_content=others",
+    icon: "fa fa-desktop",
+  },
+  {
+    title: "Weaviate Cloud: Quickstart",
+    description:
+      "Follow the step-by-step quickstart guide to set up your first Weaviate Cloud project.",
+    link: "/cloud/quickstart",
+    icon: "fa fa-book",
+  },
+  {
+    title: "Weaviate Cloud: Pricing",
+    description: "Check out the available pricing plans for Weaviate Cloud.",
+    link: "https://weaviate.io/pricing",
+    icon: "fa fa-credit-card",
+  },
+];
+
+<CardsSection items={nextStepsData} />
+<br />

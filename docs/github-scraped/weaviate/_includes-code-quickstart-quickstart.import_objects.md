@@ -1,0 +1,139 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/quickstart.import_objects.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/python/quickstart.import_objects.py';
+import TSCode from '!!raw-loader!/_includes/code/typescript/quickstart.import_objects.ts';
+import GoCode from '!!raw-loader!/_includes/code/howto/go/docs/quickstart/2_2_add_objects/main.go';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/QuickstartTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/QuickstartTest.cs";
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/quickstart/Import.java';
+
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="# Import"
+    endMarker="# END Import"
+    language="py"
+    title="quickstart_import.py"
+  />
+
+
+During a batch import, any failed objects can be obtained through `batch.failed_objects`. Additionally, a running count of failed objects is maintained and can be accessed through `batch.number_errors` within the context manager. This counter can be used to stop the import process in order to investigate the failed objects or references. Find out more about error handling on the Python client [reference page](/weaviate/client-libraries/python/notes-best-practices#error-handling).
+
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+<FilteredTextBlock
+  text={TSCode}
+  startMarker="// Import"
+  endMarker="// END Import"
+  language="ts"
+  title="quickstart_import.ts"
+/>
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+  text={GoCode}
+  startMarker="// Import"
+  endMarker="// END Import"
+  language="goraw"
+  title="quickstart/2_2_import/main.go"
+/>
+</TabItem>
+
+<TabItem value="java6" label="Java v6">
+<FilteredTextBlock
+  text={JavaV6Code}
+  startMarker="// START Import"
+  endMarker="// END Import"
+  language="java"
+/>
+</TabItem>
+
+<TabItem value="java" label="Java v5 (Deprecated)">
+<FilteredTextBlock
+  text={JavaCode}
+  startMarker="// START Import"
+  endMarker="// END Import"
+  language="javaraw"
+  title="quickstart/Import.java"
+/>
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START Import"
+      endMarker="// END Import"
+      language="csharp"
+    />
+  </TabItem>
+
+<TabItem value="curl" label="Curl">
+
+:::note
+- Download the `jeopardy_tiny.json` file from [here](https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json) before running the following script.
+- This assumes you have `jq` installed.
+:::
+
+```bash
+# Best practice: store your credentials in environment variables
+# export WEAVIATE_URL="YOUR_INSTANCE_URL"  # Your Weaviate instance URL
+# export WEAVIATE_API_KEY="YOUR_API_KEY"   # Your Weaviate instance API key
+
+# Set batch size
+BATCH_ENDPOINT="$WEAVIATE_URL/v1/batch/objects"
+BATCH_SIZE=100
+
+# Read the JSON file and loop through its entries
+lines_processed=0
+batch_data="{\"objects\": ["
+
+cat jeopardy_tiny.json | jq -c '.[]' | while read line; do
+  # Concatenate lines
+  line=$(echo "$line" | jq "{class: \"Question\", properties: {answer: .Answer, question: .Question, category: .Category}}")
+  if [ $lines_processed -eq 0 ]; then
+    batch_data+=$line
+  else
+    batch_data+=",$line"
+  fi
+
+  lines_processed=$((lines_processed + 1))
+
+  # If the batch is full, send it to the API using curl
+  if [ $lines_processed -eq $BATCH_SIZE ]; then
+    batch_data+="]}"
+
+    curl -X POST "$BATCH_ENDPOINT" \
+         -H "Content-Type: application/json" \
+         -H "Authorization: Bearer $WEAVIATE_API_KEY" \
+         -d "$batch_data"
+    echo "" # Print a newline for better output formatting
+
+    # Reset the batch data and counter
+    lines_processed=0
+    batch_data="{\"objects\": ["
+  fi
+done
+
+# Send the remaining data (if any) to the API using curl
+if [ $lines_processed -ne 0 ]; then
+  batch_data+="]}"
+
+  curl -X POST "$BATCH_ENDPOINT" \
+       -H "Content-Type: application/json" \
+       -H "Authorization: Bearer $WEAVIATE_API_KEY" \
+       -d "$batch_data"
+  echo "" # Print a newline for better output formatting
+fi
+```
+
+</TabItem>
+</Tabs>

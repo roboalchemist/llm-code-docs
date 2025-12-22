@@ -1,0 +1,12 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/clients/code-examples.mdx
+
+Usage information for various operations and features can be found throughout the Weaviate documentation.
+
+import CardsSection from "/src/components/CardsSection";
+import { howToGuidesCardsData } from "/_includes/configuration/how-to-manuals.js";
+
+<br />
+<CardsSection items={howToGuidesCardsData} />
+<br />
+
+The Weaviate API reference pages for [search](/weaviate/api) and [REST](/weaviate/api/rest) may also be useful starting points.

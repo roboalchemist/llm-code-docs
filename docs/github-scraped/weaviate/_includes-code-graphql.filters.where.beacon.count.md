@@ -1,0 +1,180 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.filters.where.beacon.count.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.filters.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START FilterByCountOfReferences"
+    endMarker="END FilterByCountOfReferences"
+    language="py"
+  />
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.filters.Operator;
+import io.weaviate.client.v1.filters.WhereFilter;
+import io.weaviate.client.v1.graphql.model.GraphQLResponse;
+import io.weaviate.client.v1.graphql.query.fields.Field;
+
+public class App {
+    public static void main(String[] args) {
+        Config config = new Config("http", "localhost:8080");
+        WeaviateClient client = new WeaviateClient(config);
+
+        Field name = Field.builder().name("name").build();
+        Field wroteArticles = Field.builder()
+                .name("writesFor")
+                .fields(new Field[]{
+                        Field.builder()
+                                .name("... on Publication")
+                                .fields(new Field[]{
+                                        Field.builder().name("name").build()
+                                })
+                                .build()
+                })
+                .build();
+
+        WhereFilter where = WhereFilter.builder()
+                .path(new String[]{"writesFor"})
+                .operator(Operator.GreaterThanEqual)
+                .valueInt(2)
+                .build();
+
+        Result<GraphQLResponse> result = client.graphQL().get()
+                .withClassName("Author")
+                .withFields(name, wroteArticles)
+                .withWhere(where)
+                .run();
+
+        if (result.hasErrors()) {
+            System.out.println(result.getError());
+            return;
+        }
+        System.out.println(result.getResult());
+    }
+}
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate/filters"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate/graphql"
+)
+
+func main() {
+	cfg := weaviate.Config{
+		Host:   "localhost:8080",
+		Scheme: "http",
+	}
+	client, err := weaviate.NewClient(cfg)
+	if err != nil {
+		panic(err)
+	}
+
+	fields := []graphql.Field{
+		{Name: "name"},
+		{Name: "writesFor", Fields: []graphql.Field{
+			{Name: "... on Publication", Fields: []graphql.Field{
+				{Name: "name"},
+			}},
+		}},
+	}
+
+	where := filters.Where().
+		WithPath([]string{"writesFor"}).
+		WithOperator(filters.GreaterThanEqual).
+		WithValueInt(2)
+
+	ctx := context.Background()
+
+	result, err := client.GraphQL().Get().
+		WithClassName("Author").
+		WithFields(fields...).
+		WithWhere(where).
+		Do(ctx)
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%v", result)
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+  "query": "{
+    Get {
+      Author(
+        where:{
+          valueInt: 2
+          operator: GreaterThanEqual
+          path: [\"writesFor\"]
+        }
+      ) {
+        name
+        writesFor {
+          ... on Publication {
+            name
+          }
+        }
+      }
+    }
+   }"
+  }' | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer learn-weaviate' \
+    -d @- \
+    https://edu-demo.weaviate.network/v1/graphql
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Get {
+    Author(
+      where: {
+        valueInt: 2,
+        operator: GreaterThanEqual,
+        path: ["writesFor"]
+      }
+    ) {
+      name
+      writesFor {
+        ... on Publication {
+          name
+        }
+      }
+    }
+  }
+ }
+```
+
+</TabItem>
+</Tabs>
