@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-19 20:05
-  total_sources: 332
-  total_fetched: 291
+  last_updated: 2025-12-23 23:37
+  total_sources: 333
+  total_fetched: 292
   llms_txt_count: 286
   llms_txt_fetched: 247
   github_count: 28
   github_fetched: 26
-  web_scraped_count: 18
-  web_scraped_fetched: 18
+  web_scraped_count: 19
+  web_scraped_fetched: 19
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2570,6 +2570,13 @@ web_scraped:
   file_count: 1
   size: 4.6KB
   last_updated: 2025-10-13 20:14
+- name: rich
+  description: rich documentation
+  path: docs/web-scraped/rich/
+  status: fetched
+  file_count: 24
+  size: 202.0KB
+  last_updated: 2025-12-23 23:36
 - name: rustdesk
   description: rustdesk documentation
   path: docs/web-scraped/rustdesk/

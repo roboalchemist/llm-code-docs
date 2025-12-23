@@ -1,0 +1,472 @@
+# Source: https://rich.readthedocs.io/en/latest/console.html
+
+[Contents:]
+
+-   [Introduction](introduction.html)
+-   [Console API](#)
+    -   [Attributes](#attributes)
+    -   [Color systems](#color-systems)
+    -   [Printing](#printing)
+    -   [Logging](#logging)
+    -   [Printing JSON](#printing-json)
+    -   [Low level output](#low-level-output)
+    -   [Rules](#rules)
+    -   [Status](#status)
+    -   [Justify / Alignment](#justify-alignment)
+    -   [Overflow](#overflow)
+    -   [Console style](#console-style)
+    -   [Soft Wrapping](#soft-wrapping)
+    -   [Cropping](#cropping)
+    -   [Input](#input)
+    -   [Exporting](#exporting)
+        -   [Exporting SVGs](#exporting-svgs)
+    -   [Error console](#error-console)
+    -   [File output](#file-output)
+    -   [Capturing output](#capturing-output)
+    -   [Paging](#paging)
+    -   [Alternate screen](#alternate-screen)
+    -   [Terminal detection](#terminal-detection)
+    -   [Interactive mode](#interactive-mode)
+    -   [Environment variables](#environment-variables)
+-   [Styles](style.html)
+-   [Console Markup](markup.html)
+-   [Rich Text](text.html)
+-   [Highlighting](highlighting.html)
+-   [Pretty Printing](pretty.html)
+-   [Logging Handler](logging.html)
+-   [Traceback](traceback.html)
+-   [Prompt](prompt.html)
+-   [Columns](columns.html)
+-   [Render Groups](group.html)
+-   [Markdown](markdown.html)
+-   [Padding](padding.html)
+-   [Panel](panel.html)
+-   [Progress Display](progress.html)
+-   [Syntax](syntax.html)
+-   [Tables](tables.html)
+-   [Tree](tree.html)
+-   [Live Display](live.html)
+-   [Layout](layout.html)
+-   [Console Protocol](protocol.html)
+-   [Reference](reference.html)
+-   [Appendix](appendix.html)
+
+[Rich](index.html)
+
+# Console API[](#console-api "Link to this heading")
+
+For complete control over terminal formatting, Rich offers a [[`Console`]](reference/console.html#rich.console.Console "rich.console.Console") class. Most applications will require a single Console instance, so you may want to create one at the module level or as an attribute of your top-level object. For example, you could add a file called "console.py" to your project:
+
+    from rich.console import Console
+    console = Console()
+
+Then you can import the console from anywhere in your project like this:
+
+    from my_project.console import console
+
+The console object handles the mechanics of generating ANSI escape sequences for color and style. It will auto-detect the capabilities of the terminal and convert colors if necessary.
+
+## Attributes[](#attributes "Link to this heading")
+
+The console will auto-detect a number of properties required when rendering.
+
+-   [[`size`]](reference/console.html#rich.console.Console.size "rich.console.Console.size") is the current dimensions of the terminal (which may change if you resize the window).
+
+-   [[`encoding`]](reference/console.html#rich.console.Console.encoding "rich.console.Console.encoding") is the default encoding (typically "utf-8").
+
+-   [[`is_terminal`]](reference/console.html#rich.console.Console.is_terminal "rich.console.Console.is_terminal") is a boolean that indicates if the Console instance is writing to a terminal or not.
+
+-   [[`color_system`]](reference/console.html#rich.console.Console.color_system "rich.console.Console.color_system") is a string containing the Console color system (see below).
+
+## Color systems[](#color-systems "Link to this heading")
+
+There are several "standards" for writing color to the terminal which are not all universally supported. Rich will auto-detect the appropriate color system, or you can set it manually by supplying a value for [`color_system`] to the [[`Console`]](reference/console.html#rich.console.Console "rich.console.Console") constructor.
+
+You can set [`color_system`] to one of the following values:
+
+-   [`None`] Disables color entirely.
+
+-   [`"auto"`] Will auto-detect the color system.
+
+-   [`"standard"`] Can display 8 colors, with normal and bright variations, for 16 colors in total.
+
+-   [`"256"`] Can display the 16 colors from "standard" plus a fixed palette of 240 colors.
+
+-   [`"truecolor"`] Can display 16.7 million colors, which is likely all the colors your monitor can display.
+
+-   [`"windows"`] Can display 8 colors in legacy Windows terminal. New Windows terminal can display "truecolor".
+
+Warning
+
+Be careful when setting a color system, if you set a higher color system than your terminal supports, your text may be unreadable.
+
+## Printing[](#printing "Link to this heading")
+
+To write rich content to the terminal use the [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print") method. Rich will convert any object to a string via its ([`__str__`]) method and perform some simple syntax highlighting. It will also do pretty printing of any containers, such as dicts and lists. If you print a string it will render [[Console Markup]](markup.html#console-markup). Here are some examples:
+
+    console.print([1, 2, 3])
+    console.print("[blue underline]Looks like a link")
+    console.print(locals())
+    console.print("FOO", style="white on blue")
+
+You can also use [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print") to render objects that support the [[Console Protocol]](protocol.html#protocol), which includes Rich's built-in objects such as [[`Text`]](reference/text.html#rich.text.Text "rich.text.Text"), [[`Table`]](reference/table.html#rich.table.Table "rich.table.Table"), and [[`Syntax`]](reference/syntax.html#rich.syntax.Syntax "rich.syntax.Syntax") -- or other custom objects.
+
+## Logging[](#logging "Link to this heading")
+
+The [[`log()`]](reference/console.html#rich.console.Console.log "rich.console.Console.log") method offers the same capabilities as print, but adds some features useful for debugging a running application. Logging writes the current time in a column to the left, and the file and line where the method was called to a column on the right. Here's an example:
+
+    >>> console.log("Hello, World!")
+
+``` 
+[16:32:08] Hello, World!                                         <stdin>:1
+```
+
+To help with debugging, the log() method has a [`log_locals`] parameter. If you set this to [`True`], Rich will display a table of local variables where the method was called.
+
+## Printing JSON[](#printing-json "Link to this heading")
+
+The [[`print_json()`]](reference/console.html#rich.console.Console.print_json "rich.console.Console.print_json") method will pretty print (format and style) a string containing JSON. Here's a short example:
+
+    console.print_json('[false, true, null, "foo"]')
+
+You can also *log* json by logging a [[`JSON`]](reference/json.html#rich.json.JSON "rich.json.JSON") object:
+
+    from rich.json import JSON
+    console.log(JSON('["foo", "bar"]'))
+
+Because printing JSON is a common requirement, you may import [`print_json`] from the main namespace:
+
+    from rich import print_json
+
+You can also pretty print JSON via the command line with the following:
+
+    python -m rich.json cats.json
+
+## Low level output[](#low-level-output "Link to this heading")
+
+In additional to [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print") and [[`log()`]](reference/console.html#rich.console.Console.log "rich.console.Console.log"), Rich has an [[`out()`]](reference/console.html#rich.console.Console.out "rich.console.Console.out") method which provides a lower-level way of writing to the terminal. The out() method converts all the positional arguments to strings and won't pretty print, word wrap, or apply markup to the output, but can apply a basic style and will optionally do highlighting.
+
+Here's an example:
+
+    >>> console.out("Locals", locals())
+
+## Rules[](#rules "Link to this heading")
+
+The [[`rule()`]](reference/console.html#rich.console.Console.rule "rich.console.Console.rule") method will draw a horizontal line with an optional title, which is a good way of dividing your terminal output into sections.
+
+    >>> console.rule("[bold red]Chapter 2")
+
+``` 
+─────────────────────────────── Chapter 2 ───────────────────────────────
+```
+
+The rule method also accepts a [`style`] parameter to set the style of the line, and an [`align`] parameter to align the title ("left", "center", or "right").
+
+## Status[](#status "Link to this heading")
+
+Rich can display a status message with a 'spinner' animation that won't interfere with regular console output. Run the following command for a demo of this feature:
+
+    python -m rich.status
+
+To display a status message, call [[`status()`]](reference/console.html#rich.console.Console.status "rich.console.Console.status") with the status message (which may be a string, Text, or other renderable). The result is a context manager which starts and stops the status display around a block of code. Here's an example:
+
+    with console.status("Working..."):
+        do_work()
+
+You can change the spinner animation via the [`spinner`] parameter:
+
+    with console.status("Monkeying around...", spinner="monkey"):
+        do_work()
+
+Run the following command to see the available choices for [`spinner`]:
+
+    python -m rich.spinner
+
+## Justify / Alignment[](#justify-alignment "Link to this heading")
+
+Both print and log support a [`justify`] argument which if set must be one of "default", "left", "right", "center", or "full". If "left", any text printed (or logged) will be left aligned, if "right" text will be aligned to the right of the terminal, if "center" the text will be centered, and if "full" the text will be lined up with both the left and right edges of the terminal (like printed text in a book).
+
+The default for [`justify`] is [`"default"`] which will generally look the same as [`"left"`] but with a subtle difference. Left justify will pad the right of the text with spaces, while a default justify will not. You will only notice the difference if you set a background color with the [`style`] argument. The following example demonstrates the difference:
+
+    from rich.console import Console
+
+    console = Console(width=20)
+
+    style = "bold white on blue"
+    console.print("Rich", style=style)
+    console.print("Rich", style=style, justify="left")
+    console.print("Rich", style=style, justify="center")
+    console.print("Rich", style=style, justify="right")
+
+This produces the following output:
+
+``` 
+Rich
+Rich                
+        Rich        
+                Rich
+```
+
+## Overflow[](#overflow "Link to this heading")
+
+Overflow is what happens when text you print is larger than the available space. Overflow may occur if you print long 'words' such as URLs for instance, or if you have text inside a panel or table cell with restricted space.
+
+You can specify how Rich should handle overflow with the [`overflow`] argument to [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print") which should be one of the following strings: "fold", "crop", "ellipsis", or "ignore". The default is "fold" which will put any excess characters on the following line, creating as many new lines as required to fit the text.
+
+The "crop" method truncates the text at the end of the line, discarding any characters that would overflow.
+
+The "ellipsis" method is similar to "crop", but will insert an ellipsis character ("...") at the end of any text that has been truncated.
+
+The following code demonstrates the basic overflow methods:
+
+    from typing import List
+    from rich.console import Console, OverflowMethod
+
+    console = Console(width=14)
+    supercali = "supercalifragilisticexpialidocious"
+
+    overflow_methods: List[OverflowMethod] = ["fold", "crop", "ellipsis"]
+    for overflow in overflow_methods:
+        console.rule(overflow)
+        console.print(supercali, overflow=overflow, style="bold blue")
+        console.print()
+
+This produces the following output:
+
+``` 
+──── fold ────
+supercalifragi
+listicexpialid
+ocious
+
+──── crop ────
+supercalifragi
+
+── ellipsis ──
+supercalifrag…
+```
+
+You can also set overflow to "ignore" which allows text to run on to the next line. In practice this will look the same as "crop" unless you also set [`crop=False`] when calling [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print").
+
+## Console style[](#console-style "Link to this heading")
+
+The Console has a [`style`] attribute which you can use to apply a style to everything you print. By default [`style`] is None meaning no extra style is applied, but you can set it to any valid style. Here's an example of a Console with a style attribute set:
+
+    from rich.console import Console
+    blue_console = Console(style="white on blue")
+    blue_console.print("I'm blue. Da ba dee da ba di.")
+
+## Soft Wrapping[](#soft-wrapping "Link to this heading")
+
+Rich word wraps text you print by inserting line breaks. You can disable this behavior by setting [`soft_wrap=True`] when calling [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print"). With *soft wrapping* enabled any text that doesn't fit will run on to the following line(s), just like the built-in [`print`].
+
+## Cropping[](#cropping "Link to this heading")
+
+The [[`print()`]](reference/console.html#rich.console.Console.print "rich.console.Console.print") method has a boolean [`crop`] argument. The default value for crop is True which tells Rich to crop any content that would otherwise run on to the next line. You generally don't need to think about cropping, as Rich will resize content to fit within the available width.
+
+Note
+
+Cropping is automatically disabled if you print with [`soft_wrap=True`].
+
+## Input[](#input "Link to this heading")
+
+The console class has an [[`input()`]](reference/console.html#rich.console.Console.input "rich.console.Console.input") method which works in the same way as Python's built-in [[`input()`]](https://docs.python.org/3/library/functions.html#input "(in Python v3.13)") function, but can use anything that Rich can print as a prompt. For example, here's a colorful prompt with an emoji:
+
+    from rich.console import Console
+    console = Console()
+    console.input("What is [i]your[/i] [bold red]name[/]? :smiley: ")
+
+If Python's builtin [[`readline`]](https://docs.python.org/3/library/readline.html#module-readline "(in Python v3.13)") module is previously loaded, elaborate line editing and history features will be available.
+
+## Exporting[](#exporting "Link to this heading")
+
+The Console class can export anything written to it as either text, svg, or html. To enable exporting, first set [`record=True`] on the constructor. This tells Rich to save a copy of any data you [`print()`] or [`log()`]. Here's an example:
+
+    from rich.console import Console
+    console = Console(record=True)
+
+After you have written content, you can call [[`export_text()`]](reference/console.html#rich.console.Console.export_text "rich.console.Console.export_text"), [[`export_svg()`]](reference/console.html#rich.console.Console.export_svg "rich.console.Console.export_svg") or [[`export_html()`]](reference/console.html#rich.console.Console.export_html "rich.console.Console.export_html") to get the console output as a string. You can also call [[`save_text()`]](reference/console.html#rich.console.Console.save_text "rich.console.Console.save_text"), [[`save_svg()`]](reference/console.html#rich.console.Console.save_svg "rich.console.Console.save_svg"), or [[`save_html()`]](reference/console.html#rich.console.Console.save_html "rich.console.Console.save_html") to write the contents directly to disk.
+
+For examples of the html output generated by Rich Console, see [[Standard Colors]](appendix/colors.html#appendix-colors).
+
+### Exporting SVGs[](#exporting-svgs "Link to this heading")
+
+When using [[`export_svg()`]](reference/console.html#rich.console.Console.export_svg "rich.console.Console.export_svg") or [[`save_svg()`]](reference/console.html#rich.console.Console.save_svg "rich.console.Console.save_svg"), the width of the SVG will match the width of your terminal window (in terms of characters), while the height will scale automatically to accommodate the console output.
+
+You can open the SVG in a web browser. You can also insert it in to a webpage with an [`<img>`] tag or by copying the markup in to your HTML.
+
+The image below shows an example of an SVG exported by Rich.
+
+![](_images/svg_export.svg)
+
+You can customize the theme used during SVG export by importing the desired theme from the [`rich.terminal_theme`] module and passing it to [[`export_svg()`]](reference/console.html#rich.console.Console.export_svg "rich.console.Console.export_svg") or [[`save_svg()`]](reference/console.html#rich.console.Console.save_svg "rich.console.Console.save_svg") via the [`theme`] parameter:
+
+    from rich.console import Console
+    from rich.terminal_theme import MONOKAI
+
+    console = Console(record=True)
+    console.save_svg("example.svg", theme=MONOKAI)
+
+Alternatively, you can create a theme of your own by constructing a [`rich.terminal_theme.TerminalTheme`] instance yourself and passing that in.
+
+Note
+
+The SVGs reference the Fira Code font. If you embed a Rich SVG in your page, you may also want to add a link to the [Fira Code CSS](https://cdnjs.com/libraries/firacode)
+
+## Error console[](#error-console "Link to this heading")
+
+The Console object will write to [`sys.stdout`] by default (so that you see output in the terminal). If you construct the Console with [`stderr=True`] Rich will write to [`sys.stderr`]. You may want to use this to create an *error console* so you can split error messages from regular output. Here's an example:
+
+    from rich.console import Console
+    error_console = Console(stderr=True)
+
+You might also want to set the [`style`] parameter on the Console to make error messages visually distinct. Here's how you might do that:
+
+    error_console = Console(stderr=True, style="bold red")
+
+## File output[](#file-output "Link to this heading")
+
+You can tell the Console object to write to a file by setting the [`file`] argument on the constructor -- which should be a file-like object opened for writing text. You could use this to write to a file without the output ever appearing on the terminal. Here's an example:
+
+    import sys
+    from rich.console import Console
+    from datetime import datetime
+
+    with open("report.txt", "wt") as report_file:
+        console = Console(file=report_file)
+        console.rule(f"Report Generated ")
+
+Note that when writing to a file you may want to explicitly set the [`width`] argument if you don't want to wrap the output to the current console width.
+
+## Capturing output[](#capturing-output "Link to this heading")
+
+There may be situations where you want to *capture* the output from a Console rather than writing it directly to the terminal. You can do this with the [[`capture()`]](reference/console.html#rich.console.Console.capture "rich.console.Console.capture") method which returns a context manager. On exit from this context manager, call [[`get()`]](reference/console.html#rich.console.Capture.get "rich.console.Capture.get") to return the string that would have been written to the terminal. Here's an example:
+
+    from rich.console import Console
+    console = Console()
+    with console.capture() as capture:
+        console.print("[bold red]Hello[/] World")
+    str_output = capture.get()
+
+An alternative way of capturing output is to set the Console file to a [[`io.StringIO`]](https://docs.python.org/3/library/io.html#io.StringIO "(in Python v3.13)"). This is the recommended method if you are testing console output in unit tests. Here's an example:
+
+    from io import StringIO
+    from rich.console import Console
+    console = Console(file=StringIO())
+    console.print("[bold red]Hello[/] World")
+    str_output = console.file.getvalue()
+
+## Paging[](#paging "Link to this heading")
+
+If you have some long output to present to the user you can use a *pager* to display it. A pager is typically an application on your operating system which will at least support pressing a key to scroll, but will often support scrolling up and down through the text and other features.
+
+You can page output from a Console by calling [[`pager()`]](reference/console.html#rich.console.Console.pager "rich.console.Console.pager") which returns a context manager. When the pager exits, anything that was printed will be sent to the pager. Here's an example:
+
+    from rich.__main__ import make_test_card
+    from rich.console import Console
+
+    console = Console()
+    with console.pager():
+        console.print(make_test_card())
+
+Since the default pager on most platforms don't support color, Rich will strip color from the output. If you know that your pager supports color, you can set [`styles=True`] when calling the [[`pager()`]](reference/console.html#rich.console.Console.pager "rich.console.Console.pager") method.
+
+Note
+
+Rich will look at [`MANPAGER`] then the [`PAGER`] environment variables ([`MANPAGER`] takes priority) to get the pager command. On Linux and macOS you can set one of these to [`less`]` `[`-r`] to enable paging with ANSI styles.
+
+## Alternate screen[](#alternate-screen "Link to this heading")
+
+Warning
+
+This feature is currently experimental. You might want to wait before using it in production.
+
+Terminals support an 'alternate screen' mode which is separate from the regular terminal and allows for full-screen applications that leave your stream of input and commands intact. Rich supports this mode via the [[`set_alt_screen()`]](reference/console.html#rich.console.Console.set_alt_screen "rich.console.Console.set_alt_screen") method, although it is recommended that you use [[`screen()`]](reference/console.html#rich.console.Console.screen "rich.console.Console.screen") which returns a context manager that disables alternate mode on exit.
+
+Here's an example of an alternate screen:
+
+    from time import sleep
+    from rich.console import Console
+
+    console = Console()
+    with console.screen():
+        console.print(locals())
+        sleep(5)
+
+The above code will display a pretty printed dictionary on the alternate screen before returning to the command prompt after 5 seconds.
+
+You can also provide a renderable to [[`screen()`]](reference/console.html#rich.console.Console.screen "rich.console.Console.screen") which will be displayed in the alternate screen when you call [`update()`].
+
+Here's an example:
+
+    from time import sleep
+
+    from rich.console import Console
+    from rich.align import Align
+    from rich.text import Text
+    from rich.panel import Panel
+
+    console = Console()
+
+    with console.screen(style="bold white on red") as screen:
+        for count in range(5, 0, -1):
+            text = Align.center(
+                Text.from_markup(f"[blink]Don't Panic![/blink]\n", justify="center"),
+                vertical="middle",
+            )
+            screen.update(Panel(text))
+            sleep(1)
+
+Updating the screen with a renderable allows Rich to crop the contents to fit the screen without scrolling.
+
+For a more powerful way of building full screen interfaces with Rich, see [[Live Display]](live.html#live).
+
+Note
+
+If you ever find yourself stuck in alternate mode after exiting Python code, type [`reset`] in the terminal
+
+## Terminal detection[](#terminal-detection "Link to this heading")
+
+If Rich detects that it is not writing to a terminal it will strip control codes from the output. If you want to write control codes to a regular file then set [`force_terminal=True`] on the constructor.
+
+Letting Rich auto-detect terminals is useful as it will write plain text when you pipe output to a file or other application.
+
+[]
+
+## Interactive mode[](#interactive-mode "Link to this heading")
+
+Rich will remove animations such as progress bars and status indicators when not writing to a terminal as you probably don't want to write these out to a text file (for example). You can override this behavior by setting the [`force_interactive`] argument on the constructor. Set it to [`True`] to enable animations or [`False`] to disable them.
+
+## Environment variables[](#environment-variables "Link to this heading")
+
+Rich respects some standard environment variables.
+
+Setting the environment variable [`TERM`] to [`"dumb"`] or [`"unknown"`] will disable color/style and some features that require moving the cursor, such as progress bars.
+
+If the environment variable [`FORCE_COLOR`] is set and non-empty, then color/styles will be enabled regardless of the value of [`TERM`].
+
+If the environment variable [`NO_COLOR`] is set, Rich will disable all color in the output. [`NO_COLOR`] takes precedence over [`FORCE_COLOR`]. See [no_color](https://no-color.org/) for details.
+
+Note
+
+The [`NO_COLOR`] environment variable removes *color* only. Styles such as dim, bold, italic, underline etc. are preserved.
+
+The environment variable [`TTY_COMPATIBLE`] is used to override Rich's auto-detection of terminal support. If [`TTY_COMPATIBLE`] is set to [`1`] then Rich will assume it is writing to a device which can handle escape sequences like a terminal. If [`TTY_COMPATIBLE`] is set to [`"0"`], then Rich will assume that it is writing to a device that is *not* capable of displaying escape sequences (such as a regular file). If the variable is not set, or set to a value other than "0" or "1", then Rich will attempt to auto-detect terminal support.
+
+The environment variable [`TTY_INTERACTIVE`] is used to override Rich's auto-detection of [[Interactive mode]](#interactive-mode). If you set this to [`"0"`], it will disable interactive mode even if Rich thinks it is writing to a terminal. Set this to [`"1"`] to force interactive mode on. If this environment variable is not set, or set to any other value, then interactive mode will be auto-detected as normal.
+
+Note
+
+If you want Rich output in CI or Github Actions, then you should set [`TTY_COMPATIBLE=1`] and [`TTY_INTERACTIVE=0`]. The combination of both these variables tells rich that it can output escape sequences, and also that there is no user interacting with the terminal -- so it won't bother animating progress bars.
+
+If [`width`] / [`height`] arguments are not explicitly provided as arguments to [`Console`] then the environment variables [`COLUMNS`] / [`LINES`] can be used to set the console width / height. [`JUPYTER_COLUMNS`] / [`JUPYTER_LINES`] behave similarly and are used in Jupyter.
+
+Note that environment variables set defaults in the Console object. If you explicitly set any variables in the constructor then these will take precedence.
+
+[[] Previous](introduction.html "Introduction") [Next []](style.html "Styles")
+
+------------------------------------------------------------------------
+
+© Copyright Will McGugan.
+
+Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org).
