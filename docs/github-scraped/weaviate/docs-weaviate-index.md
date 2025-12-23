@@ -1,0 +1,216 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/index.mdx
+
+---
+title: Weaviate Database
+sidebar_position: 0
+description: "Complete documentation for Weaviate, the open-source vector database for AI applications."
+image: og/docs/home.jpg
+hide_table_of_contents: false
+# tags: []
+---
+
+import CardsSection from "/src/components/CardsSection";
+import DeploymentCards from "/src/components/DeploymentCards";
+import styles from "/src/components/CardsSection/styles.module.scss";
+import secondaryNavbarItems from "/secondaryNavbar.js";
+
+export const welcomeCardsData = [
+  {
+    id: "new",
+    title: "New to Weaviate?",
+    description: (
+      <>
+        Start with the{" "}
+        <span className={styles.highlight}>Quickstart tutorial</span> – an
+        end-to-end demo that takes 15–30 minutes.
+      </>
+    ),
+    link: "/weaviate/quickstart",
+    icon: "fas fa-star",
+  },
+  {
+    id: "academy",
+    title: "Weaviate Academy",
+    description: (
+      <>
+        Check out <span className={styles.highlight}>Weaviate Academy</span> – a
+        learning platform centered around AI-native development.
+      </>
+    ),
+    link: "https://academy.weaviate.io/",
+    icon: "fa-solid fa-graduation-cap",
+  },
+];
+
+Weaviate _(we-vee-eight)_ is an open-source, AI vector database. Use
+this documentation to get started with Weaviate and learn how to get the
+most out of Weaviate's features.
+
+<CardsSection items={welcomeCardsData} className={styles.smallCards} />
+
+<br />
+
+## Find the right documentation and resources
+
+The Weaviate documentation is structured into multiple units based on the service and functionality.
+
+{/* Filter out items where isSmall is true */}
+{(() => {
+const regularItems = Object.fromEntries(
+Object.entries(secondaryNavbarItems).filter(([, value]) => !value.isSmall)
+);
+
+{" "}
+<br />
+return <CardsSection items={regularItems} className={styles.smallCards} />;
+<br />
+})()}
+
+## What is Weaviate?
+
+Weaviate is an **open-source vector database** designed to store and index both data objects and their vector embeddings. This architecture enables advanced semantic search capabilities by comparing the meaning encoded in vectors rather than relying solely on keyword matching. Key capabilities include:
+
+- **[Semantic and hybrid search](./search/basics.md)**  
+  By indexing data with vectors, Weaviate supports searches based on both semantic similarity and keywords. This allows for more relevant results even when the query terms don’t exactly match the stored data.
+
+- **[Retrieval augmented generation (RAG)](./search/generative.md)**  
+  Weaviate can serve as a robust backend for RAG workflows, where vector search is used to retrieve context that enhances the output of generative models, making it easier to generate accurate, context-aware responses.
+
+- **[Agent-driven workflows](../agents/index.md)**  
+  Its flexible API and integration with modern AI models make Weaviate suitable for powering applications that rely on intelligent agents. These agents can leverage semantic insights to make decisions or trigger actions based on the data stored in Weaviate.
+
+import AcademyAdmonition from '@site/src/components/AcademyAdmonition';
+
+<AcademyAdmonition 
+  courseId="quick-tour-of-weaviate"
+/>
+
+## The Weaviate Ecosystem
+
+The Weaviate ecosystem consists of multiple tools and services centered around building cloud-native AI-powered applications.
+
+import WeaviateEcosystem from "@site/static/img/weaviate-ecosystem.png";
+
+<DocsImage
+  image={WeaviateEcosystem}
+  alt="The Weaviate Ecosystem"
+  layout="below"
+/>
+<br />
+
+As shown in the high-level overview above, the ecosystem consists of:
+
+- **[Weaviate Database](#what-is-weaviate)**: An open source vector database that stores both objects and vectors.
+- **[Weaviate Cloud](/cloud)**: A fully managed cloud deployment of the Weaviate vector database.
+- **[Weaviate Agents](/agents)**: Pre-built agentic services for Weaviate Cloud users.
+- **[Weaviate Embeddings](/cloud/embeddings)**: A managed embedding inference service for Weaviate Cloud users.
+- **[External model providers](/weaviate/model-providers)**: Third-party models that integrate with Weaviate.
+
+## Choose your deployment
+
+export const deploymentCardsData = [
+  {
+    tabs: [
+      { label: "Evaluation", active: true },
+      { label: "Deployment", active: true },
+      { label: "Production", active: true },
+    ],
+    header: "Weaviate Cloud",
+    bgImage: "/img/site/hex-weaviate.svg",
+    bgImageLight: "/img/site/hex-weaviate-light.svg",
+    listItems: [
+      "From evaluation (sandbox) to production",
+      "Shared Cloud (infrastructure managed by Weaviate)",
+      "(Optional) Data replication (high-availability)",
+      "(Optional) Zero-downtime updates",
+    ],
+    button: {
+      text: "Set up a WCD instance",
+      link: "/cloud/manage-clusters/create",
+    },
+  },
+  {
+    tabs: [
+      { label: "Evaluation", active: true },
+      { label: "Deployment", active: true },
+      { label: "Production", active: false },
+    ],
+    header: "Docker",
+    bgImage: "/img/site/docker-doc-icon.svg",
+    bgImageLight: "/img/site/docker-doc-icon-light.svg",
+    listItems: [
+      "For local evaluation & development",
+      "Local inference containers",
+      "Multi-modal models",
+      "Customizable configurations",
+    ],
+    button: {
+      text: "Run Weaviate with Docker",
+      link: "/deploy/installation-guides/docker-installation",
+    },
+  },
+  {
+    tabs: [
+      { label: "Evaluation", active: false },
+      { label: "Deployment", active: true },
+      { label: "Production", active: true },
+    ],
+    header: "Kubernetes",
+    bgImage: "/img/site/kubernetes-doc-icon.svg",
+    bgImageLight: "/img/site/kubernetes-doc-icon-light.svg",
+    listItems: [
+      "For development to production",
+      "Local inference containers",
+      "Multi-modal models",
+      "Customizable configurations",
+      "Self-deploy or Marketplace deployment",
+      "(Optional) Zero-downtime updates",
+    ],
+    button: {
+      text: "Run Weaviate with Kubernetes",
+      link: "/deploy/installation-guides/k8s-installation",
+    },
+  },
+  {
+    tabs: [
+      { label: "Evaluation", active: true },
+      { label: "Deployment", active: false },
+      { label: "Production", active: false },
+    ],
+    header: "Embedded Weaviate",
+    bgImage: "/img/site/hex-weaviate.svg",
+    bgImageLight: "/img/site/hex-weaviate-light.svg",
+    listItems: [
+      "For basic, quick evaluation",
+      "Conveniently launch Weaviate directly from Python or JS/TS",
+    ],
+    button: {
+      text: "Run Embedded Weaviate",
+      link: "/deploy/installation-guides/embedded",
+    },
+  },
+];
+
+<DeploymentCards items={deploymentCardsData} />
+
+## Community & support
+
+export const communityCardsData = [
+  {
+    id: "questions",
+    title: "Questions",
+    description:
+      "Please visit our forum. The Weaviate team and our awesome community can help.",
+    link: "https://forum.weaviate.io/c/support/",
+    icon: "fas fa-comments",
+  },
+  {
+    id: "github",
+    title: "Open-source on GitHub",
+    description: "Give us a star on GitHub to support our work.",
+    link: "https://github.com/weaviate/weaviate",
+    icon: "fab fa-github", // note: brand icons use "fab"
+  },
+];
+
+<CardsSection items={communityCardsData} />

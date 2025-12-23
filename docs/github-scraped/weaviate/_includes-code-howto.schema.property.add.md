@@ -1,0 +1,119 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/howto.schema.property.add.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+
+client = weaviate.Client("http://localhost:8080")
+
+reference_property = {
+  "dataType": [
+    "Article"
+  ],
+  "description": "The articles this publication has",
+  "name": "hasArticles"
+}
+
+client.schema.property.create("Publication", reference_property)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate/entities/models"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+
+  prop := &models.Property{
+    DataType:    []string{"Article"},
+    Name:        "hasArticles",
+    Description: "The articles this publication has",
+  }
+
+  err := client.Schema().PropertyCreator().
+    WithClassName("Publication").
+    WithProperty(prop).
+    Do(context.Background())
+  if err != nil {
+    panic(err)
+  }
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import java.util.Arrays;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.schema.model.Property;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("http", "localhost:8080");
+    WeaviateClient client = new WeaviateClient(config);
+
+    Property property = Property.builder()
+      .dataType(Arrays.asList("Article"))
+      .description("The articles this publication has")
+      .name("hasArticles")
+      .build();
+
+    Result<Boolean> result = client.schema().propertyCreator()
+      .withClassName("Article")
+      .withProperty(property)
+      .run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -d '{
+      "dataType": [
+        "Article"
+      ],
+      "description": "The articles this publication has",
+      "name": "hasArticles"
+    }' \
+    http://localhost:8080/v1/schema/Publication/properties
+```
+
+</TabItem>
+</Tabs>

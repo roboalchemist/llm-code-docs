@@ -1,0 +1,34 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/weaviate-cloud-edit-organization.mdx
+
+import Link from "@docusaurus/Link";
+import OrganizationSettings from "/docs/cloud/img/weaviate-cloud-organization-settings.png";
+
+<div class="row">
+  <div class="col col--6">
+    <ol>
+      <li>
+        Open the{" "}
+        <Link to="/go/console?utm_content=others">Weaviate Cloud console</Link>.
+      </li>
+      <li>
+        Open the organization dropdown menu (<span class="callout">1</span>).
+      </li>
+      <li>
+        Click on <code>Organization settings</code> (
+        <span class="callout">2</span>).
+      </li>
+    </ol>
+  </div>
+  <div class="col col--6">
+    <div class="card">
+      <div class="card__image">
+        <img
+          src={OrganizationSettings}
+          alt="Edit an organization in Weaviate Cloud"
+        />
+      </div>
+      <div class="card__body">Edit an organization in Weaviate Cloud.</div>
+    </div>
+  </div>
+</div>
+<br />

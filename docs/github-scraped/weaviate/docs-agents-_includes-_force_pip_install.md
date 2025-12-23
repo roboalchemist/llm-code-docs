@@ -1,0 +1,24 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/agents/_includes/_force_pip_install.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+#### Troubleshooting: Force `pip` to install the latest version
+
+For existing installations, even `pip install -U "weaviate-client[agents]"` may not upgrade `weaviate-agents` to the [latest version](https://pypi.org/project/weaviate-agents/). If this occurs, additionally try to explicitly upgrade the `weaviate-agents` package:
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py_agents" label="Python">
+
+```shell
+pip install -U weaviate-agents
+```
+
+Or install a [specific version](https://github.com/weaviate/weaviate-agents-python-client/tags):
+
+```shell
+pip install -U weaviate-agents==||site.weaviate_agents_version||
+```
+
+</TabItem>
+</Tabs>

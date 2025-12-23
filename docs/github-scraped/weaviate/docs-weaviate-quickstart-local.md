@@ -1,0 +1,254 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/quickstart/local.md
+
+---
+title: "Quickstart: Locally hosted with Docker"
+sidebar_label: Local Quickstart (self-hosted)
+image: og/docs/quickstart-tutorial.jpg
+# tags: ['getting started']
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import SkipLink from "/src/components/SkipValidationLink";
+import CardsSection from "/src/components/CardsSection";
+import Tooltip from "/src/components/Tooltip";
+import styles from "/src/components/CardsSection/styles.module.scss";
+
+export const quickstartOptions = [
+  {
+    title: (
+      <>
+        Vectorize objects during import
+        <br />
+        (recommended)
+      </>
+    ),
+    description:
+      "Import objects and vectorize them with the Ollama embedding model.",
+    link: "?import=vectorization#create-a-collection",
+    icon: "fas fa-arrows-spin",
+    groupId: "import",
+    activeTab: "vectorization",
+  },
+  {
+    title: "Import vectors",
+    description: "Import pre-computed vector embeddings along with your data.",
+    link: "?import=custom-embeddings#create-a-collection",
+    icon: "fas fa-circle-nodes",
+    groupId: "import",
+    activeTab: "custom-embeddings",
+  },
+];
+
+Weaviate is an open-source vector database built to power AI applications. This quickstart guide will show you how to:
+
+1. **Set up a collection** - Create a collection and import data into it. 
+2. **Search** - Perform a similarity (vector) search on your data.
+3. **RAG** - Perform Retrieval Augmented Generation (RAG) with a generative model.
+
+import KapaAI from "/src/components/KapaAI";
+
+If you encounter any issues along the way or have additional questions, use the <KapaAI>Ask AI</KapaAI> feature.
+
+## Prerequisites
+
+Before we get started, install [Docker](https://docs.docker.com/get-started/get-docker/) on your machine.
+We will be running Weaviate and Ollama language models locally. We recommend that you use a modern computer with at least 8GB of RAM, preferably 16GB or more.
+
+---
+
+## Start Weaviate and Ollama with Docker Compose
+
+Save the following code to a file named `docker-compose.yml` in your project directory.
+
+```yaml
+services:
+  weaviate:
+    command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
+    - --scheme
+    - http
+    image: cr.weaviate.io/semitechnologies/weaviate:||site.weaviate_version||
+    ports:
+    - 8080:8080
+    - 50051:50051
+    volumes:
+    - weaviate_data:/var/lib/weaviate
+    restart: on-failure:0
+    environment:
+      AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      ENABLE_MODULES: 'text2vec-ollama,generative-ollama'
+      CLUSTER_HOSTNAME: 'node1'
+      OLLAMA_API_ENDPOINT: 'http://ollama:11434'
+    depends_on:
+      - ollama
+
+  ollama:
+    image: ollama/ollama:0.12.9
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  weaviate_data:
+  ollama_data:
+```
+
+Run the following command to start a Weaviate instance and the Ollama server inside Docker containers:
+
+```bash
+docker-compose up -d
+```
+
+Once the Ollama service starts, you can pull the required embedding model ([`nomic-embed-text`](https://ollama.com/library/nomic-embed-text)) and generative model ([`llama3.2`](https://ollama.com/library/llama3.2)) in the `ollama` container:
+
+```bash
+docker compose exec ollama ollama pull nomic-embed-text
+docker compose exec ollama ollama pull llama3.2
+```
+
+---
+
+## Install a client library
+
+Follow the instructions below to install one of the official client libraries, available in [Python](../client-libraries/python/index.mdx), [JavaScript/TypeScript](../client-libraries/typescript/index.mdx), [Go](../client-libraries/go.md), and [Java](../client-libraries/java/index.mdx).
+
+import CodeClientInstall from "/_includes/code/quickstart/clients.install.new.mdx";
+
+<CodeClientInstall />
+
+## Step 1: Create a collection & import data {#create-a-collection}
+
+There are two paths you can choose from when importing data:
+
+<CardsSection items={quickstartOptions} className={styles.smallCards} />
+<br />
+
+<Tabs groupId="import" queryString="import" className="hidden-tabs">
+<TabItem value="vectorization" label="Vectorize objects during import">
+
+The following example creates a collection called `Movie` with the [Ollama](../model-providers/ollama/embeddings.md) embedding model provider (`text2vec-ollama`) for vectorizing data during import and for querying. You are also free to use any other available [embedding model provider](../model-providers/index.md).
+
+import CreateCollection from "/_includes/code/quickstart/quickstart.short.local.create_collection.mdx";
+
+<CreateCollection />
+
+</TabItem>
+<TabItem value="custom-embeddings" label="Import vectors">
+
+The following example creates a collection called `Movie`. The data should already contain the <Tooltip content="Vector embeddings generated by an embedding model (from a provider like OpenAI, Anthropic, etc.)." position="top"><span style={{ textDecoration: "underline", cursor: "help" }}>pre-computed vector embeddings</span></Tooltip>. This option is useful for when you are migrating data from a different vector database.
+
+import CreateCollectionCustomVectors from "/_includes/code/quickstart/quickstart.short.local.import_vectors.create_collection.mdx";
+
+<CreateCollectionCustomVectors />
+
+</TabItem>
+</Tabs>
+
+## Step 2: Semantic (vector) search {#semantic-search}
+
+<Tabs groupId="import" queryString="import" className="hidden-tabs">
+<TabItem value="vectorization" label="Vectorize objects during import">
+
+Semantic search finds results based on meaning. This is called `nearText` in Weaviate. The following example searches for 2 objects (_limit_) whose meaning is most similar to that of `sci-fi`.
+
+import QueryNearText from "/_includes/code/quickstart/quickstart.short.local.query.neartext.mdx";
+
+<QueryNearText />
+
+</TabItem>
+<TabItem value="custom-embeddings" label="Import vectors">
+
+Semantic search finds results based on meaning. This is called `nearVector` in Weaviate. The following example searches for 2 objects (_limit_) whose vector is most similar to the query vector.
+
+import QueryNearVectorImportVectors from "/_includes/code/quickstart/quickstart.short.local.import_vectors.query.nearvector.mdx";
+
+<QueryNearVectorImportVectors />
+
+</TabItem>
+</Tabs>
+
+<details>
+
+<summary>Example response</summary>
+
+```json
+{
+  "genre": "Science Fiction",
+  "title": "The Matrix",
+  "description": "A computer hacker learns about the true nature of reality and his role in the war against its controllers."
+}
+{
+  "genre": "Fantasy",
+  "title": "The Lord of the Rings: The Fellowship of the Ring",
+  "description": "A meek Hobbit and his companions set out on a perilous journey to destroy a powerful ring and save Middle-earth."
+}
+```
+
+</details>
+
+:::tip Weaviate Agents
+
+Try the [Query Agent](/agents/query/index.md) with a Weaviate Cloud instance. You simply provide a prompt/question in natural language, and the Query Agent takes care of all the needed steps to provide an answer.
+
+:::
+
+## Step 3: Retrieval augmented generation (RAG)
+
+<Tabs groupId="import" queryString="import" className="hidden-tabs">
+<TabItem value="vectorization" label="Vectorize objects during import">
+
+Retrieval augmented generation (RAG), also called generative search, works by prompting a large language model (LLM) with a combination of a _user query_ and _data retrieved from a database_.
+
+The following example combines the semantic search for the query `sci-fi` with a prompt to generate a tweet using the Ollama generative model (`generative-ollama`).
+
+import QueryRAG from "/_includes/code/quickstart/quickstart.short.local.query.rag.mdx";
+
+<QueryRAG />
+
+</TabItem>
+<TabItem value="custom-embeddings" label="Import vectors">
+
+Retrieval augmented generation (RAG), also called generative search, works by prompting a large language model (LLM) with a combination of a _user query_ and _data retrieved from a database_.
+
+The following example combines the vector similarity search with a prompt to generate a tweet using the Ollama generative model (`generative-ollama`).
+
+import QueryRAGCustomVectors from "/_includes/code/quickstart/quickstart.short.local.import-vectors.query.rag.mdx";
+
+<QueryRAGCustomVectors />
+
+</TabItem>
+</Tabs>
+
+<details>
+
+<summary>Example response</summary>
+
+```json
+🕶️ Unplug from the system & join Neo's journey 💊🐰
+
+"The Matrix" will blow your mind 🤯 as reality unravels 🌀
+
+Kung-fu, slow-mo & mind-bending sci-fi 🥋🕴️
+
+Are you ready to see how deep the rabbit hole goes? 🔴🔵 #TheMatrix #WakeUp
+```
+
+</details>
+
+## Next steps
+
+import NextSteps from "/_includes/quickstart.short.nextsteps.mdx";
+
+<NextSteps />
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

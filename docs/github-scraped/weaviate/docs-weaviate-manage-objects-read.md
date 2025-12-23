@@ -1,0 +1,199 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/manage-objects/read.mdx
+
+---
+title: Read objects
+sidebar_position: 20
+image: og/docs/howto.jpg
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/howto/manage-data.read.py";
+import TSCode from "!!raw-loader!/_includes/code/howto/manage-data.read.ts";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.read.java";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageObjectsReadTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageObjectsReadTest.cs";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/manage-data.read_test.go";
+import SkipLink from "/src/components/SkipValidationLink";
+
+Instead of querying your database, you can use an ID to retrieve individual objects.
+
+import RestObjectsCRUDClassnameNote from "/_includes/rest-objects-crud-classname-note.md";
+
+<details>
+  <summary>Additional information</summary>
+  <RestObjectsCRUDClassnameNote />
+</details>
+
+## Get an object by id
+
+Use an ID to retrieve an object. If the id doesn't exist, Weaviate returns a 404 error.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# ReadObject START"
+      endMarker="# ReadObject END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// ReadObject START"
+      endMarker="// ReadObject END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// ReadObject START"
+      endMarker="// ReadObject END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ReadSimpleObject"
+      endMarker="// END ReadSimpleObject"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// ReadObject START"
+      endMarker="// ReadObject END"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START ReadSimpleObject"
+      endMarker="// END ReadSimpleObject"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Retrieve the object's vector
+
+Object vectors can be retrieved by specifying its return.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# ReadObjectWithVector START"
+      endMarker="# ReadObjectWithVector END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// ReadObjectWithVector START"
+      endMarker="// ReadObjectWithVector END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// ReadObjectWithVector START"
+      endMarker="// ReadObjectWithVector END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ReadObjectWithVector"
+      endMarker="// END ReadObjectWithVector"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// ReadObjectWithVector START"
+      endMarker="// ReadObjectWithVector END"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START ReadObjectWithVector"
+      endMarker="// END ReadObjectWithVector"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Retrieve named vectors
+
+Where [named vectors](../config-refs/collections.mdx#named-vectors) are used, you can retrieve one or more of them by specifying their names.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# ReadObjectNamedVectors START"
+      endMarker="# ReadObjectNamedVectors END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// ReadObjectNamedVectors START"
+      endMarker="// ReadObjectNamedVectors END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ReadObjectNamedVectors"
+      endMarker="// END ReadObjectNamedVectors"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START ReadObjectNamedVectors"
+      endMarker="// END ReadObjectNamedVectors"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Check object existence
+
+To efficiently check if an object with a given [id](../api/graphql/additional-properties.md#id) exists without retrieving it, make a `HEAD` request to the <SkipLink href="/weaviate/api/rest#tag/objects/head/objects/{className}/{id}">`/v1/objects/` REST endpoint</SkipLink>, or use the following client code:
+
+import CheckObjectExistence from "/_includes/code/howto/manage-data.read.check.existence.mdx";
+
+<CheckObjectExistence />
+
+## Related pages
+
+- [Connect to Weaviate](/weaviate/connections/index.mdx)
+- [How-to: Search](../search/index.mdx)
+- [How-to: Read all objects](./read-all-objects.mdx)
+- <SkipLink href="/weaviate/api/rest#tag/objects">
+    References: REST - /v1/objects
+  </SkipLink>
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

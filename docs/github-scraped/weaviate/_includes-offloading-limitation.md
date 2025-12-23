@@ -1,0 +1,7 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/offloading-limitation.mdx
+
+:::info Offloading: AWS S3 only
+As of Weaviate `v1.26.0`, tenants can only be offloaded to cold storage in AWS S3. Additional storage options may be added in future releases.<br/><br/>
+
+To offload a tenant, use the `offload-s3` module.
+:::

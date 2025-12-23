@@ -1,0 +1,146 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.filters.where.like.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.filters.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START FilterWithLike"
+    endMarker="END FilterWithLike"
+    language="py"
+  />
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate/filters"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate/graphql"
+)
+
+func main() {
+	cfg := weaviate.Config{
+		Host:   "localhost:8080",
+		Scheme: "http",
+	}
+	client, err := weaviate.NewClient(cfg)
+	if err != nil {
+		panic(err)
+	}
+
+	name := graphql.Field{Name: "name"}
+	where := filters.Where().
+		WithPath([]string{"name"}).
+		WithOperator(filters.Like).
+		WithValueString("New *")
+
+	ctx := context.Background()
+	result, err := client.GraphQL().Get().
+		WithClassName("Publication").
+		WithFields(name).
+		WithWhere(where).
+		Do(ctx)
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%v", result)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.filters.Operator;
+import io.weaviate.client.v1.filters.WhereFilter;
+import io.weaviate.client.v1.graphql.model.GraphQLResponse;
+import io.weaviate.client.v1.graphql.query.fields.Field;
+
+public class App {
+    public static void main(String[] args) {
+        Config config = new Config("http", "localhost:8080");
+        WeaviateClient client = new WeaviateClient(config);
+
+        Field name = Field.builder().name("name").build();
+
+        WhereFilter where = WhereFilter.builder()
+                .path(new String[]{ "name" })
+                .operator(Operator.Like)
+                .valueText("New *")
+                .build();
+
+        Result<GraphQLResponse> result = client.graphQL().get()
+                .withClassName("Publication")
+                .withFields(name)
+                .withWhere(where)
+                .run();
+
+        if (result.hasErrors()) {
+            System.out.println(result.getError());
+            return;
+        }
+        System.out.println(result.getResult());
+    }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+  "query": "{
+    Get {
+      Publication(where: {
+        path: [\"name\"],
+        operator: Like,
+        valueText: \"New *\"
+      }) {
+        name
+      }
+    }
+  }"
+}' | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer learn-weaviate' \
+    -d @- \
+    https://edu-demo.weaviate.network/v1/graphql
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Get {
+    Publication(where: {
+      path: ["name"],
+      operator: Like,
+      valueText: "New *"
+    }) {
+      name
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

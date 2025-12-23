@@ -1,0 +1,78 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/connect.partial.mdx
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+
+import PyCodeV4 from "!!raw-loader!/_includes/code/connections/connect-python-v4.py";
+import TsCodeV3 from "!!raw-loader!/_includes/code/connections/connect-ts-v3.ts";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ConnectionTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ConnectionTest.cs";
+import JavaCode from "!!raw-loader!/_includes/code/connections/connect.java";
+import ShellCode from "!!raw-loader!/_includes/code/connections/connect.sh";
+import GoCode from "!!raw-loader!/_includes/code/connections/connect.go";
+
+To connect, use the `REST Endpoint` and the `Admin` API key stored as environment variables:
+
+import HostnameWarning from "/_includes/wcs/hostname-warning.mdx";
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START APIKeyWCD"
+      endMarker="# END APIKeyWCD"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="py"
+    />
+    <HostnameWarning />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="py"
+    />
+    <HostnameWarning />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START APIKeyWCD"
+      endMarker="// END APIKeyWCD"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START APIKeyWCD"
+      endMarker="# END APIKeyWCD"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>

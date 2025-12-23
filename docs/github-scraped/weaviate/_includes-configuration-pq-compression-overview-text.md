@@ -1,0 +1,3 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/configuration/pq-compression/overview-text.mdx
+
+[**Product quantization (PQ)**](/weaviate/concepts/vector-quantization#product-quantization) is a form of data compression for vectors. PQ reduces the HNSW index's memory footprint so you can work with larger datasets. For a discussion of how PQ saves memory, see [Product quantization](/weaviate/concepts/vector-quantization#product-quantization).

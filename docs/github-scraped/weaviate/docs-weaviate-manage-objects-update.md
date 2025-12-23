@@ -1,0 +1,269 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/manage-objects/update.mdx
+
+---
+title: Update objects
+sidebar_position: 30
+image: og/docs/howto.jpg
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/howto/manage-data.update.py";
+import TSCode from "!!raw-loader!/_includes/code/howto/manage-data.update.ts";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.update.java";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageObjectsUpdateTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageObjectsUpdateTest.cs";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/manage-data.update_test.go";
+import RestObjectsCRUDClassnameNote from "/_includes/rest-objects-crud-classname-note.md";
+import SkipLink from "/src/components/SkipValidationLink";
+
+Weaviate allows partial or complete object updates.
+
+<details>
+  <summary>Additional information</summary>
+
+- Partial updates use <SkipLink href="/weaviate/api/rest#tag/objects/patch/objects/%7BclassName%7D/%7Bid%7D">`PATCH` requests to the `/v1/objects` REST API endpoint</SkipLink> under the hood.
+- Complete updates use <SkipLink href="/weaviate/api/rest#tag/objects/put/objects/%7BclassName%7D/%7Bid%7D">`PUT` requests to the `/v1/objects` REST API endpoint</SkipLink> under the hood.
+- Updates that include a `vector` property will recalculate the vector embedding (unless all updated `text` properties are [skipped](../manage-collections/vector-config.mdx#property-level-settings)).
+- To update objects, you must provide the collection name, id and properties to update.
+- For [multi-tenancy](../concepts/data.md#multi-tenancy) collections, you will also need to specify the tenant name. See [Manage data: multi-tenancy operations](../manage-collections/multi-tenancy.mdx) for details on how.
+  <br />
+
+{" "}
+<RestObjectsCRUDClassnameNote />
+
+</details>
+
+## Update object properties
+
+This operation replaces the entire value of the specified properties only, leaving the unspecified properties. Provide the collection name, the object id, and the properties to update.
+
+If you update the value of a _previously vectorized_ property, Weaviate re-vectorizes the object automatically. This also reindexes the updated object.
+
+However, if you add a _new_ property to your collection definition, Weaviate only vectorizes the new objects. Weaviate doesn't re-vectorize and re-index existing objects when a new property is defined, only when an existing property is updated.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# UpdateProps START"
+      endMarker="# UpdateProps END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// UpdateProps START"
+      endMarker="// UpdateProps END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// UpdateProps START"
+      endMarker="// UpdateProps END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START UpdateProps"
+      endMarker="// END UpdateProps"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// UpdateProps START"
+      endMarker="// UpdateProps END"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START UpdateProps"
+      endMarker="// END UpdateProps"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Update object vector
+
+The object vector can also be updated similarly to properties. For [named vectors](../config-refs/collections.mdx#named-vectors), provide the data as a dictionary/map similarly to the [object creation](./create.mdx#create-an-object-with-named-vectors).
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# UpdateVector START"
+      endMarker="# UpdateVector END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// UpdateVector START"
+      endMarker="// UpdateVector END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+
+> Coming soon
+
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START UpdateVector"
+      endMarker="// END UpdateVector"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+
+> Coming soon
+
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START UpdateVector"
+      endMarker="// END UpdateVector"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Replace an entire object
+
+The entire object can be replaced by providing the collection name, id and the new object.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# Replace START"
+      endMarker="# Replace END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// Replace START"
+      endMarker="// Replace END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// Replace START"
+      endMarker="// Replace END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START Replace"
+      endMarker="// END Replace"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// Replace START"
+      endMarker="// Replace END"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START Replace"
+      endMarker="// END Replace"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Delete a property
+
+Deleting or updating properties in the collection definition is [not yet supported](https://github.com/weaviate/weaviate/issues/2848).
+
+At object level, you can replace the object with a copy that has those properties deleted, or set to `""` for text properties.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# DelProps START"
+      endMarker="# DelProps END"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// DelProps START"
+      endMarker="// DelProps END"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// DelProps START"
+      endMarker="// DelProps END"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START DelProps"
+      endMarker="// END DelProps"
+      language="javaraw"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// DelProps START"
+      endMarker="// DelProps END"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START DelProps"
+      endMarker="// END DelProps"
+      language="csharpraw"
+    />
+  </TabItem>
+</Tabs>
+
+## Related pages
+
+- [Connect to Weaviate](/weaviate/connections/index.mdx)
+- <SkipLink href="/weaviate/api/rest#tag/objects/put/objects/%7BclassName%7D/%7Bid%7D">
+    References: REST - /v1/objects
+  </SkipLink>
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

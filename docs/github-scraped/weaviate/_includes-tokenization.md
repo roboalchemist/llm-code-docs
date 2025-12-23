@@ -1,0 +1,5 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/tokenization.mdx
+
+Weaviate converts filter terms into tokens. The default tokenization is `word`. The `word` tokenizer keeps alphanumeric characters, lowercase them and splits on whitespace. It converts a string like "Test_domain_weaviate" into "test", "domain", and "weaviate".
+
+For details and additional tokenization methods, see [Tokenization](/weaviate/config-refs/collections#tokenization).

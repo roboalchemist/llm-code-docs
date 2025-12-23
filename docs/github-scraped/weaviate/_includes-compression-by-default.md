@@ -1,0 +1,7 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/compression-by-default.mdx
+
+:::info Compression by Default
+
+Starting with `v1.33`, you can set a default quantization for new collections using the [`DEFAULT_QUANTIZATION`](/deploy/configuration/env-vars#DEFAULT_QUANTIZATION) environment variable. This variable is not set by default, meaning no quantization is applied unless you explicitly configure it. When set (e.g., to 8-bit [RQ quantization](/weaviate/configuration/compression/rq-compression)), all newly created collections will use that quantization setting. Note that once set on a collection, quantization can't be disabled. Default quantization won't be applied to a collection if the index type isn't supported (for example PQ and SQ aren't supported for the flat index).
+
+:::

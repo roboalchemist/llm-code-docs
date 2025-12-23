@@ -1,0 +1,91 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart.import.get.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+import json
+
+client = weaviate.Client("https://WEAVIATE_INSTANCE_URL/")  # Replace with your Weaviate endpoint
+some_objects = client.data_object.get()
+print(json.dumps(some_objects))
+```
+
+</TabItem>
+{/* <TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+)
+
+func GetSchema() {
+    cfg := weaviate.Config{
+      Host:   "WEAVIATE_INSTANCE_URL/",  // Replace WEAVIATE_INSTANCE_URL with your instance URL
+      Scheme: "https",
+    }
+
+    client, err := weaviate.NewClient(cfg)
+    if err != nil {
+      panic(err)
+    }
+
+    data, err := client.Data().ObjectsGetter().
+      Do(context.Background())
+
+    if err != nil {
+      panic(err)
+    }
+    fmt.Printf("%v", data)
+
+}
+```
+
+</TabItem> */}
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import java.util.List;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.data.model.WeaviateObject;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/");
+    // Replace WEAVIATE_INSTANCE_URL with your instance URL
+
+    WeaviateClient client = new WeaviateClient(config);
+
+    Result<List<WeaviateObject>> result = client.data().objectsGetter()
+      .run();
+
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem> */}
+{/* <TabItem value="curl" label="Curl">
+
+```bash
+curl https://WEAVIATE_INSTANCE_URL/v1/objects  # Replace WEAVIATE_INSTANCE_URL with your instance URL
+```
+
+</TabItem> */}
+</Tabs>

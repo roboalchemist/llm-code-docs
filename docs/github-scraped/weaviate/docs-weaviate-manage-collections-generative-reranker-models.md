@@ -1,0 +1,255 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/manage-collections/generative-reranker-models.mdx
+
+---
+title: Generative and reranker models
+image: og/docs/howto.jpg
+---
+
+import SkipLink from "/src/components/SkipValidationLink";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/howto/manage-data.collections.py";
+import TSCode from "!!raw-loader!/_includes/code/howto/manage-data.collections.ts";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.classes.java";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ManageCollectionsTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ManageCollectionsTest.cs";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/manage-data.classes_test.go";
+
+:::tip Embedding models / Vectorizers
+
+Visit the [Vectorizer and vector config](./vector-config.mdx) guide to find out how to configure an embedding model for your collection or to fine-tune the vector index settings.
+
+:::
+
+## Specify a reranker model integration
+
+Configure a [`reranker`](../concepts/search/index.md#rerank) model integration for [reranking retrieved results](../search/rerank.md).
+
+:::info Related pages
+
+- [Available reranker model integrations](../model-providers/index.md)
+  :::
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START SetReranker"
+      endMarker="# END SetReranker"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START SetReranker"
+      endMarker="// END SetReranker"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START SetReranker"
+      endMarker="// END SetReranker"
+      language="gonew"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START SetReranker"
+      endMarker="// END SetReranker"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START SetReranker"
+      endMarker="// END SetReranker"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Update the reranker model integration
+
+:::info Available from `v1.25.23`, `v1.26.8` and `v1.27.1`
+The `reranker` and `generative` configurations are mutable from `v1.25.23`, `v1.26.8` and `v1.27.1`.
+:::
+
+Update the [`reranker`](../concepts/search/index.md#rerank) model integration for [reranking retrieved results](../search/rerank.md).
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START UpdateReranker"
+      endMarker="# END UpdateReranker"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START UpdateReranker"
+      endMarker="// END UpdateReranker"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START UpdateReranker"
+      endMarker="// END UpdateReranker"
+      language="gonew"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START UpdateReranker"
+      endMarker="// END UpdateReranker"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START UpdateReranker"
+      endMarker="// END UpdateReranker"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Specify a generative model integration
+
+Specify a `generative` model integration for a collection (for RAG).
+
+:::info Related pages
+
+- [Available generative model integrations](../model-providers/index.md)
+  :::
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START SetGenerative"
+      endMarker="# END SetGenerative"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START SetGenerative"
+      endMarker="// END SetGenerative"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START SetGenerative"
+      endMarker="// END SetGenerative"
+      language="gonew"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START SetGenModel"
+      endMarker="// END SetGenModel"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START SetGenerative"
+      endMarker="// END SetGenerative"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START SetGenerative"
+      endMarker="// END SetGenerative"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Update the generative model integration
+
+:::info Available from `v1.25.23`, `v1.26.8` and `v1.27.1`
+The `reranker` and `generative` configurations are mutable from `v1.25.23`, `v1.26.8` and `v1.27.1`.
+:::
+
+Update a [`generative`](../concepts/search/index.md#retrieval-augmented-generation-rag) model integration.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START UpdateGenerative"
+      endMarker="# END UpdateGenerative"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START UpdateGenerative"
+      endMarker="// END UpdateGenerative"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START UpdateGenerative"
+      endMarker="// END UpdateGenerative"
+      language="gonew"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START UpdateGenerative"
+      endMarker="// END UpdateGenerative"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START UpdateGenerative"
+      endMarker="// END UpdateGenerative"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+import RuntimeGenerative from "/_includes/runtime-generative.mdx";
+
+<RuntimeGenerative />
+
+## Further resources
+
+- <SkipLink href="/weaviate/api/rest#tag/schema/post/schema">
+    API References: REST: Schema
+  </SkipLink>
+- [References: Configuration: Schema](/weaviate/config-refs/collections.mdx)
+- [Concepts: Data structure](../concepts/data.md)
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

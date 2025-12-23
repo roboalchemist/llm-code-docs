@@ -1,0 +1,186 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/cloud/manage-clusters/authorization.mdx
+
+---
+title: Authorization
+sidebar_position: 6
+description: "Role-Based Access Control (RBAC) configuration guide for Weaviate Cloud clusters."
+image: og/wcd/user_guides.jpg
+---
+
+import Link from "@docusaurus/Link";
+import WCDCreateRole from "/docs/cloud/img/weaviate-cloud-roles-create.png";
+import WCDCreateRoleForm from "/docs/cloud/img/weaviate-cloud-roles-create-form.png";
+import WCDEditRole from "/docs/cloud/img/weaviate-cloud-roles-edit.png";
+import WCDEditRoleForm from "/docs/cloud/img/weaviate-cloud-roles-edit-form.png";
+import WCDDeleteRole from "/docs/cloud/img/weaviate-cloud-roles-delete.png";
+import WCDDeleteRoleForm from "/docs/cloud/img/weaviate-cloud-roles-delete-form.png";
+
+[Weaviate Cloud (WCD)](/go/console?utm_content=cloud) uses [RBAC (Role-Based Access Control)](/weaviate/configuration/rbac/index.mdx) to manage authorization. Below, you can find guides on how to create, edit and delete user roles and manage their permissions.
+
+## Create a role
+
+Custom roles allow you to define specific permissions for different users or applications accessing your Weaviate cluster. You can control access to collections, tenants, and specific operations.
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="6kwj5ydhzp"
+    src="https://app.guideflow.com/embed/6kwj5ydhzp"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="6kwj5ydhzp"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to create a new role</summary>
+
+To create a new role, follow these steps:
+
+1.  Open the [Weaviate Cloud console](/go/console?utm_content=cloud).
+2.  [Select your cluster](/cloud/manage-clusters/status#select-a-cluster) and navigate to the `Roles` section.
+3.  Click on the `New role` button.
+4.  Enter a descriptive name for your role in the `Role name` field.
+5.  In the sections below, configure the permissions:
+    - Select which resources the permission applies to (for example, to which collections the role has access to)
+    - Choose the appropriate permissions (create, read, update, etc.)
+6.  Click the `Create` button to save your new role.
+
+</details>
+
+:::info
+
+To find out more about RBAC and available permissions, check out the [RBAC documentation](/weaviate/configuration/rbac/index.mdx).
+
+:::
+
+## Edit a role
+
+You can modify the permissions and settings of existing custom roles at any time.
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="xrg73x8fwr"
+    src="https://app.guideflow.com/embed/xrg73x8fwr"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="xrg73x8fwr"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to edit a role</summary>
+
+To edit a role, follow these steps:
+
+1. From the roles management page, locate the role you want to edit.
+2. Click the `Pencil` button next to the role you want to modify.
+3. In the role editing interface, you can:
+   - Update collection permissions by checking or unchecking the appropriate boxes for Create, Read, Update, and Delete operations
+   - Add or remove additional constraints from the role's scope using the dropdown menus (e.g. which collections the permissions apply to)
+4. After making your changes, click the `Update` button to save the modifications.
+5. Changes to role permissions take effect immediately for all API keys assigned to that role.
+
+</details>
+
+## Delete a role
+
+When you no longer need a custom role, you can delete it. This action will affect all API keys currently assigned to this role.
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="np1y8gycep"
+    src="https://app.guideflow.com/embed/np1y8gycep"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="np1y8gycep"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to delete a role</summary>
+
+To delete a role, follow these steps:
+
+1. From the roles management page, locate the role you want to delete.
+2. Click the `Trash can` button next to the role you want to remove.
+3. In the confirmation dialog, type the exact role name to confirm the deletion. This prevents accidental deletions.
+4. Click `Confirm and delete` to permanently remove the role.
+
+</details>
+
+Deleting a role is permanent and cannot be undone. This action will:
+
+- Remove the role and all its associated permissions
+- Affect any API keys that were assigned to this role
+- Potentially break applications that rely on the permissions granted by this role
+
+Make sure to update or reassign any affected API keys before deleting a role.
+
+:::info
+You cannot delete the built-in admin and viewer roles, as these are system-defined roles required for basic cluster operations.
+:::
+
+## Further resources
+
+- [Manage API keys in WCD](./authentication.mdx)
+- [RBAC documentation](/weaviate/configuration/rbac/index.mdx)
+
+## Support
+
+import SupportAndTrouble from "/_includes/wcs/support-and-troubleshoot.mdx";
+
+<SupportAndTrouble />

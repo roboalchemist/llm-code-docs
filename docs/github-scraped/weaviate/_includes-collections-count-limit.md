@@ -1,0 +1,5 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/collections-count-limit.mdx
+
+:::info
+It is possible to **limit the number of collections per instance**, using the [`MAXIMUM_ALLOWED_COLLECTIONS_COUNT`](/deploy/configuration/env-vars/index.md) environment variable. If you are concerned about accidentally creating too many collections, consider setting this variable to a reasonable limit for your use case (e.g. to `1000`).
+:::

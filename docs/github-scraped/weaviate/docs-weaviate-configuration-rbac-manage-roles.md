@@ -1,0 +1,1006 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/configuration/rbac/manage-roles.mdx
+
+---
+title: Manage roles
+sidebar_label: Manage roles
+sidebar_position: 1
+image: og/docs/configuration.jpg
+# tags: ['rbac', 'roles', 'configuration', 'authorization']
+---
+
+import Link from "@docusaurus/Link";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+import PyCode from "!!raw-loader!/_includes/code/python/howto.configure.rbac.permissions.py";
+import TSCode from "!!raw-loader!/_includes/code/typescript/howto.configure.rbac.permissions.ts";
+import RolePyCode from "!!raw-loader!/_includes/code/python/howto.configure.rbac.roles.py";
+import RoleTSCode from "!!raw-loader!/_includes/code/typescript/howto.configure.rbac.roles.ts";
+import JavaV6Code from "!!raw-loader!/\_includes/code/java-v6/src/test/java/RBACTest.java";
+import JavaCode from "!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/rbac-roles.java";
+import GoCode from "!!raw-loader!/_includes/code/howto/go/docs/configure/rbac.roles_test.go";
+
+:::info Added in `v1.29`
+Role-based access control (RBAC) is generally available in Weaviate from version `v1.29`.
+:::
+
+In Weaviate, Role-based access control (RBAC) allows you to define roles and assign permissions to those roles. Users can then be assigned to roles and inherit the permissions associated with those roles.
+
+On this page, you will find examples of how to **manage roles and permissions** with Weaviate client libraries.
+
+import ConfigureRbac from "/_includes/configuration/configure-rbac.mdx";
+
+<ConfigureRbac />
+
+## Requirements for managing roles <i class="fa-solid fa-key"></i> {#requirements}
+
+Role management requires appropriate `role` resource permissions that can be obtained through:
+
+- A predefined `root` role when [configuring RBAC](/deploy/configuration/configuring-rbac.md).
+- A role with [`Role Management`](#role-management-permissions) permissions granted.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AdminClient"
+      endMarker="# END AdminClient"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AdminClient"
+      endMarker="// END AdminClient"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AdminClient"
+      endMarker="// END AdminClient"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AdminClient"
+      endMarker="// END AdminClient"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AdminClient"
+      endMarker="// END AdminClient"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+## Role management <i class="fa-solid fa-user-shield"></i> {#role-management}
+
+### Create new roles with permissions
+
+Permissions for these resource types can be assigned to roles:
+
+1.  [**Role Management**](#role-management-permissions)
+
+2.  [**User Management**](#user-management-permissions)
+
+3.  [**Collections**](#collections-permissions) (collection definitions only, data object permissions are separate)
+
+4.  [**Tenants**](#tenants-permissions)
+
+5.  [**Data Objects**](#data-permissions)
+
+6.  [**Backup**](#backups-permissions)
+
+7.  [**Cluster Data Access**](#clusters-permissions)
+
+8.  [**Node Data Access**](#nodes-permissions)
+
+9.  [**Collection alias**](#aliases-permissions)
+
+10. [**Replications**](#replications-permissions)
+
+11. [**Groups**](#groups-permissions)
+
+#### Create a role with `Role Management` permissions {#role-management-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete all roles starting with `testRole*`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddManageRolesPermission"
+      endMarker="# END AddManageRolesPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddManageRolesPermission"
+      endMarker="// END AddManageRolesPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddManageRolesPermission"
+      endMarker="// END AddManageRolesPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddManageRolesPermission"
+      endMarker="// END AddManageRolesPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddManageRolesPermission"
+      endMarker="// END AddManageRolesPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `User Management` permissions {#user-management-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete all users starting with `testUser*`.
+- Assign and revoke roles to and from users starting with `testUser*`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddManageUsersPermission"
+      endMarker="# END AddManageUsersPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+  <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddManageUsersPermission"
+      endMarker="// END AddManageUsersPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+    text={GoCode}
+    startMarker="// START AddManageUsersPermission"
+    endMarker="// END AddManageUsersPermission"
+    language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddManageUsersPermission"
+      endMarker="// END AddManageUsersPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+    text={JavaCode}
+    startMarker="// START AddManageUsersPermission"
+    endMarker="// END AddManageUsersPermission"
+    language="java"
+  />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Collections` permissions {#collections-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete all collections starting with `TargetCollection`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddCollectionsPermission"
+      endMarker="# END AddCollectionsPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddCollectionsPermission"
+      endMarker="// END AddCollectionsPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddCollectionsPermission"
+      endMarker="// END AddCollectionsPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddCollectionsPermission"
+      endMarker="// END AddCollectionsPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddCollectionsPermission"
+      endMarker="// END AddCollectionsPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Tenant` permissions {#tenants-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create and delete tenants starting with `TargetTenant` in collections starting with `TargetCollection`.
+- Read metadata (like tenant names and status) for tenants starting with `TargetTenant` in collections starting with `TargetCollection`.
+- Update the status of tenants starting with `TargetTenant` in collections starting with `TargetCollection`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddTenantPermission"
+      endMarker="# END AddTenantPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddTenantPermission"
+      endMarker="// END AddTenantPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddTenantPermission"
+      endMarker="// END AddTenantPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddTenantPermission"
+      endMarker="// END AddTenantPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddTenantPermission"
+      endMarker="// END AddTenantPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Data Objects` permissions {#data-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete data from collections starting with `TargetCollection`.
+- If multi-tenancy is enabled and the `tenant` filter is set, the permission only applies to tenants starting with `TargetTenant`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddDataObjectPermission"
+      endMarker="# END AddDataObjectPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddDataObjectPermission"
+      endMarker="// END AddDataObjectPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddDataObjectPermission"
+      endMarker="// END AddDataObjectPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddDataObjectPermission"
+      endMarker="// END AddDataObjectPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddDataObjectPermission"
+      endMarker="// END AddDataObjectPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Backups` permissions {#backups-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Manage backups for collections starting with `TargetCollection`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddBackupPermission"
+      endMarker="# END AddBackupPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddBackupPermission"
+      endMarker="// END AddBackupPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddBackupPermission"
+      endMarker="// END AddBackupPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddBackupPermission"
+      endMarker="// END AddBackupPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddBackupPermission"
+      endMarker="// END AddBackupPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Cluster Data Access` permissions {#clusters-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Read cluster metadata.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddClusterPermission"
+      endMarker="# END AddClusterPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddClusterPermission"
+      endMarker="// END AddClusterPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddClusterPermission"
+      endMarker="// END AddClusterPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddClusterPermission"
+      endMarker="// END AddClusterPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddClusterPermission"
+      endMarker="// END AddClusterPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Node Data Access` permissions {#nodes-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Read node metadata at the specified verbosity level for collections starting with `TargetCollection`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddNodesPermission"
+      endMarker="# END AddNodesPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddNodesPermission"
+      endMarker="// END AddNodesPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddNodesPermission"
+      endMarker="// END AddNodesPermission"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddNodesPermission"
+      endMarker="// END AddNodesPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddNodesPermission"
+      endMarker="// END AddNodesPermission"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Collection Alias` permissions {#aliases-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete collection aliases starting with `TargetAlias`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddAliasPermission"
+      endMarker="# END AddAliasPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddAliasPermission"
+      endMarker="// END AddAliasPermission"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+    text={GoCode}
+    startMarker="// START AddAliasPermission"
+    endMarker="// END AddAliasPermission"
+    language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddAliasPermission"
+      endMarker="// END AddAliasPermission"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+    text={JavaCode}
+    startMarker="// START AddAliasPermission"
+    endMarker="// END AddAliasPermission"
+    language="java"
+    />
+  </TabItem>
+</Tabs>
+
+#### Create a role with `Replications` permissions {#replications-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Create, read, update and delete replica movement operations for collections starting with `TargetCollection` and shards starting with `TargetShard`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddReplicationsPermission"
+      endMarker="# END AddReplicationsPermission"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+
+```typescript
+// TS/JS support coming soon
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+text={GoCode}
+startMarker="// START AddReplicationsPermission"
+endMarker="// END AddReplicationsPermission"
+language="go"
+/>
+</TabItem>
+<TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddReplicationsPermission"
+      endMarker="// END AddReplicationsPermission"
+      language="java"
+    />
+  </TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+<FilteredTextBlock
+text={JavaCode}
+startMarker="// START AddReplicationsPermission"
+endMarker="// END AddReplicationsPermission"
+language="java"
+/>
+</TabItem>
+</Tabs>
+
+#### Create a role with `Groups` permissions {#groups-permissions}
+
+This example creates a role called `testRole` with permissions to:
+
+- Read information about and assign/revoke group membership for OIDC groups starting with `TargetGroup`.
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+<FilteredTextBlock
+text={RolePyCode}
+startMarker="# START AddGroupsPermission"
+endMarker="# END AddGroupsPermission"
+language="py"
+/>
+</TabItem>
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```typescript
+// TS/JS support coming soon
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+text={GoCode}
+startMarker="// START AddGroupsPermission"
+endMarker="// END AddGroupsPermission"
+language="go"
+/>
+</TabItem>
+<TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddGroupsPermission"
+      endMarker="// END AddGroupsPermission"
+      language="java"
+    />
+  </TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+<FilteredTextBlock
+text={JavaCode}
+startMarker="// START AddGroupsPermission"
+endMarker="// END AddGroupsPermission"
+language="java"
+/>
+</TabItem>
+</Tabs>
+
+### Grant additional permissions
+
+Additional permissions can be granted to a role at any time. The role must already exist.
+
+This example grants additional permissions to the role `testRole` to:
+
+- **Create new data** in collections that start with `TargetCollection`
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AddRoles"
+      endMarker="# END AddRoles"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START AddRoles"
+      endMarker="// END AddRoles"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AddRoles"
+      endMarker="// END AddRoles"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AddRoles"
+      endMarker="// END AddRoles"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AddRoles"
+      endMarker="// END AddRoles"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### Remove permissions from a role
+
+Permissions can be revoked from a role at any time. Removing all permissions from a role will delete the role itself.
+
+This example removes the following permissions from the role `testRole`:
+
+- Read the data from collections that start with `TargetCollection`
+- Create and delete collections that start with `TargetCollection`
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START RemovePermissions"
+      endMarker="# END RemovePermissions"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+  <FilteredTextBlock
+        text={RoleTSCode}
+        startMarker="// START RemovePermissions"
+        endMarker="// END RemovePermissions"
+        language="ts"
+      />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START RemovePermissions"
+      endMarker="// END RemovePermissions"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START RemovePermissions"
+      endMarker="// END RemovePermissions"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START RemovePermissions"
+      endMarker="// END RemovePermissions"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### Check if a role exists
+
+Check if the role `testRole` exists:
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START CheckRoleExists"
+      endMarker="# END CheckRoleExists"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START CheckRoleExists"
+      endMarker="// END CheckRoleExists"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START CheckRoleExists"
+      endMarker="// END CheckRoleExists"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START CheckRoleExists"
+      endMarker="// END CheckRoleExists"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START CheckRoleExists"
+      endMarker="// END CheckRoleExists"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### Inspect a role
+
+View the permissions assigned to a role.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START InspectRole"
+      endMarker="# END InspectRole"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START InspectRole"
+      endMarker="// END InspectRole"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START InspectRole"
+      endMarker="// END InspectRole"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START InspectRole"
+      endMarker="// END InspectRole"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START InspectRole"
+      endMarker="// END InspectRole"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### List all roles
+
+View all roles in the system and their permissions.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START ListAllRoles"
+      endMarker="# END ListAllRoles"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={RoleTSCode}
+      startMarker="// START ListAllRoles"
+      endMarker="// END ListAllRoles"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START ListAllRoles"
+      endMarker="// END ListAllRoles"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ListAllRoles"
+      endMarker="// END ListAllRoles"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START ListAllRoles"
+      endMarker="// END ListAllRoles"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### List users with a role
+
+List all users who have the role `testRole`.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START AssignedUsers"
+      endMarker="# END AssignedUsers"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+  <FilteredTextBlock
+        text={RoleTSCode}
+        startMarker="// START AssignedUsers"
+        endMarker="// END AssignedUsers"
+        language="ts"
+      />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START AssignedUsers"
+      endMarker="// END AssignedUsers"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START AssignedUsers"
+      endMarker="// END AssignedUsers"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START AssignedUsers"
+      endMarker="// END AssignedUsers"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+### Delete a role
+
+Deleting a role will remove it from the system, and revoke the associated permissions from all users who had this role.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={RolePyCode}
+      startMarker="# START DeleteRole"
+      endMarker="# END DeleteRole"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+  <FilteredTextBlock
+        text={RoleTSCode}
+        startMarker="// START DeleteRole"
+        endMarker="// END DeleteRole"
+        language="ts"
+      />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START DeleteRole"
+      endMarker="// END DeleteRole"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START DeleteRole"
+      endMarker="// END DeleteRole"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START DeleteRole"
+      endMarker="// END DeleteRole"
+      language="java"
+    />
+  </TabItem>
+</Tabs>
+
+## User management <i class="fas fa-user-edit"></i> {#user-management}
+
+Visit the [Manage users](./manage-users.mdx) page to learn more about assigning roles to users as well as creating, updating and deleting users.
+
+## Further resources
+
+- [RBAC: Overview](./index.mdx)
+- [RBAC: Configuration](/deploy/configuration/configuring-rbac.md)
+- [RBAC: Manage users](./manage-users.mdx)
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

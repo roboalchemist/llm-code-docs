@@ -1,0 +1,43 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/cloud/index.mdx
+
+---
+title: Weaviate Cloud
+sidebar_label: Introduction
+description: "Overview of Weaviate Cloud (WCD) documentation for managed vector database deployment and operations."
+sidebar_position: 0
+image: og/wcd/title.jpg
+---
+
+import WCDLandingIntro from '/_includes/wcs/wcs-landing-intro.mdx'
+
+<WCDLandingIntro/>
+
+![Weaviate Cloud flowchart](./img/weaviate-cloud-flowchart.png "Weaviate Cloud flowchart")
+
+:::tip Quickstart
+Follow the **[quickstart guide](/cloud/quickstart)** to get started with Weaviate Cloud.
+:::
+
+## Weaviate Cloud and Weaviate Database
+
+import WCDLandingOpenSource from '/_includes/wcs/wcs-landing-open-source.mdx'
+
+<WCDLandingOpenSource/>
+
+## Weaviate Cloud solutions
+
+import WCDLandingSolutions from '/_includes/wcs/wcs-landing-solutions.mdx'
+
+<WCDLandingSolutions/>
+
+## Get started
+
+import WCDLandingGetStarted from '/_includes/wcs/wcs-landing-get-started.mdx'
+
+<WCDLandingGetStarted/>
+
+## Support & feedback
+
+import SupportAndTrouble from '/_includes/wcs/support-and-troubleshoot.mdx';
+
+<SupportAndTrouble />

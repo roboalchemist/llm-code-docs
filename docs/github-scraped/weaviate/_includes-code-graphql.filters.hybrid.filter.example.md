@@ -1,0 +1,111 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.filters.hybrid.filter.example.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.search-operators.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START GraphQLHybridWithFilter"
+    endMarker="END GraphQLHybridWithFilter"
+    language="py"
+  />
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+// highlight-start
+where := filters.Where().
+WithPath([]string{"content"}).
+  WithOperator(filters.Equal).
+  WithValueString("Alaskan")  // All results must have "Alaskan" in the content property
+// highlight-end
+
+name = graphql.Field{Name: "summary"}
+
+hybrid := &graphql.HybridArgumentBuilder{}
+hybrid.WithQuery("How to catch an Alaskan Pollock").WithAlpha(0.5)
+
+resultSet, gqlErr := client.GraphQL().Get().WithClassName("Article").WithHybrid(hybrid).WithWhere(where).WithFields(name).Do(context.Background())
+articles := get["Article"].([]interface{})
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+Field title = Field.builder().name("title" "summary").build();
+
+// highlight-start
+WhereFilter where = WhereFilter.builder()
+  .path(new String[]{ "wordCount" })
+  .operator(Operator.LessThan)
+  .valueInt(1000)
+  .build();
+// highlight-end
+
+HybridFilter hybridFilter = HybridFilter.builder()
+  .query("How to catch an Alaskan Pollock.")
+  .alpha(0.5)
+  .build();
+
+Result<GraphQLResponse> result = client.graphQL().get()
+  .withClassName("Article")
+  .withFields(title)
+  .withWhere(where)
+  .withHybrid(hybridFilter)
+  .run();
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+  "query": "{
+      Get {
+        Article (
+          hybrid: { query: \"How to catch an Alaskan Pollock\", alpha: 0.5 }
+          # highlight-start
+          where: { path: [\"wordCount\"], operator: LessThan, valueInt: 1000 }
+          # highlight-end
+        ) {
+          title
+          summary
+      }
+    }
+  }"
+}' | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer learn-weaviate' \
+    -H "X-OpenAI-Api-Key: $OPENAI_API_KEY" \
+    -d @- \
+    https://edu-demo.weaviate.network/v1/graphql
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Get {
+    Article (
+      hybrid: { query: "how to fish", alpha: 0.5 }
+    # highlight-start
+      where: { path: ["wordCount"], operator: LessThan, valueInt: 1000 }
+    # highlight-end
+    ) {
+      title
+      summary
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

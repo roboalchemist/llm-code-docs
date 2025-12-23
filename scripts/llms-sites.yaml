@@ -581,9 +581,15 @@ sites:
   base_url: https://docs.ollama.com/
   description: Local LLM runtime with API reference, capabilities, integrations, and
     CLI documentation
+- name: openai
+  base_url: https://developers.openai.com/
+  description: OpenAI API documentation including GPT, Whisper, DALL-E, and embeddings
 - name: openai-cdn
   base_url: https://cdn.openai.com/API/docs/txt/
   description: OpenAI API documentation CDN
+- name: openai-platform
+  base_url: https://platform.openai.com/.well-known/
+  description: OpenAI Platform API reference including Whisper, GPT, DALL-E, TTS, and embeddings
 - name: openphone
   base_url: https://www.openphone.com/docs/
   description: OpenPhone business phone API
@@ -840,9 +846,6 @@ sites:
 - name: warp
   base_url: https://docs.warp.dev/
   description: Warp AI-powered terminal
-- name: weaviate
-  base_url: https://docs.weaviate.io/
-  description: Weaviate open-source vector database and cloud platform
 - name: webflow
   base_url: https://developers.webflow.com/
   description: Webflow website builder developer platform

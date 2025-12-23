@@ -1,0 +1,127 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/import.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import EndToEndPyCode from '!!raw-loader!/_includes/code/quickstart/endtoend.py';
+import EndToEndTSCode from '!!raw-loader!/_includes/code/quickstart/endtoend.ts';
+import GoImportObjects from '!!raw-loader!/_includes/code/quickstart/go-add-objects.go';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+<FilteredTextBlock
+  text={EndToEndPyCode}
+  startMarker="# ===== import data ====="
+  endMarker="# Test import"
+  language="py"
+/>
+</TabItem>
+<TabItem value="ts" label="JavaScript/TypeScript">
+<FilteredTextBlock
+  text={EndToEndTSCode}
+  startMarker="// Import data function"
+  endMarker="// END Import data function"
+  language="ts"
+/>
+</TabItem>
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+  text={GoImportObjects}
+  startMarker="// START Import data function"
+  endMarker="// END Import data function"
+  language="java"
+/>
+</TabItem>
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+
+package io.weaviate;
+
+import java.util.ArrayList;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.schema.model.DataType;
+import io.weaviate.client.v1.schema.model.Property;
+import io.weaviate.client.v1.schema.model.WeaviateClass;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/");
+    // Replace WEAVIATE_INSTANCE_URL with your instance URL
+
+    WeaviateClient client = new WeaviateClient(config);
+
+    // we will create the class "Question" and the properties
+    WeaviateClass clazz = WeaviateClass.builder()
+      .className("Question")
+      .vectorizer("text2vec-openai")
+      .build();
+
+    // add the schema
+    Result<Boolean> result = client.schema().classCreator().withClass(clazz).run();
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+  }
+}
+```
+
+</TabItem> */}
+<TabItem value="curl" label="Curl">
+
+```bash
+# Replace with your Weaviate endpoint
+API_URL="http://WEAVIATE_INSTANCE_URL/v1/batch/objects"
+# Replace with your Inference API token
+OPENAI_API_TOKEN="<OpenAI-API-Token>"
+# Set batch size
+BATCH_SIZE=100
+
+# Read the JSON file and loop through its entries
+lines_processed=0
+batch_data="{\"objects\": ["
+
+cat jeopardy_tiny.json | jq -c '.[]' | while read line; do
+  # Concatenate lines
+  line=$(echo "$line" | jq "{class: \"Question\", properties: {answer: .Answer, question: .Question, category: .Category}}")
+  if [ $lines_processed -eq 0 ]; then
+    batch_data+=$line
+  else
+    batch_data+=",$line"
+  fi
+
+  lines_processed=$((lines_processed + 1))
+
+  # If the batch is full, send it to the API using curl
+  if [ $lines_processed -eq $BATCH_SIZE ]; then
+    batch_data+="]}"
+
+    curl -X POST "$API_URL" \
+         -H "Content-Type: application/json" \
+         -H "X-OpenAI-Api-Key: $OPENAI_API_TOKEN" \
+         -d "$batch_data"
+    echo "" # Print a newline for better output formatting
+
+    # Reset the batch data and counter
+    lines_processed=0
+    batch_data="{\"objects\": ["
+  fi
+done
+
+# Send the remaining data (if any) to the API using curl
+if [ $lines_processed -ne 0 ]; then
+  batch_data+="]}"
+
+  curl -X POST "$API_URL" \
+       -H "Content-Type: application/json" \
+       -H "X-OpenAI-Api-Key: $OPENAI_API_TOKEN" \
+       -d "$batch_data"
+  echo "" # Print a newline for better output formatting
+fi
+```
+
+</TabItem>
+</Tabs>

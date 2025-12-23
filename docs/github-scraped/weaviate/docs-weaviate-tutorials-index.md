@@ -1,0 +1,93 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/tutorials/index.mdx
+
+---
+title: Tutorials
+description: Explore Weaviate tutorials for practical guidance on data management and queries.
+sidebar_position: 0
+image: og/docs/tutorials.jpg
+hide_table_of_contents: true
+# tags: ['how to', 'schema']
+---
+
+import BasicPrereqs from "/_includes/prerequisites-quickstart.md";
+
+<BasicPrereqs />
+
+Tutorials aim to empower you to use Weaviate based on _your_ particular needs.
+Here, you can learn how to:
+
+import CardsSection from "/src/components/CardsSection";
+
+export const advancedFeaturesData = [
+  {
+    title: "Quick tour of Weaviate",
+    description: (
+      <>
+        End-to-end guide that cover important topics like configuring
+        collections, compression, etc.
+      </>
+    ),
+    link: "/weaviate/quickstart",
+    icon: "fas fa-signs-post",
+  },
+  {
+    title: "Use Multi-Vector Embeddings (ColBERT, etc.)",
+    description:
+      "Implement advanced multi-vector representations for improved search relevance using models like ColBERT.",
+    link: "/weaviate/tutorials/multi-vector-embeddings",
+    icon: "fas fa-puzzle-piece",
+  },
+  {
+    title: "Zero-downtime collection migration with aliases",
+    description:
+      "Learn how to migrate Weaviate collections without service interruption using collections aliases.",
+    link: "/weaviate/tutorials/collection-aliases",
+    icon: "fas fa-share	",
+  },
+  {
+    title: "Import data in bulk",
+    description:
+      "Learn how to import data efficiently using client-side and server-side batching in Weaviate.",
+    link: "/weaviate/tutorials/import",
+    icon: "fas fa-file-import",
+  },
+  {
+    title: "Manage relationships with cross-references",
+    description:
+      "Define, create, and query links between objects to model complex data relationships effectively.",
+    link: "/weaviate/tutorials/cross-references",
+    icon: "fas fa-link",
+  },
+  {
+    title: "Load data into Weaviate with Spark",
+    description:
+      "Use the Spark Connector to import large datasets from Apache Spark into Weaviate with batch processing.",
+    link: "/weaviate/tutorials/spark-connector",
+    icon: "fas fa-fire",
+  },
+  {
+    title: "Set up Role-Based Access Control (RBAC)",
+    description:
+      "Configure roles, permissions, and user assignments for secure access control in Weaviate.",
+    link: "/weaviate/tutorials/rbac",
+    icon: "fas fa-user-shield",
+  },
+  {
+    title: "Secure Weaviate with TLS",
+    description:
+      "Navigate three paths to securing your Weaviate deployment using TLS.",
+    link: "/weaviate/tutorials/tls-ssl",
+    icon: "fas fa-lock",
+  },
+  {
+    title: "Switch vectorizers",
+    description:
+      "Learn how to update the embedding model in order to improve performance.",
+    link: "/weaviate/tutorials/vectorizer-migration",
+    icon: "fas fa-lock",
+  },
+];
+
+<br />
+<CardsSection items={advancedFeaturesData} />
+<br />

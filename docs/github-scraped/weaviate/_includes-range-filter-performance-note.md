@@ -1,0 +1,9 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/range-filter-performance-note.mdx
+
+In some edge cases, filter performance may be slow due to a mismatch between the filter architecture and the data structure. For example, if a property has very large cardinality (i.e. a large number of unique values), its range-based filter performance may be slow.
+
+If you are experiencing slow filter performance, you have several options:
+
+- Further restrict your query by adding more conditions to the `where` operator
+- Add a `limit` parameter to your query
+- Configure `indexRangeFilters` for properties that require range-based filtering. You can [set inverted index parameters](/weaviate/manage-collections/inverted-index) when creating your collection. Learn more about [configuring the inverted index](/weaviate/concepts/indexing/inverted-index#configure-inverted-indexes) to optimize filter performance for your specific use case.

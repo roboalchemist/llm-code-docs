@@ -1,0 +1,84 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/core.client.openai.apikey.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+
+client = weaviate.Client(
+  url = "https://WEAVIATE_INSTANCE_URL",  # Replace WEAVIATE_INSTANCE_URL with the URL
+  # highlight-start
+  additional_headers = {
+    "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY",  # Replace with your API key
+    "X-Azure-Api-Key": "YOUR-AZURE-API-KEY",  # Replace with your API key
+  }
+  # highlight-end
+)
+```
+
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate/entities/models"
+)
+
+func main() {
+    cfg := weaviate.Config{
+        Host:   "WEAVIATE_INSTANCE_URL/",  // Replace with your Weaviate endpoint
+        Scheme: "https",
+        // highlight-start
+        // Replace with your API key
+        Headers: map[string]string{
+          "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY",  // Replace with your API key
+          "X-Azure-Api-Key": "YOUR-AZURE-API-KEY", // Replace with your API key
+        }
+        // highlight-end
+    }
+
+    client, err := weaviate.NewClient(cfg)
+    if err != nil {
+      panic(err)
+    }
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+import java.util.ArrayList;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+
+public class App {
+  public static void main(String[] args) {
+    // highlight-start
+    Map<String, String> headers = new HashMap<String, String>() { {
+      // Replace with your API key
+      put("X-OpenAI-Api-Key", "YOUR-OPENAI-API-KEY");  // Replace with your API key
+      put("X-Azure-Api-Key", "YOUR-AZURE-API-KEY"); // Replace with your API key
+    } };
+    // highlight-end
+
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/", headers);
+    // Replace WEAVIATE_INSTANCE_URL with the URL
+    WeaviateClient client = new WeaviateClient(config);
+  }
+}
+```
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,11 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/clients/ts-client-intro.mdx
+
+The TypeScript client supports code that is written in TypeScript or JavaScript.
+
+The **v3 client** is the current TypeScript client. If you have code written for the [v2 client](/weaviate/client-libraries/typescript#javascripttypescript-client-v2-deprecation), you should migrate it to v3 as the v2 client is no longer maintained.
+
+:::note
+
+The v3 client supports server side development (Node.js hosted). If your application is browser based, you might consider using the [TypeScript client v2](/weaviate/client-libraries/typescript#javascripttypescript-client-v2-deprecation). Keep in mind that the v2 client is outdated and no longer officially maintained.
+
+:::

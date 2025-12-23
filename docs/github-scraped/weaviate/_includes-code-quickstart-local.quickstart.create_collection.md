@@ -1,0 +1,113 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/local.quickstart.create_collection.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/python/local.quickstart.create_collection.py';
+import TSCode from '!!raw-loader!/_includes/code/typescript/local.quickstart.create_collection.ts';
+import GoCode from '!!raw-loader!/_includes/code/howto/go/docs/quickstart_local/2_1_create_collection/main.go';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/QuickstartLocalTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/QuickstartLocalTest.cs";
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/quickstart_local/CreateCollection.java';
+import VectorsAutoSchemaError from "/_includes/error-note-vectors-autoschema.mdx";
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+  <VectorsAutoSchemaError />
+
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="# CreateCollection"
+    endMarker="# END CreateCollection"
+    language="py"
+    title="quickstart_create_collection.py"
+  />
+
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+<FilteredTextBlock
+  text={TSCode}
+  startMarker="// CreateCollection"
+  endMarker="// END CreateCollection"
+  language="ts"
+  title="quickstart_create_collection.ts"
+/>
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+The collection also contains a configuration for the generative (RAG) integration:
+- Ollama [generative AI integrations](/weaviate/model-providers/ollama/generative) for retrieval augmented generation (RAG), using the `llama3.2` model.
+
+<FilteredTextBlock
+  text={GoCode}
+  startMarker="// START CreateCollection"
+  endMarker="// END CreateCollection"
+  language="goraw"
+  title="quickstart/2_1_create_collection/main.go"
+/>
+</TabItem>
+
+<TabItem value="java6" label="Java v6">
+<FilteredTextBlock
+  text={JavaV6Code}
+  startMarker="// START CreateCollection"
+  endMarker="// END CreateCollection"
+  language="java"
+/>
+</TabItem>
+
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+The collection also contains a configuration for the generative (RAG) integration:
+- Ollama [generative AI integrations](/weaviate/model-providers/ollama/generative) for retrieval augmented generation (RAG), using the `llama3.2` model.
+
+<FilteredTextBlock
+  text={JavaCode}
+  startMarker="// START CreateCollection"
+  endMarker="// END CreateCollection"
+  language="javaraw"
+  title="quickstart/CreateCollection.java"
+/>
+
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START CreateCollection"
+      endMarker="// END CreateCollection"
+      language="csharp"
+    />
+  </TabItem>
+
+<TabItem value="curl" label="Curl">
+
+The collection also contains a configuration for the generative (RAG) integration:
+- Ollama [generative AI integrations](/weaviate/model-providers/ollama/generative) for retrieval augmented generation (RAG), using the `llama3.2` model.
+
+```bash
+curl -X POST \
+-H "Content-Type: application/json" \
+-d '{
+  "class": "Question",
+  "vectorizer": "text2vec-ollama",
+  "moduleConfig": {
+    "text2vec-ollama": {
+				"apiEndpoint": "http://host.docker.internal:11434",
+				"model": "nomic-embed-text"
+    },
+    "generative-ollama": {
+				"apiEndpoint": "http://host.docker.internal:11434",
+				"model": "llama3.2"
+    }
+  }
+}' \
+"http://localhost:8080/v1/schema"
+```
+
+</TabItem>
+</Tabs>

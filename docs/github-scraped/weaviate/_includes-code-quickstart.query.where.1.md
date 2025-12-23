@@ -1,0 +1,66 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart.query.where.1.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+{/* <TabItem value="graphql" label="GraphQL">
+
+```graphql
+TBC
+```
+
+</TabItem> */}
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+import json
+
+client = weaviate.Client(
+    url="https://some-endpoint.semi.network",
+    additional_headers={
+        "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY"
+    }
+)
+
+where_filter = {
+    "path": ["category"],
+    "operator": "Equal",
+    "valueText": "ANIMALS",
+}
+
+result = (
+    client.query
+    .get("Question", ["question", "answer", "category"])
+    .with_near_text({"concepts": ["biology"]})
+    .with_where(where_filter)
+    .do()
+)
+
+print(json.dumps(result, indent=4))
+```
+
+</TabItem>
+{/* <TabItem value="go" label="Go">
+
+```go
+TBC
+```
+
+</TabItem> */}
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+TBC
+```
+
+</TabItem> */}
+{/* <TabItem value="curl" label="Curl">
+
+```bash
+TBC
+```
+
+</TabItem> */}
+</Tabs>

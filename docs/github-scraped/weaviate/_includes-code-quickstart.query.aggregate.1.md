@@ -1,0 +1,67 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart.query.aggregate.1.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Aggregate {
+    Question {
+      meta {
+        count
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+<TabItem value="py" label="Python">
+
+```python
+import weaviate
+import json
+
+client = weaviate.Client(
+    url="https://WEAVIATE_INSTANCE_URL/",  # Replace with your Weaviate endpoint
+    additional_headers={
+        "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY"  # Or "X-Cohere-Api-Key" or "X-HuggingFace-Api-Key"
+    }
+)
+
+result = (
+    client.query
+    .aggregate("Question")
+    .with_fields("meta { count }")
+    .do()
+)
+
+print(json.dumps(result, indent=4))
+```
+
+</TabItem>
+{/* <TabItem value="go" label="Go">
+
+```go
+TBC
+```
+
+</TabItem> */}
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+TBC
+```
+
+</TabItem> */}
+{/* <TabItem value="curl" label="Curl">
+
+```bash
+TBC
+```
+
+</TabItem> */}
+</Tabs>

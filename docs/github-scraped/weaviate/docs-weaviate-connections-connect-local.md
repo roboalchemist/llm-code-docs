@@ -1,0 +1,314 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/connections/connect-local.mdx
+
+---
+title: Local instances
+sidebar_position: 20
+image: og/docs/connect.jpg
+# tags: ['getting started', 'connect']
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import FilteredTextBlock from "@site/src/components/Documentation/FilteredTextBlock";
+
+import WCSWithoutAuthentication from "/_includes/code/wcs.without.authentication.mdx";
+import WCSAuthenticationApiKey from "/_includes/code/wcs.authentication.api.key.mdx";
+import WCDAuthAndInferenceKeys from "/_includes/code/wcs.authentication.api.key.with.inference.key.mdx";
+
+import PyCodeV4 from "!!raw-loader!/_includes/code/connections/connect-python-v4.py";
+import TsCodeV3 from "!!raw-loader!/_includes/code/connections/connect-ts-v3.ts";
+import JavaCode from "!!raw-loader!/_includes/code/connections/connect.java";
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/ConnectionTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/ConnectionTest.cs";
+import ShellCode from "!!raw-loader!/_includes/code/connections/connect.sh";
+import GoCode from "!!raw-loader!/_includes/code/connections/connect.go";
+
+Follow these steps to connect to a locally hosted Weaviate instance.
+
+## Local connection URL
+
+Docker instances default to `http://localhost:8080`. The gRPC port, `50051`, is also on `localhost`.
+
+If your instance runs on Kubernetes, see the `host` and `port` values in your Helm chart's `values.yaml` file.
+
+## No authentication enabled
+
+To connect to a local instance without authentication, follow these examples.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START LocalNoAuth"
+      endMarker="# END LocalNoAuth"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START LocalNoAuth"
+      endMarker="// END LocalNoAuth"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START LocalNoAuth"
+      endMarker="// END LocalNoAuth"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START LocalNoAuth"
+      endMarker="// END LocalNoAuth"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START LocalNoAuth"
+      endMarker="// END LocalNoAuth"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START LocalNoAuth"
+      endMarker="// END LocalNoAuth"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START LocalNoAuth"
+      endMarker="# END LocalNoAuth"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+## Change the URL or port
+
+To change the default URL or port number, follow these examples.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START CustomURL"
+      endMarker="# END CustomURL"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START CustomURL"
+      endMarker="// END CustomURL"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START CustomURL"
+      endMarker="// END CustomURL"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START CustomURL"
+      endMarker="// END CustomURL"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START CustomURL"
+      endMarker="// END CustomURL"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START CustomURL"
+      endMarker="// END CustomURL"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START CustomURL"
+      endMarker="# END CustomURL"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+## Authentication enabled
+
+To authenticate with a Weaviate API key, follow these examples.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START LocalAuth"
+      endMarker="# END LocalAuth"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START LocalAuth"
+      endMarker="// END LocalAuth"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START LocalAuth"
+      endMarker="// END LocalAuth"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START LocalAuth"
+      endMarker="// END LocalAuth"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START LocalAuth"
+      endMarker="// END LocalAuth"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START LocalAuth"
+      endMarker="// END LocalAuth"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START LocalAuth"
+      endMarker="# END LocalAuth"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+### OIDC authentication
+
+import OIDCConnect from "/_includes/connect/oidc-connect-ref.mdx";
+
+<OIDCConnect />
+
+For additional client examples, see [OIDC authentication](/weaviate/connections/connect-custom#oidc-authentication).
+
+## Third party API keys
+
+Integrations that use external APIs often need API keys. To add third party API keys, follow these examples:
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCodeV4}
+      startMarker="# START LocalThirdPartyAPIKeys"
+      endMarker="# END LocalThirdPartyAPIKeys"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TsCodeV3}
+      startMarker="// START LocalThirdPartyAPIKeys"
+      endMarker="// END LocalThirdPartyAPIKeys"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START LocalThirdPartyAPIKeys"
+      endMarker="// END LocalThirdPartyAPIKeys"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START LocalThirdPartyAPIKeys"
+      endMarker="// END LocalThirdPartyAPIKeys"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START LocalThirdPartyAPIKeys"
+      endMarker="// END LocalThirdPartyAPIKeys"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START LocalThirdPartyAPIKeys"
+      endMarker="// END LocalThirdPartyAPIKeys"
+      language="csharp"
+    />
+  </TabItem>
+  <TabItem value="shell" label="cURL">
+    <FilteredTextBlock
+      text={ShellCode}
+      startMarker="# START LocalThirdPartyAPIKeys"
+      endMarker="# END LocalThirdPartyAPIKeys"
+      language="shell"
+    />
+  </TabItem>
+</Tabs>
+
+## Environment variables
+
+import EnvVarsHowto from "/_includes/environment-variables.mdx";
+
+<EnvVarsHowto />
+
+## gRPC timeouts
+
+import GRPCTimeoutIntro from "/_includes/connect/timeouts-intro.mdx";
+
+<GRPCTimeoutIntro />
+
+import GRPCTimeouts from "/_includes/code/connections/timeouts-local.mdx";
+
+<GRPCTimeouts />
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

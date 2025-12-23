@@ -1,0 +1,86 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/local.quickstart.is_ready.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/python/local.quickstart.is_ready.py';
+import TSCode from '!!raw-loader!/_includes/code/typescript/local.quickstart.is_ready.ts';
+import GoCode from '!!raw-loader!/_includes/code/howto/go/docs/quickstart_local/1_is_ready/main.go';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/QuickstartLocalTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/QuickstartLocalTest.cs";
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/quickstart_local/IsReady.java';
+
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+<FilteredTextBlock
+  text={PyCode}
+  startMarker="# InstantiationExample"
+  endMarker="# END InstantiationExample"
+  language="py"
+  title="quickstart_check_readiness.py"
+/>
+
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+<FilteredTextBlock
+  text={TSCode}
+  startMarker="// InstantiationExample"
+  endMarker="// END InstantiationExample"
+  language="ts"
+  title="quickstart_check_readiness.ts"
+/>
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+  text={GoCode}
+  startMarker="// START InstantiationExample"
+  endMarker="// END InstantiationExample"
+  language="goraw"
+  title="quickstart/1_check_readiness/main.go"
+/>
+</TabItem>
+
+<TabItem value="java6" label="Java v6">
+<FilteredTextBlock
+  text={JavaV6Code}
+  startMarker="// START InstantiationExample"
+  endMarker="// END InstantiationExample"
+  language="java"
+/>
+</TabItem>
+
+<TabItem value="java" label="Java v5 (Deprecated)">
+<FilteredTextBlock
+  text={JavaCode}
+  startMarker="// START InstantiationExample"
+  endMarker="// END InstantiationExample"
+  language="javaraw"
+  title="quickstart/IsReady.java"
+/>
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START InstantiationExample"
+      endMarker="// END InstantiationExample"
+      language="csharp"
+    />
+  </TabItem>
+
+<TabItem value="curl" label="Curl">
+
+```bash
+curl -w "\nResponse code: %{http_code}\n" \
+  http://localhost:8080/v1/.well-known/ready
+
+# You should see "Response code: 200" if the instance is ready
+```
+
+</TabItem>
+</Tabs>

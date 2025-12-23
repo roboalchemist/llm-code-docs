@@ -1,0 +1,662 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/manage-objects/import.mdx
+
+---
+title: Batch import
+sidebar_position: 15
+image: og/docs/howto.jpg
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/howto/manage-data.import.py';
+import PySuppCode from '!!raw-loader!/_includes/code/howto/sample-data.py';
+import TSCode from '!!raw-loader!/_includes/code/howto/manage-data.import.ts';
+import TsSuppCode from '!!raw-loader!/_includes/code/howto/sample-data.ts';
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/manage-data.import.java';
+import JavaV6Code from '!!raw-loader!/_includes/code/java-v6/src/test/java/ManageObjectsImportTest.java';
+import CSharpCode from '!!raw-loader!/_includes/code/csharp/ManageObjectsImportTest.cs';
+import GoCode from '!!raw-loader!/_includes/code/howto/go/docs/manage-data.import_test.go';
+import SkipLink from '/src/components/SkipValidationLink'
+
+[Batch imports](../tutorials/import.mdx) are an efficient way to add multiple data objects and cross-references.
+
+<details>
+  <summary>Additional information</summary>
+
+To create a bulk import job, follow these steps:
+
+1. Initialize a batch object.
+1. Add items to the batch object.
+1. Ensure that the last batch is sent (flushed).
+
+</details>
+
+## Basic import
+
+The following example adds objects to the `MyCollection` collection.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BasicBatchImportExample"
+      endMarker="# END BasicBatchImportExample"
+      language="py"
+    />
+
+### Error handling
+
+<!-- TODO[g-despot]: Add link to external Python references once created for "reference page" -->
+
+During a batch import, any failed objects or references will be stored and can be obtained through `batch.failed_objects` and `batch.failed_references`.
+Additionally, a running count of failed objects and references is maintained and can be accessed through `batch.number_errors` within the context manager.
+This counter can be used to stop the import process in order to investigate the failed objects or references.
+
+Find out more about error handling on the Python client [reference page](/weaviate/client-libraries/python).
+
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START BasicBatchImportExample"
+      endMarker="// END BasicBatchImportExample"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START BasicBatchImportExample"
+      endMarker="// END BasicBatchImportExample"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BasicBatchImportExample"
+      endMarker="// END BasicBatchImportExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START BasicBatchImportExample"
+      endMarker="// END BasicBatchImportExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BasicBatchImportExample"
+      endMarker="// END BasicBatchImportExample"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Server-side batching
+
+:::caution Preview
+
+Server-side batching was added in **`v1.34`** as a **preview**.<br/><br/>
+This means that the feature is still under development and may change in future releases, including potential breaking changes.
+**We do not recommend using this feature in production environments at this time.**
+
+:::
+
+Here's how to import objects into a collection named `MyCollection` using [server-side batch imports](../concepts/data-import.mdx#server-side-batching). The client will send data in batch sizes using feedback from the server.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START ServerSideBatchImportExample"
+      endMarker="# END ServerSideBatchImportExample"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+
+```typescript
+// TypeScript support coming soon
+```
+
+  </TabItem>
+    <TabItem value="go" label="Go">
+
+```go
+// Go support coming soon
+```
+
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START ServerSideBatchImportExample"
+      endMarker="// END ServerSideBatchImportExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+// Java support coming soon
+```
+
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START ServerSideBatchImportExample"
+      endMarker="// END ServerSideBatchImportExample"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Use the gRPC API
+
+:::info Added in `v1.23`.
+:::
+
+The [gRPC API](../api/index.mdx) is faster than the REST API. Use the gRPC API to improve import speeds.
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+<!-- TODO[g-despot]: Add link to external Python references once created for "batch import configuration options" -->
+<!-- See the client page for additional batch import [configuration options](/weaviate/client-libraries/python#batch-imports). -->
+
+The Python client uses gRPC by default.
+
+<br />
+The legacy Python client does not support gRPC.
+
+</TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+
+The TypeScript client v3 uses gRPC by default.
+
+<br />
+The legacy TypeScript client does not support gRPC.
+
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+
+The Java client v6 uses gRPC by default.
+  
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+
+To use the gRPC API with the Java client, add the `setGRPCHost` field to your client connection code. Update `setGRPCSecured` if you use an encrypted connection.<br/><br/>
+
+```java
+Config config = new Config("http", "localhost:8080");
+config.setGRPCSecured(false);
+config.setGRPCHost("localhost:50051");
+```
+
+  </TabItem>
+  <TabItem value="go" label="Go">
+
+To use the gRPC API with the Go client, add the `GrpcConfig` field to your client connection code. Update `Secured` if you use an encrypted connection.<br/><br/>
+
+```java
+cfg := weaviate.Config{
+  Host:   fmt.Sprintf("localhost:%v", "8080"),
+  Scheme: "http",
+  // highlight-start
+	 GrpcConfig: &grpc.Config{
+      Host: "localhost:50051",
+      Secured: false,
+	 },
+  // highlight-end
+}
+
+client, err := weaviate.NewClient(cfg)
+if err != nil {
+  require.Nil(t, err)
+  }
+```
+
+  </TabItem>
+    <TabItem value="csharp" label="C# (Beta)">
+
+The C# uses gRPC by default.
+  
+  </TabItem>
+  <TabItem value="spark" label="Spark">
+
+To use the gRPC API with the [Spark connector](https://github.com/weaviate/spark-connector), add the `grpc:host` field to your client connection code. Update `grpc:secured` if you use an encrypted connection.<br/><br/>
+
+```java
+  df.write
+      .format("io.weaviate.spark.Weaviate")
+      .option("scheme", "http")
+      .option("host", "localhost:8080")
+      // highlight-start
+      .option("grpc:host", "localhost:50051")
+      .option("grpc:secured", "false")
+      // highlight-start
+      .option("className", className)
+      .mode("append")
+      .save()
+```
+
+  </TabItem>
+</Tabs>
+
+## Specify an ID value
+
+Weaviate generates an UUID for each object. Object IDs must be unique. If you set object IDs, use one of these deterministic UUID methods to prevent duplicate IDs:
+
+- `generate_uuid5` (Python)
+- `generateUuid5` (TypeScript)
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BatchImportWithIDExample"
+      endMarker="# END BatchImportWithIDExample"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START BatchImportWithIDExample"
+      endMarker="// END BatchImportWithIDExample"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START BatchImportWithIDExample"
+      endMarker="// END BatchImportWithIDExample"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BatchImportWithIDExample"
+      endMarker="// END BatchImportWithIDExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START BatchImportWithIDExample"
+      endMarker="// END BatchImportWithIDExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BatchImportWithIDExample"
+      endMarker="// END BatchImportWithIDExample"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Specify a vector
+
+Use the `vector` property to specify a vector for each object.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BatchImportWithVectorExample"
+      endMarker="# END BatchImportWithVectorExample"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START BatchImportWithVectorExample"
+      endMarker="// END BatchImportWithVectorExample"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="go" label="Go">
+    <FilteredTextBlock
+      text={GoCode}
+      startMarker="// START BatchImportWithVectorExample"
+      endMarker="// END BatchImportWithVectorExample"
+      language="go"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BatchImportWithVectorExample"
+      endMarker="// END BatchImportWithVectorExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="java" label="Java v5 (Deprecated)">
+    <FilteredTextBlock
+      text={JavaCode}
+      startMarker="// START BatchImportWithVectorExample"
+      endMarker="// END BatchImportWithVectorExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BatchImportWithVectorExample"
+      endMarker="// END BatchImportWithVectorExample"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Specify named vectors
+
+:::info Added in `v1.24`
+:::
+
+When you create an object, you can specify named vectors (if [configured in your collection](../manage-collections/vector-config.mdx#define-named-vectors)).
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BatchImportWithNamedVectors"
+      endMarker="# END BatchImportWithNamedVectors"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="ts" label="JavaScript/TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START BatchImportWithNamedVectors"
+      endMarker="// END BatchImportWithNamedVectors"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BatchImportWithNamedVectors"
+      endMarker="// END BatchImportWithNamedVectors"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BatchImportWithNamedVectors"
+      endMarker="// END BatchImportWithNamedVectors"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Import with references
+
+You can batch create links from an object to another other object through cross-references.
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# BatchImportWithRefExample"
+      endMarker="# END BatchImportWithRefExample"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BatchImportWithRefExample"
+      endMarker="// END BatchImportWithRefExample"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BatchImportWithRefExample"
+      endMarker="// END BatchImportWithRefExample"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Python-specific considerations
+
+The Python clients have built-in batching methods to help you optimize import speed. For details, see the client documentation:
+
+<!-- TODO[g-despot]: Add link to external Python references once created for "Python client `v4`" -->
+- [Python client](../client-libraries/python/notes-best-practices.mdx)
+
+### Async Python client and batching
+
+Currently, the [async Python client does not support batching](../client-libraries/python/async.md#bulk-data-insertion). To use batching, use the sync Python client.
+
+## Stream data from large files
+
+If your dataset is large, consider streaming the import to avoid out-of-memory issues.
+
+To try the example code, download the sample data and create the sample input files.
+
+<details>
+  <summary>Get the sample data</summary>
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="pycsv" label="Python">
+    <FilteredTextBlock
+      text={PySuppCode}
+      startMarker="# START GetData"
+      endMarker="# END GetData"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="tscsv" label="TypeScript">
+    <FilteredTextBlock
+      text={TsSuppCode}
+      startMarker="// START GetData"
+      endMarker="// END GetData"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START GetData"
+      endMarker="// END GetData"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START GetData"
+      endMarker="// END GetData"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+</details>
+
+<details>
+  <summary>Stream JSON files example code</summary>
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="# START JSON streaming"
+    endMarker="# END JSON streaming"
+    language="py"
+  />
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START JSON streaming"
+      endMarker="// END JSON streaming"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START JSON streaming"
+      endMarker="// END JSON streaming"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START JSON streaming"
+      endMarker="// END JSON streaming"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+</details>
+
+<details>
+  <summary>Stream CSV files example code</summary>
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="pycsv" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="# START CSV streaming"
+    endMarker="# END CSV streaming"
+    language="py"
+  />
+  </TabItem>
+  <TabItem value="ts" label="TypeScript">
+    <FilteredTextBlock
+      text={TSCode}
+      startMarker="// START CSV streaming"
+      endMarker="// END CSV streaming"
+      language="ts"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START CSV streaming"
+      endMarker="// END CSV streaming"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START CSV streaming"
+      endMarker="// END CSV streaming"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+</details>
+
+## Batch vectorization
+
+:::info Added in `v1.25`.
+:::
+
+import BatchVectorizationOverview from "/_includes/code/client-libraries/batch-import.mdx";
+
+<BatchVectorizationOverview />
+
+## Model provider configurations
+
+You can configure the batch vectorization settings for each model provider, such as the requests per minute or tokens per minute. The following examples sets rate limits for Cohere and OpenAI integrations, and provides API keys for both.
+
+Note that each provider exposes different configuration options.
+
+ <Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START BatchVectorizationClientModify"
+      endMarker="# END BatchVectorizationClientModify"
+      language="py"
+    />
+  </TabItem>
+  <TabItem value="java6" label="Java v6">
+    <FilteredTextBlock
+      text={JavaV6Code}
+      startMarker="// START BatchVectorizationClientModify"
+      endMarker="// END BatchVectorizationClientModify"
+      language="java"
+    />
+  </TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START BatchVectorizationClientModify"
+      endMarker="// END BatchVectorizationClientModify"
+      language="csharp"
+    />
+  </TabItem>
+</Tabs>
+
+## Additional considerations
+
+Data imports can be resource intensive. Consider the following when you import large amounts of data.
+
+### Asynchronous imports
+
+:::caution Experimental
+Available starting in `v1.22`. This is an experimental feature. Use with caution.
+:::
+
+To maximize import speed, enable [asynchronous indexing](/weaviate/config-refs/indexing/vector-index.mdx#asynchronous-indexing).
+
+To enable asynchronous indexing, set the `ASYNC_INDEXING` environment variable to `true` in your Weaviate configuration file.
+
+```yaml
+weaviate:
+  image: cr.weaviate.io/semitechnologies/weaviate:||site.weaviate_version||
+  ...
+  environment:
+    ASYNC_INDEXING: 'true'
+  ...
+```
+
+### Automatically add new tenants
+
+import AutoTenant from "/_includes/auto-tenant.mdx";
+
+<AutoTenant />
+
+For details, see [auto-tenant](/weaviate/manage-collections/multi-tenancy#automatically-add-new-tenants).
+
+## Further resources
+
+- [Connect to Weaviate](/weaviate/connections/index.mdx)
+- [How-to: Create objects](./create.mdx)
+- <SkipLink href="/weaviate/api/rest#tag/batch">
+    References: REST - /v1/batch
+  </SkipLink>
+- [Configuration: Indexes](/weaviate/config-refs/indexing/vector-index.mdx#asynchronous-indexing)
+
+## Questions and feedback
+
+import DocsFeedback from "/_includes/docs-feedback.mdx";
+
+<DocsFeedback />

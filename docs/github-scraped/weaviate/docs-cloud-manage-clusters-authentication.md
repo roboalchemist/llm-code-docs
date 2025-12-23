@@ -1,0 +1,209 @@
+# Source: https://github.com/weaviate/docs/blob/main/docs/cloud/manage-clusters/authentication.mdx
+
+---
+title: Authentication
+sidebar_position: 5
+description: "Configure authentication options for Weaviate Cloud clusters by adding, updating and deleting API keys."
+image: og/wcd/user_guides.jpg
+---
+
+import WCDAPIKeys from "/docs/cloud/img/wcs-api-keys.jpg";
+import WCDAddAPIKeys from "/docs/cloud/img/wcs-add-key-details.jpg";
+import WCDDelAPIKeys from "/docs/cloud/img/wcs-delete-api-key.jpg";
+import RestartTheCluster from "/_includes/wcs/restart-warning.mdx";
+
+[Weaviate Cloud (WCD)](/go/console?utm_content=cloud) uses [RBAC (Role-Based Access Control)](/weaviate/configuration/rbac/index.mdx) to manage authentication. Below, you can find guides on how to create, edit, rotate and delete API keys for accessing Weaviate Cloud.
+
+### Create an API key
+
+If you don't have an existing API key, you'll need to create one. Follow these steps to find the API keys section and create a new key if necessary:
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="dkd8z43f9r"
+    src="https://app.guideflow.com/embed/dkd8z43f9r"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="dkd8z43f9r"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to create a new API key</summary>
+
+To create an API key, follow these steps:
+
+1.  Open the [Weaviate Cloud console](/go/console?utm_content=cloud) and [select your cluster](/cloud/manage-clusters/status#select-a-cluster).
+2.  Navigate to the `API Keys` section, found in the `Cluster details` panel.
+3.  If you need a new API key, click the `New key` button.
+4.  In the `Create API Key` form, provide a descriptive name for your key.
+5.  Choose the role for this API key. You can either select an existing role like `admin` or `viewer`, or [create a new role](/cloud/manage-clusters/authorization) with specific permissions.
+6.  Click the `Create key` button.
+7.  **Important:** This is the only time your API key will be displayed. Make sure to copy it or download it and store it in a secure location immediately after creation. You will not be able to retrieve the full key again.
+
+</details>
+
+### Rotate an API key
+
+Rotating an API key allows you to generate a new key while invalidating the old one, enhancing security.
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="zkloxd4iok"
+    src="https://app.guideflow.com/embed/zkloxd4iok"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="zkloxd4iok"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to rotate an API key</summary>
+
+To rotate an API key, follow these steps:
+
+1.  Open the [Weaviate Cloud console](/go/console?utm_content=cloud).
+2.  [Select your cluster](/cloud/manage-clusters/status#select-a-cluster) and navigate to the `API Keys` section.
+3.  Locate the API key you want to rotate and click the `Rotate` button next to it.
+4.  A confirmation dialog will appear, explaining that the old key will be invalidated. Click `Rotate key` to proceed.
+5.  **Important:** This is the only time your API key will be displayed. Make sure to copy it or download it and store it in a secure location immediately after creation. You will not be able to retrieve the full key again.
+
+</details>
+
+### Edit an API key
+
+Editing an API key allows you to modify its assigned roles. To edit an API key for a cluster:
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="er5dj20t6k"
+    src="https://app.guideflow.com/embed/er5dj20t6k"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="er5dj20t6k"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to rotate an API key</summary>
+
+To edit an API key's roles and permissions, follow these steps:
+
+1.  Open the [Weaviate Cloud console](/go/console?utm_content=cloud).
+2.  [Select your cluster](/cloud/manage-clusters/status#select-a-cluster) and navigate to the `API Keys` section.
+3.  Locate the API key you want to edit and click the `Edit` button next to it.
+4.  In the `Edit API key` form, you can modify the key's description/name.
+5.  You can also update the roles associated with this API key. Choose from the existing roles or [assign different roles](/cloud/manage-clusters/authorization).
+6.  Click the `Save` button to apply your changes.
+
+</details>
+
+### Delete an API key
+
+To delete an API key, follow these steps:
+
+<div
+  style={{
+    position: "relative",
+    paddingBottom: "calc(54.10879629629629% + 50px)",
+    height: 0,
+  }}
+>
+  <iframe
+    id="1pzvzx6bvr"
+    src="https://app.guideflow.com/embed/1pzvzx6bvr"
+    width="100%"
+    height="100%"
+    style={{ overflow: "hidden", position: "absolute", border: "none" }}
+    scrolling="no"
+    allow="clipboard-read; clipboard-write"
+    webKitAllowFullScreen
+    mozAllowFullScreen
+    allowFullScreen
+    allowTransparency="true"
+  />
+  <script
+    src="https://app.guideflow.com/assets/opt.js"
+    data-iframe-id="1pzvzx6bvr"
+  ></script>
+</div>
+
+<br />
+
+<details>
+    <summary>Steps to delete an API key</summary>
+
+To delete an API key, follow these steps:
+
+1.  Open the [Weaviate Cloud console](/go/console?utm_content=cloud).
+2.  [Select your cluster](/cloud/manage-clusters/status#select-a-cluster) and navigate to the `API Keys` section.
+3.  Locate the API key you want to delete and click the `Trash can` button next to it.
+4.  A confirmation dialog will appear. Enter the necessary text (usually the API key name or a confirmation phrase) to confirm the deletion.
+5.  Click on the `Delete key` button.
+
+</details>
+
+## Further resources
+
+- [Manage authorization in WCD](./authorization.mdx)
+- [RBAC documentation](/weaviate/configuration/rbac/index.mdx)
+
+## Support
+
+import SupportAndTrouble from "/_includes/wcs/support-and-troubleshoot.mdx";
+
+<SupportAndTrouble />

@@ -1,0 +1,118 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/local.quickstart.query.rag.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/python/local.quickstart.query.rag.py';
+import TSCode from '!!raw-loader!/_includes/code/typescript/local.quickstart.query.rag.ts';
+import GoCode from '!!raw-loader!/_includes/code/howto/go/docs/quickstart_local/3_2_rag/main.go';
+import JavaV6Code from "!!raw-loader!/_includes/code/java-v6/src/test/java/QuickstartLocalTest.java";
+import CSharpCode from "!!raw-loader!/_includes/code/csharp/QuickstartLocalTest.cs";
+import JavaCode from '!!raw-loader!/_includes/code/howto/java/src/test/java/io/weaviate/docs/quickstart_local/RAG.java';
+
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+We are using the Ollama [generative AI integrations](/weaviate/model-providers/ollama/generative) for retrieval augmented generation (RAG), specifically the `llama3.2` model.
+
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="# RAG"
+    endMarker="# END RAG"
+    language="py"
+    title="quickstart_rag.py"
+  />
+
+</TabItem>
+
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+We are using the Ollama [generative AI integrations](/weaviate/model-providers/ollama/generative) for retrieval augmented generation (RAG), specifically the `llama3.2` model.
+
+<FilteredTextBlock
+  text={TSCode}
+  startMarker="// RAG"
+  endMarker="// END RAG"
+  language="ts"
+  title="quickstart_rag.ts"
+/>
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+<FilteredTextBlock
+  text={GoCode}
+  startMarker="// RAG"
+  endMarker="// END RAG"
+  language="goraw"
+  title="quickstart/3_2_rag/main.go"
+/>
+</TabItem>
+
+<TabItem value="java6" label="Java v6">
+<FilteredTextBlock
+  text={JavaV6Code}
+  startMarker="// START RAG"
+  endMarker="// END RAG"
+  language="java"
+/>
+</TabItem>
+
+<TabItem value="java" label="Java v5 (Deprecated)">
+<FilteredTextBlock
+  text={JavaCode}
+  startMarker="// START RAG"
+  endMarker="// END RAG"
+  language="javaraw"
+  title="quickstart/RAG.java"
+/>
+</TabItem>
+  <TabItem value="csharp" label="C# (Beta)">
+    <FilteredTextBlock
+      text={CSharpCode}
+      startMarker="// START RAG"
+      endMarker="// END RAG"
+      language="csharp"
+    />
+  </TabItem>
+
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+  "query": "{
+    Get {
+      Question (
+        limit: 2
+        nearText: {
+          concepts: [\"biology\"],
+        }
+      ) {
+        question
+        answer
+        category
+        _additional {
+          generate(
+            groupedResult: {
+              task: \"\"\"
+                Write a tweet with emojis about these facts.
+              \"\"\"
+            }
+          ) {
+            groupedResult
+            error
+          }
+        }
+      }
+    }
+  }"
+}' | tr -d "\n" | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -d @- \
+    http://localhost:8080/v1/graphql
+```
+
+</TabItem>
+</Tabs>

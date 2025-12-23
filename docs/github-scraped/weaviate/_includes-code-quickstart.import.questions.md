@@ -1,0 +1,116 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart.import.questions.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+
+import weaviate
+import json
+
+client = weaviate.Client(
+    url="https://WEAVIATE_INSTANCE_URL/",  # Replace with your Weaviate endpoint
+    additional_headers={
+        "X-OpenAI-Api-Key": "YOUR-OPENAI-API-KEY"  # Or "X-Cohere-Api-Key" or "X-HuggingFace-Api-Key"
+    }
+)
+
+# ===== import data =====
+# Load data
+import requests
+url = 'https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json'
+resp = requests.get(url)
+data = json.loads(resp.text)
+
+# Prepare a batch process
+client.batch.configure(batch_size=100)  # Configure batch
+with client.batch as batch:
+    # Batch import all Questions
+    for i, d in enumerate(data):
+        # print(f"importing question: {i+1}")  # To see imports
+
+        properties = {
+            "answer": d["Answer"],
+            "question": d["Question"],
+            "category": d["Category"],
+        }
+
+        batch.add_data_object(properties, "Question")
+```
+
+</TabItem>
+{/* <TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate/entities/models"
+)
+
+func main() {
+    cfg := weaviate.Config{
+        Host:   "WEAVIATE_INSTANCE_URL/",
+        Scheme: "https",
+    }
+
+    client, err := weaviate.NewClient(cfg)
+    if err != nil {
+        panic(err)
+    }
+
+    // add code here
+}
+```
+
+</TabItem> */}
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+
+package io.weaviate;
+
+import java.util.ArrayList;
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.schema.model.DataType;
+import io.weaviate.client.v1.schema.model.Property;
+import io.weaviate.client.v1.schema.model.WeaviateClass;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("https", "WEAVIATE_INSTANCE_URL/");
+    // Replace WEAVIATE_INSTANCE_URL with your instance URL
+
+    WeaviateClient client = new WeaviateClient(config);
+
+    // add code here
+  }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+# Replace ${WEAVIATE_INSTANCE_URL} with your instance URL.
+
+curl \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{
+    "class": "Question",
+    "vectorizer": "text2vec-openai",
+}' \
+https://${WEAVIATE_INSTANCE_URL}/v1/schema
+```
+
+</TabItem> */}
+</Tabs>

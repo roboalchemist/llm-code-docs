@@ -1,0 +1,215 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.aggregate.nearVector.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+
+import PyCode from '!!raw-loader!/_includes/code/graphql.aggregate.simple.py';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+  <FilteredTextBlock
+    text={PyCode}
+    startMarker="START GraphQLnearVectorAggregate"
+    endMarker="END GraphQLnearVectorAggregate"
+    language="py"
+  />
+</TabItem>
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+  "fmt"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate-go-client/v5/weaviate/graphql"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "localhost:8080",
+    Scheme: "http",
+  }
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+    panic(err)
+  }
+
+  title := graphql.Field{Name: "title"}
+  url := graphql.Field{Name: "url"}
+  wordCount := graphql.Field{
+    Name: "wordCount", Fields: []graphql.Field{
+      {Name: "mean"},
+      {Name: "maximum"},
+      {Name: "median"},
+      {Name: "minimum"},
+      {Name: "mode"},
+      {Name: "sum"},
+      {Name: "type"},
+    },
+  }
+  inPublication := graphql.Field{
+    Name: "inPublication", Fields: []graphql.Field{
+      {Name: "pointingTo"},
+      {Name: "count"},
+    },
+  }
+
+  // nearVector
+  nearVector := &graphql.NearVectorArgumentBuilder{}
+  nearVector.WithCertainty(0.85). // At least one of certainty or objectLimit need to be set
+          WithVector([]float32{0.1, 0.2, -0.3})
+
+  result, err := client.GraphQL().
+    Aggregate().
+    WithFields(title, url, wordCount, inPublication).
+    WithNearVector(nearVector).
+    WithClassName("Article").
+    WithObjectLimit(100). // At least one of certainty or objectLimit need to be set
+    Do(context.Background())
+  if err != nil {
+    panic(err)
+  }
+  fmt.Printf("%v", result)
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+package io.weaviate;
+
+import io.weaviate.client.Config;
+import io.weaviate.client.WeaviateClient;
+import io.weaviate.client.base.Result;
+import io.weaviate.client.v1.graphql.model.GraphQLResponse;
+import io.weaviate.client.v1.graphql.query.argument.NearVectorArgument;
+import io.weaviate.client.v1.graphql.query.fields.Field;
+
+public class App {
+  public static void main(String[] args) {
+    Config config = new Config("http", "localhost:8080");
+    WeaviateClient client = new WeaviateClient(config);
+    Field meta = Field.builder()
+      .name("meta")
+      .fields(new Field[]{
+        Field.builder().name("count").build()
+      }).build();
+    Field wordCount = Field.builder()
+      .name("wordCount")
+      .fields(new Field[]{
+        Field.builder().name("mean").build(),
+        Field.builder().name("maximum").build(),
+        Field.builder().name("median").build(),
+        Field.builder().name("minimum").build(),
+        Field.builder().name("mode").build(),
+        Field.builder().name("sum").build(),
+        Field.builder().name("type").build()
+      }).build();
+    Field inPublication = Field.builder()
+      .name("inPublication")
+      .fields(new Field[]{
+        Field.builder().name("pointingTo").build(),
+        Field.builder().name("count").build()
+      }).build();
+
+    Float[] vector = new Float[]{ 1.0f, 2.0f, -3.0f };
+    NearVectorArgument nearVector = NearVectorArgument.builder()
+      .certainty(0.7f) // at least one of certainty or objectLimit need to be set
+      .vector(vector)
+      .build();
+
+    Result<GraphQLResponse> result = client.graphQL().aggregate()
+      .withClassName("Article")
+      .withFields(meta, wordCount, inPublication)
+      .withNearVector(nearVector)
+      .withObjectLimit(100) // at least one of certainty or objectLimit need to be set
+      .run();
+    if (result.hasErrors()) {
+      System.out.println(result.getError());
+      return;
+    }
+    System.out.println(result.getResult());
+  }
+}
+```
+
+</TabItem>
+<TabItem value="curl" label="Curl">
+
+```bash
+echo '{
+    "query": "{
+      Aggregate {
+        Article(nearVector:{
+          vector: [0.1, 0.2, -0.3]
+          certainty: 0.7
+        },
+        objectLimit: 200) {
+          meta {
+            count
+          }
+          inPublication {
+            pointingTo
+            type
+          }
+          wordCount {
+            count
+            maximum
+            mean
+            median
+            minimum
+            mode
+            sum
+            type
+          }
+        }
+      }
+    }"
+  }' | curl \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer learn-weaviate' \
+    -d @- \
+    https://edu-demo.weaviate.network/v1/graphql
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Aggregate {
+    Article(nearVector:{
+      vector: [0.1, 0.2, -0.3]
+      certainty: 0.7       # at least one of "objectLimit",
+    },                     # and/or "certainty" must be set
+    objectLimit: 200) {    # when using near<Media>
+      meta {
+        count
+      }
+      inPublication {
+        pointingTo
+        type
+      }
+      wordCount {
+        count
+        maximum
+        mean
+        median
+        minimum
+        mode
+        sum
+        type
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

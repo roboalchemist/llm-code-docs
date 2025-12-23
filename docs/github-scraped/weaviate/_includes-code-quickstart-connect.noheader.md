@@ -1,0 +1,103 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/quickstart/connect.noheader.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import EndToEndPyCode from '!!raw-loader!/_includes/code/quickstart/endtoend.py';
+import EndToEndPy3Code from '!!raw-loader!/_includes/code/quickstart/endtoend.py3.py';
+import EndToEndTSCode from '!!raw-loader!/_includes/code/quickstart/endtoend.ts';
+
+<Tabs className="code" groupId="languages">
+<TabItem value="py" label="Python">
+
+```python
+import weaviate, os
+import weaviate.classes as wvc
+
+# Set these environment variables
+URL = os.getenv("WEAVIATE_URL")
+APIKEY = os.getenv("WEAVIATE_API_KEY")
+
+# Connect to Weaviate Cloud
+client = weaviate.connect_to_weaviate_cloud(
+    cluster_url=URL,
+    auth_credentials=wvc.init.Auth.api_key(APIKEY),
+)
+
+# Check connection
+client.is_ready()
+```
+
+</TabItem>
+<TabItem value="ts" label="JavaScript/TypeScript">
+
+```ts
+import weaviate, { WeaviateClient } from 'weaviate-client'
+
+const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
+    'https://WEAVIATE_INSTANCE_URL',  // Replace with your Weaviate endpoint
+  {
+    authCredentials: new weaviate.ApiKey('YOUR-WEAVIATE-API-KEY'),  // Replace with your Weaviate instance API key
+    headers: {
+      'X-OpenAI-Api-Key': process.env.OPENAI_API_KEY || '',  // Replace with your inference API key
+    }
+  }
+)
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+package main
+
+import (
+  "context"
+
+  "github.com/weaviate/weaviate-go-client/v5/weaviate"
+  "github.com/weaviate/weaviate-go-client/v5/weaviate/auth"
+  "github.com/weaviate/weaviate/entities/models"
+)
+
+func main() {
+  cfg := weaviate.Config{
+    Host:   "WEAVIATE_INSTANCE_URL/",  // Replace with your Weaviate endpoint
+    Scheme: "https",
+    AuthConfig: auth.ApiKey{Value: "YOUR-WEAVIATE-API-KEY"}, // Replace with your Weaviate instance API key
+  }
+
+  client, err := weaviate.NewClient(cfg)
+  if err != nil {
+      panic(err)
+  }
+}
+```
+
+</TabItem>
+{/* <TabItem value="java" label="Java v5 (Deprecated)">
+
+```java
+TODO
+```
+
+</TabItem> */}
+<TabItem value="curl" label="Curl">
+
+- With `curl`, add the API key to the header as shown below:
+<br/>
+
+```bash
+echo '{
+  "query": "<QUERY>"
+}' | curl \
+    -X POST \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer YOUR-WEAVIATE-API-KEY" \
+    -d @- \
+    https://WEAVIATE_INSTANCE_URL/v1/graphql  # Replace WEAVIATE_INSTANCE_URL with your instance URL
+```
+
+</TabItem>
+</Tabs>

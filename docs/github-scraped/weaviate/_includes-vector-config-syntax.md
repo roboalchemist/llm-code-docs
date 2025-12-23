@@ -1,0 +1,10 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/vector-config-syntax.mdx
+
+:::info Python and JS/TS client - Vectorizer Configuration API Changes
+
+Starting with Weaviate Python client `v4.16.0`, the [vectorizer configuration API has been updated](/weaviate/client-libraries/python#vectorizer-api-changes-v4160).  
+Starting with Weaviate JS/TS client `v3.8.0`, the [vectorizer configuration API has been updated](/weaviate/client-libraries/typescript#vectorizer-api-changes-v380).
+
+Action required: **Update to the latest client version** and migrate your code to use the [new vectorizer configuration API](/weaviate/manage-collections/vector-config#specify-a-vectorizer). 
+
+:::

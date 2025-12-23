@@ -1,0 +1,36 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/code/graphql.filters.after.mdx
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import FilteredTextBlock from '@site/src/components/Documentation/FilteredTextBlock';
+import PyCode from '!!raw-loader!/_includes/code/graphql.additional.py';
+
+<Tabs className="code" groupId="languages">
+  <TabItem value="py" label="Python">
+    <FilteredTextBlock
+      text={PyCode}
+      startMarker="# START LimitWithAfter"
+      endMarker="# END LimitWithAfter"
+      language="py"
+    />
+  </TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+  Get {
+    Article(
+      limit: 5,
+      after: "002d5cb3-298b-380d-addb-2e026b76c8ed"
+    ) {
+      title
+      _additional {
+        id
+      }
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

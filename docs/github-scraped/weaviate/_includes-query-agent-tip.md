@@ -1,0 +1,6 @@
+# Source: https://github.com/weaviate/docs/blob/main/_includes/query-agent-tip.mdx
+
+:::tip Prefer natural language queries?
+The [Query Agent](/weaviate/search/query-agent) translates plain English questions into optimized Weaviate queries automatically - no manual query construction needed.
+<CloudOnlyBadge text="Cloud only" compact={true} />
+:::
