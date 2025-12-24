@@ -19,6 +19,13 @@ repositories:
     target_folder: "docs/github-scraped/circuitpython"
     branch: "main" # Default branch to use
 
+  - name: "TensorRT-LLM"
+    description: "NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with optimizations for efficient inference on NVIDIA GPUs"
+    repo_url: "https://github.com/NVIDIA/TensorRT-LLM.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/tensorrt-llm"
+    branch: "main" # Default branch to use
+
   - name: "Textual"
     description: "Textual documentation and examples"
     repo_url: "https://github.com/Textualize/textual.git"
@@ -227,4 +234,11 @@ repositories:
     repo_url: "https://github.com/openai/whisper.git"
     source_folder: "."
     target_folder: "docs/github-scraped/whisper"
+    branch: "main"
+
+  - name: "OpenMPI"
+    description: "Open MPI - High-performance Message Passing Interface (MPI) library for parallel computing"
+    repo_url: "https://github.com/open-mpi/ompi.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/openmpi"
     branch: "main"
