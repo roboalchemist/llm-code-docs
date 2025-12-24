@@ -1,0 +1,360 @@
+# Source: https://documentation.ubuntu.com/lxd/en/latest/howto/network_zones/
+
+[]
+
+# How to configure network zones[¶](#how-to-configure-network-zones "Link to this heading")
+
+Note
+
+Network zones are available for the [[OVN network]](../../reference/network_ovn/#network-ovn) and the [[Bridge network]](../../reference/network_bridge/#network-bridge).
+
+[[▶] [Watch on YouTube]](https://www.youtube.com/watch?v=2MqpJOogNVQ)
+
+Network zones can be used to serve DNS records for LXD networks.
+
+You can use network zones to automatically maintain valid forward and reverse records for all your instances. This can be useful if you are operating a LXD cluster with multiple instances across many networks.
+
+Having DNS records for each instance makes it easier to access network services running on an instance. It is also important when hosting, for example, an outbound SMTP service. Without correct forward and reverse DNS entries for the instance, sent mail might be flagged as potential spam.
+
+Each network can be associated to different zones:
+
+-   Forward DNS records - multiple comma-separated zones (no more than one per project)
+
+-   IPv4 reverse DNS records - single zone
+
+-   IPv6 reverse DNS records - single zone
+
+LXD will then automatically manage forward and reverse records for all instances, network gateways and downstream network ports and serve those zones for zone transfer to the operator's production DNS servers.
+
+## Project views[¶](#project-views "Link to this heading")
+
+Projects have a [[`features.networks.zones`]](../../reference/projects/#project-features:features.networks.zones) feature, which is disabled by default. This controls which project new networks zones are created in. When this feature is enabled new zones are created in the project, otherwise they are created in the default project.
+
+This allows projects that share a network in the default project (i.e those with [`features.networks=false`]) to have their own project level DNS zones that give a project oriented "view" of the addresses on that shared network (which only includes addresses from instances in their project).
+
+## Generated records[¶](#generated-records "Link to this heading")
+
+### Forward records[¶](#forward-records "Link to this heading")
+
+If you configure a zone with forward DNS records for [`lxd.example.net`] for your network, it generates records that resolve the following DNS names:
+
+-   For all instances in the network: [`<instance_name>.lxd.example.net`]
+
+-   For the network gateway: [`<network_name>.gw.lxd.example.net`]
+
+-   For downstream network ports (for network zones set on an uplink network with a downstream OVN network): [`<project_name>-<downstream_network_name>.uplink.lxd.example.net`]
+
+-   Manual records added to the zone.
+
+You can check the records that are generated with your zone setup with the [`dig`] command.
+
+This assumes that [[`core.dns_address`]](../../server/#server-core:core.dns_address) was set to [`<DNS_server_IP>:<DNS_server_PORT>`]. (Setting that configuration option causes the backend to immediately start serving on that address.)
+
+In order for the [`dig`] request to be allowed for a given zone, you must set the [`peers.NAME.address`] configuration option for that zone. [`NAME`] can be anything random. The value must match the IP address where your [`dig`] is calling from. You must leave [`peers.NAME.key`] for that same random [`NAME`] unset.
+
+For example: [`lxc`]` `[`network`]` `[`zone`]` `[`set`]` `[`lxd.example.net`]` `[`peers.whatever.address=192.0.2.1`].
+
+Note
+
+It is not enough for the address to be of the same machine that [`dig`] is calling from; it needs to match as a string with what the DNS server in [`lxd`] thinks is the exact remote address. [`dig`] binds to [`0.0.0.0`], therefore the address you need is most likely the same that you provided to [[`core.dns_address`]](../../server/#server-core:core.dns_address).
+
+For example, running [`dig`]` `[`@<DNS_server_IP>`]` `[`-p`]` `[`<DNS_server_PORT>`]` `[`axfr`]` `[`lxd.example.net`] might give the following output:
+
+[`user@host:~$`]` `
+
+[[`dig`]` `[`@192.0.2.200`]` `[`-p`]` `[`1053`]` `[`axfr`]` `[`lxd.example.net`]` `]
+
+    lxd.example.net.                        3600 IN SOA  lxd.example.net. ns1.lxd.example.net. 1669736788 120 60 86400 30
+    lxd.example.net.                        300  IN NS   ns1.lxd.example.net.
+    lxdtest.gw.lxd.example.net.             300  IN A    192.0.2.1
+    lxdtest.gw.lxd.example.net.             300  IN AAAA fd42:4131:a53c:7211::1
+    default-ovntest.uplink.lxd.example.net. 300  IN A    192.0.2.20
+    default-ovntest.uplink.lxd.example.net. 300  IN AAAA fd42:4131:a53c:7211:216:3eff:fe4e:b794
+    c1.lxd.example.net.                     300  IN AAAA fd42:4131:a53c:7211:216:3eff:fe19:6ede
+    c1.lxd.example.net.                     300  IN A    192.0.2.125
+    manualtest.lxd.example.net.             300  IN A    8.8.8.8
+    lxd.example.net.                        3600 IN SOA  lxd.example.net. ns1.lxd.example.net. 1669736788 120 60 86400 30
+
+### Reverse records[¶](#reverse-records "Link to this heading")
+
+If you configure a zone for IPv4 reverse DNS records for [`2.0.192.in-addr.arpa`] for a network using [`192.0.2.0/24`], it generates reverse [`PTR`] DNS records for addresses from all projects that are referencing that network via one of their forward zones.
+
+For example, running [`dig`]` `[`@<DNS_server_IP>`]` `[`-p`]` `[`<DNS_server_PORT>`]` `[`axfr`]` `[`2.0.192.in-addr.arpa`] might give the following output:
+
+[`user@host:~$`]` `
+
+[[`dig`]` `[`@192.0.2.200`]` `[`-p`]` `[`1053`]` `[`axfr`]` `[`2.0.192.in-addr.arpa`]` `]
+
+    2.0.192.in-addr.arpa.                  3600 IN SOA  2.0.192.in-addr.arpa. ns1.2.0.192.in-addr.arpa. 1669736828 120 60 86400 30
+    2.0.192.in-addr.arpa.                  300  IN NS   ns1.2.0.192.in-addr.arpa.
+    1.2.0.192.in-addr.arpa.                300  IN PTR  lxdtest.gw.lxd.example.net.
+    20.2.0.192.in-addr.arpa.               300  IN PTR  default-ovntest.uplink.lxd.example.net.
+    125.2.0.192.in-addr.arpa.              300  IN PTR  c1.lxd.example.net.
+    2.0.192.in-addr.arpa.                  3600 IN SOA  2.0.192.in-addr.arpa. ns1.2.0.192.in-addr.arpa. 1669736828 120 60 86400 30
+
+[]
+
+## Enable the built-in DNS server[¶](#enable-the-built-in-dns-server "Link to this heading")
+
+To make use of network zones, you must enable the built-in DNS server.
+
+To do so, set the [[`core.dns_address`]](../../server/#server-core:core.dns_address) configuration option to a local address on the LXD server. To avoid conflicts with an existing DNS we suggest not using the port 53. This is the address on which the DNS server will listen. Note that in a LXD cluster, the address may be different on each cluster member.
+
+Note
+
+The built-in DNS server supports only zone transfers through AXFR. It cannot be directly queried for DNS records. Therefore, the built-in DNS server must be used in combination with an external DNS server ([`bind9`], [`nsd`], ...), which will transfer the entire zone from LXD, refresh it upon expiry and provide authoritative answers to DNS requests.
+
+Authentication for zone transfers is configured on a per-zone basis, with peers defined in the zone configuration and a combination of IP address matching and TSIG-key based authentication.
+
+## Create and configure a network zone[¶](#create-and-configure-a-network-zone "Link to this heading")
+
+Use the following command to create a network zone:
+
+    lxc network zone create <network_zone> [configuration_options...]
+
+The following examples show how to configure a zone for forward DNS records, one for IPv4 reverse DNS records and one for IPv6 reverse DNS records, respectively:
+
+    lxc network zone create lxd.example.net
+    lxc network zone create 2.0.192.in-addr.arpa
+    lxc network zone create 1.0.0.0.1.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa
+
+Note
+
+Zones must be globally unique, even across projects. If you get a creation error, it might be due to the zone already existing in another project.
+
+You can either specify the configuration options when you create the network or configure them afterwards with the following command:
+
+    lxc network zone set <network_zone> <key>=<value>
+
+Use the following command to edit a network zone in YAML format:
+
+    lxc network zone edit <network_zone>
+
+### Configuration options[¶](#configuration-options "Link to this heading")
+
+The following configuration options are available for network zones:
+
+[[`dns.nameservers`]][]
+
+Comma-separated list of DNS server FQDNs (for NS records)
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-config-options:dns.nameservers)]
+
++-----------------------------------+------------------------------------------------------------+
+| **Key:**                          | [`dns.nameservers`] |
++-----------------------------------+------------------------------------------------------------+
+| **Type:**                         | []                                               |
+|                                   |                                                            |
+|                                   | string set                                                 |
++-----------------------------------+------------------------------------------------------------+
+| **Required:**                     | []                                               |
+|                                   |                                                            |
+|                                   | no                                                         |
++-----------------------------------+------------------------------------------------------------+
+
+[[`network.nat`]][]
+
+Whether to generate records for NAT-ed subnets
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-config-options:network.nat)]
+
++-----------------------------------+--------------------------------------------------------+
+| **Key:**                          | [`network.nat`] |
++-----------------------------------+--------------------------------------------------------+
+| **Type:**                         | []                                           |
+|                                   |                                                        |
+|                                   | bool                                                   |
++-----------------------------------+--------------------------------------------------------+
+| **Default:**                      | []                                           |
+|                                   |                                                        |
+|                                   | true                                                   |
++-----------------------------------+--------------------------------------------------------+
+| **Required:**                     | []                                           |
+|                                   |                                                        |
+|                                   | no                                                     |
++-----------------------------------+--------------------------------------------------------+
+
+[[`peers.NAME.address`]][]
+
+IP address of a DNS server
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-config-options:peers.NAME.address)]
+
++-----------------------------------+---------------------------------------------------------------+
+| **Key:**                          | [`peers.NAME.address`] |
++-----------------------------------+---------------------------------------------------------------+
+| **Type:**                         | []                                                  |
+|                                   |                                                               |
+|                                   | string                                                        |
++-----------------------------------+---------------------------------------------------------------+
+| **Required:**                     | []                                                  |
+|                                   |                                                               |
+|                                   | no                                                            |
++-----------------------------------+---------------------------------------------------------------+
+
+[[`peers.NAME.key`]][]
+
+TSIG key for the server
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-config-options:peers.NAME.key)]
+
++-----------------------------------+-----------------------------------------------------------+
+| **Key:**                          | [`peers.NAME.key`] |
++-----------------------------------+-----------------------------------------------------------+
+| **Type:**                         | []                                              |
+|                                   |                                                           |
+|                                   | string                                                    |
++-----------------------------------+-----------------------------------------------------------+
+| **Required:**                     | []                                              |
+|                                   |                                                           |
+|                                   | no                                                        |
++-----------------------------------+-----------------------------------------------------------+
+
+[[`user.*`]][]
+
+User-provided free-form key/value pairs
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-config-options:user.*)]
+
++-----------------------------------+---------------------------------------------------+
+| **Key:**                          | [`user.*`] |
++-----------------------------------+---------------------------------------------------+
+| **Type:**                         | []                                      |
+|                                   |                                                   |
+|                                   | string                                            |
++-----------------------------------+---------------------------------------------------+
+| **Required:**                     | []                                      |
+|                                   |                                                   |
+|                                   | no                                                |
++-----------------------------------+---------------------------------------------------+
+
+Note
+
+When generating the TSIG key using [`tsig-keygen`], the key name must follow the format [`<zone_name>_<peer_name>.`]. For example, if your zone name is [`lxd.example.net`] and the peer name is [`bind9`], then the key name must be [`lxd.example.net_bind9.`]. If this format is not followed, zone transfer might fail.
+
+## Add a network zone to a network[¶](#add-a-network-zone-to-a-network "Link to this heading")
+
+To add a zone to a network, set the corresponding configuration option in the network configuration:
+
+-   For forward DNS records: [`dns.zone.forward`]
+
+-   For IPv4 reverse DNS records: [`dns.zone.reverse.ipv4`]
+
+-   For IPv6 reverse DNS records: [`dns.zone.reverse.ipv6`]
+
+For example:
+
+    lxc network set <network_name> dns.zone.forward="lxd.example.net"
+
+Zones belong to projects and are tied to the [`networks`] features of projects. You can restrict projects to specific domains and sub-domains through the [[`restricted.networks.zones`]](../../reference/projects/#project-restricted:restricted.networks.zones) project configuration key.
+
+## Add custom records[¶](#add-custom-records "Link to this heading")
+
+A network zone automatically generates forward and reverse records for all instances, network gateways and downstream network ports. If required, you can manually add custom records to a zone.
+
+To do so, use the [[[`lxc`]` `[`network`]` `[`zone`]` `[`record`]]](../../reference/manpages/lxc/network/zone/record/#lxc-network-zone-record-md) command.
+
+### Create a record[¶](#create-a-record "Link to this heading")
+
+Use the following command to create a record:
+
+    lxc network zone record create <network_zone> <record_name>
+
+This command creates an empty record without entries and adds it to a network zone.
+
+#### Record properties[¶](#record-properties "Link to this heading")
+
+Records have the following properties:
+
+[[`config`]][]
+
+User-provided free-form key/value pairs
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-record-properties:config)]
+
++-----------------------------------+---------------------------------------------------+
+| **Key:**                          | [`config`] |
++-----------------------------------+---------------------------------------------------+
+| **Type:**                         | []                                      |
+|                                   |                                                   |
+|                                   | string set                                        |
++-----------------------------------+---------------------------------------------------+
+| **Required:**                     | []                                      |
+|                                   |                                                   |
+|                                   | no                                                |
++-----------------------------------+---------------------------------------------------+
+
+The only supported keys are [`user.*`] custom keys.
+
+[[`description`]][]
+
+Description of the record
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-record-properties:description)]
+
++-----------------------------------+--------------------------------------------------------+
+| **Key:**                          | [`description`] |
++-----------------------------------+--------------------------------------------------------+
+| **Type:**                         | []                                           |
+|                                   |                                                        |
+|                                   | string                                                 |
++-----------------------------------+--------------------------------------------------------+
+| **Required:**                     | []                                           |
+|                                   |                                                        |
+|                                   | no                                                     |
++-----------------------------------+--------------------------------------------------------+
+
+[[`entries`]][]
+
+List of DNS entries
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-record-properties:entries)]
+
++-----------------------------------+----------------------------------------------------+
+| **Key:**                          | [`entries`] |
++-----------------------------------+----------------------------------------------------+
+| **Type:**                         | []                                       |
+|                                   |                                                    |
+|                                   | entry list                                         |
++-----------------------------------+----------------------------------------------------+
+| **Required:**                     | []                                       |
+|                                   |                                                    |
+|                                   | no                                                 |
++-----------------------------------+----------------------------------------------------+
+
+[[`name`]][]
+
+Unique name of the record
+
+[[*![](data:image/svg+xml;base64,PHN2Zz48dXNlIGhyZWY9IiNzdmctYXJyb3ctcmlnaHQiPjwvdXNlPjwvc3ZnPg==)*](#network-zone-record-properties:name)]
+
++-----------------------------------+-------------------------------------------------+
+| **Key:**                          | [`name`] |
++-----------------------------------+-------------------------------------------------+
+| **Type:**                         | []                                    |
+|                                   |                                                 |
+|                                   | string                                          |
++-----------------------------------+-------------------------------------------------+
+| **Required:**                     | []                                    |
+|                                   |                                                 |
+|                                   | yes                                             |
++-----------------------------------+-------------------------------------------------+
+
+### Add or remove entries[¶](#add-or-remove-entries "Link to this heading")
+
+To add an entry to the record, use the following command:
+
+    lxc network zone record entry add <network_zone> <record_name> <type> <value> [--ttl <TTL>]
+
+This command adds a DNS entry with the specified type and value to the record.
+
+For example, to create a dual-stack web server, add a record with two entries similar to the following:
+
+    lxc network zone record entry add <network_zone> <record_name> A 1.2.3.4
+    lxc network zone record entry add <network_zone> <record_name> AAAA 1234::1234
+
+You can use the [`--ttl`] flag to set a custom time-to-live (in seconds) for the entry. Otherwise, the default of 300 seconds is used.
+
+You cannot edit an entry (except if you edit the full record with [[[`lxc`]` `[`network`]` `[`zone`]` `[`record`]` `[`edit`]]](../../reference/manpages/lxc/network/zone/record/edit/#lxc-network-zone-record-edit-md)), but you can delete entries with the following command:
+
+    lxc network zone record entry remove <network_zone> <record_name> <type> <value>
