@@ -117,6 +117,13 @@ repositories:
     target_folder: "docs/github-scraped/goose"
     branch: "main"
 
+  - name: "Incus"
+    description: "Incus - Container and virtual machine manager (community fork of LXD)"
+    repo_url: "https://github.com/lxc/incus.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/incus"
+    branch: "main"
+
   - name: "Milvus"
     description: "Milvus - Open source vector database for AI applications"
     repo_url: "https://github.com/milvus-io/milvus-docs.git"
