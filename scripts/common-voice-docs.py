@@ -123,7 +123,7 @@ def main():
 
     # Output directory
     script_dir = Path(__file__).parent.parent
-    output_dir = script_dir / "docs" / "web-scraped" / "common-voice"
+    output_dir = script_dir / "docs" / "github-scraped" / "common-voice"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Output directory: {output_dir}")

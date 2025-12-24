@@ -94,7 +94,7 @@ def main():
 
     # Output directory
     script_dir = Path(__file__).parent.parent
-    output_dir = script_dir / "docs" / "web-scraped" / "headscale"
+    output_dir = script_dir / "docs" / "github-scraped" / "headscale"
 
     print(f"Output directory: {output_dir}")
     print()

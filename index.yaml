@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-23 19:29
-  total_sources: 348
-  total_fetched: 308
+  last_updated: 2025-12-23 19:31
+  total_sources: 345
+  total_fetched: 305
   llms_txt_count: 289
   llms_txt_fetched: 250
   github_count: 31
   github_fetched: 30
-  web_scraped_count: 28
-  web_scraped_fetched: 28
+  web_scraped_count: 25
+  web_scraped_fetched: 25
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2535,20 +2535,6 @@ web_scraped:
   file_count: 31
   size: 183.5KB
   last_updated: 2025-12-23 19:24
-- name: claude-code-router
-  description: claude-code-router documentation
-  path: docs/web-scraped/claude-code-router/
-  status: fetched
-  file_count: 6
-  size: 90.1KB
-  last_updated: 2025-12-15 14:02
-- name: common-voice
-  description: common-voice documentation
-  path: docs/web-scraped/common-voice/
-  status: fetched
-  file_count: 39
-  size: 157.5KB
-  last_updated: 2025-11-30 14:17
 - name: dagshub
   description: dagshub documentation
   path: docs/web-scraped/dagshub/
@@ -2598,13 +2584,6 @@ web_scraped:
   file_count: 210
   size: 2.5MB
   last_updated: 2025-12-20 18:28
-- name: mistral-vibe
-  description: mistral-vibe documentation
-  path: docs/web-scraped/mistral-vibe/
-  status: fetched
-  file_count: 6
-  size: 61.3KB
-  last_updated: 2025-12-15 12:47
 - name: mkdocs
   description: mkdocs documentation
   path: docs/web-scraped/mkdocs/
