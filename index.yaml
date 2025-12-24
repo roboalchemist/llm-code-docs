@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-24 03:17
-  total_sources: 344
-  total_fetched: 304
+  last_updated: 2025-12-24 03:19
+  total_sources: 346
+  total_fetched: 305
   llms_txt_count: 287
   llms_txt_fetched: 248
   github_count: 31
   github_fetched: 30
-  web_scraped_count: 26
-  web_scraped_fetched: 26
+  web_scraped_count: 28
+  web_scraped_fetched: 27
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2512,6 +2512,13 @@ web_scraped:
   file_count: 84
   size: 1.2MB
   last_updated: 2025-12-01 20:12
+- name: anydesk
+  description: anydesk documentation
+  path: docs/web-scraped/anydesk/
+  status: fetched
+  file_count: 31
+  size: 183.5KB
+  last_updated: 2025-12-24 03:19
 - name: claude-code-router
   description: claude-code-router documentation
   path: docs/web-scraped/claude-code-router/
@@ -2639,6 +2646,10 @@ web_scraped:
   file_count: 1
   size: 4.6KB
   last_updated: 2025-10-13 20:14
+- name: realvnc
+  description: realvnc documentation
+  path: docs/web-scraped/realvnc/
+  status: pending
 - name: rich
   description: rich documentation
   path: docs/web-scraped/rich/
