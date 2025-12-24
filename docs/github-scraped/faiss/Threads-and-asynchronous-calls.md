@@ -47,11 +47,22 @@ When computations are multi-threaded, this is true as well, since most computati
 Therefore, several runs of the same operation with the same number of threads give the same result bitwise. 
 The known exceptions are: 
 
-- functionalities that require LAPACK eigenvalue extraction are not reproducible exactly because the `esyev` function is not reproducible exactly (with MKL). This function is used in the training of `PCAMatrix` and `OPQMatrix`. The difference between different runs is in the order of the machine precision. Note that MKL does not by default guarantee that other operations, include matrix multiplication, are bit-exact reproducible, see this doc on [Conditional Numerical Reproducibility](https://software.intel.com/content/www/us/en/develop/articles/introduction-to-the-conditional-numerical-reproducibility-cnr.html).
+- functionalities that require LAPACK eigenvalue extraction are not reproducible exactly because the `esyev` function is not reproducible exactly (with MKL). This function is used in the training of `PCAMatrix` and `OPQMatrix`. The difference between different runs is in the order of the machine precision. 
 
 - the `HNSW` add function is performed in an unspecified order. Implementing it with a static thread scheduling is too inefficient. Search is deterministic.
 
 For these two cases, several runs will give different results. 
+
+## Reproducibility of matrix operations
+
+Even when the number of threads is fixed and set to 1, MKL does not by default guarantee that other operations, include matrix multiplication, are bit-exact reproducible, see this doc on [Conditional Numerical Reproducibility](https://software.intel.com/content/www/us/en/develop/articles/introduction-to-the-conditional-numerical-reproducibility-cnr.html).
+
+In particular, the matrix multiplication is implemented differently depending on the processor it runs on. 
+This can be overridden by setting the `MKL_CBWR` environment variable (see [this doc](https://www.intel.com/content/www/us/en/docs/onemkl/developer-guide-linux/2023-0/specifying-code-branches.html)). 
+This is possible within the python process by manipulating the environment provided that this is done before the MKL shared libraries are loaded (ie before `import faiss` or `import numpy`). 
+See for example the script [test_MKL_repro.py](https://gist.github.com/mdouze/efe7cc923421dbb6aefaa1d8fa92ad5f#file-test_mkl_repro-py). 
+When run with several settings of `MKL_CBWR` it yields different checksums, see [this log](https://gist.github.com/mdouze/e0493fd9e587b5e02b69a54680b83f17).
+
 
 ## Asynchronous search 
 

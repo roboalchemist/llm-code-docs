@@ -69,7 +69,7 @@ When the :class:`_engine.Connection` is closed at the end of the ``with:`` block
 referenced DBAPI connection is :term:`released` to the connection pool.   From
 the perspective of the database itself, the connection pool will not actually
 "close" the connection assuming the pool has room to store this connection  for
-the next use.  When the connection is returned to the pool for re-use, the
+the next use.  When the connection is returned to the pool for reuse, the
 pooling mechanism issues a ``rollback()`` call on the DBAPI connection so that
 any transactional state or locks are removed (this is known as
 :ref:`pool_reset_on_return`), and the connection is ready for its next use.
@@ -545,7 +545,7 @@ wide using the :paramref:`.create_engine.isolation_level` so that pooled
 connections are permanently set in autocommit mode.   The SQLAlchemy connection
 pool as well as the :class:`.Connection` will still seek to invoke the DBAPI
 ``.rollback()`` method upon connection :term:`release`, as their behavior
-remains agonstic of the isolation level that's configured on the connection.
+remains agnostic of the isolation level that's configured on the connection.
 As this rollback still incurs a network round trip under most if not all
 DBAPI drivers, this additional network trip may be disabled using the
 :paramref:`.create_engine.skip_autocommit_rollback` parameter, which will
@@ -769,7 +769,7 @@ for further background on using
 .. versionadded:: 1.4.40 Added
    :paramref:`_engine.Connection.execution_options.yield_per`
    as a Core level execution option to conveniently set streaming results,
-   buffer size, and partition size all at once in a manner that is transferrable
+   buffer size, and partition size all at once in a manner that is transferable
    to that of the ORM's similar use case.
 
 .. _engine_stream_results_sr:
@@ -1264,7 +1264,7 @@ strings that are safe to reuse for many statement invocations, given
 a particular cache key that is keyed to that SQL string.  This means
 that any literal values in a statement, such as the LIMIT/OFFSET values for
 a SELECT, can not be hardcoded in the dialect's compilation scheme, as
-the compiled string will not be re-usable.   SQLAlchemy supports rendered
+the compiled string will not be reusable.   SQLAlchemy supports rendered
 bound parameters using the :meth:`_sql.BindParameter.render_literal_execute`
 method which can be applied to the existing ``Select._limit_clause`` and
 ``Select._offset_clause`` attributes by a custom compiler, which
@@ -1825,10 +1825,10 @@ performance example.
    including sample performance tests
 
 .. tip:: The :term:`insertmanyvalues` feature is a **transparently available**
-   performance feature which requires no end-user intervention in order for
-   it to take place as needed.   This section describes the architecture
-   of the feature as well as how to measure its performance and tune its
-   behavior in order to optimize the speed of bulk INSERT statements,
+   performance feature which typically requires no end-user intervention in
+   order for it to take place as needed.   This section describes the
+   architecture of the feature as well as how to measure its performance and
+   tune its behavior in order to optimize the speed of bulk INSERT statements,
    particularly as used by the ORM.
 
 As more databases have added support for INSERT..RETURNING, SQLAlchemy has
@@ -2100,12 +2100,10 @@ also individually passed along to event listeners such as
 below).
 
 
-
-
 .. _engine_insertmanyvalues_sentinel_columns:
 
 Configuring Sentinel Columns
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In typical cases, the "insertmanyvalues" feature in order to provide
 INSERT..RETURNING with deterministic row order will automatically determine a
@@ -2241,6 +2239,90 @@ hierarchies::
 In the example above, both "my_table" and "sub_table" will have an additional
 integer column named "_sentinel" that can be used by the "insertmanyvalues"
 feature to help optimize bulk inserts used by the ORM.
+
+.. _engine_insertmanyvalues_monotonic_functions:
+
+Configuring Monotonic Functions such as UUIDV7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using a monotonic function such as uuidv7 is supported by the "insertmanyvalues"
+feature most easily by establishing the function as a client side callable,
+e.g. using Python's built-in ``uuid.uuid7()`` call by providing the callable
+to the :paramref:`_schema.Connection.default` parameter::
+
+    import uuid
+
+    from sqlalchemy import UUID, Integer
+
+    t = Table(
+        "t",
+        metadata,
+        Column("id", UUID, default=uuid.uuid7, primary_key=True),
+        Column("x", Integer),
+    )
+
+In the above example, SQLAlchemy will invoke Python's ``uuid.uuid7()`` function
+to create new primary key identifiers, which will be batchable by the
+"insertmanyvalues" feature.
+
+However, some databases like PostgreSQL provide a server-side function for
+uuid7 called ``uuidv7()``; in SQLAlchemy, this would be available from the
+:data:`_sql.func` namespace as ``func.uuidv7()``, and may be configured on a
+:class:`.Column` using either :paramref:`_schema.Connection.default` to allow
+it to be called as needed, or :paramref:`_schema.Connection.server_default` to
+establish it as part of the table's DDL.  However, for full batched "insertmanyvalues"
+behavior including support for sorted RETURNING (as would allow the ORM to
+most effectively batch INSERT statements), an additional directive must be
+included indicating that the function produces
+monotonically increasing values, which is the ``monotonic=True`` directive.
+This is illustrated below as a DDL server default using
+:paramref:`_schema.Connection.server_default`::
+
+    from sqlalchemy import func, Integer
+
+    t = Table(
+        "t",
+        metadata,
+        Column("id", UUID, server_default=func.uuidv7(monotonic=True), primary_key=True),
+        Column("x", Integer),
+    )
+
+Using the above form, a batched INSERT...RETURNING on PostgreSQL with
+:paramref:`.UpdateBase.returning.sort_by_parameter_order` set to True will
+look like:
+
+.. sourcecode:: sql
+
+     INSERT INTO t (x) SELECT p0::INTEGER FROM
+     (VALUES (%(x__0)s, 0), (%(x__1)s, 1), (%(x__2)s, 2),   ...)
+     AS imp_sen(p0, sen_counter) ORDER BY sen_counter
+     RETURNING t.id, t.id AS id__1
+
+Similarly if the function is configured as an ad-hoc server side function
+using :paramref:`_schema.Connection.default`::
+
+    t = Table(
+        "t",
+        metadata,
+        Column("id", UUID, default=func.uuidv7(monotonic=True), primary_key=True),
+        Column("x", Integer),
+    )
+
+The function will then be rendered in the SQL statement explicitly:
+
+.. sourcecode:: sql
+
+    INSERT INTO t (id, x) SELECT uuidv7(), p1::INTEGER FROM
+    (VALUES (%(x__0)s, 0), (%(x__1)s, 1), (%(x__2)s, 2), ...)
+    AS imp_sen(p1, sen_counter) ORDER BY sen_counter
+    RETURNING t.id, t.id AS id__1
+
+.. versionadded:: 2.1 Added support for explicit monotonic server side functions
+   using ``monotonic=True`` with any :class:`.Function`.
+
+.. seealso::
+
+    :ref:`postgresql_monotonic_functions`
 
 
 .. _engine_insertmanyvalues_page_size:

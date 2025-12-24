@@ -369,7 +369,7 @@ when dealing with ORM-enabled :func:`_dml.insert` or :func:`_dml.update`::
 
 Additionally, a new helper :func:`_sql.from_dml_column` is added, which may be
 used with the :meth:`.hybrid_property.update_expression` hook to indicate
-re-use of a column expression from elsewhere in the UPDATE statement's SET
+reuse of a column expression from elsewhere in the UPDATE statement's SET
 clause::
 
     from sqlalchemy import from_dml_column
@@ -1187,6 +1187,53 @@ raise an error, directing users to use :class:`_sql.FrameClause` instead.
 PostgreSQL
 ==========
 
+.. _change_13010_postgresql:
+
+Default PostgreSQL driver changed to psycopg (psycopg 3)
+---------------------------------------------------------
+
+The default DBAPI driver for the PostgreSQL dialect has been changed from
+``psycopg2`` to ``psycopg`` (psycopg version 3). When using a connection URL
+of the form ``postgresql://user:pass@host/dbname``, SQLAlchemy will now
+attempt to use the ``psycopg`` driver by default.
+
+The ``psycopg`` (version 3) driver is the modernized successor to
+``psycopg2``, featuring improved performance when built with C extensions,
+better support for modern PostgreSQL features, and native async support via
+the ``psycopg_async`` dialect. The performance characteristics of ``psycopg``
+with C extensions are comparable to ``psycopg2``.
+
+The ``psycopg2`` driver remains fully supported and can be used by explicitly
+specifying it in the connection URL.
+
+Examples to summarize the change are as follows::
+
+    # omit the driver portion, will use the psycopg dialect
+    engine = create_engine("postgresql://user:pass@host/dbname")
+
+    # indicate the psycopg driver/dialect explicitly (preferred)
+    engine = create_engine("postgresql+psycopg://user:pass@host/dbname")
+
+    # use the legacy psycopg2 driver/dialect
+    engine = create_engine("postgresql+psycopg2://user:pass@host/dbname")
+
+The ``psycopg`` DBAPI driver itself can be installed either directly
+or via the ``sqlalchemy[postgresql]`` extra::
+
+.. sourcecode:: txt
+
+    # install psycopg directly
+    pip install "psycopg[binary]"
+
+    # or use SQLAlchemy's postgresql extra (now installs psycopg)
+    pip install sqlalchemy[postgresql]
+
+.. seealso::
+
+    :ref:`postgresql_psycopg` - Documentation for the psycopg 3 dialect
+
+:ticket:`13010`
+
 .. _change_10594_postgresql:
 
 Changes to Named Type Handling in PostgreSQL
@@ -1385,6 +1432,61 @@ To update an existing index:
 
 :ticket:`12948`
 
+.. _change_13014_postgresql:
+
+Support for Server-Side Monotonic Functions such as uuidv7() in Batched INSERT Operations
+------------------------------------------------------------------------------------------
+
+SQLAlchemy 2.1 adds support for using monotonic server-side functions, such as
+PostgreSQL 18's ``uuidv7()`` function, as sentinels in the
+:ref:`engine_insertmanyvalues` feature. This allows these functions to work
+efficiently with batched INSERT operations while maintaining deterministic row
+ordering.
+
+When using a monotonic function as a default value, the ``monotonic=True``
+parameter must be passed to the function to indicate that it produces
+monotonically increasing values. This enables SQLAlchemy to use the function's
+values to correlate RETURNING results with input parameter sets::
+
+    from sqlalchemy import Table, Column, MetaData, UUID, Integer, func
+
+    metadata = MetaData()
+
+    t = Table(
+        "t",
+        metadata,
+        Column("id", UUID, server_default=func.uuidv7(monotonic=True), primary_key=True),
+        Column("x", Integer),
+    )
+
+With the above configuration, when performing a batched INSERT with RETURNING
+on PostgreSQL, SQLAlchemy will generate SQL that properly orders the rows
+while allowing the server to generate the UUID values:
+
+.. sourcecode:: sql
+
+    INSERT INTO t (x) SELECT p0::INTEGER FROM
+    (VALUES (%(x__0)s, 0), (%(x__1)s, 1), (%(x__2)s, 2), ...)
+    AS imp_sen(p0, sen_counter) ORDER BY sen_counter
+    RETURNING t.id, t.id AS id__1
+
+The returned rows are then sorted by the monotonically increasing UUID values
+to match the order of the input parameters, ensuring that ORM objects and
+returned values are properly correlated.
+
+This feature works with both :paramref:`_schema.Column.server_default` (for
+DDL-level defaults) and :paramref:`_schema.Column.default` (for ad-hoc
+server-side function calls).
+
+.. seealso::
+
+    :ref:`engine_insertmanyvalues_monotonic_functions` - Complete documentation
+    on using monotonic functions
+
+    :ref:`postgresql_monotonic_functions` - PostgreSQL-specific examples
+
+:ticket:`13014`
+
 
 Microsoft SQL Server
 ====================
@@ -1415,6 +1517,53 @@ required if using the connection string directly with ``pyodbc.connect()``).
 
 Oracle Database
 ===============
+
+.. _change_13010_oracle:
+
+Default Oracle driver changed to python-oracledb
+-------------------------------------------------
+
+The default DBAPI driver for the Oracle dialect has been changed from
+``cx_oracle`` to ``oracledb`` (python-oracledb). When using a connection URL
+of the form ``oracle://user:pass@host/dbname``, SQLAlchemy will now attempt
+to use the ``oracledb`` driver by default.
+
+The ``oracledb`` driver is the modernized successor to ``cx_oracle``,
+actively maintained by Oracle with improved performance characteristics and
+ongoing feature development. The documentation for ``cx_oracle`` has been
+largely replaced with references to ``oracledb`` at
+https://cx-oracle.readthedocs.io/.
+
+The ``cx_oracle`` driver remains fully supported and can be used by
+explicitly specifying it in the connection URL.
+
+Examples to summarize the change are as follows::
+
+    # omit the driver portion, will use the oracledb dialect
+    engine = create_engine("oracle://user:pass@host/dbname")
+
+    # indicate the oracledb driver/dialect explicitly (preferred)
+    engine = create_engine("oracle+oracledb://user:pass@host/dbname")
+
+    # use the legacy cx_oracle driver/dialect
+    engine = create_engine("oracle+cx_oracle://user:pass@host/dbname")
+
+The ``oracledb`` DBAPI driver itself can be installed either directly
+or via the ``sqlalchemy[oracle]`` extra:
+
+.. sourcecode:: txt
+
+    # install oracledb directly
+    pip install oracledb
+
+    # or use SQLAlchemy's oracle extra (now installs oracledb)
+    pip install sqlalchemy[oracle]
+
+.. seealso::
+
+    :ref:`oracledb` - Documentation for the python-oracledb dialect
+
+:ticket:`13010`
 
 .. _change_11633:
 

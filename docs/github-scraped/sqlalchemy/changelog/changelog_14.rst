@@ -5045,7 +5045,7 @@ This document details individual issue-level changes made throughout
         Fixed issue where using a :class:`_sql.Select` as a subquery in an ORM
         context would modify the :class:`_sql.Select` in place to disable
         eagerloads on that object, which would then cause that same
-        :class:`_sql.Select` to not eagerload if it were then re-used in a
+        :class:`_sql.Select` to not eagerload if it were then reused in a
         top-level execution context.
 
 
@@ -5380,7 +5380,7 @@ This document details individual issue-level changes made throughout
         :tags: usecase, orm
         :tickets: 6267
 
-        Established support for :func:`_orm.synoynm` in conjunction with
+        Established support for :func:`_orm.synonym` in conjunction with
         hybrid property, assocaitionproxy is set up completely, including that
         synonyms can be established linking to these constructs which work
         fully.   This is a behavior that was semi-explicitly disallowed previously,
@@ -6691,7 +6691,7 @@ This document details individual issue-level changes made throughout
         :tickets: 5735
 
         Improved the unit of work topological sorting system such that the
-        toplogical sort is now deterministic based on the sorting of the input set,
+        topological sort is now deterministic based on the sorting of the input set,
         which itself is now sorted at the level of mappers, so that the same inputs
         of affected mappers should produce the same output every time, among
         mappers / tables that don't have any dependency on each other. This further
@@ -7946,7 +7946,7 @@ This document details individual issue-level changes made throughout
         The bulk update and delete methods :meth:`.Query.update` and
         :meth:`.Query.delete`, as well as their 2.0-style counterparts, now make
         use of RETURNING when the "fetch" strategy is used in order to fetch the
-        list of affected primary key identites, rather than emitting a separate
+        list of affected primary key identities, rather than emitting a separate
         SELECT, when the backend in use supports RETURNING.  Additionally, the
         "fetch" strategy will in ordinary cases not expire the attributes that have
         been updated, and will instead apply the updated values directly in the

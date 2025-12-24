@@ -172,6 +172,9 @@ sites:
 - name: comet-docs-opik
   base_url: https://www.comet.com/docs/opik/
   description: Comet documentation
+- name: copilotkit
+  base_url: https://docs.copilotkit.ai/
+  description: CopilotKit - AI chatbots and agents for React applications
 - name: comfy
   base_url: https://docs.comfy.org/
   description: ComfyUI node-based AI image generation
@@ -662,6 +665,9 @@ sites:
 - name: react
   base_url: https://react.dev/
   description: 'React library for web and native user interfaces (from PR #8130)'
+- name: react-spring
+  base_url: https://react-spring.dev/
+  description: React Spring - physics-based animation library for React
 - name: readme
   base_url: https://docs.readme.com/
   description: ReadMe developer documentation platform

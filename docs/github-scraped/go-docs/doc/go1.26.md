@@ -99,6 +99,19 @@ performance or behavior, please [file an issue](/issue/new).
 
 The baseline runtime overhead of cgo calls has been reduced by ~30%.
 
+### Faster memory allocation
+
+<!-- CL 665835 -->
+
+The compiler will now generate calls to size-specialized memory allocation
+routines, reducing the cost of some small (<512 byte) memory allocations by
+up to 30%.
+Improvements vary depending on the workload, but the overall improvement is
+expected to be ~1% in real allocation-heavy programs.
+Please [file an issue](/issue/new) if you notice any regressions.
+You may set `GOEXPERIMENT=nosizespecializedmalloc` at build time to disable
+it.
+
 ### Goroutine leak profiles {#goroutineleak-profiles}
 
 <!-- CL 688335 -->
@@ -160,14 +173,14 @@ blocking on operations over concurrency primitives reachable
 through global variables or the local variables of runnable goroutines.
 
 Special thanks to Vlad Saioc at Uber for contributing this work.
-The underlying theory is presented in detail [a publication by
+The underlying theory is presented in detail in [a publication by
 Saioc et al.](https://dl.acm.org/doi/pdf/10.1145/3676641.3715990).
 
 The implementation is production-ready, and is only considered an
 experiment for the purposes of collecting feedback on the API,
 specifically the choice to make it a new profile.
 The feature is also designed to not incur any additional run-time
-overheads unless it is actively in-use.
+overhead unless it is actively in-use.
 
 We encourage users to try out the new feature in [the Go
 playground](/play/p/3C71z4Dpav-?v=gotip),
@@ -194,6 +207,34 @@ On 64-bit ARM-based Windows (the `windows/arm64` port), the linker now supports 
 linking mode of cgo programs, which can be requested with the
 `-ldflags=-linkmode=internal` flag.
 
+There are several minor changes to executable files. These changes do
+not affect running Go programs. They may affect programs that analyze
+Go executables, and they may affect people who use external linking
+mode with custom linker scripts.
+
+ - The `moduledata` structure is now in its own section, named
+   `go.module`.
+ - The `moduledata` `cutab` field, which is a slice, now has the
+   correct length; previously the length was four times too large.
+ - The `pcHeader` found at the start of the `.gopclntab` section no
+   longer records the start of the text section. That field is now
+   always zero.
+ - That `pcHeader` change was made so that the `.gopclntab` section
+   no longer contains any relocations. On platforms that support
+   relro, the section has moved from the relro segment to the rodata
+   segment.
+ - The funcdata symbols and the findfunctab have moved from the
+   `.rodata` section to the `.gopclntab` section.
+ - The `.gosymtab` section has been removed. It was previously always
+   present but empty.
+ - When using internal linking, ELF sections now appear in the
+   section header list sorted by address. The previous order was
+   somewhat unpredictable.
+
+The references to section names here use the ELF names as seen on
+Linux and other systems. The Mach-O names as seen on Darwin start with
+a double underscore and do not contain any dots.
+
 ## Bootstrap {#bootstrap}
 
 <!-- go.dev/issue/69315 -->
@@ -203,32 +244,42 @@ We expect that Go 1.28 will require a minor release of Go 1.26 or later for boot
 
 ## Standard library {#library}
 
-### New secret package
-
-<!-- https://go.dev/issue/21865 --->
-
-The new [secret](/pkg/runtime/secret) package is available as an experiment.
-It provides a facility for securely erasing temporaries used in
-code that manipulates secret information, typically cryptographic in nature.
-Users can access it by passing `GOEXPERIMENT=runtimesecret` at build time.
-
-<!-- if we land any code that uses runtimesecret for forward secrecy
-like crypto/tls, mention them here too -->
-
-The secret.Do function runs its function argument and then erases all
-temporary storage (registers, stack, new heap allocations) used by
-that function argument. Heap storage is not erased until that storage
-is deemed unreachable by the garbage collector, which might take some
-time after secret.Do completes.
-
-This package is intended to make it easier to ensure [forward
-secrecy](https://en.wikipedia.org/wiki/Forward_secrecy).
-
-### crypto/hpke
+### New crypto/hpke package
 
 The new [`crypto/hpke`](/pkg/crypto/hpke) package implements Hybrid Public Key Encryption
 (HPKE) as specified in [RFC 9180](https://rfc-editor.org/rfc/rfc9180.html), including support for post-quantum
 hybrid KEMs.
+
+### New experimental simd/archsimd package {#simd}
+
+Go 1.26 introduces a new experimental [`simd/archsimd`](/pkg/simd/archsimd/)
+package, which can be enabled by setting the environment variable
+`GOEXPERIMENT=simd` at build time.
+This package provides access to architecture-specific SIMD operations.
+It is currently available on the AMD64 architecture, supporting
+128-bit, 256-bit, and 512-bit vectors.
+
+See the [proposal issue](/issue/73787) for more details.
+
+### New experimental runtime/secret package
+
+<!-- https://go.dev/issue/21865 --->
+
+The new [`runtime/secret`](/pkg/runtime/secret) package is available as an experiment,
+which can be enabled by setting the environment variable
+`GOEXPERIMENT=runtimesecret` at build time.
+It provides a facility for securely erasing temporaries used in
+code that manipulates secret information, typically cryptographic in nature.
+It currently supports the AMD64 and ARM64 architectures on Linux.
+
+The [`secret.Do`](/pkg/runtime/secret#Do) function runs its function argument and then erases all
+temporary storage (registers, stack, new heap allocations) used by
+that function argument. Heap storage is not erased until that storage
+is deemed unreachable by the garbage collector, which might take some
+time after `secret.Do` completes.
+
+This package is intended to make it easier to ensure [forward
+secrecy](https://en.wikipedia.org/wiki/Forward_secrecy).
 
 ### Minor changes to the library {#minor_library_changes}
 
@@ -282,10 +333,6 @@ in `GODEBUG=fips140=only` mode while selectively disabling the strict FIPS 140-3
 
 [`Version`](/pkg/crypto/fips140#Version) returns the resolved FIPS 140-3 Go Cryptographic Module version when building against a frozen module with GOFIPS140.
 
-#### [`crypto/hpke`](/pkg/crypto/hpke/)
-
-<!-- crypto/hpke is documented in its own section. -->
-
 #### [`crypto/mlkem`](/pkg/crypto/mlkem/)
 
 The new [`DecapsulationKey768.Encapsulator`](/pkg/crypto/mlkem#DecapsulationKey768.Encapsulator) and
@@ -324,6 +371,25 @@ it is not used.
 Unsafe PKCS #1 v1.5 encryption padding (implemented by [`EncryptPKCS1v15`](/pkg/crypto/rsa#EncryptPKCS1v15),
 [`DecryptPKCS1v15`](/pkg/crypto/rsa#DecryptPKCS1v15), and [`DecryptPKCS1v15SessionKey`](/pkg/crypto/rsa#DecryptPKCS1v15SessionKey)) is now deprecated.
 
+#### [`crypto/subtle`](/pkg/crypto/subtle)
+
+The [`WithDataIndependentTiming`](/pkg/crypto/subtle#WithDataIndependentTiming)
+function no longer locks the calling goroutine to the OS thread while executing
+the passed function. Additionally, any goroutines which are spawned during the
+executed of the passed function and their descendents now inherit the properties of
+WithDataIndependentTiming for their lifetime. This change also affects cgo in
+the following ways:
+
+- Any C code called via cgo from within the function passed to
+  WithDataIndependentTiming, or from a goroutine spawned by the function passed
+  to WithDataIndependentTiming and its descendents, will also have data
+  independent timing enabled for the duration of the call. If the C code
+  disables data independent timing, it will be re-enabled on return to Go.
+- If C code called via cgo, from the function passed to
+  WithDataIndependentTiming or elsewhere, enables or disables data independent
+  timing then calling into Go will preserve that state for the duration of the
+  call.
+
 #### [`crypto/tls`](/pkg/crypto/tls/)
 
 The hybrid [`SecP256r1MLKEM768`](/pkg/crypto/tls#SecP256r1MLKEM768) and [`SecP384r1MLKEM1024`](/pkg/crypto/tls#SecP384r1MLKEM1024) post-quantum key
@@ -336,7 +402,7 @@ was sent in response to a HelloRetryRequest message. The new
 sent a HelloRetryRequest, or if the client received a HelloRetryRequest,
 depending on connection role.
 
-The [`QUICConn`](/pkg/crypto/tls#QUICConn) type used by QUIC implementations includes new event
+The [`QUICConn`](/pkg/crypto/tls#QUICConn) type used by QUIC implementations includes a new event
 for reporting TLS handshake errors.
 
 If [`Certificate.PrivateKey`](/pkg/crypto/tls#Certificate.PrivateKey) implements [`crypto.MessageSigner`](/pkg/crypto#MessageSigner), its SignMessage
@@ -354,17 +420,13 @@ Starting in Go 1.27, the new behavior will apply regardless of GODEBUG setting o
 
 #### [`crypto/x509`](/pkg/crypto/x509/)
 
-The [`ExtKeyUsage`](/pkg/crypto/x509#ExtKeyUsage) and [`KeyUsage`](/pkg/crypto/x509#KeyUsage) types now have String methods that return the
+The [`ExtKeyUsage`](/pkg/crypto/x509#ExtKeyUsage) and [`KeyUsage`](/pkg/crypto/x509#KeyUsage) types now have `String` methods that return the
 corresponding OID names as defined in RFC 5280 and other registries.
 
-The [`ExtKeyUsage`](/pkg/crypto/x509#ExtKeyUsage) type now has an OID method that returns the corresponding OID for the EKU.
+The [`ExtKeyUsage`](/pkg/crypto/x509#ExtKeyUsage) type now has an `OID` method that returns the corresponding OID for the EKU.
 
 The new [`OIDFromASN1OID`](/pkg/crypto/x509#OIDFromASN1OID) function allows converting an [`encoding/asn1.ObjectIdentifier`](/pkg/encoding/asn1#ObjectIdentifier) into
 an [`OID`](/pkg/crypto/x509#OID).
-
-#### [`database/sql/driver`](/pkg/database/sql/driver/)
-
-A database driver may implement [`RowsColumnScanner`](/pkg/database/sql/driver#RowsColumnScanner) to entirely override `Scan` behavior.
 
 #### [`debug/elf`](/pkg/debug/elf/)
 
@@ -376,6 +438,12 @@ Additional `R_LARCH_*` constants from [LoongArch ELF psABI v20250521](https://gi
 The new [`AsType`](/pkg/errors#AsType) function is a generic version of [`As`](/pkg/errors#As). It is type-safe, faster,
 and, in most cases, easier to use.
 
+#### [`fmt`](/pkg/fmt/)
+
+<!-- go.dev/cl/708836 -->
+For unformatted strings, `fmt.Errorf("x")` now allocates less and generally matches
+the allocations for `errors.New("x")`.
+
 #### [`go/ast`](/pkg/go/ast/)
 
 The new [`ParseDirective`](/pkg/go/ast#ParseDirective) function parses [directive
@@ -383,6 +451,7 @@ comments](/doc/comment#Syntax), which are comments such as `//go:generate`.
 Source code tools can support their own directive comments and this new API
 should help them implement the conventional syntax.
 
+<!-- go.dev/issue/76395 -->
 The new [`BasicLit.ValueEnd`](/pkg/go/ast#BasicLit.ValueEnd) field records the precise end position of
 a literal so that the [`BasicLit.End`](/pkg/go/ast#BasicLit.End) method can now always return the
 correct answer. (Previously it was computed using a heuristic that was
@@ -391,7 +460,7 @@ due to removal of carriage returns.)
 
 Programs that update the `ValuePos` field of `BasicLit`s produced by
 the parser may need to also update or clear the `ValueEnd` field to
-avoid minor differences in formatted output. <!-- #76395 --->
+avoid minor differences in formatted output.
 
 #### [`go/token`](/pkg/go/token/)
 
@@ -410,6 +479,13 @@ regardless of GODEBUG setting or go.mod language version.
 The JPEG encoder and decoder have been replaced with new, faster, more accurate implementations.
 Code that expects specific bit-for-bit outputs from the encoder or decoder may need to be updated.
 
+#### [`io`](/pkg/io/)
+
+<!-- go.dev/cl/722500 -->
+[ReadAll](/pkg/io#ReadAll) now allocates less intermediate memory and returns a minimally sized
+final slice. It is often about two times faster while typically allocating around half
+as much total memory, with more benefit for larger inputs.
+
 #### [`log/slog`](/pkg/log/slog/)
 
 The [`NewMultiHandler`](/pkg/log/slog#NewMultiHandler) function creates a
@@ -421,17 +497,17 @@ on each of the enabled handlers.
 
 #### [`net`](/pkg/net/)
 
-The new <code>Dialer</code> methods
-<a href="/pkg/net/#Dialer.DialIP"><code>DialIP</code></a>,
-<a href="/pkg/net/#Dialer.DialTCP"><code>DialTCP</code></a>,
-<a href="/pkg/net/#Dialer.DialUDP"><code>DialUDP</code></a>, and
-<a href="/pkg/net/#Dialer.DialUnix"><code>DialUnix</code></a>
+The new [`Dialer`](/pkg/net/#Dialer) methods
+[`DialIP`](/pkg/net/#Dialer.DialIP),
+[`DialTCP`](/pkg/net/#Dialer.DialTCP),
+[`DialUDP`](/pkg/net/#Dialer.DialUDP), and
+[`DialUnix`](/pkg/net/#Dialer.DialUnix)
 permit dialing specific network types with context values.
 
 #### [`net/http`](/pkg/net/http/)
 
 The new
-[HTTP2Config.StrictMaxConcurrentRequests](/pkg/net/http#HTTP2Config.StrictMaxConcurrentRequests)
+[`HTTP2Config.StrictMaxConcurrentRequests`](/pkg/net/http#HTTP2Config.StrictMaxConcurrentRequests)
 field controls whether a new connection should be opened
 if an existing HTTP/2 connection has exceeded its stream limit.
 
@@ -440,6 +516,10 @@ to an HTTP server.
 Most users should continue to use [`Transport.RoundTrip`](/pkg/net/http#Transport.RoundTrip) to make requests,
 which manages a pool of connections.
 `NewClientConn` is useful for users who need to implement their own connection management.
+
+[`Client`](/pkg/net/http#Client) now uses and sets cookies scoped to URLs with the host portion matching
+[`Request.Host`](/pkg/net/http#Request.Host) when available.
+Previously, the connection address host was always used.
 
 #### [`net/http/httptest`](/pkg/net/http/httptest/)
 
@@ -469,13 +549,13 @@ The new [`Prefix.Compare`](/pkg/net/netip#Prefix.Compare) method compares two pr
 [`Parse`](/pkg/net/url#Parse) now rejects malformed URLs containing colons in the host subcomponent,
 such as `http://::1/` or `http://localhost:80:80/`.
 URLs containing bracketed IPv6 addresses, such as `http://[::1]/` are still accepted.
-The new GODEBUG=urlstrictcolons=0 setting restores the old behavior.
+The new GODEBUG setting `urlstrictcolons=0` restores the old behavior.
 
 #### [`os`](/pkg/os/)
 
 The new [`Process.WithHandle`](/pkg/os#Process.WithHandle) method provides access to an internal process
-handle on supported platforms (Linux 5.4 or later and Windows). On Linux,
-the process handle is a pidfd. The method returns [`ErrNoHandle`](/pkg/os#ErrNoHandle) on unsupported
+handle on supported platforms (Linux 5.4 or later, and Windows). On Linux,
+the process handle is a `pidfd`. The method returns [`ErrNoHandle`](/pkg/os#ErrNoHandle) on unsupported
 platforms or when no process handle is available.
 
 On Windows, the [`OpenFile`](/pkg/os#OpenFile) `flag` parameter can now contain any combination of
@@ -490,10 +570,19 @@ and an error indicating which signal was received.
 
 #### [`reflect`](/pkg/reflect/)
 
-[`reflect.Type`](/pkg/reflect#Type) includes new methods that return iterators for a type's fields, methods, inputs and outputs.
-Similarly, [`reflect.Value`](/pkg/reflect#Value) includes two new methods that return iterators over a value's fields or methods,
-each element being a pair of the value ([`reflect.Value`](/pkg/reflect#Value)) and its type information ([`reflect.StructField`](/pkg/reflect#StructField) or
-[`reflect.Method`](/pkg/reflect#Method)).
+The new methods [`Type.Fields`](/pkg/reflect#Type.Fields),
+[`Type.Methods`](/pkg/reflect#Type.Methods),
+[`Type.Ins`](/pkg/reflect#Type.Ins)
+and [`Type.Outs`](/pkg/reflect#Type.Outs)
+return iterators for a type's fields (for a struct type), methods,
+inputs and outputs parameters (for a function type), respectively.
+
+Similarly, the new methods [`Value.Fields`](/pkg/reflect#Value.Fields)
+and [`Value.Methods`](/pkg/reflect#Value.Methods) return iterators over
+a value's fields or methods, respectively.
+Each iteration yields the type information ([`StructField`](/pkg/reflect#StructField) or
+[`Method`](/pkg/reflect#Method)) of a field or method,
+along with the field or method [`Value`](/pkg/reflect#Value).
 
 #### [`runtime/metrics`](/pkg/runtime/metrics/)
 
@@ -529,7 +618,7 @@ For example, in a test named `TestArtifacts`,
 
 The new [`SetGlobalRandom`](/pkg/testing/cryptotest#SetGlobalRandom) function configures a global, deterministic
 cryptographic randomness source for the duration of the test. It affects
-crypto/rand, and all implicit sources of cryptographic randomness in the
+`crypto/rand`, and all implicit sources of cryptographic randomness in the
 `crypto/...` packages.
 
 #### [`time`](/pkg/time/)
@@ -559,6 +648,26 @@ See [issue 76475](/issue/76475) for details.
 <!-- go.dev/issue/71671 -->
 
 As [announced](/doc/go1.25#windows) in the Go 1.25 release notes, the [broken](/doc/go1.24#windows) 32-bit windows/arm port (`GOOS=windows` `GOARCH=arm`) is removed.
+
+### PowerPC
+
+<!-- go.dev/issue/76244 -->
+
+Go 1.26 is the last release that supports the big-endian 64-bit PowerPC
+port on Linux (`GOOS=linux` `GOARCH=ppc64`).
+The port will be removed in Go 1.27.
+
+### S390X
+
+<!-- CL 719482 -->
+
+The `s390x` port now supports passing function arguments and results using registers.
+
+### RISC-V
+
+<!-- CL 690497 -->
+
+The `linux/riscv64` port now supports the race detector.
 
 [laelf-20250521]: https://github.com/loongson/la-abi-specs/blob/v2.40/laelf.adoc
 [rfc 9180]: https://rfc-editor.org/rfc/rfc9180.html

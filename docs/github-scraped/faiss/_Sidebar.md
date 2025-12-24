@@ -38,6 +38,10 @@
 
 [Additive quantizers](Additive-quantizers)
 
+[CPU Faiss + Intel SVS - Overview](CPU-Faiss---Intel-SVS-‐-Overview)
+
+[CPU Faiss + Intel SVS - Usage](CPU-Faiss---Intel-SVS-‐-Usage)
+
 ## GPU Faiss
 
 [GPU overview](Faiss-on-the-GPU)
