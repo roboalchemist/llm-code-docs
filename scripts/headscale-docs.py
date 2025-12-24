@@ -1,174 +1,73 @@
 #!/usr/bin/env python3
 """
 Headscale Documentation Scraper
-Downloads all headscale documentation pages and converts to markdown.
-Headscale is an open source, self-hosted implementation of the Tailscale control server.
+Downloads all headscale documentation from GitHub repository.
+Headscale is an open-source, self-hosted implementation of the Tailscale control server.
 """
 
 import os
 import sys
 import requests
 from pathlib import Path
-from urllib.parse import urlparse
 import time
-import re
-import subprocess
 
-# Headscale documentation pages discovered from sitemap
-HEADSCALE_DOC_PAGES = [
-    "/",
-    "/about/faq/",
-    "/about/features/",
-    "/about/clients/",
-    "/about/help/",
-    "/about/releases/",
-    "/about/contributing/",
-    "/about/sponsor/",
-    "/setup/requirements/",
-    "/setup/install/official/",
-    "/setup/install/community/",
-    "/setup/install/container/",
-    "/setup/install/source/",
-    "/setup/upgrade/",
-    "/usage/getting-started/",
-    "/usage/connect/android/",
-    "/usage/connect/apple/",
-    "/usage/connect/windows/",
-    "/ref/configuration/",
-    "/ref/oidc/",
-    "/ref/routes/",
-    "/ref/tls/",
-    "/ref/acls/",
-    "/ref/dns/",
-    "/ref/derp/",
-    "/ref/remote-cli/",
-    "/ref/debug/",
-    "/ref/integration/reverse-proxy/",
-    "/ref/integration/web-ui/",
-    "/ref/integration/tools/",
-]
-
-BASE_URL = "https://headscale.net/stable"
+GITHUB_REPO = "juanfont/headscale"
+GITHUB_BRANCH = "main"
+DOCS_PATH = "docs"
+GITHUB_API_BASE = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{DOCS_PATH}"
+GITHUB_RAW_BASE = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}/{DOCS_PATH}"
 
 
-def html_to_markdown(html_content, url):
-    """Convert HTML to markdown, extracting main content only."""
-    # First, extract just the main article content to avoid nav/sidebar noise
-    # MkDocs Material uses <article class="md-content__inner md-typeset">
-    article_match = re.search(
-        r'<article[^>]*class="[^"]*md-content__inner[^"]*"[^>]*>(.*?)</article>',
-        html_content, flags=re.DOTALL | re.IGNORECASE
-    )
+def get_directory_contents(path=""):
+    """Recursively get all markdown files from the docs directory."""
+    api_url = f"{GITHUB_API_BASE}/{path}" if path else GITHUB_API_BASE
 
-    if article_match:
-        html_content = article_match.group(1)
-    else:
-        # Try alternate selector
-        main_match = re.search(
-            r'<div[^>]*class="[^"]*md-content[^"]*"[^>]*>(.*?)</div>\s*<script',
-            html_content, flags=re.DOTALL | re.IGNORECASE
-        )
-        if main_match:
-            html_content = main_match.group(1)
-
-    # Remove tabbed content duplicates (MkDocs shows same content in tabs)
-    html_content = re.sub(r'<div[^>]*class="[^"]*tabbed-block[^"]*"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
-
-    # Try pandoc on cleaned content
     try:
-        result = subprocess.run(
-            ['pandoc', '-f', 'html', '-t', 'markdown', '--wrap=none'],
-            input=html_content,
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
-        if result.returncode == 0:
-            markdown = result.stdout
-            # Clean up pandoc artifacts
-            markdown = re.sub(r'^::+.*$', '', markdown, flags=re.MULTILINE)  # Remove ::: div markers
-            markdown = re.sub(r'\{[^}]*\}', '', markdown)  # Remove {.class} attributes
-            markdown = re.sub(r'\n{3,}', '\n\n', markdown)  # Normalize whitespace
-            markdown = markdown.strip()
-            return f"# Source: {url}\n\n{markdown}"
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        pass
+        response = requests.get(api_url, timeout=15)
+        response.raise_for_status()
+        contents = response.json()
 
-    # Fallback: basic HTML to text extraction
-    # Remove script and style elements
-    html_content = re.sub(r'<script[^>]*>.*?</script>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<style[^>]*>.*?</style>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<nav[^>]*>.*?</nav>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<header[^>]*>.*?</header>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<footer[^>]*>.*?</footer>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
+        files = []
+        for item in contents:
+            if item['type'] == 'file' and item['name'].endswith('.md'):
+                # Store relative path from docs/
+                rel_path = f"{path}/{item['name']}" if path else item['name']
+                files.append(rel_path)
+            elif item['type'] == 'dir':
+                # Recursively get files from subdirectories
+                subdir_path = f"{path}/{item['name']}" if path else item['name']
+                files.extend(get_directory_contents(subdir_path))
 
-    # Extract main content (MkDocs Material uses md-content class)
-    main_match = re.search(r'<article[^>]*class="[^"]*md-content[^"]*"[^>]*>(.*?)</article>', html_content, flags=re.DOTALL | re.IGNORECASE)
-    if main_match:
-        html_content = main_match.group(1)
+        return files
 
-    # Convert common HTML elements to markdown
-    # Headers
-    for i in range(6, 0, -1):
-        html_content = re.sub(rf'<h{i}[^>]*>(.*?)</h{i}>', r'\n' + '#' * i + r' \1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
-
-    # Code blocks
-    html_content = re.sub(r'<pre[^>]*><code[^>]*>(.*?)</code></pre>', r'\n```\n\1\n```\n', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<code[^>]*>(.*?)</code>', r'`\1`', html_content, flags=re.DOTALL | re.IGNORECASE)
-
-    # Links
-    html_content = re.sub(r'<a[^>]*href="([^"]*)"[^>]*>(.*?)</a>', r'[\2](\1)', html_content, flags=re.DOTALL | re.IGNORECASE)
-
-    # Bold and italic
-    html_content = re.sub(r'<strong[^>]*>(.*?)</strong>', r'**\1**', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<b[^>]*>(.*?)</b>', r'**\1**', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<em[^>]*>(.*?)</em>', r'*\1*', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<i[^>]*>(.*?)</i>', r'*\1*', html_content, flags=re.DOTALL | re.IGNORECASE)
-
-    # Lists
-    html_content = re.sub(r'<li[^>]*>(.*?)</li>', r'- \1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<[ou]l[^>]*>', '\n', html_content, flags=re.IGNORECASE)
-    html_content = re.sub(r'</[ou]l>', '\n', html_content, flags=re.IGNORECASE)
-
-    # Paragraphs and line breaks
-    html_content = re.sub(r'<p[^>]*>(.*?)</p>', r'\n\1\n', html_content, flags=re.DOTALL | re.IGNORECASE)
-    html_content = re.sub(r'<br\s*/?>', '\n', html_content, flags=re.IGNORECASE)
-    html_content = re.sub(r'<div[^>]*>', '\n', html_content, flags=re.IGNORECASE)
-    html_content = re.sub(r'</div>', '\n', html_content, flags=re.IGNORECASE)
-
-    # Remove remaining HTML tags
-    html_content = re.sub(r'<[^>]+>', '', html_content)
-
-    # Decode HTML entities
-    html_content = html_content.replace('&nbsp;', ' ')
-    html_content = html_content.replace('&lt;', '<')
-    html_content = html_content.replace('&gt;', '>')
-    html_content = html_content.replace('&amp;', '&')
-    html_content = html_content.replace('&quot;', '"')
-    html_content = html_content.replace('&#39;', "'")
-
-    # Clean up whitespace
-    html_content = re.sub(r'\n\s*\n\s*\n', '\n\n', html_content)
-    html_content = html_content.strip()
-
-    return f"# Source: {url}\n\n{html_content}"
+    except requests.exceptions.RequestException as e:
+        print(f"  -> Error fetching directory {path}: {e}")
+        return []
 
 
-def download_page(url, output_path):
-    """Download a page and convert to markdown."""
+def download_file(file_path, output_dir):
+    """Download a single markdown file from GitHub."""
     try:
-        print(f"Downloading: {url}")
+        # Construct raw GitHub URL
+        url = f"{GITHUB_RAW_BASE}/{file_path}"
+
+        print(f"Downloading: {file_path}")
 
         response = requests.get(url, timeout=15)
         response.raise_for_status()
 
-        # Convert HTML to markdown
-        markdown = html_to_markdown(response.text, url)
+        # Get content
+        content = response.text
 
-        # Create directory if needed
+        # Add source header
+        source_url = f"https://github.com/{GITHUB_REPO}/blob/{GITHUB_BRANCH}/{DOCS_PATH}/{file_path}"
+        markdown = f"# Source: {source_url}\n\n{content}"
+
+        # Create output path maintaining directory structure
+        output_path = output_dir / file_path
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
-        # Write markdown file
+        # Write file
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(markdown)
 
@@ -176,27 +75,11 @@ def download_page(url, output_path):
         return True
 
     except requests.exceptions.RequestException as e:
-        print(f"  -> Error downloading {url}: {e}")
+        print(f"  -> Error downloading {file_path}: {e}")
         return False
     except Exception as e:
-        print(f"  -> Error processing {url}: {e}")
+        print(f"  -> Error processing {file_path}: {e}")
         return False
-
-
-def path_to_filename(path):
-    """Convert URL path to filename."""
-    if path == "/" or path == "":
-        return "index.md"
-
-    # Remove leading/trailing slashes and convert to filename
-    clean_path = path.strip("/")
-
-    # Handle nested paths like /usage/connect/android/
-    if "/" in clean_path:
-        # Convert to flat filename: usage/connect/android -> usage-connect-android.md
-        return clean_path.replace("/", "-") + ".md"
-
-    return clean_path + ".md"
 
 
 def main():
@@ -204,30 +87,37 @@ def main():
     print("=" * 60)
     print("Headscale Documentation Scraper")
     print("=" * 60)
-    print(f"Base URL: {BASE_URL}")
-    print(f"Pages to download: {len(HEADSCALE_DOC_PAGES)}")
+    print(f"Repository: {GITHUB_REPO}")
+    print(f"Branch: {GITHUB_BRANCH}")
+    print(f"Docs path: {DOCS_PATH}")
     print()
 
     # Output directory
     script_dir = Path(__file__).parent.parent
     output_dir = script_dir / "docs" / "web-scraped" / "headscale"
-    output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Output directory: {output_dir}")
+    print()
+
+    # Get all markdown files
+    print("Discovering markdown files...")
+    md_files = get_directory_contents()
+
+    if not md_files:
+        print("Error: No markdown files found!")
+        sys.exit(1)
+
+    print(f"Found {len(md_files)} markdown files")
     print()
 
     successful = 0
     failed = 0
     start_time = time.time()
 
-    for i, page_path in enumerate(HEADSCALE_DOC_PAGES, 1):
-        url = BASE_URL + page_path
-        filename = path_to_filename(page_path)
-        output_path = output_dir / filename
+    for i, file_path in enumerate(sorted(md_files), 1):
+        print(f"[{i:2d}/{len(md_files)}] ", end="")
 
-        print(f"[{i:2d}/{len(HEADSCALE_DOC_PAGES)}] ", end="")
-
-        if download_page(url, output_path):
+        if download_file(file_path, output_dir):
             successful += 1
         else:
             failed += 1
@@ -247,15 +137,15 @@ def main():
     print(f"Output: {output_dir}")
 
     # Calculate total size
-    total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
+    total_size = sum(f.stat().st_size for f in output_dir.rglob("*.md"))
     print(f"Total size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
 
     print()
     if failed > 0:
-        print(f"Warning: {failed} pages failed to download")
+        print(f"Warning: {failed} files failed to download")
         sys.exit(1)
     else:
-        print("All pages downloaded successfully!")
+        print("All files downloaded successfully!")
         sys.exit(0)
 
 

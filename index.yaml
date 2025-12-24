@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-24 03:20
-  total_sources: 346
-  total_fetched: 306
-  llms_txt_count: 287
-  llms_txt_fetched: 248
+  last_updated: 2025-12-23 19:28
+  total_sources: 349
+  total_fetched: 309
+  llms_txt_count: 289
+  llms_txt_fetched: 250
   github_count: 31
   github_fetched: 30
-  web_scraped_count: 28
-  web_scraped_fetched: 28
+  web_scraped_count: 29
+  web_scraped_fetched: 29
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -24,7 +24,7 @@ llms_txt:
   status: fetched
   file_count: 138
   size: 908.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:18
 - name: adafruit
   description: Adafruit Learning System - CircuitPython and hardware documentation
   url: https://learn.adafruit.com/
@@ -32,7 +32,7 @@ llms_txt:
   status: fetched
   file_count: 232
   size: 2.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:28
 - name: agent
   description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
   url: https://docs.agent.ai/
@@ -40,7 +40,7 @@ llms_txt:
   status: fetched
   file_count: 129
   size: 1.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: agent-domain
   description: Agent Domain (.agent TLD) AI ecosystem
   url: https://agentdomain.xyz/
@@ -48,7 +48,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.7KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: ai-sdk
   description: AI SDK for building AI-powered applications
   url: https://ai-sdk.dev/
@@ -56,7 +56,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 453.9KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: aimlapi
   description: AIML API unified AI/ML model API platform
   url: https://docs.aimlapi.com/
@@ -64,7 +64,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 5.2MB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: analog
   description: Analog Angular meta-framework
   url: https://analogjs.org/docs/
@@ -72,7 +72,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 23.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: anchorbrowser
   description: Anchor Browser web automation and testing
   url: https://docs.anchorbrowser.io/
@@ -80,7 +80,7 @@ llms_txt:
   status: fetched
   file_count: 164
   size: 1.4MB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: angular
   description: Angular web application framework
   url: https://angular.dev/
@@ -88,7 +88,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 322.5KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: annoto
   description: Annoto documentation
   url: https://docs.annoto.net/home/
@@ -96,7 +96,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 4.1KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: answer-ai
   description: Answer.AI R&D lab for AI research and products
   url: https://www.answer.ai/
@@ -104,7 +104,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 77.4KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: ant-design
   description: Enterprise-class React UI component library with 64+ components
   url: https://ant.design/
@@ -112,7 +112,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.1MB
-  last_updated: 2025-11-24 20:23
+  last_updated: 2025-11-24 14:35
 - name: anthropic
   description: docs on LLMS.txt - Claude Docs - Anthropic
   url: https://docs.anthropic.com/
@@ -120,7 +120,7 @@ llms_txt:
   status: fetched
   file_count: 217
   size: 7.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: any-llm
   description: Mozilla-Ai documentation
   url: https://mozilla-ai.github.io/any-llm/
@@ -128,7 +128,7 @@ llms_txt:
   status: fetched
   file_count: 20
   size: 83.1KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: apache-camel
   description: Apache Camel integration framework
   url: https://camel.apache.org/
@@ -136,7 +136,7 @@ llms_txt:
   status: fetched
   file_count: 15
   size: 898.0KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: apify
   description: Apify documentation
   url: https://docs.apify.com/
@@ -144,7 +144,7 @@ llms_txt:
   status: fetched
   file_count: 893
   size: 15.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: aporia
   description: Aporia ML observability and monitoring platform
   url: https://docs.aporia.com/
@@ -152,7 +152,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 319.5KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: aptible
   description: Aptible documentation
   url: https://www.aptible.com/docs/
@@ -160,7 +160,7 @@ llms_txt:
   status: fetched
   file_count: 290
   size: 2.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: argil
   description: Argil AI automation and workflow platform
   url: https://docs.argil.ai/
@@ -168,7 +168,7 @@ llms_txt:
   status: fetched
   file_count: 50
   size: 265.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: ark-ui
   description: Ark UI headless component library
   url: https://ark-ui.com/docs/
@@ -181,7 +181,7 @@ llms_txt:
   status: fetched
   file_count: 237
   size: 7.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: ast-grep
   description: ast-grep code search and transformation tool
   url: https://ast-grep.github.io/
@@ -189,7 +189,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 673.9KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: aws
   description: Amazon Web Services documentation (all services including DynamoDB, EC2, Lambda, S3)
   url: https://docs.aws.amazon.com/
@@ -197,7 +197,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 558.7KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-15 12:47
 - name: aws-cli
   description: AWS Command Line Interface (CLI) v2 User Guide - installation, configuration, authentication, and usage
   url: https://docs.aws.amazon.com/cli/latest/userguide/
@@ -205,7 +205,7 @@ llms_txt:
   status: fetched
   file_count: 53
   size: 582.3KB
-  last_updated: 2025-12-09 01:49
+  last_updated: 2025-12-15 12:47
 - name: aws-dynamodb
   description: Amazon DynamoDB NoSQL database developer guide
   url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
@@ -213,7 +213,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 38.3KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-15 12:47
 - name: astro
   description: Astro static site generator framework
   url: https://docs.astro.build/
@@ -221,7 +221,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.5MB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: augment-code
   description: Augment Code AI coding assistant documentation
   url: https://docs.augmentcode.com/
@@ -229,7 +229,7 @@ llms_txt:
   status: fetched
   file_count: 61
   size: 843.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: autodesk-aps
   description: Autodesk APS (AutoCAD) API platform
   url: https://aps.autodesk.com/
@@ -237,7 +237,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 199.1KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: avaamo
   description: Avaamo conversational AI platform
   url: https://docs.avaamo.com/
@@ -245,7 +245,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 406.9KB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: avo
   description: Avo Rails admin UI framework
   url: https://avohq.io/
@@ -253,7 +253,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 715.3KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: aws-powertools-java
   description: AWS Powertools for Java Lambda functions
   url: https://docs.aws.amazon.com/powertools/java/1.x.x/
@@ -261,7 +261,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 244.2KB
-  last_updated: 2025-11-24 19:14
+  last_updated: 2025-11-24 14:35
 - name: aws-powertools-python
   description: AWS Powertools for Python Lambda functions
   url: https://docs.aws.amazon.com/powertools/python/latest/
@@ -269,7 +269,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 2.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: aws-powertools-typescript
   description: AWS Powertools for TypeScript Lambda functions
   url: https://docs.aws.amazon.com/powertools/typescript/latest/
@@ -277,7 +277,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 598.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: basehub
   description: Basehub documentation
   url: https://docs.basehub.com/
@@ -285,7 +285,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 334.4KB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: baseten
   description: Baseten documentation
   url: https://docs.baseten.co/
@@ -293,7 +293,7 @@ llms_txt:
   status: fetched
   file_count: 190
   size: 2.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: better-auth
   description: Better Auth authentication library
   url: https://www.better-auth.com/docs/
@@ -306,7 +306,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 51.0KB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: bito
   description: Bito AI code assistant and developer tools
   url: https://docs.bito.ai/
@@ -314,7 +314,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 612.7KB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: bits-ui
   description: Bits UI Svelte headless component library
   url: https://bits-ui.com/
@@ -332,7 +332,7 @@ llms_txt:
   status: fetched
   file_count: 282
   size: 3.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: carv
   description: Carv gaming data and AI infrastructure
   url: https://docs.carv.io/
@@ -340,7 +340,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 420.6KB
-  last_updated: 2025-11-24 19:15
+  last_updated: 2025-11-24 14:35
 - name: cash-app
   description: Cash App payment API
   url: https://developers.cash.app/
@@ -348,7 +348,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: chakra-ui
   description: Chakra UI React component library
   url: https://chakra-ui.com/
@@ -356,7 +356,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: chatling
   description: Chatling AI chatbot builder platform
   url: https://docs.chatling.ai/
@@ -364,7 +364,7 @@ llms_txt:
   status: fetched
   file_count: 136
   size: 513.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: circleci
   description: CircleCI continuous integration platform
   url: https://circleci.com/docs/
@@ -377,7 +377,7 @@ llms_txt:
   status: fetched
   file_count: 218
   size: 8.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: claude-platform
   description: Claude Developer Platform - API docs, Agent SDK, tool use, prompt engineering
   url: https://platform.claude.com/
@@ -385,7 +385,7 @@ llms_txt:
   status: fetched
   file_count: 199
   size: 31.0MB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 11:38
 - name: claudette
   description: Claudette - Answer.AI Claude API wrapper
   url: https://github.com/AnswerDotAI/claudette/blob/main/
@@ -393,7 +393,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 136.9KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: claude-code
   description: Claude Code - Anthropic's agentic coding CLI tool
   url: https://code.claude.com/docs/
@@ -401,7 +401,7 @@ llms_txt:
   status: fetched
   file_count: 48
   size: 1.2MB
-  last_updated: 2025-12-16 21:08
+  last_updated: 2025-12-15 14:04
 - name: clerk
   description: Clerk authentication and user management
   url: https://clerk.com/docs/
@@ -409,7 +409,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:01
 - name: clever-cloud
   description: Clever Cloud PaaS developer platform
   url: https://www.clever.cloud/developers/
@@ -417,7 +417,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 58.0KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: cloud
   description: Cloud documentation
   url: https://cloud.needle.tools/
@@ -425,7 +425,7 @@ llms_txt:
   status: fetched
   file_count: 15
   size: 660.9KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: cloudflare
   description: Cloudflare developer platform and workers
   url: https://developers.cloudflare.com/
@@ -433,7 +433,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 42.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: codeium
   description: Codeium AI code completion
   url: https://docs.codeium.com/
@@ -441,7 +441,7 @@ llms_txt:
   status: fetched
   file_count: 58
   size: 1.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: cohere
   description: Cohere enterprise AI platform and language models
   url: https://docs.cohere.com/
@@ -449,7 +449,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.7MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: comet-docs-opik
   description: Comet documentation
   url: https://www.comet.com/docs/opik/
@@ -457,7 +457,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.4MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
+- name: copilotkit
+  description: CopilotKit - AI chatbots and agents for React applications
+  url: https://docs.copilotkit.ai/
+  path: docs/llms-txt/copilotkit/
+  status: fetched
+  file_count: 1
+  size: 443.7KB
+  last_updated: 2025-12-15 17:14
 - name: comfy
   description: ComfyUI node-based AI image generation
   url: https://docs.comfy.org/
@@ -465,7 +473,7 @@ llms_txt:
   status: fetched
   file_count: 266
   size: 4.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:18
 - name: configcat
   description: ConfigCat feature flag service
   url: https://configcat.com/docs/
@@ -473,7 +481,7 @@ llms_txt:
   status: fetched
   file_count: 262
   size: 3.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: convex
   description: Convex documentation
   url: https://docs.convex.dev/
@@ -481,7 +489,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 3.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: coollabs
   description: Coolify self-hosted PaaS
   url: https://docs.coollabs.io/
@@ -489,7 +497,7 @@ llms_txt:
   status: fetched
   file_count: 33
   size: 36.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: cosette
   description: Cosette - Answer.AI OpenAI API wrapper
   url: https://github.com/AnswerDotAI/cosette/blob/main/
@@ -497,7 +505,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 155.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: crewai
   description: CrewAI multi-agent orchestration framework
   url: https://docs.crewai.com/
@@ -505,7 +513,7 @@ llms_txt:
   status: fetched
   file_count: 204
   size: 3.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: cursor
   description: Cursor AI code editor
   url: https://docs.cursor.com/
@@ -513,7 +521,7 @@ llms_txt:
   status: fetched
   file_count: 19
   size: 10.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:02
 - name: daisyui
   description: DaisyUI Tailwind CSS component library
   url: https://daisyui.com/docs/
@@ -526,7 +534,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 802.7KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: dat1
   description: Dat1 AI-powered analytics platform
   url: https://dat1.co/
@@ -534,7 +542,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 6.0KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: datafold
   description: Datafold documentation
   url: https://docs.datafold.com/
@@ -542,7 +550,7 @@ llms_txt:
   status: fetched
   file_count: 156
   size: 3.3MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: daytona
   description: Daytona documentation
   url: https://www.daytona.io/docs/
@@ -550,7 +558,7 @@ llms_txt:
   status: fetched
   file_count: 62
   size: 977.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: deepconverse
   description: DeepConverse AI-powered customer support automation
   url: https://docs.deepconverse.com/
@@ -558,7 +566,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 170.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: deno
   description: Deno secure JavaScript/TypeScript runtime
   url: https://deno.com/
@@ -566,7 +574,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 53.5KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: dev
   description: Writer developer resources
   url: https://dev.writer.com/
@@ -574,7 +582,7 @@ llms_txt:
   status: fetched
   file_count: 246
   size: 4.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: developers
   description: Hubspot developer platform
   url: https://developers.hubspot.com/docs/
@@ -582,7 +590,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 20.8KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: developers-2
   description: Raycast developer platform
   url: https://developers.raycast.com/
@@ -590,7 +598,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: developers-vectorize
   description: Vectorize llms-full.txt
   url: https://developers.cloudflare.com/vectorize/
@@ -598,7 +606,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 145.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: directory
   description: Directory documentation
   url: https://directory.llmstxt.cloud/
@@ -606,7 +614,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 505.9KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: docetl
   description: DocETL document processing and transformation system
   url: https://www.docetl.org/
@@ -614,7 +622,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 42.0KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: docker
   description: Docker containerization platform
   url: https://docs.docker.com/
@@ -632,7 +640,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: dspy
   description: DSPy LLM programming framework
   url: https://dspy.ai/
@@ -640,7 +648,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 24.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: dub
   description: Dub link management infrastructure
   url: https://dub.co/docs/
@@ -648,7 +656,7 @@ llms_txt:
   status: fetched
   file_count: 93
   size: 2.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: duckdb
   description: DuckDB in-process SQL OLAP database
   url: https://duckdb.org/docs/
@@ -661,7 +669,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 2.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: elevenlabs
   description: ElevenLabs AI voice generation and text-to-speech
   url: https://docs.elevenlabs.io/
@@ -669,7 +677,7 @@ llms_txt:
   status: fetched
   file_count: 30
   size: 5.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: embedchain
   description: Embedchain RAG framework for LLM applications
   url: https://docs.embedchain.ai/
@@ -677,7 +685,7 @@ llms_txt:
   status: fetched
   file_count: 95
   size: 489.1KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: envoyer
   description: Envoyer documentation
   url: https://docs.envoyer.io/
@@ -685,7 +693,7 @@ llms_txt:
   status: fetched
   file_count: 12
   size: 84.1KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:05
 - name: exa
   description: Exa AI-powered search API for LLM applications
   url: https://docs.exa.ai/
@@ -693,7 +701,7 @@ llms_txt:
   status: fetched
   file_count: 136
   size: 2.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 13:51
 - name: expo
   description: Expo React Native development platform
   url: https://docs.expo.dev/
@@ -701,7 +709,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: fastcore
   description: llms.txt - fastcore - Fast.ai
   url: https://fastcore.fast.ai/
@@ -709,7 +717,7 @@ llms_txt:
   status: fetched
   file_count: 13
   size: 311.7KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: fasthtml
   description: FastHTML Python web framework
   url: https://docs.fastht.ml/
@@ -727,7 +735,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.1MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: firecrawl
   description: Firecrawl documentation
   url: https://www.firecrawl.dev/
@@ -735,7 +743,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 657.0KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: fireflies
   description: Fireflies AI meeting assistant and transcription
   url: https://docs.fireflies.ai/
@@ -743,7 +751,7 @@ llms_txt:
   status: fetched
   file_count: 63
   size: 410.1KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: fireworks
   description: Fireworks AI inference platform and API
   url: https://docs.fireworks.ai/
@@ -751,7 +759,7 @@ llms_txt:
   status: fetched
   file_count: 250
   size: 2.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: fireworks-ai
   description: Fireworks AI inference platform
   url: https://docs.fireworks.ai/
@@ -759,7 +767,7 @@ llms_txt:
   status: fetched
   file_count: 250
   size: 2.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: flatfile
   description: Flatfile data import and transformation platform
   url: https://flatfile.com/docs/
@@ -767,7 +775,7 @@ llms_txt:
   status: fetched
   file_count: 91
   size: 1.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: flitt
   description: Flitt payment API platform
   url: https://docs.flitt.com/
@@ -775,7 +783,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 502.6KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: flows
   description: Flows workflow automation platform
   url: https://docs.flows.sh/
@@ -788,7 +796,7 @@ llms_txt:
   status: fetched
   file_count: 67
   size: 919.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: frontmatter
   description: Front Matter CMS for VS Code
   url: https://frontmatter.codes/docs/
@@ -801,7 +809,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 299.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: galileo-ai
   description: Galileo AI LLM evaluation and observability
   url: https://docs.galileo.ai/
@@ -809,7 +817,7 @@ llms_txt:
   status: fetched
   file_count: 176
   size: 1.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: gaspard
   description: Gaspard - Answer.AI Gemini API wrapper
   url: https://github.com/AnswerDotAI/gaspard/blob/main/
@@ -817,7 +825,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 85.8KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: giselles
   description: Giselles AI automation and workflow platform
   url: https://docs.giselles.ai/
@@ -825,7 +833,7 @@ llms_txt:
   status: fetched
   file_count: 44
   size: 329.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: gitbook
   description: GitBook documentation platform
   url: https://gitbook.com/docs/
@@ -833,7 +841,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 425.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: gitingest
   description: Turn Git repositories into prompt-ready text digests for AI agents
   url: https://gitingest.com/
@@ -841,7 +849,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 26.1KB
-  last_updated: 2025-11-24 22:12
+  last_updated: 2025-11-24 14:35
 - name: gitlab-consulting
   description: IDEA GitLab consulting and solutions
   url: https://gitlab.consulting/
@@ -849,7 +857,7 @@ llms_txt:
   status: fetched
   file_count: 13
   size: 104.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:05
 - name: glide
   description: Glide no-code app builder
   url: https://www.glideapps.com/
@@ -857,7 +865,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 9.6KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: gofastmcp
   description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle ... python-sdk/fastmcp-cli-__i'
   url: https://gofastmcp.com/
@@ -865,7 +873,7 @@ llms_txt:
   status: fetched
   file_count: 169
   size: 2.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: gradio
   description: Python library for building ML web apps with comprehensive API reference
   url: https://www.gradio.app/
@@ -873,7 +881,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 266.3KB
-  last_updated: 2025-11-24 20:24
+  last_updated: 2025-11-24 14:35
 - name: grafbase
   description: Grafbase documentation
   url: https://grafbase.com/
@@ -881,7 +889,7 @@ llms_txt:
   status: fetched
   file_count: 112
   size: 496.0KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: graphite
   description: Graphite stacked pull requests and developer workflow tools
   url: https://graphite.com/docs/
@@ -889,7 +897,7 @@ llms_txt:
   status: fetched
   file_count: 94
   size: 1.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:05
 - name: groq
   description: Groq high-performance AI inference platform
   url: https://docs.groq.com/
@@ -897,7 +905,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 286.2KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: groqcloud
   description: Groq LPU inference API platform
   url: https://console.groq.com/docs/
@@ -910,7 +918,7 @@ llms_txt:
   status: fetched
   file_count: 154
   size: 2.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: herd
   description: Herd documentation
   url: https://herd.laravel.com/docs/
@@ -918,7 +926,7 @@ llms_txt:
   status: fetched
   file_count: 51
   size: 566.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: hono
   description: Hono ultrafast web framework
   url: https://hono.dev/
@@ -926,7 +934,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 324.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: htmlhint
   description: Htmlhint documentation
   url: https://htmlhint.com/
@@ -934,7 +942,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 92.5KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: huggingface-accelerate
   description: Hugging Face Accelerate training library
   url: https://huggingface-projects-docs-llms-txt.hf.space/accelerate/
@@ -942,7 +950,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 212.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: huggingface-diffusers
   description: Hugging Face Diffusers for image generation
   url: https://huggingface-projects-docs-llms-txt.hf.space/diffusers/
@@ -950,7 +958,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 602.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:01
 - name: huggingface-docs-hub
   description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker ... llm.md) - [Use O'
   url: https://huggingface.co/docs/hub/
@@ -958,7 +966,7 @@ llms_txt:
   status: fetched
   file_count: 220
   size: 2.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: huggingface-hub
   description: Hugging Face Hub Python client
   url: https://huggingface-projects-docs-llms-txt.hf.space/huggingface_hub/
@@ -966,7 +974,7 @@ llms_txt:
   status: fetched
   file_count: 4
   size: 746.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:05
 - name: huggingface-transformers
   description: Hugging Face Transformers library for NLP, vision, audio, and multimodal ML models
   url: https://huggingface.co/docs/transformers/
@@ -974,7 +982,7 @@ llms_txt:
   status: fetched
   file_count: 96
   size: 1.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 16:01
 - name: humanloop
   description: Humanloop LLM evaluation and monitoring
   url: https://humanloop.com/docs/
@@ -982,7 +990,7 @@ llms_txt:
   status: fetched
   file_count: 10
   size: 3.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: hypermode
   description: Hypermode documentation
   url: https://docs.hypermode.com/
@@ -990,7 +998,7 @@ llms_txt:
   status: fetched
   file_count: 303
   size: 9.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: ideogram
   description: Ideogram AI image generation platform
   url: https://docs.ideogram.ai/
@@ -998,7 +1006,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 548.9KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: infera
   description: Infera AI inference optimization platform
   url: https://docs.infera.org/
@@ -1006,7 +1014,7 @@ llms_txt:
   status: fetched
   file_count: 39
   size: 156.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: infisical
   description: Infisical documentation
   url: https://infisical.com/docs/
@@ -1014,7 +1022,7 @@ llms_txt:
   status: fetched
   file_count: 434
   size: 6.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: inkeep
   description: Inkeep AI-powered documentation search
   url: https://docs.inkeep.com/
@@ -1022,7 +1030,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 507.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: inngest
   description: Inngest workflow orchestration platform
   url: https://www.inngest.com/
@@ -1030,7 +1038,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: inspira-ui
   description: Inspira UI Vue component library
   url: https://inspira-ui.com/docs/
@@ -1038,7 +1046,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.7MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: iterm2
   description: iTerm2 macOS terminal emulator with advanced features
   url: https://iterm2.com/docs/
@@ -1046,7 +1054,7 @@ llms_txt:
   status: fetched
   file_count: 32
   size: 273.4KB
-  last_updated: 2025-12-16 21:08
+  last_updated: 2025-12-20 18:28
 - name: instructor
   description: Instructor structured LLM output library
   url: https://python.useinstructor.com/
@@ -1054,7 +1062,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 44.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: intelligems
   description: Intelligems A/B testing and optimization for Shopify
   url: https://docs.intelligems.io/
@@ -1062,7 +1070,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 497.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: jam
   description: Jam documentation
   url: https://jam.dev/docs/
@@ -1070,7 +1078,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 235.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: jazz
   description: Jazz local-first sync framework
   url: https://jazz.tools/
@@ -1078,7 +1086,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 507.6KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: jetify
   description: Jetify documentation
   url: https://www.jetify.com/docs/
@@ -1086,7 +1094,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 418.5KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: jina
   description: Jina AI embeddings, rerankers, and multimodal AI models
   url: https://docs.jina.ai/
@@ -1094,7 +1102,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 36.8KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:10
 - name: juno
   description: Juno blockchain web development
   url: https://juno.build/docs/
@@ -1107,7 +1115,7 @@ llms_txt:
   status: fetched
   file_count: 7
   size: 74.2KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 14:17
 - name: kaisar
   description: Kaisar AI development platform
   url: https://docs.kaisar.io/
@@ -1115,7 +1123,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 85.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: klarna
   description: Klarna payment and shopping API
   url: https://docs.klarna.com/
@@ -1123,7 +1131,7 @@ llms_txt:
   status: fetched
   file_count: 244
   size: 1.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: lago
   description: Lago open source billing
   url: https://getlago.com/docs/
@@ -1131,7 +1139,7 @@ llms_txt:
   status: fetched
   file_count: 240
   size: 4.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:18
 - name: lambdatest
   description: LambdaTest cross-browser testing
   url: https://www.lambdatest.com/
@@ -1144,7 +1152,7 @@ llms_txt:
   status: fetched
   file_count: 20
   size: 20.4KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 13:38
 - name: langchain
   description: LangChain framework for LLM application development
   url: https://python.langchain.com/
@@ -1152,7 +1160,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 384.4KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: langchain-js
   description: LangChain JavaScript/TypeScript library
   url: https://js.langchain.com/
@@ -1160,7 +1168,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 408.5KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: langflow
   description: Langflow documentation
   url: https://www.langflow.org/
@@ -1168,7 +1176,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: langfuse
   description: Langfuse LLM observability platform
   url: https://langfuse.com/
@@ -1176,7 +1184,7 @@ llms_txt:
   status: fetched
   file_count: 107
   size: 836.2KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: langgraph
   description: LangGraph agent workflow orchestration framework
   url: https://langchain-ai.github.io/langgraph/
@@ -1184,7 +1192,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 617.8KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: liam-erd
   description: Liam ERD database diagram tool
   url: https://liambx.com/docs/
@@ -1192,7 +1200,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 88.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: likec4
   description: LikeC4 architecture diagram tool
   url: https://likec4.dev/
@@ -1200,7 +1208,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 179.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: linear
   description: Linear project management and issue tracking
   url: https://linear.app/
@@ -1208,7 +1216,7 @@ llms_txt:
   status: fetched
   file_count: 120
   size: 640.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: lingui
   description: Lingui documentation
   url: https://lingui.dev/
@@ -1216,7 +1224,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 251.9KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: litellm
   description: Litellm documentation
   url: https://docs.litellm.ai/
@@ -1224,7 +1232,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: liveblocks
   description: Liveblocks real-time collaboration infrastructure
   url: https://liveblocks.io/
@@ -1232,7 +1240,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: livecodes
   description: LiveCodes code playground
   url: https://livecodes.io/docs/
@@ -1240,7 +1248,7 @@ llms_txt:
   status: fetched
   file_count: 202
   size: 1.3MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: livekit
   description: Livekit documentation
   url: https://docs.livekit.io/
@@ -1248,7 +1256,7 @@ llms_txt:
   status: fetched
   file_count: 185
   size: 4.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: llmstxt
   description: llms-txt official specification and CLI
   url: https://llmstxt.org/
@@ -1256,7 +1264,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 17.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: lm-studio
   description: LM Studio local LLM development and inference
   url: https://lmstudio.ai/
@@ -1264,7 +1272,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 537.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: lmstudio
   description: LM Studio local LLM runner
   url: https://lmstudio.ai/
@@ -1272,7 +1280,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 543.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:06
 - name: lobehub
   description: LobeHub open source AI assistant
   url: https://lobehub.com/docs/
@@ -1285,7 +1293,7 @@ llms_txt:
   status: fetched
   file_count: 115
   size: 2.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: lynx
   description: Lynx cross-platform framework
   url: https://lynxjs.org/docs/
@@ -1298,7 +1306,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 585.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: mastra
   description: Mastra AI agent framework
   url: https://mastra.ai/
@@ -1306,7 +1314,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.8MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: mcp
   description: Model Context Protocol for AI context management
   url: https://modelcontextprotocol.io/
@@ -1314,7 +1322,7 @@ llms_txt:
   status: fetched
   file_count: 39
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: medusa
   description: Medusa open source commerce platform
   url: https://docs.medusajs.com/
@@ -1322,7 +1330,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 5.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: meilisearch
   description: Meilisearch search engine
   url: https://www.meilisearch.com/
@@ -1330,7 +1338,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: meshconnect
   description: Meshconnect documentation
   url: https://docs.meshconnect.com/
@@ -1338,7 +1346,7 @@ llms_txt:
   status: fetched
   file_count: 51
   size: 907.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: mintlify
   description: Mintlify documentation platform
   url: https://mintlify.com/docs/
@@ -1346,7 +1354,7 @@ llms_txt:
   status: fetched
   file_count: 124
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: mistral
   description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
   url: https://docs.mistral.ai/
@@ -1354,7 +1362,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 969.5KB
-  last_updated: 2025-12-13 00:01
+  last_updated: 2025-12-15 12:47
 - name: modular
   description: Modular AI infrastructure and Mojo language
   url: https://docs.modular.com/
@@ -1362,7 +1370,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 6.5MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: moondream
   description: Moondream tiny vision-language model
   url: https://docs.moondream.ai/
@@ -1375,7 +1383,7 @@ llms_txt:
   status: fetched
   file_count: 8
   size: 23.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 14:41
 - name: mui-material
   description: Material UI React component library
   url: https://mui.com/material-ui/
@@ -1383,7 +1391,7 @@ llms_txt:
   status: fetched
   file_count: 121
   size: 2.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: mui-x
   description: MUI X advanced React components
   url: https://mui.com/x/
@@ -1401,7 +1409,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 749.9KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: near
   description: Near documentation
   url: https://docs.near.org/
@@ -1409,7 +1417,7 @@ llms_txt:
   status: fetched
   file_count: 168
   size: 1.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: nemo-framework
   description: NVIDIA NeMo Framework for LLM, multimodal, and speech AI development
   url: https://docs.nvidia.com/nemo-framework/
@@ -1417,7 +1425,7 @@ llms_txt:
   status: fetched
   file_count: 50
   size: 707.2KB
-  last_updated: 2025-12-05 22:45
+  last_updated: 2025-12-06 11:38
 - name: netlify
   description: Netlify web deployment platform
   url: https://docs.netlify.com/
@@ -1430,7 +1438,7 @@ llms_txt:
   status: fetched
   file_count: 247
   size: 4.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: notion
   description: Notion API documentation
   url: https://developers.notion.com/
@@ -1438,7 +1446,7 @@ llms_txt:
   status: fetched
   file_count: 97
   size: 86.3MB
-  last_updated: 2025-11-24 21:38
+  last_updated: 2025-11-24 14:35
 - name: nuxt
   description: Nuxt Vue.js meta-framework
   url: https://nuxt.com/
@@ -1446,7 +1454,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.6MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: nuxt-content
   description: Nuxt Content git-based CMS for Nuxt projects
   url: https://content.nuxt.com/
@@ -1454,7 +1462,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 265.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: nuxt-ui
   description: Nuxt UI Vue.js component library
   url: https://ui.nuxt.com/
@@ -1462,7 +1470,7 @@ llms_txt:
   status: fetched
   file_count: 132
   size: 2.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: nvidia
   description: High-throughput, low-latency inference framework designed for serving generative AI and reasoning mo
   url: https://docs.nvidia.com/
@@ -1470,7 +1478,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 50.7KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: ollama
   description: Local LLM runtime with API reference, capabilities, integrations, and CLI documentation
   url: https://docs.ollama.com/
@@ -1478,7 +1486,7 @@ llms_txt:
   status: fetched
   file_count: 49
   size: 483.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: openai
   description: OpenAI API documentation including GPT, Whisper, DALL-E, and embeddings
   url: https://developers.openai.com/
@@ -1486,7 +1494,7 @@ llms_txt:
   status: fetched
   file_count: 56
   size: 1013.4KB
-  last_updated: 2025-12-23 23:38
+  last_updated: 2025-12-22 20:41
 - name: openai-cdn
   description: OpenAI API documentation CDN
   url: https://cdn.openai.com/API/docs/txt/
@@ -1494,7 +1502,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.6MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: openai-platform
   description: OpenAI Platform API reference including Whisper, GPT, DALL-E, TTS, and embeddings
   url: https://platform.openai.com/.well-known/
@@ -1502,7 +1510,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.3KB
-  last_updated: 2025-12-23 23:38
+  last_updated: 2025-12-22 20:41
 - name: openphone
   description: OpenPhone business phone API
   url: https://www.openphone.com/docs/
@@ -1510,7 +1518,7 @@ llms_txt:
   status: fetched
   file_count: 44
   size: 717.4KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 16:35
 - name: openpipe
   description: OpenPipe LLM fine-tuning and deployment platform
   url: https://docs.openpipe.ai/
@@ -1518,7 +1526,7 @@ llms_txt:
   status: fetched
   file_count: 42
   size: 491.2KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: openrouter
   description: OpenRouter AI model aggregator and API
   url: https://openrouter.ai/docs/
@@ -1526,7 +1534,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 873.1KB
-  last_updated: 2025-11-24 21:30
+  last_updated: 2025-11-24 14:35
 - name: oxla
   description: Oxla distributed SQL database
   url: https://docs.oxla.com/
@@ -1534,7 +1542,7 @@ llms_txt:
   status: fetched
   file_count: 209
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: paysafe
   description: Paysafe payment gateway API
   url: https://developer.paysafe.com/
@@ -1547,7 +1555,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 40.5KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:10
 - name: perplexity
   description: Perplexity AI search and reasoning API
   url: https://docs.perplexity.ai/
@@ -1555,7 +1563,7 @@ llms_txt:
   status: fetched
   file_count: 82
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:16
 - name: pinata
   description: Pinata IPFS file storage
   url: https://docs.pinata.cloud/
@@ -1563,7 +1571,7 @@ llms_txt:
   status: fetched
   file_count: 138
   size: 916.2KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: pinecone
   description: Pinecone documentation
   url: https://docs.pinecone.io/
@@ -1571,7 +1579,7 @@ llms_txt:
   status: fetched
   file_count: 272
   size: 8.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: pixijs
   description: PixiJS 2D WebGL renderer and graphics library
   url: https://pixijs.com/
@@ -1579,7 +1587,7 @@ llms_txt:
   status: fetched
   file_count: 51
   size: 1.2MB
-  last_updated: 2025-11-24 21:54
+  last_updated: 2025-11-24 14:35
 - name: plain
   description: Plain customer support platform
   url: https://www.plain.com/docs/
@@ -1587,7 +1595,7 @@ llms_txt:
   status: fetched
   file_count: 79
   size: 246.3KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: platform-sh
   description: Platform.sh PaaS deployment
   url: https://docs.platform.sh/
@@ -1595,7 +1603,7 @@ llms_txt:
   status: fetched
   file_count: 173
   size: 4.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:21
 - name: polar
   description: Polar SaaS billing and subscription platform
   url: https://polar.sh/
@@ -1603,7 +1611,7 @@ llms_txt:
   status: fetched
   file_count: 160
   size: 2.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: postman
   description: Postman API platform documentation
   url: https://learning.postman.com/
@@ -1616,7 +1624,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 21.0KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: preact
   description: Preact fast 3kB React alternative
   url: https://preactjs.com/guide/
@@ -1629,7 +1637,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 150.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: prisma
   description: Prisma next-generation ORM for Node.js and TypeScript
   url: https://www.prisma.io/docs/
@@ -1637,7 +1645,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.1MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: promptfoo
   description: Promptfoo LLM testing framework
   url: https://www.promptfoo.dev/docs/
@@ -1655,7 +1663,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 3.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: qdrant
   description: Qdrant open-source vector database and search engine written in Rust
   url: https://qdrant.tech/
@@ -1663,7 +1671,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.9MB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:09
 - name: rainbowkit
   description: Rainbowkit documentation
   url: https://rainbowkit.com/
@@ -1671,7 +1679,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 479.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: react
   description: 'React library for web and native user interfaces (from PR #8130)'
   url: https://react.dev/
@@ -1679,7 +1687,15 @@ llms_txt:
   status: fetched
   file_count: 161
   size: 2.7MB
-  last_updated: 2025-11-24 20:27
+  last_updated: 2025-11-24 14:35
+- name: react-spring
+  description: React Spring - physics-based animation library for React
+  url: https://react-spring.dev/
+  path: docs/llms-txt/react-spring/
+  status: fetched
+  file_count: 1
+  size: 40.1KB
+  last_updated: 2025-12-15 17:14
 - name: readme
   description: ReadMe developer documentation platform
   url: https://docs.readme.com/
@@ -1687,7 +1703,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 645.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: redis
   description: Redis in-memory data structure store
   url: https://redis.io/
@@ -1695,7 +1711,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 14.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: redpanda
   description: Redpanda Kafka-compatible streaming
   url: https://docs.redpanda.com/
@@ -1713,7 +1729,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 771.3KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: replit
   description: Replit cloud development platform
   url: https://docs.replit.com/
@@ -1721,7 +1737,7 @@ llms_txt:
   status: fetched
   file_count: 183
   size: 3.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: resend
   description: Resend email API for developers
   url: https://resend.com/docs/
@@ -1729,7 +1745,7 @@ llms_txt:
   status: fetched
   file_count: 200
   size: 2.3MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:18
 - name: retejs
   description: Rete.js visual programming framework
   url: https://retejs.org/
@@ -1737,7 +1753,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 246.7KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: retool
   description: Retool internal tool builder platform
   url: https://docs.retool.com/
@@ -1745,7 +1761,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.8MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: roc-lang
   description: Roc fast functional programming language
   url: https://www.roc-lang.org/
@@ -1768,7 +1784,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: sardine
   description: Sardine documentation
   url: https://docs.sardine.ai/
@@ -1776,7 +1792,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 42.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: screenshotone
   description: ScreenshotOne API screenshot service
   url: https://screenshotone.com/docs/
@@ -1784,7 +1800,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 246.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 16:35
 - name: semgrep
   description: Semgrep static analysis tool
   url: https://semgrep.com/
@@ -1792,7 +1808,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 8.1KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: servicestack
   description: Servicestack documentation
   url: https://docs.servicestack.net/
@@ -1800,7 +1816,7 @@ llms_txt:
   status: fetched
   file_count: 389
   size: 13.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 16:35
 - name: shadcn-ui
   description: shadcn/ui React component library with Tailwind CSS and Radix UI primitives
   url: https://ui.shadcn.com/
@@ -1808,7 +1824,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 10.5KB
-  last_updated: 2025-12-10 22:04
+  last_updated: 2025-12-15 12:47
 - name: sherlockdomains
   description: Sherlockdomains documentation
   url: https://www.sherlockdomains.com/
@@ -1816,7 +1832,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 14.6KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: slack
   description: Slack developer platform and API documentation
   url: https://docs.slack.dev/
@@ -1824,7 +1840,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 34.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: smartcar
   description: Smartcar vehicle API
   url: https://smartcar.com/docs/
@@ -1832,7 +1848,7 @@ llms_txt:
   status: fetched
   file_count: 180
   size: 1.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: solidfi
   description: Solidfi documentation
   url: https://docs.solidfi.com/
@@ -1840,7 +1856,7 @@ llms_txt:
   status: fetched
   file_count: 89
   size: 1.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: sourcegraph
   description: Sourcegraph code intelligence platform
   url: https://sourcegraph.com/docs/
@@ -1858,7 +1874,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 5.3MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: squared-ai
   description: Squared AI analytics and business intelligence
   url: https://docs.squared.ai/
@@ -1866,7 +1882,7 @@ llms_txt:
   status: fetched
   file_count: 153
   size: 912.9KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: stedi
   description: Stedi B2B data exchange
   url: https://www.stedi.com/docs/
@@ -1874,7 +1890,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: streamlit
   description: Streamlit Python framework for data apps and dashboards
   url: https://docs.streamlit.io/
@@ -1882,7 +1898,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.3MB
-  last_updated: 2025-11-24 21:53
+  last_updated: 2025-11-24 14:35
 - name: stripe
   description: Stripe payment processing platform API
   url: https://docs.stripe.com/
@@ -1890,7 +1906,7 @@ llms_txt:
   status: fetched
   file_count: 387
   size: 9.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: supabase
   description: Supabase open source Firebase alternative
   url: https://supabase.com/
@@ -1903,7 +1919,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: tamagui
   description: Tamagui universal UI framework
   url: https://tamagui.dev/docs/
@@ -1916,7 +1932,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 585.1KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: tavily
   description: Tavily AI-powered search API for LLM applications
   url: https://docs.tavily.com/
@@ -1924,7 +1940,7 @@ llms_txt:
   status: fetched
   file_count: 51
   size: 1006.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 13:05
 - name: tavus
   description: Tavus documentation
   url: https://docs.tavus.io/
@@ -1932,7 +1948,7 @@ llms_txt:
   status: fetched
   file_count: 94
   size: 1.4MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: testingbot
   description: TestingBot cross-browser testing
   url: https://testingbot.com/support/
@@ -1945,7 +1961,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: tiptap
   description: Tiptap headless rich text editor
   url: https://tiptap.dev/
@@ -1958,7 +1974,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 455.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: trigger
   description: Trigger documentation
   url: https://trigger.dev/docs/
@@ -1966,7 +1982,7 @@ llms_txt:
   status: fetched
   file_count: 178
   size: 2.5MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: trigger-dev
   description: Trigger.dev background job orchestration platform
   url: https://docs.trigger.dev/
@@ -1974,7 +1990,7 @@ llms_txt:
   status: fetched
   file_count: 178
   size: 2.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: turbo
   description: Turborepo monorepo build system
   url: https://turbo.build/
@@ -1982,7 +1998,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 491.7KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:03
 - name: turso
   description: Turso documentation
   url: https://docs.turso.tech/
@@ -1990,7 +2006,7 @@ llms_txt:
   status: fetched
   file_count: 115
   size: 1.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: unifygtm
   description: Unifygtm documentation
   url: https://docs.unifygtm.com/
@@ -1998,7 +2014,7 @@ llms_txt:
   status: fetched
   file_count: 63
   size: 1.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: unkey
   description: Unkey API key management
   url: https://www.unkey.com/docs/
@@ -2011,7 +2027,7 @@ llms_txt:
   status: fetched
   file_count: 361
   size: 6.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:18
 - name: unstructured
   description: Unstructured document parsing
   url: https://docs.unstructured.io/
@@ -2019,7 +2035,7 @@ llms_txt:
   status: fetched
   file_count: 186
   size: 5.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: upstash
   description: Upstash serverless data platform (Redis, Kafka, QStash)
   url: https://upstash.com/docs/
@@ -2027,7 +2043,7 @@ llms_txt:
   status: fetched
   file_count: 570
   size: 4.6MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: vapi
   description: Vapi voice AI platform and API
   url: https://docs.vapi.ai/
@@ -2035,7 +2051,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 15.8MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: venice
   description: Venice decentralized AI platform
   url: https://docs.venice.ai/
@@ -2043,7 +2059,7 @@ llms_txt:
   status: fetched
   file_count: 34
   size: 493.9KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: vespa
   description: Vespa search engine and vector database for AI applications
   url: https://docs.vespa.ai/
@@ -2051,7 +2067,7 @@ llms_txt:
   status: fetched
   file_count: 315
   size: 7.2MB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:10
 - name: vercel
   description: Vercel deployment platform and edge functions
   url: https://vercel.com/docs/
@@ -2059,7 +2075,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.9MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: vercel-ai-sdk
   description: Vercel AI SDK for building AI applications
   url: https://sdk.vercel.ai/
@@ -2067,7 +2083,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 454.2KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: vercel-rest-api
   description: Vercel REST API reference documentation
   url: https://vercel.com/docs/rest-api/reference/
@@ -2075,7 +2091,7 @@ llms_txt:
   status: fetched
   file_count: 232
   size: 3.9MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:06
 - name: viem
   description: Viem documentation
   url: https://viem.sh/
@@ -2083,7 +2099,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 1.9MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: vite
   description: Next generation frontend build tool with instant server start and lightning fast HMR
   url: https://vite.dev/
@@ -2091,7 +2107,7 @@ llms_txt:
   status: fetched
   file_count: 5
   size: 462.3KB
-  last_updated: 2025-11-24 20:23
+  last_updated: 2025-11-24 14:35
 - name: vitest
   description: Vitest next generation testing framework powered by Vite
   url: https://vitest.dev/
@@ -2099,7 +2115,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 868.0KB
-  last_updated: 2025-11-24 21:53
+  last_updated: 2025-11-24 14:35
 - name: vue-macros
   description: Vue Macros compiler extensions
   url: https://vue-macros.dev/
@@ -2107,7 +2123,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 67.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: vuejs
   description: Vue.js progressive JavaScript framework
   url: https://vuejs.org/
@@ -2115,7 +2131,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 966.2KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: vueschool
   description: Vue School online learning platform
   url: https://vueschool.io/
@@ -2123,7 +2139,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 32.0KB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: warp
   description: Warp AI-powered terminal
   url: https://docs.warp.dev/
@@ -2131,7 +2147,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 628.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: webflow
   description: Webflow website builder developer platform
   url: https://developers.webflow.com/
@@ -2139,7 +2155,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.1MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: windsurf
   description: Windsurf AI-powered code editor
   url: https://docs.windsurf.com/
@@ -2147,7 +2163,7 @@ llms_txt:
   status: fetched
   file_count: 59
   size: 1.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: x-cmd
   description: x-cmd command-line toolkit and utilities
   url: https://www.x-cmd.com/
@@ -2155,7 +2171,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.3MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: youtube-data-api
   description: YouTube Data API v3 - manage videos, playlists, channels
   url: https://developers.google.com/youtube/v3/
@@ -2163,7 +2179,7 @@ llms_txt:
   status: fetched
   file_count: 191
   size: 5.8MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-28 14:21
 - name: zag
   description: Zag headless UI component library
   url: https://zagjs.com/
@@ -2171,7 +2187,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: zapier
   description: https://docs.zapier.com/llms-full.txt
   url: https://docs.zapier.com/
@@ -2179,7 +2195,7 @@ llms_txt:
   status: fetched
   file_count: 230
   size: 3.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-25 09:17
 - name: zenml
   description: ZenML MLOps framework for ML pipelines
   url: https://docs.zenml.io/
@@ -2187,7 +2203,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.1MB
-  last_updated: 2025-11-19 00:05
+  last_updated: 2025-11-24 14:35
 - name: zod
   description: Zod TypeScript-first schema validation library
   url: https://zod.dev/
@@ -2195,7 +2211,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 248.4KB
-  last_updated: 2025-11-24 21:53
+  last_updated: 2025-11-24 14:35
 github:
 - name: circuitpython
   description: CircuitPython documentation and examples
@@ -2206,7 +2222,7 @@ github:
   status: fetched
   file_count: 30
   size: 145.1KB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-20 18:28
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2216,7 +2232,7 @@ github:
   status: fetched
   file_count: 292
   size: 870.0KB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-23 19:24
 - name: micropython
   description: MicroPython documentation
   repo: micropython/micropython
@@ -2226,7 +2242,7 @@ github:
   status: fetched
   file_count: 243
   size: 1.4MB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-23 19:24
 - name: buildbuddy
   description: BuildBuddy documentation - Remote execution and caching platform
   repo: buildbuddy-io/buildbuddy
@@ -2236,7 +2252,7 @@ github:
   status: fetched
   file_count: 58
   size: 287.7KB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-20 18:29
 - name: esptool
   description: ESP8266 and ESP32 serial bootloader utility documentation
   repo: espressif/esptool
@@ -2246,7 +2262,7 @@ github:
   status: fetched
   file_count: 55
   size: 502.1KB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-20 18:29
 - name: mcp-jest
   description: MCP Jest - Model Context Protocol testing utilities
   repo: josharsh/mcp-jest
@@ -2256,7 +2272,7 @@ github:
   status: fetched
   file_count: 16
   size: 196.2KB
-  last_updated: 2025-12-24 01:39
+  last_updated: 2025-12-20 18:29
 - name: librechat
   description: LibreChat - Enhanced ChatGPT clone with multi-AI support
   repo: LibreChat-AI/librechat.ai
@@ -2273,7 +2289,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2283,7 +2299,7 @@ github:
   status: fetched
   file_count: 284
   size: 5.2MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: go
   description: Go Programming Language - Official documentation website
   repo: golang/website
@@ -2293,7 +2309,7 @@ github:
   status: fetched
   file_count: 578
   size: 5.6MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: flask
   description: Flask - Lightweight WSGI web application framework
   repo: pallets/flask
@@ -2303,7 +2319,7 @@ github:
   status: fetched
   file_count: 75
   size: 434.5KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:29
 - name: click
   description: Python CLI framework - Command-line interface creation toolkit
   repo: pallets/click
@@ -2313,7 +2329,7 @@ github:
   status: fetched
   file_count: 35
   size: 172.5KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:29
 - name: fastapi
   description: FastAPI - Modern, fast Python web framework
   repo: fastapi/fastapi
@@ -2323,7 +2339,7 @@ github:
   status: fetched
   file_count: 145
   size: 1.4MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: python
   description: Python official documentation - Language reference and standard library
   repo: python/cpython
@@ -2333,7 +2349,7 @@ github:
   status: fetched
   file_count: 525
   size: 11.2MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: goose
   description: Goose - AI-powered developer agent by Block
   repo: block/goose
@@ -2341,9 +2357,9 @@ github:
   source_folder: documentation/docs
   path: docs/github-scraped/goose/
   status: fetched
-  file_count: 125
-  size: 990.7KB
-  last_updated: 2025-12-24 01:40
+  file_count: 124
+  size: 990.5KB
+  last_updated: 2025-12-23 19:24
 - name: incus
   description: Incus - Container and virtual machine manager (community fork of LXD)
   repo: lxc/incus
@@ -2353,7 +2369,7 @@ github:
   status: fetched
   file_count: 165
   size: 1006.2KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: milvus
   description: Milvus - Open source vector database for AI applications
   repo: milvus-io/milvus-docs
@@ -2363,7 +2379,7 @@ github:
   status: fetched
   file_count: 450
   size: 4.4MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: flagembedding
   description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
   repo: FlagOpen/FlagEmbedding
@@ -2373,7 +2389,7 @@ github:
   status: fetched
   file_count: 183
   size: 547.8KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:30
 - name: txtai
   description: txtai - All-in-one embeddings database for semantic search, LLM orchestration and language model workflows
   repo: neuml/txtai
@@ -2383,7 +2399,7 @@ github:
   status: fetched
   file_count: 75
   size: 250.3KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: faiss
   description: Facebook AI Similarity Search - Efficient similarity search and clustering of dense vectors
   repo: facebookresearch/faiss.wiki
@@ -2393,7 +2409,7 @@ github:
   status: fetched
   file_count: 58
   size: 2.4MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   repo: chroma-core/chroma
@@ -2401,9 +2417,9 @@ github:
   source_folder: docs/docs.trychroma.com/markdoc/content
   path: docs/github-scraped/chroma/
   status: fetched
-  file_count: 112
-  size: 664.4KB
-  last_updated: 2025-12-24 01:40
+  file_count: 110
+  size: 637.6KB
+  last_updated: 2025-12-20 18:30
 - name: sqlite-vec
   description: sqlite-vec - Vector search SQLite extension written in pure C
   repo: asg017/sqlite-vec
@@ -2413,7 +2429,7 @@ github:
   status: fetched
   file_count: 28
   size: 67.1KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:30
 - name: sqlite-vss
   description: sqlite-vss - SQLite extension for vector similarity search based on FAISS (deprecated in favor of sqlite-vec)
   repo: asg017/sqlite-vss
@@ -2423,7 +2439,7 @@ github:
   status: fetched
   file_count: 21
   size: 32.7KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:30
 - name: qwen3-embedding
   description: Qwen3 Embedding - Text embedding and reranking models from Alibaba's Qwen team
   repo: QwenLM/Qwen3-Embedding
@@ -2431,9 +2447,9 @@ github:
   source_folder: .
   path: docs/github-scraped/qwen3-embedding/
   status: fetched
-  file_count: 23
-  size: 45.2KB
-  last_updated: 2025-12-24 01:40
+  file_count: 3
+  size: 41.0KB
+  last_updated: 2025-12-06 14:29
 - name: opensearch
   description: OpenSearch - Open-source search and analytics suite with vector DB, observability, and security analytics
   repo: opensearch-project/documentation-website
@@ -2443,7 +2459,7 @@ github:
   status: fetched
   file_count: 1576
   size: 10.9MB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-23 19:24
 - name: gitea
   description: Gitea - Self-hosted Git service with issue tracking, code review, and CI/CD
   repo: go-gitea/docs
@@ -2453,7 +2469,7 @@ github:
   status: fetched
   file_count: 53
   size: 88.8KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:31
 - name: pikvm
   description: PiKVM - Open source DIY IP-KVM based on Raspberry Pi
   repo: pikvm/pikvm
@@ -2463,7 +2479,7 @@ github:
   status: fetched
   file_count: 181
   size: 628.9KB
-  last_updated: 2025-12-24 01:40
+  last_updated: 2025-12-20 18:31
 - name: penpot
   description: Penpot - Open source design and prototyping platform (Figma alternative)
   repo: penpot/penpot-docs
@@ -2473,7 +2489,7 @@ github:
   status: fetched
   file_count: 30
   size: 224.9KB
-  last_updated: 2025-12-24 01:41
+  last_updated: 2025-12-20 18:31
 - name: draw.io
   description: Draw.io - JavaScript diagramming application (flowcharts, network diagrams, UML)
   repo: jgraph/drawio-docs
@@ -2483,7 +2499,7 @@ github:
   status: fetched
   file_count: 9
   size: 16.2KB
-  last_updated: 2025-12-24 01:41
+  last_updated: 2025-12-20 18:31
 - name: chromedevtoolsmcp
   description: Chrome DevTools MCP - Model Context Protocol server for controlling Chrome browser via DevTools API
   repo: ChromeDevTools/chrome-devtools-mcp
@@ -2493,7 +2509,7 @@ github:
   status: fetched
   file_count: 8
   size: 78.1KB
-  last_updated: 2025-12-24 01:41
+  last_updated: 2025-12-20 18:31
 - name: whisper
   description: OpenAI Whisper - Robust speech recognition via large-scale weak supervision (STT/ASR)
   repo: openai/whisper
@@ -2503,7 +2519,7 @@ github:
   status: fetched
   file_count: 5
   size: 30.2KB
-  last_updated: 2025-12-24 01:41
+  last_updated: 2025-12-22 20:41
 web_scraped:
 - name: 1password
   description: 1password documentation
@@ -2511,133 +2527,140 @@ web_scraped:
   status: fetched
   file_count: 84
   size: 1.2MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 14:10
 - name: anydesk
   description: anydesk documentation
   path: docs/web-scraped/anydesk/
   status: fetched
   file_count: 31
   size: 183.5KB
-  last_updated: 2025-12-24 03:19
+  last_updated: 2025-12-23 19:24
 - name: claude-code-router
   description: claude-code-router documentation
   path: docs/web-scraped/claude-code-router/
   status: fetched
   file_count: 6
   size: 90.1KB
-  last_updated: 2025-12-12 23:17
+  last_updated: 2025-12-15 14:02
 - name: common-voice
   description: common-voice documentation
   path: docs/web-scraped/common-voice/
   status: fetched
   file_count: 39
   size: 157.5KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 14:17
 - name: dagshub
   description: dagshub documentation
   path: docs/web-scraped/dagshub/
   status: fetched
   file_count: 54
   size: 535.2KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 15:13
 - name: electron
   description: electron documentation
   path: docs/web-scraped/electron/
   status: fetched
   file_count: 251
   size: 2.1MB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 13:43
 - name: fastapi
   description: fastapi documentation
   path: docs/web-scraped/fastapi/
   status: fetched
   file_count: 144
   size: 2.7MB
-  last_updated: 2025-12-23 23:38
+  last_updated: 2025-12-22 20:41
 - name: gokapi
   description: gokapi documentation
   path: docs/web-scraped/gokapi/
   status: fetched
   file_count: 8
   size: 119.8KB
-  last_updated: 2025-12-19 20:05
+  last_updated: 2025-12-20 18:28
+- name: headscale
+  description: headscale documentation
+  path: docs/web-scraped/headscale/
+  status: fetched
+  file_count: 59
+  size: 254.9KB
+  last_updated: 2025-12-23 19:28
 - name: lxc
   description: lxc documentation
   path: docs/web-scraped/lxc/
   status: fetched
   file_count: 34
   size: 344.9KB
-  last_updated: 2025-12-24 02:01
+  last_updated: 2025-12-23 19:24
 - name: lxd
   description: lxd documentation
   path: docs/web-scraped/lxd/
   status: fetched
   file_count: 50
   size: 805.1KB
-  last_updated: 2025-12-24 02:20
+  last_updated: 2025-12-23 19:24
 - name: metabase
   description: metabase documentation
   path: docs/web-scraped/metabase/
   status: fetched
   file_count: 210
   size: 2.5MB
-  last_updated: 2025-12-16 22:06
+  last_updated: 2025-12-20 18:28
 - name: mistral-vibe
   description: mistral-vibe documentation
   path: docs/web-scraped/mistral-vibe/
   status: fetched
   file_count: 6
   size: 61.3KB
-  last_updated: 2025-12-13 00:01
+  last_updated: 2025-12-15 12:47
 - name: mkdocs
   description: mkdocs documentation
   path: docs/web-scraped/mkdocs/
   status: fetched
   file_count: 19
   size: 471.4KB
-  last_updated: 2025-12-16 21:45
+  last_updated: 2025-12-20 18:28
 - name: namecheap-go
   description: namecheap-go documentation
   path: docs/web-scraped/namecheap-go/
   status: fetched
   file_count: 18
   size: 40.7KB
-  last_updated: 2025-12-01 20:26
+  last_updated: 2025-12-04 10:45
 - name: namecheap-python
   description: namecheap-python documentation
   path: docs/web-scraped/namecheap-python/
   status: fetched
   file_count: 11
   size: 81.6KB
-  last_updated: 2025-12-01 20:26
+  last_updated: 2025-12-04 10:45
 - name: nomic
   description: nomic documentation
   path: docs/web-scraped/nomic/
   status: fetched
   file_count: 80
   size: 351.3KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:13
 - name: ntfy
   description: ntfy documentation
   path: docs/web-scraped/ntfy/
   status: fetched
   file_count: 20
   size: 730.8KB
-  last_updated: 2025-12-01 20:12
+  last_updated: 2025-11-30 12:36
 - name: onnxruntime
   description: onnxruntime documentation
   path: docs/web-scraped/onnxruntime/
   status: fetched
   file_count: 149
   size: 1.6MB
-  last_updated: 2025-12-05 22:45
+  last_updated: 2025-12-04 10:45
 - name: react-flow
   description: react-flow documentation
   path: docs/web-scraped/react-flow/
   status: fetched
   file_count: 78
   size: 2.3MB
-  last_updated: 2025-12-23 23:38
+  last_updated: 2025-12-22 20:41
 - name: readmes
   description: Individual README files from various projects
   path: docs/web-scraped/readmes/
@@ -2645,60 +2668,60 @@ web_scraped:
   script: scripts/pull-readmes.py
   file_count: 1
   size: 4.6KB
-  last_updated: 2025-10-13 20:14
+  last_updated: 2025-11-24 14:35
 - name: realvnc
   description: realvnc documentation
   path: docs/web-scraped/realvnc/
   status: fetched
   file_count: 19
   size: 297.1KB
-  last_updated: 2025-12-24 03:20
+  last_updated: 2025-12-23 19:24
 - name: rich
   description: rich documentation
   path: docs/web-scraped/rich/
   status: fetched
   file_count: 24
   size: 202.0KB
-  last_updated: 2025-12-23 23:37
+  last_updated: 2025-12-23 19:24
 - name: rustdesk
   description: rustdesk documentation
   path: docs/web-scraped/rustdesk/
   status: fetched
   file_count: 43
   size: 189.6KB
-  last_updated: 2025-12-09 23:55
+  last_updated: 2025-12-15 12:47
 - name: sentence-transformers
   description: sentence-transformers documentation
   path: docs/web-scraped/sentence-transformers/
   status: fetched
   file_count: 95
   size: 1.9MB
-  last_updated: 2025-12-16 21:08
+  last_updated: 2025-12-15 18:20
 - name: tigervnc
   description: tigervnc documentation
   path: docs/web-scraped/tigervnc/
   status: fetched
   file_count: 18
   size: 181.4KB
-  last_updated: 2025-12-24 03:16
+  last_updated: 2025-12-23 19:24
 - name: tightvnc
   description: tightvnc documentation
   path: docs/web-scraped/tightvnc/
   status: fetched
   file_count: 5
   size: 56.7KB
-  last_updated: 2025-12-24 03:17
+  last_updated: 2025-12-23 19:24
 - name: ultravnc
   description: ultravnc documentation
   path: docs/web-scraped/ultravnc/
   status: fetched
   file_count: 12
   size: 56.0KB
-  last_updated: 2025-12-24 03:17
+  last_updated: 2025-12-23 19:24
 - name: voyage
   description: voyage documentation
   path: docs/web-scraped/voyage/
   status: fetched
   file_count: 40
   size: 363.3KB
-  last_updated: 2025-12-08 18:35
+  last_updated: 2025-12-06 14:12
