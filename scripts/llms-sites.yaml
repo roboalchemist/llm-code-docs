@@ -580,6 +580,9 @@ sites:
   base_url: https://docs.nvidia.com/
   description: High-throughput, low-latency inference framework designed for serving
     generative AI and reasoning mo
+- name: nvidia-developer
+  base_url: https://developer.nvidia.com/
+  description: NVIDIA Developer portal including TensorRT, Dynamo, CUDA-X, BioNeMo, and NeMo tools
 - name: ollama
   base_url: https://docs.ollama.com/
   description: Local LLM runtime with API reference, capabilities, integrations, and
