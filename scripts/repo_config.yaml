@@ -263,3 +263,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/torchaudio"
     branch: "main"
+
+  - name: "llama.cpp"
+    description: "llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)"
+    repo_url: "https://github.com/ggerganov/llama.cpp.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/llama-cpp"
+    branch: "master"
