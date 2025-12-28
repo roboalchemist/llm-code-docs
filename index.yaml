@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-24 01:26
-  total_sources: 348
-  total_fetched: 308
+  last_updated: 2025-12-27 20:10
+  total_sources: 349
+  total_fetched: 309
   llms_txt_count: 290
   llms_txt_fetched: 251
   github_count: 33
   github_fetched: 32
-  web_scraped_count: 25
-  web_scraped_fetched: 25
+  web_scraped_count: 26
+  web_scraped_fetched: 26
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -23,8 +23,8 @@ llms_txt:
   path: docs/llms-txt/activepieces/
   status: fetched
   file_count: 138
-  size: 908.5KB
-  last_updated: 2025-11-25 09:18
+  size: 913.4KB
+  last_updated: 2025-12-24 16:16
 - name: adafruit
   description: Adafruit Learning System - CircuitPython and hardware documentation
   url: https://learn.adafruit.com/
@@ -32,7 +32,7 @@ llms_txt:
   status: fetched
   file_count: 232
   size: 2.7MB
-  last_updated: 2025-11-25 09:28
+  last_updated: 2025-12-24 16:16
 - name: agent
   description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
   url: https://docs.agent.ai/
@@ -40,7 +40,7 @@ llms_txt:
   status: fetched
   file_count: 129
   size: 1.4MB
-  last_updated: 2025-11-25 09:16
+  last_updated: 2025-12-24 16:16
 - name: agent-domain
   description: Agent Domain (.agent TLD) AI ecosystem
   url: https://agentdomain.xyz/
@@ -48,31 +48,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.7KB
-  last_updated: 2025-11-24 14:35
+  last_updated: 2025-12-24 16:16
 - name: ai-sdk
   description: AI SDK for building AI-powered applications
   url: https://ai-sdk.dev/
   path: docs/llms-txt/ai-sdk/
   status: fetched
   file_count: 2
-  size: 453.9KB
-  last_updated: 2025-11-24 14:35
+  size: 458.9KB
+  last_updated: 2025-12-24 16:16
 - name: aimlapi
   description: AIML API unified AI/ML model API platform
   url: https://docs.aimlapi.com/
   path: docs/llms-txt/aimlapi/
   status: fetched
-  file_count: 1
-  size: 5.2MB
-  last_updated: 2025-11-24 14:35
+  file_count: 7
+  size: 5.4MB
+  last_updated: 2025-12-24 16:16
 - name: analog
   description: Analog Angular meta-framework
   url: https://analogjs.org/docs/
   path: docs/llms-txt/analog/
   status: fetched
   file_count: 1
-  size: 23.3KB
-  last_updated: 2025-11-25 09:16
+  size: 24.1KB
+  last_updated: 2025-12-24 16:16
 - name: anchorbrowser
   description: Anchor Browser web automation and testing
   url: https://docs.anchorbrowser.io/
@@ -80,23 +80,23 @@ llms_txt:
   status: fetched
   file_count: 164
   size: 1.4MB
-  last_updated: 2025-11-24 14:35
+  last_updated: 2025-12-24 16:16
 - name: angular
   description: Angular web application framework
   url: https://angular.dev/
   path: docs/llms-txt/angular/
   status: fetched
   file_count: 2
-  size: 322.5KB
-  last_updated: 2025-11-24 14:35
+  size: 331.3KB
+  last_updated: 2025-12-24 16:16
 - name: annoto
   description: Annoto documentation
   url: https://docs.annoto.net/home/
   path: docs/llms-txt/annoto/
   status: fetched
-  file_count: 2
-  size: 4.1KB
-  last_updated: 2025-11-24 14:35
+  file_count: 4
+  size: 6.2KB
+  last_updated: 2025-12-24 16:16
 - name: answer-ai
   description: Answer.AI R&D lab for AI research and products
   url: https://www.answer.ai/
@@ -104,7 +104,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 77.4KB
-  last_updated: 2025-11-24 14:35
+  last_updated: 2025-12-24 16:16
 - name: ant-design
   description: Enterprise-class React UI component library with 64+ components
   url: https://ant.design/
@@ -112,7 +112,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.1MB
-  last_updated: 2025-11-24 14:35
+  last_updated: 2025-12-24 16:16
 - name: anthropic
   description: docs on LLMS.txt - Claude Docs - Anthropic
   url: https://docs.anthropic.com/
@@ -127,16 +127,16 @@ llms_txt:
   path: docs/llms-txt/any-llm/
   status: fetched
   file_count: 20
-  size: 83.1KB
-  last_updated: 2025-11-25 09:16
+  size: 88.9KB
+  last_updated: 2025-12-24 16:16
 - name: apache-camel
   description: Apache Camel integration framework
   url: https://camel.apache.org/
   path: docs/llms-txt/apache-camel/
   status: fetched
   file_count: 15
-  size: 898.0KB
-  last_updated: 2025-11-25 09:16
+  size: 902.8KB
+  last_updated: 2025-12-24 16:16
 - name: apify
   description: Apify documentation
   url: https://docs.apify.com/
@@ -144,15 +144,15 @@ llms_txt:
   status: fetched
   file_count: 893
   size: 15.4MB
-  last_updated: 2025-11-25 09:16
+  last_updated: 2025-12-24 16:16
 - name: aporia
   description: Aporia ML observability and monitoring platform
   url: https://docs.aporia.com/
   path: docs/llms-txt/aporia/
   status: fetched
-  file_count: 1
-  size: 319.5KB
-  last_updated: 2025-11-24 14:35
+  file_count: 5
+  size: 329.0KB
+  last_updated: 2025-12-24 16:16
 - name: aptible
   description: Aptible documentation
   url: https://www.aptible.com/docs/
@@ -160,15 +160,15 @@ llms_txt:
   status: fetched
   file_count: 290
   size: 2.5MB
-  last_updated: 2025-11-25 09:16
+  last_updated: 2025-12-24 16:16
 - name: argil
   description: Argil AI automation and workflow platform
   url: https://docs.argil.ai/
   path: docs/llms-txt/argil/
   status: fetched
-  file_count: 50
-  size: 265.5KB
-  last_updated: 2025-11-25 09:16
+  file_count: 51
+  size: 274.4KB
+  last_updated: 2025-12-24 16:16
 - name: ark-ui
   description: Ark UI headless component library
   url: https://ark-ui.com/docs/
@@ -399,9 +399,9 @@ llms_txt:
   url: https://code.claude.com/docs/
   path: docs/llms-txt/claude-code/
   status: fetched
-  file_count: 48
-  size: 1.2MB
-  last_updated: 2025-12-15 14:04
+  file_count: 50
+  size: 1.3MB
+  last_updated: 2025-12-24 16:24
 - name: clerk
   description: Clerk authentication and user management
   url: https://clerk.com/docs/
@@ -2571,6 +2571,13 @@ web_scraped:
   file_count: 54
   size: 535.2KB
   last_updated: 2025-11-30 15:13
+- name: digikey
+  description: digikey documentation
+  path: docs/web-scraped/digikey/
+  status: fetched
+  file_count: 3
+  size: 222.2KB
+  last_updated: 2025-12-27 20:10
 - name: electron
   description: electron documentation
   path: docs/web-scraped/electron/
