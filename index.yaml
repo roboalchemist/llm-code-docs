@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-27 23:53
-  total_sources: 355
-  total_fetched: 315
-  llms_txt_count: 290
-  llms_txt_fetched: 251
+  last_updated: 2025-12-28 00:28
+  total_sources: 357
+  total_fetched: 317
+  llms_txt_count: 292
+  llms_txt_fetched: 253
   github_count: 37
   github_fetched: 36
   web_scraped_count: 28
@@ -49,6 +49,22 @@ llms_txt:
   file_count: 1
   size: 3.7KB
   last_updated: 2025-11-24 19:14
+- name: agentskills-best
+  description: Agent Skills marketplace for Claude with tutorials and downloadable SKILL.md files
+  url: https://agentskills.best/
+  path: docs/llms-txt/agentskills-best/
+  status: fetched
+  file_count: 1
+  size: 237.7KB
+  last_updated: 2025-12-28 00:28
+- name: agentskills-io
+  description: Agent Skills open format specification for portable AI agent skills
+  url: https://agentskills.io/
+  path: docs/llms-txt/agentskills-io/
+  status: fetched
+  file_count: 5
+  size: 96.8KB
+  last_updated: 2025-12-28 00:28
 - name: ai-sdk
   description: AI SDK for building AI-powered applications
   url: https://ai-sdk.dev/
