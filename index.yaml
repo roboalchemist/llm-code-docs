@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-27 20:10
-  total_sources: 349
-  total_fetched: 309
-  llms_txt_count: 290
-  llms_txt_fetched: 251
-  github_count: 33
-  github_fetched: 32
-  web_scraped_count: 26
-  web_scraped_fetched: 26
+  last_updated: 2025-12-27 20:12
+  total_sources: 364
+  total_fetched: 324
+  llms_txt_count: 292
+  llms_txt_fetched: 253
+  github_count: 41
+  github_fetched: 40
+  web_scraped_count: 31
+  web_scraped_fetched: 31
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -23,8 +23,8 @@ llms_txt:
   path: docs/llms-txt/activepieces/
   status: fetched
   file_count: 138
-  size: 913.4KB
-  last_updated: 2025-12-24 16:16
+  size: 908.5KB
+  last_updated: 2025-12-27 20:11
 - name: adafruit
   description: Adafruit Learning System - CircuitPython and hardware documentation
   url: https://learn.adafruit.com/
@@ -32,7 +32,7 @@ llms_txt:
   status: fetched
   file_count: 232
   size: 2.7MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: agent
   description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics of AI agents for beginners - [Co'
   url: https://docs.agent.ai/
@@ -40,7 +40,7 @@ llms_txt:
   status: fetched
   file_count: 129
   size: 1.4MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: agent-domain
   description: Agent Domain (.agent TLD) AI ecosystem
   url: https://agentdomain.xyz/
@@ -49,30 +49,46 @@ llms_txt:
   file_count: 1
   size: 3.7KB
   last_updated: 2025-12-24 16:16
+- name: agentskills-best
+  description: Agent Skills marketplace for Claude with tutorials and downloadable SKILL.md files
+  url: https://agentskills.best/
+  path: docs/llms-txt/agentskills-best/
+  status: fetched
+  file_count: 1
+  size: 237.7KB
+  last_updated: 2025-12-27 20:12
+- name: agentskills-io
+  description: Agent Skills open format specification for portable AI agent skills
+  url: https://agentskills.io/
+  path: docs/llms-txt/agentskills-io/
+  status: fetched
+  file_count: 5
+  size: 96.8KB
+  last_updated: 2025-12-27 20:12
 - name: ai-sdk
   description: AI SDK for building AI-powered applications
   url: https://ai-sdk.dev/
   path: docs/llms-txt/ai-sdk/
   status: fetched
   file_count: 2
-  size: 458.9KB
-  last_updated: 2025-12-24 16:16
+  size: 453.9KB
+  last_updated: 2025-12-27 20:11
 - name: aimlapi
   description: AIML API unified AI/ML model API platform
   url: https://docs.aimlapi.com/
   path: docs/llms-txt/aimlapi/
   status: fetched
-  file_count: 7
-  size: 5.4MB
-  last_updated: 2025-12-24 16:16
+  file_count: 1
+  size: 5.2MB
+  last_updated: 2025-11-24 14:35
 - name: analog
   description: Analog Angular meta-framework
   url: https://analogjs.org/docs/
   path: docs/llms-txt/analog/
   status: fetched
   file_count: 1
-  size: 24.1KB
-  last_updated: 2025-12-24 16:16
+  size: 23.3KB
+  last_updated: 2025-12-27 20:11
 - name: anchorbrowser
   description: Anchor Browser web automation and testing
   url: https://docs.anchorbrowser.io/
@@ -80,22 +96,22 @@ llms_txt:
   status: fetched
   file_count: 164
   size: 1.4MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: angular
   description: Angular web application framework
   url: https://angular.dev/
   path: docs/llms-txt/angular/
   status: fetched
   file_count: 2
-  size: 331.3KB
-  last_updated: 2025-12-24 16:16
+  size: 322.5KB
+  last_updated: 2025-12-27 20:11
 - name: annoto
   description: Annoto documentation
   url: https://docs.annoto.net/home/
   path: docs/llms-txt/annoto/
   status: fetched
-  file_count: 4
-  size: 6.2KB
+  file_count: 2
+  size: 4.1KB
   last_updated: 2025-12-24 16:16
 - name: answer-ai
   description: Answer.AI R&D lab for AI research and products
@@ -112,7 +128,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.1MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: anthropic
   description: docs on LLMS.txt - Claude Docs - Anthropic
   url: https://docs.anthropic.com/
@@ -127,16 +143,16 @@ llms_txt:
   path: docs/llms-txt/any-llm/
   status: fetched
   file_count: 20
-  size: 88.9KB
-  last_updated: 2025-12-24 16:16
+  size: 83.1KB
+  last_updated: 2025-12-27 20:11
 - name: apache-camel
   description: Apache Camel integration framework
   url: https://camel.apache.org/
   path: docs/llms-txt/apache-camel/
   status: fetched
   file_count: 15
-  size: 902.8KB
-  last_updated: 2025-12-24 16:16
+  size: 898.0KB
+  last_updated: 2025-12-27 20:11
 - name: apify
   description: Apify documentation
   url: https://docs.apify.com/
@@ -144,15 +160,15 @@ llms_txt:
   status: fetched
   file_count: 893
   size: 15.4MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: aporia
   description: Aporia ML observability and monitoring platform
   url: https://docs.aporia.com/
   path: docs/llms-txt/aporia/
   status: fetched
-  file_count: 5
-  size: 329.0KB
-  last_updated: 2025-12-24 16:16
+  file_count: 1
+  size: 319.5KB
+  last_updated: 2025-11-24 14:35
 - name: aptible
   description: Aptible documentation
   url: https://www.aptible.com/docs/
@@ -160,15 +176,15 @@ llms_txt:
   status: fetched
   file_count: 290
   size: 2.5MB
-  last_updated: 2025-12-24 16:16
+  last_updated: 2025-12-27 20:11
 - name: argil
   description: Argil AI automation and workflow platform
   url: https://docs.argil.ai/
   path: docs/llms-txt/argil/
   status: fetched
-  file_count: 51
-  size: 274.4KB
-  last_updated: 2025-12-24 16:16
+  file_count: 50
+  size: 265.5KB
+  last_updated: 2025-12-27 20:11
 - name: ark-ui
   description: Ark UI headless component library
   url: https://ark-ui.com/docs/
@@ -399,9 +415,9 @@ llms_txt:
   url: https://code.claude.com/docs/
   path: docs/llms-txt/claude-code/
   status: fetched
-  file_count: 50
-  size: 1.3MB
-  last_updated: 2025-12-24 16:24
+  file_count: 48
+  size: 1.2MB
+  last_updated: 2025-12-27 20:11
 - name: clerk
   description: Clerk authentication and user management
   url: https://clerk.com/docs/
@@ -1101,8 +1117,8 @@ llms_txt:
   path: docs/llms-txt/jina/
   status: fetched
   file_count: 1
-  size: 36.8KB
-  last_updated: 2025-12-06 14:10
+  size: 40.4KB
+  last_updated: 2025-12-27 20:12
 - name: juno
   description: Juno blockchain web development
   url: https://juno.build/docs/
@@ -1445,8 +1461,8 @@ llms_txt:
   path: docs/llms-txt/notion/
   status: fetched
   file_count: 97
-  size: 86.3MB
-  last_updated: 2025-11-24 14:35
+  size: 1.7MB
+  last_updated: 2025-12-27 20:12
 - name: nuxt
   description: Nuxt Vue.js meta-framework
   url: https://nuxt.com/
@@ -2239,9 +2255,9 @@ github:
   source_folder: docs/source
   path: docs/github-scraped/tensorrt-llm/
   status: fetched
-  file_count: 150
+  file_count: 151
   size: 1.4MB
-  last_updated: 2025-12-24 01:20
+  last_updated: 2025-12-27 20:12
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2308,7 +2324,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-24 01:24
+  last_updated: 2025-12-27 20:12
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2328,7 +2344,7 @@ github:
   status: fetched
   file_count: 578
   size: 5.6MB
-  last_updated: 2025-12-24 01:24
+  last_updated: 2025-12-27 20:12
 - name: flask
   description: Flask - Lightweight WSGI web application framework
   repo: pallets/flask
@@ -2358,7 +2374,7 @@ github:
   status: fetched
   file_count: 145
   size: 1.4MB
-  last_updated: 2025-12-24 01:24
+  last_updated: 2025-12-27 20:12
 - name: python
   description: Python official documentation - Language reference and standard library
   repo: python/cpython
@@ -2368,7 +2384,7 @@ github:
   status: fetched
   file_count: 525
   size: 11.2MB
-  last_updated: 2025-12-24 01:24
+  last_updated: 2025-12-27 20:12
 - name: goose
   description: Goose - AI-powered developer agent by Block
   repo: block/goose
@@ -2377,8 +2393,8 @@ github:
   path: docs/github-scraped/goose/
   status: fetched
   file_count: 126
-  size: 1005.0KB
-  last_updated: 2025-12-24 01:25
+  size: 1005.5KB
+  last_updated: 2025-12-27 20:12
 - name: incus
   description: Incus - Container and virtual machine manager (community fork of LXD)
   repo: lxc/incus
@@ -2387,8 +2403,8 @@ github:
   path: docs/github-scraped/incus/
   status: fetched
   file_count: 165
-  size: 1006.2KB
-  last_updated: 2025-12-24 01:25
+  size: 1006.5KB
+  last_updated: 2025-12-27 20:12
 - name: milvus
   description: Milvus - Open source vector database for AI applications
   repo: milvus-io/milvus-docs
@@ -2428,7 +2444,7 @@ github:
   status: fetched
   file_count: 58
   size: 2.4MB
-  last_updated: 2025-12-24 01:25
+  last_updated: 2025-12-27 20:12
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   repo: chroma-core/chroma
@@ -2466,9 +2482,9 @@ github:
   source_folder: .
   path: docs/github-scraped/qwen3-embedding/
   status: fetched
-  file_count: 3
-  size: 41.0KB
-  last_updated: 2025-12-06 14:29
+  file_count: 23
+  size: 45.2KB
+  last_updated: 2025-12-27 20:12
 - name: opensearch
   description: OpenSearch - Open-source search and analytics suite with vector DB, observability, and security analytics
   repo: opensearch-project/documentation-website
@@ -2476,9 +2492,9 @@ github:
   source_folder: .
   path: docs/github-scraped/opensearch/
   status: fetched
-  file_count: 1576
-  size: 10.9MB
-  last_updated: 2025-12-24 01:25
+  file_count: 1621
+  size: 11.1MB
+  last_updated: 2025-12-27 20:12
 - name: gitea
   description: Gitea - Self-hosted Git service with issue tracking, code review, and CI/CD
   repo: go-gitea/docs
@@ -2549,6 +2565,86 @@ github:
   file_count: 905
   size: 2.1MB
   last_updated: 2025-12-24 01:26
+- name: cv-cuda
+  description: CV-CUDA - NVIDIA/ByteDance CUDA-accelerated library for high-throughput computer vision and video processing
+  repo: CVCUDA/CV-CUDA
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/cvcuda/
+  status: fetched
+  file_count: 59
+  size: 236.9KB
+  last_updated: 2025-12-27 20:12
+- name: decord
+  description: Decord - Efficient video reader library with hardware-accelerated decoding for deep learning
+  repo: dmlc/decord
+  branch: master
+  source_folder: .
+  path: docs/github-scraped/decord/
+  status: fetched
+  file_count: 9
+  size: 15.6KB
+  last_updated: 2025-12-27 20:12
+- name: torchaudio
+  description: TorchAudio - PyTorch's audio and signal processing library (I/O, transformations, datasets, models)
+  repo: pytorch/audio
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/torchaudio/
+  status: fetched
+  file_count: 30
+  size: 66.6KB
+  last_updated: 2025-12-27 20:12
+- name: llama.cpp
+  description: llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)
+  repo: ggerganov/llama.cpp
+  branch: master
+  source_folder: .
+  path: docs/github-scraped/llama-cpp/
+  status: fetched
+  file_count: 203
+  size: 1.8MB
+  last_updated: 2025-12-27 20:12
+- name: ffmpeg
+  description: FFmpeg - Complete cross-platform solution to record, convert and stream audio and video
+  repo: FFmpeg/FFmpeg
+  branch: master
+  source_folder: doc
+  path: docs/github-scraped/ffmpeg/
+  status: fetched
+  file_count: 18
+  size: 153.5KB
+  last_updated: 2025-12-27 20:12
+- name: torchcodec
+  description: torchcodec - PyTorch video decoding library with hardware acceleration support
+  repo: meta-pytorch/torchcodec
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/torchcodec/
+  status: fetched
+  file_count: 12
+  size: 9.1KB
+  last_updated: 2025-12-27 20:12
+- name: xterm.js
+  description: xterm.js - Terminal for the web (used by VS Code, Theia, and more)
+  repo: xtermjs/xterm.js
+  branch: master
+  source_folder: .
+  path: docs/github-scraped/xtermjs/
+  status: fetched
+  file_count: 26
+  size: 65.4KB
+  last_updated: 2025-12-27 20:12
+- name: agentskills
+  description: agentskills - Documentation and specifications for Claude Code agent skills
+  repo: agentskills/agentskills
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/agentskills/
+  status: fetched
+  file_count: 2
+  size: 1.9KB
+  last_updated: 2025-12-27 20:12
 web_scraped:
 - name: 1password
   description: 1password documentation
@@ -2577,7 +2673,7 @@ web_scraped:
   status: fetched
   file_count: 3
   size: 222.2KB
-  last_updated: 2025-12-27 20:10
+  last_updated: 2025-12-27 20:12
 - name: electron
   description: electron documentation
   path: docs/web-scraped/electron/
@@ -2592,6 +2688,13 @@ web_scraped:
   file_count: 144
   size: 2.7MB
   last_updated: 2025-12-22 20:41
+- name: ffmpeg
+  description: ffmpeg documentation
+  path: docs/web-scraped/ffmpeg/
+  status: fetched
+  file_count: 28
+  size: 6.4MB
+  last_updated: 2025-12-27 20:12
 - name: gokapi
   description: gokapi documentation
   path: docs/web-scraped/gokapi/
@@ -2677,6 +2780,13 @@ web_scraped:
   file_count: 1
   size: 4.6KB
   last_updated: 2025-11-24 14:35
+- name: readthedocs
+  description: readthedocs documentation
+  path: docs/web-scraped/readthedocs/
+  status: fetched
+  file_count: 65
+  size: 133.1KB
+  last_updated: 2025-12-27 20:12
 - name: realvnc
   description: realvnc documentation
   path: docs/web-scraped/realvnc/
@@ -2719,6 +2829,20 @@ web_scraped:
   file_count: 5
   size: 56.7KB
   last_updated: 2025-12-23 19:24
+- name: tmux
+  description: tmux documentation
+  path: docs/web-scraped/tmux/
+  status: fetched
+  file_count: 12
+  size: 316.7KB
+  last_updated: 2025-12-27 20:12
+- name: torchcodec
+  description: torchcodec documentation
+  path: docs/web-scraped/torchcodec/
+  status: fetched
+  file_count: 15
+  size: 103.2KB
+  last_updated: 2025-12-27 20:12
 - name: ultravnc
   description: ultravnc documentation
   path: docs/web-scraped/ultravnc/
@@ -2733,3 +2857,10 @@ web_scraped:
   file_count: 40
   size: 363.3KB
   last_updated: 2025-12-06 14:12
+- name: xtermjs
+  description: xtermjs documentation
+  path: docs/web-scraped/xtermjs/
+  status: fetched
+  file_count: 43
+  size: 274.2KB
+  last_updated: 2025-12-27 20:12

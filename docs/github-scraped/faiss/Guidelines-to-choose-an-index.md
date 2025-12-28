@@ -24,18 +24,20 @@ _Supported on GPU: yes_
 
 Keep in mind that all Faiss indexes are stored in RAM. The following considers that if exact results are not required, RAM is the limiting factor, and that within memory constraints we optimize the precision-speed tradeoff.
 
-## If not: `HNSW`_M_ or `IVF1024,PQ`_N_`x4fs,RFlat`
+## If not: `HNSW`_M_ or `SVSVamana`_M_ or `IVF1024,PQ`_N_`x4fs,RFlat`
 
 If you have a lots of RAM or the dataset is small, HNSW is the best option, it is a very fast and accurate index. The 4 <= _M_ <= 64 is the number of links per vector, higher is more accurate but uses more RAM. The speed-accuracy tradeoff is set via the `efSearch` parameter. The memory usage is (_d_ * 4 + _M_ * 2 * 4) bytes per vector.
 
 HNSW does only support sequential adds (not `add_with_ids`) so here again, prefix with `IDMap` if needed. HNSW does not require training and does not support removing vectors from the index. 
 
-The second option is faster than HNSW. 
+SVSVamana (option 2) is also a graph based index which is fast and accurate. It is relatively similar to HNSW in performance. It is even faster when applying SQ8 quantization: `SVSVamana`_M_`,SQ8`.
+
+The third option is faster than HNSW. 
 However it requires a re-ranking stage and thus there are two parameters to adjust: the `k_factor` of reranking and the `nprobe` of the IVF. 
 
 _Supported on GPU: no_
 
-## If somewhat, then `"...,Flat"` 
+## If somewhat, then `"...,Flat"`
 
 `"..."` means a clustering of the dataset has to be performed beforehand (read below). After clustering, `"Flat"` just organizes the vectors into buckets, so it does not compress them, the storage size is the same as that of the original dataset. The tradeoff between speed and accuracy is set via the `nprobe` parameter.
 
@@ -62,6 +64,18 @@ _Supported on GPU: yes_
 - _D_ = 4*_M_ (preferable)
 
 _Supported on GPU: yes (note: the OPQ transform is done on CPU, but it is not performance critical)_
+
+## If maximum compression is required, then `RaBitQ`
+
+RaBitQ compresses vectors to 1 bit per dimension plus a small overhead, yielding (_d_/8 + 8) bytes per vector.
+
+Multi-bit variants `RaBitQ`_N_ (where _N_ = 2-9) provide better accuracy at the cost of additional storage.
+
+Use `RaBitQ`_N_ for flat index or combine with IVF clustering: `IVF`_K_`,RaBitQ`_N_. For faster search, use the FastScan variant: `IVF`_K_`,RaBitQfs`_N_.
+
+RaBitQ requires a random rotation preprocessing step for good accuracy.
+
+_Supported on GPU: no_
 
 # How big is the dataset? 
 
@@ -93,5 +107,20 @@ Note that training is going to be slow, to avoid this, there are two options:
 
 Same as above, replace 65536 with 1048576 (2^20). Training will be even slower!
 
-![](img/faiss_index_decision_tree.jpg)
+# What does Panorama refer to in the diagram below?
+
+[Panorama](https://arxiv.org/html/2510.00566v2) is a technique for early pruning during search. Currently the below indexes have Panorama implementations:
+- Flat
+- IVFFlat
+- HNSW
+- Refine
+
+Depending on dataset, these can yield speedup over the baseline algorithms.
+
+![Faiss index decision tree v2](https://github.com/user-attachments/assets/032a7519-59be-4d9f-bb40-7ad6a4f87462)
+
+<!--
+The source of this graph is available here: https://drive.google.com/drive/folders/1CbpbqHbyNRcRV3nxsb-g8a_S8P1wA3LV
+-->
+
 

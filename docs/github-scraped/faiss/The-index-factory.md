@@ -5,6 +5,7 @@ This page summarizes the `index_factory` components and arguments.
 
 A formal definition of the factory strings in Backus–Naur form can be found here: [factory_string.bnf](https://gist.github.com/mdouze/c3111d5f12d1308f5adf78dcd48cdf37).
 
+
 Examples: 
 
 `index = index_factory(128, "PCA80,Flat")`: produces an index for 128D vectors that reduces them to 80D by PCA then does exhaustive search.
@@ -15,7 +16,11 @@ The numbers we indicate are examples, and d is the input dimension.
 
 The main classes and associated factory strings are here: 
 
-[[faiss_class_hierarchy.jpg|alt=Classes]]
+<img width="750" height="1000" alt="index_factory (2)" src="https://github.com/user-attachments/assets/9fbf36a8-5cca-43d7-84b7-c90234327313" />
+
+<!--
+The source of this graph is available here: https://drive.google.com/drive/folders/1CbpbqHbyNRcRV3nxsb-g8a_S8P1wA3LV
+-->
 
 
 ## Prefixes 
@@ -52,6 +57,7 @@ The factory strings start with IVF or IMI, followed systematically by a comma an
 | String | Quantizer class | Number of centroids | Comments |
 |--------|------------|----------|-----------|
 | IVF4096| `IndexFlatL2` or `IndexFlatIP` | 4096 | Constructs one of the IndexIVF variants, with a flat quantizer. |
+| IVF256,FlatPanorama8| `IndexFlatL2` | 256 | Constructs IndexIVFFlat that uses Panorama during search for early pruning. |
 | IMI2x9 | `MultiIndexQuantizer` | 2^(2 * 9) = 262144 | Constructs an IVF with many more centroids, possibly less balanced. | 
 | IVF65536_HNSW32 | `IndexHNSWFlat` | 65536 | The quantizer is trained as a flat index but indexed with a HNSW. This makes quantization a lot faster | 
 | IVF65536(PQ16x4) | arbitrary | 65536 | Use the string in parenthesis to construct the coarse quantizer. | 
@@ -65,12 +71,13 @@ Both rely on a flat storage `IndexFlatCodes` that stores the actual vectors.
 | String | Storage class | Comment | 
 |--------|---------------|---------|
 | HNSW32, HNSW | `IndexFlatL2` | Arguably the most useful HNSW variant, because when the links are stored, it does not make much sense to compress the vectors. 32 (the number of links per vertex) is the default and can be omitted. | 
+| HNSW32_FlatPanorama12 | `IndexFlatL2` | Similar to the above, but uses Panorama during search for early pruning. | 
 | HNSW32_SQ8 | `IndexScalarQuantizer` | SQ8 scalar quantizer | 
 | HNSW32_PQ12 | `IndexPQ`             | PQ12x8 index | 
 | HNSW32_16384+PQ12 | `Index2Layer`   | 1st layer is a flat index, the PQ encodes the residual of the quantizer | 
 | HNSW32_2x10+PQ12 | `Index2Layer`   | 1st layer is an IMI index, the PQ encodes the residual of the quantizer | 
 
-The NSG variants are the same, except that HNSW is replaced with NSG.
+The NSG variants are the same, except that HNSW is replaced with NSG. SVSVamana variants are similar, except it uses a comma in between like `SVSVamana32,SQ8` for a Vamana graph with 32 neighbors per node and SQ8 quantization.
 
 ### Memory overheads
 
@@ -90,6 +97,8 @@ Memory overheads:
 | Flat   | `IndexFlat`, `IndexIVFFlat` | 4 * d | The vectors are stored as is, without any encoding |
 | PQ16, PQ16x12 | `IndexPQ`, `IndexIVFPQ` | 16, ceil(16 * 12 / 8) | Uses Product Quantization codes with 16 codes of 12 bits each. When the number of bits is omitted, it is set to 8. With suffix "np" does **not** train the Polysemous permutation, which can be slow. |
 | PQ28x4fs, PQ28x4fsr, PQ28x4fs_64 | `IndexPQFastScan`, `IndexIVFPQFastScan` | 28 / 2 | Same as PQ above, but uses "fast scan" version of the PQ that relies on SIMD instructions for distance computations. Supports only nbits=4 for now. The suffix _64 indicates the bbs factor used (must be a multiple of 32). The suffix `fsr` (only for IVF) indicates that the vectors should be encoded by residual (slower, more accurate) |
+| RaBitQ, RaBitQ*N* | `IndexRaBitQ`, `IndexIVFRaBitQ` | d/8 + 8, d×*N*/8 + 20 | Binary quantization to 1 bit per dimension. *N* (2-9) specifies number of bits for multi-bit mode, providing better accuracy at higher storage cost. Requires random rotation preprocessing. |
+| RaBitQfs, RaBitQfs*N* | `IndexRaBitQFastScan`, `IndexIVFRaBitQFastScan` | d/8 + 8, d×*N*/8 + 20 | Fast scan version of RaBitQ using SIMD. |
 | SQ4, SQ8, SQ6, SQfp16 | `IndexScalar` `Quantizer`, `IndexIVF` `ScalarQuantizer` | `4*d/8`, d, `6*d/8`, `d*2` | Scalar quantizer encoding | 
 | Residual128, Residual3x10 | `Index2Layer`  | `ceil(log2(128) / 8)`, `ceil(3*10 / 8)` | Residual encoding. Quantizes the vectors into 128 centroids or 3x10 MI centroids. Should be followed by PQ or SQ to actually encode the residual. Only for use as a codec.  |
 | RQ1x16_6x8  | `IndexResidualQuantizer` | (16 + 6*8) / 8 | Residual quantizer codec. The vector is first encoded with a 2^16-centroid quantizer, then the residuals are refined in 6 stages with 256 centroids each.
@@ -112,6 +121,7 @@ Memory overheads:
 |--------|---------------|---------|
 | RFlat  | `IndexRefineFlat` | Re-order the search results with exact distance computations |
 | Refine(PQ25x12) | `IndexRefine` | Same, but the refine index can be any index. | 
+| RefinePanorama(PQ25x12) | `IndexRefinePanorama` | Same, but the refine uses Panorama for early pruning |
 
 ## Example
 
