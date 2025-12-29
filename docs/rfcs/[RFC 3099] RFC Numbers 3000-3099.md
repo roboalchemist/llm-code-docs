@@ -1,0 +1,528 @@
+---
+title: "RFC Numbers 3000-3099"
+rfc: 3099
+date: November 2001
+category: Informational---
+
+V.44 Packet Method to the Internet Protocol (IP) Payload Compression
+Protocol (RFC 2393).  This memo provides information for the Internet
+community.
+
+3050    Lennox          Jan 2001        Common Gateway Interface for
+SIP
+
+This document defines a SIP CGI interface for providing SIP services on
+a SIP server.  This memo provides information for the Internet
+community.
+
+3049    Naugle          Jan 2001        TN3270E Service Location and
+Session Balancing
+
+This document discusses the implementation of Service Location Protocol
+(SLP) and session balancing with a TN3270E emulator in a client server
+implementation with a TN3270E server.  [STANDARDS TRACK]
+
+# 3048. Whetten         Jan 2001        Reliable Multicast Transport
+
+Building Blocks for
+One-to-Many Bulk-Data Transfer
+
+This document describes a framework for the standardization of bulk-data
+reliable multicast transport.  This memo provides information for the
+Internet community.
+
+3047    Luthi           Jan 2001        RTP Payload Format for ITU-T
+Recommendation G.722.1
+
+This document describes the payload format for including G.722.1
+generated bit streams within an RTP packet.  Also included here are the
+necessary details for the use of G.722.1 with MIME and SDP.  [STANDARDS
+TRACK]
+
+# 3046. Patrick         Jan 2001        DHCP Relay Agent Information
+
+Option
+
+Newer high-speed public Internet access technologies call for a high-
+speed modem to have a local area network (LAN) attachment to one or more
+customer premise hosts.  It is advantageous to use the Dynamic Host
+Configuration Protocol (DHCP) as defined in RFC 2131 to assign customer
+premise host IP addresses in this environment.  However, a number of
+security and scaling problems arise with such "public" DHCP use.  This
+document describes a new DHCP option to address these issues.  This
+option extends the set of DHCP options as defined in RFC 2132.
+[STANDARDS TRACK]
+
+# 3045. Meredith        Jan 2001        Storing Vendor Information in
+
+the LDAP root DSE
+
+This document specifies two Lightweight Directory Access Protocol (LDAP)
+attributes, vendorName and vendorVersion that MAY be included in the
+root DSA-specific Entry (DSE) to advertise vendor-specific information.
+This memo provides information for the Internet community.
+
+# 3044. Rozenfeld       Jan 2001        Using The ISSN (International
+
+Serial Standard Number) as URN
+(Uniform Resource Names)
+within an ISSN-URN Namespace
+
+This document presents how the ISSN - International Standard Serial
+Number - which is a persistent number for unique identification of
+serials widely recognised and used in the bibliographic world, can be
+supported within the Uniform Resource Name (URN) framework as a specific
+URN namespace identifier.  This memo provides information for the
+Internet community.
+
+# 3043. Mealling        Jan 2001        The Network Solutions Personal
+
+Internet Name (PIN): A URN
+Namespace for People and
+Organizations
+
+This document describes a Uniform Resource Name (URN) namespace that is
+engineered by Network Solutions, Inc. for naming people and
+organizations.  This memo provides information for the Internet
+community.
+
+3042    Allman          Jan 2001        Enhancing TCP's Loss Recovery
+Using Limited Transmit
+
+This document proposes a new Transmission Control Protocol (TCP)
+mechanism that can be used to more effectively recover lost segments
+when a connection's congestion window is small, or when a large number
+of segments are lost in a single transmission window.  [STANDARDS TRACK]
+
+3041    Narten          Jan 2001        Privacy Extensions for
+Stateless Address
+Autoconfiguration in IPv6
+
+This document describes an extension to IPv6 stateless address
+autoconfiguration for interfaces whose interface identifier is derived
+from an IEEE identifier.  [STANDARDS TRACK]
+
+3040    Cooper          Jan 2001        Internet Web Replication and
+Caching Taxonomy
+
+This memo specifies standard terminology and the taxonomy of web
+replication and caching infrastructure as deployed today.  It introduces
+standard concepts, and protocols used today within this application
+domain.  This memo provides information for the Internet community.
+
+# 3039. Santesson       Jan 2001        Internet X.509 Public Key
+
+Infrastructure Qualified
+Certificates Profile
+
+This document forms a certificate profile for Qualified Certificates,
+based on RFC 2459, for use in the Internet.  The goal of this document
+is to define a general syntax independent of local legal requirements.
+[STANDARDS TRACK]
+
+3038    Nagami          Jan 2001        VCID Notification over ATM
+link for LDP
+
+This document specifies the procedures for the communication of VCID
+values between neighboring ATM-LSRs that must occur in order to ensure
+this property.  [STANDARDS TRACK]
+
+3037    Thomas          Jan 2001        LDP Applicability
+
+A fundamental concept in MPLS is that two Label Switching Routers (LSRs)
+must agree on the meaning of the labels used to forward traffic between
+and through them.  This common understanding is achieved by using a set
+of procedures, called a label distribution protocol, by which one LSR
+informs another of label bindings it has made.  This document describes
+the applicability of a set of such procedures called LDP (for Label
+Distribution Protocol) by which LSRs distribute labels to support MPLS
+forwarding along normally routed paths.  This memo provides information
+for the Internet community.
+
+# 3036. Andersson       Jan 2001        LDP Specification
+
+A fundamental concept in MPLS is that two Label Switching Routers (LSRs)
+must agree on the meaning of the labels used to forward traffic between
+and through them.  This common understanding is achieved by using a set
+of procedures, called a label distribution protocol, by which one LSR
+informs another of label bindings it has made.  This document defines a
+set of such procedures called LDP (for Label Distribution Protocol) by
+which LSRs distribute labels to support MPLS forwarding along normally
+routed paths.  [STANDARDS TRACK]
+
+3035    Davie           Jan 2001        MPLS using LDP and ATM VC
+Switching
+
+This document extends and clarifies the relevant portions of RFC 3031
+and RFC 3036 by specifying in more detail the procedures which to be
+used when distributing labels to or from ATM-LSRs, when those labels
+represent Forwarding Equivalence Classes (FECs, see RFC 3031) for which
+the routes are determined on a hop-by-hop basis by network layer routing
+algorithms.  [STANDARDS TRACK]
+
+3034    Conta           Jan 2001        Use of Label Switching on
+Frame Relay Networks
+Specification
+
+This document defines the model and generic mechanisms for Multiprotocol
+Label Switching on Frame Relay networks.  [STANDARDS TRACK]
+
+3033    Suzuki          Jan 2001        The Assignment of the
+Information Field and Protocol
+Identifier in the Q.2941 Generic
+Identifier and Q.2957
+User-to-user Signaling for the
+Internet Protocol
+
+The purpose of this document is to specify the assignment of the
+information field and protocol identifier in the Q.2941 Generic
+Identifier and Q.2957 User-to-user Signaling for the Internet protocol.
+[STANDARDS TRACK]
+
+3032    Rosen           Jan 2001        MPLS Label Stack Encoding
+
+This document specifies the encoding to be used by an LSR in order to
+transmit labeled packets on Point-to-Point Protocol (PPP) data links, on
+LAN data links, and possibly on other data links as well.  This document
+also specifies rules and procedures for processing the various fields of
+the label stack encoding.  [STANDARDS TRACK]
+
+3031    Rosen           Jan 2001        Multiprotocol Label Switching
+Architecture
+
+This document specifies the architecture for Multiprotocol Label
+Switching (MPLS).  [STANDARDS TRACK]
+
+# 3030. Vaudreuil       Dec 2000        SMTP Service Extensions for
+
+Transmission of Large and
+Binary MIME Messages
+
+This memo defines two extensions to the SMTP (Simple Mail Transfer
+Protocol) service.  [STANDARDS TRACK]
+
+3029    Adams           Feb 2001        Internet X.509 Public Key
+Infrastructure Data Validation
+and Certification Server
+Protocols
+
+This document describes a general Data Validation and Certification
+Server (DVCS) and the protocols to be used when communicating with it.
+This memo defines an Experimental Protocol for the Internet community.
+
+# 3028. Showalter       Jan 2001        Sieve: A Mail Filtering
+
+Language
+
+This document describes a language for filtering e-mail messages at time
+of final delivery.  [STANDARDS TRACK]
+
+# 3027. Holdrege        Jan 2001        Protocol Complications with
+
+the IP Network Address
+Translator
+
+The purpose of this document is to identify the protocols and
+applications that break with NAT enroute.  The document also attempts to
+identify any known workarounds.  This document attempts to capture as
+much information as possible, but is by no means a comprehensive
+coverage.  This memo provides information for the Internet community.
+
+3026    Blane           Jan 2001        Liaison to IETF/ISOC on ENUM
+
+Working Party 1/2, of the International Telecommunication Union
+Telecommunication Standardization Sector (ITU-T) held a meeting of its
+collaborators in Berlin Germany 19-26 October 2000.  This liaison from
+WP1/2 to the IETF/ISOC conveys the understandings of the WP1/2
+collaborators resulting from the discussions.  This memo provides
+information for the Internet community.
+
+# 3025. Dommety         Feb 2001        Mobile IP
+
+Vendor/Organization-Specific
+Extensions
+
+This document defines two new extensions to Mobile IP.  These extensions
+will facilitate equipment vendors and organizations to make specific use
+of these extensions as they see fit for research or deployment purposes.
+[STANDARDS TRACK]
+
+# 3024. Montenegro      Jan 2001        Reverse Tunneling for Mobile
+
+IP, revised
+
+This document proposes backwards-compatible extensions to Mobile IP to
+support topologically correct reverse tunnels.  This document does not
+attempt to solve the problems posed by firewalls located between the
+home agent and the mobile node's care-of address.  [STANDARDS TRACK]
+
+3023    Murata          Jan 2001        XML Media Types
+
+This document standardizes five new media types -- text/xml,
+application/xml, text/xml-external-parsed-entity, application/xml-
+external-parsed-entity, and application/xml-dtd -- for use in exchanging
+network entities that are related to the Extensible Markup Language
+(XML).  This document also standardizes a convention (using the suffix
+'+xml') for naming media types outside of these five types when those
+media types represent XML MIME (Multipurpose Internet Mail Extensions)
+entities.  [STANDARDS TRACK]
+
+# 3022. Srisuresh       Jan 2001        Traditional IP Network Address
+
+Translator (Traditional NAT)
+
+The NAT operation described in this document extends address translation
+introduced in RFC 1631 and includes a new type of network address and
+TCP/UDP port translation.  In addition, this document corrects the
+Checksum adjustment algorithm published in RFC 1631 and attempts to
+discuss NAT operation and limitations in detail.  This memo provides
+information for the Internet community.
+
+3021    Retana          Dec 2000        Using 31-Bit Prefixes on IPv4
+Point-to-Point Links
+
+With ever-increasing pressure to conserve IP address space on the
+Internet, it makes sense to consider where relatively minor changes can
+be made to fielded practice to improve numbering efficiency.  One such
+change, proposed by this document, is to halve the amount of address
+space assigned to point-to-point links (common throughout the Internet
+infrastructure) by allowing the use of 31-bit subnet masks in a very
+limited way.  [STANDARDS TRACK]
+
+3020    Pate            Dec 2000        Definitions of Managed Objects
+for Monitoring and Controlling
+the UNI/NNI Multilink Frame
+Relay Function
+
+This memo defines a Management Information Base (MIB) for monitoring and
+controlling a UNI/NNI Multilink Frame Relay Function as defined in Frame
+Relay Forum FRF.16.  [STANDARDS TRACK]
+
+# 3019. Haberman        Jan 2001        IP Version 6 Management
+
+Information Base for The
+Multicast Listener Discovery
+Protocol
+
+This document defines a portion of the Management Information Base (MIB)
+for use with network management protocols in Internet Protocol Version 6
+internets.  Specifically, this document is the MIB module that defines
+managed objects for implementations of the Multicast Listener Discovery
+Protocol [RFC2710].  [STANDARDS TRACK]
+
+# 3018. Bogdanov        Dec 2000        Unified Memory Space Protocol
+
+Specification
+
+This document specifies Unified Memory Space Protocol (UMSP), which
+gives a capability of immediate access to memory of the remote nodes.
+This memo defines an Experimental Protocol for the Internet community.
+
+3017    Riegel          Dec 2000        XML DTD for Roaming Access
+Phone Book
+
+This document defines the syntax as well as the semantics of the
+information to be included in the phone book for roaming applications.
+[STANDARDS TRACK]
+
+# 3016. Kikuchi         Nov 2000        RTP Payload Format for MPEG-4
+
+Audio/Visual Streams
+
+This document describes Real-Time Transport Protocol (RTP) payload
+formats for carrying each of MPEG-4 Audio and MPEG-4 Visual bitstreams
+without using MPEG-4 Systems.  [STANDARDS TRACK]
+
+3015    Cuervo          Nov 2000        Megaco Protocol Version 1.0
+
+This document defines the protocol used between elements of a physically
+decomposed multimedia gateway, i.e. a Media Gateway and a Media Gateway
+Controller.  [STANDARDS TRACK]
+
+# 3014. Kavasseri       Nov 2000        Notification Log MIB
+
+This memo defines a portion of the Management Information Base (MIB) for
+use with network management protocols in the Internet community.  In
+particular, it describes managed objects used for logging Simple Network
+Management Protocol (SNMP) Notifications.  [STANDARDS TRACK]
+
+# 3013. Killalea        Nov 2000        Recommended Internet Service
+
+Provider Security Services and
+Procedures
+
+The purpose of this document is to express what the engineering
+community as represented by the IETF expects of Internet Service
+Providers (ISPs) with respect to security.  This document specifies an
+Internet Best Current Practices for the Internet Community, and requests
+discussion and suggestions for improvements.
+
+# 3012. Perkins         Nov 2000        Mobile IPv4 Challenge/Response
+
+Extensions
+
+In this specification, we define extensions for the Mobile IP Agent
+Advertisements and the Registration Request that allow a foreign agent
+to use a challenge/response mechanism to authenticate the mobile node.
+[STANDARDS TRACK]
+
+3011    Waters          Nov 2000        The IPv4 Subnet Selection
+Option for DHCP
+
+This memo defines a new Dynamic Host Configuration Protocol (DHCP)
+option for selecting the subnet on which to allocate an address.
+[STANDARDS TRACK]
+
+# 3010. Shepler         Dec 2000        NFS version 4 Protocol
+
+NFS (Network File System) version 4 is a distributed file system
+protocol which owes heritage to NFS protocol versions 2 [RFC1094] and 3
+[RFC1813].  Unlike earlier versions, the NFS version 4 protocol supports
+traditional file access while integrating support for file locking and
+the mount protocol.  In addition, support for strong security (and its
+negotiation), compound operations, client caching, and
+internationalization have been added.  Of course, attention has been
+applied to making NFS version 4 operate well in an Internet environment.
+[STANDARDS TRACK]
+
+# 3009. Rosenberg       Nov 2000        Registration of parityfec MIME
+
+types
+
+The RTP (Real-time Transport Protocol) payload format for generic
+forward error correction allows RTP participants to improve loss
+resiliency through the use of traditional parity-based channel codes.
+This payload format requires four new MIME types, audio/parityfec,
+video/parityfec, text/parityfec and application/parityfec.  This
+document serves as the MIME type registration for those formats.
+[STANDARDS TRACK]
+
+# 3008. Wellington      Nov 2000        Domain Name System Security
+
+(DNSSEC) Signing Authority
+
+This document proposes a revised model of Domain Name System Security
+(DNSSEC) Signing Authority.  The revised model is designed to clarify
+earlier documents and add additional restrictions to simplify the secure
+resolution process.  Specifically, this affects the authorization of
+keys to sign sets of records.  [STANDARDS TRACK]
+
+# 3007. Wellington      Nov 2000        Secure Domain Name System
+
+(DNS) Dynamic Update
+
+This document proposes a method for performing secure Domain Name System
+(DNS) dynamic updates.  [STANDARDS TRACK]
+
+3006    Davie           Nov 2000        Integrated Services in the
+Presence of Compressible Flows
+
+This specification describes an extension to the TSpec which enables a
+sender of potentially compressible data to provide hints to int-serv
+routers about the compressibility they may obtain.  [STANDARDS TRACK]
+
+3005    Harris          Nov 2000        IETF Discussion List Charter
+
+The Internet Engineering Task Force (IETF) discussion mailing list
+furthers the development and specification of Internet technology
+through discussion of technical issues, and hosts discussions of IETF
+direction, policy, meetings, and procedures.  As this is the most
+general IETF mailing list, considerable latitude is allowed.
+Advertising, whether to solicit business or promote employment
+opportunities, falls well outside the range of acceptable topics, as do
+discussions of a personal nature.  This document specifies an Internet
+Best Current Practices for the Internet Community, and requests
+discussion and suggestions for improvements.
+
+3004    Stump           Nov 2000        The User Class Option for DHCP
+
+This option is used by a Dynamic Host Configuration Protocol (DHCP)
+client to optionally identify the type or category of user or
+applications it represents.  The information contained in this option is
+an opaque field that represents the user class of which the client is a
+member.  Based on this class, a DHCP server selects the appropriate
+address pool to assign an address to the client and the appropriate
+configuration parameters.  This option should be configurable by a user.
+[STANDARDS TRACK]
+
+# 3003. Nilsson         Nov 2000        The audio/mpeg Media Type
+
+The audio layers of the MPEG-1 and MPEG-2 standards are in frequent use
+on the internet, but there is no uniform Multipurpose Internet Mail
+Extension (MIME) type for these files.  The intention of this document
+is to define the media type audio/mpeg to refer to this kind of
+contents.  [STANDARDS TRACK]
+
+3002    Mitzel          Dec 2000        Overview of 2000 IAB Wireless
+Internetworking Workshop
+
+This document provides an overview of a workshop held by the Internet
+Architecture Board (IAB) on wireless internetworking.  This memo
+provides information for the Internet community.
+
+# 3001. Mealling        Nov 2000        A URN Namespace of Object
+
+Identifiers
+
+This document describes a Uniform Resource Names (URN) namespace that
+contains Object Identifiers (OIDs).  This memo provides information for
+the Internet community.
+
+# 3000. Reynolds        Nov 2001        Internet Official Protocol
+
+Standards
+
+This memo contains a snapshot of the state of standardization of
+protocols used in the Internet as of October 25, 2001.  It lists
+official protocol standards and Best Current Practice RFCs; it is not a
+complete index to the RFC series.  The latest version of this memo is
+designated STD 1.  [STANDARDS TRACK]
+
+# Security Considerations
+
+Security issues are not discussed in this memo.
+
+# Author's Address
+
+Sandy Ginoza
+University of Southern California
+Information Sciences Institute
+4676 Admiralty Way
+Marina del Rey, CA 90292
+
+Phone:  (310) 822-1511
+
+EMail: ginoza@isi.edu
+
+Full Copyright Statement
+
+Copyright (C) The Internet Society (2001).  All Rights Reserved.
+
+This document and translations of it may be copied and furnished to
+others, and derivative works that comment on or otherwise explain it
+or assist in its implementation may be prepared, copied, published
+and distributed, in whole or in part, without restriction of any
+kind, provided that the above copyright notice and this paragraph are
+included on all such copies and derivative works.  However, this
+document itself may not be modified in any way, such as by removing
+the copyright notice or references to the Internet Society or other
+Internet organizations, except as needed for the purpose of
+developing Internet standards in which case the procedures for
+copyrights defined in the Internet Standards process must be
+followed, or as required to translate it into languages other than
+English.
+
+The limited permissions granted above are perpetual and will not be
+revoked by the Internet Society or its successors or assigns.
+
+This document and the information contained herein is provided on an
+"AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+Acknowledgement
+
+Funding for the RFC Editor function is currently provided by the
+Internet Society.
