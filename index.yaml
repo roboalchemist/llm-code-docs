@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-29 11:44
+  last_updated: 2025-12-29 11:46
   total_sources: 368
   total_fetched: 328
   llms_txt_count: 293
@@ -2784,9 +2784,9 @@ web_scraped:
   description: onnxruntime documentation
   path: docs/web-scraped/onnxruntime/
   status: fetched
-  file_count: 150
-  size: 1.6MB
-  last_updated: 2025-12-29 11:44
+  file_count: 167
+  size: 5.2MB
+  last_updated: 2025-12-29 11:45
 - name: react-flow
   description: react-flow documentation
   path: docs/web-scraped/react-flow/

@@ -75,6 +75,30 @@ ONNX_DOC_PAGES = [
     "/docs/tutorials/on-device-training/android-app.html",
     "/docs/tutorials/on-device-training/ios-app.html",
     "/docs/api/",
+    # Python API
+    "/docs/api/python",
+    "/docs/api/python/tutorial.html",
+    "/docs/api/python/api_summary.html",
+    # C API (Doxygen)
+    "/docs/api/c/struct_ort_api.html",
+    "/docs/api/c/struct_ort_custom_op.html",
+    "/docs/api/c/struct_ort_1_1_value.html",
+    "/docs/api/c/group___global.html",
+    # C# API
+    "/docs/api/csharp/api",
+    "/docs/api/csharp/api/Microsoft.ML.OnnxRuntime.SessionOptions.html",
+    # Java API
+    "/docs/api/java/ai/onnxruntime/OrtEnvironment.html",
+    "/docs/api/java/ai/onnxruntime/OrtSession.html",
+    "/docs/api/java/ai/onnxruntime/OnnxTensor.html",
+    "/docs/api/java/ai/onnxruntime/OnnxJavaType.html",
+    # JavaScript API
+    "/docs/api/js/interfaces/InferenceSession.SessionOptions.html",
+    "/docs/api/js/interfaces/Env.WebAssemblyFlags.html",
+    "/docs/api/js/interfaces/Env.WebGpuFlags.html",
+    "/docs/api/js/interfaces/Env-1.html",
+    # Objective-C API
+    "/docs/api/objectivec/index.html",
     "/docs/build/",
     "/docs/build/inferencing.html",
     "/docs/build/training.html",

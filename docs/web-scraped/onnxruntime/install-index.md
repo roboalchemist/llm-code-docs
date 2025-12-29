@@ -22,7 +22,6 @@ Details on OS versions, compilers, language versions, dependent libraries, etc c
     - [CUDA 11.x](#cuda-11x)
   - [Install ONNX Runtime QNN](#install-onnx-runtime-qnn)
     - [Install nightly](#install-nightly-2)
-  - [Install ONNX Runtime GPU (ROCm)](#install-onnx-runtime-gpu-rocm)
 - [C#/C/C++/WinML Installs](#cccwinml-installs)
   - [Install ONNX Runtime](#install-onnx-runtime-1)
     - [Install ONNX Runtime CPU](#install-onnx-runtime-cpu-1)
@@ -145,12 +144,6 @@ pip install onnxruntime-qnn
 pip install coloredlogs flatbuffers numpy packaging protobuf sympy
 pip install --pre --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/ORT-Nightly/pypi/simple/ onnxruntime-qnn
 ```
-
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#install-onnx-runtime-gpu-rocm) Install ONNX Runtime GPU (ROCm)
-
-For ROCm, please follow instructions to install it at the [AMD ROCm install docs](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.2.0/). The ROCm execution provider for ONNX Runtime is built and tested with ROCm 6.2.0.
-
-To build from source on Linux, follow the instructions [here](https://onnxruntime.ai/docs/build/eps.html#amd-rocm).
 
 ## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#cccwinml-installs) C#/C/C++/WinML Installs
 

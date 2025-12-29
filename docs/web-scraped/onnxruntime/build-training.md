@@ -86,7 +86,6 @@
 - [Build Instructions for the Training Phase](#build-instructions-for-the-training-phase)
   - [Linux](#linux)
 - [GPU / CUDA](#gpu--cuda)
-- [GPU / ROCm](#gpu--rocm)
 - [DNNL and MKLML](#dnnl-and-mklml)
   - [Linux](#linux-1)
   - [Windows](#windows)
@@ -153,50 +152,9 @@ The default NVIDIA GPU build requires CUDA runtime libraries installed on the sy
 
 That's it! Once the build is complete, you should be able to use the ONNX Runtime libraries and executables in your projects. Note that these steps are general and may need to be adjusted based on your specific environment and requirements. For more information, you can ask for help on the [ONNX Runtime GitHub community](https://github.com/microsoft/onnxruntime/discussions/new?category=q-a).
 
-## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#gpu--rocm) GPU / ROCm 
-
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-2) Prerequisites 
-
-The default AMD GPU build requires ROCm software toolkit installed on the system:
-
-- [ROCm](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.0.0/) 6.0.0
-
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-1) Build instructions 
-
-1.  Checkout this code repo with
-
-    :::: 
-    ::: highlight
-    ``` highlight
-     git clone https://github.com/microsoft/onnxruntime
-     cd onnxruntime
-    ```
-    :::
-    ::::
-
-2.  Create the ONNX Runtime Python wheel
-
-    :::: 
-    ::: highlight
-    ``` highlight
-    ./build.sh --config Release --enable_training --build_wheel --parallel --skip_tests --use_rocm --rocm_home /opt/rocm
-    ```
-    :::
-    ::::
-
-3.  Install the .whl file in `./build/Linux/RelWithDebInfo/dist` for ONNX Runtime Training.
-
-    :::: 
-    ::: highlight
-    ``` highlight
-     python -m pip install build/Linux/RelWithDebInfo/dist/*.whl
-    ```
-    :::
-    ::::
-
 ## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#dnnl-and-mklml) DNNL and MKLML
 
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-2) Build Instructions 
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-1) Build Instructions 
 
 #### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-1) Linux
 

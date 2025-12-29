@@ -47,9 +47,6 @@
 - [AMD MIGraphX](#amd-migraphx)
   - [Linux](#linux-8)
   - [Build Phython Wheel](#build-phython-wheel-1)
-- [AMD ROCm](#amd-rocm)
-  - [Linux](#linux-9)
-  - [Build Phython Wheel](#build-phython-wheel-2)
 - [NNAPI](#nnapi)
   - [Create a minimal build with NNAPI EP support](#create-a-minimal-build-with-nnapi-ep-support)
     - [Example build commands with the NNAPI EP enabled](#example-build-commands-with-the-nnapi-ep-enabled)
@@ -63,12 +60,12 @@
   - [Build for Windows](#build-for-windows)
   - [Build for Linux](#build-for-linux)
 - [CANN](#cann)
-  - [Linux](#linux-10)
+  - [Linux](#linux-9)
 - [Azure](#azure)
-  - [Prerequisites](#prerequisites-9)
-  - [Build Instructions](#build-instructions-12)
+  - [Prerequisites](#prerequisites-8)
+  - [Build Instructions](#build-instructions-11)
     - [Windows](#windows-8)
-    - [Linux](#linux-11)
+    - [Linux](#linux-10)
 
 ## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#execution-provider-shared-libraries) Execution Provider Shared Libraries
 
@@ -741,10 +738,8 @@ See more information on the MIGraphX Execution Provider [here](/docs/execution-p
 
 ### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-6) Prerequisites 
 
-- Install [ROCm](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/)
-  - The MIGraphX execution provider for ONNX Runtime is built and tested with ROCm6.3.1
+- Install [ROCm](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/index.html)
 - Install [MIGraphX](https://github.com/ROCmSoftwarePlatform/AMDMIGraphX)
-  - The path to MIGraphX installation must be provided via the `--migraphx_home parameter`.
 
 ### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-9) Build Instructions 
 
@@ -759,33 +754,6 @@ Dockerfile instructions are available [here](https://github.com/microsoft/onnxru
 #### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-phython-wheel-1) Build Phython Wheel
 
 `./build.sh --config Release --build_wheel --parallel --use_migraphx --migraphx_home /opt/rocm`
-
-Then the python wheels(\*.whl) could be found at `./build/Linux/Release/dist`.
-
-------------------------------------------------------------------------
-
-## [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#amd-rocm) AMD ROCm
-
-See more information on the ROCm Execution Provider [here](/docs/execution-providers/ROCm-ExecutionProvider.html).
-
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-7) Prerequisites 
-
-- Install [ROCm](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/)
-  - The ROCm execution provider for ONNX Runtime is built and tested with ROCm6.3.1
-
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-10) Build Instructions 
-
-#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-9) Linux
-
-``` highlight
-./build.sh --config <Release|Debug|RelWithDebInfo> --parallel --use_rocm --rocm_home <path to ROCm home>
-```
-
-Dockerfile instructions are available [here](https://github.com/microsoft/onnxruntime/tree/main/dockerfiles#rocm).
-
-#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-phython-wheel-2) Build Phython Wheel
-
-`./build.sh --config Release --build_wheel --parallel --use_rocm --rocm_home /opt/rocm`
 
 Then the python wheels(\*.whl) could be found at `./build/Linux/Release/dist`.
 
@@ -918,7 +886,7 @@ Once you have all the necessary components setup, follow the instructions to [cr
 
 See more information on the CANN Execution Provider [here](/docs/execution-providers/community-maintained/CANN-ExecutionProvider.html).
 
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-8) Prerequisites 
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-7) Prerequisites 
 
 1.  Install the CANN Toolkit for the appropriate OS and target hardware by following [documentation](https://www.hiascend.com/document/detail/en/CANNCommunityEdition/51RC1alphaX/softwareinstall/instg/atlasdeploy_03_0017.html) for detailed instructions, please.
 
@@ -933,9 +901,9 @@ See more information on the CANN Execution Provider [here](/docs/execution-provi
     :::
     ::::
 
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-11) Build Instructions 
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-10) Build Instructions 
 
-#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-10) Linux
+#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-9) Linux
 
 ``` highlight
 ./build.sh --config <Release|Debug|RelWithDebInfo> --build_shared_lib --parallel --use_cann
@@ -950,7 +918,7 @@ See more information on the CANN Execution Provider [here](/docs/execution-provi
 
 See the [Azure Execution Provider](/docs/execution-providers/Azure-ExecutionProvider.html) documentation for more details.
 
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-9) Prerequisites
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#prerequisites-8) Prerequisites
 
 For Linux, before building, please:
 
@@ -961,7 +929,7 @@ For Linux, before building, please:
 set OPENSSL_ROOT_DIR=/usr/local/ssl3.x/
 ```
 
-### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-12) Build Instructions
+### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#build-instructions-11) Build Instructions
 
 #### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#windows-8) Windows
 
@@ -969,7 +937,7 @@ set OPENSSL_ROOT_DIR=/usr/local/ssl3.x/
 build.bat --config <Release|Debug|RelWithDebInfo> --build_shared_lib --build_wheel --use_azure
 ```
 
-#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-11) Linux
+#### [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTYgMTYiIGFyaWEtaGlkZGVuPSJ0cnVlIj48dXNlIHhsaW5rOmhyZWY9IiNzdmctbGluayIgLz48L3N2Zz4=)](#linux-10) Linux
 
 ``` highlight
 ./build.sh --config <Release|Debug|RelWithDebInfo> --build_shared_lib --build_wheel --use_azure
