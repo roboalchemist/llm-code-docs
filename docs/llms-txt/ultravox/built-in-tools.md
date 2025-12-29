@@ -1,0 +1,552 @@
+# Source: https://docs.ultravox.ai/tools/built-in-tools.md
+
+# Built-in Tools
+
+> Ready-to-use tools for common functionality in voice applications.
+
+Ultravox Realtime includes several built-in tools that provide common functionality out of the box. These tools are publicly available and work exactly like custom tools you create yourself.
+
+## Available Built-in Tools
+
+| Tool Name      | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| queryCorpus    | Retrieves relevant information from an existing corpus (knowledge base). See [Query Corpus API](/api-reference/corpora/corpus-query) for details. |
+| leaveVoicemail | Leaves a voicemail and ends the call. Intended to be used with outbound phone calls.                                                              |
+| hangUp         | Terminates the call programmatically. Useful for ending conversations gracefully.                                                                 |
+| playDtmfSounds | Plays dual-tone multi-frequency (dialpad) tones. See [DTMF documentation](/telephony/overview#dtmf) for sending and receiving tones.              |
+| coldTransfer   | Transfers the current call to a human operator. See [Call Transfers](/telephony/call-transfers) for more details.                                 |
+
+More information about these can be found below in [Tool Details →](#built-in-tool-details)
+
+<Info>
+  Built-in tools use the same definition structure as custom tools. You can view their complete specifications using the [List Tools API](/api-reference/tools/tools-list).
+</Info>
+
+## Using Built-in Tools
+
+Using built-in tools is the same as using any other [custom durable tool](./custom/durable-vs-temporary-tools) that you have created except for one difference: you can override built-in tools by using the same name.
+
+For example, if you created a durable tool named "hangUp" and then provide that tool by name (i.e. not by the toolId), then your tool would be used instead of the built-in hangUp tool.
+
+Add built-in tools when creating agents, calls, or [call stages](/agents/call-stages):
+
+### Using Tool Names
+
+```js  theme={null}
+// Add the hangUp tool by name
+{
+  "systemPrompt": "You are a helpful assistant. When the conversation naturally concludes, use the 'hangUp' tool to end the call.",
+  "selectedTools": [
+    { "toolName": "hangUp" }
+  ]
+}
+```
+
+### Using Tool IDs
+
+If you have multiple tools with the same name, you can use the unique `toolId` instead. Agents will see the `modelToolName`.
+
+```js  theme={null}
+// Add the hangUp tool by ID (more explicit)
+{
+  "systemPrompt": "You are a helpful assistant. When the conversation naturally concludes, use the 'hangUp' tool to end the call.",
+  "selectedTools": [
+    { "toolId": "56294126-5a7d-4948-b67d-3b7e13d55ea7" }
+  ]
+}
+```
+
+### Viewing Available Tools
+
+Use the [List Tools API](/api-reference/tools/tools-list) to see all available tools, including built-ins:
+
+```bash  theme={null}
+curl -X GET "https://api.ultravox.ai/api/tools" \
+  -H "X-API-Key: your-api-key"
+```
+
+<Tip>
+  The List Tools API returns both built-in tools and any custom tools you've created, making it easy to see all tools available in your account.
+</Tip>
+
+### Tool Parameters
+
+Tools can use and pass parameters (i.e. send variables to the underlying API). The parameters for each built-in tool are explained below.
+
+See [Tool Parameters →](./custom/parameters) for details about the different types of parameters used by tools.
+
+<Info>
+  <b>Tool Parameters</b>
+
+  <br />
+
+  Tools can use and pass parameters (i.e. send variables to the underlying API). The parameters for each built-in tool are explained below.
+
+  See [Tool Parameters →](./custom/parameters) to learn about the different types of parameters used by tools.
+</Info>
+
+## Built-in Tool Details
+
+### `queryCorpus`
+
+Searches through a knowledge base (corpus) to find relevant information (AKA RAG).
+
+Requires the ID of the corpus (`corpus_id`) to be used for all queries and a dynamic `query` parameter is used for each query. Optionally, you can restrict the number of results that are returned to the agent (via `max_results`) along with a minimum semantic similarity score (`minimum_score`).
+
+**Example Usage:**
+
+```js Using queryCorpus Tool theme={null}
+
+// Basic usage
+{
+  "selectedTools": [
+    {
+      "toolName": "queryCorpus",
+      "parameterOverrides": {
+        "corpus_id": "your-corpus-id-here"
+      }
+    }
+  ]
+}
+
+// Require semantic similarity of 0.8 or higher
+{
+  "selectedTools": [
+    {
+      "toolName": "queryCorpus",
+      "parameterOverrides": {
+        "corpus_id": "your-corpus-id-here",
+        "minimum_score": 0.8
+      }
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Required Parameter Override:**
+
+<ParamField body="corpus_id" type="string" required>
+  The ID of the corpus to be used for all queries.
+</ParamField>
+
+**Dynamic Parameters:**
+
+<ParamField body="query" type="string" required>
+  What to search for.
+</ParamField>
+
+<ParamField body="max_results" type="integer" default="5">
+  How many chunks to receive back. Can be any value from 1-20.
+</ParamField>
+
+**Static Parameters:**
+
+<ParamField body="minimum_score" type="number" default="0">
+  Can be used to only return content with a minimum semantic similarity score.
+</ParamField>
+
+### `leaveVoicemail`
+
+When making outbound phone calls, used to leave a voicemail and then end the call.
+
+A dynamic `message` parameter is used for the message that will be left. Optionally, you can change the hang up behavior with `strict` and the return message with `result`.
+
+**Example Usage:**
+
+```js Using leaveVoicemail Tool theme={null}
+
+// Basic usage
+{
+  "selectedTools": [
+    {
+      "toolName": "leaveVoicemail"
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Dynamic Parameters:**
+
+<ParamField query="message" type="string" required>
+  The voicemail message to leave.
+</ParamField>
+
+**Static Parameters:**
+
+<ParamField query="strict" type="bool" default="true">
+  `true` ends the call regardless of user interaction. If set to `false`, any user interaction (i.e. speech or interrupting the voicemail) will cause the call to continue.
+</ParamField>
+
+<ParamField query="result" type="string" default="[Leaving voicemail...]">
+  The message that is returned from the tool call. Will be added to conversation history.
+</ParamField>
+
+### `hangUp`
+
+Ends the current call programmatically.
+
+Optionally accepts a dynamic parameter called `reason`. A static parameter called `strict` can be overridden to enable the call to continue if the user speaks and continues the call.
+
+**Example Usage:**
+
+```js Using hangUp Tool theme={null}
+// Basic usage
+{
+  "systemPrompt": "Help users with their questions. When they say goodbye or the conversation naturally ends, use the hangUp tool to end the call politely.",
+  "selectedTools": [
+    { "toolName": "hangUp" }
+  ]
+}
+
+// Enable soft hangup behavior
+{
+  "selectedTools": [
+    {
+      "toolName": "hangUp",
+      "parameterOverrides": {
+        "strict": false
+      }
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Dynamic Parameters:**
+
+<ParamField query="reason" type="string">
+  A brief reason for hanging up.
+</ParamField>
+
+**Static Parameters:**
+
+<ParamField query="strict" type="bool" default="true">
+  `true` ends the call regardless of user interaction. If set to `false`, any user interaction (i.e. speech) will cause the call to continue.
+</ParamField>
+
+### `playDtmfSounds`
+
+Plays telephone keypad tones (dual-tone multi-frequency signals).
+
+Requires a dynamic parameter called `digits`. Static parameters for `toneDuration` and `spaceDuration` can be overridden. Automatically sets the sample rate based on current call medium.
+
+**Example:**
+
+```js Using playDtmfSounds Tool theme={null}
+// Basic usage
+{
+  "selectedTools": [
+    { "toolName": "playDtmfSounds" }
+  ]
+}
+
+// Increasing length of tones and spaces
+{
+  "selectedTools": [
+    {
+      "toolName": "playDtmfSounds",
+      "parameterOverrides": {
+        "toneDuration": "0.5s",
+        "spaceDuration": "0.3s"
+      }
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Dynamic Parameters:**
+
+<ParamField query="digits" type="string" required>
+  The digits for which tones should be produced. May include: 0-9, \*, #, or A-D.
+</ParamField>
+
+**Static Parameters:**
+
+<ParamField query="toneDuration" type="string" default="0.2s">
+  The length (in seconds) that tones will be emitted.
+</ParamField>
+
+<ParamField query="spaceDuration" type="string" default="0.1s">
+  The length (in seconds) that spaces (AKA silence between DTMF tones) will be emitted.
+</ParamField>
+
+### `coldTransfer`
+
+Transfers the current call to a human operator.
+
+Requires the transfer target. You can optionally include additional headers that will be used in the SIP REFER (or INVITE).
+
+For bridge transfers (sip medium only), you can override the `sipVerb` parameter from `REFER` to `INVITE` when adding the tool to your agent or call. You may also wish to set `from`, `username`, and/or `password` in order to authenticate the subsequent INVITE. Note that bridge transfers will incur additional cost.
+
+**Example Usage:**
+
+```js Using coldTransfer Tool theme={null}
+
+// Basic usage
+{
+  "selectedTools": [
+    {
+      "toolName": "coldTransfer",
+      "parameterOverrides": {
+        "target": "sip:user@mytrunk.com"
+      }
+    }
+  ]
+}
+
+// With headers and name/description overrides
+{
+  "selectedTools": [
+    {
+      "toolName": "coldTransfer",
+      "nameOverride": "escalateToManager",
+      "descriptionOverride": "Transfers the call to your shift manager.",
+      "parameterOverrides": {
+        "target": "sip:manager@mytrunk.com",
+        "extraHeaders": {
+          "Referred-By": "sip:agent@mytrunk.com",
+          "X-Custom-Header": "customValue"
+        }
+      }
+    }
+  ]
+}
+
+// With bridge transfer (sip medium only)
+{
+  "selectedTools": [
+    {
+      "toolName": "coldTransfer",
+      "nameOverride": "escalateToManager",
+      "descriptionOverride": "Transfers the call to your shift manager.",
+      "parameterOverrides": {
+        "target": "sip:manager@mytrunk.com",
+        "extraHeaders": {
+          "X-Custom-Header": "customValue"
+        },
+        "sipVerb": "INVITE",
+        "from": "+15551234567",  // Caller ID for the INVITE. Defaults to the user's number.
+        "username": "authorized_user",  // Optional username for authenticating the INVITE
+        "password": "password_for_authorized_user"  // Optional password for authenticating as username
+      }
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Required Parameter Override:**
+
+<ParamField body="target" type="string" required>
+  The target of the transfer. This is who the user's client should be REFER'ed to.
+  A SIP URI is always allowed. A phone number in E.164 format may be allowed depending on your medium and telephony configuration.
+</ParamField>
+
+**Optional Parameters:**
+
+<ParamField body="extraHeaders" type="object">
+  A string-to-string map of headers to include in the REFER (or INVITE) request. Custom headers should use the "X-" prefix to avoid conflicts with standard SIP headers.
+</ParamField>
+
+<ParamField body="holdMusicUrl" type="string | null">
+  Music to play to the user while the transfer is in progress. Set to `null` to disable hold music.
+  Note that hold music will not be present in Ultravox call recordings as it is added at the SIP level.
+  If you elect to use your own hold music, make sure it is either mp3 or wav, can be downloaded without authentication, and does not exceed 5MB.
+  Default: <audio controls><source src="https://storage.googleapis.com/fixie-web-public/defaultHold.mp3" type="audio/mpeg" />"[https://storage.googleapis.com/fixie-web-public/defaultHold.mp3](https://storage.googleapis.com/fixie-web-public/defaultHold.mp3)"</audio>
+</ParamField>
+
+<ParamField body="sipVerb" type="string">
+  The SIP method to use for the transfer. Can be either `REFER` (default) or `INVITE` (for bridge transfers).
+</ParamField>
+
+<ParamField body="from" type="string">
+  The caller ID to use when performing an INVITE transfer. Defaults to the user's number. (Unused for REFER transfers.)
+</ParamField>
+
+<ParamField body="username" type="string">
+  Optional username for authenticating the INVITE request. (Unused for REFER transfers.)
+</ParamField>
+
+<ParamField body="password" type="string">
+  Optional password for authenticating as `username` in the INVITE request. (Unused for REFER transfers.)
+</ParamField>
+
+### `warmTransfer`
+
+Transfers the current call to a human operator, with a warm handoff.
+
+Requires the transfer target. See [call transfers](/telephony/call-transfers) for more details.
+
+**Example Usage:**
+
+```js Using warmTransfer Tool theme={null}
+
+// Basic usage
+{
+  "selectedTools": [
+    {
+      "toolName": "warmTransfer",
+      "parameterOverrides": {
+        "target": "sip:user@mytrunk.com"
+      }
+    }
+  ]
+}
+
+// With more customization
+{
+  "selectedTools": [
+    {
+      "toolName": "warmTransfer",
+      "nameOverride": "escalateToManager",
+      "descriptionOverride": "Transfers the call to your shift manager.",
+      "parameterOverrides": {
+        "target": "sip:manager@mytrunk.com",
+        "from": "+15551234567",  // Caller ID for the INVITE. Defaults to the user's number.
+        "username": "authorized_user",  // Optional username for authenticating the INVITE
+        "password": "password_for_authorized_user",  // Optional password for authenticating as username
+        "inviteHeaders": {
+          "X-Custom-Header": "customValue"
+        },
+        "transferSystemPromptTemplate": "You are a drive-thru order taker at a donut shop called \"Dr. Donut.\" You've just called your manager to transfer a customer to them. You have this context from your call with the customer:\n\n{context}",
+        "referHeaders": {
+          "Referred-By": "sip:agent@mytrunk.com",
+          "X-Custom-Header": "customValue"
+        }
+      }
+    }
+  ]
+}
+```
+
+#### Parameters
+
+**Required Parameter Override:**
+
+<ParamField body="target" type="string" required>
+  The target of the transfer. This is who an INVITE will be sent to for the second call.
+  Must be a valid SIP URI.
+</ParamField>
+
+**Optional Parameters:**
+
+<ParamField body="from" type="string">
+  The caller ID to use for the INVITE. Defaults to the user's number.
+</ParamField>
+
+<ParamField body="username" type="string">
+  Optional username for authenticating the INVITE request.
+</ParamField>
+
+<ParamField body="password" type="string">
+  Optional password for authenticating as `username` in the INVITE request.
+</ParamField>
+
+<ParamField body="inviteHeaders" type="object">
+  A string-to-string map of extra headers to include in the INVITE request. Custom headers should use the "X-" prefix to avoid conflicts with standard SIP headers.
+</ParamField>
+
+<ParamField body="holdMusicUrl" type="string | null">
+  Music to play to the user while the transfer is in progress. Set to `null` to disable hold music.
+  Note that hold music will not be present in Ultravox call recordings as it is added at the SIP level.
+  If you elect to use your own hold music, make sure it is either mp3 or wav, can be downloaded without authentication, and does not exceed 5MB.
+  Default: <audio controls><source src="https://storage.googleapis.com/fixie-web-public/defaultHold.mp3" type="audio/mpeg" />"[https://storage.googleapis.com/fixie-web-public/defaultHold.mp3](https://storage.googleapis.com/fixie-web-public/defaultHold.mp3)"</audio>
+</ParamField>
+
+<ParamField body="transferSystemPromptTemplate" type="string">
+  The system prompt the agent will use when talking with the transfer target. The `{context}` variable may be added anywhere you like and will be replaced with context generated by the agent when invoking `warmTransfer` initially.
+</ParamField>
+
+<ParamField body="transferType" type="string">
+  The type of transfer to perform once the human operator accepts the transfer. Can be either `REFER`, `BRIDGE`, or `TRY_REFER` (default). `TRY_REFER` will first attempt an in-session REFER and fall back on bridging the calls if the REFER fails.
+</ParamField>
+
+<ParamField body="referHeaders" type="object">
+  A string-to-string map of extra headers to include in the REFER request (if any). Custom headers should use the "X-" prefix to avoid conflicts with standard SIP headers.
+</ParamField>
+
+## Customizing Built-in Tools
+
+### Overriding Tool Behavior
+
+You can customize built-in tools by overriding their names or descriptions:
+
+```js Overriding Tool Name & Description theme={null}
+{
+  "selectedTools": [
+    {
+      "toolName": "hangUp",
+      "nameOverride": "endConversation",
+      "descriptionOverride": "Politely end the conversation when the user is satisfied with the help provided."
+    }
+  ]
+}
+```
+
+### Parameter Overrides
+
+Some built-in tools require or allow parameter overrides:
+
+```js  theme={null}
+{
+  "selectedTools": [
+    {
+      "toolName": "queryCorpus",
+      "parameterOverrides": {
+        "corpus_id": "corp-123",
+        "maxResults": 5
+      }
+    }
+  ]
+}
+```
+
+See the guide on [Parameter Overrides →](./custom/parameter-overrides)
+
+### Replacing Built-in Tools
+
+You can override built-in tools by creating your own tool with the same name:
+
+```js  theme={null}
+// Create a custom "hangUp" tool that logs before ending calls
+{
+  "name": "hangUp",
+  "definition": {
+    "modelToolName": "hangUp",
+    "description": "Log conversation details and end the call",
+    "http": {
+      "baseUrlPattern": "https://your-api.com/log-and-hangup",
+      "httpMethod": "POST"
+    }
+  }
+}
+```
+
+When you reference a tool by name, your custom tool will be used instead of the built-in version.
+
+<Warning>
+  **Tool ID vs Name Priority**
+
+  If you reference a tool by `toolId`, you'll always get that specific tool. If you reference by `toolName` and have a custom tool with the same name, your custom tool takes precedence over the built-in version.
+</Warning>
+
+## Authentication
+
+Built-in tools handle authentication automatically - no additional setup required. However, some tools like `queryCorpus` require you to specify which corpus to search via parameter overrides.
+
+## Next Steps
+
+* For more advanced tool usage, see our guides on [parameter overrides](/tools/custom/parameter-overrides) and [async tools](/tools/async-tools).
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,0 +1,505 @@
+# Source: https://docs.ultravox.ai/integrations/voximplant.md
+
+# Voximplant
+
+> Connecting Ultravox to SIP Using Voximplant
+
+<Note>
+  Voximplant provides a platform for telephony and has created a native integration with Ultravox to enable SIP calling. This content has been provided courtesy of Voximplant.
+</Note>
+
+## Connecting to SIP Trunk with Voximplant
+
+With Voximplant, you can connect Ultravox Realtime to an existing SIP telephony server. This allows you to use Ultravox AI assistants to handle your calls and assist your customers right from your existing infrastructure.
+
+Voximplant acts as a gateway, managing connections with Ultravox via WebSockets and making/receiving calls via SIP.
+
+```mermaid  theme={null}
+graph LR
+    A[AI \n agent] <-->|WebSockets| B((Voximplant \n Cloud))
+    B <-->|PSTN| C[Phone \n Network]
+    B <-->|SIP Trunk| D[VoIP \n Infrastructure]
+    B <-->|WebRTC| E[SDK]
+
+    classDef cloud fill:#a881f7,stroke:#a881f7,shape:cloud;
+    class B cloud
+
+    %%Highlight SIP
+    linkStyle 2 stroke:#a881f7,stroke-width:6px;
+
+```
+
+Follow the steps below to connect Ultravox to your SIP PBX server.
+
+### Step 1: Create a Voximplant Application
+
+To create an application, [log in to your Voximplant account](https://manage.voximplant.com/?utm_source=docs\&utm_medium=applications\&utm_campaign=gettingstarted) or create a new one. Then, navigate to the [application section](https://manage.voximplant.com/applications?utm_source=docs\&utm_medium=applications\&utm_campaign=gettingstarted) from the upper left corner of the page. Click **New application** in the upper right corner or **Create** at the bottom of the page.
+
+<img src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=338ff250c90090c176d839b10617fa5b" alt="Create an application" data-og-width="1702" width="1702" data-og-height="1158" height="1158" data-path="integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=1d529e42d20a3ed428f681c8637c2bfc 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=237bd0375380f1c3e46b7e1046ddd76c 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=26aa9628b9eb6977fd23b633d05317c3 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=d917f948d91ec61b244d93e623e7821f 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=63e7e04cc9d71570e57d766ae5a5da90 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-create.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=9db0adae9d17f3749d98446ca0f230ef 2500w" />
+
+This opens a new application editor window where you can set it up and save by clicking **Create**. The newly created app appears in the application list. To modify its name, icon, or description, click the three dots menu and select **Edit**.
+
+<img src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=6556c745caa31001f89eb929682f5418" alt="Edit an application" data-og-width="951" width="951" data-og-height="232" height="232" data-path="integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=12b6f49b66c303442db18ce7b04df297 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=9ff11798d8d23c48baecf503b2fb0e35 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=9124879a0954b696f09d064b6ab73ec0 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=3784cf0f185df15b95f43f69fc127058 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=e00a3dbbb2c00485254a292834d8df11 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-applications-dots.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=68ff0000f320e19c5bd464015e894b44 2500w" />
+
+You can learn more about Voximplant applications and their sections in the [Getting started → Applications](https://voximplant.com/docs/getting-started/basic-concepts/applications) section of their documentation.
+
+### Step 2: Create Scenarios Within the Application
+
+Scenarios in Voximplant are JavaScript documents within a Voximplant application, where you can implement logic processing calls and messages.
+
+To create a scenario, open your existing or newly created [application](https://voximplant.com/docs/getting-started/basic-concepts/applications), select **Scenarios** on the left menu, and click on the plus icon to create a new scenario. Give it a name.
+
+<img src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=6fc583ea15505a536f6d0bd5ea1275aa" alt="Create a scenario" data-og-width="928" width="928" data-og-height="293" height="293" data-path="integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=b2697a21b228cbf4d175e88f3777988b 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=f9020273626f30a500a6c1676ae10b1c 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=ba31bba628f61d7777fe17f7d22fbc35 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=7ed3ef82835a4ab76b5533734abf93d5 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=9c32a202420044370854d37e2ee666c7 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-scenarios-create.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=e6f50272cf959176037a3bae05e9a0d9 2500w" />
+
+This opens a new tab in the online IDE on the right, where you can write your code. If needed, you can rename the scenario or modify the source code later.
+
+You can learn more about scenarios and their best practice tips in the [Getting started → Scenarios](https://voximplant.com/docs/getting-started/basic-concepts/scenarios) section of the Voximplant documentation.
+
+### Step 3: Utilize Ready-to-use Scenarios
+
+To connect your SIP PBX with Ultravox, Voximplant prepared two ready-to use scenarios for incoming and outgoing calls.
+
+<Info>
+  **Please note**: We have hidden sensitive information in these scenarios, such as API keys, with placeholders. Please, replace the placeholders with your actual Ultravox credentials.
+</Info>
+
+Here is the `incoming` scenario for processing incoming calls forwarded to Voximplant:
+
+```js  theme={null}
+require(Modules.Ultravox);
+
+VoxEngine.addEventListener(AppEvents.CallAlerting, async ({ call }) => {
+  let webSocketAPIClient = undefined;
+
+  call.answer();
+  const callBaseHandler = () => {
+    if (webSocketAPIClient) webSocketAPIClient.close();
+    VoxEngine.terminate();
+  };
+  call.addEventListener(CallEvents.Disconnected, callBaseHandler);
+  call.addEventListener(CallEvents.Failed, callBaseHandler);
+
+  const onWebSocketClose = (event) => {
+    Logger.write('===ON_WEB_SOCKET_CLOSE==');
+    Logger.write(JSON.stringify(event));
+    VoxEngine.terminate();
+  };
+
+  const ULTRAVOX_API_KEY = 'YOUR_ULTRAVOX_API_KEY';
+  const AUTHORIZATIONS = {
+    'X-API-Key': ULTRAVOX_API_KEY,
+  };
+
+  const MODEL = 'ultravox-v0.7';
+  const VOICE_NAME = 'Mark';
+  const PATH_PARAMETERS = {};
+
+  // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+  const PATH_PARAMETERS_AGENT_CALL = {agent_id: "YOUR-AGENT-ID"};
+
+  const QUERY_PARAMETERS = {};
+  const BODY_CREATE_CALL = {
+    systemPrompt: 'You are a helpful assistant',
+    model: MODEL,
+    voice: VOICE_NAME,
+  };
+
+  // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+  const BODY_CREATE_AGENT_CALL = {
+  };
+
+  const webSocketAPIClientParameters = {
+    // or Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+    endpoint: Ultravox.HTTPEndpoint.CREATE_CALL, // Change for agent call
+    authorizations: AUTHORIZATIONS,
+    pathParameters: PATH_PARAMETERS, // Change for agent call
+    queryParameters: QUERY_PARAMETERS,
+    body: BODY_CREATE_CALL, // Change for agent call
+    onWebSocketClose,
+  };
+
+  try {
+    webSocketAPIClient = await Ultravox.createWebSocketAPIClient(webSocketAPIClientParameters);
+    VoxEngine.sendMediaBetween(call, webSocketAPIClient);
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Unknown, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.Unknown===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.HTTPResponse, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.HTTPResponse===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.State, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.State===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Transcript, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.Transcript===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.ClientToolInvocation, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.ClientToolInvocation===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Debug, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.Debug===');
+      Logger.write(JSON.stringify(event));
+    });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.PlaybackClearBuffer, (event) => {
+      Logger.write('===Ultravox.WebSocketAPIEvents.PlaybackClearBuffer===');
+      Logger.write(JSON.stringify(event));
+      if (webSocketAPIClient) webSocketAPIClient.clearMediaBuffer();
+    });
+
+    const userTextMessageContent = {
+      type: 'user_text_message',
+      text: 'HI!',
+    };
+    webSocketAPIClient.inputTextMessage(userTextMessageContent);
+  } catch (error) {
+    Logger.write('===SOMETHING_WENT_WRONG===');
+    Logger.write(error);
+    VoxEngine.terminate();
+  }
+});
+```
+
+Here is the `outgoing` scenario for processing outgoing calls:
+
+```js  theme={null}
+require(Modules.Ultravox);
+
+VoxEngine.addEventListener(AppEvents.Started, async () => {
+  let webSocketAPIClient = undefined;
+  //Obtain parameters passed to call
+  const customData = JSON.parse(VoxEngine.customData());
+
+  const call = VoxEngine.callSIP(`sip:${customData["number"]}@sip.example.org`,customData["callerid"]);
+
+  const callBaseHandler = () => {
+    if (webSocketAPIClient) webSocketAPIClient.close();
+    VoxEngine.terminate();
+  };
+  call.addEventListener(CallEvents.Disconnected, callBaseHandler);
+  call.addEventListener(CallEvents.Failed, callBaseHandler);
+
+  call.addEventListener(CallEvents.Connected, async () => {
+
+    const onWebSocketClose = (event) => {
+        Logger.write('===ON_WEB_SOCKET_CLOSE==');
+        Logger.write(JSON.stringify(event));
+        VoxEngine.terminate();
+      };
+
+    const ULTRAVOX_API_KEY = 'YOUR_ULTRAVOX_API_KEY';
+      const AUTHORIZATIONS = {
+        'X-API-Key': ULTRAVOX_API_KEY,
+      };
+
+      const MODEL = 'ultravox-v0.7';
+      const VOICE_NAME = 'Mark';
+      const PATH_PARAMETERS = {};
+
+    // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+      const PATH_PARAMETERS_AGENT_CALL = {agent_id: "YOUR-AGENT-ID"};
+
+    const QUERY_PARAMETERS = {};
+      const BODY_CREATE_CALL = {
+        systemPrompt: 'You are a helpful assistant',
+        model: MODEL,
+        voice: VOICE_NAME,
+      };
+
+    // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+      const BODY_CREATE_AGENT_CALL = {
+      };
+
+    const webSocketAPIClientParameters = {
+        // or Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+        endpoint: Ultravox.HTTPEndpoint.CREATE_CALL, // Change for agent call
+        authorizations: AUTHORIZATIONS,
+        pathParameters: PATH_PARAMETERS, // Change for agent call
+        queryParameters: QUERY_PARAMETERS,
+        body: BODY_CREATE_CALL, // Change for agent call
+        onWebSocketClose,
+      };
+
+    try {
+        webSocketAPIClient = await Ultravox.createWebSocketAPIClient(webSocketAPIClientParameters);
+        VoxEngine.sendMediaBetween(call, webSocketAPIClient);
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Unknown, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.Unknown===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.HTTPResponse, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.HTTPResponse===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.State, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.State===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Transcript, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.Transcript===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.ClientToolInvocation, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.ClientToolInvocation===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Debug, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.Debug===');
+          Logger.write(JSON.stringify(event));
+        });
+
+    webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.PlaybackClearBuffer, (event) => {
+          Logger.write('===Ultravox.WebSocketAPIEvents.PlaybackClearBuffer===');
+          Logger.write(JSON.stringify(event));
+          if (webSocketAPIClient) webSocketAPIClient.clearMediaBuffer();
+        });
+
+    const userTextMessageContent = {
+          type: 'user_text_message',
+          text: 'HI!',
+        };
+        webSocketAPIClient.inputTextMessage(userTextMessageContent);
+      } catch (error) {
+        Logger.write('===SOMETHING_WENT_WRONG===');
+        Logger.write(error);
+        VoxEngine.terminate();
+      }
+    });
+});
+```
+
+The outgoing scenario accepts the `customData` parameter in the following format:
+
+```js  theme={null}
+{"callerid":"16503333333", "number":"16504444444"}
+```
+
+You can provide this parameter when launching the scenario via a **routing rule** or [StartScenarios](https://voximplant.com/docs/references/httpapi/scenarios#startscenarios) Management API method.
+
+### Step 4: Create Routing Rules
+
+Routing rules in a Voximplant application define when and how to launch existing scenarios. When an incoming call arrives or you make call via your SIP PBX server, a routing rule decides which scenario to launch.
+
+To create a routing rule, navigate to the **Routing** tab in your [application](https://voximplant.com/docs/getting-started/basic-concepts/applications). You can either click **Create** in the center of the screen or **New rule** in the upper right corner:
+
+<img src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=0094c98f6d0ae53562c03e0ac8e2f642" alt="Create a rule" data-og-width="1608" width="1608" data-og-height="1140" height="1140" data-path="integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=4dfa085243ad137b3aa537906936ed42 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=db8604d654c51d91b70371da6a309c62 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=ec443c0a4cf08c36f5adbc210996c34d 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=120dbb984260285ef3ae67cb6159467f 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=16fefbdce660241a14859a9e4efcd303 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-createarule.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=8b66d037122edbe69639f8e6b8772ae5 2500w" />
+
+This opens the **New rule** editor, where you can specify the rule name, properties, and attach one or more scenarios:
+
+<img src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=c894670f066eee3de2b4f5767f4add67" alt="New rule editor" data-og-width="1148" width="1148" data-og-height="824" height="824" data-path="integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=6d7ff8a6cc6afbea5ba280b74790342a 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=a5a3ba24a9fb21f13b298bae659519a6 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=886d81e8f311f7c5ca1f47eb248ba3f1 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=2dff83c588859f892d3ba24a64a248d6 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=b9064d5534a43183d8f297aeaf077f5e 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/integrations/voximplant-images/gettingstarted-basicconcepts-routing-attachascenario.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=1a3affc06f8ea2d2b6ab341aa0c84e97 2500w" />
+
+If you intend to use the scenario for video conferencing, enable the **Video conference** switch. Without this parameter, all video conferences fail with an error.
+
+Disable the **Video conference** switch, as you do not plan to use the scenario as a video conference.
+
+The **Pattern** field checks if the call’s destination (the dialed number or username specified in the `e.destination` property of the incoming call) matches any rule’s pattern. If the call’s destination aligns with the pattern, the attached scenario(s) are executed. If the call’s destination doesn’t match the pattern, the attached scenario(s) remain inactive, and the call proceeds to the next routing rule.
+
+The application systematically evaluates the routing rules from top to bottom, with higher-priority rules taking precedence. When the call’s destination matches one of the rules, the rule is executed, and the application disregards any subsequent rules, ensuring that only one rule is executed at a time.
+
+<Info>
+  **Note**: If the destination phone number meets several rules' patterns, only **the first rule** executes.
+</Info>
+
+The **Pattern** field employs regular expressions to create masks for phone numbers or usernames. Common expressions include:
+
+* `.*` means any quantity of any symbols, so all the numbers or usernames match the rule.
+* `+?[1-9]\d{1,14}` matches any phone number
+* `123.+` matches 1234, 12356, and so on.
+
+For more information on building regular expressions, refer to [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression).
+
+The **Available scenarios** dropdown list enables you to attach one or more scenarios to execute when the rule is triggered.
+
+You can attach **multiple scenarios** to a single rule. In this scenario, the rule executes all the attached scenarios sequentially within a single context, promoting code reuse. This allows you to encapsulate all the functions within a scenario and utilize them in another scenario.
+
+You can view all the attached scenarios in the **Assigned scenarios** field.
+
+After specifying all the settings, click the **Create rule** button to create a rule.
+
+You can learn more about routing rules and ways to launch them in the [Getting started → Routing rules](https://voximplant.com/docs/getting-started/basic-concepts/applications) section of the Voximplant documentation.
+
+## Configure Your SIP PBX
+
+Your configuration depends on the type of the PBX that you use and internet access that it has.
+
+### Using an Internet-Connected, Self-Hosted PBX with Fixed Public IP
+
+In this case you need to:
+
+1. Whitelist the IP address of your PBX in the [Secrity](https://manage.voximplant.com/settings/security/white_list) section of Voximplant Control Panel.
+2. Configure your PBX to forward calls to the following SIP URI: sip:{number}@{app_name}.{account_name}.voximplant.com. `number` may be any number or username that matches the regular expression specified earlier when configuring the routing rules. `app_name` and `account_name` are the names of the Voximplant application and account respectively.
+
+### Using a Cloud PBX
+
+In this case, Voximplant can resemble a user in your cloud PBX. To complete the configuration you need to:
+
+1. Create a user in your cloud PBX account.
+2. Configure your PBX to forward calls that need to be handled by the voice bot to the user you have just created.
+3. Create a [SIP registration](https://manage.voximplant.com/settings/sip_registrations) with credentials of the created user and the domain name of the cloud PBX instance you use.
+4. Attach the SIP registration to the application in `SIP registations` section of application configuration. When doing so, select the routing rule for incoming calls created earlier.
+
+## Making Outgoing Calls
+
+Voximplant can initiate outgoing calls to your PBX and join them to the voice agent. This can be done by calling the [StartScenarios](https://voximplant.com/docs/references/httpapi/scenarios#startscenarios) Management API method from your system and passing the number and caller ID parameters as it is explained below.
+
+### Configuring Your Voximplant Account
+
+<Steps>
+  <Step>
+    Create an application the same way as [described above](#step-1%3A-create-a-voximplant-application).
+  </Step>
+
+  <Step>
+    Create a call scenario. Here is the sample scenario for starting outgoing calls. Please note that Ultravox and PBX connection information need to be provided in the script instead of placeholders.
+
+    ```js  theme={null}
+    require(Modules.Ultravox);
+
+    VoxEngine.addEventListener(AppEvents.Started, async () => {
+      let webSocketAPIClient = undefined;
+      // Obtain parameters passed to call
+      const customData = JSON.parse(VoxEngine.customData());
+
+      const call = VoxEngine.callSIP(`sip:${customData["number"]}@YOUR_PBX_ADDRESS`,customData["callerid"]);
+
+      const callBaseHandler = () => {
+        if (webSocketAPIClient) webSocketAPIClient.close();
+        VoxEngine.terminate();
+      };
+      call.addEventListener(CallEvents.Disconnected, callBaseHandler);
+      call.addEventListener(CallEvents.Failed, callBaseHandler);
+
+      call.addEventListener(CallEvents.Connected, async () => {
+
+        const onWebSocketClose = (event) => {
+            Logger.write('===ON_WEB_SOCKET_CLOSE==');
+            Logger.write(JSON.stringify(event));
+            VoxEngine.terminate();
+          };
+
+        const ULTRAVOX_API_KEY = 'YOUR_ULTRAVOX_API_KEY';
+          const AUTHORIZATIONS = {
+            'X-API-Key': ULTRAVOX_API_KEY,
+          };
+
+          const MODEL = 'ultravox-v0.7';
+          const VOICE_NAME = 'Mark';
+          const PATH_PARAMETERS = {};
+
+        // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+          const PATH_PARAMETERS_AGENT_CALL = {agent_id: "YOUR-AGENT-ID"};
+
+        const QUERY_PARAMETERS = {};
+          const BODY_CREATE_CALL = {
+            systemPrompt: 'You are a helpful assistant',
+            model: MODEL,
+            voice: VOICE_NAME,
+          };
+
+        // Use this object when Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+          const BODY_CREATE_AGENT_CALL = {
+          };
+
+        const webSocketAPIClientParameters = {
+            // or Ultravox.HTTPEndpoint.CREATE_AGENT_CALL
+            endpoint: Ultravox.HTTPEndpoint.CREATE_CALL, // Change for agent call
+            authorizations: AUTHORIZATIONS,
+            pathParameters: PATH_PARAMETERS, // Change for agent call
+            queryParameters: QUERY_PARAMETERS,
+            body: BODY_CREATE_CALL, // Change for agent call
+            onWebSocketClose,
+          };
+
+        try {
+            webSocketAPIClient = await Ultravox.createWebSocketAPIClient(webSocketAPIClientParameters);
+            VoxEngine.sendMediaBetween(call, webSocketAPIClient);
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Unknown, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.Unknown===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.HTTPResponse, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.HTTPResponse===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.State, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.State===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Transcript, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.Transcript===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.ClientToolInvocation, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.ClientToolInvocation===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.Debug, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.Debug===');
+              Logger.write(JSON.stringify(event));
+            });
+
+        webSocketAPIClient.addEventListener(Ultravox.WebSocketAPIEvents.PlaybackClearBuffer, (event) => {
+              Logger.write('===Ultravox.WebSocketAPIEvents.PlaybackClearBuffer===');
+              Logger.write(JSON.stringify(event));
+              if (webSocketAPIClient) webSocketAPIClient.clearMediaBuffer();
+            });
+
+        const userTextMessageContent = {
+              type: 'user_text_message',
+              text: 'HI!',
+            };
+            webSocketAPIClient.inputTextMessage(userTextMessageContent);
+          } catch (error) {
+            Logger.write('===SOMETHING_WENT_WRONG===');
+            Logger.write(error);
+            VoxEngine.terminate();
+          }
+        });
+    });
+    ```
+  </Step>
+
+  <Step>
+    Create a routing rule and attach the scenario to it. The rule pattern can be arbitrary in this case because the pattern is only used when processing incoming calls.
+  </Step>
+</Steps>
+
+### Configure your PBX
+
+You can either whitelist the Voximplant SIP IP addresses or create a user in your PBX and use those credentials to authenticate. In the first case you can use the [API endpoint](http://api.voximplant.com/getMediaResources?with_sbcs) to get Voximplant SIP IP addresses. In the latter case you need to pass authentication information to the [callSIP](https://voximplant.com/docs/references/voxengine/voxengine/callsip) function in the secnario.
+
+The outgoing scenario accepts the `customData` parameter in the following format:
+
+```js  theme={null}
+{"callerid":"16503333333", "number":"16504444444"}
+```
+
+You can provide this parameter when launching the scenario via a **routing rule** or [StartScenarios](https://voximplant.com/docs/references/httpapi/scenarios#startscenarios) Management API method.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-29 11:46
-  total_sources: 368
-  total_fetched: 328
-  llms_txt_count: 293
-  llms_txt_fetched: 254
+  last_updated: 2025-12-29 13:03
+  total_sources: 369
+  total_fetched: 329
+  llms_txt_count: 294
+  llms_txt_fetched: 255
   github_count: 41
   github_fetched: 40
   web_scraped_count: 34
@@ -2068,6 +2068,14 @@ llms_txt:
   file_count: 186
   size: 5.6MB
   last_updated: 2025-11-25 09:17
+- name: ultravox
+  description: Ultravox real-time voice AI API
+  url: https://docs.ultravox.ai/
+  path: docs/llms-txt/ultravox/
+  status: fetched
+  file_count: 140
+  size: 1.7MB
+  last_updated: 2025-12-29 13:03
 - name: upstash
   description: Upstash serverless data platform (Redis, Kafka, QStash)
   url: https://upstash.com/docs/
