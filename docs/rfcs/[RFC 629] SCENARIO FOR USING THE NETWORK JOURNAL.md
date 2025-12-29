@@ -1,5 +1,5 @@
 ---
-title: "SCENARIO FOR USING THE NETWORK JOURNAL"
+title: "Scenario for Using the Network Journal"
 date: March 1974
 ---
 . <CR>   (pause)

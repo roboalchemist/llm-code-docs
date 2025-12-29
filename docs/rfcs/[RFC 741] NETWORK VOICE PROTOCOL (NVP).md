@@ -1,5 +1,5 @@
 ---
-title: "NETWORK VOICE PROTOCOL (NVP)"
+title: "Network Voice Protocol (nvp)"
 ---
 
 # Table of Contents

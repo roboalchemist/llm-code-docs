@@ -1,5 +1,5 @@
 ---
 rfc: 12
-title: "IMP-HOST INTERFACE FLOW DIAGRAMS"
+title: "Imp-host Interface Flow Diagrams"
 date: August 1969
 ---

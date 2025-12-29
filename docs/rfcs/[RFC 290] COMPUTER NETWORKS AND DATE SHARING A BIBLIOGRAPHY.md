@@ -1,6 +1,6 @@
 ---
 rfc: 290
-title: "COMPUTER NETWORKS AND DATE SHARING: A BIBLIOGRAPHY"
+title: "Computer Networks and Date Sharing a Bibliography"
 date: January 1971
 ---
 1.  F.D. Anzelmo, "A Data-Storage Format for Information System

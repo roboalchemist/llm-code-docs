@@ -1,6 +1,6 @@
 ---
 rfc: 974
-title: "MAIL ROUTING AND THE DOMAIN SYSTEM"
+title: "Mail Routing and the Domain System"
 date: January 1986
 ---
 

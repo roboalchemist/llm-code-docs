@@ -1,5 +1,5 @@
 ---
-title: "THE CRONUS VIRTUAL LOCAL NETWORK"
+title: "The Cronus Virtual Local Network"
 date: August 1982
 ---
 .

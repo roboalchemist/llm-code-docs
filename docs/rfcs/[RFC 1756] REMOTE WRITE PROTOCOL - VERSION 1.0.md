@@ -1,6 +1,6 @@
 ---
 rfc: 1756
-title: "REMOTE WRITE PROTOCOL - VERSION 1.0"
+title: "Remote Write Protocol - Version 1.0"
 date: January 1995
 category: Experimental
 ---

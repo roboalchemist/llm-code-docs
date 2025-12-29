@@ -1,5 +1,5 @@
 ---
-title: "TELNET KERMIT OPTION"
+title: "TELNET Kermit Option"
 rfc: 2840
 date: May 2000
 category: Informational---

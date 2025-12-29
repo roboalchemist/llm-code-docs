@@ -1,5 +1,5 @@
 ---
-title: "INTERNET MESSAGE PROTOCOL"
+title: "Internet Message Protocol"
 date: March 1979
 ---
 

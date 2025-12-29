@@ -1,6 +1,6 @@
 ---
 rfc: 860
-title: "TELNET TIMING MARK OPTION"
+title: "TELNET Timing Mark Option"
 date: May 1983
 ---
 

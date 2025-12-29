@@ -1,4 +1,4 @@
 ---
-title: "LAST MONTH'S SURVEY PRODUCED A GRATIFYING AMOUNT OF FEEDBACK CLARIFYING"
+title: "Last Month's Survey Produced a Gratifying Amount of Feedback Clarifying"
 date: September 1974
 ---

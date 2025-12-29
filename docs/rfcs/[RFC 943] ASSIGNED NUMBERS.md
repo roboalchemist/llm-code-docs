@@ -1,5 +1,5 @@
 ---
-title: "ASSIGNED NUMBERS"
+title: "Assigned Numbers"
 rfc: 943
 date: April 1985---
 

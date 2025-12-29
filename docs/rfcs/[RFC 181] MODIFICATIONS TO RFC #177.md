@@ -1,3 +1,3 @@
 ---
-title: "MODIFICATIONS TO RFC #177"
+title: "Modifications to RFC #177"
 ---

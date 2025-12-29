@@ -1,6 +1,6 @@
 ---
 rfc: 858
-title: "TELNET SUPPRESS GO AHEAD OPTION"
+title: "TELNET Suppress Go Ahead Option"
 date: May 1983
 ---
 

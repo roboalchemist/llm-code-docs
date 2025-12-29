@@ -1,4 +1,4 @@
 ---
-title: "MORE ON LOST MESSAGE DETECTION"
+title: "More on Lost Message Detection"
 date: May 1973
 ---

@@ -1,3 +1,3 @@
 ---
-title: "MULTICS SAMPLING TIMEOUT CHANGE"
+title: "Multics Sampling Timeout Change"
 ---

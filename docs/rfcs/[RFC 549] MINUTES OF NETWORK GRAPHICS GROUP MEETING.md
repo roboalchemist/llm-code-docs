@@ -1,5 +1,5 @@
 ---
 rfc: 549
-title: "MINUTES OF NETWORK GRAPHICS GROUP MEETING"
+title: "Minutes of Network Graphics Group Meeting"
 date: July 1973
 ---

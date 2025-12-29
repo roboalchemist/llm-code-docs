@@ -1,6 +1,6 @@
 ---
 rfc: 861
-title: "TELNET EXTENDED OPTIONS - LIST OPTION"
+title: "TELNET Extended Options - List Option"
 date: May 1983
 ---
 

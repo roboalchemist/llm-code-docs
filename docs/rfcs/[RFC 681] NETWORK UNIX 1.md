@@ -1,5 +1,5 @@
 ---
-title: "NETWORK UNIX                               1"
+title: "Network Unix 1"
 ---
 1.  UNIX TIME-SHARING SYSTEM
 KEN THOMPSON AND DENNIS RITCHIE

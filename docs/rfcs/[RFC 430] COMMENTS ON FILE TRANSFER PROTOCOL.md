@@ -1,6 +1,6 @@
 ---
 rfc: 430
-title: "COMMENTS ON FILE TRANSFER PROTOCOL"
+title: "Comments on File Transfer Protocol"
 date: February 1973
 ---
 1. RFC 385, P. 1 (3)

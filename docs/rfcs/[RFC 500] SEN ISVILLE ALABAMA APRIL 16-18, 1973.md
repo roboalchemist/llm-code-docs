@@ -1,5 +1,5 @@
 ---
-title: "SEN ISVILLE ALABAMA / APRIL 16-18, 1973"
+title: "Sen Isville Alabama April 16-18, 1973"
 ---
 abstract
 

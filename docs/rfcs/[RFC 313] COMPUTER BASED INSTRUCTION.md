@@ -1,6 +1,6 @@
 ---
 rfc: 313
-title: "COMPUTER BASED INSTRUCTION"
+title: "Computer Based Instruction"
 date: March 1972
 ---
 1.)  Small to medium scale, dedicated, stand alone systems (such

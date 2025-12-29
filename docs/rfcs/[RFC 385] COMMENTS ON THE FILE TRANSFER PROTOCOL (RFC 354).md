@@ -1,5 +1,5 @@
 ---
-title: "COMMENTS ON THE FILE TRANSFER PROTOCOL (RFC 354)"
+title: "Comments on the File Transfer Protocol (rfc 354)"
 ---
 354.  The comments include errata, further discussion, emphasis
 points, and additions to the protocol.  I shall incorporate these

@@ -1,5 +1,5 @@
 ---
-title: "TO:      ARPA NETWORK USERS"
+title: "To ARPA Network Users"
 ---
 1.  Initial Contact - User Relations  Fred Ebrahimi  (213) 825-7548
 

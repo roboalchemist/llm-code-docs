@@ -1,6 +1,6 @@
 ---
 rfc: 823
-title: "THE DARPA INTERNET GATEWAY"
+title: "The DARPA Internet Gateway"
 date: September 1982
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 911
-title: "EGP GATEWAY UNDER BERKELEY UNIX 4.2"
+title: "EGP Gateway Under Berkeley Unix 4.2"
 date: August 1984
 ---
 ABSTRACT

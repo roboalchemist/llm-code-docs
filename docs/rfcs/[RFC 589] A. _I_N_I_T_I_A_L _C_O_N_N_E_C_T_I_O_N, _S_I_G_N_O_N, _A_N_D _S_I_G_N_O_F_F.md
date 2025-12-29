@@ -1,5 +1,5 @@
 ---
-title: "A.  _I_N_I_T_I_A_L _C_O_N_N_E_C_T_I_O_N, _S_I_G_N_O_N, _A_N_D _S_I_G_N_O_F_F"
+title: "A. _i_n_i_t_i_a_l _c_o_n_n_e_c_t_i_o_n, _s_i_g_n_o_n, _a_n_d _s_i_g_n_o_f_f"
 ---
 1.   If CCN refuses an ICP to a NETRJS socket, it means either that
 there is no free core within the NCP region, or that CCN's

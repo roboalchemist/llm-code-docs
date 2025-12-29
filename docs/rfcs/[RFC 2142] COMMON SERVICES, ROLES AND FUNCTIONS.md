@@ -1,6 +1,6 @@
 ---
 rfc: 2142
-title: "COMMON SERVICES, ROLES AND FUNCTIONS"
+title: "Common Services, Roles and Functions"
 date: May 1997
 category: Standards
 ---

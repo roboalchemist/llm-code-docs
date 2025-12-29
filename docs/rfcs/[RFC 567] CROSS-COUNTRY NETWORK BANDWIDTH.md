@@ -1,4 +1,4 @@
 ---
 rfc: 567
-title: "CROSS-COUNTRY NETWORK BANDWIDTH"
+title: "Cross-country Network Bandwidth"
 ---

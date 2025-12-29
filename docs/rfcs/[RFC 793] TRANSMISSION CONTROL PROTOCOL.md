@@ -1,5 +1,5 @@
 ---
-title: "TRANSMISSION CONTROL PROTOCOL"
+title: "Transmission Control Protocol"
 date: September 1981
 ---
 

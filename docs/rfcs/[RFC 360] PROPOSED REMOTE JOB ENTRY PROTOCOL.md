@@ -1,6 +1,6 @@
 ---
 rfc: 360
-title: "PROPOSED REMOTE JOB ENTRY PROTOCOL"
+title: "Proposed Remote Job Entry Protocol"
 date: June 1972
 category: Protocols,
 ---

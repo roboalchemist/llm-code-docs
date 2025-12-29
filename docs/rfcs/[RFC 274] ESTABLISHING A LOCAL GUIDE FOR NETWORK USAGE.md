@@ -1,5 +1,5 @@
 ---
-title: "ESTABLISHING A LOCAL GUIDE FOR NETWORK USAGE"
+title: "Establishing a Local Guide for Network Usage"
 date: November 1971
 ---
 ...

@@ -1,3 +1,3 @@
 ---
-title: "COMPILATION OF LIST OF RELEVANT SITE REPORTS"
+title: "Compilation of List of Relevant Site Reports"
 ---

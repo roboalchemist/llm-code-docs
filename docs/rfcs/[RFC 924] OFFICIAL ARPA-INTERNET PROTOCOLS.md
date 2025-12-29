@@ -1,6 +1,6 @@
 ---
 rfc: 924
-title: "OFFICIAL ARPA-INTERNET PROTOCOLS"
+title: "Official Arpa-internet Protocols"
 date: October 1984
 ---
 

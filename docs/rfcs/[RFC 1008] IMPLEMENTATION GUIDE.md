@@ -1,5 +1,5 @@
 ---
-title: "IMPLEMENTATION GUIDE"
+title: "Implementation Guide"
 rfc: 1008
 date: June 1987---
 

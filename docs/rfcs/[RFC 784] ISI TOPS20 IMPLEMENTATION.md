@@ -1,6 +1,6 @@
 ---
 rfc: 784
-title: "ISI TOPS20 IMPLEMENTATION"
+title: "Isi Tops20 Implementation"
 date: July 1981
 ---
 1.  MTP receiver for TCP.

@@ -1,6 +1,6 @@
 ---
 rfc: 369
-title: "EVALUATION OF ARPANET SERVICES"
+title: "Evaluation of ARPANET Services"
 date: July 1972
 ---
 ABSTRACT

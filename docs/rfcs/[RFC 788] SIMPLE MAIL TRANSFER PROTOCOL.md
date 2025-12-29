@@ -1,5 +1,5 @@
 ---
-title: "SIMPLE MAIL TRANSFER PROTOCOL"
+title: "Simple Mail Transfer Protocol"
 date: November 1981
 ---
 

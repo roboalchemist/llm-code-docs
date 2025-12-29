@@ -1,6 +1,6 @@
 ---
 rfc: 1588
-title: "WHITE PAGES MEETING REPORT"
+title: "White Pages Meeting Report"
 date: February 1994
 category: Informational
 ---

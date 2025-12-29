@@ -1,5 +1,5 @@
 ---
 rfc: 1012
-title: "BIBLIOGRAPHY OF REQUEST FOR COMMENTS 1 THROUGH 999"
+title: "Bibliography of Request for Comments 1 Through 999"
 date: June 1987
 ---

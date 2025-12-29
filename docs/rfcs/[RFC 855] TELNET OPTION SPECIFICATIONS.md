@@ -1,5 +1,5 @@
 ---
 rfc: 855
-title: "TELNET OPTION SPECIFICATIONS"
+title: "TELNET Option Specifications"
 date: May 1983
 ---

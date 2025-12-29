@@ -1,5 +1,5 @@
 ---
-title: "TELNET OUTPUT LINEFEED DISPOSITION"
+title: "TELNET Output Linefeed Disposition"
 ---
 
 # 1. Command name and code

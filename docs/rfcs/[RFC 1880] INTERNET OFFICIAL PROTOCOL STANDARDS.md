@@ -1,6 +1,6 @@
 ---
 rfc: 1880
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: November 1995
 category: Standards
 obsoletes: [1800, 1780, 1720, 1610]

@@ -1,6 +1,6 @@
 ---
 rfc: 932
-title: "A SUBNETWORK ADDRESSING SCHEME"
+title: "A Subnetwork Addressing Scheme"
 date: January 1985
 ---
 

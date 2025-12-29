@@ -1,6 +1,6 @@
 ---
 rfc: 1000
-title: "THE REQUEST FOR COMMENTS REFERENCE GUIDE"
+title: "The Request for Comments Reference Guide"
 date: August 1987
 ---
 

@@ -1,3 +1,3 @@
 ---
-title: "GRAPHICS IMPLEMENTATION AND CONCEPTUALIZATION AT ARC"
+title: "Graphics Implementation and Conceptualization at Arc"
 ---

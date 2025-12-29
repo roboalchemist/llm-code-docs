@@ -1,6 +1,6 @@
 ---
 rfc: 141
-title: "COMMENTS ON RFC 141 (A FILE TRANSFER PROTOCOL)"
+title: "Comments on RFC 141 (a File Transfer Protocol)"
 date: April 1971
 ---
 1.  A file transfer protocol is needed.  Bushan's proposal would

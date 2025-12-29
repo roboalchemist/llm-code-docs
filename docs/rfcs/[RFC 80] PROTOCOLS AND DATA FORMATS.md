@@ -1,6 +1,6 @@
 ---
 rfc: 80
-title: "PROTOCOLS AND DATA FORMATS"
+title: "Protocols and Data Formats"
 date: December 1970
 ---
 

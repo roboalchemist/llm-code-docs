@@ -1,6 +1,6 @@
 ---
 rfc: 437
-title: "DATA RECONFIGURATION SERVICE AT UCSB"
+title: "Data Reconfiguration Service at UCSB"
 date: June 1973
 ---
 1. (Note that without this socket switching, processes would be

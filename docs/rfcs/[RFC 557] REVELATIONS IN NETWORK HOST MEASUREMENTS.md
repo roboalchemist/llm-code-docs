@@ -1,6 +1,6 @@
 ---
 rfc: 557
-title: "REVELATIONS IN NETWORK HOST MEASUREMENTS"
+title: "Revelations in Network Host Measurements"
 date: August 1973
 ---
 10.  I feel it is important to circulate those results to the RFC

@@ -1,5 +1,5 @@
 ---
 rfc: 849
-title: "SUGGESTIONS FOR IMPROVED HOST TABLE DISTRIBUTION"
+title: "Suggestions for Improved Host Table Distribution"
 date: May 1983
 ---

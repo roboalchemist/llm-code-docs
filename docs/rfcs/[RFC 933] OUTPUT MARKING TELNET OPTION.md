@@ -1,6 +1,6 @@
 ---
 rfc: 933
-title: "OUTPUT MARKING TELNET OPTION"
+title: "Output Marking TELNET Option"
 date: January 1985
 ---
 

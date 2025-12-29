@@ -1,6 +1,6 @@
 ---
 rfc: 164
-title: "MINUTES OF NETWORK WORKING GROUP MEETING"
+title: "Minutes of Network Working Group Meeting"
 date: May 1971
 ---
 

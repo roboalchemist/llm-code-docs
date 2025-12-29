@@ -1,3 +1,3 @@
 ---
-title: "STANDARDIZATION OF HOST MNEUMONICS"
+title: "Standardization of Host Mneumonics"
 ---

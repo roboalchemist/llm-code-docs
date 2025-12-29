@@ -1,6 +1,6 @@
 ---
 rfc: 783
-title: "THE TFTP PROTOCOL (REVISION 2)"
+title: "The TFTP Protocol (revision 2)"
 ---
 
 # 1. Purpose

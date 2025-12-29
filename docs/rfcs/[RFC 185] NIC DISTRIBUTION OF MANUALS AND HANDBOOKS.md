@@ -1,3 +1,3 @@
 ---
-title: "NIC DISTRIBUTION OF MANUALS AND HANDBOOKS"
+title: "NIC Distribution of Manuals and Handbooks"
 ---

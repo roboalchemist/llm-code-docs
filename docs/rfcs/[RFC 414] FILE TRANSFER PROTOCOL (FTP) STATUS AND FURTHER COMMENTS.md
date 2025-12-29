@@ -1,5 +1,5 @@
 ---
 rfc: 414
-title: "FILE TRANSFER PROTOCOL (FTP) STATUS AND FURTHER COMMENTS"
+title: "File Transfer Protocol (ftp) Status and Further Comments"
 date: November 1972
 ---

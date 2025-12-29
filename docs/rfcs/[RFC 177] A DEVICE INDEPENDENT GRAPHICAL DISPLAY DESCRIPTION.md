@@ -1,5 +1,5 @@
 ---
-title: "A DEVICE INDEPENDENT GRAPHICAL DISPLAY DESCRIPTION"
+title: "A Device Independent Graphical Display Description"
 date: June 1971
 updates: [125]
 ---

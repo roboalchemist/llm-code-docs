@@ -1,5 +1,5 @@
 ---
-title: "NAME, ADDRESSES, PORTS, AND ROUTES"
+title: "Name, Addresses, Ports, and Routes"
 ---
 1.  Introduction
 

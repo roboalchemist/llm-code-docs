@@ -1,3 +1,3 @@
 ---
-title: "NEW MULTICS NETWORK SOFTWARE FEATURES"
+title: "New Multics Network Software Features"
 ---

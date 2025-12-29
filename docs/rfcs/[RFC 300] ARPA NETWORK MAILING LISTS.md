@@ -1,5 +1,5 @@
 ---
 rfc: 300
-title: "ARPA NETWORK MAILING LISTS"
+title: "ARPA Network Mailing Lists"
 date: January 1972
 ---

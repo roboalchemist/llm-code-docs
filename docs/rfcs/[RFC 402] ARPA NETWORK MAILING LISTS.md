@@ -1,6 +1,6 @@
 ---
 rfc: 402
-title: "ARPA NETWORK MAILING LISTS"
+title: "ARPA Network Mailing Lists"
 date: October 1972
 obsoletes: [363                                           26]
 ---

@@ -1,6 +1,6 @@
 ---
 rfc: 90
-title: "CCN AS A NETWORK SERVICE CENTER"
+title: "Ccn as a Network Service Center"
 date: January 1971
 ---
 1. Processors:

@@ -1,6 +1,6 @@
 ---
 rfc: 578
-title: "USING MIT-MATHLAB MACSYMA FROM MIT-DMS MUDDLE"
+title: "Using Mit-mathlab Macsyma from Mit-dms Muddle"
 date: October 1973
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 91
-title: "A PROPOSED USER-USER PROTOCOL"
+title: "A Proposed User-user Protocol"
 date: December 1970
 ---
 1.   The notion of a (logical) _record_ should be present, and the

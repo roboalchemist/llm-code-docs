@@ -1,6 +1,6 @@
 ---
 rfc: 675
-title: "SPECIFICATION OF INTERNET TRANSMISSION CONTROL PROGRAM"
+title: "Specification of Internet Transmission Control Program"
 date: December 1974
 ---
 

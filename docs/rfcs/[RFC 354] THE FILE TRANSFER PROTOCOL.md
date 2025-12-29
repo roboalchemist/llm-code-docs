@@ -1,6 +1,6 @@
 ---
 rfc: 354
-title: "THE FILE TRANSFER PROTOCOL"
+title: "The File Transfer Protocol"
 ---
 
 # I. INTRODUCTION

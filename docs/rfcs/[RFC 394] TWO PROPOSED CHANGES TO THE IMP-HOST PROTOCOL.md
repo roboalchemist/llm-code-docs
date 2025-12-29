@@ -1,4 +1,4 @@
 ---
-title: "TWO PROPOSED CHANGES TO THE IMP-HOST PROTOCOL"
+title: "Two Proposed Changes to the Imp-host Protocol"
 date: September 1972
 ---

@@ -1,6 +1,6 @@
 ---
 rfc: 101
-title: "NOTES ON THE NETWORK WORKING GROUP MEETING"
+title: "Notes on the Network Working Group Meeting"
 date: May 1970
 ---
 10.  In April-May 1970 it was clear that SRI was headed toward a

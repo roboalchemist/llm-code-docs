@@ -1,6 +1,6 @@
 ---
 rfc: 808
-title: "SUMMARY OF COMPUTER MAIL SERVICES MEETING"
+title: "Summary of Computer Mail Services Meeting"
 date: March 1982
 ---
 1.  Present State of Affairs

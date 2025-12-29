@@ -1,6 +1,6 @@
 ---
 rfc: 1780
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: March 1995
 category: Standards
 ---

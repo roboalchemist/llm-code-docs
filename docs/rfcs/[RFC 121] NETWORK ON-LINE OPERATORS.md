@@ -1,6 +1,6 @@
 ---
 rfc: 121
-title: "NETWORK ON-LINE OPERATORS"
+title: "Network On-line Operators"
 date: April 1971
 ---
 

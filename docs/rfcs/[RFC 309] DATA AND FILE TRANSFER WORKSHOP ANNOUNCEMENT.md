@@ -1,5 +1,5 @@
 ---
-title: "DATA AND FILE TRANSFER WORKSHOP ANNOUNCEMENT"
+title: "Data and File Transfer Workshop Announcement"
 date: March 1972
 ---
 1. The Data Trnasfer Protocol, NWG/RFC # 264

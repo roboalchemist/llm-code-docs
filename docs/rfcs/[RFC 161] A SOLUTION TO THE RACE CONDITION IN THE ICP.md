@@ -1,5 +1,5 @@
 ---
 rfc: 161
-title: "A SOLUTION TO THE RACE CONDITION IN THE ICP"
+title: "A Solution to the Race Condition in the ICP"
 date: May 1971
 ---

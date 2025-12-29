@@ -1,5 +1,5 @@
 ---
-title: "INTERNET NUMBERS"
+title: "Internet Numbers"
 rfc: 1117
 date: August 1989---
 

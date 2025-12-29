@@ -1,6 +1,6 @@
 ---
 rfc: 1047
-title: "DUPLICATE MESSAGES AND SMTP"
+title: "Duplicate Messages and SMTP"
 date: February 1988
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 254
-title: "SCENARIOS FOR USING ARPANET COMPUTERS"
+title: "Scenarios for Using ARPANET Computers"
 date: October 1971
 ---
 

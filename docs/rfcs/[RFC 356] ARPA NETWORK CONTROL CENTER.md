@@ -1,5 +1,5 @@
 ---
-title: "ARPA NETWORK CONTROL CENTER"
+title: "ARPA Network Control Center"
 ---
 
 # 1. Schedule

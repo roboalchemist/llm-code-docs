@@ -1,6 +1,6 @@
 ---
 rfc: 24
-title: "DOCUMENTATION CONVENTIONS"
+title: "Documentation Conventions"
 ---
 1.  "Network Working Group"
 "Request for Comnments: X" (X underscored)

@@ -1,5 +1,5 @@
 ---
-title: "TELNET PROTOCOL SPECIFICATION"
+title: "TELNET Protocol Specification"
 date: June 1980
 ---
 1.  When a TELNET connection is first established, each end is

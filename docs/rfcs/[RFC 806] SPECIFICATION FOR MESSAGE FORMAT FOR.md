@@ -1,6 +1,6 @@
 ---
 rfc: 806
-title: "SPECIFICATION FOR MESSAGE FORMAT FOR"
+title: "Specification for Message Format for"
 date: September 1981
 ---
 

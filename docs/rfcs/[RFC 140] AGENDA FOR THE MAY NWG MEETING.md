@@ -1,3 +1,3 @@
 ---
-title: "AGENDA FOR THE MAY NWG MEETING"
+title: "Agenda for the May NWG Meeting"
 ---

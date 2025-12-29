@@ -1,3 +1,3 @@
 ---
-title: "A TNLS QUICK REFERENCE CARD IS AVAILABLE"
+title: "A Tnls Quick Reference Card Is Available"
 ---

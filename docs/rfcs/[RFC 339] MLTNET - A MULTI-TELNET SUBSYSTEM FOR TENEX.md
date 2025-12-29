@@ -1,5 +1,5 @@
 ---
-title: "MLTNET - A \"MULTI-TELNET\" SUBSYSTEM FOR TENEX"
+title: "Mltnet - a Multi-telnet Subsystem for Tenex"
 ---
 
 # INTRODUCTION

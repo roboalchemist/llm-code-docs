@@ -1,5 +1,5 @@
 ---
 rfc: 190
-title: "DEC PDP-10 -- IMLAC COMMUNICATION SYSTEM"
+title: "Dec Pdp-10 -- Imlac Communication System"
 date: July 1971
 ---

@@ -1,6 +1,6 @@
 ---
 rfc: 952
-title: "DOD INTERNET HOST TABLE SPECIFICATION"
+title: "DOD Internet Host Table Specification"
 date: October 1985
 ---
 

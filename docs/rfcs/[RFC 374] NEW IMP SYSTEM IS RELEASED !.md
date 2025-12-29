@@ -1,4 +1,4 @@
 ---
-title: "NEW IMP SYSTEM IS RELEASED !"
+title: "New IMP System Is Released !"
 date: July 1972
 ---

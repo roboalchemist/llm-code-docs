@@ -1,5 +1,5 @@
 ---
 rfc: 545
-title: "OF WHAT QUALITY BE THE UCSB RESOURCE EVALUATORS?"
+title: "Of What Quality Be the UCSB Resource Evaluators"
 date: July 1973
 ---

@@ -1,6 +1,6 @@
 ---
 rfc: 1035
-title: "DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION"
+title: "Domain Names - Implementation and Specification"
 date: November 1987
 ---
 

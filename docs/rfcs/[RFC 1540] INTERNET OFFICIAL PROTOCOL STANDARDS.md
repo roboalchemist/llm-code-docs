@@ -1,6 +1,6 @@
 ---
 rfc: 1540
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: October 1993
 category: Standards
 ---

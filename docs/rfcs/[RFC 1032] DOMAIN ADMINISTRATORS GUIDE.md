@@ -1,6 +1,6 @@
 ---
 rfc: 1032
-title: "DOMAIN ADMINISTRATORS GUIDE"
+title: "Domain Administrators Guide"
 date: November 1987
 ---
 1. Send electronic mail to HOSTMASTER@SRI-NIC.ARPA

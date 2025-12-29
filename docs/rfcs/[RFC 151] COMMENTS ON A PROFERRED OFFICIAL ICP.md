@@ -1,5 +1,5 @@
 ---
-title: "COMMENTS ON A PROFERRED OFFICIAL ICP"
+title: "Comments on a Proferred Official ICP"
 date: October 1969
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 178
-title: "NETWORK GRAPHIC ATTENTION HANDLING"
+title: "Network Graphic Attention Handling"
 date: June 1971
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "TCP AND IP BAKE OFF"
+title: "TCP and IP Bake Off"
 rfc: 1025
 date: September 1987---
 

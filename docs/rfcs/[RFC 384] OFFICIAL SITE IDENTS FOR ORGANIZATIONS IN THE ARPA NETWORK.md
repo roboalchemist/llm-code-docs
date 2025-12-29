@@ -1,6 +1,6 @@
 ---
 rfc: 384
-title: "OFFICIAL SITE IDENTS FOR ORGANIZATIONS IN THE ARPA NETWORK"
+title: "Official Site Idents for Organizations in the ARPA Network"
 date: August 1972
 obsoletes: [289                                            28]
 ---

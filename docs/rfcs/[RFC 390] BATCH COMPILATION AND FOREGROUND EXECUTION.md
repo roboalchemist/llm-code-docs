@@ -1,6 +1,6 @@
 ---
 rfc: 390
-title: "BATCH COMPILATION AND FOREGROUND EXECUTION"
+title: "Batch Compilation and Foreground Execution"
 ---
 3.141
 THE SQUARE ROOT OF      3.141 IS    1.772

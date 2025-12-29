@@ -1,6 +1,6 @@
 ---
 rfc: 854
-title: "TELNET PROTOCOL SPECIFICATION"
+title: "TELNET Protocol Specification"
 date: May 1983
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 698
-title: "TELNET EXTENDED ASCII OPTION"
+title: "TELNET Extended ASCII Option"
 ---
 1. Command Name and Code.
 

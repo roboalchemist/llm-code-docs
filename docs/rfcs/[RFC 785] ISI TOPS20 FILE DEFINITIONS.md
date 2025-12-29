@@ -1,6 +1,6 @@
 ---
 rfc: 785
-title: "ISI TOPS20 FILE DEFINITIONS"
+title: "Isi Tops20 File Definitions"
 date: July 1981
 ---
 

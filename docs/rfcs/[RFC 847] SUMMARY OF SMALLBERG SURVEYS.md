@@ -1,5 +1,5 @@
 ---
 rfc: 847
-title: "SUMMARY OF SMALLBERG SURVEYS"
+title: "Summary of Smallberg Surveys"
 date: December 1982
 ---

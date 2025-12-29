@@ -1,6 +1,6 @@
 ---
 rfc: 885
-title: "TELNET END OF RECORD OPTION"
+title: "TELNET End of Record Option"
 date: December 1983
 ---
 

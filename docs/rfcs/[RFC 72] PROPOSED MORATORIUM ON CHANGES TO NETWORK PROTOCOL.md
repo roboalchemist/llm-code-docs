@@ -1,3 +1,3 @@
 ---
-title: "PROPOSED MORATORIUM ON CHANGES TO NETWORK PROTOCOL"
+title: "Proposed Moratorium on Changes to Network Protocol"
 ---

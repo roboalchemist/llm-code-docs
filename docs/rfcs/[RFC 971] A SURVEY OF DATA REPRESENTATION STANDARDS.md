@@ -1,6 +1,6 @@
 ---
 rfc: 971
-title: "A SURVEY OF DATA REPRESENTATION STANDARDS"
+title: "A Survey of Data Representation Standards"
 date: January 1986
 ---
 

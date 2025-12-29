@@ -1,3 +1,3 @@
 ---
-title: "A SEPTEMBER NETWORK WORKING GROUP MEETING"
+title: "A September Network Working Group Meeting"
 ---

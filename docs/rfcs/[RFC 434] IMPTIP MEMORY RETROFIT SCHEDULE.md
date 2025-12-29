@@ -1,4 +1,4 @@
 ---
-title: "IMP/TIP MEMORY RETROFIT SCHEDULE"
+title: "Imptip Memory Retrofit Schedule"
 date: January 1973
 ---

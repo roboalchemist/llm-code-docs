@@ -1,6 +1,6 @@
 ---
 rfc: 21
-title: "SDC                             UCLA"
+title: "Sdc Ucla"
 ---
 1.  Revisions to BBN memo 1822
 

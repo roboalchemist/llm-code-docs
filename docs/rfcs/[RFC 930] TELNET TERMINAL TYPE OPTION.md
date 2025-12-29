@@ -1,6 +1,6 @@
 ---
 rfc: 930
-title: "TELNET TERMINAL TYPE OPTION"
+title: "TELNET Terminal Type Option"
 date: January 1985
 ---
 

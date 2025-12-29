@@ -1,6 +1,6 @@
 ---
 rfc: 951
-title: "BOOTSTRAP PROTOCOL (BOOTP)"
+title: "Bootstrap Protocol (bootp)"
 date: September 1985
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "USER/SERVER SITE PROTOCOL"
+title: "Userserver Site Protocol"
 date: March 1971
 ---
 1.)    Does system operate on keyboard terminal input on one

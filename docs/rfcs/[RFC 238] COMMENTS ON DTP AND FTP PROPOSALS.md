@@ -1,5 +1,5 @@
 ---
-title: "COMMENTS ON DTP AND FTP PROPOSALS"
+title: "Comments on DTP and FTP Proposals"
 category: Updates:
 ---
 1. In the Descriptor/Count mode, the Information Separators should

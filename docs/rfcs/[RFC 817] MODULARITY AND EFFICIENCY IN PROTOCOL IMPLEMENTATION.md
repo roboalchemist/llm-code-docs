@@ -1,5 +1,5 @@
 ---
-title: "MODULARITY AND EFFICIENCY IN PROTOCOL IMPLEMENTATION"
+title: "Modularity and Efficiency in Protocol Implementation"
 ---
 1.  Introduction
 

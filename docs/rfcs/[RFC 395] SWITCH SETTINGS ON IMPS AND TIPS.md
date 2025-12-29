@@ -1,5 +1,5 @@
 ---
-title: "SWITCH SETTINGS ON IMPS AND TIPS"
+title: "Switch Settings on Imps and Tips"
 date: October 1972
 ---
 1.   Sense switches 1,2,3 and 4:  OFF (DOWN)

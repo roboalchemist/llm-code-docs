@@ -1,6 +1,6 @@
 ---
 rfc: 327
-title: "DATA AND FILE TRANSFER WORKSHOP NOTES"
+title: "Data and File Transfer Workshop Notes"
 date: April 1972
 ---
 1972.

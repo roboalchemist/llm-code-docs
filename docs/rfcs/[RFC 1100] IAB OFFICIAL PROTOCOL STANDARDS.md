@@ -1,6 +1,6 @@
 ---
 rfc: 1100
-title: "IAB OFFICIAL PROTOCOL STANDARDS"
+title: "IAB Official Protocol Standards"
 date: April 1989
 ---
 

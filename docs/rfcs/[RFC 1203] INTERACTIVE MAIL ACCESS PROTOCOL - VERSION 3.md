@@ -1,6 +1,6 @@
 ---
 rfc: 1203
-title: "INTERACTIVE MAIL ACCESS PROTOCOL - VERSION 3"
+title: "Interactive Mail Access Protocol - Version 3"
 date: February 1991
 ---
 

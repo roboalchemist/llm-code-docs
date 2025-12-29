@@ -1,5 +1,5 @@
 ---
 rfc: 23
-title: "TRANSMISSION OF MULTIPLE CONTROL MESSAGES"
+title: "Transmission of Multiple Control Messages"
 date: October 1969
 ---

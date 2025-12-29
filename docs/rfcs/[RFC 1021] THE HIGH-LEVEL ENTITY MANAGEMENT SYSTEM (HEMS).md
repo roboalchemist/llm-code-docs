@@ -1,5 +1,5 @@
 ---
-title: "THE HIGH-LEVEL ENTITY MANAGEMENT SYSTEM (HEMS)"
+title: "The High-level Entity Management System (hems)"
 date: October 1987
 ---
 

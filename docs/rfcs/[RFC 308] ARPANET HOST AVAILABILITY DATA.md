@@ -1,5 +1,5 @@
 ---
-title: "ARPANET HOST AVAILABILITY DATA"
+title: "ARPANET Host Availability Data"
 ---
 1. to inform the Network Working Group of the
 existence of this information gathering service

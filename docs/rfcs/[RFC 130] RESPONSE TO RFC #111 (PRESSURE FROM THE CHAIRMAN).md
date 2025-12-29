@@ -1,5 +1,5 @@
 ---
 rfc: 130
-title: "RESPONSE TO RFC #111 (PRESSURE FROM THE CHAIRMAN)"
+title: "Response to RFC #111 (pressure from the Chairman)"
 date: April 1971
 ---

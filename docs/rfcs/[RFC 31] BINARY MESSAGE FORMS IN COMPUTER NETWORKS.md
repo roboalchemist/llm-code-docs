@@ -1,6 +1,6 @@
 ---
 rfc: 31
-title: "BINARY MESSAGE FORMS IN COMPUTER NETWORKS"
+title: "Binary Message Forms in Computer Networks"
 date: February 1968
 ---
 

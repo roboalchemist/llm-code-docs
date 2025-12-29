@@ -1,5 +1,5 @@
 ---
-title: "A MULTI-LAN SYSTEM OF ETHERNETS"
+title: "A Multi-lan System of Ethernets"
 date: May 1988
 ---
 ABSTRACT

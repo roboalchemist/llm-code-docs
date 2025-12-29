@@ -1,6 +1,6 @@
 ---
 rfc: 901
-title: "OFFICIAL ARPA-INTERNET PROTOCOLS"
+title: "Official Arpa-internet Protocols"
 date: June 1984
 ---
 

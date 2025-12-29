@@ -1,5 +1,5 @@
 ---
-title: "TELNET OUTPUT FORMFEED DISPOSITION OPTION"
+title: "TELNET Output Formfeed Disposition Option"
 ---
 
 # 1. Command name and code

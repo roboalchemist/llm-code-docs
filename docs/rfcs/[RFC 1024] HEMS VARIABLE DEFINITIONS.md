@@ -1,5 +1,5 @@
 ---
-title: "HEMS VARIABLE DEFINITIONS"
+title: "HEMS Variable Definitions"
 date: October 1987
 ---
 

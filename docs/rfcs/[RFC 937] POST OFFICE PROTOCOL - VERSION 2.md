@@ -1,6 +1,6 @@
 ---
 rfc: 937
-title: "POST OFFICE PROTOCOL - VERSION 2"
+title: "Post Office Protocol - Version 2"
 date: February 1985
 ---
 

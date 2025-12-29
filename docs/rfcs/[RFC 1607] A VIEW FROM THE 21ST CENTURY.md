@@ -1,6 +1,6 @@
 ---
 rfc: 1607
-title: "A VIEW FROM THE 21ST CENTURY"
+title: "A View from the 21st Century"
 date: April 1994
 category: Informational
 ---

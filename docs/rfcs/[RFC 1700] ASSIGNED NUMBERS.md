@@ -1,5 +1,5 @@
 ---
-title: "ASSIGNED NUMBERS"
+title: "Assigned Numbers"
 rfc: 1700
 date: October 1994
 category: Standards---

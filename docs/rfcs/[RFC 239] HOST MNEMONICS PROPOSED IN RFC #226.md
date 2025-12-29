@@ -1,5 +1,5 @@
 ---
-title: "HOST MNEMONICS PROPOSED IN RFC #226"
+title: "Host Mnemonics Proposed in RFC #226"
 date: September 1971
 ---
 1.  The set you suggest was created, I assume, by the systems

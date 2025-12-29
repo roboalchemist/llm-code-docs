@@ -1,5 +1,5 @@
 ---
-title: "POST OFFICE PROTOCOL"
+title: "Post Office Protocol"
 rfc: 918
 date: October 1984---
 

@@ -1,4 +1,4 @@
 ---
-title: "STRUCTURE OF THE MAY NWG MTG."
+title: "Structure of the May NWG Mtg."
 updates: [99]
 ---

@@ -1,6 +1,6 @@
 ---
 rfc: 508
-title: "REAL-TIME DATA TRANSMISSION ON THE ARPANET"
+title: "Real-time Data Transmission on the ARPANET"
 date: May 1973
 ---
 

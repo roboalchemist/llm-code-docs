@@ -1,6 +1,6 @@
 ---
 rfc: 1083
-title: "IAB OFFICIAL PROTOCOL STANDARDS"
+title: "IAB Official Protocol Standards"
 date: December 1988
 ---
 

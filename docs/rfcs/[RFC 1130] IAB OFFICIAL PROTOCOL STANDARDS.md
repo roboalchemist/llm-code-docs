@@ -1,6 +1,6 @@
 ---
 rfc: 1130
-title: "IAB OFFICIAL PROTOCOL STANDARDS"
+title: "IAB Official Protocol Standards"
 date: October 1989
 ---
 

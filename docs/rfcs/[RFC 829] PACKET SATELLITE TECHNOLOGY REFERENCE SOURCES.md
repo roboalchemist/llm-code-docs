@@ -1,6 +1,6 @@
 ---
 rfc: 829
-title: "PACKET SATELLITE TECHNOLOGY REFERENCE SOURCES"
+title: "Packet Satellite Technology Reference Sources"
 date: November 1982
 ---
 ABSTRACT

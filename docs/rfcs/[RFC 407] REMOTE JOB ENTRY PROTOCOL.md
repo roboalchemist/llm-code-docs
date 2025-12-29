@@ -1,5 +1,5 @@
 ---
-title: "REMOTE JOB ENTRY PROTOCOL"
+title: "Remote Job Entry Protocol"
 ---
 
 # INTRODUCTION

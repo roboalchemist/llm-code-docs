@@ -1,5 +1,5 @@
 ---
-title: "IP DATAGRAM REASSEMBLY ALGORITHMS"
+title: "IP Datagram Reassembly Algorithms"
 ---
 1.  Introduction
 

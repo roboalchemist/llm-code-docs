@@ -1,6 +1,6 @@
 ---
 rfc: 916
-title: "RELIABLE ASYNCHRONOUS TRANSFER PROTOCOL (RATP)"
+title: "Reliable Asynchronous Transfer Protocol (ratp)"
 date: October 1984
 ---
 

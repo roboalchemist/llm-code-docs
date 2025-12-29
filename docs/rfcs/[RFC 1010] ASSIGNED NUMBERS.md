@@ -1,5 +1,5 @@
 ---
-title: "ASSIGNED NUMBERS"
+title: "Assigned Numbers"
 rfc: 1010
 date: May 1987---
 

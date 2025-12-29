@@ -1,5 +1,5 @@
 ---
-title: "HOST ACCESS PROTOCOL SPECIFICATION"
+title: "Host Access Protocol Specification"
 date: July 1984
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "CONVERSATION WITH BOB KAHN"
+title: "Conversation with Bob Kahn"
 date: April 1969
 ---
 1.  Tracing

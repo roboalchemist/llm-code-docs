@@ -1,5 +1,5 @@
 ---
-title: "GRAPHICS PROTOCOL - LEVEL 0 ONLY"
+title: "Graphics Protocol - Level 0 Only"
 date: January 1972
 ---
 

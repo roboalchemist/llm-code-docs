@@ -1,4 +1,4 @@
 ---
-title: "\"VERY DISTANT\" HOST INTERFACE"
+title: "Very Distant Host Interface"
 date: December 1971
 ---

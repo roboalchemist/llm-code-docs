@@ -1,5 +1,5 @@
 ---
 rfc: 39
-title: "COMMENTS ON PROTOCOL RE: NWG/RFC #36"
+title: "Comments on Protocol Re Nwgrfc #36"
 date: March 1970
 ---

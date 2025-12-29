@@ -1,6 +1,6 @@
 ---
 rfc: 1600
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: March 1994
 category: Standards
 ---

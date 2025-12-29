@@ -1,3 +1,3 @@
 ---
-title: "FTPSRV - TENEX FTP EXTENSIONS FOR PAGED FILES"
+title: "Ftpsrv - Tenex FTP Extensions for Paged Files"
 ---

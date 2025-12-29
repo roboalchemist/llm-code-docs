@@ -1,6 +1,6 @@
 ---
 rfc: 1732
-title: "IMAP4 COMPATIBILITY WITH IMAP2 AND IMAP2BIS"
+title: "Imap4 Compatibility with Imap2 and Imap2bis"
 date: December 1994
 category: Informational
 ---

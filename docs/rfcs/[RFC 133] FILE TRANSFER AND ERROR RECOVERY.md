@@ -1,6 +1,6 @@
 ---
 rfc: 133
-title: "FILE TRANSFER AND ERROR RECOVERY"
+title: "File Transfer and Error Recovery"
 date: April 1971
 ---
 ...                     (waiting)

@@ -1,3 +1,3 @@
 ---
-title: "NIC USER DIRECTORIES AT SRI-ARC"
+title: "NIC User Directories at Sri-arc"
 ---

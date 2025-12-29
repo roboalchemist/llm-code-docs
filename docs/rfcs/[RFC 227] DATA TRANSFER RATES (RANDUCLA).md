@@ -1,5 +1,5 @@
 ---
 rfc: 227
-title: "DATA TRANSFER RATES (RAND/UCLA)"
+title: "Data Transfer Rates (randucla)"
 date: September 1971
 ---

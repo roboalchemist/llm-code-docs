@@ -1,6 +1,6 @@
 ---
 rfc: 1034
-title: "DOMAIN NAMES - CONCEPTS AND FACILITIES"
+title: "Domain Names - Concepts and Facilities"
 date: November 1987
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 27
-title: "DOCUMENTATION CONVENTIONS"
+title: "Documentation Conventions"
 ---
 1.  "Network Working Group"
 "Request for Comments: X" (X underscored)

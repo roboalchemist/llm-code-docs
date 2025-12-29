@@ -1,6 +1,6 @@
 ---
 rfc: 798
-title: "DECODING FACSIMILE DATA FROM THE RAPICOM 450"
+title: "Decoding Facsimile Data from the Rapicom 450"
 date: September 1981
 ---
 

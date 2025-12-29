@@ -1,3 +1,3 @@
 ---
-title: "A SOFTWARE CONSULTING SERVICE FOR NETWORK USERS"
+title: "A Software Consulting Service for Network Users"
 ---

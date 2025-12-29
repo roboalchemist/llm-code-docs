@@ -1,6 +1,6 @@
 ---
 rfc: 963
-title: "SOME PROBLEMS WITH THE SPECIFICATION OF THE"
+title: "Some Problems with the Specification of the"
 date: November 1985
 ---
 ABSTRACT

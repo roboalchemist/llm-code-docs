@@ -1,3 +1,3 @@
 ---
-title: "ASCII TEXT FILE OF HOSTNAMES"
+title: "ASCII Text File of Hostnames"
 ---

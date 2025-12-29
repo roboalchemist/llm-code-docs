@@ -1,6 +1,6 @@
 ---
 rfc: 1168
-title: "INTERMAIL AND COMMERCIAL MAIL RELAY SERVICES"
+title: "Intermail and Commercial Mail Relay Services"
 date: July 1990
 ---
 

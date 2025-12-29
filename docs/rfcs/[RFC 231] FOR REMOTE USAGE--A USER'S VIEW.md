@@ -1,5 +1,5 @@
 ---
-title: "FOR REMOTE USAGE--A USER'S VIEW"
+title: "For Remote Usage--a User's View"
 date: September 1971
 ---
 

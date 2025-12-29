@@ -1,6 +1,6 @@
 ---
 rfc: 995
-title: "INTERNATIONAL ORGANIZATION FOR STANDARDIZATION"
+title: "International Organization for Standardization"
 date: April 1986
 ---
 4.1   Reference Model Definitions  . . . . . . . . . . . . . . . . .   9

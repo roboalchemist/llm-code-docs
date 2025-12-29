@@ -1,6 +1,6 @@
 ---
 rfc: 1011
-title: "OFFICIAL INTERNET PROTOCOLS"
+title: "Official Internet Protocols"
 date: May 1987
 ---
 

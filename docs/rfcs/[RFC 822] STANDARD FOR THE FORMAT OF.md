@@ -1,5 +1,5 @@
 ---
-title: "STANDARD FOR THE FORMAT OF"
+title: "Standard for the Format of"
 ---
 
 # Table of Contents

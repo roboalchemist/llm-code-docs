@@ -1,5 +1,5 @@
 ---
-title: "THE TFTP PROTOCOL (REVISION 2)"
+title: "The TFTP Protocol (revision 2)"
 date: July 1992
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 329
-title: "ARPA NETWORK MAILING LISTS"
+title: "ARPA Network Mailing Lists"
 date: May 1972
 obsoletes: [303                                               17]
 ---

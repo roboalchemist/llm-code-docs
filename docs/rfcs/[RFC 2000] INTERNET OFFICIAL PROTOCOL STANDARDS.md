@@ -1,6 +1,6 @@
 ---
 rfc: 2000
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: February 1997
 category: Standards
 obsoletes: [1920, 1880, 1800, 1780, 1720]

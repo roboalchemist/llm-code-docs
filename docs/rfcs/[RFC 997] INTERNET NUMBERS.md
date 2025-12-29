@@ -1,5 +1,5 @@
 ---
-title: "INTERNET NUMBERS"
+title: "Internet Numbers"
 rfc: 997
 date: March 1987---
 

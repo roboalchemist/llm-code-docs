@@ -1,4 +1,4 @@
 ---
-title: "SITE CERTIFICATION - LINCOLN LABS 360/67"
+title: "Site Certification - Lincoln Labs 36067"
 date: July 1971
 ---

@@ -1,5 +1,5 @@
 ---
-title: "TELNET OUTPUT VERTICAL TAB DISPOSITION OPTION"
+title: "TELNET Output Vertical Tab Disposition Option"
 ---
 
 # 1. Command name and code

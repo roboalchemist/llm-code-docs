@@ -1,6 +1,6 @@
 ---
 rfc: 83
-title: "LANGUAGE-MACHINE FOR DATA RECONFIGURATION"
+title: "Language-machine for Data Reconfiguration"
 date: December 1970
 ---
 

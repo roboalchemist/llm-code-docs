@@ -1,6 +1,6 @@
 ---
 rfc: 338
-title: "EBCDIC/ASCII MAPPING FOR NETWORK RJE"
+title: "Ebcdicascii Mapping for Network RJE"
 date: May 1972
 ---
 1. The 360 program may be intended to manipulate ASCII text from

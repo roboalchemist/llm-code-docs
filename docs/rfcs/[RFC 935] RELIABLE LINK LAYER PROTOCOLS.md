@@ -1,6 +1,6 @@
 ---
 rfc: 935
-title: "RELIABLE LINK LAYER PROTOCOLS"
+title: "Reliable Link Layer Protocols"
 date: January 1985
 ---
 

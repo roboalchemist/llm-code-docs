@@ -1,5 +1,5 @@
 ---
-title: "A FIRST CUT AT A PROPOSED TELNET PROTOCOL"
+title: "A First Cut at a Proposed TELNET Protocol"
 date: February 1971
 ---
 .

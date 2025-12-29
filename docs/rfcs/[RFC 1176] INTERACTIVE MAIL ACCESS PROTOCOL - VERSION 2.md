@@ -1,6 +1,6 @@
 ---
 rfc: 1176
-title: "INTERACTIVE MAIL ACCESS PROTOCOL - VERSION 2"
+title: "Interactive Mail Access Protocol - Version 2"
 date: August 1990
 ---
 

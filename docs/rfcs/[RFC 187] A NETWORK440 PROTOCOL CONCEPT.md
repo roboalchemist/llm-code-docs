@@ -1,3 +1,3 @@
 ---
-title: "A NETWORK/440 PROTOCOL CONCEPT"
+title: "A Network440 Protocol Concept"
 ---

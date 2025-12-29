@@ -1,6 +1,6 @@
 ---
 rfc: 102
-title: "OUTPUT OF THE HOST/HOST PROTOCOL"
+title: "Output of the Hosthost Protocol"
 date: February 1971
 ---
 53.

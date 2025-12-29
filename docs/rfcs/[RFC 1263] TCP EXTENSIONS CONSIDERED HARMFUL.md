@@ -1,6 +1,6 @@
 ---
 rfc: 1263
-title: "TCP EXTENSIONS CONSIDERED HARMFUL"
+title: "TCP Extensions Considered Harmful"
 date: October 1991
 ---
 

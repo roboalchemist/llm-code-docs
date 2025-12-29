@@ -1,6 +1,6 @@
 ---
 rfc: 525
-title: "MIT-MATHLAB MEETS UCSB-OLS:"
+title: "Mit-mathlab Meets Ucsb-ols"
 date: June 1973
 ---
 

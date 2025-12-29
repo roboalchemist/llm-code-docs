@@ -1,4 +1,4 @@
 ---
-title: "BBN IMP (#5) AND NCC SCHEDULE MARCH 4, 1971"
+title: "BBN IMP (#5) and Ncc Schedule March 4, 1971"
 date: February 1972
 ---

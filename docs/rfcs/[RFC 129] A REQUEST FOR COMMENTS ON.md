@@ -1,6 +1,6 @@
 ---
 rfc: 129
-title: "A REQUEST FOR COMMENTS ON"
+title: "A Request for Comments on"
 date: April 1971
 ---
 

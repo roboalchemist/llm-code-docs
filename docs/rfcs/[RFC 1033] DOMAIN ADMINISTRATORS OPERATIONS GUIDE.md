@@ -1,5 +1,5 @@
 ---
-title: "DOMAIN ADMINISTRATORS OPERATIONS GUIDE"
+title: "Domain Administrators Operations Guide"
 date: November 1987
 ---
 

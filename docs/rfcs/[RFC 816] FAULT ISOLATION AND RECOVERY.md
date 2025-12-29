@@ -1,5 +1,5 @@
 ---
-title: "FAULT ISOLATION AND RECOVERY"
+title: "Fault Isolation and Recovery"
 ---
 1.  Introduction
 

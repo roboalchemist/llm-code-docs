@@ -1,5 +1,5 @@
 ---
-title: "NETWORK INFORMATION CENTER SCHEDULE FOR NETWORK USERS"
+title: "Network Information Center Schedule for Network Users"
 date: September 1971
 category: G.2
 ---

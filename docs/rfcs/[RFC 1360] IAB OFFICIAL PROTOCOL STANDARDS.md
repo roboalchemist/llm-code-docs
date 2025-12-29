@@ -1,6 +1,6 @@
 ---
 rfc: 1360
-title: "IAB OFFICIAL PROTOCOL STANDARDS"
+title: "IAB Official Protocol Standards"
 date: September 1992
 ---
 

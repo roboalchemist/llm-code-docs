@@ -1,6 +1,6 @@
 ---
 rfc: 1013
-title: "X WINDOW SYSTEM PROTOCOL, VERSION 11"
+title: "X Window System Protocol, Version 11"
 date: June 1987
 ---
 ...

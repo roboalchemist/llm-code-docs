@@ -1,6 +1,6 @@
 ---
 rfc: 387
-title: "SOME EXPERIENCES IN IMPLEMENTING NETWORK GRAPHICS PROTOCOL LEVEL 0"
+title: "Some Experiences in Implementing Network Graphics Protocol Level 0"
 date: August 1972
 ---
 1.  Clarify the coordinate number system.

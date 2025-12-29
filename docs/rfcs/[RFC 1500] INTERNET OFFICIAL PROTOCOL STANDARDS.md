@@ -1,6 +1,6 @@
 ---
 rfc: 1500
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: August 1993
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 2134
-title: "ARTICLES OF INCORPORATION"
+title: "Articles of Incorporation"
 date: April 1997
 category: Informational
 ---

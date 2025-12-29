@@ -1,6 +1,6 @@
 ---
 rfc: 2050
-title: "INTERNET REGISTRY IP ALLOCATION GUIDELINES"
+title: "Internet Registry IP Allocation Guidelines"
 date: November 1996
 category: Best
 obsoletes: [1466]

@@ -1,6 +1,6 @@
 ---
 rfc: 420
-title: "THE WEATHER DEMO ORIGINALLY DEVELOPED FOR THE ICCC SHOW IS NOW"
+title: "The Weather Demo Originally Developed for the Iccc Show Is Now"
 date: January 1973
 ---
 1. CONJUNCTION

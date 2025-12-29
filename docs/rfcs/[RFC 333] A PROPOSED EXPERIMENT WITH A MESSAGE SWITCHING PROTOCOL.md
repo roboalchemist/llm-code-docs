@@ -1,6 +1,6 @@
 ---
 rfc: 333
-title: "A PROPOSED EXPERIMENT WITH A MESSAGE SWITCHING PROTOCOL"
+title: "A Proposed Experiment with a Message Switching Protocol"
 date: May 1972
 category: C9
 obsoletes: [62]

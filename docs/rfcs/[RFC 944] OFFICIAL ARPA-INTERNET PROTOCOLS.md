@@ -1,6 +1,6 @@
 ---
 rfc: 944
-title: "OFFICIAL ARPA-INTERNET PROTOCOLS"
+title: "Official Arpa-internet Protocols"
 date: April 1985
 ---
 

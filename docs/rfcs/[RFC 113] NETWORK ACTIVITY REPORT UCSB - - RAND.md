@@ -1,5 +1,5 @@
 ---
 rfc: 113
-title: "NETWORK ACTIVITY REPORT:  UCSB <- -> RAND"
+title: "Network Activity Report UCSB - - Rand"
 date: April 1971
 ---

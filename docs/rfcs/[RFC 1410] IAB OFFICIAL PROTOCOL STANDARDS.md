@@ -1,6 +1,6 @@
 ---
 rfc: 1410
-title: "IAB OFFICIAL PROTOCOL STANDARDS"
+title: "IAB Official Protocol Standards"
 date: March 1993
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "USING NETWORK REMOTE JOB ENTRY"
+title: "Using Network Remote Job Entry"
 date: February 1972
 ---
 1. Help

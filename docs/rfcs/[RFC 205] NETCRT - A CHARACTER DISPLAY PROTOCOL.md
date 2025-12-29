@@ -1,6 +1,6 @@
 ---
 rfc: 205
-title: "NETCRT - A CHARACTER DISPLAY PROTOCOL"
+title: "Netcrt - a Character Display Protocol"
 date: August 1971
 ---
 1. A rectangular _display screen_ capable of displaying N lines of M

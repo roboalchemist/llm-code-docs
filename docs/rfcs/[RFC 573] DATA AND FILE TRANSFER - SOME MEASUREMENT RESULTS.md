@@ -1,6 +1,6 @@
 ---
 rfc: 573
-title: "DATA AND FILE TRANSFER - SOME MEASUREMENT RESULTS"
+title: "Data and File Transfer - Some Measurement Results"
 date: September 1973
 ---
 

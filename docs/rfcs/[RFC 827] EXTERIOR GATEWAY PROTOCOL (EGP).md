@@ -1,5 +1,5 @@
 ---
-title: "EXTERIOR GATEWAY PROTOCOL (EGP)"
+title: "Exterior Gateway Protocol (egp)"
 date: October 1982
 ---
 

@@ -1,6 +1,6 @@
 ---
 rfc: 1730
-title: "INTERNET MESSAGE ACCESS PROTOCOL - VERSION 4"
+title: "Internet Message Access Protocol - Version 4"
 date: December 1994
 category: Standards
 ---

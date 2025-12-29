@@ -1,6 +1,6 @@
 ---
 rfc: 1045
-title: "VMTP: VERSATILE MESSAGE TRANSACTION PROTOCOL"
+title: "VMTP Versatile Message Transaction Protocol"
 date: February 1988
 ---
 

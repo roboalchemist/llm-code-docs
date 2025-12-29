@@ -1,5 +1,5 @@
 ---
-title: "DOCUMENTATION CONVENTIONS"
+title: "Documentation Conventions"
 date: July 1969
 ---
 1.  "Network Working Group"

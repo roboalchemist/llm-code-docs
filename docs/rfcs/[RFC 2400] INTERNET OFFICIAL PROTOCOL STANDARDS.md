@@ -1,6 +1,6 @@
 ---
 rfc: 2400
-title: "INTERNET OFFICIAL PROTOCOL STANDARDS"
+title: "Internet Official Protocol Standards"
 date: September 1998
 category: Standards
 obsoletes: [2300, 2200, 2000, 1920, 1880]

@@ -1,6 +1,6 @@
 ---
 rfc: 1031
-title: "MILNET NAME DOMAIN TRANSITION"
+title: "MILNET Name Domain Transition"
 date: November 1987
 ---
 1989.  After this date, hosts not converted need to obtain the host

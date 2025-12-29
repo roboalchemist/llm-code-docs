@@ -1,6 +1,6 @@
 ---
 rfc: 363
-title: "ARPA NETWORK MAILING LISTS"
+title: "ARPA Network Mailing Lists"
 date: August 1972
 ---
 ABSTRACT

@@ -1,5 +1,5 @@
 ---
-title: "\"STUB\" EXTERIOR GATEWAY PROTOCOL"
+title: "Stub Exterior Gateway Protocol"
 date: January 1984
 ---
 

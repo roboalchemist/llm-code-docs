@@ -1,6 +1,6 @@
 ---
 rfc: 928
-title: "INTRODUCTION TO PROPOSED DOD STANDARD H-FP"
+title: "Introduction to Proposed DOD Standard H-fp"
 date: December 1984
 ---
 X.25 Appropriateness

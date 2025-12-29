@@ -1,5 +1,5 @@
 ---
-title: "INTERNET NUMBERS"
+title: "Internet Numbers"
 rfc: 1166
 date: July 1990---
 

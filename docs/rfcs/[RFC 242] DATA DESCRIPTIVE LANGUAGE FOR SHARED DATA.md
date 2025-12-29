@@ -1,5 +1,5 @@
 ---
-title: "DATA DESCRIPTIVE LANGUAGE FOR SHARED DATA"
+title: "Data Descriptive Language for Shared Data"
 ---
 
 # Introduction

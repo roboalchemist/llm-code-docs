@@ -1,5 +1,5 @@
 ---
-title: "\"PROPOSED REMOTE JOB ENTRY PROTOCOL\""
+title: "Proposed Remote Job Entry Protocol"
 ---
 1.  In my humble opinion, the  command  verb  "BYE"  is  overly
 cute; I would find "QUIT" much less offensive

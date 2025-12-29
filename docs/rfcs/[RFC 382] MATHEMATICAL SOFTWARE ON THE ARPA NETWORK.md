@@ -1,5 +1,5 @@
 ---
-title: "MATHEMATICAL SOFTWARE ON THE ARPA NETWORK"
+title: "Mathematical Software on the ARPA Network"
 ---
 1.  The Bell Laboratories numerical mathematics program library project.
 

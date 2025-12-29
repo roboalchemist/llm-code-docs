@@ -1,6 +1,6 @@
 ---
 rfc: 773
-title: "COMMENTS ON NCP/TCP MAIL SERVICE TRANSITION STRATEGY"
+title: "Comments on Ncptcp Mail Service Transition Strategy"
 date: October 1980
 ---
 1.  ARPANET mailbox names must continue to work correctly.

@@ -1,6 +1,6 @@
 ---
 rfc: 647
-title: "ARPA-LIKE NETWORK VIA DIRECTLY-CONNECTED"
+title: "Arpa-like Network Via Directly-connected"
 date: November 1974
 ---
 

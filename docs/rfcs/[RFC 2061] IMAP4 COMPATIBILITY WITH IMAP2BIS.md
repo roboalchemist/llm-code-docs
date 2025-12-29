@@ -1,6 +1,6 @@
 ---
 rfc: 2061
-title: "IMAP4 COMPATIBILITY WITH IMAP2BIS"
+title: "Imap4 Compatibility with Imap2bis"
 date: December 1996
 category: Informational
 ---

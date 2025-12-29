@@ -1,5 +1,5 @@
 ---
-title: "USING TSO VIA ARPA NETWORK VIRTUAL TERMINAL"
+title: "Using Tso Via ARPA Network Virtual Terminal"
 date: August 1972
 ---
 1.  To access TSO, the remote user performs ICP to Socket 1 at CCN

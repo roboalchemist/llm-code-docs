@@ -1,5 +1,5 @@
 ---
-title: "TELNET OUTPUT VERTICAL TABSTOPS OPTION"
+title: "TELNET Output Vertical Tabstops Option"
 ---
 
 # 1. Command name and code

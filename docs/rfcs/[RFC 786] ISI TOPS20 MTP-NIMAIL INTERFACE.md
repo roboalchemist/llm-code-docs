@@ -1,6 +1,6 @@
 ---
 rfc: 786
-title: "ISI TOPS20 MTP-NIMAIL INTERFACE"
+title: "Isi Tops20 Mtp-nimail Interface"
 date: July 1981
 ---
 

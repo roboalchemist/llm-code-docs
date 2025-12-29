@@ -1,5 +1,5 @@
 ---
-title: "TWO CHANGES T0 THE IMP/HOST PROTOCOL"
+title: "Two Changes T0 the Imphost Protocol"
 date: February 1974
 ---
 

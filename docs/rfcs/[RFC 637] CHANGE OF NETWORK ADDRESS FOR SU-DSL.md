@@ -1,3 +1,3 @@
 ---
-title: "CHANGE OF NETWORK ADDRESS FOR SU-DSL"
+title: "Change of Network Address for Su-dsl"
 ---

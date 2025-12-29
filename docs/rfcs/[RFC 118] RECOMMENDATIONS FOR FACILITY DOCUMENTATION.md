@@ -1,5 +1,5 @@
 ---
 rfc: 118
-title: "RECOMMENDATIONS FOR FACILITY DOCUMENTATION"
+title: "Recommendations for Facility Documentation"
 date: April 1971
 ---

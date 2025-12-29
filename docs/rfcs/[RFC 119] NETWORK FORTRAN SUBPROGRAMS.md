@@ -1,6 +1,6 @@
 ---
 rfc: 119
-title: "NETWORK FORTRAN SUBPROGRAMS"
+title: "Network Fortran Subprograms"
 ---
 
 # Preface

@@ -1,5 +1,5 @@
 ---
-title: "TYPOGRAPHICAL ERROR IN RFC 107"
+title: "Typographical Error in RFC 107"
 ---
 ...if it is the range of zero to 127,...
 ---

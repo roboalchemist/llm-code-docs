@@ -1,6 +1,6 @@
 ---
 rfc: 475
-title: "FTP AND NETWORK MAIL SYSTEM"
+title: "FTP and Network Mail System"
 date: March 1973
 ---
 1. CREATING: This refers to the manner in which the user creates or

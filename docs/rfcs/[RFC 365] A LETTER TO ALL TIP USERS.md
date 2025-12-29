@@ -1,5 +1,5 @@
 ---
-title: "A LETTER TO ALL TIP USERS"
+title: "A Letter to All TIP Users"
 ---
 
 # 1. PROTOCOL TO LOGIN will be removed.  It has been replaced by

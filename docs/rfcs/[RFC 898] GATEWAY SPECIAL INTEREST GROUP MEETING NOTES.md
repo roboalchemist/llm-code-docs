@@ -1,6 +1,6 @@
 ---
 rfc: 898
-title: "GATEWAY SPECIAL INTEREST GROUP MEETING NOTES"
+title: "Gateway Special Interest Group Meeting Notes"
 date: April 1984
 ---
 

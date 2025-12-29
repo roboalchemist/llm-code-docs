@@ -1,5 +1,5 @@
 ---
-title: "SURROGATE RJS FOR UCLA-CCN"
+title: "Surrogate Rjs for Ucla-ccn"
 date: March 1973
 ---
 1.  A small amount of additional JCL is required to route jobs from

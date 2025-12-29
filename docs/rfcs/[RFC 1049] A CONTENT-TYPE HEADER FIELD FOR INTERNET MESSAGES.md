@@ -1,6 +1,6 @@
 ---
 rfc: 1049
-title: "A CONTENT-TYPE HEADER FIELD FOR INTERNET MESSAGES"
+title: "A Content-type Header Field for Internet Messages"
 date: March 1988
 ---
 ABSTRACT

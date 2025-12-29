@@ -1,5 +1,5 @@
 ---
 rfc: 89
-title: "SOME HISTORIC MOMENTS IN NETWORKING"
+title: "Some Historic Moments in Networking"
 date: January 1971
 ---

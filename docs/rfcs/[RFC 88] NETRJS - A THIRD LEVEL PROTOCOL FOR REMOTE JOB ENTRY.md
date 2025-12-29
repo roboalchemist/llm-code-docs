@@ -1,6 +1,6 @@
 ---
 rfc: 88
-title: "NETRJS - A THIRD LEVEL PROTOCOL FOR REMOTE JOB ENTRY"
+title: "NETRJS - a Third Level Protocol for Remote Job Entry"
 date: January 1971
 ---
 1._Operator Input Channel_ - Commands and messages entered by

@@ -1,6 +1,6 @@
 ---
 rfc: 994
-title: "INTERNATIONAL ORGANIZATION FOR STANDARDIZATION"
+title: "International Organization for Standardization"
 date: March 1986
 ---
 3.1   Reference Model Definitions  . . . . . . . . . . . . . . . . .   9

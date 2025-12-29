@@ -1,5 +1,5 @@
 ---
-title: "MILITARY SUPPLEMENT"
+title: "Military Supplement"
 rfc: 1007
 date: June 1987---
 

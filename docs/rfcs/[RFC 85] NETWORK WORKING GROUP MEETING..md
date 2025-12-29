@@ -1,5 +1,5 @@
 ---
 rfc: 85
-title: "NETWORK WORKING GROUP MEETING."
+title: "Network Working Group Meeting."
 date: December 1970
 ---

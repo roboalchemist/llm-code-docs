@@ -1,6 +1,6 @@
 ---
 rfc: 243
-title: "NETWORK AND DATA SHARING BIBLIOGRAPHY"
+title: "Network and Data Sharing Bibliography"
 date: January 1971
 category: T
 ---

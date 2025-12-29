@@ -1,3 +1,3 @@
 ---
-title: "MOFFETT FIELD, CALIFORNIA"
+title: "Moffett Field, California"
 ---

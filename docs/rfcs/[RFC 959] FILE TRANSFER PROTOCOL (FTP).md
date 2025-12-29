@@ -1,6 +1,6 @@
 ---
 rfc: 959
-title: "FILE TRANSFER PROTOCOL (FTP)"
+title: "File Transfer Protocol (ftp)"
 date: October 1985
 ---
 

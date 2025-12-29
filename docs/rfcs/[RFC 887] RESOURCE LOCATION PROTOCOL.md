@@ -1,6 +1,6 @@
 ---
 rfc: 887
-title: "RESOURCE LOCATION PROTOCOL"
+title: "Resource Location Protocol"
 date: December 1983
 ---
 

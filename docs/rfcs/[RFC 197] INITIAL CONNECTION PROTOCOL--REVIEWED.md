@@ -1,5 +1,5 @@
 ---
-title: "INITIAL CONNECTION PROTOCOL--REVIEWED"
+title: "Initial Connection Protocol--reviewed"
 date: July 1971
 ---
 

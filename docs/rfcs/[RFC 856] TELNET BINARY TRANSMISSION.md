@@ -1,6 +1,6 @@
 ---
 rfc: 856
-title: "TELNET BINARY TRANSMISSION"
+title: "TELNET Binary Transmission"
 date: May 1983
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "WINDOW AND ACKNOWLEDGEMENT STRATEGY IN TCP"
+title: "Window and Acknowledgement Strategy in TCP"
 ---
 1.  Introduction
 

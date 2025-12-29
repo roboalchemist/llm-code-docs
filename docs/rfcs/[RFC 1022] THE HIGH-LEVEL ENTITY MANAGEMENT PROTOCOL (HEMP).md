@@ -1,4 +1,4 @@
 ---
-title: "THE HIGH-LEVEL ENTITY MANAGEMENT PROTOCOL (HEMP)"
+title: "The High-level Entity Management Protocol (hemp)"
 date: October 1987
 ---

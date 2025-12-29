@@ -1,6 +1,6 @@
 ---
 rfc: 264
-title: "THE DATA TRANSFER PROTOCOL"
+title: "The Data Transfer Protocol"
 date: November 1971
 ---
 

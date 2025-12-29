@@ -1,6 +1,6 @@
 ---
 rfc: 1193
-title: "CLIENT REQUIREMENTS FOR REAL-TIME COMMUNICATION SERVICES"
+title: "Client Requirements for Real-time Communication Services"
 date: November 1990
 ---
 

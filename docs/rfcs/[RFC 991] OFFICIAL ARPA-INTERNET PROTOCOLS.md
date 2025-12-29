@@ -1,6 +1,6 @@
 ---
 rfc: 991
-title: "OFFICIAL ARPA-INTERNET PROTOCOLS"
+title: "Official Arpa-internet Protocols"
 date: November 1986
 ---
 

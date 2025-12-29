@@ -1,5 +1,5 @@
 ---
-title: "THOUGHTS ON THE NATIONAL RESEARCH AND EDUCATION NETWORK"
+title: "Thoughts on the National Research and Education Network"
 rfc: 1167
 date: July 1990---
 

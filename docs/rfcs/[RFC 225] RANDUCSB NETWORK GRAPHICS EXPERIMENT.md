@@ -1,6 +1,6 @@
 ---
 rfc: 225
-title: "RAND/UCSB NETWORK GRAPHICS EXPERIMENT"
+title: "Randucsb Network Graphics Experiment"
 date: September 1971
 category: D.6
 ---

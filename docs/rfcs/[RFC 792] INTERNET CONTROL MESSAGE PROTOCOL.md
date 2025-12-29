@@ -1,5 +1,5 @@
 ---
 rfc: 792
-title: "INTERNET CONTROL MESSAGE PROTOCOL"
+title: "Internet Control Message Protocol"
 date: September 1981
 ---

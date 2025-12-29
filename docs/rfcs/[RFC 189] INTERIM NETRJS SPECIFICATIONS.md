@@ -1,6 +1,6 @@
 ---
 rfc: 189
-title: "INTERIM NETRJS SPECIFICATIONS"
+title: "Interim NETRJS Specifications"
 date: July 1971
 category: D
 ---

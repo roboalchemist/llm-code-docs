@@ -1,6 +1,6 @@
 ---
 rfc: 979
-title: "PSN END-TO-END FUNCTIONAL SPECIFICATION"
+title: "PSN End-to-end Functional Specification"
 date: March 1986
 ---
 7.0.  Both the old and new EEs are resident in the PSN code, and each

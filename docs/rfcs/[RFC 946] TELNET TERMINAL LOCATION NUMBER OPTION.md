@@ -1,6 +1,6 @@
 ---
 rfc: 946
-title: "TELNET TERMINAL LOCATION NUMBER OPTION"
+title: "TELNET Terminal Location Number Option"
 date: May 1985
 ---
 

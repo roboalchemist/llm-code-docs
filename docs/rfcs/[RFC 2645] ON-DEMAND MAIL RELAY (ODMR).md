@@ -1,6 +1,6 @@
 ---
 rfc: 2645
-title: "ON-DEMAND MAIL RELAY (ODMR)"
+title: "On-demand Mail Relay (odmr)"
 date: August 1999
 category: Standards
 ---
