@@ -1,0 +1,78 @@
+# Source: https://docs.pipecat.ai/client/ios/transports/gemini-websocket.md
+
+# Source: https://docs.pipecat.ai/client/android/transports/gemini-websocket.md
+
+# Gemini Live Websocket Transport
+
+> Websocket implementation for Android using Gemini
+
+The Gemini Live Websocket transport implementation enables real-time audio communication with the Gemini Multimodal Live service, using a direct websocket connection.
+
+<Note>
+  Transports of this type are designed primarily for development and testing
+  purposes. For production applications, you will need to build a server
+  component with a server-friendly transport, like the
+  [DailyTransport](./daily), to securely handle API keys.
+</Note>
+
+## Installation
+
+Add the transport dependency to your `build.gradle`:
+
+```gradle  theme={null}
+implementation "ai.pipecat:gemini-live-websocket-transport:0.3.7"
+```
+
+## Usage
+
+Create a client:
+
+```kotlin  theme={null}
+val transport = GeminiLiveWebsocketTransport.Factory(context)
+
+val options = RTVIClientOptions(
+    params = RTVIClientParams(
+        baseUrl = null,
+        config = GeminiLiveWebsocketTransport.buildConfig(
+            apiKey = "<your Gemini api key>",
+            generationConfig = Value.Object(
+                "speech_config" to Value.Object(
+                    "voice_config" to Value.Object(
+                        "prebuilt_voice_config" to Value.Object(
+                            "voice_name" to Value.Str("Puck")
+                        )
+                    )
+                )
+            ),
+            initialUserMessage = "How tall is the Eiffel Tower?"
+        )
+    )
+)
+
+val client = RTVIClient(transport, callbacks, options)
+
+client.start().withCallback {
+    // ...
+}
+```
+
+## Resources
+
+<CardGroup cols={2}>
+  <Card horizontal title="Demo" icon="play" href="https://github.com/pipecat-ai/pipecat-client-android-gemini-live-websocket-demo">
+    Simple Chatbot Demo
+  </Card>
+
+  <Card horizontal title="Source" icon="github" href="https://github.com/pipecat-ai/pipecat-client-android-transports/">
+    Client Transports
+  </Card>
+</CardGroup>
+
+<Card title="Pipecat Android Client Reference" icon="book-open" href="https://docs-android.rtvi.ai/">
+  Complete API documentation for the Pipecat Android client.
+</Card>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

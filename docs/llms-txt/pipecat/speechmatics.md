@@ -1,0 +1,56 @@
+# Source: https://docs.pipecat.ai/server/services/tts/speechmatics.md
+
+# Source: https://docs.pipecat.ai/server/services/stt/speechmatics.md
+
+# Speechmatics
+
+> Speech-to-text service implementation using Speechmatics' real-time transcription STT API
+
+## Overview
+
+`SpeechmaticsSTTService` enables real-time speech transcription using Speechmatics' WebSocket API with partial and final results, speaker diarization, and end of utterance detection (VAD) for comprehensive conversation analysis.
+
+<CardGroup cols={2}>
+  <Card title="Speechmatics STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.speechmatics.stt.html">
+    Pipecat's API methods for Speechmatics STT integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07a-interruptible-speechmatics.py">
+    Complete example with interruption handling
+  </Card>
+
+  <Card title="Speechmatics Documentation" icon="book" href="https://docs.speechmatics.com/rt-api-ref">
+    Official Speechmatics documentation and features
+  </Card>
+
+  <Card title="Speaker Diarization Guide" icon="microphone" href="https://docs.speechmatics.com/speech-to-text/features/diarization#speaker-diarization">
+    Learn about separating different speakers in audio
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Speechmatics services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[speechmatics]"
+```
+
+## Prerequisites
+
+### Speechmatics Account Setup
+
+Before using Speechmatics STT services, you need:
+
+1. **Speechmatics Account**: Sign up at [Speechmatics](https://www.speechmatics.com/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Feature Selection**: Configure transcription features like speaker diarization
+
+### Required Environment Variables
+
+* `SPEECHMATICS_API_KEY`: Your Speechmatics API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

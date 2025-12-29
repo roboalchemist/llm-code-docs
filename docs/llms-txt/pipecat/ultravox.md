@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/stt/ultravox.md
+
+# Ultravox
+
+> Speech-to-text service implementation using a locally-loaded Ultravox multimodal model
+
+## Overview
+
+`UltravoxSTTService` provides real-time speech-to-text using the Ultravox multimodal model running locally. Ultravox directly encodes audio into the LLM's embedding space, eliminating traditional ASR components and providing faster, more efficient transcription with built-in conversational understanding.
+
+<CardGroup cols={2}>
+  <Card title="Ultravox STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.ultravox.stt.html">
+    Pipecat's API methods for Ultravox STT integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07u-interruptible-ultravox.py">
+    Complete example with GPU optimization
+  </Card>
+
+  <Card title="Ultravox Documentation" icon="book" href="https://docs.ultravox.ai/">
+    Official Ultravox documentation and features
+  </Card>
+
+  <Card title="Hugging Face Models" icon="microphone" href="https://huggingface.co/settings/tokens">
+    Access Ultravox models and get HF tokens
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Ultravox services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[ultravox]"
+```
+
+## Prerequisites
+
+### Ultravox Model Setup
+
+Before using Ultravox STT services, you need:
+
+1. **Hugging Face Account**: Sign up at [Hugging Face](https://huggingface.co/)
+2. **HF Token**: Generate a Hugging Face token for model access
+3. **GPU Resources**: Recommended for optimal performance with local model inference
+
+### Required Environment Variables
+
+* `HF_TOKEN`: Your Hugging Face token for model access
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

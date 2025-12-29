@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/llm/qwen.md
+
+# Qwen
+
+> LLM service implementation using Alibaba Cloud's Qwen models through an OpenAI-compatible interface
+
+## Overview
+
+`QwenLLMService` provides access to Alibaba Cloud's Qwen language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management, with particularly strong capabilities for Chinese language processing.
+
+<CardGroup cols={2}>
+  <Card title="Qwen LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.qwen.llm.html">
+    Pipecat's API methods for Qwen integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14q-function-calling-qwen.py">
+    Complete example with function calling
+  </Card>
+
+  <Card title="Qwen Documentation" icon="book" href="https://www.alibabacloud.com/help/en/model-studio/use-qwen-by-calling-api">
+    Official Qwen API documentation and features
+  </Card>
+
+  <Card title="Alibaba Cloud Console" icon="microphone" href="https://www.alibabacloud.com/">
+    Access Qwen models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Qwen services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[qwen]"
+```
+
+## Prerequisites
+
+### Qwen Account Setup
+
+Before using Qwen LLM services, you need:
+
+1. **Alibaba Cloud Account**: Sign up at [Alibaba Cloud](https://www.alibabacloud.com/)
+2. **API Key**: Generate an API key from your Model Studio dashboard
+3. **Model Selection**: Choose from available Qwen models with multilingual capabilities
+
+### Required Environment Variables
+
+* `QWEN_API_KEY`: Your Qwen API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

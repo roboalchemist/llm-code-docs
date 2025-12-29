@@ -1,0 +1,82 @@
+# Source: https://docs.pipecat.ai/server/services/transport/fastapi-websocket.md
+
+# FastAPIWebsocketTransport
+
+> WebSocket transport implementation for FastAPI web applications with telephony integration
+
+## Overview
+
+`FastAPIWebsocketTransport` provides WebSocket support for FastAPI web applications, enabling real-time audio communication over WebSocket connections. It's primarily designed for telephony integrations with providers like Twilio, Telnyx, and Plivo, supporting bidirectional audio streams with configurable serializers and voice activity detection.
+
+<Warning>
+  FastAPIWebsocketTransport is best suited for telephony applications and server-side WebSocket integrations.
+
+  For general client/server applications, we recommend using WebRTC-based transports for more robust network and media handling.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="FastAPI WebSocket API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.websocket.fastapi.html">
+    Pipecat's API methods for FastAPI WebSocket integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot">
+    Complete Twilio telephony integration example
+  </Card>
+
+  <Card title="FastAPI Documentation" icon="book" href="https://fastapi.tiangolo.com/advanced/websockets/">
+    Official FastAPI WebSocket documentation
+  </Card>
+
+  <Card title="Telephony Serializers" icon="settings" href="/server/services/serializers/introduction">
+    Learn about supported FrameSerializers for telephony providers
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use FastAPIWebsocketTransport, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[websocket]"
+```
+
+## Prerequisites
+
+### FastAPI Application Setup
+
+Before using FastAPIWebsocketTransport, you need:
+
+1. **FastAPI Application**: Set up a FastAPI web application
+2. **WebSocket Endpoint**: Configure WebSocket routes for real-time communication
+3. **Telephony Provider**: Set up integration with Twilio, Telnyx, or Plivo
+4. **Frame Serializers**: Configure appropriate serializers for your telephony provider
+
+### Configuration Options
+
+* **Serializer Selection**: Choose frame serializer based on telephony provider
+* **Audio Parameters**: Configure sample rates and audio formats
+* **VAD Integration**: Set up voice activity detection for optimal performance
+* **Connection Management**: Handle WebSocket lifecycle and reconnections
+
+### Key Features
+
+* **Telephony Integration**: Optimized for Twilio, Telnyx, and Plivo WebSocket streams
+* **Frame Serialization**: Built-in support for telephony provider audio formats
+* **FastAPI Integration**: Seamless WebSocket handling within FastAPI applications
+* **Bidirectional Audio**: Real-time audio streaming in both directions
+
+## Usage
+
+FastAPIWebsocketTransport integrates with your FastAPI application to handle telephony WebSocket connections. It works with telephony frame serializers to process audio streams from phone calls.
+
+See the [complete example](https://github.com/pipecat-ai/pipecat-examples/tree/main/twilio-chatbot) for a full implementation including:
+
+* FastAPI WebSocket endpoint configuration
+* Telephony provider integration setup
+* Frame serializer configuration
+* Audio processing pipeline integration
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

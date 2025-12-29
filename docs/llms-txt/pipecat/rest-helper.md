@@ -1,0 +1,488 @@
+# Source: https://docs.pipecat.ai/server/utilities/daily/rest-helper.md
+
+# DailyRESTHelper
+
+> Classes and methods for interacting with the Daily API to manage rooms and tokens
+
+<Card title="Daily REST API Documentation" icon="link" href="https://docs.daily.co/reference/rest-api">
+  For complete Daily REST API reference and additional details
+</Card>
+
+## Classes
+
+### DailyRoomSipParams
+
+Configuration for SIP (Session Initiation Protocol) parameters.
+
+<ResponseField name="display_name" type="string" default="sw-sip-dialin">
+  Display name for the SIP endpoint
+</ResponseField>
+
+<ResponseField name="video" type="boolean" default={false}>
+  Whether video is enabled for SIP
+</ResponseField>
+
+<ResponseField name="sip_mode" type="string" default="dial-in">
+  SIP connection mode
+</ResponseField>
+
+<ResponseField name="num_endpoints" type="integer" default={1}>
+  Number of SIP endpoints
+</ResponseField>
+
+```python  theme={null}
+from pipecat.transports.services.helpers.daily_rest import DailyRoomSipParams
+
+sip_params = DailyRoomSipParams(
+    display_name="conference-line",
+    video=True,
+    num_endpoints=2
+)
+```
+
+### RecordingsBucketConfig
+
+Configuration for storing Daily recordings in a custom S3 bucket.
+
+<ResponseField name="bucket_name" type="string" required>
+  Name of the S3 bucket for storing recordings
+</ResponseField>
+
+<ResponseField name="bucket_region" type="string" required>
+  AWS region where the S3 bucket is located
+</ResponseField>
+
+<ResponseField name="assume_role_arn" type="string" required>
+  ARN of the IAM role to assume for S3 access
+</ResponseField>
+
+<ResponseField name="allow_api_access" type="boolean" default={false}>
+  Whether to allow API access to the recordings
+</ResponseField>
+
+```python  theme={null}
+from pipecat.transports.services.helpers.daily_rest import RecordingsBucketConfig
+
+bucket_config = RecordingsBucketConfig(
+    bucket_name="my-recordings-bucket",
+    bucket_region="us-west-2",
+    assume_role_arn="arn:aws:iam::123456789012:role/DailyRecordingsRole",
+    allow_api_access=True
+)
+```
+
+### DailyRoomProperties
+
+Properties that configure a Daily room's behavior and features.
+
+<ResponseField name="exp" type="float" optional>
+  Room expiration time as Unix timestamp (e.g., time.time() + 300 for 5 minutes)
+</ResponseField>
+
+<ResponseField name="enable_chat" type="boolean" default={false}>
+  Whether chat is enabled in the room
+</ResponseField>
+
+<ResponseField name="enable_prejoin_ui" type="boolean" default={false}>
+  Whether the prejoin lobby UI is enabled
+</ResponseField>
+
+<ResponseField name="enable_emoji_reactions" type="boolean" default={false}>
+  Whether emoji reactions are enabled
+</ResponseField>
+
+<ResponseField name="eject_at_room_exp" type="boolean" default={false}>
+  Whether to eject participants when room expires
+</ResponseField>
+
+<ResponseField name="enable_dialout" type="boolean" optional>
+  Whether dial-out is enabled
+</ResponseField>
+
+<ResponseField name="enable_recording" type="string" optional>
+  Recording settings ("cloud", "local", or "raw-tracks")
+</ResponseField>
+
+<ResponseField name="geo" type="string" optional>
+  Geographic region for room
+</ResponseField>
+
+<ResponseField name="max_participants" type="number" optional>
+  Maximum number of participants allowed in the room
+</ResponseField>
+
+<ResponseField name="recordings_bucket" type="RecordingsBucketConfig" optional>
+  Configuration for custom S3 bucket recordings
+</ResponseField>
+
+<ResponseField name="sip" type="DailyRoomSipParams" optional>
+  SIP configuration parameters
+</ResponseField>
+
+<ResponseField name="sip_uri" type="dict" optional>
+  SIP URI configuration (returned by Daily)
+</ResponseField>
+
+<ResponseField name="start_video_off" type="boolean" default={false}>
+  Whether the camera video is turned off by default
+</ResponseField>
+
+The class also includes a `sip_endpoint` property that returns the SIP endpoint URI if available.
+
+```python  theme={null}
+import time
+from pipecat.transports.services.helpers.daily_rest import (
+    DailyRoomProperties,
+    DailyRoomSipParams,
+    RecordingsBucketConfig,
+)
+
+properties = DailyRoomProperties(
+    exp=time.time() + 3600,  # 1 hour from now
+    enable_chat=True,
+    enable_emoji_reactions=True,
+    enable_recording="cloud",
+    geo="us-west",
+    max_participants=50,
+    sip=DailyRoomSipParams(display_name="conference"),
+    recordings_bucket=RecordingsBucketConfig(
+        bucket_name="my-bucket",
+        bucket_region="us-west-2",
+        assume_role_arn="arn:aws:iam::123456789012:role/DailyRole"
+    )
+)
+
+# Access SIP endpoint if available
+if properties.sip_endpoint:
+    print(f"SIP endpoint: {properties.sip_endpoint}")
+```
+
+### DailyRoomParams
+
+Parameters for creating a new Daily room.
+
+<ResponseField name="name" type="string" optional>
+  Room name (if not provided, one will be generated)
+</ResponseField>
+
+<ResponseField name="privacy" type="string" default="public">
+  Room privacy setting ("private" or "public")
+</ResponseField>
+
+<ResponseField name="properties" type="DailyRoomProperties">
+  Room configuration properties
+</ResponseField>
+
+```python  theme={null}
+import time
+from pipecat.transports.services.helpers.daily_rest import (
+    DailyRoomParams,
+    DailyRoomProperties,
+)
+
+params = DailyRoomParams(
+    name="team-meeting",
+    privacy="private",
+    properties=DailyRoomProperties(
+        enable_chat=True,
+        exp=time.time() + 7200  # 2 hours from now
+    )
+)
+```
+
+### DailyRoomObject
+
+Response object representing a Daily room.
+
+<ResponseField name="id" type="string">
+  Unique room identifier
+</ResponseField>
+
+<ResponseField name="name" type="string">
+  Room name
+</ResponseField>
+
+<ResponseField name="api_created" type="boolean">
+  Whether the room was created via API
+</ResponseField>
+
+<ResponseField name="privacy" type="string">
+  Room privacy setting
+</ResponseField>
+
+<ResponseField name="url" type="string">
+  Complete room URL
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  Room creation timestamp in ISO 8601 format
+</ResponseField>
+
+<ResponseField name="config" type="DailyRoomProperties">
+  Room configuration
+</ResponseField>
+
+```python  theme={null}
+from pipecat.transports.services.helpers.daily_rest import (
+    DailyRoomObject,
+    DailyRoomProperties,
+)
+
+# Example of what a DailyRoomObject looks like when received
+room = DailyRoomObject(
+    id="abc123",
+    name="team-meeting",
+    api_created=True,
+    privacy="private",
+    url="https://your-domain.daily.co/team-meeting",
+    created_at="2024-01-20T10:00:00.000Z",
+    config=DailyRoomProperties(
+        enable_chat=True,
+        exp=1705743600
+    )
+)
+```
+
+### DailyMeetingTokenProperties
+
+Properties for configuring a Daily meeting token.
+
+<ResponseField name="room_name" type="string" optional>
+  The room this token is valid for. If not set, token is valid for all rooms.
+</ResponseField>
+
+<ResponseField name="eject_at_token_exp" type="boolean" optional>
+  Whether to eject user when token expires
+</ResponseField>
+
+<ResponseField name="eject_after_elapsed" type="integer" optional>
+  Eject user after this many seconds
+</ResponseField>
+
+<ResponseField name="nbf" type="integer" optional>
+  "Not before" timestamp - users cannot join before this time
+</ResponseField>
+
+<ResponseField name="exp" type="integer" optional>
+  Expiration timestamp - users cannot join after this time
+</ResponseField>
+
+<ResponseField name="is_owner" type="boolean" optional>
+  Whether token grants owner privileges
+</ResponseField>
+
+<ResponseField name="user_name" type="string" optional>
+  User's display name in the meeting
+</ResponseField>
+
+<ResponseField name="user_id" type="string" optional>
+  Unique identifier for the user (36 char limit)
+</ResponseField>
+
+<ResponseField name="enable_screenshare" type="boolean" optional>
+  Whether user can share their screen
+</ResponseField>
+
+<ResponseField name="start_video_off" type="boolean" optional>
+  Whether to join with video off
+</ResponseField>
+
+<ResponseField name="start_audio_off" type="boolean" optional>
+  Whether to join with audio off
+</ResponseField>
+
+<ResponseField name="enable_recording" type="string" optional>
+  Recording settings ("cloud", "local", or "raw-tracks")
+</ResponseField>
+
+<ResponseField name="enable_prejoin_ui" type="boolean" optional>
+  Whether to show prejoin UI
+</ResponseField>
+
+<ResponseField name="start_cloud_recording" type="boolean" optional>
+  Whether to start cloud recording when user joins
+</ResponseField>
+
+<ResponseField name="permissions" type="dict" optional>
+  Initial default permissions for a non-meeting-owner participant
+</ResponseField>
+
+### DailyMeetingTokenParams
+
+Parameters for creating a Daily meeting token.
+
+<ResponseField name="properties" type="DailyMeetingTokenProperties">
+  Token configuration properties
+</ResponseField>
+
+```python  theme={null}
+from pipecat.transports.services.helpers.daily_rest import (
+    DailyMeetingTokenParams,
+    DailyMeetingTokenProperties,
+)
+
+token_params = DailyMeetingTokenParams(
+    properties=DailyMeetingTokenProperties(
+        user_name="John Doe",
+        enable_screenshare=True,
+        start_video_off=True,
+        permissions={"canSend": ["video", "audio"]}
+    )
+)
+```
+
+## Initialize DailyRESTHelper
+
+Create a new instance of the Daily REST helper.
+
+<ParamField path="daily_api_key" type="string" required>
+  Your Daily API key
+</ParamField>
+
+<ParamField path="daily_api_url" type="string" default="https://api.daily.co/v1">
+  The Daily API base URL
+</ParamField>
+
+<ParamField path="aiohttp_session" type="aiohttp.ClientSession" required>
+  An aiohttp client session for making HTTP requests
+</ParamField>
+
+```python  theme={null}
+helper = DailyRESTHelper(
+    daily_api_key="your-api-key",
+    aiohttp_session=session
+)
+```
+
+## Create Room
+
+Creates a new Daily room with specified parameters.
+
+<ParamField path="params" type="DailyRoomParams" required>
+  Room configuration parameters including name, privacy, and properties
+</ParamField>
+
+```python  theme={null}
+# Create a room that expires in 1 hour
+params = DailyRoomParams(
+    name="my-room",
+    privacy="private",
+    properties=DailyRoomProperties(
+        exp=time.time() + 3600,
+        enable_chat=True
+    )
+)
+room = await helper.create_room(params)
+print(f"Room URL: {room.url}")
+```
+
+## Get Room From URL
+
+Retrieves room information using a Daily room URL.
+
+<ParamField path="room_url" type="string" required>
+  The complete Daily room URL
+</ParamField>
+
+```python  theme={null}
+room = await helper.get_room_from_url("https://your-domain.daily.co/my-room")
+print(f"Room name: {room.name}")
+```
+
+## Get Token
+
+Generates a meeting token for a specific room.
+
+<ParamField path="room_url" type="string" required>
+  The complete Daily room URL
+</ParamField>
+
+<ParamField path="expiry_time" type="float" default="3600">
+  Token expiration time in seconds
+</ParamField>
+
+<ParamField path="eject_at_token_exp" type="bool" default="False">
+  Whether to eject user when token expires
+</ParamField>
+
+<ParamField path="owner" type="bool" default="True">
+  Whether the token should have owner privileges (overrides any setting in
+  params)
+</ParamField>
+
+<ParamField path="params" type="DailyMeetingTokenParams" optional>
+  Additional token configuration. Note that `room_name`, `exp`,
+  `eject_at_token_exp`, and `is_owner` will be set based on the other function
+  parameters.
+</ParamField>
+
+```python  theme={null}
+# Basic token generation
+token = await helper.get_token(
+    room_url="https://your-domain.daily.co/my-room",
+    expiry_time=1800,  # 30 minutes
+    owner=True,
+    eject_at_token_exp=True
+)
+
+# Advanced token generation with additional properties
+token_params = DailyMeetingTokenParams(
+    properties=DailyMeetingTokenProperties(
+        user_name="John Doe",
+        start_video_off=True
+    )
+)
+token = await helper.get_token(
+    room_url="https://your-domain.daily.co/my-room",
+    expiry_time=1800,
+    owner=False,
+    eject_at_token_exp=True,
+    params=token_params
+)
+```
+
+## Delete Room By URL
+
+Deletes a room using its URL.
+
+<ParamField path="room_url" type="string" required>
+  The complete Daily room URL
+</ParamField>
+
+```python  theme={null}
+success = await helper.delete_room_by_url("https://your-domain.daily.co/my-room")
+if success:
+    print("Room deleted successfully")
+```
+
+## Delete Room By Name
+
+Deletes a room using its name.
+
+<ParamField path="room_name" type="string" required>
+  The name of the Daily room
+</ParamField>
+
+```python  theme={null}
+success = await helper.delete_room_by_name("my-room")
+if success:
+    print("Room deleted successfully")
+```
+
+## Get Name From URL
+
+Extracts the room name from a Daily room URL.
+
+<ParamField path="room_url" type="string" required>
+  The complete Daily room URL
+</ParamField>
+
+```python  theme={null}
+room_name = helper.get_name_from_url("https://your-domain.daily.co/my-room")
+print(f"Room name: {room_name}")  # Outputs: "my-room"
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

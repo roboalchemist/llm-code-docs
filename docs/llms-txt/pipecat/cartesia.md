@@ -1,0 +1,56 @@
+# Source: https://docs.pipecat.ai/server/services/tts/cartesia.md
+
+# Source: https://docs.pipecat.ai/server/services/stt/cartesia.md
+
+# Cartesia
+
+> Speech-to-text service implementation using Cartesia's real-time transcription API
+
+## Overview
+
+`CartesiaSTTService` provides real-time speech recognition using Cartesia's WebSocket API with the `ink-whisper` model, supporting streaming transcription with both interim and final results for low-latency applications.
+
+<CardGroup cols={2}>
+  <Card title="Cartesia STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.cartesia.stt.html">
+    Pipecat's API methods for Cartesia STT integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13f-cartesia-transcription.py">
+    Complete example with transcription logging
+  </Card>
+
+  <Card title="Cartesia Documentation" icon="book" href="https://docs.cartesia.ai/api-reference/stt/stt">
+    Official Cartesia STT documentation and features
+  </Card>
+
+  <Card title="Cartesia Platform" icon="microphone" href="https://cartesia.ai/">
+    Access API keys and transcription models
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Cartesia services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[cartesia]"
+```
+
+## Prerequisites
+
+### Cartesia Account Setup
+
+Before using Cartesia STT services, you need:
+
+1. **Cartesia Account**: Sign up at [Cartesia](https://cartesia.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Model Access**: Ensure access to the ink-whisper transcription model
+
+### Required Environment Variables
+
+* `CARTESIA_API_KEY`: Your Cartesia API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

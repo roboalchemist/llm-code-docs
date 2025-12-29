@@ -1,0 +1,55 @@
+# Source: https://docs.pipecat.ai/server/services/llm/openpipe.md
+
+# OpenPipe
+
+> LLM service implementation using OpenPipe for LLM request logging and fine-tuning
+
+## Overview
+
+`OpenPipeLLMService` extends the BaseOpenAILLMService to provide integration with OpenPipe, enabling request logging, model fine-tuning, and performance monitoring. It maintains compatibility with OpenAI's API while adding OpenPipe's logging and optimization capabilities.
+
+<CardGroup cols={2}>
+  <Card title="OpenPipe LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.openpipe.llm.html">
+    Pipecat's API methods for OpenPipe integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/tree/main/examples">
+    Browse examples using OpenPipe logging
+  </Card>
+
+  <Card title="OpenPipe Documentation" icon="book" href="https://docs.openpipe.ai/api-reference/post-chatcompletions">
+    Official OpenPipe API documentation and features
+  </Card>
+
+  <Card title="OpenPipe Platform" icon="microphone" href="https://openpipe.ai/">
+    Access logging and fine-tuning features
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use OpenPipe services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[openpipe]"
+```
+
+## Prerequisites
+
+### OpenPipe Account Setup
+
+Before using OpenPipe LLM services, you need:
+
+1. **OpenPipe Account**: Sign up at [OpenPipe](https://openpipe.ai/)
+2. **API Keys**: Generate both OpenPipe and OpenAI API keys
+3. **Project Setup**: Configure logging and fine-tuning projects
+
+### Required Environment Variables
+
+* `OPENPIPE_API_KEY`: Your OpenPipe API key for logging and fine-tuning
+* `OPENAI_API_KEY`: Your OpenAI API key for underlying model access
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

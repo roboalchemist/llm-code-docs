@@ -1,0 +1,228 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/secret-create-update.md
+
+# Create or Update Secrets
+
+> Create or update a secret set and its values
+
+
+
+## OpenAPI
+
+````yaml PUT /secrets/{setName}
+openapi: 3.0.0
+info:
+  title: Pipecat Cloud - Create/Update Secret Set
+  version: 1.0.0
+  description: Create or update a secret set via Pipecat Cloud Private API
+servers:
+  - url: https://api.pipecat.daily.co/v1
+    description: API server
+security:
+  - PrivateKeyAuth: []
+paths:
+  /secrets/{setName}:
+    put:
+      summary: Create or update a secret set
+      description: >-
+        Create a new secret set or update an existing one. Supports both regular
+        secrets (multiple key-value pairs) and image pull secrets.
+      operationId: upsertSecretSet
+      parameters:
+        - name: setName
+          in: path
+          required: true
+          description: Name of the secret set to create or update
+          schema:
+            type: string
+            pattern: ^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$
+            minLength: 3
+            maxLength: 63
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/RegularSecretsRequest'
+                - $ref: '#/components/schemas/ImagePullSecretRequest'
+            examples:
+              regularSecrets:
+                summary: Regular secrets
+                description: Create or update a set with multiple key-value pairs
+                value:
+                  secrets:
+                    - secretKey: API_KEY
+                      secretValue: your-api-key
+                    - secretKey: DATABASE_URL
+                      secretValue: postgresql://user:pass@host:5432/db
+                  region: us-west
+              imagePullSecret:
+                summary: Image pull secret
+                description: Create an image pull secret
+                value:
+                  isImagePullSecret: true
+                  host: https://index.docker.io/v1/
+                  secretValue: your-docker-auth-token
+                  region: us-west
+      responses:
+        '200':
+          description: Secret set successfully created or updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - OK
+                  region:
+                    type: string
+                    description: The region where the secret set was created or exists
+                required:
+                  - status
+                  - region
+              example:
+                status: OK
+                region: us-west
+        '400':
+          description: Bad request - Invalid parameters or operation not allowed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                cannotUpdateImagePullSecret:
+                  summary: Cannot update existing image pull secrets
+                  value:
+                    error: >-
+                      Cannot update existing image pull secrets. Delete and
+                      recreate instead.
+                    code: GENERIC_BAD_REQUEST
+                cannotChangeSecretType:
+                  summary: Cannot change secret type
+                  value:
+                    error: >-
+                      Cannot update existing regular secrets to image pull
+                      secrets
+                    code: GENERIC_BAD_REQUEST
+                regionMismatch:
+                  summary: Region mismatch
+                  value:
+                    error: >-
+                      Secret already exists in region 'us-west'. Cannot change
+                      region to 'us-east'.
+                    code: GENERIC_BAD_REQUEST
+                invalidRegion:
+                  summary: Invalid region access
+                  value:
+                    error: Invalid region or organization does not have access
+                    code: GENERIC_BAD_REQUEST
+                validationError:
+                  summary: Validation error
+                  value:
+                    error: Invalid request format
+                    code: GENERIC_BAD_REQUEST
+        '401':
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized
+                code: UNAUTHORIZED
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - PrivateKeyAuth: []
+components:
+  schemas:
+    RegularSecretsRequest:
+      type: object
+      properties:
+        secrets:
+          type: array
+          items:
+            type: object
+            properties:
+              secretKey:
+                type: string
+                description: Name of the secret key
+              secretValue:
+                type: string
+                description: Value of the secret
+            required:
+              - secretKey
+              - secretValue
+          minItems: 1
+          description: Array of secret key-value pairs
+        region:
+          type: string
+          description: >-
+            The region where the secret set will be created. If not specified,
+            defaults to the organization's default region. Secrets must be in
+            the same region as the agents that use them. Cannot be changed after
+            creation.
+          example: us-west
+      required:
+        - secrets
+    ImagePullSecretRequest:
+      type: object
+      properties:
+        isImagePullSecret:
+          type: boolean
+          enum:
+            - true
+          description: Must be true for image pull secrets
+        host:
+          type: string
+          format: uri
+          description: >-
+            Host URL. A trailing slash will be added automatically if not
+            present.
+          example: https://index.docker.io/v1/
+        secretValue:
+          type: string
+          description: Authentication token or credentials
+        region:
+          type: string
+          description: >-
+            The region where the secret set will be created. If not specified,
+            defaults to the organization's default region. Secrets must be in
+            the same region as the agents that use them.
+          example: us-west
+      required:
+        - isImagePullSecret
+        - host
+        - secretValue
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+  securitySchemes:
+    PrivateKeyAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Authentication requires a Pipecat Cloud Private API token.
+
+
+        Generate a Private API key from your Dashboard (Settings > API Keys >
+        Private > Create key) and include it as a Bearer token in the
+        Authorization header.
+
+````
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,0 +1,66 @@
+# Source: https://docs.pipecat.ai/server/services/tts/xtts.md
+
+# XTTS
+
+> Text-to-speech service implementation using Coqui's XTTS streaming server
+
+<Warning>
+  Coqui, the XTTS maintainer, has shut down. XTTS may not receive future updates
+  or support.
+</Warning>
+
+## Overview
+
+`XTTSTTSService` provides multilingual voice synthesis with voice cloning capabilities through a locally hosted streaming server. The service supports real-time streaming and custom voice training using Coqui's XTTS-v2 model for cross-lingual text-to-speech.
+
+<CardGroup cols={2}>
+  <Card title="XTTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.xtts.tts.html">
+    Pipecat's API methods for XTTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07i-interruptible-xtts.py">
+    Complete example with voice cloning
+  </Card>
+
+  <Card title="XTTS Repository" icon="book" href="https://github.com/coqui-ai/xtts-streaming-server">
+    Official XTTS streaming server repository
+  </Card>
+
+  <Card title="Voice Cloning" icon="microphone" href="https://github.com/coqui-ai/xtts-streaming-server#voice-cloning">
+    Learn about custom voice training
+  </Card>
+</CardGroup>
+
+## Installation
+
+XTTS requires a running streaming server. Start the server using Docker:
+
+```bash  theme={null}
+docker run --gpus=all -e COQUI_TOS_AGREED=1 --rm -p 8000:80 \
+  ghcr.io/coqui-ai/xtts-streaming-server:latest-cuda121
+```
+
+## Prerequisites
+
+### XTTS Server Setup
+
+Before using XTTSTTSService, you need:
+
+1. **Docker Environment**: Set up Docker with GPU support for optimal performance
+2. **XTTS Server**: Run the XTTS streaming server container
+3. **Voice Models**: Configure voice models and cloning samples as needed
+
+### Required Configuration
+
+* **Server URL**: Configure the XTTS server endpoint (default: `http://localhost:8000`)
+* **Voice Selection**: Set up voice models or voice cloning samples
+
+<Note>
+  GPU acceleration is recommended for optimal performance. The server requires
+  CUDA support for best results.
+</Note>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

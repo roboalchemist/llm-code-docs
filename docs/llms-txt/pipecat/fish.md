@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/tts/fish.md
+
+# Fish Audio
+
+> Real-time text-to-speech service using Fish Audio's WebSocket API
+
+## Overview
+
+`FishTTSService` provides real-time text-to-speech synthesis through Fish Audio's WebSocket-based streaming API. The service offers custom voice models, prosody controls, and multiple audio formats optimized for conversational AI applications with low latency.
+
+<CardGroup cols={2}>
+  <Card title="Fish TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.fish.tts.html">
+    Pipecat's API methods for Fish Audio TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07t-interruptible-fish.py">
+    Complete example with custom voice model
+  </Card>
+
+  <Card title="Fish Audio Documentation" icon="book" href="https://docs.fish.audio/developer-platform/getting-started/introduction">
+    Official Fish Audio documentation
+  </Card>
+
+  <Card title="Voice Models" icon="microphone" href="https://fish.audio/app/my-voices/">
+    Create and manage custom voice models
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Fish Audio services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[fish]"
+```
+
+## Prerequisites
+
+### Fish Audio Account Setup
+
+Before using Fish Audio TTS services, you need:
+
+1. **Fish Audio Account**: Sign up at [Fish Audio Console](https://console.fish.audio/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Models**: Create or select custom voice models for synthesis
+
+### Required Environment Variables
+
+* `FISH_API_KEY`: Your Fish Audio API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

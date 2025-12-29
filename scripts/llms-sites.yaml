@@ -623,6 +623,9 @@ sites:
 - name: perplexity
   base_url: https://docs.perplexity.ai/
   description: Perplexity AI search and reasoning API
+- name: pipecat
+  base_url: https://docs.pipecat.ai/
+  description: Pipecat framework for voice and multimodal conversational AI
 - name: pinata
   base_url: https://docs.pinata.cloud/
   description: Pinata IPFS file storage

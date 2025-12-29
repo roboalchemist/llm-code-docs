@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/tts/neuphonic.md
+
+# Neuphonic
+
+> Text-to-speech service implementation using Neuphonic's API
+
+## Overview
+
+Neuphonic provides high-quality text-to-speech synthesis with two service implementations: `NeuphonicTTSService` (WebSocket-based) with real-time streaming and interruption support, and `NeuphonicHttpTTSService` (HTTP-based) with server-sent events. `NeuphonicTTSService` is recommended for interactive applications requiring low latency.
+
+<CardGroup cols={2}>
+  <Card title="Neuphonic TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.neuphonic.tts.html">
+    Pipecat's API methods for Neuphonic TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07v-interruptible-neuphonic.py">
+    Complete example with WebSocket streaming
+  </Card>
+
+  <Card title="Neuphonic Documentation" icon="book" href="https://docs.neuphonic.com/api-reference/tts/websocket">
+    Official Neuphonic TTS API documentation
+  </Card>
+
+  <Card title="Voice Library" icon="microphone" href="https://docs.neuphonic.com/">
+    Browse available voices and features
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Neuphonic services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[neuphonic]"
+```
+
+## Prerequisites
+
+### Neuphonic Account Setup
+
+Before using Neuphonic TTS services, you need:
+
+1. **Neuphonic Account**: Sign up at [Neuphonic](https://docs.neuphonic.com/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose from available voice models
+
+### Required Environment Variables
+
+* `NEUPHONIC_API_KEY`: Your Neuphonic API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

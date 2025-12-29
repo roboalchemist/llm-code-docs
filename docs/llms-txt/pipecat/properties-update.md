@@ -1,0 +1,180 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/properties-update.md
+
+# Update Organization Properties
+
+> Update configurable properties for your organization, such as the default deployment region.
+
+
+
+## OpenAPI
+
+````yaml PATCH /properties
+openapi: 3.0.0
+info:
+  title: Pipecat Cloud - Organization Properties
+  version: 1.0.0
+  description: Manage organization properties via Pipecat Cloud Private API
+servers:
+  - url: https://api.pipecat.daily.co/v1
+    description: API server
+security:
+  - PrivateKeyAuth: []
+paths:
+  /properties:
+    patch:
+      summary: Update organization properties
+      description: >-
+        Update one or more configurable properties for your organization. Only
+        public (user-configurable) properties can be modified via this endpoint.
+        Properties are validated against their schema and constraints before
+        being applied. Returns the complete property schema including metadata
+        for all properties.
+      operationId: updateProperties
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                defaultRegion:
+                  type: string
+                  description: >-
+                    Default region for new service deployments. Must be one of
+                    the [available
+                    regions](/deployment/pipecat-cloud/rest-reference/endpoint/regions-list)
+                    for your organization.
+                  example: us-west
+              additionalProperties: false
+            examples:
+              updateDefaultRegion:
+                summary: Update default region
+                value:
+                  defaultRegion: eu-central
+      responses:
+        '200':
+          description: Properties successfully updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  properties:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/PropertySchema'
+              example:
+                properties:
+                  defaultRegion:
+                    description: Default region for new service deployments
+                    type: string
+                    readOnly: false
+                    currentValue: eu-central
+                    default: us-west
+                    availableValues:
+                      - us-west
+                      - us-east
+                      - eu-central
+                      - ap-south
+        '400':
+          description: Bad request - Invalid property name, value, or validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalidProperty:
+                  summary: Invalid property name
+                  value:
+                    error: Property 'invalidProp' is not a valid property
+                    code: GENERIC_BAD_REQUEST
+                invalidRegion:
+                  summary: Invalid region value
+                  value:
+                    error: >-
+                      Region 'invalid-region' is not available. Available
+                      regions: us-west, us-east, eu-central
+                    code: GENERIC_BAD_REQUEST
+                emptyUpdate:
+                  summary: No properties provided
+                  value:
+                    error: No properties provided
+                    code: GENERIC_BAD_REQUEST
+        '401':
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Unauthorized
+                code: UNAUTHORIZED
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Internal server error
+                code: INTERNAL_SERVER_ERROR
+      security:
+        - PrivateKeyAuth: []
+components:
+  schemas:
+    PropertySchema:
+      type: object
+      description: Schema information for a single property
+      properties:
+        type:
+          type: string
+          description: Property data type (string, number, boolean, array, etc.)
+          example: string
+        description:
+          type: string
+          description: Human-readable description of the property
+          example: Default region for new service deployments
+        default:
+          description: Default value when property is not set
+        currentValue:
+          description: Current value of the property for this organization
+        readOnly:
+          type: boolean
+          description: Whether this property is read-only (cannot be modified via API)
+          example: false
+        availableValues:
+          type: array
+          description: List of valid values for this property (if applicable)
+          items: {}
+      required:
+        - type
+        - description
+        - default
+        - currentValue
+        - readOnly
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+  securitySchemes:
+    PrivateKeyAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Authentication requires a Pipecat Cloud Private API token.
+
+
+        Generate a Private API key from your Dashboard (Settings > API Keys >
+        Private > Create key) and include it as a Bearer token in the
+        Authorization header.
+
+````
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

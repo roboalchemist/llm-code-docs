@@ -1,0 +1,64 @@
+# Source: https://docs.pipecat.ai/server/services/analytics/sentry.md
+
+# Sentry Metrics
+
+> Performance monitoring integration with Sentry for Pipecat frame processors
+
+## Overview
+
+`SentryMetrics` extends `FrameProcessorMetrics` to provide performance monitoring integration with Sentry. It tracks Time to First Byte (TTFB) and processing duration metrics for frame processors, enabling real-time performance monitoring and error tracking for your Pipecat applications.
+
+<CardGroup cols={2}>
+  <Card title="Sentry Metrics API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.processors.metrics.sentry.html">
+    Pipecat's API methods for Sentry metrics integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/47-sentry-metrics.py">
+    Browse examples using Sentry metrics
+  </Card>
+
+  <Card title="Sentry Documentation" icon="book" href="https://docs.sentry.io/platforms/python/">
+    Official Sentry Python SDK documentation
+  </Card>
+
+  <Card title="Sentry Platform" icon="chart-line" href="https://sentry.io/">
+    Access performance monitoring and error tracking
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Sentry analytics services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[sentry]"
+```
+
+## Prerequisites
+
+### Sentry Account Setup
+
+Before using Sentry metrics services, you need:
+
+1. **Sentry Account**: Sign up at [Sentry Platform](https://sentry.io/)
+2. **Project Setup**: Create a project and obtain your DSN
+3. **SDK Initialization**: Configure Sentry SDK in your application
+4. **Metrics Configuration**: Set up performance monitoring and error tracking
+
+### Required Configuration
+
+* **Sentry DSN**: Your project's Data Source Name for authentication
+* **Traces Sample Rate**: Configure performance monitoring sampling
+* **SDK Initialization**: Initialize Sentry before using metrics
+
+### Key Features
+
+* **Performance Monitoring**: Track TTFB and processing duration metrics
+* **Error Tracking**: Automatic error capture and reporting
+* **Frame Processor Metrics**: Monitor individual processor performance
+* **Real-time Analytics**: Live performance data and alerting
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

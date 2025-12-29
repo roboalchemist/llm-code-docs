@@ -1,0 +1,184 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/start.md
+
+# Start an Agent session
+
+> Start a new session with a deployed agent.
+
+This endpoint starts a new instance of a deployed agent. You can optionally create a Daily room for the service to connect to.
+
+
+## OpenAPI
+
+````yaml POST /{agentName}/start
+openapi: 3.0.0
+info:
+  title: Pipecat Cloud
+  version: 1.0.0
+  description: Public API for Pipecat Cloud services
+servers:
+  - url: https://api.pipecat.daily.co/v1/public
+    description: Public API server
+security:
+  - PublicKeyAuth: []
+paths:
+  /{agentName}/start:
+    post:
+      summary: Start a service instance
+      operationId: startService
+      parameters:
+        - name: agentName
+          in: path
+          required: true
+          description: Name of the agent to start
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartRequest'
+      responses:
+        '200':
+          description: Service started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - PublicKeyAuth: []
+components:
+  schemas:
+    StartRequest:
+      type: object
+      properties:
+        createDailyRoom:
+          type: boolean
+          default: false
+          description: Whether to create a Daily room for the service instance
+          example: true
+        dailyRoomProperties:
+          type: object
+          description: >-
+            Optional configuration for the Daily room. Only used when
+            createDailyRoom is true.
+
+
+            See [Daily API
+            documentation](https://docs.daily.co/reference/rest-api/rooms/config)
+            for supported properties.
+          example:
+            enable_recording: cloud
+        dailyMeetingTokenProperties:
+          type: object
+          description: >-
+            Optional configuration for the Daily meeting token. Only used when
+            createDailyRoom is true.
+
+
+            See [Daily API
+            documentation](https://docs.daily.co/reference/rest-api/meeting-tokens/config)
+            for supported properties.
+          example:
+            is_owner: true
+            enable_auto_recording: true
+        enableDefaultIceServers:
+          type: boolean
+          default: false
+          description: >-
+            Whether to use the default STUN/TURN ICE servers provided by Pipecat
+            Cloud.
+          example: true
+        transport:
+          type: string
+          description: Explicitly specify which transport the bot should use.
+          enum:
+            - daily
+            - webrtc
+          example: webrtc
+        body:
+          type: object
+          description: >-
+            Arbitrary user data / configuration object to pass to the service
+            instance. Accessible as the first parameter of the `bot` method or
+            custom entry point.
+
+
+            See the [`Starting Sessions`
+            docs](../../fundamentals/active-sessions#passing-data) for more
+            information.
+          example:
+            foo: bar
+    StartResponse:
+      type: object
+      properties:
+        dailyRoom:
+          type: string
+          description: URL of the created Daily room (if createDailyRoom was set to true)
+          example: >-
+            https://cloud-354b1860310a444ba0f528b6a2f467c4.daily.co/qZbK9nyXCDCmQ0zDDZta
+        dailyToken:
+          type: string
+          description: Token to access the Daily room (if createDailyRoom was set to true)
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+        sessionId:
+          type: string
+          description: Session ID for the created session
+          example: 639f91d8-d511-4677-a83b-bd7564d5d92f
+        iceConfig:
+          type: object
+          description: >-
+            ICE server configuration (only included when enableDefaultIceServers
+            is true)
+          properties:
+            iceServers:
+              type: array
+              items:
+                type: object
+                properties:
+                  urls:
+                    type: array
+                    items:
+                      type: string
+                    description: Array of STUN/TURN server URLs
+                  username:
+                    type: string
+                    description: Authentication username for TURN servers
+                  credential:
+                    type: string
+                    description: Authentication credential for TURN servers
+          example:
+            iceServers:
+              - urls:
+                  - stun:stun.cloudflare.com:3478
+                  - turn:turn.cloudflare.com:3478?transport=udp
+                  - turn:turn.cloudflare.com:3478?transport=tcp
+                  - turns:turn.cloudflare.com:5349?transport=tcp
+                username: g061f2543c0c7aab7d4b087ad407709...
+                credential: e6330e0a539d4cfe9cf9f01b9eb2f...
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+  securitySchemes:
+    PublicKeyAuth:
+      type: http
+      scheme: bearer
+      description: Authentication using a Pipecat Cloud API token.
+
+````
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

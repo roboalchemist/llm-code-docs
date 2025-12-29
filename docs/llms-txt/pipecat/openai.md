@@ -1,0 +1,59 @@
+# Source: https://docs.pipecat.ai/server/services/tts/openai.md
+
+# Source: https://docs.pipecat.ai/server/services/stt/openai.md
+
+# Source: https://docs.pipecat.ai/server/services/s2s/openai.md
+
+# Source: https://docs.pipecat.ai/server/services/llm/openai.md
+
+# Source: https://docs.pipecat.ai/server/services/image-generation/openai.md
+
+# OpenAI Image Generation
+
+> Image generation service implementation using OpenAI's DALL-E models
+
+## Overview
+
+`OpenAIImageGenService` provides high-quality image generation capabilities using OpenAI's DALL-E models. It transforms text prompts into images with various size options and model configurations, offering both artistic and photorealistic image creation capabilities.
+
+<CardGroup cols={3}>
+  <Card title="OpenAI Image Gen API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.openai.image.html">
+    Pipecat's API methods for OpenAI image generation integration
+  </Card>
+
+  <Card title="OpenAI Documentation" icon="book" href="https://platform.openai.com/docs/guides/images">
+    Official OpenAI DALL-E API documentation and guides
+  </Card>
+
+  <Card title="OpenAI Platform" icon="image" href="https://platform.openai.com/">
+    Access DALL-E models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use OpenAI image generation services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[openai]"
+```
+
+## Prerequisites
+
+### OpenAI Account Setup
+
+Before using OpenAI image generation services, you need:
+
+1. **OpenAI Account**: Sign up at [OpenAI Platform](https://platform.openai.com/)
+2. **API Key**: Generate an OpenAI API key from your account dashboard
+3. **Model Access**: Ensure access to DALL-E models
+4. **HTTP Session**: Configure aiohttp session for image downloading
+
+### Required Environment Variables
+
+* `OPENAI_API_KEY`: Your OpenAI API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

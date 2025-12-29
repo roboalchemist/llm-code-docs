@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/llm/cerebras.md
+
+# Cerebras
+
+> LLM service implementation using Cerebras's API with OpenAI-compatible interface
+
+## Overview
+
+`CerebrasLLMService` provides access to Cerebras's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with ultra-fast inference speeds.
+
+<CardGroup cols={2}>
+  <Card title="Cerebras LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.cerebras.llm.html">
+    Pipecat's API methods for Cerebras integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14k-function-calling-cerebras.py">
+    Complete example with function calling
+  </Card>
+
+  <Card title="Cerebras Documentation" icon="book" href="https://inference-docs.cerebras.ai/api-reference/chat-completions">
+    Official Cerebras inference API documentation
+  </Card>
+
+  <Card title="Cerebras Platform" icon="microphone" href="https://cloud.cerebras.ai/">
+    Access models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Cerebras services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[cerebras]"
+```
+
+## Prerequisites
+
+### Cerebras Account Setup
+
+Before using Cerebras LLM services, you need:
+
+1. **Cerebras Account**: Sign up at [Cerebras Cloud](https://cloud.cerebras.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Model Selection**: Choose from available Cerebras models with ultra-fast inference
+
+### Required Environment Variables
+
+* `CEREBRAS_API_KEY`: Your Cerebras API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

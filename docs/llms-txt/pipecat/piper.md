@@ -1,0 +1,60 @@
+# Source: https://docs.pipecat.ai/server/services/tts/piper.md
+
+# Piper
+
+> Text-to-speech service implementation using the Piper TTS server
+
+## Overview
+
+`PiperTTSService` provides high-quality neural text-to-speech synthesis through a self-hosted HTTP server. The service offers complete privacy and control with no external API dependencies, making it ideal for on-premise deployments and applications requiring data sovereignty.
+
+<CardGroup cols={2}>
+  <Card title="Piper TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.piper.tts.html">
+    Pipecat's API methods for Piper TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/tree/main/examples">
+    Browse examples using Piper TTS
+  </Card>
+
+  <Card title="Piper Documentation" icon="book" href="https://github.com/OHF-Voice/piper1-gpl">
+    Official Piper TTS documentation and setup
+  </Card>
+
+  <Card title="HTTP Server Setup" icon="server" href="https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/API_HTTP.md">
+    Configure Piper HTTP server for Pipecat
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Piper services, no additional Pipecat dependencies are required:
+
+```bash  theme={null}
+pip install "pipecat-ai"  # Base installation is sufficient
+```
+
+## Prerequisites
+
+### Piper Server Setup
+
+Before using PiperTTSService, you need:
+
+1. **Piper TTS Server**: Set up a running Piper TTS server following the [HTTP server documentation](https://github.com/OHF-Voice/piper1-gpl/blob/main/docs/API_HTTP.md)
+2. **Voice Models**: Download and configure voice models for your target languages
+3. **Server Configuration**: Configure server endpoint and voice selection
+
+### Required Configuration
+
+* **Server URL**: Configure the Piper server endpoint in your service initialization
+* **Voice Models**: Ensure required voice models are available on the server
+
+<Tip>
+  Piper runs entirely locally, providing complete privacy and eliminating API
+  key requirements.
+</Tip>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt
