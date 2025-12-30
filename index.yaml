@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-29 19:52
-  total_sources: 371
-  total_fetched: 331
+  last_updated: 2025-12-29 20:00
+  total_sources: 372
+  total_fetched: 332
   llms_txt_count: 294
   llms_txt_fetched: 255
   github_count: 41
   github_fetched: 40
-  web_scraped_count: 36
-  web_scraped_fetched: 36
+  web_scraped_count: 37
+  web_scraped_fetched: 37
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -1493,8 +1493,8 @@ llms_txt:
   path: docs/llms-txt/nvidia/
   status: fetched
   file_count: 1
-  size: 50.7KB
-  last_updated: 2025-11-24 14:35
+  size: 70.1KB
+  last_updated: 2025-12-29 19:57
 - name: nvidia-developer
   description: NVIDIA Developer portal including TensorRT, Dynamo, CUDA-X, BioNeMo, and NeMo tools
   url: https://developer.nvidia.com/
@@ -2809,6 +2809,13 @@ web_scraped:
   file_count: 167
   size: 5.2MB
   last_updated: 2025-12-29 11:45
+- name: pynvvideocodec
+  description: pynvvideocodec documentation
+  path: docs/web-scraped/pynvvideocodec/
+  status: fetched
+  file_count: 4
+  size: 150.1KB
+  last_updated: 2025-12-29 20:00
 - name: react-flow
   description: react-flow documentation
   path: docs/web-scraped/react-flow/
