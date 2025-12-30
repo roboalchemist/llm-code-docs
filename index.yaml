@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 10:11
-  total_sources: 372
-  total_fetched: 333
+  last_updated: 2025-12-30 10:16
+  total_sources: 373
+  total_fetched: 334
   llms_txt_count: 294
   llms_txt_fetched: 256
   github_count: 41
   github_fetched: 40
-  web_scraped_count: 37
-  web_scraped_fetched: 37
+  web_scraped_count: 38
+  web_scraped_fetched: 38
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2805,6 +2805,13 @@ web_scraped:
   file_count: 20
   size: 730.8KB
   last_updated: 2025-12-21 22:24
+- name: nvidia-container-toolkit
+  description: nvidia-container-toolkit documentation
+  path: docs/web-scraped/nvidia-container-toolkit/
+  status: fetched
+  file_count: 9
+  size: 123.0KB
+  last_updated: 2025-12-30 10:16
 - name: onnxruntime
   description: onnxruntime documentation
   path: docs/web-scraped/onnxruntime/
