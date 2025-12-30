@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 09:50
+  last_updated: 2025-12-30 10:11
   total_sources: 372
-  total_fetched: 332
+  total_fetched: 333
   llms_txt_count: 294
-  llms_txt_fetched: 255
+  llms_txt_fetched: 256
   github_count: 41
   github_fetched: 40
   web_scraped_count: 37
@@ -643,7 +643,10 @@ llms_txt:
   description: Docker containerization platform
   url: https://docs.docker.com/
   path: docs/llms-txt/docker/
-  status: pending
+  status: fetched
+  file_count: 1
+  size: 165.4KB
+  last_updated: 2025-12-30 10:11
 - name: dotenvx
   description: dotenvx environment variable management
   url: https://dotenvx.com/docs/
