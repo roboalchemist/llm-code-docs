@@ -7,7 +7,7 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-29 19:46
+  last_updated: 2025-12-29 19:52
   total_sources: 371
   total_fetched: 331
   llms_txt_count: 294
@@ -2764,9 +2764,9 @@ web_scraped:
   description: mlx documentation
   path: docs/web-scraped/mlx/
   status: fetched
-  file_count: 166
-  size: 570.9KB
-  last_updated: 2025-12-29 19:46
+  file_count: 530
+  size: 1.5MB
+  last_updated: 2025-12-29 19:49
 - name: mouser
   description: mouser documentation
   path: docs/web-scraped/mouser/
