@@ -199,6 +199,28 @@ describe('InputHandler', () => {
     assert.equal(bufferService.buffer.y, 2);
     assert.equal(inputHandler.curAttrData.fg, 3);
   });
+  describe('DECSC/DECRC - save and restore cursor', () => {
+    it('should save and restore origin mode', async () => {
+      assert.equal(coreService.decPrivateModes.origin, false);
+      await inputHandler.parseP('\x1b[?6h');
+      assert.equal(coreService.decPrivateModes.origin, true);
+      await inputHandler.parseP('\x1b7');
+      await inputHandler.parseP('\x1b[?6l');
+      assert.equal(coreService.decPrivateModes.origin, false);
+      await inputHandler.parseP('\x1b8');
+      assert.equal(coreService.decPrivateModes.origin, true);
+    });
+    it('should save and restore wraparound mode', async () => {
+      assert.equal(coreService.decPrivateModes.wraparound, true);
+      await inputHandler.parseP('\x1b[?7l');
+      assert.equal(coreService.decPrivateModes.wraparound, false);
+      await inputHandler.parseP('\x1b7');
+      await inputHandler.parseP('\x1b[?7h');
+      assert.equal(coreService.decPrivateModes.wraparound, true);
+      await inputHandler.parseP('\x1b8');
+      assert.equal(coreService.decPrivateModes.wraparound, false);
+    });
+  });
   describe('setCursorStyle', () => {
     it('should call Terminal.setOption with correct params', () => {
       inputHandler.setCursorStyle(Params.fromArray([0]));
@@ -2341,7 +2363,7 @@ describe('InputHandler', () => {
     });
     it('DEC privates with set/reset semantic', async () => {
       // initially reset
-      const reset = [1, 6, 9, 12, 45, 66, 1000, 1002, 1003, 1004, 1006, 1016, 47, 1047, 1049, 2004, 2026];
+      const reset = [1, 6, 9, 45, 66, 1000, 1002, 1003, 1004, 1006, 1016, 47, 1047, 1049, 2004, 2026];
       for (const mode of reset) {
         await inputHandler.parseP(`\x1b[?${mode}$p`);
         assert.deepEqual(reportStack.pop(), `\x1b[?${mode};2$y`);   // initial reset
@@ -2364,6 +2386,23 @@ describe('InputHandler', () => {
         await inputHandler.parseP(`\x1b[?${mode}$p`);
         assert.deepEqual(reportStack.pop(), `\x1b[?${mode};1$y`);   // again set
       }
+    });
+    it('DEC privates quirks', async () => {
+      // Cursor blink
+      const mode = 12;
+      await inputHandler.parseP(`\x1b[?${mode}$p`);
+      assert.deepEqual(reportStack.pop(), `\x1b[?${mode};2$y`); // initial reset
+      await inputHandler.parseP(`\x1b[?${mode}h`);
+      await inputHandler.parseP(`\x1b[?${mode}$p`);
+      assert.deepEqual(reportStack.pop(), `\x1b[?${mode};2$y`); // still reset
+
+      optionsService.options.quirks.allowSetCursorBlink = true;
+      await inputHandler.parseP(`\x1b[?${mode}h`);
+      await inputHandler.parseP(`\x1b[?${mode}$p`);
+      assert.deepEqual(reportStack.pop(), `\x1b[?${mode};1$y`); // now active
+      await inputHandler.parseP(`\x1b[?${mode}l`);
+      await inputHandler.parseP(`\x1b[?${mode}$p`);
+      assert.deepEqual(reportStack.pop(), `\x1b[?${mode};2$y`);   // now inactive
     });
     it('DEC privates perma modes', async () => {
       // [mode number, state value]

@@ -240,6 +240,7 @@ export class InputHandler extends Disposable implements IInputHandler {
     this._parser.registerCsiHandler({ final: 'T' }, params => this.scrollDown(params));
     this._parser.registerCsiHandler({ final: 'X' }, params => this.eraseChars(params));
     this._parser.registerCsiHandler({ final: 'Z' }, params => this.cursorBackwardTab(params));
+    this._parser.registerCsiHandler({ final: '^' }, params => this.scrollDown(params));
     this._parser.registerCsiHandler({ final: '`' }, params => this.charPosAbsolute(params));
     this._parser.registerCsiHandler({ final: 'a' }, params => this.hPositionRelative(params));
     this._parser.registerCsiHandler({ final: 'b' }, params => this.repeatPrecedingCharacter(params));
@@ -1877,7 +1878,7 @@ export class InputHandler extends Disposable implements IInputHandler {
    * | 7     | Auto-wrap Mode (DECAWM).                                | #Y      |
    * | 8     | Auto-repeat Keys (DECARM). Always on.                   | #N      |
    * | 9     | X10 xterm mouse protocol.                               | #Y      |
-   * | 12    | Start Blinking Cursor.                                  | #Y      |
+   * | 12    | Start Blinking Cursor.                                  | #P[Requires the allowSetCursorBlink quirk option enabled.] |
    * | 25    | Show Cursor (DECTCEM).                                  | #Y      |
    * | 45    | Reverse wrap-around.                                    | #Y      |
    * | 47    | Use Alternate Screen Buffer.                            | #Y      |
@@ -1930,7 +1931,9 @@ export class InputHandler extends Disposable implements IInputHandler {
           this._coreService.decPrivateModes.wraparound = true;
           break;
         case 12:
-          this._optionsService.options.cursorBlink = true;
+          if (this._optionsService.rawOptions.quirks?.allowSetCursorBlink) {
+            this._optionsService.options.cursorBlink = true;
+          }
           break;
         case 45:
           this._coreService.decPrivateModes.reverseWraparound = true;
@@ -2125,7 +2128,7 @@ export class InputHandler extends Disposable implements IInputHandler {
    * | 7     | No Wraparound Mode (DECAWM).                            | #Y      |
    * | 8     | No Auto-repeat Keys (DECARM).                           | #N      |
    * | 9     | Don't send Mouse X & Y on button press.                 | #Y      |
-   * | 12    | Stop Blinking Cursor.                                   | #Y      |
+   * | 12    | Stop Blinking Cursor.                                   | #P[Requires the allowSetCursorBlink quirk option enabled.] |
    * | 25    | Hide Cursor (DECTCEM).                                  | #Y      |
    * | 45    | No reverse wrap-around.                                 | #Y      |
    * | 47    | Use Normal Screen Buffer.                               | #Y      |
@@ -2171,7 +2174,9 @@ export class InputHandler extends Disposable implements IInputHandler {
           this._coreService.decPrivateModes.wraparound = false;
           break;
         case 12:
-          this._optionsService.options.cursorBlink = false;
+          if (this._optionsService.rawOptions.quirks?.allowSetCursorBlink) {
+            this._optionsService.options.cursorBlink = false;
+          }
           break;
         case 45:
           this._coreService.decPrivateModes.reverseWraparound = false;
@@ -2925,6 +2930,10 @@ export class InputHandler extends Disposable implements IInputHandler {
     this._activeBuffer.savedCurAttrData.fg = this._curAttrData.fg;
     this._activeBuffer.savedCurAttrData.bg = this._curAttrData.bg;
     this._activeBuffer.savedCharset = this._charsetService.charset;
+    this._activeBuffer.savedCharsets = this._charsetService.charsets.slice();
+    this._activeBuffer.savedGlevel = this._charsetService.glevel;
+    this._activeBuffer.savedOriginMode = this._coreService.decPrivateModes.origin;
+    this._activeBuffer.savedWraparoundMode = this._coreService.decPrivateModes.wraparound;
     return true;
   }
 
@@ -2942,10 +2951,12 @@ export class InputHandler extends Disposable implements IInputHandler {
     this._activeBuffer.y = Math.max(this._activeBuffer.savedY - this._activeBuffer.ybase, 0);
     this._curAttrData.fg = this._activeBuffer.savedCurAttrData.fg;
     this._curAttrData.bg = this._activeBuffer.savedCurAttrData.bg;
-    this._charsetService.charset = (this as any)._savedCharset;
-    if (this._activeBuffer.savedCharset) {
-      this._charsetService.charset = this._activeBuffer.savedCharset;
+    for (let i = 0; i < this._activeBuffer.savedCharsets.length; i++) {
+      this._charsetService.setgCharset(i, this._activeBuffer.savedCharsets[i]);
     }
+    this._charsetService.setgLevel(this._activeBuffer.savedGlevel);
+    this._coreService.decPrivateModes.origin = this._activeBuffer.savedOriginMode;
+    this._coreService.decPrivateModes.wraparound = this._activeBuffer.savedWraparoundMode;
     this._restrictCursor();
     return true;
   }
@@ -3344,6 +3355,8 @@ export class InputHandler extends Disposable implements IInputHandler {
    * ESC c
    *   DEC mnemonic: RIS (https://vt100.net/docs/vt510-rm/RIS.html)
    *   Reset to initial state.
+   *
+   * @vt: #Y ESC  RIS "Full Reset" "ESC c"  "Reset to initial state."
    */
   public fullReset(): boolean {
     this._parser.reset();

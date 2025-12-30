@@ -49,7 +49,9 @@ declare module '@xterm/headless' {
     convertEol?: boolean;
 
     /**
-     * Whether the cursor blinks.
+     * Whether the cursor blinks. The blinking will stop after 5 minutes of idle
+     * time (refreshed by clicking, focusing or the cursor moving). The default
+     * is false.
      */
     cursorBlink?: boolean;
 
@@ -130,7 +132,8 @@ declare module '@xterm/headless' {
     /**
      * Whether to reflow the line containing the cursor when the terminal is
      * resized. Defaults to false, because shells usually handle this
-     * themselves.
+     * themselves. Note that this will not move the cursor position, only the
+     * line contents.
      */
     reflowCursorLine?: boolean;
 

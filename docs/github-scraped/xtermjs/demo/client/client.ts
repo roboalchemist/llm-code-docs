@@ -19,6 +19,7 @@ import { AddonImageWindow } from './components/window/addonImageWindow';
 import { AddonSearchWindow } from './components/window/addonSearchWindow';
 import { AddonSerializeWindow } from './components/window/addonSerializeWindow';
 import { AddonsWindow } from './components/window/addonsWindow';
+import { CellInspectorWindow } from './components/window/cellInspectorWindow';
 import { ControlBar } from './components/controlBar';
 import { WebglWindow } from './components/window/webglWindow';
 import { OptionsWindow } from './components/window/optionsWindow';
@@ -206,6 +207,7 @@ if (document.location.pathname === '/test') {
   controlBar = new ControlBar(document.getElementById('sidebar'), document.querySelector('.banner-tabs'), []);
   optionsWindow = controlBar.registerWindow(new OptionsWindow(typedTerm, addons, { updateTerminalSize, updateTerminalContainerBackground }));
   const styleWindow = controlBar.registerWindow(new StyleWindow(typedTerm, addons));
+  controlBar.registerWindow(new CellInspectorWindow(typedTerm, addons));
   controlBar.registerWindow(new VtWindow(typedTerm, addons));
   addonsWindow = controlBar.registerWindow(new AddonsWindow(typedTerm, addons));
   addonSearchWindow = controlBar.registerWindow(new AddonSearchWindow(typedTerm, addons), { afterId: 'addons', hidden: true, italics: true });
@@ -338,10 +340,16 @@ function createTerminal(): Terminal {
 
   const resizeObserver = new ResizeObserver(entries => {
     if (optionsWindow.autoResize) {
+      // In general this should be debounced to avoid excessive work on the main
+      // thread by firing the expensive resize action repeatedly
       addons.fit.instance.fit();
     }
   });
   resizeObserver.observe(terminalContainer);
+
+  window.addEventListener('resize', () => {
+    terminalContainer.style.width = document.body.clientWidth + 'px';
+  });
 
   // fit is called within a setTimeout, cols and rows need this.
   setTimeout(async () => {
@@ -574,9 +582,9 @@ function addDomListener(element: HTMLElement, type: string, handler: (...args: a
 
 function updateTerminalSize(): void {
   const width = optionsWindow.autoResize ? '100%'
-    : (term._core._renderService.dimensions.css.canvas.width + term._core.viewport.scrollBarWidth).toString() + 'px';
+    : (term.dimensions.css.canvas.width + term._core.viewport.scrollBarWidth).toString() + 'px';
   const height = optionsWindow.autoResize ? '100%'
-    : (term._core._renderService.dimensions.css.canvas.height).toString() + 'px';
+    : (term.dimensions.css.canvas.height).toString() + 'px';
   terminalContainer.style.width = width;
   terminalContainer.style.height = height;
   addons.fit.instance.fit();

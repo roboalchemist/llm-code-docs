@@ -58,7 +58,9 @@ declare module '@xterm/xterm' {
     convertEol?: boolean;
 
     /**
-     * Whether the cursor blinks.
+     * Whether the cursor blinks. The blinking will stop after 5 minutes of idle
+     * time (refreshed by clicking, focusing or the cursor moving). The default
+     * is false.
      */
     cursorBlink?: boolean;
 
@@ -198,9 +200,16 @@ declare module '@xterm/xterm' {
     minimumContrastRatio?: number;
 
     /**
+     * Control various quirks features that are either non-standard or standard
+     * in but generally rejected in modern terminals.
+     */
+    quirks?: ITerminalQuirks;
+
+    /**
      * Whether to reflow the line containing the cursor when the terminal is
      * resized. Defaults to false, because shells usually handle this
-     * themselves.
+     * themselves. Note that this will not move the cursor position, only the
+     * line contents.
      */
     reflowCursorLine?: boolean;
 
@@ -404,6 +413,21 @@ declare module '@xterm/xterm' {
     brightWhite?: string;
     /** ANSI extended colors (16-255) */
     extendedAnsi?: string[];
+  }
+
+  /**
+   * Control various quirks features that are either non-standard or standard
+   * in but generally rejected in modern terminals.
+   */
+  export interface ITerminalQuirks {
+    /**
+     * Enables support for DECSET 12 and DECRST 12 which controls cursor blink.
+     * Programs such as `vim` may use this to set the cursor blink state but may
+     * not change it back when exiting. Generally the terminal emulator should
+     * be in control of whether the cursor blinks or not and the application in
+     * modern terminals. Note that DECRQM works regardless of this option.
+     */
+    allowSetCursorBlink?: boolean;
   }
 
   /**
@@ -854,6 +878,12 @@ declare module '@xterm/xterm' {
     readonly modes: IModes;
 
     /**
+     * The dimensions of the terminal. This will be undefined before
+     * {@link open} is called.
+     */
+    readonly dimensions: IRenderDimensions | undefined;
+
+    /**
      * Gets or sets the terminal options. This supports setting multiple
      * options.
      *
@@ -992,6 +1022,12 @@ declare module '@xterm/xterm' {
      * @returns an `IDisposable` to stop listening.
      */
     onTitleChange: IEvent<string>;
+
+    /**
+     * Adds an event listener for when the terminal's dimensions change.
+     * @returns an `IDisposable` to stop listening.
+     */
+    onDimensionsChange: IEvent<IRenderDimensions>;
 
     /**
      * Unfocus the terminal.
@@ -1944,5 +1980,114 @@ declare module '@xterm/xterm' {
      * Auto-Wrap Mode (DECAWM): `CSI ? 7 h`
      */
     readonly wraparoundMode: boolean;
+  }
+
+  /**
+   * An object containing a width and height in pixels.
+   */
+  export interface IDimensions {
+    width: number;
+    height: number;
+  }
+
+  /**
+   * An object containing a top and left offset.
+   */
+  export interface IOffset {
+    top: number;
+    left: number;
+  }
+
+  /**
+   * The dimensions of the terminal.
+   */
+  export interface IRenderDimensions {
+    /**
+     * Dimensions measured in CSS pixels (ie. device pixels / device pixel
+     * ratio).
+     */
+    css: {
+      /**
+       * The dimensions of the canvas.
+       */
+      canvas: IDimensions;
+      /**
+       * The dimensions of a single cell.
+       */
+      cell: IDimensions;
+    };
+    /**
+     * Dimensions measured in actual pixels as rendered to the device.
+     */
+    device: {
+      /**
+       * The dimensions of the canvas.
+       */
+      canvas: IDimensions;
+      /**
+       * The dimensions of a single cell.
+       */
+      cell: IDimensions;
+      /**
+       * The dimensions of a single character within a cell, including its
+       * offset within the cell.
+       */
+      char: IDimensions & IOffset;
+    };
+  }
+
+  /**
+   * An object containing a width and height in pixels.
+   */
+  export interface IDimensions {
+    width: number;
+    height: number;
+  }
+
+  /**
+   * An object containing a top and left offset.
+   */
+  export interface IOffset {
+    top: number;
+    left: number;
+  }
+
+  /**
+   * The dimensions of the terminal, this is constructed and available after
+   * {@link Terminal.open} is called.
+   */
+  export interface IRenderDimensions {
+    /**
+     * Dimensions measured in CSS pixels (ie. device pixels / device pixel
+     * ratio).
+     */
+    css: {
+      /**
+       * The dimensions of the canvas which is the full terminal size.
+       */
+      canvas: IDimensions;
+      /**
+       * The dimensions of a single cell.
+       */
+      cell: IDimensions;
+    };
+    /**
+     * Dimensions measured in actual pixels as rendered to the device.
+     */
+    device: {
+      /**
+       * The dimensions of the canvas which is the full terminal size.
+       */
+      canvas: IDimensions;
+      /**
+       * The dimensions of a single cell.
+       */
+      cell: IDimensions;
+      /**
+       * The dimensions of a single character within a cell, including its
+       * offset within the cell.
+       */
+      char: IDimensions & IOffset;
+    };
   }
 }

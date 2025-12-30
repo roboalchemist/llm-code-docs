@@ -53,6 +53,7 @@ export class TestWindow extends BaseWindow implements IControlWindow {
     this._addDdWithButton(dl, 'custom-glyph-alignment', 'Custom glyph alignment test', 'Write custom glyph alignment tests to the terminal', () => customGlyphAlignmentHandler(this._terminal));
     this._addDdWithButton(dl, 'custom-glyph-ranges', 'Custom glyph ranges', 'Write custom glyph unicode range to the terminal', () => customGlyphRangesHandler(this._terminal));
     this._addDdWithButton(dl, 'powerline-symbol-test', 'Powerline symbol test', 'Write powerline symbol characters to the terminal (\\ue0a0+)', () => powerlineSymbolTest(this._terminal));
+    this._addDdWithButton(dl, 'nerd-font-icons', 'Nerd Font icons', 'Write all Nerd Font icon ranges to the terminal', () => nerdFontIconsTest(this._terminal));
     this._addDdWithButton(dl, 'underline-test', 'Underline test', 'Write text with Kitty\'s extended underline sequences', () => underlineTest(this._terminal));
     this._addDdWithButton(dl, 'sgr-test', 'SGR test', 'Write text with SGR attribute', () => sgrTest(this._terminal));
     this._addDdWithButton(dl, 'ansi-colors', 'Ansi colors test', 'Write a wide range of ansi colors', () => ansiColorsTest(this._terminal));
@@ -62,7 +63,8 @@ export class TestWindow extends BaseWindow implements IControlWindow {
 
     // Decorations section
     this._addDt(dl, 'Decorations');
-    this._addDdWithButton(dl, 'add-decoration', 'Decoration', 'Add a decoration to the terminal', () => addDecoration(this._terminal));
+    this._addDdWithButton(dl, 'add-decoration', 'Decoration (1x1)', 'Add a 1x1 decoration to the terminal', () => addDecoration(this._terminal));
+    this._addDdWithButton(dl, 'add-decoration', 'Decoration (3x3)', 'Add a 3x3 decoration to the terminal', () => addDecoration(this._terminal, 3));
     this._addDdWithButton(dl, 'add-overview-ruler', 'Add Overview Ruler', 'Add an overview ruler to the terminal', () => addOverviewRuler(this._terminal));
     this._addDdWithButton(dl, 'decoration-stress-test', 'Stress Test', 'Toggle between adding and removing a decoration to each line', () => decorationStressTest(this._terminal));
 
@@ -296,6 +298,52 @@ function powerlineSymbolTest(term: Terminal): void {
   term.writeln('nf-mdi-github_face (\\uFbd9) \ufbd9');
 }
 
+function nerdFontIconsTest(term: Terminal): void {
+  term.write('\n\n\r');
+  term.writeln('\x1b[1mNerd Font Icon Ranges\x1b[0m');
+  term.writeln('https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points\n\r');
+  writeUnicodeTable(term, 'Seti-UI + Custom', 0xE5FA, 0xE6B7, [
+    ['Seti-UI + Custom', 0xE5FA, 0xE6B7],
+  ]);
+  writeUnicodeTable(term, 'Devicons', 0xE700, 0xE8EF, [
+    ['Devicons', 0xE700, 0xE8EF],
+  ]);
+  writeUnicodeTable(term, 'Font Awesome', 0xED00, 0xF2FF, [
+    ['Font Awesome', 0xED00, 0xF2FF],
+  ]);
+  writeUnicodeTable(term, 'Font Awesome Extension', 0xE200, 0xE2A9, [
+    ['Font Awesome Extension', 0xE200, 0xE2A9],
+  ]);
+  writeUnicodeTable(term, 'Material Design Icons', 0xF0001, 0xF1AF0, [
+    ['Material Design Icons', 0xF0001, 0xF1AF0],
+  ]);
+  writeUnicodeTable(term, 'Weather', 0xE300, 0xE3E3, [
+    ['Weather', 0xE300, 0xE3E3],
+  ]);
+  writeUnicodeTable(term, 'Octicons', 0xF400, 0xF533, [
+    ['Octicons', 0xF400, 0xF533],
+  ]);
+  writeUnicodeTable(term, 'Powerline Symbols', 0xE0A0, 0xE0A3, [
+    ['Powerline Symbols', 0xE0A0, 0xE0A3],
+  ]);
+  writeUnicodeTable(term, 'Powerline Extra Symbols', 0xE0B0, 0xE0D4, [
+    ['Powerline Extra Symbols', 0xE0B0, 0xE0D4],
+  ]);
+  writeUnicodeTable(term, 'IEC Power Symbols', 0x23FB, 0x23FE, [
+    ['IEC Power Symbols', 0x23FB, 0x23FE],
+  ]);
+  writeUnicodeTable(term, 'Font Logos', 0xF300, 0xF375, [
+    ['Font Logos', 0xF300, 0xF375],
+  ]);
+  writeUnicodeTable(term, 'Pomicons', 0xE000, 0xE00A, [
+    ['Pomicons', 0xE000, 0xE00A],
+  ]);
+  writeUnicodeTable(term, 'Codicons', 0xEA60, 0xEC1E, [
+    ['Codicons', 0xEA60, 0xEC1E],
+  ]);
+  term.writeln('');
+}
+
 function underlineTest(term: Terminal): void {
   function u(style: number): string {
     return `\x1b[4:${style}m`;
@@ -453,6 +501,11 @@ function customGlyphAlignmentHandler(term: Terminal): void {
   term.write(' \u{F5F9}\u{F5F9} \n\r');
   term.write('\x1b[0m');
   term.write('\n\r');
+  
+  term.write('\x1b[0mProgress bar alignment tests:\x1b[33m\n\r');
+  term.write('\u{EE00}\u{EE01}\u{EE02} \u{EE03}\u{EE04}\u{EE05}');
+
+  term.write('\n\r');
   window.scrollTo(0, 0);
 }
 
@@ -494,6 +547,14 @@ function customGlyphRangesHandler(term: Terminal): void {
     ['Powerline symbols', 0xE0A0, 0xE0B3, [0xE0A4, 0xE0A5, 0xE0A6, 0xE0A7, 0xE0A8, 0xE0A9, 0xE0AA, 0xE0AB, 0xE0AC, 0xE0AD, 0xE0AE, 0xE0AF]],
     ['Powerline extra symbols', 0xE0B4, 0xE0D4, [0xE0C9, 0xE0CB, 0xE0D3]],
   ]);
+  // Progress Indicators
+  // Range: EE00-EE0B
+  // https://github.com/tonsky/FiraCode
+  writeUnicodeTable(term, 'Progress Indicators', 0xEE00, 0xEE0B, [
+    ['Progress bars', 0xEE00, 0xEE05],
+    ['Progress spinners', 0xEE06, 0xEE0B],
+  ]);
+  // https://github.com/ryanoasis/nerd-fonts/pull/1733
   // Git Branch Symbols
   // F5D0-F60D
   // https://github.com/xtermjs/xterm.js/issues/5477
@@ -790,11 +851,13 @@ function loadTestLongLines(term: Terminal, addons: AddonCollection): void {
   });
 }
 
-function addDecoration(term: Terminal): void {
+function addDecoration(term: Terminal, dim: number = 1): void {
   term.options['overviewRuler'] = { width: 14 };
   const marker = term.registerMarker(1);
   const decoration = term.registerDecoration({
     marker,
+    height: dim,
+    width: dim,
     backgroundColor: '#00FF00',
     foregroundColor: '#00FE00',
     overviewRulerOptions: { color: '#ef292980', position: 'left' }

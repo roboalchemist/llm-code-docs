@@ -136,6 +136,8 @@ export class WebglRenderer extends Disposable implements IRenderer {
       this._observerDisposable.value = observeDevicePixelDimensions(this._canvas, w, (w, h) => this._setCanvasDevicePixelDimensions(w, h));
     }));
 
+    this._register(addDisposableListener(this._coreBrowserService.mainDocument, 'mousedown', () => this._cursorBlinkStateManager.value?.restartBlinkAnimation()));
+
     this._core.screenElement!.appendChild(this._canvas);
 
     [this._rectangleRenderer.value, this._glyphRenderer.value] = this._initializeWebGLState();
@@ -202,6 +204,9 @@ export class WebglRenderer extends Disposable implements IRenderer {
     // Force a full refresh. Resizing `_glyphRenderer` should clear it already,
     // so there is no need to clear it again here.
     this._clearModel(false);
+
+    // Render synchronously to avoid flicker when the canvas is cleared
+    this._onRequestRedraw.fire({ start: 0, end: this._terminal.rows - 1, sync: true });
   }
 
   public handleCharSizeChanged(): void {
@@ -617,7 +622,10 @@ export class WebglRenderer extends Disposable implements IRenderer {
     // the change as it's an exact multiple of the cell sizes.
     this._canvas.width = width;
     this._canvas.height = height;
-    this._requestRedrawViewport();
+    // Update the WebGL viewport to match the new canvas dimensions
+    this._gl.viewport(0, 0, width, height);
+    // Render synchronously to avoid flicker when the canvas is cleared
+    this._onRequestRedraw.fire({ start: 0, end: this._terminal.rows - 1, sync: true });
   }
 
   private _requestRedrawViewport(): void {
