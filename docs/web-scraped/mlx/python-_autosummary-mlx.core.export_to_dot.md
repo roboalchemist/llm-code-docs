@@ -1,0 +1,66 @@
+# Source: https://ml-explore.github.io/mlx/build/html/python/_autosummary/mlx.core.export_to_dot.html
+
+[]
+
+[[ ]](https://github.com/ml-explore/mlx "Source repository")
+
+- [[ ] [.rst]](../../_sources/python/_autosummary/mlx.core.export_to_dot.rst "Download source file")
+- [ ] [.pdf]
+
+[ ]
+
+[]
+
+# mlx.core.export_to_dot
+
+## Contents
+
+- [[`export_to_dot()`]](#mlx.core.export_to_dot)
+
+# mlx.core.export_to_dot[\#](#mlx-core-export-to-dot "Link to this heading")
+
+[[export_to_dot]][(]*[[file]][[:]][ ][[[object]](https://docs.python.org/3/library/functions.html#object "(in Python v3.14)")]*, *[[\*]][[args]]*, *[[\*\*]][[kwargs]]*[)] [[→] [[[None]](https://docs.python.org/3/library/constants.html#None "(in Python v3.14)")]][\#](#mlx.core.export_to_dot "Link to this definition")
+
+:   Export a graph to DOT format for visualization.
+
+    A variable number of output arrays can be provided for exporting The graph exported will recursively include all unevaluated inputs of the provided outputs.
+
+    Parameters[:]
+
+    :   - **file** ([*str*](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")) -- The file path to export to.
+
+        - **\*args** ([*array*](mlx.core.array.html#mlx.core.array "mlx.core.array")) -- The output arrays.
+
+        - **\*\*kwargs** ([*dict*](https://docs.python.org/3/library/stdtypes.html#dict "(in Python v3.14)")*\[*[*str*](https://docs.python.org/3/library/stdtypes.html#str "(in Python v3.14)")*,* [*array*](mlx.core.array.html#mlx.core.array "mlx.core.array")*\]*) -- Provide some names for arrays in the graph to make the result easier to parse.
+
+    Example
+
+    :::: 
+    ::: highlight
+        >>> a = mx.array(1) + mx.array(2)
+        >>> mx.export_to_dot("graph.dot", a)
+        >>> x = mx.array(1)
+        >>> y = mx.array(2)
+        >>> mx.export_to_dot("graph.dot", x + y, x=x, y=y)
+    :::
+    ::::
+
+[](mlx.core.exporter.html "previous page")
+
+previous
+
+mlx.core.exporter
+
+[](../ops.html "next page")
+
+next
+
+Operations
+
+Contents
+
+- [[`export_to_dot()`]](#mlx.core.export_to_dot)
+
+By MLX Contributors
+
+© Copyright 2023, Apple.\
