@@ -334,6 +334,13 @@ repositories:
     target_folder: "docs/github-scraped/cvcuda"
     branch: "main"
 
+  - name: "D3"
+    description: "D3.js - JavaScript library for creating dynamic, interactive data visualizations in web browsers using SVG, Canvas, and HTML"
+    repo_url: "https://github.com/d3/d3.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/d3"
+    branch: "main"
+
   - name: "decord"
     description: "Decord - Efficient video reader library with hardware-accelerated decoding for deep learning"
     repo_url: "https://github.com/dmlc/decord.git"
