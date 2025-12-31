@@ -1,0 +1,135 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/install.mdx
+# Path: docs/install.mdx
+
+---
+title: 'Install'
+---
+
+There are lots of ways to use Emotion, if you're using React, the easiest way to get started is to use the [`@emotion/react` package](/packages/react). If you're not using React, you should use [the `@emotion/css` package](#vanilla).
+
+```bash
+yarn add @emotion/react
+```
+
+or if you prefer npm
+
+```bash
+npm install --save @emotion/react
+```
+
+To use it, import what you need, for example use [the css prop](/docs/css-prop.mdx) to create class names with styles.
+
+```jsx
+// @live
+import { css } from '@emotion/react'
+
+const style = css`
+  color: hotpink;
+`
+
+const SomeComponent = ({ children }) => (
+  <div css={style}>
+    Some hotpink text.
+    {children}
+  </div>
+)
+
+const anotherStyle = css({
+  textDecoration: 'underline'
+})
+
+const AnotherComponent = () => (
+  <div css={anotherStyle}>Some text with an underline.</div>
+)
+render(
+  <SomeComponent>
+    <AnotherComponent />
+  </SomeComponent>
+)
+```
+
+## With [`styled`](/docs/styled.mdx)
+
+`styled` is a way to create React components that have styles attached to them.
+
+```bash
+# assuming you already have @emotion/react installed
+yarn add @emotion/styled
+```
+
+or if you prefer npm
+
+```bash
+npm install --save @emotion/styled
+```
+
+```jsx
+// @live
+import styled from '@emotion/styled'
+
+const Button = styled.button`
+  color: hotpink;
+`
+
+render(<Button>This is a hotpink button.</Button>)
+```
+
+## With [`@emotion/babel-plugin`](/packages/babel-plugin)
+
+> Note:
+>
+> If you're using Create React App, you can use the [Babel macro](/docs/babel-macros.mdx)
+
+Emotion has an optional [Babel](https://babeljs.io/) plugin that optimizes styles by compressing and hoisting them and creates a better developer experience with source maps and labels.
+
+```bash
+yarn add --dev @emotion/babel-plugin
+```
+
+or if you prefer npm
+
+```bash
+npm install --save-dev @emotion/babel-plugin
+```
+
+## .babelrc
+
+_`"emotion"` must be the **first plugin** in your babel config `plugins` list._
+
+```json
+{
+  "plugins": ["@emotion"]
+}
+```
+
+If you are using Babel's env option emotion must also be first for each environment.
+
+```json
+{
+  "env": {
+    "production": {
+      "plugins": ["@emotion", ...otherBabelPlugins]
+    }
+  },
+  "plugins": ["@emotion"]
+}
+```
+
+## Vanilla
+
+If you're not using React, you can use vanilla Emotion from the `@emotion/css` package. Most of the documentation here focuses on the React-specific version of Emotion, but most of the concepts in the React-specific version also apply to vanilla Emotion.
+
+```bash
+yarn add @emotion/css
+```
+
+```jsx
+import { css } from '@emotion/css'
+
+const app = document.getElementById('root')
+const myClassName = css`
+  color: hotpink;
+`
+app.classList.add(myClassName)
+```

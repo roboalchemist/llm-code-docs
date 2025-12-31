@@ -1,0 +1,98 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/testing.mdx
+# Path: docs/testing.mdx
+
+---
+title: 'Snapshot Testing'
+---
+
+Adding [snapshot tests with Jest](https://facebook.github.io/jest/docs/en/snapshot-testing.html) is a great way to help avoid unintended changes to your app's UI.
+
+By diffing the serialized value of your React tree Jest can show you what changed in your app and allow you to fix it or update the snapshot.
+
+By default snapshots with emotion show generated class names. Adding [@emotion/jest](https://github.com/emotion-js/emotion/tree/main/packages/jest) allows you to output the actual styles being applied.
+
+<img src="https://user-images.githubusercontent.com/514026/31314015-02b79ca6-abc3-11e7-8f70-1edb31c7f43b.jpg" />
+
+### Installation
+
+```bash
+npm install --save-dev @emotion/jest
+```
+
+Add the `"@emotion/jest/serializer"` to the [`snapshotSerializers`](https://jestjs.io/docs/en/configuration#snapshotserializers-arraystring) option.
+
+```json
+{
+  "snapshotSerializers": ["@emotion/jest/serializer"]
+}
+```
+
+Or use `expect.addSnapshotSerializer` to add it.
+
+```javascript
+import { createSerializer } from '@emotion/jest'
+
+expect.addSnapshotSerializer(createSerializer())
+```
+
+When using Enzyme, you can add `"@emotion/jest/enzyme-serializer"` instead.
+
+```json
+{
+  "snapshotSerializers": ["@emotion/jest/enzyme-serializer"]
+}
+```
+
+Or use `expect.addSnapshotSerializer` to add it like this:
+
+```javascript
+// also adds the enzyme-to-json serializer
+import { createEnzymeSerializer } from '@emotion/jest/enzyme-serializer'
+
+expect.addSnapshotSerializer(createEnzymeSerializer())
+```
+
+### Writing a test
+
+Writing a test with `@emotion/jest` involves creating a snapshot from the `react-test-renderer` or `enzyme-to-json`'s resulting JSON.
+
+```jsx
+import React from 'react'
+import renderer from 'react-test-renderer'
+
+const Button = props => (
+  <button
+    css={{
+      color: 'hotpink'
+    }}
+    {...props}
+  />
+)
+
+test('Button renders correctly', () => {
+  expect(
+    renderer.create(<Button>This is hotpink.</Button>).toJSON()
+  ).toMatchSnapshot()
+})
+```
+
+It'll create a snapshot that looks like this.
+
+```jsx
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders correctly 1`] = `
+.emotion-0 {
+  color: hotpink;
+}
+
+<div
+  className="emotion-0"
+>
+  This is hotpink.
+</div>
+`
+```
+
+When the styles of a component change, the snapshot will fail and you'll be able to update the snapshot or fix the component.

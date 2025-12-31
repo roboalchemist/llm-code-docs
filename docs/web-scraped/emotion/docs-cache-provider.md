@@ -1,0 +1,48 @@
+# Emotion Documentation
+# Source: https://raw.githubusercontent.com/emotion-js/emotion/main/docs/cache-provider.mdx
+# Path: docs/cache-provider.mdx
+
+---
+title: 'CacheProvider'
+---
+
+It can be useful to customize emotion's options - i.e. to add custom Stylis plugins, customize prefix of inserted class names, render style tags into specific element and more. You can look up full list of options [here](/packages/cache#options).
+
+```jsx
+// @live
+import { CacheProvider, css } from '@emotion/react'
+import createCache from '@emotion/cache'
+import { prefixer } from 'stylis'
+
+const customPlugin = () => {}
+
+const myCache = createCache({
+  key: 'my-prefix-key',
+  stylisPlugins: [
+    customPlugin,
+    // has to be included manually when customizing `stylisPlugins` if you want
+    // to have vendor prefixes added automatically
+    prefixer
+  ]
+})
+
+render(
+  <CacheProvider value={myCache}>
+    <div
+      css={css`
+        display: flex;
+      `}
+    >
+      <div
+        css={css`
+          flex: 1;
+          transform: scale(1.1);
+          color: hotpink;
+        `}
+      >
+        Some text
+      </div>
+    </div>
+  </CacheProvider>
+)
+```
