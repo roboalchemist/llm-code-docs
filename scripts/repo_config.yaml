@@ -271,6 +271,13 @@ repositories:
     target_folder: "docs/github-scraped/primereact"
     branch: "master"
 
+  - name: "PyTorch"
+    description: "PyTorch - Deep learning framework by Meta with dynamic computation graphs, automatic differentiation, and GPU acceleration"
+    repo_url: "https://github.com/pytorch/pytorch.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/pytorch"
+    branch: "main"
+
   - name: "Penpot"
     description: "Penpot - Open source design and prototyping platform (Figma alternative)"
     repo_url: "https://github.com/penpot/penpot-docs.git"
