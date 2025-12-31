@@ -208,6 +208,13 @@ repositories:
     target_folder: "docs/github-scraped/gitea"
     branch: "master"
 
+  - name: "ParkUI"
+    description: "Park UI - Beautifully designed components built on Ark UI and Panda CSS with React, Solid.js, and Vue support"
+    repo_url: "https://github.com/chakra-ui/park-ui.git"
+    source_folder: "website/src/content/docs"
+    target_folder: "docs/github-scraped/park-ui"
+    branch: "main"
+
   - name: "PiKVM"
     description: "PiKVM - Open source DIY IP-KVM based on Raspberry Pi"
     repo_url: "https://github.com/pikvm/pikvm.git"
