@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 14:50
-  total_sources: 412
-  total_fetched: 362
+  last_updated: 2025-12-31 14:54
+  total_sources: 414
+  total_fetched: 364
   llms_txt_count: 295
   llms_txt_fetched: 258
   github_count: 74
   github_fetched: 61
-  web_scraped_count: 43
-  web_scraped_fetched: 43
+  web_scraped_count: 45
+  web_scraped_fetched: 45
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -3165,6 +3165,13 @@ web_scraped:
   file_count: 4
   size: 150.1KB
   last_updated: 2025-12-31 13:50
+- name: pytest
+  description: pytest documentation
+  path: docs/web-scraped/pytest/
+  status: fetched
+  file_count: 57
+  size: 2.5MB
+  last_updated: 2025-12-31 14:54
 - name: react-flow
   description: react-flow documentation
   path: docs/web-scraped/react-flow/
@@ -3271,6 +3278,13 @@ web_scraped:
   file_count: 12
   size: 56.0KB
   last_updated: 2025-12-24 03:17
+- name: vllm
+  description: vllm documentation
+  path: docs/web-scraped/vllm/
+  status: fetched
+  file_count: 256
+  size: 2.9MB
+  last_updated: 2025-12-31 14:54
 - name: voyage
   description: voyage documentation
   path: docs/web-scraped/voyage/
