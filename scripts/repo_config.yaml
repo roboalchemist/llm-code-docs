@@ -96,6 +96,13 @@ repositories:
     target_folder: "docs/github-scraped/jest"
     branch: "main"
 
+  - name: "Lexical"
+    description: "Lexical - Extensible text editor framework by Meta for building rich text editors with React"
+    repo_url: "https://github.com/facebook/lexical.git"
+    source_folder: "packages/lexical-website/docs"
+    target_folder: "docs/github-scraped/lexical"
+    branch: "main"
+
   - name: "SQLAlchemy"
     description: "SQLAlchemy - The Python SQL Toolkit and ORM"
     repo_url: "https://github.com/sqlalchemy/sqlalchemy.git"
