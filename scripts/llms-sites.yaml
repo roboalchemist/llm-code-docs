@@ -629,6 +629,9 @@ sites:
 - name: paysafe
   base_url: https://developer.paysafe.com/
   description: Paysafe payment gateway API
+- name: pandacss
+  base_url: https://panda-css.com/
+  description: Panda CSS - CSS-in-JS framework with build-time optimizations for styling web applications
 - name: pgvector
   base_url: https://pgvector.dev/
   description: pgvector open-source vector similarity search extension for PostgreSQL
