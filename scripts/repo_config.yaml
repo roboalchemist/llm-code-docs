@@ -54,6 +54,13 @@ repositories:
     target_folder: "docs/github-scraped/esptool"
     branch: "master" # Default branch to use
 
+  - name: "ESPHome"
+    description: "ESPHome - System to control ESP8266/ESP32 microcontrollers via configuration files for home automation"
+    repo_url: "https://github.com/esphome/esphome-docs.git"
+    source_folder: "content"
+    target_folder: "docs/github-scraped/esphome"
+    branch: "current" # Default branch to use
+
   - name: "mcp-jest"
     description: "MCP Jest - Model Context Protocol testing utilities"
     repo_url: "https://github.com/josharsh/mcp-jest.git"
