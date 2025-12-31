@@ -341,6 +341,13 @@ repositories:
     target_folder: "docs/github-scraped/torchaudio"
     branch: "main"
 
+  - name: "Tasmota"
+    description: "Tasmota - Open-source firmware for ESP8266/ESP32 based smart home devices with MQTT, Web UI, and home automation support"
+    repo_url: "https://github.com/tasmota/docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/tasmota"
+    branch: "master"
+
   - name: "TypeScript"
     description: "TypeScript - Microsoft's typed superset of JavaScript with complete language documentation, handbook, and reference"
     repo_url: "https://github.com/microsoft/TypeScript-Website.git"
