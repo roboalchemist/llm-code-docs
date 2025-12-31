@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/soldering.md
+
 # Source: https://learn.adafruit.com/tron-bag/soldering.md
 
 # TRON Bag

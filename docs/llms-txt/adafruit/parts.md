@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/parts.md
+
 # Source: https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds/parts.md
 
 # Source: https://learn.adafruit.com/biometric-security-box/parts.md

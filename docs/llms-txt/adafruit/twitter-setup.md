@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/twitter-setup.md
+
 # Source: https://learn.adafruit.com/internet-of-things-printer/twitter-setup.md
 
 # Internet of Things Printer

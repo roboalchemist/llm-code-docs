@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/troubleshooting.md
+
 # Source: https://learn.adafruit.com/pi-wifi-radio/troubleshooting.md
 
 # Source: https://learn.adafruit.com/mini-thermal-receipt-printer/troubleshooting.md

@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/overview.md
+
 # Source: https://learn.adafruit.com/pi-wifi-radio/overview.md
 
 # Source: https://learn.adafruit.com/adafruit-triple-axis-gyro-breakout/overview.md
