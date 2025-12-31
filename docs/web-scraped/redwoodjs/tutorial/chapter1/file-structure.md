@@ -1,0 +1,163 @@
+# Source: https://docs.redwoodjs.com/docs/tutorial/chapter1/file-structure
+
+-   [![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMjQgMjQiIGNsYXNzPSJicmVhZGNydW1iSG9tZUljb25fWU5GVCI+PHBhdGggZD0iTTEwIDE5di01aDR2NWMwIC41NS40NSAxIDEgMWgzYy41NSAwIDEtLjQ1IDEtMXYtN2gxLjdjLjQ2IDAgLjY4LS41Ny4zMy0uODdMMTIuNjcgMy42Yy0uMzgtLjM0LS45Ni0uMzQtMS4zNCAwbC04LjM2IDcuNTNjLS4zNC4zLS4xMy44Ny4zMy44N0g1djdjMCAuNTUuNDUgMSAxIDFoM2MuNTUgMCAxLS40NSAxLTF6IiBmaWxsPSJjdXJyZW50Q29sb3IiPjwvcGF0aD48L3N2Zz4=)](/)
+-   [Tutorial]
+-   [Chapter 1]
+-   [Redwood File Structure]
+
+[Version: 8.8]
+
+On this page
+
+<div>
+
+# Redwood File Structure
+
+</div>
+
+Let\'s take a look at the files and directories that were created for us (config files have been excluded for now):
+
+[![](data:image/svg+xml;base64,PHN2ZyB2aWV3Ym94PSIwIDAgMTQgMTYiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTcgMi4zYzMuMTQgMCA1LjcgMi41NiA1LjcgNS43cy0yLjU2IDUuNy01LjcgNS43QTUuNzEgNS43MSAwIDAgMSAxLjMgOGMwLTMuMTQgMi41Ni01LjcgNS43LTUuN3pNNyAxQzMuMTQgMSAwIDQuMTQgMCA4czMuMTQgNyA3IDcgNy0zLjE0IDctNy0zLjE0LTctNy03em0xIDNINnY1aDJWNHptMCA2SDZ2Mmgydi0yeiI+PC9wYXRoPjwvc3ZnPg==)]info
+
+Don\'t worry about trying to memorize this directory structure right now, it\'s just a brief overview to get you oriented. Seeing dozens of files before you\'ve even written a single line of code can be daunting, but there\'s a great organizational structure here, promise. You can also ignore this all for now and we\'ll touch upon many of these files and directories as we go.
+
+-   JavaScript
+-   TypeScript
+
+``` 
+├── api
+│   ├── db
+│   │   └── schema.prisma
+│   └── src
+│       ├── directives
+│       │   ├── requireAuth
+│       │   └── skipAuth
+│       ├── functions
+│       │   └── graphql.js
+│       ├── graphql
+│       ├── lib
+│       │   ├── auth.js
+│       │   ├── db.js
+│       │   └── logger.js
+│       └── services
+│
+├── scripts
+│   └── seed.js
+│
+└── web
+    ├── public
+    │   ├── favicon.png
+    │   ├── README.md
+    │   └── robots.txt
+    └── src
+        ├── components
+        ├── layouts
+        ├── pages
+        │   ├── FatalErrorPage
+        │   │   └── FatalErrorPage.jsx
+        │   └── NotFoundPage
+        │       └── NotFoundPage.jsx
+        ├── App.jsx
+        ├── entry.client.jsx
+        ├── index.css
+        ├── index.html
+        └── Routes.jsx
+```
+
+``` 
+├── api
+│   ├── db
+│   │   └── schema.prisma
+│   └── src
+│       ├── directives
+│       │   ├── requireAuth
+│       │   └── skipAuth
+│       ├── functions
+│       │   └── graphql.ts
+│       ├── graphql
+│       ├── lib
+│       │   ├── auth.ts
+│       │   ├── db.ts
+│       │   └── logger.ts
+│       └── services
+│
+├── scripts
+│   └── seed.ts
+│
+└── web
+    ├── public
+    │   ├── favicon.png
+    │   ├── README.md
+    │   └── robots.txt
+    └── src
+        ├── components
+        ├── layouts
+        ├── pages
+        │   ├── FatalErrorPage
+        │   │   └── FatalErrorPage.tsx
+        │   └── NotFoundPage
+        │       └── NotFoundPage.tsx
+        ├── App.tsx
+        ├── entry.client.tsx
+        ├── index.css
+        ├── index.html
+        └── Routes.tsx
+```
+
+At the top level we have three directories, `api`, `scripts` and `web`. Redwood separates the backend (`api`) and frontend (`web`) concerns into their own paths in the codebase. ([Yarn refers to these as \"workspaces\"](https://yarnpkg.com/features/workspaces). In Redwood, we refer to them as \"sides.\") When you add packages going forward you\'ll need to specify which workspace they should go in. For example (**don\'t run these commands**, we\'re just looking at the syntax):
+
+``` 
+yarn workspace web add marked
+yarn workspace api add better-fs
+```
+
+`scripts` is meant to hold any Node scripts you may need to run from the command line that aren\'t directly related to the api or web sides. The file that\'s in there, `seed.ts` is used to populate your database with any data that needs to exist for your app to run at all (maybe an admin user or site configuration).
+
+### The /api Directory[​](#the-api-directory "Direct link to The /api Directory") 
+
+Within `api` there are four directories:
+
+-   `db` contains the plumbing for the database:
+
+    -   `schema.prisma` contains the database schema (tables and columns)
+
+    After we add our first database table, there will also be a SQLite database file named `dev.db` and a directory called `migrations` created for us. `migrations` contains the files that act as snapshots of the database schema changing over time.
+
+-   `dist` contains the compiled code for the api side and can be ignored when developing.
+
+-   `src` contains all your backend code. `api/src` contains five more directories:
+
+    -   `directives` will contain GraphQL [schema directives](https://www.graphql-tools.com/docs/schema-directives) for controlling access to queries and transforming values.
+    -   `functions` will contain any [lambda functions](https://docs.netlify.com/functions/overview/) your app needs in addition to the `graphql.ts` file auto-generated by Redwood. This file is required to use the GraphQL API.
+    -   `graphql` contains your GraphQL schema written in a Schema Definition Language (the files will end in `.sdl.ts`).
+    -   `lib` contains a few files:`auth.ts` starts as a placeholder for adding auth functionality and has a couple of bare-bones functions in it to start, `db.ts` instantiates the Prisma database client so we can talk to a database and `logger.ts` which configures, well, logging. You can use this directory for other code related to the API side that doesn\'t really belong anywhere else.
+    -   `services` contains business logic related to your data. When you\'re querying or mutating data for GraphQL (known as **resolvers**), that code ends up here, but in a format that\'s reusable in other places in your application.
+
+-   And finally `types` contains automatically compiled GraphQL types and can be ignored during development
+
+That\'s it for the backend.
+
+### The /web Directory[​](#the-web-directory "Direct link to The /web Directory") 
+
+-   `public` contains assets not used by React components (they will be copied over unmodified to the final app\'s root directory):
+
+    -   `favicon.png` is the icon that goes in a browser tab when your page is open (apps start with the RedwoodJS logo).
+    -   `README.md` explains how, and when, to use the `public` folder for static assets. It also covers best practices for importing assets within components via Vite. You can also [read this README.md file on GitHub](https://github.com/redwoodjs/redwood/blob/main/packages/create-redwood-app/templates/ts/web/public).
+    -   `robots.txt` can be used to control what web indexers are [allowed to do](https://www.robotstxt.org/robotstxt.html).
+
+-   `src` contains several subdirectories:
+
+    -   `components` contains your traditional React components as well as Redwood *Cells* (more about those soon).
+    -   `layouts` contain HTML/components that wrap your content and are shared across *Pages*.
+    -   `pages` contain components and are optionally wrapped inside *Layouts* and are the \"landing page\" for a given URL (a URL like `/articles/hello-world` will map to one page and `/contact-us` will map to another). There are two pages included in a new app:
+        -   `NotFoundPage.tsx` will be served when no other route is found (see `Routes.tsx` below).
+        -   `FatalErrorPage.tsx` will be rendered when there is an uncaught error that can\'t be recovered from and would otherwise cause our application to really blow up (normally rendering a blank page).
+    -   `App.tsx` the bootstrapping code to get our Redwood app up and running.
+    -   `entry.client.tsx` is the standard React starting point for our app.
+    -   `index.css` is a good starting place for custom CSS, but there are many options (we like [TailwindCSS](https://tailwindcss.com/) which, believe it or not, may not require you to write any custom CSS for the life of your app!)
+    -   `index.html` is what\'s first sent to a visitor\'s browser. It fetches `entry.client.tsx`.
+    -   `Routes.tsx` the route definitions for our app which map a URL to a *Page*.
+
+We\'ll dip in and out of these directories and files (and create some new ones) as we work through the tutorial.
+
+[![](data:image/svg+xml;base64,PHN2ZyBmaWxsPSJjdXJyZW50Q29sb3IiIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld2JveD0iMCAwIDQwIDQwIiBjbGFzcz0iaWNvbkVkaXRfWjlTdyIgYXJpYS1oaWRkZW49InRydWUiPjxnPjxwYXRoIGQ9Im0zNC41IDExLjdsLTMgMy4xLTYuMy02LjMgMy4xLTNxMC41LTAuNSAxLjItMC41dDEuMSAwLjVsMy45IDMuOXEwLjUgMC40IDAuNSAxLjF0LTAuNSAxLjJ6IG0tMjkuNSAxNy4xbDE4LjQtMTguNSA2LjMgNi4zLTE4LjQgMTguNGgtNi4zdi02LjJ6Ij48L3BhdGg+PC9nPjwvc3ZnPg==)Edit the latest version of this page](https://github.com/redwoodjs/graphql/blob/main/docs/docs/tutorial/chapter1/file-structure.md)
