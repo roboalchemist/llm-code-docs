@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 16:12
-  total_sources: 38
-  total_fetched: 38
+  last_updated: 2025-12-31 16:17
+  total_sources: 24
+  total_fetched: 24
   llms_txt_count: 11
   llms_txt_fetched: 11
-  github_count: 18
-  github_fetched: 18
+  github_count: 4
+  github_fetched: 4
   web_scraped_count: 9
   web_scraped_fetched: 9
 llms_txt:
@@ -24,7 +24,7 @@ llms_txt:
   status: fetched
   file_count: 6
   size: 30.3KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: dnd-kit
   description: useSortable
   url: https://dnd-kit.com/
@@ -32,7 +32,7 @@ llms_txt:
   status: fetched
   file_count: 23
   size: 318.5KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: kinde
   description: Kinde Documentation
   url: https://kinde.com/
@@ -40,7 +40,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 10.5KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: mastercard
   description: CLS Offer Activations
   url: https://mastercard.com/
@@ -48,7 +48,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 5.5KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: pandacss
   description: Panda CSS Documentation
   url: https://pandacss.com/
@@ -56,7 +56,7 @@ llms_txt:
   status: fetched
   file_count: 10
   size: 1.0MB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: paypal
   description: paypal documentation
   url: https://paypal.com/
@@ -64,7 +64,7 @@ llms_txt:
   status: fetched
   file_count: 65
   size: 12.3MB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: paypal-developer
   description: paypal-developer documentation
   url: https://paypal-developer.com/
@@ -72,7 +72,7 @@ llms_txt:
   status: fetched
   file_count: 138
   size: 32.1MB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: react-native
   description: Platform
   url: https://react-native.com/
@@ -80,7 +80,7 @@ llms_txt:
   status: fetched
   file_count: 275
   size: 4.0MB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: render
   description: Your First Render Deploy
   url: https://render.com/
@@ -88,7 +88,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 665.3KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: slate
   description: Decoration
   url: https://slate.com/
@@ -96,7 +96,7 @@ llms_txt:
   status: fetched
   file_count: 89
   size: 833.3KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 - name: workos
   description: WorkOS Documentation
   url: https://workos.com/
@@ -104,134 +104,36 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 55.6KB
-  last_updated: 2025-12-31 16:11
+  last_updated: 2025-12-31 16:17
 github_scraped:
-- name: ariakit
-  description: ariakit from GitHub
-  path: docs/github-scraped/ariakit/
-  status: fetched
-  file_count: 118
-  size: 439.2KB
-  last_updated: 2025-12-31 16:12
 - name: chroma
   description: chroma from GitHub
   path: docs/github-scraped/chroma/
   status: fetched
   file_count: 6
   size: 104.9KB
-  last_updated: 2025-12-31 16:12
-- name: chrome-devtools-mcp
-  description: chrome-devtools-mcp from GitHub
-  path: docs/github-scraped/chrome-devtools-mcp/
-  status: fetched
-  file_count: 8
-  size: 78.1KB
-  last_updated: 2025-12-31 16:12
-- name: decord
-  description: decord from GitHub
-  path: docs/github-scraped/decord/
-  status: fetched
-  file_count: 6
-  size: 10.3KB
-  last_updated: 2025-12-31 16:12
-- name: drawio
-  description: drawio from GitHub
-  path: docs/github-scraped/drawio/
-  status: fetched
-  file_count: 9
-  size: 16.2KB
-  last_updated: 2025-12-31 16:12
-- name: faiss
-  description: faiss from GitHub
-  path: docs/github-scraped/faiss/
-  status: fetched
-  file_count: 57
-  size: 2.3MB
-  last_updated: 2025-12-31 16:12
-- name: flagembedding
-  description: flagembedding from GitHub
-  path: docs/github-scraped/flagembedding/
-  status: fetched
-  file_count: 47
-  size: 447.3KB
-  last_updated: 2025-12-31 16:12
-- name: llama-cpp
-  description: llama-cpp from GitHub
-  path: docs/github-scraped/llama-cpp/
-  status: fetched
-  file_count: 104
-  size: 770.9KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: mobx
   description: mobx from GitHub
   path: docs/github-scraped/mobx/
   status: fetched
   file_count: 51
   size: 249.0KB
-  last_updated: 2025-12-31 16:12
-- name: opensearch
-  description: opensearch from GitHub
-  path: docs/github-scraped/opensearch/
-  status: fetched
-  file_count: 1598
-  size: 11.1MB
-  last_updated: 2025-12-31 16:12
-- name: penpot
-  description: penpot from GitHub
-  path: docs/github-scraped/penpot/
-  status: fetched
-  file_count: 30
-  size: 224.9KB
-  last_updated: 2025-12-31 16:12
-- name: platformio
-  description: platformio from GitHub
-  path: docs/github-scraped/platformio/
-  status: fetched
-  file_count: 1
-  size: 89B
-  last_updated: 2025-12-31 16:12
-- name: qwen3-embedding
-  description: qwen3-embedding from GitHub
-  path: docs/github-scraped/qwen3-embedding/
-  status: fetched
-  file_count: 4
-  size: 37.3KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: react-beautiful-dnd
   description: react-beautiful-dnd from GitHub
   path: docs/github-scraped/react-beautiful-dnd/
   status: fetched
   file_count: 41
   size: 216.7KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: react-three-fiber
   description: react-three-fiber from GitHub
   path: docs/github-scraped/react-three-fiber/
   status: fetched
   file_count: 20
   size: 143.8KB
-  last_updated: 2025-12-31 16:12
-- name: visx
-  description: visx from GitHub
-  path: docs/github-scraped/visx/
-  status: fetched
-  file_count: 46
-  size: 238.9KB
-  last_updated: 2025-12-31 16:12
-- name: whisper
-  description: whisper from GitHub
-  path: docs/github-scraped/whisper/
-  status: fetched
-  file_count: 4
-  size: 30.1KB
-  last_updated: 2025-12-31 16:12
-- name: xtermjs
-  description: xtermjs from GitHub
-  path: docs/github-scraped/xtermjs/
-  status: fetched
-  file_count: 22
-  size: 62.8KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 web_scraped:
 - name: dayjs
   description: dayjs documentation
@@ -239,60 +141,60 @@ web_scraped:
   status: fetched
   file_count: 5
   size: 9.8KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: emotion
   description: emotion documentation
   path: docs/web-scraped/emotion/
   status: fetched
   file_count: 32
   size: 104.9KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: google-cloud
   description: google-cloud documentation
   path: docs/web-scraped/google-cloud/
   status: fetched
   file_count: 31
   size: 203.9KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: linaria
   description: linaria documentation
   path: docs/web-scraped/linaria/
   status: fetched
   file_count: 15
   size: 134.4KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
+- name: nanocss
+  description: nanocss documentation
+  path: docs/web-scraped/nanocss/
+  status: fetched
+  file_count: 48
+  size: 82.9KB
+  last_updated: 2025-12-31 16:17
 - name: react-dropzone
   description: react-dropzone documentation
   path: docs/web-scraped/react-dropzone/
   status: fetched
   file_count: 1
   size: 24.7KB
-  last_updated: 2025-12-31 16:12
-- name: react-email
-  description: react-email documentation
-  path: docs/web-scraped/react-email/
-  status: fetched
-  file_count: 3
-  size: 9.1KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: tanstack-router
   description: tanstack-router documentation
   path: docs/web-scraped/tanstack-router/
   status: fetched
   file_count: 113
   size: 16.5MB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: urql
   description: urql documentation
   path: docs/web-scraped/urql/
   status: fetched
   file_count: 44
   size: 437.0KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
 - name: vanilla-extract
   description: vanilla-extract documentation
   path: docs/web-scraped/vanilla-extract/
   status: fetched
   file_count: 39
   size: 114.6KB
-  last_updated: 2025-12-31 16:12
+  last_updated: 2025-12-31 16:17
