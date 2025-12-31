@@ -1158,6 +1158,14 @@ llms_txt:
   file_count: 1
   size: 85.6KB
   last_updated: 2025-12-31 15:27
+- name: kinde
+  description: Kinde Authentication, User Management, Billing and Access Control Platform
+  url: https://kinde.com/
+  path: docs/llms-txt/kinde/
+  status: fetched
+  file_count: 1
+  size: 10.5KB
+  last_updated: 2025-12-31 16:07
 - name: klarna
   description: Klarna payment and shopping API
   url: https://docs.klarna.com/

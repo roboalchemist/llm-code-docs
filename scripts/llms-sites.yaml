@@ -453,6 +453,9 @@ sites:
 - name: kaisar
   base_url: https://docs.kaisar.io/
   description: Kaisar AI development platform
+- name: kinde
+  base_url: https://kinde.com/
+  description: Kinde Authentication, User Management, Billing and Access Control Platform
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
