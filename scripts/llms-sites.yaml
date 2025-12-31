@@ -124,6 +124,9 @@ sites:
 - name: bits-ui
   base_url: https://bits-ui.com/
   description: Bits UI Svelte headless component library
+- name: braintree
+  base_url: https://developer.paypal.com/braintree/
+  description: Braintree payment platform by PayPal
 - name: bucket
   base_url: https://docs.bucket.io/
   description: Bucket feature flag management
