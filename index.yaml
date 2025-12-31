@@ -3124,12 +3124,12 @@ web_scraped:
   size: 222.2KB
   last_updated: 2025-12-31 15:27
 - name: electron
-  description: electron documentation
+  description: Electron framework for building cross-platform desktop applications with web technologies
   path: docs/web-scraped/electron/
   status: fetched
-  file_count: 251
-  size: 2.1MB
-  last_updated: 2025-12-31 15:27
+  file_count: 181
+  size: 1.7MB
+  last_updated: 2025-12-31 16:10
 - name: element14
   description: element14 documentation
   path: docs/web-scraped/element14/
