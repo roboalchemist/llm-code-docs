@@ -663,8 +663,8 @@ sites:
   base_url: https://www.promptfoo.dev/docs/
   description: Promptfoo LLM testing framework
 - name: pydantic
-  base_url: https://docs.pydantic.dev/
-  description: Pydantic Python data validation
+  base_url: https://docs.pydantic.dev/latest/
+  description: Pydantic Python data validation library with comprehensive docs and API reference
 - name: pydantic-ai
   base_url: https://ai.pydantic.dev/
   description: Pydantic AI framework
