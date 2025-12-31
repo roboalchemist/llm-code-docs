@@ -58,6 +58,9 @@ sites:
 - name: aporia
   base_url: https://docs.aporia.com/
   description: Aporia ML observability and monitoring platform
+- name: apollo-graphql
+  base_url: https://www.apollographql.com/docs/
+  description: Apollo GraphQL platform - GraphQL client and server tools including Apollo Client, Apollo Server, and GraphOS
 - name: aptible
   base_url: https://www.aptible.com/docs/
   description: Aptible documentation
@@ -713,6 +716,9 @@ sites:
 - name: replit
   base_url: https://docs.replit.com/
   description: Replit cloud development platform
+- name: render
+  base_url: https://render.com/
+  description: Render cloud hosting platform for web apps, static sites, databases, and cron jobs
 - name: resend
   base_url: https://resend.com/docs/
   description: Resend email API for developers
