@@ -1,15 +1,17 @@
-# Source: https://docs.claude.com/en/docs/build-with-claude/working-with-messages.md
+# Source: https://platform.claude.com/docs/en/build-with-claude/working-with-messages.md
 
 # Using the Messages API
 
-> Practical patterns and examples for using the Messages API effectively
+Practical patterns and examples for using the Messages API effectively
 
-This guide covers common patterns for working with the Messages API, including basic requests, multi-turn conversations, prefill techniques, and vision capabilities. For complete API specifications, see the [Messages API reference](/en/api/messages).
+---
+
+This guide covers common patterns for working with the Messages API, including basic requests, multi-turn conversations, prefill techniques, and vision capabilities. For complete API specifications, see the [Messages API reference](/docs/en/api/messages).
 
 ## Basic request and response
 
 <CodeGroup>
-  ```bash Shell theme={null}
+  ```bash Shell
   #!/bin/sh
   curl https://api.anthropic.com/v1/messages \
        --header "x-api-key: $ANTHROPIC_API_KEY" \
@@ -25,7 +27,7 @@ This guide covers common patterns for working with the Messages API, including b
   }'
   ```
 
-  ```Python Python theme={null}
+  ```python Python
   import anthropic
 
   message = anthropic.Anthropic().messages.create(
@@ -38,7 +40,7 @@ This guide covers common patterns for working with the Messages API, including b
   print(message)
   ```
 
-  ```TypeScript TypeScript theme={null}
+  ```typescript TypeScript
   import Anthropic from '@anthropic-ai/sdk';
 
   const anthropic = new Anthropic();
@@ -54,7 +56,7 @@ This guide covers common patterns for working with the Messages API, including b
   ```
 </CodeGroup>
 
-```JSON JSON theme={null}
+```json JSON
 {
   "id": "msg_01XFDUDYJgAACzvnptvVoYEL",
   "type": "message",
@@ -80,59 +82,59 @@ This guide covers common patterns for working with the Messages API, including b
 The Messages API is stateless, which means that you always send the full conversational history to the API. You can use this pattern to build up a conversation over time. Earlier conversational turns don't necessarily need to actually originate from Claude — you can use synthetic `assistant` messages.
 
 <CodeGroup>
-  ```bash Shell theme={null}
-  #!/bin/sh
-  curl https://api.anthropic.com/v1/messages \
-       --header "x-api-key: $ANTHROPIC_API_KEY" \
-       --header "anthropic-version: 2023-06-01" \
-       --header "content-type: application/json" \
-       --data \
-  '{
-      "model": "claude-sonnet-4-5",
-      "max_tokens": 1024,
-      "messages": [
-          {"role": "user", "content": "Hello, Claude"},
-          {"role": "assistant", "content": "Hello!"},
-          {"role": "user", "content": "Can you describe LLMs to me?"}
+```bash Shell
+#!/bin/sh
+curl https://api.anthropic.com/v1/messages \
+     --header "x-api-key: $ANTHROPIC_API_KEY" \
+     --header "anthropic-version: 2023-06-01" \
+     --header "content-type: application/json" \
+     --data \
+'{
+    "model": "claude-sonnet-4-5",
+    "max_tokens": 1024,
+    "messages": [
+        {"role": "user", "content": "Hello, Claude"},
+        {"role": "assistant", "content": "Hello!"},
+        {"role": "user", "content": "Can you describe LLMs to me?"}
 
-      ]
-  }'
-  ```
-
-  ```Python Python theme={null}
-  import anthropic
-
-  message = anthropic.Anthropic().messages.create(
-      model="claude-sonnet-4-5",
-      max_tokens=1024,
-      messages=[
-          {"role": "user", "content": "Hello, Claude"},
-          {"role": "assistant", "content": "Hello!"},
-          {"role": "user", "content": "Can you describe LLMs to me?"}
-      ],
-  )
-  print(message)
-
-  ```
-
-  ```TypeScript TypeScript theme={null}
-  import Anthropic from '@anthropic-ai/sdk';
-
-  const anthropic = new Anthropic();
-
-  await anthropic.messages.create({
-    model: 'claude-sonnet-4-5',
-    max_tokens: 1024,
-    messages: [
-      {"role": "user", "content": "Hello, Claude"},
-      {"role": "assistant", "content": "Hello!"},
-      {"role": "user", "content": "Can you describe LLMs to me?"}
     ]
-  });
-  ```
+}'
+```
+
+```python Python
+import anthropic
+
+message = anthropic.Anthropic().messages.create(
+    model="claude-sonnet-4-5",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "Hello, Claude"},
+        {"role": "assistant", "content": "Hello!"},
+        {"role": "user", "content": "Can you describe LLMs to me?"}
+    ],
+)
+print(message)
+
+```
+
+```typescript TypeScript
+import Anthropic from '@anthropic-ai/sdk';
+
+const anthropic = new Anthropic();
+
+await anthropic.messages.create({
+  model: 'claude-sonnet-4-5',
+  max_tokens: 1024,
+  messages: [
+    {"role": "user", "content": "Hello, Claude"},
+    {"role": "assistant", "content": "Hello!"},
+    {"role": "user", "content": "Can you describe LLMs to me?"}
+  ]
+});
+```
 </CodeGroup>
 
-```JSON JSON theme={null}
+```json JSON
 {
     "id": "msg_018gCsTGsXkYJVqYPxTgDHBU",
     "type": "message",
@@ -157,7 +159,7 @@ The Messages API is stateless, which means that you always send the full convers
 You can pre-fill part of Claude's response in the last position of the input messages list. This can be used to shape Claude's response. The example below uses `"max_tokens": 1` to get a single multiple choice answer from Claude.
 
 <CodeGroup>
-  ```bash Shell theme={null}
+  ```bash Shell
   #!/bin/sh
   curl https://api.anthropic.com/v1/messages \
        --header "x-api-key: $ANTHROPIC_API_KEY" \
@@ -174,7 +176,7 @@ You can pre-fill part of Claude's response in the last position of the input mes
   }'
   ```
 
-  ```Python Python theme={null}
+  ```python Python
   import anthropic
 
   message = anthropic.Anthropic().messages.create(
@@ -188,7 +190,7 @@ You can pre-fill part of Claude's response in the last position of the input mes
   print(message)
   ```
 
-  ```TypeScript TypeScript theme={null}
+  ```typescript TypeScript
   import Anthropic from '@anthropic-ai/sdk';
 
   const anthropic = new Anthropic();
@@ -205,7 +207,7 @@ You can pre-fill part of Claude's response in the last position of the input mes
   ```
 </CodeGroup>
 
-```JSON JSON theme={null}
+```json JSON
 {
   "id": "msg_01Q8Faay6S7QPTvEUUQARt7h",
   "type": "message",
@@ -226,14 +228,14 @@ You can pre-fill part of Claude's response in the last position of the input mes
 }
 ```
 
-For more information on prefill techniques, see our [prefill guide](/en/docs/build-with-claude/prompt-engineering/prefill-claudes-response).
+For more information on prefill techniques, see our [prefill guide](/docs/en/build-with-claude/prompt-engineering/prefill-claudes-response).
 
 ## Vision
 
-Claude can read both text and images in requests. We support both `base64` and `url` source types for images, and the `image/jpeg`, `image/png`, `image/gif`, and `image/webp` media types. See our [vision guide](/en/docs/build-with-claude/vision) for more details.
+Claude can read both text and images in requests. We support both `base64` and `url` source types for images, and the `image/jpeg`, `image/png`, `image/gif`, and `image/webp` media types. See our [vision guide](/docs/en/build-with-claude/vision) for more details.
 
 <CodeGroup>
-  ```bash Shell theme={null}
+  ```bash Shell
   #!/bin/sh
 
   # Option 1: Base64-encoded image
@@ -282,7 +284,7 @@ Claude can read both text and images in requests. We support both `base64` and `
   }'
   ```
 
-  ```Python Python theme={null}
+  ```python Python
   import anthropic
   import base64
   import httpx
@@ -343,7 +345,7 @@ Claude can read both text and images in requests. We support both `base64` and `
   print(message_from_url)
   ```
 
-  ```TypeScript TypeScript theme={null}
+  ```typescript TypeScript
   import Anthropic from '@anthropic-ai/sdk';
 
   const anthropic = new Anthropic();
@@ -406,7 +408,7 @@ Claude can read both text and images in requests. We support both `base64` and `
   ```
 </CodeGroup>
 
-```JSON JSON theme={null}
+```json JSON
 {
   "id": "msg_01EcyWo6m4hyW8KHs2y2pei5",
   "type": "message",
@@ -427,7 +429,8 @@ Claude can read both text and images in requests. We support both `base64` and `
 }
 ```
 
-## Tool use, JSON mode, and computer use
+## Tool use and computer use
 
-See our [guide](/en/docs/agents-and-tools/tool-use/overview) for examples for how to use tools with the Messages API.
-See our [computer use guide](/en/docs/agents-and-tools/tool-use/computer-use-tool) for examples of how to control desktop computer environments with the Messages API.
+See our [guide](/docs/en/agents-and-tools/tool-use/overview) for examples of how to use tools with the Messages API.
+See our [computer use guide](/docs/en/agents-and-tools/tool-use/computer-use-tool) for examples of how to control desktop computer environments with the Messages API.
+For guaranteed JSON output, see [Structured Outputs](/docs/en/build-with-claude/structured-outputs).

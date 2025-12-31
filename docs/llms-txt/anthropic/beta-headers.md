@@ -1,4 +1,4 @@
-# Source: https://docs.claude.com/en/api/beta-headers.md
+# Source: https://platform.claude.com/docs/en/api/beta-headers.md
 
 # Beta headers
 

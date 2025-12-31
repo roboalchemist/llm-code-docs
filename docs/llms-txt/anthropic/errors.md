@@ -1,4 +1,4 @@
-# Source: https://docs.claude.com/en/api/errors.md
+# Source: https://platform.claude.com/docs/en/api/errors.md
 
 # Errors
 

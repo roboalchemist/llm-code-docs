@@ -1,4 +1,4 @@
-# Source: https://docs.claude.com/en/api/client-sdks.md
+# Source: https://platform.claude.com/docs/en/api/client-sdks.md
 
 # Client SDKs
 

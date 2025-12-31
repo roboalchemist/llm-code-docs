@@ -1,8 +1,10 @@
-# Source: https://docs.claude.com/en/api/supported-regions.md
+# Source: https://platform.claude.com/docs/en/api/supported-regions.md
 
 # Supported regions
 
-> Here are the countries, regions, and territories we can currently support access from:
+Here are the countries, regions, and territories we can currently support access from:
+
+---
 
 * Albania
 * Algeria

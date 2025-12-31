@@ -45,8 +45,8 @@ sites:
   base_url: https://ant.design/
   description: Enterprise-class React UI component library with 64+ components
 - name: anthropic
-  base_url: https://docs.anthropic.com/
-  description: docs on LLMS.txt - Claude Docs - Anthropic
+  base_url: https://console.anthropic.com/
+  description: Claude API documentation - Anthropic
 - name: any-llm
   base_url: https://mozilla-ai.github.io/any-llm/
   description: Mozilla-Ai documentation
