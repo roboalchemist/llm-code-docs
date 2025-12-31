@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/adafruit-triple-axis-gyro-breakout/python-circuitpython.md
+
 # Source: https://learn.adafruit.com/mcp4725-12-bit-dac-tutorial/python-circuitpython.md
 
 # Source: https://learn.adafruit.com/i2c-spi-lcd-backpack/python-circuitpython.md

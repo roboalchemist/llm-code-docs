@@ -1,3 +1,9 @@
+# Source: https://learn.adafruit.com/pi-wifi-radio/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-triple-axis-gyro-breakout/overview.md
+
+# Source: https://learn.adafruit.com/conductive-thread/overview.md
+
 # Source: https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds/overview.md
 
 # Source: https://learn.adafruit.com/skill-badge-requirements-solar/overview.md

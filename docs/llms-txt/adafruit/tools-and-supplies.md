@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/conductive-thread/tools-and-supplies.md
+
 # Source: https://learn.adafruit.com/flora-snaps/tools-and-supplies.md
 
 # Flora Snaps

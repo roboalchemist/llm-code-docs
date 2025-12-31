@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/adafruit-triple-axis-gyro-breakout/assembly-and-wiring.md
+
 # Source: https://learn.adafruit.com/adafruit-4-channel-adc-breakouts/assembly-and-wiring.md
 
 # Adafruit 4-Channel ADC Breakouts
