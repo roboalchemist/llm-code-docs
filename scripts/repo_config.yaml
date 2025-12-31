@@ -26,6 +26,13 @@ repositories:
     target_folder: "docs/github-scraped/tensorrt-llm"
     branch: "main" # Default branch to use
 
+  - name: "Three.js"
+    description: "Three.js - JavaScript 3D library for WebGL with comprehensive API documentation"
+    repo_url: "https://github.com/mrdoob/three.js.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/threejs"
+    branch: "dev"
+
   - name: "Textual"
     description: "Textual documentation and examples"
     repo_url: "https://github.com/Textualize/textual.git"
