@@ -250,6 +250,13 @@ repositories:
     target_folder: "docs/github-scraped/penpot"
     branch: "main"
 
+  - name: "RaspberryPi"
+    description: "Raspberry Pi - Official documentation for Raspberry Pi hardware, OS, software, and programming guides"
+    repo_url: "https://github.com/raspberrypi/documentation.git"
+    source_folder: "documentation/asciidoc"
+    target_folder: "docs/github-scraped/raspberrypi"
+    branch: "master"
+
   - name: "Draw.io"
     description: "Draw.io - JavaScript diagramming application (flowcharts, network diagrams, UML)"
     repo_url: "https://github.com/jgraph/drawio-docs.git"
