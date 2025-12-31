@@ -2201,7 +2201,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 41.9KB
-  last_updated: 2025-12-31 15:07
+  last_updated: 2025-12-31 15:08
 - name: warp
   description: Warp AI-powered terminal
   url: https://docs.warp.dev/
@@ -2335,7 +2335,7 @@ github:
   status: fetched
   file_count: 58
   size: 287.7KB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:08
 - name: esptool
   description: ESP8266 and ESP32 serial bootloader utility documentation
   repo: espressif/esptool
@@ -2345,7 +2345,7 @@ github:
   status: fetched
   file_count: 55
   size: 502.1KB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:08
 - name: esphome
   description: ESPHome - System to control ESP8266/ESP32 microcontrollers via configuration files for home automation
   repo: esphome/esphome-docs
@@ -2355,7 +2355,7 @@ github:
   status: fetched
   file_count: 765
   size: 5.5MB
-  last_updated: 2025-12-31 13:50
+  last_updated: 2025-12-31 15:08
 - name: mcp-jest
   description: MCP Jest - Model Context Protocol testing utilities
   repo: josharsh/mcp-jest
@@ -2365,7 +2365,7 @@ github:
   status: fetched
   file_count: 16
   size: 196.2KB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:08
 - name: librechat
   description: LibreChat - Enhanced ChatGPT clone with multi-AI support
   repo: LibreChat-AI/librechat.ai
@@ -2382,7 +2382,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:08
 - name: jest
   description: Jest - Delightful JavaScript testing framework by Meta with zero config and built-in code coverage
   repo: jestjs/jest
@@ -2392,7 +2392,7 @@ github:
   status: fetched
   file_count: 37
   size: 438.4KB
-  last_updated: 2025-12-31 13:50
+  last_updated: 2025-12-31 15:08
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2402,7 +2402,7 @@ github:
   status: fetched
   file_count: 284
   size: 5.2MB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:08
 - name: semantic-ui
   description: Semantic UI - UI component framework with human-friendly HTML and 50+ responsive components
   repo: Semantic-Org/Semantic-UI-Docs
@@ -2412,7 +2412,7 @@ github:
   status: fetched
   file_count: 3
   size: 1.9KB
-  last_updated: 2025-12-31 13:50
+  last_updated: 2025-12-31 15:08
 - name: seeedstudio
   description: Seeed Studio Wiki - Documentation for Grove sensors, Wio Terminal, XIAO microcontrollers, reComputer, SenseCAP
     IoT devices
@@ -3297,8 +3297,8 @@ web_scraped:
   description: typer documentation
   path: docs/web-scraped/typer/
   status: fetched
-  file_count: 47
-  size: 397.3KB
+  file_count: 70
+  size: 523.9KB
   last_updated: 2025-12-31 15:08
 - name: ultravnc
   description: ultravnc documentation

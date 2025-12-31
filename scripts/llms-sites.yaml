@@ -867,6 +867,9 @@ sites:
 - name: vueschool
   base_url: https://vueschool.io/
   description: Vue School online learning platform
+- name: waku
+  base_url: https://waku.gg/
+  description: Minimal React framework
 - name: warp
   base_url: https://docs.warp.dev/
   description: Warp AI-powered terminal
