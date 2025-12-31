@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""
+Update the documentation index.yaml file.
+Scans all documentation directories and generates an index with metadata.
+"""
+
+import os
+import yaml
+from pathlib import Path
+from datetime import datetime
+
+
+def get_dir_stats(path):
+    """Get file count and total size for a directory."""
+    if not path.exists():
+        return 0, 0
+
+    file_count = 0
+    total_size = 0
+
+    for file in path.rglob('*'):
+        if file.is_file():
+            file_count += 1
+            total_size += file.stat().st_size
+
+    return file_count, total_size
+
+
+def format_size(bytes):
+    """Format bytes as human-readable size."""
+    if bytes < 1024:
+        return f"{bytes}B"
+    elif bytes < 1024 * 1024:
+        return f"{bytes/1024:.1f}KB"
+    else:
+        return f"{bytes/(1024*1024):.1f}MB"
+
+
+def scan_llms_txt(docs_dir):
+    """Scan llms-txt directory and return entries."""
+    llms_txt_dir = docs_dir / "llms-txt"
+    entries = []
+
+    if not llms_txt_dir.exists():
+        return entries
+
+    for site_dir in sorted(llms_txt_dir.iterdir()):
+        if not site_dir.is_dir():
+            continue
+
+        file_count, size = get_dir_stats(site_dir)
+
+        entry = {
+            "name": site_dir.name,
+            "description": f"{site_dir.name} documentation",
+            "url": f"https://{site_dir.name}/",
+            "path": f"docs/llms-txt/{site_dir.name}/",
+            "status": "fetched" if file_count > 0 else "pending",
+            "file_count": file_count,
+            "size": format_size(size),
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        entries.append(entry)
+
+    return entries
+
+
+def scan_github_repos(docs_dir):
+    """Scan github-scraped directory and return entries."""
+    github_dir = docs_dir / "github-scraped"
+    entries = []
+
+    if not github_dir.exists():
+        return entries
+
+    for repo_dir in sorted(github_dir.iterdir()):
+        if not repo_dir.is_dir():
+            continue
+
+        file_count, size = get_dir_stats(repo_dir)
+
+        entry = {
+            "name": repo_dir.name,
+            "description": f"{repo_dir.name} GitHub repository documentation",
+            "path": f"docs/github-scraped/{repo_dir.name}/",
+            "status": "fetched" if file_count > 0 else "pending",
+            "file_count": file_count,
+            "size": format_size(size),
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        entries.append(entry)
+
+    return entries
+
+
+def scan_web_scraped(docs_dir):
+    """Scan web-scraped directory and return entries."""
+    web_dir = docs_dir / "web-scraped"
+    entries = []
+
+    if not web_dir.exists():
+        return entries
+
+    for site_dir in sorted(web_dir.iterdir()):
+        if not site_dir.is_dir():
+            continue
+
+        file_count, size = get_dir_stats(site_dir)
+
+        entry = {
+            "name": site_dir.name,
+            "description": f"{site_dir.name} documentation",
+            "path": f"docs/web-scraped/{site_dir.name}/",
+            "status": "fetched" if file_count > 0 else "pending",
+            "file_count": file_count,
+            "size": format_size(size),
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        entries.append(entry)
+
+    return entries
+
+
+def main():
+    """Main function to generate the index."""
+    script_dir = Path(__file__).parent.parent
+    docs_dir = script_dir / "docs"
+    index_path = script_dir / "index.yaml"
+
+    print("Scanning documentation directories...")
+
+    llms_txt_entries = scan_llms_txt(docs_dir)
+    github_entries = scan_github_repos(docs_dir)
+    web_scraped_entries = scan_web_scraped(docs_dir)
+
+    total_sources = len(llms_txt_entries) + len(github_entries) + len(web_scraped_entries)
+    total_fetched = (
+        sum(1 for e in llms_txt_entries if e["status"] == "fetched") +
+        sum(1 for e in github_entries if e["status"] == "fetched") +
+        sum(1 for e in web_scraped_entries if e["status"] == "fetched")
+    )
+
+    index_data = {
+        "metadata": {
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "total_sources": total_sources,
+            "total_fetched": total_fetched,
+            "llms_txt_count": len(llms_txt_entries),
+            "llms_txt_fetched": sum(1 for e in llms_txt_entries if e["status"] == "fetched"),
+            "github_count": len(github_entries),
+            "github_fetched": sum(1 for e in github_entries if e["status"] == "fetched"),
+            "web_scraped_count": len(web_scraped_entries),
+            "web_scraped_fetched": sum(1 for e in web_scraped_entries if e["status"] == "fetched")
+        },
+        "llms_txt": llms_txt_entries,
+        "github_scraped": github_entries,
+        "web_scraped": web_scraped_entries
+    }
+
+    header = """# Documentation Index
+# Auto-generated by scripts/update-index.py
+# Do not edit manually - changes will be overwritten
+#
+# Status values:
+#   - fetched: Documentation successfully downloaded
+#   - pending: Configuration exists but not yet fetched
+
+"""
+
+    with open(index_path, 'w') as f:
+        f.write(header)
+        yaml.dump(index_data, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+
+    print(f"\nIndex updated: {index_path}")
+    print(f"Total sources: {total_sources}")
+    print(f"  - llms.txt: {len(llms_txt_entries)} ({sum(1 for e in llms_txt_entries if e['status'] == 'fetched')} fetched)")
+    print(f"  - GitHub: {len(github_entries)} ({sum(1 for e in github_entries if e['status'] == 'fetched')} fetched)")
+    print(f"  - Web scraped: {len(web_scraped_entries)} ({sum(1 for e in web_scraped_entries if e['status'] == 'fetched')} fetched)")
+    print(f"Total fetched: {total_fetched}")
+
+
+if __name__ == "__main__":
+    main()
