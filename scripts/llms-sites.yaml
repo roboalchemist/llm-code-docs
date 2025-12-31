@@ -404,6 +404,12 @@ sites:
 - name: hypermode
   base_url: https://docs.hypermode.com/
   description: Hypermode documentation
+- name: i18next
+  base_url: https://www.i18next.com/
+  description: i18next internationalization framework
+- name: react-i18next
+  base_url: https://react.i18next.com/
+  description: React bindings for i18next internationalization framework
 - name: ideogram
   base_url: https://docs.ideogram.ai/
   description: Ideogram AI image generation platform
