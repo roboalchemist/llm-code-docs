@@ -1,1 +1,0 @@
-redirect: /TuyaMCU/#anatomy-of-tuya-protocol

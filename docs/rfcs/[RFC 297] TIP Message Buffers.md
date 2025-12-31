@@ -1,3 +1,0 @@
----
-title: "TIP Message Buffers"
----

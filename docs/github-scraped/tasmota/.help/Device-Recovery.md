@@ -1,1 +1,0 @@
-redirect: ../Device-Recovery/

@@ -1,9 +1,0 @@
-# Source: https://configcat.com/docs/api/reference/me.md
-
-# Me
-
-Information about the current user.
-
-<!-- -->
-
-## [ğŸ“„ï¸�<!-- --> <!-- -->Get authenticated user details](https://configcat.com/docs/docs/api/reference/get-me/.md)

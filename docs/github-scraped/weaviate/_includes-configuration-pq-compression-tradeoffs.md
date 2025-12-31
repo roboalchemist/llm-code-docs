@@ -1,3 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/configuration/pq-compression/tradeoffs.mdx
-
-PQ makes tradeoffs between recall, performance, and memory usage. This means a PQ configuration that reduces memory may also reduce recall. There are similar trade-offs when you use HNSW without PQ. If you use PQ compression, you should also tune HNSW so that they compliment each other. 

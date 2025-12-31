@@ -1,1 +1,0 @@
-redirect: /Lights/#status-leds

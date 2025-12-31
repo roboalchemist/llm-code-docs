@@ -1,3 +1,0 @@
----
-title: "Character Generator Process"
----

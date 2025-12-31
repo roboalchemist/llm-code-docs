@@ -1,3 +1,0 @@
----
-title: "Moffett Field, California"
----

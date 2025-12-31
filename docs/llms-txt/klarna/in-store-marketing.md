@@ -1,5 +1,0 @@
-# Source: https://docs.klarna.com/resources/marketing-tools/global-marketing-assets/pre-made-advertising-assets/in-store-marketing.md
-
-# In-store marketing
-
-Elevate your retail game with Klarna In-Store, offering customers the flexibility to shop now and pay later right from your physical locations. Attract a new audience, increase sales, and build loyalty with Klarna's seamless payment solutions. By placing signage in high-visibility areas you're actively showcasing the benefits of combining your products with Klarna's payment methods. Capture your shoppers' attention. We're here to make it easy for you. Ordering your in-store signage is straightforward. Detailed instructions for registering an account and ordering signage to promote Klarna's flexible payment options are available [here](https://docs.klarna.com/in-store/for-merchants-start-selling-with-klarna-in-store/ordering-in-store-signage.md).

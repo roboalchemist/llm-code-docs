@@ -1,1 +1,0 @@
-Follow this <a href='https://templates.blakadder.com/'>link to new templates repository</a>.

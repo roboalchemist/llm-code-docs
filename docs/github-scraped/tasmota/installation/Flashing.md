@@ -1,1 +1,0 @@
-redirect: ../Getting-Started#Flashing

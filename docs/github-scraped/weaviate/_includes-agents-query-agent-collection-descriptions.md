@@ -1,7 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/agents/query-agent-collection-descriptions.mdx
-
-The Query Agent makes use of each collection's `description` metadata as well as individual property descriptions in deciding what collection to query.
-
-Both collection descriptions and property descriptions can be updated after the collection has been created. For detailed instructions on updating collection and property descriptions, see the [update collection definition documentation](/weaviate/manage-collections/collection-operations#update-a-collection-definition).
-
-We are investigating an ability to specify a custom collection description at runtime.

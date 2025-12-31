@@ -1,9 +1,0 @@
-# Source: https://docs.comfy.org/community/contributing.md
-
-# Contributing
-
-### How to contribute
-
-We welcome contributions of all kinds. Check out the various repositories we support on our [Github organization](https://github.com/Comfy-Org).
-
-You can also contribute by sharing workflows or developing [custom nodes](/custom-nodes/overview).

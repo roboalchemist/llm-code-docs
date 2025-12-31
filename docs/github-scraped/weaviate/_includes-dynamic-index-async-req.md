@@ -1,5 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/dynamic-index-async-req.mdx
-
-:::info Dynamic index requires `ASYNC_INDEXING`
-Dynamic indexes require asynchronous indexing. To enable asynchronous indexing in a self-hosted Weaviate instance, set the `ASYNC_INDEXING` [environment variable](/deploy/configuration/env-vars#general) to `true`. If your instance is hosted in Weaviate Cloud, use the  Weaviate Cloud console to enable asynchronous indexing.
-:::

@@ -1,7 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/docs/weaviate/client-libraries/_components/client.auth.introduction.mdx
-
-For more comprehensive information on configuring authentication with Weaviate, refer to the [authentication](/weaviate/configuration/authz-authn) page.
-
-The {props.clientName} client offers multiple options for authenticating against Weaviate, including multiple OIDC authentication flows.
-
-The suitable authentication options and methods for the client largely depend on the specific configuration of the Weaviate instance.

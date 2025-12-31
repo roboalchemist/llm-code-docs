@@ -1,5 +1,0 @@
-include::pico-series/about_pico.adoc[]
-
-include::microcontroller_docs.adoc[]
-
-include::pico-series/utilities.adoc[]

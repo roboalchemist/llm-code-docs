@@ -1,5 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/wcs/wcs-landing-intro.mdx
-
-**[Weaviate Cloud (WCD)](/go/console?utm_content=others)** is a fully managed vector database in the cloud.
-
-Weaviate Cloud manages the infrastructure so you can focus on innovation. Use Weaviate Cloud to simplify development and confidently deploy enterprise-ready AI applications.

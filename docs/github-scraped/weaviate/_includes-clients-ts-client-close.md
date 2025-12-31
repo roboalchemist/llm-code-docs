@@ -1,7 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/clients/ts-client-close.mdx
-
-The client uses a keep-alive header to maintain long-lived connections to Weaviate.
-
-After you establish the connection to your Weaviate instance, subsequent calls are faster. When you finish your client operations, close the connection to free server resources.
-
-Use the `client.close()` method to close the connection instead of waiting for the connection to time out.

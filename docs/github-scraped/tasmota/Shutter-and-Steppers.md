@@ -1,1 +1,0 @@
-redirect: Blinds-and-Shutters.md

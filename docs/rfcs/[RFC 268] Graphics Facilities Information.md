@@ -1,3 +1,0 @@
----
-title: "Graphics Facilities Information"
----

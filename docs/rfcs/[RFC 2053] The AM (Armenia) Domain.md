@@ -1,6 +1,0 @@
----
-title: "The AM (Armenia) Domain"
-rfc: 2053
-date: October 1996
-category: Informational---
-

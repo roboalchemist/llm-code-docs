@@ -1,7 +1,0 @@
-# Source: https://github.com/weaviate/docs/blob/main/_includes/1-25-replication-factor.mdx
-
-:::warning Replication factor change
-The replication factor of a collection cannot be updated by updating the collection's definition. 
-
-From `v1.32` by using [replica movement](/deploy/configuration/replica-movement), the [replication factor](/weaviate/config-refs/collections#replication) of a shard can be changed.
-:::
