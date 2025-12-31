@@ -340,3 +340,10 @@ repositories:
     source_folder: "www/docs"
     target_folder: "docs/github-scraped/react-bootstrap"
     branch: "master"
+
+  - name: "reactstrap"
+    description: "Reactstrap - React Bootstrap 5 components with stateless components and prop-driven design"
+    repo_url: "https://github.com/reactstrap/reactstrap.git"
+    source_folder: "stories"
+    target_folder: "docs/github-scraped/reactstrap"
+    branch: "master"
