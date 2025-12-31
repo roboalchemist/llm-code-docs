@@ -89,6 +89,13 @@ repositories:
     target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
+  - name: "HeroUI"
+    description: "HeroUI - Open-source React UI component library built on Tailwind CSS, React Aria, and Framer Motion (formerly NextUI)"
+    repo_url: "https://github.com/heroui-inc/heroui.git"
+    source_folder: "apps/docs/content"
+    target_folder: "docs/github-scraped/heroui"
+    branch: "main" # Default branch to use
+
   - name: "Flask"
     description: "Flask - Lightweight WSGI web application framework"
     repo_url: "https://github.com/pallets/flask.git"
