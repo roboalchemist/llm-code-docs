@@ -1,0 +1,50 @@
+{
+  "name": "@visx/shape",
+  "version": "4.0.1-alpha.0",
+  "description": "visx shape",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./esm/index.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "repository": "https://github.com/airbnb/visx",
+  "files": [
+    "lib",
+    "esm"
+  ],
+  "keywords": [
+    "visx",
+    "react",
+    "d3",
+    "visualizations",
+    "charts"
+  ],
+  "author": "@hshoff",
+  "license": "MIT",
+  "dependencies": {
+    "@types/lodash": "^4.17.13",
+    "@types/react": "*",
+    "@visx/curve": "workspace:*",
+    "@visx/group": "workspace:*",
+    "@visx/scale": "workspace:*",
+    "@visx/vendor": "workspace:*",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21"
+  },
+  "peerDependencies": {
+    "react": "^16.14.0 || ^17.0.0-0 || ^18.0.0-0 || ^19.0.0-0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/d3-hierarchy": "^1.1.6",
+    "d3-hierarchy": "^1.1.8"
+  }
+}

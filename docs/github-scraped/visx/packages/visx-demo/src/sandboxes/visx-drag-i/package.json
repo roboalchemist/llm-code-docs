@@ -1,0 +1,27 @@
+{
+  "name": "@visx/demo-drag-i",
+  "description": "Standalone visx drag demo.",
+  "main": "index.tsx",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@visx/drag": "latest",
+    "@visx/gradient": "latest",
+    "@visx/mock-data": "latest",
+    "@visx/responsive": "latest",
+    "@visx/scale": "latest",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scripts-ts": "3.1.0",
+    "typescript": "^3"
+  },
+  "keywords": [
+    "visualization",
+    "d3",
+    "react",
+    "visx",
+    "drag"
+  ]
+}

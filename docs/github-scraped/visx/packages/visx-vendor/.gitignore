@@ -1,0 +1,13 @@
+# the following are built and should not be checked in
+/lib
+/esm
+/vendor-cjs
+
+# root index and type files
+/d3-*.js
+/internmap.js
+/*.d.ts
+
+# yarn files (monorepo uses root lockfile)
+/.yarn
+/yarn.lock

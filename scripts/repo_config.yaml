@@ -347,3 +347,10 @@ repositories:
     source_folder: "stories"
     target_folder: "docs/github-scraped/reactstrap"
     branch: "master"
+
+  - name: "visx"
+    description: "visx - Low-level visualization components for React by Airbnb, combining D3 with React (31 packages for charts and data visualization)"
+    repo_url: "https://github.com/airbnb/visx.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/visx"
+    branch: "master"

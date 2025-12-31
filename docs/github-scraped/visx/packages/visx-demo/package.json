@@ -1,0 +1,97 @@
+{
+  "name": "@visx/demo",
+  "version": "4.0.1-alpha.0",
+  "description": "visx demo",
+  "repository": "https://github.com/airbnb/visx",
+  "scripts": {
+    "build": "next build",
+    "deploy": "rm -rf out && yarn build && cd out && touch .nojekyll && git init && git add . && git commit -m \"Deploy commit\" && git remote add origin git@github.com:airbnb/visx.git && git push -f origin master:gh-pages",
+    "dev": "next",
+    "preview": "yarn build && cd ./out && npx serve",
+    "start": "next start"
+  },
+  "keywords": [
+    "visx",
+    "demo",
+    "examples"
+  ],
+  "contributors": [
+    {
+      "name": "Harrison Shoff",
+      "url": "https://github.com/hshoff"
+    },
+    {
+      "name": "Chris Williams",
+      "url": "https://github.com/williaster"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@react-spring/web": "^10.0.3",
+    "@types/d3-scale-chromatic": "^3.1.0",
+    "@types/nprogress": "^0.2.0",
+    "@types/prismjs": "^1.16.0",
+    "@types/react": "^19.0.0",
+    "@visx/annotation": "workspace:*",
+    "@visx/axis": "workspace:*",
+    "@visx/bounds": "workspace:*",
+    "@visx/brush": "workspace:*",
+    "@visx/chord": "workspace:*",
+    "@visx/clip-path": "workspace:*",
+    "@visx/curve": "workspace:*",
+    "@visx/delaunay": "workspace:*",
+    "@visx/drag": "workspace:*",
+    "@visx/event": "workspace:*",
+    "@visx/geo": "workspace:*",
+    "@visx/glyph": "workspace:*",
+    "@visx/gradient": "workspace:*",
+    "@visx/grid": "workspace:*",
+    "@visx/group": "workspace:*",
+    "@visx/heatmap": "workspace:*",
+    "@visx/hierarchy": "workspace:*",
+    "@visx/legend": "workspace:*",
+    "@visx/marker": "workspace:*",
+    "@visx/mock-data": "workspace:*",
+    "@visx/network": "workspace:*",
+    "@visx/pattern": "workspace:*",
+    "@visx/point": "workspace:*",
+    "@visx/react-spring": "workspace:*",
+    "@visx/responsive": "workspace:*",
+    "@visx/sankey": "workspace:*",
+    "@visx/scale": "workspace:*",
+    "@visx/shape": "workspace:*",
+    "@visx/stats": "workspace:*",
+    "@visx/text": "workspace:*",
+    "@visx/threshold": "workspace:*",
+    "@visx/tooltip": "workspace:*",
+    "@visx/vendor": "workspace:*",
+    "@visx/visx": "workspace:*",
+    "@visx/voronoi": "workspace:*",
+    "@visx/wordcloud": "workspace:*",
+    "@visx/xychart": "workspace:*",
+    "@visx/zoom": "workspace:*",
+    "babel-loader": "^8.2.2",
+    "classnames": "^2.3.1",
+    "d3-collection": "^1.0.7",
+    "d3-hierarchy": "^3.1.2",
+    "d3-scale-chromatic": "^3.1.0",
+    "d3-shape": "^3.2.0",
+    "lodash": "^4.17.21",
+    "next": "^15.1.0",
+    "nprogress": "^0.2.0",
+    "prismjs": "^1.19.0",
+    "raw-loader": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-github-button": "^0.1.10",
+    "react-markdown": "^9.0.1",
+    "rehype-raw": "^7.0.0",
+    "topojson-client": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

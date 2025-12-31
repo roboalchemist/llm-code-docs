@@ -1,0 +1,34 @@
+{
+  "name": "@visx/demo-shape-line-radial",
+  "description": "Standalone visx line radial demo.",
+  "main": "index.tsx",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@visx/axis": "latest",
+    "@visx/curve": "latest",
+    "@visx/gradient": "latest",
+    "@visx/group": "latest",
+    "@visx/grid": "latest",
+    "@visx/mock-data": "latest",
+    "@visx/responsive": "latest",
+    "@visx/scale": "latest",
+    "@visx/shape": "latest",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scripts-ts": "3.1.0",
+    "@react-spring/web": "^10.0.3",
+    "typescript": "^3"
+  },
+  "keywords": [
+    "visualization",
+    "d3",
+    "react",
+    "visx",
+    "shape",
+    "radial",
+    "line"
+  ]
+}

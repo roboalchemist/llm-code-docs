@@ -1,0 +1,49 @@
+.DS_Store
+*.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Cache
+.bundle/
+.eslintcache/
+.idea/
+.next/
+.npm/
+.nx/
+.vscode/
+
+# Directories
+build/
+coverage/
+dist/
+esm/
+lib/
+node_modules/
+tmp/
+
+# Custom
+*.min.js
+*.map
+
+# Configs (provided by Nimbus)
+.babelrc
+*.tsbuildinfo
+webpack.config.js
+
+# Lock files
+npm-shrinkwrap.json
+package-lock.json
+
+# Yarn 4
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Generated files
+packages/visx-demo/src/generated/

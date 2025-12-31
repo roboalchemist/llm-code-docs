@@ -1,0 +1,150 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "composite": true,
+    "outDir": "lib",
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "strict": false,
+    "target": "es5",
+    "noEmit": true,
+    "incremental": true
+  },
+  "exclude": [
+    "lib",
+    "test",
+    "src/sandboxes/**/package.json"
+  ],
+  "include": [
+    "src/**/*.{ts,tsx}",
+    "../../types/**/*.{ts,tsx}"
+  ],
+  "references": [
+    {
+      "path": "../visx-annotation"
+    },
+    {
+      "path": "../visx-axis"
+    },
+    {
+      "path": "../visx-bounds"
+    },
+    {
+      "path": "../visx-brush"
+    },
+    {
+      "path": "../visx-chord"
+    },
+    {
+      "path": "../visx-clip-path"
+    },
+    {
+      "path": "../visx-curve"
+    },
+    {
+      "path": "../visx-delaunay"
+    },
+    {
+      "path": "../visx-drag"
+    },
+    {
+      "path": "../visx-event"
+    },
+    {
+      "path": "../visx-geo"
+    },
+    {
+      "path": "../visx-glyph"
+    },
+    {
+      "path": "../visx-gradient"
+    },
+    {
+      "path": "../visx-grid"
+    },
+    {
+      "path": "../visx-group"
+    },
+    {
+      "path": "../visx-heatmap"
+    },
+    {
+      "path": "../visx-hierarchy"
+    },
+    {
+      "path": "../visx-legend"
+    },
+    {
+      "path": "../visx-marker"
+    },
+    {
+      "path": "../visx-mock-data"
+    },
+    {
+      "path": "../visx-network"
+    },
+    {
+      "path": "../visx-pattern"
+    },
+    {
+      "path": "../visx-point"
+    },
+    {
+      "path": "../visx-react-spring"
+    },
+    {
+      "path": "../visx-responsive"
+    },
+    {
+      "path": "../visx-sankey"
+    },
+    {
+      "path": "../visx-scale"
+    },
+    {
+      "path": "../visx-shape"
+    },
+    {
+      "path": "../visx-stats"
+    },
+    {
+      "path": "../visx-text"
+    },
+    {
+      "path": "../visx-threshold"
+    },
+    {
+      "path": "../visx-tooltip"
+    },
+    {
+      "path": "../visx-vendor"
+    },
+    {
+      "path": "../visx-visx"
+    },
+    {
+      "path": "../visx-voronoi"
+    },
+    {
+      "path": "../visx-wordcloud"
+    },
+    {
+      "path": "../visx-xychart"
+    },
+    {
+      "path": "../visx-zoom"
+    }
+  ]
+}
