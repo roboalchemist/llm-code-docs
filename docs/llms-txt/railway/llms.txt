@@ -1,0 +1,19 @@
+# Railway
+
+## Company Identification
+name: Railway
+url: https://railway.com
+description: Railway is an infrastructure platform that simplifies your stack from servers to observability with a single, scalable, easy-to-use platform. Railway's superior developer experience makes it easy to deploy cloud infrastructure, full-stack applications, and websites.
+
+References:
+- [Railway Features](https://railway.com/features)
+- [Railway Customers](https://railway.com/customers)
+- [Railway Pricing](https://railway.com/pricing)
+
+## Railway Product Details
+
+- [Railway Templates](https://railway.com/llms-templates.md)
+- [Railway Product Changelog](https://railway.com/llms-changelog.md)
+- [Railway Docs](https://docs.railway.com/api/llms-docs.md)
+- [Railway Blog](https://blog.railway.com/llms-blog.md)
+- [Railway Station Forum](https://station.railway.com/llms-station.md)

@@ -686,6 +686,9 @@ sites:
 - name: rainbowkit
   base_url: https://rainbowkit.com/
   description: Rainbowkit documentation
+- name: railway
+  base_url: https://railway.app/
+  description: Railway infrastructure platform for deploying full-stack applications and cloud infrastructure
 - name: react
   base_url: https://react.dev/
   description: 'React library for web and native user interfaces (from PR #8130)'
