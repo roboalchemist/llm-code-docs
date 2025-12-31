@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 01:27
-  total_sources: 401
-  total_fetched: 351
+  last_updated: 2025-12-31 02:21
+  total_sources: 402
+  total_fetched: 352
   llms_txt_count: 295
   llms_txt_fetched: 257
   github_count: 65
   github_fetched: 53
-  web_scraped_count: 41
-  web_scraped_fetched: 41
+  web_scraped_count: 42
+  web_scraped_fetched: 42
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -3126,6 +3126,13 @@ web_scraped:
   file_count: 95
   size: 1.9MB
   last_updated: 2025-12-15 18:20
+- name: sparkfun
+  description: sparkfun documentation
+  path: docs/web-scraped/sparkfun/
+  status: fetched
+  file_count: 951
+  size: 20.7MB
+  last_updated: 2025-12-31 02:20
 - name: tigervnc
   description: tigervnc documentation
   path: docs/web-scraped/tigervnc/
