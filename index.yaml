@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 14:54
-  total_sources: 414
-  total_fetched: 364
+  last_updated: 2025-12-31 15:02
+  total_sources: 415
+  total_fetched: 365
   llms_txt_count: 295
   llms_txt_fetched: 258
   github_count: 74
   github_fetched: 61
-  web_scraped_count: 45
-  web_scraped_fetched: 45
+  web_scraped_count: 46
+  web_scraped_fetched: 46
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -3158,6 +3158,13 @@ web_scraped:
   file_count: 167
   size: 5.2MB
   last_updated: 2025-12-31 13:50
+- name: playwright
+  description: playwright documentation
+  path: docs/web-scraped/playwright/
+  status: fetched
+  file_count: 139
+  size: 2.4MB
+  last_updated: 2025-12-31 15:01
 - name: pynvvideocodec
   description: pynvvideocodec documentation
   path: docs/web-scraped/pynvvideocodec/
