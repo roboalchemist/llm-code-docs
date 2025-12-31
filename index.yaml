@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:56
-  total_sources: 428
-  total_fetched: 377
+  last_updated: 2025-12-31 15:57
+  total_sources: 429
+  total_fetched: 378
   llms_txt_count: 303
   llms_txt_fetched: 265
   github_count: 75
   github_fetched: 62
-  web_scraped_count: 50
-  web_scraped_fetched: 50
+  web_scraped_count: 51
+  web_scraped_fetched: 51
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -3384,6 +3384,13 @@ web_scraped:
   file_count: 12
   size: 56.0KB
   last_updated: 2025-12-31 15:27
+- name: urql
+  description: URQL GraphQL client - highly customizable and versatile GraphQL client for React, Preact, Vue, Svelte, and Solid
+  path: docs/web-scraped/urql/
+  status: fetched
+  file_count: 44
+  size: 437.0KB
+  last_updated: 2025-12-31 15:57
 - name: vllm
   description: vllm documentation
   path: docs/web-scraped/vllm/
