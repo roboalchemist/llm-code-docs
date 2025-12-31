@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 21:39
-  total_sources: 382
-  total_fetched: 338
+  last_updated: 2025-12-30 21:46
+  total_sources: 383
+  total_fetched: 339
   llms_txt_count: 295
   llms_txt_fetched: 257
   github_count: 48
   github_fetched: 42
-  web_scraped_count: 39
-  web_scraped_fetched: 39
+  web_scraped_count: 40
+  web_scraped_fetched: 40
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2842,6 +2842,13 @@ web_scraped:
   file_count: 530
   size: 1.5MB
   last_updated: 2025-12-29 19:49
+- name: motion
+  description: motion documentation
+  path: docs/web-scraped/motion/
+  status: fetched
+  file_count: 128
+  size: 57.8MB
+  last_updated: 2025-12-30 21:45
 - name: mouser
   description: mouser documentation
   path: docs/web-scraped/mouser/
