@@ -348,6 +348,13 @@ repositories:
     target_folder: "docs/github-scraped/reactstrap"
     branch: "master"
 
+  - name: "react-chartjs-2"
+    description: "react-chartjs-2 - React wrapper for Chart.js providing components for line, bar, doughnut charts and more"
+    repo_url: "https://github.com/reactchartjs/react-chartjs-2.git"
+    source_folder: "website/docs"
+    target_folder: "docs/github-scraped/react-chartjs-2"
+    branch: "master"
+
   - name: "visx"
     description: "visx - Low-level visualization components for React by Airbnb, combining D3 with React (31 packages for charts and data visualization)"
     repo_url: "https://github.com/airbnb/visx.git"
