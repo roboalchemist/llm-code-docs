@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/pi-thermal-printer/parts-list.md
+
 # Source: https://learn.adafruit.com/pi-wifi-radio/parts-list.md
 
 # Source: https://learn.adafruit.com/adafruit-motor-shield/parts-list.md
