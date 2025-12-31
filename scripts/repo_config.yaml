@@ -250,6 +250,13 @@ repositories:
     target_folder: "docs/github-scraped/gitea"
     branch: "master"
 
+  - name: "Pandas"
+    description: "Pandas - Powerful Python data analysis library for data manipulation and analysis with DataFrame and Series structures"
+    repo_url: "https://github.com/pandas-dev/pandas.git"
+    source_folder: "doc/source"
+    target_folder: "docs/github-scraped/pandas"
+    branch: "main"
+
   - name: "ParkUI"
     description: "Park UI - Beautifully designed components built on Ark UI and Panda CSS with React, Solid.js, and Vue support"
     repo_url: "https://github.com/chakra-ui/park-ui.git"
