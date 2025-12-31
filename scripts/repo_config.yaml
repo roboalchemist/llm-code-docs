@@ -264,6 +264,13 @@ repositories:
     target_folder: "docs/github-scraped/drawio"
     branch: "master"
 
+  - name: "Express"
+    description: "Express.js - Fast, unopinionated, minimalist web framework for Node.js"
+    repo_url: "https://github.com/expressjs/expressjs.com.git"
+    source_folder: "en"
+    target_folder: "docs/github-scraped/express"
+    branch: "gh-pages"
+
   - name: "ChromeDevToolsMCP"
     description: "Chrome DevTools MCP - Model Context Protocol server for controlling Chrome browser via DevTools API"
     repo_url: "https://github.com/ChromeDevTools/chrome-devtools-mcp.git"
