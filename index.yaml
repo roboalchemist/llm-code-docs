@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 16:06
-  total_sources: 432
-  total_fetched: 381
+  last_updated: 2025-12-31 16:07
+  total_sources: 433
+  total_fetched: 382
   llms_txt_count: 303
   llms_txt_fetched: 265
   github_count: 76
   github_fetched: 63
-  web_scraped_count: 53
-  web_scraped_fetched: 53
+  web_scraped_count: 54
+  web_scraped_fetched: 54
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -1614,6 +1614,14 @@ llms_txt:
   url: https://developer.paysafe.com/
   path: docs/llms-txt/paysafe/
   status: pending
+- name: pandacss
+  description: Panda CSS - CSS-in-JS framework with build-time optimizations for styling web applications
+  url: https://panda-css.com/
+  path: docs/llms-txt/pandacss/
+  status: fetched
+  file_count: 10
+  size: 1.1MB
+  last_updated: 2025-12-31 16:07
 - name: pgvector
   description: pgvector open-source vector similarity search extension for PostgreSQL
   url: https://pgvector.dev/
@@ -3320,6 +3328,13 @@ web_scraped:
   file_count: 140
   size: 482.9KB
   last_updated: 2025-12-31 15:27
+- name: react-dropzone
+  description: React Dropzone - simple React hook to create a HTML5-compliant drag'n'drop zone for files
+  path: docs/web-scraped/react-dropzone/
+  status: fetched
+  file_count: 2
+  size: 36.0KB
+  last_updated: 2025-12-31 16:07
 - name: relay
   description: relay documentation
   path: docs/web-scraped/relay/
