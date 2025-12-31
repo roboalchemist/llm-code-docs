@@ -361,3 +361,10 @@ repositories:
     source_folder: "website/docs"
     target_folder: "docs/github-scraped/victory"
     branch: "main"
+
+  - name: "nivo"
+    description: "nivo - React data visualization library built on D3.js with 30+ chart components and responsive design"
+    repo_url: "https://github.com/plouc/nivo.git"
+    source_folder: "website/src/data/components"
+    target_folder: "docs/github-scraped/nivo"
+    branch: "master"
