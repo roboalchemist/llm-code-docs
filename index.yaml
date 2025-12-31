@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:58
-  total_sources: 430
-  total_fetched: 379
+  last_updated: 2025-12-31 16:15
+  total_sources: 431
+  total_fetched: 380
   llms_txt_count: 303
   llms_txt_fetched: 265
-  github_count: 75
-  github_fetched: 62
+  github_count: 76
+  github_fetched: 63
   web_scraped_count: 52
   web_scraped_fetched: 52
 llms_txt:
@@ -575,13 +575,6 @@ llms_txt:
   file_count: 62
   size: 977.8KB
   last_updated: 2025-12-31 15:27
-- name: dayjs
-  description: Day.js - minimalist JavaScript library for parsing, validating, manipulating, and displaying dates and times
-  path: docs/web-scraped/dayjs/
-  status: fetched
-  file_count: 5
-  size: 32.0KB
-  last_updated: 2025-12-31 15:58
 - name: dayjs
   description: Day.js - minimalist JavaScript library for parsing, validating, manipulating, and displaying dates and times
   path: docs/web-scraped/dayjs/
@@ -2373,6 +2366,16 @@ github:
   file_count: 772
   size: 6.4MB
   last_updated: 2025-12-31 15:27
+- name: react-three-fiber
+  description: React Three Fiber (R3F) - React renderer for three.js enabling declarative 3D scenes with reusable components
+  repo: pmndrs/react-three-fiber
+  branch: master
+  source_folder: docs
+  path: docs/github-scraped/react-three-fiber/
+  status: fetched
+  file_count: 20
+  size: 143.8KB
+  last_updated: 2025-12-31 16:15
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
