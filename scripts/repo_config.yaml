@@ -117,6 +117,13 @@ repositories:
     target_folder: "docs/github-scraped/heroui"
     branch: "main" # Default branch to use
 
+  - name: "HomeAssistant"
+    description: "Home Assistant - Open-source home automation platform with focus on local control and privacy"
+    repo_url: "https://github.com/home-assistant/home-assistant.io.git"
+    source_folder: "source/_docs"
+    target_folder: "docs/github-scraped/home-assistant"
+    branch: "current" # Default branch to use
+
   - name: "Flask"
     description: "Flask - Lightweight WSGI web application framework"
     repo_url: "https://github.com/pallets/flask.git"
