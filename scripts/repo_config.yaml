@@ -110,6 +110,13 @@ repositories:
     target_folder: "docs/github-scraped/semantic-ui"
     branch: "master" # Default branch to use
 
+  - name: "SeeedStudio"
+    description: "Seeed Studio Wiki - Documentation for Grove sensors, Wio Terminal, XIAO microcontrollers, reComputer, SenseCAP IoT devices"
+    repo_url: "https://github.com/Seeed-Studio/wiki-documents.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/seeedstudio"
+    branch: "docusaurus-version"
+
   - name: "Go"
     description: "Go Programming Language - Official documentation website"
     repo_url: "https://github.com/golang/website.git"
