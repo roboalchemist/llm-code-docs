@@ -1,0 +1,153 @@
+# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-settings.md
+
+# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-settings.md
+
+# Source: https://gitbook.com/docs/publishing-documentation/site-settings.md
+
+# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-settings.md
+
+# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-settings.md
+
+# Source: https://gitbook.com/docs/publishing-documentation/site-settings.md
+
+# Site settings
+
+{% hint style="info" %}
+Certain customization features are only available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
+{% endhint %}
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0iwL31qTpzsWqGlbhlM1%2F18_07_25_publishing-documentation-site-settings.svg?alt=media&#x26;token=d79833ca-192f-4fea-838a-a27067b71c76" alt="A GitBook screenshot showing site settings"><figcaption><p>Update the settings for your published documentation.</p></figcaption></figure>
+
+### General
+
+<details>
+
+<summary>Site title</summary>
+
+Change the name of your site, if you don't have a custom logo this is the name that your site visitors will see.
+
+</details>
+
+<details>
+
+<summary>Social preview</summary>
+
+Here, you can upload a custom social preview image for your site. This will set the site’s `og:image` to your uploaded image, and it’ll show when the site’s link is shared to any platform or product that supports OpenGraph images, such as Slack or X.
+
+If you don’t add a social preview, GitBook will automatically generate one using your theme color, page title and description.
+
+If your site has multiple [site sections](https://gitbook.com/docs/publishing-documentation/site-structure/site-sections), you can use the drop-down menu in this modal to add a custom social preview image for each one, or for your entire site.
+
+</details>
+
+<details>
+
+<summary>Unpublish site</summary>
+
+Unpublish your site, but keep its settings and customizations. You can publish your site again at any time.
+
+</details>
+
+<details>
+
+<summary>Delete site</summary>
+
+Unpublish and remove your site from the **Docs site** section in the GitBook app.
+
+**Note:** Deleting a site is a permanent action and cannot be undone. Any settings and customizations will be lost, but your content will remain in its [space](https://gitbook.com/docs/creating-content/content-structure/space).
+
+</details>
+
+### Audience
+
+<details>
+
+<summary>Audience</summary>
+
+Choose who sees your published content. See [publish-a-docs-site](https://gitbook.com/docs/publishing-documentation/publish-a-docs-site "mention") for more info.
+
+</details>
+
+<details>
+
+<summary>Adaptive content <mark style="background-color:purple;">Ultimate</mark></summary>
+
+Turn on adaptive content for your site pages, variants, and sections. [Adaptive content](https://gitbook.com/docs/publishing-documentation/adaptive-content) lets you hide or show content for different visitors, depending on their permissions.
+
+Your visitor token signing key will also be displayed here.
+
+</details>
+
+### Domain and URL
+
+<details>
+
+<summary>Custom domain</summary>
+
+Configure a custom domain to unify your site with your own branding. See [custom-domain](https://gitbook.com/docs/publishing-documentation/custom-domain "mention") for more info.
+
+</details>
+
+<details>
+
+<summary>GitBook Subdirectory</summary>
+
+Publish your content on a subdirectory (e.g. `yourcompany.com/docs`). See [#gitbook-subdirectory](#gitbook-subdirectory "mention") for more info
+
+</details>
+
+### Redirects
+
+{% content-ref url="site-redirects" %}
+[site-redirects](https://gitbook.com/docs/publishing-documentation/site-redirects)
+{% endcontent-ref %}
+
+### Features
+
+<details>
+
+<summary>PDF export <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+
+Let your visitors to export your GitBook as PDF. See [pdf-export](https://gitbook.com/docs/collaboration/pdf-export "mention") for more info.
+
+</details>
+
+<details>
+
+<summary>Page ratings <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+
+Choose whether or not visitors to your published content can leave a rating on each page to let you know how they feel about it. They’ll be able to choose a sad, neutral, or happy face.
+
+You can review the results of these ratings by opening the [**Insights**](https://gitbook.com/docs/publishing-documentation/insights) section of your docs site dashboard and selecting the [**Content scores**](https://gitbook.com/docs/insights#content-scores) tab.
+
+</details>
+
+### AI & MCP
+
+<details>
+
+<summary>Choose the AI experience <mark style="background-color:purple;">Premium &#x26; Ultimate</mark> </summary>
+
+Let your site visitors ask GitBook anything with AI search or the GitBook assistant. See [ai-search](https://gitbook.com/docs/publishing-documentation/ai-search "mention") for more info.
+
+</details>
+
+<details>
+
+<summary>Extend it with MCP connectors <mark style="background-color:purple;">Ultimate</mark> </summary>
+
+Configure MCP servers that the AI assistant can use when answering user questions inside your docs. See [#how-do-i-use-gitbook-ai](https://gitbook.com/docs/ai-search#how-do-i-use-gitbook-ai "mention") for more info.
+
+</details>
+
+### Structure
+
+{% content-ref url="site-structure" %}
+[site-structure](https://gitbook.com/docs/publishing-documentation/site-structure)
+{% endcontent-ref %}
+
+### Plan
+
+{% content-ref url="../account-management/plans" %}
+[plans](https://gitbook.com/docs/account-management/plans)
+{% endcontent-ref %}

@@ -1,0 +1,36 @@
+# Source: https://www.plain.com/docs/mtls.md
+
+# mTLS
+
+All outbound requests made to your **webhook targets** and **customer card endpoints** include a client TLS certificate which you can verify to achieve mutual authentication.
+
+This certificate is self-signed. In order to verify it, we provide our CA's certificate (in PEM format), which you will need to add to your server/truststore:
+
+```
+-----BEGIN CERTIFICATE-----
+MIIDDzCCAfegAwIBAgIUPLCyLvion+WDNw0V8HAZEZL5VjswDQYJKoZIhvcNAQEL
+BQAwFjEUMBIGA1UEAwwLUGxhaW5NdGxzQ0EwIBcNMjQxMDEwMDkwMzMzWhgPMjEy
+NDA5MTYwOTAzMzNaMBYxFDASBgNVBAMMC1BsYWluTXRsc0NBMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvikyF2YpU4zEYUWVYMc5P07CPQgtP6Agoia9
+mElydDTReTXW9Rle0apHKNS8OUk8S6qtA5raEh8VT2HOZBUTZb16A1vl54be+LK7
+imm7csEsU+FbHbfx9rRbisESu6Mkvf5qklovgcg5UfI4IrmQK3POB6pMBCcmdjyZ
+udbx6YSrV5LZLth7Gxq9lcPuwzzpv2DWZTr1GGAQ46UNLXNo4+4IQYtgjThRAl4m
+IBbezmiXqpi9N/7ay+P9kb4TZDQohentJu/1+y6Bj8Mxk86kq0KLlYfrEbm86lGp
+mJ8s3R5luh98muRT4NdKeoHGf96UAqUq21i00TDJ/PklqardWQIDAQABo1MwUTAd
+BgNVHQ4EFgQUlYHkn4D7QBvBudbhtq2M+f8CzpAwHwYDVR0jBBgwFoAUlYHkn4D7
+QBvBudbhtq2M+f8CzpAwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC
+AQEAMMLZc8zu7AqP+c2Pms6kRkp9Wr/C6QmXMuhHC98RZL1VcmZhE2P0lg/t644o
+prYX8yf7Z2SRZgNb2s8oekPpuI2U2WFC4eam1dK5kS4ux7IgaXZkuB8DyZVSo1WO
+KeIb2IYmXZ6hflnFNsTRjhe/Bkb7uVVw5jMaPfxWqPmeHtgUIIoh7nYj+ZnqV5Jz
+FQFDb+dZzZDol/Wa3XKm7w96MrX/tanAKTygIkXyjqCrjxTI26latBQV2OPADrRO
+uagGFG2G0o56wC8LTJdmceZfWYmVBLawSibj75Av8fwHgXK+XAi05m2GuVOQAfLq
+yuMQLHrNDReQDB1tylx13b6meg==
+-----END CERTIFICATE-----
+```
+
+<Info>
+  If you serve your API through AWS API Gateway, you can easily do this by [enabling mTLS and
+  uploading the
+  certificate](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mutual-tls.html)
+  above as the truststore.
+</Info>

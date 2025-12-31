@@ -1,0 +1,132 @@
+# Source: https://react.i18next.com/readme.md
+
+# Introduction
+
+{% hint style="success" %}
+🎉 Announcing [`i18next-cli`](https://github.com/i18next/i18next-cli):\
+&#x20;       The New Official Toolkit for i18next.\
+⇒ [Learn More](https://www.locize.com/blog/i18next-cli)
+{% endhint %}
+
+## What is react-i18next?
+
+react-i18next is a powerful **internationalization** framework for [**React**](https://reactjs.org) / [**React Native**](https://reactnative.dev/) which is based on [**i18next**](https://www.i18next.com). Check out the [history of i18next](https://www.i18next.com/misc/the-history-of-i18next) and [when react-i18next was introduced](https://www.i18next.com/misc/the-history-of-i18next#v2).
+
+{% hint style="info" %}
+You should read the [i18next](https://www.i18next.com) documentation. The [configuration options](https://www.i18next.com/overview/configuration-options) and translation functionalities like [plurals](https://www.i18next.com/translation-function/plurals), [formatting](https://www.i18next.com/translation-function/formatting), [interpolation](https://www.i18next.com/translation-function/interpolation), ... are documented there.
+{% endhint %}
+
+The module provides multiple components eg. to assert that needed translations get loaded or that your content gets rendered when the language changes.
+
+{% hint style="warning" %}
+Managing JSON files manually?\
+When your project grows, streamline your workflow with [locize](https://locize.com), the official TMS built by the creators of i18next. [**Try it for free!**](https://www.locize.com/i18next)
+{% endhint %}
+
+{% embed url="<https://www.youtube.com/watch?t=705s&v=SA_9i4TtxLQ>" %}
+
+> **Official CLI**
+>
+> ⭐ [i18next-cli](https://github.com/i18next/i18next-cli)
+>
+> The official, high-performance, all-in-one command-line tool for i18next. It handles key extraction, code linting, locale syncing, and type generation. It's built with modern technologies for maximum speed and accuracy. This is the recommended tool for all i18next projects.
+
+As react-i18next depends on [i18next](http://i18next.com) you can use it in any other UI framework and on the server-side (node.js, .net, ...) too. Like the React philosophy - just:
+
+> **Learn once - translate everywhere**.
+
+{% hint style="success" %}
+Check out [this video](https://youtu.be/37rcHVcQ6t0) and the corresponding [blog post](https://www.locize.com/blog/how-to-easily-add-i18n-to-your-software) about "Vite + React + TypeScript" with i18next.
+
+<img src="https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2F0NoUAddfsm34lCDr3VhV%2Ftitle1.png?alt=media&#x26;token=1ef7f6d1-c2c5-415b-915b-fae394982d2e" alt="" data-size="original">
+{% endhint %}
+
+{% hint style="success" %}
+[Here](https://locize.com/blog/react-i18next/) you'll find a simple tutorial on how to best use react-i18next.\
+Some basics of i18next and some cool possibilities on how to optimize your localization workflow.[\ <img src="https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2Fgit-blob-f210314bc6f460e15c18cd3c5c132fff8c2ad2b8%2Ftitle%20width.jpg?alt=media" alt="" data-size="original">](https://locize.com/blog/react-i18next/)
+{% endhint %}
+
+{% hint style="info" %}
+**Using Next.js?**\
+[Here](https://locize.com/blog/next-i18next/) you'll find a blog post on how to best use [next-i18next](https://github.com/i18next/next-i18next) with [client side translation download](https://github.com/i18next/next-i18next#client-side-loading-of-translations-via-http) and SEO optimization.
+
+[![](https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2FoAxHedQ5XnB6rQXtv0hn%2Fnext-i18next.jpg?alt=media\&token=7a4b9ade-447c-40bf-9341-6148372b6158)](https://locize.com/blog/next-i18next/)\
+\
+**Using Next.js with the new App Router?**\
+Then [this article](https://www.locize.com/blog/i18n-next-app-router) is what you are looking for!
+
+[![](https://cdn.prod.website-files.com/67a323e323a50df7f24f0a94/67f268673fcfae53e5d4697c_i18n-next-app-router.jpg)](https://www.locize.com/blog/i18n-next-app-router)
+{% endhint %}
+
+{% hint style="info" %}
+**Using Remix?**\
+[Here](https://github.com/locize/locize-remix-i18next-example) you'll find a simple example and [here a step by step tutorial](https://locize.com/blog/remix-i18n/) on how to best use remix-i18next.
+
+[![](https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2FnMxpvTcUJTKOe0CoaBgO%2Fremix-localization.jpg?alt=media\&token=cacac368-f199-417b-8a36-3ccb90f26384)](https://locize.com/blog/remix-i18n/)
+{% endhint %}
+
+{% hint style="info" %}
+**Using Gatsby?**\
+[Here](https://github.com/locize/locize-gatsby-example) you can find an example and an appropriate [blog post](https://locize.com/blog/gatsby-i18n/).
+
+[![](https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2FoHXi7oJPwGpWEgt3Mbtv%2Fgatsby-i18next.jpg?alt=media\&token=c27b1939-46eb-4d97-9124-ba2c33fd3190)](https://locize.com/blog/gatsby-i18n/)
+{% endhint %}
+
+## What does my code look like
+
+**Before:** Your React code would have looked something like:
+
+```jsx
+...
+<div>Just simple content</div>
+<div>
+  Hello <strong title="this is your name">{name}</strong>, you have {count} unread message(s). <Link to="/msgs">Go to messages</Link>.
+</div>
+...
+```
+
+**After:** With the `Trans` component just change it to:
+
+{% tabs %}
+{% tab title="JavaScript" %}
+
+```jsx
+...
+<div>{t('simpleContent')}</div>
+<Trans i18nKey="userMessagesUnread" count={count}>
+  Hello <strong title={t('nameTitle')}>{{name}}</strong>, you have {{count}} unread message(s). <Link to="/msgs">Go to messages</Link>.
+</Trans>
+...
+```
+
+{% endtab %}
+
+{% tab title="TypeScript" %}
+
+```tsx
+...
+<div>{t($ => $.simpleContent)}</div>
+<Trans i18nKey="userMessagesUnread" count={count}>
+  Hello <strong title={t($ => $.nameTitle)}>{{name}}</strong>, you have {{count}} unread message(s). <Link to="/msgs">Go to messages</Link>.
+</Trans>
+...
+```
+
+{% endtab %}
+{% endtabs %}
+
+If you prefer not using semantic keys but text - [that's also possible](https://www.i18next.com/principles/fallback.html#key-fallback).
+
+## On top: [Localization as a service](https://locize.com)
+
+i18next supports translation management tools such as [locize.com](http://locize.com/?utm_source=react_i18next_com\&utm_medium=gitbook).
+
+{% hint style="success" %}
+[Here](https://github.com/locize/react-tutorial) you can find a step by step guide, which will unleash the full power of i18next in combination with locize.\
+See how your developer experience with this localization workflow [could look like](https://youtu.be/osScyaGMVqo).\
+There's also the possibility to have an [even more focused developer experience](https://youtu.be/VfxBpSXarlU), with the help of the [auto-machinetranslation workflow](https://docs.locize.com/whats-inside/auto-machine-translation) and the use of the save missing keys functionality, new keys not only gets added to locize automatically, while developing the app, but are also [automatically translated](https://youtu.be/VfxBpSXarlU) into the target languages using machine translation (like [Google Translate](https://cloud.google.com/translate)).
+{% endhint %}
+
+{% embed url="<https://www.youtube.com/watch?v=TFV_vhJs5DY>" %}
+
+[Learn more about the enterprise offering](https://www.i18next.com/overview/for-enterprises)

@@ -1,0 +1,453 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-create.md
+
+# Create an Agent
+
+> Create a new agent with a container image and configuration settings.
+
+
+
+## OpenAPI
+
+````yaml POST /agents
+openapi: 3.0.0
+info:
+  title: Pipecat Cloud
+  version: 1.0.0
+  description: Private API for Pipecat Cloud agent management
+servers:
+  - url: https://api.pipecat.daily.co/v1
+    description: API server
+security:
+  - PrivateKeyAuth: []
+paths:
+  /agents:
+    post:
+      summary: Create a new agent
+      operationId: createService
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+            example:
+              serviceName: voice-starter
+              image: your-dockername/voice-starter:0.1
+              region: us-west
+              nodeType: arm
+              imagePullSecretSet: dockerhub-credentials
+              secretSet: voice-starter-secrets
+              autoScaling:
+                minAgents: 1
+                maxAgents: 20
+              krispViva:
+                audioFilter: tel
+              agentProfile: agent-1x
+              enableManagedKeys: false
+      responses:
+        '200':
+          description: Agent created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceDetailsResponse'
+              example:
+                name: voice-starter
+                region: us-west
+                ready: false
+                createdAt: '2025-04-19T01:20:27.564Z'
+                updatedAt: '2025-04-19T01:20:27.572Z'
+                activeDeploymentId: 13c0be89-5ae8-4b0b-ad22-79565e11de3b
+                activeDeploymentReady: false
+                autoScaling:
+                  maxReplicas: 20
+                  minReplicas: 1
+                activeSessionCount: 0
+                deployment:
+                  id: 13c0be89-5ae8-4b0b-ad22-79565e11de3b
+                  manifest:
+                    apiVersion: pipecatcloud.daily.co/v1
+                    kind: PCService
+                    metadata:
+                      name: voice-starter
+                      namespace: tiny-ferret-maroon-123
+                    spec:
+                      dailyNodeType: arm
+                      deploymentMode: keda
+                      clusterLocal: true
+                      image: your-dockername/voice-starter:0.1
+                      autoScaling:
+                        minReplicas: 1
+                        maxReplicas: 20
+                      envFromSecretNames:
+                        - voice-starter-secrets
+                      krispModels:
+                        enabled: false
+                      krispViva:
+                        audioFilters: true
+                        version: '20251010'
+                        modelVars:
+                          KRISP_VIVA_MODEL_PATH: audio_filters/krisp-viva-tel-v2.kef
+                      integratedKeysProxy:
+                        enabled: false
+                      resources:
+                        cpu: 500m
+                        memory: 1Gi
+                  serviceId: b59a68ee-61c8-4d99-9ceb-e99a3953bdac
+                  createdAt: '2025-04-19T01:20:27.569Z'
+                  updatedAt: '2025-04-19T01:20:27.569Z'
+                agentProfile: agent-1x
+                krispViva:
+                  audioFilter: tel
+        '400':
+          description: Invalid request or agent already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                serviceExists:
+                  summary: Service already exists
+                  value:
+                    error: Service already exists
+                    code: GENERIC_BAD_REQUEST
+                secretRegionMismatch:
+                  summary: Secret set region mismatch
+                  value:
+                    error: >-
+                      Secret set 'my-secrets' is in region 'us-east' but service
+                      will be created in region 'us-west'. Secrets must be in
+                      the same region as the service.
+                    code: GENERIC_BAD_REQUEST
+                imagePullSecretRegionMismatch:
+                  summary: Image pull secret region mismatch
+                  value:
+                    error: >-
+                      Image pull secret set 'dockerhub-creds' is in region
+                      'us-east' but service will be created in region 'us-west'.
+                      Image pull secrets must be in the same region as the
+                      service.
+                    code: GENERIC_BAD_REQUEST
+        '404':
+          description: Secret set or image pull secret set not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Secret set not found
+                code: NOT_FOUND
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Internal server error
+                code: INTERNAL_SERVER_ERROR
+      security:
+        - PrivateKeyAuth: []
+components:
+  schemas:
+    CreateServiceRequest:
+      type: object
+      required:
+        - serviceName
+        - image
+      properties:
+        serviceName:
+          type: string
+          description: >-
+            Name of the agent to create.
+
+
+            Must start with a lowercase letter or number, can include hyphens,
+            and must end with a lowercase letter or number. No uppercase letters
+            or special characters allowed.
+          example: my-voice-agent
+          pattern: ^[a-z0-9]([-a-z0-9]*[a-z0-9])$
+        image:
+          type: string
+          description: The container image to use for the agent
+          example: your-username/my-agent:latest
+        region:
+          type: string
+          description: >-
+            The region where the agent will be deployed. If not specified,
+            defaults to `us-west`. All secrets and image pull secrets referenced
+            by this agent must be in the same region.
+          default: us-west
+          example: us-west
+        nodeType:
+          type: string
+          description: >-
+            The type of node to run the agent on. Only `arm` is supported at
+            this time.
+          default: arm
+          example: arm
+        imagePullSecretSet:
+          type: string
+          description: The name of the image pull secret set to use
+          example: dockerhub-credentials
+        secretSet:
+          type: string
+          description: The name of the secret set to use
+          example: my-agent-secrets
+        autoScaling:
+          type: object
+          description: Auto-scaling configuration for the agent
+          properties:
+            minAgents:
+              type: integer
+              description: Minimum number of agents
+              example: 1
+            maxAgents:
+              type: integer
+              description: 'Maximum number of agents (Default: 50)'
+              example: 20
+        enableKrisp:
+          type: boolean
+          deprecated: true
+          description: >-
+            Whether to enable Krisp noise cancellation. **Deprecated:** Use
+            `krispViva` instead for the latest Krisp VIVA models.
+          default: false
+          example: false
+        krispViva:
+          type: object
+          description: >-
+            Krisp VIVA noise cancellation configuration. [Learn
+            more](/deployment/pipecat-cloud/guides/krisp-viva).
+          properties:
+            audioFilter:
+              type: string
+              nullable: true
+              description: >-
+                The Krisp VIVA audio filter model to use:
+
+
+                - `tel`: Optimized for telephony, cellular, landline, mobile,
+                desktop, and browser (up to 16kHz)
+
+                - `pro`: Optimized for mobile, desktop, and browser with WebRTC
+                (up to 32kHz)
+
+                - `null`: Disables Krisp VIVA
+
+
+                By default, Pipecat processes input audio at 16kHz, making `tel`
+                appropriate for most use cases.
+              enum:
+                - tel
+                - pro
+                - null
+              example: tel
+        agentProfile:
+          type: string
+          description: >-
+            The agent profile to use for resource allocation. Valid values are:
+
+
+            - `agent-1x`: 0.5 vCPU and 1 GB of memory. Best for voice agents.
+
+            - `agent-2x`: 1 vCPU and 2 GB of memory. Well suited for voice and
+            video agents or voice agents requiring extra processing.
+
+            - `agent-3x`: 1.5 vCPU and 3 GB of memory. Best for voice and video
+            agents requiring extra processing or multiple video inputs.
+          enum:
+            - agent-1x
+            - agent-2x
+            - agent-3x
+          default: agent-1x
+          example: agent-1x
+        enableManagedKeys:
+          type: boolean
+          description: >-
+            Pipecat Cloud provides API keys for some Pipecat services that you
+            can use directly in your applications. [Learn
+            more](/deployment/pipecat-cloud/guides/managed-api-keys).
+          default: false
+          example: false
+    ServiceDetailsResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the agent
+        region:
+          type: string
+          description: The region where the agent is deployed
+        ready:
+          type: boolean
+          description: Whether the agent is ready to accept sessions
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp of the agent
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        activeDeploymentId:
+          type: string
+          description: ID of the active deployment
+        activeDeploymentReady:
+          type: boolean
+          description: Whether the active deployment is ready
+        autoScaling:
+          type: object
+          properties:
+            maxReplicas:
+              type: integer
+              description: Maximum number of replicas
+            minReplicas:
+              type: integer
+              description: Minimum number of replicas
+        activeSessionCount:
+          type: integer
+          description: Number of active sessions
+        deployment:
+          type: object
+          nullable: true
+          description: Details of the current deployment
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the deployment
+            manifest:
+              type: object
+              description: Kubernetes manifest for the deployment
+              properties:
+                apiVersion:
+                  type: string
+                  description: API version of the manifest
+                kind:
+                  type: string
+                  description: Kind of Kubernetes resource
+                metadata:
+                  type: object
+                  description: Metadata for the resource
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the agent
+                    namespace:
+                      type: string
+                      description: Kubernetes namespace
+                spec:
+                  type: object
+                  description: Specification for the agent deployment
+                  properties:
+                    dailyNodeType:
+                      type: string
+                      description: Type of node to run on
+                    clusterLocal:
+                      type: boolean
+                      description: Whether the service is cluster-local
+                    image:
+                      type: string
+                      description: Container image used
+                    autoScaling:
+                      type: object
+                      description: Auto-scaling configuration
+                      properties:
+                        minReplicas:
+                          type: integer
+                          description: Minimum number of replicas
+                        maxReplicas:
+                          type: integer
+                          description: Maximum number of replicas
+                    envFromSecretNames:
+                      type: array
+                      description: Names of secrets to use as environment variables
+                      items:
+                        type: string
+                    krispModels:
+                      type: object
+                      description: Krisp noise cancellation configuration (deprecated)
+                      properties:
+                        enabled:
+                          type: boolean
+                          description: Whether Krisp is enabled
+                    krispViva:
+                      type: object
+                      description: >-
+                        Krisp VIVA noise cancellation configuration in the
+                        deployment manifest
+                      properties:
+                        audioFilters:
+                          type: boolean
+                          description: Whether Krisp VIVA audio filters are enabled
+                        version:
+                          type: string
+                          description: Version of the Krisp VIVA models
+                        modelVars:
+                          type: object
+                          description: >-
+                            Environment variables for Krisp VIVA model
+                            configuration
+                          properties:
+                            KRISP_VIVA_MODEL_PATH:
+                              type: string
+                              description: Path to the Krisp VIVA model file
+                    enableManagedKeys:
+                      type: object
+                      description: Managed API keys configuration
+                      properties:
+                        enabled:
+                          type: boolean
+                          description: Whether managed keys are enabled
+            serviceId:
+              type: string
+              description: ID of the service this deployment belongs to
+            createdAt:
+              type: string
+              format: date-time
+              description: Creation timestamp of the deployment
+            updatedAt:
+              type: string
+              format: date-time
+              description: Last update timestamp of the deployment
+        agentProfile:
+          type: string
+          description: The agent profile used for resource allocation
+          nullable: true
+        krispViva:
+          type: object
+          nullable: true
+          description: Krisp VIVA noise cancellation status
+          properties:
+            audioFilter:
+              type: string
+              nullable: true
+              description: >-
+                The currently configured Krisp VIVA audio filter model (tel,
+                pro, or null if disabled)
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+  securitySchemes:
+    PrivateKeyAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Authentication requires a Pipecat Cloud Private API token.
+
+
+        Generate a Private API key from your Dashboard (Settings > API Keys >
+        Private > Create key) and include it as a Bearer token in the
+        Authorization header.
+
+````
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

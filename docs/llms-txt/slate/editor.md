@@ -4,6 +4,18 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/editor.md
 
+# Source: https://docs.slatejs.org/api/nodes/editor.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-react/editor.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-core/editor.md
+
+# Source: https://docs.slatejs.org/api/nodes/editor.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-react/editor.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-core/editor.md
+
 # Editor
 
 ```javascript

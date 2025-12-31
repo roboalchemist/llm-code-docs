@@ -1,0 +1,133 @@
+# Source: https://getlago.com/docs/api-reference/intro.md
+
+# Introduction
+
+> Lago API allows your application to push customer information and metrics (events) from your application to the billing application.
+
+To integrate it into your application, you can use the JSON HTTP API or one of
+the Lago libraries (depending on your programing language or framework).
+
+You must retrieve your API key from your account.
+
+## Configuration[](#configuration "Direct link to heading")
+
+<Tabs>
+  <Tab title="Curl">
+    ```shell  theme={"dark"}
+    LAGO_URL="https://api.getlago.com"
+    API_KEY="__YOUR_API_KEY__"
+
+    curl --location --request POST "$LAGO_URL/api/v1/..." \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '...'
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    **Install package with pip**
+
+    ```bash  theme={"dark"}
+    pip install lago-python-client
+    ```
+
+    **Usage**
+
+    ```python  theme={"dark"}
+    from lago_python_client import Client
+
+    # By default, this connects to Lago's hosted servers in the US region.
+    client = Client(api_key='__YOUR_API_KEY__')
+
+    # If you are self-hosting Lago or using a different server region,
+    # specify the API URL to connect to the correct instance.
+    # Replace '__YOUR_LAGO_URL__' with the appropriate URL for your Lago server.
+    # Example: 'https://api.eu.getlago.com/' for the EU region.
+    # client = Client(api_key='__YOUR_API_KEY__', api_url='__YOUR_LAGO_URL__')
+    ```
+  </Tab>
+
+  <Tab title="Ruby">
+    **Add the gem in your Gemfile**
+
+    ```bash  theme={"dark"}
+    bundle add lago-ruby-client
+    ```
+
+    Or if bundler is not being used to manage dependencies, install the gem by
+    executing:
+
+    ```bash  theme={"dark"}
+    gem install lago-ruby-client
+    ```
+
+    **Usage**
+
+    ```ruby  theme={"dark"}
+    require 'lago-ruby-client'
+
+    # By default, this will connect to the US region of Lago's hosted servers.
+    client = Lago::Api::Client.new(api_key: '__YOUR_API_KEY__')
+
+    # If you are self-hosting Lago or using Lago in a different region (e.g., Europe),
+    # you need to specify the API URL to connect to the correct server.
+    # For example, you can provide the base URL for your specific Lago instance.
+    # This example shows how to specify a different Lago server when needed.
+    #
+    # Replace '__YOUR_LAGO_URL__' with the appropriate URL of your Lago instance.
+    # Example: 'https://api.eu.getlago.com/' for the EU region.
+    #
+    # client = Lago::Api::Client.new(
+    #   api_key: '__YOUR_API_KEY__',
+    #   api_url: '__YOUR_LAGO_URL__'
+    # )
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    **Install package with npm**
+
+    ```bash  theme={"dark"}
+    npm install lago-javascript-client
+    ```
+
+    **Usage**
+
+    ```js  theme={"dark"}
+    import { Client } from 'lago-javascript-client'
+    // By default, this will connect to Lago's hosted servers in the US region.
+    const client = Client('__YOUR_API_KEY__')
+
+    // If you are self-hosting Lago or using a different region (e.g., EU),
+    // you need to specify the base URL to connect to the correct Lago instance.
+    // Replace '__YOUR_LAGO_URL__' with the appropriate URL for your Lago instance.
+    // Example: 'https://api.eu.getlago.com/' for the EU region.
+    // const client = Client('__YOUR_API_KEY__', { baseUrl: '__YOUR_LAGO_URL__' })
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    **Install package**
+
+    ```bash  theme={"dark"}
+    go get github.com/getlago/lago-go-client@v1
+    ```
+
+    **Usage**
+
+    ```go  theme={"dark"}
+    import "github.com/getlago/lago-go-client"
+
+    func main() {
+      // By default, this will connect to Lago's hosted servers in the US region.
+      lagoClient := lago.New().SetApiKey("__YOU_API_KEY__")
+
+      // If you are self-hosting Lago or using a different region (e.g., EU),
+      // you need to specify the base URL to connect to the correct Lago instance.
+      // Replace '__YOUR_LAGO_URL__' with the appropriate URL for your Lago instance.
+      // Example: 'https://api.eu.getlago.com/' for the EU region.
+      // lagoClient := lago.New().SetApiKey("__YOUR_API_KEY__").SetBaseURL("__YOUR_LAGO_URL__")
+    }
+    ```
+  </Tab>
+</Tabs>

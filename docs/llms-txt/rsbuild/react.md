@@ -1,0 +1,257 @@
+# Source: https://rsbuild.dev/guide/framework/react.md
+
+# React
+
+This document explains how to use Rsbuild to build a React application.
+
+## Create a React application
+
+Create a React application with Rsbuild using [create-rsbuild](/guide/start/quick-start.md#create-an-rsbuild-application). Run this command:
+
+import { PackageManagerTabs } from '@theme';
+
+<PackageManagerTabs
+  command={{
+  npm: 'npm create rsbuild@latest',
+  yarn: 'yarn create rsbuild',
+  pnpm: 'pnpm create rsbuild@latest',
+  bun: 'bun create rsbuild@latest',
+}}
+/>
+
+Then select `React 19` or `React 18` when prompted to "Select framework".
+
+## Use React in an existing project
+
+To compile React's JSX syntax, register the Rsbuild [React Plugin](/plugins/list/plugin-react.md). The plugin automatically adds the necessary configuration for building React applications.
+
+For example, register in `rsbuild.config.ts`:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+
+export default defineConfig({
+  plugins: [pluginReact()],
+});
+```
+
+:::tip
+For projects using Create React App, you can refer to the [CRA Migration Guide](/guide/migration/cra.md).
+:::
+
+## Use SVGR
+
+Rsbuild supports converting SVG to React components via [SVGR](https://react-svgr.com/).
+
+To use SVGR, register the [SVGR plugin](/plugins/list/plugin-svgr.md).
+
+## React Fast Refresh
+
+Rsbuild uses React's official [Fast Refresh](https://npmjs.com/package/react-refresh) capability to perform component hot updates.
+
+React Refresh requires components to follow certain standards, or HMR may not work. Use [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) to validate your code.
+
+If React component hot updates don't work, or component state is lost after updates, your React component is likely using an anonymous function. React Fast Refresh requires named functions to preserve component state after hot updates.
+
+Here are some examples of wrong usage:
+
+```tsx
+// bad
+export default function () {
+  return <div>Hello World</div>;
+}
+
+// bad
+export default () => <div>Hello World</div>;
+```
+
+The correct usage is to declare a name for each component function:
+
+```tsx
+// good
+export default function MyComponent() {
+  return <div>Hello World</div>;
+}
+
+// good
+const MyComponent = () => <div>Hello World</div>;
+
+export default MyComponent;
+```
+
+## React Compiler
+
+React Compiler is a build-time tool that automatically optimizes your React app. It works with plain JavaScript, and understands the Rules of React, so you don’t need to rewrite any code to use it.
+
+Before using React Compiler, we recommend reading the [React Compiler documentation](https://react.dev/learn/react-compiler) to understand its functionality, current state, and usage.
+
+### How to use
+
+Steps to use React Compiler in Rsbuild:
+
+1. Upgrade `react` and `react-dom` to v19. If you can't upgrade, install the [react-compiler-runtime](https://npmjs.com/package/react-compiler-runtime) package to run the compiled code on earlier versions.
+2. React Compiler currently only provides a Babel plugin. Install [@rsbuild/plugin-babel](/plugins/list/plugin-babel.md) and [babel-plugin-react-compiler](https://npmjs.com/package/babel-plugin-react-compiler).
+3. Register the Babel plugin in your Rsbuild config file:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+import { pluginBabel } from '@rsbuild/plugin-babel';
+import { pluginReact } from '@rsbuild/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    pluginReact(),
+    pluginBabel({
+      include: /\.(?:jsx|tsx)$/,
+      babelLoaderOptions(opts) {
+        opts.plugins?.unshift('babel-plugin-react-compiler');
+      },
+    }),
+  ],
+});
+```
+
+> You can also refer to the [example project](https://github.com/rstackjs/rstack-examples/tree/main/rsbuild/react-compiler-babel).
+
+### Configuration
+
+Set the config for React Compiler as follows:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+import { pluginBabel } from '@rsbuild/plugin-babel';
+import { pluginReact } from '@rsbuild/plugin-react';
+
+const ReactCompilerConfig = {
+  /* ... */
+};
+
+export default defineConfig({
+  plugins: [
+    pluginReact(),
+    pluginBabel({
+      include: /\.(?:jsx|tsx)$/,
+      babelLoaderOptions(opts) {
+        opts.plugins?.unshift([
+          'babel-plugin-react-compiler',
+          ReactCompilerConfig,
+        ]);
+      },
+    }),
+  ],
+});
+```
+
+For React 17 and 18 projects, install [react-compiler-runtime](https://npmjs.com/package/react-compiler-runtime) and specify the `target`:
+
+```ts title="rsbuild.config.ts"
+const ReactCompilerConfig = {
+  target: '18', // '17' | '18' | '19'
+};
+```
+
+## Router
+
+### TanStack Router
+
+[TanStack Router](https://tanstack.com/router/) is a fully type-safe React router with built-in data fetching, stale-while revalidate caching and first-class search-param APIs.
+
+TanStack Router provides `@tanstack/router-plugin` to integrate with Rsbuild, which provides support for file-based routing. See:
+
+* [Installation guide](https://tanstack.com/router/latest/docs/framework/react/installation/with-rspack)
+* [Example project](https://github.com/TanStack/router/tree/main/examples/react/quickstart-rspack-file-based)
+
+### React Router
+
+[React Router](https://reactrouter.com/) is a user‑obsessed, standards‑focused, multi‑strategy router for React.
+
+* To use React Router as a library, you can just follow the official documentation and no configuration is required.
+* To use React Router as a framework, the community is working on an experimental Rsbuild plugin, see [rsbuild-plugin-react-router](https://github.com/rstackjs/rsbuild-plugin-react-router).
+
+## CSS-in-JS
+
+See [CSS-in-JS](/guide/styling/css-in-js.md) for how to use CSS-in-JS in Rsbuild.
+
+## Customize JSX
+
+Rsbuild uses SWC to compile JSX. You can customize the functions used by the compiled JSX code:
+
+* If the JSX runtime is `automatic`, use [importSource](/plugins/list/plugin-react.md#swcreactoptionsimportsource) to customize the import path of the JSX runtime, for example, import from Preact or Emotion.
+* If the JSX runtime is `classic`, use `pragma` and `pragmaFrag` to specify the JSX function and Fragment component.
+
+> `@rsbuild/plugin-react` uses `automatic` as the default JSX runtime, see [swcReactOptions.runtime](/plugins/list/plugin-react.md#swcreactoptionsruntime).
+
+### Via configuration
+
+Configure through the `@rsbuild/plugin-react`'s [swcReactOptions](/plugins/list/plugin-react.md#swcreactoptions).
+
+* If `runtime` is `automatic`:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    pluginReact({
+      swcReactOptions: {
+        runtime: 'automatic',
+        importSource: '@emotion/react',
+      },
+    }),
+  ],
+});
+```
+
+* If `runtime` is `classic`:
+
+```ts title="rsbuild.config.ts"
+import { defineConfig } from '@rsbuild/core';
+import { pluginReact } from '@rsbuild/plugin-react';
+
+export default defineConfig({
+  plugins: [
+    pluginReact({
+      swcReactOptions: {
+        runtime: 'classic',
+        pragma: 'h',
+        pragmaFrag: 'Fragment',
+      },
+    }),
+  ],
+});
+```
+
+### Via comments
+
+You can also customize JSX behavior by adding specific comments at the top of individual JSX or TSX files, which will take precedence over the configuration.
+
+* If the JSX runtime is `automatic`:
+
+```tsx title="App.tsx"
+/** @jsxImportSource custom-jsx-library */
+
+const App = () => {
+  return <div>Hello World</div>;
+};
+```
+
+* If the JSX runtime is `classic`:
+
+```tsx title="App.tsx"
+/** @jsx Preact.h */
+/** @jsxFrag Preact.Fragment */
+
+const App = () => {
+  return <div>Hello World</div>;
+};
+```
+
+## Performance profiling
+
+### React Scan
+
+React Scan can automatically detect performance issues in your React app.
+
+See [React Scan - Rsbuild Guide](https://github.com/aidenybai/react-scan/blob/main/docs/installation/rsbuild.md) to learn how to use React Scan with Rsbuild.

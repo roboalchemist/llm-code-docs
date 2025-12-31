@@ -1,0 +1,11 @@
+# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources/common-actions/view-job-details.md
+
+# View job details
+
+You can view the details of a job after it is created.
+
+Access the extended menu by clicking the three dots next to the job name. Select the `View job details` option. You can view the following details.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FpxGVKdtGpCQJ7j7b4Eun%2FScreenshot%2009-10-2025%20at%2014.28.png?alt=media&#x26;token=db48d3f8-3424-4633-a94b-783adebfbbc8" alt=""><figcaption></figcaption></figure>
+
+<table><thead><tr><th width="188.0078125">Option</th><th>Description</th><th>Content Sources</th></tr></thead><tbody><tr><td><strong>Job ID</strong></td><td>A unique identifier assigned to the job for tracking and reference purposes.</td><td>SharePoint, ServiceNow, Website, Files</td></tr><tr><td><strong>Initiated by</strong></td><td>The name or ID of the user who started the job.</td><td>SharePoint, ServiceNow, Website, Files</td></tr><tr><td><strong>Initiated at</strong></td><td>The date and time when the job was started.</td><td>SharePoint, ServiceNow, Website, Files</td></tr><tr><td><strong>Client ID</strong></td><td>Unique identifier of the client, provided by Admin</td><td>SharePoint</td></tr><tr><td><strong>Client Secret</strong></td><td>Password provided by Admin</td><td>SharePoint</td></tr><tr><td><strong>Tenant</strong></td><td>Name of the tenant, provided by Admin</td><td>SharePoint</td></tr><tr><td><strong>Tenant ID</strong></td><td>Unique identifier of the tenant, provided by Admin</td><td>SharePoint</td></tr><tr><td><strong>User Name</strong></td><td>The user name of the ServiceNow, provided by the Admin</td><td>ServiceNow</td></tr><tr><td><strong>Password</strong></td><td>Password of the ServiceNow, provided by the Admin</td><td>ServiceNow</td></tr><tr><td><strong>Source URL</strong></td><td>URL of the ServiceNow, provided by the Admin</td><td>ServiceNow</td></tr><tr><td><strong>ServiceNow Query URL</strong></td><td>Query URL that contains information about articles/documents ingested</td><td>ServiceNow</td></tr></tbody></table>

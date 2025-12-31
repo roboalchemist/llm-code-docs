@@ -1,0 +1,366 @@
+# Source: https://docs.pinata.cloud/sdk/v2-migration-guide.md
+
+# V2 Migration Guide
+
+The `pinata@1.x` package became a Private IPFS only SDK and the Public IPFS SDK was moved to `pinata-web3`. This was also a result of our APIs being disconnected as well. Due to this problem we've unified our Public and Private IPFS APIs in our V3 API, and we have also unified them in our SDK in a new V2 release. This document will walk you through how to migrate from previous versions of either `pinata` or `pinata-web3`.
+
+## `pinata@1.x`
+
+The `pinata` package was originally just for Private IPFS but now supports both Public and Private IPFS in `pinata@2.x`.
+
+### API Keys
+
+If you happened to be using a scoped API key for [legacy endpoints](/api-reference/endpoint/ipfs/pin-file-to-ipfs) like `pinFileToIPFS` or `pinJSONToIPFS` then you will need to create a new API key for the V2 SDK which uses the new [V3 endpoints](/api-reference/introduction). If you want to scope your endpoint for the new API you can use the [API docs for key creation](/api-reference/endpoint/v3-create-api-key) to do so.
+
+### Installation and Initialization
+
+Install the latest version by running the following command:
+
+```bash  theme={null}
+npm i pinata@latest
+```
+
+Initalizing the SDK works the exact same way in previous versions
+
+```typescript  theme={null}
+const pinata = new PinataSDK({
+  pinataJwt: "PINATA_JWT",
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+```
+
+### Public & Private Methods
+
+In `pinata@1.x` all methods were direct. In V2 there are public and private methods for the following classes:
+
+* `upload`
+* `files`
+* `groups`
+* `gateways`
+* `signatures`
+
+This means you can simple pass in `public` or `private` after the main class to access those specific networks.
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const upload = await pinata.upload.file(file)
+  ```
+
+  ```typescript After theme={null}
+  // Public IPFS
+  const upload = await pinata.upload.public.file(file)
+  // Private IPFS
+  const upload = await pinata.upload.private.file(file)
+  ```
+</CodeGroup>
+
+### Accessing Private IPFS Files
+
+The method `createSignedURL` for accessing files on Private IPFS has been renamed to `createAccessLink`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const url = await pinata.gateways.createSignedURL({
+  	cid: "bafkreib4pqtikzdjlj4zigobmd63lig7u6oxlug24snlr6atjlmlza45dq",
+  	expires: 30,
+  });
+  ```
+
+  ```typescript After theme={null}
+  const url = await pinata.gateways.private.createAccessLink({
+  	cid: "bafkreib4pqtikzdjlj4zigobmd63lig7u6oxlug24snlr6atjlmlza45dq",
+  	expires: 30,
+  });
+  ```
+</CodeGroup>
+
+### Uploads with Metadata
+
+When uploading files the `addMetadata()` method has been replaced with `name()` and `keyvalues()` to better match querying and listing files with those attributes.
+
+<CodeGroup>
+  ```typescript Before {4-7} theme={null}
+  const upload = await pinata.upload
+    .file(file)
+    .addMetadata({
+      name: "hello.txt",
+      keyvalues: {
+        env: "prod"
+      }
+    })
+  ```
+
+  ```typescript After {3-6} theme={null}
+  const upload = await pinata.upload.public
+    .file(file)
+    .keyvalues({
+      env: "prod"
+    })
+    .name("hello.txt")
+  ```
+</CodeGroup>
+
+## `pinata-web3@0.x`
+
+The `pinata-web3` package previously was only supporting Public IPFS, and lacked some of the more natural organization that the `pinata` package had. With `pinata@2.x` the SDK supprts both Public and Private IPFS and is recommended that you migrate to `pinata` instead of continuing to use `pinata-web3`. This guide will walk through the changes that will need to be made.
+
+### API Keys
+
+If you happened to be using a scoped API key for [legacy endpoints](/api-reference/endpoint/ipfs/pin-file-to-ipfs) like `pinFileToIPFS` or `pinJSONToIPFS` then you will need to create a new API key for the V2 SDK which uses the new [V3 endpoints](/api-reference/introduction). If you want to scope your endpoint for the new API you can use the [API docs for key creation](/api-reference/endpoint/v3-create-api-key) to do so.
+
+### Installation and Initialization
+
+Install the latest version by running the following command:
+
+```bash  theme={null}
+npm i pinata@latest
+```
+
+Initalizing the SDK works the exact same way in previous versions, but you will need to change your imports from `pinata-web3` to `pinata`.
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  import { PinataSDK } from "pinata-web3"
+
+  const pinata = new PinataSDK({
+    pinataJwt: "PINATA_JWT",
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+  ```
+
+  ```typescript After theme={null}
+  import { PinataSDK } from "pinata" // Import changed
+
+  const pinata = new PinataSDK({
+    pinataJwt: "PINATA_JWT",
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+  ```
+</CodeGroup>
+
+### Public & Private Methods
+
+In `pinata-web3@0.x` all methods were direct. In V2 there are public and private methods for the following classes:
+
+* `upload`
+* `files`
+* `groups`
+* `gateways`
+* `signatures`
+
+This means you can simple pass in `public` or `private` after the main class to access those specific networks.
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const upload = await pinata.upload.file(file)
+  ```
+
+  ```typescript After theme={null}
+  // Public IPFS
+  const upload = await pinata.upload.public.file(file)
+  // Private IPFS
+  const upload = await pinata.upload.private.file(file)
+  ```
+</CodeGroup>
+
+### File Management
+
+In `pinata-web3` the methods to `listFiles()`, `updateMetadata()`, `unpin()` under the main PinataSDK class have been moved to a separate `files` class for better organization.
+
+#### `listFiles()` -> `files.<network>.list()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const files = await pinata.listFiles()
+  ```
+
+  ```typescript After theme={null}
+  // Public IPFS
+  const files = await pinata.files.public.list()
+  // Private IPFS
+  const files = await pinata.files.private.list()
+  ```
+</CodeGroup>
+
+#### `updateMetadata()` -> `files.<network>.update()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const update = await pinata.updateMedatadata({
+    cid: "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4",
+    name: "Pinnie V2",
+    keyValues: {
+      whimsey: 200
+    }
+  })
+  ```
+
+  ```typescript After theme={null}
+  // Public IPFS
+  const update = await pinata.files.public.update({
+    id: "52681e41-86f4-407b-8f79-33a7e7e5df68",
+    name: "New File Name",
+    keyvalues: {
+      env: "prod"
+    }
+  })
+  // Private IPFS
+  const update = await pinata.files.private.update({
+    id: "52681e41-86f4-407b-8f79-33a7e7e5df68",
+    name: "New File Name",
+    keyvalues: {
+      env: "prod"
+    }
+  })
+  ```
+</CodeGroup>
+
+#### `unpin()` -> `files.<network>.delete()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const unpin = await pinata.unpin([
+    "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+  ])
+  ```
+
+  ```typescript After theme={null}
+  // Public IPFS
+  const deletedFiles = await pinata.files.public.delete([
+    "4ad9d3d1-4ab4-464c-a42a-3027fc39a546"
+  ])
+
+  // Private IPFS
+  const deletedFiles = await pinata.files.private.delete([
+    "4ad9d3d1-4ab4-464c-a42a-3027fc39a546"
+  ])
+  ```
+</CodeGroup>
+
+#### `pinJobs()` -> `files.public.queue()`
+
+To list you pending pin by CID queue you can use the `queue()` method.
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const queue = await pinata.pinJobs().status("prechecking")
+  ```
+
+  ```typescript After theme={null}
+  const queue = await pinata.files.public.queue().status("prechecking")
+  ```
+</CodeGroup>
+
+### Swaps are now under Files
+
+In `pinata-web3` the Hot Swap methods were under the `gateways` class. These have been moved to the `files` class instead. Some of the naming convention has been updated as well.
+
+#### `swapCid()` -> `addSwap()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const swap = await pinata.gateways.swapCid({
+    cid: "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske",
+    swapCid: "bafkreihumyr3bgxulu45ghws33xokwjm5o7xnkkgakaz66ldtylwiecnhu"
+  })
+  ```
+
+  ```typescript After theme={null}
+  const swap = await pinata.files.public.addSwap({
+  	cid: "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske",
+  	swapCid: "bafkreihumyr3bgxulu45ghws33xokwjm5o7xnkkgakaz66ldtylwiecnhu"
+  })
+  ```
+</CodeGroup>
+
+#### `swapHistory()` -> `getSwapHistory()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const history = await pinata.gateways.swapHistory({
+    cid: "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske",
+    domain: "discordpinnie.mypinata.cloud"
+  })
+  ```
+
+  ```typescript After theme={null}
+  const history = await pinata.files.public.getSwapHistory({
+    cid: "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske",
+    domain: "discordpinnie.mypinata.cloud"
+  })
+  ```
+</CodeGroup>
+
+### Groups
+
+Groups have been updated to follow the file ID paradigm that is now part of the SDK, and so has the method names for adding or removing files
+
+#### `addCids()` -> `addFiles()`
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const group = await pinata.groups.addCids({
+  	groupId: "3778c10d-452e-4def-8299-ee6bc548bdb0",
+  	cids: ["QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng"],
+  });
+  ```
+
+  ```typescript After theme={null}
+  const group = await pinata.groups.public.addFiles({
+  	groupId: "3778c10d-452e-4def-8299-ee6bc548bdb0",
+  	files: [
+  	  "7e18c4a4-9501-44de-8f81-403db7de0e39",
+  		"a606ef7e-70a0-40ad-9b8a-60563e009655"
+  	],
+  });
+  ```
+</CodeGroup>
+
+<Tip>
+  [See full reference](/sdk/groups/public)
+</Tip>
+
+### Analytics
+
+In `pinata-web3` analytics was grouped under the `gateways` class. In `pinata@2.x` it has been moved into it's own class. Additionally the methods inside have been completely rewired to fit needs better.
+
+<CodeGroup>
+  ```typescript Before theme={null}
+  const analytics = await pinata.gateways.topUsageAnalytics({
+    domain: "docs.mypinata.cloud",
+    start: "2024-08-01",
+    end: "2024-08-15",
+    sortBy: "requests",
+    attribute: "cid"
+  })
+  .cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng");
+
+  const analytics = await pinata.gateways.dateIntervalAnalytics({
+    domain: "docs.mypinata.cloud",
+    start: "2024-08-01",
+    end: "2024-08-15",
+    interval: "day"
+  })
+  .sort("desc");
+  ```
+
+  ```typescript After theme={null}
+  const clicks = await pinata.analytics.requests
+    .days(30)
+    .limit(10)
+    .cid("<CID>")
+
+  const bandwidth = await pinata.analytics.bandwidth
+    .days(30)
+    .limit(10)
+    .cid("<CID>")
+  ```
+</CodeGroup>
+
+<Tip>
+  See [Analytics Reference](/sdk/analytics/requests) for more info
+</Tip>
+
+### Usage Class Removed
+
+The `pinata.usage` class in the `pinata-web3` package has been removed in `pinata@2.x`.

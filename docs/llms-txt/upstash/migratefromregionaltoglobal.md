@@ -1,0 +1,112 @@
+# Source: https://upstash.com/docs/redis/howto/migratefromregionaltoglobal.md
+
+# Migrate Regional to Global Database
+
+This guide will help you migrate your data from a regional Upstash Redis database to a global database.
+If your database is Upstash Regional, we strongly recommend you to migrate to [Upstash Redis Global](/common/concepts/global-replication).
+Our Regional Redis databases are legacy and deprecated.
+
+## Why Migrate?
+
+* New infrastructure, more modern and more secure
+* Upstash Global is SOC-2 (included with Prod pack) and HIPAA (included with Enterprise) compatible
+* Enhanced feature set: New features are only made available on Upstash Global
+* Ability to add/remove read regions on the go
+* Better performance as per our benchmarks
+
+## Prerequisites
+
+Before starting the migration, make sure you have:
+
+1. An existing regional Upstash Redis database (source)
+2. A new global Upstash Redis database (destination)
+3. Access to both databases' credentials (connection strings, passwords)
+
+## Migration Process
+
+There are several official ways to migrate your data:
+
+<Warning>
+  If you are using RBAC, please note that they are not migrated automatically. You need to redefine ACL users for new the global database after migration.
+</Warning>
+
+### 1. Using Backup/Restore (Recommended for AWS Regional Databases)
+
+If your regional database is hosted in AWS, you can use Upstash's backup/restore feature:
+
+1. Create a backup of your regional database:
+
+   * Go to your regional database details page
+   * Navigate to the `Backups` tab
+   * Click the `Backup` button
+   * Provide a unique name for your backup
+   * Wait for the backup process to complete
+
+   <Info>
+     During backup creation, some database operations will be temporarily unavailable.
+   </Info>
+
+2. Restore the backup to your global database:
+
+   * Go to your global database details page
+   * Navigate to the `Backups` tab
+   * Click `Restore...`
+   * Select your regional database as the source
+   * Select the backup you created
+   * Click `Start Restore`
+
+   <Warning>
+     The restore operation will flush (delete) all existing data in your (destination) global database before restoring the backup.
+   </Warning>
+
+### 2. Using Upstash Console Migration Wizard
+
+The easiest way to migrate your data is using the Upstash Console's built-in migration wizard:
+
+1. Go to [Upstash Console](https://console.upstash.com)
+2. In the database list page, click the `Import` button
+3. Select your source (regional) database
+4. Select your destination (global) database
+5. Follow the wizard instructions to complete the migration
+
+<Info>
+  Note: The destination database will be flushed before migration starts.
+</Info>
+
+### 3. Using upstash-redis-dump
+
+Another reliable method is using the official [upstash-redis-dump](https://github.com/upstash/upstash-redis-dump) tool:
+
+1. Install upstash-redis-dump:
+   ```bash  theme={"system"}
+   go install github.com/upstash/upstash-redis-dump@latest
+   ```
+
+2. Export data from regional database:
+   ```bash  theme={"system"}
+   upstash-redis-dump -db 0 -host YOUR_REGIONAL_HOST -port YOUR_DATABASE_PORT -pass YOUR_PASSWORD -tls > redis.dump
+   ```
+
+3. Import data to global database:
+   ```bash  theme={"system"}
+   redis-cli --tls -u redis://YOUR_PASSWORD@YOUR_REGIONAL_HOST:6379 --pipe < redis.dump
+   ```
+
+## Verification
+
+After migration, verify your data:
+
+1. Compare key counts in both databases
+2. Sample test some keys to ensure data integrity
+
+## Post-Migration Steps
+
+1. Update your application configuration to use the new Global database URL
+2. Test your application thoroughly with the new database
+3. Monitor performance and consistency across regions
+4. Keep the regional database as backup for a few days
+5. Once verified, you can safely delete the regional database
+
+## Need Help?
+
+If you encounter any issues during migration, please contact Upstash support via chat, [support@upstash.com](mailto:support@upstash.com) or visit our Discord community for assistance.

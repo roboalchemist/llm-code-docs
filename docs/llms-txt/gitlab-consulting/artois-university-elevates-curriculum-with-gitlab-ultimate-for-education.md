@@ -1,0 +1,12 @@
+# Source: https://gitlab.consulting/en-gb/blog/2025/12/10/artois-university-elevates-curriculum-with-gitlab-ultimate-for-education.md
+
+
+# Artois University Elevates Curriculum with GitLab Ultimate for Education
+<h2 id="artois-university-enhances-education-with-gitlab-ultimate">Artois University Enhances Education with GitLab Ultimate</h2>
+<p>Artois University in France has taken a significant step forward in modernising its curriculum by adopting <strong>GitLab Ultimate for Education</strong>. This strategic move allows students to gain first-hand experience with one of the industry’s leading DevSecOps platforms, nurturing essential skills for the modern software development landscape.</p>
+<p>With GitLab’s comprehensive suite, including planning, source code management, CI/CD, and security, students at Artois University benefit from a full DevOps lifecycle in a unified environment. By implementing GitLab across modules focusing on areas like DevOps and Agile methodologies, the university elevates both teaching and learning standards, better preparing students for real-world challenges in software engineering.</p>
+<p>The commitment to open-source learning is matched with GitLab’s vision of scaling DevSecOps for professionals and academia alike. GitLab Ultimate for Education is available at no cost to qualifying institutions, bringing enterprise-grade features into the classroom. The streamlined access helps bridge the gap between theory and practice, giving students a tangible edge in future job markets.</p>
+<p>As a <a href="https://gitlab.consulting/en-gb/?mtm_campaign=internal-blog-link&amp;mtm_kwd=en-gb:artois-university-elevates-curriculum-with-gitlab-ultimate-for-education">GitLab Select Partner</a>, IDEA GitLab Solutions proudly supports educational institutions and enterprises across the UK, Czech Republic, Slovakia, Croatia, Serbia, Slovenia, Macedonia, as well as globally through our remote teams in Israel, South Africa, and Paraguay. We provide expert consulting, training, and GitLab licensing solutions tailored to your organisation&rsquo;s needs.</p>
+<p>Looking to integrate GitLab Ultimate for Education into your curriculum or development workflow? <a href="https://gitlab.consulting/en-gb/?mtm_campaign=internal-blog-link&amp;mtm_kwd=en-gb:artois-university-elevates-curriculum-with-gitlab-ultimate-for-education#contact">Contact us</a> today to explore how we can support your digital transformation journey.</p>
+
+

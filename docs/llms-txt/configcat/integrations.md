@@ -1,0 +1,34 @@
+# Source: https://configcat.com/docs/api/reference/integrations.md
+
+# Integrations
+
+With these endpoints you can manage your Integrations.
+
+* [Datadog](https://configcat.com/docs/docs/integrations/datadog/.md)
+* [Slack](https://configcat.com/docs/docs/integrations/slack/.md)
+* [Amplitude](https://configcat.com/docs/docs/integrations/amplitude/.md)
+* [MixPanel](https://configcat.com/docs/docs/integrations/mixpanel/.md)
+* [Segment](https://configcat.com/docs/docs/integrations/segment/.md)
+* PubNub (work in progress)
+
+<!-- -->
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->List Integrations](https://configcat.com/docs/docs/api/reference/get-integrations/.md)
+
+[This endpoint returns the list of the Integrations that belongs to the given Product identified by the](https://configcat.com/docs/docs/api/reference/get-integrations/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Create Integration](https://configcat.com/docs/docs/api/reference/create-integration/.md)
+
+[This endpoint creates a new Integration in a specified Product](https://configcat.com/docs/docs/api/reference/create-integration/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Get Integration](https://configcat.com/docs/docs/api/reference/get-integration/.md)
+
+[This endpoint returns the metadata of an Integration](https://configcat.com/docs/docs/api/reference/get-integration/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Update Integration](https://configcat.com/docs/docs/api/reference/update-integration/.md)
+
+[This endpoint updates a Config identified by the \`integrationId\` parameter.](https://configcat.com/docs/docs/api/reference/update-integration/.md)
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Delete Integration](https://configcat.com/docs/docs/api/reference/delete-integration/.md)
+
+[This endpoint removes a Integration identified by the \`integrationId\` parameter.](https://configcat.com/docs/docs/api/reference/delete-integration/.md)

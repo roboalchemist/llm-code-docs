@@ -1,0 +1,147 @@
+# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill.md
+
+# Create and test skills
+
+- [Dialog](/user-guide/how-to/build-skills/create-skill/using-dialog-designer.md): Design complex conversation flows using interactive Dialog Designer.
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/quick-overview.md): Provides a quick glance on how you can build Dialog skill in the platform.
+- [Create a new Dialog skill](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-dialog-skill.md): Quickly create new Dialog skill from scratch or by importing from any one of available skills in the skill store.
+- [Build and manage dialogs](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill.md): Learn how to change default greeting message, add user intents,  and build skill responses.
+- [Add invocation intent](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-invocation-intent.md)
+- [Flow designer - Overview](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/dialog-designer-overview.md)
+- [Change default greeting message](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/change-default-greeting-message.md)
+- [Add user intent](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent.md)
+- [Training Phrases](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/training-phrases.md)
+- [Existing entity](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/existing-entity.md)
+- [System intent](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/system-intent.md)
+- [Custom code](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/custom-code.md)
+- [Voice entity model](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/voice-entity-model.md)
+- [FAQs](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/faqs.md)
+- [Build skill responses](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses.md)
+- [Skill message window - Overview](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/skill-message-window-overview.md)
+- [Add skill messages (responses)](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/add-skill-messages-responses.md)
+- [Add buttons](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/add-buttons.md)
+- [Add form elements](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/add-form-elements.md)
+- [Advanced settings](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings.md)
+- [Channel-wise supported responses](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/channel-wise-supported-responses.md)
+- [Perform common actions](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/perform-common-actions.md)
+- [Test Dialog skill](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/test-skill.md): Use Simulator and Regression Testing to test Dialog skill.
+- [Debug Dialog skill](/user-guide/how-to/build-skills/create-skill/using-dialog-designer/debug-skill.md): Use JS errors and logs to debug Dialog Skill.
+- [Dynamic Q\&A](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a.md): Create responses for one-off questions and answers. Typically, the questions are Frequently Asked Questions (FAQs) related to your business, product, or service.
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/quick-overview.md): Provides a quick glance at how you can build Dynamic Q\&A skills in the platform.
+- [Create a new Dynamic Q\&A skill](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/create-a-new-dynamic-q-and-a-skill.md): Quickly create new Dynamic Q\&A skills from scratch or by importing from any one of the available skills in the skill store.
+- [Build and manage Dynamic Q\&A skill](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/build-and-manage-dynamic-q-and-a-skill.md): Learn how to add Q\&A, import Q\&A, and perform other common actions such as edit, clear, and delete.
+- [Add questions and answers](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/build-and-manage-dynamic-q-and-a-skill/add-questions-and-answers.md)
+- [Perform common actions](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/build-and-manage-dynamic-q-and-a-skill/perform-common-actions.md)
+- [Test Dynamic Q\&A skill](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/test-dynamic-q-and-a-skill.md)
+- [Debug Dynamic Q\&A skill](/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/debug-dynamic-q-and-a-skill.md)
+- [Smalltalk](/user-guide/how-to/build-skills/create-skill/using-smalltalk.md): A form of Q\&A skill that allows you to build a personality for your agent to represent the organization.
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/using-smalltalk/quick-overview.md): Provides a quick glance on how to build a Smalltalk skill in the platform.
+- [Create a new Smalltalk skill](/user-guide/how-to/build-skills/create-skill/using-smalltalk/create-new-knowledge-base.md): Quickly create new Smalltalk skill from scratch or by importing from any one of available skills in the skill store.
+- [Build and manage Smalltalk skill](/user-guide/how-to/build-skills/create-skill/using-smalltalk/build-and-manage-smalltalk-skill.md): Learn how to add Q\&A, import Q\&A, and perform other common actions such as edit, clear, and delete.
+- [Add questions and answers](/user-guide/how-to/build-skills/create-skill/using-smalltalk/build-and-manage-smalltalk-skill/add-smalltalk-qa.md): Create customized Smalltalk for your organization using Smalltalk Designer.
+- [Perform common actions](/user-guide/how-to/build-skills/create-skill/using-smalltalk/build-and-manage-smalltalk-skill/perform-common-actions.md): Import Smalltalk, edit or delete Smalltalk, and add languages to your Smalltalk skill.
+- [Test Smalltalk skill](/user-guide/how-to/build-skills/create-skill/using-smalltalk/test-smalltalk-q-and-a.md): Ensure the Smalltalk skill provides appropriate responses for user queries.
+- [Debug Smalltalk skill](/user-guide/how-to/build-skills/create-skill/using-smalltalk/troubleshooting-tips.md): Few troubleshooting tips to debug Smalltalk skill for most common scenarios.
+- [Answers (Deprecated)](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1.md): Get answers from enterprise content via conversations.
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/quick-overview.md): Provides a quick glance on how you can build Avaamo Answers in the platform.
+- [Create a new Answers skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/create-new-knowledge-base.md): Quickly create new Answer skill from scratch.
+- [Build and manage Answers skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1.md): Learn how to edit the Answers skill and fine-tune to improvise responses to user queries.
+- [Create Document Groups](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/create-document-groups.md): Categorize and manage your content using document groups.
+- [Upload Content](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/add-document-or-url-1.md): Create a knowledge base by extracting content from PPTs, Docs, PDF, HTML, Excel or CSV files, or any externally accessible URL.
+- [Tabular answering](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/tabular-answering.md)
+- [Multilingual answering](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/multilingual-answering.md)
+- [Content ingestion](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/content-ingestion.md)
+- [View and edit knowledge](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/view-and-edit-knowledge.md): View the extracted content (sections, entities, acronyms, vocabulary) to fine-tune and edit the knowledge base.
+- [Perform common actions](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/manage-avaamo-answers-1/perform-common-actions.md): Retrain, edit the uploaded documents or URLs, or delete the documents or URLs from the Answers skill.
+- [Configure Answers skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/configure-answers-skill.md): Specify configuration settings for an Answers skill.
+- [Intro Outro Messages](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/intro-outro-messages.md)
+- [Parsing Templates](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/parsing-templates.md)
+- [Test Answers skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/test-avaamo-answers.md): Test to ensure the extracted knowledge base provides appropriate responses for user queries.
+- [Debug Answers skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/troubleshooting-tips.md): Few troubleshooting tips to debug Answers skill for most common scenarios.
+- [Improving accuracy in Answers Skill](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/improving-accuracy-in-answers-skill.md)
+- [Keeping content updated](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/keeping-content-updated.md)
+- [Answers skill - FAQs](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/answers-faqs.md): Frequently asked questions on Answers skill
+- [Answers REST APIs](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/answers-rest-apis.md)
+- [Answer prediction API](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/answers-rest-apis/answer-prediction-api.md)
+- [Content ingestion APIs (Recommended)](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/answers-rest-apis/content-ingestion-apis-recommended.md)
+- [Content ingestion APIs (Backward Compatibility)](/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/answers-rest-apis/content-ingestion-apis-backward-compatibility.md)
+- [LLaMB](/user-guide/how-to/build-skills/create-skill/llamb.md)
+- [Using Javascript and Code](/user-guide/how-to/build-skills/create-skill/customize-your-skill.md): Customize Dialog skill via Javascript (JS) programming using a rich set of objects and functions of Avaamo Platform
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/customize-your-skill/quick-overview.md): Provides a quick glance of the key concepts, objects, functions, and properties used for customizations
+- [Built-in functions window](/user-guide/how-to/build-skills/create-skill/customize-your-skill/built-in-functions-window.md)
+- [How-to](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to.md): Common scenarios for customizing your skill using JS programming
+- [Use context](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context.md)
+- [Get user details](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/to-get-user-details.md)
+- [Get last message](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-last-message.md)
+- [Get slot details](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-domain-entity-details.md)
+- [Get environment variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-environment-variables.md)
+- [Create context variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/create-custom-variables.md)
+- [Set user property](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/set-user-property.md)
+- [Create custom user properties](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/create-custom-user-properties.md)
+- [Detect user tone and sentiment](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-user-tone-and-sentiment.md)
+- [Detect user device](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-channel.md)
+- [Detect user channel](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-user-channel.md)
+- [Switch user's language](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/switch-users-language.md)
+- [Transfer to live agent](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/transfer-to-live-agent.md)
+- [Get skill conversation insights](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-insights.md)
+- [Show ambiguous intents](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/show-ambiguous-intents.md)
+- [Use storage](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/using-storage.md)
+- [Control skill flow](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/controlling-skill-flow.md)
+- [Add tags (JS)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-tags-js.md)
+- [Add feedback (JS)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-feedback.md)
+- [Send SMS - SMS.send](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/sending-notifications.md)
+- [Send Email - Email.send](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/send-email-email.send.md)
+- [Forward call (C-IVR channel)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/forward-call-c-ivr-channel.md)
+- [Hangup call (C-IVR channel)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/hangup-call-c-ivr-channel.md)
+- [Build dynamic skill response](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response.md): Add customized input cards, carousel, list-view, quick reply
+- [Card response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card.md)
+- [Single line text](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/single-line-text.md)
+- [Multi-line text](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/multi-line-text.md)
+- [Date and time](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/date-and-time.md)
+- [Select (PickList)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/select-picklist.md)
+- [File upload](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/file-upload.md)
+- [Polls](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/polls.md)
+- [Checklist](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/checklist.md)
+- [Rating](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/rating.md)
+- [Card links](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/card-links.md)
+- [Card images](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/card-images.md)
+- [Carousel response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/carousel.md)
+- [ListView response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/list-view.md)
+- [Quick Reply response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/quick-reply.md)
+- [Delay](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/delay.md)
+- [Graphs & Charts](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/graphs-and-charts.md)
+- [Create custom HTML web views](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/create-custom-html-web-views.md): Create custom HTML web views on Web Channel and Facebook for the skill responses configured using card, carousel, or list view
+- [Define custom intents](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/define-matching-rules-using-custom-intents.md): Define your own matching rules using custom intents in nodes using JS
+- [Integrate](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1.md)
+- [REST and SOAP API](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1/rest-and-soap-api.md)
+- [Hybrid SDK](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1/hybrid-sdk.md)
+- [Test customizations](/user-guide/how-to/build-skills/create-skill/customize-your-skill/test-your-skill.md): Describes different methods to test the skill after customizations
+- [Debug JS code](/user-guide/how-to/build-skills/create-skill/customize-your-skill/troubleshooting-tips.md): Provides useful tips in cases where you are unable to receive the expected results
+- [Coding best practices](/user-guide/how-to/build-skills/create-skill/customize-your-skill/best-practices.md): Dos and Don’ts of JS programming during skill flow customizations.
+- [Reference library](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library.md): Commonly used objects, functions, and attributes during agent flow customizations
+- [Context](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context.md): Encapsulates various details of a user’s interaction with the agent at a particular context
+- [variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/variables.md)
+- [user](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/user.md)
+- [live\_agent\_user](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/user-1.md)
+- [insights](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/insights.md)
+- [history](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/history.md)
+- [User.setProperty](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperty.md): Sets the user property of the specified key to the indicated value
+- [User.setProperties](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperties.md): Sets the user property of the specified key to the indicated value
+- [User.removeProperty](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.removeproperty.md)
+- [Storage](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/storage.md): Stores data either for a global session or for a specific user session.
+- [Flow control](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/flow-control.md): Customize the navigation of the agent flow using JS functions
+- [Notifications](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/notifications.md): Allows agent to send SMS and email notifications to the users
+- [Agent commands](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/skill-commands.md): Perform actions such as clear, reset, and transfer (to name a few) during a user’s interacting with the agent
+- [Language.switch](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/language.switch.md): Switch language to anyone of the languages added to the agent.
+- [Agent.transfer](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/agent.transfer.md): Allows agent to switch to a live agent, if live agent option is enabled.
+- [Agent.setContext](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/agent.setcontext.md): Allows agent to set context before transferring the request. Used in Skill-based routing
+- [Advance JS libraries](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/advanced-js-libraries.md): List of supported Nodejs libraries with version no.
+- [SmartCall (C-IVR)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/smartcall-c-ivr.md)
+- [Q\&A (Backward Compatibility)](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer.md): Managing the existing Q\&A skill created before v5.3.0 release
+- [Build and manage Q\&A skill](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/build-and-manage-q-and-a-skill.md): Learn how to add Q\&A, import Q\&A, and perform other common actions such as edit, clear, and delete.
+- [Add questions and answers](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/build-and-manage-q-and-a-skill/add-intents-and-languages.md): Add questions and answers to your Q\&A skill.
+- [Perform common actions](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/build-and-manage-q-and-a-skill/perform-common-actions.md): Import Q\&A, edit or delete Q\&A, and add languages to the Q\&A skill.
+- [Configure Q\&A skill](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/configure-q-and-a-skill.md): Learn how-to add languages to Q\&A
+- [Add language translations](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/configure-q-and-a-skill/add-languages.md)
+- [Test Q\&A skill](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/test-q-and-a.md): Test to ensure the Q\&A skill provides appropriate responses for user queries.
+- [Debug Q\&A skill](/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/troubleshooting-tips.md): Few troubleshooting tips to debug Q\&A skills for most common scenarios.

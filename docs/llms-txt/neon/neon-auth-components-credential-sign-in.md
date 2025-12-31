@@ -1,0 +1,32 @@
+# Source: https://neon.com/llms/neon-auth-components-credential-sign-in.txt
+
+# <CredentialSignIn />
+
+> The document "<CredentialSignIn />" outlines the implementation details for integrating credential-based sign-in functionality within Neon's authentication system.
+
+## Source
+
+- [<CredentialSignIn /> HTML](https://neon.com/docs/neon-auth/components/credential-sign-in): The original HTML version of this documentation
+
+A component that renders a sign-in form with email and password fields.
+
+For more information, see the [custom pages guide](https://neon.com/docs/neon-auth/customization/custom-pages).
+
+## Props
+
+This component does not accept any props.
+
+## Example
+
+```tsx
+import { CredentialSignIn } from '@stackframe/stack';
+
+export default function Page() {
+  return (
+    <div>
+      <h1>Sign In</h1>
+      <CredentialSignIn />
+    </div>
+  );
+}
+```

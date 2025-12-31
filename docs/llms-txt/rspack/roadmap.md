@@ -1,0 +1,68 @@
+# Source: https://rspack.dev/misc/planning/roadmap.md
+
+# Roadmap
+
+This document provides an overview of the latest plans and progress for Rspack and the Rstack toolchain. It will be continuously updated as new versions are released.
+
+> Last updated: 2025-10
+
+## Rspack 2.0
+
+We are developing Rspack 2.0 and Rsbuild 2.0, focusing on API and internal architecture improvements, performance optimization, adoption of modern web standards, and a better developer experience.
+
+Key areas include:
+
+* **Streamlined outputs and APIs**: Redesigning output structure and webpack-specific APIs for better clarity and simplicity, while maintaining compatibility.
+* **Improved ESM output**: Enhancing ESM support and providing an out-of-the-box experience through Rsbuild and Rslib.
+* **Built-in RSC support**: Inspired by tools like Parcel, offering built-in support for React Server Components.
+* **More stable persistent cache**: Improving usability and reliability of persistent cache, with plans to enable it by default in development mode.
+* **Enable Native watcher**: Using native watcher to reduce rebuild latency and improve HMR performance.
+* **Core architecture optimization**: Refining the internal data flow to reduce memory usage and improve performance and maintainability.
+* **Migration to pure ESM packages**: Converting all npm packages to pure ESM format and dropping Node.js 18 support.
+* And more...
+
+The first preview release is planned for **February 2026**. We will carefully review every breaking change to ensure a smooth upgrade path.
+
+> Join the discussion on breaking changes here: 👉 [discussions/9270](https://github.com/web-infra-dev/rspack/discussions/9270)
+
+## Rstack toolchain
+
+We are building a unified JavaScript toolchain centered around Rspack — [Rstack](/guide/start/ecosystem.md#rstack).
+
+The main focus areas across Rstack tools include:
+
+* Rsbuild: Developing 2.0 alongside Rspack, focusing on performance and developer experience.
+* Rslib: Integrating Rspack's new ESM output, aiming for a 1.0 release once the APIs stabilize.
+* Rsdoctor: Expanding AI Agent support via MCP and adding new features such as tree-shaking analysis.
+* Rspress: Developing v2.0 with major architecture, UI, and feature improvements.
+* Rstest: Enhancing testing capabilities with browser mode and VS Code extension. See the [Rstest Roadmap](https://github.com/web-infra-dev/rstest/issues/85) for details.
+
+## Remote cache
+
+Rspack's caching system is evolving from memory cache to persistent cache, and we are actively exploring remote cache (portable cache).
+
+This effort aims to make build caches shareable across different machines and environments, helping teams reduce redundant builds and improve efficiency.
+
+## Enhanced ESM support
+
+We are improving Rspack's ESM output and providing a seamless library-building experience through Rslib. This enables developers to build npm packages with better static analysis and tree-shaking support.
+
+In parallel, we're extending Rspack's ESM capabilities for web applications, enabling applications to run natively as ESM in modern browsers.
+
+## Performance improvements
+
+We are continuously optimizing internal implementations — exploring more efficient concurrency models, better caching strategies, lower-overhead plugin communication, and various micro-optimizations.
+
+## Community collaboration
+
+Rspack has helped us solve many performance and efficiency challenges in real-world projects. We hope it can bring similar value to the broader community. We welcome collaborations with framework and tooling teams interested in Rspack integration — feel free to reach out for support.
+
+## Webpack compatibility
+
+Webpack provides a rich and diverse API. Rspack takes a progressive approach to compatibility, prioritizing high-usage loaders and plugins based on community feedback to ensure a smooth migration experience.
+
+## Extending Rspack with Rust
+
+Currently, higher-level tools and frameworks can integrate Rspack through its [JavaScript API](/api/javascript-api/index.md), which offers good extensibility. However, Rust-to-JavaScript communication introduces some overhead and limits performance.
+
+We are developing a Rust extension system for Rspack to eliminate cross-language overhead. For more details, see the [Rspack 1.5 blog](/blog/announcing-1-5.md#extending-rspack-with-rust).

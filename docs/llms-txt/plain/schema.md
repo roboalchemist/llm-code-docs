@@ -1,0 +1,9 @@
+# Source: https://www.plain.com/docs/graphql/schema.md
+
+# Schema
+
+If you need the schema programmatically for code generation or if you just want to read the schema you can view the [raw GraphQL schema](https://core-api.uk.plain.com/graphql/v1/schema.graphql).
+
+You can also use the [API Explorer](https://app.plain.com/developer/api-explorer/) to learn about our API schema. This is the easiest way of discovering everything possible with the GraphQL API.
+
+[**View API Explorer →**](https://app.plain.com/developer/api-explorer/)

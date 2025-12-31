@@ -1,0 +1,196 @@
+# Source: https://infisical.com/docs/api-reference/endpoints/groups/add-group-machine-identity.md
+
+# Add Machine Identity to Group
+
+
+
+## OpenAPI
+
+````yaml POST /api/v1/groups/{id}/machine-identities/{machineIdentityId}
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
+paths:
+  /api/v1/groups/{id}/machine-identities/{machineIdentityId}:
+    post:
+      tags:
+        - Groups
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: id
+          required: true
+          description: The ID of the group to add the machine identity to.
+        - schema:
+            type: string
+          in: path
+          name: machineIdentityId
+          required: true
+          description: The ID of the machine identity to add to the group.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                required:
+                  - id
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 400
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 401
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 403
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 404
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 422
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
+                    enum:
+                      - 500
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+
+````
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

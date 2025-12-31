@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/tts/lmnt.md
+
+# LMNT
+
+> Text-to-speech service implementation using LMNT's streaming API
+
+## Overview
+
+`LMNTTTSService` provides real-time text-to-speech synthesis through LMNT's WebSocket-based streaming API optimized for conversational AI. The service offers ultra-low latency with high-quality voice models and supports multiple languages with automatic interruption handling.
+
+<CardGroup cols={2}>
+  <Card title="LMNT TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.lmnt.tts.html">
+    Pipecat's API methods for LMNT TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07k-interruptible-lmnt.py">
+    Complete example with voice synthesis
+  </Card>
+
+  <Card title="LMNT Documentation" icon="book" href="https://docs.lmnt.com/api-reference/speech/streaming">
+    Official LMNT streaming speech API documentation
+  </Card>
+
+  <Card title="Voice Library" icon="microphone" href="https://app.lmnt.com/">
+    Browse and create custom voices
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use LMNT services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[lmnt]"
+```
+
+## Prerequisites
+
+### LMNT Account Setup
+
+Before using LMNT TTS services, you need:
+
+1. **LMNT Account**: Sign up at [LMNT Console](https://app.lmnt.com/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose from available voice models or create custom voices
+
+### Required Environment Variables
+
+* `LMNT_API_KEY`: Your LMNT API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

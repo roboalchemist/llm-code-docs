@@ -1,0 +1,666 @@
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/php.md
+
+# Source: https://configcat.com/docs/sdk-reference/php.md
+
+# PHP SDK Reference
+
+[![Star on GitHub](https://img.shields.io/github/stars/configcat/php-sdk.svg?style=social)](https://github.com/configcat/php-sdk/stargazers) [![Build Status](https://github.com/configcat/php-sdk/actions/workflows/php-ci.yml/badge.svg?branch=master)](https://github.com/configcat/php-sdk/actions/workflows/php-ci.yml) [![Latest Stable Version](https://poser.pugx.org/configcat/configcat-client/version)](https://packagist.org/packages/configcat/configcat-client) [![Total Downloads](https://poser.pugx.org/configcat/configcat-client/downloads)](https://packagist.org/packages/configcat/configcat-client) [![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/configcat_php-sdk?logo=sonarcloud\&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=configcat_php-sdk) [![Sonar Coverage](https://img.shields.io/sonar/coverage/configcat_php-sdk?logo=SonarCloud\&server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/project/overview?id=configcat_php-sdk)
+
+[ConfigCat PHP SDK on GitHub](https://github.com/configcat/php-sdk)
+
+## Getting started[​](#getting-started "Direct link to Getting started")
+
+### 1. Install the package with [Composer](https://getcomposer.org/)[​](#1-install-the-package-with-composer "Direct link to 1-install-the-package-with-composer")
+
+```
+composer require configcat/configcat-client
+```
+
+### 2. Create the *ConfigCat* client with your *SDK Key*[​](#2-create-the-configcat-client-with-your-sdk-key "Direct link to 2-create-the-configcat-client-with-your-sdk-key")
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+  \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\LaravelCache(\Illuminate\Support\Facades\Cache::store()),
+]);
+```
+
+warning
+
+Due to the nature of PHP, for each HTTP request, it spawns a dedicated PHP process that will instantiate a new ConfigCat client every time. Therefore, to avoid the download of all feature flag data at every initialization, it's crucial to set up appropriate caching.
+
+For more caching options, see the [Cache](#cache) section of this documentation.
+
+### 3. Get your setting value[​](#3-get-your-setting-value "Direct link to 3. Get your setting value")
+
+```
+$isMyAwesomeFeatureEnabled = $client->getValue("isMyAwesomeFeatureEnabled", false);
+if (is_bool($isMyAwesomeFeatureEnabled) && $isMyAwesomeFeatureEnabled) {
+    doTheNewThing();
+} else {
+    doTheOldThing();
+}
+```
+
+## Creating the *ConfigCat Client*[​](#creating-the-configcat-client "Direct link to creating-the-configcat-client")
+
+*ConfigCat Client* is responsible for:
+
+* managing the communication between your application and ConfigCat servers.
+* caching your setting values and feature flags.
+* serving values quickly in a failsafe way.
+
+Constructor parameters:
+
+| Name      | Type     | Description                                                                                       |
+| --------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `sdkKey`  | `string` | **REQUIRED.** SDK Key to access your feature flag and setting. Get it from *ConfigCat Dashboard*. |
+| `options` | `array`  | **Optional.** Additional SDK options, see below for the detailed list.                            |
+
+Available options:
+
+| Name                     | Type                                                                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data-governance`        | `int`                                                                                                                        | Optional, defaults to `DataGovernance::GLOBAL_`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `GLOBAL_`, `EU_ONLY`.                                    |
+| `logger`                 | [`\Psr\Log\LoggerInterface`](https://github.com/php-fig/log/blob/master/src/LoggerInterface.php)                             | Optional, sets the logger for errors and warnings produced by the SDK, defaults to [Monolog](https://github.com/Seldaek/monolog). [More about logging](#logging).                                                                                                                                                                                                                         |
+| `log-level`              | `int`                                                                                                                        | Optional, defaults to `LogLevel::WARNING`. Sets the internal log level. [More about log levels](#logging).                                                                                                                                                                                                                                                                                |
+| `cache`                  | [`\ConfigCat\Cache\ConfigCache`](https://github.com/configcat/php-sdk/blob/master/src/Cache/ConfigCache.php)                 | Optional, sets a `\ConfigCat\Cache\ConfigCache` implementation for caching the latest feature flag and setting values. [More about cache](#cache). You can check the currently available implementations [here](https://github.com/configcat/php-sdk/tree/master/src/Cache).                                                                                                              |
+| `cache-refresh-interval` | `int`                                                                                                                        | Optional, sets the refresh interval of the cache in seconds, after the initial cached value is set this value will be used to determine how much time must pass before initiating a [config JSON download](https://configcat.com/docs/docs/requests/.md). Defaults to 60.                                                                                                                 |
+| `request-options`        | `array`                                                                                                                      | *(Deprecated)* Optional, sets the request options (e.g. [HTTP Timeout](#http-timeout), [HTTP Proxy](#http-proxy)) for the underlying `Guzzle` HTTP client used for [downloading the config JSON](https://configcat.com/docs/docs/requests/.md) files. See Guzzle's [official documentation](https://docs.guzzlephp.org/en/stable/request-options.html) for the available request options. |
+| `fetch-client`           | [`\ConfigCat\Http\FetchClientInterface`](https://github.com/configcat/php-sdk/blob/master/src/Http/FetchClientInterface.php) | Custom fetch client that wraps an actual HTTP client used to make HTTP requests towards ConfigCat. When it's not set, [`\ConfigCat\Http\GuzzleFetchClient`](https://github.com/configcat/php-sdk/blob/master/src/Http/GuzzleFetchClient.php) is used by default.                                                                                                                          |
+| `flag-overrides`         | [`\ConfigCat\Override\FlagOverrides`](https://github.com/configcat/php-sdk/blob/master/src/Override/FlagOverrides.php)       | Optional, sets the local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                                                                          |
+| `exceptions-to-ignore`   | `array`                                                                                                                      | Optional, sets an array of exception classes that should be ignored from logs.                                                                                                                                                                                                                                                                                                            |
+| `base-url`               | `string`                                                                                                                     | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the SDK will download the feature flags and settings.                                                                                                                                                                                                                                                  |
+| `default-user`           | [`\ConfigCat\User`](https://github.com/configcat/php-sdk/blob/master/src/User.php)                                           | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                                                                                |
+| `offline`                | `bool`                                                                                                                       | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                                                                                         |
+
+info
+
+Each option name is available through constants of the [\ConfigCat\ClientOptions](https://github.com/configcat/php-sdk/blob/master/src/ClientOptions.php) class.
+
+Example:
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\LaravelCache(Cache::store()),
+    \ConfigCat\ClientOptions::CACHE_REFRESH_INTERVAL => 5
+]);
+```
+
+## Anatomy of `getValue()`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                      |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+
+```
+$value = $client->getValue(
+    "keyOfMySetting", # Setting Key
+    false, # Default value
+    new \ConfigCat\User('#UNIQUE-USER-IDENTIFIER#') # Optional User Object
+);
+```
+
+## Anatomy of `getValueDetails()`[​](#anatomy-of-getvaluedetails "Direct link to anatomy-of-getvaluedetails")
+
+`getValueDetails()` is similar to `getValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+
+```
+$details = $client->getValueDetails(
+    "keyOfMySetting", # Setting Key
+    false, # Default value
+    new \ConfigCat\User('#UNIQUE-USER-IDENTIFIER#') # Optional User Object
+);
+```
+
+The `details` result contains the following information:
+
+| Property                         | Type                                 | Description                                                                                                |
+| -------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `getKey()`                       | `string`                             | The key of the evaluated feature flag or setting.                                                          |
+| `getValue()`                     | `bool` / `string` / `int` / `double` | The evaluated value of the feature flag or setting.                                                        |
+| `getUser()`                      | `?\ConfigCat\User`                   | The User Object used for the evaluation.                                                                   |
+| `isDefaultValue()`               | `bool`                               | True when the default value passed to `getValueDetails()` is returned due to an error.                     |
+| `getErrorMessage()`              | `?string`                            | In case of an error, this property contains the error message.                                             |
+| `getErrorException()`            | `?Throwable`                         | In case of an error, this property contains the related exception object (if any).                         |
+| `getMatchedTargetingRule()`      | `?array`                             | The Targeting Rule (if any) that matched during the evaluation and was used to return the evaluated value. |
+| `getMatchedPercentageOption()`   | `?array`                             | The Percentage Option (if any) that was used to select the evaluated value.                                |
+| `getFetchTimeUnixMilliseconds()` | `float`                              | The last download time of the current config in unix milliseconds format.                                  |
+
+## User Object[​](#user-object "Direct link to User Object")
+
+The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+
+```
+$user = new \ConfigCat\User("#UNIQUE-USER-IDENTIFIER#");
+```
+
+```
+$user = new \ConfigCat\User("john@example.com");
+```
+
+### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
+
+| Parameters   | Description                                                                                                                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identifier` | **REQUIRED.** Unique identifier of a user in your application. Can be any `string` value, even an email address.                                                                                                                                                   |
+| `email`      | Optional parameter for easier Targeting Rule definitions.                                                                                                                                                                                                          |
+| `country`    | Optional parameter for easier Targeting Rule definitions.                                                                                                                                                                                                          |
+| `custom`     | Optional associative array representing the custom attributes of a user for advanced Targeting Rule definitions. e.g. User role, Subscription type. The value's type of the array must be a `string`, `int`, `float`, `DateTimeInterface` or an array of `string`. |
+
+```
+$user = new \ConfigCat\User(
+    '#UNIQUE-USER-IDENTIFIER#',
+    'john@example',
+    'United Kingdom',
+    [
+        'SubscriptionType' => 'Pro',
+        'UserRole' => 'Admin'
+    ]);
+```
+
+caution
+
+If you want to use a `string` value containing non-ASCII characters as a user attribute, please make sure that the content of the string is a UTF-8 byte sequence. ([A PHP string is just a sequence of bytes](https://www.php.net/manual/en/language.types.string.php), it doesn't use any internal character encoding, that is, doesn't offer native Unicode support. Thus, to support Unicode text, the ConfigCat SDK assumes UTF-8 encoding.)
+
+The `custom` array also allows attribute values other than `string` values:
+
+```
+$user = new \ConfigCat\User(
+    '#UNIQUE-USER-IDENTIFIER#',
+    null,
+    null,
+    [
+        'Rating' => 4.5,
+        'RegisteredAt' => new DateTimeImmutable('2023-11-22T12:34:56.0000000Z'),
+        'Roles' => ['Role1', 'Role2']
+    ]);
+```
+
+### User Object Attribute Types[​](#user-object-attribute-types "Direct link to User Object Attribute Types")
+
+All comparators support `string` values as User Object attribute (in some cases they need to be provided in a specific format though, see below), but some of them also support other types of values. It depends on the comparator how the values will be handled. The following rules apply:
+
+**Text-based comparators** (EQUALS, IS ONE OF, etc.)
+
+* accept `string` values,
+* all other values are automatically converted to `string` (a warning will be logged but evaluation will continue as normal).
+
+**SemVer-based comparators** (IS ONE OF, <, >=, etc.)
+
+* accept `string` values containing a properly formatted, valid semver value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Number-based comparators** (=, <, >=, etc.)
+
+* accept `int` or `float` values,
+* accept `string` values containing a properly formatted, valid `int` or `float` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Date time-based comparators** (BEFORE / AFTER)
+
+* accept `DateTimeInterface` values, which are automatically converted to a second-based Unix timestamp,
+* accept `int` or `float` values representing a second-based Unix timestamp,
+* accept `string` values containing a properly formatted, valid `int` or `float` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**String array-based comparators** (ARRAY CONTAINS ANY OF / ARRAY NOT CONTAINS ANY OF)
+
+* accept arrays of `string`,
+* accept `string` values containing a valid JSON string which can be deserialized to an array of `string`,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+### Default user[​](#default-user "Direct link to Default user")
+
+There's an option to set a default User Object that will be used at feature flag and setting evaluation. It can be useful when your application has a single user only, or rarely switches users.
+
+You can set the default User Object either on SDK initialization:
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::DEFAULT_USER => new \ConfigCat\User("john@example.com"),
+]);
+```
+
+or with the `setDefaultUser()` method of the ConfigCat client.
+
+```
+$client->setDefaultUser(new \ConfigCat\User("john@example.com"));
+```
+
+Whenever the `getValue()`, `getValueDetails()`, `getAllValues()`, or `getAllVariationIds()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
+
+```
+$user = new \ConfigCat\User("john@example.com");
+$client->setDefaultUser($user);
+
+// The default user will be used at the evaluation process.
+$value = $client->getValue("keyOfMySetting", false);
+```
+
+When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
+
+```
+$user = new \ConfigCat\User("john@example.com");
+$client->setDefaultUser($user);
+
+$otherUser = new \ConfigCat\User("brian@example.com");
+
+// $otherUser will be used at the evaluation process.
+$value = $client->getValue("keyOfMySetting", false, $otherUser);
+```
+
+For deleting the default user, you can do the following:
+
+```
+$client->clearDefaultUser();
+```
+
+## `getAllKeys()`[​](#getallkeys "Direct link to getallkeys")
+
+You can get the keys for all available feature flags and settings by calling the `getAllKeys()` method.
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#");
+$keys = $client->getAllKeys();
+```
+
+## `getAllValues()`[​](#getallvalues "Direct link to getallvalues")
+
+Evaluates and returns the values of all feature flags and settings. Passing a User Object is optional.
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#");
+$settingValues = $client->getAllValues();
+
+// invoke with User Object
+$user = new \ConfigCat\User("john@example.com");
+$settingValuesTargeting = $client->getAllValues($user);
+```
+
+## Hooks[​](#hooks "Direct link to Hooks")
+
+The SDK provides several hooks (events), by means of which you can get notified of its actions. You can subscribe to the following events emitted by the *ConfigCat* client:
+
+* `onConfigChanged([key => setting])`: This event is emitted first when the client's internal cache gets populated. Afterwards, it is emitted again each time the internally cached config is updated to a newer version, either as a result of synchronization with the external cache, or as a result of fetching a newer version from the ConfigCat CDN.
+* `onFlagEvaluated(EvaluationDetails)`: This event is emitted each time the client evaluates a feature flag or setting. The event provides the same evaluation details that you would get from [`getValueDetails()`](#anatomy-of-getvaluedetails).
+* `onError(string)`: This event is emitted when an error occurs within the client.
+
+You can subscribe to these events with the `hooks` property of the ConfigCat client:
+
+```
+$client->hooks()->addOnFlagEvaluated(function (EvaluationDetails $details) {
+    /* handle the event */
+});
+```
+
+## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
+
+In cases when you'd want to prevent the SDK from making HTTP calls, you can put it in offline mode:
+
+```
+$client->setOffline();
+```
+
+In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
+
+To put the SDK back in online mode, you can do the following:
+
+```
+$client->setOnline();
+```
+
+> With `$client->isOffline()` you can check whether the SDK is in offline mode.
+
+## Flag Overrides[​](#flag-overrides "Direct link to Flag Overrides")
+
+With flag overrides you can overwrite the feature flags & settings downloaded from the ConfigCat CDN with local values. Moreover, you can specify how the overrides should apply over the downloaded values. The following 3 behaviours are supported:
+
+* **Local only** (`OverrideBehaviour::LOCAL_ONLY`): When evaluating values, the SDK will not use feature flags & settings from the ConfigCat CDN, but it will use all feature flags & settings that are loaded from local-override sources.
+
+* **Local over remote** (`OverrideBehaviour::LOCAL_OVER_REMOTE`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the local-override version will take precedence.
+
+* **Remote over local** (`OverrideBehaviour::REMOTE_OVER_LOCAL`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the downloaded version will take precedence.
+
+You can load your feature flag & setting overrides from a file or from a simple associative array.
+
+### JSON File[​](#json-file "Direct link to JSON File")
+
+The SDK can be set up to load your feature flag & setting overrides from a file. You can also specify whether the file should be reloaded when it gets modified.
+
+```
+$client = new \ConfigCat\ConfigCatClient("localhost", [
+  \ConfigCat\ClientOptions::FLAG_OVERRIDES => new \ConfigCat\Override\FlagOverrides(
+    \ConfigCat\Override\OverrideDataSource::localFile("path/to/the/local_flags.json"), // path to the file
+    \ConfigCat\Override\OverrideBehaviour::LOCAL_ONLY
+  ),
+]);
+```
+
+#### JSON File Structure[​](#json-file-structure "Direct link to JSON File Structure")
+
+The SDK supports 2 types of JSON structures to describe feature flags & settings.
+
+##### 1. Simple (key-value) structure[​](#1-simple-key-value-structure "Direct link to 1. Simple (key-value) structure")
+
+```
+{
+  "flags": {
+    "enabledFeature": true,
+    "disabledFeature": false,
+    "intSetting": 5,
+    "doubleSetting": 3.14,
+    "stringSetting": "test"
+  }
+}
+```
+
+##### 2. Complex (full-featured) structure[​](#2-complex-full-featured-structure "Direct link to 2. Complex (full-featured) structure")
+
+This is the same format that the SDK downloads from the ConfigCat CDN. It allows the usage of all features that are available on the ConfigCat Dashboard.
+
+You can download your current config JSON from ConfigCat's CDN and use it as a baseline.
+
+The URL to your current config JSON is based on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings:
+
+* GLOBAL: `https://cdn-global.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
+* EU: `https://cdn-eu.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
+
+```
+{
+  "f": {
+    // list of feature flags & settings
+    "isFeatureEnabled": {
+      // key of a particular flag
+      "v": false, // default value, served when no rules are defined
+      "i": "430bded3", // variation id (for analytical purposes)
+      "t": 0, // feature flag's type, possible values:
+      // 0 -> BOOLEAN
+      // 1 -> STRING
+      // 2 -> INT
+      // 3 -> DOUBLE
+      "p": [
+        // list of percentage rules
+        {
+          "o": 0, // rule's order
+          "v": true, // value served when the rule is selected during evaluation
+          "p": 10, // % value
+          "i": "bcfb84a7" // variation id (for analytical purposes)
+        },
+        {
+          "o": 1, // rule's order
+          "v": false, // value served when the rule is selected during evaluation
+          "p": 90, // % value
+          "i": "bddac6ae" // variation id (for analytical purposes)
+        }
+      ],
+      "r": [
+        // list of Targeting Rules
+        {
+          "o": 0, // rule's order
+          "a": "Identifier", // comparison attribute
+          "t": 2, // comparator, possible values:
+          // 0  -> 'IS ONE OF',
+          // 1  -> 'IS NOT ONE OF',
+          // 2  -> 'CONTAINS',
+          // 3  -> 'DOES NOT CONTAIN',
+          // 4  -> 'IS ONE OF (SemVer)',
+          // 5  -> 'IS NOT ONE OF (SemVer)',
+          // 6  -> '< (SemVer)',
+          // 7  -> '<= (SemVer)',
+          // 8  -> '> (SemVer)',
+          // 9  -> '>= (SemVer)',
+          // 10 -> '= (Number)',
+          // 11 -> '<> (Number)',
+          // 12 -> '< (Number)',
+          // 13 -> '<= (Number)',
+          // 14 -> '> (Number)',
+          // 15 -> '>= (Number)',
+          // 16 -> 'IS ONE OF (Hashed)',
+          // 17 -> 'IS NOT ONE OF Hashed)'
+          "c": "@example.com", // comparison value
+          "v": true, // value served when the rule is selected during evaluation
+          "i": "bcfb84a7" // variation id (for analytical purposes)
+        }
+      ]
+    }
+  }
+}
+```
+
+### Associative Array[​](#associative-array "Direct link to Associative Array")
+
+You can set up the SDK to load your feature flag & setting overrides from an associative array.
+
+```
+$client = new \ConfigCat\ConfigCatClient("localhost", [
+  \ConfigCat\ClientOptions::FLAG_OVERRIDES => new \ConfigCat\Override\FlagOverrides(
+    \ConfigCat\Override\OverrideDataSource::localArray([
+      'enabledFeature' => true,
+      'disabledFeature' => false,
+      'intSetting' => 5,
+      'doubleSetting' => 3.14,
+      'stringSetting' => "test",
+    ]), \ConfigCat\Override\OverrideBehaviour::LOCAL_ONLY),
+]);
+```
+
+## Cache[​](#cache "Direct link to Cache")
+
+You can use the following caching options:
+
+* Laravel:
+
+  ```
+  $client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\LaravelCache(\Illuminate\Support\Facades\Cache::store()),
+  ]);
+  ```
+
+* PSR-6 cache (e.g. the [redis adapter](https://github.com/php-cache/redis-adapter) for PSR-6):
+
+  ```
+  $client = new \RedisArray(['127.0.0.1:6379', '127.0.0.2:6379']);
+  $pool = new RedisCachePool($client);
+
+  $client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\Psr6Cache($pool),
+  ]);
+  ```
+
+  or with the [file system adapter](https://github.com/php-cache/filesystem-adapter):
+
+  ```
+  $filesystemAdapter = new \League\Flysystem\Adapter\Local(__DIR__.'/');
+  $filesystem = new \League\Flysystem\Filesystem($filesystemAdapter);
+  $pool = new \Cache\Adapter\Filesystem\FilesystemCachePool($filesystem);
+
+  $client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\Psr6Cache($pool),
+  ]);
+  ```
+
+* PSR-16 cache (e.g. the [redis adapter](https://github.com/php-cache/redis-adapter) for PSR-6 and the [PSR-6 to PSR-16 cache bridge](https://github.com/php-cache/simple-cache-bridge)):
+
+  ```
+  $client = new \RedisArray(['127.0.0.1:6379', '127.0.0.2:6379']);
+  $pool = new RedisCachePool($client);
+  $simpleCache = new SimpleCacheBridge($pool);
+
+  $client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\Psr16Cache($simpleCache),
+  ]);
+  ```
+
+  or with the [file system adapter](https://github.com/php-cache/filesystem-adapter):
+
+  ```
+  $filesystemAdapter = new \League\Flysystem\Adapter\Local(__DIR__.'/');
+  $filesystem = new \League\Flysystem\Filesystem($filesystemAdapter);
+  $pool = new \Cache\Adapter\Filesystem\FilesystemCachePool($filesystem);
+  $simpleCache = new SimpleCacheBridge($pool);
+
+  $client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::CACHE => new \ConfigCat\Cache\Psr16Cache($simpleCache),
+  ]);
+  ```
+
+* Custom cache implementation
+
+  ```
+  class CustomCache extends \ConfigCat\Cache\ConfigCache
+  {
+      protected function get(string $key): ?string
+      {
+          // load from cache
+      }
+
+      protected function set(string $key, string $value): void
+      {
+          // save into cache
+      }
+  }
+  ```
+
+info
+
+The PHP SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/docs/advanced/caching/.md#shared-cache).
+
+## Logging[​](#logging "Direct link to Logging")
+
+The SDK uses the PSR-3 `LoggerInterface` for logging, so you can use any implementor package like [Monolog](https://github.com/Seldaek/monolog).
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::LOGGER => new \Monolog\Logger("name"),
+]);
+```
+
+You can change the verbosity of the logs by setting the `log-level` option.
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::LOG_LEVEL => \ConfigCat\Log\LogLevel::INFO
+]);
+```
+
+The following levels are used by the ConfigCat SDK:
+
+| Level     | Description                                                                             |
+| --------- | --------------------------------------------------------------------------------------- |
+| `NO_LOG`  | Turn the logging off.                                                                   |
+| `ERROR`   | Only error level events are logged.                                                     |
+| `WARNING` | Default. Errors and Warnings are logged.                                                |
+| `INFO`    | Errors, Warnings and feature flag evaluation is logged.                                 |
+| `DEBUG`   | All of the above plus debug info is logged. Debug logs can be different for other SDKs. |
+
+Info level logging helps to inspect how a feature flag was evaluated:
+
+```
+[2022-01-06T18:34:16.846039+00:00] ConfigCat.INFO: [5000] Evaluating 'isPOCFeatureEnabled' for User '{"Identifier":"<SOME USERID>","Email":"configcat@example.com","Country":"US","SubscriptionType":"Pro","Role":"Admin","version":"1.0.0"}'
+  Evaluating targeting rules and applying the first match if any:
+  - IF User.Email CONTAINS ANY OF ['@something.com'] THEN 'false' => no match
+  - IF User.Email CONTAINS ANY OF ['@example.com'] THEN 'true' => MATCH, applying rule
+  Returning 'true'.
+```
+
+## HTTP Client[​](#http-client "Direct link to HTTP Client")
+
+The SDK by default uses [Guzzle](https://docs.guzzlephp.org/en/stable/index.html) for the underlying HTTP calls. The default HTTP client is customizable through the `\ConfigCat\Http\GuzzleFetchClient::create()` method at the SDK's initialization. To learn more about Guzzle's customization options see the [official documentaion](https://docs.guzzlephp.org/en/stable/request-options.html).
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+     \ConfigCat\ClientOptions::FETCH_CLIENT => \ConfigCat\Http\GuzzleFetchClient::create([
+         \GuzzleHttp\RequestOptions::CONNECT_TIMEOUT => 5,
+     ]),
+]);
+```
+
+Through the `\ConfigCat\ClientOptions::FETCH_CLIENT` option you can pass your own HTTP client by providing a `\ConfigCat\Http\FetchClientInterface` implementation.
+
+```
+class CustomFetchClient implements \ConfigCat\Http\FetchClientInterface
+{
+    public function getClient(): \Psr\Http\Client\ClientInterface
+    {
+        // return with a \Psr\Http\Client\ClientInterface implementation.
+    }
+
+    public function createRequest(string $method, string $uri): \Psr\Http\Message\RequestInterface
+    {
+        // return with a \Psr\Http\Message\RequestInterface implementation
+    }
+}
+```
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+     \ConfigCat\ClientOptions::FETCH_CLIENT => new CustomFetchClient(),
+]);
+```
+
+### HTTP Proxy[​](#http-proxy "Direct link to HTTP Proxy")
+
+If your application runs behind a proxy you can do the following:
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::REQUEST_OPTIONS => [
+        \GuzzleHttp\RequestOptions::PROXY => [
+            'http'  => 'tcp://localhost:8125',
+            'https' => 'tcp://localhost:9124',
+        ]
+    ],
+]);
+```
+
+### HTTP Timeout[​](#http-timeout "Direct link to HTTP Timeout")
+
+You can set the maximum wait time for a ConfigCat HTTP response by using Guzzle's timeouts.
+
+```
+$client = new \ConfigCat\ConfigCatClient("#YOUR-SDK-KEY#", [
+    \ConfigCat\ClientOptions::REQUEST_OPTIONS => [
+        \GuzzleHttp\RequestOptions::CONNECT_TIMEOUT => 5,
+        \GuzzleHttp\RequestOptions::TIMEOUT => 10
+    ],
+]);
+```
+
+## Sample Applications[​](#sample-applications "Direct link to Sample Applications")
+
+* [Sample Laravel App](https://github.com/configcat/php-sdk/tree/master/samples/laravel)
+
+## Guides[​](#guides "Direct link to Guides")
+
+See [this](https://configcat.com/blog/2022/09/16/how-to-use-feature-flags-in-php/) guide on how to use ConfigCat's PHP SDK.
+
+## Look under the hood[​](#look-under-the-hood "Direct link to Look under the hood")
+
+* [ConfigCat PHP SDK's repository on GitHub](https://github.com/configcat/php-sdk)
+* [ConfigCat PHP SDK on packagist.org](https://packagist.org/packages/configcat/configcat-client)

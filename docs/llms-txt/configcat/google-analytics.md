@@ -1,0 +1,92 @@
+# Source: https://configcat.com/docs/integrations/google-analytics.md
+
+# Google Analytics - Send feature flag analytics to Google Analytics
+
+## Sending Feature Flag Evaluation Analytics to Google Analytics[​](#sending-feature-flag-evaluation-analytics-to-google-analytics "Direct link to Sending Feature Flag Evaluation Analytics to Google Analytics")
+
+Integrate your feature flag evaluations with [Google Analytics experiments](https://developers.google.com/analytics/devguides/collection/ga4/integration) to gain advanced insights into how your features are used and to assess the outcomes of A/B tests.
+
+### Setup Instructions[​](#setup-instructions "Direct link to Setup Instructions")
+
+1. **Install SDKs:** Add both the ConfigCat SDK and the Google Analytics SDK to your application.
+
+2. **Configure SDKs:**
+
+   * **ConfigCat SDK:** Initialize with your ConfigCat SDK key.
+   * **Google Analytics SDK:** Set up with your Google Analytics measurement ID.
+
+3. **Integrate Feature Flag Evaluations:**
+
+   * During the initialization of the ConfigCat SDK, subscribe to the `flagEvaluated` hook.
+   * Send feature flag evaluation data to Google Analytics using the `experience_impression` event name. Include the following parameter:
+     <!-- -->
+     * `exp_variant_string`: Construct this string to include the tool name (`configcat`), the feature flag's key, and its value. For example: `configcat-isMyAwesomeFeatureEnabled-true`.
+
+Code samples:
+
+* JavaScript, SSR
+* React
+* Other languages
+
+```
+const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPoll, {
+    setupHooks: (hooks) =>
+        hooks.on('flagEvaluated', evaluationDetails => {
+            const variant = "configcat-" + evaluationDetails.key + "-" + evaluationDetails.value;
+            gtag('event', 'experience_impression',
+                {
+                    'exp_variant_string': variant,
+                    'variation_id': evaluationDetails.variationId
+                });
+        }),
+});
+```
+
+```
+<ConfigCatProvider
+  sdkKey="#YOUR_SDK_KEY"
+  pollingMode={PollingMode.AutoPoll}
+  options={{
+    setupHooks: (hooks) =>
+      hooks.on('flagEvaluated', evaluationDetails => {
+        const variant = "configcat-" + evaluationDetails.key + "-" + evaluationDetails.value;
+        gtag('event', 'experience_impression',
+            {
+                'exp_variant_string': variant,
+                'variation_id': evaluationDetails.variationId
+            });
+      }),
+  }}
+>
+</ConfigCatProvider>
+```
+
+While our documentation primarily provides code examples for JavaScript-based SDKs, you can integrate with other languages by utilizing the [Send Measurement Protocol events to Google Analytics](https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag) endpoint. Here's how to set it up:
+
+1. **Subscribe to the FlagEvaluated hook** in the ConfigCat SDK.
+
+2. **Send an event to Google Analytics** using the `experience_impression` event name. Include the following event properties:
+
+   <!-- -->
+
+   * `exp_variant_string`: Format this string as `configcat-<feature_flag_key>-<feature_flag_value>`. For example, `configcat-isMyAwesomeFeatureEnabled-true`.
+   * `variant_id`: The evaluated feature flag's value or the variationId from the FlagEvaluated hook's EvaluationDetails.
+   * `user_id` (optional): If tracking in a backend component and utilizing the user\_id feature in Google Analytics, include this property to identify your user. Use the Identifier property from the User object in the FlagEvaluated hook, or another value that best describes your user.
+
+note
+
+For Text feature flags with lengthy values (e.g., JSON), send the `variationId` instead of the `value` as the `exp_variant_string` to Google Analytics. The `variationId` is a hashed version of the feature flag value, accessible on the ConfigCat Dashboard by enabling the *Show VariationIDs to support A/B testing* setting. Learn more [here](https://app.configcat.com/product/preferences).
+
+4. **Deploy your application** and wait for feature flag evaluations to occur. This process might take 1-2 days for the `experience_impression` events to populate in Google Analytics.
+
+5. **Define an audience** in Google Analytics using the `exp_variant_string` parameter with the same values you used in your events (e.g. `configcat-isMyAwesomeFeatureEnabled-true`) by following the guide [here](https://support.google.com/analytics/answer/9267572). This allows you to leverage feature flag evaluation events effectively.
+
+### Example audiences reports[​](#example-audiences-reports "Direct link to Example audiences reports")
+
+![Google Analytics Audience report](/docs/assets/googleanalytics/audiences.png)
+
+### Useful resources[​](#useful-resources "Direct link to Useful resources")
+
+* [A/B Testing with ConfigCat and Google Analytics - Blog post](https://configcat.com/blog/2024/09/20/ab-testing-configcat-google-analytics/)
+* [A/B Testing with ConfigCat and Google Analytics - Sample app](https://github.com/configcat-labs/configcat-google-analytics-integration-sample)
+* [Creating Audiences in Google Analytics - Google documentation](https://support.google.com/analytics/answer/9267572)

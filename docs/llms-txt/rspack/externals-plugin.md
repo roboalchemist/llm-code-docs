@@ -1,0 +1,96 @@
+# Source: https://rspack.dev/plugins/webpack/externals-plugin.md
+
+# ExternalsPlugin
+
+This plugin allows you to specify external dependencies that should not be bundled into the output files. This is particularly useful for libraries that are already available globally or managed by other scripts.
+The [`externalsType`](/config/externals.md#externalstype) and [`externals`](/config/externals.md#externals-1) configurations leverage the plugin internally. Therefore, you can utilize the respective functionality directly through these configuration options without needing to use the plugin separately.
+
+```js
+new rspack.ExternalsPlugin(type, externals);
+```
+
+## Options
+
+### type
+
+**Type:**
+
+```ts
+type ExternalsType =
+  | 'var'
+  | 'module'
+  | 'assign'
+  | 'this'
+  | 'window'
+  | 'self'
+  | 'global'
+  | 'commonjs'
+  | 'commonjs2'
+  | 'commonjs-module'
+  | 'commonjs-static'
+  | 'amd'
+  | 'amd-require'
+  | 'umd'
+  | 'umd2'
+  | 'jsonp'
+  | 'system'
+  | 'promise'
+  | 'import'
+  | 'script'
+  | 'node-commonjs';
+```
+
+Specifies the default type for the `externals`.
+
+For more details, refer to [externalsType](/config/externals.md#externalstype).
+
+### externals
+
+**Type:**
+
+```ts
+type Externals = ExternalItem[] | ExternalItem;
+
+type ExternalItem =
+  | RegExp
+  | string
+  | (
+      | ((
+          data: ExternalItemFunctionData,
+          callback: (err?: Error | null, result?: ExternalItemValue) => void,
+        ) => void)
+      | ((data: ExternalItemFunctionData) => Promise<ExternalItemValue>)
+    );
+
+type ExternalItemValue =
+  | string[]
+  | boolean
+  | string
+  | {
+      [k: string]: any;
+    };
+
+type ExternalItemFunctionData = {
+  context?: string;
+  contextInfo?: ModuleFactoryCreateDataContextInfo;
+  getResolve?: (
+    options?: ResolveOptions,
+  ) =>
+    | ((
+        context: string,
+        request: string,
+        callback: (err?: Error, result?: string) => void,
+      ) => void)
+    | ((context: string, request: string) => Promise<string>);
+  request?: string;
+};
+
+type ModuleFactoryCreateDataContextInfo = {
+  issuer: string;
+  compiler: string;
+};
+```
+
+**Prevent bundling** of certain `import`ed packages and instead retrieve these *external dependencies* at runtime.
+
+For more details, refer to [externals](/config/externals.md#externals-1).

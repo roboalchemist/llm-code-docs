@@ -1,0 +1,232 @@
+# Source: https://react.i18next.com/getting-started.md
+
+# Getting started
+
+## Installation
+
+### Install using npm
+
+react-i18next can be added to your project using **npm**:
+
+```bash
+# npm
+$ npm install react-i18next i18next --save
+```
+
+In the `/dist` folder you find specific builds for `commonjs`, `es6 modules`,...
+
+{% hint style="info" %}
+The module is optimized to load by webpack, rollup, ... The correct entry points are already configured in the package.json. There should be no extra setup needed to get the best build option.
+{% endhint %}
+
+### Load from CDN
+
+You can also add a script tag to load react-i18next from one of the CDNs providing it, eg.:
+
+**unpkg.com**
+
+* <https://unpkg.com/react-i18next/react-i18next.js>
+* <https://unpkg.com/react-i18next/react-i18next.min.js>
+
+## Translation "how to"
+
+{% hint style="info" %}
+You should read the [i18next](https://www.i18next.com) documentation at some point as we do not repeat all the [configuration options](https://www.i18next.com/overview/configuration-options) and translation functionalities like [plurals](https://www.i18next.com/translation-function/plurals), [formatting](https://www.i18next.com/translation-function/formatting), [interpolation](https://www.i18next.com/translation-function/interpolation), ... here.
+{% endhint %}
+
+> **Official CLI**
+>
+> ⭐ [i18next-cli](https://github.com/i18next/i18next-cli)
+>
+> The official, high-performance, all-in-one command-line tool for i18next. It handles key extraction, code linting, locale syncing, and type generation. It's built with modern technologies for maximum speed and accuracy. This is the recommended tool for all i18next projects.
+
+**You have two options to translate your content:**
+
+### Simple content
+
+Simple content can easily be translated using the provided `t` function.
+
+**Before:**
+
+```jsx
+<div>Just simple content</div>
+```
+
+**After:**
+
+{% tabs %}
+{% tab title="JavaScript" %}
+
+```jsx
+<div>{t('simpleContent')}</div>
+```
+
+{% endtab %}
+
+{% tab title="TypeScript" %}
+
+```tsx
+<div>{t($ => $.simpleContent)}</div>
+```
+
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+You will get the t function by using the [useTranslation](https://react.i18next.com/latest/usetranslation-hook) hook or the [withTranslation](https://react.i18next.com/latest/withtranslation-hoc) hoc.
+{% endhint %}
+
+### JSX tree
+
+Sometimes you might want to include html formatting or components like links into your translations. (Always try to get the best result for your translators - the final string to translate should be a complete sentence).
+
+**Before:** Your react code would have looked something like:
+
+```jsx
+<div>
+  Hello <strong title="this is your name">{name}</strong>, you have {count} unread message(s). <Link to="/msgs">Go to messages</Link>.
+</div>
+```
+
+**After:** With the trans component just change it to:
+
+```jsx
+<Trans i18nKey="userMessagesUnread" count={count}>
+  Hello <strong title={t('nameTitle')}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
+</Trans>
+```
+
+{% tabs %}
+{% tab title="JavaScript" %}
+
+```
+<Trans i18nKey="userMessagesUnread" count={count}>
+  Hello <strong title={t('nameTitle')}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
+</Trans>
+```
+
+{% endtab %}
+
+{% tab title="TypeScript" %}
+
+```
+<Trans i18nKey="userMessagesUnread" count={count}>
+  Hello <strong title={t($ => $.nameTitle)}>{{name}}</strong>, you have {{count}} unread message. <Link to="/msgs">Go to messages</Link>.
+</Trans>
+```
+
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+Learn more about the Trans Component [here](https://react.i18next.com/latest/trans-component)
+{% endhint %}
+
+## Basic sample
+
+This basic sample tries to add i18n in a one file sample.
+
+{% tabs %}
+{% tab title="JavaScript" %}
+
+```jsx
+import React from "react";
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: {
+          "Welcome to React": "Welcome to React and react-i18next"
+        }
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+
+function App() {
+  const { t } = useTranslation();
+
+  return <h2>{t('Welcome to React')}</h2>;
+}
+
+// append app to dom
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <App />
+);
+```
+
+{% endtab %}
+
+{% tab title="TypeScript" %}
+
+```tsx
+import React from "react";
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: {
+          "Welcome to React": "Welcome to React and react-i18next"
+        }
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+
+function App() {
+  const { t } = useTranslation();
+
+  return <h2>{t($ => $['Welcome to React'])}</h2>;
+}
+
+// append app to dom
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <App />
+);
+```
+
+{% endtab %}
+{% endtabs %}
+
+#### RESULT:
+
+![Preview of content](https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2Fgit-blob-2339aca23da3ae3e18d4a101235e3b6cce111ad3%2FScreen%20Shot%202018-09-30%20at%2016.58.18.png?alt=media)
+
+{% hint style="info" %}
+This sample while very simple does come with some [drawbacks](https://react.i18next.com/guides/the-drawbacks-of-other-i18n-solutions) to getting the full potential from using react-i18next you should read the extended [step by step guide](https://react.i18next.com/latest/using-with-hooks).
+{% endhint %}
+
+### Do you like to read a more complete step by step tutorial?
+
+{% hint style="success" %}
+[Here](https://locize.com/blog/react-i18next/) you'll find a simple tutorial on how to best use react-i18next.\
+Some basics of i18next and some cool possibilities on how to optimize your localization workflow.[\ <img src="https://4236364459-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-L9iS6WpW81N7RGRTQ-K%2Fuploads%2Fgit-blob-f210314bc6f460e15c18cd3c5c132fff8c2ad2b8%2Ftitle%20width.jpg?alt=media" alt="" data-size="original">](https://locize.com/blog/react-i18next/)
+{% endhint %}

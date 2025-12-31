@@ -1,0 +1,87 @@
+# Source: https://dub.co/docs/sdks/typescript.md
+
+# TypeScript SDK
+
+> Learn how to integrate Dub with TypeScript.
+
+## Installation
+
+<CodeGroup>
+  ```bash npm theme={null}
+  npm install dub
+  ```
+
+  ```bash pnpm theme={null}
+  pnpm add dub
+  ```
+
+  ```bash yarn theme={null}
+  yarn add dub zod # zod is a peer dependency
+  ```
+</CodeGroup>
+
+## Basic Usage
+
+Here's how you can use the Dub TypeScript SDK to create a link and retrieve click analytics in timeseries format for it:
+
+```typescript  theme={null}
+import { Dub } from "dub";
+
+// Initialize the Dub SDK with your API key
+const dub = new Dub({
+  token: process.env.DUB_API_KEY, // optional, defaults to DUB_API_KEY
+});
+
+// Create a new link
+const link = await dub.links.create({
+  url: "https://google.com",
+});
+
+console.log(link.shortLink); // e.g. https://dub.sh/abc123
+
+// Get analytics for the link
+const analytics = await dub.analytics.retrieve({
+  link_id: link.id,
+  groupBy: "timeseries",
+  interval: "30d",
+});
+
+console.log(analytics); // e.g. [{ start: "2024-01-01", clicks: 100 }]
+```
+
+For more usage examples:
+
+1. [Organizing links by external ID, tenant ID, tags, etc](/concepts/links/organization)
+2. [Bulk link operations (create, update, delete)](/concepts/links/bulk-operations)
+3. [Retrieving link analytics](/concepts/analytics)
+
+## Frameworks
+
+You can use the Dub TypeScript SDK with any JavaScript framework:
+
+1. [Usage with Next.js](/sdks/quickstart/nextjs)
+2. [Usage with Remix](/sdks/quickstart/remix)
+3. [Usage with Nuxt](/sdks/quickstart/nuxt)
+4. [Usage with Express](/sdks/quickstart/express)
+
+If you're using a different JavaScript framework, you can refer to the [TypeScript SDK quickstart](/sdks/quickstart/typescript) for a basic example.
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="NPM Package" icon="npm" href="https://d.to/ts/sdk">
+    Download and install the Dub TypeScript SDK on NPM
+  </Card>
+
+  <Card title="SDK Reference" icon="book" iconType="solid" href="https://github.com/dubinc/dub-ts/blob/main/README.md">
+    View the complete SDK reference documentation
+  </Card>
+
+  <Card title="Examples" icon="github" href="https://github.com/dubinc/examples/tree/main/typescript">
+    Quickstart examples with the TypeScript SDK
+  </Card>
+
+  <Card title="Source Code" icon="github" href="https://github.com/dubinc/dub-ts">
+    View the complete source code for the Dub TypeScript SDK
+  </Card>
+</CardGroup>

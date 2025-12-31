@@ -1,0 +1,11 @@
+# Source: https://rspack.dev/misc/team/emeriti.md
+
+import { RandomContributorsList } from '@components/RandomMemberList.tsx';
+
+# Emeriti members
+
+We'd like to recognize a few people who have made significant contributions to Rspack and its ecosystem in the past and have helped maintain them over the years.
+
+## Members
+
+<RandomContributorsList />

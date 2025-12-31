@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/llm/together.md
+
+# Together AI
+
+> LLM service implementation using Together AI's API with OpenAI-compatible interface
+
+## Overview
+
+`TogetherLLMService` provides access to Together AI's language models, including Meta's Llama 3.1 and 3.2 models, through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with optimized open-source model hosting.
+
+<CardGroup cols={2}>
+  <Card title="Together AI LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.together.llm.html">
+    Pipecat's API methods for Together AI integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14c-function-calling-together.py">
+    Complete example with function calling
+  </Card>
+
+  <Card title="Together AI Documentation" icon="book" href="https://docs.together.ai/reference/chat-completions-1">
+    Official Together AI API documentation and features
+  </Card>
+
+  <Card title="Together AI Platform" icon="microphone" href="https://together.ai/">
+    Access open-source models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Together AI services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[together]"
+```
+
+## Prerequisites
+
+### Together AI Account Setup
+
+Before using Together AI LLM services, you need:
+
+1. **Together AI Account**: Sign up at [Together AI](https://together.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Model Selection**: Choose from available open-source models (Llama, Mistral, etc.)
+
+### Required Environment Variables
+
+* `TOGETHER_API_KEY`: Your Together AI API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

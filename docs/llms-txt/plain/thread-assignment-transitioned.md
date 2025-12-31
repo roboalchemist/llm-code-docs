@@ -1,0 +1,13 @@
+# Source: https://www.plain.com/docs/webhooks/thread-assignment-transitioned.md
+
+# Thread assignment transitioned
+
+This event is fired when the assignee of a thread changes or a thread is unassigned.
+
+## Schema
+
+[**View JSON Schema →**](https://core-api.uk.plain.com/webhooks/schema/latest.json)
+
+Example:
+
+<Snippet file="webhooks/thread-assignment-transitioned.mdx" />

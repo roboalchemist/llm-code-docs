@@ -1,0 +1,186 @@
+# Source: https://getlago.com/docs/api-reference/webhooks/format---signature.md
+
+# Format & Signature
+
+> Webhooks are HTTP notifications sent from Lago to your application.
+
+The messages are sent as a `POST` to the URL defined in the settings of your
+Lago workspace.
+
+If you return an error (other than a 2xx's HTTP response) or if there is a network issue,
+the webhook will be sent again. Lago will try to send the webhook 3 times.
+
+## Message format[](#message-format "Direct link to heading")
+
+`POST __WEBHOOK_URL__`
+
+```json  theme={"dark"}
+{
+  "webhook_type": "__TYPE__",
+  "object_type": "OBJECT_TYPE",
+  "__OBJECT__": {}
+}
+```
+
+## Unique Key[](#unique-key "Direct link to heading")
+
+Lago sends an idempotency key (unique identifier) in the HTTP headers named `X-Lago-Unique-Key`. This key can be used
+to ensure you process a webhook only once.
+
+## Signature[](#signature "Direct link to heading")
+
+Allong with the payload the message contains both `X-Lago-Signature` and `X-Lago-Signature-Algorithm` HTTP header.
+
+It is used to ensure the message is Coming from Lago and that the message has not been altered.
+
+To verify the signature, you must decode the signature and compare the result with the body of the webhook.
+
+You can choose between 2 differents signatures algorithm during your webhook endpoints creation, `hmac` or `jwt`.
+Please note that `jwt` is our original signature and is used by default.
+
+### JWT Signature
+
+#### 1. Retrieve the public key[](#1-retrieve-the-public-key "Direct link to heading")
+
+<CodeGroup>
+  ```py Python theme={"dark"}
+  from lago_python_client import Client
+
+  client = Client(api_key='__YOUR_API_KEY__')
+  webhooks_public_key = client.webhooks().public_key()
+  ```
+
+  ```js Node.js theme={"dark"}
+  import Client from "lago-nodejs-client";
+
+  let client = new Client("__YOUR_API_KEY__");
+  let webhooksPublicKey = client.webhookPublicKey();
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'net/http'
+
+  api_key = "__YOUR_API_KEY__"
+  uri = URI('https://api.getlago.com/api/v1/webhooks/public_key')
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+
+  response = http.send_request(
+    'GET',
+    uri.request_uri,
+    '',
+    { 'Authorization' => "Bearer #{api_key}" }
+  )
+
+  webhooks_public_key = response.body
+  ```
+</CodeGroup>
+
+<br />
+
+<Tip>
+  You should persist the public key on your side to avoid querying it for each
+  webhook.
+</Tip>
+
+#### 2. Decode and validate the signature[](#2-decode-and-validate-the-signature "Direct link to heading")
+
+<CodeGroup>
+  ```py Python theme={"dark"}
+  import jwt
+
+  decoded_signature = jwt.decode(
+    request.headers.get('X-Lago-Signature'),
+    webhooks_public_key,
+    algorithms=['RS256'],
+    issuer="https://api.getlago.com"
+  )
+
+  decoded_signature['data'] == request.body
+  ```
+
+  ```js Node.js theme={"dark"}
+  import jwt from "jsonwebtoken";
+
+  let token = request.header("X-Lago-Signature");
+
+  jwt.verify(
+    token,
+    webhooksPublicKey,
+    {
+      algorithms: ["RS256"],
+      issuer: "https://api.getlago.com",
+    },
+    function (err, payload) {
+      payload === request.body;
+    }
+  );
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'openssl'
+  require 'jwt'
+
+  decoded_signature = JWT.decode(
+    request.headers['X-Lago-Signature'],
+    OpenSSL::PKey::RSA.new(Base64.decode64(webhooks_public_key)),
+    true,
+    {
+      algorithm: 'RS256',
+      iss: "https://api.getlago.com",
+      verify_iss: true,
+    },
+  ).first
+
+  decoded_signature['data'] == request.body
+  ```
+</CodeGroup>
+
+### HMAC Signature
+
+#### Decode and validate the signature
+
+<CodeGroup>
+  ```py Python theme={"dark"}
+  import hmac
+  import base64
+
+  calc_sig = hmac.new(LAGO_HMAC_KEY, request.body.encode(), 'sha256').digest()
+  base64_sig = base64.b64encode(calc_sig).decode()
+  request.headers.get('X-Lago-Signature') == base64_sig
+  ```
+
+  ```js Node.js theme={"dark"}
+  import crypto from 'crypto';
+
+  const signature = request.header('X-Lago-Signature')
+  const hmac = crypto.createHmac('sha256', 'YOUR_ORGANIZATION_HMAC_KEY')
+
+  hmac.update(request.body)
+
+  const encodedBody = hmac.digest().toString('base64')
+
+  signature == encodedBody
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'openssl'
+
+  signature =  request.headers['X-Lago-Signature']
+  hmac = OpenSSL::HMAC.digest('sha-256', 'YOUR_ORGANIZATION_HMAC_KEY', request.body)
+  base64_hmac = Base64.strict_encode64(hmac)
+
+  base64_hmac == signature
+  ```
+
+  ```php PHP theme={"dark"}
+  $signature = $_SERVER['X-Lago-Signature'];
+
+  $requestBody = file_get_contents('php://input');
+  $hmac = hash_hmac('sha256', $requestBody, 'YOUR_ORGANIZATION_HMAC_KEY', true);
+  $base64Signature = base64_encode($hmac);
+
+  $valid = hash_equals($signature, $base64Signature);
+  ```
+</CodeGroup>

@@ -1,0 +1,55 @@
+# Source: https://docs.pipecat.ai/server/services/video/heygen.md
+
+# HeyGen
+
+> AI avatar video generation service for creating interactive conversational avatars
+
+## Overview
+
+`HeyGenVideoService` integrates with HeyGen to create interactive AI-powered video avatars that respond naturally in real-time conversations. The service handles bidirectional audio/video streaming, avatar animations, voice activity detection, and conversation interruptions to deliver engaging conversational AI experiences with lifelike visual presence.
+
+<CardGroup cols={2}>
+  <Card title="HeyGen Video API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.heygen.video.html">
+    Pipecat's API methods for HeyGen video integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/43a-heygen-video-service.py">
+    Complete example with interactive avatar
+  </Card>
+
+  <Card title="HeyGen Documentation" icon="book" href="https://docs.heygen.com/reference/authentication">
+    Official HeyGen API documentation and guides
+  </Card>
+
+  <Card title="HeyGen Platform" icon="microphone" href="https://app.heygen.com">
+    Access interactive avatars and API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use HeyGen services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[heygen]"
+```
+
+## Prerequisites
+
+### HeyGen Account Setup
+
+Before using HeyGen video services, you need:
+
+1. **HeyGen Account**: Sign up at [HeyGen Platform](https://app.heygen.com)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Avatar Selection**: Choose from available interactive avatars
+4. **Streaming Setup**: Configure real-time avatar streaming capabilities
+
+### Required Environment Variables
+
+* `HEYGEN_API_KEY`: Your HeyGen API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

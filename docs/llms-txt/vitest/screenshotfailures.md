@@ -1,0 +1,12 @@
+# Source: https://vitest.dev/config/browser/screenshotfailures.md
+
+---
+url: /config/browser/screenshotfailures.md
+---
+
+# browser.screenshotFailures
+
+* **Type:** `boolean`
+* **Default:** `!browser.ui`
+
+Should Vitest take screenshots if the test fails.

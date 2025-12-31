@@ -1,0 +1,74 @@
+# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill.md
+
+# Using Javascript and Code
+
+- [Quick overview](/user-guide/how-to/build-skills/create-skill/customize-your-skill/quick-overview.md): Provides a quick glance of the key concepts, objects, functions, and properties used for customizations
+- [Built-in functions window](/user-guide/how-to/build-skills/create-skill/customize-your-skill/built-in-functions-window.md)
+- [How-to](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to.md): Common scenarios for customizing your skill using JS programming
+- [Use context](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context.md)
+- [Get user details](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/to-get-user-details.md)
+- [Get last message](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-last-message.md)
+- [Get slot details](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-domain-entity-details.md)
+- [Get environment variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-environment-variables.md)
+- [Create context variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/create-custom-variables.md)
+- [Set user property](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/set-user-property.md)
+- [Create custom user properties](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/create-custom-user-properties.md)
+- [Detect user tone and sentiment](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-user-tone-and-sentiment.md)
+- [Detect user device](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-channel.md)
+- [Detect user channel](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/detect-user-channel.md)
+- [Switch user's language](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/switch-users-language.md)
+- [Transfer to live agent](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/transfer-to-live-agent.md)
+- [Get skill conversation insights](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/get-insights.md)
+- [Show ambiguous intents](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/use-context/show-ambiguous-intents.md)
+- [Use storage](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/using-storage.md)
+- [Control skill flow](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/controlling-skill-flow.md)
+- [Add tags (JS)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-tags-js.md)
+- [Add feedback (JS)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/add-feedback.md)
+- [Send SMS - SMS.send](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/sending-notifications.md)
+- [Send Email - Email.send](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/send-email-email.send.md)
+- [Forward call (C-IVR channel)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/forward-call-c-ivr-channel.md)
+- [Hangup call (C-IVR channel)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/hangup-call-c-ivr-channel.md)
+- [Build dynamic skill response](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response.md): Add customized input cards, carousel, list-view, quick reply
+- [Card response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card.md)
+- [Single line text](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/single-line-text.md)
+- [Multi-line text](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/multi-line-text.md)
+- [Date and time](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/date-and-time.md)
+- [Select (PickList)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/select-picklist.md)
+- [File upload](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/file-upload.md)
+- [Polls](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/polls.md)
+- [Checklist](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/checklist.md)
+- [Rating](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/rating.md)
+- [Card links](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/card-links.md)
+- [Card images](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/card/card-images.md)
+- [Carousel response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/carousel.md)
+- [ListView response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/list-view.md)
+- [Quick Reply response (Javascript)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/quick-reply.md)
+- [Delay](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/delay.md)
+- [Graphs & Charts](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/build-dynamic-skill-response/graphs-and-charts.md)
+- [Create custom HTML web views](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/create-custom-html-web-views.md): Create custom HTML web views on Web Channel and Facebook for the skill responses configured using card, carousel, or list view
+- [Define custom intents](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/define-matching-rules-using-custom-intents.md): Define your own matching rules using custom intents in nodes using JS
+- [Integrate](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1.md)
+- [REST and SOAP API](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1/rest-and-soap-api.md)
+- [Hybrid SDK](/user-guide/how-to/build-skills/create-skill/customize-your-skill/how-to/integrate-with-api-1/hybrid-sdk.md)
+- [Test customizations](/user-guide/how-to/build-skills/create-skill/customize-your-skill/test-your-skill.md): Describes different methods to test the skill after customizations
+- [Debug JS code](/user-guide/how-to/build-skills/create-skill/customize-your-skill/troubleshooting-tips.md): Provides useful tips in cases where you are unable to receive the expected results
+- [Coding best practices](/user-guide/how-to/build-skills/create-skill/customize-your-skill/best-practices.md): Dos and Don’ts of JS programming during skill flow customizations.
+- [Reference library](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library.md): Commonly used objects, functions, and attributes during agent flow customizations
+- [Context](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context.md): Encapsulates various details of a user’s interaction with the agent at a particular context
+- [variables](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/variables.md)
+- [user](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/user.md)
+- [live\_agent\_user](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/user-1.md)
+- [insights](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/insights.md)
+- [history](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/context/history.md)
+- [User.setProperty](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperty.md): Sets the user property of the specified key to the indicated value
+- [User.setProperties](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.setproperties.md): Sets the user property of the specified key to the indicated value
+- [User.removeProperty](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/user.removeproperty.md)
+- [Storage](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/storage.md): Stores data either for a global session or for a specific user session.
+- [Flow control](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/flow-control.md): Customize the navigation of the agent flow using JS functions
+- [Notifications](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/notifications.md): Allows agent to send SMS and email notifications to the users
+- [Agent commands](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/skill-commands.md): Perform actions such as clear, reset, and transfer (to name a few) during a user’s interacting with the agent
+- [Language.switch](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/language.switch.md): Switch language to anyone of the languages added to the agent.
+- [Agent.transfer](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/agent.transfer.md): Allows agent to switch to a live agent, if live agent option is enabled.
+- [Agent.setContext](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/agent.setcontext.md): Allows agent to set context before transferring the request. Used in Skill-based routing
+- [Advance JS libraries](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/advanced-js-libraries.md): List of supported Nodejs libraries with version no.
+- [SmartCall (C-IVR)](/user-guide/how-to/build-skills/create-skill/customize-your-skill/reference-library/smartcall-c-ivr.md)

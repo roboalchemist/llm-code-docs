@@ -1,0 +1,79 @@
+# Source: https://docs.giselles.ai/en/glossary/github-vector-store-node.md
+
+# GitHub Vector Store Node
+
+> Learn how the GitHub Vector Store Node vectorizes your GitHub repositories, creating a searchable knowledge base for your AI workflows in Giselle.
+
+Learn how the GitHub Vector Store Node in Giselle vectorizes your GitHub repositories, creating a searchable knowledge base that can be queried within your AI workflows.
+
+## GitHub Vector Store Node in Giselle
+
+The **GitHub Vector Store Node** is a specialized "Source" node that creates a powerful, searchable database from the contents of a GitHub repository. It works by vectorizing the code and documents within the repository, allowing AI models to perform semantic searches and retrieve relevant context.
+
+This process uses advanced embedding models to convert your repository's content into vector embeddings. You can select from multiple embedding models, including OpenAI's [`text-embedding-3-small`](https://platform.openai.com/docs/models/text-embedding-3-small) and [`text-embedding-3-large`](https://platform.openai.com/docs/models/text-embedding-3-large), as well as Google's [`gemini-embedding-001`](https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/gemini-embedding-001?hl=en). These vectorized data are then stored securely in Giselle's dedicated Vector Store.
+
+To use this feature, the [Giselle GitHub App](https://github.com/apps/giselles-ai) must be installed on the target GitHub repository.
+
+### Setting up a GitHub Vector Store Node:
+
+1. **Add the Node**:
+   * From the toolbar at the bottom of the canvas, click the **Source** icon (a folder with a link symbol).
+   * Select **GitHub Vector Store** from the pop-up menu to add the node to your workspace.
+
+2. **Configure the Repository**:
+   * When first added, the node will display a "REQUIRES SETUP" status.
+   * Select the node to open its configuration panel on the right.
+   * Click the **Select a repository** dropdown menu. This list will only show repositories that have the Giselle GitHub App installed. Choose the repository you want to use as a knowledge source (e.g., `giselles-ai/docs`).
+
+3. **Choose the Content Type**:
+   * After selecting a repository, you will need to specify which type of content to vectorize. The available options are:
+   * **Code**: Vectorizes the source code and documents from the repository's default branch. This is useful for creating a knowledge base from your codebase.
+   * **Issues**: Vectorizes the content from issues, including descriptions, comments, and discussions. This is ideal for analyzing problem patterns or summarizing bug tracking.
+   * **Pull Requests**: Vectorizes the content from pull requests, including descriptions, comments, and discussions. This is ideal for analyzing development patterns or summarizing changes.
+   * Select the radio button corresponding to the content you wish to use.
+
+4. **Finalize Setup**:
+   * Once the repository and content type are selected, the node on the canvas will update to show the name of the configured repository. The vectorization process for this repository will be initiated or updated in the background.
+
+### Managing Your Vector Stores
+
+You can add, configure, and remove the GitHub repositories that are processed by the GitHub Vector Store Node from your team's settings page.
+
+* Navigate to **Settings > Team > Vector Stores** in your Giselle account.
+* Alternatively, you can click the **Set Up GitHub Vector Store** link directly from the node's configuration panel.
+* This page allows you to manage which repositories are indexed and available for your workflows. You can access it here: [https://studio.giselles.ai/settings/team/vector-stores](https://studio.giselles.ai/settings/team/vector-stores).
+
+#### Sources to Ingest
+
+When registering a new repository, you can select which types of content to ingest. Giselle currently supports three sources:
+
+* **Code**: Ingests the source code files from the repository. This source is required and cannot be disabled.
+* **Issues**: Ingests the descriptions, comments, and discussions from issues. This is an optional source that can be enabled to provide additional context to your AI workflows.
+* **Pull Requests**: Ingests the content and discussions from merged pull requests. This is an optional source that can be enabled to provide additional context to your AI workflows.
+
+#### Embedding Models
+
+When setting up a GitHub Vector Store, you can select from multiple embedding models for indexing your repository content. You must select at least one embedding model. Available options include:
+
+* **OpenAI text-embedding-3-small**: Provider: OpenAI • Dimensions: 1536 - A powerful and efficient model suitable for most use cases.
+* **OpenAI text-embedding-3-large**: Provider: OpenAI • Dimensions: 3072 - A larger model with higher precision for complex semantic understanding.
+* **Google gemini-embedding-001**: Provider: Google • Dimensions: 3072 - Google's embedding model offering alternative semantic representation capabilities.
+
+The choice of embedding model affects how your content is vectorized and can impact search quality and performance. You can select multiple models to leverage different semantic representation capabilities for your vector store.
+
+### Rate Limits and Considerations
+
+When using the GitHub Vector Store Node, please be aware of GitHub API rate limits. Giselle's GitHub Vector Store uses [GitHub App Installation](https://docs.github.com/ja/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations) for GitHub API access, which has a rate limit of approximately 5,000 requests per hour. You may encounter errors when working with large-scale projects. If this occurs, please wait some time before trying again.
+
+For large repositories or frequent updates, you may experience rate limiting during the vectorization process. If you encounter errors, simply wait and retry after the rate limit window resets.
+
+### Usage in Workflows
+
+The GitHub Vector Store Node is designed to be used in combination with a **Query Node**. It acts as the knowledge base that the Query Node searches through.
+
+* **Connect the Output**: The "Output" of the GitHub Vector Store Node should be connected to the input of a Query Node.
+* **Perform a Search**: The Query Node can then take a user's question or a dynamic input, search the vectorized repository content for the most relevant information, and pass that information to subsequent nodes (like a Generator Node) for processing, analysis, or summarization.
+
+### Output of the Node
+
+The GitHub Vector Store Node's **output** is a reference to the vectorized data of the selected repository. This output provides the necessary connection for other nodes, like the Query Node, to access and search the repository's content.

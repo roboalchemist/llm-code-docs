@@ -1,0 +1,45 @@
+# Source: https://docs.hypermode.com/graphs/manage-data.md
+
+# Manage Data
+
+> Query, mutate, and bulk manage data from your graph
+
+<Info>
+  Graphs on Hypermode is currently in developer preview. New features are
+  shipping weekly.
+</Info>
+
+Querying (reading) and mutating (writing) data to your graph is simple using an
+[IDE or SDK](./connect). For bulk operations, there are tools for importing,
+exporting, and dropping data.
+
+## Import data
+
+Dgraph provides multiple tools for importing data to your graph, whether an
+[initial import to an empty graph](/dgraph/admin/bulk-loader) or an
+[incremental import](/dgraph/admin/live-loader).
+
+You can also [load CSV-formatted data](/dgraph/admin/import-csv).
+
+## Export data
+
+If you need to export data from your graph, please reach out to support and we
+can assist.
+
+<Note>Self-service for exporting data is coming soon.</Note>
+
+## Drop data
+
+Dropping data from your graph is a permanent action and can't be undone. To drop
+data from your graph, you can use the `/alter` endpoint.
+
+To drop all data from your graph, while maintaining the schema:
+
+```sh
+curl -X POST https://<my-database>.hypermode.host/dgraph/alter \
+    --header "Authorization: Bearer $BEARER_TOKEN" \
+    --header "Content-Type: application/json"  \
+    --data '{"drop_op": "DATA"}'
+```
+
+For more options, see [Dgraph's documentation](/dgraph/admin/drop-data).

@@ -1,0 +1,29 @@
+# Source: https://mintlify.com/docs/deploy/docs-subpath.md
+
+# Overview
+
+> Host your documentation at the `/docs` subpath on your domain.
+
+Host your documentation at a subpath like `your-domain.com/docs` to keep your docs on your main domain, which makes them easier to find and maintains a cohesive brand experience for your users.
+
+## Set up by hosting provider
+
+Setting up a `/docs` subpath varies depending on your hosting provider. Choose your hosting provider and follow the setup instructions.
+
+* [Cloudflare](/deploy/cloudflare): Set up Cloudflare Workers for your domain to serve your documentation at the `/docs` subpath.
+* [AWS Route 53 and CloudFront](/deploy/route53-cloudfront): Deploy your documentation at the `/docs` subpath using AWS with Route 53 DNS and CloudFront CDN.
+* [Vercel](/deploy/vercel#host-from-docs) - Use rewrites to deploy your documentation at the `/docs` subpath.
+* [Custom reverse proxy](/deploy/reverse-proxy) - For other hosting platforms, set up a reverse proxy to deploy your documentation at the `/docs` subpath.
+
+### Additional configuration for strict security policies
+
+If you proxy all traffic on your custom domain, you may need to configure [headers](/deploy/csp-configuration) added by your proxy or firewalls to ensure that your documentation is served correctly.
+
+## Custom subpaths
+
+You can host your documentation at any subpath (for example, `/help` or `/guides`). Follow the setup instructions for your hosting provider and configure the subpath according to your needs.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

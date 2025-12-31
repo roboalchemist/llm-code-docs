@@ -1,0 +1,13 @@
+# Source: https://www.plain.com/docs/webhooks/thread-field-deleted.md
+
+# Thread Field deleted
+
+This event is fired when a thread field is deleted in your workspace.
+
+## Schema
+
+[**View JSON Schema →**](https://core-api.uk.plain.com/webhooks/schema/latest.json)
+
+Example:
+
+<Snippet file="webhooks/thread-field-deleted.mdx" />

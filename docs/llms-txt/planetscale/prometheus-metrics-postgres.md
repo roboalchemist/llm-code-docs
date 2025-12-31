@@ -1,0 +1,95 @@
+# Source: https://planetscale.com/docs/postgres/monitoring/prometheus-metrics-postgres.md
+
+# Prometheus metrics for PlanetScale Postgres
+
+> PlanetScale Postgres exposes a Prometheus-compatible endpoint per-branch that allows you to scrape metrics for your database.
+
+## Overview
+
+See our [Prometheus integration](/docs/vitess/integrations/prometheus) documentation for how to set Prometheus up to automatically discover and scrape metrics for your database branches.
+
+If you're using Datadog, see our [Datadog tutorial](/docs/postgres/monitoring/prometheus-metrics-datadog-postgres) for how to setup your Datadog agent to scrape metrics for your branch.
+
+## Metrics
+
+PlanetScale Postgres emits the following metrics to be scraped.
+
+## Database Metrics
+
+| **Name & Description**                                                                                             | **Type** | **Tags**                                                                                                                                                   |
+| :----------------------------------------------------------------------------------------------------------------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **planetscale\_postgres\_connection\_state**  The count and state of Postgres connections                          | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_connection\_state, planetscale\_role, planetscale\_cell, planetscale\_component |
+| **planetscale\_postgres\_wal\_archiver\_succeeded\_count**  The count of successfully archived WALs                | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_wal\_archiver\_failed\_count**  The count of unsuccessfully archived WALs                 | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_wal\_archiver\_last\_age\_succeeded**  The age of the last successfully archived WAL      | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_wal\_size\_bytes**  The cumulative disk size of WALs waiting to be archived               | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_settings\_max\_connections**  The current value of the max\_connections setting           | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_settings\_max\_wal\_size\_bytes**  The current value of the max\_wal\_size\_bytes setting | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_replica\_lag\_seconds**  Replica lag in fine-grained seconds from Postgres                | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                 |
+| **planetscale\_postgres\_locks**  Count of current lock modes                                                      | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_lock\_mode, planetscale\_role, planetscale\_cell, planetscale\_component        |
+| **planetscale\_postgres\_database\_xact\_commit\_total**  Total committed transactions on Postgres databases       | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_database\_name, planetscale\_role, planetscale\_cell, planetscale\_component    |
+
+## Edge Metrics
+
+| **Name & Description**                                                                                                                            | **Type** | **Tags**                                                                                                       |
+| :------------------------------------------------------------------------------------------------------------------------------------------------ | :------- | :------------------------------------------------------------------------------------------------------------- |
+| **planetscale\_edge\_postgres\_active\_connections**  The number of active Postgres and PgBouncer connections to the branch                       | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_port, planetscale\_region                             |
+| **planetscale\_edge\_postgres\_connection\_drops\_total**  The total number of Postgres and PgBouncer connections that have been dropped          | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_port, planetscale\_region                             |
+| **planetscale\_edge\_postgres\_connection\_errors\_total**  The total number of Postgres and PgBouncer connections that have resulted in an error | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_port, planetscale\_region                             |
+| **planetscale\_edge\_postgres\_bytes\_sent\_total**  The total number of Postgres and PgBouncer bytes sent                                        | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_port, planetscale\_connector\_id, planetscale\_region |
+| **planetscale\_edge\_postgres\_bytes\_received\_total**  The total number of Postgres and PgBouncer bytes received                                | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_port, planetscale\_connector\_id, planetscale\_region |
+
+## PgBouncer Metrics
+
+| **Name & Description**                                                                                                               | **Type** | **Tags**                                                                                                                                                                         |
+| :----------------------------------------------------------------------------------------------------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **planetscale\_pgbouncer\_total\_peers**  The total count of peered processes PgBouncer is running                                   | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pgbouncer\_cpu\_util\_per\_peer\_percentages**  CPU utilization percentage of PgBouncer peered processes              | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pgbouncer\_current\_connections**  The current count PgBouncer connections to Postgres                                | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pgbouncer\_current\_client\_connections**  The current count client connections to PgBouncer                          | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pgbouncer\_pools\_client**  The count and state of PgBouncer client connections                                       | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_pgbouncer\_pool, planetscale\_role, planetscale\_cell, planetscale\_component |
+| **planetscale\_pgbouncer\_pools\_client\_maxwait\_seconds**  How long the first client connection has waited to connect to PgBouncer | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pgbouncer\_pools\_server**  The count and state of PgBouncer server connections                                       | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_pgbouncer\_pool, planetscale\_role, planetscale\_cell, planetscale\_component |
+
+## Infrastructure Metrics
+
+| **Name & Description**                                                                               | **Type** | **Tags**                                                                                                                                                                         |
+| :--------------------------------------------------------------------------------------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **planetscale\_pods\_cpu\_util\_percentages**  CPU utilization percentage of database pods           | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_mem\_util\_percentages**  Memory utilization percentage of database pods        | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_iops\_total**  Total IOPS (Input/Output Operations Per Second) of database pods | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_volume\_available\_bytes**  Available storage space in bytes on Postgres volumes      | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                                       |
+| **planetscale\_volume\_capacity\_bytes**  Total storage capacity in bytes on Postgres volumes        | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_role, planetscale\_cell, planetscale\_component                                                       |
+| **planetscale\_pods\_mem\_rss\_bytes**  RSS memory usage in bytes of database pods                   | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_mem\_mmap\_bytes**  Memory-mapped file usage in bytes of database pods          | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_mem\_active\_cache\_bytes**  Active cache memory in bytes of database pods      | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_mem\_inactive\_cache\_bytes**  Inactive cache memory in bytes of database pods  | Gauge    | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component                               |
+| **planetscale\_pods\_container\_restarts\_total**  Total container restart events detected           | Counter  | cluster, planetscale\_database\_branch\_id, planetscale\_pod, planetscale\_container, planetscale\_role, planetscale\_cell, planetscale\_component, planetscale\_restart\_reason |
+
+## Tag Glossary
+
+* **cluster**: The PlanetScale cluster identifier
+* **planetscale\_access**: The access path on bytes sent/received metrics (**public** for traffic over the public internet, or **private** for traffic over AWS PrivateLink or GCP Private Service Connect)
+* **planetscale\_database\_branch\_id**: The unique identifier for the database branch
+* **planetscale\_pod**: The Kubernetes pod name
+* **planetscale\_container**: The container name (postgres, pgbouncer, walg-daemon)
+* **planetscale\_role**: The database role (primary, replica)
+* **planetscale\_cell**: The PlanetScale cell identifier
+* **planetscale\_component**: The PlanetScale component identifier
+* **planetscale\_connection\_state**: The state of database connections
+* **planetscale\_lock\_mode**: The PostgreSQL lock mode
+* **planetscale\_database\_name**: The PostgreSQL database name
+* **planetscale\_port**: The connection port number
+* **planetscale\_region**: The geographic region
+* **planetscale\_pgbouncer\_pool**: The PgBouncer connection pool identifier
+* **planetscale\_connector\_id**: The edge connector identifier
+* **planetscale\_restart\_reason**: The reason for container restart
+
+## Need help?
+
+Get help from [the PlanetScale Support team](https://support.planetscale.com/), or join our [GitHub discussion board](https://github.com/planetscale/discussion/discussions) to see how others are using PlanetScale.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://planetscale.com/llms.txt

@@ -1,0 +1,64 @@
+# Source: https://docs.pipecat.ai/server/services/stt/sambanova.md
+
+# Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
+
+# Source: https://docs.pipecat.ai/server/services/stt/sambanova.md
+
+# Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
+
+# Source: https://docs.pipecat.ai/server/services/stt/sambanova.md
+
+# Source: https://docs.pipecat.ai/server/services/llm/sambanova.md
+
+# SambaNova
+
+> LLM service implementation using SambaNova's API with OpenAI-compatible interface
+
+## Overview
+
+`SambaNovaLLMService` provides access to SambaNova's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with SambaNova's high-performance inference platform.
+
+<CardGroup cols={2}>
+  <Card title="SambaNova LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.sambanova.llm.html">
+    Pipecat's API methods for SambaNova integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14s-function-calling-sambanova.py">
+    Complete example with function calling
+  </Card>
+
+  <Card title="SambaNova Documentation" icon="book" href="https://docs.sambanova.ai/">
+    Official SambaNova API documentation and features
+  </Card>
+
+  <Card title="SambaNova Cloud" icon="microphone" href="https://cloud.sambanova.ai/?utm_source=pipecat&utm_medium=external&utm_campaign=cloud_signup">
+    Access models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use SambaNova services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[sambanova]"
+```
+
+## Prerequisites
+
+### SambaNova Account Setup
+
+Before using SambaNova LLM services, you need:
+
+1. **SambaNova Account**: Sign up at [SambaNova Cloud](https://cloud.sambanova.ai/?utm_source=pipecat\&utm_medium=external\&utm_campaign=cloud_signup)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Model Selection**: Choose from available high-performance models
+
+### Required Environment Variables
+
+* `SAMBANOVA_API_KEY`: Your SambaNova API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

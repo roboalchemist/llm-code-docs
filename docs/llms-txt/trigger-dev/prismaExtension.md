@@ -1,0 +1,180 @@
+# Source: https://trigger.dev/docs/config/extensions/prismaExtension.md
+
+# Prisma
+
+> Use the prismaExtension build extension to use Prisma with Trigger.dev
+
+If you are using Prisma, you should use the prisma build extension.
+
+* Automatically handles copying Prisma files to the build directory
+* Generates the Prisma client during the deploy process
+* Optionally will migrate the database during the deploy process
+* Support for TypedSQL and multiple schema files
+* You can use `prismaSchemaFolder` to specify just the directory containing your schema file, instead of the full path
+* You can add the extension twice if you have multiple separate schemas in the same project (example below)
+
+You can use it for a simple Prisma setup like this:
+
+```ts  theme={null}
+import { defineConfig } from "@trigger.dev/sdk";
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    extensions: [
+      prismaExtension({
+        version: "5.19.0", // optional, we'll automatically detect the version if not provided
+        schema: "prisma/schema.prisma",
+      }),
+    ],
+  },
+});
+```
+
+<Note>
+  This does not have any effect when running the `dev` command, only when running the `deploy`
+  command.
+</Note>
+
+### Migrations
+
+If you want to also run migrations during the build process, you can pass in the `migrate` option:
+
+```ts  theme={null}
+import { defineConfig } from "@trigger.dev/sdk";
+import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    extensions: [
+      prismaExtension({
+        schema: "prisma/schema.prisma",
+        migrate: true,
+        directUrlEnvVarName: "DATABASE_URL_UNPOOLED", // optional - the name of the environment variable that contains the direct database URL if you are using a direct database URL
+      }),
+    ],
+  },
+});
+```
+
+### clientGenerator
+
+If you have multiple `generator` statements defined in your schema file, you can pass in the `clientGenerator` option to specify the `prisma-client-js` generator, which will prevent other generators from being generated. Some examples where you may need to do this include when using the `prisma-kysely` or `prisma-json-types-generator` generators.
+
+<CodeGroup>
+  ```prisma schema.prisma theme={null}
+  datasource db {
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DATABASE_URL_UNPOOLED")
+  }
+
+  // We only want to generate the prisma-client-js generator
+  generator client {
+    provider        = "prisma-client-js"
+  }
+
+  generator kysely {
+    provider     = "prisma-kysely"
+    output       = "../../src/kysely"
+    enumFileName = "enums.ts"
+    fileName     = "types.ts"
+  }
+
+  generator json {
+    provider = "prisma-json-types-generator"
+  }
+  ```
+
+  ```ts trigger.config.ts theme={null}
+  import { defineConfig } from "@trigger.dev/sdk";
+  import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
+
+  export default defineConfig({
+    project: "<project ref>",
+    // Your other config settings...
+    build: {
+      extensions: [
+        prismaExtension({
+          schema: "prisma/schema.prisma",
+          clientGenerator: "client",
+        }),
+      ],
+    },
+  });
+  ```
+</CodeGroup>
+
+### TypedSQL
+
+If you are using [TypedSQL](https://www.prisma.io/typedsql), you'll need to enable it via the `typedSql` option:
+
+```ts  theme={null}
+import { defineConfig } from "@trigger.dev/sdk";
+
+export default defineConfig({
+  project: "<project ref>",
+  // Your other config settings...
+  build: {
+    extensions: [
+      prismaExtension({
+        schema: "prisma/schema.prisma",
+        typedSql: true,
+      }),
+    ],
+  },
+});
+```
+
+<Note>
+  The `prismaExtension` will inject the `DATABASE_URL` environment variable into the build process. Learn more about setting environment variables for deploying in our [Environment Variables](/deploy-environment-variables) guide.
+
+  These environment variables are only used during the build process and are not embedded in the final container image.
+
+  If you're experiencing database connection issues during deployment, you may need to add `?connection_limit=1` to your `DATABASE_URL` to limit the number of concurrent connections during the build process.
+</Note>
+
+### Using with Supabase Supavisor
+
+When using Prisma with Supabase's Supavisor pooler, use a pooled URL for Prisma Client and a session/direct URL for schema operations to avoid prepared statement conflicts. As of Feb 28, 2025, port 6543 runs Transaction Mode only; use port 5432 for Session Mode.
+
+```ts  theme={null}
+prismaExtension({
+  schema: "prisma/schema.prisma",
+  directUrlEnvVarName: "DATABASE_URL_UNPOOLED",
+}),
+```
+
+```bash  theme={null}
+# Environment variables
+# Pooled (Transaction Mode, port 6543)
+DATABASE_URL="postgresql://postgres.[PROJECT_REF]:<PASSWORD>@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
+# Session/Direct (used by Prisma schema engine, port 5432)
+DATABASE_URL_UNPOOLED="postgresql://postgres.[PROJECT_REF]:<PASSWORD>@aws-0-[REGION].pooler.supabase.com:5432/postgres"
+```
+
+<Note>
+  Use the pooled connection (port 6543, Transaction Mode) for regular Prisma Client queries. Use the
+  session/direct connection (port 5432, Session Mode) for migrations and other schema operations.
+</Note>
+
+### Multiple schemas
+
+If you have multiple separate schemas in the same project you can add the extension multiple times:
+
+```ts  theme={null}
+prismaExtension({
+  schema: 'prisma/schema/main.prisma',
+  version: '6.2.0',
+  migrate: false,
+}),
+prismaExtension({
+  schema: 'prisma/schema/secondary.prisma',
+  version: '6.2.0',
+  migrate: false,
+}),
+```

@@ -1,0 +1,9 @@
+# Source: https://docs.warp.dev/university/developer-workflows/power-user.md
+
+# Power User
+
+Once you’ve mastered the basics, explore advanced ways to customize and scale your agent workflows. Learn how to chain prompts, create reusable templates, combine multiple agents in one session, and use context from your files or Warp Drive for richer results.
+
+### Jump right in
+
+<table data-view="cards"><thead><tr><th data-type="content-ref"></th><th data-hidden data-card-cover data-type="image"></th></tr></thead><tbody><tr><td><a href="power-user/how-to-run-3-agents-in-parallel-summarize-logs-+-analyze-pr-+-modify-ui">how-to-run-3-agents-in-parallel-summarize-logs-+-analyze-pr-+-modify-ui</a></td><td><a href="https://2121742425-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fc5dAwvMCRiTxUOdDicqy%2Fuploads%2FzCCXt4jyN1YhdXNZ9fRI%2FWarp-Edu-Workflows-Multiple-Agents-Email.png?alt=media&#x26;token=88ffbadd-1b3e-4b30-b4d8-184b99180837">Warp-Edu-Workflows-Multiple-Agents-Email.png</a></td></tr><tr><td><a href="power-user/how-to-sync-your-monorepos">how-to-sync-your-monorepos</a></td><td><a href="https://2121742425-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fc5dAwvMCRiTxUOdDicqy%2Fuploads%2FKzAakjfPkwOrarIEwOi9%2FWarp-Edu-Rules-monorepos-Email.png?alt=media&#x26;token=1fe88d99-a78f-485d-bde0-2353d1af4398">Warp-Edu-Rules-monorepos-Email.png</a></td></tr><tr><td><a href="power-user/how-to-review-prs-like-a-senior-dev">how-to-review-prs-like-a-senior-dev</a></td><td><a href="https://2121742425-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2Fc5dAwvMCRiTxUOdDicqy%2Fuploads%2FdhnyeVZ2rGLPHtQx2n6O%2FWarp%20Drive%20Prompts%20Senior%20Dev.png?alt=media&#x26;token=25b2637e-a917-4046-8dc6-bd63cae64982">Warp Drive Prompts Senior Dev.png</a></td></tr></tbody></table>

@@ -2,6 +2,14 @@
 
 # Source: https://docs.slatejs.org/v0.47/general/changelog.md
 
+# Source: https://docs.slatejs.org/general/changelog.md
+
+# Source: https://docs.slatejs.org/v0.47/general/changelog.md
+
+# Source: https://docs.slatejs.org/general/changelog.md
+
+# Source: https://docs.slatejs.org/v0.47/general/changelog.md
+
 # Changelog
 
 Since Slate is a monorepo with many packages that are versioned separately, we maintain a changelog for each individual package:

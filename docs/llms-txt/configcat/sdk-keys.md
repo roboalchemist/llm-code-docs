@@ -1,0 +1,11 @@
+# Source: https://configcat.com/docs/api/reference/sdk-keys.md
+
+# SDK Keys
+
+With these endpoints you can manage your SDK Keys.
+
+<!-- -->
+
+## [ğŸ“„ï¸�<!-- --> <!-- -->Get SDK Key](https://configcat.com/docs/docs/api/reference/get-sdk-keys/.md)
+
+[This endpoint returns the SDK Key for your Config in a specified Environment.](https://configcat.com/docs/docs/api/reference/get-sdk-keys/.md)

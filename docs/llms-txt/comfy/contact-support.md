@@ -1,0 +1,33 @@
+# Source: https://docs.comfy.org/support/contact-support.md
+
+# Contact support
+
+> Get help and report issues for ComfyUI
+
+Get help with ComfyUI through our support channels and report issues in the appropriate repository.
+
+## Support channels
+
+<CardGroup cols={2}>
+  <Card title="Zendesk Support" icon="life-ring" href="https://support.comfy.org/">
+    Get help from our support team
+  </Card>
+</CardGroup>
+
+## Report issues
+
+Report bugs and issues in the corresponding GitHub repository:
+
+<CardGroup cols={2}>
+  <Card title="UI Issues" icon="browser" href="https://github.com/Comfy-Org/ComfyUI_frontend/issues">
+    Report UI-related issues in ComfyUI\_frontend
+  </Card>
+
+  <Card title="Core Issues" icon="code" href="https://github.com/comfyanonymous/ComfyUI/issues">
+    Report core functionality issues
+  </Card>
+
+  <Card title="Desktop Issues" icon="desktop" href="https://github.com/Comfy-Org/desktop/issues">
+    Report issues with the desktop version
+  </Card>
+</CardGroup>

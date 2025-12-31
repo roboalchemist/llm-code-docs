@@ -1,0 +1,145 @@
+# Source: https://rsbuild.dev/guide/basic/web-workers.md
+
+# Web Workers
+
+This page explains how to configure and use [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) in an Rsbuild project.
+
+:::tip Web Workers
+Web Workers are a type of JavaScript program that runs in the background, independently of other scripts, without affecting the performance of the page. This makes it possible to run long-running scripts, such as ones that handle complex calculations or access remote resources, without blocking the user interface or other scripts. Web workers provide an easy way to run tasks in the background and improve the overall performance of web applications.
+:::
+
+## Use Web Workers
+
+### Import with constructors
+
+Rspack provides built-in support for Web Workers, so you can use them directly in Rsbuild projects without adding extra loaders.
+
+For example, create a file called `worker.js`:
+
+```js title="worker.js"
+self.onmessage = (event) => {
+  const result = event.data * 2;
+  self.postMessage(result);
+};
+```
+
+Then use this worker in the main thread:
+
+```js title="index.js"
+const worker = new Worker(new URL('./worker.js', import.meta.url));
+
+worker.onmessage = (event) => {
+  console.log('The results from Workers:', event.data);
+};
+
+worker.postMessage(10);
+```
+
+Rspack supports multiple Worker syntaxes by default. See [Rspack - Web Workers](https://rspack.rs/guide/features/web-workers) for more information.
+
+### Using worker-loader
+
+If your project already uses `worker-loader`, or you want to use the `inline` and other features provided by `worker-loader`, you can use [worker-rspack-loader](https://github.com/rstackjs/worker-rspack-loader) as an alternative to `worker-loader` in Rsbuild projects.
+
+```ts title="rsbuild.config.ts"
+export default {
+  tools: {
+    rspack: {
+      resolveLoader: {
+        alias: {
+          // Modify the resolution of worker-loader in the inline loader
+          // such as `worker-loader!pdfjs-dist/es5/build/pdf.worker.js`
+          'worker-loader': require.resolve('worker-rspack-loader'),
+        },
+      },
+      module: {
+        rules: [
+          {
+            test: /\.worker\.js$/,
+            loader: 'worker-rspack-loader',
+          },
+        ],
+      },
+    },
+  },
+};
+```
+
+When using `worker-rspack-loader`, load the Web Worker file with `import` instead of `new Worker('/path/to/worker.js')`.
+
+```js
+import Worker from './file.worker.js';
+
+const worker = new Worker();
+
+worker.postMessage({ a: 1 });
+```
+
+> `worker-loader` is no longer maintained. If you don't need to inline Web Workers, we recommend using the `new Worker()` syntax.
+
+### Loading scripts from remote URLs
+
+By default, the worker script is emitted as a separate chunk. You can upload this file to a CDN, but it must follow the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
+
+If you want your worker scripts to be accessible across domains, a common solution is to load them via [importScripts](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts) (not subject to CORS). You can refer to the following code:
+
+```js title="index.js"
+// https://github.com/jantimon/remote-web-worker
+import 'remote-web-worker';
+
+const worker = new Worker(new URL('./worker.js', import.meta.url), {
+  type: 'classic',
+});
+
+worker.onmessage = (event) => {
+  console.log('The results from Workers:', event.data);
+};
+
+worker.postMessage(10);
+```
+
+For detailed discussions on cross-domain issues, please refer to [Discussions - webpack 5 web worker support for CORS?](https://github.com/webpack/webpack/discussions/14648)
+
+### Browser compatibility
+
+When your application includes both main-thread code and Web Workers created with `new Worker`, note that Web Workers run in isolated threads and do not share the main-thread environment. As a result, Rsbuild’s polyfill [entry mode](/guide/advanced/browser-compatibility.md#entry-mode) does not apply to Web Workers. In this case, it’s recommended to use the [usage mode](/guide/advanced/browser-compatibility.md#usage-mode) to inject the required polyfills directly into each Web Worker.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    polyfill: 'usage',
+  },
+};
+```
+
+## Standalone build
+
+Rsbuild supports standalone building of Web Workers bundles. When you need to configure independent build options for Web Workers or provide Web Workers for use by other applications, you can use the following methods.
+
+Set Rsbuild's [output.target](/config/output/target.md) configuration option to `'web-worker'` to generate build artifacts that run in Worker threads.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    target: 'web-worker',
+  },
+};
+```
+
+Use [environments](/config/environments.md) to build both Web Workers and the main application simultaneously:
+
+```ts title="rsbuild.config.ts"
+export default {
+  environments: {
+    web: {
+      // Build configuration for the main application
+    },
+    webWorker: {
+      // Build configuration for Web Workers
+      output: {
+        target: 'web-worker',
+      },
+    },
+  },
+};
+```

@@ -1,0 +1,71 @@
+# Source: https://rsbuild.dev/plugins/list/plugin-solid.md
+
+# Solid plugin
+
+import { SourceCode } from '@theme';
+
+<SourceCode href="https://github.com/web-infra-dev/rsbuild/tree/main/packages/plugin-solid" />
+
+The Solid plugin provides support for Solid features. The plugin internally integrates [babel-preset-solid](https://github.com/solidjs/solid/tree/main/packages/babel-preset-solid).
+
+:::tip
+The Solid plugin relies on Babel transpilation and requires an additional [Babel Plugin](/plugins/list/plugin-babel.md). At the same time, adding the Babel plugin will cause additional compilation overhead.
+:::
+
+## Quick start
+
+### Install plugin
+
+You can install the plugin using the following command:
+
+import { PackageManagerTabs } from '@theme';
+
+<PackageManagerTabs command="add @rsbuild/plugin-babel @rsbuild/plugin-solid -D" />
+
+### Register plugin
+
+You can register the plugin in the `rsbuild.config.ts` file:
+
+```ts title="rsbuild.config.ts"
+import { pluginBabel } from '@rsbuild/plugin-babel';
+import { pluginSolid } from '@rsbuild/plugin-solid';
+
+export default {
+  plugins: [
+    pluginBabel({
+      include: /\.(?:jsx|tsx)$/,
+    }),
+    pluginSolid(),
+  ],
+};
+```
+
+After registering the plugin, you can directly develop Solid.
+
+:::tip
+Since the Solid JSX relies on Babel for compilation, you need to additionally add the [Babel plugin](/plugins/list/plugin-babel.md).
+
+Babel compilation will introduce extra overhead, in the example above, we use `include` to match `.jsx` and `.tsx` files, thereby reducing the performance cost brought by Babel.
+
+:::
+
+## Options
+
+To customize the compilation behavior of Solid, use the following options.
+
+### solidPresetOptions
+
+These options are passed to `babel-preset-solid`. For details, see the [babel-preset-solid documentation](https://npmjs.com/package/babel-preset-solid).
+
+* **Type:** `SolidPresetOptions`
+* **Default:** `{}`
+* **Example:**
+
+```ts
+pluginSolid({
+  solidPresetOptions: {
+    generate: 'ssr',
+    hydratable: true,
+  },
+});
+```

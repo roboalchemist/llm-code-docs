@@ -1,0 +1,251 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/scaling.md
+
+# Scaling
+
+> Production-ready agent deployment and scaling strategies
+
+Agentic applications demand near-instant agent availability to maintain user engagement and responsiveness. Pipecat Cloud manages the complexity of scaling these agent deployments in production environments, providing granular controls for compute resources and cost optimization.
+
+## Core concepts
+
+### Instances
+
+An instance represents a single unit of compute that runs your agent.
+
+Instance costs are determined by:
+
+* [Active session](./active-sessions) runtime duration
+* Warm instance maintenance time
+* The compute profile specified in your deployment
+
+Pipecat Cloud automatically provisions and manages agent instances to handle active sessions, ensuring that your deployment can scale to meet demand
+within the limits of your deployment configuration.
+
+### Instance pool
+
+Making a deployment to Pipecat Cloud creates a managed pool of agent instances that:
+
+* Routes requests to available agent instances
+* Scales based on demand within configured limits
+* Maintains optimal performance through auto-scaling
+
+<Frame>
+  <img src="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=97e4482a7d258dce7916dfcae1fd5ae4" data-og-width="1661" width="1661" data-og-height="778" height="778" data-path="deployment/pipecat-cloud/images/scaling-pools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=280&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=b38d2adc37be20e3c761699adff9916b 280w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=560&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=55ee4017da367d8814575d77d6d0ce22 560w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=840&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=803fc3826f172330a3e6ce6b09cef45e 840w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=1100&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=89b5def1129633a4c8bb07c6da401f8f 1100w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=1650&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=a16e6e9873908f6b1891a6ad77042683 1650w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-pools.png?w=2500&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=9124b6598dfa1472794e288fa596f287 2500w" />
+</Frame>
+
+Developers can configure the upper and lower limit of a deployment's instance pool, providing a cost-effective way to handle varying loads.
+
+### Minimum agents
+
+`min-agents`
+
+* Maintains specified number of warm agent instances to serve incoming requests
+* Immediately ready to become active, reducing cold starts
+* Defaults to `0` if unspecified
+
+<Frame caption="Minimum number of agent instances maintained in a pool at all times.">
+  <img src="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=6f4d35f3d092ad22453232b2a465c9b5" data-og-width="1400" width="1400" data-og-height="778" height="778" data-path="deployment/pipecat-cloud/images/scaling-min-instances.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=280&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=8b3fee0482d1a92cdfb574e762bcfdb7 280w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=560&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=250af6e4f4f5384e67af85b1f6ff882f 560w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=840&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=31c4b901899fff68700416f6128226d5 840w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=1100&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=e9c2cfa2e6b2b6b24ddffb08043691c5 1100w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=1650&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=e86d55d222fbbd093bb3fe7c6e7c70d8 1650w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-min-instances.png?w=2500&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=8b6cf6df8780bdf840de84a9e6301335 2500w" />
+</Frame>
+
+Developers specify a `min-agents` configuration to determines the number of agent instances that should be kept warm in their deployment pool. A warm instance is kept running and can immediately be used to serve an active session.
+
+Maintaining a minimum number of agent instances is important to keep agent start times fast and reduce [cold starts](./scaling#cold-starts).
+
+```shell  theme={null}
+# Defaults to zero
+pipecat cloud deploy [agent-name]
+
+# Maintain 1 warm instance at all times
+pipecat cloud deploy [agent-name] --min-agents 1
+```
+
+<Warning>
+  Setting `--min-agents` to 1 or greater will incur charges even when the agent
+  is not in use.
+</Warning>
+
+### Maximum agents
+
+`max-agents`
+
+* Sets hard limit on concurrent sessions
+* Acts as a cost control / load mechanism
+* Returns HTTP 429 when pool capacity is reached
+
+<Frame caption="Maximum agents is the hard limit on the number of agents in your pool.">
+  <img src="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=b7bc369d9b4c08676d8858513385c089" data-og-width="1400" width="1400" data-og-height="778" height="778" data-path="deployment/pipecat-cloud/images/scaling-max-instances.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=280&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=9da4b371c48be68a0e2e2727c53cc446 280w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=560&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=a5e8a1c8b66059f2ddfd652c22ec640e 560w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=840&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=c523c0bba63e5e740f666e3751f7c289 840w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=1100&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=3f65bf67da5f18c3dffcf7d445c97bee 1100w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=1650&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=0541f4ae8e7edc3c93e207ab83075520 1650w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-max-instances.png?w=2500&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=9340a249030f4c2e3a21d7de50026d53 2500w" />
+</Frame>
+
+<Note>
+  During beta, each deployment made to Pipecat Cloud has a maximum allowed pool
+  size of 50. Please contact us at [help@daily.co](mailto:help@daily.co) or via
+  [Discord](https://discord.gg/dailyco) if you require more capacity.
+</Note>
+
+Deployments can optionally be made with a `max-agents` configuration that limits the number of agent instances that your pool can contain.
+This exists as a cost control measure, allowing developers to limit the total number of active sessions that can be run at any one time.
+
+The maximum instance count is a hard limit, meaning requests made to a pool that is at capacity will receive a `429` response. See [starting sessions](./active-sessions#agent-capacity) for more information for how to handle this in your application code.
+
+```shell  theme={null}
+# Limit pool to 25 active sessions running concurrently
+pipecat cloud deploy [agent-name] --max-agents 25
+```
+
+### Agent lifecycle
+
+<Steps>
+  <Step title="Pool Initialization">
+    * Provisions the minimum number of warm agent instances based on `min-agents` configuration (defaults to `0`)
+    * Listens for session requests to route to available agent instances
+  </Step>
+
+  <Step title="Session Assignment">
+    * ✅ If a warm instance is available, the session will be assigned to that instance
+    * ⏳ If no warm agent instances are available, and your pool is not at capacity, a new instance will be provisioned to handle the request (e.g a cold-start)
+    * ❌ If your pool is at capacity, your application will receive a `429` response from the start request
+  </Step>
+
+  <Step title="Auto-scaling">
+    * The Pipecat Cloud auto-scaler determines if additional warm agent instances should be created to support further requests.
+    * Once a session concludes, agent instances are either returned to the pool to serve another session or discarded
+  </Step>
+</Steps>
+
+<Note>
+  <b>Your are billed for warm agent instances</b>, even if they are not handling
+  active sessions. Developers should consider their deployment strategy when
+  cost optimizing, adjusting the minimum and maximum instance count accordingly.
+  See [current pricing](https://www.daily.co/pricing/pipecat-cloud) for details.
+</Note>
+
+## Cold-starts
+
+A cold start may occur when an active session request is made and no warm agent instances are available in the pool to handle it. In this case, Pipecat Cloud will provision a new instance to handle the request.
+
+Cold starts require additional time to provision the instance and load the agent instances, which may result in a delay for the user. To minimize cold starts, you can configure your pool to maintain a minimum number of warm agent instances at all times.
+
+<Frame>
+  <img src="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=d05a17b5f2ab8684d795fb3fc6ab13bc" data-og-width="1400" width="1400" data-og-height="778" height="778" data-path="deployment/pipecat-cloud/images/scaling-cold-starts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=280&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=07d3edfcd6f58b64f67089a23cfd474f 280w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=560&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=536a8bce2db0e612a01ae92164414114 560w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=840&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=4cc93e505426b1165a57994444429e6e 840w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=1100&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=2014c404f946d52a96b170c9a0a22834 1100w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=1650&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=20839a2c89da8631a15ba0591ef2beec 1650w, https://mintcdn.com/daily/2bYrACcmgvvzC075/deployment/pipecat-cloud/images/scaling-cold-starts.png?w=2500&fit=max&auto=format&n=2bYrACcmgvvzC075&q=85&s=16040fc16eababec62cdf70e4eb3a037 2500w" />
+</Frame>
+
+Pipecat Cloud aims to mitigate cold starts as much as possible through [auto-scaling](#auto-scaling).
+
+<AccordionGroup>
+  <Accordion title="How long does a cold start take?">
+    The exact duration of a cold start depends on multiple factors, such as the size of your agent image and the complexity of your agent. In general, cold starts take around 10 seconds. Once you have a running instance of a deployed image, new sessions start immediately with no cold start delay.
+
+    For developers, especially during test and development, using scale-to-zero with cold starts is a good place to start as it saves money. Once you understand your utilization pattern, you can build a strategy around optimizing start times by maintaining warm agent instances.
+  </Accordion>
+
+  <Accordion title="Mitigation strategies">
+    To avoid cold starts, you can:
+
+    * Adjust the number of warm agent instances (`min-agents`) in your pool to ensure that there are always agent instances available to handle requests.
+    * Adjust your maximum instance count (`max-agents`) and issue capacity notifications in your application.
+  </Accordion>
+</AccordionGroup>
+
+### Scale-to-zero
+
+For some deployments, using a minimum instance count of 0 is preferable (e.g. while in development.) Since you are only charged for warm agents instances and active sessions, this can be a cost-effective way to manage deployments where fast start times are not required.
+
+When the minimum instance count is set to 0, the pool will scale down to 0 agent instances when there are no active sessions. Idle agent instances are maintained for 5 minutes before being terminated.
+
+<Tip>
+  Scale-to-zero is not recommended for production deployments where immediate
+  response is required.
+</Tip>
+
+## Auto-scaling
+
+Pipecat Cloud performs auto-scaling by default on all deployments. Auto-scaling is accomplished through the following mechanisms:
+
+* Scaling up based on request velocity
+* Maintaining efficiency within max-agents limit
+* Scaling down to min-agents (or zero) during low usage
+* Supporting burst workloads automatically
+
+### Auto-Scaling Buffer
+
+<Note>
+  <b>Pipecat Cloud maintains a free auto-scaling buffer</b> in addition to your
+  paid reserved agent instances. This saves you from over-provisioning warm
+  agent instances while still ensuring fast response times during traffic
+  increases.
+</Note>
+
+When your traffic increases and you have active sessions running, our system automatically:
+
+* Proactively provisions additional idle agent instances based on your current usage patterns
+* Provides these buffer agent instances at no additional cost to you
+* Ensures you can continue handling traffic spikes even when all your paid warm agents are in use
+
+For example, with multiple active sessions:
+
+* The system is already spinning up additional buffer agent instances in the background
+* These buffer agent instances become available within \~10 seconds
+* You can continue calling the `/start` endpoint without worrying about configuring additional capacity
+
+This approach means:
+
+* You can set a lower `min-agents` value than your peak traffic requirements
+* You'll still avoid cold starts in most scenarios
+* You get better cost efficiency without sacrificing performance
+
+The only scenario where you need to consider higher `min-agents` values is for extremely rapid traffic spikes (tens or hundreds of calls per second) where the buffer can't be provisioned fast enough.
+
+### Scaling Philosophy
+
+Our scaling system is designed to minimize the need for manual capacity planning. Here's how we recommend thinking about scaling:
+
+* **Start simple:** We encourage you to set `min-agents` to 0 initially and test how the system performs for your specific use case. Many applications work well without any pre-warmed agent instances.
+
+* **Optimize as needed:** We work hard to make cold starts rare and as fast as possible so that, for many applications, you don't have to worry about warm instances at all.
+
+* **Tune for traffic patterns:** If you have spiky workloads with bursty traffic patterns, setting an appropriate `min-agents` value can help prevent cold starts during critical periods. Consider scheduling higher `min-agents` values only during your peak usage hours.
+
+Our goal is to make scaling decisions as simple as possible while giving you the controls you need for optimization when required.
+
+## Updating scaling configuration
+
+You can update your deployment's configuration at any time via the CLI or Pipecat Cloud Dashboard.
+
+```shell  theme={null}
+pipecat cloud deploy [agent-name] [image] --min-agents 1 --max-agents 5
+```
+
+Please note that changing your scaling parameters will not disrupt any active sessions.
+If you reduce your max instance count below the number of currently active sessions, you will still be billed for the duration of those sessions.
+
+## Capacity Planning
+
+Effective capacity planning is crucial for production deployments to ensure your agents respond immediately.
+
+Pipecat Cloud auto-scales your agents. For most cases, the only action you need to take is to set the `--min-agents` parameter to 1. However, if your application experiences fluctuations in traffic, you may need to plan for additional warm capacity to ensure your agents are always ready to respond immediately.
+
+<Card title="Capacity Planning Guide" icon="calculator" href="../guides/capacity-planning">
+  See our guide for calculating reserved agents, understanding warm capacity,
+  and implementing scaling strategies for production.
+</Card>
+
+## Usage summary
+
+Pipecat Cloud bills based on:
+
+* **Active session minutes**: Time your agents spend handling live sessions
+* **Reserved session minutes**: Time your warm agent instances are kept running, even when idle
+
+An active session starts when you call the `/start` endpoint (or CLI or SDK equivalent) and ends when your agent's pipeline shuts down.
+
+Reserved session minutes are optional and controlled by setting `--min-agents` in your deployment configuration.
+
+<Note>
+  Both active and reserved session time is measured to the second and billed in
+  minutes.
+</Note>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

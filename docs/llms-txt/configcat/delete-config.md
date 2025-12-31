@@ -1,0 +1,27 @@
+# Source: https://configcat.com/docs/api/reference/delete-config.md
+
+# Delete Config
+
+```
+DELETE 
+/v1/configs/:configId
+```
+
+This endpoint removes a Config identified by the `configId` parameter.
+
+## Request[​](#request "Direct link to Request")
+
+## Responses[​](#responses "Direct link to Responses")
+
+* 204
+* 400
+* 404
+* 429
+
+When the delete was successful.
+
+Bad request.
+
+Not found.
+
+Too many requests. In case of the request rate exceeds the rate limits.

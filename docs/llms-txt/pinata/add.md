@@ -1,0 +1,91 @@
+# Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
+
+# Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
+
+# Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
+
+# Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
+
+# Source: https://docs.pinata.cloud/sdk/signatures/public/add.md
+
+# Source: https://docs.pinata.cloud/sdk/signatures/private/add.md
+
+# add
+
+> `org:files:write`
+
+Add an EIP-712 signature to a CID
+
+<Note>
+  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
+</Note>
+
+## Usage
+
+```typescript  theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+## Returns
+
+```typescript  theme={null}
+type SignatureResponse = {
+  cid: string;
+  signature: string;
+};
+```
+
+## Parameters
+
+### cid
+
+* Type: `string`
+
+Target CID that you want to add a signature to.
+
+```typescript {2} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+### signature
+
+* Type: `0x${string}`
+
+EIP-712 Signature to be assigned to target CID.
+
+```typescript {3} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+### address
+
+* Type: `0x${string}`
+
+Wallet address that made the signature
+
+```typescript {4} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```

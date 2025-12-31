@@ -1,0 +1,33 @@
+# Source: https://rspack.dev/api/javascript-api/cache.md
+
+# Source: https://rspack.dev/config/cache.md
+
+import PropertyType from '@components/PropertyType';
+
+# Cache
+
+Rspack caches snapshots and intermediate build artifacts, then reuses them in subsequent builds to improve build speed.
+
+:::info Cache Type
+Rspack supports both memory cache and experimental persistent cache. See [Persistent Cache](/config/experiments.md#persistent-cache) for more details.
+:::
+
+This configuration only controls whether caching is enabled.
+
+<PropertyType
+  type="boolean"
+  defaultValueList={[
+  { defaultValue: 'false', mode: 'production' },
+  { defaultValue: 'true', mode: 'development' },
+]}
+/>
+
+## Usage
+
+You can disable the `cache` in your Rspack config:
+
+```js title="rspack.config.mjs"
+export default {
+  cache: false,
+};
+```

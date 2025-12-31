@@ -1,0 +1,25 @@
+# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Source: https://gitbook.com/docs/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Source: https://gitbook.com/docs/publishing-documentation/setting-a-custom-subdirectory.md
+
+# Setting a custom subdirectory
+
+{% hint style="info" %}
+This feature is available on the [Ultimate site plan](https://www.gitbook.com/pricing).
+{% endhint %}
+
+With a custom subdirectory, you can make your docs site accessible at `example.com/docs`. This is different from a [custom domain](https://gitbook.com/docs/publishing-documentation/custom-domain) which lets you make your docs site accessible at `docs.example.com`.&#x20;
+
+One reason to do this is so that your docs URL is formatted in a consistent way with your other site URLs. Using a subdirectory may also be beneficial for SEO.
+
+To configure a subdirectory, you'll need to set things up in your website's backend, then finalize the process in your GitBook site settings.
+
+<table data-view="cards"><thead><tr><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-type="image">Cover image (dark)</th><th data-hidden data-card-cover-dark data-type="image">Cover image (dark)</th></tr></thead><tbody><tr><td>Configuring a subdirectory with Cloudflare</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-cloudflare">configuring-a-subdirectory-with-cloudflare</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FGYtERTwSsUtqY1crFSnk%2FCloudflare.png?alt=media&#x26;token=c4aadcb8-d16e-47d2-ad33-56d137ddbd99">Cloudflare.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">Cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F3zWvv4mOHebRyQB34CHx%2FCloudflare.svg?alt=media&#x26;token=f4109747-5c4d-4039-8b33-168569f41d9d">Cloudflare.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRQMKddJVVyo47jdleeyw%2FCloudflare.png?alt=media&#x26;token=0f117eb3-2270-48c5-b622-e971374b7a5a">Cloudflare.png</a></td></tr><tr><td>Configuring a subdirectory with Vercel</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-vercel">configuring-a-subdirectory-with-vercel</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F6vihVGnoaGJIK47oiPIt%2FVercel.png?alt=media&#x26;token=52cba085-83bf-4aca-9d5f-9a61141e6ec7">Vercel.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">Vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F4Dra7NQYfLaHJdhBTful%2FVercel.svg?alt=media&#x26;token=e53c02a9-86fe-4ddc-8585-5cd0cef82ed4">Vercel.svg</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FuO2stsXgYy2m3MOndCtz%2FVercel.png?alt=media&#x26;token=6719d901-d0d4-4eeb-9569-faa0607cefd6">Vercel.png</a></td></tr><tr><td>Configuring a subdirectory with AWS</td><td><a href="setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws">configuring-a-subdirectory-with-aws</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FYf6n0ahpdjIA7b9Jba2N%2FAWS.png?alt=media&#x26;token=52c282fd-5f63-47ec-8a88-6f0cca3680fe">AWS.png</a></td><td></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FjY2LAVXbmW6RUmaTwXxF%2FAWS%20-%20dark.png?alt=media&#x26;token=ae589916-116d-4a29-8d59-985552addda5">AWS - dark.png</a></td><td><a href="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FAtNKcIuzR5zE8wUVHR0O%2FAWS.png?alt=media&#x26;token=36b45c4e-0c33-47aa-b73c-5f59fd0649ff">AWS.png</a></td></tr></tbody></table>

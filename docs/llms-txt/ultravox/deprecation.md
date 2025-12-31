@@ -1,0 +1,81 @@
+# Source: https://docs.ultravox.ai/changelog/deprecation.md
+
+# Deprecation Guide
+
+> Track upcoming breaking changes, migration timelines, and deprecation notices for the Ultravox platform.
+
+## Active Deprecations
+
+### Currently Scheduled Changes
+
+| Feature/API                           | Status        | Deprecation Date | Removal Date | Migration Guidance                  |
+| ------------------------------------- | ------------- | ---------------- | ------------ | ----------------------------------- |
+| `fixie-ai/ultravox-qwen3-32b-preview` | ⚠️ \< 30 days | 2025-12-03       | 2025-12-22   | [Guide](/changelog/migration/qwen3) |
+
+### Current Migration Guides
+
+* [Migrating from Qwen3 32B Model](/changelog/migration/qwen3)
+
+## Deprecation Process
+
+We recognize that breaking changes and deprecation notices are not fun and we try to avoid them when possible.
+
+However, the Ultravox APIs have not yet reached v1 and we are committed to having our APIs and SDKs work better and be as clear as possible. This means we will inevitably need to revisit some choices early on.
+
+This process will evolve as the APIs mature. Please share your feedback with us if you'd like to see any changes to the process or policy.
+
+### Lifecycle Stages
+
+<Tabs>
+  <Tab title="1. Announcement">
+    * Feature marked as deprecated in documentation
+    * Migration guidance published
+  </Tab>
+
+  <Tab title="2. Deprecation Period">
+    * Minimum 30-day window
+    * Reminders in changelog and community updates
+    * Direct communications to affected users
+  </Tab>
+
+  <Tab title="3. Removal">
+    * Feature removed
+    * Fallback behavior documented if applicable
+  </Tab>
+</Tabs>
+
+## Deprecation Policy
+
+### Standard Timeline
+
+* Pre-release features: 30-day minimum deprecation period
+* Breaking changes require publication of migration guidance
+
+### Security Exceptions
+
+Critical security updates may bypass the standard deprecation timeline. These will be:
+
+* Clearly marked and documented
+* Communicated directly to affected users
+* Accompanied by immediate mitigation steps
+
+<Note>
+  <b>Need Help?</b>
+
+  If you need assistance with a migration, please visit our [Discord community ](https://discord.gg/62X253zeWB).
+</Note>
+
+## Past Deprecations
+
+| Feature/API | Status   | Deprecation Date | Removal Date | Migration Guidance                         |
+| ----------- | -------- | ---------------- | ------------ | ------------------------------------------ |
+| `initiator` | 🛑 ended | 2024-10-01       | 2024-12-31   | [Guide](/changelog/migration/firstspeaker) |
+
+### Past Migrations
+
+* [Migrating from Call `initiator`](/changelog/migration/firstspeaker)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

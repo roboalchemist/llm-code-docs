@@ -1,0 +1,29 @@
+# Source: https://docs.hypermode.com/configure-environment.md
+
+# Configure Environment
+
+> Define environment parameters for your app
+
+On your first deployment, and when you add new connections thereafter, you may
+need to configure your environment for your app to be ready for traffic.
+
+## Connection secrets
+
+If you included parameters for Connection Secrets in your
+[app manifest](/modus/app-manifest), you'll need to add the parameter values in
+the Hypermode Console.
+
+From your project home, navigate to **Settings** → **Connections**. Add the
+values for your defined connection authentication parameters.
+
+## Model hosting
+
+Hypermode offers integrated model hosting for a selection of the most popular
+open source and commercial models. See [Model Router](/model-router) for more
+information.
+
+## Scaling your runtime resources
+
+We're working to make runtime scaling self-service. In the meantime, reach out
+at [help@hypermode.com](mailto:help@hypermode.com) for assistance with this
+request.

@@ -1,0 +1,61 @@
+# Source: https://docs.warp.dev/terminal/warpify/ssh-legacy.md
+
+# SSH Legacy
+
+{% hint style="info" %}
+If you are looking to troubleshoot the TMUX SSH feature, see the [SSH](https://docs.warp.dev/terminal/warpify/ssh).
+{% endhint %}
+
+When you SSH into a remote box, you get all the features of Warp without any configuration on your part. The input editor, auto-completions, and history search work the same, regardless of machine.
+
+{% hint style="warning" %}
+[Limitations of SSH](https://github.com/warpdotdev/Warp/issues/578) (as of May 2024):
+
+* The SSH Wrapper only supports `bash`or `zsh` shells in remote sessions.
+* If you're using a different shell, you'll want to use `command ssh` directly (see below for more details).
+* For zsh, xxd is required to bootstrap warp.
+* For Windows, [Cygwin](https://www.cygwin.com/) is required to bootstrap the SSH Wrapper.
+* RemoteCommand causes the ssh wrapper to fail.
+* [Tmux is not currently supported.](https://github.com/warpdotdev/Warp/discussions/501)
+  {% endhint %}
+
+{% hint style="info" %}
+If you're using zsh on the remote host, Warp creates a temp folder to act as the ZDOTDIR during the bootstrapping process and removes it when the shell is set up.
+{% endhint %}
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d1dfbe0032fc3388c17b2ecb4eaff36a7a2b5d6c%2Fssh.png?alt=media&#x26;token=4d3dd306-f3e0-4cf9-af42-e9d4325df08a" alt="SSH"><figcaption><p>SSH</p></figcaption></figure>
+
+## Implementation
+
+We create a wrapper (around `/usr/bin/ssh`) to set up the shell for Warp's feature set. We authenticate normally using `/usr/bin/ssh`, and bootstrap the remote shell to work with Warp Blocks and the Input Editor. You can opt out of this functionality by invoking `command ssh` directly.
+
+* Warp takes over the prompt which enables us to build a modern input editor.
+* Warp configures histcontrol to ignore commands with leading spaces. We do this so our bootstrapping code does not clutter the history.
+
+You can see the SSH wrapper by using `which warp_ssh_helper` in zsh, `type warp_ssh_helper` in bash.
+
+*Note:* The ssh wrapper is only *initialized* on your local machine. We don’t currently support bootstrapping nested ssh sessions.
+
+{% hint style="info" %}
+Warp [Completions](https://docs.warp.dev/terminal/command-completions/completions) for ssh show entries in `~/.ssh/config` and `~/.ssh/known_hosts`
+{% endhint %}
+
+## Troubleshooting SSH
+
+### channel 2: open failed: connect failed: open failed
+
+If you're seeing these errors, you may have some config on your server (usually in `/etc/ssh/sshd_config`) preventing Warp's ControlMaster connection from working. In this state, completions that require information from your remote host won't work and your history also won't work.
+
+You should ensure that `MaxSessions` is either commented out or is at least `2`.
+
+Write access in `/etc/ssh/` typically requires sudo access. After any edits, you'd also need to restart the `sshd` daemon.
+
+### SSH Wrapper fails
+
+There are several [known issues with SSH Wrapper](https://github.com/warpdotdev/Warp/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-desc+label%3ABugs+label%3ASSH). As a workaround to the SSH Wrapper, you can add `command ssh` to your `Settings > Subshells > Added commands`, then run `command ssh <user@server>` to connect to a remote session, this will attempt to enable Warp features as a [subshell](https://docs.warp.dev/terminal/warpify/subshells).
+
+{% hint style="info" %}
+If the subshell workaround helps, we recommend you disable the SSH Wrapper in `Settings > Features.`You'll need to start a new session before a change is reflected or try invoking the SSH binary directly with `command ssh`.
+{% endhint %}
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-5cfba89554e738ad331b86151eae6b7bb819e306%2Fsubshell-ssh-demo.gif?alt=media&#x26;token=6af18eca-bfd1-4fd7-888a-2af3dd65dd51" alt="Command SSH subshell workaround"><figcaption><p>Warpify SSH Demo</p></figcaption></figure>

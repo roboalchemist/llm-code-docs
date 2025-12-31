@@ -1,0 +1,54 @@
+# Source: https://www.activepieces.com/docs/admin-guide/guides/permissions.md
+
+# Source: https://www.activepieces.com/docs/security/permissions.md
+
+# Project Permissions
+
+> Documentation on project permissions in Activepieces
+
+Activepieces utilizes Role-Based Access Control (RBAC) for managing permissions within projects. Each project consists of multiple flows and users, with each user assigned specific roles that define their actions within the project.
+
+The supported roles in Activepieces are:
+
+* **Admin:**
+  * View Flows
+  * Edit Flows
+  * Publish/Turn On and Off Flows
+  * View Runs
+  * Retry Runs
+  * View Issues
+  * Resolve Issues
+  * View Connections
+  * Edit Connections
+  * View Project Members
+  * Add/Remove Project Members
+  * Configure Git Repo to Sync Flows With
+  * Push/Pull Flows to/from Git Repo
+
+* **Editor:**
+  * View Flows
+  * Edit Flows
+  * Publish/Turn On and Off Flows
+  * View Runs
+  * Retry Runs
+  * View Connections
+  * Edit Connections
+  * View Issues
+  * Resolve Issues
+  * View Project Members
+
+* **Operator:**
+  * Publish/Turn On and Off Flows
+  * View Runs
+  * Retry Runs
+  * View Issues
+  * View Connections
+  * Edit Connections
+  * View Project Members
+
+* **Viewer:**
+  * View Flows
+  * View Runs
+  * View Connections
+  * View Project Members
+  * View Issues

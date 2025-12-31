@@ -1,0 +1,307 @@
+# Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/taxes.md
+
+# Taxes
+
+> When generating invoices, you may need to apply VAT or other taxes. By creating tax objects and applying them to billing entities and/or customers, the corresponding invoices will reflect the appropriate tax rates.
+
+## External integration
+
+Let your tax provider handle the complexity of tax logic! We support integrations that allow seamless tax automation.
+
+If you'd like to explore these integrations or be connected to a provider, feel free to contact us.
+
+<CardGroup cols={2}>
+  <Card
+    title="Anrok"
+    icon={
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="32" height="32" rx="8" fill="#1D192F" />
+      <path
+        d="M13.8039 8.80078C15.2157 8.80078 16.6275 8.80078 18.0392 8.80078C18.1333 8.98902 18.2141 9.18401 18.3239 9.364C19.8784 11.9154 21.4329 14.466 22.9953 17.0121C23.3153 17.5333 23.6643 18.0381 24 18.5503V20.2752C23.5224 21.0904 23.0408 21.9041 22.5694 22.7231C22.4643 22.906 22.3396 22.9833 22.1098 22.981C20.9741 22.9683 19.8384 22.969 18.7035 22.981C18.4659 22.9833 18.3263 22.9165 18.2063 22.7171C17.4306 21.4316 16.6424 20.1537 15.8573 18.8735C15.8024 18.7835 15.7388 18.698 15.6792 18.6103C15.6369 18.7183 15.6471 18.8023 15.6596 18.8863C15.8518 20.2174 15.4588 21.3476 14.4133 22.2633C13.7929 22.8063 13.0384 23.0515 12.2353 23.2008H11.451C11.3898 23.1798 11.331 23.1513 11.2682 23.14C9.71686 22.8633 8.69098 22.0061 8.1898 20.5797C8.10353 20.3352 8.06196 20.0772 8 19.8252C8 19.6002 8 19.3752 8 19.1502C8.02353 19.0677 8.05647 18.986 8.0698 18.902C8.36627 16.9821 10.2886 15.5947 12.3043 15.8287C13.1318 15.9247 13.8384 16.2591 14.4965 16.7414C14.4706 16.6266 14.4298 16.5276 14.3741 16.4369C13.6165 15.1979 12.8651 13.9553 12.0925 12.7253C11.9341 12.4733 11.9004 12.2829 12.0635 12.0144C12.4384 11.4001 12.7757 10.7657 13.1176 10.1342C13.3553 9.69398 13.5757 9.24551 13.8039 8.80078Z"
+        fill="white"
+      />
+    </svg>
+  }
+    href="/integrations/taxes/anrok"
+  >
+    Anrok is a global sales tax platform built for software companies.
+
+    <br />
+
+    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+  </Card>
+
+  <Card
+    title="Avalara"
+    icon={
+    <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#FC6600"/>
+      <path d="M16.0214 20.1273c1.2869-1.6428 3.2301-3.7962 5.5121-5.482l.3861.9137c-3.5132 3.2686-5.2075 6.7646-5.9024 7.9399-.356-.6005-1.0037-1.8573-1.9817-3.3158l.682-1.6086c.4805.5448 1.304 1.5528 1.304 1.5528ZM21.1346 23.9751h2.7796l-2.4536-5.8724c-.7164.7592-1.3341 1.5142-1.8745 2.2305l1.5485 3.642ZM17.244 8.01367h-.0172H14.8032h-.0171L8.11581 23.9751h2.7796l4.8258-11.3759.2274-.6177h.1287l.2274.6177 1.4284 3.3716c.6348-.6349 1.3297-1.2611 2.059-1.8488L17.244 8.01367Z" fill="white"/>
+    </svg>
+  }
+    href="/integrations/taxes/avalara"
+  >
+    AvaTax is a cloud-based tax calculation and compliance platform that helps businesses manage their sales tax obligations.
+
+    <br />
+
+    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+  </Card>
+</CardGroup>
+
+***
+
+## Create taxes at the organization level
+
+Before applying taxes to invoices, you need to create a tax object at the organization level. You can then assign it to billing entities or specific customers.
+
+**To create a tax:**
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to **Settings** > **Taxes** tab
+    2. Click **"Add"** (top-right corner)
+    3. Provide a `name`
+    4. Set a unique `code` (used as an identifier in your backend)
+    5. (Optional) Add a `description`
+    6. Define the applicable `rate` (e.g., 20.00 for 20%)
+  </Tab>
+
+  <Tab title="API">
+    <CodeGroup>
+      ```bash  theme={"dark"}
+      # Create a tax object
+      LAGO_URL="https://api.getlago.com"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/taxes" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "tax": {
+            "name": "French VAT",
+            "code": "french_vat",
+            "description": "French standard VAT",
+            "rate": 20.00
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+***
+
+## Edit or delete taxes
+
+Taxes can be edited or deleted even if they are already applied to billing entities or customers. However, any change will affect all draft or upcoming invoices linked to that tax.
+
+**Available actions:**
+
+* **Edit**: Modify the tax name, code, or rate
+* **Delete**: Remove the tax from your system (irreversible)
+
+***
+
+## Apply taxes to objects
+
+When generating invoices, taxes can be applied at various levels and will impact all associated fees (subscriptions, usage-based charges, etc.).
+
+***
+
+### At the billing entity level
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to **Settings** > Select your **Billing entity** > **Taxes** tab
+    2. Click **"Add"** to apply a tax
+    3. Choose the tax object
+    4. Repeat to apply multiple taxes
+  </Tab>
+
+  <Tab title="API">
+    <CodeGroup>
+      ```bash  theme={"dark"}
+      # Add taxes to a billing entity
+      curl --location --request PUT "$LAGO_URL/api/v1/billing_entities/{code}" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "billing_entity": {
+            "tax_codes": ["tax_fr", "tax_it"]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+***
+
+### At the customer level
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to **Customer details** > **Settings**
+    2. Under **Tax rates**, click **"Add a tax"**
+    3. Select the appropriate tax
+    4. Repeat for multiple taxes
+
+    <Frame caption="Add a tax to a customer">
+      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=858cac705129182e54178be90b5fba65" data-og-width="1794" width="1794" data-og-height="1216" height="1216" data-path="guide/invoicing/images/tax-on-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7fbcab6d630c13f1324927fa8c556efc 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0e276a761e70f5d475cd5e18d9084d6c 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f0b8116615a0179765c2806b2dd95a92 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=180e9832664794a1430ee7eec1619de9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=46d1d779688b62bdd1263c7d8d5b443a 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6b67d7129a49c56185787d95efcaa72f 2500w" />
+    </Frame>
+  </Tab>
+
+  <Tab title="API">
+    <CodeGroup>
+      ```bash  theme={"dark"}
+      # Add taxes to a customer
+      curl --location --request PUT "$LAGO_URL/api/v1/customers" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "customer": {
+            "code": "acme_inc",
+            "tax_codes": ["tax_fr"]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+***
+
+### At the plan and charge level
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Ensure your tax objects are created
+    2. Navigate to **Plans** > **Add a plan**
+    3. In the plan settings, click **Add a tax rate**
+    4. For usage-based charges, expand **More options** and click **Add a tax rate**
+    5. Note: taxes set at the charge level override the plan-level taxes
+    6. Save and apply the plan to customers
+
+    <Frame caption="Add a tax to a charge">
+      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9e25b170b107142b91ffb9fb4d4aeb4e" data-og-width="3541" width="3541" data-og-height="2147" height="2147" data-path="guide/invoicing/images/tax-on-charges.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=98bdc42705f940fdcd59e90e86c61fae 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d581f93e68d438df9f9133c0f2683ec1 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3ae9436459c2705a6995312a7c296e13 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=eed7db37cb1e51cde919c756d4917b06 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b42239d1030688267f0a9031370879d8 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=48beadb921359b5a2ea2e28429fa1223 2500w" />
+    </Frame>
+  </Tab>
+
+  <Tab title="API">
+    <CodeGroup>
+      ```bash  theme={"dark"}
+      # Add taxes to a plan and its charges
+      curl --location --request POST "$LAGO_URL/api/v1/plans" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "plan": {
+            "name": "Starter",
+            "code": "starter",
+            "interval": "monthly",
+            "amount_cents": 9900,
+            "amount_currency": "USD",
+            "tax_codes": ["french_standard_vat"],
+            "charges": [
+              {
+                "billable_metric_code": "user_seat",
+                "charge_model": "standard",
+                "invoiceable": true,
+                "pay_in_advance": false,
+                "prorated": false,
+                "min_amount_cents": 0,
+                "tax_codes": ["french_standard_vat"],
+                "properties": {
+                  "amount": "0.10"
+                }
+              }
+            ]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+***
+
+### At the add-on level
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Make sure taxes are set up in your account
+    2. Go to **Add-ons** > **Add an add-on**
+    3. In the add-on settings, click **Add a tax rate**
+    4. Complete creation and apply to customers via one-off invoices
+
+    <Frame caption="Add a tax to an add-on">
+      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ff040645a6866bfecdb33b97554c013d" data-og-width="2720" width="2720" data-og-height="1800" height="1800" data-path="guide/invoicing/images/tax-on-add-on.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0df0cf19d385290484cc93e7d848faf4 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6538476a1cf770ecfb452ccf284b9df1 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d0f65639b5520a9ad7f9c8d9611a94f7 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d8c8d27675f78dbf82aa6a78b3636793 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0aaa3b07980c5ca79bdab92eea3f0bff 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f5c62bc570f5a3bbaaddad2c4869deb9 2500w" />
+    </Frame>
+  </Tab>
+
+  <Tab title="API">
+    <CodeGroup>
+      ```bash  theme={"dark"}
+      # Add tax to an add-on
+      {
+        "add_on": {
+          "name": "Setup fee",
+          "code": "setup_fee",
+          "amount_cents": 100000,
+          "amount_currency": "USD",
+          "tax_codes": ["french_standard_vat"]
+        }
+      }
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<Tip>
+  Tax rates defined at the add-on level can be overridden when creating a one-off invoice.
+</Tip>
+
+***
+
+## Tax hierarchy
+
+### For Subscription Invoices
+
+When generating invoices for subscriptions, taxes are applied in the following order of priority:
+
+1. **Billing entity** taxes apply to all invoice fees (subscriptions and charges)
+2. **Customer** taxes override billing entity taxes
+3. **Plan** taxes override customer taxes
+4. **Charge**-level taxes override plan taxes, but only affect the specific charge
+5. If the customer is linked to a **tax provider** (e.g., Anrok), the provider's calculation overrides all other tax levels
+
+***
+
+### For one-off invoices
+
+For one-off invoices, the hierarchy is:
+
+1. **Organization** taxes apply to all fees
+2. **Customer** taxes override organization taxes
+3. **Add-on** taxes override customer taxes for the add-on only
+4. **Fee-level** taxes (set at invoice creation) override add-on-level taxes for the specific fee
+
+***
+
+### For prepaid credit invoices
+
+Prepaid credits are considered upfront payments. Therefore, invoices for credit purchases do **not** include any tax.
+
+***
+
+## Auto-detect european taxes with Lago
+
+Lago supports automatic tax detection for European customers.\
+Refer to our [integration guide](/integrations/taxes/lago-eu-taxes) to set it up.

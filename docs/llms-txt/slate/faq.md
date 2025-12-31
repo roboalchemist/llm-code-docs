@@ -2,6 +2,14 @@
 
 # Source: https://docs.slatejs.org/v0.47/general/faq.md
 
+# Source: https://docs.slatejs.org/general/faq.md
+
+# Source: https://docs.slatejs.org/v0.47/general/faq.md
+
+# Source: https://docs.slatejs.org/general/faq.md
+
+# Source: https://docs.slatejs.org/v0.47/general/faq.md
+
 # FAQ
 
 A series of common questions people have about Slate:

@@ -1,0 +1,69 @@
+# Source: https://learn.adafruit.com/smt-manufacturing/tweezers.md
+
+# SMT Manufacturing
+
+## Tweezers
+
+If you're doing SMT, you're doing rework and anything that makes rework suck less is a big win. We use hot air for reworking some SMT parts but if you have leaded parts, especially big ones, hot air can take a really long time. If you want fast component removal/reworking we suggest getting a hot tweezer jig!![](https://cdn-learn.adafruit.com/assets/assets/000/000/341/medium800/manufacturing_tweezers.jpg?1396762308)
+
+The&nbsp;[MX500 soldering station](http://www.ladyada.net///metcaliron.html)&nbsp;is particularly good for hot tweezing, it has two ports on the front. One connects to the iron and the other we connect to a hot tweezer. You can switch out tips just like with the soldering wand.&nbsp;[The system is called MX-PTZ](http://www.okinternational.com/product_soldering/mxPTZ)&nbsp;and you can check out Metcal's page for all the various tips you can get for reworking different-sized parts.![](https://cdn-learn.adafruit.com/assets/assets/000/000/342/medium800/manufacturing_tweezeclosed.jpg?1396762316)
+
+## Removing a SOIC
+
+Our favorite use for tweezers is to remove or rework SOIC and such. These are big chips, hard to heat up evenly and quickly but the large&nbsp; **PTTC-x06** &nbsp;or&nbsp; **PTTC-x07&nbsp;** cartridges make em easy!
+
+For example, I want to remove this 14-SOIC chip:
+
+![](https://cdn-learn.adafruit.com/assets/assets/000/000/343/medium800/manufacturing_tweezevictim.jpg?1396762323)
+
+Simply wait for the tweezers to heat up, then grab both sides of the SOIC.![](https://cdn-learn.adafruit.com/assets/assets/000/000/344/medium800/manufacturing_tweezesoic_t.jpg?1396762328)
+
+and voila! The chip comes off easily, cleanly and without affecting the rest of the circuit.![](https://cdn-learn.adafruit.com/assets/assets/000/000/345/medium800/manufacturing_tweezed.jpg?1396762336)
+
+- [Previous Page](https://learn.adafruit.com/smt-manufacturing/resistor-packs.md)
+- [Next Page](https://learn.adafruit.com/smt-manufacturing/microscope-inspection.md)
+
+## Featured Products
+
+### Fine tip curved tweezers - ESD safe
+
+[Fine tip curved tweezers - ESD safe](https://www.adafruit.com/product/422)
+When soldering small surface-mount (SMD/SMT) components, one thing you'll need is a good pair of tweezers. These are a great pair of every-day tweezers. They're anti-static, anti-magnetic and made of hard stainless steel. The tips are fine and pointy to pick up any size component. This...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/422)
+[Related Guides to the Product](https://learn.adafruit.com/products/422/guides)
+### Fine tip straight tweezers - ESD safe
+
+[Fine tip straight tweezers - ESD safe](https://www.adafruit.com/product/421)
+When soldering small surface-mount (SMD/SMT) components, one thing you'll need is a good pair of tweezers. These tweezers are a great pair of every-day tweezers. They're anti-static, anti-magnetic and made of hard stainless steel. The tips are fine and pointy to pick up any size...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/421)
+[Related Guides to the Product](https://learn.adafruit.com/products/421/guides)
+### USB Microscope - 5MP interpolated 220x magnification / 8 LEDs
+
+[USB Microscope - 5MP interpolated 220x magnification / 8 LEDs](https://www.adafruit.com/product/636)
+As electronics get smaller and smaller, you'll need a hand examining PCBs and this little USB microscope is the perfect tool. Its smaller and lighter than a large optical microscope but packs quite a bit of power in its little body. There's a 2 megapixel sensor inside and an optical...
+
+Out of Stock
+[Buy Now](https://www.adafruit.com/product/636)
+[Related Guides to the Product](https://learn.adafruit.com/products/636/guides)
+
+## Related Guides
+
+- [How To Solder Mask PCBs](https://learn.adafruit.com/how-to-solder-mask-pcbs.md)
+- [Creating Accurate Footprints in Eagle](https://learn.adafruit.com/creating-accurate-footprints-in-eagle.md)
+- [Adafruit Guide To Excellent Soldering](https://learn.adafruit.com/adafruit-guide-excellent-soldering.md)
+- [SMT Breadboard Prototyping Using Breakout PCBs](https://learn.adafruit.com/smt-prototyping-using-breakout-pcbs.md)
+- [PB Gherkin 30% keyboard with KMK, CircuitPython, & KB2040](https://learn.adafruit.com/pb-gherkhin-30-keyboard-with-kmk-circuitpython-kb2040.md)
+- [NeXT Bus Mouse to USB HID with CircuitPython](https://learn.adafruit.com/next-bus-mouse-to-usb-hid-with-circuitpython.md)
+- [Light-Up Costumes in Harsh Environments](https://learn.adafruit.com/light-up-costumes-in-harsh-environments.md)
+- [Lighting LED Nets with WLED and xLights](https://learn.adafruit.com/lighting-led-nets-with-wled-and-xlights.md)
+- [EZ Make Oven](https://learn.adafruit.com/ez-make-oven.md)
+- [Make your own PCB with Eagle, OSH Park, and Adafruit!](https://learn.adafruit.com/making-pcbs-with-oshpark-and-eagle.md)
+- [Shop Tips & Tricks](https://learn.adafruit.com/shop-tips-and-tricks.md)
+- [Magic Storybook with ChatGPT](https://learn.adafruit.com/magic-storybook-with-chatgpt.md)
+- [16-Step Drum Sequencer](https://learn.adafruit.com/16-step-drum-sequencer.md)
+- [Glowing Birthday Number Crown](https://learn.adafruit.com/glowing-birthday-number-crown.md)
+- [LED Noodle Shop Sign](https://learn.adafruit.com/led-noodle-shop-sign.md)

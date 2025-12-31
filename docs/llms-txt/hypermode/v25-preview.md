@@ -1,0 +1,375 @@
+# Source: https://docs.hypermode.com/dgraph/v25-preview.md
+
+# v25 Preview
+
+The v25 release of Dgraph introduces new features and brings the full code base
+under the Apache-2.0 license, reducing barriers for teams of all sizes to choose
+Dgraph for AI-ready knowledge graphs.
+
+## Availability
+
+To run locally, use the Docker image `dgraph/standalone:v25.0.0-preview6`.
+
+```bash  theme={null}
+docker run --rm -it -p 8080:8080 -p 9080:9080 dgraph/standalone:v25.0.0-preview6
+```
+
+## Features
+
+The following new features are currently available in the preview release:
+
+* [Namespaces](#namespaces) – logically isolate environments for multi-customer
+  apps
+* [v2 APIs](#v2-apis) – write less code with simplified client creation and DQL
+  execution
+* [Model Context Protocol (MCP) Server](#model-context-protocol-mcp-server) –
+  stay in flow by making your Dgraph schema and queries available to your AI
+  coding assistants
+
+Additionally, the following former enterprise features are available in the
+preview release with no license key required:
+
+* **Backups** (formerly [Binary Backups](/dgraph/enterprise/binary-backups) –
+  *non-S3 support has been dropped due to the deprecation of MinIO Gateway and
+  is planned for a future release*)
+* **Query Logs** (formerly [Audit Logs](/dgraph/enterprise/audit-logs))
+* **Database Encryption** (formerly
+  [Encryption at Rest](/dgraph/enterprise/encryption-at-rest))
+* [Learner Nodes](/dgraph/enterprise/learner-nodes)
+* [Change Data Capture](/dgraph/enterprise/change-data-capture)
+
+Upcoming preview releases include a simplified import command and native user
+authentication and authorization (formerly Access Control Lists).
+
+<Note>
+  The APIs in the preview release are subject to minor changes before general
+  availability. Please share feedback via
+  [Discord](https://discord.hypermode.com) or
+  [GitHub](https://github.com/hypermodeinc/dgraph).
+</Note>
+
+## Namespaces
+
+Namespaces allow you to create logically separated environments for your data,
+enabling multi-customer apps without the overhead of managing a database per
+customer.
+
+The default namespace is created when the cluster is provisioned.
+
+Namespace APIs are part of the [v2 APIs](#v2-apis). The v2 APIs are available in
+the `dgo/v250` package today. Other SDKs are being updated currently.
+
+### Creating a new namespace
+
+To create a namespace, use the `CreateNamespace` function.
+
+```go  theme={null}
+namespaceID, err := client.CreateNamespace(context.TODO())
+// handle error
+fmt.Printf("%d\n", namespaceID)
+// handle error
+```
+
+### Dropping a namespace
+
+To drop a namespace, use the `DropNamespace` function.
+
+```go  theme={null}
+err := client.DropNamespace(context.TODO())
+// handle error
+```
+
+### List all namespaces
+
+To list all namespaces, use the `ListNamespaces` function.
+
+```go  theme={null}
+namespaces, err := client.ListNamespaces(context.TODO())
+// handle error
+fmt.Printf("%+v\n", namespaces)
+```
+
+## v2 APIs
+
+Version 25 introduces support for v2 APIs, including simpler client creation and
+DQL execution. The v2 APIs are available in the `dgo/v250` package today. Other
+clients are being updated currently.
+
+[![GoDoc](https://pkg.go.dev/badge/github.com/dgraph-io/dgo/v250)](https://pkg.go.dev/github.com/dgraph-io/dgo/v250)
+
+### Open a connection
+
+The dgo package supports connecting to a Dgraph cluster using connection
+strings. Dgraph connection strings take the form `dgraph://host:port?arguments`
+with support for the following arguments:
+
+| Argument      | Value                                         | Description                                                                                                                                                   |
+| ------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bearertoken` | \<token>                                      | an access token                                                                                                                                               |
+| `sslmode`     | `disable` <br /> `require` <br /> `verify-ca` | TLS option, the default is `disable`. If `verify-ca` is set, the TLS certificate configured in the Dgraph cluster must be from a valid certificate authority. |
+
+To create a client, use the `Open` function with a connection string.
+
+```go  theme={null}
+// open a connection to a non-TLS cluster
+client, err := dgo.Open("dgraph://localhost:9080")
+// handle error
+defer client.Close()
+// use the clients
+```
+
+### Advanced client creation
+
+For more control, you can create a client using the `NewClient` function.
+
+```go  theme={null}
+client, err := dgo.NewClient("localhost:9080",
+  // add insecure transport credentials
+  dgo.WithGrpcOption(grpc.WithTransportCredentials(insecure.NewCredentials())),
+)
+// handle error
+defer client.Close()
+// use the client
+```
+
+You can connect to multiple alphas using `NewRoundRobinClient`.
+
+```go  theme={null}
+client, err := dgo.NewRoundRobinClient([]string{"localhost:9181", "localhost:9182", "localhost:9183"},
+  // add insecure transport credentials
+  dgo.WithGrpcOption(grpc.WithTransportCredentials(insecure.NewCredentials())),
+)
+// handle error
+defer client.Close()
+// use the client
+```
+
+### Set schema
+
+To set the schema, use the `SetSchema` function.
+
+```go  theme={null}
+sch := `
+  name: string @index(exact) .
+  email: string @index(exact) @unique .
+  age: int .
+`
+err := client.SetSchema(context.TODO(), sch)
+// handle error
+```
+
+### Run a mutation
+
+To run a mutation, use the `RunDQL` function.
+
+```go  theme={null}
+mutationDQL := `{
+  set {
+    _:alice <name> "Alice" .
+    _:alice <email> "alice@example.com" .
+    _:alice <age> "29" .
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), mutationDQL)
+// handle error
+// print map of blank UIDs
+fmt.Printf("%+v\n", resp.BlankUids)
+```
+
+### Run a query
+
+To run a query, use the same `RunDQL` function.
+
+```go  theme={null}
+queryDQL := `{
+  alice(func: eq(name, "Alice")) {
+    name
+    email
+    age
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), queryDQL)
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+#### Run a query with variables
+
+To run a query with variables, using `RunDQLWithVars`.
+
+```go  theme={null}
+queryDQL = `query Alice($name: string) {
+  alice(func: eq(name, $name)) {
+    name
+    email
+    age
+  }
+}`
+vars := map[string]string{"$name": "Alice"}
+resp, err := client.RunDQLWithVars(context.TODO(), queryDQL, vars)
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+#### Run a best effort query
+
+To run a `BestEffort` query, use the same `RunDQL` function with `TxnOption`.
+
+```go  theme={null}
+queryDQL := `{
+  alice(func: eq(name, "Alice")) {
+    name
+    email
+    age
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), queryDQL, dgo.WithBestEffort())
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+#### Run a read-only query
+
+To run a `ReadOnly` query, use the same `RunDQL` function with `TxnOption`.
+
+```go  theme={null}
+queryDQL := `{
+  alice(func: eq(name, "Alice")) {
+    name
+    email
+    age
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), queryDQL, dgo.WithReadOnly())
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+#### Run a query with RDF response
+
+To get the query response in RDF format instead of JSON format, use the
+following `TxnOption`.
+
+```go  theme={null}
+import (
+  "github.com/dgraph-io/dgo/v250"
+  "github.com/dgraph-io/dgo/v250/protos/api_v2"
+)
+
+queryDQL := `{
+  alice(func: eq(name, "Alice")) {
+    name
+    email
+    age
+  }
+}`
+resp, err = client.RunDQL(context.TODO(), queryDQL, dgo.WithResponseFormat(api_v2.RespFormat_RDF))
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+### Run an upsert
+
+The `RunDQL` function also allows you to run upserts as well.
+
+```go  theme={null}
+upsertQuery := `upsert {
+  query {
+    user as var(func: eq(email, "alice@example.com"))
+  }
+  mutation {
+    set {
+      uid(user) <age> "30" .
+      uid(user) <name> "Alice Sayum" .
+    }
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), upsertQuery)
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+fmt.Printf("%+v\n", resp.BlankUids)
+```
+
+A conditional upsert can be run using the `@if` directive.
+
+```go  theme={null}
+upsertQuery := `upsert {
+  query {
+    user as var(func: eq(email, "alice@example.com"))
+  }
+  mutation @if(eq(len(user), 1)) {
+    set {
+      uid(user) <age> "30" .
+      uid(user) <name> "Alice Sayum" .
+    }
+  }
+}`
+resp, err := client.RunDQL(context.TODO(), upsertQuery)
+// handle error
+fmt.Printf("%s\n", resp.QueryResult)
+```
+
+### Drop all data
+
+In order to drop all data in the cluster and start fresh, use the
+`DropAllNamespaces` function.
+
+```go  theme={null}
+err := client.DropAllNamespaces(context.TODO())
+// handle error
+```
+
+## Model Context Protocol (MCP) Server
+
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP)
+is a standard for making tools, data, and prompts available to AI models. It can
+be especially useful in bringing context on your stack into coding assistants.
+
+Version 25 of Dgraph introduces two MCP servers with common tools for AI coding
+assistants:
+
+* `mcp` – a server that provides tools and data from your Dgraph cluster
+* `mcp-ro` – a server that provides tools and data from your Dgraph cluster in
+  read-only mode
+
+### Configuration
+
+To add the MCP server to your coding assistant, add the following to your
+configuration file:
+
+<CodeGroup>
+  ```json local theme={null}
+  {
+    "mcpServers": {
+      "dgraph": {
+        "command": "npx",
+        "args": ["mcp-remote", "https://localhost:9080/mcp/sse"]
+      }
+    }
+  }
+  ```
+</CodeGroup>
+
+<Tip>
+  We're continuing to refine the resources available on the MCP servers. Please
+  share feedback via [Discord](https://discord.hypermode.com) or
+  [GitHub](https://github.com/hypermodeinc/dgraph).
+</Tip>
+
+### Tools
+
+The MCP servers provide the following tools:
+
+* `Get-Schema` – fetch the schema of your cluster
+* `Run-Query` – run a query on your cluster
+* `Run-Mutation` – run a mutation on your cluster
+* `Alter-Schema` – modify the schema of your cluster
+* `Get-Common-Queries` – provides reference queries to aide in query syntax
+
+### Prompt
+
+For clients that support prompts over the MCP protocol, a prompt is available to
+provide an introduction to the agent.
+
+The full text of the prompt is
+[available in the Dgraph repo](https://github.com/hypermodeinc/dgraph/blob/8a774a03ac2558ad027bd86ead8b0059d3bfa3f5/dgraph/cmd/mcp/prompt.txt).

@@ -1,0 +1,138 @@
+# Source: https://docs.pipecat.ai/server/utilities/mcp/mcp.md
+
+# MCPClient
+
+> Service to connect to MCP (Model Context Protocol) servers
+
+## Overview
+
+MCP is an open standard for enabling AI agents to interact with external data and tools. `MCPClient` provides a way to access and call tools via MCP. For example, instead of writing bespoke function call implementations for an external API, you may use an MCP server that provides a bridge to the API. *Be aware there may be security implications.* See [MCP documenation](https://github.com/modelcontextprotocol) for more details.
+
+## Installation
+
+To use `MCPClient`, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[mcp]"
+```
+
+You may also need to set environment variables as required by the specific MCP server to which you are connecting.
+
+## Configuration
+
+### Constructor Parameters
+
+You can connect to your MCP server via Stdio or SSE transport. See [here](https://modelcontextprotocol.io/docs/concepts/transports#built-in-transport-types) for more documentation on MCP transports.
+
+<ParamField path="server_params" type="str | StdioServerParameters" required>
+  You can provide either:
+
+  * URL: "[https://your.mcp.server/sse](https://your.mcp.server/sse)"
+  * StdioServerParameters, which are defined as:
+
+  ```python  theme={null}
+    StdioServerParameters(
+          command="python",  # Executable
+          args=["example_server.py"],  # Optional command line arguments
+          env=None,  # Optional environment variables
+      )
+  ```
+</ParamField>
+
+### Input Parameters
+
+See more information regarding server params [here](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients).
+
+## Usage Example
+
+### MCP Stdio Transport Implementation
+
+```python  theme={null}
+
+# Import MCPClient and StdioServerParameters
+...
+from mcp import StdioServerParameters
+from pipecat.services.mcp_service import MCPClient
+...
+
+# Initialize an LLM
+llm = ...
+
+# Initialize and configure MCPClient with server parameters
+mcp = MCPClient(
+        server_params=StdioServerParameters(
+            command=shutil.which("npx"),
+            args=["-y", "@name/mcp-server-name@latest"],
+            env={"ENV_API_KEY": "<env_api_key>"},
+        )
+    )
+
+# Create tools schema from the MCP server and register them with llm
+tools = await mcp.register_tools(llm)
+
+# Create context with system message and tools
+# Tip: Let the LLM know it has access to tools from an MCP server by including it in the system prompt.
+context = LLMContext(
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant in a voice conversation. You have access to MCP tools. Keep responses concise."
+        }
+    ],
+    tools=tools
+)
+```
+
+### MCP SSE Transport Implementation
+
+```python  theme={null}
+
+# Import MCPClient
+...
+from pipecat.services.mcp_service import MCPClient
+...
+
+# Initialize an LLM
+llm = ...
+
+# Initialize and configure MCPClient with MCP SSE server url
+mcp = MCPClient(server_params="https://your.mcp.server/sse")
+
+# Create tools schema from the MCP server and register them with llm
+tools = await mcp.register_tools(llm)
+
+# Create context with system message and tools
+# Tip: Let the LLM know it has access to tools from an MCP server by including it in the system prompt.
+context = LLMContext(
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a helpful assistant in a voice conversation. You have access to MCP tools. Keep responses concise."
+        }
+    ],
+    tools=tools
+)
+```
+
+## Methods
+
+<ResponseField name="register_tools" type="async method">
+  Converts MCP tools to Pipecat-friendly function definitions and registers the
+  functions with the llm.
+</ResponseField>
+
+```python  theme={null}
+async def register_tools(self, llm) -> ToolsSchema:
+```
+
+## Additional documentation
+
+<Note>
+  See [MCP's docs](https://github.com/modelcontextprotocol/python-sdk) for MCP
+  related updates.
+</Note>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,0 +1,82 @@
+# Source: https://docs.pipecat.ai/server/services/transport/websocket-server.md
+
+# WebSocket Transports
+
+> WebSocket transport implementations for real-time client-server communication
+
+## Overview
+
+WebSocket transports provide both client and server WebSocket implementations for real-time bidirectional communication. These transports support audio streaming, frame serialization, and connection management, making them ideal for prototyping and lightweight client-server applications where WebRTC might be overkill.
+
+<Warning>
+  WebSocket transports are best suited for prototyping and controlled network environments.
+
+  For production client-server applications, we recommend WebRTC-based transports for more robust network handling, NAT traversal, and media optimization.
+</Warning>
+
+<CardGroup cols={2}>
+  <Card title="WebSocket Client API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.websocket.client.html">
+    Client transport methods and configuration
+  </Card>
+
+  <Card title="WebSocket Server API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.websocket.server.html">
+    Server transport methods and configuration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/websocket">
+    Complete client and server WebSocket examples
+  </Card>
+
+  <Card title="WebSocket Protocol" icon="book" href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API">
+    WebSocket protocol documentation and guides
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use WebSocket transports, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[websocket]"
+```
+
+## Prerequisites
+
+### WebSocket Application Setup
+
+Before using WebSocket transports, you need:
+
+1. **Server Implementation**: Set up WebSocket server using your preferred framework
+2. **Client Implementation**: Configure WebSocket client for browser or application use
+3. **Audio Configuration**: Set up audio streaming parameters and formats
+4. **Connection Management**: Handle WebSocket lifecycle and error recovery
+
+### Configuration Options
+
+* **Transport Type**: Choose between client or server WebSocket transport
+* **Audio Parameters**: Configure sample rates, channels, and audio formats
+* **Frame Serialization**: Set up custom frame serializers if needed
+* **Connection Handling**: Configure reconnection and error handling strategies
+
+### Key Features
+
+* **Bidirectional Communication**: Real-time audio and data streaming
+* **Simple Protocol**: Lightweight WebSocket-based communication
+* **Flexible Serialization**: Support for custom frame formats and audio codecs
+* **Cross-Platform**: Works with any WebSocket-compatible client or server
+
+## Usage
+
+WebSocket transports provide simple client-server communication for audio streaming and real-time interaction. They're ideal for prototyping and controlled network environments.
+
+See the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/main/websocket) for full implementations including:
+
+* WebSocket server setup and configuration
+* Client-side WebSocket integration
+* Audio streaming and frame handling
+* Connection management and error recovery
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

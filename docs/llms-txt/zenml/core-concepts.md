@@ -1,0 +1,210 @@
+# Source: https://docs.zenml.io/getting-started/core-concepts.md
+
+# Core Concepts
+
+![A diagram of core concepts of ZenML OSS](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-0cc3398a1efa3bf449429e3e9518869037dbe6be%2Fcore_concepts_oss.png?alt=media)
+
+**ZenML** is a unified, extensible, open-source MLOps framework for creating portable, production-ready **MLOps pipelines**. It's built for data scientists, ML Engineers, and MLOps Developers to collaborate as they develop to production. By extending the battle-tested principles you rely on for classical ML to the new world of AI agents, ZenML serves as one platform to develop, evaluate, and deploy your entire AI portfolio - from decision trees to complex multi-agent systems. In order to achieve this goal, ZenML introduces various concepts for different aspects of ML workflows and AI agent development, and we can categorize these concepts under three different threads:
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>1. Development</strong></mark></td><td>As a developer, how do I design my machine learning workflows?</td><td></td><td><a href="#1-development">#1-development</a></td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-677d12d9c4451f5fe7f49bbcc7bb3db55e451a46%2Fdevelopment.png?alt=media">development.png</a></td></tr><tr><td><mark style="color:purple;"><strong>2. Execution</strong></mark></td><td>While executing, how do my workflows utilize the large landscape of MLOps tooling/infrastructure?</td><td></td><td><a href="#2-execution">#2-execution</a></td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-ea76cc88e222640e3afb2081106fa21b95bacab6%2Fexecution.png?alt=media">execution.png</a></td></tr><tr><td><mark style="color:purple;"><strong>3. Management</strong></mark></td><td>How do I establish and maintain a production-grade and efficient solution?</td><td></td><td><a href="#3-management">#3-management</a></td><td><a href="https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-9cd465645f77b131d9afc33476cb6eacc2cc6103%2Fmanagement.png?alt=media">management.png</a></td></tr></tbody></table>
+
+{% embed url="<https://www.youtube.com/embed/iCB4KNjl5vs>" %}
+If you prefer visual learning, this short video demonstrates the key concepts covered below.
+{% endembed %}
+
+## 1. Development
+
+First, let's look at the main concepts that play a role during the development stage of ML workflows and AI agent pipelines with ZenML.
+
+#### Step
+
+Steps are functions annotated with the `@step` decorator. The easiest one could look like this.
+
+```python
+from zenml import step
+
+@step
+def step_1() -> str:
+    """Returns a string."""
+    return "world"
+```
+
+These functions can also have inputs and outputs. For ZenML to work properly, these should preferably be typed.
+
+```python
+from zenml import step
+
+@step(enable_cache=False)
+def step_2(input_one: str, input_two: str) -> str:
+    """Combines the two strings passed in."""
+    combined_str = f"{input_one} {input_two}"
+    return combined_str
+
+@step
+def evaluate_agent_response(prompt: str, test_query: str) -> dict:
+    """Evaluates an AI agent's response to a test query."""
+    response = call_llm_agent(prompt, test_query)
+    return {"query": test_query, "response": response, "quality_score": 0.95}
+```
+
+#### Pipelines
+
+At its core, ZenML follows a pipeline-based workflow for your projects. A **pipeline** consists of a series of **steps**, organized in any order that makes sense for your use case.
+
+![Representation of a pipeline dag.](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-ce13142154e9dc562c10c029680c77b543265b64%2F01_pipeline.png?alt=media)
+
+As seen in the image, a step might use the outputs from a previous step and thus must wait until the previous step is completed before starting. This is something you can keep in mind when organizing your steps.
+
+Pipelines and steps are defined in code using Python *decorators* or *classes*. This is where the core business logic and value of your work live, and you will spend most of your time defining these two things.
+
+Even though pipelines are simple Python functions, you are only allowed to call steps within this function. The inputs for steps called within a pipeline can either be the outputs of previous steps or alternatively, you can pass in values directly or map them onto pipeline parameters (as long as they're JSON-serializable). Similarly, you can return values from a pipeline that are step outputs as long as they are JSON-serializable.
+
+```python
+from zenml import pipeline
+
+@pipeline
+def my_pipeline():
+    output_step_one = step_1()
+    step_2(input_one="hello", input_two=output_step_one)
+
+@pipeline
+def agent_evaluation_pipeline(query: str = "What is machine learning?") -> str:
+    """An AI agent evaluation pipeline."""
+    prompt = "You are a helpful assistant. Please answer: {query}"
+    evaluation_result = evaluate_agent_response(prompt, query)
+    return evaluation_result
+```
+
+Executing the Pipeline is as easy as calling the function that you decorated with the `@pipeline` decorator.
+
+```python
+if __name__ == "__main__":
+    my_pipeline()
+    agent_evaluation_pipeline(query="What is an LLM?")
+```
+
+#### Artifacts
+
+Artifacts represent the data that goes through your steps as inputs and outputs, and they are automatically tracked and stored by ZenML in the artifact store. They are produced by and circulated among steps whenever your step returns an object or a value. This means the data is not passed between steps in memory. Rather, when the execution of a step is completed, they are written to storage, and when a new step gets executed, they are loaded from storage.
+
+Artifacts can be traditional ML data (datasets, models, metrics) or AI agent components (prompt templates, agent configurations, evaluation results). The same artifact system seamlessly handles both use cases.
+
+The serialization and deserialization logic of artifacts is defined by [Materializers](https://docs.zenml.io/concepts/artifacts/materializers).
+
+#### Models
+
+Models are used to represent the outputs of a training process along with all metadata associated with that output. In other words: models in ZenML are more broadly defined as the weights as well as any associated information. This includes traditional ML models (scikit-learn, PyTorch, etc.) and AI agent configurations (prompt templates, tool definitions, multi-agent system architectures). Models are first-class citizens in ZenML and as such viewing and using them is unified and centralized in the ZenML API, client, as well as on the [ZenML Pro](https://zenml.io/pro) dashboard.
+
+#### Materializers
+
+Materializers define how artifacts live in between steps. More precisely, they define how data of a particular type can be serialized/deserialized, so that the steps are able to load the input data and store the output data.
+
+All materializers use the base abstraction called the `BaseMaterializer` class. While ZenML comes built-in with various implementations of materializers for different datatypes, if you are using a library or a tool that doesn't work with our built-in options, you can write [your own custom materializer](https://docs.zenml.io/concepts/artifacts/materializers) to ensure that your data can be passed from step to step.
+
+#### Parameters & Settings
+
+When we think about steps as functions, we know they receive input in the form of artifacts. We also know that they produce output (in the form of artifacts, stored in the artifact store). But steps also take parameters. The parameters that you pass into the steps are also (helpfully!) stored by ZenML. This helps freeze the iterations of your experimentation workflow in time, so you can return to them exactly as you run them. On top of the parameters that you provide for your steps, you can also use different `Setting`s to configure runtime configurations for your infrastructure and pipelines.
+
+#### Model and model versions
+
+ZenML exposes the concept of a `Model`, which consists of multiple different model versions. A model version represents a unified view of the ML models that are created, tracked, and managed as part of a ZenML project. Model versions link all other entities to a centralized view.
+
+## 2. Execution
+
+Once you have implemented your workflow by using the concepts described above, you can focus your attention on the execution of the pipeline run.
+
+#### Stacks & Components
+
+When you want to execute a pipeline run with ZenML, **Stacks** come into play. A **Stack** is a collection of **stack components**, where each component represents the respective configuration regarding a particular function in your MLOps pipeline, such as pipeline orchestration or deployment systems, artifact repositories and container registries.
+
+Pipelines can be executed in two ways: in **batch mode** (traditional execution through an orchestrator) or in **online mode** (long-running HTTP servers that can be invoked via REST API calls). Deploying pipelines for online mode execution allows you to serve your ML workflows as real-time endpoints, making them accessible for live inference and interactive use cases.
+
+For instance, if you take a close look at the default local stack of ZenML, you will see two components that are **required** in every stack in ZenML, namely an *orchestrator* and an *artifact store*. Additional components like *deployers* can be added to enable specific functionality such as deploying pipelines as HTTP endpoints.
+
+![ZenML running code on the Local Stack.](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-506972ee9e2ae0618aa74e36e95f5b9d725379e0%2F02_pipeline_local_stack.png?alt=media)
+
+{% hint style="info" %}
+Keep in mind that each one of these components is built on top of base abstractions and is completely extensible.
+{% endhint %}
+
+#### Orchestrator
+
+An **Orchestrator** is a workhorse that coordinates all the steps to run in a pipeline in batch mode. Since pipelines can be set up with complex combinations of steps with various asynchronous dependencies between them, the orchestrator acts as the component that decides what steps to run and when to run them.
+
+ZenML comes with a default *local orchestrator* designed to run on your local machine. This is useful, especially during the exploration phase of your project. You don't have to rent a cloud instance just to try out basic things.
+
+#### Artifact Store
+
+An **Artifact Store** is a component that houses all data that passes through the pipeline as inputs and outputs. Each artifact that gets stored in the artifact store is tracked and versioned and this allows for extremely useful features like data caching, which speeds up your workflows.
+
+Similar to the orchestrator, ZenML comes with a default *local artifact store* designed to run on your local machine. This is useful, especially during the exploration phase of your project. You don't have to set up a cloud storage system to try out basic things.
+
+#### Deployer
+
+A **Deployer** is a stack component that manages the deployment of pipelines as long-running HTTP servers useful for online mode execution. Unlike orchestrators that execute pipelines in batch mode, deployers can create and manage persistent services that wrap your pipeline in a web application, usually containerized, allowing it to be invoked through HTTP requests.
+
+ZenML comes with a *Docker deployer* that can run deployments on your local machine as Docker containers, making it easy to test and develop real-time pipeline endpoints before moving to production infrastructure.
+
+#### Flavor
+
+ZenML provides a dedicated base abstraction for each stack component type. These abstractions are used to develop solutions, called **Flavors**, tailored to specific use cases/tools. With ZenML installed, you get access to a variety of built-in and integrated Flavors for each component type, but users can also leverage the base abstractions to create their own custom flavors.
+
+#### Stack Switching
+
+When it comes to production-grade solutions, it is rarely enough to just run your workflow locally without including any cloud infrastructure.
+
+Thanks to the separation between the pipeline code and the stack in ZenML, you can easily switch your stack independently from your code. For instance, all it would take you to switch from an experimental local stack running on your machine to a remote stack that employs a full-fledged cloud infrastructure is a single CLI command.
+
+#### Pipeline Snapshot
+
+A **Pipeline Snapshot** is an immutable snapshot of your pipeline that includes the pipeline DAG, code, configuration, and container images. Snapshots can be run from the server or dashboard, and can also be [deployed](#deployment).
+
+#### Pipeline Run
+
+A **Pipeline Run** is a record of a pipeline execution. When you run a pipeline using an orchestrator, a pipeline run is created tracking information about the execution such as the status, the artifacts and metadata produced by the pipeline and all its steps. When a pipeline is deployed for online mode execution, a pipeline run is similarly created for every HTTP request made to it.
+
+#### Deployment
+
+A **Deployment** is a running instance of a pipeline deployed as an HTTP endpoint. When you deploy a pipeline using a deployer, it becomes a long-running service that can be invoked through REST API calls. Each HTTP request to a deployment triggers a new pipeline run, creating the same artifacts and metadata tracking as traditional batch pipeline executions. This enables real-time inference, interactive ML workflows, and seamless integration with web applications and external services.
+
+## 3. Management
+
+In order to benefit from the aforementioned core concepts to their fullest extent, it is essential to deploy and manage a production-grade environment that interacts with your ZenML installation.
+
+#### ZenML Server
+
+To use *stack components* that are running remotely on a cloud infrastructure, you need to deploy a [**ZenML Server**](https://docs.zenml.io/user-guides/production-guide/deploying-zenml) so it can communicate with these stack components and run your pipelines. The server is also responsible for managing ZenML business entities like pipelines, steps, models, etc.
+
+![Visualization of the relationship between code and infrastructure.](https://1640328923-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F5aBlTJNbVDkrxJp7J1J9%2Fuploads%2Fgit-blob-ae8a72912c75c05d0e7df012699f11dae0e487f4%2F04_architecture.png?alt=media)
+
+#### Server Deployment
+
+In order to benefit from the advantages of using a deployed ZenML server, you can either choose to use the [**ZenML Pro SaaS offering**](https://docs.zenml.io/pro)**,** which provides a control plane for you to create managed instances of ZenML servers, or [deploy it in your self-hosted environment](https://docs.zenml.io/deploying-zenml/deploying-zenml).
+
+#### Metadata Tracking
+
+On top of the communication with the stack components, the **ZenML Server** also keeps track of all the bits of metadata around a pipeline run. With a ZenML server, you are able to access all of your previous experiments with the associated details. This is extremely helpful in troubleshooting.
+
+#### Secrets
+
+The **ZenML Server** also acts as a [centralized secrets store](https://docs.zenml.io/deploying-zenml/deploying-zenml/secret-management) that safely and securely stores sensitive data, such as credentials used to access the services that are part of your stack. It can be configured to use a variety of different backends for this purpose, such as the AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, and Hashicorp Vault.
+
+Secrets are sensitive data that you don't want to store in your code or configure alongside your stacks and pipelines. ZenML includes a [centralized secrets store](https://docs.zenml.io/deploying-zenml/deploying-zenml/secret-management) that you can use to store and access your secrets securely.
+
+#### Collaboration
+
+Collaboration is a crucial aspect of any MLOps team as they often need to bring together individuals with diverse skills and expertise to create a cohesive and effective workflow for machine learning projects and AI agent development. A successful MLOps team requires seamless collaboration between data scientists, engineers, and DevOps professionals to develop, train, deploy, and maintain both traditional ML models and AI agent systems.
+
+With a deployed **ZenML Server**, users have the ability to create their own teams and project structures. They can easily share pipelines, runs, stacks, and other resources, streamlining the workflow and promoting teamwork across the entire AI development lifecycle.
+
+#### Dashboard
+
+The **ZenML Dashboard** also communicates with **the ZenML Server** to visualize your *pipelines*, *stacks*, and *stack components*. The dashboard serves as a visual interface to showcase collaboration with ZenML. You can invite *users* and share your stacks with them.
+
+When you start working with ZenML, you'll start with a local ZenML setup, and when you want to transition, you will need to [deploy ZenML](https://docs.zenml.io/deploying-zenml/deploying-zenml). Don't worry though, there is a one-click way to do it, which we'll learn about later.
+
+#### VS Code Extension
+
+ZenML also provides a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ZenML.zenml-vscode) that allows you to interact with your ZenML stacks, runs, and server directly from your VS Code editor. If you're working on code in your editor, you can easily switch and inspect the stacks you're using, delete and inspect pipelines as well as even switch stacks.
+
+<figure><img src="https://static.scarf.sh/a.png?x-pxid=f0b4f458-0a54-4fcd-aa95-d5ee424815bc" alt="ZenML Scarf"><figcaption></figcaption></figure>

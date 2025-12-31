@@ -1,0 +1,51 @@
+# Source: https://infisical.com/docs/documentation/platform/pam/getting-started/resources.md
+
+# PAM Resource
+
+> Learn how to add and configure resources like databases and servers, and set up automated credential rotation.
+
+A resource represents a target system, such as a database, server, or application, that you want to manage access to. Some examples of resources are:
+
+* PostgreSQL Database
+* MCP Server
+* Linux Server
+* Web Application
+
+## Prerequisites
+
+Before you can create a resource, you must have an **Infisical Gateway** deployed that is able to reach the target resource over the network.
+
+The Gateway acts as a secure bridge, allowing Infisical to reach your private infrastructure without exposing it to the public internet. When creating a resource, you will be asked to specify which Gateway should be used to connect to it.
+
+[Read the Gateway Deployment Guide](/documentation/platform/gateways/gateway-deployment)
+
+## Creating a Resource
+
+To add a resource, navigate to the **Resources** tab in your PAM project and click **Add Resource**.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/getting-started/resources/add-resource-button.png" alt="Add Resource Button" />
+
+Next, select the type of resource you want to add.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/getting-started/resources/select-resource-type.png" alt="Select Resource Type" />
+
+After selecting a resource type, provide the necessary connection details. The required fields vary depending on the resource type.
+
+**Important**: You must select the **Gateway** that has network access to this resource.
+
+In this PostgreSQL example, you provide details such as host, port, gateway, and database name.
+
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/pam/getting-started/resources/create-resource.png" alt="Create Resource" />
+
+Clicking **Create Resource** will trigger a connection test from the selected Gateway to your target resource. If the connection fails, an error message will be displayed to help you troubleshoot (usually indicating a network firewall issue between the Gateway and the Resource).
+
+## Automated Credential Rotation
+
+Some resources, such as PostgreSQL, support automated credential rotation to enhance your security posture. This feature requires configuring a privileged "Rotation Account" on the resource.
+
+To learn more about how to configure this, please refer to the [Credential Rotation guide](/documentation/platform/pam/product-reference/credential-rotation).
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

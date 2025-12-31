@@ -1,0 +1,31 @@
+# Source: https://mintlify.com/docs/integrations/analytics/hightouch.md
+
+# Hightouch
+
+> Sync data to Hightouch for audience activation.
+
+Add the following to your `docs.json` file to send analytics to Hightouch.
+
+<Info>
+  Do not include `https://` for the `apiHost`.
+</Info>
+
+<CodeGroup>
+  ```json Analytics options in docs.json theme={null}
+  "integrations": {
+      "hightouch": {
+          "writeKey": "required"
+          "apiHost": "optional"
+      }
+  }
+  ```
+
+  ```json Example theme={null}
+  "integrations": {
+      "hightouch": {
+          "writeKey": "9132c81do371p76sr11da0075469b54f77649c9a067dp0303p56q0q64n072336"
+          "apiHost": "us-east-1.hightouch-events.com" # optional, defaults to `us-east-1.hightouch-events.com`
+      }
+  }
+  ```
+</CodeGroup>

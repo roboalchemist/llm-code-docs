@@ -1,0 +1,130 @@
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
+
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
+
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
+
+# Source: https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md
+
+# Source: https://docs.apify.com/academy/deploying-your-code/input-schema.md
+
+# How to write Actor input schema
+
+**Learn how to generate a user interface on the platform for your Actor's input with a single file - the INPUT\_SCHEMA.json file.**
+
+***
+
+Though writing an https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md for an Actor is not a required step, it's definitely an ideal one. The Apify platform will read the `INPUT_SCHEMA.json` file within the root of your project and generate a user interface for entering input into your Actor, which makes it significantly easier for non-developers (and even developers) to configure and understand the inputs your Actor can receive. Because of this, we'll be writing an input schema for our example Actor.
+
+JSON requirement
+
+Without an input schema, the users of our Actor will have to provide the input in JSON format, which can be problematic for those who are not familiar with JSON.
+
+## Schema title & description
+
+In the root of our project, we'll create a file named **INPUT\_SCHEMA.json** and start writing the first part of the schema.
+
+
+```
+{
+    "title": "Adding Actor input",
+    "description": "Add all values in list of numbers with an arbitrary length.",
+    "type": "object",
+    "schemaVersion": 1
+}
+```
+
+
+The **title** and **description** describe what the input schema is for, and a bit about what the Actor itself does.
+
+## Properties
+
+In order to define all of the properties our Actor is expecting, we must include them within an object with a key of **properties**.
+
+
+```
+{
+    "title": "Adding Actor input",
+    "description": "Add all values in list of numbers with an arbitrary length.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "numbers": {
+            "title": "Number list",
+            "description": "The list of numbers to add up."
+        }
+    }
+}
+```
+
+
+Each property's key corresponds to the name we're expecting within our code, while the **title** and **description** are what the user will see when configuring input on the platform.
+
+## Property types & editor types
+
+Within our new **numbers** property, there are two more fields we must specify. Firstly, we must let the platform know that we're expecting an array of numbers with the **type** field. Then, we should also instruct Apify on which UI component to render for this input property. In our case, we have an array of numbers, which means we should use the **json** editor type that we discovered in the https://docs.apify.com/platform/actors/development/actor-definition/input-schema/specification/v1.md#array of the input schema documentation. We could also use **stringList**, but then we'd have to parse out the numbers from the strings.
+
+
+```
+{
+    "title": "Adding Actor input",
+    "description": "Add all values in list of numbers with an arbitrary length.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "numbers": {
+            "title": "Number list",
+            "description": "The list of numbers to add up.",
+            "type": "array",
+            "editor": "json"
+        }
+    }
+}
+```
+
+
+## Required fields
+
+The great thing about building an input schema is that it will automatically validate your inputs based on their type, maximum value, minimum value, etc. Sometimes, you want to ensure that the user will always provide input for certain fields, as they are crucial to the Actor's run. This can be done by using the **required** field and passing in the names of the fields you'd like to require.
+
+
+```
+{
+    "title": "Adding Actor input",
+    "description": "Add all values in list of numbers with an arbitrary length.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "numbers": {
+            "title": "Number list",
+            "description": "The list of numbers to add up.",
+            "type": "array",
+            "editor": "json"
+        }
+    },
+    "required": ["numbers"]
+}
+```
+
+
+For our case, we've made the **numbers** field required, as it is crucial to our Actor's run.
+
+## Final thoughts
+
+Here is what the input schema we wrote will render on the platform:
+
+![Rendered UI from input schema](/assets/images/rendered-ui-74b1f9f74dce9ba83249f733716a0745.png)
+
+Later on, we'll be building more complex input schemas, as well as discussing how to write quality input schemas that allow the user to understand the Actor.
+
+It's not expected to memorize all of the fields that properties can take or the different editor types available, which is why it's always good to reference the https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md when writing a schema.
+
+## Next up
+
+In the https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md, we'll learn how to generate an appealing Overview table to display our Actor's results in real time, so users can get immediate feedback about the data being extracted.

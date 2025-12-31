@@ -1,0 +1,107 @@
+# Source: https://docs.aimlapi.com/capabilities/thinking-reasoning.md
+
+# Thinking / Reasoning
+
+## Overview
+
+Some text models support advanced reasoning mode, enabling them to perform multi-step problem solving, draw inferences, and follow complex instructions. This makes them well-suited for tasks like code generation, data analysis, and answering questions that require understanding context or logic.
+
+{% hint style="warning" %}
+Sometimes, if you give the model a serious and complex task, generating a response can take quite a while. In such cases, you might want to use streaming mode to receive the answer word by word as it is being generated.
+{% endhint %}
+
+## Models That Support Thinking / Reasoning Mode
+
+### Anthropic
+
+Special parameters, such as `thinking` in Claude models, provide transparency into the model’s step-by-step reasoning process before it gives its final answer.
+
+Supported models:
+
+* [anthropic/claude-3.7-sonnet](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-3.7-sonnet)
+* [anthropic/claude-opus-4](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-4-opus)
+* [anthropic/claude-sonnet-4](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-4-sonnet)
+* [anthropic/claude-opus-4.1](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-opus-4.1)
+* [anthropic/claude-sonnet-4.5](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-4-5-sonnet)
+* [anthropic/claude-opus-4-5](https://docs.aimlapi.com/api-references/text-models-llm/anthropic/claude-4.5-opus)
+
+### Google
+
+Google's policy regarding reasoning models is not to provide parameters for explicitly controlling the model's reasoning activity during invocation. However, this activity does occur, and you can even inspect how many tokens it consumed by checking the `reasoning_tokens` field in the response.
+
+<details>
+
+<summary>Example of the "usage" section in a Gemini model response</summary>
+
+```json
+  "usage": {
+    "prompt_tokens": 6,
+    "completion_tokens": 3050,
+    "completion_tokens_details": {
+      "reasoning_tokens": 1097
+    },
+    "total_tokens": 3056
+```
+
+</details>
+
+Supported models:
+
+* [google/gemini-2.5-flash-lite-preview](https://docs.aimlapi.com/api-references/text-models-llm/google/gemini-2.5-flash-lite-preview)
+* [google/gemini-2.5-flash](https://docs.aimlapi.com/api-references/text-models-llm/google/gemini-2.5-flash)
+* [google/gemini-2.5-pro](https://docs.aimlapi.com/api-references/text-models-llm/google/gemini-2.5-pro)
+* [google/gemini-3-pro-preview](https://docs.aimlapi.com/api-references/text-models-llm/google/gemini-3-pro-preview)
+
+### OpenAI and other vendors
+
+The standard way to control reasoning behavior in OpenAI models—and in some models from other providers—is through the `reasoning_effort` parameter, which tells the model how much internal reasoning it should perform before responding to the prompt.
+
+Accepted values are `low`, `medium`, and `high`. Lower levels prioritize speed and efficiency, while higher levels provide deeper reasoning at the cost of increased token usage and latency. The default is `medium`, offering a balance between performance and quality.
+
+Supported models:
+
+* [o1](https://docs.aimlapi.com/api-references/text-models-llm/openai/o1)
+* [o3-mini](https://docs.aimlapi.com/api-references/text-models-llm/openai/o3-mini)
+* [openai/gpt-4.1-mini-2025-04-14](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-4.1-mini)
+* [openai/gpt-4.1-nano-2025-04-14](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-4.1-nano)
+* [openai/o3-2025-04-16](https://docs.aimlapi.com/api-references/text-models-llm/openai/o3)
+* [openai/o4-mini-2025-04-16](https://docs.aimlapi.com/api-references/text-models-llm/openai/o4-mini)
+* [openai/gpt-oss-20b](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-oss-20b)
+* [openai/gpt-oss-120b](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-oss-120b)
+* [openai/gpt-5-2025-08-07](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5)
+* [openai/gpt-5-mini-2025-08-07](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5-mini)
+* [openai/gpt-5-nano-2025-08-07](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5-nano)
+* [openai/gpt-5-1](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5-1)
+* [openai/gpt-5-2](https://docs.aimlapi.com/api-references/text-models-llm/openai/gpt-5.2)
+
+***
+
+* [alibaba/qwen3-32b](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-32b)
+* [alibaba/qwen3-coder-480b-a35b-instruct](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-coder-480b-a35b-instruct)
+* [alibaba/qwen3-235b-a22b-thinking-2507](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-235b-a22b-thinking-2507)
+* [alibaba/qwen3-next-80b-a3b-thinking](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-next-80b-a3b-thinking)
+* [alibaba/qwen3-vl-32b-thinking](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud/qwen3-vl-32b-thinking)
+
+***
+
+* [minimax/m2](https://docs.aimlapi.com/api-references/text-models-llm/minimax/m2)
+* [minimax/m2-1](https://docs.aimlapi.com/api-references/text-models-llm/minimax/m2-1)
+
+***
+
+* [vidia/nemotron-nano-9b-v2](https://docs.aimlapi.com/api-references/text-models-llm/nvidia/nemotron-nano-9b-v2)
+* [nvidia/nemotron-nano-12b-v2-vl](https://docs.aimlapi.com/api-references/text-models-llm/nvidia/llama-3.1-nemotron-70b-1)
+
+***
+
+* [x-ai/grok-3-mini-beta](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-3-mini-beta)
+* [x-ai/grok-4-07-09](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-4)
+* [x-ai/grok-code-fast-1](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-code-fast-1)
+* [x-ai/grok-4-fast-reasoning](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-4-fast-reasoning)
+* [x-ai/grok-4-1-fast-reasoning](https://docs.aimlapi.com/api-references/text-models-llm/xai/grok-4-1-fast-reasoning)
+
+***
+
+* [zhipu/glm-4.5-air](https://docs.aimlapi.com/api-references/text-models-llm/zhipu/glm-4.5-air)
+* [zhipu/glm-4.5](https://docs.aimlapi.com/api-references/text-models-llm/zhipu/glm-4.5)
+* [zhipu/glm-4.7](https://docs.aimlapi.com/api-references/text-models-llm/zhipu/glm-4.7)

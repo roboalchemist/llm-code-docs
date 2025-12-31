@@ -1,0 +1,202 @@
+# Source: https://juno.build/docs/build/analytics/setup.md
+
+# Setup
+
+This section covers how to integrate and configure Juno Analytics in your app or website.
+
+---
+
+## Getting Started
+
+Before integrating Juno Analytics into your app or website, you need to create an Orbiter - the analytics container that collects anonymous usage data. Here's a step-by-step guide to get started:
+
+1.  Sign in to the Juno [Console](https://console.juno.build)
+2.  Navigate to [Analytics](https://console.juno.build/analytics/)
+3.  Click on **Get started**
+4.  Confirm by selecting **Create analytics**
+5.  (Optional) In **Advanced Options**, choose a European subnet if you want your data stored in Europe
+6.  Once the setup completes, click **Close** to exit the wizard
+
+ð You've now created your Analytics Orbiter!
+
+But you're not done yet â you still need to tell it which Satellites (apps) can send data.
+
+ð  **Final Step: Setup Tracking**
+
+Go to the [Setup](https://console.juno.build/analytics/?tab=setup) tab in the Analytics page and select which Satellites should be allowed to track page views and events.
+
+---
+
+## Setup
+
+There are two ways to integrate Juno Analytics into your project:
+
+1.  Using your favorite package manager (`npm`, `yarn`, `pnpm`). ([Learn how](#1-with-package-manager)).
+    
+2.  Without installation by fetching the library from a CDN. ([Learn how](#2-from-a-cdn)).
+    
+
+---
+
+### 1\. With Package Manager
+
+Follow these steps to install and initialize the SDK using your preferred package manager.
+
+#### Install the Library
+
+To install the analytics library, run the following command:
+
+*   npm
+*   yarn
+*   pnpm
+
+```
+npm i @junobuild/analytics
+```
+
+```
+yarn add @junobuild/analytics
+```
+
+```
+pnpm add @junobuild/analytics
+```
+
+#### Configure
+
+If you're using the [Next.js](/docs/reference/plugins.md#nextjs-plugin) or [Vite](/docs/reference/plugins.md#vite-plugin), you can define your configuration in your `juno.config` file.
+
+juno.config.js
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai" // <-- Replace with your ID    }  }});
+```
+
+If you're not using a plugin, you can skip this step and instead provide the IDs manually when initializing the Orbiter (see next section).
+
+#### Initialize
+
+â Using plugins and config
+
+Just call `initOrbiter()` as early as possible in your app startup:
+
+```
+import { initOrbiter } from "@junobuild/analytics";initOrbiter();
+```
+
+ð  Without plugins
+
+Pass your Satellite and Orbiter IDs manually:
+
+```
+import { initOrbiter } from "@junobuild/analytics";initOrbiter({  satelliteId: "<SATELLITE_ID>", // replace with your Satellite ID  orbiterId: "<ORBITER_ID>" // replace with your Orbiter ID});
+```
+
+---
+
+### 2\. From a CDN
+
+If you don't want to - or cannot - install anything locally, you can load the SDK directly from a CDN.
+
+Add the following script to your HTML (for example, in `index.html`). This will fetch the library from [jsDelivr](https://www.jsdelivr.com/) and start the analytics when someone loads your site:
+
+```
+<script type="module">  import { initOrbiter } from "https://cdn.jsdelivr.net/npm/@junobuild/analytics@0.2.0/+esm";  document.addEventListener(    "DOMContentLoaded",    () =>      initOrbiter({        satelliteId: "<SATELLITE_ID>", // replace with your Satellite ID        orbiterId: "<ORBITER_ID>" // replace with your Orbiter ID      }),    {      once: true    }  );</script>
+```
+
+---
+
+## Optional Features
+
+The SDK includes a few optional features you can enable to enrich your analytics. By default, these are disabled to keep your bundle small and your app fast.
+
+---
+
+### UA Parser
+
+By default, the library uses a naive approach to analyze the user agent string â enough to detect general categories (like mobile vs desktop) â while keeping the bundle lean and fast.
+
+If you need more detailed insights such as browser name, OS, or device model, you can opt in to use a full UA parser.
+
+#### What It Adds
+
+When enabled, the parser collects:
+
+*   Browser name and version
+*   Operating system
+*   Device type (e.g., mobile, desktop, tablet)
+
+These enrich the stats visible in the dashboard, including OS and better browser breakdowns.
+
+#### Why It's Opt-In
+
+*   Adds a few extra kilobytes to the app bundle
+*   Disabled by default to preserve performance and minimize boot time
+
+**Note:**
+
+A more complete UA parsing approach could be performed inside a container, but this would currently require too many resources impacting both performance and cost. Delegating it to the frontend keeps things fast and efficient.
+
+#### How to Enable
+
+Pass `userAgentParser: true` when calling `initOrbiter()`:
+
+```
+import { initOrbiter } from "@junobuild/analytics";initOrbiter({  options: {    userAgentParser: true  }});
+```
+
+---
+
+### Performance Metrics
+
+Juno Analytics supports tracking key performance metrics using [Web Vitals](https://github.com/GoogleChrome/web-vitals). This feature is **opt-in** and requires configuration in both the Console and your app's code.
+
+#### Key Metrics
+
+When enabled, the following Web Vitals are tracked:
+
+*   **Time to First Byte (TTFB)**: Measures the time it takes for the first byte of data to reach the user's browser, indicating server responsiveness.
+*   **First Contentful Paint (FCP)**: Marks the time when the first piece of content is rendered, helping assess initial loading speed.
+*   **Largest Contentful Paint (LCP)**: Tracks the time when the largest content element becomes visible, indicating when the main content is likely fully loaded.
+*   **Cumulative Layout Shift (CLS)**: Quantifies unexpected layout shifts during loading, reflecting visual stability.
+*   **Interaction to Next Paint (INP)**: Measures the latency of interactions, such as clicks, to evaluate application responsiveness.
+
+#### How to Enable Web Vitals
+
+To start collecting performance metrics, you need to enable it in two places:
+
+1.  **In the Console**
+
+Go to your Orbiter's [Setup tab](https://console.juno.build/analytics/?tab=setup) and click "Edit Configuration". Enable the "Web Vitals" option under the "Advance Options" to allow the Orbiter to store performance data.
+
+2.  **In your App**
+
+Enable Web Vitals in the SDK during initialization. This ensures that the additional logic is only loaded when needed, helping keep your app's initial load size minimal.
+
+```
+import { initOrbiter } from "@junobuild/analytics";initOrbiter({  options: {    performance: true  }});
+```
+
+---
+
+## Best Practices
+
+Here are some useful tips for working with the analytics.
+
+### Production vs Development
+
+While the example above shows analytics being initialized in all cases, it's recommended to **disable analytics during local development**. This prevents test data from polluting your metrics if your local environment is connected to production, and avoids errors when analytics aren't set up locally which is often the case during development.
+
+```
+if (DEV) {  return;}initOrbiter();
+```
+
+### Use Environment-Specific IDs
+
+You can also configure different IDs for different environments (e.g., development and production):
+
+juno.config.js
+
+```
+import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist"  },  orbiter: {    ids: {      production: "aaaa-bbbbb-ccccc-ddddd-cai",      development: "ffff-eeee-ddddd-ccccc-cai"    }  }});
+```

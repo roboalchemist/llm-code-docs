@@ -1,0 +1,68 @@
+# Source: https://docs.pipecat.ai/server/services/serializers/telnyx.md
+
+# TelnyxFrameSerializer
+
+> Serializer for Telnyx WebSocket media streaming protocol
+
+## Overview
+
+`TelnyxFrameSerializer` enables integration with Telnyx's WebSocket media streaming protocol, allowing your Pipecat application to handle phone calls via Telnyx's voice services with bidirectional audio conversion, DTMF event handling, and support for multiple audio encodings.
+
+<CardGroup cols={2}>
+  <Card title="Telnyx Serializer API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.serializers.telnyx.html">
+    Pipecat's API methods for Telnyx WebSocket integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/telnyx-chatbot">
+    Complete telephony examples with Telnyx
+  </Card>
+
+  <Card title="Telnyx Documentation" icon="book" href="https://developers.telnyx.com/docs/voice/media-streaming">
+    Official Telnyx media streaming documentation
+  </Card>
+
+  <Card title="Telnyx Portal" icon="microphone" href="https://portal.telnyx.com/">
+    Manage phone numbers and streaming configuration
+  </Card>
+</CardGroup>
+
+## Installation
+
+The `TelnyxFrameSerializer` does not require any additional dependencies beyond the core Pipecat library:
+
+```bash  theme={null}
+pip install "pipecat-ai"
+```
+
+## Prerequisites
+
+### Telnyx Account Setup
+
+Before using TelnyxFrameSerializer, you need:
+
+1. **Telnyx Account**: Sign up at [Telnyx Portal](https://portal.telnyx.com/)
+2. **Phone Number**: Purchase a Telnyx phone number with voice capabilities
+3. **Media Streaming**: Configure your phone number for WebSocket streaming
+4. **Webhook Configuration**: Set up webhook endpoints for call handling
+
+### Required Environment Variables
+
+* `TELNYX_API_KEY`: Your Telnyx API key for authentication and call control
+
+### Required Configuration
+
+* **Stream ID**: Provided by Telnyx during WebSocket connection
+* **Audio Encodings**: Configure inbound/outbound encodings (PCMU, PCMA)
+* **Call Control ID**: Required for automatic call termination (optional)
+
+### Key Features
+
+* **Bidirectional Audio**: Convert between Pipecat and Telnyx audio formats
+* **DTMF Handling**: Process touch-tone events from callers
+* **Auto Hang-up**: Terminate calls via Telnyx's REST API
+* **Multiple Encodings**: Support for PCMU and PCMA audio formats
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,0 +1,39 @@
+# Source: https://mui.com/x/api/charts/charts-text.md
+
+# ChartsText API
+
+## Demos
+
+For examples and details on the usage of this React component, visit the component demo pages:
+
+- [Charts - Axis](/x/react-charts/axis/)
+- [Charts - Legend](/x/react-charts/legend/)
+
+## Import
+
+```jsx
+import { ChartsText } from '@mui/x-charts/ChartsText';
+// or
+import { ChartsText } from '@mui/x-charts';
+// or
+import { ChartsText } from '@mui/x-charts-pro';
+// or
+import { ChartsText } from '@mui/x-charts-premium';
+```
+
+## Props
+
+| Name | Type | Default | Required | Description |
+|------|------|---------|----------|-------------|
+| text | `string` | - | Yes |  |
+| lineHeight | `number` | - | No |  |
+| needsComputation | `bool` | `false` | No |  |
+| style | `object` | - | No |  |
+
+> **Note**: The `ref` is forwarded to the root element.
+
+## Source code
+
+If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
+
+- [/packages/x-charts/src/ChartsText/ChartsText.tsx](https://github.com/mui/material-ui/tree/HEAD/packages/x-charts/src/ChartsText/ChartsText.tsx)

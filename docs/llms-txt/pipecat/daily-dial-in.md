@@ -1,0 +1,148 @@
+# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-in.md
+
+# Daily PSTN Dial-in
+
+> Using Daily's Transport to receive calls from external SIP Addresses and PSTN numbers
+
+When someone calls your Daily phone number, the call is placed on hold and triggers a webhook to initialize your Pipecat bot.
+
+## Setup Options
+
+### Option 1: Automatic Webhook (Recommended)
+
+Let Pipecat Cloud handle the webhook automatically.
+
+**Using the Dashboard:**
+
+1. Go to **Settings > Telephony** in Pipecat Cloud
+2. Select your phone number
+3. Choose your deployed agent
+4. Save
+
+**Using the REST API:**
+
+```bash  theme={null}
+curl --location 'https://api.daily.co/v1' \
+--header 'Authorization: Bearer YOUR_DAILY_API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "properties": {
+        "pinless_dialin": [{
+            "phone_number": "YOUR_DAILY_NUMBER",
+            "room_creation_api": "https://api.pipecat.daily.co/v1/public/webhooks/{org_id}/{agent_name}/dialin"
+        }]
+    }
+}'
+```
+
+### Option 2: Custom Webhook Server
+
+Host your own webhook server for custom logic (e.g., CRM integration, advanced routing, caller-based customization).
+
+<CardGroup cols={2}>
+  <Card title="FastAPI Webhook Server" icon="server" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/fastapi-webhook-server">
+    Python webhook server example
+  </Card>
+
+  <Card title="Next.js Webhook Server" icon="js" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/deployment/pipecat-cloud-daily-pstn-server/nextjs-webhook-server">
+    JavaScript webhook server example
+  </Card>
+</CardGroup>
+
+**Webhook payload from Daily:**
+
+```json  theme={null}
+{
+  "To": "+15559876543",
+  "From": "+15551234567",
+  "callId": "uuid",
+  "callDomain": "uuid"
+}
+```
+
+**Forward to Pipecat Cloud:**
+
+```bash  theme={null}
+curl --request POST \
+--url https://api.pipecat.daily.co/v1/public/{service}/start \
+--header 'Authorization: Bearer $API_KEY' \
+--header 'Content-Type: application/json' \
+--data '{
+    "createDailyRoom": true,
+    "dailyRoomProperties": {
+        "sip": {
+            "display_name": "+15551234567",
+            "sip_mode": "dial-in",
+            "num_endpoints": 1
+        }
+    },
+    "body": {
+        "dialin_settings": {
+            "from": "+15551234567",
+            "to": "+15559876543",
+            "call_id": "uuid",
+            "call_domain": "uuid"
+        }
+    }
+}'
+```
+
+## Bot Configuration
+
+Configure your bot to handle dial-in calls:
+
+```python  theme={null}
+from pipecat.runner.types import DailyDialinRequest, RunnerArguments
+from pipecat.transports.daily import DailyTransport, DailyParams, DailyDialinSettings
+
+async def bot(runner_args: RunnerArguments):
+    # Parse dial-in request
+    request = DailyDialinRequest.model_validate(runner_args.body)
+
+    # Configure dial-in settings
+    dialin_settings = DailyDialinSettings(
+        call_id=request.dialin_settings.call_id,
+        call_domain=request.dialin_settings.call_domain
+    )
+
+    # Create transport
+    transport = DailyTransport(
+        runner_args.room_url,
+        runner_args.token,
+        "Voice Bot",
+        DailyParams(
+            api_key=request.daily_api_key,
+            api_url=request.daily_api_url,
+            dialin_settings=dialin_settings,
+            audio_in_enabled=True,
+            audio_out_enabled=True,
+            vad_analyzer=SileroVADAnalyzer(),
+        )
+    )
+
+    # Start speaking when caller joins
+    @transport.event_handler("on_first_participant_joined")
+    async def on_first_participant_joined(transport, participant):
+        await task.queue_frames([LLMRunFrame()])
+
+    # Your bot pipeline setup...
+```
+
+**Personalize with caller info:**
+
+```python  theme={null}
+caller_phone = request.dialin_settings.From
+customer = await get_customer_by_phone(caller_phone)
+# Use customer data in your system prompt
+```
+
+## Complete Example
+
+<Card title="Daily PSTN Dial-in Bot" icon="phone" href="https://github.com/pipecat-ai/pipecat-examples/tree/main/phone-chatbot/daily-pstn-dial-in">
+  Full implementation with STT, LLM, TTS, and caller personalization
+</Card>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

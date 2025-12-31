@@ -1,0 +1,317 @@
+# Source: https://docs.livekit.io/recipes/pipeline_translator.md
+
+LiveKit docs › Voice Processing › Pipeline Translator
+
+---
+
+# Pipeline Translator Agent
+
+> Simple translation pipeline that converts English speech to French
+
+This example shows how to build a simple voice-to-voice translator: listen in English, translate with an LLM, and speak the result in French with ElevenLabs TTS. Instead of using LiveKit Inference, this example uses agent plugins to connect directly to OpenAI and ElevenLabs.
+
+## Prerequisites
+
+- Add a `.env` in this directory with your credentials:```
+LIVEKIT_URL=your_livekit_url
+LIVEKIT_API_KEY=your_api_key
+LIVEKIT_API_SECRET=your_api_secret
+OPENAI_API_KEY=your_api_key
+ELEVENLABS_API_KEY=your_api_key
+DEEPGRAM_API_KEY=your_api_key
+
+```
+- Install dependencies:```bash
+pip install "livekit-agents[silero,openai,elevenlabs,deepgram]" python-dotenv
+
+```
+
+## Load environment, logging, and define an AgentServer
+
+Load your `.env` and set up logging to trace translation events.
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+server = AgentServer()
+
+```
+
+## Define the translation agent
+
+Keep the agent lightweight with focused instructions: always translate from English to French and respond only with the translation.
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+server = AgentServer()
+
+```
+
+```python
+class TranslatorAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions="""
+                You are a translator. You translate the user's speech from English to French.
+                Every message you receive, translate it directly into French.
+                Do not respond with anything else but the translation.
+            """
+        )
+
+    async def on_enter(self):
+        self.session.generate_reply()
+
+```
+
+## Prewarm VAD for faster connections
+
+Preload the VAD model once per process to reduce connection latency.
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+server = AgentServer()
+
+
+class TranslatorAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions="""
+                You are a translator. You translate the user's speech from English to French.
+                Every message you receive, translate it directly into French.
+                Do not respond with anything else but the translation.
+            """
+        )
+
+    async def on_enter(self):
+        self.session.generate_reply()
+
+```
+
+```python
+def prewarm(proc: JobProcess):
+    proc.userdata["vad"] = silero.VAD.load()
+
+server.setup_fnc = prewarm
+
+```
+
+## Define the rtc session with translation pipeline
+
+Create the session with Deepgram STT, OpenAI LLM, and ElevenLabs multilingual TTS for French output.
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+server = AgentServer()
+
+
+class TranslatorAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions="""
+                You are a translator. You translate the user's speech from English to French.
+                Every message you receive, translate it directly into French.
+                Do not respond with anything else but the translation.
+            """
+        )
+
+    async def on_enter(self):
+        self.session.generate_reply()
+
+
+def prewarm(proc: JobProcess):
+    proc.userdata["vad"] = silero.VAD.load()
+
+
+server.setup_fnc = prewarm
+
+```
+
+```python
+@server.rtc_session()
+async def entrypoint(ctx: JobContext):
+    ctx.log_context_fields = {"room": ctx.room.name}
+
+    session = AgentSession(
+        stt=deepgram.STT(),
+        llm=openai.LLM(),
+        tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
+        vad=ctx.proc.userdata["vad"],
+        preemptive_generation=True,
+    )
+
+    await session.start(agent=TranslatorAgent(), room=ctx.room)
+    await ctx.connect()
+
+```
+
+## Run the server
+
+Start the agent server with the CLI runner.
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+server = AgentServer()
+
+
+class TranslatorAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions="""
+                You are a translator. You translate the user's speech from English to French.
+                Every message you receive, translate it directly into French.
+                Do not respond with anything else but the translation.
+            """
+        )
+
+    async def on_enter(self):
+        self.session.generate_reply()
+
+
+def prewarm(proc: JobProcess):
+    proc.userdata["vad"] = silero.VAD.load()
+
+
+server.setup_fnc = prewarm
+
+
+@server.rtc_session()
+async def entrypoint(ctx: JobContext):
+    ctx.log_context_fields = {"room": ctx.room.name}
+
+    session = AgentSession(
+        stt=deepgram.STT(),
+        llm=openai.LLM(),
+        tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
+        vad=ctx.proc.userdata["vad"],
+        preemptive_generation=True,
+    )
+
+    await session.start(agent=TranslatorAgent(), room=ctx.room)
+    await ctx.connect()
+
+```
+
+```python
+if __name__ == "__main__":
+    cli.run_app(server)
+
+```
+
+## Run it
+
+```bash
+python pipeline_translator.py console
+
+```
+
+## How it works
+
+1. Deepgram handles English speech-to-text transcription.
+2. OpenAI generates a French translation from the transcript.
+3. ElevenLabs multilingual TTS speaks the translated text in French.
+4. Silero VAD controls turn-taking between user and agent.
+5. The agent triggers an initial response on entry so the user hears French output immediately.
+
+## Full example
+
+```python
+import logging
+from dotenv import load_dotenv
+from livekit.agents import JobContext, JobProcess, AgentServer, cli, Agent, AgentSession
+from livekit.plugins import openai, silero, deepgram, elevenlabs
+
+load_dotenv()
+
+logger = logging.getLogger("pipeline-translator")
+logger.setLevel(logging.INFO)
+
+class TranslatorAgent(Agent):
+    def __init__(self) -> None:
+        super().__init__(
+            instructions="""
+                You are a translator. You translate the user's speech from English to French.
+                Every message you receive, translate it directly into French.
+                Do not respond with anything else but the translation.
+            """
+        )
+
+    async def on_enter(self):
+        self.session.generate_reply()
+
+server = AgentServer()
+
+def prewarm(proc: JobProcess):
+    proc.userdata["vad"] = silero.VAD.load()
+
+server.setup_fnc = prewarm
+
+@server.rtc_session()
+async def entrypoint(ctx: JobContext):
+    ctx.log_context_fields = {"room": ctx.room.name}
+
+    session = AgentSession(
+        stt=deepgram.STT(),
+        llm=openai.LLM(),
+        tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
+        vad=ctx.proc.userdata["vad"],
+        preemptive_generation=True,
+    )
+
+    await session.start(agent=TranslatorAgent(), room=ctx.room)
+    await ctx.connect()
+
+if __name__ == "__main__":
+    cli.run_app(server)
+
+```
+
+---
+
+This document was rendered at 2025-12-31T18:29:44.228Z.
+For the latest version of this document, see [https://docs.livekit.io/recipes/pipeline_translator.md](https://docs.livekit.io/recipes/pipeline_translator.md).
+
+To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

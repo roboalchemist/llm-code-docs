@@ -1,0 +1,139 @@
+# Source: https://docs.pipecat.ai/server/services/tts/rime.md
+
+# Rime
+
+> Text-to-speech service implementations using Rime AI
+
+## Overview
+
+Rime AI provides two TTS service implementations: `RimeTTSService` (WebSocket-based) with word-level timing and interruption support, and `RimeHttpTTSService` (HTTP-based) for simpler use cases. `RimeTTSService` is recommended for real-time interactive applications.
+
+<CardGroup cols={2}>
+  <Card title="Rime TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.rime.tts.html">
+    Pipecat's API methods for Rime TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07q-interruptible-rime.py">
+    Complete example with word timestamps
+  </Card>
+
+  <Card title="Rime Documentation" icon="book" href="https://docs.rime.ai/api-reference/endpoint/websockets-json">
+    Official Rime WebSocket and HTTP API documentation
+  </Card>
+
+  <Card title="Voice Models" icon="microphone" href="https://docs.rime.ai/">
+    Explore available voice models and features
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Rime services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[rime]"
+```
+
+## Prerequisites
+
+### Rime Account Setup
+
+Before using Rime TTS services, you need:
+
+1. **Rime Account**: Sign up at [Rime AI](https://docs.rime.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Voice Selection**: Choose from available voice models
+
+### Required Environment Variables
+
+* `RIME_API_KEY`: Your Rime API key for authentication
+
+## Customizing Speech
+
+`RimeTTSService` provides a set of helper methods for implementing Rime-specific customizations, meant to be used as part of text transformers. These include methods for spelling out text, adjusting speech rate, and modifying pitch. See the [Text Transformers for TTS](/guides/learn/text-to-speech#text-transformers-for-tts) section in the Text-to-Speech guide for usage examples.
+
+### SPELL(text: str) -> str:
+
+Implements [Rime's spell function](https://docs.rime.ai/api-reference/spell) to spell out text character by character.
+
+```python  theme={null}
+# Text transformers for TTS
+# This will insert Rime's spell tags around the provided text.
+async def spell_out_text(text: str, type: str) -> str:
+    return RimeTTSService.SPELL(text)
+
+tts = RimeTTSService(
+    api_key=os.getenv("RIME_API_KEY"),
+    text_transforms=[{
+        "phone_number": spell_out_text,
+    }],
+)
+```
+
+### PAUSE\_TAG(seconds: float) -> str:
+
+Implements [Rime's custom pause functionality](https://docs.rime.ai/api-reference/custom-pauses) to generate a properly formatted pause tag you can insert into the text.
+
+```python  theme={null}
+# Text transformers for TTS
+# This will insert a one second pause after questions.
+async def pause_after_questions(text: str, type: str) -> str:
+    if text.endswith("?"):
+        return f"{text}{RimeTTSService.PAUSE_TAG(1.0)}"
+    return text
+
+tts = RimeTTSService(
+    api_key=os.getenv("RIME_API_KEY"),
+    text_transforms=[{
+        "sentence": pause_after_questions, # Only apply to sentence aggregations
+    }],
+)
+```
+
+### PRONOUNCE(self, text: str, word: str, phoneme: str) -> str:
+
+Convenience method to support Rime's [custom pronunciations feature](https://docs.rime.ai/api-reference/custom-pronunciation). It takes a word and its desired phoneme representation, returning the text with the provided word replaced by the appropriate phoneme tag.
+
+```python  theme={null}
+# Text transformers for TTS
+# This will a phoneme in place of the word "potato" to define how it
+# should be pronounced.
+async def maybe_say_potato_all_fancylike(text: str, type: str) -> str:
+    if using_fancy_voice:
+        return RimeTTSService.PRONOUNCE(text, "potato", "potato")
+    else:
+        return RimeTTSService.PRONOUNCE(text, "potato", "poteto")
+
+tts = RimeTTSService(
+    api_key=os.getenv("RIME_API_KEY"),
+    text_transforms=[{
+        "*": maybe_say_potato_all_fancylike, # Apply to all text
+    }],
+)
+```
+
+### INLINE\_SPEED(self, text: str, speed: float) -> str:
+
+A convenience method to support Rime's [inline speed adjustment feature](https://docs.rime.ai/api-reference/speed). It will wrap the provided text in the `[]` tags and add the provided speed to the `inlineSpeedAlpha` field in the request metadata.
+
+```python  theme={null}
+# Text transformers for TTS
+# This will make the word slow always be spoken more slowly.
+async def slow_down_slow_words(text: str, type: str) -> str:
+    return text.replace(
+        "slow",
+        RimeTTSService.INLINE_SPEED("slow", speed=0.5)
+    )
+
+tts = RimeTTSService(
+    api_key=os.getenv("RIME_API_KEY"),
+    text_transforms=[{
+        "*": slow_down_slow_words, # Apply to all text
+    }],
+)
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

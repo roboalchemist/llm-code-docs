@@ -1,0 +1,125 @@
+# Source: https://rsbuild.dev/config/html/favicon.md
+
+# html.favicon
+
+* **Type:** `string ｜ Function`
+* **Default:** Automatically detects favicon files in the `public` directory
+
+Set the favicon icon path for all pages, can be set as:
+
+* a URL.
+* an absolute file path.
+* a relative path relative to the project [root](/config/root.md).
+
+After config this option, the favicon will be automatically copied to the dist directory during the compilation, and the corresponding `link` tag will be added to the HTML.
+
+:::tip
+Rsbuild also provides [html.appIcon](/config/html/app-icon.md) to set the icon of the web application.
+:::
+
+## Default value
+
+When `html.favicon` is not explicitly configured, Rsbuild will automatically look for favicon files in the [public directory](/config/server/public-dir.md).
+
+It searches for the following files in order, and uses the first one it finds as the default favicon:
+
+* `public/favicon.ico`
+* `public/favicon.png`
+* `public/favicon.svg`
+
+## Example
+
+Set as a relative path:
+
+```ts title="rsbuild.config.ts"
+export default {
+  html: {
+    favicon: './src/assets/icon.png',
+  },
+};
+```
+
+Set to an absolute path:
+
+```js
+import path from 'node:path';
+
+export default {
+  html: {
+    favicon: path.resolve(__dirname, './src/assets/icon.png'),
+  },
+};
+```
+
+Set to a URL:
+
+```js
+import path from 'node:path';
+
+export default {
+  html: {
+    favicon: 'https://foo.com/favicon.ico',
+  },
+};
+```
+
+After recompiling, the following tags are automatically generated in the HTML:
+
+```html
+<link rel="icon" href="/favicon.ico" />
+```
+
+## Output path
+
+By default, favicons are output to the root path of the output directory, for example:
+
+* `./src/assets/icon.png` will be output to `./dist/icon.png`.
+* `./src/assets/favicon.ico` will be output to `./dist/favicon.ico`.
+
+You can customize the output path for favicons using the [output.distPath.favicon](/config/output/dist-path.md) option:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    distPath: {
+      // Output favicon to "./dist/static/favicon/" directory
+      favicon: 'static/favicon',
+    },
+  },
+};
+```
+
+## Function usage
+
+* **Type:**
+
+```ts
+type FaviconFunction = ({ value: string; entryName: string }) => string | void;
+```
+
+When `html.favicon` is of type Function, the function receives an object as input, with the following properties:
+
+* `value`: the default favicon configuration for Rsbuild.
+* `entryName`: the name of the current entry.
+
+In the context of MPA (Multi-Page Application), you can return different `favicon` based on the entry name, thus generating different tags for each page:
+
+```ts title="rsbuild.config.ts"
+export default {
+  html: {
+    favicon({ entryName }) {
+      const icons = {
+        foo: 'https://example.com/foo.ico',
+        bar: 'https://example.com/bar.ico',
+      };
+      return icons[entryName] || 'https://example.com/default.ico';
+    },
+  },
+};
+```
+
+## Version history
+
+| Version | Changes                                                     |
+| ------- | ----------------------------------------------------------- |
+| v1.6.0  | Added automatic favicon detection from the public directory |

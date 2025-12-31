@@ -1,0 +1,177 @@
+# Source: https://docs.ultravox.ai/webhooks/available-webhooks.md
+
+# Available Webhooks
+
+> Complete reference of all webhook events available in Ultravox.
+
+Ultravox offers several webhook events that you can subscribe to for real-time notifications. Each event provides detailed information about what happened in your account.
+
+## Available Events
+
+The following events are available and can be specified when creating or updating a webhoook.
+
+| event        | description                                |
+| ------------ | ------------------------------------------ |
+| call.started | Fires when a call is created.              |
+| call.joined  | Fires when a client connects to your call. |
+| call.ended   | Fires when a call ends.                    |
+| call.billed  | Fires when a call is billed.               |
+
+### `call.started`
+
+Fires when a call is created.
+
+If you create calls directly using either the [Create Agent Call](/api-reference/agents/agents-calls-post) or [Create Call](/api-reference/calls/calls-post) API, you likely won't need this event as a 201 response to your call creation request is equivalent.
+
+The `call.started` event is most useful with telephony integrations where you've allowed calls to be created on your behalf either in response to qualified [SIP INVITEs](/telephony/sip#incoming-sip-calls) or verified requests from your [telephony](/telephony/inbound-calls) provider (Twilio, Telnyx, or Plivo).
+
+### `call.joined`
+
+Fires when a client connects to your call.
+
+Useful if you need to keep track of live calls or for monitoring deltas in timing from call creation.
+
+### `call.ended`
+
+Fires when a call ends.
+
+The call's messages are now immutable because the call is over. However, billing information may not be available yet (in particular for SIP calls, where the SIP session could be ongoing — see [call.billed](#call-billed)). This event is also sent for unjoined calls when their join timeout is reached.
+
+### `call.billed`
+
+Fires when a call is billed.
+
+Billing information will always be available. Typically you'll only want one of `call.ended` or `call.billed`. If you aren't using SIP or don't need billing details for your integration, `call.ended` may be preferable.
+
+## Event Payload Reference
+
+All webhooks follow a consistent structure. The payload always includes:
+
+* **event**: The type of event that triggered the webhook.
+* **call**: Complete call object matching our API response format.
+
+<Tabs>
+  <Tab title="Generic Structure">
+    ```json  theme={null}
+    {
+      "event": {event_name},
+      "call": {call_object}
+    }
+    ```
+  </Tab>
+
+  <Tab title="Example Payload: call.started">
+    ```json  theme={null}
+    {
+      "event": "call.started",
+      "call": {
+        "callId": "3c90c3cc-0d44-4b50-8888-8dd25736052a",
+        "clientVersion": "<string>",
+        "created": "2023-11-07T05:31:56Z",
+        "...": "..."
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Event Name
+
+The `event` field contains the exact event name you subscribed to:
+
+* `"call.started"`
+* `"call.ended"`
+* `"call.joined"`
+* `"call.billed"`
+
+### Call Object
+
+The `call` object contains the complete [call definition](/api-reference/schema/call-definition), identical to what you'd receive from the [Get Call API endpoint](/api-reference/calls/calls-get). This ensures consistency across your application whether you're receiving webhook data or making API requests.
+
+**Key call object fields:**
+
+* `callId`: Unique call identifier
+* `created`: Timestamp when call was created
+* `joined`: Timestamp when call was joined
+* `ended`: Timestamp when call was ended
+* `shortSummary`: Short summary of the call
+* `metadata`: Custom metadata you've associated with the call
+
+See the [Call definition schema](/api-reference/schema/call-definition) for the complete list of fields.
+
+## Webhook Configuration
+
+When creating or updating a webhook, specify which events you want to receive:
+
+```bash  theme={null}
+curl -X POST https://api.ultravox.ai/api/webhooks \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-app.com/webhooks/ultravox",
+    "events": ["call.started", "call.ended"],
+    "secrets": ["your-webhook-secret"]
+  }'
+```
+
+## HTTP Requirements
+
+Your webhook endpoint must meet these requirements:
+
+**Accept POST Requests**: All webhooks are sent as HTTP POST requests.
+
+**Return 2xx Status**: Return any 2xx status code (we recommend 204) to acknowledge receipt.
+
+**Respond Quickly**: Respond quickly to avoid timeouts.
+
+**Handle JSON**: Parse the JSON payload from the request body.
+
+```js Example: Handling Webhook Events theme={null}
+// Express.js webhook handler example
+app.post('/ultravox-webhook', (req, res) => {
+  const event = req.body;
+  
+  switch (event.event) {
+    case 'call.started':
+      console.log('Call started:', event.call.callId);
+      // Initialize any required resources
+      break;
+      
+    case 'call.joined':
+      console.log('User joined call:', event.call.callId);
+      // Update UI, start monitoring, etc.
+      break;
+      
+    case 'call.ended':
+      console.log('Call ended:', event.call.callId, 'Reason:', event.call.endReason);
+      // Clean up resources, analyze results, etc.
+      break;
+    
+    case 'call.billed':
+      console.log('Call billed:', event.call.callId);
+      // Update customer invoice, etc.
+      break;
+  }
+  
+  res.status(200).send('OK');
+});
+```
+
+## Error Responses
+
+If your endpoint returns a non-2xx status code (e.g. 4xx or 5xx), Ultravox will retry delivery. See [Error Handling & Retries](./errors-and-retries) for more details.
+
+## Testing Webhooks
+
+During development, consider using tools like:
+
+* **ngrok**: Expose local development servers to receive webhooks
+* **webhook.site**: Test webhook payloads without writing code
+* **Postman**: Mock webhook endpoints for testing
+
+Remember that webhook events reflect real activity in your Ultravox account, so test carefully to avoid processing duplicate or test data in production systems.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

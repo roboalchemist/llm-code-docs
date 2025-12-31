@@ -1,0 +1,230 @@
+# Source: https://docs.near.org/primitives/nft/nft-contract-tools.md
+
+---
+id: nft-contract-tools
+title: Create NFT using Contract Tools
+sidebar_label: Create NFT using Contract Tools
+description: "Learn how to create a non-fungible token (NFT) using Contract Tools package"
+---
+
+
+
+In this tutorial, you will create a non-fungible token (NFT) using the [NEAR SDK Contract Tools](https://github.com/near/near-sdk-contract-tools) package. This package is a collection of common tools and patterns to simplify smart contract development, including:
+
+- Storage fee management
+- Escrow pattern and derive macro
+- Owner pattern and derive macro
+- Pause pattern and derive macro
+- Role-based access control
+- Derive macros for [NEP standards](./standard.md)
+  - [NEP-141](https://github.com/near/NEPs/blob/master/neps/nep-0141.md) (fungible token), extension [NEP-148](https://github.com/near/NEPs/blob/master/neps/nep-0148.md)
+  - [NEP-145](https://github.com/near/NEPs/blob/master/neps/nep-0145.md) (storage management), and integrations for the fungible token and non-fungible token standards
+  - [NEP-171](https://github.com/near/NEPs/blob/master/neps/nep-0171.md) (non-fungible token), extensions [NEP-177](https://github.com/near/NEPs/blob/master/neps/nep-0177.md), [NEP-178](https://github.com/near/NEPs/blob/master/neps/nep-0178.md), [NEP-181](https://github.com/near/NEPs/blob/master/neps/nep-0181.md)
+  - [NEP-297](https://github.com/near/NEPs/blob/master/neps/nep-0297.md) (events)
+
+---
+
+## Introduction
+
+While one can create a non-fungible token (NFT) contract from scratch using only the `near-sdk` and `near_contract_standards` (e.g. [NFT contract](https://github.com/near-examples/NFT)), a simpler approach is to use `near-sdk-contract-tools`.
+
+`near-sdk-contract-tools` allows you to implement the minting/burning logic, access control, and other NFT standards by simply deriving macros on the contract's `struct`, as `OpenZeppelin` does for Ethereum contracts.
+
+---
+
+## Basic NFT Methods
+
+To derive basic NFT methods to your smart contract, you need to derive the `NonFungibleToken` macro to the contract's `struct`:
+
+```
+#[derive(PanicOnDefault, Owner, NonFungibleToken)]
+#[non_fungible_token(transfer_hook = "TransferHook")]
+#[near(contract_state)]
+pub struct MyNftContract {}
+
+```
+
+This will bring all the basic NFT methods to the contract:
+- `new`
+- `contract_source_metadata`
+- `nft_is_approved`
+- `nft_metadata`
+- `nft_supply_for_owner`
+- `nft_token`
+- `nft_tokens`
+- `nft_tokens_for_owner`
+- `nft_total_supply`
+- `nft_approve`
+- `nft_resolve_transfer`
+- `nft_revoke`
+- `nft_revoke_all`
+- `nft_transfer`
+- `nft_transfer_call`
+- `storage_balance_bounds`
+- `storage_balance_of`
+- `storage_deposit`
+- `storage_unregister`
+- `storage_withdraw`
+
+To bring basic owner methods to the contract, you also need to derive the `Owner` macro, which adds the following methods:
+- `own_get_owner`
+- `own_get_proposed_owner`
+- `own_accept_owner`
+- `own_propose_owner`
+- `own_renounce_owner`
+
+---
+
+## Initialization
+
+To initialize the basic NFT contract with a custom owner, metadata, and storage bounds, implement the `new` method:
+
+```
+#[near]
+impl MyNftContract {
+    #[init]
+    pub fn new(owner_id: AccountId, metadata: ContractMetadata) -> Self {
+        let mut contract = Self {};
+
+        Owner::init(&mut contract, &owner_id);
+
+        contract.set_contract_metadata(&metadata);
+
+        contract.set_storage_balance_bounds(&StorageBalanceBounds {
+            min: NearToken::from_yoctonear(7000000000000000000000),
+            max: Some(NearToken::from_yoctonear(21000000000000000000000)),
+        });
+
+        contract
+    }
+}
+
+```
+
+---
+
+## Transfer Hook
+
+If you want to customize how the token transfer works (i.e., modify the `nft_transfer` method), you need to implement a hook. Hooks are a way to **wrap (inject code before and after)** component functions:
+
+```
+pub struct TransferHook;
+
+impl Hook<MyNftContract, Nep171Transfer<'_>> for TransferHook {
+    fn hook<R>(
+        contract: &mut MyNftContract,
+        transfer: &Nep171Transfer<'_>,
+        f: impl FnOnce(&mut MyNftContract) -> R,
+    ) -> R {
+        // Log, check preconditions, save state, etc.
+        log!(
+            "NEP-171 transfer from {} to {} of {} tokens",
+            transfer.sender_id,
+            transfer.receiver_id,
+            transfer.token_id
+        );
+
+        let storage_usage_before = env::storage_usage();
+
+        let r = f(contract); // execute wrapped function
+
+        let storage_usage_after = env::storage_usage();
+        log!(
+            "Storage delta: {}",
+            storage_usage_after - storage_usage_before
+        );
+
+        r
+    }
+}
+
+```
+
+Then derive it to our contract struct:
+
+```
+#[derive(PanicOnDefault, Owner, NonFungibleToken)]
+#[non_fungible_token(transfer_hook = "TransferHook")]
+#[near(contract_state)]
+pub struct MyNftContract {}
+
+```
+
+---
+
+## Minting
+
+By default, the NFT standards do not include a minting method. However, you can easily mint tokens for the owner by implementing an `nft_mint` method:
+
+```
+    #[payable]
+    pub fn nft_mint(
+        &mut self,
+        token_id: TokenId,
+        metadata: TokenMetadata,
+        owner_id: Option<AccountId>,
+    ) {
+        // Check account's storage balance and deposit if necessary
+        let storage_balance_bounds = self.storage_balance_bounds();
+        log!("Storage balance bounds: {:?}", storage_balance_bounds);
+
+        let storage_balance = self
+            .storage_balance_of(owner_id.clone().unwrap_or(env::predecessor_account_id()))
+            .unwrap_or_default();
+        log!("Storage balance: {:?}", storage_balance);
+        if storage_balance.total < storage_balance_bounds.min {
+            // Deposit storage if necessary
+            self.storage_deposit(
+                Some(owner_id.clone().unwrap_or(env::predecessor_account_id())),
+                None,
+            );
+        }
+
+        Nep177Controller::mint_with_metadata(
+            self,
+            &token_id,
+            &owner_id.unwrap_or(env::predecessor_account_id()),
+            &metadata,
+        )
+        .unwrap_or_else(|e| env::panic_str(&e.to_string()));
+    }
+}
+```
+
+:::tip
+
+You can modify this method as you need, for example, to allow minting only when the contract is not paused (requires deriving [`Pausable`](https://github.com/near/near-sdk-contract-tools/tree/develop?tab=readme-ov-file#macro-combinations) hook), or to enable minting only to specific accounts with a certain role or from a whitelist with custom limitations.
+
+:::
+
+---
+
+## Burning
+
+In the same way that minting is not included in the NFT standards, burning is also not included. However, you can also easily implement it.
+
+To allow users to burn their tokens, you can add a `burn` method:
+
+```
+#[near]
+impl MyNftContract {
+    #[payable]
+    pub fn nft_burn(&mut self, token_id: TokenId) {
+        assert_one_yocto();
+
+        Nep177Controller::burn_with_metadata(self, &token_id, &env::predecessor_account_id())
+            .unwrap_or_else(|e| env::panic_str(&e.to_string()));
+    }
+}
+
+```
+
+---
+
+## Conclusion
+
+Using `near-sdk-contract-tools` is a simple and flexible way to create an NFT contract with minimal boilerplate, which allows you to focus on the business logic.
+
+You can further extend this contract with more features like pausing, role-based access control, escrow pattern, and more by deriving corresponding macros from the package.
+
+<MovingForwardSupportSection />

@@ -1,0 +1,181 @@
+# Source: https://getlago.com/docs/integrations/payments/gocardless-integration.md
+
+# GoCardless
+
+> Lago's native integration with GoCardless allows you to collect payments via direct debit.
+
+## Integration setup[](#integration-setup "Direct link to heading")
+
+### Connect your GoCardless account[](#connect-your-gocardless-account "Direct link to heading")
+
+To connect to GoCardless through the user interface:
+
+1. In the side menu, select **"Settings"**;
+2. Open the **"Integrations"** tab;
+3. Click **"GoCardless"** to create a connection;
+4. Give a name to this connection;
+5. Assign a code for easy identification;
+6. Click on **"Connect to GoCardless"** to be redirected to the GoCardless application;
+7. Create a GoCardless account or log in to your existing account; and
+8. Connect your account to be redirected to the Lago application.
+
+When the OAuth connection is active, you will see the screen below, with your
+secret key.
+
+<Frame caption="Active OAuth connection with GoCardless">
+  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0e65270af60f57bf264e7a8c4f65af18" data-og-width="2874" width="2874" data-og-height="1560" height="1560" data-path="guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=be95fba47f0a070485b024b88b9ecf57 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5f4352e27dc09faeda30d6b52c420c07 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=fdb2ef7d23682e67505609326776a6c9 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0b379e1724480e38be81b8c97997eb00 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=310ca7d6ee66174a52ec76b2f3f5e028 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=35850273cb3a2af8d52e2f3eb8b86238 2500w" />
+</Frame>
+
+### Create webhook endpoints[](#create-webhook-endpoints "Direct link to heading")
+
+<Tip>
+  To complete this process, you will need:
+
+  * Your Lago **organization ID**, available in the **"API keys & ID"** tab of the
+    **"Developers"** section; and
+  * Your **secret key**, available in the **"Integrations"** tab of the
+    **"Settings"** section ([learn more](#connect-your-gocardless-account)).
+</Tip>
+
+If you want Lago to automatically retrieve the status of the payments processed
+via GoCardless, you must create a webhook endpoint in GoCardless. To do so:
+
+1. Log in to your [GoCardless account](https://manage.gocardless.com/sign-in);
+2. Go to the **"Developers"** section;
+3. In the upper right corner, click **"Create"** and then select **"Webhook
+   endpoint"**;
+4. Choose a name for this webhook (e.g. Lago);
+5. Enter the following URL: `https://api.getlago.com/webhooks/gocardless/{{organization_id}}?code={{connection_code}}` (you must replace `organization_id` with your Lago organization ID, and the `connection_code` by the targeted Lago connection);
+6. Enter your secret key; and
+7. Click **"Create webhook endpoint"**.
+
+<Frame caption="Webhook endpoint creation in GoCardless">
+  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=efbc4b2dcb527f6987b4f6b5030798a0" data-og-width="2880" width="2880" data-og-height="1568" height="1568" data-path="guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a3d207d3b84f2d731c066c4cd1ac8733 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e37984d8a3562be95345636aee173db4 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=10050fa7fba82223ebc9a82f3b53983f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=90752b6a798e38ad8b42e506067e66be 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6d65d5289e6505ceedc5c00c6d6fdf58 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c12fd8106214df5935a1548be2d7e487 2500w" />
+</Frame>
+
+In addition to this, you must create a webhook endpoint in Lago to retrieve the
+checkout URL associated with each customer account
+([learn more](#direct-debit)). To do so:
+
+1. Go to the **"Developers"** section of the Lago application;
+2. In the **"Webhooks"** tab, click **"Add a webhook"** on the right;
+3. Enter your webhook URL; and
+4. Click **"Add webhook"** to confirm.
+
+For more information about our webhooks, please refer to the
+[API documentation](/api-reference/webhooks/format---signature).
+
+## Redirect url after checkout[](#checkout-redirect-url "Direct link to heading")
+
+After establishing the connection with GoCardless, set a success URL where your end customer will be directed after completing the checkout.
+Please note that if it's not defined, your end customer will be redirected to GoCardless’s website.
+
+Please note that you can edit or delete the redirect URL, and this will only affect new checkout URLs created.
+
+<Warning>
+  URL defined should always begin with `http://` or `https://`.
+</Warning>
+
+## Customer information[](#customer-information "Direct link to heading")
+
+To collect payments automatically, the customer must exist in both the Lago and
+GoCardless databases.
+
+### New customer[](#new-customer "Direct link to heading")
+
+If the customer does not already exist in GoCardless, you can first create them
+in Lago, either via the user interface or
+[the API](/api-reference/customers/create). When adding customer information, you
+must:
+
+1. Provide the customer's email address;
+2. Define GoCardless as the **default payment provider**;
+3. Select the GoCardless connected account;
+4. Leave the field associated with the **GoCardless customer ID** blank; and
+5. **Enable** the option to automatically create the customer in GoCardless.
+
+The customer will automatically be added to GoCardless. GoCardless will then
+return the customer ID, which will be stored in Lago.
+
+<Frame caption="Creation of a new customer with GoCardless">
+  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5d9e84c5decf88a1af44eaa1bd314ff3" data-og-width="1474" width="1474" data-og-height="1008" height="1008" data-path="guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=329140933278b5d4e639fd9489c14cbd 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=715c4852a91509df6b07576f30ecfd1f 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f18aedac90c87cfc79709c2df26c4fdc 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c4eb42a7fdd49d3212c4c0435c3bdce9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=41c0197d130969b4e38f078eeb738a4f 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4d6bf6b2d736d3fed8cfd78484adfb99 2500w" />
+</Frame>
+
+When the customer is successfully created, you will receive two
+[webhook messages](/api-reference/webhooks/messages):
+
+* `customer.payment_provider_created` that confirms the creation of the customer
+  in GoCardless; and
+* `customer.checkout_url_generated` that includes the checkout URL to set up the
+  direct debit ([learn more](#direct-debit)).
+
+### Existing customer[](#existing-customer "Direct link to heading")
+
+If the customer and direct debit mandate already exist in GoCardless, then you
+should create the customer record in Lago, either via the user interface or
+[the API](/api-reference/customers/create). When adding customer information, you
+must:
+
+1. Provide the customer's email address;
+2. Define GoCardless as the **default payment provider**;
+3. Select the GoCardless connected account;
+4. Provide the **GoCardless customer ID**; and
+5. **Disable** the option to automatically create the customer in GoCardless.
+
+<Frame caption="Migration of an existing GoCardless customer">
+  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f9808d9c823ca7e6c0973ac3e46caf1a" data-og-width="1468" width="1468" data-og-height="836" height="836" data-path="guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1a93bde3e759b61d3d7be2ffae426f87 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=24395b04980d15be6184dc8f90a21435 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e0920a4531918b2f11965f8bcb693067 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cce454c18d4f65254e3a27f9d681ec17 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3cd206364db176d1a53063a1bdf67e9e 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=56603aa25f195ac9c62d1f83bf8e5be2 2500w" />
+</Frame>
+
+## Direct debit[](#direct-debit "Direct link to heading")
+
+To collect payments via direct debit, a mandate must be created. To do so:
+
+1. Retrieve the checkout URL included in the `customer.checkout_url_generated`
+   webhook; and
+2. Redirect your customer to the checkout page, so that they can complete the
+   online form and approve the mandate.
+
+The mandate must be validated by GoCardless before the first payment can be
+processed. It can take up to six business days to validate a new mandate. For
+more information about payment timings, please consult the
+[GoCardless FAQ](https://gocardless.com/faq/merchants/direct-debit/).
+
+<Warning>
+  To collect payments via direct debit, the currency of the mandate must match
+  the currency of the plan associated with the customer's subscription.
+</Warning>
+
+<Frame caption="Direct debit setup with GoCardless">
+  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=50363be9c06763e42d16c7e1ef6561a0" data-og-width="2880" width="2880" data-og-height="1530" height="1530" data-path="guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=43d14edc9471628e66832c8359655c1d 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cbbd860d4177b65b245b8d77a7f9b6ed 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a6f57aabfa68aa5648c52c88c09268f7 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c0b7a4e45019feadae42244d27058a3b 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a06a9bc3ddd2b6e0a7c1729fa35e5e0b 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5d42eacb5c0d0a092e7655d484f8bfb4 2500w" />
+</Frame>
+
+Each time a new invoice with an **amount greater than zero** is generated by
+Lago, a payment will automatically be created. GoCardless will record the
+invoice ID and process the payment. Payments via direct debit are usually
+processed within five business days. If the payment is successful, the status of
+the payment will switch from `pending` to `succeeded`.
+
+If the payment fails, the status of the payment will switch from `pending` to
+`failed` and Lago will generate an `invoice.payment_failure`
+[webhook](/api-reference/webhooks/messages).
+
+<Tip>
+  If you have signed up for [GoCardless
+  Success+](https://gocardless.com/solutions/success-plus/), failed payments may
+  be automatically resubmitted, in which case Lago will automatically update the
+  invoice payment status.
+</Tip>
+
+## Regenerate checkout link on demand
+
+In cases where your end customer has not had the opportunity to complete the checkout process to inform their payment method
+or wishes to modify the saved payment information, you can generate a new checkout link using the designated [endpoint](/api-reference/customers/psp-checkout-url).
+
+```json  theme={"dark"}
+POST /api/v1/customers/:customer_external_id/checkout_url
+```
+
+Upon successful generation, the new checkout link will be available in the endpoint response, and it will not be delivered through a webhook message.
+It is important to note that the new link will inherit the same expiration setting as the original one.
+
+It is crucial to be aware that if a customer is not associated with any payment provider, the response will contain an error message.

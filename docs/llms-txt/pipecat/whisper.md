@@ -1,0 +1,68 @@
+# Source: https://docs.pipecat.ai/server/services/stt/whisper.md
+
+# Whisper
+
+> Speech-to-text service implementation using locally-downloaded Whisper models
+
+## Overview
+
+`WhisperSTTService` provides offline speech recognition using OpenAI's Whisper models running locally. Supports multiple model sizes and hardware acceleration options including CPU, CUDA, and Apple Silicon (MLX) for privacy-focused transcription without external API calls.
+
+<CardGroup cols={2}>
+  <Card title="Whisper STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.whisper.stt.html">
+    Pipecat's API methods for Whisper STT integration
+  </Card>
+
+  <Card title="Standard Whisper Example" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13-whisper-transcription.py">
+    Complete example with standard Whisper
+  </Card>
+
+  <Card title="Whisper Documentation" icon="book" href="https://github.com/openai/whisper">
+    OpenAI's Whisper research paper and model details
+  </Card>
+
+  <Card title="MLX Whisper Example" icon="microphone" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/13e-whisper-mlx.py">
+    Apple Silicon optimized example
+  </Card>
+</CardGroup>
+
+## Installation
+
+Choose your installation based on your hardware:
+
+### Standard Whisper (CPU/CUDA)
+
+```bash  theme={null}
+pip install "pipecat-ai[whisper]"
+```
+
+### MLX Whisper (Apple Silicon)
+
+```bash  theme={null}
+pip install "pipecat-ai[mlx-whisper]"
+```
+
+## Prerequisites
+
+### Local Model Setup
+
+Before using Whisper STT services, you need:
+
+1. **Model Selection**: Choose appropriate Whisper model size (tiny, base, small, medium, large)
+2. **Hardware Configuration**: Set up CPU, CUDA, or Apple Silicon acceleration
+3. **Storage Space**: Ensure sufficient disk space for model downloads
+
+### Configuration Options
+
+* **Model Size**: Balance between accuracy and performance based on your hardware
+* **Hardware Acceleration**: Configure CUDA for NVIDIA GPUs or MLX for Apple Silicon
+* **Language Support**: Whisper supports 99+ languages out of the box
+
+<Tip>
+  No API keys required - Whisper runs entirely locally for complete privacy.
+</Tip>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

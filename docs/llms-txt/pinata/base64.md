@@ -1,0 +1,141 @@
+# Source: https://docs.pinata.cloud/sdk/upload/public/base64.md
+
+# Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
+
+# Source: https://docs.pinata.cloud/sdk/upload/public/base64.md
+
+# Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
+
+# Source: https://docs.pinata.cloud/sdk/upload/public/base64.md
+
+# Source: https://docs.pinata.cloud/sdk/upload/private/base64.md
+
+# base64
+
+> `org:files:write`
+
+Upload a base64 string to Private IPFS
+
+## Usage
+
+```typescript  theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const upload = await pinata.upload.private.base64("SGVsbG8gV29ybGQh")
+```
+
+## Returns
+
+```typescript  theme={null}
+type UploadResponse = {
+	id: string;
+	name: string;
+	cid: string;
+	size: number;
+	created_at: string;
+	number_of_files: number;
+	mime_type: string;
+	group_id: string | null;
+	keyvalues: {
+		[key: string]: string;
+	};
+	vectorized: boolean;
+	network: string;
+};
+```
+
+## Parameters
+
+### base64
+
+* Type: `string`
+
+Accepts a string encoded in base64
+
+```typescript  theme={null}
+const upload = await pinata.upload.private.base64("SGVsbG8gV29ybGQh")
+```
+
+### group (Optional)
+
+* Type: `string`
+
+Upload to a specific group by passing in the `groupId`
+
+```typescript {3} theme={null}
+const upload = await pinata.upload.private
+  .base64("SGVsbG8gV29ybGQh")
+  .group("b07da1ff-efa4-49af-bdea-9d95d8881103")
+```
+
+### keyvalues (Optional)
+
+* Type: `Record<string, string>`
+
+Add optional metadata to file
+
+```typescript {3-8} theme={null}
+const upload = await pinata.upload.private
+  .base64("SGVsbG8gV29ybGQh")
+  .keyvalues({
+    env: "prod"
+  })
+```
+
+### name (Optional)
+
+* Type: `string`
+
+Add optional name to file
+
+```typescript {3-8} theme={null}
+const upload = await pinata.upload.private
+  .base64("SGVsbG8gV29ybGQh")
+  .name("hello.txt")
+```
+
+### vectorize (Optional)
+
+<Warning>
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+</Warning>
+
+* Type: `null`
+
+Vectorize a file on upload, requires a group to be used as well.
+
+```typescript {4} theme={null}
+const upload = await pinata.upload.private
+  .base64("SGVsbG8gV29ybGQh")
+  .group("b07da1ff-efa4-49af-bdea-9d95d8881103")
+  .vectorize()
+```
+
+### url (Optional)
+
+* Type: `string`
+
+Pass in a presigned upload URL created with [createSignedURL](./create-signed-url)
+
+```typescript {3} theme={null}
+const upload = await pinata.upload.private
+  .file(file)
+  .url(url)
+```
+
+### key (Optional)
+
+* Type: `string`
+
+Upload a file using a secondary API key generated through `keys.create()`
+
+```typescript {3} theme={null}
+const upload = await pinata.upload.private
+  .base64("SGVsbG8gV29ybGQh")
+  .key("GENERATED_API_JWT")
+```

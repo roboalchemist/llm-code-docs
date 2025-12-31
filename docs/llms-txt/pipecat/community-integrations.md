@@ -1,0 +1,80 @@
+# Source: https://docs.pipecat.ai/server/services/community-integrations.md
+
+# Community Integrations
+
+> Community-maintained service integrations for Pipecat
+
+Community Integrations are service integrations built and maintained by developers in the Pipecat community. These are not officially supported by the Pipecat team but are listed here to help you discover what's available.
+
+Want to add your integration? See our [Community Integrations Guide](https://github.com/pipecat-ai/pipecat/blob/main/COMMUNITY_INTEGRATIONS.md).
+
+***
+
+## Speech-to-Text
+
+Speech-to-Text services receive and audio input and output transcriptions.
+
+| Service                         | Repository | Maintainer(s) |
+| ------------------------------- | ---------- | ------------- |
+| *No community integrations yet* |            |               |
+
+## Large Language Models
+
+LLMs receive text or audio based input and output a streaming text response.
+
+| Service                         | Repository | Maintainer(s) |
+| ------------------------------- | ---------- | ------------- |
+| *No community integrations yet* |            |               |
+
+## Knowledge Retrieval
+
+Semantic retrieval services enable context-aware search and retrieval of relevant information.
+
+| Service                          | Repository                                                                         | Maintainer(s)                      |
+| -------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- |
+| [Moss](https://www.usemoss.dev/) | [https://github.com/usemoss/pipecat-moss](https://github.com/usemoss/pipecat-moss) | [Moss](https://github.com/usemoss) |
+
+## Text-to-Speech
+
+Text-to-Speech services receive text input and output audio streams or chunks.
+
+| Service                          | Repository                                                                                         | Maintainer(s)                                 |
+| -------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [Typecast](https://typecast.ai/) | [https://github.com/neosapience/pipecat-typecast](https://github.com/neosapience/pipecat-typecast) | [neosapience](https://github.com/neosapience) |
+
+# Video
+
+Video services enable you to build an avatar where audio and video are synchronized.
+
+| Service                                           | Repository                                                                       | Maintainer(s)                         |
+| ------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------- |
+| [Beyond Presence](https://www.beyondpresence.ai/) | [https://github.com/bey-dev/pipecat-bey](https://github.com/bey-dev/pipecat-bey) | [bey-dev](https://github.com/bey-dev) |
+
+## Telephony Serializers
+
+Serializers convert between frames and media streams, enabling real-time communication over a websocket.
+
+| Service                         | Repository | Maintainer(s) |
+| ------------------------------- | ---------- | ------------- |
+| *No community integrations yet* |            |               |
+
+## Image Generation
+
+Image generation services receive text inputs and output images.
+
+| Service                         | Repository | Maintainer(s) |
+| ------------------------------- | ---------- | ------------- |
+| *No community integrations yet* |            |               |
+
+## Vision
+
+Vision services receive a streaming video input and output text describing the video input.
+
+| Service                         | Repository | Maintainer(s) |
+| ------------------------------- | ---------- | ------------- |
+| *No community integrations yet* |            |               |
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

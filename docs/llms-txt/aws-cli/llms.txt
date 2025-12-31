@@ -1,0 +1,74 @@
+# AWS Command Line Interface User Guide for Version 2
+> The AWS CLI is an open source tool built using the AWS SDK for Python (Boto) that provides commands for interacting with AWS services. With minimal configuration, you can start using all of the functionality provided by the AWS Management Console from your favorite terminal program. This guide provides instructions for installing, configuring, and using the AWS CLI on Windows, macOS, and Linux. Learn how to use the AWS CLI to access the public API of any AWS service and write scripts to manage your AWS resources.
+
+## About the AWS CLI
+- [About the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html): Use the AWS CLI to control AWS services from the command line of your preferred terminal and automate them using scripts.
+- [About the examples](https://docs.aws.amazon.com/cli/latest/userguide/welcome-examples.html): The AWS CLI examples in this guide are formatted in a specific way.
+- [Additional documentation and resources](https://docs.aws.amazon.com/cli/latest/userguide/welcome-resources.html): Additional documentations and resources for the AWS CLI.
+
+## Get started
+- [Get started](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html): Get started with the AWS CLI version 2 with instructions on how to install the AWS CLI and the prerequisites needed to run AWS CLI commands.
+- [Prerequisites](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-prereqs.html): Before you install the AWS Command Line Interface version 2 on your system you need an AWS account and IAM credentials.
+- [Install/Update](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html): Instructions to install or update the AWS CLI on your system.
+- [Past releases](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-version.html): Install past releases of the AWS Command Line Interface version 2 on support operating systems.
+- [Build and install from source](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-source-install.html): Install the AWS CLI from the GitHub source on your system.
+- [Amazon ECR Public/Docker](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-docker.html): This topic describes how to run, version control, and configure the AWS CLI version 2 on Docker using either the official Amazon ECR Public or Docker Hub image.
+- [Setup](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html): Learn how to quickly configure basic settings that the AWS Command Line Interface uses to interact with your resources on AWS services.
+
+## Configure the AWS CLI
+- [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html): Configure settings that the AWS CLI uses to interact with AWS.
+- [Configuration settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html): You can save your frequently used configuration settings and credentials in files that are divided into named profiles.
+- [Environment Variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html): Environment variables provide another way to specify configuration options and credentials, and can be useful for scripting or temporarily setting a named profile as the default.
+- [Command line options](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html): In the AWS CLI, command line options are global parameters you can use to override configuration settings for that command.
+- [Command completion](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-completion.html): The AWS CLI includes a bash-compatible command-completion feature that enables you to use the Tab key to complete a partially entered command.
+- [Retries](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-retries.html): Customize retries for failed AWS CLI API calls that can occur on the server side, or fail due to rate limiting from the AWS service you're calling.
+- [HTTP proxies](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-proxy.html): Learn how to configure the AWS CLI to use an HTTP proxy through environment variables using DNS domain names, IP addresses, and port numbers.
+- [Endpoints](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html): The AWS CLI automatically uses the default endpoint for each service in an AWS Region, but you can specify an alternate endpoint for your API requests.
+
+## Authentication and access credentials
+- [Authentication and access credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-authentication.html): This chapter covers the authentication and credential processes to configure for programmatic access with the AWS CLI to connect to AWS services.
+- [Console credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sign-in.html)
+- [IAM Identity Center authentication](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html): This section directs you to instructions to configure the AWS CLI to authenticate users with IAM Identity Center to get credentials to run AWS CLI commands.
+- [Short-term credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-short-term.html): Configure the AWS CLI to authenticate using short-term credentials.
+- [IAM roles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html): Configure the AWS CLI to use a role defined in AWS Identity and Access Management.
+- [IAM users](https://docs.aws.amazon.com/cli/latest/userguide/cli-authentication-user.html): Configure the AWS CLI and specify the settings for interacting with AWS.
+- [Amazon EC2 metadata](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-metadata.html): When you run the AWS CLI from within an Amazon EC2 instance, the instance contains metadata that can be queried for temporary credentials.
+- [External credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html): Sourcing external credentials that isn't directly supported by the AWS CLI.
+
+## Using the AWS CLI
+- [Using the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-using.html): Use the AWS Command Line Interface with the common features and calling patterns.
+- [Get Help](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-help.html): Learn how to access help content for the AWS CLI including the built-in help command, online reference documentation, and community resources.
+- [Command Structure](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-commandstructure.html): Learn how to structure a multipart command and "wait" commands for the AWS Command Line Interface to communicate with AWS services.
+- [Specify Parameter Values](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html): Specify and pass parameters as values for the AWS CLI command options.
+- [Auto-prompt](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html): How to get the AWS CLI to dynamically prompt you for parameters.
+- [Control Command Output](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-output.html): Control the format of the output from the AWS CLI.
+- [Return Codes](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-returncodes.html): Understand the return codes provided by the AWS CLI.
+- [Wizards](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-wizard.html): Use the wizard subcommand to guide you through the input for a command in the AWS Command Line Interface.
+- [Aliases](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-alias.html): Aliases are shortcuts you can create in the AWS Command Line Interface to shorten commands or scripts that you frequently use.
+- [Troubleshoot errors](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-troubleshooting.html): This section covers common errors and troubleshooting steps to follow to diagnose and fix a variety of AWS Command Line Interface errors you may encounter.
+
+## AWS CLI examples
+- [AWS CLI examples](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-code-examples.html): This chapter provides examples that show you how to use the AWS CLI with AWS services.
+- [Guided command examples](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-services.html): See examples of using the AWS CLI to perform administrator and user tasks in AWS services.
+- [Command examples](https://docs.aws.amazon.com/cli/latest/userguide/cli_code_examples.html): Code examples that show how to use AWS Command Line Interface with AWS.
+- [Bash script examples](https://docs.aws.amazon.com/cli/latest/userguide/bash_code_examples.html): Code examples that show how to use AWS Command Line Interface with Bash script with AWS.
+
+## Security
+- [Security](https://docs.aws.amazon.com/cli/latest/userguide/security.html): Configure the AWS CLI to meet your security and compliance objectives, and learn how to use the AWS CLI to securely access your AWS resources.
+- [Data Protection](https://docs.aws.amazon.com/cli/latest/userguide/data-protection.html): Learn how the AWS shared responsibility model applies to data protection when using the AWS CLI.
+- [Identity and Access Management](https://docs.aws.amazon.com/cli/latest/userguide/security-iam.html): How to authenticate requests and manage access to your AWS resources.
+- [Compliance Validation](https://docs.aws.amazon.com/cli/latest/userguide/compliance-validation.html): Provides information about compliance validation for this AWS product or service.
+- [Resilience](https://docs.aws.amazon.com/cli/latest/userguide/disaster-recovery-resiliency.html): Provides information about resilience for this AWS Product or Service.
+- [Infrastructure Security](https://docs.aws.amazon.com/cli/latest/userguide/infrastructure-security.html): Provides information about infrastructure security for this AWS product or service.
+- [Enforcing a minimum TLS version](https://docs.aws.amazon.com/cli/latest/userguide/cli-security-enforcing-tls.html): Learn how to enforce a minimum version of TLS 1.2 for the AWS CLI.
+
+## Migration guide
+- [Migration guide](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html): Learn how to update the AWS CLI version 1 to AWS CLI version 2, and learn about the differences between the versions.
+- [New features and changes](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration-changes.html): Learn about new features and changes in behavior between AWS CLI version 1 and AWS CLI version 2.
+- [Migration instructions](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration-instructions.html): Learn how to migrate from AWS CLI version 1 to AWS CLI version 2.
+
+## Uninstall
+- [Uninstall](https://docs.aws.amazon.com/cli/latest/userguide/uninstall.html): Learn how to uninstall and remove the AWS Command Line Interface version 2 from your system.
+
+## Document History
+- [Document History](https://docs.aws.amazon.com/cli/latest/userguide/document-history.html): Find the revision dates, related releases, and important changes to the AWS Command Line Interface User Guide.

@@ -1,0 +1,13 @@
+# Source: https://www.plain.com/docs/webhooks/thread-note-created.md
+
+# Note created
+
+This event is fired when a note is created in a thread.
+
+## Schema
+
+[**View JSON Schema →**](https://core-api.uk.plain.com/webhooks/schema/latest.json)
+
+Example:
+
+<Snippet file="webhooks/thread-note-created.mdx" />

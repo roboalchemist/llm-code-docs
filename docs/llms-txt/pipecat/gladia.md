@@ -1,0 +1,55 @@
+# Source: https://docs.pipecat.ai/server/services/stt/gladia.md
+
+# Gladia
+
+> Speech-to-text service implementation using Gladia's API
+
+## Overview
+
+`GladiaSTTService` provides real-time speech recognition using Gladia's WebSocket API with support for 99+ languages, custom vocabulary, translation, sentiment analysis, and advanced audio processing features for comprehensive transcription.
+
+<CardGroup cols={2}>
+  <Card title="Gladia STT API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.gladia.html">
+    Pipecat's API methods for Gladia STT integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07j-interruptible-gladia.py">
+    Complete example with interruption handling
+  </Card>
+
+  <Card title="Gladia Documentation" icon="book" href="https://docs.gladia.io/api-reference/live-flow">
+    Official Gladia documentation and features
+  </Card>
+
+  <Card title="Gladia Platform" icon="microphone" href="https://www.gladia.io/">
+    Access multilingual transcription and API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Gladia services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[gladia]"
+```
+
+## Prerequisites
+
+### Gladia Account Setup
+
+Before using Gladia STT services, you need:
+
+1. **Gladia Account**: Sign up at [Gladia](https://www.gladia.io/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Region Selection**: Choose your preferred region (EU-West or US-West)
+
+### Required Environment Variables
+
+* `GLADIA_API_KEY`: Your Gladia API key for authentication
+* `GLADIA_REGION`: Your preferred region (optional, defaults to "eu-west")
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

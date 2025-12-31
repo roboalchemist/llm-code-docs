@@ -1,0 +1,106 @@
+# Source: https://docs.apify.com/platform/integrations/google-adk.md
+
+# Google ADK integration
+
+**Learn how to integrate Apify Actors as tools for AI with Agent Development Kit (ADK).**
+
+***
+
+## What is the Google ADK
+
+https://github.com/google/adk-python is a framework for developing and deploying AI agents.
+
+Explore Google ADK
+
+For more details, check out https://google.github.io/adk-docs/.
+
+## How to use Apify with Google ADK
+
+Apify is a marketplace of web scraping and automation tools, AI agents, and MCP servers that you can integrate with your AI agents. This guide shows how to use Apify tools with an AI agent built with Google ADK.
+
+### Prerequisites
+
+* *Apify API token*: To use Apify Actors in Google ADK, you need an Apify API token. To obtain your token, check https://docs.apify.com/platform/integrations/api.md#api-token.
+
+* *Python packages*: Install the following Python packages:
+
+
+  ```
+  pip install google-adk
+  ```
+
+
+### Build a pub search AI agent
+
+First, create an agent project:
+
+
+```
+adk create pub_search_agent
+```
+
+
+Create and configure the agent to use the Apify MCP server tools:
+
+Set your API token
+
+Make sure to set the `APIFY_TOKEN` environment variable in the `.env` file with your Apify API token before running the code.
+
+
+```
+from google.adk.agents import Agent
+from google.adk.tools.mcp_tool import McpToolset
+from google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPServerParams
+import os
+
+root_agent = Agent(
+    model="gemini-2.5-flash",
+    name="pub_search_agent",
+    instruction="You are a pub search agent that helps users find a great pub to visit based on their preferences. Use Apify tools to accomplish this.",
+    tools=[
+        McpToolset(
+            connection_params=StreamableHTTPServerParams(
+                # Configure Apify MCP Server URL with desired tools
+                url="https://mcp.apify.com?tools=compass/crawler-google-places",
+                headers={
+                    "Authorization": f"Bearer {os.getenv('APIFY_TOKEN')}",
+                },
+            ),
+        )
+    ],
+)
+```
+
+
+Run the agent via the web interface:
+
+
+```
+adk web
+```
+
+
+Or run the agent via command-line interface:
+
+
+```
+adk run pub_search_agent
+```
+
+
+Prompt the agent to find a pub in San Francisco:
+
+
+```
+Find a pub near the Ferry Building in San Francisco.
+```
+
+
+## Resources
+
+* https://docs.apify.com/platform/actors
+* https://google.github.io/adk-docs/get-started/
+* https://blog.apify.com/what-are-ai-agents/
+* https://mcp.apify.com
+* https://docs.apify.com/platform/integrations/mcp
+* https://apify.com/apify/openrouter

@@ -1,0 +1,108 @@
+# Source: https://rsbuild.dev/config/output/externals.md
+
+# output.externals
+
+* **Type:**
+
+```ts
+type Externals =
+  | string
+  | object
+  | function
+  | RegExp
+  | Array<string | object | function | RegExp>;
+```
+
+* **Default:** `undefined`
+
+At build time, prevent some `import` dependencies from being packed into bundles in your code, and instead fetch them externally at runtime.
+
+> For more information, please see: [Rspack Externals](https://rspack.rs/config/externals).
+
+## Examples
+
+### Basic usage
+
+Exclude the `react-dom` dependency from the output bundle. To get this module at runtime, the value of `react-dom` will globally retrieve the `ReactDOM` variable.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    externals: {
+      'react-dom': 'ReactDOM',
+    },
+  },
+};
+```
+
+### Array format
+
+Use an array to define multiple external configurations:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    externals: [
+      {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+      'lodash',
+    ],
+  },
+};
+```
+
+### Using with CDN
+
+A common use case is to load libraries from CDN and exclude them from your bundle, then use [html.tags](/config/html/tags.md) to include them in your HTML.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    externals: {
+      axios: 'axios',
+    },
+  },
+  html: {
+    tags: [
+      {
+        tag: 'script',
+        append: false,
+        attrs: {
+          defer: true,
+          crossorigin: true,
+          src: 'https://unpkg.com/axios@1/dist/axios.min.js',
+        },
+      },
+    ],
+  },
+};
+```
+
+Then you can use the external libraries in your source code:
+
+```js title="src/api.js"
+const response = await window.axios.get('/api/users');
+```
+
+### RegExp patterns
+
+Use regular expressions to match multiple modules with a pattern:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    externals: [
+      // Externalize all @babel packages
+      /^@babel\/.+$/,
+      // Externalize all lodash sub-modules
+      /^lodash\/.+$/,
+    ],
+  },
+};
+```
+
+:::tip
+If [output.target](/config/output/target.md) is `web-worker`, externals will not take effect. This is because the Web Worker environment cannot access global variables.
+:::

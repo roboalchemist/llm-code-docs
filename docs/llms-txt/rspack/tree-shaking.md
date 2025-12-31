@@ -1,0 +1,182 @@
+# Source: https://rspack.dev/guide/optimization/tree-shaking.md
+
+# Tree shaking
+
+Rspack supports [tree shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking), a term commonly used in the JavaScript ecosystem for removing unused code, also known as "dead code". Dead code occurs when module exports are unused and have no side effects, allowing them to be safely removed to reduce bundle size.
+
+## What is tree shaking
+
+Think of your application as a tree. The source code and libraries you actually use are the green, living leaves. Dead code is like the brown, dead leaves consumed by autumn. To remove the dead leaves, you shake the tree and they fall off.
+
+Rspack doesn't directly remove dead code—it marks unused exports as potential "dead code". Minification tools then recognize and process these markers. If [minimize](/config/optimization.md#optimizationminimize) is disabled, you won't see any actual code removal.
+
+:::tip What is dead code
+[Dead code](https://en.wikipedia.org/wiki/Dead_code) is code that's no longer executed, typically due to refactoring, optimization, or logical errors. It may be a remnant from previous versions or code that never executes under any condition.
+:::
+
+## Prerequisites
+
+To effectively leverage tree shaking, you need to:
+
+* Set Rspack's [mode](/config/mode.md) to `production` to enable tree shaking optimizations.
+  * In production builds, `mode` defaults to `production`.
+* Use ES module syntax (`import` and `export`).
+  * When using compilers like SWC or Babel, ensure they don't transform ES modules to CommonJS.
+  * For example, in [@babel/preset-env](https://babeljs.io/docs/en/babel-preset-env), set `modules` to `false`.
+
+## Configurations
+
+When [mode](/config/mode.md) is set to `production`, Rspack enables several tree shaking optimizations:
+
+* [usedExports](/config/optimization.md#optimizationusedexports): Detects which module exports are used, enabling removal of unused exports.
+* [sideEffects](/config/optimization.md#optimizationsideeffects): Analyzes modules for side effects. Modules without side effects can be further optimized through re-exports.
+* [providedExports](/config/optimization.md#optimizationprovidedExports): Analyzes all exports and tracks their re-export sources.
+* [innerGraph](/config/optimization.md#optimizationsinnergraph): Tracks variable usage to more accurately determine if exports are actually used.
+
+The following examples illustrate how these options work. For clarity, we'll use simplified code to demonstrate code removal.
+
+Let's look at an example with `src/main.js` as the entry point:
+
+```js title='src/main.js'
+import { foo } from './util.js';
+
+console.log(foo);
+// `bar` is not used
+```
+
+```js title='src/util.js'
+export const foo = 1;
+export const bar = 2;
+```
+
+In this example, `bar` from `util.js` is unused. In `production` mode, Rspack enables [usedExports](/config/optimization.md#optimizationusedexports) by default, which detects which exports are used. Unused exports like `bar` are removed. The final output looks like this:
+
+```js title='dist/main.js'
+const foo = 1;
+
+console.log(foo);
+```
+
+## Side effects analysis
+
+In `production` mode, Rspack also analyzes modules for side effects. If all exports from a module are unused and the module has no side effects, the entire module can be removed. Let's modify the previous example:
+
+```diff title='src/main.js'
+import { foo } from './util.js';
+
+- console.log(foo);
+// `bar` is not used
+```
+
+In this case, none of the exports from `util.js` are used, and it’s analyzed as having no side effects, permitting the entire deletion of `util.js`.
+
+You can manually indicate whether a module has side effects via `package.json` or `module.rules`. To do this, enable [optimization.sideEffects](/config/optimization.md#optimizationsideeffects).
+
+In `package.json`, you can use `true` or `false` to indicate whether all modules in the package have side effects.
+
+```json title="package.json"
+{
+  "name": "package",
+  "version": "1.0.0",
+  "sideEffects": false
+}
+```
+
+This `package.json` indicates that all modules in this package are side-effect-free.
+
+You can also use glob patterns to specify which modules have side effects. Unmatched modules are automatically treated as side-effect-free. If you manually mark side effects, ensure all unmarked modules truly have no side effects.
+
+```json title="package.json"
+{
+  "name": "package",
+  "version": "1.0.0",
+  "sideEffects": ["./src/main.js", "*.css"]
+}
+```
+
+This `package.json` indicates that only `./src/main.js` and all `.css` files have side effects, while all other modules are side-effect-free.
+
+## Re-export analysis
+
+Re-exports are common in development. However, a module might import many other modules while only needing a few exports. Rspack optimizes this by allowing consumers to access the actual exported modules directly. Consider this re-export example:
+
+```js title='src/main.js'
+import { value } from './re-exports.js';
+console.log(value);
+```
+
+```js title='src/re-exports.js'
+export * from './value.js';
+export * from './other.js'; // this can be removed if `other.js` does not have any side effects
+```
+
+```js title='src/value.js'
+export const value = 42;
+export const foo = 42; // not used
+```
+
+Rspack enables [providedExports](/config/optimization.md#optimizationprovidedexports) by default, which analyzes all exports from a re-exporting module and identifies their origins.
+
+If `src/re-exports.js` has no side effects, Rspack can convert the import in `src/main.js` to import directly from `src/value.js`:
+
+```diff title='src/main.js'
+- import { value } from './re-exports.js';
++ import { value } from './value.js';
+console.log(value);
+```
+
+This allows Rspack to completely skip the `src/re-exports.js` module.
+
+By analyzing all re-exports in `src/re-exports.js`, Rspack determines that `foo` from `src/value.js` is unused and removes it from the final output.
+
+## Variable transmission
+
+Sometimes exports are imported but not actually used. For example:
+
+```js title='src/main.js'
+import { foo } from './value.js';
+
+function log() {
+  console.log(foo);
+} // `log` is not used
+
+const bar = foo; // `foo` is not used
+```
+
+In this scenario, even though the `log` function and the `bar` variable depend on `foo`, neither is used, so `foo` is considered dead code and removed.
+
+When [innerGraph](/config/optimization.md#optimizationinnergraph) is enabled (the default in `production` mode), Rspack can track variable usage across modules to achieve precise code optimization.
+
+```js title='src/main.js'
+import { value } from './bar.js';
+console.log(value);
+```
+
+```js title='src/bar.js'
+import { foo } from './foo.js';
+const bar = foo;
+export const value = bar;
+```
+
+```js title='src/foo.js'
+export const foo = 42;
+```
+
+Since `value` is used, the `foo` it depends on is retained.
+
+## Pure annotation
+
+Use the `/*#__PURE__*/` annotation to tell Rspack that a function call is side-effect-free (pure). Place it before function calls to mark them as having no side effects.
+
+When an unused variable's initial value is marked as side-effect-free (pure), it's treated as dead code and removed by the minimizer.
+
+```js
+/*#__PURE__*/ double(55);
+```
+
+:::tip
+
+* Function arguments aren't marked by the annotation and may need to be marked individually.
+* This behavior is enabled when [optimization.innerGraph](/config/optimization.md#optimizationinnergraph) is set to true.
+
+:::

@@ -1,0 +1,16 @@
+# Source: https://electric-sql.com/demos/linearlite.md
+
+---
+url: /demos/linearlite.md
+description: Local-first project management app built with Electric and PGlite.
+---
+
+# Linearlite
+
+[Linear](https://linear.app) project management app clone, built using [Electric](/product/electric) and [PGlite](/product/pglite).
+
+## Linearlite using Electric and PGlite
+
+This demonstrates a fully-interactive, offline capable, real-world app with a large data set. It shows both fast initial data loading and instant local reactivity, despite a very large data set loaded into the local database.
+
+Writes are handled using [through the DB sync](/docs/guides/writes#through-the-db) with sophisticated merge logic. See the [`README` in the example folder](https://github.com/electric-sql/electric/tree/main/examples/linearlite) for more information.

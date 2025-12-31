@@ -1,0 +1,17 @@
+# Source: https://rspack.dev/misc/team/core-team.md
+
+import { RandomMemberList } from '@components/RandomMemberList.tsx';
+
+# Core team
+
+The development of Rstack is led by ByteDance's web infra team and driven together with community contributors on several core projects, including [Rspack](https://github.com/web-infra-dev/rspack), [Rsbuild](https://github.com/web-infra-dev/rsbuild), [Rspress](https://github.com/web-infra-dev/rspress), [Rsdoctor](https://github.com/web-infra-dev/rsdoctor), [Rslib](https://github.com/web-infra-dev/rslib), [Rstest](https://github.com/web-infra-dev/rstest) and [Rslint](https://github.com/web-infra-dev/rslint).
+
+Current members of the Rstack team are listed in random order below.
+
+## Members
+
+<RandomMemberList />
+
+## Emeriti members
+
+You can find the past team members and other people who significantly contributed to Rspack over the years on the [Emeriti members](/misc/team/emeriti.md) page.

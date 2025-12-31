@@ -1,0 +1,231 @@
+# Source: https://rsbuild.dev/guide/start/quick-start.md
+
+# Quick start
+
+## Online examples
+
+We provide online Rsbuild examples that showcase Rspack's build performance and Rsbuild's development experience:
+
+* [StackBlitz example](https://stackblitz.com/~/github.com/rstackjs/rsbuild-stackblitz-example)
+* [CodeSandbox example](https://codesandbox.io/p/github/rstackjs/rsbuild-codesandbox-example)
+
+## Environment preparation
+
+Rsbuild supports using [Node.js](https://nodejs.org/), [Deno](https://deno.com/), or [Bun](https://bun.sh/) as the JavaScript runtime.
+
+Use one of the following installation guides to set up a runtime:
+
+* [Install Node.js](https://nodejs.org/en/download)
+* [Install Bun](https://bun.com/docs/installation)
+* [Install Deno](https://docs.deno.com/runtime/getting_started/installation/)
+
+:::tip Version requirements
+
+* Rsbuild >= v1.5.0 requires Node.js 18.12.0 or higher.
+* Rsbuild \< 1.5.0 requires Node.js 16.10.0 or higher.
+
+:::
+
+## Create an Rsbuild application
+
+Use [create-rsbuild](https://www.npmjs.com/package/create-rsbuild) to create a new Rsbuild application. Run the following command:
+
+import { PackageManagerTabs } from '@theme';
+
+<PackageManagerTabs
+  command={{
+  npm: 'npm create rsbuild@latest',
+  yarn: 'yarn create rsbuild',
+  pnpm: 'pnpm create rsbuild@latest',
+  bun: 'bun create rsbuild@latest',
+  deno: 'deno init --npm rsbuild@latest',
+}}
+/>
+
+Follow the prompts to choose options, such as whether to add optional tools like TypeScript and ESLint.
+
+After creating the application, do the following:
+
+* Run `git init` to initialize a Git repository.
+* Run `npm install` (or your package manager's install command) to install dependencies.
+* Run `npm run dev` to start the dev server, which runs on `http://localhost:3000` by default.
+
+### Templates
+
+When creating an application, you can choose from the following templates provided by `create-rsbuild`:
+
+| Template | Official docs                   | Rsbuild integration guide               |
+| -------- | ------------------------------- | --------------------------------------- |
+| vanilla  | Native JavaScript               | -                                       |
+| react    | [React 19](https://react.dev/)  | [Using React](/guide/framework/react.md)   |
+| react18  | [React 18](https://react.dev/)  | [Using React](/guide/framework/react.md)   |
+| vue      | [Vue 3](https://vuejs.org/)     | [Using Vue](/guide/framework/vue.md)       |
+| vue2     | [Vue 2](https://v2.vuejs.org/)  | [Using Vue](/guide/framework/vue.md)       |
+| lit      | [Lit](https://lit.dev/)         | -                                       |
+| preact   | [Preact](https://preactjs.com/) | [Using Preact](/guide/framework/preact.md) |
+| svelte   | [Svelte](https://svelte.dev/)   | [Using Svelte](/guide/framework/svelte.md) |
+| solid    | [Solid](https://solidjs.com/)   | [Using Solid](/guide/framework/solid.md)   |
+
+`create-rsbuild` provides basic templates. For more options, see:
+
+* Visit [Rspack - Ecosystem](https://rspack.rs/guide/start/quick-start#ecosystem) to learn about higher-level tools built on Rsbuild.
+* Visit [awesome-rstack - Starter](https://github.com/rstackjs/awesome-rstack?tab=readme-ov-file#starter) for community-maintained templates.
+
+### Optional tools
+
+`create-rsbuild` can help you set up commonly used tools, including [Biome](https://github.com/biomejs/biome), [ESLint](https://github.com/eslint/eslint), [Prettier](https://github.com/prettier/prettier), and [Storybook](https://storybook.js.org/). Use the arrow keys to navigate and the space bar to select. Press Enter without selecting anything to skip these tools.
+
+```
+◆  Select additional tools (Use <space> to select, <enter> to continue)
+│  ◻ Add Biome for code linting and formatting
+│  ◻ Add ESLint for code linting
+│  ◻ Add Prettier for code formatting
+│  ◻ Add Storybook for component development
+│  ◻ Add Rstest for unit testing
+└
+```
+
+:::tip
+Biome provides similar linting and formatting features to ESLint and Prettier. If you select Biome, you typically won't need to add ESLint or Prettier.
+:::
+
+### Current directory
+
+To create an application in the current directory, set the target folder to `.`:
+
+```
+◆  Create Rsbuild Project
+│
+◇  Project name or path
+│  .
+│
+◇  "." is not empty, please choose:
+│  Continue and override files
+```
+
+### Non-interactive mode
+
+[create-rsbuild](https://npmjs.com/package/create-rsbuild) supports a non-interactive mode via command-line options. This mode skips prompts and creates the project directly, which is useful for scripts, CI, and automation.
+
+For example, the following command creates a React app in the `my-app` directory:
+
+```bash
+npx -y create-rsbuild@latest my-app --template react
+
+# Using abbreviations
+npx -y create-rsbuild@latest my-app -t react
+
+# Specify multiple tools
+npx -y create-rsbuild@latest my-app -t react --tools eslint,prettier
+```
+
+All CLI flags supported by `create-rsbuild`:
+
+```
+Usage: create-rsbuild [dir] [options]
+
+Options:
+
+  -h, --help            display help for command
+  -d, --dir <dir>       create project in specified directory
+  -t, --template <tpl>  specify the template to use
+  --tools <tool>        select additional tools (biome, eslint, prettier, storybook, rstest)
+  --override            override files in target directory
+  --packageName <name>  specify the package name
+
+Templates:
+
+  react-js, react-ts, vue3-js, vue3-ts, vue2-js, vue2-ts, svelte-js, svelte-ts,
+  solid-js, solid-ts, vanilla-js, vanilla-ts
+```
+
+## Migrate from existing projects
+
+To migrate from an existing project to Rsbuild, refer to the following guides:
+
+* [Migrate from webpack](/guide/migration/webpack.md)
+* [Migrate from Create React App](/guide/migration/cra.md)
+* [Migrate from Vue CLI](/guide/migration/vue-cli.md)
+* [Migrate from Vite](/guide/migration/vite.md)
+* [Migrate from Modern.js Builder](/guide/migration/modern-builder.md)
+* [Migrate from Tsup to Rslib](https://rslib.rs/guide/migration/tsup)
+* [Migrate from Storybook to Storybook Rsbuild](https://rspack.rs/guide/migration/storybook)
+
+### Other projects
+
+If your project doesn't match the above migration guides, you can manually install the [@rsbuild/core](https://npmjs.com/package/@rsbuild/core) package:
+
+<PackageManagerTabs command="add @rsbuild/core -D" />
+
+After installation, use the following documents to configure your project:
+
+* See [CLI](/guide/basic/cli.md) to learn about available CLI commands.
+* See [Plugin List](/plugins/list/index.md) to select Rsbuild plugins.
+* See [Configure Rsbuild](/guide/configuration/rsbuild.md) to configure Rsbuild.
+
+## CLI
+
+Rsbuild includes a lightweight CLI with commands like `dev` and `build`.
+
+```json title="package.json"
+{
+  "scripts": {
+    // start the dev server
+    "dev": "rsbuild dev",
+    // build for production
+    "build": "rsbuild build",
+    // preview the production build locally
+    "preview": "rsbuild preview"
+  }
+}
+```
+
+Refer to the [CLI](/guide/basic/cli.md) to learn about all available commands and options.
+
+## Entry module
+
+By default, Rsbuild CLI uses `src/index.(js|ts|jsx|tsx)` as the entry module. You can modify the entry module using the [source.entry](/config/source/entry.md) option.
+
+```ts title="rsbuild.config.ts"
+export default {
+  source: {
+    entry: {
+      foo: './src/pages/foo/index.ts',
+      bar: './src/pages/bar/index.ts',
+    },
+  },
+};
+```
+
+## Core packages
+
+### @rsbuild/core
+
+<a href="https://npmjs.com/package/@rsbuild/core" target="_blank" style={{ display: 'block', marginTop: '16px' }}>
+  <img src="https://img.shields.io/npm/v/@rsbuild/core?style=flat-square&colorA=564341&colorB=EDED91" alt="@rsbuild/core" style={{ pointerEvents: 'none' }} />
+</a>
+
+Core Rsbuild package that provides the CLI commands and JavaScript API.
+
+### create-rsbuild
+
+<a href="https://npmjs.com/package/create-rsbuild" target="_blank" style={{ display: 'block', marginTop: '16px' }}>
+  <img src="https://img.shields.io/npm/v/create-rsbuild?style=flat-square&colorA=564341&colorB=EDED91" alt="create-rsbuild" style={{ pointerEvents: 'none' }} />
+</a>
+
+Create a new Rsbuild project.
+
+## Next step
+
+You may want:
+
+import NextSteps from '@components/NextSteps';
+import Step from '@components/Step';
+
+<NextSteps>
+  <Step href="/guide/start/features" title="All features" description="Learn all features of Rsbuild" />
+
+  <Step href="/guide/configuration/rsbuild" title="Config" description="Learn how to configure Rsbuild" />
+
+  <Step href="https://github.com/web-infra-dev/rsbuild" title="Support Rsbuild" description="Support us with a star ⭐️" />
+</NextSteps>

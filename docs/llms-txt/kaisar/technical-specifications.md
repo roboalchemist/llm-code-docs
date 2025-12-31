@@ -1,0 +1,15 @@
+# Source: https://docs.kaisar.io/kaisar-network/origins/the-solution-kaisars-decentralized-gpu-network/kaisars-competitive-edge/technical-specifications.md
+
+# Technical Specifications
+
+* Kaisar utilizes peaq Blockchain which boasts the most environmentally friendly blockchain architecture and boasts the second-largest developer ecosystem in Web3.&#x20;
+* Blockchain technology allows for a clear record of data origin, processing, and ownership, enabling the tracking of data lineage and provenance, which is crucial in AI/ML applications where data quality and integrity are paramount.
+* Peaq's blockchain enables decentralized AI/ML model training while allowing for a more distributed and collaborative approach to AI development.
+* Peaq's sharded architecture allows for parallel processing of AI/ML tasks across multiple nodes, reducing training times and increasing the overall efficiency of the AI computing tasks.
+* Kaisar connects a global network of customers to GPU providers. Our network facilitates the seamless exchange of computational resources through smart contracts. Customers can request compute clusters tailored to their specific requirements, paying with KAI tokens. Providers, on the other hand, can share their underutilized processors and earn rewards through our platform.
+* With Kaisar, customers can choose a list of GPU providers/containers with unmatched flexibility, a list of randomly selected GPU containers is rendered to the customer based on their ability to provide the highest quality of service with the lowest possible latency and cost.
+* GPU providers are evaluated for their ability to deliver the best possible user experience, considering factors such as processing speed and uptime.
+* Kaisar offers a wide range of GPU rig rentals including the NVIDIA RTX series and AMD Ryzen series to join as GPU providers/containers for providing services to customers (Coming Soon).
+* Kaisar automatically detects risks and blocks unauthorized GPU containers. Operating in a multi-tenant environment Kaisar ensures that your data remains highly secure and inaccessible to other clients. For highly sensitive workloads, we recommend our Secure Cloud option that complies with industry standards and regulations and meets your high security and privacy demands.
+* Kaisar leverages an innovative concept of Proof: Proof of Physical Work (PoPW). This provides a token distribution mechanism that rewards participants of Kaisar Network for completing verifiable physical work in the real world. PoPW utilizes checkers that verify GPU Providers' device info, uptime, and performance. The work done by GPU Providers is submitted as proof which is validated and submitted to the blockchain. At the end, the blockchain calculates and distributes rewards to GPU Providers based on scores.
+* From the start of the GPU rental period until the reward distribution, the GPUs are always committed to the AI/ML jobs. The containers are monitored in real time to eliminate GPU processes that do not comply with the concept of Proof.

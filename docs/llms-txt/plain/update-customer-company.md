@@ -1,0 +1,25 @@
+# Source: https://www.plain.com/docs/graphql/companies/update-customer-company.md
+
+# Update customer company
+
+Plain automatically derives a customer's company for you, but you can also update it manually.
+
+The customer in question is identified by their id (ie `c_...`).
+
+With regards to the company, you can either specify an existing company using the ID we've generated (ie `co_...`), or pass the company domain, which we'll use to derive the rest of the company's info.
+
+If you wish to only remove the customer's associated company, then you can pass `null` as the `companyIdentifier`.
+
+For this mutation you need the following permissions:
+
+* `customer:edit`
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/update-customer-company.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/update-customer-company.mdx" />
+  </Tab>
+</Tabs>

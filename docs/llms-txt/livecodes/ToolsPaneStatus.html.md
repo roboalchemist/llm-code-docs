@@ -1,0 +1,9 @@
+# Source: https://livecodes.io/docs/api/internal/type-aliases/ToolsPaneStatus.html.md
+
+# Type Alias: ToolsPaneStatus
+
+> **ToolsPaneStatus**: `"closed"` \| `"open"` \| `"full"` \| `"none"` \| `""`
+
+## Defined in
+
+[models.ts:1464](https://github.com/live-codes/livecodes/blob/1f84d1b27bc55a00aefc468ad1efbe0b8a17528c/src/sdk/models.ts#L1464)

@@ -1,0 +1,5 @@
+# Source: https://docs.bito.ai/help/account-and-settings.md
+
+# Account and settings
+
+<table data-view="cards"><thead><tr><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><a href="account-and-settings/creating-a-bito-account">creating-a-bito-account</a></td><td>Learn how to sign up or log in to Bito</td></tr><tr><td><a href="account-and-settings/workspace">workspace</a></td><td>Learn how to create, join, or change workspace</td></tr><tr><td><a href="account-and-settings/managing-workspace-members">managing-workspace-members</a></td><td>Invite coworkers and manage their workspace membership</td></tr><tr><td><a href="account-and-settings/setting-ai-output-language">setting-ai-output-language</a></td><td>Personalize Bito to speak your language</td></tr><tr><td><a href="account-and-settings/managing-user-access-levels">managing-user-access-levels</a></td><td>Learn about different access levels and permissions</td></tr><tr><td><a href="account-and-settings/access-key">access-key</a></td><td>An alternative to standard email and OTP authentication</td></tr></tbody></table>

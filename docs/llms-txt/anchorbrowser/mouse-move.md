@@ -1,0 +1,100 @@
+# Source: https://docs.anchorbrowser.io/api-reference/os-level-control/mouse-move.md
+
+# Mouse Move
+
+> Moves the mouse cursor to the specified coordinates
+
+## OpenAPI
+
+````yaml openapi-mintlify.yaml post /v1/sessions/{sessionId}/mouse/move
+paths:
+  path: /v1/sessions/{sessionId}/mouse/move
+  method: post
+  servers:
+    - url: https://api.anchorbrowser.io
+      description: API server
+  request:
+    security:
+      - title: api key header
+        parameters:
+          query: {}
+          header:
+            anchor-api-key:
+              type: apiKey
+              description: API key passed in the header
+          cookie: {}
+    parameters:
+      path:
+        sessionId:
+          schema:
+            - type: string
+              required: true
+              description: The ID of the browser session
+              format: uuid
+      query: {}
+      header: {}
+      cookie: {}
+    body:
+      application/json:
+        schemaArray:
+          - type: object
+            properties:
+              x:
+                allOf:
+                  - type: integer
+                    description: X coordinate
+              'y':
+                allOf:
+                  - type: integer
+                    description: Y coordinate
+            required: true
+            refIdentifier: '#/components/schemas/CoordinatesRequestSchema'
+            requiredProperties:
+              - x
+              - 'y'
+        examples:
+          example:
+            value:
+              x: 123
+              'y': 123
+  response:
+    '200':
+      application/json:
+        schemaArray:
+          - type: object
+            properties:
+              status:
+                allOf:
+                  - type: string
+        examples:
+          example:
+            value:
+              status: <string>
+        description: Mouse move performed successfully
+    '400':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: Invalid coordinates
+        examples: {}
+        description: Invalid coordinates
+    '404':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: Session not found
+        examples: {}
+        description: Session not found
+    '500':
+      _mintlify/placeholder:
+        schemaArray:
+          - type: any
+            description: Failed to perform mouse move
+        examples: {}
+        description: Failed to perform mouse move
+  deprecated: false
+  type: path
+components:
+  schemas: {}
+
+````

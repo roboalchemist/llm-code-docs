@@ -1,0 +1,420 @@
+# Source: https://www.x-cmd.com/pkg.md
+
+---
+url: /pkg.md
+---
+# Package
+
+> Packages collected by X-CMD, managed by the [env](/mod/env.md) module. For more information [get-started](/pkg/get-started.md)
+
+## Packages
+
+- [procs](/pkg/procs): An alternative to the `ps` command, providing a concise and intuitive way to view and manage processes in the system
+- [gotop](/pkg/gotop): Terminal based graphical interface monitor
+- [glances](/pkg/glances): A cross-platform curses-based monitoring tool
+- [bpytop](/pkg/bpytop): Resource monitor that shows usage and stats for processor, memory, disks, network and processes
+- [bottom](/pkg/bottom): Customizable cross-platform graphical process/system monitor for terminals
+- [zenith](/pkg/zenith): A system resource monitoring tool that monitors system resources such as CPU, memory, hard disk, network, etc
+- [fkill-cli](/pkg/fkill-cli): Kill with interactive UI
+- [joker](/pkg/joker): Joker can turn process into daemon
+- [osquery](/pkg/osquery): osquery is a SQL powered operating system instrumentation, monitoring, and analytics framework
+- [fastfetch](/pkg/fastfetch): An actively maintained, feature-rich and performance oriented, neofetch like system information tool.
+- [macchina](/pkg/macchina): Fast, minimal and customizable system information frontend
+- [ismc](/pkg/ismc): an Apple System Management Controller (SMC) CLI tool can decode and display temperature, fans, battery, power, voltage and current information
+- [viddy](/pkg/viddy): Modern watch command
+- [sampler](/pkg/sampler): A tool for shell commands execution, visualization and alerting
+- [aichat](/pkg/aichat): Use GPT-4(V), Gemini, LocalAI, Ollama and other LLMs in the terminal
+- [catai](/pkg/catai): Chat UI and Local API for the Llama models
+- [chatblade](/pkg/chatblade): Chatblade is a versatile command-line interface (CLI) tool designed to interact with OpenAI's ChatGPT.
+- [gpt-engineer](/pkg/gpt-engineer): gpt-engineer is a commercial project that automatically generates web applications by interacting with AI through natural language
+- [gptscript](/pkg/gptscript): a new scripting language to automate your interaction with a Large Language Model (LLM), namely OpenAI
+- [gptui](/pkg/gptui): A GPT conversational TUI tool that runs within the terminal
+- [how2](/pkg/how2): Use an external AI server to find the best unix command line suggestions
+- [huggingface](/pkg/huggingface): Client library to download and publish models, datasets and other repos on the huggingface.co hub
+- [llm](/pkg/llm): Access large language models from the command-line
+- [open-interpreter](/pkg/open-interpreter): An open-source, locally running implementation of OpenAI's Code Interpreter
+- [whispercpp](/pkg/whispercpp): Port of OpenAI's Whisper model in C/C++
+- [chatgpt](/pkg/chatgpt): Command line interface for ChatGPT
+- [xlsxsql](/pkg/xlsxsql): A CLI tool that executes SQL queries on various files including xlsx files and outputs the results to various files
+- [sd](/pkg/sd): sd is an intuitive find & replace CLI
+- [pandoc](/pkg/pandoc): An open-source document conversion tool that supports converting multiple document formats to each other, including Markdown, HTML, PDF, DOCX, and more
+- [jq](/pkg/jq): jq is a lightweight and flexible command-line JSON processor
+- [yq](/pkg/yq): yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor
+- [gojq](/pkg/gojq): Pure Go implementation of jq
+- [jqp](/pkg/jqp): a TUI playground for exploring jq
+- [jless](/pkg/jless): jless is a command-line JSON viewer designed for reading, exploring, and searching through JSON data
+- [fx](/pkg/fx): Terminal JSON viewer & processor
+- [jc](/pkg/jc): Converts the output of common command-line tools, file types, and strings into JSON, YAML, or dictionaries
+- [dasel](/pkg/dasel): Query and modification tools for JSON, YAML, TOML, XML, CSV data
+- [gojo](/pkg/gojo): Yet another Go implementation of jo
+- [hcl2json](/pkg/hcl2json): Convert hcl2 to json
+- [gron](/pkg/gron): gron transforms JSON into discrete assignments to make it easier to `grep` for what you want and see the absolute 'path' to it. It eases the exploration of APIs that return large blobs of JSON but have terrible documentation
+- [dyff](/pkg/dyff): A diff tool for YAML files, and sometimes JSON
+- [ytt](/pkg/ytt): A YAML-structured template tool that helps you easily configure complex software with reusable templates and user-provided values
+- [xsv](/pkg/xsv): xsv is a command line program for indexing, slicing, analyzing, splitting and joining CSV files
+- [csvkit](/pkg/csvkit): A suite of utilities for converting to and working with CSV ("The king of tabular file formats").
+- [miller](/pkg/miller): Miller is a command-line tool for querying, shaping, and reformatting data files in various formats including CSV, TSV, JSON, and JSON Lines
+- [trdsql](/pkg/trdsql): A CLI tool that can perform SQL queries on CSV, LTSV, JSON, and TBLN
+- [csview](/pkg/csview): A high performance csv viewer with cjk/emoji support
+- [hexyl](/pkg/hexyl): A command-line hex viewer
+- [upx](/pkg/upx): upx is an advanced executable file compressor
+- [bed](/pkg/bed): Binary editor written in Go
+- [rg](/pkg/rg): rg is a line-oriented search tool that recursively searches the current directory for a regex pattern
+- [fzf](/pkg/fzf): general-purpose command-line fuzzy finder
+- [skim](/pkg/skim): A fuzzy finder for Rust
+- [peco](/pkg/peco): Simplistic interactive filtering tool
+- [comrak](/pkg/comrak): CommonMark + GFM compatible Markdown parser and renderer
+- [decktape](/pkg/decktape): High-quality PDF exporter for HTML presentation frameworks
+- [glow](/pkg/glow): glow is a terminal based markdown reader
+- [mdtsql](/pkg/mdtsql): Execute SQL to markdown table and convert to other format
+- [monolith](/pkg/monolith): CLI tool for saving complete web pages as a single HTML file
+- [mystmd](/pkg/mystmd): MyST Markdown Tools
+- [fd](/pkg/fd): A modern alternative for the `find` command, used for quickly searching files and directories in the file system
+- [fselect](/pkg/fselect): Find files with SQL-like queries
+- [bat](/pkg/bat): A `cat` clone with git integration and syntax highlighting support
+- [zoxide](/pkg/zoxide): zoxide is a smarter cd command, inspired by z and autojump
+- [difft](/pkg/difft): difft is a structural diff tool that compares files based on their syntax
+- [diffoscope](/pkg/diffoscope): in-depth comparison of files, archives, and directories
+- [unoconv](/pkg/unoconv): Universal Office Converter - Office document conversion
+- [trash-cli](/pkg/trash-cli): trash-cli trashes files recording the original path, deletion date, and permissions
+- [ncp](/pkg/ncp): Asynchronous recursive file copy utility.
+- [chezmoi](/pkg/chezmoi): Manage your dotfiles across multiple diverse machines, securely
+- [croc](/pkg/croc): a tool that allows any two computers to simply and securely transfer files and folders
+- [duf](/pkg/duf): A modern alternative to the `df` command, used to view disk space usage and disk file system information
+- [dust](/pkg/dust): A modern alternative to the `du` command, used to view disk space usage
+- [diskusage](/pkg/diskusage): A tool for showing disk usage(Linux, MacOS and Windows), it is a very fast utility to find largest directories or files
+- [ncdu](/pkg/ncdu): A disk usage analyzer with ncurses interface
+- [godu](/pkg/godu): Simple golang utility helping to discover large files/folders
+- [gdu](/pkg/gdu): Pretty fast disk usage analyzer written in Go
+- [dua](/pkg/dua): a tool to conveniently learn about the usage of disk space of a given directory
+- [smartctl](/pkg/smartctl): smartctl is a command-line suite or tool that implements SMART tasks under Unix-like systems
+- [yazi](/pkg/yazi): Blazing Fast Terminal File Manager
+- [superfile](/pkg/superfile): Pretty fancy and modern terminal file manager
+- [lf](/pkg/lf): Terminal file manager
+- [broot](/pkg/broot): `broot` is a terminal-based file manager that allows for quick locating and manipulation of files and directories. It enables sorting, filtering, and operations on files and directories based on various criteria
+- [ranger](/pkg/ranger): Vim-like file manager
+- [xplr](/pkg/xplr): A hackable, minimal, fast TUI file explorer
+- [eza](/pkg/eza): A modern, maintained replacement for ls
+- [exa](/pkg/exa): A modern alternative to the `ls` command, More distinctive and user-friendly
+- [lsd](/pkg/lsd): This project is a rewrite of GNU ls with lots of added features like colors, icons, tree-view, more formatting options etc.
+- [g](/pkg/g): A modern replacement for ls
+- [nvim](/pkg/nvim): Vim-fork focused on extensibility and usability
+- [helix](/pkg/helix): A post-modern multimodal text editor that supports multi window editing
+- [micro](/pkg/micro): A modern and intuitive terminal-based text editor
+- [docsify-cli](/pkg/docsify-cli): Document generator, supports hot loading
+- [sphinx](/pkg/sphinx): For creating smart and beautiful documents
+- [obs](/pkg/obs): Interact with Obsidian in the terminal. Open, search, create, update, move and delete notes
+- [ov](/pkg/ov): Feature-rich terminal text viewer
+- [tmux](/pkg/tmux): tmux is a terminal multiplexer.
+- [zellij](/pkg/zellij): A terminal multiplexer for developers, ops-oriented people and anyone who loves the terminal
+- [gum](/pkg/gum): Gum is an integrated Terminal UI command line tool that helps users write scripts with a user-friendly Command-line interface
+- [kanban-python](/pkg/kanban-python): Terminal Kanban App written in Python
+- [starship](/pkg/starship): The minimal, blazing-fast, and infinitely customizable prompt for any shell
+- [tmuxp](/pkg/tmuxp): tmux session manager
+- [asciigraph](/pkg/asciigraph): Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies
+- [gosop](/pkg/gosop): Stateless CLI for GopenPGP
+- [kyanos](/pkg/kyanos): Visualize the time packets spend in the kernel, watch & analyze in command line.
+- [rustscan](/pkg/rustscan): The Modern Port Scanner
+- [ezcheck](/pkg/ezcheck): An easy tool to calculate and check hash
+- [easyrsa](/pkg/easyrsa): easy-rsa is a CLI utility to build and manage a PKI CA
+- [horcrux](/pkg/horcrux): Tools for creating and recovering encrypted files
+- [scapy](/pkg/scapy): interactive packet manipulation tool
+- [openssl](/pkg/openssl): openssl is the most popular SSL cryptographic library tool available today, providing a versatile, robust, and full-featured toolkit
+- [cfssl](/pkg/cfssl): cfssl is CloudFlare's PKI/TLS toolkit, an HTTP API server for signing, validating, and bundling TLS certificates
+- [skate](/pkg/skate): skate is a personal key-value store tool
+- [lynis](/pkg/lynis): lynis is a security auditing tool for systems based on UNIX
+- [gopass](/pkg/gopass): unix password manager
+- [scorecard](/pkg/scorecard): OpenSSF Scorecard - Security health metrics for Open Source
+- [tfsec](/pkg/tfsec): Security scanner for your Terraform code
+- [dnstwist](/pkg/dnstwist): Domain name permutation engine for detecting homograph phishing attacks, typo squatting, and brand impersonation
+- [stegcloak](/pkg/stegcloak): StegCloak is a pure JavaScript steganography module designed in functional programming style, to hide text in plain sight - with key features like encryption and top-notch text compression. It can be used in social media or for any other covert communicat
+- [grype](/pkg/grype): A vulnerability scanner for container images and filesystems
+- [trivy](/pkg/trivy): Find vulnerabilities, security issues, and secrets in containers, Kubernetes, code repositories, cloud
+- [ncat](/pkg/ncat): ncat is a feature-packed networking utility which reads and writes data across networks from the command line
+- [nmap](/pkg/nmap): A tool for network detection and security auditing
+- [nping](/pkg/nping): A network detection and analysis tool that is part of the Nmap tool suite
+- [ctop](/pkg/ctop): Top-like interface for container metrics
+- [dry](/pkg/dry): Dry is a terminal application to manage Docker and Docker Swarm
+- [bwrap](/pkg/bwrap): bwrap is low-level unprivileged sandboxing tool used by Flatpak and similar projects
+- [lazydocker](/pkg/lazydocker): A simple terminal UI for both docker and docker-compose
+- [slim](/pkg/slim): Inspect, Minify and Debug Your Containers
+- [syft](/pkg/syft): A CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems.
+- [lima](/pkg/lima): Lima launches Linux virtual machines with automatic file sharing and port forwarding (similar to WSL2)
+- [dive](/pkg/dive): A tool for exploring a docker image, layer contents, and discovering ways to shrink the size of your Docker/OCI image.
+- [hadolint](/pkg/hadolint): A smarter Dockerfile linter that helps you build best practice Docker images
+- [helm](/pkg/helm): helm is the package manager for Kubernetes
+- [minikube](/pkg/minikube): minikube is a tool for running single-node Kubernetes clusters on your local machine
+- [kubectx](/pkg/kubectx): Tool that can switch between kubectl contexts easily and create aliases
+- [kube-score](/pkg/kube-score): kube-score is a tool that performs static code analysis of your Kubernetes object definitions
+- [kind](/pkg/kind): kind is a tool for running local Kubernetes clusters using Docker container "nodes"
+- [kube-capacity](/pkg/kube-capacity): A simple CLI that provides an overview of the resource requests, limits, and utilization in a Kubernetes cluster
+- [k3d](/pkg/k3d): k3d is a lightweight wrapper to run k3s (Rancher Lab’s minimal Kubernetes distribution) in docker
+- [k9s](/pkg/k9s): K9s provides a terminal UI to interact with your Kubernetes clusters
+- [kube-linter](/pkg/kube-linter): Static analysis tool for Kubernetes YAML files and Helm charts
+- [sqlfluff](/pkg/sqlfluff): A modular SQL linter and auto-formatter with support for multiple dialects and templated code.
+- [migrate](/pkg/migrate): Database migrations written in Go,use as CLI or import as library
+- [lazysql](/pkg/lazysql): A cross-platform TUI database management tool written in Go
+- [usql](/pkg/usql): Universal command-line interface for SQL databases
+- [gobackup](/pkg/gobackup): CLI tool for backup your databases, files to cloud storages in schedully.
+- [mssql-cli](/pkg/mssql-cli): A command-line client for SQL Server with auto-completion and syntax highlighting
+- [etcd](/pkg/etcd): etcd is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines
+- [litecli](/pkg/litecli): CLI for SQLite Databases with auto-completion and syntax highlighting
+- [ws4sqlite](/pkg/ws4sqlite): ws4sqlite is a server-side application that, applied to one or more SQLite files, allows to perform SQL queries and statements on them via REST (or better, JSON over HTTP)
+- [sqlite3](/pkg/sqlite3): A lightweight embedded relational Database management system, cross platform support and easy to use
+- [pathman](/pkg/pathman): PATH management tool for managing PATH on Windows 10, Mac and Linux
+- [direnv](/pkg/direnv): load and unload environment variables depending on the current directory
+- [zx](/pkg/zx): Tools that allow you to write various types of scripts using js
+- [powerline-go](/pkg/powerline-go): A Powerline like prompt for Bash, ZSH and Fish
+- [shfmt](/pkg/shfmt): A shell parser, formatter, and interpreter
+- [elvish](/pkg/elvish): A new shell developed using Go, suitable for users who want to perform complex data processing and interaction in the command line
+- [xonsh](/pkg/xonsh): A Python-powered shell that allows users to mix Python and shell commands on the command line
+- [nushell](/pkg/nushell): A Rust-powered shell with a modern user interface and powerful data processing capabilities
+- [zsh](/pkg/zsh): The Z shell (Zsh) is a Unix shell that can be used as an interactive login shell and as a command interpreter for shell scripting
+- [murex](/pkg/murex): A more intelligent shell and scripting environment with advanced features designed for usability, security, and productivity
+- [vhs](/pkg/vhs): Command line recording tool, used to record terminal operations into video files
+- [doitlive](/pkg/doitlive): a tool for live presentations in the terminal
+- [asciinema](/pkg/asciinema): asciinema is a suite of tools for recording, replaying, and sharing terminal sessions.
+- [carbonyl](/pkg/carbonyl): Chromium-based terminal browser supports almost all Web APIs, including WebGL, WebGPU, audio and video playback, animation, etc.
+- [ffmpeg](/pkg/ffmpeg): ffmpeg is a collection of libraries and tools for working with multimedia content such as audio, video, subtitles, and related metadata
+- [agg](/pkg/agg): asciinema gif generator
+- [magick](/pkg/magick): magick is used to display, convert, and edit raster and vector image files
+- [pdfcpu](/pkg/pdfcpu): pdfcpu is a PDF processing library written in Go supporting encryption
+- [pdfminer](/pkg/pdfminer): PDF parser and analyzer
+- [termsvg](/pkg/termsvg): Record, share and export your terminal as a animated SVG image.
+- [mermaid-cli](/pkg/mermaid-cli): The command line tool of the Mermaid library is used to generate various types of charts such as flow charts, sequence diagrams, and Gantt charts on the command line.
+- [ascii-image-converter](/pkg/ascii-image-converter): A cross-platform command-line tool to convert images into ascii art and print them on the console
+- [beets](/pkg/beets): music library manager and MusicBrainz tagger
+- [nasa-cli](/pkg/nasa-cli): A CLI for NASA's Astronomy Picture of the Day
+- [gallery-dl](/pkg/gallery-dl): Command-line program to download image galleries and collections from several image hosting sites
+- [gifski](/pkg/gifski): GIF encoder based on libimagequant (pngquant)
+- [ocrmypdf](/pkg/ocrmypdf): Open source tool for converting image text in PDF documents to searchable text (OCR)
+- [editly](/pkg/editly): Editly is a tool and framework for declarative NLE (non-linear video editing) using Node.js and ffmpeg.
+Editly allows you to easily and programmatically create a video from a set of clips, images, audio and titles, with smooth transitions and music overlaid
+
+- [video-to-ascii](/pkg/video-to-ascii): A simple python package for playing videos in the terminal using ASCII characters
+- [icloudpd](/pkg/icloudpd): iCloud Photos Downloader
+- [code2flow](/pkg/code2flow): Visualize your source code as DOT flowcharts
+- [gping](/pkg/gping): Ping, but with a graph
+- [tcping](/pkg/tcping): A tool to ping over a TCP connection.
+- [globalping](/pkg/globalping): A simple CLI tool to run networking commands remotely from hundreds of globally distributed servers
+- [nexttrace](/pkg/nexttrace): NextTrace, an open source visual route tracking CLI tool
+- [nali](/pkg/nali): An offline tool for querying IP geographic information and CDN provider
+- [trippy](/pkg/trippy): Trippy combines the functionality of traceroute and ping and is designed to assist with the analysis of networking issues
+- [speedtest-cli](/pkg/speedtest-cli): Command line interface for testing internet bandwidth using speedtest.net
+- [curl](/pkg/curl): A command line tool for transferring data with URL syntax
+- [aria2](/pkg/aria2): An efficient compression algorithm and tool designed to provide fast compression and decompression speeds while maintaining a high compression ratio
+- [tunasync](/pkg/tunasync): Mirror job management tool
+- [curlie](/pkg/curlie): Curlie is a frontend to curl that adds the ease of use of httpie, without compromising on features and performance
+- [t-get](/pkg/t-get): tget is wget for torrents
+- [gost](/pkg/gost): A simple security tunnel written in Golang
+- [mosquitto](/pkg/mosquitto): Message broker implementing the MQTT protocol
+- [socat](/pkg/socat): A versatile web tool
+- [traceroute](/pkg/traceroute): A network diagnostic tool used to track the path of data packets from the source host to the target host
+- [websocat](/pkg/websocat): Netcat, curl and socat for WebSockets
+- [doggo](/pkg/doggo): doggo is a modern command-line DNS client (like dig) written in Golang
+- [magic-wormhole](/pkg/magic-wormhole): get things from one computer to another, safely
+- [public-ip-cli](/pkg/public-ip-cli): Get your public IP address
+- [frp](/pkg/frp): frp is a fast reverse proxy that allows you to expose a local server located behind a NAT or firewall to the Internet
+- [termshark](/pkg/termshark): A terminal UI for tshark, inspired by Wireshark
+- [xh](/pkg/xh): Friendly and fast tool for sending HTTP requests
+- [brook](/pkg/brook): A cross-platform programmable network tool
+- [certbot](/pkg/certbot): Certbot is EFF's tool to obtain certs from Let's Encrypt and (optionally) auto-enable HTTPS on your server.
+- [grpcurl](/pkg/grpcurl): grpcurl is a command-line tool that lets you interact with gRPC servers
+- [miniserve](/pkg/miniserve): A CLI tool to serve files and directories over HTTP
+- [bore](/pkg/bore): A simple CLI tool for establishing a tunnel to localhost
+- [benthos](/pkg/benthos): Benthos is a high performance and resilient stream processor
+- [duckduckgo_search](/pkg/duckduckgo_search): Search for words, documents, images, news, maps and text translation using the DuckDuckGo.com search engine
+- [ipatool](/pkg/ipatool): Command-line tool that allows searching and downloading app packages (known as ipa files) from the iOS App Store
+- [chisel](/pkg/chisel): Fast TCP/UDP tunnel over HTTP
+- [nico](/pkg/nico): A HTTP3 web server for reverse proxy and single page application
+- [wetty](/pkg/wetty): WeTTY = Web + TTY. Terminal access in browser over http/https
+- [tproxy](/pkg/tproxy): A cli tool for proxying and analyzing TCP connections
+- [shodan](/pkg/shodan): Search engine for internet connected devices. Google lets you search for websites, and Shodan lets you search for devices.
+- [zoomeye](/pkg/zoomeye): A cyberspace search engine that allows users to search for network devices using a browser
+- [xxh-xxh](/pkg/xxh-xxh): The mission of xxh is to bring your favorite shell wherever you go through ssh without root access or system installations. Xonsh shell, fish, zsh, osquery and so on
+- [assh](/pkg/assh): assh is a smart tool that was designed to wrap tightly around your SSH and enhance it, like a superhero suit that has various gadgets installed
+- [ssh-audit](/pkg/ssh-audit): An SSH server & client configuration security auditing tool
+- [wasmtime](/pkg/wasmtime): A fast and secure runtime for WebAssembly
+- [wasmer](/pkg/wasmer): Wasmer is a blazing fast and secure WebAssembly runtime
+- [wasmedge](/pkg/wasmedge): A lightweight, high-performance, and extensible WebAssembly runtime for cloud native, edge, and decentralized applications
+- [jco](/pkg/jco): JavaScript tooling for working with WebAssembly Components
+- [wasm-tools](/pkg/wasm-tools): CLI and Rust libraries for low-level manipulation of WebAssembly modules
+- [luarocks](/pkg/luarocks): A package manager for Lua modules
+- [delta](/pkg/delta): Syntax highlighting pager for git, diff and grep output
+- [haxor-news](/pkg/haxor-news): View and filter Hacker News from the command line: Posts, comments, and linked web content.
+- [epr](/pkg/epr): Terminal/CLI Epub reader written in Python 3.6
+- [hyperfine](/pkg/hyperfine): A command-line benchmarking tool.
+- [lakefs](/pkg/lakefs): an open-source tool that transforms your object storage into a Git-like repository.
+- [ffuf](/pkg/ffuf): Fast web fuzzer written in Go
+- [hey](/pkg/hey): HTTP load generator, ApacheBench (ab) replacement
+- [oha](/pkg/oha): HTTP load generator that sends some payload to the web application and displays real-time tui
+- [loadtest](/pkg/loadtest): Run load tests for your web application
+- [python](/pkg/python): The miniconda version of python is mainly suitable for scientific computing and data analysis, machine learning and deep learning, scientific research and experiments, etc.
+- [zig](/pkg/zig): Zig is a general-purpose programming language and toolchain for maintaining robust, optimal and reusable software
+- [go](/pkg/go): A statically strongly typed, compiled, and concurrent open source programming language developed by Google
+- [java](/pkg/java): Java is a computer programming language. It has features such as cross-platform compatibility, object-oriented programming, and generic programming, and is widely used in web application development and mobile application development
+- [mawk](/pkg/mawk): mawk is an interpreter for the AWK Programming Language
+- [lua](/pkg/lua): Lua is a powerful, efficient, lightweight, embeddable scripting language
+- [kotlin](/pkg/kotlin): Statically typed programming language for the JVM
+- [scala](/pkg/scala): Scala, short for Scalable Language, is a multi-paradigm programming language
+- [tinygo](/pkg/tinygo): Go compiler for small places
+- [perl](/pkg/perl): Perl is a general scripting language with powerful text processing and regular expression functions
+- [raku](/pkg/raku): A general, progressive type of programming language that supports multiple programming paradigms
+- [uv](/pkg/uv): An extremely fast Python package and project manager, written in Rust.
+- [rye](/pkg/rye): A comprehensive Python project and package management solution.
+- [miniconda](/pkg/miniconda): A streamlined version of Anaconda Distribution, featuring `conda`, `Python`, and a curated selection of packages, designed specifically for the fields of data science and machine learning.
+- [norwegianblue](/pkg/norwegianblue): CLI to show end-of-life dates for a number of products. Such as Python, Ubuntu, Centos.
+- [pygments](/pkg/pygments): Pygments is a generic syntax highlighter written in Python
+- [copier](/pkg/copier): A library for rendering project templates
+- [cookiecutter](/pkg/cookiecutter): A command-line utility that creates projects from project templates, e.g. creating a Python package project from a Python package project template.
+- [bowler](/pkg/bowler): Safe code refactoring for modern Python projects
+- [rebound-cli](/pkg/rebound-cli): Command-line tool that instantly fetches Stack Overflow results when an exception is thrown
+- [invoke](/pkg/invoke): Pythonic task management & command execution
+- [doit](/pkg/doit): task management & automation tool
+- [pipx](/pkg/pipx): Install and Run Python Applications in Isolated Environments
+- [pytype](/pkg/pytype): Python type inferencer
+- [pylint](/pkg/pylint): python code static checker
+- [monkeytype](/pkg/monkeytype): A Python library that generates static type annotations by collecting runtime types
+- [black](/pkg/black): The uncompromising code formatter
+- [isort](/pkg/isort): A Python utility / library to sort Python imports
+- [prospector](/pkg/prospector): Prospector is a tool to analyse Python code by aggregating the result of other tools
+- [pyre-check](/pkg/pyre-check): A performant type checker for Python
+- [wemake-python-styleguide](/pkg/wemake-python-styleguide): The strictest and most opinionated python linter ever
+- [vulture](/pkg/vulture): Find dead Python code
+- [howdoi](/pkg/howdoi): A command-line tool and python library to find programming problems in the terminal
+- [node](/pkg/node): Node.js is an open-source, cross-platform, asynchronous event-driven JavaScript runtime environment based on the V8 engine
+- [deno](/pkg/deno): A modern runtime for JavaScript, TypeScript, and WebAssembly
+- [bun](/pkg/bun): A fast all-in-one JavaScript runtime
+- [tsx](/pkg/tsx): A CLI for running TypeScript and ESM seamlessly (tsx is a standalone binary designed to replace node)
+- [pm2](/pkg/pm2): Node.js Production Process Manager with a built-in Load Balancer
+- [ts-node](/pkg/ts-node): TypeScript execution and REPL for node.js
+- [hint](/pkg/hint): A customizable linting tool that helps you improve your website's accessibility, speed, cross-browser compatibility, and more by checking your code for best practices and common errors
+- [flink](/pkg/flink): Scalable batch and stream data processing
+- [gradle](/pkg/gradle): Open-source build automation tool based on the Groovy and Kotlin DSL
+- [activemq](/pkg/activemq): powerful open source messaging server
+- [ant](/pkg/ant): Java build tool
+- [ballerina](/pkg/ballerina): Programming Language for Network Distributed Applications
+- [coursier](/pkg/coursier): coursier is the Scala application and artifact manager
+- [doctoolchain](/pkg/doctoolchain): docToolchain is a collection of scripts that makes it easy to create and maintain powerful technical documentation
+- [kobweb](/pkg/kobweb): Kobweb is a Kotlin-based framework for creating websites and web applications
+- [groovyserv](/pkg/groovyserv): Groovy's startup acceralator
+- [hadoop](/pkg/hadoop): Framework for distributed processing of large data sets
+- [infrastructor](/pkg/infrastructor): Infrastructor is a server provisioning and configuration management tool written in Groovy programming language
+- [ki](/pkg/ki): Kotlin Language Interactive Shell
+- [grails](/pkg/grails): A powerful Groovy-based web application framework for the JVM built on top of Spring Boot
+- [maven](/pkg/maven): Java-based project management
+- [mulefd](/pkg/mulefd): Mule flow call graphs and diagrams
+- [btrace](/pkg/btrace): a safe, dynamic tracing tool for the Java platform
+- [ktx](/pkg/ktx): npx for kotlin and the JVM,Install and execute jars or kotlin scripts just like any other command line utility
+- [mcs](/pkg/mcs): Maven Central Search, or mcs for short, is a small CLI to query Maven Central from your command line
+- [taskbook](/pkg/taskbook): Tasks, boards & notes for the command-line habitat
+- [td-cli](/pkg/td-cli): A todo command line todo manager
+- [gcalcli](/pkg/gcalcli): Google Calendar Command Line Interface
+- [pueue](/pkg/pueue): Pueue is a command-line task management tool for sequential and parallel execution of long-running tasks
+- [khal](/pkg/khal): A standards based terminal calendar
+- [fanyi](/pkg/fanyi): Chinese-English translation tool, powered by youDao/iciba/ChatGPT
+- [pypinyin](/pkg/pypinyin): Convert Chinese characters to Pinyin
+- [franc-cli](/pkg/franc-cli): CLI to detect the language of text
+- [jieba](/pkg/jieba): Chinese Words Segmentation Utilities
+- [deepl](/pkg/deepl): DeepL language translation command line tool
+- [tokei](/pkg/tokei): Tokei is a line count tool written in Rust
+- [scc](/pkg/scc): A very fast, accurate code counter
+- [rclone](/pkg/rclone): A command-line tool for managing cloud storage files
+- [cloudlist](/pkg/cloudlist): Cloudlist is a multi-cloud tool for getting Assets from Cloud Providers, maintaining a centralized list of assets across multiple clouds with very little configuration efforts
+- [opentofu](/pkg/opentofu): OpenTofu lets you declaratively manage your cloud infrastructure
+- [terraform](/pkg/terraform): Automate infrastructure on any cloud with Terraform
+- [ansible](/pkg/ansible): Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy and maintain
+- [pyinfra](/pkg/pyinfra): pyinfra automates/provisions/manages/deploys infrastructure
+- [awscli](/pkg/awscli): Universal Command Line Interface for Amazon Web Services
+- [aliyun](/pkg/aliyun): The Alibaba Cloud CLI is a tool to manage and use Alibaba Cloud resources through a command line interface
+- [azure-cli](/pkg/azure-cli): The Azure Command-Line Interface to connect to Azure and execute administrative commands on Azure resources
+- [ibmcloud](/pkg/ibmcloud): This is the command line client for IBM Cloud
+- [doctl](/pkg/doctl): The official command line interface for the DigitalOcean API
+- [hcloud](/pkg/hcloud): A command-line interface for Hetzner Cloud
+- [koocli](/pkg/koocli): HUAWEI cloud Command Line Tool provides a way to call cloud service APIs through the CLI
+- [flarectl](/pkg/flarectl): A CLI application for interacting with a Cloudflare account
+- [wrangler](/pkg/wrangler): the CLI for Cloudflare Workers
+- [fastly](/pkg/fastly): fastly is an open-source command line tool for interacting with the Fastly API. Use it to create services, manage backends and domains, upload VCL or build and deploy Compute packages
+- [ucloud](/pkg/ucloud): UCloud Command Line Interface
+- [oci-cli](/pkg/oci-cli): Command Line Interface for Oracle Cloud Infrastructure
+- [vultr-cli](/pkg/vultr-cli): Official command line tool for Vultr services
+- [jdcloud_cli](/pkg/jdcloud_cli): jdcloud CLI
+- [linode-cli](/pkg/linode-cli): The Linode Command Line Interface
+- [qingcloud-cli](/pkg/qingcloud-cli): qingcloud-cli is a command-line interface for managing qingcloud resources
+- [scw](/pkg/scw): Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal
+- [drive](/pkg/drive): Google Drive client for command line
+- [influx](/pkg/influx): CLI for managing resources in InfluxDB v2
+- [qshell](/pkg/qshell): Use the command-line tools of the Qiniu Cloud API service
+- [create-cloudflare](/pkg/create-cloudflare): the CLI for Cloudflare Workers
+- [heroku](/pkg/heroku): CLI to interact with Heroku
+- [dvc](/pkg/dvc): Git for data scientists - manage your code and data together
+- [act_runner](/pkg/act_runner): Act runner is a runner for Gitea based on Gitea fork of act
+- [act](/pkg/act): Run your GitHub Actions locally
+- [gh](/pkg/gh): GitHub's official command line tool is used to interact with GitHub in the Command-line interface
+- [soft-serve](/pkg/soft-serve): soft-serve is a self-hostable Git server for the command-line
+- [tea](/pkg/tea): tea is the official CLI for Gitea
+- [gitea](/pkg/gitea): git self-hosted all-in-one software development service including Git hosting, code review, team collaboration, package registration and CI/CD
+- [glab](/pkg/glab): gitlab cli
+- [goreleaser](/pkg/goreleaser): goreleaser is a release automation tool for Go projects
+- [bit](/pkg/bit): `bit` is an experimental modernized git CLI built on top of git that provides happy defaults 
+- [gitleaks](/pkg/gitleaks): gitleaks is a SAST tool for detecting and preventing hardcoded secrets like passwords, api keys, and tokens in git repos
+- [gitui](/pkg/gitui): gitui is a terminal-based Git user interface tool
+- [lazygit](/pkg/lazygit): A simple terminal UI for `git` commands
+- [tig](/pkg/tig): tig is an ncurses-based text-mode interface for git
+- [czg](/pkg/czg): Interactive CLI that generate standardized git commit messages
+- [onefetch](/pkg/onefetch): Command-line Git information tool
+- [jj](/pkg/jj): A Git-compatible VCS that is both simple and powerful
+- [lefthook](/pkg/lefthook): Fast and powerful Git hooks manager for any type of projects
+- [pre-commit](/pkg/pre-commit): A framework for managing and maintaining multi-language pre-commit hooks.
+- [git-chglog](/pkg/git-chglog): CHANGELOG generator implemented in Go (Golang)
+- [buku](/pkg/buku): buku is a powerful bookmark manager and a personal textual mini-web
+- [webtorrent-cli](/pkg/webtorrent-cli): WebTorrent, the streaming torrent client. For the command line
+- [httpie](/pkg/httpie): HTTPie CLI — modern, user-friendly command-line HTTP client for the API era.
+- [httpx](/pkg/httpx): A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library, it is designed to maintain the result reliability with increased threads.
+- [hurl](/pkg/hurl): runs HTTP requests defined in a simple plain text format
+- [gotty](/pkg/gotty): Share your terminal as a web application
+- [trafilatura](/pkg/trafilatura): A Python package & command-line tool to gather text on the Web
+- [ttyd](/pkg/ttyd): ttyd is a simple command-line tool for sharing terminal over the web
+- [ddgr](/pkg/ddgr): ddgr is a cmdline utility to search DuckDuckGo (html version) from the terminal
+- [ngxtop](/pkg/ngxtop): Real-time monitoring tool for nginx server
+- [zola](/pkg/zola): A fast static site generator
+- [caddy](/pkg/caddy): Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
+- [hugo](/pkg/hugo): Hugo is a static site generator written in Go
+- [mkdocs](/pkg/mkdocs): a fast, simple and downright gorgeous static site generator that's geared towards building project documentation.
+- [ruff](/pkg/ruff): An extremely fast Python linter and code formatter, written in Rust
+- [yapf](/pkg/yapf): A formatter for Python code
+- [just](/pkg/just): just is a handy way to save and run project-specific commands
+- [7za](/pkg/7za): 7za is an open-source file compression and decompression tool, which is a command-line version of 7-Zip
+- [zstd](/pkg/zstd): An efficient file compression tool based on the ZStandard algorithm
+- [ouch](/pkg/ouch): A CLI tool to compress and decompress various formats
+- [busybox](/pkg/busybox): A streamlined tool set that integrates multiple commonly used commands and tools
+- [shtris](/pkg/shtris): A Tetris game implemented by a shell
+- [genact](/pkg/genact): A nonsense activity generator
+- [carapace-bin](/pkg/carapace-bin): Carapace-bin provides argument completion for multiple CLI commands (full list), and works across multiple POSIX and non-POSIX shells.
+- [emoj](/pkg/emoj): Find relevant emoji from text on the command-line
+- [watchexec](/pkg/watchexec): watchexec is a simple, standalone tool that watches a path and runs a command whenever it detects modifications
+- [shelljs](/pkg/shelljs): Portable Unix shell commands for Node.js
+- [sncli](/pkg/sncli): Simplenote CLI (Simplenote is a simple and lightweight note-taking application designed to provide a clear and intuitive note management experience)
+- [keep](/pkg/keep): A Meta CLI toolkit : Personal shell command keeper and snippets manager
+- [jupyterlab](/pkg/jupyterlab): JupyterLab computational environment
+- [bcat](/pkg/bcat): A pipe to browser utility
+- [mapscii](/pkg/mapscii): MapSCII is a Braille & ASCII world map renderer for your console, based on OpenStreetMap
+- [ulp](/pkg/ulp): ULP is a Locator Picker - a PathPicker clone for URLs
+- [typos](/pkg/typos): Source code spell checker
+- [revive](/pkg/revive): Fast, configurable, extensible, flexible, and beautiful linter for Go
+- [cfn-lint](/pkg/cfn-lint): CloudFormation Linter
+- [coala](/pkg/coala): Linting and Fixing Code for All Languages
+- [qrencode](/pkg/qrencode): An open-source command-line tool and library for encoding data into QR code symbols
+- [nanoid](/pkg/nanoid): A tiny (116 bytes), secure URL-friendly unique string ID generator
+- [navi](/pkg/navi): An interactive cheatsheet tool for the command-line
+- [percol](/pkg/percol): Adds flavor of interactive filtering to the traditional pipe concept of shell
+- [grex](/pkg/grex): A command-line tool and Rust library for generating regular expressions from user-provided test cases
+- [restic](/pkg/restic): Restic is a backup program that is fast, efficient and secure
+- [kopia](/pkg/kopia): Cross-platform backup tool for Windows, macOS & Linux with fast, incremental backups, client-side end-to-end encryption, compression and data deduplication
+- [wtfutil](/pkg/wtfutil): WTF is the personal information dashboard for your terminal
+- [thefuck](/pkg/thefuck): Terminal command debugging tool
+- [pywal](/pkg/pywal): Pywal is a tool that generates a color palette from the dominant colors in an image
+- [datasette](/pkg/datasette): An open source multi-tool for exploring and publishing data
+- [atuin](/pkg/atuin): Atuin replaces your existing shell history with a SQLite database, and records additional context for your commands
+- [invoice](/pkg/invoice): Command line invoice generator
+- [easy-sharing](/pkg/easy-sharing): Sharing is a command-line tool to share directories and files from the CLI to iOS and Android devices without the need of an extra client app

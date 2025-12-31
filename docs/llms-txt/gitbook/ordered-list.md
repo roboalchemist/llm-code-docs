@@ -1,0 +1,53 @@
+# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/ordered-list.md
+
+# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/ordered-list.md
+
+# Source: https://gitbook.com/docs/creating-content/blocks/ordered-list.md
+
+# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/ordered-list.md
+
+# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/ordered-list.md
+
+# Source: https://gitbook.com/docs/creating-content/blocks/ordered-list.md
+
+# Ordered lists
+
+Ordered lists, also called numbered lists, help you prioritize items or create a list of steps.&#x20;
+
+### Example of ordered list
+
+1. Item 1
+   1. Nested item 1.1
+      1. Nested item 1.1.1
+   2. Nested item 1.2
+2. Item 2
+3. Item 3
+
+{% hint style="info" %}
+To create nested items, you can use **Tab** to indent and **⇧ + Tab** to outdent.
+{% endhint %}
+
+### Representation in Markdown
+
+```markdown
+1. Item 1
+   1. Nested item 1.1
+      1. Nested item 1.1.1
+   2. Nested item 1.2
+2. Item 2
+3. Item 3
+```
+
+### Adding an inline image to an ordered list
+
+Adding images inside of ordered lists is possible in GitBook
+
+If you want to add an image within an ordered list, add it using the insert menu, then on the row below the image type `3.` then hit `Space`, and the ordered list will continue.
+
+1. Item 1
+2. Item 2
+
+<div align="left"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRx3GanTQecoIzxIDcmmO%2FExample%20image.png?alt=media&#x26;token=a0718213-fd07-40b0-b605-faba8eb0d433" alt="" width="375"><figcaption></figcaption></figure></div>
+
+3. Item 3
+4. Item 4

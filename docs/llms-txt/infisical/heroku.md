@@ -1,0 +1,148 @@
+# Source: https://infisical.com/docs/integrations/secret-syncs/heroku.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/heroku.md
+
+# Source: https://infisical.com/docs/integrations/secret-syncs/heroku.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/heroku.md
+
+# Source: https://infisical.com/docs/integrations/secret-syncs/heroku.md
+
+# Source: https://infisical.com/docs/integrations/cloud/heroku.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/heroku.md
+
+# Source: https://infisical.com/docs/integrations/secret-syncs/heroku.md
+
+# Source: https://infisical.com/docs/integrations/cloud/heroku.md
+
+# Source: https://infisical.com/docs/integrations/app-connections/heroku.md
+
+# Heroku Connection
+
+> Learn how to configure a Heroku Connection for Infisical using OAuth or Auth Token methods.
+
+Infisical supports two methods for connecting to Heroku: **OAuth** and **Auth Token**. Choose the method that best fits your setup and security requirements.
+
+<Tabs>
+  <Tab title="OAuth Method">
+    The OAuth method provides secure authentication through Heroku's OAuth flow.
+
+    <Accordion title="Self-Hosted Instance Setup">
+      Using the Heroku Connection with OAuth on a self-hosted instance of Infisical requires configuring an API client in Heroku and registering your instance with it.
+
+      **Prerequisites:**
+
+      * A Heroku account with existing applications
+      * Self-hosted Infisical instance
+
+      <Steps>
+        <Step title="Create an API client in Heroku">
+          Navigate to your user Account settings > Applications to create a new API client.
+
+          <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-config-settings.png" alt="Heroku config settings" />
+          <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-config-applications.png" alt="Heroku config applications" />
+          <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-config-new-app.png" alt="Heroku config new app" />
+
+          Create the API client. As part of the form, set the **OAuth callback URL** to `https://your-domain.com/organization/app-connections/heroku/oauth/callback`.
+
+          <Tip>
+            The domain you defined in the OAuth callback URL should be equivalent to the `SITE_URL` configured in your Infisical instance.
+          </Tip>
+
+                    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-config-new-app-form.png" alt="Heroku config new app form" />
+        </Step>
+
+        <Step title="Add your Heroku API client credentials to Infisical">
+          Obtain the **Client ID** and **Client Secret** for your Heroku API client.
+
+                    <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-config-credentials.png" alt="Heroku config credentials" />
+
+          Back in your Infisical instance, add two new environment variables for the credentials of your Heroku API client:
+
+          * `INF_APP_CONNECTION_HEROKU_OAUTH_CLIENT_ID`: The **Client ID** of your Heroku API client.
+          * `INF_APP_CONNECTION_HEROKU_OAUTH_CLIENT_SECRET`: The **Client Secret** of your Heroku API client.
+
+          Once added, restart your Infisical instance and use the Heroku Connection.
+        </Step>
+      </Steps>
+    </Accordion>
+
+    ## Setup Heroku OAuth Connection in Infisical
+
+    <Steps>
+      <Step title="Navigate to App Connections">
+        Navigate to the **App Connections** page in the desired project.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
+      </Step>
+
+      <Step title="Add Connection">
+        Select the **Heroku Connection** option from the connection options modal.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-select-connection.png" alt="Select Heroku Connection" />
+      </Step>
+
+      <Step title="Choose OAuth Method">
+        Select the **OAuth** method and click **Connect to Heroku**.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-create-oauth-method.png" alt="Connect via Heroku OAuth" />
+      </Step>
+
+      <Step title="Grant Access">
+        You will be redirected to Heroku to grant Infisical access to your Heroku account. Once granted, you will be redirected back to Infisical's App Connections page.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/heroku/integrations-heroku-auth.png" alt="Heroku Authorization" />
+      </Step>
+
+      <Step title="Connection Created">
+        Your **Heroku Connection** is now available for use.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-connection.png" alt="Heroku OAuth Connection" />
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Auth Token Method">
+    The Auth Token method uses a Heroku API token for authentication, providing a straightforward setup process.
+
+    ## Setup Heroku Auth Token Connection in Infisical
+
+    <Steps>
+      <Step title="Generate Heroku API Token">
+        Log in to your Heroku account and navigate to Account Settings.
+
+        Under the **Authorizations** section on the **Applications** tab, reveal and copy your Authorization token. If you don't have one, click **Create Authorization** to create a new token.
+
+        <Warning>
+          Keep your Authorization token secure and do not share it. Anyone with access to this token can manage your Heroku applications.
+        </Warning>
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-api-token.png" alt="Heroku API Token" />
+      </Step>
+
+      <Step title="Navigate to App Connections">
+        Navigate to the **App Connections** page in the desired project.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
+      </Step>
+
+      <Step title="Add Connection">
+        Select the **Heroku Connection** option from the connection options modal.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-select-connection.png" alt="Select Heroku Connection" />
+      </Step>
+
+      <Step title="Configure Auth Token">
+        Select the **Auth Token** method and paste your Heroku Authorization token in the provided field.
+
+                <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-create-token-method.png" alt="Configure Auth Token" />
+
+        Click **Connect** to establish the connection.
+      </Step>
+
+      <Step title="Connection Created">
+        Your **Heroku Connection** is now available for use.
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/heroku/heroku-connection.png" alt="Heroku Auth Token Connection" />
+      </Step>
+    </Steps>
+
+    <Info>
+      Auth Token connections require manual token rotation when your Heroku Authorization expires or is regenerated. Monitor your connection status and update the token as needed.
+    </Info>
+  </Tab>
+</Tabs>

@@ -2,6 +2,14 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/range.md
 
+# Source: https://docs.slatejs.org/api/locations/range.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-core/range.md
+
+# Source: https://docs.slatejs.org/api/locations/range.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-core/range.md
+
 # Range
 
 ```javascript

@@ -1,0 +1,144 @@
+# Source: https://docs.ultravox.ai/webhooks/overview.md
+
+# Source: https://docs.ultravox.ai/voices/overview.md
+
+# Source: https://docs.ultravox.ai/tools/rag/overview.md
+
+# Source: https://docs.ultravox.ai/tools/overview.md
+
+# Source: https://docs.ultravox.ai/tools/custom/overview.md
+
+# Source: https://docs.ultravox.ai/telephony/overview.md
+
+# Source: https://docs.ultravox.ai/overview.md
+
+# Source: https://docs.ultravox.ai/noise/overview.md
+
+# Source: https://docs.ultravox.ai/apps/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/corpora/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/calls/overview.md
+
+# Source: https://docs.ultravox.ai/agents/overview.md
+
+# Source: https://docs.ultravox.ai/webhooks/overview.md
+
+# Source: https://docs.ultravox.ai/voices/overview.md
+
+# Source: https://docs.ultravox.ai/tools/rag/overview.md
+
+# Source: https://docs.ultravox.ai/tools/overview.md
+
+# Source: https://docs.ultravox.ai/tools/custom/overview.md
+
+# Source: https://docs.ultravox.ai/telephony/overview.md
+
+# Source: https://docs.ultravox.ai/overview.md
+
+# Source: https://docs.ultravox.ai/noise/overview.md
+
+# Source: https://docs.ultravox.ai/apps/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/corpora/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/calls/overview.md
+
+# Source: https://docs.ultravox.ai/agents/overview.md
+
+# Source: https://docs.ultravox.ai/webhooks/overview.md
+
+# Source: https://docs.ultravox.ai/voices/overview.md
+
+# Source: https://docs.ultravox.ai/tools/rag/overview.md
+
+# Source: https://docs.ultravox.ai/tools/overview.md
+
+# Source: https://docs.ultravox.ai/tools/custom/overview.md
+
+# Source: https://docs.ultravox.ai/telephony/overview.md
+
+# Source: https://docs.ultravox.ai/overview.md
+
+# Source: https://docs.ultravox.ai/noise/overview.md
+
+# Source: https://docs.ultravox.ai/apps/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/corpora/overview.md
+
+# Source: https://docs.ultravox.ai/api-reference/calls/overview.md
+
+# Source: https://docs.ultravox.ai/agents/overview.md
+
+# Overview: Agents & Calls
+
+> Create consistent, reusable voice AI experience with agents or direct call configuration.
+
+## Introduction
+
+Ultravox provides two ways to create voice conversations: **Agents** (recommended) and **Direct Calls**. For all new projects, we strongly recommend starting with agents as they provide better consistency, reusability, and maintainability.
+
+## Agents vs Direct Calls
+
+<CardGroup cols={2}>
+  <Card title="Agents (Recommended)" icon="robot" color="#22c55e">
+    <br />
+
+    **Reusable templates** that define assistant behavior, personality, and capabilities. Create once, use for multiple calls.
+
+    <br />
+
+    **Best for:** Production applications, consistent experiences, team collaboration.
+  </Card>
+
+  <Card title="Direct Calls" icon="phone" color="#6b7280">
+    <br />
+
+    **One-time configurations** where you specify all settings for each individual call.
+
+    <br />
+
+    **Best for:** Quick testing, very simple one-off use cases.
+  </Card>
+</CardGroup>
+
+## Why Start with Agents?
+
+[Agents](/api-reference/agents/agents-post) provide a way to define voice assistants that can be reused across multiple calls, ensuring consistent behavior and capabilities. This enables you to maintain a cohesive user experience with minimal configuration overhead at call creation time. Each agent includes a call template that defines system prompts, voice settings, available tools, and more.
+
+Key benefits of using Agents:
+
+**Reusable Configuration** → Create a single agent definition and use it for multiple calls without repeating configuration settings.
+
+**Consistent Experience** → Ensure your voice experience maintains the same personality, capabilities, and behavior across all interactions.
+
+**Version Control** → Update an agent's configuration in one place and have changes apply to all future calls.
+
+**Simplified Deployment** → Reduce the complexity of starting calls by referencing an existing agent instead of providing all configuration details.
+
+<Note>
+  <b>Time-Saving Feature</b>
+
+  Agents are ideal for production applications where you want consistent behavior across multiple user interactions.
+</Note>
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Build Your First Agent" icon="hammer" href="/agents/building-and-editing-agents">
+    Create reusable voice assistant templates
+  </Card>
+
+  <Card title="Start Making Calls" icon="phone" href="/agents/making-calls">
+    Use agents or direct calls to create conversations
+  </Card>
+
+  <Card title="Advanced Techniques" icon="graduation-cap" href="/agents/guiding-agents">
+    Learn sophisticated conversation control
+  </Card>
+</CardGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

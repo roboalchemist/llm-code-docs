@@ -1,0 +1,14 @@
+# Source: https://docs.giselles.ai/en/releases/product-notes.md
+
+# Product Notes
+
+> This document outlines key updates, improvements, and future prospects of our product.
+
+## Latest Product Updates
+
+### Public Beta
+
+Giselle is currently available as a public beta, allowing users to test and provide feedback on our AI app building platform.
+We're excited to announce that we will be officially launching on Product Hunt soon at [https://www.producthunt.com/products/giselle](https://www.producthunt.com/products/giselle).
+This launch will introduce our open-source visual editor for building custom AI applications to a wider audience.
+Stay tuned for the official launch date and be among the first to explore the full capabilities of Giselle.

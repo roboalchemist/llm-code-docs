@@ -1,0 +1,124 @@
+# Source: https://rspack.dev/config/node.md
+
+import WebpackLicense from '@components/WebpackLicense';
+
+<WebpackLicense from="https://webpack.js.org/configuration/node/" />
+
+# Node
+
+The following Node.js options configure whether to polyfill or mock certain [Node.js globals](https://nodejs.org/docs/latest/api/globals.html).
+
+## node.global
+
+* **Type:** `boolean | 'warn'`
+* **Default:** `'warn'`
+
+Controls whether Rspack should provide a polyfill for the Node.js `global` object when bundling for non-Node environments.
+
+See [the Node.js documentation](https://nodejs.org/api/globals.html#globals_global) for the exact behavior of this object.
+
+### Available values
+
+* `true`: Rspack injects a polyfill so that `global` is available in the bundle. This ensures compatibility with code that relies on Node.js globals in non-Node runtimes
+* `false`: No polyfill is provided. References to `global` remain untouched. If your target environment does not define `global`, accessing it will throw a `ReferenceError` at runtime
+* `'warn'`: Inject a polyfill like `true`, but also emit a warning when `global` is used
+
+### Examples
+
+For example, to disable `global` polyfill:
+
+```js title="rspack.config.mjs"
+export default {
+  node: {
+    global: false,
+  },
+};
+```
+
+## node.\_\_filename
+
+* **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
+* **Default:**
+  * If `target` does not include `node`, defaults to `'warn-mock'`.
+  * If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
+
+Controls how Rspack handles the Node.js [`__filename`](https://nodejs.org/api/modules.html#__filename) and [`import.meta.filename`](https://nodejs.org/api/esm.html#importmetafilename) variables when bundling for non-Node environments.
+
+### Available values
+
+* `true`: Replace with the source file path, relative to the [`context`](/config/context.md) option
+* `false`: Do nothing and keep the native behavior
+* `'mock'`: Replace with `/index.js`
+* `'mock'`: Replace with `'/index.js'`
+* `'warn-mock'`: Replace with `'/index.js'`, and emit a warning to indicate a potential Node.js dependency in the code
+* `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__filename` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
+
+### Examples
+
+For example, to leave `__filename` and `import.meta.filename` as it is:
+
+```js title="rspack.config.mjs"
+export default {
+  node: {
+    __filename: false,
+  },
+};
+```
+
+To replace `__filename` in ESM output with `fileURLToPath(import.meta.url)`:
+
+```js title="rspack.config.mjs"
+export default {
+  target: 'node',
+  output: {
+    module: true,
+  },
+  node: {
+    __filename: 'node-module',
+  },
+};
+```
+
+## node.\_\_dirname
+
+* **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
+* **Default:**
+  * If `target` does not include `node`, defaults to `'warn-mock'`.
+  * If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
+
+Controls how Rspack handles the Node.js [`__dirname`](https://nodejs.org/api/modules.html#__dirname) and [`import.meta.dirname`](https://nodejs.org/api/esm.html#importmetadirname) variables when bundling for non-Node environments.
+
+### Available values
+
+* `true`: Replace with the directory path of the source file, relative to the [`context`](/config/context.md) option
+* `false`: Do nothing and keep the native behavior
+* `'mock'`: Replace with `'/'`
+* `'eval-only'`: Equivalent to `false`
+* `'warn-mock'`: Replace with `'/'`, and emit a warning to indicate a potential Node.js dependency in the code
+* `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__dirname` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
+
+### Examples
+
+For example, to leave `__dirname` and `import.meta.dirname` as it is:
+
+```js title="rspack.config.mjs"
+export default {
+  node: {
+    __dirname: false,
+  },
+};
+```
+
+To replace `__dirname` in ESM output with `fileURLToPath(import.meta.url + "/..")`:
+
+```js title="rspack.config.mjs"
+export default {
+  target: 'node',
+  output: {
+    module: true,
+  },
+  node: {
+    __dirname: 'node-module',
+  },
+};
+```

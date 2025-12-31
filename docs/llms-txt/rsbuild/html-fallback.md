@@ -1,0 +1,39 @@
+# Source: https://rsbuild.dev/config/server/html-fallback.md
+
+# server.htmlFallback
+
+* **Type:** `false | 'index'`
+* **Default:** `'index'`
+
+Whether to enable HTML fallback.
+
+## Default behavior
+
+By default, when the request meets the following conditions and the corresponding resource is not found, it will fallback to `index.html`:
+
+* The request is a `GET` or `HEAD` request
+* Which accepts `text/html` (the request header accept type is `text/html` or `*/*`)
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    htmlFallback: 'index',
+  },
+};
+```
+
+## Disable
+
+If you do not want to enable HTML fallback, you can set `server.htmlFallback` to `false`.
+
+```ts title="rsbuild.config.ts"
+export default {
+  server: {
+    htmlFallback: false,
+  },
+};
+```
+
+## Customize
+
+If `server.htmlFallback` cannot meet your needs, you can use [server.historyApiFallback](/config/server/history-api-fallback.md) for more flexible settings.

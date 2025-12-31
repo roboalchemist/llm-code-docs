@@ -1,0 +1,55 @@
+# Source: https://docs.pipecat.ai/server/services/tts/minimax.md
+
+# MiniMax
+
+> Text-to-speech service implementation using MiniMax T2A API
+
+## Overview
+
+`MiniMaxTTSService` provides high-quality text-to-speech synthesis using MiniMax's T2A (Text-to-Audio) API with streaming capabilities, emotional voice control, and support for multiple languages. The service offers various models optimized for different use cases, from low-latency to high-definition audio quality.
+
+<CardGroup cols={2}>
+  <Card title="MiniMax TTS API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.minimax.tts.html">
+    Pipecat's API methods for MiniMax TTS integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/07y-interruptible-minimax.py">
+    Complete example with emotional voice settings
+  </Card>
+
+  <Card title="MiniMax Documentation" icon="book" href="https://www.minimax.io/platform/document/T2A%20V2?key=66719005a427f0c8a5701643">
+    Official MiniMax T2A API documentation
+  </Card>
+
+  <Card title="MiniMax Platform" icon="microphone" href="https://www.minimax.io/platform/">
+    Access voice models and API credentials
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use MiniMax services, no additional dependencies are required beyond the base installation:
+
+```bash  theme={null}
+pip install "pipecat-ai"
+```
+
+## Prerequisites
+
+### MiniMax Account Setup
+
+Before using MiniMax TTS services, you need:
+
+1. **MiniMax Account**: Sign up at [MiniMax Platform](https://www.minimax.io/platform/)
+2. **API Credentials**: Get your API key and Group ID from the platform
+3. **Voice Selection**: Choose from available voice models and emotional settings
+
+### Required Environment Variables
+
+* `MINIMAX_API_KEY`: Your MiniMax API key for authentication
+* `MINIMAX_GROUP_ID`: Your MiniMax group ID
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,0 +1,54 @@
+# Source: https://docs.pipecat.ai/server/services/llm/fireworks.md
+
+# Fireworks AI
+
+> LLM service implementation using Fireworks AI's API with OpenAI-compatible interface
+
+## Overview
+
+`FireworksLLMService` provides access to Fireworks AI's language models through an OpenAI-compatible interface. It inherits from `OpenAILLMService` and supports streaming responses, function calling, and context management with optimized inference infrastructure.
+
+<CardGroup cols={2}>
+  <Card title="Fireworks LLM API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.fireworks.llm.html">
+    Pipecat's API methods for Fireworks AI integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/14i-function-calling-fireworks.py">
+    Complete example with function calling
+  </Card>
+
+  <Card title="Fireworks Documentation" icon="book" href="https://docs.fireworks.ai/api-reference/post-chatcompletions">
+    Official Fireworks AI API documentation and features
+  </Card>
+
+  <Card title="Fireworks Platform" icon="microphone" href="https://fireworks.ai/">
+    Access models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Fireworks AI services, install the required dependency:
+
+```bash  theme={null}
+pip install "pipecat-ai[fireworks]"
+```
+
+## Prerequisites
+
+### Fireworks AI Account Setup
+
+Before using Fireworks AI LLM services, you need:
+
+1. **Fireworks Account**: Sign up at [Fireworks AI](https://fireworks.ai/)
+2. **API Key**: Generate an API key from your account dashboard
+3. **Model Selection**: Choose from available open-source and proprietary models
+
+### Required Environment Variables
+
+* `FIREWORKS_API_KEY`: Your Fireworks AI API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

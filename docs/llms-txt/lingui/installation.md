@@ -1,0 +1,250 @@
+# Source: https://lingui.dev/installation.md
+
+# Installation and Setup
+
+Lingui is more than just a package; it's a comprehensive suite of tools designed to simplify internationalization. You have the flexibility to choose the specific tools that best fit your project's needs.
+
+Learn how to install Lingui in your project, whether you use JavaScript, React (including RSC) or React Native. Lingui also supports various transpilers and build tools, such as Babel, SWC, and Vite.
+
+## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+* Make sure you have [Node.js](https://nodejs.org/) installed (v20 or higher).
+* Install [Lingui CLI](/ref/cli.md) to manage your translations and catalogs.
+
+tip
+
+Don't miss the [Lingui ESLint Plugin](/ref/eslint-plugin.md) which can help you find and prevent common i18n mistakes in your code.
+
+## Choosing a Transpiler[​](#choosing-a-transpiler "Direct link to Choosing a Transpiler")
+
+> A transpiler converts code within a language, transforming newer features into older equivalents for compatibility, or expanding concise syntax into more verbose implementations.
+
+Lingui needs a transpiler to work. It's responsible for transforming Lingui's JS/JSX components into [ICU MessageFormat](/guides/message-format.md) and extracting message IDs. Both Babel and SWC transpilers are supported. Follow the Babel or SWC setup depending on what transpiler your project already uses.
+
+* Babel
+* SWC
+
+> Babel is a JavaScript transpiler that converts modern code into backward-compatible versions and allows custom syntax transformations.
+
+Lingui requires `@lingui/babel-plugin-lingui-macro` (recommended) or [`babel-plugin-macros`](https://github.com/kentcdodds/babel-plugin-macros) to perform the transformation.
+
+If you are using a framework that doesn't allow you to change the Babel configuration (e.g. Create React App > 2.0), these frameworks may support `babel-plugin-macros` out of the box.
+
+Follow these steps to set up Lingui with Babel:
+
+1. Install the `@lingui/babel-plugin-lingui-macro` package as a development dependency:
+
+   * npm
+   * Yarn
+   * pnpm
+
+   ```
+   npm install --save-dev @lingui/babel-plugin-lingui-macro
+   ```
+
+   ```
+   yarn add --dev @lingui/babel-plugin-lingui-macro
+   ```
+
+   ```
+   pnpm add --save-dev @lingui/babel-plugin-lingui-macro
+   ```
+
+2. Add `@lingui/babel-plugin-lingui-macro` to the top of the `plugins` section of your Babel config (e.g. `.babelrc`):
+
+   ```
+   {
+     "plugins": ["@lingui/babel-plugin-lingui-macro"]
+   }
+   ```
+
+tip
+
+When using a preset, first check if it includes the `macros` plugin. If so, then you don't need to install and set up `@lingui/babel-plugin-lingui-macro`. For example, `react-scripts` already includes the `macros` plugin.
+
+caution
+
+If you're using [React Compiler](https://react.dev/learn/react-compiler), make sure that `@lingui/babel-plugin-lingui-macro` comes **before** the React Compiler plugin in the Babel plugins list. This ensures macros are expanded correctly before the compiler processes the code.
+
+> SWC is an extensible Rust-based platform for the next generation of fast developer tools.
+
+Lingui supports SWC with a dedicated plugin [`@lingui/swc-plugin`](/ref/swc-plugin.md). SWC is significantly faster than Babel and is a good choice for large projects.
+
+Follow these steps to set up Lingui with SWC:
+
+1. Install `@lingui/swc-plugin` as a development dependency:
+
+   * npm
+   * Yarn
+   * pnpm
+
+   ```
+   npm install --save-dev @lingui/swc-plugin
+   ```
+
+   ```
+   yarn add --dev @lingui/swc-plugin
+   ```
+
+   ```
+   pnpm add --save-dev @lingui/swc-plugin
+   ```
+
+2. [Add necessary configurations](/ref/swc-plugin.md#usage).
+
+caution
+
+SWC Plugin support is still experimental. Semver backwards compatibility between different `@swc/core` versions is not guaranteed. See the [SWC compatibility](/ref/swc-plugin.md#swc-compatibility) for more information.
+
+caution
+
+If you're using [React Compiler](https://react.dev/learn/react-compiler) with SWC, the `@lingui/swc-plugin` must run **before** the React Compiler plugin. This is necessary because Lingui macros need to be expanded before the React Compiler processes your code.
+
+However, in Next.js, the React Compiler is enabled via a simple boolean flag (`reactCompiler: true`) in `next.config.js`, and there's currently no way to control plugin ordering. As a result, Lingui may not work correctly with the React Compiler in SWC-based setups like Next.js.
+
+## Basic Configuration[​](#basic-configuration "Direct link to Basic Configuration")
+
+Lingui needs a configuration file to work. The configuration file specifies the source files, message catalogs, and other settings.
+
+Let's create a basic configuration file in the root of your project (next to `package.json`):
+
+lingui.config.js
+
+```
+import { defineConfig } from "@lingui/cli";
+
+export default defineConfig({
+  sourceLocale: "en",
+  locales: ["cs", "en"],
+  catalogs: [
+    {
+      path: "<rootDir>/src/locales/{locale}/messages",
+      include: ["src"],
+    },
+  ],
+});
+```
+
+The configuration above specifies the source locale as English and the target locales as Czech and English.
+
+According to this configuration, Lingui will extract messages from source files in the `src` directory and write them to message catalogs in `src/locales` (the English catalog would be in `src/locales/en/messages.po`, for example). See [Configuration](/ref/conf.md) for a complete reference.
+
+note
+
+Replace `src` with the name of the directory where you have the source files.
+
+The PO format is the default and recommended format for message catalogs. See the [Catalog Formats](/ref/catalog-formats.md) for other available formats.
+
+## Build Tools[​](#build-tools "Direct link to Build Tools")
+
+### Vite[​](#vite "Direct link to Vite")
+
+> Vite is a blazing fast frontend build tool powering the next generation of web applications.
+
+Lingui supports Vite with a dedicated plugin [`@lingui/vite-plugin`](/ref/vite-plugin.md). This plugin is responsible for extracting messages from your source code and compiling message catalogs.
+
+There are two ways to set up Lingui with Vite by using the [`@vitejs/plugin-react`](https://www.npmjs.com/package/@vitejs/plugin-react) or [`@vitejs/plugin-react-swc`](https://www.npmjs.com/package/@vitejs/plugin-react-swc). You need to choose the one that fits your project setup.
+
+* Babel (plugin-react)
+* SWC (plugin-react-swc)
+
+The `@vitejs/plugin-react` plugin uses Babel to transform your code. To use Lingui with Vite and Babel, follow these steps:
+
+1. Follow the [Choosing a Transpiler](#choosing-a-transpiler) instructions.
+
+2. Install `@lingui/vite-plugin` as a development dependency and `@lingui/react` as a runtime dependency:
+
+   * npm
+   * Yarn
+   * pnpm
+
+   ```
+   npm install --save-dev @lingui/vite-plugin
+   npm install --save @lingui/react
+   ```
+
+   ```
+   yarn add --dev @lingui/vite-plugin
+   yarn add @lingui/react
+   ```
+
+   ```
+   pnpm add --save-dev @lingui/vite-plugin
+   pnpm add @lingui/react
+   ```
+
+3. Setup Lingui in `vite.config.ts`:
+
+   vite.config.ts
+
+   ```
+   import { defineConfig } from "vite";
+   import react from "@vitejs/plugin-react";
+   import { lingui } from "@lingui/vite-plugin";
+
+   export default defineConfig({
+     plugins: [
+       react({
+         babel: {
+           plugins: ["@lingui/babel-plugin-lingui-macro"],
+         },
+       }),
+       lingui(),
+     ],
+   });
+   ```
+
+info
+
+The `@vitejs/plugin-react` does not use the Babel config (e.g. `babel.rc`) from your project by default. You have to enable it manually or specify Babel options directly in `vite.config.ts`.
+
+The `@vitejs/plugin-react-swc` plugin uses SWC to transform your code, which is significantly faster than Babel. To use Lingui with Vite and SWC, follow these steps:
+
+1. Follow the [Choosing a Transpiler](#choosing-a-transpiler) instructions.
+
+2. Install `@lingui/vite-plugin`, `@lingui/swc-plugin` as development dependencies and `@lingui/react` as a runtime dependency:
+
+   * npm
+   * Yarn
+   * pnpm
+
+   ```
+   npm install --save-dev @lingui/vite-plugin @lingui/swc-plugin
+   npm install --save @lingui/react
+   ```
+
+   ```
+   yarn add --dev @lingui/vite-plugin @lingui/swc-plugin
+   yarn add @lingui/react
+   ```
+
+   ```
+   pnpm add --save-dev @lingui/vite-plugin @lingui/swc-plugin
+   pnpm add @lingui/react
+   ```
+
+3. Setup Lingui in `vite.config.ts`:
+
+   vite.config.ts
+
+   ```
+   import { defineConfig } from "vite";
+   import react from "@vitejs/plugin-react-swc";
+   import { lingui } from "@lingui/vite-plugin";
+
+   export default defineConfig({
+     plugins: [
+       react({
+         plugins: [["@lingui/swc-plugin", {}]],
+       }),
+       lingui(),
+     ],
+   });
+   ```
+
+## See Also[​](#see-also "Direct link to See Also")
+
+* [React i18n Tutorial](/tutorials/react.md)
+* [React Server Components Tutorial](/tutorials/react-rsc.md)
+* [React Native i18n Tutorial](/tutorials/react-native.md)
+* [JavaScript i18n Tutorial](/tutorials/javascript.md)

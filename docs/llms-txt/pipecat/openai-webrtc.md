@@ -1,0 +1,84 @@
+# Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/js/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/ios/transports/openai-webrtc.md
+
+# Source: https://docs.pipecat.ai/client/android/transports/openai-webrtc.md
+
+# OpenAI Realtime WebRTC Transport
+
+> WebRTC implementation for Android using OpenAI
+
+The OpenAI Realtime WebRTC transport implementation enables real-time audio communication with the OpenAI Realtime service, using a direct WebRTC connection.
+
+## Installation
+
+Add the transport dependency to your `build.gradle`:
+
+```gradle  theme={null}
+implementation "ai.pipecat:openai-realtime-webrtc-transport:0.3.7"
+```
+
+## Usage
+
+Create a client:
+
+```kotlin  theme={null}
+val transport = OpenAIRealtimeWebRTCTransport.Factory(context)
+
+val options = RTVIClientOptions(
+    params = RTVIClientParams(
+        baseUrl = null,
+        config = OpenAIRealtimeWebRTCTransport.buildConfig(
+            apiKey = apiKey,
+            initialMessages = listOf(
+                LLMContextMessage(role = "user", content = "How tall is the Eiffel Tower?")
+            ),
+            initialConfig = OpenAIRealtimeSessionConfig(
+                voice = "ballad",
+                turnDetection = Value.Object("type" to Value.Str("semantic_vad")),
+                inputAudioNoiseReduction = Value.Object("type" to Value.Str("near_field")),
+                inputAudioTranscription = Value.Object("model" to Value.Str("gpt-4o-transcribe"))
+            )
+        )
+    )
+)
+
+val client = RTVIClient(transport, callbacks, options)
+
+client.start().withCallback {
+    // ...
+}
+```
+
+## Resources
+
+<CardGroup cols={2}>
+  <Card horizontal title="Demo" icon="play" href="https://github.com/pipecat-ai/pipecat-client-android-openai-realtime-webrtc-demo">
+    Simple Chatbot Demo
+  </Card>
+
+  <Card horizontal title="Source" icon="github" href="https://github.com/pipecat-ai/pipecat-client-android-transports/">
+    Client Transports
+  </Card>
+</CardGroup>
+
+<Card title="Pipecat Android Client Reference" icon="book-open" href="https://docs-android.rtvi.ai/">
+  Complete API documentation for the Pipecat Android client.
+</Card>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

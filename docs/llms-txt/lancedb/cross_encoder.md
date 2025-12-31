@@ -1,0 +1,58 @@
+# Source: https://docs.lancedb.com/integrations/reranking/cross_encoder.md
+
+# Cross Encoder Reranker
+
+> Implement semantic search reranking in LanceDB using Cross Encoder models. Features configurable model selection, device optimization, and comprehensive scoring options for all search types.
+
+export const PyRerankingCrossEncoderUsage = "import lancedb\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\nfrom lancedb.rerankers import CrossEncoderReranker\n\nembedder = get_registry().get(\"sentence-transformers\").create()\ndb = lancedb.connect(\"~/.lancedb\")\n\nclass Schema(LanceModel):\n    text: str = embedder.SourceField()\n    vector: Vector(embedder.ndims()) = embedder.VectorField()\n\ndata = [\n    {\"text\": \"hello world\"},\n    {\"text\": \"goodbye world\"},\n]\ntbl = db.create_table(\"test\", schema=Schema, mode=\"overwrite\")\ntbl.add(data)\nreranker = CrossEncoderReranker()\n\n# Run vector search with a reranker\nresult = tbl.search(\"hello\").rerank(reranker=reranker).to_list()\n\n# Run FTS search with a reranker\nresult = tbl.search(\"hello\", query_type=\"fts\").rerank(reranker=reranker).to_list()\n\n# Run hybrid search with a reranker\ntbl.create_fts_index(\"text\", replace=True)\nresult = (\n    tbl.search(\"hello\", query_type=\"hybrid\").rerank(reranker=reranker).to_list()\n)\n";
+
+# Cross Encoder Reranker
+
+This reranker uses Cross Encoder models from sentence-transformers to rerank the search results. You can use this reranker by passing `CrossEncoderReranker()` to the `rerank()` method.
+
+> **Note:** Supported query types – Hybrid, Vector, and FTS.
+
+<CodeGroup>
+  <CodeBlock filename="Python" language="Python" icon="python">
+    {PyRerankingCrossEncoderUsage}
+  </CodeBlock>
+</CodeGroup>
+
+## Accepted Arguments
+
+| Argument       | Type  | Default                                  | Description                                                                                                                                                                                                                                   |
+| -------------- | ----- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model_name`   | `str` | `""cross-encoder/ms-marco-TinyBERT-L-6"` | The name of the reranker model to use.                                                                                                                                                                                                        |
+| `column`       | `str` | `"text"`                                 | The name of the column to use as input to the cross encoder model.                                                                                                                                                                            |
+| `device`       | `str` | `None`                                   | The device to use for the cross encoder model. If None, will use "cuda" if available, otherwise "cpu".                                                                                                                                        |
+| `return_score` | str   | `"relevance"`                            | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all" is supported, will return relevance score along with the vector and/or fts scores depending on query type. |
+
+## Supported Scores for each query type
+
+You can specify the type of scores you want the reranker to return. The following are the supported scores for each query type:
+
+### Hybrid Search
+
+| `return_score` | Status          | Description                                                                                           |
+| -------------- | --------------- | ----------------------------------------------------------------------------------------------------- |
+| `relevance`    | ✅ Supported     | Results only have the `_relevance_score` column.                                                      |
+| `all`          | ❌ Not Supported | Results have vector(`_distance`) and FTS(`score`) along with Hybrid Search score(`_relevance_score`). |
+
+### Vector Search
+
+| `return_score` | Status      | Description                                                                          |
+| -------------- | ----------- | ------------------------------------------------------------------------------------ |
+| `relevance`    | ✅ Supported | Results only have the `_relevance_score` column.                                     |
+| `all`          | ✅ Supported | Results have vector(`_distance`) along with Hybrid Search score(`_relevance_score`). |
+
+### FTS Search
+
+| `return_score` | Status      | Description                                                                   |
+| -------------- | ----------- | ----------------------------------------------------------------------------- |
+| `relevance`    | ✅ Supported | Results only have the `_relevance_score` column.                              |
+| `all`          | ✅ Supported | Results have FTS(`score`) along with Hybrid Search score(`_relevance_score`). |
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

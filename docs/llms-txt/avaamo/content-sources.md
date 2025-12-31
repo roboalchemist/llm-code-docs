@@ -1,0 +1,42 @@
+# Source: https://docs.avaamo.com/user-guide/datasync-ai/content-sources.md
+
+# Content sources
+
+- [SharePoint](/user-guide/datasync-ai/content-sources/sharepoint.md)
+- [Pre-requisites](/user-guide/datasync-ai/content-sources/sharepoint/pre-requisites.md)
+- [Step 1: Select the content source type](/user-guide/datasync-ai/content-sources/sharepoint/step-1-select-the-content-source-type.md): The first step in using DataSync AI, you choose the type of content source from which information must be gathered or accessed.
+- [Step 2: Configure content source and ingest content](/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content.md)
+- [Configure connection](/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content/configure-connection.md)
+- [Select sites](/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content/select-sites.md)
+- [Select documents pages and lists](/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content/select-documents-pages-and-lists.md)
+- [Set Document Attributes](/user-guide/datasync-ai/content-sources/sharepoint/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
+- [ServiceNow](/user-guide/datasync-ai/content-sources/servicenow.md)
+- [Pre-requisites](/user-guide/datasync-ai/content-sources/servicenow/pre-requisites.md)
+- [Step 1: Select the content source type](/user-guide/datasync-ai/content-sources/servicenow/step-1-select-the-content-source-type.md): The first step in using DataSync AI, you choose the type of content source from which information must be gathered or accessed.
+- [Step 2: Configure content source and ingest content](/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content.md)
+- [Configure connection](/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content/configure-connection.md)
+- [Filter Articles](/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content/filter-articles.md)
+- [Set Document Attributes](/user-guide/datasync-ai/content-sources/servicenow/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
+- [Website](/user-guide/datasync-ai/content-sources/website.md)
+- [Pre-requisites](/user-guide/datasync-ai/content-sources/website/pre-requisites.md)
+- [Step 1: Select the content source type](/user-guide/datasync-ai/content-sources/website/step-1-select-the-content-source-type.md): The first step in using DataSync AI, you choose the type of content source from which information must be gathered or accessed.
+- [Step 2: Configure content source and ingest content](/user-guide/datasync-ai/content-sources/website/step-2-configure-content-source-and-ingest-content.md)
+- [Configure connection](/user-guide/datasync-ai/content-sources/website/step-2-configure-content-source-and-ingest-content/configure-connection.md)
+- [Filter web pages](/user-guide/datasync-ai/content-sources/website/step-2-configure-content-source-and-ingest-content/filter-web-pages.md)
+- [Set document attributes](/user-guide/datasync-ai/content-sources/website/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
+- [Files](/user-guide/datasync-ai/content-sources/files.md)
+- [Pre-requisites](/user-guide/datasync-ai/content-sources/files/pre-requisites.md)
+- [Step 1: Select the content source type](/user-guide/datasync-ai/content-sources/files/step-1-select-the-content-source-type.md)
+- [Step 2: Configure content source and ingest content](/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content.md)
+- [Configure connection](/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content/configure-connection.md)
+- [Upload files](/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content/upload-files.md)
+- [Set document attributes](/user-guide/datasync-ai/content-sources/files/step-2-configure-content-source-and-ingest-content/set-document-attributes.md)
+- [Common actions](/user-guide/datasync-ai/content-sources/common-actions.md)
+- [Auto sync](/user-guide/datasync-ai/content-sources/common-actions/auto-sync.md)
+- [Sync Now](/user-guide/datasync-ai/content-sources/common-actions/sync-now.md)
+- [Upload files](/user-guide/datasync-ai/content-sources/common-actions/upload-files.md)
+- [View job details](/user-guide/datasync-ai/content-sources/common-actions/view-job-details.md)
+- [Delete job](/user-guide/datasync-ai/content-sources/common-actions/delete-job.md)
+- [Email Notifiers](/user-guide/datasync-ai/content-sources/common-actions/email-notifiers.md)
+- [View job version history](/user-guide/datasync-ai/content-sources/common-actions/view-job-version-history.md)
+- [Actions](/user-guide/datasync-ai/content-sources/common-actions/actions.md)

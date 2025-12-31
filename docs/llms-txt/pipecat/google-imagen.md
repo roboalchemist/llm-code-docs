@@ -1,0 +1,55 @@
+# Source: https://docs.pipecat.ai/server/services/image-generation/google-imagen.md
+
+# Google Imagen
+
+> Image generation service implementation using Google's Imagen models
+
+## Overview
+
+`GoogleImageGenService` provides high-quality image generation capabilities using Google's Imagen models. It supports generating multiple images from text prompts with various customization options and advanced prompt understanding for photorealistic and artistic image creation.
+
+<CardGroup cols={2}>
+  <Card title="Google Imagen API Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.services.google.image.html">
+    Pipecat's API methods for Google Imagen integration
+  </Card>
+
+  <Card title="Example Implementation" icon="play" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/03b-still-frame-imagen.py">
+    Browse examples using Google Imagen
+  </Card>
+
+  <Card title="Google Imagen Documentation" icon="book" href="https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview">
+    Official Google Imagen API documentation and guides
+  </Card>
+
+  <Card title="Google Cloud Console" icon="image" href="https://console.cloud.google.com/">
+    Access Imagen models and manage API keys
+  </Card>
+</CardGroup>
+
+## Installation
+
+To use Google Imagen services, install the required dependencies:
+
+```bash  theme={null}
+pip install "pipecat-ai[google]"
+```
+
+## Prerequisites
+
+### Google Cloud Setup
+
+Before using Google Imagen services, you need:
+
+1. **Google Cloud Account**: Set up at [Google Cloud Console](https://console.cloud.google.com/)
+2. **API Key**: Generate a Google API key with Vertex AI access
+3. **Project Configuration**: Enable Vertex AI API for your project
+4. **Model Access**: Ensure access to Imagen generation models
+
+### Required Environment Variables
+
+* `GOOGLE_API_KEY`: Your Google API key for authentication
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

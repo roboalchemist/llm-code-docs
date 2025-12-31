@@ -1,0 +1,117 @@
+# Source: https://docs.venice.ai/overview/deprecations.md
+
+# Deprecations
+
+> Model inclusion and lifecycle policy and deprecations for the Venice API
+
+## Model inclusion and lifecycle policy for the Venice API
+
+The Venice API exists to give developers unrestricted private access to production-grade models free from hidden filters or black-box decisions.
+
+As models improve, we occasionally retire older ones in favor of smarter, faster, or more capable alternatives. We design these transitions to be predictable and low‑friction.
+
+## Model Deprecations
+
+We know deprecations can be disruptive. That’s why we aim to deprecate only when necessary, and we design features like traits and Venice-branded models to minimize disruption.
+
+We may deprecate a model when:
+
+* A newer model offers a clear improvement for the same use case
+* The model no longer meets our standards for performance or reliability
+* It sees consistently low usage, and continuing to support it would fragment the experience for everyone else
+
+## Deprecation Process
+
+When a model meets deprecation criteria, we announce the change with 30–60 days' notice. Deprecation notices are published via the [changelog](https://featurebase.venice.ai/changelog) and our [Discord server](https://discord.gg/askvenice). When you call a deprecated model during the notice period, the API response will include a deprecation warning.
+
+During the notice period, the model remains available, though in some cases we may reduce infrastructure capacity. We always provide a recommended replacement, and when needed, offer migration guidance to help the transition.
+
+After the sunset date, requests to the model will automatically route to a model of similar processing power at the same or lower price. If routing is not possible for technical or safety reasons, the API will return a 410 Gone response. If a deprecated model was selected via a trait (such as `default_code`, `default_vision`, or `fastest`) that trait will be reassigned to a compatible replacement.
+
+We never remove models silently or alter behavior without versioning. You’ll always know what’s running and how to prepare for what’s next.
+
+<Note>
+  Performance-only upgrades: We may roll out improvements that preserve model behavior while improving performance, latency, or cost efficiency. These updates are backward-compatible and require no customer action.
+</Note>
+
+See the [Model Deprecation Tracker](#model-deprecation-tracker) below. For earlier announcements, consult the [changelog](https://featurebase.venice.ai/changelog) and our [Discord server](https://discord.gg/askvenice).
+
+## How models are selected for the Venice API
+
+We carefully select which models to make available based on performance, reliability, and real-world developer needs. To be included, a model must demonstrate strong performance, behave consistently under OpenAI-compatible endpoints, and offer a clear improvement over at least one of the models we already support.
+
+Models we’re evaluating may first be released in beta to gather feedback and validate performance at scale.
+
+We don’t expose models that are redundant, unproven, or not ready for consistent production use. Our goal is to keep the Venice API clean, capable, and optimized for what developers actually build.
+
+Learn more in [Model Deprecations](/overview/deprecations#model-deprecations) and <a href="/overview/models" target="_blank" rel="noopener noreferrer">Current Model List</a>.
+
+## Versioning and Aliases
+
+All Venice models are identified by a unique, permanent ID. For example:
+
+`venice-uncensored`
+`qwen3-235b`
+`llama-3.3-70b`
+`mistral-31-24b`
+
+Model IDs are stable. If there's a breaking change, we will release a new model ID (for example, add a version like v2). If there are no breaking changes, we may update the existing model and will communicate significant changes.
+
+To provide flexibility, Venice also maintains symbolic aliases — implemented through traits — that point to the recommended default model for a given task. Examples include:
+
+* `default` → currently routes to `llama-3.3-70b`
+* `function_calling_default` → currently routes to `llama-3.3-70b`
+* `default_vision` → currently routes to `mistral-31-24b`
+* `most_uncensored` → currently routes to `venice-uncensored`
+* `fastest` → currently routes to `llama-3.2-3b`
+
+Traits offer a stable abstraction for selecting models while giving Venice the flexibility to improve the underlying implementation. Developers who prefer automatic access to the latest recommended models can rely on trait-based aliases.
+
+For applications that require strict consistency and predictable behavior, we recommend referencing fixed model IDs.
+
+## Beta Models
+
+We sometimes release models in beta to gather feedback and confirm their performance before a full production rollout. Beta models are available to all users but are **not recommended for production use**.
+
+Beta status does not guarantee promotion to production. A beta model may be removed if it is too costly to run, performs poorly at scale, or raises safety concerns. Beta models can change without notice and may have limited documentation or support. Models that prove stable, broadly useful, and aligned with our standards are promoted to general availability.
+
+**Important considerations for beta models:**
+
+* May be changed or removed at any time without the standard deprecation notice period
+* Not suitable for production applications or critical workflows
+* May have inconsistent performance, availability, or behavior
+* Limited or no migration support if removed
+* Best used for testing, evaluation, and experimental projects
+
+For production applications, we recommend using the stable models from our [main model lineup](/overview/models).
+
+### Join the Beta Testing Program
+
+Want to help shape Venice's future models and features? Join our beta testing program to get early access to new models before they're released publicly, provide feedback that influences development, and help us validate performance at scale.
+
+[Learn how to join the beta testing group](https://venice.ai/faqs#how-do-i-join-the-beta-testing-group)
+
+## Feedback
+
+You can submit your feedback or request through our [Featurebase portal](https://featurebase.venice.ai). We maintain a public [changelog](https://featurebase.venice.ai/changelog), roadmap tracker, and transparent rationale for adding, upgrading, or removing models, and we encourage continuous community participation.
+
+## Model Deprecation Tracker
+
+The following models are scheduled for deprecation. We recommend migrating to the suggested replacements before the removal date.
+
+<Note>
+  **Migration Guide: `qwen3-235b`**
+
+  Starting December 14, 2025, `qwen3-235b` splits into two models with better pricing. The `disable_thinking` parameter will stop working.
+
+  **Your options:**
+
+  * **Keep using `qwen3-235b`** - Automatically gets thinking behavior
+  * **Switch to `qwen3-235b-a22b-instruct-2507`** - Non-thinking model with lower cost
+
+  **If you use `disable_thinking=true`**: Switch to `qwen3-235b-a22b-instruct-2507` before December 14.
+</Note>
+
+| Deprecated Model | Replacement                                                        | Removal by   | Status    | Reason                                                  |
+| ---------------- | ------------------------------------------------------------------ | ------------ | --------- | ------------------------------------------------------- |
+| `qwen3-235b`     | `qwen3-235b-a22b-thinking-2507` or `qwen3-235b-a22b-instruct-2507` | Dec 14, 2025 | Available | Splitting into specialized models with improved pricing |

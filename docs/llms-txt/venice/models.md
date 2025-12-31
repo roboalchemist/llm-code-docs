@@ -1,0 +1,172 @@
+# Source: https://docs.venice.ai/overview/models.md
+
+# Current Models
+
+> Complete list of available models on Venice AI platform
+
+## Text Models
+
+| Model Name                                                                                               | Model ID                         | Price (in/out)  | Context Limit | Capabilities                | Traits                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------- | ------------- | --------------------------- | ----------------------------------- |
+| [Venice Uncensored 1.1](https://huggingface.co/cognitivecomputations/Dolphin-Mistral-24B-Venice-Edition) | `venice-uncensored`              | `$0.20 / $0.90` | 32,768        | —                           | most\_uncensored                    |
+| [Venice Small](https://huggingface.co/Qwen/Qwen3-4B)                                                     | `qwen3-4b`                       | `$0.05 / $0.15` | 32,768        | Function Calling, Reasoning | —                                   |
+| [Venice Medium (3.1)](https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503)              | `mistral-31-24b`                 | `$0.50 / $2.00` | 131,072       | Function Calling, Vision    | default\_vision                     |
+| [Venice Large 1.1 (D)](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507-FP8)                    | `qwen3-235b`                     | `$0.45 / $3.50` | 131,072       | Function Calling, Reasoning | —                                   |
+| [Qwen 3 235B A22B Thinking 2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507-FP8)          | `qwen3-235b-a22b-thinking-2507`  | `$0.45 / $3.50` | 131,072       | Function Calling, Reasoning | —                                   |
+| [Qwen 3 235B A22B Instruct 2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507-FP8)          | `qwen3-235b-a22b-instruct-2507`  | `$0.15 / $0.75` | 131,072       | Function Calling            | —                                   |
+| [Llama 3.2 3B](https://huggingface.co/meta-llama/Llama-3.2-3B)                                           | `llama-3.2-3b`                   | `$0.15 / $0.60` | 131,072       | Function Calling            | fastest                             |
+| [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct)                                | `llama-3.3-70b`                  | `$0.70 / $2.80` | 131,072       | Function Calling            | default, function\_calling\_default |
+| [Qwen 3 Coder 480B](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct)                          | `qwen3-coder-480b-a35b-instruct` | `$0.75 / $3.00` | 262,144       | Function Calling            | default\_code                       |
+| [GLM 4.6](https://huggingface.co/zai-org/GLM-4.6)                                                        | `zai-org-glm-4.6`                | `$0.85 / $2.75` | 202,752       | Function Calling            | —                                   |
+
+*Pricing is per 1M tokens (input / output). Additional usage-based pricing applies when using `enable_web_search` or `enable_web_scraping`, see [search pricing details](/overview/pricing#web-search-and-scraping).*
+
+<Info>
+  **Model Change Notice**: Starting **December 14, 2025**, `qwen3-235b` will be deprecated and calls will automatically route to `qwen3-235b-a22b-thinking-2507`.
+
+  The `disable_thinking` parameter will be ignored. For non-thinking behavior, use `qwen3-235b-a22b-instruct-2507` directly. [Learn more about model changes](/overview/deprecations#model-deprecation-tracker).
+</Info>
+
+### Popular Text Models
+
+`zai-org-glm-4.6` GLM 4.6 - High-intelligence flagship model\
+`mistral-31-24b` Venice Medium (3.1) - Vision + function calling\
+`qwen3-4b` Venice Small - Fast, affordable for most tasks\
+`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Advanced reasoning with thinking
+
+### Text Model Categories
+
+**Reasoning Models**
+
+`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Advanced reasoning with thinking\
+`qwen3-4b` Venice Small - Efficient reasoning model
+
+**Vision-Capable Models**
+
+`mistral-31-24b` Venice Medium (3.1) - Vision-capable model\
+`google-gemma-3-27b-it` Google Gemma 3 27B (beta)
+
+**Cost-Optimized Models**
+
+`qwen3-4b` Venice Small - Best balance of speed and cost\
+`llama-3.2-3b` Llama 3.2 3B - Fastest for simple tasks\
+`qwen3-235b-a22b-instruct-2507` Qwen 3 235B A22B Instruct - Optimized high-performance
+
+**Uncensored Models**
+
+`venice-uncensored` Venice Uncensored 1.1 - No content filtering
+
+**High-Intelligence Models**
+
+`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Most powerful flagship model\
+`zai-org-glm-4.6` GLM 4.6 - High-intelligence alternative\
+`deepseek-ai-DeepSeek-R1` DeepSeek R1 (beta) - Advanced reasoning model
+`llama-3.3-70b` Llama 3.3 70B - Balanced high-intelligence
+
+### Beta Models
+
+| Model Name                                                                             | Model ID                  | Price (in/out)  | Context Limit | Capabilities             | Traits |
+| -------------------------------------------------------------------------------------- | ------------------------- | --------------- | ------------- | ------------------------ | ------ |
+| [OpenAI GPT OSS 120B](https://huggingface.co/openai/gpt-oss-120b)                      | `openai-gpt-oss-120b`     | `$0.07 / $0.30` | 131,072       | Function Calling         | —      |
+| [Google Gemma 3 27B Instruct](https://huggingface.co/google/gemma-3-27b-it)            | `google-gemma-3-27b-it`   | `$0.12 / $0.20` | 202,752       | Function Calling, Vision | —      |
+| [Qwen 3 Next 80B](https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct)             | `qwen3-next-80b`          | `$0.35 / $1.90` | 262,144       | Function Calling         | —      |
+| [DeepSeek R1](https://huggingface.co/deepseek-ai/DeepSeek-R1)                          | `deepseek-ai-DeepSeek-R1` | `$0.85 / $2.75` | 131,072       | Function Calling         | —      |
+| [Hermes 3 Llama 3.1 405B](https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-405B) | `hermes-3-llama-3.1-405b` | `$1.10 / $3.00` | 131,072       | —                        | —      |
+
+<Warning>
+  **Beta models are experimental and not recommended for production use.** These models may be changed, removed, or replaced at any time without notice. Use them for testing and evaluation purposes only. For production applications, use the stable models listed above.
+</Warning>
+
+***
+
+## Image Models
+
+| Model Name                                                                     | Model ID          | Price   | Model Source               | Traits                 |
+| ------------------------------------------------------------------------------ | ----------------- | ------- | -------------------------- | ---------------------- |
+| [Venice SD35](https://huggingface.co/stabilityai/stable-diffusion-3.5-large)   | `venice-sd35`     | `$0.01` | Stable Diffusion 3.5 Large | default, eliza-default |
+| [HiDream](https://huggingface.co/HiDream-ai/HiDream-I1-Dev)                    | `hidream`         | `$0.01` | HiDream I1 Dev             | —                      |
+| [Qwen Image](https://huggingface.co/Qwen/Qwen-Image)                           | `qwen-image`      | `$0.01` | Qwen Image                 | —                      |
+| [Lustify SDXL](https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint) | `lustify-sdxl`    | `$0.01` | Lustify SDXL               | —                      |
+| [Lustify v7](https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint)   | `lustify-v7`      | `$0.01` | Lustify v7                 | —                      |
+| [Anime (WAI)](https://civitai.com/models/827184?modelVersionId=1761560)        | `wai-Illustrious` | `$0.01` | WAI-Illustrious            | —                      |
+
+### Popular Image Models
+
+`qwen-image` Qwen Image - Highest quality image generation\
+`venice-sd35` Venice SD35 - Default choice with Eliza integration\
+`lustify-sdxl` Lustify SDXL - Uncensored image generation\
+`hidream` HiDream - Production-ready generation
+
+### Image Model Categories
+
+**High-Quality Models**
+
+`qwen-image` Qwen Image - Highest quality output\
+`hidream` HiDream - Production-ready generation
+
+**Default Models**
+
+`venice-sd35` Venice SD35 - Default choice, Eliza-optimized
+
+**Special Purpose Models**
+
+`lustify-sdxl` Lustify SDXL - Adult content generation\
+`lustify-v7` Lustify v7 - Adult content generation\
+`wai-Illustrious` Anime (WAI) - Anime-style generation
+
+***
+
+## Audio Models
+
+### Text-to-Speech Models
+
+`tts-kokoro` Kokoro TTS - 60+ multilingual voices for natural speech
+
+| Model Name                                                         | Model ID     | Price                | Voices Available | Model Source |
+| ------------------------------------------------------------------ | ------------ | -------------------- | ---------------- | ------------ |
+| [Kokoro Text to Speech](https://huggingface.co/hexgrad/Kokoro-82M) | `tts-kokoro` | `$3.50` per 1M chars | 60+ voices       | Kokoro-82M   |
+
+<Note>
+  The tts-kokoro model supports a wide range of multilingual and stylistic voices (including af\_nova, am\_liam, bf\_emma, zf\_xiaobei, and jm\_kumo). Voice is selected using the voice parameter in the request payload.
+</Note>
+
+***
+
+## Embedding Models
+
+`text-embedding-bge-m3` BGE-M3 - Versatile embedding model for text similarity
+
+| Model Name                                           | Model ID                | Price                         | Model Source        |
+| ---------------------------------------------------- | ----------------------- | ----------------------------- | ------------------- |
+| [BGE-M3](https://huggingface.co/KimChen/bge-m3-GGUF) | `text-embedding-bge-m3` | `$0.15 / $0.60` per 1M tokens | KimChen/bge-m3-GGUF |
+
+## Image Processing Models
+
+`upscaler` Image Upscaler - Enhance image resolution up to 4x\
+`qwen-image` Qwen Image - Multimodal image editing model
+
+### Image Upscaler
+
+| Model Name | Model ID   | Price   | Upscale Options          |
+| ---------- | ---------- | ------- | ------------------------ |
+| Upscaler   | `upscaler` | `$0.01` | `2x ($0.02), 4x ($0.08)` |
+
+### Image Editing (Inpaint)
+
+| Model Name                                           | Model ID     | Price   | Model Source | Traits               |
+| ---------------------------------------------------- | ------------ | ------- | ------------ | -------------------- |
+| [Qwen Image](https://huggingface.co/Qwen/Qwen-Image) | `qwen-image` | `$0.04` | Qwen Image   | specialized\_editing |
+
+## Model Features
+
+* **Vision**: Ability to process and understand images
+* **Reasoning**: Advanced logical reasoning capabilities
+* **Function Calling**: Support for calling external functions and tools
+* **Traits**: Special characteristics or optimizations (e.g., fastest, most\_intelligent, most\_uncensored)
+
+## Usage Notes
+
+* Input pricing refers to tokens sent to the model
+* Output pricing refers to tokens generated by the model
+* Context limits define the maximum number of tokens the model can process in a single request
+* (D) Scheduled for deprecation. For timelines and migration guidance, see the [Deprecation Tracker](/overview/deprecations#model-deprecation-tracker).

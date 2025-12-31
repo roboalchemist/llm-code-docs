@@ -1,0 +1,65 @@
+# Source: https://docs.hypermode.com/modus/modus-cli.md
+
+# Modus CLI
+
+> Comprehensive reference for the Modus CLI commands and usage
+
+The Modus CLI is a command-line tool for interacting with your Modus app and
+running it locally.
+
+## Install
+
+Install Modus CLI via npm.
+
+```sh
+npm install -g @hypermode/modus-cli
+```
+
+<Info>
+  The Modus CLI automatically downloads various files and dependencies to the
+  following directory:
+
+  * Linux/macOS: `$HOME/.modus`
+  * Windows: `%USERPROFILE%/.modus`
+
+  If you would like to override the location of this directory, you can set the
+  `MODUS_HOME` environment variable to the desired path.
+
+  For example, if your local permissions on Windows don't allow creating a
+  directory in the root of your user profile, you can try a different location.
+  You can use the `AppData` directory, or any other directory where you have write
+  permissions.
+
+  ```cmd
+  setx MODUS_HOME %APPDATA%\Modus
+  ```
+
+  *Note, the Windows `setx` command makes the environment variable setting
+  permanent.*
+</Info>
+
+## Commands
+
+### `new`
+
+Initialize a new Modus app. The Modus CLI prompts you to enter the app name and
+language of choice.
+
+### `dev`
+
+Run your Modus app locally. The Modus CLI starts a local server and provides a
+URL to access the app.
+
+<Tip>
+  When using [Hyp CLI](/hyp-cli) alongside the Modus CLI, users get access to
+  [Hypermode's Model Router](/model-router) for local development.
+</Tip>
+
+### `build`
+
+Build your Modus app. The Modus CLI compiles your app and generates a `.build`
+folder for the artifacts.
+
+### `uninstall`
+
+Uninstall the Modus CLI from your system.

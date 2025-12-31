@@ -1,0 +1,76 @@
+# Source: https://docs.lancedb.com/integrations/data/duckdb.md
+
+# DuckDB
+
+export const PyPlatformsDuckdbQueryTable = "import duckdb\n\narrow_table = table.to_lance()\n\nduckdb.query(\"SELECT * FROM arrow_table\")\n";
+
+export const PyPlatformsDuckdbMeanPrice = "duckdb.query(\"SELECT mean(price) FROM arrow_table\")\n";
+
+export const PyPlatformsDuckdbCreateTable = "import lancedb\n\ndb = lancedb.connect(\"data/sample-lancedb\")\ndata = [\n    {\"vector\": [3.1, 4.1], \"item\": \"foo\", \"price\": 10.0},\n    {\"vector\": [5.9, 26.5], \"item\": \"bar\", \"price\": 20.0},\n]\ntable = db.create_table(\"pd_table\", data=data)\n";
+
+<Badge color="purple">OSS-only</Badge>
+
+In Python, LanceDB tables can also be queried with [DuckDB](https://duckdb.org/), an in-process SQL OLAP database.
+This means you can write complex SQL queries to analyze your data in LanceDB.
+
+The integration is done via [Apache Arrow](https://duckdb.org/docs/guides/python/sql_on_arrow), which provides
+zero-copy data sharing between LanceDB and DuckDB. DuckDB is capable of passing down column selections and basic
+filters to LanceDB, reducing the amount of data that needs to be scanned to perform your query. Finally, the
+integration allows streaming data from LanceDB tables, allowing you to aggregate tables that don't fit into
+memory.
+
+<Tip>
+  **DuckDB quacks Arrow**
+
+  All of this uses the same mechanism described in DuckDB's [blog post](https://duckdb.org/2021/12/03/duck-arrow.html)"
+  on how it integrates with Apache Arrow.
+</Tip>
+
+We can demonstrate this by first installing `duckdb` and `lancedb`.
+
+<CodeBlock filename="bash" language="bash" icon="terminal">
+  pip install duckdb lancedb
+</CodeBlock>
+
+We will re-use the dataset [created previously](/integrations/data/pandas_and_pyarrow/):
+
+<CodeBlock filename="Python" language="Python" icon="python">
+  {PyPlatformsDuckdbCreateTable}
+</CodeBlock>
+
+The `to_lance` method converts the LanceDB table to a `LanceDataset`, which is accessible to DuckDB through the Arrow compatibility layer.
+To query the resulting Lance dataset in DuckDB, all you need to do is reference the dataset by the same name in your SQL query.
+
+<CodeBlock filename="Python" language="Python" icon="python">
+  {PyPlatformsDuckdbQueryTable}
+</CodeBlock>
+
+```
+┌─────────────┬─────────┬────────┐
+│   vector    │  item   │ price  │
+│   float[]   │ varchar │ double │
+├─────────────┼─────────┼────────┤
+│ [3.1, 4.1]  │ foo     │   10.0 │
+│ [5.9, 26.5] │ bar     │   20.0 │
+└─────────────┴─────────┴────────┘
+```
+
+You can very easily run any other DuckDB SQL queries on your data.
+
+<CodeBlock filename="Python" language="Python" icon="python">
+  {PyPlatformsDuckdbMeanPrice}
+</CodeBlock>
+
+```
+┌─────────────┐
+│ mean(price) │
+│   double    │
+├─────────────┤
+│        15.0 │
+└─────────────┘
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

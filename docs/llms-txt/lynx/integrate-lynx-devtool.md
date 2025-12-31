@@ -1,0 +1,328 @@
+# Source: https://lynxjs.org/guide/start/integrate-lynx-devtool.md
+
+# Integrating Lynx DevTool
+
+When encountering issues during Lynx page development, you can use [DevTool](/guide/devtool/panels.md) for debugging.
+However, you need to follow these steps to integrate DevTool first.
+
+:::info
+
+It is recommended to integrate DevTool in non-production environments to keep your production builds lightweight.
+All code examples in this documentation can be found in the [integrating-lynx-demo-projects](https://github.com/lynx-family/integrating-lynx-demo-projects/tree/main).
+
+:::
+
+<PlatformTabs queryKey="platform">
+  <PlatformTabs.Tab platform="ios">
+    <Steps>
+      ### Adding Dependencies
+
+      You need to add two components: `LynxDevTool` and the `Devtool` subcomponent of `LynxService`.
+
+      ```ruby title="Podfile" {8,11}
+      # Ensure Lynx DevTool version matches the Lynx version when integrating
+      target 'YourTarget' do
+        pod 'LynxService', '3.4.1', :subspecs => [
+            'Devtool',
+        ]
+        pod 'LynxDevtool', '3.4.1'
+      end
+      ```
+
+      ### Enabling DevTool
+
+      DevTool provides several debugging switches.
+      Here are three important switches:
+
+      - `Lynx Debug` is the switch that controls all DevTool debugging.
+      - `Lynx DevTool` controls main debugging features: element inspection and JavaScript debugging.
+      - `Lynx LogBox` manages the [LogBox](/guide/devtool/handle-errors.md).
+
+      <Details title="These three switches are disabled by default, you need to enable them.">
+        * `Lynx DevTool` and `Lynx LogBox` switches can only take effect after `Lynx Debug` is enabled.
+        * When debugging Lynx pages with the DevTool Desktop, `Lynx DevTool` needs to be enabled.
+        * LogBox helps you quickly identify and diagnose issues.
+      </Details>
+
+      You can configure these switches during [Lynx Environment Initialization](/guide/start/integrate-with-existing-apps.md):
+
+      <Tabs groupId="integrating-lynx-with-existing-app-ios">
+        <Tab label="Objective-C">
+          ```objective-c title=AppDelegate.m {9-16}
+          #import <Lynx/LynxEnv.h>
+          #import <Lynx/LynxService.h>
+          #import <Lynx/LynxServiceDevToolProtocol.h>
+
+          @implementation AppDelegate
+
+          - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+            // ...
+            LynxEnv *lynxEnv = [LynxEnv sharedInstance];
+            // Enable Lynx Debug
+            lynxEnv.lynxDebugEnabled = YES;
+            // Enable Lynx DevTool
+            lynxEnv.devtoolEnabled = YES;
+            // Enable Lynx LogBox
+            [LynxService(LynxServiceDevToolProtocol) setLogBoxPresetValue:YES];
+            lynxEnv.logBoxEnabled = YES;
+            return YES;
+          }
+          ```
+        </Tab>
+
+        <Tab label="Swift">
+          ```objective-c title="YourTarget-Bridging-Header.h"
+          #import <Lynx/LynxEnv.h>
+          #import <Lynx/LynxService.h>
+          #import <Lynx/LynxServiceDevToolProtocol.h>
+          ```
+
+          ```swift title=AppDelegate.swift {5-12}
+          class AppDelegate: UIResponder, UIApplicationDelegate {
+
+            func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+              // ...
+              let lynxEnv = LynxEnv.sharedInstance()
+              // Enable Lynx Debug
+              lynxEnv.lynxDebugEnabled = true
+              // Enable Lynx DevTool
+              lynxEnv.devtoolEnabled = true
+              // Enable Lynx LogBox
+              (LynxServices.getInstanceWith(LynxServiceDevToolProtocol.self, bizID: DEFAULT_LYNX_SERVICE) as? LynxServiceDevToolProtocol)?.logBoxPresetValue = true
+              lynxEnv.logBoxEnabled = true
+              return true
+            }
+          }
+          ```
+        </Tab>
+      </Tabs>
+
+      :::info
+      In addition to the three switches introduced earlier, there are more switches that can help you control the behavior of DevTool. Please refer to the [Lynx DevTool Switch Page](/guide/start/integrate-lynx-devtool-advanced.md#debugging-devtool-switch).
+      :::
+    </Steps>
+  </PlatformTabs.Tab>
+
+  <PlatformTabs.Tab platform="android">
+    <Steps>
+      ### Adding Dependencies
+
+      You need to integrate these two components: `lynx-service-devtool` and `lynx-devtool`
+
+      <Tabs groupId="impl-android">
+        <Tab label="build.gradle">
+          ```groovy
+          // Ensure Lynx DevTool version matches the Lynx version when integrating
+          dependencies {
+            implementation "org.lynxsdk.lynx:lynx-devtool:3.4.1"
+            implementation "org.lynxsdk.lynx:lynx-service-devtool:3.4.1"
+          }
+          ```
+        </Tab>
+
+        <Tab label="build.gradle.kts">
+          ```kotlin
+          // Ensure Lynx DevTool version matches the Lynx version when integrating
+          dependencies {
+            implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
+            implementation ("org.lynxsdk.lynx:lynx-service-devtool:3.4.1")
+          }
+          ```
+        </Tab>
+      </Tabs>
+
+      :::info
+      It is recommended to use the latest [Lynx version](https://github.com/lynx-family/lynx/releases) when integrating
+      :::
+
+      ### Registering DevTool Service
+
+      <Tabs groupId="register-devtool-service-android">
+        <Tab label="Java">
+          ```java title=YourApplication.java {3-4}
+          private void initLynxService() {
+            // ...
+            // register DevTool service
+            LynxServiceCenter.inst().registerService(LynxDevToolService.getINSTANCE());
+          }
+
+          ```
+        </Tab>
+
+        <Tab label="Kotlin">
+          ```kotlin title=YourApplication.kt {3-4}
+          private fun initLynxService() {
+            // ...
+            // register DevTool service
+            LynxServiceCenter.inst().registerService(LynxDevToolService.INSTANCE)
+          }
+          ```
+        </Tab>
+      </Tabs>
+
+      ### Enabling DevTool
+
+      DevTool provides several debugging switches.
+      Here are three important switches:
+
+      - `Lynx Debug` is the switch that controls all DevTool debugging.
+      - `Lynx DevTool` controls main debugging features: element inspection and JavaScript debugging.
+      - `Lynx LogBox` manages the [LogBox](/guide/devtool/handle-errors.md).
+
+      <Details title="These three switches are disabled by default, you need to enable them.">
+        * `Lynx DevTool` and `Lynx LogBox` switches can only take effect after `Lynx Debug` is enabled.
+        * When debugging Lynx pages with the DevTool Desktop, `Lynx DevTool` needs to be enabled.
+        * LogBox helps you quickly identify and diagnose issues.
+      </Details>
+
+      You can configure these switches during [Lynx Environment Initialization](/guide/start/integrate-with-existing-apps.md):
+
+      <Tabs groupId="turn-on-switches-android">
+        <Tab label="Java">
+          ```java title=YourApplication.java {3-9}
+          private void initLynxEnv() {
+            LynxEnv.inst().init(this, null, null, null);
+            // Enable Lynx Debug
+            LynxEnv.inst().enableLynxDebug(true);
+            // Enable Lynx DevTool
+            LynxEnv.inst().enableDevtool(true);
+            // Enable Lynx LogBox
+            LynxDevToolService.getINSTANCE().setLogBoxPresetValue(true);
+            LynxEnv.inst().enableLogBox(true);
+          }
+
+          ```
+        </Tab>
+
+        <Tab label="Kotlin">
+          ```kotlin title=YourApplication.kt {3-9}
+          private fun initLynxEnv() {
+            LynxEnv.inst().init(this, null, null, null)
+            // Enable Lynx Debug
+            LynxEnv.inst().enableLynxDebug(true)
+            // Enable Lynx DevTool
+            LynxEnv.inst().enableDevtool(true)
+            // Enable Lynx LogBox
+            LynxDevToolService.INSTANCE.setLogBoxPresetValue(true)
+            LynxEnv.inst().enableLogBox(true)
+          }
+          ```
+        </Tab>
+      </Tabs>
+
+      :::info
+      In addition to the three switches introduced earlier, there are more that can help you control the behavior of DevTool. Please refer to the [DevTool Switch Page](/guide/start/integrate-lynx-devtool-advanced.md#debugging-devtool-switch).
+      :::
+    </Steps>
+  </PlatformTabs.Tab>
+
+  <PlatformTabs.Tab platform="harmony">
+    <Steps>
+      ### Adding Dependencies
+
+      You need to integrate these two components: `@lynx/lynx_devtool` and `@lynx/lynx_devtool_service`.
+
+      <Tabs groupId="impl-harmony">
+        <Tab label="oh-package.json5">
+          ```json5
+          // Ensure Lynx DevTool version matches the Lynx version when integrating
+          "dependencies": {
+            "@lynx/lynx_devtool": "@param:dependencies.lynx_version",
+            "@lynx/lynx_devtool_service": "@param:dependencies.lynx_version"
+          }
+          ```
+        </Tab>
+
+        <Tab label="build-profile.json5">
+          ```json5
+          // Since @lynx/lynx_devtool is dynamically imported via a variable,
+          // to include the devtool module in the build,
+          // you also need to add a runtimeOnly buildOption in buildOption within build-profile.json5.
+          "buildOption": {
+              "arkOptions": {
+                "runtimeOnly": {
+                  "packages": [
+                    "@lynx/lynx_devtool"
+                  ]
+                }
+              },
+          }
+          ```
+        </Tab>
+      </Tabs>
+
+      :::info
+      It is recommended to use the latest [Lynx version](https://github.com/lynx-family/lynx/releases) when integrating
+      :::
+
+      ### Registering DevTool Service
+
+      <Tabs groupId="register-devtool-service-harmony">
+        <Tab label="ETS">
+          ```ts title=YourEntryAbility.ets {2 - 3}
+          // Initialize LynxDevToolService first, as LynxEnv initialization
+          // depends on LynxDevToolService from LynxService
+          LynxServiceCenter.registerService(
+            LynxServiceType.DevTool,
+            LynxDevToolService.instance,
+          );
+          ```
+        </Tab>
+      </Tabs>
+
+      ### Enabling DevTool
+
+      DevTool provides several debugging switches.
+      Here are three important switches:
+
+      - `Lynx Debug` is the switch that controls all DevTool debugging.
+      - `Lynx DevTool` controls main debugging features: element inspection and JavaScript debugging.
+      - `Lynx LogBox` manages the [LogBox](/guide/devtool/handle-errors.md).
+
+      <Details title="Lynx Debug and LogBox are on by default; DevTool is off. Enabling DevTool is recommended.">
+        * `Lynx DevTool` and `Lynx LogBox` switches can only take effect after `Lynx Debug` is enabled.
+        * When debugging Lynx pages with the DevTool Desktop, `Lynx DevTool` needs to be enabled.
+        * LogBox helps you quickly identify and diagnose issues.
+      </Details>
+
+      You can configure these switches during [Lynx Environment Initialization](/guide/start/integrate-with-existing-apps.md):
+
+      <Tabs groupId="turn-on-switches-harmony">
+        <Tab label="ETS">
+          ```ts title=YourEntryAbility.ets {4-9}
+          public initLynxEnv() {
+            LynxEnv.initialize(this.context);
+
+            // Enable Lynx Debug
+            LynxEnv.enableLynxDebug(true);
+            // Enable Lynx DevTool
+            LynxEnv.enableDevtool(true);
+            // Enable Lynx LogBox
+            LynxEnv.setLogBoxEnabled(true);
+          }
+
+          ```
+        </Tab>
+      </Tabs>
+
+      :::info
+      In addition to the three switches introduced earlier, there are more that can help you control the behavior of DevTool. Please refer to the [DevTool Switch Page](/guide/start/integrate-lynx-devtool-advanced.md#debugging-devtool-switch).
+      :::
+    </Steps>
+  </PlatformTabs.Tab>
+</PlatformTabs>
+
+Congratulations! You have completed the DevTool integration. Now, you may launch the Lynx DevTool Desktop and
+connect your app via USB to start debugging.
+
+<img src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/doc/devtool_connected_success.png" alt="Integrate Lynx DevTool Successfully" width={800} />
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/start/integrate-lynx-devtool-advanced" title="More DevTool Switches" description="Need more advanced configurations for DevTool?" />
+</NextSteps.Root>
+
+## Next Step
+
+<NextSteps.Root>
+  <NextSteps.Step href="/guide/devtool/panels.html" title="Use DevTool" description="Learn how to use Lynx DevTool Desktop for in-depth debugging capabilities" />
+</NextSteps.Root>

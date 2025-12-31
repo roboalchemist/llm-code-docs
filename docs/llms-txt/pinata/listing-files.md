@@ -1,0 +1,305 @@
+# Source: https://docs.pinata.cloud/files/listing-files.md
+
+# List & Query Files
+
+Pinata gives you the ability to query uploaded files based on different filters and attributes such as name, [key-values](/files/key-values), date, and more. This is different from retrieving the actual contents of a file, which you can learn more about [here](/gateways/retrieving-files).
+
+## Basic Usage
+
+You can either use the [SDK](/sdk/files/public/list) or the [API](/api-reference/endpoint/list-files) as see in the examples below.
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  import { PinataSDK } from "pinata";
+
+  const pinata = new PinataSDK({
+    pinataJwt: process.env.PINATA_JWT!,
+    pinataGateway: "example-gateway.mypinata.cloud",
+  });
+
+  const files = await pinata.files.public.list()
+  ```
+
+  ```typescript API theme={null}
+  const JWT = "YOUR_PINATA_JWT";
+
+  async function files() {
+    try {
+      const url = "https://api.pinata.cloud/v3/files/public",
+
+      const request = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${JWT}`,
+        }
+      });
+      const response = await request.json();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  ```
+</CodeGroup>
+
+This will return an array of file objects
+
+<CodeGroup>
+  ```typescript SDK theme={null}
+  {
+    files: [
+      {
+        id: "dd5f8888-bf15-4559-b8a2-6c626869507f",
+        name: "Hello Files API",
+        cid: "bafybeifq444z4b7yqzcyz4a5gspb2rpyfcdxp3mrfpigmllh52ld5tyzwm",
+        size: 4861678,
+        number_of_files: 1,
+        mime_type: "TODO",
+        group_id: null,
+        created_at: "2024-08-27T14:57:51.485934Z",
+      },
+      {
+        id: "e2057aa3-7b6c-4a45-b785-12ba297bcbd0",
+        name: "Quickstart.png",
+        cid: "bafkreiebavn2jzkqh3ehy4pkqkdi2otnho6gbcffkeqnunk2lw5nmnwaea",
+        size: 223548,
+        number_of_files: 1,
+        mime_type: "TODO",
+        group_id: "5f8adce6-7312-46e0-90f7-13896bed297d",
+        created_at: "2024-08-28T23:46:07.823118Z",
+      },
+      {
+        id: "ac5308a1-de49-40a3-9f5c-d20f1bb6206d",
+        name: "hello.txt",
+        cid: "bafkreiffsgtnic7uebaeuaixgph3pmmq2ywglpylzwrswv5so7m23hyuny",
+        size: 11,
+        number_of_files: 1,
+        mime_type: "TODO",
+        group_id: null,
+        created_at: "2024-08-29T02:23:02.735018Z",
+      }
+    ],
+    next_page_token: "MDE5MWIzNGMtMWNmNy03MzExLThmMjYtZmZlZDMzYTVlY"
+  }
+  ```
+
+  ```json API theme={null}
+  {
+  	"data": {
+  		"files": [
+  			{
+  				"id": "dd5f8888-bf15-4559-b8a2-6c626869507f",
+  				"name": "Hello Files API",
+  				"cid": "bafybeifq444z4b7yqzcyz4a5gspb2rpyfcdxp3mrfpigmllh52ld5tyzwm",
+  				"size": 4861678,
+  				"number_of_files": 1,
+  				"mime_type": "TODO",
+  				"group_id": null,
+  				"created_at": "2024-08-27T14:57:51.485934Z"
+  			},
+  			{
+  				"id": "e2057aa3-7b6c-4a45-b785-12ba297bcbd0",
+  				"name": "Quickstart.png",
+  				"cid": "bafkreiebavn2jzkqh3ehy4pkqkdi2otnho6gbcffkeqnunk2lw5nmnwaea",
+  				"size": 223548,
+  				"number_of_files": 1,
+  				"mime_type": "TODO",
+  				"group_id": "5f8adce6-7312-46e0-90f7-13896bed297d",
+  				"created_at": "2024-08-28T23:46:07.823118Z"
+  			},
+  			{
+  				"id": "ac5308a1-de49-40a3-9f5c-d20f1bb6206d",
+  				"name": "hello.txt",
+  				"cid": "bafkreiffsgtnic7uebaeuaixgph3pmmq2ywglpylzwrswv5so7m23hyuny",
+  				"size": 11,
+  				"number_of_files": 1,
+  				"mime_type": "TODO",
+  				"group_id": null,
+  				"created_at": "2024-08-29T02:23:02.735018Z"
+  			}
+  		],
+  		"next_page_token": "MDE5MWIzNGMtMWNmNy03MzExLThmMjYtZmZlZDMzYTVlY"
+  	}
+  }
+  ```
+</CodeGroup>
+
+## Filters
+
+When listing files there a few ways you can filter the results
+
+### name
+
+* Type: `string`
+
+Filter results based on name
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files.public
+    .list()
+    .name("pinnie")
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?name=pinnie"
+  ```
+</CodeGroup>
+
+### group
+
+* Type: `string`
+
+Filter results based on group ID
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files.public
+    .list()
+    .group("5b56981c-7e5b-4dff-aeca-de784728dddb")
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?group=5b56981c-7e5b-4dff-aeca-de784728dddb"
+  ```
+</CodeGroup>
+
+### noGroup
+
+* Type: `boolean`
+
+Filter results to only show files that are not part of a group
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files.public
+  		.list()
+  		.noGroup(true)
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?group=null"
+  ```
+</CodeGroup>
+
+### cid
+
+* Type: `string`
+
+Filter results based on CID
+
+<CodeGroup>
+  ```typescript SDK{3} theme={null}
+  const files = await pinata.files.public
+    .list()
+    .cid("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?cid=bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+  ```
+</CodeGroup>
+
+### mimeType
+
+* Type: `string`
+
+Filter results based on mime type
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files.public
+    .list()
+    .mimeType("image/png")
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?mimeType=image/png"
+  ```
+</CodeGroup>
+
+### keyvalues
+
+* Type: `Record<string | string>`
+
+Filter results based on keyvalue pairs in metadata
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files.public
+    .list()
+    .keyvalues({
+      env: "prod"
+    })
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files/public?keyvalues[env]=prod"
+  ```
+</CodeGroup>
+
+### order
+
+* Type: `"ASC" | "DESC"`
+
+Order results either ascending or descending by created date
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files
+    .list()
+    .order("ASC")
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files?order=ASC"
+  ```
+</CodeGroup>
+
+### limit
+
+* Type: `number`
+
+Limit the number of results
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files
+    .list()
+    .limit(10)
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files?limit=10"
+  ```
+</CodeGroup>
+
+### cidPending
+
+* Type: `boolean`
+
+Filters results and only returns files where `cid` is still `pending`
+
+<CodeGroup>
+  ```typescript SDK {3} theme={null}
+  const files = await pinata.files
+    .list()
+    .cidPending(true)
+  ```
+
+  ```typescript API theme={null}
+  const url = "https://api.pinata.cloud/v3/files?cidPending=true"
+  ```
+</CodeGroup>
+
+## Auto Paginate (SDK)
+
+The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
+
+```typescript  theme={null}
+for await (const item of pinata.files.list() {
+  console.log(item.id);
+}
+```
+
+Works like magic ✨

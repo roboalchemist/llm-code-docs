@@ -1,0 +1,87 @@
+# Source: https://docs.warp.dev/terminal/integrations-and-plugins.md
+
+# Terminal Integrations
+
+## Docker
+
+{% hint style="info" %}
+Currently, the Docker extension is only available on macOS.
+{% endhint %}
+
+[Warp’s Docker extension](https://hub.docker.com/extensions/warpdotdev/warp) makes it more convenient to open Docker containers in Warp. With the extension, you can click to open any Docker container in a [Warpified subshell](https://docs.warp.dev/terminal/warpify/subshells), without manually running `docker exec` or typing out lengthy container IDs.
+
+Select a container from the list and specify a shell type. Note, that only `bash|zsh|fish` are supported shells for docker containers. Then, select a user (optional) and finally click “Open in Warp” to run commands within the Docker container.
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-77ea0935865e88730f4ebf91dde38821bdf4f7c4%2Fdocker-extension.png?alt=media" alt=""><figcaption><p>Warp's extension for Docker lists available containers</p></figcaption></figure>
+
+## Raycast
+
+{% hint style="info" %}
+Currently, the Raycast extension is only available on macOS.
+{% endhint %}
+
+Warp + Raycast extension helps you open new windows, tabs, or Launch Configurations with [ease](https://twitter.com/warpdotdev/status/1678432353461637121).
+
+{% embed url="<https://www.raycast.com/warpdotdev/warp>" %}
+Warp + Raycast Extension Link
+{% endembed %}
+
+{% hint style="info" %}
+**Terminal Tip**\
+Within `Raycast Settings > Extensions > Apps` search for Warp and assign the alias "terminal" so that it will show up on a search.
+{% endhint %}
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-3d1d4202e04925116dbbfe1b4f19422831dc1a5a%2Fraycast-terminal-tip.png?alt=media&#x26;token=08ca58c9-6825-42d2-8232-5f980666abf8" alt=""><figcaption><p>Raycast Terminal Tip</p></figcaption></figure>
+
+## VSCode
+
+{% tabs %}
+{% tab title="macOS" %}
+Press `SHIFT-CMD-C` while in [VSCode](https://code.visualstudio.com/docs/terminal/basics) to open a new session in Warp.
+
+![VSCode New Session Shortcut](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-453d61e19a9ee3f466a4e9f363f24518a05343c1%2Fvscode_new_session.gif?alt=media)
+
+To configure this, navigate to Settings in VSCode and search for `Terminal › External: Osx Exec`.\
+\
+Change this to `Warp.app` if you've installed Warp in the default location. Otherwise, put in the full path to the executable.
+{% endtab %}
+
+{% tab title="Windows" %}
+Press `CTRL-SHIFT-C` while in [VSCode](https://code.visualstudio.com/docs/terminal/basics) to open a new session in Warp.
+
+To configure this, navigate to Settings in VSCode and search for `Terminal › External: Windows Exec`.\
+\
+Change this to `%LOCALAPPDATA%\Programs\Warp\warp.exe` if you've installed Warp in the default location for a single user or `C:\Program Files\Warp\warp.exe` if you've installed Warp in the default location for all users. Otherwise, put in the full path to the executable.
+{% endtab %}
+
+{% tab title="Linux" %}
+Press `CTRL-SHIFT-C` while in [VSCode](https://code.visualstudio.com/docs/terminal/basics) to open a new session in Warp.
+
+To configure this, navigate to Settings in VSCode and search for `Terminal › External: Linux Exec`.\
+\
+Change this to `warp-terminal` if you've installed Warp with your distribution's package manager. Otherwise, put in the full path to the executable (e.g. if it is an AppImage).
+{% endtab %}
+{% endtabs %}
+
+## JetBrains IDEs
+
+{% hint style="info" %}
+Currently, the JetBrains IDE configuration is only available on macOS.
+{% endhint %}
+
+Press a keyboard shortcut of choice while in a JetBrains IDE to open a new session in Warp.
+
+To configure this, use the Apple Menu. Click on `Preferences`, go to `External Tools` , and click `Add`. In this menu, put the following information:
+
+* *Name*: Open Warp
+* *Program*: `/Applications/Warp.app`
+* *Arguments*: `$ProjectFileDir$`
+* *Working Directory*: `/Applications`
+
+Then press `Ok`. Now you will be able to `Open Warp` from the Apple Menu under `Tools` -> `External Tools`.
+
+![JetBrains New Session Shortcut](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-aab1bcc9d3fcea88ca8461a6d02289776f118e15%2Fjetbrains_external_terminal_config.gif?alt=media\&token=caa7c9a2-4124-41ec-8740-c18873bec399)
+
+To attach this configuration to a keyboard shortcut, you must go to the Apple Menu -> `Preferences`. Then go to `Keymap` -> `External Tools`. You will find `Open Warp`. Right-click on it, and select `Add Keyboard Shortcut`. Type your desired shortcut and click save! You're ready to open Warp with a keyboard shortcut.
+
+![JetBrains Configure Keyboard Shortcut](https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-92cd0abc478f47ba9505df4ae2abdc067dbba72f%2Fjetbrains_external_window_keymap_config.gif?alt=media\&token=f23c5c20-5ad0-4211-85d9-fe732ddaa047)

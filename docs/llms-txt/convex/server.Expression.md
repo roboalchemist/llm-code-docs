@@ -1,0 +1,15 @@
+# Source: https://docs.convex.dev/api/classes/server.Expression.md
+
+# Class: Expression\<T>
+
+[server](/api/modules/server.md).Expression
+
+Expressions are evaluated to produce a [Value](/api/modules/values.md#value) in the course of executing a query.
+
+To construct an expression, use the [FilterBuilder](/api/interfaces/server.FilterBuilder.md) provided within [filter](/api/interfaces/server.OrderedQuery.md#filter).
+
+## Type parameters[​](#type-parameters "Direct link to Type parameters")
+
+| Name | Type                                                           | Description                                 |
+| ---- | -------------------------------------------------------------- | ------------------------------------------- |
+| `T`  | extends [`Value`](/api/modules/values.md#value) \| `undefined` | The type that this expression evaluates to. |

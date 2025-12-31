@@ -1,0 +1,13 @@
+# Source: https://rspack.dev/plugins/webpack/no-emit-on-errors-plugin.md
+
+import { ApiMeta } from '@components/ApiMeta.tsx';
+
+# NoEmitOnErrorsPlugin
+
+<ApiMeta addedVersion={'1.0.0'} />
+
+This plugin is used to prevent the assets emitting when there are compilation errors. [`optimization.emitOnErrors`](/config/optimization.md#optimizationemitonerrors) uses this plugin.
+
+```js
+new rspack.NoEmitOnErrorsPlugin();
+```

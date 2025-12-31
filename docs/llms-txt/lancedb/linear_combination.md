@@ -1,0 +1,44 @@
+# Source: https://docs.lancedb.com/integrations/reranking/linear_combination.md
+
+# Linear Combination Reranker
+
+> Learn about LanceDB's deprecated Linear Combination Reranker for combining semantic and full-text search scores.
+
+export const PyRerankingLinearCombinationUsage = "import lancedb\nfrom lancedb.embeddings import get_registry\nfrom lancedb.pydantic import LanceModel, Vector\nfrom lancedb.rerankers import LinearCombinationReranker\n\nembedder = get_registry().get(\"sentence-transformers\").create()\ndb = lancedb.connect(\"~/.lancedb\")\n\nclass Schema(LanceModel):\n    text: str = embedder.SourceField()\n    vector: Vector(embedder.ndims()) = embedder.VectorField()\n\ndata = [\n    {\"text\": \"hello world\"},\n    {\"text\": \"goodbye world\"},\n]\ntbl = db.create_table(\"test\", schema=Schema, mode=\"overwrite\")\ntbl.add(data)\nreranker = LinearCombinationReranker()\n\n# Run hybrid search with a reranker\ntbl.create_fts_index(\"text\", replace=True)\nresult = (\n    tbl.search(\"hello\", query_type=\"hybrid\").rerank(reranker=reranker).to_list()\n)\n";
+
+# Linear Combination Reranker
+
+> **Note:** This reranker is deprecated. Use the `RRFReranker` if you need a score-based reranker.
+
+The Linear Combination Reranker combines the results of semantic and full-text search using a linear combination of the scores. The weights for the linear combination can be specified, and defaults to 0.7, i.e, 70% weight for semantic search and 30% weight for full-text search.
+
+> **Note:** Supported query type – Hybrid search only.
+
+<CodeGroup>
+  <CodeBlock filename="Python" language="Python" icon="python">
+    {PyRerankingLinearCombinationUsage}
+  </CodeBlock>
+</CodeGroup>
+
+## Accepted Arguments
+
+| Argument       | Type    | Default       | Description                                                                                                                                                                                                               |
+| -------------- | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `weight`       | `float` | `0.7`         | The weight to use for the semantic search score. The weight for the full-text search score is `1 - weights`.                                                                                                              |
+| `return_score` | str     | `"relevance"` | Options are "relevance" or "all". The type of score to return. If "relevance", will return only the \`\_relevance\_score. If "all", will return all scores from the vector and FTS search along with the relevance score. |
+
+## Supported Scores for each query type
+
+You can specify the type of scores you want the reranker to return. The following are the supported scores for each query type:
+
+### Hybrid Search
+
+| `return_score` | Status      | Description                                                                                   |
+| -------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `relevance`    | ✅ Supported | Results only have the `_relevance_score` column                                               |
+| `all`          | ✅ Supported | Results have vector(`_distance`) and FTS(`score`) along with Hybrid Search score(`_distance`) |
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

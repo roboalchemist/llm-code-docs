@@ -1,0 +1,167 @@
+# Source: https://www.x-cmd.com/mod.md
+
+---
+url: /mod.md
+---
+# `x <mod>`
+
+> Functional modules provided by X-CMD, invoked using the `x <mod>`, For more information [get-started](/mod/get-started.md)
+
+## Modules
+
+- [x mac](/mod/mac.md): utilities for MacOs
+- [x termux](/mod/termux.md): Termux Utility
+- [x cd](/mod/cd.md): Enhanced cd command
+- [x top](/mod/top.md): View real-time process information
+- [x btop](/mod/btop.md): Enhanced modules for btop
+- [x htop](/mod/htop.md): Enhanced modules for htop
+- [x ps](/mod/ps.md): View PS
+- [x id](/mod/id.md): id command enhancement
+- [x uname](/mod/uname.md): View information about your computer and operating system
+- [x uptime](/mod/uptime.md): Tell how long the system has been running
+- [x kill](/mod/kill.md): kill command enhancement
+- [x last](/mod/last.md): last command enhancement
+- [x pb](/mod/pb.md): Used to copy and paste output content on the command line
+- [x zuz](/mod/zuz.md): Compress, decompress files, and view file contents
+- [x ls](/mod/ls.md): ls command enhancement
+- [x ll](/mod/ll.md): list information
+- [x lsof](/mod/lsof.md): Enhanced modules for lsof
+- [x path](/mod/path.md): Command line handle PATH
+- [x stat](/mod/stat.md): stat command enhancement
+- [x facl](/mod/facl.md): Get file access control lists
+- [x df](/mod/df.md): Enhanced modules for df
+- [x smart](/mod/smart.md): smartctl command enhancement
+- [x ncdu](/mod/ncdu.md): Enhanced modules for ncdu
+- [x ping](/mod/ping.md): Enhanced modules for ping
+- [x tping](/mod/tping.md): Ping TCP port
+- [x hi](/mod/hi.md): Output HTTP information
+- [x ip](/mod/ip.md): Query IP address
+- [x arp](/mod/arp.md): Get the ARP table
+- [x dns](/mod/dns.md): Domain Name System (DNS) manager
+- [x nets](/mod/nets.md): Enhanced modules for netstat
+- [x host](/mod/host.md): Host table management based on `/etc/hosts` file
+- [x route](/mod/route.md): Retrieving the ROUTE table
+- [x proxy](/mod/proxy.md): Setting proxy
+- [x openai](/mod/openai.md): Integrate OpenAI API to provide powerful AI capabilities, including ChatGPT conversations, text generation, image creation, speech conversion, and more
+- [x gemini](/mod/gemini.md): Use Gemini AI models
+- [x deepseek](/mod/deepseek.md): Use DeepSeek AI Model
+- [x moonshot](/mod/moonshot.md): Use the AI services provided by Moonshot, the large model from Moonshot is called Kimi
+- [x mistral](/mod/mistral.md): Use the AI services provided by Mistral
+- [x grok](/mod/grok.md): Use xAI grok Model
+- [x codex](/mod/codex.md): Enhanced command-line module for Codex
+- [x claude](/mod/claude.md): Enhanced command-line module for Claude Code
+- [x crush](/mod/crush.md): Enhanced command-line module for crush
+- [x aider](/mod/aider.md): Enhanced command-line module for aider
+- [x speckit](/mod/speckit.md): An enhancement module for Spec Kit
+- [x openspec](/mod/openspec.md): openspec command enhancements
+- [x lms](/mod/lms.md): LM Studio CLI
+- [x llmf](/mod/llmf.md): Run the local model
+- [x ollama](/mod/ollama.md): The command-line client tool for Ollama, an open-source framework for running large language models locally.
+- [x whisper](/mod/whisper.md): Enhanced modules for whisper.cpp
+- [x jina](/mod/jina.md): CLI for jina.ai, providing functions to get website content, generate vector data, etc.
+- [x buse](/mod/buse.md): Enhanced modules for browser-use
+- [x writer](/mod/writer.md): The AI text processing module
+- [x mirror](/mod/mirror.md): Setting mirror source for development
+- [x hub](/mod/hub.md): Securely upload, store, and share scripts in the cloud
+- [x ws](/mod/ws.md): workspace management tool
+- [x tldr](/mod/tldr.md): Collaborative cheatsheets for console commands
+- [x man](/mod/man.md): man command enhancement
+- [x mankier](/mod/mankier.md): Search and browse man pages on ManKier.
+- [x cht](/mod/cht.md): cheatsheet for Developers
+- [x hn](/mod/hn.md): Viewing Hacker News in a command-line interactive table interface
+- [x se](/mod/se.md): Search and browse Stack Exchange
+- [x wkp](/mod/wkp.md): Search Wikipedia, get article extract
+- [x ddgo](/mod/ddgo.md): Internet search engine DuckDuckGo CLI
+- [x rfc](/mod/rfc.md): Modules designed for RFC documentation
+- [x gtb](/mod/gtb.md): Search and browse books on Project Gutenberg.
+- [x coin](/mod/coin.md): CoinCap Platform Information Viewer. (Current Public API is unavailable, looking for alternatives, sorry)
+- [x ascii](/mod/ascii.md): Tackling tasks related to ASCII
+- [x wttr](/mod/wttr.md): Check the weather
+- [x emoji](/mod/emoji.md): List emojis
+- [x hua](/mod/hua.md): Chinese Poetry Viewer
+- [x ccal](/mod/ccal.md): Chinese Lunar Calendar
+- [x gcal](/mod/gcal.md): Enhanced module for GNU gcal calendar utility
+- [x cal](/mod/cal.md): A btter cal command using Gregorian calendar by default
+- [x jq](/mod/jq.md): Enhanced modules for jq
+- [x yq](/mod/yq.md): Enhanced modules for yq
+- [x sed](/mod/sed.md): Enhanced modules for sed
+- [x sd](/mod/sd.md): Enhanced modules for sd
+- [x grep](/mod/grep.md): Enhanced modules for grep
+- [x rg](/mod/rg.md): Enhanced modules for rg
+- [x find](/mod/find.md): Enhanced modules for find
+- [x theme](/mod/theme.md): Change terminal command line prompt theme
+- [x starship](/mod/starship.md): Enhanced modules designed for starship
+- [x ohmyposh](/mod/ohmyposh.md): Enhanced modules designed for oh-my-posh
+- [x font](/mod/font.md): Font toolkit
+- [x colr](/mod/colr.md): Color Finder
+- [x pick](/mod/pick.md): An interactive GREP tool in your terminal
+- [x cowsay](/mod/cowsay.md): ASCII Art Picture Module
+- [x install](/mod/install.md): Software installer
+- [x uninstall](/mod/uninstall.md): Software Uninstaller
+- [x env](/mod/env.md): environment management
+- [x cosmo](/mod/cosmo.md): Run the application built by Cosmopolitan
+- [x asdf](/mod/asdf.md): Designed to enhance adsf
+- [x pixi](/mod/pixi.md): Enhanced modules for pixi
+- [x pkgx](/mod/pkgx.md): Enhanced modules for pkgx
+- [x apt](/mod/apt.md): apt command enhancements
+- [x pacman](/mod/pacman.md): pacman command enhancements
+- [x aur](/mod/aur.md): Search and browse applications in AUR
+- [x paru](/mod/paru.md): paru command enhancements
+- [x dnf](/mod/dnf.md): dnf command enhancements
+- [x yum](/mod/yum.md): yum command enhancements
+- [x brew](/mod/brew.md): brew command enhancements
+- [x apk](/mod/apk.md): apk command enhancements
+- [x scoop](/mod/scoop.md): Windows Package Management Tool
+- [x choco](/mod/choco.md): The third party windows package manager for opensource softwares.
+- [x winget](/mod/winget.md): Microsoft Officially Launches Windows Package Manager
+- [x qywx](/mod/qywx.md): Send messages using a WXwork group bot
+- [x discord](/mod/discord.md): Send messages using a Discord group bot
+- [x telegram](/mod/telegram.md): Send messages using a Telegram group bot
+- [x feishu](/mod/feishu.md): Send messages using a Feishu group bot
+- [x dingtalk](/mod/dingtalk.md): Send messages using a Dingtalk group bot
+- [x ffmpeg](/mod/ffmpeg.md): Convert, manipulate, and stream multimedia
+- [x gm](/mod/gm.md): Enhanced modules for graphicsmagick
+- [x pandoc](/mod/pandoc.md): Enhanced modules for pandoc
+- [x osv](/mod/osv.md): OSV (Open Source Vulnerabilities) project's CLI
+- [x scorecard](/mod/scorecard.md): Modules designed for the OpenSSF scorecard project
+- [x shodan](/mod/shodan.md): The shodan command-line interface is powered by x-cmd, mainly using posix shell, awk and curl.
+- [x kev](/mod/kev.md): KEV catalog (Known Exploited Vulnerabilities)
+- [x hash](/mod/hash.md): Compute MD5, SHA1, SHA256, SHA384, and SHA512 checksums for files or piped input
+- [x cowrie](/mod/cowrie.md): Quickly launching Cowrie using Docker
+- [x endlessh](/mod/endlessh.md): Quickly launching endlessh-go using Docker
+- [x mosh](/mod/mosh.md): Enhanced modules for mosh
+- [x bwh](/mod/bwh.md): BandwagonHost VPS Manager
+- [x gddy](/mod/gddy.md): Godaddy website command line management tool
+- [x gh](/mod/gh.md): Manage GitHub work from the command line
+- [x gt](/mod/gt.md): Manage Gitee work from the command line
+- [x gl](/mod/gl.md): Manage GitLab work from the command line
+- [x tea](/mod/tea.md): Manage gitea work from the command line
+- [x cb](/mod/cb.md): A lightweight CLI for Codeberg
+- [x fjo](/mod/fjo.md): Manage forgejo work from the command line
+- [x git](/mod/git.md): Enhanced modules for git
+- [x gitconfig](/mod/gitconfig.md): Git config management
+- [x githook](/mod/githook.md): Git Hooks management
+- [x docker](/mod/docker.md): Enhanced docker command
+- [x webtop](/mod/webtop.md): A module designed for linuxserver/webtop
+- [x sb](/mod/sb.md): Safely run commands in a restricted environment, like a minimal-permission sandbox
+- [x lsio](/mod/lsio.md): For querying Docker images built by the linuxserver.io
+- [x nu](/mod/nu.md): Enhanced modules for nushell
+- [x elv](/mod/elv.md): Enhanced modules for elvish
+- [x fish](/mod/fish.md): Modules designed to enhance fish Shell
+- [x onsh](/mod/onsh.md): Enhanced modules for xonsh
+- [x tcsh](/mod/tcsh.md): Enhanced modules for tcsh
+- [x pwsh](/mod/pwsh.md): PowerShell command line management tool &lt;unstable&gt;
+- [x zig](/mod/zig.md): zig command enhancements
+- [x lua](/mod/lua.md): lua enhancement module
+- [x luarocks](/mod/luarocks.md): Enhancement module for luarocks
+- [x python](/mod/python.md): Enhanced python command
+- [x pip](/mod/pip.md): Enhanced pip command
+- [x node](/mod/node.md): server-side JavaScript runtime
+- [x npm](/mod/npm.md): Node package manager
+- [x npx](/mod/npx.md): Run a command from a local or remote npm package
+- [x deno](/mod/deno.md): A modern JavaScript and TypeScript runtime
+- [x bun](/mod/bun.md): A fast all-in-one JavaScript runtime
+- [x perl](/mod/perl.md): Enhanced perl command
+- [x raku](/mod/raku.md): Enhanced Raku command
+- [x java](/mod/java.md): Enhanced java command
+- [x groovy](/mod/groovy.md): Enhanced groovy command

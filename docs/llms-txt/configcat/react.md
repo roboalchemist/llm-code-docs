@@ -1,0 +1,1072 @@
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/openfeature/react.md
+
+# Source: https://configcat.com/docs/sdk-reference/react.md
+
+# React SDK Reference
+
+[![Star on GitHub](https://img.shields.io/github/stars/configcat/react-sdk.svg?style=social)](https://github.com/configcat/react-sdk/stargazers) [![REACT CI](https://github.com/configcat/react-sdk/actions/workflows/react-ci.yml/badge.svg)](https://github.com/configcat/react-sdk/actions/workflows/react-ci.yml) [![codecov](https://codecov.io/gh/configcat/react-sdk/branch/main/graph/badge.svg?token=X9kFVT7xXL)](https://codecov.io/gh/configcat/react-sdk) [![Known Vulnerabilities](https://snyk.io/test/github/configcat/react-sdk/badge.svg?targetFile=package.json)](https://snyk.io/test/github/configcat/react-sdk?targetFile=package.json) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=configcat_react-sdk\&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=configcat_react-sdk) [![JSDELIVR](https://data.jsdelivr.com/v1/package/npm/configcat-react/badge)](https://www.jsdelivr.com/package/npm/configcat-react)
+
+[ConfigCat React SDK on GitHub](https://github.com/configcat/react-sdk)
+
+## Getting started[​](#getting-started "Direct link to Getting started")
+
+### 1. Install package[​](#1-install-package "Direct link to 1. Install package")
+
+*via [NPM package](https://npmjs.com/package/configcat-react):*
+
+```
+npm i configcat-react
+```
+
+### 2. Import and initialize a `ConfigCatProvider` with your SDK Key[​](#2-import-and-initialize-a-configcatprovider-with-your-sdk-key "Direct link to 2-import-and-initialize-a-configcatprovider-with-your-sdk-key")
+
+In most cases you should wrap your root component with `ConfigCatProvider` to access ConfigCat features in child components with Context API.
+
+```
+import React from 'react';
+import { ConfigCatProvider } from 'configcat-react';
+
+function App() {
+  return (
+    <ConfigCatProvider sdkKey="#YOUR_SDK_KEY#">
+      {/* your application code */}
+    </ConfigCatProvider>
+  );
+}
+
+export default App;
+```
+
+### 3. Get your setting value[​](#3-get-your-setting-value "Direct link to 3. Get your setting value")
+
+The React hooks (`useFeatureFlag`) way:
+
+```
+function ButtonComponent() {
+  const { value: isAwesomeFeatureEnabled, loading } = useFeatureFlag(
+    'isAwesomeFeatureEnabled',
+    false,
+  );
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div>Feature flag value: {isAwesomeFeatureEnabled ? 'ON' : 'OFF'}</div>
+  );
+}
+```
+
+The React HOC (`WithConfigCatClientProps`) way:
+
+```
+class TestHOCComponent extends React.Component<
+  WithConfigCatClientProps,
+  { isAwesomeFeatureEnabled: boolean; loading: boolean }
+> {
+  constructor(props: WithConfigCatClientProps) {
+    super(props);
+
+    this.state = { isAwesomeFeatureEnabled: false, loading: true };
+  }
+
+  componentDidMount() {
+    this.evaluateFeatureFlag();
+  }
+
+  componentDidUpdate(prevProps: any) {
+    // To achieve hot reload on config JSON updates.
+    if (prevProps?.lastUpdated !== this.props.lastUpdated) {
+      this.evaluateFeatureFlag();
+    }
+  }
+
+  evaluateFeatureFlag() {
+    this.props
+      .getValue('isAwesomeFeatureEnabled', false)
+      .then((v: boolean) =>
+        this.setState({ isAwesomeFeatureEnabled: v, loading: false }),
+      );
+  }
+
+  render() {
+    return loading ? (
+      <div>Loading...</div>
+    ) : (
+      <div>
+        Feature flag value: {this.state.isAwesomeFeatureEnabled ? 'ON' : 'OFF'}
+      </div>
+    );
+  }
+}
+
+const ConfigCatTestHOCComponent = withConfigCatClient(TestHOCComponent);
+```
+
+## Creating the *ConfigCat* Client[​](#creating-the-configcat-client "Direct link to creating-the-configcat-client")
+
+*ConfigCat Client* is responsible for:
+
+* managing the communication between your application and ConfigCat servers.
+* caching your setting values and feature flags.
+* serving values quickly in a failsafe way.
+
+`<ConfigCatProvider sdkKey="#YOUR_SDK_KEY#" pollingMode={PollingMode.AutoPoll} options={{ ... }}>` initializes a client.
+
+| Attributes    | Description                                                                                                                                                                                                                           | Default                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `sdkKey`      | **REQUIRED.** SDK Key to access your feature flags and settings. Get it from the *ConfigCat Dashboard*.                                                                                                                               | -                      |
+| `pollingMode` | Optional. The polling mode to use to fetch the config data from the ConfigCat CDN. [More about polling modes](#polling-modes).                                                                                                        | `PollingMode.AutoPoll` |
+| `options`     | Optional. The options object. See the table below.                                                                                                                                                                                    | -                      |
+| `id`          | Optional. Instructs the ConfigCat Client to use a specific `ConfigCatProvider` instead of the default one. Use it if you have multiple `ConfigCatProvider`s in your code. [More about multiple providers](#using-multiple-providers). | `undefined` (none)     |
+
+The available options depends on the chosen polling mode. However, there are some common options which can be set in the case of every polling mode:
+
+| Option Parameter   | Description                                                                                                                                                                                                                                                                                                                       | Default                                                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `logger`           | Custom [`IConfigCatLogger`](https://github.com/configcat/common-js/blob/master/src/ConfigCatLogger.ts) implementation for tracing.                                                                                                                                                                                                | [`ConfigCatConsoleLogger`](https://github.com/configcat/common-js/blob/master/src/ConfigCatLogger.ts) (with WARN level) |
+| `requestTimeoutMs` | The amount of milliseconds the SDK waits for a response from the ConfigCat servers before returning values from the cache.                                                                                                                                                                                                        | 30000                                                                                                                   |
+| `baseUrl`          | Sets the CDN base url (forward proxy, dedicated subscription) from where the SDK will download the config JSON.                                                                                                                                                                                                                   |                                                                                                                         |
+| `dataGovernance`   | Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `DataGovernance.Global`, `DataGovernance.EuOnly`. | `DataGovernance.Global`                                                                                                 |
+| `cache`            | Custom [`IConfigCatCache`](https://github.com/configcat/common-js/blob/master/src/ConfigCatCache.ts) implementation for caching the downloaded config.                                                                                                                                                                            | [`InMemoryConfigCache`](https://github.com/configcat/common-js/blob/master/src/ConfigCatCache.ts)                       |
+| `flagOverrides`    | Local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                                     | -                                                                                                                       |
+| `defaultUser`      | Sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                                  | `undefined` (none)                                                                                                      |
+| `offline`          | Determines whether the client should be initialized to offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                                                            | `false`                                                                                                                 |
+
+Options also include a property named `setupHook`, which you can use to subscribe to the hooks (events) at the time of initialization. [More about hooks](#hooks).
+
+For example:
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.AutoPoll}
+  options={{
+    setupHooks: (hooks) =>
+      hooks.on('clientReady', () => console.log('Client is ready!')),
+  }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+### Acquire the ConfigCat instance[​](#acquire-the-configcat-instance "Direct link to Acquire the ConfigCat instance")
+
+The SDK supports two ways to acquire the initialized ConfigCat instance:
+
+* Custom hook: `useConfigCatClient()` (from React v16.8)
+* Higher-order component: `withConfigCatClient()`
+
+## Anatomy of `useFeatureFlag()`[​](#anatomy-of-usefeatureflag "Direct link to anatomy-of-usefeatureflag")
+
+| Parameters     | Description                                                                                                                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                                                                                                    |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                                                                                                        |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md)                                                                               |
+| `providerId`   | Optional. Instructs the ConfigCat Client to use a specific `ConfigCatProvider` instead of the default one. Use it if you have multiple `ConfigCatProvider`s in your code. [More about multiple providers](#using-multiple-providers). |
+
+```
+function ButtonComponent() {
+  const { value: isAwesomeFeatureEnabled, loading } = useFeatureFlag(
+    'isAwesomeFeatureEnabled',
+    false,
+  );
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div>Feature flag value: {isAwesomeFeatureEnabled ? 'ON' : 'OFF'}</div>
+  );
+}
+```
+
+caution
+
+It is important to provide an argument for the `defaultValue` parameter that matches the type of the feature flag or setting you are evaluating. Please refer to the following table for the corresponding types.
+
+### Setting type mapping[​](#setting-type-mapping "Direct link to Setting type mapping")
+
+| Setting Kind   | `typeof defaultValue` |
+| -------------- | --------------------- |
+| On/Off Toggle  | `boolean`             |
+| Text           | `string`              |
+| Whole Number   | `number`              |
+| Decimal Number | `number`              |
+
+In addition to the types mentioned above, you also have the option to provide `null` or `undefined` for the `defaultValue` parameter regardless of the setting kind. However, if you do so, the type of `value` returned by the `useFeatureFlag` method will be
+
+* `boolean | string | number | null` when `defaultValue` is `null` or
+* `boolean | string | number | undefined` when `defaultValue` is `undefined`.
+
+This is because in these cases the exact return type cannot be determined at compile-time as the TypeScript compiler has no information about the setting type.
+
+It's important to note that providing any other type for the `defaultValue` parameter will result in a `TypeError`.
+
+If you specify an allowed type but it mismatches the setting kind, an error message will be logged and `defaultValue` will be returned.
+
+## Anatomy of `useConfigCatClient()`[​](#anatomy-of-useconfigcatclient "Direct link to anatomy-of-useconfigcatclient")
+
+| Parameters   | Description                                                                                                                                                                                                                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `providerId` | Optional. Instructs the ConfigCat Client to use a specific `ConfigCatProvider` instead of the default one. Use it if you have multiple `ConfigCatProvider`s in your code. [More about multiple providers](#using-multiple-providers). |
+
+This custom hook returns the ConfigCat instance from the context API. You have to wrap your parent element with `ConfigCatProvider` to ensure a `ConfigCatContextData`.
+
+```
+export const FlagDetailsComponent = () => {
+  const client = useConfigCatClient();
+
+  const [flagDetails, setFlagDetails] =
+    useState<IEvaluationDetails<boolean> | null>(null);
+
+  useEffect(() => {
+    client
+      .getValueDetailsAsync('isAwesomeFeatureEnabled', false)
+      .then((v) => setFlagDetails(v));
+  }, [client]);
+
+  return (
+    <>{flagDetails && <p>FlagDetails: {JSON.stringify(flagDetails)}</p>}</>
+  );
+};
+```
+
+## Anatomy of `withConfigCatClient()`[​](#anatomy-of-withconfigcatclient "Direct link to anatomy-of-withconfigcatclient")
+
+| Parameters   | Description                                                                                                                                                                                                                           |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `providerId` | Optional. Instructs the ConfigCat Client to use a specific `ConfigCatProvider` instead of the default one. Use it if you have multiple `ConfigCatProvider`s in your code. [More about multiple providers](#using-multiple-providers). |
+
+This is a higher-order component that can take your React component and will return the component with the injected ConfigCat related props (`WithConfigCatClientProps`).
+
+These props are the following:
+
+```
+export interface WithConfigCatClientProps {
+  configCatClient: IConfigCatClient;
+  getValue: GetValueType;
+  lastUpdated?: Date;
+}
+```
+
+Sample declaration of class component with *ConfigCat SDK*'s higher-order component:
+
+```
+class MyComponent extends React.Component<
+  { myProp: string } & WithConfigCatClientProps
+> {
+  constructor(props: { myProp: string } & WithConfigCatClientProps) {
+    super(props);
+
+    // props.configCatClient - use any method on the instance
+    // props.getValue - helper function for flag evaluation
+  }
+
+  ...
+}
+
+// HOC declaration
+const ConfigCatMyComponent = withConfigCatClient(MyComponent);
+
+// Usage of the wrapped component
+<ConfigCatMyComponent myProp='ConfigCat <3 React' />
+```
+
+### Props - `configCatClient`[​](#props---configcatclient "Direct link to props---configcatclient")
+
+The ConfigCat client instance (`IConfigCatClient`) to access all features of the *ConfigCat SDK*.
+
+In this example the component can invoke the `forceRefreshAsync` method on the injected ConfigCat instance.
+
+```
+class ManualRefreshComponent extends React.Component<
+  { featureFlagKey: string } & WithConfigCatClientProps,
+  { refreshAt: string | null }
+> {
+  constructor(props: { featureFlagKey: string } & WithConfigCatClientProps) {
+    super(props);
+
+    this.state = { refreshAt: '-' };
+  }
+
+  refresh() {
+    this.props.configCatClient
+      .forceRefreshAsync()
+      .then(() =>
+        this.setState({ refreshAt: new Date().toLocaleTimeString() }),
+      );
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.refresh()}>Refresh</button>
+        <p>Last manual refresh: {this.state.refreshAt}</p>
+      </div>
+    );
+  }
+}
+
+const ConfigCatManualRefreshComponent = withConfigCatClient(
+  ManualRefreshComponent,
+);
+```
+
+### Props - `getValue`[​](#props---getvalue "Direct link to props---getvalue")
+
+A helper function to get the value of a feature flag.
+
+| Parameters     | Description                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** Setting-specific key. Set on *ConfigCat Dashboard* for each setting.                                                                      |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+
+```
+class TestHOCComponent extends React.Component<
+  WithConfigCatClientProps,
+  { isAwesomeFeatureEnabled: string }
+> {
+  constructor(props: WithConfigCatClientProps) {
+    super(props);
+
+    this.state = { isAwesomeFeatureEnabled: false, loading: true };
+  }
+
+  componentDidMount() {
+    this.evaluateFeatureFlag();
+  }
+
+  componentDidUpdate(prevProps: any) {
+    // To achieve hot reload on config JSON updates.
+    if (prevProps?.lastUpdated !== this.props.lastUpdated) {
+      this.evaluateFeatureFlag();
+    }
+  }
+
+  evaluateFeatureFlag() {
+    this.props
+      .getValue('isAwesomeFeatureEnabled', false)
+      .then((v: boolean) =>
+        this.setState({ isAwesomeFeatureEnabled: v, loading: false }),
+      );
+  }
+
+  render() {
+    return loading ? (
+      <div>Loading...</div>
+    ) : (
+      <div>
+        Feature flag value: {this.state.isAwesomeFeatureEnabled ? 'ON' : 'OFF'}
+      </div>
+    );
+  }
+}
+```
+
+caution
+
+It is important to provide an argument for the `defaultValue` parameter that matches the type of the feature flag or setting you are evaluating. Please refer to [this table](#setting-type-mapping) for the corresponding types.
+
+### Props - `lastUpdated`[​](#props---lastupdated "Direct link to props---lastupdated")
+
+The timestamp of when the config was last updated.
+
+## User Object[​](#user-object "Direct link to User Object")
+
+The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+
+For simple targeting:
+
+```
+const userObject = { identifier: '#UNIQUE-USER-IDENTIFIER#' };
+```
+
+```
+const userObject = { identifier: 'john@example.com' };
+```
+
+| Parameters   | Description                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `identifier` | **REQUIRED.** Unique identifier of a user in your application. Can be any `string` value, even an email address.                |
+| `email`      | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `country`    | Optional parameter for easier Targeting Rule definitions.                                                                       |
+| `custom`     | Optional dictionary for custom attributes of a user for advanced Targeting Rule definitions. E.g. User role, Subscription type. |
+
+For advanced targeting:
+
+```
+const userObject = {
+  identifier: '#UNIQUE-USER-IDENTIFIER#',
+  email: 'john@example.com',
+  country: 'United Kingdom',
+  custom: {
+    SubscriptionType: 'Pro',
+    UserRole: 'Admin',
+  },
+};
+```
+
+```
+function ButtonComponent() {
+  const { value: isAwesomeFeatureEnabled, loading } = useFeatureFlag(
+    'isAwesomeFeatureEnabled',
+    false,
+    userObject,
+  );
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div>Feature flag value: {isAwesomeFeatureEnabled ? 'ON' : 'OFF'}</div>
+  );
+}
+```
+
+The `custom` dictionary also allows attribute values other than `string` values:
+
+```
+const userObject = { identifier: '#UNIQUE-USER-IDENTIFIER#' };
+userObject.custom = {
+  Rating: 4.5,
+  RegisteredAt: new Date('2023-11-22T12:34:56.000Z'),
+  Roles: ['Role1', 'Role2'],
+};
+```
+
+### User Object Attribute Types[​](#user-object-attribute-types "Direct link to User Object Attribute Types")
+
+All comparators support `string` values as User Object attribute (in some cases they need to be provided in a specific format though, see below), but some of them also support other types of values. It depends on the comparator how the values will be handled. The following rules apply:
+
+**Text-based comparators** (EQUALS, IS ONE OF, etc.)
+
+* accept `string` values,
+* all other values are automatically converted to `string` (a warning will be logged but evaluation will continue as normal).
+
+**SemVer-based comparators** (IS ONE OF, <, >=, etc.)
+
+* accept `string` values containing a properly formatted, valid semver value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Number-based comparators** (=, <, >=, etc.)
+
+* accept `number` values,
+* accept `string` values containing a properly formatted, valid `number` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**Date time-based comparators** (BEFORE / AFTER)
+
+* accept `Date` values, which are automatically converted to a second-based Unix timestamp,
+* accept `number` values representing a second-based Unix timestamp,
+* accept `string` values containing a properly formatted, valid `number` value,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+**String array-based comparators** (ARRAY CONTAINS ANY OF / ARRAY NOT CONTAINS ANY OF)
+
+* accept arrays of `string`,
+* accept `string` values containing a valid JSON string which can be deserialized to an array of `string`,
+* all other values are considered invalid (a warning will be logged and the currently evaluated Targeting Rule will be skipped).
+
+### Default user[​](#default-user "Direct link to Default user")
+
+It's possible to set a default User Object that will be used on feature flag and setting evaluation. It can be useful when your application has a single user only or rarely switches users.
+
+You can set the default User Object either on SDK initialization:
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.AutoPoll}
+  options={{ defaultUser: { identifier: 'john@example.com' } }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+...or using the `setDefaultUser()` method of the `configCatClient` instance:
+
+```
+const currentUser = { identifier: 'john@example.com' };
+
+export const SetConfigCatUserComponent = () => {
+  const client = useConfigCatClient();
+
+  const [user] = useState(currentUser);
+
+  useEffect(() => {
+    client.setDefaultUser(user);
+  }, [client, user]);
+
+  return null;
+};
+```
+
+Whenever the evaluation methods like `getValueAsync()`, `getValueDetailsAsync()`, etc. are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
+
+```
+export const FlagValueDetailsComponent = () => {
+  const client = useConfigCatClient();
+
+  const [flagDetails, setFlagDetails] =
+    useState<IEvaluationDetails<boolean> | null>(null);
+
+  // invoke getValueDetailsAsync method WITHOUT User Object
+  useEffect(() => {
+    client
+      .getValueDetailsAsync('featureFlagKey', false)
+      .then((v) => setFlagDetails(v));
+  }, [client]);
+
+  return (
+    <>{flagDetails && <p>FlagDetails: {JSON.stringify(flagDetails)}</p>}</>
+  );
+};
+```
+
+When a `user` parameter is passed to the evaluation methods, it takes precedence over the default user.
+
+```
+const currentUser = { identifier: 'john@example.com' };
+
+export const FlagValueDetailsComponent = () => {
+  const client = useConfigCatClient();
+
+  const [flagDetails, setFlagDetails] =
+    useState<IEvaluationDetails<boolean> | null>(null);
+  const [user] = useState(currentUser);
+
+  // invoke getValueDetailsAsync method WITH User Object
+  useEffect(() => {
+    client
+      .getValueDetailsAsync('featureFlagKey', false, user)
+      .then((v) => setFlagDetails(v));
+  }, [client, user]);
+
+  return (
+    <>{flagDetails && <p>FlagDetails: {JSON.stringify(flagDetails)}</p>}</>
+  );
+};
+```
+
+You can also remove the default user by doing the following:
+
+```
+export const ClearConfigCatUserComponent = () => {
+  const client = useConfigCatClient();
+
+  useEffect(() => {
+    client.clearDefaultUser();
+  }, [client]);
+
+  return null;
+};
+```
+
+## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
+
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValueAsync()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle. [More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+
+### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
+
+The *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN automatically every 60 seconds and stores it in the cache.
+
+#### Initialization[​](#initialization "Direct link to Initialization")
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" options={{...}}>
+  ...
+</ConfigCatProvider>
+```
+
+or
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" pollingMode={PollingMode.AutoPoll} options={{...}}>
+  ...
+</ConfigCatProvider>
+```
+
+Use the `pollIntervalSeconds` option parameter to change the polling interval.
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.AutoPoll}
+  options={{ pollIntervalSeconds: 95 }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+Available options (in addition to the [common ones](#creating-the-configcat-client)):
+
+| Option Parameter         | Description                                                                                         | Default |
+| ------------------------ | --------------------------------------------------------------------------------------------------- | ------- |
+| `pollIntervalSeconds`    | Polling interval in seconds.                                                                        | 60s     |
+| `maxInitWaitTimeSeconds` | Maximum waiting time between the client initialization and the first config acquisition in seconds. | 5s      |
+
+### Lazy loading[​](#lazy-loading "Direct link to Lazy loading")
+
+When calling `useFeatureFlag()` or `WithConfigCatClientProps.getValue()`, the *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN only if it is not already present in the cache, or if the cache has expired.
+
+#### Initialization[​](#initialization-1 "Direct link to Initialization")
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" pollingMode={PollingMode.LazyLoad} options={{...}}>
+  ...
+</ConfigCatProvider>
+```
+
+Use `cacheTimeToLiveSeconds` option parameter to set cache lifetime.
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode="{PollingMode.LazyLoad}"
+  options={{ cacheTimeToLiveSeconds: 600 }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+Available options (in addition to the [common ones](#creating-the-configcat-client)):
+
+| Option Parameter         | Description           | Default |
+| ------------------------ | --------------------- | ------- |
+| `cacheTimeToLiveSeconds` | Cache TTL in seconds. | 60s     |
+
+### Manual polling[​](#manual-polling "Direct link to Manual polling")
+
+Manual polling gives you full control over when the config data is downloaded from the ConfigCat CDN. The *ConfigCat SDK* will not download it automatically. Calling `forceRefreshAsync()` is your application's responsibility.
+
+#### Initialization[​](#initialization-2 "Direct link to Initialization")
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" pollingMode={PollingMode.ManualPoll} options={{...}}>
+  ...
+</ConfigCatProvider>
+```
+
+```
+const client = useConfigCatClient();
+useEffect(() => {
+  client.forceRefreshAsync().then(() => {
+    console.log('forceRefreshAsync() invoked');
+  });
+});
+```
+
+## SDK Hooks (not React Hooks)[​](#hooks "Direct link to SDK Hooks (not React Hooks)")
+
+info
+
+*ConfigCat SDK* hooks are different than React Hooks.
+
+The SDK provides several hooks (events), by means of which you can get notified of its actions. You can subscribe to the following events emitted by the *ConfigCat* client:
+
+* `clientReady: [cacheState: ClientCacheState]`: This event is emitted when the client reaches the ready state, i.e. completes initialization.
+
+  * If Lazy Loading or Manual Polling is used, it's considered ready right after the initial sync with the external cache (if any) completes.
+
+  * If Auto Polling is used, the ready state is reached as soon as
+
+    <!-- -->
+
+    * the initial sync with the external cache yields up-to-date config data,
+    * otherwise, if the client is online (i.e. HTTP requests are allowed), the first config fetch operation completes (regardless of success or failure),
+    * or the time specified via Auto Polling's `maxInitWaitTimeSeconds` option has passed.
+
+  Reaching the ready state usually means the client is ready to evaluate feature flags and settings. However, please note that this is not guaranteed. In case of initialization failure or timeout, the internal cache may be empty or expired even after the ready state is reported. You can verify this by checking the `cacheState` argument.
+
+* `configChanged: [newConfig: IConfig]`: This event is emitted first when the client's internal cache gets populated. Afterwards, it is emitted again each time the internally cached config is updated to a newer version, either as a result of synchronization with the external cache, or as a result of fetching a newer version from the ConfigCat CDN.
+
+* `flagEvaluated: [evaluationDetails: IEvaluationDetails]`: This event is emitted each time the client evaluates a feature flag or setting. The event provides the same evaluation details that you would get from `getValueDetailsAsync()`.
+
+* `clientError: [message: string, exception?: any]`: This event is emitted when an error occurs within the client.
+
+You can subscribe to these events either on initialization:
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.ManualPoll}
+  options={{
+    setupHooks: (hooks) =>
+      hooks.on('flagEvaluated', () => {
+        /* handle the event */
+      }),
+  }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+...or directly on the `ConfigCatClient` instance:
+
+```
+export const ConfigCatWithHookComponent = () => {
+  const client = useConfigCatClient();
+
+  const [configChangedAt, setConfigChanged] = useState('-');
+
+  useEffect(() => {
+    function hookLogic() {
+      const t = new Date().toISOString();
+      setConfigChanged(t);
+      console.log(t);
+    }
+
+    client.on('configChanged', hookLogic);
+
+    return () => {
+      client.off('configChanged', hookLogic);
+    };
+  });
+
+  return <p>configChangedAt: {configChangedAt}</p>;
+};
+```
+
+Using higher-order component (HOC):
+
+```
+class ConfigChangedComponent extends React.Component<
+  WithConfigCatClientProps,
+  { refreshAt: string | null }
+> {
+  constructor(props: WithConfigCatClientProps) {
+    super(props);
+
+    this.state = { refreshAt: '-' };
+  }
+
+  componentDidMount() {
+    this.props.configCatClient.on('configChanged', () => this.myHookLogic());
+  }
+
+  componentWillUnmount() {
+    this.props.configCatClient.off('configChanged', () => this.myHookLogic());
+  }
+
+  myHookLogic() {
+    this.setState({ refreshAt: new Date().toISOString() });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>configChangedAt: {this.state.refreshAt}</p>
+      </div>
+    );
+  }
+}
+
+const ConfigCatManualRefreshComponent = withConfigCatClient(
+  ConfigChangedComponent,
+);
+```
+
+## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
+
+In cases where you want to prevent the SDK from making HTTP calls, you can switch it to offline mode:
+
+```
+export const ConfigCatIsOfflineComponent = () => {
+  const client = useConfigCatClient();
+
+  const [isOffline, setIsOffline] = useState(false);
+
+  function setMode() {
+    if (isOffline) {
+      client.setOnline();
+    } else {
+      client.setOffline();
+    }
+
+    setIsOffline(client.isOffline);
+  }
+
+  return (
+    <>
+      <p>ConfigCat mode: {isOffline ? 'Offline' : 'Online'}</p>
+      <button
+        onClick={() => {
+          setMode();
+        }}
+      >
+        Set {isOffline ? 'Online' : 'Offline'}
+      </button>
+    </>
+  );
+};
+```
+
+In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
+
+To switch the SDK back to online mode, invoke `setOnline()` method.
+
+Using the `isOffline` property you can check whether the SDK is in offline mode or not.
+
+## Flag Overrides[​](#flag-overrides "Direct link to Flag Overrides")
+
+With flag overrides you can overwrite the feature flags & settings downloaded from the ConfigCat CDN with local values. Moreover, you can specify how the overrides should apply over the downloaded values. The following 3 behaviours are supported:
+
+* **Local only** (`OverrideBehaviour.LocalOnly`): When evaluating values, the SDK will not use feature flags & settings from the ConfigCat CDN, but it will use all feature flags & settings that are loaded from local-override sources.
+
+* **Local over remote** (`OverrideBehaviour.LocalOverRemote`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the local-override version will take precedence.
+
+* **Remote over local** (`OverrideBehaviour.RemoteOverLocal`): When evaluating values, the SDK will use all feature flags & settings that are downloaded from the ConfigCat CDN, plus all feature flags & settings that are loaded from local-override sources. If a feature flag or a setting is defined both in the downloaded and the local-override source then the downloaded version will take precedence.
+
+You can load your feature flag & setting overrides from a simple `{ [key: string]: boolean | string | number }` map or query string parameters.
+
+### Map[​](#map "Direct link to Map")
+
+You can set up the SDK to load your feature flag & setting overrides from a `{ [key: string]: boolean | string | number }` map.
+
+```
+const flagOverrides = createFlagOverridesFromMap({
+    enabledFeature: true,
+    disabledFeature: false,
+    intSetting: 5,
+    doubleSetting: 3.14,
+    stringSetting: "test"
+},
+OverrideBehaviour.LocalOnly);
+```
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" options={{ flagOverrides }}>
+  ...
+</ConfigCatProvider>
+```
+
+### Query string[​](#query-string "Direct link to Query string")
+
+Since v4.8.0, it is also possible to override feature flags & settings using query string parameters.
+
+```
+const flagOverrides = createFlagOverridesFromQueryParams(OverrideBehaviour.LocalOverRemote);
+```
+
+```
+<ConfigCatProvider sdkKey="YOUR_SDK_KEY" options={{ flagOverrides }}>
+  ...
+</ConfigCatProvider>
+```
+
+With that setup, you can override feature flags and settings by appending query string parameters to the URL of your application in the following form: `https://app.example.com/?cc-myBooleanFlag=true&cc-myStringSetting=abc&...`
+
+The setting type is automatically inferred from the value. Please pay attention to this behavior. The inferred type of the value must match the type of the feature flag or setting you override (see also [this table](#setting-type-mapping)). In case you want to force a boolean or number value to be interpreted as a string value, use the `;str` suffix: `&cc-myStringSetting;str=true`.
+
+If the default prefix used to differentiate between normal and flag override query string parameters (`cc-`) is not suitable for you, you can set a custom prefix using the corresponding optional parameter of `createFlagOverridesFromQueryParams`.
+
+## Logging[​](#logging "Direct link to Logging")
+
+### Setting log levels[​](#setting-log-levels "Direct link to Setting log levels")
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.ManualPoll}
+  options={{ logger: createConsoleLogger(LogLevel.Info) }} // Setting log level to Info
+>
+  ...
+</ConfigCatProvider>
+```
+
+Available log levels:
+
+| Level | Description                                             |
+| ----- | ------------------------------------------------------- |
+| Off   | Nothing gets logged.                                    |
+| Error | Only error level events are logged.                     |
+| Warn  | Default. Errors and Warnings are logged.                |
+| Info  | Errors, Warnings and feature flag evaluation is logged. |
+| Debug | All of the above plus debug info is logged.             |
+
+Info level logging helps to inspect the feature flag evaluation process:
+
+```
+ConfigCat - INFO - [5000] Evaluating 'isPOCFeatureEnabled' for User '{"Identifier":"#SOME-USER-ID#","Email":"configcat@example.com"}'
+  Evaluating targeting rules and applying the first match if any:
+  - IF User.Email CONTAINS ANY OF ['@something.com'] THEN 'false' => no match
+  - IF User.Email CONTAINS ANY OF ['@example.com'] THEN 'true' => MATCH, applying rule
+  Returning 'true'.
+```
+
+### Custom logger implementation[​](#custom-logger-implementation "Direct link to Custom logger implementation")
+
+The SDK provides a simple logger implementation that logs to [the debugging console](https://developer.mozilla.org/en-US/docs/Web/API/console) (`configcat.createConsoleLogger(...)`) but it also allows you to inject any custom implementation of `IConfigCatLogger`.
+
+```
+class MyCustomLogger implements IConfigCatLogger {
+  /**
+   * Writes an event into the log.
+   * @param level Event severity level.
+   * @param eventId Event identifier.
+   * @param message Message.
+   * @param exception The exception object related to the message (if any).
+   */
+  log(
+    level: LogLevel,
+    eventId: LogEventId,
+    message: LogMessage,
+    exception?: any,
+  ): void {
+    // insert your custom log logic
+  }
+}
+```
+
+or
+
+```
+function MyCustomLogger() {}
+
+MyCustomLogger.prototype.log = function (level, eventId, message, exception) {
+  // insert your custom log logic
+};
+```
+
+then
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.ManualPoll}
+  options={{ cache: new MyCustomLogger() }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+## Using custom cache implementation[​](#using-custom-cache-implementation "Direct link to Using custom cache implementation")
+
+The *ConfigCat SDK* stores the downloaded config data in a local cache to minimize network traffic and enhance client performance. If you prefer to use your own cache solution, such as an external or distributed cache in your system, you can implement the [`IConfigCatCache`](https://github.com/configcat/common-js/blob/master/src/ConfigCatCache.ts) interface and set the `cache` property in the options passed to `ConfigCatProvider`. This allows you to seamlessly integrate ConfigCat with your existing caching infrastructure.
+
+```
+class MyCustomCache implements IConfigCatCache {
+  set(key: string, value: string): Promise<void> | void {
+    // insert your cache write logic here
+  }
+
+  get(
+    key: string,
+  ): Promise<string | null | undefined> | string | null | undefined {
+    // insert your cache read logic here
+  }
+}
+```
+
+or
+
+```
+function MyCustomCache() {}
+
+MyCustomCache.prototype.set = function (key, value) {
+  // insert your cache write logic here
+};
+MyCustomCache.prototype.get = function (key) {
+  // insert your cache read logic here
+};
+```
+
+then
+
+```
+<ConfigCatProvider
+  sdkKey="YOUR_SDK_KEY"
+  pollingMode={PollingMode.ManualPoll}
+  options={{ cache: new MyCustomCache() }}
+>
+  ...
+</ConfigCatProvider>
+```
+
+info
+
+The React SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/docs/advanced/caching/.md#shared-cache).
+
+## Sensitive information handling[​](#sensitive-information-handling "Direct link to Sensitive information handling")
+
+The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is downloading a [config JSON](https://configcat.com/docs/docs/requests/.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
+
+If you do not want to expose the SDK key or the content of the config JSON file, we recommend using the SDK in your backend components only. You can always create a backend endpoint using the *ConfigCat SDK* that can evaluate feature flags for a specific user, and call that backend endpoint from your frontend/mobile applications.
+
+Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
+
+## Using multiple providers[​](#using-multiple-providers "Direct link to Using multiple providers")
+
+`ConfigCatProvider` allows you to access the feature flags of a specific Config, identified by the `sdkKey` parameter. (More precisely, `sdkKey` identifies a combination of a Config and an Environment.)
+
+However, in some cases, you may want to access feature flags from multiple Configs in your application. To do this, you will need to use multiple `ConfigCatProvider`s — each associated with a specific Config by providing the corresponding `sdkKey`.
+
+It's also important to keep in mind that `useFeatureFlag` calls will default to using the nearest `ConfigCatProvider`, similar to how React's [useContext](https://react.dev/learn/passing-data-deeply-with-context) works.
+
+So, when working with multiple providers, it may be necessary to differentiate between them. You can achieve this by assigning a unique `id` to each provider. (Note that the absence of `id` also acts as a unique identifier.)
+
+Then, by passing the provider id in your `useFeatureFlag`, `useConfigCatClient`, or similar calls, you can explicitly specify which provider (i.e. which `sdkKey`, and ultimately which Config and Environment) to use.
+
+```
+const CC_PROVIDER_ID_COMMON = "COMMON";
+const CC_PROVIDER_ID_FRONTEND = "FRONTEND";
+
+<ConfigCatProvider sdkKey="#YOUR_COMMON_SDK_KEY#" id={CC_PROVIDER_ID_COMMON}> 
+  <ConfigCatProvider sdkKey="#YOUR_FRONTEND_SDK_KEY#" id={CC_PROVIDER_ID_FRONTEND}>
+      ...
+      const myFeatureInCommon = useFeatureFlag("myFeatureInCommon", false, void 0, CC_PROVIDER_ID_COMMON)
+
+      const myFeatureInFrontEnd = useFeatureFlag("myFeatureInFrontEnd", false, void 0, CC_PROVIDER_ID_FRONTEND)
+      ...
+  </ConfigCatProvider>
+</ConfigCatProvider>
+```
+
+When you are using multiple providers and they are not nested, it is not necessary to specify the `id` attribute:
+
+```
+<ConfigCatProvider sdkKey="#YOUR_COMMON_SDK_KEY#">
+  ...
+  const myFeatureInCommon = useFeatureFlag("myFeatureInCommon", false);
+  ...
+</ConfigCatProvider>
+
+<ConfigCatProvider sdkKey="#YOUR_FRONTEND_SDK_KEY#">
+  ...
+  const myFeatureInFrontEnd = useFeatureFlag("myFeatureInFrontEnd", false);
+  ...
+</ConfigCatProvider>
+```
+
+If you are using higher order components, you can set the `providerId` parameter in the `withConfigCatClient` function.
+
+## Sample Application[​](#sample-application "Direct link to Sample Application")
+
+* [React](https://github.com/configcat/react-sdk/tree/main/samples/react-sdk-sample)
+
+## Guides[​](#guides "Direct link to Guides")
+
+See [this](https://configcat.com/blog/2022/09/22/configcat-react-sdk-announcement/) guide on how to use ConfigCat's React SDK.
+
+## Look under the hood[​](#look-under-the-hood "Direct link to Look under the hood")
+
+* [ConfigCat React SDK on GitHub](https://github.com/configcat/react-sdk)
+* [ConfigCat React SDK in NPM](https://www.npmjs.com/package/configcat-react)

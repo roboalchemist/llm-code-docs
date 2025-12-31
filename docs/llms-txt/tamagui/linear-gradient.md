@@ -1,0 +1,35 @@
+# Source: https://tamagui.dev/ui/linear-gradient.md
+
+---
+title: Linear Gradient
+description: Linear Gradient that works with Tamagui style props.
+name: html
+component: LinearGradient
+demoName: LinearGradient
+---
+
+# Linear Gradient
+
+<Description>Linear Gradient that works with Tamagui style props.</Description>
+
+<Notice>In beta, currently doesn't resolve theme values for the colors property.</Notice>
+
+<HeroContainer>
+  <LinearGradientDemo />
+</HeroContainer>
+
+```tsx hero template=LinearGradient
+
+```
+
+<Highlights
+  features={[
+    'Works on native and web.',
+    'Bundles nicely with webpack.',
+    'Accepts Tamagui style props.',
+  ]}
+/>
+
+### Usage
+
+We've included `<LinearGradient />` so it can accept Tamagui style props, and to patch a bug with the current expo version with some Webpack configurations.

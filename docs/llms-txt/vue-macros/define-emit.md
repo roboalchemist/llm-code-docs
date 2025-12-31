@@ -1,0 +1,81 @@
+# Source: https://vue-macros.dev/macros/define-emit.md
+
+---
+url: /macros/define-emit.md
+---
+# defineEmit&#x20;
+
+Declare single emit one by one using `defineEmit`.
+
+|   Features   |     Supported      |
+| :----------: | :----------------: |
+|    Vue 3     | :white\_check\_mark: |
+|    Nuxt 3    | :white\_check\_mark: |
+|    Vue 2     | :white\_check\_mark: |
+|  TypeScript  | :white\_check\_mark: |
+| Volar Plugin | :white\_check\_mark: |
+
+::: warning
+
+`defineEmit` can not be used with `defineEmits` at same time
+
+:::
+
+## API Reference
+
+```ts
+defineEmit<T>(emitName)
+defineEmit<T>(emitName, validator)
+
+// emitName parameter can be optional,
+// and will be inferred from variable name
+const emitName = defineEmit<T>()
+```
+
+## Basic Usage
+
+```vue twoslash
+<script setup>
+// Declare emit
+const increment = defineEmit('increment')
+// Infer emit name from variable name
+const change = defineEmit()
+// emit event
+increment()
+</script>
+```
+
+## With Validation
+
+```vue twoslash
+<script setup>
+// Declare event with validation
+const increment = defineEmit('increment', (value) => value < 20)
+</script>
+```
+
+## TypeScript
+
+```vue twoslash
+<script setup lang="ts">
+const increment = defineEmit('increment', (value: number) => value < 20)
+const decrement = defineEmit<[value: number]>()
+
+increment(2) // pass
+// @errors: 2345
+increment('2') // TS type error
+</script>
+```
+
+## Volar Configuration
+
+```jsonc {3,5} [tsconfig.json]
+{
+  "vueCompilerOptions": {
+    "plugins": ["vue-macros/volar"],
+    "vueMacros": {
+      "defineEmit": true,
+    },
+  },
+}
+```

@@ -1,0 +1,19 @@
+# Source: https://rspack.dev/misc/planning/future.md
+
+import { DeprecationTable } from '@components/DeprecationTable';
+
+# Future behavior
+
+## Breaking changes
+
+During the 0.y.z phase, Rspack may include breaking changes only when upgrading the minor (y) version, and ensures backward compatibility when upgrading the patch (z) version.
+
+After reaching version 1.0.0, we will adhere to [semver](https://semver.org/) for version management.
+
+## Future default behavior (Rspack future)
+
+Rspack provides some experimental features in [experiments.rspackFuture](/config/experiments.md#experimentsrspackfuture). These features will become the default behavior in the future, but they are currently not default and need to be explicitly enabled in the configuration file.
+
+## Deprecation
+
+<DeprecationTable />

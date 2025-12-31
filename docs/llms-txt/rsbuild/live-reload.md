@@ -1,0 +1,25 @@
+# Source: https://rsbuild.dev/config/dev/live-reload.md
+
+# dev.liveReload
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+Whether to reload the page when source files are changed.
+
+By default, Rsbuild uses HMR as the preferred method to update modules. If HMR is disabled or cannot be used in certain scenarios, it will automatically fallback to liveReload.
+
+Please refer to [Hot Module Replacement](/guide/advanced/hmr.md) for more information.
+
+## Disabling live reload
+
+To disable live reload, set both `dev.hmr` and `dev.liveReload` to `false`. Then, no WebSocket requests will be made to the dev server on the page, and the page will not automatically refresh when files change.
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    hmr: false,
+    liveReload: false,
+  },
+};
+```

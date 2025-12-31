@@ -1,0 +1,39 @@
+# Source: https://docs.pinata.cloud/account-management/workspaces.md
+
+# Workspaces
+
+<Note>Workspaces is only available on the [Picnic and Fiesta plans](https://pinata.cloud/pricing)</Note>
+
+Workspaces is a feature that allows you to add multiple people to your account and collaborate in a natural way. With the Picnic plan, you'll get 3 seats to invite your teammates, and with Fiesta you'll get 5 seats, plus the ability to add more at an extra fee.
+
+<iframe width="600" height="400" src="https://www.youtube.com/embed/xnyTtCaD-y0?si=nEv94OAftTR42_B5" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+
+## Inviting Members
+
+<Note>
+  At this time only Workspace Owners can invite members
+</Note>
+
+To get started, login with a paid account and click on the profile button in the top right, then select "Workspaces."
+
+<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeiczyvykd3upg5qesrpluiinpeqhtee7oqkks5hxyy63o4nmxjlj7e" />
+
+Once at the Workspaces screen, you can type in the email for the person you want to invite. They could already have a Pinata account or could be someone who hasn't signed up yet. Once they sign into their account, they will be prompted to accept the invite on the Workspaces page.
+
+<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreibsxu7j5jtwehclczx24cxjlp3sw55zyrpjvxoxfsi745qoy3k5lu" />
+
+## Switching Workspaces
+
+By default, when you login, you will be put in your account with your Workspace, and you can switch to another Workspace you are member of by clicking on the drop-down menu in the top left corner.
+
+<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeidfgp5wxppiifmur76jondslfy5wzztdtkebw23jkbgwenvmf33i4" />
+
+## Removing Members
+
+<Note>
+  At this time only Workspace Owners can remove members
+</Note>
+
+If you ever need to remove someone from a Workspace, you can do so from the Workspaces page. Click on the three small dots next to the user's email and click "remove member." You can invite them back at any time!
+
+<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeicqiqzyjjy7cttp5x3olwlfugxiogxymtuhprp4aysgg3uo4ooqmi" />

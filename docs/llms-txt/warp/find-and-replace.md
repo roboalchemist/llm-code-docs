@@ -1,0 +1,31 @@
+# Source: https://docs.warp.dev/code/code-editor/find-and-replace.md
+
+# Find and Replace
+
+## Find
+
+Press `CMD-F` on macOS or `CTRL-SHIFT-F` on Windows and Linux to open the find menu. As you type, all matches in the file are highlighted, and the match closest to your cursor is selected.
+
+* Press `ENTER` or use the down arrow to jump to the next match
+* Press `SHIFT-ENTER` or use the up arrow to go to the previous match
+* Click "Select All" to highlight all matches and close the menu
+
+You can toggle regex and case-sensitive search options directly in the query editor.
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-855117616ffd1d4361aaf770ac3388045616e48d%2Fcode-find-menu.gif?alt=media" alt="using find in the code editor"><figcaption><p>Using the find menu in Warp's Code Editor</p></figcaption></figure>
+
+## Replace
+
+Click the dropdown to the left of the find menu to open the replace options.
+
+* Press Enter to replace the currently selected match
+* Use Replace All to replace all matches
+
+Toggle Preserve Case to keep the original casing of replaced text. Case is preserved in text that contains PascalCase, camelCase, hyphens, and underscores. For example:
+
+* Replacing “old” with “new” will turn “Old” into “New” and “OLD” into “NEW”
+* Replacing “oldValue” with “NewValue” will result in “newValue”
+* Replacing “OldValue” with “newValue” will result in “NewValue”
+* Replacing “my-Old-VALUE” with “my-new-value” will result in “my-New-VALUE”
+
+<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8e786a8f163bde3d9e695a1485e7f55d921222dd%2Fcode-replace-menu.gif?alt=media" alt="using replace in the code editor"><figcaption><p>Using the replace menu in Warp's Code Editor</p></figcaption></figure>

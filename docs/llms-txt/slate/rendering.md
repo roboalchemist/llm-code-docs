@@ -2,6 +2,14 @@
 
 # Source: https://docs.slatejs.org/v0.47/guides/rendering.md
 
+# Source: https://docs.slatejs.org/v0.47/slate-react/rendering.md
+
+# Source: https://docs.slatejs.org/v0.47/guides/rendering.md
+
+# Source: https://docs.slatejs.org/v0.47/slate-react/rendering.md
+
+# Source: https://docs.slatejs.org/v0.47/guides/rendering.md
+
 # Rendering
 
 One of the best parts of Slate is that it's built with React, so it fits right into your existing application. It doesn't re-invent its own view layer that you have to learn. It tries to keep everything as React-y as possible.

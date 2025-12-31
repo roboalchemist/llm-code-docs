@@ -1,0 +1,60 @@
+# Source: https://rsbuild.dev/config/output/filename-hash.md
+
+# output.filenameHash
+
+* **Type:** `boolean | string`
+* **Default:** `true`
+
+Configure whether to add a hash value to the filename after the production build.
+
+### Disable hash
+
+By default, output file names include a hash value:
+
+```bash
+dist/static/css/index.7879e19d.css
+dist/static/js/index.18a568e5.js
+```
+
+You can set `output.filenameHash` to `false` to disable this behavior:
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    filenameHash: false,
+  },
+};
+```
+
+After rebuilding, the output filenames become:
+
+```bash
+dist/static/css/index.css
+dist/static/js/index.js
+```
+
+### Hash format
+
+The default hash format is `contenthash:8`, which generates an 8-bit hash based on the content of the file.
+
+You can set `output.filenameHash` to other formats supported by Rspack and customize the length.
+
+```ts title="rsbuild.config.ts"
+export default {
+  output: {
+    filenameHash: 'fullhash:16',
+  },
+};
+```
+
+The optional hash formats are:
+
+* `fullhash`: The hash value of the entire compilation. If any file changes, the hash values of all output files in the entire project will change.
+* `chunkhash`: The hash value of the chunk. The hash value will only change when the content of the chunk (and its included modules) changes.
+* `contenthash`: The hash value of the file content. The hash value will only change when the content of the file itself changes.
+
+### Notes
+
+* [output.filename](/config/output/filename.md) has a higher priority than `output.filenameHash`.
+* By default, when the target is not `web`, the hash will not be included in the filename of the output files, such as Node.js bundles.
+* By default, the filename in development mode does not include a hash.

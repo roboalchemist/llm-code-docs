@@ -1,0 +1,65 @@
+# Source: https://juno.build/docs/intro.md
+
+# Getting Started with Juno
+
+Unless you're looking to solely host your static website, the recommended way to start with Juno is by developing locally using the emulator â a production-like environment with full support for data, authentication, storage, and serverless functions.
+
+It gives you everything you need to build and test your app before deploying anything live.
+
+Here are a few solid places to go from here:
+
+*   ð [Start a new project](/docs/start-a-new-project.md) â Scaffold a brand new project with your favorite frontend framework.
+*   ð [Set up the SDK](/docs/setup-the-sdk.md) â Integrate Juno into an existing app.
+*   ð§ª [Run your project locally](/docs/guides/local-development.md) â Use the emulator to build and test locally in an environment that mirrors production.
+*   ð°ï¸ [Deploy with a Satellite](/docs/create-a-satellite.md) â When you're ready to go live, deploy your project to its own container.
+
+---
+
+## How It Works
+
+Juno is your own self-contained execution space.
+
+No DevOps. No backend boilerplate. No surprise complexity.
+
+You build your frontend using the frameworks you love â React, SvelteKit, Next.js, you name it.
+
+Need backend logic? Just drop in a serverless function written in Rust or TypeScript.
+
+Everything gets bundled into a single deployable WebAssembly (WASM) container. One artifact. One push. That's your app. It runs in an unstoppable environment that holds its entire state â data, logic, and storage.
+
+And here's the beauty of it: Juno controls nothing.
+
+It has zero access to your code, data, or infrastructure. Everything runs under your ownership. Think of it as the space between self-hosting and the serverless cloud â a reimagined model for application development.
+
+You manage your projects and supporting modules â themed around space mythology â using either a CLI or the Console UI, depending on your workflow.
+
+To strengthen this principle of non-interference, deploys and upgrades can be handled via GitHub Actions if you choose to opt in â which themselves can't start or stop your app once it's live.
+
+And during development, the environment mirrors production as closely as possible â so you're never caught by âbut it worked locally.â
+
+---
+
+## Comparisons
+
+Wondering how Juno stacks up in the real world? Compare it to today's most popular platforms:
+
+*   [vs Vercel](/docs/comparison/vs-vercel.md)
+*   [vs Netlify](/docs/comparison/vs-netlify.md)
+*   [vs Railway](/docs/comparison/vs-railway.md)
+*   [vs Heroku](/docs/comparison/vs-heroku.md)
+*   [vs Self-Hosting](/docs/comparison/vs-self-hosting.md)
+
+---
+
+## Further Details
+
+Learn more about the available products, from auth and data to hosting and functions.
+
+*   [Authentication](/docs/build/authentication.md)
+*   [Datastore](/docs/build/datastore.md)
+*   [Storage](/docs/build/storage.md)
+*   [Hosting](/docs/build/hosting.md)
+*   [Functions](/docs/build/functions.md)
+*   [Analytics](/docs/build/analytics.md)
+*   [Monitoring](/docs/management/monitoring.md)
+*   [Snapshots](/docs/management/snapshots.md)

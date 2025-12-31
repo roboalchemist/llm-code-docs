@@ -1,0 +1,66 @@
+# Source: https://docs.warp.dev/university/developer-workflows/power-user/how-to-use-agent-profiles-efficiently.md
+
+# How To: Use Agent Profiles Efficiently
+
+Agent Profiles control how your coding agents behave in different contexts.\
+They define what the agent can read, plan, or execute — and how much autonomy it has.
+
+To show how profiles change workflow, we’ll build an NFL Predictor App using two profiles:
+
+* Strategic Agent
+* YOLO Agent
+
+{% embed url="<https://youtu.be/iD0R-8fY-tY?si=roCh6d78AuENAyFt>" %}
+
+***
+
+### Strategic Agent
+
+Base Model: GPT-5\
+Planning Model: Claude 4 Opus
+
+Configuration:
+
+* Apply code diffs → *agent decides*
+* Read files → *always allow*
+* Create plans → *always allow*
+* Execute commands → *ask first*
+
+When run:
+
+1. The agent asks clarifying questions (e.g., *Do you want to scrape players and schedules?*)
+2. Builds a detailed 14-step plan
+3. Requests user input for environment variables
+
+It’s thorough and safe — but pauses often if you miss setup details.
+
+***
+
+### YOLO Agent
+
+Configuration:
+
+* Apply code diffs → *always allow*
+* Read files → *always allow*
+* Create plans → *never*
+* Execute commands → *always allow*
+
+This agent skips long planning.\
+It builds the project quickly, skipping over optional validation and focusing on essentials:
+
+* Data ingestion
+* Player stats
+* Scoring calculation
+
+It avoids brittle endpoints and produces a working dataset fast — though with fewer checks.
+
+***
+
+### Comparing the Two
+
+| Trait     | Strategic Agent     | YOLO Agent         |
+| --------- | ------------------- | ------------------ |
+| Planning  | Detailed (14 steps) | Minimal (10 steps) |
+| Safety    | High                | Low                |
+| Speed     | Moderate            | Very fast          |
+| Ideal For | Production projects | Quick prototypes   |

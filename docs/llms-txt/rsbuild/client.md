@@ -1,0 +1,192 @@
+# Source: https://rsbuild.dev/config/dev/client.md
+
+# dev.client
+
+Configure the client code injected by Rsbuild during the development process. This can be used to set the WebSocket URL for HMR.
+
+* **Type:**
+
+```ts
+type Client = {
+  // The protocol name for the WebSocket request
+  protocol?: 'ws' | 'wss';
+  // The path for the WebSocket request
+  path?: string;
+  // The port number for the WebSocket request
+  port?: string | number;
+  // The host for the WebSocket request
+  host?: string;
+  // The maximum number of reconnection attempts after a WebSocket request is disconnected.
+  reconnect?: number;
+  // Whether to display an error overlay in the browser when a compilation error occurs
+  overlay?: boolean | { runtime?: boolean };
+  // Controls the log level for client-side logging in the browser console
+  logLevel?: 'info' | 'warn' | 'error' | 'silent';
+};
+```
+
+* **Default:**
+
+```js
+const defaultConfig = {
+  path: '/rsbuild-hmr',
+  // By default it is set to "location.port"
+  port: '',
+  // By default it is set to "location.hostname"
+  host: '',
+  // By default it is set to "location.protocol === 'https:' ? 'wss' : 'ws'""
+  protocol: undefined,
+  reconnect: 100,
+  overlay: true,
+  // Inherits from root logLevel, defaults to 'info'
+  logLevel: 'info',
+};
+```
+
+## Configure WebSocket URL
+
+By default, when you start the dev server and visit the `http://localhost:3000/`, a WebSocket request is made to `ws://localhost:3000/rsbuild-hmr`, establishing a connection between the page and the dev server.
+
+In some development scenarios, you may need to adjust the WebSocket URL to ensure that the WebSocket request can connect correctly.
+
+For example, if you are developing using a proxy tool, you may actually be accessing an online domain. In this case, you can manually configure `dev.client` to point the WebSocket URL to your local dev server. Below is an example where the WebSocket request URL is `ws://127.0.0.1:3000/rsbuild-hmr`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      protocol: 'ws',
+      // Usually `127.0.0.1` is used to avoid cross-origin requests being blocked by the browser
+      host: '127.0.0.1',
+      port: 3000,
+    },
+  },
+};
+```
+
+### Port placeholder
+
+The port number that Rsbuild server listens on may change. For example, if the port is in use, Rsbuild will automatically increment the port number until it finds an available port.
+
+To avoid `client.port` becoming invalid due to port changes, you can use one of the following methods:
+
+* Enable [server.strictPort](/config/server/strict-port.md).
+* Use the `<port>` placeholder to refer to the current port number. Rsbuild will replace the placeholder with the actual port number it is listening on.
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      port: '<port>',
+    },
+  },
+};
+```
+
+## hot-update files
+
+During the HMR process, the page will make GET requests to get hot-update files, including `*.hot-update.json` and `*.hot-update.js`. These files contain the necessary information for hot updates, such as the updated modules and their code.
+
+Hot-update files are considered to be static assets. If you need to configure the URL for hot-update files, please use the [dev.assetPrefix](/config/dev/asset-prefix.md) option.
+
+## Options
+
+### overlay
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+The `dev.client.overlay` option allows you to choose whether or not to enable the error overlay feature.
+
+By default, Rsbuild will display an error overlay in the browser when a compilation error occurs, providing error messages and stacks:
+
+![error overlay](https://assets.rspack.rs/rsbuild/assets/rsbuild-error-overlay.png)
+
+To disable the error overlay, set it to `false`:
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      overlay: false,
+    },
+  },
+};
+```
+
+When `overlay` is configured as an object, it allows more fine-grained control over errors from different sources.
+
+#### overlay.runtime
+
+`overlay.runtime` controls whether runtime errors that occur in the browser are rendered in the overlay.
+
+When this option is enabled, Rsbuild captures runtime errors during development, such as JavaScript execution errors and unhandled Promise rejections, and displays them in the error overlay.
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      overlay: {
+        runtime: true,
+      },
+    },
+  },
+};
+```
+
+:::tip
+The error overlay feature requires the current browser to support [Web Components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components). If the browser does not support it, the overlay will not be displayed.
+:::
+
+### logLevel
+
+* **Type:** `'info' | 'warn' | 'error' | 'silent'`
+* **Default:** Inherits from root [logLevel](/config/log-level.md), defaults to `info`
+
+The `dev.client.logLevel` option controls the log level for Rsbuild's client-side messages in the browser console.
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      logLevel: 'warn',
+    },
+  },
+};
+```
+
+Optional values:
+
+* `'info'` - Shows all messages (default).
+* `'warn'` - Shows warnings and errors only.
+* `'error'` - Shows only errors.
+* `'silent'` - Suppresses all Rsbuild client logs.
+
+### reconnect
+
+* **Type:** `number`
+* **Default:** `100`
+
+Controls the maximum number of automatic reconnection attempts after the WebSocket connection is disconnected.
+
+When the connection is lost, Rsbuild will retry the connection at increasing time intervals. Once the maximum number of attempts is reached, it will stop reconnecting. After a successful reconnection, HMR and related features will be restored automatically.
+
+```ts title="rsbuild.config.ts"
+export default {
+  dev: {
+    client: {
+      // Retry up to 3 times
+      reconnect: 3,
+    },
+  },
+};
+```
+
+Setting this value to `0` disables automatic reconnection. In this case, the connection can only be restored by manually refreshing the page.
+
+## Version history
+
+| Version | Changes                        |
+| ------- | ------------------------------ |
+| v1.6.13 | Added `logLevel` option        |
+| v1.7.0  | Added `overlay.runtime` option |

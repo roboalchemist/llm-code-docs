@@ -1,0 +1,1833 @@
+# Source: https://rspack.dev/config/module.md
+
+import { ApiMeta, Stability } from '../../../components/ApiMeta';
+import PropertyType from '@components/PropertyType';
+import WebpackLicense from '@components/WebpackLicense';
+
+<WebpackLicense from="https://webpack.docschina.org/configuration/module/" />
+
+# Module
+
+Used to decide how to handle different types of modules in a project.
+
+* **Type:** `Object`
+* **Default:** `{}`
+
+## module.defaultRules
+
+* **Type:** `(Rule | Falsy)[]`
+
+`defaultRules` configures the built-in module resolution and processing rules that Rspack enables by default. These rules are applied automatically to ensure that common resource types such as JavaScript, JSON, CSS, and Wasm can be correctly resolved and bundled.
+
+You can extend, override, or disable these default rules to gain finer control over the build behavior.
+
+For example, extending the default rules:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    defaultRules: [
+      // Use "..." to reference Rspack’s default rules
+      '...',
+      // Add a custom rule
+      {
+        test: /\.foo$/,
+        use: ['foo-loader'],
+      },
+    ],
+  },
+};
+```
+
+If you want to remove all of Rspack's default rules, simply omit `"..."`:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    defaultRules: [],
+  },
+};
+```
+
+:::tip
+See the [source code](https://github.com/web-infra-dev/rspack/blob/main/packages/rspack/src/config/defaults.ts#L453) for the full list of default rules.
+:::
+
+## module.noParse
+
+* **Type:** `string | string[] | RegExp | RegExp[] | ((request: string) => boolean)`
+* **Default:** `undefined`
+
+Keep module mechanism of the matched modules as-is, such as `module.exports`, `require`, `import`.
+
+It's useful and can boost build performance when used to ignore libraries without external dependencies.
+
+Note: these modules will still be processed by configured loaders.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    noParse: /typescript|watermark-dom/,
+  },
+};
+```
+
+```js title="rspack.config.mjs"
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+
+export default {
+  module: {
+    noParse: [require.resolve('typescript'), /watermark-dom/],
+  },
+};
+```
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    noParse: (request) => /typescript|watermark-dom/.test(request),
+  },
+};
+```
+
+## module.unsafeCache
+
+* **Type:** `boolean | RegExp`
+
+This is a performance optimization option that reduces the overhead of recording module resolution-related files in Rspack by **assuming that the resolution results of matched modules will not change**.
+
+During module resolution, Rspack needs to record relevant files that may affect the resolution results. For example:
+
+```js
+import 'the-module';
+```
+
+When resolving `the-module`, Rspack not only obtains the actual module path but also records the associated `package.json`:
+
+```json
+{
+  "exports": {
+    ".": "./lib/index.js"
+  }
+}
+```
+
+Because the `exports` field in `package.json` may affect the module's resolution path. When these files change, Rspack needs to re-perform module resolution.
+
+After enabling `unsafeCache`, matched modules are considered to have stable resolution results that will not change, so Rspack will no longer record files associated with the resolution of these modules.
+
+`unsafeCache` has the following default behavior:
+
+* If [cache](/config/cache.md) is disabled, the value is `false`
+* If [cache](/config/cache.md) is enabled:
+  * For modules from the `node_modules` directory, the value is `true`
+  * In other cases, the value is `false`
+
+```js title="rspack.config.mjs"
+export default {
+  //...
+  module: {
+    unsafeCache: false,
+  },
+};
+```
+
+:::tip Differences from Webpack
+Even when `module.unsafeCache: false` is set, Rspack still caches the association between `Dependency` and `Module` because Rspack uses an incremental algorithm when building the module graph. In contrast, Webpack completely disables module graph caching.
+
+To ensure resolution accuracy, Rspack completely records all related files during the module resolution process when `unsafeCache` is disabled.
+:::
+
+:::tip Relationship with `watchOptions.ignored`
+File recording: Occurs during the make phase, storing associated paths and building indexes with Dependencies.
+
+File watching: After compilation ends, recorded file paths are passed to the watcher, which can ignore specific paths through the `ignored` configuration.
+
+Incremental building: When the watcher detects file changes, Rspack finds the affected Dependencies through the paths and re-executes module resolution.
+
+Both are architecturally layered, each responsible for different functional phases.
+:::
+
+## module.parser
+
+* **Type:** `Object`
+* **Default:** `{}`
+
+Configure all parsers' options in one place with `module.parser`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      // Parser options for asset modules
+      asset: {
+        dataUrlCondition: {
+          maxSize: 16192,
+        },
+      },
+      // Parser options for javascript modules
+      javascript: {
+        dynamicImportMode: 'lazy',
+        dynamicImportPrefetch: false,
+        dynamicImportPreload: false,
+        url: true,
+        importMeta: true,
+      },
+      // Parser options for CSS modules
+      css: {
+        namedExports: true,
+      },
+      // Parser options for css/auto modules
+      'css/auto': {
+        namedExports: true,
+      },
+      // Parser options for css/module modules
+      'css/module': {
+        namedExports: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.asset
+
+Parser options for `asset` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      asset: {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser.asset.dataUrlCondition
+
+* **Type:** `{ maxSize: number }`
+* **Default:** `{ maxSize: 8096 }`
+
+If the module size is less than or equal to `maxSize`, then the module will be Base64 encoded, otherwise a file will be created. This option can be used only for [Asset modules](/guide/features/asset-module.md).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      asset: {
+        dataUrlCondition: {
+          // Modules' size smaller than or equal to 4KB will be Base64 encoded.
+          maxSize: 4 * 1024,
+        },
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript
+
+Parser options for `javascript` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.commonjsMagicComments
+
+<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+
+<ApiMeta addedVersion="1.5.6" />
+
+Enable [Magic comments](/api/runtime-api/module-methods.md#magic-comments) support for CommonJS.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        commonjsMagicComments: true,
+      },
+    },
+  },
+};
+```
+
+Note that only `webpackIgnore` comment is supported at the moment:
+
+```js
+const x = require(/* webpackIgnore: true */ 'x');
+```
+
+### module.parser.javascript.dynamicImportMode
+
+<PropertyType type="'lazy' | 'eager' | 'weak' | 'lazy-once'" defaultValueList={[{ defaultValue: "'lazy'" }]} />
+
+Specifies global mode for dynamic import, see [`webpackMode`](/api/runtime-api/module-methods.md#webpackmode) for more details.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        dynamicImportMode: 'eager',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.dynamicImportPrefetch
+
+<PropertyType type="boolean | number" defaultValueList={[{ defaultValue: 'false' }]} />
+
+Specifies global prefetch for dynamic import, see [`webpackPrefetch`](/api/runtime-api/module-methods.md#webpackprefetch) for more details.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        dynamicImportPrefetch: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.dynamicImportPreload
+
+<PropertyType type="boolean | number" defaultValueList={[{ defaultValue: 'false' }]} />
+
+Specifies global preload for dynamic import, see [`webpackPreload`](/api/runtime-api/module-methods.md#webpackpreload) for more details.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        dynamicImportPreload: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.dynamicImportFetchPriority
+
+<ApiMeta addedVersion="1.0.0" />
+
+<PropertyType type="'low' | 'high' | 'auto'" defaultValueList={[{ defaultValue: "'auto'" }]} />
+
+Specifies global `fetchPriority` for dynamic import, see [`webpackFetchPriority`](/api/runtime-api/module-methods.md#webpackfetchpriority) for more details.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        dynamicImportFetchPriority: 'high',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.url
+
+<PropertyType type="true | false | 'relative' | 'new-url-relative'" defaultValueList={[{ defaultValue: 'true' }]} />
+
+Enable parsing of `new URL()` syntax.
+
+* `true`: Generate absolute URLs that include the root URL (default behavior).
+* `'relative'`: Generate relative URLs without the root URL.
+* `'new-url-relative'`: Generate static relative URLs that are replaced at compile-time with the correct public path.
+
+When using `'new-url-relative'`, Rspack generates relative URLs that will be replaced at compile-time with the correct public path:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        url: 'new-url-relative',
+      },
+    },
+  },
+};
+```
+
+```js
+new URL('./icon.svg', import.meta.url);
+
+// would become 👇
+new URL('./icon[hash].svg', import.meta.url);
+```
+
+When using `'relative'`, Rspack generates runtime code to calculate relative URLs for `new URL()` syntax, i.e., there's no base URL included in the result URL:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        url: 'relative',
+      },
+    },
+  },
+};
+```
+
+```html
+<!-- with 'relative' -->
+<img src="icon.svg" />
+
+<!-- without 'relative' -->
+<img src="file:///path/to/project/dist/icon.svg" />
+```
+
+### module.parser.javascript.exprContextCritical
+
+<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'true' }]} />
+
+Enable warnings for full dynamic dependencies (`import(variable)`).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        exprContextCritical: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.wrappedContextCritical
+
+<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'false' }]} />
+
+Enable warnings for partial dynamic dependencies (`import("./path/to/" + variable)`).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        wrappedContextCritical: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.unknownContextCritical
+
+<PropertyType type="boolean | undefined" defaultValueList={[{ defaultValue: 'true' }]} />
+
+Enable warnings when using the `require` function in a non-statically-analyzable way (`require(variable)`).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        unknownContextCritical: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.wrappedContextRegExp
+
+<PropertyType type="RegExp | undefined" defaultValueList={[{ defaultValue: '/.*/' }]} />
+
+Set a regular expression to match wrapped dynamic dependencies.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        wrappedContextRegExp: /\.js$/,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.importMeta
+
+<ApiMeta addedVersion="1.0.0-alpha.6" />
+
+<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'true' }]} />
+
+Enable or disable evaluating `import.meta`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        importMeta: false,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.exportsPresence
+
+<PropertyType type="'error' | 'warn' | 'auto' | false" defaultValueList={[{ defaultValue: "'auto'" }]} />
+
+Warn or error for using non-existent exports and conflicting re-exports.
+
+* `"error"`: Report errors.
+* `"warn"`: Report warnings.
+* `"auto"`: Depending on whether the module is a strict ESM, give an error if it is, otherwise give a warning.
+* `false`: Disable this feature.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        exportsPresence: 'error',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.importExportsPresence
+
+<PropertyType type="'error' | 'warn' | 'auto' | false" />
+
+Warn or error for using non-existent exports, defaulting to the configuration of [module.parser.javascript.exportsPresence](#moduleparserjavascriptexportspresence).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        importExportsPresence: 'error',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.reexportExportsPresence
+
+<PropertyType type="'error' | 'warn' | 'auto' | false" />
+
+Warn or error for conflicting re-exports, defaulting to the configuration of [module.parser.javascript.exportsPresence](#moduleparserjavascriptexportspresence).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        reexportExportsPresence: 'error',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.strictExportPresence
+
+* **Type:** `boolean`
+
+Emit errors instead of warnings when imported names don't exist in imported module.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        strictExportPresence: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.typeReexportsPresence
+
+<ApiMeta stability={Stability.Experimental} addedVersion="1.4.1" />
+
+* **Type:** `'no-tolerant' | 'tolerant' | 'tolerant-no-check'`
+* **Default:** `'no-tolerant'`
+
+Controls error tolerance for type re-exports, commonly seen in these two scenarios:
+
+```ts
+// case 1:
+export { TypeA } from './types';
+// case 2:
+import { TypeB } from './types';
+export { TypeB };
+```
+
+When re-exporting types, since `TypeA` and `TypeB` are types but used in value namespace (`export {}`), Rspack will report warnings:
+
+```txt
+WARNING in ./re-exports.ts
+  ⚠ ESModulesLinkingWarning: export 'TypeA' (reexported as 'TypeA') was not found in './types' (module has no exports)
+   ╭─[2:0]
+ 1 │ // case 1:
+ 2 │ export { TypeA } from "./types";
+   · ────────────────────────────────
+
+WARNING in ./re-exports.ts
+  ⚠ ESModulesLinkingWarning: export 'TypeB' (reexported as 'TypeB') was not found in './types' (module has no exports)
+   ╭─[5:0]
+ 3 │ // case 2:
+ 4 │ import { TypeB } from "./types";
+ 5 │ export { TypeB };
+   · ─────────────────
+```
+
+:::info Recommended with isolatedModules
+When using Rspack to bundle TypeScript, we strongly recommend enabling [isolatedModules](https://www.typescriptlang.org/tsconfig/#isolatedModules) in tsconfig.json (also recommended with other bundlers as it matches how bundlers compile TypeScript: [.ts files are independent and compiled separately](/guide/tech/typescript.md#%E5%BC%80%E5%90%AF-isolatedmodules)). This will give TypeScript's own warning for type re-exports: `Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.`
+:::
+
+* `'no-tolerant'`: Default behavior, shows errors for type re-exports.
+* `'tolerant'`: Tolerates type re-exports while verifying the existence of corresponding type exports in child modules. Requires coordination with [`collectTypeScriptInfo.typeExports`](/guide/features/builtin-swc-loader.md#collecttypescriptinfotypeexports) from builtin:swc-loader to collect type export information.
+* `'tolerant-no-check'`: Tolerates type re-exports without checking child modules (may incorrectly tolerate some invalid cases, though IDEs usually provide warnings). Better performance as it skeps child module checks.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        typeReexportsPresence: 'tolerant',
+      },
+    },
+    rules: [
+      {
+        test: /\.ts$/,
+        use: [
+          {
+            loader: 'builtin:swc-loader',
+            options: {
+              jsc: {
+                parser: {
+                  syntax: 'typescript',
+                },
+              },
+              collectTypeScriptInfo: {
+                typeExports: true, // Must be enabled in "tolerant" mode
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+Please refer to [type reexports presence example](https://github.com/rstackjs/rstack-examples/tree/main/rspack/type-reexports-presence) for more details.
+
+### module.parser.javascript.worker
+
+<ApiMeta addedVersion="1.0.0-alpha.0" />
+
+<PropertyType type="string[] | boolean" />
+
+Provide custom syntax for Worker parsing, commonly used to support Worklet:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        worker: [
+          // Supports CSS paintWorklet
+          'CSS.paintWorklet.addModule()',
+          // Supports AudioWorklet, with the leading '*' indicating the recognition of a variable named 'context', for example:
+          // let context = new AudioContext();
+          // await context.audioWorklet.addModule(new URL("noise-processor.js", import.meta.url));
+          '*context.audioWorklet.addModule()',
+          // Extends default syntax: ["Worker", "SharedWorker", "navigator.serviceWorker.register()", "Worker from worker_threads"]
+          '...',
+        ],
+      },
+    },
+  },
+};
+```
+
+> See [Web Workers](/guide/features/web-workers.md) for more details.
+
+### module.parser.javascript.overrideStrict
+
+<ApiMeta addedVersion="1.0.0-alpha.4" />
+
+<PropertyType type="'strict' | 'non-strict'" />
+
+Override the module to strict or non-strict.
+
+This may affect the behavior of the module (some behaviors differ between strict and non-strict), so please configure this option carefully.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        overrideStrict: 'strict',
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.commonjs
+
+<PropertyType type="boolean | { exports?: boolean | 'skipInEsm' }" defaultValueList={[{ defaultValue: 'true' }]} />
+
+Controls CommonJS-specific parser behaviour. The default `true` keeps Rspack's standard handling for CommonJS export mutations. Set `{ exports: 'skipInEsm' }` to skip rewriting CommonJS export assignments when the module is evaluated as ESM, preserving the original runtime side effects. Provide `false` to disable CommonJS export handling entirely.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        commonjs: {
+          exports: 'skipInEsm',
+        },
+      },
+    },
+  },
+};
+```
+
+### module.parser.javascript.jsx
+
+<ApiMeta stability={Stability.Experimental} addedVersion="1.5.7" />
+
+<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+
+Allow the JavaScript parser to understand JSX syntax so that parsing and minimization can operate on files that keep JSX in the final bundle.
+
+Enable this option when you set the loader's JSX mode to "preserve" and want to defer the actual JSX transform to a later tool (for example, libraries that ship JSX output or rely on a custom JSX runtime).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      javascript: {
+        jsx: true,
+      },
+    },
+  },
+};
+```
+
+:::warning
+This option is experimental in Rspack and may change or be removed.
+:::
+
+### module.parser\["javascript/auto"]
+
+Parser options for `javascript/auto` modules, same as the [`javascript` parser options](#moduleparserjavascript).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'javascript/auto': {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser\["javascript/dynamic"]
+
+Parser options for `javascript/dynamic` modules, same as the [`javascript` parser options](#moduleparserjavascript).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'javascript/dynamic': {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser\["javascript/esm"]
+
+Parser options for `javascript/esm` modules, same as the [`javascript` parser options](#moduleparserjavascript).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'javascript/esm': {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser.json
+
+<ApiMeta addedVersion="1.2.0" />
+
+Parser options for `json` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      json: {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.parser.json.exportsDepth
+
+<ApiMeta addedVersion="1.2.0" />
+
+* **Type:** `number`
+* **Default:** production mode is `Number.MAX_SAFE_INTEGER`, development mode is `1`
+
+The depth of json dependency flagged as `exportInfo`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      json: {
+        // For example, for the following json
+        // {
+        //   "depth_1": {
+        //     "depth_2": {
+        //       "depth_3": "foo"
+        //     }
+        //   },
+        //   "_depth_1": "bar"
+        // }
+        // when `exportsDepth: 1`, `depth_2` and `depth_3` will not be flagged as `exportInfo`.
+        exportsDepth: 1,
+      },
+    },
+  },
+};
+```
+
+### module.parser\["css/auto"]
+
+Parser options for `css/auto` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/auto': {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.parser\["css/auto"].namedExports
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+Use ES modules named export for CSS exports.
+
+When using `namedExports: true`, you can use namespace export or named export:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/auto': {
+        namedExports: true,
+      },
+    },
+  },
+};
+```
+
+```js
+// namespace export
+import * as classes from './index.module.css';
+// named export
+import { class1, class2 } from './index.module.css';
+```
+
+When using `namedExports: false`, in addition to namespace export and named export, default export can also be used:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/auto': {
+        namedExports: false,
+      },
+    },
+  },
+};
+```
+
+```js
+// namespace export
+import * as classes from './index.module.css';
+// named export
+import { class1, class2 } from './index.module.css';
+// default export
+import classes from './index.module.css';
+// default export and named export
+import classes, { class1, class2 } from './index.module.css';
+```
+
+### module.parser\["css/auto"].url
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+Allow to enable/disables handling the CSS functions url.
+
+When using `url: true`, Rspack will resolve the path in `url` function, the resolve file will be treated as an asset.
+When using `url: false`, Rspack will ignore the path in the `url` function, keep the content unchanged.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      css: {
+        url: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.css
+
+Parser options for `css` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      css: {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.parser.css.namedExports
+
+Same as [`module.parser["css/auto"].namedExports`](#moduleparsercssautonamedexports).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      css: {
+        namedExports: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser.css.url
+
+Same as [`module.parser["css/auto"].url`](#moduleparsercssautourl).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      css: {
+        url: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser\["css/module"]
+
+Parser options for `css/module` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/module': {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.parser\["css/module"].namedExports
+
+Same as [`module.parser["css/auto"].namedExports`](#moduleparsercssautonamedexports).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/module': {
+        namedExports: true,
+      },
+    },
+  },
+};
+```
+
+### module.parser\["css/module"].url
+
+Same as [`module.parser["css/auto"].url`](#moduleparsercssautourl).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    parser: {
+      'css/module': {
+        url: true,
+      },
+    },
+  },
+};
+```
+
+## module.generator
+
+* **Type:** `Object`
+* **Default:** `{}`
+
+Configure all generators' options in one place with `module.generator`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      // Generator options for asset modules
+      asset: {
+        dataUrl: {
+          encoding: false,
+          mimetype: 'base64',
+        },
+        filename: '[name]-[contenthash][ext]',
+        publicPath: 'https://cdn.example.com/',
+      },
+      // Generator options for asset/inline modules
+      'asset/inline': {
+        dataUrl: {
+          encoding: false,
+          mimetype: 'base64',
+        },
+      },
+      // Generator options for asset/resource modules
+      'asset/resource': {
+        filename: '[name]-[contenthash][ext]',
+        publicPath: 'https://cdn.example.com/',
+      },
+      // Generator options for css/auto modules
+      'css/auto': {
+        exportsConvention: 'as-is',
+        exportsOnly: false,
+        localIdentName: '[uniqueName]-[id]-[local]',
+        esModule: true,
+      },
+      // Generator options for `css` modules
+      css: {
+        exportsOnly: false,
+        esModule: true,
+      },
+      // Generator options for css/module modules
+      'css/module': {
+        exportsConvention: 'as-is',
+        exportsOnly: false,
+        localIdentName: '[uniqueName]-[id]-[local]',
+        esModule: true,
+      },
+      // Generator options for `json` modules
+      json: {
+        JSONParse: true,
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset
+
+Generator options for `asset` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.binary
+
+* **Type:** `boolean | undefined`
+* **Default:** `undefined`
+
+Whether or not this asset module should be considered binary. This can be set to `false` to treat this asset module as text.
+If not set, the module type will be used to determine if the module is binary.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        binary: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.dataUrl
+
+* **Type:** `Object | (source: Buffer, context: { filename: string, module: Module }) => string`
+* **Default:** `{}`
+
+Only for modules with module type `'asset'` or `'asset/inline'`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        dataUrl: {
+          encoding: 'base64',
+          mimetype: 'mimetype/png',
+        },
+      },
+    },
+  },
+};
+```
+
+When used a a function, it executes for every module and must return a data URI string.
+
+```js title="rspack.config.mjs"
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+
+export default {
+  //...
+  module: {
+    generator: {
+      asset: {
+        dataUrl: ({ content }) => {
+          const svgToMiniDataURI = require('mini-svg-data-uri');
+          return svgToMiniDataURI(content);
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.dataUrl.encoding
+
+* **Type:** `false | 'base64'`
+* **Default:** `'base64'`
+
+When set to 'base64', module source will be encoded using Base64 algorithm. Setting encoding to false will disable encoding. Only for modules with module type `'asset'` or `'asset/inline'`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        dataUrl: {
+          encoding: false,
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.dataUrl.mimetype
+
+* **Type:** `string`
+* **Default:** `require('mime-types').lookup(ext)`
+
+A mimetype for data URI. Resolves from module resource extension by default. Only for modules with module type `'asset'` or `'asset/inline'`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        dataUrl: {
+          mimetype: 'image/png',
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.importMode
+
+* **Type:** `'url' | 'preserve'`
+* **Default:** `'url'`
+
+If `"url"`, a URL pointing to the asset will be generated based on [publicPath](#modulegeneratorassetpublicpath).
+If `"preserve"`, preserve import/require statement from generated asset.
+
+Only for modules with module type `'asset'` or `'asset/resource'`.
+
+* `'asset'`:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        importMode: 'preserve',
+      },
+    },
+  },
+};
+```
+
+* `'asset/resource'`:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        importMode: 'preserve',
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.filename
+
+* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+* **Default:** `undefined`
+* **Supported Template string:** checkout [`output.assetModuleFilename`](/config/output.md#outputassetmodulefilename)
+
+Same as `output.assetModuleFilename`. Overrides `output.assetModuleFilename` and only works for `asset` and `asset/resource` module types.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        filename: 'static/[hash][ext]',
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.outputPath
+
+* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+* **Default:** `undefined`
+
+Emit the asset in the specified folder relative to [`output.path`](/config/output.md#outputpath).
+
+Only for modules with module type `'asset'` or `'asset/resource'`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        outputPath: 'foo/',
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.publicPath
+
+* **Type:** `string | ((pathData: PathData, assetInfo?: AssetInfo) => string)`
+* **Default:** `undefined`
+
+Override [`output.publicPath`](/config/output.md#outputpublicpath), only for modules with module type `'asset'` or `'asset/resource'`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        publicPath: 'https://cdn.example.com/',
+      },
+    },
+  },
+};
+```
+
+### module.generator.asset.emit
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+Whether to output assets to disk. You can set this option to `false` to avoid outputting unnecessary files for some scenarios such as SSR.
+
+Only for modules with module type `'asset'` or `'asset/resource'`.
+
+* `'asset'`:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      asset: {
+        emit: false,
+      },
+    },
+  },
+};
+```
+
+* `'asset/resource'`:
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        emit: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/inline"]
+
+Generator options for `asset/inline` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/inline': {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/inline"].binary
+
+Same as [`module.generator["asset"].binary`](#modulegeneratorassetbinary).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/inline': {
+        binary: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/inline"].dataUrl
+
+Same as [`module.generator["asset"].dataUrl`](#modulegeneratorassetdataurl).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/inline': {
+        dataUrl: {
+          // options
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/inline"].dataUrl.encoding
+
+Same as [`module.generator["asset"].dataUrl.encoding`](#modulegeneratorassetdataurlencoding).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/inline': {
+        dataUrl: {
+          encoding: false,
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/inline"].dataUrl.mimetype
+
+Same as [`module.generator["asset"].dataUrl.mimetype`](#modulegeneratorassetdataurlmimetype).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/inline': {
+        dataUrl: {
+          mimetype: 'image/png',
+        },
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"]
+
+Generator options for `asset/resource` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        // options
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"].binary
+
+Same as [`module.generator["asset"].binary`](#modulegeneratorassetbinary).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        binary: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"].importMode
+
+Same as [`module.generator["asset"].importMode`](#modulegeneratorassetimportmode).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        importMode: 'preserve',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"].filename
+
+Same as [`module.generator["asset"].filename`](#modulegeneratorassetfilename).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        filename: 'static/[hash][ext]',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"].outputPath
+
+Same as [`module.generator["asset"].outputPath`](#modulegeneratorassetoutputpath).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        outputPath: 'foo/',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["asset/resource"].publicPath
+
+Same as [`module.generator["asset"].publicPath`](#modulegeneratorassetpublicpath).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'asset/resource': {
+        publicPath: 'https://cdn.example.com/',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/auto"]
+
+Generator options for `css/auto` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/auto': {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.generator\["css/auto"].exportsConvention
+
+* **Type:** `'as-is' | 'camel-case' | 'camel-case-only' | 'dashes' | 'dashes-only'`
+* **Default:** `'as-is'`
+
+Customize how CSS export names are exported to javascript modules, such as keeping them as is, transforming them to camel case, etc.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/auto': {
+        exportsConvention: 'camel-case',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/auto"].exportsOnly
+
+* **Type:** `boolean`
+* **Default:** `true` for node environments, `false` for web environments.
+
+If `true`, **only exports** the identifier mappings from CSS into the output JavaScript files, without embedding any stylesheets in the template. Useful if you are using CSS Modules for pre-rendering (e.g. SSR).
+
+If `false`, generate stylesheets and embed them in the template.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/auto': {
+        exportsOnly: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/auto"].localIdentName
+
+* **Type:** `string`
+* **Default:** `[uniqueName]-[id]-[local]`
+
+Customize the format of the local class names generated for CSS modules, besides the substitutions at [File-level](/config/output.md#file-context) and [Module-level](/config/output.md#module-context), also include `[uniqueName]` and `[local]`.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/auto': {
+        localIdentName: '[local]-[hash:base64:6]',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/auto"].esModule
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+This configuration is available for improved ESM-CJS interoperability purposes.
+
+Whether to add `__esModule` to the exports of CSS; if added, it will be treated as ES modules during ESM-CJS interop, otherwise, it will be treated as a CommonJS Module.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/auto': {
+        esModule: true,
+      },
+    },
+  },
+};
+```
+
+For example, a common use case, when using the CommonJS output from a third-party component library, it is sometimes necessary to add this configuration to ensure correct ESM-CJS interop, to obtain the correct exports (this can be used in conjunction with [rules\[\].test](/config/module-rules.md#rulestest) and other matching conditions to add it only for that particular component library).
+
+The original source code of the third-party component library:
+
+```js
+import style from './style.css';
+
+export function Button() {
+  return <button className={style.btn}></button>;
+}
+```
+
+The CommonJS format output published by the third-party component library:
+
+```js
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true,
+});
+exports.Button = Button;
+var _style = _interopRequireDefault(require('./style.css'));
+var _jsxRuntime = require('react/jsx-runtime');
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+function Button() {
+  return /*#__PURE__*/ (0, _jsxRuntime.jsx)('button', {
+    className: _style['default'].btn, // <-- Note: After passing through _interopRequireDefault, this need to access default here.
+  });
+}
+```
+
+### module.generator.css
+
+Generator options for `css` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      css: {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.generator.css.exportsOnly
+
+Same as [`module.generator["css/auto"].exportsOnly`](#modulegeneratorcssautoexportsonly).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      css: {
+        exportsOnly: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator.css.esModule
+
+Same as [`module.generator["css/auto"].esModule`](#modulegeneratorcssautoesmodule).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      css: {
+        esModule: true,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/module"]
+
+Generator options for `css/module` modules.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/module': {
+        // options
+      },
+    },
+  },
+};
+```
+
+:::warning
+This configuration will only work if [experiments.css](/config/experiments.md#experimentscss) is enabled.
+:::
+
+### module.generator\["css/module"].exportsConvention
+
+Same as [`module.generator["css/auto"].exportsConvention`](#modulegeneratorcssautoexportsconvention).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/module': {
+        exportsConvention: 'camel-case',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/module"].exportsOnly
+
+Same as [`module.generator["css/auto"].exportsOnly`](#modulegeneratorcssautoexportsonly).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/module': {
+        exportsOnly: false,
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/module"].localIdentName
+
+Same as [`module.generator["css/auto"].localIdentName`](#modulegeneratorcssautolocalidentname).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/module': {
+        localIdentName: '[local]-[hash:base64:6]',
+      },
+    },
+  },
+};
+```
+
+### module.generator\["css/module"].esModule
+
+Same as [`module.generator["css/auto"].esModule`](#modulegeneratorcssautoesmodule).
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      'css/module': {
+        esModule: true,
+      },
+    },
+  },
+};
+```
+
+### module.generator.json.JSONParse
+
+* **Type:** `boolean`
+* **Default:** `true`
+
+Use `JSON.parse` when the JSON string is longer than 20 characters.
+
+```js title="rspack.config.mjs"
+export default {
+  module: {
+    generator: {
+      json: {
+        JSONParse: false,
+      },
+    },
+  },
+};
+```
+
+## module.rules
+
+See [Module Rules](/config/module-rules.md) for details.

@@ -1,0 +1,120 @@
+# Source: https://rsbuild.dev/guide/optimization/optimize-bundle.md
+
+# Bundle size optimization
+
+Bundle size optimization is critical for production builds because it directly affects user experience. This document covers common bundle size optimization methods in Rsbuild.
+
+## Reduce duplicate dependencies
+
+Web applications commonly bundle multiple versions of third-party dependencies. Duplicate dependencies increase bundle size and slow down builds.
+
+### Detect duplicate dependencies
+
+You can use [Rsdoctor](https://rsdoctor.rs) to detect duplicate dependencies in your project. Rsdoctor analyzes the build, identifies duplicate bundled dependencies, and displays them visually:
+
+![](https://assets.rspack.rs/rsbuild/assets/rsdoctor-duplicated-packages.png)
+
+For more details, see [Rsdoctor - Duplicate Dependency Problem](https://rsdoctor.rs/blog/topic/duplicate-pkg-problem).
+
+### Eliminate duplicate dependencies
+
+You can eliminate duplicate dependencies using your package manager.
+
+* Rsbuild provides the [resolve.dedupe](/config/resolve/dedupe.md) config, which forces specified packages to resolve from the project root directory, removing duplicate packages.
+
+* If you are using `pnpm >= 7.26.0`, you can use the [pnpm dedupe](https://pnpm.io/cli/dedupe) command to upgrade and eliminate duplicate dependencies.
+
+```bash
+pnpm dedupe
+```
+
+* If you are using `pnpm < 7.26.0`, you can use [pnpm-deduplicate](https://github.com/ocavue/pnpm-deduplicate) to analyze duplicate dependencies, then update dependencies or declare [pnpm overrides](https://pnpm.io/package_json#pnpmoverrides) to merge them.
+
+```bash
+npx pnpm-deduplicate --list
+```
+
+* If you are using `yarn`, you can use [yarn-deduplicate](https://github.com/scinos/yarn-deduplicate) to automatically merge duplicate dependencies:
+
+```bash
+npx yarn-deduplicate && yarn
+```
+
+## Use lightweight libraries
+
+We recommend using lightweight libraries in your project, such as replacing [moment](https://momentjs.com/) with [day.js](https://day.js.org/).
+
+To identify the largest third-party libraries in your project, analyze bundle size with Rsdoctor. For more details, see [Using Rsdoctor](/guide/debug/rsdoctor.md).
+
+## Adjust browserslist
+
+Rsbuild compiles code based on your project's browserslist config and injects polyfills. If your project doesn't need to support legacy browsers, adjust the browserslist to drop older targets, reducing compilation overhead for syntax transforms and polyfills.
+
+Rsbuild's default Browserslist config is:
+
+```js
+['chrome >= 87', 'edge >= 88', 'firefox >= 78', 'safari >= 14'];
+```
+
+For example, if you only need to be compatible with browsers above Chrome 100, you can change it to:
+
+```js
+['Chrome >= 100'];
+```
+
+:::tip
+For more details on configuring Browserslist, see [Browserslist](/guide/advanced/browserslist.md).
+:::
+
+## Use polyfill on demand
+
+If your project's [output.polyfill](/config/output/polyfill.md) is set to `'entry'` and you're certain that third-party dependencies don't require additional polyfills, switch it to `usage`.
+
+In `usage` mode, Rsbuild analyzes your source code and injects only the required polyfills, reducing polyfill size.
+
+```js
+export default {
+  output: {
+    polyfill: 'usage',
+  },
+};
+```
+
+:::tip
+For more details on polyfill usage, see [Browser compatibility](/guide/advanced/browser-compatibility.md).
+:::
+
+## Image compression
+
+In typical front-end projects, images often account for a large portion of the total bundle size. Reducing image size can meaningfully lower the overall bundle size. Enable image compression by registering a plugin in Rsbuild:
+
+```ts title="rsbuild.config.ts"
+import { pluginImageCompress } from '@rsbuild/plugin-image-compress';
+
+export default {
+  plugins: [pluginImageCompress()],
+};
+```
+
+See details in [@rsbuild/plugin-image-compress](https://github.com/rstackjs/rsbuild-plugin-image-compress).
+
+## Split chunk
+
+A good chunk splitting strategy improves application loading performance. It leverages browser caching to reduce the number of requests and improve loading speed.
+
+Several [chunk splitting strategies](/guide/optimization/code-splitting.md) are built into Rsbuild. These should cover most applications. You can also customize the chunk splitting config to suit your use case.
+
+For example, split the `axios` library under node\_modules into `axios.js`:
+
+```js
+export default {
+  performance: {
+    chunkSplit: {
+      strategy: 'split-by-experience',
+      forceSplitting: {
+        axios: /node_modules[\\/]axios/,
+      },
+    },
+  },
+};
+```

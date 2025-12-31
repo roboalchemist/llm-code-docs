@@ -1,3 +1,9 @@
+# Render Documentation
+
+Source: https://render.com/llms-full.txt
+
+---
+
 Render (https://render.com) is a next-generation cloud application platform that helps teams deploy, secure, and scale everything from hundred-line prototypes to complex multi-service architectures.
 
 For link targets in this document that start with a slug, assume the full path is https://render.com/docs/{slug}. For targets that start with a hash, assume an internal link to a section on the same page. Each h1 designates a new page.

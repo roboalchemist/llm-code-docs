@@ -1,0 +1,39 @@
+# Source: https://mintlify.com/docs/components/frames.md
+
+# Frames
+
+> Add visual emphasis with styled frames around images and other components.
+
+Use frames to display images, diagrams, or other visual content with consistent styling and optional captions. Frames center content and provide visual separation from surrounding text.
+
+<Frame>
+  <img src="https://mintlify-assets.b-cdn.net/yellowstone.jpeg" alt="Photograph of a lake surrounded by trees with mountains in the distance in Yellowstone National Park." />
+</Frame>
+
+## Captions
+
+You can add additional context to an image using the optional `caption` prop.
+
+<Frame caption="Yosemite National Park is visited by over 3.5 million people every year">
+  <img src="https://mintlify-assets.b-cdn.net/yosemite.jpg" alt="Photograph of Yosemite Valley." />
+</Frame>
+
+## Properties
+
+<ResponseField name="caption" type="string">
+  Optional caption text to show centered under your component.
+</ResponseField>
+
+<CodeGroup>
+  ```mdx Frame theme={null}
+  <Frame>
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+
+  ```mdx Frame with a caption theme={null}
+  <Frame caption="Caption text">
+    <img src="/path/image.jpg" alt="Descriptive alt text" />
+  </Frame>
+  ```
+</CodeGroup>

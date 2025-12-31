@@ -1,0 +1,37 @@
+# Source: https://lynxjs.org/react/state-management/jotai.md
+
+# Jotai
+
+## Using `jotai`
+
+[Jotai](https://jotai.org) takes an atomic approach to global React state management.
+
+### Installation
+
+<PackageManagerTabs command="install jotai" />
+
+### Example
+
+```jsx
+import { useEffect } from '@lynx-js/react';
+import { atom, useAtom } from 'jotai';
+
+const counter = atom(0);
+
+export function App() {
+  const [count, setCounter] = useAtom(counter);
+
+  useEffect(() => {
+    console.log('count changed:', count);
+  }, [count]);
+
+  return (
+    <view>
+      <text>{count}</text>
+      <text bindtap={() => setCounter((prev) => prev + 1)}>Tap</text>
+    </view>
+  );
+}
+```
+
+See [Jotai - atom](https://jotai.org/docs/core/atom) for details.

@@ -1,0 +1,447 @@
+# Source: https://docs.aimlapi.com/api-references/speech-models/speech-to-text/assembly-ai/slam-1.md
+
+# slam-1
+
+{% columns %}
+{% column width="66.66666666666666%" %}
+{% hint style="info" %}
+This documentation is valid for the following list of our models:
+
+* `aai/slam-1`
+  {% endhint %}
+  {% endcolumn %}
+
+{% column width="33.33333333333334%" %} <a href="https://aimlapi.com/app/aai/slam-1" class="button primary">Try in Playground</a>
+{% endcolumn %}
+{% endcolumns %}
+
+A new Speech-to-Text model offering exceptional accuracy by leveraging its deep understanding of context and semantics (English only).
+
+{% hint style="success" %}
+This model use per-second billing. The cost of audio transcription is based on the number of seconds in the input audio file, not the processing time.
+{% endhint %}
+
+## Setup your API Key
+
+If you don’t have an API key for the AI/ML API yet, feel free to use our [Quickstart guide](https://docs.aimlapi.com/quickstart/setting-up).
+
+## API Schema
+
+#### Creating and sending a speech-to-text conversion task to the server
+
+## POST /v1/stt/create
+
+>
+
+```json
+{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Voice.v1.SpeechToTextCreateResponseDTO":{"type":"object","properties":{"generation_id":{"type":"string","format":"uuid"}},"required":["generation_id"]}}},"paths":{"/v1/stt/create":{"post":{"operationId":"VoiceModelsController_createSpeechToText_v1","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"enum":["aai/slam-1"]},"audio":{"type":"object","properties":{"buffer":{"nullable":true},"mimetype":{"type":"string"},"size":{"type":"integer"},"originalname":{"type":"string"},"encoding":{"type":"string"},"fieldname":{"type":"string"}},"required":["mimetype","originalname","encoding","fieldname"],"description":"The audio file to transcribe."},"audio_start_from":{"type":"integer","description":"The point in time, in milliseconds, in the file at which the transcription was started."},"audio_end_at":{"type":"integer","description":"The point in time, in milliseconds, in the file at which the transcription was terminated."},"language_code":{"type":"string","description":"The language of your audio file. Possible values are found in Supported Languages. The default value is 'en_us'."},"language_confidence_threshold":{"type":"number","minimum":0,"maximum":1,"description":"The confidence threshold for the automatically detected language. An error will be returned if the language confidence is below this threshold. Defaults to 0."},"language_detection":{"type":"boolean","description":"Enable Automatic language detection, either true or false. Available for universal model only."},"punctuate":{"type":"boolean","default":true,"description":"Adds punctuation and capitalization to the transcript"},"format_text":{"type":"boolean","default":true,"description":"Enable Text Formatting, can be true or false."},"disfluencies":{"type":"boolean","default":false,"description":"Transcribe Filler Words, like \"umm\", in your media file; can be true or false."},"multichannel":{"type":"boolean","default":false,"description":"Enable Multichannel transcription, can be true or false."},"speaker_labels":{"type":"boolean","default":false,"description":"Enable Speaker diarization, can be true or false."},"speakers_expected":{"type":"integer","description":"Tell the speaker label model how many speakers it should attempt to identify. See Speaker diarization for more details."},"content_safety":{"type":"boolean","default":false,"description":"Enable Content Moderation, can be true or false."},"iab_categories":{"type":"boolean","default":false,"description":"Enable Topic Detection, can be true or false."},"custom_spelling":{"type":"array","items":{"type":"object","properties":{"from":{"type":"string"},"to":{"type":"string"}},"required":["from","to"]},"description":"Customize how words are spelled and formatted using to and from values."},"auto_highlights":{"type":"boolean","default":false,"description":"Enable Key Phrases, either true or false."},"word_boost":{"type":"array","items":{"type":"string"},"description":"The list of custom vocabulary to boost transcription probability for."},"boost_param":{"type":"string","enum":["low","default","high"],"description":"How much to boost specified words. Allowed values: low, default, high."},"filter_profanity":{"type":"boolean","default":false,"description":"Filter profanity from the transcribed text, can be true or false."},"redact_pii":{"type":"boolean","default":false,"description":"Redact PII from the transcribed text using the Redact PII model, can be true or false."},"redact_pii_audio":{"type":"boolean","default":false,"description":"Generate a copy of the original media file with spoken PII \"beeped\" out, can be true or false. See PII redaction for more details."},"redact_pii_audio_quality":{"type":"string","enum":["mp3","wav"],"description":"Controls the filetype of the audio created by redact_pii_audio. Currently supports mp3 (default) and wav. See PII redaction for more details."},"redact_pii_policies":{"type":"array","items":{"type":"string","enum":["account_number","banking_information","blood_type","credit_card_cvv","credit_card_expiration","credit_card_number","date","date_interval","date_of_birth","drivers_license","drug","duration","email_address","event","filename","gender_sexuality","healthcare_number","injury","ip_address","language","location","marital_status","medical_condition","medical_process","money_amount","nationality","number_sequence","occupation","organization","passport_number","password","person_age","person_name","phone_number","physical_attribute","political_affiliation","religion","statistics","time","url","us_social_security_number","username","vehicle_id","zodiac_sign"]},"description":"The list of PII Redaction policies to enable. See PII redaction for more details."},"redact_pii_sub":{"type":"string","enum":["entity_name","hash"],"description":"The replacement logic for detected PII, can be `entity_type` or `hash`. See PII redaction for more details."},"sentiment_analysis":{"type":"boolean","default":false,"description":"Enable Sentiment Analysis, can be true or false."},"entity_detection":{"type":"boolean","default":false,"description":"Enable Entity Detection, can be true or false."},"summarization":{"type":"boolean","default":false,"description":"Enable Summarization, can be true or false."},"summary_model":{"type":"string","enum":["informative","conversational","catchy"],"description":"The model to summarize the transcript. Allowed values: informative, conversational, catchy."},"summary_type":{"type":"string","enum":["bullets","bullets_verbose","gist","headline","paragraph"],"description":"The type of summary. Allowed values: bullets, bullets_verbose, gist, headline, paragraph."},"auto_chapters":{"type":"boolean","default":false,"description":"Enable Auto Chapters, either true or false."},"speech_threshold":{"type":"number","minimum":0,"maximum":1,"description":"Reject audio files that contain less than this fraction of speech. Valid values are in the range [0, 1] inclusive."}},"required":["model","audio"]}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Voice.v1.SpeechToTextCreateResponseDTO"}}}}},"tags":["Voice Models"]}}}}
+```
+
+#### Requesting the result of the task from the server using the generation\_id
+
+## GET /v1/stt/{generation\_id}
+
+>
+
+```json
+{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Voice.v1.SpeechToTextGetResponseDTO":{"type":"object","properties":{"status":{"type":"string"},"result":{"type":"object","properties":{"metadata":{"type":"object","properties":{"transaction_key":{"type":"string","description":"A unique transaction key; currently always “deprecated”."},"request_id":{"type":"string","description":"A UUID identifying this specific transcription request."},"sha256":{"type":"string","description":"The SHA-256 hash of the submitted audio file (for pre-recorded requests)."},"created":{"type":"string","format":"date-time","description":"ISO-8601 timestamp."},"duration":{"type":"number","description":"Length of the audio in seconds."},"channels":{"type":"number","description":"The top-level results object containing per-channel transcription alternatives."},"models":{"type":"array","items":{"type":"string"},"description":"List of model UUIDs used for this transcription"},"model_info":{"type":"object","additionalProperties":{"type":"object","properties":{"name":{"type":"string","description":"The human-readable name of the model — identifies which model was used."},"version":{"type":"string","description":"The specific version of the model."},"arch":{"type":"string","description":"The architecture of the model — describes the model family / generation."}},"required":["name","version","arch"]},"description":"Mapping from each model UUID (in 'models') to detailed info: its name, version, and architecture."}},"required":["transaction_key","request_id","sha256","created","duration","channels","models","model_info"],"description":"Metadata about the transcription response, including timing, models, and IDs."},"results":{"type":"object","nullable":true,"properties":{"channels":{"type":"object","properties":{"alternatives":{"type":"array","items":{"type":"object","properties":{"transcript":{"type":"string","description":"The full transcript text for this alternative."},"confidence":{"type":"number","description":"Overall confidence score (0-1) that assigns to this transcript alternative."},"words":{"type":"array","items":{"type":"object","properties":{"word":{"type":"string","description":"The raw recognized word, without punctuation or capitalization."},"start":{"type":"number","description":"Start timestamp of the word (in seconds, from beginning of audio)."},"end":{"type":"number","description":"End timestamp of the word (in seconds)."},"confidence":{"type":"number","description":"Confidence score (0-1) for this individual word."},"punctuated_word":{"type":"string","description":"The same word but with punctuation/capitalization applied (if smart_format is enabled)."}},"required":["word","start","end","confidence","punctuated_word"]},"description":"List of word-level timing, confidence, and punctuation details."},"paragraphs":{"type":"array","items":{"type":"object","properties":{"transcript":{"type":"string","description":"The transcript split into paragraphs (with line breaks), when paragraphing is enabled."},"paragraphs":{"type":"object","properties":{"sentences":{"type":"array","items":{"type":"object","properties":{"text":{"type":"string","description":"Text of a single sentence in the paragraph."},"start":{"type":"number","description":"Start time of the sentence (in seconds)."},"end":{"type":"number","description":"End time of the sentence (in seconds)."}},"required":["text","start","end"]},"description":"List of sentences in this paragraph, with start/end times."},"num_words":{"type":"number","description":"Number of words in this paragraph."},"start":{"type":"number","description":"Start time of the paragraph (in seconds)."},"end":{"type":"number","description":"End time of the paragraph (in seconds)."}},"required":["sentences","num_words","start","end"],"description":"Structure describing each paragraph: its timespan, word count, and sentence breakdown."}},"required":["transcript","paragraphs"]},"description":"An array of paragraph objects, present when the paragraphs feature is enabled."}},"required":["transcript","confidence","words","paragraphs"]},"description":"List of possible transcription hypotheses (“alternatives”) for each channel."}},"required":["alternatives"],"description":"The top-level results object containing per-channel transcription alternatives."}},"required":["channels"]}},"required":["metadata"],"additionalProperties":false}},"required":["status"]}}},"paths":{"/v1/stt/{generation_id}":{"get":{"operationId":"VoiceModelsController_getSTT_v1","parameters":[{"name":"generation_id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Voice.v1.SpeechToTextGetResponseDTO"}}}}},"tags":["Voice Models"]}}}}
+```
+
+## Quick Example: Processing a Speech Audio File via URL
+
+Let's transcribe the following audio fragment:
+
+{% embed url="<https://drive.google.com/file/d/1ZN-28NUbK1TXHt6oEPj42zUJCv82e9L4/view?usp=sharing>" %}
+
+{% code overflow="wrap" %}
+
+```python
+import time
+import requests
+import json   # for getting a structured output with indentation
+
+base_url = "https://api.aimlapi.com/v1"
+# Insert your AIML API Key instead of <YOUR_AIMLAPI_KEY>:
+api_key = "<YOUR_AIMLAPI_KEY>"
+
+# Creating and sending a speech-to-text conversion task to the server
+def create_stt():
+    url = f"{base_url}/stt/create"
+    headers = {
+        "Authorization": f"Bearer {api_key}", 
+    }
+
+    data = {
+        "model": "aai/slam-1",
+        "url": "https://audio-samples.github.io/samples/mp3/blizzard_primed/sample-0.mp3"
+    }
+ 
+    response = requests.post(url, json=data, headers=headers)
+    
+    if response.status_code >= 400:
+        print(f"Error: {response.status_code} - {response.text}")
+    else:
+        response_data = response.json()
+        print(response_data)
+        return response_data
+
+# Requesting the result of the task from the server using the generation_id
+def get_stt(gen_id):
+    url = f"{base_url}/stt/{gen_id}"
+    headers = {
+        "Authorization": f"Bearer {api_key}", 
+    }
+    response = requests.get(url, headers=headers)
+    return response.json()
+    
+# First, start the generation, then repeatedly request the result from the server every 10 seconds.
+def main():
+    stt_response = create_stt()
+    gen_id = stt_response.get("generation_id")
+
+
+
+    if gen_id:
+        start_time = time.time()
+
+        timeout = 600
+        while time.time() - start_time < timeout:
+            response_data = get_stt(gen_id)
+
+            if response_data is None:
+                print("Error: No response from API")
+                break
+        
+            status = response_data.get("status")
+
+            if status == "waiting" or status == "active":
+                print("Still waiting... Checking again in 10 seconds.")
+                time.sleep(10)
+            else:
+                
+                print("Processing complete:/n", response_data["result"]["text"])
+                
+                # Uncomment the line below to print the entire "result" object with all service data
+                # print("Processing complete:/n", json.dumps(response_data["result"], indent=2, ensure_ascii=False))
+                return response_data
+   
+        print("Timeout reached. Stopping.")
+        return None     
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+{% endcode %}
+
+<details>
+
+<summary>Response</summary>
+
+{% code overflow="wrap" %}
+
+```json5
+{'generation_id': '227b2ca6-72a6-4e82-906d-957ba03e470f'}
+Still waiting... Checking again in 10 seconds.
+Processing complete:/n {
+  "id": "51d9be59-2180-407f-93e1-ea3c3dec7fcd",
+  "language_model": "assemblyai_default",
+  "acoustic_model": "assemblyai_default",
+  "language_code": "en_us",
+  "status": "completed",
+  "audio_url": "https://audio-samples.github.io/samples/mp3/blizzard_primed/sample-0.mp3",
+  "text": "He doesn't belong to you, and I don't see how you have anything to do with what is be his power, if he possess only that from this stage to you.",
+  "words": [
+    {
+      "text": "He",
+      "start": 320,
+      "end": 400,
+      "confidence": 0.8894227,
+      "speaker": null
+    },
+    {
+      "text": "doesn't",
+      "start": 480,
+      "end": 960,
+      "confidence": 0.85873646,
+      "speaker": null
+    },
+    {
+      "text": "belong",
+      "start": 960,
+      "end": 1360,
+      "confidence": 0.98418343,
+      "speaker": null
+    },
+    {
+      "text": "to",
+      "start": 1440,
+      "end": 1520,
+      "confidence": 0.9947456,
+      "speaker": null
+    },
+    {
+      "text": "you,",
+      "start": 1600,
+      "end": 1680,
+      "confidence": 0.542386,
+      "speaker": null
+    },
+    {
+      "text": "and",
+      "start": 1920,
+      "end": 2000,
+      "confidence": 0.99181706,
+      "speaker": null
+    },
+    {
+      "text": "I",
+      "start": 2160,
+      "end": 2240,
+      "confidence": 0.9949956,
+      "speaker": null
+    },
+    {
+      "text": "don't",
+      "start": 2240,
+      "end": 2560,
+      "confidence": 0.9778317,
+      "speaker": null
+    },
+    {
+      "text": "see",
+      "start": 2560,
+      "end": 2640,
+      "confidence": 0.9933328,
+      "speaker": null
+    },
+    {
+      "text": "how",
+      "start": 2800,
+      "end": 2880,
+      "confidence": 0.9756232,
+      "speaker": null
+    },
+    {
+      "text": "you",
+      "start": 3120,
+      "end": 3200,
+      "confidence": 0.9898425,
+      "speaker": null
+    },
+    {
+      "text": "have",
+      "start": 3360,
+      "end": 3440,
+      "confidence": 0.9754379,
+      "speaker": null
+    },
+    {
+      "text": "anything",
+      "start": 3600,
+      "end": 3680,
+      "confidence": 0.9352868,
+      "speaker": null
+    },
+    {
+      "text": "to",
+      "start": 4080,
+      "end": 4160,
+      "confidence": 0.99539536,
+      "speaker": null
+    },
+    {
+      "text": "do",
+      "start": 4160,
+      "end": 4320,
+      "confidence": 0.994307,
+      "speaker": null
+    },
+    {
+      "text": "with",
+      "start": 4400,
+      "end": 4480,
+      "confidence": 0.9825462,
+      "speaker": null
+    },
+    {
+      "text": "what",
+      "start": 4560,
+      "end": 4640,
+      "confidence": 0.9361658,
+      "speaker": null
+    },
+    {
+      "text": "is",
+      "start": 4800,
+      "end": 4880,
+      "confidence": 0.9499776,
+      "speaker": null
+    },
+    {
+      "text": "be",
+      "start": 4960,
+      "end": 5040,
+      "confidence": 0.74536353,
+      "speaker": null
+    },
+    {
+      "text": "his",
+      "start": 5120,
+      "end": 5280,
+      "confidence": 0.98388886,
+      "speaker": null
+    },
+    {
+      "text": "power,",
+      "start": 5360,
+      "end": 5440,
+      "confidence": 0.15106322,
+      "speaker": null
+    },
+    {
+      "text": "if",
+      "start": 5600,
+      "end": 5680,
+      "confidence": 0.22255379,
+      "speaker": null
+    },
+    {
+      "text": "he",
+      "start": 5920,
+      "end": 6000,
+      "confidence": 0.3464594,
+      "speaker": null
+    },
+    {
+      "text": "possess",
+      "start": 6080,
+      "end": 6640,
+      "confidence": 0.094453804,
+      "speaker": null
+    },
+    {
+      "text": "only",
+      "start": 6640,
+      "end": 6720,
+      "confidence": 0.83083403,
+      "speaker": null
+    },
+    {
+      "text": "that",
+      "start": 6880,
+      "end": 6960,
+      "confidence": 0.9876517,
+      "speaker": null
+    },
+    {
+      "text": "from",
+      "start": 7120,
+      "end": 7200,
+      "confidence": 0.9683188,
+      "speaker": null
+    },
+    {
+      "text": "this",
+      "start": 7200,
+      "end": 7280,
+      "confidence": 0.9067986,
+      "speaker": null
+    },
+    {
+      "text": "stage",
+      "start": 7440,
+      "end": 7680,
+      "confidence": 0.9634684,
+      "speaker": null
+    },
+    {
+      "text": "to",
+      "start": 7920,
+      "end": 8000,
+      "confidence": 0.9013573,
+      "speaker": null
+    },
+    {
+      "text": "you.",
+      "start": 8080,
+      "end": 8160,
+      "confidence": 0.7715247,
+      "speaker": null
+    }
+  ],
+  "utterances": null,
+  "confidence": 0.83341193,
+  "audio_duration": 11,
+  "punctuate": true,
+  "format_text": true,
+  "dual_channel": null,
+  "webhook_url": null,
+  "webhook_status_code": null,
+  "webhook_auth": false,
+  "webhook_auth_header_name": null,
+  "speed_boost": false,
+  "auto_highlights_result": null,
+  "auto_highlights": false,
+  "audio_start_from": null,
+  "audio_end_at": null,
+  "word_boost": [],
+  "boost_param": null,
+  "prompt": null,
+  "keyterms_prompt": [],
+  "filter_profanity": false,
+  "redact_pii": false,
+  "redact_pii_audio": false,
+  "redact_pii_audio_quality": null,
+  "redact_pii_audio_options": null,
+  "redact_pii_policies": null,
+  "redact_pii_sub": null,
+  "speaker_labels": false,
+  "speaker_options": null,
+  "content_safety": false,
+  "iab_categories": false,
+  "content_safety_labels": {
+    "status": "unavailable",
+    "results": [],
+    "summary": {}
+  },
+  "iab_categories_result": {
+    "status": "unavailable",
+    "results": [],
+    "summary": {}
+  },
+  "language_detection": false,
+  "language_detection_options": null,
+  "language_confidence_threshold": null,
+  "language_confidence": null,
+  "custom_spelling": null,
+  "throttled": false,
+  "auto_chapters": false,
+  "summarization": false,
+  "summary_type": null,
+  "summary_model": null,
+  "custom_topics": false,
+  "topics": [],
+  "speech_threshold": null,
+  "speech_model": "slam-1",
+  "chapters": null,
+  "disfluencies": false,
+  "entity_detection": false,
+  "sentiment_analysis": false,
+  "sentiment_analysis_results": null,
+  "entities": null,
+  "speakers_expected": null,
+  "summary": null,
+  "custom_topics_results": null,
+  "is_deleted": null,
+  "multichannel": null,
+  "project_id": 675898,
+  "token_id": 1245789
+}
+```
+
+{% endcode %}
+
+</details>
