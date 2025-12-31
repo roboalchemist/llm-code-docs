@@ -222,6 +222,13 @@ repositories:
     target_folder: "docs/github-scraped/pikvm"
     branch: "master"
 
+  - name: "PrimeReact"
+    description: "PrimeReact - React UI component library with 80+ customizable components"
+    repo_url: "https://github.com/primefaces/primereact.git"
+    source_folder: "pages"
+    target_folder: "docs/github-scraped/primereact"
+    branch: "master"
+
   - name: "Penpot"
     description: "Penpot - Open source design and prototyping platform (Figma alternative)"
     repo_url: "https://github.com/penpot/penpot-docs.git"

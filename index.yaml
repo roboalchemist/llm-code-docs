@@ -7,12 +7,12 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 20:29
-  total_sources: 375
+  last_updated: 2025-12-30 20:40
+  total_sources: 376
   total_fetched: 334
   llms_txt_count: 294
   llms_txt_fetched: 256
-  github_count: 43
+  github_count: 44
   github_fetched: 40
   web_scraped_count: 38
   web_scraped_fetched: 38
@@ -2265,7 +2265,7 @@ github:
   status: fetched
   file_count: 30
   size: 145.1KB
-  last_updated: 2025-12-30 20:23
+  last_updated: 2025-12-30 20:32
 - name: tensorrt-llm
   description: NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with optimizations for efficient inference on
     NVIDIA GPUs
@@ -2276,7 +2276,7 @@ github:
   status: fetched
   file_count: 151
   size: 1.4MB
-  last_updated: 2025-12-30 20:23
+  last_updated: 2025-12-30 20:32
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2286,7 +2286,7 @@ github:
   status: fetched
   file_count: 292
   size: 870.0KB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: micropython
   description: MicroPython documentation
   repo: micropython/micropython
@@ -2296,7 +2296,7 @@ github:
   status: fetched
   file_count: 243
   size: 1.4MB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: buildbuddy
   description: BuildBuddy documentation - Remote execution and caching platform
   repo: buildbuddy-io/buildbuddy
@@ -2306,7 +2306,7 @@ github:
   status: fetched
   file_count: 58
   size: 287.7KB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: esptool
   description: ESP8266 and ESP32 serial bootloader utility documentation
   repo: espressif/esptool
@@ -2316,7 +2316,7 @@ github:
   status: fetched
   file_count: 55
   size: 502.1KB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: mcp-jest
   description: MCP Jest - Model Context Protocol testing utilities
   repo: josharsh/mcp-jest
@@ -2326,7 +2326,7 @@ github:
   status: fetched
   file_count: 16
   size: 196.2KB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: librechat
   description: LibreChat - Enhanced ChatGPT clone with multi-AI support
   repo: LibreChat-AI/librechat.ai
@@ -2343,7 +2343,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2353,7 +2353,7 @@ github:
   status: fetched
   file_count: 284
   size: 5.2MB
-  last_updated: 2025-12-30 20:26
+  last_updated: 2025-12-30 20:35
 - name: go
   description: Go Programming Language - Official documentation website
   repo: golang/website
@@ -2363,7 +2363,7 @@ github:
   status: fetched
   file_count: 578
   size: 5.6MB
-  last_updated: 2025-12-30 20:27
+  last_updated: 2025-12-30 20:36
 - name: heroui
   description: HeroUI - Open-source React UI component library built on Tailwind CSS, React Aria, and Framer Motion (formerly
     NextUI)
@@ -2381,7 +2381,7 @@ github:
   status: fetched
   file_count: 75
   size: 434.5KB
-  last_updated: 2025-12-30 20:27
+  last_updated: 2025-12-30 20:36
 - name: click
   description: Python CLI framework - Command-line interface creation toolkit
   repo: pallets/click
@@ -2391,7 +2391,7 @@ github:
   status: fetched
   file_count: 35
   size: 172.5KB
-  last_updated: 2025-12-30 20:27
+  last_updated: 2025-12-30 20:36
 - name: fastapi
   description: FastAPI - Modern, fast Python web framework
   repo: fastapi/fastapi
@@ -2401,7 +2401,7 @@ github:
   status: fetched
   file_count: 145
   size: 1.4MB
-  last_updated: 2025-12-30 20:27
+  last_updated: 2025-12-30 20:36
 - name: python
   description: Python official documentation - Language reference and standard library
   repo: python/cpython
@@ -2411,7 +2411,7 @@ github:
   status: fetched
   file_count: 525
   size: 11.2MB
-  last_updated: 2025-12-30 20:27
+  last_updated: 2025-12-30 20:36
 - name: goose
   description: Goose - AI-powered developer agent by Block
   repo: block/goose
@@ -2421,7 +2421,7 @@ github:
   status: fetched
   file_count: 126
   size: 1011.5KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: incus
   description: Incus - Container and virtual machine manager (community fork of LXD)
   repo: lxc/incus
@@ -2431,7 +2431,7 @@ github:
   status: fetched
   file_count: 165
   size: 1006.5KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: milvus
   description: Milvus - Open source vector database for AI applications
   repo: milvus-io/milvus-docs
@@ -2441,7 +2441,7 @@ github:
   status: fetched
   file_count: 450
   size: 4.4MB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: flagembedding
   description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
   repo: FlagOpen/FlagEmbedding
@@ -2451,7 +2451,7 @@ github:
   status: fetched
   file_count: 183
   size: 547.8KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: txtai
   description: txtai - All-in-one embeddings database for semantic search, LLM orchestration and language model workflows
   repo: neuml/txtai
@@ -2461,7 +2461,7 @@ github:
   status: fetched
   file_count: 75
   size: 250.3KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: faiss
   description: Facebook AI Similarity Search - Efficient similarity search and clustering of dense vectors
   repo: facebookresearch/faiss.wiki
@@ -2471,7 +2471,7 @@ github:
   status: fetched
   file_count: 58
   size: 2.4MB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   repo: chroma-core/chroma
@@ -2481,7 +2481,7 @@ github:
   status: fetched
   file_count: 112
   size: 664.4KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: sqlite-vec
   description: sqlite-vec - Vector search SQLite extension written in pure C
   repo: asg017/sqlite-vec
@@ -2491,7 +2491,7 @@ github:
   status: fetched
   file_count: 28
   size: 67.1KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: sqlite-vss
   description: sqlite-vss - SQLite extension for vector similarity search based on FAISS (deprecated in favor of sqlite-vec)
   repo: asg017/sqlite-vss
@@ -2501,7 +2501,7 @@ github:
   status: fetched
   file_count: 21
   size: 32.7KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:37
 - name: qwen3-embedding
   description: Qwen3 Embedding - Text embedding and reranking models from Alibaba's Qwen team
   repo: QwenLM/Qwen3-Embedding
@@ -2521,7 +2521,7 @@ github:
   status: fetched
   file_count: 1627
   size: 11.2MB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:38
 - name: gitea
   description: Gitea - Self-hosted Git service with issue tracking, code review, and CI/CD
   repo: go-gitea/docs
@@ -2531,7 +2531,7 @@ github:
   status: fetched
   file_count: 53
   size: 88.8KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:38
 - name: parkui
   description: Park UI - Beautifully designed components built on Ark UI and Panda CSS with React, Solid.js, and Vue support
   repo: chakra-ui/park-ui
@@ -2548,7 +2548,14 @@ github:
   status: fetched
   file_count: 181
   size: 628.9KB
-  last_updated: 2025-12-30 20:28
+  last_updated: 2025-12-30 20:38
+- name: primereact
+  description: PrimeReact - React UI component library with 80+ customizable components
+  repo: primefaces/primereact
+  branch: master
+  source_folder: pages
+  path: docs/github-scraped/primereact/
+  status: pending
 - name: penpot
   description: Penpot - Open source design and prototyping platform (Figma alternative)
   repo: penpot/penpot-docs
@@ -2558,7 +2565,7 @@ github:
   status: fetched
   file_count: 30
   size: 224.9KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: draw.io
   description: Draw.io - JavaScript diagramming application (flowcharts, network diagrams, UML)
   repo: jgraph/drawio-docs
@@ -2568,7 +2575,7 @@ github:
   status: fetched
   file_count: 9
   size: 16.2KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: chromedevtoolsmcp
   description: Chrome DevTools MCP - Model Context Protocol server for controlling Chrome browser via DevTools API
   repo: ChromeDevTools/chrome-devtools-mcp
@@ -2578,7 +2585,7 @@ github:
   status: fetched
   file_count: 8
   size: 78.1KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: whisper
   description: OpenAI Whisper - Robust speech recognition via large-scale weak supervision (STT/ASR)
   repo: openai/whisper
@@ -2588,7 +2595,7 @@ github:
   status: fetched
   file_count: 5
   size: 30.2KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: openmpi
   description: Open MPI - High-performance Message Passing Interface (MPI) library for parallel computing
   repo: open-mpi/ompi
@@ -2598,7 +2605,7 @@ github:
   status: fetched
   file_count: 905
   size: 2.1MB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: cv-cuda
   description: CV-CUDA - NVIDIA/ByteDance CUDA-accelerated library for high-throughput computer vision and video processing
   repo: CVCUDA/CV-CUDA
@@ -2608,7 +2615,7 @@ github:
   status: fetched
   file_count: 59
   size: 236.9KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: decord
   description: Decord - Efficient video reader library with hardware-accelerated decoding for deep learning
   repo: dmlc/decord
@@ -2618,7 +2625,7 @@ github:
   status: fetched
   file_count: 9
   size: 15.6KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: torchaudio
   description: TorchAudio - PyTorch's audio and signal processing library (I/O, transformations, datasets, models)
   repo: pytorch/audio
@@ -2628,7 +2635,7 @@ github:
   status: fetched
   file_count: 30
   size: 66.6KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: llama.cpp
   description: llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)
   repo: ggerganov/llama.cpp
@@ -2638,7 +2645,7 @@ github:
   status: fetched
   file_count: 205
   size: 1.8MB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: ffmpeg
   description: FFmpeg - Complete cross-platform solution to record, convert and stream audio and video
   repo: FFmpeg/FFmpeg
@@ -2648,7 +2655,7 @@ github:
   status: fetched
   file_count: 18
   size: 153.5KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: torchcodec
   description: torchcodec - PyTorch video decoding library with hardware acceleration support
   repo: meta-pytorch/torchcodec
@@ -2658,7 +2665,7 @@ github:
   status: fetched
   file_count: 12
   size: 9.1KB
-  last_updated: 2025-12-30 20:29
+  last_updated: 2025-12-30 20:38
 - name: xterm.js
   description: xterm.js - Terminal for the web (used by VS Code, Theia, and more)
   repo: xtermjs/xterm.js
@@ -2668,7 +2675,7 @@ github:
   status: fetched
   file_count: 26
   size: 65.8KB
-  last_updated: 2025-12-30 20:18
+  last_updated: 2025-12-30 20:38
 - name: agentskills
   description: agentskills - Documentation and specifications for Claude Code agent skills
   repo: agentskills/agentskills
@@ -2678,7 +2685,7 @@ github:
   status: fetched
   file_count: 2
   size: 1.9KB
-  last_updated: 2025-12-30 20:17
+  last_updated: 2025-12-30 20:38
 web_scraped:
 - name: 1password
   description: 1password documentation
