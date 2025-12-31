@@ -537,6 +537,9 @@ sites:
 - name: mastra
   base_url: https://mastra.ai/
   description: Mastra AI agent framework
+- name: mantine
+  base_url: https://mantine.dev/
+  description: Mantine React component library with 100+ customizable components
 - name: mcp
   base_url: https://modelcontextprotocol.io/
   description: Model Context Protocol for AI context management
