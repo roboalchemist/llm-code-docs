@@ -1,34 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/padding.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](#)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 # Padding[](#padding "Link to this heading")
 
 The [[`Padding`]](reference/padding.html#rich.padding.Padding "rich.padding.Padding") class may be used to add whitespace around text or other renderable. The following example will print the word "Hello" with a padding of 1 character, so there will be a blank line above and below, and a space on the left and right edges:
@@ -55,8 +26,6 @@ The Padding class can also accept a [`style`] argument which applies a style to 
     print(test)
 
 Note that, as with all Rich renderables, you can use Padding in any context. For instance, if you want to emphasize an item in a [[`Table`]](reference/table.html#rich.table.Table "rich.table.Table") you could add a Padding object to a row with a padding of 1 and a style of "on red".
-
-[[] Previous](markdown.html "Markdown") [Next []](panel.html "Panel")
 
 ------------------------------------------------------------------------
 

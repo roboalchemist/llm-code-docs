@@ -1,36 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/logging.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](#)
-    -   [Handle exceptions](#handle-exceptions)
-    -   [Suppressing Frames](#suppressing-frames)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 # Logging Handler[](#logging-handler "Link to this heading")
 
 Rich supplies a [[logging handler]](reference/logging.html#logging) which will format and colorize text written by Python's logging module.
@@ -96,8 +65,6 @@ Here's how you would exclude [click](https://click.palletsprojects.com/en/8.0.x/
     )
 
 Suppressed frames will show the line and file only, without any code.
-
-[[] Previous](pretty.html "Pretty Printing") [Next []](traceback.html "Traceback")
 
 ------------------------------------------------------------------------
 

@@ -1,34 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/prompt.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](#)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 # Prompt[](#prompt "Link to this heading")
 
 Rich has a number of [[`Prompt`]](reference/prompt.html#rich.prompt.Prompt "rich.prompt.Prompt") classes which ask a user for input and loop until a valid response is received (they all use the [[Console API]](console.html#input) internally). Here's a simple example:
@@ -68,11 +39,3 @@ The Prompt class was designed to be customizable via inheritance. See [prompt.py
 To see some of the prompts in action, run the following command from the command line:
 
     python -m rich.prompt
-
-[[] Previous](traceback.html "Traceback") [Next []](columns.html "Columns")
-
-------------------------------------------------------------------------
-
-© Copyright Will McGugan.
-
-Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org).

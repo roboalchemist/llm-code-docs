@@ -1,36 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/highlighting.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](#)
-    -   [Custom Highlighters](#custom-highlighters)
-    -   [Builtin Highlighters](#builtin-highlighters)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 []
 
 # Highlighting[](#highlighting "Link to this heading")
@@ -83,19 +52,3 @@ Here's a silly example that highlights every character with a different color:
 
     rainbow = RainbowHighlighter()
     print(rainbow("I must not fear. Fear is the mind-killer."))
-
-## Builtin Highlighters[](#builtin-highlighters "Link to this heading")
-
-The following builtin highlighters are available.
-
--   [[`ISO8601Highlighter`]](reference/highlighter.html#rich.highlighter.ISO8601Highlighter "rich.highlighter.ISO8601Highlighter") Highlights ISO8601 date time strings.
-
--   [[`JSONHighlighter`]](reference/highlighter.html#rich.highlighter.JSONHighlighter "rich.highlighter.JSONHighlighter") Highlights JSON formatted strings.
-
-[[] Previous](text.html "Rich Text") [Next []](pretty.html "Pretty Printing")
-
-------------------------------------------------------------------------
-
-© Copyright Will McGugan.
-
-Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org).

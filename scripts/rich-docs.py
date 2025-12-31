@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Rich Documentation Scraper
-Downloads all Rich library documentation pages and converts to markdown.
+Downloads all Rich (Python terminal formatting library) documentation pages and converts to markdown.
 Rich is a Python library for rich text and beautiful formatting in the terminal.
 """
 
@@ -16,62 +16,99 @@ import subprocess
 
 # Rich documentation pages from ReadTheDocs
 RICH_DOC_PAGES = [
-    # Core Documentation
-    "/en/latest/introduction.html",
-    "/en/latest/console.html",
-    "/en/latest/style.html",
-    "/en/latest/markup.html",
-    "/en/latest/text.html",
-    "/en/latest/highlighting.html",
-    "/en/latest/pretty.html",
-    "/en/latest/logging.html",
-    "/en/latest/traceback.html",
-    "/en/latest/prompt.html",
-    # UI Components & Display
-    "/en/latest/columns.html",
-    "/en/latest/group.html",
-    "/en/latest/markdown.html",
-    "/en/latest/padding.html",
-    "/en/latest/panel.html",
-    "/en/latest/progress.html",
-    "/en/latest/syntax.html",
-    "/en/latest/tables.html",
-    "/en/latest/tree.html",
-    "/en/latest/live.html",
-    "/en/latest/layout.html",
-    # Technical Reference
-    "/en/latest/protocol.html",
-    "/en/latest/reference.html",
-    "/en/latest/appendix.html",
+    "introduction.html",
+    "console.html",
+    "style.html",
+    "markup.html",
+    "text.html",
+    "highlighting.html",
+    "pretty.html",
+    "logging.html",
+    "traceback.html",
+    "prompt.html",
+    "columns.html",
+    "group.html",
+    "markdown.html",
+    "padding.html",
+    "panel.html",
+    "progress.html",
+    "syntax.html",
+    "tables.html",
+    "tree.html",
+    "live.html",
+    "layout.html",
+    "protocol.html",
+    "reference.html",
+    "appendix.html",
+    # Appendix pages
+    "appendix/box.html",
+    "appendix/colors.html",
+    # Reference pages
+    "reference/abc.html",
+    "reference/align.html",
+    "reference/bar.html",
+    "reference/color.html",
+    "reference/columns.html",
+    "reference/console.html",
+    "reference/emoji.html",
+    "reference/highlighter.html",
+    "reference/init.html",
+    "reference/json.html",
+    "reference/layout.html",
+    "reference/live.html",
+    "reference/logging.html",
+    "reference/markdown.html",
+    "reference/markup.html",
+    "reference/measure.html",
+    "reference/padding.html",
+    "reference/panel.html",
+    "reference/pretty.html",
+    "reference/progress_bar.html",
+    "reference/progress.html",
+    "reference/prompt.html",
+    "reference/protocol.html",
+    "reference/rule.html",
+    "reference/segment.html",
+    "reference/spinner.html",
+    "reference/status.html",
+    "reference/styled.html",
+    "reference/style.html",
+    "reference/syntax.html",
+    "reference/table.html",
+    "reference/text.html",
+    "reference/theme.html",
+    "reference/traceback.html",
+    "reference/tree.html",
 ]
 
-BASE_URL = "https://rich.readthedocs.io"
+BASE_URL = "https://rich.readthedocs.io/en/latest/"
 
 
 def html_to_markdown(html_content, url):
     """Convert HTML to markdown, extracting main content only."""
-    # ReadTheDocs uses <div role="main"> for main content
-    # Try to extract just the main documentation content
-    main_match = re.search(
-        r'<div[^>]*role="main"[^>]*>(.*?)</div>\s*</div>\s*</div>\s*<footer',
+    # First, extract just the main article content to avoid nav/sidebar noise
+    # ReadTheDocs uses <div class="rst-content">
+    article_match = re.search(
+        r'<div[^>]*class="[^"]*rst-content[^"]*"[^>]*>(.*?)</div>\s*</section>',
         html_content, flags=re.DOTALL | re.IGNORECASE
     )
 
-    if main_match:
-        html_content = main_match.group(1)
+    if article_match:
+        html_content = article_match.group(1)
     else:
-        # Try alternate selector for ReadTheDocs
-        article_match = re.search(
-            r'<div[^>]*class="[^"]*document[^"]*"[^>]*>(.*?)</div>\s*</div>\s*<div[^>]*role="contentinfo"',
+        # Try alternate selector for main content
+        main_match = re.search(
+            r'<div[^>]*role="main"[^>]*>(.*?)</div>\s*<footer',
             html_content, flags=re.DOTALL | re.IGNORECASE
         )
-        if article_match:
-            html_content = article_match.group(1)
+        if main_match:
+            html_content = main_match.group(1)
 
     # Remove navigation elements
-    html_content = re.sub(r'<div[^>]*class="[^"]*nav[^"]*"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
+    html_content = re.sub(r'<div[^>]*role="navigation"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
+    html_content = re.sub(r'<div[^>]*class="[^"]*wy-breadcrumbs[^"]*"[^>]*>.*?</div>', '', html_content, flags=re.DOTALL)
 
-    # Try pandoc for conversion
+    # Try pandoc on cleaned content
     try:
         result = subprocess.run(
             ['pandoc', '-f', 'html', '-t', 'markdown', '--wrap=none'],
@@ -176,14 +213,15 @@ def download_page(url, output_path):
 
 
 def path_to_filename(path):
-    """Convert URL path to filename."""
-    # Remove /en/latest/ prefix and .html suffix
-    clean_path = path.replace('/en/latest/', '').replace('.html', '')
+    """Convert HTML file path to markdown filename."""
+    # Remove .html extension and replace with .md
+    clean_path = path.replace('.html', '')
 
-    if clean_path == "" or clean_path == "index":
-        return "index.md"
+    # For reference/ and appendix/ paths, preserve the directory structure
+    if '/' in clean_path:
+        return clean_path + '.md'
 
-    return clean_path + ".md"
+    return clean_path + '.md'
 
 
 def main():
@@ -234,7 +272,7 @@ def main():
     print(f"Output: {output_dir}")
 
     # Calculate total size
-    total_size = sum(f.stat().st_size for f in output_dir.glob("*.md"))
+    total_size = sum(f.stat().st_size for f in output_dir.rglob("*.md"))
     print(f"Total size: {total_size:,} bytes ({total_size/1024:.1f} KB)")
 
     print()

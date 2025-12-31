@@ -1,38 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/protocol.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](#)
-    -   [Console Customization](#console-customization)
-    -   [Console Render](#console-render)
-        -   [Low Level Render](#low-level-render)
-        -   [Measuring Renderables](#measuring-renderables)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 []
 
 # Console Protocol[](#console-protocol "Link to this heading")
@@ -86,21 +53,3 @@ For complete control over how a custom object is rendered to the terminal, you c
             yield Segment("My", Style(color="magenta"))
             yield Segment("Object", Style(color="green"))
             yield Segment("()", Style(color="cyan"))
-
-### Measuring Renderables[](#measuring-renderables "Link to this heading")
-
-Sometimes Rich needs to know how many characters an object will take up when rendering. The [[`Table`]](reference/table.html#rich.table.Table "rich.table.Table") class, for instance, will use this information to calculate the optimal dimensions for the columns. If you aren't using one of the renderable objects in the Rich module, you will need to supply a [`__rich_measure__`] method which accepts a [[`Console`]](reference/console.html#rich.console.Console "rich.console.Console") and [[`ConsoleOptions`]](reference/console.html#rich.console.ConsoleOptions "rich.console.ConsoleOptions") and returns a [[`Measurement`]](reference/measure.html#rich.measure.Measurement "rich.measure.Measurement") object. The Measurement object should contain the *minimum* and *maximum* number of characters required to render.
-
-For example, if we are rendering a chess board, it would require a minimum of 8 characters to render. The maximum can be left as the maximum available width (assuming a centered board):
-
-    class ChessBoard:
-        def __rich_measure__(self, console: Console, options: ConsoleOptions) -> Measurement:
-            return Measurement(8, options.max_width)
-
-[[] Previous](layout.html "Layout") [Next []](reference.html "Reference")
-
-------------------------------------------------------------------------
-
-© Copyright Will McGugan.
-
-Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org).

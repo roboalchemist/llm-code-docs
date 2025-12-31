@@ -1,35 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/text.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](#)
-    -   [Text attributes](#text-attributes)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](tree.html)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 []
 
 # Rich Text[](#rich-text "Link to this heading")
@@ -88,11 +58,3 @@ A Text instance may be used in place of a plain string virtually everywhere in t
     from rich.text import Text
     panel = Panel(Text("Hello", justify="right"))
     print(panel)
-
-[[] Previous](markup.html "Console Markup") [Next []](highlighting.html "Highlighting")
-
-------------------------------------------------------------------------
-
-© Copyright Will McGugan.
-
-Built with [Sphinx](https://www.sphinx-doc.org/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org).

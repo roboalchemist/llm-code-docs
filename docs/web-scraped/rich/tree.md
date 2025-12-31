@@ -1,36 +1,5 @@
 # Source: https://rich.readthedocs.io/en/latest/tree.html
 
-[Contents:]
-
--   [Introduction](introduction.html)
--   [Console API](console.html)
--   [Styles](style.html)
--   [Console Markup](markup.html)
--   [Rich Text](text.html)
--   [Highlighting](highlighting.html)
--   [Pretty Printing](pretty.html)
--   [Logging Handler](logging.html)
--   [Traceback](traceback.html)
--   [Prompt](prompt.html)
--   [Columns](columns.html)
--   [Render Groups](group.html)
--   [Markdown](markdown.html)
--   [Padding](padding.html)
--   [Panel](panel.html)
--   [Progress Display](progress.html)
--   [Syntax](syntax.html)
--   [Tables](tables.html)
--   [Tree](#)
-    -   [Tree Styles](#tree-styles)
-    -   [Examples](#examples)
--   [Live Display](live.html)
--   [Layout](layout.html)
--   [Console Protocol](protocol.html)
--   [Reference](reference.html)
--   [Appendix](appendix.html)
-
-[Rich](index.html)
-
 # Tree[](#tree "Link to this heading")
 
 Rich has a [[`Tree`]](reference/tree.html#rich.tree.Tree "rich.tree.Tree") class which can generate a tree view in the terminal. A tree view is a great way of presenting the contents of a filesystem or any other hierarchical data. Each branch of the tree can have a label which may be text or any other Rich renderable.
@@ -70,8 +39,6 @@ If you set [`guide_style`] to bold, Rich will select the thicker variations of u
 ## Examples[](#examples "Link to this heading")
 
 For a more practical demonstration, see [tree.py](https://github.com/willmcgugan/rich/blob/master/examples/tree.py) which can generate a tree view of a directory in your hard drive.
-
-[[] Previous](tables.html "Tables") [Next []](live.html "Live Display")
 
 ------------------------------------------------------------------------
 
