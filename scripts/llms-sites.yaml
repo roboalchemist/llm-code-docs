@@ -737,6 +737,9 @@ sites:
 - name: shadcn-ui
   base_url: https://ui.shadcn.com/
   description: shadcn/ui React component library with Tailwind CSS and Radix UI primitives
+- name: slate
+  base_url: https://docs.slatejs.org/
+  description: A customizable framework for building rich text editors in React
 - name: sherlockdomains
   base_url: https://www.sherlockdomains.com/
   description: Sherlockdomains documentation
@@ -882,6 +885,9 @@ sites:
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
+- name: xstate
+  base_url: https://stately.ai/
+  description: XState - State machines and statecharts for JavaScript/TypeScript
 - name: youtube-data-api
   base_url: https://developers.google.com/youtube/v3/
   description: YouTube Data API v3 - manage videos, playlists, channels
