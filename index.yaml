@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 16:15
-  total_sources: 431
-  total_fetched: 380
+  last_updated: 2025-12-31 16:06
+  total_sources: 432
+  total_fetched: 381
   llms_txt_count: 303
   llms_txt_fetched: 265
   github_count: 76
   github_fetched: 63
-  web_scraped_count: 52
-  web_scraped_fetched: 52
+  web_scraped_count: 53
+  web_scraped_fetched: 53
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -3137,6 +3137,13 @@ web_scraped:
   file_count: 3
   size: 86.7KB
   last_updated: 2025-12-31 15:27
+- name: emotion
+  description: Emotion CSS-in-JS library documentation
+  path: docs/web-scraped/emotion/
+  status: fetched
+  file_count: 32
+  size: 104.9KB
+  last_updated: 2025-12-31 16:06
 - name: fastapi
   description: fastapi documentation
   path: docs/web-scraped/fastapi/
