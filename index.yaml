@@ -8,6 +8,7 @@
 
 metadata:
   last_updated: 2025-12-31 15:57
+<<<<<<< HEAD
   total_sources: 429
   total_fetched: 378
   llms_txt_count: 303
@@ -16,6 +17,16 @@ metadata:
   github_fetched: 62
   web_scraped_count: 51
   web_scraped_fetched: 51
+=======
+  total_sources: 428
+  total_fetched: 377
+  llms_txt_count: 303
+  llms_txt_fetched: 265
+  github_count: 76
+  github_fetched: 63
+  web_scraped_count: 49
+  web_scraped_fetched: 49
+>>>>>>> DOCS-141-styled-components
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -575,6 +586,13 @@ llms_txt:
   file_count: 62
   size: 977.8KB
   last_updated: 2025-12-31 15:27
+- name: dayjs
+  description: Day.js - minimalist JavaScript library for parsing, validating, manipulating, and displaying dates and times
+  path: docs/web-scraped/dayjs/
+  status: fetched
+  file_count: 5
+  size: 32.0KB
+  last_updated: 2025-12-31 15:58
 - name: deepconverse
   description: DeepConverse AI-powered customer support automation
   url: https://docs.deepconverse.com/
@@ -2994,6 +3012,16 @@ github:
   file_count: 141
   size: 2.5MB
   last_updated: 2025-12-31 15:27
+- name: styled-components
+  description: styled-components - CSS-in-JS library for styling React components with tagged template literals
+  repo: styled-components/styled-components-website
+  branch: main
+  source_folder: sections
+  path: docs/github-scraped/styled-components/
+  status: fetched
+  file_count: 75
+  size: 155.9KB
+  last_updated: 2025-12-31 15:57
 - name: react-chartjs-2
   description: react-chartjs-2 - React wrapper for Chart.js providing components for line, bar, doughnut charts and more
   repo: reactchartjs/react-chartjs-2
