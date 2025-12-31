@@ -341,6 +341,13 @@ repositories:
     target_folder: "docs/github-scraped/whisper"
     branch: "main"
 
+  - name: "NumPy"
+    description: "NumPy - Fundamental package for scientific computing in Python with support for large, multi-dimensional arrays and matrices"
+    repo_url: "https://github.com/numpy/numpy.git"
+    source_folder: "doc/source"
+    target_folder: "docs/github-scraped/numpy"
+    branch: "main"
+
   - name: "OpenMPI"
     description: "Open MPI - High-performance Message Passing Interface (MPI) library for parallel computing"
     repo_url: "https://github.com/open-mpi/ompi.git"
