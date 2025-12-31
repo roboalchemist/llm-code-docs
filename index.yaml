@@ -7,11 +7,11 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 20:40
-  total_sources: 376
-  total_fetched: 334
-  llms_txt_count: 294
-  llms_txt_fetched: 256
+  last_updated: 2025-12-30 20:44
+  total_sources: 377
+  total_fetched: 335
+  llms_txt_count: 295
+  llms_txt_fetched: 257
   github_count: 44
   github_fetched: 40
   web_scraped_count: 38
@@ -1723,6 +1723,14 @@ llms_txt:
   file_count: 161
   size: 2.7MB
   last_updated: 2025-11-24 14:35
+- name: react-aria
+  description: Adobe React Aria - accessible headless UI components with behavior hooks and ARIA support
+  url: https://react-spectrum.adobe.com/
+  path: docs/llms-txt/react-aria/
+  status: fetched
+  file_count: 93
+  size: 812.4KB
+  last_updated: 2025-12-30 20:44
 - name: react-spring
   description: React Spring - physics-based animation library for React
   url: https://react-spring.dev/

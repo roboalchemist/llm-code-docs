@@ -677,6 +677,9 @@ sites:
 - name: react
   base_url: https://react.dev/
   description: 'React library for web and native user interfaces (from PR #8130)'
+- name: react-aria
+  base_url: https://react-spectrum.adobe.com/
+  description: Adobe React Aria - accessible headless UI components with behavior hooks and ARIA support
 - name: react-spring
   base_url: https://react-spring.dev/
   description: React Spring - physics-based animation library for React

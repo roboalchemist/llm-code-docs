@@ -122,6 +122,9 @@ def parse_llms_txt(content: str, base_url: str = "") -> list[str]:
     # Pattern matches markdown links with .md URLs (both absolute and relative)
     pattern_absolute_md = r'\[([^\]]+)\]\((https?://[^\)]+\.md)\)'
     pattern_relative_md = r'\[([^\]]+)\]\((/[^\)]+\.md)\)'
+    # Pattern for bare relative paths (no leading slash) - must end with .md and close paren
+    # Use [^\)] to match anything except closing paren to avoid matching across lines
+    pattern_bare_relative_nested = r'\[([^\]]+)\]\(([^\)]+\.md)\)'
     # Pattern for URLs without .md extension (some sites use path-based URLs)
     pattern_relative_path = r'\[([^\]]+)\]\((/[^\)]+)\)'
     urls = []
@@ -131,10 +134,20 @@ def parse_llms_txt(content: str, base_url: str = "") -> list[str]:
         url = match.group(2)
         urls.append(url)
 
-    # If no absolute .md URLs found, try relative .md URLs
+    # If no absolute .md URLs found, try relative .md URLs (starting with /)
     if not urls and base_url:
         for match in re.finditer(pattern_relative_md, content):
             relative_url = match.group(2)
+            url = urljoin(base_url, relative_url)
+            urls.append(url)
+
+    # If still no URLs, try bare relative paths with .md (like "Accordion.md" or "releases/v0-1-0.md")
+    if not urls and base_url:
+        for match in re.finditer(pattern_bare_relative_nested, content):
+            relative_url = match.group(2)
+            # Skip anchor links, javascript, and absolute URLs
+            if relative_url.startswith('#') or relative_url.startswith('javascript:') or relative_url.startswith('http'):
+                continue
             url = urljoin(base_url, relative_url)
             urls.append(url)
 
