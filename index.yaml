@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 21:46
-  total_sources: 383
-  total_fetched: 339
+  last_updated: 2025-12-30 21:55
+  total_sources: 384
+  total_fetched: 340
   llms_txt_count: 295
   llms_txt_fetched: 257
   github_count: 48
   github_fetched: 42
-  web_scraped_count: 40
-  web_scraped_fetched: 40
+  web_scraped_count: 41
+  web_scraped_fetched: 41
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2934,6 +2934,13 @@ web_scraped:
   file_count: 19
   size: 297.1KB
   last_updated: 2025-12-23 19:24
+- name: recharts
+  description: recharts documentation
+  path: docs/web-scraped/recharts/
+  status: fetched
+  file_count: 140
+  size: 482.9KB
+  last_updated: 2025-12-30 21:55
 - name: rich
   description: rich documentation
   path: docs/web-scraped/rich/
