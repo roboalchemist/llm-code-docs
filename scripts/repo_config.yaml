@@ -460,6 +460,13 @@ repositories:
     target_folder: "docs/github-scraped/reactstrap"
     branch: "master"
 
+  - name: "scikit-learn"
+    description: "scikit-learn - Machine learning library for Python with classification, regression, clustering, and dimensionality reduction algorithms"
+    repo_url: "https://github.com/scikit-learn/scikit-learn.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/scikit-learn"
+    branch: "main"
+
   - name: "react-chartjs-2"
     description: "react-chartjs-2 - React wrapper for Chart.js providing components for line, bar, doughnut charts and more"
     repo_url: "https://github.com/reactchartjs/react-chartjs-2.git"
