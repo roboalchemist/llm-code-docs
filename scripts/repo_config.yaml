@@ -522,3 +522,10 @@ repositories:
     source_folder: "website/src/data/components"
     target_folder: "docs/github-scraped/nivo"
     branch: "master"
+
+  - name: "Zustand"
+    description: "Zustand - Fast, minimal state management library for React with a simple hooks-based API without boilerplate"
+    repo_url: "https://github.com/pmndrs/zustand.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/zustand"
+    branch: "main"

@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 05:10
-  total_sources: 410
-  total_fetched: 359
+  last_updated: 2025-12-31 05:21
+  total_sources: 411
+  total_fetched: 360
   llms_txt_count: 295
   llms_txt_fetched: 257
-  github_count: 73
-  github_fetched: 60
+  github_count: 74
+  github_fetched: 61
   web_scraped_count: 42
   web_scraped_fetched: 42
 llms_txt:
@@ -2273,7 +2273,7 @@ github:
   status: fetched
   file_count: 30
   size: 145.1KB
-  last_updated: 2025-12-31 04:54
+  last_updated: 2025-12-31 05:18
 - name: tensorrt-llm
   description: NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with optimizations for efficient inference on
     NVIDIA GPUs
@@ -2284,7 +2284,7 @@ github:
   status: fetched
   file_count: 151
   size: 1.4MB
-  last_updated: 2025-12-31 04:54
+  last_updated: 2025-12-31 05:18
 - name: three.js
   description: Three.js - JavaScript 3D library for WebGL with comprehensive API documentation
   repo: mrdoob/three.js
@@ -2294,7 +2294,7 @@ github:
   status: fetched
   file_count: 772
   size: 6.4MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2304,7 +2304,7 @@ github:
   status: fetched
   file_count: 292
   size: 870.0KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: micropython
   description: MicroPython documentation
   repo: micropython/micropython
@@ -2314,7 +2314,7 @@ github:
   status: fetched
   file_count: 243
   size: 1.4MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: buildbuddy
   description: BuildBuddy documentation - Remote execution and caching platform
   repo: buildbuddy-io/buildbuddy
@@ -2324,7 +2324,7 @@ github:
   status: fetched
   file_count: 58
   size: 287.7KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: esptool
   description: ESP8266 and ESP32 serial bootloader utility documentation
   repo: espressif/esptool
@@ -2334,7 +2334,7 @@ github:
   status: fetched
   file_count: 55
   size: 502.1KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: esphome
   description: ESPHome - System to control ESP8266/ESP32 microcontrollers via configuration files for home automation
   repo: esphome/esphome-docs
@@ -2344,7 +2344,7 @@ github:
   status: fetched
   file_count: 765
   size: 5.5MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: mcp-jest
   description: MCP Jest - Model Context Protocol testing utilities
   repo: josharsh/mcp-jest
@@ -2354,7 +2354,7 @@ github:
   status: fetched
   file_count: 16
   size: 196.2KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: librechat
   description: LibreChat - Enhanced ChatGPT clone with multi-AI support
   repo: LibreChat-AI/librechat.ai
@@ -2371,7 +2371,7 @@ github:
   status: fetched
   file_count: 253
   size: 4.5MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: jest
   description: Jest - Delightful JavaScript testing framework by Meta with zero config and built-in code coverage
   repo: jestjs/jest
@@ -2381,7 +2381,7 @@ github:
   status: fetched
   file_count: 37
   size: 438.4KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: sqlalchemy
   description: SQLAlchemy - The Python SQL Toolkit and ORM
   repo: sqlalchemy/sqlalchemy
@@ -2391,7 +2391,7 @@ github:
   status: fetched
   file_count: 284
   size: 5.2MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: semantic-ui
   description: Semantic UI - UI component framework with human-friendly HTML and 50+ responsive components
   repo: Semantic-Org/Semantic-UI-Docs
@@ -2401,7 +2401,7 @@ github:
   status: fetched
   file_count: 3
   size: 1.9KB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:15
 - name: seeedstudio
   description: Seeed Studio Wiki - Documentation for Grove sensors, Wio Terminal, XIAO microcontrollers, reComputer, SenseCAP
     IoT devices
@@ -2412,7 +2412,7 @@ github:
   status: fetched
   file_count: 8486
   size: 120.0MB
-  last_updated: 2025-12-31 04:57
+  last_updated: 2025-12-31 05:16
 - name: go
   description: Go Programming Language - Official documentation website
   repo: golang/website
@@ -2422,7 +2422,7 @@ github:
   status: fetched
   file_count: 578
   size: 5.6MB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:16
 - name: heroui
   description: HeroUI - Open-source React UI component library built on Tailwind CSS, React Aria, and Framer Motion (formerly
     NextUI)
@@ -2440,7 +2440,7 @@ github:
   status: fetched
   file_count: 1
   size: 9.0KB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:16
 - name: flask
   description: Flask - Lightweight WSGI web application framework
   repo: pallets/flask
@@ -2450,7 +2450,7 @@ github:
   status: fetched
   file_count: 75
   size: 434.5KB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:16
 - name: click
   description: Python CLI framework - Command-line interface creation toolkit
   repo: pallets/click
@@ -2460,7 +2460,7 @@ github:
   status: fetched
   file_count: 35
   size: 172.1KB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:16
 - name: fastapi
   description: FastAPI - Modern, fast Python web framework
   repo: fastapi/fastapi
@@ -2470,7 +2470,7 @@ github:
   status: fetched
   file_count: 145
   size: 1.4MB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:17
 - name: python
   description: Python official documentation - Language reference and standard library
   repo: python/cpython
@@ -2480,7 +2480,7 @@ github:
   status: fetched
   file_count: 525
   size: 11.2MB
-  last_updated: 2025-12-31 04:58
+  last_updated: 2025-12-31 05:17
 - name: goose
   description: Goose - AI-powered developer agent by Block
   repo: block/goose
@@ -2490,7 +2490,7 @@ github:
   status: fetched
   file_count: 126
   size: 1011.5KB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:17
 - name: incus
   description: Incus - Container and virtual machine manager (community fork of LXD)
   repo: lxc/incus
@@ -2500,7 +2500,7 @@ github:
   status: fetched
   file_count: 165
   size: 1006.5KB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:17
 - name: milvus
   description: Milvus - Open source vector database for AI applications
   repo: milvus-io/milvus-docs
@@ -2510,7 +2510,7 @@ github:
   status: fetched
   file_count: 450
   size: 4.4MB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:17
 - name: flagembedding
   description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
   repo: FlagOpen/FlagEmbedding
@@ -2520,7 +2520,7 @@ github:
   status: fetched
   file_count: 183
   size: 547.8KB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:18
 - name: txtai
   description: txtai - All-in-one embeddings database for semantic search, LLM orchestration and language model workflows
   repo: neuml/txtai
@@ -2530,7 +2530,7 @@ github:
   status: fetched
   file_count: 75
   size: 250.3KB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:18
 - name: faiss
   description: Facebook AI Similarity Search - Efficient similarity search and clustering of dense vectors
   repo: facebookresearch/faiss.wiki
@@ -2540,7 +2540,7 @@ github:
   status: fetched
   file_count: 58
   size: 2.4MB
-  last_updated: 2025-12-31 04:59
+  last_updated: 2025-12-31 05:18
 - name: chroma
   description: Chroma - Open-source vector database for AI applications with embeddings support
   repo: chroma-core/chroma
@@ -2969,6 +2969,16 @@ github:
   source_folder: website/src/data/components
   path: docs/github-scraped/nivo/
   status: pending
+- name: zustand
+  description: Zustand - Fast, minimal state management library for React with a simple hooks-based API without boilerplate
+  repo: pmndrs/zustand
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/zustand/
+  status: fetched
+  file_count: 40
+  size: 352.5KB
+  last_updated: 2025-12-31 05:21
 web_scraped:
 - name: 1password
   description: 1password documentation
