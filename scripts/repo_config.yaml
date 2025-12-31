@@ -488,6 +488,13 @@ repositories:
     target_folder: "docs/github-scraped/scikit-learn"
     branch: "main"
 
+  - name: "styled-components"
+    description: "styled-components - CSS-in-JS library for styling React components with tagged template literals"
+    repo_url: "https://github.com/styled-components/styled-components-website.git"
+    source_folder: "sections"
+    target_folder: "docs/github-scraped/styled-components"
+    branch: "main"
+
   - name: "react-chartjs-2"
     description: "react-chartjs-2 - React wrapper for Chart.js providing components for line, bar, doughnut charts and more"
     repo_url: "https://github.com/reactchartjs/react-chartjs-2.git"

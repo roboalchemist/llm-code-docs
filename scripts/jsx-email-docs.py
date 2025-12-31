@@ -17,7 +17,7 @@ RAW_BASE_URL = "https://raw.githubusercontent.com/shellscape/jsx-email/main"
 
 # Files to download
 FILES_TO_DOWNLOAD = [
-    "README.md",
+    "packages/jsx-email/README.md",
     "CONTRIBUTING.md",
 ]
 
@@ -81,7 +81,7 @@ def main():
         print(f"[{idx:2d}/{len(FILES_TO_DOWNLOAD)}] ", end="")
 
         # Create output filename
-        if repo_path == "README.md":
+        if repo_path == "packages/jsx-email/README.md":
             output_filename = "main-README.md"
         else:
             # CONTRIBUTING.md, etc.

@@ -1,0 +1,248 @@
+# Cypress Documentation
+# Source: https://raw.githubusercontent.com/cypress-io/cypress-documentation/main/docs/api/cypress-api/env.mdx
+# Path: docs/api/cypress-api/env.mdx
+
+---
+title: 'Cypress.env | Cypress Documentation'
+description: 'Get and set Cypress environment variables in your tests'
+sidebar_label: 'env'
+sidebar_position: 120
+---
+
+<ProductHeading product="app" />
+
+# Cypress.env
+
+`get` and `set` environment variables _in your tests_.
+
+:::info
+
+The [Environment Variable](/app/references/environment-variables) guide explains
+the other ways you can set them _outside of your tests_.
+
+:::
+
+:::caution
+
+<strong>Scope</strong>
+
+Environment variables set using `Cypress.env` _are only in scope for the current
+spec file._
+
+Cypress runs each spec file in isolation: the browser is exited between specs.
+Environment variables added or changed in one spec won't be visible in other
+specs.
+
+:::
+
+:::caution
+
+<strong>Difference between OS-level and Cypress environment variables</strong>
+
+In Cypress, "environment variables" are variables that are accessible via
+`Cypress.env` and the browser. These are not the same as OS-level environment variables.
+However,
+[it is possible to set Cypress environment variables from OS-level environment variables](/app/references/environment-variables#Option-3-CYPRESS_).
+
+:::
+
+## Syntax
+
+```javascript
+Cypress.env()
+Cypress.env(name)
+Cypress.env(name, value)
+Cypress.env(object)
+```
+
+### Arguments
+
+<Icon name="angle-right" /> **name _(String)_**
+
+The name of the environment variable to get or set.
+
+<Icon name="angle-right" /> **value _(String)_**
+
+The value of the environment variable to set.
+
+<Icon name="angle-right" /> **object _(Object)_**
+
+Set multiple environment variables with an object literal.
+
+## Examples
+
+### No Arguments
+
+#### Get all environment variables from the Cypress configuration
+
+:::cypress-config-example
+
+```ts
+{
+  env: {
+    apiUrl: 'https://api.example.com',
+    apiVersion: 'v1',
+  },
+}
+```
+
+:::
+
+```javascript
+Cypress.env() // => {apiUrl: 'https://api.example.com', apiVersion: 'v1'}
+```
+
+### Name
+
+#### Return a single environment variable from the Cypress configuration
+
+:::caution
+
+<strong>Boolean</strong>
+
+We automatically normalize both the key and the value when passed via the
+command line. Cypress will automatically convert values into Number or Boolean.
+
+:::
+
+```javascript
+CYPRESS_HOST=laura.dev CYPRESS_IS_CI=true CYPRESS_API_VERSION=123 cypress run
+```
+
+```javascript
+Cypress.env('HOST') // => "laura.dev"
+Cypress.env('IS_CI') // => true
+Cypress.env('API_VERSION') // => 123
+```
+
+### Name and Value
+
+#### Change environment variables from the Cypress configuration from within your tests
+
+:::caution
+
+<strong>Scope</strong>
+
+Remember, any changes that you make to environment variables using this API will
+only be in effect for the remainder of the tests _in the same spec file._
+
+:::
+
+:::cypress-config-example
+
+```ts
+{
+  env: {
+    host: 'laura.dev',
+  },
+}
+```
+
+:::
+
+```javascript
+Cypress.env('host', 'http://server.dev.local')
+
+Cypress.env('host') // => http://server.dev.local
+```
+
+### Object
+
+#### Override multiple values from the Cypress configuration by passing an object
+
+:::cypress-config-example
+
+```ts
+{
+  env: {
+    host: 'laura.dev',
+    apiVersion: 'v1',
+  },
+}
+```
+
+:::
+
+```javascript
+Cypress.env({
+  host: 'http://server.dev.local',
+  apiVersion: 'v2',
+})
+
+Cypress.env() // => {apiVersion: 'v2', host: 'http://server.dev.local'}
+```
+
+### From a plugin
+
+Here's an example that uses `Cypress.env` to access an environment variable
+that's been
+[dynamically set in a plugin](/app/plugins/plugins-guide).
+
+Use this approach to grab the value of an environment variable _once_ before any
+of the tests in your spec run.
+
+:::cypress-config-plugin-example
+
+```js
+config.env.apiBaseUrl =
+  process.env.NODE_ENV === 'qa'
+    ? 'https://api-qa.example.com'
+    : 'https://api.example.com'
+
+return config
+```
+
+:::
+
+```js
+// cypress/e2e/api-tests.cy.js
+describe('API tests', () => {
+  let apiBaseUrl
+
+  before(() => {
+    apiBaseUrl = Cypress.env('apiBaseUrl')
+  })
+
+  it('can make requests to the correct environment', () => {
+    cy.request({
+      method: 'GET',
+      url: `${apiBaseUrl}/users`,
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+    })
+  })
+})
+```
+
+## Notes
+
+### Why would I ever need to use environment variables?
+
+The [Environment Variables](/app/references/environment-variables) guide explains
+common use cases.
+
+### Can I pass in environment variables from the command line?
+
+Yes. You can do that and much more.
+
+The [Environment Variables](/app/references/environment-variables) guide explains
+the other ways you can set environment variables for your tests.
+
+### Why is it `Cypress.env` and not `cy.env`?
+
+As a rule of thumb anything you call from `Cypress` affects global state.
+Anything you call from `cy` affects local state.
+
+Since the environment variables added or changed by `Cypress.env` are only in
+scope for the current spec file, you'd think that it should be `cy.env` and not
+`Cypress.env`&hellip; and you'd be right. The fact that `Cypress.env` affects
+local state is an artifact of the API evolving over time: `Cypress.env` used to
+affect global state&mdash;environment variables added in one test spec file were
+available in other specs&mdash;but the Cypress team wisely made each spec run in
+isolation in [`3.0.0`](/app/references/changelog#3-0-0) and by that time
+`Cypress.env` was public API.
+
+## See also
+
+- The [Environment Variable](/app/references/environment-variables) guide
+- [Cypress configuration](/app/references/configuration)
