@@ -390,6 +390,13 @@ repositories:
     target_folder: "docs/github-scraped/react-bootstrap"
     branch: "master"
 
+  - name: "react-testing-library"
+    description: "React Testing Library - Testing utilities for React that encourage best practices by querying the DOM like users do"
+    repo_url: "https://github.com/testing-library/testing-library-docs.git"
+    source_folder: "docs/react-testing-library"
+    target_folder: "docs/github-scraped/react-testing-library"
+    branch: "main"
+
   - name: "reactstrap"
     description: "Reactstrap - React Bootstrap 5 components with stateless components and prop-driven design"
     repo_url: "https://github.com/reactstrap/reactstrap.git"
