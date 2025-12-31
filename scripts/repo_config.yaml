@@ -320,6 +320,13 @@ repositories:
     target_folder: "docs/github-scraped/torchaudio"
     branch: "main"
 
+  - name: "TypeScript"
+    description: "TypeScript - Microsoft's typed superset of JavaScript with complete language documentation, handbook, and reference"
+    repo_url: "https://github.com/microsoft/TypeScript-Website.git"
+    source_folder: "packages/documentation/copy/en"
+    target_folder: "docs/github-scraped/typescript"
+    branch: "v2"
+
   - name: "llama.cpp"
     description: "llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)"
     repo_url: "https://github.com/ggerganov/llama.cpp.git"
