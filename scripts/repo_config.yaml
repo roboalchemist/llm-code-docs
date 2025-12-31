@@ -354,3 +354,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/visx"
     branch: "master"
+
+  - name: "victory"
+    description: "Victory - React charting library by Formidable with modular, composable components for data visualization"
+    repo_url: "https://github.com/FormidableLabs/victory.git"
+    source_folder: "website/docs"
+    target_folder: "docs/github-scraped/victory"
+    branch: "main"
