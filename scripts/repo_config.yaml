@@ -460,6 +460,13 @@ repositories:
     target_folder: "docs/github-scraped/react-chartjs-2"
     branch: "master"
 
+  - name: "react-hook-form"
+    description: "React Hook Form - Performant, flexible and extensible forms with easy-to-use validation"
+    repo_url: "https://github.com/react-hook-form/documentation.git"
+    source_folder: "src/content"
+    target_folder: "docs/github-scraped/react-hook-form"
+    branch: "master"
+
   - name: "visx"
     description: "visx - Low-level visualization components for React by Airbnb, combining D3 with React (31 packages for charts and data visualization)"
     repo_url: "https://github.com/airbnb/visx.git"
