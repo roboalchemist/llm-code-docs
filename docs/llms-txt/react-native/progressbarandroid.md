@@ -1,0 +1,85 @@
+# Source: https://reactnative.dev/docs/progressbarandroid.md
+
+# 🗑️ ProgressBarAndroid
+
+Deprecated
+
+Use one of the [community packages](https://reactnative.directory/?search=progressbar) instead.
+
+Android-only React component used to indicate that the app is loading or there is some activity in the app.
+
+### Example[​](#example "Direct link to Example")
+
+***
+
+# Reference
+
+## Props[​](#props "Direct link to Props")
+
+Inherits [View Props](/docs/view.md#props).
+
+### `animating`[​](#animating "Direct link to animating")
+
+Whether to show the ProgressBar (true, the default) or hide it (false).
+
+| Type | Required |
+| ---- | -------- |
+| bool | No       |
+
+***
+
+### `color`[​](#color "Direct link to color")
+
+Color of the progress bar.
+
+| Type                     | Required |
+| ------------------------ | -------- |
+| [color](/docs/colors.md) | No       |
+
+***
+
+### `indeterminate`[​](#indeterminate "Direct link to indeterminate")
+
+If the progress bar will show indeterminate progress. Note that this can only be false if styleAttr is Horizontal, and requires a `progress` value.
+
+| Type              | Required |
+| ----------------- | -------- |
+| indeterminateType | No       |
+
+***
+
+### `progress`[​](#progress "Direct link to progress")
+
+The progress value (between 0 and 1).
+
+| Type   | Required |
+| ------ | -------- |
+| number | No       |
+
+***
+
+### `styleAttr`[​](#styleattr "Direct link to styleattr")
+
+Style of the ProgressBar. One of:
+
+* Horizontal
+* Normal (default)
+* Small
+* Large
+* Inverse
+* SmallInverse
+* LargeInverse
+
+| Type                                                                                      | Required |
+| ----------------------------------------------------------------------------------------- | -------- |
+| enum('Horizontal', 'Normal', 'Small', 'Large', 'Inverse', 'SmallInverse', 'LargeInverse') | No       |
+
+***
+
+### `testID`[​](#testid "Direct link to testid")
+
+Used to locate this view in end-to-end tests.
+
+| Type   | Required |
+| ------ | -------- |
+| string | No       |

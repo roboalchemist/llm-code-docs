@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:29
-  total_sources: 423
-  total_fetched: 373
-  llms_txt_count: 301
-  llms_txt_fetched: 264
+  last_updated: 2025-12-31 15:36
+  total_sources: 427
+  total_fetched: 376
+  llms_txt_count: 303
+  llms_txt_fetched: 265
   github_count: 75
   github_fetched: 62
-  web_scraped_count: 47
-  web_scraped_fetched: 47
+  web_scraped_count: 49
+  web_scraped_fetched: 49
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -1437,6 +1437,14 @@ llms_txt:
   file_count: 1
   size: 749.9KB
   last_updated: 2025-12-31 15:27
+- name: neon
+  description: Neon serverless Postgres database platform
+  url: https://neon.tech/
+  path: docs/llms-txt/neon/
+  status: fetched
+  file_count: 483
+  size: 4.5MB
+  last_updated: 2025-12-31 15:36
 - name: near
   description: Near documentation
   url: https://docs.near.org/
@@ -1591,9 +1599,9 @@ llms_txt:
   url: https://developer.paypal.com/
   path: docs/llms-txt/paypal-developer/
   status: fetched
-  file_count: 39
-  size: 9.3MB
-  last_updated: 2025-12-31 15:29
+  file_count: 138
+  size: 32.1MB
+  last_updated: 2025-12-31 15:31
 - name: paysafe
   description: Paysafe payment gateway API
   url: https://developer.paysafe.com/
@@ -1766,6 +1774,11 @@ llms_txt:
   file_count: 1
   size: 40.1KB
   last_updated: 2025-12-31 15:27
+- name: react-native
+  description: React Native framework for building native mobile apps using React
+  url: https://reactnative.dev/
+  path: docs/llms-txt/react-native/
+  status: pending
 - name: readme
   description: ReadMe developer documentation platform
   url: https://docs.readme.com/
@@ -3273,6 +3286,13 @@ web_scraped:
   file_count: 140
   size: 482.9KB
   last_updated: 2025-12-31 15:27
+- name: relay
+  description: relay documentation
+  path: docs/web-scraped/relay/
+  status: fetched
+  file_count: 128
+  size: 1.2MB
+  last_updated: 2025-12-31 15:33
 - name: rich
   description: rich documentation
   path: docs/web-scraped/rich/
@@ -3280,6 +3300,13 @@ web_scraped:
   file_count: 24
   size: 202.0KB
   last_updated: 2025-12-31 15:27
+- name: rtk-query
+  description: rtk-query documentation
+  path: docs/web-scraped/rtk-query/
+  status: fetched
+  file_count: 35
+  size: 663.7KB
+  last_updated: 2025-12-31 15:33
 - name: rustdesk
   description: rustdesk documentation
   path: docs/web-scraped/rustdesk/
