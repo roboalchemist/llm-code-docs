@@ -1,0 +1,58 @@
+import Table, { Row, Column } from 'components/Table'
+import Code from 'components/Code'
+
+### `ThemeProvider`
+
+A helper component for theming. Injects the theme into all styled components anywhere
+beneath it in the component tree, via the context API.
+Check the section on [Theming](/docs/advanced#theming).
+
+<Table head={['Props', 'Description']}>
+  <Row>
+    <Column>
+      <Code>theme</Code>
+    </Column>
+    <Column>
+      An object (or function returning an object) that will be injected as <Code>theme</Code> into all
+      interpolations in styled components beneath the provider.
+    </Column>
+  </Row>
+</Table>
+
+Simple usage:
+
+```react
+// import styled, { ThemeProvider } from 'styled-components'
+
+const Box = styled.div`
+  color: ${props => props.theme.color};
+`
+
+render(
+  <ThemeProvider theme={{ color: 'mediumseagreen' }}>
+    <Box>I'm mediumseagreen!</Box>
+  </ThemeProvider>
+)
+```
+
+Adding to or replacing an outer theme using nested `ThemeProvider`:
+
+```react
+// import styled, { ThemeProvider } from 'styled-components'
+
+const Box = styled.div`
+  background-color: ${props => props.theme.bg};
+  color: ${props => props.theme.color};
+`
+
+render(
+  <ThemeProvider theme={{ bg: 'white', color: 'mediumseagreen' }}>
+    <Box>
+      I'm mediumseagreen with a white background!
+      <ThemeProvider theme={outerTheme => ({...outerTheme, bg: 'black'})}>
+        <Box>I'm mediumseagreen with a black background!</Box>
+      </ThemeProvider>
+    </Box>
+  </ThemeProvider>
+)
+```

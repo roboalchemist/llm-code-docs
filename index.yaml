@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:36
-  total_sources: 427
-  total_fetched: 376
+  last_updated: 2025-12-31 15:57
+  total_sources: 428
+  total_fetched: 377
   llms_txt_count: 303
   llms_txt_fetched: 265
-  github_count: 75
-  github_fetched: 62
+  github_count: 76
+  github_fetched: 63
   web_scraped_count: 49
   web_scraped_fetched: 49
 llms_txt:
@@ -2994,6 +2994,16 @@ github:
   file_count: 141
   size: 2.5MB
   last_updated: 2025-12-31 15:27
+- name: styled-components
+  description: styled-components - CSS-in-JS library for styling React components with tagged template literals
+  repo: styled-components/styled-components-website
+  branch: main
+  source_folder: sections
+  path: docs/github-scraped/styled-components/
+  status: fetched
+  file_count: 75
+  size: 155.9KB
+  last_updated: 2025-12-31 15:57
 - name: react-chartjs-2
   description: react-chartjs-2 - React wrapper for Chart.js providing components for line, bar, doughnut charts and more
   repo: reactchartjs/react-chartjs-2
