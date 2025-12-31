@@ -124,6 +124,9 @@ sites:
 - name: bits-ui
   base_url: https://bits-ui.com/
   description: Bits UI Svelte headless component library
+- name: braintree
+  base_url: https://developer.paypal.com/braintree/
+  description: Braintree payment platform by PayPal
 - name: bucket
   base_url: https://docs.bucket.io/
   description: Bucket feature flag management
@@ -561,6 +564,10 @@ sites:
 - name: nativescript
   base_url: https://docs.nativescript.org/
   description: NativeScript cross-platform framework
+- name: neon
+  base_url: https://neon.com/
+  llms_txt_url: https://neon.tech/llms.txt
+  description: Neon serverless Postgres database platform
 - name: near
   base_url: https://docs.near.org/
   description: Near documentation
@@ -617,6 +624,12 @@ sites:
 - name: oxla
   base_url: https://docs.oxla.com/
   description: Oxla distributed SQL database
+- name: paypal
+  base_url: https://www.paypal.com/
+  description: PayPal online payments platform for consumers and businesses
+- name: paypal-developer
+  base_url: https://developer.paypal.com/
+  description: PayPal developer documentation and payment APIs
 - name: paysafe
   base_url: https://developer.paysafe.com/
   description: Paysafe payment gateway API
@@ -686,6 +699,9 @@ sites:
 - name: react-spring
   base_url: https://react-spring.dev/
   description: React Spring - physics-based animation library for React
+- name: react-native
+  base_url: https://reactnative.dev/
+  description: React Native framework for building native mobile apps using React
 - name: readme
   base_url: https://docs.readme.com/
   description: ReadMe developer documentation platform
@@ -891,6 +907,9 @@ sites:
 - name: xstate
   base_url: https://stately.ai/
   description: XState - State machines and statecharts for JavaScript/TypeScript
+- name: xata
+  base_url: https://xata.io/
+  description: Xata serverless database platform with full-text search and analytics
 - name: youtube-data-api
   base_url: https://developers.google.com/youtube/v3/
   description: YouTube Data API v3 - manage videos, playlists, channels
