@@ -462,6 +462,9 @@ sites:
 - name: kinde
   base_url: https://kinde.com/
   description: Kinde Authentication, User Management, Billing and Access Control Platform
+- name: kysely
+  base_url: https://kysely.dev/
+  description: Type-safe SQL query builder for TypeScript with unparalleled autocompletion and compile-time type safety
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
