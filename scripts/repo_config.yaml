@@ -327,6 +327,13 @@ repositories:
     target_folder: "docs/github-scraped/chrome-devtools-mcp"
     branch: "main"
 
+  - name: "CodeMirror"
+    description: "CodeMirror - Versatile JavaScript code editor for the browser with language modes and advanced editing features"
+    repo_url: "https://github.com/codemirror/website.git"
+    source_folder: "site/docs"
+    target_folder: "docs/github-scraped/codemirror"
+    branch: "main"
+
   - name: "Whisper"
     description: "OpenAI Whisper - Robust speech recognition via large-scale weak supervision (STT/ASR)"
     repo_url: "https://github.com/openai/whisper.git"
