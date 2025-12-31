@@ -119,29 +119,29 @@ def parse_llms_txt(content: str, base_url: str = "") -> list[str]:
         list: URLs to documentation files
     """
     # Extract URLs from markdown links: [Title](URL)
-    # Pattern matches markdown links with .md URLs (both absolute and relative)
-    pattern_absolute_md = r'\[([^\]]+)\]\((https?://[^\)]+\.md)\)'
-    pattern_relative_md = r'\[([^\]]+)\]\((/[^\)]+\.md)\)'
-    # Pattern for bare relative paths (no leading slash) - must end with .md and close paren
+    # Pattern matches markdown links with .md or .md.txt URLs (both absolute and relative)
+    pattern_absolute_md = r'\[([^\]]+)\]\((https?://[^\)]+\.md(?:\.txt)?)\)'
+    pattern_relative_md = r'\[([^\]]+)\]\((/[^\)]+\.md(?:\.txt)?)\)'
+    # Pattern for bare relative paths (no leading slash) - must end with .md or .md.txt and close paren
     # Use [^\)] to match anything except closing paren to avoid matching across lines
-    pattern_bare_relative_nested = r'\[([^\]]+)\]\(([^\)]+\.md)\)'
+    pattern_bare_relative_nested = r'\[([^\]]+)\]\(([^\)]+\.md(?:\.txt)?)\)'
     # Pattern for URLs without .md extension (some sites use path-based URLs)
     pattern_relative_path = r'\[([^\]]+)\]\((/[^\)]+)\)'
     urls = []
 
-    # First try absolute .md URLs
+    # First try absolute .md or .md.txt URLs
     for match in re.finditer(pattern_absolute_md, content):
         url = match.group(2)
         urls.append(url)
 
-    # If no absolute .md URLs found, try relative .md URLs (starting with /)
+    # If no absolute .md URLs found, try relative .md or .md.txt URLs (starting with /)
     if not urls and base_url:
         for match in re.finditer(pattern_relative_md, content):
             relative_url = match.group(2)
             url = urljoin(base_url, relative_url)
             urls.append(url)
 
-    # If still no URLs, try bare relative paths with .md (like "Accordion.md" or "releases/v0-1-0.md")
+    # If still no URLs, try bare relative paths with .md or .md.txt (like "Accordion.md" or "releases/v0-1-0.md")
     if not urls and base_url:
         for match in re.finditer(pattern_bare_relative_nested, content):
             relative_url = match.group(2)
@@ -217,8 +217,10 @@ def download_individual_files(site_name: str, base_url: str, output_dir: Path, f
             parts = [p for p in path.split('/') if p]
             filename = parts[-1] if parts else 'index'
 
-        # Ensure .md extension
-        if not filename.endswith('.md'):
+        # Ensure .md extension (handle .md.txt files by converting to .md)
+        if filename.endswith('.md.txt'):
+            filename = filename[:-4]  # Remove .txt, keep .md
+        elif not filename.endswith('.md'):
             filename += '.md'
 
         output_path = output_dir / filename

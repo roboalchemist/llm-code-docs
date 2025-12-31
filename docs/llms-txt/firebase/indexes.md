@@ -1,0 +1,139 @@
+# Source: https://firebase.google.com/docs/reference/firestore/indexes.md.txt
+
+Cloud Firestoreautomatically creates indexes to support the most common types of queries, but allows you to define custom indexes and index overrides as described in the[Cloud Firestoreguides](https://firebase.google.com/docs/firestore/query-data/index-overview).
+
+You can create, modify and deploy custom indexes in the Firebase console, or using the CLI. From the CLI, edit your index configuration file, with default filename`firestore.indexes.json`, and deploy using the`firebase
+deploy`command.
+
+You can export indexes with the CLI using`firebase firestore:indexes`.
+
+An index configuration file defines one object containing an`indexes`array and an optional`fieldOverrides`array. Here's an example:  
+
+    {
+      // Required, specify compound and vector indexes
+      indexes: [
+        {
+          collectionGroup: "posts",
+          queryScope: "COLLECTION",
+          fields: [
+            { fieldPath: "author", arrayConfig: "CONTAINS" },
+            { fieldPath: "timestamp", order: "DESCENDING" }
+          ]
+        },
+        {
+          collectionGroup: "coffee-beans",
+          queryScope: "COLLECTION",
+          fields: [
+            {
+              fieldPath: "embedding_field",
+              vectorConfig: { dimension: 256, flat: {} }
+            }
+          ]
+        }
+      ],
+
+      // Optional, disable indexes or enable single-field collection group indexes
+      fieldOverrides: [
+        {
+          collectionGroup: "posts",
+          fieldPath: "myBigMapField",
+          // We want to disable indexing on our big map field, and so empty the indexes array
+          indexes: []
+        }
+      ]
+    }
+
+## Deploy an index configuration
+
+Deploy your index configuration with the`firebase deploy`command. If you only want to deploy indexes for the databases configured in your project, add the`--only firestore`flag. See the[options reference for this command](https://firebase.google.com/docs/cli#partial_deploys).
+
+To list deployed indexes, run the`firebase firestore:indexes`command. Add the`--database=<databaseID>`flag to list indexes for a database other than your project's default database.
+
+If you make edits to the indexes using the Firebase console, make sure you also update your local indexes file. For more on managing indexes, see the[Cloud Firestoreguides](https://firebase.google.com/docs/firestore/query-data/indexing).
+
+## JSON format
+
+### Indexes
+
+The schema for one object in the`indexes`array is as follows. Optional properties are identified with the`?`character.
+
+Note thatCloud Firestoredocument fields can only be indexed in one mode, thus a field object can only contain one of the`order`,`arrayConfig`, and`vectorConfig`properties.
+
+While there are fields and properties that are specific toCloud Firestoreeditions, some fields are shared as well.
+
+#### Standard edition
+
+      collectionGroup: string  // Labeled "Collection ID" in the Firebase console
+      queryScope: string       // One of "COLLECTION", "COLLECTION_GROUP"
+      apiScope: string         // "ANY_API" (the default) is the only acceptable value. Optional.
+      density: string          // "SPARSE_ALL" is the only acceptable value. Optional.
+      fields: array
+        fieldPath: string
+        order?: string         // One of "ASCENDING", "DESCENDING"; excludes arrayConfig and vectorConfig properties
+        arrayConfig?: string   // If this parameter used, must be "CONTAINS"; excludes order and vectorConfig properties
+        vectorConfig?: object  // Indicates that this is a vector index; excludes order and arrayConfig properties
+          dimension: number    // The resulting index will only include vectors of this dimension
+          flat: {}             // Indicates the vector index is a flat index
+
+#### Enterprise edition
+
+      collectionGroup: string  // Labeled "Collection ID" in the Firebase console
+      queryScope: string       // One of "COLLECTION", "COLLECTION_GROUP"
+      apiScope: string         // "MONGODB_COMPATIBLE_API" is the only acceptable value
+      multikey: boolean        // Indicates if this is a multikey index
+      density: string          // One of "SPARSE_ANY" or "DENSE"
+      fields: array
+        fieldPath: string
+        order?: string         // One of "ASCENDING", "DESCENDING"; excludes arrayConfig and vectorConfig properties
+        arrayConfig?: string   // If this parameter used, must be "CONTAINS"; excludes order and vectorConfig properties
+        vectorConfig?: object  // Indicates that this is a vector index; excludes order and arrayConfig properties
+          dimension: number    // The resulting index will only include vectors of this dimension
+          flat: {}             // Indicates the vector index is a flat index
+
+### FieldOverrides
+
+The schema for one object in the`fieldOverrides`array is as follows. Optional properties are identified with the`?`character.
+
+Note thatCloud Firestoredocument fields can only be indexed in one mode, thus a field object cannot contain both the`order`and`arrayConfig`properties.  
+
+      collectionGroup: string  // Labeled "Collection ID" in the Firebase console
+      fieldPath: string
+      ttl?: boolean            // Set specified field to have TTL policy and be eligible for deletion
+      indexes: array           // Use an empty array to disable indexes on this collectionGroup + fieldPath
+        queryScope: string     // One of "COLLECTION", "COLLECTION_GROUP"
+        order?: string         // One of "ASCENDING", "DESCENDING"; excludes arrayConfig property
+        arrayConfig?: string   // If this parameter used, must be "CONTAINS"; excludes order property
+
+#### TTL Policy
+
+A TTL policy can be enabled or disabled using the`fieldOverrides`array as follows:  
+
+      // Optional, disable index single-field collection group indexes
+      fieldOverrides: [
+        {
+          collectionGroup: "posts",
+          fieldPath: "ttlField",
+          ttl: "true",  // Explicitly enable TTL on this Field.
+          // Disable indexing so empty the indexes array
+          indexes: []
+        }
+      ]
+
+To keep the default indexing in the field and enable a TTL policy:  
+
+    {
+      "fieldOverrides": [
+        {
+          "collectionGroup": "yourCollectionGroup",
+          "fieldPath": "yourFieldPath",
+          "ttl": true,
+          "indexes": [
+            { "order": "ASCENDING", "queryScope": "COLLECTION_GROUP" },
+            { "order": "DESCENDING", "queryScope": "COLLECTION_GROUP" },
+            { "arrayConfig": "CONTAINS", "queryScope": "COLLECTION_GROUP" }
+          ]
+        }
+      ]
+    }
+
+For more information about time-to-live (TTL) policies review the[official documentation](https://cloud.google.com/firestore/docs/ttl).

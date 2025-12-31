@@ -1,0 +1,64 @@
+# Source: https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder.md.txt
+
+# Pbkdf2Sha256.Builder
+
+public static class **Pbkdf2Sha256.Builder** extends Object  
+
+### Public Method Summary
+
+|----------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Pbkdf2Sha256](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256) | [build](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder#build())()                                                                        |
+| T extends Builder                                                                                                          | [setRounds](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder#setRounds(int))(int rounds) Sets the number of rounds for the hash algorithm. |
+
+### Protected Method Summary
+
+|--------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Pbkdf2Sha256.Builder](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder) | [getInstance](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder#getInstance())() |
+
+### Inherited Method Summary
+
+From class java.lang.Object  
+
+|------------------|---------------------------|
+| Object           | clone()                   |
+| boolean          | equals(Object arg0)       |
+| void             | finalize()                |
+| final Class\<?\> | getClass()                |
+| int              | hashCode()                |
+| final void       | notify()                  |
+| final void       | notifyAll()               |
+| String           | toString()                |
+| final void       | wait(long arg0, int arg1) |
+| final void       | wait(long arg0)           |
+| final void       | wait()                    |
+
+## Public Methods
+
+#### public [Pbkdf2Sha256](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256)
+**build**
+()
+
+<br />
+
+#### public T extends Builder
+**setRounds**
+(int rounds)
+
+Sets the number of rounds for the hash algorithm.  
+
+##### Parameters
+
+| rounds | an integer between 0 and 120000 (inclusive). |
+|--------|----------------------------------------------|
+
+##### Returns
+
+- this builder.
+
+## Protected Methods
+
+#### protected [Pbkdf2Sha256.Builder](https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/auth/hash/Pbkdf2Sha256.Builder)
+**getInstance**
+()
+
+<br />

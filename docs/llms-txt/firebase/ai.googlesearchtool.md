@@ -1,0 +1,24 @@
+# Source: https://firebase.google.com/docs/reference/js/ai.googlesearchtool.md.txt
+
+A tool that allows a Gemini model to connect to Google Search to access and incorporate up-to-date information from the web into its responses.
+| **Important:** If using Grounding with Google Search, you are required to comply with the "Grounding with Google Search" usage requirements for your chosen API provider: [Gemini Developer API](https://ai.google.dev/gemini-api/terms#grounding-with-google-search) or Vertex AI Gemini API (see [Service Terms](https://cloud.google.com/terms/service-terms) section within the Service Specific Terms).
+
+**Signature:**  
+
+    export interface GoogleSearchTool 
+
+## Properties
+
+|                                                     Property                                                      |                                                  Type                                                   |                                                                                                                                                                                                                                                    Description                                                                                                                                                                                                                                                    |
+|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [googleSearch](https://firebase.google.com/docs/reference/js/ai.googlesearchtool.md#googlesearchtoolgooglesearch) | [GoogleSearch](https://firebase.google.com/docs/reference/js/ai.googlesearch.md#googlesearch_interface) | Specifies the Google Search configuration. Currently, this is an empty object, but it's reserved for future configuration options.When using this feature, you are required to comply with the "Grounding with Google Search" usage requirements for your chosen API provider: [Gemini Developer API](https://ai.google.dev/gemini-api/terms#grounding-with-google-search) or Vertex AI Gemini API (see [Service Terms](https://cloud.google.com/terms/service-terms) section within the Service Specific Terms). |
+
+## GoogleSearchTool.googleSearch
+
+Specifies the Google Search configuration. Currently, this is an empty object, but it's reserved for future configuration options.
+
+When using this feature, you are required to comply with the "Grounding with Google Search" usage requirements for your chosen API provider: [Gemini Developer API](https://ai.google.dev/gemini-api/terms#grounding-with-google-search) or Vertex AI Gemini API (see [Service Terms](https://cloud.google.com/terms/service-terms) section within the Service Specific Terms).
+
+**Signature:**  
+
+    googleSearch: GoogleSearch;

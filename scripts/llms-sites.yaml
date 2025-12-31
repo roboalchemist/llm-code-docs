@@ -289,6 +289,10 @@ sites:
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
+- name: firebase
+  base_url: https://firebase.google.com/docs/
+  description: Firebase app development platform with authentication, database, hosting, and more
+  rate_limit_seconds: 0.1
 - name: firecrawl
   base_url: https://www.firecrawl.dev/
   description: Firecrawl documentation

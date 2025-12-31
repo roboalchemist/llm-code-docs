@@ -1,0 +1,63 @@
+# Source: https://firebase.google.com/docs/reference/js/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/reference/cpp/namespace/firebase/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/reference/cpp/class/firebase/app-check/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/ai-logic/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/ai-logic/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/app-check.md.txt
+
+# Source: https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check.md.txt
+
+# Firebase.AppCheck Namespace
+
+# Firebase.AppCheck
+
+## Summary
+
+|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ### Enumerations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ||
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
+| [AppCheckError](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039)`{` ` `[None](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039a6adf97f83acf6453d4a6a4b1070f3754)` = 0,` ` `[ServerUnreachable](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039a77f611bab6988b08daba5b07261cc780)` = 1,` ` `[InvalidConfiguration](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039af237deac1e85c65673a7bba9093bca7e)` = 2,` ` `[SystemKeychain](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039a2e58c0a4fca23829ccbe2030520eb8bf)` = 3,` ` `[UnsupportedProvider](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039afffe5159530b3ffa9ccd6d85fc92e12e)` = 4,` ` `[Unknown](https://firebase.google.com/docs/reference/unity/namespace/firebase/app-check#namespace_firebase_1_1_app_check_1a835804b740c7fea77da50fb58b11d039a88183b946cc5f0e8c96b2e66e1c74a7e)` = 5` `}` | enum Error codes used by App Check. |
+
+|                                                                                                                                                                                                                      ### Classes                                                                                                                                                                                                                      ||
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Firebase.AppCheck.AppAttestProviderFactory](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/app-attest-provider-factory)          | Implementation of an [IAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider-factory#interface_firebase_1_1_app_check_1_1_i_app_check_provider_factory) that builds providering using the App Attest service.     |
+| [Firebase.AppCheck.DebugAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/debug-app-check-provider-factory) | Implementation of an [IAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider-factory#interface_firebase_1_1_app_check_1_1_i_app_check_provider_factory) that builds DebugAppCheckProviders.                       |
+| [Firebase.AppCheck.DeviceCheckProviderFactory](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/device-check-provider-factory)      | Implementation of an [IAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider-factory#interface_firebase_1_1_app_check_1_1_i_app_check_provider_factory) that builds providering using the Device Check service.   |
+| [Firebase.AppCheck.FirebaseAppCheck](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/firebase-app-check)                           | [Firebase](https://firebase.google.com/docs/reference/unity/namespace/firebase#namespace_firebase) App Check object.                                                                                                                                                                    |
+| [Firebase.AppCheck.PlayIntegrityProviderFactory](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/play-integrity-provider-factory)  | Implementation of an [IAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider-factory#interface_firebase_1_1_app_check_1_1_i_app_check_provider_factory) that builds providering using the Play Integrity service. |
+| [Firebase.AppCheck.TokenChangedEventArgs](https://firebase.google.com/docs/reference/unity/class/firebase/app-check/token-changed-event-args)                | Passed to the FirebaseAppCheck.TokenChanged event.                                                                                                                                                                                                                                      |
+
+|                                                                                                                              ### Structs                                                                                                                               ||
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| [Firebase.AppCheck.AppCheckToken](https://firebase.google.com/docs/reference/unity/struct/firebase/app-check/app-check-token) | Token used by the [Firebase](https://firebase.google.com/docs/reference/unity/namespace/firebase#namespace_firebase) App Check service. |
+
+|                                                                                                                                                                          ### Interfaces                                                                                                                                                                           ||
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Firebase.AppCheck.IAppCheckProvider](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider)                | Interface for a provider that generates [AppCheckToken](https://firebase.google.com/docs/reference/unity/struct/firebase/app-check/app-check-token#struct_firebase_1_1_app_check_1_1_app_check_token)s. |
+| [Firebase.AppCheck.IAppCheckProviderFactory](https://firebase.google.com/docs/reference/unity/interface/firebase/app-check/i-app-check-provider-factory) | Interface for a factory that generates AppCheckProviders.                                                                                                                                               |
+
+## Enumerations
+
+### AppCheckError
+
+```c#
+ AppCheckError
+```  
+Error codes used by App Check.
+
+|                                                                                    Properties                                                                                    ||
+|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `InvalidConfiguration` | Invalid configuration error. Currently, an exception is thrown but this error is reserved for future implementations of invalid configuration detection. |
+| `None`                 | The operation was a success, no error occurred.                                                                                                          |
+| `ServerUnreachable`    | A network connection error.                                                                                                                              |
+| `SystemKeychain`       | System keychain access error. Ensure that the app has proper keychain access.                                                                            |
+| `Unknown`              | An unknown error occurred.                                                                                                                               |
+| `UnsupportedProvider`  | Selected AppCheckProvider is not supported on the current platform or OS version.                                                                        |

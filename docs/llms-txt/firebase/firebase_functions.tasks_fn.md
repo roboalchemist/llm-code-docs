@@ -1,0 +1,11 @@
+# Source: https://firebase.google.com/docs/reference/functions/2nd-gen/python/firebase_functions.tasks_fn.md.txt
+
+# firebase_functions.tasks_fn module
+
+Functions to handle Tasks enqueued with Google Cloud Tasks.
+
+## Functions
+
+|                                                                                                                                                                                 ### on_task_dispatched firebase_functions.tasks_fn.on_task_dispatched(*\*\*kwargs* ) â Callable\[\[Callable\[\[[CallableRequest](https://firebase.google.com/docs/reference/functions/2nd-gen/python/firebase_functions.https_fn#firebase_functions.https_fn.CallableRequest "firebase_functions.https_fn.CallableRequest")\[Any\]\], Any\]\], Response\]                                                                                                                                                                                  |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Creates a handler for tasks sent to a Google Cloud Tasks queue. Requires a function that takes a CallableRequest. Example: ``` @tasks.on_task_dispatched() def example(request: tasks.CallableRequest) -> Any: return "Hello World" ``` Parameters: :   **\*\*kwargs** (as [firebase_functions.options.TaskQueueOptions](https://firebase.google.com/docs/reference/functions/2nd-gen/python/firebase_functions.options#firebase_functions.options.TaskQueueOptions "firebase_functions.options.TaskQueueOptions")) -- TaskQueueOptions options. Return type: :   typing.Callable \[ \[ firebase_functions.https.CallableRequest \[ object \] \], object \] A function that takes a CallableRequest and returns an object. |

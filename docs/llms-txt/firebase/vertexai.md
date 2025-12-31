@@ -1,0 +1,642 @@
+# Source: https://firebase.google.com/docs/remote-config/solutions/vertexai.md.txt
+
+# Source: https://firebase.google.com/docs/reference/js/vertexai.md.txt
+
+# Source: https://firebase.google.com/docs/remote-config/solutions/vertexai.md.txt
+
+# Source: https://firebase.google.com/docs/reference/js/vertexai.md.txt
+
+# vertexai package
+
+The Vertex AI in Firebase Web SDK.
+
+## Functions
+
+|                                                                  Function                                                                   |                                                                                                                                                              Description                                                                                                                                                              |
+|---------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **function(app, ...)**                                                                                                                      |                                                                                                                                                                                                                                                                                                                                       |
+| [getAI(app, options)](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413)                                              | Returns the default [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface) instance that is associated with the provided [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface). If no instance exists, initializes a new instance with the default settings. |
+| [getVertexAI(app, options)](https://firebase.google.com/docs/reference/js/vertexai.md#getvertexai_04094cf)                                  |                                                                                                                                                                                                                                                                                                                                       |
+| **function(ai, ...)**                                                                                                                       |                                                                                                                                                                                                                                                                                                                                       |
+| [getGenerativeModel(ai, modelParams, requestOptions)](https://firebase.google.com/docs/reference/js/vertexai.md#getgenerativemodel_80bd839) | Returns a [GenerativeModel](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodel_class) class with methods for inference and other functionality.                                                                                                                                                |
+| [getImagenModel(ai, modelParams, requestOptions)](https://firebase.google.com/docs/reference/js/vertexai.md#getimagenmodel_e1f6645)         | ***(Public Preview)*** Returns an [ImagenModel](https://firebase.google.com/docs/reference/js/vertexai.imagenmodel.md#imagenmodel_class) class with methods for using Imagen.Only Imagen 3 models (named `imagen-3.0-*`) are supported.                                                                                               |
+
+## Classes
+
+|                                                          Class                                                           |                                                                                                                                                                                                                                          Description                                                                                                                                                                                                                                          |
+|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [AIError](https://firebase.google.com/docs/reference/js/vertexai.aierror.md#aierror_class)                               | Error class for the Firebase AI SDK.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [AIModel](https://firebase.google.com/docs/reference/js/vertexai.aimodel.md#aimodel_class)                               | Base class for Firebase AI model APIs.Instances of this class are associated with a specific Firebase AI [Backend](https://firebase.google.com/docs/reference/js/vertexai.backend.md#backend_class) and provide methods for interacting with the configured generative model.                                                                                                                                                                                                                 |
+| [ArraySchema](https://firebase.google.com/docs/reference/js/vertexai.arrayschema.md#arrayschema_class)                   | Schema class for "array" types. The `items` param should refer to the type of item that can be a member of the array.                                                                                                                                                                                                                                                                                                                                                                         |
+| [Backend](https://firebase.google.com/docs/reference/js/vertexai.backend.md#backend_class)                               | Abstract base class representing the configuration for an AI service backend. This class should not be instantiated directly. Use its subclasses; [GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class) for the Gemini Developer API (via [Google AI](https://ai.google/)), and [VertexAIBackend](https://firebase.google.com/docs/reference/js/vertexai.vertexaibackend.md#vertexaibackend_class) for the Vertex AI Gemini API. |
+| [BooleanSchema](https://firebase.google.com/docs/reference/js/vertexai.booleanschema.md#booleanschema_class)             | Schema class for "boolean" types.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [ChatSession](https://firebase.google.com/docs/reference/js/vertexai.chatsession.md#chatsession_class)                   | ChatSession class that enables sending chat messages and stores history of sent and received messages so far.                                                                                                                                                                                                                                                                                                                                                                                 |
+| [GenerativeModel](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodel_class)       | Class for generative model APIs.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class)       | Configuration class for the Gemini Developer API.Use this with [AIOptions](https://firebase.google.com/docs/reference/js/vertexai.aioptions.md#aioptions_interface) when initializing the AI service via [getAI()](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413) to specify the Gemini Developer API as the backend.                                                                                                                                               |
+| [ImagenImageFormat](https://firebase.google.com/docs/reference/js/vertexai.imagenimageformat.md#imagenimageformat_class) | ***(Public Preview)*** Defines the image format for images generated by Imagen.Use this class to specify the desired format (JPEG or PNG) and compression quality for images generated by Imagen. This is typically included as part of [ImagenModelParams](https://firebase.google.com/docs/reference/js/vertexai.imagenmodelparams.md#imagenmodelparams_interface).                                                                                                                         |
+| [ImagenModel](https://firebase.google.com/docs/reference/js/vertexai.imagenmodel.md#imagenmodel_class)                   | ***(Public Preview)*** Class for Imagen model APIs.This class provides methods for generating images using the Imagen model.                                                                                                                                                                                                                                                                                                                                                                  |
+| [IntegerSchema](https://firebase.google.com/docs/reference/js/vertexai.integerschema.md#integerschema_class)             | Schema class for "integer" types.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [NumberSchema](https://firebase.google.com/docs/reference/js/vertexai.numberschema.md#numberschema_class)                | Schema class for "number" types.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [ObjectSchema](https://firebase.google.com/docs/reference/js/vertexai.objectschema.md#objectschema_class)                | Schema class for "object" types. The `properties` param must be a map of `Schema` objects.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class)                                  | Parent class encompassing all Schema types, with static methods that allow building specific Schema types. This class can be converted with `JSON.stringify()` into a JSON string accepted by Vertex AI REST endpoints. (This string conversion is automatically done when calling SDK methods.)                                                                                                                                                                                              |
+| [StringSchema](https://firebase.google.com/docs/reference/js/vertexai.stringschema.md#stringschema_class)                | Schema class for "string" types. Can be used with or without enum values.                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [VertexAIBackend](https://firebase.google.com/docs/reference/js/vertexai.vertexaibackend.md#vertexaibackend_class)       | Configuration class for the Vertex AI Gemini API.Use this with [AIOptions](https://firebase.google.com/docs/reference/js/vertexai.aioptions.md#aioptions_interface) when initializing the AI service via [getAI()](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413) to specify the Vertex AI Gemini API as the backend.                                                                                                                                               |
+
+## Enumerations
+
+|                                                 Enumeration                                                  |                                                                                                                                                                                                                                                                                                                                                Description                                                                                                                                                                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [AIErrorCode](https://firebase.google.com/docs/reference/js/vertexai.md#aierrorcode)                         | Standardized error codes that [AIError](https://firebase.google.com/docs/reference/js/vertexai.aierror.md#aierror_class) can have.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [BlockReason](https://firebase.google.com/docs/reference/js/vertexai.md#blockreason)                         | Reason that a prompt was blocked.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [FinishReason](https://firebase.google.com/docs/reference/js/vertexai.md#finishreason)                       | Reason that a candidate finished.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [FunctionCallingMode](https://firebase.google.com/docs/reference/js/vertexai.md#functioncallingmode)         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [HarmBlockMethod](https://firebase.google.com/docs/reference/js/vertexai.md#harmblockmethod)                 | This property is not supported in the Gemini Developer API ([GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class)).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [HarmBlockThreshold](https://firebase.google.com/docs/reference/js/vertexai.md#harmblockthreshold)           | Threshold above which a prompt or candidate will be blocked.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [HarmCategory](https://firebase.google.com/docs/reference/js/vertexai.md#harmcategory)                       | Harm categories that would cause prompts or candidates to be blocked.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [HarmProbability](https://firebase.google.com/docs/reference/js/vertexai.md#harmprobability)                 | Probability that a prompt or candidate matches a harm category.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [HarmSeverity](https://firebase.google.com/docs/reference/js/vertexai.md#harmseverity)                       | Harm severity levels.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [ImagenAspectRatio](https://firebase.google.com/docs/reference/js/vertexai.md#imagenaspectratio)             | ***(Public Preview)*** Aspect ratios for Imagen images.To specify an aspect ratio for generated images, set the `aspectRatio` property in your [ImagenGenerationConfig](https://firebase.google.com/docs/reference/js/vertexai.imagengenerationconfig.md#imagengenerationconfig_interface).See the the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) for more details and examples of the supported aspect ratios.                                                                                                                                                                                                                                                            |
+| [ImagenPersonFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.md#imagenpersonfilterlevel) | ***(Public Preview)*** A filter level controlling whether generation of images containing people or faces is allowed.See the [personGeneration](http://firebase.google.com/docs/vertex-ai/generate-images) documentation for more details.                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [ImagenSafetyFilterLevel](https://firebase.google.com/docs/reference/js/vertexai.md#imagensafetyfilterlevel) | ***(Public Preview)*** A filter level controlling how aggressively to filter sensitive content.Text prompts provided as inputs and images (generated or uploaded) through Imagen on Vertex AI are assessed against a list of safety filters, which include 'harmful categories' (for example, `violence`, `sexual`, `derogatory`, and `toxic`). This filter level controls how aggressively to filter out potentially harmful content from responses. See the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) and the [Responsible AI and usage guidelines](https://cloud.google.com/vertex-ai/generative-ai/docs/image/responsible-ai-imagen#safety-filters) for more details. |
+| [Modality](https://firebase.google.com/docs/reference/js/vertexai.md#modality)                               | Content part modality.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [SchemaType](https://firebase.google.com/docs/reference/js/vertexai.md#schematype)                           | Contains the list of OpenAPI data types as defined by the [OpenAPI specification](https://swagger.io/docs/specification/data-models/data-types/)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+
+## Interfaces
+
+|                                                                               Interface                                                                                |                                                                                                                                                                                                                                                                                               Description                                                                                                                                                                                                                                                                                                |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface)                                                                                        | An instance of the Firebase AI SDK.Do not create this instance directly. Instead, use [getAI()](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413).                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [AIOptions](https://firebase.google.com/docs/reference/js/vertexai.aioptions.md#aioptions_interface)                                                                   | Options for initializing the AI service using [getAI()](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413). This allows specifying which backend to use (Vertex AI Gemini API or Gemini Developer API) and configuring its specific options (like location for Vertex AI).                                                                                                                                                                                                                                                                                                         |
+| [BaseParams](https://firebase.google.com/docs/reference/js/vertexai.baseparams.md#baseparams_interface)                                                                | Base parameters for a number of methods.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [Citation](https://firebase.google.com/docs/reference/js/vertexai.citation.md#citation_interface)                                                                      | A single citation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [CitationMetadata](https://firebase.google.com/docs/reference/js/vertexai.citationmetadata.md#citationmetadata_interface)                                              | Citation metadata that may be found on a [GenerateContentCandidate](https://firebase.google.com/docs/reference/js/vertexai.generatecontentcandidate.md#generatecontentcandidate_interface).                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [Content](https://firebase.google.com/docs/reference/js/vertexai.content.md#content_interface)                                                                         | Content type for both prompts and response candidates.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [CountTokensRequest](https://firebase.google.com/docs/reference/js/vertexai.counttokensrequest.md#counttokensrequest_interface)                                        | Params for calling [GenerativeModel.countTokens()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelcounttokens)                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [CountTokensResponse](https://firebase.google.com/docs/reference/js/vertexai.counttokensresponse.md#counttokensresponse_interface)                                     | Response from calling [GenerativeModel.countTokens()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelcounttokens).                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [CustomErrorData](https://firebase.google.com/docs/reference/js/vertexai.customerrordata.md#customerrordata_interface)                                                 | Details object that contains data originating from a bad HTTP response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Date_2](https://firebase.google.com/docs/reference/js/vertexai.date_2.md#date_2_interface)                                                                            | Protobuf google.type.Date                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [EnhancedGenerateContentResponse](https://firebase.google.com/docs/reference/js/vertexai.enhancedgeneratecontentresponse.md#enhancedgeneratecontentresponse_interface) | Response object wrapped with helper methods.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [ErrorDetails](https://firebase.google.com/docs/reference/js/vertexai.errordetails.md#errordetails_interface)                                                          | Details object that may be included in an error response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [FileData](https://firebase.google.com/docs/reference/js/vertexai.filedata.md#filedata_interface)                                                                      | Data pointing to a file uploaded on Google Cloud Storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [FileDataPart](https://firebase.google.com/docs/reference/js/vertexai.filedatapart.md#filedatapart_interface)                                                          | Content part interface if the part represents [FileData](https://firebase.google.com/docs/reference/js/vertexai.filedata.md#filedata_interface)                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [FunctionCall](https://firebase.google.com/docs/reference/js/vertexai.functioncall.md#functioncall_interface)                                                          | A predicted [FunctionCall](https://firebase.google.com/docs/reference/js/vertexai.functioncall.md#functioncall_interface) returned from the model that contains a string representing the [FunctionDeclaration.name](https://firebase.google.com/docs/reference/js/vertexai.functiondeclaration.md#functiondeclarationname) and a structured JSON object containing the parameters and their values.                                                                                                                                                                                                     |
+| [FunctionCallingConfig](https://firebase.google.com/docs/reference/js/vertexai.functioncallingconfig.md#functioncallingconfig_interface)                               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [FunctionCallPart](https://firebase.google.com/docs/reference/js/vertexai.functioncallpart.md#functioncallpart_interface)                                              | Content part interface if the part represents a [FunctionCall](https://firebase.google.com/docs/reference/js/vertexai.functioncall.md#functioncall_interface).                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [FunctionDeclaration](https://firebase.google.com/docs/reference/js/vertexai.functiondeclaration.md#functiondeclaration_interface)                                     | Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name and parameters. This `FunctionDeclaration` is a representation of a block of code that can be used as a Tool by the model and executed by the client.                                                                                                                                                                                                                                                        |
+| [FunctionDeclarationsTool](https://firebase.google.com/docs/reference/js/vertexai.functiondeclarationstool.md#functiondeclarationstool_interface)                      | A `FunctionDeclarationsTool` is a piece of code that enables the system to interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the model.                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [FunctionResponse](https://firebase.google.com/docs/reference/js/vertexai.functionresponse.md#functionresponse_interface)                                              | The result output from a [FunctionCall](https://firebase.google.com/docs/reference/js/vertexai.functioncall.md#functioncall_interface) that contains a string representing the [FunctionDeclaration.name](https://firebase.google.com/docs/reference/js/vertexai.functiondeclaration.md#functiondeclarationname) and a structured JSON object containing any output from the function is used as context to the model. This should contain the result of a [FunctionCall](https://firebase.google.com/docs/reference/js/vertexai.functioncall.md#functioncall_interface) made based on model prediction. |
+| [FunctionResponsePart](https://firebase.google.com/docs/reference/js/vertexai.functionresponsepart.md#functionresponsepart_interface)                                  | Content part interface if the part represents [FunctionResponse](https://firebase.google.com/docs/reference/js/vertexai.functionresponse.md#functionresponse_interface).                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [GenerateContentCandidate](https://firebase.google.com/docs/reference/js/vertexai.generatecontentcandidate.md#generatecontentcandidate_interface)                      | A candidate returned as part of a [GenerateContentResponse](https://firebase.google.com/docs/reference/js/vertexai.generatecontentresponse.md#generatecontentresponse_interface).                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [GenerateContentRequest](https://firebase.google.com/docs/reference/js/vertexai.generatecontentrequest.md#generatecontentrequest_interface)                            | Request sent through [GenerativeModel.generateContent()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelgeneratecontent)                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [GenerateContentResponse](https://firebase.google.com/docs/reference/js/vertexai.generatecontentresponse.md#generatecontentresponse_interface)                         | Individual response from [GenerativeModel.generateContent()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelgeneratecontent) and [GenerativeModel.generateContentStream()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelgeneratecontentstream). `generateContentStream()` will return one in each chunk until the stream is done.                                                                                                                                                                                  |
+| [GenerateContentResult](https://firebase.google.com/docs/reference/js/vertexai.generatecontentresult.md#generatecontentresult_interface)                               | Result object returned from [GenerativeModel.generateContent()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelgeneratecontent) call.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [GenerateContentStreamResult](https://firebase.google.com/docs/reference/js/vertexai.generatecontentstreamresult.md#generatecontentstreamresult_interface)             | Result object returned from [GenerativeModel.generateContentStream()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelgeneratecontentstream) call. Iterate over `stream` to get chunks as they come in and/or use the `response` promise to get the aggregated response when the stream is done.                                                                                                                                                                                                                                                                |
+| [GenerationConfig](https://firebase.google.com/docs/reference/js/vertexai.generationconfig.md#generationconfig_interface)                                              | Config options for content-related requests                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [GenerativeContentBlob](https://firebase.google.com/docs/reference/js/vertexai.generativecontentblob.md#generativecontentblob_interface)                               | Interface for sending an image.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [GroundingAttribution](https://firebase.google.com/docs/reference/js/vertexai.groundingattribution.md#groundingattribution_interface)                                  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [GroundingMetadata](https://firebase.google.com/docs/reference/js/vertexai.groundingmetadata.md#groundingmetadata_interface)                                           | Metadata returned to client when grounding is enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [ImagenGCSImage](https://firebase.google.com/docs/reference/js/vertexai.imagengcsimage.md#imagengcsimage_interface)                                                    | An image generated by Imagen, stored in a Cloud Storage for Firebase bucket.This feature is not available yet.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ImagenGenerationConfig](https://firebase.google.com/docs/reference/js/vertexai.imagengenerationconfig.md#imagengenerationconfig_interface)                            | ***(Public Preview)*** Configuration options for generating images with Imagen.See the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images-imagen) for more details.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| [ImagenGenerationResponse](https://firebase.google.com/docs/reference/js/vertexai.imagengenerationresponse.md#imagengenerationresponse_interface)                      | ***(Public Preview)*** The response from a request to generate images with Imagen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [ImagenInlineImage](https://firebase.google.com/docs/reference/js/vertexai.imageninlineimage.md#imageninlineimage_interface)                                           | ***(Public Preview)*** An image generated by Imagen, represented as inline data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [ImagenModelParams](https://firebase.google.com/docs/reference/js/vertexai.imagenmodelparams.md#imagenmodelparams_interface)                                           | ***(Public Preview)*** Parameters for configuring an [ImagenModel](https://firebase.google.com/docs/reference/js/vertexai.imagenmodel.md#imagenmodel_class).                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [ImagenSafetySettings](https://firebase.google.com/docs/reference/js/vertexai.imagensafetysettings.md#imagensafetysettings_interface)                                  | ***(Public Preview)*** Settings for controlling the aggressiveness of filtering out sensitive content.See the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) for more details.                                                                                                                                                                                                                                                                                                                                                                                               |
+| [InlineDataPart](https://firebase.google.com/docs/reference/js/vertexai.inlinedatapart.md#inlinedatapart_interface)                                                    | Content part interface if the part represents an image.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [ModalityTokenCount](https://firebase.google.com/docs/reference/js/vertexai.modalitytokencount.md#modalitytokencount_interface)                                        | Represents token counting info for a single modality.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [ModelParams](https://firebase.google.com/docs/reference/js/vertexai.modelparams.md#modelparams_interface)                                                             | Params passed to [getGenerativeModel()](https://firebase.google.com/docs/reference/js/vertexai.md#getgenerativemodel_80bd839).                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [ObjectSchemaInterface](https://firebase.google.com/docs/reference/js/vertexai.objectschemainterface.md#objectschemainterface_interface)                               | Interface for [ObjectSchema](https://firebase.google.com/docs/reference/js/vertexai.objectschema.md#objectschema_class) class.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [PromptFeedback](https://firebase.google.com/docs/reference/js/vertexai.promptfeedback.md#promptfeedback_interface)                                                    | If the prompt was blocked, this will be populated with `blockReason` and the relevant `safetyRatings`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [RequestOptions](https://firebase.google.com/docs/reference/js/vertexai.requestoptions.md#requestoptions_interface)                                                    | Params passed to [getGenerativeModel()](https://firebase.google.com/docs/reference/js/vertexai.md#getgenerativemodel_80bd839).                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [RetrievedContextAttribution](https://firebase.google.com/docs/reference/js/vertexai.retrievedcontextattribution.md#retrievedcontextattribution_interface)             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [SafetyRating](https://firebase.google.com/docs/reference/js/vertexai.safetyrating.md#safetyrating_interface)                                                          | A safety rating associated with a [GenerateContentCandidate](https://firebase.google.com/docs/reference/js/vertexai.generatecontentcandidate.md#generatecontentcandidate_interface)                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [SafetySetting](https://firebase.google.com/docs/reference/js/vertexai.safetysetting.md#safetysetting_interface)                                                       | Safety setting that can be sent as part of request parameters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [SchemaInterface](https://firebase.google.com/docs/reference/js/vertexai.schemainterface.md#schemainterface_interface)                                                 | Interface for [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class) class.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [SchemaParams](https://firebase.google.com/docs/reference/js/vertexai.schemaparams.md#schemaparams_interface)                                                          | Params passed to [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class) static methods to create specific [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class) classes.                                                                                                                                                                                                                                                                                                                                                              |
+| [SchemaRequest](https://firebase.google.com/docs/reference/js/vertexai.schemarequest.md#schemarequest_interface)                                                       | Final format for [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class) params passed to backend requests.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| [SchemaShared](https://firebase.google.com/docs/reference/js/vertexai.schemashared.md#schemashared_interface)                                                          | Basic [Schema](https://firebase.google.com/docs/reference/js/vertexai.schema.md#schema_class) properties shared across several Schema-related types.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [Segment](https://firebase.google.com/docs/reference/js/vertexai.segment.md#segment_interface)                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [StartChatParams](https://firebase.google.com/docs/reference/js/vertexai.startchatparams.md#startchatparams_interface)                                                 | Params for [GenerativeModel.startChat()](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodelstartchat).                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [TextPart](https://firebase.google.com/docs/reference/js/vertexai.textpart.md#textpart_interface)                                                                      | Content part interface if the part represents a text string.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [ToolConfig](https://firebase.google.com/docs/reference/js/vertexai.toolconfig.md#toolconfig_interface)                                                                | Tool config. This config is shared for all tools provided in the request.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [UsageMetadata](https://firebase.google.com/docs/reference/js/vertexai.usagemetadata.md#usagemetadata_interface)                                                       | Usage metadata about a [GenerateContentResponse](https://firebase.google.com/docs/reference/js/vertexai.generatecontentresponse.md#generatecontentresponse_interface).                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [VertexAIOptions](https://firebase.google.com/docs/reference/js/vertexai.vertexaioptions.md#vertexaioptions_interface)                                                 | Options when initializing the Firebase AI SDK.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| [VideoMetadata](https://firebase.google.com/docs/reference/js/vertexai.videometadata.md#videometadata_interface)                                                       | Describes the input video content.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [WebAttribution](https://firebase.google.com/docs/reference/js/vertexai.webattribution.md#webattribution_interface)                                                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+## Variables
+
+|                                            Variable                                            |                                                                                                                                                                                                                                                                                                     Description                                                                                                                                                                                                                                                                                                      |
+|------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [BackendType](https://firebase.google.com/docs/reference/js/vertexai.md#backendtype)           | An enum-like object containing constants that represent the supported backends for the Firebase AI SDK. This determines which backend service (Vertex AI Gemini API or Gemini Developer API) the SDK will communicate with.These values are assigned to the `backendType` property within the specific backend configuration objects ([GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class) or [VertexAIBackend](https://firebase.google.com/docs/reference/js/vertexai.vertexaibackend.md#vertexaibackend_class)) to identify which service to target. |
+| [POSSIBLE_ROLES](https://firebase.google.com/docs/reference/js/vertexai.md#possible_roles)     | Possible roles.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [ResponseModality](https://firebase.google.com/docs/reference/js/vertexai.md#responsemodality) | ***(Public Preview)*** Generation modalities to be returned in generation responses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [VertexAIError](https://firebase.google.com/docs/reference/js/vertexai.md#vertexaierror)       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| [VertexAIModel](https://firebase.google.com/docs/reference/js/vertexai.md#vertexaimodel)       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+## Type Aliases
+
+|                                           Type Alias                                           |                                          Description                                          |
+|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| [BackendType](https://firebase.google.com/docs/reference/js/vertexai.md#backendtype)           | Type alias representing valid backend types. It can be either `'VERTEX_AI'` or `'GOOGLE_AI'`. |
+| [Part](https://firebase.google.com/docs/reference/js/vertexai.md#part)                         | Content part - includes text, image/video, or function call/response part types.              |
+| [ResponseModality](https://firebase.google.com/docs/reference/js/vertexai.md#responsemodality) | ***(Public Preview)*** Generation modalities to be returned in generation responses.          |
+| [Role](https://firebase.google.com/docs/reference/js/vertexai.md#role)                         | Role is the producer of the content.                                                          |
+| [Tool](https://firebase.google.com/docs/reference/js/vertexai.md#tool)                         | Defines a tool that model can call to access external knowledge.                              |
+| [TypedSchema](https://firebase.google.com/docs/reference/js/vertexai.md#typedschema)           | A type that includes all specific Schema types.                                               |
+| [VertexAI](https://firebase.google.com/docs/reference/js/vertexai.md#vertexai)                 |                                                                                               |
+
+## function(app, ...)
+
+### getAI(app, options)
+
+Returns the default [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface) instance that is associated with the provided [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface). If no instance exists, initializes a new instance with the default settings.
+
+**Signature:**  
+
+    export declare function getAI(app?: FirebaseApp, options?: AIOptions): AI;
+
+#### Parameters
+
+| Parameter |                                                 Type                                                  |                                                             Description                                                              |
+|-----------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| app       | [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface) | The [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface) to use.                    |
+| options   | [AIOptions](https://firebase.google.com/docs/reference/js/vertexai.aioptions.md#aioptions_interface)  | [AIOptions](https://firebase.google.com/docs/reference/js/vertexai.aioptions.md#aioptions_interface) that configure the AI instance. |
+
+**Returns:**
+
+[AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface)
+
+The default [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface) instance for the given [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface).
+
+### Example 1
+
+    const ai = getAI(app);
+
+### Example 2
+
+    // Get an AI instance configured to use the Gemini Developer API (via Google AI).
+    const ai = getAI(app, { backend: new GoogleAIBackend() });
+
+### Example 3
+
+    // Get an AI instance configured to use the Vertex AI Gemini API.
+    const ai = getAI(app, { backend: new VertexAIBackend() });
+
+### getVertexAI(app, options)
+
+> | **Warning:** This API is now obsolete.
+>
+> Use the new [getAI()](https://firebase.google.com/docs/reference/js/vertexai.md#getai_a94a413) instead. The Vertex AI in Firebase SDK has been replaced with the Firebase AI SDK to accommodate the evolving set of supported features and services. For migration details, see the [migration guide](https://firebase.google.com/docs/vertex-ai/migrate-to-latest-sdk).
+>
+> Returns a [VertexAI](https://firebase.google.com/docs/reference/js/vertexai.md#vertexai) instance for the given app, configured to use the Vertex AI Gemini API. This instance will be configured to use the Vertex AI Gemini API.
+
+**Signature:**  
+
+    export declare function getVertexAI(app?: FirebaseApp, options?: VertexAIOptions): VertexAI;
+
+#### Parameters
+
+| Parameter |                                                          Type                                                          |                                                    Description                                                    |
+|-----------|------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| app       | [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface)                  | The [FirebaseApp](https://firebase.google.com/docs/reference/js/app.firebaseapp.md#firebaseapp_interface) to use. |
+| options   | [VertexAIOptions](https://firebase.google.com/docs/reference/js/vertexai.vertexaioptions.md#vertexaioptions_interface) | Options to configure the Vertex AI instance, including the location.                                              |
+
+**Returns:**
+
+[VertexAI](https://firebase.google.com/docs/reference/js/vertexai.md#vertexai)
+
+## function(ai, ...)
+
+### getGenerativeModel(ai, modelParams, requestOptions)
+
+Returns a [GenerativeModel](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodel_class) class with methods for inference and other functionality.
+
+**Signature:**  
+
+    export declare function getGenerativeModel(ai: AI, modelParams: ModelParams, requestOptions?: RequestOptions): GenerativeModel;
+
+#### Parameters
+
+|   Parameter    |                                                        Type                                                         | Description |
+|----------------|---------------------------------------------------------------------------------------------------------------------|-------------|
+| ai             | [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface)                                     |             |
+| modelParams    | [ModelParams](https://firebase.google.com/docs/reference/js/vertexai.modelparams.md#modelparams_interface)          |             |
+| requestOptions | [RequestOptions](https://firebase.google.com/docs/reference/js/vertexai.requestoptions.md#requestoptions_interface) |             |
+
+**Returns:**
+
+[GenerativeModel](https://firebase.google.com/docs/reference/js/vertexai.generativemodel.md#generativemodel_class)
+
+### getImagenModel(ai, modelParams, requestOptions)
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Returns an [ImagenModel](https://firebase.google.com/docs/reference/js/vertexai.imagenmodel.md#imagenmodel_class) class with methods for using Imagen.
+
+Only Imagen 3 models (named `imagen-3.0-*`) are supported.
+
+**Signature:**  
+
+    export declare function getImagenModel(ai: AI, modelParams: ImagenModelParams, requestOptions?: RequestOptions): ImagenModel;
+
+#### Parameters
+
+|   Parameter    |                                                             Type                                                             |                                         Description                                          |
+|----------------|------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| ai             | [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface)                                              | An [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface) instance. |
+| modelParams    | [ImagenModelParams](https://firebase.google.com/docs/reference/js/vertexai.imagenmodelparams.md#imagenmodelparams_interface) | Parameters to use when making Imagen requests.                                               |
+| requestOptions | [RequestOptions](https://firebase.google.com/docs/reference/js/vertexai.requestoptions.md#requestoptions_interface)          | Additional options to use when making requests.                                              |
+
+**Returns:**
+
+[ImagenModel](https://firebase.google.com/docs/reference/js/vertexai.imagenmodel.md#imagenmodel_class)
+
+#### Exceptions
+
+If the `apiKey` or `projectId` fields are missing in your Firebase config.
+
+## BackendType
+
+An enum-like object containing constants that represent the supported backends for the Firebase AI SDK. This determines which backend service (Vertex AI Gemini API or Gemini Developer API) the SDK will communicate with.
+
+These values are assigned to the `backendType` property within the specific backend configuration objects ([GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class) or [VertexAIBackend](https://firebase.google.com/docs/reference/js/vertexai.vertexaibackend.md#vertexaibackend_class)) to identify which service to target.
+
+**Signature:**  
+
+    BackendType: {
+        readonly VERTEX_AI: "VERTEX_AI";
+        readonly GOOGLE_AI: "GOOGLE_AI";
+    }
+
+## POSSIBLE_ROLES
+
+Possible roles.
+
+**Signature:**  
+
+    POSSIBLE_ROLES: readonly ["user", "model", "function", "system"]
+
+## ResponseModality
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Generation modalities to be returned in generation responses.
+
+**Signature:**  
+
+    ResponseModality: {
+        readonly TEXT: "TEXT";
+        readonly IMAGE: "IMAGE";
+    }
+
+## VertexAIError
+
+> | **Warning:** This API is now obsolete.
+>
+> Use the new [AIError](https://firebase.google.com/docs/reference/js/vertexai.aierror.md#aierror_class) instead. The Vertex AI in Firebase SDK has been replaced with the Firebase AI SDK to accommodate the evolving set of supported features and services. For migration details, see the [migration guide](https://firebase.google.com/docs/vertex-ai/migrate-to-latest-sdk).
+>
+> Error class for the Firebase AI SDK.
+
+**Signature:**  
+
+    VertexAIError: typeof AIError
+
+## VertexAIModel
+
+> | **Warning:** This API is now obsolete.
+>
+> Use the new [AIModel](https://firebase.google.com/docs/reference/js/vertexai.aimodel.md#aimodel_class) instead. The Vertex AI in Firebase SDK has been replaced with the Firebase AI SDK to accommodate the evolving set of supported features and services. For migration details, see the [migration guide](https://firebase.google.com/docs/vertex-ai/migrate-to-latest-sdk).
+>
+> Base class for Firebase AI model APIs.
+
+**Signature:**  
+
+    VertexAIModel: typeof AIModel
+
+## BackendType
+
+Type alias representing valid backend types. It can be either `'VERTEX_AI'` or `'GOOGLE_AI'`.
+
+**Signature:**  
+
+    export type BackendType = (typeof BackendType)[keyof typeof BackendType];
+
+## Part
+
+Content part - includes text, image/video, or function call/response part types.
+
+**Signature:**  
+
+    export type Part = TextPart | InlineDataPart | FunctionCallPart | FunctionResponsePart | FileDataPart;
+
+## ResponseModality
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Generation modalities to be returned in generation responses.
+
+**Signature:**  
+
+    export type ResponseModality = (typeof ResponseModality)[keyof typeof ResponseModality];
+
+## Role
+
+Role is the producer of the content.
+
+**Signature:**  
+
+    export type Role = (typeof POSSIBLE_ROLES)[number];
+
+## Tool
+
+Defines a tool that model can call to access external knowledge.
+
+**Signature:**  
+
+    export declare type Tool = FunctionDeclarationsTool;
+
+## TypedSchema
+
+A type that includes all specific Schema types.
+
+**Signature:**  
+
+    export type TypedSchema = IntegerSchema | NumberSchema | StringSchema | BooleanSchema | ObjectSchema | ArraySchema;
+
+## VertexAI
+
+> | **Warning:** This API is now obsolete.
+>
+> Use the new [AI](https://firebase.google.com/docs/reference/js/vertexai.ai.md#ai_interface) instead. The Vertex AI in Firebase SDK has been replaced with the Firebase AI SDK to accommodate the evolving set of supported features and services. For migration details, see the [migration guide](https://firebase.google.com/docs/vertex-ai/migrate-to-latest-sdk).
+>
+> An instance of the Firebase AI SDK.
+
+**Signature:**  
+
+    export type VertexAI = AI;
+
+## AIErrorCode
+
+Standardized error codes that [AIError](https://firebase.google.com/docs/reference/js/vertexai.aierror.md#aierror_class) can have.
+
+**Signature:**  
+
+    export declare const enum AIErrorCode 
+
+## Enumeration Members
+
+|     Member      |        Value        |                                   Description                                    |
+|-----------------|---------------------|----------------------------------------------------------------------------------|
+| API_NOT_ENABLED | `"api-not-enabled"` | An error due to the Firebase API not being enabled in the Console.               |
+| ERROR           | `"error"`           | A generic error occurred.                                                        |
+| FETCH_ERROR     | `"fetch-error"`     | An error occurred while performing a fetch.                                      |
+| INVALID_CONTENT | `"invalid-content"` | An error associated with a Content object.                                       |
+| INVALID_SCHEMA  | `"invalid-schema"`  | An error due to invalid Schema input.                                            |
+| NO_API_KEY      | `"no-api-key"`      | An error occurred due to a missing Firebase API key.                             |
+| NO_APP_ID       | `"no-app-id"`       | An error occured due to a missing Firebase app ID.                               |
+| NO_MODEL        | `"no-model"`        | An error occurred due to a model name not being specified during initialization. |
+| NO_PROJECT_ID   | `"no-project-id"`   | An error occurred due to a missing project ID.                                   |
+| PARSE_FAILED    | `"parse-failed"`    | An error occurred while parsing.                                                 |
+| REQUEST_ERROR   | `"request-error"`   | An error occurred in a request.                                                  |
+| RESPONSE_ERROR  | `"response-error"`  | An error occurred in a response.                                                 |
+| UNSUPPORTED     | `"unsupported"`     | An error occured due an attempt to use an unsupported feature.                   |
+
+## BlockReason
+
+Reason that a prompt was blocked.
+
+**Signature:**  
+
+    export declare enum BlockReason 
+
+## Enumeration Members
+
+|       Member       |         Value          |                                  Description                                   |
+|--------------------|------------------------|--------------------------------------------------------------------------------|
+| BLOCKLIST          | `"BLOCKLIST"`          | Content was blocked because it contained terms from the terminology blocklist. |
+| OTHER              | `"OTHER"`              | Content was blocked, but the reason is uncategorized.                          |
+| PROHIBITED_CONTENT | `"PROHIBITED_CONTENT"` | Content was blocked due to prohibited content.                                 |
+| SAFETY             | `"SAFETY"`             | Content was blocked by safety settings.                                        |
+
+## FinishReason
+
+Reason that a candidate finished.
+
+**Signature:**  
+
+    export declare enum FinishReason 
+
+## Enumeration Members
+
+|         Member          |            Value            |                                            Description                                            |
+|-------------------------|-----------------------------|---------------------------------------------------------------------------------------------------|
+| BLOCKLIST               | `"BLOCKLIST"`               | The candidate content contained forbidden terms.                                                  |
+| MALFORMED_FUNCTION_CALL | `"MALFORMED_FUNCTION_CALL"` | The function call generated by the model was invalid.                                             |
+| MAX_TOKENS              | `"MAX_TOKENS"`              | The maximum number of tokens as specified in the request was reached.                             |
+| OTHER                   | `"OTHER"`                   | Unknown reason.                                                                                   |
+| PROHIBITED_CONTENT      | `"PROHIBITED_CONTENT"`      | The candidate content potentially contained prohibited content.                                   |
+| RECITATION              | `"RECITATION"`              | The candidate content was flagged for recitation reasons.                                         |
+| SAFETY                  | `"SAFETY"`                  | The candidate content was flagged for safety reasons.                                             |
+| SPII                    | `"SPII"`                    | The candidate content potentially contained Sensitive Personally Identifiable Information (SPII). |
+| STOP                    | `"STOP"`                    | Natural stop point of the model or provided stop sequence.                                        |
+
+## FunctionCallingMode
+
+**Signature:**  
+
+    export declare enum FunctionCallingMode 
+
+## Enumeration Members
+
+| Member |  Value   |                                                                                                                                    Description                                                                                                                                    |
+|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ANY    | `"ANY"`  | Model is constrained to always predicting a function call only. If `allowed_function_names` is set, the predicted function call will be limited to any one of `allowed_function_names`, else the predicted function call will be any one of the provided `function_declarations`. |
+| AUTO   | `"AUTO"` | Default model behavior; model decides to predict either a function call or a natural language response.                                                                                                                                                                           |
+| NONE   | `"NONE"` | Model will not predict any function call. Model behavior is same as when not passing any function declarations.                                                                                                                                                                   |
+
+## HarmBlockMethod
+
+This property is not supported in the Gemini Developer API ([GoogleAIBackend](https://firebase.google.com/docs/reference/js/vertexai.googleaibackend.md#googleaibackend_class)).
+
+**Signature:**  
+
+    export declare enum HarmBlockMethod 
+
+## Enumeration Members
+
+|   Member    |      Value      |                           Description                            |
+|-------------|-----------------|------------------------------------------------------------------|
+| PROBABILITY | `"PROBABILITY"` | The harm block method uses the probability score.                |
+| SEVERITY    | `"SEVERITY"`    | The harm block method uses both probability and severity scores. |
+
+## HarmBlockThreshold
+
+Threshold above which a prompt or candidate will be blocked.
+
+**Signature:**  
+
+    export declare enum HarmBlockThreshold 
+
+## Enumeration Members
+
+|         Member         |           Value            |                           Description                           |
+|------------------------|----------------------------|-----------------------------------------------------------------|
+| BLOCK_LOW_AND_ABOVE    | `"BLOCK_LOW_AND_ABOVE"`    | Content with `NEGLIGIBLE` will be allowed.                      |
+| BLOCK_MEDIUM_AND_ABOVE | `"BLOCK_MEDIUM_AND_ABOVE"` | Content with `NEGLIGIBLE` and `LOW` will be allowed.            |
+| BLOCK_NONE             | `"BLOCK_NONE"`             | All content will be allowed.                                    |
+| BLOCK_ONLY_HIGH        | `"BLOCK_ONLY_HIGH"`        | Content with `NEGLIGIBLE`, `LOW`, and `MEDIUM` will be allowed. |
+
+## HarmCategory
+
+Harm categories that would cause prompts or candidates to be blocked.
+
+**Signature:**  
+
+    export declare enum HarmCategory 
+
+## Enumeration Members
+
+|             Member              |                Value                | Description |
+|---------------------------------|-------------------------------------|-------------|
+| HARM_CATEGORY_DANGEROUS_CONTENT | `"HARM_CATEGORY_DANGEROUS_CONTENT"` |             |
+| HARM_CATEGORY_HARASSMENT        | `"HARM_CATEGORY_HARASSMENT"`        |             |
+| HARM_CATEGORY_HATE_SPEECH       | `"HARM_CATEGORY_HATE_SPEECH"`       |             |
+| HARM_CATEGORY_SEXUALLY_EXPLICIT | `"HARM_CATEGORY_SEXUALLY_EXPLICIT"` |             |
+
+## HarmProbability
+
+Probability that a prompt or candidate matches a harm category.
+
+**Signature:**  
+
+    export declare enum HarmProbability 
+
+## Enumeration Members
+
+|   Member   |     Value      |                   Description                    |
+|------------|----------------|--------------------------------------------------|
+| HIGH       | `"HIGH"`       | Content has a high chance of being unsafe.       |
+| LOW        | `"LOW"`        | Content has a low chance of being unsafe.        |
+| MEDIUM     | `"MEDIUM"`     | Content has a medium chance of being unsafe.     |
+| NEGLIGIBLE | `"NEGLIGIBLE"` | Content has a negligible chance of being unsafe. |
+
+## HarmSeverity
+
+Harm severity levels.
+
+**Signature:**  
+
+    export declare enum HarmSeverity 
+
+## Enumeration Members
+
+|          Member           |             Value             |            Description             |
+|---------------------------|-------------------------------|------------------------------------|
+| HARM_SEVERITY_HIGH        | `"HARM_SEVERITY_HIGH"`        | High level of harm severity.       |
+| HARM_SEVERITY_LOW         | `"HARM_SEVERITY_LOW"`         | Low level of harm severity.        |
+| HARM_SEVERITY_MEDIUM      | `"HARM_SEVERITY_MEDIUM"`      | Medium level of harm severity.     |
+| HARM_SEVERITY_NEGLIGIBLE  | `"HARM_SEVERITY_NEGLIGIBLE"`  | Negligible level of harm severity. |
+| HARM_SEVERITY_UNSUPPORTED | `"HARM_SEVERITY_UNSUPPORTED"` | Harm severity is not supported.    |
+
+## ImagenAspectRatio
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Aspect ratios for Imagen images.
+
+To specify an aspect ratio for generated images, set the `aspectRatio` property in your [ImagenGenerationConfig](https://firebase.google.com/docs/reference/js/vertexai.imagengenerationconfig.md#imagengenerationconfig_interface).
+
+See the the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) for more details and examples of the supported aspect ratios.
+
+**Signature:**  
+
+    export declare enum ImagenAspectRatio 
+
+## Enumeration Members
+
+|     Member     |  Value   |                      Description                      |
+|----------------|----------|-------------------------------------------------------|
+| LANDSCAPE_16x9 | `"16:9"` | ***(Public Preview)*** Landscape (16:9) aspect ratio. |
+| LANDSCAPE_3x4  | `"3:4"`  | ***(Public Preview)*** Landscape (3:4) aspect ratio.  |
+| PORTRAIT_4x3   | `"4:3"`  | ***(Public Preview)*** Portrait (4:3) aspect ratio.   |
+| PORTRAIT_9x16  | `"9:16"` | ***(Public Preview)*** Portrait (9:16) aspect ratio.  |
+| SQUARE         | `"1:1"`  | ***(Public Preview)*** Square (1:1) aspect ratio.     |
+
+## ImagenPersonFilterLevel
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+A filter level controlling whether generation of images containing people or faces is allowed.
+
+See the [personGeneration](http://firebase.google.com/docs/vertex-ai/generate-images) documentation for more details.
+
+**Signature:**  
+
+    export declare enum ImagenPersonFilterLevel 
+
+## Enumeration Members
+
+|   Member    |      Value      |                                                                                                                                                                                               Description                                                                                                                                                                                                |
+|-------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ALLOW_ADULT | `"allow_adult"` | ***(Public Preview)*** Allow generation of images containing adults only; images of children are filtered out.Generation of images containing people or faces may require your use case to be reviewed and approved by Cloud support; see the [Responsible AI and usage guidelines](https://cloud.google.com/vertex-ai/generative-ai/docs/image/responsible-ai-imagen#person-face-gen) for more details. |
+| ALLOW_ALL   | `"allow_all"`   | ***(Public Preview)*** Allow generation of images containing adults only; images of children are filtered out.Generation of images containing people or faces may require your use case to be reviewed and approved by Cloud support; see the [Responsible AI and usage guidelines](https://cloud.google.com/vertex-ai/generative-ai/docs/image/responsible-ai-imagen#person-face-gen) for more details. |
+| BLOCK_ALL   | `"dont_allow"`  | ***(Public Preview)*** Disallow generation of images containing people or faces; images of people are filtered out.                                                                                                                                                                                                                                                                                      |
+
+## ImagenSafetyFilterLevel
+
+> This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+A filter level controlling how aggressively to filter sensitive content.
+
+Text prompts provided as inputs and images (generated or uploaded) through Imagen on Vertex AI are assessed against a list of safety filters, which include 'harmful categories' (for example, `violence`, `sexual`, `derogatory`, and `toxic`). This filter level controls how aggressively to filter out potentially harmful content from responses. See the [documentation](http://firebase.google.com/docs/vertex-ai/generate-images) and the [Responsible AI and usage guidelines](https://cloud.google.com/vertex-ai/generative-ai/docs/image/responsible-ai-imagen#safety-filters) for more details.
+
+**Signature:**  
+
+    export declare enum ImagenSafetyFilterLevel 
+
+## Enumeration Members
+
+|         Member         |           Value            |                                                                                                        Description                                                                                                        |
+|------------------------|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| BLOCK_LOW_AND_ABOVE    | `"block_low_and_above"`    | ***(Public Preview)*** The most aggressive filtering level; most strict blocking.                                                                                                                                         |
+| BLOCK_MEDIUM_AND_ABOVE | `"block_medium_and_above"` | ***(Public Preview)*** Blocks some sensitive prompts and responses.                                                                                                                                                       |
+| BLOCK_NONE             | `"block_none"`             | ***(Public Preview)*** The least aggressive filtering level; blocks very few sensitive prompts and responses.Access to this feature is restricted and may require your case to be reviewed and approved by Cloud support. |
+| BLOCK_ONLY_HIGH        | `"block_only_high"`        | ***(Public Preview)*** Blocks few sensitive prompts and responses.                                                                                                                                                        |
+
+## Modality
+
+Content part modality.
+
+**Signature:**  
+
+    export declare enum Modality 
+
+## Enumeration Members
+
+|        Member        |          Value           |         Description          |
+|----------------------|--------------------------|------------------------------|
+| AUDIO                | `"AUDIO"`                | Audio.                       |
+| DOCUMENT             | `"DOCUMENT"`             | Document (for example, PDF). |
+| IMAGE                | `"IMAGE"`                | Image.                       |
+| MODALITY_UNSPECIFIED | `"MODALITY_UNSPECIFIED"` | Unspecified modality.        |
+| TEXT                 | `"TEXT"`                 | Plain text.                  |
+| VIDEO                | `"VIDEO"`                | Video.                       |
+
+## SchemaType
+
+Contains the list of OpenAPI data types as defined by the [OpenAPI specification](https://swagger.io/docs/specification/data-models/data-types/)
+
+**Signature:**  
+
+    export declare enum SchemaType 
+
+## Enumeration Members
+
+| Member  |    Value    |  Description  |
+|---------|-------------|---------------|
+| ARRAY   | `"array"`   | Array type.   |
+| BOOLEAN | `"boolean"` | Boolean type. |
+| INTEGER | `"integer"` | Integer type. |
+| NUMBER  | `"number"`  | Number type.  |
+| OBJECT  | `"object"`  | Object type.  |
+| STRING  | `"string"`  | String type.  |
