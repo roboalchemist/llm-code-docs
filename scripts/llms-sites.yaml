@@ -903,6 +903,9 @@ sites:
 - name: windsurf
   base_url: https://docs.windsurf.com/
   description: Windsurf AI-powered code editor
+- name: workos
+  base_url: https://workos.com/docs/
+  description: WorkOS developer APIs for enterprise features (SSO, Directory Sync, AuthKit, User Management)
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
