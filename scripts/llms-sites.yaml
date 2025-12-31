@@ -15,7 +15,8 @@ sites:
   description: Agent Domain (.agent TLD) AI ecosystem
 - name: agentskills-best
   base_url: https://agentskills.best/
-  description: Agent Skills marketplace for Claude with tutorials and downloadable SKILL.md files
+  description: Agent Skills marketplace for Claude with tutorials and downloadable
+    SKILL.md files
 - name: agentskills-io
   base_url: https://agentskills.io/
   description: Agent Skills open format specification for portable AI agent skills
@@ -60,7 +61,8 @@ sites:
   description: Aporia ML observability and monitoring platform
 - name: apollo-graphql
   base_url: https://www.apollographql.com/docs/
-  description: Apollo GraphQL platform - GraphQL client and server tools including Apollo Client, Apollo Server, and GraphOS
+  description: Apollo GraphQL platform - GraphQL client and server tools including
+    Apollo Client, Apollo Server, and GraphOS
 - name: aptible
   base_url: https://www.aptible.com/docs/
   description: Aptible documentation
@@ -68,7 +70,7 @@ sites:
   base_url: https://docs.argil.ai/
   description: Argil AI automation and workflow platform
 - name: ark-ui
-  base_url: https://ark-ui.com/docs/
+  base_url: https://ark-ui.com/
   description: Ark UI headless component library
 - name: asapp
   base_url: https://docs.asapp.com/
@@ -78,10 +80,12 @@ sites:
   description: ast-grep code search and transformation tool
 - name: aws
   base_url: https://docs.aws.amazon.com/
-  description: Amazon Web Services documentation (all services including DynamoDB, EC2, Lambda, S3)
+  description: Amazon Web Services documentation (all services including DynamoDB,
+    EC2, Lambda, S3)
 - name: aws-cli
   base_url: https://docs.aws.amazon.com/cli/latest/userguide/
-  description: AWS Command Line Interface (CLI) v2 User Guide - installation, configuration, authentication, and usage
+  description: AWS Command Line Interface (CLI) v2 User Guide - installation, configuration,
+    authentication, and usage
 - name: aws-dynamodb
   base_url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
   description: Amazon DynamoDB NoSQL database developer guide
@@ -116,7 +120,7 @@ sites:
   base_url: https://docs.baseten.co/
   description: Baseten documentation
 - name: better-auth
-  base_url: https://www.better-auth.com/docs/
+  base_url: https://www.better-auth.com/
   description: Better Auth authentication library
 - name: bika
   base_url: https://bika.ai/
@@ -130,9 +134,6 @@ sites:
 - name: braintree
   base_url: https://developer.paypal.com/braintree/
   description: Braintree payment platform by PayPal
-- name: bucket
-  base_url: https://docs.bucket.io/
-  description: Bucket feature flag management
 - name: bun
   base_url: https://bun.sh/
   description: Bun JavaScript runtime and toolkit
@@ -149,7 +150,7 @@ sites:
   base_url: https://docs.chatling.ai/
   description: Chatling AI chatbot builder platform
 - name: circleci
-  base_url: https://circleci.com/docs/
+  base_url: https://circleci.com/
   description: CircleCI continuous integration platform
 - name: claude-docs
   base_url: https://docs.claude.com/
@@ -209,7 +210,7 @@ sites:
   base_url: https://docs.cursor.com/
   description: Cursor AI code editor
 - name: daisyui
-  base_url: https://daisyui.com/docs/
+  base_url: https://daisyui.com/
   description: DaisyUI Tailwind CSS component library
 - name: dappier
   base_url: https://docs.dappier.com/
@@ -254,7 +255,7 @@ sites:
   base_url: https://docs.dndkit.com/
   description: dnd kit drag and drop library for React
 - name: dotenvx
-  base_url: https://dotenvx.com/docs/
+  base_url: https://dotenvx.com/
   description: dotenvx environment variable management
 - name: drizzle-orm
   base_url: https://orm.drizzle.team/
@@ -266,7 +267,7 @@ sites:
   base_url: https://dub.co/docs/
   description: Dub link management infrastructure
 - name: duckdb
-  base_url: https://duckdb.org/docs/
+  base_url: https://duckdb.org/
   description: DuckDB in-process SQL OLAP database
 - name: duendesoftware
   base_url: https://docs.duendesoftware.com/
@@ -292,9 +293,6 @@ sites:
 - name: fasthtml
   base_url: https://docs.fastht.ml/
   description: FastHTML Python web framework
-- name: fauna
-  base_url: https://docs.fauna.com/
-  description: Fauna serverless database
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
@@ -317,13 +315,13 @@ sites:
   base_url: https://docs.flitt.com/
   description: Flitt payment API platform
 - name: flows
-  base_url: https://docs.flows.sh/
+  base_url: https://flows.sh/
   description: Flows workflow automation platform
 - name: frigade
   base_url: https://docs.frigade.com/
   description: Frigade documentation
 - name: frontmatter
-  base_url: https://frontmatter.codes/docs/
+  base_url: https://frontmatter.codes/
   description: Front Matter CMS for VS Code
 - name: gaianet
   base_url: https://docs.gaianet.ai/
@@ -366,7 +364,7 @@ sites:
   base_url: https://docs.groq.com/
   description: Groq high-performance AI inference platform
 - name: groqcloud
-  base_url: https://console.groq.com/docs/
+  base_url: https://console.groq.com/
   description: Groq LPU inference API platform
 - name: helicone
   base_url: https://docs.helicone.ai/
@@ -450,7 +448,7 @@ sites:
   base_url: https://docs.jina.ai/
   description: Jina AI embeddings, rerankers, and multimodal AI models
 - name: juno
-  base_url: https://juno.build/docs/
+  base_url: https://juno.build/
   description: Juno blockchain web development
 - name: kaggle
   base_url: https://www.kaggle.com/
@@ -464,7 +462,8 @@ sites:
   description: Kinde Authentication, User Management, Billing and Access Control Platform
 - name: kysely
   base_url: https://kysely.dev/
-  description: Type-safe SQL query builder for TypeScript with unparalleled autocompletion and compile-time type safety
+  description: Type-safe SQL query builder for TypeScript with unparalleled autocompletion
+    and compile-time type safety
 - name: klarna
   base_url: https://docs.klarna.com/
   description: Klarna payment and shopping API
@@ -526,13 +525,13 @@ sites:
   base_url: https://lmstudio.ai/
   description: LM Studio local LLM runner
 - name: lobehub
-  base_url: https://lobehub.com/docs/
+  base_url: https://lobehub.com/
   description: LobeHub open source AI assistant
 - name: loops
   base_url: https://loops.so/docs/
   description: Loops documentation
 - name: lynx
-  base_url: https://lynxjs.org/docs/
+  base_url: https://lynxjs.org/
   description: Lynx cross-platform framework
 - name: mastercard
   base_url: https://developer.mastercard.com/
@@ -561,9 +560,6 @@ sites:
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language
-- name: moondream
-  base_url: https://docs.moondream.ai/
-  description: Moondream tiny vision-language model
 - name: mozilla-data-collective
   base_url: https://datacollective.mozillafoundation.org/
   description: Mozilla Data Collective API for accessing community-driven datasets
@@ -573,9 +569,6 @@ sites:
 - name: mui-x
   base_url: https://mui.com/x/
   description: MUI X advanced React components
-- name: mux
-  base_url: https://www.mux.com/
-  description: Mux video streaming API
 - name: nativescript
   base_url: https://docs.nativescript.org/
   description: NativeScript cross-platform framework
@@ -612,7 +605,8 @@ sites:
     generative AI and reasoning mo
 - name: nvidia-developer
   base_url: https://developer.nvidia.com/
-  description: NVIDIA Developer portal including TensorRT, Dynamo, CUDA-X, BioNeMo, and NeMo tools
+  description: NVIDIA Developer portal including TensorRT, Dynamo, CUDA-X, BioNeMo,
+    and NeMo tools
 - name: ollama
   base_url: https://docs.ollama.com/
   description: Local LLM runtime with API reference, capabilities, integrations, and
@@ -625,7 +619,8 @@ sites:
   description: OpenAI API documentation CDN
 - name: openai-platform
   base_url: https://platform.openai.com/.well-known/
-  description: OpenAI Platform API reference including Whisper, GPT, DALL-E, TTS, and embeddings
+  description: OpenAI Platform API reference including Whisper, GPT, DALL-E, TTS,
+    and embeddings
 - name: openphone
   base_url: https://www.openphone.com/docs/
   description: OpenPhone business phone API
@@ -643,7 +638,8 @@ sites:
   description: Paysafe payment gateway API
 - name: pandacss
   base_url: https://panda-css.com/
-  description: Panda CSS - CSS-in-JS framework with build-time optimizations for styling web applications
+  description: Panda CSS - CSS-in-JS framework with build-time optimizations for styling
+    web applications
 - name: pgvector
   base_url: https://pgvector.dev/
   description: pgvector open-source vector similarity search extension for PostgreSQL
@@ -678,7 +674,7 @@ sites:
   base_url: https://docs.powertools.aws.dev/
   description: AWS Powertools for Lambda utilities
 - name: preact
-  base_url: https://preactjs.com/guide/
+  base_url: https://preactjs.com/
   description: Preact fast 3kB React alternative
 - name: prettier
   base_url: https://prettier.io/
@@ -687,11 +683,12 @@ sites:
   base_url: https://www.prisma.io/docs/
   description: Prisma next-generation ORM for Node.js and TypeScript
 - name: promptfoo
-  base_url: https://www.promptfoo.dev/docs/
+  base_url: https://www.promptfoo.dev/
   description: Promptfoo LLM testing framework
 - name: pydantic
   base_url: https://docs.pydantic.dev/latest/
-  description: Pydantic Python data validation library with comprehensive docs and API reference
+  description: Pydantic Python data validation library with comprehensive docs and
+    API reference
 - name: pydantic-ai
   base_url: https://ai.pydantic.dev/
   description: Pydantic AI framework
@@ -706,7 +703,8 @@ sites:
   description: 'React library for web and native user interfaces (from PR #8130)'
 - name: react-aria
   base_url: https://react-spectrum.adobe.com/
-  description: Adobe React Aria - accessible headless UI components with behavior hooks and ARIA support
+  description: Adobe React Aria - accessible headless UI components with behavior
+    hooks and ARIA support
 - name: react-spring
   base_url: https://react-spring.dev/
   description: React Spring - physics-based animation library for React
@@ -733,7 +731,8 @@ sites:
   description: Replit cloud development platform
 - name: render
   base_url: https://render.com/
-  description: Render cloud hosting platform for web apps, static sites, databases, and cron jobs
+  description: Render cloud hosting platform for web apps, static sites, databases,
+    and cron jobs
 - name: resend
   base_url: https://resend.com/docs/
   description: Resend email API for developers
@@ -747,10 +746,10 @@ sites:
   base_url: https://www.roc-lang.org/
   description: Roc fast functional programming language
 - name: rsbuild
-  base_url: https://rsbuild.dev/guide/
+  base_url: https://rsbuild.dev/
   description: Rsbuild Rspack-powered build tool
 - name: rspack
-  base_url: https://rspack.dev/guide/
+  base_url: https://rspack.dev/
   description: Rspack Rust-based bundler
 - name: saaspegasus
   base_url: https://docs.saaspegasus.com/
@@ -789,7 +788,7 @@ sites:
   base_url: https://sourcegraph.com/docs/
   description: Sourcegraph code intelligence platform
 - name: spacetimedb
-  base_url: https://spacetimedb.com/docs/
+  base_url: https://spacetimedb.com/
   description: SpacetimeDB serverless database
 - name: speakeasy
   base_url: https://www.speakeasy.com/
@@ -813,7 +812,7 @@ sites:
   base_url: https://svelte.dev/
   description: Svelte reactive UI framework
 - name: tamagui
-  base_url: https://tamagui.dev/docs/
+  base_url: https://tamagui.dev/
   description: Tamagui universal UI framework
 - name: tauri
   base_url: https://tauri.app/
@@ -825,7 +824,7 @@ sites:
   base_url: https://docs.tavus.io/
   description: Tavus documentation
 - name: testingbot
-  base_url: https://testingbot.com/support/
+  base_url: https://testingbot.com/
   description: TestingBot cross-browser testing
 - name: tinybird
   base_url: https://www.tinybird.co/docs/
@@ -851,9 +850,6 @@ sites:
 - name: unifygtm
   base_url: https://docs.unifygtm.com/
   description: Unifygtm documentation
-- name: unkey
-  base_url: https://www.unkey.com/docs/
-  description: Unkey API key management
 - name: uno-platform
   base_url: https://platform.uno/
   description: Uno Platform .NET cross-platform framework
@@ -903,9 +899,6 @@ sites:
 - name: vueschool
   base_url: https://vueschool.io/
   description: Vue School online learning platform
-- name: waku
-  base_url: https://waku.gg/
-  description: Minimal React framework
 - name: warp
   base_url: https://docs.warp.dev/
   description: Warp AI-powered terminal
@@ -917,7 +910,8 @@ sites:
   description: Windsurf AI-powered code editor
 - name: workos
   base_url: https://workos.com/docs/
-  description: WorkOS developer APIs for enterprise features (SSO, Directory Sync, AuthKit, User Management)
+  description: WorkOS developer APIs for enterprise features (SSO, Directory Sync,
+    AuthKit, User Management)
 - name: x-cmd
   base_url: https://www.x-cmd.com/
   description: x-cmd command-line toolkit and utilities
@@ -942,3 +936,66 @@ sites:
 - name: zod
   base_url: https://zod.dev/
   description: Zod TypeScript-first schema validation library
+- name: apibara
+  base_url: https://www.apibara.com/
+  description: Apibara blockchain data streaming
+- name: cog
+  base_url: https://replicate.com/docs/
+  description: Cog containers for machine learning by Replicate
+- name: deepset
+  base_url: https://www.deepset.ai/
+  description: Deepset Haystack NLP framework
+- name: electric-sql
+  base_url: https://electric-sql.com/
+  description: ElectricSQL local-first sync for Postgres
+- name: framer
+  base_url: https://www.framer.com/
+  description: Framer motion and design platform
+- name: imgly-cesdk
+  base_url: https://img.ly/
+  description: IMG.LY CreativeEditor SDK
+- name: loro
+  base_url: https://loro.dev/
+  description: Loro CRDTs for local-first apps
+- name: microsoft-genaiscript
+  base_url: https://microsoft.github.io/genaiscript/
+  description: Microsoft GenAIScript prompt orchestration
+- name: rescript-react
+  base_url: https://rescript-lang.org/docs/react/latest/
+  description: ReScript React bindings
+- name: shadcn-vue
+  base_url: https://www.shadcn-vue.com/
+  description: shadcn/ui port for Vue
+- name: tanstack-router
+  base_url: https://tanstack.com/router/
+  description: TanStack Router type-safe routing
+- name: temporal
+  base_url: https://docs.temporal.io/
+  description: Temporal workflow orchestration platform
+- name: voltagent
+  base_url: https://voltagent.dev/
+  description: VoltAgent AI agent framework
+- name: alexop
+  base_url: https://alexop.dev/
+  description: Alexop developer tools
+- name: embednotionpages
+  base_url: https://embednotionpages.com/
+  description: Embed Notion Pages service
+- name: imgly-react-native
+  base_url: https://img.ly/docs/pesdk/react-native/
+  description: IMG.LY PhotoEditor SDK for React Native
+- name: imgly-sveltekit
+  base_url: https://img.ly/docs/cesdk/sveltekit/
+  description: IMG.LY CreativeEditor SDK for SvelteKit
+- name: imgly-vue
+  base_url: https://img.ly/docs/cesdk/vue/
+  description: IMG.LY CreativeEditor SDK for Vue
+- name: seed-design-breeze
+  base_url: https://seed-design.io/breeze/
+  description: Seed Design Breeze component library
+- name: svelte-typescript
+  base_url: https://svelte.dev/
+  description: Svelte TypeScript documentation
+- name: langgraph-js
+  base_url: https://langchain-ai.github.io/langgraphjs/
+  description: LangGraph.js documentation
