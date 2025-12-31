@@ -543,3 +543,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/zustand"
     branch: "main"
+
+  - name: "Docusaurus"
+    description: "Docusaurus - Static site generator for building documentation websites with React, versioning, and i18n support"
+    repo_url: "https://github.com/facebook/docusaurus.git"
+    source_folder: "website/docs"
+    target_folder: "docs/github-scraped/docusaurus"
+    branch: "main"

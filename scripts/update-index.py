@@ -15,8 +15,12 @@ def get_dir_stats(path):
     if not path.exists():
         return 0, 0
 
-    file_count = len(list(path.glob("**/*.md")))
-    total_size = sum(f.stat().st_size for f in path.glob("**/*.md"))
+    md_files = list(path.glob("**/*.md"))
+    mdx_files = list(path.glob("**/*.mdx"))
+    all_files = md_files + mdx_files
+
+    file_count = len(all_files)
+    total_size = sum(f.stat().st_size for f in all_files)
     return file_count, total_size
 
 
@@ -74,7 +78,7 @@ def scan_llms_txt(docs_dir):
 
         if file_count > 0:
             # Try to get description from first file
-            first_file = next(subdir.glob("**/*.md"), None)
+            first_file = next(subdir.glob("**/*.md"), None) or next(subdir.glob("**/*.mdx"), None)
             description = f'{name} documentation'
 
             if first_file:
