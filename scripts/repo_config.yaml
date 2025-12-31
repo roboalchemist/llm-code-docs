@@ -82,6 +82,13 @@ repositories:
     target_folder: "docs/github-scraped/sqlalchemy"
     branch: "main" # Default branch to use
 
+  - name: "Semantic-UI"
+    description: "Semantic UI - UI component framework with human-friendly HTML and 50+ responsive components"
+    repo_url: "https://github.com/Semantic-Org/Semantic-UI-Docs.git"
+    source_folder: "server/documents"
+    target_folder: "docs/github-scraped/semantic-ui"
+    branch: "master" # Default branch to use
+
   - name: "Go"
     description: "Go Programming Language - Official documentation website"
     repo_url: "https://github.com/golang/website.git"

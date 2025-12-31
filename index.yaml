@@ -7,13 +7,13 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 21:01
-  total_sources: 379
-  total_fetched: 337
+  last_updated: 2025-12-30 21:19
+  total_sources: 380
+  total_fetched: 338
   llms_txt_count: 295
   llms_txt_fetched: 257
-  github_count: 45
-  github_fetched: 41
+  github_count: 46
+  github_fetched: 42
   web_scraped_count: 39
   web_scraped_fetched: 39
 llms_txt:
@@ -2362,6 +2362,16 @@ github:
   file_count: 284
   size: 5.2MB
   last_updated: 2025-12-30 20:52
+- name: semantic-ui
+  description: Semantic UI - UI component framework with human-friendly HTML and 50+ responsive components
+  repo: Semantic-Org/Semantic-UI-Docs
+  branch: master
+  source_folder: server/documents
+  path: docs/github-scraped/semantic-ui/
+  status: fetched
+  file_count: 3
+  size: 1.9KB
+  last_updated: 2025-12-30 21:19
 - name: go
   description: Go Programming Language - Official documentation website
   repo: golang/website
