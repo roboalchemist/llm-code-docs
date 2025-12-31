@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/flora-gps-jacket/wear-it.md
+
 # Source: https://learn.adafruit.com/skill-badge-sash/wear-it.md
 
 # Skill Badge Sash

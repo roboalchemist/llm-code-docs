@@ -1,3 +1,13 @@
+# Source: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-8-using-a-servo-motor/overview.md
+
+# Source: https://learn.adafruit.com/flora-gps-jacket/overview.md
+
+# Source: https://learn.adafruit.com/diy-wifi-raspberry-pi-touch-cam/overview.md
+
+# Source: https://learn.adafruit.com/adafruit-microphone-amplifier-breakout/overview.md
+
+# Source: https://learn.adafruit.com/digital-led-belt/overview.md
+
 # Source: https://learn.adafruit.com/pi-thermal-printer/overview.md
 
 # Source: https://learn.adafruit.com/pi-wifi-radio/overview.md

@@ -1,3 +1,5 @@
+# Source: https://learn.adafruit.com/flora-gps-jacket/the-code.md
+
 # Source: https://learn.adafruit.com/how-to-make-a-pogo-pin-test-jig/the-code.md
 
 # How to Make a Pogo Pin Test Jig
