@@ -271,6 +271,13 @@ repositories:
     target_folder: "docs/github-scraped/penpot"
     branch: "main"
 
+  - name: "RadixUI"
+    description: "Radix UI - Unstyled, accessible React component library with Primitives and Themes for building design systems"
+    repo_url: "https://github.com/radix-ui/website.git"
+    source_folder: "data"
+    target_folder: "docs/github-scraped/radix-ui"
+    branch: "main"
+
   - name: "RaspberryPi"
     description: "Raspberry Pi - Official documentation for Raspberry Pi hardware, OS, software, and programming guides"
     repo_url: "https://github.com/raspberrypi/documentation.git"
