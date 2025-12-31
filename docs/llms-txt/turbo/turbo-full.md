@@ -182,13 +182,13 @@ Learn more about the core concepts of Turborepo:
 
 - [Internal Packages](/core-concepts/internal-packages.md): Learn how to build Internal Packages in your monorepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Internal Packages are libraries whose source code is inside your Workspace. You can quickly make Internal Packages to share code within your monorepo and choose to [publish them to the npm registry](/docs/guides/publishing-libraries) if you need to later.
 
 Internal Packages are used in your repository by installing them in `package.json` similar to an external package coming from the npm registry. However, instead of marking a version to install, you can reference the package using your package manager's workspace installation syntax:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./apps/web/package.json"
     {
@@ -228,7 +228,7 @@ Internal Packages are used in your repository by installing them in `package.jso
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 In the [Creating an Internal Package guide](/docs/crafting-your-repository/creating-an-internal-package), you can build an Internal Package from the beginning using [the Compiled Package strategy](#compiled-packages). On this page, we'll describe other strategies for creating Internal Packages and their tradeoffs, including [publishing the package to the npm registry](#publishable-packages) to create an External Package.
 
@@ -481,7 +481,7 @@ Library Packages contain code that you intend to share around your workspace. Th
 - [Remote Caching](/core-concepts/remote-caching.md): Share cache artifacts across machines for even faster builds.
 
 import { Callout } from '#components/callout';
-import { PlatformTabs, PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { ThemeAwareImage } from '#components/theme-aware-image';
 
 Turborepo's [task cache](/docs/crafting-your-repository/caching) saves time by never doing the same work twice.
@@ -565,7 +565,7 @@ turbo login
 
 You can also use your package manager if you do not have [global `turbo`](/docs/getting-started/installation#global-installation) installed:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx turbo login
@@ -589,7 +589,7 @@ You can also use your package manager if you do not have [global `turbo`](/docs/
     bunx turbo login
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 <Callout>
   If your Remote Cache is configured to use single-sign-on you will need to run
@@ -608,19 +608,19 @@ Your cache artifacts will now be stored locally *and* in your Remote Cache.
 
 To verify, delete your local Turborepo cache with:
 
-<PlatformTabs>
-  <Tab>
+<Tabs groupId="platform-tabs" items={['UNIX', 'Windows']} persist>
+  <Tab value="UNIX">
     ```bash title="Terminal"
     rm -rf ./.turbo/cache
     ```
   </Tab>
 
-  <Tab>
+  <Tab value="Windows">
     ```bash title="Terminal"
     rd /s /q "./.turbo/cache"
     ```
   </Tab>
-</PlatformTabs>
+</Tabs>
 
 Then, run the same build again. If things are working properly, `turbo` should not execute tasks locally. Instead, it will download the logs and artifacts from your Remote Cache and replay them back to you.
 
@@ -683,7 +683,7 @@ The Turborepo community has created open-source implementations of the Remote Ca
 - [Caching](/crafting-your-repository/caching.md): Learn about caching in Turborepo.
 
 import { Step, Steps } from '#components/steps';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 Turborepo uses caching to speed up builds, ensuring you **never do the same work twice**. When your task is cacheable, Turborepo will restore the results of your task from cache using a fingerprint from the first time the task ran.
@@ -727,7 +727,7 @@ You can try out Turborepo's caching behavior in three steps:
 
     Alternatively, you can run the `build` script in `package.json` using your package manager.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm run build
@@ -751,7 +751,7 @@ You can try out Turborepo's caching behavior in three steps:
         bun run build
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     This will result in a cache miss, since you've never ran `turbo` before with this [set of inputs](/docs/crafting-your-repository/caching#task-inputs) in this repository. The inputs are turned into a hash to check for in your local filesystem cache or in [the Remote Cache](/docs/core-concepts/remote-caching).
   </Step>
@@ -829,14 +829,14 @@ Under the hood, Turborepo creates two hashes: a global hash and a task hash. If 
 
 ### Global hash inputs
 
-| Input                                                                                  | Example                                                                                                                                                    |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resolved task definition from root `turbo.json`<br /> and package `turbo.json`         | Changing [`outputs`](/docs/reference/configuration#outputs) in either root `turbo.json` or [Package Configuration](/docs/reference/package-configurations) |
-| Lockfile changes that affect the Workspace root                                        | Updating dependencies in root `package.json` will cause **all** tasks to miss cache                                                                        |
-| [`globalDependencies`](/docs/reference/configuration#globaldependencies) file contents | Changing `./.env` when it is listed in `globalDependencies` will cause **all** tasks to miss cache                                                         |
-| Values of variables listed in [`globalEnv`](/docs/reference/configuration#globalenv)   | Changing the value of `GITHUB_TOKEN` when it is listed in `globalEnv`                                                                                      |
-| Flag values that affect task runtime                                                   | Using behavior-changing flags like `--cache-dir`, `--framework-inference`, or `--env-mode`                                                                 |
-| Arbitrary passthrough arguments                                                        | `turbo build -- --arg=value` will cause **all** tasks to miss cache when compared to either `turbo build` or `turbo build -- --arg=diff` (including dependencies of `build` that did not receive `--arg=value`)                                                     |
+| Input                                                                                  | Example                                                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Resolved task definition from root `turbo.json`<br /> and package `turbo.json`         | Changing [`outputs`](/docs/reference/configuration#outputs) in either root `turbo.json` or [Package Configuration](/docs/reference/package-configurations)                                                      |
+| Lockfile changes that affect the Workspace root                                        | Updating dependencies in root `package.json` will cause **all** tasks to miss cache                                                                                                                             |
+| [`globalDependencies`](/docs/reference/configuration#globaldependencies) file contents | Changing `./.env` when it is listed in `globalDependencies` will cause **all** tasks to miss cache                                                                                                              |
+| Values of variables listed in [`globalEnv`](/docs/reference/configuration#globalenv)   | Changing the value of `GITHUB_TOKEN` when it is listed in `globalEnv`                                                                                                                                           |
+| Flag values that affect task runtime                                                   | Using behavior-changing flags like `--cache-dir`, `--framework-inference`, or `--env-mode`                                                                                                                      |
+| Arbitrary passthrough arguments                                                        | `turbo build -- --arg=value` will cause **all** tasks to miss cache when compared to either `turbo build` or `turbo build -- --arg=diff` (including dependencies of `build` that did not receive `--arg=value`) |
 
 ### Package hash inputs
 
@@ -898,9 +898,10 @@ Now that you've seen how Turborepo's caching makes your repository faster, let's
 
 import { LinkToDocumentation } from '#components/link-to-documentation';
 import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Files, File, Folder } from '#components/files';
 import { ThemeAwareImage } from '#components/theme-aware-image';
+import { ExperimentalBadge } from '#components/experimental-badge';
 
 A task is a script that Turborepo runs. You can express relationships between tasks in your [`turbo.json` configuration](/docs/reference/configuration) and [Package Graph](/docs/core-concepts/package-and-task-graph#package-graph).
 
@@ -1202,6 +1203,13 @@ With the Root Task now registered, `turbo run lint:root` will now run the task. 
 
 In large monorepos with many teams, this allows teams greater control over their own tasks. To learn more, visit [the Package Configurations documentation](/docs/reference/package-configurations)
 
+### Composing configurations
+
+[Package Configurations](/docs/reference/package-configurations) can be composed for greater control with less configuration:
+
+* [**Extending from other packages**](/docs/reference/package-configurations#extending-from-other-packages): Create shared configuration packages that multiple packages can extend from, enabling shared `turbo.json` configurations.
+* [**Adding to extended configurations**](/docs/reference/package-configurations#extending-arrays-with-turbo_extends): Use the `$TURBO_EXTENDS$` microsyntax to add to inherited array values like `outputs` and `env` instead of replacing them.
+
 ### Long-running tasks with runtime dependencies
 
 You might have a long-running task that requires another task to always be running at the same time. For this, use [the `with` key](/docs/reference/configuration#with).
@@ -1303,7 +1311,7 @@ There are more options available in [the Configuring `turbo.json` documentation]
 - [Constructing CI](/crafting-your-repository/constructing-ci.md): Learn how Turborepo can help you efficiently complete all the necessary tasks and accelerate your development workflow.
 
 import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Step, Steps } from '#components/steps';
 
 Turborepo speeds up builds, lints, tests, and any other tasks that you need to do in your Continuous Integration pipelines. Through parallelization and [Remote Caching](/docs/core-concepts/remote-caching), Turborepo makes your CI dramatically faster.
@@ -1492,7 +1500,7 @@ You now have everything you need to ship applications with Turborepo. To learn m
 
 import { Callout } from '#components/callout';
 import { Steps, Step } from '#components/steps';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Files, File, Folder } from '#components/files';
 
 [Internal Packages](/docs/core-concepts/internal-packages) are the building blocks of your workspace, giving you a powerful way to share code and functionality across your repo. Turborepo automatically understands the relationships between Internal Packages using the dependencies in `package.json`, creating a [Package Graph](/docs/core-concepts/package-and-task-graph#package-graph) under the hood to optimize your repository's workflows.
@@ -1544,7 +1552,7 @@ Let's create your first Internal Package to share math utilities in your repo us
         from '@repo/math/add'`).
     </Callout>
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```json title="./packages/math/package.json"
         {
@@ -1652,7 +1660,7 @@ Let's create your first Internal Package to share math utilities in your repo us
         }
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     Let's break down this `package.json` piece-by-piece:
 
@@ -1723,7 +1731,7 @@ Let's create your first Internal Package to share math utilities in your repo us
 
     You're ready to use your new package in an application. Let's add it to the `web` application.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```diff title="apps/web/package.json"
           "dependencies": {
@@ -1767,7 +1775,7 @@ Let's create your first Internal Package to share math utilities in your repo us
           },
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     <Callout type="warn">
       You just changed the dependencies in your repo. Make sure to run your package
@@ -1854,7 +1862,7 @@ With a new Internal Package in place, you can start [configuring tasks](/docs/cr
 
 - [Developing applications](/crafting-your-repository/developing-applications.md): Learn how to develop applications in your repository.
 
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { LinkToDocumentation } from '#components/link-to-documentation';
 
 Developing applications in a monorepo unlocks powerful workflows, enabling you to make atomic commits to source control with easy access to code.
@@ -2074,14 +2082,14 @@ We also have more guides centered around [specific tools, use cases, and other t
 
 - [Managing dependencies](/crafting-your-repository/managing-dependencies.md): Learn how to manage dependencies in your monorepo's workspace.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { LinkToDocumentation } from '#components/link-to-documentation';
 
 * **External dependencies** come from [the npm registry](https://www.npmjs.com/), allowing you to leverage valuable code from the ecosystem to build your applications and libraries faster.
 * **Internal dependencies** let you share functionality within your repository, dramatically improving discoverability and usability of shared code. We will discuss how to build an Internal Package in [the next guide](/docs/crafting-your-repository/creating-an-internal-package).
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./apps/web/package.json"
     {
@@ -2125,7 +2133,7 @@ import { LinkToDocumentation } from '#components/link-to-documentation';
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Best practices for dependency installation
 
@@ -2140,7 +2148,7 @@ When you install a dependency in your repository, you should install it directly
 
 To quickly install dependencies in multiple packages, you can use your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add jest --save-dev --recursive --filter=web --filter=@repo/ui --filter=docs
@@ -2182,12 +2190,13 @@ To quickly install dependencies in multiple packages, you can use your package m
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install jest --filter=web --filter=@repo/ui --dev
+    cd apps/web && bun install jest --dev
+    cd packages/ui && bun install jest --dev
     ```
 
     <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun documentation</LinkToDocumentation>
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 This practice has several benefits:
 
@@ -2242,7 +2251,7 @@ Tools like [`syncpack`](https://www.npmjs.com/package/syncpack), [`manypkg`](htt
 
 You can use your package manager to update dependency versions in one command.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm up --recursive typescript@latest
@@ -2282,7 +2291,7 @@ You can use your package manager to update dependency versions in one command.
 
     <small>[→ Bun documentation](https://bun.sh/docs/install/workspaces)</small>
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 #### pnpm catalogs
 
@@ -2302,7 +2311,7 @@ Now that you know how to manage dependencies effectively in a workspace, let's [
 - [Running tasks](/crafting-your-repository/running-tasks.md): Learn how to run tasks in your repository through the `turbo` CLI.
 
 import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { LinkToDocumentation } from '#components/link-to-documentation';
 import { InVersion } from '#components/in-version';
 
@@ -2337,7 +2346,7 @@ For tasks that you run frequently, you can write your `turbo` commands directly 
 
 These scripts can then be run using your package manager.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dev
@@ -2361,7 +2370,7 @@ These scripts can then be run using your package manager.
     bun run dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 <Callout type="warn">
   You only want to write `turbo` commands in your root `package.json`. Writing `turbo` commands into the `package.json` of packages can lead to recursively
@@ -2496,7 +2505,7 @@ When you start running tasks in your repository, you might start noticing that y
 - [Structuring a repository](/crafting-your-repository/structuring-a-repository.md): Start by creating a repository using the conventions of the ecosystem.
 
 import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab, Tabs } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Step, Steps } from '#components/steps';
 import { File, Folder, Files } from '#components/files';
 import { LinkToDocumentation } from '#components/link-to-documentation';
@@ -2514,7 +2523,7 @@ In this guide, we'll walk through setting up a multi-package workspace (monorepo
 
 Setting up a workspace's structure can be tedious to do by hand. If you're new to monorepos, we recommend [using `create-turbo` to get started](/docs/getting-started/installation) with a valid workspace structure right away.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -2538,7 +2547,7 @@ Setting up a workspace's structure can be tedious to do by hand. If you're new t
     bunx create-turbo@latest
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 You can then review the repository for the characteristics described in this guide.
 
@@ -2548,7 +2557,7 @@ In JavaScript, a workspace can either be [a single package](/docs/guides/single-
 
 Below, the structural elements of `create-turbo` that make it a valid workspace are highlighted.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     <Files>
       <File name="package.json" green />
@@ -2654,7 +2663,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
       </Folder>
     </Files>
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Minimum requirements
 
@@ -2672,7 +2681,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
 
     First, your package manager needs to describe the locations of your packages. We recommend starting with splitting your packages into `apps/` for applications and services and `packages/` for everything else, like libraries and tooling.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```json title="pnpm-workspace.yaml"
         packages:
@@ -2721,7 +2730,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
 
         <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun workspace documentation</LinkToDocumentation>
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     Using this configuration, every directory **with a `package.json`** in the `apps` or `packages` directories will be considered a package.
 
@@ -2743,7 +2752,7 @@ Below, the structural elements of `create-turbo` that make it a valid workspace 
 
 The root `package.json` is the base for your workspace. Below is a common example of what you would find in a root `package.json`:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./package.json"
     {
@@ -2814,7 +2823,7 @@ The root `package.json` is the base for your workspace. Below is a common exampl
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Root `turbo.json`
 
@@ -2913,6 +2922,16 @@ With your Workspace configured, you can now use your package manager to [install
 - [Understanding your repository](/crafting-your-repository/understanding-your-repository.md): Learn how to understand your repository structure using Turborepo.
 
 Turborepo includes tools for understanding your repository structure, that can help you use and optimize your codebase.
+
+## `turbo devtools`
+
+`turbo devtools` provides a browser-based visualization of your package graph. This tool can be helpful for diagnosing issues with your task graph and understanding the structure of your monorepo.
+
+```bash title="Terminal"
+turbo devtools
+```
+
+For more information, see the [reference documentation](/docs/reference/devtools).
 
 ## `turbo ls`
 
@@ -3052,7 +3071,7 @@ With `turbo query`, you can find all the packages and the reason why they were i
 
 - [Upgrading](/crafting-your-repository/upgrading.md): Learn how to upgrade `turbo` to get the latest improvements to your repository.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Steps, Step } from '#components/steps';
 import { Callout } from '#components/callout';
 
@@ -3064,7 +3083,7 @@ import { Callout } from '#components/callout';
 
     Get started upgrading from 1.x to 2.0 by running:
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm dlx @turbo/codemod migrate
@@ -3088,7 +3107,7 @@ import { Callout } from '#components/callout';
         bunx @turbo/codemod migrate
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     This will update your `turbo.json`(s) for many of the breaking changes from 1.x to 2.0.
 
@@ -3107,7 +3126,7 @@ import { Callout } from '#components/callout';
 
     Turborepo 2.0 requires that your Workspace define this field as a way to improve the stability and behavioral predictability of your codebase. If you do not have one already, add this field to your root `package.json`:
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```diff title="./package.json"
         {
@@ -3139,7 +3158,7 @@ import { Callout } from '#components/callout';
         }
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -3172,7 +3191,7 @@ import { Callout } from '#components/callout';
 
 import { Fragment } from 'react';
 import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Accordion, Accordions } from '#components/accordion';
 import frameworks from '@turbo/types/src/json/frameworks.json';
 
@@ -3489,7 +3508,7 @@ Once you've accounted for your environment variables, you're ready to start buil
 
 - [Add to an existing repository](/getting-started/add-to-existing-repository.md): Using Turborepo with your existing repository
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Step, Steps } from '#components/steps';
 import { LinkToDocumentation } from '#components/link-to-documentation';
@@ -3529,7 +3548,7 @@ familiar with Turborepo.
 
     We recommend you install `turbo` both globally and into your repository's root for the best developer experience.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         Ensure you have created a `pnpm-workspace.yaml` file before you begin the installation. Failure to have this file will result in an error that says: ` --workspace-root may only be used inside a workspace`.
 
@@ -3567,7 +3586,7 @@ familiar with Turborepo.
         bun install turbo --dev
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     To learn more about why we recommend both installations, visit the [Installation page](/docs/getting-started/installation).
   </Step>
@@ -3675,7 +3694,7 @@ familiar with Turborepo.
 
     Turborepo optimizes your repository using information from your package manager. To declare which package manager you're using, add a [`packageManager`](https://nodejs.org/api/packages.html#packagemanager) field to your root `package.json` if you don't have one already.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```diff title="package.json"
         {
@@ -3707,7 +3726,7 @@ familiar with Turborepo.
         }
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     <Callout type="good-to-know">
       Depending on your repository, you may need to use the
@@ -3729,7 +3748,7 @@ familiar with Turborepo.
       workspaces aren't needed.
     </Callout>
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```json title="pnpm-workspace.yaml"
         packages:
@@ -3778,7 +3797,7 @@ familiar with Turborepo.
 
         <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">bun workspace documentation</LinkToDocumentation>
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     For more details on how to structure your repository, see [Structuring a Repository](/docs/crafting-your-repository/structuring-a-repository#declaring-directories-for-packages).
   </Step>
@@ -3917,13 +3936,13 @@ Visit the [VSCode Extension Marketplace](https://marketplace.visualstudio.com/it
 
 - [Start with an example](/getting-started/examples.md): Start with an example Turborepo.
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { ExamplesTable } from '#components/examples-table';
 import { Callout } from '#components/callout';
 
 Use `create-turbo` to bootstrap an example with your favorite tooling.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     # Use an example listed below
@@ -3963,7 +3982,7 @@ Use `create-turbo` to bootstrap an example with your favorite tooling.
     bunx create-turbo@latest --example [github-url]
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Core-maintained examples
 
@@ -3987,7 +4006,7 @@ The community curates a set of examples to showcase ways to use common tools and
 
 import { Card, Cards } from '#components/card';
 import { Step, Steps } from '#components/steps';
-import { Tab, Tabs } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 If you're new to Turborepo, you can follow these steps to get started.
 
@@ -4039,11 +4058,11 @@ If you're new to Turborepo, you can follow these steps to get started.
 - [Installation](/getting-started/installation.md): Learn how to get started with Turborepo.
 
 import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Get started with Turborepo in a few moments using:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -4067,7 +4086,7 @@ Get started with Turborepo in a few moments using:
     bunx create-turbo@latest
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 The starter repository will have:
 
@@ -4084,7 +4103,7 @@ For more details on the starter, [visit the README for the basic starter on GitH
 
 A global install of `turbo` brings flexibility and speed to your local workflows.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add turbo --global
@@ -4108,7 +4127,7 @@ A global install of `turbo` brings flexibility and speed to your local workflows
     bun install turbo --global
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Once installed globally, you can run your scripts through `turbo` from your terminal, quickly running one-off commands to use within your repository. For example:
 
@@ -4137,7 +4156,7 @@ You can also take advantage of global `turbo` when creating your CI pipelines. V
 
 When collaborating with other developers in a repository, it's a good idea to pin versions of dependencies. You can do this with `turbo` by adding it as a `devDependency` in the root of your repository:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add turbo --save-dev --ignore-workspace-root-check
@@ -4161,7 +4180,7 @@ When collaborating with other developers in a repository, it's a good idea to pi
     bun install turbo --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 You can continue to use your global installation of `turbo` to run commands. Global `turbo` will defer to the local version of your repository if it exists.
 
@@ -4172,7 +4191,7 @@ This lets you to get the best of both installations: easily run commands in your
 
 import { Callout } from '#components/callout';
 import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Splitting your monorepo into packages is a great way to organize your code, speed up tasks, and improve the local development
 experience. With Turborepo's code generation, it's easy to generate new source code for packages, modules,
@@ -4255,7 +4274,7 @@ manually at `turbo/generators/config.ts` (or `config.js`) at the root of your re
 
 For example, the following illustrates a monorepo with three locations for generators:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     <Files>
       <Folder name="apps" defaultOpen>
@@ -4457,7 +4476,7 @@ For example, the following illustrates a monorepo with three locations for gener
       <File name="turbo.json" />
     </Files>
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Generators created within workspaces are automatically run from the workspace root, **not** the repo root, nor the location of the generator configuration.
 
@@ -4657,7 +4676,7 @@ In our community-supported guides, you'll find examples of how to use `turbo` wi
 
 import { Callout } from '#components/callout';
 import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Microfrontends are an architectural pattern where a web application is decomposed into smaller, independently developed and deployed applications that work together.
 
@@ -5135,7 +5154,7 @@ With this configuration:
 
 - [Migrating from Nx](/guides/migrating-from-nx.md): Learn how to migrate to Turborepo from Nx.
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 This guide will help you migrate an existing Nx repository to Turborepo.
 
@@ -5287,7 +5306,7 @@ Turborepo uses the .turbo directory to hold local caches and other information a
 
 Turborepo is built on top of package manager workspaces, a JavaScript ecosystem standard. Add the directory paths to the workspace that will contain packages.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yml title="pnpm-workspace.yaml"
     packages:
@@ -5318,7 +5337,7 @@ Turborepo is built on top of package manager workspaces, a JavaScript ecosystem 
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Step 3: Add a package.json to the application
 
@@ -5351,7 +5370,7 @@ module.exports = nextConfig;
 
 The root package.json needs to have the `packageManager` field. This ensures developers in the repository use the correct package manager, and that Turborepo can optimize your package graph based on your lockfile.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./package.json"
     {
@@ -5383,13 +5402,13 @@ The root package.json needs to have the `packageManager` field. This ensures dev
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Step 6: Run you package manager's install command
 
 Update your lockfile by running your installation command.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm install
@@ -5413,7 +5432,7 @@ Update your lockfile by running your installation command.
     bun install
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Once you've done this, you should see a lockfile diff, indicating that the package has been added to the package manager's workspace.
 
@@ -5421,7 +5440,7 @@ Once you've done this, you should see a lockfile diff, indicating that the packa
 
 Add Turborepo to the root `package.json` of the workspace.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add turbo --save-dev --workspace-root
@@ -5445,11 +5464,11 @@ Add Turborepo to the root `package.json` of the workspace.
     bun install turbo --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 You can also optionally install `turbo` globally for added convenience when working with Turborepo.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add turbo --global
@@ -5473,7 +5492,7 @@ You can also optionally install `turbo` globally for added convenience when work
     bun install turbo --global
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Step 8: Add a `turbo.json`
 
@@ -5498,7 +5517,7 @@ Create a `turbo.json` at the root to register your tasks and describe their task
 
 Build the application with Turborepo. Using global `turbo`, this would be `turbo build`. You can also run the command through your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm exec turbo build
@@ -5522,7 +5541,7 @@ Build the application with Turborepo. Using global `turbo`, this would be `turbo
     bunx turbo run build
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Step 10: Enable Remote Caching (optional)
 
@@ -5612,14 +5631,14 @@ Configuration found in `nx.json` can be mapped to `turbo.json` using the tables 
 
 - [Multi-language support](/guides/multi-language.md): Learn how to use multiple languages with Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { LinkToDocumentation } from '#components/link-to-documentation';
 
 Turborepo is built on the conventions of the JavaScript ecosystem to find scripts and tasks to execute - but it doesn't care what those scripts do. Following [the guidance for specifying a package in a JavaScript workspace](/docs/crafting-your-repository/structuring-a-repository#specifying-packages-in-a-monorepo), you can add any other language or toolchain to Turborepo.
 
 As an example, you may have a Rust project in the `./cli` directory in your repository. To add this directory as a package to your JavaScript package manager's workspace, add the directory to the workspace definition:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="pnpm-workspace.yaml"
     packages:
@@ -5672,7 +5691,7 @@ As an example, you may have a Rust project in the `./cli` directory in your repo
 
     <LinkToDocumentation href="https://bun.sh/docs/install/workspaces">Bun workspace documentation</LinkToDocumentation>
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Then, add a `package.json` to the directory:
 
@@ -5707,7 +5726,7 @@ Because the directory is now a part of the package manager's workspace, you can 
 
 For instance, if you wanted to make sure that the `rust-cli` "package" from above is built before your `web` application, install it into the dependencies for the `web` application:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```diff title="./web/package.json"
     {
@@ -5747,7 +5766,7 @@ For instance, if you wanted to make sure that the `rust-cli` "package" from abov
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Given a `turbo.json` with a `build` task like:
 
@@ -5768,7 +5787,7 @@ Given a `turbo.json` with a `build` task like:
 - [Publishing libraries](/guides/publishing-libraries.md): Learn how to publish libraries to the npm registry from a monorepo.
 
 import { Callout } from '#components/callout';
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Publishing a package to the npm registry from a monorepo can be a smooth experience, with the right tools.
 
@@ -5961,7 +5980,7 @@ This means that when you run `publish-packages`, your monorepo gets built, linte
 - [Single-package workspaces](/guides/single-package-workspaces.md): Learn how to use Turborepo in a single-package workspace.
 
 import { Callout } from '#components/callout';
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 While Turborepo is highly effective in [multi-package workspaces](https://vercel.com/docs/vercel-platform/glossary#multi-package-workspace) (commonly referred to as monorepos), it can also be used to make [single-package workspaces](https://vercel.com/docs/vercel-platform/glossary#single-package-workspace) faster.
 
@@ -5976,7 +5995,7 @@ Turborepo's most important features work in single-package workspaces including 
 
 Install `turbo` into your application:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add turbo --save-dev
@@ -6000,7 +6019,7 @@ Install `turbo` into your application:
     bun install turbo --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Running a `package.json` script using global `turbo` (optional)
 
@@ -6520,7 +6539,8 @@ Configure the behavior of `turbo` by using a `turbo.json` file in your Workspace
 
 Extend from the root `turbo.json` to create specific configuration for a package using [Package Configurations](/docs/reference/package-configurations).
 
-* The only valid value for `extends` is `["//"]` to inherit configuration from the root `turbo.json`.
+* The `extends` array must start with `["//"]` to inherit configuration from the root `turbo.json`.
+* You can also extend from other packages (e.g., `["//", "shared-config"]`).
 * If `extends` is used in the root `turbo.json`, it will be ignored.
 
 ### `globalDependencies`
@@ -6679,6 +6699,24 @@ Turborepo's Environment Modes allow you to control which environment variables a
 
 Read more about [Environment Modes](/docs/crafting-your-repository/using-environment-variables#environment-modes).
 
+### `futureFlags`
+
+```jsonc title="./turbo.json"
+{
+  "futureFlags": {}
+}
+```
+
+Enable experimental features that will become the default behavior in future versions of Turborepo.
+
+<Callout type="info">
+  `futureFlags` can only be set in the root `turbo.json`. An error will be
+  thrown if set in a [Package
+  Configuration](/docs/reference/package-configurations).
+</Callout>
+
+There are no future flags at this time.
+
 ### `tags` <ExperimentalBadge>Experimental</ExperimentalBadge>
 
 ```jsonc title="./apps/web/turbo.json"
@@ -6724,6 +6762,28 @@ In the example below, we've defined three tasks under the `tasks` key: `build`, 
 ## Task options
 
 Using the options available in the tasks you define in `tasks`, you can describe how `turbo` will run your tasks.
+
+### `extends` (task-level)
+
+Controls whether a task inherits configuration from the extends chain. This option is only available in [Package Configurations](/docs/reference/package-configurations), not in the root `turbo.json`.
+
+```jsonc title="./packages/ui/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false // Exclude this task from the package
+    }
+  }
+}
+```
+
+| Value            | Behavior                                                                                                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `false`          | Task is excluded from inheritance. If no other config is provided, the task won't exist for this package. If other config is provided, creates a fresh task definition with no inheritance. |
+| `true` (default) | Task inherits configuration normally from the extends chain.                                                                                                                                |
+
+See [Excluding tasks from inheritance](/docs/reference/package-configurations#excluding-tasks-from-inheritance) for examples and more details.
 
 ### `dependsOn`
 
@@ -6968,6 +7028,47 @@ Starting a file glob with `$TURBO_ROOT$` will change the glob to be relative to 
 }
 ```
 
+#### `$TURBO_EXTENDS$`
+
+When using [Package Configurations](/docs/reference/package-configurations), array fields completely replace the values from the root `turbo.json` by default. The `$TURBO_EXTENDS$` microsyntax changes this behavior to **append** instead of **replace**.
+
+This microsyntax can be used in the following array fields:
+
+* `dependsOn`
+* `env`
+* `inputs`
+* `outputs`
+* `passThroughEnv`
+* `with`
+
+For example, if your root `turbo.json` defines:
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"]
+    }
+  }
+}
+```
+
+A Package Configuration can add additional outputs while keeping the root outputs:
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // Inherits "dist/**" from root, and adds ".next/**"
+      "outputs": ["$TURBO_EXTENDS$", ".next/**", "!.next/cache/**"]
+    }
+  }
+}
+```
+
+Without `$TURBO_EXTENDS$`, the `outputs` array would be completely replaced with `[".next/**", "!.next/cache/**"]`, dropping the `"dist/**"` from the root configuration.
+
 ### `outputLogs`
 
 Default: `full`
@@ -7201,12 +7302,12 @@ Value will be passed as `slug` in the querystring for all Remote Cache HTTP call
 
 - [create-turbo](/reference/create-turbo.md): Quickly set up a new Turborepo repository from scratch.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { ExamplesTable } from '#components/examples-table';
 
 The easiest way to get started with Turborepo is by using `create-turbo`. Use this CLI tool to quickly start building a new monorepo, with everything set up for you.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -7230,13 +7331,13 @@ The easiest way to get started with Turborepo is by using `create-turbo`. Use th
     bunx create-turbo@latest
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Start with an example
 
 The community curates a set of examples to showcase ways to use common tools and libraries with Turborepo. To bootstrap your monorepo with one of the examples, use the `--example` flag:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest --example [example-name]
@@ -7260,7 +7361,7 @@ The community curates a set of examples to showcase ways to use common tools and
     bunx create-turbo@latest --example [example-name]
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Use any of the example's names below:
 
@@ -7280,7 +7381,7 @@ The community curates a set of examples to showcase ways to use common tools and
 
 You can also use a custom starter or example by using a GitHub URL. This is useful for using your own custom starters or examples from the community.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest --example [github-url]
@@ -7304,7 +7405,7 @@ You can also use a custom starter or example by using a GitHub URL. This is usef
     bunx create-turbo@latest --example [github-url]
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Options
 
@@ -7327,9 +7428,38 @@ You can also use a custom starter or example by using a GitHub URL. This is usef
 ```
 
 
+- [devtools](/reference/devtools.md): API reference for the `turbo devtools` command
+
+Visualize your monorepo's package graph in the browser.
+
+```bash title="Terminal"
+turbo devtools [options]
+```
+
+This command starts a local server and opens your browser to a visualization of your monorepo's package graph.
+
+## Options
+
+### `--port`
+
+The port to run the devtools server on. Defaults to `9876`.
+
+```bash title="Terminal"
+turbo devtools --port 3000
+```
+
+### `--no-open`
+
+Do not automatically open the browser when the server starts.
+
+```bash title="Terminal"
+turbo devtools --no-open
+```
+
+
 - [eslint-config-turbo](/reference/eslint-config-turbo.md): Learn more about eslint-config-turbo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 [The `eslint-config-turbo` package](https://www.npmjs.com/package/eslint-config-turbo) helps you find environment variables that are used in your code that are not a part of Turborepo's hashing. Environment variables used in your source code that are not accounted for in `turbo.json` will be highlighted in your editor and errors will show as ESLint output.
 
@@ -7337,7 +7467,7 @@ import { PackageManagerTabs, Tab } from '#components/tabs';
 
 Install `eslint-config-turbo` into the location where your ESLint configuration is held:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add eslint-config-turbo --filter=@repo/eslint-config
@@ -7358,10 +7488,10 @@ Install `eslint-config-turbo` into the location where your ESLint configuration 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install --dev eslint-config-turbo --filter=@acme/eslint-config
+    cd packages/eslint-config && bun install eslint-config-turbo --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Usage (Flat Config `eslint.config.js`)
 
@@ -7424,7 +7554,7 @@ You can also configure rules available in the configuration:
 
 - [eslint-plugin-turbo](/reference/eslint-plugin-turbo.md): Learn more about eslint-plugin-turbo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 [The `eslint-plugin-turbo` package](https://www.npmjs.com/package/eslint-plugin-turbo) helps you find environment variables that are used in your code that are not a part of Turborepo's hashing. Environment variables used in your source code that are not accounted for in `turbo.json` will be highlighted in your editor and errors will show as ESLint output.
 
@@ -7432,7 +7562,7 @@ import { PackageManagerTabs, Tab } from '#components/tabs';
 
 Install `eslint-plugin-turbo` into the location where your ESLint configuration is held:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add eslint-plugin-turbo --filter=@repo/eslint-config
@@ -7453,10 +7583,10 @@ Install `eslint-plugin-turbo` into the location where your ESLint configuration 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install --dev eslint-plugin-turbo --filter=@acme/eslint-config
+    cd packages/eslint-config && bun install eslint-plugin-turbo --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Usage (Flat Config `eslint.config.js`)
 
@@ -8031,6 +8161,7 @@ The three strategies listed above are in order of precedence. Where a flag value
 
 import { Callout } from '#components/callout';
 import { ExperimentalBadge } from '#components/experimental-badge';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 Many monorepos can declare a `turbo.json` in the root directory with a
 [task description](/docs/reference/configuration#tasks) that applies to all packages. But, sometimes, a monorepo can contain packages that need to configure their tasks differently.
@@ -8056,13 +8187,242 @@ key:
 ```
 
 <Callout>
-  For now, the only valid value for the `extends` key is `["//"]`. `//` is a
-  special name used to identify the root directory of the monorepo.
+  The `extends` array must start with `["//"]`. `//` is a special name used to
+  identify the root directory of the monorepo. You can also extend from other
+  packages by adding them after `//` (e.g., `["//", "shared-config"]`).
 </Callout>
 
-Configuration in a package can override any of [the configurations for a
-task](/docs/reference/configuration#defining-tasks). Any keys that are not included are inherited
-from the extended `turbo.json`.
+## Inheritance behavior
+
+When a Package Configuration extends the root `turbo.json`, task properties are inherited differently depending on their type.
+
+### Scalar fields are inherited
+
+Scalar fields like `outputLogs`, `cache`, `persistent`, and `interactive` are **inherited** from the root configuration. You only need to specify them in a Package Configuration if you want to override them.
+
+For example, if your root `turbo.json` sets `"outputLogs": "hash-only"` for a task, all packages inherit that setting automatically.
+
+### Array fields replace by default
+
+Array fields like `outputs`, `env`, `inputs`, `dependsOn`, and `passThroughEnv` **completely replace** the root configuration's values by default.
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"],
+      "env": ["NODE_ENV"]
+    }
+  }
+}
+```
+
+```jsonc title="./apps/my-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // This REPLACES the root outputs - "dist/**" is NOT included
+      "outputs": [".next/**"]
+    }
+  }
+}
+```
+
+### Extending arrays with `$TURBO_EXTENDS$`
+
+To **add** to inherited array values instead of replacing them, use the [`$TURBO_EXTENDS$` microsyntax](/docs/reference/configuration#turbo_extends):
+
+```jsonc title="./apps/my-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // Inherits "dist/**" from root AND adds ".next/**"
+      "outputs": ["$TURBO_EXTENDS$", ".next/**"]
+    }
+  }
+}
+```
+
+The `$TURBO_EXTENDS$` marker must be the first element in the array. It works with `outputs`, `env`, `inputs`, `dependsOn`, `passThroughEnv`, and `with`.
+
+### Extending from other packages
+
+Package Configurations can extend from other packages' `turbo.json` files, not just the root. This enables composing shared task configurations across packages.
+
+Extend from any package by using its `name` from `package.json` in your `extends` array. For example, if you have a Next.js app at `./apps/web` with `"name": "web"` in its `package.json`:
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
+```
+
+Another Next.js app can extend from it to share the same configuration:
+
+```jsonc title="./apps/docs/turbo.json"
+{
+  "extends": ["//", "web"],
+  "tasks": {
+    "build": {
+      // Additional customization specific to this package
+      "env": ["NEXT_PUBLIC_DOCS_URL"]
+    }
+  }
+}
+```
+
+<Callout type="warn">
+  When extending from multiple configurations, the root (`"//"`) must always be
+  listed **first** in the `extends` array.
+</Callout>
+
+#### Inheritance order
+
+When extending from multiple configurations, task definitions are merged in the order they appear in the `extends` array:
+
+1. Root `turbo.json` (`"//"`) is applied first
+2. Each additional package configuration is applied in order
+3. The current package's configuration is applied last
+
+Later configurations override earlier ones for scalar fields. For array fields, see [Extending arrays with `$TURBO_EXTENDS$`](#extending-arrays-with-turbo_extends) to append instead of replace.
+
+#### Patterns for sharing configuration
+
+**Extend from an existing package**: If you already have a package with the configuration you want to share, other packages can extend from it directly. This works well when one package serves as the "canonical" example for similar packages (e.g., your main Next.js app that other Next.js apps can extend from).
+
+**Create a dedicated configuration package**: For larger monorepos, you may want to create packages specifically for sharing configuration. This keeps configuration separate from application code and makes it clear that other packages depend on these settings. These packages typically only contain a `package.json` and `turbo.json`.
+
+<Tabs items={["shared-config/package.json", "shared-config/turbo.json", "apps/web/turbo.json"]}>
+  <Tab value="shared-config/package.json">
+    ```json title="./packages/shared-config/package.json"
+    {
+      "name": "shared-config",
+      "private": true
+    }
+    ```
+  </Tab>
+
+  <Tab value="shared-config/turbo.json">
+    ```jsonc title="./packages/shared-config/turbo.json"
+    {
+      "extends": ["//"],
+      "tasks": {
+        "build": {
+          "outputs": ["dist/**"]
+        },
+        "dev": {
+          "cache": false,
+          "persistent": true
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab value="apps/web/turbo.json">
+    ```jsonc title="./apps/web/turbo.json"
+    {
+      "extends": ["//", "shared-config"],
+      "tasks": {
+        "build": {
+          "env": ["MY_API_URL"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+### Excluding tasks from inheritance
+
+When extending from the root or other packages, your package inherits all their task definitions by default. You can use the task-level `extends` field to opt out of specific tasks.
+
+#### Excluding a task entirely
+
+To completely exclude an inherited task from your package, set `extends: false` with no other configuration:
+
+```jsonc title="./turbo.json"
+{
+  "tasks": {
+    "build": {},
+    "lint": {},
+    "test": {}
+  }
+}
+```
+
+```jsonc title="./packages/ui/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false // This package does not have a lint task
+    }
+  }
+}
+```
+
+When you run `turbo run lint`, the `ui` package will be skipped entirely for the `lint` task.
+
+#### Creating a fresh task definition
+
+To create a new task definition that doesn't inherit any configuration from the extends chain, use `extends: false` along with other task configuration:
+
+```jsonc title="./packages/special-app/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "extends": false, // Don't inherit from root
+      "outputs": ["out/**"],
+      "env": ["SPECIAL_VAR"]
+    }
+  }
+}
+```
+
+This is useful when you need completely different task configuration that shouldn't merge with inherited values.
+
+#### Exclusions propagate through the chain
+
+When a package excludes a task, that exclusion propagates to packages that extend from it:
+
+```jsonc title="./packages/base-config/turbo.json"
+{
+  "extends": ["//"],
+  "tasks": {
+    "lint": {
+      "extends": false // Exclude lint from this config
+    }
+  }
+}
+```
+
+```jsonc title="./apps/web/turbo.json"
+{
+  "extends": ["//", "base-config"],
+  "tasks": {
+    // web does not inherit lint from root because base-config excluded it
+  }
+}
+```
+
+<Callout type="info">
+  Task-level `extends` is only available in Package Configurations. Using
+  `extends` on a task in the root `turbo.json` will result in a validation
+  error.
+</Callout>
 
 ## Examples
 
@@ -8169,40 +8529,9 @@ but continue to inherit any other tasks defined at the root.
 
 ## Comparison to package-specific tasks
 
-At first glance, Package Configurations may sound a lot like the
-[`package#task` syntax](/docs/crafting-your-repository/configuring-tasks#depending-on-a-specific-task-in-a-specific-package) in the root `turbo.json`. The features are
-similar, but have one significant difference: when you declare a package-specific task
-in the root `turbo.json`, it *completely* overwrites the baseline task
-configuration. With a Package Configuration, the task configuration is merged
-instead.
+The [`package#task` syntax](/docs/crafting-your-repository/configuring-tasks#depending-on-a-specific-task-in-a-specific-package) in the root `turbo.json` **completely overwrites** all task configuration—nothing is inherited.
 
-Consider the example of the monorepo with multiple Next.js apps and a Sveltekit
-app again. With a package-specific task, you might configure your root
-`turbo.json` like this:
-
-```jsonc title="./turbo.json"
-{
-  "tasks": {
-    "build": {
-      "outputLogs": "hash-only",
-      "inputs": ["src/**"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "my-sveltekit-app#build": {
-      "outputLogs": "hash-only", // must duplicate this
-      "inputs": ["src/**"], // must duplicate this
-      "outputs": [".svelte-kit/**"]
-    }
-  }
-}
-```
-
-In this example, `my-sveltekit-app#build` completely overwrites `build` for the
-Sveltekit app, so `outputLogs` and `inputs` also need to be duplicated.
-
-With Package Configurations, `outputLogs` and `inputs` are inherited, so
-you don't need to duplicate them. You only need to override `outputs` in
-`my-sveltekit-app` config.
+With Package Configurations, scalar fields are inherited and only the fields you specify are overridden. This means less duplication when you only need to change one or two properties.
 
 <Callout type="info">
   Although there are no plans to remove package-specific task configurations, we
@@ -8244,18 +8573,18 @@ Package Configuration for `my-nextjs-app`:
 {
   "tasks": {
     "my-nextjs-app#build": {
-      // ❌ This is not allowed. Even though it's
+      // This is not allowed. Even though it's
       // referencing the correct package, "my-nextjs-app"
       // is inferred, and we don't need to specify it again.
       // This syntax also has different behavior, so we do not want to allow it.
       // (see "Comparison to package-specific tasks" section)
     },
     "my-sveltekit-app#build": {
-      // ❌ Changing configuration for the "my-sveltekit-app" package
+      // Changing configuration for the "my-sveltekit-app" package
       // from Package Configuration in "my-nextjs-app" is not allowed.
     },
     "build": {
-      // ✅ just use the task name!
+      // Just use the task name!
     }
   }
 }
@@ -9704,7 +10033,7 @@ turbo telemetry disable
 
 - [@turbo/codemod](/reference/turbo-codemod.md): Learn more about how Turborepo uses codemods to make version migrations easy.
 
-import { Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Accordion, Accordions } from '#components/accordion';
 
@@ -10192,7 +10521,7 @@ Watch Mode has some logic to prevent this from happening using file hashes, but 
 
 - [Buildkite](/guides/ci-vendors/buildkite.md): Learn how to use Buildkite with Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 The following example shows how to use Turborepo with [Buildkite](https://buildkite.com/).
 
@@ -10230,7 +10559,7 @@ And a `turbo.json`:
 
 Create a file called `.buildkite/pipeline.yml` in your repository with the following contents:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yaml title=".buildkite/pipeline.yml"
     steps:
@@ -10290,7 +10619,7 @@ Create a file called `.buildkite/pipeline.yml` in your repository with the follo
           bun run build
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Create a Pipeline
 
@@ -10361,7 +10690,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 - [CircleCI](/guides/ci-vendors/circleci.md): Learn how to use CircleCI with Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 The following example shows how to use Turborepo with [CircleCI](https://circleci.com/).
@@ -10407,7 +10736,7 @@ And a `turbo.json`:
 
 Create a file called `.circleci/config.yml` in your repository with the following contents:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yaml title=".circleci/config.yml"
     version: 2.1
@@ -10525,7 +10854,7 @@ Create a file called `.circleci/config.yml` in your repository with the followin
               TURBO_UI: "false"
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Remote Caching
 
@@ -10554,7 +10883,7 @@ Copy the value to a safe place. You'll need it in a moment.
 
 - [GitHub Actions](/guides/ci-vendors/github-actions.md): Learn how to use GitHub Actions with Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Steps, Step } from '#components/steps';
 import { Callout } from '#components/callout';
 
@@ -10594,7 +10923,7 @@ And a `turbo.json`:
 
 Create a file called `.github/workflows/ci.yml` in your repository with the following contents:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yaml title=".github/workflows/ci.yml"
     name: CI
@@ -10772,7 +11101,7 @@ Create a file called `.github/workflows/ci.yml` in your repository with the foll
             run: bun run test
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Remote Caching with Vercel Remote Cache
 
@@ -10907,7 +11236,7 @@ The following steps show how you could use [actions/cache](https://github.com/ac
 
 - [GitLab CI](/guides/ci-vendors/gitlab-ci.md): Learn how to use GitLab CI with Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 The following example shows how to use Turborepo with [GitLab CI](https://docs.gitlab.com/ee/ci/).
 
@@ -10945,7 +11274,7 @@ And a `turbo.json`:
 
 Create a file called `.gitlab-ci.yml` in your repository with the following contents:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yaml title=".gitlab-ci.yml"
     image: node:latest
@@ -11024,7 +11353,7 @@ Create a file called `.gitlab-ci.yml` in your repository with the following cont
 
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Remote Caching
 
@@ -11087,7 +11416,7 @@ To enable Remote Caching for your CI:
 
 - [Travis CI](/guides/ci-vendors/travis-ci.md): How to use Travis CI with Turborepo to optimize your CI workflow
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 The following example shows how to use Turborepo with [Travis CI](https://www.travis-ci.com/).
 
@@ -11125,7 +11454,7 @@ And a `turbo.json`:
 
 Create a file called `.travis.yml` in your repository with the following contents:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```yaml title=".travis.yml"
     language: node_js
@@ -11198,7 +11527,7 @@ Create a file called `.travis.yml` in your repository with the following content
       - bun run test
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Remote Caching
 
@@ -11237,7 +11566,7 @@ For more information about deploying your Turborepo to Vercel, [visit the Vercel
 
 - [Framework bindings in libraries](/guides/frameworks/framework-bindings.md): Learn how to create framework bindings in packages.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 Framework bindings in a [Library Package](/docs/core-concepts/package-types#library-packages) integrate your library's code more deeply with a framework by leveraging APIs from the framework directly in the library.
@@ -11338,7 +11667,7 @@ Turborepo works with **any framework**. Below, you'll find guides for the most c
 
 - [Next.js](/guides/frameworks/nextjs.md): Learn how to use Next.js in a monorepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 [Next.js](https://nextjs.org) is the React framework for the web. Used by some of the world's largest companies, Next.js enables you to create high-quality web applications with the power of React components.
@@ -11347,7 +11676,7 @@ import { Callout } from '#components/callout';
 
 To get started with Next.js in a Turborepo quickly, follow the [quickstart](/docs/getting-started/installation) to create a repository with two Next.js applications:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -11371,13 +11700,13 @@ To get started with Next.js in a Turborepo quickly, follow the [quickstart](/doc
     bunx create-turbo@latest
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Adding a Next.js application to an existing repository
 
 Use [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-app) to set up a new Next.js application in a package. From the root of your repository, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-next-app@latest apps/my-app
@@ -11401,13 +11730,13 @@ Use [`create-next-app`](https://nextjs.org/docs/app/api-reference/create-next-ap
     bunx create-next-app@latest apps/my-app
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Integrating with your repository
 
 To add [Internal Packages](/docs/core-concepts/internal-packages) to your new application, install them into the app with your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```diff title="./apps/my-app/package.json"
     {
@@ -11451,7 +11780,7 @@ To add [Internal Packages](/docs/core-concepts/internal-packages) to your new ap
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Make sure to run your package manager's install command. You also may need to update `scripts` in `package.json` to fit your use case in your repository.
 
@@ -11476,7 +11805,7 @@ export default nextConfig;
 
 - [Nuxt](/guides/frameworks/nuxt.md): Learn more about using Nuxt in your monorepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 [Nuxt](https://nuxt.com/) is an open source framework that makes web development intuitive and powerful.
@@ -11485,7 +11814,7 @@ import { Callout } from '#components/callout';
 
 To get started with Nuxt in a Turborepo quickly, use [the `with-vue-nuxt` example](https://github.com/vercel/turborepo/tree/main/examples/with-vue-nuxt):
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e with-vue-nuxt
@@ -11509,13 +11838,13 @@ To get started with Nuxt in a Turborepo quickly, use [the `with-vue-nuxt` exampl
     bunx create-turbo@latest -e with-vue-nuxt
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Adding a Nuxt application to an existing repository
 
 Use [Nuxi](https://www.npmjs.com/package/nuxi), Nuxt's CLI, to set up a new Nuxt application in a package. From the root of your repository, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx nuxi@latest init apps/my-app
@@ -11539,13 +11868,13 @@ Use [Nuxi](https://www.npmjs.com/package/nuxi), Nuxt's CLI, to set up a new Nuxt
     bunx nuxi@latest init apps/my-app
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Integrating with your repository
 
 To add [Internal Packages](/docs/core-concepts/internal-packages) to your new application, install them into the app with your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```diff title="./apps/my-app/package.json"
     {
@@ -11589,7 +11918,7 @@ To add [Internal Packages](/docs/core-concepts/internal-packages) to your new ap
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Make sure to run your package manager's install command. You also may need to update `scripts` in `package.json` to fit your use case in your repository.
 
@@ -11612,7 +11941,7 @@ export default defineConfig({
 
 - [SvelteKit](/guides/frameworks/sveltekit.md): Learn more about using SvelteKit in your monorepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 [SvelteKit](https://kit.svelte.dev/) is a framework for rapidly developing robust, performant web applications using Svelte.
@@ -11621,7 +11950,7 @@ import { Callout } from '#components/callout';
 
 To get started with SvelteKit in a Turborepo quickly, use [the `with-svelte` example](https://github.com/vercel/turborepo/tree/main/examples/with-svelte):
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e with-svelte
@@ -11645,13 +11974,13 @@ To get started with SvelteKit in a Turborepo quickly, use [the `with-svelte` exa
     bunx create-turbo@latest -e with-svelte
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Adding a SvelteKit application to an existing repository
 
 Use [`npm create svelte`](https://kit.svelte.dev/docs/creating-a-project) to set up a new SvelteKit application in a package. From the root of your repository, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx sv create
@@ -11675,13 +12004,13 @@ Use [`npm create svelte`](https://kit.svelte.dev/docs/creating-a-project) to set
     bunx sv create
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Integrating with your repository
 
 To add [Internal Packages](/docs/core-concepts/internal-packages) to your new application, install them into the app with your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```diff title="./apps/my-app/package.json"
     {
@@ -11725,7 +12054,7 @@ To add [Internal Packages](/docs/core-concepts/internal-packages) to your new ap
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Make sure to run your package manager's install command. You also may need to update `scripts` in `package.json` to fit your use case in your repository.
 
@@ -11748,7 +12077,7 @@ export default defineConfig({
 
 - [Vite](/guides/frameworks/vite.md): Learn more about using Vite in your monorepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 
 [Vite](https://vitejs.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
@@ -11757,7 +12086,7 @@ import { Callout } from '#components/callout';
 
 To get started with Vite in a Turborepo quickly, use [the `with-vite` example](https://github.com/vercel/turborepo/tree/main/examples/with-vite):
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e with-vite
@@ -11781,13 +12110,13 @@ To get started with Vite in a Turborepo quickly, use [the `with-vite` example](h
     bunx create-turbo@latest -e with-vite
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Adding a Vite application to an existing repository
 
 Use [`npm create vite`](https://vitejs.dev/guide/#scaffolding-your-first-vite-project) to set up a new Vite application in a package. From the root of your repository, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm create vite@latest apps/my-app
@@ -11811,13 +12140,13 @@ Use [`npm create vite`](https://vitejs.dev/guide/#scaffolding-your-first-vite-pr
     bun create vite@latest apps/my-app
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Integrating with your repository
 
 To add [Internal Packages](/docs/core-concepts/internal-packages) to your new application, install them into the app with your package manager:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```diff title="./apps/my-app/package.json"
     {
@@ -11861,7 +12190,7 @@ To add [Internal Packages](/docs/core-concepts/internal-packages) to your new ap
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Make sure to run your package manager's install command. You also may need to update `scripts` in `package.json` to fit your use case in your repository.
 
@@ -12169,7 +12498,7 @@ docker build -f apps/web/Dockerfile . --build-arg TURBO_TEAM=“your-team-name�
 
 - [ESLint](/guides/tools/eslint.md): Learn how to use ESLint in a monorepo.
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Files, Folder, File } from '#components/files';
 import { CreateTurboCallout } from './create-turbo-callout.tsx';
@@ -12240,7 +12569,7 @@ Notably, the `next.js` and `react-internal.js` configurations use the `base.js` 
 
 In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```jsonc title="./apps/web/package.json"
     {
@@ -12280,7 +12609,7 @@ In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 We can then import the configuration like this:
 
@@ -12388,7 +12717,7 @@ Note that the ESLint dependencies are all listed here. This is useful, since it 
 
 In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```jsonc title="./apps/web/package.json"
     {
@@ -12428,7 +12757,7 @@ In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 We can then import the config like this:
 
@@ -12505,7 +12834,7 @@ Turborepo works with **all of your favorite tooling**. Below, you'll find guides
 
 import { Callout } from '#components/callout';
 import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { CreateTurboCallout } from './create-turbo-callout.tsx';
 
 [Jest](https://jestjs.io/) is a common test runner with a vast ecosystem. Integrating with Turborepo will lead to enormous speed-ups.
@@ -12532,7 +12861,7 @@ Let's say we have a monorepo that looks like this:
 
 Install `jest` into the packages where you plan on having test suites. For this example, we will have tests in `web` and `@repo/ui`:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm add jest --save-dev --filter=@repo/ui --filter=web
@@ -12554,10 +12883,11 @@ Install `jest` into the packages where you plan on having test suites. For this 
 
   <Tab value="bun">
     ```bash title="Terminal"
-    bun install jest --dev --filter=@repo/ui --filter=web
+    cd apps/web && bun install jest --dev
+    cd packages/ui && bun install jest --dev
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Both the `apps/web` and `packages/ui` have their own test suites, so we'll add a `test` script to their `package.json`:
 
@@ -12685,7 +13015,7 @@ You can now either run this task using [global `turbo`](/docs/getting-started/in
 
 - [Playwright](/guides/tools/playwright.md): Learn how to use Playwright in a Turborepo.
 
-import { Tabs, Tab, PackageManagerTabs } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 [Playwright](https://playwright.dev/) enables reliable end-to-end testing for modern web apps.
 
@@ -12768,7 +13098,7 @@ Later on, when you want to run your end-to-end tests, use [the `--only` flag](/d
 
 You can also create a common package for shared utilities that you need in your end-to-end test suites. We recommend using `peerDependencies` in this shared package so that you can get access to Playwright used in consumers without having to install Playwright into the shared package itself.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./packages/playwright-utilities/package.json"
     {
@@ -12812,19 +13142,19 @@ You can also create a common package for shared utilities that you need in your 
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 
 - [Prisma](/guides/tools/prisma.md): Learn how to use Prisma in a Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Steps, Step } from '#components/steps';
 import { CreateTurboCallout } from './create-turbo-callout.tsx';
 
 [Prisma](https://www.prisma.io/) unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety & auto-completion.
 
-[Their official guide](https://www.prisma.io/docs/guides/using-prisma-orm-with-turborepo#1-create-your-monorepo-using-turborepo) describes how to integrate Prisma into a Turborepo, including:
+[Their official guide](https://www.prisma.io/docs/guides/turborepo) describes how to integrate Prisma into a Turborepo, including:
 
 * Prisma client initialization
 * Packaging the client as an [Internal Package](/docs/core-concepts/internal-packages)
@@ -12843,13 +13173,13 @@ npx create-turbo@latest -e with-prisma
 
 - [shadcn/ui](/guides/tools/shadcn-ui.md): Learn how to use shadcn/ui in a Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 [shadcn/ui](https://ui.shadcn.com/docs/monorepo) is an open-source set of beautifully designed components made with Tailwind CSS that you can copy and paste into your apps.
 
 To get started with shadcn/ui in a new monorepo, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx shadcn@canary init
@@ -12873,13 +13203,13 @@ To get started with shadcn/ui in a new monorepo, run:
     bunx shadcn@canary init
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 When prompted, select the option for monorepos.
 
 To add a component, run:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx shadcn@canary add [COMPONENT]
@@ -12903,7 +13233,7 @@ To add a component, run:
     bunx shadcn@canary add [COMPONENT]
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## More information
 
@@ -12912,7 +13242,7 @@ To learn more about using shadcn/ui in Turborepo, [visit the docs for shadcn/ui]
 
 - [Storybook](/guides/tools/storybook.md): Learn how to use Storybook in a Turborepo.
 
-import { PackageManagerTabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Steps, Step } from '#components/steps';
 
@@ -12922,7 +13252,7 @@ import { Steps, Step } from '#components/steps';
 
 If you'd rather use a template, this guide is walking through how to build [this Storybook/Turborepo template](https://vercel.com/templates/react/turborepo-design-system) on Vercel.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e design-system
@@ -12946,7 +13276,7 @@ If you'd rather use a template, this guide is walking through how to build [this
     bunx create-turbo@latest -e design-system
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Guide
 
@@ -12956,7 +13286,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     If you don't have an existing project, use [create-turbo](/docs/getting-started/installation) to create a new monorepo:
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm dlx create-turbo@latest
@@ -12980,7 +13310,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         bunx create-turbo@latest
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -12999,7 +13329,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     In the `apps/storybook` directory, initialize a new Storybook application:
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm create storybook@latest
@@ -13023,7 +13353,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         bun create storybook@latest
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     Follow the prompts to create an application. For the rest of this guide, we'll assume React and TypeScript.
 
@@ -13038,7 +13368,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     Now, install your UI package into Storybook.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @repo/ui --filter=storybook
@@ -13059,10 +13389,10 @@ If you'd rather use a template, this guide is walking through how to build [this
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @repo/ui --filter=storybook
+        cd apps/storybook && bun install @repo/ui
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -13189,7 +13519,7 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 
     You'll also need to install any Storybook packages required for writing stories. For example, moving the story from above would require that you install `@storybook/react` into your `@repo/ui` package.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @storybook/react --filter=@repo/ui --save-dev
@@ -13210,10 +13540,10 @@ If you'd prefer to co-locate your stories to their source code (rather than havi
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @storybook/react --filter=@repo/ui --save-dev
+        cd packages/ui && bun install @storybook/react --dev
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -13293,7 +13623,7 @@ If your UI package exports its own CSS, you'll need to add it to the renders in 
 
 - [Tailwind CSS](/guides/tools/tailwind.md): Learn how to use Tailwind CSS in a Turborepo.
 
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Callout } from '#components/callout';
 import { Steps, Step } from '#components/steps';
 
@@ -13303,7 +13633,7 @@ import { Steps, Step } from '#components/steps';
 
 If you'd rather use a template, this guide is walking through how to build [this Tailwind CSS + Turborepo template](https://github.com/vercel/turborepo/tree/main/examples/with-tailwind).
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest -e with-tailwind
@@ -13327,7 +13657,7 @@ If you'd rather use a template, this guide is walking through how to build [this
     bunx create-turbo@latest -e with-tailwind
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ## Guide
 
@@ -13339,7 +13669,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     If you don't have an existing project, use [create-turbo](/docs/getting-started/installation) to create a new monorepo:
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm dlx create-turbo@latest
@@ -13363,7 +13693,7 @@ If you'd rather use a template, this guide is walking through how to build [this
         bunx create-turbo@latest
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -13522,7 +13852,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
     Install the packages you've created into your application.
 
-    <PackageManagerTabs>
+    <Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
       <Tab value="pnpm">
         ```bash title="Terminal"
         pnpm add @repo/ui @repo/tailwind-config --save-dev --filter=@repo/ui --filter=web
@@ -13544,10 +13874,11 @@ If you'd rather use a template, this guide is walking through how to build [this
 
       <Tab value="bun">
         ```bash title="Terminal"
-        bun install @repo/ui @repo/tailwind-config --dev --filter=@repo/ui --filter=web
+        cd apps/web && bun install @repo/ui @repo/tailwind-config --dev
+        cd packages/ui && bun install @repo/ui @repo/tailwind-config --dev
         ```
       </Tab>
-    </PackageManagerTabs>
+    </Tabs>
 
     Then, configure the files in your application so the styles from the UI package are reflected in the application.
 
@@ -13582,7 +13913,7 @@ If you'd rather use a template, this guide is walking through how to build [this
 
 import { Callout } from '#components/callout';
 import { File, Folder, Files } from '#components/files';
-import { PackageManagerTabs, Tabs, Tab } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { LinkToDocumentation } from '#components/link-to-documentation';
 
 TypeScript is an excellent tool in monorepos, allowing teams to safely add types to their JavaScript code. While there is some complexity to getting set up, this guide will walk you through the important parts of a TypeScript setup for most use cases.
@@ -13605,7 +13936,7 @@ TypeScript's `tsconfig.json` sets the configuration for the TypeScript compiler 
 
 This guide will use [`create-turbo`](/docs/reference/create-turbo) as an example.
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```bash title="Terminal"
     pnpm dlx create-turbo@latest
@@ -13629,7 +13960,7 @@ This guide will use [`create-turbo`](/docs/reference/create-turbo) as an example
     bunx create-turbo@latest
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 ### Use a base `tsconfig` file
 
@@ -13674,7 +14005,7 @@ Inside `package.json`, name the package so it can be referenced in the rest of t
 
 First, install the `@repo/typescript-config` package into your package:
 
-<PackageManagerTabs>
+<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
   <Tab value="pnpm">
     ```json title="./apps/web/package.json"
     {
@@ -13718,7 +14049,7 @@ First, install the `@repo/typescript-config` package into your package:
     }
     ```
   </Tab>
-</PackageManagerTabs>
+</Tabs>
 
 Then, extend the `tsconfig.json` for the package from the `@repo/typescript-config` package. In this example, the `web` package is a Next.js application:
 
@@ -13920,14 +14251,17 @@ This can result in differences between the linting errors that show in your edit
 import { Callout } from '#components/callout';
 import { File, Folder, Files } from '#components/files';
 import { CreateTurboCallout } from './create-turbo-callout.tsx';
-import { Tab, Tabs } from '#components/tabs';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 [Vitest](https://vitest.dev/) is a test runner from the Vite ecosystem. Integrating it with Turborepo will lead to enormous speed-ups.
 
 [The Vitest documentation](https://vitest.dev/guide/workspace) shows how to create a "Vitest Projects" configuration that runs all tests in the monorepo from one root command, enabling behavior like merged coverage reports out-of-the-box. This feature doesn't follow modern best practices for monorepos, since its designed for compatibility with Jest (whose Workspace feature was built before [package manager Workspaces](/docs/crafting-your-repository/structuring-a-repository)).
 
 <Callout type="warning">
-  Vitest has deprecated workspaces in favor of projects. When using projects, individual project vitest configs can't extend the root config anymore since they would inherit the projects configuration. Instead, a separate shared file like `vitest.shared.ts` is needed.
+  Vitest has deprecated workspaces in favor of projects. When using projects,
+  individual project vitest configs can't extend the root config anymore since
+  they would inherit the projects configuration. Instead, a separate shared file
+  like `vitest.shared.ts` is needed.
 </Callout>
 
 Because of this you have two options, each with their own tradeoffs:
@@ -14080,7 +14414,7 @@ Turborepo tasks to accomplish will look like:
     "test": {
       "dependsOn": ["^test", "@repo/vitest-config#build"],
       "outputs": ["coverage.json"]
-    }
+    },
     "merge-json-reports": {
       "inputs": ["coverage/raw/**"],
       "outputs": ["coverage/merged/**"]
@@ -14089,7 +14423,7 @@ Turborepo tasks to accomplish will look like:
       "dependsOn": ["merge-json-reports"],
       "inputs": ["coverage/merge"],
       "outputs": ["coverage/report/**"]
-    },
+    }
   }
 }
 ```
@@ -14172,7 +14506,7 @@ export const sharedConfig = {
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     // Other shared configuration
-  }
+  },
 };
 ```
 
@@ -14191,9 +14525,9 @@ export default defineConfig({
       test: {
         ...sharedConfig.test,
         // Project-specific configuration
-      }
-    }
-  ]
+      },
+    },
+  ],
 });
 ```
 
@@ -14223,7 +14557,7 @@ export default defineConfig({
   test: {
     ...sharedConfig.test,
     // Package-specific overrides if needed
-  }
+  },
 });
 ```
 

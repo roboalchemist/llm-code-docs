@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:02
-  total_sources: 415
-  total_fetched: 365
-  llms_txt_count: 295
-  llms_txt_fetched: 258
-  github_count: 74
+  last_updated: 2025-12-31 15:08
+  total_sources: 418
+  total_fetched: 367
+  llms_txt_count: 296
+  llms_txt_fetched: 259
+  github_count: 75
   github_fetched: 61
-  web_scraped_count: 46
-  web_scraped_fetched: 46
+  web_scraped_count: 47
+  web_scraped_fetched: 47
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2042,9 +2042,9 @@ llms_txt:
   url: https://turbo.build/
   path: docs/llms-txt/turbo/
   status: fetched
-  file_count: 1
-  size: 491.7KB
-  last_updated: 2025-12-01 20:12
+  file_count: 23
+  size: 613.1KB
+  last_updated: 2025-12-31 15:07
 - name: turso
   description: Turso documentation
   url: https://docs.turso.tech/
@@ -2194,6 +2194,14 @@ llms_txt:
   file_count: 1
   size: 32.0KB
   last_updated: 2025-11-19 00:05
+- name: waku
+  description: Minimal React framework
+  url: https://waku.gg/
+  path: docs/llms-txt/waku/
+  status: fetched
+  file_count: 1
+  size: 41.9KB
+  last_updated: 2025-12-31 15:07
 - name: warp
   description: Warp AI-powered terminal
   url: https://docs.warp.dev/
@@ -2276,7 +2284,7 @@ github:
   status: fetched
   file_count: 30
   size: 145.1KB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:07
 - name: tensorrt-llm
   description: NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with optimizations for efficient inference on
     NVIDIA GPUs
@@ -2287,7 +2295,7 @@ github:
   status: fetched
   file_count: 151
   size: 1.4MB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:07
 - name: three.js
   description: Three.js - JavaScript 3D library for WebGL with comprehensive API documentation
   repo: mrdoob/three.js
@@ -2297,7 +2305,7 @@ github:
   status: fetched
   file_count: 772
   size: 6.4MB
-  last_updated: 2025-12-31 13:50
+  last_updated: 2025-12-31 15:07
 - name: textual
   description: Textual documentation and examples
   repo: Textualize/textual
@@ -2307,7 +2315,7 @@ github:
   status: fetched
   file_count: 292
   size: 870.0KB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:07
 - name: micropython
   description: MicroPython documentation
   repo: micropython/micropython
@@ -2317,7 +2325,7 @@ github:
   status: fetched
   file_count: 243
   size: 1.4MB
-  last_updated: 2025-12-27 23:52
+  last_updated: 2025-12-31 15:07
 - name: buildbuddy
   description: BuildBuddy documentation - Remote execution and caching platform
   repo: buildbuddy-io/buildbuddy
@@ -2933,6 +2941,13 @@ github:
   file_count: 13
   size: 12.0KB
   last_updated: 2025-12-31 13:50
+- name: react-beautiful-dnd
+  description: react-beautiful-dnd - Beautiful drag and drop for lists in React (archived but still widely used)
+  repo: atlassian/react-beautiful-dnd
+  branch: master
+  source_folder: docs
+  path: docs/github-scraped/react-beautiful-dnd/
+  status: pending
 - name: react-hook-form
   description: React Hook Form - Performant, flexible and extensible forms with easy-to-use validation
   repo: react-hook-form/documentation
@@ -3278,6 +3293,13 @@ web_scraped:
   file_count: 15
   size: 103.2KB
   last_updated: 2025-12-28 00:40
+- name: typer
+  description: typer documentation
+  path: docs/web-scraped/typer/
+  status: fetched
+  file_count: 47
+  size: 397.3KB
+  last_updated: 2025-12-31 15:08
 - name: ultravnc
   description: ultravnc documentation
   path: docs/web-scraped/ultravnc/
