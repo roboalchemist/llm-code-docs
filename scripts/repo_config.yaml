@@ -333,3 +333,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/ariakit"
     branch: "main"
+
+  - name: "react-bootstrap"
+    description: "React Bootstrap - Bootstrap components built with React, providing native React implementations without jQuery"
+    repo_url: "https://github.com/react-bootstrap/react-bootstrap.git"
+    source_folder: "www/docs"
+    target_folder: "docs/github-scraped/react-bootstrap"
+    branch: "master"
