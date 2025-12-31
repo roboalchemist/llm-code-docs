@@ -236,6 +236,13 @@ repositories:
     target_folder: "docs/github-scraped/pikvm"
     branch: "master"
 
+  - name: "PlatformIO"
+    description: "PlatformIO - Open-source ecosystem for embedded development with unified debugger and IDE for IoT (Arduino, ESP32, STM32)"
+    repo_url: "https://github.com/platformio/platformio-docs.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/platformio"
+    branch: "master"
+
   - name: "PrimeReact"
     description: "PrimeReact - React UI component library with 80+ customizable components"
     repo_url: "https://github.com/primefaces/primereact.git"
