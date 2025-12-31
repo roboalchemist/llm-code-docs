@@ -334,6 +334,13 @@ repositories:
     target_folder: "docs/github-scraped/agentskills"
     branch: "main"
 
+  - name: "Arduino"
+    description: "Arduino - Open-source electronics platform with documentation for hardware, software, tutorials, and cloud services"
+    repo_url: "https://github.com/arduino/docs-content.git"
+    source_folder: "content"
+    target_folder: "docs/github-scraped/arduino"
+    branch: "main"
+
   - name: "ariakit"
     description: "Ariakit - React toolkit for building accessible web applications with unstyled WAI-ARIA components, includes guide, components, and examples documentation"
     repo_url: "https://github.com/ariakit/ariakit.git"
