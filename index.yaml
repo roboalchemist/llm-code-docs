@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-30 20:56
-  total_sources: 378
-  total_fetched: 336
+  last_updated: 2025-12-30 21:01
+  total_sources: 379
+  total_fetched: 337
   llms_txt_count: 295
   llms_txt_fetched: 257
   github_count: 45
   github_fetched: 41
-  web_scraped_count: 38
-  web_scraped_fetched: 38
+  web_scraped_count: 39
+  web_scraped_fetched: 39
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -2776,6 +2776,13 @@ web_scraped:
   file_count: 8
   size: 119.8KB
   last_updated: 2025-12-20 18:28
+- name: headlessui
+  description: headlessui documentation
+  path: docs/web-scraped/headlessui/
+  status: fetched
+  file_count: 27
+  size: 467.0KB
+  last_updated: 2025-12-30 21:01
 - name: lxc
   description: lxc documentation
   path: docs/web-scraped/lxc/
