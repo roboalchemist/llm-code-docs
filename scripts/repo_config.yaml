@@ -319,3 +319,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/agentskills"
     branch: "main"
+
+  - name: "ariakit"
+    description: "Ariakit - React toolkit for building accessible web applications with unstyled WAI-ARIA components, includes guide, components, and examples documentation"
+    repo_url: "https://github.com/ariakit/ariakit.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/ariakit"
+    branch: "main"
