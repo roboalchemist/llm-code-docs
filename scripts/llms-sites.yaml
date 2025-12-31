@@ -821,6 +821,9 @@ sites:
 - name: tinybird
   base_url: https://www.tinybird.co/docs/
   description: Tinybird real-time analytics API
+- name: tldraw
+  base_url: https://tldraw.dev/
+  description: tldraw SDK - infinite canvas SDK for React with drawing, shapes, and collaboration
 - name: tiptap
   base_url: https://tiptap.dev/
   description: Tiptap headless rich text editor
