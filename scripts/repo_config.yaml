@@ -75,6 +75,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Jest"
+    description: "Jest - Delightful JavaScript testing framework by Meta with zero config and built-in code coverage"
+    repo_url: "https://github.com/jestjs/jest.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jest"
+    branch: "main"
+
   - name: "SQLAlchemy"
     description: "SQLAlchemy - The Python SQL Toolkit and ORM"
     repo_url: "https://github.com/sqlalchemy/sqlalchemy.git"
