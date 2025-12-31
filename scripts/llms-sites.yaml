@@ -274,6 +274,9 @@ sites:
 - name: elevenlabs
   base_url: https://docs.elevenlabs.io/
   description: ElevenLabs AI voice generation and text-to-speech
+- name: elysia
+  base_url: https://elysiajs.com/
+  description: Elysia fast and friendly Bun web framework with end-to-end type safety
 - name: embedchain
   base_url: https://docs.embedchain.ai/
   description: Embedchain RAG framework for LLM applications
