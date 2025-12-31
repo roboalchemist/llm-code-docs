@@ -779,6 +779,9 @@ sites:
 - name: tamagui
   base_url: https://tamagui.dev/docs/
   description: Tamagui universal UI framework
+- name: tanstack
+  base_url: https://tanstack.com/
+  description: TanStack - high-quality open-source libraries for React, Vue, Solid, and Angular (Query, Router, Table, Form, Start)
 - name: tauri
   base_url: https://tauri.app/
   description: Tauri desktop application framework
