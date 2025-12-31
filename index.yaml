@@ -7,15 +7,15 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 15:28
-  total_sources: 419
-  total_fetched: 369
-  llms_txt_count: 299
-  llms_txt_fetched: 262
-  github_count: 74
-  github_fetched: 61
-  web_scraped_count: 46
-  web_scraped_fetched: 46
+  last_updated: 2025-12-31 15:29
+  total_sources: 423
+  total_fetched: 373
+  llms_txt_count: 301
+  llms_txt_fetched: 264
+  github_count: 75
+  github_fetched: 62
+  web_scraped_count: 47
+  web_scraped_fetched: 47
 llms_txt:
 - name: activepieces
   description: Activepieces open source automation platform
@@ -1578,6 +1578,22 @@ llms_txt:
   file_count: 209
   size: 1.6MB
   last_updated: 2025-12-31 15:27
+- name: paypal
+  description: PayPal online payments platform for consumers and businesses
+  url: https://www.paypal.com/
+  path: docs/llms-txt/paypal/
+  status: fetched
+  file_count: 65
+  size: 12.3MB
+  last_updated: 2025-12-31 15:29
+- name: paypal-developer
+  description: PayPal developer documentation and payment APIs
+  url: https://developer.paypal.com/
+  path: docs/llms-txt/paypal-developer/
+  status: fetched
+  file_count: 39
+  size: 9.3MB
+  last_updated: 2025-12-31 15:29
 - name: paysafe
   description: Paysafe payment gateway API
   url: https://developer.paysafe.com/
@@ -2546,6 +2562,16 @@ github:
   file_count: 450
   size: 4.4MB
   last_updated: 2025-12-31 15:27
+- name: mobx
+  description: MobX - Simple, scalable state management library for JavaScript with transparent reactive programming
+  repo: mobxjs/mobx
+  branch: main
+  source_folder: docs
+  path: docs/github-scraped/mobx/
+  status: fetched
+  file_count: 54
+  size: 256.7KB
+  last_updated: 2025-12-31 15:27
 - name: flagembedding
   description: BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)
   repo: FlagOpen/FlagEmbedding
@@ -3085,6 +3111,13 @@ web_scraped:
   file_count: 28
   size: 6.4MB
   last_updated: 2025-12-31 15:27
+- name: formik
+  description: formik documentation
+  path: docs/web-scraped/formik/
+  status: fetched
+  file_count: 32
+  size: 1.3MB
+  last_updated: 2025-12-31 15:29
 - name: gokapi
   description: gokapi documentation
   path: docs/web-scraped/gokapi/

@@ -187,6 +187,13 @@ repositories:
     target_folder: "docs/github-scraped/milvus"
     branch: "v2.6.x"
 
+  - name: "MobX"
+    description: "MobX - Simple, scalable state management library for JavaScript with transparent reactive programming"
+    repo_url: "https://github.com/mobxjs/mobx.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/mobx"
+    branch: "main"
+
   - name: "FlagEmbedding"
     description: "BAAI BGE - Embeddings and rerankers (bge-m3, bge-reranker)"
     repo_url: "https://github.com/FlagOpen/FlagEmbedding.git"
