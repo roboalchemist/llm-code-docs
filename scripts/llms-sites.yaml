@@ -539,6 +539,9 @@ sites:
 - name: mastra
   base_url: https://mastra.ai/
   description: Mastra AI agent framework
+- name: mailgun
+  base_url: https://documentation.mailgun.com/
+  description: Mailgun email service API and SDK documentation
 - name: mcp
   base_url: https://modelcontextprotocol.io/
   description: Model Context Protocol for AI context management
