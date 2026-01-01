@@ -558,6 +558,13 @@ repositories:
     target_folder: "docs/github-scraped/docusaurus"
     branch: "main"
 
+  - name: "Mermaid"
+    description: "Mermaid.js - JavaScript-based diagramming and charting tool for creating flowcharts, sequence diagrams, Gantt charts, and more using markdown-inspired syntax"
+    repo_url: "https://github.com/mermaid-js/mermaid.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/mermaid"
+    branch: "develop"
+
   - name: "React Router"
     description: "React Router - Declarative routing library for React with dynamic route matching, location transition handling, and lazy code loading"
     repo_url: "https://github.com/remix-run/react-router.git"
