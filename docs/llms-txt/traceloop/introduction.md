@@ -1,0 +1,47 @@
+# Source: https://www.traceloop.com/docs/self-host/introduction.md
+
+# Source: https://www.traceloop.com/docs/openllmetry/introduction.md
+
+# Source: https://www.traceloop.com/docs/openllmetry/integrations/introduction.md
+
+# Source: https://www.traceloop.com/docs/monitoring/introduction.md
+
+# Source: https://www.traceloop.com/docs/introduction.md
+
+# Source: https://www.traceloop.com/docs/experiments/introduction.md
+
+# Source: https://www.traceloop.com/docs/api-reference/introduction.md
+
+# Introduction
+
+The following is a list of publicly available APIs you can use with the [Traceloop platform](https://app.traceloop.com).
+
+All APIs require an API key to be used for authentication.
+
+## Authentication
+
+Use your API key as a Bearer token in the `Authorization` header:
+
+```bash  theme={null}
+Authorization: Bearer YOUR_API_KEY
+```
+
+<Tip>
+  The same API key you use to send traces to Traceloop can be used to query your data via the API.
+</Tip>
+
+<Note>
+  **To generate an API key:**
+
+  1. [Sign up](https://app.traceloop.com) for a Traceloop account if you haven't already
+  2. Go to [Settings → Organization](https://app.traceloop.com/settings/api-keys)
+  3. Select a project and environment
+  4. Click **Generate API key** and copy it immediately
+
+  [Detailed instructions →](/settings/managing-api-keys)
+</Note>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

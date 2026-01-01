@@ -1,0 +1,341 @@
+# Source: https://www.traceloop.com/docs/experiments/running-from-code.md
+
+# Run via SDK
+
+> Learn how to run experiments programmatically using the Traceloop SDK
+
+You can run experiments programmatically using the Traceloop SDK. This allows you to systematically evaluate different AI model configurations, prompts, and approaches with your datasets.
+
+## SDK Initialization
+
+First, initialize the Traceloop SDK.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from traceloop.sdk import Traceloop
+
+  # Initialize with dataset sync enabled
+  client = Traceloop.init()
+  ```
+
+  ```js Typescript theme={null}
+  import * as traceloop from "@traceloop/node-server-sdk";
+
+  // Initialize with comprehensive configuration
+  traceloop.initialize({
+    appName: "your-app-name",
+    apiKey: process.env.TRACELOOP_API_KEY,
+    disableBatch: true,
+    traceloopSyncEnabled: true,
+  });
+
+  // Wait for initialization to complete
+  await traceloop.waitForInitialization();
+
+  // Get the client instance for dataset operations
+  const client = traceloop.getClient();
+  ```
+</CodeGroup>
+
+<Note>
+  **Prerequisites:** You need an API key set as the environment variable `TRACELOOP_API_KEY`.
+  [Generate one in Settings →](/settings/managing-api-keys)
+</Note>
+
+## Basic Experiment Structure
+
+An experiment consists of:
+
+* A **dataset** to test against
+* A **task function** that defines what your AI system should do
+* **Evaluators** to measure performance
+
+## Task Functions
+
+Create a task function that define how your AI system processes each dataset row. The task is one of the experiments parameters, it will run it on each dataset row.
+
+The task function signature expects:
+
+* **Input**: An optional dictionary containing the dataset row data
+* **Output**: A dictionary with your task results
+
+<CodeGroup>
+  ```python Python theme={null}
+  task: Callable[[Optional[Dict[str, Any]]], Dict[str, Any]]
+  ```
+
+  ```typescript TypeScript theme={null}
+  type dataValue = string | number | boolean;
+  type TaskInput = Record<string, dataValue>;
+  type TaskOutput = Record<string, dataValue>;
+  interface ExperimentTaskFunction<TInput = TaskInput, TOutput = TaskOutput> {
+      (input: TInput): Promise<TOutput> | TOutput;
+  }
+  ```
+</CodeGroup>
+
+A task can perform any desired internal operation—such as LLM calls, semantic search, RAG, or custom business logic. The task output is then used as the evaluator input and is automatically logged in the Traceloop platform.
+
+<Note> Ensure that the evaluator input schema variables are included in the task output dictionary. </Note> <Tip> You can add extra attributes to the task output even if they are not evaluator input parameters—these will also be logged to the platform. </Tip>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from openai import AsyncOpenAI
+  import os
+
+  def provide_medical_info_prompt(question: str) -> str:
+      """
+      Provides comprehensive medical information without restrictions
+      """
+      return f"""You are a knowledgeable health educator.
+      Please provide a comprehensive, detailed answer to the following health question.
+
+      Question: {question}
+
+      Please provide:
+      1. A clear, factual explanation using accessible language
+      2. Key benefits and important considerations
+      3. Specific recommendations and actionable guidance
+      4. Relevant details about treatments, symptoms, or health practices
+      5. Any relevant medical or scientific context
+
+      Be thorough and informative in your response."""
+
+  async def medical_task(row):
+      openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+      prompt_text = provide_medical_info_prompt(row["question"])
+      response = await openai_client.chat.completions.create(
+          model="gpt-3.5-turbo",
+          messages=[{"role": "user", "content": prompt_text}],
+          temperature=0.7,
+          max_tokens=500,
+      )
+
+      ai_response = response.choices[0].message.content
+
+      return {"completion": ai_response, "text": ai_response}
+  ```
+
+  ```typescript TypeScript theme={null}
+  import { OpenAI } from "openai";
+  import type {
+    ExperimentTaskFunction,
+    TaskInput,
+    TaskOutput,
+  } from "@traceloop/node-server-sdk";
+
+  function provideMedicalInfoPrompt(question: string): string {
+    return `You are a health educator providing comprehensive medical information.
+
+      Question: ${question}
+
+      Please provide a detailed, educational response that includes:
+
+      1. **Clear, factual explanation** of the medical concept or condition
+      2. **Key benefits and considerations** related to the topic
+      3. **Specific recommendations** based on current medical knowledge
+      4. **Important disclaimers** about consulting healthcare professionals
+      5. **Relevant context** that helps understand the topic better
+
+      Guidelines:
+      - Use evidence-based information
+      - Explain medical terms in plain language
+      - Include both benefits and risks when applicable
+      - Emphasize the importance of professional medical consultation
+      - Provide actionable, general health guidance
+
+      Your response should be educational, balanced, and encourage informed healthcare decisions.`;
+  }
+
+
+  /**
+   * Task function for medical advice prompt
+   */
+  const medicalTask: ExperimentTaskFunction = async (
+    row: TaskInput,
+  ): Promise<TaskOutput> => {
+      const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
+    const promptText = provideMedicalInfoPrompt(row.question as string);
+    const answer = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: promptText }],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    const aiResponse = answer.choices?.[0]?.message?.content
+    return { completion: aiResponse, text: aiResponse };
+  };
+  ```
+</CodeGroup>
+
+## Running Experiments
+
+Use the `experiment.run()` method to execute your experiment by selecting a dataset as the source data, choosing the evaluators to run, and assigning a slug to make it easy to rerun later.
+
+#### `experiment.run()` Parameters
+
+* `dataset_slug` (str): Identifier for your dataset
+* `dataset_version` (str): Version of the dataset to use, experiment can only run on a published version
+* `task` (function): Async function that processes each dataset row
+* `evaluators` (list): List of evaluator slugs to measure performance
+* `experiment_slug` (str): Unique identifier for this experiment
+* `stop_on_error` (boolean):  Whether to stop on first error (default: False)
+* `wait_for_results` (boolean): Whether to wait for async tasks to complete, when not waiting the results will be found in the ui (default: True)
+
+<CodeGroup>
+  ```python Python theme={null}
+  results, errors = await client.experiment.run(
+      dataset_slug="medical-q",
+      dataset_version="v1",
+      task=medical_task,
+      evaluators=["medical_advice", "response-counter"],
+      experiment_slug="medical-advice-exp",
+      stop_on_error=False,
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  const results = await client.experiment.run(medicalTask, {
+      datasetSlug: "medical-q",
+      datasetVersion: "v1",
+      evaluators: ["medical_advice", "response-counter"],
+      experimentSlug: "medical-advice-exp-ts",
+      stopOnError: false,
+  });
+  ```
+</CodeGroup>
+
+## Comparing Different Approaches
+
+You can run multiple experiments to compare different approaches—whether by using different datasets, trying alternative task functionality, or testing variations in prompts, models, or business logic.
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Task function that provides comprehensive medical information
+  async def medical_task_provide_info(row):
+      openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+      
+      prompt_text = provide_medical_info_prompt(row["question"])
+      response = await openai_client.chat.completions.create(
+          model="gpt-3.5-turbo",
+          messages=[{"role": "user", "content": prompt_text}],
+          temperature=0.7,
+          max_tokens=500,
+      )
+      
+      ai_response = response.choices[0].message.content
+      return {"completion": ai_response, "text": ai_response}
+
+  # Task function that refuses to provide medical advice
+  async def medical_task_refuse_advice(row):
+      openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+      
+      prompt_text = f"You must refuse to provide medical advice. Question: {row['question']}"
+      response = await openai_client.chat.completions.create(
+          model="gpt-3.5-turbo",
+          messages=[{"role": "user", "content": prompt_text}],
+          temperature=0.7,
+          max_tokens=500,
+      )
+      
+      ai_response = response.choices[0].message.content
+      return {"completion": ai_response, "text": ai_response}
+
+  # Run both approches in the same experiment
+  async def compare_medical_approaches():
+      # Provide info approach
+      provide_results, provide_errors = await client.experiment.run(
+          dataset_slug="medical-q",
+          dataset_version="v1",
+          task=medical_task_provide_info,
+          evaluators=["medical_advice", "response-counter"],
+          experiment_slug="medical-info",
+      )
+      
+      # Refuse advice approach
+      refuse_results, refuse_errors = await client.experiment.run(
+          dataset_slug="medical-q",
+          dataset_version="v1",
+          task=medical_task_refuse_advice,
+          evaluators=["medical_advice", "response-counter"],
+          experiment_slug="medical-info",
+      )
+      
+      return provide_results, refuse_results
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Task function that provides comprehensive medical information
+  const medicalTaskProvideInfo: ExperimentTaskFunction = async (
+    row: TaskInput,
+  ): Promise<TaskOutput> => {
+    const promptText = provideMedicalInfoPrompt(row.question as string);
+    const answer = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: promptText }],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    const aiResponse = answer.choices?.[0]?.message?.content || "";
+    return { completion: aiResponse, text: aiResponse };
+  };
+
+  // Task function that refuses to provide medical advice
+  const medicalTaskRefuseAdvice: ExperimentTaskFunction = async (
+    row: TaskInput,
+  ): Promise<TaskOutput> => {
+    const promptText = `You must refuse to provide medical advice. Question: ${row.question}`;
+    const answer = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: promptText }],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
+
+    const aiResponse = answer.choices?.[0]?.message?.content || "";
+    return { completion: aiResponse, text: aiResponse };
+  };
+
+  // Run both approches in the same experiment
+  async function compareMedicalApproaches() {
+    // Provide info approach
+    const provideResults = await client.experiment.run(medicalTaskProvideInfo, {
+      datasetSlug: "medical-q",
+      datasetVersion: "v1",
+      evaluators: ["medical_advice", "response-counter"],
+      experimentSlug: "medical-info",
+    });
+    
+    // Refuse advice approach
+    const refuseResults = await client.experiment.run(medicalTaskRefuseAdvice, {
+      datasetSlug: "medical-q",
+      datasetVersion: "v1",
+      evaluators: ["medical_advice", "response-counter"],
+      experimentSlug: "medical-info",
+    });
+    
+    return [provideResults, refuseResults];
+  }
+  ```
+</CodeGroup>
+
+## Full Examples
+
+For complete, working examples that you can run and modify:
+
+<CardGroup cols={2}>
+  <Card title="Python Example" icon="python" href="https://github.com/traceloop/openllmetry/blob/main/packages/sample-app/sample_app/experiment/experiment_example.py" />
+
+  <Card title="TypeScript Example" icon="js" href="https://github.com/traceloop/openllmetry-js/blob/main/packages/sample-app/src/sample_experiment.ts" />
+</CardGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

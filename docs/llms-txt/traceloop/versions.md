@@ -1,0 +1,68 @@
+# Source: https://www.traceloop.com/docs/openllmetry/tracing/versions.md
+
+# Versioning
+
+> Learn how to enrich your traces by versioning your workflows and prompts
+
+## Workflow Versions
+
+You can version your workflows and tasks. Just provide the `version` argument to the decorator:
+
+<CodeGroup>
+  ```python Python theme={null}
+  @workflow(name="my_workflow", version=2)
+  def my_workflow():
+      ...
+  ```
+
+  ```js Typescript theme={null}
+  import * as traceloop from "@traceloop/node-server-sdk";
+
+  class JokeCreation {
+    @traceloop.workflow({ name: "pirate_joke_generator", version: 2 })
+    async joke_workflow() {
+      eng_joke = create_joke();
+      pirate_joke = await translate_joke_to_pirate(eng_joke);
+      signature = await generate_signature(pirate_joke);
+      console.log(pirate_joke + "\n\n" + signature);
+    }
+  }
+  ```
+
+  ```js Javascript - without Decorators theme={null}
+  import * as traceloop from "@traceloop/node-server-sdk";
+
+  async function joke_workflow() {
+    return await traceloop.withWorkflow(
+      { name: "pirate_joke_generator", version: 2 },
+      async () => {
+        eng_joke = create_joke();
+        pirate_joke = await translate_joke_to_pirate(eng_joke);
+        signature = await generate_signature(pirate_joke);
+        console.log(pirate_joke + "\n\n" + signature);
+      }
+    );
+  }
+  ```
+</CodeGroup>
+
+## Prompt Versions
+
+You can enrich your prompt traces by providing data about the prompt's version, specifying the prompt template or the variables:
+
+<CodeGroup>
+  ```python Python theme={null}
+  Traceloop.set_prompt(
+      "Tell me a joke about {subject}", {"subject": subject}, version=1
+  )
+  completion = client.chat.completions.create(
+      model="gpt-3.5-turbo",
+      messages=[{"role": "user", "content": f"Tell me a joke about {subject}"}],
+  )
+  ```
+</CodeGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

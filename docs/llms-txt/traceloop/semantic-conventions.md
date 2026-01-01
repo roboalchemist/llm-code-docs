@@ -1,0 +1,108 @@
+# Source: https://www.traceloop.com/docs/openllmetry/contributing/semantic-conventions.md
+
+# GenAI Semantic Conventions
+
+With OpenLLMetry, we aim at defining an extension of the standard
+[OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/semantic-conventions) for gen AI applications.
+We are also [leading OpenTelemetry's LLM semantic convention WG](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md)
+to standardize these conventions.
+
+It defines additional attributes for spans to so we can log prompts, completions, token usage, etc.
+These attributes are reported on relevant spans when you use the OpenLLMetry SDK or the individual instrumentations.
+
+This is a work in progress, and we welcome your feedback and contributions!
+
+## Implementations
+
+* [Python](https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-semantic-conventions-ai)
+* [TypeScript](https://github.com/traceloop/openllmetry-js/tree/main/packages/ai-semantic-conventions)
+* [Go](https://github.com/traceloop/go-openllmetry/tree/main/semconv-ai)
+* [Ruby](https://github.com/traceloop/openllmetry-ruby/tree/main/semantic_conventions_ai)
+
+## Traces Definitions
+
+### LLM Foundation Models
+
+* `gen_ai.system` - The vendor of the LLM (e.g. OpenAI, Anthropic, etc.)
+
+* `gen_ai.request.model` - The model requested (e.g. `gpt-4`, `claude`, etc.)
+
+* `gen_ai.response.model` - The model actually used (e.g. `gpt-4-0613`, etc.)
+
+* `gen_ai.request.max_tokens` - The maximum number of response tokens requested
+
+* `gen_ai.request.temperature`
+
+* `gen_ai.request.top_p`
+
+* `gen_ai.prompt` - An array of prompts as sent to the LLM model
+
+* `gen_ai.completion` - An array of completions returned from the LLM model
+
+* `gen_ai.usage.prompt_tokens` - The number of tokens used for the prompt in the request
+
+* `gen_ai.usage.completion_tokens` - The number of tokens used for the completion response
+
+* `gen_ai.usage.total_tokens` - The total number of tokens used
+
+* `gen_ai.usage.reasoning_tokens` (OpenAI) - The total number of reasoning tokens used as a part of `completion_tokens`
+
+* `gen_ai.request.reasoning_effort` (OpenAI) - Reasoning effort mentioned in the request (e.g. `minimal`, `low`, `medium`, or `high`)
+
+* `gen_ai.request.reasoning_summary` (OpenAI) - Level of reasoning summary mentioned in the request (e.g. `auto`, `concise`, or `detailed`)
+
+* `gen_ai.response.reasoning_effort` (OpenAI) - Actual reasoning effort used
+
+* `llm.request.type` - The type of request (e.g. `completion`, `chat`, etc.)
+
+* `llm.usage.total_tokens` - The total number of tokens used
+
+* `llm.request.functions` - An array of function definitions provided to the model in the request
+
+* `llm.frequency_penalty`
+
+* `llm.presence_penalty`
+
+* `llm.chat.stop_sequences`
+
+* `llm.user` - The user ID sent with the request
+
+* `llm.headers` - The headers used for the request
+
+### Vector DBs
+
+* `db.system` - The vendor of the Vector DB (e.g. Chroma, Pinecone, etc.)
+* `db.vector.query.top_k` - The top k used for the query
+* For each vector in the query, an event named `db.query.embeddings` is fired with this attribute:
+  * `db.query.embeddings.vector` - The vector used in the query
+* For each vector in the response, an event named `db.query.result` is fired for each vector in the response with the following attributes:
+  * `db.query.result.id` - The ID of the vector
+  * `db.query.result.score` - The score of the vector in relation to the query
+  * `db.query.result.distance` - The distance of the vector from the query vector
+  * `db.query.result.metadata` - Related metadata that was attached to the result vector in the DB
+  * `db.query.result.vector` - The vector returned
+  * `db.query.result.document` - The document that is represented by the vector
+
+#### Pinecone-specific
+
+* `pinecone.query.id`
+* `pinecone.query.namespace`
+* `pinecone.query.top_k`
+* `pinecone.usage.read_units` - The number of read units used (as reported by Pinecone)
+* `pinecone.usage.write_units` - The number of write units used (as reported by Pinecone)
+
+### LLM Frameworks
+
+* `traceloop.span.kind` - One of `workflow`, `task`, `agent`, `tool`.
+* `traceloop.workflow.name` - The name of the parent workflow/chain associated with this span
+* `traceloop.entity.name` - Framework-related name for the entity (for example, in Langchain, this will be the name of the specific class that defined the chain / subchain).
+* `traceloop.association.properties` - Context on the request (relevant User ID, Chat ID, etc.)
+
+## Metrics Definition
+
+### LLM Foundation Models
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

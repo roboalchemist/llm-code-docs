@@ -1,0 +1,414 @@
+# Source: https://www.traceloop.com/docs/self-host/full-deployment.md
+
+# Full Platform Self-Hosting
+
+> Deploy the complete Traceloop platform in your infrastructure
+
+The Full Platform deployment provides complete control over the entire Traceloop stack, perfect for organizations with strict security requirements or air-gapped environments.
+
+## Infrastructure Requirements
+
+### Core Components
+
+1. **ClickHouse Database**
+
+   * [ClickHouse Cloud](https://clickhouse.cloud)
+   * [Self-hosted ClickHouse](https://clickhouse.com/docs/en/install)
+
+2. **Kafka Message Queue**
+
+   * [Confluent Cloud](https://confluent.cloud)
+   * [Amazon MSK](https://aws.amazon.com/msk/)
+   * [Apache Kafka](https://kafka.apache.org/quickstart)
+
+3. **PostgreSQL Database**
+
+   * [Amazon Aurora PostgreSQL](https://aws.amazon.com/rds/aurora/postgresql-features/)
+   * [Azure Database for PostgreSQL](https://azure.microsoft.com/en-us/products/postgresql/)
+   * [PostgreSQL](https://www.postgresql.org/download/)
+
+4. **Kubernetes Cluster**
+   * [Amazon EKS](https://aws.amazon.com/eks/)
+   * [Google GKE](https://cloud.google.com/kubernetes-engine)
+   * [Azure AKS](https://azure.microsoft.com/en-us/products/kubernetes-service)
+   * Any Helm-compatible Kubernetes distribution
+
+5. **S3 Object Storage**
+   * [Amazon S3](https://aws.amazon.com/s3/)
+
+## Compatibility Matrix
+
+| Service                                    | Production version (May 30 2025) | Support & upgrade stance                                      |
+| ------------------------------------------ | -------------------------------- | ------------------------------------------------------------- |
+| **Traceloop (core services & Helm chart)** | **0.3.0**                        | Quarterly releases; 0.3.x receives critical fixes.            |
+| **Aurora PostgreSQL**                      | 15.10                            | Managed patching. Minor versions ≥ 15.2 are *supported*.      |
+| **ClickHouse**                             | 24.12                            | We track the 24.x LTS line; 23.x is **best‑effort**.          |
+| **Kafka (Confluent Platform)**             | 3.8.x (KRaft)                    | Confluent GA releases promoted within 4 weeks.                |
+| **Temporal**                               | 1.27.1                           | 1.27.\* patches supported; major ≥ 1.28 validated on request. |
+| **Centrifugo**                             | 6.1.0                            | API‑stable; 6.x minor upgrades are drop‑in.                   |
+
+### Validation requests
+
+Submit desired versions via [dev@traceloop.com](mailto:dev@traceloop.com).
+Minor‑version certification is typically completed within 2 business days; major‑version certification within 7 business days.
+
+## Deployment Options
+
+### Option 1: Infrastructure + Applications (Recommended for Production)
+
+Use Terraform/CloudFormation to provision managed infrastructure components, then deploy Traceloop applications via Helm.
+
+### Option 2: All-in-One Helm Deployment
+
+Deploy everything including PostgreSQL, ClickHouse, and Kafka through Helm charts for development/testing environments.
+Requires manual load balancer setup to forward traffic to NodePort 30080 and handle SSL termination.
+
+***
+
+## Option 1: Infrastructure + Applications Deployment
+
+<Note>
+  Contact our team to get the CloudFormation templates and Terraform configurations for deploying the infrastructure components.
+  The deployment process below assumes your infrastructure is already provisioned and available.
+</Note>
+
+### Deployment Process
+
+#### 1. Create Traceloop namespace
+
+```bash  theme={null}
+kubectl create namespace traceloop
+```
+
+#### 2. Create required secrets under traceloop namespace
+
+##### Docker Hub images pull secret.
+
+Credentials will be provided by Traceloop via secure channel
+
+```bash  theme={null}
+kubectl create secret docker-registry regcred \
+  --namespace traceloop \
+  --docker-server=docker.io \
+  --docker-username=<dockerhub-username-provided-by-traceloop> \
+  --docker-password=<dockerhub-password-provided-by-traceloop>
+```
+
+##### Postgres Secret (if not already present)
+
+```bash  theme={null}
+kubectl create secret generic traceloop-postgres-secret \
+  --namespace traceloop \
+  --from-literal=POSTGRES_DATABASE_USERNAME=<postgres-username> \
+  --from-literal=POSTGRES_DATABASE_PASSWORD=<postgres-password>
+```
+
+##### ClickHouse Secret (if not already present)
+
+```bash  theme={null}
+kubectl create secret generic traceloop-clickhouse-secret \
+  --namespace traceloop \
+  --from-literal=CLICKHOUSE_USERNAME=<clickhouse-username> \
+  --from-literal=CLICKHOUSE_PASSWORD=<clickhouse-password>
+```
+
+##### Kafka Secret (if not already present)
+
+```bash  theme={null}
+kubectl create secret generic traceloop-kafka-secret \
+  --namespace traceloop \
+  --from-literal=KAFKA_API_KEY=<kafka-api-key> \
+  --from-literal=KAFKA_API_SECRET=<kafka-api-secret>
+```
+
+#### 3. Download the Traceloop Helm chart to your local environment
+
+```bash  theme={null}
+# Add Traceloop Helm repository
+helm pull oci://registry-1.docker.io/traceloop/helm --untar
+```
+
+#### 4. Run subcharts and dependency extractions script
+
+```bash  theme={null}
+chmod +x extract-subcharts.sh
+./extract-subcharts.sh
+```
+
+#### 5. Update `values-customer.yaml` with your domain & auth configuration:
+
+Configure your deployment settings including gateway, authentication, and image support:
+
+```yaml  theme={null}
+kong-gateway:
+  service:
+    type: NodePort # Or ClusterIP
+    proxy:
+      # port: 8000
+      # targetPort: 8000
+      nodePort: 30080
+    status:
+      # port: 8100
+      # targetPort: 8100
+      nodePort: 30081
+  kong:
+    domain: "user-provided"
+    appSubdomain: "app" # Can be overridden by customer
+    apiSubdomain: "api" # Can be overridden by customer
+    realtimeSubdomain: "realtime" # Can be overridden by customer
+
+helm-api-service:
+  app:
+    imagesSupport:
+      enabled: false # Set to true to enable image storage and processing
+      s3ImagesBucket: "" # S3 bucket name where images will be stored
+      eksRegion: "" # AWS region where your EKS cluster and S3 bucket are located
+
+customerConfig:
+  propelauth:
+    authURL: "traceloop-provided"
+  launchDarkly:
+    clientId: "" # OPTIONAL traceloop-provided
+
+customerSecret:
+  openai:
+    key: "user-provided"
+  launchDarkly:
+    apiKey: "" # OPTIONAL traceloop-provided
+  propelauth:
+    verifierKey: "traceloop-provided"
+    apiKey: "traceloop-provided"
+  centrifugo:
+    apiKey: "user-provided"
+    tokenHmacSecretKey: "user-provided"
+  encryptionSecret:
+    apiKey: "user-provided"
+```
+
+#### 6. Update the following files with relevant addresses
+
+##### values-external-postgres.yaml
+
+```yaml  theme={null}
+postgresql:
+  enabled: false
+  host: "" # Example: "my-postgres-server.example.com"
+  port: "" # Example: "5432"
+  database: "" # Example: "traceloop"
+```
+
+##### values-external-clickhouse.yaml
+
+```yaml  theme={null}
+clickhouse:
+  enabled: false
+  host: "" # Example: "my-clickhouse-server.example.com"
+  port: "" # Example: "9440"
+  httpPort: "" # Example: "8443"
+  database: "" # Example: "default"
+  sslMode: "" # Example: "strict" or "none"
+  sslEnabled: "" # Example: "true" or "false"
+```
+
+##### values-external-kafka.yaml
+
+```yaml  theme={null}
+kafka:
+  enabled: false
+  bootstrapServer: "" # Example: "kafka-broker.example.com:9092"
+  securityProtocol: "" # Example: "SASL_SSL" or "PLAINTEXT"
+  saslMechanisms: "" # Example: "PLAIN" or "SCRAM-SHA-256"
+  apiKey: "" # Your Kafka API key if required
+  apiSecret: "" # Your Kafka API secret if required
+```
+
+##### values-temporal.yaml
+
+Replace only these values to the values you have from postgres.
+
+```yaml  theme={null}
+temporal:
+  ...
+  server:
+    config:
+      persistence:
+        ...
+        default:
+          ...
+          sql:
+            ...
+            host: "" # Example: "my-postgres-server.example.com"
+            ...
+            user: "" # Example: "traceloop"
+            password: ""
+            existingSecret: "" # Example: "traceloop-postgres-secret"
+            existingSecretKey: "" # Example: "POSTGRES_DATABASE_PASSWORD"
+            ...
+      visibility:
+        ...
+        default:
+          ...
+          sql:
+            ...
+            host: "" # Example: "my-postgres-server.example.com"
+            ...
+            user: "" # Example: "traceloop"
+            password: ""
+            existingSecret: "" # Example: "traceloop-postgres-secret"
+            existingSecretKey: "" # Example: "POSTGRES_DATABASE_PASSWORD"
+            ...
+```
+
+#### 7. Install Traceloop Helm chart
+
+```bash  theme={null}
+helm upgrade --install traceloop . \
+  -n traceloop \
+  --values values.yaml \
+  --values values-customer.yaml \
+  --values values-external-kafka.yaml \
+  --values values-external-clickhouse.yaml \
+  --values values-external-postgres.yaml \
+  --values values-temporal.yaml \
+  --values values-centrifugo.yaml \
+  --create-namespace \
+  --dependency-update
+```
+
+***
+
+## Option 2: All-in-One Helm Deployment
+
+<Note>
+  This deployment includes a Kong API Gateway that listens on NodePort 30080.
+  You will need to manually provision a load balancer that forwards traffic to your Kubernetes cluster's NodePort 30080 and handles SSL termination.
+</Note>
+
+This approach deploys all components including databases through Helm charts.
+
+### Deployment Process
+
+#### 1. Create Traceloop namespace
+
+```bash  theme={null}
+kubectl create namespace traceloop
+```
+
+#### 2. Create required secrets under traceloop namespace
+
+##### Docker Hub images pull secret.
+
+Credentials will be provided by Traceloop via secure channel
+
+```bash  theme={null}
+kubectl create secret docker-registry regcred \
+  --namespace traceloop \
+  --docker-server=docker.io \
+  --docker-username=<dockerhub-username-provided-by-traceloop> \
+  --docker-password=<dockerhub-password-provided-by-traceloop>
+```
+
+#### 3. Download the Traceloop Helm chart to your local environment
+
+```bash  theme={null}
+# Add Traceloop Helm repository
+helm pull oci://registry-1.docker.io/traceloop/helm --untar
+```
+
+#### 4. Run subcharts and dependency extractions script
+
+```bash  theme={null}
+chmod +x extract-subcharts.sh
+./extract-subcharts.sh
+```
+
+#### 5. Update `values-customer.yaml` with your domain & auth configuration:
+
+Configure your deployment settings including gateway, authentication, and image support:
+
+```yaml  theme={null}
+kong-gateway:
+  service:
+    type: NodePort
+    proxy:
+      nodePort: 30080
+    status:
+      nodePort: 30081
+  kong:
+    domain: "user-provided"
+    appSubdomain: "app" # Can be overridden by customer
+    apiSubdomain: "api" # Can be overridden by customer
+    realtimeSubdomain: "realtime" # Can be overridden by customer
+
+helm-api-service:
+  app:
+    imagesSupport:
+      enabled: false # Set to true to enable image storage and processing
+      s3ImagesBucket: "" # S3 bucket name where images will be stored
+      eksRegion: "" # AWS region where your EKS cluster and S3 bucket are located
+
+customerConfig:
+  propelauth:
+    authURL: "traceloop-provided"
+  launchDarkly:
+    clientId: "" # OPTIONAL traceloop-provided
+
+customerSecret:
+  openai:
+    key: "user-provided"
+  launchDarkly:
+    apiKey: "" # OPTIONAL traceloop-provided
+  propelauth:
+    verifierKey: "traceloop-provided"
+    apiKey: "traceloop-provided"
+  centrifugo:
+    apiKey: "user-provided"
+    tokenHmacSecret: "user-provided"
+  encryptionSecret:
+    apiKey: "user-provided"
+```
+
+#### 6. Install complete Traceloop stack
+
+```bash  theme={null}
+helm upgrade --install traceloop . \
+  -n traceloop \
+  --values values.yaml \
+  --values values-customer.yaml \
+  --values values-internal-kafka.yaml \
+  --values values-internal-clickhouse.yaml \
+  --values values-internal-postgres.yaml \
+  --values values-temporal.yaml \
+  --values values-centrifugo.yaml \
+  --create-namespace \
+  --dependency-update
+```
+
+***
+
+## Verification
+
+1. Check all pods are running:
+
+```bash  theme={null}
+kubectl get pods -n traceloop
+```
+
+2. Verify infrastructure connectivity:
+
+```bash  theme={null}
+kubectl logs -n traceloop deployment/traceloop-api
+```
+
+3. Access the dashboard at your configured ingress host
+
+## Troubleshooting
+
+* Check our [troubleshooting guide](/self-host/troubleshooting)
+* [Schedule support](https://calendly.com/d/cq42-93s-kcx)
+* Join our [Slack community](https://traceloop.com/slack)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

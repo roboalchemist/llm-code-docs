@@ -1,0 +1,120 @@
+# Source: https://www.traceloop.com/docs/openllmetry/tracing/manual-reporting.md
+
+# Manually reporting calls to LLMs and Vector DBs
+
+> What should I do if my favorite vector DB or LLM is not supported by OpenLLMetry?
+
+The best thing about OpenLLMetry is that it supports a wide range of LLMs and vector DBs out of the box.
+You just install the SDK and get metrics, traces and logs - without any extra work.
+
+Checkout the list of supported systems on [Python](https://github.com/traceloop/openllmetry?tab=readme-ov-file#-what-do-we-instrument)
+and on [Typescript](https://github.com/traceloop/openllmetry-js?tab=readme-ov-file#-what-do-we-instrument).
+
+If your favorite vector DB or LLM is not supported by OpenLLMetry, you can still use OpenLLMetry to report the LLM and vector DB calls manually.
+Please open an issue for us as well so we can prioritize adding support for your favorite system.
+
+Here's how you can do that manually in the meantime:
+
+## Reporting LLM calls
+
+To track a call to an LLM, just wrap that call in your code with the `withLLMCall` function in Typescript or `track_llm_call` in Python.
+These functions passes a parameter you can use to report the request and response from this call.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from traceloop.sdk.tracing.manual import LLMMessage, LLMUsage, track_llm_call
+
+  with track_llm_call(vendor="openai", type="chat") as span:
+    span.report_request(
+        model="gpt-3.5-turbo",
+        messages=[
+            LLMMessage(role="user", content="Tell me a joke about opentelemetry")
+        ],
+    )
+
+    res = openai_client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": "Tell me a joke about opentelemetry"}
+        ],
+    )
+
+    span.report_response(res.model, [text.message.content for text in res.choices])
+
+    span.report_usage(
+      LLMUsage(
+          prompt_tokens=...,
+          completion_tokens=...,
+          total_tokens=...,
+          cache_creation_input_tokens=...,
+          cache_read_input_tokens=...,
+      )
+    )
+  ```
+
+  ```javascript Typescript theme={null}
+  traceloop.withLLMCall(
+    { vendor: "openai", type: "chat" },
+    async ({ span }) => {
+      const messages: ChatCompletionMessageParam[] = [
+        { role: "user", content: "Tell me a joke about OpenTelemetry" },
+      ];
+      const model = "gpt-3.5-turbo";
+
+      span.reportRequest({ model, messages });
+
+      const response = await openai.chat.completions.create({
+        messages,
+        model,
+      });
+
+      span.reportResponse(response);
+
+      return response;
+
+  })
+  ```
+</CodeGroup>
+
+## Reporting Vector DB calls
+
+To track a call to a vector DB, just wrap that call in your code with the `withVectorDBCall` function.
+This function passes a parameter you can use to report the query vector as well as the results from this call.
+
+<CodeGroup>
+  ```javascript Typescript theme={null}
+  import * as traceloop from "@traceloop/node-server-sdk";
+
+  const results = await traceloop.withVectorDBCall(
+      { vendor: "elastic", type: "query" },
+      async ({ span }) => {
+        span.reportQuery({ queryVector: [1, 2, 3] });
+
+        // call the vector DB like you normally would
+        const results = await client.knnSearch({
+          ...
+        });
+
+        span.reportResults({
+          results: [
+            {
+              ids: "1",
+              scores: 0.5,
+              distances: 0.1,
+              metadata: { key: "value" },
+              vectors: [1, 2, 3],
+              documents: "doc",
+            },
+          ],
+        });
+
+        return results;
+      },
+    );
+  ```
+</CodeGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt
