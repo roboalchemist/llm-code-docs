@@ -96,6 +96,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Llamafile"
+    description: "Llamafile - Mozilla project for single-file executables for running LLMs locally without dependencies using Cosmopolitan Libc"
+    repo_url: "https://github.com/mozilla-ai/llamafile.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/llamafile"
+    branch: "main"
+
   - name: "Langroid"
     description: "Langroid - Multi-agent LLM programming framework with message-passing architecture"
     repo_url: "https://github.com/langroid/langroid.git"
