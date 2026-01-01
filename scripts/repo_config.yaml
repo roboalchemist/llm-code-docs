@@ -557,3 +557,10 @@ repositories:
     source_folder: "website/docs"
     target_folder: "docs/github-scraped/docusaurus"
     branch: "main"
+
+  - name: "React Router"
+    description: "React Router - Declarative routing library for React with dynamic route matching, location transition handling, and lazy code loading"
+    repo_url: "https://github.com/remix-run/react-router.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/react-router"
+    branch: "main"

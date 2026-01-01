@@ -7,40 +7,40 @@
 #   - pending: Configuration exists but not yet fetched
 
 metadata:
-  last_updated: 2025-12-31 16:21
-  total_sources: 349
-  total_fetched: 349
+  last_updated: 2026-01-01 04:55
+  total_sources: 347
+  total_fetched: 347
   llms_txt_count: 316
   llms_txt_fetched: 316
-  github_count: 12
-  github_fetched: 12
+  github_count: 10
+  github_fetched: 10
   web_scraped_count: 21
   web_scraped_fetched: 21
 llms_txt:
 - name: activepieces
-  description: Editions
+  description: Platform
   url: https://activepieces.com/
   path: docs/llms-txt/activepieces/
   status: fetched
   file_count: 147
   size: 939.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: adafruit
-  description: 2.8" TFT Touch Shield
+  description: FPGA RGB Matrix
   url: https://adafruit.com/
   path: docs/llms-txt/adafruit/
   status: fetched
   file_count: 826
   size: 6.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: agent
-  description: Get User List
+  description: Save To Google Doc
   url: https://agent.com/
   path: docs/llms-txt/agent/
   status: fetched
   file_count: 129
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: agent-domain
   description: Agent Domain Documentation
   url: https://agent-domain.com/
@@ -48,7 +48,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: agentskills-best
   description: Agentskills Best Documentation
   url: https://agentskills-best.com/
@@ -56,15 +56,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 237.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: agentskills-io
-  description: Specification
+  description: What are skills?
   url: https://agentskills-io.com/
   path: docs/llms-txt/agentskills-io/
   status: fetched
   file_count: 5
   size: 96.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ai-sdk
   description: ai-sdk documentation
   url: https://ai-sdk.com/
@@ -72,15 +72,15 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 453.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aimlapi
-  description: AutoGPT
+  description: Can I call API in the asynchronous mode?
   url: https://aimlapi.com/
   path: docs/llms-txt/aimlapi/
   status: fetched
   file_count: 426
   size: 22.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: alexop
   description: Alexop Documentation
   url: https://alexop.com/
@@ -88,7 +88,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 830.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: analog
   description: Analog Documentation
   url: https://analog.com/
@@ -96,15 +96,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 23.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: anchorbrowser
-  description: Pricing
+  description: P2P Download
   url: https://anchorbrowser.com/
   path: docs/llms-txt/anchorbrowser/
   status: fetched
   file_count: 165
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: angular
   description: Angular Documentation
   url: https://angular.com/
@@ -112,7 +112,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 322.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: annoto
   description: Introduction
   url: https://annoto.com/
@@ -120,7 +120,7 @@ llms_txt:
   status: fetched
   file_count: 4
   size: 6.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: answer-ai
   description: Answer.AI - Practical AI R&D
   url: https://answer-ai.com/
@@ -128,7 +128,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 77.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ant-design
   description: Ant Design 组件语义化描述
   url: https://ant-design.com/
@@ -136,31 +136,31 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: anthropic
-  description: Mindfulness mentor
+  description: Subagents in the SDK
   url: https://anthropic.com/
   path: docs/llms-txt/anthropic/
   status: fetched
   file_count: 253
   size: 31.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: any-llm
-  description: Authentication
+  description: Batch
   url: https://any-llm.com/
   path: docs/llms-txt/any-llm/
   status: fetched
   file_count: 20
   size: 84.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: apache-camel
-  description: Camel Quarkus Examples
+  description: apache-camel documentation
   url: https://apache-camel.com/
   path: docs/llms-txt/apache-camel/
   status: fetched
   file_count: 15
   size: 899.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: apibara
   description: apibara documentation
   url: https://apibara.com/
@@ -168,15 +168,15 @@ llms_txt:
   status: fetched
   file_count: 11
   size: 1.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: apify
-  description: Pay per event
+  description: Using proxies
   url: https://apify.com/
   path: docs/llms-txt/apify/
   status: fetched
-  file_count: 899
+  file_count: 902
   size: 15.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: apollo-graphql
   description: Apollo Client Queries Documentation
   url: https://apollo-graphql.com/
@@ -184,31 +184,31 @@ llms_txt:
   status: fetched
   file_count: 6
   size: 30.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aporia
-  description: Snowflake
+  description: Overview
   url: https://aporia.com/
   path: docs/llms-txt/aporia/
   status: fetched
   file_count: 76
   size: 683.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aptible
-  description: Custom Certificate
+  description: aptible apps:deprovision
   url: https://aptible.com/
   path: docs/llms-txt/aptible/
   status: fetched
   file_count: 290
   size: 2.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: argil
-  description: Paginated list of Videos
+  description: Avatar Training Success Webhook
   url: https://argil.com/
   path: docs/llms-txt/argil/
   status: fetched
   file_count: 54
   size: 283.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ark-ui
   description: Ark Ui Documentation
   url: https://ark-ui.com/
@@ -216,15 +216,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 11.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: asapp
-  description: Get autopilot greetings
+  description: GenerativeAgent Integration Overview
   url: https://asapp.com/
   path: docs/llms-txt/asapp/
   status: fetched
   file_count: 237
   size: 7.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ast-grep
   description: ast-grep documentation
   url: https://ast-grep.com/
@@ -232,7 +232,7 @@ llms_txt:
   status: fetched
   file_count: 109
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: astro
   description: Astro Documentation
   url: https://astro.com/
@@ -240,15 +240,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: augment-code
-  description: ACP Mode
+  description: Subagents
   url: https://augment-code.com/
   path: docs/llms-txt/augment-code/
   status: fetched
   file_count: 85
   size: 993.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: autodesk-aps
   description: Autodesk Aps Documentation
   url: https://autodesk-aps.com/
@@ -256,15 +256,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 199.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: avaamo
-  description: How-to
+  description: Knowledge Assist
   url: https://avaamo.com/
   path: docs/llms-txt/avaamo/
   status: fetched
   file_count: 604
   size: 3.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: avo
   description: Avo Documentation
   url: https://avo.com/
@@ -272,7 +272,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 715.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws
   description: Aws Documentation
   url: https://aws.com/
@@ -280,15 +280,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 558.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws-cli
-  description: Data Protection
+  description: Additional documentation and resources
   url: https://aws-cli.com/
   path: docs/llms-txt/aws-cli/
   status: fetched
   file_count: 53
   size: 582.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws-dynamodb
   description: Amazon DynamoDB Developer Guide
   url: https://aws-dynamodb.com/
@@ -296,7 +296,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 38.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws-powertools-java
   description: Aws Powertools Java Documentation
   url: https://aws-powertools-java.com/
@@ -304,15 +304,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 244.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws-powertools-python
-  description: Aws Powertools Python Documentation
+  description: Create a new one with the layer
   url: https://aws-powertools-python.com/
   path: docs/llms-txt/aws-powertools-python/
   status: fetched
   file_count: 2
   size: 2.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: aws-powertools-typescript
   description: Aws Powertools Typescript Documentation
   url: https://aws-powertools-typescript.com/
@@ -320,31 +320,31 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 602.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: basehub
-  description: Basehub Documentation
+  description: Docs 19 Documentation
   url: https://basehub.com/
   path: docs/llms-txt/basehub/
   status: fetched
   file_count: 2
   size: 334.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: baseten
-  description: Whisper V3
+  description: truss push
   url: https://baseten.com/
   path: docs/llms-txt/baseten/
   status: fetched
   file_count: 195
   size: 2.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: better-auth
-  description: Have I Been Pwned
+  description: Optimizing for Performance
   url: https://better-auth.com/
   path: docs/llms-txt/better-auth/
   status: fetched
   file_count: 144
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: bika
   description: Bika Documentation
   url: https://bika.com/
@@ -352,15 +352,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 51.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: bito
-  description: Managing Index Size
+  description: Chat session history
   url: https://bito.com/
   path: docs/llms-txt/bito/
   status: fetched
   file_count: 106
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: braintree
   description: braintree documentation
   url: https://braintree.com/
@@ -368,23 +368,23 @@ llms_txt:
   status: fetched
   file_count: 342
   size: 57.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: bun
-  description: Convert a ReadableStream to JSON
+  description: Escape an HTML string
   url: https://bun.com/
   path: docs/llms-txt/bun/
   status: fetched
   file_count: 283
   size: 3.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: carv
-  description: Writings
+  description: Node Rewards
   url: https://carv.com/
   path: docs/llms-txt/carv/
   status: fetched
   file_count: 95
   size: 839.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cash-app
   description: Cash App Documentation
   url: https://cash-app.com/
@@ -392,7 +392,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: chakra-ui
   description: Chakra Ui Documentation
   url: https://chakra-ui.com/
@@ -400,55 +400,55 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: chatling
-  description: What are variables?
+  description: Whitelist domains
   url: https://chatling.com/
   path: docs/llms-txt/chatling/
   status: fetched
   file_count: 136
   size: 519.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: circleci
-  description: The most flexible usage-based CI/CD anywhere
+  description: Jenkins vs CircleCI
   url: https://circleci.com/
   path: docs/llms-txt/circleci/
   status: fetched
   file_count: 9
   size: 53.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: claude-code
-  description: Manage costs effectively
+  description: Optimize your terminal setup
   url: https://claude-code.com/
   path: docs/llms-txt/claude-code/
   status: fetched
   file_count: 50
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: claude-docs
-  description: Mindfulness mentor
+  description: Subagents in the SDK
   url: https://claude-docs.com/
   path: docs/llms-txt/claude-docs/
   status: fetched
   file_count: 218
   size: 8.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: claude-platform
-  description: Mindfulness mentor
+  description: Subagents in the SDK
   url: https://claude-platform.com/
   path: docs/llms-txt/claude-platform/
   status: fetched
   file_count: 202
   size: 31.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: claudette
-  description: The async version
+  description: Tool loop
   url: https://claudette.com/
   path: docs/llms-txt/claudette/
   status: fetched
   file_count: 3
   size: 136.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: clerk
   description: Clerk Documentation
   url: https://clerk.com/
@@ -456,7 +456,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: clever-cloud
   description: clever-cloud documentation
   url: https://clever-cloud.com/
@@ -464,15 +464,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 81.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cloud
-  description: Examples
+  description: cloud documentation
   url: https://cloud.com/
   path: docs/llms-txt/cloud/
   status: fetched
   file_count: 15
   size: 661.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cloudflare
   description: Cloudflare Documentation
   url: https://cloudflare.com/
@@ -480,15 +480,15 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 43.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: codeium
-  description: Domain Verification
+  description: Get Usage Configuration
   url: https://codeium.com/
   path: docs/llms-txt/codeium/
   status: fetched
   file_count: 60
   size: 1.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cohere
   description: Cohere Documentation
   url: https://cohere.com/
@@ -496,7 +496,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: comet-docs-opik
   description: Comet Docs Opik Documentation
   url: https://comet-docs-opik.com/
@@ -504,39 +504,39 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: comfy
-  description: ComfyUI Native HiDream-I1 Text-to-Image Workflow Example
+  description: Add node docs for your ComfyUI custom node
   url: https://comfy.com/
   path: docs/llms-txt/comfy/
   status: fetched
   file_count: 283
   size: 4.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: configcat
-  description: Environments
+  description: Cloudflare Worker SDK
   url: https://configcat.com/
   path: docs/llms-txt/configcat/
   status: fetched
   file_count: 264
   size: 3.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: convex
-  description: iOS Swift Quickstart
+  description: 'Class: SchemaDefinition\<Schema, StrictTableTypes>'
   url: https://convex.com/
   path: docs/llms-txt/convex/
   status: fetched
   file_count: 270
   size: 5.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: coollabs
-  description: Sponsorship
+  description: Identity & Access Management
   url: https://coollabs.com/
   path: docs/llms-txt/coollabs/
   status: fetched
   file_count: 33
   size: 37.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: copilotkit
   description: Copilotkit Documentation
   url: https://copilotkit.com/
@@ -544,31 +544,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 443.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cosette
-  description: Cosette’s source
+  description: Tool loop
   url: https://cosette.com/
   path: docs/llms-txt/cosette/
   status: fetched
   file_count: 3
   size: 155.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: crewai
-  description: MongoDB Vector Search Tool
+  description: Databricks SQL Query Tool
   url: https://crewai.com/
   path: docs/llms-txt/crewai/
   status: fetched
   file_count: 206
   size: 3.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cursor
-  description: Secret Audit
+  description: Webhooks
   url: https://cursor.com/
   path: docs/llms-txt/cursor/
   status: fetched
   file_count: 19
   size: 10.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dappier
   description: Dappier Documentation
   url: https://dappier.com/
@@ -576,7 +576,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 802.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dat1
   description: Dat1 Documentation
   url: https://dat1.com/
@@ -584,31 +584,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 6.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: datafold
-  description: Snowflake
+  description: GitLab
   url: https://datafold.com/
   path: docs/llms-txt/datafold/
   status: fetched
   file_count: 158
   size: 3.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: daytona
-  description: Load the dataset
+  description: daytona documentation
   url: https://daytona.com/
   path: docs/llms-txt/daytona/
   status: fetched
   file_count: 70
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: deepconverse
-  description: Multiple Sites
+  description: Technical and Organizational Security Measures
   url: https://deepconverse.com/
   path: docs/llms-txt/deepconverse/
   status: fetched
   file_count: 86
   size: 352.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: deno
   description: Deno Documentation
   url: https://deno.com/
@@ -616,15 +616,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 53.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dev
-  description: Deploy with Docker
+  description: Choose a model
   url: https://dev.com/
   path: docs/llms-txt/dev/
   status: fetched
   file_count: 254
   size: 4.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: developers
   description: Developers Documentation
   url: https://developers.com/
@@ -632,15 +632,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 20.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: developers-2
-  description: getAvatarIcon
+  description: User Interface
   url: https://developers-2.com/
   path: docs/llms-txt/developers-2/
   status: fetched
   file_count: 104
   size: 2.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: developers-vectorize
   description: Developers Vectorize Documentation
   url: https://developers-vectorize.com/
@@ -648,7 +648,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 145.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: directory
   description: Directory Documentation
   url: https://directory.com/
@@ -656,15 +656,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 505.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dnd-kit
-  description: Mouse
+  description: useSortable
   url: https://dnd-kit.com/
   path: docs/llms-txt/dnd-kit/
   status: fetched
   file_count: 23
   size: 318.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: docetl
   description: Docetl Documentation
   url: https://docetl.com/
@@ -672,7 +672,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 42.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: docker
   description: docker documentation
   url: https://docker.com/
@@ -680,7 +680,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 165.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dotenvx
   description: Dotenvx Documentation
   url: https://dotenvx.com/
@@ -688,7 +688,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 71.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: drizzle-orm
   description: Drizzle Orm Documentation
   url: https://drizzle-orm.com/
@@ -696,7 +696,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dspy
   description: '*Programming*—not prompting—*LMs*'
   url: https://dspy.com/
@@ -704,55 +704,56 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 26.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dub
-  description: Reverse-proxy support
+  description: Create a tag
   url: https://dub.com/
   path: docs/llms-txt/dub/
   status: fetched
   file_count: 94
   size: 2.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: duckdb
-  description: duckdb
+  description: Awesome DuckDB [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+    <!-- omit in toc -->
   url: https://duckdb.com/
   path: docs/llms-txt/duckdb/
   status: fetched
   file_count: 2
   size: 42.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: duendesoftware
-  description: Docs 4 Documentation
+  description: Duendesoftware Documentation
   url: https://duendesoftware.com/
   path: docs/llms-txt/duendesoftware/
   status: fetched
   file_count: 2
   size: 2.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: electric-sql
-  description: HTTP API
+  description: electric-sql documentation
   url: https://electric-sql.com/
   path: docs/llms-txt/electric-sql/
   status: fetched
-  file_count: 98
-  size: 503.2KB
-  last_updated: 2025-12-31 16:21
+  file_count: 99
+  size: 504.6KB
+  last_updated: 2026-01-01 04:55
 - name: elevenlabs
-  description: April 28, 2025
+  description: April 14, 2025
   url: https://elevenlabs.com/
   path: docs/llms-txt/elevenlabs/
   status: fetched
   file_count: 30
   size: 5.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: embedchain
-  description: 📝 Text
+  description: 📝 evaluate
   url: https://embedchain.com/
   path: docs/llms-txt/embedchain/
   status: fetched
   file_count: 95
   size: 490.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: embednotionpages
   description: embednotionpages documentation
   url: https://embednotionpages.com/
@@ -760,23 +761,23 @@ llms_txt:
   status: fetched
   file_count: 9
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: envoyer
-  description: Notifications
+  description: Envoyer Documentation
   url: https://envoyer.com/
   path: docs/llms-txt/envoyer/
   status: fetched
   file_count: 12
   size: 84.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: exa
-  description: Get a task
+  description: OpenRouter
   url: https://exa.com/
   path: docs/llms-txt/exa/
   status: fetched
   file_count: 139
   size: 2.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: expo
   description: Expo Documentation
   url: https://expo.com/
@@ -784,15 +785,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: fastcore
-  description: Network functionality
+  description: Script - CLI
   url: https://fastcore.com/
   path: docs/llms-txt/fastcore/
   status: fetched
   file_count: 13
   size: 311.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: fern
   description: Fern Documentation
   url: https://fern.com/
@@ -800,7 +801,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: firecrawl
   description: Firecrawl Documentation
   url: https://firecrawl.com/
@@ -808,39 +809,39 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 657.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: fireflies
-  description: Set User Role
+  description: AskFred Threads
   url: https://fireflies.com/
   path: docs/llms-txt/fireflies/
   status: fetched
   file_count: 86
   size: 500.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: fireworks
-  description: Zero Data Retention
+  description: Generate or edit an image with FLUX.1 Kontext
   url: https://fireworks.com/
   path: docs/llms-txt/fireworks/
   status: fetched
   file_count: 281
   size: 2.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: fireworks-ai
-  description: Zero Data Retention
+  description: Generate or edit an image with FLUX.1 Kontext
   url: https://fireworks-ai.com/
   path: docs/llms-txt/fireworks-ai/
   status: fetched
   file_count: 281
   size: 2.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: flatfile
-  description: Environments
+  description: Space Configure from Template
   url: https://flatfile.com/
   path: docs/llms-txt/flatfile/
   status: fetched
   file_count: 91
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: flitt
   description: Flitt Documentation
   url: https://flitt.com/
@@ -848,15 +849,15 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 514.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: frigade
-  description: Environments
+  description: Collapsible
   url: https://frigade.com/
   path: docs/llms-txt/frigade/
   status: fetched
   file_count: 67
   size: 921.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gaianet
   description: Gaianet Documentation
   url: https://gaianet.com/
@@ -864,39 +865,39 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 299.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: galileo-ai
-  description: How-To Guide | Galileo Evaluate
+  description: Clustering
   url: https://galileo-ai.com/
   path: docs/llms-txt/galileo-ai/
   status: fetched
   file_count: 176
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gaspard
-  description: Gaspard
+  description: Tool loop
   url: https://gaspard.com/
   path: docs/llms-txt/gaspard/
   status: fetched
   file_count: 2
   size: 85.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: giselles
-  description: Authentication
+  description: Start Node & End Node
   url: https://giselles.com/
   path: docs/llms-txt/giselles/
   status: fetched
   file_count: 53
   size: 368.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gitbook
-  description: Site MCP servers
+  description: Track documentation analytics with Google Analytics
   url: https://gitbook.com/
   path: docs/llms-txt/gitbook/
   status: fetched
   file_count: 335
   size: 6.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gitingest
   description: Gitingest Documentation
   url: https://gitingest.com/
@@ -904,15 +905,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 26.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gitlab-consulting
-  description: How GitLab Built and Automated its New Japanese Documentation Site
+  description: Boosting Higher Education IT Efficiency by Reducing Tool Sprawl
   url: https://gitlab-consulting.com/
   path: docs/llms-txt/gitlab-consulting/
   status: fetched
   file_count: 19
   size: 122.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: glide
   description: Glide Documentation
   url: https://glide.com/
@@ -920,39 +921,39 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 9.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gofastmcp
-  description: elicitation
+  description: oidc_proxy
   url: https://gofastmcp.com/
   path: docs/llms-txt/gofastmcp/
   status: fetched
   file_count: 196
   size: 2.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: gradio
-  description: gradio documentation
+  description: or
   url: https://gradio.com/
   path: docs/llms-txt/gradio/
   status: fetched
   file_count: 9
   size: 13.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: grafbase
-  description: Kafka
+  description: GraphQL Federation Directives
   url: https://grafbase.com/
   path: docs/llms-txt/grafbase/
   status: fetched
   file_count: 112
   size: 499.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: graphite
-  description: Create PRs For A Stack
+  description: Install & Authenticate The CLI
   url: https://graphite.com/
   path: docs/llms-txt/graphite/
   status: fetched
   file_count: 95
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: groq
   description: groq documentation
   url: https://groq.com/
@@ -960,7 +961,7 @@ llms_txt:
   status: fetched
   file_count: 8
   size: 2.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: groqcloud
   description: Groqcloud Documentation
   url: https://groqcloud.com/
@@ -968,23 +969,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 710.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: helicone
-  description: Get Environments
+  description: Helicone Documentation
   url: https://helicone.com/
   path: docs/llms-txt/helicone/
   status: fetched
   file_count: 161
   size: 2.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: herd
-  description: Xdebug
+  description: Dumps
   url: https://herd.com/
   path: docs/llms-txt/herd/
   status: fetched
   file_count: 51
   size: 566.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: hono
   description: Hono Documentation
   url: https://hono.com/
@@ -992,7 +993,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 324.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: htmlhint
   description: Htmlhint Documentation
   url: https://htmlhint.com/
@@ -1000,7 +1001,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 92.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: htmx
   description: htmx documentation
   url: https://htmx.com/
@@ -1008,7 +1009,7 @@ llms_txt:
   status: fetched
   file_count: 180
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: huggingface-accelerate
   description: huggingface-accelerate documentation
   url: https://huggingface-accelerate.com/
@@ -1016,7 +1017,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 213.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: huggingface-diffusers
   description: huggingface-diffusers documentation
   url: https://huggingface-diffusers.com/
@@ -1024,15 +1025,15 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 602.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: huggingface-docs-hub
-  description: Dataset Cards
+  description: Models
   url: https://huggingface-docs-hub.com/
   path: docs/llms-txt/huggingface-docs-hub/
   status: fetched
   file_count: 223
   size: 2.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: huggingface-hub
   description: huggingface-hub documentation
   url: https://huggingface-hub.com/
@@ -1040,15 +1041,15 @@ llms_txt:
   status: fetched
   file_count: 4
   size: 746.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: huggingface-transformers
-  description: TimeSformer
+  description: MobileBERT
   url: https://huggingface-transformers.com/
   path: docs/llms-txt/huggingface-transformers/
   status: fetched
-  file_count: 579
+  file_count: 580
   size: 49.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: humanloop
   description: Overview
   url: https://humanloop.com/
@@ -1056,31 +1057,31 @@ llms_txt:
   status: fetched
   file_count: 10
   size: 3.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: hypermode
-  description: Graph Data Models 101
+  description: 'Day 16: Agent System Prompts - The Foundation of Agent Behavior'
   url: https://hypermode.com/
   path: docs/llms-txt/hypermode/
   status: fetched
   file_count: 303
   size: 9.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: i18next
-  description: Backend Fallback
+  description: Objects and Arrays
   url: https://i18next.com/
   path: docs/llms-txt/i18next/
   status: fetched
-  file_count: 33
-  size: 649.4KB
-  last_updated: 2025-12-31 16:21
+  file_count: 34
+  size: 659.2KB
+  last_updated: 2026-01-01 04:55
 - name: ideogram
-  description: Downloading Images
+  description: Available Plans
   url: https://ideogram.com/
   path: docs/llms-txt/ideogram/
   status: fetched
   file_count: 84
   size: 1.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: imgly-cesdk
   description: Imgly Cesdk Documentation
   url: https://imgly-cesdk.com/
@@ -1088,7 +1089,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: imgly-react-native
   description: Imgly React Native Documentation
   url: https://imgly-react-native.com/
@@ -1096,7 +1097,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 10.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: imgly-sveltekit
   description: Imgly Sveltekit Documentation
   url: https://imgly-sveltekit.com/
@@ -1104,7 +1105,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: imgly-vue
   description: Imgly Vue Documentation
   url: https://imgly-vue.com/
@@ -1112,23 +1113,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: infera
-  description: Register Node
+  description: Worker Deregister
   url: https://infera.com/
   path: docs/llms-txt/infera/
   status: fetched
   file_count: 39
   size: 156.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: infisical
-  description: OCI Vault Sync
+  description: List Resources
   url: https://infisical.com/
   path: docs/llms-txt/infisical/
   status: fetched
   file_count: 460
   size: 7.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: inkeep
   description: Inkeep Documentation
   url: https://inkeep.com/
@@ -1136,7 +1137,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 507.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: inngest
   description: Inngest Documentation
   url: https://inngest.com/
@@ -1144,7 +1145,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: inspira-ui
   description: Inspira Ui Documentation
   url: https://inspira-ui.com/
@@ -1152,7 +1153,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: instructor
   description: 'Instructor: Top Multi-Language Library for Structured LLM Outputs'
   url: https://instructor.com/
@@ -1160,31 +1161,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 53.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: intelligems
-  description: ChatGPT
+  description: Upgrade Offer Components
   url: https://intelligems.com/
   path: docs/llms-txt/intelligems/
   status: fetched
   file_count: 196
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: iterm2
-  description: Inline Images Protocol
+  description: Utilities
   url: https://iterm2.com/
   path: docs/llms-txt/iterm2/
   status: fetched
   file_count: 33
   size: 277.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: jam
-  description: Configure Jam in AI Apps
+  description: Suppress Jam Logs in DevTools
   url: https://jam.com/
   path: docs/llms-txt/jam/
   status: fetched
   file_count: 74
   size: 474.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: jazz
   description: jazz documentation
   url: https://jazz.com/
@@ -1192,7 +1193,7 @@ llms_txt:
   status: fetched
   file_count: 37
   size: 9.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: jetify
   description: Jetify Documentation
   url: https://jetify.com/
@@ -1200,7 +1201,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 418.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: jina
   description: Jina Documentation
   url: https://jina.com/
@@ -1208,31 +1209,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 40.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: juno
-  description: Pricing
+  description: Internet Identity
   url: https://juno.com/
   path: docs/llms-txt/juno/
   status: fetched
   file_count: 74
   size: 915.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: kaggle
-  description: Kaggle API
+  description: Model Format
   url: https://kaggle.com/
   path: docs/llms-txt/kaggle/
   status: fetched
   file_count: 7
   size: 74.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: kaisar
-  description: Step 2 - Choose the Network
+  description: Known Issues
   url: https://kaisar.com/
   path: docs/llms-txt/kaisar/
   status: fetched
   file_count: 89
   size: 339.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: kinde
   description: Kinde Documentation
   url: https://kinde.com/
@@ -1240,31 +1241,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 10.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: klarna
-  description: Native View - React Native
+  description: Shopify draft orders and in-store orders
   url: https://klarna.com/
   path: docs/llms-txt/klarna/
   status: fetched
   file_count: 244
   size: 2.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: kysely
-  description: Dialects
+  description: Simple selects
   url: https://kysely.com/
   path: docs/llms-txt/kysely/
   status: fetched
   file_count: 66
   size: 499.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lago
-  description: Percentage
+  description: WEIGHTED SUM
   url: https://lago.com/
   path: docs/llms-txt/lago/
   status: fetched
   file_count: 249
   size: 4.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lambdatest
   description: Lambdatest Documentation
   url: https://lambdatest.com/
@@ -1272,15 +1273,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lancedb
-  description: Register a table to a namespace
+  description: Create a new tag
   url: https://lancedb.com/
   path: docs/llms-txt/lancedb/
   status: fetched
   file_count: 135
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: langchain
   description: langchain documentation
   url: https://langchain.com/
@@ -1288,15 +1289,15 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 851.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: langchain-js
-  description: Langchain Js Documentation
+  description: langchain-js documentation
   url: https://langchain-js.com/
   path: docs/llms-txt/langchain-js/
   status: fetched
   file_count: 2
   size: 892.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: langflow
   description: Langflow Documentation
   url: https://langflow.com/
@@ -1304,15 +1305,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: langfuse
-  description: Environments
+  description: SCIM & Organization-Key Scoped API Routes
   url: https://langfuse.com/
   path: docs/llms-txt/langfuse/
   status: fetched
   file_count: 116
   size: 920.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: langgraph
   description: Langgraph Documentation
   url: https://langgraph.com/
@@ -1320,7 +1321,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 617.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: liam-erd
   description: Liam Erd Documentation
   url: https://liam-erd.com/
@@ -1328,7 +1329,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 88.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: likec4
   description: Likec4 Documentation
   url: https://likec4.com/
@@ -1336,23 +1337,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 179.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: linear
-  description: Custom Views
+  description: Signals
   url: https://linear.com/
   path: docs/llms-txt/linear/
   status: fetched
   file_count: 121
   size: 643.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lingui
-  description: Message Extraction
+  description: Lazy Translations
   url: https://lingui.com/
   path: docs/llms-txt/lingui/
   status: fetched
   file_count: 34
   size: 487.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: litellm
   description: Litellm Documentation
   url: https://litellm.com/
@@ -1360,7 +1361,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: liveblocks
   description: Liveblocks Documentation
   url: https://liveblocks.com/
@@ -1368,23 +1369,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: livecodes
-  description: 'Interface: ContentConfig'
+  description: 'Interface: EditorConfig'
   url: https://livecodes.com/
   path: docs/llms-txt/livecodes/
   status: fetched
   file_count: 202
   size: 1.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: livekit
-  description: Swift quickstart
+  description: Agents and handoffs
   url: https://livekit.com/
   path: docs/llms-txt/livekit/
   status: fetched
   file_count: 259
   size: 5.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: llamaindex
   description: Llamaindex Documentation
   url: https://llamaindex.com/
@@ -1392,31 +1393,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 245.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: llmstxt
-  description: '`ed`, the standard text editor'
+  description: Python module & CLI
   url: https://llmstxt.com/
   path: docs/llms-txt/llmstxt/
   status: fetched
   file_count: 3
   size: 17.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lm-studio
-  description: Lm Studio Documentation
+  description: lm-studio documentation
   url: https://lm-studio.com/
   path: docs/llms-txt/lm-studio/
   status: fetched
   file_count: 2
   size: 537.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lmstudio
-  description: lmstudio documentation
+  description: Lmstudio Documentation
   url: https://lmstudio.com/
   path: docs/llms-txt/lmstudio/
   status: fetched
   file_count: 2
   size: 543.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lobehub
   description: Lobehub Documentation
   url: https://lobehub.com/
@@ -1424,15 +1425,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: loops
-  description: Export contacts
+  description: API key
   url: https://loops.com/
   path: docs/llms-txt/loops/
   status: fetched
   file_count: 116
   size: 2.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: loro
   description: Loro Documentation
   url: https://loro.com/
@@ -1440,15 +1441,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 629.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: lynx
-  description: 'Custom properties (`--*`): CSS variables'
+  description: Composing Elements
   url: https://lynx.com/
   path: docs/llms-txt/lynx/
   status: fetched
   file_count: 97
   size: 3.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mastercard
   description: CLS Offer Activations
   url: https://mastercard.com/
@@ -1456,7 +1457,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 632.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mastra
   description: Mastra Documentation
   url: https://mastra.com/
@@ -1464,23 +1465,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mcp
-  description: Sampling
+  description: Logging
   url: https://mcp.com/
   path: docs/llms-txt/mcp/
   status: fetched
   file_count: 40
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: medusa
-  description: Medusa Documentation
+  description: Install Medusa
   url: https://medusa.com/
   path: docs/llms-txt/medusa/
   status: fetched
   file_count: 2
   size: 5.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: meilisearch
   description: Meilisearch Documentation
   url: https://meilisearch.com/
@@ -1488,15 +1489,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: meshconnect
-  description: Update Main Client callback urls
+  description: Transfer Webhooks
   url: https://meshconnect.com/
   path: docs/llms-txt/meshconnect/
   status: fetched
   file_count: 51
   size: 907.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: microsoft-genaiscript
   description: Microsoft Genaiscript Documentation
   url: https://microsoft-genaiscript.com/
@@ -1504,15 +1505,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mintlify
-  description: Clearbit
+  description: GitLab
   url: https://mintlify.com/
   path: docs/llms-txt/mintlify/
   status: fetched
   file_count: 138
   size: 1.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mistral
   description: Mistral Documentation
   url: https://mistral.com/
@@ -1520,7 +1521,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 969.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: modular
   description: modular documentation
   url: https://modular.com/
@@ -1528,7 +1529,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 6.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mozilla-data-collective
   description: mozilla-data-collective documentation
   url: https://mozilla-data-collective.com/
@@ -1536,23 +1537,23 @@ llms_txt:
   status: fetched
   file_count: 9
   size: 199.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mui-material
-  description: Avatar
+  description: Transfer List
   url: https://mui-material.com/
   path: docs/llms-txt/mui-material/
   status: fetched
   file_count: 125
   size: 2.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mui-x
-  description: useLegend
+  description: Data Grid - Drag-and-drop column reordering [<span class="plan-pro"></span>](/x/introduction/licensi...
   url: https://mui-x.com/
   path: docs/llms-txt/mui-x/
   status: fetched
   file_count: 332
   size: 3.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nativescript
   description: Nativescript Documentation
   url: https://nativescript.com/
@@ -1560,15 +1561,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 749.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: near
-  description: near documentation
+  description: The linkdrop contract
   url: https://near.com/
   path: docs/llms-txt/near/
   status: fetched
   file_count: 170
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nemo-framework
   description: nemo-framework documentation
   url: https://nemo-framework.com/
@@ -1576,31 +1577,31 @@ llms_txt:
   status: fetched
   file_count: 50
   size: 707.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: neon
-  description: Connect Quarkus (Reactive) to Neon
+  description: Schema-only branches
   url: https://neon.com/
   path: docs/llms-txt/neon/
   status: fetched
   file_count: 483
   size: 4.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nextjs
-  description: Head
+  description: NextRequest
   url: https://nextjs.com/
   path: docs/llms-txt/nextjs/
   status: fetched
   file_count: 247
   size: 4.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: notion
-  description: Authentication
+  description: Notion API
   url: https://notion.com/
   path: docs/llms-txt/notion/
   status: fetched
   file_count: 98
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nuxt
   description: Nuxt Documentation
   url: https://nuxt.com/
@@ -1608,7 +1609,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nuxt-content
   description: Nuxt Content Documentation
   url: https://nuxt-content.com/
@@ -1616,15 +1617,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 265.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nuxt-ui
-  description: Footer
+  description: Collapsible
   url: https://nuxt-ui.com/
   path: docs/llms-txt/nuxt-ui/
   status: fetched
   file_count: 143
   size: 3.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nvidia
   description: Nemotron
   url: https://nvidia.com/
@@ -1632,31 +1633,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 70.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nvidia-developer
-  description: NVIDIA Nsight Visual Studio Code Edition
+  description: AI SDKs and Models for Your RTX PC Application
   url: https://nvidia-developer.com/
   path: docs/llms-txt/nvidia-developer/
   status: fetched
   file_count: 104
   size: 959.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ollama
-  description: Cline
+  description: Push a model
   url: https://ollama.com/
   path: docs/llms-txt/ollama/
   status: fetched
   file_count: 49
   size: 484.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openai
-  description: Agent internet access
+  description: Key concepts
   url: https://openai.com/
   path: docs/llms-txt/openai/
   status: fetched
   file_count: 70
   size: 1.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openai-cdn
   description: Openai Cdn Documentation
   url: https://openai-cdn.com/
@@ -1664,7 +1665,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openai-platform
   description: Openai Platform Documentation
   url: https://openai-platform.com/
@@ -1672,31 +1673,31 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: opencode
-  description: OpenCode Providers
+  description: OpenCode Configuration
   url: https://opencode.com/
   path: docs/llms-txt/opencode/
   status: fetched
   file_count: 8
   size: 52.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openphone
-  description: Authentication
+  description: Get a call by ID
   url: https://openphone.com/
   path: docs/llms-txt/openphone/
   status: fetched
   file_count: 44
   size: 717.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openpipe
-  description: Pricing Overview
+  description: Reward Models (Beta)
   url: https://openpipe.com/
   path: docs/llms-txt/openpipe/
   status: fetched
   file_count: 42
   size: 493.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: openrouter
   description: Openrouter Documentation
   url: https://openrouter.com/
@@ -1704,15 +1705,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 873.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: oxla
-  description: Numeric
+  description: pg_settings
   url: https://oxla.com/
   path: docs/llms-txt/oxla/
   status: fetched
   file_count: 209
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pandacss
   description: Panda CSS Documentation
   url: https://pandacss.com/
@@ -1720,7 +1721,7 @@ llms_txt:
   status: fetched
   file_count: 11
   size: 1.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: paypal
   description: paypal documentation
   url: https://paypal.com/
@@ -1728,7 +1729,7 @@ llms_txt:
   status: fetched
   file_count: 65
   size: 12.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: paypal-developer
   description: paypal-developer documentation
   url: https://paypal-developer.com/
@@ -1736,15 +1737,15 @@ llms_txt:
   status: fetched
   file_count: 138
   size: 32.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: perplexity
-  description: UnCovered | Real-Time Fact-Checking Chrome Extension
+  description: 'null'
   url: https://perplexity.com/
   path: docs/llms-txt/perplexity/
   status: fetched
   file_count: 83
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pgvector
   description: pgvector
   url: https://pgvector.com/
@@ -1752,47 +1753,47 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 763.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pinata
-  description: Retrieve a Private File
+  description: Image Optimizations
   url: https://pinata.com/
   path: docs/llms-txt/pinata/
   status: fetched
   file_count: 142
   size: 938.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pinecone
-  description: List restore jobs
+  description: List API keys
   url: https://pinecone.com/
   path: docs/llms-txt/pinecone/
   status: fetched
   file_count: 274
   size: 8.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pipecat
-  description: agent
+  description: OpenRouter
   url: https://pipecat.com/
   path: docs/llms-txt/pipecat/
   status: fetched
   file_count: 218
   size: 3.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pixijs
-  description: Using PixiJS in Different Environments
+  description: Render Loop
   url: https://pixijs.com/
   path: docs/llms-txt/pixijs/
   status: fetched
   file_count: 51
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: plain
-  description: Customer updated
+  description: Webhooks
   url: https://plain.com/
   path: docs/llms-txt/plain/
   status: fetched
   file_count: 79
   size: 246.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: planetscale
   description: Reverse traffic
   url: https://planetscale.com/
@@ -1800,23 +1801,23 @@ llms_txt:
   status: fetched
   file_count: 379
   size: 7.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: platform-sh
-  description: Kafka (Message queue service)
+  description: Integrate with GitLab
   url: https://platform-sh.com/
   path: docs/llms-txt/platform-sh/
   status: fetched
   file_count: 179
   size: 4.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: polar
-  description: order.refunded
+  description: product.created
   url: https://polar.com/
   path: docs/llms-txt/polar/
   status: fetched
   file_count: 165
   size: 2.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: postman
   description: postman documentation
   url: https://postman.com/
@@ -1824,7 +1825,7 @@ llms_txt:
   status: fetched
   file_count: 120
   size: 56.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: postmark
   description: Postmark Documentation
   url: https://postmark.com/
@@ -1832,7 +1833,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 60.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: powertools-aws
   description: Powertools Aws Documentation
   url: https://powertools-aws.com/
@@ -1840,7 +1841,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 21.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: preact
   description: preact documentation
   url: https://preact.com/
@@ -1848,7 +1849,7 @@ llms_txt:
   status: fetched
   file_count: 18
   size: 828.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: prettier
   description: Prettier Documentation
   url: https://prettier.com/
@@ -1856,7 +1857,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 150.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: prisma
   description: Prisma Documentation
   url: https://prisma.com/
@@ -1864,7 +1865,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: promptfoo
   description: promptfoo documentation
   url: https://promptfoo.com/
@@ -1872,7 +1873,7 @@ llms_txt:
   status: fetched
   file_count: 331
   size: 28.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pydantic
   description: Pydantic Documentation
   url: https://pydantic.com/
@@ -1880,15 +1881,15 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: pydantic-ai
-  description: Pydantic AI
+  description: Pydantic Ai Documentation
   url: https://pydantic-ai.com/
   path: docs/llms-txt/pydantic-ai/
   status: fetched
   file_count: 2
   size: 3.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: qdrant
   description: Qdrant Documentation
   url: https://qdrant.com/
@@ -1896,7 +1897,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: rainbowkit
   description: Rainbowkit Documentation
   url: https://rainbowkit.com/
@@ -1904,7 +1905,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 479.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react
   description: react documentation
   url: https://react.com/
@@ -1912,31 +1913,31 @@ llms_txt:
   status: fetched
   file_count: 161
   size: 2.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-aria
-  description: ColorSlider
+  description: Divider
   url: https://react-aria.com/
   path: docs/llms-txt/react-aria/
   status: fetched
   file_count: 93
   size: 813.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-i18next
-  description: Using with fluent format
+  description: i18next instance
   url: https://react-i18next.com/
   path: docs/llms-txt/react-i18next/
   status: fetched
-  file_count: 27
-  size: 325.1KB
-  last_updated: 2025-12-31 16:21
+  file_count: 28
+  size: 332.4KB
+  last_updated: 2026-01-01 04:55
 - name: react-native
-  description: Android Native UI Components
+  description: Platform
   url: https://react-native.com/
   path: docs/llms-txt/react-native/
   status: fetched
   file_count: 275
   size: 4.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-spring
   description: React Spring Documentation
   url: https://react-spring.com/
@@ -1944,7 +1945,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 40.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: readme
   description: Readme Documentation
   url: https://readme.com/
@@ -1952,7 +1953,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 645.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: redis
   description: Release notes
   url: https://redis.com/
@@ -1960,7 +1961,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 21.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: remult
   description: Getting Started - Introduction
   url: https://remult.com/
@@ -1968,7 +1969,7 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 1.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: render
   description: Render Documentation
   url: https://render.com/
@@ -1976,15 +1977,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 665.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: replit
-  description: Replit in ChatGPT
+  description: Access Management
   url: https://replit.com/
   path: docs/llms-txt/replit/
   status: fetched
   file_count: 192
   size: 3.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: rescript-react
   description: Rescript React Documentation
   url: https://rescript-react.com/
@@ -1992,15 +1993,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 47.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: resend
-  description: Delete Contact Property
+  description: What are Resend account email quota limits?
   url: https://resend.com/
   path: docs/llms-txt/resend/
   status: fetched
   file_count: 206
   size: 2.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: retejs
   description: Retejs Documentation
   url: https://retejs.com/
@@ -2008,7 +2009,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 246.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: retool
   description: Retool Documentation
   url: https://retool.com/
@@ -2016,31 +2017,32 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: roc-lang
-  description: roc-lang documentation
+  description: Note that Eq is not available for an F32, hence we provide a custom
+    implementation here.</span><span...
   url: https://roc-lang.com/
   path: docs/llms-txt/roc-lang/
   status: fetched
   file_count: 5
   size: 341.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: rsbuild
-  description: Multi-environment builds
+  description: Inline static assets
   url: https://rsbuild.com/
   path: docs/llms-txt/rsbuild/
   status: fetched
   file_count: 176
   size: 1.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: rspack
-  description: RuntimeChunkPlugin
+  description: Rspack loader
   url: https://rspack.com/
   path: docs/llms-txt/rspack/
   status: fetched
   file_count: 163
   size: 2.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: saaspegasus
   description: Docs 7 Documentation
   url: https://saaspegasus.com/
@@ -2048,7 +2050,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: sardine
   description: Sardine Documentation
   url: https://sardine.com/
@@ -2056,7 +2058,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 42.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: screenshotone
   description: Screenshotone Documentation
   url: https://screenshotone.com/
@@ -2064,7 +2066,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 246.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: semgrep
   description: Semgrep Documentation
   url: https://semgrep.com/
@@ -2072,7 +2074,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 8.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: servicestack
   description: servicestack documentation
   url: https://servicestack.com/
@@ -2080,7 +2082,7 @@ llms_txt:
   status: fetched
   file_count: 390
   size: 13.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: shadcn-ui
   description: shadcn-ui documentation
   url: https://shadcn-ui.com/
@@ -2088,7 +2090,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 10.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: sherlockdomains
   description: Sherlockdomains Documentation
   url: https://sherlockdomains.com/
@@ -2096,7 +2098,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 14.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: slack
   description: slack documentation
   url: https://slack.com/
@@ -2104,31 +2106,31 @@ llms_txt:
   status: fetched
   file_count: 16
   size: 947.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: slate
-  description: Document
+  description: Decoration
   url: https://slate.com/
   path: docs/llms-txt/slate/
   status: fetched
   file_count: 89
   size: 836.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: smartcar
-  description: Amperage
+  description: Authentication Errors
   url: https://smartcar.com/
   path: docs/llms-txt/smartcar/
   status: fetched
   file_count: 195
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: solidfi
-  description: Environments
+  description: Retrieve Bank Info
   url: https://solidfi.com/
   path: docs/llms-txt/solidfi/
   status: fetched
   file_count: 89
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: sourcegraph
   description: Sourcegraph Documentation
   url: https://sourcegraph.com/
@@ -2136,7 +2138,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 13.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: speakeasy
   description: Speakeasy Documentation
   url: https://speakeasy.com/
@@ -2144,15 +2146,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 5.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: squared-ai
-  description: Google Cloud GKE (Kubernetes)
+  description: Docker
   url: https://squared-ai.com/
   path: docs/llms-txt/squared-ai/
   status: fetched
   file_count: 172
   size: 998.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: stedi
   description: Stedi Documentation
   url: https://stedi.com/
@@ -2160,7 +2162,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: streamlit
   description: streamlit documentation
   url: https://streamlit.com/
@@ -2168,15 +2170,15 @@ llms_txt:
   status: fetched
   file_count: 308
   size: 50.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: stripe
-  description: Custom payment application
+  description: Add funds to your card program
   url: https://stripe.com/
   path: docs/llms-txt/stripe/
   status: fetched
   file_count: 388
   size: 9.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: svelte
   description: Svelte Documentation
   url: https://svelte.com/
@@ -2184,7 +2186,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: svelte-typescript
   description: Svelte Typescript Documentation
   url: https://svelte-typescript.com/
@@ -2192,7 +2194,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tailwindcss
   description: tailwindcss documentation
   url: https://tailwindcss.com/
@@ -2200,15 +2202,15 @@ llms_txt:
   status: fetched
   file_count: 185
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tamagui
-  description: tamagui documentation
+  description: Sheet
   url: https://tamagui.com/
   path: docs/llms-txt/tamagui/
   status: fetched
   file_count: 56
   size: 950.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tanstack-query
   description: tanstack-query documentation
   url: https://tanstack-query.com/
@@ -2216,7 +2218,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 6.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tanstack-router
   description: Tanstack Router Documentation
   url: https://tanstack-router.com/
@@ -2224,7 +2226,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 210.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tauri
   description: Tauri Documentation
   url: https://tauri.com/
@@ -2232,23 +2234,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 585.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tavily
-  description: Snowflake
+  description: SDK Reference
   url: https://tavily.com/
   path: docs/llms-txt/tavily/
   status: fetched
   file_count: 56
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tavus
-  description: Authentication
+  description: Tool Calling for Perception
   url: https://tavus.com/
   path: docs/llms-txt/tavus/
   status: fetched
   file_count: 95
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: temporal
   description: Temporal Documentation
   url: https://temporal.com/
@@ -2256,7 +2258,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 4.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: testingbot
   description: Testingbot Documentation
   url: https://testingbot.com/
@@ -2264,7 +2266,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 4.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tinybird
   description: Tinybird Documentation (FWD)
   url: https://tinybird.com/
@@ -2272,7 +2274,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: transloadit
   description: Transloadit Documentation
   url: https://transloadit.com/
@@ -2280,95 +2282,95 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 455.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: trigger
-  description: Retrieve Env Var
+  description: Max duration
   url: https://trigger.com/
   path: docs/llms-txt/trigger/
   status: fetched
   file_count: 182
   size: 2.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: trigger-dev
-  description: Retrieve Schedule
+  description: Max duration
   url: https://trigger-dev.com/
   path: docs/llms-txt/trigger-dev/
   status: fetched
   file_count: 182
   size: 2.6MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: turbo
-  description: Turbo Documentation
+  description: Vitest
   url: https://turbo.com/
   path: docs/llms-txt/turbo/
   status: fetched
   file_count: 23
   size: 599.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: turso
-  description: Turso + Actix
+  description: Turso + Railway
   url: https://turso.com/
   path: docs/llms-txt/turso/
   status: fetched
   file_count: 116
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: ultravox
-  description: Delete Tool
+  description: Call Definition
   url: https://ultravox.com/
   path: docs/llms-txt/ultravox/
   status: fetched
   file_count: 140
   size: 1.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: unifygtm
-  description: Clearbit Integration Guide
+  description: How to Define Personas
   url: https://unifygtm.com/
   path: docs/llms-txt/unifygtm/
   status: fetched
   file_count: 63
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: uno-platform
-  description: Embedding Existing JavaScript Components Into Uno-WASM - Part 3
+  description: Uno Support for Windows.Devices.Enumeration
   url: https://uno-platform.com/
   path: docs/llms-txt/uno-platform/
   status: fetched
-  file_count: 361
+  file_count: 362
   size: 6.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: unstructured
-  description: Delta Tables in Databricks
+  description: SharePoint
   url: https://unstructured.com/
   path: docs/llms-txt/unstructured/
   status: fetched
   file_count: 189
   size: 5.7MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: upstash
-  description: Costs
+  description: Delete a DLQ message
   url: https://upstash.com/
   path: docs/llms-txt/upstash/
   status: fetched
   file_count: 614
   size: 4.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vapi
-  description: Vapi Documentation
+  description: February 4, 2025
   url: https://vapi.com/
   path: docs/llms-txt/vapi/
   status: fetched
   file_count: 2
   size: 15.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: venice
-  description: Retrieve Video
+  description: Current Models
   url: https://venice.com/
   path: docs/llms-txt/venice/
   status: fetched
   file_count: 46
   size: 532.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vercel
   description: Vercel Documentation
   url: https://vercel.com/
@@ -2376,7 +2378,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 7.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vercel-ai-sdk
   description: vercel-ai-sdk documentation
   url: https://vercel-ai-sdk.com/
@@ -2384,23 +2386,23 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 454.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vercel-rest-api
-  description: Update Team Directory Sync Role Mappings
+  description: Update Resource Secrets (Deprecated)
   url: https://vercel-rest-api.com/
   path: docs/llms-txt/vercel-rest-api/
   status: fetched
   file_count: 240
   size: 4.0MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vespa
-  description: Vespa Cloud Security Whitepaper
+  description: Sentinel Metrics
   url: https://vespa.com/
   path: docs/llms-txt/vespa/
   status: fetched
   file_count: 316
   size: 7.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: viem
   description: Viem Documentation
   url: https://viem.com/
@@ -2408,23 +2410,23 @@ llms_txt:
   status: fetched
   file_count: 3
   size: 1.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vite
-  description: JavaScript API
+  description: Building for Production
   url: https://vite.com/
   path: docs/llms-txt/vite/
   status: fetched
   file_count: 5
   size: 462.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vitest
-  description: browser.screenshotDirectory
+  description: setupFiles
   url: https://vitest.com/
   path: docs/llms-txt/vitest/
   status: fetched
   file_count: 151
   size: 1.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vue-macros
   description: scriptSFC&#x20;
   url: https://vue-macros.com/
@@ -2432,15 +2434,15 @@ llms_txt:
   status: fetched
   file_count: 39
   size: 136.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vuejs
-  description: 'Priority D Rules: Use with Caution {#priority-d-rules-use-with-caution}'
+  description: 'Reactivity API: Utilities {#reactivity-api-utilities}'
   url: https://vuejs.com/
   path: docs/llms-txt/vuejs/
   status: fetched
   file_count: 87
   size: 1.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vueschool
   description: Vueschool Documentation
   url: https://vueschool.com/
@@ -2448,15 +2450,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 32.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: warp
-  description: 'How To: Set Coding Best Practices'
+  description: Quit Warning
   url: https://warp.com/
   path: docs/llms-txt/warp/
   status: fetched
   file_count: 210
   size: 1.9MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: webflow
   description: Webflow Documentation
   url: https://webflow.com/
@@ -2464,15 +2466,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 3.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: windsurf
-  description: Domain Verification
+  description: Get Usage Configuration
   url: https://windsurf.com/
   path: docs/llms-txt/windsurf/
   status: fetched
   file_count: 61
   size: 1.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: workos
   description: WorkOS Documentation
   url: https://workos.com/
@@ -2480,7 +2482,7 @@ llms_txt:
   status: fetched
   file_count: 2
   size: 1.4MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: x-cmd
   description: Package
   url: https://x-cmd.com/
@@ -2488,7 +2490,7 @@ llms_txt:
   status: fetched
   file_count: 4
   size: 2.3MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: xata
   description: xata documentation
   url: https://xata.com/
@@ -2496,7 +2498,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 1.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: xstate
   description: Xstate Documentation
   url: https://xstate.com/
@@ -2504,15 +2506,15 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 642.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: youtube-data-api
-  description: 'Comments: list'
+  description: Subscriptions
   url: https://youtube-data-api.com/
   path: docs/llms-txt/youtube-data-api/
   status: fetched
   file_count: 191
   size: 5.8MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: zag
   description: Zag Documentation
   url: https://zag.com/
@@ -2520,23 +2522,23 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 2.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: zapier
-  description: Zapier integration structure for a forms app
+  description: User Profile
   url: https://zapier.com/
   path: docs/llms-txt/zapier/
   status: fetched
   file_count: 235
   size: 3.2MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: zenml
-  description: Deploy with Docker
+  description: Storing embeddings in a vector database
   url: https://zenml.com/
   path: docs/llms-txt/zenml/
   status: fetched
   file_count: 291
   size: 6.1MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: zod
   description: Zod Documentation
   url: https://zod.com/
@@ -2544,7 +2546,7 @@ llms_txt:
   status: fetched
   file_count: 1
   size: 248.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 github_scraped:
 - name: agentskills
   description: agentskills from GitHub
@@ -2552,84 +2554,70 @@ github_scraped:
   status: fetched
   file_count: 6
   size: 21.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: chroma
   description: chroma from GitHub
   path: docs/github-scraped/chroma/
   status: fetched
   file_count: 6
   size: 104.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: cypress
   description: cypress from GitHub
   path: docs/github-scraped/cypress/
   status: fetched
   file_count: 159
   size: 1.2MB
-  last_updated: 2025-12-31 16:21
-- name: discord-api
-  description: discord-api from GitHub
-  path: docs/github-scraped/discord-api/
-  status: fetched
-  file_count: 316
-  size: 2.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: docusaurus
   description: docusaurus from GitHub
   path: docs/github-scraped/docusaurus/
   status: fetched
   file_count: 92
   size: 736.8KB
-  last_updated: 2025-12-31 16:21
-- name: llama-cpp
-  description: llama-cpp from GitHub
-  path: docs/github-scraped/llama-cpp/
-  status: fetched
-  file_count: 1
-  size: 1.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mobx
   description: mobx from GitHub
   path: docs/github-scraped/mobx/
   status: fetched
   file_count: 51
   size: 249.0KB
-  last_updated: 2025-12-31 16:21
-- name: platformio
-  description: platformio from GitHub
-  path: docs/github-scraped/platformio/
-  status: fetched
-  file_count: 93
-  size: 173.5KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-beautiful-dnd
   description: react-beautiful-dnd from GitHub
   path: docs/github-scraped/react-beautiful-dnd/
   status: fetched
   file_count: 41
   size: 216.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
+- name: react-router
+  description: react-router from GitHub
+  path: docs/github-scraped/react-router/
+  status: fetched
+  file_count: 204
+  size: 738.1KB
+  last_updated: 2026-01-01 04:55
 - name: react-three-fiber
   description: react-three-fiber from GitHub
   path: docs/github-scraped/react-three-fiber/
   status: fetched
   file_count: 20
   size: 143.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: styled-components
   description: styled-components from GitHub
   path: docs/github-scraped/styled-components/
   status: fetched
   file_count: 73
   size: 152.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: styleguidist
   description: styleguidist from GitHub
   path: docs/github-scraped/styleguidist/
   status: fetched
   file_count: 13
   size: 110.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 web_scraped:
 - name: aframe-react
   description: aframe-react documentation
@@ -2637,144 +2625,144 @@ web_scraped:
   status: fetched
   file_count: 1
   size: 12.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: dayjs
   description: dayjs documentation
   path: docs/web-scraped/dayjs/
   status: fetched
   file_count: 5
   size: 9.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: emotion
   description: emotion documentation
   path: docs/web-scraped/emotion/
   status: fetched
   file_count: 32
   size: 104.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: excalidraw
   description: excalidraw documentation
   path: docs/web-scraped/excalidraw/
   status: fetched
   file_count: 35
   size: 159.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: formatjs
   description: formatjs documentation
   path: docs/web-scraped/formatjs/
   status: fetched
   file_count: 23
   size: 174.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: google-cloud
   description: google-cloud documentation
   path: docs/web-scraped/google-cloud/
   status: fetched
   file_count: 31
   size: 203.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: hapi
   description: hapi documentation
   path: docs/web-scraped/hapi/
   status: fetched
   file_count: 16
   size: 399.3KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: immer
   description: immer documentation
   path: docs/web-scraped/immer/
   status: fetched
   file_count: 21
   size: 75.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: jsx-email
   description: jsx-email documentation
   path: docs/web-scraped/jsx-email/
   status: fetched
   file_count: 2
   size: 8.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: linaria
   description: linaria documentation
   path: docs/web-scraped/linaria/
   status: fetched
   file_count: 15
   size: 134.4KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: mjml
   description: mjml documentation
   path: docs/web-scraped/mjml/
   status: fetched
   file_count: 24
   size: 67.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: nanocss
   description: nanocss documentation
   path: docs/web-scraped/nanocss/
   status: fetched
   file_count: 48
   size: 82.9KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: next-intl
   description: next-intl documentation
   path: docs/web-scraped/next-intl/
   status: fetched
   file_count: 31
   size: 231.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-cosmos
   description: react-cosmos documentation
   path: docs/web-scraped/react-cosmos/
   status: fetched
   file_count: 21
   size: 58.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-dropzone
   description: react-dropzone documentation
   path: docs/web-scraped/react-dropzone/
   status: fetched
   file_count: 1
   size: 24.7KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: react-email
   description: react-email documentation
   path: docs/web-scraped/react-email/
   status: fetched
   file_count: 3
   size: 9.1KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: storybook
   description: storybook documentation
   path: docs/web-scraped/storybook/
   status: fetched
   file_count: 79
   size: 759.2KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: tanstack-router
   description: tanstack-router documentation
   path: docs/web-scraped/tanstack-router/
   status: fetched
   file_count: 113
   size: 16.5MB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: unocss
   description: unocss documentation
   path: docs/web-scraped/unocss/
   status: fetched
   file_count: 58
   size: 230.8KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: urql
   description: urql documentation
   path: docs/web-scraped/urql/
   status: fetched
   file_count: 44
   size: 437.0KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
 - name: vanilla-extract
   description: vanilla-extract documentation
   path: docs/web-scraped/vanilla-extract/
   status: fetched
   file_count: 39
   size: 114.6KB
-  last_updated: 2025-12-31 16:21
+  last_updated: 2026-01-01 04:55
