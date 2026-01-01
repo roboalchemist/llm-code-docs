@@ -1,0 +1,113 @@
+---
+title: Configure
+slug: playwright/configure
+description: Learn about the various configuration options for visual tests for Playwright
+sidebar: { order: 3 }
+---
+
+import { TabItem, Tabs } from "../../components/Tabs";
+
+# Configure visual tests for Playwright
+
+You can enhance your Playwright and Chromatic tests further by configuring them using the options outlined in the following sections.
+
+## Playwright options
+
+The Chromatic [Playwright Fixture](https://playwright.dev/docs-fixtures) can be configured with `use` like all [Playwright options](https://playwright.dev/docs-use-options). You can set the available options globally in your Playwright configuration file as follows:
+
+<Tabs>
+  <TabItem label="TypeScript">
+    ```ts title="playwright.config.ts"
+    import { defineConfig } from "@playwright/test";
+    import { ChromaticConfig } from "@chromatic-com/playwright";
+
+    export default defineConfig<ChromaticConfig>({
+      use: {
+        // 👇 Sets the option at the project level.
+        disableAutoSnapshot: true,
+      },
+      // Other project configuration options
+    });
+    ```
+
+  </TabItem>
+    <TabItem label="JavaScript">
+    ```js title="playwright.config.js"
+    import { defineConfig } from "@playwright/test";
+
+    export default defineConfig({
+      use: {
+        // 👇 Sets the option at the project level.
+        disableAutoSnapshot: true,
+      },
+      // Other project configuration options
+    });
+    ```
+
+  </TabItem>
+</Tabs>
+
+You can also override them for specific tests by adding the [`test.use()`](https://playwright.dev/docs/api/class-test#test-use) method in your test file and provide the required options:
+
+```ts title="tests/HomePage.spec.js|ts"
+test.describe("HomePage", () => {
+  // 👇 Overrides the option in the test.
+  test.use({ disableAutoSnapshot: true });
+
+  test("Loads the page with auto snapshotting disabled", async ({ page }) => {
+    await page.goto("/");
+  });
+});
+```
+
+## E2E options
+
+These options control how the Chromatic archive fixture behaves.
+
+| Option                   | Type            | Description                                                                                                                                                                          |
+| ------------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `disableAutoSnapshot`    | `boolean`       | When `true`, it will disable the snapshot that happens automatically at the end of a test when using the Chromatic test fixture.                                                     |
+| `cropToViewport     `    | `boolean`       | When `true`, the snapshot will be clipped to the height of the [viewport](/docs/viewports#playwright).                                                                               |
+| `resourceArchiveTimeout` | `number`        | Maximum amount of time each test will wait for the network to be idle while archiving resources.                                                                                     |
+| `assetDomains`           | `array[string]` | A list of domains external to the test location that you want Chromatic to also capture assets from, e.g., <code style="display: inline;">['other-domain.com','our-cdn.com']</code>. |
+
+## Chromatic options
+
+These options control how Chromatic behaves when capturing snapshots of your pages.
+
+| Option                    | Type            | Chromatic Docs                                                                      |
+| ------------------------- | --------------- | ----------------------------------------------------------------------------------- |
+| `delay`                   | `number`        | [Delay](/docs/delay/)                                                               |
+| `diffIncludeAntiAliasing` | `boolean`       | [Threshold for changes](/docs/threshold#anti-aliasing)                              |
+| `diffThreshold`           | `number`        | [Threshold for changes](/docs/threshold#setting-the-threshold)                      |
+| `ignoreSelectors`         | `array[string]` | [Ignore elements](/docs/ignoring-elements#ignoring-elements-via-test-configuration) |
+| `forcedColors`            | `string`        | [Media Features](/docs/media-features#test-high-contrast-color-schemes)             |
+| `pauseAnimationAtEnd`     | `boolean`       | [Animations](/docs/animations#css-animations)                                       |
+| `prefersReducedMotion`    | `string`        | [Media Features](/docs/media-features#verify-reduced-motion-animations)             |
+
+## Environment variables
+
+Some options can be configured through environment variables.
+
+| Environment variable         | Description                                                                                                                                                                                                                                                                                                                                        |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CHROMATIC_ARCHIVE_LOCATION` | If you have configured your project's [`outputDir`](https://playwright.dev/docs/api/class-testproject#test-project-output-dir) option to be different than the default, you must set the `CHROMATIC_ARCHIVE_LOCATION` environment variable to the same value. This ensures that the Chromatic can find the archives generated by Playwright tests. |
+
+---
+
+## Working in Monorepos
+
+Often, when using a monorepo, developers tend to keep their e2e tests in a subdirectory instead of in the root of the project. At the same time, the Storybook and Chromatic configuration details live at the project’s root. In these cases, you will need to update the `archive-storybook` and `build-archive-storybook` scripts in your `package.json` by setting the [`-c` flag](https://storybook.js.org/docs/api/cli-options#build) and `CHROMATIC_ARCHIVE_LOCATION` environment variable. For example:
+
+```json title="package.json"
+"scripts": {
+  "archive-storybook": "CHROMATIC_ARCHIVE_LOCATION=path/to/test-results archive-storybook -c path/to/node_modules/@chromaui/archive-storybook/config",
+  "build-archive-storybook": "CHROMATIC_ARCHIVE_LOCATION=path/to/test-results build-archive-storybook -c path/to/node_modules/@chromaui/archive-storybook/config"
+}
+```
+
+<div class="aside">
+
+💡 For additional information on using Chromatic with a monorepo, see our [monorepo documentation](/docs/monorepos).
+
+</div>

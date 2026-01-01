@@ -1,0 +1,215 @@
+---
+title: CLI
+description: Learn about the Chromatic CLI options
+sidebar: { order: 2 }
+---
+
+import { TabItem, Tabs } from "../../components/Tabs";
+
+# Chromatic CLI
+
+The [Chromatic CLI](https://www.npmjs.com/package/chromatic) manages the visual testing and review process.
+
+<video autoPlay muted playsInline loop width="560px" style="margin-bottom: 1em">
+  <source src="/docs/assets/chromatic-cli-optimized.mp4" type="video/mp4" />
+</video>
+
+## Usage with Storybook
+
+```shell
+$ npx chromatic --project-token <your-project-token>
+```
+
+The CLI defaults to running with Storybook. It builds and uploads your Storybook to Chromatic's cloud infrastructure, to start the [publish](/docs/publish) and [visual test](/docs) workflows.
+
+If you customize the way your Storybook runs, you may need to pass additional options. After the first run, the CLI will automatically ask you to add a script to your `package.json`.
+
+If you don't install `chromatic` as a dependency, `npx` automatically downloads and runs the latest version. This means you'll always have the newest features but might experience slightly slower startup times due to the download.
+
+## Usage with Playwright or Cypress
+
+When pairing Chromatic with Playwright or Cypress, you have to pass the corresponding flag: `--playwright` or `--cypress`. Chromatic captures an archive of your UI (DOM, styles, and assets) while Playwright or Cypress runs your E2E tests. The CLI uploads the archive to the Chromatic cloud infrastructure to run visual testing.
+
+```shell
+# For Chromatic with Playwright
+$ npx chromatic --project-token <your-project-token> --playwright
+
+# For Chromatic with Cypress
+$ npx chromatic --project-token <your-project-token> --cypress
+```
+
+For Playwright and Cypress, we recommend installing the chromatic package as a dependency. This ensures that the CLI is in sync with the `@chromatic-com/playwright` or `@chromatic-com/cypress` package.
+
+## Installing
+
+<Tabs>
+  <TabItem label="npm">
+    ```shell
+    npm install chromatic --save-dev
+    ```
+  </TabItem>
+
+  <TabItem label="yarn">
+    ```shell
+    yarn add --dev chromatic
+    ```
+  </TabItem>
+  <TabItem label="pnpm">
+    ```shell
+    pnpm add --save-dev chromatic
+    ```
+  </TabItem>
+</Tabs>
+
+## Configuring the CLI
+
+Chromatic CLI can be configured through options in `./chromatic.config.json` file (recommended) placed at the root of your project folder and/or by passing CLI flags.
+
+<div class="aside">
+  Note: some options are only available as flags. For a full list of available
+  options, please refer to the [configuration reference](/docs/configure) page.
+</div>
+
+Flags must be passed as `--kebab-case` whereas options are `camelCase`. Flags take precedence over configuration options. When passing a flag without value, it is treated as `true`. Where an array is accepted, specify the flag multiple times (once for each value).
+
+### Flags
+
+- Flags take precedence over options specified in the config file and GitHub Action.
+
+- Passing a flag without value is treated as `true`. e.g.:
+  ```sh
+  $ npx chromatic --dry-run -t <your-project-token>
+  ```
+- Where an `array` is accepted, specify the flag multiple times (once for each value). e.g.:
+  ```sh
+  $ npx chromatic --externals "my-folder/**" --externals "another-folder/**" -t <your-project-token>
+  ```
+
+### Chromatic Config File
+
+The configuration file is stored in the root of your project folder as `./chromatic.config.json`. You can use the `--config-file` flag to customize the Chromatic configuration file name and path.
+
+If you aren't using CI (yet), you just need the minimum setup:
+
+```json title="chromatic.config.json"
+{
+  "$schema": "https://www.chromatic.com/config-file.schema.json",
+  "projectId": "Project:..."
+}
+```
+
+A full-featured `./chromatic.config.json` file in a CI workflow where all changes to `main` happen through a pull request may look like this:
+
+```json title="chromatic.config.json"
+{
+  "$schema": "https://www.chromatic.com/config-file.schema.json",
+  "projectId": "Project:...",
+  "autoAcceptChanges": "main",
+  "exitOnceUploaded": true,
+  "externals": ["public/**"],
+  "onlyChanged": true,
+  "skip": "dependabot/**"
+}
+```
+
+For unlinked projects that rely on the CI script to report build results, the recommended setup looks like this:
+
+```json title="chromatic.config.json"
+{
+  "$schema": "https://www.chromatic.com/config-file.schema.json",
+  "projectId": "Project:...",
+  "externals": ["public/**"],
+  "junitReport": true,
+  "onlyChanged": true
+}
+```
+
+#### JSON schema for the config file
+
+We provide a JSON schema for the Chromatic config file at: https://www.chromatic.com/config-file.schema.json. You can use this schema to validate your configuration file directly in your editor. To enable this, add the following to your settings.json.
+
+This will give you IntelliSense suggestions as you type, and your editor will perform both structural and value verification.
+
+```json title="chromatic.config.json"
+{
+  "$schema": "https://www.chromatic.com/config-file.schema.json"
+  /* ... config options */
+}
+```
+
+## Authentication
+
+Chromatic builds are authenticated using your project's secret `project token`. You can access your project token from the Chromatic website during onboarding or from your project's Manage page.
+
+#### Continuous Integration
+
+To set up CI, store your project token as the `CHROMATIC_PROJECT_TOKEN` environment variable or secret. The CLI automatically recognizes this variable, so you won't have to provide it explicitly.
+
+#### Visual Tests addon
+
+For local builds with the [Visual Tests addon](/docs/visual-tests-addon/), your personal OAuth token (with which you authenticated the addon) is used instead of the project token.
+
+## Exit codes
+
+| Exit code | Key                          | Description                                            |
+| --------- | ---------------------------- | ------------------------------------------------------ |
+| `0`       | `OK`                         | Exited successfully                                    |
+| `1`       | `BUILD_HAS_CHANGES`          | Chromatic build has (visual) changes                   |
+| `2`       | `BUILD_HAS_ERRORS`           | Chromatic build has component errors                   |
+| `3`       | `BUILD_FAILED`               | Chromatic build failed due to system error             |
+| `4`       | `BUILD_NO_STORIES`           | Chromatic build failed because it contained no stories |
+| `5`       | `BUILD_WAS_LIMITED`          | Chromatic build was limited                            |
+| `6`       | `BUILD_WAS_CANCELED`         | Chromatic build was canceled                           |
+| `11`      | `ACCOUNT_QUOTA_REACHED`      | Chromatic account reached its snapshot quota           |
+| `12`      | `ACCOUNT_PAYMENT_REQUIRED`   | Chromatic account requires payment                     |
+| `21`      | `STORYBOOK_BUILD_FAILED`     | Failed to run build-storybook script                   |
+| `22`      | `STORYBOOK_START_FAILED`     | Failed to start Storybook                              |
+| `23`      | `STORYBOOK_BROKEN`           | Unable to load Storybook or one of the stories         |
+| `101`     | `GIT_NOT_CLEAN`              | Git repository workspace not clean                     |
+| `102`     | `GIT_OUT_OF_DATE`            | Git repository not up-to-date with remote              |
+| `103`     | `GIT_NO_MERGE_BASE`          | Git branch has no merge base                           |
+| `104`     | `NPM_INSTALL_FAILED`         | npm or Yarn failed to install dependencies             |
+| `105`     | `NPM_BUILD_STORYBOOK_FAILED` | npm or Yarn failed to run build-storybook script       |
+| `201`     | `FETCH_ERROR`                | HTTP fetch error                                       |
+| `202`     | `GRAPHQL_ERROR`              | GrahpQL API error                                      |
+| `210`     | `MISSING_DEPENDENCY`         | Dependency issue                                       |
+| `220`     | `VERIFICATION_TIMEOUT`       | Build verification timeout                             |
+| `254`     | `INVALID_OPTIONS`            | Invalid options (flags) provided                       |
+| `255`     | `UNKNOWN_ERROR`              | Unknown error                                          |
+
+---
+
+## Troubleshooting
+
+<details>
+<summary> I see "Chromatic: Failed to publish. Reason: self signed certificate in certificate chain" when running the CLI on my machine.</summary>
+
+This isn't a Chromatic CLI issue. Check if your machine is using special security or network settings before running the CLI.
+
+</details>
+
+<details>
+<summary id="chromatic-dns-options"> I see "ENOTFOUND" when running the CLI on my machine</summary>
+
+By default, DNS resolution is handled by the environment system. If you are experiencing DNS issues (i.e. `ENOTFOUND`), the CLI will try and switch from the operating system DNS lookup (i.e., `dns.lookup`) to network DNS resolve (i.e., `dns.resolve`). If this also fails, the CLI will add `CHROMATIC_DNS_FAILOVER_SERVERS` to the list of available DNS servers and try again. For additional information regarding Node's DNS implementation, please refer to their [documentation](https://nodejs.org/docs/latest/api/dns.html#dns_implementation_considerations).
+
+</details>
+
+<details>
+<summary id="chromatic-git-options">Why are Git environment variables not working with the CLI?</summary>
+
+If you've configured the Chromatic CLI to run with one of the Git environment variables (i.e.,`CHROMATIC_SHA`, `CHROMATIC_BRANCH`, `CHROMATIC_SLUG`), you must configure all three. Otherwise, Chromatic will ignore them when running the build.
+
+</details>
+
+<details>
+<summary>Flags to help diagnose build issues with the CLI</summary>
+
+- `--no-interactive`: When running the CLI locally, use this flag to get logs like you would in CI, which are more elaborate than the interactive logs. This is automatically enabled in CI, so adding it to a CI script is useless.
+- `--diagnostics-file`: Before terminating the process, this dumps process context information to `chromatic-diagnostics.json`. This is the first place to look if you see things you didn't expect. In a CI system, you'll have to configure this file as a **build artifact** so you can download it. How to do this depends on your CI provider.
+- `--dry-run`: Use this if you want to debug the CLI without actually publishing your Storybook or running a Chromatic build. Typically you'd pair this with `--diagnostics-file`.
+- `--debug`: This enables verbose logging and `--no-interactive`. Use this if you want to see the nitty-gritty details. Primarily useful if you have issues publishing (uploading) your Storybook to Chromatic.
+- `--trace-changed`: Specifically for TurboSnap, you can use this flag to get a printed tree view of the dependencies between changed files (according to Git) and your story files.
+- `--only-story-names`: If you have specific stories causing problems, you can use this flag to run a build for just those stories (one or more). If you don't know which stories are available, you can use `--list` to print a list of all stories in your Storybook, though it will require running a Chromatic build.
+
+</details>

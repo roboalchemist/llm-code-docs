@@ -1527,8 +1527,8 @@ llms_txt:
   url: https://mikro-orm.com/
   path: docs/llms-txt/mikro-orm/
   status: fetched
-  file_count: 125
-  size: 1.3MB
+  file_count: 156
+  size: 1.5MB
   last_updated: 2026-01-01 07:15
 - name: mintlify
   description: GitLab
