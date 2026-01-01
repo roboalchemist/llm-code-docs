@@ -628,6 +628,13 @@ repositories:
     target_folder: "docs/github-scraped/tree-sitter"
     branch: "master"
 
+  - name: "LLMWare"
+    description: "LLMWare - End-to-end RAG framework with hybrid search, document parsing, and edge deployment"
+    repo_url: "https://github.com/llmware-ai/llmware.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/llmware"
+    branch: "main"
+
   - name: "vLLM"
     description: "vLLM - High-throughput and memory-efficient LLM inference engine with PagedAttention optimization"
     repo_url: "https://github.com/vllm-project/vllm.git"
