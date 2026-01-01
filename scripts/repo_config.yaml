@@ -641,3 +641,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/vllm"
     branch: "main"
+
+  - name: "Prompt Flow"
+    description: "Microsoft Prompt Flow - Visual workflow designer and SDK for developing LLM applications with tools, flows, and connections"
+    repo_url: "https://github.com/microsoft/promptflow.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/prompt-flow"
+    branch: "main"

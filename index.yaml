@@ -8,12 +8,12 @@
 
 metadata:
   last_updated: 2026-01-01 07:06
-  total_sources: 366
-  total_fetched: 366
+  total_sources: 367
+  total_fetched: 367
   llms_txt_count: 317
   llms_txt_fetched: 317
-  github_count: 23
-  github_fetched: 23
+  github_count: 24
+  github_fetched: 24
   web_scraped_count: 26
   web_scraped_fetched: 26
 llms_txt:
@@ -2653,6 +2653,13 @@ github_scraped:
   status: fetched
   file_count: 51
   size: 249.0KB
+  last_updated: 2026-01-01 07:06
+- name: prompt-flow
+  description: prompt-flow from GitHub
+  path: docs/github-scraped/prompt-flow/
+  status: fetched
+  file_count: 97
+  size: 25.0MB
   last_updated: 2026-01-01 07:06
 - name: raspberrypi
   description: raspberrypi from GitHub
