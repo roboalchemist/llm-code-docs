@@ -54,6 +54,13 @@ repositories:
     target_folder: "docs/github-scraped/buildbuddy"
     branch: "master" # Default branch to use
 
+  - name: "Celery"
+    description: "Celery - Distributed task queue library for Python with support for message brokers and result backends"
+    repo_url: "https://github.com/celery/celery.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/celery"
+    branch: "main" # Default branch to use
+
   - name: "esptool"
     description: "ESP8266 and ESP32 serial bootloader utility documentation"
     repo_url: "https://github.com/espressif/esptool.git"
