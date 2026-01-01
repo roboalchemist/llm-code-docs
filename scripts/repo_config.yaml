@@ -663,6 +663,13 @@ repositories:
     target_folder: "docs/github-scraped/vllm"
     branch: "main"
 
+  - name: "Apache APISIX"
+    description: "Apache APISIX - Cloud-native API gateway with intelligent routing, traffic management, and LLM traffic handling"
+    repo_url: "https://github.com/apache/apisix.git"
+    source_folder: "docs/en/latest"
+    target_folder: "docs/github-scraped/apache-apisix"
+    branch: "master"
+
   - name: "Prompt Flow"
     description: "Microsoft Prompt Flow - Visual workflow designer and SDK for developing LLM applications with tools, flows, and connections"
     repo_url: "https://github.com/microsoft/promptflow.git"
