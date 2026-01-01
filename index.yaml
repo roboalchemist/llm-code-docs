@@ -8,12 +8,12 @@
 
 metadata:
   last_updated: 2026-01-01 07:38
-  total_sources: 413
-  total_fetched: 413
+  total_sources: 396
+  total_fetched: 396
   llms_txt_count: 327
   llms_txt_fetched: 327
-  github_count: 55
-  github_fetched: 55
+  github_count: 38
+  github_fetched: 38
   web_scraped_count: 31
   web_scraped_fetched: 31
 llms_txt:
@@ -2657,13 +2657,6 @@ github_scraped:
   file_count: 179
   size: 1.7MB
   last_updated: 2026-01-01 07:38
-- name: ariakit
-  description: ariakit from GitHub
-  path: docs/github-scraped/ariakit/
-  status: fetched
-  file_count: 176
-  size: 474.1KB
-  last_updated: 2026-01-01 07:38
 - name: camel
   description: camel from GitHub
   path: docs/github-scraped/camel/
@@ -2692,13 +2685,6 @@ github_scraped:
   file_count: 204
   size: 957.7KB
   last_updated: 2026-01-01 07:38
-- name: chrome-devtools-mcp
-  description: chrome-devtools-mcp from GitHub
-  path: docs/github-scraped/chrome-devtools-mcp/
-  status: fetched
-  file_count: 8
-  size: 78.1KB
-  last_updated: 2026-01-01 07:38
 - name: coqui-tts
   description: coqui-tts from GitHub
   path: docs/github-scraped/coqui-tts/
@@ -2720,13 +2706,6 @@ github_scraped:
   file_count: 159
   size: 1.2MB
   last_updated: 2026-01-01 07:38
-- name: decord
-  description: decord from GitHub
-  path: docs/github-scraped/decord/
-  status: fetched
-  file_count: 9
-  size: 15.6KB
-  last_updated: 2026-01-01 07:38
 - name: discord-api
   description: discord-api from GitHub
   path: docs/github-scraped/discord-api/
@@ -2740,13 +2719,6 @@ github_scraped:
   status: fetched
   file_count: 92
   size: 736.8KB
-  last_updated: 2026-01-01 07:38
-- name: drawio
-  description: drawio from GitHub
-  path: docs/github-scraped/drawio/
-  status: fetched
-  file_count: 9
-  size: 16.2KB
   last_updated: 2026-01-01 07:38
 - name: electron
   description: electron from GitHub
@@ -2769,13 +2741,6 @@ github_scraped:
   file_count: 53
   size: 240.9KB
   last_updated: 2026-01-01 07:38
-- name: faiss
-  description: faiss from GitHub
-  path: docs/github-scraped/faiss/
-  status: fetched
-  file_count: 57
-  size: 2.3MB
-  last_updated: 2026-01-01 07:38
 - name: flagembedding
   description: flagembedding from GitHub
   path: docs/github-scraped/flagembedding/
@@ -2790,13 +2755,6 @@ github_scraped:
   file_count: 23
   size: 126.9KB
   last_updated: 2026-01-01 07:38
-- name: huggingface-diffusers
-  description: huggingface-diffusers from GitHub
-  path: docs/github-scraped/huggingface-diffusers/
-  status: fetched
-  file_count: 472
-  size: 3.1MB
-  last_updated: 2026-01-01 07:38
 - name: jest
   description: jest from GitHub
   path: docs/github-scraped/jest/
@@ -2810,20 +2768,6 @@ github_scraped:
   status: fetched
   file_count: 71
   size: 394.2KB
-  last_updated: 2026-01-01 07:38
-- name: llama-cpp
-  description: llama-cpp from GitHub
-  path: docs/github-scraped/llama-cpp/
-  status: fetched
-  file_count: 196
-  size: 974.6KB
-  last_updated: 2026-01-01 07:38
-- name: llamafile
-  description: llamafile from GitHub
-  path: docs/github-scraped/llamafile/
-  status: fetched
-  file_count: 9
-  size: 42.0KB
   last_updated: 2026-01-01 07:38
 - name: llmware
   description: llmware from GitHub
@@ -2867,40 +2811,12 @@ github_scraped:
   file_count: 17
   size: 40.8KB
   last_updated: 2026-01-01 07:38
-- name: opensearch
-  description: opensearch from GitHub
-  path: docs/github-scraped/opensearch/
-  status: fetched
-  file_count: 1606
-  size: 11.1MB
-  last_updated: 2026-01-01 07:38
-- name: penpot
-  description: penpot from GitHub
-  path: docs/github-scraped/penpot/
-  status: fetched
-  file_count: 30
-  size: 224.9KB
-  last_updated: 2026-01-01 07:38
-- name: platformio
-  description: platformio from GitHub
-  path: docs/github-scraped/platformio/
-  status: fetched
-  file_count: 1882
-  size: 7.7MB
-  last_updated: 2026-01-01 07:38
 - name: prompt-flow
   description: prompt-flow from GitHub
   path: docs/github-scraped/prompt-flow/
   status: fetched
   file_count: 98
   size: 515.7KB
-  last_updated: 2026-01-01 07:38
-- name: qwen3-embedding
-  description: qwen3-embedding from GitHub
-  path: docs/github-scraped/qwen3-embedding/
-  status: fetched
-  file_count: 23
-  size: 45.2KB
   last_updated: 2026-01-01 07:38
 - name: raspberrypi
   description: raspberrypi from GitHub
@@ -2944,20 +2860,6 @@ github_scraped:
   file_count: 69
   size: 900.3KB
   last_updated: 2026-01-01 07:38
-- name: semantic-kernel
-  description: semantic-kernel from GitHub
-  path: docs/github-scraped/semantic-kernel/
-  status: fetched
-  file_count: 137
-  size: 1.8MB
-  last_updated: 2026-01-01 07:38
-- name: stable-diffusion
-  description: stable-diffusion from GitHub
-  path: docs/github-scraped/stable-diffusion/
-  status: fetched
-  file_count: 2
-  size: 21.3KB
-  last_updated: 2026-01-01 07:38
 - name: styled-components
   description: styled-components from GitHub
   path: docs/github-scraped/styled-components/
@@ -2993,33 +2895,12 @@ github_scraped:
   file_count: 81
   size: 184.5KB
   last_updated: 2026-01-01 07:38
-- name: visx
-  description: visx from GitHub
-  path: docs/github-scraped/visx/
-  status: fetched
-  file_count: 46
-  size: 238.9KB
-  last_updated: 2026-01-01 07:38
 - name: vllm
   description: vllm from GitHub
   path: docs/github-scraped/vllm/
   status: fetched
   file_count: 173
   size: 1.1MB
-  last_updated: 2026-01-01 07:38
-- name: whisper
-  description: whisper from GitHub
-  path: docs/github-scraped/whisper/
-  status: fetched
-  file_count: 5
-  size: 30.2KB
-  last_updated: 2026-01-01 07:38
-- name: xtermjs
-  description: xtermjs from GitHub
-  path: docs/github-scraped/xtermjs/
-  status: fetched
-  file_count: 22
-  size: 62.8KB
   last_updated: 2026-01-01 07:38
 web_scraped:
 - name: aframe-react
@@ -3084,13 +2965,6 @@ web_scraped:
   status: fetched
   file_count: 31
   size: 203.9KB
-  last_updated: 2026-01-01 07:38
-- name: gpt4all
-  description: gpt4all documentation
-  path: docs/web-scraped/gpt4all/
-  status: fetched
-  file_count: 17
-  size: 157.8KB
   last_updated: 2026-01-01 07:38
 - name: hapi
   description: hapi documentation
@@ -3203,6 +3077,13 @@ web_scraped:
   status: fetched
   file_count: 7
   size: 150.4KB
+  last_updated: 2026-01-01 07:38
+- name: squeezellm
+  description: squeezellm documentation
+  path: docs/web-scraped/squeezellm/
+  status: fetched
+  file_count: 5
+  size: 19.8KB
   last_updated: 2026-01-01 07:38
 - name: storybook
   description: storybook documentation
