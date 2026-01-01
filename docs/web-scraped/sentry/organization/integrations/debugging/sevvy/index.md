@@ -1,0 +1,16 @@
+---
+---
+title: Sevvy
+description: "Learn about Sentry's Sevvy integration, which helps users debug, fix, and prevent issues, with full-stack context."
+---
+The Sevvy integration connects Sentry with Sevvy, an AI on-call engineer that monitors your production systems, debugs failures, and performs root-cause analysis using rich context from across your stack. When Issues are created or updated in Sentry, the agent enriches the event 
+with data from your logs, metrics, source code, databases, docs, runbooks, PRs, deployments, and past incidents, summarizing the root cause and remediation steps.
+
+This integration is maintained and supported by Sevvy. or more details, questions, or support feel free to contact support@sevvyai.com.
+## Install and Configure
+
+Sentry owner, manager, or admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > Sevvy**
+
+2. Follow the full [Sevvy installation instructions](https://docs.sevvyai.com/integrations/sentry).

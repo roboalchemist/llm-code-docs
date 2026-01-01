@@ -1,0 +1,26 @@
+
+
+## Prerequisites
+
+* You need a Sentry [account](https://sentry.io/signup/) and [project](/product/projects/)
+* Ruby 2.4+ or any of the most recent JRuby versions
+
+## Features
+
+In addition to capturing errors, you can monitor interactions between multiple services or applications by [enabling tracing](/concepts/key-terms/tracing/). You can also collect and analyze performance profiles from real users with [profiling](/product/explore/profiling/).
+
+Select which Sentry features you'd like to install in addition to Error Monitoring to get the corresponding installation and configuration instructions below.
+
+## Install
+
+## Configure
+
+Configuration should happen as early as possible in your application's lifecycle.
+
+## Verify
+
+This snippet includes an intentional error, so you can test that everything is working as soon as you set it up.
+
+Learn more about manually capturing an error or message in our Usage documentation.
+
+To view and resolve the recorded error, log into [sentry.io](https://sentry.io) and select your project. Clicking on the error's title will open a page where you can see detailed information and mark it as resolved.

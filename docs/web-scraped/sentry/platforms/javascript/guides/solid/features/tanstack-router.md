@@ -1,0 +1,42 @@
+---
+---
+title: TanStack Router
+description: "Learn about Sentry's TanStack Router integration."
+---
+
+The TanStack Router integration is included in the `@sentry/solid` package and is compatible with version `1.132.27` of `@tanstack/solid-router` and above.
+
+The TanStack Router integration is designed to work with Sentry Tracing. Please see Getting Started with Solid Performance for more details on how to set up and install the SDK.
+
+The TanStack Router instrumentation uses your TanStack Router routes to create `pageload` and `navigation` transactions to ensure you collect meaningful performance data about the health of your page loads and associated requests.
+
+## Usage
+
+To use the TanStack Router integration, pass the `Sentry.tanstackRouterBrowserTracingIntegration` inside your `integrations` option:
+
+```javascript
+const router = createRouter({
+  // Your router options...
+});
+
+declare module '@tanstack/solid-router' {
+  interface Register {
+    router: typeof router;
+  }
+}
+
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: [tanstackRouterBrowserTracingIntegration(router)],
+
+  // Setting a sample rate is required for sending performance data.
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control.
+  tracesSampleRate: 1.0,
+});
+```
+
+## Next Steps:
+
+- [Return to **Getting Started**](../../)
+- [Return to the main integrations page](../)

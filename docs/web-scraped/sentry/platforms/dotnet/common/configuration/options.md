@@ -1,0 +1,172 @@
+---
+---
+title: Options
+description: "Learn more about how the SDK can be configured via options. These are being passed to the init function and therefore set when the SDK is first initialized."
+---
+
+## Core Options
+
+Options that can be read from an environment variable (`SENTRY_DSN`, `SENTRY_ENVIRONMENT`, `SENTRY_RELEASE`) are read automatically.
+
+The DSN tells the SDK where to send the events. If this value is not provided, the SDK will try to read it from the `SENTRY_DSN` environment variable. If that variable also does not exist, the SDK will just not send any events.
+
+In runtimes without a process environment (such as the browser) that fallback does not apply.
+
+Learn more about [DSN utilization](/product/sentry-basics/dsn-explainer/#dsn-utilization).
+
+- Original - Default .NET stack trace format.
+- Enhanced - **default** Include `async`, return type, arguments, and more.
+
+Before version 3.0.0 of the Sentry SDK for .NET, there was no special treatment for the stack trace. Sentry reported what .NET made available at runtime.
+This behavior now called `StackTraceMode.Original`. With the introduction of 3.0, a new default mode is `Enhanced`.
+
+Changing this value will affect issue grouping. Since the frame significantly changes shape.
+
+Specifies whether to use global scope management mode. Should be `true` for client applications and `false` for server applications.
+
+Example scenarios where it should be explicitly set to true:
+
+- Universal Windows platform (UWP) applications
+- WinForms applications
+- Windows Presentation Foundation (WPF) applications
+- Single user console applications
+
+Defaults to `false`, unless in Blazor WASM, MAUI, Unity, or Xamarin where the default is `true`.
+
+When Global Mode is **disabled** data stored in the scope is set on the current [ExecutionContext](https://learn.microsoft.com/en-us/dotnet/api/system.threading.executioncontext).
+In server applications data stored in the scope is only available in the context of the particular request in which it is created.
+Broadly, the ExecutionContext passes to child tasks and threads, but not to parent tasks and threads.
+
+When Global Mode is **enabled**, a single scope stack is shared by the whole application.
+
+Since version 5.0.0 the transaction is always set on the current ExecutionContext, regardless of the Global Mode, so that spans from the UI don't get mixed up with transactions in background services.
+
+There may be situations in which this isn't what you want. For example, you could start a transaction and then run multiple tasks in parallel, each of which makes an HTTP Request. By default, Sentry's Automatic Instrumentation will create spans as children of the transaction it finds stored in `Scope.Transaction` (which is now ExecutionContext specific, even in Global Mode).
+
+You can override this behavior and force auto-instrumented spans to have a specific parent by setting `Scope.Span`. [An example of doing this](https://github.com/getsentry/symbol-collector/blob/8a0fdb2594c3028f63f180b9b56b1efea1cbce34/src/SymbolCollector.Core/Client.cs#L74-L83) can be found in the Symbol Collector.
+
+See the Scopes and Hubs documentation for more information.
+
+Specifies whether backpressure handling should be enabled or not.
+
+When enabled, the sample rate for traces and errors will be reduced automatically when the SDK detects issues sending events to Sentry. Once the system is healthy again, the sample rate will be restored to the originally configured value.
+
+Defaults to `true` (i.e. enabled).
+
+Turns debug mode on or off. If debug is enabled SDK will attempt to print out useful debugging information if something goes wrong with sending the event. The default is always `false`. It's generally not recommended to turn it on in production, though turning `debug` mode on will not cause any safety concerns.
+
+Enabling `debug` mode makes the SDK generate as much diagnostic data as possible. However, if you'd prefer to lower the verbosity of the Sentry SDK diagnostics logs, configure this option to set the appropriate level:
+
+- `debug`: **default** The most verbose mode
+- `info`: Informational messages
+- `warning`: Warning that something might not be right
+- `error`: Only SDK internal errors are printed
+- `fatal`: Only critical errors are printed
+
+For app models that don't have a console to print to, you can customize the SDK's diagnostic logger to write to a file or to Visual Studio's debug window.
+
+Sets the distribution of the application. Distributions are used to disambiguate build or deployment variants of the same release of an application. For example, the dist can be the build number of an Xcode build or the version code of an Android build. The dist has a max length of 64 characters.
+
+Sets the release. Some SDKs will try to automatically configure a release out of the box but it's a better idea to manually set it to guarantee that the release is in sync with your deploy integrations or source map uploads. Release names are strings, but some formats are detected by Sentry and might be rendered differently. Learn more about how to send release data so Sentry can tell you about regressions between releases and identify the potential source in [the releases documentation](/product/releases/) or the sandbox.
+
+By default the SDK will try to read this value from the `SENTRY_RELEASE` environment variable (in the browser SDK, this will be read off of the `window.SENTRY_RELEASE.id` if available).
+
+Sets the environment. This string is freeform and set by default. A release can be associated with more than one environment to separate them in the UI (think `staging` vs `prod` or similar).
+
+By default, the SDK reports `debug` when the debugger is attached. Otherwise, the default environment is `production`.
+
+Additionally, if you are running with the ASP.NET Core integration, you will also see the environment named as `staging`, if running in staging, or `development`, if running in development mode.
+
+Configures the sample rate for error events, in the range of `0.0` to `1.0`. The default is `1.0`, which means that 100% of error events will be sent. If set to `0.1`, only 10% of error events will be sent. Events are picked randomly.
+
+This variable controls the total amount of breadcrumbs that should be captured. This defaults to `100`, but you can set this to any number. However, you should be aware that Sentry has a [maximum payload size](https://develop.sentry.dev/sdk/data-model/envelopes/#size-limits) and any events exceeding that payload size will be dropped.
+
+The maximum number of [envelopes](https://develop.sentry.dev/sdk/data-model/envelopes/) to keep in cache. The SDKs use envelopes to send data, such as events, attachments, user feedback, and sessions to sentry.io. An envelope can contain multiple items, such as an event with a session and two attachments. Depending on the usage of the SDK, the size of an envelope can differ. If the number of envelopes in the local cache exceeds `max-cache-items`, the SDK deletes the oldest envelope and migrates the sessions to the next envelope to maintain the integrity of your release health stats. The default is `30`.
+
+When enabled, stack traces are automatically attached to all messages logged. Stack traces are always attached to exceptions; however, when this option is set, stack traces are also sent with messages. This option, for instance, means that stack traces appear next to all log messages.
+
+Grouping in Sentry is different for events with stack traces and without. As a result, you will get new groups as you enable or disable this flag for certain events.
+
+If this flag is enabled, certain personally identifiable information (PII) is added by active integrations. By default, no such data is sent.
+
+If you are using Sentry in your mobile app, read our [frequently asked questions about mobile data privacy](/security-legal-pii/security/mobile-privacy/) to assist with Apple App Store and Google Play app privacy details.
+
+This option is turned off by default.
+
+If you enable this option, be sure to manually remove what you don't want to send using our features for managing [_Sensitive Data_](../../data-management/sensitive-data/).
+
+This option can be used to supply a server name. When provided, the name of the server is sent along and persisted in the event. For many integrations, the server name actually corresponds to the device hostname, even in situations where the machine is not actually a server.
+
+For ASP.NET and ASP.NET Core applications, the value will default to the server's name. For other application types, the value will default to the computer's name only when the `SendDefaultPii` is set to `true`, because the computer's name can be considered personally identifiable information (PII) in the case of a desktop or mobile application.
+
+A list of string prefixes of module names that belong to the app. This option takes precedence over `in-app-exclude`.
+
+Sentry differentiates stack frames that are directly related to your application ("in application") from stack frames that come from other packages such as the standard library, frameworks, or other dependencies. The application package is automatically marked as `inApp`. The difference is visible in [sentry.io](https://sentry.io), where only the "in application" frames are displayed by default.
+
+A list of string prefixes of module names that do not belong to the app, but rather to third-party packages. Modules considered not part of the app will be hidden from stack traces by default.
+
+This option can be overridden using .
+
+This parameter controls whether integrations should capture HTTP request bodies. It can be set to one of the following values:
+
+- `none`: **default** Request bodies are never sent.
+- `small`: Only small request bodies will be captured. The cutoff for small depends on the SDK (typically 4KB).
+- `medium`: Medium and small requests will be captured (typically 10KB).
+- `always`: The SDK will always capture the request body as long as Sentry can make sense of it.
+
+Takes a screenshot of the application when an error happens and includes it as an attachment.
+Learn more about enriching events with screenshots in our Screenshots documentation.
+
+Set this boolean to `false` to disable sending of client reports. Client reports are a protocol feature that let clients send status reports about themselves to Sentry. They are currently mainly used to emit outcomes for events that were never sent.
+
+Once enabled, this feature automatically captures HTTP client errors, like bad response codes, as error events and reports them to Sentry.
+
+## Hooks
+
+These options can be used to hook the SDK in various ways to customize the reporting of events.
+
+This function is called with an SDK-specific message or error event object, and can return a modified event object, or `null` to skip reporting the event. This can be used, for instance, for manual PII stripping before sending.
+
+By the time  is executed, all scope data has already been applied to the event. Further modification of the scope won't have any effect.
+
+When filtering based on exception types, the original exception (including any `AggregateException`) will be stored in `SentryEvent.Exception`. However, Sentry's `MainExceptionProcessor` unpacks AggregateExceptions automatically, and so what you will see in Sentry will be the various inner exceptions. These are also available in the SDK by inspecting the `SentryEvent.SentryExceptions` collection.
+
+This function is called with an SDK-specific breadcrumb object before the breadcrumb is added to the scope. When nothing is returned from the function, the breadcrumb is dropped. To pass the breadcrumb through, return the first argument, which contains the breadcrumb object.
+The callback typically gets a second argument (called a "hint") which contains the original object from which the breadcrumb was created to further customize what the breadcrumb should look like.
+
+This function is called with an SDK-specific transaction object, and can return a modified transaction object, or `null` to skip reporting the transaction. This can be used, for instance, for manual PII-stripping before sending.
+
+By the time  is executed, all scope data has already been applied to the event and further modification of the scope won't have any effect.
+
+## Transport Options
+
+Transports are used to send events to Sentry. Transports can be customized to some degree to better support highly specific deployments.
+
+Switches out the transport used to send events. How this works depends on the SDK. It can, for instance, be used to capture events for unit-testing or to send it through some more complex setup that requires proxy authentication.
+
+When set, a proxy can be configured that should be used for outbound requests. This is also used for HTTPS requests unless a separate `https-proxy` is configured. However, not all SDKs support a separate HTTPS proxy. SDKs will attempt to default to the system-wide configured proxy, if possible. For instance, on Unix systems, the `http_proxy` environment variable will be picked up.
+
+Specifies a local directory used for caching payloads. When this option is enabled (that is, when the directory is set), the Sentry SDK will persist envelopes locally before sending to Sentry. This configuration option is particularly useful if you expect your application to run in environments where internet connectivity is limited.
+
+Default: not set (caching is disabled).
+
+Specifies a local directory used for caching payloads. When this option is enabled (that is, when the directory is set), the Sentry SDK will persist envelopes locally before sending to Sentry. This configuration option is particularly useful if you expect your application to run in environments where internet connectivity is limited.
+
+The default value is `Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)`.
+
+Specifies a local directory used for caching payloads. When this option is enabled (that is, when the directory is set), the Sentry SDK will persist envelopes locally before sending to Sentry. This configuration option is particularly useful if you expect your application to run in environments where internet connectivity is limited.
+
+The default value is `Path.Combine(FileSystem.CacheDirectory, "sentry")`. See the [Microsoft docs](https://docs.microsoft.com/dotnet/maui/platform-integration/storage/file-system-helpers#platform-differences) for how `FileSystem.CacheDirectory` differs on each supported platform.
+
+When caching is enabled (that is,  is set), this option controls the timeout that limits how long the SDK will attempt to flush existing cache during initialization. Note that flushing the cache involves sending the payload to Sentry in a blocking operation. Setting this option to zero means that Sentry will **not** attempt to flush the cache during initialization, but instead will do so when the next payload is queued up.
+
+The default is `1` (one) second.
+
+Controls how many seconds to wait before shutting down. Sentry SDKs send events from a background queue. This queue is given a certain amount to drain pending events. The default is SDK specific but typically around two seconds. Setting this value too low may cause problems for sending events from command line applications. Setting the value too high will cause the application to block for a long time for users experiencing network connectivity problems.
+
+## Tracing Options
+
+A number between `0` and `1`, controlling the percentage chance a given transaction will be sent to Sentry. (`0` represents 0% while `1` represents 100%.) Applies equally to all transactions created in the app. Either this or  must be defined to enable tracing.
+
+A function responsible for determining the percentage chance a given transaction will be sent to Sentry. It will automatically be passed information about the transaction and the context in which it's being created, and must return a number between `0` (0% chance of being sent) and `1` (100% chance of being sent). Can also be used for filtering transactions, by returning 0 for those that are unwanted. Either this or  must be defined to enable tracing.
+

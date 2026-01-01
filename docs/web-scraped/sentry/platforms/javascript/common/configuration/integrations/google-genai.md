@@ -1,0 +1,113 @@
+---
+---
+title: Google Gen AI
+description: "Adds instrumentation for Google Gen AI SDK."
+---
+
+This integration works in the Node.js, Cloudflare Workers, Vercel Edge Functions, and browser runtimes. It requires SDK version `10.14.0` or higher.
+
+_Import name: `Sentry.googleGenAIIntegration`_
+
+The `googleGenAIIntegration` adds instrumentation for the `@google/genai` SDK to capture spans by automatically wrapping Google Gen AI client calls and recording LLM interactions with configurable input/output recording.
+
+It is enabled by default and will automatically capture spans for Google Gen AI SDK method calls. You can opt-in to capture inputs and outputs by setting `recordInputs` and `recordOutputs` in the integration config:
+
+```javascript
+Sentry.init({
+  dsn: "____PUBLIC_DSN____",
+  tracesSampleRate: 1.0,
+  integrations: [
+    Sentry.googleGenAIIntegration({
+      recordInputs: true,
+      recordOutputs: true,
+    }),
+  ],
+});
+```
+
+For Cloudflare Workers, you need to manually instrument the Google Gen AI client using the `instrumentGoogleGenAIClient` helper:
+
+```javascript
+const genAI = new GoogleGenAI(process.env.API_KEY);
+const client = Sentry.instrumentGoogleGenAIClient(genAI, {
+  recordInputs: true,
+  recordOutputs: true,
+});
+
+// Use the wrapped client instead of the original genAI instance
+const result = await client.models.generateContent("Hello!");
+```
+
+For browser applications, you need to manually instrument the Google Gen AI client using the `instrumentGoogleGenAIClient` helper:
+
+```javascript
+const genAI = new GoogleGenAI(process.env.API_KEY);
+const client = Sentry.instrumentGoogleGenAIClient(genAI, {
+  recordInputs: true,
+  recordOutputs: true,
+});
+
+// Use the wrapped client instead of the original genAI instance
+const result = await client.models.generateContent("Hello!");
+```
+
+## Options
+
+### `recordInputs`
+
+_Type: `boolean`_
+
+Records inputs to Google Gen AI SDK method calls (such as prompts and messages).
+
+Defaults to `true` if `sendDefaultPii` is `true`.
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.googleGenAIIntegration({ recordInputs: true })],
+});
+```
+
+### `recordOutputs`
+
+_Type: `boolean`_
+
+Records outputs from Google Gen AI SDK method calls (such as generated text and responses).
+
+Defaults to `true` if `sendDefaultPii` is `true`.
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.googleGenAIIntegration({ recordOutputs: true })],
+});
+```
+
+## Configuration
+
+By default this integration adds tracing support to Google Gen AI SDK method calls including:
+
+- `models.generateContent()` - Make an API request to generate content with a given model.
+- `models.generateContentStream()` - Make an API request to generate content with a given model and yields the response in chunks.
+- `chats.create()` - Create chat sessions.
+- `sendMessage()` - Send messages in chat sessions.
+- `sendMessageStream()` - Stream messages in chat sessions.
+
+The integration will automatically detect streaming vs non-streaming requests and handle them appropriately.
+
+## Edge runtime
+
+This integration is automatically instrumented in the Node.js runtime. For Next.js applications using the Edge runtime, you need to manually instrument the Google Gen AI client:
+
+```javascript
+const genAI = new GoogleGenAI(process.env.API_KEY);
+const client = Sentry.instrumentGoogleGenAIClient(genAI, {
+  recordInputs: true,
+  recordOutputs: true,
+});
+
+// Use the wrapped client instead of the original genAI instance
+const result = await client.models.generateContent("Hello!");
+```
+
+## Supported Versions
+
+- `@google/genai`: `>=0.10.0 <2`

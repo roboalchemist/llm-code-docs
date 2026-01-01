@@ -1,0 +1,13 @@
+---
+---
+title: OnUncaughtException
+description: "Supports capturing events from `uncaughtException` while retaining Electrons default behaviour. (default)"
+---
+
+Supports capturing events from `uncaughtException` while retaining Electron's default behavior of displaying an error dialog if there are no other listeners.
+
+To disable Electron's default error dialog, add another listener:
+
+```javascript
+process.on("uncaughtException", () => {});
+```

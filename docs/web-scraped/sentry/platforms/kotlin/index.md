@@ -1,0 +1,17 @@
+---
+---
+title: Kotlin
+---
+
+Sentry supports JVM related use of Kotlin with the [Java](/platforms/java) SDK. For native Android applications, use the [Android](/platforms/android) SDK. If you use KMP, the [Kotlin Multiplatform](/platforms/kotlin/guides/kotlin-multiplatform/) SDK provides the best integration.
+
+Select your platform to get started:
+
+- [Java](/platforms/java)
+- [Android](/platforms/android)
+- [Kotlin Multiplatform](/platforms/kotlin/guides/kotlin-multiplatform/)
+- [Compose Multiplatform](/platforms/kotlin/guides/compose-multiplatform/)
+
+## Kotlin Extensions
+
+- [Using Sentry SDK with Coroutines](/platforms/java/enriching-events/scopes/#kotlin-coroutines)

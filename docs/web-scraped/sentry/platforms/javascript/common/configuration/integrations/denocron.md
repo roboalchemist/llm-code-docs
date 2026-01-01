@@ -1,0 +1,21 @@
+---
+---
+title: DenoCron
+description: "Instruments Deno.cron to automatically capture cron check-ins."
+---
+
+This integration only works in the Deno runtime.
+
+_Import name: `Sentry.denoCronIntegration`_
+
+[Sentry Crons](/product/crons/) allows you to monitor the uptime and performance of any scheduled, recurring job in your application.
+
+The DenoCron integration sets up automatic monitoring for your cron jobs created by [`Deno.cron`](https://docs.deno.com/deploy/kv/manual/cron). It captures check-ins and sends them to Sentry.
+
+Read more about [setting up Cron Monitoring for Deno](./../../../crons/).
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.denoCronIntegration()],
+});
+```

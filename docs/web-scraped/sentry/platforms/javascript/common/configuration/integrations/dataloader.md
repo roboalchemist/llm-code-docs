@@ -1,0 +1,21 @@
+---
+---
+title: Dataloader
+description: "Adds instrumentation for Dataloader."
+---
+
+This integration only works in the Node.js and Bun runtimes. Requires SDK version `8.31.0` or higher.
+
+_Import name: `Sentry.dataloaderIntegration`_
+
+The `dataloaderIntegration` adds instrumentation for the `dataloader` library to capture spans using [`@opentelemetry/instrumentation-dataloader`](https://www.npmjs.com/package/@opentelemetry/instrumentation-dataloader).
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.dataloaderIntegration()],
+});
+```
+
+## Supported Versions
+
+- `dataloader`: `>=2.0.0 <3`

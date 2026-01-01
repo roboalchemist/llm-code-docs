@@ -1,0 +1,8 @@
+---
+---
+title: Data Scrubbing
+description: "Learn more about scrubbing data using the Settings for your project and organization."
+---
+
+Please refer to [the SDK documentation for a general introduction to managing sensitive data](/platform-redirect/?next=/data-management/sensitive-data/). This page documents only the server-side options.
+

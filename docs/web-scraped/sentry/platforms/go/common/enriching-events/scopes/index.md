@@ -1,0 +1,68 @@
+---
+---
+title: Scopes and Hubs
+description: "The SDK will in most cases automatically manage the scopes for you in the framework integrations. Learn what a scope is and how you can use it to your advantage."
+---
+
+When an event is captured and sent to Sentry, SDKs will merge that event data with extra
+information from the current scope. The SDK will in most cases automatically manage the scopes for you in the framework integrations and you don't need to think about them. However,
+you should know what a scope is and how you can use it for your advantage.
+
+## What's a Scope, What's a Hub
+
+You can think of the hub as the central point that our SDKs use to route an
+event to Sentry. When you call `init()` a hub is created and a client and a
+blank scope are created on it. That hub is then associated with the current
+thread and will internally hold a stack of scopes.
+
+The scope will hold useful information that should be sent along with the
+event. For instance [contexts](../context/) or
+[breadcrumbs](../breadcrumbs/) are stored on
+the scope. When a scope is pushed, it inherits all data from the parent scope
+and when it pops all modifications are reverted.
+
+The default SDK integrations will push and pop scopes intelligently. For
+instance web framework integrations will create and destroy scopes around your
+routes or controllers.
+
+## How the Scope and Hub Work
+
+As you start using an SDK, a scope and hub are automatically created for you out
+of the box. It's unlikely that you'll interact with the hub directly unless you're
+writing an integration or you want to create or destroy scopes. Scopes, on the
+other hand are more user facing. You can call  at any point in
+time to modify data stored on the scope. This is useful for doing things like
+[modifying the context](../context/).
+
+When you call a global function such as  internally Sentry
+discovers the current hub and asks it to capture an event. Internally the hub will
+then merge the event with the topmost scope's data.
+
+## Configuring the Scope
+
+The most useful operation when working with scopes is the  function. It can be used to reconfigure the current scope.
+
+You can, for instance, add custom tags or inform Sentry about the currently authenticated user.
+
+You can also apply this configuration when unsetting a user at logout:
+
+To learn what useful information can be associated with scopes see
+[the context documentation](../context/).
+
+## Local Scopes
+
+We also support pushing and configuring a scope within a single call. This is typically
+called ,  or implemented as a function parameter on the capture methods, depending on the SDK. It's very helpful if
+you only want to send data for one specific event.
+
+### Using 
+
+In the following example we use  to attach a `level` and a `tag` to only one specific error:
+
+While this example looks similar to , it is actually very different.
+Calls to  change the current active scope; all successive calls to  will maintain previously set changes unless they are explicitly unset.
+
+On the other hand,  creates a clone of the current scope, and the changes
+made will stay isolated within the  callback function. This allows you to
+more easily isolate pieces of context information to specific locations in your code or
+even call  to briefly remove all context information.

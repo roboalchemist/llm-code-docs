@@ -1,0 +1,21 @@
+---
+---
+title: Knex
+description: "Adds instrumentation for Knex."
+---
+
+This integration only works in the Node.js and Bun runtimes. Requires SDK version `8.38.0` or higher.
+
+_Import name: `Sentry.knexIntegration`_
+
+The `knexIntegration` adds instrumentation for the `knex` library to capture spans using [`@opentelemetry/instrumentation-knex`](https://www.npmjs.com/package/@opentelemetry/instrumentation-knex).
+
+```javascript
+Sentry.init({
+  integrations: [Sentry.knexIntegration()],
+});
+```
+
+## Supported Versions
+
+- `dataloader`: `>=0.10.0 <4`

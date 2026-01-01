@@ -1,0 +1,28 @@
+---
+---
+title: Set Up Crons
+description: "Learn how to set up Crons with the Go SDK to monitor the uptime and performance of any scheduled, recurring job in your application."
+---
+
+Once implemented, it'll allow you to get alerts and metrics to help you solve errors, detect timeouts, and prevent disruptions to your service.
+
+## Requirements
+
+## Connecting Errors to Cron Monitors
+
+To link any exceptions captured during your job's lifecycle, use Sentry's context with your monitor slug.
+
+## Alerts
+
+When your recurring job fails to check in (missed), runs beyond its configured maximum runtime (failed), or manually reports a failure, Sentry will create an error event with a tag to your monitor.
+
+To receive alerts about these events:
+
+1. Navigate to **Alerts** in the sidebar.
+2. Create a new alert and select "Issues" under "Errors" as the alert type.
+3. Configure your alert and define a filter match to use: `The event's tags match {key} {match} {value}`.
+
+Example: `The event's tags match monitor.slug equals my-monitor-slug-here`
+
+Learn more in [Issue Alert Configuration](/product/alerts/create-alerts/issue-alert-config/).
+

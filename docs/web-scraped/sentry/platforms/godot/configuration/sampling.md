@@ -1,0 +1,16 @@
+---
+---
+title: Sampling
+description: "Learn how to configure the volume of error and transaction events sent to Sentry."
+---
+
+Adding Sentry to your app gives you a great deal of very valuable information about errors and performance you wouldn't otherwise get. And lots of information is good -- as long as it's the right information, at a reasonable volume.
+
+## Sampling Error Events
+
+To send a representative sample of your errors to Sentry, set the  option in your SDK configuration to a number between `0` (0% of errors sent) and `1` (100% of errors sent). This is a static rate, which will apply equally to all errors. For example, to sample 25% of your errors:
+
+The error sample rate defaults to `1`, meaning all errors are sent to Sentry.
+
+Changing the error sample rate requires re-deployment. In addition, setting an SDK sample rate limits visibility into the source of events. Setting a rate limit for your project (which only drops events when volume is high) may better suit your needs.
+

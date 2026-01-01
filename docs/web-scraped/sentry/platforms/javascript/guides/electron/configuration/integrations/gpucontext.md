@@ -1,0 +1,36 @@
+---
+---
+title: GPUContext
+description: "Adds GPU device context to events. (default)"
+---
+
+Adds GPU device context to events.
+
+This integration takes a number of options, which all default to `true`:
+
+```typescript
+interface GPUContextOptions {
+  /**
+   * How much GPU information to request from Electron `app.getGPUInfo` API.
+   * `complete` can take much longer to resolve so the default is `basic`.
+   * - 'basic': Usually only the `vendor_id` and `id` but some platforms supply more.
+   * - 'complete': More detailed information including full names and driver_version.
+   *
+   * @default 'basic'
+   */
+  infoLevel: "basic" | "complete";
+}
+```
+
+To get complete GPU information, set `infoLevel` to `complete`:
+
+```javascript
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+  integrations: [
+    Sentry.gpuContextIntegration({
+      infoLevel: "complete",
+    }),
+  ],
+});
+```
