@@ -620,3 +620,10 @@ repositories:
     source_folder: "docs/src"
     target_folder: "docs/github-scraped/tree-sitter"
     branch: "master"
+
+  - name: "vLLM"
+    description: "vLLM - High-throughput and memory-efficient LLM inference engine with PagedAttention optimization"
+    repo_url: "https://github.com/vllm-project/vllm.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/vllm"
+    branch: "main"

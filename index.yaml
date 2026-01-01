@@ -2844,3 +2844,10 @@ web_scraped:
   file_count: 39
   size: 114.6KB
   last_updated: 2026-01-01 06:54
+- name: vllm
+  description: vLLM - High-throughput and memory-efficient LLM inference engine
+  path: docs/github-scraped/vllm/
+  status: fetched
+  file_count: 261
+  size: 14MB
+  last_updated: 2026-01-01 06:54
