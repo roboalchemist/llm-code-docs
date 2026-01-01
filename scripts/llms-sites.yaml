@@ -554,6 +554,9 @@ sites:
 - name: meilisearch
   base_url: https://www.meilisearch.com/
   description: Meilisearch search engine
+- name: mikro-orm
+  base_url: https://mikro-orm.io/
+  description: TypeScript ORM with unit of work and identity map patterns
 - name: meshconnect
   base_url: https://docs.meshconnect.com/
   description: Meshconnect documentation
