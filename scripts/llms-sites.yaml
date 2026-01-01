@@ -224,6 +224,9 @@ sites:
 - name: daytona
   base_url: https://www.daytona.io/docs/
   description: Daytona documentation
+- name: deepchecks
+  base_url: https://deepchecks.com/
+  description: Deepchecks - Continuous validation for machine learning, LLM testing, evaluation, and monitoring
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
