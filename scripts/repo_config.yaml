@@ -194,6 +194,13 @@ repositories:
     target_folder: "docs/github-scraped/incus"
     branch: "main"
 
+  - name: "Matplotlib"
+    description: "Matplotlib - Python plotting library for creating 2D/3D visualizations, statistical plots, histograms, bar charts, and more"
+    repo_url: "https://github.com/matplotlib/matplotlib.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/matplotlib"
+    branch: "main"
+
   - name: "Milvus"
     description: "Milvus - Open source vector database for AI applications"
     repo_url: "https://github.com/milvus-io/milvus-docs.git"
