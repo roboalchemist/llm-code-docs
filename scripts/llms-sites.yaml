@@ -569,9 +569,6 @@ sites:
 - name: mistral
   base_url: https://docs.mistral.ai/
   description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
-- name: mikro-orm
-  base_url: https://mikro-orm.io/
-  description: TypeScript ORM for Node.js with support for MongoDB, MySQL, MariaDB, PostgreSQL, SQLite
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language
