@@ -134,6 +134,9 @@ sites:
 - name: bits-ui
   base_url: https://bits-ui.com/
   description: Bits UI Svelte headless component library
+- name: bitsandbytes
+  base_url: https://huggingface.co/docs/bitsandbytes/
+  description: BitsAndBytes - Python library for efficient 8-bit and 4-bit LLM quantization
 - name: braintrust
   base_url: https://www.braintrust.dev/docs/
   description: Braintrust LLM evaluation, logging, and prompt management platform
