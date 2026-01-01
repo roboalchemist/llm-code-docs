@@ -8,14 +8,14 @@
 
 metadata:
   last_updated: 2026-01-01 07:38
-  total_sources: 413
-  total_fetched: 413
+  total_sources: 415
+  total_fetched: 415
   llms_txt_count: 327
   llms_txt_fetched: 327
-  github_count: 55
-  github_fetched: 55
-  web_scraped_count: 31
-  web_scraped_fetched: 31
+  github_count: 56
+  github_fetched: 56
+  web_scraped_count: 32
+  web_scraped_fetched: 32
 llms_txt:
 - name: activepieces
   description: Platform
@@ -385,6 +385,13 @@ llms_txt:
   file_count: 332
   size: 5.6MB
   last_updated: 2026-01-01 07:38
+- name: bitsandbytes
+  description: Python library for efficient 8-bit and 4-bit LLM quantization
+  path: docs/github-scraped/bitsandbytes/
+  status: fetched
+  file_count: 25
+  size: 148KB
+  last_updated: 2026-01-01 07:36
 - name: bun
   description: Escape an HTML string
   url: https://bun.com/
@@ -2664,6 +2671,13 @@ github_scraped:
   file_count: 176
   size: 474.1KB
   last_updated: 2026-01-01 07:38
+- name: autogptq
+  description: autogptq from GitHub
+  path: docs/github-scraped/autogptq/
+  status: fetched
+  file_count: 4
+  size: 14.5KB
+  last_updated: 2026-01-01 07:38
 - name: camel
   description: camel from GitHub
   path: docs/github-scraped/camel/
@@ -3049,6 +3063,13 @@ web_scraped:
   status: fetched
   file_count: 5
   size: 9.8KB
+  last_updated: 2026-01-01 07:38
+- name: deepinfra
+  description: deepinfra documentation
+  path: docs/web-scraped/deepinfra/
+  status: fetched
+  file_count: 32
+  size: 320.0KB
   last_updated: 2026-01-01 07:38
 - name: emotion
   description: emotion documentation
