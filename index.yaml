@@ -8,12 +8,12 @@
 
 metadata:
   last_updated: 2026-01-01 07:24
-  total_sources: 397
-  total_fetched: 397
+  total_sources: 398
+  total_fetched: 398
   llms_txt_count: 323
   llms_txt_fetched: 323
-  github_count: 45
-  github_fetched: 45
+  github_count: 46
+  github_fetched: 46
   web_scraped_count: 29
   web_scraped_fetched: 29
 llms_txt:
@@ -2876,6 +2876,13 @@ github_scraped:
   status: fetched
   file_count: 13
   size: 110.2KB
+  last_updated: 2026-01-01 07:24
+- name: tensorrt-llm
+  description: tensorrt-llm from GitHub
+  path: docs/github-scraped/tensorrt-llm/
+  status: fetched
+  file_count: 293
+  size: 60.0MB
   last_updated: 2026-01-01 07:24
 - name: tree-sitter
   description: tree-sitter from GitHub
