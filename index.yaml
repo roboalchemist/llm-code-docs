@@ -8,14 +8,14 @@
 
 metadata:
   last_updated: 2026-01-01 07:30
-  total_sources: 388
-  total_fetched: 388
-  llms_txt_count: 324
-  llms_txt_fetched: 324
-  github_count: 35
-  github_fetched: 35
-  web_scraped_count: 29
-  web_scraped_fetched: 29
+  total_sources: 404
+  total_fetched: 404
+  llms_txt_count: 325
+  llms_txt_fetched: 325
+  github_count: 49
+  github_fetched: 49
+  web_scraped_count: 30
+  web_scraped_fetched: 30
 llms_txt:
 - name: activepieces
   description: Platform
@@ -1466,6 +1466,14 @@ llms_txt:
   file_count: 1
   size: 629.0KB
   last_updated: 2026-01-01 07:30
+- name: lunary
+  description: Get a specific run
+  url: https://lunary.com/
+  path: docs/llms-txt/lunary/
+  status: fetched
+  file_count: 130
+  size: 536.5KB
+  last_updated: 2026-01-01 07:30
 - name: lynx
   description: Composing Elements
   url: https://lynx.com/
@@ -1914,6 +1922,14 @@ llms_txt:
   file_count: 331
   size: 28.4MB
   last_updated: 2026-01-01 07:30
+- name: promptlayer
+  description: Webhooks
+  url: https://promptlayer.com/
+  path: docs/llms-txt/promptlayer/
+  status: fetched
+  file_count: 96
+  size: 1.2MB
+  last_updated: 2026-01-01 07:30
 - name: pydantic
   description: Pydantic Documentation
   url: https://pydantic.com/
@@ -2331,14 +2347,6 @@ llms_txt:
   file_count: 1
   size: 1.0MB
   last_updated: 2026-01-01 07:30
-- name: traceloop
-  description: Get costs by property
-  url: https://traceloop.com/
-  path: docs/llms-txt/traceloop/
-  status: fetched
-  file_count: 83
-  size: 938.4KB
-  last_updated: 2026-01-01 07:30
 - name: transloadit
   description: Transloadit Documentation
   url: https://transloadit.com/
@@ -2641,6 +2649,13 @@ github_scraped:
   file_count: 179
   size: 1.7MB
   last_updated: 2026-01-01 07:30
+- name: ariakit
+  description: ariakit from GitHub
+  path: docs/github-scraped/ariakit/
+  status: fetched
+  file_count: 176
+  size: 474.1KB
+  last_updated: 2026-01-01 07:30
 - name: camel
   description: camel from GitHub
   path: docs/github-scraped/camel/
@@ -2669,12 +2684,33 @@ github_scraped:
   file_count: 204
   size: 957.7KB
   last_updated: 2026-01-01 07:30
+- name: chrome-devtools-mcp
+  description: chrome-devtools-mcp from GitHub
+  path: docs/github-scraped/chrome-devtools-mcp/
+  status: fetched
+  file_count: 8
+  size: 78.1KB
+  last_updated: 2026-01-01 07:30
+- name: coqui-xtts
+  description: coqui-xtts from GitHub
+  path: docs/github-scraped/coqui-xtts/
+  status: fetched
+  file_count: 17
+  size: 61.3KB
+  last_updated: 2026-01-01 07:30
 - name: cypress
   description: cypress from GitHub
   path: docs/github-scraped/cypress/
   status: fetched
   file_count: 159
   size: 1.2MB
+  last_updated: 2026-01-01 07:30
+- name: decord
+  description: decord from GitHub
+  path: docs/github-scraped/decord/
+  status: fetched
+  file_count: 9
+  size: 15.6KB
   last_updated: 2026-01-01 07:30
 - name: discord-api
   description: discord-api from GitHub
@@ -2690,6 +2726,13 @@ github_scraped:
   file_count: 92
   size: 736.8KB
   last_updated: 2026-01-01 07:30
+- name: drawio
+  description: drawio from GitHub
+  path: docs/github-scraped/drawio/
+  status: fetched
+  file_count: 9
+  size: 16.2KB
+  last_updated: 2026-01-01 07:30
 - name: electron
   description: electron from GitHub
   path: docs/github-scraped/electron/
@@ -2703,6 +2746,13 @@ github_scraped:
   status: fetched
   file_count: 53
   size: 240.9KB
+  last_updated: 2026-01-01 07:30
+- name: faiss
+  description: faiss from GitHub
+  path: docs/github-scraped/faiss/
+  status: fetched
+  file_count: 57
+  size: 2.3MB
   last_updated: 2026-01-01 07:30
 - name: flagembedding
   description: flagembedding from GitHub
@@ -2731,6 +2781,13 @@ github_scraped:
   status: fetched
   file_count: 71
   size: 394.2KB
+  last_updated: 2026-01-01 07:30
+- name: llama-cpp
+  description: llama-cpp from GitHub
+  path: docs/github-scraped/llama-cpp/
+  status: fetched
+  file_count: 196
+  size: 974.6KB
   last_updated: 2026-01-01 07:30
 - name: llmware
   description: llmware from GitHub
@@ -2774,12 +2831,40 @@ github_scraped:
   file_count: 17
   size: 40.8KB
   last_updated: 2026-01-01 07:30
+- name: opensearch
+  description: opensearch from GitHub
+  path: docs/github-scraped/opensearch/
+  status: fetched
+  file_count: 1606
+  size: 11.1MB
+  last_updated: 2026-01-01 07:30
+- name: penpot
+  description: penpot from GitHub
+  path: docs/github-scraped/penpot/
+  status: fetched
+  file_count: 30
+  size: 224.9KB
+  last_updated: 2026-01-01 07:30
+- name: platformio
+  description: platformio from GitHub
+  path: docs/github-scraped/platformio/
+  status: fetched
+  file_count: 1882
+  size: 7.7MB
+  last_updated: 2026-01-01 07:30
 - name: prompt-flow
   description: prompt-flow from GitHub
   path: docs/github-scraped/prompt-flow/
   status: fetched
   file_count: 98
   size: 515.7KB
+  last_updated: 2026-01-01 07:30
+- name: qwen3-embedding
+  description: qwen3-embedding from GitHub
+  path: docs/github-scraped/qwen3-embedding/
+  status: fetched
+  file_count: 23
+  size: 45.2KB
   last_updated: 2026-01-01 07:30
 - name: raspberrypi
   description: raspberrypi from GitHub
@@ -2858,12 +2943,33 @@ github_scraped:
   file_count: 81
   size: 184.5KB
   last_updated: 2026-01-01 07:30
+- name: visx
+  description: visx from GitHub
+  path: docs/github-scraped/visx/
+  status: fetched
+  file_count: 46
+  size: 238.9KB
+  last_updated: 2026-01-01 07:30
 - name: vllm
   description: vllm from GitHub
   path: docs/github-scraped/vllm/
   status: fetched
   file_count: 173
   size: 1.1MB
+  last_updated: 2026-01-01 07:30
+- name: whisper
+  description: whisper from GitHub
+  path: docs/github-scraped/whisper/
+  status: fetched
+  file_count: 5
+  size: 30.2KB
+  last_updated: 2026-01-01 07:30
+- name: xtermjs
+  description: xtermjs from GitHub
+  path: docs/github-scraped/xtermjs/
+  status: fetched
+  file_count: 22
+  size: 62.8KB
   last_updated: 2026-01-01 07:30
 web_scraped:
 - name: aframe-react
@@ -2879,6 +2985,13 @@ web_scraped:
   status: fetched
   file_count: 1
   size: 115.6KB
+  last_updated: 2026-01-01 07:30
+- name: clip
+  description: clip documentation
+  path: docs/web-scraped/clip/
+  status: fetched
+  file_count: 5
+  size: 48.2KB
   last_updated: 2026-01-01 07:30
 - name: dayjs
   description: dayjs documentation
