@@ -6,15 +6,14 @@
 - [Service Providers](#service-providers)
 - [Resources](#resources)
     - [Configuration](#configuration)
-    - [Routes](#routes)
     - [Migrations](#migrations)
+    - [Routes](#routes)
     - [Language Files](#language-files)
     - [Views](#views)
     - [View Components](#view-components)
     - ["About" Artisan Command](#about-artisan-command)
 - [Commands](#commands)
     - [Optimize Commands](#optimize-commands)
-    - [Reload Commands](#reload-commands)
 - [Public Assets](#public-assets)
 - [Publishing File Groups](#publishing-file-groups)
 
@@ -124,7 +123,7 @@ The `mergeConfigFrom` method accepts the path to your package's configuration fi
 
 ```php
 /**
- * Register any package services.
+ * Register any application services.
  */
 public function register(): void
 {
@@ -325,7 +324,7 @@ Blade will automatically detect the class that's linked to this component by pas
 <a name="anonymous-components"></a>
 #### Anonymous Components
 
-If your package contains anonymous components, they must be placed within a `components` directory of your package's "views" directory (as specified by the [loadViewsFrom method](#views)). Then, you may render them by prefixing the component name with the package's view namespace:
+If your package contains anonymous components, they must be placed within a `components` directory of your package's "views" directory (as specified by the [`loadViewsFrom` method](#views)). Then, you may render them by prefixing the component name with the package's view namespace:
 
 ```blade
 <x-courier::alert />
@@ -340,7 +339,7 @@ Laravel's built-in `about` Artisan command provides a synopsis of the applicatio
 use Illuminate\Foundation\Console\AboutCommand;
 
 /**
- * Bootstrap any package services.
+ * Bootstrap any application services.
  */
 public function boot(): void
 {
@@ -374,7 +373,7 @@ public function boot(): void
 <a name="optimize-commands"></a>
 ### Optimize Commands
 
-Laravel's [optimize command](/docs/{{version}}/deployment#optimization) caches the application's configuration, events, routes, and views. Using the `optimizes` method, you may register your package's own Artisan commands that should be invoked when the `optimize` and `optimize:clear` commands are executed:
+Laravel's [`optimize` command](/docs/{{version}}/deployment#optimization) caches the application's configuration, events, routes, and views. Using the `optimizes` method, you may register your package's own Artisan commands that should be invoked when the `optimize` and `optimize:clear` commands are executed:
 
 ```php
 /**
@@ -387,23 +386,6 @@ public function boot(): void
             optimize: 'package:optimize',
             clear: 'package:clear-optimizations',
         );
-    }
-}
-```
-
-<a name="reload-commands"></a>
-### Reload Commands
-
-Laravel's [reload command](/docs/{{version}}/deployment#reloading-services) terminates any running services so they can be automatically restarted by a system process monitor. Using the `reloads` method, you may register your package's own Artisan commands that should be invoked when the `reload` command is executed:
-
-```php
-/**
- * Bootstrap any package services.
- */
-public function boot(): void
-{
-    if ($this->app->runningInConsole()) {
-        $this->reloads('package:reload');
     }
 }
 ```
@@ -456,10 +438,4 @@ Now your users may publish these groups separately by referencing their tag when
 
 ```shell
 php artisan vendor:publish --tag=courier-config
-```
-
-Your users can also publish all publishable files defined by your package's service provider using the `--provider` flag:
-
-```shell
-php artisan vendor:publish --provider="Your\Package\ServiceProvider"
 ```

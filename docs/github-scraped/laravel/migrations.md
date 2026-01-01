@@ -134,24 +134,6 @@ public function up(): void
 }
 ```
 
-<a name="skipping-migrations"></a>
-#### Skipping Migrations
-
-Sometimes a migration might be meant to support a feature that is not yet active and you do not want it to run yet. In this case you may define a `shouldRun` method on the migration. If the `shouldRun` method returns `false`, the migration will be skipped:
-
-```php
-use App\Models\Flight;
-use Laravel\Pennant\Feature;
-
-/**
- * Determine if this migration should run.
- */
-public function shouldRun(): bool
-{
-    return Feature::active(Flight::class);
-}
-```
-
 <a name="running-migrations"></a>
 ## Running Migrations
 
@@ -161,7 +143,7 @@ To run all of your outstanding migrations, execute the `migrate` Artisan command
 php artisan migrate
 ```
 
-If you would like to see which migrations have already run and which are still pending, you may use the `migrate:status` Artisan command:
+If you would like to see which migrations have run thus far, you may use the `migrate:status` Artisan command:
 
 ```shell
 php artisan migrate:status
@@ -173,7 +155,6 @@ If you would like to see the SQL statements that will be executed by the migrati
 php artisan migrate --pretend
 ```
 
-<a name="isolating-migration-execution"></a>
 #### Isolating Migration Execution
 
 If you are deploying your application across multiple servers and running migrations as part of your deployment process, you likely do not want two servers attempting to migrate the database at the same time. To avoid this, you may use the `isolated` option when invoking the `migrate` command.
@@ -553,7 +534,6 @@ The schema builder blueprint offers a variety of methods that correspond to the 
 
 </div>
 
-<a name="relationship-method-list"></a>
 #### Relationship Types
 
 <div class="collection-method-list" markdown="1">
@@ -686,14 +666,6 @@ The `enum` method creates a `ENUM` equivalent column with the given valid values
 
 ```php
 $table->enum('difficulty', ['easy', 'hard']);
-```
-
-Of course, you may use the `Enum::cases()` method instead of manually defining an array of allowed values:
-
-```php
-use App\Enums\Difficulty;
-
-$table->enum('difficulty', Difficulty::cases());
 ```
 
 <a name="column-method-float"></a>

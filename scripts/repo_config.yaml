@@ -110,6 +110,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Laravel"
+    description: "Laravel - PHP framework with elegant middleware system for HTTP request handling"
+    repo_url: "https://github.com/laravel/docs.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/laravel"
+    branch: "master"
+
   - name: "Llamafile"
     description: "Llamafile - Mozilla project for single-file executables for running LLMs locally without dependencies using Cosmopolitan Libc"
     repo_url: "https://github.com/mozilla-ai/llamafile.git"
