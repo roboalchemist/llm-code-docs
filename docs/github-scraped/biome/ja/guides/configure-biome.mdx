@@ -1,0 +1,269 @@
+---
+title: Biomeの設定
+description: Biomeの設定がどのように機能するかを学びます。
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+このガイドでは、Biomeの設定方法を理解するために役立ちます。
+Biomeの設定ファイルの構成と、Biomeがどのように設定を解決するかを説明します。
+あなたがすでに設定方法について詳しい場合は、利用可能なすべてのオプションの詳細が記載された[設定リファレンス](/reference/configuration/)を参照してください。
+
+Biomeでは、CLIのオプションか `biome.json` または `biome.jsonc` の設定ファイルを使って動作をカスタマイズできます。
+設定ファイルをそれぞれのプロジェクトに作成することを推奨しています。
+これにより、CLIおよびBiomeと連携したエディタにおいてチームのメンバが同じ設定を使うことを保証できます。
+設定ファイルで利用可能なオプションの多くはCLIでも利用できます。
+
+## 設定ファイルの構成
+
+Biomeの設定ファイルは `biome.json` または `biome.jsonc` という名前です。通常、プロジェクトの `package.json` の隣、プロジェクトのルートフォルダに配置されます。
+
+Biomeはツールチェーンであるため、設定は提供されるツールごとに整理されています。
+現時点では、Biomeはフォーマッタ、リンタ、アシストの3つのツールを提供しています。
+これらのツールはデフォルトですべて有効になっています。
+`<tool>.enabled` フィールドによっていくつかを無効にできます：
+
+```json title="biome.json"
+{
+  "$schema": "https://biomejs.dev/schemas/2.0.5/schema.json",
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": false
+  },
+  "assist": {
+    "enabled": false
+  }
+}
+```
+
+2つ以上の言語に適用されるオプションは対応するツールのフィールドの中に配置されています。
+言語に固有のツールのオプションは `<language>.<tool>` の下に配置されています。
+特定の言語について一般のオプションを上書きすることもできます。
+また、言語によってツールを有効または無効にすることもできます。
+以下の例では、一般のオプション `formatter.indentStyle` と `formatter.lineWidth` をすべての言語に設定しています。
+加えて、`javascript.formatter` の中ではJavaScript固有のオプション `quoteStyle` を設定し、`formatter.lineWidth` を上書きしています。
+JSONファイルについてはフォーマッタを無効にしました。
+
+```json5 title="biome.jsonc"
+{
+  "formatter": {
+    "indentStyle": "space", // デフォルトは `tab`
+    "lineWidth": 100 // デフォルトは `80`
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single", // デフォルトは `double`
+      "lineWidth": 120 // `formatter.lineWidth` を上書き
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": false
+    }
+  }
+}
+```
+
+:::note
+Biomeでは、JavaScript言語のすべての種類を `javascript` と呼んでいます。
+これにはTypeScript、JSX、TSXを含みます。
+:::
+
+
+## 設定ファイルの解決
+
+Biomeは最も近い設定ファイルを見つけるために自動探索を利用します。
+作業ディレクトリとその親ディレクトリから `biome.json` または `biome.jsonc` ファイルを見つけます。
+いずれの設定も見つからない場合は、Biomeのデフォルトを適用します。
+`biome.json` と `biome.jsonc` の両方が同じフォルダにある場合は、`biome.json` を優先します。
+
+以下は例です：
+
+<FileTree>
+- app/
+  - backend/
+    - biome.json
+    - package.json
+  - frontend/
+    - legacy/
+      - package.json
+    - new/
+      - package.json
+    - biome.json
+</FileTree>
+
+
+- `app/backend/package.json` で実行されたBiomeのコマンドは `app/backend/biome.json` の設定ファイルを使います
+- `app/frontend/legacy/package.json` または `app/frontend/new/package.json` で実行されたBiomeのコマンドは
+  `app/frontend/biome.json` の設定ファイルを使います
+
+:::note
+Biome（v2.0.0以降）はネストされた `biome.json` ファイルをサポートしています。詳細については、[大規模プロジェクトでのBiomeの使用](/guides/big-projects#use-multiple-configuration-files)を参照してください。
+:::
+
+
+## 処理するファイルの指定
+
+CLI、設定ファイル、VCSなど、さまざまな方法を使用して処理するファイルやフォルダを制御できます。
+
+:::note
+デフォルトでは、Biomeは常に**保護されたファイル**と呼ばれるファイルを無視します。
+つまり、これらのファイルに対してBiomeが診断を出力することはありません。
+現時点では、以下のファイルが保護されています：
+
+- `composer.lock`
+- `npm-shrinkwrap.json`
+- `package-lock.json`
+- `yarn.lock`
+:::
+
+### CLIでファイルを指定する
+
+Biomeが処理するファイルやフォルダを制御する最初の方法は、CLIでそれらを列挙することです。
+以下のコマンドでは、`file1.js` と `src` フォルダ内のすべてのファイルのみをフォーマットします。フォルダは再帰的に走査されます。
+
+```shell
+biome format file1.js src/
+```
+
+:::caution
+コマンドラインで使用されるglobパターンはBiomeによって解釈されません。
+これらはシェルによって展開されます。
+一部のシェルは再帰的なglob `**` をサポートしていません。
+:::
+
+### 設定ファイルでファイルを制御する
+
+Biomeの設定ファイルを使用して、処理するファイルを絞り込むことができます。
+[`files.includes` フィールド](/reference/configuration/#filesincludes)を使用して、処理するファイルを明示的に列挙できます。
+`files.includes` は `src/**/*.js` などの[globパターン](/reference/configuration/#glob-syntax-reference)を受け入れます。
+`!` で始まるnegatedパターンを使用してファイルを除外できます。
+
+Biomeの設定ファイル内のパスとglobは、設定ファイルがあるフォルダを基準に解決されます。
+例外は、設定ファイルが別の設定ファイルによって[継承](/reference/configuration/#extends)されている場合です。
+
+`files.includes` はBiomeのすべてのツールに適用されます。つまり、ここで指定されたファイルは、特に指定しない限り、リンタ、フォーマッタ、アシストによって処理されます。
+個々のツールについては、`<tool>.includes` を使用してマッチするファイルをさらに絞り込むことができます。
+
+
+#### 設定ファイルでファイルを含める
+
+次のような設定を考えてみましょう。`src/` フォルダと `test/` フォルダ内のJavaScriptファイル（`.js`）のみを含め、名前に `.min.js` が含まれるファイルを無視したい場合：
+
+```json title="biome.json"
+{
+  "files": {
+    "includes": ["src/**/*.js", "test/**/*.js", "!**/*.min.js"]
+  },
+  "linter": {
+    "includes": ["**", "!test/**"]
+  }
+}
+```
+
+そして、以下のコマンドを実行します：
+
+```shell
+biome format test/
+```
+
+このコマンドは、`test/` フォルダから `.js` 拡張子で終わり、`.min.js` 拡張子で終わらないファイルをフォーマットします。
+
+フォルダがCLIに列挙されていないため、`src/` 内のファイルはフォーマットされません。
+
+次のコマンドを実行すると、`test/` フォルダ内のファイルはリンタで明示的に無視されているため、ファイルはリントされません。
+
+```shell
+biome lint test/
+```
+
+:::caution
+グローバルな `files.includes` は、より具体的な `<tool>.includes` フィールドとは若干異なるセマンティクスを持ちます。
+`files.includes` にマッチしないファイルやフォルダは、Biomeのすべてのツールから除外されます。
+つまり、ツール固有の `includes` フィールドは、`files.includes` にもマッチしないファイルとは決してマッチできません。
+:::
+
+#### 設定ファイルでファイルを除外する
+
+Biomeによって処理されないファイルやフォルダを除外したい場合は、`files.includes` 設定を使用し、先頭に `!` を付けたnegatedパターンを使用できます。
+
+negatedされたglobを列挙する前に、**それらの前に `**` パターンを付ける必要があります**。
+
+次の例では、すべてのファイルを含めるようBiomeに指示しますが、任意の `dist/` フォルダ内のファイルと、`.generated.js` で終わるファイルは除外します：
+
+```json title="biome.json"
+{
+  "files": {
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/*.generated.js"
+    ]
+  }
+}
+```
+
+
+### VCSでファイルを制御する
+
+[VCSで無視されたファイルを無視する](/guides/integrate-in-vcs#use-the-ignore-file)こともできます。
+
+
+## 既知のファイル
+
+拡張子ではなくファイルの名前に基づいて特別に扱われる、いくつかの既知のファイルが存在します。
+現在は既知のファイルはJSONライクなファイルのみですが、新たなパーサをサポートした場合はリストを拡張して他の種類も含める可能性があります。
+
+以下のファイルは `JSON` ファイルとして、オプション `json.parser.allowComments` と `json.parser.allowTrailingCommas` を `false` にした状態でパースされます。
+
+- `.all-contributorsrc`
+- `.arcconfig`
+- `.auto-changelog`
+- `.bowerrc`
+- `.c8rc`
+- `.htmlhintrc`
+- `.imgbotconfig`
+- `.jslintrc`
+- `.nycrc`
+- `.tern-config`
+- `.tern-project`
+- `.vuerc`
+- `.watchmanconfig`
+- `mcmod.info`
+
+以下のファイルは `JSON` ファイルとして、オプション `json.parser.allowComments` を `true` に、`json.parser.allowTrailingCommas` を `false` にした状態でパースされます。
+これは、これらのファイルを使用するツールがコメントの削除のみを行うためです。
+
+- `.ember-cli`
+- `.eslintrc.json`
+- `.jscsrc`
+- `.jshintrc`
+- `tslint.json`
+- `turbo.json`
+
+以下のファイルは `JSON` ファイルとして、オプション `json.parser.allowComments` と `json.parser.allowTrailingCommas` を `true` にした状態でパースされます。
+これは、これらのファイルを使用するツールがそのような設定を受け入れるようになっているためです。
+
+- `.babelrc`
+- `.babelrc.json`
+- `.devcontainer.json`
+- `.hintrc`
+- `.hintrc.json`
+- `.oxlintrc.json`
+- `.swcrc`
+- `api-documenter.json`
+- `api-extractor.json`
+- `babel.config.json`
+- `deno.json`
+- `devcontainer.json`
+- `dprint.json`
+- `jsconfig.json`
+- `jsr.json`
+- `language-configuration.json`
+- `nx.json`
+- `project.json`
+- `tsconfig.json`
+- `typedoc.json`
+- `typescript.json`

@@ -1,0 +1,89 @@
+---
+title: 手動インストール
+description: Biomeを手動でインストールする
+---
+
+import { Code } from '@astrojs/starlight/components';
+import { getLatestVersion } from "@biomejs/version-utils";
+export const version = await getLatestVersion("stable");
+
+もしあなたがNode.jsやnpm（あるいは他のパッケージマネージャー）を使用してない場合、代わりにBiomeのスタンドアロンなCLIバイナリを使用できます。
+言い換えれば、`package.json` を持たずにBiomeを利用できます。
+
+:::note
+すでにnpmや他のパッケージマネージャーを使用している場合は、パッケージマネージャーを使用することがBiomeの[推奨されるインストール方法](/ja/guides/getting-started)です。
+慣れているツールの利用は、インストールや更新を簡単にします。
+:::
+
+## サポートされるプラットフォーム
+
+Biomeを動作させるためには、プラットフォームに適したバイナリを選択する必要があります。次の表を参考にしてください。
+
+| CPU アーキテクチャ | Windows       | macOS                        | Linux         | Linux (musl)       |
+| ------------------ | ------------- | ---------------------------- | ------------- | ------------------ |
+| `arm64`            | `win32-arm64` | `darwin-arm64` (M1以降)      | `linux-arm64` | `linux-arm64-musl` |
+| `x64`              | `win32-x64`   | `darwin-x64`                 | `linux-x64`   | `linux-x64-musl`   |
+
+:::note
+Windows Subsystem for Linux (WSL) の場合は、Linux版を使用してください。
+:::
+
+## Homebrew
+
+BiomeはmacOSとLinuxユーザー向けに [Homebrew formula](https://formulae.brew.sh/formula/biome) から利用可能です。
+
+```shell
+brew install biome
+```
+
+## Docker
+
+Biomeはバージョン `v1.7.0` 移行の各バージョンについて **amd64** および **arm64** アーキテクチャをサポートした
+[公式のDockerイメージ](https://github.com/biomejs/docker/pkgs/container/biome) を公開しています。
+
+```
+ghcr.io/biomejs/biome:{major}
+ghcr.io/biomejs/biome:{major}.{minor}
+ghcr.io/biomejs/biome:{major}.{minor}.{patch}
+```
+
+以下はDockerイメージを利用するいくつかの例です：
+
+:::note
+デフォルトの作業ディレクトリはDockerイメージ内の `/code` です。
+:::
+
+```shell
+# ファイルをリントする
+docker run -v $(pwd):/code ghcr.io/biomejs/biome lint
+docker run -v $(pwd):/code ghcr.io/biomejs/biome lint --write
+
+# ファイルをフォーマットする
+docker run -v $(pwd):/code ghcr.io/biomejs/biome format
+docker run -v $(pwd):/code ghcr.io/biomejs/biome format --write
+```
+
+## 公開されたバイナリを利用する
+
+Biomeをインストールするには、GitHub上の[最新のCLIリリース](https://github.com/biomejs/biome/releases) からプラットフォームに合った実行可能ファイルを取得し、実行権限を与えてください。
+
+{/* <!-- textlint-disable --> */}
+<Code lang="shell" code={`
+# macOS arm (M1以降)
+curl -L https://github.com/biomejs/biome/releases/download/@biomejs/biome@${version}/biome-darwin-arm64 -o biome
+chmod +x biome
+
+# Linux (x86_64)
+curl -L https://github.com/biomejs/biome/releases/download/@biomejs/biome@${version}/biome-linux-x64 -o biome
+chmod +x biome
+
+# Windows (x86_64, Powershell)
+Invoke-WebRequest -Uri "https://github.com/biomejs/biome/releases/download/@biomejs/biome@${version}/biome-win32-x64.exe" -OutFile "biome.exe"
+`} />
+{/* <!-- textlint-enable --> */}
+
+これで、 `./biome` を実行することでBiomeを使用できます。
+
+## 次のステップ
+
+[はじめる](/ja/guides/getting-started/) を参照してください。

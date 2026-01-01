@@ -61,6 +61,13 @@ repositories:
     target_folder: "docs/github-scraped/buildbuddy"
     branch: "master" # Default branch to use
 
+  - name: "Biome"
+    description: "Biome - Fast formatter and linter for JavaScript, TypeScript, JSON, and more with ESLint and Prettier compatibility"
+    repo_url: "https://github.com/biomejs/website.git"
+    source_folder: "src/content/docs"
+    target_folder: "docs/github-scraped/biome"
+    branch: "main"
+
   - name: "Celery"
     description: "Celery - Distributed task queue library for Python with support for message brokers and result backends"
     repo_url: "https://github.com/celery/celery.git"
