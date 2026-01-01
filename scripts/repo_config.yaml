@@ -96,6 +96,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Langroid"
+    description: "Langroid - Multi-agent LLM programming framework with message-passing architecture"
+    repo_url: "https://github.com/langroid/langroid.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/langroid"
+    branch: "main"
+
   - name: "Jest"
     description: "Jest - Delightful JavaScript testing framework by Meta with zero config and built-in code coverage"
     repo_url: "https://github.com/jestjs/jest.git"
