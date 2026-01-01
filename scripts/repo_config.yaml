@@ -19,6 +19,13 @@ repositories:
     target_folder: "docs/github-scraped/circuitpython"
     branch: "main" # Default branch to use
 
+  - name: "Semantic Kernel"
+    description: "Microsoft's SDK for integrating LLMs into applications with orchestration"
+    repo_url: "https://github.com/MicrosoftDocs/semantic-kernel-docs.git"
+    source_folder: "semantic-kernel"
+    target_folder: "docs/github-scraped/semantic-kernel"
+    branch: "main"
+
   - name: "TensorRT-LLM"
     description: "NVIDIA TensorRT-LLM - Easy-to-use Python API for defining LLMs with optimizations for efficient inference on NVIDIA GPUs"
     repo_url: "https://github.com/NVIDIA/TensorRT-LLM.git"
