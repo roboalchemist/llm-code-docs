@@ -572,6 +572,13 @@ repositories:
     target_folder: "docs/github-scraped/mermaid"
     branch: "develop"
 
+  - name: "Pillow"
+    description: "Pillow - Python Imaging Library (PIL Fork) for image processing, manipulation, and filtering"
+    repo_url: "https://github.com/python-pillow/Pillow.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/pillow"
+    branch: "main"
+
   - name: "React Router"
     description: "React Router - Declarative routing library for React with dynamic route matching, location transition handling, and lazy code loading"
     repo_url: "https://github.com/remix-run/react-router.git"
