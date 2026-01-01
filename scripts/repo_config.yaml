@@ -383,6 +383,13 @@ repositories:
     target_folder: "docs/github-scraped/d3"
     branch: "main"
 
+  - name: "Discord-API"
+    description: "Discord API - Official REST and Gateway API documentation for building Discord bots and applications"
+    repo_url: "https://github.com/discord/discord-api-docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/discord-api"
+    branch: "main"
+
   - name: "decord"
     description: "Decord - Efficient video reader library with hardware-accelerated decoding for deep learning"
     repo_url: "https://github.com/dmlc/decord.git"
