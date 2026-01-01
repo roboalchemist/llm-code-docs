@@ -348,6 +348,13 @@ repositories:
     target_folder: "docs/github-scraped/drawio"
     branch: "master"
 
+  - name: "Electron"
+    description: "Electron - Desktop application framework for building cross-platform applications with web technologies (HTML, CSS, JavaScript, Node.js)"
+    repo_url: "https://github.com/electron/electron.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/electron"
+    branch: "main"
+
   - name: "Express"
     description: "Express.js - Fast, unopinionated, minimalist web framework for Node.js"
     repo_url: "https://github.com/expressjs/expressjs.com.git"
