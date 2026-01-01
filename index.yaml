@@ -8,14 +8,14 @@
 
 metadata:
   last_updated: 2026-01-01 07:59
-  total_sources: 428
-  total_fetched: 428
+  total_sources: 412
+  total_fetched: 412
   llms_txt_count: 328
   llms_txt_fetched: 328
-  github_count: 60
-  github_fetched: 60
-  web_scraped_count: 40
-  web_scraped_fetched: 40
+  github_count: 46
+  github_fetched: 46
+  web_scraped_count: 38
+  web_scraped_fetched: 38
 llms_txt:
 - name: activepieces
   description: Platform
@@ -368,6 +368,14 @@ llms_txt:
   status: fetched
   file_count: 106
   size: 1.3MB
+  last_updated: 2026-01-01 07:59
+- name: bitsandbytes
+  description: FAQs
+  url: https://bitsandbytes.com/
+  path: docs/llms-txt/bitsandbytes/
+  status: fetched
+  file_count: 25
+  size: 379.4KB
   last_updated: 2026-01-01 07:59
 - name: braintree
   description: braintree documentation
@@ -2347,14 +2355,6 @@ llms_txt:
   file_count: 1
   size: 1.0MB
   last_updated: 2026-01-01 07:59
-- name: together
-  description: 'Quickstart: Flux LoRA Inference'
-  url: https://together.com/
-  path: docs/llms-txt/together/
-  status: fetched
-  file_count: 143
-  size: 2.5MB
-  last_updated: 2026-01-01 07:59
 - name: traceloop
   description: Get costs by property
   url: https://traceloop.com/
@@ -2672,13 +2672,6 @@ github_scraped:
   file_count: 179
   size: 1.7MB
   last_updated: 2026-01-01 07:59
-- name: ariakit
-  description: ariakit from GitHub
-  path: docs/github-scraped/ariakit/
-  status: fetched
-  file_count: 176
-  size: 474.1KB
-  last_updated: 2026-01-01 07:59
 - name: autogptq
   description: autogptq from GitHub
   path: docs/github-scraped/autogptq/
@@ -2714,13 +2707,6 @@ github_scraped:
   file_count: 204
   size: 957.7KB
   last_updated: 2026-01-01 07:59
-- name: chrome-devtools-mcp
-  description: chrome-devtools-mcp from GitHub
-  path: docs/github-scraped/chrome-devtools-mcp/
-  status: fetched
-  file_count: 8
-  size: 78.1KB
-  last_updated: 2026-01-01 07:59
 - name: coqui-tts
   description: coqui-tts from GitHub
   path: docs/github-scraped/coqui-tts/
@@ -2742,13 +2728,6 @@ github_scraped:
   file_count: 159
   size: 1.2MB
   last_updated: 2026-01-01 07:59
-- name: decord
-  description: decord from GitHub
-  path: docs/github-scraped/decord/
-  status: fetched
-  file_count: 9
-  size: 15.6KB
-  last_updated: 2026-01-01 07:59
 - name: discord-api
   description: discord-api from GitHub
   path: docs/github-scraped/discord-api/
@@ -2762,13 +2741,6 @@ github_scraped:
   status: fetched
   file_count: 92
   size: 736.8KB
-  last_updated: 2026-01-01 07:59
-- name: drawio
-  description: drawio from GitHub
-  path: docs/github-scraped/drawio/
-  status: fetched
-  file_count: 9
-  size: 16.2KB
   last_updated: 2026-01-01 07:59
 - name: electron
   description: electron from GitHub
@@ -2797,13 +2769,6 @@ github_scraped:
   status: fetched
   file_count: 53
   size: 240.9KB
-  last_updated: 2026-01-01 07:59
-- name: faiss
-  description: faiss from GitHub
-  path: docs/github-scraped/faiss/
-  status: fetched
-  file_count: 57
-  size: 2.3MB
   last_updated: 2026-01-01 07:59
 - name: flagembedding
   description: flagembedding from GitHub
@@ -2839,13 +2804,6 @@ github_scraped:
   status: fetched
   file_count: 71
   size: 394.2KB
-  last_updated: 2026-01-01 07:59
-- name: llama-cpp
-  description: llama-cpp from GitHub
-  path: docs/github-scraped/llama-cpp/
-  status: fetched
-  file_count: 196
-  size: 974.6KB
   last_updated: 2026-01-01 07:59
 - name: llamafile
   description: llamafile from GitHub
@@ -2896,27 +2854,6 @@ github_scraped:
   file_count: 17
   size: 40.8KB
   last_updated: 2026-01-01 07:59
-- name: opensearch
-  description: opensearch from GitHub
-  path: docs/github-scraped/opensearch/
-  status: fetched
-  file_count: 1606
-  size: 11.1MB
-  last_updated: 2026-01-01 07:59
-- name: penpot
-  description: penpot from GitHub
-  path: docs/github-scraped/penpot/
-  status: fetched
-  file_count: 30
-  size: 224.9KB
-  last_updated: 2026-01-01 07:59
-- name: platformio
-  description: platformio from GitHub
-  path: docs/github-scraped/platformio/
-  status: fetched
-  file_count: 1882
-  size: 7.7MB
-  last_updated: 2026-01-01 07:59
 - name: prompt-flow
   description: prompt-flow from GitHub
   path: docs/github-scraped/prompt-flow/
@@ -2930,13 +2867,6 @@ github_scraped:
   status: fetched
   file_count: 4
   size: 41.7KB
-  last_updated: 2026-01-01 07:59
-- name: qwen3-embedding
-  description: qwen3-embedding from GitHub
-  path: docs/github-scraped/qwen3-embedding/
-  status: fetched
-  file_count: 23
-  size: 45.2KB
   last_updated: 2026-01-01 07:59
 - name: raspberrypi
   description: raspberrypi from GitHub
@@ -2979,13 +2909,6 @@ github_scraped:
   status: fetched
   file_count: 69
   size: 900.3KB
-  last_updated: 2026-01-01 07:59
-- name: rocm
-  description: rocm from GitHub
-  path: docs/github-scraped/rocm/
-  status: fetched
-  file_count: 138
-  size: 1.8MB
   last_updated: 2026-01-01 07:59
 - name: semantic-kernel
   description: semantic-kernel from GitHub
@@ -3036,33 +2959,12 @@ github_scraped:
   file_count: 81
   size: 184.5KB
   last_updated: 2026-01-01 07:59
-- name: visx
-  description: visx from GitHub
-  path: docs/github-scraped/visx/
-  status: fetched
-  file_count: 46
-  size: 238.9KB
-  last_updated: 2026-01-01 07:59
 - name: vllm
   description: vllm from GitHub
   path: docs/github-scraped/vllm/
   status: fetched
   file_count: 173
   size: 1.1MB
-  last_updated: 2026-01-01 07:59
-- name: whisper
-  description: whisper from GitHub
-  path: docs/github-scraped/whisper/
-  status: fetched
-  file_count: 5
-  size: 30.2KB
-  last_updated: 2026-01-01 07:59
-- name: xtermjs
-  description: xtermjs from GitHub
-  path: docs/github-scraped/xtermjs/
-  status: fetched
-  file_count: 22
-  size: 62.8KB
   last_updated: 2026-01-01 07:59
 web_scraped:
 - name: aframe-react
@@ -3184,13 +3086,6 @@ web_scraped:
   file_count: 5
   size: 54.4KB
   last_updated: 2026-01-01 07:59
-- name: lepton-ai
-  description: lepton-ai documentation
-  path: docs/web-scraped/lepton-ai/
-  status: fetched
-  file_count: 19
-  size: 77.0KB
-  last_updated: 2026-01-01 07:59
 - name: linaria
   description: linaria documentation
   path: docs/web-scraped/linaria/
@@ -3295,13 +3190,6 @@ web_scraped:
   status: fetched
   file_count: 3
   size: 18.1KB
-  last_updated: 2026-01-01 07:59
-- name: spotify
-  description: spotify documentation
-  path: docs/web-scraped/spotify/
-  status: fetched
-  file_count: 11
-  size: 121.5KB
   last_updated: 2026-01-01 07:59
 - name: squeezellm
   description: squeezellm documentation
