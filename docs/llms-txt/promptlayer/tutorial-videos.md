@@ -1,0 +1,87 @@
+# Source: https://docs.promptlayer.com/tutorial-videos.md
+
+# Tutorial Videos
+
+These tutorial videos will walk you through key features and help you get up and running quickly.
+
+Let's start with a quick tour of PromptLayer in action: prompt management, testing, deployment, agents, and evaluations all in one workflow.
+
+<iframe src="https://www.loom.com/embed/d06707195f0d433bb970b304c5a4bdc5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+Read more about the [Bakery Demo on our blog](https://blog.promptlayer.com/promptlayer-bakery-demo/) to learn how we built Artificial Indulgence and how it showcases PromptLayer's features in action.
+
+## Prompt Management
+
+### Creating Your First Prompt
+
+Learn how to create structured templates with variables that you can reuse across your applications.
+
+<iframe src="https://www.loom.com/embed/581ce05cacf44f27ae313e2c35b8eb7d?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+### Deploying Prompts to Production
+
+Learn how to safely deploy prompt versions to production and staging environments.
+
+<iframe src="https://www.loom.com/embed/c11824eaf40e4019b5b65a0a6f46db8c?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+## Evaluation & Testing
+
+### Building Your First Evaluation
+
+Create evaluations that are use-case specific and help prevent prompt regression.
+
+<iframe src="https://www.loom.com/embed/b8a270f1f643477dae44a8d93a8ca0fe?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+### Choosing the Best AI Model
+
+Learn how to test your use cases across multiple models to find the best fit.
+
+<iframe src="https://www.loom.com/embed/6addf8673d4f440ca20964519f5f1047?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+### Testing With Production Data
+
+Build comprehensive test sets from your historical data for effective evaluation.
+
+<iframe src="https://www.loom.com/embed/6f604ce9c4604c35822debdf8b326ec3?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+### Conversation Simulation Evals
+
+Learn how to evaluate conversational AI systems using simulated user interactions.
+
+<iframe src="https://www.youtube.com/embed/VgsExVpD8_E" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+## Agents & Workflows
+
+### Building Multi-Step Agents
+
+Chain multiple LLM calls together to tackle complex problems.
+
+<iframe src="https://www.loom.com/embed/2a6e241ccce94c5eb39e4525d8bc594a?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+## Logging and Optimization
+
+### Monitoring LLM Requests
+
+Track and analyze your LLM requests in real-time to understand usage patterns, monitor performance, and debug issues across your applications.
+
+<iframe src="https://www.loom.com/embed/e151062563a44ac6bcf12a29c2cf2266?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+### A/B Testing for Prompts
+
+Systematically compare different prompt versions to make data-driven decisions.
+
+<iframe src="https://www.loom.com/embed/10005ead471d493da90ee2033268b2a3?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameBorder="0" allowFullScreen={true} style={{width: "100%", height: "400px"}} />
+
+## Additional Resources
+
+For more in-depth information, check out our comprehensive documentation:
+
+* [Prompt Management Guide](https://docs.promptlayer.com/onboarding-guides/prompt-management)
+* [Evaluation Guide](https://docs.promptlayer.com/onboarding-guides/evaluation)
+* [Agentic Workflows Guide](https://docs.promptlayer.com/onboarding-guides/agentic-workflows)
+* [Observability Guide](https://docs.promptlayer.com/onboarding-guides/observability)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

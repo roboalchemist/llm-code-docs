@@ -1,0 +1,226 @@
+# Source: https://docs.promptlayer.com/running-requests/promptlayer-run-agent.md
+
+# Run Agent
+
+The `run_workflow()` method initiates the execution of predefined Agents in PromptLayer, allowing you to start complex, multi-step sequences. For a comprehensive understanding of Agents, including their use cases, key concepts, and versioning, please refer to the [Agents documentation](/why-promptlayer/agents).
+
+## Basic Usage
+
+<CodeGroup>
+  ```python Python theme={null}
+  from promptlayer import PromptLayer
+
+  pl = PromptLayer(api_key="your_api_key")
+
+  response = pl.run_workflow(
+      workflow_name="Your Agent Name",
+      workflow_version=1
+  )
+
+  print(response)
+  ```
+
+  ```js JavaScript theme={null}
+  import { PromptLayer } from "promptlayer";
+
+  const pl = new PromptLayer({ apiKey: "your_api_key" });
+
+  const response = await pl.runWorkflow({
+    workflowName: "Your Agent Name",
+    workflowVersion: 1
+  });
+
+  console.log(response);
+  ```
+</CodeGroup>
+
+## Parameters
+
+* `workflow_name` / `workflowName` (str, required): The name of the Agent to run.
+* `input_variables` / `inputVariables` (Dict\[str, Any], optional): Variables to be used in the Agent.
+* `metadata` (Dict\[str, str], optional): Additional metadata for the Agent run.
+* `workflow_label_name` / `workflowLabelName` (str, optional): Label name for the Agent version.
+* `workflow_version` / `workflowVersion` (int, optional): Specific version number of the Agent to run.
+* `return_all_outputs` / `returnAllOutputs` (bool, optional): Whether to return all outputs from the Agent execution.
+
+## Return Value
+
+By default, when `return_all_outputs` / `returnAllOutputs` is `false`, the method returns only the final node’s output as a single value; when set to `true`, it returns a dictionary (Python) or object (JavaScript) containing detailed outputs (including status) for each node in the agent.
+
+### When `return_all_outputs` / `returnAllOutputs` is False (default):
+
+The method returns only the final node’s output as a single value. For example, if your output node produces False, the method simply returns:
+
+Example response:
+
+```python  theme={null}
+False
+```
+
+### When `return_all_outputs` / `returnAllOutputs` is True:
+
+You receive a dictionary (Python) or object (JavaScript) of all node outputs. Each key corresponds to a node in the workflow with details such as:
+
+* `status` (str): The execution status (e.g., `"SUCCESS"`, `"FAILED"`).
+* `value` (Any): The output (e.g., text, boolean).
+* `error_message` / `raw_error_message`: Error information, if any.
+* `is_output_node` (bool): Indicates whether this node is the designated “final output” node.
+
+Example response:
+
+```json  theme={null}
+{
+  "Node 1": {
+    "status": "SUCCESS",
+    "value": "First node",
+    "error_message": null,
+    "raw_error_message": null,
+    "is_output_node": false
+  },
+  "Node 2": {
+    "status": "FAILED",
+    "value": null,
+    "error_message": "Code execution failed: Traceback...",
+    "raw_error_message": {
+      "raw": "Code execution failed: Traceback..."
+    },
+    "is_output_node": true
+  }
+}
+```
+
+## Advanced Usage
+
+### Using Input Variables
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = pl.run_workflow(
+      workflow_name="Data Analysis Agent",
+      input_variables={"dataset_url": "https://example.com/data.csv"}
+  )
+  ```
+
+  ```js JavaScript theme={null}
+  const response = await pl.runWorkflow({
+    workflowName: "Data Analysis Agent",
+    inputVariables: { dataset_url: "https://example.com/data.csv" }
+  });
+  ```
+</CodeGroup>
+
+### Adding Metadata
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = pl.run_workflow(
+      workflow_name="Customer Service Agent",
+      metadata={"customer_id": "12345"}
+  )
+  ```
+
+  ```js JavaScript theme={null}
+  const response = await pl.runWorkflow({
+    workflowName: "Customer Service Agent",
+    metadata: { customer_id: "12345" }
+  });
+  ```
+</CodeGroup>
+
+### Using Agent Labels
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = pl.run_workflow(
+      workflow_name="Marketing Campaign Agent",
+      workflow_label_name="production"
+  )
+  ```
+
+  ```js JavaScript theme={null}
+  const response = await pl.runWorkflow({
+    workflowName: "Marketing Campaign Agent",
+    workflowLabelName: "production"
+  });
+  ```
+</CodeGroup>
+
+## Run Agents using the REST API
+
+**Step 1: Kick off the agent run**
+
+Start by making a request to ["POST /workflows/agentName/run"](/reference/run-workflow).
+
+This request requires:
+
+* `input_variables` – JSON object with the variables the agent needs
+* `metadata` – *optional* JSON for extra metadata
+* `return_all_outputs` – Set to `true` if you want to include all intermediate node results
+
+The response will contain a `workflow_version_execution_id` that you'll need for the next step.
+
+**Step 2: Poll until completion**
+
+After initiating the run, check for results using ["GET /workflow-version-execution-results"](http://localhost:3000/reference/workflow-version-execution-results).
+
+Include these query parameters:
+
+* `workflow_version_execution_id` – The ID received from step 1
+* `return_all_outputs` – Same setting as in the first request
+
+When polling (suggestion):
+
+* Check every **5000 ms**
+* A **200** status code means the run is complete, while **202** indicates it's still running
+* Consider timing out after about 10 minutes
+
+Depending on if you set `return_all_outputs` or not, you will either return the output value or all node values on completion.
+
+## Run Agents with Callback Webhooks
+
+Instead of polling for results, you can provide a `callback_url` when initiating the agent run. This is ideal for long-running agents and webhook-based integrations.
+
+**How it works:**
+
+1. **Make a single request** to ["POST /workflows/agentName/run"](/reference/run-workflow) with a `callback_url` parameter
+2. **Receive immediate response** with HTTP 202 (Accepted) and the `workflow_version_execution_id`
+3. **PromptLayer executes the agent** asynchronously in the background
+4. **Results are POSTed** to your callback URL when complete
+
+**Example request:**
+
+```json  theme={null}
+{
+  "input_variables": {
+    "query": "Analyze this dataset"
+  },
+  "return_all_outputs": true,
+  "callback_url": "https://hooks.zapier.com/your-callback-url"
+}
+```
+
+**Callback payload:**
+
+When the agent completes, PromptLayer will POST the execution results to your callback URL:
+
+```json  theme={null}
+{
+  "workflow_version_execution_id": 123,
+  "final_output": {
+    "Node Name": {
+      "status": "SUCCESS",
+      "value": "result",
+      "error_message": null,
+      "raw_error_message": null,
+      "is_output_node": true
+    }
+  }
+}
+```
+
+This approach eliminates the need for polling and handles timeouts gracefully, making it perfect for webhook-based integrations.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

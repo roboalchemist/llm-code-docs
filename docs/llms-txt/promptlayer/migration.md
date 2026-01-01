@@ -1,0 +1,97 @@
+# Source: https://docs.promptlayer.com/migration.md
+
+# Migration Guide
+
+PromptLayer takes less than 5 minutes to setup.
+
+* Sign up for an account at [www.promptlayer.com](http://www.promptlayer.com)
+* Grab an API key from PromptLayer. Find it in settings (*click the cog on the top right*).
+
+It's super easy to add PromptLayer to an existing project. Usually only takes one line.
+
+<CodeGroup>
+  ```python Python openai >= 1.0.0 theme={null}
+  # Make sure to `pip install promptlayer`
+  from promptlayer import PromptLayer
+  promptlayer_client = PromptLayer()
+
+  # Swap out your 'from openai import OpenAI'
+  OpenAI = promptlayer_client.openai.OpenAI
+
+  # Leave this
+  client = OpenAI()
+  ```
+
+  ```python Python openai < 1.0.0 theme={null}
+  # Make sure to `pip install promptlayer`
+  from promptlayer import PromptLayer
+  promptlayer_client = PromptLayer()
+
+  # Swap out your 'import openai'
+  openai = promptlayer_client.openai
+  ```
+
+  ```js JavaScript theme={null}
+  // Make sure to `npm install promptlayer`
+  import { PromptLayer } from "promptlayer";
+  const promptLayerClient = new PromptLayer();
+
+  // Swap out `import OpenAI from "openai"`
+  const OpenAI = promptLayerClient.OpenAI;
+
+  // Leave this
+  const openai = new OpenAI();
+  ```
+
+  ```python Python with LangChain theme={null}
+  # Make sure to `pip install promptlayer`
+  from langchain.callbacks import PromptLayerCallbackHandler
+
+  # Example using OpenAI completions
+  from langchain.llms import OpenAI
+  llm = OpenAI(
+      model_name="gpt-3.5-turbo-instruct",
+      callbacks=[PromptLayerCallbackHandler(pl_tags=["langchain"])]
+  )
+  llm("My name is")
+
+  # Example using OpenAI chat
+  from langchain.chat_models import ChatOpenAI
+  from langchain.schema import (SystemMessage, HumanMessage)
+  chat = ChatOpenAI(callbacks=[PromptLayerCallbackHandler(pl_tags=["langchain"])])
+  chat_llm([
+    SystemMessage(content="You are an AI assistant."),
+    HumanMessage(content="What's your name?")
+  ])
+  ```
+
+  ```js JS/TS with Langchain theme={null}
+  // Install with `npm install langchain`
+
+  // Using OpenAI completions
+  const { PromptLayerOpenAI } = require("langchain/llms/openai");
+  const llm = new PromptLayerOpenAI({
+    temperature: 0.9,
+    openAIApiKey: "YOUR-API-KEY", // Replace with your OpenAI API key
+    promptLayerApiKey: "YOUR-API-KEY", // Replace with your PromptLayer API key
+  });
+  llm.call("How do I use PromptLayer with OpenAIChat?").then(console.log);
+
+  // Using OpenAI chat
+  const { PromptLayerChatOpenAI } = require("langchain/chat_models/openai");
+  const { SystemChatMessage } = require("langchain/schema");
+  const chat = new PromptLayerChatOpenAI({
+      returnPromptLayerId: true,
+      openAIApiKey: "YOUR-API-KEY", // Replace with your OpenAI API key
+      promptLayerApiKey: "YOUR-API-KEY", // Replace with your PromptLayer API key
+      });
+  chat.generate([
+    [new SystemChatMessage("You are a helpful AI assistant."),],
+  ]).then(console.log);
+  ```
+</CodeGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

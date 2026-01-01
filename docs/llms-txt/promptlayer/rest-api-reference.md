@@ -1,0 +1,36 @@
+# Source: https://docs.promptlayer.com/reference/rest-api-reference.md
+
+# REST API Reference
+
+Right now, the primary way to access PromptLayer is through our Python wrapper library that can be installed with `pip install promptlayer`.
+
+The Python library is a wrapper over our REST API. If you use another language, like Javascript, just interact directly with the API.
+
+Here are the calls you can make via our REST API:
+
+1. [Get Prompt Template](/reference/templates-get)
+2. [Publish Prompt Template](/reference/templates-publish)
+3. [Get Prompt Template Labels](/reference/templates-labels-get)
+4. [Create Prompt Template Label](/reference/prompt-labels-create)
+5. [Move Prompt Template Labels](/reference/prompt-labels-patch)
+6. [Delete Prompt Template Label](/reference/prompt-labels-delete)
+7. [Track Score](/reference/track-score)
+8. [Track Prompt](/reference/track-prompt)
+9. [Track Group](/reference/track-group)
+10. [Track Metadata](/reference/track-metadata)
+11. [Get All Prompt Templates](/reference/list-prompt-templates)
+12. [List Datasets](/reference/list-datasets)
+13. [Create Dataset Group](/reference/create-dataset-group)
+14. [Create Dataset Version from File](/reference/create-dataset-version-from-file)
+15. [Create Dataset Version from Filter Params](/reference/create-dataset-version-from-filter-params)
+16. [Create Dataset from History](/reference/create-dataset-version-from-filter-params)
+17. [Create Evaluation Pipeline](/reference/create-reports)
+18. [Delete Reports by Name](/reference/delete-reports-by-name)
+19. [Get Agent Version Execution Results](/reference/workflow-version-execution-results)
+20. [Run Agent](/reference/run-workflow)
+21. [Create Spans Bulk](/reference/spans-bulk)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

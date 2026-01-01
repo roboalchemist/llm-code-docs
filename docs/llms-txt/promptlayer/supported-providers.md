@@ -1,0 +1,102 @@
+# Source: https://docs.promptlayer.com/features/supported-providers.md
+
+# Supported Providers
+
+Below is the list of LLM providers supported in PromptLayer along with key capability notes. For providers not listed or advanced deployments, see [Custom Providers](/features/custom-providers).
+
+## Provider Details
+
+### OpenAI
+
+* Chat Completions and Responses API are both supported.
+* Function/Tool Calling (including built-in Responses API tools: Web Search, File Search) — see [Tool Calling](/features/prompt-registry/tool-calling#built-in-tools-openai-responses-api).
+* JSON mode / structured outputs.
+* Vision models (e.g., `gpt-4-vision`) — see [FAQ: multimodal](/features/faq#does-promptlayer-support-multi-modal-image-models-like-gpt-4-vision).
+* Streaming via SDK (Python/JS).
+* Tip: You can also connect via [OpenRouter](/features/custom-providers#openrouter) as a custom provider to access many OpenAI-compatible models.
+
+### OpenAI Azure
+
+* Same usage as OpenAI but configured with Azure deployment settings.
+* Ensure deployment name, API version, and resource URL are correctly configured.
+* Most OpenAI features apply; some params differ per Azure config.
+
+### Anthropic
+
+* Tool Use (Anthropic Messages API).
+* Claude 3 family supports image inputs.
+* Streaming via SDK.
+* If you previously used "Anthropic Bedrock", migrate to the native Anthropic provider or to Claude via Amazon Bedrock.
+
+### Google (Gemini)
+
+* Multimodal support for images.
+* Use either the direct Google provider or Vertex AI based on your infrastructure preference.
+
+### Vertex AI
+
+* Gemini and Anthropic Claude served through Google Cloud's Vertex AI.
+* Configure project, region, and credentials as required by Vertex AI.
+
+### Amazon Bedrock
+
+* Access Anthropic Claude and Meta Llama (and other families) via AWS Bedrock.
+* Capabilities vary per model—some models may not support tools or certain parameters.
+
+### Mistral
+
+* Streaming supported; tool/function-call support depends on the specific model.
+
+### Cohere
+
+* Command/Command-R family supported.
+* Feature availability (streaming, tool use) depends on the chosen model.
+
+### Hugging Face
+
+* Evaluation support varies by model/task—text-generation models generally work best.
+* For endpoints with OpenAI-compatible shims, you can configure via a custom base URL.
+
+### Anthropic Bedrock (Deprecated)
+
+* This legacy integration is deprecated.
+* Use the native Anthropic provider, or access Claude via Amazon Bedrock with the Bedrock provider.
+
+## OpenAI-compatible Base URL Providers
+
+Many third‑party providers expose an OpenAI‑compatible API. You can connect any such provider by configuring a Provider Base URL that uses the OpenAI client. See [Custom Providers](/features/custom-providers) for more details.
+
+How to set up:
+
+1. Go to your workspace settings → "Provider Base URLs".
+2. Click "Create New" and configure:
+   * LLM Provider: OpenAI
+   * Base URL: the provider's endpoint (examples below)
+   * API Key: the provider's key
+3. Optional: Create Custom Models for a cleaner model dropdown in the Playground/Prompt Registry.
+
+Examples:
+
+* OpenRouter — Base URL: [https://openrouter.ai/api/v1](https://openrouter.ai/api/v1) (see [example](/features/custom-providers#openrouter))
+* Exa — Base URL: [https://api.exa.ai](https://api.exa.ai) (see [integration guide](/features/exa-integration))
+* xAI (Grok) — Base URL: [https://api.x.ai/v1](https://api.x.ai/v1) (see [integration guide](/features/xai-integration))
+* DeepSeek — Base URL: [https://api.deepseek.com](https://api.deepseek.com) (see [FAQ](/features/faq#does-promptlayer-support-deepseek-models))
+* Hugging Face gateways that offer OpenAI-compatible endpoints — use the gateway URL provided by your deployment
+
+Capabilities:
+
+* Works in Logs, Prompt Registry, and Playground.
+* Evaluations: supported when the provider's OpenAI-compat layer matches PromptLayer parameters; remove unsupported params if needed (e.g., some providers do not support "seed").
+* Tool/Function Calling and streaming availability depend on the provider/model.
+
+## Related Docs
+
+* [Custom Providers](/features/custom-providers)
+* [Tool Calling](/features/prompt-registry/tool-calling)
+* [Template Variables](/features/prompt-registry/template-variables)
+* [FAQ](/features/faq)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

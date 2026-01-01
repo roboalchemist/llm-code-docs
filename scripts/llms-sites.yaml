@@ -700,6 +700,9 @@ sites:
 - name: promptfoo
   base_url: https://www.promptfoo.dev/
   description: Promptfoo LLM testing framework
+- name: promptlayer
+  base_url: https://docs.promptlayer.com/
+  description: PromptLayer prompt versioning, logging, and A/B testing platform for LLMs
 - name: pydantic
   base_url: https://docs.pydantic.dev/latest/
   description: Pydantic Python data validation library with comprehensive docs and

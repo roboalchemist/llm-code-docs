@@ -1,0 +1,100 @@
+# Source: https://docs.promptlayer.com/features/prompt-history/request-id.md
+
+# Request IDs
+
+Every PromptLayer log has a unique PromptLayer Request ID (`pl_id`).
+
+All tracking in PromptLayer is based on the `pl_request_id`. This identifier is needed to enrich logs with [metadata](/features/prompt-history/metadata), [scores](/features/prompt-history/scoring-requests), [associated prompt templates](/features/prompt-history/tracking-templates), and more.
+
+You can quickly grab a request ID from the web UI as shown below.
+
+<img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/copy-request-id.gif?s=62f5e06f820fbe1c5c34cf4e71766910" width="60%" data-og-width="568" data-og-height="512" data-path="images/copy-request-id.gif" data-optimize="true" data-opv="3" />
+
+Specific instructions for retrieving the ID programmatically are below.
+
+## REST API
+
+The `pl_request_id` is returned as `request_id` in the case of a successful request when using the `REST api` with `/log-request`. This means that `request_id` will be a key in the object returned by a successful logged response.
+
+[Learn more](/reference/log-request)
+
+## Python
+
+To retrieve the `pl_request_id` using OpenAI in Python (through `promptlayer_client.openai.OpenAI`), set the argument `return_pl_id` to `true` in your function call. This will change the call to now return the OpenAI response and the `pl_request_id`. If you are using `stream=true`, then only the last `pl_request_id` will be the id; otherwise, it will be `None`.
+
+The same is true for Anthropic.
+
+```python  theme={null}
+from promptlayer import PromptLayer
+promptlayer_client = PromptLayer()
+
+OpenAI = promptlayer_client.openai.OpenAI
+client = OpenAI()
+
+response, pl_request_id = client.Completion.create(
+    engine="gpt-3.5-turbo-instruct", 
+    prompt="hi my name is ", 
+    return_pl_id=True
+)
+```
+
+## Javascript
+
+To retrieve the `pl_request_id` using OpenAI in JavaScript (through `promptLayerClient.OpenAI`), set the argument `return_pl_id` to `true` in your function call. This will change the call to now return the OpenAI response and the `pl_request_id`. If you are using `stream: true`, then only the last `pl_request_id` will be the id; otherwise, it will be `undefined`.
+
+The same is true for Anthropic.
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer();
+
+const OpenAI = promptLayerClient.OpenAI;
+const client = new OpenAI();
+
+const [response, pl_request_id] = await client.completions.create({
+    model: "gpt-3.5-turbo-instruct",
+    prompt: "hi my name is ",
+    return_pl_id: true
+});
+```
+
+## LangChain
+
+### With Callback (newer)
+
+For LangChain PromptLayer integration, define a `pl_id_callback` callback inside the `PromptLayerCallbackHandler`. This takes in the `pl_request_id` and can be used accordingly. Here's an example:
+
+```python  theme={null}
+def pl_id_callback(pl_request_id):
+    print(pl_request_id)
+
+llm = OpenAI(
+    model_name="gpt-3.5-turbo-instruct",
+    callbacks=[
+        PromptLayerCallbackHandler(
+            pl_id_callback=pl_id_callback, 
+            pl_tags=["langchain"]
+        )
+    ],
+)
+
+llm("How tall are you?")
+```
+
+### With Specific Models (older)
+
+For LangChain PromptLayer integration, set the argument `return_pl_id` to true when instantiating your model. This will add the PromptLayer request ID in the `generation_info` field of the Generation returned when using `.generate` or `.agenerate`. Here's an example:
+
+```python  theme={null}
+from langchain.llms import PromptLayerOpenAI
+llm = PromptLayerOpenAI(return_pl_id=True)
+
+llm_results = llm.generate(["hello world"])
+for res in llm_results.generations:
+    print("pl request id: ", res[0].generation_info["pl_request_id"])
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt
