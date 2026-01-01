@@ -523,6 +523,13 @@ repositories:
     target_folder: "docs/github-scraped/xtermjs"
     branch: "master"
 
+  - name: "AIMET"
+    description: "Qualcomm AI Model Efficiency Toolkit - Advanced quantization and compression techniques for neural network optimization"
+    repo_url: "https://github.com/quic/aimet.git"
+    source_folder: "Docs"
+    target_folder: "docs/github-scraped/aimet"
+    branch: "develop"
+
   - name: "agentskills"
     description: "agentskills - Documentation and specifications for Claude Code agent skills"
     repo_url: "https://github.com/agentskills/agentskills.git"
