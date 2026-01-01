@@ -820,6 +820,9 @@ sites:
 - name: svelte
   base_url: https://svelte.dev/
   description: Svelte reactive UI framework
+- name: swr
+  base_url: https://swr.vercel.app/
+  description: SWR React hooks library for data fetching with caching
 - name: tamagui
   base_url: https://tamagui.dev/
   description: Tamagui universal UI framework
