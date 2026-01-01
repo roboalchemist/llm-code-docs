@@ -397,6 +397,13 @@ repositories:
     target_folder: "docs/github-scraped/codemirror"
     branch: "main"
 
+  - name: "Coqui TTS"
+    description: "Coqui TTS - Open-source text-to-speech library with multiple models (XTTS, Bark, Glow-TTS, Tacotron2) supporting multiple languages"
+    repo_url: "https://github.com/coqui-ai/TTS.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/coqui-tts"
+    branch: "dev"
+
   - name: "Whisper"
     description: "OpenAI Whisper - Robust speech recognition via large-scale weak supervision (STT/ASR)"
     repo_url: "https://github.com/openai/whisper.git"
