@@ -850,6 +850,9 @@ sites:
 - name: tavus
   base_url: https://docs.tavus.io/
   description: Tavus documentation
+- name: together-ai
+  base_url: https://docs.together.ai/
+  description: Together AI high-performance inference API for 200+ open-source LLMs
 - name: testingbot
   base_url: https://testingbot.com/
   description: TestingBot cross-browser testing
