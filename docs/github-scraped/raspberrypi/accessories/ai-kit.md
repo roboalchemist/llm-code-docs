@@ -1,0 +1,3 @@
+## Product brief
+
+For more information about the AI Kit, including mechanical specifications and operating environment limitations, see the https://datasheets.raspberrypi.com/ai-kit/raspberry-pi-ai-kit-product-brief.pdf[product brief].
