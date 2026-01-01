@@ -908,6 +908,9 @@ sites:
 - name: vitest
   base_url: https://vitest.dev/
   description: Vitest next generation testing framework powered by Vite
+- name: vitepress
+  base_url: https://vitepress.dev/
+  description: Vite-powered static site generator for documentation
 - name: vue-macros
   base_url: https://vue-macros.dev/
   description: Vue Macros compiler extensions

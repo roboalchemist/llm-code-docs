@@ -103,6 +103,13 @@ repositories:
     target_folder: "docs/github-scraped/langroid"
     branch: "main"
 
+  - name: "LMDeploy"
+    description: "LMDeploy - Efficient LLM inference and serving toolkit with high throughput and low latency"
+    repo_url: "https://github.com/InternLM/lmdeploy.git"
+    source_folder: "docs/en"
+    target_folder: "docs/github-scraped/lmdeploy"
+    branch: "main"
+
   - name: "Jest"
     description: "Jest - Delightful JavaScript testing framework by Meta with zero config and built-in code coverage"
     repo_url: "https://github.com/jestjs/jest.git"
@@ -360,6 +367,13 @@ repositories:
     repo_url: "https://github.com/electron/electron.git"
     source_folder: "docs"
     target_folder: "docs/github-scraped/electron"
+    branch: "main"
+
+  - name: "ESLint"
+    description: "ESLint - Pluggable JavaScript linter for identifying and fixing code issues with customizable rules and configurations"
+    repo_url: "https://github.com/eslint/eslint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint"
     branch: "main"
 
   - name: "Express"
