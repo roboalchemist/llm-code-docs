@@ -575,6 +575,9 @@ sites:
 - name: mistral
   base_url: https://docs.mistral.ai/
   description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
+- name: modal
+  base_url: https://modal.com/
+  description: Modal serverless platform for running Python code in the cloud with GPU support
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language
