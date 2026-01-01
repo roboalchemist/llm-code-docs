@@ -676,3 +676,17 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/prompt-flow"
     branch: "main"
+
+  - name: "Stable Diffusion"
+    description: "Stable Diffusion - Latent diffusion model for text-to-image generation with official CompVis repository"
+    repo_url: "https://github.com/CompVis/stable-diffusion.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/stable-diffusion"
+    branch: "main"
+
+  - name: "Hugging Face Diffusers"
+    description: "Hugging Face Diffusers - Python library for generating images, audio, and 3D objects with diffusion models"
+    repo_url: "https://github.com/huggingface/diffusers.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/huggingface-diffusers"
+    branch: "main"
