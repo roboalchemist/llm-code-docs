@@ -739,3 +739,10 @@ repositories:
     source_folder: "docs/source"
     target_folder: "docs/github-scraped/huggingface-diffusers"
     branch: "main"
+
+  - name: "RAGFlow"
+    description: "RAGFlow - Open-source RAG engine for building retrieval-augmented generation applications with deep document understanding"
+    repo_url: "https://github.com/infiniflow/ragflow.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/ragflow"
+    branch: "main"
