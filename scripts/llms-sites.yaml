@@ -805,6 +805,9 @@ sites:
 - name: stedi
   base_url: https://www.stedi.com/docs/
   description: Stedi B2B data exchange
+- name: strapi
+  base_url: https://docs.strapi.io/
+  description: Strapi open-source headless CMS with customizable APIs
 - name: streamlit
   base_url: https://docs.streamlit.io/
   description: Streamlit Python framework for data apps and dashboards
