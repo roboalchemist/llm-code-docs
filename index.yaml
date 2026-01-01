@@ -369,6 +369,14 @@ llms_txt:
   file_count: 106
   size: 1.3MB
   last_updated: 2026-01-01 07:30
+- name: braintrust
+  description: Braintrust LLM evaluation, logging, and prompt management platform
+  url: https://www.braintrust.dev/
+  path: docs/llms-txt/braintrust/
+  status: fetched
+  file_count: 332
+  size: 6.3MB
+  last_updated: 2026-01-01 07:28
 - name: braintree
   description: braintree documentation
   url: https://braintree.com/
