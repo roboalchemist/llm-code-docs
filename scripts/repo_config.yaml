@@ -446,6 +446,13 @@ repositories:
     target_folder: "docs/github-scraped/tasmota"
     branch: "master"
 
+  - name: "TypeDoc"
+    description: "TypeDoc - Documentation generator for TypeScript projects with support for JSDoc, type annotations, and themes"
+    repo_url: "https://github.com/TypeStrong/typedoc.git"
+    source_folder: "site"
+    target_folder: "docs/github-scraped/typedoc"
+    branch: "master"
+
   - name: "TypeScript"
     description: "TypeScript - Microsoft's typed superset of JavaScript with complete language documentation, handbook, and reference"
     repo_url: "https://github.com/microsoft/TypeScript-Website.git"

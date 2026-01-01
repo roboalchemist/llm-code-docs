@@ -63,6 +63,9 @@ sites:
   base_url: https://www.apollographql.com/docs/
   description: Apollo GraphQL platform - GraphQL client and server tools including
     Apollo Client, Apollo Server, and GraphOS
+- name: appwrite
+  base_url: https://appwrite.io/
+  description: Open-source backend-as-a-service platform for web and mobile apps
 - name: aptible
   base_url: https://www.aptible.com/docs/
   description: Aptible documentation
@@ -566,6 +569,9 @@ sites:
 - name: mistral
   base_url: https://docs.mistral.ai/
   description: Mistral AI LLM platform with models, agents, fine-tuning, and deployment
+- name: mikro-orm
+  base_url: https://mikro-orm.io/
+  description: TypeScript ORM for Node.js with support for MongoDB, MySQL, MariaDB, PostgreSQL, SQLite
 - name: modular
   base_url: https://docs.modular.com/
   description: Modular AI infrastructure and Mojo language

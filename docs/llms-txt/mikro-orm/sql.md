@@ -1,3 +1,9 @@
+# Source: https://mikro-orm.io/api/core/function/sql.md
+
+# Source: https://mikro-orm.io/blog/tags/sql.md
+
+# Source: https://mikro-orm.io/api/core/function/sql.md
+
 # Source: https://mikro-orm.io/blog/tags/sql.md
 
 ## [MikroORM 6.6](https://mikro-orm.io/blog/mikro-orm-6-6-released.md)
