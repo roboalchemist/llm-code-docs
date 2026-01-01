@@ -509,6 +509,9 @@ sites:
 - name: lingui
   base_url: https://lingui.dev/
   description: Lingui documentation
+- name: lunary
+  base_url: https://docs.lunary.ai/
+  description: Lunary open-source LLM observability and prompt tracking platform
 - name: litellm
   base_url: https://docs.litellm.ai/
   description: Litellm documentation
