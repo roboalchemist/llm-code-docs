@@ -676,3 +676,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/prompt-flow"
     branch: "main"
+
+  - name: "Ray"
+    description: "Ray - Distributed computing framework for scaling ML and LLM workloads with Ray Core, Tune, Serve, RLlib, and Data libraries"
+    repo_url: "https://github.com/ray-project/ray.git"
+    source_folder: "doc/source"
+    target_folder: "docs/github-scraped/ray"
+    branch: "master"
