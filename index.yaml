@@ -2563,6 +2563,13 @@ github_scraped:
   file_count: 6
   size: 21.5KB
   last_updated: 2026-01-01 07:06
+- name: agentverse
+  description: Framework for deploying and managing multiple LLM-based agents
+  path: docs/github-scraped/agentverse/
+  status: fetched
+  file_count: 7
+  size: 60.0KB
+  last_updated: 2026-01-01 07:06
 - name: celery
   description: celery from GitHub
   path: docs/github-scraped/celery/
