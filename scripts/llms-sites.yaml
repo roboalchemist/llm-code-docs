@@ -865,6 +865,9 @@ sites:
 - name: trigger-dev
   base_url: https://docs.trigger.dev/
   description: Trigger.dev background job orchestration platform
+- name: traceloop
+  base_url: https://www.traceloop.com/docs/
+  description: OpenLLMetry - open-source observability SDK for LLM applications based on OpenTelemetry
 - name: turbo
   base_url: https://turbo.build/
   description: Turborepo monorepo build system
