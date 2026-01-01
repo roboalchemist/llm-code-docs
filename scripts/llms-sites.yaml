@@ -754,6 +754,9 @@ sites:
   base_url: https://render.com/
   description: Render cloud hosting platform for web apps, static sites, databases,
     and cron jobs
+- name: replicate
+  base_url: https://replicate.com/
+  description: Replicate platform for running open-source ML models via simple API
 - name: resend
   base_url: https://resend.com/docs/
   description: Resend email API for developers
