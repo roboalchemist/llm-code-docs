@@ -1,4 +1,8 @@
-## Power supply
+# Source: power-supplies.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Power supply
 
 The power supply requirements differ by Raspberry Pi model. All models require a 5.1V supply, but the current required generally increases according to model. All models up to the Raspberry Pi 3 require a micro USB power connector, while Raspberry Pi 4, Raspberry Pi 400, and Raspberry Pi 5 use a USB-C connector.
 
@@ -6,7 +10,7 @@ The power supply requirements differ by Raspberry Pi model. All models require a
 
 The current consumed by each Raspberry Pi depends on the peripherals connected.
 
-### Recommended power supplies
+=== Recommended power supplies
 
 For Raspberry Pi 1, Raspberry Pi 2, and Raspberry Pi 3, we recommend the https://www.raspberrypi.com/products/micro-usb-power-supply/[2.5A micro USB supply]. For Raspberry Pi 4 and Raspberry Pi 400, we recommend the https://www.raspberrypi.com/products/type-c-power-supply/[3A USB-C Supply for Raspberry Pi 4]. For Raspberry Pi 5, we recommend the https://www.raspberrypi.com/products/27w-power-supply/[27 W USB-C Power Supply].
 
@@ -14,10 +18,10 @@ NOTE: No Raspberry Pi models support USB-PPS.
 
 NOTE: If you use a third-party USB-PD multi-port power supply, plugging an additional device into the supply when your Raspberry Pi is connected causes a renegotiation between the supply and the Raspberry Pi. If the Raspberry Pi is powered, this happens seamlessly. If the Raspberry Pi is powered down, this renegotiation may cause the Raspberry Pi to boot.
 
-### Power over Ethernet (PoE) connector
+=== Power over Ethernet (PoE) connector
 
 .Raspberry Pi 5 PoE header
-image: images/poe.jpg[alt="The PoE connector,width="70%"]
+image::images/poe.jpg[alt="The PoE connector,width="70%"]
 
 The Ethernet jack on Raspberry Pi 5 is PoE+ capable, supporting the IEEE 802.3at-2009 PoE standard.
 
@@ -25,7 +29,7 @@ The Ethernet jack on Raspberry Pi 4B and Pi 3B+ is PoE capable, supporting the I
 
 All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw power through the Ethernet port. For models that support PoE, we recommend the https://www.raspberrypi.com/products/poe-hat/[PoE HAT]. For models that support PoE+, we recommend the https://www.raspberrypi.com/products/poe-plus-hat/[PoE+ HAT].
 
-### Typical power requirements
+=== Typical power requirements
 
 |===
 | Product | Recommended PSU current capacity | Maximum total USB peripheral current draw | Typical bare-board active current consumption
@@ -119,9 +123,10 @@ The power requirements of the Raspberry Pi increase as you make use of the vario
 
 Run the following command to check the status of power output to the USB ports:
 
-```console
-$ vcgencmd get*config usb*max*current*enable
-```
+[source,console]
+----
+$ vcgencmd get_config usb_max_current_enable
+----
 
 The following table describes the amount of power (in amps) drawn by different Raspberry Pi models during various workloads:
 
@@ -140,23 +145,24 @@ The following table describes the amount of power (in amps) drawn by different R
 NOTE: These measurements used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
 [.whitepaper, title="Extra PMIC features on Raspberry Pi 4, Raspberry Pi 5 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/documents/RP-004340-WP-Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
-*****
+****
 A number of different PMIC devices have been used on Raspberry Pi 4, Raspberry Pi 5 and CM4. All the PMICs provide extra functionality alongside that of voltage supply. This document describes how to access these features in software.
-******
+****
 
-#### Decrease Raspberry Pi 5 wattage when turned off
+==== Decrease Raspberry Pi 5 wattage when turned off
 
 By default, the Raspberry Pi 5 consumes around 1 W to 1.4 W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
 
-```ini
-BOOT*UART=1
-POWER*OFF*ON*HALT=1
-BOOT*ORDER=0xf416
-```
+[source,ini]
+----
+BOOT_UART=1
+POWER_OFF_ON_HALT=1
+BOOT_ORDER=0xf416
+----
 
 This should drop the power consumption when powered down to around 0.01W.
 
-### Power supply warnings
+=== Power supply warnings
 
 On all models of Raspberry Pi since the Raspberry Pi B+ (2014) except the Zero range, there is low-voltage detection circuitry that will detect if the supply voltage drops below 4.63V (±5%). This will result in an entry being added to the kernel log.
 
@@ -165,30 +171,31 @@ If you see warnings, switch to a higher quality power supply and cable. Low qual
 Voltages can drop for a variety of reasons. You may have plugged in too many high-demand USB devices. The power supply could be inadequate. Or the power supply cable could use wires that are too thin.
 
 [.whitepaper, title="Making a more resilient file system", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003610-WP-Making-a-more-resilient-file-system.pdf]
-******
+****
 Raspberry Pi devices are frequently used as data storage and monitoring devices, often in places where sudden power-downs may occur. As with any computing device, power dropouts can cause storage corruption.
 
 This white paper provides some options on how to prevent data corruption under these and other circumstances by selecting appropriate file systems and setups to ensure data integrity.
-*****
+****
 
-### Power supplies and Raspberry Pi OS
+=== Power supplies and Raspberry Pi OS
 
 The bootloader passes information about the power supply via device-tree `/proc/device-tree/chosen/power`. Users will typically not read this directly.
 
-max*current: The max current in mA
-uspd*power*data*objects: A dump of the PDOs - debug for advanced users
-usb*max*current*enable: Whether the current limiter was set to high or low
-usb*over*current*detected: Whether any USB over current occurred during boot before transferring control to the OS
-reset*event: The PMIC reset reason e.g. watchdog, over- or under-voltage, over-temperature
+max_current:: The max current in mA
+uspd_power_data_objects:: A dump of the PDOs - debug for advanced users
+usb_max_current_enable:: Whether the current limiter was set to high or low
+usb_over_current_detected:: Whether any USB over current occurred during boot before transferring control to the OS
+reset_event:: The PMIC reset reason e.g. watchdog, over- or under-voltage, over-temperature
 
-The PMIC has built-in ADCs that, among other things, can measure the supply voltage `EXT5V*V`. Use the following command to view ADC measurements:
+The PMIC has built-in ADCs that, among other things, can measure the supply voltage `EXT5V_V`. Use the following command to view ADC measurements:
 
-```console
-$ vcgencmd pmic*read_adc
-```
+[source,console]
+----
+$ vcgencmd pmic_read_adc
+----
 
 You can't see USB current or anything else connected directly to 5V, because this bypasses the PMIC. You should not expect this to add up to the wattage of the source power supply. However, it can be useful to monitor things like the core voltage.
 
-### Back-powering
+=== Back-powering
 
 The USB specification requires that USB devices must not supply current to upstream devices. If a USB device does supply current to an upstream device, then this is called back-powering. Often this happens when a badly-made powered USB hub is connected, and will result in the powered USB hub supplying power to the host Raspberry Pi. This is not recommended since the power being supplied to the Raspberry Pi via the hub will bypass the protection circuitry built into the Raspberry Pi, leaving it vulnerable to damage in the event of a power surge.

@@ -1,7 +1,11 @@
-## About
+# Source: about.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== About
 
 .A Raspberry Pi SD Card inserted into a Raspberry Pi 5
-image: images/sd-hero.jpg[width="80%"]
+image::images/sd-hero.jpg[width="80%"]
 
 SD card quality is a critical factor in determining the overall user experience for a Raspberry Pi. Slow bus speeds and lack of command queueing can reduce the performance of even the most powerful Raspberry Pi models.
 
@@ -11,14 +15,14 @@ You can even buy Raspberry Pi SD cards pre-programmed with the latest version of
 
 Raspberry Pi SD cards are available in the following sizes:
 
-** 32 GB
-** 64 GB
-- 128 GB
+* 32 GB
+* 64 GB
+* 128 GB
 
-## Specifications
+== Specifications
 
 .A 128 GB Raspberry Pi SD Card
-image: images/sd-cards.png[width="80%"]
+image::images/sd-cards.png[width="80%"]
 
 Raspberry Pi SD cards use the SD6.1 SD specification.
 
@@ -34,3 +38,4 @@ The following table describes the read and write speeds of Raspberry Pi SD cards
 | 4 | DDR50  | 3,200 IOPS | 1,200 IOPS
 | 5 | SDR104 | 5,000 IOPS | 2,000 IOPS
 |===
+

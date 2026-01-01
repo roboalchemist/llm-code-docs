@@ -1,49 +1,55 @@
-### Post-Processing with TensorFlow Lite
+# Source: rpicam_apps_post_processing_tflite.adoc
 
-#### Prerequisites
+*Note: This file could not be automatically converted from AsciiDoc.*
 
-These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. From Raspberry Pi OS *Trixie* onwards, Raspberry Pi builds and distributes a TFLite package, which can be installed with the following command:
+=== Post-Processing with TensorFlow Lite
 
-```console
+==== Prerequisites
+
+These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. From Raspberry Pi OS _Trixie_ onwards, Raspberry Pi builds and distributes a TFLite package, which can be installed with the following command:
+
+[source,console]
+----
 $ sudo apt install libtensorflow-lite-dev
-```
+----
 
-After installing, you must xref:camera*software.adoc#build-libcamera-and-rpicam-apps[recompile `rpicam-apps` with TensorFlow Lite support].
+After installing, you must xref:camera_software.adoc#build-libcamera-and-rpicam-apps[recompile `rpicam-apps` with TensorFlow Lite support].
 
-#### `object*classify*tf` stage
+==== `object_classify_tf` stage
 
-Download: https://storage.googleapis.com/download.tensorflow.org/models/mobilenet*v1*2018*08*02/mobilenet*v1*1.0*224*quant.tgz[]
+Download: https://storage.googleapis.com/download.tensorflow.org/models/mobilenet_v1_2018_08_02/mobilenet_v1_1.0_224_quant.tgz[]
 
-`object*classify*tf` uses a Google MobileNet v1 model to classify objects in the camera image. This stage requires a https://storage.googleapis.com/download.tensorflow.org/models/mobilenet*v1*1.0*224*frozen.tgz[`labels.txt` file].
+`object_classify_tf` uses a Google MobileNet v1 model to classify objects in the camera image. This stage requires a https://storage.googleapis.com/download.tensorflow.org/models/mobilenet_v1_1.0_224_frozen.tgz[`labels.txt` file].
 
 You can configure this stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `top*n*results` | The number of results to show
-| `refresh*rate` | The number of frames that must elapse between model runs
-| `threshold*high` | Confidence threshold (between 0 and 1) where objects are considered as being present
-| `threshold*low` | Confidence threshold which objects must drop below before being discarded as matches
-| `model*file` | Filepath of the TFLite model file
-| `labels*file` | Filepath of the file containing the object labels
-| `display*labels` | Whether to display the object labels on the image; inserts `annotate.text` metadata for the `annotate*cv` stage to render
+| `top_n_results` | The number of results to show
+| `refresh_rate` | The number of frames that must elapse between model runs
+| `threshold_high` | Confidence threshold (between 0 and 1) where objects are considered as being present
+| `threshold_low` | Confidence threshold which objects must drop below before being discarded as matches
+| `model_file` | Filepath of the TFLite model file
+| `labels_file` | Filepath of the file containing the object labels
+| `display_labels` | Whether to display the object labels on the image; inserts `annotate.text` metadata for the `annotate_cv` stage to render
 | `verbose` | Output more information to the console
 |===
 
-Example `object*classify*tf.json` file:
+Example `object_classify_tf.json` file:
 
-```json
+[source,json]
+----
 {
-    "object*classify*tf" : {
-        "top*n*results" : 2,
-        "refresh*rate" : 30,
-        "threshold*high" : 0.6,
-        "threshold*low" : 0.4,
-        "model*file" : "/home/<username>/models/mobilenet*v1*1.0*224*quant.tflite",
-        "labels*file" : "/home/<username>/models/labels.txt",
-        "display*labels" : 1
+    "object_classify_tf" : {
+        "top_n_results" : 2,
+        "refresh_rate" : 30,
+        "threshold_high" : 0.6,
+        "threshold_low" : 0.4,
+        "model_file" : "/home/<username>/models/mobilenet_v1_1.0_224_quant.tflite",
+        "labels_file" : "/home/<username>/models/labels.txt",
+        "display_labels" : 1
     },
-    "annotate*cv" : {
+    "annotate_cv" : {
         "text" : "",
         "fg" : 255,
         "bg" : 0,
@@ -52,128 +58,133 @@ Example `object*classify*tf.json` file:
         "alpha" : 0.3
     }
 }
-```
+----
 
 The stage operates on a low resolution stream image of size 224×224.
 Run the following command to use this stage file with `rpicam-hello`:
 
-```console
-$ rpicam-hello --post-process-file object*classify*tf.json --lores-width 224 --lores-height 224
-```
+[source,console]
+----
+$ rpicam-hello --post-process-file object_classify_tf.json --lores-width 224 --lores-height 224
+----
 
 .Object classification of a desktop computer and monitor.
-image: images/classify.jpg[Object classification of a desktop computer and monitor]
+image::images/classify.jpg[Object classification of a desktop computer and monitor]
 
-#### `pose*estimation*tf` stage
+==== `pose_estimation_tf` stage
 
-Download: https://github.com/Qengineering/TensorFlow*Lite*Pose*RPi*32-bits[]
+Download: https://github.com/Qengineering/TensorFlow_Lite_Pose_RPi_32-bits[]
 
-`pose*estimation*tf` uses a Google MobileNet v1 model to detect pose information.
+`pose_estimation_tf` uses a Google MobileNet v1 model to detect pose information.
 
 You can configure this stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `refresh*rate` | The number of frames that must elapse between model runs
-| `model*file` | Filepath of the TFLite model file
+| `refresh_rate` | The number of frames that must elapse between model runs
+| `model_file` | Filepath of the TFLite model file
 | `verbose` | Output extra information to the console
 |===
 
-Use the separate `plot*pose*cv` stage to draw the detected pose onto the main image.
+Use the separate `plot_pose_cv` stage to draw the detected pose onto the main image.
 
-You can configure the `plot*pose*cv` stage with the following parameters:
+You can configure the `plot_pose_cv` stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `confidence*threshold` | Confidence threshold determining how much to draw; can be less than zero
+| `confidence_threshold` | Confidence threshold determining how much to draw; can be less than zero
 |===
 
-Example `pose*estimation*tf.json` file:
+Example `pose_estimation_tf.json` file:
 
-```json
+[source,json]
+----
 {
-    "pose*estimation*tf" : {
-        "refresh*rate" : 5,
-        "model*file" : "posenet*mobilenet*v1*100*257x257*multi*kpt*stripped.tflite"
+    "pose_estimation_tf" : {
+        "refresh_rate" : 5,
+        "model_file" : "posenet_mobilenet_v1_100_257x257_multi_kpt_stripped.tflite"
     },
-    "plot*pose*cv" : {
-       "confidence*threshold" : -0.5
+    "plot_pose_cv" : {
+       "confidence_threshold" : -0.5
     }
 }
-```
+----
 
-The stage operates on a low resolution stream image of size 257×257. ***Because YUV420 images must have even dimensions, round up to 258×258 for YUV420 images.***
+The stage operates on a low resolution stream image of size 257×257. **Because YUV420 images must have even dimensions, round up to 258×258 for YUV420 images.**
 
 Run the following command to use this stage file with `rpicam-hello`:
 
-```console
-$ rpicam-hello --post-process-file pose*estimation*tf.json --lores-width 258 --lores-height 258
-```
+[source,console]
+----
+$ rpicam-hello --post-process-file pose_estimation_tf.json --lores-width 258 --lores-height 258
+----
 
 .Pose estimation of an adult human male.
-image: images/pose.jpg[Pose estimation of an adult human male]
+image::images/pose.jpg[Pose estimation of an adult human male]
 
-#### `object*detect*tf` stage
+==== `object_detect_tf` stage
 
-Download: https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco*ssd*mobilenet*v1*1.0*quant*2018*06*29.zip[]
+Download: https://storage.googleapis.com/download.tensorflow.org/models/tflite/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29.zip[]
 
-`object*detect*tf` uses a Google MobileNet v1 SSD (Single Shot Detector) model to detect and label objects.
+`object_detect_tf` uses a Google MobileNet v1 SSD (Single Shot Detector) model to detect and label objects.
 
 You can configure this stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `refresh*rate` | The number of frames that must elapse between model runs
-| `model*file` | Filepath of the TFLite model file
-| `labels*file` | Filepath of the file containing the list of labels
-| `confidence*threshold` | Confidence threshold before accepting a match
-| `overlap*threshold` | Determines the amount of overlap between matches for them to be merged as a single match.
+| `refresh_rate` | The number of frames that must elapse between model runs
+| `model_file` | Filepath of the TFLite model file
+| `labels_file` | Filepath of the file containing the list of labels
+| `confidence_threshold` | Confidence threshold before accepting a match
+| `overlap_threshold` | Determines the amount of overlap between matches for them to be merged as a single match.
 | `verbose` | Output extra information to the console
 |===
 
-Use the separate `object*detect*draw*cv` stage to draw the detected objects onto the main image.
+Use the separate `object_detect_draw_cv` stage to draw the detected objects onto the main image.
 
-You can configure the `object*detect*draw*cv` stage with the following parameters:
+You can configure the `object_detect_draw_cv` stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `line*thickness` | Thickness of the bounding box lines
-| `font*size` | Size of the font used for the label
+| `line_thickness` | Thickness of the bounding box lines
+| `font_size` | Size of the font used for the label
 |===
 
-Example `object*detect*tf.json` file:
+Example `object_detect_tf.json` file:
 
-```json
+[source,json]
+----
 {
-    "object*detect*tf" : {
-        "number*of*threads" : 2,
-        "refresh*rate" : 10,
-        "confidence*threshold" : 0.5,
-        "overlap*threshold" : 0.5,
-        "model*file" : "/home/<username>/models/coco*ssd*mobilenet*v1*1.0*quant*2018*06*29/detect.tflite",
-        "labels*file" : "/home/<username>/models/coco*ssd*mobilenet*v1*1.0*quant*2018*06*29/labelmap.txt",
+    "object_detect_tf" : {
+        "number_of_threads" : 2,
+        "refresh_rate" : 10,
+        "confidence_threshold" : 0.5,
+        "overlap_threshold" : 0.5,
+        "model_file" : "/home/<username>/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/detect.tflite",
+        "labels_file" : "/home/<username>/models/coco_ssd_mobilenet_v1_1.0_quant_2018_06_29/labelmap.txt",
         "verbose" : 1
     },
-    "object*detect*draw*cv" : {
-       "line*thickness" : 2
+    "object_detect_draw_cv" : {
+       "line_thickness" : 2
     }
 }
-```
+----
 
 The stage operates on a low resolution stream image of size 300×300. Run the following command, which passes a 300×300 crop to the detector from the centre of the 400×300 low resolution image, to use this stage file with `rpicam-hello`:
 
-```console
-$ rpicam-hello --post-process-file object*detect*tf.json --lores-width 400 --lores-height 300
-```
+[source,console]
+----
+$ rpicam-hello --post-process-file object_detect_tf.json --lores-width 400 --lores-height 300
+----
 
 .Detecting apple and cat objects.
-image: images/detection.jpg[Detecting apple and cat objects]
+image::images/detection.jpg[Detecting apple and cat objects]
 
-#### `segmentation*tf` stage
+==== `segmentation_tf` stage
 
 Download: https://tfhub.dev/tensorflow/lite-model/deeplabv3/1/metadata/2?lite-format=tflite[]
 
-`segmentation*tf` uses a Google MobileNet v1 model. This stage requires a label file, found at the `assets/segmentation*labels.txt`.
+`segmentation_tf` uses a Google MobileNet v1 model. This stage requires a label file, found at the `assets/segmentation_labels.txt`.
 
 This stage runs on an image of size 257×257. Because YUV420 images must have even dimensions, the low resolution image should be at least 258 pixels in both width and height. The stage adds a vector of 257×257 values to the image metadata where each value indicates the categories a pixel belongs to. You can optionally draw a representation of the segmentation into the bottom right corner of the image.
 
@@ -181,36 +192,38 @@ You can configure this stage with the following parameters:
 
 [cols="1,3"]
 |===
-| `refresh*rate` | The number of frames that must elapse between model runs
-| `model*file` | Filepath of the TFLite model file
-| `labels*file` | Filepath of the file containing the list of labels
+| `refresh_rate` | The number of frames that must elapse between model runs
+| `model_file` | Filepath of the TFLite model file
+| `labels_file` | Filepath of the file containing the list of labels
 | `threshold` | When verbose is set, prints when the number of pixels with any label exceeds this number
 | `draw` | Draws the segmentation map into the bottom right hand corner of the image
 | `verbose` | Output extra information to the console
 |===
 
-Example `segmentation*tf.json` file:
+Example `segmentation_tf.json` file:
 
-```json
+[source,json]
+----
 {
-    "segmentation*tf" : {
-        "number*of*threads" : 2,
-        "refresh*rate" : 10,
-        "model*file" : "/home/<username>/models/lite-model*deeplabv3*1*metadata*2.tflite",
-        "labels*file" : "/home/<username>/models/segmentation*labels.txt",
+    "segmentation_tf" : {
+        "number_of_threads" : 2,
+        "refresh_rate" : 10,
+        "model_file" : "/home/<username>/models/lite-model_deeplabv3_1_metadata_2.tflite",
+        "labels_file" : "/home/<username>/models/segmentation_labels.txt",
         "draw" : 1,
         "verbose" : 1
     }
 }
-```
+----
 
 This example takes a camera image and reduces it to 258×258 pixels in size. This stage even works when squashing a non-square image without cropping. This example enables the segmentation map in the bottom right hand corner.
 
 Run the following command to use this stage file with `rpicam-hello`:
 
-```console
+[source,console]
+----
 $ rpicam-hello --post-process-file segmentation_tf.json --lores-width 258 --lores-height 258 --viewfinder-width 1024 --viewfinder-height 1024
-```
+----
 
 .Running segmentation and displaying the results on a map in the bottom right.
-image: images/segmentation.jpg[Running segmentation and displaying the results on a map in the bottom right]
+image::images/segmentation.jpg[Running segmentation and displaying the results on a map in the bottom right]

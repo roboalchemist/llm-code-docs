@@ -1,13 +1,18 @@
-### Use Motors from .NET
+# Source: net-motors.adoc
 
-There are two types of motors, the **passive** ones and the **active** ones. Active motors will provide detailed position, absolute position and speed while passive motors can only be controlled with speed.
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Use Motors from .NET
+
+There are two types of motors, the *passive* ones and the *active* ones. Active motors will provide detailed position, absolute position and speed while passive motors can only be controlled with speed.
 
 A common set of functions to control the speed of the motors are available. There are 2 important ones: `SetPowerLimit` and `SetBias`:
 
-```csharp
+[source,csharp]
+----
 train.SetPowerLimit(1.0);
 train.SetBias(0.2);
-```
+----
 
 The accepted values are only from 0.0 to 1.0. The power limit is a convenient ay to reduce in proportion the maximum power.
 
@@ -15,16 +20,17 @@ The bias value sets for the current port which is added to positive motor drive 
 
 The default values when a motor is created is 0.7 for the power limit and 0.3 for the bias.
 
-#### Passive Motors
+==== Passive Motors
 
 .Train motor, https://www.bricklink.com/v2/catalog/catalogitem.page?S=88011-1&name=Train%20Motor&category=%5BPower%20Functions%5D%5BPowered%20Up%5D#T=S&O={%22iconly%22:0}[Image from Bricklink]
-image: images/train-motor.png[Train motor,width="60%"]
+image::images/train-motor.png[Train motor,width="60%"]
 
 The typical passive motor is a train and older Powered Up motors. The `Speed` property can be set and read. It is the target and the measured speed at the same time as those sensors do not have a way to measure them. The value is from -100 to +100.
 
 Functions to control `Start`, `Stop` and `SetSpeed` are also available. Here is an example of how to use it:
 
-```csharp
+[source,csharp]
+----
 Console.WriteLine("This will run the motor for 20 seconds incrementing the PWM");
 train.SetPowerLimit(1.0);
 train.Start();
@@ -45,20 +51,21 @@ train.Start(100);
 Thread.Sleep(2000);
 Console.WriteLine("Stop the train");
 train.Stop();
-```
+----
 
 NOTE: Once the train is started, you can adjust the speed and the motor will adjust accordingly.
 
-#### Active Motors
+==== Active Motors
 
 .Active motor, https://www.bricklink.com/v2/catalog/catalogitem.page?S=88014-1&name=Technic%20XL%20Motor&category=%5BPower%20Functions%5D%5BPowered%20Up%5D#T=S&O={%22iconly%22:0}[Image from Bricklink]
-image: images/active-motor.png[Active motor,width="60%"]
+image::images/active-motor.png[Active motor,width="60%"]
 
 Active motors have `Speed`, `AbsolutePosition`, `Position` and `TargetSpeed` as special properties. They are read continuously even when the motor is stopped.
 
 The code snippet shows how to get the motors, start them and read the properties:
 
-```csharp
+[source,csharp]
+----
 brick.WaitForSensorToConnect(SensorPort.PortA);
 brick.WaitForSensorToConnect(SensorPort.PortD);
 var active = (ActiveMotor)brick.GetMotor(SensorPort.PortA);
@@ -81,13 +88,14 @@ while (!Console.KeyAvailable)
 
 active.Stop();
 active2.Stop();
-```
+----
 
 NOTE: Don't forget to start and stop your motors when needed.
 
 Advance features are available for active motors. You can request to move for seconds, to a specific position, a specific absolute position. Here are couple of examples:
 
-```csharp
+[source,csharp]
+----
 // From the previous example, this will turn the motors back to their initial position:
 active.TargetSpeed = 100;
 active2.TargetSpeed = 100;
@@ -95,11 +103,12 @@ active2.TargetSpeed = 100;
 active.MoveToPosition(0, true);
 // Then this one and will also block the thread
 active2.MoveToPosition(0, true);
-```
+----
 
 Each function allow you to block or not the thread for the time the operation will be performed. Note that for absolute and relative position moves, there is a tolerance of few degrees.
 
-```csharp
+[source,csharp]
+----
 brick.WaitForSensorToConnect(SensorPort.PortA);
 var active = (ActiveMotor)brick.GetMotor(SensorPort.PortA);
 active.TargetSpeed = 70;
@@ -118,6 +127,6 @@ active.MoveToAbsolutePosition(179, PositionWay.Shortest, true);
 Console.WriteLine("Moving motor to position -180");
 active.MoveToAbsolutePosition(-180, PositionWay.Shortest, true);
 active.Float();
-```
+----
 
 You can place the motor in a float position, meaning, there are no more constrains on it. This is a mode that you can use when using the motor as a tachometer, moving it and reading the position. If you still have constrains on the motors, you may not be able to move it.

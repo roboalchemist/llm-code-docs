@@ -1,4 +1,8 @@
-## Install tools
+# Source: installing-tools.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Install tools
 
 To use the Debug Probe, OpenOCD and the GNU Project Debugger (GDB) are required. An Integrated Development Environment (IDE) may also be useful.
 
@@ -9,3 +13,4 @@ See Chapter 3 of our https://datasheets.raspberrypi.com/pico/getting-started-wit
 Alternatively, tools can be manually installed by following Appendix C in the guide.
 
 NOTE: Manual installation of the tools on Windows is not recommended.
+

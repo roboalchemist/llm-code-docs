@@ -1,5 +1,9 @@
+# Source: hardware_specification.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 [[hardware-specification]]
-## Hardware specifications
+== Hardware specifications
 
 The following table compares the features and capabilities of the Raspberry Pi camera hardware.
 

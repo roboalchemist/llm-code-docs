@@ -1,8 +1,12 @@
-## Boot diagnostics
+# Source: boot-eeprom-diagnostics.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Boot diagnostics
 
 The bootloader on Raspberry Pi 4 or later flagship models can display diagnostic information at boot time on an HDMI display. To see this diagnostic information, power down the Raspberry Pi, disconnect the boot media (typically an SD card or SSD), then power back up. If your Raspberry Pi is connected to a display, you should see diagnostics similar to the following:
 
-image: images/bootloader-diagnostics.png[Boot diagnostics screen]
+image::images/bootloader-diagnostics.png[Boot diagnostics screen]
 
 This diagnostics page will also appear if the bootloader is unable to boot from any boot media or network boot. This can happen if there is no bootable image on the boot media, if the boot media is defective, or if network boot parameters are incorrect.
 
@@ -20,7 +24,7 @@ The diagnostic information is as follows:
 | Bootloader git version - RO (if EEPROM is write protected) - software build date
 
 | update-ts
-| the timestamp corresponding to when the EEPROM configuration was updated; this timestamp is checked in xref:raspberry-pi.adoc#ENABLE*SELF*UPDATE[self-update] mode to avoid updating to an old configuration
+| the timestamp corresponding to when the EEPROM configuration was updated; this timestamp is checked in xref:raspberry-pi.adoc#ENABLE_SELF_UPDATE[self-update] mode to avoid updating to an old configuration
 
 | secure-boot
 | If xref:raspberry-pi.adoc#secure-boot[secure-boot] is enabled, displays the processor revision (B0/C0) and xref:configuration.adoc#part4[signed-boot status flags]; otherwise, this line is blank
@@ -29,7 +33,7 @@ The diagnostic information is as follows:
 | xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Board revision] - serial number - Ethernet MAC address
 
 | boot
-| **mode** (current boot mode name and number) **order** (the xref:raspberry-pi.adoc#BOOT*ORDER[BOOT ORDER] configuration) **retry** (retry count in the current boot mode) **restart** (number of cycles through the list of boot modes)
+| *mode* (current boot mode name and number) *order* (the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT ORDER] configuration) *retry* (retry count in the current boot mode) *restart* (number of cycles through the list of boot modes)
 
 | SD
 | The SD card detect status (detected/not detected).
@@ -50,4 +54,4 @@ The diagnostic information is as follows:
 | Indicates whether hotplug was detected (`HPD=1`) and if so whether the EDID was read successfully (`EDID=ok`) for each HDMI output
 |===
 
-To disable this diagnostics display, use the `DISABLE*HDMI` option in the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].
+To disable this diagnostics display, use the `DISABLE_HDMI` option in the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration].

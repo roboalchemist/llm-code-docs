@@ -1,22 +1,27 @@
-## Raspberry Pi revision codes
+# Source: revision-codes.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Raspberry Pi revision codes
 
 Each distinct Raspberry Pi model revision has a unique revision code. You can look up a Raspberry Pi's revision code by running:
 
-```console
+[source,console]
+----
 $ cat /proc/cpuinfo
-```
+----
 
 The last three lines show the hardware type, the revision code, and the Raspberry Pi's unique serial number. For example:
 
-```
+----
 Hardware    : BCM2835
 Revision    : a02082
 Serial      : 00000000765fc593
-```
+----
 
 NOTE: All Raspberry Pi computers report `BCM2835`, even those with BCM2836, BCM2837, BCM2711, and BCM2712 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`. Depending on which kernel you're running, your `cpuinfo` might also have a "Model" line, and might not have a "Hardware" line.
 
-### Old-style revision codes
+=== Old-style revision codes
 
 The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
 
@@ -126,13 +131,13 @@ The first set of Raspberry Pi models were given sequential hex revision codes fr
 | Embest
 |===
 
-### New-style revision codes
+=== New-style revision codes
 
 With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
 
-```
+----
 NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
-```
+----
 
 |===
 | Part | Represents | Options
@@ -171,7 +176,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 |
 |
-| 1: Warranty has been voided by xref:config*txt.adoc#overclocking-options[overclocking]
+| 1: Warranty has been voided by xref:config_txt.adoc#overclocking-options[overclocking]
 
 | u (bit 24)
 | Unused
@@ -366,7 +371,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 ^2^ The warranty bit is never set on Raspberry Pi 4.
 
-### New-style revision codes in use
+=== New-style revision codes in use
 
 NOTE: This list is not exhaustive - there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
 
@@ -731,30 +736,33 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 
 |===
 
-### Using revision codes for board identification
+=== Using revision codes for board identification
 
 From the command line we can use the following to get the revision code of the board:
 
-```console
+[source,console]
+----
 $ cat /proc/cpuinfo | grep Revision
 Revision      : c03111
-```
+----
 
 In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `0 0 0 000 0 0 1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
 
 Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4 GB of RAM.
 
-#### Getting the revision code in your program
+==== Getting the revision code in your program
 
 Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
 
-```c
+
+[source,c]
+----
 #include <stdio.h>
 #include <stdlib.h>
 
-int main( int argc, char **argv[] )
+int main( int argc, char *argv[] )
 {
-  FILE **fp;
+  FILE *fp;
   char revcode[32];
 
   fp = popen("cat /proc/cpuinfo | awk '/Revision/ {print $3}'", "r");
@@ -773,15 +781,16 @@ int main( int argc, char **argv[] )
 
   return 0;
 }
-```
+----
 
 And the same in Python:
 
-```python
+[source,python]
+----
 import subprocess
 
 cmd = "cat /proc/cpuinfo | awk '/Revision/ {print $3}'"
-revcode = subprocess.check*output(cmd, shell=True)
+revcode = subprocess.check_output(cmd, shell=True)
 
 code = int(revcode, 16)
 new = (code >> 23) & 0x1
@@ -790,9 +799,9 @@ mem = (code >> 20) & 0x7
 
 if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2 GB
     print("We are a 4B with at least 2 GB RAM!")
-```
+----
 
-### Best practices for revision code usage
+=== Best practices for revision code usage
 
 To avoid problems when new board revisions are created, do not use the revision code (e.g. `c03111`).
 
@@ -801,30 +810,31 @@ This breaks when a new board revision comes out or if the production location ch
 
 Instead, use one of the following approaches:
 
-** Filter by the board-type field (3A, 4B, etc.), which indicates the model, but not the revision.
-** Filter by the amount-of-memory field, since RAM vaguely corresponds to the computing power of a board.
+* Filter by the board-type field (3A, 4B, etc.), which indicates the model, but not the revision.
+* Filter by the amount-of-memory field, since RAM vaguely corresponds to the computing power of a board.
 
 For instance, you could limit support to Raspberry Pi 4B models with 2 GB of RAM or more.
 The examples in the previous section use this recommended approach.
 
 NOTE: Always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields.
 
-#### Check Raspberry Pi model and CPU across distributions
+==== Check Raspberry Pi model and CPU across distributions
 
 Support and formatting for `/proc/cpuinfo` varies across Linux distributions. To check the model or CPU of a Raspberry Pi device on any Linux distribution (including Raspberry Pi OS), check the device tree:
 
-```console
+[source,console]
+----
 $ cat /proc/device-tree/compatible | tr '\0' '\n'
 raspberrypi,5-model-b
 brcm,bcm2712
-```
+----
 
 This outputs two null-separated string values, each containing a comma-separated make and model. For instance, the Raspberry Pi 5 outputs the board and CPU strings above. These correspond to the following values:
 
-** `raspberrypi` (board make)
-** `5-model-b` (board model)
-** `brcm` (CPU make)
-** `bcm2712` (CPU model)
+* `raspberrypi` (board make)
+* `5-model-b` (board model)
+* `brcm` (CPU make)
+* `bcm2712` (CPU model)
 
 Raspberry Pi models have the following device tree values:
 

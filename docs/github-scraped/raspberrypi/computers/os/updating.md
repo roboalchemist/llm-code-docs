@@ -1,24 +1,30 @@
-## Update software
+# Source: updating.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Update software
 
 Always keep the software running on your Raspberry Pi updated to the latest version. This keeps your device secure from https://cve.mitre.org/index.html[vulnerabilities] and ensures that you get the latest bug fixes.
 
-### Manage software packages with APT
+=== Manage software packages with APT
 
-https://en.wikipedia.org/wiki/APT*(software)[Advanced Package Tool (APT)] is the recommended way to install, update, and remove software in Raspberry Pi OS. You can access APT through the `apt` CLI.
+https://en.wikipedia.org/wiki/APT_(software)[Advanced Package Tool (APT)] is the recommended way to install, update, and remove software in Raspberry Pi OS. You can access APT through the `apt` CLI.
 
-#### Install updates
+==== Install updates
 
-`apt` stores a list of software sources in a file at `/etc/apt/sources.list`. Before installing software, run the following command to **update** your local list of packages using `/etc/apt/sources.list`:
+`apt` stores a list of software sources in a file at `/etc/apt/sources.list`. Before installing software, run the following command to *update* your local list of packages using `/etc/apt/sources.list`:
 
-```console
+[source,console]
+----
 $ sudo apt update
-```
+----
 
-Run the following command to **upgrade** all your installed packages to their latest versions:
+Run the following command to *upgrade* all your installed packages to their latest versions:
 
-```console
+[source,console]
+----
 $ sudo apt full-upgrade
-```
+----
 
 TIP: Unlike Debian, Raspberry Pi OS is under continual development. As a result, package dependencies sometimes change, so you should always use `full-upgrade` instead of the standard `upgrade`.
 
@@ -26,17 +32,19 @@ Run these commands regularly to keep your software up-to-date. Using `apt` to ke
 
 When Raspberry Pi releases a new major version of Raspberry Pi OS, the above commands won't upgrade your operating system to that new major version. To upgrade to a new major version, follow our xref:os.adoc#upgrade-your-operating-system-to-a-new-major-version[OS upgrade instructions].
 
-#### Search for software
+==== Search for software
 
 To search the archives for a package, pass a search keyword to `apt-cache search`:
 
-```console
+[source,console]
+----
 $ apt-cache search <keyword>
-```
+----
 
 For example, consider the following search for the keyword "raspi":
 
-```console
+[source,console]
+----
 $ apt-cache search raspi
 raspi3-firmware - Raspberry Pi 2 and 3 GPU firmware and bootloaders
 libcamera-apps - libcamera-apps
@@ -51,19 +59,21 @@ raspinfo - Dump information about the Pi
 rc-gui - raspi-config GUI
 raspi-copies-and-fills - ARM-accelerated versions of selected functions from string.h
 raspi-copies-and-fills-dbgsym - debug symbols for raspi-copies-and-fills
-```
+----
 
 The search returned multiple packages with names or descriptions that included the keyword.
 
 Use the following command to view detailed information about a package:
 
-```console
+[source,console]
+----
 $ apt-cache show <package-name>
-```
+----
 
 For example, consider the following query for the "raspi-config" package:
 
-```console
+[source,console]
+----
 $ apt-cache show raspi-config
 Package: raspi-config
 Version: 20210212
@@ -74,7 +84,7 @@ Depends: whiptail, parted, lua5.1, alsa-utils, psmisc, initramfs-tools
 Recommends: triggerhappy, iw
 Priority: optional
 Section: utils
-Filename: pool/main/r/raspi-config/raspi-config*20210212_all.deb
+Filename: pool/main/r/raspi-config/raspi-config_20210212_all.deb
 Size: 27976
 SHA256: 772d4fd3c6d8c9da47ac56012b74e7828b53c8521ff1c47266bb38ec71750c10
 SHA1: 08254c976a8260bde914c2df72f92ffb9317fef6
@@ -82,55 +92,59 @@ MD5sum: 80aaac13be6a9b455c822edb91cf8ea2
 Description: Raspberry Pi configuration tool
  A simple configuration tool for common Raspberry Pi administrative tasks
 Description-md5: 19630c04463bfe7193152448b53d85a0
-```
+----
 
 Use this command to verify that the maintainer, version, and size match your expectations for a package.
 
-#### Install a package
+==== Install a package
 
 To install a package on your Raspberry Pi, pass the name of the package to the following command:
 
-```console
+[source,console]
+----
 $ sudo apt install <package-name>
-```
+----
 
-`apt` will display the amount of disk space the package will consume. Enter **Y** and press ***Enter**** to confirm installation of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
+`apt` will display the amount of disk space the package will consume. Enter *Y* and press **Enter** to confirm installation of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
 
-#### Uninstall a package
+==== Uninstall a package
 
 To uninstall a package from your Raspberry Pi, pass the name of the package to the following command:
 
-```console
+[source,console]
+----
 $ sudo apt remove <package-name>
-```
+----
 
 TIP: To completely remove all traces of the package, including configuration files, use `purge` instead of `remove`.
 
 `apt` will display the amount of disk space removing the package will free up.
-Enter **Y** and press ****Enter**** to confirm removal of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
+Enter *Y* and press **Enter** to confirm removal of the package. You can skip this confirmation step by adding the `-y` flag to the command above.
 
-#### Manage `apt` disk usage
+==== Manage `apt` disk usage
 
 Before running, `sudo apt full-upgrade` shows the amount of data you'll need to download and store on disk to complete an upgrade. To check that you have enough free disk space, run the following command:
 
-```console
+[source,console]
+----
 $ df -h
-```
+----
 
 `apt` stores downloaded package (`.deb`) files in `/var/cache/apt/archives`. During installation, `apt` downloads these packages, then copies files from the packages to the correct installation locations. Depending on the software you have installed, package files can take up significant amounts of space. To delete any lingering package files, run the following command:
 
-```console
+[source,console]
+----
 $ sudo apt clean
-```
+----
 
-### Upgrade your operating system to a new major version
+=== Upgrade your operating system to a new major version
 
 WARNING: Before attempting a major version upgrade, make a backup.
 
 To update the operating system to a new major release on your Raspberry Pi, image a second SD card with the new release. Use a USB SD card reader or network storage to copy files and configuration from your current installation to the new SD card. Then, swap the new SD card into the slot on your Raspberry Pi, and boot.
 
 [[rpi-update]]
-### Upgrade your firmware
+=== Upgrade your firmware
 
 WARNING: Before attempting a firmware upgrade, make a backup.
 
@@ -144,73 +158,85 @@ All the source data used by `rpi-update` comes from the https://github.com/raspb
 
 Run `rpi-update` as root to initiate the update. Once the update is complete, reboot your Raspberry Pi for these changes to take effect:
 
-```console
+[source,console]
+----
 $ sudo rpi-update
 $ sudo reboot
-```
+----
 
 [.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003476-WP-Updating-Pi-firmware.pdf]
-******
+****
 This whitepaper documents how to update the VideoCore firmware in a Raspberry Pi OS image.
-******
+****
 
-### Downgrade firmware to the last stable release
+=== Downgrade firmware to the last stable release
 
 If you update your firmware to the latest release and experience an issue, use the following command to return to the last stable firmware release:
 
-```console
+[source,console]
+----
 $ sudo apt update
 $ sudo apt install --reinstall raspi-firmware
-```
+----
 
-### Convert Raspberry Pi OS Lite into Raspberry Pi OS Desktop
+=== Convert Raspberry Pi OS Lite into Raspberry Pi OS Desktop
 
 You can add the packages that turn the Lite version into the Desktop version by using `apt`.
 
-1. Install your preferred desktop windowing system.
-** To install Wayland (recommended), run:
+. Install your preferred desktop windowing system.
+* To install Wayland (recommended), run:
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-wayland-core
-```
-** To install X, run:
+----
+* To install X, run:
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-x-core
-```
-1. Install the Raspberry Pi theme and Control Centre.
+----
+. Install the Raspberry Pi theme and Control Centre.
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-theme
 $ sudo apt install rpd-preferences
-```
-1. Add the applications.
+----
+. Add the applications.
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-applications
 $ sudo apt install rpd-utilities
 $ sudo apt install rpd-developer
 $ sudo apt install rpd-graphics
-```
-1. Add the extra features for your chosen windowing system, such as screenshot and remote desktop capabilities.
-** For Wayland, run:
+----
+. Add the extra features for your chosen windowing system, such as screenshot and remote desktop capabilities.
+* For Wayland, run:
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-wayland-extras
-```
-** For X, run:
+----
+* For X, run:
 +
-```console
+[source,console]
+----
 $ sudo apt install rpd-x-extras
-```
-1. Restart your Raspberry Pi to enter the desktop environment.
+----
+. Restart your Raspberry Pi to enter the desktop environment.
 +
-```console
+[source,console]
+----
 $ sudo reboot
-```
+----
 
 You now have all the packages that comprise Raspberry Pi OS Desktop.
 
 If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages. Alternatively, to have the Lite experience without removing the desktop packages you've installed, use xref:../computers/configuration.adoc#raspi-config[raspi-config] to set your Raspberry Pi to boot to the command line.
 
-You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting ****Preferences > Recommended Software***.
+You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting **Preferences > Recommended Software**.
+
+
+

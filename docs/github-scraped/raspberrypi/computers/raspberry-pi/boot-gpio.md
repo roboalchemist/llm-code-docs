@@ -1,4 +1,8 @@
-## GPIO boot mode
+# Source: boot-gpio.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== GPIO boot mode
 
 NOTE: GPIO boot mode is only available on the Raspberry Pi 3A+, 3B, 3B+, Compute Module 3 and 3+.
 
@@ -6,17 +10,18 @@ Earlier Raspberry Pis can be configured to allow the boot mode to be selected at
 
 To enable GPIO boot mode, add the following line to the `config.txt` file:
 
-```ini
-program*gpio*bootmode=n
-```
+[source,ini]
+----
+program_gpio_bootmode=n
+----
 
 Where `n` is the bank of GPIOs which you wish to use. Then reboot the Raspberry Pi once to program the OTP with this setting. Bank 1 is GPIOs 22-26, Bank 2 is GPIOs 39-43. Unless you have a Compute Module, you must use bank 1: the GPIOs in Bank 2 are only available on the Compute Module. Because of the way the OTP bits are arranged, if you first program GPIO boot mode for Bank 1, you then have the option of selecting Bank 2 later. The reverse is not true: once Bank 2 has been selected for GPIO boot mode, you cannot select Bank 1.
 
 Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot-mode GPIO pin in order for the Raspberry Pi to boot.
 
-### Pin assignments
+=== Pin assignments
 
-#### Raspberry Pi 3B and Compute Module 3
+==== Raspberry Pi 3B and Compute Module 3
 
 [cols="^,^,^"]
 |===
@@ -45,7 +50,7 @@ Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must p
 
 USB in the table above selects both USB device boot mode and USB host boot mode. In order to use a USB boot mode, it must be enabled in the OTP memory. For more information, see xref:raspberry-pi.adoc#usb-device-boot-mode[USB device boot] and xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot].
 
-#### Later Raspberry Pi 3B (BCM2837B0 with the metal lid), Raspberry Pi 3A+, 3B+ and Compute Module 3+
+==== Later Raspberry Pi 3B (BCM2837B0 with the metal lid), Raspberry Pi 3A+, 3B+ and Compute Module 3+
 
 [cols="^,^,^"]
 |===
@@ -82,7 +87,7 @@ USB in the table above selects both USB device boot mode and USB host boot mode.
 
 NOTE: The various boot modes are attempted in the numerical order of the GPIO lines, i.e. SD0, then SD1, then NAND and so on.
 
-### Boot flow
+=== Boot flow
 
 SD0 is the Broadcom SD card/MMC interface. When the boot ROM within the SoC runs, it always connects SD0 to the built-in microSD card slot. On Compute Modules with an eMMC device, SD0 is connected to that; on the Compute Module Lite SD0 is available on the edge connector and connects to the microSD card slot in the CMIO carrier board. SD1 is the Arasan SD card/MMC interface which is also capable of SDIO. All Raspberry Pi models with built-in wireless LAN use SD1 to connect to the wireless chip via SDIO.
 

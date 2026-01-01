@@ -1,11 +1,15 @@
+# Source: lens.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 [[lenses]]
-## Recommended Lenses
+== Recommended Lenses
 
 The following lenses are recommended for use with our HQ and GS cameras.
 
 NOTE: While the HQ Camera is available in both C/CS- and M12-mount versions, the GS Camera is available only with a C/CS-mount.
 
-### C/CS Lenses
+=== C/CS Lenses
 
 We recommend two lenses, a 6 mm wide angle lens and a 16 mm telephoto lens manufactured by CGL Electronics Co. Ltd. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
 
@@ -25,9 +29,9 @@ We recommend two lenses, a 6 mm wide angle lens and a 16 mm telephoto lens manuf
 2+| Dimensions | φ39×50 mm |	φ30×34 mm
 |===
 
-### M12 Lenses
+=== M12 Lenses
 
-image: images/m12-lens.jpg[]
+image::images/m12-lens.jpg[]
 
 We recommend three lenses manufactured by https://www.gaojiaoptotech.com/[Gaojia Optotech]. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
 

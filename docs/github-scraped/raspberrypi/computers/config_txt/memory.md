@@ -1,11 +1,17 @@
-## Memory options
+# Source: memory.adoc
 
-### `total*mem`
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Memory options
+
+=== `total_mem`
 
 This parameter can be used to force a Raspberry Pi to limit its memory capacity: specify the total amount of RAM, in megabytes, you wish the Raspberry Pi to use. For example, to make a 4 GB Raspberry Pi 4B behave as though it were a 1 GB model, use the following:
 
-```ini
-total*mem=1024
-```
+[source,ini]
+----
+total_mem=1024
+----
 
 This value will be clamped between a minimum of 128 MB, and a maximum of the total memory installed on the board.
+

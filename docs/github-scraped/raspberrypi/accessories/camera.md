@@ -1,0 +1,27 @@
+# Source: camera.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+include::camera/intro.adoc[]
+
+include::camera/install.adoc[]
+
+include::camera/cm2.adoc[]
+
+include::camera/cm3.adoc[]
+
+include::camera/gs.adoc[]
+
+include::camera/hq.adoc[]
+
+include::camera/lens.adoc[]
+
+include::camera/synchronous_cameras.adoc[]
+
+include::camera/external_trigger.adoc[]
+
+include::camera/filters.adoc[]
+
+include::camera/hardware_specification.adoc[]
+
+include::camera/advanced.adoc[]

@@ -1,22 +1,26 @@
-### Use multiple cameras
+# Source: rpicam_apps_multicam.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Use multiple cameras
 
 `rpicam-apps` has basic support for multiple cameras. You can attach multiple cameras to a Raspberry Pi in the following ways:
 
-** For Raspberry Pi Compute Modules, you can connect two cameras directly to a Raspberry Pi Compute Module I/O board. See the xref:../computers/compute-module.adoc#attach-a-camera-module[Compute Module documentation] for further details. With this method, you can *use both cameras simultaneously*.
-** For Raspberry Pi 5, you can connect two cameras directly to the board using the dual MIPI connectors.
-** For other Raspberry Pi devices with a camera port, you can attach two or more cameras with a Video Mux board such as https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this third-party product]. Since both cameras are attached to a single Unicam port, *only one camera may be used at a time*.
+* For Raspberry Pi Compute Modules, you can connect two cameras directly to a Raspberry Pi Compute Module I/O board. See the xref:../computers/compute-module.adoc#attach-a-camera-module[Compute Module documentation] for further details. With this method, you can _use both cameras simultaneously_.
+* For Raspberry Pi 5, you can connect two cameras directly to the board using the dual MIPI connectors.
+* For other Raspberry Pi devices with a camera port, you can attach two or more cameras with a Video Mux board such as https://www.arducam.com/product/multi-camera-v2-1-adapter-raspberry-pi/[this third-party product]. Since both cameras are attached to a single Unicam port, _only one camera may be used at a time_.
 
-To list all the cameras available on your platform, use the xref:camera*software.adoc#list-cameras[`list-cameras`] option. To choose which camera to use, pass the camera index to the xref:camera*software.adoc#camera[`camera`] option.
+To list all the cameras available on your platform, use the xref:camera_software.adoc#list-cameras[`list-cameras`] option. To choose which camera to use, pass the camera index to the xref:camera_software.adoc#camera[`camera`] option.
 
 NOTE: `libcamera` does not yet provide stereoscopic camera support. When running two cameras simultaneously, they must be run in separate processes, meaning there is no way to synchronise 3A operation between them.  As a workaround, you could synchronise the cameras through an external sync signal for the HQ (IMX477) camera or use the software camera synchronisation support that is described below, switching the 3A to manual mode if necessary.
 
-#### Software Camera Synchronisation
+==== Software Camera Synchronisation
 
-Raspberry Pi's *libcamera* implementation has the ability to synchronise the frames of different cameras using only software. This will cause one camera to adjust it's frame timing so as to coincide as closely as possible with the frames of another camera. No soldering or hardware connections are required, and it will work with all of Raspberry Pi's camera modules, and even third party ones so long as their drivers implement frame duration control correctly.
+Raspberry Pi's _libcamera_ implementation has the ability to synchronise the frames of different cameras using only software. This will cause one camera to adjust it's frame timing so as to coincide as closely as possible with the frames of another camera. No soldering or hardware connections are required, and it will work with all of Raspberry Pi's camera modules, and even third party ones so long as their drivers implement frame duration control correctly.
 
-****How it works****
+**How it works**
 
-The scheme works by designating one camera to be the *server*. The server will broadcast timing messages onto the network at regular intervals, such as once a second. Meanwhile other cameras, known as *clients*, can listen to these messages whereupon they may lengthen or shorten frame times slightly so as to pull them into sync with the server. This process is continual, though after the first adjustment, subsequent adjustments are normally small.
+The scheme works by designating one camera to be the _server_. The server will broadcast timing messages onto the network at regular intervals, such as once a second. Meanwhile other cameras, known as _clients_, can listen to these messages whereupon they may lengthen or shorten frame times slightly so as to pull them into sync with the server. This process is continual, though after the first adjustment, subsequent adjustments are normally small.
 
 The client cameras may be attached to the same Raspberry Pi device as the server, or they may be attached to different Raspberry Pis on the same network. The camera model on the clients may match the server, or they may be different.
 
@@ -26,35 +30,37 @@ In normal operation, running the same make of camera on the same Raspberry Pi, w
 
 When cameras are on different devices, the system clocks should be synchronised using NTP (normally the case by default for Raspberry Pi OS), or if this is insufficiently precise, another protocol like PTP might be used. Any discrepancy between system clocks will feed directly into extra error in frame start times - even though the advertised timestamps on the frames will not tell you.
 
-****The Server****
+**The Server**
 
 The server, as previously explained, broadcasts timing messages onto the network, by default every second. The server will run for a fixed number of frames, by default 100, after which it will inform the camera application on the device that the "synchronisation point" has been reached. At this moment, the application will start using the frames, so in the case of `rpicam-vid`, they will start being encoded and recorded. Recall that the behaviour and even existence of clients has no bearing on this.
 
 If required, there can be several servers on the same network so long as they are broadcasting timing messages to different network addresses. Clients, of course, will have to be configured to listen for the correct address.
 
-****Clients****
+**Clients**
 
 Clients listen out for server timing messages and, when they receive one, will shorten or lengthen a camera frame duration by the required amount so that subsequent frames will start, as far as possible, at the same moment as the server's.
 
 The clients learn the correct "synchronisation point" from the server's messages, and just like the server, will signal the camera application at the same moment that it should start using the frames. So in the case of `rpicam-vid`, this is once again the moment at which frames will start being recorded.
 
-Normally it makes sense to start clients *before* the server, as the clients will simply wait (the "synchronisation point" has not been reached) until a server is seen broadcasting onto the network. This obviously avoids timing problems where a server might reach its "synchronisation point" even before all the clients have been started!
+Normally it makes sense to start clients _before_ the server, as the clients will simply wait (the "synchronisation point" has not been reached) until a server is seen broadcasting onto the network. This obviously avoids timing problems where a server might reach its "synchronisation point" even before all the clients have been started!
 
-****Usage in `rpicam-vid`****
+**Usage in `rpicam-vid`**
 
 We can use software camera synchronisation with `rpicam-vid` to record videos that are synchronised frame-by-frame. We're going to assume we have two cameras attached, and we're going to use camera 0 as the server, and camera 1 as the client. `rpicam-vid` defaults to a fixed 30 frames per second, which will be fine for us.
 
 First we should start the client:
-```console
+[source,console]
+----
 $ rpicam-vid -n -t 20s --camera 1 --codec libav -o client.mp4 --sync client
-```
+----
 
-Note the `--sync client` parameter. This will record for 20 seconds but *only* once the synchronisation point has been reached. If necessary, it will wait indefinitely for the first server message.
+Note the `--sync client` parameter. This will record for 20 seconds but _only_ once the synchronisation point has been reached. If necessary, it will wait indefinitely for the first server message.
 
 To start the server:
-```console
+[source,console]
+----
 $ rpicam-vid -n -t 20s --camera 0 --codec libav -o server.mp4 --sync server
-```
+----
 
 This too will run for 20 seconds counting from when the synchronisation point is reached and the recording starts. With the default synchronisation settings (100 frames at 30fps) this means there will be just over 3 seconds for clients to get synchronised.
 
@@ -62,5 +68,5 @@ The server's broadcast address and port, the frequency of the timing messages an
 
 In practical operation there are a few final points to be aware of:
 
-** The fixed framerate needs to be below the maximum framerate at which the camera can operate (in the camera mode that is being used). This is because the synchronisation algorithm may need to *shorten* camera frames so that clients can catch up with the server, and this will fail if it is already running as fast as it can.
-- Whilst camera frames should be correctly synchronised, at higher framerates or depending on system load, it is possible for frames, either on the clients or server, to be dropped. In these cases the frame timestamps will help an application to work out what has happened, though it's usually simpler to try and avoid frame drops - perhaps by lowering the framerate, increasing the number of buffers being allocated to the camera queues (see the xref:camera_software.adoc#buffer-count[`--buffer-count` option]), or reducing system load.
+* The fixed framerate needs to be below the maximum framerate at which the camera can operate (in the camera mode that is being used). This is because the synchronisation algorithm may need to _shorten_ camera frames so that clients can catch up with the server, and this will fail if it is already running as fast as it can.
+* Whilst camera frames should be correctly synchronised, at higher framerates or depending on system load, it is possible for frames, either on the clients or server, to be dropped. In these cases the frame timestamps will help an application to work out what has happened, though it's usually simpler to try and avoid frame drops - perhaps by lowering the framerate, increasing the number of buffers being allocated to the camera queues (see the xref:camera_software.adoc#buffer-count[`--buffer-count` option]), or reducing system load.

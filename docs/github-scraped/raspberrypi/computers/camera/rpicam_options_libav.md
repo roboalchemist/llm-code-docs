@@ -1,64 +1,69 @@
-### `libav` options
+# Source: rpicam_options_libav.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== `libav` options
 
 The command line options specified in this section apply only to `libav` video backend.
 
-To enable the `libav` backend, pass the xref:camera*software.adoc#codec[`codec`] option the value `libav`.
+To enable the `libav` backend, pass the xref:camera_software.adoc#codec[`codec`] option the value `libav`.
 
 To pass one of the following options to an application, prefix the option name with `--`. If the option requires a value, pass the value immediately after the option name, separated by a single space. If the value contains a space, surround the value in quotes.
 
 Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
 
-#### `libav-format`
+==== `libav-format`
 
 Sets the `libav` output format. Accepts the following values:
 
-** `mkv` encoding
-** `mp4` encoding
-** `avi` encoding
-** `h264` streaming
-- `mpegts` streaming
+* `mkv` encoding
+* `mp4` encoding
+* `avi` encoding
+* `h264` streaming
+* `mpegts` streaming
 
-If you do not provide this option, the file extension passed to the xref:camera*software.adoc#output[`output`] option determines the file format.
+If you do not provide this option, the file extension passed to the xref:camera_software.adoc#output[`output`] option determines the file format.
 
-#### `libav-audio`
+==== `libav-audio`
 
-Enables audio recording. When enabled, you must also specify an xref:camera*software.adoc#audio-codec[`audio-codec`]. Does not accept a value.
+Enables audio recording. When enabled, you must also specify an xref:camera_software.adoc#audio-codec[`audio-codec`]. Does not accept a value.
 
-#### `audio-codec`
+==== `audio-codec`
 
 Default value: `aac`
 
 Selects an audio codec for output. For a list of available codecs, run `ffmpeg -codecs`.
 
-#### `audio-bitrate`
+==== `audio-bitrate`
 
 Sets the bitrate for audio encoding in bits per second. Accepts numeric input.
 
-Example: `rpicam-vid --codec libav -o test.mp4 --audio*codec mp2 --audio-bitrate 16384` (Records audio at 16 kilobits/sec with the mp2 codec)
+Example: `rpicam-vid --codec libav -o test.mp4 --audio_codec mp2 --audio-bitrate 16384` (Records audio at 16 kilobits/sec with the mp2 codec)
 
-#### `audio-samplerate`
+==== `audio-samplerate`
 
 Default value: `0`
 
 Sets the audio sampling rate in Hz. Accepts numeric input. `0` uses the input sample rate.
 
-#### `audio-device`
+==== `audio-device`
 
 Select an ALSA input device for audio recording. For a list of available devices, run the following command:
 
-```console
+[source,console]
+----
 $ pactl list | grep -A2 'Source #' | grep 'Name: '
-```
+----
 
 You should see output similar to the following:
 
-```
-Name: alsa*output.platform-bcm2835*audio.analog-stereo.monitor
-Name: alsa*output.platform-fef00700.hdmi.hdmi-stereo.monitor
-Name: alsa*output.usb-GN*Netcom*A*S*Jabra*EVOLVE*LINK*000736B1214E0A-00.analog-stereo.monitor
-Name: alsa*input.usb-GN*Netcom*A*S*Jabra*EVOLVE*LINK_000736B1214E0A-00.mono-fallback
-```
+----
+Name: alsa_output.platform-bcm2835_audio.analog-stereo.monitor
+Name: alsa_output.platform-fef00700.hdmi.hdmi-stereo.monitor
+Name: alsa_output.usb-GN_Netcom_A_S_Jabra_EVOLVE_LINK_000736B1214E0A-00.analog-stereo.monitor
+Name: alsa_input.usb-GN_Netcom_A_S_Jabra_EVOLVE_LINK_000736B1214E0A-00.mono-fallback
+----
 
-#### `av-sync`
+==== `av-sync`
 
 Shifts the audio sample timestamp by a value in microseconds. Accepts positive and negative numeric values.

@@ -1,10 +1,14 @@
-### Post-processing with OpenCV
+# Source: rpicam_apps_post_processing_opencv.adoc
 
-NOTE: These stages require an OpenCV installation. You may need to xref:camera*software.adoc#build-libcamera-and-rpicam-apps[rebuild `rpicam-apps` with OpenCV support].
+*Note: This file could not be automatically converted from AsciiDoc.*
 
-#### `sobel*cv` stage
+=== Post-processing with OpenCV
 
-This stage applies a https://en.wikipedia.org/wiki/Sobel*operator[Sobel filter] to an image to emphasise edges.
+NOTE: These stages require an OpenCV installation. You may need to xref:camera_software.adoc#build-libcamera-and-rpicam-apps[rebuild `rpicam-apps` with OpenCV support].
+
+==== `sobel_cv` stage
+
+This stage applies a https://en.wikipedia.org/wiki/Sobel_operator[Sobel filter] to an image to emphasise edges.
 
 You can configure this stage with the following parameters:
 
@@ -13,72 +17,75 @@ You can configure this stage with the following parameters:
 | `ksize` | Kernel size of the Sobel filter
 |===
 
-Default `sobel*cv.json` file:
 
-```json
+Default `sobel_cv.json` file:
+
+[source,json]
+----
 {
-    "sobel*cv" : {
+    "sobel_cv" : {
         "ksize": 5
     }
 }
-```
+----
 
 Example:
 
 .Using a Sobel filter to emphasise edges.
-image: images/sobel.jpg[Using a Sobel filter to emphasise edges]
+image::images/sobel.jpg[Using a Sobel filter to emphasise edges]
 
-#### `face*detect*cv` stage
+==== `face_detect_cv` stage
 
-This stage uses the OpenCV Haar classifier to detect faces in an image. It returns face location metadata under the key `face*detect.results` and optionally draws the locations on the image.
+This stage uses the OpenCV Haar classifier to detect faces in an image. It returns face location metadata under the key `face_detect.results` and optionally draws the locations on the image.
 
 You can configure this stage with the following parameters:
 
 [cols=",3]
 |===
-| `cascade*name` | Name of the file where the Haar cascade can be found
-| `scaling*factor` | Determines range of scales at which the image is searched for faces
-| `min*neighbors` | Minimum number of overlapping neighbours required to count as a face
-| `min*size` | Minimum face size
-| `max*size` | Maximum face size
-| `refresh*rate` | How many frames to wait before trying to re-run the face detector
-| `draw*features` | Whether to draw face locations on the returned image
+| `cascade_name` | Name of the file where the Haar cascade can be found
+| `scaling_factor` | Determines range of scales at which the image is searched for faces
+| `min_neighbors` | Minimum number of overlapping neighbours required to count as a face
+| `min_size` | Minimum face size
+| `max_size` | Maximum face size
+| `refresh_rate` | How many frames to wait before trying to re-run the face detector
+| `draw_features` | Whether to draw face locations on the returned image
 |===
 
-The `face*detect*cv` stage runs only during preview and video capture. It ignores still image capture. It runs on the low resolution stream with a resolution between 320×240 and 640×480 pixels.
+The `face_detect_cv` stage runs only during preview and video capture. It ignores still image capture. It runs on the low resolution stream with a resolution between 320×240 and 640×480 pixels.
 
-Default `face*detect*cv.json` file:
+Default `face_detect_cv.json` file:
 
-```json
+[source,json]
+----
 {
-    "face*detect*cv" : {
-        "cascade*name" : "/usr/local/share/OpenCV/haarcascades/haarcascade*frontalface*alt.xml",
-        "scaling*factor" : 1.1,
-        "min*neighbors" : 2,
-        "min*size" : 32,
-        "max*size" : 256,
-        "refresh*rate" : 1,
-        "draw*features" : 1
+    "face_detect_cv" : {
+        "cascade_name" : "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml",
+        "scaling_factor" : 1.1,
+        "min_neighbors" : 2,
+        "min_size" : 32,
+        "max_size" : 256,
+        "refresh_rate" : 1,
+        "draw_features" : 1
     }
 }
-```
+----
 
 Example:
 
 .Drawing detected faces onto an image.
-image: images/face*detect.jpg[Drawing detected faces onto an image]
+image::images/face_detect.jpg[Drawing detected faces onto an image]
 
-#### `annotate*cv` stage
+==== `annotate_cv` stage
 
-This stage writes text into the top corner of images using the same `%` substitutions as the xref:camera*software.adoc#info-text[`info-text`] option.
+This stage writes text into the top corner of images using the same `%` substitutions as the xref:camera_software.adoc#info-text[`info-text`] option.
 
-Interprets xref:camera*software.adoc#info-text[`info-text` directives] first, then passes any remaining tokens to https://www.man7.org/linux/man-pages/man3/strftime.3.html[`strftime`].
+Interprets xref:camera_software.adoc#info-text[`info-text` directives] first, then passes any remaining tokens to https://www.man7.org/linux/man-pages/man3/strftime.3.html[`strftime`].
 
 For example, to achieve a datetime stamp on the video, pass `%F %T %z`:
 
-** `%F` displays the ISO-8601 date (2023-03-07)
-** `%T` displays 24h local time (e.g. "09:57:12")
-- `%z` displays the timezone relative to UTC (e.g. "-0800")
+* `%F` displays the ISO-8601 date (2023-03-07)
+* `%T` displays 24h local time (e.g. "09:57:12")
+* `%z` displays the timezone relative to UTC (e.g. "-0800")
 
 This stage does not output any metadata, but it writes metadata found in `annotate.text` in place of anything in the JSON configuration file. This allows other post-processing stages to write text onto images.
 
@@ -94,11 +101,12 @@ You can configure this stage with the following parameters:
 | `alpha` | The amount of alpha to apply when overwriting background pixels
 |===
 
-Default `annotate*cv.json` file:
+Default `annotate_cv.json` file:
 
-```json
+[source,json]
+----
 {
-    "annotate*cv" : {
+    "annotate_cv" : {
         "text" : "Frame %frame exp %exp ag %ag dg %dg",
         "fg" : 255,
         "bg" : 0,
@@ -107,9 +115,10 @@ Default `annotate*cv.json` file:
         "alpha" : 0.3
     }
 }
-```
+----
 
 Example:
 
 .Writing camera and date information onto an image with annotations.
-image: images/annotate.jpg[Writing camera and date information onto an image with annotations]
+image::images/annotate.jpg[Writing camera and date information onto an image with annotations]
+

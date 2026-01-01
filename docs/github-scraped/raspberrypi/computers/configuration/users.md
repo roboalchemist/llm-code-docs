@@ -1,29 +1,36 @@
-## Users
+# Source: users.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Users
 
 [[change-user-password]]
-### Change a user's password
+=== Change a user's password
 
 You can change the password for the current user account via the `raspi-config` application on from the command line:
 
-```console
+[source,console]
+----
 $ sudo raspi-config
-```
+----
 
 Select option 2, and follow the instructions to change the password.
 
 Alternatively, use the `passwd` application:
 
-```console
+[source,console]
+----
 $ passwd
-```
+----
 
-### Add a user
+=== Add a user
 
 To add a new user, enter the following command, replacing the `<username>` placeholder with the username for the new user:
 
-```console
+[source,console]
+----
 $ sudo adduser <username>
-```
+----
 
 When prompted, enter a password for the new user.
 
@@ -31,40 +38,45 @@ You can find the home directory for the new user at `/home/<username>/`.
 
 To grant the new user necessary permissions, like `sudo`, run the following command to add the user to the associated user groups, replacing the `<username>` placeholder with the username for the new user:
 
-```console
+[source,console]
+----
 $ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,render,netdev,lpadmin,gpio,i2c,spi <username>
-```
+----
 
 To check that the permissions were successfully granted, run the following command, replacing the `<username>` placeholder with the username for the new user:
 
-```console
+[source,console]
+----
 $ sudo su - <username>
-```
+----
 
 If the above command runs successfully, permissions were successfully configured for the user.
 
 If you've changed your keyboard layout, you might find that the newly added user is using the "wrong" keyboard layout. To fix this, sign in as the new user and run:
 
-```console
-$ sudo raspi-config nonint update*labwc*keyboard
-```
+[source,console]
+----
+$ sudo raspi-config nonint update_labwc_keyboard
+----
 
-### Delete a user
+=== Delete a user
 
 To delete a user, run the following command, replacing the `<username>` placeholder with the username you would like to delete:
 
-```console
+[source,console]
+----
 $ sudo deluser -remove-home <username>
-```
+----
 
 This command deletes the user as well as their home directory. If you'd like to preserve the user's home directory, run the command without the `-remove-home` option.
 
-### Change the default user
+=== Change the default user
 
 To change the user that automatically logs into your Raspberry Pi on boot, run the following command:
 
-```console
+[source,console]
+----
 $ sudo raspi-config
-```
+----
 
 Select option `1`, `Boot/Auto login`. Reboot to put your changes into effect.

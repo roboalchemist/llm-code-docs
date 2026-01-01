@@ -1,4 +1,8 @@
-## Where can I find documentation?
+# Source: micropython-documentation.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Where can I find documentation?
 
 You can find information on the MicroPython port to RP2040 at;
 
@@ -6,3 +10,4 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspber
 https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
 https://docs.micropython.org/en/latest/rp2/quickref.html[RP2 Quick Reference]:: The official documentation around the RP2040 port of MicroPython
 https://docs.micropython.org/en/latest/library/rp2.html[RP2 Library]:: The official documentation about the `rp2` module in MicroPython
+

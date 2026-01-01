@@ -1,10 +1,14 @@
-### Raspberry Pi DigiAMP{plus}
+# Source: digiamp_plus.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Raspberry Pi DigiAMP{plus}
 
 With Raspberry Pi DigiAMP{plus}, you can connect 2 passive stereo speakers up to 35 W with variable output, making it ideal for use in Raspberry Pi-based hi-fi systems.
 
 DigiAMP{plus} uses the Texas Instruments TAS5756M PowerDAC and must be powered from an external supply. It requires a 12-24V DC power source (the XP Power VEC65US19 power supply is recommended).
 
-image: images/DigiAMP+*Board*Diagram.jpg[width="80%"]
+image::images/DigiAMP+_Board_Diagram.jpg[width="80%"]
 
 DigiAMP{plus}'s power in barrel connector is 5.5 mm × 2.5 mm.
 
@@ -14,9 +18,9 @@ DigiAMP{plus} is designed to provide power to the Raspberry Pi and DigiAMP{plus}
 
 WARNING: Do not apply power to the Raspberry Pi's own power input when using DigiAMP{plus}.
 
-#### Pinouts
+==== Pinouts
 [cols="1,12"]
 |===
-| **P5** | Alternative power input for hard wired installations (polarity must be observed).
-| **P8** | TAS5756m Internal GPIO1/2/3
+| *P5* | Alternative power input for hard wired installations (polarity must be observed).
+| *P8* | TAS5756m Internal GPIO1/2/3
 |===

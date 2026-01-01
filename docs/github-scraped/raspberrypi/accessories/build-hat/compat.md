@@ -1,4 +1,8 @@
-## Device Compatibility
+# Source: compat.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Device Compatibility
 
 The Build HAT library supports all the LEGO® Technic™ devices included in the SPIKE™ Portfolio, along with those from the LEGO® Mindstorms Robot Inventor kit and other devices that use a PoweredUp connector.
 

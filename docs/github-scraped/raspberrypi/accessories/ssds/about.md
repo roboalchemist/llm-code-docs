@@ -1,20 +1,24 @@
-## About
+# Source: about.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== About
 
 .A 512 GB Raspberry Pi SSD
-image: images/ssd.png[width="80%"]
+image::images/ssd.png[width="80%"]
 
 SSD quality is a critical factor in determining the overall user experience for a Raspberry Pi.
 Raspberry Pi provides official SSDs that are tested to ensure compatibility with Raspberry Pi models and peripherals.
 
 Raspberry Pi SSDs are available in the following sizes:
 
-** 256 GB
-** 512 GB
-- 1 TB
+* 256 GB
+* 512 GB
+* 1 TB
 
 To use an SSD with your Raspberry Pi, you need a Raspberry Pi 5-compatible M.2 adapter, such as the xref:../accessories/m2-hat-plus.adoc[Raspberry Pi M.2 HAT+ or M.2 HAT+ Compact].
 
-## Specifications
+== Specifications
 
 Raspberry Pi SSDs are PCIe Gen 3-compliant.
 

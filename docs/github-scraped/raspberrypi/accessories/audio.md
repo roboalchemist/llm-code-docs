@@ -1,0 +1,21 @@
+# Source: audio.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+include::audio/introduction.adoc[]
+
+include::audio/dac_pro.adoc[]
+
+include::audio/dac_plus.adoc[]
+
+include::audio/digiamp_plus.adoc[]
+
+include::audio/codec_zero.adoc[]
+
+include::audio/configuration.adoc[]
+
+include::audio/getting_started.adoc[]
+
+include::audio/hardware-info.adoc[]
+
+include::audio/update-firmware.adoc[]

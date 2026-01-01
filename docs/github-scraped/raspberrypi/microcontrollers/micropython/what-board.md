@@ -1,20 +1,25 @@
-## Which hardware am I running on?
+# Source: what-board.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Which hardware am I running on?
 
 There is no direct method for software written in MicroPython to discover whether it is running on a Raspberry Pi Pico or a Pico W by looking at the hardware. However, you can tell indirectly by looking to see if network functionality is included in your particular MicroPython firmware:
 
-```python
+[source,python]
+----
 import network
 if hasattr(network, "WLAN"):
    # the board has WLAN capabilities
-```
+----
 
 Alternatively, you can inspect the MicroPython firmware version to check whether it was compiled for Raspberry Pi Pico or for Pico W using the `sys` module.
 
 [source]
-```
+----
 >>> import sys
 >>> sys.implementation
-(name='micropython', version=(1, 19, 1), *machine='Raspberry Pi Pico W with RP2040', *mpy=4102)
-```
+(name='micropython', version=(1, 19, 1), _machine='Raspberry Pi Pico W with RP2040', _mpy=4102)
+----
 
 If the 'Pico W' string is present and in `sys.implementation._machine`, your firmware was compiled for Pico W.

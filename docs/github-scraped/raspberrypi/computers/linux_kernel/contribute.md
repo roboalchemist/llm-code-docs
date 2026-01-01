@@ -1,22 +1,26 @@
-## Contribute
+# Source: contribute.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Contribute
 
 There are many reasons you may want to put something into the kernel:
 
-** You've written some Raspberry Pi-specific code that you want everyone to benefit from
-** You've written a generic Linux kernel driver for a device and want everyone to use it
-** You've fixed a generic kernel bug
-** You've fixed a Raspberry Pi-specific kernel bug
+* You've written some Raspberry Pi-specific code that you want everyone to benefit from
+* You've written a generic Linux kernel driver for a device and want everyone to use it
+* You've fixed a generic kernel bug
+* You've fixed a Raspberry Pi-specific kernel bug
 
 For Raspberry Pi-specific changes or bug fixes, submit a pull request to the Raspberry Pi kernel.
 For general Linux kernel changes (i.e. a new driver), submit a pull request to the upstream Linux kernel first. Once the Linux kernel accepts your change, we'll receive it.
 
-### Contribute to the Raspberry Pi Kernel
+=== Contribute to the Raspberry Pi Kernel
 
 First, fork the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository] and clone it to your development device. You can then make your changes, test them, and commit them into your fork.
 
 Then, submit a pull request containing your changes to the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository]. Raspberry Pi engineers will review your contribution and suggest improvements. Once approved, we'll merge in your changes, and they'll eventually make their way to the stable release of the Raspberry Pi kernel.
 
-### Contribute to the Linux kernel
+=== Contribute to the Linux kernel
 
 First, clone the https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git[Linux kernel tree] to your development device. You can then make your changes, test them, and commit them into your local tree.
 

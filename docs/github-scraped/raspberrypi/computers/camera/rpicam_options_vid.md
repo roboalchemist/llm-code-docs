@@ -1,4 +1,8 @@
-### Video options
+# Source: rpicam_options_vid.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Video options
 
 The command line options specified in this section apply only to video output.
 
@@ -6,7 +10,7 @@ To pass one of the following options to an application, prefix the option name w
 
 Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
 
-#### `quality`
+==== `quality`
 
 Alias: `-q`
 
@@ -14,15 +18,16 @@ Default value: `50`
 
 Accepts an MJPEG quality level between 1 and 100. Only applies to videos encoded in the MJPEG format.
 
-#### `bitrate`
+==== `bitrate`
 
 Alias: `-b`
 
 Controls the target bitrate used by the H.264 encoder in bits per second. Only applies to videos encoded in the H.264 format. Impacts the size of the output video.
 
+
 Example: `rpicam-vid -b 10000000 --width 1920 --height 1080 -o test.h264`
 
-#### `intra`
+==== `intra`
 
 Alias: `-g`
 
@@ -30,36 +35,36 @@ Default value: `60`
 
 Sets the frequency of Iframes (intra frames) in the H.264 bitstream. Accepts a number of frames. Only applies to videos encoded in the H.264 format.
 
-#### `profile`
+==== `profile`
 
 Sets the H.264 profile. Accepts the following values:
 
-** `baseline`
-** `main`
-** `high`
+* `baseline`
+* `main`
+* `high`
 
 Only applies to videos encoded in the H.264 format.
 
-#### `level`
+==== `level`
 
 Sets the H.264 level. Accepts the following values:
 
-** `4`
-** `4.1`
-** `4.2`
+* `4`
+* `4.1`
+* `4.2`
 
 Only applies to videos encoded in the H.264 format.
 
-#### `codec`
+==== `codec`
 
 Sets the encoder to use for video output. Accepts the following values:
 
-** `h264` - use H.264 encoder (the default)
-** `mjpeg` - use MJPEG encoder
-** `yuv420` - output uncompressed YUV420 frames.
-** `libav` - use the libav backend to encode audio and video (for more information, see xref:camera*software.adoc#libav-integration-with-rpicam-vid[`libav`])
+* `h264` - use H.264 encoder (the default)
+* `mjpeg` - use MJPEG encoder
+* `yuv420` - output uncompressed YUV420 frames.
+* `libav` - use the libav backend to encode audio and video (for more information, see xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`])
 
-#### `save-pts`
+==== `save-pts`
 
 WARNING: Raspberry Pi 5 does not support the `save-pts` option. Use `libav` to automatically generate timestamps for container formats instead.
 
@@ -69,71 +74,72 @@ Example: `rpicam-vid -o test.h264 --save-pts timestamps.txt`
 
 You can then use the following command to generate an MKV container file from the bitstream and timestamps file:
 
-```console
+[source,console]
+----
 $ mkvmerge -o test.mkv --timecodes 0:timestamps.txt test.h264
-```
+----
 
-#### `keypress`
+==== `keypress`
 
 Alias: `-k`
 
-Allows the CLI to enable and disable video output using the **Enter** key. Always starts in the recording state unless specified otherwise with xref:camera*software.adoc#initial[`initial`]. Type the `x` key and press **Enter** to exit. Does not accept a value.
+Allows the CLI to enable and disable video output using the *Enter* key. Always starts in the recording state unless specified otherwise with xref:camera_software.adoc#initial[`initial`]. Type the `x` key and press *Enter* to exit. Does not accept a value.
 
-#### `signal`
+==== `signal`
 
 Alias: `-s`
 
-Allows the CLI to enable and disable video output using `SIGUSR1`. Use `SIGUSR2` to exit. Always starts in the recording state unless specified otherwise with xref:camera*software.adoc#initial[`initial`]. Does not accept a value.
+Allows the CLI to enable and disable video output using `SIGUSR1`. Use `SIGUSR2` to exit. Always starts in the recording state unless specified otherwise with xref:camera_software.adoc#initial[`initial`]. Does not accept a value.
 
-#### `initial`
+==== `initial`
 
 Default value: `record`
 
 Specifies whether to start the application with video output enabled or disabled. Accepts the following values:
 
-** `record`: Starts with video output enabled.
-** `pause`: Starts with video output disabled.
+* `record`: Starts with video output enabled.
+* `pause`: Starts with video output disabled.
 
-Use this option with either xref:camera*software.adoc#keypress[`keypress`] or xref:camera*software.adoc#signal[`signal`] to toggle between the two states.
+Use this option with either xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`] to toggle between the two states.
 
-#### `split`
+==== `split`
 
-When toggling recording with xref:camera*software.adoc#keypress[`keypress`] or xref:camera*software.adoc#signal[`signal`], writes the video output from separate recording sessions into separate files. Does not accept a value. Unless combined with xref:camera*software.adoc#output[`output`] to specify unique names for each file, overwrites each time it writes a file.
+When toggling recording with xref:camera_software.adoc#keypress[`keypress`] or xref:camera_software.adoc#signal[`signal`], writes the video output from separate recording sessions into separate files. Does not accept a value. Unless combined with xref:camera_software.adoc#output[`output`] to specify unique names for each file, overwrites each time it writes a file.
 
-#### `segment`
+==== `segment`
 
 Cuts video output into multiple files of the passed duration. Accepts a duration in milliseconds. If passed a very small duration (for instance, `1`), records each frame to a separate output file to simulate burst capture.
 
 You can specify separate filenames for each file using string formatting, e.g. `--output test%04d.h264`.
 
-#### `circular`
+==== `circular`
 
 Default value: `4`
 
 Writes video recording into a circular buffer in memory. When the application quits, records the circular buffer to disk. Accepts an optional size in megabytes.
 
-#### `inline`
+==== `inline`
 
-Writes a sequence header in every Iframe (intra frame). This can help clients decode the video sequence from any point in the video, instead of just the beginning. Recommended with xref:camera*software.adoc#segment[`segment`], xref:camera*software.adoc#split[`split`], xref:camera*software.adoc#circular[`circular`], and streaming options.
+Writes a sequence header in every Iframe (intra frame). This can help clients decode the video sequence from any point in the video, instead of just the beginning. Recommended with xref:camera_software.adoc#segment[`segment`], xref:camera_software.adoc#split[`split`], xref:camera_software.adoc#circular[`circular`], and streaming options.
 
 Only applies to videos encoded in the H.264 format. Does not accept a value.
 
-#### `listen`
+==== `listen`
 
 Waits for an incoming client connection before encoding video. Intended for network streaming over TCP/IP. Does not accept a value.
 
-#### `frames`
+==== `frames`
 
-Records exactly the specified number of frames. Any non-zero value overrides xref:camera*software.adoc#timeout[`timeout`]. Accepts a nonzero integer.
+Records exactly the specified number of frames. Any non-zero value overrides xref:camera_software.adoc#timeout[`timeout`]. Accepts a nonzero integer.
 
-#### `framerate`
+==== `framerate`
 
 Records exactly the specified framerate. Accepts a nonzero integer.
 
-#### `low-latency`
+==== `low-latency`
 
 On a Pi 5, the `--low-latency` option will reduce the encoding latency, which may be beneficial for real-time streaming applications, in return for (slightly) less good coding efficiency (for example, B frames and arithmetic coding will no longer be used).
 
-#### `sync`
+==== `sync`
 
 Run the camera in software synchronisation mode, where multiple cameras synchronise frames to the same moment in time. The `sync` mode can be set to either `client` or `server`. For more information, please refer to the detailed explanation of xref:camera_software.adoc#software-camera-synchronisation[how software synchronisation works].

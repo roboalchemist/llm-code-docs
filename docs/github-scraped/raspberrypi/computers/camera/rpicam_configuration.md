@@ -1,10 +1,14 @@
-### Configuration
+# Source: rpicam_configuration.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Configuration
 
 Most use cases work automatically with no need to alter the camera configuration. However, some common use cases do require configuration tweaks, including:
 
-** Third-party cameras (the manufacturer's instructions should explain necessary configuration changes, if any)
+* Third-party cameras (the manufacturer's instructions should explain necessary configuration changes, if any)
 
-** Using a non-standard driver or overlay with an official Raspberry Pi camera
+* Using a non-standard driver or overlay with an official Raspberry Pi camera
 
 Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`.
 
@@ -36,20 +40,21 @@ Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`
 | `dtoverlay=ov9281`
 |===
 
-To use one of these overlays, you must disable automatic camera detection. To disable automatic detection, set `camera*auto*detect=0` in `/boot/firmware/config.txt`. If `config.txt` already contains a line assigning an `camera*auto*detect` value, change the value to `0`. Reboot your Raspberry Pi with `sudo reboot` to load your changes.
+To use one of these overlays, you must disable automatic camera detection. To disable automatic detection, set `camera_auto_detect=0` in `/boot/firmware/config.txt`. If `config.txt` already contains a line assigning an `camera_auto_detect` value, change the value to `0`. Reboot your Raspberry Pi with `sudo reboot` to load your changes.
 
 If your Raspberry Pi has two camera connectors (Raspberry Pi 5 or one of the Compute Modules, for example), then you can specify the use of camera connector 0 by adding `,cam0` to the `dtoverlay` that you used from the table above. If you do not add this, it will default to checking camera connector 1. Note that for official Raspberry Pi camera modules connected to SBCs (not Compute Modules), auto-detection will correctly identify all the cameras connected to your device.
 
 [[tuning-files]]
-#### Tweak camera behaviour with tuning files
+==== Tweak camera behaviour with tuning files
 
-Raspberry Pi's `libcamera` implementation includes a ***tuning file*** for each camera. This file controls algorithms and hardware to produce the best image quality. `libcamera` can only determine the sensor in use, not the module. As a result, some modules require a tuning file override. Use the xref:camera*software.adoc#tuning-file[`tuning-file`] option to specify an override. You can also copy and alter existing tuning files to customise camera behaviour.
+Raspberry Pi's `libcamera` implementation includes a **tuning file** for each camera. This file controls algorithms and hardware to produce the best image quality. `libcamera` can only determine the sensor in use, not the module. As a result, some modules require a tuning file override. Use the xref:camera_software.adoc#tuning-file[`tuning-file`] option to specify an override. You can also copy and alter existing tuning files to customise camera behaviour.
 
 For example, the no-IR-filter (NoIR) versions of sensors use Auto White Balance (AWB) settings different from the standard versions. On a Raspberry Pi 5 or later, you can specify the the NoIR tuning file for the IMX219 sensor with the following command:
 
-```console
-$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219*noir.json
-```
+[source,console]
+----
+$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
+----
 
 NOTE: Raspberry Pi models prior to Raspberry Pi 5 use different tuning files. On those devices, use the files stored in `/usr/share/libcamera/ipa/rpi/vc4/` instead.
 

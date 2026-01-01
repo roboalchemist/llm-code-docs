@@ -1,4 +1,8 @@
-## LED warning flash codes
+# Source: led_blink_warnings.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== LED warning flash codes
 
 If a Raspberry Pi fails to boot for some reason, or has to shut down, in many cases an LED will flash a specific number of times to indicate what happened. The LED will blink for a number of long flashes (0 or more), then produce short flashes, to indicate the exact status. In most cases, the pattern will repeat after a two-second gap.
 

@@ -1,43 +1,50 @@
-### `rpicam-still`
+# Source: rpicam_still.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== `rpicam-still`
 
 `rpicam-still`, like `rpicam-jpeg`, helps you capture images on Raspberry Pi devices.
 Unlike `rpicam-jpeg`, `rpicam-still` supports many options provided in the legacy `raspistill` application.
 
 To capture a full resolution JPEG image and save it to a file named `test.jpg`, run the following command:
 
-```console
+[source,console]
+----
 $ rpicam-still --output test.jpg
-```
+----
 
-#### Encoders
+==== Encoders
 
 `rpicam-still` can save images in multiple formats, including `png`, `bmp`, and both RGB and YUV binary pixel dumps. To read these binary dumps, any application reading the files must understand the pixel arrangement.
 
-Use the xref:camera*software.adoc#encoding[`encoding`] option to specify an output format. The file name passed to xref:camera*software.adoc#output[`output`] has no impact on the output file type.
+Use the xref:camera_software.adoc#encoding[`encoding`] option to specify an output format. The file name passed to xref:camera_software.adoc#output[`output`] has no impact on the output file type.
 
 To capture a full resolution PNG image and save it to a file named `test.png`, run the following command:
 
-```console
+[source,console]
+----
 $ rpicam-still --encoding png --output test.png
-```
+----
 
-For more information about specifying an image format, see the xref:camera*software.adoc#encoding[`encoding` option reference].
+For more information about specifying an image format, see the xref:camera_software.adoc#encoding[`encoding` option reference].
 
-#### Capture raw images
+==== Capture raw images
 
-Raw images are the images produced directly by the image sensor, before any processing is applied to them either by the Image Signal Processor (ISP) or CPU. Colour image sensors usually use the Bayer format. Use the xref:camera*software.adoc#raw[`raw`] option to capture raw images.
+Raw images are the images produced directly by the image sensor, before any processing is applied to them either by the Image Signal Processor (ISP) or CPU. Colour image sensors usually use the Bayer format. Use the xref:camera_software.adoc#raw[`raw`] option to capture raw images.
 
 To capture an image, save it to a file named `test.jpg`, and also save a raw version of the image to a file named `test.dng`, run the following command:
 
-```console
+[source,console]
+----
 $ rpicam-still --raw --output test.jpg
-```
+----
 
 `rpicam-still` saves raw images in the DNG (Adobe Digital Negative) format. To determine the filename of the raw images, `rpicam-still` uses the same name as the output file, with the extension changed to `.dng`. To work with DNG images, use an application like https://en.wikipedia.org/wiki/Dcraw[Dcraw] or https://en.wikipedia.org/wiki/RawTherapee[RawTherapee].
 
 DNG files contain metadata about the image capture, including black levels, white balance information and the colour matrix used by the ISP to produce the JPEG. Use https://exiftool.org/[ExifTool] to view DNG metadata. The following output shows typical metadata stored in a raw image captured by a Raspberry Pi using the HQ camera:
 
-```
+----
 File Name                       : test.dng
 Directory                       : .
 File Size                       : 24 MB
@@ -80,113 +87,124 @@ CFA Pattern                     : [Blue,Green][Green,Red]
 Image Size                      : 4056x3040
 Megapixels                      : 12.3
 Shutter Speed                   : 1/20
-```
+----
 
 To find the analogue gain, divide the ISO number by 100.
 The Auto White Balance (AWB) algorithm determines a single calibrated illuminant, which is always labelled `D65`.
 
-#### Capture long exposures
+==== Capture long exposures
 
 To capture very long exposure images, disable the Automatic Exposure/Gain Control (AEC/AGC) and Auto White Balance (AWB). These algorithms will otherwise force the user to wait for a number of frames while they converge.
 
-To disable these algorithms, supply explicit values for gain and AWB. Because long exposures take plenty of time already, it often makes sense to skip the preview phase entirely with the xref:camera*software.adoc#immediate[`immediate`] option.
+To disable these algorithms, supply explicit values for gain and AWB. Because long exposures take plenty of time already, it often makes sense to skip the preview phase entirely with the xref:camera_software.adoc#immediate[`immediate`] option.
 
 To perform a 100 second exposure capture, run the following command:
 
-```console
-$ rpicam-still -o long*exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate
-```
+[source,console]
+----
+$ rpicam-still -o long_exposure.jpg --shutter 100000000 --gain 1 --awbgains 1,1 --immediate
+----
 
 To find the maximum exposure times of official Raspberry Pi cameras, see xref:../accessories/camera.adoc#hardware-specification[the camera hardware specification].
 
-#### Create a time lapse video
+==== Create a time lapse video
 
 To create a time lapse video, capture a still image at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
 
 [tabs]
 ======
-`rpicam-still` time lapse mode: +
-To use the built-in time lapse mode of `rpicam-still`, use the xref:camera*software.adoc#timelapse[`timelapse`] option. This option accepts a value representing the period of time you want your Raspberry Pi to wait between captures, in milliseconds.
+`rpicam-still` time lapse mode::
++
+To use the built-in time lapse mode of `rpicam-still`, use the xref:camera_software.adoc#timelapse[`timelapse`] option. This option accepts a value representing the period of time you want your Raspberry Pi to wait between captures, in milliseconds.
 +
 First, create a directory where you can store your time lapse photos:
 +
-```console
+[source,console]
+----
 $ mkdir timelapse
-```
+----
 +
 Run the following command to create a time lapse over 30 seconds, recording a photo every two seconds, saving output into `image0000.jpg` through `image0013.jpg`:
 +
-```console
+[source,console]
+----
 $ rpicam-still --timeout 30000 --timelapse 2000 -o timelapse/image%04d.jpg
-```
+----
 
-`cron`: +
+`cron`::
++
 You can also automate time lapses with `cron`. First, create the script, named `timelapse.sh` containing the following commands. Replace the `<username>` placeholder with the name of your user account on your Raspberry Pi:
 +
-```bash
+[source,bash]
+----
 #!/bin/bash
-DATE=$(date +"%Y-%m-%d*%H%M")
+DATE=$(date +"%Y-%m-%d_%H%M")
 rpicam-still -o /home/<username>/timelapse/$DATE.jpg
-```
+----
 +
 Then, make the script executable:
 +
-```console
+[source,console]
+----
 $ chmod +x timelapse.sh
-```
+----
 +
 Create the `timelapse` directory into which you'll save time lapse pictures:
 +
-```console
+[source,console]
+----
 $ mkdir timelapse
-```
+----
 +
 Open your crontab for editing:
 +
-```console
+[source,console]
+----
 $ crontab -e
-```
+----
 +
 Once you have the file open in an editor, add the following line to schedule an image capture every minute, replacing the `<username>` placeholder with the username of your primary user account:
 +
-```
-** ** ** ** ** /home/<username>/timelapse.sh 2>&1
-```
+----
+* * * * * /home/<username>/timelapse.sh 2>&1
+----
 +
 Save and exit, and you should see this message:
 +
-```
+----
 crontab: installing new crontab
-```
+----
 +
 To stop recording images for the time lapse, run `crontab -e` again and remove the above line from your crontab.
 
 ======
 
-##### Stitch images together
+===== Stitch images together
 
 Once you have a series of time lapse photos, you probably want to combine them into a video. Use `ffmpeg` to do this on a Raspberry Pi.
 
 First, install `ffmpeg`:
 
-```console
+[source,console]
+----
 $ sudo apt install ffmpeg
-```
+----
 
 Run the following command from the directory that contains the `timelapse` directory to convert your JPEG files into an mp4 video:
 
-```console
-$ ffmpeg -r 10 -f image2 -pattern*type glob -i 'timelapse/**.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
-```
+[source,console]
+----
+$ ffmpeg -r 10 -f image2 -pattern_type glob -i 'timelapse/*.jpg' -s 1280x720 -vcodec libx264 timelapse.mp4
+----
 
 The command above uses the following parameters:
 
-** `-r 10`: sets the frame rate (Hz value) to ten frames per second in the output video
-** `-f image2`: sets `ffmpeg` to read from a list of image files specified by a pattern
-** `-pattern*type glob`: use wildcard patterns (globbing) to interpret filename input with `-i`
-** `-i 'timelapse/**.jpg'`: specifies input files to match JPG files in the `timelapse` directory
-** `-s 1280x720`: scales to 720p
-** `-vcodec libx264` use the software x264 encoder.
-** `timelapse.mp4` The name of the output video file.
+* `-r 10`: sets the frame rate (Hz value) to ten frames per second in the output video
+* `-f image2`: sets `ffmpeg` to read from a list of image files specified by a pattern
+* `-pattern_type glob`: use wildcard patterns (globbing) to interpret filename input with `-i`
+* `-i 'timelapse/*.jpg'`: specifies input files to match JPG files in the `timelapse` directory
+* `-s 1280x720`: scales to 720p
+* `-vcodec libx264` use the software x264 encoder.
+* `timelapse.mp4` The name of the output video file.
 
 For more information about `ffmpeg` options, run `ffmpeg --help` in a terminal.

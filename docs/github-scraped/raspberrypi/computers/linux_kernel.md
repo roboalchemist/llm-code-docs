@@ -1,0 +1,15 @@
+# Source: linux_kernel.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+include::linux_kernel/about-kernel.adoc[]
+
+include::linux_kernel/building.adoc[]
+
+include::linux_kernel/configuring.adoc[]
+
+include::linux_kernel/patching.adoc[]
+
+include::linux_kernel/headers.adoc[]
+
+include::linux_kernel/contribute.adoc[]

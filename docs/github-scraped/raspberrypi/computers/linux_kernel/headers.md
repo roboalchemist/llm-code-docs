@@ -1,4 +1,8 @@
-## Kernel headers
+# Source: headers.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Kernel headers
 
 To compile a kernel module, you need the Linux kernel headers. These provide the function and structure definitions required to compile code that interfaces with the kernel.
 
@@ -8,14 +12,16 @@ TIP: When a new kernel is released, you need the headers that match that kernel 
 
 If you use a 64-bit version of Raspberry Pi OS, run the following command to install the kernel headers:
 
-```console
+[source,console]
+----
 $ sudo apt install linux-headers-rpi-v8
-```
+----
 
 If you use a 32-bit version of Raspberry Pi OS, run the following command to install the kernel headers:
 
-```console
+[source,console]
+----
 $ sudo apt install linux-headers-rpi-{v6,v7,v7l}
-```
+----
 
 NOTE: Installation can take several minutes. There is no progress indicator.

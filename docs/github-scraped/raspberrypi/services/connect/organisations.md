@@ -1,195 +1,205 @@
+# Source: organisations.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 [[connect-organisations]]
-## Connect for Organisations
+== Connect for Organisations
 
-***Connect for Organisations**** lets multiple users share access to devices. Creating an organisation automatically starts a free, four-week trial for that organisation.
+**Connect for Organisations** lets multiple users share access to devices. Creating an organisation automatically starts a free, four-week trial for that organisation.
 
-### Create an organisation
+=== Create an organisation
 
 To create a new organisation, first sign in to your Raspberry Pi Connect account and then select the account switcher icon in the top left of the navigation menu.
 
-image: images/account-switcher.png[width="70%"]
+image::images/account-switcher.png[width="70%"]
 
-Select ****New organisation**** and provide a name, then select ****Start your free trial****. Your Connect account is automatically added to the organisation as an administrator.
+Select **New organisation** and provide a name, then select **Start your free trial**. Your Connect account is automatically added to the organisation as an administrator.
 
-### Invite users
+=== Invite users
 
 You must be an administrator to invite other users to your organisation. To invite a user:
 
-1. Open the ****Users**** tab at the top of the page. This shows all members of your organisation, with their name, email, role, and join date.
+. Open the **Users** tab at the top of the page. This shows all members of your organisation, with their name, email, role, and join date.
 +
-image: images/users.png[width="70%"]
+image::images/users.png[width="70%"]
 
-1. Select ****Invite someone**** to add a new user to your organisation.
+. Select **Invite someone** to add a new user to your organisation.
 +
-image: images/invite-user.png[width="70%"]
+image::images/invite-user.png[width="70%"]
 
-1. Choose a ****Role**** from the dropdown menu. There are two roles available for members of an organisation:
+. Choose a **Role** from the dropdown menu. There are two roles available for members of an organisation:
 
-    ** ***Member.**** A user that can remotely access all devices within an organisation but can't make any changes to the organisation.
-    ** ***Administrator.**** A user that can remotely access all devices within an organisation and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
+    * **Member.** A user that can remotely access all devices within an organisation but can't make any changes to the organisation.
+    * **Administrator.** A user that can remotely access all devices within an organisation and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
 
-1. Enter the email address where you want to send the invitation.
+. Enter the email address where you want to send the invitation.
 
-1. Select ****Send invitation****.
+. Select **Send invitation**.
 
 The person you invite doesn't need to sign in with that email address. They can join using any valid Raspberry Pi ID.
 
-### Link a Raspberry Pi device with an organisation
+=== Link a Raspberry Pi device with an organisation
 
 You must be an administrator to link a device to an organisation. To link a device to an organisation:
 
-** If the device isn't linked to a Connect account, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
+* If the device isn't linked to a Connect account, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
 
-** If the device is already linked to a Connect account, see xref:connect.adoc#transfer-device[Transfer a device].
+* If the device is already linked to a Connect account, see xref:connect.adoc#transfer-device[Transfer a device].
 
 [[transfer-device]]
-### Transfer a device
+=== Transfer a device
 
 You must be an administrator to transfer a device between accounts. To transfer a device:
 
-1. Select the account switcher icon in the top left of the navigation menu.
+. Select the account switcher icon in the top left of the navigation menu.
 +
-image: images/account-switcher-with-organisation.png[width="70%"]
+image::images/account-switcher-with-organisation.png[width="70%"]
 
-1. Switch to the account that currently owns the device (your personal account or an organisation).
+. Switch to the account that currently owns the device (your personal account or an organisation).
 
-1. Select the device you want to transfer.
+. Select the device you want to transfer.
 
-1. Open the ****Settings**** dropdown menu from the top right of the device page.
+. Open the **Settings** dropdown menu from the top right of the device page.
 
-1. Select ****Transfer...****
+. Select **Transfer...**
 +
-image: images/transfer.png[width="70%"]
+image::images/transfer.png[width="70%"]
 
-1. Select the account you want to transfer the device to.
+. Select the account you want to transfer the device to.
 
-1. Select ****Transfer****.
+. Select **Transfer**.
 
-### Set up your subscription
+=== Set up your subscription
 
 A subscription to Connect for Organisations starts when your four-week trial period ends, after which, you're billed in arrears every month.
 
 You must be an administrator to set up a subscription. To set up a subscription:
 
-1. Select ****Set up billing**** from the trial banner underneath the tabs at the top of the page.
-1. Enter the email address to which you want to receive billing-related notifications such as invoices.
-1. Enter your payment method details and submit them.
-    ** If you still have trial days left, the button says ***Start trial****. Your trial continues, then you'll be billed monthly.
-    ** If your trial has ended, the button says ***Pay and subscribe****. This starts your monthly subscription.
+. Select **Set up billing** from the trial banner underneath the tabs at the top of the page.
+. Enter the email address to which you want to receive billing-related notifications such as invoices.
+. Enter your payment method details and submit them.
+    * If you still have trial days left, the button says **Start trial**. Your trial continues, then you'll be billed monthly.
+    * If your trial has ended, the button says **Pay and subscribe**. This starts your monthly subscription.
 
 Once your free trial ends, you won't be able to remotely access the devices in your organisation until you set up a subscription.
 
-image: images/billing.png[width="70%"]
+image::images/billing.png[width="70%"]
 
-### View the audit log
+=== View the audit log
 
 The audit log shows all activity from the past 90 days ordered chronologically, with the most recent events first. Events include things like changes to devices, organisation members, API access tokens, and remote access sessions. Events that took place over 90 days ago are automatically deleted.
 
-You must be an administrator to view the activity in your organisation from the past 90 days. To view the audit log, open the ****Audit log**** tab at the top of the page.
+You must be an administrator to view the activity in your organisation from the past 90 days. To view the audit log, open the **Audit log** tab at the top of the page.
 
-image: images/audit-log.png[width="70%"]
+image::images/audit-log.png[width="70%"]
 
 Each event in the list includes the following information:
 
-** ***Timestamp.**** The time of the event.
-** ***Source.**** Whether the event occurred in the dashboard or through the API.
-** ***Action.**** The action (for example, ****API access token created****) and associated details.
-** ***Subject.**** The subject of the action, such as a specific device, organisation, or access token.
-** ***Actor.**** The user that performed the event, including the country in which the event happened.
+* **Timestamp.** The time of the event.
+* **Source.** Whether the event occurred in the dashboard or through the API.
+* **Action.** The action (for example, **API access token created**) and associated details.
+* **Subject.** The subject of the action, such as a specific device, organisation, or access token.
+* **Actor.** The user that performed the event, including the country in which the event happened.
 
-You can filter events by types of action (such as ****Remote shell session started****). To filter the list, select the ****Actions**** dropdown menu next to ****Filters**** above the top-left corner of the list.
+You can filter events by types of action (such as **Remote shell session started**). To filter the list, select the **Actions** dropdown menu next to **Filters** above the top-left corner of the list.
 
-Select ****Download CSV**** above the top-right corner of the list to download it in CSV format.
+Select **Download CSV** above the top-right corner of the list to download it in CSV format.
 
-### Change organisation settings
+=== Change organisation settings
 
-Administrators of an organisation can configure the following from the ****Settings**** tab at the top of the page.
+Administrators of an organisation can configure the following from the **Settings** tab at the top of the page.
 
-image: images/organisation-settings.png[width="70%"]
+image::images/organisation-settings.png[width="70%"]
 
-#### Rename the organisation
+==== Rename the organisation
 
-To change the name of the organisation, enter a new name in the ****General**** section. This won't affect your devices or the members of your organisation.
+To change the name of the organisation, enter a new name in the **General** section. This won't affect your devices or the members of your organisation.
 
 [[organisation-auth-keys]]
-#### Create auth keys
+==== Create auth keys
 
-To xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select ****New**** from the ****Auth keys**** section and enter a description and expiry time in days.
+To xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time in days.
 
 Your new auth key appears. Select the clipboard icon next to it to copy it. Copy this auth key now because it can't be viewed again later.
 
 IMPORTANT: Your auth key is only shown once. Copy it now, because you won't be able to see it again later.
 
 [[management-api-access-tokens]]
-#### Create management API access tokens
+==== Create management API access tokens
 
-To create auth keys automatically (without using the web interface) to xref:connect.adoc#link-connect[link a device with Connect], you can create an API access token for the xref:connect.adoc#organisations-management-api[Connect for Organisations management API]. Select ****New**** from the ****API access tokens**** section and enter a description for the access token.
+To create auth keys automatically (without using the web interface) to xref:connect.adoc#link-connect[link a device with Connect], you can create an API access token for the xref:connect.adoc#organisations-management-api[Connect for Organisations management API]. Select **New** from the **API access tokens** section and enter a description for the access token.
 
 Your new access token appears. Select the clipboard icon next to it to copy it. Copy this access token now because it can't be viewed again later.
 
 IMPORTANT: Your access token is only shown once. Copy it now, because you won't be able to see it again later.
 
 [[organisations-management-api]]
-### Management API
+=== Management API
 
 The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token.
 
-#### Create an auth key
+==== Create an auth key
 
 To create an auth key to xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
 
 Replace these values in the code blow:
 
-** `+rporg*accesstokenhere+`: your management API access token
-** `+my-auth-key+`: a description for your auth key
-** `+1+`: how many days until the auth key expires (optional, defaults to 1 day)
+* `+rporg_accesstokenhere+`: your management API access token
+* `+my-auth-key+`: a description for your auth key
+* `+1+`: how many days until the auth key expires (optional, defaults to 1 day)
 
 [tabs]
 ======
-HTTP: +
-```http
+HTTP::
++
+[source,http]
+----
 POST /organisation/auth-keys HTTP/1.1
 Host: api.connect.raspberrypi.com
-Authorization: Bearer rporg*accesstokenhere
+Authorization: Bearer rporg_accesstokenhere
 Content-Type: application/x-www-form-urlencoded
 
-description=my-auth-key&ttl*days=1
-```
+description=my-auth-key&ttl_days=1
+----
 
-curl: +
-```console
-$ curl --header 'Authorization: Bearer rporg*accesstokenhere' --data-urlencode 'description=my-auth-key' --data-urlencode 'ttl*days=1' https://api.connect.raspberrypi.com/organisation/auth-keys
-```
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'description=my-auth-key' --data-urlencode 'ttl_days=1' https://api.connect.raspberrypi.com/organisation/auth-keys
+----
 
 ======
 
-If successful, you get a ***201 Created****  response with your auth key in JSON format. For example:
+If successful, you get a **201 Created**  response with your auth key in JSON format. For example:
 
-```http
+[source,http]
+----
 HTTP/2 201
 Content-Type: application/json; charset=utf-8
 
-{"id":"12345","description":"my-auth-key","secret":"rpoak*123456","expires*at":"2025-01-01T00:00:30Z"}
-```
+{"id":"12345","description":"my-auth-key","secret":"rpoak_123456","expires_at":"2025-01-01T00:00:30Z"}
+----
 
 The response contains the following fields:
 
-id: A unique identifier for the auth key.
-description: The description used to create the auth key.
-secret: A random token prefixed with `+rpoak*+`.
-expires_at: The date and time when the key will expire (in ISO 8601 format).
+id:: A unique identifier for the auth key.
+description:: The description used to create the auth key.
+secret:: A random token prefixed with `+rpoak_+`.
+expires_at:: The date and time when the key will expire (in ISO 8601 format).
 
 The `+secret+` can then be used to xref:connect.adoc#link-connect[link a device with Connect] before it expires.
 
-If your management API access token is invalid, you get a ****401 Unauthorized**** response.
+If your management API access token is invalid, you get a **401 Unauthorized** response.
 
-If the auth key can't be created, you get a ****422 Unprocessable Content**** response.
+If the auth key can't be created, you get a **422 Unprocessable Content** response.
 
-```http
+[source,http]
+----
 HTTP/2 422
 Content-Type: application/json; charset=utf-8
 
 {"message":"Validation failed: Description can't be blank"}
-```
+----
 
-NOTE: You can also manually xref:connect.adoc#organisation-auth-keys[create an auth key on your organisation's ****Settings*** page].
+NOTE: You can also manually xref:connect.adoc#organisation-auth-keys[create an auth key on your organisation's **Settings** page].

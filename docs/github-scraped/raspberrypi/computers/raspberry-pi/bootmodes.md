@@ -1,8 +1,12 @@
-## Raspberry Pi boot modes
+# Source: bootmodes.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Raspberry Pi boot modes
 
 The Raspberry Pi has a number of different stages of booting. This document explains how the boot modes work, and which ones are supported for Linux booting.
 
-### Special `bootcode.bin`-only boot mode
+=== Special `bootcode.bin`-only boot mode
 
 USB host and Ethernet boot can be performed by BCM2837-based Raspberry Pis - that is, Raspberry Pi 2B version 1.2, Raspberry Pi 3B, and Raspberry Pi 3B+ (Raspberry Pi 3A+ cannot net boot since it does not have a built-in Ethernet interface). In addition, all Raspberry Pi models prior to Raspberry Pi 4 can use a `bootcode.bin`-only method to enable USB host boot.
 
@@ -14,7 +18,7 @@ This is useful for the Raspberry Pi 1, 2, and Zero models, which are based on th
 
 If you have a problem with a mass storage device still not working, even with this `bootcode.bin`, then add a new file called "timeout" to the SD card. This will extend to six seconds the time for which it waits for the mass storage device to initialise.
 
-### `bootcode.bin` UART Enable
+=== `bootcode.bin` UART Enable
 
 NOTE: For boards released prior to Raspberry Pi 4.
 
@@ -22,15 +26,17 @@ For information on enabling UART with the EEPROM bootloader, see the xref:raspbe
 
 It is possible to enable an early stage UART to debug booting issues (useful with the above `bootcode.bin` only boot mode). To do this, make sure you've got a recent version of the firmware (including `bootcode.bin`). To check if UART is supported in your current firmware:
 
-```console
-$ strings bootcode.bin | grep BOOT*UART
-```
+[source,console]
+----
+$ strings bootcode.bin | grep BOOT_UART
+----
  
 To enable UART from `bootcode.bin`:
 
-```console
-$ sed -i -e "s/BOOT*UART=0/BOOT_UART=1/" bootcode.bin
-```
+[source,console]
+----
+$ sed -i -e "s/BOOT_UART=0/BOOT_UART=1/" bootcode.bin
+----
 
 Next, connect a suitable USB serial cable to your host computer (a Raspberry Pi will work, although you may find that the easiest path is to use a USB serial cable, since it'll work out the box without any pesky config.txt settings). Use the standard pins 6, 8 and 10 (GND, GPIO14, GPIO15) on a Raspberry Pi or Compute Module.
 

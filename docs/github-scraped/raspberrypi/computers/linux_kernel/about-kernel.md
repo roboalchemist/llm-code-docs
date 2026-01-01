@@ -1,8 +1,12 @@
+# Source: about-kernel.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 [[kernel]]
-## Introduction
+== Introduction
 
-The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub]; updates lag behind the upstream https://github.com/torvalds/linux[Linux kernel]. The upstream kernel updates continuously, whereas Raspberry Pi integrates ***long-term releases*** of the Linux kernel into the Raspberry Pi kernel. We generate a `next` branch in https://github.com/raspberrypi/firmware/[raspberrypi/firmware] for each long-term Linux kernel release. After extensive testing and discussion, we merge each `next` branch into the main branch of our repository.
+The Raspberry Pi kernel is https://github.com/raspberrypi/linux[hosted on GitHub]; updates lag behind the upstream https://github.com/torvalds/linux[Linux kernel]. The upstream kernel updates continuously, whereas Raspberry Pi integrates **long-term releases** of the Linux kernel into the Raspberry Pi kernel. We generate a `next` branch in https://github.com/raspberrypi/firmware/[raspberrypi/firmware] for each long-term Linux kernel release. After extensive testing and discussion, we merge each `next` branch into the main branch of our repository.
 
-## Update
+== Update
 
 The usual Raspberry Pi OS xref:os.adoc#update-software[update process] automatically updates your kernel to the latest stable release. If you want to try the latest unstable test kernel, you can xref:os.adoc#rpi-update[manually update].

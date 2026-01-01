@@ -1,37 +1,45 @@
-### `rpicam-hello`
+# Source: rpicam_hello.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== `rpicam-hello`
 
 `rpicam-hello` briefly displays a preview window containing the video feed from a connected camera. To use `rpicam-hello` to display a preview window for five seconds, run the following command in a terminal:
 
-```console
+[source,console]
+----
 $ rpicam-hello
-```
+----
 
-You can pass an optional duration (in milliseconds) with the xref:camera*software.adoc#timeout[`timeout`] option. A value of `0` runs the preview indefinitely:
+You can pass an optional duration (in milliseconds) with the xref:camera_software.adoc#timeout[`timeout`] option. A value of `0` runs the preview indefinitely:
 
-```console
+[source,console]
+----
 $ rpicam-hello --timeout 0
-```
+----
 
 Use `Ctrl+C` in the terminal or the close button on the preview window to stop `rpicam-hello`.
 
-#### Display an image sensor preview
+==== Display an image sensor preview
 
-Most of the `rpicam-apps` display a preview image in a window. If there is no active desktop environment, the preview draws directly to the display using the Linux Direct Rendering Manager (DRM). Otherwise, `rpicam-apps` attempt to use the desktop environment. Both paths use zero-copy GPU buffer sharing: as a result, X forwarding is *not* supported.
+Most of the `rpicam-apps` display a preview image in a window. If there is no active desktop environment, the preview draws directly to the display using the Linux Direct Rendering Manager (DRM). Otherwise, `rpicam-apps` attempt to use the desktop environment. Both paths use zero-copy GPU buffer sharing: as a result, X forwarding is _not_ supported.
 
-If you run the X window server and want to use X forwarding, pass the xref:camera*software.adoc#qt-preview[`qt-preview`] flag to render the preview window in a https://en.wikipedia.org/wiki/Qt*(software)[Qt] window. The Qt preview window uses more resources than the alternatives.
+If you run the X window server and want to use X forwarding, pass the xref:camera_software.adoc#qt-preview[`qt-preview`] flag to render the preview window in a https://en.wikipedia.org/wiki/Qt_(software)[Qt] window. The Qt preview window uses more resources than the alternatives.
 
 NOTE: Older systems using Gtk2 may, when linked with OpenCV, produce `Glib-GObject` errors and fail to show the Qt preview window. In this case edit the file `/etc/xdg/qt5ct/qt5ct.conf` as root and replace the line containing `style=gtk2` with `style=gtk3`.
 
-To suppress the preview window entirely, pass the xref:camera*software.adoc#nopreview[`nopreview`] flag:
+To suppress the preview window entirely, pass the xref:camera_software.adoc#nopreview[`nopreview`] flag:
 
-```console
+[source,console]
+----
 $ rpicam-hello -n
-```
+----
 
-The xref:camera*software.adoc#info-text[`info-text`] option displays image information on the window title bar using `%` directives. For example, the following command displays the current red and blue gain values:
+The xref:camera_software.adoc#info-text[`info-text`] option displays image information on the window title bar using `%` directives. For example, the following command displays the current red and blue gain values:
 
-```console
+[source,console]
+----
 $ rpicam-hello --info-text "red gain %rg, blue gain %bg"
-```
+----
 
-For a full list of directives, see the xref:camera*software.adoc#info-text[`info-text` reference].
+For a full list of directives, see the xref:camera_software.adoc#info-text[`info-text` reference].

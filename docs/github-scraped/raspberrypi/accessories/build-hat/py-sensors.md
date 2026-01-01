@@ -1,8 +1,12 @@
-### Use Sensors from Python
+# Source: py-sensors.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Use Sensors from Python
 
 There is a xref:build-hat.adoc#device-compatibility[large range of sensors] that work with the Build HAT.
 
-#### Work with Sensors
+==== Work with Sensors
 
 Connect a Colour sensor to port B on the Build HAT, and a Force sensor to port C.
 
@@ -10,23 +14,24 @@ NOTE: If you're not intending to drive a motor, then you don't need an external 
 
 Create another new program:
 
-```python
+[source,python]
+----
 from signal import pause
 from buildhat import ForceSensor, ColorSensor
 
 button = ForceSensor('C')
 cs = ColorSensor('B')
 
-def handle*pressed(force):
+def handle_pressed(force):
     cs.on()
-    print(cs.get*color())
+    print(cs.get_color())
 
-def handle*released(force):
+def handle_released(force):
     cs.off()
 
-button.when*pressed = handle*pressed
-button.when*released = handle_released
+button.when_pressed = handle_pressed
+button.when_released = handle_released
 pause()
-```
+----
 
 Run it and hold a coloured object (LEGO® elements are ideal) in front of the colour sensor and press the Force sensor plunger. The sensor's LED should switch on and the name of the closest colour should be displayed in the Thonny REPL.

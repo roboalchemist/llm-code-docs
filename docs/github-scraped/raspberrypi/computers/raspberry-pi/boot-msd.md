@@ -1,4 +1,8 @@
-## USB mass storage boot
+# Source: boot-msd.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== USB mass storage boot
 
 NOTE: Available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 3], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 2B (version 1.2)].
 
@@ -6,33 +10,33 @@ USB mass storage boot enables you to boot your Raspberry Pi from a USB mass stor
 
 NOTE: Models prior to Raspberry Pi 4B have known issues which prevent booting with some USB devices.
 
-### Devices with an EEPROM bootloader
+=== Devices with an EEPROM bootloader
 
 [[pi4]]
 
 [[cm4]]
 
-Raspberry Pi 4 and newer flagship series devices and Compute module devices since Compute Module 4 and 4S support USB boot by default, as long as you specify USB boot in the xref:raspberry-pi.adoc#BOOT*ORDER[`BOOT*ORDER`] configuration.
+Raspberry Pi 4 and newer flagship series devices and Compute module devices since Compute Module 4 and 4S support USB boot by default, as long as you specify USB boot in the xref:raspberry-pi.adoc#BOOT_ORDER[`BOOT_ORDER`] configuration.
 
 NOTE: Early editions of Raspberry Pi 4 may require a xref:raspberry-pi.adoc#raspi-config[bootloader update] to boot from USB.
 
 NOTE: Early editions of Compute Module 4 may require a xref:compute-module.adoc#update-the-compute-module-bootloader[bootloader update] to boot from USB.
 
-### Raspberry Pi 3B+, Zero 2 W
+=== Raspberry Pi 3B+, Zero 2 W
 
 The Raspberry Pi 3B+ and Zero 2 W support USB mass storage boot out of the box.
 
 NOTE: Raspberry Pi Zero 2 W doesn't support network boot.
 
-### Raspberry Pi 2B, 3A+, 3B, CM3, CM3+
+=== Raspberry Pi 2B, 3A+, 3B, CM3, CM3+
 
 On Raspberry Pi 2B v1.2 and v1.3, 3A+, 3B and Compute Module 3 and 3+, you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This allows USB mass storage boot and xref:raspberry-pi.adoc#network-booting[network boot].
 
 NOTE: Raspberry Pi 3A+ doesn't support network boot.
 
-To enable USB host boot mode on these devices, set the USB host bit in OTP (one-time programmable) memory. To set the bit, boot from an SD card where xref:config*txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] contains the line `program*usb*boot*mode=1`. Once you set the bit, you can boot from USB without the SD card.
+To enable USB host boot mode on these devices, set the USB host bit in OTP (one-time programmable) memory. To set the bit, boot from an SD card where xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] contains the line `program_usb_boot_mode=1`. Once you set the bit, you can boot from USB without the SD card.
 
-#### Enable USB host boot mode with OTP
+==== Enable USB host boot mode with OTP
 
 [WARNING]
 ====
@@ -45,22 +49,24 @@ Use any SD card flashed with Raspberry Pi OS to program the OTP bit.
 
 To enable USB host boot mode, add the following line to `config.txt`:
 
-```ini
-program*usb*boot*mode=1
-```
+[source,ini]
+----
+program_usb_boot_mode=1
+----
 
 Then, use `sudo reboot` to reboot your Raspberry Pi. To check that the OTP has been programmed correctly, run the following command:
 
-```console
-$ vcgencmd otp*dump | grep 17:
+[source,console]
+----
+$ vcgencmd otp_dump | grep 17:
 17:3020000a
-```
+----
 
 If the output reads `0x3020000a`, the OTP has been successfully programmed. If you see different output, try the programming procedure again. Make sure there is no blank line at the end of `config.txt`.
 
 You can now boot from a USB mass storage device in the same way as booting from an SD card. See the following section for further information.
 
-### Boot from USB mass storage
+=== Boot from USB mass storage
 
 The xref:getting-started.adoc#installing-the-operating-system[procedure] is the same as for SD cards - flash the USB storage device with the operating system image.
 
@@ -70,22 +76,22 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 
 See the xref:raspberry-pi.adoc#raspberry-pi-boot-modes[boot modes documentation] for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
-### Known issues 
+=== Known issues 
 
-** The default timeout for checking bootable USB devices is two seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
-** Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
+* The default timeout for checking bootable USB devices is two seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
+* Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.
 
-### Special `bootcode.bin`-only boot mode
+=== Special `bootcode.bin`-only boot mode
 
 On Raspberry Pi 2B v1.2, 3A+, 3B and 3B+, if you are unable to use a particular USB device to boot your Raspberry Pi, you can instead use xref:raspberry-pi.adoc#raspberry-pi-boot-modes[`bootcode.bin`-only] boot mode. The Raspberry Pi will still boot from the SD card, but only reads `bootcode.bin` from the SD card; the rest of your operating system lives on the USB device.
 
-### Hardware compatibility
+=== Hardware compatibility
 
-Before booting from a USB mass storage device, verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appear as a removable drive. This is especially important with USB SATA adapters, which may be supported by the bootloader in mass storage mode, but fail if Linux selects https://en.wikipedia.org/wiki/USB*Attached*SCSI[USB Attached SCSI-UAS] mode.
+Before booting from a USB mass storage device, verify that the device works correctly under Linux. Boot using an SD card and plug in the USB mass storage device. This should appear as a removable drive. This is especially important with USB SATA adapters, which may be supported by the bootloader in mass storage mode, but fail if Linux selects https://en.wikipedia.org/wiki/USB_Attached_SCSI[USB Attached SCSI-UAS] mode.
 
 Hard disk drives (HDDs) typically require a powered USB hub. Even if everything appears to work, you may encounter intermittent failures without a powered USB hub.
 
-### Multiple bootable drives
+=== Multiple bootable drives
 
 When searching for a bootable partition, the bootloader scans all USB mass storage devices in parallel and selects the first to respond. If the boot partition does not contain a suitable `start.elf` file, the bootloader attempts the next available device. There is no method for specifying the boot device according to the USB topology; this would slow down boot and adds unnecessary configuration complexity.
 

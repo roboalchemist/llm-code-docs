@@ -1,4 +1,8 @@
-## RP3A0
+# Source: rp3a0.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== RP3A0
 
 The Raspberry Pi RP3A0 is our first System-in-Package (SiP) consisting of a Broadcom BCM2710A1 — which is the silicon die packaged inside the Broadcom xref:processors.adoc#bcm2837[BCM2837] chip which is used on the xref:raspberry-pi.adoc#raspberry-pi-3-model-b-2[Raspberry Pi 3] — along with 512 MB of DRAM.
 
@@ -10,8 +14,8 @@ The RP3A0 is a Quad-core 64-bit Arm Cortex A53 CPU clocked at 1 GHz, although wi
 
 Please refer to the following BCM2836 document for details on the Arm peripherals specification, which also applies to the BCM2837 and RP3A0.
 
-** https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf[BCM2836 Arm-local peripherals]
-** https://developer.arm.com/documentation/ddi0500/latest/[Cortex-A53 MPCore Processor Technical Reference Manual]
+* https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf[BCM2836 Arm-local peripherals]
+* https://developer.arm.com/documentation/ddi0500/latest/[Cortex-A53 MPCore Processor Technical Reference Manual]
 
 [NOTE]
 ====

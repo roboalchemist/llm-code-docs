@@ -1,20 +1,24 @@
-## Prepare your Build HAT
+# Source: preparing-build-hat.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Prepare your Build HAT
 
 NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:../computers/getting-started.adoc#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.com/downloads/[Raspberry Pi Imager].
 
 Attach 9 mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO® elements on top.
 
-video: images/fitting-build-hat.webm[width="80%"]
+video::images/fitting-build-hat.webm[width="80%"]
 
-### Access the GPIO Pins
+=== Access the GPIO Pins
 
 If you want to access the GPIO pins of the Raspberry Pi, you can add an optional tall header and use 15 mm spacers.
 
-image: images/tall-headers.jpg[width="80%"]
+image::images/tall-headers.jpg[width="80%"]
 
 The following pins are used by the Build HAT itself and you should not connect anything to them.
 
-[[table*passive*ids]]
+[[table_passive_ids]]
 [cols="^1,^1,^1", width="75%", options="header"]
 |===
 | GPIO| Use | Status
@@ -26,39 +30,40 @@ The following pins are used by the Build HAT itself and you should not connect a
 | GPIO17 | CTS | unused
 |===
 
-### Set up your Raspberry Pi
 
-Once the Raspberry Pi has booted, open the Control Centre tool by selecting the Raspberry Menu button and then selecting ***Preferences > Control Centre****.
+=== Set up your Raspberry Pi
 
-Select the ****Interfaces*** tab and adjust the serial settings as shown in the following image:
+Once the Raspberry Pi has booted, open the Control Centre tool by selecting the Raspberry Menu button and then selecting **Preferences > Control Centre**.
 
-image: images/setting-up.png["The Interfaces tab. SSH, VNC, and Serial Port are enabled. The rest of the options are not enabled.", width="50%"]
+Select the **Interfaces** tab and adjust the serial settings as shown in the following image:
 
-#### Use your Raspberry Pi headless
+image::images/setting-up.png["The Interfaces tab. SSH, VNC, and Serial Port are enabled. The rest of the options are not enabled.", width="50%"]
+
+==== Use your Raspberry Pi headless
 
 If you are running your Raspberry Pi headless and using `raspi-config`, select "Interface Options" from the first menu.
 
-image: images/raspi-config-1.png[width="70%"]
+image::images/raspi-config-1.png[width="70%"]
 
 Then "P6 Serial Port".
 
-image: images/raspi-config-2.png[width="70%"]
+image::images/raspi-config-2.png[width="70%"]
 
 Disable the serial console:
 
-image: images/raspi-config-3.png[width="70%"]
+image::images/raspi-config-3.png[width="70%"]
 
 And enable the serial port hardware.
 
-image: images/raspi-config-4.png[width="70%"]
+image::images/raspi-config-4.png[width="70%"]
 
 The final settings should look like this.
 
-image: images/raspi-config-5.png[width="70%"]
+image::images/raspi-config-5.png[width="70%"]
 
 You will need to reboot at this point if you have made any changes.
 
-### Power the Build HAT
+=== Power the Build HAT
 
 Connect an external power supply — the https://raspberrypi.com/products/build-hat-power-supply[official Raspberry Pi Build HAT power supply] is recommended — however any reliable +8V±10% power supply capable of supplying 48 W via a DC 5521 centre positive barrel connector (5.5 mm × 2.1 mm × 11 mm) will power the Build HAT. You don't need to connect an additional USB power supply to the Raspberry Pi unless you are using a Keyboard-series device.
 
@@ -67,7 +72,7 @@ Connect an external power supply — the https://raspberrypi.com/products/build-
 The Build HAT cannot power Keyboard-series devices, since they do not support power supply over the GPIO headers.
 ====
 
-video: images/powering-build-hat.webm[width="80%"]
+video::images/powering-build-hat.webm[width="80%"]
 
 [NOTE]
 ====

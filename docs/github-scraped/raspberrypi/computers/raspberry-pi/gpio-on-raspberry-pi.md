@@ -1,85 +1,90 @@
+# Source: gpio-on-raspberry-pi.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 [[gpio]]
-## GPIO and the 40-pin header
+== GPIO and the 40-pin header
 
 You can find a 40-pin GPIO (general-purpose input/output) header on all current Raspberry Pi boards. The GPIO headers on all boards have a 0.1in (2.54 mm) pin pitch.
 
 NOTE: The header is unpopulated (has no headers) on Zero and Pico devices that lack the "H" suffix.
 
-image: images/GPIO-Pinout-Diagram-2.png[alt="GPIO pinout diagram",width="100%"]
+image::images/GPIO-Pinout-Diagram-2.png[alt="GPIO pinout diagram",width="100%"]
 
 General Purpose I/O (GPIO) pins can be configured as either general-purpose input, general-purpose output, or as one of up to six special alternate settings, the functions of which are pin-dependent.
 
-image: images/GPIO.png[alt="GPIO layout",width="100%"]
+image::images/GPIO.png[alt="GPIO layout",width="100%"]
 
 NOTE: The GPIO pin numbering scheme is not in numerical order. GPIO pins 0 and 1 are present on the board (physical pins 27 and 28), but are reserved for advanced use.
 
-### Outputs
+=== Outputs
 
 A GPIO pin designated as an output pin can be set to high (3.3V) or low (0V).
 
-### Inputs
+=== Inputs
 
 A GPIO pin designated as an input pin can be read as high (3.3V) or low (0V). This is made easier with the use of internal pull-up or pull-down resistors. Pins GPIO2 and GPIO3 have fixed pull-up resistors, but for other pins this can be configured in software.
 
-### View a GPIO pinout for your Raspberry Pi
+=== View a GPIO pinout for your Raspberry Pi
 
 A GPIO reference can be accessed on your Raspberry Pi by opening a terminal window and running the command `pinout`. This tool is provided by the https://gpiozero.readthedocs.io/[GPIO Zero] Python library, which is installed by default in Raspberry Pi OS.
 
 WARNING: While connecting simple components to GPIO pins is safe, be careful how you wire things up. LEDs should have resistors to limit the current passing through them. Do not use 5V for 3.3V components. Do not connect motors directly to the GPIO pins, instead use an https://projects.raspberrypi.org/en/projects/physical-computing/14[H-bridge circuit or a motor controller board].
 
-### Permissions
+=== Permissions
 
 In order to use the GPIO ports, your user must be a member of the `gpio` group. The default user account is a member by default, but you must add other users manually using the following command:
 
-```console
+[source,console]
+----
 $ sudo usermod -a -G gpio <username>
-```
+----
 
-### GPIO pads
+=== GPIO pads
 
 The GPIO connections on the BCM2835 package are sometimes referred to in the peripherals data sheet as "pads" -- a semiconductor design term meaning "chip connection to outside world".
 
 The pads are configurable CMOS push-pull output drivers/input buffers. Register-based control settings are available for:
 
-** Internal pull-up / pull-down enable/disable
-** Output xref:raspberry-pi.adoc#gpio-pads-control[drive strength]
-** Input Schmitt-trigger filtering
+* Internal pull-up / pull-down enable/disable
+* Output xref:raspberry-pi.adoc#gpio-pads-control[drive strength]
+* Input Schmitt-trigger filtering
 
-#### Power-on states
+==== Power-on states
 
 All GPIO pins revert to general-purpose inputs on power-on reset. The default pull states are also applied, which are detailed in the alternate function table in the Arm peripherals datasheet. Most GPIOs have a default pull applied.
 
-### Interrupts
+=== Interrupts
 
 Each GPIO pin, when configured as a general-purpose input, can be configured as an interrupt source to the Arm. Several interrupt generation sources are configurable:
 
-** Level-sensitive (high/low)
-** Rising/falling edge
-** Asynchronous rising/falling edge
+* Level-sensitive (high/low)
+* Rising/falling edge
+* Asynchronous rising/falling edge
 
 Level interrupts maintain the interrupt status until the level has been cleared by system software (e.g. by servicing the attached peripheral generating the interrupt).
 
 The normal rising/falling edge detection has a small amount of synchronisation built into the detection. At the system clock frequency, the pin is sampled with the criteria for generation of an interrupt being a stable transition within a three-cycle window, i.e. a record of 1 0 0 or 0 1 1. Asynchronous detection bypasses this synchronisation to enable the detection of very narrow events.
 
-### Alternative functions
+=== Alternative functions
 
 Almost all of the GPIO pins have alternative functions. Peripheral blocks internal to the SoC can be selected to appear on one or more of a set of GPIO pins, for example the I2C buses can be configured to at least three separate locations. xref:raspberry-pi.adoc#gpio-pads-control[Pad control], such as drive strength or Schmitt filtering, still applies when the pin is configured as an alternate function.
 
 Some functions are available on all pins, others on specific pins:
 
-** PWM (pulse-width modulation)
- **** Software PWM available on all pins
- **** Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
-** SPI
- *** SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
- **** SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
-** I2C
- *** Data: (GPIO2); Clock (GPIO3)
- **** EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
-** Serial
+* PWM (pulse-width modulation)
+ ** Software PWM available on all pins
+ ** Hardware PWM available on GPIO12, GPIO13, GPIO18, GPIO19
+* SPI
+ ** SPI0: MOSI (GPIO10); MISO (GPIO9); SCLK (GPIO11); CE0 (GPIO8), CE1 (GPIO7)
+ ** SPI1: MOSI (GPIO20); MISO (GPIO19); SCLK (GPIO21); CE0 (GPIO18); CE1 (GPIO17); CE2 (GPIO16)
+* I2C
+ ** Data: (GPIO2); Clock (GPIO3)
+ ** EEPROM Data: (GPIO0); EEPROM Clock (GPIO1)
+* Serial
  ** TX (GPIO14); RX (GPIO15)
 
-### Voltage specifications
+=== Voltage specifications
 
 Two 5V pins and two 3.3V pins are present on the board, as well as a number of ground pins (GND), which can not be reconfigured. The remaining pins are all general-purpose 3.3V pins, meaning outputs are set to 3.3V and inputs are 3.3V-tolerant.
 

@@ -1,77 +1,81 @@
-## Legacy video options
-(see also xref:config*txt.adoc#video-options[config.txt Video Options])
+# Source: video.adoc
 
-### HDMI mode
+*Note: This file could not be automatically converted from AsciiDoc.*
 
-NOTE: For devices with multiple HDMI ports, some HDMI commands can be applied to any port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternative mechanisms can be found in the HDMI sub-section of the xref:legacy*config*txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
+== Legacy video options
+(see also xref:config_txt.adoc#video-options[config.txt Video Options])
 
-#### `hdmi*safe`
+=== HDMI mode
 
-Setting `hdmi*safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
+NOTE: For devices with multiple HDMI ports, some HDMI commands can be applied to any port. You can use the syntax `<command>:<port>`, where port is 0 or 1, to specify which port the setting should apply to. If no port is specified, the default is 0. If you specify a port number on a command that does not require a port number, the port is ignored. Further details on the syntax and alternative mechanisms can be found in the HDMI sub-section of the xref:legacy_config_txt.adoc#legacy-conditional-filters[conditionals section] of the documentation.
 
-```
-hdmi*force*hotplug=1
-hdmi*ignore*edid=0xa5000080
-config*hdmi*boost=4
-hdmi*group=2
-hdmi*mode=4
-disable*overscan=0
-overscan*left=24
-overscan*right=24
-overscan*top=24
-overscan*bottom=24
-```
+==== `hdmi_safe`
 
-#### `hdmi*ignore*edid`
+Setting `hdmi_safe` to `1` will lead to "safe mode" settings being used to try to boot with maximum HDMI compatibility. This is the same as setting the following parameters:
 
-Setting `hdmi*ignore*edid` to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate https://en.wikipedia.org/wiki/Extended*display*identification*data[EDID]. It requires this unusual value to ensure that it is not triggered accidentally.
+----
+hdmi_force_hotplug=1
+hdmi_ignore_edid=0xa5000080
+config_hdmi_boost=4
+hdmi_group=2
+hdmi_mode=4
+disable_overscan=0
+overscan_left=24
+overscan_right=24
+overscan_top=24
+overscan_bottom=24
+----
 
-#### `hdmi*edid*file`
+==== `hdmi_ignore_edid`
 
-Setting `hdmi*edid*file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor.
+Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display data if your display does not have an accurate https://en.wikipedia.org/wiki/Extended_display_identification_data[EDID]. It requires this unusual value to ensure that it is not triggered accidentally.
 
-#### `hdmi*edid*filename`
+==== `hdmi_edid_file`
 
-On the Raspberry Pi 4B, you can use the `hdmi*edid*filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi*edid*file=1` to enable EDID files.
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor.
+
+==== `hdmi_edid_filename`
+
+On the Raspberry Pi 4B, you can use the `hdmi_edid_filename` command to specify the filename of the EDID file to use, and also to specify which port the file is to be applied to. This also requires `hdmi_edid_file=1` to enable EDID files.
 
 For example:
 
-```
-hdmi*edid*file=1
-hdmi*edid*filename:0=FileForPortZero.edid
-hdmi*edid*filename:1=FileForPortOne.edid
-```
+----
+hdmi_edid_file=1
+hdmi_edid_filename:0=FileForPortZero.edid
+hdmi_edid_filename:1=FileForPortOne.edid
+----
 
-#### `hdmi*force*edid*audio`
+==== `hdmi_force_edid_audio`
 
-Setting `hdmi*force*edid*audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when this is not reported as supported.
+Setting `hdmi_force_edid_audio` to `1` pretends that all audio formats are supported by the display, allowing passthrough of DTS/AC3 even when this is not reported as supported.
 
-#### `hdmi*ignore*edid*audio`
+==== `hdmi_ignore_edid_audio`
 
-Setting `hdmi*ignore*edid*audio` to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
+Setting `hdmi_ignore_edid_audio` to `1` pretends that all audio formats are unsupported by the display. This means ALSA will default to the analogue audio (headphone) jack.
 
-#### `hdmi*force*edid*3d`
+==== `hdmi_force_edid_3d`
 
-Setting `hdmi*force*edid*3d` to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
+Setting `hdmi_force_edid_3d` to `1` pretends that all CEA modes support 3D, even when the EDID does not indicate support for this.
 
-#### `hdmi*ignore*cec*init`
+==== `hdmi_ignore_cec_init`
 
-Setting `hdmi*ignore*cec*init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel-switching when you are rebooting your Raspberry Pi.
+Setting `hdmi_ignore_cec_init` to `1` will stop the initial active source message being sent during bootup. This prevents a CEC-enabled TV from coming out of standby and channel-switching when you are rebooting your Raspberry Pi.
 
-#### `hdmi*ignore*cec`
+==== `hdmi_ignore_cec`
 
-Setting `hdmi*ignore*cec` to `1` pretends that https://en.wikipedia.org/wiki/Consumer*Electronics*Control#CEC[CEC] is not supported at all by the display. No CEC functions will be supported.
+Setting `hdmi_ignore_cec` to `1` pretends that https://en.wikipedia.org/wiki/Consumer_Electronics_Control#CEC[CEC] is not supported at all by the display. No CEC functions will be supported.
 
-#### `cec*osd*name`
+==== `cec_osd_name`
 
-The `cec*osd*name` command sets the initial CEC name of the device. The default is Raspberry Pi.
+The `cec_osd_name` command sets the initial CEC name of the device. The default is Raspberry Pi.
 
-#### `hdmi*pixel*encoding`
+==== `hdmi_pixel_encoding`
 
-The `hdmi*pixel*encoding` command forces the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
+The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it will use the mode requested from the EDID, so you shouldn't need to change it.
 
 |===
-| hdmi*pixel*encoding | result
+| hdmi_pixel_encoding | result
 
 | 0
 | default (RGB limited for CEA, RGB full for DMT)
@@ -89,18 +93,18 @@ The `hdmi*pixel*encoding` command forces the pixel encoding mode. By default, it
 | YCbCr full (0-255)
 |===
 
-#### `hdmi*max*pixel*freq`
+==== `hdmi_max_pixel_freq`
 
 The pixel frequency is used by the firmware and KMS to filter HDMI modes. Note, this is not the same as the frame rate. It specifies the maximum frequency that a valid mode can have, thereby culling out higher frequency modes. So for example, if you wish to disable all 4K modes, you could specify a maximum frequency of 200000000, since all 4K modes have frequencies greater than this.
 
-#### `hdmi*blanking`
+==== `hdmi_blanking`
 
-The `hdmi*blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low-power standby mode.
+The `hdmi_blanking` command controls what happens when the operating system asks for the display to be put into standby mode, using DPMS, to save power. If this option is not set or set to 0, the HDMI output is blanked but not switched off. In order to mimic the behaviour of other computers, you can set the HDMI output to switch off as well by setting this option to 1: the attached display will go into a low-power standby mode.
 
-NOTE: On Raspberry Pi 4, setting `hdmi*blanking=1` will not cause the HDMI output to be switched off, since this feature has not yet been implemented. This feature may cause issues when using applications which don't use the framebuffer, such as `omxplayer`.
+NOTE: On Raspberry Pi 4, setting `hdmi_blanking=1` will not cause the HDMI output to be switched off, since this feature has not yet been implemented. This feature may cause issues when using applications which don't use the framebuffer, such as `omxplayer`.
 
 |===
-| hdmi*blanking | result
+| hdmi_blanking | result
 
 | 0
 | HDMI output will be blanked
@@ -109,12 +113,12 @@ NOTE: On Raspberry Pi 4, setting `hdmi*blanking=1` will not cause the HDMI outpu
 | HDMI output will be switched off and blanked
 |===
 
-#### `hdmi*drive`
+==== `hdmi_drive`
 
-The `hdmi*drive` command allows you to choose between HDMI and DVI output modes.
+The `hdmi_drive` command allows you to choose between HDMI and DVI output modes.
 
 |===
-| hdmi*drive | result
+| hdmi_drive | result
 
 | 1
 | Normal DVI mode (no sound)
@@ -123,7 +127,7 @@ The `hdmi*drive` command allows you to choose between HDMI and DVI output modes.
 | Normal HDMI mode (sound will be sent if supported and enabled)
 |===
 
-#### `config*hdmi*boost`
+==== `config_hdmi_boost`
 
 Configures the signal strength of the HDMI interface. The minimum value is `0` and the maximum is `11`.
 
@@ -133,12 +137,12 @@ If you are seeing HDMI issues (speckling, interference) then try `7`. Very long 
 
 This option is ignored on Raspberry Pi 4.
 
-#### `hdmi*group`
+==== `hdmi_group`
 
-The `hdmi*group` command defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi*mode`.
+The `hdmi_group` command defines the HDMI output group to be either CEA (Consumer Electronics Association, the standard typically used by TVs) or DMT (Display Monitor Timings, the standard typically used by monitors). This setting should be used in conjunction with `hdmi_mode`.
 
 |===
-| hdmi*group | result
+| hdmi_group | result
 
 | 0
 | Auto-detect from EDID
@@ -150,17 +154,17 @@ The `hdmi*group` command defines the HDMI output group to be either CEA (Consume
 | DMT
 |===
 
-#### `hdmi*mode`
+==== `hdmi_mode`
 
-Together with `hdmi*group`, `hdmi*mode` defines the HDMI output format. Format mode numbers are derived from the https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published*docs/CTA-861-G*FINAL*revised*2017.pdf[CTA specification].
+Together with `hdmi_group`, `hdmi_mode` defines the HDMI output format. Format mode numbers are derived from the https://web.archive.org/web/20171201033424/https://standards.cta.tech/kwspub/published_docs/CTA-861-G_FINAL_revised_2017.pdf[CTA specification].
 
 NOTE: Not all modes are available on all models.
 
-These values are valid if `hdmi*group=1` (CEA):
+These values are valid if `hdmi_group=1` (CEA):
 
 [cols=",,,^,"]
 |===
-| hdmi*mode | Resolution | Frequency | Screen aspect | Notes
+| hdmi_mode | Resolution | Frequency | Screen aspect | Notes
 
 | 1
 | VGA (640x480)
@@ -805,15 +809,15 @@ These values are valid if `hdmi*group=1` (CEA):
 | Pi 4
 |===
 
-[[needsoverclock,^***1****^]] ****1.**** Only available with an overclocked core frequency: set `core*freq*min=600` and `core*freq=600`. See xref:config*txt.adoc#overclocking[overclocking].
+[[needsoverclock,^**1**^]] **1.** Only available with an overclocked core frequency: set `core_freq_min=600` and `core_freq=600`. See xref:config_txt.adoc#overclocking[overclocking].
 
 Pixel doubling and quadrupling indicates a higher clock rate, with each pixel repeated two or four times respectively.
 
-These values are valid if `hdmi*group=2` (DMT):
+These values are valid if `hdmi_group=2` (DMT):
 
 [cols=",,,^,"]
 |===
-| hdmi*mode | Resolution | Frequency | Screen Aspect | Notes
+| hdmi_mode | Resolution | Frequency | Screen Aspect | Notes
 
 | 1
 | 640x350
@@ -1299,7 +1303,7 @@ These values are valid if `hdmi*group=2` (DMT):
 | 1366x768
 | 60Hz
 | 16:9
-| xref:legacy*config*txt.adoc#raspberry-pi-4-hdmi-pipeline[NOT on Raspberry Pi 4]
+| xref:legacy_config_txt.adoc#raspberry-pi-4-hdmi-pipeline[NOT on Raspberry Pi 4]
 
 | 82
 | 1920x1080
@@ -1334,37 +1338,37 @@ These values are valid if `hdmi*group=2` (DMT):
 
 NOTE: There is a pixel clock limit. The highest supported mode on models prior to the Raspberry Pi 4 is 1920×1200 at 60Hz with reduced blanking, whilst the Raspberry Pi 4 can support up to 4096×2160 (colloquially 4k) at 60Hz. Also note that if you are using both HDMI ports of the Raspberry Pi 4 for 4k output, then you are limited to 30Hz on both.
 
-#### `hdmi*timings`
+==== `hdmi_timings`
 
-This allows setting of raw HDMI timing values for a custom mode, selected using `hdmi*group=2` and `hdmi*mode=87`.
-
-[source]
-```
-hdmi*timings=<h*active*pixels> <h*sync*polarity> <h*front*porch> <h*sync*pulse> <h*back*porch> <v*active*lines> <v*sync*polarity> <v*front*porch> <v*sync*pulse> <v*back*porch> <v*sync*offset*a> <v*sync*offset*b> <pixel*rep> <frame*rate> <interlaced> <pixel*freq> <aspect*ratio>
-```
+This allows setting of raw HDMI timing values for a custom mode, selected using `hdmi_group=2` and `hdmi_mode=87`.
 
 [source]
-```
-<h*active*pixels> = horizontal pixels (width)
-<h*sync*polarity> = invert hsync polarity
-<h*front*porch>   = horizontal forward padding from DE active edge
-<h*sync*pulse>    = hsync pulse width in pixel clocks
-<h*back*porch>    = vertical back padding from DE active edge
-<v*active*lines>  = vertical pixels height (lines)
-<v*sync*polarity> = invert vsync polarity
-<v*front*porch>   = vertical forward padding from DE active edge
-<v*sync*pulse>    = vsync pulse width in pixel clocks
-<v*back*porch>    = vertical back padding from DE active edge
-<v*sync*offset*a> = leave at zero
-<v*sync*offset*b> = leave at zero
-<pixel*rep>       = leave at zero
-<frame*rate>      = screen refresh rate in Hz
+----
+hdmi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
+----
+
+[source]
+----
+<h_active_pixels> = horizontal pixels (width)
+<h_sync_polarity> = invert hsync polarity
+<h_front_porch>   = horizontal forward padding from DE active edge
+<h_sync_pulse>    = hsync pulse width in pixel clocks
+<h_back_porch>    = vertical back padding from DE active edge
+<v_active_lines>  = vertical pixels height (lines)
+<v_sync_polarity> = invert vsync polarity
+<v_front_porch>   = vertical forward padding from DE active edge
+<v_sync_pulse>    = vsync pulse width in pixel clocks
+<v_back_porch>    = vertical back padding from DE active edge
+<v_sync_offset_a> = leave at zero
+<v_sync_offset_b> = leave at zero
+<pixel_rep>       = leave at zero
+<frame_rate>      = screen refresh rate in Hz
 <interlaced>      = leave at zero
-<pixel*freq>      = clock frequency (h*active*pixels + h*front*porch + h*sync*pulse + h*back*porch)
-                                    ** (v*active*lines + v*front*porch + v*sync*pulse + v*back*porch)
-                                    ** framerate
-<aspect*ratio>    = [see footnote]
-```
+<pixel_freq>      = clock frequency (h_active_pixels + h_front_porch + h_sync_pulse + h_back_porch)
+                                    * (v_active_lines + v_front_porch + v_sync_pulse + v_back_porch)
+                                    * framerate
+<aspect_ratio>    = [see footnote]
+----
 
 The aspect ratio can be set to one of eight values. Choose a value representing the aspect ratio most similar to your screen from the following:
 
@@ -1373,75 +1377,75 @@ The aspect ratio can be set to one of eight values. Choose a value representing 
 |Aspect Ratio |Name |Value
 
 | 4:3
-| HDMI*ASPECT*4*3
+| HDMI_ASPECT_4_3
 | 1
 
 | 14:9
-| HDMI*ASPECT*14*9
+| HDMI_ASPECT_14_9
 | 2
 
 | 16:9
-| HDMI*ASPECT*16*9
+| HDMI_ASPECT_16_9
 | 3
 
 | 5:4
-| HDMI*ASPECT*5*4
+| HDMI_ASPECT_5_4
 | 4
 
 | 16:10
-| HDMI*ASPECT*16*10
+| HDMI_ASPECT_16_10
 | 5
 
 | 15:9
-| HDMI*ASPECT*15*9
+| HDMI_ASPECT_15_9
 | 6
 
 | 21:9
-| HDMI*ASPECT*21*9
+| HDMI_ASPECT_21_9
 | 7
 
 | 64:27
-| HDMI*ASPECT*64*27
+| HDMI_ASPECT_64_27
 | 8
 |===
 
-#### `hdmi*force*mode`
+==== `hdmi_force_mode`
 
-Setting to `1` will remove all other modes except the ones specified by `hdmi*mode` and `hdmi*group` from the internal list, meaning they will not appear in any enumerated lists of modes. This option may help if a display seems to be ignoring the `hdmi*mode` and `hdmi*group` settings.
+Setting to `1` will remove all other modes except the ones specified by `hdmi_mode` and `hdmi_group` from the internal list, meaning they will not appear in any enumerated lists of modes. This option may help if a display seems to be ignoring the `hdmi_mode` and `hdmi_group` settings.
 
-#### `edid*content*type`
+==== `edid_content_type`
 
 Forces the EDID content type to a specific value.
 
 The options are:
 
-** `0` = `EDID*ContentType*NODATA`, content type none
-** `1` = `EDID*ContentType*Graphics`, content type graphics, ITC must be set to 1
-** `2` = `EDID*ContentType*Photo`, content type photo
-** `3` = `EDID*ContentType*Cinema`,  content type cinema
-** `4` = `EDID*ContentType*Game`,  content type game
+* `0` = `EDID_ContentType_NODATA`, content type none
+* `1` = `EDID_ContentType_Graphics`, content type graphics, ITC must be set to 1
+* `2` = `EDID_ContentType_Photo`, content type photo
+* `3` = `EDID_ContentType_Cinema`,  content type cinema
+* `4` = `EDID_ContentType_Game`,  content type game
 
-### Which values are valid for my monitor?
+=== Which values are valid for my monitor?
 
 Your HDMI monitor may only support a limited set of formats. To find out which formats are supported, use the following method:
 
-** Set the output format to VGA 60Hz (`hdmi*group=1` and `hdmi*mode=1`) and boot up your Raspberry Pi
-** Enter the following command to give a list of CEA-supported modes: `/opt/vc/bin/tvservice -m CEA`
-** Enter the following command to give a list of DMT-supported modes: `/opt/vc/bin/tvservice -m DMT`
-** Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
-** Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
+* Set the output format to VGA 60Hz (`hdmi_group=1` and `hdmi_mode=1`) and boot up your Raspberry Pi
+* Enter the following command to give a list of CEA-supported modes: `/opt/vc/bin/tvservice -m CEA`
+* Enter the following command to give a list of DMT-supported modes: `/opt/vc/bin/tvservice -m DMT`
+* Enter the following command to show your current state: `/opt/vc/bin/tvservice -s`
+* Enter the following commands to dump more detailed information from your monitor: `/opt/vc/bin/tvservice -d edid.dat; /opt/vc/bin/edidparser edid.dat`
 
 The `edid.dat` should also be provided when troubleshooting problems with the default HDMI mode.
 
 [[custom-mode]]
-### Custom mode
+=== Custom mode
 
 If your monitor requires a mode that is not in one of the tables above, then it's possible to define a custom CVT mode for it instead:
 
 [source]
-```
-hdmi*cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
-```
+----
+hdmi_cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
+----
 
 |===
 | Value | Default | Description
@@ -1477,25 +1481,25 @@ hdmi*cvt=<width> <height> <framerate> <aspect> <margins> <interlace> <rb>
 
 Fields at the end can be omitted to use the default values.
 
-Note that this simply **creates** the mode (group 2 mode 87). In order to make the Raspberry Pi use this by default, you must add some additional settings. For example, to select an 800×480 resolution and enable audio drive:
+Note that this simply *creates* the mode (group 2 mode 87). In order to make the Raspberry Pi use this by default, you must add some additional settings. For example, to select an 800×480 resolution and enable audio drive:
 
-```
-hdmi*cvt=800 480 60 6
-hdmi*group=2
-hdmi*mode=87
-hdmi*drive=2
-```
+----
+hdmi_cvt=800 480 60 6
+hdmi_group=2
+hdmi_mode=87
+hdmi_drive=2
+----
 
 This may not work if your monitor does not support standard CVT timings.
 
-### Composite video mode
+=== Composite video mode
 
-#### `sdtv*mode`
+==== `sdtv_mode`
 
-The `sdtv*mode` command defines the TV standard used for composite video output:
+The `sdtv_mode` command defines the TV standard used for composite video output:
 
 |===
-| sdtv*mode | result
+| sdtv_mode | result
 
 | 0 (default)
 | Normal NTSC
@@ -1516,12 +1520,12 @@ The `sdtv*mode` command defines the TV standard used for composite video output:
 | Progressive scan PAL
 |===
 
-#### `sdtv*aspect`
+==== `sdtv_aspect`
 
-The `sdtv*aspect` command defines the aspect ratio for composite video output. The default value is `1`.
+The `sdtv_aspect` command defines the aspect ratio for composite video output. The default value is `1`.
 
 |===
-| sdtv*aspect | result
+| sdtv_aspect | result
 
 | 1
 | 4:3
@@ -1533,67 +1537,67 @@ The `sdtv*aspect` command defines the aspect ratio for composite video output. T
 | 16:9
 |===
 
-#### `sdtv*disable*colourburst`
+==== `sdtv_disable_colourburst`
 
-Setting `sdtv*disable*colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
+Setting `sdtv_disable_colourburst` to `1` disables colourburst on composite video output. The picture will be displayed in monochrome, but it may appear sharper.
 
-### LCD displays and touchscreens
+=== LCD displays and touchscreens
 
-#### `display*default*lcd`
+==== `display_default_lcd`
 
-If a Raspberry Pi Touch Display is detected it will be used as the default display and will show the framebuffer. Setting `display*default*lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
+If a Raspberry Pi Touch Display is detected it will be used as the default display and will show the framebuffer. Setting `display_default_lcd=0` will ensure the LCD is not the default display, which usually implies the HDMI output will be the default. The LCD can still be used by choosing its display number from supported applications, for example, omxplayer.
 
-#### `lcd*framerate`
+==== `lcd_framerate`
 
 Specify the framerate of the Raspberry Pi Touch Display, in Hz/fps. Defaults to 60Hz.
 
-#### `lcd*rotate`
+==== `lcd_rotate`
 
 This flips the display using the LCD's inbuilt flip functionality, which is a computationally cheaper operation than using the GPU-based rotate operation.
 
-For example, `lcd*rotate=2` will compensate for an upside-down display.
+For example, `lcd_rotate=2` will compensate for an upside-down display.
 
-#### `enable*dpi*lcd`
+==== `enable_dpi_lcd`
 
 Enable LCD displays attached to the DPI GPIOs. This is to allow the use of third-party LCD displays using the parallel display interface.
 
-#### `dpi*group`, `dpi*mode`, `dpi*output*format`
+==== `dpi_group`, `dpi_mode`, `dpi_output_format`
 
-The `dpi*group` and `dpi*mode` `config.txt` parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI (see `dpi*timings` section).
+The `dpi_group` and `dpi_mode` `config.txt` parameters are used to set either predetermined modes (DMT or CEA modes as used by HDMI above). A user can generate custom modes in much the same way as for HDMI (see `dpi_timings` section).
 
-`dpi*output*format` is a bitmask specifying various parameters used to set up the display format.
+`dpi_output_format` is a bitmask specifying various parameters used to set up the display format.
 
-#### `dpi*timings`
+==== `dpi_timings`
 
-This allows setting of raw DPI timing values for a custom mode, selected using `dpi*group=2` and `dpi*mode=87`.
-
-[source]
-```
-dpi*timings=<h*active*pixels> <h*sync*polarity> <h*front*porch> <h*sync*pulse> <h*back*porch> <v*active*lines> <v*sync*polarity> <v*front*porch> <v*sync*pulse> <v*back*porch> <v*sync*offset*a> <v*sync*offset*b> <pixel*rep> <frame*rate> <interlaced> <pixel*freq> <aspect*ratio>
-```
+This allows setting of raw DPI timing values for a custom mode, selected using `dpi_group=2` and `dpi_mode=87`.
 
 [source]
-```
-<h*active*pixels> = horizontal pixels (width)
-<h*sync*polarity> = invert hsync polarity
-<h*front*porch>   = horizontal forward padding from DE active edge
-<h*sync*pulse>    = hsync pulse width in pixel clocks
-<h*back*porch>    = vertical back padding from DE active edge
-<v*active*lines>  = vertical pixels height (lines)
-<v*sync*polarity> = invert vsync polarity
-<v*front*porch>   = vertical forward padding from DE active edge
-<v*sync*pulse>    = vsync pulse width in pixel clocks
-<v*back*porch>    = vertical back padding from DE active edge
-<v*sync*offset*a> = leave at zero
-<v*sync*offset*b> = leave at zero
-<pixel*rep>       = leave at zero
-<frame*rate>      = screen refresh rate in Hz
+----
+dpi_timings=<h_active_pixels> <h_sync_polarity> <h_front_porch> <h_sync_pulse> <h_back_porch> <v_active_lines> <v_sync_polarity> <v_front_porch> <v_sync_pulse> <v_back_porch> <v_sync_offset_a> <v_sync_offset_b> <pixel_rep> <frame_rate> <interlaced> <pixel_freq> <aspect_ratio>
+----
+
+[source]
+----
+<h_active_pixels> = horizontal pixels (width)
+<h_sync_polarity> = invert hsync polarity
+<h_front_porch>   = horizontal forward padding from DE active edge
+<h_sync_pulse>    = hsync pulse width in pixel clocks
+<h_back_porch>    = vertical back padding from DE active edge
+<v_active_lines>  = vertical pixels height (lines)
+<v_sync_polarity> = invert vsync polarity
+<v_front_porch>   = vertical forward padding from DE active edge
+<v_sync_pulse>    = vsync pulse width in pixel clocks
+<v_back_porch>    = vertical back padding from DE active edge
+<v_sync_offset_a> = leave at zero
+<v_sync_offset_b> = leave at zero
+<pixel_rep>       = leave at zero
+<frame_rate>      = screen refresh rate in Hz
 <interlaced>      = leave at zero
-<pixel*freq>      = clock frequency (h*active*pixels + h*front*porch + h*sync*pulse + h*back*porch)
-                                    ** (v*active*lines + v*front*porch + v*sync*pulse + v*back*porch)
+<pixel_freq>      = clock frequency (h_active_pixels + h_front_porch + h_sync_pulse + h_back_porch)
+                                    * (v_active_lines + v_front_porch + v_sync_pulse + v_back_porch)
                                     * framerate
-<aspect*ratio>    = [see footnote]
-```
+<aspect_ratio>    = [see footnote]
+----
 
 The aspect ratio can be set to one of eight values. Choose a value representing the aspect ratio most similar to your screen from the following:
 
@@ -1602,102 +1606,102 @@ The aspect ratio can be set to one of eight values. Choose a value representing 
 |Aspect ratio |Name |Value
 
 | 4:3
-| HDMI*ASPECT*4*3
+| HDMI_ASPECT_4_3
 | 1
 
 | 14:9
-| HDMI*ASPECT*14*9
+| HDMI_ASPECT_14_9
 | 2
 
 | 16:9
-| HDMI*ASPECT*16*9
+| HDMI_ASPECT_16_9
 | 3
 
 | 5:4
-| HDMI*ASPECT*5*4
+| HDMI_ASPECT_5_4
 | 4
 
 | 16:10
-| HDMI*ASPECT*16*10
+| HDMI_ASPECT_16_10
 | 5
 
 | 15:9
-| HDMI*ASPECT*15*9
+| HDMI_ASPECT_15_9
 | 6
 
 | 21:9
-| HDMI*ASPECT*21*9
+| HDMI_ASPECT_21_9
 | 7
 
 | 64:27
-| HDMI*ASPECT*64*27
+| HDMI_ASPECT_64_27
 | 8
 |===
 
-### Generic display options
+=== Generic display options
 
-#### `hdmi*force*hotplug`
+==== `hdmi_force_hotplug`
 
-Setting `hdmi*force*hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
+Setting `hdmi_force_hotplug` to `1` pretends that the HDMI hotplug signal is asserted, so it appears that a HDMI display is attached. In other words, HDMI output mode will be used, even if no HDMI monitor is detected.
 
-#### `hdmi*ignore*hotplug`
+==== `hdmi_ignore_hotplug`
 
-Setting `hdmi*ignore*hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. HDMI output will therefore be disabled, even if a monitor is connected.
+Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is not asserted, so it appears that a HDMI display is not attached. HDMI output will therefore be disabled, even if a monitor is connected.
 
-#### `disable*overscan`
+==== `disable_overscan`
 
-The default value for `disable*overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes.
+The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes.
 
-Set `disable*overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware.
+Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware.
 
-#### `overscan*left`
+==== `overscan_left`
 
-The `overscan*left` command specifies the number of pixels to add to the firmware default value of overscan on the left edge of the screen. The default value is `0`.
+The `overscan_left` command specifies the number of pixels to add to the firmware default value of overscan on the left edge of the screen. The default value is `0`.
 
 Increase this value if the text flows off the left edge of the screen; decrease it if there is a black border between the left edge of the screen and the text.
 
-#### `overscan*right`
+==== `overscan_right`
 
-The `overscan*right` command specifies the number of pixels to add to the firmware default value of overscan on the right edge of the screen. The default value is `0`.
+The `overscan_right` command specifies the number of pixels to add to the firmware default value of overscan on the right edge of the screen. The default value is `0`.
 
 Increase this value if the text flows off the right edge of the screen; decrease it if there is a black border between the right edge of the screen and the text.
 
-#### `overscan*top`
+==== `overscan_top`
 
-The `overscan*top` command specifies the number of pixels to add to the firmware default value of overscan on the top edge of the screen. The default value is `0`.
+The `overscan_top` command specifies the number of pixels to add to the firmware default value of overscan on the top edge of the screen. The default value is `0`.
 
 Increase this value if the text flows off the top edge of the screen; decrease it if there is a black border between the top edge of the screen and the text.
 
-#### `overscan*bottom`
+==== `overscan_bottom`
 
-The `overscan*bottom` command specifies the number of pixels to add to the firmware default value of overscan on the bottom edge of the screen. The default value is `0`.
+The `overscan_bottom` command specifies the number of pixels to add to the firmware default value of overscan on the bottom edge of the screen. The default value is `0`.
 
 Increase this value if the text flows off the bottom edge of the screen; decrease it if there is a black border between the bottom edge of the screen and the text.
 
-#### `overscan*scale`
+==== `overscan_scale`
 
-Set `overscan*scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
+Set `overscan_scale` to `1` to force any non-framebuffer layers to conform to the overscan settings. The default value is `0`.
 
 NOTE: this feature is generally not recommended: it can reduce image quality because all layers on the display will be scaled by the GPU. Disabling overscan on the display itself is the recommended option to avoid images being scaled twice (by the GPU and the display).
 
-#### `framebuffer*width`
+==== `framebuffer_width`
 
-The `framebuffer*width` command specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
+The `framebuffer_width` command specifies the console framebuffer width in pixels. The default is the display width minus the total horizontal overscan.
 
-#### `framebuffer*height`
+==== `framebuffer_height`
 
-The `framebuffer*height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
+The `framebuffer_height` command specifies the console framebuffer height in pixels. The default is the display height minus the total vertical overscan.
 
-#### `max*framebuffer*height`, `max*framebuffer*width`
+==== `max_framebuffer_height`, `max_framebuffer_width`
 
 Specifies the maximum dimensions of the internal frame buffer.
 
-#### `framebuffer*depth`
+==== `framebuffer_depth`
 
-Use `framebuffer*depth` to specify the console framebuffer depth in bits per pixel. The default value is `16`.
+Use `framebuffer_depth` to specify the console framebuffer depth in bits per pixel. The default value is `16`.
 
 |===
-| framebuffer*depth | result | notes
+| framebuffer_depth | result | notes
 
 | 8
 | 8-bit framebuffer
@@ -1713,14 +1717,14 @@ Use `framebuffer*depth` to specify the console framebuffer depth in bits per pix
 
 | 32
 | 32-bit framebuffer
-| May need to be used in conjunction with `framebuffer*ignore*alpha=1`
+| May need to be used in conjunction with `framebuffer_ignore_alpha=1`
 |===
 
-#### `framebuffer*ignore*alpha`
+==== `framebuffer_ignore_alpha`
 
-Set `framebuffer*ignore*alpha` to `1` to disable the alpha channel. Can help with the display of a 32-bit `framebuffer*depth`.
+Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help with the display of a 32-bit `framebuffer_depth`.
 
-#### `framebuffer*priority`
+==== `framebuffer_priority`
 
 In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e. `/dev/fb0`).
 
@@ -1745,7 +1749,7 @@ The options that can be set are:
 | 7
 |===
 
-#### `max*framebuffers`
+==== `max_framebuffers`
 
 This configuration entry sets the maximum number of firmware framebuffers that can be created. Valid options are 0, 1, and 2. By default on devices before the Raspberry Pi 4 this is set to 1, so will need to be increased to 2 when using more than one display, for example HDMI and a DSI or DPI display. The Raspberry Pi 4 configuration sets this to 2 by default as it has two HDMI ports.
 
@@ -1753,16 +1757,16 @@ It is safe to set this to 2 in most instances, as framebuffers will only be crea
 
 Setting this value to 0 can be used to reduce memory requirements when used in headless mode, as it will prevent any framebuffers from being allocated.
 
-#### `test*mode`
+==== `test_mode`
 
-The `test*mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
+The `test_mode` command displays a test image and sound during boot (over the composite video and analogue audio outputs only) for the given number of seconds, before continuing to boot the OS as normal. This is used as a manufacturing test; the default value is `0`.
 
-#### `display*hdmi*rotate`
+==== `display_hdmi_rotate`
 
-Use `display*hdmi*rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
+Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The default value is `0`.
 
 |===
-| display*hdmi*rotate | result
+| display_hdmi_rotate | result
 
 | 0
 | no rotation
@@ -1787,18 +1791,18 @@ Note that the 90 and 270 degree rotation options require additional memory on th
 
 You can combine the rotation settings with the flips by adding them together. You can also have both horizontal and vertical flips in the same way. E.g. A 180 degree rotation with a vertical and horizontal flip will be 0x20000 + 0x10000 + 2 = 0x30002.
 
-#### `display*lcd*rotate`
+==== `display_lcd_rotate`
 
-For the legacy graphics driver (default on models prior to the Raspberry Pi 4), use `display*lcd*rotate` to rotate or flip the LCD orientation. Parameters are the same as `display*hdmi*rotate`. See also `lcd*rotate`.
+For the legacy graphics driver (default on models prior to the Raspberry Pi 4), use `display_lcd_rotate` to rotate or flip the LCD orientation. Parameters are the same as `display_hdmi_rotate`. See also `lcd_rotate`.
 
-#### `display*rotate`
+==== `display_rotate`
 
-In the latest firmware, `display*rotate` is deprecated. It has only been retained for backwards compatibility. Please use `display*lcd*rotate` and `display*hdmi*rotate` instead.
+In the latest firmware, `display_rotate` is deprecated. It has only been retained for backwards compatibility. Please use `display_lcd_rotate` and `display_hdmi_rotate` instead.
 
-Use `display*rotate` to rotate or flip the screen orientation. Parameters are the same as `display*hdmi*rotate`.
+Use `display_rotate` to rotate or flip the screen orientation. Parameters are the same as `display_hdmi_rotate`.
 
-### Other options
+=== Other options
 
-#### `dispmanx_offline`
+==== `dispmanx_offline`
 
 Forces `dispmanx` composition to be done offline in two offscreen framebuffers. This can allow more `dispmanx` elements to be composited, but is slower and may limit screen framerate to around 30fps.

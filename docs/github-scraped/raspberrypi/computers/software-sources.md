@@ -1,67 +1,75 @@
+# Source: software-sources.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
 At Raspberry Pi we're trying to open source as much of our code as possible to make it easy to use and adapt for your own uses. Raspberry Pi develops and supports software specifically for our products and focuses its energy on software which provides the most optimal user experience. For example, drivers which optimize multimedia acceleration such as the 3D, HEVC decode, the camera imaging pipeline, AI acceleration, dual HDMI and audio.
 
-## Finding software sources in Raspberry Pi OS
+== Finding software sources in Raspberry Pi OS
 
 When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to change each "Types: deb" line to "Types: deb deb-src":
 
-** `+/etc/apt/sources.list.d/debian.sources+` (on 64-bit images)
+* `+/etc/apt/sources.list.d/debian.sources+` (on 64-bit images)
 or
-** `+/etc/apt/sources.list.d/raspbian.sources+` (on 32-bit images)
+* `+/etc/apt/sources.list.d/raspbian.sources+` (on 32-bit images)
 and
-** `+/etc/apt/sources.list.d/raspi.sources+`
+* `+/etc/apt/sources.list.d/raspi.sources+`
 
 Next you must update the package lists:
 
-```console
+[source,console]
+----
 $ sudo apt update
-```
+----
 
 Now you can fetch the package source, for example:
 
-```console
+[source,console]
+----
 $ apt source labwc
-```
+----
 
 Next, you need to install a helper package:
 
-```console
+[source,console]
+----
 $ sudo apt install devscripts
-```
+----
 
 Finally you can build the package using the standard Debian building process.
 
-```console
+[source,console]
+----
 $ sudo apt build-dep labwc
 $ cd labwc-0.8.4
 $ debuild -uc -us
-```
+----
 
-## Our GitHub organizations
+== Our GitHub organizations
 
 The other place you can find our software in a more standard form is in our GitHub repositories, we have three GitHub organisations we use to store our sources:
 
-** https://github.com/raspberrypi
-** https://github.com/raspberrypi-ui
-** https://github.com/RPi-Distro
+* https://github.com/raspberrypi
+* https://github.com/raspberrypi-ui
+* https://github.com/RPi-Distro
 
-## List of categorized sources
+== List of categorized sources
 
 The following is a curated list of repositories that most people are interested in:
 
-### Main sources
+=== Main sources
 
 https://github.com/raspberrypi/linux::
 This repository contains the source code for the downstream Linux kernel supported and working on all versions of Raspberry Pi from Pi 1 to Pi 5.
 
 https://github.com/raspberrypi/firmware::
 This repository contains the closed source firmware, although the following two links are useful:
-** https://github.com/raspberrypi/firmware/commits/master/[Changelog for the firmware]
-** https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[Device tree overlay README]
+* https://github.com/raspberrypi/firmware/commits/master/[Changelog for the firmware]
+* https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[Device tree overlay README]
 
 https://github.com/raspberrypi/rpi-eeprom::
 Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 bootloader EEPROMs including the https://github.com/raspberrypi/rpi-eeprom/releases[releases] and https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md[release notes].
 
-### Libraries and applications
+=== Libraries and applications
 
 https://github.com/raspberrypi/utils::
 A collection of useful utilities such as pinctrl, piolib and raspinfo, also gpiolib a Raspberry Pi supported method of directly accessing GPIO pins.
@@ -78,7 +86,7 @@ A Python library for using and controlling the Raspberry Pi cameras.
 https://github.com/raspberrypi/drmu::
 A library for directly controlling and accessing multimedia interfaces.
 
-### Desktop
+=== Desktop
 
 https://github.com/raspberrypi-ui/rpd-metas::
 The metapackages used to create the desktop.
@@ -125,7 +133,7 @@ The screen configuration plugin for Control Centre.
 https://github.com/raspberrypi-ui/rpinters::
 The printer settings plugin for Control Centre.
 
-### Applications
+=== Applications
 
 https://github.com/raspberrypi-ui/agnostics::
 The Diagnostics application used to check SD cards.
@@ -139,12 +147,12 @@ The SD Card Copier application which allows cards and drives to be cloned.
 https://github.com/raspberrypi-ui/rp-prefapps::
 The Recommended Software application which allows selected programs to be installed or removed.
 
-### Debug
+=== Debug
 
 https://github.com/raspberrypi/rpi-analyse-boot::
 A boot analysis service that gathers boot-time metrics from various different sources.
 
-### Tools
+=== Tools
 
 https://github.com/raspberrypi/rpi-imager::
 The code for the Raspberry Pi Imager application which flashes an operating system to an SD card.
@@ -158,12 +166,12 @@ A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspb
 https://github.com/raspberrypi/rpi-sb-provisioner::
 A tool to mass provision Raspberry Pi devices, including secure boot and encrypted file systems. (Raspberry Pi 5, Compute Module 4, and Compute Module 5 are supported.)
 
-### Feedback
+=== Feedback
 
 http://github.com/raspberrypi/trixie-feedback::
 A repo specifically reserved for bug-reporting for the current Raspberry Pi OS release.
 
-### Raspberry Pi Pico
+=== Raspberry Pi Pico
 
 https://marketplace.visualstudio.com/items?itemName=raspberry-pi.raspberry-pi-pico::
 This is where you can go to download and install the Microsoft Visual Studio Code extension for the Raspberry Pi Pico SDK.

@@ -1,4 +1,8 @@
-### Detection options
+# Source: rpicam_options_detect.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Detection options
 
 The command line options specified in this section apply only to object detection using `rpicam-detect`.
 
@@ -6,10 +10,10 @@ To pass one of the following options to `rpicam-detect`, prefix the option name 
 
 Some options have shorthand aliases, for example `-h` instead of `--help`. Use these shorthand aliases instead of the full option name to save space and time at the expense of readability.
 
-#### `object`
+==== `object`
 
 Detects objects with the given name, sourced from the model's label file. Accepts a plaintext file name as input.
 
-#### `gap`
+==== `gap`
 
 Wait at least this many frames between captures. Accepts numeric values.

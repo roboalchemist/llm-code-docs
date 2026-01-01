@@ -1,20 +1,24 @@
-## Unicam
+# Source: csi-2-usage.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Unicam
 
 Raspberry Pi SoCs all have two camera interfaces that support either CSI-2 D-PHY 1.1 or Compact Camera Port 2 (CCP2) sources. This interface is known by the codename Unicam. The first instance of Unicam supports two CSI-2 data lanes, while the second supports four. Each lane can run at up to 1Gbit/s (DDR, so the max link frequency is 500 MHz).
 
 Compute Modules and Raspberry Pi 5 route out all lanes from both peripherals. Other models prior to Raspberry Pi 5 only expose the second instance, routing out only two of the data lanes to the camera connector.
 
-### Software interfaces
+=== Software interfaces
 
 The V4L2 software interface is the only means of communicating with the Unicam peripheral. There used to also be firmware and MMAL rawcam component interfaces, but these are no longer supported.
 
-#### V4L2
+==== V4L2
 
 NOTE: The V4L2 interface for Unicam is available only when using `libcamera`.
 
 There is a fully open-source kernel driver available for the Unicam block; this kernel module, called `bcm2835-unicam`, interfaces with V4L2 subdevice drivers to deliver raw frames. This `bcm2835-unicam` driver controls the sensor and configures the Camera Serial Interface 2 (CSI-2) receiver. Peripherals write raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. There is no image processing between the camera sensor capturing the image and the `bcm2835-unicam` driver placing the image data in SDRAM except for Bayer unpacking to 16bits/pixel.
 
-```
+----
 |------------------------|
 |     bcm2835-unicam     |
 |------------------------|
@@ -31,7 +35,7 @@ ccp2  |             |
     |-----------------|
     |     sensor      |
     |-----------------|
-```
+----
 
 Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tree has some additional drivers and Device Tree overlays to configure them:
 
@@ -73,7 +77,7 @@ Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tre
 
 As the subdevice driver is also a kernel driver with a standardised API, third parties are free to write their own for any source of their choosing.
 
-### Write a third-party driver
+=== Write a third-party driver
 
 This is the recommended approach to interfacing via Unicam.
 
@@ -83,32 +87,32 @@ NOTE: All kernel drivers are licensed under the GPLv2 licence, therefore source 
 
 The `bcm2835-unicam` module has been written to try and accommodate all types of CSI-2 source driver that are currently found in the mainline Linux kernel. These can be split broadly into camera sensors and bridge chips. Bridge chips allow for conversion between some other format and CSI-2.
 
-#### Camera sensors
+==== Camera sensors
 
 The sensor driver for a camera sensor is responsible for all configuration of the device, usually via I2C or SPI. Rather than writing a driver from scratch, it is often easier to take an existing driver as a basis and modify it as appropriate.
 
 The https://github.com/raspberrypi/linux/blob/rpi-6.1.y/drivers/media/i2c/imx219.c[IMX219 driver] is a good starting point. This driver supports both 8bit and 10bit Bayer readout, so enumerating frame formats and frame sizes is slightly more involved.
 
-Sensors generally support https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/control.html[V4L2 user controls]. Not all these controls need to be implemented in a driver. The IMX219 driver only implements a small subset, listed below, the implementation of which is handled by the `imx219*set*ctrl` function.
+Sensors generally support https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/control.html[V4L2 user controls]. Not all these controls need to be implemented in a driver. The IMX219 driver only implements a small subset, listed below, the implementation of which is handled by the `imx219_set_ctrl` function.
 
-** `V4L2*CID*PIXEL*RATE` / `V4L2*CID*VBLANK` / `V4L2*CID*HBLANK`: allows the application to set the frame rate
-** `V4L2*CID*EXPOSURE`: sets the exposure time in lines; the application needs to use `V4L2*CID*PIXEL*RATE`, `V4L2*CID*HBLANK`, and the frame width to compute the line time
-** `V4L2*CID*ANALOGUE*GAIN`: analogue gain in sensor specific units
-** `V4L2*CID*DIGITAL*GAIN`: optional digital gain in sensor specific units
-** `V4L2*CID*HFLIP / V4L2*CID*VFLIP`: flips the image either horizontally or vertically; this operation may change the Bayer order of the data in the frame, as is the case on the IMX219.
-** `V4L2*CID*TEST*PATTERN` / `V4L2*CID*TEST*PATTERN**`: enables output of various test patterns from the sensor; useful for debugging
+* `V4L2_CID_PIXEL_RATE` / `V4L2_CID_VBLANK` / `V4L2_CID_HBLANK`: allows the application to set the frame rate
+* `V4L2_CID_EXPOSURE`: sets the exposure time in lines; the application needs to use `V4L2_CID_PIXEL_RATE`, `V4L2_CID_HBLANK`, and the frame width to compute the line time
+* `V4L2_CID_ANALOGUE_GAIN`: analogue gain in sensor specific units
+* `V4L2_CID_DIGITAL_GAIN`: optional digital gain in sensor specific units
+* `V4L2_CID_HFLIP / V4L2_CID_VFLIP`: flips the image either horizontally or vertically; this operation may change the Bayer order of the data in the frame, as is the case on the IMX219.
+* `V4L2_CID_TEST_PATTERN` / `V4L2_CID_TEST_PATTERN_*`: enables output of various test patterns from the sensor; useful for debugging
 
 In the case of the IMX219, many of these controls map directly onto register writes to the sensor itself.
 
-Further guidance can be found in the `libcamera` https://git.linuxtv.org/libcamera.git/tree/Documentation/sensor*driver*requirements.rst[sensor driver requirements], and in chapter 3 of the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera tuning guide].
+Further guidance can be found in the `libcamera` https://git.linuxtv.org/libcamera.git/tree/Documentation/sensor_driver_requirements.rst[sensor driver requirements], and in chapter 3 of the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera tuning guide].
 
-##### Device Tree
+===== Device Tree
 
 Device Tree is used to select the sensor driver and configure parameters such as number of CSI-2 lanes, continuous clock lane operation, and link frequency (often only one is supported).
 
 The IMX219 https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/imx219-overlay.dts[Device Tree overlay] for the 6.1 kernel is available on GitHub.
 
-#### Bridge chips
+==== Bridge chips
 
 These are devices that convert an incoming video stream, for example HDMI or composite, into a CSI-2 stream that can be accepted by the Raspberry Pi CSI-2 receiver.
 
@@ -116,23 +120,23 @@ Handling bridge chips is more complicated. Unlike camera sensors, they have to r
 
 The mechanisms for handling bridge chips can be split into two categories: either analogue or digital.
 
-When using `ioctls` in the sections below, an `*S*` in the `ioctl` name means it is a set function, while `*G*` is a get function and `*ENUM*` enumerates a set of permitted values.
+When using `ioctls` in the sections below, an `_S_` in the `ioctl` name means it is a set function, while `_G_` is a get function and `_ENUM_` enumerates a set of permitted values.
 
-##### Analogue video sources
+===== Analogue video sources
 
-Analogue video sources use the standard `ioctls` for detecting and setting video standards. https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html[`VIDIOC*G*STD`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html[`VIDIOC*S*STD`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enumstd.html[`VIDIOC*ENUMSTD`], and https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-querystd.html[`VIDIOC*QUERYSTD`] are available.
+Analogue video sources use the standard `ioctls` for detecting and setting video standards. https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html[`VIDIOC_G_STD`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-std.html[`VIDIOC_S_STD`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enumstd.html[`VIDIOC_ENUMSTD`], and https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-querystd.html[`VIDIOC_QUERYSTD`] are available.
 
-Selecting the wrong standard will generally result in corrupt images. Setting the standard will typically also set the resolution on the V4L2 CAPTURE queue. It can not be set via `VIDIOC*S*FMT`. Generally, requesting the detected standard via `VIDIOC*QUERYSTD` and then setting it with `VIDIOC*S*STD` before streaming is a good idea.
+Selecting the wrong standard will generally result in corrupt images. Setting the standard will typically also set the resolution on the V4L2 CAPTURE queue. It can not be set via `VIDIOC_S_FMT`. Generally, requesting the detected standard via `VIDIOC_QUERYSTD` and then setting it with `VIDIOC_S_STD` before streaming is a good idea.
 
-##### Digital video sources
+===== Digital video sources
 
-For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters: https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html[`VIDIOC*G*DV*TIMINGS`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html[`VIDIOC*S*DV*TIMINGS`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enum-dv-timings.html[`VIDIOC*ENUM*DV*TIMINGS`], and https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-query-dv-timings.html[`VIDIOC*QUERY*DV*TIMINGS`].
+For digital video sources, such as HDMI, there is an alternate set of calls that allow specifying of all the digital timing parameters: https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html[`VIDIOC_G_DV_TIMINGS`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-g-dv-timings.html[`VIDIOC_S_DV_TIMINGS`], https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-enum-dv-timings.html[`VIDIOC_ENUM_DV_TIMINGS`], and https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/vidioc-query-dv-timings.html[`VIDIOC_QUERY_DV_TIMINGS`].
 
-As with analogue bridges, the timings typically fix the V4L2 CAPTURE queue resolution, and calling `VIDIOC*S*DV*TIMINGS` with the result of `VIDIOC*QUERY*DV*TIMINGS` before streaming should ensure the format is correct.
+As with analogue bridges, the timings typically fix the V4L2 CAPTURE queue resolution, and calling `VIDIOC_S_DV_TIMINGS` with the result of `VIDIOC_QUERY_DV_TIMINGS` before streaming should ensure the format is correct.
 
-Depending on the bridge chip and the driver, it may be possible for changes in the input source to be reported to the application via `VIDIOC*SUBSCRIBE*EVENT` and `V4L2*EVENT*SOURCE*CHANGE`.
+Depending on the bridge chip and the driver, it may be possible for changes in the input source to be reported to the application via `VIDIOC_SUBSCRIBE_EVENT` and `V4L2_EVENT_SOURCE_CHANGE`.
 
-##### Currently supported devices
+===== Currently supported devices
 
 There are two bridge chips which are currently supported by the Raspberry Pi Linux kernel: the Analog Devices ADV728x-M for analogue video sources, and the Toshiba TC358743 for HDMI sources.
 
@@ -140,7 +144,7 @@ Analog Devices ADV728x(A)-M analogue video to CSI2 bridge chips convert composit
 
 Product details for the various versions of this chip can be found on the Analog Devices website: https://www.analog.com/en/products/adv7280a.html[ADV7280A], https://www.analog.com/en/products/adv7281a.html[ADV7281A], and https://www.analog.com/en/products/adv7282a.html[ADV7282A].
 
-Because of some missing code in the current core V4L2 implementation, selecting the source fails, so the Raspberry Pi kernel version adds a kernel module parameter called `dbg*input` to the ADV7180 kernel driver which sets the input source every time VIDIOC*S*STD is called. At some point mainstream will fix the underlying issue (a disjoin between the kernel API call s*routing, and the userspace call `VIDIOC*S*INPUT`) and this modification will be removed.
+Because of some missing code in the current core V4L2 implementation, selecting the source fails, so the Raspberry Pi kernel version adds a kernel module parameter called `dbg_input` to the ADV7180 kernel driver which sets the input source every time VIDIOC_S_STD is called. At some point mainstream will fix the underlying issue (a disjoin between the kernel API call s_routing, and the userspace call `VIDIOC_S_INPUT`) and this modification will be removed.
 
 Receiving interlaced video is not supported, therefore the ADV7281(A)-M version of the chip is of limited use as it doesn't have the necessary I2P deinterlacing block. Also ensure when selecting a device to specify the -M option. Without that you will get a parallel output bus which can not be interfaced to the Raspberry Pi.
 
@@ -148,9 +152,9 @@ There are no known commercially available boards using these chips, but this dri
 
 This driver can be loaded using the `config.txt` dtoverlay `adv7282m` if you are using the `ADV7282-M` chip variant; or `adv728x-m` with a parameter of either `adv7280m=1`, `adv7281m=1`, or `adv7281ma=1` if you are using a different variant.
 
-```
+----
 dtoverlay=adv728x-m,adv7280m=1
-```
+----
 
 The Toshiba TC358743 is an HDMI to CSI-2 bridge chip, capable of converting video data at up to 1080p60.
 
@@ -160,9 +164,9 @@ The TC358743 interfaces HDMI into CSI-2 and I2S outputs. It is supported by the 
 
 The chip supports incoming HDMI signals as either RGB888, YUV444, or YUV422, at up to 1080p60. It can forward RGB888, or convert it to YUV444 or YUV422, and convert either way between YUV444 and YUV422. Only RGB888 and YUV422 support has been tested. When using two CSI-2 lanes, the maximum rates that can be supported are 1080p30 as RGB888, or 1080p50 as YUV422. When using four lanes on a Compute Module, 1080p60 can be received in either format.
 
-HDMI negotiates the resolution by a receiving device advertising an https://en.wikipedia.org/wiki/Extended*Display*Identification*Data[EDID] of all the modes that it can support. The kernel driver has no knowledge of the resolutions, frame rates, or formats that you wish to receive, so it is up to the user to provide a suitable file via the VIDIOC*S*EDID ioctl, or more easily using `v4l2-ctl --fix-edid-checksums --set-edid=file=filename.txt` (adding the --fix-edid-checksums option means that you don't have to get the checksum values correct in the source file). Generating the required EDID file (a textual hexdump of a binary EDID file) is not too onerous, and there are tools available to generate them, but it is beyond the scope of this page.
+HDMI negotiates the resolution by a receiving device advertising an https://en.wikipedia.org/wiki/Extended_Display_Identification_Data[EDID] of all the modes that it can support. The kernel driver has no knowledge of the resolutions, frame rates, or formats that you wish to receive, so it is up to the user to provide a suitable file via the VIDIOC_S_EDID ioctl, or more easily using `v4l2-ctl --fix-edid-checksums --set-edid=file=filename.txt` (adding the --fix-edid-checksums option means that you don't have to get the checksum values correct in the source file). Generating the required EDID file (a textual hexdump of a binary EDID file) is not too onerous, and there are tools available to generate them, but it is beyond the scope of this page.
 
-As described above, use the `DV*TIMINGS` ioctls to configure the driver to match the incoming video. The easiest approach for this is to use the command `v4l2-ctl --set-dv-bt-timings query`. The driver does support generating the `SOURCE*CHANGED` events, should you wish to write an application to handle a changing source. Changing the output pixel format is achieved by setting it via `VIDIOC*S*FMT`, but only the pixel format field will be updated as the resolution is configured by the DV timings.
+As described above, use the `DV_TIMINGS` ioctls to configure the driver to match the incoming video. The easiest approach for this is to use the command `v4l2-ctl --set-dv-bt-timings query`. The driver does support generating the `SOURCE_CHANGED` events, should you wish to write an application to handle a changing source. Changing the output pixel format is achieved by setting it via `VIDIOC_S_FMT`, but only the pixel format field will be updated as the resolution is configured by the DV timings.
 
 There are a couple of commercially available boards that connect this chip to the Raspberry Pi. The Auvidea B101 and B102 are the most widely obtainable, but other equivalent boards are available.
 
@@ -195,6 +199,6 @@ The chip also supports capturing stereo HDMI audio via I2S. The Auvidea boards b
 | N/A
 |===
 
-The `tc358743-audio` overlay is required *in addition to* the `tc358743` overlay. This should create an ALSA recording device for the HDMI audio.
+The `tc358743-audio` overlay is required _in addition to_ the `tc358743` overlay. This should create an ALSA recording device for the HDMI audio.
 
-There is no resampling of the audio. The presence of audio is reflected in the V4L2 control `TC358743*CID*AUDIO*PRESENT` (audio-present), and the sample rate of the incoming audio is reflected in the V4L2 control `TC358743*CID*AUDIO*SAMPLING_RATE` (audio sampling-frequency). Recording when no audio is present or at a sample rate different from that reported emits a warning.
+There is no resampling of the audio. The presence of audio is reflected in the V4L2 control `TC358743_CID_AUDIO_PRESENT` (audio-present), and the sample rate of the incoming audio is reflected in the V4L2 control `TC358743_CID_AUDIO_SAMPLING_RATE` (audio sampling-frequency). Recording when no audio is present or at a sample rate different from that reported emits a warning.

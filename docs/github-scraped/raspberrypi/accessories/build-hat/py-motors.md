@@ -1,56 +1,65 @@
-### Use Motors from Python
+# Source: py-motors.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+=== Use Motors from Python
 
 There are xref:build-hat.adoc#device-compatibility[a number of motors] that work with the Build HAT.
 
-#### Connect a Motor
+==== Connect a Motor
 
 Connect a motor to port A on the Build HAT. The LPF2 connectors need to be inserted the correct way up. If the connector doesn't slide in easily, rotate by 180 degrees and try again.
 
-video: images/connect-motor.webm[width="80%"]
+video::images/connect-motor.webm[width="80%"]
 
-#### Work with Motors
+
+==== Work with Motors
 
 Start the https://thonny.org/[Thonny IDE]. Add the program code below:
 
-```python
+[source,python]
+----
 from buildhat import Motor
 
-motor*a = Motor('A')
+motor_a = Motor('A')
 
-motor*a.run*for*seconds(5)
-```
+motor_a.run_for_seconds(5)
+----
 
 Run the program by clicking the play/run button. If this is the first time you're running a Build HAT program since the Raspberry Pi has booted, there will be a few seconds pause while the firmware is copied across to the board. You should see the red LED extinguish and the green LED illuminate. Subsequent executions of a Python program will not require this pause.
 
-video: images/blinking-light.webm[width="80%"]
+video::images/blinking-light.webm[width="80%"]
 
 Your motor should turn clockwise for 5 seconds.
 
-video: images/turning-motor.webm[width="80%"]
+video::images/turning-motor.webm[width="80%"]
 
 Change the final line of your program and re-run. 
 
-```python
-motor*a.run*for*seconds(5, speed=50)
-```
+[source,python]
+----
+motor_a.run_for_seconds(5, speed=50)
+----
 
 The motor should now turn faster. Make another change:
 
-```python
-motor*a.run*for*seconds(5, speed=-50)
-```
+[source,python]
+----
+motor_a.run_for_seconds(5, speed=-50)
+----
 
 The motor should turn in the opposite (anti-clockwise) direction
 
 Create a new program by clicking on the plus button in Thonny. Add the code below:
 
-```python
+[source,python]
+----
 from buildhat import Motor
 
-motor*a = Motor('A')
+motor_a = Motor('A')
 
 while True:
-    print("Position: ", motor*a.get_aposition())
-```
+    print("Position: ", motor_a.get_aposition())
+----
 
-Run the program. Grab the motor and turn the shaft. You should see the numbers printed in the Thonny REPL changing.
+Run the program. Grab the motor and turn the shaft. You should see the numbers printed in the Thonny REPL changing. 

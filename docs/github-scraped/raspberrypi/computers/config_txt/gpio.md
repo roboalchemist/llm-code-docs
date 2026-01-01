@@ -1,25 +1,30 @@
-## GPIO control
+# Source: gpio.adoc
 
-### `gpio`
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== GPIO control
+
+=== `gpio`
 
 The `gpio` directive allows GPIO pins to be set to specific modes and values at boot time in a way that would previously have needed a custom `dt-blob.bin` file. Each line applies the same settings (or at least makes the same changes) to a set of pins, addressing either a single pin (`3`), a range of pins (`3-4`), or a comma-separated list of either (`3-4,6,8`).
 
 The pin set is followed by an `=` and one or more comma-separated attributes from this list:
 
-** `ip` - Input
-** `op` - Output
-** `a0-a5` - Alt0-Alt5
-** `dh` - Driving high (for outputs)
-** `dl` - Driving low (for outputs)
-** `pu` - Pull up
-** `pd` - Pull down
-** `pn/np` - No pull
+* `ip` - Input
+* `op` - Output
+* `a0-a5` - Alt0-Alt5
+* `dh` - Driving high (for outputs)
+* `dl` - Driving low (for outputs)
+* `pu` - Pull up
+* `pd` - Pull down
+* `pn/np` - No pull
 
 `gpio` settings apply in order, so those appearing later override those appearing earlier.
 
 Examples:
 
-```ini
+[source,ini]
+----
 # Select Alt2 for GPIO pins 0 to 27 (for DPI24)
 gpio=0-27=a2
 
@@ -31,7 +36,7 @@ gpio=18,20=pu
 
 # Make pins 17 to 21 inputs
 gpio=17-21=ip
-```
+----
 
 The `gpio` directive respects the "[...]" conditional filters in `config.txt`, so it is possible to use different settings based on the model, serial number, and EDID.
 
@@ -39,28 +44,30 @@ GPIO changes made through this mechanism do not have any direct effect on the ke
 
 Note also that there is a delay of a few seconds between power being applied and the changes taking effect - longer if booting over the network or from a USB mass storage device.
 
-### `enable*jtag*gpio`
+=== `enable_jtag_gpio`
 
-Setting `enable*jtag*gpio=1` selects Alt4 mode for GPIO pins 22-27, and sets up some internal SoC connections, enabling the JTAG interface for the Arm CPU. It works on all models of Raspberry Pi.
+Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, and sets up some internal SoC connections, enabling the JTAG interface for the Arm CPU. It works on all models of Raspberry Pi.
 
 |===
 | Pin # | Function
 
 | GPIO22
-| `ARM*TRST`
+| `ARM_TRST`
 
 | GPIO23
-| `ARM*RTCK`
+| `ARM_RTCK`
 
 | GPIO24
-| `ARM*TDO`
+| `ARM_TDO`
 
 | GPIO25
-| `ARM*TCK`
+| `ARM_TCK`
 
 | GPIO26
-| `ARM*TDI`
+| `ARM_TDI`
 
 | GPIO27
-| `ARM*TMS`
+| `ARM_TMS`
 |===
+
+

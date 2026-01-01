@@ -1,4 +1,8 @@
-## Power button
+# Source: power-button.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Power button
 
 NOTE: This section only applies to Raspberry Pi models with a power button, such as the Raspberry Pi 5.
 
@@ -10,19 +14,19 @@ Select an option or press the power button again to initiate a clean shutdown.
 
 NOTE: If you run Raspberry Pi Desktop, you can press the power button twice in quick succession to shut down. If you run Raspberry Pi OS Lite without a desktop, press the power button a single time to initiate a shutdown.
 
-### Restart
+=== Restart
 
 If the Raspberry Pi board is turned off, but still connected to power, pressing the power button restarts the board.
 
 NOTE: Resetting the Power Management Integrated Circuit (PMIC) can also restart the board. Connecting a HAT can reset the PMIC. Always disconnect your device from the power supply before connecting a HAT.
 
-### Hard shutdown
+=== Hard shutdown
 
 To force a hard shutdown, press and hold the power button.
 
-### Add your own power button
+=== Add your own power button
 
 .The J2 jumper
-image: images/j2.jpg[alt="The J2 jumper on Raspberry Pi 5",width="70%"]
+image::images/j2.jpg[alt="The J2 jumper on Raspberry Pi 5",width="70%"]
 
 The J2 jumper is located between the RTC battery connector and the board edge. This breakout allows you to add your own power button to Raspberry Pi 5 by adding a Normally Open (NO) momentary switch bridging the two pads. Briefly closing this switch will perform the same actions as the onboard power button.

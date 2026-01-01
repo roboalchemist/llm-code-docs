@@ -1,8 +1,12 @@
-## About
+# Source: intro.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== About
 
 The https://www.raspberrypi.com/products/sense-hat/[Raspberry Pi Sense HAT] is an add-on board that gives your Raspberry Pi an array of sensing capabilities. The on-board sensors allow you to monitor pressure, humidity, temperature, colour, orientation, and movement. The 8×8 RGB LED matrix allows you to visualise data from the sensors. The five-button joystick lets users interact with your projects.
 
-image: images/Sense-HAT.jpg[width="70%"]
+image::images/Sense-HAT.jpg[width="70%"]
 
 The Sense HAT was originally developed for use on the International Space Station as part of the educational https://astro-pi.org/[Astro Pi] programme run by the https://raspberrypi.org[Raspberry Pi Foundation] in partnership with the https://www.esa.int/[European Space Agency]. It can help with any project that requires position, motion, orientation, or environmental sensing.
 
