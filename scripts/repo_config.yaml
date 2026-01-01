@@ -698,6 +698,13 @@ repositories:
     target_folder: "docs/github-scraped/prompt-flow"
     branch: "main"
 
+  - name: "ESLint"
+    description: "ESLint - Pluggable JavaScript linter for identifying and fixing code issues with extensive rule library and plugin ecosystem"
+    repo_url: "https://github.com/eslint/eslint.git"
+    source_folder: "docs/src"
+    target_folder: "docs/github-scraped/eslint"
+    branch: "main"
+
   - name: "ExecuTorch"
     description: "ExecuTorch - PyTorch framework for efficient edge device inference with support for mobile, embedded, and IoT devices"
     repo_url: "https://github.com/pytorch/executorch.git"
