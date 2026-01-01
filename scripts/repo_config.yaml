@@ -600,6 +600,13 @@ repositories:
     target_folder: "docs/github-scraped/react-router"
     branch: "main"
 
+  - name: "Redux Toolkit"
+    description: "Redux Toolkit - Official library for efficient Redux development including RTK Query for data fetching and caching"
+    repo_url: "https://github.com/reduxjs/redux-toolkit.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/redux-toolkit"
+    branch: "master"
+
   - name: "Tree-sitter"
     description: "Tree-sitter - Incremental parsing system for programming tools with support for multiple languages and incremental parsing"
     repo_url: "https://github.com/tree-sitter/tree-sitter.git"
