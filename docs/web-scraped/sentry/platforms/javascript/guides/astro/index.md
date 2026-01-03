@@ -1,0 +1,274 @@
+---
+---
+title: Astro
+description: Astro is a web framework for building content-driven websites including blogs, marketing, and e-commerce sites. Learn how to set it up with Sentry.
+---
+
+Sentry's Astro SDK enables automatic reporting of errors and performance data in your Astro application.
+Our Astro integration instruments both the client as well as the server side of your Astro application.
+This page walks you through adding Sentry to your Astro project, configuring it, adding readable stack traces, and verifying your setup.
+
+## Prerequisites
+
+Before we get started, make sure you have the following:
+
+- You need a Sentry [account](https://sentry.io/signup/) and [project](/product/projects/)
+- An Astro project that uses Astro `3.0.0` or newer.
+- A Node runtime:
+  - This SDK currently only works on Node runtimes (e.g. Node adapter, Vercel with Lambda functions).
+    Non-Node runtimes, like Vercel's Edge runtime or Cloudflare Pages, are currently not supported.
+- If you're using Astro's Netlify adapter (`@astrojs/netlify`), you need version `5.0.0` or newer.
+
+## Install
+
+Sentry captures data by using an SDK within your application's runtime.
+
+Install the SDK by using the `astro` CLI:
+
+```bash {tabTitle:npm}
+npx astro add @sentry/astro
+```
+
+```bash {tabTitle:yarn}
+yarn astro add @sentry/astro
+```
+
+```bash {tabTitle:pnpm}
+pnpm astro add @sentry/astro
+```
+
+The `astro` CLI installs the SDK package and adds the Sentry integration to your `astro.config.mjs` file.
+
+```bash {tabTitle:npm}
+npm install @sentry/profiling-node
+```
+
+```bash {tabTitle:yarn}
+yarn add @sentry/profiling-node
+```
+
+```bash {tabTitle:pnpm}
+pnpm add @sentry/profiling-node
+```
+
+To finish the setup, configure the Sentry integration.
+
+## Configure
+
+To set up the Sentry SDK, register the Sentry integration and initialize the SDK for client and server in the root directory of your project:
+
+### Astro Integration Setup
+
+```javascript {filename:astro.config.mjs}
+export default defineConfig({
+  integrations: [
+    sentry({
+      project: "___PROJECT_SLUG___",
+      org: "___ORG_SLUG___",
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+    }),
+  ],
+});
+```
+
+  Passing runtime-specific configuration options (`dsn`, `release`,
+  `environment`, `sampleRate`, `tracesSampleRate`, `replaysSessionSampleRate`,
+  `replaysOnErrorSampleRate`) to the Sentry integration will be deprecated in
+  future versions. We recommend passing your configuration directly to the
+  respective `Sentry.init()` calls in `sentry.client.config.js` and
+  `sentry.server.config.js` instead.
+
+### Client-Side Setup
+
+```javascript {filename:sentry.client.config.js}
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+
+  // Adds request headers and IP for users, for more info visit:
+  // https://docs.sentry.io/platforms/javascript/guides/astro/configuration/options/#sendDefaultPii
+  sendDefaultPii: true,
+
+  integrations: [
+    // ___PRODUCT_OPTION_START___ performance
+    Sentry.browserTracingIntegration(),
+    // ___PRODUCT_OPTION_END___ performance
+    // ___PRODUCT_OPTION_START___ session-replay
+    Sentry.replayIntegration(),
+    // ___PRODUCT_OPTION_END___ session-replay
+    // ___PRODUCT_OPTION_START___ user-feedback
+    Sentry.feedbackIntegration({
+      // Additional SDK configuration goes in here, for example:
+      colorScheme: "system",
+    }),
+    // ___PRODUCT_OPTION_END___ user-feedback
+  ],
+  // ___PRODUCT_OPTION_START___ logs
+
+  // Enable logs to be sent to Sentry
+  enableLogs: true,
+  // ___PRODUCT_OPTION_END___ logs
+
+  // ___PRODUCT_OPTION_START___ performance
+  // Define how likely traces are sampled. Adjust this value in production,
+  // or use tracesSampler for greater control.
+  tracesSampleRate: 1.0,
+  // ___PRODUCT_OPTION_END___ performance
+  // ___PRODUCT_OPTION_START___ session-replay
+
+  // This sets the sample rate to be 10%. You may want this to be 100% while
+  // in development and sample at a lower rate in production
+  replaysSessionSampleRate: 0.1,
+
+  // If the entire session is not sampled, use the below sample rate to sample
+  // sessions when an error occurs.
+  replaysOnErrorSampleRate: 1.0,
+  // ___PRODUCT_OPTION_END___ session-replay
+});
+```
+
+### Server-Side Setup
+
+```javascript {filename:sentry.server.config.js}
+// ___PRODUCT_OPTION_START___ profiling
+// ___PRODUCT_OPTION_END___ profiling
+
+Sentry.init({
+  dsn: "___PUBLIC_DSN___",
+
+  // Adds request headers and IP for users, for more info visit: for more info visit:
+  // https://docs.sentry.io/platforms/javascript/guides/astro/configuration/options/#sendDefaultPii
+  sendDefaultPii: true,
+  // ___PRODUCT_OPTION_START___ profiling
+
+  integrations: [
+    // Add our Profiling integration
+    nodeProfilingIntegration(),
+  ],
+  // ___PRODUCT_OPTION_END___ profiling
+  // ___PRODUCT_OPTION_START___ logs
+
+  // Enable logs to be sent to Sentry
+  enableLogs: true,
+  // ___PRODUCT_OPTION_END___ logs
+
+  // ___PRODUCT_OPTION_START___ performance
+  // Define how likely traces are sampled. Adjust this value in production,
+  // or use tracesSampler for greater control.
+  tracesSampleRate: 1.0,
+  // ___PRODUCT_OPTION_END___ performance
+  // ___PRODUCT_OPTION_START___ profiling
+
+  // Define how many user sessions have profiling enabled.
+  profileSessionSampleRate: 1.0,
+  // ___PRODUCT_OPTION_END___ profiling
+});
+```
+
+If you want to configure your SDK using environment variables, make sure to follow Astro's documentation on [using environment variables](https://docs.astro.build/en/guides/environment-variables/).
+
+## Add Readable Stack Traces to Errors
+
+To get readable stack traces in your production builds, set the `SENTRY_AUTH_TOKEN` environment variable in your build environment. You can also add the environment variable to a `.env.sentry-build-plugin` file in the root of your project.
+
+```bash {filename:.env.sentry-build-plugin}
+SENTRY_AUTH_TOKEN=___ORG_AUTH_TOKEN___
+```
+
+This, in combination with your `sentry` integration configuration, will upload source maps to Sentry every time you make a production build.
+
+## Verify
+
+This snippet includes an intentional error, so you can test that everything is working as soon as you set it up.
+
+Trigger a test error somewhere in your Astro app, for example in one of your pages:
+
+```html {filename: home.astro}
+<button onclick="throw new Error('This is a test error')">
+  Throw test error
+</button>
+```
+
+  Errors triggered from within Browser DevTools are sandboxed and won't trigger
+  an error handler. Place the snippet directly in your code instead.
+
+  Learn more about manually capturing an error or message in our{" "}
+  Usage documentation.
+
+To view and resolve the recorded error, log into [sentry.io](https://sentry.io) and select your project. Clicking on the error's title will open a page where you can see detailed information and mark it as resolved.
+
+## Advanced Configuration Options
+
+### Changing Config Files Location
+
+Sentry automatically detects configuration files named `sentry.(client|server).config.js` in the root of your project. You can rename these files or move them to a custom folder within your project.
+To change their location or names, specify the paths in the Sentry Astro integration options in your `astro.config.mjs`:
+
+```javascript {filename:astro.config.mjs}
+export default defineConfig({
+  // Other Astro project options
+  integrations: [
+    sentry({
+      clientInitPath: ".config/sentryClientInit.js",
+      serverInitPath: ".config/sentryServerInit.js",
+    }),
+  ],
+});
+```
+
+### Server Instrumentation
+
+Auto instrumentation only works for Astro 3.5.2 or newer. If you're using an older version, you need to [manually add the Sentry middleware](#manually-add-server-instrumentation) instead.
+
+In SSR or hybrid mode configured Astro apps, the Sentry Astro integration will automatically add an [Astro middleware](https://docs.astro.build/en/guides/middleware/) request handler to your server code. This middleware enhances the data collected by Sentry on the server side by:
+
+- Collecting performance spans for incoming requests
+- Enabling distributed tracing between client and server
+- Enhancing captured errors with additional information
+
+### Manually Add Server Instrumentation
+
+For Astro versions below 3.5.2, you need to manually add the Sentry middleware to your `src/middleware.js` file:
+
+```javascript {filename:src/middleware.(js|ts)}
+export const onRequest = sequence(
+  Sentry.handleRequest()
+  // other middleware handlers
+);
+```
+
+If you have multiple request handlers, make sure to add the Sentry middleware as the first handler in the sequence.
+
+### Customize Server Instrumentation
+
+Sentry's Astro middleware gives you control over what additional data should be added to the recorded request spans.
+
+To customize the server instrumentation, add the Sentry middleware to your `src/middleware.js` file:
+
+```javascript {filename:src/middleware.(js|ts)}
+export const onRequest = sequence(
+  Sentry.handleRequest({
+    trackClientIp: true, // defaults to false
+    trackHeaders: true, // defaults to false
+  })
+  // other middleware handlers
+);
+```
+
+If you're using Astro 3.5.2 or newer, make sure to also disable auto instrumentation as shown below.
+
+### Disable Auto Server Instrumentation
+
+For Astro 3.5.2 or newer, you can disable the automatic server instrumentation by turning off the `requestHandler` auto instrumentation option:
+
+```javascript {filename:astro.config.mjs}
+export default defineConfig({
+  integrations: [
+    sentry({
+      autoInstrumentation: {
+        requestHandler: false,
+      },
+    }),
+  ],
+  output: "server",
+});
+```

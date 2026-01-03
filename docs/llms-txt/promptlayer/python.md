@@ -1,0 +1,446 @@
+# Source: https://docs.promptlayer.com/languages/python.md
+
+# Python
+
+To get started, create an account by clicking “*Log in*” on [PromptLayer](https://promptlayer.com/). Once logged in, click the button to create an API key and save this in a secure location ([Guide to Using Env Vars](https://towardsdatascience.com/the-quick-guide-to-using-environment-variables-in-python-d4ec9291619e)).
+
+Once you have that all set up, [install PromptLayer using](https://pypi.org/project/promptlayer/) `pip`.
+
+```bash  theme={null}
+pip install promptlayer
+```
+
+PromptLayer python library has support for both OpenAI and Anthropic LLMs!
+
+Set up a PromptLayer client in your python file.
+
+```python  theme={null}
+from promptlayer import PromptLayer
+promptlayer_client = PromptLayer()
+```
+
+Optionally, you can specify the API key and base URL in the client.
+
+```python  theme={null}
+promptlayer_client = PromptLayer(api_key="pl_****", base_url="https://api.promptlayer.com")
+```
+
+## OpenAI
+
+In the Python file where you use OpenAI APIs, add the following. This allows us to keep track of your requests without needing any other code changes.
+
+<CodeGroup>
+  ```python openai >= 1.0.0 theme={null}
+  from promptlayer import PromptLayer
+  promptlayer_client = PromptLayer()
+
+  OpenAI = promptlayer_client.openai.OpenAI
+  client = OpenAI()
+  ```
+
+  ```python openai < 1.0.0 theme={null}
+  from promptlayer import PromptLayer
+  promptlayer_client = PromptLayer()
+
+  openai = promptlayer_client.openai
+  ```
+</CodeGroup>
+
+**You can then use `openai` as you would if you had imported it directly.**
+
+<Info>Your OpenAI API Key is **never** sent to our servers. All OpenAI requests are made locally from your machine, PromptLayer just logs the request.</Info>
+
+There is only one difference… PromptLayer allows you to add tags through the `pl_tags` argument. This allows you to track and group requests in the dashboard.
+
+************Tags are not required but we recommend them!************
+
+```python  theme={null}
+completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "You are an AI."},
+    {"role": "user", "content": "Compose a poem please."}
+  ],
+  pl_tags=["getting-started"]
+)
+```
+
+After making your first few requests, you should be able to see them in the PromptLayer dashboard!
+
+<img src="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=3ed96f6e53858aa99b16435f0edb124e" data-og-width="2000" width="2000" data-og-height="1234" height="1234" data-path="images/prompt-in-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=280&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=4288cb4e17db51dc4793e368a31a0396 280w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=560&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=35be38313d2963ad4243a102cada4f48 560w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=840&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=6635e04b4d42346ba885b0d5bc44c3ad 840w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=1100&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=6e4784e136b21a5a84318eed760100d4 1100w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=1650&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=f69f7e892b365f3973aa3e84014240f5 1650w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/prompt-in-dashboard.png?w=2500&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=8ccdf055acaf6c95fbc2e8a15dfab23e 2500w" />
+
+Here is a complete code snippet:
+
+```python  theme={null}
+from promptlayer import PromptLayer
+promptlayer_client = PromptLayer()
+
+# Swap out 'from openai import OpenAI'
+OpenAI = promptlayer_client.openai.OpenAI
+
+client = OpenAI()
+completion = client.chat.completions.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "You are an AI."},
+    {"role": "user", "content": "Compose a poem please."}
+  ],
+  pl_tags=["getting-started"]
+)
+print(completion.choices[0].message)
+```
+
+## Anthropic
+
+Using Anthropic with PromptLayer is very similar to how to one would use OpenAI.
+
+Below is an example code snippet of the one line replacement:
+
+```python  theme={null}
+from promptlayer import PromptLayer
+promptlayer_client = PromptLayer()
+
+# Swap out 'from anthropic import Anthropic'
+anthropic = promptlayer_client.anthropic
+
+client = anthropic.Anthropic()
+
+completion = client.completions.create(
+    prompt=f'{anthropic.HUMAN_PROMPT} How many toes do dogs have? {anthropic.AI_PROMPT}',
+    stop_sequences=[anthropic.HUMAN_PROMPT],
+    model='claude-v1-100k',
+    max_tokens_to_sample=100,
+    pl_tags=['animal-toes']
+)
+
+print(completion)
+```
+
+Here is how it would look like on the dashbaord:
+
+<img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=a5be5c75e70b5ac3a1660a58b630037f" data-og-width="1830" width="1830" data-og-height="892" height="892" data-path="images/anthropic-test1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=064da0c9230250922238250548343cfa 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=edb44338cf9b10184865933eb071d506 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=1d85fe05557cc202a2053edaed39d456 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=30df4e5a195027bd624fca54d618b7f5 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=693dbded6d5e3009da966a5505f5f8a9 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test1.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=94ec04e8054b74db54f009cfa28db787 2500w" />
+
+## Error Handling
+
+PromptLayer provides robust error handling with specialized exception classes and configurable error behavior.
+
+### Exception Classes
+
+The library includes specific exception types following industry best practices:
+
+```python  theme={null}
+from promptlayer import (
+    PromptLayerAPIError,              # General API errors
+    PromptLayerBadRequestError,       # 400 errors
+    PromptLayerAuthenticationError,   # 401 errors
+    PromptLayerNotFoundError,         # 404 errors
+    PromptLayerValidationError,       # Input validation errors
+    PromptLayerAPIConnectionError,    # Connection failures
+    PromptLayerAPITimeoutError,       # Timeout errors
+    PromptLayerRateLimitError,        # 429 rate limit errors
+)
+```
+
+### Using `throw_on_error`
+
+By default, PromptLayer throws exceptions when errors occur. You can control this behavior using the `throw_on_error` parameter:
+
+```python  theme={null}
+from promptlayer import PromptLayer
+
+# Default behavior: throws exceptions on errors
+promptlayer_client = PromptLayer(api_key="pl_****", throw_on_error=True)
+
+# Alternative: logs warnings instead of throwing exceptions
+promptlayer_client = PromptLayer(api_key="pl_****", throw_on_error=False)
+```
+
+**Example with exception handling:**
+
+```python  theme={null}
+from promptlayer import PromptLayer, PromptLayerNotFoundError, PromptLayerValidationError
+
+promptlayer_client = PromptLayer()
+
+try:
+    # Attempt to get a template that might not exist
+    template = promptlayer_client.templates.get("NonExistentTemplate")
+except PromptLayerNotFoundError as e:
+    print(f"Template not found: {e}")
+except PromptLayerValidationError as e:
+    print(f"Invalid input: {e}")
+```
+
+**Example with warnings (throw\_on\_error=False):**
+
+```python  theme={null}
+from promptlayer import PromptLayer
+
+# Initialize with throw_on_error=False to get warnings instead of exceptions
+promptlayer_client = PromptLayer(throw_on_error=False)
+
+# This will log a warning instead of throwing an exception if the template doesn't exist
+template = promptlayer_client.templates.get("NonExistentTemplate")
+# Returns None if not found, with a warning logged
+```
+
+### Automatic Retry Mechanism
+
+PromptLayer includes a built-in retry mechanism to handle transient failures gracefully. This ensures your application remains resilient when temporary issues occur.
+
+**Retry Behavior:**
+
+* **Total Attempts**: 4 attempts (1 initial + 3 retries)
+* **Exponential Backoff**: Retries wait progressively longer between attempts (2s, 4s, 8s)
+* **Max Wait Time**: 15 seconds maximum wait between retries
+
+**What Triggers Retries:**
+
+* **5xx Server Errors**: Internal server errors, service unavailable, etc.
+* **429 Rate Limit Errors**: When rate limits are exceeded
+
+**What Fails Immediately (No Retries):**
+
+* **Connection Errors**: Network connectivity issues
+* **Timeout Errors**: Request timeouts
+* **4xx Client Errors** (except 429): Bad requests, authentication errors, not found, etc.
+
+<Info>
+  The retry mechanism operates transparently in the background. You don't need to implement retry logic yourself - PromptLayer handles it automatically for recoverable errors.
+</Info>
+
+### Logging
+
+PromptLayer uses Python's built-in `logging` module for all log output:
+
+```python  theme={null}
+import logging
+from promptlayer import PromptLayer
+
+# Configure logging to see PromptLayer logs
+logging.basicConfig(level=logging.INFO)
+
+promptlayer_client = PromptLayer()
+
+# Now you'll see log output from PromptLayer operations
+```
+
+**Setting log levels:**
+
+```python  theme={null}
+import logging
+
+# Get the PromptLayer logger
+logger = logging.getLogger("promptlayer")
+
+# Set to WARNING to only see warnings and errors
+logger.setLevel(logging.WARNING)
+
+# Set to DEBUG to see detailed information
+logger.setLevel(logging.DEBUG)
+```
+
+**Viewing Retry Logs:**
+
+When retries occur, PromptLayer logs warnings before each retry attempt:
+
+```python  theme={null}
+import logging
+from promptlayer import PromptLayer
+
+# Set up logging to see retry attempts
+logging.basicConfig(
+    level=logging.WARNING,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+promptlayer_client = PromptLayer()
+
+# If a retry occurs, you'll see log messages like:
+# "Retrying in 2 seconds..."
+# "Retrying in 4 seconds..."
+```
+
+## Async Support
+
+PromptLayer supports asynchronous operations, ideal for managing concurrent tasks in non-blocking environments like web servers, microservices, or Jupyter notebooks.
+
+### Initializing the Async Client
+
+To use asynchronous non-blocking methods, initialize AsyncPromptLayer as shown:
+
+```python  theme={null}
+from promptlayer import AsyncPromptLayer
+
+# Initialize an asynchronous client with your API key
+async_promptlayer_client = AsyncPromptLayer(api_key="pl_****")
+```
+
+### Async Usage Examples
+
+The asynchronous client functions similarly to the synchronous version, but allows for non-blocking execution with `asyncio`. Below are example uses.
+
+#### Example 1: Async Template Management
+
+Use asynchronous methods to manage templates:
+
+```python  theme={null}
+import asyncio
+from promptlayer import AsyncPromptLayer
+
+async def main():
+    async_promptlayer_client = AsyncPromptLayer(api_key="pl_****")
+
+    # Fetch a template asynchronously
+    template = await async_promptlayer_client.templates.get("Test1")
+    print(template)
+
+    # Fetch all templates asynchronously
+    templates = await async_promptlayer_client.templates.all()
+    print(templates)
+
+# Run the async function
+asyncio.run(main())
+```
+
+#### Example 2: Async Agent Execution
+
+Run Agents asynchronously for better efficiency:
+
+```python  theme={null}
+import asyncio
+from promptlayer import AsyncPromptLayer
+
+async def main():
+    async_promptlayer_client = AsyncPromptLayer(api_key="pl_****")
+
+    response = await async_promptlayer_client.run_workflow(
+        workflow_name="example_agent",
+        workflow_version=1,
+        input_variables={"num1": "1", "num2": "2"},
+        return_all_outputs=True,
+    )
+    print(response)
+
+# Run the async function
+asyncio.run(main())
+```
+
+#### Example 3: Async Tracking and Logging
+
+Track and log requests asynchronously:
+
+```python  theme={null}
+import asyncio
+from promptlayer import AsyncPromptLayer
+
+async def main():
+    async_promptlayer_client = AsyncPromptLayer(api_key="pl_****")
+
+    # Track metadata asynchronously
+    request_id = "pl_request_id_example"
+    await async_promptlayer_client.track.metadata(request_id, {"key": "value"})
+
+    # Log request asynchronously (for detailed logging, refer to the custom logging page)
+    await async_promptlayer_client.log_request(
+        provider="openai",
+        model="gpt-3.5-turbo",
+        input=prompt_template,
+        output=output_template,
+        request_start_time=1630945600,
+        request_end_time=1630945605,
+    )
+
+# Run the async function
+asyncio.run(main())
+```
+
+For more information on custom logging, please visit our [Custom Logging Documentation](/features/prompt-history/custom-logging).
+
+#### Example 4: Asynchronous Prompt Execution with run Method
+
+You can execute prompt templates asynchronously using the run method. This allows you to run a prompt template by name with given input variables.
+
+```python  theme={null}
+import asyncio
+from promptlayer import AsyncPromptLayer
+
+async def main():
+    async_promptlayer_client = AsyncPromptLayer(api_key="pl_****")
+
+    # Execute a prompt template asynchronously
+    response = await async_promptlayer_client.run(
+        prompt_name="TestPrompt",
+        input_variables={"variable1": "value1", "variable2": "value2"}
+    )
+    print(response)
+
+# Run the async function
+asyncio.run(main())
+```
+
+#### Example 5: Asynchronous Streaming Prompt Execution with run Method
+
+You can run streaming prompt template using the run method as well.
+
+```python  theme={null}
+
+import asyncio
+import os
+from promptlayer import AsyncPromptLayer
+
+
+async def main():
+    async_promptlayer_client = AsyncPromptLayer(
+        api_key=os.environ.get("PROMPTLAYER_API_KEY")
+    )
+
+    response_generator = await async_promptlayer_client.run(
+        prompt_name="TestPrompt",
+        input_variables={"variable1": "value1", "variable2": "value2"}, stream=True
+    )
+
+    final_response = ""
+    async for response in response_generator:
+        # Access raw streaming response
+        print("Raw streaming response:", response["raw_response"])
+        
+        # Access progressively built prompt blueprint
+        if response["prompt_blueprint"]:
+            current_response = response["prompt_blueprint"]["prompt_template"]["messages"][-1]
+            if current_response.get("content"):
+                print(f"Current response: {current_response['content']}")
+
+# Run the async function
+asyncio.run(main())
+```
+
+In this example, replace "TestPrompt" with the name of your prompt template, and provide any required input variables. When streaming is enabled, each chunk includes both the raw streaming response and the progressively built `prompt_blueprint`, allowing you to track how the response is constructed in real-time.
+
+### Supported Methods: Synchronous vs. Asynchronous
+
+The following table provides an overview of the methods currently available in both synchronous and asynchronous versions of the PromptLayer client:
+
+| **Method**         | **Description**               | **Synchronous Version**               | **Asynchronous Version**                    |
+| ------------------ | ----------------------------- | ------------------------------------- | ------------------------------------------- |
+| `templates.get()`  | Retrieves a template by name. | `promptlayer_client.templates.get()`  | `async_promptlayer_client.templates.get()`  |
+| `templates.all()`  | Retrieves all templates.      | `promptlayer_client.templates.all()`  | `async_promptlayer_client.templates.all()`  |
+| `run()`            | Executes a prompt template.   | `promptlayer_client.run()`            | `async_promptlayer_client.run()`            |
+| `run_workflow()`   | Executes an Agent.            | `promptlayer_client.run_workflow()`   | `async_promptlayer_client.run_workflow()`   |
+| `track.metadata()` | Tracks metadata.              | `promptlayer_client.track.metadata()` | `async_promptlayer_client.track.metadata()` |
+| `track.group()`    | Tracks a group.               | `promptlayer_client.track.group()`    | `async_promptlayer_client.track.group()`    |
+| `track.prompt()`   | Tracks a prompt.              | `promptlayer_client.track.prompt()`   | `async_promptlayer_client.track.prompt()`   |
+| `track.score()`    | Tracks a score.               | `promptlayer_client.track.score()`    | `async_promptlayer_client.track.score()`    |
+| `group.create()`   | Creates a new group.          | `promptlayer_client.group.create()`   | `async_promptlayer_client.group.create()`   |
+| `log_request()`    | Logs a request.               | `promptlayer_client.log_request()`    | `async_promptlayer_client.log_request()`    |
+
+> **Note:** All asynchronous methods require an active event loop. Use them within an `async` function and run the function using `asyncio.run()` or another method suitable for managing event loops (e.g., `await` in Jupyter notebooks).
+
+***
+
+Want to say hi 👋, submit a feature request, or report a bug? [✉️ Contact us](mailto:hello@promptlayer.com)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

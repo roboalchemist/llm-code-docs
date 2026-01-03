@@ -1,0 +1,9 @@
+---
+---
+title: SOC2 Report & ISO 27001 Certificate
+description: >-
+---
+
+You can find a copy of Sentry's latest SOC2 report and ISO 27001 certificate by visiting [_Your Organization's Settings_ > Legal & Compliance](https://sentry.io//orgredirect/organizations/:orgslug/settings/legal/).
+
+![SOC2](./img/soc2.png)

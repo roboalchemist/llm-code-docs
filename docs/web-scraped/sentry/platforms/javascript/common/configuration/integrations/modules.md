@@ -1,0 +1,19 @@
+---
+---
+title: Modules
+description: "Add node modules / packages to the event. (default)"
+---
+
+This integration only works inside server environments (Node.js, Bun, Deno).
+
+_Import name: `Sentry.modulesIntegration`_
+
+This integration is enabled by default. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+The `modulesIntegration` captures information about the installed node modules/packages to the event.
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.modulesIntegration()],
+});
+```

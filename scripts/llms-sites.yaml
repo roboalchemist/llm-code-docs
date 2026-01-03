@@ -63,6 +63,9 @@ sites:
   base_url: https://www.apollographql.com/docs/
   description: Apollo GraphQL platform - GraphQL client and server tools including
     Apollo Client, Apollo Server, and GraphOS
+- name: appwrite
+  base_url: https://appwrite.io/
+  description: Open-source backend-as-a-service platform for web and mobile apps
 - name: aptible
   base_url: https://www.aptible.com/docs/
   description: Aptible documentation
@@ -131,6 +134,12 @@ sites:
 - name: bits-ui
   base_url: https://bits-ui.com/
   description: Bits UI Svelte headless component library
+- name: bitsandbytes
+  base_url: https://huggingface.co/docs/bitsandbytes/
+  description: BitsAndBytes - Python library for efficient 8-bit and 4-bit LLM quantization
+- name: braintrust
+  base_url: https://www.braintrust.dev/docs/
+  description: Braintrust LLM evaluation, logging, and prompt management platform
 - name: braintree
   base_url: https://developer.paypal.com/braintree/
   description: Braintree payment platform by PayPal
@@ -224,6 +233,9 @@ sites:
 - name: daytona
   base_url: https://www.daytona.io/docs/
   description: Daytona documentation
+- name: deepchecks
+  base_url: https://deepchecks.com/
+  description: Deepchecks - Continuous validation for machine learning, LLM testing, evaluation, and monitoring
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
@@ -503,6 +515,9 @@ sites:
 - name: lingui
   base_url: https://lingui.dev/
   description: Lingui documentation
+- name: lunary
+  base_url: https://docs.lunary.ai/
+  description: Lunary open-source LLM observability and prompt tracking platform
 - name: litellm
   base_url: https://docs.litellm.ai/
   description: Litellm documentation
@@ -539,6 +554,9 @@ sites:
 - name: mastra
   base_url: https://mastra.ai/
   description: Mastra AI agent framework
+- name: mailgun
+  base_url: https://documentation.mailgun.com/
+  description: Mailgun email service API and SDK documentation
 - name: mcp
   base_url: https://modelcontextprotocol.io/
   description: Model Context Protocol for AI context management
@@ -548,6 +566,9 @@ sites:
 - name: meilisearch
   base_url: https://www.meilisearch.com/
   description: Meilisearch search engine
+- name: mikro-orm
+  base_url: https://mikro-orm.io/
+  description: TypeScript ORM with unit of work and identity map patterns
 - name: meshconnect
   base_url: https://docs.meshconnect.com/
   description: Meshconnect documentation
@@ -685,6 +706,9 @@ sites:
 - name: promptfoo
   base_url: https://www.promptfoo.dev/
   description: Promptfoo LLM testing framework
+- name: promptlayer
+  base_url: https://docs.promptlayer.com/
+  description: PromptLayer prompt versioning, logging, and A/B testing platform for LLMs
 - name: pydantic
   base_url: https://docs.pydantic.dev/latest/
   description: Pydantic Python data validation library with comprehensive docs and
@@ -799,6 +823,9 @@ sites:
 - name: stedi
   base_url: https://www.stedi.com/docs/
   description: Stedi B2B data exchange
+- name: strapi
+  base_url: https://docs.strapi.io/
+  description: Strapi open-source headless CMS with customizable APIs
 - name: streamlit
   base_url: https://docs.streamlit.io/
   description: Streamlit Python framework for data apps and dashboards
@@ -811,6 +838,9 @@ sites:
 - name: svelte
   base_url: https://svelte.dev/
   description: Svelte reactive UI framework
+- name: swr
+  base_url: https://swr.vercel.app/
+  description: SWR React hooks library for data fetching with caching
 - name: tamagui
   base_url: https://tamagui.dev/
   description: Tamagui universal UI framework
@@ -841,6 +871,9 @@ sites:
 - name: trigger-dev
   base_url: https://docs.trigger.dev/
   description: Trigger.dev background job orchestration platform
+- name: traceloop
+  base_url: https://www.traceloop.com/docs/
+  description: OpenLLMetry - open-source observability SDK for LLM applications based on OpenTelemetry
 - name: turbo
   base_url: https://turbo.build/
   description: Turborepo monorepo build system
@@ -890,6 +923,9 @@ sites:
 - name: vitest
   base_url: https://vitest.dev/
   description: Vitest next generation testing framework powered by Vite
+- name: vitepress
+  base_url: https://vitepress.dev/
+  description: Vite-powered static site generator for documentation
 - name: vue-macros
   base_url: https://vue-macros.dev/
   description: Vue Macros compiler extensions

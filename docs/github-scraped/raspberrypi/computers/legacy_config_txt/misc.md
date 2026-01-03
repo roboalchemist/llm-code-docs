@@ -1,0 +1,13 @@
+# Source: misc.adoc
+
+*Note: This file could not be automatically converted from AsciiDoc.*
+
+== Legacy Miscellaneous Options
+
+=== `avoid_warnings`
+
+`avoid_warnings=2` allows turbo mode even when low-voltage is present.
+
+=== `logging_level`
+
+Sets the VideoCore logging level. The value is a VideoCore-specific bitmask.

@@ -1,0 +1,60 @@
+---
+title: 継続的インテグレーション
+description: CI環境でのBiomeの使用
+---
+
+CI環境でBiomeを動作させることは簡単です。以下の例を参考にしてください。
+
+## GitHub Actions
+
+Biomeをランナーにセットアップするためのファーストパーティ[GitHub Action](https://github.com/marketplace/actions/setup-biome)を提供します。
+シンプルなワークフローだと、以下のようになります：
+
+```yaml title="pull_request.yml"
+name: Code quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      - name: Run Biome
+        run: biome ci .
+```
+
+### サードパーティーアクション
+
+他のコミュニティによって維持されているアクションも使用できます：
+
+- [reviewdog-action-biome](https://github.com/marketplace/actions/run-biome-with-reviewdog): Biomeをreviewdogで実行し、プルリクエストにコメントやコミットの提案を行います。
+
+```yaml title="pull_request.yml"
+name: reviewdog
+on: [pull_request]
+jobs:
+  biome:
+    name: runner / Biome
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: mongolyy/reviewdog-action-biome@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+```

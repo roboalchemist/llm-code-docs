@@ -1,0 +1,14 @@
+---
+---
+title: Kitemaker
+description: "Kitemaker’s integration with Sentry allows you to automatically connect issues in Sentry with work items in Kitemaker."
+---
+
+This integration is maintained and supported by the company that created it. For more details, or questions, please feel free to reach out to hi@kitemaker.co!
+## Install and Configure
+
+Sentry owner, manager, or admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > Kitemaker**
+
+2. Follow the full [Kitemaker installation instructions](https://guide.kitemaker.co/integrations-overview/sentry).

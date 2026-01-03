@@ -1,0 +1,361 @@
+# Source: https://docs.promptlayer.com/features/prompt-history/custom-logging.md
+
+# Custom Logging
+
+## When to Use Custom Logging
+
+Use the `log_request` method when:
+
+* You're **not** using PromptLayer's proxied versions of OpenAI or Anthropic clients
+* You're **not** using `pl_client.run()` for executing prompts
+* You need more flexibility (e.g., background processing, custom models)
+* You want to track requests made outside the PromptLayer SDK
+
+While custom logging requires more manual work, it offers greater control over the logging process and supports any LLM provider.
+
+## API Reference
+
+For complete documentation on the `log_request` API, see the [Log Request API Reference](/reference/log-request).
+
+## Request Parameters
+
+When logging a custom request, you can use the following parameters (see [API Reference](/reference/log-request) for details):
+
+* **`provider`** (required): The LLM provider name (e.g., "openai", "anthropic")
+* **`model`** (required): The specific model used (e.g., "gpt-4o", "claude-3-7-sonnet-20250219")
+* **`input`** (required): The input prompt in Prompt Blueprint format
+* **`output`** (required): The model response in Prompt Blueprint format
+* **`request_start_time`**: Timestamp when the request started
+* **`request_end_time`**: Timestamp when the response was received
+* **`prompt_name`**: Name of the prompt template if using one from PromptLayer
+* **`prompt_id`**: Unique identifier for the prompt template
+* **`prompt_version_number`**: Version number of the prompt template
+* **`prompt_input_variables`**: Variables used in the prompt template
+* **`input_tokens`**: Number of input tokens used
+* **`output_tokens`**: Number of output tokens generated
+* **`tags`**: Array of strings for categorizing requests
+* **`metadata`**: Custom JSON object for ability to search and filter requests later
+* **`api_type`**: Api type to be used when working with openai/azure-openai (e.g, "chat-completions", "responses")
+
+## Basic Usage
+
+The `input` and `output` must be in [prompt blueprint format](/running-requests/prompt-blueprints):
+
+```python  theme={null}
+pl_client.log_request(
+    provider="provider_name",
+    model="model_name",
+    input=input_in_blueprint_format,
+    output=output_in_blueprint_format,
+    # Optional parameters
+    request_start_time=start_time,
+    request_end_time=end_time,
+    prompt_name="template_name",
+    prompt_version_number=1,
+    prompt_input_variables={"variable": "value"},
+    tags=["tag1", "tag2"],
+    metadata={"custom_field": "value"}
+    # Only to be provided in case of openai/azure-openai (chat-completions/responses)
+    api_type=api_type 
+)
+```
+
+## Provider Conversion Helpers
+
+### OpenAI Format Converter
+
+```python  theme={null}
+def openai_to_blueprint(messages, completion=None):
+    """Convert OpenAI format to PromptLayer blueprint format."""
+    # Convert input
+    input_blueprint = {
+        "type": "chat",
+        "messages": [
+            {
+                "role": msg["role"],
+                "content": [{"type": "text", "text": msg["content"]}]
+                if isinstance(msg["content"], str) else msg["content"]
+            }
+            for msg in messages
+        ]
+    }
+
+    # Convert output if provided
+    output_blueprint = None
+    if completion:
+        if hasattr(completion.choices[0].message, "tool_calls") and completion.choices[0].message.tool_calls:
+            # Handle tool calls - IMPORTANT: content must be an empty array, not null/None
+            output_blueprint = {
+                "type": "chat",
+                "messages": [{
+                    "role": "assistant",
+                    "content": [],  # Required: must be empty array for tool-only responses
+                    "tool_calls": [
+                        {
+                            "id": tool_call.id,
+                            "type": "function",
+                            "function": {
+                                "name": tool_call.function.name,
+                                "arguments": tool_call.function.arguments
+                            }
+                        }
+                        for tool_call in completion.choices[0].message.tool_calls
+                    ]
+                }]
+            }
+        else:
+            # Standard response
+            output_blueprint = {
+                "type": "chat",
+                "messages": [{
+                    "role": "assistant",
+                    "content": [{"type": "text", "text": completion.choices[0].message.content}]
+                }]
+            }
+
+    return input_blueprint, output_blueprint
+```
+
+### Anthropic Format Converter
+
+```python  theme={null}
+def anthropic_to_blueprint(messages, system=None, response=None):
+    """Convert Anthropic format to PromptLayer blueprint format."""
+    # Convert input
+    input_blueprint = {
+        "type": "chat",
+        "messages": []
+    }
+    
+    # Add system message if present
+    if system:
+        input_blueprint["messages"].append({
+            "role": "system",
+            "content": [{"type": "text", "text": system}]
+        })
+    
+    # Add conversation messages
+    for msg in messages:
+        input_blueprint["messages"].append({
+            "role": msg["role"],
+            "content": [{"type": "text", "text": msg["content"]}]
+            if isinstance(msg["content"], str) else msg["content"]
+        })
+    
+    # Convert output if provided
+    output_blueprint = None
+    if response:
+        response_text = ""
+        if hasattr(response, "content") and response.content:
+            # Get text from first content block
+            if hasattr(response.content[0], "text"):
+                response_text = response.content[0].text
+        
+        output_blueprint = {
+            "type": "chat",
+            "messages": [{
+                "role": "assistant",
+                "content": [{"type": "text", "text": response_text}]
+            }]
+        }
+    
+    return input_blueprint, output_blueprint
+```
+
+## OpenAI Example
+
+```python  theme={null}
+from openai import OpenAI
+from promptlayer import PromptLayer
+import time
+
+# Setup clients
+pl_client = PromptLayer(api_key="pl_...")
+client = OpenAI()
+
+# Prepare request
+messages = [
+    {"role": "system", "content": "You are an AI assistant"},
+    {"role": "user", "content": "Write a one-sentence bedtime story about a unicorn."}
+]
+
+# Execute request
+request_start_time = time.time()
+completion = client.chat.completions.create(
+    model="gpt-4o",
+    messages=messages
+)
+request_end_time = time.time()
+
+# Convert formats
+input_blueprint, output_blueprint = openai_to_blueprint(messages, completion)
+
+# Log to PromptLayer
+pl_client.log_request(
+    provider="openai",
+    model="gpt-4o",
+    input=input_blueprint,
+    output=output_blueprint,
+    request_start_time=request_start_time,
+    request_end_time=request_end_time,
+    input_tokens=completion.usage.prompt_tokens,
+    output_tokens=completion.usage.completion_tokens,
+    api_type="chat-completions"
+)
+```
+
+## Anthropic Example
+
+```python  theme={null}
+import anthropic
+from promptlayer import PromptLayer
+import time
+
+# Setup clients
+pl_client = PromptLayer(api_key="pl_...")
+client = anthropic.Anthropic()
+
+# Prepare request
+system = "You are a seasoned data scientist at a Fortune 500 company."
+messages = [
+    {"role": "user", "content": "Analyze this dataset for anomalies: <dataset>{{DATASET}}</dataset>"}
+]
+
+# Execute request
+request_start_time = time.time()
+response = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    system=system,
+    max_tokens=2048,
+    messages=messages
+)
+request_end_time = time.time()
+
+# Convert formats
+input_blueprint, output_blueprint = anthropic_to_blueprint(messages, system, response)
+
+# Log to PromptLayer
+pl_client.log_request(
+    provider="anthropic",
+    model="claude-3-7-sonnet-20250219",
+    input=input_blueprint,
+    output=output_blueprint,
+    request_start_time=request_start_time,
+    request_end_time=request_end_time,
+    input_tokens=response.usage.input_tokens,
+    output_tokens=response.usage.output_tokens
+)
+```
+
+## Working with Tools and Function Calls
+
+For OpenAI/Anthropic function calling or tool use:
+
+<Warning>
+  **Important**: When logging assistant messages with tool calls but no text content, you must include an empty `content` array (not `null` or omitted). This ensures proper display in the PromptLayer dashboard.
+</Warning>
+
+```python  theme={null}
+# Assistant message with tool calls (no text response)
+assistant_tool_call_blueprint = {
+    "type": "chat",
+    "messages": [{
+        "role": "assistant",
+        "content": [],  # Required: empty array, not null
+        "tool_calls": [{
+            "id": "call_abc123",
+            "type": "function",
+            "function": {
+                "name": "get_weather",
+                "arguments": "{\"location\": \"San Francisco\"}"
+            }
+        }]
+    }]
+}
+
+# Tool response example
+tool_response_blueprint = {
+    "type": "chat",
+    "messages": [
+        # Previous messages...
+        {
+            "role": "tool",
+            "content": [{"type": "text", "text": "{\"temperature\": 72}"}],
+            "tool_call_id": "call_abc123"
+        }
+    ]
+}
+```
+
+## Complete JavaScript Example
+
+```javascript  theme={null}
+import { PromptLayer } from "@promptlayer/promptlayer";
+import { OpenAI } from "openai";
+
+const plClient = new PromptLayer({ apiKey: "pl_..." });
+const openai = new OpenAI();
+
+// Helper function
+function openaiToBlueprint(messages, completion = null) {
+  const inputBlueprint = {
+    type: "chat",
+    messages: messages.map(msg => ({
+      role: msg.role,
+      content: typeof msg.content === "string" 
+        ? [{ type: "text", text: msg.content }] 
+        : msg.content
+    }))
+  };
+  
+  let outputBlueprint = null;
+  if (completion) {
+    outputBlueprint = {
+      type: "chat",
+      messages: [{
+        role: "assistant",
+        content: [{
+          type: "text",
+          text: completion.choices[0].message.content
+        }]
+      }]
+    };
+  }
+  
+  return { inputBlueprint, outputBlueprint };
+}
+
+async function main() {
+  const messages = [
+    { role: "user", content: "Hello world" }
+  ];
+  
+  const requestStartTime = Date.now();
+  const completion = await openai.chat.completions.create({
+    model: "gpt-4o",
+    messages
+  });
+  const requestEndTime = Date.now();
+  
+  const { inputBlueprint, outputBlueprint } = openaiToBlueprint(messages, completion);
+  
+  await plClient.logRequest({
+    provider: "openai",
+    model: "gpt-4o",
+    input: inputBlueprint,
+    output: outputBlueprint,
+    requestStartTime,
+    requestEndTime,
+    inputTokens: completion.usage.prompt_tokens,
+    outputTokens: completion.usage.completion_tokens,
+    api_type: "chat-completions"
+  });
+}
+
+main();
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

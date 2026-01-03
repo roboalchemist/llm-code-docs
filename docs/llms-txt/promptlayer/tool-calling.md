@@ -1,0 +1,125 @@
+# Source: https://docs.promptlayer.com/features/prompt-registry/tool-calling.md
+
+# Tool Calling
+
+The Prompt Registry supports all major tool calling formats, including [OpenAI tools](https://platform.openai.com/docs/guides/function-calling), OpenAI functions, [Anthropic tools](https://docs.anthropic.com/en/docs/build-with-claude/tool-use), and Gemini tools.
+
+You can create tool schemas interactively, and your prompt template will seemlessly work on any LLM. Tool calling in PromptLayer is model-agnostic.
+
+<Tip>
+  Learn more about when you should use tools [on our blog](https://blog.promptlayer.com/tool-calling-with-llms-how-and-when-to-use-it-d65493a87954).
+</Tip>
+
+## What is Tool Calling?
+
+Tool calling (previously known as function calling) is a powerful feature that allows Language Models (LLMs) to return structured data and invoke predefined functions with JSON arguments. This capability enables more complex interactions and structured outputs from LLMs.
+
+Key benefits of tool calling include:
+
+* Structured Outputs: Tool arguments are always in JSON format, enforced by JSONSchema at the API level. See our [Structured Outputs](/features/prompt-registry/structured-outputs) documentation for more details.
+* Efficient Communication: Tool calling is a concept built into the model, reducing token usage and improving understanding.
+* Model Routing: Facilitates setting up modular prompts with specific responsibilities.
+* Prompt Injection Protection: Strict schema definitions at the model level make it harder to "jailbreak" the model.
+
+## Creating Custom Tools
+
+### Creating Visually
+
+Tools can be defined, called, and set up visually through the Prompt Registry.
+
+<video controls="controls">
+  <source src="https://mintcdn.com/promptlayer/leEzDioSQJUNIopi/videos/create-function.mp4?fit=max&auto=format&n=leEzDioSQJUNIopi&q=85&s=75f6cf7017745ed6d3d4f3c6af41827c" type="video/mp4" data-path="videos/create-function.mp4" />
+</video>
+
+### Publishing Programmatically
+
+To publish a prompt template with tools programmatically, you can add the arguments `tools` and `tool_choice` to your prompt\_template object. This is similar to how you would publish a regular prompt template.
+
+## Built-in Tools (OpenAI Responses API)
+
+OpenAI's [Responses API](https://openai.com/index/new-tools-for-building-agents/) includes powerful pre-built tools that work seamlessly with PromptLayer. These tools enable your prompts to access real-time information and search through files—all without writing custom function definitions.
+
+### Available Pre-Built Tools
+
+PromptLayer currently supports the following OpenAI built-in tools:
+
+* **Web Search** — Get fast, up-to-date answers with citations from the web
+* **File Search** — Search through uploaded files and documents using Vector Stores
+* **Code Interpreter** — Write and execute Python code in a secure, sandboxed environment
+
+Additional tools like Image Generation may be available depending on your OpenAI API access.
+
+### How to Add Built-in Tools in PromptLayer
+
+Follow these steps to enable OpenAI's pre-built tools in your PromptLayer prompts:
+
+1. **Open your prompt in the Prompt Registry** and navigate to the prompt editor
+
+2. **Switch to the Responses API**:
+   * Click the **LLM Provider** settings at the bottom of the editor
+   * Change the **API** dropdown from **Chat Completions API** to **Responses API**
+
+3. **Open the Function & Output Schema Editor**:
+   * Click the **Functions & Output** button at the bottom of the editor
+
+4. **Add a pre-built tool**:
+   * Click the **Built-in tools** button (on the right side)
+   * Browse available tools like **Web Search**, **File Search**, **Code Interpreter**, or **Image Generation**
+   * Click **Add Tool** for the tool you want to use
+   * The tool will appear in your **Function definitions** list with a checkmark
+
+5. **Configure tool\_choice** (optional):
+   * Set **tool\_choice** to **auto** to let the model decide when to use the tool
+   * Or select a specific tool to force its use
+
+6. **Save and run your prompt**:
+   * Close the modal and click **Run** to test your prompt
+   * The model will automatically use the pre-built tool when appropriate
+   * You'll see tool usage indicators like **"Preparing search parameters..."** or **"Found web results for: \[query]"** in the response
+
+### Using File Search with Vector Stores
+
+OpenAI's File Search tool enables semantic search over your documents using Vector Stores. This powerful feature allows your prompts to automatically retrieve relevant information from uploaded files during inference, making it perfect for building RAG (Retrieval-Augmented Generation) systems, knowledge bases, and documentation assistants.
+
+#### Setting Up File Search
+
+For the **File Search** tool, you'll need to create and attach Vector Stores containing your documents:
+
+1. **Enable File Search** by following the steps above to add it as a built-in tool
+
+2. **Create and configure a Vector Store**:
+   * Click **Manage Vector Stores** in the File Search configuration
+   * Click **Create** to make a new vector store with a custom name
+   * Upload files via drag-and-drop or file selection (single or multiple files)
+   * View storage usage, file counts, and manage attached files
+
+3. **Attach Vector Stores to your prompt**:
+   * Select one or more vector stores using checkboxes
+   * Click **Save Selection** to attach them
+   * The vector store IDs are added to your tool configuration
+
+4. **Run your prompt**:
+   * The LLM will automatically search vector stores when relevant
+   * Retrieved context is used to generate informed responses
+   * Sources can be traced back to specific documents
+
+### Using Code Interpreter
+
+OpenAI's Code Interpreter tool enables your prompts to write and execute Python code within a secure, sandboxed environment. This powerful feature allows for dynamic problem-solving, data analysis, visualization generation, and file processing—all without writing custom function definitions.
+
+To enable Code Interpreter, follow the steps above to add it as a built-in tool. The tool is configured with `container: { type: "auto" }` by default, which automatically manages the execution environment. The LLM will automatically use Code Interpreter when it needs to perform calculations, analyze data, create visualizations, or process files.
+
+For detailed information about Code Interpreter's capabilities, file handling, and configuration options, see the [OpenAI Code Interpreter Guide](https://platform.openai.com/docs/guides/tools-code-interpreter).
+
+### Learn More
+
+* [OpenAI Web Search Guide](https://platform.openai.com/docs/guides/tools-web-search)
+* [OpenAI File Search Guide](https://platform.openai.com/docs/guides/tools-file-search)
+* [OpenAI Code Interpreter Guide](https://platform.openai.com/docs/guides/tools-code-interpreter)
+* [OpenAI Responses API Announcement](https://openai.com/index/new-tools-for-building-agents/)
+* [Deep Research API Cookbook](https://cookbook.openai.com/examples/deep_research_api/introduction_to_deep_research_api)
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

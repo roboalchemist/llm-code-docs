@@ -1,0 +1,7 @@
+---
+---
+title: ScopeToMain
+description: "Captures scope updates and breadcrumbs in renderer processes and forwards them to the Electron main process. (default)"
+---
+
+Captures scope updates and breadcrumbs in renderer processes and forwards them to the Electron main process.

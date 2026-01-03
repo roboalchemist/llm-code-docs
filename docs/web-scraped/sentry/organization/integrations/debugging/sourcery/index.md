@@ -1,0 +1,15 @@
+---
+---
+title: Sourcery
+description: "Learn about Sentry's Sourcery integration, which can be used to generate a pull request to fix issues and provide instructions on how it will be fixed."
+---
+
+Sourcery does code reviews on pull requests to provide instant feedback on your code. This integration is maintained and supported by Sourcery. For more details, questions, or support feel free to contact hello@sourcery.ai.
+
+## Install and Configure
+
+Sentry Owner, Manager, or Admin permissions are required to install this integration.
+
+1. Navigate to **Settings > Integrations > Sourcery**
+
+2. Follow the full [Sourcery installation instructions](https://docs.sourcery.ai/Integrations/sentry/).

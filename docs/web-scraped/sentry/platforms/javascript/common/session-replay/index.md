@@ -1,0 +1,154 @@
+---
+---
+title: Set Up Session Replay
+description: "Learn how to enable Session Replay in your app if it is not already set up."
+---
+
+[Session Replay](/product/explore/session-replay/) helps you get to the root cause of an error or latency issue faster by providing you with a video-like reproduction of what was happening in the user's browser before, during, and after the issue. You can rewind and replay your application's DOM state and see key user interactions, like mouse clicks, scrolls, network requests, and console entries, in a single combined UI inspired by your browser's DevTools.
+
+By default, our Session Replay SDK masks all DOM text content, images, and user input, giving you heightened confidence that no sensitive data will leave the browser. To learn more, see Session Replay Privacy.
+
+  
+    Angular's{" "}
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://angular.dev/api/core/ChangeDetectionStrategy#Default"
+    >
+      default "Change Detection" strategy
+    </a>{" "}
+    monkeypatches browser globals and can break or cause performance regressions
+    in your application when using Session Replay. To avoid this, we recommend
+    you use the `OnPush` strategy when using Angular.
+  
+
+## Pre-requisites
+
+## Install
+
+## Set Up
+
+To set up the integration, add the following to your Sentry initialization. There are several options you can pass to the integration constructor. See the [configuration documentation](/platforms/javascript/session-replay/configuration/) for more details.
+
+### Canvas Recording
+
+There is currently no PII scrubbing in canvas recordings!
+
+If you want to record HTML canvas elements, you'll need to add an additional integration in your Sentry configuration. The canvas integration is exported from the browser SDK, so no additional package is required. Canvas recording is opt-in and will be tree-shaken from your bundle if it's not being used:
+
+#### 3D and WebGL Canvases
+
+The canvas recording integration works by exporting the canvas as an image (at a rate of 2 frames per second). However, in order to export images from 3D and WebGL canvases, the integration needs to enable `preserveDrawingBuffer` which can negatively affect canvas performance. If your canvas application is impacted by enabling `preserveDrawingBuffer`, you'll need to enable manual snapshotting and call a `snapshot()` method inside of your re-paint loop. There are two steps to using manual snapshotting:
+
+**Step 1.**
+Enable manual snapshotting when initializing the `ReplayCanvas` integration.
+
+```javascript
+Sentry.replayCanvasIntegration({
+  // Enabling the following will ensure your canvas elements are not forced
+  // into `preserveDrawingBuffer`.
+  enableManualSnapshot: true,
+});
+```
+
+**Step 2**
+Call the following `snapshot()` method inside your application's paint loop. `snapshot()` needs to be called in the same execution loop as the canvas draw commands, otherwise you may be snapshotting empty canvas buffers. This is due to how WebGL works when `preserveDrawingBuffer` is `false`.
+
+```javascript
+function paint() {
+  const canvasRef = document.querySelector("#my-canvas");
+  Sentry.getClient().getIntegrationByName("ReplayCanvas").snapshot(canvasRef);
+}
+```
+
+### Content Security Policy (CSP)
+
+Session Replay uses a WebWorker to perform work (for example, compression) off the main UI thread so as not to degrade the performance of your application. Add the below entry to make sure that workers can be loaded:
+
+```
+worker-src 'self' blob:
+```
+
+[Safari versions &lt;= 15.4](https://caniuse.com/?search=worker-src) do not support `worker-src`, you will need to additionally add an entry for `child-src`:
+
+```
+child-src 'self' blob:
+```
+
+If you're unable to update your CSP policy to allow inline web workers, you can also [use a custom compression worker](./configuration#using-a-custom-compression-worker) instead.
+
+  ### React Component Names If you want to capture react component names in
+  Sentry, you'll need to configure [React component name
+  capturing](/platforms/javascript/guides/react/features/component-names). This
+  will allow you to identify elements by the component name instead of the
+  selector. The component names are searchable and will be surfaced in
+  breadcrumbs, rage clicks, and dead clicks.
+
+## User Session
+
+A user session starts when the Session Replay SDK is first loaded and initialized.
+The session will capture any pageloads, refreshes, or navigations as long as the SDK is re-initialized on the same domain, and in the same browser tab, each time. Sessions continue capturing data until 5 minutes pass without any user interactions **or** until a maximum of 60 minutes have elapsed. Closing the browser tab will end the session immediately, according to the rules for [SessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage).
+
+An _interaction_ refers to either a mouse click or a browser navigation event.
+
+### Replay Captures on Errors Only
+
+If you prefer not to record an entire session, you can elect to capture a replay only if an error occurs. In this case, the integration will buffer up to one minute worth of events prior to the error being thrown. It will continue to record the session, following the rules above regarding session life and activity. Read the [sampling](#sampling) section for configuration options.
+
+## Sampling
+
+Sampling allows you to control how much of your website's traffic will result in a Session Replay. There are two sample rates you can adjust to get the replays relevant to you:
+
+1.  - The sample rate
+   for replays that begin recording immediately and last the entirety of the
+   user's session.
+2.  - The sample rate
+   for replays that are recorded when an error happens. This type of replay will
+   record up to a minute of events prior to the error and continue recording
+   until the session ends.
+
+```javascript {5-6} {filename:instrumentation-client.ts}
+Sentry.init({
+  // ... other configuration
+  
+  // Session Replay sampling rates
+  replaysSessionSampleRate: 0.1, // Capture 10% of all sessions
+  replaysOnErrorSampleRate: 1.0,  // Capture 100% of error sessions
+  
+  // For development/testing, you can set replaysSessionSampleRate to 1.0
+  // to capture all sessions for complete visibility
+});
+```
+
+### Recommended Production Sample Rates
+
+Choose your `replaysSessionSampleRate` based on your traffic volume:
+
+| Traffic Volume | Session Sample Rate | Error Sample Rate | Description |
+|---|---|---|---|
+| **High** (100k+ sessions/day) | `0.01` (1%) | `1.0` (100%) | Minimal session capture, all errors |
+| **Medium** (10k-100k sessions/day) | `0.1` (10%) | `1.0` (100%) | Balanced approach |
+| **Low** (under 10k sessions/day) | `0.25` (25%) | `1.0` (100%) | Higher session capture for better insights |
+
+**Why keep `replaysOnErrorSampleRate` at 1.0?** Error sessions provide the most valuable debugging context, so capturing all of them is recommended regardless of traffic volume.
+
+### How Sampling Works
+
+Sampling begins as soon as a session starts.  is evaluated first. If it's sampled, the replay recording will begin. Otherwise,  is evaluated and if it's sampled, the integration will begin buffering the replay and will only upload it to Sentry if an error occurs. The remainder of the replay will behave similarly to a whole-session replay.
+
+## Error Linking
+
+Errors that happen on the page while a replay is running will be linked to the replay, making it possible to jump between related issues and replays. However, it's **possible** that in some cases the error count reported on the **Replays Details** page won't match the actual errors that have been captured. That's because errors can be lost, and while this is uncommon, there are a few reasons why it could happen:
+
+- The replay was rate-limited and couldn't be accepted.
+- The replay was deleted by a member of your org.
+- There were network errors and the replay wasn't saved.
+
+## Verify
+
+While you're testing, we recommend that you set  to `1.0`. This ensures that every user session will be sent to Sentry.
+
+Once testing is complete, **we recommend lowering this value in production**. We still recommend keeping  set to `1.0`.
+
+## Next Steps
+

@@ -1,0 +1,8 @@
+---
+---
+title: Fastify Features
+description: "Learn how Sentry's Node SDK exposes features for first class integration with Fastify."
+---
+
+The Sentry Node SDK offers Fastify-specific features for first class integration with the framework.
+

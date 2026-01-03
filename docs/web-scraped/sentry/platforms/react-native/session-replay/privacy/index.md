@@ -1,0 +1,118 @@
+---
+---
+title: Privacy
+description: "Learn how to mask sensitive data that may appear in your app in Session Replay."
+---
+
+The masking options below only apply when using the default `PixelCopy` strategy on Android. If you set the strategy to [Canvas](/platforms/react-native/session-replay/#screenshot-strategy-android-only), those options will be ignored and all sensitive content (texts, inputs, images) will be **always** masked.
+
+Before enabling Session Replay in production, verify your masking configuration to ensure no sensitive data is captured. Our default settings aggressively mask potentially sensitive data, but if you modify these settings or update UI frameworks or system SDKs, you must thoroughly test your application. If you find any masking issues or sensitive data that should be masked but isn't, please [create a GitHub issue](https://github.com/getsentry/sentry-react-native/issues/new/choose) and avoid deploying to production with Session Replay enabled until the issue is resolved.
+
+<strong>Potential masking issues introduced when using Apple's Liquid Glass rendering in iOS 26.0</strong>
+
+If you are using Apple's Liquid Glass we recommend that you disable Session Replay on iOS to prevent potential PII leaks. [Please refer to our iOS documentation for more details on the issue](/platforms/apple/guides/ios/session-replay/) and follow the progress on fixing masking for iOS 26.0 (Liquid Glass) in <a href="https://github.com/getsentry/sentry-cocoa/issues/6390">GitHub issue #6390</a>
+
+The Session Replay SDK masks all text content, images, webviews, and user input by default. This helps ensure that no sensitive data is exposed. You can also manually choose which parts of your app to mask by using the options listed below.
+
+If your app doesn't contain any sensitive date, you can disable the default masking behavior with:
+
+```javascript
+Sentry.mobileReplayIntegration({
+  maskAllText: false,
+  maskAllImages: false,
+  maskAllVectors: false,
+}),
+```
+
+_Make sure your Sentry React Native SDK version is 5.36.0, 6.3.0 and up_
+
+If you are manually initializing native SDKs before JS, use Sentry React Native SDK version [6.15.1](https://github.com/getsentry/sentry-react-native/releases/tag/6.15.1) or newer (includes Sentry Cocoa SDK version [8.52.1](https://github.com/getsentry/sentry-cocoa/releases/tag/8.52.1)). For more details, please, see [GH-4853](https://github.com/getsentry/sentry-react-native/issues/4853).
+
+## Mask and Unmask Components
+
+You can choose which views you want to mask or unmask by using the `Mask` or `Unmask` components.
+
+```jsx
+const Example = () => {
+  return (
+    
+      
+        This will be unmasked
+      </Sentry.Unmask>
+      
+        This will be masked
+      </Sentry.Mask>
+    
+  );
+}
+```
+
+_Make sure your Sentry React Native SDK version is 6.4.0-beta.1 and up to use the masking components_
+
+## General Masking Rules
+
+When components are wrapped by `Unmask`, **only direct children will be unmasked**. You'll need to explicitly wrap any indirect children that you want to appear in the replay.
+
+```jsx
+
+  
+    This will be unmasked
+    
+      This will be masked
+    
+  
+  
+    This will be unmasked
+  
+</Sentry.Unmask>
+```
+
+When components are wrapped by `Mask`, **all children will be masked**.
+
+```jsx
+
+  
+    This will be masked
+    
+      This will be masked
+    
+  
+  
+    This will be masked
+  
+</Sentry.Mask>
+```
+
+### Masking Priority
+
+If a view is marked as masked, it will always be masked, even if it's a child of an unmasked view.
+
+```jsx
+
+  This will be masked
+  
+    This will be masked
+  </Sentry.Unmask>
+</Sentry.Mask>
+```
+
+The `Mask` component can't be unmasked.
+
+```jsx
+
+  
+    This will be masked
+  </Sentry.Mask>
+</Sentry.Unmask>
+```
+
+## Troubleshooting
+
+The `Mask` and `Unmask` components are native on iOS and Android and are compatible with both the New and the Legacy Architecture.
+
+The masking components behave as standard React Native `View` components.
+
+If you're experiencing issues with unmasking that are more than one level deep, check if the wrapped components are present in the native views hierarchy. If not, it means that your view was evaluated by React Native as `Layout Only` and flattened. Read more about [flattening views](https://reactnative.dev/architecture/view-flattening) in the React Native documentation.
+
+Note that [View Flattening](https://reactnative.dev/architecture/view-flattening) may cause the `Mask` and `Unmask` components to not behave as expected accidentally exposing sensitive data. Make sure to test your app thoroughly to ensure that no sensitive data is exposed before publishing it.
+

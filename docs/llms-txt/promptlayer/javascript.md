@@ -1,0 +1,285 @@
+# Source: https://docs.promptlayer.com/languages/javascript.md
+
+# JavaScript
+
+To get started, create an account by clicking “*Log in*” on [PromptLayer](https://promptlayer.com/). Once logged in, click the button to create an API key and save this in a secure location ([Guide to Using Env Vars](https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs)).
+
+Once you have that all set up, install PromptLayer using `npm`.
+
+```bash  theme={null}
+npm install promptlayer
+```
+
+Set up a PromptLayer client in your JavaScript file.
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer();
+```
+
+Optionally, you can specify the API key and base URL in the client.
+
+```js  theme={null}
+const promptLayerClient = new PromptLayer({ apiKey: "pl_****", baseURL: "https://api.promptlayer.com" });
+```
+
+<Warning>PromptLayer's JavaScript library is not compatible with client-side (browser) environments. It is designed for use exclusively in server-side runtimes such as Node.js, Bun, or Deno.</Warning>
+
+## OpenAI
+
+In the JavaScript file where the OpenAI APIs are integrated, include the following lines. They enable PromptLayer to track your requests without additional code modifications.
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer();
+
+const OpenAI = promptLayerClient.OpenAI;
+const openai = new OpenAI();
+```
+
+**You can then use `openai` as you would if you had imported it directly.**
+
+<Info>
+  Your OpenAI API Key is **never** sent to our servers. All OpenAI requests are
+  made locally from your machine, PromptLayer just logs the request.
+</Info>
+
+### Adding PromptLayer tags: `pl_tags`
+
+PromptLayer allows you to add tags through the `pl_tags` argument. This allows you to track and group requests in the dashboard.
+
+**Tags are not required but we recommend them!**
+
+```js  theme={null}
+openai.chat.completions.create({
+  messages: [{ role: "user", content: "Say this is a test" }],
+  model: "gpt-3.5-turbo",
+  pl_tags: ["test"],
+});
+```
+
+### Returning request id: `return_pl_id`
+
+PromptLayer provides an option to retrieve the request id using the `return_pl_id` argument. When set to true, it returns a tuple where the second element is the request id.
+
+```js  theme={null}
+openai.chat.completions.create({
+  messages: [{ role: "user", content: "Say this is a test" }],
+  model: "gpt-3.5-turbo",
+  return_pl_id: true,
+});
+```
+
+### TypeScript
+
+The PromptLayer JavaScript library also supports TypeScript. You can type cast the `OpenAI` class to `typeof BaseOpenAI` to get the correct typings.
+
+```ts  theme={null}
+import BaseOpenAI from "openai";
+
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer({ apiKey: process.env.PROMPTLAYER_API_KEY });
+
+const OpenAI: typeof BaseOpenAI = promptLayerClient.OpenAI;
+
+const openai = new OpenAI();
+```
+
+You can also use our custom attributes `pl_tags` and `return_pl_id` with TypeScript. You will need to add the `@ts-ignore` comment to ignore the TypeScript error.
+
+```ts  theme={null}
+openai.chat.completions.create({
+  messages: [{ role: "user", content: "Say this is a test" }],
+  model: "gpt-3.5-turbo",
+  // @ts-ignore
+  return_pl_id: true,
+});
+```
+
+This is because the `pl_tags` and `return_pl_id` arguments are not part of the OpenAI API.
+
+## Anthropic
+
+Using Anthropic with PromptLayer is very similar to how to one would use OpenAI.
+
+Below is an example code snippet of the one line replacement:
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer({ apiKey: process.env.PROMPTLAYER_API_KEY });
+
+// Instead of `import Anthropic from "@anthropic-ai/sdk";` ->
+const Anthropic = promptLayerClient.Anthropic;
+const anthropic = new Anthropic();
+
+const response = anthropic.completions.create({
+  prompt: `${Anthropic.HUMAN_PROMPT} How many toes do dogs have? more information more information more${Anthropic.AI_PROMPT}`,
+  stop_sequences: [Anthropic.HUMAN_PROMPT],
+  model: "claude-v1-100k",
+  max_tokens_to_sample: 100,
+  pl_tags: ["test-anthropic-1"],
+  return_pl_id: true,
+});
+console.log(response);
+```
+
+Here is how it would look like on the dashbaord:
+
+<img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=035a202669e5b9b24eca5b07910cff41" data-og-width="2000" width="2000" data-og-height="1102" height="1102" data-path="images/anthropic-test.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=e2a398ce1fb2d8d25dd4a3103ef3b07e 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=f8d192e0b35f2e67263cb0faa6292fac 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=fa97cdb63f93d839ce076b6e49dd5600 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=ce0e3c6b211f67e6a09d7dd61674c2f6 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=e8a6184c55ead70290c77dad5a0deb94 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/anthropic-test.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=62c9aea47dc6502600499c20a4d50829 2500w" />
+
+## Error Handling
+
+PromptLayer provides robust error handling with configurable error behavior for JavaScript/TypeScript applications.
+
+### Using `throwOnError`
+
+By default, PromptLayer throws errors when API requests fail. You can control this behavior using the `throwOnError` parameter:
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+
+// Default behavior: throws errors on API failures
+const promptLayerClient = new PromptLayer({ 
+  apiKey: "pl_****", 
+  throwOnError: true 
+});
+
+// Alternative: logs warnings instead of throwing errors
+const promptLayerClient = new PromptLayer({ 
+  apiKey: "pl_****", 
+  throwOnError: false 
+});
+```
+
+**Example with error handling:**
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+
+const promptLayerClient = new PromptLayer({ apiKey: process.env.PROMPTLAYER_API_KEY });
+
+try {
+  // Attempt to get a template that might not exist
+  const template = await promptLayerClient.templates.get("NonExistentTemplate");
+  console.log(template);
+} catch (error) {
+  console.error("Failed to get template:", error.message);
+}
+```
+
+**Example with warnings (throwOnError: false):**
+
+```js  theme={null}
+import { PromptLayer } from "promptlayer";
+
+// Initialize with throwOnError: false to get warnings instead of errors
+const promptLayerClient = new PromptLayer({ 
+  apiKey: process.env.PROMPTLAYER_API_KEY,
+  throwOnError: false 
+});
+
+// This will log a warning instead of throwing an error if the template doesn't exist
+const template = await promptLayerClient.templates.get("NonExistentTemplate");
+// Returns null if not found, with a warning logged to console
+```
+
+### Automatic Retry Mechanism
+
+PromptLayer includes a built-in retry mechanism using the industry-standard [p-retry](https://github.com/sindresorhus/p-retry) library to handle transient failures gracefully. This ensures your application remains resilient when temporary issues occur.
+
+**Retry Behavior:**
+
+* **Total Attempts**: 4 attempts (1 initial + 3 retries)
+* **Exponential Backoff**: Retries wait progressively longer between attempts (2s, 4s, 8s)
+* **Max Wait Time**: 15 seconds maximum wait between retries
+
+**What Triggers Retries:**
+
+* **5xx Server Errors**: Internal server errors, service unavailable, etc.
+* **429 RateLimit Errors**: API RateLimit Error.
+* **Network Errors**: Connection failures (ENOTFOUND, ECONNREFUSED, ETIMEDOUT, etc.)
+
+**What Fails Immediately (No Retries):**
+
+* **4xx Client Errors**: Bad requests, authentication errors, not found, validation errors, etc. except for 429 Ratelimit error.
+
+<Info>
+  The retry mechanism operates transparently in the background. You don't need to implement retry logic yourself - PromptLayer handles it automatically for recoverable errors.
+</Info>
+
+### Logging
+
+PromptLayer logs info to the console before each retry attempt. When a retry occurs, you'll see log messages like:
+
+```
+INFO: Retrying PromptLayer API request in 2.0 seconds...
+INFO: Retrying PromptLayer API request in 4.0 seconds...
+INFO: Retrying PromptLayer API request in 8.0 seconds...
+```
+
+To capture these logs in your application, you can monitor `console.info` output or use a logging library that intercepts console methods.
+
+## Edge
+
+PromptLayer can be used with Edge functions. Please use either our Javascript library or REST library directly.
+
+```js  theme={null}
+import BaseAnthropic from "@anthropic-ai/sdk";
+
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer({ apiKey: process.env.PROMPTLAYER_API_KEY });
+
+const Anthropic: typeof BaseAnthropic = promptLayerClient.Anthropic;
+
+const anthropic = new Anthropic();
+
+// Add this line
+export const runtime = "edge";
+
+export const POST = async () => {
+  const response = await anthropic.messages.create({
+    messages: [
+      {
+        role: "user",
+        content: "What is the capital of France?",
+      },
+    ],
+    max_tokens: 100,
+    model: "claude-3-sonnet-20240229",
+  });
+  return Response.json(response.content[0].text);
+};
+```
+
+Or use streaming. Here's another example that can be run in NextJS on edge.
+
+```js  theme={null}
+import BaseAnthropic from "@anthropic-ai/sdk";
+import { AnthropicStream, StreamingTextResponse } from "ai";
+
+import { PromptLayer } from "promptlayer";
+const promptLayerClient = new PromptLayer({ apiKey: process.env.PROMPTLAYER_API_KEY });
+
+// Add this line
+export const runtime = "edge";
+
+const Anthropic: typeof BaseAnthropic = promptLayerClient.Anthropic;
+const anthropic = new Anthropic();
+
+export const POST = async (request: Request) => {
+  const { messages } = await request.json();
+  const response = await anthropic.messages.create({
+    messages,
+    max_tokens: 100,
+    model: "claude-3-sonnet-20240229",
+    stream: true,
+  });
+  const stream = AnthropicStream(response);
+  return new StreamingTextResponse(stream);
+};
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

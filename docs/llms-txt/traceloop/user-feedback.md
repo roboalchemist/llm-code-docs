@@ -1,0 +1,54 @@
+# Source: https://www.traceloop.com/docs/openllmetry/tracing/user-feedback.md
+
+# Tracking User Feedback
+
+When building LLM applications, it quickly becomes highly useful and important to track user feedback on the result of your LLM workflow.
+
+Doing that with OpenLLMetry is easy. First, make sure you [associate your LLM workflow with unique identifiers](/openllmetry/tracing/association).
+
+Then, [create an Annotation Task](https://app.traceloop.com/annotation-tasks) within Traceloop to collect user feedback as annotations.
+The annotation task should include:
+
+* The [entity](/openllmetry/tracing/association) you want to collect feedback for (e.g., `chat_id`)
+* Tags you want to track (e.g., `score`, `feedback_text`)
+
+You can log user feedback by calling our Python SDK or TypeScript SDK.
+All feedback must follow the structure defined in your annotation task.
+
+For example, to implement thumbs-up/thumbs-down feedback, create an annotation task with a tag named `is_helpful` that accepts the values `thumbs-up` and `thumbs-down`.
+
+<Note>
+  The entity you report feedback for must match the one defined in your annotation
+  task and association property.
+</Note>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from traceloop.sdk import Traceloop
+
+  traceloop_client = Traceloop.get()
+  traceloop_client.user_feedback.create(
+      "your-annotation-task",
+      "12345",
+      {"is_helpful": "thumbs-up"},
+  )
+  ```
+
+  ```js Typescript theme={null}
+  const client = traceloop.getClient();
+  await client.userFeedback.create({
+      annotationTask: "your-annotation-task",
+      entity: {
+          id: "12345",
+      },
+      tags: {
+          is_helpful: "thumbs-up",
+      },
+  });
+  ```
+</CodeGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

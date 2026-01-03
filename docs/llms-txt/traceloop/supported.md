@@ -1,0 +1,63 @@
+# Source: https://www.traceloop.com/docs/openllmetry/tracing/supported.md
+
+# What's Supported?
+
+> A list of the models, vector DBs and frameworks that OpenLLMetry supports out of the box.
+
+If your favorite system is not on the list, please open an issue for us in the respective Github repo and we'll take care of it.
+In the meantime, you can still use OpenLLMetry to report the [LLM and vector DB calls manually](/openllmetry/tracing/manual-reporting).
+
+## LLM Foundation Models
+
+| Model SDK                                                                             | Python | Typescript |
+| ------------------------------------------------------------------------------------- | ------ | ---------- |
+| [Aleph Alpha](https://aleph-alpha.com/)                                               | ✅      | ❌          |
+| [Amazon Bedrock](https://aws.amazon.com/bedrock/)                                     | ✅      | ✅          |
+| [Amazon SageMaker](https://aws.amazon.com/sagemaker/)                                 | ✅      | ❌          |
+| [Anthropic](https://www.anthropic.com/)                                               | ✅      | ✅          |
+| [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) | ✅      | ✅          |
+| [Cohere](https://cohere.com/)                                                         | ✅      | ✅          |
+| [Google Gemini](https://ai.google.dev/)                                               | ✅      | ✅          |
+| [Google VertexAI](https://cloud.google.com/vertex-ai)                                 | ✅      | ✅          |
+| [Groq](https://groq.com/)                                                             | ✅      | ⏳          |
+| [HuggingFace Transformers](https://huggingface.co/)                                   | ✅      | ⏳          |
+| [IBM watsonx](https://www.ibm.com/watsonx)                                            | ✅      | ⏳          |
+| [Mistral AI](https://mistral.ai/)                                                     | ✅      | ⏳          |
+| [Ollama](https://ollama.com/)                                                         | ✅      | ⏳          |
+| [OpenAI](https://openai.com/)                                                         | ✅      | ✅          |
+| [Replicate](https://replicate.com/)                                                   | ✅      | ⏳          |
+| [together.ai](https://together.ai/)                                                   | ✅      | ⏳          |
+| [WRITER](https://writer.com/)                                                         | ✅      | ✅          |
+
+## Vector DBs
+
+| Vector DB                                              | Python | Typescript |
+| ------------------------------------------------------ | ------ | ---------- |
+| [Chroma DB](https://www.trychroma.com/)                | ✅      | ✅          |
+| [Elasticsearch](https://www.elastic.co/elasticsearch/) | ✅      | ✅          |
+| [LanceDB](https://lancedb.com/)                        | ✅      | ⏳          |
+| [Marqo](https://www.marqo.ai/)                         | ✅      | ❌          |
+| [Milvus](https://milvus.io/)                           | ✅      | ⏳          |
+| [pgvector](https://github.com/pgvector/pgvector)       | ✅      | ✅          |
+| [Pinecone](https://pinecone.io/)                       | ✅      | ✅          |
+| [Qdrant](https://qdrant.tech/)                         | ✅      | ✅          |
+| [Weaviate](https://weaviate.io/)                       | ✅      | ⏳          |
+
+## Frameworks
+
+| Framework                                                       | Python | Typescript |
+| --------------------------------------------------------------- | ------ | ---------- |
+| [Agno](https://github.com/agno-oss/agno)                        | ✅      | ❌          |
+| [AWS Strands](https://github.com/awslabs/strands)               | ✅      | ❌          |
+| [Burr](https://www.github.com/dagworks-inc/burr)                | ✅      | ❌          |
+| [CrewAI](https://www.crewai.com/)                               | ✅      | ❌          |
+| [Haystack by deepset](https://haystack.deepset.ai/)             | ✅      | ❌          |
+| [Langchain](https://www.langchain.com/)                         | ✅      | ✅          |
+| [LiteLLM](https://www.litellm.ai/)                              | ✅      | ❌          |
+| [LlamaIndex](https://www.llamaindex.ai/)                        | ✅      | ✅          |
+| [OpenAI Agents](https://github.com/openai/openai-agents-python) | ✅      | ❌          |
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

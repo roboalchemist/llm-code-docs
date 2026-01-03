@@ -1,0 +1,61 @@
+# Source: https://www.traceloop.com/docs/openllmetry/integrations/gcp.md
+
+# LLM Observability with Google Cloud and OpenLLMetry
+
+[Google Cloud](https://cloud.google.com/?hl=en), also known as Google Cloud Platform (GCP), is a cloud
+provider including [over 150+ products and services](https://cloud.google.com/products?hl=en). Among
+these products and services are [Cloud Trace](https://cloud.google.com/trace/docs),
+[Cloud Monitoring](https://cloud.google.com/monitoring/docs), and [Cloud Logging](https://cloud.google.com/logging/docs)
+which together comprise [Google Cloud Observability](https://cloud.google.com/stackdriver/docs).
+
+Traceloop's OpenLLMetry library enables instrumenting LLM frameworks in an OTel-aligned manner and
+supports writing that instrumentation data to Google Cloud, primarily as distributed traces in Cloud Trace.
+
+## Integration Instructions
+
+### Step 1. Install Python Dependencies
+
+```bash  theme={null}
+pip install \
+   opentelemetry-exporter-gcp-trace \
+   opentelemetry-exporter-gcp-monitoring \
+   opentelemetry-exporter-gcp-logging \
+   traceloop-sdk
+```
+
+### Step 2. Initialize OpenLLMetry
+
+In your application code, invoke `Traceloop.init` as shown:
+
+```python  theme={null}
+
+# ...
+from opentelemetry.exporter.cloud_logging import CloudLoggingExporter
+from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
+from opentelemetry.exporter.cloud_monitoring import CloudMonitoringMetricsExporter
+from traceloop.sdk import Traceloop
+
+# ...
+trace_exporter = CloudTraceSpanExporter()
+metrics_exporter = CloudMonitoringMetricsExporter()
+logs_exporter = CloudLoggingExporter()
+
+Traceloop.init(
+    app_name='your-app-name',
+    exporter=trace_exporter,
+    metrics_exporter=metrics_exporter,
+    logging_exporter=logs_exporter)
+```
+
+## Advanced Topics
+
+### Large Span Attributes
+
+You can use the [`CloudTraceLoggingSpanExporter`](https://github.com/GoogleCloudPlatform/agent-starter-pack/blob/3dfb0c444aa70a3b0c62313c4cba14f9bc9d1723/src/base_template/app/utils/tracing.py)
+from the [Google Cloud `agent-starter-pack`](https://github.com/GoogleCloudPlatform/agent-starter-pack) as a drop-in replacement for the
+`CloudTraceSpanExporter`. That exporter writes large attributes to Google Cloud Storage and writes a reference URL to Cloud Observability.
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,0 +1,870 @@
+# Source: https://docs.promptlayer.com/features/evaluations/column-types.md
+
+# Node & Column Types
+
+> Complete reference for all node types used in Agents and evaluation pipelines
+
+This page documents all available node types for Agents (workflows) and column types for evaluation pipelines. Agents and evaluations share the same node types—each has specific configuration options that determine its behavior.
+
+<Note>
+  In Agents, these are called **nodes**. In evaluation pipelines, they're called **columns**. The configuration is identical.
+</Note>
+
+## How Column Sources Work
+
+Columns can reference data from two places:
+
+1. **Dataset columns** - Reference data directly from your dataset by using the dataset column name
+2. **Other evaluation columns** - Reference the output of a previous column by using that column's `name`
+
+When you specify a `source` or include a column name in `sources`, the system first looks for an evaluation column with that name, then falls back to looking for a dataset column.
+
+<Info>
+  Columns are executed in order based on their `position`. A column can only reference other columns that come before it in the pipeline.
+</Info>
+
+### Example: Chaining Columns Together
+
+A common pattern is to chain columns: run a prompt, extract a field from the JSON output, then compare it to a ground truth value from the dataset.
+
+```python  theme={null}
+columns = [
+    # Step 1: Run the prompt template (position 1)
+    {
+        "column_type": "PROMPT_TEMPLATE",
+        "name": "LLM Output",  # Other columns reference this name
+        "configuration": {
+            "template": {"name": "my-prompt"},
+            "prompt_template_variable_mappings": {
+                "question": "user_question"  # Maps to dataset column
+            }
+        }
+    },
+    # Step 2: Extract a field from the LLM output (position 2)
+    {
+        "column_type": "JSON_PATH",
+        "name": "Extracted Status",
+        "configuration": {
+            "source": "LLM Output",  # References the column above
+            "json_path": "$.status"
+        }
+    },
+    # Step 3: Compare extracted value to dataset ground truth (position 3)
+    {
+        "column_type": "COMPARE",
+        "name": "Status Match",
+        "configuration": {
+            "sources": [
+                "Extracted Status",   # References the column above
+                "expected_status"     # References a dataset column
+            ],
+            "comparison_type": {"type": "STRING"}
+        },
+        "is_part_of_score": True
+    }
+]
+```
+
+## Execution Types
+
+These columns execute prompts, code, or external services.
+
+<AccordionGroup>
+  <Accordion title="PROMPT_TEMPLATE">
+    Runs a prompt template from the registry against each row.
+
+    | Field                               | Type    | Required | Description                                           |
+    | ----------------------------------- | ------- | -------- | ----------------------------------------------------- |
+    | `template.name`                     | string  | Yes      | Name of the prompt template                           |
+    | `template.version_number`           | integer | No       | Specific version number. Uses latest if omitted       |
+    | `template.label`                    | string  | No       | Release label to use, e.g. "production"               |
+    | `prompt_template_variable_mappings` | object  | Yes      | Maps template input variables to dataset/column names |
+    | `engine`                            | object  | No       | Override the template's default model settings        |
+    | `engine.provider`                   | string  | No       | Provider name, e.g. "openai", "anthropic"             |
+    | `engine.model`                      | string  | No       | Model name, e.g. "gpt-4", "claude-3-opus"             |
+    | `engine.parameters`                 | object  | No       | Model parameters like temperature, max\_tokens        |
+
+    <Info>
+      The `prompt_template_variable_mappings` object maps **prompt input variables** (keys) to **dataset or column names** (values). The key is the variable name in your prompt template (e.g., `{{question}}`), and the value is where to get the data from.
+    </Info>
+
+    ```json  theme={null}
+    {
+      "column_type": "PROMPT_TEMPLATE",
+      "name": "Generate Response",
+      "configuration": {
+        "template": {
+          "name": "my-prompt",
+          "label": "production"
+        },
+        "prompt_template_variable_mappings": {
+          "question": "user_question",
+          "context": "retrieved_context"
+        }
+      }
+    }
+    ```
+
+    **Complete example with all input variables:**
+
+    If your prompt template has variables `{{company}}`, `{{product}}`, and `{{query}}`, map each one:
+
+    ```json  theme={null}
+    {
+      "column_type": "PROMPT_TEMPLATE",
+      "name": "Product Analysis",
+      "configuration": {
+        "template": {
+          "name": "product-analyzer"
+        },
+        "prompt_template_variable_mappings": {
+          "company": "company_name",
+          "product": "product_name",
+          "query": "user_query"
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="CODE_EXECUTION">
+    Executes custom Python or JavaScript code. The code receives a `data` dictionary containing all column values for the current row.
+
+    | Field      | Type   | Required | Description              |
+    | ---------- | ------ | -------- | ------------------------ |
+    | `code`     | string | Yes      | The code to execute      |
+    | `language` | string | Yes      | "PYTHON" or "JAVASCRIPT" |
+
+    ```json  theme={null}
+    {
+      "column_type": "CODE_EXECUTION",
+      "name": "Custom Logic",
+      "configuration": {
+        "code": "result = len(data['response'].split())\nreturn result",
+        "language": "PYTHON"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="ENDPOINT">
+    Calls an external HTTP endpoint. The request body contains all column values for the current row.
+
+    | Field     | Type   | Required | Description             |
+    | --------- | ------ | -------- | ----------------------- |
+    | `url`     | string | Yes      | The HTTP endpoint URL   |
+    | `headers` | object | No       | HTTP headers to include |
+
+    ```json  theme={null}
+    {
+      "column_type": "ENDPOINT",
+      "name": "External Validator",
+      "configuration": {
+        "url": "https://api.example.com/validate",
+        "headers": {
+          "Authorization": "Bearer token123"
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="WORKFLOW">
+    Runs a PromptLayer workflow.
+
+    | Field                     | Type    | Required | Description                              |
+    | ------------------------- | ------- | -------- | ---------------------------------------- |
+    | `workflow_id`             | integer | Yes      | ID of the workflow to run                |
+    | `workflow_version_number` | integer | No       | Specific version. Uses latest if omitted |
+    | `workflow_label`          | string  | No       | Release label to use                     |
+    | `input_mappings`          | object  | Yes      | Maps workflow inputs to column names     |
+
+    ```json  theme={null}
+    {
+      "column_type": "WORKFLOW",
+      "name": "Run Analysis Workflow",
+      "configuration": {
+        "workflow_id": 123,
+        "input_mappings": {
+          "input_text": "response"
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="MCP">
+    Executes an MCP (Model Context Protocol) action.
+
+    | Field            | Type    | Required | Description                      |
+    | ---------------- | ------- | -------- | -------------------------------- |
+    | `mcp_server_id`  | integer | Yes      | ID of the MCP server             |
+    | `tool_name`      | string  | Yes      | Name of the tool to call         |
+    | `input_mappings` | object  | Yes      | Maps tool inputs to column names |
+
+    ```json  theme={null}
+    {
+      "column_type": "MCP",
+      "name": "MCP Tool Call",
+      "configuration": {
+        "mcp_server_id": 456,
+        "tool_name": "search",
+        "input_mappings": {
+          "query": "search_query"
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="HUMAN">
+    Adds a column for manual human evaluation.
+
+    | Field        | Type   | Required | Description                    |
+    | ------------ | ------ | -------- | ------------------------------ |
+    | `data_type`  | string | Yes      | "number" or "string"           |
+    | `ui_element` | object | Yes      | UI configuration for the input |
+
+    ```json  theme={null}
+    {
+      "column_type": "HUMAN",
+      "name": "Human Rating",
+      "configuration": {
+        "data_type": "number",
+        "ui_element": {
+          "type": "slider",
+          "min": 1,
+          "max": 5
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="CONVERSATION_SIMULATOR">
+    Simulates multi-turn conversations to test chatbots and conversational agents. An AI-powered user persona engages in realistic dialogue with your prompt template, allowing you to evaluate how well your agent handles extended interactions.
+
+    | Field                                  | Type    | Required    | Description                                                                                                                                                            |
+    | -------------------------------------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `template.name`                        | string  | Yes         | Name of the prompt template to test                                                                                                                                    |
+    | `template.version_number`              | integer | No          | Specific version number                                                                                                                                                |
+    | `template.label`                       | string  | No          | Release label to use                                                                                                                                                   |
+    | `prompt_template_variable_mappings`    | object  | Yes         | Maps template input variables to dataset columns                                                                                                                       |
+    | `user_persona`                         | string  | Conditional | Static persona description. Required if `user_persona_source` not set                                                                                                  |
+    | `user_persona_source`                  | string  | Conditional | Column name containing the persona. Required if `user_persona` not set                                                                                                 |
+    | `conversation_completed_prompt`        | string  | No          | Guidance for when to consider the conversation complete (e.g., "End when the user confirms their order" or "Complete when the assistant calls the submit\_order tool") |
+    | `conversation_completed_prompt_source` | string  | No          | Column name containing the completion guidance. Use instead of `conversation_completed_prompt` for dynamic guidance                                                    |
+    | `is_user_first`                        | boolean | No          | If true, simulated user sends the first message (default: false)                                                                                                       |
+    | `max_turns`                            | integer | No          | Maximum conversation turns (default: system setting, max: 150)                                                                                                         |
+    | `conversation_samples`                 | array   | No          | Example conversations to guide the simulation style                                                                                                                    |
+
+    <Info>
+      The `user_persona` defines how the simulated user behaves - their goals, communication style, and what questions they ask. Use `user_persona_source` to pull different personas from your dataset for varied test scenarios.
+    </Info>
+
+    <Info>
+      The `conversation_completed_prompt` provides explicit guidance for determining when a conversation should end. This is useful for defining specific end conditions like tool calls, confirmation messages, or goal achievement. The guidance can be holistic (general rules) or specific (look for a certain phrase or tool call).
+    </Info>
+
+    **Basic example with static persona:**
+
+    ```json  theme={null}
+    {
+      "column_type": "CONVERSATION_SIMULATOR",
+      "name": "Support Chat Test",
+      "configuration": {
+        "template": {
+          "name": "customer-support-bot"
+        },
+        "prompt_template_variable_mappings": {
+          "customer_name": "customer_name",
+          "product": "product_name"
+        },
+        "user_persona": "You are a frustrated customer who purchased a defective product. You want a refund but will accept a replacement if the agent is helpful. Ask follow-up questions and push back on unhelpful responses.",
+        "is_user_first": true,
+        "max_turns": 5
+      }
+    }
+    ```
+
+    **Dynamic personas from dataset:**
+
+    For comprehensive testing, store different user personas in your dataset to test various scenarios:
+
+    ```json  theme={null}
+    {
+      "column_type": "CONVERSATION_SIMULATOR",
+      "name": "Multi-Scenario Test",
+      "configuration": {
+        "template": {
+          "name": "sales-assistant"
+        },
+        "prompt_template_variable_mappings": {
+          "rep_name": "rep_name",
+          "product": "product_name",
+          "customer_context": "customer_context"
+        },
+        "user_persona_source": "test_persona",
+        "is_user_first": true,
+        "max_turns": 6
+      }
+    }
+    ```
+
+    Where your dataset has a `test_persona` column with different personas:
+
+    * Row 1: "You are a busy executive who needs quick answers. Be impatient if responses are too long."
+    * Row 2: "You are a technical user who asks detailed follow-up questions about implementation."
+    * Row 3: "You are price-sensitive and keep asking about discounts and alternatives."
+
+    **Custom completion conditions:**
+
+    Use `conversation_completed_prompt` to define specific end conditions for your conversations:
+
+    ```json  theme={null}
+    {
+      "column_type": "CONVERSATION_SIMULATOR",
+      "name": "Order Flow Test",
+      "configuration": {
+        "template": {
+          "name": "order-assistant"
+        },
+        "prompt_template_variable_mappings": {
+          "customer_name": "customer_name",
+          "order_items": "items"
+        },
+        "user_persona": "You are a customer placing an order. Provide your shipping address and payment method when asked.",
+        "conversation_completed_prompt": "The conversation is complete when the assistant calls the submit_order tool or confirms that the order has been placed successfully.",
+        "max_turns": 10
+      }
+    }
+    ```
+
+    You can also use `conversation_completed_prompt_source` to pull completion guidance from your dataset:
+
+    ```json  theme={null}
+    {
+      "column_type": "CONVERSATION_SIMULATOR",
+      "name": "Goal-Based Test",
+      "configuration": {
+        "template": {
+          "name": "support-agent"
+        },
+        "prompt_template_variable_mappings": {
+          "context": "support_context"
+        },
+        "user_persona_source": "test_persona",
+        "conversation_completed_prompt_source": "completion_condition",
+        "max_turns": 8
+      }
+    }
+    ```
+
+    Where your dataset has a `completion_condition` column with different end conditions:
+
+    * Row 1: "End when the user says 'thank you' or indicates satisfaction"
+    * Row 2: "Complete when the assistant provides a ticket number"
+    * Row 3: "End when the refund\_process tool is called"
+
+    **Evaluating conversation quality:**
+
+    Chain with `LLM_ASSERTION` to evaluate the full conversation:
+
+    ```json  theme={null}
+    {
+      "column_type": "LLM_ASSERTION",
+      "name": "Conversation Quality",
+      "configuration": {
+        "source": "Support Chat Test",
+        "prompt": "Did the agent maintain a professional tone throughout and successfully resolve the customer's issue?"
+      },
+      "is_part_of_score": true
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Evaluation Types
+
+These columns evaluate or compare data and typically return boolean or numeric scores.
+
+<AccordionGroup>
+  <Accordion title="LLM_ASSERTION">
+    Uses an LLM to evaluate content against a natural language prompt. Returns a boolean indicating pass/fail.
+
+    | Field           | Type   | Required    | Description                                                     |
+    | --------------- | ------ | ----------- | --------------------------------------------------------------- |
+    | `source`        | string | Yes         | Column name containing the content to evaluate                  |
+    | `prompt`        | string | Conditional | The assertion prompt. Required if `prompt_source` not set       |
+    | `prompt_source` | string | Conditional | Column name containing the prompt. Required if `prompt` not set |
+
+    **Basic example with static prompt:**
+
+    ```json  theme={null}
+    {
+      "column_type": "LLM_ASSERTION",
+      "name": "Quality Check",
+      "configuration": {
+        "source": "response",
+        "prompt": "Is this response helpful, accurate, and free of harmful content?"
+      },
+      "is_part_of_score": true
+    }
+    ```
+
+    **Dynamic prompts from dataset:**
+
+    Use `prompt_source` to pull assertion prompts from a dataset column. This lets you define different assertions per row.
+
+    ```json  theme={null}
+    {
+      "column_type": "LLM_ASSERTION",
+      "name": "Custom Assertions",
+      "configuration": {
+        "source": "LLM Output",
+        "prompt_source": "assertions"
+      },
+      "is_part_of_score": true
+    }
+    ```
+
+    Where your dataset has an `assertions` column containing the prompt text for each row.
+
+    **Multiple assertions per row:**
+
+    You can run multiple assertions against the same content by providing a JSON array of prompts. Each assertion is evaluated independently, and the results are returned as a dictionary.
+
+    ```json  theme={null}
+    {
+      "column_type": "LLM_ASSERTION",
+      "name": "Compliance Checks",
+      "configuration": {
+        "source": "LLM Output",
+        "prompt_source": "llm_assertions"
+      },
+      "is_part_of_score": true
+    }
+    ```
+
+    Where your dataset's `llm_assertions` column contains a JSON array:
+
+    ```json  theme={null}
+    "[\"Does the response avoid making unauthorized claims?\", \"Is patient data properly redacted?\", \"Does it cite approved sources only?\"]"
+    ```
+
+    The output will be a dictionary with each assertion as a key and its boolean result as the value.
+  </Accordion>
+
+  <Accordion title="COMPARE">
+    Compares two values for equality. Supports string comparison and JSON comparison with optional JSONPath.
+
+    | Field                       | Type   | Required | Description                                              |
+    | --------------------------- | ------ | -------- | -------------------------------------------------------- |
+    | `sources`                   | array  | Yes      | Array of exactly 2 column names to compare               |
+    | `comparison_type.type`      | string | Yes      | "STRING" or "JSON"                                       |
+    | `comparison_type.json_path` | string | No       | JSONPath to extract before comparing. Only for JSON type |
+
+    ```json  theme={null}
+    {
+      "column_type": "COMPARE",
+      "name": "Accuracy",
+      "configuration": {
+        "sources": ["predicted_value", "ground_truth"],
+        "comparison_type": {"type": "STRING"}
+      },
+      "is_part_of_score": true
+    }
+    ```
+
+    With JSON path:
+
+    ```json  theme={null}
+    {
+      "column_type": "COMPARE",
+      "name": "JSON Field Match",
+      "configuration": {
+        "sources": ["api_response", "expected_response"],
+        "comparison_type": {
+          "type": "JSON",
+          "json_path": "$.result.status"
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="CONTAINS">
+    Checks if a value contains a substring (case-insensitive).
+
+    | Field          | Type   | Required    | Description                                                     |
+    | -------------- | ------ | ----------- | --------------------------------------------------------------- |
+    | `source`       | string | Yes         | Column name to search in                                        |
+    | `value`        | string | Conditional | Static substring to find. Required if value\_source not set     |
+    | `value_source` | string | Conditional | Column name containing the substring. Required if value not set |
+
+    ```json  theme={null}
+    {
+      "column_type": "CONTAINS",
+      "name": "Has Keyword",
+      "configuration": {
+        "source": "response",
+        "value": "thank you"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="REGEX">
+    Tests if content matches a regular expression pattern. Returns boolean.
+
+    | Field           | Type   | Required | Description                |
+    | --------------- | ------ | -------- | -------------------------- |
+    | `source`        | string | Yes      | Column name to test        |
+    | `regex_pattern` | string | Yes      | Regular expression pattern |
+
+    ```json  theme={null}
+    {
+      "column_type": "REGEX",
+      "name": "Valid Email Format",
+      "configuration": {
+        "source": "email_field",
+        "regex_pattern": "^[\\w.-]+@[\\w.-]+\\.\\w+$"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="COSINE_SIMILARITY">
+    Calculates semantic similarity between two texts using embeddings. Returns a float between 0 and 1.
+
+    | Field     | Type  | Required | Description                                |
+    | --------- | ----- | -------- | ------------------------------------------ |
+    | `sources` | array | Yes      | Array of exactly 2 column names to compare |
+
+    ```json  theme={null}
+    {
+      "column_type": "COSINE_SIMILARITY",
+      "name": "Semantic Similarity",
+      "configuration": {
+        "sources": ["generated_response", "reference_response"]
+      },
+      "is_part_of_score": true
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="ABSOLUTE_NUMERIC_DISTANCE">
+    Calculates the absolute difference between two numeric values.
+
+    | Field     | Type  | Required | Description                                        |
+    | --------- | ----- | -------- | -------------------------------------------------- |
+    | `sources` | array | Yes      | Array of exactly 2 column names containing numbers |
+
+    ```json  theme={null}
+    {
+      "column_type": "ABSOLUTE_NUMERIC_DISTANCE",
+      "name": "Score Difference",
+      "configuration": {
+        "sources": ["predicted_score", "actual_score"]
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="AI_DATA_EXTRACTION">
+    Uses an LLM to extract specific information from content based on a natural language query.
+
+    | Field    | Type   | Required | Description                                     |
+    | -------- | ------ | -------- | ----------------------------------------------- |
+    | `source` | string | Yes      | Column name containing the content              |
+    | `query`  | string | Yes      | Natural language description of what to extract |
+
+    ```json  theme={null}
+    {
+      "column_type": "AI_DATA_EXTRACTION",
+      "name": "Extract Sentiment",
+      "configuration": {
+        "source": "response",
+        "query": "What is the overall sentiment? Return only: positive, negative, or neutral"
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Extraction Types
+
+These columns extract or parse data from other columns.
+
+<AccordionGroup>
+  <Accordion title="JSON_PATH">
+    Extracts data from JSON using JSONPath expressions.
+
+    | Field                | Type    | Required | Description                                               |
+    | -------------------- | ------- | -------- | --------------------------------------------------------- |
+    | `source`             | string  | Yes      | Column name containing JSON data                          |
+    | `json_path`          | string  | Yes      | JSONPath expression (e.g., "$.field", "$.items\[0].name") |
+    | `return_first_match` | boolean | No       | Return only first match (default: true) or all matches    |
+
+    ```json  theme={null}
+    {
+      "column_type": "JSON_PATH",
+      "name": "Extract Agent",
+      "configuration": {
+        "source": "llm_output",
+        "json_path": "$.selected_agent",
+        "return_first_match": true
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="XML_PATH">
+    Extracts data from XML using XPath expressions.
+
+    | Field         | Type    | Required | Description                                                          |
+    | ------------- | ------- | -------- | -------------------------------------------------------------------- |
+    | `source`      | string  | Yes      | Column name containing XML data                                      |
+    | `xml_path`    | string  | Yes      | XPath expression                                                     |
+    | `type`        | string  | No       | "find" for first match or "findall" for all matches. Default: "find" |
+    | `return_text` | boolean | No       | Return text content only or full XML. Default: true                  |
+
+    ```json  theme={null}
+    {
+      "column_type": "XML_PATH",
+      "name": "Extract Title",
+      "configuration": {
+        "source": "xml_response",
+        "xml_path": ".//item/title",
+        "type": "find",
+        "return_text": true
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="REGEX_EXTRACTION">
+    Extracts content matching a regular expression pattern. Returns an array of all matches.
+
+    | Field           | Type   | Required | Description                 |
+    | --------------- | ------ | -------- | --------------------------- |
+    | `source`        | string | Yes      | Column name to extract from |
+    | `regex_pattern` | string | Yes      | Regular expression pattern  |
+
+    ```json  theme={null}
+    {
+      "column_type": "REGEX_EXTRACTION",
+      "name": "Extract Numbers",
+      "configuration": {
+        "source": "text_content",
+        "regex_pattern": "\\d+\\.?\\d*"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="PARSE_VALUE">
+    Parses and converts a value to a specific type.
+
+    | Field    | Type   | Required | Description                                             |
+    | -------- | ------ | -------- | ------------------------------------------------------- |
+    | `source` | string | Yes      | Column name to parse                                    |
+    | `type`   | string | Yes      | Target type: "string", "number", "boolean", or "object" |
+
+    ```json  theme={null}
+    {
+      "column_type": "PARSE_VALUE",
+      "name": "Parse Score",
+      "configuration": {
+        "source": "score_string",
+        "type": "number"
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Transformation Types
+
+These columns transform, combine, or validate data.
+
+<AccordionGroup>
+  <Accordion title="VARIABLE">
+    Creates a static value that can be referenced by other columns.
+
+    | Field         | Type   | Required | Description        |
+    | ------------- | ------ | -------- | ------------------ |
+    | `value.type`  | string | Yes      | "string" or "json" |
+    | `value.value` | any    | Yes      | The static value   |
+
+    String variable:
+
+    ```json  theme={null}
+    {
+      "column_type": "VARIABLE",
+      "name": "Environment",
+      "configuration": {
+        "value": {
+          "type": "string",
+          "value": "production"
+        }
+      }
+    }
+    ```
+
+    JSON variable:
+
+    ```json  theme={null}
+    {
+      "column_type": "VARIABLE",
+      "name": "Config",
+      "configuration": {
+        "value": {
+          "type": "json",
+          "value": {"threshold": 0.8, "max_retries": 3}
+        }
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="ASSERT_VALID">
+    Validates that data is in a valid format. Returns boolean.
+
+    | Field    | Type   | Required | Description                                                  |
+    | -------- | ------ | -------- | ------------------------------------------------------------ |
+    | `source` | string | Yes      | Column name to validate                                      |
+    | `type`   | string | Yes      | Expected format: "object" for valid JSON, "number", or "sql" |
+
+    ```json  theme={null}
+    {
+      "column_type": "ASSERT_VALID",
+      "name": "Is Valid JSON",
+      "configuration": {
+        "source": "api_response",
+        "type": "object"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="COALESCE">
+    Returns the first non-null value from multiple sources.
+
+    | Field     | Type  | Required | Description                      |
+    | --------- | ----- | -------- | -------------------------------- |
+    | `sources` | array | Yes      | Array of column names, minimum 2 |
+
+    ```json  theme={null}
+    {
+      "column_type": "COALESCE",
+      "name": "Best Response",
+      "configuration": {
+        "sources": ["primary_response", "fallback_response", "default_response"]
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="COMBINE_COLUMNS">
+    Combines multiple column values into a single dictionary object.
+
+    | Field     | Type  | Required | Description                      |
+    | --------- | ----- | -------- | -------------------------------- |
+    | `sources` | array | Yes      | Array of column names to combine |
+
+    ```json  theme={null}
+    {
+      "column_type": "COMBINE_COLUMNS",
+      "name": "Combined Context",
+      "configuration": {
+        "sources": ["question", "context", "metadata"]
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="COUNT">
+    Counts occurrences in text content.
+
+    | Field    | Type   | Required | Description                                                   |
+    | -------- | ------ | -------- | ------------------------------------------------------------- |
+    | `source` | string | Yes      | Column name to count in                                       |
+    | `type`   | string | Yes      | What to count: "chars", "words", "sentences", or "paragraphs" |
+
+    ```json  theme={null}
+    {
+      "column_type": "COUNT",
+      "name": "Word Count",
+      "configuration": {
+        "source": "response",
+        "type": "words"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="MATH_OPERATOR">
+    Performs numeric comparisons. Returns boolean.
+
+    | Field      | Type   | Required    | Description                                                                                                       |
+    | ---------- | ------ | ----------- | ----------------------------------------------------------------------------------------------------------------- |
+    | `sources`  | array  | Yes         | Array with first source column, and optionally second source column                                               |
+    | `operator` | string | Yes         | Comparison operator: "lt" for less than, "le" for less or equal, "gt" for greater than, "ge" for greater or equal |
+    | `value`    | number | Conditional | Static value to compare against. Required if second source not provided                                           |
+
+    Compare to static value:
+
+    ```json  theme={null}
+    {
+      "column_type": "MATH_OPERATOR",
+      "name": "Above Threshold",
+      "configuration": {
+        "sources": ["score"],
+        "operator": "ge",
+        "value": 0.8
+      }
+    }
+    ```
+
+    Compare two columns:
+
+    ```json  theme={null}
+    {
+      "column_type": "MATH_OPERATOR",
+      "name": "A Greater Than B",
+      "configuration": {
+        "sources": ["score_a", "score_b"],
+        "operator": "gt"
+      }
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="MIN_MAX">
+    Finds the minimum or maximum value from an array or JSON structure.
+
+    | Field       | Type   | Required | Description                                        |
+    | ----------- | ------ | -------- | -------------------------------------------------- |
+    | `source`    | string | Yes      | Column name containing the data                    |
+    | `type`      | string | Yes      | "min" or "max"                                     |
+    | `json_path` | string | No       | JSONPath to extract values from, if source is JSON |
+
+    ```json  theme={null}
+    {
+      "column_type": "MIN_MAX",
+      "name": "Highest Score",
+      "configuration": {
+        "source": "scores_array",
+        "type": "max",
+        "json_path": "$[*].value"
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

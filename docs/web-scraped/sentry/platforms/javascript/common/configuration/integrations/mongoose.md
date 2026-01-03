@@ -1,0 +1,23 @@
+---
+---
+title: Mongoose
+description: "Adds instrumentation for Mongoose. (default)"
+---
+
+This integration only works in the Node.js and Bun runtimes.
+
+_Import name: `Sentry.mongooseIntegration`_
+
+This integration is enabled by default when performance monitoring is enabled. If you'd like to modify your default integrations, read [this](./../#modifying-default-integrations).
+
+The `mongooseIntegration` adds instrumentation for the `mongoose` library to capture spans using [`@opentelemetry/instrumentation-mongoose`](https://www.npmjs.com/package/@opentelemetry/instrumentation-mongoose).
+
+```JavaScript
+Sentry.init({
+  integrations: [Sentry.mongooseIntegration()],
+});
+```
+
+## Supported Versions
+
+- `mongoose`: `>=5.9.7 <9`

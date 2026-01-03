@@ -1,0 +1,35 @@
+---
+---
+title: Screenshots
+description: >-
+---
+
+Sentry makes it possible to automatically take a screenshot and include it as an attachment when a user experiences an error, an exception or a crash.
+
+This feature is only available for SDKs with a user interface, like the ones for mobile and desktop applications. It's also limited by whether taking a screenshot is possible or not. For example, in some environments, like native iOS, taking a screenshot requires the UI thread, which often isn't available in the event of a crash. Another example where a screenshot might not be available is when the event happens before the screen starts to load. So inherently, this feature is a best effort solution.
+
+## Enabling Screenshots
+
+Screenshots are experimental in Sentry for Godot and may impact performance when capturing screenshots. We recommend testing before enabling in production.
+
+Because screenshots may contain PII, they are an opt-in feature. To attach screenshots to your events, navigate to **Project Settings > Sentry > Experimental** and enable the **Attach Screenshot** option:
+
+![Enabling Screenshots in Project Settings](./img/project-settings.png)
+
+Or, like so, if you're configuring things programmatically:
+
+```GDScript
+SentrySDK.init(func(options: SentryOptions) -> void:
+	options.attach_screenshot = true
+)
+```
+
+## Viewing Screenshots
+
+If one is available, you'll see a thumbnail of the screenshot when you click on a specific issue from the [**Issues**](https://demo.sentry.io/issues/) page.
+
+![Screenshot Thumbnail](./img/screenshot-thumbnail.png)
+
+You can see an overview of all the screenshots for the issue as well as associated events by pressing the "View All" button.
+
+![Screenshots List Example](./img/screenshot-list-example.png)

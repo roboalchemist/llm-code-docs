@@ -1,0 +1,52 @@
+# Source: https://www.traceloop.com/docs/hub/getting-started.md
+
+# Getting Started with Traceloop Hub
+
+> Set up Hub as a smart proxy to all your LLM calls.
+
+Hub is a next generation smart proxy for LLM applications. It centralizes control and tracing of all LLM calls and traces.
+It's built in Rust so it's fast and efficient. It's completely open-source and free to use.
+
+## Installation
+
+### Local
+
+1. Clone the repo:
+
+```bash  theme={null}
+git clone https://github.com/traceloop/hub
+```
+
+2. Copy the `config-example.yaml` file to `config.yaml` and set the correct values (see below for more information).
+
+3. Run the hub by running `cargo run` in the root directory.
+
+### With Docker
+
+Traceloop Hub is available as a docker image named `traceloop/hub`. Make sure to create a `config.yaml` file
+following the [configuration](./configuration) instructions.
+
+```bash  theme={null}
+docker run --rm -p 3000:3000 -v $(pwd)/config.yaml:/etc/hub/config.yaml:ro -e CONFIG_FILE_PATH='/etc/hub/config.yaml'  -t traceloop/hub
+```
+
+## Connecting to Hub
+
+After running the hub and [configuring it](./configuration), you can start using it to invoke available LLM providers.
+Its API is the standard OpenAI API, so you can use it as a drop-in replacement for your LLM calls.
+
+You can invoke different pipelines by passing the `x-traceloop-pipeline` header. If none is specified, the default pipeline will be used.
+
+```python  theme={null}
+import openai
+
+client = OpenAI(
+    base_url="http://localhost:3000/api/v1",
+    # default_headers={"x-traceloop-pipeline": "optional-pipeline-name"},
+)
+```
+
+
+---
+
+> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

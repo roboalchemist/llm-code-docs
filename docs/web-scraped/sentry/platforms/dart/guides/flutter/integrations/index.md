@@ -1,0 +1,10 @@
+---
+---
+title: Integrations
+description: "Learn more about how integrations extend the functionality of our SDK to cover common libraries and environments automatically."
+---
+
+The Sentry SDK uses integrations to hook into the functionality of popular libraries to automatically instrument your application and give you the best data out of the box.
+
+Integrations can automatically add error instrumentation, performance instrumentation, and/or extra context information to your application. Flutter builds on the Dart SDK, so all Dart integrations are available in Flutter as well.
+
