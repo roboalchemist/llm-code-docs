@@ -1,0 +1,30 @@
+# SearXNG Documentation
+# Source: https://raw.githubusercontent.com/searxng/searxng/master/docs/admin/settings/index.rst
+# Path: docs/admin/settings/index.rst
+
+.. _searxng settings.yml:
+
+========
+Settings
+========
+
+.. sidebar:: Further reading ..
+
+   - :ref:`engine settings`
+   - :ref:`engine file`
+
+.. toctree::
+   :maxdepth: 2
+
+   settings
+   settings_engines
+   settings_brand
+   settings_general
+   settings_search
+   settings_server
+   settings_ui
+   settings_redis
+   settings_valkey
+   settings_outgoing
+   settings_categories_as_tabs
+   settings_plugins

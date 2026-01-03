@@ -117,6 +117,13 @@ repositories:
     target_folder: "docs/github-scraped/seeedstudio"
     branch: "docusaurus-version"
 
+  - name: "SearXNG"
+    description: "SearXNG - Privacy-respecting, hackable metasearch engine that aggregates results from various search services"
+    repo_url: "https://github.com/searxng/searxng.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/searxng"
+    branch: "master"
+
   - name: "Go"
     description: "Go Programming Language - Official documentation website"
     repo_url: "https://github.com/golang/website.git"
