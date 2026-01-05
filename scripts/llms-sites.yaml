@@ -353,6 +353,9 @@ sites:
 - name: giselles
   base_url: https://docs.giselles.ai/
   description: Giselles AI automation and workflow platform
+- name: gigaspaces
+  base_url: https://gigaspaces.com/
+  description: GigaSpaces - in-memory computing platform for enterprise caching and AI-powered data
 - name: gitbook
   base_url: https://gitbook.com/docs/
   description: GitBook documentation platform
