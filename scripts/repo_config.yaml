@@ -774,3 +774,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/ragflow"
     branch: "main"
+
+  - name: "WasmEdge"
+    description: "WasmEdge - High-performance WebAssembly runtime for edge computing and serverless applications"
+    repo_url: "https://github.com/WasmEdge/docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/wasmedge"
+    branch: "main"
