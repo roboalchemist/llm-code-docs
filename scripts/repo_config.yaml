@@ -355,6 +355,13 @@ repositories:
     target_folder: "docs/github-scraped/platformio"
     branch: "master"
 
+  - name: "PowerDNS"
+    description: "PowerDNS - High-performance, modular open-source DNS server designed for large-scale providers"
+    repo_url: "https://github.com/PowerDNS/pdns.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/powerdns"
+    branch: "master"
+
   - name: "PrimeReact"
     description: "PrimeReact - React UI component library with 80+ customizable components"
     repo_url: "https://github.com/primefaces/primereact.git"
