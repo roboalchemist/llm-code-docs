@@ -733,6 +733,13 @@ repositories:
     target_folder: "docs/github-scraped/executorch"
     branch: "main"
 
+  - name: "PiKVM"
+    description: "PiKVM - IP-based KVM (keyboard, video, mouse) control using Raspberry Pi or x86 hardware for remote server management"
+    repo_url: "https://github.com/pikvm/pikvm.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/pikvm"
+    branch: "master"
+
   - name: "pyannote"
     description: "pyannote.audio - Open-source Python library for speaker diarization with neural building blocks for identifying who spoke when in audio"
     repo_url: "https://github.com/pyannote/pyannote-audio.git"
