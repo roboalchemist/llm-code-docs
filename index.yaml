@@ -8,10 +8,10 @@
 
 metadata:
   last_updated: 2026-01-04 20:41
-  total_sources: 429
-  total_fetched: 429
-  llms_txt_count: 330
-  llms_txt_fetched: 330
+  total_sources: 430
+  total_fetched: 430
+  llms_txt_count: 331
+  llms_txt_fetched: 331
   github_count: 55
   github_fetched: 55
   web_scraped_count: 44
@@ -1608,6 +1608,14 @@ llms_txt:
   status: fetched
   file_count: 332
   size: 3.1MB
+  last_updated: 2026-01-04 20:41
+- name: n8n
+  description: N8N Documentation
+  url: https://n8n.com/
+  path: docs/llms-txt/n8n/
+  status: fetched
+  file_count: 2
+  size: 3.9MB
   last_updated: 2026-01-04 20:41
 - name: nativescript
   description: Nativescript Documentation

@@ -593,6 +593,9 @@ sites:
 - name: nativescript
   base_url: https://docs.nativescript.org/
   description: NativeScript cross-platform framework
+- name: n8n
+  base_url: https://docs.n8n.io/
+  description: n8n workflow automation platform with nodes, workflows, expressions, and API documentation
 - name: neon
   base_url: https://neon.com/
   description: Neon serverless Postgres database platform
