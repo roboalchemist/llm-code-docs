@@ -110,6 +110,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Loghouse"
+    description: "Loghouse - Log management system built on ClickHouse for storing and analyzing logs"
+    repo_url: "https://github.com/flant/loghouse.git"
+    source_folder: "docs/en"
+    target_folder: "docs/github-scraped/loghouse"
+    branch: "master"
+
   - name: "Laravel"
     description: "Laravel - PHP framework with elegant middleware system for HTTP request handling"
     repo_url: "https://github.com/laravel/docs.git"
