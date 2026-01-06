@@ -914,3 +914,10 @@ repositories:
     source_folder: "cmd/deadcode"
     target_folder: "docs/github-scraped/deadcode"
     branch: "master"
+
+  - name: "vscode-languageserver-node"
+    description: "Microsoft's Node.js-based Language Server Protocol (LSP) client/server implementation framework with npm modules for building language servers and clients"
+    repo_url: "https://github.com/microsoft/vscode-languageserver-node.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/vscode-languageserver-node"
+    branch: "main"
