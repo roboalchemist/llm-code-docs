@@ -13,6 +13,9 @@ sites:
 - name: agent-domain
   base_url: https://agentdomain.xyz/
   description: Agent Domain (.agent TLD) AI ecosystem
+- name: agent-client-protocol
+  base_url: https://agentclientprotocol.com/
+  description: Agent Client Protocol (ACP) - standardizes communication between AI agents and client applications
 - name: agentskills-best
   base_url: https://agentskills.best/
   description: Agent Skills marketplace for Claude with tutorials and downloadable
