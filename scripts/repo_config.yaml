@@ -551,6 +551,13 @@ repositories:
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
 
+  - name: "ts-morph"
+    description: "ts-morph - TypeScript Compiler API wrapper for programmatic code manipulation and analysis"
+    repo_url: "https://github.com/dsherret/ts-morph.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/ts-morph"
+    branch: "latest"
+
   - name: "ts-node"
     description: "ts-node - TypeScript execution engine for Node.js with source map and native ESM support"
     repo_url: "https://github.com/TypeStrong/ts-node.git"
