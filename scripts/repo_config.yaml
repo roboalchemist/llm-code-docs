@@ -970,3 +970,10 @@ repositories:
     source_folder: "Documentation"
     target_folder: "docs/github-scraped/delve"
     branch: "master"
+
+  - name: "gopls"
+    description: "gopls - Official Go language server providing IDE features (LSP) to all editors: auto-completion, diagnostics, go-to-definition, refactoring, and formatting"
+    repo_url: "https://github.com/golang/tools.git"
+    source_folder: "gopls/doc"
+    target_folder: "docs/github-scraped/gopls"
+    branch: "master"
