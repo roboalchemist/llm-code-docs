@@ -488,6 +488,13 @@ repositories:
     target_folder: "docs/github-scraped/whisper"
     branch: "main"
 
+  - name: "vim-lsp"
+    description: "vim-lsp - Async Language Server Protocol (LSP) plugin for Vim 8 and Neovim with server registration, key mappings, and diagnostic signs"
+    repo_url: "https://github.com/prabirshrestha/vim-lsp.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/vim-lsp"
+    branch: "master"
+
   - name: "Neovim"
     description: "Neovim - Hyperextensible Vim-based text editor with built-in LSP client, Lua scripting, and plugin API for development and AI-assisted workflows"
     repo_url: "https://github.com/neovim/neovim.git"
