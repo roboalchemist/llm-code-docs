@@ -803,6 +803,13 @@ repositories:
     target_folder: "docs/github-scraped/ragflow"
     branch: "main"
 
+  - name: "Palo Alto Prisma Cloud"
+    description: "Palo Alto Prisma Cloud - Container security, compliance, and cloud security platform (formerly Twistlock) with comprehensive RQL, policies, and administration guides"
+    repo_url: "https://github.com/PaloAltoNetworks/prisma-cloud-docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/prisma-cloud"
+    branch: "master"
+
   - name: "WasmEdge"
     description: "WasmEdge - High-performance WebAssembly runtime for edge computing and serverless applications"
     repo_url: "https://github.com/WasmEdge/docs.git"
