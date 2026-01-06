@@ -393,6 +393,9 @@ sites:
 - name: herd
   base_url: https://herd.laravel.com/docs/
   description: Herd documentation
+- name: heyapi
+  base_url: https://heyapi.dev/
+  description: TypeScript-first API client generator from OpenAPI specifications
 - name: hono
   base_url: https://hono.dev/
   description: Hono ultrafast web framework
