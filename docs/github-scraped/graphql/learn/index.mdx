@@ -1,0 +1,78 @@
+---
+title: Learn
+---
+
+import { Button } from '@/app/conf/_design-system/button';
+
+import { NavbarFixed } from '../../components/navbar/navbar-fixed'
+import { TocHero, TocHeroContents } from '../../components/toc-hero'
+import { TeaserSection } from '../../components/learn-aggregator/teaser-section'
+import { LearnHeroStripes } from '../../components/learn-aggregator/learn-hero-stripes'
+import { pagesBySection } from '../../components/learn-aggregator/learn-pages'
+import { CommonQuestionsSection } from '../../components/learn-aggregator/common-questions'
+import { TrainingCoursesSection } from '../../components/learn-aggregator/training-courses'
+import { LookingForMore } from "../../components/looking-for-more"
+
+<NavbarFixed />
+<TocHero
+  className="mb-4 lg:mb-8"
+  heading="Learn GraphQL"
+  text={
+    <>
+    Get hands-on with the fundamentals of GraphQL. Start with the basics and see how it compares to other technologies.
+    <br className='max-lg:hidden' />{" "}
+    Then move on to best practices for designing better APIs.
+    </>
+  }
+  decoration={<LearnHeroStripes />}
+>
+  <Button href="/learn/introduction" className="lg:w-fit">
+    Start with the basics
+  </Button>
+  <TocHeroContents
+    sections={["Learn GraphQL", "Tutorials", "Best Practices", "FAQ"]}
+    className='max-w-[528px]'
+  />
+</TocHero>
+
+<TeaserSection 
+  id="learn-graphql"
+  eyebrow="Learn GraphQL"
+  title="Getting started with GraphQL"
+  description=
+    "In this tutorial-style introduction to GraphQL, you'll learn the core concepts that power every GraphQL API. Follow a step-by-step path from basic queries to advanced features."
+  cta={
+    <Button href="/learn/introduction" className='md:w-fit'>
+      Start learning
+    </Button>
+  }
+  firstIconsEager
+  items={pagesBySection["getting-started"]}
+/>
+
+<TeaserSection
+  id="best-practices"
+  eyebrow="Best practices"
+  title="Practical guidelines"
+  description=
+    "Here you'll explore real-world strategies for designing and operating GraphQL APIs. These guides will help you build for scale and safety."
+  cta={
+    <Button href="/learn/best-practices" className='md:w-fit'>
+      Explore all best practices
+    </Button>
+  }
+  items={pagesBySection["best-practices"]}
+/>
+
+<TrainingCoursesSection id="tutorials" />
+
+<CommonQuestionsSection id="faq" />
+
+<LookingForMore
+  description="Learning is just the beginning. Discover tools and other resources — or connect with the GraphQL community around the world."
+  links={[
+    { href: "/resources", label: "Resources" },
+    { href: "/community", label: "Community" },
+  ]}
+/>
+

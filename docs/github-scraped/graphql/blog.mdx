@@ -1,0 +1,33 @@
+import Link from "next/link"
+import { getPagesUnderRoute } from "nextra/context"
+import { Tag, Card } from "@/components"
+import NextLink from "next/link"
+import { useRouter } from "next/router"
+import { clsx } from "clsx"
+import { BlogPage } from "@/components/blog-page"
+
+export default function Blog({ hideFeaturedPosts = false }) {
+  const { asPath } = useRouter()
+  const items = getPagesUnderRoute("/blog").flatMap(item => item.children || item)
+  const blogs = items.sort(
+    (a, b) => b.frontMatter.date - a.frontMatter.date,
+  )
+  const currentTag = asPath.startsWith("/blog")
+    ? ""
+    : asPath.replace("/tags/", "").replace(/\/$/, "")
+  //
+  const tags = blogs
+    .flatMap(blog => blog.frontMatter.tags)
+    .reduce((acc, tag) => {
+      acc[tag] ||= 0
+      acc[tag] += 1
+      return acc
+    }, {})
+
+  return <BlogPage
+    tags={tags}
+    currentTag={currentTag}
+    blogs={blogs}
+    hideFeaturedPosts={hideFeaturedPosts}
+  />
+}

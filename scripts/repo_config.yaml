@@ -243,6 +243,13 @@ repositories:
     target_folder: "docs/github-scraped/goose"
     branch: "main"
 
+  - name: "GraphQL"
+    description: "GraphQL - Query language and API design approach for flexible data fetching and real-time subscriptions"
+    repo_url: "https://github.com/graphql/graphql.github.io.git"
+    source_folder: "src/pages"
+    target_folder: "docs/github-scraped/graphql"
+    branch: "source"
+
   - name: "Incus"
     description: "Incus - Container and virtual machine manager (community fork of LXD)"
     repo_url: "https://github.com/lxc/incus.git"
