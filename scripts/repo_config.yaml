@@ -928,3 +928,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/vscode-languageserver-node"
     branch: "main"
+
+  - name: "python-lsp-server"
+    description: "Python Language Server - Fork of python-language-server with plugin system for flake8, pylint, autopep8, and other linting/formatting tools"
+    repo_url: "https://github.com/python-lsp/python-lsp-server.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/python-lsp-server"
+    branch: "develop"
