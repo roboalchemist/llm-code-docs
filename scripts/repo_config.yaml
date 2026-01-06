@@ -453,6 +453,13 @@ repositories:
     target_folder: "docs/github-scraped/express"
     branch: "gh-pages"
 
+  - name: "coc.nvim"
+    description: "coc.nvim - Completion framework for Neovim with native LSP support, extensions system, and IDE-like features for JavaScript/TypeScript"
+    repo_url: "https://github.com/neoclide/coc.nvim.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/coc-nvim"
+    branch: "master"
+
   - name: "ChromeDevToolsMCP"
     description: "Chrome DevTools MCP - Model Context Protocol server for controlling Chrome browser via DevTools API"
     repo_url: "https://github.com/ChromeDevTools/chrome-devtools-mcp.git"
