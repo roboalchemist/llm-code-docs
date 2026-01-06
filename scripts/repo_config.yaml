@@ -823,3 +823,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/wasmedge"
     branch: "main"
+
+  - name: "nvim-lspconfig"
+    description: "nvim-lspconfig - Collection of common configurations for Neovim's built-in language server client"
+    repo_url: "https://github.com/neovim/nvim-lspconfig.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/nvim-lspconfig"
+    branch: "master"
