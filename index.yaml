@@ -3259,6 +3259,13 @@ github_scraped:
   file_count: 1
   size: 10.8KB
   last_updated: 2026-01-06 13:30
+- name: vscode-languageserver
+  description: Core npm module for implementing Language Servers in Node.js
+  path: docs/github-scraped/vscode-languageserver/
+  status: fetched
+  file_count: 1
+  size: 26.9KB
+  last_updated: 2026-01-06 13:45
 - name: vscode-languageserver-node
   description: vscode-languageserver-node from GitHub
   path: docs/github-scraped/vscode-languageserver-node/
