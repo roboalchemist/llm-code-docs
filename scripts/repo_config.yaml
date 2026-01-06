@@ -956,3 +956,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/basedpyright"
     branch: "main"
+
+  - name: "go-critic"
+    description: "go-critic - Go linter for checking code style issues and performance anti-patterns"
+    repo_url: "https://github.com/go-critic/go-critic.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/go-critic"
+    branch: "master"
