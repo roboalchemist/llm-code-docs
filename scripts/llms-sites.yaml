@@ -95,6 +95,12 @@ sites:
 - name: aws-dynamodb
   base_url: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/
   description: Amazon DynamoDB NoSQL database developer guide
+- name: aws-sdk-go-v1
+  base_url: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/
+  description: AWS SDK for Go (version 1) - Build Go applications that use AWS services
+- name: aws-sdk-go-v2
+  base_url: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/
+  description: AWS SDK for Go v2 - Modern AWS SDK for Go with improved performance and features
 - name: astro
   base_url: https://docs.astro.build/
   description: Astro static site generator framework
@@ -350,6 +356,9 @@ sites:
 - name: giselles
   base_url: https://docs.giselles.ai/
   description: Giselles AI automation and workflow platform
+- name: gigaspaces
+  base_url: https://gigaspaces.com/
+  description: GigaSpaces - in-memory computing platform for enterprise caching and AI-powered data
 - name: gitbook
   base_url: https://gitbook.com/docs/
   description: GitBook documentation platform
@@ -387,6 +396,9 @@ sites:
 - name: herd
   base_url: https://herd.laravel.com/docs/
   description: Herd documentation
+- name: heyapi
+  base_url: https://heyapi.dev/
+  description: TypeScript-first API client generator from OpenAPI specifications
 - name: hono
   base_url: https://hono.dev/
   description: Hono ultrafast web framework

@@ -110,6 +110,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "Loghouse"
+    description: "Loghouse - Log management system built on ClickHouse for storing and analyzing logs"
+    repo_url: "https://github.com/flant/loghouse.git"
+    source_folder: "docs/en"
+    target_folder: "docs/github-scraped/loghouse"
+    branch: "master"
+
   - name: "Laravel"
     description: "Laravel - PHP framework with elegant middleware system for HTTP request handling"
     repo_url: "https://github.com/laravel/docs.git"
@@ -180,6 +187,13 @@ repositories:
     target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
+  - name: "Go LSP"
+    description: "Go Language Server Protocol implementation - Structs and interfaces for LSP wire format with Go mappings"
+    repo_url: "https://github.com/go-language-server/protocol.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/go-lsp"
+    branch: "main"
+
   - name: "HeroUI"
     description: "HeroUI - Open-source React UI component library built on Tailwind CSS, React Aria, and Framer Motion (formerly NextUI)"
     repo_url: "https://github.com/heroui-inc/heroui.git"
@@ -235,6 +249,13 @@ repositories:
     source_folder: "documentation/docs"
     target_folder: "docs/github-scraped/goose"
     branch: "main"
+
+  - name: "GraphQL"
+    description: "GraphQL - Query language and API design approach for flexible data fetching and real-time subscriptions"
+    repo_url: "https://github.com/graphql/graphql.github.io.git"
+    source_folder: "src/pages"
+    target_folder: "docs/github-scraped/graphql"
+    branch: "source"
 
   - name: "Incus"
     description: "Incus - Container and virtual machine manager (community fork of LXD)"
@@ -353,6 +374,13 @@ repositories:
     repo_url: "https://github.com/platformio/platformio-docs.git"
     source_folder: "."
     target_folder: "docs/github-scraped/platformio"
+    branch: "master"
+
+  - name: "PowerDNS"
+    description: "PowerDNS - High-performance, modular open-source DNS server designed for large-scale providers"
+    repo_url: "https://github.com/PowerDNS/pdns.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/powerdns"
     branch: "master"
 
   - name: "PrimeReact"
@@ -481,6 +509,13 @@ repositories:
     target_folder: "docs/github-scraped/discord-api"
     branch: "main"
 
+  - name: "Django REST Framework"
+    description: "Django REST Framework - Comprehensive REST framework built on Django for Python APIs with serialization, authentication, and browsable API"
+    repo_url: "https://github.com/encode/django-rest-framework.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/django-rest-framework"
+    branch: "master"
+
   - name: "decord"
     description: "Decord - Efficient video reader library with hardware-accelerated decoding for deep learning"
     repo_url: "https://github.com/dmlc/decord.git"
@@ -515,6 +550,13 @@ repositories:
     source_folder: "packages/documentation/copy/en"
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
+
+  - name: "The Update Framework"
+    description: "The Update Framework - Framework for securing software update systems against various attacks (key compromise, rollback, freeze, mix-and-match)"
+    repo_url: "https://github.com/theupdateframework/python-tuf.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/tuf"
+    branch: "develop"
 
   - name: "llama.cpp"
     description: "llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)"
@@ -691,6 +733,13 @@ repositories:
     target_folder: "docs/github-scraped/tree-sitter"
     branch: "master"
 
+  - name: "terraform-ls"
+    description: "Terraform Language Server - Official Terraform language server maintained by HashiCorp providing IDE features to LSP-compatible editors"
+    repo_url: "https://github.com/hashicorp/terraform-ls.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/terraform-ls"
+    branch: "main"
+
   - name: "LLMWare"
     description: "LLMWare - End-to-end RAG framework with hybrid search, document parsing, and edge deployment"
     repo_url: "https://github.com/llmware-ai/llmware.git"
@@ -774,3 +823,31 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/ragflow"
     branch: "main"
+
+  - name: "Palo Alto Prisma Cloud"
+    description: "Palo Alto Prisma Cloud - Container security, compliance, and cloud security platform (formerly Twistlock) with comprehensive RQL, policies, and administration guides"
+    repo_url: "https://github.com/PaloAltoNetworks/prisma-cloud-docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/prisma-cloud"
+    branch: "master"
+
+  - name: "WasmEdge"
+    description: "WasmEdge - High-performance WebAssembly runtime for edge computing and serverless applications"
+    repo_url: "https://github.com/WasmEdge/docs.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/wasmedge"
+    branch: "main"
+
+  - name: "nvim-lspconfig"
+    description: "nvim-lspconfig - Collection of common configurations for Neovim's built-in language server client"
+    repo_url: "https://github.com/neovim/nvim-lspconfig.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/nvim-lspconfig"
+    branch: "master"
+
+  - name: "deadcode"
+    description: "deadcode - Go tool for finding unused code in Go programs using Rapid Type Analysis"
+    repo_url: "https://go.googlesource.com/tools.git"
+    source_folder: "cmd/deadcode"
+    target_folder: "docs/github-scraped/deadcode"
+    branch: "master"

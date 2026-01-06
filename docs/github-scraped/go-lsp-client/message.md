@@ -1,0 +1,107 @@
+# Source: https://github.com/tectiv3/go-lsp-client/blob/master/message.go
+
+# message.go
+
+## Go Source Code
+
+```go
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+const EOL = "\r\n"
+
+type request struct {
+	id     int
+	method string
+	params interface{}
+}
+
+type notification struct {
+	method string
+	params interface{}
+}
+
+func (r *request) getBody() KeyValue {
+	id := 1
+	if r.id > 0 {
+		id = r.id
+	}
+	return KeyValue{
+		"id":     id,
+		"method": r.method,
+		"params": r.params,
+	}
+}
+
+func (r *request) format() string {
+	body := r.getBody()
+	body["jsonrpc"] = "2.0"
+
+	json, _ := json.Marshal(body)
+
+	headers := fmt.Sprintf("Content-Length: %d", len(json)) + EOL +
+		"Content-Type: application/vscode-jsonrpc; charset=utf-8"
+
+	return headers + EOL + EOL + string(json)
+}
+
+func (r request) getMethod() string {
+	return r.method
+}
+
+func (r *notification) getBody() KeyValue {
+	return KeyValue{
+		"method": r.method,
+		"params": r.params,
+	}
+}
+
+func (r *notification) format() string {
+	body := r.getBody()
+	body["jsonrpc"] = "2.0"
+
+	json, _ := json.Marshal(body)
+
+	headers := fmt.Sprintf("Content-Length: %d", len(json)) + EOL +
+		"Content-Type: application/vscode-jsonrpc; charset=utf-8"
+
+	return headers + EOL + EOL + string(json)
+}
+
+func (r notification) getMethod() string {
+	return r.method
+}
+
+type response struct {
+	ID     int
+	Method string
+	Params KeyValue
+	Result json.RawMessage
+	Error  KeyValue
+}
+
+func (r *response) getBody() KeyValue {
+	return KeyValue{
+		// "id":     r.ID,
+		"method": r.Method,
+		"result": r.Result,
+	}
+}
+
+func (r *response) format() string {
+	body := r.getBody()
+	body["jsonrpc"] = "2.0"
+
+	json, _ := json.Marshal(body)
+
+	headers := fmt.Sprintf("Content-Length: %d", len(json)) + EOL +
+		"Content-Type: application/vscode-jsonrpc; charset=utf-8"
+
+	return headers + EOL + EOL + string(json)
+}
+
+```
