@@ -1,0 +1,13 @@
+# Source: https://securego.io/docs/rules/g202
+
+Page not found
+
+ # Page not found
+
+ Looks like you’ve followed a broken link or entered a URL that doesn’t
+ exist on this site.
+
+ If this is your site, and you weren’t expecting a 404 for this path,
+ please visit Netlify’s
+ “page not found” support guide
+ for troubleshooting tips.
