@@ -474,6 +474,13 @@ repositories:
     target_folder: "docs/github-scraped/whisper"
     branch: "main"
 
+  - name: "Neovim"
+    description: "Neovim - Hyperextensible Vim-based text editor with built-in LSP client, Lua scripting, and plugin API for development and AI-assisted workflows"
+    repo_url: "https://github.com/neovim/neovim.git"
+    source_folder: "runtime/doc"
+    target_folder: "docs/github-scraped/neovim"
+    branch: "master"
+
   - name: "NumPy"
     description: "NumPy - Fundamental package for scientific computing in Python with support for large, multi-dimensional arrays and matrices"
     repo_url: "https://github.com/numpy/numpy.git"
