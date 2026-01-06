@@ -495,6 +495,13 @@ repositories:
     target_folder: "docs/github-scraped/discord-api"
     branch: "main"
 
+  - name: "Django REST Framework"
+    description: "Django REST Framework - Comprehensive REST framework built on Django for Python APIs with serialization, authentication, and browsable API"
+    repo_url: "https://github.com/encode/django-rest-framework.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/django-rest-framework"
+    branch: "master"
+
   - name: "decord"
     description: "Decord - Efficient video reader library with hardware-accelerated decoding for deep learning"
     repo_url: "https://github.com/dmlc/decord.git"
