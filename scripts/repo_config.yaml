@@ -977,3 +977,10 @@ repositories:
     source_folder: "gopls/doc"
     target_folder: "docs/github-scraped/gopls"
     branch: "master"
+
+  - name: "Trivy"
+    description: "Trivy - All-in-one vulnerability scanner for containers, filesystems, and Go modules with support for multiple security scanners"
+    repo_url: "https://github.com/aquasecurity/trivy.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/trivy"
+    branch: "main"
