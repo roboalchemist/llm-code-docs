@@ -187,6 +187,13 @@ repositories:
     target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
+  - name: "Go LSP"
+    description: "Go Language Server Protocol implementation - Structs and interfaces for LSP wire format with Go mappings"
+    repo_url: "https://github.com/go-language-server/protocol.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/go-lsp"
+    branch: "main"
+
   - name: "HeroUI"
     description: "HeroUI - Open-source React UI component library built on Tailwind CSS, React Aria, and Framer Motion (formerly NextUI)"
     repo_url: "https://github.com/heroui-inc/heroui.git"
