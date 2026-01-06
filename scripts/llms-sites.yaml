@@ -829,6 +829,9 @@ sites:
 - name: sourcegraph
   base_url: https://sourcegraph.com/docs/
   description: Sourcegraph code intelligence platform
+- name: sonarcloud
+  base_url: https://docs.sonarsource.com/
+  description: SonarCloud cloud-based code quality and security platform with TypeScript and 26+ language support
 - name: spacetimedb
   base_url: https://spacetimedb.com/
   description: SpacetimeDB serverless database
