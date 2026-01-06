@@ -1,0 +1,5 @@
+# Source: https://github.com/davidhalter/jedi/blob/master/docs/_static/logo-src.txt
+
+The source of the logo is a photoshop file hosted here:
+
+https://dl.dropboxusercontent.com/u/170011615/Jedi12_Logo.psd.xz

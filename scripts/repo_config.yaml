@@ -215,6 +215,13 @@ repositories:
     target_folder: "docs/github-scraped/isort"
     branch: "main"
 
+  - name: "Jedi"
+    description: "Jedi - Static analysis library for Python providing autocompletion, code intelligence, and refactoring"
+    repo_url: "https://github.com/davidhalter/jedi.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jedi"
+    branch: "master"
+
   - name: "HTTPX"
     description: "HTTPX - A modern, async-capable HTTP client for Python with HTTP/1.1 and HTTP/2 support"
     repo_url: "https://github.com/encode/httpx.git"
