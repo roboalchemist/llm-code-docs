@@ -942,3 +942,10 @@ repositories:
     source_folder: "."
     target_folder: "docs/github-scraped/python-lsp-server"
     branch: "develop"
+
+  - name: "pygls"
+    description: "pygls - A pythonic generic language server framework for building Language Server Protocol (LSP) implementations"
+    repo_url: "https://github.com/openlawlibrary/pygls.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/pygls"
+    branch: "main"
