@@ -963,3 +963,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/go-critic"
     branch: "master"
+
+  - name: "Delve"
+    description: "Delve - Debugger for the Go programming language with breakpoints, stepping, variable inspection, and DAP support"
+    repo_url: "https://github.com/go-delve/delve.git"
+    source_folder: "Documentation"
+    target_folder: "docs/github-scraped/delve"
+    branch: "master"
