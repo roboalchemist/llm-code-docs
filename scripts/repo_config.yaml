@@ -949,3 +949,10 @@ repositories:
     source_folder: "docs/source"
     target_folder: "docs/github-scraped/pygls"
     branch: "main"
+
+  - name: "basedpyright"
+    description: "basedpyright - Community fork of Microsoft's Pyright Python type checker with additional features and faster release cycles"
+    repo_url: "https://github.com/DetachHead/basedpyright.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/basedpyright"
+    branch: "main"
