@@ -614,6 +614,13 @@ repositories:
     target_folder: "docs/github-scraped/xtermjs"
     branch: "master"
 
+  - name: "AionUi"
+    description: "AionUi - Free, open-source GUI app for AI CLI agents (Gemini CLI, Claude Code, Codex, Qwen Code, Goose) with multi-agent mode, AI image generation and editing, file management, and multi-task processing"
+    repo_url: "https://github.com/iOfficeAI/AionUi.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/aionui"
+    branch: "main"
+
   - name: "agentskills"
     description: "agentskills - Documentation and specifications for Claude Code agent skills"
     repo_url: "https://github.com/agentskills/agentskills.git"
