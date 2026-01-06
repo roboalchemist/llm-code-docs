@@ -726,6 +726,13 @@ repositories:
     target_folder: "docs/github-scraped/tree-sitter"
     branch: "master"
 
+  - name: "terraform-ls"
+    description: "Terraform Language Server - Official Terraform language server maintained by HashiCorp providing IDE features to LSP-compatible editors"
+    repo_url: "https://github.com/hashicorp/terraform-ls.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/terraform-ls"
+    branch: "main"
+
   - name: "LLMWare"
     description: "LLMWare - End-to-end RAG framework with hybrid search, document parsing, and edge deployment"
     repo_url: "https://github.com/llmware-ai/llmware.git"
