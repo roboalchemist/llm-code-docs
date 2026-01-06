@@ -984,3 +984,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/trivy"
     branch: "main"
+
+  - name: "NilAway"
+    description: "NilAway - Static analysis tool for detecting nil pointer dereferences in Go code before runtime"
+    repo_url: "https://github.com/uber-go/nilaway.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/nilaway"
+    branch: "main"
