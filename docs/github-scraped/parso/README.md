@@ -1,0 +1,70 @@
+# Source: https://github.com/davidhalter/parso
+
+# Parso - A Python Parser
+
+Parso is a Python parser that supports error recovery and round-trip parsing for different Python versions (in multiple Python versions). Parso is also able to list multiple syntax errors in your python file.
+
+Parso has been battle-tested by [jedi](https://github.com/davidhalter/jedi). It was pulled out of jedi to be useful for other projects as well.
+
+Parso consists of a small API to parse Python and analyse the syntax tree.
+
+## Simple Example
+
+```python
+>>> import parso
+>>> module = parso.parse('hello + 1', version="3.9")
+>>> expr = module.children[0]
+>>> expr
+PythonNode(arith_expr, [<Name: hello@1,0>, <Operator: +>, <Number: 1>])
+>>> print(expr.get_code())
+hello + 1
+>>> name = expr.children[0]
+>>> name
+<Name: hello@1,0>
+>>> name.end_pos
+(1, 5)
+>>> expr.end_pos
+(1, 9)
+```
+
+## Error Detection Example
+
+To list multiple issues:
+
+```python
+>>> grammar = parso.load_grammar()
+>>> module = grammar.parse('foo +\nbar\ncontinue')
+>>> error1, error2 = grammar.iter_errors(module)
+>>> error1.message
+'SyntaxError: invalid syntax'
+>>> error2.message
+"SyntaxError: 'continue' not properly in loop"
+```
+
+## Resources
+
+- [Testing Documentation](./development.md#testing)
+- [PyPI Package](https://pypi.python.org/pypi/parso)
+- [Official Documentation](https://parso.readthedocs.org/en/latest/)
+- Uses [semantic versioning](https://semver.org/)
+
+## Installation
+
+```bash
+pip install parso
+```
+
+## Future
+
+- There will be better support for refactoring and comments. Stay tuned.
+- There's a WIP PEP8 validator. It's however not in a good shape, yet.
+
+## Known Issues
+
+- `async`/`await` are already used as keywords in Python3.6.
+- `from __future__ import print_function` is not ignored.
+
+## Acknowledgements
+
+- Guido van Rossum (@gvanrossum) for creating the parser generator pgen2 (originally used in lib2to3).
+- Salome Schneider for the extremely awesome parso logo.
