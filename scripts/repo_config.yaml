@@ -208,6 +208,13 @@ repositories:
     target_folder: "docs/github-scraped/home-assistant"
     branch: "current" # Default branch to use
 
+  - name: "isort"
+    description: "isort - Python utility for sorting and organizing import statements with support for multiple profiles and integration with code formatters"
+    repo_url: "https://github.com/PyCQA/isort.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/isort"
+    branch: "main"
+
   - name: "HTTPX"
     description: "HTTPX - A modern, async-capable HTTP client for Python with HTTP/1.1 and HTTP/2 support"
     repo_url: "https://github.com/encode/httpx.git"
