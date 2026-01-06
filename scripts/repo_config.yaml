@@ -544,6 +544,13 @@ repositories:
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
 
+  - name: "The Update Framework"
+    description: "The Update Framework - Framework for securing software update systems against various attacks (key compromise, rollback, freeze, mix-and-match)"
+    repo_url: "https://github.com/theupdateframework/python-tuf.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/tuf"
+    branch: "develop"
+
   - name: "llama.cpp"
     description: "llama.cpp - LLM inference in C/C++ with GGUF format support (CPU, CUDA, Vulkan, OpenCL backends)"
     repo_url: "https://github.com/ggerganov/llama.cpp.git"
