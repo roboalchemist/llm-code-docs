@@ -887,6 +887,13 @@ repositories:
     target_folder: "docs/github-scraped/wasmedge"
     branch: "main"
 
+  - name: "Volar.js"
+    description: "Volar.js - Framework-agnostic LSP (Language Server Protocol) toolkit enabling multiple frameworks to share TypeScript instances with advanced language features"
+    repo_url: "https://github.com/volarjs/docs.git"
+    source_folder: "src/content/docs"
+    target_folder: "docs/github-scraped/volarjs"
+    branch: "main"
+
   - name: "nvim-lspconfig"
     description: "nvim-lspconfig - Collection of common configurations for Neovim's built-in language server client"
     repo_url: "https://github.com/neovim/nvim-lspconfig.git"

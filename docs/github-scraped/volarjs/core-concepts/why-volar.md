@@ -1,0 +1,12 @@
+# Source: https://github.com/volarjs/docs/blob/main/src/content/docs/core-concepts/why-volar.mdx
+
+---
+title: Why Volar?
+description: Advantages of using Volar and why you would want to use it.
+---
+
+Over the years, programmers have started relying more and more on their code editors to provide them with helpful contextual information and hints about their code. Features such as hover information, diagnostics, and auto-completions are now an absolute norm that users rightfully expect from their editors, no matter what programming languages they are working with.
+
+However, implementing such features is not only a non-trivial task, but it's also understandably rarely the priority of the languages and frameworks authors. And even if you do have the time and resources to implement such features, it's hard to do right, requires a fair amount of domain knowledge, and can be very time consuming to maintain.
+
+**Volar aims to solve this problem by taking care of all the heavy lifting.** Volar provides you all the tools you need to build a great editing experience for your users without having to worry about the nitty-gritty details so you can focus on what matters most to you: Making your language or framework awesome.
