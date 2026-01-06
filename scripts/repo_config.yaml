@@ -866,6 +866,13 @@ repositories:
     target_folder: "docs/github-scraped/nvim-lspconfig"
     branch: "master"
 
+  - name: "Agent Client Protocol - Python SDK"
+    description: "Agent Client Protocol Python SDK - Pydantic models, async base classes, and JSON-RPC utilities for building ACP-compatible agents and clients"
+    repo_url: "https://github.com/agentclientprotocol/python-sdk.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/agent-client-protocol-python-sdk"
+    branch: "main"
+
   - name: "deadcode"
     description: "deadcode - Go tool for finding unused code in Go programs using Rapid Type Analysis"
     repo_url: "https://go.googlesource.com/tools.git"
