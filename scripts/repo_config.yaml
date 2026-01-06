@@ -830,3 +830,10 @@ repositories:
     source_folder: "doc"
     target_folder: "docs/github-scraped/nvim-lspconfig"
     branch: "master"
+
+  - name: "deadcode"
+    description: "deadcode - Go tool for finding unused code in Go programs using Rapid Type Analysis"
+    repo_url: "https://go.googlesource.com/tools.git"
+    source_folder: "cmd/deadcode"
+    target_folder: "docs/github-scraped/deadcode"
+    branch: "master"
