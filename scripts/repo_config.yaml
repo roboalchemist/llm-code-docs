@@ -222,6 +222,13 @@ repositories:
     target_folder: "docs/github-scraped/flask"
     branch: "main" # Default branch to use
 
+  - name: "Flow"
+    description: "Flow - Static type checker for JavaScript with Language Server Protocol support"
+    repo_url: "https://github.com/facebook/flow.git"
+    source_folder: "website/docs"
+    target_folder: "docs/github-scraped/flow"
+    branch: "main"
+
   - name: "Click"
     description: "Python CLI framework - Command-line interface creation toolkit"
     repo_url: "https://github.com/pallets/click.git"
