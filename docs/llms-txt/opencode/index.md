@@ -1,23 +1,37 @@
 # OpenCode Documentation
 
-OpenCode is an open source AI coding agent available as a terminal-based interface, desktop app, or IDE extension.
+OpenCode is an open-source AI coding agent providing terminal-based interface, desktop app, and IDE extension capabilities for developers. Built with TypeScript, MIT licensed, and supporting 75+ LLM providers.
 
-## Quick Start
+## Installation
 
-### Installation
+### Installation Methods
 
 ```bash
 # Install script (recommended)
 curl -fsSL https://opencode.ai/install | bash
 
-# Or using npm
+# npm
 npm install -g opencode-ai
 
-# Or using Homebrew
+# Homebrew (macOS/Linux)
 brew install opencode
+
+# Chocolatey (Windows)
+choco install opencode
+
+# Docker
+docker run -it --rm ghcr.io/sst/opencode
+
+# Arch Linux (paru)
+paru -S opencode
+
+# Or use any Node package manager
+pnpm add -g opencode-ai
+bun add -g opencode-ai
+yarn global add opencode-ai
 ```
 
-### First Run
+## Quick Start
 
 ```bash
 # Navigate to your project
@@ -26,38 +40,44 @@ cd /path/to/project
 # Start OpenCode
 opencode
 
-# Configure a provider (recommended: OpenCode Zen)
+# Configure a provider
 /connect
 
-# Initialize for your project
+# Initialize project analysis
 /init
 ```
 
 ## Core Concepts
 
-### Agents
-- **Build** (default): Full development with all tools enabled
-- **Plan**: Analysis mode - suggests changes without modifying code
-- **General**: Research and multi-step task execution (subagent)
-- **Explore**: Fast codebase exploration (subagent)
+### Primary Agents
+- **Build** (default): Full development capabilities with all tools enabled
+- **Plan**: Analysis-only mode - generates implementation strategies without modifying code
 
-Switch agents with Tab key or @ mention subagents.
+Switch between primary agents with Tab key.
 
-### Tools
-Built-in tools include:
+### Subagents
+Invoke specialized agents via `@mention`:
+- **General**: Research and multi-step task execution
+- **Explore**: Fast codebase exploration
+
+### Built-in Tools
 - `bash` - Execute shell commands
-- `edit` - Modify files with exact replacements
+- `edit` - Modify files via exact string replacements
 - `write` - Create new files
-- `read` - Read file contents
-- `grep` - Search file contents
+- `read` - Read file contents (supports line ranges)
+- `grep` - Search file contents with regex
 - `glob` - Find files by pattern
-- `webfetch` - Fetch web content
+- `list` - List directory contents
+- `patch` - Apply patch files
 - `skill` - Load reusable skills
+- `webfetch` - Fetch web content
 
-### Configuration
+### Configuration Locations (Merged, Later Overrides)
+1. Global: `~/.config/opencode/opencode.json`
+2. Project: `./opencode.json`
+3. Environment: `OPENCODE_CONFIG` variable
 
-Global config: `~/.config/opencode/opencode.json`
-Project config: `./opencode.json`
+### Basic Configuration Example
 
 ```json
 {
@@ -71,87 +91,63 @@ Project config: `./opencode.json`
 ## Key Features
 
 ### File References
-Use `@` to reference files in prompts:
+Use `@` syntax to reference files in prompts:
 ```
 How is auth handled in @src/auth.ts?
 ```
 
-### Commands
-Built-in commands:
-- `/connect` - Add providers
-- `/models` - Select model
-- `/init` - Create AGENTS.md
-- `/undo` - Revert changes
+### Built-in Commands
+- `/connect` - Add or configure providers
+- `/models` - Select which model to use
+- `/init` - Create AGENTS.md project analysis
+- `/undo` - Revert last changes (including files)
 - `/redo` - Restore changes
-- `/share` - Share conversation
-- `/help` - Show help
+- `/share` - Share conversation with others
+- `/help` - Display help information
 
-### MCP Servers
-Add external tools via Model Context Protocol:
-```json
-{
-  "mcp": {
-    "server-name": {
-      "type": "local",
-      "command": ["npx", "-y", "package-name"]
-    }
-  }
-}
-```
-
-### Custom Agents
-Define specialized agents:
-```json
-{
-  "agent": {
-    "code-reviewer": {
-      "description": "Reviews code for issues",
-      "mode": "subagent",
-      "tools": {
-        "write": false,
-        "edit": false
-      }
-    }
-  }
-}
-```
+### Image Support
+Drag and drop images or use `![image](path)` for design references in prompts.
 
 ## Common Workflows
 
-### Add a Feature
+### Add a Feature (Plan-First Approach)
+
 ```
 # Switch to Plan mode
 <Tab>
 
 # Describe feature
-When a user deletes a note, flag it as deleted in the database.
+When a user deletes a note, flag as deleted in the database.
 Create a screen showing deleted notes with undelete/permanent delete options.
 
-# Review and approve plan
-Sounds good! Go ahead and make the changes.
+# Review plan
+Sounds good! Make the changes.
 
 # Switch back to Build mode
 <Tab>
 ```
 
-### Make Changes
+### Make Targeted Changes
+
 ```
-Add authentication to /settings route. Use the same pattern as @packages/functions/src/notes.ts
+Add authentication to /settings route.
+Use the same pattern as @packages/functions/src/notes.ts
 ```
 
-### Undo/Redo
+### Undo/Redo Operations
+
 ```
-# Undo last change
+# Undo last change (reverts all modifications)
 /undo
 
-# Redo change
+# Restore changes
 /redo
 ```
 
-## Advanced
+## Permissions & Safety
 
-### Permissions
-Control tool permissions:
+### Control Tool Access
+
 ```json
 {
   "permission": {
@@ -164,21 +160,104 @@ Control tool permissions:
 }
 ```
 
+Permission levels:
+- `"allow"` - Allow without asking
+- `"ask"` - Prompt for confirmation
+- `"deny"` - Block completely
+
+## Providers
+
+OpenCode supports 75+ LLM providers including:
+
+**Major Providers:**
+- Anthropic Claude
+- OpenAI
+- Google Gemini
+- DeepSeek
+- Together AI
+- OpenRouter
+- Z.AI
+- OpenCode Zen (curated, tested models)
+
+**Cloud Platforms:**
+- Amazon Bedrock
+- Google Vertex AI
+- Azure OpenAI
+
+**Local Models:**
+- Ollama
+- LM Studio
+
+Configure providers with `/connect` command or environment variables.
+
+## Advanced Features
+
+### Custom Agents
+
+Define specialized agents in JSON or Markdown:
+
+**JSON:**
+```json
+{
+  "agent": {
+    "code-reviewer": {
+      "description": "Reviews code for issues",
+      "mode": "subagent",
+      "model": "anthropic/claude-sonnet-4-5",
+      "temperature": 0.1,
+      "tools": {
+        "write": false,
+        "edit": false
+      }
+    }
+  }
+}
+```
+
+**Markdown** (`.opencode/agent/review.md`):
+```markdown
+---
+description: Code review agent
+mode: subagent
+tools:
+  write: false
+  edit: false
+---
+
+Review code for quality and best practices.
+```
+
 ### Custom Commands
-Define reusable prompts:
+
+Create reusable commands:
+
+**JSON:**
 ```json
 {
   "command": {
     "test": {
       "template": "Run full test suite with coverage",
+      "description": "Run tests",
       "agent": "build"
     }
   }
 }
 ```
 
+**Markdown** (`.opencode/command/test.md`):
+```markdown
+---
+description: Run tests with coverage
+agent: build
+---
+
+Run the full test suite and show failures.
+```
+
 ### Skills
+
 Create reusable instructions in `.opencode/skill/<name>/SKILL.md`:
+
 ```markdown
 ---
 name: git-release
@@ -190,23 +269,52 @@ description: Create consistent releases
 - Propose version bump
 ```
 
-## Providers
+### MCP Servers
 
-Supports 75+ LLM providers via AI SDK and Models.dev:
-- Anthropic Claude
-- OpenAI
-- Google Gemini
-- Amazon Bedrock
-- DeepSeek
-- OpenRouter
-- Local models (Ollama, LM Studio)
-- And many more
+Integrate external tools via Model Context Protocol:
 
-Configure with `/connect` or environment variables.
+**Local Server:**
+```json
+{
+  "mcp": {
+    "my-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "package-name"],
+      "environment": {
+        "API_KEY": "{env:MY_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+**Remote Server:**
+```json
+{
+  "mcp": {
+    "my-remote": {
+      "type": "remote",
+      "url": "https://mcp.example.com"
+    }
+  }
+}
+```
+
+## Best Practices
+
+1. **Use Plan mode** for reviewing changes before implementation
+2. **Reference files** with `@` for proper context
+3. **Enable only needed MCPs** to conserve context tokens
+4. **Configure permissions** for risky operations
+5. **Create custom agents** for specific task types
+6. **Use skills** for reusable workflows
+7. **Set up formatters** for code consistency
+8. **Commit AGENTS.md** to version control for team sharing
 
 ## Links
 
-- Website: https://opencode.ai
-- GitHub: https://github.com/sst/opencode
-- Discord: https://opencode.ai/discord
-- Docs: https://opencode.ai/docs
+- **Website:** https://opencode.ai
+- **Documentation:** https://opencode.ai/docs
+- **GitHub:** https://github.com/sst/opencode
+- **Discord:** https://opencode.ai/discord
+- **Models:** https://models.dev

@@ -287,9 +287,35 @@ Look for:
 - **Debug**: Investigation with bash and read tools
 - **Docs**: Documentation with file ops, no system commands
 
+## Model Selection
+
+OpenCode supports provider/model format (e.g., `anthropic/claude-sonnet-4-5`, `openai/gpt-4`, `deepseek-ai/DeepSeek-V3`).
+
+**Recommendations:**
+- **General development:** Claude Sonnet 4.5, GPT-4, DeepSeek V3
+- **Fast tasks:** Claude Haiku, GPT-4 Mini
+- **Complex reasoning:** Claude Opus 4.5, DeepSeek R1
+- **Local/cost-conscious:** Ollama, LM Studio with smaller models
+
+## Session Navigation
+
+Primary and subagent invocations create a session tree:
+
+```
+Primary Agent (parent)
+├── Subagent 1 (child)
+├── Subagent 2 (child)
+└── Subagent 3 (child)
+```
+
+Navigate with:
+- **Leader+Right**: Next session (parent → child1 → child2 → parent)
+- **Leader+Left**: Previous session (reverse order)
+
 ## Notes
 
 - Agent names from markdown files match filename (e.g., `review.md` → `review`)
 - Global config agents override built-in if same name
 - Subagents inherit primary agent's model unless overridden
-- Temperature defaults: 0 for most, 0.55 for Qwen models
+- Temperature defaults: 0.1 for analysis, 0.55 for Qwen models
+- Provider-specific options pass through to underlying API (e.g., `reasoningEffort`, `textVerbosity`)
