@@ -1,0 +1,250 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/generated-config.md
+
+# Source: https://oxc.rs/docs/guide/usage/formatter/generated-config.md
+
+---
+url: /docs/guide/usage/formatter/generated-config.md
+---
+
+# Configuration options for the Oxfmt.
+
+Most options are the same as Prettier's options.
+See also <https://prettier.io/docs/options>
+
+In addition, some options are our own extensions.
+
+## arrowParens
+
+type: `string | null`
+
+Include parentheses around a sole arrow function parameter. (Default: `"always"`)
+
+## bracketSameLine
+
+type: `boolean | null`
+
+Put the `>` of a multi-line JSX element at the end of the last line
+instead of being alone on the next line. (Default: `false`)
+
+## bracketSpacing
+
+type: `boolean | null`
+
+Print spaces between brackets in object literals. (Default: `true`)
+
+## embeddedLanguageFormatting
+
+type: `string | null`
+
+Control whether to format embedded parts in the file.
+e.g. JS-in-Vue, CSS-in-JS, etc. (Default: `"auto"`)
+
+## endOfLine
+
+type: `string | null`
+
+Which end of line characters to apply. (Default: `"lf"`)
+
+## experimentalSortImports
+
+type: `object | null`
+
+Experimental: Sort import statements. Disabled by default.
+
+### experimentalSortImports.groups
+
+type: `array | null`
+
+Custom groups configuration for organizing imports.
+Each array element represents a group, and multiple group names in the same array are treated as one.
+Accepts both `string` and `string[]` as group elements.
+
+#### experimentalSortImports.groups\[n]
+
+type: `string[]`
+
+### experimentalSortImports.ignoreCase
+
+type: `boolean | null`
+
+Ignore case when sorting. (Default: `true`)
+
+### experimentalSortImports.internalPattern
+
+type: `string[]`
+
+Glob patterns to identify internal imports.
+
+### experimentalSortImports.newlinesBetween
+
+type: `boolean | null`
+
+Add newlines between import groups. (Default: `true`)
+
+### experimentalSortImports.order
+
+type: `string | null`
+
+Sort order. (Default: `"asc"`)
+
+### experimentalSortImports.partitionByComment
+
+type: `boolean | null`
+
+Partition imports by comments. (Default: `false`)
+
+### experimentalSortImports.partitionByNewline
+
+type: `boolean | null`
+
+Partition imports by newlines. (Default: `false`)
+
+### experimentalSortImports.sortSideEffects
+
+type: `boolean | null`
+
+Sort side-effect imports. (Default: `false`)
+
+## experimentalSortPackageJson
+
+type: `boolean | null`
+
+Experimental: Sort `package.json` keys. (Default: `true`)
+
+## experimentalTailwindcss
+
+type: `object | null`
+
+Experimental: Enable Tailwind CSS class sorting in JSX class/className attributes.
+When enabled, class strings will be collected and passed to a callback for sorting.
+Pass `true` or an object with options from `prettier-plugin-tailwindcss`.
+(Default: disabled)
+
+### experimentalTailwindcss.attributes
+
+type: `string[]`
+
+List of attributes that contain Tailwind CSS classes.
+
+Example: `["myClassProp", ":class"]`
+
+Default: `["class", "className"]`
+
+### experimentalTailwindcss.config
+
+type: `string | null`
+
+Path to your Tailwind CSS configuration file (v3).
+
+Note: Paths are resolved relative to the Oxfmt configuration file.
+
+Default: `"./tailwind.config.js"`
+
+### experimentalTailwindcss.functions
+
+type: `string[]`
+
+List of custom function names that contain Tailwind CSS classes.
+
+Example: `["clsx", "cn", "cva", "tw"]`
+
+Default: `[]`
+
+### experimentalTailwindcss.preserveDuplicates
+
+type: `boolean | null`
+
+Preserve duplicate classes.
+
+Default: `false`
+
+### experimentalTailwindcss.preserveWhitespace
+
+type: `boolean | null`
+
+Preserve whitespace around classes.
+
+Default: `false`
+
+### experimentalTailwindcss.stylesheet
+
+type: `string | null`
+
+Path to your Tailwind CSS stylesheet (v4).
+
+Note: Paths are resolved relative to the Oxfmt configuration file.
+
+Example: `"./src/app.css"`
+
+## ignorePatterns
+
+type: `string[]`
+
+Ignore files matching these glob patterns. Current working directory is used as the root.
+
+## insertFinalNewline
+
+type: `boolean | null`
+
+Whether to insert a final newline at the end of the file. (Default: `true`)
+
+## jsxSingleQuote
+
+type: `boolean | null`
+
+Use single quotes instead of double quotes in JSX. (Default: `false`)
+
+## objectWrap
+
+type: `string | null`
+
+How to wrap object literals when they could fit on one line or span multiple lines. (Default: `"preserve"`)
+NOTE: In addition to Prettier's `"preserve"` and `"collapse"`, we also support `"always"`.
+
+## printWidth
+
+type: `integer | null`
+
+The line length that the printer will wrap on. (Default: `100`)
+
+## quoteProps
+
+type: `string | null`
+
+Change when properties in objects are quoted. (Default: `"as-needed"`)
+
+## semi
+
+type: `boolean | null`
+
+Print semicolons at the ends of statements. (Default: `true`)
+
+## singleAttributePerLine
+
+type: `boolean | null`
+
+Put each attribute on a new line in JSX. (Default: `false`)
+
+## singleQuote
+
+type: `boolean | null`
+
+Use single quotes instead of double quotes. (Default: `false`)
+
+## tabWidth
+
+type: `integer | null`
+
+Number of spaces per indentation level. (Default: `2`)
+
+## trailingComma
+
+type: `string | null`
+
+Print trailing commas wherever possible. (Default: `"all"`)
+
+## useTabs
+
+type: `boolean | null`
+
+Use tabs for indentation or spaces. (Default: `false`)

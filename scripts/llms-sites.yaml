@@ -669,6 +669,9 @@ sites:
 - name: openrouter
   base_url: https://openrouter.ai/docs/
   description: OpenRouter AI model aggregator and API
+- name: oxc
+  base_url: https://oxc.rs/
+  description: Oxc - high-performance JavaScript/TypeScript toolchain written in Rust with linter and formatter
 - name: oxla
   base_url: https://docs.oxla.com/
   description: Oxla distributed SQL database
