@@ -249,8 +249,8 @@ sites:
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
 - name: deno
-  base_url: https://deno.com/
-  description: Deno secure JavaScript/TypeScript runtime
+  base_url: https://docs.deno.com/
+  description: Deno secure JavaScript/TypeScript runtime with comprehensive documentation
 - name: dev
   base_url: https://dev.writer.com/
   description: Writer developer resources
