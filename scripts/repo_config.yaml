@@ -467,6 +467,13 @@ repositories:
     target_folder: "docs/github-scraped/eslint"
     branch: "main"
 
+  - name: "eslint-plugin-vue"
+    description: "Official ESLint plugin for Vue.js single-file components with rules, configuration, and usage guidance"
+    repo_url: "https://github.com/vuejs/eslint-plugin-vue.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-vue"
+    branch: "master"
+
   - name: "Express"
     description: "Express.js - Fast, unopinionated, minimalist web framework for Node.js"
     repo_url: "https://github.com/expressjs/expressjs.com.git"
