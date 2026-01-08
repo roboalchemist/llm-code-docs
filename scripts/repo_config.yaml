@@ -1026,3 +1026,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/quick-lint-js"
     branch: "master"
+
+  - name: "web-vitals"
+    description: "web-vitals - Library for measuring and monitoring Core Web Vitals performance metrics (CLS, INP, LCP, FCP, TTFB)"
+    repo_url: "https://github.com/GoogleChrome/web-vitals.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/web-vitals"
+    branch: "main"
