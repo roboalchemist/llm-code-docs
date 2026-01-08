@@ -12,6 +12,13 @@ settings:
 
 # Repository configurations
 repositories:
+  - name: "axe-core"
+    description: "axe-core accessibility testing engine with comprehensive WCAG rule documentation and API guides"
+    repo_url: "https://github.com/dequelabs/axe-core.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/axe-core"
+    branch: "develop"
+
   - name: "CircuitPython"
     description: "CircuitPython documentation and examples"
     repo_url: "https://github.com/adafruit/circuitpython"
