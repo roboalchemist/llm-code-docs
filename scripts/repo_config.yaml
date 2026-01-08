@@ -432,6 +432,13 @@ repositories:
     target_folder: "docs/github-scraped/pretty-ts-errors"
     branch: "main"
 
+  - name: "Prospector"
+    description: "Prospector - Comprehensive Python static analysis tool aggregating multiple linters"
+    repo_url: "https://github.com/prospector-dev/prospector.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/prospector"
+    branch: "master"
+
   - name: "PyTorch"
     description: "PyTorch - Deep learning framework by Meta with dynamic computation graphs, automatic differentiation, and GPU acceleration"
     repo_url: "https://github.com/pytorch/pytorch.git"
