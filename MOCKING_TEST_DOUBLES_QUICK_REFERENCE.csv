@@ -1,0 +1,25 @@
+Library,Language,Type,Primary Use,Strengths,Limitations,Best For,2025 Status,Maintenance
+Mockito,Java,Mocking Framework,Unit testing with mock objects,Clean syntax (when/then/verify),Cannot mock static/final/constructors,Most Java projects,Recommended,Active
+PowerMock,Java,Mocking Framework,Advanced mocking (static/final),Can mock anything,Slow complex syntax,Legacy code Java testing,Specialized,Active
+JMockit,Java,Mocking Framework,Comprehensive mocking,Can mock anything,NO RELEASES SINCE 2019,DO NOT USE,Avoid,Abandoned
+WireMock,Java,Service Mocking,HTTP service stubbing,Complex behaviors latency simulation,More setup overhead,Integration testing,Recommended,Active
+unittest.mock,Python,Mocking Library,General mocking patching,Built-in standard library,Verbose syntax,Any Python test framework,Stable,Active
+pytest-mock,Python,Pytest Plugin,Pytest-based mocking,Clean fixture integration auto-cleanup,Pytest-only,Pytest test suites,Recommended,Active
+responses,Python,HTTP Mocking,API request stubbing,Simple URL/method matching,HTTP-only,API testing without network,Specialized,Active
+Factory Boy,Python,Test Data,Dynamic object generation,Realistic factories pytest integration,Data-focused (not setup),Complex test objects,Recommended,Active
+pytest fixtures,Python,Test Setup,Reusable test components,Flexible scoping dependency chaining,Part of pytest,Complex test workflows,Standard,Active
+Jest,JavaScript,Testing Framework,Comprehensive testing,Mature snapshot testing parallel,Slower startup less Vite-native,React/Vue large apps,Industry Standard,Active
+Vitest,JavaScript,Testing Framework,Modern high-speed testing,Lightning-fast (Vite) ESM-native,Younger ecosystem,Vite projects,Rapidly Growing,Active
+Sinon,JavaScript,Stubbing Library,Function stubs and spies,Framework-agnostic timer mocking,Manual setup less HTTP-native,General JS unit testing,Mature/Stable,Active
+MSW,JavaScript,HTTP Mocking,Service worker-based mocking,Realistic browser Node.js,Setup overhead,Full-stack E2E tests,Modern/Recommended,Active
+nock,JavaScript,HTTP Mocking,HTTP request stubbing (Node),Simple syntax no server spin-up,Node-only,Backend API tests,Stable,Active
+node-mocks-http,JavaScript,Server Mocking,Node.js handler mocking,Lightweight direct req/res,Server-only limited features,Express/Fastify tests,Lightweight,Active
+TestNG,Java,Testing Framework,Data-driven testing,Parallel execution annotations,Less flexible than Mockito,Java unit tests,Stable,Active
+EasyMock,Java,Mocking Framework,Record-Replay pattern mocking,Simple record-replay,Less popular than Mockito,Legacy Java projects,Declining,Active
+doublex,Python,Test Doubles,Advanced test doubles,Strict verification contracts,Steeper learning curve,Complex verification,Niche,Active
+httpretty,Python,HTTP Mocking,HTTP request stubbing,Good for requests integration,Less maintained than responses,API testing,Alternative,Maintenance Issue
+Mockoon,Multi,API Mocking,Desktop mock API server,Open-source offline use,GUI-dependent,Frontend development,Recommended,Active
+Postman,Multi,API Mocking,Collection-based mocking,Team collaboration GUI-based,Proprietary cloud-dependent,API development teams,Industry Standard,Active
+Beeceptor,Multi,API Mocking,Cloud mock server,No-code setup cloud infrastructure,Always online requirement,Quick prototyping,Alternative,Active
+Hoverfly,Multi,Service Mocking,Service virtualization,Open-source flexible,Complex configuration,Complex scenarios,Alternative,Active
+MirageJS,JavaScript,API Mocking,Frontend API mocking,In-app mocking React/Vue/Angular,Interception complexity,Full-stack JS development,Niche,Declining

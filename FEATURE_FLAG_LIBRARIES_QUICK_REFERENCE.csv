@@ -1,0 +1,45 @@
+Language,Library Name,Type,Package/SDK,Key Features,Best For,Documentation,Repository
+JavaScript/TypeScript,Reflag,Commercial,reflag,Compile-time type safety; self-cleaning flags; auto-generated types,TypeScript-first SaaS teams,https://reflag.com/blog/best-feature-flags-typescript,https://reflag.com
+JavaScript/TypeScript,PostHog,Commercial,posthog-js; posthog-js/react,All-in-one analytics; built-in type checking,Analytics + feature flags,https://posthog.com,https://github.com/PostHog/posthog-js
+JavaScript/TypeScript,LaunchDarkly,Commercial,launchdarkly-js; launchdarkly-react,User targeting; rollout management; type definitions,Enterprise deployments,https://launchdarkly.com/docs/sdk/server-side/node-js,https://github.com/launchdarkly/js-sdk
+JavaScript/TypeScript,Flagsmith,Commercial,flagsmith-js,Flag management; remote configuration; A/B testing,React/Vue/Next.js apps,https://www.flagsmith.com/blog/typescript-feature-flags-next-js-example,https://github.com/Flagsmith/flagsmith
+JavaScript/TypeScript,FeatBit,Open-Source,@featbit/js-client,Multi-platform support; self-hosting option,Modern web applications,https://www.featbit.co,https://github.com/featbit/featbit
+JavaScript/TypeScript,GrowthBook,Open-Source,growthbook-js,Flexible self-hosting; managed plans,A/B testing focused,https://github.com/growthbook/growthbook,https://github.com/growthbook/growthbook
+JavaScript/TypeScript,Flipper Cloud,Open-Source,flipper-client-js,Simple API; user targeting; gradual rollouts,Active user base,https://flippercloud.io,https://github.com/flippercloud/flipper
+Python,Statsig,Commercial,statsig-py,Feature definition; user targeting; dynamic config,Production deployments,https://www.statsig.com/perspectives/feature-flagging-python-best-practices,https://github.com/statsig-io/py-sdk
+Python,LaunchDarkly,Commercial,launchdarkly-server-sdk,User targeting; rollout management; evaluation,Enterprise Python apps,https://launchdarkly.com/docs/sdk/server-side/python,https://github.com/launchdarkly/python-server-sdk
+Python,Flagsmith,Commercial,flagsmith-py,Flask integration; remote configuration; A/B testing,Flask/Django apps,https://www.flagsmith.com/blog/python-feature-flag,https://github.com/Flagsmith/flagsmith
+Python,Unleash,Open-Source,unleash-client-python,Local evaluation; multiple strategies; webhooks,Self-hosted deployments,https://docs.getunleash.io/guides/implement-feature-flags-in-python,https://github.com/Unleash/unleash-client-python
+Python,FeatBit,Open-Source,featbit-python-sdk,Multi-language support; relay proxy,Distributed systems,https://www.featbit.co,https://github.com/featbit/featbit
+Python,Azure App Configuration,Commercial,azure-appconfiguration-python,Dictionary-based flags; Azure integration,Azure-native apps,https://learn.microsoft.com/en-us/azure/azure-app-configuration/feature-management-python-reference,https://github.com/Azure/azure-sdk-for-python
+Python,featuretoggles,Open-Source,featuretoggles (PyPI),Simple toggle access; usage logging,Lightweight projects,https://pypi.org/project/featuretoggles/,https://github.com/pypi/featuretoggles
+Python,Flask Feature Flags,Open-Source,Flask extension,Configuration-based toggling; A/B testing; whitelisting,Flask applications,https://flask.palletsprojects.com,https://github.com/pallets/flask
+Java/JVM,LaunchDarkly,Commercial,java-server-sdk,Type-specific methods; event subscriptions; API,Enterprise Java apps,https://launchdarkly.com/docs/sdk/server-side/java,https://github.com/launchdarkly/java-server-sdk
+Java/JVM,Unleash,Open-Source,unleash-client-java,Local evaluation; multiple strategies,Self-hosted deployments,https://docs.getunleash.io,https://github.com/Unleash/unleash-client-java
+Java/JVM,FeatBit,Open-Source,featbit-java-sdk,OpenFeature standard support; multi-language,Kotlin/JVM apps,https://www.featbit.co,https://github.com/featbit/featbit
+Java/JVM,Flagsmith,Commercial,flagsmith-java,Flag evaluation; user data integration,Mixed tech stacks,https://www.flagsmith.com,https://github.com/Flagsmith/flagsmith
+Go,GO Feature Flag,Open-Source,go-feature-flag,Multi-language relay proxy; 100% open-source,Multi-service architectures,https://gofeatureflag.org,https://github.com/thomaspoignant/go-feature-flag
+Go,LaunchDarkly,Commercial,go-server-sdk,User targeting; rollout management; events,Enterprise Go apps,https://launchdarkly.com/docs/sdk/server-side/go,https://github.com/launchdarkly/go-server-sdk
+Go,Unleash,Open-Source,unleash-client-go,Local evaluation; multiple strategies,Self-hosted deployments,https://docs.getunleash.io,https://github.com/Unleash/unleash-client-go
+Go,Toggle,Open-Source,toggle,Clean and easy-to-use library,Simple Go projects,N/A,https://github.com/go-toggle/toggle
+Go,dcdr (Decider),Open-Source,dcdr,Consul/Etcd/Redis backends; percentile flags,Infrastructure rollouts,N/A,https://github.com/vsco/dcdr
+Go,GrowthBook,Open-Source,growthbook-go,Flexible self-hosting; managed plans,A/B testing focused,https://github.com/growthbook/growthbook,https://github.com/growthbook/growthbook
+Ruby,LaunchDarkly,Commercial,launchdarkly-rb,User targeting; rollout management; microsecond eval,Enterprise Rails apps,https://launchdarkly.com/docs/sdk/server-side/ruby,https://github.com/launchdarkly/ruby-server-sdk
+Ruby,Unleash,Open-Source,unleash-client-ruby,Local evaluation; multiple strategies,Self-hosted deployments,https://docs.getunleash.io,https://github.com/Unleash/unleash-client-ruby
+Ruby,Flagsmith,Commercial,flagsmith-ruby,Flag management; remote configuration,Rails applications,https://www.flagsmith.com,https://github.com/Flagsmith/flagsmith
+Ruby,The Rollout Gem,Open-Source,rollout,Community-driven feature toggling,Community projects,N/A,https://github.com/FetLife/rollout
+Ruby,Feature Flipper,Open-Source,feature_flipper,Simple feature toggle implementation,Lightweight projects,N/A,https://github.com/jnunemaker/flipper
+Ruby,Flip,Open-Source,flip,Lightweight toggle library,Simple toggling needs,N/A,https://github.com/pda/flip
+Ruby,Bandiera,Open-Source,bandiera,REST API-based service with web interface,Distributed systems,N/A,https://github.com/dazomnz/bandiera
+PHP,Unleash,Open-Source,unleash-client-php,Toggle on/off; A/B testing; user group targeting,General PHP apps,https://www.getunleash.io/feature-flags-for-php,https://github.com/Unleash/unleash-client-php
+PHP,LaunchDarkly,Commercial,launchdarkly-php,User targeting; rollout management,Enterprise PHP apps,https://launchdarkly.com/docs/sdk/server-side/php,https://github.com/launchdarkly/php-server-sdk
+PHP,ConfigCat,Commercial,configcat-php,Hosted service; web interface; Laravel integration,Laravel applications,https://configcat.com/blog/2022/09/16/how-to-use-feature-flags-in-php,https://github.com/configcat/php-sdk
+PHP,Flagsmith,Commercial,flagsmith-php,Flag management; user targeting; A/B testing,Mixed PHP stacks,https://www.flagsmith.com/blog/php-feature-flags,https://github.com/Flagsmith/flagsmith
+PHP,Toggler,Open-Source,Toggler,Multiple storage backends; callback support; Twig,Custom implementations,https://github.com/SolidWorx/Toggler,https://github.com/SolidWorx/Toggler
+PHP,Symfony Feature Flags Bundle,Open-Source,dzunke/feature-flags-bundle,Symfony2+ integration; configuration-based,Symfony applications,N/A,https://github.com/dzunke/DzunkeFlagsBundle
+PHP,PostHog,Commercial,posthog-php,Analytics + feature flags,Analytics focused,https://posthog.com,https://github.com/PostHog/posthog-php
+.NET/C#,FeatBit,Open-Source,FeatBit.Sdk.DotNet,Backend and client libraries; C# built,All .NET app types,https://www.featbit.co,https://github.com/featbit/featbit
+.NET/C#,LaunchDarkly,Commercial,LaunchDarkly.SDK,User targeting; rollout management; integration,Enterprise .NET apps,https://launchdarkly.com/docs/sdk/server-side/dotnet,https://github.com/launchdarkly/dotnet-sdk
+.NET/C#,FeatureManagement-Dotnet,Commercial,Microsoft.FeatureManagement,Lightweight; server/client scenarios; Azure integration,ASP.NET Core apps,https://learn.microsoft.com/en-us/azure/app-configuration/feature-management-dotnet-reference,https://github.com/microsoft/FeatureManagement-Dotnet
+.NET/C#,Unleash,Open-Source,Unleash.Client,REST APIs; granular control; local caching,Self-hosted deployments,https://docs.getunleash.io,https://github.com/Unleash/unleash-client-dotnet
+.NET/C#,Flagsmith,Commercial,flagsmith-dotnet,Flag evaluation; user data integration,Mixed .NET stacks,https://www.flagsmith.com,https://github.com/Flagsmith/flagsmith

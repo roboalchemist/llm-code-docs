@@ -1,0 +1,34 @@
+Tool,Primary Languages,Category,Description,Learning Curve,Incremental Builds,Caching Support
+Nx,JavaScript/TypeScript/Go/Rust,Task Runner,High-performance task orchestration with plugins for multiple frameworks and languages.,Low,Yes,Yes
+Turborepo,JavaScript/TypeScript,Task Runner,High-performance build system optimized for JavaScript monorepos with remote caching.,Low,Yes,Yes
+Rush,JavaScript/TypeScript,Package Manager,Large-scale monorepo manager by Microsoft with advanced versioning and coordinated builds.,Medium,Yes,No
+Lerna,JavaScript,Package Manager,JavaScript monorepo package manager providing version management and automated publishing.,Low,Yes,No
+Bit,Language Agnostic,Component Tool,Language-agnostic component monorepo tool with build orchestration and dependency graphs.,Medium,Yes,Yes
+Yarn Workspaces,JavaScript,Package Manager,Native workspace feature in Yarn for managing multiple packages with shared dependencies.,Low,No,No
+pnpm Workspaces,JavaScript,Package Manager,High-performance monorepo workspace support with strict dependency resolution.,Low,No,No
+npm Workspaces,JavaScript,Package Manager,Native workspace management in npm 7+ for multi-package monorepos.,Low,No,No
+Pants,Python/Go/Java/Shell/Docker,Build System,Powerful Python-first monorepo tool with dependency inference and multi-language support.,Medium,Yes,Yes
+Bazel,All Major Languages,Build System,Google's scalable build system with fine-grained dependency tracking for massive monorepos.,High,Yes,Yes
+Go Modules,Go,Package Manager,Standard Go tooling using go.mod replace directives for local module imports and selective builds.,Low,Yes,No
+Earthly,Multi-Language,Build System,Dockerfile-like build system for containerized builds with multi-language support.,Low,Yes,Yes
+Gradle,Java/Kotlin,Build System,Modern build system with superior monorepo support via multi-module projects.,Medium,Yes,Yes
+Maven,Java,Build System,Standard Java build tool providing multi-module project support for monorepos.,Medium,Partial,No
+Cargo Workspaces,Rust,Package Manager,Rust's native monorepo support via Cargo.toml with shared dependencies and selective building.,Low,Yes,No
+CMake,C++,Build System,Standard C++ build system orchestrating subprojects with incremental builds.,Medium,Yes,No
+Composer Workspaces,PHP,Package Manager,Native monorepo support in Composer 2.0+ with local package repositories.,Low,No,No
+MSBuild,.NET,Build System,Microsoft's native build engine supporting monorepo structures via solution files and shared configs.,Low,Yes,No
+dotnet CLI,.NET,Package Manager,Native .NET tooling with Directory.Build.props for shared project configurations.,Low,Yes,No
+Buck2,Multi-Language,Build System,Meta's monorepo build system supporting multiple languages with incremental builds.,High,Yes,Yes
+Please,Multi-Language,Build System,Go-based high-performance build system with reproducible cross-language builds.,Medium,Yes,Yes
+Lage,JavaScript,Task Runner,Fast JavaScript monorepo task scheduler with incremental builds.,Low,Yes,No
+OAO,JavaScript,Package Manager,Simple monorepo tool for managing and releasing multiple npm packages.,Low,No,No
+Tainted,Go,Build Tool,Determines which Go packages need rebuilding in monorepos based on code changes.,Low,Yes,No
+Rush (Ruby),Ruby/JavaScript,Package Manager,Comprehensive monorepo tool for Ruby and JavaScript with incremental builds.,Medium,Yes,No
+Gradle (Kotlin),Kotlin,Build System,Gradle's multi-module project support via settings.gradle.kts with incremental builds.,Medium,Yes,Yes
+Setuptools,Python,Build System,Python's standard build system supporting workspace-like structures with local package discovery.,Low,No,No
+Poetry,Python,Package Manager,Dependency management with workspace features for multi-package Python monorepos.,Medium,No,No
+Swamp,C++,Build System,Custom C++ build system optimized for monorepos with fast bootstrapping.,Medium,Yes,No
+Conan,C++,Package Manager,C++ package manager supporting monorepo publishing of individual libraries.,Medium,No,No
+Makefiles,Any,Build System,Traditional build orchestration for monorepos with selective compilation and testing.,Low,Manual,No
+baur,Multi-Language,Build Tool,Builds only changed applications in monorepos with artifact management.,Low,Yes,No
+drkns,Language Agnostic,Build System,Language-agnostic simple build system for monorepo structures.,Low,No,No

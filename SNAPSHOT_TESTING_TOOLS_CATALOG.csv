@@ -1,0 +1,46 @@
+Tool Name,Language/Ecosystem,Category,Primary Use Case,Key Features,Repository/Website,Status,Framework Support,License Type
+Jest,JavaScript/TypeScript,Snapshot Testing,React/Vue/Angular/Node.js testing,Built-in snapshots; code coverage; mock functions,https://jestjs.io,Stable/Active,React/Vue/Angular/Node.js,MIT
+Vitest,JavaScript/TypeScript,Snapshot Testing,Jest alternative with better performance,Jest-compatible; fast; TypeScript-first; built-in snapshots,https://vitest.dev,Stable/Active,React/Vue/Angular/Svelte,MIT
+Bun,JavaScript/TypeScript,Test Runner,JavaScript runtime with built-in testing,Jest-compatible test runner; toMatchSnapshot(),https://bun.com,Stable/Active,All frameworks,MIT
+Japa,JavaScript/TypeScript,Testing Framework,Node.js and AdonisJS testing,@japa/snapshot plugin; TypeScript support; VS Code integration,https://japa.dev,Stable/Active,Node.js/AdonisJS/Express,MIT
+Node-Tap,JavaScript/TypeScript,Testing Framework,Node.js TAP-based testing,Test-Anything Protocol; snapshots; fixtures; mocking,https://node-tap.org,Stable/Active,Node.js,ISC
+snap-shot-it,JavaScript,Snapshot Library,Mocha BDD testing,Adds snapshot testing to Mocha,https://github.com/bahmutov/snap-shot-it,Stable/Active,Mocha,MIT
+Cypress,JavaScript/TypeScript,E2E Testing,Web application E2E testing,@cypress/snapshot plugin for snapshot testing,https://cypress.io,Stable/Active,All web frameworks,MIT
+Approval Tests,JavaScript,Approval Testing,Complex output verification,Multi-language approval testing framework,https://github.com/approvals/ApprovalTests.JavaScript,Stable/Active,All,MIT
+Syrupy,Python,Snapshot Testing,pytest snapshot testing,Human-readable serialization; dataclass support; interactive review,https://github.com/syrusakbary/syrupy,Stable/Active,pytest,MIT
+pytest-snapshot,Python,Snapshot Testing,pytest snapshot testing,Customizable file paths; one snapshot per file; flexible organization,https://github.com/joseph-roitman/pytest-snapshot,Stable/Active,pytest,MIT
+pytest-insta,Python,Snapshot Testing,pytest snapshot testing,Multiple formats (text/binary/JSON/pickle); interactive review,https://pypi.org/project/pytest-insta/,Stable/Active,pytest,MIT
+snapshottest,Python,Snapshot Testing,pytest snapshot testing,General purpose pytest snapshot testing,https://github.com/syrusakbary/snapshottest,Stable/Active,pytest,MIT
+approvaltests,Python,Approval Testing,Complex Python output verification,Approval testing framework for Python,https://pypi.org/project/approvaltests/,Stable/Active,pytest/unittest,MIT
+Cupaloy,Go,Snapshot Testing,Go snapshot testing,Simple API; automatic file management; go-spew pretty-printing,https://github.com/bradleyjkemp/cupaloy,Stable/Active,testing,MIT
+go-snaps,Go,Snapshot Testing,Jest-inspired Go testing,Multiple matchers (MatchSnapshot/MatchJSON/MatchYAML); JSON/YAML files,https://github.com/gkampitakis/go-snaps,Stable/Active,testing,MIT
+go.followtheprocess.codes/snapshot,Go,Snapshot Testing,Go snapshot testing,testdata organization; auto-update flag; cleanup utilities,https://pkg.go.dev/go.followtheprocess.codes/snapshot,Stable/Active,testing,MIT
+Insta,Rust,Snapshot Testing,Rust snapshot testing (primary),CLI tool (cargo insta); inline snapshots; multiple serialization formats,https://insta.rs,Stable/Active,Various,MIT
+expect-test,Rust,Snapshot Testing,Minimal Rust snapshot testing,Macro-based (expect!); inline source code snapshots; lightweight,https://docs.rs/expect-test,Stable/Active,Various,MIT/Apache-2.0
+Runt,Rust,Snapshot Testing,Binary/CLI snapshot testing,Transcript tests; binary testing,https://github.com/bheisler/runt,Active,Testing,MIT
+snapshot-tests,Java,Snapshot Testing,JUnit snapshot testing,JUnit5/JUnit4 support; Java 11+; JSON/XML/HTML/text formats,https://github.com/skuzzle/snapshot-tests,Stable/Active,JUnit5/JUnit4,MIT
+ApprovalTests,Java,Approval Testing,Java approval testing,Complex output verification; cross-language compatibility,https://approvaltests.com,Stable/Active,JUnit5/JUnit4/TestNG,Apache-2.0
+AssertJ,Java,Assertion Library,Advanced Java assertions,Fluent assertions; snapshot capabilities,https://assertj.org,Stable/Active,JUnit5/JUnit4,Apache-2.0
+Verify,C#/.NET,Snapshot Testing,Comprehensive .NET snapshot testing (primary),File-based; specialized extensions (AspNetCore/WinForms/Xaml); embedded interactivity,https://github.com/VerifyTests/Verify,Stable/Active,xUnit/NUnit/MSTest,MIT
+Snapshooter,.NET,Snapshot Testing,.NET snapshot testing,Jest-inspired; minimal setup; file-based snapshots,https://github.com/SwissLife-OSS/Snapshooter,Stable/Active,xUnit/NUnit/MSTest,MIT
+Storm Petrel,.NET,Snapshot Testing,.NET code-based snapshots,Code-based baselines via .NET Incremental Generators; traditional approach,https://github.com/SwissLife-OSS/storm-petrel,Stable/Active,xUnit/NUnit/MSTest,MIT
+rspec-snapshot,Ruby,Snapshot Testing,RSpec snapshot testing,Jest-inspired matchers; custom serializers; Rails view support,https://github.com/levinmr/rspec-snapshot,Stable/Active,RSpec,MIT
+snapshot_testing,Ruby,Snapshot Testing,RSpec/Minitest/Test::Unit snapshot testing,Framework-agnostic; human-readable snapshots; custom serializers,https://github.com/rzane/snapshot_testing,Stable/Active,RSpec/Minitest/Test::Unit,MIT
+minitest-snapshots,Ruby,Snapshot Testing,Minitest snapshot testing,Jest-style snapshots for Minitest 5+,https://github.com/mattbrictson/minitest-snapshots,Stable/Active,Minitest,MIT
+spatie/phpunit-snapshot-assertions,PHP,Snapshot Testing,PHPUnit snapshot testing,JSON/text/YAML/image snapshots; multiple assertion types; JsonDriver,https://github.com/spatie/phpunit-snapshot-assertions,Stable/Active,PHPUnit,MIT
+Astrotomic/pest-plugin-laravel-snapshots,PHP/Laravel,Snapshot Testing,Laravel HTTP test snapshots,Pest framework integration; builds on phpunit-snapshot-assertions,https://github.com/Astrotomic/pest-plugin-laravel-snapshots,Stable/Active,Pest/Laravel,MIT
+pestphp/pest-plugin-snapshots,PHP,Snapshot Testing,Pest framework snapshots,expect($data)->toMatchSnapshot() syntax; CLI update flag,https://pestphp.com/docs/snapshot-testing,Stable/Active,Pest,MIT
+grazulex/laravel-snapshot,PHP/Laravel,Snapshot Testing,Laravel Eloquent model snapshots,Audit trails; data recovery; debugging; version control; analytics,https://github.com/grazulex/laravel-snapshot,Production-ready,Laravel,MIT
+Percy,Visual Testing,Visual Regression,Enterprise visual regression testing,AI-powered Visual Engine; CI/CD integration; team review dashboard,https://percy.io,Stable/Active,All frameworks,Commercial
+Chromatic,Visual Testing,Visual Regression,Component/UI visual testing,TurboSnap feature; 2K tests in <2 min; performance-tuned,https://www.chromatic.com,Stable/Active,React/Vue/Angular/Svelte,Freemium
+Applitools,Visual Testing,Visual Regression,AI-powered visual testing,AI analysis; cross-browser testing; mobile support,https://applitools.com,Stable/Active,All frameworks,Commercial
+BackstopJS,Visual Testing,Visual Regression,Open-source visual regression testing,Automated screenshots; multiple browsers; viewport sizes; HTML reports,https://github.com/garris/BackstopJS,Stable/Active,All frameworks,MIT
+jest-image-snapshot,Visual Testing,Image Comparison,Jest-based image snapshot testing,Jest matcher; pixel-level comparison; UI regression detection,https://github.com/americanexpress/jest-image-snapshot,Stable/Active,Jest,Apache-2.0
+Playwright,Web Testing,E2E + Visual Testing,Playwright automated testing with visual snapshots,toHaveScreenshot(); cross-platform; cross-browser; TypeScript,https://playwright.dev,Stable/Active,All frameworks,Apache-2.0
+Testplane,Visual Testing,Visual Regression,Visual regression with advanced features,Multiple diff modes; TypeScript; auto-wait; retries,https://github.com/gemini-testing/testplane,Stable/Active,All frameworks,MIT
+Ladle,Component Testing,Visual Testing,React component library testing,Visual snapshots integration; Playwright support,https://ladle.dev,Stable/Active,React,MIT
+Storybook,Component Library,Visual Testing,Component story documentation and testing,Native snapshot testing support for stories,https://storybook.js.org,Stable/Active,React/Vue/Angular/Svelte,MIT
+VisualCeption,Visual Testing,Visual Regression,Codeception-based visual testing,HTML reporting; flexible configuration; visual diff,https://github.com/VisualCeption/visualception,Active,PHP/Codeception,MIT
+Approval Tests (.NET),C#/.NET,Approval Testing,C# approval testing framework,Cross-language compatibility; complex output verification,https://github.com/approvals/ApprovalTests.Net,Stable/Active,xUnit/NUnit/MSTest,Apache-2.0
+Approval Tests (Python),Python,Approval Testing,Python approval testing framework,Complex output verification; cross-language compatibility,https://pypi.org/project/approvaltests/,Stable/Active,pytest/unittest,MIT
+Catch2,C++,Testing Framework,C++ testing framework with snapshot potential,Modern C++ testing; assertion support,https://github.com/catchorg/Catch2,Stable/Active,C++,Boost

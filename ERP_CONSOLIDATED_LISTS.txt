@@ -1,0 +1,157 @@
+================================================================================
+CONSOLIDATED ERP DOCUMENTATION LISTS
+================================================================================
+These lists were created by consolidating 4 separate research lists and
+deduplicating them. Total: 107 unique items
+
+Generated: January 1, 2026
+
+================================================================================
+LIST 1: ALREADY HAVE DOCUMENTATION (7 items)
+================================================================================
+
+Angular
+Docusaurus
+GitBook
+React.js
+Stripe
+Vue.js
+Zapier
+
+================================================================================
+LIST 2: MISSING DOCUMENTATION (100 items)
+================================================================================
+
+.NET Core
+@shopify/graphql-client
+ABAP
+ADempiere
+Access ERP
+Acumatica
+Akeneo
+Apache OFBiz
+Axelor
+Axonius
+Boomi
+Celigo
+Coupa
+Crystallize
+DOSS
+Davanti WICS
+Django
+Dolibarr
+ERPNext
+Epicor
+ForceJS
+Frappe
+Frappe Framework
+IBM App Connect
+Infor CloudSuite
+Informatica
+Inriver
+JD Edwards EnterpriseOne
+Jitterbit
+Kong
+Logic ERP
+Magento
+Mendix
+Metasfresh
+Microsoft Azure Data Factory
+Microsoft Dynamics 365
+Microsoft Power Apps
+Moqui Framework
+MuleSoft
+MuleSoft Anypoint Platform
+MyMagento
+NetSuite
+NetSuite SuiteTalk
+Node.js/Express.js
+Odoo
+OneIO
+Ongoing Warehouse
+OpenCart
+OpusFlow
+Oracle Cloud EPM
+Oracle Cloud Planning REST APIs
+Oracle E-Business Suite
+Oracle ERP Cloud
+Oracle NetSuite
+PeopleSoft
+Pimcore
+Plex MES
+Plex Manufacturing Cloud
+Productive
+Pulpo WMS
+QuickBooks
+Redocly
+Rockwell Automation ERP
+SAP
+SAP Business Technology Platform
+SAP Cloud SDK
+SAP Cloud SDK (.NET)
+SAP Cloud SDK (Java)
+SAP ECC
+SAP Go SDK
+SAP Integration Suite
+SAP S/4HANA
+SYSPRO
+Salesforce
+Salesforce API
+Shopify
+Skyvia
+SnapLogic
+Spring Boot
+SuiteScript
+Syndigo
+Talend
+Tryton
+Tyler Technologies ERP
+WooCommerce
+WooCommerce PHP Client
+Workato
+Zoho
+Zoho Inventory
+Zoho JavaScript SDK
+Zoho Python SDK
+frappe-client
+iDempiere
+magento-python
+odoo-client
+odoo-client-lib
+shopify-api-node
+shopify-api-ruby
+stripe-java
+stripe-node
+
+================================================================================
+SOURCE INFORMATION
+================================================================================
+
+LIST 1 (32 items): ERP Platforms & Frameworks
+LIST 2 (34 items): Integration Tools & Platforms
+LIST 3 (29 items): Modules/Extensions & Related Tools
+LIST 4 (31 items): Programming Libraries & SDKs
+
+Total items: 126
+Unique items after dedup: 107
+Coverage: 6.5% (7/107 have documentation)
+
+================================================================================
+ITEMS APPEARING IN MULTIPLE LISTS (High Priority)
+================================================================================
+
+Odoo (4 occurrences) - List 1, 2, 3, 4
+Apache OFBiz (3 occurrences) - List 1, 3, 4
+ERPNext (3 occurrences) - List 1, 3, 4
+Frappe (2 occurrences) - List 3, 4
+Magento (2 occurrences) - List 3, 4
+NetSuite (2 occurrences) - List 3, 4
+Shopify (2 occurrences) - List 3, 4
+WooCommerce (2 occurrences) - List 3, 4
+Acumatica (2 occurrences) - List 2, 3
+Microsoft Dynamics 365 (2 occurrences) - List 1, 2
+Moqui Framework (2 occurrences) - List 1, 3
+SAP S/4HANA (2 occurrences) - List 1, 2
+Tryton (2 occurrences) - List 1, 3
+
+================================================================================

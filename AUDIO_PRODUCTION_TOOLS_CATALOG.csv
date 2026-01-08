@@ -1,0 +1,58 @@
+Tool Name,Category,Language/Platform,Type,Primary Purpose,Developer Value,Documentation URL,Open Source,Maturity
+JUCE,Plugin Development,C++,Framework,Audio plugin development (VST/AU/AAX),Very High,https://juce.com/,Partial (Free for OSS),Mature
+iPlug2,Plugin Development,C++,Framework,Simpler cross-platform plugin development,High,https://github.com/iPlug2/iPlug2,Yes,Mature
+VST SDK,Plugin Development,C++,SDK,Official Steinberg plugin development kit,High,https://www.steinberg.net/developers/,No,Mature
+Web Audio API,Plugin Development,JavaScript,API,Browser-based audio processing,High,https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API,Yes,Mature
+ffmpeg,Format Conversion,C,CLI Tool,Universal audio/video format conversion,Very High,https://ffmpeg.org/,Yes,Mature
+SoX,Format Conversion,C,CLI Tool,Audio conversion and effects ("Swiss Army knife"),Very High,http://sox.sourceforge.net/,Yes,Mature
+MediaInfo,Format Conversion,C++,CLI Tool,Extract technical metadata from audio files,Medium,https://mediaarea.net/MediaInfo,Yes,Mature
+libsndfile,Audio I/O,C,Library,Read/write multiple audio file formats,High,http://www.mega-nerd.com/libsndfile/,Yes,Mature
+libav,Audio Processing,C,Library,FFmpeg-based multimedia framework,High,https://libav.org/,Yes,Mature
+PortAudio,Audio I/O,C,Library,Cross-platform real-time audio I/O,High,http://www.portaudio.com/,Yes,Mature
+GStreamer,Audio Processing,C,Library,Media processing pipelines,Medium,https://gstreamer.freedesktop.org/,Yes,Mature
+Librosa,Audio Analysis,Python,Library,Music and audio feature extraction,Very High,https://librosa.org/,Yes,Mature
+Essentia,Audio Analysis,C++/Python,Library,Audio analysis and music information retrieval,High,https://essentia.upf.edu/,Yes,Mature
+Aubio,Audio Analysis,C/Python,Library,Beat tracking and pitch detection,Medium,https://aubio.org/,Yes,Mature
+chromaprint,Audio Identification,C++,Library,Audio fingerprinting for music identification,Medium,https://github.com/acoustid/chromaprint,Yes,Mature
+MusicBrainz,Metadata,REST API,Service,Music database and metadata lookup,High,https://musicbrainz.org/doc/MusicBrainz_API,Yes,Mature
+SuperCollider,Audio Programming,Language,Programming Language,Real-time audio synthesis and live coding,Very High,https://github.com/supercollider/supercollider,Yes,Mature
+Pure Data (Pd),Audio Programming,Language,Programming Language,Visual audio and signal processing,Very High,https://github.com/pure-data/pure-data,Yes,Mature
+Csound,Audio Programming,Language,Programming Language,Text-based audio synthesis and rendering,High,https://csound.com/,Yes,Mature
+ChucK,Audio Programming,Language,Programming Language,Time-controllable audio programming,High,https://github.com/ccrma/chuck,Yes,Mature
+Max/MSP,Audio Programming,Language,Commercial IDE,Visual audio programming with strong DSP learning,High,https://cycling74.com/,No,Mature
+STK (Synthesis Toolkit),Audio Library,C++,Library,Algorithms for audio synthesis and modeling,Medium,https://github.com/thestk/stk,Yes,Mature
+Howler.js,Web Audio,JavaScript,Library,Lightweight web audio playback and effects,High,https://howlerjs.com/,Yes,Mature
+Tone.js,Web Audio,JavaScript,Library,Advanced synthesis and music creation for web,High,https://tonejs.org/,Yes,Mature
+Three.js,Visualization,JavaScript,Library,3D graphics with audio reactivity,High,https://threejs.org/,Yes,Mature
+p5.js,Visualization,JavaScript,Library,2D creative coding with audio integration,High,https://p5js.org/,Yes,Mature
+Babylon.js,Visualization,JavaScript,Library,Immersive 3D environments with Web Audio,High,https://www.babylonjs.com/,Yes,Mature
+Matplotlib,Visualization,Python,Library,Static waveforms and spectrograms,Medium,https://matplotlib.org/,Yes,Mature
+Plotly,Visualization,Python,Library,Interactive web-based audio charts,Medium,https://plotly.com/,Yes,Mature
+Audacity,Audio Editor,C++,Application,Multi-track waveform editor,Very High,https://www.audacityteam.org/,Yes,Mature
+Ardour,DAW,C++,Application,Full digital audio workstation,High,https://ardour.org/,Yes,Mature
+LMMS,DAW,C++,Application,Multi-track music production,Medium,https://github.com/LMMS/lmms,Yes,Mature
+Reaper,DAW,C++,Application,Professional DAW with ReaScript API,Very High,https://www.reaper.fm/,No,Mature
+FL Studio,DAW,Native Code,Application,Pattern-based music production with Python scripting,High,https://www.image-line.com/,No,Mature
+Ableton Live,DAW,Native Code,Application,Live performance DAW with Max for Live,High,https://www.ableton.com/,No,Mature
+Logic Pro,DAW,Objective-C,Application,macOS DAW with AppleScript support,High,https://www.apple.com/logic-pro/,No,Mature
+Sonic Pi,Education,Ruby,Application,Live coding environment for music,Medium,https://sonic-pi.net/,Yes,Active
+mpv,Playback,C,CLI Player,Media player with scripting support,Medium,https://mpv.io/,Yes,Mature
+liquidsoap,Streaming,OCaml,CLI Tool,Audio streaming and radio automation,Medium,https://www.liquidsoap.info/,Yes,Mature
+cmus,Playback,C,CLI Player,Console music player,Low,https://cmus.github.io/,Yes,Mature
+musikcube,Playback,C++,CLI Player,Terminal-based cross-platform music player,Low,https://musikcube.com/,Yes,Mature
+AudioKit,Audio Framework,Swift,Framework,Synthesis and audio effects for iOS/macOS,High,https://audiokit.io/,Yes,Mature
+pydub,Audio Manipulation,Python,Library,Simple audio file manipulation,Medium,https://github.com/jiaaro/pydub,Yes,Active
+SoundFile,Audio I/O,Python,Library,WAV/FLAC I/O wrapper around libsndfile,Medium,https://python-soundfile.readthedocs.io/,Yes,Active
+sounddevice,Audio I/O,Python,Library,Real-time audio I/O with NumPy arrays,Medium,https://python-sounddevice.readthedocs.io/,Yes,Active
+FLAC,Audio Codec,C,Library,Free Lossless Audio Codec encoder/decoder,High,https://xiph.org/flac/,Yes,Mature
+libflac,Audio Codec,C,Library,FLAC reference implementation,High,https://xiph.org/flac/api/,Yes,Mature
+libopus,Audio Codec,C,Library,Opus audio codec implementation,High,https://opus-codec.org/,Yes,Mature
+libvorbis,Audio Codec,C,Library,Vorbis lossy audio codec,High,https://xiph.org/vorbis/,Yes,Mature
+LAME,Audio Codec,C,Library,MP3 encoder library,High,https://lame.sourceforge.io/,Yes,Mature
+libfdk-aac,Audio Codec,C,Library,AAC audio codec encoder,High,https://sourceforge.net/projects/opencore-amr/,Partial,Mature
+audioMotion,Visualization,JavaScript,Library,High-resolution audio spectrum analyzer,Medium,https://github.com/anuraghazra/audiomotion-analyzer,Yes,Active
+ProjectM,Visualization,C++,Application,Customizable audio-reactive visualizations,Medium,https://github.com/projectM-visualizer/projectm,Yes,Active
+VSXu,Visualization,C++,Application,Modular OpenGL audio visualization,Medium,https://www.vsx.nu/,Yes,Active
+EarSketch,Education,JavaScript,Web Platform,Browser-based music programming for education,Medium,https://earsketch.gatech.edu/,Yes,Active
+Cecilia,Audio Processing,Python,Application,Real-time audio signal processing,Low,https://ajaxsoundstudio.com/pyaudio/,Yes,Mature
+PD-L2Ork,Audio Programming,C,Application,Enhanced Pure Data variant for live coding,Medium,https://l2ork.music.vt.edu/,Yes,Active

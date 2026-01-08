@@ -1,0 +1,13 @@
+Service,Provider,Query Languages,Deployment,Scalability,Primary Strength,Pricing Model,Entry Cost,Best For,Multi-Model,ACID Transactions,Vector Search
+Amazon Neptune,AWS,Gremlin + SPARQL,Managed AWS,Read replicas + auto-scaling,AWS integration & semantic reasoning,Instance + I/O + Storage,~$150-300/month,Knowledge graphs + Metadata graphs,No,Yes,No
+Azure Cosmos DB,Microsoft,Gremlin + SQL + MongoDB,Managed Azure,Global multi-region,Multi-model + global distribution,RU-based + Storage,~$100-200/month,Azure ecosystem + Multi-model workloads,Yes,Yes,No
+Google Cloud Spanner Graph,Google,SQL + Graph extensions,Managed GCP,Petabyte-scale sharding,Strong ACID + relational scale,vCPU + Storage,~$330+/month,Large relational graphs + BigQuery integration,No,Yes,No
+Neo4j AuraDB,Neo4j,Cypher,Managed (Multi-cloud),Petabyte-scale,Developer experience + Graph analytics,Monthly + Overages,~$65-150/month,Relationship queries + Recommendations,No,Yes,Embedded
+TigerGraph Cloud,TigerGraph,GSQL,Managed (Multi-cloud),MPP clustering (trillion edges),Compute-intensive analytics,Usage-based + Storage,Free Tier,Fraud detection + Analytics on billions edges,No,Yes,No
+NebulaGraph Cloud,NebulaGraph,nGQL,Managed (Multi-cloud),Storage/compute separation,Large-scale distributed graphs,Per-hour instance pricing,~$36-50/month,Distributed billion-edge graphs,No,Yes,Yes (integrated)
+ArangoDB Oasis,ArangoDB,AQL,Managed (Multi-cloud),Cluster-based horizontal,Multi-model unified language,Per-node + Storage,~$35-50/month,Mixed documents + graphs,Yes,Yes,No
+Dgraph Cloud,Dgraph,GraphQL + DQL,Managed (Multi-cloud),Auto-sharding,GraphQL-first development,Usage-based,Free Tier,GraphQL APIs + Real-time subscriptions,No,Yes,No
+Redis Enterprise Cloud,Redis,Cypher,Managed (Multi-cloud),RAM-limited in-memory,Microsecond latency,Per-GB RAM hour,~$7-15/month,Real-time scoring + Caching layer,Yes,Yes,No
+Ontotext GraphDB,Ontotext,SPARQL,Managed Cloud (GraphDB Cloud),Cluster-based,RDF/Semantic reasoning,Custom pricing,Not listed,Knowledge graphs + Semantic inference,No,Yes,No
+RDFox,Oxford Semantics,SPARQL,Managed Cloud,Distributed in-memory,High-performance RDF reasoning,Custom pricing,Not listed,Semantic reasoning at scale,No,Yes,No
+FaunaDB,Fauna,GraphQL + Relational,Managed Serverless,Global multi-region serverless,Serverless architecture,Per-request,~$100-200/month,Serverless multi-model workloads,Yes,Yes,No

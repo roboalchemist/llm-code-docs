@@ -1,0 +1,34 @@
+Name,Type,Framework,Size (minified),NPM Package,Key Features,Best For,Browser Support,Maintenance,URL
+Animate.css,Pure CSS,Any,7KB,animate.css,"50+ pre-made effects, CDN/npm, highly customizable",Quick animations any framework,All modern,Active,https://animate.style
+Animista,CSS Generator,Any,0KB,N/A (web tool),"Native CSS keyframes, generator interface, copy-paste",Small projects quick implementation,All modern,Active,https://animista.net
+AnimXYZ,Composable CSS,React/Vue,Small,@animxyz/core,"CSS variables, React/Vue support, composable",Large projects customization,All modern,Moderate,https://animxyz.com
+Whirl,Pure CSS,Any,Small,N/A,"Vanilla CSS spinners, no JavaScript, seamless UX",Loading states spinners,All modern,Moderate,https://whirl.netlify.app
+Moving Letters,Text Animation,Any,Small,N/A,"Text-specific effects, framework-portable",Animated typography text effects,All modern,Moderate,https://movingletters.com
+LDRS,Loader Library,React,Small,ldrs,"Pure CSS loaders, React support, customizable themes",Loading indicators spinners,All modern,Moderate,https://uiball.com/ldrs
+Magic Animations,Vanilla CSS,Any,Small,N/A,"Class-triggered, lightweight, easy to modify",Simple modifiable effects,All modern,Moderate,https://www.minimamente.com/project/magic
+CSS Wand,Effect Generator,Any,0KB,N/A (web tool),"Copy-paste CSS code, beginner-friendly, visual preview",Quick integration learning,All modern,Moderate,https://www.csswand.dev
+GSAP (GreenSock),JavaScript,Any,30KB,gsap,"Industry-standard, timelines, 100+ easing, cross-browser",Complex high-performance animations,All modern IE9+,Very Active,https://gsap.com
+Framer Motion,React Animation,React,40KB,framer-motion,"Declarative React API, gestures, springs, fluid",React projects gesture-driven,All modern,Active,https://www.framer.com/motion
+Three.js,3D WebGL,Any,200KB,three,"WebGL rendering, 3D objects, cameras, lighting, materials",3D graphics interactive experiences,All modern,Very Active,https://threejs.org
+Anime.js,JavaScript,Any,14KB,animejs,"Simple syntax, CSS/SVG/DOM/JS, timelines, staggering",Elegant subtle UI animations,All modern,Moderate,https://animejs.com
+Mo.js,Motion Graphics,Any,Small,mo.js,"Modular motion graphics, playful, SVG support",Creative micro-interactions motion graphics,All modern,Moderate,https://mojs.github.io
+Popmotion,Functional Animation,Any,5KB,popmotion,"Functional approach, springs, inertia, gesture, lightweight",Interactive physics animations,All modern,Moderate,https://popmotion.io
+Velocity.js,jQuery-like,Any,Small,velocity-animate,"jQuery syntax, color animation, fast, cross-browser",Versatile site animations,All modern + older,Moderate,http://velocityjs.org
+Motion One,Lightweight WAAPI,Any,4KB,motion,"Spring physics, gestures, scroll, WAAPI-based, works with React/Vue",Modern lightweight performant apps,All modern,Moderate,https://motion.dev
+Chakra UI Animation,React Components,React,Built-in,@chakra-ui/react,"Framer Motion-powered, spring ease, gesture, scroll variants",Rapid UI development animations,All modern,Active,https://chakra-ui.com
+GSAP ScrollTrigger,Scroll Plugin,Any,Premium,gsap/dist/ScrollTrigger,"Scroll-responsive, pinning, scrubbing, parallax, viewport triggers",Complex scroll interactions,All modern,Very Active,https://gsap.com/products/scrolltrigger
+AOS (Animate on Scroll),Scroll Animation,Any,7KB,aos,"Fade flip slide zoom, viewport entry, Intersection Observer",Simple scroll-triggered effects,Modern IE10+ polyfill,Moderate,https://michalsnik.github.io/aos
+TAOS (Tailwind AOS),Tailwind Scroll,Tailwind,600B,taos,"Pure CSS scroll animations, Tailwind JIT, responsive classes",Tailwind CSS scroll effects,Modern,Moderate,https://taosx.dev
+Native CSS Scroll-Driven,Browser Feature,Any,0KB,N/A (native),animation-timeline scroll() view() animation-range,Modern native scroll effects,Chrome 115+ Safari 26+,N/A,https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations
+SVG Morphing (GSAP),SVG Animation,Any,Premium,gsap,"SVG morphing, drawing, rotation, scroll-linked",Logo animations diagram animations,All modern,Very Active,https://gsap.com
+react-three-fiber,3D React,React,Included,@react-three/fiber,"Declarative React for Three.js, hooks, physics integration",React 3D experiences,All modern,Active,https://docs.pmnd.rs/react-three-fiber
+Headless UI,Unstyled Components,React/Vue,Variable,@headlessui/react,"Unstyled accessible primitives, animation-friendly",Flexible component systems,All modern,Active,https://headlessui.com
+Radix UI,Unstyled Components,React,Variable,@radix-ui/react-dialog,"Accessible primitives, works with any animation library",Flexible accessible components,All modern,Active,https://www.radix-ui.com
+Emotion,CSS-in-JS,React,Variable,@emotion/react,"@keyframes in JS, dynamic control, scoped animations",Component-scoped animation logic,All modern,Active,https://emotion.sh
+styled-components,CSS-in-JS,React,Variable,styled-components,"keyframes helper, dynamic animations, scoped",Style and animation co-location,All modern,Active,https://styled-components.com
+GSAP Observer,Input Plugin,Any,Premium,gsap/dist/Observer,"Scroll drag swipe detection, real-time animation",Interactive navigation gesture UI,All modern,Very Active,https://gsap.com/docs/v3/Plugins/Observer
+Tailwind CSS,CSS Framework,Any,Variable,tailwindcss,"Built-in animations, @keyframes extension, spin ping pulse bounce",Foundation for animation classes,All modern,Very Active,https://tailwindcss.com
+Material-UI,Component Library,React,Variable,@mui/material,"Pre-animated components, transition-group integration",MUI ecosystem component animations,All modern,Very Active,https://mui.com
+Lottie,Vector Animation,Web/Native,Variable,lottie-web,"After Effects JSON import, vector scalable, cross-platform",Polished vector animations exports,All modern + native,Active,https://airbnb.design/lottie
+ScrollMagic,Scroll Controller,Any,Variable,scrollmagic,"Scroll-triggered, parallax, GSAP compatible, controller",Storytelling scroll effects,All modern,Moderate,http://scrollmagic.io
+Popover/Tooltip Animation,UI Utilities,React,Variable,@floating-ui/react,"Positioning, animations, positioning logic, gesture-aware",Animated popovers tooltips dropdowns,All modern,Active,https://floating-ui.com

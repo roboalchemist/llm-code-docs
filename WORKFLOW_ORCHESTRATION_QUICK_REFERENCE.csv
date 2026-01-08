@@ -1,0 +1,48 @@
+Tool Name,Type,Category,Language/Tech,Deployment,Best Use Case,Maturity,Open Source,Price (Base),Scalability,Key Strength,Key Weakness
+Apache Airflow,Orchestration Engine,Data Pipelines,Python,On-prem/Cloud/K8s,Large-scale complex workflows,Production,Yes,$0-20K ops,Enterprise,Battle-tested at scale,Steep learning curve
+Prefect,Orchestration Engine,Data Pipelines,Python,Cloud/On-prem,Modern cloud-native workflows,Production,Yes/Cloud,$0-5K ops,High,Elegant Python APIs,Smaller ecosystem
+Dagster,Orchestration Engine,Data Pipelines,Python,Cloud/On-prem,Data asset management,Production,Yes,$0-15K ops,High,Type safety + observability,Less DAG-centric
+Kestra,Orchestration Engine,Data Pipelines,Java/YAML,Cloud/Docker/K8s,Lightweight YAML workflows,Production,Yes,$0-5K ops,High,Simple YAML syntax,Smaller community
+Temporal,Orchestration Engine,Microservices,Multi-language,Cloud/On-prem,Long-running fault-tolerant workflows,Production,Yes,$0-10K ops,High,Fault tolerance guarantees,More complex
+Luigi,Orchestration Engine,Data Pipelines,Python,On-prem,Simple batch job orchestration,Stable,Yes,$0,Medium,Lightweight + no infra,No UI + limited scheduling
+Mage AI,Orchestration Engine,Data Pipelines,Python + React,Cloud/On-prem,ETL/ELT with visual editor,Production,Yes,$0-10K ops,Medium,Visual + code balance,Newer tool
+ZenML,Orchestration Engine,ML Pipelines,Python,Cloud/On-prem,Reproducible ML pipelines,Production,Yes,$0-10K ops,Medium,ML-focused + experiment tracking,Specialized for ML
+Kedro,Framework,ML Pipelines,Python,On-prem,Modular team data science,Stable,Yes,$0,Medium,Enforces best practices,Not a scheduler
+Windmill,Orchestration Engine,Internal Tools,Multi-language,Cloud/On-prem,Internal tools + workflows,Active,Yes,$0-10K ops,High,Multi-language + UI builder,Broader than deep
+Camunda,BPM Engine,Business Process,Java,Cloud/On-prem,Complex business processes,Production,Yes/Enterprise,$50-300K/yr,High,BPMN standard + human tasks,Java-centric
+Flowable,BPM Engine,Business Process,Java,Cloud/On-prem,Flexible BPM + case management,Production,Yes,$0-20K ops,High,Modern Java + BPMN/CMMN/DMN,Less enterprise support
+Apache ODE,BPM Engine,Business Process,Java,On-prem,WS-BPEL orchestration,Stable,Yes,$0,Medium,BPEL standard compliance,Legacy technology
+Zapier,No-Code/Low-Code,Integration,No-code,Cloud,Simple 2-step SaaS automation,Production,No,$20-500/mo,Medium,Largest app ecosystem,Expensive at scale
+Make (Integromat),No-Code/Low-Code,Integration,No-code + Logic,Cloud,Complex visual flows,Production,No,$10-500+/mo,Medium,Better value than Zapier,Smaller ecosystem
+n8n,No-Code/Low-Code,Integration,Node.js/No-code,Cloud/Self-hosted,Self-hosted privacy-first automation,Production,Yes,$0-100/mo,High,Open-source + self-hosted,Smaller app ecosystem
+Workato,No-Code/Low-Code,Integration,Enterprise iPaaS,Cloud SaaS,Enterprise integrations + RPA + AI,Production,No,$100-1M+/yr,High,Most integrations + compliance,Expensive
+Microsoft Power Automate,No-Code/Low-Code,Integration,No-code + RPA,Cloud SaaS,Microsoft 365 + RPA automation,Production,No,Included in M365,Medium,M365 native + RPA,Limited outside Microsoft
+Tines,No-Code/Low-Code,Integration,No-code,Cloud SaaS,Security incident automation,Production,No,$500-5K+/mo,Medium,Security-first design,Security/ops focused
+Pipedream,No-Code/Low-Code,Integration,Node.js/No-code,Cloud (serverless),Event-driven developer automation,Production,Yes,$0-3K/mo,High,Developer-friendly + free tier,Smaller adoption
+Tray.io,No-Code/Low-Code,Integration,Enterprise iPaaS,Cloud SaaS,Enterprise governance + complex automation,Production,No,$500-50K+/yr,High,Enterprise RBAC + governance,Expensive + complex
+cron,Job Scheduler,System,Shell,Unix/Linux built-in,Simple recurring system tasks,Standard,Yes,$0,Low,Universal + zero overhead,Limited to time-based
+Quartz,Job Scheduler,Java Embedded,Java,Embedded,Java application scheduling,Production,Yes,$0,High,Proven + clustering support,Java-only + embedded
+Jenkins,CI/CD + Scheduler,Automation,Java,On-prem/Cloud/K8s,CI/CD pipelines + scheduled builds,Production,Yes,$0-100K ops,Enterprise,Massive ecosystem + plugins,Overkill for pure scheduling
+Rundeck,Job Scheduler,Automation,Java,On-prem/Cloud,Operational automation + cron replacement,Production,Yes,$0-20K ops,High,Good RBAC + log aggregation,Lighter than Jenkins
+HashiCorp Nomad,Workload Orchestrator,Batch/Container,Go,Cloud/On-prem/Datacentre,Multi-region batch + container scheduling,Production,Yes,$0-100K ops,Enterprise,Flexible + multi-region,Operational complexity
+Celery,Task Queue,Python Distributed,Python,On-prem/Cloud,Distributed Python task execution,Production,Yes,$0-20K ops,High,Python-native + flexible,Requires message broker
+APScheduler,Task Scheduler,Python Embedded,Python,Embedded,Python application scheduling,Stable,Yes,$0,Low,Simple + in-process,Single-process only
+Google Cloud Tasks,Cloud Task Queue,Serverless,Agnostic,Google Cloud,Serverless task execution on GCP,Production,No,Pay-per-use,$1-1K+/mo,Auto-scaling,GCP-native + managed,Vendor lock-in
+AWS SQS + Lambda,Cloud Task Queue,Serverless,Agnostic,AWS,Serverless microservice communication,Production,No,Pay-per-use,$1-1K+/mo,Auto-scaling,AWS-native + reliable,Cold starts + complexity
+OpenMetadata,Data Catalog,Metadata,Java/React,Cloud/On-prem,Unified metadata management,Production,Yes,$0-30K ops,High,80+ connectors + APIs,Operational overhead
+DataHub,Data Catalog,Metadata,Java/React,Cloud/On-prem,Metadata graph + real-time lineage,Production,Yes,$0-30K ops,High,Graph-based + LinkedIn-backed,Operational complexity
+Apache Atlas,Data Catalog,Metadata,Java,Cloud/On-prem,Hadoop governance + metadata,Stable,Yes,$0-20K ops,High,Hadoop-integrated + scalable,Hadoop-centric design
+AWS Glue Data Catalog,Data Catalog,Cloud Native,Agnostic,AWS,AWS data lake + serverless ETL,Production,No,Pay-per-use,$50-500/mo,Auto-scaling,Serverless + AWS-integrated,AWS vendor lock-in
+Alation,Data Catalog,Commercial Catalog,SaaS,Cloud SaaS,AI-powered data discovery + collaboration,Production,No,$200-500K/yr,Enterprise,AI search + human-centric,Expensive + SaaS-only
+Collibra,Data Catalog,Commercial Catalog,SaaS,Cloud/On-prem,Enterprise data governance + compliance,Production,No,$300-1M+/yr,Enterprise,Compliance-focused + mature,Very expensive + complex
+Atlan,Data Catalog,Modern Catalog,SaaS,Cloud SaaS,Modern data stack + dbt-first,Production,No,$100-300K/yr,Enterprise,Modern + dbt-native,Newer + smaller ecosystem
+Informatica Enterprise Data Catalog,Data Catalog,Commercial Catalog,SaaS,Cloud SaaS,Data mapping + governance + Informatica,Production,No,$150-500K/yr,Enterprise,Informatica integration,Informatica-centric
+Amundsen,Data Catalog,Lightweight Catalog,Python/React,On-prem,Simple lightweight discovery,Stable,Yes,$0-10K ops,Medium,Simple + lightweight,Basic features only
+Stemma,Data Catalog,Managed Catalog,SaaS,Cloud SaaS,Cloud warehouse metadata + automation,Production,No,$50-300K/yr,High,Managed + auto-enrichment,Teradata-backed lock-in
+Talend Data Catalog,Data Catalog,Commercial Catalog,SaaS,Cloud SaaS,Talend ETL + governance,Production,No,$100-400K/yr,Enterprise,Talend integration,Talend-centric
+IBM Knowledge Catalog,Data Catalog,Commercial Catalog,Cloud SaaS,IBM Cloud Pak,AI governance + enterprise,Production,No,$200-1M+/yr,Enterprise,AI governance + compliance,Expensive + IBM platform
+OpenLineage,Lineage Standard,Metadata Standard,YAML/JSON,Multi-platform,Open lineage standard specification,Standard,Yes,$0,N/A,Industry standard + extensible,Specification only
+Marquez,Lineage Service,Metadata Service,Java/React,Cloud/On-prem,OpenLineage-native lineage tracking,Production,Yes,$0-15K ops,High,OpenLineage-native,Specialized for lineage
+Manta,Lineage Platform,Commercial,SaaS,Cloud SaaS,Column-level lineage + impact analysis,Production,No,$200-500K/yr,Enterprise,Detailed impact analysis,Expensive + specialized
+Dataedo,Lineage Tool,Documentation,SaaS,Cloud SaaS,Data documentation + mapping,Production,No,$1-10K/yr,Small,Affordable + documentation,Not a full catalog
+erwin Data Intelligence,Lineage Platform,Enterprise,SaaS,Cloud SaaS,Data modeling + lineage + governance,Production,No,$100-500K/yr,Enterprise,Data modeling focus,Expensive + specialized
