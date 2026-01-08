@@ -1,0 +1,133 @@
+# Source: https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio/claude-code-guide.md
+
+# Claude Code guide
+
+You can access Snyk Studio, including Snyk's MCP server, in Claude Code to secure code generated with agentic workflows through an LLM. This can be achieved in several ways. When you use it for the first time, the MCP server will ask for trust and trigger authentication if necessary.
+
+## Prerequisites
+
+* [Install Claude Code](#install-claude-code)
+* [Install the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli)
+* [Install the Snyk MCP](#install-the-snyk-mcp-server-in-claude-code)
+
+### Install Claude Code
+
+Install Claude Code. For more details, see the official [Claude Code - Quickstart](https://docs.anthropic.com/en/docs/claude-code/quickstart).
+
+### Install the Snyk MCP Server in Claude Code
+
+Install the Snyk MCP Server using the method that best suits your operating system and local development environment. To add a MCP Server in Claude Code, see the official document for [installing MCP servers](https://docs.anthropic.com/en/docs/claude-code/mcp#installing-mcp-servers).
+
+#### Install with Node.js and `npx`
+
+Create or edit the MCP configuration file `~/.claude.json`.
+
+If you have the Node.js `npx` executable installed in your environment, add the following JSON snippet to the file:
+
+<pre><code><strong>{
+</strong>  "mcpServers": {
+    "Snyk": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "snyk@latest", "mcp", "-t", "stdio"],
+      "env": {}
+    }
+  }
+}
+</code></pre>
+
+#### Install with pre-installed Snyk CLI
+
+Create or edit the MCP configuration file `~/.claude.json` .
+
+If you have the Snyk CLI installed and accessible on your system path, include the following JSON snippet in the file. You might need to specify the full path to the Snyk executable CLI:
+
+```
+{
+  "mcpServers": {
+    "Snyk": {
+      "type": "stdio",
+      "command": "/absolute/path/to/snyk",
+      "args": ["mcp", "-t", "stdio"],
+      "env": {}
+    }
+  }
+}
+```
+
+If the `snyk` command is not available, add it by following the instructions on the [Installing or updating the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli) page.
+
+#### Install with Claude Code CLI commands
+
+First, run the Snyk MCP Server in `sse` transport mode using the Snyk CLI:
+
+```
+snyk mcp -t sse 
+```
+
+Then run the Claude Code CLI for adding a new Model Context Protocol server:
+
+```
+claude mcp add --transport sse snyk http://127.0.0.1:7695/sse
+```
+
+Watch this step-by-step [YouTube video](https://www.youtube.com/watch?v=qAcTPMXbfyU) that shows how to configure the Snyk MCP Server with Claude Code CLI:
+
+{% embed url="<https://www.youtube.com/watch?v=qAcTPMXbfyU>" %}
+
+If the `snyk` command is not available, add it by following the instructions on the [Installing or updating the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli) page.
+
+The following examples shows a Snyk MCP Server that was successfully configured and started.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-dec31b52193d264b29465da9fd25eb88d5b3b1c3%2Fimage%20(372).png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-0ad35a687786166c3809df47bd8ba9fb23e45a29%2Fimage.png?alt=media" alt="" width="563"><figcaption></figcaption></figure>
+
+For additional MCP configuration options on Claude Code and troubleshooting, consult the official [Claude Code MCP documentation](https://docs.anthropic.com/en/docs/claude-code/mcp).
+
+## Setting up the Snyk MCP Server
+
+As a one-time setup, you may need to authenticate and trust the current Project directory.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-259ba594df5ec124e9787644e650a39d8647deca%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+## Examples
+
+### Scanning for security vulnerabilities
+
+In the chat, you can tag specific files or functions and ask Claude Code to scan your code for safely deploying to production:
+
+{% code title="prompt" overflow="wrap" %}
+
+```
+Scan this directory for code security & dependency vulnerabilities and security issues
+```
+
+{% endcode %}
+
+Claude Code indicates that this request is related to security vulnerability scanning and calls the Snyk MCP Server for various scans.
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-52e769ff02fdbcbf242db5c4f15701e1424e1452%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+Claude Code is then able to gather all the security scanning results, both code (SAST) and dependencies (SCA), and based on recommendations and contextual information provided by the Snyk MCP Server, it is now able to provide code changes that address some or all of the security vulnerabilities that were found:
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-1e8de2bf6ba093ce96796db25701cacd6cb0887c%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+### "Secure at inception" rules
+
+To practice [Secure at Inception](https://docs.snyk.io/discover-snyk/getting-started/glossary#secure-at-inception), Snyk recommends adopting rules that align the LLM for secure code generation and workflows.
+
+The following is a suggested instruction for creating project rules for use with [Claude Code md files](https://www.anthropic.com/engineering/claude-code-best-practices). Append the following contents to the rules file at `CLAUDE.md`:
+
+<figure><img src="https://2533899886-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdwVZ6HOZriajCf5nXH%2Fuploads%2Fgit-blob-44e00056bd943ad3ae6297903cdc0c546f158570%2Fimage%20(381).png?alt=media" alt=""><figcaption></figcaption></figure>
+
+{% code title="CLAUDE.md" overflow="wrap" %}
+
+```
+- Always run **snyk_code_scan** tool for new first party code that is generated in a Snyk-supported language.
+- If any security issues are found based on newly introduced or modified code or dependencies, attempt to fix the issues using the results context from **Snyk**.
+- Rescan the code after fixing the issues to ensure that the issues were fixed and that there are no newly introduced issues.
+- Repeat this process until no new issues are found.
+```
+
+{% endcode %}

@@ -829,6 +829,9 @@ sites:
 - name: solidfi
   base_url: https://docs.solidfi.com/
   description: Solidfi documentation
+- name: snyk
+  base_url: https://docs.snyk.io/
+  description: Snyk security-focused code scanner detecting vulnerabilities in code and dependencies
 - name: sourcegraph
   base_url: https://sourcegraph.com/docs/
   description: Sourcegraph code intelligence platform
