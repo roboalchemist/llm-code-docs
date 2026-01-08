@@ -832,6 +832,9 @@ sites:
 - name: sonarcloud
   base_url: https://docs.sonarsource.com/
   description: SonarCloud cloud-based code quality and security platform with TypeScript and 26+ language support
+- name: sonarqube
+  base_url: https://docs.sonarsource.com/
+  description: SonarQube enterprise static analysis platform for code quality and security analysis across 26+ programming languages
 - name: spacetimedb
   base_url: https://spacetimedb.com/
   description: SpacetimeDB serverless database
