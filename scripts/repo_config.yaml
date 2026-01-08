@@ -110,6 +110,13 @@ repositories:
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
 
+  - name: "JSHint"
+    description: "JSHint - Lightweight JavaScript linter with configurable rules and good legacy support"
+    repo_url: "https://github.com/jshint/jshint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jshint"
+    branch: "main"
+
   - name: "Loghouse"
     description: "Loghouse - Log management system built on ClickHouse for storing and analyzing logs"
     repo_url: "https://github.com/flant/loghouse.git"
