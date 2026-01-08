@@ -3573,6 +3573,13 @@ web_scraped:
   file_count: 1
   size: 11.0KB
   last_updated: 2026-01-08 09:37
+- name: eslint-config-google
+  description: Google style guide for TypeScript linting
+  path: docs/web-scraped/eslint-config-google/
+  status: fetched
+  file_count: 2
+  size: 13.5KB
+  last_updated: 2026-01-08 09:24
 - name: eslint-config-standard-with-typescript
   description: eslint-config-standard-with-typescript documentation
   path: docs/web-scraped/eslint-config-standard-with-typescript/
