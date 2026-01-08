@@ -411,6 +411,13 @@ repositories:
     target_folder: "docs/github-scraped/primereact"
     branch: "master"
 
+  - name: "Pretty TypeScript Errors"
+    description: "Pretty TypeScript Errors - VS Code extension that reformats TypeScript compiler errors with code frames for faster debugging"
+    repo_url: "https://github.com/yoavbls/pretty-ts-errors.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/pretty-ts-errors"
+    branch: "main"
+
   - name: "PyTorch"
     description: "PyTorch - Deep learning framework by Meta with dynamic computation graphs, automatic differentiation, and GPU acceleration"
     repo_url: "https://github.com/pytorch/pytorch.git"
@@ -592,6 +599,13 @@ repositories:
     source_folder: "packages/documentation/copy/en"
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
+
+  - name: "typescript-eslint"
+    description: "TypeScript ESLint - ESLint parser and plugin for TypeScript enabling linting of TypeScript code with TypeScript-specific rules"
+    repo_url: "https://github.com/typescript-eslint/typescript-eslint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/typescript-eslint"
+    branch: "main"
 
   - name: "ts-morph"
     description: "ts-morph - TypeScript Compiler API wrapper for programmatic code manipulation and analysis"
