@@ -1005,3 +1005,10 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/nilaway"
     branch: "main"
+
+  - name: "quick-lint-js"
+    description: "quick-lint-js - Fast JavaScript linter with minimal overhead and LSP support for IDE integration"
+    repo_url: "https://github.com/quick-lint/quick-lint-js.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/quick-lint-js"
+    branch: "master"
