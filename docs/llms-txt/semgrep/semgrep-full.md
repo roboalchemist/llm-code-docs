@@ -1,6 +1,6 @@
 # Semgrep Documentation
 
-Source: https://semgrep.com/llms-full.txt
+Source: https://semgrep.dev/llms-full.txt
 
 ---
 
@@ -14,18 +14,18 @@ Source: https://semgrep.com/llms-full.txt
     <meta name="theme-color" content="#000000" />
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
-    <script nonce="ace12d776eb3fbb358d51fa38852076e" type="module" crossorigin src="/static/index-CR8ALyG_.js"></script>
-    <link rel="modulepreload" crossorigin href="/static/lodash-CcQcwF68.js">
-    <link rel="modulepreload" crossorigin href="/static/monacoReact-D1HyzsDo.js">
-    <link rel="modulepreload" crossorigin href="/static/monacoEditor-Dv733CP-.js">
-    <link rel="modulepreload" crossorigin href="/static/monacoLang-CzT35xwc.js">
-    <link rel="modulepreload" crossorigin href="/static/monacoYaml-BKUitflH.js">
+    <script nonce="98eee5b6cab854b32354926483307b00" type="module" crossorigin src="/static/index-C0TfhsVd.js"></script>
+    <link rel="modulepreload" crossorigin href="/static/lodash-teinzGB4.js">
+    <link rel="modulepreload" crossorigin href="/static/monacoReact-DnoKuMvW.js">
+    <link rel="modulepreload" crossorigin href="/static/monacoEditor-ChTr7u2Y.js">
+    <link rel="modulepreload" crossorigin href="/static/monacoLang-vuyiWacz.js">
+    <link rel="modulepreload" crossorigin href="/static/monacoYaml-C-TVmwkF.js">
     <link rel="stylesheet" crossorigin href="/static/monacoEditor-CNVI1nRY.css">
     <link rel="stylesheet" crossorigin href="/static/monacoLang-CZuaPSry.css">
-    <link rel="stylesheet" crossorigin href="/static/index-C0XVb5sm.css">
+    <link rel="stylesheet" crossorigin href="/static/index-8G9-cu7P.css">
   </head>
   <body>
-    <script nonce="ace12d776eb3fbb358d51fa38852076e">
+    <script nonce="98eee5b6cab854b32354926483307b00">
       // required for react-joyride
       if (global === undefined) {
         var global = window;
@@ -33,7 +33,7 @@ Source: https://semgrep.com/llms-full.txt
     </script>
 
     <!-- Google Tag Manager -->
-    <script nonce="ace12d776eb3fbb358d51fa38852076e">
+    <script nonce="98eee5b6cab854b32354926483307b00">
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -52,10 +52,10 @@ Source: https://semgrep.com/llms-full.txt
 
     <!-- Sign in with Google client -->
     <!-- nosemgrep -->
-    <script nonce="ace12d776eb3fbb358d51fa38852076e" src="https://accounts.google.com/gsi/client" async defer></script>
+    <script nonce="98eee5b6cab854b32354926483307b00" src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- End Sign in with Google client -->
     <!-- Fullstory -->
-    <script nonce="ace12d776eb3fbb358d51fa38852076e">
+    <script nonce="98eee5b6cab854b32354926483307b00">
       var hostname =
         window.location && window.location.hostname !== "localhost"
           ? window.location.hostname
@@ -231,17 +231,11 @@ Source: https://semgrep.com/llms-full.txt
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!-- nosemgrep -->
-    <script nonce="ace12d776eb3fbb358d51fa38852076e"
+    <script nonce="98eee5b6cab854b32354926483307b00"
       src="https://snjdw73vnmhs.statuspage.io/embed/script.js"
       async
       defer
     ></script>
     <!-- nosemgrep -->
-    <script nonce="ace12d776eb3fbb358d51fa38852076e"
-      type="module"
-      src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"
-      async
-      defer
-    ></script>
   </body>
 </html>

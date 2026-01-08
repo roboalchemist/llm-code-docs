@@ -803,7 +803,7 @@ sites:
   base_url: https://screenshotone.com/docs/
   description: ScreenshotOne API screenshot service
 - name: semgrep
-  base_url: https://semgrep.com/
+  base_url: https://semgrep.dev/
   description: Semgrep static analysis tool
 - name: servicestack
   base_url: https://docs.servicestack.net/
