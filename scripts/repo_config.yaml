@@ -593,6 +593,13 @@ repositories:
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
 
+  - name: "typescript-eslint"
+    description: "TypeScript ESLint - ESLint parser and plugin for TypeScript enabling linting of TypeScript code with TypeScript-specific rules"
+    repo_url: "https://github.com/typescript-eslint/typescript-eslint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/typescript-eslint"
+    branch: "main"
+
   - name: "ts-morph"
     description: "ts-morph - TypeScript Compiler API wrapper for programmatic code manipulation and analysis"
     repo_url: "https://github.com/dsherret/ts-morph.git"
