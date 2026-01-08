@@ -495,6 +495,13 @@ repositories:
     target_folder: "docs/github-scraped/eslint-plugin-security"
     branch: "main"
 
+  - name: "eslint-plugin-react"
+    description: "ESLint plugin for React-specific linting rules and best practices with rule documentation and configuration guidance"
+    repo_url: "https://github.com/jsx-eslint/eslint-plugin-react.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-react"
+    branch: "master"
+
   - name: "eslint-plugin-vue"
     description: "Official ESLint plugin for Vue.js single-file components with rules, configuration, and usage guidance"
     repo_url: "https://github.com/vuejs/eslint-plugin-vue.git"
