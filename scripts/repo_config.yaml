@@ -474,6 +474,13 @@ repositories:
     target_folder: "docs/github-scraped/eslint"
     branch: "main"
 
+  - name: "eslint-plugin-import"
+    description: "ESLint plugin for validating imports and enforcing module conventions with support for static analysis and circular dependency detection"
+    repo_url: "https://github.com/import-js/eslint-plugin-import.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-import"
+    branch: "main"
+
   - name: "eslint-plugin-security"
     description: "ESLint plugin for detecting security vulnerabilities in JavaScript with rules for identifying common security hotspots"
     repo_url: "https://github.com/eslint-community/eslint-plugin-security.git"
