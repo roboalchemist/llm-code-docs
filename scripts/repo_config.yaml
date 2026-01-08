@@ -467,6 +467,13 @@ repositories:
     target_folder: "docs/github-scraped/eslint"
     branch: "main"
 
+  - name: "eslint-plugin-security"
+    description: "ESLint plugin for detecting security vulnerabilities in JavaScript with rules for identifying common security hotspots"
+    repo_url: "https://github.com/eslint-community/eslint-plugin-security.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-security"
+    branch: "main"
+
   - name: "eslint-plugin-vue"
     description: "Official ESLint plugin for Vue.js single-file components with rules, configuration, and usage guidance"
     repo_url: "https://github.com/vuejs/eslint-plugin-vue.git"
