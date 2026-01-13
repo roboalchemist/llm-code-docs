@@ -1,0 +1,116 @@
+Name,Category,Type,Deployment Model,Primary Purpose,Key Features,Language/Ecosystem,Notes
+Spring Cloud Config,Application Configuration Servers,Centralized Server,Self-hosted/Cloud,Spring Boot application configuration,Git backend support,encryption,dynamic refresh,Java/Spring
+Consul,Centralized Configuration,Distributed Coordination,Self-hosted/Cloud,Service discovery and distributed configuration,Health checking,DNS,gossip clustering,K/V store,Go,HashiCorp
+etcd,Centralized Configuration,Distributed Coordination,Self-hosted,Configuration and coordination,Raft consensus,linearizable reads,leases,watches,Go,CNCF
+Nacos,Centralized Configuration,Distributed Coordination,Self-hosted/Cloud,Dynamic service discovery and configuration,Real-time push,dynamic config,Java/Spring ecosystem,Alibaba
+Apollo,Centralized Configuration,Distributed Coordination,Self-hosted/Cloud,Cloud-based dynamic configuration,Versioning,grayscale publishing,multi-environment,Java
+ZooKeeper,Centralized Configuration,Distributed Coordination,Self-hosted,Distributed coordination and configuration,Znodes,leader election,synchronization,Java,Apache
+AWS AppConfig,Cloud Configuration Services,Managed Service,SaaS,Safe application configuration deployment,Validation,monitoring,gradual rollouts,AWS
+AWS Systems Manager Parameter Store,Cloud Configuration Services,Managed Service,SaaS,Secure parameter storage and management,Hierarchical storage,KMS encryption,versioning,AWS
+Azure App Configuration,Cloud Configuration Services,Managed Service,SaaS,Azure application settings and feature flags,Managed identity,feature flags,configuration snapshots,Microsoft
+Azure Key Vault,Secrets Management,Managed Service,SaaS,Secrets and certificate management,Encryption,access policies,rotation,Microsoft
+Google Cloud Secret Manager,Secrets Management,Managed Service,SaaS,Secure secrets storage and access,IAM integration,audit logging,automatic rotation,Google Cloud
+HashiCorp Vault,Secrets Management,Self-hosted/Cloud,Self-hosted/SaaS,Enterprise secrets and dynamic configuration,Encryption,dynamic credentials,multi-auth,audit logging,Go
+Redis,Distributed Key-Value Stores,In-Memory Cache,Self-hosted/Cloud,High-throughput configuration caching,Clustering,in-memory,TTL support,C
+Memcached,Distributed Key-Value Stores,In-Memory Cache,Self-hosted,Distributed memory caching,Simple key-value,fast lookups,distributed protocol,C
+DynamoDB,Distributed Key-Value Stores,NoSQL Database,SaaS,Distributed configuration storage at scale,On-demand scaling,eventual consistency,global tables,AWS
+Cassandra,Distributed Key-Value Stores,NoSQL Database,Self-hosted/Cloud,Highly scalable distributed configuration,High availability,partition tolerance,multi-datacenter,Java
+MongoDB,Distributed Key-Value Stores,NoSQL Database,Self-hosted/Cloud,Document-based configuration storage,Hierarchical documents,BSON format,replication,JavaScript
+Elasticsearch,Distributed Key-Value Stores,Search Engine,Self-hosted/Cloud,Searchable configuration and log storage,Full-text search,real-time analytics,distributed,Java
+LaunchDarkly,Feature Flag Services,Cloud SaaS,SaaS,Enterprise feature flag platform,Real-time updates,local evaluation,Flag Delivery Network,Multi-language SDKs,Not specified
+Statsig,Feature Flag Services,Cloud SaaS,SaaS,Feature control with experimentation,Advanced targeting,event tracking,statistical analysis,Multi-language SDKs,Not specified
+ConfigCat,Feature Flag Services,Cloud SaaS,SaaS,Budget-friendly feature flag service,Global CDN,custom attributes,generous free tier,Multi-language SDKs,Not specified
+Flagsmith,Feature Flag Services,Cloud SaaS/Open Source,Self-hosted/SaaS,Feature flags and remote configuration,A/B testing,user segmentation,99.9% SLA,Docker/Kubernetes,Python
+Optimizely,Feature Flag Services,Cloud SaaS,SaaS,High-performance feature flags with testing,A/B testing,experimentation,advanced SDKs,Multi-language,Not specified
+Split.io,Feature Flag Services,Cloud SaaS,SaaS,Feature toggles with impact measurement,Targeting rules,dynamic configuration,analytics,Multi-language SDKs,Not specified
+Eppo,Feature Flag Services,Cloud SaaS,SaaS,Enterprise feature flag platform,Real-time updates,granular targeting,RBAC security,Multi-language SDKs,Not specified
+Kameleoon,Feature Flag Services,Cloud SaaS,SaaS,Dynamic flags with event tracking,Scheduled rollouts,automated analysis,SDKs,Multi-language,Not specified
+DevCycle,Feature Flag Services,Cloud SaaS,SaaS,Feature management with analytics,User segmentation,progressive rollouts,integrated analytics,Multi-language SDKs,Not specified
+Unleash,Feature Flag Services,Open Source,Self-hosted/SaaS,Open-source feature flag tool,Dynamic targeting,rollout strategies,custom conditions,Docker,JavaScript/Java/Python
+Flipt,Feature Flag Services,Open Source,Self-hosted,Open-source feature flag service,Simple evaluation,self-hosted optimized,API-driven,Go
+FeatBit,Feature Flag Services,Open Source,Self-hosted,Open-source feature toggle management,Robust features,developer-friendly,rich SDKs,Not specified
+Bucket,Feature Flag Services,Open Source,Self-hosted,Open-source feature toggle platform,Controlled releases,progressive deployment,lightweight,Not specified
+PostHog,Feature Flag Services,Cloud SaaS/Open Source,Self-hosted/SaaS,Product analytics with feature flags,Experimentation,user insights,session recording,JavaScript/Python
+Terraform,Infrastructure as Code,IaC Platform,Self-hosted,Multi-cloud infrastructure provisioning,HCL language,provider support,state management,HCL/Go
+Ansible,Configuration Management,Automation Platform,Self-hosted,Agentless automation and configuration,YAML playbooks,idempotent,no agents,Python
+CloudFormation,Infrastructure as Code,IaC Platform,SaaS,AWS-native Infrastructure as Code,JSON/YAML templates,stack management,drift detection,AWS
+Pulumi,Infrastructure as Code,IaC Platform,Self-hosted/Cloud,Infrastructure as Code using programming languages,Python/TypeScript/Go,multi-cloud,state management,Multi-language
+Bicep,Infrastructure as Code,IaC Platform,Self-hosted,Azure Infrastructure as Code language,Simplified syntax,Azure-native,minimal verbosity,Azure
+AWS Cloud Development Kit,Infrastructure as Code,IaC Platform,Self-hosted,Cloud infrastructure using programming languages,TypeScript/Python,multi-language,high-level constructs,TypeScript/Python
+Puppet,Configuration Management,Automation Platform,Self-hosted,Declarative infrastructure automation,Puppet DSL,agent-based,drift detection,Ruby
+Chef,Configuration Management,Automation Platform,Self-hosted,Ruby-based Infrastructure as Code,Ruby DSL,recipe-based,community cookbooks,Ruby
+SaltStack,Configuration Management,Automation Platform,Self-hosted,Event-driven infrastructure automation,Push/pull models,event-based,scalable,Python
+Rudder,Configuration Management,Open Source,Self-hosted,Open-source configuration management,Policy enforcement,compliance auditing,Scala-based,Not specified
+cfEngine,Configuration Management,Automation Platform,Self-hosted,Lightweight distributed configuration management,Agent-based,lightweight,policy-based,C
+Helm,Kubernetes Configuration,Package Manager,Self-hosted/Cloud,Kubernetes package manager and templating,Chart repositories,versioning,templating,Go
+Kustomize,Kubernetes Configuration,Configuration Management,Self-hosted,Kubernetes configuration customization,YAML-based,no templating,declarative patching,Go
+Skaffold,Kubernetes Configuration,Development Tool,Self-hosted,Kubernetes development with instant feedback,Build/push/deploy,file watching,local development,Go
+ArgoCD,Kubernetes Configuration,GitOps Deployment,Self-hosted/Cloud,GitOps continuous deployment for Kubernetes,Declarative sync,Git-based,automated sync,Go
+Flux CD,Kubernetes Configuration,GitOps Deployment,Self-hosted,GitOps deployment from Git repositories,Git-native,continuous sync,multi-tenancy,Go
+Docker Compose,Container Orchestration,Orchestration Tool,Self-hosted,Multi-container Docker application definition,YAML configuration,local development,service networking,Go
+Portainer,Container Management,Management UI,Self-hosted/Cloud,Web-based container platform management,Docker/K8s support,templates,RBAC,Go/JavaScript
+Rancher,Kubernetes Management,Kubernetes Platform,Self-hosted/Cloud,Multi-cluster Kubernetes management,Multi-cluster,policies,monitoring,Go
+OpenShift,Container Platform,Kubernetes Distribution,Self-hosted/Cloud,Red Hat Kubernetes distribution,Container registry,networking,security,Go
+Nomad,Workload Orchestration,Orchestration Platform,Self-hosted,Container and workload orchestration,Docker/Kubernetes/legacy,flexible scheduling,multi-cloud,Go
+Istio,Service Mesh,Mesh Platform,Self-hosted/Kubernetes,Service mesh for traffic and security,Traffic management,mTLS,observability,Go
+Linkerd,Service Mesh,Mesh Platform,Self-hosted/Kubernetes,Lightweight service mesh,Simplicity,mTLS,automatic observability,Rust
+Consul Service Mesh,Service Mesh,Mesh Platform,Self-hosted/Cloud,HashiCorp Consul service mesh,Traffic routing,multi-cloud,security,Go
+Open Service Mesh,Service Mesh,Mesh Platform,Self-hosted/Kubernetes,CNCF sandbox service mesh,Pluggable backends,SMI standards,lightweight,Go
+Kong,API Gateway,Gateway Platform,Self-hosted/Cloud,Open-source API gateway with plugins,Plugin architecture,rate limiting,authentication,Lua/Go
+Kong Konnect,API Gateway,Managed Service,SaaS,Managed Kong control plane,Multi-cloud,hybrid deployment,analytics,Kong-based
+AWS API Gateway,API Gateway,Managed Service,SaaS,AWS REST/HTTP/WebSocket API service,Native AWS,throttling,SDK generation,AWS
+Azure API Management,API Gateway,Managed Service,SaaS,Azure API management platform,Developer portal,analytics,gateway,Microsoft
+Google Apigee,API Gateway,Managed Service,SaaS,Full lifecycle API management,Hybrid deployment,analytics,developer portal,Google Cloud
+AWS AppSync,API Gateway,Managed Service,SaaS,Managed GraphQL API service,Real-time sync,offline support,GraphQL,AWS
+Tyk,API Gateway,Open Source/Commercial,Self-hosted/Cloud,API gateway with rate limiting,Analytics,plugin system,flexible,Go
+Ambassador Edge Stack,API Gateway,Kubernetes Gateway,Self-hosted/Kubernetes,Kubernetes API gateway on Envoy,Ingress controller,Envoy-based,edge routing,Go
+Traefik,API Gateway,Reverse Proxy,Self-hosted,Cloud-native reverse proxy and ingress,Dynamic config,multiple backends,edge cases,Go
+HAProxy,API Gateway,Reverse Proxy,Self-hosted,High-performance load balancer,L4/L7 routing,high availability,industry standard,C
+CyberArk,Secrets Management,Enterprise Platform,Self-hosted/Cloud,Enterprise privileged access management,PAM features,credential management,audit logging,Not specified
+1Password Business,Secrets Management,SaaS,SaaS,Team password and secrets manager,Audit logging,integrations,sharing,Web
+Hashicorp Boundary,Access Management,Identity Platform,Self-hosted,Identity-aware access proxy,Credential management,zero-trust,audit logging,Go
+Sealed Secrets,Secrets Management,Kubernetes Extension,Self-hosted/Kubernetes,Kubernetes secrets encryption,Public-key encryption,GitOps-friendly,Git-safe,Go
+External Secrets Operator,Secrets Management,Kubernetes Operator,Self-hosted/Kubernetes,Sync external secrets to Kubernetes,Multi-backend,real-time sync,declarative,Go
+Kyverno,Policy Management,Kubernetes Policy,Self-hosted/Kubernetes,Kubernetes policy engine,Secrets validation,configuration enforcement,declarative,Go
+Doppler,Secrets Management,SaaS,SaaS,Universal secrets and environment management,Multi-deployment,cross-platform,CLI integration,Web/CLI
+Infisical,Secrets Management,Self-hosted/Cloud,Self-hosted/SaaS,Open-source secrets management,Self-hosting,multi-environment,native support,JavaScript/Go
+Snyk,Security Scanning,SaaS,SaaS,Security platform with secrets scanning,Container scanning,vulnerability detection,code analysis,JavaScript/Go
+Teleport,Access Management,Identity Platform,Self-hosted/Cloud,Unified access control platform,Credential management,unified access,audit logging,Go
+CloudflarePages,Jamstack Platform,PaaS,SaaS,Jamstack deployment platform,Configuration-driven,automatic optimization,edge deployment,Web
+Vercel,Serverless Platform,PaaS,SaaS,Serverless frontend platform,Edge functions,deployment config,Git integration,JavaScript/Node
+Netlify,Jamstack Platform,PaaS,SaaS,JAMstack deployment platform,Build configuration,serverless functions,continuous deployment,Web
+Railway,Platform as a Service,PaaS,SaaS,Developer-friendly PaaS,Declarative infrastructure,Docker support,Git integration,Multi-language
+Render,Cloud Platform,PaaS,SaaS,Modern cloud platform,Web services,databases,static sites,Multi-language
+Liquibase,Database Migration,Database Tool,Self-hosted,Database change management,Version control,schema migrations,multi-database,Java
+Flyway,Database Migration,Database Tool,Self-hosted,Database migration tool,Schema versioning,CI/CD integration,multi-database,Java
+Prometheus,Monitoring,Monitoring Platform,Self-hosted,Metrics collection and alerting,Time-series database,alerting rules,scrape config,Go
+Grafana,Visualization,Visualization Platform,Self-hosted/Cloud,Metrics visualization and alerting,Multi-datasource,dashboard configuration,alerts,Go
+Datadog,Monitoring,SaaS,SaaS,Cloud monitoring platform,Agent deployment,multi-source,dashboards,Multiple
+New Relic,Monitoring,SaaS,SaaS,Application performance monitoring,APM,real-time insights,dashboard,Multiple
+Elastic Stack,Logging,Logging Platform,Self-hosted/Cloud,Log management and analytics,Logstash processing,Kibana visualization,distributed,Java
+Splunk,Enterprise Logging,Logging Platform,Self-hosted/Cloud,Enterprise log analytics,XML/YAML config,search/analytics,data index,C++
+Spinnaker,Deployment Orchestration,CD Platform,Self-hosted,Continuous deployment platform,Complex strategies,traffic management,multi-cloud,Java
+CloudBees,CI/CD,CI/CD Platform,Self-hosted/Cloud,Enterprise Jenkins automation,Pipeline configuration,automation,distributed,Java
+GitLab CI/CD,CI/CD,CI/CD Platform,SaaS,Integrated CI/CD platform,YAML pipelines,Git-native,runners,Ruby
+GitHub Actions,CI/CD,CI/CD Platform,SaaS,Native GitHub CI/CD,Workflow YAML,event-driven,reusable actions,YAML
+CircleCI,CI/CD,CI/CD Platform,SaaS,Cloud CI/CD platform,YAML configuration,orbs,caching,YAML
+npm,Package Management,Package Manager,SaaS,JavaScript package manager,package.json config,dependency resolution,script runners,JavaScript
+yarn,Package Management,Package Manager,Self-hosted/Cloud,JavaScript package manager,Lock files,deterministic,offline mode,JavaScript
+Maven,Build Tool,Build Tool,Self-hosted,Java build automation,pom.xml configuration,plugins,repositories,Java
+Gradle,Build Tool,Build Tool,Self-hosted,Build automation tool,Groovy/Kotlin DSL,fast builds,plugin ecosystem,Java/Groovy/Kotlin
+pip,Package Management,Package Manager,Self-hosted,Python package manager,requirements.txt,dependency resolution,PyPI registry,Python
+Poetry,Package Management,Package Manager,Self-hosted,Python dependency management,pyproject.toml,lock files,virtual environments,Python
+Cargo,Package Management,Package Manager,Self-hosted,Rust package manager,Cargo.toml configuration,crates.io registry,build scripts,Rust
+go modules,Package Management,Package Manager,Self-hosted,Go dependency management,go.mod/go.sum files,semantic versioning,module system,Go
+Consul-Template,Configuration Rendering,Configuration Tool,Self-hosted,Template rendering from Consul KV,Dynamic templates,file watching,Consul integration,Go
+confd,Configuration Management,Configuration Tool,Self-hosted,Lightweight configuration management,etcd/Consul source,template rendering,event-driven,Go
+Envoy Proxy,Proxy/Load Balancer,Layer 7 Proxy,Self-hosted,Layer 7 proxy and communication bus,Configuration-driven,traffic management,observability,C++
+Nginx,Web Server,Reverse Proxy,Self-hosted,High-performance web server,Configuration files,routing,filtering,C
+OpenStack Heat,Orchestration,Orchestration Service,Self-hosted,Cloud infrastructure orchestration,Template-based,resource management,AWS CloudFormation-like,Python
+Serverless Framework,Framework,Framework,Self-hosted,Serverless application deployment,Configuration-driven,multi-cloud,plugins,JavaScript
+AWS SAM,Framework,Framework,Self-hosted,AWS serverless application framework,YAML configuration,local testing,Lambda integration,YAML
+Spacelift,Infrastructure Automation,IaC Platform,SaaS,Infrastructure automation platform,Multiple IaC tools,policy as code,cost estimation,Web/CLI
+Crossplane,Kubernetes Operator,Operator,Self-hosted/Kubernetes,Kubernetes infrastructure operator,Cloud resources as CRDs,multi-provider,declarative,Go
+KOPS,Kubernetes Tool,Cluster Management,Self-hosted,Kubernetes Operations and management,Cluster configuration,cluster upgrades,multi-cloud,Go
+Helm Secrets,Helm Plugin,Plugin,Self-hosted,Helm secrets management,SOPS/Sealed Secrets,encrypted secrets,Git-safe,Bash
+SOPS,Encryption Tool,Tool,Self-hosted,Secrets operations encryption,File encryption,Git integration,multi-format,Go

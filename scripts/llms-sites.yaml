@@ -252,8 +252,8 @@ sites:
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
 - name: deno
-  base_url: https://deno.com/
-  description: Deno secure JavaScript/TypeScript runtime
+  base_url: https://docs.deno.com/
+  description: Deno secure JavaScript/TypeScript runtime with comprehensive documentation
 - name: dev
   base_url: https://dev.writer.com/
   description: Writer developer resources
@@ -672,6 +672,9 @@ sites:
 - name: openrouter
   base_url: https://openrouter.ai/docs/
   description: OpenRouter AI model aggregator and API
+- name: oxc
+  base_url: https://oxc.rs/
+  description: Oxc - high-performance JavaScript/TypeScript toolchain written in Rust with linter and formatter
 - name: oxla
   base_url: https://docs.oxla.com/
   description: Oxla distributed SQL database
@@ -806,7 +809,7 @@ sites:
   base_url: https://screenshotone.com/docs/
   description: ScreenshotOne API screenshot service
 - name: semgrep
-  base_url: https://semgrep.com/
+  base_url: https://semgrep.dev/
   description: Semgrep static analysis tool
 - name: servicestack
   base_url: https://docs.servicestack.net/
@@ -829,12 +832,18 @@ sites:
 - name: solidfi
   base_url: https://docs.solidfi.com/
   description: Solidfi documentation
+- name: snyk
+  base_url: https://docs.snyk.io/
+  description: Snyk security-focused code scanner detecting vulnerabilities in code and dependencies
 - name: sourcegraph
   base_url: https://sourcegraph.com/docs/
   description: Sourcegraph code intelligence platform
 - name: sonarcloud
   base_url: https://docs.sonarsource.com/
   description: SonarCloud cloud-based code quality and security platform with TypeScript and 26+ language support
+- name: sonarqube
+  base_url: https://docs.sonarsource.com/
+  description: SonarQube enterprise static analysis platform for code quality and security analysis across 26+ programming languages
 - name: spacetimedb
   base_url: https://spacetimedb.com/
   description: SpacetimeDB serverless database

@@ -1,0 +1,88 @@
+Name,Category,Language,Backend,Type,Production Ready,Popularity,Notes
+Celery,Language Library,Python,RabbitMQ/Redis/Other,Task Queue,Yes,Very High,Most widely used distributed task queue; broker-based
+RQ (Redis Queue),Language Library,Python,Redis,Task Queue,Yes,High,Simple Redis-backed queue; lightweight
+Dramatiq,Language Library,Python,Redis/RabbitMQ,Task Queue,Yes,Medium,Reliable message-driven workers; lighter than Celery
+Huey,Language Library,Python,Redis,Task Queue,Yes,Medium,Lightweight; async tasks and scheduled jobs
+ARQ,Language Library,Python,Redis,Task Queue,Yes,Medium,High-performance Redis queue; worker pools
+TaskIQ,Language Library,Python,Redis Streams,Task Queue,Yes,Medium,Fast performance; Redis Streams-based
+Django Q,Language Library,Python,Redis/RabbitMQ/Database,Task Queue,Yes,Medium,Django-integrated; cron-like scheduling
+TaskTiger,Language Library,Python,Redis,Task Queue,Yes,Low,Redis-based task management
+WakaQ,Language Library,Python,Redis,Task Queue,Yes,Low,Minimalistic Celery alternative
+aiotasks,Language Library,Python,Redis,Task Queue,Yes,Low,Async function queue
+Taskmaster,Language Library,Python,Redis,Task Queue,Yes,Low,Lightweight distributed queue
+django-carrot,Language Library,Python,Redis,Task Queue,Yes,Low,Django-specific queue
+BullMQ,Language Library,JavaScript/Node.js,Redis,Task Queue,Yes,Very High,Production-grade; advanced features; priorities
+Agenda,Language Library,JavaScript/Node.js,MongoDB,Job Scheduler,Yes,High,MongoDB-backed; persistence; concurrency
+Kue,Language Library,JavaScript/Node.js,Redis,Task Queue,Yes,Medium,Priority queue; includes UI
+Bull,Language Library,JavaScript/Node.js,Redis,Task Queue,Yes,Medium,Redis-based queue; predecessor to BullMQ
+Sidekiq,Language Library,Ruby,Redis,Task Queue,Yes,Very High,Industry standard; processes millions of jobs; fast
+Resque,Language Library,Ruby,Redis,Task Queue,Yes,High,Battle-tested in high-traffic apps; easy forking
+Delayed Job,Language Library,Ruby,Database (ActiveRecord),Task Queue,Yes,High,Database-backed; no external dependencies
+Good Job,Language Library,Ruby,PostgreSQL,Task Queue,Yes,Medium,PostgreSQL-backed Active Job adapter
+Que,Language Library,Ruby,PostgreSQL,Task Queue,Yes,Medium,High-performance PostgreSQL queue
+queue_classic,Language Library,Ruby,PostgreSQL,Task Queue,Yes,Medium,Lightweight; async polling; no external deps
+Spring Batch,Language Library,Java,Database/Custom,Batch Processing,Yes,Very High,Enterprise-standard framework; Spring Boot integration
+Quartz,Language Library,Java,Database,Job Scheduler,Yes,Very High,Open-source; cron-like triggers; clustering
+Apache Camel,Language Library,Java,JMS/AMQP/SEDA,Integration,Yes,High,Routing engine; ESB patterns; multi-protocol
+Activiti,Language Library,Java,Database,Workflow Engine,Yes,Medium,BPMN 2.0; business process orchestration
+Flowable,Language Library,Java,Database,Workflow Engine,Yes,Medium,Advanced BPMN/CMMN/DMN; enhanced Activiti fork
+Asynq,Language Library,Go,Redis,Task Queue,Yes,High,Simple and fast; priorities; optimized for Go
+Machinery,Language Library,Go,Redis/RabbitMQ,Task Queue,Yes,Medium,Broker-agnostic; inspired by Celery
+River,Language Library,Go,PostgreSQL,Task Queue,Yes,Medium,PostgreSQL-backed; transaction-safe; multiple queues
+jobqueue,Language Library,Go,MySQL/In-Memory,Task Queue,Yes,Low,Configurable concurrency; topic-based
+Go Queue,Language Library,Go,Database,Task Queue,Yes,Low,Flexible background job processing
+brokkr,Language Library,Rust,Redis,Task Queue,Yes,Low,Distributed task queue; Redis-backed
+job_queue,Language Library,Rust,MySQL/PostgreSQL,Task Queue,Yes,Low,Simple async job processing
+Aide-De-Camp,Language Library,Rust,Custom,Task Queue,Yes,Low,Type-erasure solutions; semaphore-based
+rust-task-queue,Language Library,Rust,Redis,Task Queue,Yes,Low,High-performance auto-scaling queue
+lapin,Language Library,Rust,RabbitMQ,AMQP Client,Yes,Medium,Low-level AMQP client; custom implementations
+redis-rs,Language Library,Rust,Redis,Redis Client,Yes,Medium,Redis client; custom queue implementations
+Laravel Queue,Language Library,PHP,Redis/Database/SQS,Task Queue,Yes,Very High,Built-in framework; Horizon dashboard
+Symfony Messenger,Language Library,PHP,AMQP/Doctrine/Redis,Message Bus,Yes,Very High,Message handling; production workers
+Enqueue,Language Library,PHP,RabbitMQ/Redis/SQS,Message Bus,Yes,High,Framework-agnostic; multiple transports
+Bernard,Language Library,PHP,Redis/AMQP,Task Queue,Yes,Medium,Multi-backend; deferred processing
+Simple Job Queue,Language Library,PHP,Beanstalk/Database,Task Queue,Yes,Medium,Lightweight; simple backends
+Pheanstalk,Language Library,PHP,Beanstalk,Task Queue Client,Yes,Medium,Beanstalk client; Supervisor integration
+PHP AMQP,Language Library,PHP,RabbitMQ,AMQP Client,Yes,Medium,Popular RabbitMQ client
+BunnyPHP,Language Library,PHP,RabbitMQ,AMQP Client,Yes,Low,Pure-PHP AMQP client; async with ReactPHP
+PHP Queue,Language Library,PHP,Database/Redis,Task Queue,Yes,Low,Unified interface; REST server; CLI daemon
+Thumper,Language Library,PHP,RabbitMQ,Message Bus,Yes,Low,RabbitMQ patterns for job queues
+Hangfire,Language Library,C#/.NET,SQL Server/Redis,Task Queue,Yes,Very High,Versatile dashboard; automatic retries; cron
+NServiceBus,Language Library,C#/.NET,RabbitMQ/MSMQ,Message Bus,Yes,High,Enterprise messaging; sagas; durability
+MassTransit,Language Library,C#/.NET,RabbitMQ/Other,Message Bus,Yes,High,Distributed framework; robust messaging; sagas
+Rebus,Language Library,C#/.NET,RabbitMQ/MSMQ,Message Bus,Yes,Medium,Service bus for reliable messaging
+Oban,Language Library,Elixir,PostgreSQL,Task Queue,Yes,Very High,Database-backed; retries; scheduling; priorities
+Exq,Language Library,Elixir,Redis,Task Queue,Yes,High,Sidekiq-compatible; exponential backoffs
+Verk,Language Library,Elixir,Redis,Task Queue,Yes,Medium,Redis-based; Sidekiq format
+Rihanna,Language Library,Elixir,PostgreSQL,Task Queue,Yes,Low,Advisory locks; PostgreSQL-backed
+Que,Language Library,Elixir,Mnesia,Task Queue,Yes,Low,Built-in Erlang database; no external deps
+Broadway,Language Library,Elixir,Kafka/SQS/External,Data Ingestion,Yes,Medium,Pipeline processing; parallel execution
+JobQueue,Language Library,Elixir,GenStage/In-Memory,Task Queue,Yes,Low,Multi-step workflows; image processing pipelines
+Faktory,Standalone Server,Multi-Language,Custom Protocol,Job Server,Yes,High,Language-agnostic; protocol-based; multiple queues
+Temporal.io,Standalone Server,Multi-Language,Custom Storage,Workflow Engine,Yes,High,Durable workflows; multi-language SDKs
+Gearman,Standalone Server,Multi-Language,Distributed,Job Server,Yes,Medium,Distributed job queue; clustering; high availability
+Beanstalk,Standalone Server,Multi-Language,In-Memory,Job Queue,Yes,Medium,Simple; fast; language-independent
+TacoQ,Standalone Server,Multi-Language,Custom,Job Queue,Yes,Low,Multi-language task routing
+BullMQ Enterprise,Standalone Server,Multi-Language,Redis,Job Queue,Yes,Medium,Redis-based; high-availability; Lua scripting
+RabbitMQ,Message Broker,Multi-Language,Custom,Message Broker,Yes,Very High,AMQP protocol; pub/sub; clustering; durability
+Apache Kafka,Message Broker,Multi-Language,Distributed Log,Event Streaming,Yes,Very High,High-throughput; event streaming; replay; durability
+Apache Pulsar,Message Broker,Multi-Language,Distributed Log,Event Streaming,Yes,High,Multi-tenancy; tiered storage; log-based
+Apache ActiveMQ,Message Broker,Multi-Language,Custom,Message Broker,Yes,High,STOMP/AMQP/MQTT; multi-language
+NATS JetStream,Message Broker,Multi-Language,Custom,Pub/Sub + Persistence,Yes,High,Lightweight; optional persistence; clustering
+Redis Streams,Message Broker,Multi-Language,In-Memory,Stream Engine,Yes,High,In-memory; simple pub/sub; fast but ephemeral
+AWS SQS,Cloud Service,Multi-Language,AWS,Message Queue,Yes,Very High,Fully managed; point-to-point; FIFO support
+AWS SNS,Cloud Service,Multi-Language,AWS,Pub/Sub,Yes,Very High,Managed pub/sub; fan-out messaging
+Azure Service Bus,Cloud Service,Multi-Language,Azure,Message Broker,Yes,Very High,Managed broker; queues + topics; enterprise
+Azure Queue Storage,Cloud Service,Multi-Language,Azure,Message Queue,Yes,High,Simple managed queue; decoupling
+Google Cloud Pub/Sub,Cloud Service,Multi-Language,Google Cloud,Pub/Sub,Yes,Very High,Managed pub/sub; scalable; integrations
+Google Cloud Tasks,Cloud Service,Multi-Language,Google Cloud,Task Queue,Yes,High,Serverless task queuing; HTTP tasks; Cloud Run
+Temporal Cloud,Cloud Service,Multi-Language,Temporal Inc.,Workflow Engine,Yes,Medium,Managed Temporal service; hosted
+IBM MQ,Cloud Service,Multi-Language,IBM,Message Queue,Yes,High,Enterprise MQ; on-premises and cloud
+Apache Airflow,Workflow Engine,Python,Database/Custom,Workflow Scheduler,Yes,Very High,Data pipeline orchestration; scheduling; Python-centric
+Prefect,Workflow Engine,Python,Cloud/Custom,Workflow Orchestration,Yes,High,Modern data workflows; cloud-managed option
+Dagster,Workflow Engine,Python,Custom,Data Orchestration,Yes,High,Asset-based; data pipelines; monitoring
+Activiti,Workflow Engine,Java,Database,Process Engine,Yes,Medium,BPMN 2.0; business processes; async
+Flowable,Workflow Engine,Java,Database,Process Engine,Yes,Medium,Advanced BPMN/CMMN/DMN; enhanced Activiti
+Temporal (Java SDK),Workflow Engine,Java,Custom,Workflow Engine,Yes,High,Durable execution; retries; fault tolerance
+JBatch (JSR 352),Workflow Engine,Java,Custom,Batch Processing,Yes,Medium,Standard batch API; job/joblet queuing
+Kafka Streams,Workflow Engine,Java,Kafka,Stream Processing,Yes,High,Event-based processing; KStreams

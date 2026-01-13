@@ -12,6 +12,13 @@ settings:
 
 # Repository configurations
 repositories:
+  - name: "axe-core"
+    description: "axe-core accessibility testing engine with comprehensive WCAG rule documentation and API guides"
+    repo_url: "https://github.com/dequelabs/axe-core.git"
+    source_folder: "doc"
+    target_folder: "docs/github-scraped/axe-core"
+    branch: "develop"
+
   - name: "CircuitPython"
     description: "CircuitPython documentation and examples"
     repo_url: "https://github.com/adafruit/circuitpython"
@@ -109,6 +116,13 @@ repositories:
     source_folder: "readme"
     target_folder: "docs/github-scraped/joplin"
     branch: "dev" # Default branch to use
+
+  - name: "JSHint"
+    description: "JSHint - Lightweight JavaScript linter with configurable rules and good legacy support"
+    repo_url: "https://github.com/jshint/jshint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/jshint"
+    branch: "main"
 
   - name: "Loghouse"
     description: "Loghouse - Log management system built on ClickHouse for storing and analyzing logs"
@@ -411,6 +425,20 @@ repositories:
     target_folder: "docs/github-scraped/primereact"
     branch: "master"
 
+  - name: "Pretty TypeScript Errors"
+    description: "Pretty TypeScript Errors - VS Code extension that reformats TypeScript compiler errors with code frames for faster debugging"
+    repo_url: "https://github.com/yoavbls/pretty-ts-errors.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/pretty-ts-errors"
+    branch: "main"
+
+  - name: "Prospector"
+    description: "Prospector - Comprehensive Python static analysis tool aggregating multiple linters"
+    repo_url: "https://github.com/prospector-dev/prospector.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/prospector"
+    branch: "master"
+
   - name: "PyTorch"
     description: "PyTorch - Deep learning framework by Meta with dynamic computation graphs, automatic differentiation, and GPU acceleration"
     repo_url: "https://github.com/pytorch/pytorch.git"
@@ -459,6 +487,34 @@ repositories:
     source_folder: "docs"
     target_folder: "docs/github-scraped/eslint"
     branch: "main"
+
+  - name: "eslint-plugin-import"
+    description: "ESLint plugin for validating imports and enforcing module conventions with support for static analysis and circular dependency detection"
+    repo_url: "https://github.com/import-js/eslint-plugin-import.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-import"
+    branch: "main"
+
+  - name: "eslint-plugin-security"
+    description: "ESLint plugin for detecting security vulnerabilities in JavaScript with rules for identifying common security hotspots"
+    repo_url: "https://github.com/eslint-community/eslint-plugin-security.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-security"
+    branch: "main"
+
+  - name: "eslint-plugin-react"
+    description: "ESLint plugin for React-specific linting rules and best practices with rule documentation and configuration guidance"
+    repo_url: "https://github.com/jsx-eslint/eslint-plugin-react.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-react"
+    branch: "master"
+
+  - name: "eslint-plugin-vue"
+    description: "Official ESLint plugin for Vue.js single-file components with rules, configuration, and usage guidance"
+    repo_url: "https://github.com/vuejs/eslint-plugin-vue.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/eslint-plugin-vue"
+    branch: "master"
 
   - name: "Express"
     description: "Express.js - Fast, unopinionated, minimalist web framework for Node.js"
@@ -592,6 +648,13 @@ repositories:
     source_folder: "packages/documentation/copy/en"
     target_folder: "docs/github-scraped/typescript"
     branch: "v2"
+
+  - name: "typescript-eslint"
+    description: "TypeScript ESLint - ESLint parser and plugin for TypeScript enabling linting of TypeScript code with TypeScript-specific rules"
+    repo_url: "https://github.com/typescript-eslint/typescript-eslint.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/typescript-eslint"
+    branch: "main"
 
   - name: "ts-morph"
     description: "ts-morph - TypeScript Compiler API wrapper for programmatic code manipulation and analysis"
@@ -990,4 +1053,18 @@ repositories:
     repo_url: "https://github.com/uber-go/nilaway.git"
     source_folder: "docs"
     target_folder: "docs/github-scraped/nilaway"
+    branch: "main"
+
+  - name: "quick-lint-js"
+    description: "quick-lint-js - Fast JavaScript linter with minimal overhead and LSP support for IDE integration"
+    repo_url: "https://github.com/quick-lint/quick-lint-js.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/quick-lint-js"
+    branch: "master"
+
+  - name: "web-vitals"
+    description: "web-vitals - Library for measuring and monitoring Core Web Vitals performance metrics (CLS, INP, LCP, FCP, TTFB)"
+    repo_url: "https://github.com/GoogleChrome/web-vitals.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/web-vitals"
     branch: "main"

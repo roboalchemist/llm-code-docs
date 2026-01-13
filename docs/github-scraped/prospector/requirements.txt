@@ -1,0 +1,4 @@
+# Source: https://github.com/prospector-dev/prospector/blob/master/docs/requirements.txt
+
+sphinx>=5.0.0,<8
+sphinx-argparse

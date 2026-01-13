@@ -1,0 +1,64 @@
+# Source: https://docs.snyk.io/supported-languages/supported-languages-list/rust.md
+
+# Rust
+
+## Applicability and integration
+
+{% hint style="info" %}
+Rust is supported for Snyk Code and for Snyk Open Source.
+{% endhint %}
+
+Available functions:
+
+* Test your app's SBOM using `pkg:cargo` For more information, see [Test an SBOM document for vulnerabilities](https://docs.snyk.io/snyk-api/using-specific-snyk-apis/sbom-apis/rest-api-endpoint-test-an-sbom-document-for-vulnerabilities).
+* Test your app's packages using `pkg:cargo`
+* Test your individual Rust packages from the Cargo package manager. For more information, see [List issues for a package](https://docs.snyk.io/snyk-api/using-specific-snyk-apis/issues-list-issues-for-a-package).
+
+## Technical specifications
+
+### Supported frameworks and libraries
+
+For Rust with Snyk Code, the following frameworks and libraries are supported:
+
+* Warp
+* Rust standard library
+* Iron
+* tokio
+* Hyper
+* axum
+* tower
+* age
+* ammonia
+* diesel
+* orion
+* postgres
+* ring
+* rustcrypto
+* sqlx
+* Reqwest
+
+### Supported package managers and registries
+
+* Supported package manager: Cargo
+* Supported package registry: [crates.io](https://crates.io/)
+
+## Rust for Snyk Code
+
+For Rust with Snyk Code, the following file formats are supported: `.rs`.
+
+Available features:
+
+* Support for Interfile analysis
+* Reports
+
+{% hint style="info" %}
+Code analysis support for Rust is available with Snyk Preview.
+{% endhint %}
+
+## Rust for Snyk Open Source
+
+For Rust with Snyk Open Source, there are no features supported.
+
+{% hint style="warning" %}
+If you want to use Open Source PR checks in Rust Projects for which the **Fix PRs** feature is not supported, it is possible that vulnerable dependencies are introduced without being flagged.
+{% endhint %}

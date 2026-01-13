@@ -1,0 +1,92 @@
+Platform Name,Category,Type,Language/Framework,Primary Use Case,Deployment Model,Deployment Options,Cloud-Native,Scalability,Cost Model,Maturity Level,Open Source
+ActiveBatch,Enterprise Scheduler,Commercial,Multi-language,Cross-platform automation,Hybrid,On-premises/Cloud/Hybrid,Yes,Horizontal,Subscription,Mature,No
+BMC Control-M,Enterprise Scheduler,Commercial,Multi-language,Hybrid/multi-cloud workflows,Hybrid,Cloud/On-premises,Yes,Horizontal,Subscription,Mature,No
+IBM Workload Automation,Enterprise Scheduler,Commercial,Java/.NET,Complex hybrid batch workloads,Hybrid,On-premises/Cloud,Partial,Horizontal,Subscription,Mature,No
+Redwood RunMyJobs,Enterprise Scheduler,Commercial,Multi-language,Event-driven scheduling SAP,SaaS,SaaS/On-premises/Hybrid,Yes,Horizontal,Per-transaction,Mature,No
+JAMS Scheduler,Enterprise Scheduler,Commercial,Windows,Windows batch processes,On-premises,On-premises,No,Vertical,Subscription,Mature,No
+SMA OpCon,Enterprise Scheduler,Commercial,Multi-language,Workflow automation,Cloud-based,Cloud,Yes,Horizontal,Subscription,Mature,No
+Tidal Automation,Enterprise Scheduler,Commercial,Multi-language,Time/event-based jobs,On-premises,Contact vendor,Partial,Horizontal,Subscription,Mature,No
+Stonebranch UAC,Enterprise Scheduler,Commercial,Multi-language,Universal workload orchestration,Hybrid,Cloud/Hybrid/On-premises,Yes,Horizontal,Subscription,Mature,No
+Apache Airflow,Workflow Orchestration,Open Source,Python,Data pipelines/ETL,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Prefect,Workflow Orchestration,Commercial/Cloud,Python,Modern data workflows,Cloud/Self-hosted,Cloud/Self-hosted,Yes,Horizontal,Per-execution/Subscription,Mature,Partial
+Dagster,Workflow Orchestration,Open Source,Python,Data assets/ML pipelines,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Temporal,Workflow Orchestration,Open Source,Multi-language,Durable microservice workflows,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Argo Workflows,Workflow Orchestration,Open Source,Kubernetes-native,Parallel K8s jobs,Kubernetes,K8s only,Yes,Horizontal,Self-hosted,Mature,Yes
+Flyte,Workflow Orchestration,Open Source,Python,ML pipelines,Kubernetes,K8s,Yes,Horizontal,Self-hosted,Growth,Yes
+Kubeflow,Workflow Orchestration,Open Source,Kubernetes,ML end-to-end,Kubernetes,K8s,Yes,Horizontal,Self-hosted,Mature,Yes
+dbt,Data Pipeline,Open Source,Python/SQL,SQL transformation,Cloud/Self-hosted,Anywhere,Partial,Horizontal,Self-hosted/SaaS,Mature,Yes
+Kedro,Data Pipeline,Open Source,Python,ML pipeline structure,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Growth,Yes
+Luigi,Data Pipeline,Open Source,Python,Lightweight pipelines,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Metaflow,Workflow Orchestration,Open Source,Python,ML workflow management,Cloud/Self-hosted,Cloud/Self-hosted,Partial,Horizontal,Self-hosted,Growth,Yes
+MLflow,Model Management,Open Source,Python,Model tracking/deployment,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+AWS Step Functions,Cloud Service,Managed,JSON/YAML,Serverless orchestration,AWS,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+AWS Glue,Cloud Service,Managed,Python/Scala,ETL jobs,AWS,Cloud only,Yes,Horizontal,Per-DPU-hour,Mature,No
+AWS Lambda,Cloud Service,Managed,Multi-language,Event-driven computing,AWS,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+AWS Fargate,Cloud Service,Managed,Container,Scheduled containers,AWS,Cloud only,Yes,Horizontal,Per-vCPU-hour,Mature,No
+AWS EventBridge,Cloud Service,Managed,N/A,Event routing/scheduling,AWS,Cloud only,Yes,Horizontal,Per-event,Mature,No
+Amazon SQS,Cloud Service,Managed,N/A,Job queue,AWS,Cloud only,Yes,Horizontal,Per-request,Mature,No
+Google Cloud Composer,Cloud Service,Managed,Python,Managed Airflow,GCP,Cloud only,Yes,Horizontal,Per-hour,Mature,No
+Google Cloud Workflows,Cloud Service,Managed,YAML,Serverless orchestration,GCP,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Google Cloud Tasks,Cloud Service,Managed,N/A,Task queue,GCP,Cloud only,Yes,Horizontal,Per-task,Mature,No
+Google Cloud Scheduler,Cloud Service,Managed,N/A,Cron service,GCP,Cloud only,Yes,Horizontal,Per-job,Mature,No
+Cloud Run,Cloud Service,Managed,Container,On-demand containers,GCP,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Google Cloud Functions,Cloud Service,Managed,Multi-language,Serverless functions,GCP,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Azure Logic Apps,Cloud Service,Managed,JSON/YAML,Workflow automation,Azure,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Azure Data Factory,Cloud Service,Managed,Python/SQL,ETL orchestration,Azure,Cloud only,Yes,Horizontal,Per-pipeline,Mature,No
+Azure Durable Functions,Cloud Service,Managed,C#/JavaScript,Long-running workflows,Azure,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Azure Service Bus,Cloud Service,Managed,N/A,Message broker,Azure,Cloud only,Yes,Horizontal,Per-message,Mature,No
+Azure Queue Storage,Cloud Service,Managed,N/A,Job queue,Azure,Cloud only,Yes,Horizontal,Per-GB,Mature,No
+IBM MQ,Enterprise Message Broker,Commercial,Multi-language,Reliable messaging,Hybrid,On-premises/Cloud,Partial,Horizontal,Subscription,Mature,No
+IBM Cloud Functions,Cloud Service,Managed,Multi-language,Serverless compute,IBM,Cloud only,Yes,Horizontal,Per-execution,Mature,No
+Apache Kafka,Message Broker,Open Source,Scala/Java,Distributed job queue,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+RabbitMQ,Message Broker,Open Source,Erlang,Complex routing,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Celery,Task Queue Framework,Open Source,Python,Distributed Python tasks,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+RQ (Redis Queue),Task Queue Framework,Open Source,Python,Simple Python jobs,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Huey,Task Queue Framework,Open Source,Python,Web app background jobs,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Growth,Yes
+BullMQ,Task Queue Framework,Open Source,JavaScript,High-perf Node queues,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Bull,Task Queue Framework,Open Source,JavaScript,Node.js job queue,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Bee Queue,Task Queue Framework,Open Source,JavaScript,Lightweight Node jobs,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Growth,Yes
+Agenda,Task Queue Framework,Open Source,JavaScript,Node.js scheduling,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Kue,Task Queue Framework,Open Source,JavaScript,Priority job queue,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Redis,Message Store,Open Source,C,In-memory queue backend,Self-hosted,Anywhere,Partial,Vertical,Self-hosted,Mature,Yes
+NATS,Message Broker,Open Source,Go,Cloud-native messaging,Self-hosted,Anywhere,Yes,Horizontal,Self-hosted,Growth,Yes
+Kubernetes,Container Orchestration,Open Source,Go,Container orchestration,Self-hosted,Anywhere,Yes,Horizontal,Self-hosted,Mature,Yes
+Docker Swarm,Container Orchestration,Open Source,Go,Simple Docker orchestration,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+HashiCorp Nomad,Container Orchestration,Open Source,Go,Multi-workload orchestration,Self-hosted,Anywhere,Yes,Horizontal,Self-hosted,Mature,Yes
+AWS ECS,Container Orchestration,Managed,N/A,AWS container orchestration,AWS,Cloud only,Yes,Horizontal,Per-resource,Mature,No
+AWS EKS,Container Orchestration,Managed,N/A,Managed Kubernetes,AWS,Cloud only,Yes,Horizontal,Per-cluster,Mature,No
+Zapier,Automation Platform,Managed,N/A,Simple no-code integrations,SaaS,Cloud only,Yes,Horizontal,Per-task,Mature,No
+Make.com,Automation Platform,Managed,N/A,Medium-complexity workflows,SaaS,Cloud only,Yes,Horizontal,Per-operation,Mature,No
+n8n,Automation Platform,Open Source,JavaScript/Python,Developer-friendly workflows,Self-hosted,Cloud/Self-hosted,Partial,Horizontal,Self-hosted/Execution-based,Growth,Partial
+Node-RED,Automation Platform,Open Source,JavaScript,IoT/event-driven flows,Self-hosted,Anywhere,Partial,Vertical,Self-hosted,Mature,Yes
+Latenode,Automation Platform,Managed,N/A,Budget-friendly automation,SaaS,Cloud only,Yes,Horizontal,Per-operation,Growth,No
+IFTTT,Automation Platform,Managed,N/A,Personal automation,SaaS,Cloud only,Yes,Horizontal,Freemium,Mature,No
+APScheduler,Python Library,Open Source,Python,Embedded scheduling,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+Schedule,Python Library,Open Source,Python,Simple scheduling,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+Huey (library),Python Library,Open Source,Python,Task scheduling,Embedded,Anywhere,No,Vertical,Self-hosted,Growth,Yes
+python-crontab,Python Library,Open Source,Python,Crontab interaction,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+cronspec,Python Library,Open Source,Python,Cron parsing,Embedded,Anywhere,No,Vertical,Self-hosted,Growth,Yes
+UiPath,RPA Platform,Commercial,Multi-language,Enterprise RPA,Cloud/On-premises,Cloud/On-premises/Hybrid,Yes,Horizontal,Per-attended-bot,Mature,No
+Automation Anywhere,RPA Platform,Commercial,Multi-language,AI-powered RPA,Cloud/On-premises,Cloud/On-premises,Yes,Horizontal,Per-bot,Mature,No
+Blue Prism,RPA Platform,Commercial,Multi-language,Digital workers,Cloud/On-premises,Cloud/On-premises,Yes,Horizontal,Per-license,Mature,No
+Microsoft Power Automate,RPA Platform,Managed,Multi-language,Cloud workflows,Azure,Cloud,Yes,Horizontal,Per-flow,Mature,No
+WorkFusion,RPA Platform,Commercial,Multi-language,Intelligent automation,Cloud/On-premises,Cloud/On-premises,Yes,Horizontal,Per-RPA-instance,Mature,No
+Kofax,RPA Platform,Commercial,Multi-language,RPA + document,Cloud/On-premises,Cloud/On-premises,Yes,Horizontal,Per-license,Mature,No
+Jenkins,CI/CD Pipeline,Open Source,Groovy,Pipeline orchestration,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+GitLab CI/CD,CI/CD Pipeline,Managed,YAML,Git-integrated pipelines,Cloud/Self-hosted,Cloud/Self-hosted,Yes,Horizontal,Per-minute,Mature,Partial
+GitHub Actions,CI/CD Pipeline,Managed,YAML,Cloud-native automation,GitHub,Cloud,Yes,Horizontal,Per-minute,Mature,Partial
+CircleCI,CI/CD Pipeline,Managed,YAML,SaaS CI/CD,Cloud,Cloud,Yes,Horizontal,Per-minute,Mature,No
+Quartz Scheduler,Java Library,Open Source,Java,Embedded job scheduling,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+Spring Batch,Java Framework,Open Source,Java,Batch processing,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+Hangfire,.NET Library,Open Source,C#,Background jobs,Embedded,Anywhere,No,Vertical,Self-hosted,Mature,Yes
+Coravel,.NET Framework,Open Source,C#,ASP.NET scheduling,Embedded,Anywhere,No,Vertical,Self-hosted,Growth,Yes
+Orkes Conductor,Workflow Engine,Open Source,Multi-language,Distributed workflows,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Growth,Yes
+Durable Task Framework,.NET Framework,Open Source,C#,Durable workflows,Embedded,Anywhere,No,Vertical,Self-hosted,Growth,Yes
+Erlang/OTP,Runtime,Open Source,Erlang,Distributed systems,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Akka,Framework,Open Source,Scala/Java,Actor-based computing,Embedded,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Apache Beam,Data Processing,Open Source,Java/Python,Batch/streaming,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Apache Flink,Stream Processing,Open Source,Java/Scala,Real-time processing,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Apache Spark,Distributed Computing,Open Source,Python/Scala,Large-scale processing,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes
+Arvados,Workflow Engine,Open Source,Python,Container-native workflows,Self-hosted,Anywhere,Yes,Horizontal,Self-hosted,Growth,Yes
+Snakemake,Workflow Engine,Open Source,Python,Bioinformatics workflows,Self-hosted,Anywhere,No,Horizontal,Self-hosted,Mature,Yes
+Nextflow,Workflow Engine,Open Source,Groovy,Scientific workflows,Self-hosted,Anywhere,Partial,Horizontal,Self-hosted,Mature,Yes

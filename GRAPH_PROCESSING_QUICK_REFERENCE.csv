@@ -1,0 +1,20 @@
+Framework,Type,Language,Best For,Scalability,Performance,Open Source,Key Strength
+Pregel,Distributed,Proprietary,Web-scale graphs,Web-scale (50B+),Foundation model,No,BSP model foundation
+Apache Giraph,Distributed,Java,Production analytics,50B+ edges,2.8-8.6x vs GraphX,Yes,Memory efficiency at scale
+Spark GraphX,Distributed,Scala/Python,Rapid prototyping,10B edges,Baseline for comparison,Yes,Spark integration & ease-of-use
+Plato,Distributed,C++/Rust,Large-scale ML,Massive,10x faster,Yes,Performance & memory efficiency
+GraphScope,Distributed,C++/Python,Unified analytics,Distributed clusters,2.6x LDBC improvement,Yes,Unified analytics+query+learning
+PowerGraph,Distributed (Legacy),C++,Vertex-cut graphs,Billions,Historical baseline,Yes,Vertex-cut partitioning innovation
+NetworkX,Analytics,Python,Prototyping,Small-medium (thousands),Slow,Yes,Ease-of-use & learning
+igraph,Analytics,C + bindings,Large networks,Millions,27x vs NetworkX,Yes,C core performance
+graph-tool,Analytics,C++ + Python,Statistical analysis,Millions,Near C++ speed,Yes,Python interface + C++ speed
+PyTorch Geometric,GNN,Python,GNN research,Millions,Flexible,Yes,Pythonic API & high-level models
+Deep Graph Library,GNN,Python,GNN training,Billions,2.6x vs PyG,Yes,Training speed & memory efficiency
+Neo4j,Database,Java,Enterprise graphs,Billions,Optimized traversal,No (Community),Mature ecosystem
+TigerGraph,Database,C++,Enterprise analytics,Terabytes,Real-time deep analytics,No,Hybrid memory-disk architecture
+Memgraph,Database,C++,Real-time analytics,RAM-limited,In-memory speed,Partial,Lightning-fast queries
+JanusGraph,Database,Java,Massive distributed,100B+ edges,Distributed throughput,Yes,Horizontal scalability
+ArangoDB,Database (Multi),C++,Document + Graph,Multi-model,Multi-model optimization,Partial,Flexible multi-model
+Gephi,Visualization,Java,Network visualization,100k+ nodes,Visual layout,Yes,Scalable visualization
+Cytoscape,Visualization,Java,Biological networks,Medium,Domain-specialized,Yes,Bioinformatics plugins
+Graphviz,Visualization,C,Automatic layout,Moderate,Deterministic layout,Yes,Automatic graph drawing

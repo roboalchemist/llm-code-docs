@@ -1,0 +1,65 @@
+Name,Category,Language/Ecosystem,Type,Primary Use Case,Key Features,Maturity,License,URL/Notes
+PyYAML,Format Parser,Python,YAML Parser,Configuration file parsing,Full YAML 1.1 support; pure Python,Mature,BSD,https://github.com/yaml/pyyaml
+ruamel.yaml,Format Parser,Python,YAML Parser,Configuration file parsing with comments,Preserves comments and formatting; round-trip editing,Mature,MIT,https://sourceforge.net/p/ruamel-yaml
+Pydantic,Python Configuration,Python,Settings Framework,Data validation and configuration,Type annotations; auto type conversion; validation,Mature,MIT,https://docs.pydantic.dev
+python-dotenv,Python Configuration,Python,Environment Manager,Loading .env files,Simple .env file loading; override support,Mature,BSD,https://github.com/theskumar/python-dotenv
+dynaconf,Python Configuration,Python,Hierarchical Config,Multi-backend configuration management,YAML/TOML/JSON; environment overrides; secrets,Mature,MIT,https://www.dynaconf.com
+Hydra,Python Configuration,Python,Settings Framework,ML configuration management,Composition; multi-run experiments; CLI,Mature,Apache 2.0,https://hydra.cc
+environs,Python Configuration,Python,Environment Parser,Environment variable parsing,Type casting; validation; defaults,Mature,MIT,https://github.com/sloria/environs
+Jackson,Format Parser,Java,JSON Parser,JSON processing and binding,Data binding; streaming; annotations,Mature,Apache 2.0,https://github.com/FasterXML/jackson
+Gson,Format Parser,Java,JSON Parser,JSON serialization/deserialization,Custom objects; null handling; generics,Mature,Apache 2.0,https://github.com/google/gson
+SnakeYAML,Format Parser,Java,YAML Parser,YAML configuration parsing,YAML 1.1 support; Java object representation,Mature,Apache 2.0,https://bitbucket.org/asomov/snakeyaml
+Spring Boot Configuration,Java Configuration,Java,Settings Framework,Auto-configuration and profile management,YAML/properties; profiles; environment binding,Mature,Apache 2.0,https://spring.io
+Spring Cloud Config,Java Configuration,Java,Centralized Config,Git-backed configuration server,Centralized management; multiple environments; refresh,Mature,Apache 2.0,https://cloud.spring.io/spring-cloud-config
+Quarkus Config,Java Configuration,Java,Settings Framework,Native-friendly configuration,Strong typing; hot reload; GraalVM optimized,Mature,Apache 2.0,https://quarkus.io
+Micronaut Configuration,Java Configuration,Java,Settings Framework,Low-overhead configuration,Compile-time bean wiring; low memory; @ConfigurationProperties,Mature,Apache 2.0,https://micronaut.io
+Apache Commons Configuration,Java Configuration,Java,Multi-Format Config,Multiple format support,Properties; XML; YAML; INI; file watching,Mature,Apache 2.0,https://commons.apache.org/configuration
+Typesafe Config,Java Configuration,Java,Type-Safe Config,HCL-based configuration,Type-safe; cascading fallbacks; multiple sources,Mature,Apache 2.0,https://github.com/lightbend/config
+Viper,Go Configuration,Go,Multi-Source Config,Flexible configuration management,JSON/YAML/TOML/HCL; environment binding; 27.6k stars,Mature,MIT,https://github.com/spf13/viper
+Cobra,Go Configuration,Go,CLI Framework,Command-line interface with configuration,Subcommands; flags; auto-completion,Mature,Apache 2.0,https://github.com/spf13/cobra
+pflag,Go Configuration,Go,Flag Parser,POSIX-compliant command-line parsing,Flag extensions; subcommand support,Mature,BSD,https://github.com/spf13/pflag
+cleanenv,Go Configuration,Go,Environment Parser,Struct-based environment parsing,Type validation; sensible defaults; 12-factor,Mature,MIT,https://github.com/ilyakaznacheev/cleanenv
+dotenv,JavaScript/Node Configuration,JavaScript,Environment Manager,Loading .env files in Node.js,Simple; zero-dependency; supports comments,Mature,BSD,https://github.com/motdotla/dotenv
+joi,JavaScript/Node Configuration,JavaScript,Schema Validator,Configuration schema definition and validation,Rich API; chainable; large ecosystem; 19k stars,Mature,BSD,https://joi.dev
+yup,JavaScript/Node Configuration,JavaScript,Schema Validator,Form and configuration validation,Declarative schema; client-side focused; 60kb,Mature,MIT,https://github.com/jquense/yup
+zod,JavaScript/Node Configuration,JavaScript,Schema Validator,TypeScript-first schema validation,Type inference; immutable; versatile; 45kb,Mature,MIT,https://zod.dev
+valibot,JavaScript/Node Configuration,JavaScript,Schema Validator,Lightweight schema validation,Zod-compatible; smaller bundle; modular,Mature,MIT,https://valibot.dev
+node-config,JavaScript/Node Configuration,JavaScript,Hierarchical Config,Environment-specific configuration,JSON/YAML support; cascading overrides,Mature,MIT,https://github.com/lorenwest/node-config
+convict,JavaScript/Node Configuration,JavaScript,Schema-Based Config,Configuration with schema validation,Type coercion; mandatory keys; format checking,Mature,MIT,https://github.com/mozilla/node-convict
+nconf,JavaScript/Node Configuration,JavaScript,Layered Config,Multi-source configuration management,File; env; command-line; hierarchical access,Mature,MIT,https://github.com/indexzero/nconf
+cosmiconfig,JavaScript/Node Configuration,JavaScript,Config Discovery,Configuration file discovery and loading,Searches standard locations; multiple formats,Mature,MIT,https://github.com/davidtheclark/cosmiconfig
+AJV,Format Parser,JavaScript,JSON Schema Validator,JSON Schema validation,Fastest validator; draft-04 to draft-2020-12,Mature,MIT,https://github.com/ajv-validator/ajv
+serde,Rust Configuration,Rust,Serialization Framework,Generic serialization/deserialization,Foundation for all structured formats; type-safe,Mature,MIT OR Apache 2.0,https://serde.rs
+config-rs,Rust Configuration,Rust,Multi-Source Config,Hierarchical configuration merging,Multiple file formats; env vars; custom sources,Mature,MIT OR Apache 2.0,https://github.com/mehcode/config-rs
+figment,Rust Configuration,Rust,Flexible Config Loader,Layered configuration from multiple sources,Files; env vars; CLI args; custom providers,Mature,MIT OR Apache 2.0,https://github.com/SergioBenitez/figment
+confy,Rust Configuration,Rust,User Config Storage,OS-specific user configuration storage,Simple; Serde-based; .config directory support,Mature,MIT OR Apache 2.0,https://github.com/rusty-rs/confy
+envy,Rust Configuration,Rust,Environment Parser,Environment variable deserialization,Serde integration; struct-based; error handling,Mature,MIT OR Apache 2.0,https://github.com/softprops/envy
+clap,Rust Configuration,Rust,CLI Argument Parser,Command-line argument parsing,Derive macros; help generation; subcommands,Mature,MIT OR Apache 2.0,https://github.com/clap-rs/clap
+toml,Format Parser,Rust/Multi,TOML Parser,TOML file parsing and generation,Zero-copy; strong typing; universal,Mature,MIT OR Apache 2.0,https://github.com/toml-rs/toml
+serde_json,Format Parser,Rust,JSON Parser,JSON serialization with Serde,Fast; memory-efficient; flexible,Mature,MIT OR Apache 2.0,https://github.com/serde-rs/json
+Microsoft.Extensions.Configuration,.NET Configuration,C#/.NET,Settings Framework,Core configuration infrastructure,Multiple sources; hierarchical access; DI integration,Mature,MIT,https://github.com/dotnet/extensions
+Options Pattern,.NET Configuration,C#/.NET,Settings Framework,Strongly-typed configuration access,IOptions<T>; IOptionsSnapshot<T>; validation,Mature,MIT,https://docs.microsoft.com/en-us/dotnet/core/extensions/options
+Serilog,.NET Logging,C#/.NET,Logging Framework,Structured logging with configuration,JSON-based config; configuration integration,Mature,Apache 2.0,https://serilog.net
+NLog,.NET Logging,C#/.NET,Logging Framework,Enterprise logging with configuration,XML configuration; extension support,Mature,BSD,https://nlog-project.org
+Castle Windsor,.NET IoC,C#/.NET,Dependency Injection Container,Configuration and component lifecycle management,XML config; fluent API; facilities,Mature,Apache 2.0,https://github.com/castleproject/Windsor
+Autofac,.NET IoC,C#/.NET,Dependency Injection Container,Lightweight IoC with configuration modules,Module-based; JSON config support,Mature,MIT,https://autofac.org
+LaunchDarkly,Feature Flags,Multi-Language,Feature Management Platform,Enterprise feature flag service,Real-time updates; targeting; experimentation; analytics,Mature,Commercial,https://launchdarkly.com
+Unleash,Feature Flags,Multi-Language,Open-Source Feature Management,Self-hosted feature flag solution,Self-hosted; activation strategies; SDKs,Mature,Apache 2.0,https://getunleash.io
+Flagsmith,Feature Flags,Multi-Language,Feature Management Platform,Django-based feature flag platform,Hosted/self-hosted; CDN; segment targeting,Mature,Open/Commercial,https://flagsmith.com
+Flipt,Feature Flags,Multi-Language,Open-Source Feature Management,Lightweight feature flag server,Stateless; gRPC/REST; horizontal scaling,Mature,MIT,https://flipt.io
+GrowthBook,Feature Flags,Multi-Language,Experimentation Platform,Open-source A/B testing and feature flags,Experimentation; Bayesian stats; self-hosted,Mature,AGPL/Commercial,https://growthbook.io
+Optimizely,Feature Flags,Multi-Language,Feature Management Platform,Feature flagging with experimentation,Integrated A/B testing; analytics; personalization,Mature,Commercial,https://www.optimizely.com
+Split.io,Feature Flags,Multi-Language,Feature Management Platform,Feature flag and experimentation platform,Data-driven decisions; real-time monitoring,Mature,Commercial,https://www.split.io
+CloudBees Feature Management,Feature Flags,Multi-Language,Enterprise Feature Management,Enterprise-grade feature flag service,Instant rollback; audit logs; CI/CD integration,Mature,Commercial,https://www.cloudbees.com
+Terraform,IaC,Multi-Cloud,Infrastructure as Code,Multi-cloud infrastructure provisioning,Declarative HCL; state management; modules,Mature,MPL 2.0,https://www.terraform.io
+Pulumi,IaC,Multi-Language,Infrastructure as Code,General-purpose language IaC,Python/TypeScript/Go; multi-cloud; stacks,Mature,Apache 2.0,https://www.pulumi.com
+AWS CDK,IaC,Multi-Language,Infrastructure as Code,AWS infrastructure with programming languages,TypeScript/Python/Java; high-level constructs,Mature,Apache 2.0,https://aws.amazon.com/cdk
+CDK for Kubernetes,IaC,Multi-Language,Infrastructure as Code,Kubernetes manifests from code,Language-based generation; no templating,Mature,Apache 2.0,https://cdk8s.io
+Helm,Kubernetes Configuration,YAML,Package Manager,Kubernetes package management,Charts; templated values; multi-environment,Mature,Apache 2.0,https://helm.sh
+Kustomize,Kubernetes Configuration,YAML,Customization Tool,Kubernetes manifest customization,No templating; overlays; bases; patches,Mature,Apache 2.0,https://kustomize.io
+ArgoCD,Kubernetes Configuration,YAML,GitOps Tool,Continuous deployment for Kubernetes,Git-driven; drift detection; multi-cluster,Mature,Apache 2.0,https://argoproj.github.io/cd
+Flux,Kubernetes Configuration,YAML,GitOps Tool,Declarative continuous delivery for Kubernetes,Git as source of truth; automated sync,Mature,Apache 2.0,https://fluxcd.io
+Crossplane,Kubernetes Configuration,YAML,Multi-Cloud Control Plane,Manage cloud resources as Kubernetes objects,Unified resource abstraction; GitOps ready,Mature,Apache 2.0,https://crossplane.io
+JSON Schema,Format Validation,Multi-Language,Schema Standard,JSON data structure specification,Standardized; multi-draft support; broad implementations,Mature,License-free,https://json-schema.org
+class-validator,Format Validation,TypeScript,Decorator Validator,TypeScript class property validation,Decorators; constraints; class-transformer integration,Mature,MIT,https://github.com/typestack/class-validator
+fluent-validation,Format Validation,.NET,Fluent Validator,Rule-based validation for .NET classes,Fluent API; chainable rules; custom validators,Mature,Apache 2.0,https://fluentvalidation.net

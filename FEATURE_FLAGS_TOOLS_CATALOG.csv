@@ -1,0 +1,26 @@
+Name,Category,Type,Pricing Model,License,Self-Hosted Option,OpenFeature Support,Key Strength,Best For,GitHub Stars,Primary Language,Notable Features
+LaunchDarkly,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,Yes,Most widely adopted enterprise solution,Large enterprises,N/A,Multiple,Advanced targeting + experimentation + audit trails
+Split.io,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,Yes,Feature delivery with analytics,Mid-market to enterprise,N/A,Multiple,Automatic rollout monitoring + experimentation
+Statsig,Enterprise,Commercial,Free (2M events/month) + $150/month,Proprietary,No,No,Data-centric approach,Data-driven teams,N/A,Multiple,Advanced analytics + warehouse integration
+Flagsmith,Hybrid,Commercial + Open Source,Free + Cloud Paid + Self-hosted,BSD-3-Clause,Yes,Founding Member,Only hybrid commercial+open option,Small to enterprise,6000,Multiple,A/B testing + remote config + RBAC
+ConfigCat,SaaS,Commercial,Free + $99/month+,Proprietary,No,Yes,Developer simplicity,Developers + small teams,N/A,Multiple,Global CDN + easy integration
+Kameleoon,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,No,AI-driven personalization,Marketing + product teams,N/A,Multiple,AI Copilot + 80+ integrations
+Harness Feature Flags,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,Yes,No,CI/CD Integration,DevOps-heavy organizations,N/A,Multiple,Progressive rollouts + kill switches
+Taplytics,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,No,Safe gradual rollouts,Product teams + mobile,N/A,Multiple,A/B testing + user segmentation
+VWO FullStack,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,No,Experimentation platform,Product + marketing teams,N/A,Multiple,A/B and MVT testing
+Apptimize,Enterprise,Commercial,Enterprise Custom Quote,Proprietary,No,No,Mobile experience,Mobile-first companies,N/A,Multiple,Mobile + web support
+DevCycle,Enterprise,Commercial,Free + Paid,Proprietary,No,Native (76% coverage),OpenFeature-native platform,OpenFeature users,N/A,Multiple,Purpose-built for OpenFeature
+Unleash,Open Source,Open Source,Free (self-hosted) + Managed hosting,MIT,Yes,Yes,Most widely used open source,Kubernetes + DevOps teams,10000+,Node.js + Java,10M+ Docker downloads
+GrowthBook,Open Source,Open Source,Free (self-hosted) + Managed hosting,MIT,Yes,Yes,Experimentation + flags,Data-driven teams,7000,React + Node.js,SQL-based audience targeting
+Flipt,Open Source,Open Source,Free (MIT),MIT,Yes,No,Single binary + minimal footprint,Simplicity-focused teams,N/A,Go,Stateless design + horizontal scaling
+FeatBit,Open Source,Open Source,Free (self-hosted) + Managed hosting,MIT,Yes,No,AI coding era focus,Modern development teams,N/A,Multiple,Fast experimentation + safe deployment
+flagd,Open Source,Open Source,Free (Apache 2.0),Apache 2.0,Yes,Reference Implementation,OpenFeature reference implementation,Infrastructure-agnostic deployments,N/A,Go,OFREP protocol + Kubernetes CRDs
+GO Feature Flags,Open Source,Open Source,Free (MIT) + Enterprise,MIT,Yes,Yes (82% coverage),Entirely OpenFeature-based,Go-heavy teams,N/A,Go,Go-native performance + Open Feature compliance
+Flagr,Open Source,Open Source,Free (MIT),MIT,Yes,No,Lightweight microservice,Go-based services,2500,Go,Stateless + horizontally scalable
+FF4J,Open Source,Open Source,Free (Apache 2.0),Apache 2.0,Yes,No,Java/JVM specialized,Java + JVM applications,N/A,Java,Web console + comprehensive JVM support
+Featurevisor,Open Source,Open Source,Free,MIT or Custom,Yes,No,Configuration-as-Code,GitOps-focused teams,N/A,Node.js + JavaScript,JSON config + version control friendly
+FeatureHub,Open Source,Open Source,Free (self-hosted) + Managed hosting,Apache 2.0,Yes,No,Complete platform,Full-featured flag management,N/A,Dart + Java,Environment management + webhooks
+Bullet Train,Open Source,Open Source,Free (self-hosted),Open Source,Yes,No,Simplicity with power,Teams wanting ease of use,N/A,Python,Real-time updates + dashboard
+Firebase Remote Config,Cloud Native,Cloud Service,Free + usage-based,Proprietary,No,No,Google Cloud integration,Mobile + Firebase users,N/A,Multiple,Firebase Analytics integration + mobile SDKs
+OpenFeature,Standard,Standard,Free,Open Standard,N/A,N/A,Vendor-neutral standard,Provider selection,N/A,Multiple,Eliminates vendor lock-in + community-driven
+OFREP,Protocol,Protocol,Free,Open Standard,N/A,N/A,Server-side evaluation standard,Remote flag evaluation,N/A,Multiple,Language-agnostic + standardized protocol

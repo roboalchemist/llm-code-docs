@@ -1,0 +1,49 @@
+Name,Type,Category,Language/Platform,License,Primary Focus,Best For,Maintenance Status
+Applitools Eyes,Cloud Platform,Enterprise Visual Testing,Multiple Languages,Commercial,AI-powered visual regression testing,UI-heavy applications with design sensitivity,Active
+Argos CI,Web Application,Open-Source CI Integration,TypeScript/Node.js,Open-Source,CI/CD-integrated visual regression,Development teams using GitHub/GitLab/CircleCI,Active
+AyeSpy,Visual Testing Tool,Open-Source,JavaScript/Selenium,Open-Source,High-performance visual comparison,Performance-critical visual testing,Active
+BackstopJS,Node.js Tool,Open-Source,JavaScript,Open-Source,Pixel-level visual regression,Developers needing local control,Active
+BrowserStack,Cloud Platform,Enterprise Testing,Web Platform,Commercial,Real device cloud testing,Cross-browser and device testing,Active
+Chromatic,Cloud Platform,Enterprise Visual Testing,SaaS,Commercial,Storybook component visual testing,Component-based development,Active
+Creevey,Node.js Tool,Open-Source,TypeScript,Open-Source,Storybook screenshot testing,Storybook-based component development,Active
+Cypress,Testing Framework,Framework,JavaScript,Open-Source,E2E testing with visual capabilities,Full-stack application testing,Active
+Eggplant Functional,Enterprise Platform,Enterprise Testing,Proprietary,Commercial,Image-based cross-device automation,Complex cross-device scenarios,Active
+Gemini,Visual Testing Framework,Open-Source Legacy,JavaScript,Open-Source,Browser screenshot comparison,Deprecated (use Hermione),Deprecated
+Happo,Cloud Platform,Commercial Visual Testing,SaaS,Commercial,Cross-browser screenshot comparison,Teams with cross-browser requirements,Active
+Hermione,Testing Framework,Open-Source,JavaScript,Open-Source,Multi-browser E2E visual testing,Advanced visual regression workflows,Active
+ImageMagick,CLI Tool,Image Manipulation,C/CLI,Open-Source,Image manipulation and comparison,System-level image operations,Active
+Jimp,JavaScript Library,Image Library,JavaScript,Open-Source,Pure JavaScript image manipulation,Node.js and browser image processing,Active
+Jest Snapshot Testing,Testing Framework,Built-in,JavaScript,Open-Source,Component snapshot testing,React/Angular/Vue unit testing,Active
+LambdaTest SmartUI,Cloud Platform,Enterprise Visual Testing,SaaS,Commercial,AI-native visual regression automation,Frontend-heavy startups,Active
+Leapwork,Codeless Platform,No-Code Testing,SaaS,Commercial,AI-powered visual test automation,Teams without coding expertise,Active
+Loki,Node.js Tool,Open-Source,JavaScript,Open-Source,Storybook visual regression testing,Storybook-based component development,Active
+Lost Pixel,Node.js Tool,Open-Source,TypeScript,Open-Source,Open-source visual regression testing,Modern visual regression workflows,Active
+Needle,Testing Framework,Testing Framework,Proprietary,Proprietary,Visual regression detection,Visual testing automation,Maintenance Unknown
+OpenCV,Computer Vision Library,Image Analysis Library,C++,Open-Source,Advanced image comparison and feature detection,Complex image analysis,Active
+OpenText UFT One,Enterprise Platform,Enterprise Testing,Proprietary,Commercial,Scalable visual and functional testing,Enterprise-scale test automation,Active
+Percy,Cloud Platform,Commercial Visual Testing,SaaS,Commercial,Developer-friendly visual regression CI/CD,Web development teams,Active
+PhantomCSS,Testing Tool,Legacy/Deprecated,JavaScript,Open-Source,Visual regression testing (DEPRECATED),Legacy projects only,Deprecated
+Pixelmatch,JavaScript Library,Image Comparison,JavaScript,Open-Source,Lightweight pixel-level image comparison,Programmatic image comparison,Active
+Playwright Visual Testing,Testing Framework,Built-in,JavaScript,Open-Source,Browser-based screenshot comparison,E2E visual testing,Active
+Ranorex,Enterprise Platform,Enterprise Testing,Proprietary,Commercial,Hybrid element and image-based automation,Enterprise test automation,Active
+Recheck,Open-Source Framework,Open-Source Testing,Java,Open-Source,Golden Master visual regression testing,Reducing E2E test flakiness,Active
+Resemble.js,JavaScript Library,Image Comparison,JavaScript,Open-Source,Image comparison library,JavaScript-based visual testing,Active
+Sauce Labs,Cloud Platform,Enterprise Testing,SaaS,Commercial,Cross-browser visual testing,Large-scale testing,Active
+SSIM,Image Metric,Image Analysis,Algorithm,Open-Source,Structural similarity assessment,Perceptual quality comparison,Active
+Storybook (with visual tools),Component Framework,Framework,JavaScript,Open-Source,Component documentation and visual testing,Component-driven development,Active
+Synopsys,Enterprise Platform,Enterprise Testing,Proprietary,Commercial,Visual regression testing and management,Enterprise visual testing,Active
+TestSprite,AI Platform,Enterprise Visual Testing,SaaS,Commercial,AI-driven visual testing software,Modern AI-powered testing,Active
+Visual Regression Tracker,Open-Source Tool,Open-Source Self-Hosted,JavaScript,Open-Source,Screenshot comparison with configurable tolerance,Self-hosted visual regression,Active
+Virtuoso,Testing Platform,Testing Platform,SaaS,Commercial,Functional testing with visual regression,End-to-end testing,Active
+Wraith,Testing Tool,Open-Source,Ruby,Open-Source,Headless browser screenshot comparison,Visual regression with Selenium,Maintenance Unknown
+XCUITest,Native Framework,Mobile Testing,Swift/Objective-C,Apple,iOS UI automation with snapshots,iOS app testing,Active
+Appium,Mobile Framework,Mobile Testing,Multi-Language,Open-Source,Cross-platform mobile automation,Mobile app testing,Active
+UiAutomator2,Mobile Framework,Mobile Testing,Java,Open-Source,Android UI automation,Android app testing,Active
+iOSSnapshotTestCase,iOS Framework,Mobile Testing,Swift/Objective-C,Open-Source,iOS snapshot testing,iOS snapshot testing,Active
+WebdriverIO,Testing Framework,Framework,JavaScript,Open-Source,E2E testing with visual integrations,Multi-browser automation,Active
+CloudQA,Codeless Platform,No-Code Testing,SaaS,Commercial,Codeless regression testing,Teams without coding expertise,Active
+looks-same,JavaScript Library,Image Comparison,JavaScript,Open-Source,Visual difference detection,Programmatic comparison,Active
+node-pixelmatch,JavaScript Library,Image Comparison,JavaScript,Open-Source,Node.js image comparison,Server-side comparison,Active
+Odiff,Image Engine,Image Comparison,Rust,Open-Source,Efficient pixel difference detection,Performance-critical comparison,Active
+React Testing Library,Testing Library,Testing Framework,JavaScript,Open-Source,React component unit testing,React component testing,Active
+Next.js Testing,Framework Integration,Testing Integration,JavaScript,Open-Source,Full-stack testing with Jest/Playwright,Next.js applications,Active

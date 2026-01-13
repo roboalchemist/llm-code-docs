@@ -1,0 +1,82 @@
+Name,Category,Type,Language/Platform,Key Features,Primary Use Case,Performance Tier,Enterprise Grade,Documentation Quality
+Redis,Distributed Systems,Key-Value Store,Multi-language,Rich data structures,Session management,High,Yes,Excellent
+Memcached,Distributed Systems,Key-Value Store,Multi-language,Simple fast caching,Session caching,High,Yes,Good
+Hazelcast,Distributed Systems,In-Memory Platform,Java/Python/C++,Distributed data structures,Real-time processing,High,Yes,Excellent
+Apache Ignite,Distributed Systems,In-Memory Database,Java/Python/C++,SQL support,Query acceleration,High,Yes,Excellent
+KeyDB,Distributed Systems,Redis Fork,Multi-language,Multi-threaded Redis,Redis replacement,Very High,No,Good
+Dragonfly,Distributed Systems,In-Memory Database,Multi-language,Redis-compatible,Performance upgrade,Very High,No,Good
+Valkey,Distributed Systems,Redis Fork,Multi-language,Community Redis,Redis alternative,High,No,Good
+Amazon ElastiCache,Distributed Systems,Managed Service,Cloud-native,Managed Redis/Memcached,Cloud caching,High,Yes,Excellent
+Varnish,HTTP Caching,Reverse Proxy,Multi-language,HTTP acceleration,Web caching,Very High,Yes,Excellent
+Nginx,HTTP Caching,Web Server,Multi-language,Intelligent caching,Reverse proxy,Very High,Yes,Excellent
+Cloudflare,CDN,Edge Platform,Cloud-native,Global edge network,Content delivery,Very High,Yes,Excellent
+AWS CloudFront,CDN,Managed Service,Cloud-native,AWS integration,Content distribution,High,Yes,Excellent
+Fastly,CDN,Edge Platform,Cloud-native,Real-time caching,Performance CDN,Very High,Yes,Good
+Squid,HTTP Caching,Proxy Cache,Multi-language,Web proxy,Forward/reverse proxy,Medium,No,Good
+functools.lru_cache,Python,Decorator,Python,LRU eviction,Function memoization,Very High,No,Excellent
+functools.cache,Python,Decorator,Python,Unbounded caching,Function memoization,Very High,No,Excellent
+cacheout,Python,Library,Python,Multiple eviction policies,Flexible caching,High,No,Good
+cachetools,Python,Library,Python,Various strategies,Pattern caching,Medium,No,Good
+diskcache,Python,Library,Python,Disk-backed storage,Persistent caching,Medium,No,Good
+joblib.Memory,Python,Library,Python,File-based caching,Large computations,Medium,No,Good
+Caffeine,Java,In-Memory Cache,Java,W-TinyLFU eviction,Max speed applications,Very High,No,Excellent
+Guava Cache,Java,Library,Java,Soft/weak references,Lightweight caching,High,No,Excellent
+Ehcache,Java,Full-Featured Cache,Java,JCache standards,Reliable distribution,High,Yes,Excellent
+Spring Cache,Java,Abstraction,Java,Provider-agnostic,Spring applications,High,Yes,Excellent
+Cache2k,Java,Specialized Cache,Java,Thread-optimized,Performance tuning,High,No,Good
+Otter,Go,In-Memory Cache,Go,S3-FIFO eviction,High-performance apps,Very High,No,Good
+Theine,Go,In-Memory Cache,Go,W-TinyLFU eviction,Concurrent caching,Very High,No,Good
+Ristretto,Go,In-Memory Cache,Go,TinyLFU eviction,Distributed systems,High,No,Good
+BigCache,Go,Large Data Cache,Go,Large datasets,Big data caching,High,No,Good
+FastCache,Go,High-Performance Cache,Go,Speed optimized,Speed-critical apps,Very High,No,Fair
+go-cache,Go,Lightweight Cache,Go,TTL support,Simple caching,Medium,No,Good
+moka,Rust,Concurrent Cache,Rust,TinyLFU/LRU,Production caching,Very High,No,Excellent
+quick_cache,Rust,Lightweight Cache,Rust,S3-FIFO eviction,Minimal overhead,Very High,No,Good
+lru,Rust,LRU Cache,Rust,Ordered access,Simple LRU,High,No,Good
+lrumap,Rust,LRU Cache,Rust,Unordered LRU,Hash-based LRU,High,No,Good
+cached,Rust,Memoization,Rust,TTL support,Function caching,Medium,No,Good
+parking_lot,Rust,Lock Primitives,Rust,Efficient locks,Cache internals,Very High,No,Excellent
+dashmap,Rust,Concurrent HashMap,Rust,Sharded access,Cache building block,Very High,No,Excellent
+plain-cache,Rust,Thread-Safe Cache,Rust,Simple storage,Basic needs,Medium,No,Fair
+IMemoryCache,C#/.NET,Built-in,C#/.NET,Single-server,Default choice,High,Yes,Excellent
+IDistributedCache,C#/.NET,Abstraction,C#/.NET,Provider interface,Multi-server,High,Yes,Excellent
+HybridCache,C#/.NET,Built-in,.NET 9+,Local + distributed,Modern .NET,High,Yes,Excellent
+Microsoft.Extensions.Caching.StackExchangeRedis,C#/.NET,Official Provider,C#/.NET,Redis integration,Standard Redis,Very High,Yes,Excellent
+StackExchange.Redis,C#/.NET,Client Library,C#/.NET,High-performance,Direct Redis,Very High,No,Excellent
+EasyCaching,C#/.NET,Abstraction,C#/.NET,Multiple providers,Flexible caching,High,No,Good
+CacheManager,C#/.NET,Abstraction,C#/.NET,Multi-handle,Complex configs,High,No,Good
+NCache,C#/.NET,Enterprise Cache,C#/.NET,Clustering,Enterprise needs,Very High,Yes,Excellent
+ServiceStack.Memcached,C#/.NET,Client Library,C#/.NET,Memcached support,Legacy systems,High,No,Good
+EnyimMemcached,C#/.NET,Legacy Client,C#/.NET,Memcached protocol,Old deployments,Medium,No,Fair
+lru-cache,Node.js,LRU Cache,JavaScript,Size-limited eviction,General caching,Very High,No,Excellent
+node-cache,Node.js,In-Memory Cache,JavaScript,TTL support,Quick caching,High,No,Good
+memory-cache,Node.js,Basic Cache,JavaScript,Simple storage,Minimal use,Medium,No,Fair
+apicache,Node.js,Middleware,JavaScript,HTTP response caching,API caching,Medium,No,Good
+cache-manager,Node.js,Abstraction,JavaScript,Multi-backend,Flexible backends,High,No,Good
+Apollo Client,Node.js,GraphQL Client,JavaScript,Normalized cache,GraphQL apps,Very High,No,Excellent
+TanStack Query,React,State Management,JavaScript,Server state,Data fetching,Very High,No,Excellent
+RTK Query,React,Redux Caching,JavaScript,Tag-based invalidation,Redux apps,High,No,Excellent
+SWR,React,Data Fetching,JavaScript,Stale-while-revalidate,HTTP fetching,Very High,No,Excellent
+Apollo Server,GraphQL,GraphQL Server,Multi-language,Cache directives,GraphQL caching,High,No,Excellent
+Relay,GraphQL,GraphQL Framework,JavaScript,Persisted queries,Facebook/Meta apps,Very High,No,Excellent
+responseCachePlugin,GraphQL,Apollo Plugin,Multi-language,Response caching,Full query cache,High,No,Good
+Flask-Caching,Python,Flask Extension,Python,Multiple backends,Flask applications,Medium,No,Good
+Django Cache Framework,Python,Built-in,Python,Multi-backend,Django applications,Medium,Yes,Excellent
+django-redis,Python,Integration,Python,Redis backend,Django + Redis,High,No,Good
+django-cacheops,Python,ORM-Aware,Python,Query caching,Django ORM,High,No,Good
+SQLAlchemy CachingQuery,Python,Custom Pattern,Python,Query interception,SQLAlchemy apps,Medium,No,Good
+Dogpile.cache,Python,Library,Python,Dogpile patterns,Advanced caching,High,No,Good
+Service Workers,Browser,Web API,JavaScript,Cache API,PWA offline,High,No,Excellent
+localStorage,Browser,Web API,JavaScript,Persistent storage,Client storage,Medium,No,Excellent
+sessionStorage,Browser,Web API,JavaScript,Session storage,Tab-scoped storage,Medium,No,Excellent
+IndexedDB,Browser,Web API,JavaScript,Large data storage,Complex queries,High,No,Excellent
+Cache API,Browser,Web API,JavaScript,Named caches,Service Worker cache,High,No,Excellent
+Cloudflare Workers,Edge,Serverless,Cloud-native,Edge computing,Custom caching,Very High,No,Excellent
+Infinispan,Java,Cache Framework,Java,Distributed caching,Enterprise Java,High,Yes,Good
+Oracle Coherence,Java,Enterprise Cache,Java,Clustering,Enterprise systems,Very High,Yes,Good
+GemFire,Java,Data Store,Java,Transactional,Real-time analytics,High,Yes,Good
+Terracotta BigMemory,Java,Off-Heap Cache,Java,Large datasets,Multi-terabyte cache,High,Yes,Fair
+Azure Cache for Redis,Cloud,Managed Service,Cloud-native,Azure integration,Azure applications,High,Yes,Excellent
+Bunny CDN,CDN,Content Delivery,Cloud-native,Budget-friendly,Cost-effective CDN,Medium,No,Good
+Akamai,CDN,Content Delivery,Cloud-native,Enterprise network,Large scale CDN,Very High,Yes,Good
+Werkzeug,Python,Utilities,Python,Cache utilities,Flask/Werkzeug apps,Medium,No,Good

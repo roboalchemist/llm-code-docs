@@ -1,0 +1,14 @@
+# Source: https://github.com/GoogleChrome/lighthouse/blob/main/docs/recipes/type-checking/tsconfig.json
+
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+  },
+  "include": [
+    "./use-types.ts"
+  ]
+}

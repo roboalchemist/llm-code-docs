@@ -1,0 +1,171 @@
+================================================================================
+OAUTH-RELATED TOPICS - DOCUMENTATION COVERAGE REPORT
+llm-code-docs Repository Analysis
+================================================================================
+
+TOPICS WITH DOCUMENTATION (9 found):
+================================================================================
+
+1. Better Auth (llms-txt/better-auth - 144 files)
+   - Comprehensive OAuth provider documentation
+   - Multiple OAuth-related markdown files found (60 files mention OAuth)
+   
+2. Clerk (llms-txt/clerk - 1 file)
+   - Identity and authentication platform
+   
+3. Discord (github-scraped/discord-api - 316 files)
+   - OAuth2 scopes and social SDK documentation
+   - oauth2.mdx and related OAuth documentation
+   
+4. Google OAuth / Google services (llms-txt/developers-2 - 104 files)
+   - oauth.md (35KB)
+   - oauthservice.md (13KB)
+   - Google OAuth client ID setup docs
+   
+5. PayPal (llms-txt/paypal - 65 files)
+   - OAuth flow documentation
+   - API authentication
+   
+6. Postman (llms-txt/postman - 120 files)
+   - OAuth 2.0 support and testing
+   
+7. Stripe (llms-txt/stripe - 388 files)
+   - OAuth-related payment documentation
+   
+8. WorkOS (llms-txt/workos - 2 files)
+   - Authentication and OAuth documentation
+   
+9. AWS (llms-txt/aws - 1 file)
+   - Covers AWS API Gateway and Secrets Manager
+
+================================================================================
+TOPICS WITHOUT DOCUMENTATION (159 missing):
+================================================================================
+
+Missing Major OAuth Platforms:
+- Auth0 - Leading OAuth/OIDC platform
+- Okta - Enterprise identity platform
+- AWS Cognito - Amazon's identity service
+- Azure Entra ID (formerly Azure AD) - Microsoft identity
+- Keycloak - Open-source identity provider
+- Supabase Auth - Backend-as-service auth
+- Firebase / Firestore Auth - Google's backend auth
+- NextAuth.js / Auth.js - Node.js auth libraries
+- Passport.js - Node.js authentication middleware
+- Spring Security OAuth - Java OAuth implementation
+- Authlib - Python OAuth library
+- Django OAuth Toolkit - Django OAuth2 provider
+- python-social-auth - Python social auth
+
+Missing JWT/Token Libraries:
+- jsonwebtoken - JWT manipulation
+- pyjwt - Python JWT library
+- golang-jwt, golang.org/x/oauth2 - Go OAuth
+- jose - JavaScript Object Signing and Encryption
+- jwt.io - JWT testing/debugging
+
+Missing OAuth Proxy/Gateway Tools:
+- OAuth2-Proxy - OAuth proxy for apps
+- ORY Hydra - OAuth2 and OpenID Connect server
+- Dex - OpenID Connect provider
+- Keycloak - Identity provider
+- ZITADEL - Enterprise identity platform
+
+Missing Open-Source Identity Platforms:
+- Authentik - Modern identity provider
+- Casdoor - Identity management
+- Logto - Modern OIDC platform
+- Keycloak - Open-source identity server
+- ORY Ecosystem (Hydra, Kratos, Keto)
+- WSO2 Identity Server
+
+Missing Authentication/Authorization Libraries:
+- OpenIddict - .NET OpenID Connect server
+- IdentityServer/Duende IdentityServer - ASP.NET
+- Hanko - WebAuthn/passkey solution
+- Stytch - Passwordless auth platform
+- Descope - Auth platform
+- SuperTokens - Open-source auth
+- Frontegg - Auth for SaaS
+- WorkOS - SaaS SSO platform
+
+Missing OAuth Clients/SDKs:
+- AppAuth - Mobile OAuth client
+- flutter_appauth - Flutter OAuth library
+- angular-auth-oidc-client - Angular OIDC
+- omniauth-openid-connect, OmniAuth - Ruby OAuth
+- league/oauth2-client - PHP OAuth client
+- go-oauth2/oauth2 - Go OAuth2
+- requests-oauthlib - Python OAuth
+
+Missing Identity Verification/Security:
+- Passkeys/WebAuthn - Passwordless authentication
+- FIDO2 - Authentication standard
+- Yubico/YubiKey - Hardware auth tokens
+
+Missing Developer Tools:
+- OpenID Connect Debugger
+- OAuth 2.0 Playground
+- oauth.net - Official OAuth info
+- jwt.io - JWT debugging tool
+- Hoppscotch - API testing (has OAuth support)
+- Insomnia - API client (has OAuth support)
+- Postman - (We have this one)
+
+Missing Enterprise/Compliance Solutions:
+- CyberArk - Secrets management
+- HashiCorp Vault - Secrets management
+- Okta - Enterprise identity
+- Ping Identity - Enterprise identity
+- Salesforce - Cloud identity
+- ForgeRock - Enterprise identity
+- SailPoint - Identity governance
+
+Missing Security Testing Tools:
+- OWASP ZAP - Security scanner
+- Burp Suite - Security testing
+- Nuclei - Vulnerability scanner
+- StackHawk - Security testing
+- Invicti - Web security scanner
+
+Missing Social OAuth Providers:
+- Facebook Login SDK
+- LinkedIn OAuth
+- GitHub OAuth (we may have this in some form)
+- Apple OAuth
+- Google OAuth (we have this in developers-2)
+- Twitch OAuth
+- PayPal (we have this one)
+
+Miscellaneous Missing:
+- 1Password - Password manager with OAuth
+- Dashlane, LastPass Enterprise - Password managers
+- Samba - Network identity
+- LDAP/389 Directory Server - Enterprise directory
+- Kong API Gateway - API management with OAuth
+- NGINX - Web server with OAuth modules
+- Swagger/OpenAPI - API docs (OAuth support)
+
+================================================================================
+COVERAGE ANALYSIS:
+================================================================================
+
+Total OAuth Topics in Master List: 169
+Topics with Documentation:         9
+Topics Missing:                    160
+
+Coverage: 5.3% (9 out of 169 topics)
+
+High-Priority Missing Topics (major platforms):
+1. Auth0 - Most popular OAuth/OIDC service
+2. Okta - Enterprise identity leader
+3. AWS Cognito - Amazon's identity service
+4. Azure Entra ID - Microsoft's identity platform
+5. Keycloak - Open-source identity standard
+6. Firebase - Google's backend-as-service
+7. NextAuth.js - Popular Node.js auth
+8. Passport.js - Standard Node.js auth middleware
+9. Supabase Auth - Modern SaaS auth
+10. Authlib - Popular Python OAuth library
+
+================================================================================

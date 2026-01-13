@@ -1,0 +1,26 @@
+Category,System,Type,Best Use Case,License,Status 2025,Key Feature,Performance,Documentation
+In-Memory DB,Redis,Key-value store,Caching Sessions Real-time,Source-available,Mature widely-used,Sub-millisecond latency,Millions ops/sec,https://redis.io/
+In-Memory DB,Valkey,Key-value store,Redis replacement Open-source,BSD 3-Clause,Emerging leader,Multi-threaded I/O,1.19M req/sec,https://valkey.io/
+In-Memory DB,Dragonfly,Key-value store,High-write workloads,Apache 2.0,Production ready,25x faster claims,16K ops/sec,https://www.dragonflydb.io/
+In-Memory DB,Aerospike,Distributed hybrid-memory,Extreme scale 10M+ users,AGPLv3,Enterprise grade,Linear scaling DRAM+SSD,33K ops/sec,https://aerospike.com/
+In-Memory DB,Memcached,Simple KV cache,High throughput simple,BSD,Stable since 2003,No persistence LRU,Ultra-high throughput,https://memcached.org/
+In-Memory DB,Pogocache,Multi-protocol cache,Embedded applications,Open-source,GA 2025,Multi-protocol 100M ops/sec,>100M ops/sec embedded,https://pogocache.io/
+In-Memory DB,RocksDB,Embedded KV store,Single-node deployments,Apache 2.0,Production ready,LSM tree high perf,Single-server focus,https://rocksdb.org/
+Cloud Service,AWS ElastiCache,Managed cache,Cloud-native AWS apps,Proprietary,Mature,Redis or Memcached,Sub-millisecond latency,https://aws.amazon.com/elasticache/
+Cloud Service,Google Memorystore,Managed cache,Google Cloud deployments,Proprietary,Production ready,Redis or Memcached,99.9% availability,https://cloud.google.com/memorystore
+Cloud Service,Azure Cache for Redis,Managed cache,Microsoft ecosystem,Proprietary,Enterprise-grade,Geo-replication clustering,Sub-millisecond,https://azure.microsoft.com/services/cache/
+CDN,Cloudflare,Global CDN,Static content APIs,Proprietary,Mature 300+ edge,Cache Rules Engine,10-100ms latency,https://developers.cloudflare.com/cache/
+CDN,Fastly,Developer CDN,APIs dynamic content,Proprietary,Production ready,VCL instant purge,10-100ms latency,https://developer.fastly.com/
+CDN,Akamai,Enterprise CDN,Large-scale content,Proprietary,Long-standing,300K+ servers,20-150ms latency,https://www.akamai.com/
+CDN,AWS CloudFront,AWS CDN,AWS integration,Proprietary,Mature,Lambda@Edge integration,Per-GB pricing,https://aws.amazon.com/cloudfront/
+CDN,Google Cloud CDN,Google CDN,Google ecosystem,Proprietary,Managed service,Cloud Armor DDoS,Per-GB pricing,https://cloud.google.com/cdn
+Reverse Proxy,Varnish,HTTP caching proxy,Web acceleration origin,BSD,Mature,VCL tag-based purge,1000+ req/sec,https://varnish-cache.org/
+App Cache,.NET FusionCache,L1+L2 hybrid,Production-scale APIs,Open-source,Framework level,Stampede protection,Two-level architecture,https://github.com/JagonzalezJ/FusionCache
+App Cache,.NET HybridCache,L1+L2 hybrid,Basic intermediate APIs,Microsoft,Built-in .NET 9+,Automatic sync,Simpler than Fusion,https://learn.microsoft.com/aspnet/core/performance/caching/
+Vector DB,Pinecone,Managed vector DB,AI semantic search RAG,Proprietary,Serverless,Auto-scaling namespace,100-500ms,https://www.pinecone.io/
+Vector DB,Weaviate,Open-source vector DB,Self-hosted deployments,Business Source,Production ready,GraphQL API hybrid search,50-200ms,https://weaviate.io/
+Vector DB,Chroma,Open-source vector DB,Simple RAG apps,Apache 2.0,Lightweight,In-process or client,Fast prototyping,https://www.trychroma.com/
+Vector DB,Milvus,Open-source vector DB,Distributed deployments,Apache 2.0,Cloud-native,Distributed high perf,Scalable production,https://milvus.io/
+Storage,AWS FSx Lustre,ML storage,Model training,Proprietary,High-performance,Sub-millisecond GPU,TB/s throughput,https://aws.amazon.com/fsx/lustre/
+Storage,AWS S3 Express,Object storage,Model artifacts,Proprietary,Single-digit ms,10x vs standard S3,Frequent access,https://aws.amazon.com/s3/
+Framework,LangChain,AI caching framework,LLM caching prediction,Open-source,Mature,40% efficiency gains,Predictive warmup,https://langchain.com/

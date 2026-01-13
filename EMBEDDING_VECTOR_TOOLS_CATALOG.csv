@@ -1,0 +1,40 @@
+Category,Tool Name,Type,Language,Primary Use Case,Strengths,Open Source,Production Ready,Website/GitHub
+Embedding Provider,OpenAI,API,N/A,RAG/Semantic Search,"Industry standard, optimized for RAG, multilingual",No,Yes,https://platform.openai.com/docs/guides/embeddings
+Embedding Provider,Cohere,API,N/A,Multilingual Embeddings,"100+ languages, long-context, balanced recall/precision",No,Yes,https://docs.cohere.com/
+Embedding Provider,Voyage AI,API,N/A,Document Retrieval,"MTEB benchmarks, multilingual, document-focused",No,Yes,https://www.voyageai.com/
+Embedding Provider,Anthropic,API,N/A,Enterprise RAG,"Factual grounding, reduced toxicity",No,Yes,https://docs.anthropic.com/
+Embedding Provider,Google Vertex,API,N/A,Multimodal Search,"Text + image embeddings, enterprise scale",No,Yes,https://cloud.google.com/vertex-ai
+Embedding Provider,Jina AI,API,N/A,High-Performance Search,"MTEB top performer, flexible deployment",No,Yes,https://www.jina.ai/
+Local Embedding,Sentence-Transformers,Library,Python,General Embeddings,"Simple API, GPU acceleration, caching, beginner-friendly",Yes,Yes,https://sbert.net/
+Local Embedding,FastEmbed,Library,Python,Production Embeddings,"Low latency, sparse/dense, optimized speed",Yes,Yes,https://github.com/qdrant/fastembed
+Local Embedding,Ollama,Platform,Go/Python,Local Model Management,"One-command setup, cross-platform, easy deployment",Yes,Yes,https://ollama.ai/
+Local Embedding,Hugging Face Transformers,Library,Python,Custom Embeddings,"2000+ models/datasets, flexible, research-friendly",Yes,Yes,https://huggingface.co/transformers/
+Local Embedding,Text Embeddings Inference,Server,Rust,High-Performance Inference,"Highest throughput, memory efficient, quantization",Yes,Yes,https://github.com/huggingface/text-embeddings-inference
+Vector Search,FAISS,Library,C++/Python,Large-Scale Search,"GPU support, versatile indexing, high accuracy",Yes,Yes,https://github.com/facebookresearch/faiss
+Vector Search,hnswlib,Library,C++/Python,CPU Production Search,"Top CPU speed, high recall, incremental updates",Yes,Yes,https://github.com/nmslib/hnswlib
+Vector Search,ScaNN,Library,C++/Python,Memory-Constrained Search,"10x compression, semantic search optimized",Yes,Yes,https://github.com/google-research/scann
+Vector Search,Annoy,Library,C++/Python,Low-Latency Search,"Ultra-fast queries, simple, easy deployment",Yes,Yes,https://github.com/spotify/annoy
+Vector Search,DiskANN,Library,C++,Billion-Scale Search,"Disk-based, low RAM, billion-scale support",Yes,Yes,https://github.com/microsoft/DiskANN
+Vector Search,NGT,Library,C++/Python,General ANN Search,"Efficient large-scale, robust updates",Yes,Yes,https://github.com/yahoojapan/NGT
+Vector Search,PyNNDescent,Library,Python,Python-Native Search,"Pure Python, portable, learning-friendly",Yes,Yes,https://github.com/lmcinnes/pynndescent
+Vector Database,Pinecone,SaaS,N/A,Managed Vector Search,"<50ms p99 latency, 100B+ scale, fully managed",No,Yes,https://www.pinecone.io/
+Vector Database,Weaviate,Database,Go,Flexible Vector Storage,"Open-source, GraphQL, multiple vector spaces, real-time",Yes,Yes,https://weaviate.io/
+Vector Database,Milvus,Database,Go,Distributed Vector Storage,"Top open-source, GPU support, distributed, massive scale",Yes,Yes,https://milvus.io/
+Vector Database,Qdrant,Database,Rust,High-Performance Vector DB,"Rust-based, rich filtering, ACID compliance, hybrid search",Yes,Yes,https://qdrant.tech/
+Vector Database,Chroma,Database,Python,RAG-Focused Vector DB,"Lightweight, simple, RAG workflows, easy integration",Yes,Yes,https://docs.trychroma.com/
+Vector Database,Vespa,Database,Java/C++,Hybrid Search Engine,"Vectors + text + custom ranking, real-time, distributed",Yes,Yes,https://vespa.ai/
+Vector Database,Elasticsearch,Database,Java,Enterprise Hybrid Search,"Full-text + vector, geo-filtering, 50B+ scale, mature",Yes,Yes,https://www.elastic.co/
+Vector Database,pgvector,Extension,SQL,PostgreSQL Integration,"Native extension, ACID compliance, SQL-based",Yes,Yes,https://github.com/pgvector/pgvector
+Vector Database,MongoDB Atlas,SaaS,N/A,Document + Vector Store,"MongoDB integration, familiar model, managed",No,Yes,https://www.mongodb.com/
+Inference Server,vLLM,Server,Python,LLM + Embedding Serving,"PagedAttention, fast batching, high throughput",Yes,Yes,https://vllm.readthedocs.io/
+Inference Server,TorchServe,Server,Python/Java,PyTorch Model Serving,"REST/gRPC endpoints, scaling, hot-reload",Yes,Yes,https://github.com/pytorch/serve
+Inference Server,Triton Inference,Server,C++,Multi-Framework Serving,"PyTorch/TensorFlow/ONNX, dynamic batching, production",Yes,Yes,https://www.nvidia.com/en-us/ai-data-science/products/triton-inference-server/
+Deep Learning,PyTorch,Framework,Python,Research & Production,"GPU-accelerated, dynamic graphs, popular for transformers",Yes,Yes,https://pytorch.org/
+Deep Learning,TensorFlow,Framework,Python,Scalable Production,"Distributed training, mature tools, TensorBoard",Yes,Yes,https://www.tensorflow.org/
+Deep Learning,Keras,Framework,Python,Rapid Prototyping,"Simple API, TensorFlow backend, beginner-friendly",Yes,Yes,https://keras.io/
+Embedding Model,BGE-M3,Model,N/A,Multilingual RAG,"92.5% accuracy, trilingual, open-source BAAI",Yes,Yes,https://huggingface.co/BAAI/bge-m3
+Embedding Model,E5 Series,Model,N/A,Production Embeddings,"Low-latency, efficient, multiple sizes",Yes,Yes,https://huggingface.co/intfloat/
+Embedding Model,NV-Embed,Model,N/A,Enterprise Embeddings,"NVIDIA-optimized, generalist models",Yes,Yes,https://huggingface.co/nvidia/
+Embedding Model,Instructor-XL,Model,N/A,Task-Aware Embeddings,"Task comprehension, flexible usage",Yes,Yes,https://huggingface.co/hkunlp/
+Embedding Model,Stella,Model,N/A,Production RAG,"400M and 1.5B variants, efficient",Yes,Yes,https://huggingface.co/dunzhang/
+Embedding Model,EmbeddingGemma,Model,N/A,Low-Parameter Multilingual,"<1B params, 100+ languages, mobile-friendly",Yes,Yes,https://huggingface.co/google/

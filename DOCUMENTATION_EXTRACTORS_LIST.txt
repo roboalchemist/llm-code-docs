@@ -1,0 +1,98 @@
+DOCUMENTATION EXTRACTORS FROM CODE COMMENTS AND ANNOTATIONS
+Deduplicated List of Software Names
+
+LANGUAGE-SPECIFIC DOC GENERATORS
+Javadoc
+RDoc
+GoDoc
+Rustdoc
+Dokka
+Scaladoc
+YARD
+SwiftDoc
+Jazzy
+SourceKitten
+DocC
+phpDocumentor
+Godoc
+
+TYPESCRIPT/JAVASCRIPT DOC GENERATORS
+TypeDoc
+JSDoc
+ESDoc
+Compodoc
+
+UNIVERSAL/MULTI-LANGUAGE DOC GENERATORS
+Doxygen
+Sphinx
+
+PYTHON-SPECIFIC
+pdoc
+Pydantic
+autodoc_pydantic
+
+OPENAPI/SWAGGER DOCUMENTATION TOOLS
+Swagger UI
+SwaggerUI
+Redoc
+Redocly
+Springdoc-openapi
+Swagger Codegen
+OpenAPI Generator
+oapi-codegen
+Mintlify
+Docusaurus
+Apidog
+ReadMe
+
+GRAPHQL SCHEMA DOCUMENTATION
+Graphicator
+gquil
+Galaxy Modeler
+GraphiQL
+GraphQL Inspector
+graphql-tools
+
+JSON SCHEMA DOCUMENTATION
+json-schema-for-humans
+JSON Schema Static Docs
+JSON Buddy
+Oxygen XML Editor
+Stoplight Studio
+JSONEditor Online
+CloudFlare Doca
+
+PROTOCOL BUFFERS/GRPC DOCUMENTATION
+protoc
+buf
+
+ASYNCAPI DOCUMENTATION
+AsyncAPI
+
+OTHER API/SCHEMA DOCUMENTATION
+Redocly
+Swagger Inspector
+Insomnia
+Postman
+API Extractor
+API Documenter
+Storybook
+Docz
+DocFX
+RapiDoc
+
+COMPONENT/DESIGN SYSTEM DOCUMENTATION
+Storybook
+Docz
+Compodoc
+
+CODE GENERATION FROM SPECIFICATIONS
+Swagger Codegen
+OpenAPI Generator
+oapi-codegen
+Speakeasy
+
+MARKDOWN/STATIC SITE GENERATORS
+MkDocs
+DocFX
+Docusaurus

@@ -1,0 +1,12 @@
+Provider,Storage Service,Storage Price (GB/month),Egress Price,CDN Integration,Edge Regions,S3 Compatible,API/SDK Available,Best Use Case,Notable Features
+Cloudflare,R2,$0.015,Free (zero),"Built-in, automatic",31+,Yes,Yes,"Global CDN with edge storage, cost-effective at scale","Zero egress, automatic edge caching, intelligent routing"
+Bunny CDN,Bunny Storage Edge,$0.02/region,Varies,"Built-in, with routing",15,Yes,Yes,"High-performance media delivery, video streaming","5x faster downloads, <1ms disk latency, 26ms global TTFB"
+DigitalOcean,Spaces,$0.02,Included,"Built-in CDN service",Multiple,Yes,Yes,"Web apps, media libraries, simple deployments","S3 compatible, straightforward pricing, bandwidth management"
+Backblaze,B2,$0.006,"Free (3x rule)",Requires pairing,N/A,Yes,Yes,"Budget-conscious backups, archive storage","Lowest cost, free retrieval allowance, read-heavy workloads"
+Wasabi,Hot Cloud Storage,$0.007,Free (zero),"Requires pairing, recommended",N/A,Yes,Yes,"High-volume reads, cost-effective distribution with CDN","Zero egress, no API fees, read-heavy performance"
+Hetzner,Object Storage,$0.007,$0.00143/GB,Requires pairing (supports CDN origin),2 (EU),Yes,Yes,"EU archival, GDPR compliance, cost-effective EU origin","GDPR compliant, Object Lock, encryption, Ceph-based"
+Google Cloud,Cloud Storage,$0.02,$0.12/GB,Requires separate CDN,Global,Yes,Yes,"Enterprise workloads, GCP integration","Multi-regional options, Google infrastructure, mature ecosystem"
+Amazon,S3,$0.023,$0.09/GB,"CloudFront (separate), 31 regions",99 zones,Yes,Yes,"Enterprise, AWS ecosystem, complex infrastructure","Market leader, highest reliability, extensive integrations"
+Vultr,Object Storage,$0.006,Varies,Requires pairing,N/A,Yes,Yes,"Cost-conscious projects, balanced features","$6/month for 1TB, S3 compatible, budget entry point"
+Linode,Object Storage,$0.02,Included,"Linode ecosystem",N/A,Yes,Yes,"Simple web apps, Linode integration","$5/month entry point, 250GB starter tier"
+MinIO,Self-hosted,Variable,Variable,Requires external CDN,Self-deployed,Yes,Yes,"Private cloud, on-premises, full control required","Open-source, terabyte-scale throughput, deployment flexibility"
