@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/go.md
+
+# Source: https://docs.datadoghq.com/profiler/enabling/go.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/go.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/library_config/go.md

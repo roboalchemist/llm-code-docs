@@ -1,3 +1,9 @@
+# Source: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration.md
+
+# Source: https://docs.datadoghq.com/containers/kubernetes/configuration.md
+
+# Source: https://docs.datadoghq.com/containers/datadog_operator/configuration.md
+
 # Source: https://docs.datadoghq.com/agent/configuration.md
 
 # Source: https://docs.datadoghq.com/account_management/saml/configuration.md

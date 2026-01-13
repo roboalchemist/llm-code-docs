@@ -1,0 +1,45 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.appstream_public_image.dataset.md
+
+---
+title: AppStream 2.0 Public Image
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > AppStream 2.0 Public Image
+source_url: >-
+  https://docs.datadoghq.com/data_directory/aws/aws.appstream_public_image.dataset/index.html
+---
+
+# AppStream 2.0 Public Image
+
+An AppStream 2.0 Public Image in AWS is a preconfigured, ready-to-use image that contains applications and settings for streaming to end users. These images are maintained by AWS and provide a starting point for creating custom images, enabling organizations to quickly deploy virtualized desktops and applications without building from scratch.
+
+```
+aws.appstream_public_image
+```
+
+## Fields
+
+| Title                           | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                            | Description |
+| ------------------------------- | ---- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                            | core | string        |
+| account_id                      | core | string        |
+| applications                    | core | json          | The applications associated with the image.                                                                                                                                                                                                                                                          |
+| appstream_agent_version         | core | string        | The version of the AppStream 2.0 agent to use for instances that are launched from this image.                                                                                                                                                                                                       |
+| arn                             | core | string        | The ARN of the image.                                                                                                                                                                                                                                                                                |
+| base_image_arn                  | core | string        | The ARN of the image from which this image was created.                                                                                                                                                                                                                                              |
+| created_time                    | core | timestamp     | The time the image was created.                                                                                                                                                                                                                                                                      |
+| description                     | core | string        | The description to display.                                                                                                                                                                                                                                                                          |
+| dynamic_app_providers_enabled   | core | string        | Indicates whether dynamic app providers are enabled within an AppStream 2.0 image or not.                                                                                                                                                                                                            |
+| image_builder_name              | core | string        | The name of the image builder that was used to create the private image. If the image is shared, this value is null.                                                                                                                                                                                 |
+| image_builder_supported         | core | bool          | Indicates whether an image builder can be launched from this image.                                                                                                                                                                                                                                  |
+| image_errors                    | core | json          | Describes the errors that are returned when a new image can't be created.                                                                                                                                                                                                                            |
+| image_permissions               | core | json          | The permissions to provide to the destination AWS account for the specified image.                                                                                                                                                                                                                   |
+| image_shared_with_others        | core | string        | Indicates whether the image is shared with another account ID.                                                                                                                                                                                                                                       |
+| latest_appstream_agent_version  | core | string        | Indicates whether the image is using the latest AppStream 2.0 agent version or not.                                                                                                                                                                                                                  |
+| name                            | core | string        | The name of the image.                                                                                                                                                                                                                                                                               |
+| platform                        | core | string        | The operating system platform of the image.                                                                                                                                                                                                                                                          |
+| public_base_image_released_date | core | timestamp     | The release date of the public base image. For private images, this date is the release date of the base image from which the image was created.                                                                                                                                                     |
+| state                           | core | string        | The image starts in the PENDING state. If image creation succeeds, the state is AVAILABLE. If image creation fails, the state is FAILED.                                                                                                                                                             |
+| state_change_reason             | core | json          | The reason why the last state change occurred.                                                                                                                                                                                                                                                       |
+| supported_instance_families     | core | array<string> | The supported instances families that determine which image a customer can use when the customer launches a fleet or image builder. The following instances families are supported: General Purpose Compute Optimized Memory Optimized Graphics Graphics Design Graphics Pro Graphics G4 Graphics G5 |
+| tags                            | core | hstore        |
+| visibility                      | core | string        | Indicates whether the image is public or private.                                                                                                                                                                                                                                                    |

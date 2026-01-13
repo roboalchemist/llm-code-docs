@@ -1,3 +1,9 @@
+# Source: https://docs.datadoghq.com/containers/kubernetes/data_collected.md
+
+# Source: https://docs.datadoghq.com/containers/docker/data_collected.md
+
+# Source: https://docs.datadoghq.com/containers/datadog_operator/data_collected.md
+
 # Source: https://docs.datadoghq.com/containers/amazon_ecs/data_collected.md
 
 # Source: https://docs.datadoghq.com/code_coverage/data_collected.md

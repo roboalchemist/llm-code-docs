@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/php.md
+
+# Source: https://docs.datadoghq.com/profiler/enabling/php.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/php.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/library_config/php.md

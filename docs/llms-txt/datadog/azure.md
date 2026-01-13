@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/continuous_integration/pipelines/azure.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/setup/azure.md
 
 # Source: https://docs.datadoghq.com/account_management/billing/azure.md

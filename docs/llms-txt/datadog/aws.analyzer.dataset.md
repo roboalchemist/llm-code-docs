@@ -1,0 +1,33 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.analyzer.dataset.md
+
+---
+title: Analyzers
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Analyzers
+source_url: https://docs.datadoghq.com/data_directory/aws/aws.analyzer.dataset/index.html
+---
+
+# Analyzers
+
+This table represents the Analyzers resource from Amazon Web Services.
+
+```
+aws.analyzer
+```
+
+## Fields
+
+| Title                     | ID   | Type      | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Description |
+| ------------------------- | ---- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                      | core | string    |
+| account_id                | core | string    |
+| arn                       | core | string    | The ARN of the analyzer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| configuration             | core | json      | Specifies whether the analyzer is an external access or unused access analyzer.                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| created_at                | core | timestamp | A timestamp for the time at which the analyzer was created.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| last_resource_analyzed    | core | string    | The resource that was most recently analyzed by the analyzer.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| last_resource_analyzed_at | core | timestamp | The time at which the most recently analyzed resource was analyzed.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| name                      | core | string    | The name of the analyzer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| status                    | core | string    | The status of the analyzer. An <code>Active</code> analyzer successfully monitors supported resources and generates new findings. The analyzer is <code>Disabled</code> when a user action, such as removing trusted access for Identity and Access Management Access Analyzer from Organizations, causes the analyzer to stop generating new findings. The status is <code>Creating</code> when the analyzer creation is in progress and <code>Failed</code> when the analyzer creation has failed. |
+| status_reason             | core | json      | The <code>statusReason</code> provides more details about the current status of the analyzer. For example, if the creation for the analyzer fails, a <code>Failed</code> status is returned. For an analyzer with organization as the type, this failure can be due to an issue with creating the service-linked roles required in the member accounts of the Amazon Web Services organization.                                                                                                      |
+| tags                      | core | hstore    |
+| type                      | core | string    | The type of analyzer, which corresponds to the zone of trust chosen for the analyzer.                                                                                                                                                                                                                                                                                                                                                                                                                |

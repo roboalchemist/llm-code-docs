@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/dotnet.md
+
+# Source: https://docs.datadoghq.com/profiler/enabling/dotnet.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/dotnet.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dynamic_instrumentation/enabling/dotnet.md

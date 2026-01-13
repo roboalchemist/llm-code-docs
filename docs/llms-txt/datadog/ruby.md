@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/ruby.md
+
+# Source: https://docs.datadoghq.com/profiler/enabling/ruby.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/ruby.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dynamic_instrumentation/enabling/ruby.md
