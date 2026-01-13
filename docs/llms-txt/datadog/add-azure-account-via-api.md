@@ -1,0 +1,50 @@
+# Source: https://docs.datadoghq.com/cloudcraft/advanced/add-azure-account-via-api.md
+
+---
+title: Add Azure accounts via the Cloudcraft API
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Cloudcraft (Standalone) > Advanced > Add Azure accounts via the
+  Cloudcraft API
+source_url: https://docs.datadoghq.com/advanced/add-azure-account-via-api/index.html
+---
+
+# Add Azure accounts via the Cloudcraft API
+
+Cloudcraft currently doesn't offer a way to add multiple Azure accounts at once using the web interface, but you can do so via [the API](https://developers.cloudcraft.co/).
+
+{% alert level="info" %}
+The ability to add and scan Azure accounts, as well as to use Cloudcraft's developer API, is only available to Pro subscribers. Check out [Cloudcraft's pricing page](https://www.cloudcraft.co/pricing) for more information.
+{% /alert %}
+
+## Prerequisites{% #prerequisites %}
+
+Before you begin, make sure you have the following:
+
+- A Cloudcraft user with the [Owner or Administrator role](https://docs.datadoghq.com/cloudcraft/account-management/roles-and-permissions/).
+- An active [Cloudcraft Pro subscription](https://www.cloudcraft.co/pricing).
+- An Azure account with proper permissions.
+- A Unix-like environment, such as Linux, macOS, or WSL on Windows with cURL installed.
+- A basic understanding of the command-line interface.
+- A basic understanding of how to use APIs.
+
+You must also have the **Application ID**, **Directory ID**, **Subscription ID**, and **Client secret** for your Azure account. For help locating these values, see [Connect your Azure account with Cloudcraft](https://docs.datadoghq.com/cloudcraft/getting-started/connect-azure-account-with-cloudcraft/).
+
+## Adding an Azure account{% #adding-an-azure-account %}
+
+To add your Azure account to Cloudcraft, open the command line and enter the following cURL command:
+
+```shell
+curl \
+  --url 'https://api.cloudcraft.co/azure/account' \
+  --tlsv1.2 \
+  --proto '=https' \
+  --silent \
+  --header 'Content-Type: application/json' \
+  --header "Authorization: Bearer ${API_KEY}" \
+  --data-raw '{"name":"AZURE_ACCOUNT_NAME","applicationId": "APPLICATION_ID","directoryId": "DIRECTORY_ID","subscriptionId": "SUBSCRIPTION_ID","clientSecret": "CLIENT_SECRET"}'
+```
+
+Replace `_AZURE_ACCOUNT_NAME_` with the name you want the account to have in Cloudcraft and the other values with the actual values. Replace `_API_KEY_` with your API key.
+
+After you successfully add the account, you can use the same command to add additional accounts to Cloudcraft.

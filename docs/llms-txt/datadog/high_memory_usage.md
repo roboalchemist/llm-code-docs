@@ -1,0 +1,73 @@
+# Source: https://docs.datadoghq.com/agent/troubleshooting/high_memory_usage.md
+
+---
+title: High CPU or Memory Consumption
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > Agent > Agent Troubleshooting > High CPU or Memory Consumption
+source_url: https://docs.datadoghq.com/troubleshooting/high_memory_usage/index.html
+---
+
+# High CPU or Memory Consumption
+
+Several factors can cause high Agent CPU or memory consumption. If you try the steps below and continue to have trouble, contact Datadog Support for further assistance.
+
+### Common causes of high CPU or memory consumption{% #common-causes-of-high-cpu-or-memory-consumption %}
+
+- An integration is returning thousands of metrics, or is running a large number of check instances. You can see a summary of the running check instances, as well as the number of metrics collected, by running [the `status` CLI command](https://docs.datadoghq.com/agent/basic_agent_usage/#cli) and checking the **Collector** section.
+- The Agent's Python or Go runtime is causing high resource consumption. Enable [Live Processes Monitoring](https://docs.datadoghq.com/infrastructure/process/) to check if the Agent process is consuming unexpected amounts of memory or CPU. You can also use your operating system's activity manager to check Agent process resource consumption.
+- The Agent is monitoring a large number of processes. This is configured in the [Process Check configuration file](https://docs.datadoghq.com/integrations/process/#configuration).
+- The Agent's behavior is triggering Windows anti-malware or antivirus tools, causing high CPU usage.
+- The Agent is forwarding a very large number of log lines or DogStatsD metrics.
+
+### Adjustments to reduce resource usage{% #adjustments-to-reduce-resource-usage %}
+
+Here are some adjustments you can make to your Agent configuration to reduce resource usage:
+
+- For integrations that have many check instances or are collecting large numbers of metrics, adjust the `min_collection_interval` in the integration's `conf.yaml` file. In general, the Agent runs each check instance every 10 to 15 seconds. Setting `min_collection_interval` to 60 seconds or more can help reduce resource consumption. For more information on the check collection interval, see the [Custom Agent Check documentation](https://docs.datadoghq.com/developers/write_agent_check/#collection-interval).
+- Check if an integration is configured to use Autodiscovery, or if an integration is using a wildcard (`*`) that could be scoped more specifically. For more information on Autodiscovery, see [Basic Agent Autodiscovery](https://docs.datadoghq.com/getting_started/containers/#enable-autodiscovery).
+
+## Reach out to Datadog Support{% #reach-out-to-datadog-support %}
+
+If none of the above solutions are right for your situation, [reach out to Datadog Support](https://docs.datadoghq.com/help/). Make sure you've enabled [Live Processes Monitoring](https://docs.datadoghq.com/infrastructure/process/) to confirm that the Agent process is consuming unexpected amounts of memory or CPU.
+
+When opening a ticket, include information on how you are confirming the issue and what steps you have taken so far. Depending on whether or not you can isolate the problem to a single integration, include information from one of the following sections.
+
+### High consumption isolated to a single integration{% #high-consumption-isolated-to-a-single-integration %}
+
+If only one integration is consuming high amounts of memory, send a debug-level flare along with Python memory profile output:
+
+1. To enable debug mode, [follow the Debug Mode documentation](https://docs.datadoghq.com/agent/troubleshooting/debug_mode/).
+
+1. To send a profile, append the `--profile 30` flag to the flare command:
+
+   ```shell
+   sudo datadog-agent flare --profile 30
+```
+The command takes approximately 30 seconds to run while it collects profile information.
+
+
+1. For the Python memory profile, capture the output of this command:
+
+   ```shell
+   sudo -u dd-agent -- datadog-agent check <check name> -m -t 10
+```
+
+### High consumption not associated with a single integration{% #high-consumption-not-associated-with-a-single-integration %}
+
+If the high memory consumption is not associated with a single integration, send a debug-level flare with a profile, collected during a period when the Agent is using more memory or CPU than expected:
+
+1. To enable debug mode, [follow the Debug Mode documentation](https://docs.datadoghq.com/agent/troubleshooting/debug_mode/).
+1. To send a profile, append the `--profile 30` flag to the flare command:
+   ```shell
+   sudo datadog-agent flare --profile 30
+```
+The command takes approximately 30 seconds to run while it collects profile information.
+
+#### Agent Profiling check{% #agent-profiling-check %}
+
+Starting with Agent version 7.67, the [Agent Profiling check](https://docs.datadoghq.com/integrations/agentprofiling) can be enabled to automatically generate a flare with profiles based on a user-configured memory or CPU threshold. This check can be useful if the high memory or CPU issue is not easily reproduced.
+
+## Further Reading{% #further-reading %}
+
+- [Send an Agent Flare](https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/)
+- [Get the Status of an Agent Check](https://docs.datadoghq.com/agent/troubleshooting/agent_check_status/)

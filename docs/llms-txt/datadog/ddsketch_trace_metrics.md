@@ -1,0 +1,69 @@
+# Source: https://docs.datadoghq.com/tracing/guide/ddsketch_trace_metrics.md
+
+---
+title: DDSketch-based Metrics in APM
+description: >-
+  Learn about DDSketch-based metrics in APM for computing accurate percentiles
+  and latency distributions with improved accuracy.
+breadcrumbs: Docs > APM > Tracing Guides > DDSketch-based Metrics in APM
+source_url: https://docs.datadoghq.com/guide/ddsketch_trace_metrics/index.html
+---
+
+# DDSketch-based Metrics in APM
+
+Trace metrics are collected automatically for your services and resources and are retained for 15 months. The latency percentiles exist as individual timeseries. These percentiles are also available as a [Datadog Distribution Metric](https://docs.datadoghq.com/metrics/distributions/). Instead of having a different metric for each percentile; and separate metrics for services, resources, or additional primary tags; Datadog offers a simple metric:
+
+- `trace.<SPAN_NAME>`:
+  - *Prerequisite:* This metric exists for any APM service .
+  - *Description:* Represents latency distributions for all services, resources and versions across different environments and additional primary tags.
+  - *Metric type:* [DISTRIBUTION](https://docs.datadoghq.com/metrics/types/?tab=distribution#metric-types)
+  - *Tags:* `env`, `service`, `version`, `resource`, `resource_name`, `http.status_code`, `synthetics`, and [additional primary tags](https://docs.datadoghq.com/tracing/guide/setting_primary_tags_to_scope/#add-additional-primary-tags-in-datadog).
+
+The APM Service and Resource pages use this metric type automatically. You can use these metrics to power your dashboards and monitors.
+
+**How am I seeing a full history of this new metric?**
+
+- Datadog stitches any existing query on the new metric to an equivalent query based on the long-existing latency metrics, so you do not have to create multiple queries.
+
+**I'm seeing a change in the values of my latency, what is happening?**
+
+- Datadog Distribution Metrics are powered by [DDSketch](https://www.datadoghq.com/blog/engineering/computing-accurate-percentiles-with-ddsketch/). This includes a change from rank-error guarantees to relative error guarantees. As a result, all percentile estimate values are now guaranteed to be closer to the true percentile value.
+- Specifically, you might expect to see a reduction in p99 values, where this difference is most noticeable. The new values are centered more closely on the precise p99 value.
+- One thing to note is that the APM metric calculations are not exactly akin to a Datadog Distribution Custom Metric that would be calculated in-code. The calculation happens on the backend, so some differences may occur.
+
+**I'm using Terraform. What does this change mean for me?**
+
+- The existing metrics are still around; your Terraform definitions are still in place and still work.
+- To take advantage of the [better precision](https://www.datadoghq.com/blog/engineering/computing-accurate-percentiles-with-ddsketch/) offered by the new DDSketch-based metrics, change your Terraform definitions as shown in the following examples.
+
+Percentiles before:
+
+```
+avg:trace.http.request.duration.by.resource_service.99p{service:foo, resource:abcdef1234}
+avg:trace.sample_span.duration.by.datacenter_resource_service.75p{datacenter:production, service:bar, resource:ghijk5678}
+```
+
+Percentiles after:
+
+```
+p99:trace.http.request{service:foo, resource:abcdef1234}
+p75:trace.sample_span{datacenter:production, service:bar, resource:ghijk5678}
+```
+
+p100 before:
+
+```
+avg:trace.http.request.duration.by.resource_service.100p{service:foo, resource:abcdef1234}
+avg:trace.sample_span.duration.by.datacenter_resource_service.100p{datacenter:production, service:bar, resource:ghijk5678}
+```
+
+p100 after:
+
+```
+max:trace.http.request{service:foo, resource:abcdef1234}
+max:trace.sample_span{datacenter:production, service:bar, resource:ghijk5678}
+```
+
+- [Computing Accurate Percentiles with DDSketch](https://www.datadoghq.com/blog/engineering/computing-accurate-percentiles-with-ddsketch/)
+- [Learn more about Distributions](https://docs.datadoghq.com/metrics/distributions/)
+- [Learn more about Trace Metrics](https://docs.datadoghq.com/tracing/guide/metrics_namespace/)

@@ -230,6 +230,9 @@ sites:
 - name: daisyui
   base_url: https://daisyui.com/
   description: DaisyUI Tailwind CSS component library
+- name: datadog
+  base_url: https://docs.datadoghq.com/
+  description: Datadog observability platform with monitoring, logging, APM, security, and incident management
 - name: dappier
   base_url: https://docs.dappier.com/
   description: Dappier real-time data platform for AI
