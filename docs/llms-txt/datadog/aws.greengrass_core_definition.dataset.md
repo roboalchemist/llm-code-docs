@@ -1,0 +1,32 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.greengrass_core_definition.dataset.md
+
+---
+title: Greengrass Core Definition
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Greengrass Core Definition
+source_url: >-
+  https://docs.datadoghq.com/data_directory/aws/aws.greengrass_core_definition.dataset/index.html
+---
+
+# Greengrass Core Definition
+
+Greengrass Core Definition in AWS represents a group of Greengrass core devices that manage and run local IoT applications. It defines the configuration for the core, which acts as the central hub in a Greengrass group, enabling local execution of AWS Lambda functions, messaging, and device communication even when disconnected from the cloud.
+
+```
+aws.greengrass_core_definition
+```
+
+## Fields
+
+| Title                  | ID   | Type   | Data Type                                                                        | Description |
+| ---------------------- | ---- | ------ | -------------------------------------------------------------------------------- | ----------- |
+| _key                   | core | string |
+| account_id             | core | string |
+| arn                    | core | string | The ARN of the definition.                                                       |
+| creation_timestamp     | core | string | The time, in milliseconds since the epoch, when the definition was created.      |
+| id                     | core | string | The ID of the definition.                                                        |
+| last_updated_timestamp | core | string | The time, in milliseconds since the epoch, when the definition was last updated. |
+| latest_version         | core | string | The ID of the latest version associated with the definition.                     |
+| latest_version_arn     | core | string | The ARN of the latest version associated with the definition.                    |
+| name                   | core | string | The name of the definition.                                                      |
+| tags                   | core | hstore |

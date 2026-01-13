@@ -1,0 +1,38 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.iot_jobtemplate.dataset.md
+
+---
+title: Iot Jobtemplate
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Iot Jobtemplate
+source_url: >-
+  https://docs.datadoghq.com/data_directory/aws/aws.iot_jobtemplate.dataset/index.html
+---
+
+# Iot Jobtemplate
+
+This table represents the iot_jobtemplate resource from Amazon Web Services.
+
+```
+aws.iot_jobtemplate
+```
+
+## Fields
+
+| Title                         | ID   | Type          | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Description |
+| ----------------------------- | ---- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                          | core | string        |
+| abort_config                  | core | json          |
+| account_id                    | core | string        |
+| created_at                    | core | timestamp     | The time, in seconds since the epoch, when the job template was created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| description                   | core | string        | A description of the job template.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| destination_package_versions  | core | array<string> | The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see <a href="https://docs.aws.amazon.com/iot/latest/developerguide/preparing-to-use-software-package-catalog.html#package-version-lifecycle">Package version lifecycle</a>. <b>Note:</b>The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed. |
+| document                      | core | string        | The job document.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| document_source               | core | string        | An S3 link to the job document.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| job_executions_retry_config   | core | json          | The configuration that determines how many retries are allowed for each failure type for a job.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| job_executions_rollout_config | core | json          |
+| job_template_arn              | core | string        | The ARN of the job template.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| job_template_id               | core | string        | The unique identifier of the job template.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| maintenance_windows           | core | json          | Allows you to configure an optional maintenance window for the rollout of a job document to all devices in the target group for a job.                                                                                                                                                                                                                                                                                                                                                                                                  |
+| presigned_url_config          | core | json          |
+| tags                          | core | hstore        |
+| timeout_config                | core | json          |

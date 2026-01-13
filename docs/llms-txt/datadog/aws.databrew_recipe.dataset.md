@@ -1,0 +1,37 @@
+# Source: https://docs.datadoghq.com/ddsql_reference/data_directory/aws/aws.databrew_recipe.dataset.md
+
+---
+title: Glue DataBrew Recipe
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > DDSQL Reference > Data Directory > Glue DataBrew Recipe
+source_url: >-
+  https://docs.datadoghq.com/data_directory/aws/aws.databrew_recipe.dataset/index.html
+---
+
+# Glue DataBrew Recipe
+
+AWS Glue DataBrew Recipe is a set of data transformation steps that define how raw data should be cleaned, normalized, or enriched. Recipes allow users to apply reusable, no-code transformations to datasets, making it easier to prepare data for analytics and machine learning.
+
+```
+aws.databrew_recipe
+```
+
+## Fields
+
+| Title              | ID   | Type      | Data Type                                                                                                                                                                                                                                                                                                                                                                                                                                   | Description |
+| ------------------ | ---- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key               | core | string    |
+| account_id         | core | string    |
+| create_date        | core | timestamp | The date and time that the recipe was created.                                                                                                                                                                                                                                                                                                                                                                                              |
+| created_by         | core | string    | The Amazon Resource Name (ARN) of the user who created the recipe.                                                                                                                                                                                                                                                                                                                                                                          |
+| description        | core | string    | The description of the recipe.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| last_modified_by   | core | string    | The Amazon Resource Name (ARN) of the user who last modified the recipe.                                                                                                                                                                                                                                                                                                                                                                    |
+| last_modified_date | core | timestamp | The last modification date and time of the recipe.                                                                                                                                                                                                                                                                                                                                                                                          |
+| name               | core | string    | The unique name for the recipe.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| project_name       | core | string    | The name of the project that the recipe is associated with.                                                                                                                                                                                                                                                                                                                                                                                 |
+| published_by       | core | string    | The Amazon Resource Name (ARN) of the user who published the recipe.                                                                                                                                                                                                                                                                                                                                                                        |
+| published_date     | core | timestamp | The date and time when the recipe was published.                                                                                                                                                                                                                                                                                                                                                                                            |
+| recipe_version     | core | string    | The identifier for the version for the recipe. Must be one of the following: Numeric version (X.Y) - X and Y stand for major and minor version numbers. The maximum length of each is 6 digits, and neither can be negative values. Both X and Y are required, and "0.0" isn't a valid version. LATEST_WORKING - the most recent valid version being developed in a DataBrew project. LATEST_PUBLISHED - the most recent published version. |
+| resource_arn       | core | string    | The Amazon Resource Name (ARN) for the recipe.                                                                                                                                                                                                                                                                                                                                                                                              |
+| steps              | core | json      | A list of steps that are defined by the recipe.                                                                                                                                                                                                                                                                                                                                                                                             |
+| tags               | core | hstore    |
