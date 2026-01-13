@@ -1,10 +1,6 @@
+# Source: https://docs.datadoghq.com/api/latest/timeboards/
+
 # Timeboards
-
-**Source:** https://docs.datadoghq.com/api/latest/timeboards/
-**Last Updated:** 2026-01-13
-
----
-
-- [Product
-The integrated platform for monitoring & security
-- **Observability- **Security- **Digital Experience- **Software Delivery- **Service Management- **AI- **Platform Capabilities[View Product Pricing**
+This endpoint is outdated. Use the [new Dashboard endpoint](https://docs.datadoghq.com/api/latest/dashboards/) instead.
+![](https://t.co/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=5f44e694-c5fa-4d2b-bdce-fe2c5c9ff03d&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=27654bd0-6de4-4f68-99e9-f470548182bb&pt=Timeboards&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Ftimeboards%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://analytics.twitter.com/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=5f44e694-c5fa-4d2b-bdce-fe2c5c9ff03d&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=27654bd0-6de4-4f68-99e9-f470548182bb&pt=Timeboards&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Ftimeboards%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://id.rlcdn.com/464526.gif)
+![](https://bat.bing.com/action/0?ti=4061438&Ver=2&mid=5247bcdf-96a2-4f35-8616-33ff5bef2eeb&bo=2&sid=a162e0d0f0c011f09b85e19ac30bdc5c&vid=a1630d30f0c011f0a8ef87cf93cd7f8c&vids=1&msclkid=N&pi=918639831&lg=en-US&sw=1080&sh=600&sc=24&tl=Timeboards&p=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Ftimeboards%2F&r=&lt=739&evt=pageLoad&sv=2&asc=G&cdb=AQAS&rn=625396)

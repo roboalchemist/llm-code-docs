@@ -1,1429 +1,119 @@
-Logs PipelinesRead the 2025 State of Containers and Serverless Report!
-Read the State of Containers and Serverless Report!
+# Source: https://docs.datadoghq.com/api/latest/logs-pipelines/
 
-Home
+# Logs Pipelines
+Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying.
+  * See the [pipelines configuration page](https://app.datadoghq.com/logs/pipelines) for a list of the pipelines and processors currently configured in web UI.
+  * Additional API-related information about processors can be found in the [processors documentation](https://docs.datadoghq.com/logs/log_configuration/processors/?tab=api#lookup-processor).
+  * For more information about Pipelines, see the [pipeline documentation](https://docs.datadoghq.com/logs/log_configuration/pipelines).
 
-Docs
 
-API- 
-- Agent
-- API
-- APM Tracing
-- ContainersAutodiscovery
-- Datadog Operator
-- Dashboards
-- Database Monitoring
-- Datadog
-- Datadog Site
-- DevSecOps
-- Incident Management
-- IntegrationsAWS
-- Azure
-- Google Cloud
-- Terraform
-- Internal Developer Portal
-- Logs
-- Monitors
-- Notebooks
-- OpenTelemetry
-- Profiler
-- SearchProduct-Specific Search
-- Session Replay
-- SecurityApp and API Protection
-- Cloud Security
-- Cloud SIEM
-- Code Security
-- Serverless for AWS Lambda
-- Software DeliveryCI Visibility
-- Feature Flags
-- Test Optimization
-- Test Impact Analysis
-- Synthetic Monitoring and TestingAPI Tests
-- Browser Tests
-- Mobile App Tests
-- Continuous Testing
-- Private Locations
-- TagsAssigning Tags
-- Unified Service Tagging
-- Using Tags
-- Workflow Automation
-- Learning Center
-- Support
-- 
-- 
-- 
-- Architecture
-- IoT
-- Supported PlatformsAIX
-- Linux
-- Ansible
-- Chef
-- Heroku
-- MacOS
-- Puppet
-- SaltStack
-- SCCM
-- Windows
-- From Source
-- Log CollectionLog Agent tags
-- Advanced Configurations
-- Proxy
-- Transport
-- Multi-Line Detection
-- ConfigurationCommands
-- Configuration Files
-- Log Files
-- Status Page
-- Network Traffic
-- Proxy Configuration
-- FIPS Compliance
-- Dual Shipping
-- Secrets Management
-- Fleet AutomationRemote Agent Management
-- TroubleshootingContainer Hostname Detection
-- Debug Mode
-- Agent Flare
-- Agent Check Status
-- NTP Issues
-- Permission Issues
-- Integrations Issues
-- Site Issues
-- Autodiscovery Issues
-- Windows Container Issues
-- Agent Runtime Configuration
-- High CPU or Memory Consumption
-- Guides
-- Data Security
-- Guides
-- AuthorizationOAuth2 in Datadog
-- Authorization Endpoints
-- DogStatsDDatagram Format
-- Unix Domain Socket
-- High Throughput Data
-- Data Aggregation
-- DogStatsD Mapper
-- Custom ChecksWriting a Custom Agent Check
-- Writing a Custom OpenMetrics Check
-- IntegrationsBuild an Integration with Datadog
-- Create an Agent-based Integration
-- Create an API-based Integration
-- Create a Log Pipeline
-- Integration Assets Reference
-- Build a Marketplace Offering
-- Create an Integration Dashboard
-- Create a Monitor Template
-- Create a Cloud SIEM Detection Rule
-- Install Agent Integration Developer Tool
-- Service ChecksSubmission - Agent Check
-- Submission - DogStatsD
-- Submission - API
-- IDE PluginsJetBrains IDEs
-- VS Code & Cursor
-- CommunityLibraries
-- Guides
-- Getting StartedDatadog Example Application
-- OpenTelemetry Demo Application
-- Feature Compatibility
-- Instrument Your ApplicationsOTel SDKs
-- OTel APIs with Datadog SDKs
-- OTel Instrumentation Libraries
-- Configuration
-- Send Data to DatadogDDOT Collector (Recommended)
-- Other Setup Options
-- Semantic MappingResource Attribute Mapping
-- Metrics Mapping
-- Infrastructure Host Mapping
-- Hostname Mapping
-- Service-entry Spans Mapping
-- Ingestion Sampling
-- Correlate DataLogs and Traces
-- Metrics and Traces
-- RUM and Traces
-- DBM and Traces
-- IntegrationsApache Metrics
-- Apache Spark Metrics
-- Collector Health Metrics
-- Datadog Extension
-- Docker Metrics
-- HAProxy Metrics
-- Host Metrics
-- IIS Metrics
-- Kafka Metrics
-- Kubernetes Metrics
-- MySQL Metrics
-- NGINX Metrics
-- Podman Metrics
-- Runtime Metrics
-- Trace Metrics
-- Troubleshooting
-- Guides and ResourcesProduce Delta Temporality Metrics
-- Visualize Histograms as Heatmaps
-- Migration Guides
-- ReferenceTerms and Concepts
-- Trace Context Propagation
-- Trace IDs
-- OTLP Metric Types
-- Getting Started
-- Plan
-- Build
-- Run
-- 
-- 
-- Enterprise Configuration
-- Datadog for Intune
-- Shortcut Configurations
-- Push Notifications
-- Widgets
-- Guides
-- Data Directory
-- Troubleshooting
-- Install
-- Using CoTerm
-- Configuration Rules
-- 
-- Getting Started
-- Account Management
-- Components: Common
-- Components: Azure
-- Components: AWS
-- Advanced
-- FAQ
-- APIAWS Accounts
-- Azure Accounts
-- Blueprints
-- Budgets
-- Teams
-- Users
-- Configure
-- Dashboard List
-- WidgetsConfiguration
-- Widget Types
-- Querying
-- FunctionsAlgorithms
-- Arithmetic
-- Count
-- Exclusion
-- Interpolation
-- Rank
-- Rate
-- Regression
-- Rollup
-- Smoothing
-- Timeshift
-- Beta
-- Graph InsightsMetric Correlations
-- Watchdog Explains
-- Template Variables
-- Overlays
-- Annotations
-- Guides
-- SharingShared Dashboards
-- Share Graphs
-- Scheduled Reports
-- Analysis FeaturesGetting Started
-- Guides
-- 
-- 
-- Functions and Operators
-- Guides
-- Draft Monitors
-- Configure Monitors
-- Monitor Templates
-- Monitor TypesHost
-- Metric
-- Analysis
-- Anomaly
-- APM
-- Audit Trail
-- Change
-- CI/CD & Test
-- Cloud Cost
-- Composite
-- Database Monitoring
-- Error Tracking
-- Event
-- Forecast
-- Integration
-- Live Process
-- Logs
-- Network
-- Cloud Network Monitoring
-- NetFlow
-- Outlier
-- Process Check
-- Real User Monitoring
-- Service Check
-- SLO Alerts
-- Synthetic Monitoring
-- Watchdog
-- NotificationsNotification Rules
-- Variables
-- DowntimesExamples
-- Manage MonitorsSearch Monitors
-- Check Summary
-- Monitor StatusStatus Graphs
-- Status Events
-- Monitor Settings
-- Monitor Quality
-- Guides
-- Monitor-based SLOs
-- Metric-based SLOs
-- Time Slice SLOs
-- Error Budget Alerts
-- Burn Rate Alerts
-- Guides
-- Custom MetricsMetric Type Modifiers
-- Historical Metrics Ingestion
-- Submission - Agent Check
-- Submission - DogStatsD
-- Submission - Powershell
-- Submission - API
-- OpenTelemetry MetricsOTLP Metric Types
-- Query OpenTelemetry Metrics
-- Metrics Types
-- Distributions
-- Overview
-- ExplorerMetrics Units
-- Summary
-- Volume
-- Advanced Filtering
-- Nested Queries
-- Composite Metrics Queries
-- Derived Metrics
-- Metrics Without Limits™
-- Guides
-- Alerts
-- Impact Analysis
-- RCA
-- Insights
-- Faulty Deployment Detection
-- Faulty Cloud & SaaS API Detection
-- Bits AI SREInvestigate issues
-- Remediate issues
-- Bits AI SRE integrations and settings
-- Help Bits learn
-- Chat with Bits AI SRE
-- Bits AI Dev AgentSetup
-- Chat with Bits AI
-- MCP Server
-- Software CatalogSet Up
-- Entity Model
-- Troubleshooting
-- ScorecardsScorecard Configuration
-- Custom Rules
-- Using Scorecards
-- Self-Service ActionsSoftware Templates
-- Engineering ReportsReliability Overview
-- Scorecards Performance
-- DORA Metrics
-- Custom Reports
-- Developer Homepage
-- Campaigns
-- External Provider Status
-- Plugins
-- Integrations
-- Use CasesAPI Management
-- Cloud Cost Management
-- App and API Protection
-- Developer Onboarding
-- Dependency Management
-- Production Readiness
-- Incident Response
-- CI Pipeline Visibility
-- Onboarding Guide
-- Explorer
-- Issue States
-- Regression Detection
-- Suspected Causes
-- Error Grouping
-- Bits AI Dev Agent
-- Monitors
-- Issue Correlation
-- Identify Suspect Commits
-- Auto Assign
-- Issue Team Ownership
-- Track Browser and Mobile ErrorsBrowser Error Tracking
-- Collecting Browser Errors
-- Mobile Crash Tracking
-- Replay Errors
-- Real User Monitoring
-- Logs
-- Track Backend ErrorsGetting Started
-- Exception Replay
-- Capturing Handled Errors
-- APM
-- Logs
-- Manage Data Collection
-- Troubleshooting
-- Guides
-- Feature Flags
-- Ingest Events
-- Pipelines and ProcessorsAggregation Key Processor
-- Arithmetic Processor
-- Date Remapper
-- Category Processor
-- Grok Parser
-- Lookup Processor
-- Remapper
-- Service Remapper
-- Status Remapper
-- String Builder Processor
-- ExplorerSearching
-- Navigate the Explorer
-- Customization
-- Facets
-- Attributes
-- Notifications
-- Analytics
-- Saved Views
-- Triage Inbox
-- CorrelationConfiguration
-- Triaging & Notifying
-- Analytics
-- Guides
-- Declare an Incident
-- Describe an Incident
-- Response Team
-- Notification
-- Investigate an IncidentTimeline
-- Follow-ups
-- Incident AI
-- Incident SettingsInformation
-- Property Fields
-- Responder Types
-- Integrations
-- Notification Rules
-- Templates
-- Incident Analytics
-- IntegrationsSlack
-- Microsoft Teams
-- Jira
-- ServiceNow
-- Status Pages
-- Atlassian Statuspage
-- Datadog Clipboard
-- Onboard a Team
-- Trigger a PageLive Call Routing
-- Routing Rules
-- Escalation Policies
-- Schedules
-- Automations
-- Profile Settings
-- Guides
-- 
-- ProjectsSettings
-- Create a Case
-- Customization
-- View and Manage Cases
-- Notifications and Integrations
-- Case Automation Rules
-- Troubleshooting
-- 
-- Build Workflows
-- Access and Authentication
-- Trigger Workflows
-- Variables and parameters
-- ActionsWorkflow Logic
-- Save and Reuse Actions
-- Test and Debug
-- JavaScript Expressions
-- Track Workflows
-- Limits
-- Build Apps
-- Access and Authentication
-- Queries
-- Variables
-- Events
-- ComponentsCustom Charts
-- React Renderer
-- Tables
-- Reusable Modules
-- JavaScript Expressions
-- Embedded AppsInput Parameters
-- Save and Reuse Actions
-- Create and Manage Datastores
-- Use Datastores with Apps and Workflows
-- Automation Rules
-- Access and Authentication
-- 
-- ConnectionsAWS Integration
-- HTTP Request
-- Private ActionsUse Private Actions
-- Run a Script
-- Update the Private Action Runner
-- Private Action Credentials
-- OverlaysInfrastructure
-- Observability
-- Security
-- Cloud Cost Management
-- Cloud Resources Schema
-- Policies
-- Resource Changes
-- Setup
-- Guides
-- Setup
-- Host List
-- Monitoring ContainersConfiguration
-- Container Images View
-- Orchestrator Explorer
-- Kubernetes Resource Utilization
-- Kubernetes Autoscaling
-- Amazon Elastic Container Explorer
-- Autoscaling
-- Docker and other runtimesAPM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus
-- Data Collected
-- KubernetesInstallation
-- Further Configuration
-- Distributions
-- APM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus & OpenMetrics
-- Control plane monitoring
-- Data collected
-- kubectl Plugin
-- Datadog CSI Driver
-- Data security
-- Cluster AgentSetup
-- Commands & Options
-- Cluster Checks
-- Endpoint Checks
-- Admission Controller
-- Amazon ECSAPM
-- Log collection
-- Tag extraction
-- Data collected
-- Managed Instances
-- AWS Fargate with ECS
-- Datadog OperatorAdvanced Install
-- Configuration
-- Custom Checks
-- Data Collected
-- Secret Management
-- DatadogDashboard CRD
-- DatadogMonitor CRD
-- DatadogSLO CRD
-- TroubleshootingDuplicate hosts
-- Cluster Agent
-- Cluster Checks
-- HPA and Metrics Provider
-- Admission Controller
-- Log Collection
-- Guides
-- Increase Process Retention
-- AWS LambdaInstrumentation
-- Managed Instances
-- Lambda Metrics
-- Distributed Tracing
-- Log Collection
-- Remote Instrumentation
-- Advanced Configuration
-- Continuous Profiler
-- Securing Functions
-- Deployment Tracking
-- OpenTelemetry
-- Troubleshooting
-- Lambda Web Adapter
-- FIPS Compliance
-- AWS Step FunctionsInstallation
-- Merge Step Functions and Lambda Traces
-- Enhanced Metrics
-- Redrive Executions
-- Distributed Map States
-- Troubleshooting
-- AWS Fargate
-- Azure App ServiceLinux - Code
-- Linux - Container
-- Windows - Code
-- Azure Container AppsIn-Container
-- Sidecar
-- Azure Functions
-- Google Cloud RunContainers
-- Functions
-- Functions (1st generation)
-- Libraries & Integrations
-- Glossary
-- Guides
-- Cloud Network MonitoringSetup
-- Network Health
-- Network Analytics
-- Network Map
-- Guides
-- Supported Cloud Services
-- Terms and Concepts
-- DNS Monitoring
-- Network Device MonitoringSetup
-- Integrations
-- Profiles
-- Configuration Management
-- Maps
-- SNMP Metrics Reference
-- Troubleshooting
-- Guides
-- Terms and Concepts
-- NetFlow MonitoringMonitors
-- Network PathSetup
-- List View
-- Path View
-- Guides
-- Terms and Concepts
-- Amazon S3
-- Google Cloud Storage
-- Azure Blob Storage
-- Datadog Costs
-- SetupAWS
-- Azure
-- Google Cloud
-- Oracle
-- SaaS Integrations
-- Custom
-- TagsTag Explorer
-- Multisource Querying
-- AllocationTag Pipelines
-- Container Cost Allocation
-- BigQuery Costs
-- Custom Allocation Rules
-- ReportingExplorer
-- Scheduled Reports
-- RecommendationsCustom Recommendations
-- PlanningBudgets
-- Commitment Programs
-- Cost ChangesMonitors
-- Anomalies
-- Real-Time Costs
-- APM Terms and Concepts
-- Application InstrumentationSingle Step Instrumentation
-- Manually managed SDKs
-- Code-based Custom Instrumentation
-- Dynamic Instrumentation
-- Library Compatibility
-- Library Configuration
-- Configuration at Runtime
-- Trace Context Propagation
-- Serverless Application Tracing
-- Proxy Tracing
-- Span Tag Semantics
-- Span Links
-- APM Metrics CollectionTrace Metrics
-- Runtime Metrics
-- Trace Pipeline ConfigurationIngestion Mechanisms
-- Ingestion Controls
-- Adaptive Sampling
-- Generate Metrics
-- Trace Retention
-- Usage Metrics
-- Correlate Traces with Other TelemetryCorrelate DBM and Traces
-- Correlate Logs and Traces
-- Correlate RUM and Traces
-- Correlate Synthetics and Traces
-- Correlate Profiles and Traces
-- Trace ExplorerSearch Spans
-- Query Syntax
-- Trace Queries
-- Span Tags and Attributes
-- Span Visualizations
-- Trace View
-- Tag Analysis
-- Recommendations
-- Code Origin for Spans
-- Service ObservabilitySoftware Catalog
-- Service Page
-- Resource Page
-- Deployment Tracking
-- Service Map
-- Inferred Services
-- Remapping Rules for Inferred Entities
-- Service Remapping Rules
-- Service Override Removal
-- APM Monitors
-- Endpoint ObservabilityExplore Endpoints
-- Monitor Endpoints
-- Live Debugger
-- Error TrackingIssue States
-- Error Tracking Explorer
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Exception Replay
-- Troubleshooting
-- Data Security
-- Guides
-- TroubleshootingAgent Rate Limits
-- Agent APM metrics
-- Agent Resource Usage
-- Correlated Logs
-- PHP 5 Deep Call Stacks
-- .NET diagnostic tool
-- APM Quantization
-- Go Compile-Time Instrumentation
-- Tracer Startup Logs
-- Tracer Debug Logs
-- Connection Errors
-- Enabling the ProfilerSupported Language and Tracer Versions
-- Java
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Profile Types
-- Profile Visualizations
-- Investigate Slow Traces or Endpoints
-- Compare Profiles
-- Automated Analysis
-- Profiler TroubleshootingJava
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Guides
-- Agent Integration Overhead
-- Setup Architectures
-- Setting Up PostgresSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- AlloyDB
-- Azure
-- Supabase
-- Heroku
-- Advanced Configuration
-- Troubleshooting
-- Setting Up MySQLSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- Azure
-- Advanced Configuration
-- Troubleshooting
-- Setting Up SQL ServerSelf-hosted
-- RDS
-- Azure
-- Google Cloud SQL
-- Troubleshooting
-- Setting Up OracleSelf-hosted
-- RDS
-- RAC
-- Exadata
-- Autonomous Database
-- Troubleshooting
-- Setting Up Amazon DocumentDBAmazon DocumentDB
-- Setting Up MongoDBSelf-hosted
-- MongoDB Atlas
-- Troubleshooting
-- Connecting DBM and Traces
-- Data Collected
-- Exploring Database Hosts
-- Exploring Query Metrics
-- Exploring Query Samples
-- Exploring Database Schemas
-- Exploring Recommendations
-- Troubleshooting
-- Guides
-- Setup
-- Kafka Messages
-- Schema Tracking
-- Dead Letter Queues
-- Metrics and Tags
-- 
-- Data WarehousesSnowflake
-- Databricks
-- BigQuery
-- Business Intelligence IntegrationsTableau
-- Sigma
-- Metabase
-- Power BI
-- Databricks
-- Airflow
-- dbt
-- Spark on Kubernetes
-- Spark on Amazon EMR
-- Spark on Google Dataproc
-- Custom Jobs (OpenLineage)Datadog Agent for OpenLineage Proxy
-- Application MonitoringBrowser
-- Android and Android TV
-- iOS and tvOS
-- Flutter
-- Kotlin Multiplatform
-- React Native
-- Roku
-- Unity
-- PlatformDashboards
-- Monitors
-- Generate Custom Metrics
-- Exploring RUM DataSearch RUM Events
-- Search Syntax
-- Group
-- Visualize
-- Events
-- Export
-- Saved Views
-- Watchdog Insights for RUM
-- Correlate RUM with Other TelemetryCorrelate LLM with RUM
-- Correlate Logs with RUM
-- Correlate Profiling with RUM
-- Correlate Synthetics with RUM
-- Correlate Traces with RUM
-- Feature Flag TrackingSetup
-- Using Feature Flags
-- Error TrackingExplorer
-- Issue States
-- Track Browser Errors
-- Track Mobile Errors
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- RUM Without LimitsMetrics
-- Retention Filters
-- Operations Monitoring
-- Ownership of Views
-- Guides
-- Data Security
-- API TestingHTTP
-- SSL
-- DNS
-- WebSocket
-- TCP
-- UDP
-- ICMP
-- GRPC
-- Error codes
-- Multistep API Testing
-- Browser TestingRecording Steps
-- Browser Testing Results
-- Advanced Options for Steps
-- Authentication in Browser Testing
-- Network Path TestingTerms and Concepts
-- Mobile Application TestingTesting Steps
-- Testing Results
-- Advanced Options for Steps
-- Supported Devices
-- Restricted Networks
-- Settings
-- Test Suites
-- PlatformDashboards
-- Metrics
-- Test Coverage
-- Private Locations
-- Connect APM
-- Settings
-- Exploring Synthetics DataSaved Views
-- Results Explorer
-- Guides
-- NotificationsTemplate Variables
-- Conditional Alerting
-- Advanced Notifications
-- Integrate with Statuspage
-- Troubleshooting
-- Data Security
-- Local and Staging EnvironmentsTesting Multiple Environments
-- Testing With Proxy, Firewall, or VPN
-- CI/CD IntegrationsConfiguration
-- Azure DevOps Extension
-- CircleCI Orb
-- GitHub Actions
-- GitLab
-- Jenkins
-- Bitrise (Upload Application)
-- Bitrise (Run Tests)
-- Settings
-- Results Explorer
-- Metrics
-- Guides
-- Troubleshooting
-- Vizualizing with ChartsChart Basics
-- Pathways Diagram
-- Funnel Analysis
-- Retention Analysis
-- Analytics Explorer
-- Dashboards
-- Segments
-- Managing Profiles
-- ExperimentsDefine Metrics
-- Reading Experiment Results
-- Minimum Detectable Effects
-- Guides
-- Troubleshooting
-- BrowserSetup
-- Privacy Options
-- Developer Tools
-- Troubleshooting
-- MobileSetup and Configuration
-- Privacy Options
-- Developer Tools
-- Impact on App Performance
-- Troubleshooting
-- Playlists
-- Heatmaps
-- Pipeline VisibilityAWS CodePipeline
-- Azure Pipelines
-- Buildkite
-- CircleCI
-- Codefresh
-- GitHub Actions
-- GitLab
-- Jenkins
-- TeamCity
-- Other CI Providers
-- Custom Commands
-- Custom Tags and Measures
-- Search and Manage
-- ExplorerSearch Syntax
-- Search Pipeline Executions
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=pipelines)
-- Guides
-- Troubleshooting
-- Deployment VisibilityArgo CD
-- CI Providers
-- Explore DeploymentsSearch Syntax
-- Facets
-- Saved Views
-- FeaturesCode Changes Detection
-- Rollback Detection
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=deployments)
-- Setup
-- Explore
-- Setup.NET
-- Java and JVM Languages
-- JavaScript and TypeScript
-- Python
-- Ruby
-- Swift
-- Go
-- JUnit Report Uploads
-- Network Settings
-- Tests in Containers
-- Repositories
-- ExplorerSearch Syntax
-- Search Test Runs
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=tests)
-- Test Health
-- Flaky Test Management
-- Working with Flaky TestsEarly Flake Detection
-- Auto Test Retries
-- Test Impact AnalysisSetup
-- How It Works
-- Troubleshooting
-- Developer Workflows
-- Code Coverage
-- Instrument Browser Tests with RUM
-- Instrument Swift Tests with RUM
-- Correlate Logs and Tests
-- Guides
-- Troubleshooting
-- Setup
-- Data Collected
-- Setup
-- SetupDeployment Data Sources
-- Failure Data Sources
-- Change Failure Detection
-- Data Collected
-- Client SDKsAndroid and Android TV
-- iOS and tvOS
-- JavaScript
-- React
-- Server SDKsGo
-- Java
-- Node.js
-- Python
-- Ruby
-- MCP Server
-- Guides
-- Detection RulesOOTB Rules
-- NotificationsRules
-- Variables
-- Suppressions
-- Automation PipelinesMute
-- Add to Security Inbox
-- Set Due Date Rules
-- Security Inbox
-- Threat Intelligence
-- Audit Trail
-- Access Control
-- Account Takeover Protection
-- Ticketing Integrations
-- Research Feed
-- Guides
-- Ingest and EnrichContent Packs
-- Bring Your Own Threat Intelligence
-- Open Cybersecurity Schema Framework
-- Detect and MonitorOOTB Rules
-- Custom Detection Rules
-- Version History
-- Suppressions
-- Historical Jobs
-- MITRE ATT&CK Map
-- Triage and InvestigateInvestigate Security Signals
-- Risk Insights
-- IOC Explorer
-- Investigator
-- Respond and ReportSecurity Operational Metrics
-- Guides
-- Data Security
-- Static Code Analysis (SAST)Setup
-- GitHub Actions
-- Generic CI Providers
-- AI-Enhanced Static Code Analysis
-- SAST Custom Rule Creation Tutorial
-- SAST Custom Rules
-- SAST Custom Rules Guide
-- Static Code Analysis (SAST) rules
-- Software Composition Analysis (SCA)Static Setup
-- Runtime Setup
-- Library Inventory
-- Secret ScanningGitHub Actions
-- Generic CI Providers
-- Secret Validation
-- Runtime Code Analysis (IAST)Setup
-- Security Controls
-- Infrastructure as Code (IaC) SecuritySetup
-- Exclusions
-- Rules
-- Developer Tool IntegrationsPull Request Comments
-- PR Gates
-- IDE Plugins
-- Git Hooks
-- Troubleshooting
-- Guides
-- SetupSupported Deployment Types
-- Agentless Scanning
-- Deploy the Agent
-- Set Up CloudTrail Logs
-- Set Up without Infrastructure Monitoring
-- Deploy via Cloud Integrations
-- Security Graph
-- MisconfigurationsManage Compliance Rules
-- Create Custom Rules
-- Manage Compliance Posture
-- Explore Misconfigurations
-- Kubernetes Security Posture Management
-- Identity Risks
-- VulnerabilitiesHosts and Containers Compatibility
-- OOTB Rules
-- Review and RemediateMute Issues
-- Automate Security Workflows
-- Create Jira Issues
-- Severity Scoring
-- Guides
-- TroubleshootingVulnerabilities
-- Terms and Concepts
-- How It WorksThreat Intelligence
-- Trace Qualification
-- User Monitoring and Protection
-- Setup
-- Overview
-- Security SignalsAttackers Explorer
-- Attacker Fingerprint
-- Attacker Clustering
-- Users Explorer
-- PoliciesCustom Rules
-- OOTB Rules
-- In-App WAF Rules
-- Tracing Library Configuration
-- Exploit Prevention
-- WAF Integrations
-- API Security Inventory
-- Guides
-- Troubleshooting
-- SetupDeploy the Agent
-- Workload Protection Agent Variables
-- Detection RulesOOTB Rules
-- Custom Rules
-- Investigate Security Signals
-- Investigate Agent Events
-- Creating Agent Rule ExpressionsWriting Custom Rule Expressions
-- Linux Syntax
-- Windows Syntax
-- Coverage and Posture ManagementHosts and Containers
-- Serverless
-- Coverage
-- Guides
-- Troubleshooting
-- SetupTelemetry Data
-- Cloud Storage
-- Scanning RulesLibrary Rules
-- Custom Rules
-- Guides
-- Quickstart
-- InstrumentationAutomatic
-- SDK Reference
-- HTTP API
-- OpenTelemetry
-- MonitoringQuerying spans and traces
-- Correlate with APM
-- Cluster Map
-- Agent Monitoring
-- MCP Clients
-- Prompt Tracking
-- Metrics
-- Cost
-- EvaluationsManaged Evaluations
-- Custom LLM-as-a-Judge
-- External Evaluations
-- Compatibility
-- Export API
-- Experiments
-- Data Security and RBAC
-- Terms and Concepts
-- Guides
-- ConfigurationExplore Templates
-- Set Up Pipelines
-- Install the Worker
-- Live Capture
-- Update Existing Pipelines
-- Access Control
-- SourcesAkamai DataStream
-- Amazon Data Firehose
-- Amazon S3
-- Azure Event Hubs
-- Datadog Agent
-- Datadog Lambda Extension
-- Datadog Lambda Forwarder
-- Filebeat
-- Fluent
-- Google Pub/Sub
-- HTTP Client
-- HTTP Server
-- OpenTelemetry
-- Kafka
-- Logstash
-- Socket
-- Splunk HEC
-- Splunk TCP
-- Sumo Logic Hosted Collector
-- Syslog
-- ProcessorsAdd Environment Variables
-- Add hostname
-- Custom Processor
-- Deduplicate
-- Edit fields
-- Enrichment Table
-- Filter
-- Generate Metrics
-- Grok Parser
-- Parse JSON
-- Parse XML
-- Quota
-- Reduce
-- Remap to OCSF
-- Sample
-- Sensitive Data Scanner
-- Split Array
-- Tag Control
-- Throttle
-- DestinationsAmazon OpenSearch
-- Amazon S3
-- Amazon Security Lake
-- Azure Storage
-- CrowdStrike NG-SIEM
-- Datadog CloudPrem
-- Datadog Logs
-- Datadog Metrics
-- Elasticsearch
-- Google Cloud Storage
-- Google Pub/Sub
-- Google SecOps
-- HTTP Client
-- Kafka
-- Microsoft Sentinel
-- New Relic
-- OpenSearch
-- SentinelOne
-- Socket
-- Splunk HEC
-- Sumo Logic Hosted Collector
-- Syslog
-- PacksAkamai CDN
-- Amazon CloudFront
-- Amazon VPC Flow Logs
-- AWS CloudTrail
-- Cisco ASA
-- Cloudflare
-- F5
-- Fastly
-- Fortinet Firewall
-- HAProxy Ingress
-- Istio Proxy
-- Netskope
-- NGINX
-- Okta
-- Palo Alto Firewall
-- Windows XML
-- ZScaler ZIA DNS
-- Zscaler ZIA Firewall
-- Zscaler ZIA Tunnel
-- Zscaler ZIA Web Logs
-- Search Syntax
-- Scaling and PerformanceHandling Load and Backpressure
-- Scaling Best Practices
-- Monitoring and TroubleshootingWorker CLI Commands
-- Monitoring Pipelines
-- Pipeline Usage Metrics
-- Troubleshooting
-- Guides and ResourcesUpgrade Worker Guide
-- Log Collection & IntegrationsBrowser
-- Android
-- iOS
-- Flutter
-- React Native
-- Roku
-- Kotlin Multiplatform
-- C#
-- Go
-- Java
-- Node.js
-- PHP
-- Python
-- Ruby
-- OpenTelemetry
-- Agent Integrations
-- Other Integrations
-- Log ConfigurationPipelines
-- Processors
-- Parsing
-- Pipeline Scanner
-- Attributes and Aliasing
-- Generate Metrics
-- Indexes
-- Flex Logs
-- Archives
-- Rehydrate from Archives
-- Archive Search
-- Forwarding
-- Log ExplorerLive Tail
-- Search Logs
-- Search Syntax
-- Advanced Search
-- Facets
-- Calculated Fields
-- Analytics
-- Patterns
-- Transactions
-- Visualize
-- Log Side Panel
-- Export
-- Watchdog Insights for Logs
-- Saved Views
-- Error TrackingError Tracking Explorer
-- Issue States
-- Track Browser and Mobile Errors
-- Track Backend Errors
-- Error Grouping
-- Manage Data Collection
-- Dynamic Sampling
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- Reports
-- Guides
-- Data Security
-- TroubleshootingLive Tail
-- Quickstart
-- Architecture
-- InstallationAWS EKS
-- Azure AKS
-- Install Locally with Docker
-- Log IngestionDatadog Agent
-- Observability Pipelines
-- REST API
-- ConfigurationDatadog Account
-- AWS Configuration
-- Azure Configuration
-- Cluster Sizing
-- Ingress
-- Processing
-- Reverse Connection
-- Management
-- Supported Features
-- Troubleshooting
-- Switching Between Orgs
-- Organization SettingsUser Management
-- Login Methods
-- OAuth Apps
-- Custom Organization Landing Page
-- Service Accounts
-- IP Allowlist
-- Domain Allowlist
-- Cross-Organization Visibility
-- Access ControlGranular Access
-- Permissions
-- Data Access
-- SSO with SAMLConfiguring SAML
-- User Group Mapping
-- Active Directory
-- Auth0
-- Entra ID
-- Google
-- LastPass
-- Okta
-- SafeNet
-- Troubleshooting
-- SCIMOkta
-- Microsoft Entra ID
-- API and Application Keys
-- TeamsTeam Management
-- Provision with GitHub
-- Governance Console
-- Multi-Factor Authentication
-- Audit TrailEvents
-- Forwarding
-- Guides
-- Safety Center
-- Plan and UsageCost Details
-- Usage Details
-- BillingPricing
-- Credit Card
-- Product Allotments
-- Usage Metrics
-- Usage Attribution
-- Custom Metrics
-- Containers
-- Log Management
-- APM
-- Serverless
-- Real User Monitoring
-- CI Visibility
-- Incident Response
-- AWS Integration
-- Azure Integration
-- Google Cloud Integration
-- Alibaba Integration
-- vSphere Integration
-- Workflow Automation
-- Multi-org Accounts
-- Guides
-- Cloud-based Authentication
-- Agent
-- Cloud SIEM
-- Kubernetes
-- Log Management
-- Real User Monitoring
-- Synthetic Monitoring
-- Tracing
-- PCI Compliance
-- HIPAA Compliance
-- Data Retention Periods
-- Guides
-- 
-Docs > 
-API Reference > 
-Logs PipelinesLanguage
+**Notes:**
+**Grok parsing rules may effect JSON output and require returned data to be configured before using in a request.** For example, if you are using the data returned from a request for another request body, and have a parsing rule that uses a regex pattern like `\s` for spaces, you will need to configure all escaped spaces as `%{space}` to use in the body data.
+## [Get pipeline order](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-pipeline-order)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-pipeline-order-v1)
 
-English[English](https://docs.datadoghq.com/api/latest/logs-pipelines/?lang_pref=en)
-[Français](https://docs.datadoghq.com/fr/api/latest/logs-pipelines/?lang_pref=fr)
-[日本語](https://docs.datadoghq.com/ja/api/latest/logs-pipelines/?lang_pref=ja)
-[한국어](https://docs.datadoghq.com/ko/api/latest/logs-pipelines/?lang_pref=ko)
-[Español](https://docs.datadoghq.com/es/api/latest/logs-pipelines/?lang_pref=es)Datadog Site
 
-US1
-US3
-US5
-EU
-AP1
-AP2
-US1-FED# Logs PipelinesPipelines and processors operate on incoming logs, parsing
-and transforming them into structured attributes for easier querying.See the pipelines configuration page
-for a list of the pipelines and processors currently configured in web UI.Additional API-related information about processors can be found in the
-[processors documentation](https://docs.datadoghq.com/logs/log_configuration/processors/?tab=api#lookup-processor).For more information about Pipelines, see the
-pipeline documentation.**Notes:**
-Grok parsing rules may effect JSON output and require
-returned data to be configured before using in a request.
-For example, if you are using the data returned from a
-request for another request body, and have a parsing rule
-that uses a regex pattern like `\s` for spaces, you will
-need to configure all escaped spaces as `%{space}` to use
-in the body data.## Get pipeline order- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.ap2.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.eu/api/v1/logs/config/pipeline-orderhttps://api.ddog-gov.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us3.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order
-### OverviewGet the current order of your pipelines.
-This endpoint takes no JSON arguments.
-This endpoint requires the `logs_read_config` permission.### Response- 200
-- 403
-- 429
+GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.ap2.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.eu/api/v1/logs/config/pipeline-orderhttps://api.ddog-gov.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us3.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order
+### Overview
+Get the current order of your pipelines. This endpoint takes no JSON arguments. This endpoint requires the `logs_read_config` permission.
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipelineOrder-200-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipelineOrder-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipelineOrder-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Object containing the ordered list of pipeline IDs.
 Expand All
 Field
 Type
 Description
-pipeline_ids [*required*]
+pipeline_ids [_required_]
 [string]
-Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array
-define the overall Pipelines order for Datadog.```
+Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog.
+```
 {
-"pipeline_ids": [
-"tags",
-"org_ids",
-"products"
-]
+  "pipeline_ids": [
+    "tags",
+    "org_ids",
+    "products"
+  ]
 }
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Get pipeline orderCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order" \
+
+#####  Get pipeline order
+Copy
+```
+                  # Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get pipeline order```
+
+#####  Get pipeline order
+```
 """
 Get pipeline order returns "OK" response
 """
@@ -1433,29 +123,47 @@ from datadog_api_client.v1.api.logs_pipelines_api import LogsPipelinesApi
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.get_logs_pipeline_order()
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.get_logs_pipeline_order()
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Get pipeline order
+```
 # Get pipeline order returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 p api_instance.get_logs_pipeline_order()
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Get pipeline order
+```
 // Get pipeline order returns "OK" response
 
 package main
@@ -1482,16 +190,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.GetLogsPipelineOrder`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Get pipeline order
+```
 // Get pipeline order returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -1500,54 +217,72 @@ import com.datadog.api.client.v1.api.LogsPipelinesApi;
 import com.datadog.api.client.v1.model.LogsPipelinesOrder;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-try {
-LogsPipelinesOrder result = apiInstance.getLogsPipelineOrder();
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#getLogsPipelineOrder");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipelinesOrder result = apiInstance.getLogsPipelineOrder();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#getLogsPipelineOrder");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Get pipeline order
+```
 // Get pipeline order returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.get_logs_pipeline_order().await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.get_logs_pipeline_order().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Get pipeline order
+```
 /**
-* Get pipeline order returns "OK" response
-*/
+ * Get pipeline order returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -1555,69 +290,100 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 apiInstance
-.getLogsPipelineOrder()
-.then((data: v1.LogsPipelinesOrder) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getLogsPipelineOrder()
+  .then((data: v1.LogsPipelinesOrder) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Update pipeline order- v1 (latest)
-PUT https://api.ap1.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.ap2.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.eu/api/v1/logs/config/pipeline-orderhttps://api.ddog-gov.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us3.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order
-### OverviewUpdate the order of your pipelines. Since logs are processed sequentially, reordering a pipeline may change
-the structure and content of the data processed by other pipelines and their processors.**Note**: Using the `PUT` method updates your pipeline order by replacing your current order
-with the new one sent to your Datadog organization.This endpoint requires the `logs_write_pipelines` permission.### Request#### Body Data (required)Object containing the new ordered list of pipeline IDs.
-- Model
-- Example
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Update pipeline order](https://docs.datadoghq.com/api/latest/logs-pipelines/#update-pipeline-order)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#update-pipeline-order-v1)
+
+
+PUT https://api.ap1.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.ap2.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.eu/api/v1/logs/config/pipeline-orderhttps://api.ddog-gov.com/api/v1/logs/config/pipeline-orderhttps://api.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us3.datadoghq.com/api/v1/logs/config/pipeline-orderhttps://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order
+### Overview
+Update the order of your pipelines. Since logs are processed sequentially, reordering a pipeline may change the structure and content of the data processed by other pipelines and their processors.
+**Note** : Using the `PUT` method updates your pipeline order by replacing your current order with the new one sent to your Datadog organization.
+This endpoint requires the `logs_write_pipelines` permission.
+### Request
+#### Body Data (required)
+Object containing the new ordered list of pipeline IDs.
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Expand All
 Field
 Type
 Description
-pipeline_ids [*required*]
+pipeline_ids [_required_]
 [string]
-Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array
-define the overall Pipelines order for Datadog.```
+Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog.
+```
 {
-"pipeline_ids": [
-"tags",
-"org_ids",
-"products"
-]
+  "pipeline_ids": [
+    "tags",
+    "org_ids",
+    "products"
+  ]
 }
-```### Response- 200
-- 400
-- 403
-- 422
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipelineOrder-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipelineOrder-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipelineOrder-403-v1)
+  * [422](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipelineOrder-422-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipelineOrder-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Object containing the ordered list of pipeline IDs.
 Expand All
 Field
 Type
 Description
-pipeline_ids [*required*]
+pipeline_ids [_required_]
 [string]
-Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array
-define the overall Pipelines order for Datadog.```
+Ordered Array of `<PIPELINE_ID>` strings, the order of pipeline IDs in the array define the overall Pipelines order for Datadog.
+```
 {
-"pipeline_ids": [
-"tags",
-"org_ids",
-"products"
-]
+  "pipeline_ids": [
+    "tags",
+    "org_ids",
+    "products"
+  ]
 }
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -1635,34 +401,43 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Unprocessable Entity
-- Model
-- Example
+```
+
+Copy
+Unprocessable Entity
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -1680,56 +455,71 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Update pipeline orderCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order" \
+
+#####  Update pipeline order
+Copy
+```
+                  # Curl command  
+curl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipeline-order" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"pipeline_ids": [
-"tags",
-"org_ids",
-"products"
-]
+  "pipeline_ids": [
+    "tags",
+    "org_ids",
+    "products"
+  ]
 }
-EOF
+EOF  
 
+                
 ```
-Update pipeline order```
+
+#####  Update pipeline order
+```
 """
 Update pipeline order returns "OK" response
 """
@@ -1739,46 +529,64 @@ from datadog_api_client.v1.api.logs_pipelines_api import LogsPipelinesApi
 from datadog_api_client.v1.model.logs_pipelines_order import LogsPipelinesOrder
 
 body = LogsPipelinesOrder(
-pipeline_ids=[
-"tags",
-"org_ids",
-"products",
-],
+    pipeline_ids=[
+        "tags",
+        "org_ids",
+        "products",
+    ],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.update_logs_pipeline_order(body=body)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.update_logs_pipeline_order(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Update pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Update pipeline order
+```
 # Update pipeline order returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 
 body = DatadogAPIClient::V1::LogsPipelinesOrder.new({
-pipeline_ids: [
-"tags",
-"org_ids",
-"products",
-],
+  pipeline_ids: [
+    "tags",
+    "org_ids",
+    "products",
+  ],
 })
 p api_instance.update_logs_pipeline_order(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Update pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Update pipeline order
+```
 // Update pipeline order returns "OK" response
 
 package main
@@ -1812,16 +620,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.UpdateLogsPipelineOrder`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Update pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Update pipeline order
+```
 // Update pipeline order returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -1831,32 +648,41 @@ import com.datadog.api.client.v1.model.LogsPipelinesOrder;
 import java.util.Arrays;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-LogsPipelinesOrder body =
-new LogsPipelinesOrder().pipelineIds(Arrays.asList("tags", "org_ids", "products"));
+    LogsPipelinesOrder body =
+        new LogsPipelinesOrder().pipelineIds(Arrays.asList("tags", "org_ids", "products"));
 
-try {
-LogsPipelinesOrder result = apiInstance.updateLogsPipelineOrder(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#updateLogsPipelineOrder");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipelinesOrder result = apiInstance.updateLogsPipelineOrder(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#updateLogsPipelineOrder");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Update pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Update pipeline order
+```
 // Update pipeline order returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
@@ -1864,30 +690,39 @@ use datadog_api_client::datadogV1::model::LogsPipelinesOrder;
 
 #[tokio::main]
 async fn main() {
-let body = LogsPipelinesOrder::new(vec![
-"tags".to_string(),
-"org_ids".to_string(),
-"products".to_string(),
-]);
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.update_logs_pipeline_order(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = LogsPipelinesOrder::new(vec![
+        "tags".to_string(),
+        "org_ids".to_string(),
+        "products".to_string(),
+    ]);
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.update_logs_pipeline_order(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Update pipeline order```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Update pipeline order
+```
 /**
-* Update pipeline order returns "OK" response
-*/
+ * Update pipeline order returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -1895,36 +730,53 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiUpdateLogsPipelineOrderRequest = {
-body: {
-pipelineIds: ["tags", "org_ids", "products"],
-},
+  body: {
+    pipelineIds: ["tags", "org_ids", "products"],
+  },
 };
 
 apiInstance
-.updateLogsPipelineOrder(params)
-.then((data: v1.LogsPipelinesOrder) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .updateLogsPipelineOrder(params)
+  .then((data: v1.LogsPipelinesOrder) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Get all pipelines- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipelineshttps://api.ap2.datadoghq.com/api/v1/logs/config/pipelineshttps://api.datadoghq.eu/api/v1/logs/config/pipelineshttps://api.ddog-gov.com/api/v1/logs/config/pipelineshttps://api.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us3.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us5.datadoghq.com/api/v1/logs/config/pipelines
-### OverviewGet all pipelines from your organization.
-This endpoint takes no JSON arguments.
-This endpoint requires the `logs_read_config` permission.### Response- 200
-- 403
-- 429
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get all pipelines](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-all-pipelines)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-all-pipelines-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipelineshttps://api.ap2.datadoghq.com/api/v1/logs/config/pipelineshttps://api.datadoghq.eu/api/v1/logs/config/pipelineshttps://api.ddog-gov.com/api/v1/logs/config/pipelineshttps://api.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us3.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us5.datadoghq.com/api/v1/logs/config/pipelines
+### Overview
+Get all pipelines from your organization. This endpoint takes no JSON arguments. This endpoint requires the `logs_read_config` permission.
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#ListLogsPipelines-200-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#ListLogsPipelines-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#ListLogsPipelines-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Array of all log pipeline objects configured for the organization.
-Expand All
 Field
 Type
 Description
@@ -1950,15 +802,15 @@ name
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -1973,111 +825,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -2093,25 +945,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -2124,22 +974,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -2148,32 +998,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -2188,29 +1038,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -2218,51 +1065,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -2278,92 +1125,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -2374,15 +1214,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -2393,24 +1235,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -2419,88 +1263,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -2509,42 +1352,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -2560,10 +1402,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -2572,34 +1414,34 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
@@ -2608,81 +1450,101 @@ string
 Type of pipeline.
 ```
 {
-"description": "string",
-"filter": {
-"query": "source:python"
-},
-"id": "string",
-"is_enabled": false,
-"is_read_only": false,
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar",
-"support_rules": "rule_name_1 foo\nrule_name_2 bar"
-},
-"is_enabled": false,
-"name": "string",
-"samples": [],
-"source": "message",
-"type": "grok-parser"
+  "description": "string",
+  "filter": {
+    "query": "source:python"
+  },
+  "id": "string",
+  "is_enabled": false,
+  "is_read_only": false,
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar",
+        "support_rules": "rule_name_1 foo\nrule_name_2 bar"
+      },
+      "is_enabled": false,
+      "name": "string",
+      "samples": [],
+      "source": "message",
+      "type": "grok-parser"
+    }
+  ],
+  "tags": [],
+  "type": "pipeline"
 }
-],
-"tags": [],
-"type": "pipeline"
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Get all pipelinesCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
+
+#####  Get all pipelines
+Copy
+```
+                  # Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get all pipelines```
+
+#####  Get all pipelines
+```
 """
 Get all pipelines returns "OK" response
 """
@@ -2692,29 +1554,47 @@ from datadog_api_client.v1.api.logs_pipelines_api import LogsPipelinesApi
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.list_logs_pipelines()
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.list_logs_pipelines()
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get all pipelines```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Get all pipelines
+```
 # Get all pipelines returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 p api_instance.list_logs_pipelines()
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get all pipelines```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Get all pipelines
+```
 // Get all pipelines returns "OK" response
 
 package main
@@ -2741,16 +1621,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.ListLogsPipelines`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get all pipelines```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Get all pipelines
+```
 // Get all pipelines returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -2760,54 +1649,72 @@ import com.datadog.api.client.v1.model.LogsPipeline;
 import java.util.List;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-try {
-List<LogsPipeline> result = apiInstance.listLogsPipelines();
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#listLogsPipelines");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      List<LogsPipeline> result = apiInstance.listLogsPipelines();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#listLogsPipelines");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get all pipelines```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Get all pipelines
+```
 // Get all pipelines returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.list_logs_pipelines().await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.list_logs_pipelines().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get all pipelines```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Get all pipelines
+```
 /**
-* Get all pipelines returns "OK" response
-*/
+ * Get all pipelines returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -2815,25 +1722,42 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 apiInstance
-.listLogsPipelines()
-.then((data: v1.LogsPipeline[]) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .listLogsPipelines()
+  .then((data: v1.LogsPipeline[]) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Create a pipeline- v1 (latest)
-POST https://api.ap1.datadoghq.com/api/v1/logs/config/pipelineshttps://api.ap2.datadoghq.com/api/v1/logs/config/pipelineshttps://api.datadoghq.eu/api/v1/logs/config/pipelineshttps://api.ddog-gov.com/api/v1/logs/config/pipelineshttps://api.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us3.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us5.datadoghq.com/api/v1/logs/config/pipelines
-### OverviewCreate a pipeline in your organization.
-This endpoint requires the `logs_write_pipelines` permission.### Request#### Body Data (required)Definition of the new pipeline.
-- Model
-- Example
-Expand All
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Create a pipeline](https://docs.datadoghq.com/api/latest/logs-pipelines/#create-a-pipeline)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#create-a-pipeline-v1)
+
+
+POST https://api.ap1.datadoghq.com/api/v1/logs/config/pipelineshttps://api.ap2.datadoghq.com/api/v1/logs/config/pipelineshttps://api.datadoghq.eu/api/v1/logs/config/pipelineshttps://api.ddog-gov.com/api/v1/logs/config/pipelineshttps://api.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us3.datadoghq.com/api/v1/logs/config/pipelineshttps://api.us5.datadoghq.com/api/v1/logs/config/pipelines
+### Overview
+Create a pipeline in your organization. This endpoint requires the `logs_write_pipelines` permission.
+### Request
+#### Body Data (required)
+Definition of the new pipeline.
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Field
 Type
 Description
@@ -2855,19 +1779,19 @@ Whether or not the pipeline is enabled.
 is_read_only
 boolean
 Whether or not the pipeline can be edited.
-name [*required*]
+name [_required_]
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -2882,111 +1806,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -3002,25 +1926,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -3033,22 +1955,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -3057,32 +1979,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -3097,29 +2019,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -3127,51 +2046,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -3187,92 +2106,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -3283,15 +2195,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -3302,24 +2216,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -3328,88 +2244,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -3418,42 +2333,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -3469,10 +2383,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -3481,115 +2395,128 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
 type
 string
 Type of pipeline.
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response
+```
+{
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppend",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_to_array",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps"
+      }
+    }
+  ],
+  "tags": []
+}
+```
 
-Create a pipeline with Array Processor Append Operation returns "OK" response```
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
+```
 {
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppend",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_to_array",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps"
-}
-}
-],
-"tags": []
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppendNoPreserve",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_and_remove_source",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps",
+        "preserve_source": false
+      }
+    }
+  ],
+  "tags": []
 }
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
+```
 {
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppendNoPreserve",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_and_remove_source",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps",
-"preserve_source": false
-}
-}
-],
-"tags": []
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppendPreserve",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_and_keep_source",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps",
+        "preserve_source": true
+      }
+    }
+  ],
+  "tags": []
 }
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response```
-{
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppendPreserve",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_and_keep_source",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps",
-"preserve_source": true
-}
-}
-],
-"tags": []
-}
-```### Response- 200
-- 400
-- 403
-- 429
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#CreateLogsPipeline-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/logs-pipelines/#CreateLogsPipeline-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#CreateLogsPipeline-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#CreateLogsPipeline-429-v1)
+
+
 OK
-- Model
-- Example
-Pipelines and processors operate on incoming logs,
-parsing and transforming them into structured attributes for easier querying.**Note**: These endpoints are only available for admin users.
-Make sure to use an application key created by an admin.Expand All
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
+Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying.
+**Note** : These endpoints are only available for admin users. Make sure to use an application key created by an admin.
 Field
 Type
 Description
@@ -3611,19 +2538,19 @@ Whether or not the pipeline is enabled.
 is_read_only
 boolean
 Whether or not the pipeline can be edited.
-name [*required*]
+name [_required_]
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -3638,111 +2565,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -3758,25 +2685,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -3789,22 +2714,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -3813,32 +2738,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -3853,29 +2778,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -3883,51 +2805,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -3943,92 +2865,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -4039,15 +2954,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -4058,24 +2975,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -4084,88 +3003,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -4174,42 +3092,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -4225,10 +3142,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -4237,34 +3154,34 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
@@ -4273,35 +3190,39 @@ string
 Type of pipeline.
 ```
 {
-"description": "string",
-"filter": {
-"query": "source:python"
-},
-"id": "string",
-"is_enabled": false,
-"is_read_only": false,
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar",
-"support_rules": "rule_name_1 foo\nrule_name_2 bar"
-},
-"is_enabled": false,
-"name": "string",
-"samples": [],
-"source": "message",
-"type": "grok-parser"
+  "description": "string",
+  "filter": {
+    "query": "source:python"
+  },
+  "id": "string",
+  "is_enabled": false,
+  "is_read_only": false,
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar",
+        "support_rules": "rule_name_1 foo\nrule_name_2 bar"
+      },
+      "is_enabled": false,
+      "name": "string",
+      "samples": [],
+      "source": "message",
+      "type": "grok-parser"
+    }
+  ],
+  "tags": [],
+  "type": "pipeline"
 }
-],
-"tags": [],
-"type": "pipeline"
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -4319,148 +3240,175 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Create a pipeline with Array Processor Append Operation returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppend",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_to_array",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps"
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppend",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_to_array",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps"
+      }
+    }
+  ],
+  "tags": []
 }
-}
-],
-"tags": []
-}
-EOF
+EOF  
 
+                        
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" responseCopy```
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppendNoPreserve",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_and_remove_source",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps",
-"preserve_source": false
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppendNoPreserve",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_and_remove_source",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps",
+        "preserve_source": false
+      }
+    }
+  ],
+  "tags": []
 }
-}
-],
-"tags": []
-}
-EOF
+EOF  
 
+                        
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" responseCopy```
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"filter": {
-"query": "source:python"
-},
-"name": "testPipelineArrayAppendPreserve",
-"processors": [
-{
-"type": "array-processor",
-"is_enabled": true,
-"name": "append_ip_and_keep_source",
-"operation": {
-"type": "append",
-"source": "network.client.ip",
-"target": "sourceIps",
-"preserve_source": true
+  "filter": {
+    "query": "source:python"
+  },
+  "name": "testPipelineArrayAppendPreserve",
+  "processors": [
+    {
+      "type": "array-processor",
+      "is_enabled": true,
+      "name": "append_ip_and_keep_source",
+      "operation": {
+        "type": "append",
+        "source": "network.client.ip",
+        "target": "sourceIps",
+        "preserve_source": true
+      }
+    }
+  ],
+  "tags": []
 }
-}
-],
-"tags": []
-}
-EOF
+EOF  
 
+                        
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation returns "OK" response
 
 package main
@@ -4484,12 +3432,12 @@ func main() {
 		Processors: []datadogV1.LogsProcessor{
 			datadogV1.LogsProcessor{
 				LogsArrayProcessor: &datadogV1.LogsArrayProcessor{
-					Type: datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
+					Type:      datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
 					IsEnabled: datadog.PtrBool(true),
-					Name: datadog.PtrString("append_ip_to_array"),
+					Name:      datadog.PtrString("append_ip_to_array"),
 					Operation: datadogV1.LogsArrayProcessorOperation{
 						LogsArrayProcessorOperationAppend: &datadogV1.LogsArrayProcessorOperationAppend{
-							Type: datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
+							Type:   datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
 							Source: "network.client.ip",
 							Target: "sourceIps",
 						}},
@@ -4508,13 +3456,15 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.CreateLogsPipeline`:\n%s\n", responseContent)
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
 
 package main
@@ -4538,14 +3488,14 @@ func main() {
 		Processors: []datadogV1.LogsProcessor{
 			datadogV1.LogsProcessor{
 				LogsArrayProcessor: &datadogV1.LogsArrayProcessor{
-					Type: datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
+					Type:      datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
 					IsEnabled: datadog.PtrBool(true),
-					Name: datadog.PtrString("append_ip_and_remove_source"),
+					Name:      datadog.PtrString("append_ip_and_remove_source"),
 					Operation: datadogV1.LogsArrayProcessorOperation{
 						LogsArrayProcessorOperationAppend: &datadogV1.LogsArrayProcessorOperationAppend{
-							Type: datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
-							Source: "network.client.ip",
-							Target: "sourceIps",
+							Type:           datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
+							Source:         "network.client.ip",
+							Target:         "sourceIps",
 							PreserveSource: datadog.PtrBool(false),
 						}},
 				}},
@@ -4563,13 +3513,15 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.CreateLogsPipeline`:\n%s\n", responseContent)
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
 
 package main
@@ -4593,14 +3545,14 @@ func main() {
 		Processors: []datadogV1.LogsProcessor{
 			datadogV1.LogsProcessor{
 				LogsArrayProcessor: &datadogV1.LogsArrayProcessor{
-					Type: datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
+					Type:      datadogV1.LOGSARRAYPROCESSORTYPE_ARRAY_PROCESSOR,
 					IsEnabled: datadog.PtrBool(true),
-					Name: datadog.PtrString("append_ip_and_keep_source"),
+					Name:      datadog.PtrString("append_ip_and_keep_source"),
 					Operation: datadogV1.LogsArrayProcessorOperation{
 						LogsArrayProcessorOperationAppend: &datadogV1.LogsArrayProcessorOperationAppend{
-							Type: datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
-							Source: "network.client.ip",
-							Target: "sourceIps",
+							Type:           datadogV1.LOGSARRAYPROCESSOROPERATIONAPPENDTYPE_APPEND,
+							Source:         "network.client.ip",
+							Target:         "sourceIps",
 							PreserveSource: datadog.PtrBool(true),
 						}},
 				}},
@@ -4618,17 +3570,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.CreateLogsPipeline`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -4645,44 +3605,46 @@ import com.datadog.api.client.v1.model.LogsProcessor;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-LogsPipeline body =
-new LogsPipeline()
-.filter(new LogsFilter().query("source:python"))
-.name("testPipelineArrayAppend")
-.processors(
-Collections.singletonList(
-new LogsProcessor(
-new LogsArrayProcessor()
-.type(LogsArrayProcessorType.ARRAY_PROCESSOR)
-.isEnabled(true)
-.name("append_ip_to_array")
-.operation(
-new LogsArrayProcessorOperation(
-new LogsArrayProcessorOperationAppend()
-.type(LogsArrayProcessorOperationAppendType.APPEND)
-.source("network.client.ip")
-.target("sourceIps"))))));
+    LogsPipeline body =
+        new LogsPipeline()
+            .filter(new LogsFilter().query("source:python"))
+            .name("testPipelineArrayAppend")
+            .processors(
+                Collections.singletonList(
+                    new LogsProcessor(
+                        new LogsArrayProcessor()
+                            .type(LogsArrayProcessorType.ARRAY_PROCESSOR)
+                            .isEnabled(true)
+                            .name("append_ip_to_array")
+                            .operation(
+                                new LogsArrayProcessorOperation(
+                                    new LogsArrayProcessorOperationAppend()
+                                        .type(LogsArrayProcessorOperationAppendType.APPEND)
+                                        .source("network.client.ip")
+                                        .target("sourceIps"))))));
 
-try {
-LogsPipeline result = apiInstance.createLogsPipeline(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipeline result = apiInstance.createLogsPipeline(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK"
 // response
 
@@ -4700,45 +3662,47 @@ import com.datadog.api.client.v1.model.LogsProcessor;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-LogsPipeline body =
-new LogsPipeline()
-.filter(new LogsFilter().query("source:python"))
-.name("testPipelineArrayAppendNoPreserve")
-.processors(
-Collections.singletonList(
-new LogsProcessor(
-new LogsArrayProcessor()
-.type(LogsArrayProcessorType.ARRAY_PROCESSOR)
-.isEnabled(true)
-.name("append_ip_and_remove_source")
-.operation(
-new LogsArrayProcessorOperation(
-new LogsArrayProcessorOperationAppend()
-.type(LogsArrayProcessorOperationAppendType.APPEND)
-.source("network.client.ip")
-.target("sourceIps")
-.preserveSource(false))))));
+    LogsPipeline body =
+        new LogsPipeline()
+            .filter(new LogsFilter().query("source:python"))
+            .name("testPipelineArrayAppendNoPreserve")
+            .processors(
+                Collections.singletonList(
+                    new LogsProcessor(
+                        new LogsArrayProcessor()
+                            .type(LogsArrayProcessorType.ARRAY_PROCESSOR)
+                            .isEnabled(true)
+                            .name("append_ip_and_remove_source")
+                            .operation(
+                                new LogsArrayProcessorOperation(
+                                    new LogsArrayProcessorOperationAppend()
+                                        .type(LogsArrayProcessorOperationAppendType.APPEND)
+                                        .source("network.client.ip")
+                                        .target("sourceIps")
+                                        .preserveSource(false))))));
 
-try {
-LogsPipeline result = apiInstance.createLogsPipeline(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipeline result = apiInstance.createLogsPipeline(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK"
 // response
 
@@ -4756,49 +3720,57 @@ import com.datadog.api.client.v1.model.LogsProcessor;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-LogsPipeline body =
-new LogsPipeline()
-.filter(new LogsFilter().query("source:python"))
-.name("testPipelineArrayAppendPreserve")
-.processors(
-Collections.singletonList(
-new LogsProcessor(
-new LogsArrayProcessor()
-.type(LogsArrayProcessorType.ARRAY_PROCESSOR)
-.isEnabled(true)
-.name("append_ip_and_keep_source")
-.operation(
-new LogsArrayProcessorOperation(
-new LogsArrayProcessorOperationAppend()
-.type(LogsArrayProcessorOperationAppendType.APPEND)
-.source("network.client.ip")
-.target("sourceIps")
-.preserveSource(true))))));
+    LogsPipeline body =
+        new LogsPipeline()
+            .filter(new LogsFilter().query("source:python"))
+            .name("testPipelineArrayAppendPreserve")
+            .processors(
+                Collections.singletonList(
+                    new LogsProcessor(
+                        new LogsArrayProcessor()
+                            .type(LogsArrayProcessorType.ARRAY_PROCESSOR)
+                            .isEnabled(true)
+                            .name("append_ip_and_keep_source")
+                            .operation(
+                                new LogsArrayProcessorOperation(
+                                    new LogsArrayProcessorOperationAppend()
+                                        .type(LogsArrayProcessorOperationAppendType.APPEND)
+                                        .source("network.client.ip")
+                                        .target("sourceIps")
+                                        .preserveSource(true))))));
 
-try {
-LogsPipeline result = apiInstance.createLogsPipeline(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipeline result = apiInstance.createLogsPipeline(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#createLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 """
 Create a pipeline with Array Processor Append Operation returns "OK" response
 """
@@ -4813,37 +3785,39 @@ from datadog_api_client.v1.model.logs_filter import LogsFilter
 from datadog_api_client.v1.model.logs_pipeline import LogsPipeline
 
 body = LogsPipeline(
-filter=LogsFilter(
-query="source:python",
-),
-name="testPipelineArrayAppend",
-processors=[
-LogsArrayProcessor(
-type=LogsArrayProcessorType.ARRAY_PROCESSOR,
-is_enabled=True,
-name="append_ip_to_array",
-operation=LogsArrayProcessorOperationAppend(
-type=LogsArrayProcessorOperationAppendType.APPEND,
-source="network.client.ip",
-target="sourceIps",
-),
-),
-],
-tags=[],
+    filter=LogsFilter(
+        query="source:python",
+    ),
+    name="testPipelineArrayAppend",
+    processors=[
+        LogsArrayProcessor(
+            type=LogsArrayProcessorType.ARRAY_PROCESSOR,
+            is_enabled=True,
+            name="append_ip_to_array",
+            operation=LogsArrayProcessorOperationAppend(
+                type=LogsArrayProcessorOperationAppendType.APPEND,
+                source="network.client.ip",
+                target="sourceIps",
+            ),
+        ),
+    ],
+    tags=[],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.create_logs_pipeline(body=body)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.create_logs_pipeline(body=body)
 
-print(response)
+    print(response)
 
 ```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
+"""
 Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
-"""
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
 """
 
 from datadog_api_client import ApiClient, Configuration
@@ -4856,36 +3830,38 @@ from datadog_api_client.v1.model.logs_filter import LogsFilter
 from datadog_api_client.v1.model.logs_pipeline import LogsPipeline
 
 body = LogsPipeline(
-filter=LogsFilter(
-query="source:python",
-),
-name="testPipelineArrayAppendNoPreserve",
-processors=[
-LogsArrayProcessor(
-type=LogsArrayProcessorType.ARRAY_PROCESSOR,
-is_enabled=True,
-name="append_ip_and_remove_source",
-operation=LogsArrayProcessorOperationAppend(
-type=LogsArrayProcessorOperationAppendType.APPEND,
-source="network.client.ip",
-target="sourceIps",
-preserve_source=False,
-),
-),
-],
-tags=[],
+    filter=LogsFilter(
+        query="source:python",
+    ),
+    name="testPipelineArrayAppendNoPreserve",
+    processors=[
+        LogsArrayProcessor(
+            type=LogsArrayProcessorType.ARRAY_PROCESSOR,
+            is_enabled=True,
+            name="append_ip_and_remove_source",
+            operation=LogsArrayProcessorOperationAppend(
+                type=LogsArrayProcessorOperationAppendType.APPEND,
+                source="network.client.ip",
+                target="sourceIps",
+                preserve_source=False,
+            ),
+        ),
+    ],
+    tags=[],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.create_logs_pipeline(body=body)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.create_logs_pipeline(body=body)
 
-print(response)
+    print(response)
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 """
 Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
 """
@@ -4900,133 +3876,153 @@ from datadog_api_client.v1.model.logs_filter import LogsFilter
 from datadog_api_client.v1.model.logs_pipeline import LogsPipeline
 
 body = LogsPipeline(
-filter=LogsFilter(
-query="source:python",
-),
-name="testPipelineArrayAppendPreserve",
-processors=[
-LogsArrayProcessor(
-type=LogsArrayProcessorType.ARRAY_PROCESSOR,
-is_enabled=True,
-name="append_ip_and_keep_source",
-operation=LogsArrayProcessorOperationAppend(
-type=LogsArrayProcessorOperationAppendType.APPEND,
-source="network.client.ip",
-target="sourceIps",
-preserve_source=True,
-),
-),
-],
-tags=[],
+    filter=LogsFilter(
+        query="source:python",
+    ),
+    name="testPipelineArrayAppendPreserve",
+    processors=[
+        LogsArrayProcessor(
+            type=LogsArrayProcessorType.ARRAY_PROCESSOR,
+            is_enabled=True,
+            name="append_ip_and_keep_source",
+            operation=LogsArrayProcessorOperationAppend(
+                type=LogsArrayProcessorOperationAppendType.APPEND,
+                source="network.client.ip",
+                target="sourceIps",
+                preserve_source=True,
+            ),
+        ),
+    ],
+    tags=[],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.create_logs_pipeline(body=body)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.create_logs_pipeline(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 # Create a pipeline with Array Processor Append Operation returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 
 body = DatadogAPIClient::V1::LogsPipeline.new({
-filter: DatadogAPIClient::V1::LogsFilter.new({
-query: "source:python",
-}),
-name: "testPipelineArrayAppend",
-processors: [
-DatadogAPIClient::V1::LogsArrayProcessor.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
-is_enabled: true,
-name: "append_ip_to_array",
-operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
-source: "network.client.ip",
-target: "sourceIps",
-}),
-}),
-],
-tags: [],
+  filter: DatadogAPIClient::V1::LogsFilter.new({
+    query: "source:python",
+  }),
+  name: "testPipelineArrayAppend",
+  processors: [
+    DatadogAPIClient::V1::LogsArrayProcessor.new({
+      type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
+      is_enabled: true,
+      name: "append_ip_to_array",
+      operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
+        type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
+        source: "network.client.ip",
+        target: "sourceIps",
+      }),
+    }),
+  ],
+  tags: [],
 })
 p api_instance.create_logs_pipeline(body)
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
 # Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 
 body = DatadogAPIClient::V1::LogsPipeline.new({
-filter: DatadogAPIClient::V1::LogsFilter.new({
-query: "source:python",
-}),
-name: "testPipelineArrayAppendNoPreserve",
-processors: [
-DatadogAPIClient::V1::LogsArrayProcessor.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
-is_enabled: true,
-name: "append_ip_and_remove_source",
-operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
-source: "network.client.ip",
-target: "sourceIps",
-preserve_source: false,
-}),
-}),
-],
-tags: [],
+  filter: DatadogAPIClient::V1::LogsFilter.new({
+    query: "source:python",
+  }),
+  name: "testPipelineArrayAppendNoPreserve",
+  processors: [
+    DatadogAPIClient::V1::LogsArrayProcessor.new({
+      type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
+      is_enabled: true,
+      name: "append_ip_and_remove_source",
+      operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
+        type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
+        source: "network.client.ip",
+        target: "sourceIps",
+        preserve_source: false,
+      }),
+    }),
+  ],
+  tags: [],
 })
 p api_instance.create_logs_pipeline(body)
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 # Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 
 body = DatadogAPIClient::V1::LogsPipeline.new({
-filter: DatadogAPIClient::V1::LogsFilter.new({
-query: "source:python",
-}),
-name: "testPipelineArrayAppendPreserve",
-processors: [
-DatadogAPIClient::V1::LogsArrayProcessor.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
-is_enabled: true,
-name: "append_ip_and_keep_source",
-operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
-type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
-source: "network.client.ip",
-target: "sourceIps",
-preserve_source: true,
-}),
-}),
-],
-tags: [],
+  filter: DatadogAPIClient::V1::LogsFilter.new({
+    query: "source:python",
+  }),
+  name: "testPipelineArrayAppendPreserve",
+  processors: [
+    DatadogAPIClient::V1::LogsArrayProcessor.new({
+      type: DatadogAPIClient::V1::LogsArrayProcessorType::ARRAY_PROCESSOR,
+      is_enabled: true,
+      name: "append_ip_and_keep_source",
+      operation: DatadogAPIClient::V1::LogsArrayProcessorOperationAppend.new({
+        type: DatadogAPIClient::V1::LogsArrayProcessorOperationAppendType::APPEND,
+        source: "network.client.ip",
+        target: "sourceIps",
+        preserve_source: true,
+      }),
+    }),
+  ],
+  tags: [],
 })
 p api_instance.create_logs_pipeline(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
@@ -5041,36 +4037,38 @@ use datadog_api_client::datadogV1::model::LogsProcessor;
 
 #[tokio::main]
 async fn main() {
-let body = LogsPipeline::new("testPipelineArrayAppend".to_string())
-.filter(LogsFilter::new().query("source:python".to_string()))
-.processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
-LogsArrayProcessor::new(
-LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
-LogsArrayProcessorOperationAppend::new(
-"network.client.ip".to_string(),
-"sourceIps".to_string(),
-LogsArrayProcessorOperationAppendType::APPEND,
-),
-)),
-LogsArrayProcessorType::ARRAY_PROCESSOR,
-)
-.is_enabled(true)
-.name("append_ip_to_array".to_string()),
-))])
-.tags(vec![]);
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.create_logs_pipeline(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = LogsPipeline::new("testPipelineArrayAppend".to_string())
+        .filter(LogsFilter::new().query("source:python".to_string()))
+        .processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
+            LogsArrayProcessor::new(
+                LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
+                    LogsArrayProcessorOperationAppend::new(
+                        "network.client.ip".to_string(),
+                        "sourceIps".to_string(),
+                        LogsArrayProcessorOperationAppendType::APPEND,
+                    ),
+                )),
+                LogsArrayProcessorType::ARRAY_PROCESSOR,
+            )
+            .is_enabled(true)
+            .name("append_ip_to_array".to_string()),
+        ))])
+        .tags(vec![]);
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.create_logs_pipeline(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source
 // false returns "OK" response
 use datadog_api_client::datadog;
@@ -5086,37 +4084,39 @@ use datadog_api_client::datadogV1::model::LogsProcessor;
 
 #[tokio::main]
 async fn main() {
-let body = LogsPipeline::new("testPipelineArrayAppendNoPreserve".to_string())
-.filter(LogsFilter::new().query("source:python".to_string()))
-.processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
-LogsArrayProcessor::new(
-LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
-LogsArrayProcessorOperationAppend::new(
-"network.client.ip".to_string(),
-"sourceIps".to_string(),
-LogsArrayProcessorOperationAppendType::APPEND,
-)
-.preserve_source(false),
-)),
-LogsArrayProcessorType::ARRAY_PROCESSOR,
-)
-.is_enabled(true)
-.name("append_ip_and_remove_source".to_string()),
-))])
-.tags(vec![]);
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.create_logs_pipeline(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = LogsPipeline::new("testPipelineArrayAppendNoPreserve".to_string())
+        .filter(LogsFilter::new().query("source:python".to_string()))
+        .processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
+            LogsArrayProcessor::new(
+                LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
+                    LogsArrayProcessorOperationAppend::new(
+                        "network.client.ip".to_string(),
+                        "sourceIps".to_string(),
+                        LogsArrayProcessorOperationAppendType::APPEND,
+                    )
+                    .preserve_source(false),
+                )),
+                LogsArrayProcessorType::ARRAY_PROCESSOR,
+            )
+            .is_enabled(true)
+            .name("append_ip_and_remove_source".to_string()),
+        ))])
+        .tags(vec![]);
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.create_logs_pipeline(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 // Create a pipeline with Array Processor Append Operation with preserve_source
 // true returns "OK" response
 use datadog_api_client::datadog;
@@ -5132,44 +4132,52 @@ use datadog_api_client::datadogV1::model::LogsProcessor;
 
 #[tokio::main]
 async fn main() {
-let body = LogsPipeline::new("testPipelineArrayAppendPreserve".to_string())
-.filter(LogsFilter::new().query("source:python".to_string()))
-.processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
-LogsArrayProcessor::new(
-LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
-LogsArrayProcessorOperationAppend::new(
-"network.client.ip".to_string(),
-"sourceIps".to_string(),
-LogsArrayProcessorOperationAppendType::APPEND,
-)
-.preserve_source(true),
-)),
-LogsArrayProcessorType::ARRAY_PROCESSOR,
-)
-.is_enabled(true)
-.name("append_ip_and_keep_source".to_string()),
-))])
-.tags(vec![]);
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.create_logs_pipeline(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
+    let body = LogsPipeline::new("testPipelineArrayAppendPreserve".to_string())
+        .filter(LogsFilter::new().query("source:python".to_string()))
+        .processors(vec![LogsProcessor::LogsArrayProcessor(Box::new(
+            LogsArrayProcessor::new(
+                LogsArrayProcessorOperation::LogsArrayProcessorOperationAppend(Box::new(
+                    LogsArrayProcessorOperationAppend::new(
+                        "network.client.ip".to_string(),
+                        "sourceIps".to_string(),
+                        LogsArrayProcessorOperationAppendType::APPEND,
+                    )
+                    .preserve_source(true),
+                )),
+                LogsArrayProcessorType::ARRAY_PROCESSOR,
+            )
+            .is_enabled(true)
+            .name("append_ip_and_keep_source".to_string()),
+        ))])
+        .tags(vec![]);
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.create_logs_pipeline(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Create a pipeline with Array Processor Append Operation returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Create a pipeline with Array Processor Append Operation returns "OK" response 
+```
 /**
-* Create a pipeline with Array Processor Append Operation returns "OK" response
-*/
+ * Create a pipeline with Array Processor Append Operation returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -5177,42 +4185,44 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiCreateLogsPipelineRequest = {
-body: {
-filter: {
-query: "source:python",
-},
-name: "testPipelineArrayAppend",
-processors: [
-{
-type: "array-processor",
-isEnabled: true,
-name: "append_ip_to_array",
-operation: {
-type: "append",
-source: "network.client.ip",
-target: "sourceIps",
-},
-},
-],
-tags: [],
-},
+  body: {
+    filter: {
+      query: "source:python",
+    },
+    name: "testPipelineArrayAppend",
+    processors: [
+      {
+        type: "array-processor",
+        isEnabled: true,
+        name: "append_ip_to_array",
+        operation: {
+          type: "append",
+          source: "network.client.ip",
+          target: "sourceIps",
+        },
+      },
+    ],
+    tags: [],
+  },
 };
 
 apiInstance
-.createLogsPipeline(params)
-.then((data: v1.LogsPipeline) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createLogsPipeline(params)
+  .then((data: v1.LogsPipeline) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response 
+```
 /**
-* Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
-*/
+ * Create a pipeline with Array Processor Append Operation with preserve_source false returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -5220,43 +4230,45 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiCreateLogsPipelineRequest = {
-body: {
-filter: {
-query: "source:python",
-},
-name: "testPipelineArrayAppendNoPreserve",
-processors: [
-{
-type: "array-processor",
-isEnabled: true,
-name: "append_ip_and_remove_source",
-operation: {
-type: "append",
-source: "network.client.ip",
-target: "sourceIps",
-preserveSource: false,
-},
-},
-],
-tags: [],
-},
+  body: {
+    filter: {
+      query: "source:python",
+    },
+    name: "testPipelineArrayAppendNoPreserve",
+    processors: [
+      {
+        type: "array-processor",
+        isEnabled: true,
+        name: "append_ip_and_remove_source",
+        operation: {
+          type: "append",
+          source: "network.client.ip",
+          target: "sourceIps",
+          preserveSource: false,
+        },
+      },
+    ],
+    tags: [],
+  },
 };
 
 apiInstance
-.createLogsPipeline(params)
-.then((data: v1.LogsPipeline) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createLogsPipeline(params)
+  .then((data: v1.LogsPipeline) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
 ```
-Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-**```
+
+Copy
+#####  Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response 
+```
 /**
-* Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
-*/
+ * Create a pipeline with Array Processor Append Operation with preserve_source true returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -5264,61 +4276,80 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiCreateLogsPipelineRequest = {
-body: {
-filter: {
-query: "source:python",
-},
-name: "testPipelineArrayAppendPreserve",
-processors: [
-{
-type: "array-processor",
-isEnabled: true,
-name: "append_ip_and_keep_source",
-operation: {
-type: "append",
-source: "network.client.ip",
-target: "sourceIps",
-preserveSource: true,
-},
-},
-],
-tags: [],
-},
+  body: {
+    filter: {
+      query: "source:python",
+    },
+    name: "testPipelineArrayAppendPreserve",
+    processors: [
+      {
+        type: "array-processor",
+        isEnabled: true,
+        name: "append_ip_and_keep_source",
+        operation: {
+          type: "append",
+          source: "network.client.ip",
+          target: "sourceIps",
+          preserveSource: true,
+        },
+      },
+    ],
+    tags: [],
+  },
 };
 
 apiInstance
-.createLogsPipeline(params)
-.then((data: v1.LogsPipeline) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createLogsPipeline(params)
+  .then((data: v1.LogsPipeline) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Get a pipeline- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
-### OverviewGet a specific pipeline from your organization.
-This endpoint takes no JSON arguments.
-This endpoint requires the `logs_read_config` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get a pipeline](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-a-pipeline)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#get-a-pipeline-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
+### Overview
+Get a specific pipeline from your organization. This endpoint takes no JSON arguments. This endpoint requires the `logs_read_config` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-pipeline_id [*required*]
+pipeline_id [_required_]
 string
 ID of the pipeline to get.
-### Response- 200
-- 400
-- 403
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipeline-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipeline-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipeline-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#GetLogsPipeline-429-v1)
+
+
 OK
-- Model
-- Example
-Pipelines and processors operate on incoming logs,
-parsing and transforming them into structured attributes for easier querying.**Note**: These endpoints are only available for admin users.
-Make sure to use an application key created by an admin.Expand All
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
+Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying.
+**Note** : These endpoints are only available for admin users. Make sure to use an application key created by an admin.
 Field
 Type
 Description
@@ -5340,19 +4371,19 @@ Whether or not the pipeline is enabled.
 is_read_only
 boolean
 Whether or not the pipeline can be edited.
-name [*required*]
+name [_required_]
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -5367,111 +4398,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -5487,25 +4518,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -5518,22 +4547,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -5542,32 +4571,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -5582,29 +4611,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -5612,51 +4638,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -5672,92 +4698,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -5768,15 +4787,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -5787,24 +4808,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -5813,88 +4836,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -5903,42 +4925,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -5954,10 +4975,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -5966,34 +4987,34 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
@@ -6002,35 +5023,39 @@ string
 Type of pipeline.
 ```
 {
-"description": "string",
-"filter": {
-"query": "source:python"
-},
-"id": "string",
-"is_enabled": false,
-"is_read_only": false,
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar",
-"support_rules": "rule_name_1 foo\nrule_name_2 bar"
-},
-"is_enabled": false,
-"name": "string",
-"samples": [],
-"source": "message",
-"type": "grok-parser"
+  "description": "string",
+  "filter": {
+    "query": "source:python"
+  },
+  "id": "string",
+  "is_enabled": false,
+  "is_read_only": false,
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar",
+        "support_rules": "rule_name_1 foo\nrule_name_2 bar"
+      },
+      "is_enabled": false,
+      "name": "string",
+      "samples": [],
+      "source": "message",
+      "type": "grok-parser"
+    }
+  ],
+  "tags": [],
+  "type": "pipeline"
 }
-],
-"tags": [],
-"type": "pipeline"
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -6048,63 +5073,85 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Get a pipelineCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Path parametersexport pipeline_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
+
+#####  Get a pipeline
+Copy
+```
+                  # Path parameters  
+export pipeline_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get a pipeline```
+
+#####  Get a pipeline
+```
 """
 Get a pipeline returns "OK" response
 """
@@ -6114,31 +5161,49 @@ from datadog_api_client.v1.api.logs_pipelines_api import LogsPipelinesApi
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.get_logs_pipeline(
-pipeline_id="pipeline_id",
-)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.get_logs_pipeline(
+        pipeline_id="pipeline_id",
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Get a pipeline
+```
 # Get a pipeline returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 p api_instance.get_logs_pipeline("pipeline_id")
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Get a pipeline
+```
 // Get a pipeline returns "OK" response
 
 package main
@@ -6165,16 +5230,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.GetLogsPipeline`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Get a pipeline
+```
 // Get a pipeline returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -6183,54 +5257,72 @@ import com.datadog.api.client.v1.api.LogsPipelinesApi;
 import com.datadog.api.client.v1.model.LogsPipeline;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-try {
-LogsPipeline result = apiInstance.getLogsPipeline("pipeline_id");
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#getLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipeline result = apiInstance.getLogsPipeline("pipeline_id");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#getLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Get a pipeline
+```
 // Get a pipeline returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.get_logs_pipeline("pipeline_id".to_string()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.get_logs_pipeline("pipeline_id".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Get a pipeline
+```
 /**
-* Get a pipeline returns "OK" response
-*/
+ * Get a pipeline returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -6238,42 +5330,61 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiGetLogsPipelineRequest = {
-pipelineId: "pipeline_id",
+  pipelineId: "pipeline_id",
 };
 
 apiInstance
-.getLogsPipeline(params)
-.then((data: v1.LogsPipeline) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getLogsPipeline(params)
+  .then((data: v1.LogsPipeline) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Delete a pipeline- v1 (latest)
-DELETE https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
-### OverviewDelete a given pipeline from your organization.
-This endpoint takes no JSON arguments.
-This endpoint requires the `logs_write_pipelines` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Delete a pipeline](https://docs.datadoghq.com/api/latest/logs-pipelines/#delete-a-pipeline)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#delete-a-pipeline-v1)
+
+
+DELETE https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
+### Overview
+Delete a given pipeline from your organization. This endpoint takes no JSON arguments. This endpoint requires the `logs_write_pipelines` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-pipeline_id [*required*]
+pipeline_id [_required_]
 string
 ID of the pipeline to delete.
-### Response- 200
-- 400
-- 403
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#DeleteLogsPipeline-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/logs-pipelines/#DeleteLogsPipeline-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#DeleteLogsPipeline-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#DeleteLogsPipeline-429-v1)
+
+
 OK
 Bad Request
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -6291,63 +5402,85 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Delete a pipelineCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Path parametersexport pipeline_id="CHANGE_ME"# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
+
+#####  Delete a pipeline
+Copy
+```
+                  # Path parameters  
+export pipeline_id="CHANGE_ME"  
+# Curl command  
+curl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Delete a pipeline```
+
+#####  Delete a pipeline
+```
 """
 Delete a pipeline returns "OK" response
 """
@@ -6357,29 +5490,47 @@ from datadog_api_client.v1.api.logs_pipelines_api import LogsPipelinesApi
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-api_instance.delete_logs_pipeline(
-pipeline_id="pipeline_id",
-)
+    api_instance = LogsPipelinesApi(api_client)
+    api_instance.delete_logs_pipeline(
+        pipeline_id="pipeline_id",
+    )
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Delete a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Delete a pipeline
+```
 # Delete a pipeline returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 p api_instance.delete_logs_pipeline("pipeline_id")
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Delete a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Delete a pipeline
+```
 // Delete a pipeline returns "OK" response
 
 package main
@@ -6406,12 +5557,21 @@ func main() {
 	}
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Delete a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Delete a pipeline
+```
 // Delete a pipeline returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -6419,53 +5579,71 @@ import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v1.api.LogsPipelinesApi;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-try {
-apiInstance.deleteLogsPipeline("pipeline_id");
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#deleteLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      apiInstance.deleteLogsPipeline("pipeline_id");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#deleteLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Delete a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Delete a pipeline
+```
 // Delete a pipeline returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api.delete_logs_pipeline("pipeline_id".to_string()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api.delete_logs_pipeline("pipeline_id".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Delete a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Delete a pipeline
+```
 /**
-* Delete a pipeline returns "OK" response
-*/
+ * Delete a pipeline returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -6473,36 +5651,56 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiDeleteLogsPipelineRequest = {
-pipelineId: "pipeline_id",
+  pipelineId: "pipeline_id",
 };
 
 apiInstance
-.deleteLogsPipeline(params)
-.then((data: any) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .deleteLogsPipeline(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Update a pipeline- v1 (latest)
-PUT https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
-### OverviewUpdate a given pipeline configuration to change it’s processors or their order.
-**Note**: Using this method updates your pipeline configuration by **replacing**
-your current configuration with the new one sent to your Datadog organization.This endpoint requires the `logs_write_pipelines` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Update a pipeline](https://docs.datadoghq.com/api/latest/logs-pipelines/#update-a-pipeline)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/logs-pipelines/#update-a-pipeline-v1)
+
+
+PUT https://api.ap1.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.ap2.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.eu/api/v1/logs/config/pipelines/{pipeline_id}https://api.ddog-gov.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us3.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/{pipeline_id}
+### Overview
+Update a given pipeline configuration to change it’s processors or their order.
+**Note** : Using this method updates your pipeline configuration by **replacing** your current configuration with the new one sent to your Datadog organization.
+This endpoint requires the `logs_write_pipelines` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-pipeline_id [*required*]
+pipeline_id [_required_]
 string
 ID of the pipeline to delete.
-### Request#### Body Data (required)New definition of the pipeline.
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+New definition of the pipeline.
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Field
 Type
 Description
@@ -6524,19 +5722,19 @@ Whether or not the pipeline is enabled.
 is_read_only
 boolean
 Whether or not the pipeline can be edited.
-name [*required*]
+name [_required_]
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -6551,111 +5749,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -6671,25 +5869,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -6702,22 +5898,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -6726,32 +5922,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -6766,29 +5962,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -6796,51 +5989,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -6856,92 +6049,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -6952,15 +6138,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -6971,24 +6159,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -6997,88 +6187,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -7087,42 +6276,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -7138,10 +6326,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -7150,34 +6338,34 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
@@ -7186,37 +6374,44 @@ string
 Type of pipeline.
 ```
 {
-"description": "string",
-"filter": {
-"query": "source:python"
-},
-"is_enabled": false,
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar",
-"support_rules": "rule_name_1 foo\nrule_name_2 bar"
-},
-"is_enabled": false,
-"name": "string",
-"samples": [],
-"source": "message",
-"type": "grok-parser"
+  "description": "string",
+  "filter": {
+    "query": "source:python"
+  },
+  "is_enabled": false,
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar",
+        "support_rules": "rule_name_1 foo\nrule_name_2 bar"
+      },
+      "is_enabled": false,
+      "name": "string",
+      "samples": [],
+      "source": "message",
+      "type": "grok-parser"
+    }
+  ],
+  "tags": []
 }
-],
-"tags": []
-}
-```### Response- 200
-- 400
-- 403
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipeline-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipeline-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipeline-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/logs-pipelines/#UpdateLogsPipeline-429-v1)
+
+
 OK
-- Model
-- Example
-Pipelines and processors operate on incoming logs,
-parsing and transforming them into structured attributes for easier querying.**Note**: These endpoints are only available for admin users.
-Make sure to use an application key created by an admin.Expand All
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
+Pipelines and processors operate on incoming logs, parsing and transforming them into structured attributes for easier querying.
+**Note** : These endpoints are only available for admin users. Make sure to use an application key created by an admin.
 Field
 Type
 Description
@@ -7238,19 +6433,19 @@ Whether or not the pipeline is enabled.
 is_read_only
 boolean
 Whether or not the pipeline can be edited.
-name [*required*]
+name [_required_]
 string
 Name of the pipeline.
 processors
-[ <oneOf>]
+[ <oneOf>]
 Ordered list of processors in this pipeline.
 Option 1
 object
-Create custom grok rules to parse the full message or a specific attribute of your raw event.
-For more information, see the parsing section. grok [*required*]
+Create custom grok rules to parse the full message or [a specific attribute of your raw event](https://docs.datadoghq.com/logs/log_configuration/parsing/#advanced-settings). For more information, see the [parsing section](https://docs.datadoghq.com/logs/log_configuration/parsing).
+grok [_required_]
 object
 Set of rules for the grok parser.
-match_rules [*required*]
+match_rules [_required_]
 string
 List of match rules for the grok parser, separated by a new line.
 support_rules
@@ -7265,111 +6460,111 @@ Name of the processor.
 samples
 [string]
 List of sample logs to test this grok parser.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute to parse.
 default: `message`
-type [*required*]
+type [_required_]
 enum
-Type of logs grok parser.
-Allowed enum values: `grok-parser`default: `grok-parser`
+Type of logs grok parser. Allowed enum values: `grok-parser`
+default: `grok-parser`
 Option 2
 object
 As Datadog receives logs, it timestamps them using the value(s) from any of these default attributes.
-`timestamp`
-`date`
-`_timestamp`
-`Timestamp`
-`eventTime`
-`published_date`
-If your logs put their dates in an attribute not in this list,
-use the log date Remapper Processor to define their date attribute as the official log timestamp.
-The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.**Note:** If your logs don’t contain any of the default attributes
-and you haven’t defined your own date attribute, Datadog timestamps
-the logs with the date it received them.If multiple log date remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * `timestamp`
+  * `date`
+  * `_timestamp`
+  * `Timestamp`
+  * `eventTime`
+  * `published_date`
+If your logs put their dates in an attribute not in this list, use the log date Remapper Processor to define their date attribute as the official log timestamp. The recognized date formats are ISO8601, UNIX (the milliseconds EPOCH format), and RFC3164.
+
+
+**Note:** If your logs don’t contain any of the default attributes and you haven’t defined your own date attribute, Datadog timestamps the logs with the date it received them.
+If multiple log date remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs date remapper.
-Allowed enum values: `date-remapper`default: `date-remapper`
+Type of logs date remapper. Allowed enum values: `date-remapper`
+default: `date-remapper`
 Option 3
 object
 Use this Processor if you want to assign some attributes as the official status.
 Each incoming status value is mapped as follows.
-- Integers from 0 to 7 map to the Syslog severity standards
-- Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
-- Strings beginning with `a` (case-insensitive) map to `alert` (1)
-- Strings beginning with `c` (case-insensitive) map to `critical` (2)
-- Strings beginning with `err` (case-insensitive) map to `error` (3)
-- Strings beginning with `w` (case-insensitive) map to `warning` (4)
-- Strings beginning with `n` (case-insensitive) map to `notice` (5)
-- Strings beginning with `i` (case-insensitive) map to `info` (6)
-- Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
-- Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
-- All others map to `info` (6)
-**Note:** If multiple log status remapper processors can be applied to a given log,
-only the first one (according to the pipelines order) is taken into account.is_enabled
+  * Integers from 0 to 7 map to the Syslog severity standards
+  * Strings beginning with `emerg` or f (case-insensitive) map to `emerg` (0)
+  * Strings beginning with `a` (case-insensitive) map to `alert` (1)
+  * Strings beginning with `c` (case-insensitive) map to `critical` (2)
+  * Strings beginning with `err` (case-insensitive) map to `error` (3)
+  * Strings beginning with `w` (case-insensitive) map to `warning` (4)
+  * Strings beginning with `n` (case-insensitive) map to `notice` (5)
+  * Strings beginning with `i` (case-insensitive) map to `info` (6)
+  * Strings beginning with `d`, `trace` or `verbose` (case-insensitive) map to `debug` (7)
+  * Strings beginning with `o` or matching `OK` or `Success` (case-insensitive) map to OK
+  * All others map to `info` (6)
+
+
+**Note:** If multiple log status remapper processors can be applied to a given log, only the first one (according to the pipelines order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs status remapper.
-Allowed enum values: `status-remapper`default: `status-remapper`
+Type of logs status remapper. Allowed enum values: `status-remapper`
+default: `status-remapper`
 Option 4
 object
 Use this processor if you want to assign one or more attributes as the official service.
-**Note:** If multiple service remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+**Note:** If multiple service remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-type [*required*]
+type [_required_]
 enum
-Type of logs service remapper.
-Allowed enum values: `service-remapper`default: `service-remapper`
+Type of logs service remapper. Allowed enum values: `service-remapper`
+default: `service-remapper`
 Option 5
 object
-The message is a key attribute in Datadog.
-It is displayed in the message column of the Log Explorer and you can do full string search on it.
-Use this Processor to define one or more attributes as the official log message.**Note:** If multiple log message remapper processors can be applied to a given log,
-only the first one (according to the pipeline order) is taken into account.is_enabled
+The message is a key attribute in Datadog. It is displayed in the message column of the Log Explorer and you can do full string search on it. Use this Processor to define one or more attributes as the official log message.
+**Note:** If multiple log message remapper processors can be applied to a given log, only the first one (according to the pipeline order) is taken into account.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `msg`
-type [*required*]
+type [_required_]
 enum
-Type of logs message remapper.
-Allowed enum values: `message-remapper`default: `message-remapper`
+Type of logs message remapper. Allowed enum values: `message-remapper`
+default: `message-remapper`
 Option 6
 object
-The remapper processor remaps any source attribute(s) or tag to another target attribute or tag.
-Constraints on the tag/attribute name are explained in the Tag Best Practice documentation.
-Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.is_enabled
+The remapper processor remaps any source attribute(s) or tag to another target attribute or tag. Constraints on the tag/attribute name are explained in the [Tag Best Practice documentation](https://docs.datadoghq.com/logs/guide/log-parsing-best-practice). Some additional constraints are applied as `:` or `,` are not allowed in the target tag/attribute name.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
@@ -7385,25 +6580,23 @@ source_type
 string
 Defines if the sources are from log `attribute` or `tag`.
 default: `attribute`
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Final attribute or tag name to remap the sources to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`target_type
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+target_type
 string
 Defines if the final attribute or tag name is from log `attribute` or `tag`.
 default: `attribute`
-type [*required*]
+type [_required_]
 enum
-Type of logs attribute remapper.
-Allowed enum values: `attribute-remapper`default: `attribute-remapper`
+Type of logs attribute remapper. Allowed enum values: `attribute-remapper`
+default: `attribute-remapper`
 Option 7
 object
 This processor extracts query parameters and other important parameters from a URL.
@@ -7416,22 +6609,22 @@ Name of the processor.
 normalize_ending_slashes
 boolean
 Normalize the ending slashes or not.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.url`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.url_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs URL parser.
-Allowed enum values: `url-parser`default: `url-parser`
+Type of logs URL parser. Allowed enum values: `url-parser`
+default: `url-parser`
 Option 8
 object
-The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data.
-It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.is_enabled
+The User-Agent parser takes a User-Agent attribute and extracts the OS, browser, device, and other user data. It recognizes major bots like the Google Bot, Yahoo Slurp, and Bing.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 is_encoded
@@ -7440,32 +6633,32 @@ Define if the source attribute is URL encoded or not.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `http.useragent`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `http.useragent_details`
-type [*required*]
+type [_required_]
 enum
-Type of logs User-Agent parser.
-Allowed enum values: `user-agent-parser`default: `user-agent-parser`
+Type of logs User-Agent parser. Allowed enum values: `user-agent-parser`
+default: `user-agent-parser`
 Option 9
 object
-Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name)
-to a log matching a provided search query. Use categories to create groups for an analytical view.
-For example, URL groups, machine groups, environments, and response time buckets.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Once the log has matched one of the Processor queries, it stops.
-Make sure they are properly ordered in case a log could match several queries.- The names of the categories must be unique.
-- Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
-categories [*required*]
+Use the Category Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log matching a provided search query. Use categories to create groups for an analytical view. For example, URL groups, machine groups, environments, and response time buckets.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Once the log has matched one of the Processor queries, it stops. Make sure they are properly ordered in case a log could match several queries.
+  * The names of the categories must be unique.
+  * Once defined in the Category Processor, you can map categories to log status using the Log Status Remapper.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter
 object
 Filter for logs.
 query
@@ -7480,29 +6673,26 @@ Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the target attribute which value is defined by the matching category.
-type [*required*]
+type [_required_]
 enum
-Type of logs category processor.
-Allowed enum values: `category-processor`default: `category-processor`
+Type of logs category processor. Allowed enum values: `category-processor`
+default: `category-processor`
 Option 10
 object
-Use the Arithmetic Processor to add a new attribute (without spaces or special characters
-in the new attribute name) to a log with the result of the provided formula.
-This enables you to remap different time attributes with different units into a single attribute,
-or to compute operations on attributes within the same log.The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
-By default, the calculation is skipped if an attribute is missing.
-Select “Replace missing attribute by 0” to automatically populate
-missing attribute values with 0 to ensure that the calculation is done.
-An attribute is missing if it is not found in the log attributes,
-or if it cannot be converted to a number.*Notes*:
-- The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
-- If the target attribute already exists, it is overwritten by the result of the formula.
-Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`,
-the actual value stored for the attribute is `0.123456789`.If you need to scale a unit of measure,
-see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).expression [*required*]
+Use the Arithmetic Processor to add a new attribute (without spaces or special characters in the new attribute name) to a log with the result of the provided formula. This enables you to remap different time attributes with different units into a single attribute, or to compute operations on attributes within the same log.
+The formula can use parentheses and the basic arithmetic operators `-`, `+`, `*`, `/`.
+By default, the calculation is skipped if an attribute is missing. Select “Replace missing attribute by 0” to automatically populate missing attribute values with 0 to ensure that the calculation is done. An attribute is missing if it is not found in the log attributes, or if it cannot be converted to a number.
+_Notes_ :
+  * The operator `-` needs to be space split in the formula as it can also be contained in attribute names.
+  * If the target attribute already exists, it is overwritten by the result of the formula.
+  * Results are rounded up to the 9th decimal. For example, if the result of the formula is `0.1234567891`, the actual value stored for the attribute is `0.123456789`.
+  * If you need to scale a unit of measure, see [Scale Filter](https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filter#matcher-and-filter).
+
+
+expression [_required_]
 string
 Arithmetic operation between one or more log attributes.
 is_enabled
@@ -7510,51 +6700,51 @@ boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If `true`, it replaces all missing attributes of expression by `0`, `false`
-skip the operation if an attribute is missing.name
+If `true`, it replaces all missing attributes of expression by `0`, `false` skip the operation if an attribute is missing.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the result of the arithmetic operation.
-type [*required*]
+type [_required_]
 enum
-Type of logs arithmetic processor.
-Allowed enum values: `arithmetic-processor`default: `arithmetic-processor`
+Type of logs arithmetic processor. Allowed enum values: `arithmetic-processor`
+default: `arithmetic-processor`
 Option 11
 object
-Use the string builder processor to add a new attribute (without spaces or special characters)
-to a log with the result of the provided template.
-This enables aggregation of different attributes or raw strings into a single attribute.The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
-**Notes**:
-- The processor only accepts attributes with values or an array of values in the blocks.
-If an attribute cannot be used (object or array of object),
-it is replaced by an empty string or the entire operation is skipped depending on your selection.- If the target attribute already exists, it is overwritten by the result of the template.
-- Results of the template cannot exceed 256 characters.
+Use the string builder processor to add a new attribute (without spaces or special characters) to a log with the result of the provided template. This enables aggregation of different attributes or raw strings into a single attribute.
+The template is defined by both raw text and blocks with the syntax `%{attribute_path}`.
+**Notes** :
+  * The processor only accepts attributes with values or an array of values in the blocks.
+  * If an attribute cannot be used (object or array of object), it is replaced by an empty string or the entire operation is skipped depending on your selection.
+  * If the target attribute already exists, it is overwritten by the result of the template.
+  * Results of the template cannot exceed 256 characters.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 is_replace_missing
 boolean
-If true, it replaces all missing attributes of `template` by an empty string.
-If `false` (default), skips the operation for missing attributes.name
+If true, it replaces all missing attributes of `template` by an empty string. If `false` (default), skips the operation for missing attributes.
+name
 string
 Name of the processor.
-target [*required*]
+target [_required_]
 string
 The name of the attribute that contains the result of the template.
-template [*required*]
+template [_required_]
 string
 A formula with one or more attributes and raw text.
-type [*required*]
+type [_required_]
 enum
-Type of logs string builder processor.
-Allowed enum values: `string-builder-processor`default: `string-builder-processor`
+Type of logs string builder processor. Allowed enum values: `string-builder-processor`
+default: `string-builder-processor`
 Option 12
 object
-Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps.
-For example, first use a high-level filtering such as team and then a second level of filtering based on the
-integration, service, or any other tag or attribute.A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
+Nested Pipelines are pipelines within a pipeline. Use Nested Pipelines to split the processing into two steps. For example, first use a high-level filtering such as team and then a second level of filtering based on the integration, service, or any other tag or attribute.
+A pipeline can contain Nested Pipelines and Processors whereas a Nested Pipeline can only contain Processors.
 filter
 object
 Filter for logs.
@@ -7570,92 +6760,85 @@ Name of the processor.
 processors
 [object]
 Ordered list of processors in this pipeline.
-type [*required*]
+type [_required_]
 enum
-Type of logs pipeline processor.
-Allowed enum values: `pipeline`default: `pipeline`
+Type of logs pipeline processor. Allowed enum values: `pipeline`
+default: `pipeline`
 Option 13
 object
-The GeoIP parser takes an IP address attribute and extracts if available
-the Continent, Country, Subdivision, and City information in the target attribute path.is_enabled
+The GeoIP parser takes an IP address attribute and extracts if available the Continent, Country, Subdivision, and City information in the target attribute path.
+is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
 default: `network.client.ip`
-target [*required*]
+target [_required_]
 string
 Name of the parent attribute that contains all the extracted details from the `sources`.
 default: `network.client.geoip`
-type [*required*]
+type [_required_]
 enum
-Type of GeoIP parser.
-Allowed enum values: `geo-ip-parser`default: `geo-ip-parser`
+Type of GeoIP parser. Allowed enum values: `geo-ip-parser`
+default: `geo-ip-parser`
 Option 14
 object
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in the processors mapping table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.default_lookup
+Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in the processors mapping table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+default_lookup
 string
 Value to set the target attribute if the source value is not found in the list.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_table [*required*]
+lookup_table [_required_]
 [string]
-Mapping table of values for the source attribute and their associated target attribute values,
-formatted as `["source_key1,target_value1", "source_key2,target_value2"]`name
+Mapping table of values for the source attribute and their associated target attribute values, formatted as `["source_key1,target_value1", "source_key2,target_value2"]`
+name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
-Name of the attribute that contains the corresponding value in the mapping list
-or the `default_lookup` if not found in the mapping list.type [*required*]
+Name of the attribute that contains the corresponding value in the mapping list or the `default_lookup` if not found in the mapping list.
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 15
 object
-**Note**: Reference Tables are in public beta.
-Use the Lookup Processor to define a mapping between a log attribute
-and a human readable value saved in a Reference Table.
-For example, you can use the Lookup Processor to map an internal service ID
-into a human readable service name. Alternatively, you could also use it to check
-if the MAC address that just attempted to connect to the production
-environment belongs to your list of stolen machines.is_enabled
+**Note** : Reference Tables are in public beta. Use the Lookup Processor to define a mapping between a log attribute and a human readable value saved in a Reference Table. For example, you can use the Lookup Processor to map an internal service ID into a human readable service name. Alternatively, you could also use it to check if the MAC address that just attempted to connect to the production environment belongs to your list of stolen machines.
+is_enabled
 boolean
 Whether or not the processor is enabled.
-lookup_enrichment_table [*required*]
+lookup_enrichment_table [_required_]
 string
 Name of the Reference Table for the source attribute and their associated target attribute values.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Source attribute used to perform the lookup.
-target [*required*]
+target [_required_]
 string
 Name of the attribute that contains the corresponding value in the mapping list.
-type [*required*]
+type [_required_]
 enum
-Type of logs lookup processor.
-Allowed enum values: `lookup-processor`default: `lookup-processor`
+Type of logs lookup processor. Allowed enum values: `lookup-processor`
+default: `lookup-processor`
 Option 16
 object
 There are two ways to improve correlation between application traces and logs.
-Follow the documentation on how to inject a trace ID in the application logs
-and by default log integrations take care of all the rest of the setup.Use the Trace remapper processor to define a log attribute as its associated trace ID.
+  1. Follow the documentation on [how to inject a trace ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces) and by default log integrations take care of all the rest of the setup.
+  2. Use the Trace remapper processor to define a log attribute as its associated trace ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -7666,15 +6849,17 @@ sources
 [string]
 Array of source attributes.
 default: `dd.trace_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs trace remapper.
-Allowed enum values: `trace-id-remapper`default: `trace-id-remapper`
+Type of logs trace remapper. Allowed enum values: `trace-id-remapper`
+default: `trace-id-remapper`
 Option 17
 object
 There are two ways to define correlation between application spans and logs:
-Follow the documentation on how to inject a span ID in the application logs.
-Log integrations automatically handle all remaining setup steps by default.Use the span remapper processor to define a log attribute as its associated span ID.
+  1. Follow the documentation on [how to inject a span ID in the application logs](https://docs.datadoghq.com/tracing/connect_logs_and_traces). Log integrations automatically handle all remaining setup steps by default.
+  2. Use the span remapper processor to define a log attribute as its associated span ID.
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
@@ -7685,24 +6870,26 @@ sources
 [string]
 Array of source attributes.
 default: `dd.span_id`
-type [*required*]
+type [_required_]
 enum
-Type of logs span remapper.
-Allowed enum values: `span-id-remapper`default: `span-id-remapper`
+Type of logs span remapper. Allowed enum values: `span-id-remapper`
+default: `span-id-remapper`
 Option 18
 object
-A processor for extracting, aggregating, or transforming values from JSON arrays within your logs.
-Supported operations are:- Select value from matching element
-- Compute array length
-- Append a value to an array
+A processor for extracting, aggregating, or transforming values from JSON arrays within your logs. Supported operations are:
+  * Select value from matching element
+  * Compute array length
+  * Append a value to an array
+
+
 is_enabled
 boolean
 Whether or not the processor is enabled.
 name
 string
 Name of the processor.
-operation [*required*]
- <oneOf>
+operation [_required_]
+<oneOf>
 Configuration of the array processor operation to perform.
 Option 1
 object
@@ -7711,88 +6898,87 @@ preserve_source
 boolean
 Remove or preserve the remapped source element.
 default: `true`
-source [*required*]
+source [_required_]
 string
 Attribute path containing the value to append.
-target [*required*]
+target [_required_]
 string
 Attribute path of the array to append to.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `append` Option 2
+Operation type. Allowed enum values: `append`
+Option 2
 object
 Operation that computes the length of a `source` array and stores the result in the `target` attribute.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to measure.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the computed length.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `length` Option 3
+Operation type. Allowed enum values: `length`
+Option 3
 object
 Operation that finds an object in a `source` array using a `filter`, and then extracts a specific value into the `target` attribute.
-filter [*required*]
+filter [_required_]
 string
 Filter condition expressed as `key:value` used to find the matching element.
-source [*required*]
+source [_required_]
 string
 Attribute path of the array to search into.
-target [*required*]
+target [_required_]
 string
 Attribute that receives the extracted value.
-type [*required*]
+type [_required_]
 enum
-Operation type.
-Allowed enum values: `select`value_to_extract [*required*]
+Operation type. Allowed enum values: `select`
+value_to_extract [_required_]
 string
 Key of the value to extract from the matching element.
-type [*required*]
+type [_required_]
 enum
-Type of logs array processor.
-Allowed enum values: `array-processor`default: `array-processor`
+Type of logs array processor. Allowed enum values: `array-processor`
+default: `array-processor`
 Option 19
 object
-The decoder processor decodes any source attribute containing a
-base64/base16-encoded UTF-8/ASCII string back to its original value, storing the
-result in a target attribute.binary_to_text_encoding [*required*]
+The decoder processor decodes any source attribute containing a base64/base16-encoded UTF-8/ASCII string back to its original value, storing the result in a target attribute.
+binary_to_text_encoding [_required_]
 enum
-The encoding used to represent the binary data.
-Allowed enum values: `base64,base16`input_representation [*required*]
+The encoding used to represent the binary data. Allowed enum values: `base64,base16`
+input_representation [_required_]
 enum
-The original representation of input string.
-Allowed enum values: `utf_8,integer`is_enabled
+The original representation of input string. Allowed enum values: `utf_8,integer`
+is_enabled
 boolean
 Whether the processor is enabled.
 name
 string
 Name of the processor.
-source [*required*]
+source [_required_]
 string
 Name of the log attribute with the encoded data.
-target [*required*]
+target [_required_]
 string
 Name of the log attribute that contains the decoded data.
-type [*required*]
+type [_required_]
 enum
-Type of logs decoder processor.
-Allowed enum values: `decoder-processor`default: `decoder-processor`
+Type of logs decoder processor. Allowed enum values: `decoder-processor`
+default: `decoder-processor`
 Option 20
 object
 A processor that has additional validations and checks for a given schema. Currently supported schema types include OCSF.
 is_enabled
 boolean
 Whether or not the processor is enabled.
-mappers [*required*]
-[ <oneOf>]
+mappers [_required_]
+[ <oneOf>]
 The `LogsSchemaProcessor` `mappers`.
 Option 1
 object
 The schema remapper maps source log fields to their correct fields.
-name [*required*]
+name [_required_]
 string
 Name of the logs schema remapper.
 override_on_conflict
@@ -7801,42 +6987,41 @@ Override or not the target element if already set.
 preserve_source
 boolean
 Remove or preserve the remapped source element.
-sources [*required*]
+sources [_required_]
 [string]
 Array of source attributes.
-target [*required*]
+target [_required_]
 string
 Target field to map log source field to.
 target_format
 enum
-If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type.
-If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types.
-If the `target_type` is `tag`, this parameter may not be specified.
-Allowed enum values: `auto,string,integer,double`type [*required*]
+If the `target_type` of the remapper is `attribute`, try to cast the value to a new specific type. If the cast is not possible, the original type is kept. `string`, `integer`, or `double` are the possible types. If the `target_type` is `tag`, this parameter may not be specified. Allowed enum values: `auto,string,integer,double`
+type [_required_]
 enum
-Type of logs schema remapper.
-Allowed enum values: `schema-remapper` Option 2
+Type of logs schema remapper. Allowed enum values: `schema-remapper`
+Option 2
 object
-Use the Schema Category Mapper to categorize log event into enum fields.
-In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.**Notes**:
-The syntax of the query is the one of Logs Explorer search bar.
-The query can be done on any log attribute or tag, whether it is a facet or not.
-Wildcards can also be used inside your query.Categories are executed in order and processing stops at the first match.
-Make sure categories are properly ordered in case a log could match multiple queries.- Sibling fields always have a numerical ID field and a human-readable string name.
-A fallback section handles cases where the name or ID value matches a specific value.
-If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log. categories [*required*]
+Use the Schema Category Mapper to categorize log event into enum fields. In the case of OCSF, they can be used to map sibling fields which are composed of an ID and a name.
+**Notes** :
+  * The syntax of the query is the one of Logs Explorer search bar. The query can be done on any log attribute or tag, whether it is a facet or not. Wildcards can also be used inside your query.
+  * Categories are executed in order and processing stops at the first match. Make sure categories are properly ordered in case a log could match multiple queries.
+  * Sibling fields always have a numerical ID field and a human-readable string name.
+  * A fallback section handles cases where the name or ID value matches a specific value. If the name matches "Other" or the ID matches 99, the value of the sibling name field will be pulled from a source field from the original log.
+
+
+categories [_required_]
 [object]
-Array of filters to match or not a log and their
-corresponding `name` to assign a custom value to the log. filter [*required*]
+Array of filters to match or not a log and their corresponding `name` to assign a custom value to the log.
+filter [_required_]
 object
 Filter for logs.
 query
 string
 The filter query.
-id [*required*]
+id [_required_]
 int64
 ID to inject into the category.
-name [*required*]
+name [_required_]
 string
 Value to assign to target schema field.
 fallback
@@ -7852,10 +7037,10 @@ object
 Values that define when the fallback is used.
 <any-key>
 string
-name [*required*]
+name [_required_]
 string
 Name of the logs schema category mapper.
-targets [*required*]
+targets [_required_]
 object
 Name of the target attributes which value is defined by the matching category.
 id
@@ -7864,34 +7049,34 @@ ID of the field to map log attributes to.
 name
 string
 Name of the field to map log attributes to.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema category mapper.
-Allowed enum values: `schema-category-mapper`name [*required*]
+Type of logs schema category mapper. Allowed enum values: `schema-category-mapper`
+name [_required_]
 string
 Name of the processor.
-schema [*required*]
+schema [_required_]
 object
 Configuration of the schema data to use.
-class_name [*required*]
+class_name [_required_]
 string
 Class name of the schema to use.
-class_uid [*required*]
+class_uid [_required_]
 int64
 Class UID of the schema to use.
 profiles
 [string]
 Optional list of profiles to modify the schema.
-schema_type [*required*]
+schema_type [_required_]
 string
 Type of schema to use.
-version [*required*]
+version [_required_]
 string
 Version of the schema to use.
-type [*required*]
+type [_required_]
 enum
-Type of logs schema processor.
-Allowed enum values: `schema-processor`default: `schema-processor`
+Type of logs schema processor. Allowed enum values: `schema-processor`
+default: `schema-processor`
 tags
 [string]
 A list of tags associated with the pipeline.
@@ -7900,35 +7085,39 @@ string
 Type of pipeline.
 ```
 {
-"description": "string",
-"filter": {
-"query": "source:python"
-},
-"id": "string",
-"is_enabled": false,
-"is_read_only": false,
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar",
-"support_rules": "rule_name_1 foo\nrule_name_2 bar"
-},
-"is_enabled": false,
-"name": "string",
-"samples": [],
-"source": "message",
-"type": "grok-parser"
+  "description": "string",
+  "filter": {
+    "query": "source:python"
+  },
+  "id": "string",
+  "is_enabled": false,
+  "is_read_only": false,
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar",
+        "support_rules": "rule_name_1 foo\nrule_name_2 bar"
+      },
+      "is_enabled": false,
+      "name": "string",
+      "samples": [],
+      "source": "message",
+      "type": "grok-parser"
+    }
+  ],
+  "tags": [],
+  "type": "pipeline"
 }
-],
-"tags": [],
-"type": "pipeline"
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Response returned by the Logs API when errors occur.
-Expand All
 Field
 Type
 Description
@@ -7946,76 +7135,98 @@ string
 Error message
 ```
 {
-"error": {
-"code": "string",
-"details": [],
-"message": "string"
+  "error": {
+    "code": "string",
+    "details": [],
+    "message": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+  * [Example](https://docs.datadoghq.com/api/latest/logs-pipelines/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Update a pipelineCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/logs-pipelines/?code-lang=typescript)
 
-# Path parametersexport pipeline_id="CHANGE_ME"# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
+
+#####  Update a pipeline
+Copy
+```
+                  # Path parameters  
+export pipeline_id="CHANGE_ME"  
+# Curl command  
+curl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/logs/config/pipelines/${pipeline_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"name": "",
-"processors": [
-{
-"grok": {
-"match_rules": "rule_name_1 foo\nrule_name_2 bar"
+  "name": "",
+  "processors": [
+    {
+      "grok": {
+        "match_rules": "rule_name_1 foo\nrule_name_2 bar"
+      }
+    }
+  ]
 }
-}
-]
-}
-EOF
+EOF  
 
+                
 ```
-Update a pipeline```
+
+#####  Update a pipeline
+```
 """
 Update a pipeline returns "OK" response
 """
@@ -8029,70 +7240,88 @@ from datadog_api_client.v1.model.logs_grok_parser_type import LogsGrokParserType
 from datadog_api_client.v1.model.logs_pipeline import LogsPipeline
 
 body = LogsPipeline(
-filter=LogsFilter(
-query="source:python",
-),
-name="",
-processors=[
-LogsGrokParser(
-grok=LogsGrokParserRules(
-match_rules="rule_name_1 foo\nrule_name_2 bar",
-support_rules="rule_name_1 foo\nrule_name_2 bar",
-),
-is_enabled=False,
-samples=[],
-source="message",
-type=LogsGrokParserType.GROK_PARSER,
-),
-],
-tags=[],
+    filter=LogsFilter(
+        query="source:python",
+    ),
+    name="",
+    processors=[
+        LogsGrokParser(
+            grok=LogsGrokParserRules(
+                match_rules="rule_name_1 foo\nrule_name_2 bar",
+                support_rules="rule_name_1 foo\nrule_name_2 bar",
+            ),
+            is_enabled=False,
+            samples=[],
+            source="message",
+            type=LogsGrokParserType.GROK_PARSER,
+        ),
+    ],
+    tags=[],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = LogsPipelinesApi(api_client)
-response = api_instance.update_logs_pipeline(pipeline_id="pipeline_id", body=body)
+    api_instance = LogsPipelinesApi(api_client)
+    response = api_instance.update_logs_pipeline(pipeline_id="pipeline_id", body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Update a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Update a pipeline
+```
 # Update a pipeline returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::LogsPipelinesAPI.new
 
 body = DatadogAPIClient::V1::LogsPipeline.new({
-filter: DatadogAPIClient::V1::LogsFilter.new({
-query: "source:python",
-}),
-name: "",
-processors: [
-DatadogAPIClient::V1::LogsGrokParser.new({
-grok: DatadogAPIClient::V1::LogsGrokParserRules.new({
-match_rules: 'rule_name_1 foo\nrule_name_2 bar',
-support_rules: 'rule_name_1 foo\nrule_name_2 bar',
-}),
-is_enabled: false,
-samples: [],
-source: "message",
-type: DatadogAPIClient::V1::LogsGrokParserType::GROK_PARSER,
-}),
-],
-tags: [],
+  filter: DatadogAPIClient::V1::LogsFilter.new({
+    query: "source:python",
+  }),
+  name: "",
+  processors: [
+    DatadogAPIClient::V1::LogsGrokParser.new({
+      grok: DatadogAPIClient::V1::LogsGrokParserRules.new({
+        match_rules: 'rule_name_1 foo\nrule_name_2 bar',
+        support_rules: 'rule_name_1 foo\nrule_name_2 bar',
+      }),
+      is_enabled: false,
+      samples: [],
+      source: "message",
+      type: DatadogAPIClient::V1::LogsGrokParserType::GROK_PARSER,
+    }),
+  ],
+  tags: [],
 })
 p api_instance.update_logs_pipeline("pipeline_id", body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Update a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Update a pipeline
+```
 // Update a pipeline returns "OK" response
 
 package main
@@ -8123,9 +7352,9 @@ rule_name_2 bar`,
 rule_name_2 bar`),
 					},
 					IsEnabled: datadog.PtrBool(false),
-					Samples: []string{},
-					Source: "message",
-					Type: datadogV1.LOGSGROKPARSERTYPE_GROK_PARSER,
+					Samples:   []string{},
+					Source:    "message",
+					Type:      datadogV1.LOGSGROKPARSERTYPE_GROK_PARSER,
 				}},
 		},
 		Tags: []string{},
@@ -8141,16 +7370,25 @@ rule_name_2 bar`),
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `LogsPipelinesApi.UpdateLogsPipeline`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Update a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Update a pipeline
+```
 // Update a pipeline returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -8165,51 +7403,60 @@ import com.datadog.api.client.v1.model.LogsProcessor;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    LogsPipelinesApi apiInstance = new LogsPipelinesApi(defaultClient);
 
-LogsPipeline body =
-new LogsPipeline()
-.filter(new LogsFilter().query("source:python"))
-.name("")
-.processors(
-Collections.singletonList(
-new LogsProcessor(
-new LogsGrokParser()
-.grok(
-new LogsGrokParserRules()
-.matchRules("""
+    LogsPipeline body =
+        new LogsPipeline()
+            .filter(new LogsFilter().query("source:python"))
+            .name("")
+            .processors(
+                Collections.singletonList(
+                    new LogsProcessor(
+                        new LogsGrokParser()
+                            .grok(
+                                new LogsGrokParserRules()
+                                    .matchRules("""
 rule_name_1 foo
 rule_name_2 bar
 """)
-.supportRules("""
+                                    .supportRules("""
 rule_name_1 foo
 rule_name_2 bar
 """))
-.isEnabled(false)
-.source("message")
-.type(LogsGrokParserType.GROK_PARSER))));
+                            .isEnabled(false)
+                            .source("message")
+                            .type(LogsGrokParserType.GROK_PARSER))));
 
-try {
-LogsPipeline result = apiInstance.updateLogsPipeline("pipeline_id", body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling LogsPipelinesApi#updateLogsPipeline");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      LogsPipeline result = apiInstance.updateLogsPipeline("pipeline_id", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling LogsPipelinesApi#updateLogsPipeline");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Update a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Update a pipeline
+```
 // Update a pipeline returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_logs_pipelines::LogsPipelinesAPI;
@@ -8222,48 +7469,57 @@ use datadog_api_client::datadogV1::model::LogsProcessor;
 
 #[tokio::main]
 async fn main() {
-let body = LogsPipeline::new("".to_string())
-.filter(LogsFilter::new().query("source:python".to_string()))
-.processors(vec![LogsProcessor::LogsGrokParser(Box::new(
-LogsGrokParser::new(
-LogsGrokParserRules::new(
-r#"rule_name_1 foo
+    let body = LogsPipeline::new("".to_string())
+        .filter(LogsFilter::new().query("source:python".to_string()))
+        .processors(vec![LogsProcessor::LogsGrokParser(Box::new(
+            LogsGrokParser::new(
+                LogsGrokParserRules::new(
+                    r#"rule_name_1 foo
 rule_name_2 bar"#
-.to_string(),
-)
-.support_rules(
-r#"rule_name_1 foo
+                        .to_string(),
+                )
+                .support_rules(
+                    r#"rule_name_1 foo
 rule_name_2 bar"#
-.to_string(),
-),
-"message".to_string(),
-LogsGrokParserType::GROK_PARSER,
-)
-.is_enabled(false)
-.samples(vec![]),
-))])
-.tags(vec![]);
-let configuration = datadog::Configuration::new();
-let api = LogsPipelinesAPI::with_config(configuration);
-let resp = api
-.update_logs_pipeline("pipeline_id".to_string(), body)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+                        .to_string(),
+                ),
+                "message".to_string(),
+                LogsGrokParserType::GROK_PARSER,
+            )
+            .is_enabled(false)
+            .samples(vec![]),
+        ))])
+        .tags(vec![]);
+    let configuration = datadog::Configuration::new();
+    let api = LogsPipelinesAPI::with_config(configuration);
+    let resp = api
+        .update_logs_pipeline("pipeline_id".to_string(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Update a pipeline```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Update a pipeline
+```
 /**
-* Update a pipeline returns "OK" response
-*/
+ * Update a pipeline returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -8271,39 +7527,50 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.LogsPipelinesApi(configuration);
 
 const params: v1.LogsPipelinesApiUpdateLogsPipelineRequest = {
-body: {
-filter: {
-query: "source:python",
-},
-name: "",
-processors: [
-{
-grok: {
-matchRules: "rule_name_1 foo\nrule_name_2 bar",
-supportRules: "rule_name_1 foo\nrule_name_2 bar",
-},
-isEnabled: false,
-samples: [],
-source: "message",
-type: "grok-parser",
-},
-],
-tags: [],
-},
-pipelineId: "pipeline_id",
+  body: {
+    filter: {
+      query: "source:python",
+    },
+    name: "",
+    processors: [
+      {
+        grok: {
+          matchRules: "rule_name_1 foo\nrule_name_2 bar",
+          supportRules: "rule_name_1 foo\nrule_name_2 bar",
+        },
+        isEnabled: false,
+        samples: [],
+        source: "message",
+        type: "grok-parser",
+      },
+    ],
+    tags: [],
+  },
+  pipelineId: "pipeline_id",
 };
 
 apiInstance
-.updateLogsPipeline(params)
-.then((data: v1.LogsPipeline) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .updateLogsPipeline(params)
+  .then((data: v1.LogsPipeline) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```###### Request a personalized demo×##### Get Started with Datadog
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+![](https://t.co/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=ab6484ce-3d71-4972-8884-d04755f4ed8e&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=55e66d20-2363-41f7-8b7d-c0af9054772c&pt=Logs%20Pipelines&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Flogs-pipelines%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://analytics.twitter.com/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=ab6484ce-3d71-4972-8884-d04755f4ed8e&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=55e66d20-2363-41f7-8b7d-c0af9054772c&pt=Logs%20Pipelines&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Flogs-pipelines%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://id.rlcdn.com/464526.gif)
+![](https://bat.bing.com/action/0?ti=4061438&Ver=2&mid=03e60368-05b4-42a5-b3c4-50e98f5d61d9&bo=2&sid=ca97aff0f0bf11f0b225ebe7018368cd&vid=ca980060f0bf11f09385b797b877861f&vids=0&msclkid=N&pi=918639831&lg=en-US&sw=1080&sh=600&sc=24&tl=Logs%20Pipelines&p=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Flogs-pipelines%2F&r=&lt=2659&evt=pageLoad&sv=2&asc=G&cdb=AQAS&rn=348194)

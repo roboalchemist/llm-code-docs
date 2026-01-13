@@ -1,1356 +1,29 @@
-Actions DatastoresRead the 2025 State of Containers and Serverless Report!
-Read the State of Containers and Serverless Report!
+# Source: https://docs.datadoghq.com/api/latest/actions-datastores/
 
-Home
+# Actions Datastores
+Leverage the Actions Datastore API to create, modify, and delete items in datastores owned by your organization.
+## [List datastores](https://docs.datadoghq.com/api/latest/actions-datastores/#list-datastores)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#list-datastores-v2)
 
-Docs
 
-API- 
-- Agent
-- API
-- APM Tracing
-- ContainersAutodiscovery
-- Datadog Operator
-- Dashboards
-- Database Monitoring
-- Datadog
-- Datadog Site
-- DevSecOps
-- Incident Management
-- IntegrationsAWS
-- Azure
-- Google Cloud
-- Terraform
-- Internal Developer Portal
-- Logs
-- Monitors
-- Notebooks
-- OpenTelemetry
-- Profiler
-- SearchProduct-Specific Search
-- Session Replay
-- SecurityApp and API Protection
-- Cloud Security
-- Cloud SIEM
-- Code Security
-- Serverless for AWS Lambda
-- Software DeliveryCI Visibility
-- Feature Flags
-- Test Optimization
-- Test Impact Analysis
-- Synthetic Monitoring and TestingAPI Tests
-- Browser Tests
-- Mobile App Tests
-- Continuous Testing
-- Private Locations
-- TagsAssigning Tags
-- Unified Service Tagging
-- Using Tags
-- Workflow Automation
-- Learning Center
-- Support
-- 
-- 
-- 
-- Architecture
-- IoT
-- Supported PlatformsAIX
-- Linux
-- Ansible
-- Chef
-- Heroku
-- MacOS
-- Puppet
-- SaltStack
-- SCCM
-- Windows
-- From Source
-- Log CollectionLog Agent tags
-- Advanced Configurations
-- Proxy
-- Transport
-- Multi-Line Detection
-- ConfigurationCommands
-- Configuration Files
-- Log Files
-- Status Page
-- Network Traffic
-- Proxy Configuration
-- FIPS Compliance
-- Dual Shipping
-- Secrets Management
-- Fleet AutomationRemote Agent Management
-- TroubleshootingContainer Hostname Detection
-- Debug Mode
-- Agent Flare
-- Agent Check Status
-- NTP Issues
-- Permission Issues
-- Integrations Issues
-- Site Issues
-- Autodiscovery Issues
-- Windows Container Issues
-- Agent Runtime Configuration
-- High CPU or Memory Consumption
-- Guides
-- Data Security
-- Guides
-- AuthorizationOAuth2 in Datadog
-- Authorization Endpoints
-- DogStatsDDatagram Format
-- Unix Domain Socket
-- High Throughput Data
-- Data Aggregation
-- DogStatsD Mapper
-- Custom ChecksWriting a Custom Agent Check
-- Writing a Custom OpenMetrics Check
-- IntegrationsBuild an Integration with Datadog
-- Create an Agent-based Integration
-- Create an API-based Integration
-- Create a Log Pipeline
-- Integration Assets Reference
-- Build a Marketplace Offering
-- Create an Integration Dashboard
-- Create a Monitor Template
-- Create a Cloud SIEM Detection Rule
-- Install Agent Integration Developer Tool
-- Service ChecksSubmission - Agent Check
-- Submission - DogStatsD
-- Submission - API
-- IDE PluginsJetBrains IDEs
-- VS Code & Cursor
-- CommunityLibraries
-- Guides
-- Getting StartedDatadog Example Application
-- OpenTelemetry Demo Application
-- Feature Compatibility
-- Instrument Your ApplicationsOTel SDKs
-- OTel APIs with Datadog SDKs
-- OTel Instrumentation Libraries
-- Configuration
-- Send Data to DatadogDDOT Collector (Recommended)
-- Other Setup Options
-- Semantic MappingResource Attribute Mapping
-- Metrics Mapping
-- Infrastructure Host Mapping
-- Hostname Mapping
-- Service-entry Spans Mapping
-- Ingestion Sampling
-- Correlate DataLogs and Traces
-- Metrics and Traces
-- RUM and Traces
-- DBM and Traces
-- IntegrationsApache Metrics
-- Apache Spark Metrics
-- Collector Health Metrics
-- Datadog Extension
-- Docker Metrics
-- HAProxy Metrics
-- Host Metrics
-- IIS Metrics
-- Kafka Metrics
-- Kubernetes Metrics
-- MySQL Metrics
-- NGINX Metrics
-- Podman Metrics
-- Runtime Metrics
-- Trace Metrics
-- Troubleshooting
-- Guides and ResourcesProduce Delta Temporality Metrics
-- Visualize Histograms as Heatmaps
-- Migration Guides
-- ReferenceTerms and Concepts
-- Trace Context Propagation
-- Trace IDs
-- OTLP Metric Types
-- Getting Started
-- Plan
-- Build
-- Run
-- 
-- 
-- Enterprise Configuration
-- Datadog for Intune
-- Shortcut Configurations
-- Push Notifications
-- Widgets
-- Guides
-- Data Directory
-- Troubleshooting
-- Install
-- Using CoTerm
-- Configuration Rules
-- 
-- Getting Started
-- Account Management
-- Components: Common
-- Components: Azure
-- Components: AWS
-- Advanced
-- FAQ
-- APIAWS Accounts
-- Azure Accounts
-- Blueprints
-- Budgets
-- Teams
-- Users
-- Configure
-- Dashboard List
-- WidgetsConfiguration
-- Widget Types
-- Querying
-- FunctionsAlgorithms
-- Arithmetic
-- Count
-- Exclusion
-- Interpolation
-- Rank
-- Rate
-- Regression
-- Rollup
-- Smoothing
-- Timeshift
-- Beta
-- Graph InsightsMetric Correlations
-- Watchdog Explains
-- Template Variables
-- Overlays
-- Annotations
-- Guides
-- SharingShared Dashboards
-- Share Graphs
-- Scheduled Reports
-- Analysis FeaturesGetting Started
-- Guides
-- 
-- 
-- Functions and Operators
-- Guides
-- Draft Monitors
-- Configure Monitors
-- Monitor Templates
-- Monitor TypesHost
-- Metric
-- Analysis
-- Anomaly
-- APM
-- Audit Trail
-- Change
-- CI/CD & Test
-- Cloud Cost
-- Composite
-- Database Monitoring
-- Error Tracking
-- Event
-- Forecast
-- Integration
-- Live Process
-- Logs
-- Network
-- Cloud Network Monitoring
-- NetFlow
-- Outlier
-- Process Check
-- Real User Monitoring
-- Service Check
-- SLO Alerts
-- Synthetic Monitoring
-- Watchdog
-- NotificationsNotification Rules
-- Variables
-- DowntimesExamples
-- Manage MonitorsSearch Monitors
-- Check Summary
-- Monitor StatusStatus Graphs
-- Status Events
-- Monitor Settings
-- Monitor Quality
-- Guides
-- Monitor-based SLOs
-- Metric-based SLOs
-- Time Slice SLOs
-- Error Budget Alerts
-- Burn Rate Alerts
-- Guides
-- Custom MetricsMetric Type Modifiers
-- Historical Metrics Ingestion
-- Submission - Agent Check
-- Submission - DogStatsD
-- Submission - Powershell
-- Submission - API
-- OpenTelemetry MetricsOTLP Metric Types
-- Query OpenTelemetry Metrics
-- Metrics Types
-- Distributions
-- Overview
-- ExplorerMetrics Units
-- Summary
-- Volume
-- Advanced Filtering
-- Nested Queries
-- Composite Metrics Queries
-- Derived Metrics
-- Metrics Without Limits™
-- Guides
-- Alerts
-- Impact Analysis
-- RCA
-- Insights
-- Faulty Deployment Detection
-- Faulty Cloud & SaaS API Detection
-- Bits AI SREInvestigate issues
-- Remediate issues
-- Bits AI SRE integrations and settings
-- Help Bits learn
-- Chat with Bits AI SRE
-- Bits AI Dev AgentSetup
-- Chat with Bits AI
-- MCP Server
-- Software CatalogSet Up
-- Entity Model
-- Troubleshooting
-- ScorecardsScorecard Configuration
-- Custom Rules
-- Using Scorecards
-- Self-Service ActionsSoftware Templates
-- Engineering ReportsReliability Overview
-- Scorecards Performance
-- DORA Metrics
-- Custom Reports
-- Developer Homepage
-- Campaigns
-- External Provider Status
-- Plugins
-- Integrations
-- Use CasesAPI Management
-- Cloud Cost Management
-- App and API Protection
-- Developer Onboarding
-- Dependency Management
-- Production Readiness
-- Incident Response
-- CI Pipeline Visibility
-- Onboarding Guide
-- Explorer
-- Issue States
-- Regression Detection
-- Suspected Causes
-- Error Grouping
-- Bits AI Dev Agent
-- Monitors
-- Issue Correlation
-- Identify Suspect Commits
-- Auto Assign
-- Issue Team Ownership
-- Track Browser and Mobile ErrorsBrowser Error Tracking
-- Collecting Browser Errors
-- Mobile Crash Tracking
-- Replay Errors
-- Real User Monitoring
-- Logs
-- Track Backend ErrorsGetting Started
-- Exception Replay
-- Capturing Handled Errors
-- APM
-- Logs
-- Manage Data Collection
-- Troubleshooting
-- Guides
-- Feature Flags
-- Ingest Events
-- Pipelines and ProcessorsAggregation Key Processor
-- Arithmetic Processor
-- Date Remapper
-- Category Processor
-- Grok Parser
-- Lookup Processor
-- Remapper
-- Service Remapper
-- Status Remapper
-- String Builder Processor
-- ExplorerSearching
-- Navigate the Explorer
-- Customization
-- Facets
-- Attributes
-- Notifications
-- Analytics
-- Saved Views
-- Triage Inbox
-- CorrelationConfiguration
-- Triaging & Notifying
-- Analytics
-- Guides
-- Declare an Incident
-- Describe an Incident
-- Response Team
-- Notification
-- Investigate an IncidentTimeline
-- Follow-ups
-- Incident AI
-- Incident SettingsInformation
-- Property Fields
-- Responder Types
-- Integrations
-- Notification Rules
-- Templates
-- Incident Analytics
-- IntegrationsSlack
-- Microsoft Teams
-- Jira
-- ServiceNow
-- Status Pages
-- Atlassian Statuspage
-- Datadog Clipboard
-- Onboard a Team
-- Trigger a PageLive Call Routing
-- Routing Rules
-- Escalation Policies
-- Schedules
-- Automations
-- Profile Settings
-- Guides
-- 
-- ProjectsSettings
-- Create a Case
-- Customization
-- View and Manage Cases
-- Notifications and Integrations
-- Case Automation Rules
-- Troubleshooting
-- 
-- Build Workflows
-- Access and Authentication
-- Trigger Workflows
-- Variables and parameters
-- ActionsWorkflow Logic
-- Save and Reuse Actions
-- Test and Debug
-- JavaScript Expressions
-- Track Workflows
-- Limits
-- Build Apps
-- Access and Authentication
-- Queries
-- Variables
-- Events
-- ComponentsCustom Charts
-- React Renderer
-- Tables
-- Reusable Modules
-- JavaScript Expressions
-- Embedded AppsInput Parameters
-- Save and Reuse Actions
-- Create and Manage Datastores
-- Use Datastores with Apps and Workflows
-- Automation Rules
-- Access and Authentication
-- 
-- ConnectionsAWS Integration
-- HTTP Request
-- Private ActionsUse Private Actions
-- Run a Script
-- Update the Private Action Runner
-- Private Action Credentials
-- OverlaysInfrastructure
-- Observability
-- Security
-- Cloud Cost Management
-- Cloud Resources Schema
-- Policies
-- Resource Changes
-- Setup
-- Guides
-- Setup
-- Host List
-- Monitoring ContainersConfiguration
-- Container Images View
-- Orchestrator Explorer
-- Kubernetes Resource Utilization
-- Kubernetes Autoscaling
-- Amazon Elastic Container Explorer
-- Autoscaling
-- Docker and other runtimesAPM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus
-- Data Collected
-- KubernetesInstallation
-- Further Configuration
-- Distributions
-- APM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus & OpenMetrics
-- Control plane monitoring
-- Data collected
-- kubectl Plugin
-- Datadog CSI Driver
-- Data security
-- Cluster AgentSetup
-- Commands & Options
-- Cluster Checks
-- Endpoint Checks
-- Admission Controller
-- Amazon ECSAPM
-- Log collection
-- Tag extraction
-- Data collected
-- Managed Instances
-- AWS Fargate with ECS
-- Datadog OperatorAdvanced Install
-- Configuration
-- Custom Checks
-- Data Collected
-- Secret Management
-- DatadogDashboard CRD
-- DatadogMonitor CRD
-- DatadogSLO CRD
-- TroubleshootingDuplicate hosts
-- Cluster Agent
-- Cluster Checks
-- HPA and Metrics Provider
-- Admission Controller
-- Log Collection
-- Guides
-- Increase Process Retention
-- AWS LambdaInstrumentation
-- Managed Instances
-- Lambda Metrics
-- Distributed Tracing
-- Log Collection
-- Remote Instrumentation
-- Advanced Configuration
-- Continuous Profiler
-- Securing Functions
-- Deployment Tracking
-- OpenTelemetry
-- Troubleshooting
-- Lambda Web Adapter
-- FIPS Compliance
-- AWS Step FunctionsInstallation
-- Merge Step Functions and Lambda Traces
-- Enhanced Metrics
-- Redrive Executions
-- Distributed Map States
-- Troubleshooting
-- AWS Fargate
-- Azure App ServiceLinux - Code
-- Linux - Container
-- Windows - Code
-- Azure Container AppsIn-Container
-- Sidecar
-- Azure Functions
-- Google Cloud RunContainers
-- Functions
-- Functions (1st generation)
-- Libraries & Integrations
-- Glossary
-- Guides
-- Cloud Network MonitoringSetup
-- Network Health
-- Network Analytics
-- Network Map
-- Guides
-- Supported Cloud Services
-- Terms and Concepts
-- DNS Monitoring
-- Network Device MonitoringSetup
-- Integrations
-- Profiles
-- Configuration Management
-- Maps
-- SNMP Metrics Reference
-- Troubleshooting
-- Guides
-- Terms and Concepts
-- NetFlow MonitoringMonitors
-- Network PathSetup
-- List View
-- Path View
-- Guides
-- Terms and Concepts
-- Amazon S3
-- Google Cloud Storage
-- Azure Blob Storage
-- Datadog Costs
-- SetupAWS
-- Azure
-- Google Cloud
-- Oracle
-- SaaS Integrations
-- Custom
-- TagsTag Explorer
-- Multisource Querying
-- AllocationTag Pipelines
-- Container Cost Allocation
-- BigQuery Costs
-- Custom Allocation Rules
-- ReportingExplorer
-- Scheduled Reports
-- RecommendationsCustom Recommendations
-- PlanningBudgets
-- Commitment Programs
-- Cost ChangesMonitors
-- Anomalies
-- Real-Time Costs
-- APM Terms and Concepts
-- Application InstrumentationSingle Step Instrumentation
-- Manually managed SDKs
-- Code-based Custom Instrumentation
-- Dynamic Instrumentation
-- Library Compatibility
-- Library Configuration
-- Configuration at Runtime
-- Trace Context Propagation
-- Serverless Application Tracing
-- Proxy Tracing
-- Span Tag Semantics
-- Span Links
-- APM Metrics CollectionTrace Metrics
-- Runtime Metrics
-- Trace Pipeline ConfigurationIngestion Mechanisms
-- Ingestion Controls
-- Adaptive Sampling
-- Generate Metrics
-- Trace Retention
-- Usage Metrics
-- Correlate Traces with Other TelemetryCorrelate DBM and Traces
-- Correlate Logs and Traces
-- Correlate RUM and Traces
-- Correlate Synthetics and Traces
-- Correlate Profiles and Traces
-- Trace ExplorerSearch Spans
-- Query Syntax
-- Trace Queries
-- Span Tags and Attributes
-- Span Visualizations
-- Trace View
-- Tag Analysis
-- Recommendations
-- Code Origin for Spans
-- Service ObservabilitySoftware Catalog
-- Service Page
-- Resource Page
-- Deployment Tracking
-- Service Map
-- Inferred Services
-- Remapping Rules for Inferred Entities
-- Service Remapping Rules
-- Service Override Removal
-- APM Monitors
-- Endpoint ObservabilityExplore Endpoints
-- Monitor Endpoints
-- Live Debugger
-- Error TrackingIssue States
-- Error Tracking Explorer
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Exception Replay
-- Troubleshooting
-- Data Security
-- Guides
-- TroubleshootingAgent Rate Limits
-- Agent APM metrics
-- Agent Resource Usage
-- Correlated Logs
-- PHP 5 Deep Call Stacks
-- .NET diagnostic tool
-- APM Quantization
-- Go Compile-Time Instrumentation
-- Tracer Startup Logs
-- Tracer Debug Logs
-- Connection Errors
-- Enabling the ProfilerSupported Language and Tracer Versions
-- Java
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Profile Types
-- Profile Visualizations
-- Investigate Slow Traces or Endpoints
-- Compare Profiles
-- Automated Analysis
-- Profiler TroubleshootingJava
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Guides
-- Agent Integration Overhead
-- Setup Architectures
-- Setting Up PostgresSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- AlloyDB
-- Azure
-- Supabase
-- Heroku
-- Advanced Configuration
-- Troubleshooting
-- Setting Up MySQLSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- Azure
-- Advanced Configuration
-- Troubleshooting
-- Setting Up SQL ServerSelf-hosted
-- RDS
-- Azure
-- Google Cloud SQL
-- Troubleshooting
-- Setting Up OracleSelf-hosted
-- RDS
-- RAC
-- Exadata
-- Autonomous Database
-- Troubleshooting
-- Setting Up Amazon DocumentDBAmazon DocumentDB
-- Setting Up MongoDBSelf-hosted
-- MongoDB Atlas
-- Troubleshooting
-- Connecting DBM and Traces
-- Data Collected
-- Exploring Database Hosts
-- Exploring Query Metrics
-- Exploring Query Samples
-- Exploring Database Schemas
-- Exploring Recommendations
-- Troubleshooting
-- Guides
-- Setup
-- Kafka Messages
-- Schema Tracking
-- Dead Letter Queues
-- Metrics and Tags
-- 
-- Data WarehousesSnowflake
-- Databricks
-- BigQuery
-- Business Intelligence IntegrationsTableau
-- Sigma
-- Metabase
-- Power BI
-- Databricks
-- Airflow
-- dbt
-- Spark on Kubernetes
-- Spark on Amazon EMR
-- Spark on Google Dataproc
-- Custom Jobs (OpenLineage)Datadog Agent for OpenLineage Proxy
-- Application MonitoringBrowser
-- Android and Android TV
-- iOS and tvOS
-- Flutter
-- Kotlin Multiplatform
-- React Native
-- Roku
-- Unity
-- PlatformDashboards
-- Monitors
-- Generate Custom Metrics
-- Exploring RUM DataSearch RUM Events
-- Search Syntax
-- Group
-- Visualize
-- Events
-- Export
-- Saved Views
-- Watchdog Insights for RUM
-- Correlate RUM with Other TelemetryCorrelate LLM with RUM
-- Correlate Logs with RUM
-- Correlate Profiling with RUM
-- Correlate Synthetics with RUM
-- Correlate Traces with RUM
-- Feature Flag TrackingSetup
-- Using Feature Flags
-- Error TrackingExplorer
-- Issue States
-- Track Browser Errors
-- Track Mobile Errors
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- RUM Without LimitsMetrics
-- Retention Filters
-- Operations Monitoring
-- Ownership of Views
-- Guides
-- Data Security
-- API TestingHTTP
-- SSL
-- DNS
-- WebSocket
-- TCP
-- UDP
-- ICMP
-- GRPC
-- Error codes
-- Multistep API Testing
-- Browser TestingRecording Steps
-- Browser Testing Results
-- Advanced Options for Steps
-- Authentication in Browser Testing
-- Network Path TestingTerms and Concepts
-- Mobile Application TestingTesting Steps
-- Testing Results
-- Advanced Options for Steps
-- Supported Devices
-- Restricted Networks
-- Settings
-- Test Suites
-- PlatformDashboards
-- Metrics
-- Test Coverage
-- Private Locations
-- Connect APM
-- Settings
-- Exploring Synthetics DataSaved Views
-- Results Explorer
-- Guides
-- NotificationsTemplate Variables
-- Conditional Alerting
-- Advanced Notifications
-- Integrate with Statuspage
-- Troubleshooting
-- Data Security
-- Local and Staging EnvironmentsTesting Multiple Environments
-- Testing With Proxy, Firewall, or VPN
-- CI/CD IntegrationsConfiguration
-- Azure DevOps Extension
-- CircleCI Orb
-- GitHub Actions
-- GitLab
-- Jenkins
-- Bitrise (Upload Application)
-- Bitrise (Run Tests)
-- Settings
-- Results Explorer
-- Metrics
-- Guides
-- Troubleshooting
-- Vizualizing with ChartsChart Basics
-- Pathways Diagram
-- Funnel Analysis
-- Retention Analysis
-- Analytics Explorer
-- Dashboards
-- Segments
-- Managing Profiles
-- ExperimentsDefine Metrics
-- Reading Experiment Results
-- Minimum Detectable Effects
-- Guides
-- Troubleshooting
-- BrowserSetup
-- Privacy Options
-- Developer Tools
-- Troubleshooting
-- MobileSetup and Configuration
-- Privacy Options
-- Developer Tools
-- Impact on App Performance
-- Troubleshooting
-- Playlists
-- Heatmaps
-- Pipeline VisibilityAWS CodePipeline
-- Azure Pipelines
-- Buildkite
-- CircleCI
-- Codefresh
-- GitHub Actions
-- GitLab
-- Jenkins
-- TeamCity
-- Other CI Providers
-- Custom Commands
-- Custom Tags and Measures
-- Search and Manage
-- ExplorerSearch Syntax
-- Search Pipeline Executions
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=pipelines)
-- Guides
-- Troubleshooting
-- Deployment VisibilityArgo CD
-- CI Providers
-- Explore DeploymentsSearch Syntax
-- Facets
-- Saved Views
-- FeaturesCode Changes Detection
-- Rollback Detection
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=deployments)
-- Setup
-- Explore
-- Setup.NET
-- Java and JVM Languages
-- JavaScript and TypeScript
-- Python
-- Ruby
-- Swift
-- Go
-- JUnit Report Uploads
-- Network Settings
-- Tests in Containers
-- Repositories
-- ExplorerSearch Syntax
-- Search Test Runs
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=tests)
-- Test Health
-- Flaky Test Management
-- Working with Flaky TestsEarly Flake Detection
-- Auto Test Retries
-- Test Impact AnalysisSetup
-- How It Works
-- Troubleshooting
-- Developer Workflows
-- Code Coverage
-- Instrument Browser Tests with RUM
-- Instrument Swift Tests with RUM
-- Correlate Logs and Tests
-- Guides
-- Troubleshooting
-- Setup
-- Data Collected
-- Setup
-- SetupDeployment Data Sources
-- Failure Data Sources
-- Change Failure Detection
-- Data Collected
-- Client SDKsAndroid and Android TV
-- iOS and tvOS
-- JavaScript
-- React
-- Server SDKsGo
-- Java
-- Node.js
-- Python
-- Ruby
-- MCP Server
-- Guides
-- Detection RulesOOTB Rules
-- NotificationsRules
-- Variables
-- Suppressions
-- Automation PipelinesMute
-- Add to Security Inbox
-- Set Due Date Rules
-- Security Inbox
-- Threat Intelligence
-- Audit Trail
-- Access Control
-- Account Takeover Protection
-- Ticketing Integrations
-- Research Feed
-- Guides
-- Ingest and EnrichContent Packs
-- Bring Your Own Threat Intelligence
-- Open Cybersecurity Schema Framework
-- Detect and MonitorOOTB Rules
-- Custom Detection Rules
-- Version History
-- Suppressions
-- Historical Jobs
-- MITRE ATT&CK Map
-- Triage and InvestigateInvestigate Security Signals
-- Risk Insights
-- IOC Explorer
-- Investigator
-- Respond and ReportSecurity Operational Metrics
-- Guides
-- Data Security
-- Static Code Analysis (SAST)Setup
-- GitHub Actions
-- Generic CI Providers
-- AI-Enhanced Static Code Analysis
-- SAST Custom Rule Creation Tutorial
-- SAST Custom Rules
-- SAST Custom Rules Guide
-- Static Code Analysis (SAST) rules
-- Software Composition Analysis (SCA)Static Setup
-- Runtime Setup
-- Library Inventory
-- Secret ScanningGitHub Actions
-- Generic CI Providers
-- Secret Validation
-- Runtime Code Analysis (IAST)Setup
-- Security Controls
-- Infrastructure as Code (IaC) SecuritySetup
-- Exclusions
-- Rules
-- Developer Tool IntegrationsPull Request Comments
-- PR Gates
-- IDE Plugins
-- Git Hooks
-- Troubleshooting
-- Guides
-- SetupSupported Deployment Types
-- Agentless Scanning
-- Deploy the Agent
-- Set Up CloudTrail Logs
-- Set Up without Infrastructure Monitoring
-- Deploy via Cloud Integrations
-- Security Graph
-- MisconfigurationsManage Compliance Rules
-- Create Custom Rules
-- Manage Compliance Posture
-- Explore Misconfigurations
-- Kubernetes Security Posture Management
-- Identity Risks
-- VulnerabilitiesHosts and Containers Compatibility
-- OOTB Rules
-- Review and RemediateMute Issues
-- Automate Security Workflows
-- Create Jira Issues
-- Severity Scoring
-- Guides
-- TroubleshootingVulnerabilities
-- Terms and Concepts
-- How It WorksThreat Intelligence
-- Trace Qualification
-- User Monitoring and Protection
-- Setup
-- Overview
-- Security SignalsAttackers Explorer
-- Attacker Fingerprint
-- Attacker Clustering
-- Users Explorer
-- PoliciesCustom Rules
-- OOTB Rules
-- In-App WAF Rules
-- Tracing Library Configuration
-- Exploit Prevention
-- WAF Integrations
-- API Security Inventory
-- Guides
-- Troubleshooting
-- SetupDeploy the Agent
-- Workload Protection Agent Variables
-- Detection RulesOOTB Rules
-- Custom Rules
-- Investigate Security Signals
-- Investigate Agent Events
-- Creating Agent Rule ExpressionsWriting Custom Rule Expressions
-- Linux Syntax
-- Windows Syntax
-- Coverage and Posture ManagementHosts and Containers
-- Serverless
-- Coverage
-- Guides
-- Troubleshooting
-- SetupTelemetry Data
-- Cloud Storage
-- Scanning RulesLibrary Rules
-- Custom Rules
-- Guides
-- Quickstart
-- InstrumentationAutomatic
-- SDK Reference
-- HTTP API
-- OpenTelemetry
-- MonitoringQuerying spans and traces
-- Correlate with APM
-- Cluster Map
-- Agent Monitoring
-- MCP Clients
-- Prompt Tracking
-- Metrics
-- Cost
-- EvaluationsManaged Evaluations
-- Custom LLM-as-a-Judge
-- External Evaluations
-- Compatibility
-- Export API
-- Experiments
-- Data Security and RBAC
-- Terms and Concepts
-- Guides
-- ConfigurationExplore Templates
-- Set Up Pipelines
-- Install the Worker
-- Live Capture
-- Update Existing Pipelines
-- Access Control
-- SourcesAkamai DataStream
-- Amazon Data Firehose
-- Amazon S3
-- Azure Event Hubs
-- Datadog Agent
-- Datadog Lambda Extension
-- Datadog Lambda Forwarder
-- Filebeat
-- Fluent
-- Google Pub/Sub
-- HTTP Client
-- HTTP Server
-- OpenTelemetry
-- Kafka
-- Logstash
-- Socket
-- Splunk HEC
-- Splunk TCP
-- Sumo Logic Hosted Collector
-- Syslog
-- ProcessorsAdd Environment Variables
-- Add hostname
-- Custom Processor
-- Deduplicate
-- Edit fields
-- Enrichment Table
-- Filter
-- Generate Metrics
-- Grok Parser
-- Parse JSON
-- Parse XML
-- Quota
-- Reduce
-- Remap to OCSF
-- Sample
-- Sensitive Data Scanner
-- Split Array
-- Tag Control
-- Throttle
-- DestinationsAmazon OpenSearch
-- Amazon S3
-- Amazon Security Lake
-- Azure Storage
-- CrowdStrike NG-SIEM
-- Datadog CloudPrem
-- Datadog Logs
-- Datadog Metrics
-- Elasticsearch
-- Google Cloud Storage
-- Google Pub/Sub
-- Google SecOps
-- HTTP Client
-- Kafka
-- Microsoft Sentinel
-- New Relic
-- OpenSearch
-- SentinelOne
-- Socket
-- Splunk HEC
-- Sumo Logic Hosted Collector
-- Syslog
-- PacksAkamai CDN
-- Amazon CloudFront
-- Amazon VPC Flow Logs
-- AWS CloudTrail
-- Cisco ASA
-- Cloudflare
-- F5
-- Fastly
-- Fortinet Firewall
-- HAProxy Ingress
-- Istio Proxy
-- Netskope
-- NGINX
-- Okta
-- Palo Alto Firewall
-- Windows XML
-- ZScaler ZIA DNS
-- Zscaler ZIA Firewall
-- Zscaler ZIA Tunnel
-- Zscaler ZIA Web Logs
-- Search Syntax
-- Scaling and PerformanceHandling Load and Backpressure
-- Scaling Best Practices
-- Monitoring and TroubleshootingWorker CLI Commands
-- Monitoring Pipelines
-- Pipeline Usage Metrics
-- Troubleshooting
-- Guides and ResourcesUpgrade Worker Guide
-- Log Collection & IntegrationsBrowser
-- Android
-- iOS
-- Flutter
-- React Native
-- Roku
-- Kotlin Multiplatform
-- C#
-- Go
-- Java
-- Node.js
-- PHP
-- Python
-- Ruby
-- OpenTelemetry
-- Agent Integrations
-- Other Integrations
-- Log ConfigurationPipelines
-- Processors
-- Parsing
-- Pipeline Scanner
-- Attributes and Aliasing
-- Generate Metrics
-- Indexes
-- Flex Logs
-- Archives
-- Rehydrate from Archives
-- Archive Search
-- Forwarding
-- Log ExplorerLive Tail
-- Search Logs
-- Search Syntax
-- Advanced Search
-- Facets
-- Calculated Fields
-- Analytics
-- Patterns
-- Transactions
-- Visualize
-- Log Side Panel
-- Export
-- Watchdog Insights for Logs
-- Saved Views
-- Error TrackingError Tracking Explorer
-- Issue States
-- Track Browser and Mobile Errors
-- Track Backend Errors
-- Error Grouping
-- Manage Data Collection
-- Dynamic Sampling
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- Reports
-- Guides
-- Data Security
-- TroubleshootingLive Tail
-- Quickstart
-- Architecture
-- InstallationAWS EKS
-- Azure AKS
-- Install Locally with Docker
-- Log IngestionDatadog Agent
-- Observability Pipelines
-- REST API
-- ConfigurationDatadog Account
-- AWS Configuration
-- Azure Configuration
-- Cluster Sizing
-- Ingress
-- Processing
-- Reverse Connection
-- Management
-- Supported Features
-- Troubleshooting
-- Switching Between Orgs
-- Organization SettingsUser Management
-- Login Methods
-- OAuth Apps
-- Custom Organization Landing Page
-- Service Accounts
-- IP Allowlist
-- Domain Allowlist
-- Cross-Organization Visibility
-- Access ControlGranular Access
-- Permissions
-- Data Access
-- SSO with SAMLConfiguring SAML
-- User Group Mapping
-- Active Directory
-- Auth0
-- Entra ID
-- Google
-- LastPass
-- Okta
-- SafeNet
-- Troubleshooting
-- SCIMOkta
-- Microsoft Entra ID
-- API and Application Keys
-- TeamsTeam Management
-- Provision with GitHub
-- Governance Console
-- Multi-Factor Authentication
-- Audit TrailEvents
-- Forwarding
-- Guides
-- Safety Center
-- Plan and UsageCost Details
-- Usage Details
-- BillingPricing
-- Credit Card
-- Product Allotments
-- Usage Metrics
-- Usage Attribution
-- Custom Metrics
-- Containers
-- Log Management
-- APM
-- Serverless
-- Real User Monitoring
-- CI Visibility
-- Incident Response
-- AWS Integration
-- Azure Integration
-- Google Cloud Integration
-- Alibaba Integration
-- vSphere Integration
-- Workflow Automation
-- Multi-org Accounts
-- Guides
-- Cloud-based Authentication
-- Agent
-- Cloud SIEM
-- Kubernetes
-- Log Management
-- Real User Monitoring
-- Synthetic Monitoring
-- Tracing
-- PCI Compliance
-- HIPAA Compliance
-- Data Retention Periods
-- Guides
-- 
-Docs > 
-API Reference > 
-Actions DatastoresLanguage
+GET https://api.ap1.datadoghq.com/api/v2/actions-datastoreshttps://api.ap2.datadoghq.com/api/v2/actions-datastoreshttps://api.datadoghq.eu/api/v2/actions-datastoreshttps://api.ddog-gov.com/api/v2/actions-datastoreshttps://api.datadoghq.com/api/v2/actions-datastoreshttps://api.us3.datadoghq.com/api/v2/actions-datastoreshttps://api.us5.datadoghq.com/api/v2/actions-datastores
+### Overview
+Lists all datastores for the organization. This endpoint requires the `apps_datastore_read` permission.
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastores-200-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastores-429-v2)
 
-English[English](https://docs.datadoghq.com/api/latest/actions-datastores/?lang_pref=en)
-[Français](https://docs.datadoghq.com/fr/api/latest/actions-datastores/?lang_pref=fr)
-[日本語](https://docs.datadoghq.com/ja/api/latest/actions-datastores/?lang_pref=ja)
-[한국어](https://docs.datadoghq.com/ko/api/latest/actions-datastores/?lang_pref=ko)
-[Español](https://docs.datadoghq.com/es/api/latest/actions-datastores/?lang_pref=es)Datadog Site
 
-US1
-US3
-US5
-EU
-AP1
-AP2
-US1-FED# Actions DatastoresLeverage the Actions Datastore API to create, modify, and delete
-items in datastores owned by your organization.## List datastores- v2 (latest)
-GET https://api.ap1.datadoghq.com/api/v2/actions-datastoreshttps://api.ap2.datadoghq.com/api/v2/actions-datastoreshttps://api.datadoghq.eu/api/v2/actions-datastoreshttps://api.ddog-gov.com/api/v2/actions-datastoreshttps://api.datadoghq.com/api/v2/actions-datastoreshttps://api.us3.datadoghq.com/api/v2/actions-datastoreshttps://api.us5.datadoghq.com/api/v2/actions-datastores
-### OverviewLists all datastores for the organization.
-This endpoint requires the `apps_datastore_read` permission.### Response- 200
-- 429
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 A collection of datastores returned by list operations.
-Expand All
 Field
 Type
 Description
-data [*required*]
+data [_required_]
 [object]
 An array of datastore objects containing their configurations and metadata.
 attributes
@@ -1380,72 +53,89 @@ The ID of the organization that owns this datastore.
 primary_column_name
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 primary_key_generation_strategy
 enum
-Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item.
-Allowed enum values: `none,uuid`id
+Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item. Allowed enum values: `none,uuid`
+id
 string
 The unique identifier of the datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": [
-{
-"attributes": {
-"created_at": "2019-09-19T10:00:00.000Z",
-"creator_user_id": "integer",
-"creator_user_uuid": "string",
-"description": "string",
-"modified_at": "2019-09-19T10:00:00.000Z",
-"name": "string",
-"org_id": "integer",
-"primary_column_name": "",
-"primary_key_generation_strategy": "string"
-},
-"id": "string",
-"type": "datastores"
+  "data": [
+    {
+      "attributes": {
+        "created_at": "2019-09-19T10:00:00.000Z",
+        "creator_user_id": "integer",
+        "creator_user_uuid": "string",
+        "description": "string",
+        "modified_at": "2019-09-19T10:00:00.000Z",
+        "name": "string",
+        "org_id": "integer",
+        "primary_column_name": "",
+        "primary_key_generation_strategy": "string"
+      },
+      "id": "string",
+      "type": "datastores"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-List datastoresCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
+
+#####  List datastores
+Copy
+```
+                  # Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-List datastores```
+
+#####  List datastores
+```
 """
 List datastores returns "OK" response
 """
@@ -1455,29 +145,47 @@ from datadog_api_client.v2.api.actions_datastores_api import ActionsDatastoresAp
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.list_datastores()
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.list_datastores()
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-List datastores```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  List datastores
+```
 # List datastores returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 p api_instance.list_datastores()
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-List datastores```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  List datastores
+```
 // List datastores returns "OK" response
 
 package main
@@ -1504,16 +212,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastores`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-List datastores```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  List datastores
+```
 // List datastores returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -1522,54 +239,72 @@ import com.datadog.api.client.v2.api.ActionsDatastoresApi;
 import com.datadog.api.client.v2.model.DatastoreArray;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-try {
-DatastoreArray result = apiInstance.listDatastores();
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#listDatastores");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      DatastoreArray result = apiInstance.listDatastores();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#listDatastores");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-List datastores```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  List datastores
+```
 // List datastores returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api.list_datastores().await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api.list_datastores().await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-List datastores```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  List datastores
+```
 /**
-* List datastores returns "OK" response
-*/
+ * List datastores returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -1577,25 +312,41 @@ const configuration = client.createConfiguration();
 const apiInstance = new v2.ActionsDatastoresApi(configuration);
 
 apiInstance
-.listDatastores()
-.then((data: v2.DatastoreArray) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .listDatastores()
+  .then((data: v2.DatastoreArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Create datastore- v2 (latest)
-POST https://api.ap1.datadoghq.com/api/v2/actions-datastoreshttps://api.ap2.datadoghq.com/api/v2/actions-datastoreshttps://api.datadoghq.eu/api/v2/actions-datastoreshttps://api.ddog-gov.com/api/v2/actions-datastoreshttps://api.datadoghq.com/api/v2/actions-datastoreshttps://api.us3.datadoghq.com/api/v2/actions-datastoreshttps://api.us5.datadoghq.com/api/v2/actions-datastores
-### OverviewCreates a new datastore.
-This endpoint requires the `apps_datastore_manage` permission.### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Create datastore](https://docs.datadoghq.com/api/latest/actions-datastores/#create-datastore)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#create-datastore-v2)
+
+
+POST https://api.ap1.datadoghq.com/api/v2/actions-datastoreshttps://api.ap2.datadoghq.com/api/v2/actions-datastoreshttps://api.datadoghq.eu/api/v2/actions-datastoreshttps://api.ddog-gov.com/api/v2/actions-datastoreshttps://api.datadoghq.com/api/v2/actions-datastoreshttps://api.us3.datadoghq.com/api/v2/actions-datastoreshttps://api.us5.datadoghq.com/api/v2/actions-datastores
+### Overview
+Creates a new datastore. This endpoint requires the `apps_datastore_manage` permission.
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -1608,45 +359,54 @@ Configuration and metadata to create a new datastore.
 description
 string
 A human-readable description about the datastore.
-name [*required*]
+name [_required_]
 string
 The display name for the new datastore.
 org_access
 enum
-The organization access level for the datastore. For example, 'contributor'.
-Allowed enum values: `contributor,viewer,manager`primary_column_name [*required*]
+The organization access level for the datastore. For example, 'contributor'. Allowed enum values: `contributor,viewer,manager`
+primary_column_name [_required_]
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 primary_key_generation_strategy
 enum
-Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item.
-Allowed enum values: `none,uuid`id
+Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item. Allowed enum values: `none,uuid`
+id
 string
 Optional ID for the new datastore. If not provided, one will be generated automatically.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": {
-"attributes": {
-"name": "datastore-name",
-"primary_column_name": "primaryKey"
-},
-"type": "datastores"
+  "data": {
+    "attributes": {
+      "name": "datastore-name",
+      "primary_column_name": "primaryKey"
+    },
+    "type": "datastores"
+  }
 }
-}
-```### Response- 200
-- 400
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#CreateDatastore-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#CreateDatastore-400-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#CreateDatastore-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Response after successfully creating a new datastore, containing the datastore’s assigned ID.
-Expand All
 Field
 Type
 Description
@@ -1656,26 +416,30 @@ The newly created datastore's data.
 id
 string
 The unique identifier assigned to the newly created datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": {
-"id": "string",
-"type": "datastores"
+  "data": {
+    "id": "string",
+    "type": "datastores"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -1704,66 +468,81 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Create datastore returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
+
+#####  Create datastore returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"name": "datastore-name",
-"primary_column_name": "primaryKey"
-},
-"type": "datastores"
+  "data": {
+    "attributes": {
+      "name": "datastore-name",
+      "primary_column_name": "primaryKey"
+    },
+    "type": "datastores"
+  }
 }
-}
-EOF
+EOF  
 
+                        
 ```
-Create datastore returns "OK" response```
+
+#####  Create datastore returns "OK" response
+```
 // Create datastore returns "OK" response
 
 package main
@@ -1782,7 +561,7 @@ func main() {
 	body := datadogV2.CreateAppsDatastoreRequest{
 		Data: &datadogV2.CreateAppsDatastoreRequestData{
 			Attributes: &datadogV2.CreateAppsDatastoreRequestDataAttributes{
-				Name: "datastore-name",
+				Name:              "datastore-name",
 				PrimaryColumnName: "primaryKey",
 			},
 			Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
@@ -1799,16 +578,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.CreateDatastore`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Create datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Create datastore returns "OK" response
+```
 // Create datastore returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -1821,39 +609,48 @@ import com.datadog.api.client.v2.model.CreateAppsDatastoreResponse;
 import com.datadog.api.client.v2.model.DatastoreDataType;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-CreateAppsDatastoreRequest body =
-new CreateAppsDatastoreRequest()
-.data(
-new CreateAppsDatastoreRequestData()
-.attributes(
-new CreateAppsDatastoreRequestDataAttributes()
-.name("datastore-name")
-.primaryColumnName("primaryKey"))
-.type(DatastoreDataType.DATASTORES));
+    CreateAppsDatastoreRequest body =
+        new CreateAppsDatastoreRequest()
+            .data(
+                new CreateAppsDatastoreRequestData()
+                    .attributes(
+                        new CreateAppsDatastoreRequestDataAttributes()
+                            .name("datastore-name")
+                            .primaryColumnName("primaryKey"))
+                    .type(DatastoreDataType.DATASTORES));
 
-try {
-CreateAppsDatastoreResponse result = apiInstance.createDatastore(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#createDatastore");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      CreateAppsDatastoreResponse result = apiInstance.createDatastore(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#createDatastore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Create datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Create datastore returns "OK" response
+```
 """
 Create datastore returns "OK" response
 """
@@ -1863,55 +660,73 @@ from datadog_api_client.v2.api.actions_datastores_api import ActionsDatastoresAp
 from datadog_api_client.v2.model.create_apps_datastore_request import CreateAppsDatastoreRequest
 from datadog_api_client.v2.model.create_apps_datastore_request_data import CreateAppsDatastoreRequestData
 from datadog_api_client.v2.model.create_apps_datastore_request_data_attributes import (
-CreateAppsDatastoreRequestDataAttributes,
+    CreateAppsDatastoreRequestDataAttributes,
 )
 from datadog_api_client.v2.model.datastore_data_type import DatastoreDataType
 
 body = CreateAppsDatastoreRequest(
-data=CreateAppsDatastoreRequestData(
-attributes=CreateAppsDatastoreRequestDataAttributes(
-name="datastore-name",
-primary_column_name="primaryKey",
-),
-type=DatastoreDataType.DATASTORES,
-),
+    data=CreateAppsDatastoreRequestData(
+        attributes=CreateAppsDatastoreRequestDataAttributes(
+            name="datastore-name",
+            primary_column_name="primaryKey",
+        ),
+        type=DatastoreDataType.DATASTORES,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.create_datastore(body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.create_datastore(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Create datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Create datastore returns "OK" response
+```
 # Create datastore returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 
 body = DatadogAPIClient::V2::CreateAppsDatastoreRequest.new({
-data: DatadogAPIClient::V2::CreateAppsDatastoreRequestData.new({
-attributes: DatadogAPIClient::V2::CreateAppsDatastoreRequestDataAttributes.new({
-name: "datastore-name",
-primary_column_name: "primaryKey",
-}),
-type: DatadogAPIClient::V2::DatastoreDataType::DATASTORES,
-}),
+  data: DatadogAPIClient::V2::CreateAppsDatastoreRequestData.new({
+    attributes: DatadogAPIClient::V2::CreateAppsDatastoreRequestDataAttributes.new({
+      name: "datastore-name",
+      primary_column_name: "primaryKey",
+    }),
+    type: DatadogAPIClient::V2::DatastoreDataType::DATASTORES,
+  }),
 })
 p api_instance.create_datastore(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Create datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Create datastore returns "OK" response
+```
 // Create datastore returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -1922,33 +737,42 @@ use datadog_api_client::datadogV2::model::DatastoreDataType;
 
 #[tokio::main]
 async fn main() {
-let body = CreateAppsDatastoreRequest::new().data(
-CreateAppsDatastoreRequestData::new(DatastoreDataType::DATASTORES).attributes(
-CreateAppsDatastoreRequestDataAttributes::new(
-"datastore-name".to_string(),
-"primaryKey".to_string(),
-),
-),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api.create_datastore(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = CreateAppsDatastoreRequest::new().data(
+        CreateAppsDatastoreRequestData::new(DatastoreDataType::DATASTORES).attributes(
+            CreateAppsDatastoreRequestDataAttributes::new(
+                "datastore-name".to_string(),
+                "primaryKey".to_string(),
+            ),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api.create_datastore(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Create datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Create datastore returns "OK" response
+```
 /**
-* Create datastore returns "OK" response
-*/
+ * Create datastore returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -1956,48 +780,68 @@ const configuration = client.createConfiguration();
 const apiInstance = new v2.ActionsDatastoresApi(configuration);
 
 const params: v2.ActionsDatastoresApiCreateDatastoreRequest = {
-body: {
-data: {
-attributes: {
-name: "datastore-name",
-primaryColumnName: "primaryKey",
-},
-type: "datastores",
-},
-},
+  body: {
+    data: {
+      attributes: {
+        name: "datastore-name",
+        primaryColumnName: "primaryKey",
+      },
+      type: "datastores",
+    },
+  },
 };
 
 apiInstance
-.createDatastore(params)
-.then((data: v2.CreateAppsDatastoreResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createDatastore(params)
+  .then((data: v2.CreateAppsDatastoreResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Get datastore- v2 (latest)
-GET https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
-### OverviewRetrieves a specific datastore by its ID.
-This endpoint requires the `apps_datastore_read` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get datastore](https://docs.datadoghq.com/api/latest/actions-datastores/#get-datastore)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#get-datastore-v2)
+
+
+GET https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
+### Overview
+Retrieves a specific datastore by its ID. This endpoint requires the `apps_datastore_read` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Response- 200
-- 400
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#GetDatastore-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#GetDatastore-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#GetDatastore-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#GetDatastore-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 A datastore’s complete configuration and metadata.
-Expand All
 Field
 Type
 Description
@@ -2031,45 +875,51 @@ The ID of the organization that owns this datastore.
 primary_column_name
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 primary_key_generation_strategy
 enum
-Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item.
-Allowed enum values: `none,uuid`id
+Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item. Allowed enum values: `none,uuid`
+id
 string
 The unique identifier of the datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": {
-"attributes": {
-"created_at": "2019-09-19T10:00:00.000Z",
-"creator_user_id": "integer",
-"creator_user_uuid": "string",
-"description": "string",
-"modified_at": "2019-09-19T10:00:00.000Z",
-"name": "string",
-"org_id": "integer",
-"primary_column_name": "",
-"primary_key_generation_strategy": "string"
-},
-"id": "string",
-"type": "datastores"
+  "data": {
+    "attributes": {
+      "created_at": "2019-09-19T10:00:00.000Z",
+      "creator_user_id": "integer",
+      "creator_user_uuid": "string",
+      "description": "string",
+      "modified_at": "2019-09-19T10:00:00.000Z",
+      "name": "string",
+      "org_id": "integer",
+      "primary_column_name": "",
+      "primary_key_generation_strategy": "string"
+    },
+    "id": "string",
+    "type": "datastores"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -2098,29 +948,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -2149,54 +1003,71 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Get datastoreCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
+
+#####  Get datastore
+Copy
+```
+                  # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get datastore```
+
+#####  Get datastore
+```
 """
 Get datastore returns "OK" response
 """
@@ -2210,19 +1081,28 @@ DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.get_datastore(
-datastore_id=DATASTORE_DATA_ID,
-)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.get_datastore(
+        datastore_id=DATASTORE_DATA_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Get datastore
+```
 # Get datastore returns "OK" response
 
 require "datadog_api_client"
@@ -2232,12 +1112,21 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 p api_instance.get_datastore(DATASTORE_DATA_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Get datastore
+```
 // Get datastore returns "OK" response
 
 package main
@@ -2267,16 +1156,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.GetDatastore`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Get datastore
+```
 // Get datastore returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -2285,59 +1183,77 @@ import com.datadog.api.client.v2.api.ActionsDatastoresApi;
 import com.datadog.api.client.v2.model.Datastore;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-try {
-Datastore result = apiInstance.getDatastore(DATASTORE_DATA_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#getDatastore");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      Datastore result = apiInstance.getDatastore(DATASTORE_DATA_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#getDatastore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Get datastore
+```
 // Get datastore returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api.get_datastore(datastore_data_id.clone()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api.get_datastore(datastore_data_id.clone()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Get datastore
+```
 /**
-* Get datastore returns "OK" response
-*/
+ * Get datastore returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -2348,35 +1264,53 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiGetDatastoreRequest = {
-datastoreId: DATASTORE_DATA_ID,
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.getDatastore(params)
-.then((data: v2.Datastore) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getDatastore(params)
+  .then((data: v2.Datastore) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Update datastore- v2 (latest)
-PATCH https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
-### OverviewUpdates an existing datastore’s attributes.
-This endpoint requires the `apps_datastore_manage` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Update datastore](https://docs.datadoghq.com/api/latest/actions-datastores/#update-datastore)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#update-datastore-v2)
+
+
+PATCH https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
+### Overview
+Updates an existing datastore’s attributes. This endpoint requires the `apps_datastore_manage` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -2395,29 +1329,36 @@ The display name of the datastore.
 id
 string
 The unique identifier of the datastore to update.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": {
-"attributes": {
-"name": "updated name"
-},
-"type": "datastores",
-"id": "string"
+  "data": {
+    "attributes": {
+      "name": "updated name"
+    },
+    "type": "datastores",
+    "id": "string"
+  }
 }
-}
-```### Response- 200
-- 400
-- 404
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastore-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastore-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastore-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastore-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 A datastore’s complete configuration and metadata.
-Expand All
 Field
 Type
 Description
@@ -2451,45 +1392,51 @@ The ID of the organization that owns this datastore.
 primary_column_name
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 primary_key_generation_strategy
 enum
-Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item.
-Allowed enum values: `none,uuid`id
+Can be set to `uuid` to automatically generate primary keys when new items are added. Default value is `none`, which requires you to supply a primary key for each new item. Allowed enum values: `none,uuid`
+id
 string
 The unique identifier of the datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastores.
-Allowed enum values: `datastores`default: `datastores`
+The resource type for datastores. Allowed enum values: `datastores`
+default: `datastores`
 ```
 {
-"data": {
-"attributes": {
-"created_at": "2019-09-19T10:00:00.000Z",
-"creator_user_id": "integer",
-"creator_user_uuid": "string",
-"description": "string",
-"modified_at": "2019-09-19T10:00:00.000Z",
-"name": "string",
-"org_id": "integer",
-"primary_column_name": "",
-"primary_key_generation_strategy": "string"
-},
-"id": "string",
-"type": "datastores"
+  "data": {
+    "attributes": {
+      "created_at": "2019-09-19T10:00:00.000Z",
+      "creator_user_id": "integer",
+      "creator_user_uuid": "string",
+      "description": "string",
+      "modified_at": "2019-09-19T10:00:00.000Z",
+      "name": "string",
+      "org_id": "integer",
+      "primary_column_name": "",
+      "primary_key_generation_strategy": "string"
+    },
+    "id": "string",
+    "type": "datastores"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -2518,29 +1465,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -2569,66 +1520,83 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Update datastore returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
+
+#####  Update datastore returns "OK" response
+Copy
+```
+                          # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"name": "updated name"
-},
-"type": "datastores",
-"id": "string"
+  "data": {
+    "attributes": {
+      "name": "updated name"
+    },
+    "type": "datastores",
+    "id": "string"
+  }
 }
-}
-EOF
+EOF  
 
+                        
 ```
-Update datastore returns "OK" response```
+
+#####  Update datastore returns "OK" response
+```
 // Update datastore returns "OK" response
 
 package main
@@ -2653,7 +1621,7 @@ func main() {
 				Name: datadog.PtrString("updated name"),
 			},
 			Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
-			Id: datadog.PtrString(DatastoreDataID),
+			Id:   datadog.PtrString(DatastoreDataID),
 		},
 	}
 	ctx := datadog.NewDefaultContext(context.Background())
@@ -2667,16 +1635,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastore`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Update datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Update datastore returns "OK" response
+```
 // Update datastore returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -2689,40 +1666,49 @@ import com.datadog.api.client.v2.model.UpdateAppsDatastoreRequestData;
 import com.datadog.api.client.v2.model.UpdateAppsDatastoreRequestDataAttributes;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-UpdateAppsDatastoreRequest body =
-new UpdateAppsDatastoreRequest()
-.data(
-new UpdateAppsDatastoreRequestData()
-.attributes(new UpdateAppsDatastoreRequestDataAttributes().name("updated name"))
-.type(DatastoreDataType.DATASTORES)
-.id(DATASTORE_DATA_ID));
+    UpdateAppsDatastoreRequest body =
+        new UpdateAppsDatastoreRequest()
+            .data(
+                new UpdateAppsDatastoreRequestData()
+                    .attributes(new UpdateAppsDatastoreRequestDataAttributes().name("updated name"))
+                    .type(DatastoreDataType.DATASTORES)
+                    .id(DATASTORE_DATA_ID));
 
-try {
-Datastore result = apiInstance.updateDatastore(DATASTORE_DATA_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#updateDatastore");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      Datastore result = apiInstance.updateDatastore(DATASTORE_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#updateDatastore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Update datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Update datastore returns "OK" response
+```
 """
 Update datastore returns "OK" response
 """
@@ -2734,35 +1720,44 @@ from datadog_api_client.v2.model.datastore_data_type import DatastoreDataType
 from datadog_api_client.v2.model.update_apps_datastore_request import UpdateAppsDatastoreRequest
 from datadog_api_client.v2.model.update_apps_datastore_request_data import UpdateAppsDatastoreRequestData
 from datadog_api_client.v2.model.update_apps_datastore_request_data_attributes import (
-UpdateAppsDatastoreRequestDataAttributes,
+    UpdateAppsDatastoreRequestDataAttributes,
 )
 
 # there is a valid "datastore" in the system
 DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 body = UpdateAppsDatastoreRequest(
-data=UpdateAppsDatastoreRequestData(
-attributes=UpdateAppsDatastoreRequestDataAttributes(
-name="updated name",
-),
-type=DatastoreDataType.DATASTORES,
-id=DATASTORE_DATA_ID,
-),
+    data=UpdateAppsDatastoreRequestData(
+        attributes=UpdateAppsDatastoreRequestDataAttributes(
+            name="updated name",
+        ),
+        type=DatastoreDataType.DATASTORES,
+        id=DATASTORE_DATA_ID,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.update_datastore(datastore_id=DATASTORE_DATA_ID, body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.update_datastore(datastore_id=DATASTORE_DATA_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Update datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Update datastore returns "OK" response
+```
 # Update datastore returns "OK" response
 
 require "datadog_api_client"
@@ -2772,22 +1767,31 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 
 body = DatadogAPIClient::V2::UpdateAppsDatastoreRequest.new({
-data: DatadogAPIClient::V2::UpdateAppsDatastoreRequestData.new({
-attributes: DatadogAPIClient::V2::UpdateAppsDatastoreRequestDataAttributes.new({
-name: "updated name",
-}),
-type: DatadogAPIClient::V2::DatastoreDataType::DATASTORES,
-id: DATASTORE_DATA_ID,
-}),
+  data: DatadogAPIClient::V2::UpdateAppsDatastoreRequestData.new({
+    attributes: DatadogAPIClient::V2::UpdateAppsDatastoreRequestDataAttributes.new({
+      name: "updated name",
+    }),
+    type: DatadogAPIClient::V2::DatastoreDataType::DATASTORES,
+    id: DATASTORE_DATA_ID,
+  }),
 })
 p api_instance.update_datastore(DATASTORE_DATA_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Update datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Update datastore returns "OK" response
+```
 // Update datastore returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -2798,34 +1802,43 @@ use datadog_api_client::datadogV2::model::UpdateAppsDatastoreRequestDataAttribut
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let body = UpdateAppsDatastoreRequest::new().data(
-UpdateAppsDatastoreRequestData::new(DatastoreDataType::DATASTORES)
-.attributes(
-UpdateAppsDatastoreRequestDataAttributes::new().name("updated name".to_string()),
-)
-.id(datastore_data_id.clone()),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api.update_datastore(datastore_data_id.clone(), body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let body = UpdateAppsDatastoreRequest::new().data(
+        UpdateAppsDatastoreRequestData::new(DatastoreDataType::DATASTORES)
+            .attributes(
+                UpdateAppsDatastoreRequestDataAttributes::new().name("updated name".to_string()),
+            )
+            .id(datastore_data_id.clone()),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api.update_datastore(datastore_data_id.clone(), body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Update datastore returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Update datastore returns "OK" response
+```
 /**
-* Update datastore returns "OK" response
-*/
+ * Update datastore returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -2836,53 +1849,73 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiUpdateDatastoreRequest = {
-body: {
-data: {
-attributes: {
-name: "updated name",
-},
-type: "datastores",
-id: DATASTORE_DATA_ID,
-},
-},
-datastoreId: DATASTORE_DATA_ID,
+  body: {
+    data: {
+      attributes: {
+        name: "updated name",
+      },
+      type: "datastores",
+      id: DATASTORE_DATA_ID,
+    },
+  },
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.updateDatastore(params)
-.then((data: v2.Datastore) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .updateDatastore(params)
+  .then((data: v2.Datastore) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Delete datastore- v2 (latest)
-DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
-### OverviewDeletes a datastore by its unique identifier.
-This endpoint requires the `apps_datastore_manage` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Delete datastore](https://docs.datadoghq.com/api/latest/actions-datastores/#delete-datastore)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#delete-datastore-v2)
+
+
+DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}https://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}https://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}https://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}
+### Overview
+Deletes a datastore by its unique identifier. This endpoint requires the `apps_datastore_manage` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Response- 200
-- 400
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastore-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastore-400-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastore-429-v2)
+
+
 OK
 Bad Request
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -2911,54 +1944,71 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Delete datastoreCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
+
+#####  Delete datastore
+Copy
+```
+                  # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Delete datastore```
+
+#####  Delete datastore
+```
 """
 Delete datastore returns "OK" response
 """
@@ -2972,17 +2022,26 @@ DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-api_instance.delete_datastore(
-datastore_id=DATASTORE_DATA_ID,
-)
+    api_instance = ActionsDatastoresApi(api_client)
+    api_instance.delete_datastore(
+        datastore_id=DATASTORE_DATA_ID,
+    )
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Delete datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Delete datastore
+```
 # Delete datastore returns "OK" response
 
 require "datadog_api_client"
@@ -2992,12 +2051,21 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 p api_instance.delete_datastore(DATASTORE_DATA_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Delete datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Delete datastore
+```
 // Delete datastore returns "OK" response
 
 package main
@@ -3027,12 +2095,21 @@ func main() {
 	}
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Delete datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Delete datastore
+```
 // Delete datastore returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -3040,58 +2117,76 @@ import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v2.api.ActionsDatastoresApi;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-try {
-apiInstance.deleteDatastore(DATASTORE_DATA_ID);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#deleteDatastore");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      apiInstance.deleteDatastore(DATASTORE_DATA_ID);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#deleteDatastore");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Delete datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Delete datastore
+```
 // Delete datastore returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api.delete_datastore(datastore_data_id.clone()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api.delete_datastore(datastore_data_id.clone()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Delete datastore```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Delete datastore
+```
 /**
-* Delete datastore returns "OK" response
-*/
+ * Delete datastore returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -3102,37 +2197,54 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiDeleteDatastoreRequest = {
-datastoreId: DATASTORE_DATA_ID,
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.deleteDatastore(params)
-.then((data: any) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .deleteDatastore(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## List datastore items- v2 (latest)
-GET https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
-### OverviewLists items from a datastore. You can filter the results by specifying either an item key or a filter query parameter, but not both at the same time. Supports server-side pagination for large datasets.
-This endpoint requires the `apps_datastore_read` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [List datastore items](https://docs.datadoghq.com/api/latest/actions-datastores/#list-datastore-items)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#list-datastore-items-v2)
+
+
+GET https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
+### Overview
+Lists items from a datastore. You can filter the results by specifying either an item key or a filter query parameter, but not both at the same time. Supports server-side pagination for large datasets. This endpoint requires the `apps_datastore_read` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-#### Query StringsName
+#### Query Strings
+Name
 Type
 Description
 filter
 string
-Optional query filter to search items using the logs search syntax.
+Optional query filter to search items using the [logs search syntax](https://docs.datadoghq.com/logs/explorer/search_syntax/).
 item_key
 string
 Optional primary key value to retrieve a specific item. Cannot be used together with the filter parameter.
@@ -3145,19 +2257,23 @@ Optional field to offset the number of items to skip from the beginning of the r
 sort
 string
 Optional field to sort results by. Prefix with ‘-’ for descending order (e.g., ‘-created_at’).
-### Response- 200
-- 400
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastoreItems-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastoreItems-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastoreItems-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#ListDatastoreItems-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 A collection of datastore items with pagination and schema metadata.
-Expand All
 Field
 Type
 Description
-data [*required*]
+data [_required_]
 [object]
 An array of datastore items with their content and metadata.
 attributes
@@ -3175,8 +2291,10 @@ The ID of the organization that owns this item.
 primary_column_name
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 signature
 string
 A unique signature identifying this item version.
@@ -3189,10 +2307,10 @@ The data content (as key-value pairs) of a datastore item.
 id
 string
 The unique identifier of the datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 meta
 object
 Metadata about the included items, including pagination info and datastore schema.
@@ -3214,10 +2332,10 @@ Schema information about the datastore, including its primary key and field defi
 fields
 [object]
 An array describing the columns available in this datastore.
-name [*required*]
+name [_required_]
 string
 The name of this column in the datastore.
-type [*required*]
+type [_required_]
 string
 The data type of this column. For example, 'string', 'number', or 'boolean'.
 primary_key
@@ -3225,47 +2343,51 @@ string
 The name of the primary key column for this datastore.
 ```
 {
-"data": [
-{
-"attributes": {
-"created_at": "2019-09-19T10:00:00.000Z",
-"modified_at": "2019-09-19T10:00:00.000Z",
-"org_id": "integer",
-"primary_column_name": "",
-"signature": "string",
-"store_id": "string",
-"value": {}
-},
-"id": "string",
-"type": "items"
+  "data": [
+    {
+      "attributes": {
+        "created_at": "2019-09-19T10:00:00.000Z",
+        "modified_at": "2019-09-19T10:00:00.000Z",
+        "org_id": "integer",
+        "primary_column_name": "",
+        "signature": "string",
+        "store_id": "string",
+        "value": {}
+      },
+      "id": "string",
+      "type": "items"
+    }
+  ],
+  "meta": {
+    "page": {
+      "hasMore": false,
+      "totalCount": "integer",
+      "totalFilteredCount": "integer"
+    },
+    "schema": {
+      "fields": [
+        {
+          "name": "",
+          "type": ""
+        }
+      ],
+      "primary_key": "string"
+    }
+  }
 }
-],
-"meta": {
-"page": {
-"hasMore": false,
-"totalCount": "integer",
-"totalFilteredCount": "integer"
-},
-"schema": {
-"fields": [
-{
-"name": "",
-"type": ""
-}
-],
-"primary_key": "string"
-}
-}
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -3294,29 +2416,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -3345,54 +2471,71 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-List datastore itemsCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
+
+#####  List datastore items
+Copy
+```
+                  # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-List datastore items```
+
+#####  List datastore items
+```
 """
 List datastore items returns "OK" response
 """
@@ -3406,19 +2549,28 @@ DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.list_datastore_items(
-datastore_id=DATASTORE_DATA_ID,
-)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.list_datastore_items(
+        datastore_id=DATASTORE_DATA_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-List datastore items```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  List datastore items
+```
 # List datastore items returns "OK" response
 
 require "datadog_api_client"
@@ -3428,12 +2580,21 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 p api_instance.list_datastore_items(DATASTORE_DATA_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-List datastore items```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  List datastore items
+```
 // List datastore items returns "OK" response
 
 package main
@@ -3463,16 +2624,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastoreItems`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-List datastore items```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  List datastore items
+```
 // List datastore items returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -3481,32 +2651,41 @@ import com.datadog.api.client.v2.api.ActionsDatastoresApi;
 import com.datadog.api.client.v2.model.ItemApiPayloadArray;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-try {
-ItemApiPayloadArray result = apiInstance.listDatastoreItems(DATASTORE_DATA_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#listDatastoreItems");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      ItemApiPayloadArray result = apiInstance.listDatastoreItems(DATASTORE_DATA_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#listDatastoreItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-List datastore items```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  List datastore items
+```
 // List datastore items returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -3514,32 +2693,41 @@ use datadog_api_client::datadogV2::api_actions_datastores::ListDatastoreItemsOpt
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api
-.list_datastore_items(
-datastore_data_id.clone(),
-ListDatastoreItemsOptionalParams::default(),
-)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api
+        .list_datastore_items(
+            datastore_data_id.clone(),
+            ListDatastoreItemsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-List datastore items```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  List datastore items
+```
 /**
-* List datastore items returns "OK" response
-*/
+ * List datastore items returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -3550,35 +2738,53 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiListDatastoreItemsRequest = {
-datastoreId: DATASTORE_DATA_ID,
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.listDatastoreItems(params)
-.then((data: v2.ItemApiPayloadArray) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .listDatastoreItems(params)
+  .then((data: v2.ItemApiPayloadArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Delete datastore item- v2 (latest)
-DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
-### OverviewDeletes an item from a datastore by its key.
-This endpoint requires the `apps_datastore_write` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Delete datastore item](https://docs.datadoghq.com/api/latest/actions-datastores/#delete-datastore-item)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#delete-datastore-item-v2)
+
+
+DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
+### Overview
+Deletes an item from a datastore by its key. This endpoint requires the `apps_datastore_write` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -3591,31 +2797,38 @@ Attributes specifying which datastore item to delete by its primary key.
 id
 string
 Optional unique identifier of the item to delete.
-item_key [*required*]
+item_key [_required_]
 string
 The primary key value that identifies the item to delete. Cannot exceed 256 characters.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"attributes": {
-"item_key": "test-key"
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_key": "test-key"
+    },
+    "type": "items"
+  }
 }
-}
-```### Response- 200
-- 400
-- 404
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastoreItem-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastoreItem-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastoreItem-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#DeleteDatastoreItem-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Response from successfully deleting a datastore item.
-Expand All
 Field
 Type
 Description
@@ -3625,26 +2838,30 @@ Data containing the identifier of the datastore item that was successfully delet
 id
 string
 The unique identifier of the item that was deleted.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"id": "string",
-"type": "items"
+  "data": {
+    "id": "string",
+    "type": "items"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -3673,29 +2890,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -3724,65 +2945,82 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Delete datastore item returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
+
+#####  Delete datastore item returns "OK" response
+Copy
+```
+                          # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"item_key": "test-key"
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_key": "test-key"
+    },
+    "type": "items"
+  }
 }
-}
-EOF
+EOF  
 
+                        
 ```
-Delete datastore item returns "OK" response```
+
+#####  Delete datastore item returns "OK" response
+```
 // Delete datastore item returns "OK" response
 
 package main
@@ -3820,16 +3058,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.DeleteDatastoreItem`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Delete datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Delete datastore item returns "OK" response
+```
 // Delete datastore item returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -3842,41 +3089,50 @@ import com.datadog.api.client.v2.model.DeleteAppsDatastoreItemRequestDataAttribu
 import com.datadog.api.client.v2.model.DeleteAppsDatastoreItemResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-DeleteAppsDatastoreItemRequest body =
-new DeleteAppsDatastoreItemRequest()
-.data(
-new DeleteAppsDatastoreItemRequestData()
-.attributes(
-new DeleteAppsDatastoreItemRequestDataAttributes().itemKey("test-key"))
-.type(DatastoreItemsDataType.ITEMS));
+    DeleteAppsDatastoreItemRequest body =
+        new DeleteAppsDatastoreItemRequest()
+            .data(
+                new DeleteAppsDatastoreItemRequestData()
+                    .attributes(
+                        new DeleteAppsDatastoreItemRequestDataAttributes().itemKey("test-key"))
+                    .type(DatastoreItemsDataType.ITEMS));
 
-try {
-DeleteAppsDatastoreItemResponse result =
-apiInstance.deleteDatastoreItem(DATASTORE_DATA_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#deleteDatastoreItem");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      DeleteAppsDatastoreItemResponse result =
+          apiInstance.deleteDatastoreItem(DATASTORE_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#deleteDatastoreItem");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Delete datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Delete datastore item returns "OK" response
+```
 """
 Delete datastore item returns "OK" response
 """
@@ -3888,34 +3144,43 @@ from datadog_api_client.v2.model.datastore_items_data_type import DatastoreItems
 from datadog_api_client.v2.model.delete_apps_datastore_item_request import DeleteAppsDatastoreItemRequest
 from datadog_api_client.v2.model.delete_apps_datastore_item_request_data import DeleteAppsDatastoreItemRequestData
 from datadog_api_client.v2.model.delete_apps_datastore_item_request_data_attributes import (
-DeleteAppsDatastoreItemRequestDataAttributes,
+    DeleteAppsDatastoreItemRequestDataAttributes,
 )
 
 # there is a valid "datastore" in the system
 DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 body = DeleteAppsDatastoreItemRequest(
-data=DeleteAppsDatastoreItemRequestData(
-attributes=DeleteAppsDatastoreItemRequestDataAttributes(
-item_key="test-key",
-),
-type=DatastoreItemsDataType.ITEMS,
-),
+    data=DeleteAppsDatastoreItemRequestData(
+        attributes=DeleteAppsDatastoreItemRequestDataAttributes(
+            item_key="test-key",
+        ),
+        type=DatastoreItemsDataType.ITEMS,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.delete_datastore_item(datastore_id=DATASTORE_DATA_ID, body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.delete_datastore_item(datastore_id=DATASTORE_DATA_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Delete datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Delete datastore item returns "OK" response
+```
 # Delete datastore item returns "OK" response
 
 require "datadog_api_client"
@@ -3925,21 +3190,30 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 
 body = DatadogAPIClient::V2::DeleteAppsDatastoreItemRequest.new({
-data: DatadogAPIClient::V2::DeleteAppsDatastoreItemRequestData.new({
-attributes: DatadogAPIClient::V2::DeleteAppsDatastoreItemRequestDataAttributes.new({
-item_key: "test-key",
-}),
-type: DatadogAPIClient::V2::DatastoreItemsDataType::ITEMS,
-}),
+  data: DatadogAPIClient::V2::DeleteAppsDatastoreItemRequestData.new({
+    attributes: DatadogAPIClient::V2::DeleteAppsDatastoreItemRequestDataAttributes.new({
+      item_key: "test-key",
+    }),
+    type: DatadogAPIClient::V2::DatastoreItemsDataType::ITEMS,
+  }),
 })
 p api_instance.delete_datastore_item(DATASTORE_DATA_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Delete datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Delete datastore item returns "OK" response
+```
 // Delete datastore item returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -3950,34 +3224,43 @@ use datadog_api_client::datadogV2::model::DeleteAppsDatastoreItemRequestDataAttr
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let body = DeleteAppsDatastoreItemRequest::new().data(
-DeleteAppsDatastoreItemRequestData::new(DatastoreItemsDataType::ITEMS).attributes(
-DeleteAppsDatastoreItemRequestDataAttributes::new("test-key".to_string()),
-),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api
-.delete_datastore_item(datastore_data_id.clone(), body)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let body = DeleteAppsDatastoreItemRequest::new().data(
+        DeleteAppsDatastoreItemRequestData::new(DatastoreItemsDataType::ITEMS).attributes(
+            DeleteAppsDatastoreItemRequestDataAttributes::new("test-key".to_string()),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api
+        .delete_datastore_item(datastore_data_id.clone(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Delete datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Delete datastore item returns "OK" response
+```
 /**
-* Delete datastore item returns "OK" response
-*/
+ * Delete datastore item returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -3988,43 +3271,61 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiDeleteDatastoreItemRequest = {
-body: {
-data: {
-attributes: {
-itemKey: "test-key",
-},
-type: "items",
-},
-},
-datastoreId: DATASTORE_DATA_ID,
+  body: {
+    data: {
+      attributes: {
+        itemKey: "test-key",
+      },
+      type: "items",
+    },
+  },
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.deleteDatastoreItem(params)
-.then((data: v2.DeleteAppsDatastoreItemResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .deleteDatastoreItem(params)
+  .then((data: v2.DeleteAppsDatastoreItemResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Update datastore item- v2 (latest)
-PATCH https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
-### OverviewPartially updates an item in a datastore by its key.
-This endpoint requires the `apps_datastore_write` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Update datastore item](https://docs.datadoghq.com/api/latest/actions-datastores/#update-datastore-item)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#update-datastore-item-v2)
+
+
+PATCH https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/itemshttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/itemshttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items
+### Overview
+Partially updates an item in a datastore by its key. This endpoint requires the `apps_datastore_write` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -4037,41 +3338,48 @@ Attributes for updating a datastore item, including the item key and changes to 
 id
 string
 The unique identifier of the item being updated.
-item_changes [*required*]
+item_changes [_required_]
 object
 Changes to apply to a datastore item using set operations.
 ops_set
 object
 Set operation that contains key-value pairs to set on the datastore item.
-item_key [*required*]
+item_key [_required_]
 string
 The primary key that identifies the item to update. Cannot exceed 256 characters.
 id
 string
 The unique identifier of the datastore item.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"attributes": {
-"item_changes": {},
-"item_key": "test-key"
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_changes": {},
+      "item_key": "test-key"
+    },
+    "type": "items"
+  }
 }
-}
-```### Response- 200
-- 400
-- 404
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastoreItem-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastoreItem-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastoreItem-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#UpdateDatastoreItem-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 A single datastore item with its content and metadata.
-Expand All
 Field
 Type
 Description
@@ -4093,8 +3401,10 @@ The ID of the organization that owns this item.
 primary_column_name
 string
 The name of the primary key column for this datastore. Primary column names:
-- Must abide by both PostgreSQL naming conventions
-- Cannot exceed 63 characters
+  * Must abide by both [PostgreSQL naming conventions](https://www.postgresql.org/docs/7.0/syntax525.htm)
+  * Cannot exceed 63 characters
+
+
 signature
 string
 A unique signature identifying this item version.
@@ -4107,35 +3417,39 @@ The data content (as key-value pairs) of a datastore item.
 id
 string
 The unique identifier of the datastore.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"attributes": {
-"created_at": "2019-09-19T10:00:00.000Z",
-"modified_at": "2019-09-19T10:00:00.000Z",
-"org_id": "integer",
-"primary_column_name": "",
-"signature": "string",
-"store_id": "string",
-"value": {}
-},
-"id": "string",
-"type": "items"
+  "data": {
+    "attributes": {
+      "created_at": "2019-09-19T10:00:00.000Z",
+      "modified_at": "2019-09-19T10:00:00.000Z",
+      "org_id": "integer",
+      "primary_column_name": "",
+      "signature": "string",
+      "store_id": "string",
+      "value": {}
+    },
+    "id": "string",
+    "type": "items"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -4164,29 +3478,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -4215,66 +3533,83 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Update datastore item returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
+
+#####  Update datastore item returns "OK" response
+Copy
+```
+                          # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"item_changes": {},
-"item_key": "test-key"
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_changes": {},
+      "item_key": "test-key"
+    },
+    "type": "items"
+  }
 }
-}
-EOF
+EOF  
 
+                        
 ```
-Update datastore item returns "OK" response```
+
+#####  Update datastore item returns "OK" response
+```
 // Update datastore item returns "OK" response
 
 package main
@@ -4297,7 +3632,7 @@ func main() {
 		Data: &datadogV2.UpdateAppsDatastoreItemRequestData{
 			Attributes: &datadogV2.UpdateAppsDatastoreItemRequestDataAttributes{
 				ItemChanges: datadogV2.UpdateAppsDatastoreItemRequestDataAttributesItemChanges{},
-				ItemKey: "test-key",
+				ItemKey:     "test-key",
 			},
 			Type: datadogV2.UPDATEAPPSDATASTOREITEMREQUESTDATATYPE_ITEMS,
 		},
@@ -4313,16 +3648,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastoreItem`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Update datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Update datastore item returns "OK" response
+```
 // Update datastore item returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -4336,43 +3680,52 @@ import com.datadog.api.client.v2.model.UpdateAppsDatastoreItemRequestDataAttribu
 import com.datadog.api.client.v2.model.UpdateAppsDatastoreItemRequestDataType;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-UpdateAppsDatastoreItemRequest body =
-new UpdateAppsDatastoreItemRequest()
-.data(
-new UpdateAppsDatastoreItemRequestData()
-.attributes(
-new UpdateAppsDatastoreItemRequestDataAttributes()
-.itemChanges(
-new UpdateAppsDatastoreItemRequestDataAttributesItemChanges())
-.itemKey("test-key"))
-.type(UpdateAppsDatastoreItemRequestDataType.ITEMS));
+    UpdateAppsDatastoreItemRequest body =
+        new UpdateAppsDatastoreItemRequest()
+            .data(
+                new UpdateAppsDatastoreItemRequestData()
+                    .attributes(
+                        new UpdateAppsDatastoreItemRequestDataAttributes()
+                            .itemChanges(
+                                new UpdateAppsDatastoreItemRequestDataAttributesItemChanges())
+                            .itemKey("test-key"))
+                    .type(UpdateAppsDatastoreItemRequestDataType.ITEMS));
 
-try {
-ItemApiPayload result = apiInstance.updateDatastoreItem(DATASTORE_DATA_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#updateDatastoreItem");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      ItemApiPayload result = apiInstance.updateDatastoreItem(DATASTORE_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#updateDatastoreItem");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Update datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Update datastore item returns "OK" response
+```
 """
 Update datastore item returns "OK" response
 """
@@ -4383,41 +3736,50 @@ from datadog_api_client.v2.api.actions_datastores_api import ActionsDatastoresAp
 from datadog_api_client.v2.model.update_apps_datastore_item_request import UpdateAppsDatastoreItemRequest
 from datadog_api_client.v2.model.update_apps_datastore_item_request_data import UpdateAppsDatastoreItemRequestData
 from datadog_api_client.v2.model.update_apps_datastore_item_request_data_attributes import (
-UpdateAppsDatastoreItemRequestDataAttributes,
+    UpdateAppsDatastoreItemRequestDataAttributes,
 )
 from datadog_api_client.v2.model.update_apps_datastore_item_request_data_attributes_item_changes import (
-UpdateAppsDatastoreItemRequestDataAttributesItemChanges,
+    UpdateAppsDatastoreItemRequestDataAttributesItemChanges,
 )
 from datadog_api_client.v2.model.update_apps_datastore_item_request_data_type import (
-UpdateAppsDatastoreItemRequestDataType,
+    UpdateAppsDatastoreItemRequestDataType,
 )
 
 # there is a valid "datastore" in the system
 DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 body = UpdateAppsDatastoreItemRequest(
-data=UpdateAppsDatastoreItemRequestData(
-attributes=UpdateAppsDatastoreItemRequestDataAttributes(
-item_changes=UpdateAppsDatastoreItemRequestDataAttributesItemChanges(),
-item_key="test-key",
-),
-type=UpdateAppsDatastoreItemRequestDataType.ITEMS,
-),
+    data=UpdateAppsDatastoreItemRequestData(
+        attributes=UpdateAppsDatastoreItemRequestDataAttributes(
+            item_changes=UpdateAppsDatastoreItemRequestDataAttributesItemChanges(),
+            item_key="test-key",
+        ),
+        type=UpdateAppsDatastoreItemRequestDataType.ITEMS,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.update_datastore_item(datastore_id=DATASTORE_DATA_ID, body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.update_datastore_item(datastore_id=DATASTORE_DATA_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Update datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Update datastore item returns "OK" response
+```
 # Update datastore item returns "OK" response
 
 require "datadog_api_client"
@@ -4427,22 +3789,31 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 
 body = DatadogAPIClient::V2::UpdateAppsDatastoreItemRequest.new({
-data: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestData.new({
-attributes: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataAttributes.new({
-item_changes: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataAttributesItemChanges.new({}),
-item_key: "test-key",
-}),
-type: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataType::ITEMS,
-}),
+  data: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestData.new({
+    attributes: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataAttributes.new({
+      item_changes: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataAttributesItemChanges.new({}),
+      item_key: "test-key",
+    }),
+    type: DatadogAPIClient::V2::UpdateAppsDatastoreItemRequestDataType::ITEMS,
+  }),
 })
 p api_instance.update_datastore_item(DATASTORE_DATA_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Update datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Update datastore item returns "OK" response
+```
 // Update datastore item returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -4454,36 +3825,45 @@ use datadog_api_client::datadogV2::model::UpdateAppsDatastoreItemRequestDataType
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let body = UpdateAppsDatastoreItemRequest::new().data(
-UpdateAppsDatastoreItemRequestData::new(UpdateAppsDatastoreItemRequestDataType::ITEMS)
-.attributes(UpdateAppsDatastoreItemRequestDataAttributes::new(
-UpdateAppsDatastoreItemRequestDataAttributesItemChanges::new(),
-"test-key".to_string(),
-)),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api
-.update_datastore_item(datastore_data_id.clone(), body)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let body = UpdateAppsDatastoreItemRequest::new().data(
+        UpdateAppsDatastoreItemRequestData::new(UpdateAppsDatastoreItemRequestDataType::ITEMS)
+            .attributes(UpdateAppsDatastoreItemRequestDataAttributes::new(
+                UpdateAppsDatastoreItemRequestDataAttributesItemChanges::new(),
+                "test-key".to_string(),
+            )),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api
+        .update_datastore_item(datastore_data_id.clone(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Update datastore item returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Update datastore item returns "OK" response
+```
 /**
-* Update datastore item returns "OK" response
-*/
+ * Update datastore item returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -4494,44 +3874,62 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiUpdateDatastoreItemRequest = {
-body: {
-data: {
-attributes: {
-itemChanges: {},
-itemKey: "test-key",
-},
-type: "items",
-},
-},
-datastoreId: DATASTORE_DATA_ID,
+  body: {
+    data: {
+      attributes: {
+        itemChanges: {},
+        itemKey: "test-key",
+      },
+      type: "items",
+    },
+  },
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.updateDatastoreItem(params)
-.then((data: v2.ItemApiPayload) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .updateDatastoreItem(params)
+  .then((data: v2.ItemApiPayload) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Bulk write datastore items- v2 (latest)
-POST https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulk
-### OverviewCreates or replaces multiple items in a datastore by their keys in a single operation.
-This endpoint requires the `apps_datastore_write` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Bulk write datastore items](https://docs.datadoghq.com/api/latest/actions-datastores/#bulk-write-datastore-items)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#bulk-write-datastore-items-v2)
+
+
+POST https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulk
+### Overview
+Creates or replaces multiple items in a datastore by their keys in a single operation. This endpoint requires the `apps_datastore_write` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The unique identifier of the datastore to retrieve.
-### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -4543,72 +3941,83 @@ object
 Configuration for bulk inserting multiple items into a datastore.
 conflict_mode
 enum
-How to handle conflicts when inserting items that already exist in the datastore.
-Allowed enum values: `fail_on_conflict,overwrite_on_conflict`values [*required*]
+How to handle conflicts when inserting items that already exist in the datastore. Allowed enum values: `fail_on_conflict,overwrite_on_conflict`
+values [_required_]
 [object]
 An array of items to add to the datastore, where each item is a set of key-value pairs representing the item's data. Up to 100 items can be updated in a single request.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"attributes": {
-"values": [
-{
-"id": "cust_3141",
-"name": "Johnathan"
-},
-{
-"id": "cust_3142",
-"name": "Mary"
+  "data": {
+    "attributes": {
+      "values": [
+        {
+          "id": "cust_3141",
+          "name": "Johnathan"
+        },
+        {
+          "id": "cust_3142",
+          "name": "Mary"
+        }
+      ]
+    },
+    "type": "items"
+  }
 }
-]
-},
-"type": "items"
-}
-}
-```### Response- 200
-- 400
-- 404
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkWriteDatastoreItems-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkWriteDatastoreItems-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkWriteDatastoreItems-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkWriteDatastoreItems-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Response after successfully inserting multiple items into a datastore, containing the identifiers of the created items.
-Expand All
 Field
 Type
 Description
-data [*required*]
+data [_required_]
 [object]
 An array of data objects containing the identifiers of the successfully inserted items.
 id
 string
 The unique identifier assigned to the inserted item.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": [
-{
-"id": "string",
-"type": "items"
+  "data": [
+    {
+      "id": "string",
+      "type": "items"
+    }
+  ]
 }
-]
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -4637,29 +4046,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -4688,74 +4101,91 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Bulk write datastore items returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
+
+#####  Bulk write datastore items returns "OK" response
+Copy
+```
+                          # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"values": [
-{
-"id": "cust_3141",
-"name": "Johnathan"
-},
-{
-"id": "cust_3142",
-"name": "Mary"
+  "data": {
+    "attributes": {
+      "values": [
+        {
+          "id": "cust_3141",
+          "name": "Johnathan"
+        },
+        {
+          "id": "cust_3142",
+          "name": "Mary"
+        }
+      ]
+    },
+    "type": "items"
+  }
 }
-]
-},
-"type": "items"
-}
-}
-EOF
+EOF  
 
+                        
 ```
-Bulk write datastore items returns "OK" response```
+
+#####  Bulk write datastore items returns "OK" response
+```
 // Bulk write datastore items returns "OK" response
 
 package main
@@ -4779,11 +4209,11 @@ func main() {
 			Attributes: &datadogV2.BulkPutAppsDatastoreItemsRequestDataAttributes{
 				Values: []map[string]interface{}{
 					{
-						"id": "cust_3141",
+						"id":   "cust_3141",
 						"name": "Johnathan",
 					},
 					{
-						"id": "cust_3142",
+						"id":   "cust_3142",
 						"name": "Mary",
 					},
 				},
@@ -4802,16 +4232,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkWriteDatastoreItems`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Bulk write datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Bulk write datastore items returns "OK" response
+```
 // Bulk write datastore items returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -4826,48 +4265,57 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-BulkPutAppsDatastoreItemsRequest body =
-new BulkPutAppsDatastoreItemsRequest()
-.data(
-new BulkPutAppsDatastoreItemsRequestData()
-.attributes(
-new BulkPutAppsDatastoreItemsRequestDataAttributes()
-.values(
-Arrays.asList(
-Map.ofEntries(
-Map.entry("id", "cust_3141"),
-Map.entry("name", "Johnathan")),
-Map.ofEntries(
-Map.entry("id", "cust_3142"), Map.entry("name", "Mary")))))
-.type(DatastoreItemsDataType.ITEMS));
+    BulkPutAppsDatastoreItemsRequest body =
+        new BulkPutAppsDatastoreItemsRequest()
+            .data(
+                new BulkPutAppsDatastoreItemsRequestData()
+                    .attributes(
+                        new BulkPutAppsDatastoreItemsRequestDataAttributes()
+                            .values(
+                                Arrays.asList(
+                                    Map.ofEntries(
+                                        Map.entry("id", "cust_3141"),
+                                        Map.entry("name", "Johnathan")),
+                                    Map.ofEntries(
+                                        Map.entry("id", "cust_3142"), Map.entry("name", "Mary")))))
+                    .type(DatastoreItemsDataType.ITEMS));
 
-try {
-PutAppsDatastoreItemResponseArray result =
-apiInstance.bulkWriteDatastoreItems(DATASTORE_DATA_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#bulkWriteDatastoreItems");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      PutAppsDatastoreItemResponseArray result =
+          apiInstance.bulkWriteDatastoreItems(DATASTORE_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#bulkWriteDatastoreItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Bulk write datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Bulk write datastore items returns "OK" response
+```
 """
 Bulk write datastore items returns "OK" response
 """
@@ -4878,7 +4326,7 @@ from datadog_api_client.v2.api.actions_datastores_api import ActionsDatastoresAp
 from datadog_api_client.v2.model.bulk_put_apps_datastore_items_request import BulkPutAppsDatastoreItemsRequest
 from datadog_api_client.v2.model.bulk_put_apps_datastore_items_request_data import BulkPutAppsDatastoreItemsRequestData
 from datadog_api_client.v2.model.bulk_put_apps_datastore_items_request_data_attributes import (
-BulkPutAppsDatastoreItemsRequestDataAttributes,
+    BulkPutAppsDatastoreItemsRequestDataAttributes,
 )
 from datadog_api_client.v2.model.datastore_items_data_type import DatastoreItemsDataType
 
@@ -4886,30 +4334,39 @@ from datadog_api_client.v2.model.datastore_items_data_type import DatastoreItems
 DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 body = BulkPutAppsDatastoreItemsRequest(
-data=BulkPutAppsDatastoreItemsRequestData(
-attributes=BulkPutAppsDatastoreItemsRequestDataAttributes(
-values=[
-dict([("id", "cust_3141"), ("name", "Johnathan")]),
-dict([("id", "cust_3142"), ("name", "Mary")]),
-],
-),
-type=DatastoreItemsDataType.ITEMS,
-),
+    data=BulkPutAppsDatastoreItemsRequestData(
+        attributes=BulkPutAppsDatastoreItemsRequestDataAttributes(
+            values=[
+                dict([("id", "cust_3141"), ("name", "Johnathan")]),
+                dict([("id", "cust_3142"), ("name", "Mary")]),
+            ],
+        ),
+        type=DatastoreItemsDataType.ITEMS,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.bulk_write_datastore_items(datastore_id=DATASTORE_DATA_ID, body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.bulk_write_datastore_items(datastore_id=DATASTORE_DATA_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Bulk write datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Bulk write datastore items returns "OK" response
+```
 # Bulk write datastore items returns "OK" response
 
 require "datadog_api_client"
@@ -4919,28 +4376,37 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 
 body = DatadogAPIClient::V2::BulkPutAppsDatastoreItemsRequest.new({
-data: DatadogAPIClient::V2::BulkPutAppsDatastoreItemsRequestData.new({
-attributes: DatadogAPIClient::V2::BulkPutAppsDatastoreItemsRequestDataAttributes.new({
-values: [
-{
-"id": "cust_3141", "name": "Johnathan",
-},
-{
-"id": "cust_3142", "name": "Mary",
-},
-],
-}),
-type: DatadogAPIClient::V2::DatastoreItemsDataType::ITEMS,
-}),
+  data: DatadogAPIClient::V2::BulkPutAppsDatastoreItemsRequestData.new({
+    attributes: DatadogAPIClient::V2::BulkPutAppsDatastoreItemsRequestDataAttributes.new({
+      values: [
+        {
+          "id": "cust_3141", "name": "Johnathan",
+        },
+        {
+          "id": "cust_3142", "name": "Mary",
+        },
+      ],
+    }),
+    type: DatadogAPIClient::V2::DatastoreItemsDataType::ITEMS,
+  }),
 })
 p api_instance.bulk_write_datastore_items(DATASTORE_DATA_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Bulk write datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Bulk write datastore items returns "OK" response
+```
 // Bulk write datastore items returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -4953,43 +4419,52 @@ use std::collections::BTreeMap;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let body = BulkPutAppsDatastoreItemsRequest::new().data(
-BulkPutAppsDatastoreItemsRequestData::new(DatastoreItemsDataType::ITEMS).attributes(
-BulkPutAppsDatastoreItemsRequestDataAttributes::new(vec![
-BTreeMap::from([
-("id".to_string(), Value::from("cust_3141")),
-("name".to_string(), Value::from("Johnathan")),
-]),
-BTreeMap::from([
-("id".to_string(), Value::from("cust_3142")),
-("name".to_string(), Value::from("Mary")),
-]),
-]),
-),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api
-.bulk_write_datastore_items(datastore_data_id.clone(), body)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let body = BulkPutAppsDatastoreItemsRequest::new().data(
+        BulkPutAppsDatastoreItemsRequestData::new(DatastoreItemsDataType::ITEMS).attributes(
+            BulkPutAppsDatastoreItemsRequestDataAttributes::new(vec![
+                BTreeMap::from([
+                    ("id".to_string(), Value::from("cust_3141")),
+                    ("name".to_string(), Value::from("Johnathan")),
+                ]),
+                BTreeMap::from([
+                    ("id".to_string(), Value::from("cust_3142")),
+                    ("name".to_string(), Value::from("Mary")),
+                ]),
+            ]),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api
+        .bulk_write_datastore_items(datastore_data_id.clone(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Bulk write datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Bulk write datastore items returns "OK" response
+```
 /**
-* Bulk write datastore items returns "OK" response
-*/
+ * Bulk write datastore items returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -5000,52 +4475,70 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiBulkWriteDatastoreItemsRequest = {
-body: {
-data: {
-attributes: {
-values: [
-{
-id: "cust_3141",
-name: "Johnathan",
-},
-{
-id: "cust_3142",
-name: "Mary",
-},
-],
-},
-type: "items",
-},
-},
-datastoreId: DATASTORE_DATA_ID,
+  body: {
+    data: {
+      attributes: {
+        values: [
+          {
+            id: "cust_3141",
+            name: "Johnathan",
+          },
+          {
+            id: "cust_3142",
+            name: "Mary",
+          },
+        ],
+      },
+      type: "items",
+    },
+  },
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.bulkWriteDatastoreItems(params)
-.then((data: v2.PutAppsDatastoreItemResponseArray) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .bulkWriteDatastoreItems(params)
+  .then((data: v2.PutAppsDatastoreItemResponseArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```## Bulk delete datastore items- v2 (latest)
-DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulk
-### OverviewDeletes multiple items from a datastore by their keys in a single operation.
-This endpoint requires the `apps_datastore_write` permission.### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Bulk delete datastore items](https://docs.datadoghq.com/api/latest/actions-datastores/#bulk-delete-datastore-items)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/actions-datastores/#bulk-delete-datastore-items-v2)
+
+
+DELETE https://api.ap1.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ap2.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.eu/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.ddog-gov.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us3.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulkhttps://api.us5.datadoghq.com/api/v2/actions-datastores/{datastore_id}/items/bulk
+### Overview
+Deletes multiple items from a datastore by their keys in a single operation. This endpoint requires the `apps_datastore_write` permission.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-datastore_id [*required*]
+datastore_id [_required_]
 string
 The ID of the datastore.
-### Request#### Body Data (required)
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 Field
 Type
 Description
@@ -5061,62 +4554,73 @@ List of primary keys identifying items to delete from datastore. Up to 100 items
 id
 string
 ID for the datastore of the items to delete.
-type [*required*]
+type [_required_]
 enum
-Items resource type.
-Allowed enum values: `items`default: `items`
+Items resource type. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": {
-"attributes": {
-"item_keys": [
-"test-key"
-]
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_keys": [
+        "test-key"
+      ]
+    },
+    "type": "items"
+  }
 }
-}
-```### Response- 200
-- 400
-- 404
-- 429
-- 500
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkDeleteDatastoreItems-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkDeleteDatastoreItems-400-v2)
+  * [404](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkDeleteDatastoreItems-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkDeleteDatastoreItems-429-v2)
+  * [500](https://docs.datadoghq.com/api/latest/actions-datastores/#BulkDeleteDatastoreItems-500-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 The definition of `DeleteAppsDatastoreItemResponseArray` object.
-Expand All
 Field
 Type
 Description
-data [*required*]
+data [_required_]
 [object]
 The `DeleteAppsDatastoreItemResponseArray` `data`.
 id
 string
 The unique identifier of the item that was deleted.
-type [*required*]
+type [_required_]
 enum
-The resource type for datastore items.
-Allowed enum values: `items`default: `items`
+The resource type for datastore items. Allowed enum values: `items`
+default: `items`
 ```
 {
-"data": [
-{
-"id": "string",
-"type": "items"
+  "data": [
+    {
+      "id": "string",
+      "type": "items"
+    }
+  ]
 }
-]
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -5145,29 +4649,33 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Not Found
-- Model
-- Example
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -5196,46 +4704,55 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 A list of errors.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Internal Server Error
-- Model
-- Example
+```
+
+Copy
+Internal Server Error
+  * [Model](https://docs.datadoghq.com/api/latest/actions-datastores/)
+  * [Example](https://docs.datadoghq.com/api/latest/actions-datastores/)
+
+
 API error response.
-Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [object]
 A list of errors.
 detail
@@ -5264,50 +4781,62 @@ string
 Short human-readable summary of the error.
 ```
 {
-"errors": [
-{
-"detail": "Missing required attribute in body",
-"meta": {},
-"source": {
-"header": "Authorization",
-"parameter": "limit",
-"pointer": "/data/attributes/title"
-},
-"status": "400",
-"title": "Bad Request"
+  "errors": [
+    {
+      "detail": "Missing required attribute in body",
+      "meta": {},
+      "source": {
+        "header": "Authorization",
+        "parameter": "limit",
+        "pointer": "/data/attributes/title"
+      },
+      "status": "400",
+      "title": "Bad Request"
+    }
+  ]
 }
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
+```
 
-Bulk delete datastore items returns "OK" responseCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/actions-datastores/?code-lang=typescript)
 
-# Path parametersexport datastore_id="CHANGE_ME"# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
+
+#####  Bulk delete datastore items returns "OK" response
+Copy
+```
+                          # Path parameters  
+export datastore_id="CHANGE_ME"  
+# Curl command  
+curl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"item_keys": [
-"test-key"
-]
-},
-"type": "items"
+  "data": {
+    "attributes": {
+      "item_keys": [
+        "test-key"
+      ]
+    },
+    "type": "items"
+  }
 }
-}
-EOF
+EOF  
 
+                        
 ```
-Bulk delete datastore items returns "OK" response```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 // Bulk delete datastore items returns "OK" response
 
 package main
@@ -5347,16 +4876,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkDeleteDatastoreItems`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Bulk delete datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+
+
+```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 // Bulk delete datastore items returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -5370,42 +4908,51 @@ import com.datadog.api.client.v2.model.DeleteAppsDatastoreItemResponseArray;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ActionsDatastoresApi apiInstance = new ActionsDatastoresApi(defaultClient);
 
-// there is a valid "datastore" in the system
-String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
+    // there is a valid "datastore" in the system
+    String DATASTORE_DATA_ID = System.getenv("DATASTORE_DATA_ID");
 
-BulkDeleteAppsDatastoreItemsRequest body =
-new BulkDeleteAppsDatastoreItemsRequest()
-.data(
-new BulkDeleteAppsDatastoreItemsRequestData()
-.attributes(
-new BulkDeleteAppsDatastoreItemsRequestDataAttributes()
-.itemKeys(Collections.singletonList("test-key")))
-.type(BulkDeleteAppsDatastoreItemsRequestDataType.ITEMS));
+    BulkDeleteAppsDatastoreItemsRequest body =
+        new BulkDeleteAppsDatastoreItemsRequest()
+            .data(
+                new BulkDeleteAppsDatastoreItemsRequestData()
+                    .attributes(
+                        new BulkDeleteAppsDatastoreItemsRequestDataAttributes()
+                            .itemKeys(Collections.singletonList("test-key")))
+                    .type(BulkDeleteAppsDatastoreItemsRequestDataType.ITEMS));
 
-try {
-DeleteAppsDatastoreItemResponseArray result =
-apiInstance.bulkDeleteDatastoreItems(DATASTORE_DATA_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ActionsDatastoresApi#bulkDeleteDatastoreItems");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      DeleteAppsDatastoreItemResponseArray result =
+          apiInstance.bulkDeleteDatastoreItems(DATASTORE_DATA_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ActionsDatastoresApi#bulkDeleteDatastoreItems");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Bulk delete datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+
+
+```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 """
 Bulk delete datastore items returns "OK" response
 """
@@ -5415,42 +4962,51 @@ from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.actions_datastores_api import ActionsDatastoresApi
 from datadog_api_client.v2.model.bulk_delete_apps_datastore_items_request import BulkDeleteAppsDatastoreItemsRequest
 from datadog_api_client.v2.model.bulk_delete_apps_datastore_items_request_data import (
-BulkDeleteAppsDatastoreItemsRequestData,
+    BulkDeleteAppsDatastoreItemsRequestData,
 )
 from datadog_api_client.v2.model.bulk_delete_apps_datastore_items_request_data_attributes import (
-BulkDeleteAppsDatastoreItemsRequestDataAttributes,
+    BulkDeleteAppsDatastoreItemsRequestDataAttributes,
 )
 from datadog_api_client.v2.model.bulk_delete_apps_datastore_items_request_data_type import (
-BulkDeleteAppsDatastoreItemsRequestDataType,
+    BulkDeleteAppsDatastoreItemsRequestDataType,
 )
 
 # there is a valid "datastore" in the system
 DATASTORE_DATA_ID = environ["DATASTORE_DATA_ID"]
 
 body = BulkDeleteAppsDatastoreItemsRequest(
-data=BulkDeleteAppsDatastoreItemsRequestData(
-attributes=BulkDeleteAppsDatastoreItemsRequestDataAttributes(
-item_keys=[
-"test-key",
-],
-),
-type=BulkDeleteAppsDatastoreItemsRequestDataType.ITEMS,
-),
+    data=BulkDeleteAppsDatastoreItemsRequestData(
+        attributes=BulkDeleteAppsDatastoreItemsRequestDataAttributes(
+            item_keys=[
+                "test-key",
+            ],
+        ),
+        type=BulkDeleteAppsDatastoreItemsRequestDataType.ITEMS,
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ActionsDatastoresApi(api_client)
-response = api_instance.bulk_delete_datastore_items(datastore_id=DATASTORE_DATA_ID, body=body)
+    api_instance = ActionsDatastoresApi(api_client)
+    response = api_instance.bulk_delete_datastore_items(datastore_id=DATASTORE_DATA_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Bulk delete datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+
+
+```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 # Bulk delete datastore items returns "OK" response
 
 require "datadog_api_client"
@@ -5460,23 +5016,32 @@ api_instance = DatadogAPIClient::V2::ActionsDatastoresAPI.new
 DATASTORE_DATA_ID = ENV["DATASTORE_DATA_ID"]
 
 body = DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequest.new({
-data: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestData.new({
-attributes: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestDataAttributes.new({
-item_keys: [
-"test-key",
-],
-}),
-type: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestDataType::ITEMS,
-}),
+  data: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestData.new({
+    attributes: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestDataAttributes.new({
+      item_keys: [
+        "test-key",
+      ],
+    }),
+    type: DatadogAPIClient::V2::BulkDeleteAppsDatastoreItemsRequestDataType::ITEMS,
+  }),
 })
 p api_instance.bulk_delete_datastore_items(DATASTORE_DATA_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Bulk delete datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+
+
+```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 // Bulk delete datastore items returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_actions_datastores::ActionsDatastoresAPI;
@@ -5487,38 +5052,47 @@ use datadog_api_client::datadogV2::model::BulkDeleteAppsDatastoreItemsRequestDat
 
 #[tokio::main]
 async fn main() {
-// there is a valid "datastore" in the system
-let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
-let body = BulkDeleteAppsDatastoreItemsRequest::new().data(
-BulkDeleteAppsDatastoreItemsRequestData::new(
-BulkDeleteAppsDatastoreItemsRequestDataType::ITEMS,
-)
-.attributes(
-BulkDeleteAppsDatastoreItemsRequestDataAttributes::new()
-.item_keys(vec!["test-key".to_string()]),
-),
-);
-let configuration = datadog::Configuration::new();
-let api = ActionsDatastoresAPI::with_config(configuration);
-let resp = api
-.bulk_delete_datastore_items(datastore_data_id.clone(), body)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "datastore" in the system
+    let datastore_data_id = std::env::var("DATASTORE_DATA_ID").unwrap();
+    let body = BulkDeleteAppsDatastoreItemsRequest::new().data(
+        BulkDeleteAppsDatastoreItemsRequestData::new(
+            BulkDeleteAppsDatastoreItemsRequestDataType::ITEMS,
+        )
+        .attributes(
+            BulkDeleteAppsDatastoreItemsRequestDataAttributes::new()
+                .item_keys(vec!["test-key".to_string()]),
+        ),
+    );
+    let configuration = datadog::Configuration::new();
+    let api = ActionsDatastoresAPI::with_config(configuration);
+    let resp = api
+        .bulk_delete_datastore_items(datastore_data_id.clone(), body)
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Bulk delete datastore items returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+
+
+```
+
+#####  Bulk delete datastore items returns "OK" response
+```
 /**
-* Bulk delete datastore items returns "OK" response
-*/
+ * Bulk delete datastore items returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -5529,28 +5103,39 @@ const apiInstance = new v2.ActionsDatastoresApi(configuration);
 const DATASTORE_DATA_ID = process.env.DATASTORE_DATA_ID as string;
 
 const params: v2.ActionsDatastoresApiBulkDeleteDatastoreItemsRequest = {
-body: {
-data: {
-attributes: {
-itemKeys: ["test-key"],
-},
-type: "items",
-},
-},
-datastoreId: DATASTORE_DATA_ID,
+  body: {
+    data: {
+      attributes: {
+        itemKeys: ["test-key"],
+      },
+      type: "items",
+    },
+  },
+  datastoreId: DATASTORE_DATA_ID,
 };
 
 apiInstance
-.bulkDeleteDatastoreItems(params)
-.then((data: v2.DeleteAppsDatastoreItemResponseArray) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .bulkDeleteDatastoreItems(params)
+  .then((data: v2.DeleteAppsDatastoreItemResponseArray) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"`
-```###### Request a personalized demo×##### Get Started with Datadog
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+![](https://t.co/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=2267ae36-4a94-47fe-a15d-f43c193f4c76&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=ed719aba-8d27-4a1b-88da-57c8241899fe&pt=Actions%20Datastores&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Factions-datastores%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://analytics.twitter.com/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=2267ae36-4a94-47fe-a15d-f43c193f4c76&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=ed719aba-8d27-4a1b-88da-57c8241899fe&pt=Actions%20Datastores&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Factions-datastores%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://id.rlcdn.com/464526.gif)
+![](https://bat.bing.com/action/0?ti=4061438&Ver=2&mid=ed1ca886-31e3-460f-a068-d49795a8d454&bo=2&sid=c5e1b530f0be11f0ae1ff1e6f8e56999&vid=c5e22300f0be11f08910977dd913337a&vids=1&msclkid=N&pi=918639831&lg=en-US&sw=1080&sh=600&sc=24&tl=Actions%20Datastores&p=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Factions-datastores%2F&r=&lt=2049&evt=pageLoad&sv=2&asc=G&cdb=AQAS&rn=910934)

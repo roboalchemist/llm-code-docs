@@ -1,1558 +1,227 @@
-Service Level ObjectivesRead the 2025 State of Containers and Serverless Report!
-Read the State of Containers and Serverless Report!
+# Source: https://docs.datadoghq.com/api/latest/service-level-objectives
 
-Home
+# Service Level Objectives
+[Service Level Objectives](https://docs.datadoghq.com/monitors/service_level_objectives/#configuration) (or SLOs) are a key part of the site reliability engineering toolkit. SLOs provide a framework for defining clear targets around application performance, which ultimately help teams provide a consistent customer experience, balance feature development with platform stability, and improve communication with internal and external users.
+## [Create an SLO object](https://docs.datadoghq.com/api/latest/service-level-objectives/#create-an-slo-object)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#create-an-slo-object-v1)
 
-Docs
 
-API- 
-- Agent
-- API
-- APM Tracing
-- ContainersAutodiscovery
-- Datadog Operator
-- Dashboards
-- Database Monitoring
-- Datadog
-- Datadog Site
-- DevSecOps
-- Incident Management
-- IntegrationsAWS
-- Azure
-- Google Cloud
-- Terraform
-- Internal Developer Portal
-- Logs
-- Monitors
-- Notebooks
-- OpenTelemetry
-- Profiler
-- SearchProduct-Specific Search
-- Session Replay
-- SecurityApp and API Protection
-- Cloud Security
-- Cloud SIEM
-- Code Security
-- Serverless for AWS Lambda
-- Software DeliveryCI Visibility
-- Feature Flags
-- Test Optimization
-- Test Impact Analysis
-- Synthetic Monitoring and TestingAPI Tests
-- Browser Tests
-- Mobile App Tests
-- Continuous Testing
-- Private Locations
-- TagsAssigning Tags
-- Unified Service Tagging
-- Using Tags
-- Workflow Automation
-- Learning Center
-- Support
-- 
-- 
-- 
-- Architecture
-- IoT
-- Supported PlatformsAIX
-- Linux
-- Ansible
-- Chef
-- Heroku
-- MacOS
-- Puppet
-- SaltStack
-- SCCM
-- Windows
-- From Source
-- Log CollectionLog Agent tags
-- Advanced Configurations
-- Proxy
-- Transport
-- Multi-Line Detection
-- ConfigurationCommands
-- Configuration Files
-- Log Files
-- Status Page
-- Network Traffic
-- Proxy Configuration
-- FIPS Compliance
-- Dual Shipping
-- Secrets Management
-- Fleet AutomationRemote Agent Management
-- TroubleshootingContainer Hostname Detection
-- Debug Mode
-- Agent Flare
-- Agent Check Status
-- NTP Issues
-- Permission Issues
-- Integrations Issues
-- Site Issues
-- Autodiscovery Issues
-- Windows Container Issues
-- Agent Runtime Configuration
-- High CPU or Memory Consumption
-- Guides
-- Data Security
-- Guides
-- AuthorizationOAuth2 in Datadog
-- Authorization Endpoints
-- DogStatsDDatagram Format
-- Unix Domain Socket
-- High Throughput Data
-- Data Aggregation
-- DogStatsD Mapper
-- Custom ChecksWriting a Custom Agent Check
-- Writing a Custom OpenMetrics Check
-- IntegrationsBuild an Integration with Datadog
-- Create an Agent-based Integration
-- Create an API-based Integration
-- Create a Log Pipeline
-- Integration Assets Reference
-- Build a Marketplace Offering
-- Create an Integration Dashboard
-- Create a Monitor Template
-- Create a Cloud SIEM Detection Rule
-- Install Agent Integration Developer Tool
-- Service ChecksSubmission - Agent Check
-- Submission - DogStatsD
-- Submission - API
-- IDE PluginsJetBrains IDEs
-- VS Code & Cursor
-- CommunityLibraries
-- Guides
-- Getting StartedDatadog Example Application
-- OpenTelemetry Demo Application
-- Feature Compatibility
-- Instrument Your ApplicationsOTel SDKs
-- OTel APIs with Datadog SDKs
-- OTel Instrumentation Libraries
-- Configuration
-- Send Data to DatadogDDOT Collector (Recommended)
-- Other Setup Options
-- Semantic MappingResource Attribute Mapping
-- Metrics Mapping
-- Infrastructure Host Mapping
-- Hostname Mapping
-- Service-entry Spans Mapping
-- Ingestion Sampling
-- Correlate DataLogs and Traces
-- Metrics and Traces
-- RUM and Traces
-- DBM and Traces
-- IntegrationsApache Metrics
-- Apache Spark Metrics
-- Collector Health Metrics
-- Datadog Extension
-- Docker Metrics
-- HAProxy Metrics
-- Host Metrics
-- IIS Metrics
-- Kafka Metrics
-- Kubernetes Metrics
-- MySQL Metrics
-- NGINX Metrics
-- Podman Metrics
-- Runtime Metrics
-- Trace Metrics
-- Troubleshooting
-- Guides and ResourcesProduce Delta Temporality Metrics
-- Visualize Histograms as Heatmaps
-- Migration Guides
-- ReferenceTerms and Concepts
-- Trace Context Propagation
-- Trace IDs
-- OTLP Metric Types
-- Getting Started
-- Plan
-- Build
-- Run
-- 
-- 
-- Enterprise Configuration
-- Datadog for Intune
-- Shortcut Configurations
-- Push Notifications
-- Widgets
-- Guides
-- Data Directory
-- Troubleshooting
-- Install
-- Using CoTerm
-- Configuration Rules
-- 
-- Getting Started
-- Account Management
-- Components: Common
-- Components: Azure
-- Components: AWS
-- Advanced
-- FAQ
-- APIAWS Accounts
-- Azure Accounts
-- Blueprints
-- Budgets
-- Teams
-- Users
-- Configure
-- Dashboard List
-- WidgetsConfiguration
-- Widget Types
-- Querying
-- FunctionsAlgorithms
-- Arithmetic
-- Count
-- Exclusion
-- Interpolation
-- Rank
-- Rate
-- Regression
-- Rollup
-- Smoothing
-- Timeshift
-- Beta
-- Graph InsightsMetric Correlations
-- Watchdog Explains
-- Template Variables
-- Overlays
-- Annotations
-- Guides
-- SharingShared Dashboards
-- Share Graphs
-- Scheduled Reports
-- Analysis FeaturesGetting Started
-- Guides
-- 
-- 
-- Functions and Operators
-- Guides
-- Draft Monitors
-- Configure Monitors
-- Monitor Templates
-- Monitor TypesHost
-- Metric
-- Analysis
-- Anomaly
-- APM
-- Audit Trail
-- Change
-- CI/CD & Test
-- Cloud Cost
-- Composite
-- Database Monitoring
-- Error Tracking
-- Event
-- Forecast
-- Integration
-- Live Process
-- Logs
-- Network
-- Cloud Network Monitoring
-- NetFlow
-- Outlier
-- Process Check
-- Real User Monitoring
-- Service Check
-- SLO Alerts
-- Synthetic Monitoring
-- Watchdog
-- NotificationsNotification Rules
-- Variables
-- DowntimesExamples
-- Manage MonitorsSearch Monitors
-- Check Summary
-- Monitor StatusStatus Graphs
-- Status Events
-- Monitor Settings
-- Monitor Quality
-- Guides
-- Monitor-based SLOs
-- Metric-based SLOs
-- Time Slice SLOs
-- Error Budget Alerts
-- Burn Rate Alerts
-- Guides
-- Custom MetricsMetric Type Modifiers
-- Historical Metrics Ingestion
-- Submission - Agent Check
-- Submission - DogStatsD
-- Submission - Powershell
-- Submission - API
-- OpenTelemetry MetricsOTLP Metric Types
-- Query OpenTelemetry Metrics
-- Metrics Types
-- Distributions
-- Overview
-- ExplorerMetrics Units
-- Summary
-- Volume
-- Advanced Filtering
-- Nested Queries
-- Composite Metrics Queries
-- Derived Metrics
-- Metrics Without Limits™
-- Guides
-- Alerts
-- Impact Analysis
-- RCA
-- Insights
-- Faulty Deployment Detection
-- Faulty Cloud & SaaS API Detection
-- Bits AI SREInvestigate issues
-- Remediate issues
-- Bits AI SRE integrations and settings
-- Help Bits learn
-- Chat with Bits AI SRE
-- Bits AI Dev AgentSetup
-- Chat with Bits AI
-- MCP Server
-- Software CatalogSet Up
-- Entity Model
-- Troubleshooting
-- ScorecardsScorecard Configuration
-- Custom Rules
-- Using Scorecards
-- Self-Service ActionsSoftware Templates
-- Engineering ReportsReliability Overview
-- Scorecards Performance
-- DORA Metrics
-- Custom Reports
-- Developer Homepage
-- Campaigns
-- External Provider Status
-- Plugins
-- Integrations
-- Use CasesAPI Management
-- Cloud Cost Management
-- App and API Protection
-- Developer Onboarding
-- Dependency Management
-- Production Readiness
-- Incident Response
-- CI Pipeline Visibility
-- Onboarding Guide
-- Explorer
-- Issue States
-- Regression Detection
-- Suspected Causes
-- Error Grouping
-- Bits AI Dev Agent
-- Monitors
-- Issue Correlation
-- Identify Suspect Commits
-- Auto Assign
-- Issue Team Ownership
-- Track Browser and Mobile ErrorsBrowser Error Tracking
-- Collecting Browser Errors
-- Mobile Crash Tracking
-- Replay Errors
-- Real User Monitoring
-- Logs
-- Track Backend ErrorsGetting Started
-- Exception Replay
-- Capturing Handled Errors
-- APM
-- Logs
-- Manage Data Collection
-- Troubleshooting
-- Guides
-- Feature Flags
-- Ingest Events
-- Pipelines and ProcessorsAggregation Key Processor
-- Arithmetic Processor
-- Date Remapper
-- Category Processor
-- Grok Parser
-- Lookup Processor
-- Remapper
-- Service Remapper
-- Status Remapper
-- String Builder Processor
-- ExplorerSearching
-- Navigate the Explorer
-- Customization
-- Facets
-- Attributes
-- Notifications
-- Analytics
-- Saved Views
-- Triage Inbox
-- CorrelationConfiguration
-- Triaging & Notifying
-- Analytics
-- Guides
-- Declare an Incident
-- Describe an Incident
-- Response Team
-- Notification
-- Investigate an IncidentTimeline
-- Follow-ups
-- Incident AI
-- Incident SettingsInformation
-- Property Fields
-- Responder Types
-- Integrations
-- Notification Rules
-- Templates
-- Incident Analytics
-- IntegrationsSlack
-- Microsoft Teams
-- Jira
-- ServiceNow
-- Status Pages
-- Atlassian Statuspage
-- Datadog Clipboard
-- Onboard a Team
-- Trigger a PageLive Call Routing
-- Routing Rules
-- Escalation Policies
-- Schedules
-- Automations
-- Profile Settings
-- Guides
-- 
-- ProjectsSettings
-- Create a Case
-- Customization
-- View and Manage Cases
-- Notifications and Integrations
-- Case Automation Rules
-- Troubleshooting
-- 
-- Build Workflows
-- Access and Authentication
-- Trigger Workflows
-- Variables and parameters
-- ActionsWorkflow Logic
-- Save and Reuse Actions
-- Test and Debug
-- JavaScript Expressions
-- Track Workflows
-- Limits
-- Build Apps
-- Access and Authentication
-- Queries
-- Variables
-- Events
-- ComponentsCustom Charts
-- React Renderer
-- Tables
-- Reusable Modules
-- JavaScript Expressions
-- Embedded AppsInput Parameters
-- Save and Reuse Actions
-- Create and Manage Datastores
-- Use Datastores with Apps and Workflows
-- Automation Rules
-- Access and Authentication
-- 
-- ConnectionsAWS Integration
-- HTTP Request
-- Private ActionsUse Private Actions
-- Run a Script
-- Update the Private Action Runner
-- Private Action Credentials
-- OverlaysInfrastructure
-- Observability
-- Security
-- Cloud Cost Management
-- Cloud Resources Schema
-- Policies
-- Resource Changes
-- Setup
-- Guides
-- Setup
-- Host List
-- Monitoring ContainersConfiguration
-- Container Images View
-- Orchestrator Explorer
-- Kubernetes Resource Utilization
-- Kubernetes Autoscaling
-- Amazon Elastic Container Explorer
-- Autoscaling
-- Docker and other runtimesAPM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus
-- Data Collected
-- KubernetesInstallation
-- Further Configuration
-- Distributions
-- APM
-- Log collection
-- Tag extraction
-- Integrations
-- Prometheus & OpenMetrics
-- Control plane monitoring
-- Data collected
-- kubectl Plugin
-- Datadog CSI Driver
-- Data security
-- Cluster AgentSetup
-- Commands & Options
-- Cluster Checks
-- Endpoint Checks
-- Admission Controller
-- Amazon ECSAPM
-- Log collection
-- Tag extraction
-- Data collected
-- Managed Instances
-- AWS Fargate with ECS
-- Datadog OperatorAdvanced Install
-- Configuration
-- Custom Checks
-- Data Collected
-- Secret Management
-- DatadogDashboard CRD
-- DatadogMonitor CRD
-- DatadogSLO CRD
-- TroubleshootingDuplicate hosts
-- Cluster Agent
-- Cluster Checks
-- HPA and Metrics Provider
-- Admission Controller
-- Log Collection
-- Guides
-- Increase Process Retention
-- AWS LambdaInstrumentation
-- Managed Instances
-- Lambda Metrics
-- Distributed Tracing
-- Log Collection
-- Remote Instrumentation
-- Advanced Configuration
-- Continuous Profiler
-- Securing Functions
-- Deployment Tracking
-- OpenTelemetry
-- Troubleshooting
-- Lambda Web Adapter
-- FIPS Compliance
-- AWS Step FunctionsInstallation
-- Merge Step Functions and Lambda Traces
-- Enhanced Metrics
-- Redrive Executions
-- Distributed Map States
-- Troubleshooting
-- AWS Fargate
-- Azure App ServiceLinux - Code
-- Linux - Container
-- Windows - Code
-- Azure Container AppsIn-Container
-- Sidecar
-- Azure Functions
-- Google Cloud RunContainers
-- Functions
-- Functions (1st generation)
-- Libraries & Integrations
-- Glossary
-- Guides
-- Cloud Network MonitoringSetup
-- Network Health
-- Network Analytics
-- Network Map
-- Guides
-- Supported Cloud Services
-- Terms and Concepts
-- DNS Monitoring
-- Network Device MonitoringSetup
-- Integrations
-- Profiles
-- Configuration Management
-- Maps
-- SNMP Metrics Reference
-- Troubleshooting
-- Guides
-- Terms and Concepts
-- NetFlow MonitoringMonitors
-- Network PathSetup
-- List View
-- Path View
-- Guides
-- Terms and Concepts
-- Amazon S3
-- Google Cloud Storage
-- Azure Blob Storage
-- Datadog Costs
-- SetupAWS
-- Azure
-- Google Cloud
-- Oracle
-- SaaS Integrations
-- Custom
-- TagsTag Explorer
-- Multisource Querying
-- AllocationTag Pipelines
-- Container Cost Allocation
-- BigQuery Costs
-- Custom Allocation Rules
-- ReportingExplorer
-- Scheduled Reports
-- RecommendationsCustom Recommendations
-- PlanningBudgets
-- Commitment Programs
-- Cost ChangesMonitors
-- Anomalies
-- Real-Time Costs
-- APM Terms and Concepts
-- Application InstrumentationSingle Step Instrumentation
-- Manually managed SDKs
-- Code-based Custom Instrumentation
-- Dynamic Instrumentation
-- Library Compatibility
-- Library Configuration
-- Configuration at Runtime
-- Trace Context Propagation
-- Serverless Application Tracing
-- Proxy Tracing
-- Span Tag Semantics
-- Span Links
-- APM Metrics CollectionTrace Metrics
-- Runtime Metrics
-- Trace Pipeline ConfigurationIngestion Mechanisms
-- Ingestion Controls
-- Adaptive Sampling
-- Generate Metrics
-- Trace Retention
-- Usage Metrics
-- Correlate Traces with Other TelemetryCorrelate DBM and Traces
-- Correlate Logs and Traces
-- Correlate RUM and Traces
-- Correlate Synthetics and Traces
-- Correlate Profiles and Traces
-- Trace ExplorerSearch Spans
-- Query Syntax
-- Trace Queries
-- Span Tags and Attributes
-- Span Visualizations
-- Trace View
-- Tag Analysis
-- Recommendations
-- Code Origin for Spans
-- Service ObservabilitySoftware Catalog
-- Service Page
-- Resource Page
-- Deployment Tracking
-- Service Map
-- Inferred Services
-- Remapping Rules for Inferred Entities
-- Service Remapping Rules
-- Service Override Removal
-- APM Monitors
-- Endpoint ObservabilityExplore Endpoints
-- Monitor Endpoints
-- Live Debugger
-- Error TrackingIssue States
-- Error Tracking Explorer
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Exception Replay
-- Troubleshooting
-- Data Security
-- Guides
-- TroubleshootingAgent Rate Limits
-- Agent APM metrics
-- Agent Resource Usage
-- Correlated Logs
-- PHP 5 Deep Call Stacks
-- .NET diagnostic tool
-- APM Quantization
-- Go Compile-Time Instrumentation
-- Tracer Startup Logs
-- Tracer Debug Logs
-- Connection Errors
-- Enabling the ProfilerSupported Language and Tracer Versions
-- Java
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Profile Types
-- Profile Visualizations
-- Investigate Slow Traces or Endpoints
-- Compare Profiles
-- Automated Analysis
-- Profiler TroubleshootingJava
-- Python
-- Go
-- Ruby
-- Node.js
-- .NET
-- PHP
-- C/C++/Rust
-- Guides
-- Agent Integration Overhead
-- Setup Architectures
-- Setting Up PostgresSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- AlloyDB
-- Azure
-- Supabase
-- Heroku
-- Advanced Configuration
-- Troubleshooting
-- Setting Up MySQLSelf-hosted
-- RDS
-- Aurora
-- Google Cloud SQL
-- Azure
-- Advanced Configuration
-- Troubleshooting
-- Setting Up SQL ServerSelf-hosted
-- RDS
-- Azure
-- Google Cloud SQL
-- Troubleshooting
-- Setting Up OracleSelf-hosted
-- RDS
-- RAC
-- Exadata
-- Autonomous Database
-- Troubleshooting
-- Setting Up Amazon DocumentDBAmazon DocumentDB
-- Setting Up MongoDBSelf-hosted
-- MongoDB Atlas
-- Troubleshooting
-- Connecting DBM and Traces
-- Data Collected
-- Exploring Database Hosts
-- Exploring Query Metrics
-- Exploring Query Samples
-- Exploring Database Schemas
-- Exploring Recommendations
-- Troubleshooting
-- Guides
-- Setup
-- Kafka Messages
-- Schema Tracking
-- Dead Letter Queues
-- Metrics and Tags
-- 
-- Data WarehousesSnowflake
-- Databricks
-- BigQuery
-- Business Intelligence IntegrationsTableau
-- Sigma
-- Metabase
-- Power BI
-- Databricks
-- Airflow
-- dbt
-- Spark on Kubernetes
-- Spark on Amazon EMR
-- Spark on Google Dataproc
-- Custom Jobs (OpenLineage)Datadog Agent for OpenLineage Proxy
-- Application MonitoringBrowser
-- Android and Android TV
-- iOS and tvOS
-- Flutter
-- Kotlin Multiplatform
-- React Native
-- Roku
-- Unity
-- PlatformDashboards
-- Monitors
-- Generate Custom Metrics
-- Exploring RUM DataSearch RUM Events
-- Search Syntax
-- Group
-- Visualize
-- Events
-- Export
-- Saved Views
-- Watchdog Insights for RUM
-- Correlate RUM with Other TelemetryCorrelate LLM with RUM
-- Correlate Logs with RUM
-- Correlate Profiling with RUM
-- Correlate Synthetics with RUM
-- Correlate Traces with RUM
-- Feature Flag TrackingSetup
-- Using Feature Flags
-- Error TrackingExplorer
-- Issue States
-- Track Browser Errors
-- Track Mobile Errors
-- Error Grouping
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- RUM Without LimitsMetrics
-- Retention Filters
-- Operations Monitoring
-- Ownership of Views
-- Guides
-- Data Security
-- API TestingHTTP
-- SSL
-- DNS
-- WebSocket
-- TCP
-- UDP
-- ICMP
-- GRPC
-- Error codes
-- Multistep API Testing
-- Browser TestingRecording Steps
-- Browser Testing Results
-- Advanced Options for Steps
-- Authentication in Browser Testing
-- Network Path TestingTerms and Concepts
-- Mobile Application TestingTesting Steps
-- Testing Results
-- Advanced Options for Steps
-- Supported Devices
-- Restricted Networks
-- Settings
-- Test Suites
-- PlatformDashboards
-- Metrics
-- Test Coverage
-- Private Locations
-- Connect APM
-- Settings
-- Exploring Synthetics DataSaved Views
-- Results Explorer
-- Guides
-- NotificationsTemplate Variables
-- Conditional Alerting
-- Advanced Notifications
-- Integrate with Statuspage
-- Troubleshooting
-- Data Security
-- Local and Staging EnvironmentsTesting Multiple Environments
-- Testing With Proxy, Firewall, or VPN
-- CI/CD IntegrationsConfiguration
-- Azure DevOps Extension
-- CircleCI Orb
-- GitHub Actions
-- GitLab
-- Jenkins
-- Bitrise (Upload Application)
-- Bitrise (Run Tests)
-- Settings
-- Results Explorer
-- Metrics
-- Guides
-- Troubleshooting
-- Vizualizing with ChartsChart Basics
-- Pathways Diagram
-- Funnel Analysis
-- Retention Analysis
-- Analytics Explorer
-- Dashboards
-- Segments
-- Managing Profiles
-- ExperimentsDefine Metrics
-- Reading Experiment Results
-- Minimum Detectable Effects
-- Guides
-- Troubleshooting
-- BrowserSetup
-- Privacy Options
-- Developer Tools
-- Troubleshooting
-- MobileSetup and Configuration
-- Privacy Options
-- Developer Tools
-- Impact on App Performance
-- Troubleshooting
-- Playlists
-- Heatmaps
-- Pipeline VisibilityAWS CodePipeline
-- Azure Pipelines
-- Buildkite
-- CircleCI
-- Codefresh
-- GitHub Actions
-- GitLab
-- Jenkins
-- TeamCity
-- Other CI Providers
-- Custom Commands
-- Custom Tags and Measures
-- Search and Manage
-- ExplorerSearch Syntax
-- Search Pipeline Executions
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=pipelines)
-- Guides
-- Troubleshooting
-- Deployment VisibilityArgo CD
-- CI Providers
-- Explore DeploymentsSearch Syntax
-- Facets
-- Saved Views
-- FeaturesCode Changes Detection
-- Rollback Detection
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=deployments)
-- Setup
-- Explore
-- Setup.NET
-- Java and JVM Languages
-- JavaScript and TypeScript
-- Python
-- Ruby
-- Swift
-- Go
-- JUnit Report Uploads
-- Network Settings
-- Tests in Containers
-- Repositories
-- ExplorerSearch Syntax
-- Search Test Runs
-- Export
-- Saved Views
-- [Monitors](https://docs.datadoghq.com/monitors/types/ci/?tab=tests)
-- Test Health
-- Flaky Test Management
-- Working with Flaky TestsEarly Flake Detection
-- Auto Test Retries
-- Test Impact AnalysisSetup
-- How It Works
-- Troubleshooting
-- Developer Workflows
-- Code Coverage
-- Instrument Browser Tests with RUM
-- Instrument Swift Tests with RUM
-- Correlate Logs and Tests
-- Guides
-- Troubleshooting
-- Setup
-- Data Collected
-- Setup
-- SetupDeployment Data Sources
-- Failure Data Sources
-- Change Failure Detection
-- Data Collected
-- Client SDKsAndroid and Android TV
-- iOS and tvOS
-- JavaScript
-- React
-- Server SDKsGo
-- Java
-- Node.js
-- Python
-- Ruby
-- MCP Server
-- Guides
-- Detection RulesOOTB Rules
-- NotificationsRules
-- Variables
-- Suppressions
-- Automation PipelinesMute
-- Add to Security Inbox
-- Set Due Date Rules
-- Security Inbox
-- Threat Intelligence
-- Audit Trail
-- Access Control
-- Account Takeover Protection
-- Ticketing Integrations
-- Research Feed
-- Guides
-- Ingest and EnrichContent Packs
-- Bring Your Own Threat Intelligence
-- Open Cybersecurity Schema Framework
-- Detect and MonitorOOTB Rules
-- Custom Detection Rules
-- Version History
-- Suppressions
-- Historical Jobs
-- MITRE ATT&CK Map
-- Triage and InvestigateInvestigate Security Signals
-- Risk Insights
-- IOC Explorer
-- Investigator
-- Respond and ReportSecurity Operational Metrics
-- Guides
-- Data Security
-- Static Code Analysis (SAST)Setup
-- GitHub Actions
-- Generic CI Providers
-- AI-Enhanced Static Code Analysis
-- SAST Custom Rule Creation Tutorial
-- SAST Custom Rules
-- SAST Custom Rules Guide
-- Static Code Analysis (SAST) rules
-- Software Composition Analysis (SCA)Static Setup
-- Runtime Setup
-- Library Inventory
-- Secret ScanningGitHub Actions
-- Generic CI Providers
-- Secret Validation
-- Runtime Code Analysis (IAST)Setup
-- Security Controls
-- Infrastructure as Code (IaC) SecuritySetup
-- Exclusions
-- Rules
-- Developer Tool IntegrationsPull Request Comments
-- PR Gates
-- IDE Plugins
-- Git Hooks
-- Troubleshooting
-- Guides
-- SetupSupported Deployment Types
-- Agentless Scanning
-- Deploy the Agent
-- Set Up CloudTrail Logs
-- Set Up without Infrastructure Monitoring
-- Deploy via Cloud Integrations
-- Security Graph
-- MisconfigurationsManage Compliance Rules
-- Create Custom Rules
-- Manage Compliance Posture
-- Explore Misconfigurations
-- Kubernetes Security Posture Management
-- Identity Risks
-- VulnerabilitiesHosts and Containers Compatibility
-- OOTB Rules
-- Review and RemediateMute Issues
-- Automate Security Workflows
-- Create Jira Issues
-- Severity Scoring
-- Guides
-- TroubleshootingVulnerabilities
-- Terms and Concepts
-- How It WorksThreat Intelligence
-- Trace Qualification
-- User Monitoring and Protection
-- Setup
-- Overview
-- Security SignalsAttackers Explorer
-- Attacker Fingerprint
-- Attacker Clustering
-- Users Explorer
-- PoliciesCustom Rules
-- OOTB Rules
-- In-App WAF Rules
-- Tracing Library Configuration
-- Exploit Prevention
-- WAF Integrations
-- API Security Inventory
-- Guides
-- Troubleshooting
-- SetupDeploy the Agent
-- Workload Protection Agent Variables
-- Detection RulesOOTB Rules
-- Custom Rules
-- Investigate Security Signals
-- Investigate Agent Events
-- Creating Agent Rule ExpressionsWriting Custom Rule Expressions
-- Linux Syntax
-- Windows Syntax
-- Coverage and Posture ManagementHosts and Containers
-- Serverless
-- Coverage
-- Guides
-- Troubleshooting
-- SetupTelemetry Data
-- Cloud Storage
-- Scanning RulesLibrary Rules
-- Custom Rules
-- Guides
-- Quickstart
-- InstrumentationAutomatic
-- SDK Reference
-- HTTP API
-- OpenTelemetry
-- MonitoringQuerying spans and traces
-- Correlate with APM
-- Cluster Map
-- Agent Monitoring
-- MCP Clients
-- Prompt Tracking
-- Metrics
-- Cost
-- EvaluationsManaged Evaluations
-- Custom LLM-as-a-Judge
-- External Evaluations
-- Compatibility
-- Export API
-- Experiments
-- Data Security and RBAC
-- Terms and Concepts
-- Guides
-- ConfigurationExplore Templates
-- Set Up Pipelines
-- Install the Worker
-- Live Capture
-- Update Existing Pipelines
-- Access Control
-- SourcesAkamai DataStream
-- Amazon Data Firehose
-- Amazon S3
-- Azure Event Hubs
-- Datadog Agent
-- Datadog Lambda Extension
-- Datadog Lambda Forwarder
-- Filebeat
-- Fluent
-- Google Pub/Sub
-- HTTP Client
-- HTTP Server
-- OpenTelemetry
-- Kafka
-- Logstash
-- Socket
-- Splunk HEC
-- Splunk TCP
-- Sumo Logic Hosted Collector
-- Syslog
-- ProcessorsAdd Environment Variables
-- Add hostname
-- Custom Processor
-- Deduplicate
-- Edit fields
-- Enrichment Table
-- Filter
-- Generate Metrics
-- Grok Parser
-- Parse JSON
-- Parse XML
-- Quota
-- Reduce
-- Remap to OCSF
-- Sample
-- Sensitive Data Scanner
-- Split Array
-- Tag Control
-- Throttle
-- DestinationsAmazon OpenSearch
-- Amazon S3
-- Amazon Security Lake
-- Azure Storage
-- CrowdStrike NG-SIEM
-- Datadog CloudPrem
-- Datadog Logs
-- Datadog Metrics
-- Elasticsearch
-- Google Cloud Storage
-- Google Pub/Sub
-- Google SecOps
-- HTTP Client
-- Kafka
-- Microsoft Sentinel
-- New Relic
-- OpenSearch
-- SentinelOne
-- Socket
-- Splunk HEC
-- Sumo Logic Hosted Collector
-- Syslog
-- PacksAkamai CDN
-- Amazon CloudFront
-- Amazon VPC Flow Logs
-- AWS CloudTrail
-- Cisco ASA
-- Cloudflare
-- F5
-- Fastly
-- Fortinet Firewall
-- HAProxy Ingress
-- Istio Proxy
-- Netskope
-- NGINX
-- Okta
-- Palo Alto Firewall
-- Windows XML
-- ZScaler ZIA DNS
-- Zscaler ZIA Firewall
-- Zscaler ZIA Tunnel
-- Zscaler ZIA Web Logs
-- Search Syntax
-- Scaling and PerformanceHandling Load and Backpressure
-- Scaling Best Practices
-- Monitoring and TroubleshootingWorker CLI Commands
-- Monitoring Pipelines
-- Pipeline Usage Metrics
-- Troubleshooting
-- Guides and ResourcesUpgrade Worker Guide
-- Log Collection & IntegrationsBrowser
-- Android
-- iOS
-- Flutter
-- React Native
-- Roku
-- Kotlin Multiplatform
-- C#
-- Go
-- Java
-- Node.js
-- PHP
-- Python
-- Ruby
-- OpenTelemetry
-- Agent Integrations
-- Other Integrations
-- Log ConfigurationPipelines
-- Processors
-- Parsing
-- Pipeline Scanner
-- Attributes and Aliasing
-- Generate Metrics
-- Indexes
-- Flex Logs
-- Archives
-- Rehydrate from Archives
-- Archive Search
-- Forwarding
-- Log ExplorerLive Tail
-- Search Logs
-- Search Syntax
-- Advanced Search
-- Facets
-- Calculated Fields
-- Analytics
-- Patterns
-- Transactions
-- Visualize
-- Log Side Panel
-- Export
-- Watchdog Insights for Logs
-- Saved Views
-- Error TrackingError Tracking Explorer
-- Issue States
-- Track Browser and Mobile Errors
-- Track Backend Errors
-- Error Grouping
-- Manage Data Collection
-- Dynamic Sampling
-- Monitors
-- Identify Suspect Commits
-- Troubleshooting
-- Reports
-- Guides
-- Data Security
-- TroubleshootingLive Tail
-- Quickstart
-- Architecture
-- InstallationAWS EKS
-- Azure AKS
-- Install Locally with Docker
-- Log IngestionDatadog Agent
-- Observability Pipelines
-- REST API
-- ConfigurationDatadog Account
-- AWS Configuration
-- Azure Configuration
-- Cluster Sizing
-- Ingress
-- Processing
-- Reverse Connection
-- Management
-- Supported Features
-- Troubleshooting
-- Switching Between Orgs
-- Organization SettingsUser Management
-- Login Methods
-- OAuth Apps
-- Custom Organization Landing Page
-- Service Accounts
-- IP Allowlist
-- Domain Allowlist
-- Cross-Organization Visibility
-- Access ControlGranular Access
-- Permissions
-- Data Access
-- SSO with SAMLConfiguring SAML
-- User Group Mapping
-- Active Directory
-- Auth0
-- Entra ID
-- Google
-- LastPass
-- Okta
-- SafeNet
-- Troubleshooting
-- SCIMOkta
-- Microsoft Entra ID
-- API and Application Keys
-- TeamsTeam Management
-- Provision with GitHub
-- Governance Console
-- Multi-Factor Authentication
-- Audit TrailEvents
-- Forwarding
-- Guides
-- Safety Center
-- Plan and UsageCost Details
-- Usage Details
-- BillingPricing
-- Credit Card
-- Product Allotments
-- Usage Metrics
-- Usage Attribution
-- Custom Metrics
-- Containers
-- Log Management
-- APM
-- Serverless
-- Real User Monitoring
-- CI Visibility
-- Incident Response
-- AWS Integration
-- Azure Integration
-- Google Cloud Integration
-- Alibaba Integration
-- vSphere Integration
-- Workflow Automation
-- Multi-org Accounts
-- Guides
-- Cloud-based Authentication
-- Agent
-- Cloud SIEM
-- Kubernetes
-- Log Management
-- Real User Monitoring
-- Synthetic Monitoring
-- Tracing
-- PCI Compliance
-- HIPAA Compliance
-- Data Retention Periods
-- Guides
-- 
-Docs > 
-API Reference > 
-Service Level ObjectivesLanguage
+POST https://api.ap1.datadoghq.com/api/v1/slohttps://api.ap2.datadoghq.com/api/v1/slohttps://api.datadoghq.eu/api/v1/slohttps://api.ddog-gov.com/api/v1/slohttps://api.datadoghq.com/api/v1/slohttps://api.us3.datadoghq.com/api/v1/slohttps://api.us5.datadoghq.com/api/v1/slo
+### Overview
+Create a service level objective object. This endpoint requires the `slos_write` permission.
+OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Request
+#### Body Data (required)
+Service level objective request object.
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-English[English](https://docs.datadoghq.com/api/latest/service-level-objectives/?lang_pref=en)
-[Français](https://docs.datadoghq.com/fr/api/latest/service-level-objectives/?lang_pref=fr)
-[日本語](https://docs.datadoghq.com/ja/api/latest/service-level-objectives/?lang_pref=ja)
-[한국어](https://docs.datadoghq.com/ko/api/latest/service-level-objectives/?lang_pref=ko)
-[Español](https://docs.datadoghq.com/es/api/latest/service-level-objectives/?lang_pref=es)Datadog Site
 
-US1
-US3
-US5
-EU
-AP1
-AP2
-US1-FED# Service Level ObjectivesService Level Objectives
-(or SLOs) are a key part of the site reliability engineering toolkit.
-SLOs provide a framework for defining clear targets around application performance,
-which ultimately help teams provide a consistent customer experience,
-balance feature development with platform stability,
-and improve communication with internal and external users.## Create an SLO object- v1 (latest)
-POST https://api.ap1.datadoghq.com/api/v1/slohttps://api.ap2.datadoghq.com/api/v1/slohttps://api.datadoghq.eu/api/v1/slohttps://api.ddog-gov.com/api/v1/slohttps://api.datadoghq.com/api/v1/slohttps://api.us3.datadoghq.com/api/v1/slohttps://api.us5.datadoghq.com/api/v1/slo
-### OverviewCreate a service level objective object.
-This endpoint requires the `slos_write` permission.OAuth apps require the `slos_write` authorization scope to access this endpoint.
-### Request#### Body Data (required)Service level objective request object.
-- Model
-- Example
-Expand All
 Field
 Type
 Description
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.monitor_ids
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+monitor_ids
 [integer]
-A list of monitor IDs that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.name [*required*]
+A list of monitor IDs that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+name [_required_]
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds [*required*]
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds [_required_]
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type [*required*]
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type [_required_]
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.
-Create a time-slice SLO object returns "OK" response```
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+#####  Create a time-slice SLO object returns "OK" response
+```
 {
-"type": "time_slice",
-"description": "string",
-"name": "Example-Service-Level-Objective",
-"sli_specification": {
-"time_slice": {
-"query": {
-"formulas": [
-{
-"formula": "query1"
-}
-],
-"queries": [
-{
-"data_source": "metrics",
-"name": "query1",
-"query": "trace.servlet.request{env:prod}"
-}
-]
-},
-"comparator": ">",
-"threshold": 5
-}
-},
-"tags": [
-"env:prod"
-],
-"thresholds": [
-{
-"target": 97.0,
-"target_display": "97.0",
-"timeframe": "7d",
-"warning": 98,
-"warning_display": "98.0"
-}
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98
+  "type": "time_slice",
+  "description": "string",
+  "name": "Example-Service-Level-Objective",
+  "sli_specification": {
+    "time_slice": {
+      "query": {
+        "formulas": [
+          {
+            "formula": "query1"
+          }
+        ],
+        "queries": [
+          {
+            "data_source": "metrics",
+            "name": "query1",
+            "query": "trace.servlet.request{env:prod}"
+          }
+        ]
+      },
+      "comparator": ">",
+      "threshold": 5
+    }
+  },
+  "tags": [
+    "env:prod"
+  ],
+  "thresholds": [
+    {
+      "target": 97.0,
+      "target_display": "97.0",
+      "timeframe": "7d",
+      "warning": 98,
+      "warning_display": "98.0"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98
 }
 ```
-Create an SLO object returns "OK" response```
+
+Copy
+#####  Create an SLO object returns "OK" response
+```
 {
-"type": "metric",
-"description": "string",
-"groups": [
-"env:test",
-"role:mysql"
-],
-"monitor_ids": [],
-"name": "Example-Service-Level-Objective",
-"query": {
-"denominator": "sum:httpservice.hits{!code:3xx}.as_count()",
-"numerator": "sum:httpservice.hits{code:2xx}.as_count()"
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"thresholds": [
-{
-"target": 97.0,
-"target_display": "97.0",
-"timeframe": "7d",
-"warning": 98,
-"warning_display": "98.0"
+  "type": "metric",
+  "description": "string",
+  "groups": [
+    "env:test",
+    "role:mysql"
+  ],
+  "monitor_ids": [],
+  "name": "Example-Service-Level-Objective",
+  "query": {
+    "denominator": "sum:httpservice.hits{!code:3xx}.as_count()",
+    "numerator": "sum:httpservice.hits{code:2xx}.as_count()"
+  },
+  "tags": [
+    "env:prod",
+    "app:core"
+  ],
+  "thresholds": [
+    {
+      "target": 97.0,
+      "target_display": "97.0",
+      "timeframe": "7d",
+      "warning": 98,
+      "warning_display": "98.0"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98
 }
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98
-}
-```### Response- 200
-- 400
-- 403
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLO-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLO-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLO-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A response with one or more service level objective.
-Expand All
 Field
 Type
 Description
@@ -1578,13 +247,12 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.id
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -1594,124 +262,112 @@ Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.monitor_tags
+A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+monitor_tags
 [string]
-The union of monitor tags for all monitors referenced by the `monitor_ids`
-field.
-Always included in service level objective responses for monitor-based service level
-objectives (but may be empty). Ignored in create/update requests. Does not
-affect which monitors are included in the service level objective (that is
-determined entirely by the `monitor_ids` field).name [*required*]
+The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field).
+name [_required_]
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds [*required*]
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds [_required_]
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type [*required*]
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type [_required_]
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.errors
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+errors
 [string]
-An array of error messages. Each endpoint documents how/whether this field is
-used. metadata
+An array of error messages. Each endpoint documents how/whether this field is used.
+metadata
 object
 The metadata object containing additional information about the list of SLOs.
 page
@@ -1725,227 +381,255 @@ int64
 The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.
 ```
 {
-"data": [
-{
-"created_at": "integer",
-"creator": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"description": "string",
-"groups": [
-"env:prod",
-"role:mysql"
-],
-"id": "string",
-"modified_at": "integer",
-"monitor_ids": [],
-"monitor_tags": [],
-"name": "Custom Metric SLO",
-"query": {
-"denominator": "sum:my.custom.metric{*}.as_count()",
-"numerator": "sum:my.custom.metric{type:good}.as_count()"
-},
-"sli_specification": {
-"time_slice": {
-"comparator": ">",
-"query": {
-"formulas": [
-{
-"formula": "query1 - default_zero(query2)"
+  "data": [
+    {
+      "created_at": "integer",
+      "creator": {
+        "email": "string",
+        "handle": "string",
+        "name": "string"
+      },
+      "description": "string",
+      "groups": [
+        "env:prod",
+        "role:mysql"
+      ],
+      "id": "string",
+      "modified_at": "integer",
+      "monitor_ids": [],
+      "monitor_tags": [],
+      "name": "Custom Metric SLO",
+      "query": {
+        "denominator": "sum:my.custom.metric{*}.as_count()",
+        "numerator": "sum:my.custom.metric{type:good}.as_count()"
+      },
+      "sli_specification": {
+        "time_slice": {
+          "comparator": ">",
+          "query": {
+            "formulas": [
+              {
+                "formula": "query1 - default_zero(query2)"
+              }
+            ],
+            "queries": [
+              []
+            ]
+          },
+          "query_interval_seconds": 300,
+          "threshold": 5
+        }
+      },
+      "tags": [
+        "env:prod",
+        "app:core"
+      ],
+      "target_threshold": 99.9,
+      "thresholds": [
+        {
+          "target": 99.9,
+          "target_display": "99.9",
+          "timeframe": "30d",
+          "warning": 90,
+          "warning_display": "90.0"
+        }
+      ],
+      "timeframe": "30d",
+      "type": "metric",
+      "warning_threshold": 99.95
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "page": {
+      "total_count": "integer",
+      "total_filtered_count": "integer"
+    }
+  }
 }
-],
-"queries": [
-[]
-]
-},
-"query_interval_seconds": 300,
-"threshold": 5
-}
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"target_threshold": 99.9,
-"thresholds": [
-{
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-],
-"timeframe": "30d",
-"type": "metric",
-"warning_threshold": 99.95
-}
-],
-"errors": [],
-"metadata": {
-"page": {
-"total_count": "integer",
-"total_filtered_count": "integer"
-}
-}
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Python [legacy]](?code-lang=python-legacy#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
 
-Create a time-slice SLO object returns "OK" responseCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+
+
+#####  Create a time-slice SLO object returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"type": "time_slice",
-"description": "string",
-"name": "Example-Service-Level-Objective",
-"sli_specification": {
-"time_slice": {
-"query": {
-"formulas": [
-{
-"formula": "query1"
+  "type": "time_slice",
+  "description": "string",
+  "name": "Example-Service-Level-Objective",
+  "sli_specification": {
+    "time_slice": {
+      "query": {
+        "formulas": [
+          {
+            "formula": "query1"
+          }
+        ],
+        "queries": [
+          {
+            "data_source": "metrics",
+            "name": "query1",
+            "query": "trace.servlet.request{env:prod}"
+          }
+        ]
+      },
+      "comparator": ">",
+      "threshold": 5
+    }
+  },
+  "tags": [
+    "env:prod"
+  ],
+  "thresholds": [
+    {
+      "target": 97.0,
+      "target_display": "97.0",
+      "timeframe": "7d",
+      "warning": 98,
+      "warning_display": "98.0"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98
 }
-],
-"queries": [
-{
-"data_source": "metrics",
-"name": "query1",
-"query": "trace.servlet.request{env:prod}"
-}
-]
-},
-"comparator": ">",
-"threshold": 5
-}
-},
-"tags": [
-"env:prod"
-],
-"thresholds": [
-{
-"target": 97.0,
-"target_display": "97.0",
-"timeframe": "7d",
-"warning": 98,
-"warning_display": "98.0"
-}
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98
-}
-EOF
+EOF  
 
+                        
 ```
-Create an SLO object returns "OK" responseCopy```
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
+#####  Create an SLO object returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"type": "metric",
-"description": "string",
-"groups": [
-"env:test",
-"role:mysql"
-],
-"monitor_ids": [],
-"name": "Example-Service-Level-Objective",
-"query": {
-"denominator": "sum:httpservice.hits{!code:3xx}.as_count()",
-"numerator": "sum:httpservice.hits{code:2xx}.as_count()"
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"thresholds": [
-{
-"target": 97.0,
-"target_display": "97.0",
-"timeframe": "7d",
-"warning": 98,
-"warning_display": "98.0"
+  "type": "metric",
+  "description": "string",
+  "groups": [
+    "env:test",
+    "role:mysql"
+  ],
+  "monitor_ids": [],
+  "name": "Example-Service-Level-Objective",
+  "query": {
+    "denominator": "sum:httpservice.hits{!code:3xx}.as_count()",
+    "numerator": "sum:httpservice.hits{code:2xx}.as_count()"
+  },
+  "tags": [
+    "env:prod",
+    "app:core"
+  ],
+  "thresholds": [
+    {
+      "target": 97.0,
+      "target_display": "97.0",
+      "timeframe": "7d",
+      "warning": 98,
+      "warning_display": "98.0"
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98
 }
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98
-}
-EOF
+EOF  
 
+                        
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 // Create a time-slice SLO object returns "OK" response
 
 package main
@@ -1962,9 +646,9 @@ import (
 
 func main() {
 	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type: datadogV1.SLOTYPE_TIME_SLICE,
+		Type:        datadogV1.SLOTYPE_TIME_SLICE,
 		Description: *datadog.NewNullableString(datadog.PtrString("string")),
-		Name: "Example-Service-Level-Objective",
+		Name:        "Example-Service-Level-Objective",
 		SliSpecification: &datadogV1.SLOSliSpec{
 			SLOTimeSliceSpec: &datadogV1.SLOTimeSliceSpec{
 				TimeSlice: datadogV1.SLOTimeSliceCondition{
@@ -1978,13 +662,13 @@ func main() {
 							datadogV1.SLODataSourceQueryDefinition{
 								FormulaAndFunctionMetricQueryDefinition: &datadogV1.FormulaAndFunctionMetricQueryDefinition{
 									DataSource: datadogV1.FORMULAANDFUNCTIONMETRICDATASOURCE_METRICS,
-									Name: "query1",
-									Query: "trace.servlet.request{env:prod}",
+									Name:       "query1",
+									Query:      "trace.servlet.request{env:prod}",
 								}},
 						},
 					},
 					Comparator: datadogV1.SLOTIMESLICECOMPARATOR_GREATER,
-					Threshold: 5,
+					Threshold:  5,
 				},
 			}},
 		Tags: []string{
@@ -1992,15 +676,15 @@ func main() {
 		},
 		Thresholds: []datadogV1.SLOThreshold{
 			{
-				Target: 97.0,
-				TargetDisplay: datadog.PtrString("97.0"),
-				Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning: datadog.PtrFloat64(98),
+				Target:         97.0,
+				TargetDisplay:  datadog.PtrString("97.0"),
+				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+				Warning:        datadog.PtrFloat64(98),
 				WarningDisplay: datadog.PtrString("98.0"),
 			},
 		},
-		Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold: datadog.PtrFloat64(97.0),
+		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+		TargetThreshold:  datadog.PtrFloat64(97.0),
 		WarningThreshold: datadog.PtrFloat64(98),
 	}
 	ctx := datadog.NewDefaultContext(context.Background())
@@ -2014,13 +698,15 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 // Create an SLO object returns "OK" response
 
 package main
@@ -2037,17 +723,17 @@ import (
 
 func main() {
 	body := datadogV1.ServiceLevelObjectiveRequest{
-		Type: datadogV1.SLOTYPE_METRIC,
+		Type:        datadogV1.SLOTYPE_METRIC,
 		Description: *datadog.NewNullableString(datadog.PtrString("string")),
 		Groups: []string{
 			"env:test",
 			"role:mysql",
 		},
 		MonitorIds: []int64{},
-		Name: "Example-Service-Level-Objective",
+		Name:       "Example-Service-Level-Objective",
 		Query: &datadogV1.ServiceLevelObjectiveQuery{
 			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-			Numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
 		},
 		Tags: []string{
 			"env:prod",
@@ -2055,15 +741,15 @@ func main() {
 		},
 		Thresholds: []datadogV1.SLOThreshold{
 			{
-				Target: 97.0,
-				TargetDisplay: datadog.PtrString("97.0"),
-				Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning: datadog.PtrFloat64(98),
+				Target:         97.0,
+				TargetDisplay:  datadog.PtrString("97.0"),
+				Timeframe:      datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
+				Warning:        datadog.PtrFloat64(98),
 				WarningDisplay: datadog.PtrString("98.0"),
 			},
 		},
-		Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold: datadog.PtrFloat64(97.0),
+		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+		TargetThreshold:  datadog.PtrFloat64(97.0),
 		WarningThreshold: datadog.PtrFloat64(98),
 	}
 	ctx := datadog.NewDefaultContext(context.Background())
@@ -2077,17 +763,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 // Create a time-slice SLO object returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -2110,66 +804,68 @@ import com.datadog.api.client.v1.model.ServiceLevelObjectiveRequest;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-ServiceLevelObjectiveRequest body =
-new ServiceLevelObjectiveRequest()
-.type(SLOType.TIME_SLICE)
-.description("string")
-.name("Example-Service-Level-Objective")
-.sliSpecification(
-new SLOSliSpec(
-new SLOTimeSliceSpec()
-.timeSlice(
-new SLOTimeSliceCondition()
-.query(
-new SLOTimeSliceQuery()
-.formulas(
-Collections.singletonList(
-new SLOFormula().formula("query1")))
-.queries(
-Collections.singletonList(
-new SLODataSourceQueryDefinition(
-new FormulaAndFunctionMetricQueryDefinition()
-.dataSource(
-FormulaAndFunctionMetricDataSource
-.METRICS)
-.name("query1")
-.query(
-"trace.servlet.request{env:prod}")))))
-.comparator(SLOTimeSliceComparator.GREATER)
-.threshold(5.0))))
-.tags(Collections.singletonList("env:prod"))
-.thresholds(
-Collections.singletonList(
-new SLOThreshold()
-.target(97.0)
-.targetDisplay("97.0")
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.warning(98.0)
-.warningDisplay("98.0")))
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.targetThreshold(97.0)
-.warningThreshold(98.0);
+    ServiceLevelObjectiveRequest body =
+        new ServiceLevelObjectiveRequest()
+            .type(SLOType.TIME_SLICE)
+            .description("string")
+            .name("Example-Service-Level-Objective")
+            .sliSpecification(
+                new SLOSliSpec(
+                    new SLOTimeSliceSpec()
+                        .timeSlice(
+                            new SLOTimeSliceCondition()
+                                .query(
+                                    new SLOTimeSliceQuery()
+                                        .formulas(
+                                            Collections.singletonList(
+                                                new SLOFormula().formula("query1")))
+                                        .queries(
+                                            Collections.singletonList(
+                                                new SLODataSourceQueryDefinition(
+                                                    new FormulaAndFunctionMetricQueryDefinition()
+                                                        .dataSource(
+                                                            FormulaAndFunctionMetricDataSource
+                                                                .METRICS)
+                                                        .name("query1")
+                                                        .query(
+                                                            "trace.servlet.request{env:prod}")))))
+                                .comparator(SLOTimeSliceComparator.GREATER)
+                                .threshold(5.0))))
+            .tags(Collections.singletonList("env:prod"))
+            .thresholds(
+                Collections.singletonList(
+                    new SLOThreshold()
+                        .target(97.0)
+                        .targetDisplay("97.0")
+                        .timeframe(SLOTimeframe.SEVEN_DAYS)
+                        .warning(98.0)
+                        .warningDisplay("98.0")))
+            .timeframe(SLOTimeframe.SEVEN_DAYS)
+            .targetThreshold(97.0)
+            .warningThreshold(98.0);
 
-try {
-SLOListResponse result = apiInstance.createSLO(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOListResponse result = apiInstance.createSLO(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 // Create an SLO object returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -2185,86 +881,103 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-ServiceLevelObjectiveRequest body =
-new ServiceLevelObjectiveRequest()
-.type(SLOType.METRIC)
-.description("string")
-.groups(Arrays.asList("env:test", "role:mysql"))
-.name("Example-Service-Level-Objective")
-.query(
-new ServiceLevelObjectiveQuery()
-.denominator("sum:httpservice.hits{!code:3xx}.as_count()")
-.numerator("sum:httpservice.hits{code:2xx}.as_count()"))
-.tags(Arrays.asList("env:prod", "app:core"))
-.thresholds(
-Collections.singletonList(
-new SLOThreshold()
-.target(97.0)
-.targetDisplay("97.0")
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.warning(98.0)
-.warningDisplay("98.0")))
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.targetThreshold(97.0)
-.warningThreshold(98.0);
+    ServiceLevelObjectiveRequest body =
+        new ServiceLevelObjectiveRequest()
+            .type(SLOType.METRIC)
+            .description("string")
+            .groups(Arrays.asList("env:test", "role:mysql"))
+            .name("Example-Service-Level-Objective")
+            .query(
+                new ServiceLevelObjectiveQuery()
+                    .denominator("sum:httpservice.hits{!code:3xx}.as_count()")
+                    .numerator("sum:httpservice.hits{code:2xx}.as_count()"))
+            .tags(Arrays.asList("env:prod", "app:core"))
+            .thresholds(
+                Collections.singletonList(
+                    new SLOThreshold()
+                        .target(97.0)
+                        .targetDisplay("97.0")
+                        .timeframe(SLOTimeframe.SEVEN_DAYS)
+                        .warning(98.0)
+                        .warningDisplay("98.0")))
+            .timeframe(SLOTimeframe.SEVEN_DAYS)
+            .targetThreshold(97.0)
+            .warningThreshold(98.0);
 
-try {
-SLOListResponse result = apiInstance.createSLO(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOListResponse result = apiInstance.createSLO(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Create an SLO object returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Create an SLO object returns "OK" response
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 initialize(**options)
 
 # Create a new SLO
 thresholds = [
-{"timeframe": "7d", "target": 95},
-{"timeframe": "30d", "target": 95, "warning": 97},
+  {"timeframe": "7d", "target": 95},
+  {"timeframe": "30d", "target": 95, "warning": 97},
 ]
 tags = ["app:webserver", "frontend"]
 api.ServiceLevelObjective.create(
-type="metric",
-name="Custom Metric SLO",
-description="SLO tracking custom service SLO",
-query={
-"numerator": "sum:my.custom.metric{type:good}.as_count()",
-"denominator": "sum:my.custom.metric{*}.as_count()"
-},
-tags=tags,
-thresholds=thresholds
+    type="metric",
+    name="Custom Metric SLO",
+    description="SLO tracking custom service SLO",
+    query={
+        "numerator": "sum:my.custom.metric{type:good}.as_count()",
+        "denominator": "sum:my.custom.metric{*}.as_count()"
+    },
+    tags=tags,
+    thresholds=thresholds
 )
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 """
 Create a time-slice SLO object returns "OK" response
 """
@@ -2273,7 +986,7 @@ from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v1.api.service_level_objectives_api import ServiceLevelObjectivesApi
 from datadog_api_client.v1.model.formula_and_function_metric_data_source import FormulaAndFunctionMetricDataSource
 from datadog_api_client.v1.model.formula_and_function_metric_query_definition import (
-FormulaAndFunctionMetricQueryDefinition,
+    FormulaAndFunctionMetricQueryDefinition,
 )
 from datadog_api_client.v1.model.service_level_objective_request import ServiceLevelObjectiveRequest
 from datadog_api_client.v1.model.slo_formula import SLOFormula
@@ -2286,56 +999,58 @@ from datadog_api_client.v1.model.slo_timeframe import SLOTimeframe
 from datadog_api_client.v1.model.slo_type import SLOType
 
 body = ServiceLevelObjectiveRequest(
-type=SLOType.TIME_SLICE,
-description="string",
-name="Example-Service-Level-Objective",
-sli_specification=SLOTimeSliceSpec(
-time_slice=SLOTimeSliceCondition(
-query=SLOTimeSliceQuery(
-formulas=[
-SLOFormula(
-formula="query1",
-),
-],
-queries=[
-FormulaAndFunctionMetricQueryDefinition(
-data_source=FormulaAndFunctionMetricDataSource.METRICS,
-name="query1",
-query="trace.servlet.request{env:prod}",
-),
-],
-),
-comparator=SLOTimeSliceComparator.GREATER,
-threshold=5.0,
-),
-),
-tags=[
-"env:prod",
-],
-thresholds=[
-SLOThreshold(
-target=97.0,
-target_display="97.0",
-timeframe=SLOTimeframe.SEVEN_DAYS,
-warning=98.0,
-warning_display="98.0",
-),
-],
-timeframe=SLOTimeframe.SEVEN_DAYS,
-target_threshold=97.0,
-warning_threshold=98.0,
+    type=SLOType.TIME_SLICE,
+    description="string",
+    name="Example-Service-Level-Objective",
+    sli_specification=SLOTimeSliceSpec(
+        time_slice=SLOTimeSliceCondition(
+            query=SLOTimeSliceQuery(
+                formulas=[
+                    SLOFormula(
+                        formula="query1",
+                    ),
+                ],
+                queries=[
+                    FormulaAndFunctionMetricQueryDefinition(
+                        data_source=FormulaAndFunctionMetricDataSource.METRICS,
+                        name="query1",
+                        query="trace.servlet.request{env:prod}",
+                    ),
+                ],
+            ),
+            comparator=SLOTimeSliceComparator.GREATER,
+            threshold=5.0,
+        ),
+    ),
+    tags=[
+        "env:prod",
+    ],
+    thresholds=[
+        SLOThreshold(
+            target=97.0,
+            target_display="97.0",
+            timeframe=SLOTimeframe.SEVEN_DAYS,
+            warning=98.0,
+            warning_display="98.0",
+        ),
+    ],
+    timeframe=SLOTimeframe.SEVEN_DAYS,
+    target_threshold=97.0,
+    warning_threshold=98.0,
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.create_slo(body=body)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.create_slo(body=body)
 
-print(response)
+    print(response)
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 """
 Create an SLO object returns "OK" response
 """
@@ -2349,49 +1064,58 @@ from datadog_api_client.v1.model.slo_timeframe import SLOTimeframe
 from datadog_api_client.v1.model.slo_type import SLOType
 
 body = ServiceLevelObjectiveRequest(
-type=SLOType.METRIC,
-description="string",
-groups=[
-"env:test",
-"role:mysql",
-],
-monitor_ids=[],
-name="Example-Service-Level-Objective",
-query=ServiceLevelObjectiveQuery(
-denominator="sum:httpservice.hits{!code:3xx}.as_count()",
-numerator="sum:httpservice.hits{code:2xx}.as_count()",
-),
-tags=[
-"env:prod",
-"app:core",
-],
-thresholds=[
-SLOThreshold(
-target=97.0,
-target_display="97.0",
-timeframe=SLOTimeframe.SEVEN_DAYS,
-warning=98.0,
-warning_display="98.0",
-),
-],
-timeframe=SLOTimeframe.SEVEN_DAYS,
-target_threshold=97.0,
-warning_threshold=98.0,
+    type=SLOType.METRIC,
+    description="string",
+    groups=[
+        "env:test",
+        "role:mysql",
+    ],
+    monitor_ids=[],
+    name="Example-Service-Level-Objective",
+    query=ServiceLevelObjectiveQuery(
+        denominator="sum:httpservice.hits{!code:3xx}.as_count()",
+        numerator="sum:httpservice.hits{code:2xx}.as_count()",
+    ),
+    tags=[
+        "env:prod",
+        "app:core",
+    ],
+    thresholds=[
+        SLOThreshold(
+            target=97.0,
+            target_display="97.0",
+            timeframe=SLOTimeframe.SEVEN_DAYS,
+            warning=98.0,
+            warning_display="98.0",
+        ),
+    ],
+    timeframe=SLOTimeframe.SEVEN_DAYS,
+    target_threshold=97.0,
+    warning_threshold=98.0,
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.create_slo(body=body)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.create_slo(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Create an SLO object returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Create an SLO object returns "OK" response
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
@@ -2401,121 +1125,139 @@ dog = Dogapi::Client.new(api_key, app_key)
 
 # Create a new SLO
 thresholds = [
-{ timeframe: '7d', target: 95 },
-{ timeframe: '30d', target: 95, warning: 97 }
+  { timeframe: '7d', target: 95 },
+  { timeframe: '30d', target: 95, warning: 97 }
 ]
 tags = ['app:webserver', 'frontend']
 dog.create_service_level_objective(
-type: 'metric',
-name: 'Custom Metric SLO',
-description: 'SLO tracking custom service SLO',
-numerator: 'sum:my.custom.metric{type:good}.as_count()',
-denominator: 'sum:my.custom.metric{*}.as_count()',
-tags: tags,
-thresholds: thresholds
+  type: 'metric',
+  name: 'Custom Metric SLO',
+  description: 'SLO tracking custom service SLO',
+  numerator: 'sum:my.custom.metric{type:good}.as_count()',
+  denominator: 'sum:my.custom.metric{*}.as_count()',
+  tags: tags,
+  thresholds: thresholds
 )
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 # Create a time-slice SLO object returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 
 body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
-type: DatadogAPIClient::V1::SLOType::TIME_SLICE,
-description: "string",
-name: "Example-Service-Level-Objective",
-sli_specification: DatadogAPIClient::V1::SLOTimeSliceSpec.new({
-time_slice: DatadogAPIClient::V1::SLOTimeSliceCondition.new({
-query: DatadogAPIClient::V1::SLOTimeSliceQuery.new({
-formulas: [
-DatadogAPIClient::V1::SLOFormula.new({
-formula: "query1",
-}),
-],
-queries: [
-DatadogAPIClient::V1::FormulaAndFunctionMetricQueryDefinition.new({
-data_source: DatadogAPIClient::V1::FormulaAndFunctionMetricDataSource::METRICS,
-name: "query1",
-query: "trace.servlet.request{env:prod}",
-}),
-],
-}),
-comparator: DatadogAPIClient::V1::SLOTimeSliceComparator::GREATER,
-threshold: 5,
-}),
-}),
-tags: [
-"env:prod",
-],
-thresholds: [
-DatadogAPIClient::V1::SLOThreshold.new({
-target: 97.0,
-target_display: "97.0",
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-warning: 98,
-warning_display: "98.0",
-}),
-],
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-target_threshold: 97.0,
-warning_threshold: 98,
+  type: DatadogAPIClient::V1::SLOType::TIME_SLICE,
+  description: "string",
+  name: "Example-Service-Level-Objective",
+  sli_specification: DatadogAPIClient::V1::SLOTimeSliceSpec.new({
+    time_slice: DatadogAPIClient::V1::SLOTimeSliceCondition.new({
+      query: DatadogAPIClient::V1::SLOTimeSliceQuery.new({
+        formulas: [
+          DatadogAPIClient::V1::SLOFormula.new({
+            formula: "query1",
+          }),
+        ],
+        queries: [
+          DatadogAPIClient::V1::FormulaAndFunctionMetricQueryDefinition.new({
+            data_source: DatadogAPIClient::V1::FormulaAndFunctionMetricDataSource::METRICS,
+            name: "query1",
+            query: "trace.servlet.request{env:prod}",
+          }),
+        ],
+      }),
+      comparator: DatadogAPIClient::V1::SLOTimeSliceComparator::GREATER,
+      threshold: 5,
+    }),
+  }),
+  tags: [
+    "env:prod",
+  ],
+  thresholds: [
+    DatadogAPIClient::V1::SLOThreshold.new({
+      target: 97.0,
+      target_display: "97.0",
+      timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+      warning: 98,
+      warning_display: "98.0",
+    }),
+  ],
+  timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+  target_threshold: 97.0,
+  warning_threshold: 98,
 })
 p api_instance.create_slo(body)
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 # Create an SLO object returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 
 body = DatadogAPIClient::V1::ServiceLevelObjectiveRequest.new({
-type: DatadogAPIClient::V1::SLOType::METRIC,
-description: "string",
-groups: [
-"env:test",
-"role:mysql",
-],
-monitor_ids: [],
-name: "Example-Service-Level-Objective",
-query: DatadogAPIClient::V1::ServiceLevelObjectiveQuery.new({
-denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-numerator: "sum:httpservice.hits{code:2xx}.as_count()",
-}),
-tags: [
-"env:prod",
-"app:core",
-],
-thresholds: [
-DatadogAPIClient::V1::SLOThreshold.new({
-target: 97.0,
-target_display: "97.0",
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-warning: 98,
-warning_display: "98.0",
-}),
-],
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-target_threshold: 97.0,
-warning_threshold: 98,
+  type: DatadogAPIClient::V1::SLOType::METRIC,
+  description: "string",
+  groups: [
+    "env:test",
+    "role:mysql",
+  ],
+  monitor_ids: [],
+  name: "Example-Service-Level-Objective",
+  query: DatadogAPIClient::V1::ServiceLevelObjectiveQuery.new({
+    denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+    numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+  }),
+  tags: [
+    "env:prod",
+    "app:core",
+  ],
+  thresholds: [
+    DatadogAPIClient::V1::SLOThreshold.new({
+      target: 97.0,
+      target_display: "97.0",
+      timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+      warning: 98,
+      warning_display: "98.0",
+    }),
+  ],
+  timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+  target_threshold: 97.0,
+  warning_threshold: 98,
 })
 p api_instance.create_slo(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 // Create a time-slice SLO object returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
@@ -2535,50 +1277,52 @@ use datadog_api_client::datadogV1::model::ServiceLevelObjectiveRequest;
 
 #[tokio::main]
 async fn main() {
-let body = ServiceLevelObjectiveRequest::new(
-"Example-Service-Level-Objective".to_string(),
-vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS)
-.target_display("97.0".to_string())
-.warning(98.0 as f64)
-.warning_display("98.0".to_string())],
-SLOType::TIME_SLICE,
-)
-.description(Some("string".to_string()))
-.sli_specification(SLOSliSpec::SLOTimeSliceSpec(Box::new(
-SLOTimeSliceSpec::new(SLOTimeSliceCondition::new(
-SLOTimeSliceComparator::GREATER,
-SLOTimeSliceQuery::new(
-vec![SLOFormula::new("query1".to_string())],
-vec![
-SLODataSourceQueryDefinition::FormulaAndFunctionMetricQueryDefinition(
-Box::new(FormulaAndFunctionMetricQueryDefinition::new(
-FormulaAndFunctionMetricDataSource::METRICS,
-"query1".to_string(),
-"trace.servlet.request{env:prod}".to_string(),
-)),
-),
-],
-),
-5.0,
-)),
-)))
-.tags(vec!["env:prod".to_string()])
-.target_threshold(97.0 as f64)
-.timeframe(SLOTimeframe::SEVEN_DAYS)
-.warning_threshold(98.0 as f64);
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.create_slo(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = ServiceLevelObjectiveRequest::new(
+        "Example-Service-Level-Objective".to_string(),
+        vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS)
+            .target_display("97.0".to_string())
+            .warning(98.0 as f64)
+            .warning_display("98.0".to_string())],
+        SLOType::TIME_SLICE,
+    )
+    .description(Some("string".to_string()))
+    .sli_specification(SLOSliSpec::SLOTimeSliceSpec(Box::new(
+        SLOTimeSliceSpec::new(SLOTimeSliceCondition::new(
+            SLOTimeSliceComparator::GREATER,
+            SLOTimeSliceQuery::new(
+                vec![SLOFormula::new("query1".to_string())],
+                vec![
+                    SLODataSourceQueryDefinition::FormulaAndFunctionMetricQueryDefinition(
+                        Box::new(FormulaAndFunctionMetricQueryDefinition::new(
+                            FormulaAndFunctionMetricDataSource::METRICS,
+                            "query1".to_string(),
+                            "trace.servlet.request{env:prod}".to_string(),
+                        )),
+                    ),
+                ],
+            ),
+            5.0,
+        )),
+    )))
+    .tags(vec!["env:prod".to_string()])
+    .target_threshold(97.0 as f64)
+    .timeframe(SLOTimeframe::SEVEN_DAYS)
+    .warning_threshold(98.0 as f64);
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.create_slo(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 // Create an SLO object returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
@@ -2590,45 +1334,53 @@ use datadog_api_client::datadogV1::model::ServiceLevelObjectiveRequest;
 
 #[tokio::main]
 async fn main() {
-let body = ServiceLevelObjectiveRequest::new(
-"Example-Service-Level-Objective".to_string(),
-vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS)
-.target_display("97.0".to_string())
-.warning(98.0 as f64)
-.warning_display("98.0".to_string())],
-SLOType::METRIC,
-)
-.description(Some("string".to_string()))
-.groups(vec!["env:test".to_string(), "role:mysql".to_string()])
-.monitor_ids(vec![])
-.query(ServiceLevelObjectiveQuery::new(
-"sum:httpservice.hits{!code:3xx}.as_count()".to_string(),
-"sum:httpservice.hits{code:2xx}.as_count()".to_string(),
-))
-.tags(vec!["env:prod".to_string(), "app:core".to_string()])
-.target_threshold(97.0 as f64)
-.timeframe(SLOTimeframe::SEVEN_DAYS)
-.warning_threshold(98.0 as f64);
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.create_slo(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = ServiceLevelObjectiveRequest::new(
+        "Example-Service-Level-Objective".to_string(),
+        vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS)
+            .target_display("97.0".to_string())
+            .warning(98.0 as f64)
+            .warning_display("98.0".to_string())],
+        SLOType::METRIC,
+    )
+    .description(Some("string".to_string()))
+    .groups(vec!["env:test".to_string(), "role:mysql".to_string()])
+    .monitor_ids(vec![])
+    .query(ServiceLevelObjectiveQuery::new(
+        "sum:httpservice.hits{!code:3xx}.as_count()".to_string(),
+        "sum:httpservice.hits{code:2xx}.as_count()".to_string(),
+    ))
+    .tags(vec!["env:prod".to_string(), "app:core".to_string()])
+    .target_threshold(97.0 as f64)
+    .timeframe(SLOTimeframe::SEVEN_DAYS)
+    .warning_threshold(98.0 as f64);
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.create_slo(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Create a time-slice SLO object returns "OK" response
-**```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Create a time-slice SLO object returns "OK" response 
+```
 /**
-* Create a time-slice SLO object returns "OK" response
-*/
+ * Create a time-slice SLO object returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -2636,61 +1388,63 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 
 const params: v1.ServiceLevelObjectivesApiCreateSLORequest = {
-body: {
-type: "time_slice",
-description: "string",
-name: "Example-Service-Level-Objective",
-sliSpecification: {
-timeSlice: {
-query: {
-formulas: [
-{
-formula: "query1",
-},
-],
-queries: [
-{
-dataSource: "metrics",
-name: "query1",
-query: "trace.servlet.request{env:prod}",
-},
-],
-},
-comparator: ">",
-threshold: 5,
-},
-},
-tags: ["env:prod"],
-thresholds: [
-{
-target: 97.0,
-targetDisplay: "97.0",
-timeframe: "7d",
-warning: 98,
-warningDisplay: "98.0",
-},
-],
-timeframe: "7d",
-targetThreshold: 97.0,
-warningThreshold: 98,
-},
+  body: {
+    type: "time_slice",
+    description: "string",
+    name: "Example-Service-Level-Objective",
+    sliSpecification: {
+      timeSlice: {
+        query: {
+          formulas: [
+            {
+              formula: "query1",
+            },
+          ],
+          queries: [
+            {
+              dataSource: "metrics",
+              name: "query1",
+              query: "trace.servlet.request{env:prod}",
+            },
+          ],
+        },
+        comparator: ">",
+        threshold: 5,
+      },
+    },
+    tags: ["env:prod"],
+    thresholds: [
+      {
+        target: 97.0,
+        targetDisplay: "97.0",
+        timeframe: "7d",
+        warning: 98,
+        warningDisplay: "98.0",
+      },
+    ],
+    timeframe: "7d",
+    targetThreshold: 97.0,
+    warningThreshold: 98,
+  },
 };
 
 apiInstance
-.createSLO(params)
-.then((data: v1.SLOListResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createSLO(params)
+  .then((data: v1.SLOListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
 ```
-Create an SLO object returns "OK" response
-**```
+
+Copy
+#####  Create an SLO object returns "OK" response 
+```
 /**
-* Create an SLO object returns "OK" response
-*/
+ * Create an SLO object returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -2698,57 +1452,72 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 
 const params: v1.ServiceLevelObjectivesApiCreateSLORequest = {
-body: {
-type: "metric",
-description: "string",
-groups: ["env:test", "role:mysql"],
-monitorIds: [],
-name: "Example-Service-Level-Objective",
-query: {
-denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-numerator: "sum:httpservice.hits{code:2xx}.as_count()",
-},
-tags: ["env:prod", "app:core"],
-thresholds: [
-{
-target: 97.0,
-targetDisplay: "97.0",
-timeframe: "7d",
-warning: 98,
-warningDisplay: "98.0",
-},
-],
-timeframe: "7d",
-targetThreshold: 97.0,
-warningThreshold: 98,
-},
+  body: {
+    type: "metric",
+    description: "string",
+    groups: ["env:test", "role:mysql"],
+    monitorIds: [],
+    name: "Example-Service-Level-Objective",
+    query: {
+      denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+      numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+    },
+    tags: ["env:prod", "app:core"],
+    thresholds: [
+      {
+        target: 97.0,
+        targetDisplay: "97.0",
+        timeframe: "7d",
+        warning: 98,
+        warningDisplay: "98.0",
+      },
+    ],
+    timeframe: "7d",
+    targetThreshold: 97.0,
+    warningThreshold: 98,
+  },
 };
 
 apiInstance
-.createSLO(params)
-.then((data: v1.SLOListResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createSLO(params)
+  .then((data: v1.SLOListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Search for SLOs- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slo/searchhttps://api.ap2.datadoghq.com/api/v1/slo/searchhttps://api.datadoghq.eu/api/v1/slo/searchhttps://api.ddog-gov.com/api/v1/slo/searchhttps://api.datadoghq.com/api/v1/slo/searchhttps://api.us3.datadoghq.com/api/v1/slo/searchhttps://api.us5.datadoghq.com/api/v1/slo/search
-### OverviewGet a list of service level objective objects for your organization.
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Query StringsName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Search for SLOs](https://docs.datadoghq.com/api/latest/service-level-objectives/#search-for-slos)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#search-for-slos-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slo/searchhttps://api.ap2.datadoghq.com/api/v1/slo/searchhttps://api.datadoghq.eu/api/v1/slo/searchhttps://api.ddog-gov.com/api/v1/slo/searchhttps://api.datadoghq.com/api/v1/slo/searchhttps://api.us3.datadoghq.com/api/v1/slo/searchhttps://api.us5.datadoghq.com/api/v1/slo/search
+### Overview
+Get a list of service level objective objects for your organization. This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Query Strings
+Name
 Type
 Description
 query
 string
-The query string to filter results based on SLO names.
-Some examples of queries include `service:<service-name>`
-and `<slo-name>`.page[size]
+The query string to filter results based on SLO names. Some examples of queries include `service:<service-name>` and `<slo-name>`.
+page[size]
 integer
 The number of files to return in the response `[default=10]`.
 page[number]
@@ -2757,15 +1526,19 @@ The identifier of the first page to return. This parameter is used for the pagin
 include_facets
 boolean
 Whether or not to return facet information in the response `[default=false]`.
-### Response- 200
-- 400
-- 403
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#SearchSLO-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#SearchSLO-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#SearchSLO-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#SearchSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A search SLO response containing results from the search query.
-Expand All
 Field
 Type
 Description
@@ -2858,11 +1631,11 @@ object
 A service level objective ID and attributes.
 attributes
 object
-A service level objective object includes a service level indicator, thresholds
-for one or more timeframes, and metadata (`name`, `description`, and `tags`).all_tags
+A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, and `tags`).
+all_tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).created_at
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty).
+created_at
 int64
 Creation timestamp (UNIX time in seconds)
 Always included in service level objective responses.
@@ -2881,21 +1654,21 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.env_tags
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+env_tags
 [string]
 Tags with the `env` tag key.
 groups
 [string]
-A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty.modified_at
+A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective. Included in service level objective responses if it is not empty.
+modified_at
 int64
 Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective.name
+A list of monitor ids that defines the scope of a monitor service level objective.
+name
 string
 The name of the service level objective object.
 overall_status
@@ -2909,8 +1682,8 @@ double
 Remaining error budget of the SLO in percentage.
 indexed_at
 int64
-timestamp (UNIX time in seconds) of when the SLO status and error budget
-were calculated. raw_error_budget_remaining
+timestamp (UNIX time in seconds) of when the SLO status and error budget were calculated.
+raw_error_budget_remaining
 object
 Error budget remaining for an SLO.
 unit
@@ -2924,8 +1697,8 @@ int64
 The amount of decimal places the SLI value is accurate to.
 state
 enum
-State of the SLO.
-Allowed enum values: `breached,warning,ok,no_data`status
+State of the SLO. Allowed enum values: `breached,warning,ok,no_data`
+status
 double
 The status of the SLO.
 target
@@ -2933,19 +1706,17 @@ double
 The target of the SLO.
 timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom` query
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator
 string
 A Datadog metric query for total (valid) events.
 metrics
 [string]
-Metric names used in the query's numerator and denominator.
-This field will return null and will be implemented in the next version of this endpoint.numerator
+Metric names used in the query's numerator and denominator. This field will return null and will be implemented in the next version of this endpoint.
+numerator
 string
 A Datadog metric query for good events.
 service_tags
@@ -2953,8 +1724,8 @@ service_tags
 Tags with the `service` tag key.
 slo_type
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice` status
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+status
 object
 Status of the SLO's primary timeframe.
 calculation_error
@@ -2965,8 +1736,8 @@ double
 Remaining error budget of the SLO in percentage.
 indexed_at
 int64
-timestamp (UNIX time in seconds) of when the SLO status and error budget
-were calculated. raw_error_budget_remaining
+timestamp (UNIX time in seconds) of when the SLO status and error budget were calculated.
+raw_error_budget_remaining
 object
 Error budget remaining for an SLO.
 unit
@@ -2983,31 +1754,31 @@ int64
 The number of decimal places the SLI value is accurate to.
 state
 enum
-State of the SLO.
-Allowed enum values: `breached,warning,ok,no_data`team_tags
+State of the SLO. Allowed enum values: `breached,warning,ok,no_data`
+team_tags
 [string]
 Tags with the `team` tag key.
 thresholds
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options.
-Allowed enum values: `7d,30d,90d`warning
+The SLO time window options. Allowed enum values: `7d,30d,90d`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.id
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -3067,226 +1838,251 @@ string
 Type of pagination.
 ```
 {
-"data": {
-"attributes": {
-"facets": {
-"all_tags": [
-{
-"count": "integer",
-"name": "string"
+  "data": {
+    "attributes": {
+      "facets": {
+        "all_tags": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ],
+        "creator_name": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ],
+        "env_tags": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ],
+        "service_tags": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ],
+        "slo_type": [
+          {
+            "count": "integer",
+            "name": "number"
+          }
+        ],
+        "target": [
+          {
+            "count": "integer",
+            "name": "number"
+          }
+        ],
+        "team_tags": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ],
+        "timeframe": [
+          {
+            "count": "integer",
+            "name": "string"
+          }
+        ]
+      },
+      "slos": [
+        {
+          "data": {
+            "attributes": {
+              "all_tags": [
+                "env:prod",
+                "app:core"
+              ],
+              "created_at": "integer",
+              "creator": {
+                "email": "string",
+                "id": "integer",
+                "name": "string"
+              },
+              "description": "string",
+              "env_tags": [],
+              "groups": [
+                "env:prod",
+                "role:mysql"
+              ],
+              "modified_at": "integer",
+              "monitor_ids": [],
+              "name": "Custom Metric SLO",
+              "overall_status": [
+                {
+                  "error": "string",
+                  "error_budget_remaining": 100,
+                  "indexed_at": 1662496260,
+                  "raw_error_budget_remaining": {
+                    "unit": "requests",
+                    "value": 60
+                  },
+                  "span_precision": 2,
+                  "state": "ok",
+                  "status": 100,
+                  "target": 99,
+                  "timeframe": "30d"
+                }
+              ],
+              "query": {
+                "denominator": "sum:my.custom.metric{*}.as_count()",
+                "metrics": [
+                  "my.custom.metric",
+                  "my.other.custom.metric"
+                ],
+                "numerator": "sum:my.custom.metric{type:good}.as_count()"
+              },
+              "service_tags": [],
+              "slo_type": "metric",
+              "status": {
+                "calculation_error": "string",
+                "error_budget_remaining": 100,
+                "indexed_at": 1662496260,
+                "raw_error_budget_remaining": {
+                  "unit": "requests",
+                  "value": 60
+                },
+                "sli": 100,
+                "span_precision": 2,
+                "state": "ok"
+              },
+              "team_tags": [],
+              "thresholds": [
+                {
+                  "target": 99.9,
+                  "target_display": "99.9",
+                  "timeframe": "30d",
+                  "warning": 90,
+                  "warning_display": "90.0"
+                }
+              ]
+            },
+            "id": "string",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "type": ""
+  },
+  "links": {
+    "first": "string",
+    "last": "string",
+    "next": "string",
+    "prev": "string",
+    "self": "string"
+  },
+  "meta": {
+    "pagination": {
+      "first_number": "integer",
+      "last_number": "integer",
+      "next_number": "integer",
+      "number": "integer",
+      "prev_number": "integer",
+      "size": "integer",
+      "total": "integer",
+      "type": "string"
+    }
+  }
 }
-],
-"creator_name": [
-{
-"count": "integer",
-"name": "string"
-}
-],
-"env_tags": [
-{
-"count": "integer",
-"name": "string"
-}
-],
-"service_tags": [
-{
-"count": "integer",
-"name": "string"
-}
-],
-"slo_type": [
-{
-"count": "integer",
-"name": "number"
-}
-],
-"target": [
-{
-"count": "integer",
-"name": "number"
-}
-],
-"team_tags": [
-{
-"count": "integer",
-"name": "string"
-}
-],
-"timeframe": [
-{
-"count": "integer",
-"name": "string"
-}
-]
-},
-"slos": [
-{
-"data": {
-"attributes": {
-"all_tags": [
-"env:prod",
-"app:core"
-],
-"created_at": "integer",
-"creator": {
-"email": "string",
-"id": "integer",
-"name": "string"
-},
-"description": "string",
-"env_tags": [],
-"groups": [
-"env:prod",
-"role:mysql"
-],
-"modified_at": "integer",
-"monitor_ids": [],
-"name": "Custom Metric SLO",
-"overall_status": [
-{
-"error": "string",
-"error_budget_remaining": 100,
-"indexed_at": 1662496260,
-"raw_error_budget_remaining": {
-"unit": "requests",
-"value": 60
-},
-"span_precision": 2,
-"state": "ok",
-"status": 100,
-"target": 99,
-"timeframe": "30d"
-}
-],
-"query": {
-"denominator": "sum:my.custom.metric{*}.as_count()",
-"metrics": [
-"my.custom.metric",
-"my.other.custom.metric"
-],
-"numerator": "sum:my.custom.metric{type:good}.as_count()"
-},
-"service_tags": [],
-"slo_type": "metric",
-"status": {
-"calculation_error": "string",
-"error_budget_remaining": 100,
-"indexed_at": 1662496260,
-"raw_error_budget_remaining": {
-"unit": "requests",
-"value": 60
-},
-"sli": 100,
-"span_precision": 2,
-"state": "ok"
-},
-"team_tags": [],
-"thresholds": [
-{
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-]
-},
-"id": "string",
-"type": "string"
-}
-}
-]
-},
-"type": ""
-},
-"links": {
-"first": "string",
-"last": "string",
-"next": "string",
-"prev": "string",
-"self": "string"
-},
-"meta": {
-"pagination": {
-"first_number": "integer",
-"last_number": "integer",
-"next_number": "integer",
-"number": "integer",
-"prev_number": "integer",
-"size": "integer",
-"total": "integer",
-"type": "string"
-}
-}
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Search for SLOsCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/search" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Search for SLOs
+Copy
+```
+                  # Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/search" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Search for SLOs```
+
+#####  Search for SLOs
+```
 """
 Search for SLOs returns "OK" response
 """
@@ -3300,21 +2096,30 @@ SLO_DATA_0_NAME = environ["SLO_DATA_0_NAME"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.search_slo(
-query=SLO_DATA_0_NAME,
-page_size=20,
-page_number=0,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.search_slo(
+        query=SLO_DATA_0_NAME,
+        page_size=20,
+        page_number=0,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Search for SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Search for SLOs
+```
 # Search for SLOs returns "OK" response
 
 require "datadog_api_client"
@@ -3323,18 +2128,27 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 # there is a valid "slo" in the system
 SLO_DATA_0_NAME = ENV["SLO_DATA_0_NAME"]
 opts = {
-query: SLO_DATA_0_NAME,
-page_size: 20,
-page_number: 0,
+  query: SLO_DATA_0_NAME,
+  page_size: 20,
+  page_number: 0,
 }
 p api_instance.search_slo(opts)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Search for SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Search for SLOs
+```
 // Search for SLOs returns "OK" response
 
 package main
@@ -3364,16 +2178,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.SearchSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Search for SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Search for SLOs
+```
 // Search for SLOs returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -3383,37 +2206,46 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi.SearchSLOOptional
 import com.datadog.api.client.v1.model.SearchSLOResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_NAME = System.getenv("SLO_DATA_0_NAME");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_NAME = System.getenv("SLO_DATA_0_NAME");
 
-try {
-SearchSLOResponse result =
-apiInstance.searchSLO(
-new SearchSLOOptionalParameters()
-.query(SLO_DATA_0_NAME)
-.pageSize(20L)
-.pageNumber(0L));
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#searchSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SearchSLOResponse result =
+          apiInstance.searchSLO(
+              new SearchSLOOptionalParameters()
+                  .query(SLO_DATA_0_NAME)
+                  .pageSize(20L)
+                  .pageNumber(0L));
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#searchSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Search for SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Search for SLOs
+```
 // Search for SLOs returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::SearchSLOOptionalParams;
@@ -3421,34 +2253,43 @@ use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObj
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_name = std::env::var("SLO_DATA_0_NAME").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.search_slo(
-SearchSLOOptionalParams::default()
-.query(slo_data_0_name.clone())
-.page_size(20)
-.page_number(0),
-)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_name = std::env::var("SLO_DATA_0_NAME").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .search_slo(
+            SearchSLOOptionalParams::default()
+                .query(slo_data_0_name.clone())
+                .page_size(20)
+                .page_number(0),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Search for SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Search for SLOs
+```
 /**
-* Search for SLOs returns "OK" response
-*/
+ * Search for SLOs returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -3459,29 +2300,45 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_NAME = process.env.SLO_DATA_0_NAME as string;
 
 const params: v1.ServiceLevelObjectivesApiSearchSLORequest = {
-query: SLO_DATA_0_NAME,
-pageSize: 20,
-pageNumber: 0,
+  query: SLO_DATA_0_NAME,
+  pageSize: 20,
+  pageNumber: 0,
 };
 
 apiInstance
-.searchSLO(params)
-.then((data: v1.SearchSLOResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .searchSLO(params)
+  .then((data: v1.SearchSLOResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get all SLOs- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slohttps://api.ap2.datadoghq.com/api/v1/slohttps://api.datadoghq.eu/api/v1/slohttps://api.ddog-gov.com/api/v1/slohttps://api.datadoghq.com/api/v1/slohttps://api.us3.datadoghq.com/api/v1/slohttps://api.us5.datadoghq.com/api/v1/slo
-### OverviewGet a list of service level objective objects for your organization.
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Query StringsName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get all SLOs](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-all-slos)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-all-slos-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slohttps://api.ap2.datadoghq.com/api/v1/slohttps://api.datadoghq.eu/api/v1/slohttps://api.ddog-gov.com/api/v1/slohttps://api.datadoghq.com/api/v1/slohttps://api.us3.datadoghq.com/api/v1/slohttps://api.us5.datadoghq.com/api/v1/slo
+### Overview
+Get a list of service level objective objects for your organization. This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Query Strings
+Name
 Type
 Description
 ids
@@ -3502,16 +2359,20 @@ The number of SLOs to return in the response.
 offset
 integer
 The specific offset to use as the beginning of the returned response.
-### Response- 200
-- 400
-- 403
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#ListSLOs-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#ListSLOs-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#ListSLOs-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#ListSLOs-404-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#ListSLOs-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A response with one or more service level objective.
-Expand All
 Field
 Type
 Description
@@ -3537,13 +2398,12 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.id
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -3553,124 +2413,112 @@ Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.monitor_tags
+A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+monitor_tags
 [string]
-The union of monitor tags for all monitors referenced by the `monitor_ids`
-field.
-Always included in service level objective responses for monitor-based service level
-objectives (but may be empty). Ignored in create/update requests. Does not
-affect which monitors are included in the service level objective (that is
-determined entirely by the `monitor_ids` field).name [*required*]
+The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field).
+name [_required_]
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds [*required*]
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds [_required_]
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type [*required*]
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type [_required_]
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.errors
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+errors
 [string]
-An array of error messages. Each endpoint documents how/whether this field is
-used. metadata
+An array of error messages. Each endpoint documents how/whether this field is used.
+metadata
 object
 The metadata object containing additional information about the list of SLOs.
 page
@@ -3684,159 +2532,189 @@ int64
 The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.
 ```
 {
-"data": [
-{
-"created_at": "integer",
-"creator": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"description": "string",
-"groups": [
-"env:prod",
-"role:mysql"
-],
-"id": "string",
-"modified_at": "integer",
-"monitor_ids": [],
-"monitor_tags": [],
-"name": "Custom Metric SLO",
-"query": {
-"denominator": "sum:my.custom.metric{*}.as_count()",
-"numerator": "sum:my.custom.metric{type:good}.as_count()"
-},
-"sli_specification": {
-"time_slice": {
-"comparator": ">",
-"query": {
-"formulas": [
-{
-"formula": "query1 - default_zero(query2)"
+  "data": [
+    {
+      "created_at": "integer",
+      "creator": {
+        "email": "string",
+        "handle": "string",
+        "name": "string"
+      },
+      "description": "string",
+      "groups": [
+        "env:prod",
+        "role:mysql"
+      ],
+      "id": "string",
+      "modified_at": "integer",
+      "monitor_ids": [],
+      "monitor_tags": [],
+      "name": "Custom Metric SLO",
+      "query": {
+        "denominator": "sum:my.custom.metric{*}.as_count()",
+        "numerator": "sum:my.custom.metric{type:good}.as_count()"
+      },
+      "sli_specification": {
+        "time_slice": {
+          "comparator": ">",
+          "query": {
+            "formulas": [
+              {
+                "formula": "query1 - default_zero(query2)"
+              }
+            ],
+            "queries": [
+              []
+            ]
+          },
+          "query_interval_seconds": 300,
+          "threshold": 5
+        }
+      },
+      "tags": [
+        "env:prod",
+        "app:core"
+      ],
+      "target_threshold": 99.9,
+      "thresholds": [
+        {
+          "target": 99.9,
+          "target_display": "99.9",
+          "timeframe": "30d",
+          "warning": 90,
+          "warning_display": "90.0"
+        }
+      ],
+      "timeframe": "30d",
+      "type": "metric",
+      "warning_threshold": 99.95
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "page": {
+      "total_count": "integer",
+      "total_filtered_count": "integer"
+    }
+  }
 }
-],
-"queries": [
-[]
-]
-},
-"query_interval_seconds": 300,
-"threshold": 5
-}
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"target_threshold": 99.9,
-"thresholds": [
-{
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-],
-"timeframe": "30d",
-"type": "metric",
-"warning_threshold": 99.95
-}
-],
-"errors": [],
-"metadata": {
-"page": {
-"total_count": "integer",
-"total_filtered_count": "integer"
-}
-}
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
 
-Get all SLOsCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
+
+
+#####  Get all SLOs
+Copy
+```
+                  # Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get all SLOs```
+
+#####  Get all SLOs
+```
 """
 Get all SLOs returns "OK" response
 """
@@ -3850,19 +2728,28 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.list_slos(
-ids=SLO_DATA_0_ID,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.list_slos(
+        ids=SLO_DATA_0_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get all SLOs
+```
 # Get all SLOs returns "OK" response
 
 require "datadog_api_client"
@@ -3871,16 +2758,25 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 # there is a valid "slo" in the system
 SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 opts = {
-ids: SLO_DATA_0_ID,
+  ids: SLO_DATA_0_ID,
 }
 p api_instance.list_slos(opts)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get all SLOs
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
@@ -3896,12 +2792,21 @@ dog.search_service_level_objective(slo_ids: slo_ids, offset: 0)
 query = 'my team'
 dog.search_service_level_objective(query: query, offset: 0)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get all SLOs
+```
 // Get all SLOs returns "OK" response
 
 package main
@@ -3931,16 +2836,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.ListSLOs`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get all SLOs
+```
 // Get all SLOs returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -3950,38 +2864,47 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi.ListSLOsOptionalP
 import com.datadog.api.client.v1.model.SLOListResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
 
-try {
-SLOListResponse result =
-apiInstance.listSLOs(new ListSLOsOptionalParameters().ids(SLO_DATA_0_ID));
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#listSLOs");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOListResponse result =
+          apiInstance.listSLOs(new ListSLOsOptionalParameters().ids(SLO_DATA_0_ID));
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#listSLOs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get all SLOs
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 initialize(**options)
@@ -3996,12 +2919,21 @@ query = "my team"
 
 api.ServiceLevelObjective.get_all(query=query, offset=0)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Get all SLOs
+```
 // Get all SLOs returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ListSLOsOptionalParams;
@@ -4009,29 +2941,38 @@ use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObj
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.list_slos(ListSLOsOptionalParams::default().ids(slo_data_0_id.clone()))
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .list_slos(ListSLOsOptionalParams::default().ids(slo_data_0_id.clone()))
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get all SLOs```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get all SLOs
+```
 /**
-* Get all SLOs returns "OK" response
-*/
+ * Get all SLOs returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -4042,36 +2983,55 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 
 const params: v1.ServiceLevelObjectivesApiListSLOsRequest = {
-ids: SLO_DATA_0_ID,
+  ids: SLO_DATA_0_ID,
 };
 
 apiInstance
-.listSLOs(params)
-.then((data: v1.SLOListResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .listSLOs(params)
+  .then((data: v1.SLOListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Update an SLO- v1 (latest)
-PUT https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
-### OverviewUpdate the specified service level objective object.
-This endpoint requires the `slos_write` permission.OAuth apps require the `slos_write` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Update an SLO](https://docs.datadoghq.com/api/latest/service-level-objectives/#update-an-slo)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#update-an-slo-v1)
+
+
+PUT https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
+### Overview
+Update the specified service level objective object. This endpoint requires the `slos_write` permission.
+OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-slo_id [*required*]
+slo_id [_required_]
 string
 The ID of the service level objective object.
-### Request#### Body Data (required)The edited service level objective request object.
-- Model
-- Example
-Expand All
+### Request
+#### Body Data (required)
+The edited service level objective request object.
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Field
 Type
 Description
@@ -4094,13 +3054,12 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.id
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -4110,149 +3069,144 @@ Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.monitor_tags
+A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+monitor_tags
 [string]
-The union of monitor tags for all monitors referenced by the `monitor_ids`
-field.
-Always included in service level objective responses for monitor-based service level
-objectives (but may be empty). Ignored in create/update requests. Does not
-affect which monitors are included in the service level objective (that is
-determined entirely by the `monitor_ids` field).name [*required*]
+The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field).
+name [_required_]
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds [*required*]
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds [_required_]
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type [*required*]
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type [_required_]
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.```
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+```
 {
-"type": "metric",
-"name": "Custom Metric SLO",
-"thresholds": [
-{
-"target": 97.0,
-"timeframe": "7d",
-"warning": 98.0
+  "type": "metric",
+  "name": "Custom Metric SLO",
+  "thresholds": [
+    {
+      "target": 97.0,
+      "timeframe": "7d",
+      "warning": 98.0
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98,
+  "query": {
+    "numerator": "sum:httpservice.hits{code:2xx}.as_count()",
+    "denominator": "sum:httpservice.hits{!code:3xx}.as_count()"
+  }
 }
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98,
-"query": {
-"numerator": "sum:httpservice.hits{code:2xx}.as_count()",
-"denominator": "sum:httpservice.hits{!code:3xx}.as_count()"
-}
-}
-```### Response- 200
-- 400
-- 403
-- 404
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#UpdateSLO-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#UpdateSLO-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#UpdateSLO-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#UpdateSLO-404-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#UpdateSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A response with one or more service level objective.
-Expand All
 Field
 Type
 Description
@@ -4278,13 +3232,12 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 100) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.id
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -4294,124 +3247,112 @@ Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.monitor_tags
+A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+monitor_tags
 [string]
-The union of monitor tags for all monitors referenced by the `monitor_ids`
-field.
-Always included in service level objective responses for monitor-based service level
-objectives (but may be empty). Ignored in create/update requests. Does not
-affect which monitors are included in the service level objective (that is
-determined entirely by the `monitor_ids` field).name [*required*]
+The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor-based service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field).
+name [_required_]
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds [*required*]
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds [_required_]
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type [*required*]
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type [_required_]
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.errors
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+errors
 [string]
-An array of error messages. Each endpoint documents how/whether this field is
-used. metadata
+An array of error messages. Each endpoint documents how/whether this field is used.
+metadata
 object
 The metadata object containing additional information about the list of SLOs.
 page
@@ -4425,178 +3366,210 @@ int64
 The total number of resources that match the parameters and filters in the request. This attribute can be used by a client to determine the total number of pages.
 ```
 {
-"data": [
-{
-"created_at": "integer",
-"creator": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"description": "string",
-"groups": [
-"env:prod",
-"role:mysql"
-],
-"id": "string",
-"modified_at": "integer",
-"monitor_ids": [],
-"monitor_tags": [],
-"name": "Custom Metric SLO",
-"query": {
-"denominator": "sum:my.custom.metric{*}.as_count()",
-"numerator": "sum:my.custom.metric{type:good}.as_count()"
-},
-"sli_specification": {
-"time_slice": {
-"comparator": ">",
-"query": {
-"formulas": [
-{
-"formula": "query1 - default_zero(query2)"
+  "data": [
+    {
+      "created_at": "integer",
+      "creator": {
+        "email": "string",
+        "handle": "string",
+        "name": "string"
+      },
+      "description": "string",
+      "groups": [
+        "env:prod",
+        "role:mysql"
+      ],
+      "id": "string",
+      "modified_at": "integer",
+      "monitor_ids": [],
+      "monitor_tags": [],
+      "name": "Custom Metric SLO",
+      "query": {
+        "denominator": "sum:my.custom.metric{*}.as_count()",
+        "numerator": "sum:my.custom.metric{type:good}.as_count()"
+      },
+      "sli_specification": {
+        "time_slice": {
+          "comparator": ">",
+          "query": {
+            "formulas": [
+              {
+                "formula": "query1 - default_zero(query2)"
+              }
+            ],
+            "queries": [
+              []
+            ]
+          },
+          "query_interval_seconds": 300,
+          "threshold": 5
+        }
+      },
+      "tags": [
+        "env:prod",
+        "app:core"
+      ],
+      "target_threshold": 99.9,
+      "thresholds": [
+        {
+          "target": 99.9,
+          "target_display": "99.9",
+          "timeframe": "30d",
+          "warning": 90,
+          "warning_display": "90.0"
+        }
+      ],
+      "timeframe": "30d",
+      "type": "metric",
+      "warning_threshold": 99.95
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "page": {
+      "total_count": "integer",
+      "total_filtered_count": "integer"
+    }
+  }
 }
-],
-"queries": [
-[]
-]
-},
-"query_interval_seconds": 300,
-"threshold": 5
-}
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"target_threshold": 99.9,
-"thresholds": [
-{
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-],
-"timeframe": "30d",
-"type": "metric",
-"warning_threshold": 99.95
-}
-],
-"errors": [],
-"metadata": {
-"page": {
-"total_count": "integer",
-"total_filtered_count": "integer"
-}
-}
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Update an SLO returns "OK" responseCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport slo_id="CHANGE_ME"# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Update an SLO returns "OK" response
+Copy
+```
+                          # Path parameters  
+export slo_id="CHANGE_ME"  
+# Curl command  
+curl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"type": "metric",
-"name": "Custom Metric SLO",
-"thresholds": [
-{
-"target": 97.0,
-"timeframe": "7d",
-"warning": 98.0
+  "type": "metric",
+  "name": "Custom Metric SLO",
+  "thresholds": [
+    {
+      "target": 97.0,
+      "timeframe": "7d",
+      "warning": 98.0
+    }
+  ],
+  "timeframe": "7d",
+  "target_threshold": 97.0,
+  "warning_threshold": 98,
+  "query": {
+    "numerator": "sum:httpservice.hits{code:2xx}.as_count()",
+    "denominator": "sum:httpservice.hits{!code:3xx}.as_count()"
+  }
 }
-],
-"timeframe": "7d",
-"target_threshold": 97.0,
-"warning_threshold": 98,
-"query": {
-"numerator": "sum:httpservice.hits{code:2xx}.as_count()",
-"denominator": "sum:httpservice.hits{!code:3xx}.as_count()"
-}
-}
-EOF
+EOF  
 
+                        
 ```
-Update an SLO returns "OK" response```
+
+#####  Update an SLO returns "OK" response
+```
 // Update an SLO returns "OK" response
 
 package main
@@ -4621,16 +3594,16 @@ func main() {
 		Name: SloData0Name,
 		Thresholds: []datadogV1.SLOThreshold{
 			{
-				Target: 97.0,
+				Target:    97.0,
 				Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS,
-				Warning: datadog.PtrFloat64(98.0),
+				Warning:   datadog.PtrFloat64(98.0),
 			},
 		},
-		Timeframe: datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
-		TargetThreshold: datadog.PtrFloat64(97.0),
+		Timeframe:        datadogV1.SLOTIMEFRAME_SEVEN_DAYS.Ptr(),
+		TargetThreshold:  datadog.PtrFloat64(97.0),
 		WarningThreshold: datadog.PtrFloat64(98),
 		Query: &datadogV1.ServiceLevelObjectiveQuery{
-			Numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+			Numerator:   "sum:httpservice.hits{code:2xx}.as_count()",
 			Denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
 		},
 	}
@@ -4645,16 +3618,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.UpdateSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Update an SLO returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Update an SLO returns "OK" response
+```
 // Update an SLO returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -4669,51 +3651,60 @@ import com.datadog.api.client.v1.model.ServiceLevelObjectiveQuery;
 import java.util.Collections;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
-String SLO_DATA_0_NAME = System.getenv("SLO_DATA_0_NAME");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    String SLO_DATA_0_NAME = System.getenv("SLO_DATA_0_NAME");
 
-ServiceLevelObjective body =
-new ServiceLevelObjective()
-.type(SLOType.METRIC)
-.name(SLO_DATA_0_NAME)
-.thresholds(
-Collections.singletonList(
-new SLOThreshold()
-.target(97.0)
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.warning(98.0)))
-.timeframe(SLOTimeframe.SEVEN_DAYS)
-.targetThreshold(97.0)
-.warningThreshold(98.0)
-.query(
-new ServiceLevelObjectiveQuery()
-.numerator("sum:httpservice.hits{code:2xx}.as_count()")
-.denominator("sum:httpservice.hits{!code:3xx}.as_count()"));
+    ServiceLevelObjective body =
+        new ServiceLevelObjective()
+            .type(SLOType.METRIC)
+            .name(SLO_DATA_0_NAME)
+            .thresholds(
+                Collections.singletonList(
+                    new SLOThreshold()
+                        .target(97.0)
+                        .timeframe(SLOTimeframe.SEVEN_DAYS)
+                        .warning(98.0)))
+            .timeframe(SLOTimeframe.SEVEN_DAYS)
+            .targetThreshold(97.0)
+            .warningThreshold(98.0)
+            .query(
+                new ServiceLevelObjectiveQuery()
+                    .numerator("sum:httpservice.hits{code:2xx}.as_count()")
+                    .denominator("sum:httpservice.hits{!code:3xx}.as_count()"));
 
-try {
-SLOListResponse result = apiInstance.updateSLO(SLO_DATA_0_ID, body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#updateSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
+    try {
+      SLOListResponse result = apiInstance.updateSLO(SLO_DATA_0_ID, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#updateSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
-}
-}
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Update an SLO returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Update an SLO returns "OK" response
+```
 """
 Update an SLO returns "OK" response
 """
@@ -4732,37 +3723,46 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 SLO_DATA_0_NAME = environ["SLO_DATA_0_NAME"]
 
 body = ServiceLevelObjective(
-type=SLOType.METRIC,
-name=SLO_DATA_0_NAME,
-thresholds=[
-SLOThreshold(
-target=97.0,
-timeframe=SLOTimeframe.SEVEN_DAYS,
-warning=98.0,
-),
-],
-timeframe=SLOTimeframe.SEVEN_DAYS,
-target_threshold=97.0,
-warning_threshold=98.0,
-query=ServiceLevelObjectiveQuery(
-numerator="sum:httpservice.hits{code:2xx}.as_count()",
-denominator="sum:httpservice.hits{!code:3xx}.as_count()",
-),
+    type=SLOType.METRIC,
+    name=SLO_DATA_0_NAME,
+    thresholds=[
+        SLOThreshold(
+            target=97.0,
+            timeframe=SLOTimeframe.SEVEN_DAYS,
+            warning=98.0,
+        ),
+    ],
+    timeframe=SLOTimeframe.SEVEN_DAYS,
+    target_threshold=97.0,
+    warning_threshold=98.0,
+    query=ServiceLevelObjectiveQuery(
+        numerator="sum:httpservice.hits{code:2xx}.as_count()",
+        denominator="sum:httpservice.hits{!code:3xx}.as_count()",
+    ),
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.update_slo(slo_id=SLO_DATA_0_ID, body=body)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.update_slo(slo_id=SLO_DATA_0_ID, body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Update an SLO returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Update an SLO returns "OK" response
+```
 # Update an SLO returns "OK" response
 
 require "datadog_api_client"
@@ -4773,31 +3773,40 @@ SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 SLO_DATA_0_NAME = ENV["SLO_DATA_0_NAME"]
 
 body = DatadogAPIClient::V1::ServiceLevelObjective.new({
-type: DatadogAPIClient::V1::SLOType::METRIC,
-name: SLO_DATA_0_NAME,
-thresholds: [
-DatadogAPIClient::V1::SLOThreshold.new({
-target: 97.0,
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-warning: 98.0,
-}),
-],
-timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-target_threshold: 97.0,
-warning_threshold: 98,
-query: DatadogAPIClient::V1::ServiceLevelObjectiveQuery.new({
-numerator: "sum:httpservice.hits{code:2xx}.as_count()",
-denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-}),
+  type: DatadogAPIClient::V1::SLOType::METRIC,
+  name: SLO_DATA_0_NAME,
+  thresholds: [
+    DatadogAPIClient::V1::SLOThreshold.new({
+      target: 97.0,
+      timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+      warning: 98.0,
+    }),
+  ],
+  timeframe: DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+  target_threshold: 97.0,
+  warning_threshold: 98,
+  query: DatadogAPIClient::V1::ServiceLevelObjectiveQuery.new({
+    numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+    denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+  }),
 })
 p api_instance.update_slo(SLO_DATA_0_ID, body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Update an SLO returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Update an SLO returns "OK" response
+```
 // Update an SLO returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
@@ -4809,40 +3818,49 @@ use datadog_api_client::datadogV1::model::ServiceLevelObjectiveQuery;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let slo_data_0_name = std::env::var("SLO_DATA_0_NAME").unwrap();
-let body = ServiceLevelObjective::new(
-slo_data_0_name.clone(),
-vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS).warning(98.0 as f64)],
-SLOType::METRIC,
-)
-.query(ServiceLevelObjectiveQuery::new(
-"sum:httpservice.hits{!code:3xx}.as_count()".to_string(),
-"sum:httpservice.hits{code:2xx}.as_count()".to_string(),
-))
-.target_threshold(97.0 as f64)
-.timeframe(SLOTimeframe::SEVEN_DAYS)
-.warning_threshold(98.0 as f64);
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.update_slo(slo_data_0_id.clone(), body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let slo_data_0_name = std::env::var("SLO_DATA_0_NAME").unwrap();
+    let body = ServiceLevelObjective::new(
+        slo_data_0_name.clone(),
+        vec![SLOThreshold::new(97.0, SLOTimeframe::SEVEN_DAYS).warning(98.0 as f64)],
+        SLOType::METRIC,
+    )
+    .query(ServiceLevelObjectiveQuery::new(
+        "sum:httpservice.hits{!code:3xx}.as_count()".to_string(),
+        "sum:httpservice.hits{code:2xx}.as_count()".to_string(),
+    ))
+    .target_threshold(97.0 as f64)
+    .timeframe(SLOTimeframe::SEVEN_DAYS)
+    .warning_threshold(98.0 as f64);
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.update_slo(slo_data_0_id.clone(), body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Update an SLO returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Update an SLO returns "OK" response
+```
 /**
-* Update an SLO returns "OK" response
-*/
+ * Update an SLO returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -4854,72 +3872,93 @@ const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 const SLO_DATA_0_NAME = process.env.SLO_DATA_0_NAME as string;
 
 const params: v1.ServiceLevelObjectivesApiUpdateSLORequest = {
-body: {
-type: "metric",
-name: SLO_DATA_0_NAME,
-thresholds: [
-{
-target: 97.0,
-timeframe: "7d",
-warning: 98.0,
-},
-],
-timeframe: "7d",
-targetThreshold: 97.0,
-warningThreshold: 98,
-query: {
-numerator: "sum:httpservice.hits{code:2xx}.as_count()",
-denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
-},
-},
-sloId: SLO_DATA_0_ID,
+  body: {
+    type: "metric",
+    name: SLO_DATA_0_NAME,
+    thresholds: [
+      {
+        target: 97.0,
+        timeframe: "7d",
+        warning: 98.0,
+      },
+    ],
+    timeframe: "7d",
+    targetThreshold: 97.0,
+    warningThreshold: 98,
+    query: {
+      numerator: "sum:httpservice.hits{code:2xx}.as_count()",
+      denominator: "sum:httpservice.hits{!code:3xx}.as_count()",
+    },
+  },
+  sloId: SLO_DATA_0_ID,
 };
 
 apiInstance
-.updateSLO(params)
-.then((data: v1.SLOListResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .updateSLO(params)
+  .then((data: v1.SLOListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get an SLO's details- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
-### OverviewGet a service level objective object.
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get an SLO's details](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-an-slos-details)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-an-slos-details-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
+### Overview
+Get a service level objective object. This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-slo_id [*required*]
+slo_id [_required_]
 string
 The ID of the service level objective object.
-#### Query StringsName
+#### Query Strings
+Name
 Type
 Description
 with_configured_alert_ids
 boolean
 Get the IDs of SLO monitors that reference this SLO.
-### Response- 200
-- 403
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLO-200-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLO-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLO-404-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A service level objective response containing a single service level objective.
-Expand All
 Field
 Type
 Description
 data
 object
-A service level objective object includes a service level indicator, thresholds
-for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.).configured_alert_ids
+A service level objective object includes a service level indicator, thresholds for one or more timeframes, and metadata (`name`, `description`, `tags`, etc.).
+configured_alert_ids
 [integer]
 A list of SLO monitors IDs that reference this SLO. This field is returned only when `with_configured_alert_ids` parameter is true in query.
 created_at
@@ -4941,13 +3980,12 @@ Name of the creator.
 description
 string
 A user-defined description of the service level objective.
-Always included in service level objective responses (but may be `null`).
-Optional in create/update requests.groups
+Always included in service level objective responses (but may be `null`). Optional in create/update requests.
+groups
 [string]
 A list of (up to 20) monitor groups that narrow the scope of a monitor service level objective.
-Included in service level objective responses if it is not empty. Optional in
-create/update requests for monitor service level objectives, but may only be
-used when then length of the `monitor_ids` field is one.id
+Included in service level objective responses if it is not empty. Optional in create/update requests for monitor service level objectives, but may only be used when then length of the `monitor_ids` field is one.
+id
 string
 A unique identifier for the service level objective object.
 Always included in service level objective responses.
@@ -4957,258 +3995,273 @@ Modification timestamp (UNIX time in seconds)
 Always included in service level objective responses.
 monitor_ids
 [integer]
-A list of monitor ids that defines the scope of a monitor service level
-objective. **Required if type is `monitor`**.monitor_tags
+A list of monitor ids that defines the scope of a monitor service level objective. **Required if type is`monitor`**.
+monitor_tags
 [string]
-The union of monitor tags for all monitors referenced by the `monitor_ids`
-field.
-Always included in service level objective responses for monitor service level
-objectives (but may be empty). Ignored in create/update requests. Does not
-affect which monitors are included in the service level objective (that is
-determined entirely by the `monitor_ids` field).name
+The union of monitor tags for all monitors referenced by the `monitor_ids` field. Always included in service level objective responses for monitor service level objectives (but may be empty). Ignored in create/update requests. Does not affect which monitors are included in the service level objective (that is determined entirely by the `monitor_ids` field).
+name
 string
 The name of the service level objective object.
 query
 object
-A metric-based SLO. **Required if type is `metric`**. Note that Datadog only allows the sum by aggregator
-to be used because this will sum up all request counts instead of averaging them, or taking the max or
-min of all of those requests.denominator [*required*]
+A metric-based SLO. **Required if type is`metric`**. Note that Datadog only allows the sum by aggregator to be used because this will sum up all request counts instead of averaging them, or taking the max or min of all of those requests.
+denominator [_required_]
 string
 A Datadog metric query for total (valid) events.
-numerator [*required*]
+numerator [_required_]
 string
 A Datadog metric query for good events.
 sli_specification
- <oneOf>
+<oneOf>
 A generic SLI specification. This is currently used for time-slice SLOs only.
 Option 1
 object
 A time-slice SLI specification.
-time_slice [*required*]
+time_slice [_required_]
 object
-The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator,
-and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.comparator [*required*]
+The time-slice condition, composed of 3 parts: 1. the metric timeseries query, 2. the comparator, and 3. the threshold. Optionally, a fourth part, the query interval, can be provided.
+comparator [_required_]
 enum
-The comparator used to compare the SLI value to the threshold.
-Allowed enum values: `>,>=, query [*required*]
+The comparator used to compare the SLI value to the threshold. Allowed enum values: `>,>=,<,<=`
+query [_required_]
 object
 The queries and formula used to calculate the SLI value.
-formulas [*required*]
+formulas [_required_]
 [object]
 A list that contains exactly one formula, as only a single formula may be used in a time-slice SLO.
-formula [*required*]
+formula [_required_]
 string
 The formula string, which is an expression involving named queries.
-queries [*required*]
-[ <oneOf>]
+queries [_required_]
+[ <oneOf>]
 A list of queries that are used to calculate the SLI value.
 Option 1
 object
 A formula and functions metrics query.
 aggregator
 enum
-The aggregation methods available for metrics queries.
-Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`cross_org_uuids
+The aggregation methods available for metrics queries. Allowed enum values: `avg,min,max,sum,last,area,l2norm,percentile`
+cross_org_uuids
 [string]
 The source organization UUID for cross organization queries. Feature in Private Beta.
-data_source [*required*]
+data_source [_required_]
 enum
-Data source for metrics queries.
-Allowed enum values: `metrics`name [*required*]
+Data source for metrics queries. Allowed enum values: `metrics`
+name [_required_]
 string
 Name of the query for use in formulas.
-query [*required*]
+query [_required_]
 string
 Metrics query definition.
 semantic_mode
 enum
-Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed.
-Allowed enum values: `combined,native`query_interval_seconds
+Semantic mode for metrics queries. This determines how metrics from different sources are combined or displayed. Allowed enum values: `combined,native`
+query_interval_seconds
 enum
-The interval used when querying data, which defines the size of a time slice.
-Two values are allowed: 60 (1 minute) and 300 (5 minutes).
-If not provided, the value defaults to 300 (5 minutes).
-Allowed enum values: `60,300`threshold [*required*]
+The interval used when querying data, which defines the size of a time slice. Two values are allowed: 60 (1 minute) and 300 (5 minutes). If not provided, the value defaults to 300 (5 minutes). Allowed enum values: `60,300`
+threshold [_required_]
 double
 The threshold value to which each SLI value will be compared.
 tags
 [string]
-A list of tags associated with this service level objective.
-Always included in service level objective responses (but may be empty).
-Optional in create/update requests.target_threshold
+A list of tags associated with this service level objective. Always included in service level objective responses (but may be empty). Optional in create/update requests.
+target_threshold
 double
-The target threshold such that when the service level indicator is above this
-threshold over the given timeframe, the objective is being met. thresholds
+The target threshold such that when the service level indicator is above this threshold over the given timeframe, the objective is being met.
+thresholds
 [object]
-The thresholds (timeframes and associated targets) for this service level
-objective object.target [*required*]
+The thresholds (timeframes and associated targets) for this service level objective object.
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe.target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests.timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
 warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.timeframe
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+timeframe
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`type
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+type
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`warning_threshold
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+warning_threshold
 double
-The optional warning threshold such that when the service level indicator is
-below this value for the given threshold, but above the target threshold, the
-objective appears in a "warning" state. This value must be greater than the target
-threshold.errors
+The optional warning threshold such that when the service level indicator is below this value for the given threshold, but above the target threshold, the objective appears in a "warning" state. This value must be greater than the target threshold.
+errors
 [string]
-An array of error messages. Each endpoint documents how/whether this field is
-used.```
-{
-"data": {
-"configured_alert_ids": [
-123,
-456,
-789
-],
-"created_at": "integer",
-"creator": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"description": "string",
-"groups": [
-"env:prod",
-"role:mysql"
-],
-"id": "string",
-"modified_at": "integer",
-"monitor_ids": [],
-"monitor_tags": [],
-"name": "Custom Metric SLO",
-"query": {
-"denominator": "sum:my.custom.metric{*}.as_count()",
-"numerator": "sum:my.custom.metric{type:good}.as_count()"
-},
-"sli_specification": {
-"time_slice": {
-"comparator": ">",
-"query": {
-"formulas": [
-{
-"formula": "query1 - default_zero(query2)"
-}
-],
-"queries": [
-[]
-]
-},
-"query_interval_seconds": 300,
-"threshold": 5
-}
-},
-"tags": [
-"env:prod",
-"app:core"
-],
-"target_threshold": 99.9,
-"thresholds": [
-{
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-],
-"timeframe": "30d",
-"type": "metric",
-"warning_threshold": 99.95
-},
-"errors": []
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
+An array of error messages. Each endpoint documents how/whether this field is used.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "data": {
+    "configured_alert_ids": [
+      123,
+      456,
+      789
+    ],
+    "created_at": "integer",
+    "creator": {
+      "email": "string",
+      "handle": "string",
+      "name": "string"
+    },
+    "description": "string",
+    "groups": [
+      "env:prod",
+      "role:mysql"
+    ],
+    "id": "string",
+    "modified_at": "integer",
+    "monitor_ids": [],
+    "monitor_tags": [],
+    "name": "Custom Metric SLO",
+    "query": {
+      "denominator": "sum:my.custom.metric{*}.as_count()",
+      "numerator": "sum:my.custom.metric{type:good}.as_count()"
+    },
+    "sli_specification": {
+      "time_slice": {
+        "comparator": ">",
+        "query": {
+          "formulas": [
+            {
+              "formula": "query1 - default_zero(query2)"
+            }
+          ],
+          "queries": [
+            []
+          ]
+        },
+        "query_interval_seconds": 300,
+        "threshold": 5
+      }
+    },
+    "tags": [
+      "env:prod",
+      "app:core"
+    ],
+    "target_threshold": 99.9,
+    "thresholds": [
+      {
+        "target": 99.9,
+        "target_display": "99.9",
+        "timeframe": "30d",
+        "warning": 90,
+        "warning_display": "90.0"
+      }
+    ],
+    "timeframe": "30d",
+    "type": "metric",
+    "warning_threshold": 99.95
+  },
+  "errors": []
 }
-```Not found
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
 
-Get an SLO's detailsCopy```
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport slo_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
+
+
+#####  Get an SLO's details
+Copy
+```
+                  # Path parameters  
+export slo_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get an SLO's details```
+
+#####  Get an SLO's details
+```
 """
 Get an SLO's details returns "OK" response
 """
@@ -5222,19 +4275,28 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.get_slo(
-slo_id=SLO_DATA_0_ID,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo(
+        slo_id=SLO_DATA_0_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get an SLO's details```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get an SLO's details
+```
 # Get an SLO's details returns "OK" response
 
 require "datadog_api_client"
@@ -5244,17 +4306,37 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 p api_instance.get_slo(SLO_DATA_0_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get an SLO's details`# This is not currently available for the Ruby API.`#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+#####  Get an SLO's details
 ```
-Get an SLO's details```
+# This is not currently available for the Ruby API.
+```
+
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get an SLO's details
+```
 // Get an SLO's details returns "OK" response
 
 package main
@@ -5284,16 +4366,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get an SLO's details```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get an SLO's details
+```
 // Get an SLO's details returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -5302,37 +4393,46 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi;
 import com.datadog.api.client.v1.model.SLOResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
 
-try {
-SLOResponse result = apiInstance.getSLO(SLO_DATA_0_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOResponse result = apiInstance.getSLO(SLO_DATA_0_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get an SLO's details```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get an SLO's details
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 slo_id = '<YOUR_SLO_ID>'
@@ -5341,12 +4441,21 @@ initialize(**options)
 
 api.ServiceLevelObjective.get(slo_id)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Get an SLO's details```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Get an SLO's details
+```
 // Get an SLO's details returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::GetSLOOptionalParams;
@@ -5354,29 +4463,38 @@ use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObj
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.get_slo(slo_data_0_id.clone(), GetSLOOptionalParams::default())
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .get_slo(slo_data_0_id.clone(), GetSLOOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get an SLO's details```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get an SLO's details
+```
 /**
-* Get an SLO's details returns "OK" response
-*/
+ * Get an SLO's details returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -5387,49 +4505,71 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 
 const params: v1.ServiceLevelObjectivesApiGetSLORequest = {
-sloId: SLO_DATA_0_ID,
+  sloId: SLO_DATA_0_ID,
 };
 
 apiInstance
-.getSLO(params)
-.then((data: v1.SLOResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getSLO(params)
+  .then((data: v1.SLOResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Delete an SLO- v1 (latest)
-DELETE https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
-### OverviewPermanently delete the specified service level objective object.
-If an SLO is used in a dashboard, the `DELETE /v1/slo/` endpoint returns
-a 409 conflict error because the SLO is referenced in a dashboard.This endpoint requires the `slos_write` permission.OAuth apps require the `slos_write` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Delete an SLO](https://docs.datadoghq.com/api/latest/service-level-objectives/#delete-an-slo)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#delete-an-slo-v1)
+
+
+DELETE https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}https://api.ap2.datadoghq.com/api/v1/slo/{slo_id}https://api.datadoghq.eu/api/v1/slo/{slo_id}https://api.ddog-gov.com/api/v1/slo/{slo_id}https://api.datadoghq.com/api/v1/slo/{slo_id}https://api.us3.datadoghq.com/api/v1/slo/{slo_id}https://api.us5.datadoghq.com/api/v1/slo/{slo_id}
+### Overview
+Permanently delete the specified service level objective object.
+If an SLO is used in a dashboard, the `DELETE /v1/slo/` endpoint returns a 409 conflict error because the SLO is referenced in a dashboard.
+This endpoint requires the `slos_write` permission.
+OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-slo_id [*required*]
+slo_id [_required_]
 string
 The ID of the service level objective.
-#### Query StringsName
+#### Query Strings
+Name
 Type
 Description
 force
 string
 Delete the monitor even if it’s referenced by other resources (for example SLO, composite monitor).
-### Response- 200
-- 403
-- 404
-- 409
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLO-200-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLO-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLO-404-v1)
+  * [409](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLO-409-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A response list of all service level objective deleted.
-Expand All
 Field
 Type
 Description
@@ -5444,50 +4584,64 @@ string
 Error preventing the SLO deletion.
 ```
 {
-"data": [],
-"errors": {
-"<any-key>": "string"
+  "data": [],
+  "errors": {
+    "<any-key>": "string"
+  }
 }
-}
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Not found
-- Model
-- Example
+```
+
+Copy
+Not found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Conflict
-- Model
-- Example
+```
+
+Copy
+Conflict
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A response list of all service level objective deleted.
-Expand All
 Field
 Type
 Description
@@ -5502,47 +4656,64 @@ string
 Error preventing the SLO deletion.
 ```
 {
-"data": [],
-"errors": {
-"<any-key>": "string"
+  "data": [],
+  "errors": {
+    "<any-key>": "string"
+  }
 }
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
+```
 
-Delete an SLOCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
 
-# Path parametersexport slo_id="CHANGE_ME"# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
+
+#####  Delete an SLO
+Copy
+```
+                  # Path parameters  
+export slo_id="CHANGE_ME"  
+# Curl command  
+curl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Delete an SLO```
+
+#####  Delete an SLO
+```
 """
 Delete an SLO returns "OK" response
 """
@@ -5556,19 +4727,28 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.delete_slo(
-slo_id=SLO_DATA_0_ID,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.delete_slo(
+        slo_id=SLO_DATA_0_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Delete an SLO
+```
 # Delete an SLO returns "OK" response
 
 require "datadog_api_client"
@@ -5578,28 +4758,46 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 p api_instance.delete_slo(SLO_DATA_0_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Delete an SLO
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
 app_key = '<DATADOG_APPLICATION_KEY>'
-slo_id = '<YOUR_SLO_ID>'
+slo_id  = '<YOUR_SLO_ID>'
 
 dog = Dogapi::Client.new(api_key, app_key)
 
 dog.delete_service_level_objective(slo_id)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Delete an SLO
+```
 // Delete an SLO returns "OK" response
 
 package main
@@ -5629,16 +4827,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Delete an SLO
+```
 // Delete an SLO returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -5647,37 +4854,46 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi;
 import com.datadog.api.client.v1.model.SLODeleteResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
 
-try {
-SLODeleteResponse result = apiInstance.deleteSLO(SLO_DATA_0_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#deleteSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLODeleteResponse result = apiInstance.deleteSLO(SLO_DATA_0_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#deleteSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Delete an SLO
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 slo_id = '<YOUR_SLO_ID>'
@@ -5686,12 +4902,21 @@ initialize(**options)
 
 api.ServiceLevelObjective.delete(slo_id)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Delete an SLO
+```
 // Delete an SLO returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::DeleteSLOOptionalParams;
@@ -5699,29 +4924,38 @@ use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObj
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.delete_slo(slo_data_0_id.clone(), DeleteSLOOptionalParams::default())
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .delete_slo(slo_data_0_id.clone(), DeleteSLOOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Delete an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Delete an SLO
+```
 /**
-* Delete an SLO returns "OK" response
-*/
+ * Delete an SLO returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -5732,42 +4966,59 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 
 const params: v1.ServiceLevelObjectivesApiDeleteSLORequest = {
-sloId: SLO_DATA_0_ID,
+  sloId: SLO_DATA_0_ID,
 };
 
 apiInstance
-.deleteSLO(params)
-.then((data: v1.SLODeleteResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .deleteSLO(params)
+  .then((data: v1.SLODeleteResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get an SLO's history- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.ap2.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.datadoghq.eu/api/v1/slo/{slo_id}/historyhttps://api.ddog-gov.com/api/v1/slo/{slo_id}/historyhttps://api.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.us3.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.us5.datadoghq.com/api/v1/slo/{slo_id}/history
-### OverviewGet a specific SLO’s history, regardless of its SLO type.
-The detailed history data is structured according to the source data type.
-For example, metric data is included for event SLOs that use
-the metric source, and monitor SLO types include the monitor transition history.**Note:** There are different response formats for event based and time based SLOs.
-Examples of both are shown.This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get an SLO's history](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-an-slos-history)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-an-slos-history-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.ap2.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.datadoghq.eu/api/v1/slo/{slo_id}/historyhttps://api.ddog-gov.com/api/v1/slo/{slo_id}/historyhttps://api.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.us3.datadoghq.com/api/v1/slo/{slo_id}/historyhttps://api.us5.datadoghq.com/api/v1/slo/{slo_id}/history
+### Overview
+Get a specific SLO’s history, regardless of its SLO type.
+The detailed history data is structured according to the source data type. For example, metric data is included for event SLOs that use the metric source, and monitor SLO types include the monitor transition history.
+**Note:** There are different response formats for event based and time based SLOs. Examples of both are shown.
+This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-slo_id [*required*]
+slo_id [_required_]
 string
 The ID of the service level objective object.
-#### Query StringsName
+#### Query Strings
+Name
 Type
 Description
-from_ts [*required*]
+from_ts [_required_]
 integer
 The `from` timestamp for the query window in epoch seconds.
-to_ts [*required*]
+to_ts [_required_]
 integer
 The `to` timestamp for the query window in epoch seconds.
 target
@@ -5775,17 +5026,21 @@ number
 The SLO target. If `target` is passed in, the response will include the remaining error budget and a timeframe value of `custom`.
 apply_correction
 boolean
-Defaults to `true`. If any SLO corrections are applied and this parameter is set to `false`,
-then the corrections will not be applied and the SLI values will not be affected.### Response- 200
-- 400
-- 403
-- 404
-- 429
+Defaults to `true`. If any SLO corrections are applied and this parameter is set to `false`, then the corrections will not be applied and the SLI values will not be affected.
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOHistory-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOHistory-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOHistory-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOHistory-404-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOHistory-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A service level objective history response.
-Expand All
 Field
 Type
 Description
@@ -5812,10 +5067,10 @@ Remaining error budget.
 errors
 [object]
 An array of error objects returned while querying the history data for the service level objective.
-error_message [*required*]
+error_message [_required_]
 string
 A message with more details about the error.
-error_type [*required*]
+error_type [_required_]
 string
 Type of the error.
 group
@@ -5823,13 +5078,8 @@ string
 For groups in a grouped SLO, this is the group name.
 history
 [array]
-The state transition history for the monitor. It is represented as
-an array of pairs. Each pair is an array containing the timestamp of the transition
-as an integer in Unix epoch format in the first element, and the state as an integer in the
-second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.
-Periods of no data are counted either as uptime or downtime depending on monitor settings.
-See SLO documentation
-for detailed information.monitor_modified
+The state transition history for the monitor. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data are counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information.
+monitor_modified
 int64
 For `monitor` based SLOs, this is the last modified timestamp in epoch seconds of the monitor.
 monitor_type
@@ -5840,11 +5090,11 @@ string
 For groups in a grouped SLO, this is the group name. For monitors in a multi-monitor SLO, this is the monitor name.
 precision
 double
-**DEPRECATED**: The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp. Use `span_precision` instead.
+**DEPRECATED** : The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp. Use `span_precision` instead.
 preview
 boolean
-For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime
-calculation.sli_value
+For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime calculation.
+sli_value
 double
 The current SLI value of the SLO over the history window.
 span_precision
@@ -5852,7 +5102,7 @@ double
 The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp.
 uptime
 double
-**DEPRECATED**: Use `sli_value` instead.
+**DEPRECATED** : Use `sli_value` instead.
 monitors
 [object]
 For multi-monitor SLOs, this represents SLI data for specific monitors.
@@ -5866,10 +5116,10 @@ Remaining error budget.
 errors
 [object]
 An array of error objects returned while querying the history data for the service level objective.
-error_message [*required*]
+error_message [_required_]
 string
 A message with more details about the error.
-error_type [*required*]
+error_type [_required_]
 string
 Type of the error.
 group
@@ -5877,13 +5127,8 @@ string
 For groups in a grouped SLO, this is the group name.
 history
 [array]
-The state transition history for the monitor. It is represented as
-an array of pairs. Each pair is an array containing the timestamp of the transition
-as an integer in Unix epoch format in the first element, and the state as an integer in the
-second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.
-Periods of no data are counted either as uptime or downtime depending on monitor settings.
-See SLO documentation
-for detailed information.monitor_modified
+The state transition history for the monitor. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data are counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information.
+monitor_modified
 int64
 For `monitor` based SLOs, this is the last modified timestamp in epoch seconds of the monitor.
 monitor_type
@@ -5894,11 +5139,11 @@ string
 For groups in a grouped SLO, this is the group name. For monitors in a multi-monitor SLO, this is the monitor name.
 precision
 double
-**DEPRECATED**: The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp. Use `span_precision` instead.
+**DEPRECATED** : The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp. Use `span_precision` instead.
 preview
 boolean
-For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime
-calculation.sli_value
+For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime calculation.
+sli_value
 double
 The current SLI value of the SLO over the history window.
 span_precision
@@ -5906,11 +5151,11 @@ double
 The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp.
 uptime
 double
-**DEPRECATED**: Use `sli_value` instead.
+**DEPRECATED** : Use `sli_value` instead.
 overall
 object
-An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value.
-This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs. error_budget_remaining
+An object that holds an SLI value and its associated data. It can represent an SLO's overall SLI value. This can also represent the SLI value for a specific monitor in multi-monitor SLOs, or a group in grouped SLOs.
+error_budget_remaining
 object
 A mapping of threshold `timeframe` to the remaining error budget.
 <any-key>
@@ -5919,10 +5164,10 @@ Remaining error budget.
 errors
 [object]
 An array of error objects returned while querying the history data for the service level objective.
-error_message [*required*]
+error_message [_required_]
 string
 A message with more details about the error.
-error_type [*required*]
+error_type [_required_]
 string
 Type of the error.
 group
@@ -5930,14 +5175,8 @@ string
 For groups in a grouped SLO, this is the group name.
 history
 [array]
-The state transition history for `monitor` or `time-slice` SLOs. It is represented as
-an array of pairs. Each pair is an array containing the timestamp of the transition
-as an integer in Unix epoch format in the first element, and the state as an integer in the
-second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data.
-Periods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted
-either as uptime or downtime depending on monitor settings. See
-SLO documentation
-for detailed information.monitor_modified
+The state transition history for `monitor` or `time-slice` SLOs. It is represented as an array of pairs. Each pair is an array containing the timestamp of the transition as an integer in Unix epoch format in the first element, and the state as an integer in the second element. An integer value of `0` for state means uptime, `1` means downtime, and `2` means no data. Periods of no data count as uptime in time-slice SLOs, while for monitor SLOs, no data is counted either as uptime or downtime depending on monitor settings. See [SLO documentation](https://docs.datadoghq.com/service_management/service_level_objectives/monitor/#missing-data) for detailed information.
+monitor_modified
 int64
 For `monitor` based SLOs, this is the last modified timestamp in epoch seconds of the monitor.
 monitor_type
@@ -5954,8 +5193,8 @@ double
 The number of accurate decimals.
 preview
 boolean
-For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime
-calculation.sli_value
+For `monitor` based SLOs, when `true` this indicates that a replay is in progress to give an accurate uptime calculation.
+sli_value
 double
 The current SLI value of the SLO over the history window.
 span_precision
@@ -5963,15 +5202,15 @@ double
 The amount of decimal places the SLI value is accurate to for the given from `&&` to timestamp.
 uptime
 double
-**DEPRECATED**: Use `sli_value` instead.
+**DEPRECATED** : Use `sli_value` instead.
 series
 object
 A `metric` based SLO history response.
 This is not included in responses for `monitor` based SLOs.
-denominator [*required*]
+denominator [_required_]
 object
-A representation of `metric` based SLO timeseries for the provided queries.
-This is the same response type from `batch_query` endpoint.count [*required*]
+A representation of `metric` based SLO timeseries for the provided queries. This is the same response type from `batch_query` endpoint.
+count [_required_]
 int64
 Count of submitted metrics.
 metadata
@@ -5979,24 +5218,23 @@ object
 Query metadata.
 aggr
 string
-**DEPRECATED**: Query aggregator function.
+**DEPRECATED** : Query aggregator function.
 expression
 string
-**DEPRECATED**: Query expression.
+**DEPRECATED** : Query expression.
 metric
 string
-**DEPRECATED**: Query metric used.
+**DEPRECATED** : Query metric used.
 query_index
 int64
-**DEPRECATED**: Query index from original combined query.
+**DEPRECATED** : Query index from original combined query.
 scope
 string
-**DEPRECATED**: Query scope.
+**DEPRECATED** : Query scope.
 unit
 [object]
-An array of metric units that contains up to two unit objects.
-For example, bytes represents one unit object and bytes per second represents two unit objects.
-If a metric query only has one unit object, the second array element is null.family
+An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null.
+family
 string
 The family of metric unit, for example `bytes` is the family for `kibibyte`, `byte`, and `bit` units.
 id
@@ -6014,22 +5252,22 @@ The scale factor of metric unit, for instance `1.0`.
 short_name
 string
 A shorter and abbreviated version of the metric unit, for instance `B`.
-sum [*required*]
+sum [_required_]
 double
 Total sum of the query.
-values [*required*]
+values [_required_]
 [number]
 The query values for each metric.
-interval [*required*]
+interval [_required_]
 int64
 The aggregated query interval for the series data. It's implicit based on the query time window.
 message
 string
 Optional message if there are specific query issues/warnings.
-numerator [*required*]
+numerator [_required_]
 object
-A representation of `metric` based SLO timeseries for the provided queries.
-This is the same response type from `batch_query` endpoint.count [*required*]
+A representation of `metric` based SLO timeseries for the provided queries. This is the same response type from `batch_query` endpoint.
+count [_required_]
 int64
 Count of submitted metrics.
 metadata
@@ -6037,24 +5275,23 @@ object
 Query metadata.
 aggr
 string
-**DEPRECATED**: Query aggregator function.
+**DEPRECATED** : Query aggregator function.
 expression
 string
-**DEPRECATED**: Query expression.
+**DEPRECATED** : Query expression.
 metric
 string
-**DEPRECATED**: Query metric used.
+**DEPRECATED** : Query metric used.
 query_index
 int64
-**DEPRECATED**: Query index from original combined query.
+**DEPRECATED** : Query index from original combined query.
 scope
 string
-**DEPRECATED**: Query scope.
+**DEPRECATED** : Query scope.
 unit
 [object]
-An array of metric units that contains up to two unit objects.
-For example, bytes represents one unit object and bytes per second represents two unit objects.
-If a metric query only has one unit object, the second array element is null.family
+An array of metric units that contains up to two unit objects. For example, bytes represents one unit object and bytes per second represents two unit objects. If a metric query only has one unit object, the second array element is null.
+family
 string
 The family of metric unit, for example `bytes` is the family for `kibibyte`, `byte`, and `bit` units.
 id
@@ -6072,22 +5309,22 @@ The scale factor of metric unit, for instance `1.0`.
 short_name
 string
 A shorter and abbreviated version of the metric unit, for instance `B`.
-sum [*required*]
+sum [_required_]
 double
 Total sum of the query.
-values [*required*]
+values [_required_]
 [number]
 The query values for each metric.
-query [*required*]
+query [_required_]
 string
 The combined numerator and denominator query CSV.
-res_type [*required*]
+res_type [_required_]
 string
 The series result type. This mimics `batch_query` response type.
-resp_version [*required*]
+resp_version [_required_]
 int64
 The series response version type. This mimics `batch_query` response type.
-times [*required*]
+times [_required_]
 [number]
 An array of query timestamps in EPOCH milliseconds.
 thresholds
@@ -6096,36 +5333,33 @@ mapping of string timeframe to the SLO threshold.
 <any-key>
 object
 SLO thresholds (target and optionally warning) for a single time window.
-" class="row table-row first-row">target [*required*]
+target [_required_]
 double
-The target value for the service level indicator within the corresponding
-timeframe." class="row table-row first-row">target_display
+The target value for the service level indicator within the corresponding timeframe.
+target_display
 string
-A string representation of the target that indicates its precision.
-It uses trailing zeros to show significant decimal places (for example `98.00`).Always included in service level objective responses. Ignored in
-create/update requests." class="row table-row first-row">timeframe [*required*]
+A string representation of the target that indicates its precision. It uses trailing zeros to show significant decimal places (for example `98.00`).
+Always included in service level objective responses. Ignored in create/update requests.
+timeframe [_required_]
 enum
-The SLO time window options. Note that "custom" is not a valid option for creating
-or updating SLOs. It is only used when querying SLO history over custom timeframes.
-Allowed enum values: `7d,30d,90d,custom`" class="row table-row first-row">warning
+The SLO time window options. Note that "custom" is not a valid option for creating or updating SLOs. It is only used when querying SLO history over custom timeframes. Allowed enum values: `7d,30d,90d,custom`
+warning
 double
 The warning value for the service level objective.
-" class="row table-row first-row">warning_display
+warning_display
 string
-A string representation of the warning target (see the description of
-the `target_display` field for details).Included in service level objective responses if a warning target exists.
-Ignored in create/update requests.to_ts
+A string representation of the warning target (see the description of the `target_display` field for details).
+Included in service level objective responses if a warning target exists. Ignored in create/update requests.
+to_ts
 int64
 The `to` timestamp in epoch seconds.
 type
 enum
-The type of the service level objective.
-Allowed enum values: `metric,monitor,time_slice`type_id
+The type of the service level objective. Allowed enum values: `metric,monitor,time_slice`
+type_id
 enum
-A numeric representation of the type of the service level objective (`0` for
-monitor, `1` for metric). Always included in service level objective responses.
-Ignored in create/update requests.
-Allowed enum values: `0,1,2` errors
+A numeric representation of the type of the service level objective (`0` for monitor, `1` for metric). Always included in service level objective responses. Ignored in create/update requests. Allowed enum values: `0,1,2`
+errors
 [object]
 A list of errors while querying the history data for the service level objective.
 error
@@ -6133,257 +5367,292 @@ string
 Human readable error.
 ```
 {
-"data": {
-"from_ts": 1615323990,
-"group_by": [],
-"groups": [
-{
-"error_budget_remaining": {
-"<any-key>": "number"
-},
-"errors": [
-{
-"error_message": "",
-"error_type": ""
+  "data": {
+    "from_ts": 1615323990,
+    "group_by": [],
+    "groups": [
+      {
+        "error_budget_remaining": {
+          "<any-key>": "number"
+        },
+        "errors": [
+          {
+            "error_message": "",
+            "error_type": ""
+          }
+        ],
+        "group": "name",
+        "history": [
+          [
+            1579212382,
+            0
+          ]
+        ],
+        "monitor_modified": 1615867200,
+        "monitor_type": "string",
+        "name": "string",
+        "precision": 2,
+        "preview": true,
+        "sli_value": 99.99,
+        "span_precision": 2,
+        "uptime": 99.99
+      }
+    ],
+    "monitors": [
+      {
+        "error_budget_remaining": {
+          "<any-key>": "number"
+        },
+        "errors": [
+          {
+            "error_message": "",
+            "error_type": ""
+          }
+        ],
+        "group": "name",
+        "history": [
+          [
+            1579212382,
+            0
+          ]
+        ],
+        "monitor_modified": 1615867200,
+        "monitor_type": "string",
+        "name": "string",
+        "precision": 2,
+        "preview": true,
+        "sli_value": 99.99,
+        "span_precision": 2,
+        "uptime": 99.99
+      }
+    ],
+    "overall": {
+      "error_budget_remaining": {
+        "<any-key>": "number"
+      },
+      "errors": [
+        {
+          "error_message": "",
+          "error_type": ""
+        }
+      ],
+      "group": "name",
+      "history": [
+        [
+          1579212382,
+          0
+        ]
+      ],
+      "monitor_modified": 1615867200,
+      "monitor_type": "string",
+      "name": "string",
+      "precision": {
+        "<any-key>": "number"
+      },
+      "preview": true,
+      "sli_value": 99.99,
+      "span_precision": 2,
+      "uptime": 99.99
+    },
+    "series": {
+      "denominator": {
+        "count": 0,
+        "metadata": {
+          "aggr": "string",
+          "expression": "string",
+          "metric": "string",
+          "query_index": "integer",
+          "scope": "string",
+          "unit": [
+            {
+              "family": "bytes",
+              "id": 2,
+              "name": "byte",
+              "plural": "bytes",
+              "scale_factor": 1,
+              "short_name": "B"
+            }
+          ]
+        },
+        "sum": 0,
+        "values": [
+          []
+        ]
+      },
+      "interval": 0,
+      "message": "",
+      "numerator": {
+        "count": 0,
+        "metadata": {
+          "aggr": "string",
+          "expression": "string",
+          "metric": "string",
+          "query_index": "integer",
+          "scope": "string",
+          "unit": [
+            {
+              "family": "bytes",
+              "id": 2,
+              "name": "byte",
+              "plural": "bytes",
+              "scale_factor": 1,
+              "short_name": "B"
+            }
+          ]
+        },
+        "sum": 0,
+        "values": [
+          []
+        ]
+      },
+      "query": "",
+      "res_type": "",
+      "resp_version": 0,
+      "times": [
+        []
+      ]
+    },
+    "thresholds": {
+      "<any-key>": {
+        "target": 99.9,
+        "target_display": "99.9",
+        "timeframe": "30d",
+        "warning": 90,
+        "warning_display": "90.0"
+      }
+    },
+    "to_ts": 1615928790,
+    "type": "metric",
+    "type_id": 0
+  },
+  "errors": [
+    {
+      "error": "string"
+    }
+  ]
 }
-],
-"group": "name",
-"history": [
-[
-1579212382,
-0
-]
-],
-"monitor_modified": 1615867200,
-"monitor_type": "string",
-"name": "string",
-"precision": 2,
-"preview": true,
-"sli_value": 99.99,
-"span_precision": 2,
-"uptime": 99.99
-}
-],
-"monitors": [
-{
-"error_budget_remaining": {
-"<any-key>": "number"
-},
-"errors": [
-{
-"error_message": "",
-"error_type": ""
-}
-],
-"group": "name",
-"history": [
-[
-1579212382,
-0
-]
-],
-"monitor_modified": 1615867200,
-"monitor_type": "string",
-"name": "string",
-"precision": 2,
-"preview": true,
-"sli_value": 99.99,
-"span_precision": 2,
-"uptime": 99.99
-}
-],
-"overall": {
-"error_budget_remaining": {
-"<any-key>": "number"
-},
-"errors": [
-{
-"error_message": "",
-"error_type": ""
-}
-],
-"group": "name",
-"history": [
-[
-1579212382,
-0
-]
-],
-"monitor_modified": 1615867200,
-"monitor_type": "string",
-"name": "string",
-"precision": {
-"<any-key>": "number"
-},
-"preview": true,
-"sli_value": 99.99,
-"span_precision": 2,
-"uptime": 99.99
-},
-"series": {
-"denominator": {
-"count": 0,
-"metadata": {
-"aggr": "string",
-"expression": "string",
-"metric": "string",
-"query_index": "integer",
-"scope": "string",
-"unit": [
-{
-"family": "bytes",
-"id": 2,
-"name": "byte",
-"plural": "bytes",
-"scale_factor": 1,
-"short_name": "B"
-}
-]
-},
-"sum": 0,
-"values": [
-[]
-]
-},
-"interval": 0,
-"message": "",
-"numerator": {
-"count": 0,
-"metadata": {
-"aggr": "string",
-"expression": "string",
-"metric": "string",
-"query_index": "integer",
-"scope": "string",
-"unit": [
-{
-"family": "bytes",
-"id": 2,
-"name": "byte",
-"plural": "bytes",
-"scale_factor": 1,
-"short_name": "B"
-}
-]
-},
-"sum": 0,
-"values": [
-[]
-]
-},
-"query": "",
-"res_type": "",
-"resp_version": 0,
-"times": [
-[]
-]
-},
-"thresholds": {
-"<any-key>": {
-"target": 99.9,
-"target_display": "99.9",
-"timeframe": "30d",
-"warning": 90,
-"warning_display": "90.0"
-}
-},
-"to_ts": 1615928790,
-"type": "metric",
-"type_id": 0
-},
-"errors": [
-{
-"error": "string"
-}
-]
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
 
-Get an SLO's historyCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport slo_id="CHANGE_ME"# Required query argumentsexport from_ts="CHANGE_ME"export to_ts="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/history?from_ts=${from_ts}&to_ts=${to_ts}" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
+
+
+#####  Get an SLO's history
+Copy
+```
+                  # Path parameters  
+export slo_id="CHANGE_ME"  
+# Required query arguments  
+export from_ts="CHANGE_ME"  
+export to_ts="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/history?from_ts=${from_ts}&to_ts=${to_ts}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get an SLO's history```
+
+#####  Get an SLO's history
+```
 """
 Get an SLO's history returns "OK" response
 """
@@ -6399,21 +5668,30 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.get_slo_history(
-slo_id=SLO_DATA_0_ID,
-from_ts=int((datetime.now() + relativedelta(days=-1)).timestamp()),
-to_ts=int(datetime.now().timestamp()),
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo_history(
+        slo_id=SLO_DATA_0_ID,
+        from_ts=int((datetime.now() + relativedelta(days=-1)).timestamp()),
+        to_ts=int(datetime.now().timestamp()),
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get an SLO's history
+```
 # Get an SLO's history returns "OK" response
 
 require "datadog_api_client"
@@ -6423,17 +5701,26 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 p api_instance.get_slo_history(SLO_DATA_0_ID, (Time.now + -1 * 86400).to_i, Time.now.to_i)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get an SLO's history
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
 app_key = '<DATADOG_APPLICATION_KEY>'
-slo_id = '<YOUR_SLO_ID>'
+slo_id  = '<YOUR_SLO_ID>'
 
 dog = Dogapi::Client.new(api_key, app_key)
 
@@ -6442,12 +5729,21 @@ from_ts = to_ts - 60 * 60 * 24 * 30
 
 dog.get_service_level_objective_history(slo_id, from_ts, to_ts)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get an SLO's history
+```
 // Get an SLO's history returns "OK" response
 
 package main
@@ -6478,16 +5774,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOHistory`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get an SLO's history
+```
 // Get an SLO's history returns "OK" response
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -6496,42 +5801,51 @@ import com.datadog.api.client.v1.model.SLOHistoryResponse;
 import java.time.OffsetDateTime;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
 
-try {
-SLOHistoryResponse result =
-apiInstance.getSLOHistory(
-SLO_DATA_0_ID,
-OffsetDateTime.now().plusDays(-1).toInstant().getEpochSecond(),
-OffsetDateTime.now().toInstant().getEpochSecond());
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOHistory");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOHistoryResponse result =
+          apiInstance.getSLOHistory(
+              SLO_DATA_0_ID,
+              OffsetDateTime.now().plusDays(-1).toInstant().getEpochSecond(),
+              OffsetDateTime.now().toInstant().getEpochSecond());
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get an SLO's history
+```
 from datadog import initialize, api
 import time
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 slo_id = '<YOUR_SLO_ID>'
@@ -6543,12 +5857,21 @@ from_ts = to_ts - 60*60*24*30
 
 api.ServiceLevelObjective.history(slo_id, from_ts=from_ts, to_ts=to_ts)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Get an SLO's history
+```
 // Get an SLO's history returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::GetSLOHistoryOptionalParams;
@@ -6556,34 +5879,43 @@ use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObj
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.get_slo_history(
-slo_data_0_id.clone(),
-1636542671,
-1636629071,
-GetSLOHistoryOptionalParams::default(),
-)
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .get_slo_history(
+            slo_data_0_id.clone(),
+            1636542671,
+            1636629071,
+            GetSLOHistoryOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get an SLO's history```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get an SLO's history
+```
 /**
-* Get an SLO's history returns "OK" response
-*/
+ * Get an SLO's history returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -6594,46 +5926,66 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 
 const params: v1.ServiceLevelObjectivesApiGetSLOHistoryRequest = {
-sloId: SLO_DATA_0_ID,
-fromTs: Math.round(
-new Date(new Date().getTime() + -1 * 86400 * 1000).getTime() / 1000
-),
-toTs: Math.round(new Date().getTime() / 1000),
+  sloId: SLO_DATA_0_ID,
+  fromTs: Math.round(
+    new Date(new Date().getTime() + -1 * 86400 * 1000).getTime() / 1000
+  ),
+  toTs: Math.round(new Date().getTime() / 1000),
 };
 
 apiInstance
-.getSLOHistory(params)
-.then((data: v1.SLOHistoryResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getSLOHistory(params)
+  .then((data: v1.SLOHistoryResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get Corrections For an SLO- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.ap2.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.datadoghq.eu/api/v1/slo/{slo_id}/correctionshttps://api.ddog-gov.com/api/v1/slo/{slo_id}/correctionshttps://api.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.us3.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.us5.datadoghq.com/api/v1/slo/{slo_id}/corrections
-### OverviewGet corrections applied to an SLO
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get Corrections For an SLO](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-corrections-for-an-slo)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-corrections-for-an-slo-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.ap2.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.datadoghq.eu/api/v1/slo/{slo_id}/correctionshttps://api.ddog-gov.com/api/v1/slo/{slo_id}/correctionshttps://api.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.us3.datadoghq.com/api/v1/slo/{slo_id}/correctionshttps://api.us5.datadoghq.com/api/v1/slo/{slo_id}/corrections
+### Overview
+Get corrections applied to an SLO This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-slo_id [*required*]
+slo_id [_required_]
 string
 The ID of the service level objective object.
-### Response- 200
-- 400
-- 403
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOCorrections-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOCorrections-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOCorrections-403-v1)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOCorrections-404-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOCorrections-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A list of SLO correction objects.
-Expand All
 Field
 Type
 Description
@@ -6645,8 +5997,8 @@ object
 The attribute object associated with the SLO correction.
 category
 enum
-Category the SLO correction belongs to.
-Allowed enum values: `Scheduled Maintenance,Outside Business Hours,Deployment,Other`created_at
+Category the SLO correction belongs to. Allowed enum values: `Scheduled Maintenance,Outside Business Hours,Deployment,Other`
+created_at
 int64
 The epoch timestamp of when the correction was created at.
 creator
@@ -6687,8 +6039,8 @@ string
 Name of the Modifier.
 rrule
 string
-The recurrence rules as defined in the iCalendar RFC 5545. The supported rules for SLO corrections
-are `FREQ`, `INTERVAL`, `COUNT`, `UNTIL` and `BYDAY`.slo_id
+The recurrence rules as defined in the iCalendar RFC 5545. The supported rules for SLO corrections are `FREQ`, `INTERVAL`, `COUNT`, `UNTIL` and `BYDAY`.
+slo_id
 string
 ID of the SLO that this correction applies to.
 start
@@ -6702,8 +6054,8 @@ string
 The ID of the SLO correction.
 type
 enum
-SLO correction resource type.
-Allowed enum values: `correction`default: `correction`
+SLO correction resource type. Allowed enum values: `correction`
+default: `correction`
 meta
 object
 Object describing meta attributes of response.
@@ -6718,126 +6070,158 @@ int64
 Total count of elements matched by the filter.
 ```
 {
-"data": [
-{
-"attributes": {
-"category": "Scheduled Maintenance",
-"created_at": "integer",
-"creator": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"description": "string",
-"duration": 3600,
-"end": "integer",
-"modified_at": "integer",
-"modifier": {
-"email": "string",
-"handle": "string",
-"name": "string"
-},
-"rrule": "FREQ=DAILY;INTERVAL=10;COUNT=5",
-"slo_id": "string",
-"start": "integer",
-"timezone": "string"
-},
-"id": "string",
-"type": "correction"
+  "data": [
+    {
+      "attributes": {
+        "category": "Scheduled Maintenance",
+        "created_at": "integer",
+        "creator": {
+          "email": "string",
+          "handle": "string",
+          "name": "string"
+        },
+        "description": "string",
+        "duration": 3600,
+        "end": "integer",
+        "modified_at": "integer",
+        "modifier": {
+          "email": "string",
+          "handle": "string",
+          "name": "string"
+        },
+        "rrule": "FREQ=DAILY;INTERVAL=10;COUNT=5",
+        "slo_id": "string",
+        "start": "integer",
+        "timezone": "string"
+      },
+      "id": "string",
+      "type": "correction"
+    }
+  ],
+  "meta": {
+    "page": {
+      "total_count": "integer",
+      "total_filtered_count": "integer"
+    }
+  }
 }
-],
-"meta": {
-"page": {
-"total_count": "integer",
-"total_filtered_count": "integer"
-}
-}
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Get Corrections For an SLOCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport slo_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/corrections" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Get Corrections For an SLO
+Copy
+```
+                  # Path parameters  
+export slo_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/${slo_id}/corrections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get Corrections For an SLO```
+
+#####  Get Corrections For an SLO
+```
 """
 Get Corrections For an SLO returns "OK" response
 """
@@ -6851,19 +6235,28 @@ SLO_DATA_0_ID = environ["SLO_DATA_0_ID"]
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.get_slo_corrections(
-slo_id=SLO_DATA_0_ID,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo_corrections(
+        slo_id=SLO_DATA_0_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get Corrections For an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get Corrections For an SLO
+```
 # Get Corrections For an SLO returns "OK" response
 
 require "datadog_api_client"
@@ -6873,12 +6266,21 @@ api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 SLO_DATA_0_ID = ENV["SLO_DATA_0_ID"]
 p api_instance.get_slo_corrections(SLO_DATA_0_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get Corrections For an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get Corrections For an SLO
+```
 // Get Corrections For an SLO returns "OK" response
 
 package main
@@ -6908,16 +6310,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOCorrections`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get Corrections For an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get Corrections For an SLO
+```
 // Get Corrections For an SLO returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -6926,59 +6337,77 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi;
 import com.datadog.api.client.v1.model.SLOCorrectionListResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "slo" in the system
-String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
+    // there is a valid "slo" in the system
+    String SLO_DATA_0_ID = System.getenv("SLO_DATA_0_ID");
 
-try {
-SLOCorrectionListResponse result = apiInstance.getSLOCorrections(SLO_DATA_0_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOCorrections");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOCorrectionListResponse result = apiInstance.getSLOCorrections(SLO_DATA_0_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOCorrections");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get Corrections For an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get Corrections For an SLO
+```
 // Get Corrections For an SLO returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "slo" in the system
-let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.get_slo_corrections(slo_data_0_id.clone()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "slo" in the system
+    let slo_data_0_id = std::env::var("SLO_DATA_0_ID").unwrap();
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.get_slo_corrections(slo_data_0_id.clone()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get Corrections For an SLO```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get Corrections For an SLO
+```
 /**
-* Get Corrections For an SLO returns "OK" response
-*/
+ * Get Corrections For an SLO returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -6989,43 +6418,62 @@ const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 const SLO_DATA_0_ID = process.env.SLO_DATA_0_ID as string;
 
 const params: v1.ServiceLevelObjectivesApiGetSLOCorrectionsRequest = {
-sloId: SLO_DATA_0_ID,
+  sloId: SLO_DATA_0_ID,
 };
 
 apiInstance
-.getSLOCorrections(params)
-.then((data: v1.SLOCorrectionListResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getSLOCorrections(params)
+  .then((data: v1.SLOCorrectionListResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Check if SLOs can be safely deleted- v1 (latest)
-GET https://api.ap1.datadoghq.com/api/v1/slo/can_deletehttps://api.ap2.datadoghq.com/api/v1/slo/can_deletehttps://api.datadoghq.eu/api/v1/slo/can_deletehttps://api.ddog-gov.com/api/v1/slo/can_deletehttps://api.datadoghq.com/api/v1/slo/can_deletehttps://api.us3.datadoghq.com/api/v1/slo/can_deletehttps://api.us5.datadoghq.com/api/v1/slo/can_delete
-### OverviewCheck if an SLO can be safely deleted. For example,
-assure an SLO can be deleted without disrupting a dashboard.
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Query StringsName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Check if SLOs can be safely deleted](https://docs.datadoghq.com/api/latest/service-level-objectives/#check-if-slos-can-be-safely-deleted)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#check-if-slos-can-be-safely-deleted-v1)
+
+
+GET https://api.ap1.datadoghq.com/api/v1/slo/can_deletehttps://api.ap2.datadoghq.com/api/v1/slo/can_deletehttps://api.datadoghq.eu/api/v1/slo/can_deletehttps://api.ddog-gov.com/api/v1/slo/can_deletehttps://api.datadoghq.com/api/v1/slo/can_deletehttps://api.us3.datadoghq.com/api/v1/slo/can_deletehttps://api.us5.datadoghq.com/api/v1/slo/can_delete
+### Overview
+Check if an SLO can be safely deleted. For example, assure an SLO can be deleted without disrupting a dashboard. This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Query Strings
+Name
 Type
 Description
-ids [*required*]
+ids [_required_]
 string
 A comma separated list of the IDs of the service level objectives objects.
-### Response- 200
-- 400
-- 403
-- 409
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#CheckCanDeleteSLO-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#CheckCanDeleteSLO-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#CheckCanDeleteSLO-403-v1)
+  * [409](https://docs.datadoghq.com/api/latest/service-level-objectives/#CheckCanDeleteSLO-409-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#CheckCanDeleteSLO-429-v1)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A service level objective response containing the requested object.
-Expand All
 Field
 Type
 Description
@@ -7043,52 +6491,66 @@ string
 Description of the service level objective reference.
 ```
 {
-"data": {
-"ok": []
-},
-"errors": {
-"<any-key>": "string"
+  "data": {
+    "ok": []
+  },
+  "errors": {
+    "<any-key>": "string"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
+```
+
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Forbidden
-- Model
-- Example
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```Conflict
-- Model
-- Example
+```
+
+Copy
+Conflict
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 A service level objective response containing the requested object.
-Expand All
 Field
 Type
 Description
@@ -7106,49 +6568,66 @@ string
 Description of the service level objective reference.
 ```
 {
-"data": {
-"ok": []
-},
-"errors": {
-"<any-key>": "string"
+  "data": {
+    "ok": []
+  },
+  "errors": {
+    "<any-key>": "string"
+  }
 }
-}
-```Too many requests
-- Model
-- Example
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Error response object.
 Expand All
 Field
 Type
 Description
-errors [*required*]
+errors [_required_]
 [string]
 Array of errors returned by the API.
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "errors": [
+    "Bad Request"
+  ]
 }
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
+```
 
-Check if SLOs can be safely deletedCopy```
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
 
-# Required query argumentsexport ids="id1, id2, id3"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/can_delete?ids=${ids}" \
+
+#####  Check if SLOs can be safely deleted
+Copy
+```
+                  # Required query arguments  
+export ids="id1, id2, id3"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/can_delete?ids=${ids}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Check if SLOs can be safely deleted```
+
+#####  Check if SLOs can be safely deleted
+```
 """
 Check if SLOs can be safely deleted returns "OK" response
 """
@@ -7158,31 +6637,49 @@ from datadog_api_client.v1.api.service_level_objectives_api import ServiceLevelO
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.check_can_delete_slo(
-ids="ids",
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.check_can_delete_slo(
+        ids="ids",
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 # Check if SLOs can be safely deleted returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 p api_instance.check_can_delete_slo("ids")
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
@@ -7193,12 +6690,21 @@ dog = Dogapi::Client.new(api_key, app_key)
 slo_ids = ['<YOUR_SLO_ID>']
 dog.can_delete_service_level_objective(slo_ids)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 // Check if SLOs can be safely deleted returns "OK" response
 
 package main
@@ -7225,16 +6731,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CheckCanDeleteSLO`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 // Check if SLOs can be safely deleted returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -7243,34 +6758,43 @@ import com.datadog.api.client.v1.api.ServiceLevelObjectivesApi;
 import com.datadog.api.client.v1.model.CheckCanDeleteSLOResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-try {
-CheckCanDeleteSLOResponse result = apiInstance.checkCanDeleteSLO("id1, id2, id3");
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#checkCanDeleteSLO");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      CheckCanDeleteSLOResponse result = apiInstance.checkCanDeleteSLO("id1, id2, id3");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#checkCanDeleteSLO");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 slo_ids = ['<YOUR_SLO_ID>']
@@ -7279,37 +6803,55 @@ initialize(**options)
 
 api.ServiceLevelObjective.can_delete(slo_ids)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 // Check if SLOs can be safely deleted returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
 
 #[tokio::main]
 async fn main() {
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.check_can_delete_slo("ids".to_string()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.check_can_delete_slo("ids".to_string()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Check if SLOs can be safely deleted```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Check if SLOs can be safely deleted
+```
 /**
-* Check if SLOs can be safely deleted returns "OK" response
-*/
+ * Check if SLOs can be safely deleted returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -7317,31 +6859,49 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 
 const params: v1.ServiceLevelObjectivesApiCheckCanDeleteSLORequest = {
-ids: "ids",
+  ids: "ids",
 };
 
 apiInstance
-.checkCanDeleteSLO(params)
-.then((data: v1.CheckCanDeleteSLOResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .checkCanDeleteSLO(params)
+  .then((data: v1.CheckCanDeleteSLOResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Bulk Delete SLO Timeframes- v1 (latest)
-POST https://api.ap1.datadoghq.com/api/v1/slo/bulk_deletehttps://api.ap2.datadoghq.com/api/v1/slo/bulk_deletehttps://api.datadoghq.eu/api/v1/slo/bulk_deletehttps://api.ddog-gov.com/api/v1/slo/bulk_deletehttps://api.datadoghq.com/api/v1/slo/bulk_deletehttps://api.us3.datadoghq.com/api/v1/slo/bulk_deletehttps://api.us5.datadoghq.com/api/v1/slo/bulk_delete
-### OverviewDelete (or partially delete) multiple service level objective objects.
-This endpoint facilitates deletion of one or more thresholds for one or more
-service level objective objects. If all thresholds are deleted, the service level
-objective object is deleted as well.This endpoint requires the `slos_write` permission.OAuth apps require the `slos_write` authorization scope to access this endpoint.
-### Request#### Body Data (required)Delete multiple service level objective objects request body.
-- Model
-- Example
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Bulk Delete SLO Timeframes](https://docs.datadoghq.com/api/latest/service-level-objectives/#bulk-delete-slo-timeframes)
+  * [v1 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#bulk-delete-slo-timeframes-v1)
+
+
+POST https://api.ap1.datadoghq.com/api/v1/slo/bulk_deletehttps://api.ap2.datadoghq.com/api/v1/slo/bulk_deletehttps://api.datadoghq.eu/api/v1/slo/bulk_deletehttps://api.ddog-gov.com/api/v1/slo/bulk_deletehttps://api.datadoghq.com/api/v1/slo/bulk_deletehttps://api.us3.datadoghq.com/api/v1/slo/bulk_deletehttps://api.us5.datadoghq.com/api/v1/slo/bulk_delete
+### Overview
+Delete (or partially delete) multiple service level objective objects.
+This endpoint facilitates deletion of one or more thresholds for one or more service level objective objects. If all thresholds are deleted, the service level objective object is deleted as well.
+This endpoint requires the `slos_write` permission.
+OAuth apps require the `slos_write` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Request
+#### Body Data (required)
+Delete multiple service level objective objects request body.
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Expand All
 Field
 Type
@@ -7351,26 +6911,32 @@ Description
 An array of all SLO timeframes.
 ```
 {
-"id1": [
-"7d",
-"30d"
-],
-"id2": [
-"7d",
-"30d"
-]
+  "id1": [
+    "7d",
+    "30d"
+  ],
+  "id2": [
+    "7d",
+    "30d"
+  ]
 }
-```### Response- 200
-- 400
-- 403
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLOTimeframeInBulk-200-v1)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLOTimeframeInBulk-400-v1)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLOTimeframeInBulk-403-v1)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#DeleteSLOTimeframeInBulk-429-v1)
+
+
 OK
-- Model
-- Example
-The bulk partial delete service level objective object endpoint
-response.This endpoint operates on multiple service level objective objects, so
-it may be partially successful. In such cases, the “data” and “error”
-fields in this response indicate which deletions succeeded and failed.Expand All
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+The bulk partial delete service level objective object endpoint response.
+This endpoint operates on multiple service level objective objects, so it may be partially successful. In such cases, the “data” and “error” fields in this response indicate which deletions succeeded and failed.
 Field
 Type
 Description
@@ -7379,121 +6945,144 @@ object
 An array of service level objective objects.
 deleted
 [string]
-An array of service level objective object IDs that indicates
-which objects that were completely deleted.updated
+An array of service level objective object IDs that indicates which objects that were completely deleted.
+updated
 [string]
-An array of service level objective object IDs that indicates
-which objects that were modified (objects for which at least one
-threshold was deleted, but that were not completely deleted). errors
+An array of service level objective object IDs that indicates which objects that were modified (objects for which at least one threshold was deleted, but that were not completely deleted).
+errors
 [object]
 Array of errors object returned.
-id [*required*]
+id [_required_]
 string
-The ID of the service level objective object associated with
-this error.message [*required*]
+The ID of the service level objective object associated with this error.
+message [_required_]
 string
 The error message.
-timeframe [*required*]
+timeframe [_required_]
 enum
-The timeframe of the threshold associated with this error
-or "all" if all thresholds are affected.
-Allowed enum values: `7d,30d,90d,all````
-{
-"data": {
-"deleted": [],
-"updated": []
-},
-"errors": [
-{
-"id": "",
-"message": "",
-"timeframe": "30d"
-}
-]
-}
-```Bad Request
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
+The timeframe of the threshold associated with this error or "all" if all thresholds are affected. Allowed enum values: `7d,30d,90d,all`
 ```
 {
-"errors": [
-"Bad Request"
-]
+  "data": {
+    "deleted": [],
+    "updated": []
+  },
+  "errors": [
+    {
+      "id": "",
+      "message": "",
+      "timeframe": "30d"
+    }
+  ]
 }
-```Forbidden
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-Error response object.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-Array of errors returned by the API.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
-- [Ruby [legacy]](?code-lang=ruby-legacy#)
-- [Python [legacy]](?code-lang=python-legacy#)
 
-Bulk Delete SLO TimeframesCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/bulk_delete" \
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+Error response object.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+Array of errors returned by the API.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+  * [Ruby [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby-legacy)
+  * [Python [legacy]](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python-legacy)
+
+
+#####  Bulk Delete SLO Timeframes
+Copy
+```
+                  # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/bulk_delete" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"id1": [
-"7d",
-"30d"
-],
-"id2": [
-"7d",
-"30d"
-]
+  "id1": [
+    "7d",
+    "30d"
+  ],
+  "id2": [
+    "7d",
+    "30d"
+  ]
 }
-EOF
+EOF  
 
+                
 ```
-Bulk Delete SLO Timeframes```
+
+#####  Bulk Delete SLO Timeframes
+```
 """
 Bulk Delete SLO Timeframes returns "OK" response
 """
@@ -7504,51 +7093,69 @@ from datadog_api_client.v1.model.slo_bulk_delete import SLOBulkDelete
 from datadog_api_client.v1.model.slo_timeframe import SLOTimeframe
 
 body = SLOBulkDelete(
-id1=[
-SLOTimeframe.SEVEN_DAYS,
-SLOTimeframe.THIRTY_DAYS,
-],
-id2=[
-SLOTimeframe.SEVEN_DAYS,
-SLOTimeframe.THIRTY_DAYS,
-],
+    id1=[
+        SLOTimeframe.SEVEN_DAYS,
+        SLOTimeframe.THIRTY_DAYS,
+    ],
+    id2=[
+        SLOTimeframe.SEVEN_DAYS,
+        SLOTimeframe.THIRTY_DAYS,
+    ],
 )
 
 configuration = Configuration()
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.delete_slo_timeframe_in_bulk(body=body)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.delete_slo_timeframe_in_bulk(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 # Bulk Delete SLO Timeframes returns "OK" response
 
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::ServiceLevelObjectivesAPI.new
 
 body = {
-id1: [
-DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-DatadogAPIClient::V1::SLOTimeframe::THIRTY_DAYS,
-], id2: [
-DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
-DatadogAPIClient::V1::SLOTimeframe::THIRTY_DAYS,
-],
+  id1: [
+    DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+    DatadogAPIClient::V1::SLOTimeframe::THIRTY_DAYS,
+  ], id2: [
+    DatadogAPIClient::V1::SLOTimeframe::SEVEN_DAYS,
+    DatadogAPIClient::V1::SLOTimeframe::THIRTY_DAYS,
+  ],
 }
 p api_instance.delete_slo_timeframe_in_bulk(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 require 'dogapi'
 
 api_key = '<DATADOG_API_KEY>'
@@ -7561,17 +7168,26 @@ dog = Dogapi::Client.new(api_key, app_key)
 
 # Delete multiple timeframes
 thresholds = {
-slo_id_one => %w[7d],
-slo_id_two => %w[7d 30d]
+  slo_id_one => %w[7d],
+  slo_id_two => %w[7d 30d]
 }
 dog.delete_timeframes_service_level_objective(thresholds)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 // Bulk Delete SLO Timeframes returns "OK" response
 
 package main
@@ -7608,16 +7224,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.DeleteSLOTimeframeInBulk`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 // Bulk Delete SLO Timeframes returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -7630,40 +7255,49 @@ import java.util.List;
 import java.util.Map;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-Map<String, List<SLOTimeframe>> body =
-Map.ofEntries(
-Map.entry("id1", Arrays.asList(SLOTimeframe.SEVEN_DAYS, SLOTimeframe.THIRTY_DAYS)),
-Map.entry("id2", Arrays.asList(SLOTimeframe.SEVEN_DAYS, SLOTimeframe.THIRTY_DAYS)));
+    Map<String, List<SLOTimeframe>> body =
+        Map.ofEntries(
+            Map.entry("id1", Arrays.asList(SLOTimeframe.SEVEN_DAYS, SLOTimeframe.THIRTY_DAYS)),
+            Map.entry("id2", Arrays.asList(SLOTimeframe.SEVEN_DAYS, SLOTimeframe.THIRTY_DAYS)));
 
-try {
-SLOBulkDeleteResponse result = apiInstance.deleteSLOTimeframeInBulk(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println(
-"Exception when calling ServiceLevelObjectivesApi#deleteSLOTimeframeInBulk");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOBulkDeleteResponse result = apiInstance.deleteSLOTimeframeInBulk(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println(
+          "Exception when calling ServiceLevelObjectivesApi#deleteSLOTimeframeInBulk");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 from datadog import initialize, api
 
 options = {
-'api_key': '<DATADOG_API_KEY>',
-'app_key': '<DATADOG_APPLICATION_KEY>'
+    'api_key': '<DATADOG_API_KEY>',
+    'app_key': '<DATADOG_APPLICATION_KEY>'
 }
 
 slo_id_1 = '<YOUR_SLO_ID>'
@@ -7672,18 +7306,27 @@ slo_id_2 = '<YOUR_SLO_ID>'
 initialize(**options)
 
 delete_timeframes = {
-slo_id_1: ["7d"]
-slo_id_2: ["7d", "30d"]
+  slo_id_1: ["7d"]
+  slo_id_2: ["7d", "30d"]
 }
 
 api.ServiceLevelObjective.bulk_delete(delete_timeframes)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 // Bulk Delete SLO Timeframes returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV1::api_service_level_objectives::ServiceLevelObjectivesAPI;
@@ -7692,35 +7335,44 @@ use std::collections::BTreeMap;
 
 #[tokio::main]
 async fn main() {
-let body = BTreeMap::from([
-(
-"id1".to_string(),
-vec![SLOTimeframe::SEVEN_DAYS, SLOTimeframe::THIRTY_DAYS],
-),
-(
-"id2".to_string(),
-vec![SLOTimeframe::SEVEN_DAYS, SLOTimeframe::THIRTY_DAYS],
-),
-]);
-let configuration = datadog::Configuration::new();
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.delete_slo_timeframe_in_bulk(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = BTreeMap::from([
+        (
+            "id1".to_string(),
+            vec![SLOTimeframe::SEVEN_DAYS, SLOTimeframe::THIRTY_DAYS],
+        ),
+        (
+            "id2".to_string(),
+            vec![SLOTimeframe::SEVEN_DAYS, SLOTimeframe::THIRTY_DAYS],
+        ),
+    ]);
+    let configuration = datadog::Configuration::new();
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.delete_slo_timeframe_in_bulk(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Bulk Delete SLO Timeframes```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Bulk Delete SLO Timeframes
+```
 /**
-* Bulk Delete SLO Timeframes returns "OK" response
-*/
+ * Bulk Delete SLO Timeframes returns "OK" response
+ */
 
 import { client, v1 } from "@datadog/datadog-api-client";
 
@@ -7728,80 +7380,105 @@ const configuration = client.createConfiguration();
 const apiInstance = new v1.ServiceLevelObjectivesApi(configuration);
 
 const params: v1.ServiceLevelObjectivesApiDeleteSLOTimeframeInBulkRequest = {
-body: {
-id1: ["7d", "30d"],
-id2: ["7d", "30d"],
-},
+  body: {
+    id1: ["7d", "30d"],
+    id2: ["7d", "30d"],
+  },
 };
 
 apiInstance
-.deleteSLOTimeframeInBulk(params)
-.then((data: v1.SLOBulkDeleteResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .deleteSLOTimeframeInBulk(params)
+  .then((data: v1.SLOBulkDeleteResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Create a new SLO report- v2 (latest)
-**Note**: This feature is in private beta. To request access, use the request access form in the Service Level Objectives docs.
-POST https://api.ap1.datadoghq.com/api/v2/slo/reporthttps://api.ap2.datadoghq.com/api/v2/slo/reporthttps://api.datadoghq.eu/api/v2/slo/reporthttps://api.ddog-gov.com/api/v2/slo/reporthttps://api.datadoghq.com/api/v2/slo/reporthttps://api.us3.datadoghq.com/api/v2/slo/reporthttps://api.us5.datadoghq.com/api/v2/slo/report
-### OverviewCreate a job to generate an SLO report. The report job is processed asynchronously and eventually results in a CSV report being available for download.
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Create a new SLO report](https://docs.datadoghq.com/api/latest/service-level-objectives/#create-a-new-slo-report)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#create-a-new-slo-report-v2)
+
+
+**Note** : This feature is in private beta. To request access, use the request access form in the [Service Level Objectives](https://docs.datadoghq.com/service_management/service_level_objectives/#slo-csv-export) docs.
+POST https://api.ap1.datadoghq.com/api/v2/slo/reporthttps://api.ap2.datadoghq.com/api/v2/slo/reporthttps://api.datadoghq.eu/api/v2/slo/reporthttps://api.ddog-gov.com/api/v2/slo/reporthttps://api.datadoghq.com/api/v2/slo/reporthttps://api.us3.datadoghq.com/api/v2/slo/reporthttps://api.us5.datadoghq.com/api/v2/slo/report
+### Overview
+Create a job to generate an SLO report. The report job is processed asynchronously and eventually results in a CSV report being available for download.
 Check the status of the job and download the CSV report using the returned `report_id`.
-This endpoint requires the `slos_read` permission.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Request#### Body Data (required)Create SLO report job request body.
-- Model
-- Example
-Expand All
+This endpoint requires the `slos_read` permission.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Request
+#### Body Data (required)
+Create SLO report job request body.
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Field
 Type
 Description
-data [*required*]
+data [_required_]
 object
 The data portion of the SLO report request.
-attributes [*required*]
+attributes [_required_]
 object
 The attributes portion of the SLO report request.
-from_ts [*required*]
+from_ts [_required_]
 int64
 The `from` timestamp for the report in epoch seconds.
 interval
 enum
-The frequency at which report data is to be generated.
-Allowed enum values: `daily,weekly,monthly`query [*required*]
+The frequency at which report data is to be generated. Allowed enum values: `daily,weekly,monthly`
+query [_required_]
 string
 The query string used to filter SLO results. Some examples of queries include `service:<service-name>` and `slo-name`.
 timezone
 string
 The timezone used to determine the start and end of each interval. For example, weekly intervals start at 12am on Sunday in the specified timezone.
-to_ts [*required*]
+to_ts [_required_]
 int64
 The `to` timestamp for the report in epoch seconds.
 ```
 {
-"data": {
-"attributes": {
-"from_ts": 1633173071,
-"to_ts": 1636629071,
-"query": "slo_type:metric \"SLO Reporting Test\"",
-"interval": "monthly",
-"timezone": "America/New_York"
+  "data": {
+    "attributes": {
+      "from_ts": 1633173071,
+      "to_ts": 1636629071,
+      "query": "slo_type:metric \"SLO Reporting Test\"",
+      "interval": "monthly",
+      "timezone": "America/New_York"
+    }
+  }
 }
-}
-}
-```### Response- 200
-- 400
-- 403
-- 429
+```
+
+Copy
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLOReportJob-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLOReportJob-400-v2)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLOReportJob-403-v2)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#CreateSLOReportJob-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 The SLO report response.
-Expand All
 Field
 Type
 Description
@@ -7816,93 +7493,118 @@ string
 The type of ID.
 ```
 {
-"data": {
-"id": "dc8d92aa-e0af-11ee-af21-1feeaccaa3a3",
-"type": "report_id"
+  "data": {
+    "id": "dc8d92aa-e0af-11ee-af21-1feeaccaa3a3",
+    "type": "report_id"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Create a new SLO report returns "OK" responseCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report" \
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Create a new SLO report returns "OK" response
+Copy
+```
+                          # Curl command  
+curl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
 -d @- << EOF
 {
-"data": {
-"attributes": {
-"from_ts": 1633173071,
-"to_ts": 1636629071,
-"query": "slo_type:metric \"SLO Reporting Test\"",
-"interval": "monthly",
-"timezone": "America/New_York"
+  "data": {
+    "attributes": {
+      "from_ts": 1633173071,
+      "to_ts": 1636629071,
+      "query": "slo_type:metric \"SLO Reporting Test\"",
+      "interval": "monthly",
+      "timezone": "America/New_York"
+    }
+  }
 }
-}
-}
-EOF
+EOF  
 
+                        
 ```
-Create a new SLO report returns "OK" response```
+
+#####  Create a new SLO report returns "OK" response
+```
 // Create a new SLO report returns "OK" response
 
 package main
@@ -7922,9 +7624,9 @@ func main() {
 	body := datadogV2.SloReportCreateRequest{
 		Data: datadogV2.SloReportCreateRequestData{
 			Attributes: datadogV2.SloReportCreateRequestAttributes{
-				FromTs: time.Now().AddDate(0, 0, -40).Unix(),
-				ToTs: time.Now().Unix(),
-				Query: `slo_type:metric "SLO Reporting Test"`,
+				FromTs:   time.Now().AddDate(0, 0, -40).Unix(),
+				ToTs:     time.Now().Unix(),
+				Query:    `slo_type:metric "SLO Reporting Test"`,
 				Interval: datadogV2.SLOREPORTINTERVAL_MONTHLY.Ptr(),
 				Timezone: datadog.PtrString("America/New_York"),
 			},
@@ -7942,16 +7644,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.CreateSLOReportJob`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Create a new SLO report returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Create a new SLO report returns "OK" response
+```
 // Create a new SLO report returns "OK" response
 import com.datadog.api.client.ApiClient;
 import com.datadog.api.client.ApiException;
@@ -7964,44 +7675,53 @@ import com.datadog.api.client.v2.model.SloReportCreateRequestData;
 import java.time.OffsetDateTime;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-defaultClient.setUnstableOperationEnabled("v2.createSLOReportJob", true);
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.createSLOReportJob", true);
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-SloReportCreateRequest body =
-new SloReportCreateRequest()
-.data(
-new SloReportCreateRequestData()
-.attributes(
-new SloReportCreateRequestAttributes()
-.fromTs(OffsetDateTime.now().plusDays(-40).toInstant().getEpochSecond())
-.toTs(OffsetDateTime.now().toInstant().getEpochSecond())
-.query("""
+    SloReportCreateRequest body =
+        new SloReportCreateRequest()
+            .data(
+                new SloReportCreateRequestData()
+                    .attributes(
+                        new SloReportCreateRequestAttributes()
+                            .fromTs(OffsetDateTime.now().plusDays(-40).toInstant().getEpochSecond())
+                            .toTs(OffsetDateTime.now().toInstant().getEpochSecond())
+                            .query("""
 slo_type:metric "SLO Reporting Test"
 """)
-.interval(SLOReportInterval.MONTHLY)
-.timezone("America/New_York")));
+                            .interval(SLOReportInterval.MONTHLY)
+                            .timezone("America/New_York")));
 
-try {
-SLOReportPostResponse result = apiInstance.createSLOReportJob(body);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLOReportJob");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOReportPostResponse result = apiInstance.createSLOReportJob(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#createSLOReportJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Create a new SLO report returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Create a new SLO report returns "OK" response
+```
 """
 Create a new SLO report returns "OK" response
 """
@@ -8016,58 +7736,76 @@ from datadog_api_client.v2.model.slo_report_create_request_data import SloReport
 from datadog_api_client.v2.model.slo_report_interval import SLOReportInterval
 
 body = SloReportCreateRequest(
-data=SloReportCreateRequestData(
-attributes=SloReportCreateRequestAttributes(
-from_ts=int((datetime.now() + relativedelta(days=-40)).timestamp()),
-to_ts=int(datetime.now().timestamp()),
-query='slo_type:metric "SLO Reporting Test"',
-interval=SLOReportInterval.MONTHLY,
-timezone="America/New_York",
-),
-),
+    data=SloReportCreateRequestData(
+        attributes=SloReportCreateRequestAttributes(
+            from_ts=int((datetime.now() + relativedelta(days=-40)).timestamp()),
+            to_ts=int(datetime.now().timestamp()),
+            query='slo_type:metric "SLO Reporting Test"',
+            interval=SLOReportInterval.MONTHLY,
+            timezone="America/New_York",
+        ),
+    ),
 )
 
 configuration = Configuration()
 configuration.unstable_operations["create_slo_report_job"] = True
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.create_slo_report_job(body=body)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.create_slo_report_job(body=body)
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Create a new SLO report returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Create a new SLO report returns "OK" response
+```
 # Create a new SLO report returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
-config.unstable_operations["v2.create_slo_report_job".to_sym] = true
+  config.unstable_operations["v2.create_slo_report_job".to_sym] = true
 end
 api_instance = DatadogAPIClient::V2::ServiceLevelObjectivesAPI.new
 
 body = DatadogAPIClient::V2::SloReportCreateRequest.new({
-data: DatadogAPIClient::V2::SloReportCreateRequestData.new({
-attributes: DatadogAPIClient::V2::SloReportCreateRequestAttributes.new({
-from_ts: (Time.now + -40 * 86400).to_i,
-to_ts: Time.now.to_i,
-query: 'slo_type:metric "SLO Reporting Test"',
-interval: DatadogAPIClient::V2::SLOReportInterval::MONTHLY,
-timezone: "America/New_York",
-}),
-}),
+  data: DatadogAPIClient::V2::SloReportCreateRequestData.new({
+    attributes: DatadogAPIClient::V2::SloReportCreateRequestAttributes.new({
+      from_ts: (Time.now + -40 * 86400).to_i,
+      to_ts: Time.now.to_i,
+      query: 'slo_type:metric "SLO Reporting Test"',
+      interval: DatadogAPIClient::V2::SLOReportInterval::MONTHLY,
+      timezone: "America/New_York",
+    }),
+  }),
 })
 p api_instance.create_slo_report_job(body)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Create a new SLO report returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Create a new SLO report returns "OK" response
+```
 // Create a new SLO report returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_service_level_objectives::ServiceLevelObjectivesAPI;
@@ -8078,35 +7816,44 @@ use datadog_api_client::datadogV2::model::SloReportCreateRequestData;
 
 #[tokio::main]
 async fn main() {
-let body = SloReportCreateRequest::new(SloReportCreateRequestData::new(
-SloReportCreateRequestAttributes::new(
-1633173071,
-r#"slo_type:metric "SLO Reporting Test""#.to_string(),
-1636629071,
-)
-.interval(SLOReportInterval::MONTHLY)
-.timezone("America/New_York".to_string()),
-));
-let mut configuration = datadog::Configuration::new();
-configuration.set_unstable_operation_enabled("v2.CreateSLOReportJob", true);
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.create_slo_report_job(body).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let body = SloReportCreateRequest::new(SloReportCreateRequestData::new(
+        SloReportCreateRequestAttributes::new(
+            1633173071,
+            r#"slo_type:metric "SLO Reporting Test""#.to_string(),
+            1636629071,
+        )
+        .interval(SLOReportInterval::MONTHLY)
+        .timezone("America/New_York".to_string()),
+    ));
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.CreateSLOReportJob", true);
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.create_slo_report_job(body).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Create a new SLO report returns "OK" response```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Create a new SLO report returns "OK" response
+```
 /**
-* Create a new SLO report returns "OK" response
-*/
+ * Create a new SLO report returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -8115,54 +7862,75 @@ configuration.unstableOperations["v2.createSLOReportJob"] = true;
 const apiInstance = new v2.ServiceLevelObjectivesApi(configuration);
 
 const params: v2.ServiceLevelObjectivesApiCreateSLOReportJobRequest = {
-body: {
-data: {
-attributes: {
-fromTs: Math.round(
-new Date(new Date().getTime() + -40 * 86400 * 1000).getTime() / 1000
-),
-toTs: Math.round(new Date().getTime() / 1000),
-query: `slo_type:metric "SLO Reporting Test"`,
-interval: "monthly",
-timezone: "America/New_York",
-},
-},
-},
+  body: {
+    data: {
+      attributes: {
+        fromTs: Math.round(
+          new Date(new Date().getTime() + -40 * 86400 * 1000).getTime() / 1000
+        ),
+        toTs: Math.round(new Date().getTime() / 1000),
+        query: `slo_type:metric "SLO Reporting Test"`,
+        interval: "monthly",
+        timezone: "America/New_York",
+      },
+    },
+  },
 };
 
 apiInstance
-.createSLOReportJob(params)
-.then((data: v2.SLOReportPostResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .createSLOReportJob(params)
+  .then((data: v2.SLOReportPostResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get SLO report status- v2 (latest)
-**Note**: This feature is in private beta. To request access, use the request access form in the Service Level Objectives docs.
-GET https://api.ap1.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.ap2.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.datadoghq.eu/api/v2/slo/report/{report_id}/statushttps://api.ddog-gov.com/api/v2/slo/report/{report_id}/statushttps://api.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.us3.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.us5.datadoghq.com/api/v2/slo/report/{report_id}/status
-### OverviewGet the status of the SLO report job.OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get SLO report status](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-slo-report-status)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-slo-report-status-v2)
+
+
+**Note** : This feature is in private beta. To request access, use the request access form in the [Service Level Objectives](https://docs.datadoghq.com/service_management/service_level_objectives/#slo-csv-export) docs.
+GET https://api.ap1.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.ap2.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.datadoghq.eu/api/v2/slo/report/{report_id}/statushttps://api.ddog-gov.com/api/v2/slo/report/{report_id}/statushttps://api.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.us3.datadoghq.com/api/v2/slo/report/{report_id}/statushttps://api.us5.datadoghq.com/api/v2/slo/report/{report_id}/status
+### Overview
+Get the status of the SLO report job.
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-report_id [*required*]
+report_id [_required_]
 string
 The ID of the report job.
-### Response- 200
-- 400
-- 403
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReportJobStatus-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReportJobStatus-400-v2)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReportJobStatus-403-v2)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReportJobStatus-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReportJobStatus-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 The SLO report status response.
-Expand All
 Field
 Type
 Description
@@ -8174,8 +7942,8 @@ object
 The attributes portion of the SLO report status response.
 status
 enum
-The status of the SLO report job.
-Allowed enum values: `in_progress,completed,completed_with_errors,failed`id
+The status of the SLO report job. Allowed enum values: `in_progress,completed,completed_with_errors,failed`
+id
 string
 The ID of the report job.
 type
@@ -8183,99 +7951,131 @@ string
 The type of ID.
 ```
 {
-"data": {
-"attributes": {
-"status": "completed"
-},
-"id": "dc8d92aa-e0af-11ee-af21-1feeaccaa3a3",
-"type": "report_id"
+  "data": {
+    "attributes": {
+      "status": "completed"
+    },
+    "id": "dc8d92aa-e0af-11ee-af21-1feeaccaa3a3",
+    "type": "report_id"
+  }
 }
-}
-```Bad Request
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Get SLO report statusCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport report_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/status" \
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Get SLO report status
+Copy
+```
+                  # Path parameters  
+export report_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/status" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get SLO report status```
+
+#####  Get SLO report status
+```
 """
 Get SLO report status returns "OK" response
 """
@@ -8290,24 +8090,33 @@ REPORT_DATA_ID = environ["REPORT_DATA_ID"]
 configuration = Configuration()
 configuration.unstable_operations["get_slo_report_job_status"] = True
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.get_slo_report_job_status(
-report_id=REPORT_DATA_ID,
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo_report_job_status(
+        report_id=REPORT_DATA_ID,
+    )
 
-print(response)
+    print(response)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get SLO report status```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get SLO report status
+```
 # Get SLO report status returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
-config.unstable_operations["v2.get_slo_report_job_status".to_sym] = true
+  config.unstable_operations["v2.get_slo_report_job_status".to_sym] = true
 end
 api_instance = DatadogAPIClient::V2::ServiceLevelObjectivesAPI.new
 
@@ -8315,12 +8124,21 @@ api_instance = DatadogAPIClient::V2::ServiceLevelObjectivesAPI.new
 REPORT_DATA_ID = ENV["REPORT_DATA_ID"]
 p api_instance.get_slo_report_job_status(REPORT_DATA_ID)
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get SLO report status```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get SLO report status
+```
 // Get SLO report status returns "OK" response
 
 package main
@@ -8351,16 +8169,25 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 
-	responseContent, _ := json.MarshalIndent(resp, "", " ")
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReportJobStatus`:\n%s\n", responseContent)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get SLO report status```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get SLO report status
+```
 // Get SLO report status returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -8369,61 +8196,79 @@ import com.datadog.api.client.v2.api.ServiceLevelObjectivesApi;
 import com.datadog.api.client.v2.model.SLOReportStatusGetResponse;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-defaultClient.setUnstableOperationEnabled("v2.getSLOReportJobStatus", true);
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getSLOReportJobStatus", true);
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-// there is a valid "report" in the system
-String REPORT_DATA_ID = System.getenv("REPORT_DATA_ID");
+    // there is a valid "report" in the system
+    String REPORT_DATA_ID = System.getenv("REPORT_DATA_ID");
 
-try {
-SLOReportStatusGetResponse result = apiInstance.getSLOReportJobStatus(REPORT_DATA_ID);
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOReportJobStatus");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      SLOReportStatusGetResponse result = apiInstance.getSLOReportJobStatus(REPORT_DATA_ID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOReportJobStatus");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get SLO report status```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get SLO report status
+```
 // Get SLO report status returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_service_level_objectives::ServiceLevelObjectivesAPI;
 
 #[tokio::main]
 async fn main() {
-// there is a valid "report" in the system
-let report_data_id = std::env::var("REPORT_DATA_ID").unwrap();
-let mut configuration = datadog::Configuration::new();
-configuration.set_unstable_operation_enabled("v2.GetSLOReportJobStatus", true);
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api.get_slo_report_job_status(report_data_id.clone()).await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    // there is a valid "report" in the system
+    let report_data_id = std::env::var("REPORT_DATA_ID").unwrap();
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetSLOReportJobStatus", true);
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api.get_slo_report_job_status(report_data_id.clone()).await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get SLO report status```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get SLO report status
+```
 /**
-* Get SLO report status returns "OK" response
-*/
+ * Get SLO report status returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -8435,132 +8280,187 @@ const apiInstance = new v2.ServiceLevelObjectivesApi(configuration);
 const REPORT_DATA_ID = process.env.REPORT_DATA_ID as string;
 
 const params: v2.ServiceLevelObjectivesApiGetSLOReportJobStatusRequest = {
-reportId: REPORT_DATA_ID,
+  reportId: REPORT_DATA_ID,
 };
 
 apiInstance
-.getSLOReportJobStatus(params)
-.then((data: v2.SLOReportStatusGetResponse) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getSLOReportJobStatus(params)
+  .then((data: v2.SLOReportStatusGetResponse) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```## Get SLO report- v2 (latest)
-**Note**: This feature is in private beta. To request access, use the request access form in the Service Level Objectives docs.
-GET https://api.ap1.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.ap2.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.datadoghq.eu/api/v2/slo/report/{report_id}/downloadhttps://api.ddog-gov.com/api/v2/slo/report/{report_id}/downloadhttps://api.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.us3.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.us5.datadoghq.com/api/v2/slo/report/{report_id}/download
-### OverviewDownload an SLO report. This can only be performed after the report job has completed.
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+## [Get SLO report](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-slo-report)
+  * [v2 (latest)](https://docs.datadoghq.com/api/latest/service-level-objectives/#get-slo-report-v2)
+
+
+**Note** : This feature is in private beta. To request access, use the request access form in the [Service Level Objectives](https://docs.datadoghq.com/service_management/service_level_objectives/#slo-csv-export) docs.
+GET https://api.ap1.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.ap2.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.datadoghq.eu/api/v2/slo/report/{report_id}/downloadhttps://api.ddog-gov.com/api/v2/slo/report/{report_id}/downloadhttps://api.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.us3.datadoghq.com/api/v2/slo/report/{report_id}/downloadhttps://api.us5.datadoghq.com/api/v2/slo/report/{report_id}/download
+### Overview
+Download an SLO report. This can only be performed after the report job has completed.
 Reports are not guaranteed to exist indefinitely. Datadog recommends that you download the report as soon as it is available.
-OAuth apps require the `slos_read` authorization scope to access this endpoint.
-### Arguments#### Path ParametersName
+OAuth apps require the `slos_read` authorization [scope](https://docs.datadoghq.com/api/latest/scopes/#service-level-objectives) to access this endpoint.
+### Arguments
+#### Path Parameters
+Name
 Type
 Description
-report_id [*required*]
+report_id [_required_]
 string
 The ID of the report job.
-### Response- 200
-- 400
-- 403
-- 404
-- 429
+### Response
+  * [200](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReport-200-v2)
+  * [400](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReport-400-v2)
+  * [403](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReport-403-v2)
+  * [404](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReport-404-v2)
+  * [429](https://docs.datadoghq.com/api/latest/service-level-objectives/#GetSLOReport-429-v2)
+
+
 OK
-- Model
-- Example
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
 Expand All
 Field
 Type
 Description
 No response body
-`{}`Bad Request
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Forbidden
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
+{}
 ```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Not Found
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```Too many requests
-- Model
-- Example
-API error response.
-Expand All
-Field
-Type
-Description
-errors [*required*]
-[string]
-A list of errors.
-```
-{
-"errors": [
-"Bad Request"
-]
-}
-```### Code Example- [Curl](?code-lang=curl#)
-- [Python](?code-lang=python#)
-- [Ruby](?code-lang=ruby#)
-- [Go](?code-lang=go#)
-- [Java](?code-lang=java#)
-- [Rust](?code-lang=rust#)
-- [Typescript](?code-lang=typescript#)
 
-Get SLO reportCopy```
+Copy
+Bad Request
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
 
-# Path parametersexport report_id="CHANGE_ME"# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/download" \
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Forbidden
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Not Found
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+Too many requests
+  * [Model](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+  * [Example](https://docs.datadoghq.com/api/latest/service-level-objectives/)
+
+
+API error response.
+Expand All
+Field
+Type
+Description
+errors [_required_]
+[string]
+A list of errors.
+```
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+Copy
+### Code Example
+  * [Curl](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=curl)
+  * [Python](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=python)
+  * [Ruby](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=ruby)
+  * [Go](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=go)
+  * [Java](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=java)
+  * [Rust](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=rust)
+  * [Typescript](https://docs.datadoghq.com/api/latest/service-level-objectives/?code-lang=typescript)
+
+
+#####  Get SLO report
+Copy
+```
+                  # Path parameters  
+export report_id="CHANGE_ME"  
+# Curl command  
+curl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/slo/report/${report_id}/download" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
--H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"  
 
+                
 ```
-Get SLO report```
+
+#####  Get SLO report
+```
 """
 Get SLO report returns "OK" response
 """
@@ -8571,32 +8471,50 @@ from datadog_api_client.v2.api.service_level_objectives_api import ServiceLevelO
 configuration = Configuration()
 configuration.unstable_operations["get_slo_report"] = True
 with ApiClient(configuration) as api_client:
-api_instance = ServiceLevelObjectivesApi(api_client)
-response = api_instance.get_slo_report(
-report_id="9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f",
-)
+    api_instance = ServiceLevelObjectivesApi(api_client)
+    response = api_instance.get_slo_report(
+        report_id="9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f",
+    )
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
 ```
-Get SLO report```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+
+
+```
+
+#####  Get SLO report
+```
 # Get SLO report returns "OK" response
 
 require "datadog_api_client"
 DatadogAPIClient.configure do |config|
-config.unstable_operations["v2.get_slo_report".to_sym] = true
+  config.unstable_operations["v2.get_slo_report".to_sym] = true
 end
 api_instance = DatadogAPIClient::V2::ServiceLevelObjectivesAPI.new
 p api_instance.get_slo_report("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f")
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
 ```
-Get SLO report```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+
+
+```
+
+#####  Get SLO report
+```
 // Get SLO report returns "OK" response
 
 package main
@@ -8626,12 +8544,21 @@ func main() {
 	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectivesApi.GetSLOReport`:\n%s\n", resp)
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
 ```
-Get SLO report```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+
+
+```
+
+#####  Get SLO report
+```
 // Get SLO report returns "OK" response
 
 import com.datadog.api.client.ApiClient;
@@ -8639,58 +8566,76 @@ import com.datadog.api.client.ApiException;
 import com.datadog.api.client.v2.api.ServiceLevelObjectivesApi;
 
 public class Example {
-public static void main(String[] args) {
-ApiClient defaultClient = ApiClient.getDefaultApiClient();
-defaultClient.setUnstableOperationEnabled("v2.getSLOReport", true);
-ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    defaultClient.setUnstableOperationEnabled("v2.getSLOReport", true);
+    ServiceLevelObjectivesApi apiInstance = new ServiceLevelObjectivesApi(defaultClient);
 
-try {
-String result = apiInstance.getSLOReport("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f");
-System.out.println(result);
-} catch (ApiException e) {
-System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOReport");
-System.err.println("Status code: " + e.getCode());
-System.err.println("Reason: " + e.getResponseBody());
-System.err.println("Response headers: " + e.getResponseHeaders());
-e.printStackTrace();
-}
-}
+    try {
+      String result = apiInstance.getSLOReport("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ServiceLevelObjectivesApi#getSLOReport");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
 ```
-Get SLO report```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+
+
+```
+
+#####  Get SLO report
+```
 // Get SLO report returns "OK" response
 use datadog_api_client::datadog;
 use datadog_api_client::datadogV2::api_service_level_objectives::ServiceLevelObjectivesAPI;
 
 #[tokio::main]
 async fn main() {
-let mut configuration = datadog::Configuration::new();
-configuration.set_unstable_operation_enabled("v2.GetSLOReport", true);
-let api = ServiceLevelObjectivesAPI::with_config(configuration);
-let resp = api
-.get_slo_report("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f".to_string())
-.await;
-if let Ok(value) = resp {
-println!("{:#?}", value);
-} else {
-println!("{:#?}", resp.unwrap_err());
-}
+    let mut configuration = datadog::Configuration::new();
+    configuration.set_unstable_operation_enabled("v2.GetSLOReport", true);
+    let api = ServiceLevelObjectivesAPI::with_config(configuration);
+    let resp = api
+        .get_slo_report("9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f".to_string())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
 }
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run`
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
 ```
-Get SLO report```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+
+
+```
+
+#####  Get SLO report
+```
 /**
-* Get SLO report returns "OK" response
-*/
+ * Get SLO report returns "OK" response
+ */
 
 import { client, v2 } from "@datadog/datadog-api-client";
 
@@ -8699,20 +8644,31 @@ configuration.unstableOperations["v2.getSLOReport"] = true;
 const apiInstance = new v2.ServiceLevelObjectivesApi(configuration);
 
 const params: v2.ServiceLevelObjectivesApiGetSLOReportRequest = {
-reportId: "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f",
+  reportId: "9fb2dc2a-ead0-11ee-a174-9fe3a9d7627f",
 };
 
 apiInstance
-.getSLOReport(params)
-.then((data: string) => {
-console.log(
-"API called successfully. Returned data: " + JSON.stringify(data)
-);
-})
-.catch((error: any) => console.error(error));
+  .getSLOReport(params)
+  .then((data: string) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
 
-```#### InstructionsFirst [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
 ```
 
-`DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"`
-```###### Request a personalized demo×##### Get Started with Datadog
+Copy
+#### Instructions
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+```
+    
+
+DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+
+
+```
+
+* * *
+![](https://id.rlcdn.com/464526.gif)![](https://t.co/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=123ba612-2eed-4200-81dc-6ea11c312473&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=2ffdaa14-0623-445e-9f19-d0fec4c34cb3&pt=Service%20Level%20Objectives&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Fservice-level-objectives%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)![](https://analytics.twitter.com/1/i/adsct?bci=4&dv=UTC%26en-US%26Google%20Inc.%26Linux%20x86_64%26255%261080%26600%264%2624%261080%26600%260%26na&eci=3&event=%7B%7D&event_id=123ba612-2eed-4200-81dc-6ea11c312473&integration=gtm&p_id=Twitter&p_user_id=0&pl_id=2ffdaa14-0623-445e-9f19-d0fec4c34cb3&pt=Service%20Level%20Objectives&tw_document_href=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Fservice-level-objectives%2F&tw_iframe_status=0&txn_id=nui23&type=javascript&version=2.3.35)
+![](https://bat.bing.com/action/0?ti=4061438&Ver=2&mid=024537a3-b549-45e5-8a80-2116ef2e82c3&bo=2&sid=e9375cd0f0bd11f08bcff787fa0fba6f&vid=e9375d80f0bd11f0b5075ff6ae9d9677&vids=0&msclkid=N&pi=918639831&lg=en-US&sw=1080&sh=600&sc=24&tl=Service%20Level%20Objectives&p=https%3A%2F%2Fdocs.datadoghq.com%2Fapi%2Flatest%2Fservice-level-objectives%2F&r=&lt=12673&evt=pageLoad&sv=2&asc=G&cdb=AQAS&rn=842901)
