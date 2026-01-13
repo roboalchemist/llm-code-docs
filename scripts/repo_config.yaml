@@ -12,6 +12,13 @@ settings:
 
 # Repository configurations
 repositories:
+  - name: "APScheduler"
+    description: "APScheduler - Advanced Python Scheduler for scheduling jobs to run at specific times or intervals with support for multiple schedulers, job stores, and triggers"
+    repo_url: "https://github.com/agronholm/apscheduler.git"
+    source_folder: "docs"
+    target_folder: "docs/github-scraped/apscheduler"
+    branch: "master"
+
   - name: "axe-core"
     description: "axe-core accessibility testing engine with comprehensive WCAG rule documentation and API guides"
     repo_url: "https://github.com/dequelabs/axe-core.git"
