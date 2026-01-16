@@ -208,6 +208,13 @@ repositories:
     target_folder: "docs/github-scraped/go-docs"
     branch: "master" # Default branch to use
 
+  - name: "Gunicorn"
+    description: "Gunicorn - Python WSGI HTTP Server with pre-forked worker model, multiple worker types, and comprehensive configuration options for deploying Python web applications"
+    repo_url: "https://github.com/benoitc/gunicorn.git"
+    source_folder: "docs/source"
+    target_folder: "docs/github-scraped/gunicorn"
+    branch: "master"
+
   - name: "Go LSP"
     description: "Go Language Server Protocol implementation - Structs and interfaces for LSP wire format with Go mappings"
     repo_url: "https://github.com/go-language-server/protocol.git"
