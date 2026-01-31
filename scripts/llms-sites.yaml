@@ -224,6 +224,9 @@ sites:
 - name: crawl4ai
   base_url: https://api.crawl4ai.com/
   description: Crawl4AI open-source web crawler optimized for LLM and AI applications
+- name: crafting
+  base_url: https://docs.sandboxes.cloud/
+  description: Crafting production-like cloud development environments for engineers and AI agents
 - name: crewai
   base_url: https://docs.crewai.com/
   description: CrewAI multi-agent orchestration framework
