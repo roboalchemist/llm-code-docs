@@ -1,8 +1,8 @@
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/download.md
+# Source: https://platform.claude.com/docs/en/api/java/beta/files/download.md
 
 ## Download
 
-`client.beta.files.download(stringfileID, FileDownloadParamsparams?, RequestOptionsoptions?): Response`
+`HttpResponse beta().files().download(FileDownloadParamsparams = FileDownloadParams.none(), RequestOptionsrequestOptions = RequestOptions.none())`
 
 **get** `/v1/files/{file_id}/content`
 
@@ -10,75 +10,71 @@ Download File
 
 ### Parameters
 
-- `fileID: string`
+- `FileDownloadParams params`
 
-  ID of the File.
+  - `Optional<String> fileId`
 
-- `params: FileDownloadParams`
+    ID of the File.
 
-  - `betas?: Array<AnthropicBeta>`
+  - `Optional<List<AnthropicBeta>> betas`
 
     Optional header to specify the beta version(s) you want to use.
 
-    - `(string & {})`
+    - `MESSAGE_BATCHES_2024_09_24("message-batches-2024-09-24")`
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+    - `PROMPT_CACHING_2024_07_31("prompt-caching-2024-07-31")`
 
-      - `"message-batches-2024-09-24"`
+    - `COMPUTER_USE_2024_10_22("computer-use-2024-10-22")`
 
-      - `"prompt-caching-2024-07-31"`
+    - `COMPUTER_USE_2025_01_24("computer-use-2025-01-24")`
 
-      - `"computer-use-2024-10-22"`
+    - `PDFS_2024_09_25("pdfs-2024-09-25")`
 
-      - `"computer-use-2025-01-24"`
+    - `TOKEN_COUNTING_2024_11_01("token-counting-2024-11-01")`
 
-      - `"pdfs-2024-09-25"`
+    - `TOKEN_EFFICIENT_TOOLS_2025_02_19("token-efficient-tools-2025-02-19")`
 
-      - `"token-counting-2024-11-01"`
+    - `OUTPUT_128K_2025_02_19("output-128k-2025-02-19")`
 
-      - `"token-efficient-tools-2025-02-19"`
+    - `FILES_API_2025_04_14("files-api-2025-04-14")`
 
-      - `"output-128k-2025-02-19"`
+    - `MCP_CLIENT_2025_04_04("mcp-client-2025-04-04")`
 
-      - `"files-api-2025-04-14"`
+    - `MCP_CLIENT_2025_11_20("mcp-client-2025-11-20")`
 
-      - `"mcp-client-2025-04-04"`
+    - `DEV_FULL_THINKING_2025_05_14("dev-full-thinking-2025-05-14")`
 
-      - `"mcp-client-2025-11-20"`
+    - `INTERLEAVED_THINKING_2025_05_14("interleaved-thinking-2025-05-14")`
 
-      - `"dev-full-thinking-2025-05-14"`
+    - `CODE_EXECUTION_2025_05_22("code-execution-2025-05-22")`
 
-      - `"interleaved-thinking-2025-05-14"`
+    - `EXTENDED_CACHE_TTL_2025_04_11("extended-cache-ttl-2025-04-11")`
 
-      - `"code-execution-2025-05-22"`
+    - `CONTEXT_1M_2025_08_07("context-1m-2025-08-07")`
 
-      - `"extended-cache-ttl-2025-04-11"`
+    - `CONTEXT_MANAGEMENT_2025_06_27("context-management-2025-06-27")`
 
-      - `"context-1m-2025-08-07"`
+    - `MODEL_CONTEXT_WINDOW_EXCEEDED_2025_08_26("model-context-window-exceeded-2025-08-26")`
 
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
-
-### Returns
-
-- `unnamed_schema_0 = Response`
+    - `SKILLS_2025_10_02("skills-2025-10-02")`
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
+```java
+package com.anthropic.example;
 
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
+import com.anthropic.client.AnthropicClient;
+import com.anthropic.client.okhttp.AnthropicOkHttpClient;
+import com.anthropic.core.http.HttpResponse;
+import com.anthropic.models.beta.files.FileDownloadParams;
 
-const response = await client.beta.files.download('file_id');
+public final class Main {
+    private Main() {}
 
-console.log(response);
+    public static void main(String[] args) {
+        AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
-const content = await response.blob();
-console.log(content);
+        HttpResponse response = client.beta().files().download("file_id");
+    }
+}
 ```

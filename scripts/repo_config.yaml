@@ -943,6 +943,13 @@ repositories:
     target_folder: "docs/github-scraped/ray"
     branch: "master"
 
+  - name: "SiYuan"
+    description: "SiYuan - Privacy-first, self-hosted personal knowledge management system with Markdown editing, block-level references, and local-first data storage"
+    repo_url: "https://github.com/siyuan-note/user-guide-en_US.git"
+    source_folder: "."
+    target_folder: "docs/github-scraped/siyuan"
+    branch: "master"
+
   - name: "Stable Diffusion"
     description: "Stable Diffusion - Latent diffusion model for text-to-image generation with official CompVis repository"
     repo_url: "https://github.com/CompVis/stable-diffusion.git"

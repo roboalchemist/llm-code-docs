@@ -1,0 +1,22 @@
+# Source: https://github.com/siyuan-note/user-guide-en_US/blob/master/20200923234011-ieuun1p/20210808180303-v9awwp0.sy
+
+{
+	"ID": "20210808180303-v9awwp0",
+	"Type": "NodeDocument",
+	"Properties": {
+		"icon": "1f308",
+		"id": "20210808180303-v9awwp0",
+		"title": "Cloud",
+		"updated": "20210808180303"
+	},
+	"Children": [
+		{
+			"ID": "20210808180303-zdwqjbv",
+			"Type": "NodeParagraph",
+			"Properties": {
+				"id": "20210808180303-zdwqjbv",
+				"updated": "20210808180303"
+			}
+		}
+	]
+}
