@@ -12,6 +12,7 @@ those out, too.
     I cannot guarantee that all of these examples are functional. Many of them I have not tried myself.
 
 ## Cronjobs
+
 ntfy is perfect for any kind of cronjobs or just when long processes are done (backups, pipelines, rsync copy commands, ...).
 
 I started adding notifications pretty much all of my scripts. Typically, I just chain the <tt>curl</tt> call
@@ -19,32 +20,39 @@ directly to the command I'm running. The following example will either send <i>L
 or ⚠️ <i>Laptop backup failed</i> directly to my phone:
 
 ``` bash
+```text
+```bash
 rsync -a root@laptop /backups/laptop \
   && zfs snapshot ... \
   && curl -H prio:low -d "Laptop backup succeeded" ntfy.sh/backups \
   || curl -H tags:warning -H prio:high -d "Laptop backup failed" ntfy.sh/backups
-```
+```text
 
 Here's one for the history books. I desperately want the `github.com/ntfy` organization, but all my tickets with
 GitHub have been hopeless. In case it ever becomes available, I want to know immediately.
 
-```
+```bash
+
 # Check github/ntfy user
+
 */6 * * * * if curl -s https://api.github.com/users/ntfy | grep "Not Found"; then curl -d "github.com/ntfy is available" -H "Tags: tada" -H "Prio: high" ntfy.sh/my-alerts; fi
-```
+```text
 
 You can also use [`ntfy-run`](https://github.com/quantum5/ntfy-run) to send the output of your cronjob in the
 notification, so that you know exactly why it failed:
 
-```
+```bash
 0 0 * * * ntfy-run -n https://ntfy.sh/backups --success-priority low --failure-tags warning ~/backup-computer
-```
+```text
 
 ## Low disk space alerts
-Here's a simple cronjob that I use to alert me when the disk space on the root disk is running low. It's simple, but 
-effective. 
 
-``` bash 
+Here's a simple cronjob that I use to alert me when the disk space on the root disk is running low. It's simple, but
+effective.
+
+``` bash
+```bash
+```bash
 #!/bin/bash
 
 mingigs=10
@@ -62,17 +70,23 @@ fi
 ```
 
 ## SSH login alerts
+
 Years ago my home server was broken into. That shook me hard, so every time someone logs into any machine that I
 own, I now message myself. Here's an example of how to use <a href="https://en.wikipedia.org/wiki/Linux_PAM">PAM</a>
 to notify yourself on SSH login.
 
 === "/etc/pam.d/sshd"
-    ```
+    ```text
+    ```text
+
     # at the end of the file
+
     session optional pam_exec.so /usr/bin/ntfy-ssh-login.sh
     ```
 
 === "/usr/bin/ntfy-ssh-login.sh"
+    ```bash
+    ```text
     ```bash
     #!/bin/bash
     if [ "${PAM_TYPE}" = "open_session" ]; then
@@ -82,34 +96,42 @@ to notify yourself on SSH login.
         -d "SSH login: ${PAM_USER} from ${PAM_RHOST}" \
         ntfy.sh/alerts
     fi
-    ```
+    ```text
 
 ## Collect data from multiple machines
+
 The other day I was running tasks on 20 servers, and I wanted to collect the interim results
-as a CSV in one place. Each of the servers was publishing to a topic as the results completed (`publish-result.sh`), 
+as a CSV in one place. Each of the servers was publishing to a topic as the results completed (`publish-result.sh`),
 and I had one central collector to grab the results as they came in (`collect-results.sh`).
 
 It looked something like this:
 
 === "collect-results.sh"
     ```bash
+    ```bash
+    ```bash
     while read result; do
       [ -n "$result" ] && echo "$result" >> results.csv
     done < <(stdbuf -i0 -o0 curl -s ntfy.sh/results/raw)
     ```
-=== "publish-result.sh" 
+=== "publish-result.sh"
+    ```bash
+    ```text
     ```bash
     // This script was run on each of the 20 servers. It was doing heavy processing ...
-    
+
     // Publish script results
     curl -d "$(hostname),$count,$time" ntfy.sh/results
-    ```
+    ```javascript
 
 ## Ansible, Salt and Puppet
+
 You can easily integrate ntfy into Ansible, Salt, or Puppet to notify you when runs are done or are highstated.
 One of my co-workers uses the following Ansible task to let him know when things are done:
 
 ``` yaml
+```text
+```text
 - name: Send ntfy.sh update
   uri:
     url: "https://ntfy.sh/{{ ntfy_channel }}"
@@ -122,17 +144,21 @@ There's also a dedicated Ansible action plugin (one which runs on the Ansible co
 to ntfy at its default URL (`attrs` and other attributes are optional):
 
 ``` yaml
+```text
+```text
 - name: "Notify ntfy that we're done"
   ntfy:
        msg: "deployment on {{ inventory_hostname }} is complete. 🐄"
        attrs:
           tags: [ heavy_check_mark ]
           priority: 1
-```
+```text
 
 ## GitHub Actions
 You can send a message during a workflow run with curl. Here is an example sending info about the repo, commit and job status.
 ``` yaml
+```bash
+```bash
 - name: Actions Ntfy
   run: |
     curl \
@@ -144,54 +170,58 @@ You can send a message during a workflow run with curl. Here is an example sendi
 ```
 
 ## Changedetection.io
-ntfy is an excellent choice for getting notifications when a website has a change sent to your mobile (or desktop), 
-[changedetection.io](https://changedetection.io) or on GitHub ([dgtlmoon/changedetection.io](https://github.com/dgtlmoon/changedetection.io)) 
+
+ntfy is an excellent choice for getting notifications when a website has a change sent to your mobile (or desktop),
+[changedetection.io](https://changedetection.io) or on GitHub ([dgtlmoon/changedetection.io](https://github.com/dgtlmoon/changedetection.io))
 uses [apprise](https://github.com/caronc/apprise) library for notification integrations.
 
-To add any ntfy(s) notification to a website change simply add the [ntfy style URL](https://github.com/caronc/apprise/wiki/Notify_ntfy) 
+To add any ntfy(s) notification to a website change simply add the [ntfy style URL](https://github.com/caronc/apprise/wiki/Notify_ntfy)
 to the notification list.
 
 For example `ntfy://{topic}` or `ntfy://{user}:{password}@{host}:{port}/{topics}`
 
-In your changedetection.io installation, click `Edit` > `Notifications` on a single website watch (or group) then add 
+In your changedetection.io installation, click `Edit` > `Notifications` on a single website watch (or group) then add
 the special ntfy Apprise Notification URL to the Notification List.
 
 ![ntfy alerts on website change](static/img/cdio-setup.jpg)
 
 ## Watchtower (shoutrrr)
-You can use [shoutrrr](https://containrrr.dev/shoutrrr/latest/services/ntfy/) to send 
+
+You can use [shoutrrr](https://containrrr.dev/shoutrrr/latest/services/ntfy/) to send
 [Watchtower](https://github.com/containrrr/watchtower/) notifications to your ntfy topic.
 
 Example docker-compose.yml:
 
 ``` yaml
+```text
+```text
 services:
   watchtower:
     image: containrrr/watchtower
     environment:
       - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
       - WATCHTOWER_NOTIFICATION_URL=ntfy://ntfy.sh/my_watchtower_topic?title=WatchtowerUpdates
-```
+```text
 
 The environment variable `WATCHTOWER_NOTIFICATION_SKIP_TITLE` is required to prevent Watchtower from [replacing the `title` query parameter](https://containrrr.dev/watchtower/notifications/#settings). If omitted, the provided notification title will not be used.
 
 Or, if you only want to send notifications using shoutrrr:
-```
+```text
 shoutrrr send -u "ntfy://ntfy.sh/my_watchtower_topic?title=WatchtowerUpdates" -m "testMessage"
-```
+```text
 
 Authentication tokens are also supported:
 
 - (Recommended) Ntfy url format (replace the domain, topic and token with your own):
-```
+```text
 ntfy://:TOKEN@DOMAIN/TOPIC
-```
+```text
 
 - Generic webhook and authorization header using this url format (replace the domain, topic and token with your own):
 
-```
+```text
 generic+https://DOMAIN/TOPIC?@authorization=Bearer+TOKEN`
-```
+```text
 
 ## Sonarr, Radarr, Lidarr, Readarr, Prowlarr, SABnzbd
 
@@ -209,6 +239,8 @@ You can use the HTTP request node to send messages with [Node-RED](https://noder
 <summary>Example: Send a message (click to expand)</summary>
 
 ``` json
+```json
+```json
 [
     {
         "id": "c956e688cc74ad8e",
@@ -298,6 +330,8 @@ You can use the HTTP request node to send messages with [Node-RED](https://noder
 <summary>Example: Send a picture (click to expand)</summary>
 
 ``` json
+```text
+```json
 [
     {
         "id": "d135a13eadeb9d6d",
@@ -405,7 +439,7 @@ You can use the HTTP request node to send messages with [Node-RED](https://noder
         ]
     }
 ]
-```
+```xml
 
 </details>
 
@@ -415,6 +449,8 @@ You can use the HTTP request node to send messages with [Node-RED](https://noder
 To use ntfy with [Gatus](https://github.com/TwiN/gatus), you can use the `ntfy` alerting provider like so:
 
 ```yaml
+```text
+```text
 alerting:
   ntfy:
     url: "https://ntfy.sh"
@@ -428,6 +464,8 @@ For more information on using ntfy with Gatus, refer to [Configuring ntfy alerts
   <summary>Alternative: Using the custom alerting provider</summary>
 
 ```yaml
+```text
+```text
 alerting:
   custom:
     url: "https://ntfy.sh"
@@ -450,17 +488,18 @@ alerting:
       ALERT_TRIGGERED_OR_RESOLVED:
         TRIGGERED: "warning"
         RESOLVED: "white_check_mark"
-```
+```xml
 
 </details>
 
-
 ## Jellyseerr/Overseerr webhook
 Here is an example for [jellyseerr](https://github.com/Fallenbagel/jellyseerr)/[overseerr](https://overseerr.dev/) webhook
-JSON payload. Remember to change the `https://request.example.com` to your URL as the value of the JSON key click. 
+JSON payload. Remember to change the `https://request.example.com` to your URL as the value of the JSON key click.
 And if you're not using the request `topic`, make sure to change it in the JSON payload to your topic.
 
 ``` json
+```json
+```json
 {
     "topic": "requests",
     "title": "{{event}}",
@@ -472,10 +511,13 @@ And if you're not using the request `topic`, make sure to change it in the JSON 
 ```
 
 ## Home Assistant
+
 Here is an example for the configuration.yml file to setup a REST notify component.
 Since Home Assistant is going to POST JSON, you need to specify the root of your ntfy resource.
 
 ```yaml
+```text
+```text
 notify:
   - name: ntfy
     platform: rest
@@ -485,11 +527,13 @@ notify:
     title_param_name: title
     message_param_name: message
     resource: https://ntfy.sh
-```
+```text
 
 If you need to authenticate to your ntfy resource, define the authentication, username and password as below:
 
 ```yaml
+```text
+```text
 notify:
   - name: ntfy
     platform: rest
@@ -507,6 +551,8 @@ notify:
 If you need to add any other [ntfy specific parameters](https://ntfy.sh/docs/publish/#publish-as-json) such as priority, tags, etc., add them to the `data` array in the example yml. For example:
 
 ```yaml
+```text
+```text
 notify:
   - name: ntfy
     platform: rest
@@ -517,7 +563,7 @@ notify:
     title_param_name: title
     message_param_name: message
     resource: https://ntfy.sh
-```
+```sql
 
 ## Uptime Kuma
 Go to your [Uptime Kuma](https://github.com/louislam/uptime-kuma) Settings > Notifications, click on **Setup Notification**.
@@ -545,65 +591,72 @@ Select **Alert Contact Type** = Webhook. Then set your desired **Friendly Name**
 </div>
 
 ``` json
+```json
+```json
 {
     "topic":"myTopic",
     "title": "*monitorFriendlyName* *alertTypeFriendlyName*",
-    "message": "*alertDetails*", 
+    "message": "*alertDetails*",
     "tags": ["green_circle"],
     "priority": 3,
     "click": https://uptimerobot.com/dashboard#*monitorID*
 }
 ```
+
 You can create two Alert Contacts each with a different icon and priority, for example:
 
 ``` json
+```text
+```json
 {
     "topic":"myTopic",
     "title": "*monitorFriendlyName* *alertTypeFriendlyName*",
-    "message": "*alertDetails*", 
+    "message": "*alertDetails*",
     "tags": ["red_circle"],
     "priority": 3,
     "click": https://uptimerobot.com/dashboard#*monitorID*
 }
-```
+```text
 You can now add the created Alerts Contact(s) to the monitor(s) and test the notifications:
 
 <div id="uptimerobot-monitor-screenshots" class="screenshots">
     <a href="../static/img/uptimerobot-test.jpg"><img src="../static/img/uptimerobot-test.jpg"/></a>
 </div>
 
-
 ## Apprise
-ntfy is integrated natively into [Apprise](https://github.com/caronc/apprise) (also check out the 
+ntfy is integrated natively into [Apprise](https://github.com/caronc/apprise) (also check out the
 [Apprise/ntfy wiki page](https://github.com/caronc/apprise/wiki/Notify_ntfy)).
 
 You can use it like this:
 
-```
+```bash
 apprise -vv -t "Test Message Title" -b "Test Message Body" \
    ntfy://mytopic
-```
+```text
 
 Or with your own server like this:
 
-```
+```bash
 apprise -vv -t "Test Message Title" -b "Test Message Body" \
    ntfy://ntfy.example.com/mytopic
-```
-
+```bash
 
 ## Rundeck
-Rundeck by default sends only HTML email which is not processed by ntfy SMTP server. Append following configurations to 
+Rundeck by default sends only HTML email which is not processed by ntfy SMTP server. Append following configurations to
 [rundeck-config.properties](https://docs.rundeck.com/docs/administration/configuration/config-file-reference.html) :
 
-```
+```text
+
 # Template
+
 rundeck.mail.template.file=/path/to/template.html
 rundeck.mail.template.log.formatted=false
-```
+```text
 
 Example `template.html`:
 ```html
+```xml
+```xml
 <div>Execution ${execution.id} was <b>${execution.status}</b></div>
 <ul>
     <li><a href="${execution.href}">Execution result</a></li>
@@ -617,6 +670,7 @@ Add notification on Rundeck (attachment type must be: `Attached as file to email
 ![Rundeck](static/img/rundeck.png)
 
 ## Traccar
+
 This will only work on selfhosted [traccar](https://www.traccar.org/) ([Github](https://github.com/traccar/traccar)) instances, as you need to be able to set `sms.http.*` keys, which is not possible through the UI attributes
 
 The easiest way to integrate traccar with ntfy, is to configure ntfy as the SMS provider for your instance. You then can set your ntfy topic as your account's phone number in traccar. Sending the email notifications to ntfy will not work, as ntfy does not support HTML emails.
@@ -624,6 +678,7 @@ The easiest way to integrate traccar with ntfy, is to configure ntfy as the SMS 
 **Info:** Add a phone number to your traccar account not in device, as otherwise it will not try to send SMS.
 
 **Caution:** JSON publishing is only possible, when POST-ing to the root URL of the ntfy instance. (see [documentation](publish.md#publish-as-json))
+
 ```xml
         <entry key='sms.http.url'>https://ntfy.sh</entry>
         <entry key='sms.http.template'>
@@ -633,11 +688,15 @@ The easiest way to integrate traccar with ntfy, is to configure ntfy as the SMS 
             }
         </entry>
 ```
+
 If [access control](config.md#access-control) is enabled, and the target topic does not support anonymous writes, you'll also have to provide an authorization header, for example in form of a privileged token
+
 ```xml
         <entry key='sms.http.authorization'>Bearer tk_JhbsnoMrgy2FcfHeofv97Pi5uXaZZ</entry>
 ```
+
 or by simply providing traccar with a valid username/password combination.
+
 ```xml
         <entry key='sms.http.user'>phil</entry>
         <entry key='sms.http.password'>mypass</entry>
@@ -650,6 +709,8 @@ This example provides a simple way to send notifications using [ntfy.sh](https:/
 Store your ntfy.sh bearer token securely if access control is enabled:
 
    ```sh
+   ```text
+   ```text
    echo "your_bearer_token_here" > ~/.ntfy_token
    chmod 600 ~/.ntfy_token
    ```
@@ -657,7 +718,11 @@ Store your ntfy.sh bearer token securely if access control is enabled:
 Add the following function and alias to your `.bashrc` or `.bash_profile`:
 
    ```sh
+   ```text
+   ```bash
+
    # Function for alert notifications using ntfy.sh
+
    notify_via_ntfy() {
        local exit_status=$?  # Capture the exit status before doing anything else
        local token=$(< ~/.ntfy_token)  # Securely read the token
@@ -676,14 +741,16 @@ Add the following function and alias to your `.bashrc` or `.bash_profile`:
    }
 
    # Add an "alert" alias for long running commands using ntfy.sh
+
    alias alert='notify_via_ntfy'
-   ```
+   ```text
 
 Now you can run any long-running command and append `alert` to notify when it completes:
 
 ```sh
 sleep 10; alert
 ```
+
 ![ntfy notifications on mobile device](static/img/mobile-screenshot-notification.png)
 
 **Notification Sent** with a success 🪄 (`magic_wand`) or failure ⚠️ (`warning`) tag.

@@ -1,27 +1,30 @@
-# Source: https://github.com/binwiederhier/ntfy/blob/main/docs/subscribe/web.md
+Source: https://github.com/binwiederhier/ntfy/blob/main/docs/subscribe/web.md
 
 # Subscribe from the web app
+
 The web app lets you subscribe and publish messages to ntfy topics. For ntfy.sh, the web app is available at [ntfy.sh/app](https://ntfy.sh/app).
 To subscribe, simply type in the topic name and click the *Subscribe* button. **After subscribing, messages published to the topic
 will appear in the web app, and pop up as a notification.**
 
 <div id="subscribe-screenshots" class="screenshots">
-    <a href="../../static/img/web-subscribe.png"><img src="../../static/img/web-subscribe.png"/></a> 
+    <a href="../../static/img/web-subscribe.png"><img src="../../static/img/web-subscribe.png"/></a>
 </div>
 
 ## Publish messages
+
 To learn how to send messages, check out the [publishing page](../publish.md).
 
 <div id="web-screenshots" class="screenshots">
-    <a href="../../static/img/web-detail.png"><img src="../../static/img/web-detail.png"/></a> 
+    <a href="../../static/img/web-detail.png"><img src="../../static/img/web-detail.png"/></a>
     <a href="../../static/img/web-notification.png"><img src="../../static/img/web-notification.png"/></a>
 </div>
 
 ## Topic reservations
+
 If topic reservations are enabled, you can claim ownership over topics and define access to it:
 
 <div id="reserve-screenshots" class="screenshots">
-    <a href="../../static/img/web-reserve-topic.png"><img src="../../static/img/web-reserve-topic.png"/></a> 
+    <a href="../../static/img/web-reserve-topic.png"><img src="../../static/img/web-reserve-topic.png"/></a>
     <a href="../../static/img/web-reserve-topic-dialog.png"><img src="../../static/img/web-reserve-topic-dialog.png"/></a>
 </div>
 
@@ -34,7 +37,7 @@ If topic reservations are enabled, you can claim ownership over topics and defin
 - Only Chrome, Edge, and Opera support displaying view and http [actions](../publish.md#action-buttons) in notifications.
 
   Their presentation is platform specific.
-  
+
   Note that HTTP actions are performed using fetch and thus are limited to the [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
   rules, which means that any URL you include needs to respond to a [preflight request](https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request)
   with headers allowing the origin of the ntfy web app (`Access-Control-Allow-Origin: https://ntfy.sh`) or `*`.
@@ -45,6 +48,7 @@ Look at the [Notifications API](https://developer.mozilla.org/en-US/docs/Web/API
 for more info.
 
 ## Background notifications
+
 While subscribing, you have the option to enable background notifications on supported browsers (see "Settings" tab).
 
 Note: If you add the web app to your homescreen (as a progressive web app, more info in the [installed web app](pwa.md)

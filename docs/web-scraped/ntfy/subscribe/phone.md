@@ -1,18 +1,17 @@
-# Source: https://github.com/binwiederhier/ntfy/blob/main/docs/subscribe/phone.md
-
 # Subscribe from your phone
+
 You can use the ntfy [Android App](https://play.google.com/store/apps/details?id=io.heckel.ntfy) or [iOS app](https://apps.apple.com/us/app/ntfy/id1625396347)
 to receive notifications directly on your phone. Just like the server, this app is also open source, and the code is available
-on GitHub ([Android](https://github.com/binwiederhier/ntfy-android), [iOS](https://github.com/binwiederhier/ntfy-ios)). Feel free to 
+on GitHub ([Android](https://github.com/binwiederhier/ntfy-android), [iOS](https://github.com/binwiederhier/ntfy-ios)). Feel free to
 contribute, or [build your own](../develop.md).
 
 <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy"><img width="170" src="../../static/img/badge-googleplay.png"></a>
 <a href="https://f-droid.org/en/packages/io.heckel.ntfy/"><img width="170" src="../../static/img/badge-fdroid.png"></a>
 <a href="https://apps.apple.com/us/app/ntfy/id1625396347"><img width="150" src="../../static/img/badge-appstore.png"></a>
 
-You can get the Android app from [Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy), 
+You can get the Android app from [Google Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy),
 [F-Droid](https://f-droid.org/en/packages/io.heckel.ntfy/), or via the APKs from [GitHub Releases](https://github.com/binwiederhier/ntfy-android/releases).
-The Google Play and F-Droid releases are largely identical, with the one exception that the F-Droid flavor does not use Firebase. 
+The Google Play and F-Droid releases are largely identical, with the one exception that the F-Droid flavor does not use Firebase.
 The iOS app can be downloaded from the [App Store](https://apps.apple.com/us/app/ntfy/id1625396347).
 
 Alternatively, you may also want to consider using the **[progressive web app (PWA)](pwa.md)** instead of the native app.
@@ -23,6 +22,7 @@ a certificate with the following SHA-256 fingerprint: `6e145d7ae685eff75468e5067
 You can also query the DNS TXT records for `ntfy.sh` to find this fingerprint.
 
 ## Overview
+
 A picture is worth a thousand words. Here are a few screenshots showing what the app looks like. It's all pretty
 straight forward. You can add topics and as soon as you add them, you can [publish messages](../publish.md) to them.
 
@@ -43,6 +43,7 @@ If those screenshots are still not enough, here's a video:
 </figure>
 
 ## Message priority
+
 _Supported on:_ :material-android: :material-apple:
 
 When you [publish messages](../publish.md#message-priority) to a topic, you can **define a priority**. This priority defines
@@ -73,10 +74,11 @@ setting, and other settings such as popover or notification dot:
 </figure>
 
 ## Instant delivery
+
 _Supported on:_ :material-android:
 
-Instant delivery allows you to receive messages on your phone instantly, **even when your phone is in doze mode**, i.e. 
-when the screen turns off, and you leave it on the desk for a while. This is achieved with a foreground service, which 
+Instant delivery allows you to receive messages on your phone instantly, **even when your phone is in doze mode**, i.e.
+when the screen turns off, and you leave it on the desk for a while. This is achieved with a foreground service, which
 you'll see as a permanent notification that looks like this:
 
 <figure markdown>
@@ -84,7 +86,7 @@ you'll see as a permanent notification that looks like this:
   <figcaption>Instant delivery foreground notification</figcaption>
 </figure>
 
-To turn off this notification, long-press on the foreground notification (screenshot above) and navigate to the 
+To turn off this notification, long-press on the foreground notification (screenshot above) and navigate to the
 settings. Then toggle the "Subscription Service" off:
 
 <figure markdown>
@@ -92,32 +94,33 @@ settings. Then toggle the "Subscription Service" off:
   <figcaption>Turning off the persistent instant delivery notification</figcaption>
 </figure>
 
-**Limitations without instant delivery**: Without instant delivery, **messages may arrive with a significant delay** 
-(sometimes many minutes, or even hours later). If you've ever picked up your phone and 
+**Limitations without instant delivery**: Without instant delivery, **messages may arrive with a significant delay**
+(sometimes many minutes, or even hours later). If you've ever picked up your phone and
 suddenly had 10 messages that were sent long before you know what I'm talking about.
 
-The reason for this is [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging). FCM is the 
-*only* Google approved way to send push messages to Android devices, and it's what pretty much all apps use to deliver push 
+The reason for this is [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging). FCM is the
+*only* Google approved way to send push messages to Android devices, and it's what pretty much all apps use to deliver push
 notifications. Firebase is overall pretty bad at delivering messages in time, but on Android, most apps are stuck with it.
 
 The ntfy Android app uses Firebase only for the main host `ntfy.sh`, and only in the Google Play flavor of the app.
 It won't use Firebase for any self-hosted servers, and not at all in the F-Droid flavor.
 
 !!! info "F-Droid: Always instant delivery"
-    Since the F-Droid build does not include Firebase, **all subscriptions use instant delivery by default**, and 
-    there is no option to disable it. The F-Droid app hides all mentions of "instant delivery" in the UI, since 
+    Since the F-Droid build does not include Firebase, **all subscriptions use instant delivery by default**, and
+    there is no option to disable it. The F-Droid app hides all mentions of "instant delivery" in the UI, since
     showing options that can't be changed would only be confusing.
 
 ## Publishing messages
+
 _Supported on:_ :material-android:
 
-The Android app allows you to **publish messages directly from the app**, without needing to use curl or any other 
-tool. When enabled in the settings (Settings → General → Show message bar), a **message bar** appears at the bottom 
+The Android app allows you to **publish messages directly from the app**, without needing to use curl or any other
+tool. When enabled in the settings (Settings → General → Show message bar), a **message bar** appears at the bottom
 of the topic view (it's enabled by default). You can type a message and tap the send button to publish it instantly.
 If the message bar is disabled, you can tap the floating action button (FAB) at the bottom right instead.
 
-For more options, tap the expand button next to the send button to open the full **publish dialog**. The dialog lets 
-you compose a full notification with all available options, including title, tags, priority, click URL, email 
+For more options, tap the expand button next to the send button to open the full **publish dialog**. The dialog lets
+you compose a full notification with all available options, including title, tags, priority, click URL, email
 forwarding, delayed delivery, attachments, Markdown formatting, and phone calls.
 
 <div id="publish-screenshots" class="screenshots">
@@ -126,6 +129,7 @@ forwarding, delayed delivery, attachments, Markdown formatting, and phone calls.
 </div>
 
 ## Share to topic
+
 _Supported on:_ :material-android:
 
 You can share files to a topic using Android's "Share" feature. This works in almost any app that supports sharing files
@@ -140,14 +144,15 @@ The feature is pretty self-explanatory, and one picture says more than a thousan
 </div>
 
 ## ntfy:// links
+
 _Supported on:_ :material-android:
 
 The ntfy Android app supports deep linking directly to topics. This is useful when integrating with [automation apps](#automation-apps)
 such as [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm),
-or to simply directly link to a topic from a mobile website. 
+or to simply directly link to a topic from a mobile website.
 
 !!! info
-    Android deep linking of http/https links is very brittle and limited, which is why something like `https://<host>/<topic>/subscribe` is 
+    Android deep linking of http/https links is very brittle and limited, which is why something like `https://<host>/<topic>/subscribe` is
     **not possible**, and instead `ntfy://` links have to be used. More details in [issue #20](https://github.com/binwiederhier/ntfy/issues/20).
 
 **Supported link formats:**
@@ -161,10 +166,11 @@ or to simply directly link to a topic from a mobile website.
 ## Advanced settings
 
 ### Custom headers
+
 _Supported on:_ :material-android:
 
-If your ntfy server is behind an **authenticated proxy or tunnel** (e.g., Cloudflare Access, Tailscale Funnel, or 
-a reverse proxy with basic auth), you can configure custom HTTP headers that will be sent with every request to 
+If your ntfy server is behind an **authenticated proxy or tunnel** (e.g., Cloudflare Access, Tailscale Funnel, or
+a reverse proxy with basic auth), you can configure custom HTTP headers that will be sent with every request to
 that server. You could set headers such as `Authorization`, `CF-Access-Client-Id`, or any other headers required by
 your setup. To add custom headers, go to **Settings → Advanced → Custom headers**.
 
@@ -179,19 +185,20 @@ your setup. To add custom headers, go to **Settings → Advanced → Custom head
     for that server.
 
 ### Manage certificates
+
 _Supported on:_ :material-android:
 
-If you're running a self-hosted ntfy server with a **self-signed certificate** or need to use **mutual TLS (mTLS)** 
+If you're running a self-hosted ntfy server with a **self-signed certificate** or need to use **mutual TLS (mTLS)**
 for client authentication, you can manage certificates in the app settings.
 
 Go to **Settings → Advanced → Manage certificates** to:
 
 - **Add trusted certificates**: Import a server certificate (PEM format) to trust when connecting to your ntfy server.
   This is useful for self-signed certificates that are not trusted by the Android system.
-- **Add client certificates**: Import a client certificate (PKCS#12 format) for mutual TLS authentication. This 
+- **Add client certificates**: Import a client certificate (PKCS#12 format) for mutual TLS authentication. This
   certificate will be presented to the server when connecting.
 
-When you subscribe to a topic on a server with an untrusted certificate, the app will show a security warning and 
+When you subscribe to a topic on a server with an untrusted certificate, the app will show a security warning and
 allow you to review and trust the certificate.
 
 <div id="certificates-screenshots" class="screenshots">
@@ -200,9 +207,10 @@ allow you to review and trust the certificate.
 </div>
 
 ### Language
+
 _Supported on:_ :material-android:
 
-The Android app supports many languages and uses the **system language by default**. If you'd like to use the app in 
+The Android app supports many languages and uses the **system language by default**. If you'd like to use the app in
 a different language than your system, you can override it in **Settings → General → Language**.
 
 <div id="language-screenshots" class="screenshots">
@@ -222,13 +230,14 @@ more. Languages with more than 80% of strings translated are shown in the langua
 ## Integrations
 
 ### UnifiedPush
+
 _Supported on:_ :material-android:
 
 [UnifiedPush](https://unifiedpush.org) is a standard for receiving push notifications without using the Google-owned
-[Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging) service. It puts push notifications 
-in the control of the user. ntfy can act as a **UnifiedPush distributor**, forwarding messages to apps that support it. 
+[Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging) service. It puts push notifications
+in the control of the user. ntfy can act as a **UnifiedPush distributor**, forwarding messages to apps that support it.
 
-To use ntfy as a distributor, simply select it in one of the [supported apps](https://unifiedpush.org/users/apps/). 
+To use ntfy as a distributor, simply select it in one of the [supported apps](https://unifiedpush.org/users/apps/).
 That's it. It's a one-step installation 😀. If desired, you can select your own [selfhosted ntfy server](../install.md)
 to handle messages. Here's an example with [FluffyChat](https://fluffychat.im/):
 
@@ -239,6 +248,7 @@ to handle messages. Here's an example with [FluffyChat](https://fluffychat.im/):
 </div>
 
 ### Automation apps
+
 _Supported on:_ :material-android:
 
 The ntfy Android app integrates nicely with automation apps such as [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid)
@@ -246,10 +256,11 @@ or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.
 **react to incoming messages**, as well as **send messages**.
 
 #### React to incoming messages
+
 To react on incoming notifications, you have to register to intents with the `io.heckel.ntfy.MESSAGE_RECEIVED` action (see
 [code for details](https://github.com/binwiederhier/ntfy-android/blob/main/app/src/main/java/io/heckel/ntfy/msg/BroadcastService.kt)).
 Here's an example using [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid)
-and [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm), but any app that can catch 
+and [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm), but any app that can catch
 broadcasts is supported:
 
 <div id="integration-screenshots-receive-1" class="screenshots">
@@ -266,7 +277,7 @@ broadcasts is supported:
 </div>
 
 For MacroDroid, be sure to type in the package name `io.heckel.ntfy`, otherwise intents may be silently swallowed.
-If you're using topics to drive automation, you'll likely want to mute the topic in the ntfy app. This will prevent 
+If you're using topics to drive automation, you'll likely want to mute the topic in the ntfy app. This will prevent
 notification popups:
 
 <figure markdown>
@@ -299,11 +310,12 @@ Here's a list of extras you can access. Most likely, you'll want to filter for `
 | `attachment_url`     | *String*                     | `https://ntfy.sh/file/afUbjadfl7ErP.jpg` | URL of the attachment; may be empty if not set                                     |
 
 #### Send messages using intents
+
 To send messages from other apps (such as [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid)
-and [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm)), you can 
+and [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm)), you can
 broadcast an intent with the `io.heckel.ntfy.SEND_MESSAGE` action. The ntfy Android app will forward the intent as a HTTP
 POST request to [publish a message](../publish.md). This is primarily useful for apps that do not support HTTP POST/PUT
-(like MacroDroid). In Tasker, you can simply use the "HTTP Request" action, which is a little easier and also works if 
+(like MacroDroid). In Tasker, you can simply use the "HTTP Request" action, which is a little easier and also works if
 ntfy is not installed.
 
 Here's what that looks like:
@@ -330,6 +342,7 @@ The following intent extras are supported when for the intent with the `io.hecke
 ## Troubleshooting
 
 ### Connection error dialog
+
 _Supported on:_ :material-android:
 
 If the app has trouble connecting to a ntfy server, a **warning icon** will appear in the app bar. Tapping it opens

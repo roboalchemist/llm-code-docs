@@ -1,9 +1,10 @@
 # Source: https://github.com/binwiederhier/ntfy/blob/main/docs/install.md
 
 # Installing ntfy
+
 The `ntfy` CLI allows you to [publish messages](publish.md), [subscribe to topics](subscribe/cli.md) as well as to
-self-host your own ntfy server. It's all pretty straight forward. Just install the binary, package or Docker image, 
-configure it and run it. Just like any other software. No fuzz. 
+self-host your own ntfy server. It's all pretty straight forward. Just install the binary, package or Docker image,
+configure it and run it. Just like any other software. No fuzz.
 
 !!! info
     The following steps are only required if you want to **self-host your own ntfy server or you want to use the ntfy CLI**.
@@ -11,6 +12,7 @@ configure it and run it. Just like any other software. No fuzz.
     `curl`.
 
 ## General steps
+
 The ntfy server comes as a statically linked binary and is shipped as tarball, deb/rpm packages and as a Docker image.
 We support amd64, armv7 and arm64.
 
@@ -20,17 +22,19 @@ We support amd64, armv7 and arm64.
 
 To run the ntfy server, then just run `ntfy serve` (or `systemctl start ntfy` when using the deb/rpm).
 To send messages, use `ntfy publish`. To subscribe to topics, use `ntfy subscribe` (see [subscribing via CLI](subscribe/cli.md)
-for details). 
+for details).
 
 If you like tutorials, check out :simple-youtube: [Kris Occhipinti's ntfy install guide](https://www.youtube.com/watch?v=bZzqrX05mNU) on YouTube, or
 [Alex's Docker-based setup guide](https://blog.alexsguardian.net/posts/2023/09/12/selfhosting-ntfy/). Both are great
 resources to get started. _I am not affiliated with Kris or Alex, I just liked their video/post._
 
 ## Linux binaries
+
 Please check out the [releases page](https://github.com/binwiederhier/ntfy/releases) for binaries and
 deb/rpm packages.
 
 === "x86_64/amd64"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_amd64.tar.gz
     tar zxvf ntfy_2.16.0_linux_amd64.tar.gz
@@ -40,6 +44,7 @@ deb/rpm packages.
     ```
 
 === "armv6"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv6.tar.gz
     tar zxvf ntfy_2.16.0_linux_armv6.tar.gz
@@ -49,6 +54,7 @@ deb/rpm packages.
     ```
 
 === "armv7/armhf"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv7.tar.gz
     tar zxvf ntfy_2.16.0_linux_armv7.tar.gz
@@ -58,6 +64,7 @@ deb/rpm packages.
     ```
 
 === "arm64"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_arm64.tar.gz
     tar zxvf ntfy_2.16.0_linux_arm64.tar.gz
@@ -76,6 +83,7 @@ deb/rpm packages.
 Installation via Debian/Ubuntu repository (fingerprint `55BA 774A 6F5E E674 31E4  6B7C CFDB 962D 4F1E C4AF`):
 
 === "x86_64/amd64"
+
     ```bash
     sudo mkdir -p /etc/apt/keyrings
     sudo curl -L -o /etc/apt/keyrings/ntfy.gpg https://archive.ntfy.sh/apt/keyring.gpg
@@ -89,6 +97,7 @@ Installation via Debian/Ubuntu repository (fingerprint `55BA 774A 6F5E E674 31E4
     ```
 
 === "armv7/armhf"
+
     ```bash
     sudo mkdir -p /etc/apt/keyrings
     sudo curl -L -o /etc/apt/keyrings/ntfy.gpg https://archive.ntfy.sh/apt/keyring.gpg
@@ -102,6 +111,7 @@ Installation via Debian/Ubuntu repository (fingerprint `55BA 774A 6F5E E674 31E4
     ```
 
 === "arm64"
+
     ```bash
     sudo mkdir -p /etc/apt/keyrings
     sudo curl -L -o /etc/apt/keyrings/ntfy.gpg https://archive.ntfy.sh/apt/keyring.gpg
@@ -117,6 +127,7 @@ Installation via Debian/Ubuntu repository (fingerprint `55BA 774A 6F5E E674 31E4
 Manually installing the .deb file:
 
 === "x86_64/amd64"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_amd64.deb
     sudo dpkg -i ntfy_*.deb
@@ -125,6 +136,7 @@ Manually installing the .deb file:
     ```
 
 === "armv6"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv6.deb
     sudo dpkg -i ntfy_*.deb
@@ -133,6 +145,7 @@ Manually installing the .deb file:
     ```
 
 === "armv7/armhf"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv7.deb
     sudo dpkg -i ntfy_*.deb
@@ -141,6 +154,7 @@ Manually installing the .deb file:
     ```
 
 === "arm64"
+
     ```bash
     wget https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_arm64.deb
     sudo dpkg -i ntfy_*.deb
@@ -151,13 +165,15 @@ Manually installing the .deb file:
 ## Fedora/RHEL/CentOS
 
 === "x86_64/amd64"
+
     ```bash
     sudo rpm -ivh https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_amd64.rpm
-    sudo systemctl enable ntfy 
+    sudo systemctl enable ntfy
     sudo systemctl start ntfy
     ```
 
 === "armv6"
+
     ```bash
     sudo rpm -ivh https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv6.rpm
     sudo systemctl enable ntfy
@@ -165,95 +181,108 @@ Manually installing the .deb file:
     ```
 
 === "armv7/armhf"
+
     ```bash
     sudo rpm -ivh https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_armv7.rpm
-    sudo systemctl enable ntfy 
+    sudo systemctl enable ntfy
     sudo systemctl start ntfy
     ```
 
 === "arm64"
+
     ```bash
     sudo rpm -ivh https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_linux_arm64.rpm
-    sudo systemctl enable ntfy 
+    sudo systemctl enable ntfy
     sudo systemctl start ntfy
     ```
 
 ## Arch Linux
+
 <span class="community-badge" title="This package is maintained by the community, not the ntfy developers"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> Community maintained</span>
 
-ntfy can be installed using an [AUR package](https://aur.archlinux.org/packages/ntfysh-bin/). 
-You can use an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) like `paru`, `yay` or others to download, 
+ntfy can be installed using an [AUR package](https://aur.archlinux.org/packages/ntfysh-bin/).
+You can use an [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) like `paru`, `yay` or others to download,
 build and install ntfy and keep it up to date.
-```
+
+```bash
 paru -S ntfysh-bin
 ```
 
 Alternatively, run the following commands to install ntfy manually:
-```
+
+```bash
 curl https://aur.archlinux.org/cgit/aur.git/snapshot/ntfysh-bin.tar.gz | tar xzv
 cd ntfysh-bin
 makepkg -si
 ```
 
-## NixOS / Nix 
+## NixOS / Nix
+
 <span class="community-badge" title="This package is maintained by the community, not the ntfy developers"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> Community maintained</span>
 
 ntfy is packaged in nixpkgs as `ntfy-sh`. It can be installed by adding the package name to the configuration file and calling `nixos-rebuild`. Alternatively, the following command can be used to install ntfy in the current user environment:
-```
+
+```bash
 nix-env -iA ntfy-sh
 ```
 
-NixOS also supports [declarative setup of the ntfy server](https://search.nixos.org/options?channel=unstable&show=services.ntfy-sh.enable&from=0&size=50&sort=relevance&type=packages&query=ntfy). 
+NixOS also supports [declarative setup of the ntfy server](https://search.nixos.org/options?channel=unstable&show=services.ntfy-sh.enable&from=0&size=50&sort=relevance&type=packages&query=ntfy).
 
 ## FreeBSD
+
 <span class="community-badge" title="This package is maintained by the community, not the ntfy developers"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> Community maintained</span>
 
 ntfy is ported to FreeBSD and available via the ports collection as [sysutils/go-ntfy](https://www.freshports.org/sysutils/go-ntfy/). You can install it via `pkg`:
-```
+
+```bash
 pkg install go-ntfy
 ```
 
 ## macOS
-The [ntfy CLI](subscribe/cli.md) (`ntfy publish` and `ntfy subscribe` only) is supported on macOS as well. 
-To install, please [download the tarball](https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_darwin_all.tar.gz), 
-extract it and place it somewhere in your `PATH` (e.g. `/usr/local/bin/ntfy`). 
 
-If run as `root`, ntfy will look for its config at `/etc/ntfy/client.yml`. For all other users, it'll look for it at 
+The [ntfy CLI](subscribe/cli.md) (`ntfy publish` and `ntfy subscribe` only) is supported on macOS as well.
+To install, please [download the tarball](https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_darwin_all.tar.gz),
+extract it and place it somewhere in your `PATH` (e.g. `/usr/local/bin/ntfy`).
+
+If run as `root`, ntfy will look for its config at `/etc/ntfy/client.yml`. For all other users, it'll look for it at
 `~/Library/Application Support/ntfy/client.yml` (sample included in the tarball).
 
 ```bash
 curl -L https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_darwin_all.tar.gz > ntfy_2.16.0_darwin_all.tar.gz
 tar zxvf ntfy_2.16.0_darwin_all.tar.gz
 sudo cp -a ntfy_2.16.0_darwin_all/ntfy /usr/local/bin/ntfy
-mkdir ~/Library/Application\ Support/ntfy 
+mkdir ~/Library/Application\ Support/ntfy
 cp ntfy_2.16.0_darwin_all/client/client.yml ~/Library/Application\ Support/ntfy/client.yml
 ntfy --help
 ```
 
 !!! info
-    Only the ntfy CLI is supported on macOS. ntfy server is currently not supported, but you can build and run it for 
+    Only the ntfy CLI is supported on macOS. ntfy server is currently not supported, but you can build and run it for
     development as well. Check out the [build instructions](develop.md) for details.
 
 ## Homebrew
+
 <span class="community-badge" title="This package is maintained by the community, not the ntfy developers"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg> Community maintained</span>
 
 To install the [ntfy CLI](subscribe/cli.md) (`ntfy publish` and `ntfy subscribe` only) via Homebrew (Linux and macOS),
 simply run:
-```
+
+```bash
 brew install ntfy
 ```
 
 ## Windows
+
 The ntfy server and CLI are fully supported on Windows. You can run the ntfy server directly or as a Windows service.
 To install, you can either
 
 * [Download the latest ZIP](https://github.com/binwiederhier/ntfy/releases/download/v2.16.0/ntfy_2.16.0_windows_amd64.zip),
-extract it and place the `ntfy.exe` binary somewhere in your `%Path%`. 
+extract it and place the `ntfy.exe` binary somewhere in your `%Path%`.
 * Or install ntfy from the [Scoop](https://scoop.sh) main repository via `scoop install ntfy`
 
 Once installed, you can run the ntfy CLI commands like so:
 
-```
+```bash
 ntfy.exe -h
 ```
 
@@ -263,30 +292,33 @@ for the server, and `%AppData%\ntfy\client.yml` for the client. You may need to 
 To install the ntfy server as a Windows service, you can use the built-in `sc` command. For example, run this in an
 elevated command prompt (adjust the path to `ntfy.exe` accordingly):
 
-```
+```bash
 sc create ntfy binPath="C:\path\to\ntfy.exe serve" start=auto
 sc start ntfy
 ```
 
 ## Docker
-The [ntfy image](https://hub.docker.com/r/binwiederhier/ntfy) is available for amd64, armv6, armv7 and arm64. It should 
+
+The [ntfy image](https://hub.docker.com/r/binwiederhier/ntfy) is available for amd64, armv6, armv7 and arm64. It should
 be pretty straight forward to use.
 
-The server exposes its web UI and the API on port 80, so you need to expose that in Docker. To use the persistent 
-[message cache](config.md#message-cache), you also need to map a volume to `/var/cache/ntfy`. To change other settings, 
+The server exposes its web UI and the API on port 80, so you need to expose that in Docker. To use the persistent
+[message cache](config.md#message-cache), you also need to map a volume to `/var/cache/ntfy`. To change other settings,
 you should map `/etc/ntfy`, so you can edit `/etc/ntfy/server.yml`.
 
 !!! info
-    Note that the Docker image **does not contain a `/etc/ntfy/server.yml` file**. If you'd like to use a config file, 
+    Note that the Docker image **does not contain a `/etc/ntfy/server.yml` file**. If you'd like to use a config file,
     please manually create one outside the image and map it as a volume, e.g. via `-v /etc/ntfy:/etc/ntfy`. You may
     use the [`server.yml` file on GitHub](https://github.com/binwiederhier/ntfy/blob/main/server/server.yml) as a template.
 
 Basic usage (no cache or additional config):
-```
+
+```bash
 docker run -p 80:80 -it binwiederhier/ntfy serve
 ```
 
 With persistent cache (configured as command line arguments):
+
 ```bash
 docker run \
   -v /var/cache/ntfy:/var/cache/ntfy \
@@ -298,6 +330,7 @@ docker run \
 ```
 
 With other config options, timezone, and non-root user (configured via `/etc/ntfy/server.yml`, see [configuration](config.md) for details):
+
 ```bash
 docker run \
   -v /etc/ntfy:/etc/ntfy \
@@ -310,6 +343,7 @@ docker run \
 ```
 
 Using docker-compose with non-root user and healthchecks enabled:
+
 ```yaml
 services:
   ntfy:
@@ -338,11 +372,13 @@ services:
 If using a non-root user when running the docker version, be sure to chown the server.yml, user.db, and cache.db files and attachments directory to the same uid/gid.
 
 Alternatively, you may wish to build a customized Docker image that can be run with fewer command-line arguments and without delivering the configuration file separately.
-```
+
+```dockerfile
 FROM binwiederhier/ntfy
 COPY server.yml /etc/ntfy/server.yml
 ENTRYPOINT ["ntfy", "serve"]
 ```
+
 This image can be pushed to a container registry and shipped independently. All that's needed when running it is mapping ntfy's port to a host port.
 
 ## Kubernetes
@@ -352,6 +388,7 @@ are a few options to mix and match, including a deployment without a cache file,
 unmanned pod.
 
 === "deployment"
+
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -400,6 +437,7 @@ unmanned pod.
     ```
 
 === "stateful set"
+
     ```yaml
     apiVersion: apps/v1
     kind: StatefulSet
@@ -443,6 +481,7 @@ unmanned pod.
     ```
 
 === "pod"
+
     ```yaml
     apiVersion: v1
     kind: Pod
@@ -474,6 +513,7 @@ unmanned pod.
 Configuration is relatively straightforward. As an example, a minimal configuration is provided.
 
 === "resource definition"
+
     ```yaml
     apiVersion: v1
     kind: ConfigMap
@@ -481,13 +521,16 @@ Configuration is relatively straightforward. As an example, a minimal configurat
       name: ntfy
     data:
       server.yml: |
+
         # Template: https://github.com/binwiederhier/ntfy/blob/main/server/server.yml
+
         base-url: https://ntfy.sh
     ```
 
 === "from-file"
+
     ```bash
-    kubectl create configmap ntfy --from-file=server.yml 
+    kubectl create configmap ntfy --from-file=server.yml
     ```
 
 ## Kustomize
@@ -496,22 +539,23 @@ ntfy can be deployed in a Kubernetes cluster with [Kustomize](https://github.com
 to customize Kubernetes objects using a `kustomization.yaml` file.
 
 1. Create new folder - `ntfy`
-2. Add all files listed below 
+2. Add all files listed below
     1. `kustomization.yaml` - stores all configmaps and resources used in a deployment
     2. `ntfy-deployment.yaml` - define deployment type and its parameters
-    3. `ntfy-pvc.yaml` - describes how [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) will be created 
+    3. `ntfy-pvc.yaml` - describes how [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) will be created
     4. `ntfy-svc.yaml` - expose application to the internal kubernetes network
     5. `ntfy-ingress.yaml` - expose service to outside the network using [ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
     6. `server.yaml` - simple server configuration
-3. Replace **TESTNAMESPACE** within `kustomization.yaml` with designated namespace 
+3. Replace **TESTNAMESPACE** within `kustomization.yaml` with designated namespace
 4. Replace **ntfy.test** within `ntfy-ingress.yaml` with desired DNS name
-5. Apply configuration to cluster set in current context: 
+5. Apply configuration to cluster set in current context:
 
 ```bash
 kubectl apply -k /ntfy
 ```
 
 === "kustomization.yaml"
+
     ```yaml
     apiVersion: kustomize.config.k8s.io/v1beta1
     kind: Kustomization
@@ -522,11 +566,12 @@ kubectl apply -k /ntfy
       - ntfy-ingress.yaml # ingress definition
     configMapGenerator: # will parse config from raw config to configmap,it allows for dynamic reload of application if additional app is deployed ie https://github.com/stakater/Reloader
         - name: server-config
-          files: 
+          files:
             - server.yml
-    namespace: TESTNAMESPACE # select namespace for whole application 
+    namespace: TESTNAMESPACE # select namespace for whole application
     ```
 === "ntfy-deployment.yaml"
+
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -546,7 +591,7 @@ kubectl apply -k /ntfy
             app: ntfy-pod
         spec:
           containers:
-            - name: ntfy 
+            - name: ntfy
               image: binwiederhier/ntfy:v1.28.0 # set deployed version
               args: ["serve"]
               env:  #example of adjustments made in environmental variables
@@ -557,8 +602,8 @@ kubectl apply -k /ntfy
                 - name: NTFY_LOG_LEVEL # adjust log level
                   value: INFO
                 - name: NTFY_BASE_URL # add base url
-                  value: XXXXXXXXXX 
-              ports: 
+                  value: XXXXXXXXXX
+              ports:
                 - containerPort: 80
                   name: http-ntfy
               resources:
@@ -582,8 +627,9 @@ kubectl apply -k /ntfy
               persistentVolumeClaim: # stores /cache/ntfy in defined pv
                 claimName: ntfy-pvc
     ```
-  
+
 === "ntfy-pvc.yaml"
+
     ```yaml
     apiVersion: v1
     kind: PersistentVolumeClaim
@@ -599,11 +645,12 @@ kubectl apply -k /ntfy
     ```
 
 === "ntfy-svc.yaml"
+
     ```yaml
     apiVersion: v1
     kind: Service
     metadata:
-      name: ntfy-svc  
+      name: ntfy-svc
     spec:
       type: ClusterIP
       selector:
@@ -616,6 +663,7 @@ kubectl apply -k /ntfy
     ```
 
 === "ntfy-ingress.yaml"
+
     ```yaml
     apiVersion: networking.k8s.io/v1
     kind: Ingress
@@ -636,6 +684,7 @@ kubectl apply -k /ntfy
     ```
 
 === "server.yml"
+
     ```yaml
     cache-file: "/var/cache/ntfy/cache.db"
     attachment-cache-dir: "/var/cache/ntfy/attachments"
