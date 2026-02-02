@@ -1,0 +1,209 @@
+# Source: https://docs.runpod.io/pods/configuration/use-ssh.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Connect to a Pod with SSH
+
+> Manage Pods from your local machine using SSH.
+
+Connecting to a Pod through an SSH (Secure Shell) terminal provides a secure and reliable method for interacting with your instance. Use this to manage long-running processes, critical tasks, or when you need the full capabilities of a shell environment.
+
+Every Pod offers the ability to connect through SSH using the [basic proxy method](#basic-ssh-with-key-authentication) below (which does not support commands like SCP or SFTP), but not all Pods support the [full public IP method](#full-ssh-via-public-ip-with-key-authentication).
+
+You can also SSH into a Pod using a [password-based method](#password-based-ssh) if you want a simple and fast way to enable SSH access without setting up SSH keys. SSH key authentication is recommended for most use cases, as it provides greater security and convenience for repeated use.
+
+## Generate an SSH key and add it to your Runpod account
+
+<Steps>
+  <Step title="Generate an SSH key">
+    Run this command on your local terminal to generate an SSH key, replacing `YOUR_EMAIL@DOMAIN.COM` with your actual email:
+
+    ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+    ssh-keygen -t ed25519 -C "YOUR_EMAIL@DOMAIN.COM"
+    ```
+
+    This saves a public/private key pair on your local machine to `~/.ssh/id_ed25519.pub` and `~/.ssh/id_ed25519` respectively.
+
+    <Warning>
+      If you are using Command Prompt on Windows instead of the Linux terminal or WSL, your public and private key pair will be saved to `C:\Users\YOUR_USER_ACCOUNT\.ssh\id_ed25519.pub` and `C:\Users\YOUR_USER_ACCOUNT\.ssh\id_ed25519`, respectively.
+    </Warning>
+  </Step>
+
+  <Step title="Retrieve your public SSH key">
+    Run this command on your local terminal to retrieve the public SSH key you just generated:
+
+    ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+    cat ~/.ssh/id_ed25519.pub
+    ```
+
+    This will output something similar to this:
+
+    ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+    ssh-ed25519 AAAAC4NzaC1lZDI1JTE5AAAAIGP+L8hnjIcBqUb8NRrDiC32FuJBvRA0m8jLShzgq6BQ YOUR_EMAIL@DOMAIN.COM
+    ```
+  </Step>
+
+  <Step title="Add the key to your Runpod account">
+    Copy and paste your public key from the previous step into the **SSH Public Keys** field in your [Runpod user account settings](https://www.console.runpod.io/user/settings).
+
+    <Warning>
+      If you need to add multiple SSH keys to your Runpod account, make sure that each key pair is on its own line in the **SSH Public Keys** field.
+    </Warning>
+  </Step>
+</Steps>
+
+### Override your public key for a specific Pod
+
+Runpod will attempt to automatically inject the public SSH keys added in your account settings for authentication when connecting using the [basic terminal method](#basic-ssh-with-key-authentication). If you prefer to use a different public key for a specific Pod, you can override the default by setting the `SSH_PUBLIC_KEY` [environment variable](/pods/templates/environment-variables) for that Pod.
+
+## Basic SSH with key authentication
+
+All Pods provide a basic SSH connection that is proxied through Runpod's systems. This method does not support commands like SCP (Secure Copy Protocol) or SFTP (SSH File Transfer Protocol).
+
+<Steps>
+  <Step title="Generate an SSH key pair">
+    Ensure you have an [SSH key pair](#generate-an-ssh-key-and-add-it-to-your-runpod-account) generated on your local machine and added to your Runpod account.
+  </Step>
+
+  <Step title="Open your Pod's connect tab">
+    Navigate to the [Pods page](https://console.runpod.io/pods) in the Runpod console. Select the Pod you want to connect to from the list to open its connection options.
+  </Step>
+
+  <Step title="Copy the SSH command">
+    In the Pod's **Connect** tab, copy the command listed under **SSH**. It should look something like this:
+
+    ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+    ssh 8y5rumuyb50m78-6441103b@ssh.runpod.io -i ~/.ssh/id_ed25519
+    ```
+
+    <Warning>
+      If you saved your key to a custom location, use that specific path after the `-i` flag instead.
+    </Warning>
+  </Step>
+
+  <Step title="Run the SSH command">
+    Run the copied command in your local terminal to connect to your Pod.
+  </Step>
+</Steps>
+
+## Full SSH via public IP with key authentication
+
+For full SSH capabilities, including SCP and SFTP for file transfers, you need to rent an instance that supports a public IP address and ensure an SSH daemon is running within your Pod.
+
+If you're using a Runpod official template such as Runpod PyTorch or Stable Diffusion, full SSH access is already configured for you, so no additional setup is required.
+
+However, if you're using a custom template, ensure that TCP port 22 is exposed and that the SSH daemon is running inside your Pod. If it isn't, add the Docker command below to your template. Or, if you already have a custom start command, replace `sleep infinity` at the end of your command with this one:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+bash -c 'apt update; \
+DEBIAN_FRONTEND=noninteractive apt-get install openssh-server -y; \
+mkdir -p ~/.ssh; \
+cd ~/.ssh; \
+chmod 700 ~/.ssh; \
+echo "$PUBLIC_KEY" >> authorized_keys; \
+chmod 700 authorized_keys; \
+service ssh start; \
+sleep infinity'
+```
+
+Once you're sure that the SSH daemon is running, you can connect to your Pod by following these steps:
+
+<Steps>
+  <Step title="Generate an SSH key pair">
+    Ensure you have an [SSH key pair](#generate-an-ssh-key-and-add-it-to-your-runpod-account) generated on your local machine and added to your Runpod account.
+  </Step>
+
+  <Step title="Verify SSH daemon is running">
+    An SSH daemon must be started in your Pod. Runpod official templates, such as "Runpod PyTorch", often have this pre-configured. If you're using a custom template, ensure TCP port 22 is exposed and the SSH daemon is started. Refer to the [Use SSH guide](/pods/configuration/use-ssh) for commands to include in your custom Docker template.
+  </Step>
+
+  <Step title="Open your Pod's connect tab">
+    Navigate to the [Pods page](https://console.runpod.io/pods) in the Runpod console. Select the Pod you want to connect to from the list to open its connection options.
+  </Step>
+
+  <Step title="Copy the SSH command">
+    In the Pod's **Connect** tab, copy the command listed under **SSH over exposed TCP**. It should look something like this:
+
+    ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+    ssh root@213.173.108.12 -p 17445 -i ~/.ssh/id_ed25519
+    ```
+
+    <Warning>
+      If you saved your key to a custom location, use that specific path after the `-i` flag instead.
+    </Warning>
+  </Step>
+
+  <Step title="Run the SSH command">
+    Run the copied command in your local terminal to connect to your Pod.
+  </Step>
+</Steps>
+
+The SSH command above has the following structure:
+
+```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+ssh root@[POD_IP_ADDRESS] -p [SSH_PORT] -i [PATH_TO_SSH_KEY]
+```
+
+Where:
+
+* `root`: Your assigned username for the Pod (typically `root`).
+* `[POD_IP_ADDRESS]`: The public IP address of your Pod.
+* `[SSH_PORT]`: The designated public SSH port for your Pod.
+* `[PATH_TO_SSH_KEY]`: The local file path to your private SSH key.
+
+## Troubleshooting SSH key authentication
+
+If you're asked for a password when connecting to your Pod via SSH, this means something is not set up correctly. Runpod does not require a password for SSH connections, as authentication is handled entirely through your SSH key pair.
+
+Here are some common reasons why this might happen:
+
+* If you copy and paste the key *fingerprint* (which starts with `SHA256:`) into your Runpod user settings instead of the actual public key (the contents of your `id_ed25519.pub` file), authentication will fail.
+* If you omit the encryption type at the beginning of your public key when pasting it into your Runpod user settings (for example, leaving out `ssh-ed25519`), the key will not be recognized.
+* If you add multiple public keys to your Runpod user settings but do not separate them with a newline, only the first key will work. Each key must be on its own line.
+* If you specify the wrong file path to your private key when connecting, SSH will not be able to find the correct key (`No such file or directory` error).
+* If your private key file is accessible by other users on your machine, SSH may refuse to use it for security reasons (`bad permissions` error).
+* If your SSH configuration file (`~/.ssh/config`) points to the wrong private key, you will also be prompted for a password. Make sure the `IdentityFile` entry in your config file matches the private key that corresponds to the public key you added to your Runpod account.
+
+## Password-based SSH
+
+To use this method, your Pod must have a public IP address and expose TCP port 22. SSH will be accessible through a mapped external port.
+
+To quickly set up password-based SSH, run this command to download and execute a [helper script](https://github.com/justinwlin/Runpod-SSH-Password/blob/main/passwordrunpod.sh) for password setup:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/main/passwordrunpod.sh && chmod +x passwordrunpod.sh && ./passwordrunpod.sh
+```
+
+<Warning>
+  While SSH operates on port 22 within your Pod, Runpod assigns a different external port for access. The setup script below automatically detects and uses the correct external port by referencing the `RUNPOD_TCP_PORT_22` environment variable.
+
+  If you see the message `Environment variables RUNPOD_PUBLIC_IP or RUNPOD_TCP_PORT_22 are missing` when running the script, it means one or more of the required environment variables are not set. Please ensure you have met all the necessary requirements described above.
+</Warning>
+
+After running the script and entering a password, you'll see example commands for SSH or SCP which you can use to connect to your Pod and transfer files from your local machine:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+========================================
+SSH CONNECTION
+========================================
+Connect using: ssh root@38.80.152.73 -p 32061
+Password: helloworld
+
+========================================
+FILE TRANSFER EXAMPLES (SCP)
+========================================
+Copy file TO pod:
+scp -P 32061 yourfile.txt root@38.80.152.73:/workspace/
+
+Copy file FROM pod:
+scp -P 32061 root@38.80.152.73:/workspace/yourfile.txt .
+
+Copy entire folder TO pod:
+scp -P 32061 -r yourfolder root@38.80.152.73:/workspace/
+```
+
+## Video tutorial (Windows)
+
+<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/Q5r0SayNWg0" title="Windows SSH tutorial" frameBorder="0" allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />

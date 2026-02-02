@@ -1,0 +1,244 @@
+# Source: https://docs.runpod.io/pods/storage/transfer-files.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Transfer files
+
+> Move files between your local machine and Pods with a variety of secure transfer methods.
+
+## Choose your transfer method
+
+Runpod supports four different file transfer methods, each optimized for specific use cases:
+
+| Method         | Best for                          | Setup required           | File size limit       |
+| -------------- | --------------------------------- | ------------------------ | --------------------- |
+| **runpodctl**  | Quick, occasional transfers       | Preinstalled on Pods     | Small to medium files |
+| **SCP**        | Standard file operations          | SSH configuration        | Any size              |
+| **rsync**      | Large datasets, syncing           | SSH + rsync installation | Any size              |
+| **Cloud sync** | Backup, multi-environment sharing | Cloud provider setup     | Provider dependent    |
+
+### runpodctl
+
+The simplest option for occasional transfers. Uses secure one-time codes and requires no setup since it's pre-installed on all Pods. Perfect for quick file exchanges.
+
+To install `runpodctl` on your local machine, see the [installation guide](/runpodctl/overview).
+
+### SCP
+
+A reliable, standard method that works over SSH. Ideal for users comfortable with command-line tools who need to transfer both individual files and directories.
+
+To configure your Pod for SSH access, see the ([SSH setup guide](/pods/configuration/use-ssh)).
+
+### rsync
+
+The most powerful option, featuring incremental transfers, compression, and detailed progress reporting. Essential for large datasets, regular synchronization, and preserving file attributes.
+
+To set up `rsync`:
+
+* Configure SSH access (same as for SCP).
+* Install rsync on both machines: `apt install rsync`
+* Ensure your local machine is running a Linux or WSL environment.
+
+### Cloud sync
+
+Direct synchronization with cloud storage providers like AWS S3, Google Cloud Storage, or Dropbox. Best for creating backups or sharing files across multiple environments.
+
+To learn more, see the [cloud sync configuration guide](/pods/storage/cloud-sync).
+
+## Transfer with runpodctl
+
+The [Runpod CLI](/runpodctl/overview) offers the most straightforward approach to file transfer using secure one-time codes. This method works great for occasional transfers but consider other options for large files.
+
+### Send a file
+
+From the source machine (your local computer or a Pod), run:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+runpodctl send YOUR_FILE
+```
+
+You'll see output like this:
+
+```text  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+Sending 'YOUR_FILE' (5 B)
+Code is: 8338-galileo-collect-fidel
+On the other computer run
+
+runpodctl receive 8338-galileo-collect-fidel
+```
+
+The code `8338-galileo-collect-fidel` is your unique, one-time transfer code.
+
+### Receive a file
+
+On the destination machine, use the code provided by the send command:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+runpodctl receive 8338-galileo-collect-fidel
+```
+
+You'll see confirmation of the transfer:
+
+```text  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+Receiving 'YOUR_FILE' (5 B)
+
+Receiving (<-149.36.0.243:8692)
+data.txt 100% |████████████████████| ( 5/ 5B, 0.040 kB/s)
+```
+
+## Transfer with SCP
+
+SCP provides reliable file transfer over SSH connections. Use this method when you need standard command-line file operations.
+
+### Basic syntax
+
+The general format for SCP commands (replace `43201` and `194.26.196.6` with your Pod's port and IP):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+scp -P 43201 -i ~/.ssh/id_ed25519 /local/file/path root@194.26.196.6:/destination/file/path
+```
+
+<Tip>
+  If your private key is stored elsewhere or you're using Windows Command Prompt, update the key path accordingly. For quick one-time setups, consider [password-based SSH](/pods/configuration/use-ssh#password-based-ssh).
+</Tip>
+
+### Send files to your Pod
+
+Transfer a single file:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+scp -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example.txt root@194.26.196.6:/root/example.txt
+```
+
+Transfer a directory (use `-r` for recursive copying):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+scp -r -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example_dir root@194.26.196.6:/root/example_dir
+```
+
+### Download files from your Pod
+
+Simply reverse the source and destination:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+scp -P 43201 -i ~/.ssh/id_ed25519 root@194.26.196.6:/root/example.txt ~/documents/example.txt
+```
+
+## Transfer with rsync
+
+`rsync` offers advanced synchronization features and is the best choice for large datasets or regular backup operations.
+
+<Warning>
+  `rsync` requires a Linux environment or WSL on Windows.
+</Warning>
+
+### Basic syntax
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -e "ssh -p 43201" /source/file/path root@194.26.196.6:/destination/file/path
+```
+
+### Essential flags
+
+* `-a` (archive) - Preserves permissions, timestamps, and attributes (essential for directories)
+* `-v` (verbose) - Shows detailed transfer information
+* `-z` (compress) - Compresses data during transfer (saves bandwidth, uses more CPU)
+* `-p` (progress) - Displays transfer progress
+* `-d` (delete) - Removes files from destination that don't exist in source
+
+### Send files to your Pod
+
+Transfer with progress and compression:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
+```
+
+### Download from your Pod
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" root@194.26.196.6:/root/example.txt ~/documents/example.txt
+```
+
+### Directory synchronization
+
+Transfer directory contents only (note the trailing slash):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" ~/documents/example_dir/ root@194.26.196.6:/root/example_dir/
+```
+
+Transfer the directory itself (no trailing slash):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" ~/documents/example_dir root@194.26.196.6:/root/
+```
+
+### Incremental transfers
+
+rsync's key advantage is intelligent synchronization. Files that already exist at the destination aren't transferred again:
+
+First transfer (full copy):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
+sending incremental file list
+example.txt
+             119 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=0/1)
+
+sent 243 bytes  received 35 bytes  185.33 bytes/sec
+total size is 119  speedup is 0.43
+```
+
+Second transfer (minimal data):
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
+sending incremental file list
+
+sent 120 bytes  received 12 bytes  88.00 bytes/sec
+total size is 119  speedup is 0.90
+```
+
+## Sync with cloud storage
+
+Connect your Pod storage directly to cloud providers for seamless backup and synchronization.
+
+To set up cloud sync:
+
+1. Navigate to your **My Pods** page
+2. Click the **Cloud Sync** option for your Pod
+3. Follow the provider-specific configuration steps
+
+For detailed setup instructions with AWS S3, Google Cloud Storage, Azure, Backblaze, and Dropbox, see the [cloud sync configuration guide](/pods/storage/cloud-sync).
+
+## Transfer with Google Drive
+
+You can also use these Colab notebooks to transfer files between Pods and Google Drive:
+
+* [Send files](https://colab.research.google.com/drive/1UaODD9iGswnKF7SZfsvwHDGWWwLziOsr#scrollTo=2nlcIAY3gGLt)
+* [Receive files](https://colab.research.google.com/drive/1ot8pODgystx1D6_zvsALDSvjACBF1cj6#scrollTo=RF1bMqhBOpSZ)
+
+## Troubleshooting
+
+Here are some common issues and possible fixes:
+
+**Connection refused errors:**
+
+* Verify SSH is properly configured on your Pod.
+* Check that the correct port and IP address are being used.
+* Ensure port 22 is exposed in your Pod configuration.
+
+**Permission denied:**
+
+* Confirm your SSH key is correctly specified with `-i`
+* Verify the key has appropriate permissions (`chmod 600 ~/.ssh/id_ed25519`)
+* Try password-based authentication for quick tests.
+
+**Large file transfers timing out:**
+
+* Use `rsync` instead of SCP for better reliability.
+* Add the `-z` flag to compress data during transfer.
+* Consider splitting very large files before transfer.

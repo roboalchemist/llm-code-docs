@@ -800,6 +800,9 @@ sites:
 - name: rspack
   base_url: https://rspack.dev/
   description: Rspack Rust-based bundler
+- name: runpod
+  base_url: https://docs.runpod.io/
+  description: RunPod GPU cloud computing platform - serverless endpoints, pods, templates, and SDK
 - name: saaspegasus
   base_url: https://docs.saaspegasus.com/
   description: Saaspegasus documentation
