@@ -67,6 +67,58 @@ def is_file_recent(file_path: Path, max_age_hours: int = 23) -> bool:
     return file_age < max_age_seconds
 
 
+def is_valid_text_content(content: bytes) -> tuple[bool, str]:
+    """Check if content is valid text (not binary/compressed).
+
+    Args:
+        content: Raw bytes from response
+
+    Returns:
+        tuple: (is_valid: bool, reason: str)
+    """
+    # Check for common binary signatures
+    binary_signatures = [
+        (b'\x1f\x8b', 'gzip compressed'),
+        (b'PK\x03\x04', 'zip archive'),
+        (b'%PDF', 'PDF document'),
+        (b'\x89PNG', 'PNG image'),
+        (b'\xff\xd8\xff', 'JPEG image'),
+        (b'GIF8', 'GIF image'),
+        (b'\x00\x00\x00', 'binary data'),
+    ]
+
+    for sig, desc in binary_signatures:
+        if content.startswith(sig):
+            return False, desc
+
+    # Check if content is valid UTF-8
+    try:
+        text = content.decode('utf-8')
+    except UnicodeDecodeError:
+        return False, 'invalid UTF-8 encoding'
+
+    # Check for excessive null bytes (binary indicator)
+    if b'\x00' in content[:1000]:
+        return False, 'contains null bytes'
+
+    # Check if it looks like HTML page instead of markdown
+    text_lower = text.strip().lower()
+    if text_lower.startswith('<!doctype') or text_lower.startswith('<html'):
+        # Check for signs this is actually markdown content
+        has_code_blocks = '```' in text
+        has_md_headings = bool(re.search(r'^#{1,6}\s+\S', text, re.MULTILINE))
+        has_md_links = bool(re.search(r'\[([^\]]+)\]\(([^)]+)\)', text))
+
+        # If no markdown indicators, it's likely an HTML page
+        if not (has_code_blocks or has_md_headings or has_md_links):
+            # Additional check: is it a short error/redirect page?
+            if len(text) < 2000 or '<title>301' in text or '<title>404' in text:
+                return False, 'HTML redirect/error page'
+            return False, 'HTML page (not markdown)'
+
+    return True, 'valid'
+
+
 def download_file(url: str, output_path: Path, description: str = None, force: bool = False) -> tuple[bool, int]:
     """Download a file from URL to output_path.
 
@@ -89,8 +141,21 @@ def download_file(url: str, output_path: Path, description: str = None, force: b
         desc = description or url
         with print_lock:
             print(f"  Downloading: {desc}")
-        response = requests.get(url, timeout=30)
+
+        # Use headers that encourage text/markdown response
+        headers = {
+            'Accept': 'text/plain, text/markdown, text/x-markdown, */*',
+            'Accept-Encoding': 'identity',  # Avoid compressed responses
+        }
+        response = requests.get(url, timeout=30, headers=headers)
         response.raise_for_status()
+
+        # Validate content is actually text/markdown
+        is_valid, reason = is_valid_text_content(response.content)
+        if not is_valid:
+            with print_lock:
+                print(f"    ✗ Skipping {output_path.name}: {reason}", file=sys.stderr)
+            return False, 0
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(response.text, encoding='utf-8')
