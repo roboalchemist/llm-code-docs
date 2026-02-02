@@ -1,22 +1,8 @@
-# Source: https://mui.com/material-ui/react-menu.md
-
----
-productId: material-ui
-title: React Menu component
-components: Menu, MenuItem, MenuList, ClickAwayListener, Popover, Popper
-githubLabel: 'scope: menu'
-materialDesign: https://m2.material.io/components/menus
-waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/
-githubSource: packages/mui-material/src/Menu
----
-
 # Menu
 
 Menus display a list of choices on temporary surfaces.
 
 A menu displays a list of choices on a temporary surface. It appears when the user interacts with a button, or other control.
-
-
 
 ## Introduction
 
@@ -77,7 +63,6 @@ export default function BasicMenu() {
     </div>
   );
 }
-
 ```
 
 ## Icon menu
@@ -115,7 +100,7 @@ export default function IconMenu() {
             <ContentCopy fontSize="small" />
           </ListItemIcon>
           <ListItemText>Copy</ListItemText>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" sx={{ color: 'text-secondary' }}>
             ⌘C
           </Typography>
         </MenuItem>
@@ -124,7 +109,7 @@ export default function IconMenu() {
             <ContentPaste fontSize="small" />
           </ListItemIcon>
           <ListItemText>Paste</ListItemText>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" sx={{ color: 'text-secondary' }}>
             ⌘V
           </Typography>
         </MenuItem>
@@ -139,7 +124,6 @@ export default function IconMenu() {
     </Paper>
   );
 }
-
 ```
 
 ## Dense menu
@@ -189,7 +173,6 @@ export default function DenseMenu() {
     </Paper>
   );
 }
-
 ```
 
 ## Selected menu
@@ -201,8 +184,8 @@ To use a selected menu item without impacting the initial focus, set the `varian
 ```tsx
 import * as React from 'react';
 import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import MenuItemButton from '@mui/material/MenuItemButton';
+import MenuItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
@@ -280,7 +263,6 @@ export default function SimpleListMenu() {
     </div>
   );
 }
-
 ```
 
 ## Positioned menu
@@ -311,6 +293,7 @@ export default function PositionedMenu() {
         aria-controls={open ? 'demo-positioned-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        aria-labelledby="demo-positioned-button"
         onClick={handleClick}
       >
         Dashboard
@@ -337,7 +320,6 @@ export default function PositionedMenu() {
     </div>
   );
 }
-
 ```
 
 ## Composition with Menu List
@@ -454,7 +436,6 @@ export default function MenuListComposition() {
     </Stack>
   );
 }
-
 ```
 
 ## Account menu
@@ -569,7 +550,6 @@ export default function AccountMenu() {
     </React.Fragment>
   );
 }
-
 ```
 
 ## Customization
@@ -606,7 +586,7 @@ const StyledMenu = styled((props: MenuProps) => (
 ))(({ theme }) => ({
   '& .MuiPaper-root': {
     borderRadius: 6,
-    marginTop: theme.spacing(1),
+    marginTop: themeSpacing(1),
     minWidth: 180,
     color: 'rgb(55, 65, 81)',
     boxShadow:
@@ -617,21 +597,21 @@ const StyledMenu = styled((props: MenuProps) => (
     '& .MuiMenuItem-root': {
       '& .MuiSvgIcon-root': {
         fontSize: 18,
-        color: theme.palette.text.secondary,
-        marginRight: theme.spacing(1.5),
+        color: themepalette.text.secondary,
+        marginRight: themeSpacing(1.5),
         ...theme.applyStyles('dark', {
           color: 'inherit',
         }),
       },
       '&:active': {
         backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity,
+          themepalette.primary.main,
+          themepalette.action.selectedOpacity,
         ),
       },
     },
     ...theme.applyStyles('dark', {
-      color: theme.palette.grey[300],
+      color: themepalette.grey[300],
     }),
   },
 }));
@@ -653,6 +633,7 @@ export default function CustomizedMenus() {
         aria-controls={open ? 'demo-customized-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        aria-labelledby="demo-customized-button"
         variant="contained"
         disableElevation
         onClick={handleClick}
@@ -684,7 +665,7 @@ export default function CustomizedMenus() {
           <ArchiveIcon />
           Archive
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onclick={handleClose} disableRipple>
           <MoreHorizIcon />
           More
         </MenuItem>
@@ -778,7 +759,6 @@ export default function LongMenu() {
     </div>
   );
 }
-
 ```
 
 ## Limitations
@@ -824,7 +804,6 @@ export default function TypographyMenu() {
     </Paper>
   );
 }
-
 ```
 
 ## Change transition
@@ -855,6 +834,8 @@ export default function FadeMenu() {
         aria-controls={open ? 'fade-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        variant="contained"
+        disableElevation
         onClick={handleClick}
       >
         Dashboard
@@ -878,7 +859,6 @@ export default function FadeMenu() {
     </div>
   );
 }
-
 ```
 
 ## Context menu
@@ -907,9 +887,9 @@ export default function ContextMenu() {
             mouseY: event.clientY - 6,
           }
         : // repeated contextmenu when it is already open closes it with Chrome 84 on Ubuntu
-          // Other native context menus might behave different.
-          // With this behavior we prevent contextmenu from the backdrop to re-locale existing context menus.
-          null,
+        // Other native context menus might behave different.
+        // With this behavior we prevent contextmenu from the backdrop to re-locale existing context menus.
+        null,
     );
 
     // Prevent text selection lost after opening the context menu on Safari and Firefox
@@ -957,7 +937,6 @@ export default function ContextMenu() {
     </div>
   );
 }
-
 ```
 
 ## Grouped Menu
@@ -1005,9 +984,6 @@ export default function GroupedMenu() {
         slotProps={{
           list: {
             'aria-labelledby': 'basic-button',
-            sx: {
-              py: 0,
-            },
           },
         }}
       >
@@ -1021,7 +997,6 @@ export default function GroupedMenu() {
     </div>
   );
 }
-
 ```
 
 ## Supplementary projects
@@ -1060,357 +1035,4 @@ export default function MenuPopupState() {
     </PopupState>
   );
 }
-
 ```
-
-
-# ClickAwayListener API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Click-Away Listener](https://mui.com/material-ui/react-click-away-listener/)
-- [Menu](https://mui.com/material-ui/react-menu/)
-
-## Import
-
-```jsx
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-// or
-import { ClickAwayListener } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| children | `element` | - | Yes |  |
-| onClickAway | `func` | - | Yes |  |
-| disableReactTree | `bool` | `false` | No |  |
-| mouseEvent | `'onClick' \| 'onMouseDown' \| 'onMouseUp' \| 'onPointerDown' \| 'onPointerUp' \| false` | `'onClick'` | No |  |
-| touchEvent | `'onTouchEnd' \| 'onTouchStart' \| false` | `'onTouchEnd'` | No |  |
-
-> **Note**: The `ref` is forwarded to the root element.
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/ClickAwayListener/ClickAwayListener.tsx](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/ClickAwayListener/ClickAwayListener.tsx)
-
-# Menu API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [App Bar](https://mui.com/material-ui/react-app-bar/)
-- [Menu](https://mui.com/material-ui/react-menu/)
-
-## Import
-
-```jsx
-import Menu from '@mui/material/Menu';
-// or
-import { Menu } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| open | `bool` | - | Yes |  |
-| anchorEl | `HTML element \| func` | - | No |  |
-| autoFocus | `bool` | `true` | No |  |
-| children | `node` | - | No |  |
-| classes | `object` | - | No | Override or extend the styles applied to the component. |
-| disableAutoFocusItem | `bool` | `false` | No |  |
-| MenuListProps (deprecated) | `object` | `{}` | No | ⚠️ use the `slotProps.list` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-| onClose | `function(event: object, reason: string) => void` | - | No |  |
-| PopoverClasses | `object` | - | No |  |
-| slotProps | `{ backdrop?: func \| object, list?: func \| object, paper?: func \| object, root?: func \| object, transition?: func \| object }` | `{}` | No |  |
-| slots | `{ backdrop?: elementType, list?: elementType, paper?: elementType, root?: elementType, transition?: elementType }` | `{}` | No |  |
-| sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
-| transitionDuration | `'auto' \| number \| { appear?: number, enter?: number, exit?: number }` | `'auto'` | No |  |
-| TransitionProps (deprecated) | `object` | `{}` | No | ⚠️ use the `slotProps.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-| variant | `'menu' \| 'selectedMenu'` | `'selectedMenu'` | No |  |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLDivElement).
-
-> Any other props supplied will be provided to the root element ([Popover](https://mui.com/material-ui/api/popover/)).
-
-## Inheritance
-
-While not explicitly documented above, the props of the [Popover](https://mui.com/material-ui/api/popover/) component are also available on Menu.
-
-## Slots
-
-| Name | Default | Class | Description |
-|------|---------|-------|-------------|
-| root | `Modal` | `.MuiMenu-root` | The component used for the popper. |
-| paper | `PopoverPaper` | `.MuiMenu-paper` | The component used for the paper. |
-| list | `MenuList` | `.MuiMenu-list` | The component used for the list. |
-| transition | `Grow` | - | The component used for the transition slot. |
-| backdrop | `Backdrop` | - | The component used for the backdrop slot. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/Menu/Menu.js](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/Menu/Menu.js)
-
-# MenuItem API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Menu](https://mui.com/material-ui/react-menu/)
-
-## Import
-
-```jsx
-import MenuItem from '@mui/material/MenuItem';
-// or
-import { MenuItem } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| autoFocus | `bool` | `false` | No |  |
-| children | `node` | - | No |  |
-| classes | `object` | - | No | Override or extend the styles applied to the component. |
-| component | `elementType` | - | No |  |
-| dense | `bool` | `false` | No |  |
-| disableGutters | `bool` | `false` | No |  |
-| divider | `bool` | `false` | No |  |
-| focusVisibleClassName | `string` | - | No |  |
-| selected | `bool` | `false` | No |  |
-| sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLLIElement).
-
-> Any other props supplied will be provided to the root element ([ButtonBase](https://mui.com/material-ui/api/button-base/)).
-
-## Inheritance
-
-While not explicitly documented above, the props of the [ButtonBase](https://mui.com/material-ui/api/button-base/) component are also available on MenuItem.
-
-## Theme default props
-
-You can use `MuiMenuItem` to change the default props of this component with the theme.
-
-## CSS
-
-### Rule name
-
-| Global class | Rule name | Description |
-|--------------|-----------|-------------|
-| - | dense | Styles applied to the root element if dense. |
-| `.Mui-disabled` | - | State class applied to the root element if `disabled={true}`. |
-| - | divider | Styles applied to the root element if `divider={true}`. |
-| `.Mui-focusVisible` | - | State class applied to the root element if keyboard focused. |
-| - | gutters | Styles applied to the inner `component` element unless `disableGutters={true}`. |
-| - | root | Styles applied to the root element. |
-| `.Mui-selected` | - | State class applied to the root element if `selected={true}`. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/MenuItem/MenuItem.js](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/MenuItem/MenuItem.js)
-
-# MenuList API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Menu](https://mui.com/material-ui/react-menu/)
-
-## Import
-
-```jsx
-import MenuList from '@mui/material/MenuList';
-// or
-import { MenuList } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| autoFocus | `bool` | `false` | No |  |
-| autoFocusItem | `bool` | `false` | No |  |
-| children | `node` | - | No |  |
-| disabledItemsFocusable | `bool` | `false` | No |  |
-| disableListWrap | `bool` | `false` | No |  |
-| variant | `'menu' \| 'selectedMenu'` | `'selectedMenu'` | No |  |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLUListElement).
-
-> Any other props supplied will be provided to the root element ([List](https://mui.com/material-ui/api/list/)).
-
-## Inheritance
-
-While not explicitly documented above, the props of the [List](https://mui.com/material-ui/api/list/) component are also available on MenuList.
-
-## CSS
-
-### Rule name
-
-| Global class | Rule name | Description |
-|--------------|-----------|-------------|
-| - | dense | Styles applied to the root element if dense. |
-| - | padding | Styles applied to the root element unless `disablePadding={true}`. |
-| - | root | Styles applied to the root element. |
-| - | subheader | Styles applied to the root element if a `subheader` is provided. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/MenuList/MenuList.js](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/MenuList/MenuList.js)
-
-# Popover API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Menu](https://mui.com/material-ui/react-menu/)
-- [Popover](https://mui.com/material-ui/react-popover/)
-
-## Import
-
-```jsx
-import Popover from '@mui/material/Popover';
-// or
-import { Popover } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| open | `bool` | - | Yes |  |
-| action | `ref` | - | No |  |
-| anchorEl | `HTML element \| func` | - | No |  |
-| anchorOrigin | `{ horizontal: 'center' \| 'left' \| 'right' \| number, vertical: 'bottom' \| 'center' \| 'top' \| number }` | `{
-  vertical: 'top',
-  horizontal: 'left',
-}` | No |  |
-| anchorPosition | `{ left: number, top: number }` | - | No |  |
-| anchorReference | `'anchorEl' \| 'anchorPosition' \| 'none'` | `'anchorEl'` | No |  |
-| BackdropComponent (deprecated) | `elementType` | `styled(Backdrop, {
-  name: 'MuiModal',
-  slot: 'Backdrop',
-  overridesResolver: (props, styles) => {
-    return styles.backdrop;
-  },
-})({
-  zIndex: -1,
-})` | No | ⚠️ Use `slots.backdrop` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-| BackdropProps (deprecated) | `object` | - | No | ⚠️ Use `slotProps.backdrop` instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-| children | `node` | - | No |  |
-| classes | `object` | - | No | Override or extend the styles applied to the component. |
-| container | `HTML element \| func` | - | No |  |
-| disableScrollLock | `bool` | `false` | No |  |
-| elevation | `integer` | `8` | No |  |
-| marginThreshold | `number` | `16` | No |  |
-| onClose | `func` | - | No |  |
-| PaperProps (deprecated) | `{ component?: element type }` | `{}` | No | ⚠️ Use `slotProps.paper` instead. |
-| slotProps | `{ backdrop?: func \| object, paper?: func \| object, root?: func \| object, transition?: func \| object }` | `{}` | No |  |
-| slots | `{ backdrop?: elementType, paper?: elementType, root?: elementType, transition?: elementType }` | `{}` | No |  |
-| sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
-| transformOrigin | `{ horizontal: 'center' \| 'left' \| 'right' \| number, vertical: 'bottom' \| 'center' \| 'top' \| number }` | `{
-  vertical: 'top',
-  horizontal: 'left',
-}` | No |  |
-| TransitionComponent (deprecated) | `elementType` | `Grow` | No | ⚠️ use the `slots.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-| transitionDuration | `'auto' \| number \| { appear?: number, enter?: number, exit?: number }` | `'auto'` | No |  |
-| TransitionProps (deprecated) | `object` | `{}` | No | ⚠️ use the `slotProps.transition` prop instead. This prop will be removed in a future major release. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details. |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLDivElement).
-
-> Any other props supplied will be provided to the root element ([Modal](https://mui.com/material-ui/api/modal/)).
-
-## Inheritance
-
-While not explicitly documented above, the props of the [Modal](https://mui.com/material-ui/api/modal/) component are also available on Popover.
-
-## Slots
-
-| Name | Default | Class | Description |
-|------|---------|-------|-------------|
-| root | `Modal` | `.MuiPopover-root` | The component used for the root slot. |
-| paper | `Paper` | `.MuiPopover-paper` | The component used for the paper slot. |
-| transition | `Grow` | - | The component used for the transition slot. |
-| backdrop | `Backdrop` | - | The component used for the backdrop slot. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/Popover/Popover.js](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/Popover/Popover.js)
-
-# Popper API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Autocomplete](https://mui.com/material-ui/react-autocomplete/)
-- [Menu](https://mui.com/material-ui/react-menu/)
-- [Popper](https://mui.com/material-ui/react-popper/)
-
-## Import
-
-```jsx
-import Popper from '@mui/material/Popper';
-// or
-import { Popper } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| open | `bool` | - | Yes |  |
-| anchorEl | `HTML element \| object \| func` | - | No |  |
-| children | `node \| func` | - | No |  |
-| component | `elementType` | - | No |  |
-| components (deprecated) | `{ Root?: elementType }` | `{}` | No | ⚠️ use the `slots` prop instead. This prop will be removed in a future major release. [How to migrate](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/). |
-| componentsProps (deprecated) | `{ root?: func \| object }` | `{}` | No | ⚠️ use the `slotProps` prop instead. This prop will be removed in a future major release. [How to migrate](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/). |
-| container | `HTML element \| func` | - | No |  |
-| disablePortal | `bool` | `false` | No |  |
-| keepMounted | `bool` | `false` | No |  |
-| modifiers | `Array<{ data?: object, effect?: func, enabled?: bool, fn?: func, name?: any, options?: object, phase?: 'afterMain' \| 'afterRead' \| 'afterWrite' \| 'beforeMain' \| 'beforeRead' \| 'beforeWrite' \| 'main' \| 'read' \| 'write', requires?: Array<string>, requiresIfExists?: Array<string> }>` | - | No |  |
-| placement | `'auto-end' \| 'auto-start' \| 'auto' \| 'bottom-end' \| 'bottom-start' \| 'bottom' \| 'left-end' \| 'left-start' \| 'left' \| 'right-end' \| 'right-start' \| 'right' \| 'top-end' \| 'top-start' \| 'top'` | `'bottom'` | No |  |
-| popperOptions | `{ modifiers?: array, onFirstUpdate?: func, placement?: 'auto-end' \| 'auto-start' \| 'auto' \| 'bottom-end' \| 'bottom-start' \| 'bottom' \| 'left-end' \| 'left-start' \| 'left' \| 'right-end' \| 'right-start' \| 'right' \| 'top-end' \| 'top-start' \| 'top', strategy?: 'absolute' \| 'fixed' }` | `{}` | No |  |
-| popperRef | `ref` | - | No |  |
-| slotProps | `{ root?: func \| object }` | `{}` | No |  |
-| slots | `{ root?: elementType }` | `{}` | No |  |
-| sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
-| transition | `bool` | `false` | No |  |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLDivElement).
-
-> Any other props supplied will be provided to the root element (native element).
-
-## CSS
-
-### Rule name
-
-| Global class | Rule name | Description |
-|--------------|-----------|-------------|
-| - | root | Class name applied to the root element. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/Popper/Popper.tsx](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/Popper/Popper.tsx)

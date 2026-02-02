@@ -3,7 +3,6 @@
 # Layouts and Pages
 @doc-version: 16.0.4
 
-
 Next.js uses **file-system based routing**, meaning you can use folders and files to define routes. This page will guide you through how to create layouts and pages, and link between them.
 
 ## Creating a page
@@ -249,7 +248,7 @@ You can use the [`<Link>` component](/docs/app/api-reference/components/link.md)
 
 For example, to generate a list of blog posts, import `<Link>` from `next/link` and pass a `href` prop to the component:
 
-```tsx filename="app/ui/post.tsx" highlight={1,10} switcher
+```tsx filename="app/ui/post.tsx" switcher
 import Link from 'next/link'
 
 export default async function Post({ post }) {
@@ -267,7 +266,7 @@ export default async function Post({ post }) {
 }
 ```
 
-```jsx filename="app/ui/post.js" highlight={1,10}  switcher
+```jsx filename="app/ui/post.js" switcher
 import Link from 'next/link'
 
 export default async function Post({ post }) {
@@ -320,6 +319,7 @@ export default function Layout(props: LayoutProps<'/dashboard'>) {
 > * Static routes resolve `params` to `{}`.
 > * `PageProps`, `LayoutProps` are global helpers — no imports required.
 > * Types are generated during `next dev`, `next build` or `next typegen`.
+
 ## API Reference
 
 Learn more about the features mentioned in this page by reading the API Reference.

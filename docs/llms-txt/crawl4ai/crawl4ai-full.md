@@ -1,9 +1,3 @@
-# Crawl4Ai Documentation
-
-Source: https://api.crawl4ai.com/llms-full.txt
-
----
-
 # Crawl4AI Cloud API - Complete Reference
 
 > Crawl4AI Cloud is a managed web crawling and data extraction API.
@@ -19,7 +13,7 @@ All API requests require an API key in the header:
 X-API-Key: YOUR_API_KEY
 ```
 
-Get your API key from https://api.crawl4ai.com/dashboard
+Get your API key from [https://api.crawl4ai.com/dashboard](https://api.crawl4ai.com/dashboard)
 
 ---
 
@@ -37,7 +31,7 @@ curl -X POST https://api.crawl4ai.com/v1/crawl \
   -d '{"url": "https://example.com"}'
 ```
 
-Parameters:
+**Parameters:**
 - `url` (required): URL to crawl
 - `strategy`: "browser" (default) or "http" (faster, no JS)
 - `browser_config`: Browser settings (viewport, headers, cookies)
@@ -45,7 +39,7 @@ Parameters:
 - `proxy`: Proxy configuration
 - `bypass_cache`: Skip cache (default: false)
 
-Response:
+**Response:**
 ```json
 {
   "url": "https://example.com",
@@ -60,8 +54,6 @@ Response:
 }
 ```
 
----
-
 #### POST /v1/crawl/batch - Batch Crawl
 Crawl multiple URLs (max 10) sequentially.
 
@@ -75,7 +67,7 @@ curl -X POST https://api.crawl4ai.com/v1/crawl/batch \
   }'
 ```
 
-Response:
+**Response:**
 ```json
 {
   "results": [
@@ -86,8 +78,6 @@ Response:
 }
 ```
 
----
-
 #### POST /v1/crawl/async - Async Crawl
 Create async job for up to 100 URLs. Returns job ID for polling.
 
@@ -97,7 +87,7 @@ curl -X POST https://api.crawl4ai.com/v1/crawl/async \
   -d '{"urls": ["https://example.com"], "webhook_url": "https://your-server.com/webhook"}'
 ```
 
-Response:
+**Response:**
 ```json
 {"job_id": "async-abc123", "status": "pending", "urls_count": 1}
 ```
@@ -109,7 +99,9 @@ curl https://api.crawl4ai.com/v1/crawl/jobs/async-abc123 \
 ```
 
 #### GET /v1/crawl/jobs - List Jobs
+
 #### DELETE /v1/crawl/jobs/{job_id} - Cancel Job
+
 #### GET /v1/crawl/jobs/{job_id}/download - Get Download URL
 
 ---
@@ -130,7 +122,7 @@ curl -X POST https://api.crawl4ai.com/v1/deep-crawl \
   }'
 ```
 
-Parameters:
+**Parameters:**
 - `url`: Starting URL
 - `max_depth`: Maximum link depth (1-10)
 - `max_urls`: Maximum URLs to crawl
@@ -139,7 +131,7 @@ Parameters:
 - `scorers`: Score URLs for best-first strategy
 - `scan_only`: Discover URLs without extracting content
 
-Response:
+**Response:**
 ```json
 {
   "job_id": "deep-xyz789",
@@ -212,8 +204,8 @@ Include in `crawler_config.extraction_strategy`:
 }
 ```
 
-Modes: "none", "datacenter", "residential"
-Countries: "US", "UK", "DE", etc.
+**Modes:** "none", "datacenter", "residential"  
+**Countries:** "US", "UK", "DE", etc.
 
 ---
 
@@ -226,7 +218,7 @@ curl -X POST https://api.crawl4ai.com/v1/sessions \
   -d '{"timeout": 300}'
 ```
 
-Response:
+**Response:**
 ```json
 {
   "session_id": "sess_abc123",
@@ -265,7 +257,7 @@ async def main():
     async with AsyncWebCrawler(api_key="YOUR_API_KEY") as crawler:
         # Single crawl
         result = await crawler.run("https://example.com")
-        print(result.markdown.raw_markdown)
+        print(result.markdown.raw_md)
 
         # With options
         result = await crawler.run(
@@ -302,7 +294,7 @@ import { AsyncWebCrawler } from 'crawl4ai-cloud';
 const crawler = new AsyncWebCrawler({ apiKey: 'YOUR_API_KEY' });
 
 // Single crawl
-const result = await crawler.run('https://example.com');
+const result = await crawler.run('https://example.com', null);
 console.log(result.markdown?.rawMarkdown);
 
 // With options
@@ -318,10 +310,8 @@ const results = await crawler.runMany(urls, { wait: true });
 const deepResult = await crawler.deepCrawl('https://docs.example.com', {
   strategy: 'bfs',
   maxUrls: 50,
-  wait: true
+  wait: true,
 });
-
-await crawler.close();
 ```
 
 ---
@@ -380,18 +370,18 @@ Headers returned: `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Res
 
 ## Documentation Links
 
-Full docs: https://api.crawl4ai.com/docs
-- Quickstart: https://api.crawl4ai.com/docs/getting-started/quickstart.md
-- Authentication: https://api.crawl4ai.com/docs/getting-started/authentication.md
-- Sync Crawl: https://api.crawl4ai.com/docs/crawl-api/sync-crawl.md
-- Batch Crawl: https://api.crawl4ai.com/docs/crawl-api/batch-crawl.md
-- Async Crawl: https://api.crawl4ai.com/docs/crawl-api/async-crawl.md
-- Deep Crawl: https://api.crawl4ai.com/docs/deep-crawl/overview.md
-- CSS Extraction: https://api.crawl4ai.com/docs/extraction/css-extraction.md
-- LLM Extraction: https://api.crawl4ai.com/docs/extraction/llm-extraction.md
-- Proxy: https://api.crawl4ai.com/docs/proxy/configuration.md
-- Sessions: https://api.crawl4ai.com/docs/sessions/browser-sessions.md
-- Python SDK: https://api.crawl4ai.com/docs/sdk/python.md
-- JavaScript SDK: https://api.crawl4ai.com/docs/sdk/javascript.md
-- All Endpoints: https://api.crawl4ai.com/docs/reference/endpoints.md
-- Models: https://api.crawl4ai.com/docs/reference/models.md
+- Full docs: [https://api.crawl4ai.com/docs](https://api.crawl4ai.com/docs)
+- Quickstart: [https://api.crawl4ai.com/docs/getting-started/quickstart.md](https://api.crawl4ai.com/docs/getting-started/quickstart.md)
+- Authentication: [https://api.crawl4ai.com/docs/getting-started/authentication.md](https://api.crawl4ai.com/docs/getting-started/authentication.md)
+- Sync Crawl: [https://api.crawl4ai.com/docs/crawl-api/sync-crawl.md](https://api.crawl4ai.com/docs/crawl-api/sync-crawl.md)
+- Batch Crawl: [https://api.crawl4ai.com/docs/crawl-api/batch-crawl.md](https://api.crawl4ai.com/docs/crawl-api/batch-crawl.md)
+- Async Crawl: [https://api.crawl4ai.com/docs/crawl-api/async-crawl.md](https://api.crawl4ai.com/docs/crawl-api/async-crawl.md)
+- Deep Crawl: [https://api.crawl4ai.com/docs/deep-crawl/overview.md](https://api.crawl4ai.com/docs/deep-crawl/overview.md)
+- CSS Extraction: [https://api.crawl4ai.com/docs/extraction/css-extraction.md](https://api.crawl4ai.com/docs/extraction/css-extraction.md)
+- LLM Extraction: [https://api.crawl4ai.com/docs/extraction/llm-extraction.md](https://api.crawl4ai.com/docs/extraction/llm-extraction.md)
+- Proxy: [https://api.crawl4ai.com/docs/proxy/configuration.md](https://api.crawl4ai.com/docs/proxy/configuration.md)
+- Sessions: [https://api.crawl4ai.com/docs/sessions/browser-sessions.md](https://api.crawl4ai.com/docs/sessions/browser-sessions.md)
+- Python SDK: [https://api.crawl4ai.com/docs/sdk/python.md](https://api.crawl4ai.com/docs/sdk/python.md)
+- JavaScript SDK: [https://api.crawl4ai.com/docs/sdk/javascript.md](https://api.crawl4ai.com/docs/sdk/javascript.md)
+- All Endpoints: [https://api.crawl4ai.com/docs/reference/endpoints.md](https://api.crawl4ai.com/docs/reference/endpoints.md)
+- Models: [https://api.crawl4ai.com/docs/reference/models.md](https://api.crawl4ai.com/docs/reference/models.md)

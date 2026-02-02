@@ -1,27 +1,8 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
 
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/autoform.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/autoform.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/autoform.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
-
----
-title: Auto Form Components
-group: Component Gallery
----
-
-<api-reference Component="AutoForm"></api-reference>
 ## AutoForm
 
-The `AutoForm` component is a generic form component that can be used to create and wire a traditional Form for any Request DTO definition
-where successful responses can be handled the `@success` event, e.g:
+The `AutoForm` component is a generic form component that can be used to create and wire a traditional Form for any Request DTO definition where successful responses can be handled with the `@success` event, e.g:
 
 ```html
 <AutoForm type="QueryBookings" @success="onSuccess" />
@@ -36,6 +17,7 @@ const onSuccess = response => results.value = response.results
 </script>
 ```
 
+```html
 <div class="py-8 not-prose">
     <auto-form class="mx-auto max-w-3xl" type="QueryBookings" @success="onSuccess"></auto-form>
     <div v-if="results">
@@ -44,22 +26,21 @@ const onSuccess = response => results.value = response.results
     </div>
 </div>
 
-These Auto Form components are customizable with the [declarative C# UI Attributes](/locode/declarative#ui-metadata-attributes) where you can 
-override the form's **heading** with `[Description]` and include a **subHeading** with `[Notes]` which supports rich HTML markup.
+These Auto Form components are customizable with the [declarative C# UI Attributes](/locode/declarative#ui-metadata-attributes) where you can override the form's **heading** with `[Description]` and include a **subHeading** with `[Notes]` which supports rich HTML markup.
 
-**AutoForm Properties**
+### AutoForm Properties
 
-Alternatively they can be specified in the components properties:
+Alternatively they can be specified in the component's properties:
 
 ```ts
 defineProps<{
-    type: string|InstanceType<any>|Function
-    modelValue?: ApiRequest|any
+    type: string | InstanceType<any> | Function
+    modelValue?: ApiRequest | any
     heading?: string
     subHeading?: string
     showLoading?: boolean
-    jsconfig?: string         //= eccn,edv
-    configureField?: (field:InputProp) => void
+    jsconfig?: string         //= eccn, edv
+    configureField?: (field: InputProp) => void
 
     /* Default Styles */
     formClass?: string        //= shadow sm:rounded-md
@@ -73,36 +54,33 @@ defineProps<{
 }>()
 ```
 
-Both `@success` and `@error` events are fired after each API call, although built-in validation binding means it's typically unnecessary to manually 
-handle error responses.
+Both `@success` and `@error` events are fired after each API call, although built-in validation binding means it's typically unnecessary to manually handle error responses.
 
 ```ts
 defineEmits<{
-    (e:'success', response:any): void
-    (e:'error', error:ResponseStatus): void
-    (e:'update:modelValue', model:any): void
+    (e: 'success', response: any): void
+    (e: 'error', error:ResponseStatus): void
+    (e: 'update:modelValue', model: any): void
 }>()
 ```
 
-**Model Binding**
+### Model Binding
 
-Forms can be bound to a Request DTO model where it can be used to pre-populate the Forms default values and Request DTO whereby specifying a **type** 
-is no longer necessary:
+Forms can be bound to a Request DTO model where it can be used to pre-populate the Form's default values and Request DTO where specifying a **type** is no longer necessary:
 
 ```ts
 <AutoForm v-model="request" />
 
 <script setup>
-const request = ref(new QueryBookings({ skip:1, take:2, orderBy:'Name' }))
+const request = ref(new QueryBookings({ skip: 1, take: 2, orderBy: 'Name' }))
 </script>
 ```
 
-<div class="not-prose">
-    <auto-form class="mx-auto max-w-3xl not-prose" v-model="request" type="QueryBookings"></auto-form>
-</div>
+```html
+<auto-form class="mx-auto max-w-3xl not-prose" v-model="request" type="QueryBookings"></auto-form>
+```
 
-<api-reference Component="AutoCreateForm"></api-reference>
-## Create Form
+### Create Form
 
 `AutoCreateForm` can be used to create an automated form based on a [AutoQuery CRUD](/autoquery/crud) Create Request DTO definition which can be rendered in a traditional inline Form with **card** formStyle option, e.g:
 
@@ -110,36 +88,43 @@ const request = ref(new QueryBookings({ skip:1, take:2, orderBy:'Name' }))
 <AutoCreateForm type="CreateBooking" formStyle="card" />
 ```
 
+```html
 <div class="not-prose py-8">
     <auto-create-form class="mx-auto max-w-3xl" type="CreateBooking" form-style="card"></auto-create-form>
 </div>
 
-By default Auto Forms are rendered in a `SlideOver` dialog:
-
-```html
-<AutoCreateForm type="CreateBooking" />
 ```
 
-<iframe src="/pages/vue/autoform/new.html" class="border-none h-[45em] w-[1330px] -ml-40 mb-4 relative z-20"></iframe>
+These Auto Forms are powered by the rich [App Metadata](/vue/use-metadata) surrounding your APIs, which contain all the necessary metadata to invoke the API and bind any contextual validation errors adjacent to the invalid field inputs.
 
-These Auto Forms are powered by the rich [App Metadata](/vue/use-metadata) surrounding your APIs,
-which contain all the necessary metadata to invoke the API and bind any contextual validation errors adjacent to the invalid field inputs.
+### Edit Form
 
-<api-reference id="edit-form" component="AutoEditForm"></api-reference>
-## Edit Form
-
-`AutoEditForm` can be used to render an automated form based on Update and Delete
-[AutoQuery CRUD](/autoquery/crud) APIs which also makes use of **heading** and **sub-heading** customization options:
+`AutoEditForm` can be used to render an automated form based on Update and Delete [AutoQuery CRUD](/autoquery/crud) APIs which also makes use of **heading** and **sub-heading** customization options:
 
 ```html
 <AutoEditForm v-model="booking" type="UpdateBooking" deleteType="DeleteBooking" 
     heading="Change an existing Room Booking" sub-heading="Manage reservations for MyApp hotels." />
 ```
 
-<iframe src="/pages/vue/autoform/edit.html" class="border-none h-[46em] w-[1330px] -ml-40 mb-4 relative z-20"></iframe>
+```html
+<div class="not-prose">
+    <auto-edit-form class="mx-auto max-w-3xl mb-4" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking">
+        <template #heading>
+            <h3 class="text-xl font-semibold text-green-600">Change an existing Room Booking</h3>
+        </template>
+        <template #sub-heading>
+            <p>
+                Here are some <TextLink href="https://youtu.be/rSFiikDjGos">good tips on making room reservations 
+                    <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"/></svg>
+                </TextLink>
+            </p>
+        </template>
+    </auto-edit-form>
+</div>
 
-The same form rendered in a traditional inline form with a **card** formStyle with some more advanced
-customization examples using rich markup in custom `<template #heading>` and `<template #sub-heading>` slots:
+```
+
+The same form rendered in a traditional inline form with a **card** formStyle with some more advanced customization examples using rich markup in custom `<template #heading>` and `<template #sub-heading>` slots:
 
 ```html
 <AutoEditForm v-model="booking" formStyle="card" type="UpdateBooking" deleteType="DeleteBooking">
@@ -150,70 +135,20 @@ customization examples using rich markup in custom `<template #heading>` and `<t
     <p>
       Here are some 
       <TextLink href="https://youtu.be/rSFiikDjGos">good tips on making room reservations 
-        <Icon class='inline-block' icon="lucide:external-link" />
+        <Icon class="inline-block" icon="lucide:external-link" />
       </TextLink>
     </p>
   </template>
 </AutoEditForm>
 ```
 
-<div class="not-prose">
-    <auto-edit-form class="mx-auto max-w-3xl mb-4" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking">
-        <template #heading>
-            <h3 class="text-xl font-semibold text-green-600">Change an existing Room Booking</h3>
-        </template>
-        <template #sub-heading>
-            <p>
-                Here are some <text-link href="https://youtu.be/rSFiikDjGos">good tips on making room reservations 
-                    <svg class="inline-block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6m4-3h6v6m-11 5L21 3"/></svg>
-                </text-link>
-            </p>
-        </template>
-    </auto-edit-form>
-</div>
-
-The forms behavior and appearance is further customizable with the
-[API annotation](/locode/declarative#annotate-apis), declarative [validation](/locode/declarative#type-validation-attributes)
-and the custom [Field and Input](/locode/declarative#custom-fields-and-inputs) attributes, e.g:
-
-```csharp
-[Description("Update an existing Booking")]
-[Notes("Find out how to create a <a href='https://youtu.be/rSFiikDjGos'>C# Bookings App from Scratch</a>")]
-[Route("/booking/{Id}", "PATCH")]
-[ValidateHasRole("Employee")]
-[AutoApply(Behavior.AuditModify)]
-public class UpdateBooking : IPatchDb<Booking>, IReturn<IdResponse>
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public RoomType? RoomType { get; set; }
-    [ValidateGreaterThan(0)]
-    public int? RoomNumber { get; set; }
-    [ValidateGreaterThan(0)]
-    public decimal? Cost { get; set; }
-    public DateTime? BookingStartDate { get; set; }
-    public DateTime? BookingEndDate { get; set; }
-    [Input(Type = "textarea")]
-    public string? Notes { get; set; }
-    public string? CouponId { get; set; }
-    public bool? Cancelled { get; set; }
-}
-```
-
-Where they can be used to customize Auto Form's appearance from annotations on C# Server DTOs:
-
 ```html
-<AutoEditForm v-model="booking" formStyle="card" type="UpdateBooking" deleteType="DeleteBooking" />
+<auto-edit-form class="mx-auto max-w-3xl" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking"></auto-edit-form>
 ```
 
-<div class="not-prose">
-<auto-edit-form class="mx-auto max-w-3xl" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking"></auto-edit-form>
-</div>
+### Form Fields
 
-<api-reference component="AutoFormFields"></api-reference>
-## Form Fields
-
-For more advanced customization of a Forms appearance and behavior, `AutoFormFields` can be used to just render the Form's fields (with validation binding) inside a custom Form which can submit the data-bound populated Request DTO to invoke the API, e.g:
+For more advanced customization of a Form's appearance and behavior, `AutoFormFields` can be used to just render the Form's fields (with validation binding) inside a custom Form which can submit the data-bound populated Request DTO to invoke the API, e.g:
 
 ```html
 <template>
@@ -226,7 +161,7 @@ For more advanced customization of a Forms appearance and behavior, `AutoFormFie
                 </h3>
                 <p class="notes mt-1 text-sm text-gray-500 dark:text-gray-400">
                     Find out how to quickly create a 
-                    <a class='svg-external' target='_blank' href='https://youtu.be/rSFiikDjGos'>
+                    <a class="svg-external" target="_blank" href="https://youtu.be/rSFiikDjGos">
                         C# Bookings App from Scratch
                     </a>
                 </p>
@@ -254,7 +189,7 @@ const client = useClient()
 let api = ref<ApiResponse>()
 let request = ref<UpdateBooking>()
 
-async function submit(e:Event) {
+async function submit(e: Event) {
     api.value = await client.api(request.value!)
 }
 
@@ -267,8 +202,8 @@ onMounted(async () => {
 </script>
 ```
 
-<div class="not-prose">
-    <fields class="my-4 mx-auto max-w-screen-md"></fields>
-</div>
+```html
+<fields class="my-4 mx-auto max-w-screen-md"></fields>
+```
 
-`toFormValues` is used when updating the data bound `request` DTO to convert API response values into the required format that HTML Inputs expect.
+`toFormValues` is used when updating the data-bound `request` DTO to convert API response values into the required format that HTML Inputs expect.

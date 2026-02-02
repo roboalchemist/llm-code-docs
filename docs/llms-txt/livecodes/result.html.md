@@ -1,15 +1,3 @@
-# Source: https://livecodes.io/docs/examples/display-modes/result.html.md
-
-# Source: https://livecodes.io/docs/features/result.html.md
-
-# Source: https://livecodes.io/docs/examples/display-modes/result.html.md
-
-# Source: https://livecodes.io/docs/features/result.html.md
-
-# Source: https://livecodes.io/docs/examples/display-modes/result.html.md
-
-# Source: https://livecodes.io/docs/features/result.html.md
-
 # Result Page
 
 The output of a LiveCodes project is a single HTML page. This includes the (compiled) code from editors (markup + style + script) and [external resources](./external-resources.html.md) (CSS + JS), in addition to customizations specified in [custom settings](../advanced/custom-settings.html.md).
@@ -20,7 +8,6 @@ This page is loaded in a [sandboxed iframe](https://www.html5rocks.com/en/tutori
 
 This is the pseudo-code for the structure of the result page (inspired by [CodePen docs](https://blog.codepen.io/documentation/preview-template/)).
 
-<!-- prettier-ignore -->
 ```html
 <!DOCTYPE html>
 <html { Config.htmlAttrs }*>
@@ -60,17 +47,17 @@ This is the pseudo-code for the structure of the result page (inspired by [CodeP
 </html>
 ```
 
-\* See [Configuration Object](../configuration/configuration-object.html.md).
+* See [Configuration Object](../configuration/configuration-object.html.md).
 
-\*\* See [External Resources](./external-resources.html.md).
+* \*\* See [External Resources](./external-resources.html.md).
 
-\*\*\* Although most languages are compiled and then the compiled code is used, some languages require run-time scripts or styles to run in the result page.
+* \*\*\* Although most languages are compiled and then the compiled code is used, some languages require run-time scripts or styles to run in the result page.
 
-\*\*\*\* See [Module Resolution](./module-resolution.html.md).
+* \*\*\*\* See [Module Resolution](./module-resolution.html.md).
 
-\*\*\*\*\* See [Show Sapcings](#show-spacings).
+* \*\*\*\*\* See [Show Spacings](#show-spacings).
 
-\*\*\*\*\*\* See [Tests](./tests.html.md).
+* \*\*\*\*\*\* See [Tests](./tests.html.md).
 
 ## Result page zoom
 

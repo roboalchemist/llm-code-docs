@@ -1,8 +1,6 @@
-# Semgrep Documentation
+# Semgrep
 
 Source: https://semgrep.dev/llms-full.txt
-
----
 
 <!doctype html>
 <html lang="en">

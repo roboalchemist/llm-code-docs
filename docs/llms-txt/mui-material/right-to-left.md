@@ -1,12 +1,10 @@
-# Source: https://mui.com/material-ui/customization/right-to-left.md
-
 # Right-to-left support
 
-Learn how to implement right-to-left (RTL) text with Material UI to support languages such as Arabic, Persian, and Hebrew.
+Learn how to implement right-to-left (RTL) text with Material UI to support languages such as Arabic, Persian, and Hebrew.
 
 ## Setup
 
-This guide outlines the three steps necessary to change the direction of text-based components in Material UI to support RTL languages, as shown in the demo below:
+This guide outlines the three steps necessary to change the direction of text-based components in Material UI to support RTL languages, as shown in the demo below:
 
 ```tsx
 import { createTheme, ThemeProvider, Theme } from '@mui/material/styles';
@@ -23,7 +21,7 @@ const theme = (outerTheme: Theme) =>
   createTheme({
     direction: 'rtl',
     palette: {
-      mode: outerTheme.palette.mode,
+      mode: outerTheme.mode,
     },
   });
 
@@ -38,7 +36,7 @@ export default function RtlDemo() {
       <ThemeProvider theme={theme}>
         <div dir="rtl">
           <TextField
-            label="ملصق"
+            label="TextField"
             placeholder="العنصر النائب"
             helperText="هذا نص مساعد"
             variant="outlined"
@@ -48,7 +46,6 @@ export default function RtlDemo() {
     </CacheProvider>
   );
 }
-
 ```
 
 ### 1. Set the HTML direction
@@ -105,21 +102,17 @@ const theme = createTheme({
 
 Install the `@mui/stylis-plugin-rtl` using one of the commands below:
 
-<codeblock storageKey="package-manager">
-
-```bash npm
-npm install stylis @mui/stylis-plugin-rtl
+```bash
+npm
 ```
 
-```bash pnpm
-pnpm add stylis @mui/stylis-plugin-rtl
+```bash
+pnpm
 ```
 
-```bash yarn
-yarn add stylis @mui/stylis-plugin-rtl
+```bash
+yarn
 ```
-
-</codeblock>
 
 #### With Emotion
 
@@ -170,7 +163,7 @@ const LeftToRightTextInRtlApp = styled('div')`
 `;
 ```
 
-```tsx
+```jsx
 import * as React from 'react';
 import { prefixer } from 'stylis';
 import rtlPlugin from '@mui/stylis-plugin-rtl';
@@ -221,5 +214,4 @@ export default function RtlOptOut() {
     </Box>
   );
 }
-
 ```

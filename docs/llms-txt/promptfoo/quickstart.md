@@ -1,146 +1,262 @@
-# Source: https://www.promptfoo.dev/docs/red-team/quickstart/
+# Quickstart
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-red-team/quickstart" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Quickstart | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-red-team-quickstart--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-red-team-quickstart--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/red-team/quickstart/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Quickstart | Promptfoo"><meta data-rh="true" name="description" content="Start red teaming LLMs in minutes by scanning 50+ vulnerabilities including jailbreaks, prompt injection, and data exfiltration"><meta data-rh="true" property="og:description" content="Start red teaming LLMs in minutes by scanning 50+ vulnerabilities including jailbreaks, prompt injection, and data exfiltration"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/red-team/quickstart/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/quickstart/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/quickstart/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Quickstart","item":"https://www.promptfoo.dev/docs/red-team/quickstart"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+Promptfoo is an [open-source](https://github.com/promptfoo/promptfoo) tool for red teaming gen AI applications.
 
+- **Automatically scans 50+ vulnerability types**:
+  - [Security & data privacy](/docs/red-team/llm-vulnerability-types/#privacy-and-security): jailbreaks, injections, RAG poisoning, etc.
+  - [Compliance & ethics](/docs/red-team/llm-vulnerability-types/): harmful & biased content, content filter validation, OWASP/NIST/EU compliance, etc.
+  - [Custom policies](/docs/red-team/configuration/#custom-policies): enforce organizational guidelines.
+- Generates **dynamic attack probes** tailored to your application using specialized uncensored models.
+- Implements state-of-the-art **adversarial ML research** from [Microsoft](/docs/red-team/strategies/multi-turn/), [Meta](/docs/red-team/strategies/goat/), and others.
+- Integrates with [CI/CD](/docs/integrations/ci-cd/).
+- Tests via [HTTP API](#attacking-an-api-endpoint), [browser](/docs/providers/browser/), or [direct model access](#alternative-test-specific-prompts-and-models).
 
+![llm red team report](/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png)
 
+## Prerequisites
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+- Install [Node 20 or later](https://nodejs.org/en/download/package-manager/)
+- Optional: Set your `OPENAI_API_KEY` environment variable
 
+## Initialize the project
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+### npx
 
+Install:
 
+```bash
+npx promptfoo@latest redteam setup
+```
 
+Run:
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Quickstart</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Quickstart</h1></header>
-<p>Promptfoo is an <a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="">open-source</a> tool for red teaming gen AI applications.</p>
-<ul>
-<li class=""><strong>Automatically scans 50+ vulnerability types</strong>:<!-- -->
-<ul>
-<li class=""><a href="/docs/red-team/llm-vulnerability-types/#privacy-and-security" class="badge_RjAR">Security &amp; data privacy</a>: jailbreaks, injections, RAG poisoning, etc.</li>
-<li class=""><a href="/docs/red-team/llm-vulnerability-types/" class="badge_RjAR">Compliance &amp; ethics</a>: harmful &amp; biased content, content filter validation, OWASP/NIST/EU compliance, etc.</li>
-<li class=""><a href="/docs/red-team/configuration/#custom-policies" class="badge_RjAR">Custom policies</a>: enforce organizational guidelines.</li>
-</ul>
-</li>
-<li class="">Generates <strong>dynamic attack probes</strong> tailored to your application using specialized uncensored models.</li>
-<li class="">Implements state-of-the-art <strong>adversarial ML research</strong> from <a class="" href="/docs/red-team/strategies/multi-turn/">Microsoft</a>, <a class="" href="/docs/red-team/strategies/goat/">Meta</a>, and others.</li>
-<li class="">Integrates with <a class="" href="/docs/integrations/ci-cd/">CI/CD</a>.</li>
-<li class="">Tests via <a href="#attacking-an-api-endpoint" class="">HTTP API</a>, <a class="" href="/docs/providers/browser/">browser</a>, or <a href="#alternative-test-specific-prompts-and-models" class="">direct model access</a>.</li>
-</ul>
-<div class="imageContainer_FPyu"><p><img decoding="async" loading="lazy" alt="llm red team report" src="/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png" width="2540" height="1946" class="img_SS3x"></p></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
-<ul>
-<li class="">Install <a href="https://nodejs.org/en/download/package-manager/" target="_blank" rel="noopener noreferrer" class="">Node 20 or later</a></li>
-<li class="">Optional: Set your <code>OPENAI_API_KEY</code> environment variable</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="initialize-the-project">Initialize the project<a href="#initialize-the-project" class="hash-link" aria-label="Direct link to Initialize the project" title="Direct link to Initialize the project" translate="no">​</a></h2>
-<div class="theme-tabs-container tabs-container tabList_J5MA"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_l0OV tabs__item--active">npx</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">npm</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">brew</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_wHwb"><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam setup</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><p>Install:</p><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">npm</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-g</span><span class="token plain"> promptfoo</span><br></span></code></pre></div></div><p>Run:</p><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam setup</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><p>Install:</p><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">brew </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> promptfoo</span><br></span></code></pre></div></div><p>Run:</p><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam setup</span><br></span></code></pre></div></div></div></div></div>
-<p>The <code>setup</code> command will open a web UI that asks questions to help you configure your red teaming project.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="provide-application-details">Provide application details<a href="#provide-application-details" class="hash-link" aria-label="Direct link to Provide application details" title="Direct link to Provide application details" translate="no">​</a></h3>
-<p>Start by providing some details about the target application. The more details we provide, the more tailored the generated test cases will be.</p>
-<p>At a minimum, be sure to fill out the <strong>Purpose</strong> field with a description of your application.</p>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_pbrs"><p>If you just want to try out a quick example, click &quot;Load Example&quot; at the top of the Application Details page.</p></div></div>
-<p><img decoding="async" loading="lazy" alt="llm red team setup" src="/assets/images/application-details-7937c39d30c2dd3d61766a725f267113.png" width="3208" height="2114" class="img_SS3x"></p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="configure-the-target">Configure the target<a href="#configure-the-target" class="hash-link" aria-label="Direct link to Configure the target" title="Direct link to Configure the target" translate="no">​</a></h3>
-<p>Next, configure Promptfoo to communicate with your target application or model.</p>
-<p>Because the Promptfoo scanner runs locally on your machine, it can attack any endpoint accessible from your machine or network.</p>
-<p><a href="#alternative-test-specific-prompts-and-models" class="">See below</a> for more info on how to talk with non-HTTP targets such as models (local or remote) or custom code.</p>
-<p><img decoding="async" loading="lazy" alt="llm red team setup" src="/assets/images/target-40cc60c749a82c3db6a774341cf4226f.png" width="3362" height="2036" class="img_SS3x"></p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="select-plugins">Select plugins<a href="#select-plugins" class="hash-link" aria-label="Direct link to Select plugins" title="Direct link to Select plugins" translate="no">​</a></h3>
-<p>Next, select the plugins that you want to use. <a class="" href="/docs/red-team/plugins/">Plugins</a> are adversarial generators. They produce malicious inputs that are sent to your application.</p>
-<p>Check off the individual plugins you want to use, or select a preset that includes a combination of plugins (if in doubt, stick with &quot;Default&quot;).</p>
-<p><img decoding="async" loading="lazy" alt="llm red team setup" src="/assets/images/plugins-3eb52bf4526e5edb0009298008dcb386.png" width="3360" height="2044" class="img_SS3x"></p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="select-attack-strategies">Select attack strategies<a href="#select-attack-strategies" class="hash-link" aria-label="Direct link to Select attack strategies" title="Direct link to Select attack strategies" translate="no">​</a></h3>
-<p>Now we select strategies. <a class="" href="/docs/red-team/strategies/">Strategies</a> are techniques that wrap the generated inputs in a specific attack pattern.</p>
-<p>This is how Promptfoo generates more sophisticated jailbreaks and injections.</p>
-<p><img decoding="async" loading="lazy" alt="llm red team setup" src="/assets/images/strategy-2b1490ce19ecdfd0eade607e0843e503.png" width="3364" height="2052" class="img_SS3x"></p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="review-and-save">Review and save<a href="#review-and-save" class="hash-link" aria-label="Direct link to Review and save" title="Direct link to Review and save" translate="no">​</a></h3>
-<p>Finally, download the generated configuration file. You&#x27;ll use this to run the red team from your local machine.</p>
-<p><img decoding="async" loading="lazy" alt="llm red team setup" src="/assets/images/review-8acdbad3e34101215f3f0c15ff0d2d58.png" width="3364" height="2054" class="img_SS3x"></p>
-<p>Save the file as <code>promptfooconfig.yaml</code>. Then, navigate to the directory where you saved the file and run <code>promptfoo redteam run</code>.</p>
-<div class="theme-admonition theme-admonition-info admonition_WCGJ alert alert--info"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_pbrs"><p>If you don&#x27;t want to use the UI to start a red team, you can use the <code>init</code> command instead:</p><div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam init --no-gui</span><br></span></code></pre></div></div></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="run-the-scan">Run the scan<a href="#run-the-scan" class="hash-link" aria-label="Direct link to Run the scan" title="Direct link to Run the scan" translate="no">​</a></h2>
-<p>Now that we&#x27;ve generated the test cases, we&#x27;re ready to run the adversarial evaluation.</p>
-<p>Run this command in the same directory as your <code>promptfooconfig.yaml</code> file:</p>
-<div class="theme-tabs-container tabs-container tabList_J5MA"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_l0OV tabs__item--active">npx</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">npm</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">brew</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_wHwb"><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam run</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam run</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam run</span><br></span></code></pre></div></div></div></div></div>
-<p>This command will generate several hundred adversarial inputs across many categories of potential harm and save them in <code>redteam.yaml</code>. Then, it will run the test cases against the target.</p>
-<p><img decoding="async" loading="lazy" alt="llm red team run" src="/assets/images/redteam-run-48af6b32ff6ceca341ec62886d209e6c.png" width="2488" height="246" class="img_SS3x"></p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="view-the-results">View the results<a href="#view-the-results" class="hash-link" aria-label="Direct link to View the results" title="Direct link to View the results" translate="no">​</a></h2>
-<div class="theme-tabs-container tabs-container tabList_J5MA"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_l0OV tabs__item--active">npx</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">npm</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_l0OV">brew</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_wHwb"><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest redteam report</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam report</span><br></span></code></pre></div></div></div><div role="tabpanel" class="tabItem_wHwb" hidden=""><div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam report</span><br></span></code></pre></div></div></div></div></div>
-<p>Promptfoo provides a report view that lets you dig into specific red team failure cases:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team report" src="/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png" width="2540" height="1946" class="img_SS3x"></p>
-<p>That view includes a breakdown of specific test types that are connected to the eval view:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team remediations" src="/assets/images/riskreport-2-01cbd538641c8795520fd3a4662f3383.png" width="1440" height="1090" class="img_SS3x"></p>
-<p>Clicking into a specific test case to view logs will display the raw inputs and outputs:</p>
-<p><img decoding="async" loading="lazy" alt="llm red team evals" src="/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png" width="2932" height="1896" class="img_SS3x"></p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="understanding-the-report-view">Understanding the report view<a href="#understanding-the-report-view" class="hash-link" aria-label="Direct link to Understanding the report view" title="Direct link to Understanding the report view" translate="no">​</a></h3>
-<p>The red teaming results provide insights into various aspects of your LLM application&#x27;s behavior:</p>
-<ol>
-<li class=""><strong>Vulnerability categories</strong>: Identifies the types of vulnerabilities discovered, such as prompt injections, context poisoning, or unintended behaviors.</li>
-<li class=""><strong>Severity levels</strong>: Classifies vulnerabilities based on their potential impact and likelihood of occurrence.</li>
-<li class=""><strong>Logs</strong>: Provides concrete instances of inputs that triggered vulnerabilities.</li>
-<li class=""><strong>Suggested mitigations</strong>: Recommendations for addressing identified vulnerabilities, which may include prompt engineering, additional safeguards, or architectural changes.</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="common-target-types">Common target types<a href="#common-target-types" class="hash-link" aria-label="Direct link to Common target types" title="Direct link to Common target types" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="attacking-an-api-endpoint">Attacking an API endpoint<a href="#attacking-an-api-endpoint" class="hash-link" aria-label="Direct link to Attacking an API endpoint" title="Direct link to Attacking an API endpoint" translate="no">​</a></h3>
-<p>The configuration file includes a description of the target endpoint. You can edit the config to make changes to the target. For example:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> https</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">label</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;travel-agent&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">config</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">url</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;https://example.com/generate&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">method</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;POST&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">headers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">&#x27;Content-Type&#x27;</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;application/json&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">body</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">myPrompt</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;{{prompt}}&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">purpose</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;The user is a budget traveler looking for the best deals. The system is a travel agent that helps the user plan their trip. The user is anonymous and should not be able to access any information about other users, employees, or other individuals.&#x27;</span><br></span></code></pre></div></div>
-<p>The <code>label</code> is used to create issues and report the results of the red teaming. Make sure to re-use the same <code>label</code> when generating new red team configs for the same target.</p>
-<p>Setting the <code>purpose</code> is optional, but it will significantly improve the quality of the generated test cases and grading. Be specific about who the user of the system is and what information and actions they should be able to access.</p>
-<div class="theme-admonition theme-admonition-info admonition_WCGJ alert alert--info"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_pbrs"><p>For more information on configuring an HTTP target, see <a class="" href="/docs/providers/http/">HTTP requests</a>.</p></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="alternative-test-specific-prompts-and-models">Alternative: Test specific prompts and models<a href="#alternative-test-specific-prompts-and-models" class="hash-link" aria-label="Direct link to Alternative: Test specific prompts and models" title="Direct link to Alternative: Test specific prompts and models" translate="no">​</a></h3>
-<p>If you don&#x27;t have a live endpoint, you can edit the config to set the specific prompt(s) and the LLM model(s) to test:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Act as a travel agent and help the user plan their trip. User query: {{query}}&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># Paths to prompts also work:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic"># - file://path/to/prompt.txt</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">targets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">id</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">label</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;travel-agent-mini&#x27;</span><br></span></code></pre></div></div>
-<p>Promptfoo supports dozens of model providers. For more information on supported targets, see <a class="" href="/docs/red-team/configuration/#custom-providerstargets">Custom Providers</a>. For more information on supported prompt formats, see <a class="" href="/docs/configuration/prompts/">prompts</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="alternative-talking-directly-to-your-app">Alternative: Talking directly to your app<a href="#alternative-talking-directly-to-your-app" class="hash-link" aria-label="Direct link to Alternative: Talking directly to your app" title="Direct link to Alternative: Talking directly to your app" translate="no">​</a></h3>
-<p>Promptfoo hooks directly into your existing LLM app to attack targets via Python, Javascript, RAG or agent workflows, HTTP API, and more. See <a class="" href="/docs/red-team/configuration/#custom-providerstargets">custom providers</a> for details on setting up:</p>
-<ul>
-<li class=""><a class="" href="/docs/red-team/configuration/#http-requests">HTTP requests</a> to your API</li>
-<li class=""><a class="" href="/docs/red-team/configuration/#custom-scripts">Custom Python scripts</a> for precise control</li>
-<li class=""><a class="" href="/docs/providers/custom-api/">Javascript</a>, <a class="" href="/docs/providers/custom-script/">any executable</a>, local providers like <a class="" href="/docs/providers/ollama/">ollama</a>, or other <a class="" href="/docs/providers/">provider types</a></li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="continuous-improvement">Continuous improvement<a href="#continuous-improvement" class="hash-link" aria-label="Direct link to Continuous improvement" title="Direct link to Continuous improvement" translate="no">​</a></h2>
-<p>Red teaming is not a one-time activity but an ongoing process. As you develop and refine your LLM application, regularly running red team evaluations helps ensure that:</p>
-<ol>
-<li class="">New features or changes don&#x27;t introduce unexpected vulnerabilities</li>
-<li class="">Your application remains robust against evolving attack techniques</li>
-<li class="">You can quantify and demonstrate improvements in safety and reliability over time</li>
-</ol>
-<p>Check out the <a class="" href="/docs/integrations/ci-cd/">CI/CD integration</a> docs for more info.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="resources">Resources<a href="#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources" translate="no">​</a></h2>
-<ul>
-<li class=""><a class="" href="/docs/red-team/configuration/">Configuration guide</a> for detailed info on configuring your red team</li>
-<li class=""><a class="" href="/docs/guides/llm-redteaming/">Full guide</a> for info examples of dynamically generated prompts, RAG/chain, etc.</li>
-<li class=""><a class="" href="/docs/red-team/llm-vulnerability-types/">Types of LLM vulnerabilities</a> for an overview of supported <a class="" href="/docs/red-team/plugins/">plugins</a></li>
-<li class="">Guides on red teaming <a class="" href="/docs/red-team/agents/">agents</a> and <a class="" href="/docs/red-team/rag/">RAGs</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/red-team/quickstart.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Intro</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/configuration/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Configuration</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#initialize-the-project" class="table-of-contents__link toc-highlight">Initialize the project</a><ul><li><a href="#provide-application-details" class="table-of-contents__link toc-highlight">Provide application details</a></li><li><a href="#configure-the-target" class="table-of-contents__link toc-highlight">Configure the target</a></li><li><a href="#select-plugins" class="table-of-contents__link toc-highlight">Select plugins</a></li><li><a href="#select-attack-strategies" class="table-of-contents__link toc-highlight">Select attack strategies</a></li><li><a href="#review-and-save" class="table-of-contents__link toc-highlight">Review and save</a></li></ul></li><li><a href="#run-the-scan" class="table-of-contents__link toc-highlight">Run the scan</a></li><li><a href="#view-the-results" class="table-of-contents__link toc-highlight">View the results</a><ul><li><a href="#understanding-the-report-view" class="table-of-contents__link toc-highlight">Understanding the report view</a></li></ul></li><li><a href="#common-target-types" class="table-of-contents__link toc-highlight">Common target types</a><ul><li><a href="#attacking-an-api-endpoint" class="table-of-contents__link toc-highlight">Attacking an API endpoint</a></li><li><a href="#alternative-test-specific-prompts-and-models" class="table-of-contents__link toc-highlight">Alternative: Test specific prompts and models</a></li><li><a href="#alternative-talking-directly-to-your-app" class="table-of-contents__link toc-highlight">Alternative: Talking directly to your app</a></li></ul></li><li><a href="#continuous-improvement" class="table-of-contents__link toc-highlight">Continuous improvement</a></li><li><a href="#resources" class="table-of-contents__link toc-highlight">Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+```bash
+promptfoo redteam setup
+```
+
+### npm
+
+Install:
+
+```bash
+npm install -g promptfoo
+```
+
+Run:
+
+```bash
+promptfoo redteam setup
+```
+
+### brew
+
+Install:
+
+```bash
+brew install promptfoo
+```
+
+Run:
+
+```bash
+promptfoo redteam setup
+```
+
+The `setup` command will open a web UI that asks questions to help you configure your red teaming project.
+
+### Provide application details
+
+Start by providing some details about the target application. The more details we provide, the more tailored the generated test cases will be.
+
+At a minimum, be sure to fill out the **Purpose** field with a description of your application.
+
+> **tip**
+>
+> If you just want to try out a quick example, click "Load Example" at the top of the Application Details page.
+
+![llm red team setup](/assets/images/application-details-7937c39d30c2dd3d61766a725f267113.png)
+
+---
+
+### Configure the target
+
+Next, configure Promptfoo to communicate with your target application or model.
+
+Because the Promptfoo scanner runs locally on your machine, it can attack any endpoint accessible from your machine or network.
+
+[See below](#alternative-test-specific-prompts-and-models) for more info on how to talk with non-HTTP targets such as models (local or remote) or custom code.
+
+![llm red team setup](/assets/images/target-40cc60c749a82c3db6a774341cf4226f.png)
+
+### Select plugins
+
+Next, select the plugins that you want to use. [Plugins](/docs/red-team/plugins/) are adversarial generators. They produce malicious inputs that are sent to your application.
+
+Check off the individual plugins you want to use, or select a preset that includes a combination of plugins (if in doubt, stick with "Default").
+
+![llm red team setup](/assets/images/plugins-3eb52bf4526e5edb0009298008dcb386.png)
+
+### Select attack strategies
+
+Now we select strategies. [Strategies](/docs/red-team/strategies/) are techniques that wrap the generated inputs in a specific attack pattern.
+
+This is how Promptfoo generates more sophisticated jailbreaks and injections.
+
+![llm red team setup](/assets/images/strategy-2b1490ce19ecdfd0eade607e0843e503.png)
+
+### Review and save
+
+Finally, download the generated configuration file. You'll use this to run the red team from your local machine.
+
+![llm red team setup](/assets/images/review-8acdbad3e34101215f3f0c15ff0d2d58.png)
+
+Save the file as `promptfooconfig.yaml`. Then, navigate to the directory where you saved the file and run `promptfoo redteam run`.
+
+> **info**
+>
+> If you don't want to use the UI to start a red team, you can use the `init` command instead:
+>
+> ```bash
+> promptfoo redteam init --no-gui
+> ```
+
+## Run the scan
+
+Now that we've generated the test cases, we're ready to run the adversarial evaluation.
+
+Run this command in the same directory as your `promptfooconfig.yaml` file:
+
+### npx
+
+Install:
+
+```bash
+npx promptfoo@latest redteam run
+```
+
+Run:
+
+```bash
+promptfoo redteam run
+```
+
+```bash
+promptfoo redteam run
+```
+
+This command will generate several hundred adversarial inputs across many categories of potential harm and save them in `redteam.yaml`. Then, it will run the test cases against the target.
+
+![llm red team run](/assets/images/redteam-run-48af6b32ff6ceca341ec62886d209e6c.png)
+
+## View the results
+
+### npx
+
+Install:
+
+```bash
+npx promptfoo@latest redteam report
+```
+
+Run:
+
+```bash
+promptfoo redteam report
+```
+
+```bash
+promptfoo redteam report
+```
+
+Promptfoo provides a report view that lets you dig into specific red team failure cases:
+
+![llm red team report](/assets/images/riskreport-1@2x-4c0fbea80c8816901144bc951702ed91.png)
+
+That view includes a breakdown of specific test types that are connected to the eval view:
+
+![llm red team remediations](/assets/images/riskreport-2-01cbd538641c8795520fd3a4662f3383.png)
+
+Clicking into a specific test case to view logs will display the raw inputs and outputs:
+
+![llm red team evals](/assets/images/redteam-results-612a012606a86a52f89618eb133dc3a3.png)
+
+### Understanding the report view
+
+The red teaming results provide insights into various aspects of your LLM application's behavior:
+
+1. **Vulnerability categories**: Identifies the types of vulnerabilities discovered, such as prompt injections, context poisoning, or unintended behaviors.
+2. **Severity levels**: Classifies vulnerabilities based on their potential impact and likelihood of occurrence.
+3. **Logs**: Provides concrete instances of inputs that triggered vulnerabilities.
+4. **Suggested mitigations**: Recommendations for addressing identified vulnerabilities, which may include prompt engineering, additional safeguards, or architectural changes.
+
+## Common target types
+
+### Attacking an API endpoint
+
+The configuration file includes a description of the target endpoint. You can edit the config to make changes to the target. For example:
+
+```yaml
+targets:
+  - id: https
+    label: travel-agent
+    config:
+      url: https://example.com/generate
+      method: POST
+      headers:
+        "Content-Type": "application/json"
+      body:
+        myPrompt: "{{prompt}}"
+purpose: The user is a budget traveler looking for the best deals. The system is a travel agent that helps the user plan their trip. The user is anonymous and should not be able to access any information about other users, employees, or other individuals.
+```
+
+The `label` is used to create issues and report the results of the red teaming. Make sure to re-use the same `label` when generating new red team configs for the same target.
+
+Setting the `purpose` is optional, but it will significantly improve the quality of the generated test cases and grading. Be specific about who the user of the system is and what information and actions they should be able to access.
+
+> **info**
+>
+> For more information on configuring an HTTP target, see [HTTP requests](/docs/providers/http/).
+
+### Alternative: Test specific prompts and models
+
+If you don't have a live endpoint, you can edit the config to set the specific prompt(s) and the LLM model(s) to test:
+
+```yaml
+prompts:
+  - "Act as a travel agent and help the user plan their trip. User query: {{query}}"
+  # Paths to prompts also work:
+  # - file://path/to/prompt.txt
+
+targets:
+  - id: openai:gpt-mini
+    label: travel-agent-mini
+```
+
+Promptfoo supports dozens of model providers. For more information on supported targets, see [Custom Providers](/docs/red-team/configuration/#custom-providerstargets). For more information on supported prompt formats, see [prompts](/docs/configuration/prompts/).
+
+### Alternative: Talking directly to your app
+
+Promptfoo hooks directly into your existing LLM app to attack targets via Python, Javascript, RAG or agent workflows, HTTP API, and more. See [custom providers](/docs/red-team/configuration/#custom-providerstargets) for details on setting up:
+
+- [HTTP requests](/docs/red-team/configuration/#http-requests) to your API
+- [Custom Python scripts](/docs/red-team/configuration/#custom-scripts) for precise control
+- [Javascript](/docs/providers/custom-api/), [any executable](/docs/providers/custom-script/), local providers like [ollama](/docs/providers/ollama/), or other [provider types](/docs/providers/)
+
+## Continuous improvement
+
+Red teaming is not a one-time activity but an ongoing process. As you develop and refine your LLM application, regularly running red team evaluations helps ensure that:
+
+1. New features or changes don't introduce unexpected vulnerabilities
+2. Your application remains robust against evolving attack techniques
+3. You can quantify and demonstrate improvements in safety and reliability over time
+
+Check out the [CI/CD integration](/docs/integrations/ci-cd/) docs for more info.
+
+## Resources
+
+- [Configuration guide](/docs/red-team/configuration/) for detailed info on configuring your red team
+- [Full guide](/docs/guides/llm-redteaming/) for info examples of dynamically generated prompts, RAG/chain, etc.
+- [Types of LLM vulnerabilities](/docs/red-team/llm-vulnerability-types/) for an overview of supported [plugins](/docs/red-team/plugins/)
+- Guides on red teaming [agents](/docs/red-team/agents/) and [RAGs](/docs/red-team/rag/)
+
+[Previous: Intro](/docs/red-team/)[Next: Configuration](/docs/red-team/configuration/)

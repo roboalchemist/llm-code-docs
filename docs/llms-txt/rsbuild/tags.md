@@ -1,5 +1,3 @@
-# Source: https://rsbuild.dev/config/html/tags.md
-
 # html.tags
 
 * **Type:**
@@ -18,7 +16,8 @@ Modifies the tags that are injected into the HTML page.
 
 For example, add a `script` tag to the `head` and inject it after the existing tags:
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -71,7 +70,8 @@ The HTML tag name to be generated. Should be a valid HTML element name.
 
 For example, inject a `script` tag and a `link` tag:
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -103,7 +103,8 @@ HTML attributes to be applied to the tag.
 
 For example, inject a `script` tag with `src` and `type` attributes:
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -128,7 +129,8 @@ export default {
 
 The innerHTML content of the tag. The content is inserted as-is without HTML escaping, so ensure it is safe to prevent XSS vulnerabilities.
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -154,7 +156,8 @@ Controls whether to add a hash query parameter to asset URLs for cache invalidat
 * `string`: Uses a custom hash string
 * `function`: Custom hash generation via a function
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -181,7 +184,8 @@ Controls whether to prepend the asset prefix to resource URLs. Only affects the 
 * `string`: Uses a custom prefix
 * `function`: Custom path transformation via a function
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   output: {
     assetPrefix: 'https://cdn.example.com/',
@@ -209,7 +213,8 @@ Controls whether to insert the tag after existing tags.
 * `true`: Insert after existing tags
 * `false`: Insert before existing tags
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -235,7 +240,8 @@ Specifies whether to inject the tag into the HTML `<head>` element.
 * `true`: Inject into `<head>`
 * `false`: Inject into `<body>`
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -273,7 +279,8 @@ The metadata object for tags, used to store additional information about tags. `
 
 For example, Rsbuild plugins can add metadata to tags to identify their source; in subsequent processes, you can perform special handling on tags based on the metadata:
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 const myPlugin = {
   name: 'my-plugin',
   setup(api) {
@@ -353,7 +360,8 @@ type HtmlTagHandler = (
 
 The callback function accepts a tag list as an argument and needs to modify or return a new tag array directly.
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   html: {
     tags: [
@@ -409,7 +417,8 @@ web-app
 └── rsbuild.config.ts
 ```
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 export default {
   output: {
     assetPrefix: 'https://example.com/',
@@ -444,7 +453,8 @@ web-app
 └── rsbuild.config.ts
 ```
 
-```ts title="rsbuild.config.ts"
+```ts
+// rsbuild.config.ts
 function report() {
   fetch('https://www.example.com/report');
 }

@@ -1,18 +1,11 @@
-# Source: https://github.com/tailwindlabs/tailwindcss.com/blob/main/src/docs/scroll-behavior.mdx
+# scroll-behavior
 
-import { ApiTable } from "@/components/api-table.tsx";
-import { Example } from "@/components/example.tsx";
-import { Figure } from "@/components/figure.tsx";
+Utilities for controlling the scroll behavior of an element.
 
-export const title = "scroll-behavior";
-export const description = "Utilities for controlling the scroll behavior of an element.";
-
-<ApiTable
-  rows={[
-    ["scroll-auto", "scroll-behavior: auto;"],
-    ["scroll-smooth", "scroll-behavior: smooth;"],
-  ]}
-/>
+| Property | Value |
+| --- | --- |
+| `scroll-auto` | scroll-behavior: auto; |
+| `scroll-smooth` | scroll-behavior: smooth; |
 
 ## Examples
 

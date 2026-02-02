@@ -1,19 +1,16 @@
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/nextjs/no-duplicate-head.md
+# nextjs/no-duplicate-head
 
----
-url: /docs/guide/usage/linter/rules/nextjs/no-duplicate-head.md
----
-# nextjs/no-duplicate-head&#x20;
+## What it does
 
-### What it does
+Prevent duplicate usage of `<Head>` in \`pages/\_document.js\`\.
 
-Prevent duplicate usage of `<Head>` in \`pages/\_document.js\`\`.
-
-### Why is this bad?
+## Why is this bad?
 
 This can cause unexpected behavior in your application.
 
-### Examples
+## Examples
+
+### Incorrect Code
 
 Examples of **incorrect** code for this rule:
 
@@ -37,6 +34,8 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
+### Correct Code
+
 Examples of **correct** code for this rule:
 
 ```jsx
@@ -58,11 +57,9 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-## How to use
+## How to Use
 
 To **enable** this rule using the config file or in the CLI, you can use:
-
-::: code-group
 
 ```json [Config (.oxlintrc.json)]
 {
@@ -76,8 +73,6 @@ To **enable** this rule using the config file or in the CLI, you can use:
 ```bash [CLI]
 oxlint --deny nextjs/no-duplicate-head --nextjs-plugin
 ```
-
-:::
 
 ## References
 

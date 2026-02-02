@@ -4,7 +4,6 @@
 
 Adding attachments uses the 'attachment' parameter. This example attaches 2 files to the email:
 
-
 ```bash
 curl -s --user 'api:YOUR_API_KEY' \
     https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages \
@@ -16,9 +15,7 @@ curl -s --user 'api:YOUR_API_KEY' \
     -F attachment=@cover-letter.txt
 ```
 
-You can also use the 'inline' parameter to include inline files that are intended to be displayed in the message
-itself (note the `cid:email.jpg` reference):
-
+You can also use the 'inline' parameter to include inline files that are intended to be displayed in the message itself (note the `cid:email.jpg` reference):
 
 ```bash
 curl -s --user 'api:YOUR_API_KEY' \
@@ -40,7 +37,6 @@ It's important to note that when using variables, the `X-Mailgun-Variables` head
 
 When sending messages via SMTP, you can attach data by providing a X-Mailgun-Variables header. You can provide multiple X-Mailgun-Variables headers, their map values will be combined. The header data must be in JSON map format, as shown in the example below.
 
-
 ```JSON
 X-Mailgun-Variables: {"first_name": "John", "last_name": "Smith"}
 X-Mailgun-Variables: {"my_message_id": 123}
@@ -52,7 +48,6 @@ The value of the "X-Mailgun-Variables" header must be a valid JSON string, other
 
 If you are sending email via the HTTP API, you can attach data by providing a single or multiple form parameters via `v:` as shown in the example below.
 
-
 ```JSON
 v:first_name=John
 v:last_name=Smith
@@ -61,9 +56,8 @@ v:my_message_id=123
 
 The data provided will be included in the recipient's email via a header called X-Mailgun-Variables. Additionally, the data will also be available via webhook payloads and events returned from the events API. The data will be attached to these payloads via the user-variables field as a JSON map. For example:
 
-
 ```JSON
- {
+{
     "event": "delivered",
     "user-variables": {
         "first_name": "John",

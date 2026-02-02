@@ -1,8 +1,6 @@
-# Source: https://resend.com/docs/send-with-rails-smtp.md
-
 # Send emails using Rails with SMTP
 
-> Learn how to integrate Rails with Resend SMTP.
+Learn how to integrate Rails with Resend SMTP.
 
 ## Prerequisites
 
@@ -15,14 +13,14 @@ To get the most out of this guide, you'll need to:
 
 Add these lines of code into your environment config file.
 
-```rb config/environments/environment.rb theme={null}
+```ruby
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-  :address   => 'smtp.resend.com',
-  :port      => 465,
-  :user_name => 'resend',
-  :password  => ENV['RESEND_API_KEY'],
-  :tls => true
+  address: 'smtp.resend.com',
+  port: 465,
+  user_name: 'resend',
+  password: ENV['RESEND_API_KEY'],
+  tls: true
 }
 ```
 
@@ -30,7 +28,7 @@ config.action_mailer.smtp_settings = {
 
 Then create a `UserMailer` class definition.
 
-```rb app/mailers/user_mailer.rb theme={null}
+```ruby
 class UserMailer < ApplicationMailer
   default from: 'Acme <onboarding@resend.dev>' # this domain must be verified with Resend
   def welcome_email
@@ -43,7 +41,7 @@ end
 
 And create your ERB email template.
 
-```html app/views/user_mailer/welcome_email.html.erb theme={null}
+```erb
 <!doctype html>
 <html>
   <head>
@@ -60,7 +58,7 @@ And create your ERB email template.
 
 Initialize your `UserMailer` class. This should return a `UserMailer` instance.
 
-```rb  theme={null}
+```ruby
 u = User.new name: "derich"
 mailer = UserMailer.with(user: u).welcome_email
 
@@ -69,7 +67,7 @@ mailer = UserMailer.with(user: u).welcome_email
 
 Finally, you can now send emails using the `deliver_now!` method:
 
-```rb  theme={null}
+```ruby
 mailer.deliver_now!
 
 # => {:id=>"a193c81e-9ac5-4708-a569-5caf14220539", :from=>....}
@@ -77,6 +75,4 @@ mailer.deliver_now!
 
 ## 3. Try it yourself
 
-<Card title="Rails SMTP Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-rails-smtp-example">
-  See the full source code.
-</Card>
+[See the full source code.](https://github.com/resend/resend-rails-smtp-example)

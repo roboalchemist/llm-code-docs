@@ -1,131 +1,237 @@
-# Source: https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot
+# AI Chatbot
 
-<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-tools/bolt-python/tutorial/ai-chatbot/ai-chatbot" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>AI Chatbot | Slack Developer Docs</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot/ /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="AI Chatbot | Slack Developer Docs"/><meta data-rh=true name=description content="In this tutorial, you'll learn how to bring the power of AI into your Slack workspace using a chatbot called Bolty that uses Anthropic or OpenAI. Here's what we'll do with this sample app:"/><meta data-rh=true property=og:description content="In this tutorial, you'll learn how to bring the power of AI into your Slack workspace using a chatbot called Bolty that uses Anthropic or OpenAI. Here's what we'll do with this sample app:"/><link data-rh=true rel=icon href=/img/logos/favicon.ico /><link data-rh=true rel=canonical href=https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot/ /><link data-rh=true rel=alternate href=https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot/ hreflang=en /><link data-rh=true rel=alternate href=https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot/ hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://docs.slack.dev/tools/bolt-python/tutorial/ai-chatbot/","name":"AI Chatbot","position":1}]}</script><link rel=alternate type=application/rss+xml href=/changelog/rss.xml title="Slack Developer Docs RSS Feed"><link rel=alternate type=application/atom+xml href=/changelog/atom.xml title="Slack Developer Docs Atom Feed"><link rel=preconnect href=https://www.googletagmanager.com><script>window.dataLayer=window.dataLayer||[],function(e,t,a,n,r){e[n]=e[n]||[],e[n].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var d=t.getElementsByTagName(a)[0],g=t.createElement(a);g.async=!0,g.src="https://www.googletagmanager.com/gtm.js?id="+r+("dataLayer"!=n?"&l="+n:""),d.parentNode.insertBefore(g,d)}(window,document,"script","dataLayer","GTM-TVQFL84W")</script><script src=https://slack-marketing.s3.us-east-1.amazonaws.com/onetrust/slack.dev/production/scripttemplates/otSDKStub.js type=text/javascript charset=UTF-8 data-domain-script=0198614a-ba8b-77a9-8d49-cfaf177eabd7></script><link rel=stylesheet href=/assets/css/styles.f5980fdd.css /><script src=/assets/js/runtime~main.eddb8378.js defer></script><script src=/assets/js/main.e58a2de0.js defer></script></head><body class=navigation-with-keyboard><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVQFL84W" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
+In this tutorial, you'll learn how to bring the power of AI into your Slack workspace using a chatbot called Bolty that uses Anthropic or OpenAI. Here's what we'll do with this sample app:
 
+1. Create your app from an app manifest and clone a starter template
+2. Set up and run your local project
+3. Create a workflow using Workflow Builder to summarize messages in conversations
+4. Select your preferred API and model to customize Bolty's responses
+5. Interact with Bolty via direct message, the `/ask-bolty` slash command, or by mentioning the app in conversations
 
-<svg style="display: none;"><defs>
-<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"dark"),document.documentElement.setAttribute("data-theme-choice",t||"dark")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logos/slack-developers-white.png /><div style=display:none aria-hidden=true><div data-pagefind-filter=tool>python</div></div><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top navbar--dark"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a href=https://slack.dev target=_self rel="noopener noreferrer" class=navbar__brand><div class=navbar__logo><img src=/img/logos/slack-developers-white.png alt="Slack Developer Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logos/slack-developers-white.png alt="Slack Developer Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div></a><a class="navbar__item navbar__link" target=_self href=/>Guides</a><a class="navbar__item navbar__link" target=_self href=/reference>Reference</a><a class="navbar__item navbar__link" target=_self href=/samples>Samples</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" target=_self href=/tools>Tools</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link" target=_self href=/changelog>Changelog</a><a href=https://api.slack.com/developer-program target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">Developer Program</a><a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">Your apps</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS darkNavbarColorModeToggle_X3D1" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbar__search><div style="position:relative;padding:0 0.5rem"><div style=position:relative;display:inline-block><input type=text placeholder="Search the docs!" class="pagefind-custom-input pagefind-navbar-input" value="" /></div></div></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item sidebar-title"><a class=menu__link href=/tools/bolt-python/><span title="Bolt for Python" class=linkLabel_WmDU>Bolt for Python</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/tools/bolt-python/getting-started><span title=Quickstart class=linkLabel_WmDU>Quickstart</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/tools/bolt-python/building-an-app><span title="Building an App" class=linkLabel_WmDU>Building an App</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/message-sending><span title="Slack API calls" class=categoryLinkLabel_W154>Slack API calls</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/message-listening><span title=Events class=categoryLinkLabel_W154>Events</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/acknowledge><span title="App UI & Interactivity" class=categoryLinkLabel_W154>App UI & Interactivity</span></a></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/tools/bolt-python/concepts/ai-apps><span title="Using AI in Apps" class=linkLabel_WmDU>Using AI in Apps</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/custom-steps><span title="Custom Steps" class=categoryLinkLabel_W154>Custom Steps</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/socket-mode><span title="App Configuration" class=categoryLinkLabel_W154>App Configuration</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/global-middleware><span title="Middleware & Context" class=categoryLinkLabel_W154>Middleware & Context</span></a></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/tools/bolt-python/concepts/lazy-listeners><span title="Lazy listeners (FaaS)" class=linkLabel_WmDU>Lazy listeners (FaaS)</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/adapters><span title=Adaptors class=categoryLinkLabel_W154>Adaptors</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/concepts/authenticating-oauth><span title="Authorization & Security" class=categoryLinkLabel_W154>Authorization & Security</span></a></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/legacy/steps-from-apps><span title=Legacy class=categoryLinkLabel_W154>Legacy</span></a></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role=button aria-expanded=true href=/tools/bolt-python/tutorial/ai-chatbot/><span title=Tutorials class=categoryLinkLabel_W154>Tutorials</span></a></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/tools/bolt-python/tutorial/ai-chatbot/><span title="AI Chatbot" class=linkLabel_WmDU>AI Chatbot</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/order-confirmation/><span title="Create a Salesforce order confirmation app" class=linkLabel_WmDU>Create a Salesforce order confirmation app</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/custom-steps><span title="Custom Steps" class=linkLabel_WmDU>Custom Steps</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/custom-steps-for-jira/><span title="Custom steps for JIRA" class=linkLabel_WmDU>Custom steps for JIRA</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/custom-steps-workflow-builder-new/><span title="Custom Steps for Workflow Builder (new app)" class=linkLabel_WmDU>Custom Steps for Workflow Builder (new app)</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/custom-steps-workflow-builder-existing/><span title="Custom Steps for Workflow Builder (existing app)" class=linkLabel_WmDU>Custom Steps for Workflow Builder (existing app)</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/tools/bolt-python/tutorial/modals/><span title=Modals class=linkLabel_WmDU>Modals</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href=https://docs.slack.dev/tools/bolt-python/reference/index.html target=_blank rel="noopener noreferrer" class="menu__link menuExternalLink_NmtK"><span title=Reference class=linkLabel_WmDU>Reference</span><svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role=button aria-expanded=false href=/tools/bolt-python/ja-jp/getting-started><span title="日本語 (日本)" class=categoryLinkLabel_W154>日本語 (日本)</span></a></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href=https://github.com/slackapi/bolt-python/releases target=_blank rel="noopener noreferrer" class="menu__link menuExternalLink_NmtK"><span title="Release notes" class=linkLabel_WmDU>Release notes</span><svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href=https://github.com/SlackAPI/bolt-python target=_blank rel="noopener noreferrer" class="menu__link menuExternalLink_NmtK"><span title="Code on GitHub" class=linkLabel_WmDU>Code on GitHub</span><svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a href=https://github.com/SlackAPI/bolt-python/blob/main/.github/contributing.md target=_blank rel="noopener noreferrer" class="menu__link menuExternalLink_NmtK"><span title="Contributors Guide" class=linkLabel_WmDU>Contributors Guide</span><svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></nav><button type=button title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width=20 height=20 aria-hidden=true class=collapseSidebarButtonIcon_kv0_><g fill=#7a7a7a><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"/><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"/></g></svg></button></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><span class=breadcrumbs__link>Tutorials</span><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>AI Chatbot</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>AI Chatbot</h1></header>
-<p>In this tutorial, you'll learn how to bring the power of AI into your Slack workspace using a chatbot called Bolty that uses Anthropic or OpenAI. Here's what we'll do with this sample app:</p>
-<ol>
-<li class="">Create your app from an app manifest and clone a starter template</li>
-<li class="">Set up and run your local project</li>
-<li class="">Create a workflow using Workflow Builder to summarize messages in conversations</li>
-<li class="">Select your preferred API and model to customize Bolty's responses</li>
-<li class="">Interact with Bolty via direct message, the <code>/ask-bolty</code> slash command, or by mentioning the app in conversations</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=prereqs>Prerequisites<a href=#prereqs class=hash-link aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate=no>​</a></h2>
-<p>Before getting started, you will need the following:</p>
-<ul>
-<li class="">a development workspace where you have permissions to install apps. If you don’t have a workspace, go ahead and set that up now — you can <a href=https://slack.com/get-started#create target=_blank rel="noopener noreferrer" class="">go here</a> to create one, or you can join the <a href=https://api.slack.com/developer-program target=_blank rel="noopener noreferrer" class="">Developer Program</a> and provision a sandbox with access to all Slack features for free.</li>
-<li class="">a development environment with <a href=https://www.python.org/downloads/ target=_blank rel="noopener noreferrer" class="">Python 3.7</a> or later.</li>
-<li class="">an Anthropic or OpenAI account with sufficient credits, and in which you have generated a secret key.</li>
-</ul>
-<p><strong>Skip to the code</strong>
-If you'd rather skip the tutorial and just head straight to the code, you can use our <a href=https://github.com/slack-samples/bolt-python-ai-chatbot target=_blank rel="noopener noreferrer" class="">Bolt for Python AI Chatbot sample</a> as a template.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=create-app>Creating your app<a href=#create-app class=hash-link aria-label="Direct link to Creating your app" title="Direct link to Creating your app" translate=no>​</a></h2>
-<ol>
-<li class="">Navigate to the <a href=https://api.slack.com/apps/new target=_blank rel="noopener noreferrer" class="">app creation page</a> and select <strong>From a manifest</strong>.</li>
-<li class="">Select the workspace you want to install the application in.</li>
-<li class="">Copy the contents of the <a href=https://github.com/slack-samples/bolt-python-ai-chatbot/blob/main/manifest.json target=_blank rel="noopener noreferrer" class=""><code>manifest.json</code></a> file into the text box that says <strong>Paste your manifest code here</strong> (within the <strong>JSON</strong> tab) and click <strong>Next</strong>.</li>
-<li class="">Review the configuration and click <strong>Create</strong>.</li>
-<li class="">You're now in your app configuration's <strong>Basic Information</strong> page. Navigate to the <strong>Install App</strong> link in the left nav and click <strong>Install to Workspace</strong>, then <strong>Allow</strong> on the screen that follows.</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=environment-variables>Obtaining and storing your environment variables<a href=#environment-variables class=hash-link aria-label="Direct link to Obtaining and storing your environment variables" title="Direct link to Obtaining and storing your environment variables" translate=no>​</a></h3>
-<p>Before you'll be able to successfully run the app, you'll need to first obtain and set some environment variables.</p>
-<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=slack-tokens>Slack tokens<a href=#slack-tokens class=hash-link aria-label="Direct link to Slack tokens" title="Direct link to Slack tokens" translate=no>​</a></h4>
-<p>From your app's page on <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">app settings</a> collect an app and bot token:</p>
-<ol>
-<li class="">On the <strong>Install App</strong> page, copy your <strong>Bot User OAuth Token</strong>. You will store this in your environment as <code>SLACK_BOT_TOKEN</code> (we'll get to that next).</li>
-<li class="">Navigate to <strong>Basic Information</strong> and in the <strong>App-Level Tokens</strong> section , click <strong>Generate Token and Scopes</strong>. Add the <a class="" href=/reference/scopes/connections.write><code>connections:write</code></a> scope, name the token, and click <strong>Generate</strong>. (For more details, refer to <a class="" href=/authentication/tokens#bot>understanding OAuth scopes for bots</a>). Copy this token. You will store this in your environment as <code>SLACK_APP_TOKEN</code>.</li>
-</ol>
-<p>To store your tokens and environment variables, run the following commands in the terminal. Replace the placeholder values with your bot and app tokens collected above:</p>
-<p><strong>For macOS</strong></p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">export SLACK_BOT_TOKEN=&lt;your-bot-token></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">export SLACK_APP_TOKEN=&lt;your-app-token></span><br/></span></code></pre></div></div>
-<p><strong>For Windows</strong></p>
-<div class="language-pwsh codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-pwsh codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">set SLACK_BOT_TOKEN=&lt;your-bot-token></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">set SLACK_APP_TOKEN=&lt;your-app-token></span><br/></span></code></pre></div></div>
-<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=provider-tokens>Provider tokens<a href=#provider-tokens class=hash-link aria-label="Direct link to Provider tokens" title="Direct link to Provider tokens" translate=no>​</a></h4>
-<p>Models from different AI providers are available if the corresponding environment variable is added as shown in the sections below.</p>
-<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id=anthropic>Anthropic<a href=#anthropic class=hash-link aria-label="Direct link to Anthropic" title="Direct link to Anthropic" translate=no>​</a></h5>
-<p>To interact with Anthropic models, navigate to your Anthropic account dashboard to <a href=https://console.anthropic.com/settings/keys target=_blank rel="noopener noreferrer" class="">create an API key</a>, then export the key as follows:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">export ANTHROPIC_API_KEY=&lt;your-api-key></span><br/></span></code></pre></div></div>
-<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id=google-cloud-vertex-ai>Google Cloud Vertex AI<a href=#google-cloud-vertex-ai class=hash-link aria-label="Direct link to Google Cloud Vertex AI" title="Direct link to Google Cloud Vertex AI" translate=no>​</a></h5>
-<p>To use Google Cloud Vertex AI, <a href=https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal#expandable-1 target=_blank rel="noopener noreferrer" class="">follow this quick start</a> to create a project for sending requests to the Gemini API, then gather <a href=https://cloud.google.com/docs/authentication/provide-credentials-adc target=_blank rel="noopener noreferrer" class="">Application Default Credentials</a> with the strategy to match your development environment.</p>
-<p>Once your project and credentials are configured, export environment variables to select from Gemini models:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">export VERTEX_AI_PROJECT_ID=&lt;your-project-id></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">export VERTEX_AI_LOCATION=&lt;location-to-deploy-model></span><br/></span></code></pre></div></div>
-<p>The project location can be located under the <strong>Region</strong> on the <a href=https://console.cloud.google.com/vertex-ai target=_blank rel="noopener noreferrer" class="">Vertex AI</a> dashboard, as well as more details about available Gemini models.</p>
-<h5 class="anchor anchorTargetStickyNavbar_Vzrq" id=openai>OpenAI<a href=#openai class=hash-link aria-label="Direct link to OpenAI" title="Direct link to OpenAI" translate=no>​</a></h5>
-<p>Unlock the OpenAI models from your OpenAI account dashboard by clicking <a href=https://platform.openai.com/api-keys target=_blank rel="noopener noreferrer" class="">create a new secret key</a>, then export the key like so:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">export OPENAI_API_KEY=&lt;your-api-key></span><br/></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=configure-project>Setting up and running your local project<a href=#configure-project class=hash-link aria-label="Direct link to Setting up and running your local project" title="Direct link to Setting up and running your local project" translate=no>​</a></h2>
-<p>Clone the starter template onto your machine by running the following command:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">git clone https://github.com/slack-samples/bolt-python-ai-chatbot.git</span><br/></span></code></pre></div></div>
-<p>Change into the new project directory:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">cd bolt-python-ai-chatbot</span><br/></span></code></pre></div></div>
-<p>Start your Python virtual environment:</p>
-<p><strong>For macOS</strong></p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">python3 -m venv .venv</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">source .venv/bin/activate</span><br/></span></code></pre></div></div>
-<p><strong>For Windows</strong></p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">py -m venv .venv</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">.venv\Scripts\activate</span><br/></span></code></pre></div></div>
-<p>Install the required dependencies:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">pip install -r requirements.txt</span><br/></span></code></pre></div></div>
-<p>Start your local server:</p>
-<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token plain">python app.py</span><br/></span></code></pre></div></div>
-<p>If your app is up and running, you'll see a message that says "⚡️ Bolt app is running!"</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=provider>Choosing your provider<a href=#provider class=hash-link aria-label="Direct link to Choosing your provider" title="Direct link to Choosing your provider" translate=no>​</a></h2>
-<p>Navigate to the Bolty <strong>App Home</strong> and select a provider from the drop-down menu. The options listed will be dependent on which secret keys you added when setting your environment variables.</p>
-<p>If you don't see Bolty listed under <strong>Apps</strong> in your workspace right away, never fear! You can mention <strong>@Bolty</strong> in a public channel to add the app, then navigate to your <strong>App Home</strong>.</p>
-<p><img decoding=async loading=lazy alt="Choose your AI provider" src=/assets/images/6-90ef0d4d041ca7d3607699b802eca6ba.png width=758 height=738 class=img_ev3q /></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=workflow>Setting up your workflow<a href=#workflow class=hash-link aria-label="Direct link to Setting up your workflow" title="Direct link to Setting up your workflow" translate=no>​</a></h2>
-<p>Within your development workspace, open Workflow Builder by clicking on your workspace name and then <strong>Tools > Workflow Builder</strong>. Select <strong>New Workflow</strong> > <strong>Build Workflow</strong>.</p>
-<p>Click <strong>Untitled Workflow</strong> at the top to rename your workflow. For this tutorial, we'll call the workflow <strong>Welcome to the channel</strong>. Enter a description, such as <em>Summarizes channels for new members</em>, and click <strong>Save</strong>.</p>
-<p><img decoding=async loading=lazy alt="Setting up a new workflow" src=/assets/images/1-f9c24f965e8474d3c7e673ce05673ffd.png width=1038 height=1158 class=img_ev3q /></p>
-<p>Select <strong>Choose an event</strong> under <strong>Start the workflow...</strong>, and then choose <strong>When a person joins a channel</strong>. Select the channel name from the drop-down menu and click <strong>Save</strong>.</p>
-<p><img decoding=async loading=lazy alt="Start the workflow" src=/assets/images/2-f28431ae65be1c00553a7b2aec61bc10.png width=722 height=447 class=img_ev3q /></p>
-<p>Under <strong>Then, do these things</strong>, click <strong>Add steps</strong> and complete the following:</p>
-<ol>
-<li class="">Select <strong>Messages</strong> > <strong>Send a message to a person</strong>.</li>
-<li class="">Under <strong>Select a member</strong>, choose <strong>The user who joined the channel</strong> from the drop-down menu.</li>
-<li class="">Under <strong>Add a message</strong>, enter a short message, such as <em>Hi! Welcome to <code>{}The channel that the user joined</code>. Would you like a summary of the recent conversation?</em> Note that the <em><code>{}The channel that the user joined</code></em> is a variable; you can insert it by selecting <strong>Insert a variable</strong> at the bottom of the message text box.</li>
-<li class="">Select the <strong>Add Button</strong> button, and name the button <em>Yes, give me a summary</em>. Click <strong>Done</strong>.</li>
-</ol>
-<p><img decoding=async loading=lazy alt="Send a message" src=/assets/images/3-905316d2b75f243f2a05ed06eaf32cd0.png width=729 height=864 class=img_ev3q /></p>
-<p>We'll add two more steps under the <strong>Then, do these things</strong> section.</p>
-<p>First, scroll to the bottom of the list of steps and choose <strong>Custom</strong>, then choose <strong>Bolty</strong> and <strong>Bolty Custom Function</strong>. In the <strong>Channel</strong> drop-down menu, select <strong>Channel that the user joined</strong>. Click <strong>Save</strong>.</p>
-<p><img decoding=async loading=lazy alt="Bolty custom function" src=/assets/images/4-dc916f899491971827db1a6ebe7a16aa.png width=722 height=379 class=img_ev3q /></p>
-<p>For the final step, complete the following:</p>
-<ol>
-<li class="">Choose <strong>Messages</strong> and then <strong>Send a message to a person</strong>. Under <strong>Select a member</strong>, choose <strong>Person who clicked the button</strong> from the drop-down menu.</li>
-<li class="">Under <strong>Add a message</strong>, click <strong>Insert a variable</strong> and choose <strong><code>{}Summary</code></strong> under the <strong>Bolty Custom Function</strong> section in the list that appears. Click <strong>Save</strong>.</li>
-</ol>
-<p><img decoding=async loading=lazy alt=Summary src=/assets/images/5-51cb5fc9c8350067939001cee6315f8f.png width=726 height=734 class=img_ev3q /></p>
-<p>When finished, click <strong>Finish Up</strong>, then click <strong>Publish</strong> to make the workflow available in your workspace.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=interact>Interacting with Bolty<a href=#interact class=hash-link aria-label="Direct link to Interacting with Bolty" title="Direct link to Interacting with Bolty" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=summarize>Summarizing recent conversations<a href=#summarize class=hash-link aria-label="Direct link to Summarizing recent conversations" title="Direct link to Summarizing recent conversations" translate=no>​</a></h3>
-<p>In order for Bolty to provide summaries of recent conversation in a channel, Bolty <em>must</em> be a member of that channel.</p>
-<ol>
-<li class="">Invite Bolty to a channel that you are able to leave and rejoin (for example, not the <strong>#general</strong> channel or a private channel someone else created) by mentioning the app in the channel — i.e., tagging <strong>@Bolty</strong> in the channel and sending your message.</li>
-<li class="">Slackbot will prompt you to either invite Bolty to the channel, or do nothing. Click <strong>Invite Them</strong>. Now when new users join the channel, the workflow you just created will be kicked off.</li>
-</ol>
-<p>To test this, leave the channel you just invited Bolty to and rejoin it. This will kick off your workflow and you'll receive a direct message from <strong>Welcome to the channel</strong>. Click the <strong>Yes, give me a summary</strong> button, and Bolty will summarize the recent conversations in the channel you joined.</p>
-<p><img decoding=async loading=lazy alt="Channel summary" src=/assets/images/7-a94698b85daeed62f48e11366cae7cba.png width=2583 height=1633 class=img_ev3q /></p>
-<p>The central part of this functionality is shown in the following code snippet. Note the use of the <a class="" href=/tools/deno-slack-sdk/reference/slack-types#usercontext><code>user_context</code></a> object, a Slack type that represents the user who is interacting with our workflow, as well as the <code>history</code> of the channel that will be summarized, which includes the ten most recent messages.</p>
-<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#F8F8F2;--prism-background-color:#282A36><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-python codeBlock_bY9V thin-scrollbar" style=color:#F8F8F2;background-color:#282A36><code class=codeBlockLines_e6Vv><span class=token-line style=color:#F8F8F2><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> ai</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">providers </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> get_provider_response</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> logging </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> Logger</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> slack_bolt </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> Complete</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> Fail</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> Ack</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> slack_sdk </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> WebClient</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">listener_utils</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">listener_constants </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> SUMMARIZE_CHANNEL_WORKFLOW</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">from</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">listener_utils</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">parse_conversation </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">import</span><span class="token plain"> parse_conversation</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain" style=display:inline-block></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token triple-quoted-string string" style="color:rgb(255, 121, 198)">"""</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token triple-quoted-string string" style="color:rgb(255, 121, 198)">Handles the event to summarize a Slack channel's conversation history.</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token triple-quoted-string string" style="color:rgb(255, 121, 198)">It retrieves the conversation history, parses it, generates a summary using an AI response,</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token triple-quoted-string string" style="color:rgb(255, 121, 198)">and completes the workflow with the summary or fails if an error occurs.</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token triple-quoted-string string" style="color:rgb(255, 121, 198)">"""</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain" style=display:inline-block></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">def</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">handle_summary_function_callback</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">    ack</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Ack</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> inputs</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(189, 147, 249)">dict</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> fail</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Fail</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> logger</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Logger</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> WebClient</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> complete</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Complete</span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">    ack</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">try</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        user_context </span><span class="token operator">=</span><span class="token plain"> inputs</span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">"user_context"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        channel_id </span><span class="token operator">=</span><span class="token plain"> inputs</span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">"channel_id"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        history </span><span class="token operator">=</span><span class="token plain"> client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">conversations_history</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">channel</span><span class="token operator">=</span><span class="token plain">channel_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> limit</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">"messages"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        conversation </span><span class="token operator">=</span><span class="token plain"> parse_conversation</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">history</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain" style=display:inline-block></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        summary </span><span class="token operator">=</span><span class="token plain"> get_provider_response</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">user_context</span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">"id"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> SUMMARIZE_CHANNEL_WORKFLOW</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> conversation</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain" style=display:inline-block></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        complete</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token string" style="color:rgb(255, 121, 198)">"user_context"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> user_context</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">"response"</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> summary</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">    </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">except</span><span class="token plain"> Exception </span><span class="token keyword" style="color:rgb(189, 147, 249);font-style:italic">as</span><span class="token plain"> e</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        logger</span><span class="token punctuation" style="color:rgb(248, 248, 242)">.</span><span class="token plain">exception</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">e</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"></span><br/></span><span class=token-line style=color:#F8F8F2><span class="token plain">        fail</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">e</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><br/></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=ask-app>Asking Bolty a question<a href=#ask-app class=hash-link aria-label="Direct link to Asking Bolty a question" title="Direct link to Asking Bolty a question" translate=no>​</a></h3>
-<p>To ask Bolty a question, you can chat with Bolty in any channel the app is in. Use the <code>\ask-bolty</code> slash command to provide a prompt for Bolty to answer. Note that Bolty is currently not supported in threads.</p>
-<p>You can also navigate to <strong>Bolty</strong> in your <strong>Apps</strong> list and select the <strong>Messages</strong> tab to chat with Bolty directly.</p>
-<p><img decoding=async loading=lazy alt="Ask Bolty" src=/assets/images/8-5942a49b49344e9477dbbb5605f92567.png width=1550 height=1267 class=img_ev3q /></p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=next-steps>Next steps<a href=#next-steps class=hash-link aria-label="Direct link to Next steps" title="Direct link to Next steps" translate=no>​</a></h2>
-<p>Congratulations! You've successfully integrated the power of AI into your workspace. Check out these links to take the next steps in your Bolt for Python journey.</p>
-<ul>
-<li class="">To learn more about Bolt for Python, refer to the <a class="" href=/tools/bolt-python/getting-started>Getting started</a> documentation.</li>
-<li class="">For more details about creating workflow steps using the Bolt SDK, refer to the <a class="" href=/workflows/workflow-steps>workflow steps for Bolt</a> guide.</li>
-<li class="">To use the Bolt for Python SDK to develop on the automations platform, refer to the <a class="" href=/tools/bolt-python/tutorial/custom-steps-workflow-builder-new>Create a workflow step for Workflow Builder: Bolt for Python</a> tutorial.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href=/tools/bolt-python/legacy/steps-from-apps><div class=pagination-nav__sublabel>Previous</div><div class=pagination-nav__label>Steps from apps</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/tools/bolt-python/tutorial/order-confirmation/><div class=pagination-nav__sublabel>Next</div><div class=pagination-nav__label>Create a Salesforce order confirmation app</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#prereqs class="table-of-contents__link toc-highlight">Prerequisites</a><li><a href=#create-app class="table-of-contents__link toc-highlight">Creating your app</a><ul><li><a href=#environment-variables class="table-of-contents__link toc-highlight">Obtaining and storing your environment variables</a></ul><li><a href=#configure-project class="table-of-contents__link toc-highlight">Setting up and running your local project</a><li><a href=#provider class="table-of-contents__link toc-highlight">Choosing your provider</a><li><a href=#workflow class="table-of-contents__link toc-highlight">Setting up your workflow</a><li><a href=#interact class="table-of-contents__link toc-highlight">Interacting with Bolty</a><ul><li><a href=#summarize class="table-of-contents__link toc-highlight">Summarizing recent conversations</a><li><a href=#ask-app class="table-of-contents__link toc-highlight">Asking Bolty a question</a></ul><li><a href=#next-steps class="table-of-contents__link toc-highlight">Next steps</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class=footer__copyright> <div class=footer-spaced>
-                    <a href=https://slack.com/terms-of-service/api>API Terms of Service</a>
-                    <a href=https://slack.com/trust/privacy/privacy-policy>Privacy Information</a>
-                    <a href=# class=optanon-show-settings>Cookie Preferences</a>
-                    <a href=https://www.salesforce.com/form/other/privacy-request>Your Privacy Choices</a>
-                    <a href=/developer-support#feedback>Provide Feedback</a>
-                    </div> ©2025 Slack Technologies, LLC, a Salesforce company. All rights reserved. Various trademarks held by their respective owners.</div></div></div></footer></div></body>
+## Prerequisites
+
+Before getting started, you will need the following:
+
+- a development workspace where you have permissions to install apps. If you don’t have a workspace, go ahead and set that up now — you can [go here](https://slack.com/get-started#create) to create one, or you can join the [Developer Program](https://api.slack.com/developer-program) and provision a sandbox with access to all Slack features for free.
+- a development environment with [Python 3.7](https://www.python.org/downloads/) or later.
+- an Anthropic or OpenAI account with sufficient credits, and in which you have generated a secret key.
+
+**Skip to the code**
+If you'd rather skip the tutorial and just head straight to the code, you can use our [Bolt for Python AI Chatbot sample](https://github.com/slack-samples/bolt-python-ai-chatbot) as a template.
+
+## Creating your app
+
+1. Navigate to the [app creation page](https://api.slack.com/apps/new) and select **From a manifest**.
+2. Select the workspace you want to install the application in.
+3. Copy the contents of the [`manifest.json`](https://github.com/slack-samples/bolt-python-ai-chatbot/blob/main/manifest.json) file into the text box that says **Paste your manifest code here** (within the **JSON** tab) and click **Next**.
+4. Review the configuration and click **Create**.
+5. You're now in your app configuration's **Basic Information** page. Navigate to the **Install App** link in the left nav and click **Install to Workspace**, then **Allow** on the screen that follows.
+
+### Obtaining and storing your environment variables
+
+Before you'll be able to successfully run the app, you'll need to first obtain and set some environment variables.
+
+#### Slack tokens
+
+From your app's page on [app settings](https://api.slack.com/apps) collect an app and bot token:
+
+1. On the **Install App** page, copy your **Bot User OAuth Token**. You will store this in your environment as `SLACK_BOT_TOKEN` (we'll get to that next).
+2. Navigate to **Basic Information** and in the **App-Level Tokens** section, click **Generate Token and Scopes**. Add the [`connections:write`](/reference/scopes/connections.write) scope, name the token, and click **Generate**. (For more details, refer to [understanding OAuth scopes for bots](/authentication/tokens#bot)). Copy this token. You will store this in your environment as `SLACK_APP_TOKEN`.
+
+To store your tokens and environment variables, run the following commands in the terminal. Replace the placeholder values with your bot and app tokens collected above:
+
+**For macOS**
+
+```bash
+export SLACK_BOT_TOKEN=<your-bot-token>
+export SLACK_APP_TOKEN=<your-app-token>
+```
+
+**For Windows**
+
+```powershell
+set SLACK_BOT_TOKEN=<your-bot-token>
+set SLACK_APP_TOKEN=<your-app-token>
+```
+
+#### Provider tokens
+
+Models from different AI providers are available if the corresponding environment variable is added as shown in the sections below.
+
+##### Anthropic
+
+To interact with Anthropic models, navigate to your Anthropic account dashboard to [create an API key](https://console.anthropic.com/settings/keys), then export the key as follows:
+
+```bash
+export ANTHROPIC_API_KEY=<your-api-key>
+```
+
+##### Google Cloud Vertex AI
+
+To use Google Cloud Vertex AI, [follow this quick start](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal#expandable-1) to create a project for sending requests to the Gemini API, then gather [Application Default Credentials](https://cloud.google.com/docs/authentication/provide-credentials-adc) with the strategy to match your development environment.
+
+Once your project and credentials are configured, export environment variables to select from Gemini models:
+
+```bash
+export VERTEX_AI_PROJECT_ID=<your-project-id>
+export VERTEX_AI_LOCATION=<location-to-deploy-model>
+```
+
+The project location can be located under the **Region** on the [Vertex AI](https://console.cloud.google.com/vertex-ai) dashboard, as well as more details about available Gemini models.
+
+##### OpenAI
+
+Unlock the OpenAI models from your OpenAI account dashboard by clicking [create a new secret key](https://platform.openai.com/api-keys), then export the key like so:
+
+```bash
+export OPENAI_API_KEY=<your-api-key>
+```
+
+## Setting up and running your local project
+
+Clone the starter template onto your machine by running the following command:
+
+```bash
+git clone https://github.com/slack-samples/bolt-python-ai-chatbot.git
+```
+
+Change into the new project directory:
+
+```bash
+cd bolt-python-ai-chatbot
+```
+
+Start your Python virtual environment:
+
+**For macOS**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+**For Windows**
+
+```bash
+py -m venv .venv
+.venv\Scripts\activate
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start your local server:
+
+```bash
+python app.py
+```
+
+If your app is up and running, you'll see a message that says "⚡️ Bolt app is running!"
+
+## Choosing your provider
+
+Navigate to the Bolty **App Home** and select a provider from the drop-down menu. The options listed will be dependent on which secret keys you added when setting your environment variables.
+
+If you don't see Bolty listed under **Apps** in your workspace right away, never fear! You can mention **@Bolty** in a public channel to add the app, then navigate to your **App Home**.
+
+![Choose your AI provider](https://docs.slack.dev/assets/images/6-90ef0d4d041ca7d3607699b802eca6ba.png)
+
+## Setting up your workflow
+
+Within your development workspace, open Workflow Builder by clicking on your workspace name and then **Tools > Workflow Builder**. Select **New Workflow** > **Build Workflow**.
+
+Click **Untitled Workflow** at the top to rename your workflow. For this tutorial, we'll call the workflow **Welcome to the channel**. Enter a description, such as _Summarizes channels for new members_, and click **Save**.
+
+![Setting up a new workflow](https://docs.slack.dev/assets/images/1-f9c24f965e8474d3c7e673ce05673ffd.png)
+
+Select **Choose an event** under **Start the workflow...**, and then choose **When a person joins a channel**. Select the channel name from the drop-down menu and click **Save**.
+
+![Start the workflow](https://docs.slack.dev/assets/images/2-f28431ae65be1c00553a7b2aec61bc10.png)
+
+Under **Then, do these things**, click **Add steps** and complete the following:
+
+1. Select **Messages** > **Send a message to a person**.
+2. Under **Select a member**, choose **The user who joined the channel** from the drop-down menu.
+3. Under **Add a message**, enter a short message, such as _Hi! Welcome to `{The channel that the user joined}`. Would you like a summary of the recent conversation?_ Note that the _`{The channel that the user joined`}_ is a variable; you can insert it by selecting **Insert a variable** at the bottom of the message text box.
+4. Select the **Add Button** button, and name the button _Yes, give me a summary_. Click **Done**.
+
+![Send a message](https://docs.slack.dev/assets/images/3-905316d2b75f243f2a05ed06eaf32cd0.png)
+
+We'll add two more steps under the **Then, do these things** section.
+
+First, scroll to the bottom of the list of steps and choose **Custom**, then choose **Bolty** and **Bolty Custom Function**. In the **Channel** drop-down menu, select **Channel that the user joined**. Click **Save**.
+
+![Bolty custom function](https://docs.slack.dev/assets/images/4-dc916f899491971827db1a6ebe7a16aa.png)
+
+For the final step, complete the following:
+
+1. Choose **Messages** and then **Send a message to a person**. Under **Select a member**, choose **Person who clicked the button** from the drop-down menu.
+2. Under **Add a message**, click **Insert a variable** and choose **`{Summary}`** under the **Bolty Custom Function** section in the list that appears. Click **Save**.
+
+![Summary](https://docs.slack.dev/assets/images/5-51cb5fc9c8350067939001cee6315f8f.png)
+
+When finished, click **Finish Up**, then click **Publish** to make the workflow available in your workspace.
+
+## Interacting with Bolty
+
+### Summarizing recent conversations
+
+In order for Bolty to provide summaries of recent conversation in a channel, Bolty _must_ be a member of that channel.
+
+1. Invite Bolty to a channel that you are able to leave and rejoin (for example, not the **#general** channel or a private channel someone else created) by mentioning the app in the channel — i.e., tagging **@Bolty** in the channel and sending your message.
+2. Slackbot will prompt you to either invite Bolty to the channel, or do nothing. Click **Invite Them**. Now when new users join the channel, the workflow you just created will be kicked off.
+
+To test this, leave the channel you just invited Bolty to and rejoin it. This will kick off your workflow and you'll receive a direct message from **Welcome to the channel**. Click the **Yes, give me a summary** button, and Bolty will summarize the recent conversations in the channel you joined.
+
+![Channel summary](https://docs.slack.dev/assets/images/7-a94698b85daeed62f48e11366cae7cba.png)
+
+The central part of this functionality is shown in the following code snippet. Note the use of the [`user_context`](https://docs.slack.dev/tools/deno-slack-sdk/reference/slack-types#usercontext) object, a Slack type that represents the user who is interacting with our workflow, as well as the `history` of the channel that will be summarized, which includes the ten most recent messages.
+
+```python
+from ai.providers import get_provider_response
+from logging import Logger
+from slack_bolt import Complete, Fail, Ack
+from slack_sdk import WebClient
+from ...listener_utils.listener_constants import SUMMARIZE_CHANNEL_WORKFLOW
+from ...listener_utils.parse_conversation import parse_conversation
+
+"""
+Handles the event to summarize a Slack channel's conversation history.
+It retrieves the conversation history, parses it, generates a summary using an AI response,
+and completes the workflow with the summary or fails if an error occurs.
+"""
+
+def handle_summary_function_callback(
+    ack: Ack, inputs: dict, fail: Fail, logger: Logger, client: WebClient, complete: Complete
+):
+    ack()
+    try:
+        user_context = inputs["user_context"]
+        channel_id = inputs["channel_id"]
+        history = client.conversations_history(channel=channel_id, limit=10)["messages"]
+        conversation = parse_conversation(history)
+        summary = get_provider_response(user_context["id"], SUMMARIZE_CHANNEL_WORKFLOW, conversation)
+        complete({"user_context": user_context, "response": summary})
+    except Exception as e:
+        logger.exception(e)
+        fail(e)
+```
+
+### Asking Bolty a question
+
+To ask Bolty a question, you can chat with Bolty in any channel the app is in. Use the `\ask-bolty` slash command to provide a prompt for Bolty to answer. Note that Bolty is currently not supported in threads.
+
+You can also navigate to **Bolty** in your **Apps** list and select the **Messages** tab to chat with Bolty directly.
+
+![Ask Bolty](https://docs.slack.dev/assets/images/8-5942a49b49344e9477dbbb5605f92567.png)
+
+## Next steps
+
+Congratulations! You've successfully integrated the power of AI into your workspace. Check out these links to take the next steps in your Bolt for Python journey.
+
+- To learn more about Bolt for Python, refer to the [Getting started](https://docs.slack.dev/tools/bolt-python/getting-started) documentation.
+- For more details about creating workflow steps using the Bolt SDK, refer to the [workflow steps for Bolt](https://docs.slack.dev/workflows/workflow-steps) guide.
+- To use the Bolt for Python SDK to develop on the automations platform, refer to the [tutorial](https://docs.slack.dev/tools/bolt-python/tutorial/custom-steps-workflow-builder-new/Create%20a%20workflow%20step%20for%20Workflow%20Builder:%20Bolt%20for%20Python) to create a workflow step for Workflow Builder.

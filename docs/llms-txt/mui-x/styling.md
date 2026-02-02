@@ -1,10 +1,3 @@
-# Source: https://mui.com/x/react-charts/styling.md
-
----
-title: Charts - Styling
-productId: x-charts
----
-
 # Charts - Styling
 
 This page groups topics about charts customization.
@@ -45,7 +38,7 @@ const chartsParams = {
 export default function BasicColor() {
   const [color, setColor] = React.useState('#4e79a7');
 
-  const handleChange = (event: React.MouseEvent<HTMLElement>, nextColor: string) => {
+  const handleChange = (event: ReactMouseEvent<HTMLElement>, nextColor: string) => {
     setColor(nextColor);
   };
 
@@ -204,11 +197,11 @@ export default function MuiColorTemplate() {
   const theme = useTheme();
   const [colorScheme, setColorScheme] =
     React.useState<PaletteKey>('blueberryTwilight');
-  const [colorMode, setColorMode] = React.useState(theme.palette.mode);
+  const [colorMode, setColorMode] = React.useState(themepalette.mode);
 
   React.useEffect(() => {
-    setColorMode(theme.palette.mode);
-  }, [theme.palette.mode]);
+    setColorMode(themepalette.mode);
+  }, [themepalette.mode]);
 
   const newTheme = createTheme({ palette: { mode: colorMode } });
   return (
@@ -256,7 +249,7 @@ export default function MuiColorTemplate() {
                     justifyContent="space-between"
                     width={'100%'}
                   >
-                    <Typography sx={{ mr: 2 }}>{name}</Typography>
+                    <Typography sx={{ mr: 2}>{name}</Typography>
                     <div style={{ width: 200, height: 20 }}>
                       {colors(colorMode).map((c) => (
                         <div
@@ -283,7 +276,7 @@ export default function MuiColorTemplate() {
                     justifyContent="space-between"
                     width={'100%'}
                   >
-                    <Typography sx={{ mr: 2 }}>{name}</Typography>
+                    <Typography sx={{ mr: 2}>{name}</Typography>
                     <div style={{ width: 200, height: 20 }}>
                       {colors(colorMode).map((c) => (
                         <div
@@ -560,8 +553,8 @@ The piecewise configuration takes an array of _n_ `thresholds` values and _n+1_ 
 ```ts
 {
   type: 'piecewise';
-  thresholds: Value[];
-  colors: string[];
+  thresholds: Value[],
+  colors: string[],
 }
 ```
 
@@ -670,13 +663,15 @@ const valueFormatter = (v: number | null) => (v! < 0 ? `-£${-v!}m` : `£${v!}m`
 
 const chartsParams = {
   margin: { top: 20, right: 40, bottom: 20, left: 20 },
-  xAxis: [{ data: clubs, tickLabelStyle: { angle: 45 }, height: 80 }],
+  xAxis: [{
+    data: clubs,
+    tickLabelStyle: { angle: 45 },
+    height: 80 }],
   yAxis: [
     {
       width: 60,
       valueFormatter,
-    },
-  ],
+    }],
   series: [
     {
       data: netSpendInPounds,
@@ -802,7 +797,7 @@ const LoadingRect = styled('rect')({
 
 const LoadingText = styled('text')(({ theme }) => ({
   stroke: 'none',
-  fill: theme.palette.text.primary,
+  fill: themepalette.background.paper,
   shapeRendering: 'crispEdges',
   textAnchor: 'middle',
   dominantBaseline: 'middle',
@@ -1086,7 +1081,7 @@ function DrawingAreaVisualization() {
 
 ### CSS
 
-Since the library relies on SVG for rendering, you can customize them as you do with other MUI System components with CSS overriding.
+Since the library relies on SVG for rendering, you can customize them as you do with other MUI System components with CSS overriding.
 
 Chart components accept the `sx` props.
 From here, you can target any subcomponents with its class name.
@@ -1099,181 +1094,4 @@ import { axisClasses } from '@mui/x-charts/ChartsAxis';
 const labels: string[] = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E'];
 const lData: number[] = [42, 24, 56, 45, 3];
 const rData: number[] = [57, 7, 19, 16, 22];
-const colors: string[] = ['#006BD6', '#EC407A'];
-
-export default function SxStyling(): React.JSX.Element {
-  return (
-    <BarChart
-      sx={(theme) => ({
-        [`.${barElementClasses.root}`]: {
-          fill: (theme.vars || theme).palette.background.paper,
-          strokeWidth: 2,
-        },
-        [`.MuiBarElement-series-l_id`]: {
-          stroke: colors[0],
-        },
-        [`.MuiBarElement-series-r_id`]: {
-          stroke: colors[1],
-        },
-        [`.${axisClasses.root}`]: {
-          [`.${axisClasses.tick}, .${axisClasses.line}`]: {
-            stroke: '#006BD6',
-            strokeWidth: 3,
-          },
-          [`.${axisClasses.tickLabel}`]: {
-            fill: '#006BD6',
-          },
-        },
-        border: '1px solid rgba(0, 0, 0, 0.1)',
-        backgroundImage:
-          'linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px)',
-        backgroundSize: '35px 35px',
-        backgroundPosition: '20px 20px, 20px 20px',
-        ...theme.applyStyles('dark', {
-          borderColor: 'rgba(255,255,255, 0.1)',
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255, 0.1) 1px, transparent 1px)',
-        }),
-      })}
-      xAxis={[{ data: labels }]}
-      series={[
-        { data: lData, label: 'l', id: 'l_id' },
-        { data: rData, label: 'r', id: 'r_id' },
-      ]}
-      colors={colors}
-      height={300}
-    />
-  );
-}
-
-```
-
-### Drawing area background
-
-To set a background color in the drawing area, you should create a dedicated `<rect />`.
-This is only doable with [composition](/x/react-charts/composition/) because you have to place this new component before all plot components.
-
-The following demo defines a basic `<Background />` component that adds a light gray background.
-
-```tsx
-import { useTheme } from '@mui/material/styles';
-import { LinePlot } from '@mui/x-charts/LineChart';
-import { XAxis } from '@mui/x-charts/models';
-import { ChartContainer } from '@mui/x-charts/ChartContainer';
-import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
-import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
-import { ChartsGrid } from '@mui/x-charts/ChartsGrid';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import {
-  dateAxisFormatter,
-  percentageFormatter,
-  usUnemploymentRate,
-} from '../dataset/usUnemploymentRate';
-
-function Background() {
-  const drawingArea = useDrawingArea();
-  const theme = useTheme();
-  return (
-    <rect
-      x={drawingArea.left}
-      y={drawingArea.top}
-      width={drawingArea.width}
-      height={drawingArea.height}
-      fill={theme.palette.mode === 'light' ? '#f5f5f5' : '#303030'}
-    />
-  );
-}
-
-export default function BackgroundStyling() {
-  return (
-    <ChartContainer
-      dataset={usUnemploymentRate}
-      xAxis={xAxis}
-      yAxis={yAxis}
-      series={series}
-      height={300}
-    >
-      <Background />
-      <ChartsGrid vertical horizontal />
-      <LinePlot />
-      <ChartsXAxis />
-      <ChartsYAxis />
-    </ChartContainer>
-  );
-}
-
-const xAxis: XAxis<'time'>[] = [
-  {
-    dataKey: 'date',
-    scaleType: 'time',
-    valueFormatter: dateAxisFormatter,
-  },
-];
-const yAxis = [
-  {
-    valueFormatter: percentageFormatter,
-  },
-];
-const series = [
-  {
-    type: 'line' as const,
-    dataKey: 'rate',
-    showMark: false,
-    valueFormatter: percentageFormatter,
-  },
-];
-
-```
-
-### Gradients and patterns
-
-It is possible to use gradients and patterns to fill the charts.
-This can be done by passing your gradient or pattern definition as children of the chart component.
-
-Note that the gradient or pattern defined that way is only usable for SVG.
-So a direct definition like `color: "url(#Pattern)'` would cause undefined colors in HTML elements.
-
-```tsx
-import { BarChart } from '@mui/x-charts/BarChart';
-
-export default function GradientTooltip() {
-  return (
-    <BarChart
-      series={[
-        {
-          label: 'series A',
-          data: [50],
-          color: 'url(#Pattern)',
-        },
-        {
-          label: 'series B',
-          data: [100],
-          color: 'url(#Gradient)',
-        },
-      ]}
-      height={200}
-    >
-      <linearGradient id="Gradient" x1="0%" y1="100%" x2="0%" y2="0%">
-        <stop offset="0" stopColor="#123456" />
-        <stop offset="1" stopColor="#81b2e4" />
-      </linearGradient>
-      <pattern
-        id="Pattern"
-        patternUnits="userSpaceOnUse"
-        width="20"
-        height="40"
-        patternTransform="scale(0.5)"
-      >
-        <rect x="0" y="0" width="100%" height="100%" fill="#123456" />
-        <path
-          d="M0 30h20L10 50zm-10-20h20L0 30zm20 0h20L20 30zM0-10h20L10 10z"
-          strokeWidth="1"
-          stroke="#81b2e4"
-          fill="none"
-        />
-      </pattern>
-    </BarChart>
-  );
-}
-
-```
+const colors: string[] = ['#00

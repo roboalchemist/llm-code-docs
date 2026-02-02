@@ -1,9 +1,3 @@
-# Source: https://raw.githubusercontent.com/unoplatform/uno/refs/heads/master/doc/articles/controls/WebView.md
-
----
-uid: Uno.Controls.WebView2
----
-
 # `WebView2` (`WebView`)
 
 > Uno Platform supports two `WebView` controls - the `WebView2` control and the legacy `WebView`. For new development, we strongly recommend `WebView2` as it will get further improvements in the future.
@@ -134,7 +128,7 @@ This will navigate to the `index.html` file stored in the `WebContent` folder. T
 To avoid duplication, you can put the files in a non-project-specific location and add them via linking, e.g.:
 
 ```xml
-<BundleResource Include="..\LinkedFiles\WebContent\css\site.css" Link="iOS\Resources\WebContent\css\site.css" />
+<BundleResource Include="..\LinkedFiles\WebContent\css\site.css" Link="iOS.Resources\WebContent\css\site.css" />
 ```
 
 The web files can reference each other in a relative path fashion, for example, the following HTML file:
@@ -195,3 +189,5 @@ When using the WebView2 and running on WinAppSDK, make sure to create an `x64` o
 - In the Visual Studio configuration manager, create an `x64` or `ARM64` solution configuration
 - Assign it to the Uno Platform project
 - Debug your application using the configuration relevant to your current environment
+
+```bash

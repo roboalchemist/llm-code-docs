@@ -2,16 +2,15 @@
 
 # Web SDK integration for Sign in with Klarna
 
-## Integrate Sign in with Klarna to offer a fast, simple and smoooth login to your customers.
+## Integrate Sign in with Klarna to offer a fast, simple and smooth login to your customers.
 
 ## Quick Start
 
-The simplest and fastest way to start using **Sign in with Klarna** is to use the minimal template below. Please refer to the [Before you start](https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/before-you-start/) article for instructions on how to obtain your CLIENT_ID. This guide applies to the PUBLIC client type. If your client is set to CONFIDENTIAL, please refer to the next section. Basic example: Assume that you are serving these 2 files from your web server. 
+The simplest and fastest way to start using **Sign in with Klarna** is to use the minimal template below. Please refer to the [Before you start](https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/before-you-start/) article for instructions on how to obtain your CLIENT_ID. This guide applies to the PUBLIC client type. If your client is set to CONFIDENTIAL, please refer to the next section. Basic example: Assume that you are serving these 2 files from your web server.
 
 ### index.html
 
-
-``` markup
+```html
 <html>
 <head>
 <!-- 
@@ -55,12 +54,9 @@ The simplest and fastest way to start using **Sign in with Klarna** is to use th
 </html>
 ```
 
-
-
 ### callback.html
 
-
-``` markup
+```html
 <html>
 <head>
 <!-- 
@@ -98,12 +94,9 @@ The simplest and fastest way to start using **Sign in with Klarna** is to use th
 </html>
 ```
 
-
-
 ### signinResponse Example
 
-
-``` json5
+```json
 // When user is successfully signed in,
 // the `signin` event callback function 
 // receives the payload below
@@ -148,12 +141,11 @@ The simplest and fastest way to start using **Sign in with Klarna** is to use th
 
 ### For confidential client
 
-You would need to also obtain the \`CLIENT_SECRET\`. Please refer to the [Before you start](https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/before-you-start/) article for instructions on how to obtain your CLIENT_SECRET. 
+You would need to also obtain the \`CLIENT_SECRET\`. Please refer to the [Before you start](https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/before-you-start/) article for instructions on how to obtain your CLIENT_SECRET.
 
 ### index.html
 
-
-``` markup
+```html
 <html>
 <head>
 <!-- 
@@ -199,12 +191,9 @@ You would need to also obtain the \`CLIENT_SECRET\`. Please refer to the [Before
 </html>
 ```
 
-
-
 ### callback.html
 
-
-``` markup
+```html
 <html>
 <head>
 <!-- 
@@ -243,12 +232,9 @@ You would need to also obtain the \`CLIENT_SECRET\`. Please refer to the [Before
 </html>
 ```
 
-
-
 ### codeResponse Example
 
-
-``` json5
+```json
 // When user is successfully signed in,
 // the `signin` event callback function 
 // receives the payload below
@@ -259,7 +245,7 @@ You would need to also obtain the \`CLIENT_SECRET\`. Please refer to the [Before
 
 After obtaining the code response, pass it to your server to perform the token exchange. Here’s a JavaScript snippet demonstrating how to send a request to the token endpoint for the exchange:
 
-``` javascript
+```javascript
 // An example of the request to exchange for the token.
 const { URLSearchParams } = require('url');
 const fetch = require('node-fetch');
@@ -315,7 +301,7 @@ DEVICE_BEST allows Web SDK to automatically decide the most suitable mode, based
 
 Please note that you can also just load the Web SDK script **without** the dataset attributes and use the `init` method to initialise the Web SDK.
 
-``` javascript
+```javascript
 <script defer="" src="https://js.klarna.com/web-sdk/v1/klarna.js"></script>
 <script>
   window.onload = async function () {
@@ -332,7 +318,7 @@ After initialising the Web SDK, all **Sign in with Klarna** related API can be f
 
 ### Type Definitions
 
-``` typescript
+```typescript
 interface Identity {
   /**
    * Returns the button with given id
@@ -469,7 +455,7 @@ Web SDK provides a default button that has all functionalities built-in and styl
 
 Web SDK registers a custom web component klarna-identity-button, that renders the Sign in with Klarna button where it is mounted.
 
-``` markup
+```html
 <klarna-identity-button data-locale="en-GB" data-redirect-uri="http://localhost:3000/callback.html" data-scope="openid offline_access payment:request:create profile:name" id="klarna-identity-button"></klarna-identity-button>
 ```
 
@@ -477,7 +463,7 @@ Web SDK registers a custom web component klarna-identity-button, that renders th
 
 Web SDK provides the `button` method that allows to create and mount the Sign in with Klarna button programmatically.
 
-``` javascript
+```javascript
 window.KlarnaSDKCallback = function (klarna) {
   const siwkButton = klarna.Identity.button({
     id: "klarna-identity-button",
@@ -495,7 +481,7 @@ If the `button` method is called more than once with the configuration**object**
 
 If a merchant wants to use a custom button matching with Klarna's but also with their own design guidelines, they can use the attach method that is provided by Web SDK. The attach method will register the necessary event handlers to start the sign in flow. Please refer to our [Custom button](https://docs.klarna.com/conversion-boosters/sign-in-with-klarna/additional-resources/button-styling/) article for essential design considerations.
 
-``` javascript
+```javascript
 window.KlarnaSDKCallback = function (klarna) {
   const siwkButton = klarna.Identity.button({
     id: "klarna-identity-button",
@@ -515,7 +501,7 @@ window.KlarnaSDKCallback = function (klarna) {
 
 Web SDK Identity API can emit two events: `signin` and `error` which can be handled as below:
 
-``` javascript
+```javascript
 window.KlarnaSDKCallback = function (klarna) {
   // 1. Listen for `signin` event to receive signin response object
   klarna.Identity.on("signin", async (signinResponse) => {
@@ -532,7 +518,7 @@ window.KlarnaSDKCallback = function (klarna) {
 
 Sign in with Klarna buttons can emit two events: `ready` and `click`.
 
-``` javascript
+```javascript
 window.KlarnaSDKCallback = function (klarna) {
   // Please notice that we can retrieve the button instance,
   // by providing the button instance id to the button method
@@ -542,7 +528,7 @@ window.KlarnaSDKCallback = function (klarna) {
   })
   siwkButton.on('click', async () => {
     // handle click event
-  })
+  });
 };
 ```
 
@@ -579,8 +565,7 @@ The table below lists the available scopes and how they correspond to claims and
 
 Remember to always add 'openid', 'offline_access' and 'payment:request:create' scopes to receive full functionality of Sign in with Klarna. The mock-ups below show how users will see required versus optional scopes when entering the Sign in with Klarna flow.   
 
-
-![klarna docs image](e0d14625-c96b-4268-a3b0-dff196b42b93_Siwk_mock_up.jpeg)image
+![klarna docs image](e0d14625-c96b-4268-a3b0-dff196b42b93_Siwk_mock_up.jpeg)
 
 ## Finalizing the sign in the flow 
 
@@ -602,9 +587,9 @@ For those who have already integrated [Klarna Payments](https://docs.klarna.com/
 
 #### For Klarna Payments 
 
-Include the access_token in the POST [create a payment session](https://docs.klarna.com/api/payments/#operation/createCreditSession) request to the Klarna payments API. Add the key to the [customer object](https://docs.klarna.com/api/checkout/#operation/createOrderMerchant!path=customer&t=request) as klarna_access_token key as shown in the example below.
+Include the access_token in the POST [create a payment session](https://docs.klarna.com/api/payments/#operation/createCreditSession) request to the Klarna payments API. Add the key to the [customer object](https://docs.klarna.com/api/checkout/#operation/createOrderMerchant!path=customer&t=request) as klarna\_access\_token key as shown in the example below.
 
-``` javascript
+```javascript
 fetch("https://api.klarna.com/payments/v1/sessions", {
     method: "POST",
     headers: {
@@ -620,4 +605,4 @@ fetch("https://api.klarna.com/payments/v1/sessions", {
       ...
     }
 })
-```</klarna-identity-button></void></void></void></void>
+```

@@ -3,7 +3,6 @@
 # layout.js
 @doc-version: 16.0.4
 
-
 The `layout` file is used to define a layout in your Next.js application.
 
 ```tsx filename="app/dashboard/layout.tsx" switcher
@@ -314,7 +313,7 @@ export default function Layout({ children }) {
 
 Layouts cannot pass data to their `children`. However, you can fetch the same data in a route more than once, and use React [`cache`](https://react.dev/reference/react/cache) to dedupe the requests without affecting performance.
 
-Alternatively, when using [`fetch`](/docs/app/api-reference/functions/fetch.md)in Next.js, requests are automatically deduped.
+Alternatively, when using [`fetch`](/docs/app/api-reference/functions/fetch.md) in Next.js, requests are automatically deduped.
 
 ```tsx filename="app/lib/data.ts" switcher
 export async function getUser(id: string) {
@@ -671,10 +670,3 @@ export default function Page({ params }) {
   const { slug } = use(params)
 }
 ```
-
-## Version History
-
-| Version      | Changes                                                                                       |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| `v15.0.0-RC` | `params` is now a promise. A [codemod](/docs/app/guides/upgrading/codemods.md#150) is available. |
-| `v13.0.0`    | `layout` introduced.                                                                          |

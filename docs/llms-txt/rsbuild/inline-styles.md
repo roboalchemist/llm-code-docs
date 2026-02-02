@@ -36,7 +36,8 @@ dist/static/js/main.js
 
 After enabling the `output.inlineStyles` option:
 
-```ts title="rsbuild.config.ts"
+```ts
+title="rsbuild.config.ts"
 export default {
   output: {
     inlineStyles: true,
@@ -74,7 +75,8 @@ To inline part of the CSS files, set `inlineStyles` to a regular expression that
 
 For example, to inline `main.css` into HTML, add the following configuration:
 
-```ts title="rsbuild.config.ts"
+```ts
+title="rsbuild.config.ts"
 export default {
   output: {
     inlineStyles: /[\\/]main\.\w+\.css$/,
@@ -95,7 +97,8 @@ Set `output.inlineStyles` to a function that accepts the following parameters:
 
 To inline assets smaller than 10 kB, add the following configuration:
 
-```ts title="rsbuild.config.ts"
+```ts
+title="rsbuild.config.ts"
 export default {
   output: {
     inlineStyles({ size }) {
@@ -114,7 +117,8 @@ export default {
 
 Whether to enable the inline styles feature. If set to `'auto'`, it will be enabled when the `mode` is `'production'`.
 
-```ts title="rsbuild.config.ts"
+```ts
+title="rsbuild.config.ts"
 export default {
   output: {
     inlineStyles: {
@@ -131,7 +135,8 @@ export default {
 
 The regular expression or function to match the CSS files that need to be inlined.
 
-```ts title="rsbuild.config.ts"
+```ts
+title="rsbuild.config.ts"
 export default {
   output: {
     inlineStyles: {

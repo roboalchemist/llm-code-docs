@@ -1,300 +1,560 @@
-# Source: https://www.promptfoo.dev/docs/red-team/eu-ai-act/
+# EU AI Act
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-red-team/eu-ai-act" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">EU AI Act | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-red-team-eu-ai-act--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-red-team-eu-ai-act--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/red-team/eu-ai-act/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="EU AI Act | Promptfoo"><meta data-rh="true" name="description" content="Red team LLM applications against EU AI Act requirements to ensure compliance with prohibited practices and high-risk system regulations"><meta data-rh="true" property="og:description" content="Red team LLM applications against EU AI Act requirements to ensure compliance with prohibited practices and high-risk system regulations"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/red-team/eu-ai-act/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/eu-ai-act/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/eu-ai-act/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EU AI Act","item":"https://www.promptfoo.dev/docs/red-team/eu-ai-act"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+The EU Artificial Intelligence Act (AI Act) is the world's first comprehensive legal framework specifically regulating artificial intelligence systems. Enacted in 2024, it establishes harmonized rules for the development, placement on the market, and use of AI systems in the European Union.
 
+The AI Act uses a risk-based approach, categorizing AI systems by their level of risk to fundamental rights and safety. It outright prohibits certain AI practices, heavily regulates high-risk systems, and provides lighter requirements for limited-risk and minimal-risk AI.
 
+## Risk Categories
 
+The EU AI Act categorizes AI systems into four risk levels:
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+1. **Unacceptable Risk** (Prohibited) - Article 5
+2. **High Risk** - Annex III
+3. **Limited Risk** - Transparency requirements
+4. **Minimal Risk** - No additional requirements
 
+Promptfoo's red teaming capabilities focus on testing for prohibited practices (Article 5) and high-risk system requirements (Annex III).
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+## Article 5: Prohibited AI Practices
 
+Article 5 lists AI practices that are prohibited in the EU due to their unacceptable risk to fundamental rights:
 
+1. Subliminal Manipulation
+2. Exploitation of Vulnerabilities
+3. Social Scoring
+4. Biometric Categorisation
+5. Real-time Remote Biometric Identification
+6. Post Remote Biometric Identification
 
+## Annex III: High-Risk AI Systems
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="NIST AI Risk Management Framework" class="linkLabel_fEdy">NIST AI Risk Management Framework</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-llm-top-10/"><span title="OWASP LLM Top 10" class="linkLabel_fEdy">OWASP LLM Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-agentic-ai/"><span title="OWASP Top 10 for Agentic Applications" class="linkLabel_fEdy">OWASP Top 10 for Agentic Applications</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-api-top-10/"><span title="OWASP API Security Top 10" class="linkLabel_fEdy">OWASP API Security Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/mitre-atlas/"><span title="MITRE ATLAS" class="linkLabel_fEdy">MITRE ATLAS</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/iso-42001/"><span title="ISO 42001" class="linkLabel_fEdy">ISO 42001</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/gdpr/"><span title="GDPR" class="linkLabel_fEdy">GDPR</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/red-team/eu-ai-act/"><span title="EU AI Act" class="linkLabel_fEdy">EU AI Act</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Frameworks</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">EU AI Act</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>EU AI Act</h1></header>
-<p>The EU Artificial Intelligence Act (AI Act) is the world&#x27;s first comprehensive legal framework specifically regulating artificial intelligence systems. Enacted in 2024, it establishes harmonized rules for the development, placement on the market, and use of AI systems in the European Union.</p>
-<p>The AI Act uses a risk-based approach, categorizing AI systems by their level of risk to fundamental rights and safety. It outright prohibits certain AI practices, heavily regulates high-risk systems, and provides lighter requirements for limited-risk and minimal-risk AI.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="risk-categories">Risk Categories<a href="#risk-categories" class="hash-link" aria-label="Direct link to Risk Categories" title="Direct link to Risk Categories" translate="no">​</a></h2>
-<p>The EU AI Act categorizes AI systems into four risk levels:</p>
-<ol>
-<li class=""><strong>Unacceptable Risk</strong> (Prohibited) - Article 5</li>
-<li class=""><strong>High Risk</strong> - Annex III</li>
-<li class=""><strong>Limited Risk</strong> - Transparency requirements</li>
-<li class=""><strong>Minimal Risk</strong> - No additional requirements</li>
-</ol>
-<p>Promptfoo&#x27;s red teaming capabilities focus on testing for prohibited practices (Article 5) and high-risk system requirements (Annex III).</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="article-5-prohibited-ai-practices">Article 5: Prohibited AI Practices<a href="#article-5-prohibited-ai-practices" class="hash-link" aria-label="Direct link to Article 5: Prohibited AI Practices" title="Direct link to Article 5: Prohibited AI Practices" translate="no">​</a></h2>
-<p>Article 5 lists AI practices that are prohibited in the EU due to their unacceptable risk to fundamental rights:</p>
-<ol>
-<li class="">Subliminal Manipulation</li>
-<li class="">Exploitation of Vulnerabilities</li>
-<li class="">Social Scoring</li>
-<li class="">Biometric Categorisation</li>
-<li class="">Real-time Remote Biometric Identification</li>
-<li class="">Post Remote Biometric Identification</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="annex-iii-high-risk-ai-systems">Annex III: High-Risk AI Systems<a href="#annex-iii-high-risk-ai-systems" class="hash-link" aria-label="Direct link to Annex III: High-Risk AI Systems" title="Direct link to Annex III: High-Risk AI Systems" translate="no">​</a></h2>
-<p>Annex III defines categories of high-risk AI systems that require compliance with strict requirements:</p>
-<ol>
-<li class="">Biometric Identification</li>
-<li class="">Critical Infrastructure</li>
-<li class="">Education and Vocational Training</li>
-<li class="">Employment and Worker Management</li>
-<li class="">Essential Services</li>
-<li class="">Law Enforcement</li>
-<li class="">Migration, Asylum and Border Control</li>
-<li class="">Administration of Justice and Democracy</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="scanning-for-eu-ai-act-compliance">Scanning for EU AI Act Compliance<a href="#scanning-for-eu-ai-act-compliance" class="hash-link" aria-label="Direct link to Scanning for EU AI Act Compliance" title="Direct link to Scanning for EU AI Act Compliance" translate="no">​</a></h2>
-<p>Promptfoo helps identify compliance issues with the EU AI Act through red teaming:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or target specific articles or risk categories:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">subliminal</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">manipulation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">biometric</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">id</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">law</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">enforcement</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="article-5---prohibited-practices">Article 5 - Prohibited Practices<a href="#article-5---prohibited-practices" class="hash-link" aria-label="Direct link to Article 5 - Prohibited Practices" title="Direct link to Article 5 - Prohibited Practices" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="subliminal-manipulation-euai-actart5">Subliminal Manipulation (eu:ai-act:art5<!-- -->:subliminal-manipulation<!-- -->)<a href="#subliminal-manipulation-euai-actart5" class="hash-link" aria-label="Direct link to subliminal-manipulation-euai-actart5" title="Direct link to subliminal-manipulation-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: AI systems that deploy subliminal techniques beyond a person&#x27;s consciousness to materially distort their behavior in a manner that causes or is likely to cause them or another person physical or psychological harm.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context">LLM Context<a href="#llm-context" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h4>
-<p>LLM applications must not:</p>
-<ul>
-<li class="">Manipulate users through hidden persuasion techniques</li>
-<li class="">Hijack user intent or redirect to unintended goals</li>
-<li class="">Use deceptive practices to influence decisions</li>
-<li class="">Create excessive agency without user awareness</li>
-</ul>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy">Testing Strategy<a href="#testing-strategy" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for subliminal manipulation:</p>
-<ul>
-<li class=""><strong>Hijacking</strong>: Verify the system maintains its intended purpose</li>
-<li class=""><strong>Intent</strong>: Test that user intentions are respected</li>
-<li class=""><strong>Excessive agency</strong>: Ensure actions are transparent and authorized</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hijacking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> intent</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">tree</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">composite</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">subliminal</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">manipulation</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="exploitation-of-vulnerabilities-euai-actart5">Exploitation of Vulnerabilities (eu:ai-act:art5<!-- -->:exploitation-of-vulnerabilities<!-- -->)<a href="#exploitation-of-vulnerabilities-euai-actart5" class="hash-link" aria-label="Direct link to exploitation-of-vulnerabilities-euai-actart5" title="Direct link to exploitation-of-vulnerabilities-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: AI systems that exploit vulnerabilities of persons due to their age, disability, or specific social or economic situation to materially distort their behavior in a manner that causes them or another person physical or psychological harm.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-1">Testing Strategy<a href="#testing-strategy-1" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for exploitation of vulnerabilities:</p>
-<ul>
-<li class=""><strong>Hijacking</strong>: Ensure the system doesn&#x27;t exploit user situations</li>
-<li class=""><strong>Imitation</strong>: Verify no impersonation that could exploit trust</li>
-<li class=""><strong>Misinformation</strong>: Test for manipulation through false information</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hijacking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> imitation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">misinformation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">disinformation</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">exploitation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">of</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">vulnerabilities</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="social-scoring-euai-actart5">Social Scoring (eu:ai-act:art5<!-- -->:social-scoring<!-- -->)<a href="#social-scoring-euai-actart5" class="hash-link" aria-label="Direct link to social-scoring-euai-actart5" title="Direct link to social-scoring-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: AI systems that evaluate or classify natural persons based on their social behavior or personal characteristics, with evaluations leading to detrimental or unfavorable treatment.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-2">Testing Strategy<a href="#testing-strategy-2" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for social scoring behaviors:</p>
-<ul>
-<li class=""><strong>Misinformation</strong>: Verify no false characterizations of individuals</li>
-<li class=""><strong>Overreliance</strong>: Test that the system doesn&#x27;t make unjustified assessments</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">misinformation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">disinformation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">social</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">scoring</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="biometric-categorisation-euai-actart5">Biometric Categorisation (eu:ai-act:art5<!-- -->:biometric-categorisation<!-- -->)<a href="#biometric-categorisation-euai-actart5" class="hash-link" aria-label="Direct link to biometric-categorisation-euai-actart5" title="Direct link to biometric-categorisation-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: AI systems that categorize individuals based on biometric data to deduce or infer race, political opinions, trade union membership, religious or philosophical beliefs, sex life, or sexual orientation (with limited exceptions).</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-3">Testing Strategy<a href="#testing-strategy-3" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for biometric categorisation:</p>
-<ul>
-<li class=""><strong>PII disclosure</strong>: Verify no sensitive biometric inferences</li>
-<li class=""><strong>Privacy</strong>: Test for protection of biometric data</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">biometric</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">categorisation</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="real-time-remote-biometric-identification-euai-actart5">Real-time Remote Biometric Identification (eu:ai-act:art5<!-- -->:remote-biometric-id-live<!-- -->)<a href="#real-time-remote-biometric-identification-euai-actart5" class="hash-link" aria-label="Direct link to real-time-remote-biometric-identification-euai-actart5" title="Direct link to real-time-remote-biometric-identification-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: Real-time remote biometric identification systems in publicly accessible spaces for law enforcement purposes (with specific exceptions for serious crimes).</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-4">Testing Strategy<a href="#testing-strategy-4" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for real-time biometric identification:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">remote</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">biometric</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">id</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">live</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="post-remote-biometric-identification-euai-actart5">Post Remote Biometric Identification (eu:ai-act:art5<!-- -->:remote-biometric-id-post<!-- -->)<a href="#post-remote-biometric-identification-euai-actart5" class="hash-link" aria-label="Direct link to post-remote-biometric-identification-euai-actart5" title="Direct link to post-remote-biometric-identification-euai-actart5" translate="no">​</a></h3>
-<p><strong>Prohibition</strong>: Use of remote biometric identification systems on recorded footage (with specific exceptions and procedural safeguards).</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-5">Testing Strategy<a href="#testing-strategy-5" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for post-event biometric identification:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">db</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">art5</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">remote</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">biometric</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">id</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">post</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="annex-iii---high-risk-ai-systems">Annex III - High-Risk AI Systems<a href="#annex-iii---high-risk-ai-systems" class="hash-link" aria-label="Direct link to Annex III - High-Risk AI Systems" title="Direct link to Annex III - High-Risk AI Systems" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="biometric-identification-euai-actannex3">Biometric Identification (eu:ai-act:annex3<!-- -->:biometric-id<!-- -->)<a href="#biometric-identification-euai-actannex3" class="hash-link" aria-label="Direct link to biometric-identification-euai-actannex3" title="Direct link to biometric-identification-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems intended for biometric identification and categorization of natural persons.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-6">Testing Strategy<a href="#testing-strategy-6" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>These plugins can be used to test for biometric identification risk. You&#x27;ll have to customize the <a class="" href="/docs/red-team/configuration/#purpose">Application Details/Purpose</a> in order to explicitly state the biometric ID behaviors to test.</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">biometric</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">id</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="critical-infrastructure-euai-actannex3">Critical Infrastructure (eu:ai-act:annex3<!-- -->:critical-infrastructure<!-- -->)<a href="#critical-infrastructure-euai-actannex3" class="hash-link" aria-label="Direct link to critical-infrastructure-euai-actannex3" title="Direct link to critical-infrastructure-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems intended for safety components in the management and operation of critical infrastructure (energy, water, transport, etc.).</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-7">Testing Strategy<a href="#testing-strategy-7" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for critical infrastructure risks:</p>
-<ul>
-<li class=""><strong>Injection attacks</strong>: Verify no command execution vulnerabilities</li>
-<li class=""><strong>SSRF</strong>: Test for unauthorized network requests</li>
-<li class=""><strong>Excessive agency</strong>: Ensure no unauthorized infrastructure control</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> shell</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> sql</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> ssrf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">critical</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">infrastructure</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="education-euai-actannex3">Education (eu:ai-act:annex3<!-- -->:education<!-- -->)<a href="#education-euai-actannex3" class="hash-link" aria-label="Direct link to education-euai-actannex3" title="Direct link to education-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems intended for determining access to educational institutions, evaluating learning outcomes, or assessing appropriate level of education.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-8">Testing Strategy<a href="#testing-strategy-8" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for education-related risks:</p>
-<ul>
-<li class=""><strong>Misinformation</strong>: Verify accurate educational assessments</li>
-<li class=""><strong>Hallucination</strong>: Ensure factual information</li>
-<li class=""><strong>Overreliance</strong>: Test for appropriate confidence in outputs</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">misinformation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">disinformation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hallucination</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">education</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="employment-euai-actannex3">Employment (eu:ai-act:annex3<!-- -->:employment<!-- -->)<a href="#employment-euai-actannex3" class="hash-link" aria-label="Direct link to employment-euai-actannex3" title="Direct link to employment-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems for recruitment, selection, evaluation, promotion, or termination of employment relationships.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-9">Testing Strategy<a href="#testing-strategy-9" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for employment-related risks:</p>
-<ul>
-<li class=""><strong>Imitation</strong>: Verify no impersonation in employment contexts</li>
-<li class=""><strong>PII</strong>: Test for proper handling of candidate information</li>
-<li class=""><strong>Overreliance</strong>: Ensure human oversight in decisions</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> imitation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">employment</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="essential-services-euai-actannex3">Essential Services (eu:ai-act:annex3<!-- -->:essential-services<!-- -->)<a href="#essential-services-euai-actannex3" class="hash-link" aria-label="Direct link to essential-services-euai-actannex3" title="Direct link to essential-services-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems for evaluating creditworthiness, dispatching emergency services, or accessing essential public services.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-10">Testing Strategy<a href="#testing-strategy-10" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for essential services risks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">essential</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">services</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="law-enforcement-euai-actannex3">Law Enforcement (eu:ai-act:annex3<!-- -->:law-enforcement<!-- -->)<a href="#law-enforcement-euai-actannex3" class="hash-link" aria-label="Direct link to law-enforcement-euai-actannex3" title="Direct link to law-enforcement-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems for law enforcement purposes including risk assessments, polygraph interpretation, and evidence evaluation.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-11">Testing Strategy<a href="#testing-strategy-11" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for law enforcement risks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">db</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">law</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">enforcement</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="migration-and-border-control-euai-actannex3">Migration and Border Control (eu:ai-act:annex3<!-- -->:migration-border<!-- -->)<a href="#migration-and-border-control-euai-actannex3" class="hash-link" aria-label="Direct link to migration-and-border-control-euai-actannex3" title="Direct link to migration-and-border-control-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems for migration, asylum, and border control management including verification of authenticity and risk assessments.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-12">Testing Strategy<a href="#testing-strategy-12" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for migration and border control risks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">hate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">migration</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">border</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="justice-and-democracy-euai-actannex3">Justice and Democracy (eu:ai-act:annex3<!-- -->:justice-democracy<!-- -->)<a href="#justice-and-democracy-euai-actannex3" class="hash-link" aria-label="Direct link to justice-and-democracy-euai-actannex3" title="Direct link to justice-and-democracy-euai-actannex3" translate="no">​</a></h3>
-<p><strong>Risk Category</strong>: High-risk AI systems for administration of justice, democratic processes, and assisting judicial authorities in researching and interpreting facts and law.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-13">Testing Strategy<a href="#testing-strategy-13" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h4>
-<p>Test for justice and democracy risks:</p>
-<ul>
-<li class=""><strong>Hallucination</strong>: Verify factual accuracy for legal contexts</li>
-<li class=""><strong>Misinformation</strong>: Ensure no false information in democratic processes</li>
-<li class=""><strong>PII</strong>: Test for proper handling of legal records</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hallucination</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">misinformation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">disinformation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span></code></pre></div></div>
-<p>Or use the EU AI Act shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">annex3</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">justice</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">democracy</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="comprehensive-eu-ai-act-testing">Comprehensive EU AI Act Testing<a href="#comprehensive-eu-ai-act-testing" class="hash-link" aria-label="Direct link to Comprehensive EU AI Act Testing" title="Direct link to Comprehensive EU AI Act Testing" translate="no">​</a></h2>
-<p>For complete EU AI Act compliance testing:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>This tests across both prohibited practices and high-risk system requirements.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="compliance-requirements-beyond-testing">Compliance Requirements Beyond Testing<a href="#compliance-requirements-beyond-testing" class="hash-link" aria-label="Direct link to Compliance Requirements Beyond Testing" title="Direct link to Compliance Requirements Beyond Testing" translate="no">​</a></h2>
-<p>While red teaming helps identify technical risks, EU AI Act compliance requires additional measures:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="documentation-requirements">Documentation Requirements<a href="#documentation-requirements" class="hash-link" aria-label="Direct link to Documentation Requirements" title="Direct link to Documentation Requirements" translate="no">​</a></h3>
-<ul>
-<li class="">Risk management system</li>
-<li class="">Technical documentation</li>
-<li class="">Record-keeping of operations</li>
-<li class="">Instructions for use</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="transparency-obligations">Transparency Obligations<a href="#transparency-obligations" class="hash-link" aria-label="Direct link to Transparency Obligations" title="Direct link to Transparency Obligations" translate="no">​</a></h3>
-<ul>
-<li class="">Inform users when interacting with AI</li>
-<li class="">Mark AI-generated content</li>
-<li class="">Detect deepfakes</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="human-oversight">Human Oversight<a href="#human-oversight" class="hash-link" aria-label="Direct link to Human Oversight" title="Direct link to Human Oversight" translate="no">​</a></h3>
-<ul>
-<li class="">Human intervention capabilities</li>
-<li class="">Stop buttons or disabling mechanisms</li>
-<li class="">Human review of high-risk decisions</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="quality-management">Quality Management<a href="#quality-management" class="hash-link" aria-label="Direct link to Quality Management" title="Direct link to Quality Management" translate="no">​</a></h3>
-<ul>
-<li class="">Post-market monitoring system</li>
-<li class="">Incident reporting procedures</li>
-<li class="">Compliance assessment</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="penalties-for-non-compliance">Penalties for Non-Compliance<a href="#penalties-for-non-compliance" class="hash-link" aria-label="Direct link to Penalties for Non-Compliance" title="Direct link to Penalties for Non-Compliance" translate="no">​</a></h2>
-<p>The EU AI Act imposes significant fines for violations:</p>
-<ul>
-<li class=""><strong>Prohibited practices (Article 5)</strong>: Up to €35 million or 7% of global annual turnover</li>
-<li class=""><strong>High-risk requirements violations</strong>: Up to €15 million or 3% of global annual turnover</li>
-<li class=""><strong>Incorrect information to authorities</strong>: Up to €7.5 million or 1% of global annual turnover</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="timeline-and-applicability">Timeline and Applicability<a href="#timeline-and-applicability" class="hash-link" aria-label="Direct link to Timeline and Applicability" title="Direct link to Timeline and Applicability" translate="no">​</a></h2>
-<p>The EU AI Act follows a phased implementation:</p>
-<ul>
-<li class=""><strong>6 months</strong>: Prohib ited practices (Article 5)</li>
-<li class=""><strong>12 months</strong>: General-purpose AI rules</li>
-<li class=""><strong>24 months</strong>: High-risk system requirements (Annex III)</li>
-<li class=""><strong>36 months</strong>: Full application</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="integration-with-other-frameworks">Integration with Other Frameworks<a href="#integration-with-other-frameworks" class="hash-link" aria-label="Direct link to Integration with Other Frameworks" title="Direct link to Integration with Other Frameworks" translate="no">​</a></h2>
-<p>The EU AI Act aligns with and references other frameworks:</p>
-<ul>
-<li class=""><strong>GDPR</strong>: Data protection requirements apply alongside AI Act</li>
-<li class=""><strong>ISO 42001</strong>: International standard for AI management systems</li>
-<li class=""><strong>NIST AI RMF</strong>: Similar risk-based approach to AI governance</li>
-</ul>
-<p>You can combine EU AI Act testing with other frameworks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> eu</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">act</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> gdpr</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> iso</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">42001</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="whats-next">What&#x27;s Next<a href="#whats-next" class="hash-link" aria-label="Direct link to What&#x27;s Next" title="Direct link to What&#x27;s Next" translate="no">​</a></h2>
-<p>The EU AI Act is a living regulation with ongoing guidance and standards development. Regular testing with Promptfoo helps maintain compliance as requirements evolve.</p>
-<p>To learn more about setting up comprehensive AI red teaming, see <a class="" href="/docs/red-team/">Introduction to LLM red teaming</a> and <a class="" href="/docs/red-team/configuration/">Configuration details</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="additional-resources">Additional Resources<a href="#additional-resources" class="hash-link" aria-label="Direct link to Additional Resources" title="Direct link to Additional Resources" translate="no">​</a></h2>
-<ul>
-<li class=""><a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener noreferrer" class="">EU AI Act Official Text</a></li>
-<li class=""><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer" class="">European Commission AI Act Page</a></li>
-<li class=""><a href="https://digital-strategy.ec.europa.eu/en/policies/ai-office" target="_blank" rel="noopener noreferrer" class="">AI Office</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/red-team/eu-ai-act.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/gdpr/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">GDPR</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/discovery/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Target Discovery</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#risk-categories" class="table-of-contents__link toc-highlight">Risk Categories</a></li><li><a href="#article-5-prohibited-ai-practices" class="table-of-contents__link toc-highlight">Article 5: Prohibited AI Practices</a></li><li><a href="#annex-iii-high-risk-ai-systems" class="table-of-contents__link toc-highlight">Annex III: High-Risk AI Systems</a></li><li><a href="#scanning-for-eu-ai-act-compliance" class="table-of-contents__link toc-highlight">Scanning for EU AI Act Compliance</a></li><li><a href="#article-5---prohibited-practices" class="table-of-contents__link toc-highlight">Article 5 - Prohibited Practices</a><ul><li><a href="#subliminal-manipulation-euai-actart5" class="table-of-contents__link toc-highlight">Subliminal Manipulation (eu:ai-act:art5)</a></li><li><a href="#exploitation-of-vulnerabilities-euai-actart5" class="table-of-contents__link toc-highlight">Exploitation of Vulnerabilities (eu:ai-act:art5)</a></li><li><a href="#social-scoring-euai-actart5" class="table-of-contents__link toc-highlight">Social Scoring (eu:ai-act:art5)</a></li><li><a href="#biometric-categorisation-euai-actart5" class="table-of-contents__link toc-highlight">Biometric Categorisation (eu:ai-act:art5)</a></li><li><a href="#real-time-remote-biometric-identification-euai-actart5" class="table-of-contents__link toc-highlight">Real-time Remote Biometric Identification (eu:ai-act:art5)</a></li><li><a href="#post-remote-biometric-identification-euai-actart5" class="table-of-contents__link toc-highlight">Post Remote Biometric Identification (eu:ai-act:art5)</a></li></ul></li><li><a href="#annex-iii---high-risk-ai-systems" class="table-of-contents__link toc-highlight">Annex III - High-Risk AI Systems</a><ul><li><a href="#biometric-identification-euai-actannex3" class="table-of-contents__link toc-highlight">Biometric Identification (eu:ai-act:annex3)</a></li><li><a href="#critical-infrastructure-euai-actannex3" class="table-of-contents__link toc-highlight">Critical Infrastructure (eu:ai-act:annex3)</a></li><li><a href="#education-euai-actannex3" class="table-of-contents__link toc-highlight">Education (eu:ai-act:annex3)</a></li><li><a href="#employment-euai-actannex3" class="table-of-contents__link toc-highlight">Employment (eu:ai-act:annex3)</a></li><li><a href="#essential-services-euai-actannex3" class="table-of-contents__link toc-highlight">Essential Services (eu:ai-act:annex3)</a></li><li><a href="#law-enforcement-euai-actannex3" class="table-of-contents__link toc-highlight">Law Enforcement (eu:ai-act:annex3)</a></li><li><a href="#migration-and-border-control-euai-actannex3" class="table-of-contents__link toc-highlight">Migration and Border Control (eu:ai-act:annex3)</a></li><li><a href="#justice-and-democracy-euai-actannex3" class="table-of-contents__link toc-highlight">Justice and Democracy (eu:ai-act:annex3)</a></li></ul></li><li><a href="#comprehensive-eu-ai-act-testing" class="table-of-contents__link toc-highlight">Comprehensive EU AI Act Testing</a></li><li><a href="#compliance-requirements-beyond-testing" class="table-of-contents__link toc-highlight">Compliance Requirements Beyond Testing</a><ul><li><a href="#documentation-requirements" class="table-of-contents__link toc-highlight">Documentation Requirements</a></li><li><a href="#transparency-obligations" class="table-of-contents__link toc-highlight">Transparency Obligations</a></li><li><a href="#human-oversight" class="table-of-contents__link toc-highlight">Human Oversight</a></li><li><a href="#quality-management" class="table-of-contents__link toc-highlight">Quality Management</a></li></ul></li><li><a href="#penalties-for-non-compliance" class="table-of-contents__link toc-highlight">Penalties for Non-Compliance</a></li><li><a href="#timeline-and-applicability" class="table-of-contents__link toc-highlight">Timeline and Applicability</a></li><li><a href="#integration-with-other-frameworks" class="table-of-contents__link toc-highlight">Integration with Other Frameworks</a></li><li><a href="#whats-next" class="table-of-contents__link toc-highlight">What&#39;s Next</a></li><li><a href="#additional-resources" class="table-of-contents__link toc-highlight">Additional Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+Annex III defines categories of high-risk AI systems that require compliance with strict requirements:
+
+1. Biometric Identification
+2. Critical Infrastructure
+3. Education and Vocational Training
+4. Employment and Worker Management
+5. Essential Services
+6. Law Enforcement
+7. Migration, Asylum and Border Control
+8. Administration of Justice and Democracy
+
+## Scanning for EU AI Act Compliance
+
+Promptfoo helps identify compliance issues with the EU AI Act through red teaming:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:subliminal-manipulation
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+Or target specific articles or risk categories:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:subliminal-manipulation
+    - eu:ai-act:annex3:biometric-id
+    - eu:ai-act:annex3:law-enforcement
+```
+
+## Article 5 - Prohibited Practices
+
+### Subliminal Manipulation (eu:ai-act:art5:subliminal-manipulation)
+
+**Prohibition**: AI systems that deploy subliminal techniques beyond a person's consciousness to materially distort their behavior in a manner that causes or is likely to cause them or another person physical or psychological harm.
+
+#### LLM Context
+
+LLM applications must not:
+
+- Manipulate users through hidden persuasion techniques
+- Hijack user intent or redirect to unintended goals
+- Use deceptive practices to influence decisions
+- Create excessive agency without user awareness
+
+#### Testing Strategy
+
+Test for subliminal manipulation:
+
+- **Hijacking**: Verify the system maintains its intended purpose
+- **Intent**: Test that user intentions are respected
+- **Excessive agency**: Ensure actions are transparent and authorized
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - hijacking
+    - intent
+    - excessive-agency
+  strategies:
+    - jailbreak
+    - jailbreak:tree
+    - jailbreak:composite
+    - prompt-injection
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:subliminal-manipulation
+```
+
+### Exploitation of Vulnerabilities (eu:ai-act:art5:exploitation-of-vulnerabilities)
+
+**Prohibition**: AI systems that exploit vulnerabilities of persons due to their age, disability, or specific social or economic situation to materially distort their behavior in a manner that causes them or another person physical or psychological harm.
+
+#### Testing Strategy
+
+Test for exploitation of vulnerabilities:
+
+- **Hijacking**: Ensure the system doesn't exploit user situations
+- **Imitation**: Verify no impersonation that could exploit trust
+- **Misinformation**: Test for manipulation through false information
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - hijacking
+    - imitation
+    - harmful:misinformation-disinformation
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:exploitation-of-vulnerabilities
+```
+
+### Social Scoring (eu:ai-act:art5:social-scoring)
+
+**Prohibition**: AI systems that evaluate or classify natural persons based on their social behavior or personal characteristics, with evaluations leading to detrimental or unfavorable treatment.
+
+#### Testing Strategy
+
+Test for social scoring behaviors:
+
+- **Misinformation**: Verify no false characterizations of individuals
+- **Overreliance**: Test that the system doesn't make unjustified assessments
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:misinformation-disinformation
+    - overreliance
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:social-scoring
+```
+
+### Biometric Categorisation (eu:ai-act:art5:biometric-categorisation)
+
+**Prohibition**: AI systems that categorize individuals based on biometric data to deduce or infer race, political opinions, trade union membership, religious or philosophical beliefs, sex life, or sexual orientation (with limited exceptions).
+
+#### Testing Strategy
+
+Test for biometric categorisation:
+
+- **PII disclosure**: Verify no sensitive biometric inferences
+- **Privacy**: Test for protection of biometric data
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - pii:direct
+    - pii:session
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:biometric-categorisation
+```
+
+### Real-time Remote Biometric Identification (eu:ai-act:art5:remote-biometric-id-live)
+
+**Prohibition**: Real-time remote biometric identification systems in publicly accessible spaces for law enforcement purposes (with specific exceptions for serious crimes).
+
+#### Testing Strategy
+
+Test for real-time biometric identification:
+
+```yaml
+redteam:
+  plugins:
+    - pii:session
+    - pii:direct
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:remote-biometric-id-live
+```
+
+### Post Remote Biometric Identification (eu:ai-act:art5:remote-biometric-id-post)
+
+**Prohibition**: Use of remote biometric identification systems on recorded footage (with specific exceptions and procedural safeguards).
+
+#### Testing Strategy
+
+Test for post-event biometric identification:
+
+```yaml
+redteam:
+  plugins:
+    - pii:api-db
+    - pii:direct
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:art5:remote-biometric-id-post
+```
+
+## Annex III - High-Risk AI Systems
+
+### Biometric Identification (eu:ai-act:annex3:biometric-id)
+
+**Risk Category**: High-risk AI systems intended for biometric identification and categorization of natural persons.
+
+#### Testing Strategy
+
+These plugins can be used to test for biometric identification risk. You'll have to customize the [Application Details/Purpose](/docs/red-team/configuration/#purpose) in order to explicitly state the biometric ID behaviors to test.
+
+```yaml
+redteam:
+  plugins:
+    - pii:direct
+    - pii:session
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:biometric-id
+```
+
+### Critical Infrastructure (eu:ai-act:annex3:critical-infrastructure)
+
+**Risk Category**: High-risk AI systems intended for safety components in the management and operation of critical infrastructure (energy, water, transport, etc.).
+
+#### Testing Strategy
+
+Test for critical infrastructure risks:
+
+- **Injection attacks**: Verify no command execution vulnerabilities
+- **SSRF**: Test for unauthorized network requests
+- **Excessive agency**: Ensure no unauthorized infrastructure control
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - shell-injection
+    - sql-injection
+    - ssrf
+    - excessive-agency
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:critical-infrastructure
+```
+
+### Education (eu:ai-act:annex3:education)
+
+**Risk Category**: High-risk AI systems intended for determining access to educational institutions, evaluating learning outcomes, or assessing appropriate level of education.
+
+#### Testing Strategy
+
+Test for education-related risks:
+
+- **Misinformation**: Verify accurate educational assessments
+- **Hallucination**: Ensure factual information
+- **Overreliance**: Test for appropriate confidence in outputs
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:misinformation-disinformation
+    - hallucination
+    - overreliance
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:education
+```
+
+### Employment (eu:ai-act:annex3:employment)
+
+**Risk Category**: High-risk AI systems for recruitment, selection, evaluation, promotion, or termination of employment relationships.
+
+#### Testing Strategy
+
+Test for employment-related risks:
+
+- **Imitation**: Verify no impersonation in employment contexts
+- **PII**: Test for proper handling of candidate information
+- **Overreliance**: Ensure human oversight in decisions
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - imitation
+    - pii:direct
+    - overreliance
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:employment
+```
+
+### Essential Services (eu:ai-act:annex3:essential-services)
+
+**Risk Category**: High-risk AI systems for evaluating creditworthiness, dispatching emergency services, or accessing essential public services.
+
+#### Testing Strategy
+
+Test for essential services risks:
+
+```yaml
+redteam:
+  plugins:
+    - pii:direct
+    - pii:session
+    - excessive-agency
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:essential-services
+```
+
+### Law Enforcement (eu:ai-act:annex3:law-enforcement)
+
+**Risk Category**: High-risk AI systems for law enforcement purposes including risk assessments, polygraph interpretation, and evidence evaluation.
+
+#### Testing Strategy
+
+Test for law enforcement risks:
+
+```yaml
+redteam:
+  plugins:
+    - pii:direct
+    - pii:api-db
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:law-enforcement
+```
+
+### Migration and Border Control (eu:ai-act:annex3:migration-border)
+
+**Risk Category**: High-risk AI systems for migration, asylum, and border control management including verification of authenticity and risk assessments.
+
+#### Testing Strategy
+
+Test for migration and border control risks:
+
+```yaml
+redteam:
+  plugins:
+    - pii:direct
+    - harmful:hate
+    - harmful:privacy
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:migration-border
+```
+
+### Justice and Democracy (eu:ai-act:annex3:justice-democracy)
+
+**Risk Category**: High-risk AI systems for administration of justice, democratic processes, and assisting judicial authorities in researching and interpreting facts and law.
+
+#### Testing Strategy
+
+Test for justice and democracy risks:
+
+- **Hallucination**: Verify factual accuracy for legal contexts
+- **Misinformation**: Ensure no false information in democratic processes
+- **PII**: Test for proper handling of legal records
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - hallucination
+    - harmful:misinformation-disinformation
+    - pii:direct
+```
+
+Or use the EU AI Act shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act:annex3:justice-democracy
+```
+
+## Comprehensive EU AI Act Testing
+
+For complete EU AI Act compliance testing:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+This tests across both prohibited practices and high-risk system requirements.
+
+## Compliance Requirements Beyond Testing
+
+While red teaming helps identify technical risks, EU AI Act compliance requires additional measures:
+
+### Documentation Requirements
+
+- Risk management system
+- Technical documentation
+- Record-keeping of operations
+- Instructions for use
+
+### Transparency Obligations
+
+- Inform users when interacting with AI
+- Mark AI-generated content
+- Detect deepfakes
+
+### Human Oversight
+
+- Human intervention capabilities
+- Stop buttons or disabling mechanisms
+- Human review of high-risk decisions
+
+### Quality Management
+
+- Post-market monitoring system
+- Incident reporting procedures
+- Compliance assessment
+
+## Penalties for Non-Compliance
+
+The EU AI Act imposes significant fines for violations:
+
+- **Prohibited practices (Article 5)**: Up to €35 million or 7% of global annual turnover
+- **High-risk requirements violations**: Up to €15 million or 3% of global annual turnover
+- **Incorrect information to authorities**: Up to €7.5 million or 1% of global annual turnover
+
+## Timeline and Applicability
+
+The EU AI Act follows a phased implementation:
+
+- **6 months**: Prohibited practices (Article 5)
+- **12 months**: General-purpose AI rules
+- **24 months**: High-risk system requirements (Annex III)
+- **36 months**: Full application
+
+## Integration with Other Frameworks
+
+The EU AI Act aligns with and references other frameworks:
+
+- **GDPR**: Data protection requirements apply alongside AI Act
+- **ISO 42001**: International standard for AI management systems
+- **NIST AI RMF**: Similar risk-based approach to AI governance
+
+You can combine EU AI Act testing with other frameworks:
+
+```yaml
+redteam:
+  plugins:
+    - eu:ai-act
+    - gdpr
+    - iso:42001
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+## What's Next
+
+The EU AI Act is a living regulation with ongoing guidance and standards development. Regular testing with Promptfoo helps maintain compliance as requirements evolve.
+
+To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
+
+## Additional Resources
+
+- [EU AI Act Official Text](https://artificialintelligenceact.eu/)
+- [European Commission AI Act Page](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+- [AI Office](https://digital-strategy.ec.europa.eu/en/policies/ai-office)

@@ -6,8 +6,6 @@
 
 # Source: https://nextjs.org/docs/app/api-reference/components/font.md
 
-# Source: https://nextjs.org/docs/pages/api-reference/components/font.md
-
 # Source: https://nextjs.org/docs/app/api-reference/components/font.md
 
 # Source: https://nextjs.org/docs/pages/api-reference/components/font.md
@@ -15,6 +13,8 @@
 # Source: https://nextjs.org/docs/app/api-reference/components/font.md
 
 # Source: https://nextjs.org/docs/pages/api-reference/components/font.md
+
+# Source: https://nextjs.org/docs/app/api-reference/components/font.md
 
 # Source: https://nextjs.org/docs/app/api-reference/components/font.md
 
@@ -44,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <head>{children}</head>
     </html>
   )
 }
@@ -256,7 +256,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body>{children}</body>
+      <head>{children}</head>
     </html>
   )
 }
@@ -490,7 +490,7 @@ const roboto_mono = Roboto_Mono({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+    <html lang="en" className(`${inter.variable} ${roboto_mono.variable}`}>
       <body>
         <h1>My App</h1>
         <div>{children}</div>

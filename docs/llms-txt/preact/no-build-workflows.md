@@ -1,213 +1,141 @@
-# Source: https://preactjs.com/guide/v10/no-build-workflows#recipes-and-common-patterns
+# No-Build Workflows
 
-# Source: https://preactjs.com/guide/v10/no-build-workflows#basic-usage
+Whilst build tools like Webpack, Rollup, and Vite are incredibly powerful and useful, Preact fully supports building applications without them.
 
+No-build workflows are a way to develop web applications while forgoing build tooling, instead relying on the browser to facilitate module loading and execution. This is a great way to get started with Preact and can continue to work very well at all scales.
+
+---
+
+## Import Maps
+
+An [Import Map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) is a newer browser feature that allows you to control how browsers resolve module specifiers, often to convert bare specifiers such as `preact` to a CDN URL like `https://esm.sh/preact`. While many do prefer the aesthetics import maps can provide, there are also objective advantages to the centralization of dependencies such as easier versioning, reduced/removed duplication, and better access to more powerful CDN features.
+
+We do generally recommend using import maps for those choosing to forgo build tooling as they work around some issues you may encounter using bare CDN URLs in your import specifiers (more on that below).
+
+### Basic Usage
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) has a great deal of information on how to utilize import maps, but a basic example looks like the following:
+
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="/favicon.ico">
-		<title>No-Build Workflows – Preact Guide</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#673AB8">
-		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
-		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
-		<meta property="og:image" content="https://preactjs.com/app-icon.png">
-		<meta name="twitter:card" content="summary">
-		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
-		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
-		<script type="module" crossorigin src="/assets/index-nodqeQT7.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-CzbcAXL9.css">
-	<meta name="description" content="Whilst build tools like Webpack, Rollup, and Vite are incredibly powerful and useful, Preact fully supports building applications without them">
-<meta property="og:url" content="https://preactjs.com/guide/v10/no-build-workflows">
-<meta property="og:title" content="No-Build Workflows – Preact Guide">
-<meta property="og:description" content="Whilst build tools like Webpack, Rollup, and Vite are incredibly powerful and useful, Preact fully supports building applications without them">
-<link rel="preload" href="/.netlify/functions/release?repo=preact" as="fetch" fetchpriority="low">
-<link rel="preload" href="/contributors.json" as="fetch" fetchpriority="low">
-<link rel="preload" href="/content/en/guide/v10/no-build-workflows.json" as="fetch" fetchpriority="low">
-<script>ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga('set','dimension1','master');onerror=function(e,f,l,c){ga('send','event','exception',e,f+':'+l+':'+c)}</script></head>
-	<body class="banner">
-		<div id="app"><header class="_header_nxrmc_38 "><div class="_banner_nxrmc_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_nxrmc_24"><div class="_inner_nxrmc_301"><nav><a href="/" class="home" aria-label="Home"><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_nxrmc_92 ">Guide</a><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_nxrmc_479"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><span class="DocSearch-Button-Placeholder">Search</span></span></button></div><div class="_social_nxrmc_321"><a href="https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0" class="_socialItem_nxrmc_357 _release_nxrmc_396">v11.0.0-beta.0</a><a class="_socialItem_nxrmc_357" aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_nxrmc_322"><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false" aria-label="Select your language"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_nxrmc_402" data-open="false"><div class="_hb1_nxrmc_444"></div><div class="_hb2_nxrmc_445"></div><div class="_hb3_nxrmc_446"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><!--$s--><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div class="_wrapper_14rnv_1" data-open="false"><button class="_toggle_14rnv_6">Guide</button><aside class="_sidebar_14rnv_58"><div class="_sidebarInner_14rnv_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v11">11.x (preview)</option><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a><a href="/guide/v10/preact-custom-element" class="_link_1ttwe_16  ">preact-custom-element</a><a href="/guide/v10/preact-root-fragment" class="_link_1ttwe_16  ">preact-root-fragment</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a class="_edit_1gw8e_13" href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/no-build-workflows.md" target="_blank" rel="noopener noreferrer">Edit this Page</a></div><content-region name="/guide/v10/no-build-workflows" can-edit><div class="markup"><h1>No-Build Workflows</h1><p>Whilst build tools like Webpack, Rollup, and Vite are incredibly powerful and useful, Preact fully supports building
-applications without them.</p>
-<p>No-build workflows are a way to develop web applications while forgoing build tooling, instead relying on the browser
-to facilitate module loading and execution. This is a great way to get started with Preact and can continue to work
-very well at all scales.</p>
-<hr>
-<nav><ul><li><a href="#import-maps">Import Maps</a><ul><li><a href="#basic-usage">Basic Usage</a></li><li><a href="#recipes-and-common-patterns">Recipes and Common Patterns</a><ul><li><a href="#preact-with-hooks-signals-and-htm">Preact with Hooks, Signals, and HTM</a></li><li><a href="#aliasing-react-to-preact">Aliasing React to Preact</a></li></ul></li></ul></li><li><a href="#htm">HTM</a></li></ul></nav><hr>
+		<script type="importmap">
+			{
+				"imports": {
+					"preact": "https://esm.sh/preact@10.23.1",
+					"htm/preact": "https://esm.sh/htm@3.1.1/preact?external=preact"
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
 
-				<h2 id="import-maps">
-					<a class="fragment-link" href="#import-maps">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Import Maps (#import-maps)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Import Maps</span>
-				</h2><p>An <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap" target="_blank" rel="noopener noreferrer">Import Map</a> is a newer browser feature
-that allows you to control how browsers resolve module specifiers, often to convert bare specifiers such as <code>preact</code>
-to a CDN URL like <code>https://esm.sh/preact</code>. While many do prefer the aesthetics import maps can provide, there are also
-objective advantages to the centralization of dependencies such as easier versioning, reduced/removed duplication, and
-better access to more powerful CDN features.</p>
-<p>We do generally recommend using import maps for those choosing to forgo build tooling as they work around some issues
-you may encounter using bare CDN URLs in your import specifiers (more on that below).</p>
+		<script type="module">
+			import { render } from 'preact';
+			import { html } from 'htm/preact';
 
-				<h3 id="basic-usage">
-					<a class="fragment-link" href="#basic-usage">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Basic Usage (#basic-usage)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Basic Usage</span>
-				</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap" target="_blank" rel="noopener noreferrer">MDN</a> has a great deal of information on how to
-utilize import maps, but a basic example looks like the following:</p>
+			export function App() {
+				return html`
+					<h1>Hello, World!</h1>
+				`;
+			}
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>importmap<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-			<span class="token punctuation">{</span>
-				<span class="token string-property property">&quot;imports&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-					<span class="token string-property property">&quot;preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1&quot;</span><span class="token punctuation">,</span>
-					<span class="token string-property property">&quot;htm/preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/htm@3.1.1/preact?external=preact&quot;</span>
-				<span class="token punctuation">}</span>
-			<span class="token punctuation">}</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>module<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-			<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
-			<span class="token keyword">import</span> <span class="token punctuation">{</span> html <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'htm/preact'</span><span class="token punctuation">;</span>
-
-			<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				<span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-					&lt;h1>Hello, World!&lt;/h1>
-				</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-
-			<span class="token function">render</span><span class="token punctuation">(</span>
-				html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>App<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> /></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-				document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span>
-			<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			<p>We create a <code>&lt;script></code> tag with a <code>type=&quot;importmap&quot;</code> attribute, and then define the modules we'd like to use
-inside of it as JSON. Later, in a <code>&lt;script type=&quot;module&quot;></code> tag, we can import these modules using bare specifiers,
-similar to what you'd see in Node.</p>
-<blockquote>
-<p><strong>Important:</strong> We use <code>?external=preact</code> in the example above as <a href="https://esm.sh" target="_blank" rel="noopener noreferrer">https://esm.sh</a> will helpfully provide the
-module you're asking for as well as its dependencies -- for <code>htm/preact</code>, this means also providing a
-copy of <code>preact</code>. However, Preact must be used only as a singleton with only a single copy included in your app.</p>
-<p>By using <code>?external=preact</code>, we tell <code>esm.sh</code> that it shouldn't provide a copy of <code>preact</code>, we can handle
-that ourselves. Therefore, the browser will use our importmap to resolve <code>preact</code>, using the same Preact
-instance as the rest of our code.</p>
-</blockquote>
-
-				<h3 id="recipes-and-common-patterns">
-					<a class="fragment-link" href="#recipes-and-common-patterns">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Recipes and Common Patterns (#recipes-and-common-patterns)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Recipes and Common Patterns</span>
-				</h3><p>While not an exhaustive list, here are some common patterns and recipes you may find useful when working with
-import maps. If you have a pattern you'd like to see, <a href="https://github.com/preactjs/preact-www/issues/new" target="_blank" rel="noopener noreferrer">let us know</a>!</p>
-<p>For these examples we'll be using <a href="https://esm.sh" target="_blank" rel="noopener noreferrer">https://esm.sh</a> as our CDN -- it's a brilliant, ESM-focused CDN that's a bit
-more flexible and powerful than some others, but by no means are you limited to it. However you choose to serve
-your modules, make sure you're familiar with the policy regarding dependencies: duplication of <code>preact</code> and some
-other libraries will cause (often subtle and unexpected) issues. For <code>esm.sh</code>, we address this with the <code>?external</code>
-query parameter, but other CDNs may work differently.</p>
-
-				<h4 id="preact-with-hooks-signals-and-htm">
-					<a class="fragment-link" href="#preact-with-hooks-signals-and-htm">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Preact with Hooks, Signals, and HTM (#preact-with-hooks-signals-and-htm)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Preact with Hooks, Signals, and HTM</span>
-				</h4>
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>importmap<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-	<span class="token punctuation">{</span>
-		<span class="token string-property property">&quot;imports&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-			<span class="token string-property property">&quot;preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;preact/&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;@preact/signals&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/@preact/signals@1.3.0?external=preact&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;htm/preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/htm@3.1.1/preact?external=preact&quot;</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			
-				<h4 id="aliasing-react-to-preact">
-					<a class="fragment-link" href="#aliasing-react-to-preact">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Aliasing React to Preact (#aliasing-react-to-preact)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Aliasing React to Preact</span>
-				</h4>
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>importmap<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
-	<span class="token punctuation">{</span>
-		<span class="token string-property property">&quot;imports&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-			<span class="token string-property property">&quot;preact&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;preact/&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;react&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;react/&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat/&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;react-dom&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/preact@10.23.1/compat&quot;</span><span class="token punctuation">,</span>
-			<span class="token string-property property">&quot;@mui/material&quot;</span><span class="token operator">:</span> <span class="token string">&quot;https://esm.sh/@mui/material@5.16.7?external=react,react-dom&quot;</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			
-				<h2 id="htm">
-					<a class="fragment-link" href="#htm">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: HTM (#htm)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>HTM</span>
-				</h2><p>Whilst JSX is generally the most popular way to write Preact applications, it requires a build step to convert the non-standard syntax into something browsers and other runtimes can understand natively. Writing <code>h</code>/<code>createElement</code> calls by hand can be a bit tedious though with less than ideal ergonomics, so we instead recommend a JSX-like alternative called <a href="https://github.com/developit/htm" target="_blank" rel="noopener noreferrer">HTM</a>.</p>
-<p>Instead of requiring a build step (though it can use one, see <a href="https://github.com/developit/htm/tree/master/packages/babel-plugin-htm" target="_blank" rel="noopener noreferrer">`babel-plugin-htm`</a>), HTM uses <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates" target="_blank" rel="noopener noreferrer">Tagged Templates</a> syntax, a feature of JavaScript that's been around since 2015 and is supported in all modern browsers. This is an increasingly popular way to write Preact apps and is likely the most popular for those choosing to forgo a build step.</p>
-<p>HTM supports all standard Preact features, including Components, Hooks, Signals, etc., the only difference being the syntax used to write the &quot;JSX&quot; return value.</p>
-
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact/hooks'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> html <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'htm/preact'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">Button</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> action<span class="token punctuation">,</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-		&lt;button onClick=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>action<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>children<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/button>
-	</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-	<span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
-		&lt;div class=&quot;counter-container&quot;>
-			&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Button<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> action=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>Increment&lt;//>
-			&lt;input readonly value=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> />
-			&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Button<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> action=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">>Decrement&lt;//>
-		&lt;/div>
-	</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">render</span><span class="token punctuation">(</span>
-	html<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Counter<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> /></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-	document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					<a class="repl-link" href="/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKCmltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAncHJlYWN0L2hvb2tzJzsKaW1wb3J0IHsgaHRtbCB9IGZyb20gJ2h0bS9wcmVhY3QnOwoKZnVuY3Rpb24gQnV0dG9uKHsgYWN0aW9uLCBjaGlsZHJlbiB9KSB7CglyZXR1cm4gaHRtbGAKCQk8YnV0dG9uIG9uQ2xpY2s9JHthY3Rpb259PiR7Y2hpbGRyZW59PC9idXR0b24%2BCglgOwp9CgpmdW5jdGlvbiBDb3VudGVyKCkgewoJY29uc3QgW2NvdW50LCBzZXRDb3VudF0gPSB1c2VTdGF0ZSgwKTsKCglyZXR1cm4gaHRtbGAKCQk8ZGl2IGNsYXNzPSJjb3VudGVyLWNvbnRhaW5lciI%2BCgkJCTwke0J1dHRvbn0gYWN0aW9uPSR7KCkgPT4gc2V0Q291bnQoY291bnQgKyAxKX0%2BSW5jcmVtZW50PC8vPgoJCQk8aW5wdXQgcmVhZG9ubHkgdmFsdWU9JHtjb3VudH0gLz4KCQkJPCR7QnV0dG9ufSBhY3Rpb249JHsoKSA9PiBzZXRDb3VudChjb3VudCAtIDEpfT5EZWNyZW1lbnQ8Ly8%2BCgkJPC9kaXY%2BCglgOwp9CgpyZW5kZXIoCglodG1sYDwke0NvdW50ZXJ9IC8%2BYCwKCWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKQopOw%3D%3D">Run in REPL</a>
-				</div>
-			</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="de">German</option><option value="es">Spanish</option><option value="fr">French</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="kr">Korean</option><option value="pt-br">Brazilian Portuguese</option><option value="ru">Русский</option><option value="tr">Turkish</option><option value="zh">简体中文</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/38elements" target="_blank" rel="noopener noreferrer">@38elements</a>.</p></div></footer></div></div></div><!--/$s--></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"11.0.0-beta.0","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0","preactOrgRepos":[{"html_url":"https://github.com/preactjs/preact","full_name":"preactjs/preact","stargazers_count":38228,"description":"⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM."},{"html_url":"https://github.com/preactjs/wmr","full_name":"preactjs/wmr","stargazers_count":4936,"description":"👩‍🚀 The tiny all-in-one development tool for modern web apps."},{"html_url":"https://github.com/preactjs/preact-cli","full_name":"preactjs/preact-cli","stargazers_count":4688,"description":"😺 Your next Preact PWA starts in 30 seconds."},{"html_url":"https://github.com/preactjs/signals","full_name":"preactjs/signals","stargazers_count":4331,"description":"Manage state with style in every framework"},{"html_url":"https://github.com/preactjs/awesome-preact","full_name":"preactjs/awesome-preact","stargazers_count":965,"description":"A curated list of amazingly awesome things regarding Preact ecosystem :star2:"}]}</script></div>
+			render(
+				html`
+					<button onClick=${App}>Hello</button>
+				`,
+				document.getElementById('app')
+			);
+		</script>
 	</body>
 </html>
+```
+
+We create a `<script>` tag with a `type="importmap"` attribute, and then define the modules we'd like to use inside of it as JSON. Later, in a `<script type="module">` tag, we can import these modules using bare specifiers, similar to what you'd see in Node.
+
+> **Important:** We use `?external=preact` in the example above as [https://esm.sh](https://esm.sh/) will helpfully provide the module you're asking for as well as its dependencies -- for `htm/preact`, this means also providing a copy of `preact`. However, Preact must be used only as a singleton with only a single copy included in your app.
+>
+> By using `?external=preact`, we tell `esm.sh` that it shouldn't provide a copy of `preact`, we can handle that ourselves. Therefore, the browser will use our importmap to resolve `preact`, using the same Preact instance as the rest of our code.
+
+### Recipes and Common Patterns
+
+While not an exhaustive list, here are some common patterns and recipes you may find useful when working with import maps. If you have a pattern you'd like to see, [let us know](https://github.com/preactjs/preact-www/issues/new)!
+
+For these examples we'll be using [https://esm.sh](https://esm.sh/) as our CDN -- it's a brilliant, ESM-focused CDN that's a bit more flexible and powerful than some others, but by no means are you limited to it. However you choose to serve your modules, make sure you're familiar with the policy regarding dependencies: duplication of `preact` and some other libraries will cause (often subtle and unexpected) issues. For `esm.sh`, we address this with the `?external` query parameter, but other CDNs may work differently.
+
+#### Preact with Hooks, Signals, and HTM
+
+```html
+<script type="importmap">
+	{
+		"imports": {
+			"preact": "https://esm.sh/preact@10.23.1",
+			"preact/": "https://esm.sh/preact@10.23.1/",
+			"@preact/signals": "https://esm.sh/@preact/signals@1.3.0?external=preact",
+			"htm/preact": "https://esm.sh/htm@3.1.1/preact?external=preact"
+		}
+	}
+</script>
+```
+
+#### Aliasing React to Preact
+
+```html
+<script type="importmap">
+	{
+		"imports": {
+			"preact": "https://esm.sh/preact@10.23.1",
+			"preact/": "https://esm.sh/preact@10.23.1/",
+			"react": "https://esm.sh/preact@10.23.1/compat",
+			"react/": "https://esm.sh/preact@10.23.1/compat/",
+			"react-dom": "https://esm.sh/preact@10.23.1/compat",
+			"@mui/material": "https://esm.sh/@mui/material@5.16.7?external=react,react-dom"
+		}
+	}
+</script>
+```
+
+---
+
+## HTM
+
+Whilst JSX is generally the most popular way to write Preact applications, it requires a build step to convert the non-standard syntax into something browsers and other runtimes can understand natively. Writing `h`/`createElement` calls by hand can be a bit tedious though with less than ideal ergonomics, so we instead recommend a JSX-like alternative called [HTM](https://github.com/developit/htm).
+
+Instead of requiring a build step (though it can use one, see [`babel-plugin-htm`](https://github.com/developit/htm/tree/master/packages/babel-plugin-htm)), HTM uses [Tagged Templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates) syntax, a feature of JavaScript that's been around since 2015 and is supported in all modern browsers. This is an increasingly popular way to write Preact apps and is likely the most popular for those choosing to forgo a build step.
+
+HTM supports all standard Preact features, including Components, Hooks, Signals, etc., the only difference being the syntax used to write the "JSX" return value.
+
+```javascript
+import { useState } from 'preact/hooks';
+import { html } from 'htm/preact';
+
+function Button({ action, children }) {
+	return html`
+	<button onClick={action}>
+		{children}
+	</button>
+`;
+}
+
+function Counter() {
+	const [count, setCount] = useState(0);
+
+	return html`
+	<div class="counter-container">
+		<${Button} action={() => setCount(count + 1)}>Increment</div>
+	<input readonly value={count} />
+	<${Button} action={() => setCount(count - 1)}>Decrement</div>
+	`;
+}
+
+render(
+	html`
+	<Counter />
+	`,
+	document.getElementById('app')
+);
+```
+
+[Run in REPL](https://preactjs.com/repl?code=aW1wb3J0IHsgcmVuZGVyIH0gZnJvbSAncHJlYWN0JzsKCmltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAncHJlYWN0L2hvb2tzJzsKaW1wb3J0IHsgaHRtbCB9IGZyb20gJ2h0bS9wcmVhY3QnOwoKZnVuY3Rpb24gQnV0dG9uKHsgYWN0aW9uLCBjaGlsZHJlbiB9KSB7CglyZXR1cm4gaHRtbGAKCQk8YnV0dG9uIG9uQ2xpY2s9JHthY3Rpb259PiR7Y2hpbGRyZW59PC9idXR0b24%2BCglgOwp9CgpmdW5jdGlvbiBDb3VudGVyKCkgewoJY29uc3QgW2NvdW50LCBzZXRDb3VudF0gPSB1c2VTdGF0ZSgwKTsKCglyZXR1cm4gaHRtbGAKCQk8ZGl2IGNsYXNzPSJjb3VudGVyLWNvbnRhaW5lciI%2BCgkJCTwke0J1dHRvbn0gYWN0aW9uPSR7KCkgPT4gc2V0Q291bnQoY291bnQgKyAxKX0%2BSW5jcmVtZW50PC8vPgoJCQk8aW5wdXQgcmVhZG9ubHkgdmFsdWU9JHtjb3VudH0gLz4KCQkJPCR7QnV0dG9ufSBhY3Rpb249JHsoKSA9PiBzZXRDb3VudChjb3VudCAtIDEpfT5EZWNyZW1lbnQ8Ly8%2BCgkJPC9kaXY%2BCglgOwp9CgpyZW5kZXIoCglodG1sYDwke0NvdW50ZXJ9IC8%2BYCwKCWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdhcHAnKQopOw%3D%3D)

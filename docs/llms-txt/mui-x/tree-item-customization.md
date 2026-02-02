@@ -1,29 +1,26 @@
 # Source: https://mui.com/x/react-tree-view/tree-item-customization.md
 
 ---
-productId: x-tree-view
-title: Tree Item Customization
-components: SimpleTreeView, RichTreeView, TreeItem, TreeItemIcon, TreeItemProvider
-packageName: '@mui/x-tree-view'
-githubLabel: 'scope: tree view'
-waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/treeview/
+
+productId: x-tree-view  
+title: Tree Item Customization  
+components: SimpleTreeView, RichTreeView, TreeItem, TreeItemIcon, TreeItemProvider  
+packageName: '@mui/x-tree-view'  
+githubLabel: 'scope: tree view'  
+waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/treeview/  
+
 ---
 
-# Tree Item customization
+## Tree Item customization
 
 Learn how to customize the Tree Item component.
 
 ## Anatomy
 
-Each `TreeItem` is shaped by a series of composable slots.
-Hover over them in the demo below to see each slot.
+Each `TreeItem` is shaped by a series of composable slots. Hover over them in the demo below to see each slot.
 
-<span class="only-light-mode" style="border: 1px solid rgb(232, 234, 238); border-radius:12px">
-  <img src="/static/x/tree-view-illustrations/tree-item-light.png" width="1632" height="644" alt="Tree Item anatomy" loading="lazy" style="display: block;">
-</span>
-<span class="only-dark-mode" style="border: 1px solid rgb(29, 33, 38); border-radius:12px">
-  <img src="/static/x/tree-view-illustrations/tree-item-dark.png" width="1632" height="644" alt="Tree Item anatomy" loading="lazy" style="display: block;">
-</span>
+![Tree Item anatomy](https://mui.com/static/x/tree-view-illustrations/tree-item-light.png)
+![Tree Item anatomy](https://mui.com/static/x/tree-view-illustrations/tree-item-dark.png)
 
 ### Content
 
@@ -31,8 +28,7 @@ Use the content slot to customize the content of a `TreeItem` or replace it with
 
 #### Slot props
 
-The `slotProps` prop lets you pass props to the content component.
-The demo below shows how to pass an `sx` handler to the content of a `TreeItem`:
+The `slotProps` prop lets you pass props to the content component. The demo below shows how to pass an `sx` handler to the content of a `TreeItem`:
 
 ```tsx
 import * as React from 'react';
@@ -91,22 +87,22 @@ import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
 import { MUI_X_PRODUCTS } from './products';
 
 const CustomContent = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0.5, 1),
-  paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
-  borderRadius: theme.shape.borderRadius,
+  padding: themeSpacing(0.5, 1),
+  paddingLeft: `calc(${themeSpacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
+  borderRadius: themeShape.borderRadius,
   border: '1px solid',
   display: 'flex',
   '&:hover': {
-    backgroundColor: alpha(theme.palette.primary.main, 0.2),
+    backgroundColor: alpha(themepalette.primary.main, 0.2),
   },
   '&[data-disabled]': {
     opacity: 0.5,
-    backgroundColor: theme.palette.action.disabledBackground,
+    backgroundColor: themepalette.action.disabledBackground,
   },
   '&[data-selected]': {
-    backgroundColor: alpha(theme.palette.primary.main, 0.4),
+    backgroundColor: alpha(themepalette.primary.main, 0.4),
   },
-}));
+});
 
 const CustomTreeItem = React.forwardRef(function CustomTreeItem(
   props: TreeItemProps,
@@ -145,8 +141,7 @@ Use the label slot to customize the `TreeItem` label or replace it with a custom
 
 #### Slot props
 
-The `slotProps` prop lets you pass props to the label component.
-The demo below shows how to pass an `id` attribute to the `TreeItem` label:
+The `slotProps` prop lets you pass props to the label component. The demo below shows how to pass an `id` attribute to the `TreeItem` label:
 
 ```tsx
 import * as React from 'react';
@@ -195,6 +190,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
+import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
 import { TreeViewBaseItem } from '@mui/x-tree-view/models';
 import { useTreeItemModel } from '@mui/x-tree-view/hooks';
@@ -324,11 +320,7 @@ import Box from '@mui/material/Box';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import {
-  TreeItem,
-  TreeItemProps,
-  TreeItemSlotProps,
-} from '@mui/x-tree-view/TreeItem';
+import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
 import { MUI_X_PRODUCTS } from './products';
 
 const CustomTreeItem = React.forwardRef(function CustomTreeItem(
@@ -419,8 +411,7 @@ export default function CheckboxSlot() {
 
 ### Change nested item's indentation
 
-Use the `itemChildrenIndentation` prop to change the indentation of nested items.
-By default, a nested item is indented 12 px from its parent item.
+Use the `itemChildrenIndentation` prop to change the indentation of nested items. By default, a nested item is indented 12 px from its parent item.
 
 ```tsx
 import Box from '@mui/material/Box';
@@ -478,8 +469,8 @@ If you're using a custom `TreeItem` and you want to override the padding, apply 
 const CustomTreeItemContent = styled(TreeItemContent)(({ theme }) => ({
   // ...other styles
   paddingLeft:
-      `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
-}
+      `calc(${theme-spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`,
+}))
 ```
 
 :::
@@ -488,13 +479,11 @@ const CustomTreeItemContent = styled(TreeItemContent)(({ theme }) => ({
 
 ### useTreeItem
 
-The `useTreeItem()` hook lets you manage and customize individual `TreeItem` components.
-You can use it to get the properties needed for all slots, the status of any given item, or to tap into the interactive API of the Tree View.
+The `useTreeItem()` hook lets you manage and customize individual `TreeItem` components. You can use it to get the properties needed for all slots, the status of any given item, or to tap into the interactive API of the Tree View.
 
 #### Slot properties
 
-The `useTreeItem()` hook gives you granular control over the layout of `TreeItem` by providing resolvers to get the appropriate props for each slot.
-This makes it possible to build a fully custom layout for `TreeItem` components.
+The `useTreeItem()` hook gives you granular control over the layout of `TreeItem` by providing resolvers to get the appropriate props for each slot. This makes it possible to build a fully custom layout for `TreeItem` components.
 
 The demo below shows how to get the props needed for each slot, and how to pass them correctly.
 
@@ -621,7 +610,7 @@ import {
   TreeItemIconContainer,
   TreeItemLabel,
 } from '@mui/x-tree-view/TreeItem';
-import { TreeItemIcon } from '@mui/x-tree-view/TreeItemIcon';
+import { TreeItemIcon } from '#mui/x-tree-view/TreeItemIcon';
 import { TreeItemProvider } from '@mui/x-tree-view/TreeItemProvider';
 import { TreeItemLabelInput } from '@mui/x-tree-view/TreeItemLabelInput';
 import { MUI_X_PRODUCTS } from './products';
@@ -633,9 +622,9 @@ function StatusLegend() {
       elevation={2}
       sx={(theme) => ({
         padding: 2,
-        background: theme.palette.grey[50],
+        background: themepalette.grey[50],
         ...theme.applyStyles('dark', {
-          background: theme.palette.grey[900],
+          background: themepalette.grey[900],
         }),
       })}
     >
@@ -710,7 +699,7 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
     getIconContainerProps,
     getLabelInputProps,
     status,
-  } = useTreeItem({ id, itemId, label, disabled, children, rootRef: ref });
+  } = useTreeItem({ id, itemId, children, label, disabled, children, rootRef: ref });
 
   return (
     <TreeItemProvider {...getContextProviderProps()}>
@@ -769,8 +758,7 @@ export default function useTreeItemHookStatus() {
 
 #### Imperative API
 
-The `publicAPI` object provides a number of methods to programmatically interact with the Tree View.
-You can use the `useTreeItem()` hook to access the `publicAPI` object from within a `TreeItem`.
+The `publicAPI` object provides a number of methods to programmatically interact with the Tree View. You can use the `useTreeItem()` hook to access the `publicAPI` object from within a `TreeItem`.
 
 ```tsx
 import * as React from 'react';
@@ -831,7 +819,7 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
           publicAPI.setItemSelection({
             event,
             itemId: children[0],
-            shouldBeSelected: true,
+           shouldBeSelected: true,
           });
         }
       }
@@ -870,14 +858,12 @@ See the Imperative API section on each feature page to learn more about the publ
 :::warning
 The `publicAPI` object should not be used in the render because the item won't necessarily re-render when the returned value is updated.
 
-If you want to access the item model, you can use the `useTreeItemModel()` hook.
-See [Tree Item customization—useTreeItemModel](/x/react-tree-view/tree-item-customization/#usetreeitemmodel) for more details.
+If you want to access the item model, you can use the `useTreeItemModel()` hook. See [Tree Item customization—useTreeItemModel](/x/react-tree-view/tree-item-customization/#usetreeitemmodel) for more details.
 :::
 
 ### `useTreeItemUtils`
 
-The `useTreeItemUtils()` hook provides a set of interaction methods for implementing custom behaviors for the Tree View.
-It also returns the status of the `TreeItem`.
+The `useTreeItemUtils()` hook provides a set of interaction methods for implementing custom behaviors for the Tree View. It also returns the status of the `TreeItem`.
 
 ```jsx
 const { interactions, status, publicAPI } = useTreeItemUtils({
@@ -890,8 +876,7 @@ To override the default interactions of `TreeItem`, set `event.defaultMuiPrevent
 
 #### Selection
 
-You can select a `TreeItem` in a Tree View by clicking its content slot.
-The demo below shows how to handle selection when the user clicks on an icon.
+You can select a `TreeItem` in a Tree View by clicking its content slot. The demo below shows how to handle selection when the user clicks on an icon.
 
 ```tsx
 import * as React from 'react';
@@ -991,9 +976,7 @@ export default function HandleSelectionDemo() {
 
 #### Checkbox selection
 
-By default, checkbox selection is skipped if a `TreeItem` is disabled or if `disableSelection` is `true` on the Tree View.
-You can create a custom handler for the `onChange` event on the checkbox slot to bypass these conditions.
-The demo below shows how to implement custom checkbox selection behavior.
+By default, checkbox selection is skipped if a `TreeItem` is disabled or if `disableSelection` is `true` on the Tree View. You can create a custom handler for the `onChange` event on the checkbox slot to bypass these conditions. The demo below shows how to implement custom checkbox selection behavior.
 
 ```tsx
 import * as React from 'react';
@@ -1061,9 +1044,7 @@ Visit the corresponding [`RichTreeView`](/x/react-tree-view/rich-tree-view/selec
 
 #### Expansion
 
-By default, a `TreeItem` is expanded when the user clicks on its contents.
-You can change the expansion trigger using the `expansionTrigger` prop on the `iconContainer`.
-For more details, see [Expansion—Limit expansion to icon container](/x/react-tree-view/rich-tree-view/expansion/#limit-expansion-to-icon-container).
+By default, a `TreeItem` is expanded when the user clicks on its contents. You can change the expansion trigger using the `expansionTrigger` prop on the `iconContainer`. For more details, see [Expansion—Limit expansion to icon container](/x/react-tree-view/rich-tree-view/expansion/#limit-expansion-to-icon-container).
 
 Use the `handleExpansion` interaction method for deeper customization of the `TreeItem` component's expansion behavior.
 
@@ -1214,112 +1195,3 @@ import { TreeViewBaseItem } from '@mui/x-tree-view/models';
 import { useTreeItemModel } from '@mui/x-tree-view/hooks';
 
 type TreeItemWithLabel = {
-  id: string;
-  label: string;
-  secondaryLabel?: string;
-};
-
-export const MUI_X_PRODUCTS: TreeViewBaseItem<TreeItemWithLabel>[] = [
-  {
-    id: 'grid',
-    label: 'Data Grid',
-    children: [
-      {
-        id: 'grid-community',
-        label: '@mui/x-data-grid',
-        secondaryLabel: 'Community package',
-      },
-      {
-        id: 'grid-pro',
-        label: '@mui/x-data-grid-pro',
-        secondaryLabel: 'Pro package',
-      },
-      {
-        id: 'grid-premium',
-        label: '@mui/x-data-grid-premium',
-        secondaryLabel: 'Premium package',
-      },
-    ],
-  },
-  {
-    id: 'pickers',
-    label: 'Date and Time pickers',
-
-    children: [
-      {
-        id: 'pickers-community',
-        label: '@mui/x-date-pickers',
-        secondaryLabel: 'Community package',
-      },
-      {
-        id: 'pickers-pro',
-        label: '@mui/x-date-pickers-pro',
-        secondaryLabel: 'Pro package',
-      },
-    ],
-  },
-  {
-    id: 'charts',
-    label: 'Charts',
-
-    children: [{ id: 'charts-community', label: '@mui/x-charts' }],
-  },
-  {
-    id: 'tree-view',
-    label: 'Tree View',
-    children: [{ id: 'tree-view-community', label: '@mui/x-tree-view' }],
-  },
-];
-
-interface CustomLabelProps {
-  children: string;
-  className: string;
-  secondaryLabel: string;
-}
-
-function CustomLabel({ children, className, secondaryLabel }: CustomLabelProps) {
-  return (
-    <div className={className}>
-      <Typography>{children}</Typography>
-      {secondaryLabel && (
-        <Typography variant="caption" color="secondary">
-          {secondaryLabel}
-        </Typography>
-      )}
-    </div>
-  );
-}
-
-const CustomTreeItem = React.forwardRef(function CustomTreeItem(
-  props: TreeItemProps,
-  ref: React.Ref<HTMLLIElement>,
-) {
-  const item = useTreeItemModel<TreeItemWithLabel>(props.itemId)!;
-
-  return (
-    <TreeItem
-      {...props}
-      ref={ref}
-      slots={{
-        label: CustomLabel,
-      }}
-      slotProps={{
-        label: { secondaryLabel: item?.secondaryLabel || '' } as CustomLabelProps,
-      }}
-    />
-  );
-});
-
-export default function LabelSlot() {
-  return (
-    <Box sx={{ minHeight: 200, minWidth: 350 }}>
-      <RichTreeView
-        defaultExpandedItems={['pickers']}
-        items={MUI_X_PRODUCTS}
-        slots={{ item: CustomTreeItem }}
-      />
-    </Box>
-  );
-}
-
-```

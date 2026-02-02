@@ -6,21 +6,22 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/fonts.md
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/fonts.md
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/fonts.md
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
+
+# Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
 # Source: https://nextjs.org/docs/app/getting-started/fonts.md
 
 # Font Optimization
 @doc-version: 16.0.4
-
 
 The [`next/font`](/docs/app/api-reference/components/font.md) module automatically optimizes your fonts and removes external network requests for improved privacy and performance.
 
@@ -127,7 +128,7 @@ export default function RootLayout({
 }
 ```
 
-```jsx filename="app/layout.js"  highlight={4} switcher
+```jsx filename="app/layout.js" highlight={4} switcher
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -212,6 +213,7 @@ const roboto = localFont({
   ],
 })
 ```
+
 ## API Reference
 
 See the API Reference for the full feature set of Next.js Font

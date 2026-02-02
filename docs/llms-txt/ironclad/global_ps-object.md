@@ -2,13 +2,13 @@
 
 # Global_ps Object
 
-This reference documents the properties and methods available on the global \_ps object, and details on using the async queue.
+This reference documents the properties and methods available on the global `_ps` object, and details on using the async queue.
 
-# Properties
+## Properties
 
 ## \_ps.Sites `Object <String, Site>`
 
-An object used internally by \_ps to store and reference all of the Site objects. Rather than accessing it directly, you should use one of the methods below, such as `getByName()` or `remove()`.
+An object used internally by `_ps` to store and reference all of the Site objects. Rather than accessing it directly, you should use one of the methods below, such as `getByName()` or `remove()`.
 
 ## \_ps.loaded `Boolean`
 
@@ -26,58 +26,17 @@ _ps.create(access_id, [name], [options]);
 
 ### Arguments
 
-<HTMLBlock>
-  {`
-  <table style="width: 100%; border-collapse: collapse;">
-  <thead>
-  <tr>
-    <th style="border: 1px solid #ddd; padding: 8px;">Name</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Required</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Type</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>access_id</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>True</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>String</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>The unique access_id assigned to your Ironclad Clickwrap Site, which can be found on the <a href="https://beta.pactsafe.com/settings/site">Site Settings</a> page within Ironclad Clickwrap.</p>
-  </td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>name</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>False</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>String</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>A name to assign to the Site object. This property is optional for the initial Site, and will default to &#39;s0&#39;, but a name must be provided for any additional Sites.</p>
-  </td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>options</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>False</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>Object</p>
-  </td>
-    <td style="border: 1px solid #ddd; padding: 8px;"><p>An object containing properties to set on the Site.</p>
-  </td>
-  </tr>
-  </tbody>
-  </table>
-  `}
-</HTMLBlock>
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| access_id | True | String | The unique access_id assigned to your Ironclad Clickwrap Site, which can be found on the [Site Settings](https://beta.pactsafe.com/settings/site) page within Ironclad Clickwrap. |
+| name | False | String | A name to assign to the Site object. This property is optional for the initial Site, and will default to 's0', but a name must be provided for any additional Sites. |
+| options | False | Object | An object containing properties to set on the Site. |
 
 ### Returns
 
-|||
-|----|-------|
-|`Site`|The created Site object.|
+| Type | Description |
+| --- | --- |
+| Site | The created Site object. |
 
 ### Examples
 
@@ -100,7 +59,7 @@ _ps.create('0207a846-d9bf-4b13-8430-1344e86ff7b1', 'pactsafe', {
 });
 ```
 
-```javasript
+```javascript
 // Creates a Site with the default name and disables sending.
 _ps.create('0207a846-d9bf-4b13-8430-1344e86ff7b1', null, {
   disable_sending: true
@@ -120,9 +79,9 @@ _ps.remove(name);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`name`|True|String|The name of the Site to remove.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| name | True | String | The name of the Site to remove. |
 
 ### Returns
 
@@ -150,15 +109,15 @@ _ps.getByName(name);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`name`|True|String|The name of the Site to return.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| name | True | String | The name of the Site to return. |
 
 ### Returns
 
-|||
-|----|-------|
-|`Site`|The Site object.|
+| Type | Description |
+| --- | --- |
+| Site | The Site object. |
 
 ### Examples
 
@@ -181,9 +140,9 @@ No Arguments
 
 ### Returns
 
-|||
-|----|-------|
-|`Array<Site>`|An array containing all of the Site objects.|
+| Type | Description |
+| --- | --- |
+| Array<Site> | An array containing all of the Site objects. |
 
 ### Examples
 
@@ -202,15 +161,15 @@ _ps.getByKey(key);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`key`|True|String|The key of the Group to return.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| key | True | String | The key of the Group to return. |
 
 ### Returns
 
-|||
-|----|-------|
-|`BrowsewrapGroup` or `ClickwrapGroup`|The Group object.|
+| Type | Description |
+| --- | --- |
+| BrowsewrapGroup or ClickwrapGroup | The Group object. |
 
 ### Examples
 
@@ -233,9 +192,9 @@ No Arguments
 
 ### Returns
 
-|||
-|----|-------|
-|`Array<BrowsewrapGroup or ClickwrapGroup>`|An array containing all of the Group objects.|
+| Type | Description |
+| --- | --- |
+| Array<BrowsewrapGroup or ClickwrapGroup> | An array containing all of the Group objects. |
 
 ### Examples
 
@@ -258,10 +217,10 @@ _ps.on(event, callback);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`event`|True|String|The name of the event to listen for.|
-|`callback`|True|Function|The callback function to execute when the event is triggered. The arguments that are passed to the function vary between events.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| event | True | String | The name of the event to listen for. |
+| callback | True | Function | The callback function to execute when the event is triggered. The arguments that are passed to the function vary between events. |
 
 ### Returns
 
@@ -307,10 +266,10 @@ _ps.once(event, callback);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`event`|True|String|The name of the event to listen for.|
-|`callback`|True|Function|The callback function to execute once the event is triggered. The arguments that are passed to the function vary between events.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| event | True | String | The name of the event to listen for. |
+| callback | True | Function | The callback function to execute once the event is triggered. The arguments that are passed to the function vary between events. |
 
 ### Returns
 
@@ -335,10 +294,10 @@ _ps.off([event], [callback]);
 
 ### Arguments
 
-|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------------|
-|`event`|False|String|The name of the event to remove the listener or listeners from. If blank, all event listeners will be removed from the \_ps object.|
-|`callback`|False|Function|The callback function to remove. If blank, all listeners for the provided event will be removed from the \_ps object.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| event | False | String | The name of the event to remove the listener or listeners from. If blank, all event listeners will be removed from the `_ps` object. |
+| callback | False | Function | The callback function to remove. If blank, all listeners for the provided event will be removed from the `_ps` object. |
 
 ### Returns
 
@@ -383,12 +342,12 @@ _ps(callback);
 
 ### Arguments
 
-|---|NAME|REQUIRED|TYPE|DESCRIPTION|
-|------|------|------|------|------------|
-||`method`|True|String|The name of the method to invoke on a Site or Group object. To target methods on the default Site, just provide the name of the method. If you have multiple Sites, you will need to prepend the Site's name to the method, separated by a `.`. To target a Group method, prepend the Group's key, separated by a `:`.|
-|Option 1|`arg1, arg2, ..., argN`|Conditional|Any|The in-line arguments to pass to the method.|
-|Option 2|`parameters`|Conditional|Object|A single object containing parameter name and value pairs. This format is supported by set, send and retrieve commands.|
-|Option 3|`callback`|True|Function|A callback function to execute. All commands in the queue are executed in order, so a callback function can be used to determine when the \_ps object is ready, or when the previous set of commands have been run.|
+| Name | Required | Type | Description |
+| --- | --- | --- | --- |
+| method | True | String | The name of the method to invoke on a Site or Group object. To target methods on the default Site, just provide the name of the method. If you have multiple Sites, you will need to prepend the Site's name to the method, separated by a `.`. To target a Group method, prepend the Group's key, separated by a `:`. |
+| arg1, arg2, ..., argN | Conditional | Any | The in-line arguments to pass to the method. |
+| parameters | Conditional | Object | A single object containing parameter name and value pairs. This format is supported by set, send and retrieve commands. |
+| callback | True | Function | A callback function to execute. All commands in the queue are executed in order, so a callback function can be used to determine when the \_ps object is ready, or when the previous set of commands have been run. |
 
 ### Returns
 

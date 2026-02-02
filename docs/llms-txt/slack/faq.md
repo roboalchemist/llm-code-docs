@@ -1,144 +1,243 @@
-<!-- Source: https://docs.slack.dev/faq -->
+# Slack developer FAQ
 
-```html
-<!doctype html><html lang=en dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-faq" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.9.2"><title data-rh=true>Slack developer FAQ | Slack Developer Docs</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url content=https://docs.slack.dev/faq /><meta data-rh=true property=og:locale content=en /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Slack developer FAQ | Slack Developer Docs"/><meta data-rh=true name=description content="We know there's a lot to learn and read about all the integration points of the Slack platform. Here is a little more information you might find helpful!"/><meta data-rh=true property=og:description content="We know there's a lot to learn and read about all the integration points of the Slack platform. Here is a little more information you might find helpful!"/><link data-rh=true rel=icon href=/img/logos/favicon.ico /><link data-rh=true rel=canonical href=https://docs.slack.dev/faq /><link data-rh=true rel=alternate href=https://docs.slack.dev/faq hreflang=en /><link data-rh=true rel=alternate href=https://docs.slack.dev/faq hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://docs.slack.dev/developer-support","name":"Resources","position":1},{"@type":"ListItem","item":"https://docs.slack.dev/faq","name":"FAQ","position":2}]}</script><link rel=alternate type=application/rss+xml href=/changelog/rss.xml title="Slack Developer Docs RSS Feed"><link rel=alternate type=application/atom+xml href=/changelog/atom.xml title="Slack Developer Docs Atom Feed"><link rel=preconnect href=https://www.googletagmanager.com><script>window.dataLayer=window.dataLayer||[],function(e,t,a,n,r){e[n]=e[n]||[],e[n].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var d=t.getElementsByTagName(a)[0],g=t.createElement(a);g.async=!0,g.src="https://www.googletagmanager.com/gtm.js?id="+r+("dataLayer"!=n?"&l="+n:""),d.parentNode.insertBefore(g,d)}(window,document,"script","dataLayer","GTM-TVQFL84W")</script><script src=https://slack-marketing.s3.us-east-1.amazonaws.com/onetrust/slack.dev/production/scripttemplates/otSDKStub.js type=text/javascript charset=UTF-8 data-domain-script=0198614a-ba8b-77a9-8d49-cfaf177eabd7></script><link rel=stylesheet href=/assets/css/styles.f5980fdd.css /><script src=/assets/js/runtime~main.3e504229.js defer></script><script src=/assets/js/main.3e09e993.js defer></script></head><body class=navigation-with-keyboard><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVQFL84W" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript>
+We know there's a lot to learn and read about all the integration points of the Slack platform. Here is a little more information you might find helpful!
 
+## General
 
-<svg style="display: none;"><defs>
-<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"dark"),document.documentElement.setAttribute("data-theme-choice",t||"dark")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logos/slack-developers-white.png /><div style=display:none aria-hidden=true><div data-pagefind-filter=content_type>guide</div></div><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top navbar--dark"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a href=https://slack.dev target=_self rel="noopener noreferrer" class=navbar__brand><div class=navbar__logo><img src=/img/logos/slack-developers-white.png alt="Slack Developer Docs" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logos/slack-developers-white.png alt="Slack Developer Docs" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div></a><a aria-current=page class="navbar__item navbar__link navbar__link--active" target=_self href=/>Guides</a><a class="navbar__item navbar__link" target=_self href=/reference>Reference</a><a class="navbar__item navbar__link" target=_self href=/samples>Samples</a><a class="navbar__item navbar__link" target=_self href=/tools>Tools</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link" target=_self href=/changelog>Changelog</a><a href=https://api.slack.com/developer-program target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">Developer Program</a><a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">Your apps</a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS darkNavbarColorModeToggle_X3D1" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbar__search><div style="position:relative;padding:0 0.5rem"><div style=position:relative;display:inline-block><input type=text placeholder="Search the docs!" class="pagefind-custom-input pagefind-navbar-input" value="" /></div></div></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/><span title="Slack platform" class=linkLabel_WmDU>Slack platform</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/quickstart><span title=Quickstart class=linkLabel_WmDU>Quickstart</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/developer-support><span title=Resources class=categoryLinkLabel_W154>Resources</span></a><button aria-label="Collapse sidebar category 'Resources'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/developer-support><span title="Developer support" class=linkLabel_WmDU>Developer support</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/faq><span title=FAQ class=linkLabel_WmDU>FAQ</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/developer-policy><span title="Slack App Developer Policy" class=linkLabel_WmDU>Slack App Developer Policy</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/community-code-of-conduct><span title="Slack Community Code of Conduct" class=linkLabel_WmDU>Slack Community Code of Conduct</span></a></ul><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr/><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/ai/><span title="AI features for apps" class=categoryLinkLabel_W154>AI features for apps</span></a><button aria-label="Expand sidebar category 'AI features for apps'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/apis/><span title=APIs class=categoryLinkLabel_W154>APIs</span></a><button aria-label="Expand sidebar category 'APIs'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/app-management/><span title="App management" class=categoryLinkLabel_W154>App management</span></a><button aria-label="Expand sidebar category 'App management'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/app-manifests/><span title="App manifests" class=categoryLinkLabel_W154>App manifests</span></a><button aria-label="Expand sidebar category 'App manifests'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/admins/><span title="Admin resources" class=categoryLinkLabel_W154>Admin resources</span></a><button aria-label="Expand sidebar category 'Admin resources'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/authentication/><span title=Authentication class=categoryLinkLabel_W154>Authentication</span></a><button aria-label="Expand sidebar category 'Authentication'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/block-kit/><span title="Block Kit" class=categoryLinkLabel_W154>Block Kit</span></a><button aria-label="Expand sidebar category 'Block Kit'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/enterprise/><span title=Enterprise class=categoryLinkLabel_W154>Enterprise</span></a><button aria-label="Expand sidebar category 'Enterprise'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/govslack><span title=GovSlack class=linkLabel_WmDU>GovSlack</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/interactivity/><span title=Interactivity class=categoryLinkLabel_W154>Interactivity</span></a><button aria-label="Expand sidebar category 'Interactivity'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/messaging/><span title=Messaging class=categoryLinkLabel_W154>Messaging</span></a><button aria-label="Expand sidebar category 'Messaging'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/security><span title="Security best practices" class=linkLabel_WmDU>Security best practices</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/slack-marketplace/><span title="Slack Marketplace" class=categoryLinkLabel_W154>Slack Marketplace</span></a><button aria-label="Expand sidebar category 'Slack Marketplace'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/surfaces/><span title=Surfaces class=categoryLinkLabel_W154>Surfaces</span></a><button aria-label="Expand sidebar category 'Surfaces'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/workflows/><span title=Workflows class=categoryLinkLabel_W154>Workflows</span></a><button aria-label="Expand sidebar category 'Workflows'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr/><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/legacy/><span title=Legacy class=categoryLinkLabel_W154>Legacy</span></a><button aria-label="Expand sidebar category 'Legacy'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1"><hr/><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/ja-jp/><span title=日本語版ページ class=categoryLinkLabel_W154>日本語版ページ</span></a><button aria-label="Expand sidebar category '日本語版ページ'" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul></nav><button type=button title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width=20 height=20 aria-hidden=true class=collapseSidebarButtonIcon_kv0_><g fill=#7a7a7a><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"/><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"/></g></svg></button></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/developer-support><span>Resources</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>FAQ</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Slack developer FAQ</h1></header>
-<p>We know there's a lot to learn and read about all the integration points of the Slack platform. Here is a little more information you might find helpful!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=general>General<a href=#general class=hash-link aria-label="Direct link to General" title="Direct link to General" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=bot-APIs>How do I build a bot using Slack APIs?<a href=#bot-APIs class=hash-link aria-label="Direct link to How do I build a bot using Slack APIs?" title="Direct link to How do I build a bot using Slack APIs?" translate=no>​</a></h3>
-<p>We have a <a class="" href=/quickstart>quickstart</a> guide that will walk you through the process!</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=set-up-dev-environment>How do I set up a developer environment to build a Slack app?<a href=#set-up-dev-environment class=hash-link aria-label="Direct link to How do I set up a developer environment to build a Slack app?" title="Direct link to How do I set up a developer environment to build a Slack app?" translate=no>​</a></h3>
-<p>You can provision sandbox environments by joining the <a href=https://api.slack.com/developer-program target=_blank rel="noopener noreferrer" class="">Slack Developer Program</a>. Once you're ready to deploy your app, distributing the app will allow you to install it in other workspaces.</p>
-<p>Start by <a class="" href=/app-management/quickstart-app-settings>building a Slack app</a> to contain all of your work—by default, it can only be installed on your own workspace. Follow the instructions in the UI to add features—most require that you provide a HTTP server Slack can reach.</p>
-<p>Have more questions? Check out our <a class="" href=/tools/developer-sandboxes#faqs>developer sandbox FAQs</a>!</p>
-<p>Are you a partner with us? The <a href=https://api.slack.com/developer-program/partners target=_blank rel="noopener noreferrer" class="">Slack Partner Developer Program</a> offers <a class="" href=/tools/partner-sandboxes>partner sandboxes</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=downtime>Is Slack down?<a href=#downtime class=hash-link aria-label="Direct link to Is Slack down?" title="Direct link to Is Slack down?" translate=no>​</a></h3>
-<p>Of course we want Slack to be fully functional for users and developers at all times. Here are some tips in the unfortunate event you're having trouble and need to determine the cause of a Slack-related issue.</p>
-<p>When possible, we report current status promptly on <a href=https://status.slack.com/ target=_blank rel="noopener noreferrer" class="">status.slack.com</a> with any service disruption advisories, but you can also use the following methods:</p>
-<ul>
-<li class="">Use the <a class="" href=/reference/slack-status-api>Slack Status API</a>.</li>
-<li class="">Send a HTTP GET request to the <a class="" href=/reference/methods/api.test><code>https://slack.com/api/api.test</code></a> API method. A HTTP 200 <code>application/json</code> response of <code>{"ok":true}</code> indicates at least part of the Slack <a class="" href=/apis/web-api/>Web API</a> is available.</li>
-<li class="">Send a more complex, <a class="" href=/authentication>authenticated</a> request to <a class="" href=/reference/methods/auth.test><code>https://slack.com/api/auth.test</code></a> using a bot, user, or legacy <a class="" href=/authentication/tokens>token</a>. Using this method exercises the authorization and API layer further than <code>api.test</code> and may grant you the serenity of greater confidence in Slack availability.</li>
-<li class="">If using the legacy <a class="" href=/legacy/legacy-rtm-api>Real Time Messaging (RTM) API</a>, try using <a class="" href=/reference/methods/rtm.connect><code>rtm.connect</code></a> to generate a WebSocket URL using a token with the proper permissions, then open the socket using a tool like <a href="https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en" target=_blank rel="noopener noreferrer" class="">this browser-based WebSocket client for Google Chrome</a>.</li>
-</ul>
-<p>Still unsure if Slack is down? Contact our enthusiastic <a href=https://my.slack.com/help/requests/new target=_blank rel="noopener noreferrer" class="">support team</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=third-party-services>How do I integrate a third-party service with Slack?<a href=#third-party-services class=hash-link aria-label="Direct link to How do I integrate a third-party service with Slack?" title="Direct link to How do I integrate a third-party service with Slack?" translate=no>​</a></h3>
-<p>Check whether there is an app for a third-party service in the Slack Marketplace. If all else fails, you'll need to <a class="" href=/quickstart>code one for yourself</a>.</p>
-<p>You can also add <a class="" href=/tools/deno-slack-sdk/reference/connector-functions>connector functions</a> to your automations workflows. A growing library of third-party services are available.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=workflow-apps>Apps vs. workflows<a href=#workflow-apps class=hash-link aria-label="Direct link to Apps vs. workflows" title="Direct link to Apps vs. workflows" translate=no>​</a></h3>
-<p>Building a Slack app? Start <a class="" href=/quickstart>here</a>. Building a workflow? Start <a class="" href=/workflows>here</a>. For more about workflows and custom workflow steps, jump to <a href=#automations-workflow-apps class="">this section</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=authentication>Authentication<a href=#authentication class=hash-link aria-label="Direct link to Authentication" title="Direct link to Authentication" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=authenticate-me>How do I authenticate my requests to Slack?<a href=#authenticate-me class=hash-link aria-label="Direct link to How do I authenticate my requests to Slack?" title="Direct link to How do I authenticate my requests to Slack?" translate=no>​</a></h3>
-<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=by-token>By token<a href=#by-token class=hash-link aria-label="Direct link to By token" title="Direct link to By token" translate=no>​</a></h4>
-<p>When working with Slack apps or the <a class="" href=/apis/web-api/>Web API</a>, you'll often need to send access tokens, also known as bearer tokens, along with inbound requests within the authorization header. When creating an app for the first time, you'll be given your own user and bot token while going through the app creation process. In order to obtain other users' tokens, you'll need to send users through the <a class="" href=/authentication>OAuth 2.0 authentication flow</a>. When you're working with Slack apps, you'll be awarded access tokens after a user approves your application.</p>
-<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=by-URL>By private URL<a href=#by-URL class=hash-link aria-label="Direct link to By private URL" title="Direct link to By private URL" translate=no>​</a></h4>
-<p>Your <a class="" href=/messaging/sending-messages-using-incoming-webhooks>incoming webhook</a> URLs are unique to your integration or application and do not require token-based authentication. <a class="" href=/interactivity/implementing-slash-commands#responding_to_a_command>Slash command response URLs</a> also already encode your integration's or application's identity.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=authenticate-slack>How do I authenticate requests from Slack to me?<a href=#authenticate-slack class=hash-link aria-label="Direct link to How do I authenticate requests from Slack to me?" title="Direct link to How do I authenticate requests from Slack to me?" translate=no>​</a></h3>
-<p>Use the <a class="" href=/authentication/verifying-requests-from-slack>signing secret</a> to compute a signature, and verify that the signature on the request matches. This process is <em>strongly</em> preferred over the use of deprecated verification tokens.</p>
-<p>You can also use <a class="" href=/authentication/verifying-requests-from-slack#mutual_tls>Mutual TLS</a>. Mutual TLS verifies the identity of Slack in a TLS-terminating server, before a request reaches your application code.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=authenticate-servers>How does Slack authenticate its requests to my servers?<a href=#authenticate-servers class=hash-link aria-label="Direct link to How does Slack authenticate its requests to my servers?" title="Direct link to How does Slack authenticate its requests to my servers?" translate=no>​</a></h3>
-<p>When you configure <a class="" href=/interactivity/implementing-slash-commands>Slash commands</a>, you specify a URL for Slack to send requests to when qualifying conditions are met. Slack also provides you a token related to that integration.</p>
-<p>Slack sends that URL a JSON payload containing a <code>token</code> field. Compare that field to values you've received from Slack. Refer to <a class="" href=/interactivity/implementing-slash-commands#validating_the_command>validating slash commands</a> for more information.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=authenticate-expire>When do authorization codes expire?<a href=#authenticate-expire class=hash-link aria-label="Direct link to When do authorization codes expire?" title="Direct link to When do authorization codes expire?" translate=no>​</a></h3>
-<p>Authorization codes must be exchanged for an access token within 10 minutes by calling the <a class="" href=/reference/methods/oauth.access>oauth.access</a> API method as part of the <a class="" href=/authentication>authorization flow</a>. Otherwise, the authorization code will expire, and you'll need to ask the user to go through the OAuth flow again.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=revoke-token>How do I revoke a token?<a href=#revoke-token class=hash-link aria-label="Direct link to How do I revoke a token?" title="Direct link to How do I revoke a token?" translate=no>​</a></h3>
-<p>Use the <a class="" href=/reference/methods/apps.uninstall><code>apps.uninstall</code></a> API method to uninstall an app completely, revoking all tokens. If you want to dispose of a single OAuth access token, use the <a class="" href=/reference/methods/auth.revoke><code>auth.revoke</code></a> API method; it works with tokens from <a class="" href=/authentication/sign-in-with-slack/>Sign in with Slack</a> as well as from <a class="" href=/legacy/legacy-slack-button>Add to Slack</a>.</p>
-<p>For classic apps, revoking the last token associated between your application and a workspace effectively uninstalls the app for that workspace.</p>
-<p>Members and administrators can remove your app through their <a href=https://my.slack.com/apps/manage target=_blank rel="noopener noreferrer" class="">workspace administration interface</a>.</p>
-<p>Though it's somewhat of a nuclear option, you also have the ability to revoke all tokens from your <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">developer dashboard</a> by selecting your application and clicking <strong>Revoke all tokens</strong>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=client-secret>How do I reset my client secret?<a href=#client-secret class=hash-link aria-label="Direct link to How do I reset my client secret?" title="Direct link to How do I reset my client secret?" translate=no>​</a></h3>
-<p>To reset your client secret, go to your <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">developer dashboard</a>, select the application, and click the <strong>Change secret</strong> button.</p>
-<p>Don't forget to use your new secret when exchanging authorization codes for access tokens while authorizing users and workspaces with <a class="" href=/authentication>OAuth 2.0</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=slash-commands>Slash commands<a href=#slash-commands class=hash-link aria-label="Direct link to Slash commands" title="Direct link to Slash commands" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=slash-URL>Why does Slack never reach my slash command URL?<a href=#slash-URL class=hash-link aria-label="Direct link to Why does Slack never reach my slash command URL?" title="Direct link to Why does Slack never reach my slash command URL?" translate=no>​</a></h3>
-<p>Typically, if Slack cannot reach your slash command URL it's because it's inaccessible, does not have a valid or verifiable SSL certificate, or our request is timing out for some reason.</p>
-<p>Slack invokes slash command URLs from its servers rather than from a Slack client app like Slack for Mac. This means that the URL we're trying to reach must be accessible to Slack's servers.</p>
-<p>To determine whether your certificate is valid, consider using <a href=https://www.ssllabs.com/ssltest/index.html target=_blank rel="noopener noreferrer" class="">this tool</a> provided by SSL Labs.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=slash-origin>How do I validate a slash command's origin?<a href=#slash-origin class=hash-link aria-label="Direct link to How do I validate a slash command's origin?" title="Direct link to How do I validate a slash command's origin?" translate=no>​</a></h3>
-<p>Keep track of the validation tokens and team IDs Slack gives you when commands are created and teams approve your app. Always validate that the <code>token</code> field in an incoming slash command request has been issued to you by Slack, and scope your data for that workspace.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=incoming-webhooks>Incoming webhooks<a href=#incoming-webhooks class=hash-link aria-label="Direct link to Incoming webhooks" title="Direct link to Incoming webhooks" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=override>Why can't I override the channel, icon, or user name of my incoming webhook?<a href=#override class=hash-link aria-label="Direct link to Why can't I override the channel, icon, or user name of my incoming webhook?" title="Direct link to Why can't I override the channel, icon, or user name of my incoming webhook?" translate=no>​</a></h3>
-<p>You won't be able to override any of these fields when using an <a class="" href=/messaging/sending-messages-using-incoming-webhooks>incoming webhook</a> attached to a Slack app. Instead, those values will be provided from your Slack app configuration and any configuration provided by the team.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=message-buttons>Interactive messages<a href=#message-buttons class=hash-link aria-label="Direct link to Interactive messages" title="Direct link to Interactive messages" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=action-URL>Can I use a self-signed certificate for my action URL?<a href=#action-URL class=hash-link aria-label="Direct link to Can I use a self-signed certificate for my action URL?" title="Direct link to Can I use a self-signed certificate for my action URL?" translate=no>​</a></h3>
-<p>No, SSL certificates must be signed by a reputable certificate authority. You may want to consider using one of the following low-cost providers:</p>
-<ul>
-<li class=""><a href=https://letsencrypt.org/ target=_blank rel="noopener noreferrer" class="">Let's Encrypt</a></li>
-<li class=""><a href=https://www.cloudflare.com/ssl/ target=_blank rel="noopener noreferrer" class="">CloudFlare</a></li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=web-api>Web API<a href=#web-api class=hash-link aria-label="Direct link to Web API" title="Direct link to Web API" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=http-post>Can I send JSON when using HTTP POST?<a href=#http-post class=hash-link aria-label="Direct link to Can I send JSON when using HTTP POST?" title="Direct link to Can I send JSON when using HTTP POST?" translate=no>​</a></h3>
-<p>Yes, the <a class="" href=/apis/web-api/>Web API</a> accepts both <code>application/x-www-form-urlencoded</code> POSTs as well as <code>application/json</code>.</p>
-<p>Refer to <a class="" href=/apis/web-api/#post_bodies>POST bodies</a> for more information.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=rate-limited>How is the Web API rate limited?<a href=#rate-limited class=hash-link aria-label="Direct link to How is the Web API rate limited?" title="Direct link to How is the Web API rate limited?" translate=no>​</a></h3>
-<p>Refer to our <a class="" href=/apis/web-api/rate-limits>rate limiting guide</a> for specific information on rate limits.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=files>How do I work with files?<a href=#files class=hash-link aria-label="Direct link to How do I work with files?" title="Direct link to How do I work with files?" translate=no>​</a></h3>
-<p>Refer to our <a class="" href=/messaging/working-with-files>working with files guide</a> for specific information on working with files.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=channels-ID>How do I find a channel's ID if I only have its #name?<a href=#channels-ID class=hash-link aria-label="Direct link to How do I find a channel's ID if I only have its #name?" title="Direct link to How do I find a channel's ID if I only have its #name?" translate=no>​</a></h3>
-<p>There are currently no methods to directly look up channels by name. Use the <a class="" href=/reference/methods/conversations.list><code>conversations.list</code></a> API method to retrieve a list of channels. The list includes each channel's <code>name</code> and <code>id</code> fields.</p>
-<p>Many developers keep the list of channels in memory for swifter lookups. Poll the method occasionally to refresh your inventory or keep it updated with the <a class="" href=/apis/events-api/>Events API</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=channels-name>How do I find a channel's name if I only have its ID?<a href=#channels-name class=hash-link aria-label="Direct link to How do I find a channel's name if I only have its ID?" title="Direct link to How do I find a channel's name if I only have its ID?" translate=no>​</a></h3>
-<p>You can use similar instructions to the question above, or you can use the <a class="" href=/reference/methods/conversations.info><code>conversations.info</code></a> API method to obtain a specific channel's information, including its <code>name</code>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=channels>Do channel IDs stay the same when the name of the channel changes?<a href=#channels class=hash-link aria-label="Direct link to Do channel IDs stay the same when the name of the channel changes?" title="Direct link to Do channel IDs stay the same when the name of the channel changes?" translate=no>​</a></h3>
-<p>Channel IDs remain the same, even when names are changed.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=channels-visibility>Do channel IDs stay the same when moving between public and private?<a href=#channels-visibility class=hash-link aria-label="Direct link to Do channel IDs stay the same when moving between public and private?" title="Direct link to Do channel IDs stay the same when moving between public and private?" translate=no>​</a></h3>
-<p>As of <a href=https://docs.slack.dev/changelog/2018/09/01/more-reasons-to-be-a-conversations-api-convert target=_blank rel="noopener noreferrer" class="">September 2018</a>, channel IDs remain static even when a channel is converted between public and private.</p>
-<p>Use the <a class="" href=/apis/web-api/using-the-conversations-api>Conversations API</a> to safely work with channels that have transitioned between public and private.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=message>How do I retrieve a single message?<a href=#message class=hash-link aria-label="Direct link to How do I retrieve a single message?" title="Direct link to How do I retrieve a single message?" translate=no>​</a></h3>
-<p>Use the <a class="" href=/reference/methods/conversations.history><code>conversations.history</code></a> API method and a token with the <a class="" href=/reference/scopes/channels.history><code>channels:history</code></a> scope to retrieve a specific message in a public channel. <a class="" href=/messaging/retrieving-messages#individual_messages>Learn more about this approach</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=events-api>Events API<a href=#events-api class=hash-link aria-label="Direct link to Events API" title="Direct link to Events API" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=events-subscription>How do I re-enable event subscriptions for my app?<a href=#events-subscription class=hash-link aria-label="Direct link to How do I re-enable event subscriptions for my app?" title="Direct link to How do I re-enable event subscriptions for my app?" translate=no>​</a></h3>
-<p>If your app's subscriptions are disabled due to exceeding the Events API <a class="" href=/apis/events-api/#failure_limits>failure limits</a>, manually re-enable them by visiting your <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">application's settings</a>. If your app is part of the Slack Marketplace, use your <strong>Live App Settings</strong> instead of your development app.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=events-socket-RTM>When should I use the Events API and when should I use Socket Mode or the legacy RTM API?<a href=#events-socket-RTM class=hash-link aria-label="Direct link to When should I use the Events API and when should I use Socket Mode or the legacy RTM API?" title="Direct link to When should I use the Events API and when should I use Socket Mode or the legacy RTM API?" translate=no>​</a></h3>
-<p>Choose the <a class="" href=/apis/events-api/>Events API</a> if:</p>
-<ol>
-<li class="">You want to precisely <a class="" href=/reference/scopes>scope</a> the data you receive to just what your app needs.</li>
-<li class="">You prefer or must use an inbound request model due to one of the following:
-a) your hosting service is not able to maintain an outbound WebSocket connection, or
-b) you prefer to scale your application on an inbound request model instead of maintaining multiple long-lived WebSocket connections.</li>
-<li class="">You're converting an <a class="" href=/legacy/legacy-custom-integrations/legacy-custom-integrations-outgoing-webhooks>outgoing webhook</a> integration into something installable as a Slack app.</li>
-<li class="">You find the <a class="" href=/apis/events-api/#errors>retry behavior</a> reassuring for redundancy reasons.</li>
-</ol>
-<p>Choose <a class="" href=/apis/events-api/using-socket-mode>Socket Mode</a> if:</p>
-<ol>
-<li class="">You're building an on-premise integration or have no ability to receive external HTTP requests.</li>
-<li class="">You're working on a distributed or mobile application without a server backend.</li>
-<li class="">You just prefer working with WebSockets. That's cool.</li>
-<li class="">You want data feed redundancy by opening additional WebSocket connections.</li>
-<li class="">You want messages to be delivered to you in real time.</li>
-</ol>
-<p>Finally, choose the legacy <a class="" href=/legacy/legacy-rtm-api>RTM API</a> <em>only</em> if:</p>
-<ol>
-<li class="">You have very specific needs that only the RTM API solves.</li>
-<li class="">You already have a classic app, as they can longer be created.</li>
-<li class="">You are okay with your app not working in the somewhat-near future, <a class="" href=/changelog/2024-09-legacy-custom-bots-classic-apps-deprecation>as classic apps are slated to be deprecated.</a></li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=bots>How do I make my bot appear active and present?<a href=#bots class=hash-link aria-label="Direct link to How do I make my bot appear active and present?" title="Direct link to How do I make my bot appear active and present?" translate=no>​</a></h3>
-<p>The answer depends on whether you're using the Events API with or without the legacy RTM API:</p>
-<ul>
-<li class="">With the Events API, you must toggle your presence by <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">managing your app</a>'s bot user config.</li>
-<li class="">With the legacy RTM API, your bot is marked <code>active</code> while connected to a WebSocket.</li>
-</ul>
-<p>Therefore, the presence of the bot depends on whether you are using the legacy RTM API (the bot is online when it's connected through the WebSocket), or it's always online when you turn this setting on. Refer to <a class="" href=/apis/web-api/user-presence-and-status#bot_presence>bot presence</a> for more information.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=socket-mode>Socket Mode<a href=#socket-mode class=hash-link aria-label="Direct link to Socket Mode" title="Direct link to Socket Mode" translate=no>​</a></h2>
-<p><a class="" href=/apis/events-api/using-socket-mode>Socket Mode</a> allows you to use the <a class="" href=/apis/events-api/>Events API</a> and <a class="" href=/interactivity>interactive features of the platform</a>, without exposing a static HTTP endpoint to receive payloads. Instead, you use the WebSocket protocol and generate a URL at runtime.</p>
-<p>The legacy <a class="" href=/legacy/legacy-rtm-api>RTM API</a> is another way of connecting your application to Slack. For most applications that can't use a static HTTP endpoint, <a class="" href=/apis/events-api/using-socket-mode>Socket Mode</a> is preferred over RTM.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=real-time-messaging-api>Legacy RTM API<a href=#real-time-messaging-api class=hash-link aria-label="Direct link to Legacy RTM API" title="Direct link to Legacy RTM API" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=can-i-start-using-the-rtm-api>Can I start using the RTM API?<a href=#can-i-start-using-the-rtm-api class=hash-link aria-label="Direct link to Can I start using the RTM API?" title="Direct link to Can I start using the RTM API?" translate=no>​</a></h3>
-<p>Most likely not. Classic apps can no longer be created, and the newer, granular permissions apps cannot access the RTM API. Try the <a class="" href=/apis/events-api/>Events API</a>!</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=can-i-keep-using-the-rtm-api>Can I keep using the RTM API?<a href=#can-i-keep-using-the-rtm-api class=hash-link aria-label="Direct link to Can I keep using the RTM API?" title="Direct link to Can I keep using the RTM API?" translate=no>​</a></h3>
-<p>You can! But not forever. <a class="" href=/changelog/2024-09-legacy-custom-bots-classic-apps-deprecation>Legacy classic apps are set to be deprecated November 2026</a>. Without those legacy apps, there will be no way to access the RTM API. Try the <a class="" href=/apis/events-api/>Events API</a> instead!</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=app-approvals>App approvals<a href=#app-approvals class=hash-link aria-label="Direct link to App approvals" title="Direct link to App approvals" translate=no>​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=get-approved>How does my app get approved for the Slack Marketplace?<a href=#get-approved class=hash-link aria-label="Direct link to How does my app get approved for the Slack Marketplace?" title="Direct link to How does my app get approved for the Slack Marketplace?" translate=no>​</a></h3>
-<p>Refer to the following guide: <a class="" href=/slack-marketplace/slack-marketplace-review-guide>Slack Marketplace review guide</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=app-approval-change>What happens if I make changes to an application that has been approved for the Slack Marketplace?<a href=#app-approval-change class=hash-link aria-label="Direct link to What happens if I make changes to an application that has been approved for the Slack Marketplace?" title="Direct link to What happens if I make changes to an application that has been approved for the Slack Marketplace?" translate=no>​</a></h3>
-<p>If you need to update your approved app to request new <a class="" href=/authentication/installing-with-oauth#asking>OAuth scopes</a> or to include new features, find your application's settings page at <a href=https://api.slack.com/apps target=_blank rel="noopener noreferrer" class="">https://api.slack.com/apps</a>. Any changes you make here will not affect the published app.</p>
-<p>Once you're ready to apply these changes to the published app, you'll need to <a class="" href=/slack-marketplace/slack-marketplace-review-guide>resubmit it for review</a>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=app-approval-review>What kind of changes to my app will require being reviewed again?<a href=#app-approval-review class=hash-link aria-label="Direct link to What kind of changes to my app will require being reviewed again?" title="Direct link to What kind of changes to my app will require being reviewed again?" translate=no>​</a></h3>
-<p>If you've submitted your app to the Slack Marketplace but need to make changes to how your app or bot is described, to the integration types packed into your app, or to request additional permissions, you'll need your app to be reviewe
-```
+### How do I build a bot using Slack APIs?
+
+We have a [quickstart](/quickstart) guide that will walk you through the process!
+
+### How do I set up a developer environment to build a Slack app?
+
+You can provision sandbox environments by joining the [Slack Developer Program](https://api.slack.com/developer-program). Once you're ready to deploy your app, distributing the app will allow you to install it in other workspaces.
+
+Start by [building a Slack app](/app-management/quickstart-app-settings) to contain all of your work—by default, it can only be installed on your own workspace. Follow the instructions in the UI to add features—most require that you provide a HTTP server Slack can reach.
+
+Have more questions? Check out our [developer sandbox FAQs](/tools/developer-sandboxes#faqs)!
+
+Are you a partner with us? The [Slack Partner Developer Program](https://api.slack.com/developer-program/partners) offers [partner sandboxes](/tools/partner-sandboxes).
+
+### Is Slack down?
+
+Of course we want Slack to be fully functional for users and developers at all times. Here are some tips in the unfortunate event you're having trouble and need to determine the cause of a Slack-related issue.
+
+When possible, we report current status promptly on [status.slack.com](https://status.slack.com/) with any service disruption advisories, but you can also use the following methods:
+
+- Use the [Slack Status API](/reference/slack-status-api).
+- Send a HTTP GET request to the [`https://slack.com/api/api.test`](/reference/methods/api.test) API method. A HTTP 200 `application/json` response of `{"ok":true}` indicates at least part of the Slack [Web API](/apis/web-api/) is available.
+- Send a more complex, [authenticated](/authentication) request to [`https://slack.com/api/auth.test`](/reference/methods/auth.test) using a bot, user, or legacy [token](/authentication/tokens). Using this method exercises the authorization and API layer further than `api.test` and may grant you the serenity of greater confidence in Slack availability.
+- If using the legacy [Real Time Messaging (RTM) API](/legacy/legacy-rtm-api), try using [`rtm.connect`](/reference/methods/rtm.connect) to generate a WebSocket URL using a token with the proper permissions, then open the socket using a tool like [this browser-based WebSocket client for Google Chrome](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo?hl=en).
+
+Still unsure if Slack is down? Contact our enthusiastic [support team](https://my.slack.com/help/requests/new).
+
+### How do I integrate a third-party service with Slack?
+
+Check whether there is an app for a third-party service in the Slack Marketplace. If all else fails, you'll need to [code one for yourself](/quickstart).
+
+You can also add [connector functions](/tools/deno-slack-sdk/reference/connector-functions) to your automations workflows. A growing library of third-party services are available.
+
+### Apps vs. workflows
+
+Building a Slack app? Start [here](/quickstart). Building a workflow? Start [here](/workflows). For more about workflows and custom workflow steps, jump to [this section](#automations-workflow-apps).
+
+## Authentication
+
+### How do I authenticate my requests to Slack?
+
+#### By token
+
+When working with Slack apps or the [Web API](/apis/web-api/), you'll often need to send access tokens, also known as bearer tokens, along with inbound requests within the authorization header. When creating an app for the first time, you'll be given your own user and bot token while going through the app creation process. In order to obtain other users' tokens, you'll need to send users through the [OAuth 2.0 authentication flow](/authentication). When you're working with Slack apps, you'll be awarded access tokens after a user approves your application.
+
+#### By private URL
+
+Your [incoming webhook](/messaging/sending-messages-using-incoming-webhooks) URLs are unique to your integration or application and do not require token-based authentication. [Slash command response URLs](/interactivity/implementing-slash-commands#responding_to_a_command) also already encode your integration's or application's identity.
+
+### How do I authenticate requests from Slack to me?
+
+Use the [signing secret](/authentication/verifying-requests-from-slack) to compute a signature, and verify that the signature on the request matches. This process is _strongly_ preferred over the use of deprecated verification tokens.
+
+You can also use [Mutual TLS](/authentication/verifying-requests-from-slack#mutual_tls). Mutual TLS verifies the identity of Slack in a TLS-terminating server, before a request reaches your application code.
+
+### How does Slack authenticate its requests to my servers?
+
+When you configure [Slash commands](/interactivity/implementing-slash-commands), you specify a URL for Slack to send requests to when qualifying conditions are met. Slack also provides you a token related to that integration.
+
+Slack sends that URL a JSON payload containing a `token` field. Compare that field to values you've received from Slack. Refer to [validating slash commands](/interactivity/implementing-slash-commands#validating_the_command) for more information.
+
+### When do authorization codes expire?
+
+Authorization codes must be exchanged for an access token within 10 minutes by calling the [oauth.access](/reference/methods/oauth.access) API method as part of the [authorization flow](/authentication). Otherwise, the authorization code will expire, and you'll need to ask the user to go through the OAuth flow again.
+
+### How do I revoke a token?
+
+Use the [`apps.uninstall`](/reference/methods/apps.uninstall) API method to uninstall an app completely, revoking all tokens. If you want to dispose of a single OAuth access token, use the [`auth.revoke`](/reference/methods/auth.revoke) API method; it works with tokens from [Sign in with Slack](/authentication/sign-in-with-slack/) as well as from [legacy](/legacy/legacy-slack-button/Add-to-Slack).
+
+For classic apps, revoking the last token associated between your application and a workspace effectively uninstalls the app for that workspace.
+
+Members and administrators can remove your app through their [workspace administration interface](https://my.slack.com/apps/manage).
+
+Though it's somewhat of a nuclear option, you also have the ability to revoke all tokens from your [developer dashboard](https://api.slack.com/apps) by selecting your application and clicking **Revoke all tokens**.
+
+### How do I reset my client secret?
+
+To reset your client secret, go to your [developer dashboard](https://api.slack.com/apps), select the application, and click the **Change secret** button.
+
+Don't forget to use your new secret when exchanging authorization codes for access tokens while authorizing users and workspaces with [OAuth 2.0](/authentication).
+
+## Slash commands
+
+### Why does Slack never reach my slash command URL?
+
+Typically, if Slack cannot reach your slash command URL it's because it's inaccessible, does not have a valid or verifiable SSL certificate, or our request is timing out for some reason.
+
+Slack invokes slash command URLs from its servers rather than from a Slack client app like Slack for Mac. This means that the URL we're trying to reach must be accessible to Slack's servers.
+
+To determine whether your certificate is valid, consider using [this tool](https://www.ssllabs.com/ssltest/index.html) provided by SSL Labs.
+
+### How do I validate a slash command's origin?
+
+Keep track of the validation tokens and team IDs Slack gives you when commands are created and teams approve your app. Always validate that the `token` field in an incoming slash command request has been issued to you by Slack, and scope your data for that workspace.
+
+## Incoming webhooks
+
+### Why can't I override the channel, icon, or user name of my incoming webhook?
+
+You won't be able to override any of these fields when using an [incoming webhook](/messaging/sending-messages-using-incoming-webhooks) attached to a Slack app. Instead, those values will be provided from your Slack app configuration and any configuration provided by the team.
+
+## Interactive messages
+
+### Can I use a self-signed certificate for my action URL?
+
+No, SSL certificates must be signed by a reputable certificate authority. You may want to consider using one of the following low-cost providers:
+
+- [Let's Encrypt](https://letsencrypt.org/)
+- [CloudFlare](https://www.cloudflare.com/ssl/)
+
+## Web API
+
+### Can I send JSON when using HTTP POST?
+
+Yes, the [Web API](/apis/web-api/) accepts both `application/x-www-form-urlencoded` POSTs as well as `application/json`.
+
+Refer to [POST bodies](/apis/web-api/#post_bodies) for more information.
+
+### How is the Web API rate limited?
+
+Refer to our [rate limiting guide](/apis/web-api/rate-limits) for specific information on rate limits.
+
+### How do I work with files?
+
+Refer to our [working with files guide](/messaging/working-with-files) for specific information on working with files.
+
+### How do I find a channel's ID if I only have its #name?
+
+There are currently no methods to directly look up channels by name. Use the [`conversations.list`](/reference/methods/conversations.list) API method to retrieve a list of channels. The list includes each channel's `name` and `id` fields.
+
+Many developers keep the list of channels in memory for swifter lookups. Poll the method occasionally to refresh your inventory or keep it updated with the [Events API](/apis/events-api/).
+
+### How do I find a channel's name if I only have its ID?
+
+You can use similar instructions to the question above, or you can use the [`conversations.info`](/reference/methods/conversations.info) API method to obtain a specific channel's information, including its `name`.
+
+### Do channel IDs stay the same when the name of the channel changes?
+
+Channel IDs remain the same, even when names are changed.
+
+### Do channel IDs stay the same when moving between public and private?
+
+As of [September 2018](https://docs.slack.dev/changelog/2018/09/01/more-reasons-to-be-a-conversations-api-convert), channel IDs remain static even when a channel is converted between public and private.
+
+Use the [Conversations API](/apis/web-api/using-the-conversations-api) to safely work with channels that have transitioned between public and private.
+
+### How do I retrieve a single message?
+
+Use the [`conversations.history`](/reference/methods/conversations.history) API method and a token with the [`channels:history`](/reference/scopes/channels.history) scope to retrieve a specific message in a public channel. [Learn more about this approach](/messaging/retrieving-messages#individual_messages).
+
+## Events API
+
+### How do I re-enable event subscriptions for my app?
+
+If your app's subscriptions are disabled due to exceeding the Events API [failure limits](/apis/events-api/#failure_limits), manually re-enable them by visiting your [application's settings](https://api.slack.com/apps). If your app is part of the Slack Marketplace, use your **Live App Settings** instead of your development app.
+
+### When should I use the Events API and when should I use Socket Mode or the legacy RTM API?
+
+Choose the [Events API](/apis/events-api/) if:
+
+1. You want to precisely [scope](/reference/scopes) the data you receive to just what your app needs.
+2. You prefer or must use an inbound request model due to one of the following:
+   a) your hosting service is not able to maintain an outbound WebSocket connection, or
+   b) you prefer to scale your application on an inbound request model instead of maintaining multiple long-lived WebSocket connections.
+3. You're converting an [outgoing webhook](/legacy/legacy-custom-integrations/legacy-custom-integrations-outgoing-webhooks) integration into something installable as a Slack app.
+4. You find the [retry behavior](/apis/events-api/#errors) reassuring for redundancy reasons.
+
+Choose [Socket Mode](/apis/events-api/using-socket-mode) if:
+
+1. You're building an on-premise integration or have no ability to receive external HTTP requests.
+2. You're working on a distributed or mobile application without a server backend.
+3. You just prefer working with WebSockets. That's cool.
+4. You want data feed redundancy by opening additional WebSocket connections.
+5. You want messages to be delivered to you in real time.
+
+Finally, choose the legacy [RTM API](/legacy/legacy-rtm-api) _only_ if:
+
+1. You have very specific needs that only the RTM API solves.
+2. You already have a classic app, as they can longer be created.
+3. You are okay with your app not working in the somewhat-near future, [as classic apps are slated to be deprecated.](/changelog/2024-09-legacy-custom-bots-classic-apps-deprecation)
+
+### How do I make my bot appear active and present?
+
+The answer depends on whether you're using the Events API with or without the legacy RTM API:
+
+- With the Events API, you must toggle your presence by [managing your app](https://api.slack.com/apps)'s bot user config.
+- With the legacy RTM API, your bot is marked `active` while connected to a WebSocket.
+
+Therefore, the presence of the bot depends on whether you are using the legacy RTM API (the bot is online when it's connected through the WebSocket), or it's always online when you turn this setting on. Refer to [bot presence](/apis/web-api/user-presence-and-status#bot_presence) for more information.
+
+## Socket Mode
+
+[Socket Mode](/apis/events-api/using-socket-mode) allows you to use the [Events API](/apis/events-api/) and [interactive features of the platform](/interactivity), without exposing a static HTTP endpoint to receive payloads. Instead, you use the WebSocket protocol and generate a URL at runtime.
+
+The legacy [RTM API](/legacy/legacy-rtm-api) is another way of connecting your application to Slack. For most applications that can't use a static HTTP endpoint, [Socket Mode](/apis/events-api/using-socket-mode) is preferred over RTM.
+
+## Legacy RTM API
+
+### Can I start using the RTM API?
+
+Most likely not. Classic apps can no longer be created, and the newer, granular permissions apps cannot access the RTM API. Try the [Events API](/apis/events-api/)!
+
+### Can I keep using the RTM API?
+
+You can! But not forever. [Legacy classic apps are set to be deprecated November 2026](/changelog/2024-09-legacy-custom-bots-classic-apps-deprecation). Without those legacy apps, there will be no way to access the RTM API. Try the [Events API](/apis/events-api/) instead!
+
+## App approvals
+
+### How does my app get approved for the Slack Marketplace?
+
+Refer to the following guide: [Slack Marketplace review guide](/slack-marketplace/slack-marketplace-review-guide).
+
+### What happens if I make changes to an application that has been approved for the Slack Marketplace?
+
+If you need to update your approved app to request new [OAuth scopes](/authentication/installing-with-oauth#asking) or to include new features, find your application's settings page at [https://api.slack.com/apps](https://api.slack.com/apps). Any changes you make here will not affect the published app.
+
+Once you're ready to apply these changes to the published app, you'll need to [resubmit it for review](/slack-marketplace/slack-marketplace-review-guide).
+
+### What kind of changes to my app will require being reviewed again?
+
+If you've submitted your app to the Slack Marketplace but need to make changes to how your app or bot is described, to the integration types packed into your app, or to request additional permissions, you'll need your app to be reviewed again.
+
+## App approvals
+
+### How does my app get approved for the Slack Marketplace?
+
+Refer to the following guide: [Slack Marketplace review guide](/slack-marketplace/slack-marketplace-review-guide).
+
+### What happens if I make changes to an application that has been approved for the Slack Marketplace?
+
+If you need to update your approved app to request new [OAuth scopes](/authentication/installing-with-oauth#asking) or to include new features, find your application's settings page at [https://api.slack.com/apps](https://api.slack.com/apps). Any changes you make here will not affect the published app.
+
+Once you're ready to apply these changes to the published app, you'll need to [resubmit it for review](/slack-marketplace/slack-marketplace-review-guide).
+
+### What kind of changes to my app will require being reviewed again?
+
+If you've submitted your app to the Slack Marketplace but need to make changes to how your app or bot is described, to the integration types packed into your app, or to request additional permissions, you'll need your app to be reviewed again.

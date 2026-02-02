@@ -1,5 +1,3 @@
-# Source: https://mui.com/x/react-data-grid/events.md
-
 # Data Grid - Events
 
 Subscribe to the events emitted by the Data Grid to trigger custom behavior.
@@ -183,7 +181,7 @@ Set it to `true` to block the default handling of an event and implement your ow
 
 ```tsx
 <DataGrid
-  onCellClick={(params: GridCellParams, event: MuiEvent<React.MouseEvent>) => {
+  onCellClick={(params: GridCellParams, event: MuiEvent<ReactMouseEvent>) => {
     event.defaultMuiPrevented = true;
   }}
 />

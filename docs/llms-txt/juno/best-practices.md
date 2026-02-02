@@ -1,5 +1,3 @@
-# Source: https://juno.build/docs/miscellaneous/best-practices.md
-
 # Best Practices
 
 This page provides recommendations to improve your application when developing and deploying with Juno.
@@ -16,18 +14,42 @@ That being said, we strongly recommend defining a CSP in your project for securi
 
 You can define your CSP in one of two ways:
 
-1.  **Static Definition**
+1. **Static Definition**
 
 Add a CSP as the first `<meta>` tag of the `<head>` in your HTML file.
 
-```
-<html>  <head>    <meta      http-equiv="Content-Security-Policy"      content="REPLACE_THIS_WITH_YOUR_RULES"    />  </head></html>
+```html
+<html>
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="REPLACE_THIS_WITH_YOUR_RULES"
+    />
+  </head>
+</html>
 ```
 
-2.  **Via Configuration**
+2. **Via Configuration**
 
 Configure your Satellite to send a CSP header as part of the HTTP response. Headers can be configured as specified in this [chapter](/docs/reference/configuration.md#http-headers) of the documentation.
 
-```
-import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      production: "qsgjb-riaaa-aaaaa-aaaga-cai"    },    source: "dist",    storage: {      headers: [        {          source: "**/*",          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]        }      ]    }  }});
+```javascript
+import { defineConfig } from "@junobuild/config";
+
+export default defineConfig({
+  satellite: {
+    ids: {
+      production: "qsgjb-riaaa-aaaaa-aaaga-cai"
+    },
+    source: "dist",
+    storage: {
+      headers: [
+        {
+          source: "**/*",
+          headers: [["Content-Security-Policy", "REPLACE_THIS_WITH_YOUR_RULES"]]
+        }
+      ]
+    }
+  }
+});
 ```

@@ -176,8 +176,7 @@ For complete server-side implementation, see [Server Setup](./server-setup).
 
 ## Example Projects
 
-<CardGroup cols={2}>
-  <Card title="Basic JavaScript Example" icon="js" href="https://github.com/FlatFilers/create-flatfile-javascript">
+CardGroup cols={2}
+  Card title="Basic JavaScript Example" icon="js" href="https://github.com/FlatFilers/create-flatfile-javascript">
     Complete working example with HTML and JavaScript
   </Card>
-</CardGroup>

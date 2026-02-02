@@ -1,240 +1,151 @@
-<!-- Source: https://slack.com/resources/slack-for-admins/app-management -->
+# 5 steps to managing apps securely and at scale | Slack
 
-```html
-<!DOCTYPE html><html lang="en-US" class="" data-cdn="https://a.slack-edge.com/"><head><link rel="preconnect" href="https://d34u8crftukxnk.cloudfront.net"><script type="text/human">
-/*
+[Skip to main content](#main_focusable)
 
-          ++++      :::::                                   LLLLL                                          KKKKK
-         ++++++    :::::::                                  LLLLL                                          KKKKK
-          +++++    :::::::                                  LLLLL                                          KKKKK
-                   :::::::                                  LLLLL                                          KKKKK
-    ++++++++++++   :::::::   ::::            sSSSSSSSSs     LLLLL       aAAAAaa AAAAA        ccccccc       KKKKK     KKKKK
-   ++++++++++++++  :::::::  ::::::         SSSSSSSSSSSSSs   LLLLL     aAAAAAAAAAAAAAA      CCCCCCCCCCCc    KKKKK    KKKKK
-    ++++++++++++    :::::   :::::         SSSSSS    SSSSs   LLLLL    aAAAAAAAAAAAAAAA    cCCCCCCCCCCCCCC   KKKKK  KKKKK
-                                          SSSSSs            LLLLL   aAAAAa     AAAAAA    CCCCC     cCCCc   KKKKKKKKKK
-   :::::   :::::    +++++++++++++          sSSSSSSSSSs      LLLLL   aAAAA       AAAAA   CCCCC              KKKKKKKKKK
-  ::::::  :::::::  +++++++++++++++               sSSSSSs    LLLLL   aAAAAa     aAAAAA   CCCCCC     cCCCc   KKKKKkKKKKK
-   ::::   :::::::   +++++++++++++         SSSS     SSSSSs   LLLLL    aAAAAAAAAAAAAAAA    CCCCCcccccCCCCC   KKKKK  KKKKK
-          :::::::                         SSSSSSSSSSSSSs    LLLLL     aAAAAAAAAAAAAAA     cCCCCCCCCCCCC    KKKKK    KKKKK
-          :::::::  +++++                    sSSSSSSSSSs     LLLLL       aAAAAaa AAAAA       CCCCCCCCc      KKKKK     KKKKK
-          :::::::  ++++++
-           :::::    ++++
+[![Slack Logo](https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-white.png)](https://slack.com/)
+[![Slack Logo](https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-black.png)](https://slack.com/)
 
+## Features
 
-Thanks for taking a peek! Maybe a job is what you seek?
-https://slack.com/careers
+### COLLABORATION
 
-*/
-</script><link rel="canonical" href="https://slack.com/resources/slack-for-admins/app-management">
+- [Channels](https://slack.com/features/channels)
+  - Organize teams and work
+- [Slack Connect](https://slack.com/connect)
+  - Work with external partners
+- [Messaging](https://slack.com/team-chat)
+  - Chat with your team
+- [Huddles](https://slack.com/features/huddles)
+  - Meet with audio and video
+- [Clips](https://slack.com/features/clips)
+  - Record and share updates
 
-<link rel="alternate" hreflang="en-gb" href="https://slack.com/intl/en-gb/resources/slack-for-admins/app-management">
+### CRM
 
-<link rel="alternate" hreflang="de-de" href="https://slack.com/intl/de-de/resources/slack-for-admins/app-management">
+- [Salesforce in Slack](https://slack.com/features/crm)
+  - Bring Salesforce into the flow of work
 
-<link rel="alternate" hreflang="es-es" href="https://slack.com/intl/es-es/resources/slack-for-admins/app-management">
+### PROJECT MANAGEMENT
 
-<link rel="alternate" hreflang="es" href="https://slack.com/intl/es-la/resources/slack-for-admins/app-management">
+- [Templates](https://slack.com/templates)
+  - Start any task, fast
+- [Canvas](https://slack.com/features/canvas)
+  - Create rich, flexible docs
+- [Lists](https://slack.com/features/task-list)
+  - Organize, track and manage projects
+- [File Sharing](https://slack.com/document-sharing)
+  - Bring files to the flow of work
 
-<link rel="alternate" hreflang="fr-fr" href="https://slack.com/intl/fr-fr/resources/slack-for-admins/app-management">
+### PLATFORM
 
-<link rel="alternate" hreflang="ja-jp" href="https://slack.com/intl/ja-jp/resources/slack-for-admins/app-management">
+- [Agentic Platform](https://slack.com/features/agentic-platform)
+  - Customize, extend, and unify your tech stack in Slack
+- [Apps & Integrations](https://slack.com/integrations)
+  - Connect your tools with Slack
+- [Workflow Builder](https://slack.com/features/workflow-automation)
+  - Automate everyday tasks
 
-<link rel="alternate" hreflang="pt-br" href="https://slack.com/intl/pt-br/resources/slack-for-admins/app-management">
+### INTELLIGENCE
 
-<link rel="alternate" hreflang="ko-kr" href="https://slack.com/intl/ko-kr/resources/slack-for-admins/app-management">
+- ![AI Icon](https://a.slack-edge.com/7d8fca7/marketing/img/nav/ai-sparkles.svg) [AI in Slack](https://slack.com/features/ai)
+  - Save time and work smarter with powerfully simple AI
+- ![Slackbot Icon](https://a.slack-edge.com/b518216/marketing/img/nav/slackbot-nav-icon.svg) [Slackbot](https://slack.com/features/slackbot)
+  - Power productivity with your personal AI agent
+- [Agentforce](https://slack.com/ai-agents)
+  - Empower your whole team with AI-powered agents in Slack
+- [Enterprise Search](https://slack.com/features/enterprise-search)
+  - Find anything, all from a single search bar
 
-<link rel="alternate" hreflang="x-default" href="https://slack.com/resources/slack-for-admins/app-management">
+### ADMIN & SECURITY
 
-<link rel="alternate" hreflang="en-au" href="https://slack.com/intl/en-au/resources/slack-for-admins/app-management">
+- [Security](https://slack.com/trust/security)
+  - Protect data, ensure compliance
+- [Enterprise Key Management](https://slack.com/enterprise-key-management)
+  - Monitor and revoke access
+- [Slack Atlas](https://slack.com/atlas)
+  - Discover rich profiles and org charts
 
-<link rel="alternate" hreflang="en-in" href="https://slack.com/intl/en-in/resources/slack-for-admins/app-management">
+- [Watch demo](http://slack.com/demo)
+- [Download Slack](/get) ![Download Icon](https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg)
 
-<link rel="alternate" hreflang="en-us" href="https://slack.com/resources/slack-for-admins/app-management">
+## Slack Marketplace
 
-<script type="text/javascript" crossorigin="anonymous" src="https://a.slack-edge.com/bv1-13/manifest.038fd7fed4f2bf5888ea.marketing.min.js" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null"></script><noscript><meta http-equiv="refresh" content="0; URL=/resources/slack-for-admins/app-management?nojsmode=1"></noscript><script type="text/javascript">var safe_hosts = ['app.optimizely.com', 'tinyspeck.dev.slack.com', 'houston-dev.tinyspeck.com', 'houston.tinyspeck.com'];
+- [![Marketplace Image](https://a.slack-edge.com/11136b7/marketing/img/nav/img-marketplace-nav.jpg) Find new agents and apps that fit your team’s needs. Browse marketplace](https://slack.com/marketplace)
 
-if (self !== top && safe_hosts.indexOf(top.location.host) === -1) {
-	window.document.write(
-		'\u003Cstyle>body * {display:none !important;}\u003C/style>\u003Ca href="#" onclick=' +
-			'"top.location.href=window.location.href" style="display:block !important;padding:10px">Go to Slack.com\u003C/a>'
-	);
-}
+- [What is Slack?](https://slack.com/resources/why-use-slack/what-is-slack-and-how-does-it-work)
+- [Slack vs. Email](https://slack.com/why/slack-vs-email)
+- [Accessibility](https://slack.com/accessibility)
 
-(function() {
-	var timer;
-	if (self !== top && safe_hosts.indexOf(top.location.host) === -1) {
-		timer = window.setInterval(function() {
-			if (window) {
-				try {
-					var pageEl = document.getElementById('page');
-					var clientEl = document.getElementById('client-ui');
-					var sectionEls = document.querySelectorAll('nav, header, section');
+## Solutions
 
-					pageEl.parentNode.removeChild(pageEl);
-					clientEl.parentNode.removeChild(clientEl);
-					for (var i = 0; i < sectionEls.length; i++) {
-						sectionEls[i].parentNode.removeChild(sectionEls[i]);
-					}
-					window.TS = null;
-					window.TD = null;
-					window.clearInterval(timer);
-				} catch (e) {}
-			}
-		}, 200);
-	}
-})();</script><script>window.GA = window.GA || {};
-window.GA.boot_data = window.GA.boot_data || {};
-GA.boot_data.xhp = true;
-GA.boot_data.version_uid = "bd6dd8487946c295416663f77e0cf729b5d79498";
-GA.boot_data.environment = "prod";
-GA.boot_data.abs_root_url = "https:\/\/slack.com\/";
-GA.boot_data.document_referrer = "";
+### BY DEPARTMENT
 
-GA.boot_data.anonymous_visitor = false;
-GA.boot_data.beacon_timing_url = "https:\/\/slack.com\/beacon\/timing";
-GA.boot_data.referral_code = "";
-GA.boot_data.auth_cookie_domain = ".slack.com";
+- [Engineering](https://slack.com/solutions/engineering)
+- [IT](https://slack.com/solutions/information-technology)
+- [Customer Service](https://slack.com/solutions/customer-service)
+- [Sales](https://slack.com/solutions/sales)
+- [Project Management](https://slack.com/solutions/project-management)
+- [Marketing](https://slack.com/solutions/marketing)
+- [Human Resources](https://slack.com/solutions/human-resources)
+- [Security](https://slack.com/solutions/security)
 
-GA.boot_data.geo = {"ip":"23.93.151.210","country":"US","is_in_european_union":false,"region":"CA","city":"Redwood City","zip":"94062","lat":37.4245,"lon":-122.296,"metro":807,"country_label":"United States","region_label":"California","country3":"USA","continent":"NA","isp":"Sonic.net, LLC"};
-GA.boot_data.geocode = "en-us";
-GA.boot_data.intl_prefix = "";
-GA.boot_data.request_uri = "\/resources\/slack-for-admins\/app-management";
-GA.boot_data.canonical_web_url = "https:\/\/slack.com\/resources\/slack-for-admins\/app-management";
-GA.boot_data.i18n_locale = "en-US";
-GA.boot_data.geo_root_url = "https:\/\/slack.com\/";
+### BY INDUSTRY
 
-GA.boot_data.is_usa = true;
-GA.boot_data.is_spain = false;
-GA.boot_data.is_germany = false;
-GA.boot_data.is_france = false;
-GA.boot_data.is_japan = false;
-GA.boot_data.is_europe = false;
+- [Manufacturing, Auto & Energy](https://slack.com/solutions/manufacturing)
+- [Technology](https://slack.com/solutions/technology)
+- [Media](https://slack.com/solutions/media)
+- [Small Business](https://slack.com/solutions/small-business)
+- [Financial Services](https://slack.com/solutions/financial-services)
+- [Retail](https://slack.com/solutions/retail)
+- [Public Sector](https://slack.com/solutions/public-sector)
+- [Education](https://slack.com/solutions/distance-learning)
+- [Health & Life Sciences](https://slack.com/solutions/healthcare)
 
-GA.boot_data.is_latam = false;
-GA.boot_data.is_brazil = false;
-GA.boot_data.is_india = false;
-GA.boot_data.is_uk = false;
+- [Watch demo](http://slack.com/demo)
+- [Download Slack](/get) ![Download Icon](https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg)
+- [See all solutions](/solutions)
 
-GA.boot_data.is_english = true;
-GA.boot_data.is_spanish = false;
-GA.boot_data.is_german = false;
-GA.boot_data.is_french = false;
-GA.boot_data.is_japanese = false;
-GA.boot_data.is_portuguese = false;
+## TEMPLATE GALLERY
 
-GA.boot_data.job_board_token = "slack";
-GA.boot_data.zd_locale = "en-us";
-</script><meta name="facebook-domain-verification" content="chiwsajpoybn2cnqyj9w8mvrey56m0"><script type="text/javascript">
-window.dataLayer = window.dataLayer || [];
-function gtag(){window.dataLayer.push(arguments);}
+- [![Template Gallery Image](https://a.slack-edge.com/e1ed284/marketing/img/nav/feature-template-gallery@2x.jpg) Start work faster with pre-made templates for every task. See all templates](https://slack.com/templates/gallery)
 
-gtag('consent', "default", {"ad_storage":"granted","ad_user_data":"granted","ad_personalization":"granted","personalization_storage":"granted","analytics_storage":"granted","functionality_storage":"granted","security_storage":"granted","wait_for_update":1000});
+- [Task Management](https://slack.com/solutions/task-management)
+- [Scale](https://slack.com/scale)
+- [Engagement](https://slack.com/engage-users)
+- [Trust](https://slack.com/trust)
 
-function loadGTM() {
-	window.dataLayer.push({
-		'gtm.start': Date.now(),
-		'event': 'gtm.js',
-		'AnalyticsActiveGroups': ",1,2,3,4,",
-		'policy_ga_only': false,
-	});
-	var firstScript = document.getElementsByTagName('script')[0];
-	var thisScript = document.createElement('script');
-	thisScript.async = true;
-	thisScript.src = '//www.googletagmanager.com/gtm.js?id=GTM-KH2LPK';
-	firstScript.parentNode.insertBefore(thisScript, firstScript);
-}
+## Enterprise
 
+[Enterprise](https://slack.com/enterprise)
 
-</script><script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" data-domain-script="3bcd90cf-1e32-46d7-adbd-634f66b65b7d"></script><script>window.OneTrustLoaded = true;</script><script>
-window.dataLayer = window.dataLayer || [];
+## Resources
 
-function afterConsentScripts() {
-	window.TD.analytics.doPush();
+### Resources Library
 
-	const bottomBannerEl = document.querySelector('.c-announcement-banner-bottom');
-	if (bottomBannerEl !== null) {
-		bottomBannerEl.classList.remove('c-announcement-banner-bottom-invisible');
-	}
-}
+- [Resources Library](https://slack.com/resources)
+- [What’s New](https://slack.com/whats-new)
+- [Product Tour](https://slackdemo.com/)
+- [Events](https://slack.com/events)
+- [Developers](https://api.slack.com/)
+- [Partners](https://slack.com/partners)
+- [Customer Stories](https://slack.com/customer-stories)
+- [Community](https://slack.com/community)
+- [Slack Certified](https://slackcertified.com)
+- [Blog](https://slack.com/blog)
+- [Slack Marketplace](https://slack.com/marketplace)
 
+- [Watch demo](http://slack.com/demo)
+- [Download Slack](/get) ![Download Icon](https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg)
 
+### FEATURED
 
-let initOneTrustReady = false;
-let intOneTrustLoaded = false;
-function OptanonWrapper() {
-	
-	if (!intOneTrustLoaded) {
-		document.dispatchEvent(new CustomEvent('OneTrustLoaded'));
-		intOneTrustLoaded = true;
-	}
-	window.dataLayer.push({'event': 'OneTrustReady'});
-	if (!initOneTrustReady) {
-		document.dispatchEvent(new CustomEvent('OneTrustReady'));
-		loadGTM();
-		initOneTrustReady = true;
-	}
+- [![State of AI Agents Report Image](https://a.slack-edge.com/496f288/marketing/img/nav/nav-ad-state-of-work@2x.png) AI agents are the catalyst for a limitless workforce Get the report](https://slack.com/resources/why-use-slack/state-of-ai-agents)
 
-	if (!Optanon.GetDomainData().ShowAlertNotice || false) {
-		afterConsentScripts();
-	} else {
-		document.querySelector('#onetrust-accept-btn-handler').focus()
-	}
-	Optanon.OnConsentChanged(function() {
-		afterConsentScripts();
-	});
+- [Help Center](https://slack.com/help)
+- [Customer Support](https://slack.com/help/requests/new)
 
-}</script><script>
-if (!window.cj) window.cj = {};
-cj.sitePage = {"enterpriseId":1568900}
-</script><title>5 steps to managing apps securely and at scale | Slack</title><meta name="description" content="We've compiled best practices to help make it simpler and smoother for admins to manage apps in Slack securely and at scale."><meta property="og:type" content="website"><meta property="og:site_name" content="Slack"><meta property="og:title" content="5 steps to managing apps securely and at scale"><meta property="og:image" content="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/unfurl-slack-admin-app-management%402x.jpg"><meta property="og:description" content="We've compiled best practices to help make it simpler and smoother for admins to manage apps in Slack securely and at scale."><meta property="og:url" content="https://slack.com/resources/slack-for-admins/app-management"><meta name="twitter:site" content="@slackhq"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="5 steps to managing apps securely and at scale"><meta name="twitter:description" content="We've compiled best practices to help make it simpler and smoother for admins to manage apps in Slack securely and at scale."><meta name="twitter:image" content="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/unfurl-slack-admin-app-management%402x.jpg"><meta charset="utf-8"><meta name="author" content="Slack"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="referrer" content="origin-when-cross-origin"><link id="favicon" rel="shortcut icon" href="https://a.slack-edge.com/e6a93c1/img/icons/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png"><link href="https://a.slack-edge.com/bv1-13/rollup-style-spacesuit.2143d3e8c39337ef7ce9.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/rollup-style-marketing-cms.292a86a60e4886d1ca8e.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/rollup-style-product-uis-custom.6656c8e4c1160194e6d2.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/rollup-style-product-uis.e5cb75693856e227c94f.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/legacy-style-libs-swiper.68da5aa292b00d271877.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/marketing-style-page-resources-article.381d80cee12990d84c2f.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/marketing-style-page-expanded-nav-es.da0076ff72e2f4ea3fc7.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/marketing-style-page-expanded-nav-slackbot.70bff2db76abb07d38ed.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><link href="https://a.slack-edge.com/bv1-13/marketing-style-onetrust-banner.80ccb99235027e6690e3.min.css" rel="stylesheet" type="text/css" onload="window._cdn ? _cdn.ok(this, arguments) : null" onerror="window._cdn ? _cdn.failed(this, arguments) : null" crossorigin="anonymous"><style type="text/css">
-.c-post *[class^=for_]:not(.for_US):not(.for_en-US),
-.c-post .not_for_US,
-.c-post .not_for_en-US
-{ display: none; }
+## Pricing
 
-</style><script></script><script src="https://reveal.clearbit.com/v1/companies/reveal?variable=reveal&amp;authorization=pk_7144fadb90a8fdd9c89e1395ff4171a3" referrerpolicy="origin"></script><script>
-if (window.reveal && window.reveal.company) {
-	var r = window.reveal;
-	window.clearbit_fmt = {
-		cb_traffic_type: r.type,
-		cb_company_name: r.company.name,
-		cb_industry_tags: r.company.tags.join(', '),
-		cb_industry_sector: r.company.category.sector,
-		cb_industry_group:  r.company.category.industryGroup,
-		cb_industry_name: r.company.category.industry,
-		cb_industry_sub: r.company.category.subIndustry,
-		cb_company_city: r.company.geo.city,
-		cb_company_state:r.company.geo.state,
-		cb_company_country: r.company.geo.country,
-		cb_alexa_us: r.company.metrics.alexaUsRank,
-		cb_alexa_global: r.company.metrics.alexaGlobalRank,
-		cb_size_employees: r.company.metrics.employees,
-		cb_size_range: r.company.metrics.employeesRange,
-		cb_size_annual_revenue: r.company.metrics.annualRevenue,
-		cb_size_est_revenue: r.company.metrics.estimatedAnnualRevenue,
-	}
-}
+[Pricing](https://slack.com/pricing)
 
-window.optimizely_fmt = {
-	"type": "user",
-	"attributes": {
-		"visitor_uid" : "a807089bae6a209ad7215e4090534278",
-		"visitor_type": "prospect",
-		"is_first_visit": false,
-		"traffic_type": "logged_out",	}
-}
-if (window.reveal && window.reveal.company) {
-	window.dataLayer = window.dataLayer || [];
-	window.dataLayer.push(window.clearbit_fmt);
-	window.dataLayer.push({event: 'Clearbit'});
-}
-if (window.reveal && window.reveal.company) {
-	for (var p in window.clearbit_fmt) {
-		if (window.clearbit_fmt.hasOwnProperty(p)) {
-			window.optimizely_fmt.attributes[p] = window.clearbit_fmt[p];
-		}
-	}
-}window.optimizely = window.optimizely || [];
-window.optimizely.push({'type':'optOut','isOptOut':false});
-window.optimizely.push(window.optimizely_fmt);</script><meta name="robots" content="max-image-preview:large"></head><body class=""><a class="c-button v--primary c-skip-link is-focusable" href="#main_focusable" data-clog-click data-clog-ui-element="link_skip" data-clog-ui-component="inc_skip_link">Skip to main content</a><div id="announce" aria-live="polite" class="u-visually-hidden"></div><header role="banner"><nav class="c-nav c-nav--primary--expanded c-nav--yext" role="navigation" aria-label="Primary Navigation"><div class="c-nav__row o-nav--primary o-content-container US"><div class="c-slacklogo"><a data-clog-click data-clog-ui-element="link_home" data-clog-ui-component="inc_header_nav_deux" class="c-slacklogo--white" href="https://slack.com/" aria-label="Slack" data-qa="logo"><img src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-white.png" srcset="/marketing/img/nav/slack-salesforce-logo-nav-white.png 1x, /marketing/img/nav/slack-salesforce-logo-nav-white@2x.png 2x" alt="Slack" class="c-slacklogo--white"><img src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-black.png" srcset="/marketing/img/nav/slack-salesforce-logo-nav-black.png 1x, /marketing/img/nav/slack-salesforce-logo-nav-black@2x.png 2x" alt="Slack" class="c-slacklogo--color"></a></div><nav class="c-nav__list templates_layout"><ul class="c-extnav-level__0"><li id="nav_features" class="nav_parent nav_parent_l1"><button aria-expanded="false" aria-haspopup="true" tabindex="0" class="dropdown_button" data-clog-click data-clog-ui-element="btn_features_exp_nav" data-clog-ui-component="inc_header_exp_nav"><span class="nav_parent_label nav_parent_label_l1">Features</span></button><ul class="c-extnav-level__1"><li id="nav_features_main" class="nav_parent nav_parent_l2"><ul class="c-extnav-level__2"><li id="nav_features_main_top" class="nav_parent nav_parent_l3 v--mobile-order"><ul class="c-extnav-level__3"><li id="nav_collaboration" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">COLLABORATION</div><ul class="c-extnav-level__4"><li id="link_channels_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/channels" data-clog-click data-clog-ui-element="link_channels_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Channels</div></div><div class="nav_link_sublabel">Organize teams and work</div></a></li><li id="link_connect_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/connect" data-clog-click data-clog-ui-element="link_connect_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Slack Connect</div></div><div class="nav_link_sublabel">Work with external partners</div></a></li><li id="link_messaging_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/team-chat" data-clog-click data-clog-ui-element="link_messaging_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Messaging</div></div><div class="nav_link_sublabel">Chat with your team</div></a></li><li id="link_huddles_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/huddles" data-clog-click data-clog-ui-element="link_huddles_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Huddles</div></div><div class="nav_link_sublabel">Meet with audio and video</div></a></li><li id="link_clips_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/clips" data-clog-click data-clog-ui-element="link_clips_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Clips</div></div><div class="nav_link_sublabel">Record and share updates</div></a></li></ul></li><li id="nav_crm" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">CRM</div><ul class="c-extnav-level__4"><li id="link_crm_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/crm" data-clog-click data-clog-ui-element="link_crm_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Salesforce in Slack</div></div><div class="nav_link_sublabel">Bring Salesforce into the flow of work</div></a></li></ul></li><li id="nav_project_management" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">PROJECT MANAGEMENT</div><ul class="c-extnav-level__4"><li id="link_templates_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/templates" data-clog-click data-clog-ui-element="link_templates_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Templates</div></div><div class="nav_link_sublabel">Start any task, fast</div></a></li><li id="link_canvas_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/canvas" data-clog-click data-clog-ui-element="link_canvas_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Canvas</div></div><div class="nav_link_sublabel">Create rich, flexible docs</div></a></li><li id="link_lists_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/task-list" data-clog-click data-clog-ui-element="link_lists_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Lists</div></div><div class="nav_link_sublabel">Organize, track and manage projects</div></a></li><li id="link_file_sharing_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/document-sharing" data-clog-click data-clog-ui-element="link_file_sharing_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>File Sharing</div></div><div class="nav_link_sublabel">Bring files to the flow of work</div></a></li></ul></li><li id="nav_platform" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">PLATFORM</div><ul class="c-extnav-level__4"><li id="link_agentic_platform_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/agentic-platform" data-clog-click data-clog-ui-element="link_agentic_platform_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Agentic Platform</div></div><div class="nav_link_sublabel">Customize, extend, and unify your tech stack in Slack</div></a></li><li id="link_integrations_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/integrations" data-clog-click data-clog-ui-element="link_integrations_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Apps &amp; Integrations</div></div><div class="nav_link_sublabel">Connect your tools with Slack</div></a></li><li id="link_workflow_builder_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/workflow-automation" data-clog-click data-clog-ui-element="link_workflow_builder_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Workflow Builder</div></div><div class="nav_link_sublabel">Automate everyday tasks</div></a></li></ul></li><li id="nav_intelligence" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">INTELLIGENCE</div><ul class="c-extnav-level__4"><li id="link_features_ai_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/ai" data-clog-click data-clog-ui-element="link_features_ai_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><img class="nav_std_icon" src="https://a.slack-edge.com/7d8fca7/marketing/img/nav/ai-sparkles.svg" alt=""><div>AI in Slack</div></div><div class="nav_link_sublabel">Save time and work smarter with powerfully simple AI</div></a></li><li id="link_features_slackbot_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/slackbot" data-clog-click data-clog-ui-element="link_features_slackbot_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><img class="nav_std_icon" src="https://a.slack-edge.com/b518216/marketing/img/nav/slackbot-nav-icon.svg" alt=""><div>Slackbot</div></div><div class="nav_link_sublabel">Power productivity with your personal AI agent</div></a></li><li id="link_features_agentforce_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/ai-agents" data-clog-click data-clog-ui-element="link_features_agentforce_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Agentforce</div></div><div class="nav_link_sublabel">Empower your whole team with AI-powered agents in Slack</div></a></li><li id="link_features_enterprise_search_nav" class="nav_link nav_link_l5"><a href="https://slack.com/features/enterprise-search" data-clog-click data-clog-ui-element="link_enterprise_search_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Enterprise Search</div></div><div class="nav_link_sublabel">Find anything, all from a single search bar</div></a></li></ul></li><li id="nav_admin" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">ADMIN &amp; SECURITY</div><ul class="c-extnav-level__4"><li id="link_security_enterprise_platform_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/trust/security" data-clog-click data-clog-ui-element="link_security_enterprise_platform_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Security</div></div><div class="nav_link_sublabel">Protect data, ensure compliance</div></a></li><li id="link_ekm_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/enterprise-key-management" data-clog-click data-clog-ui-element="link_ekm_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Enterprise Key Management</div></div><div class="nav_link_sublabel">Monitor and revoke access</div></a></li><li id="link_atlas_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/atlas" data-clog-click data-clog-ui-element="link_atlas_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Slack Atlas</div></div><div class="nav_link_sublabel">Discover rich profiles and org charts</div></a></li></ul></li></ul></li><li id="nav_features_main_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="features-get-demo" class="nav_cta"><a class="nav_cta_link" href="http://slack.com/demo" data-clog-click data-clog-ui-element="link_demo_exp_nav" data-clog-ui-component="inc_header_exp_nav">Watch demo</a></li><li id="features-download-slack" class="nav_cta"><a class="nav_cta_link" href="/get" data-clog-click data-clog-ui-element="link_download_exp_nav" data-clog-ui-component="inc_header_exp_nav" data-gtm-click="custEv_downloads_page_windows">Download Slack</a><img class="nav_cta_icon" src="https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg" alt=""></li></ul></li></ul></li><li id="nav_features_side" class="nav_parent nav_parent_l2"><div class="nav_parent_label nav_parent_label_l2">Slack Marketplace</div><ul class="c-extnav-level__2"><li id="nav_features_side_top" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="featured_story_marketplace_features_exp_nav" class="nav_story"><a href="https://slack.com/marketplace" data-clog-click data-clog-ui-element="link_featured_story_marketplace_features_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_story_content"><img src="https://a.slack-edge.com/11136b7/marketing/img/nav/img-marketplace-nav.jpg" class="nav_story_img" alt=""><div class="nav_story_label">Find new agents and apps that fit your team’s needs.</div><div class="nav_story_sublabel o-section--feature__link">Browse marketplace</div></div></a></li></ul></li><li id="nav_features_side_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="link_what_is_slack_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/resources/why-use-slack/what-is-slack-and-how-does-it-work" data-clog-click data-clog-ui-element="link_what_is_slack_exp_nav" data-clog-ui-component="inc_header_exp_nav">What is Slack?</a></li><li id="link_slack_vs_email_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/why/slack-vs-email" data-clog-click data-clog-ui-element="link_slack_vs_email_exp_nav" data-clog-ui-component="inc_header_exp_nav">Slack vs. Email</a></li><li id="link_accessibility_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/accessibility" data-clog-click data-clog-ui-element="link_accessibility_exp_nav" data-clog-ui-component="inc_header_exp_nav">Accessibility</a></li></ul></li></ul></li></ul></li><li id="nav_solutions" class="nav_parent nav_parent_l1"><button aria-expanded="false" aria-haspopup="true" tabindex="0" class="dropdown_button" data-clog-click data-clog-ui-element="btn_solutions_exp_nav" data-clog-ui-component="inc_header_exp_nav"><span class="nav_parent_label nav_parent_label_l1">Solutions</span></button><ul class="c-extnav-level__1"><li id="nav_solutions_main" class="nav_parent nav_parent_l2"><ul class="c-extnav-level__2"><li id="nav_solutions_main_top" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="nav_department" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">BY DEPARTMENT</div><ul class="c-extnav-level__4"><li id="link_engineering_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/engineering" data-clog-click data-clog-ui-element="link_engineering_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Engineering</div></div></a></li><li id="link_it_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/information-technology" data-clog-click data-clog-ui-element="link_it_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>IT</div></div></a></li><li id="link_customer_service_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/customer-service" data-clog-click data-clog-ui-element="link_customer_service_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Customer Service</div></div></a></li><li id="link_sales_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/sales" data-clog-click data-clog-ui-element="link_sales_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Sales</div></div></a></li><li id="link_project_management_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/project-management" data-clog-click data-clog-ui-element="link_project_management_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Project Management</div></div></a></li><li id="link_marketing_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/marketing" data-clog-click data-clog-ui-element="link_marketing_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Marketing</div></div></a></li><li id="link_hr_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/human-resources" data-clog-click data-clog-ui-element="link_hr_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Human Resources</div></div></a></li><li id="link_security_solutions_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/security" data-clog-click data-clog-ui-element="link_security_solutions_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Security</div></div></a></li></ul></li><li id="nav_industry" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">BY INDUSTRY</div><ul class="c-extnav-level__4"><li id="link_mae_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/manufacturing" data-clog-click data-clog-ui-element="link_mae_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Manufacturing, Auto &amp; Energy</div></div></a></li><li id="link_technology_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/technology" data-clog-click data-clog-ui-element="link_technology_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Technology</div></div></a></li><li id="link_media_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/media" data-clog-click data-clog-ui-element="link_media_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Media</div></div></a></li><li id="link_small_business_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/small-business" data-clog-click data-clog-ui-element="link_small_business_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Small Business</div></div></a></li><li id="link_financial_services_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/financial-services" data-clog-click data-clog-ui-element="link_financial_services_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Financial Services</div></div></a></li><li id="link_retail_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/retail" data-clog-click data-clog-ui-element="link_retail_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Retail</div></div></a></li><li id="link_public_sector_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/public-sector" data-clog-click data-clog-ui-element="link_public_sector_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Public Sector</div></div></a></li><li id="link_education_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/distance-learning" data-clog-click data-clog-ui-element="link_education_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Education</div></div></a></li><li id="link_healthcare_exp_nav" class="nav_link nav_link_l5"><a href="https://slack.com/solutions/healthcare" data-clog-click data-clog-ui-element="link_healthcare_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Health &amp; Life Sciences</div></div></a></li></ul></li></ul></li><li id="nav_solutions_main_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="solutions-get-demo" class="nav_cta"><a class="nav_cta_link" href="http://slack.com/demo" data-clog-click data-clog-ui-element="link_demo_exp_nav" data-clog-ui-component="inc_header_exp_nav">Watch demo</a></li><li id="solutions-download-slack" class="nav_cta"><a class="nav_cta_link" href="/get" data-clog-click data-clog-ui-element="link_download_exp_nav" data-clog-ui-component="inc_header_exp_nav" data-gtm-click="custEv_downloads_page_windows">Download Slack</a><img class="nav_cta_icon" src="https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg" alt=""></li><li id="solutions-see-all" class="nav_cta"><a class="nav_cta_link" href="/solutions" data-clog-click data-clog-ui-element="link_solutions_exp_nav" data-clog-ui-component="inc_header_exp_nav">See all solutions</a></li></ul></li></ul></li><li id="nav_solutions_side" class="nav_parent nav_parent_l2"><div class="nav_parent_label nav_parent_label_l2">TEMPLATE GALLERY</div><ul class="c-extnav-level__2"><li id="nav_solutions_side_top" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="featured_story_solutions" class="nav_story"><a href="https://slack.com/templates/gallery" data-clog-click data-clog-ui-element="link_templates_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_story_content"><img src="https://a.slack-edge.com/e1ed284/marketing/img/nav/feature-template-gallery@2x.jpg" class="nav_story_img" alt=""><div class="nav_story_label">Start work faster with pre-made templates for every task.</div><div class="nav_story_sublabel o-section--feature__link">See all templates</div></div></a></li></ul></li><li id="nav_solutions_side_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="link_task_management_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/solutions/task-management" data-clog-click data-clog-ui-element="link_task_management_exp_nav" data-clog-ui-component="inc_header_exp_nav">Task Management</a></li><li id="link_scale_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/scale" data-clog-click data-clog-ui-element="link_scale_exp_nav" data-clog-ui-component="inc_header_exp_nav">Scale</a></li><li id="link_engagement_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/engage-users" data-clog-click data-clog-ui-element="link_engagement_exp_nav" data-clog-ui-component="inc_header_exp_nav">Engagement</a></li><li id="link_trust_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/trust" data-clog-click data-clog-ui-element="link_trust_exp_nav" data-clog-ui-component="inc_header_exp_nav">Trust</a></li></ul></li></ul></li></ul></li><li id="nav_enterprise" class="nav_link nav_link_l1"><a href="https://slack.com/enterprise" data-clog-click data-clog-ui-element="link_enterprise_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Enterprise</div></div></a></li><li id="nav_resources" class="nav_parent nav_parent_l1"><button aria-expanded="false" aria-haspopup="true" tabindex="0" class="dropdown_button" data-clog-click data-clog-ui-element="btn_resources_exp_nav" data-clog-ui-component="inc_header_exp_nav"><span class="nav_parent_label nav_parent_label_l1">Resources</span></button><ul class="c-extnav-level__1"><li id="nav_resources_main" class="nav_parent nav_parent_l2"><ul class="c-extnav-level__2"><li id="nav_resources_main_top" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="link_resources_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/resources" data-clog-click data-clog-ui-element="link_resources_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Resources Library</div></div></a></li><li id="link_whats_new_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/whats-new" data-clog-click data-clog-ui-element="link_whats_new_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>What’s New</div></div></a></li><li id="link_tour_slack_resource_exp_nav" class="nav_link nav_link_l4"><a href="https://slackdemo.com/" data-clog-click data-clog-ui-element="link_tour_slack_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Product Tour</div></div></a></li><li id="link_events_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/events" data-clog-click data-clog-ui-element="link_events_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Events</div></div></a></li><li id="link_developers_exp_nav" class="nav_link nav_link_l4"><a href="https://api.slack.com" data-clog-click data-clog-ui-element="link_developers_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Developers</div></div></a></li><li id="link_partners_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/partners" data-clog-click data-clog-ui-element="link_partners_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Partners</div></div></a></li><li id="link_customer_stories_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/customer-stories" data-clog-click data-clog-ui-element="link_customer_stories_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Customer Stories</div></div></a></li><li id="link_community_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/community" data-clog-click data-clog-ui-element="link_community_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Community</div></div></a></li><li id="link_slack_certified_exp_nav" class="nav_link nav_link_l4"><a href="https://slackcertified.com" data-clog-click data-clog-ui-element="link_slack_certified_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Slack Certified</div></div></a></li><li id="link_blog_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/blog" data-clog-click data-clog-ui-element="link_blog_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Blog</div></div></a></li><li id="link_app_directory_exp_nav" class="nav_link nav_link_l4"><a href="https://slack.com/marketplace" data-clog-click data-clog-ui-element="link_apps_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Slack Marketplace</div></div></a></li></ul></li><li id="nav_resources_main_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="resources-get-demo" class="nav_cta"><a class="nav_cta_link" href="http://slack.com/demo" data-clog-click data-clog-ui-element="link_demo_exp_nav" data-clog-ui-component="inc_header_exp_nav">Watch demo</a></li><li id="resources-download-slack" class="nav_cta"><a class="nav_cta_link" href="/get" data-clog-click data-clog-ui-element="link_download_exp_nav" data-clog-ui-component="inc_header_exp_nav" data-gtm-click="custEv_downloads_page_windows">Download Slack</a><img class="nav_cta_icon" src="https://a.slack-edge.com/fd21de4/marketing/img/nav/download.svg" alt=""></li></ul></li></ul></li><li id="nav_resources_side" class="nav_parent nav_parent_l2"><div class="nav_parent_label nav_parent_label_l2">FEATURED</div><ul class="c-extnav-level__2"><li id="nav_resources_side_top" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="featured_story_resources" class="nav_story"><a href="https://slack.com/resources/why-use-slack/state-of-ai-agents" data-clog-click data-clog-ui-element="link_slack_adoption_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_story_content"><img src="https://a.slack-edge.com/496f288/marketing/img/nav/nav-ad-state-of-work@2x.png" class="nav_story_img" alt=""><div class="nav_story_label">AI agents are the catalyst for a limitless workforce</div><div class="nav_story_sublabel o-section--feature__link">Get the report</div></div></a></li></ul></li><li id="nav_resources_side_bottom" class="nav_parent nav_parent_l3"><ul class="c-extnav-level__3"><li id="link_help_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/help" data-clog-click data-clog-ui-element="link_help_exp_nav" data-clog-ui-component="inc_header_exp_nav">Help Center</a></li><li id="link_customer_support_exp_nav" class="nav_sidebar_label"><a class="nav_sidebar_link" href="https://slack.com/help/requests/new" data-clog-click data-clog-ui-element="link_customer_support_exp_nav" data-clog-ui-component="inc_header_exp_nav">Customer Support</a></li></ul></li></ul></li></ul></li><li id="nav_pricing" class="nav_link nav_link_l1"><a href="https://slack.com/pricing" data-clog-click data-clog-ui-element="link_pricing_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Pricing</div></div></a></li></ul><button id="nav_search_btn" class="nav_search_btn" aria-label="Search" data-clog-click data-clog-ui-element="btn_search" data-clog-ui-component="inc_workspace_nav"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="m18.78 17.72c.1467.1467.22.3233.22.53 0 .2133-.0733.39-.22.53-.16.1467-.3367.22-.53.22-.2067 0-.3833-.0733-.53-.22l-4.47-4.47c-.6667.54-1.4067.9567-2.22 1.25-.8067.2933-1.65.44-2.53.44-1.36 0-2.61333-.3367-3.76-1.01s-2.05667-1.5833-2.73-2.73-1.01-2.4-1.01-3.76.33667-2.61333 1.01-3.76 1.58333-2.05667 2.73-2.73 2.4-1.01 3.76-1.01 2.6133.33667 3.76 1.01 2.0567 1.58333 2.73 2.73 1.01 2.4 1.01 3.76c0 .88-.1467 1.7267-.44 2.54-.2933.8067-.71 1.5433-1.25 2.21zm-10.28-3.22c1.08667 0 2.0867-.27 3-.81.92-.54 1.65-1.2667 2.19-2.18.54-.92.81-1.92333.81-3.01s-.27-2.08667-.81-3c-.54-.92-1.27-1.65-2.19-2.19-.9133-.54-1.91333-.81-3-.81s-2.09.27-3.01.81c-.91333.54-1.64 1.27-2.18 2.19-.54.91333-.81 1.91333-.81 3s.27 2.09.81 3.01c.54.9133 1.26667 1.64 2.18 2.18.92.54 1.92333.81 3.01.81z" stroke="#000" stroke-width=".5"></path></svg></button><div class="search_form hide-yext-element"></div><div class="c-nav--yext-submit hide-yext-element"><a class="c-button v--left v--secondary" data-clog-click="" data-clog-ui-component="inc_header_nav_deux" data-clog-ui-element="link_y_search" data-qa="y_search_submit" href="#">Search</a></div><div class="c-nav--signed-out"><a href="https://slack.com/signin" class=" c-nav--signed-out__link" data-clog-click data-clog-ui-element="link_sign_in_nav" data-clog-ui-component="inc_header_nav_deux" data-qa="link_sign_in_nav">Sign in</a><a href="https://slack.com/contact-sales?category=slack-for-admins&amp;slug=app-management" class="c-button v--secondary v--left search-hide-element c-nav--signed-out__contact_sales v--prospect" data-gtm-click="ContactSales" data-clog-click data-clog-ui-element="link_contact_sales" data-clog-ui-component="inc_header_nav_deux" data-qa="link_contact_sales">Request a demo</a><a href="https://slack.com/get-started?entry_point=nav_menu" class="c-button v--primary v--left" data-gtm-click="SignUp" data-clog-click data-clog-ui-element="link_get_started" data-clog-ui-component="inc_header_nav_deux" data-qa="cta_get_started">Get started</a></div></nav><div class="c-button__nav-primary-tablet mobile-y-search-container"><button class="nav_search_btn--m" aria-label="Search" data-clog-click data-clog-ui-element="btn_search" data-clog-ui-component="inc_workspace_nav"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="m18.78 17.72c.1467.1467.22.3233.22.53 0 .2133-.0733.39-.22.53-.16.1467-.3367.22-.53.22-.2067 0-.3833-.0733-.53-.22l-4.47-4.47c-.6667.54-1.4067.9567-2.22 1.25-.8067.2933-1.65.44-2.53.44-1.36 0-2.61333-.3367-3.76-1.01s-2.05667-1.5833-2.73-2.73-1.01-2.4-1.01-3.76.33667-2.61333 1.01-3.76 1.58333-2.05667 2.73-2.73 2.4-1.01 3.76-1.01 2.6133.33667 3.76 1.01 2.0567 1.58333 2.73 2.73 1.01 2.4 1.01 3.76c0 .88-.1467 1.7267-.44 2.54-.2933.8067-.71 1.5433-1.25 2.21zm-10.28-3.22c1.08667 0 2.0867-.27 3-.81.92-.54 1.65-1.2667 2.19-2.18.54-.92.81-1.92333.81-3.01s-.27-2.08667-.81-3c-.54-.92-1.27-1.65-2.19-2.19-.9133-.54-1.91333-.81-3-.81s-2.09.27-3.01.81c-.91333.54-1.64 1.27-2.18 2.19-.54.91333-.81 1.91333-.81 3s.27 2.09.81 3.01c.54.9133 1.26667 1.64 2.18 2.18.92.54 1.92333.81 3.01.81z" stroke="#000" stroke-width=".5"></path></svg></button><div class="search_form--m hide-yext-element"></div><a href="https://slack.com/get-started?entry_point=nav_menu" class="c-button v--primary v--left c-button__nav-primary-tablet" data-gtm-click="SignUp" data-clog-click data-clog-ui-element="link_get_started" data-clog-ui-component="inc_header_nav_deux" data-qa="cta_get_started">Get started</a><button id="nav_menu_btn" aria-label="Menu" class="nav_menu_btn c-nav__icon v--menu u-border-radius--none" data-clog-click data-clog-ui-element="btn_menu" data-clog-ui-component="inc_header_nav_deux"><svg width="24" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w4.org/2000/svg"><path d="M1.52 2C1.22667 2 0.983333 1.90667 0.79 1.72C0.596667 1.52667 0.5 1.28667 0.5 1C0.5 0.713334 0.596667 0.476667 0.79 0.290001C0.983333 0.0966671 1.22667 0 1.52 0H16.48C16.7733 0 17.0167 0.0966671 17.21 0.290001C17.4033 0.476667 17.5 0.713334 17.5 1C17.5 1.28667 17.4033 1.52667 17.21 1.72C17.0167 1.90667 16.7733 2 16.48 2H1.52ZM1.52 7C1.22667 7 0.983333 6.90667 0.79 6.72C0.596667 6.52667 0.5 6.28667 0.5 6C0.5 5.71333 0.596667 5.47667 0.79 5.29C0.983333 5.09667 1.22667 5 1.52 5H16.48C16.7733 5 17.0167 5.09667 17.21 5.29C17.4033 5.47667 17.5 5.71333 17.5 6C17.5 6.28667 17.4033 6.52667 17.21 6.72C17.0167 6.90667 16.7733 7 16.48 7H1.52ZM1.52 12C1.22667 12 0.983333 11.9067 0.79 11.72C0.596667 11.5267 0.5 11.2867 0.5 11C0.5 10.7133 0.596667 10.4767 0.79 10.29C0.983333 10.0967 1.22667 10 1.52 10H16.48C16.7733 10 17.0167 10.0967 17.21 10.29C17.4033 10.4767 17.5 10.7133 17.5 11C17.5 11.2867 17.4033 11.5267 17.21 11.72C17.0167 11.9067 16.7733 12 16.48 12H1.52Z" fill="#1D1C1D"></path></svg></button></div></div></nav><nav id="main_nav" class="c-nav__mobile v--primary is-hidden expanded" role="navigation" aria-label="Primary Navigation"><div class="c-nav__toolbar v--top"><button class="c-nav__back hidden" data-clog-click data-clog-ui-element="btn_back" data-clog-ui-component="inc_mobile_nav_deux">Back</button><a class="c-nav__logo" href="https://slack.com/" data-clog-click data-clog-ui-element="link_home" data-clog-ui-component="inc_mobile_nav_deux"><img src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-black.png" srcset="/marketing/img/nav/slack-salesforce-logo-nav-black.png 1x, /marketing/img/nav/slack-salesforce-logo-nav-black@2x.png 2x" alt="Slack" class="c-slacklogo--color"></a><button id="nav_close_btn" aria-label="Close Navigation" class="c-nav__icon v--close" data-clog-click data-clog-ui-element="btn_close" data-clog-ui-component="inc_mobile_nav_deux"><img src="https://a.slack-edge.com/08a75f1/marketing/img/nav/mobile-opened.svg" alt="Close Navigation"></button></div><div class="c-nav__scroller"><nav class="c-nav__list"><ul class="c-extnav-level__0"><li id="nav_features-mobile" class="nav_parent nav_parent_l1"><button aria-expanded="false" aria-haspopup="true" tabindex="0" class="dropdown_button" data-clog-click data-clog-ui-element="btn_features_exp_nav" data-clog-ui-component="inc_header_exp_nav"><span class="nav_parent_label nav_parent_label_l1">Features</span></button><ul class="c-extnav-level__1"><li id="nav_features_main-mobile" class="nav_parent nav_parent_l2"><ul class="c-extnav-level__2"><li id="nav_features_main_top-mobile" class="nav_parent nav_parent_l3 v--mobile-order"><ul class="c-extnav-level__3"><li id="nav_collaboration-mobile" class="nav_parent push_down_ai nav_parent_l4"><div class="nav_parent_label nav_parent_label_l4">COLLABORATION</div><ul class="c-extnav-level__4"><li id="link_channels_exp_nav-mobile" class="nav_link nav_link_l5"><a href="https://slack.com/features/channels" data-clog-click data-clog-ui-element="link_channels_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Channels</div></div><div class="nav_link_sublabel">Organize teams and work</div></a></li><li id="link_connect_exp_nav-mobile" class="nav_link nav_link_l5"><a href="https://slack.com/connect" data-clog-click data-clog-ui-element="link_connect_exp_nav" data-clog-ui-component="inc_header_exp_nav"><div class="nav_link_label"><div>Slack Connect</div></div><div class="nav_link_subl
-```
+[Sign in](https://slack.com/signin) [Request a demo](https://slack.com/contact-sales?category=slack-for-admins&slug=app-management) [Get started](https://slack.com/get-started?entry_point=nav_menu)

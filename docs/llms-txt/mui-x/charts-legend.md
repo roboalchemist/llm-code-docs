@@ -1,7 +1,5 @@
 # Source: https://mui.com/x/api/charts/charts-legend.md
 
-# ChartsLegend API
-
 ## Demos
 
 For examples and details on the usage of this React component, visit the component demo pages:

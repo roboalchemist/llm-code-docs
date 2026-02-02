@@ -1,21 +1,6 @@
-# Source: https://mui.com/material-ui/react-css-baseline.md
-
----
-productId: material-ui
-components: CssBaseline, ScopedCssBaseline
-githubLabel: 'component: CssBaseline'
-githubSource: packages/mui-material/src/CssBaseline
----
-
 # CSS Baseline
 
-The CssBaseline component helps to kickstart an elegant, consistent, and simple baseline to build upon.
-
-{{"component": "@mui/docs/ComponentLinkHeader", "design": false}}
-
-## Global reset
-
-You might be familiar with [normalize.css](https://github.com/necolas/normalize.css), a collection of HTML element and attribute style-normalizations.
+The `CssBaseline` component helps to kickstart an elegant, consistent, and simple baseline to build upon.
 
 ```jsx
 import * as React from 'react';
@@ -33,8 +18,7 @@ export default function MyApp() {
 
 ## Scoping on children
 
-However, you might be progressively migrating a website to Material UI, using a global reset might not be an option.
-It's possible to apply the baseline only to the children by using the `ScopedCssBaseline` component.
+However, you might be progressively migrating a website to Material UI, using a global reset might not be an option. It's possible to apply the baseline only to the children by using the `ScopedCssBaseline` component.
 
 ```jsx
 import * as React from 'react';
@@ -87,7 +71,7 @@ const theme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: (themeParam) => ({
-        body: themeParam.palette.mode === 'dark' ? darkScrollbar() : null,
+        body: themeParampalette.mode === 'dark' ? darkScrollbar() : null,
       }),
     },
   },
@@ -123,8 +107,7 @@ To enable it, you can set `enableColorScheme=true` as follows:
 
 Head to the [global customization](/material-ui/customization/how-to-customize/#4-global-css-override) section of the documentation to change the output of these components.
 
-
-# CssBaseline API
+## CssBaseline API
 
 ## Demos
 
@@ -157,7 +140,7 @@ If you did not find the information on this page, consider having a look at the 
 
 - [/packages/mui-material/src/CssBaseline/CssBaseline.js](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/CssBaseline/CssBaseline.js)
 
-# ScopedCssBaseline API
+## ScopedCssBaseline API
 
 ## Demos
 
@@ -197,7 +180,7 @@ You can use `MuiScopedCssBaseline` to change the default props of this component
 
 | Global class | Rule name | Description |
 |--------------|-----------|-------------|
-| - | root | Styles applied to the root element. |
+| -            | root     | Styles applied to the root element. |
 
 ## Source code
 

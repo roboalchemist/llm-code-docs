@@ -1,20 +1,14 @@
 # Source: https://developers.openai.com/codex/quickstart.md
-
 # Source: https://developers.openai.com/apps-sdk/quickstart.md
-
 # Source: https://developers.openai.com/codex/quickstart.md
-
 # Source: https://developers.openai.com/apps-sdk/quickstart.md
-
 # Source: https://developers.openai.com/codex/quickstart.md
-
 # Source: https://developers.openai.com/apps-sdk/quickstart.md
-
 # Quickstart
 
 ## Introduction
 
-The Apps SDK relies on the [Model Context Protocol (MCP)](/apps-sdk/concepts/mcp-server) to expose your app to ChatGPT. To build an app for ChatGPT with the Apps SDK, you will need two things:
+The Apps SDK relies on the [Model Context Protocol (MCP)](https://platform.openai.com/apps-sdk/concepts/mcp-server) to expose your app to ChatGPT. To build an app for ChatGPT with the Apps SDK, you will need two things:
 
 1. A web component built with the framework of your choice – you are free to build your app as you see fit, that will be rendered in an iframe in the ChatGPT interface.
 2. A Model Context Protocol (MCP) server that will be used to expose your app and define your app's capabilities (tools) to ChatGPT.
@@ -115,10 +109,6 @@ Add the following content:
         display: flex;
         align-items: center;
         gap: 10px;
-      }
-
-      li span {
-        flex: 1;
       }
 
       li[data-completed="true"] span {
@@ -284,12 +274,6 @@ Register a resource for your component bundle and the tools the model can call (
 Create a file named `server.js` and paste the following example that uses the Node SDK:
 
 ```js
-
-
-
-
-
-
 const todoHtml = readFileSync("public/todo-widget.html", "utf8");
 
 const addTodoInputSchema = {
@@ -507,12 +491,7 @@ Once you have your MCP server and web component working locally, you can add you
 2. Click the **Create** button to add a connector under **Settings → Connectors** and paste the HTTPS + `/mcp` URL from your tunnel or deployment (e.g. `https://<subdomain>.ngrok.app/mcp`).
 3. Name the connector, provide a short description and click **Create**.
 
-<div style={{ width: "50%", margin: "0 auto", display: "block" }}>
-  <img
-    src="/images/apps-sdk/new_connector.jpg"
-    alt="Add your connector to ChatGPT"
-  />
-</div>
+![Add your connector to ChatGPT](/images/apps-sdk/new_connector.jpg)
 
 4. Open a new chat, add your connector from the **More** menu (accessible after clicking the **+** button), and prompt the model (e.g., “Add a new task to read my book”). ChatGPT will stream tool payloads so you can confirm inputs and outputs.
 
@@ -522,14 +501,8 @@ Once you have your MCP server and web component working locally, you can add you
 
 From there, you can iterate on the UI/UX, prompts, tool metadata, and the overall experience.
 
+Refresh the connector after each change to the MCP server (tools, metadata, etc.) You can do this by clicking the **Refresh** button in **Settings → Connectors** after selecting your connector.
 
+Read our [ChatGPT app review guidelines](https://platform.openai.com/apps-sdk/app-developer-guidelines) to learn more about the best practices for building apps for ChatGPT, and make sure you [research your use case](https://platform.openai.com/apps-sdk/plan/use-case) and [read our design guidelines](https://platform.openai.com/apps-sdk/concepts/design-guidelines) before building.
 
-Refresh the connector after each change to the MCP server (tools, metadata,
-  etc.) You can do this by clicking the **Refresh** button in **Settings →
-  Connectors** after selecting your connector.
-
-
-
-Read our [ChatGPT app review guidelines](/apps-sdk/app-developer-guidelines) to learn more about the best practices for building apps for ChatGPT, and make sure you [research your use case](/apps-sdk/plan/use-case) and [read our design guidelines](/apps-sdk/concepts/design-guidelines) before building.
-
-Once you understand the basics, you can leverage the Apps SDK to [build a ChatGPT UI](/apps-sdk/build/chatgpt-ui) using the Apps SDK primitives, [authenticate users](/apps-sdk/build/auth) if needed, and [persist state](/apps-sdk/build/storage).
+Once you understand the basics, you can leverage the Apps SDK to [build a ChatGPT UI](https://platform.openai.com/apps-sdk/build/chatgpt-ui) using the Apps SDK primitives, [authenticate users](https://platform.openai.com/apps-sdk/build/auth) if needed, and [persist state](https://platform.openai.com/apps-sdk/build/storage).

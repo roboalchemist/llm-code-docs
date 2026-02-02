@@ -9,19 +9,16 @@
 This example demonstrates how to use Trigger.dev to send emails using [React Email](https://react.email/).
 
 <Note>
-  This example uses [Resend](https://resend.com) as the email provider. You can use other email
-  providers like [Loops](https://loops.so) or [SendGrid](https://sendgrid.com) etc. Full list of
-  their integrations can be found [here](https://react.email/docs/introduction#integrations).
+  This example uses [Resend](https://resend.com) as the email provider. You can use other email providers like [Loops](https://loops.so) or [SendGrid](https://sendgrid.com) etc. Full list of their integrations can be found [here](https://react.email/docs/introduction#integrations).
 </Note>
 
 ## Task code
 
 <Warning>
-  This email is built using React components. To use React components in your task, it must be a
-  .tsx file.
+  This email is built using React components. To use React components in your task, it must be a `.tsx` file.
 </Warning>
 
-```tsx trigger/sendReactEmail.tsx theme={null}
+```tsx
 import { Body, Button, Container, Head, Heading, Html, Preview } from "@react-email/components";
 import { logger, task } from "@trigger.dev/sdk";
 import { Resend } from "resend";
@@ -101,7 +98,7 @@ export const sendEmail = task({
 ## The email
 
 This example email should look like this:
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=89d3a9eb719a46bfdbe445157260dbc7" alt="React Email" data-og-width="1202" width="1202" data-og-height="526" height="526" data-path="images/react-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=725f712a1680d1c755b237ba970c5125 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=adad5c98b98b563889846e2a49f221ca 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=6f9bf6a14de88f2d3ff96f7d1a571e7b 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=322a321698bfedacdb974f22b47fb43a 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=dc7e4bc132c05f616b0ae34852d792ae 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1281ba4f08fe017c3cab10d66c208592 2500w" />
+![React Email](https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=89d3a9eb719a46bfdbe445157260dbc7)
 
 This is just a simple implementation, you can customize the email to be as complex as you want. Check out the [React email templates](https://react.email/templates) for more inspiration.
 
@@ -109,7 +106,7 @@ This is just a simple implementation, you can customize the email to be as compl
 
 To test this task in the [dashboard](https://cloud.trigger.dev), you can use the following payload:
 
-```json  theme={null}
+```json
 {
   "to": "recipient@example.com",
   "name": "Jane Doe",
@@ -128,17 +125,17 @@ In this video you can see how we use Cursor to build a welcome email.
 
 We recommend using our [Cursor rules](https://trigger.dev/changelog/cursor-rules-writing-tasks/) to help you build your tasks and emails.
 
-#### Video: creating a new email template using Cursor
+### Video: creating a new email template using Cursor
 
-<video src="https://content.trigger.dev/trigger-welcome-email-cursor.mp4" controls muted autoPlay loop />
+<video src="https://content.trigger.dev/trigger-welcome-email-cursor.mp4" controls muted autoPlay loop></video>
 
-#### The generated email template
+### The generated email template
 
-<img src="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a6f143fe952bc0a93a2a50c96970b863" alt="Cursor" data-og-width="1559" width="1559" data-og-height="1141" height="1141" data-path="images/react-email-welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=280&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=2487ce4d2be4b80794cb4820a2953ec9 280w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=560&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=1059539f4cd6983974e5ae79023fda9e 560w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=840&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=70bd8821dfbdd05bec826784070a2919 840w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=1100&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=f55b8f390636416420d513d7ed428e21 1100w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=1650&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=7a1a3281a62666deac2d98f40f05e0e5 1650w, https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?w=2500&fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=e145996626c42ce55077aafb7cebfa47 2500w" />
+![Cursor](https://mintcdn.com/trigger/5SxX7bFjJKRsidSL/images/react-email-welcome.png?fit=max&auto=format&n=5SxX7bFjJKRsidSL&q=85&s=a6f143fe952bc0a93a2a50c96970b863)
 
-#### The generated code
+### The generated code
 
-```tsx emails/trigger-welcome-email.tsx theme={null}
+```tsx
 import {
   Body,
   Button,
@@ -286,7 +283,7 @@ const footer = {
 
 And then to trigger the email, you can use the following task:
 
-```tsx trigger/triggerWelcomeEmail.tsx theme={null}
+```tsx
 import { logger, task } from "@trigger.dev/sdk";
 import { Resend } from "resend";
 import TriggerWelcomeEmail from "emails/trigger-welcome-email";
@@ -327,29 +324,3 @@ export const sendEmail = task({
   },
 });
 ```
-
-## Troubleshooting
-
-If you see this error when using `react-email` packages:
-
-```
-reactDOMServer.renderToPipeableStream is not a function
-```
-
-See our [common problems guide](/troubleshooting#reactdomserver-rendertopipeablestream-is-not-a-function-when-using-react-email) for more information.
-
-## Learn more
-
-### React Email docs
-
-Check out the [React Email docs](https://react.email/docs) and learn how to set up and use React Email, including how to preview your emails locally.
-
-<CardGroup cols={2}>
-  <Card title="Components" icon="puzzle-piece" href="https://react.email/components">
-    Pre-built components you can copy and paste into your emails.
-  </Card>
-
-  <Card title="Templates" icon="rectangle-list" href="https://react.email/templates">
-    Extensive pre-built templates ready to use.
-  </Card>
-</CardGroup>

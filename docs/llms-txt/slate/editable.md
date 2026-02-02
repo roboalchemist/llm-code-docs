@@ -1,5 +1,3 @@
-# Source: https://docs.slatejs.org/libraries/slate-react/editable.md
-
 # Editable Component
 
 ## `Editable(props: EditableProps): React.JSX.Element`
@@ -27,7 +25,7 @@ type EditableProps = {
 } & React.TextareaHTMLAttributes<HTMLDivElement>
 ```
 
-*NOTE: Detailed breakdown of Props not completed. Refer to the* [*source code*](https://github.com/ianstormtaylor/slate/blob/main/packages/slate-react/src/components/editable.tsx) *at the moment. Under construction.*
+*NOTE: Detailed breakdown of Props not completed. Refer to the [*source code*](https://github.com/ianstormtaylor/slate/blob/main/packages/slate-react/src/components/editable.tsx) at the moment. Under construction.*
 
 #### `placeholder?: string = ""`
 

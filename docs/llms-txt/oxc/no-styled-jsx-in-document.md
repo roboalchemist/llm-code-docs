@@ -1,19 +1,16 @@
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/nextjs/no-styled-jsx-in-document.md
+# nextjs/no-styled-jsx-in-document
 
----
-url: /docs/guide/usage/linter/rules/nextjs/no-styled-jsx-in-document.md
----
-# nextjs/no-styled-jsx-in-document&#x20;
+## What it does
 
-### What it does
+Prevent usage of styled-jsx in pages/_document.js.
 
-Prevent usage of styled-jsx in pages/\_document.js.
-
-### Why is this bad?
+## Why is this bad?
 
 Custom CSS like styled-jsx is not allowed in a [Custom Document](https://nextjs.org/docs/pages/building-your-application/routing/custom-document).
 
-### Examples
+## Examples
+
+### Incorrect Code
 
 Examples of **incorrect** code for this rule:
 
@@ -41,6 +38,8 @@ class MyDocument extends Document {
 }
 ```
 
+### Correct Code
+
 Examples of **correct** code for this rule:
 
 ```javascript
@@ -66,8 +65,6 @@ class MyDocument extends Document {
 
 To **enable** this rule using the config file or in the CLI, you can use:
 
-::: code-group
-
 ```json [Config (.oxlintrc.json)]
 {
   "plugins": ["nextjs"],
@@ -80,8 +77,6 @@ To **enable** this rule using the config file or in the CLI, you can use:
 ```bash [CLI]
 oxlint --deny nextjs/no-styled-jsx-in-document --nextjs-plugin
 ```
-
-:::
 
 ## References
 

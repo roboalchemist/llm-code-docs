@@ -1,141 +1,98 @@
-# Source: https://preactjs.com/guide/v10/preact-root-fragment
+# preact-root-fragment
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="/favicon.ico">
-		<title>preact-root-fragment – Preact Guide</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#673AB8">
-		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
-		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
-		<meta property="og:image" content="https://preactjs.com/app-icon.png">
-		<meta name="twitter:card" content="summary">
-		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
-		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
-		<script type="module" crossorigin src="/assets/index-nodqeQT7.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-CzbcAXL9.css">
-	<meta name="description" content="A standalone Preact 10+ implementation of the deprecated `replaceNode` parameter from Preact 10">
-<meta property="og:url" content="https://preactjs.com/guide/v10/preact-root-fragment">
-<meta property="og:title" content="preact-root-fragment – Preact Guide">
-<meta property="og:description" content="A standalone Preact 10+ implementation of the deprecated `replaceNode` parameter from Preact 10">
-<link rel="preload" href="/.netlify/functions/release?repo=preact" as="fetch" fetchpriority="low">
-<link rel="preload" href="/contributors.json" as="fetch" fetchpriority="low">
-<link rel="preload" href="/content/en/guide/v10/preact-root-fragment.json" as="fetch" fetchpriority="low">
-<script>ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga('set','dimension1','master');onerror=function(e,f,l,c){ga('send','event','exception',e,f+':'+l+':'+c)}</script></head>
-	<body class="banner">
-		<div id="app"><header class="_header_nxrmc_38 "><div class="_banner_nxrmc_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_nxrmc_24"><div class="_inner_nxrmc_301"><nav><a href="/" class="home" aria-label="Home"><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_nxrmc_92 ">Guide</a><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_nxrmc_479"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><span class="DocSearch-Button-Placeholder">Search</span></span></button></div><div class="_social_nxrmc_321"><a href="https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0" class="_socialItem_nxrmc_357 _release_nxrmc_396">v11.0.0-beta.0</a><a class="_socialItem_nxrmc_357" aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_nxrmc_322"><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false" aria-label="Select your language"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_nxrmc_402" data-open="false"><div class="_hb1_nxrmc_444"></div><div class="_hb2_nxrmc_445"></div><div class="_hb3_nxrmc_446"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><!--$s--><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div class="_wrapper_14rnv_1" data-open="false"><button class="_toggle_14rnv_6">Guide</button><aside class="_sidebar_14rnv_58"><div class="_sidebarInner_14rnv_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v11">11.x (preview)</option><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16  ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a><a href="/guide/v10/preact-custom-element" class="_link_1ttwe_16  ">preact-custom-element</a><a href="/guide/v10/preact-root-fragment" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">preact-root-fragment</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a class="_edit_1gw8e_13" href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/preact-root-fragment.md" target="_blank" rel="noopener noreferrer">Edit this Page</a></div><content-region name="/guide/v10/preact-root-fragment" can-edit><div class="markup"><h1>preact-root-fragment</h1><p>preact-root-fragment is a standalone and more flexible Preact 10+ implementation of the deprecated <code>replaceNode</code> parameter from Preact 10.</p>
-<p>It provides a way to render or hydrate a Preact tree using a subset of the children within the parent element passed to render():</p>
+preact-root-fragment is a standalone and more flexible Preact 10+ implementation of the deprecated `replaceNode` parameter from Preact 10.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>root<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span> ⬅ we pass this to render() as the parent DOM element...
+It provides a way to render or hydrate a Preact tree using a subset of the children within the parent element passed to render():
 
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/etc.js<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+```html
+<body>
+	<div id="root"> ⬅ we pass this to render() as the parent DOM element...
 
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>app<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span> ⬅ ... but we want to use this tree, not the script
-			<span class="token comment">&lt;!-- ... --></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			<hr>
-<nav><ul><li><a href="#why-do-i-need-this?">Why do I need this?</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#multiple-root-elements">Multiple Root Elements</a></li><li><a href="#preact-version-support">Preact Version Support</a></li></ul></nav><hr>
+		<script src="/etc.js"></script>
 
-				<h2 id="why-do-i-need-this?">
-					<a class="fragment-link" href="#why-do-i-need-this?">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Why do I need this? (#why-do-i-need-this?)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Why do I need this?</span>
-				</h2><p>This is particularly useful for <a href="https://jasonformat.com/islands-architecture/" target="_blank" rel="noopener noreferrer">partial hydration</a>, which often requires rendering multiple distinct Preact trees into the same parent DOM element. Imagine the scenario below - which elements would we pass to <code>hydrate(jsx, parent)</code> such that each widget's <code>&lt;section></code> would get hydrated without clobbering the others?</p>
+		<div class="app"> ⬅ ... but we want to use this tree, not the script
+			<!-- ... -->
+		</div>
+</div>
+```
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>sidebar<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>widgetA<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Widget A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>widgetB<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Widget B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>widgetC<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Widget C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-					
-				</div>
-			<p>Preact 10 provided a somewhat obscure third argument for <code>render</code> and <code>hydrate</code> called <code>replaceNode</code>, which could be used for the above case:</p>
+---
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">A</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> sidebar<span class="token punctuation">,</span> widgetA<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// render into &lt;div id=&quot;sidebar&quot;>, but only look at &lt;section id=&quot;widgetA&quot;></span>
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">B</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> sidebar<span class="token punctuation">,</span> widgetB<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// same, but only look at widgetB</span>
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">C</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> sidebar<span class="token punctuation">,</span> widgetC<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// same, but only look at widgetC</span></code></pre>
-					
-				</div>
-			<p>While the <code>replaceNode</code> argument proved useful for handling scenarios like the above, it was limited to a single DOM element and could not accommodate Preact trees with multiple root elements. It also didn't handle updates well when multiple trees were mounted into the same parent DOM element, which turns out to be a key usage scenario.</p>
-<p>Going forward, we're providing this functionality as a standalone library called <code>preact-root-fragment</code>.</p>
+*   [Why do I need this?](#why-do-i-need-this?)
+*   [How it works](#how-it-works)
+*   [Multiple Root Elements](#multiple-root-elements)
+*   [Preact Version Support](#preact-version-support)
 
-				<h2 id="how-it-works">
-					<a class="fragment-link" href="#how-it-works">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: How it works (#how-it-works)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>How it works</span>
-				</h2><p><code>preact-root-fragment</code> provides a <code>createRootFragment</code> function:</p>
+---
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-ts"><span class="token function">createRootFragment</span><span class="token punctuation">(</span>parent<span class="token operator">:</span> ContainerNode<span class="token punctuation">,</span> children<span class="token operator">:</span> ContainerNode <span class="token operator">|</span> ContainerNode<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Calling this function with a parent DOM element and one or more child elements returns a &quot;Persistent Fragment&quot;. A persistent fragment is a fake DOM element, which pretends to contain the provided children while keeping them in their existing real parent element. It can be passed to <code>render()</code> or <code>hydrate()</code> instead of the <code>parent</code> argument.</p>
-<p>Using the previous example, we can change the deprecated <code>replaceNode</code> usage out for <code>createRootFragment</code>:</p>
+## Why do I need this?
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createRootFragment <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact-root-fragment'</span><span class="token punctuation">;</span>
+This is particularly useful for [partial hydration](https://jasonformat.com/islands-architecture/), which often requires rendering multiple distinct Preact trees into the same parent DOM element. Imagine the scenario below - which elements would we pass to `hydrate(jsx, parent)` such that each widget's `<section>` would get hydrated without clobbering the others?
 
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">A</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token function">createRootFragment</span><span class="token punctuation">(</span>sidebar<span class="token punctuation">,</span> widgetA<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">B</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token function">createRootFragment</span><span class="token punctuation">(</span>sidebar<span class="token punctuation">,</span> widgetB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">C</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token function">createRootFragment</span><span class="token punctuation">(</span>sidebar<span class="token punctuation">,</span> widgetC<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Since we're creating separate &quot;Persistent Fragment&quot; parents to pass to each <code>render()</code> call, Preact will treat each as an independent Virtual DOM tree.</p>
+```html
+<div id="sidebar">
+  <section id="widgetA"><h1>Widget A</h1></section>
+  <section id="widgetB"><h1>Widget B</h1></section>
+  <section id="widgetC"><h1>Widget C</h1></section>
+</div>
+```
 
-				<h2 id="multiple-root-elements">
-					<a class="fragment-link" href="#multiple-root-elements">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Multiple Root Elements (#multiple-root-elements)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Multiple Root Elements</span>
-				</h2><p>Unlike the <code>replaceNode</code> parameter from Preact 10, <code>createRootFragment</code> can accept an Array of children that will be used as the root elements when rendering. This is particularly useful when rendering a Virtual DOM tree that produces multiple root elements, such as a Fragment or an Array:</p>
+Preact 10 provided a somewhat obscure third argument for `render` and `hydrate` called `replaceNode`, which could be used for the above case:
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> createRootFragment <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact-root-fragment'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+```jsx
+render(<A />, sidebar, widgetA); // render into <div id="sidebar">, but only look at <section id="widgetA">
+render(<B />, sidebar, widgetB); // same, but only look at widgetB
+render(<C />, sidebar, widgetC); // same, but only look at widgetC
+```
 
-<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Example</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Hello world!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
-  <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+While the `replaceNode` argument proved useful for handling scenarios like the above, it was limited to a single DOM element and could not accommodate Preact trees with multiple root elements. It also didn't handle updates well when multiple trees were mounted into the same parent DOM element, which turns out to be a key usage scenario.
 
-<span class="token comment">// Use only the last two child elements within &lt;body>:</span>
-<span class="token keyword">const</span> children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>children<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Going forward, we're providing this functionality as a standalone library called `preact-root-fragment`.
 
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> <span class="token function">createRootFragment</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">,</span> children<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h2 id="preact-version-support">
-					<a class="fragment-link" href="#preact-version-support">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Preact Version Support (#preact-version-support)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Preact Version Support</span>
-				</h2><p>This library works with Preact 10 and 11.</p>
-</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="de">German</option><option value="es">Spanish</option><option value="fr">French</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="kr">Korean</option><option value="pt-br">Brazilian Portuguese</option><option value="ru">Русский</option><option value="tr">Turkish</option><option value="zh">简体中文</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/Verseth" target="_blank" rel="noopener noreferrer">@Verseth</a>.</p></div></footer></div></div></div><!--/$s--></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"11.0.0-beta.0","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0","preactOrgRepos":[{"html_url":"https://github.com/preactjs/preact","full_name":"preactjs/preact","stargazers_count":38228,"description":"⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM."},{"html_url":"https://github.com/preactjs/wmr","full_name":"preactjs/wmr","stargazers_count":4936,"description":"👩‍🚀 The tiny all-in-one development tool for modern web apps."},{"html_url":"https://github.com/preactjs/preact-cli","full_name":"preactjs/preact-cli","stargazers_count":4688,"description":"😺 Your next Preact PWA starts in 30 seconds."},{"html_url":"https://github.com/preactjs/signals","full_name":"preactjs/signals","stargazers_count":4331,"description":"Manage state with style in every framework"},{"html_url":"https://github.com/preactjs/awesome-preact","full_name":"preactjs/awesome-preact","stargazers_count":965,"description":"A curated list of amazingly awesome things regarding Preact ecosystem :star2:"}]}</script></div>
-	</body>
-</html>
+## How it works
+
+`preact-root-fragment` provides a `createRootFragment` function:
+
+```ts
+createRootFragment(parent: ContainerNode, children: ContainerNode | ContainerNode[])
+```
+
+Calling this function with a parent DOM element and one or more child elements returns a "Persistent Fragment". A persistent fragment is a fake DOM element, which pretends to contain the provided children while keeping them in their existing real parent element. It can be passed to `render()` or `hydrate()` instead of the `parent` argument.
+
+Using the previous example, we can change the deprecated `replaceNode` usage out for `createRootFragment`:
+
+```jsx
+import { createRootFragment } from 'preact-root-fragment';
+
+render(<A />, createRootFragment/sidebar, widgetA));
+render(<B />, createRootFragment/sidebar, widgetB));
+render(<C />, createRootFragment/sidebar, widgetC));
+```
+
+Since we're creating separate "Persistent Fragment" parents to pass to each `render()` call, Preact will treat each as an independent Virtual DOM tree.
+
+## Multiple Root Elements
+
+Unlike the `replaceNode` parameter from Preact 10, `createRootFragment` can accept an Array of children that will be used as the root elements when rendering. This is particularly useful when rendering a Virtual DOM tree that produces multiple root elements, such as a Fragment or an Array:
+
+```jsx
+import { createRootFragment } from 'preact-root-fragment';
+import { render } from 'preact';
+
+function App() {
+  return (
+    <>
+      <h1>Hello world!</h1>
+    </>
+  );
+}
+
+// Use only the last two child elements within <body:
+const children = [].slice.call(document.body.children, -2);
+
+render(<App />, createRootFragment/sidebar, children));
+```
+
+## Preact Version Support
+
+This library works with Preact 10 and 11.

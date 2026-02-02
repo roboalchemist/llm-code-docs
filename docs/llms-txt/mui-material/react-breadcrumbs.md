@@ -1,19 +1,6 @@
-# Source: https://mui.com/material-ui/react-breadcrumbs.md
-
----
-productId: material-ui
-title: React Breadcrumbs component
-components: Breadcrumbs, Link, Typography
-githubLabel: 'scope: breadcrumbs'
-waiAria: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/
-githubSource: packages/mui-material/src/Breadcrumbs
----
-
 # Breadcrumbs
 
 A breadcrumbs is a list of links that help visualize a page's location within a site's hierarchical structure, it allows navigation up to any of the ancestors.
-
-
 
 ## Basic breadcrumbs
 
@@ -47,7 +34,6 @@ export default function BasicBreadcrumbs() {
     </div>
   );
 }
-
 ```
 
 ## Active last breadcrumb
@@ -90,7 +76,6 @@ export default function ActiveLastBreadcrumb() {
     </div>
   );
 }
-
 ```
 
 ## Custom separator
@@ -146,7 +131,6 @@ export default function CustomSeparator() {
     </Stack>
   );
 }
-
 ```
 
 ## Breadcrumbs with icons
@@ -197,7 +181,6 @@ export default function IconBreadcrumbs() {
     </div>
   );
 }
-
 ```
 
 ## Collapsed breadcrumbs
@@ -228,13 +211,12 @@ export default function CollapsedBreadcrumbs() {
         </Link>
         <Link underline="hover" color="inherit" href="#">
           New Collection
-        </Link>
+        </link>
         <Typography sx={{ color: 'text.primary' }}>Belts</Typography>
       </Breadcrumbs>
     </div>
   );
 }
-
 ```
 
 ## Condensed with menu
@@ -288,18 +270,16 @@ export default function CondensedWithMenu() {
         </Link>
         <Link color="primary" href="#condensed-with-menu">
           Breadcrumb 6
-        </Link>
+        </link>
       </Breadcrumbs>
     </React.Fragment>
   );
 }
-
 ```
 
 ## Customization
 
-Here is an example of customizing the component.
-You can learn more about this in the [overrides documentation page](/material-ui/customization/how-to-customize/).
+Here is an example of customizing the component. You can learn more about this in the [overrides documentation page](https://mui.com/material-ui/customization/how-to-customize/).
 
 ```tsx
 import * as React from 'react';
@@ -312,7 +292,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   return {
     backgroundColor: theme.palette.grey[100],
-    height: theme.spacing(3),
+    height: themeSpacing(3),
     color: (theme.vars || theme).palette.text.primary,
     fontWeight: theme.typography.fontWeightRegular,
     '&:hover, &:focus': {
@@ -323,13 +303,13 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
     },
     '&:active': {
       boxShadow: theme.shadows[1],
-      backgroundColor: emphasize(theme.palette.grey[100], 0.12),
+      backgroundColor: emphasize(themepalette.grey[100], 0.12),
       ...theme.applyStyles('dark', {
-        backgroundColor: emphasize(theme.palette.grey[800], 0.12),
+        backgroundColor: emphasize(themepalette.grey[800], 0.12),
       }),
     },
     ...theme.applyStyles('dark', {
-      backgroundColor: theme.palette.grey[800],
+      backgroundColor: themepalette.grey[800],
     }),
   };
 }) as typeof Chip; // TypeScript only: need a type cast here because https://github.com/Microsoft/TypeScript/issues/26591
@@ -359,7 +339,6 @@ export default function CustomizedBreadcrumbs() {
     </div>
   );
 }
-
 ```
 
 ## Integration with react-router
@@ -486,21 +465,17 @@ export default function RouterBreadcrumbs() {
     </MemoryRouter>
   );
 }
-
 ```
 
 ## Accessibility
 
 (WAI-ARIA: https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/)
 
-Be sure to add a `aria-label` description on the `Breadcrumbs` component.
-
-The accessibility of this component relies on:
+Be sure to add a `aria-label` description on the `Breadcrumbs` component. The accessibility of this component relies on:
 
 - The set of links is structured using an ordered list (`<ol>` element).
 - To prevent screen reader announcement of the visual separators between links, they are hidden with `aria-hidden`.
 - A nav element labeled with `aria-label` identifies the structure as a breadcrumb trail and makes it a navigation landmark so that it is easy to locate.
-
 
 # Breadcrumbs API
 

@@ -1,31 +1,12 @@
-# Source: https://mui.com/material-ui/react-toggle-button.md
-
----
-productId: material-ui
-title: Toggle Button React component
-components: ToggleButton, ToggleButtonGroup
-githubLabel: 'scope: toggle button'
-materialDesign: https://m2.material.io/components/buttons#toggle-button
-githubSource: packages/mui-material/src/ToggleButton
----
-
 # Toggle Button
 
-A Toggle Button can be used to group related options.
-
-To emphasize groups of related Toggle buttons,
-a group should share a common container.
-The `ToggleButtonGroup` controls the selected state of its child buttons when given its own `value` prop.
-
-
+A Toggle Button can be used to group related options. To emphasize groups of related Toggle buttons, a group should share a common container. The `ToggleButtonGroup` controls the selected state of its child buttons when given its own `value` prop.
 
 ## Exclusive selection
 
-With exclusive selection, selecting one option deselects any other.
+With exclusive selection, selecting one option deselects any other. In this example, text justification toggle buttons present options for left, center, right, and fully justified text (disabled), with only one item available for selection at a time.
 
-In this example, text justification toggle buttons present options for left, center, right, and fully justified text (disabled), with only one item available for selection at a time.
-
-**Note**: Exclusive selection does not enforce that a button must be active. For that effect see [enforce value set](#enforce-value-set).
+**Note**: Exclusive selection does not enforce that a button must be active. For that effect, see [enforce value set](#enforce-value-set).
 
 ```tsx
 import * as React from 'react';
@@ -68,7 +49,6 @@ export default function ToggleButtons() {
     </ToggleButtonGroup>
   );
 }
-
 ```
 
 ## Multiple selection
@@ -79,7 +59,7 @@ Multiple selection allows for logically-grouped options, like bold, italic, and 
 import * as React from 'react';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
-import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+import FormatUnderlinedIcon from '@mui/icons/material/FormatUnderlined';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -117,7 +97,6 @@ export default function ToggleButtonsMultiple() {
     </ToggleButtonGroup>
   );
 }
-
 ```
 
 ## Size
@@ -179,7 +158,6 @@ export default function ToggleButtonSizes() {
     </Stack>
   );
 }
-
 ```
 
 ## Color
@@ -213,7 +191,6 @@ export default function ColorToggleButton() {
     </ToggleButtonGroup>
   );
 }
-
 ```
 
 ## Vertical buttons
@@ -223,7 +200,7 @@ The buttons can be stacked vertically with the `orientation` prop set to "vertic
 ```tsx
 import * as React from 'react';
 import ViewListIcon from '@mui/icons-material/ViewList';
-import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import ViewModuleIcon from '@mui/icons/material/ViewModule';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -254,12 +231,11 @@ export default function VerticalToggleButtons() {
     </ToggleButtonGroup>
   );
 }
-
 ```
 
 ## Enforce value set
 
-If you want to enforce that at least one button must be active, you can adapt your handleChange function.
+If you want to enforce that at least one button must be active, you can adapt your `handleChange` function.
 
 ```jsx
 const handleAlignment = (event, newAlignment) => {
@@ -293,7 +269,7 @@ export default function ToggleButtonNotEmpty() {
 
   const handleAlignment = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null,
+    newAlignment: string,
   ) => {
     if (newAlignment !== null) {
       setAlignment(newAlignment);
@@ -346,7 +322,6 @@ export default function ToggleButtonNotEmpty() {
     </Stack>
   );
 }
-
 ```
 
 ## Standalone toggle button
@@ -369,13 +344,11 @@ export default function StandaloneToggleButton() {
     </ToggleButton>
   );
 }
-
 ```
 
 ## Customization
 
-Here is an example of customizing the component.
-You can learn more about this in the [overrides documentation page](/material-ui/customization/how-to-customize/).
+Here is an example of customizing the component. You can learn more about this in the [overrides documentation page](/material-ui/customization/how-to-customize/).
 
 ```tsx
 import * as React from 'react';
@@ -385,7 +358,7 @@ import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
 import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
-import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatItalicIcon from '@mui/icons/material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatColorFillIcon from '@mui/icons-material/FormatColorFill';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -398,7 +371,7 @@ import ToggleButtonGroup, {
 
 const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
   [`& .${toggleButtonGroupClasses.grouped}`]: {
-    margin: theme.spacing(0.5),
+    margin: theme-spacing(0.5),
     border: 0,
     borderRadius: theme.shape.borderRadius,
     [`&.${toggleButtonGroupClasses.disabled}`]: {
@@ -424,7 +397,7 @@ export default function CustomizedDividers() {
   };
 
   const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
+    event: ReactMouseEvent<HTMLElement>,
     newAlignment: string,
   ) => {
     setAlignment(newAlignment);
@@ -436,7 +409,7 @@ export default function CustomizedDividers() {
         elevation={0}
         sx={(theme) => ({
           display: 'flex',
-          border: `1px solid ${theme.palette.divider}`,
+          border: `1px solid ${themepalette.divider}`,
           flexWrap: 'wrap',
         })}
       >
@@ -485,7 +458,6 @@ export default function CustomizedDividers() {
     </div>
   );
 }
-
 ```
 
 ### Spacing
@@ -517,7 +489,7 @@ const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
     {
       borderTopLeftRadius: (theme.vars || theme).shape.borderRadius,
       borderBottomLeftRadius: (theme.vars || theme).shape.borderRadius,
-      borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`,
+      borderTop: `1px solid ${(theme.vars || theme).palette.divider}`,
     },
   [`& .${toggleButtonGroupClasses.lastButton}.${toggleButtonClasses.disabled}, & .${toggleButtonGroupClasses.middleButton}.${toggleButtonClasses.disabled}`]:
     {
@@ -557,7 +529,6 @@ export default function HorizontalSpacingToggleButton() {
     </StyledToggleButtonGroup>
   );
 }
-
 ```
 
 #### Vertical Spacing
@@ -565,9 +536,9 @@ export default function HorizontalSpacingToggleButton() {
 ```tsx
 import * as React from 'react';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignCenterIcon from '@mui/icons/material/FormatAlignCenter';
 import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
-import FormatAlignJustifyIcon from '@mui/icons-material/FormatAlignJustify';
+import FormatAlignJustifyIcon from '@mui/icons/material/FormatAlignJustify';
 import ToggleButton, { toggleButtonClasses } from '@mui/material/ToggleButton';
 import ToggleButtonGroup, {
   toggleButtonGroupClasses,
@@ -626,7 +597,6 @@ export default function VerticalSpacingToggleButton() {
     </StyledToggleButtonGroup>
   );
 }
-
 ```
 
 ## Accessibility
@@ -639,7 +609,6 @@ export default function VerticalSpacingToggleButton() {
 ### Keyboard
 
 At present, toggle buttons are in DOM order. Navigate between them with the tab key. The button behavior follows standard keyboard semantics.
-
 
 # ToggleButton API
 

@@ -1,28 +1,21 @@
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/nextjs/no-before-interactive-script-outside-document.md
+# nextjs/no-before-interactive-script-outside-document
 
----
-url: >-
-  /docs/guide/usage/linter/rules/nextjs/no-before-interactive-script-outside-document.md
----
-# nextjs/no-before-interactive-script-outside-document&#x20;
+## What it does
 
-### What it does
+Prevents the usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`. This rule ensures that scripts with the `beforeInteractive` loading strategy are only used in the document component where they are most effective.
 
-Prevents the usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.
-This rule ensures that scripts with the `beforeInteractive` loading strategy are only used in the
-document component where they are most effective.
+## Why is this bad?
 
-### Why is this bad?
-
-The `beforeInteractive` strategy is specifically designed to load scripts before any page hydration
-occurs, which is only guaranteed to work correctly when placed in `pages/_document.js`. Using it elsewhere:
+The `beforeInteractive` strategy is specifically designed to load scripts before any page hydration occurs, which is only guaranteed to work correctly when placed in `pages/_document.js`. Using it elsewhere:
 
 * May not achieve the intended early loading behavior
 * Can lead to inconsistent script loading timing
 * Might cause hydration mismatches or other runtime issues
 * Could impact the application's performance optimization
 
-### Examples
+## Examples
+
+### Incorrect Code
 
 Examples of **incorrect** code for this rule:
 
@@ -42,7 +35,7 @@ export default function HomePage() {
 }
 ```
 
-Examples of **correct** code for this rule:
+### Correct Code
 
 ```jsx
 // pages/_document.js
@@ -70,11 +63,9 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-## How to use
+## How to Use
 
 To **enable** this rule using the config file or in the CLI, you can use:
-
-::: code-group
 
 ```json [Config (.oxlintrc.json)]
 {
@@ -88,8 +79,6 @@ To **enable** this rule using the config file or in the CLI, you can use:
 ```bash [CLI]
 oxlint --deny nextjs/no-before-interactive-script-outside-document --nextjs-plugin
 ```
-
-:::
 
 ## References
 

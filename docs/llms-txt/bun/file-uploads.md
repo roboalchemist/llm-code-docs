@@ -1,10 +1,8 @@
-# Source: https://bun.com/docs/guides/http/file-uploads.md
-
 # Upload files via HTTP using FormData
 
 To upload files via HTTP with Bun, use the [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) API. Let's start with a HTTP server that serves a simple HTML web form.
 
-```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
 const server = Bun.serve({
   port: 4000,
   async fetch(req) {
@@ -25,11 +23,11 @@ const server = Bun.serve({
 console.log(`Listening on http://localhost:${server.port}`);
 ```
 
-***
+---
 
 We can define our HTML form in another file, `index.html`.
 
-```html index.html icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -46,16 +44,16 @@ We can define our HTML form in another file, `index.html`.
 </html>
 ```
 
-***
+---
 
-At this point, we can run the server and visit [`localhost:4000`](http://localhost:4000) to see our form.
+At this point, we can run the server and visit [`localhost:4000`](http://localhost:4000/) to see our form.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash
 bun run index.ts
 Listening on http://localhost:4000
 ```
 
-***
+---
 
 Our form will send a `POST` request to the `/action` endpoint with the form data. Let's handle that request in our server.
 
@@ -63,7 +61,7 @@ First we use the [`.formData()`](https://developer.mozilla.org/en-US/docs/Web/AP
 
 Finally, we write the `Blob` to disk using [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write).
 
-```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
 const server = Bun.serve({
   port: 4000,
   async fetch(req) {
@@ -77,17 +75,16 @@ const server = Bun.serve({
         },
       });
 
-    // parse formdata at /action // [!code ++]
-    if (url.pathname === "/action") { // [!code ++]
-      const formdata = await req.formData(); // [!code ++]
-      const name = formdata.get("name"); // [!code ++]
-      const profilePicture = formdata.get("profilePicture"); // [!code ++]
-      if (!profilePicture) throw new Error("Must upload a profile picture."); // [!code ++]
-      // write profilePicture to disk // [!code ++]
-      await Bun.write("profilePicture.png", profilePicture); // [!code ++]
-      return new Response("Success"); // [!code ++]
-    } // [!code ++]
-
+    // parse formdata at /action
+    if (url.pathname === "/action") {
+      const formdata = await req.formData();
+      const name = formdata.get("name");
+      const profilePicture = formdata.get("profilePicture");
+      if (!profilePicture) throw new Error("Must upload a profile picture.");
+      // write profilePicture to disk
+      await Bun.write("profilePicture.png", profilePicture);
+      return new Response("Success");
+    }
     return new Response("Not Found", { status: 404 });
   },
 });

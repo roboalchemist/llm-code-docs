@@ -1,13 +1,11 @@
-# Source: https://nextjs.org/docs/pages/building-your-application/routing/custom-document.md
-
 # Custom Document
-
 
 A custom `Document` can update the `<html>` and `<body>` tags used to render a [Page](/docs/pages/building-your-application/routing/pages-and-layouts.md).
 
 To override the default `Document`, create the file `pages/_document` as shown below:
 
-```tsx filename="pages/_document.tsx" switcher
+```tsx
+filename="pages/_document.tsx" switcher
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -23,7 +21,8 @@ export default function Document() {
 }
 ```
 
-```jsx filename="pages/_document.jsx" switcher
+```jsx
+filename="pages/_document.jsx" switcher
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
@@ -56,7 +55,8 @@ Customizing `renderPage` is advanced and only needed for libraries like CSS-in-J
 
 **We do not recommend using this pattern.** Instead, consider [incrementally adopting](/docs/app/guides/migrating/app-router-migration.md) the App Router, which allows you to more easily fetch data for pages and layouts.
 
-```tsx filename="pages/_document.tsx" switcher
+```tsx
+filename="pages/_document.tsx" switcher
 import Document, {
   Html,
   Head,
@@ -103,7 +103,8 @@ class MyDocument extends Document {
 export default MyDocument
 ```
 
-```jsx filename="pages/_document.jsx" switcher
+```jsx
+filename="pages/_document.jsx" switcher
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {

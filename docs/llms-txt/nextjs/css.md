@@ -6,30 +6,34 @@
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/css.md
+# Source: https://nextjs.org/docs/app/getting-started/css.md
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/css.md
+# Source: https://nextjs.org/docs/app/getting-started/css.md
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
-# Source: https://nextjs.org/docs/pages/getting-started/css.md
+# Source: https://nextjs.org/docs/app/getting-started/css.md
 
 # Source: https://nextjs.org/docs/app/getting-started/css.md
 
-# CSS
+# Source: https://nextjs.org/docs/app/getting-started/css.md
+
+# Source: https://nextjs.org/docs/app/getting-started/css.md
+
+## CSS
+
 @doc-version: 16.0.4
-
 
 Next.js provides several ways to style your application using CSS, including:
 
-* [Tailwind CSS](#tailwind-css)
-* [CSS Modules](#css-modules)
-* [Global CSS](#global-css)
-* [External Stylesheets](#external-stylesheets)
-* [Sass](/docs/app/guides/sass.md)
-* [CSS-in-JS](/docs/app/guides/css-in-js.md)
+- [Tailwind CSS](#tailwind-css)
+- [CSS Modules](#css-modules)
+- [Global CSS](#global-css)
+- [External Stylesheets](#external-stylesheets)
+- [Sass](/docs/app/guides/sass.md)
+- [CSS-in-JS](/docs/app/guides/css-in-js.md)
 
 ## Tailwind CSS
 
@@ -37,25 +41,30 @@ Next.js provides several ways to style your application using CSS, including:
 
 Install Tailwind CSS:
 
-```bash package="pnpm"
+```bash
+package="pnpm"
 pnpm add -D tailwindcss @tailwindcss/postcss
 ```
 
-```bash package="npm"
+```bash
+package="npm"
 npm install -D tailwindcss @tailwindcss/postcss
 ```
 
-```bash package="yarn"
+```bash
+package="yarn"
 yarn add -D tailwindcss @tailwindcss/postcss
 ```
 
-```bash package="bun"
+```bash
+package="bun"
 bun add -D tailwindcss @tailwindcss/postcss
 ```
 
 Add the PostCSS plugin to your `postcss.config.mjs` file:
 
-```js filename="postcss.config.mjs"
+```js
+filename="postcss.config.mjs"
 export default {
   plugins: {
     '@tailwindcss/postcss': {},
@@ -65,13 +74,15 @@ export default {
 
 Import Tailwind in your global CSS file:
 
-```css filename="app/globals.css"
+```css
+filename="app/globals.css"
 @import 'tailwindcss';
 ```
 
 Import the CSS file in your root layout:
 
-```tsx filename="app/layout.tsx" switcher
+```tsx
+filename="app/layout.tsx" switcher
 import './globals.css'
 
 export default function RootLayout({
@@ -87,7 +98,8 @@ export default function RootLayout({
 }
 ```
 
-```jsx filename="app/layout.js" switcher
+```jsx
+filename="app/layout.js" switcher
 import './globals.css'
 
 export default function RootLayout({ children }) {
@@ -101,7 +113,8 @@ export default function RootLayout({ children }) {
 
 Now you can start using Tailwind's utility classes in your application:
 
-```tsx filename="app/page.tsx" switcher
+```tsx
+filename="app/page.tsx" switcher
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -111,7 +124,8 @@ export default function Page() {
 }
 ```
 
-```jsx filename="app/page.js" switcher
+```jsx
+filename="app/page.js" switcher
 export default function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -129,13 +143,15 @@ CSS Modules locally scope CSS by generating unique class names. This allows you 
 
 To start using CSS Modules, create a new file with the extension `.module.css` and import it into any component inside the `app` directory:
 
-```css filename="app/blog/blog.module.css"
+```css
+filename="app/blog/blog.module.css"
 .blog {
   padding: 24px;
 }
 ```
 
-```tsx filename="app/blog/page.tsx" switcher
+```tsx
+filename="app/blog/page.tsx" switcher
 import styles from './blog.module.css'
 
 export default function Page() {
@@ -143,10 +159,11 @@ export default function Page() {
 }
 ```
 
-```jsx filename="app/blog/page.js" switcher
+```jsx
+filename="app/blog/page.js" switcher
 import styles from './blog.module.css'
 
-export default function Layout() {
+export default function Page() {
   return <main className={styles.blog}></main>
 }
 ```
@@ -157,7 +174,8 @@ You can use global CSS to apply styles across your application.
 
 Create a `app/global.css` file and import it in the root layout to apply the styles to **every route** in your application:
 
-```css filename="app/global.css"
+```css
+filename="app/global.css"
 body {
   padding: 20px 20px 60px;
   max-width: 680px;
@@ -165,7 +183,8 @@ body {
 }
 ```
 
-```tsx filename="app/layout.tsx" switcher
+```tsx
+filename="app/layout.tsx" switcher
 // These styles apply to every route in the application
 import './global.css'
 
@@ -182,7 +201,8 @@ export default function RootLayout({
 }
 ```
 
-```jsx filename="app/layout.js" switcher
+```jsx
+filename="app/layout.js" switcher
 // These styles apply to every route in the application
 import './global.css'
 
@@ -201,7 +221,8 @@ export default function RootLayout({ children }) {
 
 Stylesheets published by external packages can be imported anywhere in the `app` directory, including colocated components:
 
-```tsx filename="app/layout.tsx" switcher
+```tsx
+filename="app/layout.tsx" switcher
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default function RootLayout({
@@ -217,7 +238,8 @@ export default function RootLayout({
 }
 ```
 
-```jsx filename="app/layout.js" switcher
+```jsx
+filename="app/layout.js" switcher
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default function RootLayout({ children }) {
@@ -237,7 +259,8 @@ Next.js optimizes CSS during production builds by automatically chunking (mergin
 
 For example, `base-button.module.css` will be ordered before `page.module.css` since `<BaseButton>` is imported before `page.module.css`:
 
-```tsx filename="page.tsx" switcher
+```tsx
+filename="page.tsx" switcher
 import { BaseButton } from './base-button'
 import styles from './page.module.css'
 
@@ -246,7 +269,8 @@ export default function Page() {
 }
 ```
 
-```jsx filename="page.js" switcher
+```jsx
+filename="page.js" switcher
 import { BaseButton } from './base-button'
 import styles from './page.module.css'
 
@@ -255,7 +279,8 @@ export default function Page() {
 }
 ```
 
-```tsx filename="base-button.tsx" switcher
+```tsx
+filename="base-button.tsx" switcher
 import styles from './base-button.module.css'
 
 export function BaseButton() {
@@ -263,7 +288,8 @@ export function BaseButton() {
 }
 ```
 
-```jsx filename="base-button.js" switcher
+```jsx
+filename="base-button.js" switcher
 import styles from './base-button.module.css'
 
 export function BaseButton() {
@@ -275,21 +301,22 @@ export function BaseButton() {
 
 To keep CSS ordering predictable:
 
-* Try to contain CSS imports to a single JavaScript or TypeScript entry file
-* Import global styles and Tailwind stylesheets in the root of your application.
-* **Use Tailwind CSS** for most styling needs as it covers common design patterns with utility classes.
-* Use CSS Modules for component-specific styles when Tailwind utilities aren't sufficient.
-* Use a consistent naming convention for your CSS modules. For example, using `<name>.module.css` over `<name>.tsx`.
-* Extract shared styles into shared components to avoid duplicate imports.
-* Turn off linters or formatters that auto-sort imports like ESLint’s [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports).
-* You can use the [`cssChunking`](/docs/app/api-reference/config/next-config-js/cssChunking.md) option in `next.config.js` to control how CSS is chunked.
+- Try to contain CSS imports to a single JavaScript or TypeScript entry file
+- Import global styles and Tailwind stylesheets in the root of your application.
+- **Use Tailwind CSS** for most styling needs as it covers common design patterns with utility classes.
+- Use CSS Modules for component-specific styles when Tailwind utilities aren't sufficient.
+- Use a consistent naming convention for your CSS modules. For example, using `<name>.module.css` over `<name>.tsx`.
+- Extract shared styles into shared components to avoid duplicate imports.
+- Turn off linters or formatters that auto-sort imports like ESLint’s [`sort-imports`](https://eslint.org/docs/latest/rules/sort-imports).
+- You can use the [`cssChunking`](/docs/app/api-reference/config/next-config-js/cssChunking.md) option in `next.config.js` to control how CSS is chunked.
 
 ## Development vs Production
 
-* In development (`next dev`), CSS updates apply instantly with [Fast Refresh](/docs/architecture/fast-refresh.md).
-* In production (`next build`), all CSS files are automatically concatenated into **many minified and code-split** `.css` files, ensuring the minimal amount of CSS is loaded for a route.
-* CSS still loads with JavaScript disabled in production, but JavaScript is required in development for Fast Refresh.
-* CSS ordering can behave differently in development, always ensure to check the build (`next build`) to verify the final CSS order.
+- In development (`next dev`), CSS updates apply instantly with [Fast Refresh](/docs/architecture/fast-refresh.md).
+- In production (`next build`), all CSS files are automatically concatenated into **many minified and code-split** `.css` files, ensuring the minimal amount of CSS is loaded for a route.
+- CSS still loads with JavaScript disabled in production, but JavaScript is required in development for Fast Refresh.
+- CSS ordering can behave differently in development, always ensure to check the build (`next build`) to verify the final CSS order.
+
 ## Next Steps
 
 Learn more about the alternatives ways you can use CSS in your application.

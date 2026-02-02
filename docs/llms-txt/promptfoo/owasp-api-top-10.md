@@ -1,305 +1,500 @@
-# Source: https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/
+# OWASP API Security Top 10
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-red-team/owasp-api-top-10" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">OWASP API Security Top 10 | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-red-team-owasp-api-top-10--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-red-team-owasp-api-top-10--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="OWASP API Security Top 10 | Promptfoo"><meta data-rh="true" name="description" content="Red team LLM applications against OWASP API Security Top 10 vulnerabilities to protect AI systems from broken authorization, SSRF, and API-specific attacks"><meta data-rh="true" property="og:description" content="Red team LLM applications against OWASP API Security Top 10 vulnerabilities to protect AI systems from broken authorization, SSRF, and API-specific attacks"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/owasp-api-top-10/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"OWASP API Security Top 10","item":"https://www.promptfoo.dev/docs/red-team/owasp-api-top-10"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+The OWASP API Security Top 10 is a security awareness document that identifies the most critical security risks to APIs. While traditionally focused on REST and GraphQL APIs, these vulnerabilities are increasingly relevant for LLM applications as they often function as intelligent API layers that interact with databases, external services, and internal systems.
 
+LLM applications that use function calling, tool usage, or agent architectures are particularly susceptible to API security issues, as the LLM acts as a dynamic interface between users and backend systems.
 
+## API Security Risks for LLM Applications
 
+The current OWASP API Security Top 10 (2023) includes:
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+1. [API1: Broken Object Level Authorization](#api1-broken-object-level-authorization-owaspapi01)
+2. [API2: Broken Authentication](#api2-broken-authentication-owaspapi02)
+3. [API3: Broken Object Property Level Authorization](#api3-broken-object-property-level-authorization-owaspapi03)
+4. [API4: Unrestricted Resource Consumption](#api4-unrestricted-resource-consumption-owaspapi04)
+5. [API5: Broken Function Level Authorization](#api5-broken-function-level-authorization-owaspapi05)
+6. [API6: Unrestricted Access to Sensitive Business Flows](#api6-unrestricted-access-to-sensitive-business-flows-owaspapi06)
+7. [API7: Server Side Request Forgery](#api7-server-side-request-forgery-owaspapi07)
+8. [API8: Security Misconfiguration](#api8-security-misconfiguration-owaspapi08)
+9. [API9: Improper Inventory Management](#api9-improper-inventory-management-owaspapi09)
+10. [API10: Unsafe Consumption of APIs](#api10-unsafe-consumption-of-apis-owaspapi10)
 
+## Why API Security Matters for LLMs
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+LLM applications with API access create unique security challenges:
 
+- **Natural language interface**: Users can manipulate API calls through conversational prompts
+- **Tool calling**: LLMs can invoke functions and APIs autonomously based on user input
+- **Complex authorization**: Traditional API authorization may not account for LLM-mediated access
+- **Indirect attacks**: Attackers can use prompt injection to manipulate API interactions
 
+## Scanning for OWASP API Security Risks
 
+Promptfoo helps identify API security vulnerabilities in LLM applications through red teaming:
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="NIST AI Risk Management Framework" class="linkLabel_fEdy">NIST AI Risk Management Framework</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-llm-top-10/"><span title="OWASP LLM Top 10" class="linkLabel_fEdy">OWASP LLM Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-agentic-ai/"><span title="OWASP Top 10 for Agentic Applications" class="linkLabel_fEdy">OWASP Top 10 for Agentic Applications</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/red-team/owasp-api-top-10/"><span title="OWASP API Security Top 10" class="linkLabel_fEdy">OWASP API Security Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/mitre-atlas/"><span title="MITRE ATLAS" class="linkLabel_fEdy">MITRE ATLAS</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/iso-42001/"><span title="ISO 42001" class="linkLabel_fEdy">ISO 42001</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/gdpr/"><span title="GDPR" class="linkLabel_fEdy">GDPR</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/eu-ai-act/"><span title="EU AI Act" class="linkLabel_fEdy">EU AI Act</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Frameworks</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">OWASP API Security Top 10</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>OWASP API Security Top 10</h1></header>
-<p>The OWASP API Security Top 10 is a security awareness document that identifies the most critical security risks to APIs. While traditionally focused on REST and GraphQL APIs, these vulnerabilities are increasingly relevant for LLM applications as they often function as intelligent API layers that interact with databases, external services, and internal systems.</p>
-<p>LLM applications that use function calling, tool usage, or agent architectures are particularly susceptible to API security issues, as the LLM acts as a dynamic interface between users and backend systems.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api-security-risks-for-llm-applications">API Security Risks for LLM Applications<a href="#api-security-risks-for-llm-applications" class="hash-link" aria-label="Direct link to API Security Risks for LLM Applications" title="Direct link to API Security Risks for LLM Applications" translate="no">​</a></h2>
-<p>The current OWASP API Security Top 10 (2023) includes:</p>
-<ol>
-<li class=""><a href="#api1-broken-object-level-authorization-owaspapi01" class="">API1: Broken Object Level Authorization</a></li>
-<li class=""><a href="#api2-broken-authentication-owaspapi02" class="">API2: Broken Authentication</a></li>
-<li class=""><a href="#api3-broken-object-property-level-authorization-owaspapi03" class="">API3: Broken Object Property Level Authorization</a></li>
-<li class=""><a href="#api4-unrestricted-resource-consumption-owaspapi04" class="">API4: Unrestricted Resource Consumption</a></li>
-<li class=""><a href="#api5-broken-function-level-authorization-owaspapi05" class="">API5: Broken Function Level Authorization</a></li>
-<li class=""><a href="#api6-unrestricted-access-to-sensitive-business-flows-owaspapi06" class="">API6: Unrestricted Access to Sensitive Business Flows</a></li>
-<li class=""><a href="#api7-server-side-request-forgery-owaspapi07" class="">API7: Server Side Request Forgery</a></li>
-<li class=""><a href="#api8-security-misconfiguration-owaspapi08" class="">API8: Security Misconfiguration</a></li>
-<li class=""><a href="#api9-improper-inventory-management-owaspapi09" class="">API9: Improper Inventory Management</a></li>
-<li class=""><a href="#api10-unsafe-consumption-of-apis-owaspapi10" class="">API10: Unsafe Consumption of APIs</a></li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="why-api-security-matters-for-llms">Why API Security Matters for LLMs<a href="#why-api-security-matters-for-llms" class="hash-link" aria-label="Direct link to Why API Security Matters for LLMs" title="Direct link to Why API Security Matters for LLMs" translate="no">​</a></h2>
-<p>LLM applications with API access create unique security challenges:</p>
-<ul>
-<li class=""><strong>Natural language interface</strong>: Users can manipulate API calls through conversational prompts</li>
-<li class=""><strong>Tool calling</strong>: LLMs can invoke functions and APIs autonomously based on user input</li>
-<li class=""><strong>Complex authorization</strong>: Traditional API authorization may not account for LLM-mediated access</li>
-<li class=""><strong>Indirect attacks</strong>: Attackers can use prompt injection to manipulate API interactions</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="scanning-for-owasp-api-security-risks">Scanning for OWASP API Security Risks<a href="#scanning-for-owasp-api-security-risks" class="hash-link" aria-label="Direct link to Scanning for OWASP API Security Risks" title="Direct link to Scanning for OWASP API Security Risks" translate="no">​</a></h2>
-<p>Promptfoo helps identify API security vulnerabilities in LLM applications through red teaming:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or target specific API risks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">01</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Broken Object Level Authorization</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">05</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Broken Function Level Authorization</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">07</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Server Side Request Forgery</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api1-broken-object-level-authorization-owaspapi01">API1: Broken Object Level Authorization (owasp:api:01)<a href="#api1-broken-object-level-authorization-owaspapi01" class="hash-link" aria-label="Direct link to API1: Broken Object Level Authorization (owasp:api:01)" title="Direct link to API1: Broken Object Level Authorization (owasp:api:01)" translate="no">​</a></h2>
-<p>Broken Object Level Authorization (BOLA), also known as Insecure Direct Object Reference (IDOR), occurs when an application fails to properly verify that a user is authorized to access a specific object. This is the most common and impactful API vulnerability.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context">LLM Context<a href="#llm-context" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>In LLM applications, BOLA vulnerabilities arise when:</p>
-<ul>
-<li class="">Users can manipulate the LLM to access other users&#x27; data</li>
-<li class="">The LLM accesses objects without proper authorization checks</li>
-<li class="">Prompt injection bypasses access control logic</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy">Testing Strategy<a href="#testing-strategy" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for BOLA vulnerabilities:</p>
-<ul>
-<li class=""><strong>BOLA plugin</strong>: Systematically tests for unauthorized object access</li>
-<li class=""><strong>RBAC</strong>: Verifies role-based access controls are enforced</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> bola</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rbac</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">01</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api2-broken-authentication-owaspapi02">API2: Broken Authentication (owasp:api:02)<a href="#api2-broken-authentication-owaspapi02" class="hash-link" aria-label="Direct link to API2: Broken Authentication (owasp:api:02)" title="Direct link to API2: Broken Authentication (owasp:api:02)" translate="no">​</a></h2>
-<p>Broken Authentication vulnerabilities allow attackers to compromise authentication tokens or exploit implementation flaws to assume other users&#x27; identities.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-1">LLM Context<a href="#llm-context-1" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications with authentication issues may:</p>
-<ul>
-<li class="">Fail to verify user identity properly</li>
-<li class="">Allow session hijacking through prompt manipulation</li>
-<li class="">Incorrectly implement role-based access</li>
-<li class="">Leak authentication tokens or credentials</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-1">Testing Strategy<a href="#testing-strategy-1" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for authentication vulnerabilities:</p>
-<ul>
-<li class=""><strong>BFLA</strong>: Tests for function-level authorization bypasses</li>
-<li class=""><strong>RBAC</strong>: Verifies authentication and role enforcement</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> bfla</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rbac</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">02</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api3-broken-object-property-level-authorization-owaspapi03">API3: Broken Object Property Level Authorization (owasp:api:03)<a href="#api3-broken-object-property-level-authorization-owaspapi03" class="hash-link" aria-label="Direct link to API3: Broken Object Property Level Authorization (owasp:api:03)" title="Direct link to API3: Broken Object Property Level Authorization (owasp:api:03)" translate="no">​</a></h2>
-<p>This vulnerability combines excessive data exposure and mass assignment. It occurs when an API returns more data than necessary or allows users to modify object properties they shouldn&#x27;t access.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-2">LLM Context<a href="#llm-context-2" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>In LLM applications, this manifests as:</p>
-<ul>
-<li class="">Over-sharing of data in LLM responses</li>
-<li class="">Excessive agency in modifying system properties</li>
-<li class="">Failure to filter sensitive object properties</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-2">Testing Strategy<a href="#testing-strategy-2" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for property-level authorization issues:</p>
-<ul>
-<li class=""><strong>Excessive agency</strong>: Tests for unauthorized modifications</li>
-<li class=""><strong>Overreliance</strong>: Checks for accepting invalid property changes</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">03</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api4-unrestricted-resource-consumption-owaspapi04">API4: Unrestricted Resource Consumption (owasp:api:04)<a href="#api4-unrestricted-resource-consumption-owaspapi04" class="hash-link" aria-label="Direct link to API4: Unrestricted Resource Consumption (owasp:api:04)" title="Direct link to API4: Unrestricted Resource Consumption (owasp:api:04)" translate="no">​</a></h2>
-<p>This vulnerability, formerly known as &quot;Lack of Resources &amp; Rate Limiting,&quot; occurs when APIs don&#x27;t properly restrict resource consumption, leading to denial of service or excessive costs.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-3">LLM Context<a href="#llm-context-3" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications are particularly vulnerable to resource exhaustion:</p>
-<ul>
-<li class="">Expensive API calls triggered by user prompts</li>
-<li class="">Unlimited context window usage</li>
-<li class="">Excessive database queries</li>
-<li class="">Privacy leaks through session persistence</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-3">Testing Strategy<a href="#testing-strategy-3" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for resource consumption vulnerabilities:</p>
-<ul>
-<li class=""><strong>Privacy</strong>: Tests for data persistence issues</li>
-<li class=""><strong>PII plugins</strong>: Checks for information leakage across requests</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">db</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">04</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api5-broken-function-level-authorization-owaspapi05">API5: Broken Function Level Authorization (owasp:api:05)<a href="#api5-broken-function-level-authorization-owaspapi05" class="hash-link" aria-label="Direct link to API5: Broken Function Level Authorization (owasp:api:05)" title="Direct link to API5: Broken Function Level Authorization (owasp:api:05)" translate="no">​</a></h2>
-<p>Broken Function Level Authorization (BFLA) occurs when an application doesn&#x27;t properly enforce access controls at the function level, allowing users to perform administrative or privileged actions.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-4">LLM Context<a href="#llm-context-4" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>In LLM applications with tool calling or function execution:</p>
-<ul>
-<li class="">Users can invoke privileged functions through prompts</li>
-<li class="">The LLM executes administrative actions without authorization</li>
-<li class="">Role boundaries are not properly enforced</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-4">Testing Strategy<a href="#testing-strategy-4" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for function-level authorization issues:</p>
-<ul>
-<li class=""><strong>BFLA</strong>: Systematically tests function authorization</li>
-<li class=""><strong>BOLA</strong>: Tests object-level authorization alongside function access</li>
-<li class=""><strong>RBAC</strong>: Verifies role-based function access controls</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> bfla</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> bola</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rbac</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">05</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api6-unrestricted-access-to-sensitive-business-flows-owaspapi06">API6: Unrestricted Access to Sensitive Business Flows (owasp:api:06)<a href="#api6-unrestricted-access-to-sensitive-business-flows-owaspapi06" class="hash-link" aria-label="Direct link to API6: Unrestricted Access to Sensitive Business Flows (owasp:api:06)" title="Direct link to API6: Unrestricted Access to Sensitive Business Flows (owasp:api:06)" translate="no">​</a></h2>
-<p>This vulnerability occurs when APIs expose sensitive business workflows without proper controls, allowing attackers to abuse critical functionality.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-5">LLM Context<a href="#llm-context-5" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications may expose sensitive flows through:</p>
-<ul>
-<li class="">Natural language manipulation of business processes</li>
-<li class="">Misinformation about business rules or workflows</li>
-<li class="">Over-reliance on LLM decisions in critical flows</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-5">Testing Strategy<a href="#testing-strategy-5" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for business flow vulnerabilities:</p>
-<ul>
-<li class=""><strong>Misinformation</strong>: Tests for manipulation of business logic</li>
-<li class=""><strong>Overreliance</strong>: Checks for blind trust in LLM outputs</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">misinformation</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">disinformation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">06</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api7-server-side-request-forgery-owaspapi07">API7: Server Side Request Forgery (owasp:api:07)<a href="#api7-server-side-request-forgery-owaspapi07" class="hash-link" aria-label="Direct link to API7: Server Side Request Forgery (owasp:api:07)" title="Direct link to API7: Server Side Request Forgery (owasp:api:07)" translate="no">​</a></h2>
-<p>SSRF vulnerabilities occur when an API fetches a remote resource without validating the user-supplied URL, allowing attackers to access internal systems or perform unauthorized actions.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-6">LLM Context<a href="#llm-context-6" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications are particularly vulnerable to SSRF:</p>
-<ul>
-<li class="">LLMs can be tricked into making unauthorized requests</li>
-<li class="">Function calling may expose SSRF vectors</li>
-<li class="">Prompt injection can manipulate URL parameters</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-6">Testing Strategy<a href="#testing-strategy-6" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for SSRF and injection vulnerabilities:</p>
-<ul>
-<li class=""><strong>Shell injection</strong>: Tests for command execution</li>
-<li class=""><strong>SQL injection</strong>: Tests for database manipulation</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> shell</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> sql</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">07</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api8-security-misconfiguration-owaspapi08">API8: Security Misconfiguration (owasp:api:08)<a href="#api8-security-misconfiguration-owaspapi08" class="hash-link" aria-label="Direct link to API8: Security Misconfiguration (owasp:api:08)" title="Direct link to API8: Security Misconfiguration (owasp:api:08)" translate="no">​</a></h2>
-<p>Security misconfiguration is a broad category covering improper security settings, default configurations, verbose error messages, and missing security patches.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-7">LLM Context<a href="#llm-context-7" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications commonly have misconfigurations:</p>
-<ul>
-<li class="">Exposed debugging information</li>
-<li class="">Overly permissive API access</li>
-<li class="">Leaked system prompts or configuration</li>
-<li class="">Privacy setting misconfigurations</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-7">Testing Strategy<a href="#testing-strategy-7" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for misconfiguration issues:</p>
-<ul>
-<li class=""><strong>Privacy</strong>: Tests for data exposure through misconfigurations</li>
-<li class=""><strong>PII plugins</strong>: Checks for inadvertent data leakage</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">db</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">08</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api9-improper-inventory-management-owaspapi09">API9: Improper Inventory Management (owasp:api:09)<a href="#api9-improper-inventory-management-owaspapi09" class="hash-link" aria-label="Direct link to API9: Improper Inventory Management (owasp:api:09)" title="Direct link to API9: Improper Inventory Management (owasp:api:09)" translate="no">​</a></h2>
-<p>This vulnerability occurs when organizations lack proper documentation and inventory of API endpoints, versions, and integrations, leading to unpatched or deprecated APIs remaining accessible.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-8">LLM Context<a href="#llm-context-8" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications with poor inventory management:</p>
-<ul>
-<li class="">Expose undocumented function calls or tools</li>
-<li class="">Provide specialized advice beyond intended scope</li>
-<li class="">Make assumptions about system capabilities</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-8">Testing Strategy<a href="#testing-strategy-8" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for inventory management issues:</p>
-<ul>
-<li class=""><strong>Specialized advice</strong>: Tests for out-of-scope expertise</li>
-<li class=""><strong>Overreliance</strong>: Checks for unverified capabilities</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">specialized</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">advice</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> overreliance</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">09</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="api10-unsafe-consumption-of-apis-owaspapi10">API10: Unsafe Consumption of APIs (owasp:api:10)<a href="#api10-unsafe-consumption-of-apis-owaspapi10" class="hash-link" aria-label="Direct link to API10: Unsafe Consumption of APIs (owasp:api:10)" title="Direct link to API10: Unsafe Consumption of APIs (owasp:api:10)" translate="no">​</a></h2>
-<p>This vulnerability occurs when applications trust data from third-party APIs without proper validation, leading to various attacks through compromised or malicious API responses.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="llm-context-9">LLM Context<a href="#llm-context-9" class="hash-link" aria-label="Direct link to LLM Context" title="Direct link to LLM Context" translate="no">​</a></h3>
-<p>LLM applications consuming external APIs face risks:</p>
-<ul>
-<li class="">Using untrusted data in responses</li>
-<li class="">Exposing debug information from external APIs</li>
-<li class="">Leaking privacy information from external sources</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-9">Testing Strategy<a href="#testing-strategy-9" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for unsafe API consumption:</p>
-<ul>
-<li class=""><strong>Debug access</strong>: Tests for exposed debugging information</li>
-<li class=""><strong>Privacy</strong>: Tests for data leakage from external sources</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> debug</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">access</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span></code></pre></div></div>
-<p>Or use the OWASP API shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">10</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="comprehensive-owasp-api-security-testing">Comprehensive OWASP API Security Testing<a href="#comprehensive-owasp-api-security-testing" class="hash-link" aria-label="Direct link to Comprehensive OWASP API Security Testing" title="Direct link to Comprehensive OWASP API Security Testing" translate="no">​</a></h2>
-<p>For complete OWASP API Security Top 10 coverage:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>This configuration tests your LLM application against all OWASP API Security Top 10 risks.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="integration-with-owasp-llm-top-10">Integration with OWASP LLM Top 10<a href="#integration-with-owasp-llm-top-10" class="hash-link" aria-label="Direct link to Integration with OWASP LLM Top 10" title="Direct link to Integration with OWASP LLM Top 10" translate="no">​</a></h2>
-<p>The OWASP API Security Top 10 and OWASP LLM Top 10 are complementary frameworks:</p>
-<table><thead><tr><th>API Security Risk</th><th>Related LLM Risk</th></tr></thead><tbody><tr><td>API1: BOLA</td><td>LLM06: Excessive Agency</td></tr><tr><td>API5: BFLA</td><td>LLM06: Excessive Agency</td></tr><tr><td>API7: SSRF</td><td>LLM05: Improper Output Handling</td></tr><tr><td>API8: Security Misconfiguration</td><td>LLM02: Sensitive Information Disclosure</td></tr></tbody></table>
-<p>Test both frameworks together:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">llm</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="llm-specific-api-security-challenges">LLM-Specific API Security Challenges<a href="#llm-specific-api-security-challenges" class="hash-link" aria-label="Direct link to LLM-Specific API Security Challenges" title="Direct link to LLM-Specific API Security Challenges" translate="no">​</a></h2>
-<p>LLM applications introduce unique API security considerations:</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="natural-language-as-attack-vector">Natural Language as Attack Vector<a href="#natural-language-as-attack-vector" class="hash-link" aria-label="Direct link to Natural Language as Attack Vector" title="Direct link to Natural Language as Attack Vector" translate="no">​</a></h3>
-<p>Traditional APIs validate structured input (JSON, XML), but LLMs accept natural language, making input validation more complex.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="autonomous-tool-usage">Autonomous Tool Usage<a href="#autonomous-tool-usage" class="hash-link" aria-label="Direct link to Autonomous Tool Usage" title="Direct link to Autonomous Tool Usage" translate="no">​</a></h3>
-<p>LLMs can chain multiple API calls autonomously, creating authorization challenges traditional APIs don&#x27;t face.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="context-dependent-authorization">Context-Dependent Authorization<a href="#context-dependent-authorization" class="hash-link" aria-label="Direct link to Context-Dependent Authorization" title="Direct link to Context-Dependent Authorization" translate="no">​</a></h3>
-<p>Authorization decisions may depend on conversation history, making session management critical.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="indirect-injection-attacks">Indirect Injection Attacks<a href="#indirect-injection-attacks" class="hash-link" aria-label="Direct link to Indirect Injection Attacks" title="Direct link to Indirect Injection Attacks" translate="no">​</a></h3>
-<p>Attackers can manipulate API calls through prompt injection without directly accessing the API.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="best-practices">Best Practices<a href="#best-practices" class="hash-link" aria-label="Direct link to Best Practices" title="Direct link to Best Practices" translate="no">​</a></h2>
-<p>When securing LLM applications against API vulnerabilities:</p>
-<ol>
-<li class=""><strong>Defense in depth</strong>: Implement authorization at both the LLM and API layers</li>
-<li class=""><strong>Principle of least privilege</strong>: Limit LLM access to only necessary APIs and functions</li>
-<li class=""><strong>Input validation</strong>: Validate LLM outputs before passing to APIs</li>
-<li class=""><strong>Rate limiting</strong>: Apply both token-based and API call rate limits</li>
-<li class=""><strong>Monitoring</strong>: Log and monitor LLM-initiated API calls</li>
-<li class=""><strong>Testing</strong>: Regularly test with both direct API calls and LLM-mediated access</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="whats-next">What&#x27;s Next<a href="#whats-next" class="hash-link" aria-label="Direct link to What&#x27;s Next" title="Direct link to What&#x27;s Next" translate="no">​</a></h2>
-<p>API security for LLM applications is an evolving field as new attack patterns emerge. Regular testing with Promptfoo helps ensure your LLM applications maintain strong API security posture.</p>
-<p>To learn more about setting up comprehensive AI red teaming, see <a class="" href="/docs/red-team/">Introduction to LLM red teaming</a> and <a class="" href="/docs/red-team/configuration/">Configuration details</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="additional-resources">Additional Resources<a href="#additional-resources" class="hash-link" aria-label="Direct link to Additional Resources" title="Direct link to Additional Resources" translate="no">​</a></h2>
-<ul>
-<li class=""><a href="https://owasp.org/www-project-api-security/" target="_blank" rel="noopener noreferrer" class="">OWASP API Security Project</a></li>
-<li class=""><a href="https://owasp.org/API-Security/editions/2023/en/0x00-header/" target="_blank" rel="noopener noreferrer" class="">OWASP API Security Top 10 2023</a></li>
-<li class=""><a href="https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer" class="">API Security Best Practices</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/red-team/owasp-api-top-10.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/owasp-agentic-ai/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OWASP Top 10 for Agentic Applications</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/mitre-atlas/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">MITRE ATLAS</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#api-security-risks-for-llm-applications" class="table-of-contents__link toc-highlight">API Security Risks for LLM Applications</a></li><li><a href="#why-api-security-matters-for-llms" class="table-of-contents__link toc-highlight">Why API Security Matters for LLMs</a></li><li><a href="#scanning-for-owasp-api-security-risks" class="table-of-contents__link toc-highlight">Scanning for OWASP API Security Risks</a></li><li><a href="#api1-broken-object-level-authorization-owaspapi01" class="table-of-contents__link toc-highlight">API1: Broken Object Level Authorization (owasp:api:01)</a><ul><li><a href="#llm-context" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api2-broken-authentication-owaspapi02" class="table-of-contents__link toc-highlight">API2: Broken Authentication (owasp:api:02)</a><ul><li><a href="#llm-context-1" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-1" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api3-broken-object-property-level-authorization-owaspapi03" class="table-of-contents__link toc-highlight">API3: Broken Object Property Level Authorization (owasp:api:03)</a><ul><li><a href="#llm-context-2" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-2" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api4-unrestricted-resource-consumption-owaspapi04" class="table-of-contents__link toc-highlight">API4: Unrestricted Resource Consumption (owasp:api:04)</a><ul><li><a href="#llm-context-3" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-3" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api5-broken-function-level-authorization-owaspapi05" class="table-of-contents__link toc-highlight">API5: Broken Function Level Authorization (owasp:api:05)</a><ul><li><a href="#llm-context-4" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-4" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api6-unrestricted-access-to-sensitive-business-flows-owaspapi06" class="table-of-contents__link toc-highlight">API6: Unrestricted Access to Sensitive Business Flows (owasp:api:06)</a><ul><li><a href="#llm-context-5" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-5" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api7-server-side-request-forgery-owaspapi07" class="table-of-contents__link toc-highlight">API7: Server Side Request Forgery (owasp:api:07)</a><ul><li><a href="#llm-context-6" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-6" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api8-security-misconfiguration-owaspapi08" class="table-of-contents__link toc-highlight">API8: Security Misconfiguration (owasp:api:08)</a><ul><li><a href="#llm-context-7" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-7" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api9-improper-inventory-management-owaspapi09" class="table-of-contents__link toc-highlight">API9: Improper Inventory Management (owasp:api:09)</a><ul><li><a href="#llm-context-8" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-8" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#api10-unsafe-consumption-of-apis-owaspapi10" class="table-of-contents__link toc-highlight">API10: Unsafe Consumption of APIs (owasp:api:10)</a><ul><li><a href="#llm-context-9" class="table-of-contents__link toc-highlight">LLM Context</a></li><li><a href="#testing-strategy-9" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#comprehensive-owasp-api-security-testing" class="table-of-contents__link toc-highlight">Comprehensive OWASP API Security Testing</a></li><li><a href="#integration-with-owasp-llm-top-10" class="table-of-contents__link toc-highlight">Integration with OWASP LLM Top 10</a></li><li><a href="#llm-specific-api-security-challenges" class="table-of-contents__link toc-highlight">LLM-Specific API Security Challenges</a><ul><li><a href="#natural-language-as-attack-vector" class="table-of-contents__link toc-highlight">Natural Language as Attack Vector</a></li><li><a href="#autonomous-tool-usage" class="table-of-contents__link toc-highlight">Autonomous Tool Usage</a></li><li><a href="#context-dependent-authorization" class="table-of-contents__link toc-highlight">Context-Dependent Authorization</a></li><li><a href="#indirect-injection-attacks" class="table-of-contents__link toc-highlight">Indirect Injection Attacks</a></li></ul></li><li><a href="#best-practices" class="table-of-contents__link toc-highlight">Best Practices</a></li><li><a href="#whats-next" class="table-of-contents__link toc-highlight">What&#39;s Next</a></li><li><a href="#additional-resources" class="table-of-contents__link toc-highlight">Additional Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+```yaml
+redteam:
+  plugins:
+    - owasp:api
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+Or target specific API risks:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:01 # Broken Object Level Authorization
+    - owasp:api:05 # Broken Function Level Authorization
+    - owasp:api:07 # Server Side Request Forgery
+```
+
+## API1: Broken Object Level Authorization (owasp:api:01)
+
+Broken Object Level Authorization (BOLA), also known as Insecure Direct Object Reference (IDOR), occurs when an application fails to properly verify that a user is authorized to access a specific object. This is the most common and impactful API vulnerability.
+
+### LLM Context
+
+In LLM applications, BOLA vulnerabilities arise when:
+
+- Users can manipulate the LLM to access other users' data
+- The LLM accesses objects without proper authorization checks
+- Prompt injection bypasses access control logic
+
+### Testing Strategy
+
+Test for BOLA vulnerabilities:
+
+- **BOLA plugin**: Systematically tests for unauthorized object access
+- **RBAC**: Verifies role-based access controls are enforced
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - bola
+    - rbac
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:01
+```
+
+## API2: Broken Authentication (owasp:api:02)
+
+Broken Authentication vulnerabilities allow attackers to compromise authentication tokens or exploit implementation flaws to assume other users' identities.
+
+### LLM Context
+
+LLM applications with authentication issues may:
+
+- Fail to verify user identity properly
+- Allow session hijacking through prompt manipulation
+- Incorrectly implement role-based access
+- Leak authentication tokens or credentials
+
+### Testing Strategy
+
+Test for authentication vulnerabilities:
+
+- **BFLA**: Tests for function-level authorization bypasses
+- **RBAC**: Verifies authentication and role enforcement
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - bfla
+    - rbac
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:02
+```
+
+## API3: Broken Object Property Level Authorization (owasp:api:03)
+
+This vulnerability combines excessive data exposure and mass assignment. It occurs when an API returns more data than necessary or allows users to modify object properties they shouldn't access.
+
+### LLM Context
+
+In LLM applications, this manifests as:
+
+- Over-sharing of data in LLM responses
+- Excessive agency in modifying system properties
+- Failure to filter sensitive object properties
+
+### Testing Strategy
+
+Test for property-level authorization issues:
+
+- **Excessive agency**: Tests for unauthorized modifications
+- **Overreliance**: Checks for accepting invalid property changes
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - excessive-agency
+    - overreliance
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:03
+```
+
+## API4: Unrestricted Resource Consumption (owasp:api:04)
+
+This vulnerability, formerly known as "Lack of Resources & Rate Limiting," occurs when APIs don't properly restrict resource consumption, leading to denial of service or excessive costs.
+
+### LLM Context
+
+LLM applications are particularly vulnerable to resource exhaustion:
+
+- Expensive API calls triggered by user prompts
+- Unlimited context window usage
+- Excessive database queries
+- Privacy leaks through session persistence
+
+### Testing Strategy
+
+Test for resource consumption vulnerabilities:
+
+- **Privacy**: Tests for data persistence issues
+- **PII plugins**: Checks for information leakage across requests
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:privacy
+    - pii:api-db
+    - pii:session
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:04
+```
+
+## API5: Broken Function Level Authorization (owasp:api:05)
+
+Broken Function Level Authorization (BFLA) occurs when an application doesn't properly enforce access controls at the function level, allowing users to perform administrative or privileged actions.
+
+### LLM Context
+
+In LLM applications with tool calling or function execution:
+
+- Users can invoke privileged functions through prompts
+- The LLM executes administrative actions without authorization
+- Role boundaries are not properly enforced
+
+### Testing Strategy
+
+Test for function-level authorization issues:
+
+- **BFLA**: Systematically tests function authorization
+- **BOLA**: Tests object-level authorization alongside function access
+- **RBAC**: Verifies role-based function access controls
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - bfla
+    - bola
+    - rbac
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:05
+```
+
+## API6: Unrestricted Access to Sensitive Business Flows (owasp:api:06)
+
+This vulnerability occurs when APIs expose sensitive business workflows without proper controls, allowing attackers to abuse critical functionality.
+
+### LLM Context
+
+LLM applications may expose sensitive flows through:
+
+- Natural language manipulation of business processes
+- Misinformation about business rules or workflows
+- Over-reliance on LLM decisions in critical flows
+
+### Testing Strategy
+
+Test for business flow vulnerabilities:
+
+- **Misinformation**: Tests for manipulation of business logic
+- **Overreliance**: Checks for blind trust in LLM outputs
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:misinformation-disinformation
+    - overreliance
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:06
+```
+
+## API7: Server Side Request Forgery (owasp:api:07)
+
+SSRF vulnerabilities occur when an API fetches a remote resource without validating the user-supplied URL, allowing attackers to access internal systems or perform unauthorized actions.
+
+### LLM Context
+
+LLM applications are particularly vulnerable to SSRF:
+
+- LLMs can be tricked into making unauthorized requests
+- Function calling may expose SSRF vectors
+- Prompt injection can manipulate URL parameters
+
+### Testing Strategy
+
+Test for SSRF and injection vulnerabilities:
+
+- **Shell injection**: Tests for command execution
+- **SQL injection**: Tests for database manipulation
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - shell-injection
+    - sql-injection
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:07
+```
+
+## API8: Security Misconfiguration (owasp:api:08)
+
+Security misconfiguration is a broad category covering improper security settings, default configurations, verbose error messages, and missing security patches.
+
+### LLM Context
+
+LLM applications commonly have misconfigurations:
+
+- Exposed debugging information
+- Overly permissive API access
+- Leaked system prompts or configuration
+- Privacy setting misconfigurations
+
+### Testing Strategy
+
+Test for misconfiguration issues:
+
+- **Privacy**: Tests for data exposure through misconfigurations
+- **PII plugins**: Checks for inadvertent data leakage
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:privacy
+    - pii:api-db
+    - pii:session
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:08
+```
+
+## API9: Improper Inventory Management (owasp:api:09)
+
+This vulnerability occurs when organizations lack proper documentation and inventory of API endpoints, versions, and integrations, leading to unpatched or deprecated APIs remaining accessible.
+
+### LLM Context
+
+LLM applications with poor inventory management:
+
+- Expose undocumented function calls or tools
+- Provide specialized advice beyond intended scope
+- Make assumptions about system capabilities
+
+### Testing Strategy
+
+Test for inventory management issues:
+
+- **Specialized advice**: Tests for out-of-scope expertise
+- **Overreliance**: Checks for unverified capabilities
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:specialized-advice
+    - overreliance
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:09
+```
+
+## API10: Unsafe Consumption of APIs (owasp:api:10)
+
+This vulnerability occurs when applications trust data from third-party APIs without proper validation, leading to various attacks through compromised or malicious API responses.
+
+### LLM Context
+
+LLM applications consuming external APIs face risks:
+
+- Using untrusted data in responses
+- Exposing debug information from external APIs
+- Leaking privacy information from external sources
+
+### Testing Strategy
+
+Test for unsafe API consumption:
+
+- **Debug access**: Tests for exposed debugging information
+- **Privacy**: Tests for data leakage from external sources
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - debug-access
+    - harmful:privacy
+```
+
+Or use the OWASP API shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api:10
+```
+
+## Comprehensive OWASP API Security Testing
+
+For complete OWASP API Security Top 10 coverage:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+This configuration tests your LLM application against all OWASP API Security Top 10 risks.
+
+## Integration with OWASP LLM Top 10
+
+The OWASP API Security Top 10 and OWASP LLM Top 10 are complementary frameworks:
+
+| API Security Risk | Related LLM Risk |
+| --- | --- |
+| API1: BOLA | LLM06: Excessive Agency |
+| API5: BFLA | LLM06: Excessive Agency |
+| API7: SSRF | LLM05: Improper Output Handling |
+| API8: Security Misconfiguration | LLM02: Sensitive Information Disclosure |
+
+Test both frameworks together:
+
+```yaml
+redteam:
+  plugins:
+    - owasp:api
+    - owasp:llm
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+## LLM-Specific API Security Challenges
+
+LLM applications introduce unique API security considerations:
+
+### Natural Language as Attack Vector
+
+Traditional APIs validate structured input (JSON, XML), but LLMs accept natural language, making input validation more complex.
+
+### Autonomous Tool Usage
+
+LLMs can chain multiple API calls autonomously, creating authorization challenges traditional APIs don't face.
+
+### Context-Dependent Authorization
+
+Authorization decisions may depend on conversation history, making session management critical.
+
+### Indirect Injection Attacks
+
+Attackers can manipulate API calls through prompt injection without directly accessing the API.
+
+## Best Practices
+
+When securing LLM applications against API vulnerabilities:
+
+1. **Defense in depth**: Implement authorization at both the LLM and API layers
+2. **Principle of least privilege**: Limit LLM access to only necessary APIs and functions
+3. **Input validation**: Validate LLM outputs before passing to APIs
+4. **Rate limiting**: Apply both token-based and API call rate limits
+5. **Monitoring**: Log and monitor LLM-initiated API calls
+6. **Testing**: Regularly test with both direct API calls and LLM-mediated access
+
+## What's Next
+
+API security for LLM applications is an evolving field as new attack patterns emerge. Regular testing with Promptfoo helps ensure your LLM applications maintain strong API security posture.
+
+To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
+
+## Additional Resources
+
+- [OWASP API Security Project](https://owasp.org/www-project-api-security/)
+- [OWASP API Security Top 10 2023](https://owasp.org/API-Security/editions/2023/en/0x00-header/)
+- [API Security Best Practices](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)

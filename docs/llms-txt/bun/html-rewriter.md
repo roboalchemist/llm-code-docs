@@ -6,13 +6,14 @@
 
 HTMLRewriter lets you use CSS selectors to transform HTML documents. It works with `Request`, `Response`, as well as `string`. Bun's implementation is based on Cloudflare's [lol-html](https://github.com/cloudflare/lol-html).
 
-***
+---
 
 ## Usage
 
 A common usecase is rewriting URLs in HTML content. Here's an example that rewrites image sources and link URLs to use a CDN domain:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Replace all images with a rickroll
 const rewriter = new HTMLRewriter().on("img", {
   element(img) {
@@ -47,7 +48,8 @@ console.log(result);
 
 This replaces all images with a thumbnail of Rick Astley and wraps each `<img>` in a link, producing a diff like this:
 
-```html  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 <html>
   <body>
     <img src="/cat.jpg" /> <!-- [!code --] -->
@@ -72,7 +74,8 @@ Now every image on the page will be replaced with a thumbnail of Rick Astley, an
 
 HTMLRewriter can transform HTML from various sources. The input is automatically handled based on its type:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 // From Response
 rewriter.transform(new Response("<div>content</div>"));
 
@@ -95,7 +98,8 @@ Note that Cloudflare Workers implementation of HTMLRewriter only supports `Respo
 
 The `on(selector, handlers)` method allows you to register handlers for HTML elements that match a CSS selector. The handlers are called for each matching element during parsing:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div.content", {
   // Handle elements
   element(element) {
@@ -115,7 +119,8 @@ rewriter.on("div.content", {
 
 The handlers can be asynchronous and return a Promise. Note that async operations will block the transformation until they complete:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
   async element(element) {
     await Bun.sleep(1000);
@@ -128,7 +133,8 @@ rewriter.on("div", {
 
 The `on()` method supports a wide range of CSS selectors:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Tag selectors
 rewriter.on("p", handler);
 
@@ -168,7 +174,8 @@ rewriter.on("*", handler);
 
 Elements provide various methods for manipulation. All modification methods return the element instance for chaining:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
   element(el) {
     // Attributes
@@ -223,7 +230,8 @@ rewriter.on("div", {
 
 Text handlers provide methods for text manipulation. Text chunks represent portions of text content and provide information about their position in the text node:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("p", {
   text(text) {
     // Content
@@ -247,7 +255,8 @@ rewriter.on("p", {
 
 Comment handlers allow comment manipulation with similar methods to text nodes:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("*", {
   comments(comment) {
     // Content
@@ -271,7 +280,8 @@ rewriter.on("*", {
 
 The `onDocument(handlers)` method allows you to handle document-level events. These handlers are called for events that occur at the document level rather than within specific elements:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.onDocument({
   // Handle doctype
   doctype(doctype) {
@@ -304,6 +314,8 @@ When transforming a Response:
 * The original response body is marked as used after transformation
 * Headers are cloned to the new response
 
+---
+
 ## Error Handling
 
 HTMLRewriter operations can throw errors in several cases:
@@ -317,7 +329,8 @@ HTMLRewriter operations can throw errors in several cases:
 
 Errors should be caught and handled appropriately:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts
+theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
   const result = rewriter.transform(input);
   // Process result
@@ -326,7 +339,7 @@ try {
 }
 ```
 
-***
+---
 
 ## See also
 

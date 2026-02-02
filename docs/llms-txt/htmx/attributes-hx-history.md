@@ -1,18 +1,12 @@
-# Source: https://github.com/bigskysoftware/htmx/blob/master/www/content/attributes/hx-history.md
+# hx-history
 
-+++
-title = "hx-history"
-description = """\
-  The hx-history attribute in htmx allows you to prevent sensitive page data from being stored in the browser's \
-  localStorage cache during history navigation, ensuring that the page state is retrieved from the server instead when \
-  navigating through history."""
-+++
+**Title:** hx-history  
+**Description:**  
+The `hx-history` attribute in htmx allows you to prevent sensitive page data from being stored in the browser's localStorage cache during history navigation, ensuring that the page state is retrieved from the server instead when navigating through history.
 
-Set the `hx-history` attribute to `false` on any element in the current document, or any html fragment loaded into the current document by htmx, to prevent sensitive data being saved to the localStorage cache when htmx takes a snapshot of the page state. 
+## Set the `hx-history` attribute to `false`
 
-History navigation will work as expected, but on restoration the URL will be requested from the server instead of the history cache.
-
-Here is an example:
+To prevent sensitive data from being saved to the localStorage cache when htmx takes a snapshot of the page state, set the `hx-history` attribute to `false` on any element in the current document, or any html fragment loaded into the current document by htmx.
 
 ```html
 <html>
@@ -26,4 +20,4 @@ Here is an example:
 
 ## Notes
 
-* `hx-history="false"` can be present *anywhere* in the document to embargo the current page state from the history cache (i.e. even outside the element specified for the history snapshot [hx-history-elt](@/attributes/hx-history-elt.md)).
+- `hx-history="false"` can be present anywhere in the document to embargo the current page state from the history cache (i.e., even outside the element specified for the history snapshot [hx-history-elt](@/attributes/hx-history-elt.md)).

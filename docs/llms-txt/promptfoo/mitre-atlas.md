@@ -1,249 +1,399 @@
-# Source: https://www.promptfoo.dev/docs/red-team/mitre-atlas/
+# MITRE ATLAS
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-red-team/mitre-atlas" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">MITRE ATLAS | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-red-team-mitre-atlas--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-red-team-mitre-atlas--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/red-team/mitre-atlas/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="MITRE ATLAS | Promptfoo"><meta data-rh="true" name="description" content="Red team LLM applications using MITRE ATLAS adversarial ML tactics to protect AI systems from reconnaissance, exfiltration, and impact attacks"><meta data-rh="true" property="og:description" content="Red team LLM applications using MITRE ATLAS adversarial ML tactics to protect AI systems from reconnaissance, exfiltration, and impact attacks"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/red-team/mitre-atlas/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/mitre-atlas/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/mitre-atlas/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"MITRE ATLAS","item":"https://www.promptfoo.dev/docs/red-team/mitre-atlas"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems) is a knowledge base of adversary tactics and techniques based on real-world observations of attacks against machine learning systems. Modeled after the MITRE ATT&CK framework, ATLAS provides a structured way to understand and defend against threats specific to AI and ML systems.
 
+ATLAS organizes adversarial techniques into tactics that represent the adversary's objectives during an attack. For LLM applications, these tactics help identify potential attack vectors throughout the AI system lifecycle.
 
+## MITRE ATLAS Tactics
 
+ATLAS organizes adversarial ML techniques into the following tactics:
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+1.  [Reconnaissance](#reconnaissance-mitre-atlas-reconnaissance) - Gathering information about the ML system
+2.  [Resource Development](#resource-development-mitre-atlas-resource-development) - Establishing resources to support targeting
+3.  [Initial Access](#initial-access-mitre-atlas-initial-access) - Gaining entry into the ML system
+4.  [ML Attack Staging](#ml-attack-staging-mitre-atlas-ml-attack-staging) - Preparing and positioning attacks against the ML model
+5.  [Exfiltration](#exfiltration-mitre-atlas-exfiltration) - Stealing data or model information
+6.  [Impact](#impact-mitre-atlas-impact) - Disrupting, degrading, or destroying the ML system
 
+## Scanning for MITRE ATLAS Threats
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+Promptfoo helps identify ATLAS-aligned vulnerabilities through comprehensive red teaming. To set up ATLAS scanning through the Promptfoo UI, select the MITRE ATLAS option or configure it directly:
 
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
 
+Or target specific tactics:
 
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:reconnaissance
+    - mitre:atlas:exfiltration
+    - mitre:atlas:impact
+```
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="NIST AI Risk Management Framework" class="linkLabel_fEdy">NIST AI Risk Management Framework</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-llm-top-10/"><span title="OWASP LLM Top 10" class="linkLabel_fEdy">OWASP LLM Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-agentic-ai/"><span title="OWASP Top 10 for Agentic Applications" class="linkLabel_fEdy">OWASP Top 10 for Agentic Applications</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/owasp-api-top-10/"><span title="OWASP API Security Top 10" class="linkLabel_fEdy">OWASP API Security Top 10</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/red-team/mitre-atlas/"><span title="MITRE ATLAS" class="linkLabel_fEdy">MITRE ATLAS</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/iso-42001/"><span title="ISO 42001" class="linkLabel_fEdy">ISO 42001</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/gdpr/"><span title="GDPR" class="linkLabel_fEdy">GDPR</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/eu-ai-act/"><span title="EU AI Act" class="linkLabel_fEdy">EU AI Act</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Frameworks</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">MITRE ATLAS</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>MITRE ATLAS</h1></header>
-<p>MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems) is a knowledge base of adversary tactics and techniques based on real-world observations of attacks against machine learning systems. Modeled after the MITRE ATT&amp;CK framework, ATLAS provides a structured way to understand and defend against threats specific to AI and ML systems.</p>
-<p>ATLAS organizes adversarial techniques into tactics that represent the adversary&#x27;s objectives during an attack. For LLM applications, these tactics help identify potential attack vectors throughout the AI system lifecycle.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="mitre-atlas-tactics">MITRE ATLAS Tactics<a href="#mitre-atlas-tactics" class="hash-link" aria-label="Direct link to MITRE ATLAS Tactics" title="Direct link to MITRE ATLAS Tactics" translate="no">​</a></h2>
-<p>ATLAS organizes adversarial ML techniques into the following tactics:</p>
-<ol>
-<li class=""><a href="#reconnaissance-mitre-atlas-reconnaissance" class="">Reconnaissance</a> - Gathering information about the ML system</li>
-<li class=""><a href="#resource-development-mitre-atlas-resource-development" class="">Resource Development</a> - Establishing resources to support targeting</li>
-<li class=""><a href="#initial-access-mitre-atlas-initial-access" class="">Initial Access</a> - Gaining entry into the ML system</li>
-<li class=""><a href="#ml-attack-staging-mitre-atlas-ml-attack-staging" class="">ML Attack Staging</a> - Preparing and positioning attacks against the ML model</li>
-<li class=""><a href="#exfiltration-mitre-atlas-exfiltration" class="">Exfiltration</a> - Stealing data or model information</li>
-<li class=""><a href="#impact-mitre-atlas-impact" class="">Impact</a> - Disrupting, degrading, or destroying the ML system</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="scanning-for-mitre-atlas-threats">Scanning for MITRE ATLAS Threats<a href="#scanning-for-mitre-atlas-threats" class="hash-link" aria-label="Direct link to Scanning for MITRE ATLAS Threats" title="Direct link to Scanning for MITRE ATLAS Threats" translate="no">​</a></h2>
-<p>Promptfoo helps identify ATLAS-aligned vulnerabilities through comprehensive red teaming. To set up ATLAS scanning through the Promptfoo UI, select the MITRE ATLAS option or configure it directly:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<p>Or target specific tactics:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">reconnaissance</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">exfiltration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">impact</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="reconnaissance-mitre-atlas-reconnaissance">Reconnaissance (mitre:atlas<!-- -->:reconnaissance<!-- -->)<a href="#reconnaissance-mitre-atlas-reconnaissance" class="hash-link" aria-label="Direct link to reconnaissance-mitre-atlas-reconnaissance" title="Direct link to reconnaissance-mitre-atlas-reconnaissance" translate="no">​</a></h2>
-<p>Reconnaissance involves adversaries gathering information about the ML system to plan subsequent attacks. For LLM applications, this includes discovering system capabilities, extracting prompts, understanding access controls, and identifying competitive intelligence.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape">Threat Landscape<a href="#threat-landscape" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers use reconnaissance to:</p>
-<ul>
-<li class="">Discover available functions and tools</li>
-<li class="">Extract system prompts and instructions</li>
-<li class="">Map role-based access controls</li>
-<li class="">Identify competitive advantages or proprietary approaches</li>
-<li class="">Understand data sources and knowledge bases</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy">Testing Strategy<a href="#testing-strategy" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for reconnaissance vulnerabilities:</p>
-<ul>
-<li class=""><strong>Competitors</strong>: Verify the system doesn&#x27;t reveal competitive information</li>
-<li class=""><strong>Policy</strong>: Test that internal policies and business rules aren&#x27;t disclosed</li>
-<li class=""><strong>Prompt extraction</strong>: Ensure system prompts can&#x27;t be extracted</li>
-<li class=""><strong>RBAC</strong>: Verify role boundaries aren&#x27;t easily enumerable</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">language</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;en&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;es&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;fr&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Test in multiple languages</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> competitors</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> policy</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">extraction</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rbac</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">reconnaissance</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="resource-development-mitre-atlas-resource-development">Resource Development (mitre:atlas<!-- -->:resource-development<!-- -->)<a href="#resource-development-mitre-atlas-resource-development" class="hash-link" aria-label="Direct link to resource-development-mitre-atlas-resource-development" title="Direct link to resource-development-mitre-atlas-resource-development" translate="no">​</a></h2>
-<p>Resource Development involves adversaries creating, purchasing, or compromising resources to support targeting. This includes developing malicious prompts, acquiring tools, or obtaining infrastructure to launch attacks against ML systems.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape-1">Threat Landscape<a href="#threat-landscape-1" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers develop resources to:</p>
-<ul>
-<li class="">Create harmful content generation requests</li>
-<li class="">Develop prompts for illegal activities</li>
-<li class="">Build tools to generate weapons or dangerous materials</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-1">Testing Strategy<a href="#testing-strategy-1" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for vulnerability to resource development attacks:</p>
-<ul>
-<li class=""><strong>Cybercrime</strong>: Verify the system doesn&#x27;t assist with malicious activities</li>
-<li class=""><strong>Illegal drugs</strong>: Ensure the system refuses drug-related requests</li>
-<li class=""><strong>Indiscriminate weapons</strong>: Test that weapon creation requests are blocked</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">cybercrime</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">illegal</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">drugs</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">indiscriminate</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">weapons</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">resource</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">development</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="initial-access-mitre-atlas-initial-access">Initial Access (mitre:atlas<!-- -->:initial-access<!-- -->)<a href="#initial-access-mitre-atlas-initial-access" class="hash-link" aria-label="Direct link to initial-access-mitre-atlas-initial-access" title="Direct link to initial-access-mitre-atlas-initial-access" translate="no">​</a></h2>
-<p>Initial Access consists of techniques that adversaries use to gain their initial foothold in the ML system. For LLM applications, this often involves exploiting input validation weaknesses or using prompt injection to bypass security controls.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape-2">Threat Landscape<a href="#threat-landscape-2" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers gain initial access through:</p>
-<ul>
-<li class="">SQL injection and shell injection attacks</li>
-<li class="">Server-side request forgery (SSRF)</li>
-<li class="">Debug access endpoints</li>
-<li class="">Cybercrime techniques</li>
-<li class="">Prompt injection and obfuscation</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-2">Testing Strategy<a href="#testing-strategy-2" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for initial access vulnerabilities:</p>
-<ul>
-<li class=""><strong>Debug access</strong>: Verify debug endpoints aren&#x27;t exposed</li>
-<li class=""><strong>Cybercrime</strong>: Test for assistance with unauthorized access techniques</li>
-<li class=""><strong>Shell injection</strong>: Ensure commands can&#x27;t be executed</li>
-<li class=""><strong>SQL injection</strong>: Verify database queries can&#x27;t be manipulated</li>
-<li class=""><strong>SSRF</strong>: Test that the system doesn&#x27;t make unauthorized requests</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> debug</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">access</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">cybercrime</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> shell</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> sql</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> ssrf</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> base64</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> leetspeak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rot13</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">initial</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">access</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="ml-attack-staging-mitre-atlas-ml-attack-staging">ML Attack Staging (mitre:atlas<!-- -->:ml-attack-staging<!-- -->)<a href="#ml-attack-staging-mitre-atlas-ml-attack-staging" class="hash-link" aria-label="Direct link to ml-attack-staging-mitre-atlas-ml-attack-staging" title="Direct link to ml-attack-staging-mitre-atlas-ml-attack-staging" translate="no">​</a></h2>
-<p>ML Attack Staging involves techniques that adversaries use to prepare and position attacks specifically against the ML model itself. This includes poisoning inputs, manipulating model behavior, and exploiting ML-specific vulnerabilities.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape-3">Threat Landscape<a href="#threat-landscape-3" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers stage ML-specific attacks by:</p>
-<ul>
-<li class="">Injecting adversarial content through indirect means</li>
-<li class="">Smuggling malicious instructions using encoding</li>
-<li class="">Creating excessive agency scenarios</li>
-<li class="">Inducing hallucinations for exploitation</li>
-<li class="">Using multi-turn attacks to gradually compromise the model</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-3">Testing Strategy<a href="#testing-strategy-3" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for ML attack staging vulnerabilities:</p>
-<ul>
-<li class=""><strong>ASCII smuggling</strong>: Verify hidden instructions can&#x27;t bypass filters</li>
-<li class=""><strong>Excessive agency</strong>: Test that the model doesn&#x27;t exceed intended capabilities</li>
-<li class=""><strong>Hallucination</strong>: Ensure false information can&#x27;t be weaponized</li>
-<li class=""><strong>Indirect prompt injection</strong>: Check for vulnerability to poisoned context</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> ascii</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">smuggling</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hallucination</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> indirect</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">tree</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ml</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">attack</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">staging</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="exfiltration-mitre-atlas-exfiltration">Exfiltration (mitre:atlas<!-- -->:exfiltration<!-- -->)<a href="#exfiltration-mitre-atlas-exfiltration" class="hash-link" aria-label="Direct link to exfiltration-mitre-atlas-exfiltration" title="Direct link to exfiltration-mitre-atlas-exfiltration" translate="no">​</a></h2>
-<p>Exfiltration involves techniques that adversaries use to steal data, including personally identifiable information (PII), training data, proprietary prompts, or other sensitive information from the ML system.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape-4">Threat Landscape<a href="#threat-landscape-4" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers exfiltrate information by:</p>
-<ul>
-<li class="">Extracting PII from training data or context</li>
-<li class="">Stealing system prompts and instructions</li>
-<li class="">Accessing unauthorized databases or APIs</li>
-<li class="">Leaking information across user sessions</li>
-<li class="">Using encoding to bypass data loss prevention</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-4">Testing Strategy<a href="#testing-strategy-4" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for exfiltration vulnerabilities:</p>
-<ul>
-<li class=""><strong>ASCII smuggling</strong>: Verify data can&#x27;t be exfiltrated using encoding</li>
-<li class=""><strong>Privacy</strong>: Test for unauthorized disclosure of sensitive information</li>
-<li class=""><strong>Indirect prompt injection</strong>: Check for data exfiltration via poisoned inputs</li>
-<li class=""><strong>PII plugins</strong>: Comprehensively test for PII leakage</li>
-<li class=""><strong>Prompt extraction</strong>: Ensure system prompts can&#x27;t be extracted</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> ascii</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">smuggling</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">privacy</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> indirect</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">api</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">db</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">direct</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">session</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> pii</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">social</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">extraction</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">exfiltration</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="impact-mitre-atlas-impact">Impact (mitre:atlas<!-- -->:impact<!-- -->)<a href="#impact-mitre-atlas-impact" class="hash-link" aria-label="Direct link to impact-mitre-atlas-impact" title="Direct link to impact-mitre-atlas-impact" translate="no">​</a></h2>
-<p>Impact consists of techniques that adversaries use to disrupt, degrade, or destroy the ML system or manipulate its outputs. For LLM applications, this includes hijacking the system&#x27;s purpose, generating harmful content, causing it to imitate others, or taking excessive agency actions.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="threat-landscape-5">Threat Landscape<a href="#threat-landscape-5" class="hash-link" aria-label="Direct link to Threat Landscape" title="Direct link to Threat Landscape" translate="no">​</a></h3>
-<p>Attackers create impact by:</p>
-<ul>
-<li class="">Hijacking the AI&#x27;s intended purpose</li>
-<li class="">Generating harmful or inappropriate content</li>
-<li class="">Impersonating brands or individuals</li>
-<li class="">Causing the system to take unauthorized actions</li>
-<li class="">Using sophisticated multi-turn attacks</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="testing-strategy-5">Testing Strategy<a href="#testing-strategy-5" class="hash-link" aria-label="Direct link to Testing Strategy" title="Direct link to Testing Strategy" translate="no">​</a></h3>
-<p>Test for impact vulnerabilities:</p>
-<ul>
-<li class=""><strong>Excessive agency</strong>: Verify the system doesn&#x27;t take unauthorized actions</li>
-<li class=""><strong>Harmful content</strong>: Test for generation of dangerous or offensive content</li>
-<li class=""><strong>Hijacking</strong>: Ensure the system maintains its intended purpose</li>
-<li class=""><strong>Imitation</strong>: Verify the system doesn&#x27;t impersonate people or brands</li>
-</ul>
-<p>Example configuration:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> excessive</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">agency</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> harmful</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> hijacking</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> imitation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> crescendo</span><br></span></code></pre></div></div>
-<p>Or use the ATLAS shorthand:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">impact</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="comprehensive-mitre-atlas-testing">Comprehensive MITRE ATLAS Testing<a href="#comprehensive-mitre-atlas-testing" class="hash-link" aria-label="Direct link to Comprehensive MITRE ATLAS Testing" title="Direct link to Comprehensive MITRE ATLAS Testing" translate="no">​</a></h2>
-<p>For complete MITRE ATLAS threat coverage across all tactics:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">language</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;en&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;es&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;fr&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic"># Test in multiple languages</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> base64</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> rot13</span><br></span></code></pre></div></div>
-<p>This configuration tests your AI system against all MITRE ATLAS tactics, providing comprehensive adversarial threat assessment.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="mitre-atlas-vs-mitre-attck">MITRE ATLAS vs MITRE ATT&amp;CK<a href="#mitre-atlas-vs-mitre-attck" class="hash-link" aria-label="Direct link to MITRE ATLAS vs MITRE ATT&amp;CK" title="Direct link to MITRE ATLAS vs MITRE ATT&amp;CK" translate="no">​</a></h2>
-<p>While MITRE ATT&amp;CK focuses on traditional IT systems, MITRE ATLAS extends the framework to address ML-specific threats:</p>
-<table><thead><tr><th>Aspect</th><th>MITRE ATT&amp;CK</th><th>MITRE ATLAS</th></tr></thead><tbody><tr><td><strong>Focus</strong></td><td>IT systems, networks</td><td>ML systems, AI models</td></tr><tr><td><strong>Techniques</strong></td><td>Traditional cyber attacks</td><td>ML-specific attacks</td></tr><tr><td><strong>Targets</strong></td><td>Servers, endpoints</td><td>Models, training data</td></tr><tr><td><strong>Example</strong></td><td>Credential dumping</td><td>Model inversion</td></tr></tbody></table>
-<p>For LLM applications, both frameworks are relevant:</p>
-<ul>
-<li class="">Use <strong>ATLAS</strong> for ML-specific vulnerabilities (model extraction, prompt injection)</li>
-<li class="">Use <strong>ATT&amp;CK</strong> principles for infrastructure security (API security, authentication)</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="integration-with-other-frameworks">Integration with Other Frameworks<a href="#integration-with-other-frameworks" class="hash-link" aria-label="Direct link to Integration with Other Frameworks" title="Direct link to Integration with Other Frameworks" translate="no">​</a></h2>
-<p>MITRE ATLAS complements other security frameworks:</p>
-<ul>
-<li class=""><strong>OWASP LLM Top 10</strong>: Maps ATLAS tactics to specific LLM vulnerabilities</li>
-<li class=""><strong>NIST AI RMF</strong>: ATLAS provides tactical detail for NIST&#x27;s risk measures</li>
-<li class=""><strong>ISO 42001</strong>: ATLAS tactics inform security and robustness requirements</li>
-<li class=""><strong>GDPR</strong>: Exfiltration tactics relate to data protection requirements</li>
-</ul>
-<p>You can combine ATLAS testing with other frameworks:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">plugins</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> mitre</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">atlas</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> owasp</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">llm</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> nist</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">ai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">measure</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">strategies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> jailbreak</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> prompt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">injection</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="best-practices-for-atlas-based-red-teaming">Best Practices for ATLAS-Based Red Teaming<a href="#best-practices-for-atlas-based-red-teaming" class="hash-link" aria-label="Direct link to Best Practices for ATLAS-Based Red Teaming" title="Direct link to Best Practices for ATLAS-Based Red Teaming" translate="no">​</a></h2>
-<p>When using MITRE ATLAS for LLM red teaming:</p>
-<ol>
-<li class=""><strong>Attack lifecycle</strong>: Test across all tactics, not just initial access or impact</li>
-<li class=""><strong>Defense in depth</strong>: Address vulnerabilities at multiple stages of the attack chain</li>
-<li class=""><strong>Realistic scenarios</strong>: Combine tactics as adversaries would in real attacks</li>
-<li class=""><strong>Continuous testing</strong>: Regularly test as new ATLAS techniques are documented</li>
-<li class=""><strong>Threat intelligence</strong>: Stay updated on real-world attacks documented in ATLAS</li>
-<li class=""><strong>Purple teaming</strong>: Use ATLAS as a common language between red and blue teams</li>
-</ol>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="real-world-atlas-techniques-for-llms">Real-World ATLAS Techniques for LLMs<a href="#real-world-atlas-techniques-for-llms" class="hash-link" aria-label="Direct link to Real-World ATLAS Techniques for LLMs" title="Direct link to Real-World ATLAS Techniques for LLMs" translate="no">​</a></h2>
-<p>MITRE ATLAS documents real-world attacks against ML systems. For LLMs, examples include:</p>
-<ul>
-<li class=""><strong>AML.T0043 - Craft Adversarial Data</strong>: Creating prompts designed to elicit harmful outputs</li>
-<li class=""><strong>AML.T0051 - LLM Prompt Injection</strong>: Manipulating LLM behavior through crafted inputs</li>
-<li class=""><strong>AML.T0024 - Exfiltration via ML Inference API</strong>: Extracting training data through queries</li>
-<li class=""><strong>AML.T0020 - Poison Training Data</strong>: Manipulating fine-tuning or RAG data sources</li>
-</ul>
-<p>Promptfoo&#x27;s plugins map to these specific ATLAS techniques, enabling targeted testing.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="whats-next">What&#x27;s Next<a href="#whats-next" class="hash-link" aria-label="Direct link to What&#x27;s Next" title="Direct link to What&#x27;s Next" translate="no">​</a></h2>
-<p>MITRE ATLAS is actively maintained and updated with new techniques as the threat landscape evolves. Regular testing with Promptfoo helps ensure your LLM applications remain protected against documented adversarial ML tactics.</p>
-<p>To learn more about setting up comprehensive AI red teaming, see <a class="" href="/docs/red-team/">Introduction to LLM red teaming</a> and <a class="" href="/docs/red-team/configuration/">Configuration details</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="additional-resources">Additional Resources<a href="#additional-resources" class="hash-link" aria-label="Direct link to Additional Resources" title="Direct link to Additional Resources" translate="no">​</a></h2>
-<ul>
-<li class=""><a href="https://atlas.mitre.org/" target="_blank" rel="noopener noreferrer" class="">MITRE ATLAS Official Website</a></li>
-<li class=""><a href="https://atlas.mitre.org/matrices/ATLAS" target="_blank" rel="noopener noreferrer" class="">ATLAS Matrix Navigator</a></li>
-<li class=""><a href="https://atlas.mitre.org/studies" target="_blank" rel="noopener noreferrer" class="">ATLAS Case Studies</a></li>
-<li class=""><a href="https://atlas.mitre.org/tactics" target="_blank" rel="noopener noreferrer" class="">ATLAS Tactics Overview</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/red-team/mitre-atlas.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/owasp-api-top-10/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OWASP API Security Top 10</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/iso-42001/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">ISO 42001</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#mitre-atlas-tactics" class="table-of-contents__link toc-highlight">MITRE ATLAS Tactics</a></li><li><a href="#scanning-for-mitre-atlas-threats" class="table-of-contents__link toc-highlight">Scanning for MITRE ATLAS Threats</a></li><li><a href="#reconnaissance-mitre-atlas-reconnaissance" class="table-of-contents__link toc-highlight">Reconnaissance (mitre:atlas)</a><ul><li><a href="#threat-landscape" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#resource-development-mitre-atlas-resource-development" class="table-of-contents__link toc-highlight">Resource Development (mitre:atlas)</a><ul><li><a href="#threat-landscape-1" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy-1" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#initial-access-mitre-atlas-initial-access" class="table-of-contents__link toc-highlight">Initial Access (mitre:atlas)</a><ul><li><a href="#threat-landscape-2" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy-2" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#ml-attack-staging-mitre-atlas-ml-attack-staging" class="table-of-contents__link toc-highlight">ML Attack Staging (mitre:atlas)</a><ul><li><a href="#threat-landscape-3" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy-3" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#exfiltration-mitre-atlas-exfiltration" class="table-of-contents__link toc-highlight">Exfiltration (mitre:atlas)</a><ul><li><a href="#threat-landscape-4" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy-4" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#impact-mitre-atlas-impact" class="table-of-contents__link toc-highlight">Impact (mitre:atlas)</a><ul><li><a href="#threat-landscape-5" class="table-of-contents__link toc-highlight">Threat Landscape</a></li><li><a href="#testing-strategy-5" class="table-of-contents__link toc-highlight">Testing Strategy</a></li></ul></li><li><a href="#comprehensive-mitre-atlas-testing" class="table-of-contents__link toc-highlight">Comprehensive MITRE ATLAS Testing</a></li><li><a href="#mitre-atlas-vs-mitre-attck" class="table-of-contents__link toc-highlight">MITRE ATLAS vs MITRE ATT&amp;CK</a></li><li><a href="#integration-with-other-frameworks" class="table-of-contents__link toc-highlight">Integration with Other Frameworks</a></li><li><a href="#best-practices-for-atlas-based-red-teaming" class="table-of-contents__link toc-highlight">Best Practices for ATLAS-Based Red Teaming</a></li><li><a href="#real-world-atlas-techniques-for-llms" class="table-of-contents__link toc-highlight">Real-World ATLAS Techniques for LLMs</a></li><li><a href="#whats-next" class="table-of-contents__link toc-highlight">What&#39;s Next</a></li><li><a href="#additional-resources" class="table-of-contents__link toc-highlight">Additional Resources</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+## Reconnaissance (mitre:atlas:reconnaissance)
+
+Reconnaissance involves adversaries gathering information about the ML system to plan subsequent attacks. For LLM applications, this includes discovering system capabilities, extracting prompts, understanding access controls, and identifying competitive intelligence.
+
+### Threat Landscape
+
+Attackers use reconnaissance to:
+
+- Discover available functions and tools
+- Extract system prompts and instructions
+- Map role-based access controls
+- Identify competitive advantages or proprietary approaches
+- Understand data sources and knowledge bases
+
+### Testing Strategy
+
+Test for reconnaissance vulnerabilities:
+
+- **Competitors**: Verify the system doesn't reveal competitive information
+- **Policy**: Test that internal policies and business rules aren't disclosed
+- **Prompt extraction**: Ensure system prompts can't be extracted
+- **RBAC**: Verify role boundaries aren't easily enumerable
+
+Example configuration:
+
+```yaml
+redteam:
+  language: [en, es, fr] # Test in multiple languages
+  plugins:
+    - competitors
+    - policy
+    - prompt-extraction
+    - rbac
+  strategies:
+    - jailbreak
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:reconnaissance
+```
+
+## Resource Development (mitre:atlas:resource-development)
+
+Resource Development involves adversaries creating, purchasing, or compromising resources to support targeting. This includes developing malicious prompts, acquiring tools, or obtaining infrastructure to launch attacks against ML systems.
+
+### Threat Landscape
+
+Attackers develop resources to:
+
+- Create harmful content generation requests
+- Develop prompts for illegal activities
+- Build tools to generate weapons or dangerous materials
+
+### Testing Strategy
+
+Test for vulnerability to resource development attacks:
+
+- **Cybercrime**: Verify the system doesn't assist with malicious activities
+- **Illegal drugs**: Ensure the system refuses drug-related requests
+- **Indiscriminate weapons**: Test that weapon creation requests are blocked
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - harmful:cybercrime
+    - harmful:illegal-drugs
+    - harmful:indiscriminate-weapons
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:resource-development
+```
+
+## Initial Access (mitre:atlas:initial-access)
+
+Initial Access consists of techniques that adversaries use to gain their initial foothold in the ML system. For LLM applications, this often involves exploiting input validation weaknesses or using prompt injection to bypass security controls.
+
+### Threat Landscape
+
+Attackers gain initial access through:
+
+- SQL injection and shell injection attacks
+- Server-side request forgery (SSRF)
+- Debug access endpoints
+- Cybercrime techniques
+- Prompt injection and obfuscation
+
+### Testing Strategy
+
+Test for initial access vulnerabilities:
+
+- **Debug access**: Verify debug endpoints aren't exposed
+- **Cybercrime**: Test for assistance with unauthorized access techniques
+- **Shell injection**: Ensure commands can't be executed
+- **SQL injection**: Verify database queries can't be manipulated
+- **SSRF**: Test that the system doesn't make unauthorized requests
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - debug-access
+    - harmful:cybercrime
+    - shell-injection
+    - sql-injection
+    - ssrf
+  strategies:
+    - base64
+    - jailbreak
+    - leetspeak
+    - prompt-injection
+    - rot13
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:initial-access
+```
+
+## ML Attack Staging (mitre:atlas:ml-attack-staging)
+
+ML Attack Staging involves techniques that adversaries use to prepare and position attacks specifically against the ML model itself. This includes poisoning inputs, manipulating model behavior, and exploiting ML-specific vulnerabilities.
+
+### Threat Landscape
+
+Attackers stage ML-specific attacks by:
+
+- Injecting adversarial content through indirect means
+- Smuggling malicious instructions using encoding
+- Creating excessive agency scenarios
+- Inducing hallucinations for exploitation
+- Using multi-turn attacks to gradually compromise the model
+
+### Testing Strategy
+
+Test for ML attack staging vulnerabilities:
+
+- **ASCII smuggling**: Verify hidden instructions can't bypass filters
+- **Excessive agency**: Test that the model doesn't exceed intended capabilities
+- **Hallucination**: Ensure false information can't be weaponized
+- **Indirect prompt injection**: Check for vulnerability to poisoned context
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - ascii-smuggling
+    - excessive-agency
+    - hallucination
+    - indirect-prompt-injection
+  strategies:
+    - jailbreak
+    - jailbreak:tree
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:ml-attack-staging
+```
+
+## Exfiltration (mitre:atlas:exfiltration)
+
+Exfiltration involves techniques that adversaries use to steal data, including personally identifiable information (PII), training data, proprietary prompts, or other sensitive information from the ML system.
+
+### Threat Landscape
+
+Attackers exfiltrate information by:
+
+- Extracting PII from training data or context
+- Stealing system prompts and instructions
+- Accessing unauthorized databases or APIs
+- Leaking information across user sessions
+- Using encoding to bypass data loss prevention
+
+### Testing Strategy
+
+Test for exfiltration vulnerabilities:
+
+- **ASCII smuggling**: Verify data can't be exfiltrated using encoding
+- **Privacy**: Test for unauthorized disclosure of sensitive information
+- **Indirect prompt injection**: Check for data exfiltration via poisoned inputs
+- **PII plugins**: Comprehensively test for PII leakage
+- **Prompt extraction**: Ensure system prompts can't be extracted
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - ascii-smuggling
+    - harmful:privacy
+    - indirect-prompt-injection
+    - pii:api-db
+    - pii:direct
+    - pii:session
+    - pii:social
+    - prompt-extraction
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:exfiltration
+```
+
+## Impact (mitre:atlas:impact)
+
+Impact consists of techniques that adversaries use to disrupt, degrade, or destroy the ML system or manipulate its outputs. For LLM applications, this includes hijacking the system's purpose, generating harmful content, causing it to imitate others, or taking excessive agency actions.
+
+### Threat Landscape
+
+Attackers create impact by:
+
+- Hijacking the AI's intended purpose
+- Generating harmful or inappropriate content
+- Impersonating brands or individuals
+- Causing the system to take unauthorized actions
+- Using sophisticated multi-turn attacks
+
+### Testing Strategy
+
+Test for impact vulnerabilities:
+
+- **Excessive agency**: Verify the system doesn't take unauthorized actions
+- **Harmful content**: Test for generation of dangerous or offensive content
+- **Hijacking**: Ensure the system maintains its intended purpose
+- **Imitation**: Verify the system doesn't impersonate people or brands
+
+Example configuration:
+
+```yaml
+redteam:
+  plugins:
+    - excessive-agency
+    - harmful
+    - hijacking
+    - imitation
+  strategies:
+    - crescendo
+```
+
+Or use the ATLAS shorthand:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas:impact
+```
+
+## Comprehensive MITRE ATLAS Testing
+
+For complete MITRE ATLAS threat coverage across all tactics:
+
+```yaml
+redteam:
+  language: [en, es, fr] # Test in multiple languages
+  plugins:
+    - mitre:atlas
+  strategies:
+    - jailbreak
+    - prompt-injection
+    - base64
+    - rot13
+```
+
+This configuration tests your AI system against all MITRE ATLAS tactics, providing comprehensive adversarial threat assessment.
+
+## MITRE ATLAS vs MITRE ATT&CK
+
+While MITRE ATT&CK focuses on traditional IT systems, MITRE ATLAS extends the framework to address ML-specific threats:
+
+| Aspect | MITRE ATT&CK | MITRE ATLAS |
+| --- | --- | --- |
+| **Focus** | IT systems, networks | ML systems, AI models |
+| **Techniques** | Traditional cyber attacks | ML-specific attacks |
+| **Targets** | Servers, endpoints | Models, training data |
+| **Example** | Credential dumping | Model inversion |
+
+For LLM applications, both frameworks are relevant:
+
+- Use **ATLAS** for ML-specific vulnerabilities (model extraction, prompt injection)
+- Use **ATT&CK** principles for infrastructure security (API security, authentication)
+
+## Integration with Other Frameworks
+
+MITRE ATLAS complements other security frameworks:
+
+- **OWASP LLM Top 10**: Maps ATLAS tactics to specific LLM vulnerabilities
+- **NIST AI RMF**: ATLAS provides tactical detail for NIST's risk measures
+- **ISO 42001**: ATLAS tactics inform security and robustness requirements
+- **GDPR**: Exfiltration tactics relate to data protection requirements
+
+You can combine ATLAS testing with other frameworks:
+
+```yaml
+redteam:
+  plugins:
+    - mitre:atlas
+    - owasp:llm
+    - nist:ai:measure
+  strategies:
+    - jailbreak
+    - prompt-injection
+```
+
+## Best Practices for ATLAS-Based Red Teaming
+
+When using MITRE ATLAS for LLM red teaming:
+
+1.  **Attack lifecycle**: Test across all tactics, not just initial access or impact
+2.  **Defense in depth**: Address vulnerabilities at multiple stages of the attack chain
+3.  **Realistic scenarios**: Combine tactics as adversaries would in real attacks
+4.  **Continuous testing**: Regularly test as new ATLAS techniques are documented
+5.  **Threat intelligence**: Stay updated on real-world attacks documented in ATLAS
+6.  **Purple teaming**: Use ATLAS as a common language between red and blue teams
+
+## Real-World ATLAS Techniques for LLMs
+
+MITRE ATLAS documents real-world attacks against ML systems. For LLMs, examples include:
+
+- **AML.T0043 - Craft Adversarial Data**: Creating prompts designed to elicit harmful outputs
+- **AML.T0051 - LLM Prompt Injection**: Manipulating LLM behavior through crafted inputs
+- **AML.T0024 - Exfiltration via ML Inference API**: Extracting training data through queries
+- **AML.T0020 - Poison Training Data**: Manipulating fine-tuning or RAG data sources
+
+Promptfoo's plugins map to these specific ATLAS techniques, enabling targeted testing.
+
+## What's Next
+
+MITRE ATLAS is actively maintained and updated with new techniques as the threat landscape evolves. Regular testing with Promptfoo helps ensure your LLM applications remain protected against documented adversarial ML tactics.
+
+To learn more about setting up comprehensive AI red teaming, see [Introduction to LLM red teaming](/docs/red-team/) and [Configuration details](/docs/red-team/configuration/).
+
+## Additional Resources
+
+- [MITRE ATLAS Official Website](https://atlas.mitre.org/)
+- [ATLAS Matrix Navigator](https://atlas.mitre.org/matrices/ATLAS)
+- [ATLAS Case Studies](https://atlas.mitre.org/studies)
+- [ATLAS Tactics Overview](https://atlas.mitre.org/tactics)

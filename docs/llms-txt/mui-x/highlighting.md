@@ -1,23 +1,10 @@
-# Source: https://mui.com/x/react-charts/highlighting.md
-
----
-productId: x-charts
-components: ChartsAxisHighlight
----
-
 # Charts - Highlighting
 
-Highlighting data offers quick visual feedback for chart users.
-
-It can be used to emphasize a specific data point or series, or to fade out the rest of the chart.
-And it can be controlled by the user or synchronized across multiple charts.
+Highlighting data offers quick visual feedback for chart users. It can be used to emphasize a specific data point or series, or to fade out the rest of the chart. And it can be controlled by the user or synchronized across multiple charts.
 
 ## Highlighting axis
 
-You can highlight data based on mouse position.
-By default, those highlights are lines, but it can also be a vertical band if your x-axis use `scaleType: 'band'`.
-
-On the chart, to customize this behavior, you can use:
+You can highlight data based on mouse position. By default, those highlights are lines, but it can also be a vertical band if your x-axis uses `scaleType: 'band'`. On the chart, to customize this behavior, you can use:
 
 ```jsx
 axisHighlight={{
@@ -54,22 +41,17 @@ const barChartsParams = {
 };
 
 export default function BandHighlight() {
-  const [xHighlight, setXHightlight] = React.useState<'band' | 'none' | 'line'>(
-    'band',
-  );
-  const [yHighlight, setYHightlight] = React.useState<'none' | 'line'>('none');
+  const [xHighlight, setXHightlight] = React.useState('band' | 'none' | 'line');
+  const [yHighlight, setYHightlight] = React.useState('none' | 'line');
 
-  const handleChange =
-    (direction: 'x' | 'y') => (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (direction === 'x') {
-        setXHightlight(
-          (event.target as HTMLInputElement).value as 'band' | 'none' | 'line',
-        );
-      }
-      if (direction === 'y') {
-        setYHightlight((event.target as HTMLInputElement).value as 'none' | 'line');
-      }
-    };
+  const handleChange = (direction: 'x' | 'y') => (event: React.ChangeEvent<HTMLInputElement) => {
+    if (direction === 'x') {
+      setXHightlight((event.target as HTMLInputElement).value as 'band' | 'none' | 'line');
+    }
+    if (direction === 'y') {
+      setYHightlight((event.target as HTMLInputElement).value as 'none' | 'line');
+    }
+  };
 
   return (
     <Stack direction={{ xs: 'column', md: 'row' }} sx={{ width: '100%', m: 2 }}>
@@ -112,14 +94,11 @@ export default function BandHighlight() {
     </Stack>
   );
 }
-
 ```
 
 ## Highlighting series
 
-In parallel with the tooltip, you can highlight and fade elements.
-
-This kind of interaction is controlled by series properties `highlightScope` which contains two options:
+In parallel with the tooltip, you can highlight and fade elements. This kind of interaction is controlled by series properties `highlightScope` which contains two options:
 
 - `highlighted` Indicates which item to highlight. Its value can be
   - `'none'` Do nothing (default one).
@@ -131,8 +110,7 @@ This kind of interaction is controlled by series properties `highlightScope` whi
   - `'global'` Fade all the items of the chart.
 
 :::info
-For line chart, you can increase the interaction area by using slots.
-Detailed explanations are available in a [dedicated line interaction demo](/x/react-charts/line-demo/#larger-interaction-area).
+For line chart, you can increase the interaction area by using slots. Detailed explanations are available in a [dedicated line interaction demo](/x/react-charts/line-demo/#larger-interaction-area).
 :::
 
 ```tsx
@@ -357,7 +335,7 @@ export default function ElementHighlights() {
 
 The highlighted item can be controlled by using `highlightedItem` and `onHighlightChange`.
 
-You can set the `highlightedItem` value based on inputs, and sync it when the user hover over an item themselves.
+You can set the `highlightedItem` value based on inputs, and sync it when the user hovers over an item themselves.
 
 ```tsx
 import * as React from 'react';
@@ -498,190 +476,13 @@ const barChartsProps: BarChartProps = {
 
 ## Controlled axis highlight
 
-The highlighted axis item can be controlled by using `highlightedAxis` prop.
-Its value is an array of `{ axisId: string, dataIndex: number }` objects.
-An empty array means no highlight.
+The highlighted axis item can be controlled by using `highlightedAxis` prop. Its value is an array of `{ axisId: string, dataIndex: number }` objects. An empty array means no highlight.
 
-The `onHighlightedAxisChange` handler is triggered each time the pointer crosses the boundaries between two axis values.
-Its parameter is an array of one `{ axisId, dataIndex }` object per axis.
-Axes without a `data` property are ignored by the handler.
+The `onHighlightedAxisChange` handler is triggered each time the pointer crosses the boundaries between two axis values. Its parameter is an array of one `{ axisId, dataIndex }` object per axis. Axes without a `data` property are ignored by the handler.
 
 :::warning
 The `onHighlightedAxisChange` can be triggered at a high frequency when the user moves their pointer over the chart.
 
-To avoid performance issues, avoid re-creating objects that are passed to props on every render.
-Prefer defining them outside the component, or memoizing them.
+To avoid performance issues, avoid re-creating objects that are passed to props on every render. Prefer defining them outside the component, or memoizing them.
 
 This suggestion is especially useful for axes and series which, when updated, impact a lot of computation.
-
-```jsx
-// ❌ The chart gets a new axis on each render, leading to useless computation.
-const Component = () => <BarChart xAxis={[{ data: [1, 2, 3]}]}>
-
-// ✅ For static settings, define them outside the component.
-const quarterAxis = [{ data: ['Q1', 'Q2', 'Q3', 'Q4'] }];
-const Component = () => <BarChart xAxis={quarterAxis}>
-
-// ✅ For dynamic settings, memoize them.
-const Component = ({ data }) => {
-  const axis = React.useMemo(() => [{ data }], [data]);
-  return <BarChart xAxis={quarterAxis}>
-}
-```
-
-:::
-
-```tsx
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
-import { BarChart, BarChartProps } from '@mui/x-charts/BarChart';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import { AxisItemIdentifier } from '@mui/x-charts/models';
-import { LineChart, LineChartProps } from '@mui/x-charts/LineChart';
-
-export default function ControlledAxisHighlight() {
-  const [highlightedAxis, setHighlightedAxis] = React.useState<AxisItemIdentifier[]>(
-    [
-      {
-        axisId: 'x-axis',
-        dataIndex: 2,
-      },
-    ],
-  );
-
-  const handleAxisHighlight = (event: any) => {
-    setHighlightedAxis([
-      {
-        axisId: 'x-axis',
-        dataIndex: Number(event.target.value),
-      },
-    ]);
-  };
-
-  return (
-    <Stack spacing={2} alignItems={'center'} sx={{ width: '100%' }}>
-      <FormControl>
-        <FormLabel id="axis-index-radio-group">Highlighted index</FormLabel>
-        <RadioGroup
-          aria-labelledby="axis-index-radio-group"
-          name="radio-buttons-group"
-          value={highlightedAxis[0]?.dataIndex ?? null}
-          onChange={handleAxisHighlight}
-          row
-        >
-          <FormControlLabel value="0" control={<Radio />} label="0" />
-          <FormControlLabel value="1" control={<Radio />} label="1" />
-          <FormControlLabel value="2" control={<Radio />} label="2" />
-          <FormControlLabel value="3" control={<Radio />} label="3" />
-          <FormControlLabel value="4" control={<Radio />} label="4" />
-        </RadioGroup>
-      </FormControl>
-      <Box sx={{ width: '100%' }}>
-        <BarChart
-          {...barChartsProps}
-          highlightedAxis={highlightedAxis}
-          onHighlightedAxisChange={(newState) => setHighlightedAxis(newState)}
-        />
-        <LineChart
-          {...lineChartsProps}
-          highlightedAxis={highlightedAxis}
-          onHighlightedAxisChange={(newState) => setHighlightedAxis(newState)}
-        />
-      </Box>
-    </Stack>
-  );
-}
-
-const barChartsProps: BarChartProps = {
-  series: [
-    { data: [3, 4, 1, 6, 5], label: 'series A', id: 'A' },
-    { data: [4, 3, 1, 5, 8], label: 'series B', id: 'B' },
-  ],
-  xAxis: [{ id: 'x-axis', scaleType: 'band', data: [0, 2, 5, 10, 20] }],
-  height: 300,
-};
-
-const lineChartsProps: LineChartProps = {
-  series: [
-    { data: [3, 4, 1, 6, 5], label: 'series A', id: 'A' },
-    { data: [4, 3, 1, 5, 8], label: 'series B', id: 'B' },
-  ],
-  xAxis: [{ id: 'x-axis', scaleType: 'linear', data: [0, 2, 5, 10, 20] }],
-  height: 300,
-};
-
-```
-
-## Synchronizing highlights
-
-Having a controlled highlight lets you control it in multiple charts at the same time.
-You need to ensure that the `series` has the same `ids` and the data is in the same order.
-
-```tsx
-import * as React from 'react';
-import Stack from '@mui/material/Stack';
-import { HighlightItemData } from '@mui/x-charts/context';
-import { BarChart, BarChartProps } from '@mui/x-charts/BarChart';
-import { PieChart, PieChartProps } from '@mui/x-charts/PieChart';
-
-export default function SyncHighlight() {
-  const [highlightedItem, setHighLightedItem] =
-    React.useState<HighlightItemData | null>(null);
-
-  return (
-    <Stack
-      direction={{ xs: 'column', md: 'row' }}
-      spacing={1}
-      sx={{ width: '100%' }}
-    >
-      <BarChart
-        {...barChartsProps}
-        highlightedItem={highlightedItem}
-        onHighlightChange={setHighLightedItem}
-      />
-      <PieChart
-        {...pieChartProps}
-        highlightedItem={highlightedItem}
-        onHighlightChange={setHighLightedItem}
-      />
-    </Stack>
-  );
-}
-
-const barChartsProps: BarChartProps = {
-  series: [
-    {
-      data: [3, 4, 1, 6, 5],
-      id: 'sync',
-      highlightScope: { highlight: 'item', fade: 'global' },
-    },
-  ],
-  xAxis: [{ data: ['A', 'B', 'C', 'D', 'E'] }],
-  height: 200,
-  hideLegend: true,
-};
-
-const pieChartProps: PieChartProps = {
-  series: [
-    {
-      id: 'sync',
-      data: [
-        { value: 3, label: 'A', id: 'A' },
-        { value: 4, label: 'B', id: 'B' },
-        { value: 1, label: 'C', id: 'C' },
-        { value: 6, label: 'D', id: 'D' },
-        { value: 5, label: 'E', id: 'E' },
-      ],
-      highlightScope: { highlight: 'item', fade: 'global' },
-    },
-  ],
-  height: 150,
-  hideLegend: true,
-};
-
-```

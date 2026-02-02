@@ -1,7 +1,5 @@
 # Source: https://mui.com/x/api/charts/piecewise-color-legend.md
 
-# PiecewiseColorLegend API
-
 ## Demos
 
 For examples and details on the usage of this React component, visit the component demo pages:

@@ -1,13 +1,3 @@
-# Source: https://mui.com/material-ui/react-popper.md
-
----
-productId: material-ui
-title: React Popper component
-components: Popper
-githubLabel: 'component: Popper'
-githubSource: packages/mui-material/src/Popper
----
-
 # Popper
 
 A Popper can be used to display some content on top of another. It's an alternative to react-popper.
@@ -16,15 +6,13 @@ Some important features of the Popper component:
 
 - 🕷 Popper relies on the 3rd party library ([Popper.js](https://popper.js.org/docs/v2/)) for perfect positioning.
 - 💄 It's an alternative API to react-popper. It aims for simplicity.
-- Its child element is a [MUI Base Portal](https://v6.mui.com/base-ui/react-portal/) on the body of the document to avoid rendering problems.
+- Its child element is a [MUI Base Portal](https://v6.mui.com/base-ui/react-portal/) on the body of the document to avoid rendering problems.
   You can disable this behavior with `disablePortal`.
 - The scroll isn't blocked like with the [Popover](/material-ui/react-popover/) component.
   The placement of the popper updates with the available area in the viewport.
 - Clicking away does not hide the Popper component.
   If you need this behavior, you can use the [Click-Away Listener](/material-ui/react-click-away-listener/) - see the example in the [menu documentation section](/material-ui/react-menu/#composition-with-menu-list).
 - The `anchorEl` is passed as the reference object to create a new `Popper.js` instance.
-
-{{"component": "@mui/docs/ComponentLinkHeader", "design": false}}
 
 ## Basic Popper
 
@@ -56,7 +44,6 @@ export default function SimplePopper() {
     </div>
   );
 }
-
 ```
 
 ## Transitions
@@ -64,7 +51,7 @@ export default function SimplePopper() {
 The open/close state of the popper can be animated with a render prop child and a transition component.
 This component should respect the following conditions:
 
-- Be a direct child descendent of the popper.
+- Be a direct child descendant of the popper.
 - Call the `onEnter` callback prop when the enter transition starts.
 - Call the `onExited` callback prop when the exit transition is completed.
   These two callbacks allow the popper to unmount the child content when closed and fully transitioned.
@@ -106,7 +93,6 @@ export default function TransitionsPopper() {
     </div>
   );
 }
-
 ```
 
 Alternatively, you can use [react-spring](https://github.com/pmndrs/react-spring).
@@ -177,7 +163,6 @@ export default function SpringPopper() {
     </div>
   );
 }
-
 ```
 
 ## Positioned popper
@@ -225,42 +210,41 @@ export default function PositionedPopper() {
       </Popper>
       <Grid container sx={{ justifyContent: 'center' }}>
         <Grid>
-          <Button onClick={handleClick('top-start')}>top-start</Button>
-          <Button onClick={handleClick('top')}>top</Button>
-          <Button onClick={handleClick('top-end')}>top-end</Button>
+          <Button onClick={handleClick('top-start')">top-start</Button>
+          <Button onClick={handleClick('top')">top</Button>
+          <Button onClick={handleClick('top-end')">top-end</Button>
         </Grid>
       </Grid>
       <Grid container sx={{ justifyContent: 'center' }}>
         <Grid size={6}>
-          <Button onClick={handleClick('left-start')}>left-start</Button>
+          <Button onClick={handleClick('left-start')">left-start</Button>
           <br />
-          <Button onClick={handleClick('left')}>left</Button>
+          <Button onClick={handleClick('left')">left</button>
           <br />
-          <Button onClick={handleClick('left-end')}>left-end</Button>
+          <Button onClick={handleClick('left-end')">left-end</Button>
         </Grid>
         <Grid container direction="column" sx={{ alignItems: 'flex-end' }} size={6}>
           <Grid>
-            <Button onClick={handleClick('right-start')}>right-start</Button>
+            <Button onClick={handleClick('right-start')">right-start</Button>
           </Grid>
           <Grid>
-            <Button onClick={handleClick('right')}>right</Button>
+            <Button onClick={handleClick('right')">right</button>
           </Grid>
           <Grid>
-            <Button onClick={handleClick('right-end')}>right-end</Button>
+            <Button onClick={handleClick('right-end')">right-end</button>
           </Grid>
         </Grid>
       </Grid>
       <Grid container sx={{ justifyContent: 'center' }}>
         <Grid>
-          <Button onClick={handleClick('bottom-start')}>bottom-start</Button>
-          <Button onClick={handleClick('bottom')}>bottom</Button>
-          <Button onClick={handleClick('bottom-end')}>bottom-end</Button>
+          <Button onClick={handleClick('bottom-start')">bottom-start</button>
+          <Button onClick={handleClick('bottom')">bottom</button>
+          <Button onclick={handleClick('bottom-end')">bottom-end</button>
         </Grid>
       </Grid>
     </Box>
   );
 }
-
 ```
 
 ## Scroll playground
@@ -300,7 +284,7 @@ const Popper = styled(MuiPopper, {
       height: '1em',
       '&::before': {
         borderWidth: '0 1em 1em 1em',
-        borderColor: `transparent transparent ${theme.palette.background.paper} transparent`,
+        borderColor: `transparent transparent ${theme.purple}`, // purple
       },
     },
   },
@@ -313,7 +297,7 @@ const Popper = styled(MuiPopper, {
       height: '1em',
       '&::before': {
         borderWidth: '1em 1em 0 1em',
-        borderColor: `${theme.palette.background.paper} transparent transparent transparent`,
+        borderColor: `${theme.purple}` // purple
       },
     },
   },
@@ -325,7 +309,7 @@ const Popper = styled(MuiPopper, {
       width: '1em',
       '&::before': {
         borderWidth: '1em 1em 1em 0',
-        borderColor: `transparent ${theme.palette.background.paper} transparent transparent`,
+        borderColor: `transparent ${theme.purple}` // purple
       },
     },
   },
@@ -337,7 +321,7 @@ const Popper = styled(MuiPopper, {
       width: '1em',
       '&::before': {
         borderWidth: '1em 0 1em 1em',
-        borderColor: `transparent transparent transparent ${theme.palette.background.paper}`,
+        borderColor: `transparent transparent transparent ${theme.purple}` // purple
       },
     },
   },
@@ -486,6 +470,7 @@ export default function ScrollPlayground() {
       name: 'flip',
       enabled: ${flip.enabled},
       options: {
+        name: 'flip',
         altBoundary: ${flip.altBoundary},
         rootBoundary: '${flip.rootBoundary}',
         padding: 8,
@@ -495,10 +480,11 @@ export default function ScrollPlayground() {
       name: 'preventOverflow',
       enabled: ${preventOverflow.enabled},
       options: {
+        name: 'preventOverflow',
         altAxis: ${preventOverflow.altAxis},
         altBoundary: ${preventOverflow.altBoundary},
         tether: ${preventOverflow.tether},
-        rootBoundary: '${preventOverflow.rootBoundary}',
+        rootBoundary: ${preventOverflow.rootBoundary},
         padding: 8,
       },
     },
@@ -506,12 +492,16 @@ export default function ScrollPlayground() {
       name: 'arrow',
       enabled: ${arrow},
       options: {
+        name: 'arrow',
         element: arrowRef,
       },
     },
   ]}
 >
-  `;
+  ${jsx}
+</Popper>
+`;
+
   const id = open ? 'scroll-playground' : null;
 
   return (
@@ -591,8 +581,8 @@ export default function ScrollPlayground() {
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
-                    <Button onClick={handleClickButton}>Disagree</Button>
-                    <Button onClick={handleClickButton}>Agree</Button>
+                    <Button onClick={handleClickButton}>Disagree</button>
+                    <Button onClick={handleClickButton}>Agree</button>
                   </DialogActions>
                 </Paper>
               </div>
@@ -667,9 +657,7 @@ export default function ScrollPlayground() {
           </Grid>
         </Grid>
         <Grid size={12}>
-          <Typography variant="h6" component="div">
-            Modifiers (options from Popper.js)
-          </Typography>
+          Modifiers (options from Popper.js)
         </Grid>
         <Grid container spacing={1} size={12}>
           <Grid size={6}>
@@ -852,7 +840,6 @@ export default function ScrollPlayground() {
     </Box>
   );
 }
-
 ```
 
 ## Virtual element
@@ -943,7 +930,6 @@ export default function VirtualElementPopper() {
     </div>
   );
 }
-
 ```
 
 ## Supplementary projects
@@ -989,62 +975,3 @@ export default function PopperPopupState() {
 }
 
 ```
-
-
-# Popper API
-
-## Demos
-
-For examples and details on the usage of this React component, visit the component demo pages:
-
-- [Autocomplete](https://mui.com/material-ui/react-autocomplete/)
-- [Menu](https://mui.com/material-ui/react-menu/)
-- [Popper](https://mui.com/material-ui/react-popper/)
-
-## Import
-
-```jsx
-import Popper from '@mui/material/Popper';
-// or
-import { Popper } from '@mui/material';
-```
-
-## Props
-
-| Name | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| open | `bool` | - | Yes |  |
-| anchorEl | `HTML element \| object \| func` | - | No |  |
-| children | `node \| func` | - | No |  |
-| component | `elementType` | - | No |  |
-| components (deprecated) | `{ Root?: elementType }` | `{}` | No | ⚠️ use the `slots` prop instead. This prop will be removed in a future major release. [How to migrate](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/). |
-| componentsProps (deprecated) | `{ root?: func \| object }` | `{}` | No | ⚠️ use the `slotProps` prop instead. This prop will be removed in a future major release. [How to migrate](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/). |
-| container | `HTML element \| func` | - | No |  |
-| disablePortal | `bool` | `false` | No |  |
-| keepMounted | `bool` | `false` | No |  |
-| modifiers | `Array<{ data?: object, effect?: func, enabled?: bool, fn?: func, name?: any, options?: object, phase?: 'afterMain' \| 'afterRead' \| 'afterWrite' \| 'beforeMain' \| 'beforeRead' \| 'beforeWrite' \| 'main' \| 'read' \| 'write', requires?: Array<string>, requiresIfExists?: Array<string> }>` | - | No |  |
-| placement | `'auto-end' \| 'auto-start' \| 'auto' \| 'bottom-end' \| 'bottom-start' \| 'bottom' \| 'left-end' \| 'left-start' \| 'left' \| 'right-end' \| 'right-start' \| 'right' \| 'top-end' \| 'top-start' \| 'top'` | `'bottom'` | No |  |
-| popperOptions | `{ modifiers?: array, onFirstUpdate?: func, placement?: 'auto-end' \| 'auto-start' \| 'auto' \| 'bottom-end' \| 'bottom-start' \| 'bottom' \| 'left-end' \| 'left-start' \| 'left' \| 'right-end' \| 'right-start' \| 'right' \| 'top-end' \| 'top-start' \| 'top', strategy?: 'absolute' \| 'fixed' }` | `{}` | No |  |
-| popperRef | `ref` | - | No |  |
-| slotProps | `{ root?: func \| object }` | `{}` | No |  |
-| slots | `{ root?: elementType }` | `{}` | No |  |
-| sx | `Array<func \| object \| bool> \| func \| object` | - | No | The system prop that allows defining system overrides as well as additional CSS styles. |
-| transition | `bool` | `false` | No |  |
-
-> **Note**: The `ref` is forwarded to the root element (HTMLDivElement).
-
-> Any other props supplied will be provided to the root element (native element).
-
-## CSS
-
-### Rule name
-
-| Global class | Rule name | Description |
-|--------------|-----------|-------------|
-| - | root | Class name applied to the root element. |
-
-## Source code
-
-If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
-
-- [/packages/mui-material/src/Popper/Popper.tsx](https://github.com/mui/material-ui/tree/HEAD/packages/mui-material/src/Popper/Popper.tsx)

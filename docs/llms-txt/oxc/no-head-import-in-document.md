@@ -1,20 +1,16 @@
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/nextjs/no-head-import-in-document.md
+# nextjs/no-head-import-in-document
 
----
-url: /docs/guide/usage/linter/rules/nextjs/no-head-import-in-document.md
----
-# nextjs/no-head-import-in-document&#x20;
-
-### What it does
+## What it does
 
 Prevents the usage of `next/head` inside a Next.js document.
 
-### Why is this bad?
+## Why is this bad?
 
-Importing `next/head` inside `pages/_document.js` can cause
-unexpected issues in your Next.js application.
+Importing `next/head` inside `pages/_document.js` can cause unexpected issues in your Next.js application.
 
-### Examples
+## Examples
+
+### Incorrect Code
 
 Examples of **incorrect** code for this rule:
 
@@ -38,6 +34,8 @@ class MyDocument extends Document {
 
 export default MyDocument;
 ```
+
+### Correct Code
 
 Examples of **correct** code for this rule:
 
@@ -65,8 +63,6 @@ export default MyDocument;
 
 To **enable** this rule using the config file or in the CLI, you can use:
 
-::: code-group
-
 ```json [Config (.oxlintrc.json)]
 {
   "plugins": ["nextjs"],
@@ -79,8 +75,6 @@ To **enable** this rule using the config file or in the CLI, you can use:
 ```bash [CLI]
 oxlint --deny nextjs/no-head-import-in-document --nextjs-plugin
 ```
-
-:::
 
 ## References
 

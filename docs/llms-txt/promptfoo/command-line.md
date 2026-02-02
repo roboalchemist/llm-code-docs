@@ -1,356 +1,725 @@
-# Source: https://www.promptfoo.dev/docs/usage/command-line/
+# Command line
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-usage/command-line" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Command line | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-usage-command-line--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-usage-command-line--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/usage/command-line/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Command line | Promptfoo"><meta data-rh="true" name="description" content="Explore promptfoo CLI commands for LLM testing - run evaluations, generate datasets, scan models for vulnerabilities, and automate testing workflows via command line"><meta data-rh="true" property="og:description" content="Explore promptfoo CLI commands for LLM testing - run evaluations, generate datasets, scan models for vulnerabilities, and automate testing workflows via command line"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/usage/command-line/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/usage/command-line/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/usage/command-line/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Usage","item":"https://www.promptfoo.dev/docs/category/usage"},{"@type":"ListItem","position":2,"name":"Command line","item":"https://www.promptfoo.dev/docs/usage/command-line"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+The `promptfoo` command line utility supports the following subcommands:
 
+- `init [directory]` - Initialize a new project with dummy files.
+- `eval` - Evaluate prompts and models. This is the command you'll be using the most!
+- `view` - Start a browser UI for visualization of results.
+- `share` - Create a URL that can be shared online.
+- `auth` - Manage authentication for cloud features.
+- `cache` - Manage cache.
+  - `cache clear`
+- `config` - Edit configuration settings.
+  - `config get`
+  - `config set`
+  - `config unset`
+- `debug` - Display debug information for troubleshooting.
+- `generate` - Generate data.
+  - `generate dataset`
+  - `generate redteam`
+  - `generate assertions`
+- `list` - List various resources like evaluations, prompts, and datasets.
+  - `list evals`
+  - `list prompts`
+  - `list datasets`
+- `mcp` - Start a Model Context Protocol (MCP) server to expose promptfoo tools to AI agents and development environments.
+- `scan-model` - Scan ML models for security vulnerabilities.
+- `show <id>` - Show details of a specific resource (evaluation, prompt, dataset).
+- `delete <id>` - Delete a resource by its ID (currently, just evaluations)
+- `validate` - Validate a promptfoo configuration file.
+- `feedback <message>` - Send feedback to the Promptfoo developers.
+- `import <filepath>` - Import an eval file from JSON format.
+- `export` - Export eval records or logs.
+  - `export eval <evalId>`
+  - `export logs`
+- `redteam` - Red team LLM applications.
+  - `redteam init`
+  - `redteam setup`
+  - `redteam run`
+  - `redteam discover`
+  - `redteam generate`
+  - `redteam poison`
+  - `redteam eval`
+  - `redteam report`
+  - `redteam plugins`
 
+## Common Options
 
+Most commands support the following common options:
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+| Option | Description |
+| --- | --- |
+| `--env-file, --env-path <paths...>` | Path(s) to .env file(s). Supports multiple files. |
+| `-v, --verbose` | Show debug logs |
+| `--help` | Display help |
 
+### Multiple Environment Files
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+You can load multiple `.env` files. Later files override values from earlier ones:
 
+```bash
+promptfoo eval --env-file .env .env.local
 
+promptfoo eval --env-file .env --env-file .env.local
+```
 
+All specified files must exist or an error is thrown.
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/installation/"><span title="Install Promptfoo" class="linkLabel_fEdy">Install Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/getting-started/"><span title="Getting Started" class="linkLabel_fEdy">Getting Started</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/configuration/"><span title="Configuration" class="categoryLinkLabel_ufhF">Configuration</span></a><button aria-label="Collapse sidebar category &#x27;Configuration&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/guide/"><span title="Guide" class="linkLabel_fEdy">Guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/reference/"><span title="Reference" class="linkLabel_fEdy">Reference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/prompts/"><span title="Prompts" class="linkLabel_fEdy">Prompts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/test-cases/"><span title="Test Cases" class="linkLabel_fEdy">Test Cases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/outputs/"><span title="Output Formats" class="linkLabel_fEdy">Output Formats</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/chat/"><span title="Chat threads" class="linkLabel_fEdy">Chat threads</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/datasets/"><span title="Dataset generation" class="linkLabel_fEdy">Dataset generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/scenarios/"><span title="Scenarios" class="linkLabel_fEdy">Scenarios</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/caching/"><span title="Caching" class="linkLabel_fEdy">Caching</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/configuration/telemetry/"><span title="Telemetry" class="linkLabel_fEdy">Telemetry</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/tracing/"><span title="Tracing" class="linkLabel_fEdy">Tracing</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--active" href="/docs/category/usage/"><span title="Usage" class="categoryLinkLabel_ufhF">Usage</span></a><button aria-label="Collapse sidebar category &#x27;Usage&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/usage/command-line/"><span title="Command line" class="linkLabel_fEdy">Command line</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/node-package/"><span title="Node package" class="linkLabel_fEdy">Node package</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/web-ui/"><span title="Web viewer" class="linkLabel_fEdy">Web viewer</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/sharing/"><span title="Sharing" class="linkLabel_fEdy">Sharing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/self-hosting/"><span title="Self-hosting" class="linkLabel_fEdy">Self-hosting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/usage/troubleshooting/"><span title="Troubleshooting" class="linkLabel_fEdy">Troubleshooting</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/configuration/expected-outputs/"><span title="Assertions &amp; metrics" class="categoryLinkLabel_ufhF">Assertions &amp; metrics</span></a><button aria-label="Expand sidebar category &#x27;Assertions &amp; metrics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/providers/"><span title="Providers" class="categoryLinkLabel_ufhF">Providers</span></a><button aria-label="Expand sidebar category &#x27;Providers&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/integrations/"><span title="Integrations" class="categoryLinkLabel_ufhF">Integrations</span></a><button aria-label="Expand sidebar category &#x27;Integrations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/red-teaming/"><span title="Red teaming" class="categoryLinkLabel_ufhF">Red teaming</span></a><button aria-label="Collapse sidebar category &#x27;Red teaming&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" tabindex="0" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/code-scanning/"><span title="Code scanning" class="categoryLinkLabel_ufhF">Code scanning</span></a><button aria-label="Expand sidebar category &#x27;Code scanning&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/category/guides/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a><button aria-label="Expand sidebar category &#x27;Guides&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/enterprise/"><span title="Enterprise" class="categoryLinkLabel_ufhF">Enterprise</span></a><button aria-label="Expand sidebar category &#x27;Enterprise&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/contributing/"><span title="Contributing" class="linkLabel_fEdy">Contributing</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/write-for-promptfoo/"><span title="Write for Promptfoo" class="linkLabel_fEdy">Write for Promptfoo</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/faq/"><span title="FAQ" class="linkLabel_fEdy">FAQ</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/releases/"><span title="Release Notes" class="linkLabel_fEdy">Release Notes</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/docs/category/usage/"><span>Usage</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Command line</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Command line</h1></header>
-<p>The <code>promptfoo</code> command line utility supports the following subcommands:</p>
-<ul>
-<li class=""><code>init [directory]</code> - Initialize a new project with dummy files.</li>
-<li class=""><code>eval</code> - Evaluate prompts and models. This is the command you&#x27;ll be using the most!</li>
-<li class=""><code>view</code> - Start a browser UI for visualization of results.</li>
-<li class=""><code>share</code> - Create a URL that can be shared online.</li>
-<li class=""><code>auth</code> - Manage authentication for cloud features.</li>
-<li class=""><code>cache</code> - Manage cache.<!-- -->
-<ul>
-<li class=""><code>cache clear</code></li>
-</ul>
-</li>
-<li class=""><code>config</code> - Edit configuration settings.<!-- -->
-<ul>
-<li class=""><code>config get</code></li>
-<li class=""><code>config set</code></li>
-<li class=""><code>config unset</code></li>
-</ul>
-</li>
-<li class=""><code>debug</code> - Display debug information for troubleshooting.</li>
-<li class=""><code>generate</code> - Generate data.<!-- -->
-<ul>
-<li class=""><code>generate dataset</code></li>
-<li class=""><code>generate redteam</code></li>
-<li class=""><code>generate assertions</code></li>
-</ul>
-</li>
-<li class=""><code>list</code> - List various resources like evaluations, prompts, and datasets.<!-- -->
-<ul>
-<li class=""><code>list evals</code></li>
-<li class=""><code>list prompts</code></li>
-<li class=""><code>list datasets</code></li>
-</ul>
-</li>
-<li class=""><code>mcp</code> - Start a Model Context Protocol (MCP) server to expose promptfoo tools to AI agents and development environments.</li>
-<li class=""><code>scan-model</code> - Scan ML models for security vulnerabilities.</li>
-<li class=""><code>show &lt;id&gt;</code> - Show details of a specific resource (evaluation, prompt, dataset).</li>
-<li class=""><code>delete &lt;id&gt;</code> - Delete a resource by its ID (currently, just evaluations)</li>
-<li class=""><code>validate</code> - Validate a promptfoo configuration file.</li>
-<li class=""><code>feedback &lt;message&gt;</code> - Send feedback to the Promptfoo developers.</li>
-<li class=""><code>import &lt;filepath&gt;</code> - Import an eval file from JSON format.</li>
-<li class=""><code>export</code> - Export eval records or logs.<!-- -->
-<ul>
-<li class=""><code>export eval &lt;evalId&gt;</code></li>
-<li class=""><code>export logs</code></li>
-</ul>
-</li>
-<li class=""><code>redteam</code> - Red team LLM applications.<!-- -->
-<ul>
-<li class=""><code>redteam init</code></li>
-<li class=""><code>redteam setup</code></li>
-<li class=""><code>redteam run</code></li>
-<li class=""><code>redteam discover</code></li>
-<li class=""><code>redteam generate</code></li>
-<li class=""><code>redteam poison</code></li>
-<li class=""><code>redteam eval</code></li>
-<li class=""><code>redteam report</code></li>
-<li class=""><code>redteam plugins</code></li>
-</ul>
-</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="common-options">Common Options<a href="#common-options" class="hash-link" aria-label="Direct link to Common Options" title="Direct link to Common Options" translate="no">​</a></h2>
-<p>Most commands support the following common options:</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>--env-file, --env-path &lt;paths...&gt;</code></td><td>Path(s) to .env file(s). Supports multiple files.</td></tr><tr><td><code>-v, --verbose</code></td><td>Show debug logs</td></tr><tr><td><code>--help</code></td><td>Display help</td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="multiple-environment-files">Multiple Environment Files<a href="#multiple-environment-files" class="hash-link" aria-label="Direct link to Multiple Environment Files" title="Direct link to Multiple Environment Files" translate="no">​</a></h3>
-<p>You can load multiple <code>.env</code> files. Later files override values from earlier ones:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Space-separated</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> --env-file .env .env.local</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Repeated flags</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> --env-file .env --env-file .env.local</span><br></span></code></pre></div></div>
-<p>All specified files must exist or an error is thrown.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-eval"><code>promptfoo eval</code><a href="#promptfoo-eval" class="hash-link" aria-label="Direct link to promptfoo-eval" title="Direct link to promptfoo-eval" translate="no">​</a></h2>
-<p>By default the <code>eval</code> command will read the <code>promptfooconfig.yaml</code> configuration file in your current directory. But, if you&#x27;re looking to override certain parameters you can supply optional arguments:</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-a, --assertions &lt;path&gt;</code></td><td>Path to assertions file</td></tr><tr><td><code>-c, --config &lt;paths...&gt;</code></td><td>Path to configuration file(s). Automatically loads promptfooconfig.yaml</td></tr><tr><td><code>--delay &lt;number&gt;</code></td><td>Delay between each test (in milliseconds)</td></tr><tr><td><code>--description &lt;description&gt;</code></td><td>Description of the eval run</td></tr><tr><td><code>--filter-failing &lt;path or id&gt;</code></td><td>Filter tests that failed in a previous evaluation (by file path or eval ID)</td></tr><tr><td><code>--filter-errors-only &lt;path or id&gt;</code></td><td>Filter tests that resulted in errors in a previous evaluation</td></tr><tr><td><code>-n, --filter-first-n &lt;number&gt;</code></td><td>Only run the first N tests</td></tr><tr><td><code>--filter-sample &lt;number&gt;</code></td><td>Only run a random sample of N tests</td></tr><tr><td><code>--filter-metadata &lt;key=value&gt;</code></td><td>Only run tests whose metadata matches the key=value pair</td></tr><tr><td><code>--filter-pattern &lt;pattern&gt;</code></td><td>Only run tests whose description matches the regex pattern</td></tr><tr><td><code>--filter-providers &lt;providers&gt;</code></td><td>Only run tests with these providers (regex match)</td></tr><tr><td><code>--filter-targets &lt;targets&gt;</code></td><td>Only run tests with these targets (alias for --filter-providers)</td></tr><tr><td><code>--grader &lt;provider&gt;</code></td><td>Model that will grade outputs</td></tr><tr><td><code>-j, --max-concurrency &lt;number&gt;</code></td><td>Maximum number of concurrent API calls</td></tr><tr><td><code>--model-outputs &lt;path&gt;</code></td><td>Path to JSON containing list of LLM output strings</td></tr><tr><td><code>--no-cache</code></td><td>Do not read or write results to disk cache</td></tr><tr><td><code>--no-progress-bar</code></td><td>Do not show progress bar</td></tr><tr><td><code>--no-table</code></td><td>Do not output table in CLI</td></tr><tr><td><code>--no-write</code></td><td>Do not write results to promptfoo directory</td></tr><tr><td><code>--resume [evalId]</code></td><td>Resume a paused/incomplete evaluation. If <code>evalId</code> is omitted, resumes latest</td></tr><tr><td><code>--retry-errors</code></td><td>Retry all ERROR results from the latest evaluation</td></tr><tr><td><code>-o, --output &lt;paths...&gt;</code></td><td>Path(s) to output file (csv, txt, json, jsonl, yaml, yml, html, xml)</td></tr><tr><td><code>-p, --prompts &lt;paths...&gt;</code></td><td>Paths to prompt files (.txt)</td></tr><tr><td><code>--prompt-prefix &lt;path&gt;</code></td><td>Prefix prepended to every prompt</td></tr><tr><td><code>--prompt-suffix &lt;path&gt;</code></td><td>Suffix appended to every prompt</td></tr><tr><td><code>-r, --providers &lt;name or path...&gt;</code></td><td>Provider names or paths to custom API caller modules</td></tr><tr><td><code>--remote</code></td><td>Force remote inference wherever possible (used for red teams)</td></tr><tr><td><code>--repeat &lt;number&gt;</code></td><td>Number of times to run each test</td></tr><tr><td><code>--share</code></td><td>Create a shareable URL</td></tr><tr><td><code>--no-share</code></td><td>Do not create a shareable URL, this overrides the config file</td></tr><tr><td><code>--suggest-prompts &lt;number&gt;</code></td><td>Generate N new prompts and append them to the prompt list</td></tr><tr><td><code>--table</code></td><td>Output table in CLI</td></tr><tr><td><code>--table-cell-max-length &lt;number&gt;</code></td><td>Truncate console table cells to this length</td></tr><tr><td><code>-t, --tests &lt;path&gt;</code></td><td>Path to CSV with test cases</td></tr><tr><td><code>--var &lt;key=value&gt;</code></td><td>Set a variable in key=value format</td></tr><tr><td><code>-v, --vars &lt;path&gt;</code></td><td>Path to CSV with test cases (alias for --tests)</td></tr><tr><td><code>-w, --watch</code></td><td>Watch for changes in config and re-run</td></tr></tbody></table>
-<p>The <code>eval</code> command will return exit code <code>100</code> when there is at least 1 test case failure or when the pass rate is below the threshold set by <code>PROMPTFOO_PASS_RATE_THRESHOLD</code>. It will return exit code <code>1</code> for any other error. The exit code for failed tests can be overridden with environment variable <code>PROMPTFOO_FAILED_TEST_EXIT_CODE</code>.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="pause-and-resume">Pause and Resume<a href="#pause-and-resume" class="hash-link" aria-label="Direct link to Pause and Resume" title="Direct link to Pause and Resume" translate="no">​</a></h3>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--resume</span><span class="token plain">            </span><span class="token comment" style="color:#999988;font-style:italic"># resumes the latest evaluation</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--resume</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">evalId</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic"># resumes a specific evaluation</span><br></span></code></pre></div></div>
-<ul>
-<li class="">On resume, promptfoo reuses the original run&#x27;s effective runtime options (e.g., <code>--delay</code>, <code>--no-cache</code>, <code>--max-concurrency</code>, <code>--repeat</code>), skips completed test/prompt pairs, ignores CLI flags that change test ordering to keep indices aligned, and disables watch mode.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="retry-errors">Retry Errors<a href="#retry-errors" class="hash-link" aria-label="Direct link to Retry Errors" title="Direct link to Retry Errors" translate="no">​</a></h3>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> --retry-errors      </span><span class="token comment" style="color:#999988;font-style:italic"># retries all ERROR results from the latest evaluation</span><br></span></code></pre></div></div>
-<ul>
-<li class="">The retry errors feature automatically finds ERROR results from the latest evaluation, removes them from the database, and re-runs only those test cases. This is useful when evaluations fail due to temporary network issues, rate limits, or API errors.</li>
-<li class="">Cannot be used together with <code>--resume</code> or <code>--no-write</code> flags.</li>
-<li class="">Uses the original evaluation&#x27;s configuration and runtime options to ensure consistency.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-init-directory"><code>promptfoo init [directory]</code><a href="#promptfoo-init-directory" class="hash-link" aria-label="Direct link to promptfoo-init-directory" title="Direct link to promptfoo-init-directory" translate="no">​</a></h2>
-<p>Initialize a new project with dummy files.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>directory</code></td><td>Directory to create files in</td></tr><tr><td><code>--no-interactive</code></td><td>Do not run in interactive mode</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-view"><code>promptfoo view</code><a href="#promptfoo-view" class="hash-link" aria-label="Direct link to promptfoo-view" title="Direct link to promptfoo-view" translate="no">​</a></h2>
-<p>Start a browser UI for visualization of results.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-p, --port &lt;number&gt;</code></td><td>Port number for the local server</td></tr><tr><td><code>-y, --yes</code></td><td>Skip confirmation and auto-open the URL</td></tr><tr><td><code>-n, --no</code></td><td>Skip confirmation and do not open the URL</td></tr></tbody></table>
-<p>If you&#x27;ve used <code>PROMPTFOO_CONFIG_DIR</code> to override the promptfoo output directory, run <code>promptfoo view [directory]</code>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-share-evalid"><code>promptfoo share [evalId]</code><a href="#promptfoo-share-evalid" class="hash-link" aria-label="Direct link to promptfoo-share-evalid" title="Direct link to promptfoo-share-evalid" translate="no">​</a></h2>
-<p>Create a URL that can be shared online.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>--show-auth</code></td><td>Include auth info in the shared URL</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-cache"><code>promptfoo cache</code><a href="#promptfoo-cache" class="hash-link" aria-label="Direct link to promptfoo-cache" title="Direct link to promptfoo-cache" translate="no">​</a></h2>
-<p>Manage cache.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>clear</code></td><td>Clear the cache</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-feedback-message"><code>promptfoo feedback &lt;message&gt;</code><a href="#promptfoo-feedback-message" class="hash-link" aria-label="Direct link to promptfoo-feedback-message" title="Direct link to promptfoo-feedback-message" translate="no">​</a></h2>
-<p>Send feedback to the promptfoo developers.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>message</code></td><td>Feedback message</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-list"><code>promptfoo list</code><a href="#promptfoo-list" class="hash-link" aria-label="Direct link to promptfoo-list" title="Direct link to promptfoo-list" translate="no">​</a></h2>
-<p>List various resources like evaluations, prompts, and datasets.</p>
-<table><thead><tr><th>Subcommand</th><th>Description</th></tr></thead><tbody><tr><td><code>evals</code></td><td>List evaluations</td></tr><tr><td><code>prompts</code></td><td>List prompts</td></tr><tr><td><code>datasets</code></td><td>List datasets</td></tr></tbody></table>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-n</code></td><td>Show the first n records, sorted by descending date of creation</td></tr><tr><td><code>--ids-only</code></td><td>Show only IDs without descriptions</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-mcp"><code>promptfoo mcp</code><a href="#promptfoo-mcp" class="hash-link" aria-label="Direct link to promptfoo-mcp" title="Direct link to promptfoo-mcp" translate="no">​</a></h2>
-<p>Start a Model Context Protocol (MCP) server to expose promptfoo&#x27;s eval and testing capabilities as tools that AI agents and development environments can use.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-p, --port &lt;number&gt;</code></td><td>Port number for HTTP transport</td><td>3100</td></tr><tr><td><code>--transport &lt;type&gt;</code></td><td>Transport type: &quot;http&quot; or &quot;stdio&quot;</td><td>http</td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="transport-types">Transport Types<a href="#transport-types" class="hash-link" aria-label="Direct link to Transport Types" title="Direct link to Transport Types" translate="no">​</a></h3>
-<ul>
-<li class=""><strong>STDIO</strong>: Best for desktop AI tools like Cursor, Claude Desktop, and local AI agents that communicate via standard input/output</li>
-<li class=""><strong>HTTP</strong>: Best for web applications, APIs, and remote integrations that need HTTP endpoints</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="examples">Examples<a href="#examples" class="hash-link" aria-label="Direct link to Examples" title="Direct link to Examples" translate="no">​</a></h3>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Start MCP server with STDIO transport (for Cursor, Claude Desktop, etc.)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> stdio</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Start MCP server with HTTP transport on default port</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> http</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Start MCP server with HTTP transport on custom port</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npx promptfoo@latest mcp </span><span class="token parameter variable" style="color:#36acaa">--transport</span><span class="token plain"> http </span><span class="token parameter variable" style="color:#36acaa">--port</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8080</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="available-tools">Available Tools<a href="#available-tools" class="hash-link" aria-label="Direct link to Available Tools" title="Direct link to Available Tools" translate="no">​</a></h3>
-<p>The MCP server provides 9 tools for AI agents:</p>
-<p><strong>Core Evaluation Tools:</strong></p>
-<ul>
-<li class=""><strong><code>list_evaluations</code></strong> - Browse your evaluation runs with optional dataset filtering</li>
-<li class=""><strong><code>get_evaluation_details</code></strong> - Get comprehensive results, metrics, and test cases for a specific evaluation</li>
-<li class=""><strong><code>run_evaluation</code></strong> - Execute evaluations with custom parameters, test case filtering, and concurrency control</li>
-<li class=""><strong><code>share_evaluation</code></strong> - Generate publicly shareable URLs for evaluation results</li>
-</ul>
-<p><strong>Redteam Security Tools:</strong></p>
-<ul>
-<li class=""><strong><code>redteam_run</code></strong> - Execute comprehensive security testing against AI applications with dynamic attack probes</li>
-<li class=""><strong><code>redteam_generate</code></strong> - Generate adversarial test cases for redteam security testing with configurable plugins and strategies</li>
-</ul>
-<p><strong>Configuration &amp; Testing:</strong></p>
-<ul>
-<li class=""><strong><code>validate_promptfoo_config</code></strong> - Validate configuration files using the same logic as the CLI</li>
-<li class=""><strong><code>test_provider</code></strong> - Test AI provider connectivity, credentials, and response quality</li>
-<li class=""><strong><code>run_assertion</code></strong> - Test individual assertion rules against outputs for debugging</li>
-</ul>
-<p>For detailed setup instructions and integration examples, see the <a class="" href="/docs/integrations/mcp-server/">MCP Server documentation</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-show-id"><code>promptfoo show &lt;id&gt;</code><a href="#promptfoo-show-id" class="hash-link" aria-label="Direct link to promptfoo-show-id" title="Direct link to promptfoo-show-id" translate="no">​</a></h2>
-<p>Show details of a specific resource.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>eval &lt;id&gt;</code></td><td>Show details of a specific evaluation</td></tr><tr><td><code>prompt &lt;id&gt;</code></td><td>Show details of a specific prompt</td></tr><tr><td><code>dataset &lt;id&gt;</code></td><td>Show details of a specific dataset</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-delete-id"><code>promptfoo delete &lt;id&gt;</code><a href="#promptfoo-delete-id" class="hash-link" aria-label="Direct link to promptfoo-delete-id" title="Direct link to promptfoo-delete-id" translate="no">​</a></h2>
-<p>Deletes a specific resource.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>eval &lt;id&gt;</code></td><td>Delete an evaluation by id</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-import-filepath"><code>promptfoo import &lt;filepath&gt;</code><a href="#promptfoo-import-filepath" class="hash-link" aria-label="Direct link to promptfoo-import-filepath" title="Direct link to promptfoo-import-filepath" translate="no">​</a></h2>
-<p>Import an eval file from JSON format.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>--new-id</code></td><td>Generate a new eval ID instead of preserving the original (creates a duplicate eval)</td></tr><tr><td><code>--force</code></td><td>Replace an existing eval with the same ID</td></tr></tbody></table>
-<p>When importing an eval, the following data is preserved from the export:</p>
-<ul>
-<li class=""><strong>Eval ID</strong> - Preserved by default. Use <code>--new-id</code> to generate a new ID, or <code>--force</code> to replace an existing eval.</li>
-<li class=""><strong>Timestamp</strong> - The original creation timestamp is always preserved (even with <code>--new-id</code> or <code>--force</code>)</li>
-<li class=""><strong>Author</strong> - The original author is always preserved (even with <code>--new-id</code> or <code>--force</code>)</li>
-<li class=""><strong>Config, results, and all test data</strong> - Fully preserved</li>
-</ul>
-<p>If an eval with the same ID already exists, the import will fail with an error unless you specify <code>--new-id</code> (to create a duplicate with a new ID) or <code>--force</code> (to replace the existing eval).</p>
-<p>Example:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Import an eval, preserving the original ID</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token function" style="color:#d73a49">import</span><span class="token plain"> my-eval.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Import even if an eval with this ID exists (creates duplicate with new ID)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token function" style="color:#d73a49">import</span><span class="token plain"> --new-id my-eval.json</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Replace an existing eval with updated data</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo </span><span class="token function" style="color:#d73a49">import</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--force</span><span class="token plain"> my-eval.json</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-export"><code>promptfoo export</code><a href="#promptfoo-export" class="hash-link" aria-label="Direct link to promptfoo-export" title="Direct link to promptfoo-export" translate="no">​</a></h2>
-<p>Export eval records or logs.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-export-eval-evalid"><code>promptfoo export eval &lt;evalId&gt;</code><a href="#promptfoo-export-eval-evalid" class="hash-link" aria-label="Direct link to promptfoo-export-eval-evalid" title="Direct link to promptfoo-export-eval-evalid" translate="no">​</a></h3>
-<p>Export an eval record to JSON format. To export the most recent, use evalId <code>latest</code>.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-o, --output &lt;filepath&gt;</code></td><td>File to write. Writes to stdout by default.</td></tr></tbody></table>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-export-logs"><code>promptfoo export logs</code><a href="#promptfoo-export-logs" class="hash-link" aria-label="Direct link to promptfoo-export-logs" title="Direct link to promptfoo-export-logs" translate="no">​</a></h3>
-<p>Collect and zip log files for debugging purposes.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-n, --count &lt;number&gt;</code></td><td>Number of recent log files to include (default: all)</td></tr><tr><td><code>-o, --output &lt;filepath&gt;</code></td><td>Output path for the compressed log file</td></tr></tbody></table>
-<p>This command creates a compressed tar.gz archive containing your promptfoo log files, making it easy to share them for debugging purposes. If no output path is specified, it will generate a timestamped filename automatically.</p>
-<p>Log files are stored in <code>~/.promptfoo/logs</code> by default. To use a custom log directory, set the <code>PROMPTFOO_LOG_DIR</code> environment variable.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-validate"><code>promptfoo validate</code><a href="#promptfoo-validate" class="hash-link" aria-label="Direct link to promptfoo-validate" title="Direct link to promptfoo-validate" translate="no">​</a></h2>
-<p>Validate a promptfoo configuration file to ensure it follows the correct schema and structure.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-c, --config &lt;paths...&gt;</code></td><td>Path to configuration file(s). Automatically loads promptfooconfig.yaml</td></tr></tbody></table>
-<p>This command validates both the configuration file and the test suite to ensure they conform to the expected schema. It will report any validation errors with detailed messages to help you fix configuration issues.</p>
-<p>Examples:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Validate the default promptfooconfig.yaml</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo validate</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Validate a specific configuration file</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo validate </span><span class="token parameter variable" style="color:#36acaa">-c</span><span class="token plain"> my-config.yaml</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Validate multiple configuration files</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo validate </span><span class="token parameter variable" style="color:#36acaa">-c</span><span class="token plain"> config1.yaml config2.yaml</span><br></span></code></pre></div></div>
-<p>The command will exit with code <code>1</code> if validation fails, making it useful for CI/CD pipelines to catch configuration errors early.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-scan-model"><code>promptfoo scan-model</code><a href="#promptfoo-scan-model" class="hash-link" aria-label="Direct link to promptfoo-scan-model" title="Direct link to promptfoo-scan-model" translate="no">​</a></h2>
-<p>Scan ML models for security vulnerabilities. Provide one or more paths to model files or directories.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-b, --blacklist &lt;pattern&gt;</code></td><td>Additional blacklist patterns to check against model names</td><td></td></tr><tr><td><code>-f, --format &lt;format&gt;</code></td><td>Output format (<code>text</code> or <code>json</code>)</td><td><code>text</code></td></tr><tr><td><code>-o, --output &lt;path&gt;</code></td><td>Output file path (prints to stdout if not specified)</td><td></td></tr><tr><td><code>-t, --timeout &lt;seconds&gt;</code></td><td>Scan timeout in seconds</td><td><code>300</code></td></tr><tr><td><code>--max-file-size &lt;bytes&gt;</code></td><td>Maximum file size to scan in bytes</td><td></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth"><code>promptfoo auth</code><a href="#promptfoo-auth" class="hash-link" aria-label="Direct link to promptfoo-auth" title="Direct link to promptfoo-auth" translate="no">​</a></h2>
-<p>Manage authentication for cloud features.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-login"><code>promptfoo auth login</code><a href="#promptfoo-auth-login" class="hash-link" aria-label="Direct link to promptfoo-auth-login" title="Direct link to promptfoo-auth-login" translate="no">​</a></h3>
-<p>Login to the promptfoo cloud.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-o, --org &lt;orgId&gt;</code></td><td>The organization ID to log in to</td></tr><tr><td><code>-h, --host &lt;host&gt;</code></td><td>The host of the promptfoo instance (API URL if different from the app URL)</td></tr><tr><td><code>-k, --api-key &lt;key&gt;</code></td><td>Log in using an API key</td></tr></tbody></table>
-<p>After login, if you have multiple teams, you can switch between them using the <code>teams</code> subcommand.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-logout"><code>promptfoo auth logout</code><a href="#promptfoo-auth-logout" class="hash-link" aria-label="Direct link to promptfoo-auth-logout" title="Direct link to promptfoo-auth-logout" translate="no">​</a></h3>
-<p>Logout from the promptfoo cloud.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-whoami"><code>promptfoo auth whoami</code><a href="#promptfoo-auth-whoami" class="hash-link" aria-label="Direct link to promptfoo-auth-whoami" title="Direct link to promptfoo-auth-whoami" translate="no">​</a></h3>
-<p>Display current authentication status including user, organization, and active team.</p>
-<p><strong>Output includes:</strong></p>
-<ul>
-<li class="">User email</li>
-<li class="">Organization name</li>
-<li class="">Current team (if logged in to a multi-team organization)</li>
-<li class="">App URL</li>
-</ul>
-<p>Example:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth </span><span class="token function" style="color:#d73a49">whoami</span><br></span></code></pre></div></div>
-<p>Output:</p>
-<div class="language-text codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-text codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">Currently logged in as:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9bcbaacbb89aaa6a4b9a8a7b0e7aaa6a4">[email&#160;protected]</a></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Organization: Acme Corp</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Current Team: Engineering Team</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">App URL: https://www.promptfoo.app</span><br></span></code></pre></div></div>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-teams"><code>promptfoo auth teams</code><a href="#promptfoo-auth-teams" class="hash-link" aria-label="Direct link to promptfoo-auth-teams" title="Direct link to promptfoo-auth-teams" translate="no">​</a></h3>
-<p>Manage team switching for organizations with multiple teams.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-teams-list"><code>promptfoo auth teams list</code><a href="#promptfoo-auth-teams-list" class="hash-link" aria-label="Direct link to promptfoo-auth-teams-list" title="Direct link to promptfoo-auth-teams-list" translate="no">​</a></h4>
-<p>List all teams you have access to in the current organization.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-teams-current"><code>promptfoo auth teams current</code><a href="#promptfoo-auth-teams-current" class="hash-link" aria-label="Direct link to promptfoo-auth-teams-current" title="Direct link to promptfoo-auth-teams-current" translate="no">​</a></h4>
-<p>Show the currently active team.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-auth-teams-set-teamidentifier"><code>promptfoo auth teams set &lt;teamIdentifier&gt;</code><a href="#promptfoo-auth-teams-set-teamidentifier" class="hash-link" aria-label="Direct link to promptfoo-auth-teams-set-teamidentifier" title="Direct link to promptfoo-auth-teams-set-teamidentifier" translate="no">​</a></h4>
-<p>Switch to a specific team. The team identifier can be:</p>
-<ul>
-<li class="">Team name (e.g., &quot;Engineering&quot;)</li>
-<li class="">Team slug (e.g., &quot;engineering&quot;)</li>
-<li class="">Team ID (e.g., &quot;team_12345&quot;)</li>
-</ul>
-<p>Examples:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Switch to team by name</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Engineering Team&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Switch to team by slug</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams </span><span class="token builtin class-name">set</span><span class="token plain"> engineering</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Switch to team by ID</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams </span><span class="token builtin class-name">set</span><span class="token plain"> team_12345</span><br></span></code></pre></div></div>
-<p>Your team selection is remembered across CLI sessions and applies to all promptfoo operations including evaluations and red team testing.</p>
-<h4 class="anchor anchorTargetStickyNavbar_tleR" id="team-selection-across-organizations">Team Selection Across Organizations<a href="#team-selection-across-organizations" class="hash-link" aria-label="Direct link to Team Selection Across Organizations" title="Direct link to Team Selection Across Organizations" translate="no">​</a></h4>
-<p>If you have access to multiple organizations, team selections are <strong>isolated per organization</strong>. This means:</p>
-<ul>
-<li class="">Each organization remembers its own team selection</li>
-<li class="">Switching between organizations preserves your team choice in each org</li>
-<li class="">When you log into an organization, your previously selected team is automatically restored</li>
-</ul>
-<p>Example workflow:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># Login to Organization A</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth login --api-key </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">org-a-key</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Engineering&quot;</span><span class="token plain">     </span><span class="token comment" style="color:#999988;font-style:italic"># Set team in Org A</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Login to Organization B</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth login --api-key </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">org-b-key</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Marketing&quot;</span><span class="token plain">       </span><span class="token comment" style="color:#999988;font-style:italic"># Set team in Org B</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Login back to Organization A</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth login --api-key </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">org-a-key</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo auth teams current              </span><span class="token comment" style="color:#999988;font-style:italic"># Shows &quot;Engineering&quot; (preserved!)</span><br></span></code></pre></div></div>
-<p>Your team selection persists across login sessions within the same organization.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-config"><code>promptfoo config</code><a href="#promptfoo-config" class="hash-link" aria-label="Direct link to promptfoo-config" title="Direct link to promptfoo-config" translate="no">​</a></h2>
-<p>Edit configuration settings.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-config-get-email"><code>promptfoo config get email</code><a href="#promptfoo-config-get-email" class="hash-link" aria-label="Direct link to promptfoo-config-get-email" title="Direct link to promptfoo-config-get-email" translate="no">​</a></h3>
-<p>Get the user&#x27;s email address.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-config-set-email-email"><code>promptfoo config set email &lt;email&gt;</code><a href="#promptfoo-config-set-email-email" class="hash-link" aria-label="Direct link to promptfoo-config-set-email-email" title="Direct link to promptfoo-config-set-email-email" translate="no">​</a></h3>
-<p>Set the user&#x27;s email address.</p>
-<h3 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-config-unset-email"><code>promptfoo config unset email</code><a href="#promptfoo-config-unset-email" class="hash-link" aria-label="Direct link to promptfoo-config-unset-email" title="Direct link to promptfoo-config-unset-email" translate="no">​</a></h3>
-<p>Unset the user&#x27;s email address.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-f, --force</code></td><td>Force unset without confirmation</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-debug"><code>promptfoo debug</code><a href="#promptfoo-debug" class="hash-link" aria-label="Direct link to promptfoo-debug" title="Direct link to promptfoo-debug" translate="no">​</a></h2>
-<p>Display debug information for troubleshooting.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>-c, --config [path]</code></td><td>Path to configuration file. Defaults to promptfooconfig.yaml</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-generate-dataset"><code>promptfoo generate dataset</code><a href="#promptfoo-generate-dataset" class="hash-link" aria-label="Direct link to promptfoo-generate-dataset" title="Direct link to promptfoo-generate-dataset" translate="no">​</a></h2>
-<p>BETA: Generate synthetic test cases based on existing prompts and variables.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-c, --config &lt;path&gt;</code></td><td>Path to the configuration file</td><td>promptfooconfig.yaml</td></tr><tr><td><code>-w, --write</code></td><td>Write the generated test cases directly to the config file</td><td>false</td></tr><tr><td><code>-i, --instructions &lt;text&gt;</code></td><td>Custom instructions for test case generation</td><td></td></tr><tr><td><code>-o, --output &lt;path&gt;</code></td><td>Path to write the generated test cases</td><td>stdout</td></tr><tr><td><code>--numPersonas &lt;number&gt;</code></td><td>Number of personas to generate</td><td>5</td></tr><tr><td><code>--numTestCasesPerPersona &lt;number&gt;</code></td><td>Number of test cases per persona</td><td>3</td></tr><tr><td><code>--provider &lt;provider&gt;</code></td><td>Provider to use for generating test cases</td><td>default grader</td></tr><tr><td><code>--no-cache</code></td><td>Do not read or write results to disk cache</td><td>false</td></tr></tbody></table>
-<p>For example, this command will modify your default config file (usually <code>promptfooconfig.yaml</code>) with new test cases:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo generate dataset </span><span class="token parameter variable" style="color:#36acaa">-w</span><br></span></code></pre></div></div>
-<p>This command will generate test cases for a specific config and write them to a file, while following special instructions:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo generate dataset </span><span class="token parameter variable" style="color:#36acaa">-c</span><span class="token plain"> my_config.yaml </span><span class="token parameter variable" style="color:#36acaa">-o</span><span class="token plain"> new_tests.yaml </span><span class="token parameter variable" style="color:#36acaa">-i</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;All test cases for {{location}} must be European cities&#x27;</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-generate-assertions"><code>promptfoo generate assertions</code><a href="#promptfoo-generate-assertions" class="hash-link" aria-label="Direct link to promptfoo-generate-assertions" title="Direct link to promptfoo-generate-assertions" translate="no">​</a></h2>
-<p>Generate additional objective/subjective assertions based on existing prompts and assertions.</p>
-<ul>
-<li class="">This command can be used to generate initial set of assertions, if none exist.</li>
-<li class="">Will only add non-overlapping, independent assertions</li>
-<li class="">Generates both python and natural language assertions.</li>
-</ul>
-<p>When brainstorming assertions:</p>
-<ul>
-<li class="">Generates python code for any objective assertions</li>
-<li class="">Uses a specified natural language assertion type (pi, llm-rubric, or g-eval) for any subjective assertion.</li>
-</ul>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-t, --type &lt;type&gt;</code></td><td>The assertion type to use for generated subjective assertions.</td><td>pi</td></tr><tr><td><code>-c, --config &lt;path&gt;</code></td><td>Path to the configuration file that contains at least 1 prompt.</td><td>promptfooconfig.yaml</td></tr><tr><td><code>-w, --write</code></td><td>Write the generated assertions directly to the config file</td><td>false</td></tr><tr><td><code>-i, --instructions &lt;text&gt;</code></td><td>Custom instructions for assertion generation</td><td></td></tr><tr><td><code>-o, --output &lt;path&gt;</code></td><td>Path to write the generated assertions</td><td>stdout</td></tr><tr><td><code>--numAssertions &lt;number&gt;</code></td><td>Number of assertions to generate</td><td>5</td></tr><tr><td><code>--provider &lt;provider&gt;</code></td><td>Provider to use for generating assertions</td><td>default grader</td></tr><tr><td><code>--no-cache</code></td><td>Do not read or write results to disk cache</td><td>false</td></tr></tbody></table>
-<p>For example, this command will modify your default config file (usually <code>promptfooconfig.yaml</code>) with new test cases:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo generate assertions </span><span class="token parameter variable" style="color:#36acaa">-w</span><br></span></code></pre></div></div>
-<p>This command will generate <code>pi</code> and <code>python</code> assertions for a specific config and write them to a file, while following special instructions:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo generate assertions </span><span class="token parameter variable" style="color:#36acaa">-c</span><span class="token plain"> my_config.yaml </span><span class="token parameter variable" style="color:#36acaa">-o</span><span class="token plain"> new_tests.yaml </span><span class="token parameter variable" style="color:#36acaa">-i</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;I need assertions about pronunciation&#x27;</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-generate-redteam"><code>promptfoo generate redteam</code><a href="#promptfoo-generate-redteam" class="hash-link" aria-label="Direct link to promptfoo-generate-redteam" title="Direct link to promptfoo-generate-redteam" translate="no">​</a></h2>
-<p>Alias for <a href="#promptfoo-redteam-generate" class=""><code>promptfoo redteam generate</code></a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-init"><code>promptfoo redteam init</code><a href="#promptfoo-redteam-init" class="hash-link" aria-label="Direct link to promptfoo-redteam-init" title="Direct link to promptfoo-redteam-init" translate="no">​</a></h2>
-<p>Initialize a red teaming project.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>[directory]</code></td><td>Directory to initialize the project in</td><td>.</td></tr><tr><td><code>--no-gui</code></td><td>Do not open the browser UI</td><td></td></tr></tbody></table>
-<p>Example:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam init my_project</span><br></span></code></pre></div></div>
-<div class="theme-admonition theme-admonition-danger admonition_WCGJ alert alert--danger"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></span>danger</div><div class="admonitionContent_pbrs"><p>Adversarial testing produces offensive, toxic, and harmful test inputs, and may cause your system to produce harmful outputs.</p></div></div>
-<p>For more detail, see <a class="" href="/docs/red-team/configuration/">red team configuration</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-setup"><code>promptfoo redteam setup</code><a href="#promptfoo-redteam-setup" class="hash-link" aria-label="Direct link to promptfoo-redteam-setup" title="Direct link to promptfoo-redteam-setup" translate="no">​</a></h2>
-<p>Start browser UI and open to red team setup.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>[configDirectory]</code></td><td>Directory containing configuration files</td><td></td></tr><tr><td><code>-p, --port &lt;number&gt;</code></td><td>Port number for the local server</td><td>15500</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-run"><code>promptfoo redteam run</code><a href="#promptfoo-redteam-run" class="hash-link" aria-label="Direct link to promptfoo-redteam-run" title="Direct link to promptfoo-redteam-run" translate="no">​</a></h2>
-<p>Run the complete red teaming process (init, generate, and evaluate).</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-c, --config [path]</code></td><td>Path to configuration file</td><td>promptfooconfig.yaml</td></tr><tr><td><code>-o, --output [path]</code></td><td>Path to output file for generated tests</td><td>redteam.yaml</td></tr><tr><td><code>--no-cache</code></td><td>Do not read or write results to disk cache</td><td>false</td></tr><tr><td><code>-j, --max-concurrency &lt;number&gt;</code></td><td>Maximum number of concurrent API calls</td><td></td></tr><tr><td><code>--delay &lt;number&gt;</code></td><td>Delay in milliseconds between API calls</td><td></td></tr><tr><td><code>--remote</code></td><td>Force remote inference wherever possible</td><td>false</td></tr><tr><td><code>--force</code></td><td>Force generation even if no changes are detected</td><td>false</td></tr><tr><td><code>--no-progress-bar</code></td><td>Do not show progress bar</td><td></td></tr><tr><td><code>--filter-providers, --filter-targets &lt;providers&gt;</code></td><td>Only run tests with these providers (regex match)</td><td></td></tr><tr><td><code>-t, --target &lt;id&gt;</code></td><td>Cloud provider target ID to run the scan on</td><td></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-discover"><code>promptfoo redteam discover</code><a href="#promptfoo-redteam-discover" class="hash-link" aria-label="Direct link to promptfoo-redteam-discover" title="Direct link to promptfoo-redteam-discover" translate="no">​</a></h2>
-<p>Runs the <a class="" href="/docs/red-team/discovery/">Target Discovery Agent</a> against your application.</p>
-<div class="theme-admonition theme-admonition-info admonition_WCGJ alert alert--info"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_pbrs"><p>Only a configuration file or target can be specified</p></div></div>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-c, --config &lt;path&gt;</code></td><td>Path to <code>promptfooconfig.yaml</code> configuration file.</td><td></td></tr><tr><td><code>-t, --target &lt;id&gt;</code></td><td>UUID of a target defined in Promptfoo Cloud to scan.</td><td></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-generate"><code>promptfoo redteam generate</code><a href="#promptfoo-redteam-generate" class="hash-link" aria-label="Direct link to promptfoo-redteam-generate" title="Direct link to promptfoo-redteam-generate" translate="no">​</a></h2>
-<p>Generate adversarial test cases to challenge your prompts and models.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>-c, --config &lt;path&gt;</code></td><td>Path to configuration file</td><td>promptfooconfig.yaml</td></tr><tr><td><code>-o, --output &lt;path&gt;</code></td><td>Path to write the generated test cases</td><td>redteam.yaml</td></tr><tr><td><code>-w, --write</code></td><td>Write the generated test cases directly to the config file</td><td>false</td></tr><tr><td><code>--purpose &lt;purpose&gt;</code></td><td>High-level description of the system&#x27;s purpose</td><td>Inferred from config</td></tr><tr><td><code>--provider &lt;provider&gt;</code></td><td>Provider to use for generating adversarial tests</td><td></td></tr><tr><td><code>--injectVar &lt;varname&gt;</code></td><td>Override the <code>{{variable}}</code> that represents user input in the prompt</td><td><code>prompt</code></td></tr><tr><td><code>--plugins &lt;plugins&gt;</code></td><td>Comma-separated list of plugins to use</td><td>default</td></tr><tr><td><code>--strategies &lt;strategies&gt;</code></td><td>Comma-separated list of strategies to use</td><td>default</td></tr><tr><td><code>-n, --num-tests &lt;number&gt;</code></td><td>Number of test cases to generate per plugin</td><td></td></tr><tr><td><code>--language &lt;language&gt;</code></td><td>Specify the language for generated tests</td><td>English</td></tr><tr><td><code>--no-cache</code></td><td>Do not read or write results to disk cache</td><td>false</td></tr><tr><td><code>-j, --max-concurrency &lt;number&gt;</code></td><td>Maximum number of concurrent API calls</td><td></td></tr><tr><td><code>--delay &lt;number&gt;</code></td><td>Delay in milliseconds between plugin API calls</td><td></td></tr><tr><td><code>--remote</code></td><td>Force remote inference wherever possible</td><td>false</td></tr><tr><td><code>--force</code></td><td>Force generation even if no changes are detected</td><td>false</td></tr><tr><td><code>--burp-escape-json</code></td><td>Escape special characters in .burp output for JSON payloads</td><td>false</td></tr></tbody></table>
-<p>For example, let&#x27;s suppose we have the following <code>promptfooconfig.yaml</code>:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Act as a trip planner and help the user plan their trip&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">5</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">gpt</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">5</span><br></span></code></pre></div></div>
-<p>This command will generate adversarial test cases and write them to <code>redteam.yaml</code>.</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam generate</span><br></span></code></pre></div></div>
-<p>This command overrides the system purpose and the variable to inject adversarial user input:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam generate </span><span class="token parameter variable" style="color:#36acaa">--purpose</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;Travel agent that helps users plan trips&#x27;</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--injectVar</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;message&#x27;</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-poison"><code>promptfoo redteam poison</code><a href="#promptfoo-redteam-poison" class="hash-link" aria-label="Direct link to promptfoo-redteam-poison" title="Direct link to promptfoo-redteam-poison" translate="no">​</a></h2>
-<p>Generate poisoned documents for RAG testing.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>documents</code></td><td>Documents, directories, or text content to poison</td><td></td></tr><tr><td><code>-g, --goal &lt;goal&gt;</code></td><td>Goal/intended result of the poisoning</td><td></td></tr><tr><td><code>-o, --output &lt;path&gt;</code></td><td>Output YAML file path</td><td><code>poisoned-config.yaml</code></td></tr><tr><td><code>-d, --output-dir &lt;path&gt;</code></td><td>Directory to write individual poisoned documents</td><td><code>poisoned-documents</code></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-eval"><code>promptfoo redteam eval</code><a href="#promptfoo-redteam-eval" class="hash-link" aria-label="Direct link to promptfoo-redteam-eval" title="Direct link to promptfoo-redteam-eval" translate="no">​</a></h2>
-<p>Works the same as <a href="#promptfoo-eval" class=""><code>promptfoo eval</code></a>, but defaults to loading <code>redteam.yaml</code>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-report"><code>promptfoo redteam report</code><a href="#promptfoo-redteam-report" class="hash-link" aria-label="Direct link to promptfoo-redteam-report" title="Direct link to promptfoo-redteam-report" translate="no">​</a></h2>
-<p>Start a browser UI and open the red teaming report.</p>
-<table><thead><tr><th>Option</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>[directory]</code></td><td>Directory containing the red teaming configuration</td><td>.</td></tr><tr><td><code>-p, --port &lt;number&gt;</code></td><td>Port number for the server</td><td>15500</td></tr></tbody></table>
-<p>Example:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token plain">promptfoo redteam report </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8080</span><br></span></code></pre></div></div>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="promptfoo-redteam-plugins"><code>promptfoo redteam plugins</code><a href="#promptfoo-redteam-plugins" class="hash-link" aria-label="Direct link to promptfoo-redteam-plugins" title="Direct link to promptfoo-redteam-plugins" translate="no">​</a></h2>
-<p>List all available red team plugins.</p>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td><code>--ids-only</code></td><td>Show only plugin IDs without descriptions</td></tr><tr><td><code>--default</code></td><td>Show only the default plugins</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="specifying-command-line-options-in-config">Specifying Command Line Options in Config<a href="#specifying-command-line-options-in-config" class="hash-link" aria-label="Direct link to Specifying Command Line Options in Config" title="Direct link to Specifying Command Line Options in Config" translate="no">​</a></h2>
-<p>Many command line options can be specified directly in your <code>promptfooconfig.yaml</code> file using the <code>commandLineOptions</code> section. This is convenient for options you frequently use or want to set as defaults for your project.</p>
-<p>Example:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockTitle_kY6l">promptfooconfig.yaml</div><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">prompts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> Write a funny tweet about </span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">topic</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">providers</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> openai</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">o3</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">mini</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> file</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//test_cases.csv</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Command line options as defaults</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">commandLineOptions</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">maxConcurrency</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">5</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">verbose</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">table</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">share</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">false</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">cache</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">tableCellMaxLength</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">500</span><br></span></code></pre></div></div>
-<p>With this configuration, you can simply run <code>promptfoo eval</code> without specifying these options on the command line. You can still override any of these settings by providing the corresponding flag when running the command.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="ascii-only-outputs">ASCII-only outputs<a href="#ascii-only-outputs" class="hash-link" aria-label="Direct link to ASCII-only outputs" title="Direct link to ASCII-only outputs" translate="no">​</a></h2>
-<p>To disable terminal colors for printed outputs, set <code>FORCE_COLOR=0</code> (this is supported by the <a href="https://github.com/chalk/chalk" target="_blank" rel="noopener noreferrer" class="">chalk</a> library).</p>
-<p>For the <code>eval</code> command, you may also want to disable the progress bar and table as well, because they use special characters:</p>
-<div class="language-sh codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-sh codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">FORCE_COLOR</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token plain"> promptfoo </span><span class="token builtin class-name">eval</span><span class="token plain"> --no-progress-bar --no-table</span><br></span></code></pre></div></div>
-<h1>Environment variables</h1>
-<p>These general-purpose environment variables are supported:</p>
-<table><thead><tr><th>Name</th><th>Description</th><th>Default</th></tr></thead><tbody><tr><td><code>FORCE_COLOR</code></td><td>Set to 0 to disable terminal colors for printed outputs</td><td></td></tr><tr><td><code>PROMPTFOO_ASSERTIONS_MAX_CONCURRENCY</code></td><td>How many assertions to run at a time</td><td>3</td></tr><tr><td><code>PROMPTFOO_CACHE_ENABLED</code></td><td>Enable LLM request/response caching</td><td><code>false</code></td></tr><tr><td><code>PROMPTFOO_CONFIG_DIR</code></td><td>Directory that stores eval history</td><td><code>~/.promptfoo</code></td></tr><tr><td><code>PROMPTFOO_DISABLE_AJV_STRICT_MODE</code></td><td>If set, disables AJV strict mode for JSON schema validation</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_CONVERSATION_VAR</code></td><td>Prevents the <code>_conversation</code> variable from being set</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_ERROR_LOG</code></td><td>Prevents error logs from being written to a file</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_DEBUG_LOG</code></td><td>Prevents debug logs from being written to a file</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_JSON_AUTOESCAPE</code></td><td>If set, disables smart variable substitution within JSON prompts</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_OBJECT_STRINGIFY</code></td><td>Disable object stringification in templates. When false (default), objects are stringified to prevent <code>[object Object]</code> issues. When true, allows direct property access (e.g., <code>{{output.property}}</code>).</td><td><code>false</code></td></tr><tr><td><code>PROMPTFOO_DISABLE_REF_PARSER</code></td><td>Prevents JSON schema dereferencing</td><td></td></tr><tr><td><code>PROMPTFOO_DISABLE_REMOTE_GENERATION</code></td><td>Disables ALL remote generation (including SimulatedUser and red team features). When set to <code>1</code>, <code>true</code>, or <code>yes</code>, all operations run locally. This is a superset of <code>PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION</code>. Example: <code>PROMPTFOO_DISABLE_REMOTE_GENERATION=true</code></td><td><code>false</code></td></tr><tr><td><code>PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION</code></td><td>Disables remote generation for red team features only (harmful content, red team strategies, red team simulated users). Does NOT affect regular SimulatedUser usage. Subset of <code>PROMPTFOO_DISABLE_REMOTE_GENERATION</code>. Example: <code>PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true</code></td><td><code>false</code></td></tr><tr><td><code>PROMPTFOO_DISABLE_TEMPLATE_ENV_VARS</code></td><td>Disables OS environment variables in templates. When true, only config <code>env:</code> variables are available in templates.</td><td><code>false</code> (true in self-hosted)</td></tr><tr><td><code>PROMPTFOO_DISABLE_TEMPLATING</code></td><td>Disables Nunjucks template processing</td><td><code>false</code></td></tr><tr><td><code>PROMPTFOO_DISABLE_VAR_EXPANSION</code></td><td>Prevents Array-type vars from being expanded into multiple test cases</td><td></td></tr><tr><td><code>PROMPTFOO_FAILED_TEST_EXIT_CODE</code></td><td>Override the exit code when there is at least 1 test case failure or when the pass rate is below PROMPTFOO_PASS_RATE_THRESHOLD</td><td>100</td></tr><tr><td><code>PROMPTFOO_LOG_DIR</code></td><td>Directory to write log files (both debug and error logs). Overrides the default <code>~/.promptfoo/logs</code> directory.</td><td><code>~/.promptfoo/logs</code></td></tr><tr><td><code>PROMPTFOO_PASS_RATE_THRESHOLD</code></td><td>Set a minimum pass rate threshold (as a percentage). If not set, defaults to 100% (no failures allowed)</td><td>100</td></tr><tr><td><code>PROMPTFOO_REQUIRE_JSON_PROMPTS</code></td><td>By default the chat completion provider will wrap non-JSON messages in a single user message. Setting this envar to true disables that behavior.</td><td></td></tr><tr><td><code>PROMPTFOO_SHARE_CHUNK_SIZE</code></td><td>Number of results to send in each chunk. This is used to estimate the size of the results and to determine the number of chunks to send.</td><td></td></tr><tr><td><code>PROMPTFOO_EVAL_TIMEOUT_MS</code></td><td>Timeout in milliseconds for each individual test case/provider API call. When reached, that specific test is marked as an error.</td><td></td></tr><tr><td><code>PROMPTFOO_MAX_EVAL_TIME_MS</code></td><td>Maximum total runtime in milliseconds for the entire evaluation process. When reached, all remaining tests are marked as errors and the eval ends.</td><td></td></tr><tr><td><code>PROMPTFOO_STRIP_GRADING_RESULT</code></td><td>Strip grading results from results to reduce memory usage</td><td>false</td></tr><tr><td><code>PROMPTFOO_STRIP_METADATA</code></td><td>Strip metadata from results to reduce memory usage</td><td>false</td></tr><tr><td><code>PROMPTFOO_STRIP_PROMPT_TEXT</code></td><td>Strip prompt text from results to reduce memory usage</td><td>false</td></tr><tr><td><code>PROMPTFOO_STRIP_RESPONSE_OUTPUT</code></td><td>Strip model response outputs from results to reduce memory usage</td><td>false</td></tr><tr><td><code>PROMPTFOO_STRIP_TEST_VARS</code></td><td>Strip test variables from results to reduce memory usage</td><td>false</td></tr><tr><td><code>PROMPTFOO_SELF_HOSTED</code></td><td>Enables self-hosted mode. When true, disables OS environment variables in templates (only config <code>env:</code> values available), disables telemetry, and modifies other behaviors for controlled environments</td><td><code>false</code></td></tr></tbody></table>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_pbrs"><p>promptfoo will load environment variables from the <code>.env</code> in your current working directory.</p></div></div>
-<div class="theme-admonition theme-admonition-tip admonition_WCGJ alert alert--success"><div class="admonitionHeading_GCBg"><span class="admonitionIcon_L39b"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_pbrs"><p>For detailed information on using timeout features, including configuration examples and troubleshooting tips, see <a class="" href="/docs/usage/troubleshooting/#how-to-triage-stuck-evals">Timeout errors in the troubleshooting guide</a>.</p></div></div></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/usage/command-line.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/category/usage/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Usage</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/usage/node-package/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Node package</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#common-options" class="table-of-contents__link toc-highlight">Common Options</a><ul><li><a href="#multiple-environment-files" class="table-of-contents__link toc-highlight">Multiple Environment Files</a></li></ul></li><li><a href="#promptfoo-eval" class="table-of-contents__link toc-highlight"><code>promptfoo eval</code></a><ul><li><a href="#pause-and-resume" class="table-of-contents__link toc-highlight">Pause and Resume</a></li><li><a href="#retry-errors" class="table-of-contents__link toc-highlight">Retry Errors</a></li></ul></li><li><a href="#promptfoo-init-directory" class="table-of-contents__link toc-highlight"><code>promptfoo init [directory]</code></a></li><li><a href="#promptfoo-view" class="table-of-contents__link toc-highlight"><code>promptfoo view</code></a></li><li><a href="#promptfoo-share-evalid" class="table-of-contents__link toc-highlight"><code>promptfoo share [evalId]</code></a></li><li><a href="#promptfoo-cache" class="table-of-contents__link toc-highlight"><code>promptfoo cache</code></a></li><li><a href="#promptfoo-feedback-message" class="table-of-contents__link toc-highlight"><code>promptfoo feedback &lt;message&gt;</code></a></li><li><a href="#promptfoo-list" class="table-of-contents__link toc-highlight"><code>promptfoo list</code></a></li><li><a href="#promptfoo-mcp" class="table-of-contents__link toc-highlight"><code>promptfoo mcp</code></a><ul><li><a href="#transport-types" class="table-of-contents__link toc-highlight">Transport Types</a></li><li><a href="#examples" class="table-of-contents__link toc-highlight">Examples</a></li><li><a href="#available-tools" class="table-of-contents__link toc-highlight">Available Tools</a></li></ul></li><li><a href="#promptfoo-show-id" class="table-of-contents__link toc-highlight"><code>promptfoo show &lt;id&gt;</code></a></li><li><a href="#promptfoo-delete-id" class="table-of-contents__link toc-highlight"><code>promptfoo delete &lt;id&gt;</code></a></li><li><a href="#promptfoo-import-filepath" class="table-of-contents__link toc-highlight"><code>promptfoo import &lt;filepath&gt;</code></a></li><li><a href="#promptfoo-export" class="table-of-contents__link toc-highlight"><code>promptfoo export</code></a><ul><li><a href="#promptfoo-export-eval-evalid" class="table-of-contents__link toc-highlight"><code>promptfoo export eval &lt;evalId&gt;</code></a></li><li><a href="#promptfoo-export-logs" class="table-of-contents__link toc-highlight"><code>promptfoo export logs</code></a></li></ul></li><li><a href="#promptfoo-validate" class="table-of-contents__link toc-highlight"><code>promptfoo validate</code></a></li><li><a href="#promptfoo-scan-model" class="table-of-contents__link toc-highlight"><code>promptfoo scan-model</code></a></li><li><a href="#promptfoo-auth" class="table-of-contents__link toc-highlight"><code>promptfoo auth</code></a><ul><li><a href="#promptfoo-auth-login" class="table-of-contents__link toc-highlight"><code>promptfoo auth login</code></a></li><li><a href="#promptfoo-auth-logout" class="table-of-contents__link toc-highlight"><code>promptfoo auth logout</code></a></li><li><a href="#promptfoo-auth-whoami" class="table-of-contents__link toc-highlight"><code>promptfoo auth whoami</code></a></li><li><a href="#promptfoo-auth-teams" class="table-of-contents__link toc-highlight"><code>promptfoo auth teams</code></a></li></ul></li><li><a href="#promptfoo-config" class="table-of-contents__link toc-highlight"><code>promptfoo config</code></a><ul><li><a href="#promptfoo-config-get-email" class="table-of-contents__link toc-highlight"><code>promptfoo config get email</code></a></li><li><a href="#promptfoo-config-set-email-email" class="table-of-contents__link toc-highlight"><code>promptfoo config set email &lt;email&gt;</code></a></li><li><a href="#promptfoo-config-unset-email" class="table-of-contents__link toc-highlight"><code>promptfoo config unset email</code></a></li></ul></li><li><a href="#promptfoo-debug" class="table-of-contents__link toc-highlight"><code>promptfoo debug</code></a></li><li><a href="#promptfoo-generate-dataset" class="table-of-contents__link toc-highlight"><code>promptfoo generate dataset</code></a></li><li><a href="#promptfoo-generate-assertions" class="table-of-contents__link toc-highlight"><code>promptfoo generate assertions</code></a></li><li><a href="#promptfoo-generate-redteam" class="table-of-contents__link toc-highlight"><code>promptfoo generate redteam</code></a></li><li><a href="#promptfoo-redteam-init" class="table-of-contents__link toc-highlight"><code>promptfoo redteam init</code></a></li><li><a href="#promptfoo-redteam-setup" class="table-of-contents__link toc-highlight"><code>promptfoo redteam setup</code></a></li><li><a href="#promptfoo-redteam-run" class="table-of-contents__link toc-highlight"><code>promptfoo redteam run</code></a></li><li><a href="#promptfoo-redteam-discover" class="table-of-contents__link toc-highlight"><code>promptfoo redteam discover</code></a></li><li><a href="#promptfoo-redteam-generate" class="table-of-contents__link toc-highlight"><code>promptfoo redteam generate</code></a></li><li><a href="#promptfoo-redteam-poison" class="table-of-contents__link toc-highlight"><code>promptfoo redteam poison</code></a></li><li><a href="#promptfoo-redteam-eval" class="table-of-contents__link toc-highlight"><code>promptfoo redteam eval</code></a></li><li><a href="#promptfoo-redteam-report" class="table-of-contents__link toc-highlight"><code>promptfoo redteam report</code></a></li><li><a href="#promptfoo-redteam-plugins" class="table-of-contents__link toc-highlight"><code>promptfoo redteam plugins</code></a></li><li><a href="#specifying-command-line-options-in-config" class="table-of-contents__link toc-highlight">Specifying Command Line Options in Config</a></li><li><a href="#ascii-only-outputs" class="table-of-contents__link toc-highlight">ASCII-only outputs</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+## `promptfoo eval`
+
+By default the `eval` command will read the `promptfooconfig.yaml` configuration file in your current directory. But, if you're looking to override certain parameters you can supply optional arguments:
+
+| Option | Description |
+| --- | --- |
+| `-a, --assertions <path>` | Path to assertions file |
+| `-c, --config <paths...>` | Path to configuration file(s). Automatically loads promptfooconfig.yaml |
+| `--delay <number>` | Delay between each test (in milliseconds) |
+| `--description <description>` | Description of the eval run |
+| `--filter-failing <path or id>` | Filter tests that failed in a previous evaluation (by file path or eval ID) |
+| `--filter-errors-only <path or id>` | Filter tests that resulted in errors in a previous evaluation |
+| `-n, --filter-first-n <number>` | Only run the first N tests |
+| `--filter-sample <number>` | Only run a random sample of N tests |
+| `--filter-metadata <key=value>` | Only run tests whose metadata matches the key=value pair |
+| `--filter-pattern <pattern>` | Only run tests whose description matches the regex pattern |
+| `--filter-providers <providers>` | Only run tests with these providers (regex match) |
+| `--filter-targets <targets>` | Only run tests with these targets (alias for --filter-providers) |
+| `--grader <provider>` | Model that will grade outputs |
+| `-j, --max-concurrency <number>` | Maximum number of concurrent API calls |
+| `--model-outputs <path>` | Path to JSON containing list of LLM output strings |
+| `--no-cache` | Do not read or write results to disk cache |
+| `--no-progress-bar` | Do not show progress bar |
+| `--no-table` | Do not output table in CLI |
+| `--no-write` | Do not write results to promptfoo directory |
+| `--resume [evalId]` | Resume a paused/incomplete evaluation. If `evalId` is omitted, resumes latest |
+| `--retry-errors` | Retry all ERROR results from the latest evaluation |
+| `-o, --output <paths...>` | Path(s) to output file (csv, txt, json, jsonl, yaml, yml, html, xml) |
+| `-p, --prompts <paths...>` | Paths to prompt files (.txt) |
+| `--prompt-prefix <path>` | Prefix prepended to every prompt |
+| `--prompt-suffix <path>` | Suffix appended to every prompt |
+| `-r, --providers <name or path...>` | Provider names or paths to custom API caller modules |
+| `--remote` | Force remote inference wherever possible (used for red teams) |
+| `--repeat <number>` | Number of times to run each test |
+| `--share` | Create a shareable URL |
+| `--no-share` | Do not create a shareable URL, this overrides the config file |
+| `--suggest-prompts <number>` | Generate N new prompts and append them to the prompt list |
+| `--table` | Output table in CLI |
+| `--table-cell-max-length <number>` | Truncate console table cells to this length |
+| `-t, --tests <path>` | Path to CSV with test cases |
+| `--var <key=value>` | Set a variable in key=value format |
+| `-v, --vars <path>` | Path to CSV with test cases (alias for --tests) |
+| `-w, --watch` | Watch for changes in config and re-run |
+
+The `eval` command will return exit code `100` when there is at least 1 test case failure or when the pass rate is below the threshold set by `PROMPTFOO_PASS_RATE_THRESHOLD`. It will return exit code `1` for any other error. The exit code for failed tests can be overridden with environment variable `PROMPTFOO_FAILED_TEST_EXIT_CODE`.
+
+### Pause and Resume
+
+```bash
+promptfoo eval --resume            # resumes the latest evaluation
+promptfoo eval --resume <evalId>   # resumes a specific evaluation
+```
+
+- On resume, promptfoo reuses the original run's effective runtime options (e.g., `--delay`, `--no-cache`, `--max-concurrency`, `--repeat`), skips completed test/prompt pairs, ignores CLI flags that change test ordering to keep indices aligned, and disables watch mode.
+
+### Retry Errors
+
+```bash
+promptfoo eval --retry-errors      # retries all ERROR results from the latest evaluation
+```
+
+- The retry errors feature automatically finds ERROR results from the latest evaluation, removes them from the database, and re-runs only those test cases. This is useful when evaluations fail due to temporary network issues, rate limits, or API errors.
+- Cannot be used together with `--resume` or `--no-write` flags.
+- Uses the original evaluation's configuration and runtime options to ensure consistency.
+
+## `promptfoo init [directory]`
+
+Initialize a new project with dummy files.
+
+| Option | Description |
+| --- | --- |
+| `directory` | Directory to create files in |
+| `--no-interactive` | Do not run in interactive mode |
+
+## `promptfoo view`
+
+Start a browser UI for visualization of results.
+
+| Option | Description |
+| --- | --- |
+| `-p, --port <number>` | Port number for the local server |
+| `-y, --yes` | Skip confirmation and auto-open the URL |
+| `-n, --no` | Skip confirmation and do not open the URL |
+
+If you've used `PROMPTFOO_CONFIG_DIR` to override the promptfoo output directory, run `promptfoo view [directory]`.
+
+## `promptfoo share [evalId]`
+
+Create a URL that can be shared online.
+
+| Option | Description |
+| --- | --- |
+| `--show-auth` | Include auth info in the shared URL |
+
+## `promptfoo cache`
+
+Manage cache.
+
+| Option | Description |
+| --- | --- |
+| `clear` | Clear the cache |
+
+## `promptfoo feedback <message>`
+
+Send feedback to the promptfoo developers.
+
+| Option | Description |
+| --- | --- |
+| `message` | Feedback message |
+
+## `promptfoo list`
+
+List various resources like evaluations, prompts, and datasets.
+
+| Subcommand | Description |
+| --- | --- |
+| `evals` | List evaluations |
+| `prompts` | List prompts |
+| `datasets` | List datasets |
+
+| Option | Description |
+| --- | --- |
+| `-n` | Show the first n records, sorted by descending date of creation |
+| `--ids-only` | Show only IDs without descriptions |
+
+## `promptfoo mcp`
+
+Start a Model Context Protocol (MCP) server to expose promptfoo's eval and testing capabilities as tools that AI agents and development environments can use.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-p, --port <number>` | Port number for HTTP transport | 3100 |
+| `--transport <type>` | Transport type: "http" or "stdio" | http |
+
+### Transport Types
+
+- **STDIO**: Best for desktop AI tools like Cursor, Claude Desktop, and local AI agents that communicate via standard input/output
+- **HTTP**: Best for web applications, APIs, and remote integrations that need HTTP endpoints
+
+### Examples
+
+```bash
+# Start MCP server with STDIO transport (for Cursor, Claude Desktop, etc.)
+npx promptfoo@latest mcp --transport stdio
+
+# Start MCP server with HTTP transport on default port
+npx promptfoo@latest mcp --transport http
+
+# Start MCP server with HTTP transport on custom port
+npx promptfoo@latest mcp --transport http --port 8080
+```
+
+### Available Tools
+
+The MCP server provides 9 tools for AI agents:
+
+**Core Evaluation Tools:**
+
+- **`list_evaluations`** - Browse your evaluation runs with optional dataset filtering
+- **`get_evaluation_details`** - Get comprehensive results, metrics, and test cases for a specific evaluation
+- **`run_evaluation`** - Execute evaluations with custom parameters, test case filtering, and concurrency control
+- **`share_evaluation`** - Generate publicly shareable URLs for evaluation results
+
+**Redteam Security Tools:**
+
+- **`redteam_run`** - Execute comprehensive security testing against AI applications with dynamic attack probes
+- **`redteam_generate`** - Generate adversarial test cases for redteam security testing with configurable plugins and strategies
+
+**Configuration & Testing:**
+
+- **`validate_promptfoo_config`** - Validate configuration files using the same logic as the CLI
+- **`test_provider`** - Test AI provider connectivity, credentials, and response quality
+- **`run_assertion`** - Test individual assertion rules against outputs for debugging
+
+For detailed setup instructions and integration examples, see the [MCP Server documentation](/docs/integrations/mcp-server/).
+
+## `promptfoo show <id>`
+
+Show details of a specific resource.
+
+| Option | Description |
+| --- | --- |
+| `eval <id>` | Show details of a specific evaluation |
+| `prompt <id>` | Show details of a specific prompt |
+| `dataset <id>` | Show details of a specific dataset |
+
+## `promptfoo delete <id>`
+
+Deletes a specific resource.
+
+| Option | Description |
+| --- | --- |
+| `eval <id>` | Delete an evaluation by id |
+
+## `promptfoo import <filepath>`
+
+Import an eval file from JSON format.
+
+| Option | Description |
+| --- | --- |
+| `--new-id` | Generate a new eval ID instead of preserving the original (creates a duplicate eval) |
+| `--force` | Replace an existing eval with the same ID |
+
+When importing an eval, the following data is preserved from the export:
+
+- **Eval ID** - Preserved by default. Use `--new-id` to generate a new ID, or `--force` to replace an existing eval.
+- **Timestamp** - The original creation timestamp is always preserved (even with `--new-id` or `--force`)
+- **Author** - The original author is always preserved (even with `--new-id` or `--force`)
+- **Config, results, and all test data** - Fully preserved
+
+If an eval with the same ID already exists, the import will fail with an error unless you specify `--new-id` (to create a duplicate with a new ID) or `--force` (to replace the existing eval).
+
+Example:
+
+```bash
+# Import an eval, preserving the original ID
+promptfoo import my-eval.json
+
+# Import even if an eval with this ID exists (creates duplicate with new ID)
+promptfoo import --new-id my-eval.json
+
+# Replace an existing eval with updated data
+promptfoo import --force my-eval.json
+```
+
+## `promptfoo export`
+
+Export eval records or logs.
+
+### `promptfoo export eval <evalId>`
+
+Export an eval record to JSON format. To export the most recent, use `evalId `latest```.
+
+| Option | Description |
+| --- | --- |
+| `-o, --output <filepath>` | File to write. Writes to stdout by default. |
+
+### `promptfoo export logs`
+
+Collect and zip log files for debugging purposes.
+
+| Option | Description |
+| --- | --- |
+| `-n, --count <number>` | Number of recent log files to include (default: all) |
+| `-o, --output <filepath>` | Output path for the compressed log file |
+
+This command creates a compressed tar.gz archive containing your promptfoo log files, making it easy to share them for debugging purposes. If no output path is specified, it will generate a timestamped filename automatically.
+
+Log files are stored in `~/.promptfoo/logs` by default. To use a custom log directory, set the `PROMPTFOO_LOG_DIR` environment variable.
+
+## `promptfoo validate`
+
+Validate a promptfoo configuration file to ensure it follows the correct schema and structure.
+
+| Option | Description |
+| --- | --- |
+| `-c, --config <paths...>` | Path to configuration file(s). Automatically loads promptfooconfig.yaml |
+
+This command validates both the configuration file and the test suite to ensure they conform to the expected schema. It will report any validation errors with detailed messages to help you fix configuration issues.
+
+Examples:
+
+```bash
+# Validate the default promptfooconfig.yaml
+promptfoo validate
+
+# Validate a specific configuration file
+promptfoo validate -c my-config.yaml
+
+# Validate multiple configuration files
+promptfoo validate -c config1.yaml config2.yaml
+```
+
+The command will exit with code `1` if validation fails, making it useful for CI/CD pipelines to catch configuration errors early.
+
+## `promptfoo scan-model`
+
+Scan ML models for security vulnerabilities. Provide one or more paths to model files or directories.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-b, --blacklist <pattern>` | Additional blacklist patterns to check against model names |  |
+| `-f, --format <format>` | Output format (`text` or `json`) | `text` |
+| `-o, --output <path>` | Output file path (prints to stdout if not specified) |  |
+| `-t, --timeout <seconds>` | Scan timeout in seconds | `300` |
+| `--max-file-size <bytes>` | Maximum file size to scan in bytes |  |
+
+## `promptfoo auth`
+
+Manage authentication for cloud features.
+
+### `promptfoo auth login`
+
+Login to the promptfoo cloud.
+
+| Option | Description |
+| --- | --- |
+| `-o, --org <orgId>` | The organization ID to log in to |
+| `-h, --host <host>` | The host of the promptfoo instance (API URL if different from the app URL) |
+| `-k, --api-key <key>` | Log in using an API key |
+
+After login, if you have multiple teams, you can switch between them using the `teams` subcommand.
+
+### `promptfoo auth logout`
+
+Logout from the promptfoo cloud.
+
+### `promptfoo auth whoami`
+
+Display current authentication status including user, organization, and active team.
+
+**Output includes:**
+
+- User email
+- Organization name
+- Current team (if logged in to a multi-team organization)
+- App URL
+
+Example:
+
+```bash
+promptfoo auth whoami
+```
+
+Output:
+
+```
+Currently logged in as:
+User: [email protected]
+Organization: Acme Corp
+Current Team: Engineering Team
+App URL: https://www.promptfoo.app
+```
+
+### `promptfoo auth teams`
+
+Manage team switching for organizations with multiple teams.
+
+#### `promptfoo auth teams list`
+
+List all teams you have access to in the current organization.
+
+#### `promptfoo auth teams current`
+
+Show the currently active team.
+
+#### `promptfoo auth teams set <teamIdentifier>`
+
+Switch to a specific team. The team identifier can be:
+
+- Team name (e.g., "Engineering")
+- Team slug (e.g., "engineering")
+- Team ID (e.g., "team_12345")
+
+Examples:
+
+```bash
+# Switch to team by name
+promptfoo auth teams set "Engineering Team"
+
+# Switch to team by slug
+promptfoo auth teams set engineering
+
+# Switch to team by ID
+promptfoo auth teams set team_12345
+```
+
+Your team selection is remembered across CLI sessions and applies to all promptfoo operations including evaluations and red team testing.
+
+#### Team Selection Across Organizations
+
+If you have access to multiple organizations, team selections are **isolated per organization**. This means:
+
+- Each organization remembers its own team selection
+- Switching between organizations preserves your team choice in each org
+- When you log into an organization, your previously selected team is automatically restored
+
+Example workflow:
+
+```bash
+# Login to Organization A
+promptfoo auth login --api-key <org-a-key>
+promptfoo auth teams set "Engineering"     # Set team in Org A
+
+# Login to Organization B
+promptfoo auth login --api-key <org-b-key>
+promptfoo auth teams set "Marketing"       # Set team in Org B
+
+# Login back to Organization A
+promptfoo auth login --api-key <org-a-key>
+promptfoo auth teams current              # Shows "Engineering" (preserved!)
+```
+
+Your team selection persists across login sessions within the same organization.
+
+## `promptfoo config`
+
+Edit configuration settings.
+
+### `promptfoo config get email`
+
+Get the user's email address.
+
+### `promptfoo config set email <email>`
+
+Set the user's email address.
+
+### `promptfoo config unset email`
+
+Unset the user's email address.
+
+| Option | Description |
+| --- | --- |
+| `-f, --force` | Force unset without confirmation |
+
+## `promptfoo debug`
+
+Display debug information for troubleshooting.
+
+| Option | Description |
+| --- | --- |
+| `-c, --config [path]` | Path to configuration file. Defaults to promptfooconfig.yaml |
+
+## `promptfoo generate dataset`
+
+BETA: Generate synthetic test cases based on existing prompts and variables.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-c, --config <path>` | Path to the configuration file | `promptfooconfig.yaml` |
+| `-w, --write` | Write the generated test cases directly to the config file | false |
+| `-i, --instructions <text>` | Custom instructions for test case generation |  |
+| `-o, --output <path>` | Path to write the generated test cases | stdout |
+| `--numPersonas <number>` | Number of personas to generate | 5 |
+| `--numTestCasesPerPersona <number>` | Number of test cases per persona | 3 |
+| `--provider <provider>` | Provider to use for generating test cases | default grader |
+| `--no-cache` | Do not read or write results to disk cache | false |
+
+For example, this command will modify your default config file (usually `promptfooconfig.yaml`) with new test cases:
+
+```bash
+promptfoo generate dataset -w
+```
+
+This command will generate test cases for a specific config and write them to a file, while following special instructions:
+
+```bash
+promptfoo generate dataset -c my_config.yaml -o new_tests.yaml -i "All test cases for {{location}} must be European cities"
+```
+
+## `promptfoo generate assertions`
+
+Generate additional objective/subjective assertions based on existing prompts and assertions.
+
+- This command can be used to generate initial set of assertions, if none exist.
+- Will only add non-overlapping, independent assertions
+- Generates both python and natural language assertions.
+
+When brainstorming assertions:
+
+- Generates python code for any objective assertions
+- Uses a specified natural language assertion type (pi, llm-rubric, or g-eval) for any subjective assertion.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-t, --type <type>` | The assertion type to use for generated subjective assertions. | pi |
+| `-c, --config <path>` | Path to the configuration file that contains at least 1 prompt. | `promptfooconfig.yaml` |
+| `-w, --write` | Write the generated assertions directly to the config file | false |
+| `-i, --instructions <text>` | Custom instructions for assertion generation |  |
+| `-o, --output <path>` | Path to write the generated assertions | stdout |
+| `--numAssertions <number>` | Number of assertions to generate | 5 |
+| `--provider <provider>` | Provider to use for generating assertions | default grader |
+| `--no-cache` | Do not read or write results to disk cache | false |
+
+For example, this command will modify your default config file (usually `promptfooconfig.yaml`) with new test cases:
+
+```bash
+promptfoo generate assertions -w
+```
+
+This command will generate `pi` and `python` assertions for a specific config and write them to a file, while following special instructions:
+
+```bash
+promptfoo generate assertions -c my_config.yaml -o new_tests.yaml -i "I need assertions about pronunciation"
+```
+
+## `promptfoo generate redteam`
+
+Alias for `promptfoo redteam generate`.
+
+## `promptfoo redteam init`
+
+Initialize a red teaming project.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `[directory]` | Directory to initialize the project in | . |
+| `--no-gui` | Do not open the browser UI |  |
+
+Example:
+
+```bash
+promptfoo redteam init my_project
+```
+
+## `promptfoo redteam setup`
+
+Start browser UI and open to red team setup.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `[configDirectory]` | Directory containing configuration files |  |
+| `-p, --port <number>` | Port number for the local server | 15500 |
+
+## `promptfoo redteam run`
+
+Run the complete red teaming process (init, generate, and evaluate).
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-c, --config [path]` | Path to configuration file | `promptfooconfig.yaml` |
+| `-o, --output [path]` | Path to output file for generated tests | redteam.yaml |
+| `--no-cache` | Do not read or write results to disk cache | false |
+| `-j, --max-concurrency <number>` | Maximum number of concurrent API calls |  |
+| `--delay <number>` | Delay in milliseconds between API calls |  |
+| `--remote` | Force remote inference wherever possible | false |
+| `--force` | Force generation even if no changes are detected | false |
+| `--no-progress-bar` | Do not show progress bar |  |
+| `--filter-providers, --filter-targets <providers>` | Only run tests with these providers (regex match) |  |
+| `-t, --target <id>` | Cloud provider target ID to run the scan on |  |
+
+## `promptfoo redteam discover`
+
+Runs the [Target Discovery Agent](/docs/red-team/discovery/) against your application.
+
+**info**
+
+Only a configuration file or target can be specified
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-c, --config <path>` | Path to `promptfooconfig.yaml` configuration file. |  |
+| `-t, --target <id>` | UUID of a target defined in Promptfoo Cloud to scan. |  |
+
+## `promptfoo redteam generate`
+
+Generate adversarial test cases to challenge your prompts and models.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `-c, --config <path>` | Path to configuration file | `promptfooconfig.yaml` |
+| `-o, --output <path>` | Path to write the generated test cases | redteam.yaml |
+| `-w, --write` | Write the generated test cases directly to the config file | false |
+| `--purpose <purpose>` | High-level description of the system's purpose | Inferred from config |
+| `--provider <provider>` | Provider to use for generating adversarial tests |  |
+| `--injectVar <varname>` | Override the `{{variable}}` that represents user input in the prompt | `prompt` |
+| `--plugins <plugins>` | Comma-separated list of plugins to use | default |
+| `--strategies <strategies>` | Comma-separated list of strategies to use | default |
+| `-n, --num-tests <number>` | Number of test cases to generate per plugin |  |
+| `--language <language>` | Specify the language for generated tests | English |
+| `--no-cache` | Do not read or write results to disk cache | false |
+| `-j, --max-concurrency <number>` | Maximum number of concurrent API calls |  |
+| `--delay <number>` | Delay in milliseconds between plugin API calls |  |
+| `--remote` | Force remote inference wherever possible | false |
+| `--force` | Force generation even if no changes are detected | false |
+| `--burp-escape-json` | Escape special characters in .burp output for JSON payloads | false |
+
+For example, let's suppose we have the following `promptfooconfig.yaml`:
+
+```yaml
+prompts:
+  - Write a funny tweet about {{topic}}
+providers:
+  - openai:o3-mini
+tests:
+  - file://test_cases.csv
+```
+
+This command will generate adversarial test cases and write them to `redteam.yaml`.
+
+This command overrides the system purpose and the variable to inject adversarial user input:
+
+```bash
+promptfoo redteam generate --purpose "Travel agent that helps users plan trips" --injectVar "message"
+```
+
+## `promptfoo redteam poison`
+
+Generate poisoned documents for RAG testing.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `documents` | Documents, directories, or text content to poison |  |
+| `-g, --goal <goal>` | Goal/intended result of the poisoning |  |
+| `-o, --output <path>` | Output YAML file path | `poisoned-config.yaml` |
+| `-d, --output-dir <path>` | Directory to write individual poisoned documents | `poisoned-documents` |
+
+## `promptfoo redteam eval`
+
+Works the same as `promptfoo eval`, but defaults to loading `redteam.yaml`.
+
+## `promptfoo redteam report`
+
+Start a browser UI and open the red teaming report.
+
+| Option | Description | Default |
+| --- | --- | --- |
+| `[directory]` | Directory containing the red teaming configuration | . |
+| `-p, --port <number>` | Port number for the server | 15500 |
+
+Example:
+
+```bash
+promptfoo redteam report -p 8080
+```
+
+## `promptfoo redteam plugins`
+
+List all available red team plugins.
+
+| Option | Description |
+| --- | --- |
+| `--ids-only` | Show only plugin IDs without descriptions |
+| `--default` | Show only the default plugins |
+
+## Specifying Command Line Options in Config
+
+Many command line options can be specified directly in your `promptfooconfig.yaml` file using the `commandLineOptions` section. This is convenient for options you frequently use or want to set as defaults for your project.
+
+Example:
+
+```yaml
+prompts:
+  - Write a funny tweet about {{topic}}
+providers:
+  - openai:o3-mini
+tests:
+  - file://test_cases.csv
+commandLineOptions:
+  maxConcurrency: 5
+  verbose: true
+  table: true
+  share: false
+  cache: true
+  tableCellMaxLength: 500
+```
+
+With this configuration, you can simply run `promptfoo eval` without specifying these options on the command line. You can still override any of these settings by providing the corresponding flag when running the command.
+
+## ASCII-only outputs
+
+To disable terminal colors for printed outputs, set `FORCE_COLOR=0` (this is supported by the [chalk](https://github.com/chalk/chalk) library).
+
+For the `eval` command, you may also want to disable the progress bar and table as well, because they use special characters:
+
+```bash
+FORCE_COLOR=0 promptfoo eval --no-progress-bar --no-table
+```

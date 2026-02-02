@@ -1,22 +1,10 @@
 # Source: https://mui.com/material-ui/react-init-color-scheme-script.md
 
----
-productId: material-ui
-title: InitColorSchemeScript component
-components: InitColorSchemeScript
-githubSource: packages/mui-material/src/InitColorSchemeScript
----
-
-# InitColorSchemeScript
-
-The InitColorSchemeScript component eliminates dark mode flickering in server-side-rendered applications.
-
 ## Introduction
 
-The `InitColorSchemeScript` component is used to remove the dark mode flicker that can occur in server-side-rendered (SSR) applications.
-This script runs before React to attach an attribute based on the user preference so that the correct color mode is applied on first render.
+The `InitColorSchemeScript` component is used to remove the dark mode flicker that can occur in server-side-rendered (SSR) applications. This script runs before React to attach an attribute based on the user preference so that the correct color mode is applied on first render.
 
-For the best user experience, you should implement this component in any server-rendered Material UI app that supports both light and dark modes.
+For the best user experience, you should implement this component in any server-rendered Material UI app that supports both light and dark modes.
 
 ## Basics
 
@@ -44,7 +32,8 @@ The sections below detail where to render the `InitColorSchemeScript` component 
 
 Place the `InitColorSchemeScript` component in the root `layout` file:
 
-```js title="src/app/layout.tsx"
+```js
+// src/app/layout.tsx
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
 export default function RootLayout(props: { children: React.ReactNode }) {
@@ -63,7 +52,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 
 Place the `InitColorSchemeScript` component in a custom `_document` file:
 
-```js title="pages/_document.tsx"
+```js
+// pages/_document.tsx
 import { Html, Head, Main, NextScript } from 'next/document';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
@@ -72,9 +62,8 @@ export default function MyDocument(props) {
     <Html lang="en">
       <Head>{/* tags */}</Head>
       <body>
-        <InitColorSchemeScript attribute="data" />
-        <Main />
-        <NextScript />
+        <InitColorSchemeScript attribute="[data-theme='%s']" /> // <html data-theme="dark">
+        <InitColorSchemeScript attribute=".mode-%s" /> // <html class="mode-dark">
       </body>
     </Html>
   );
@@ -138,16 +127,15 @@ When customizing the `defaultMode` prop, make sure to do the same with the `Them
 <ThemeProvider theme={theme} defaultMode="dark">
 ```
 
+## InitColorSchemeScript API
 
-# InitColorSchemeScript API
-
-## Demos
+### Demos
 
 For examples and details on the usage of this React component, visit the component demo pages:
 
 - [InitColorSchemeScript](https://mui.com/material-ui/react-init-color-scheme-script/)
 
-## Import
+### Import
 
 ```jsx
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
@@ -155,7 +143,7 @@ import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import { InitColorSchemeScript } from '@mui/material';
 ```
 
-## Props
+### Props
 
 | Name | Type | Default | Required | Description |
 |------|------|---------|----------|-------------|
@@ -172,7 +160,7 @@ import { InitColorSchemeScript } from '@mui/material';
 
 > Any other props supplied will be provided to the root element (native element).
 
-## Source code
+### Source code
 
 If you did not find the information on this page, consider having a look at the implementation of the component for more detail.
 

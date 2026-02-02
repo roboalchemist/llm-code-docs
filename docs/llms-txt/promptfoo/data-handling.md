@@ -1,129 +1,146 @@
-# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/
+# Data Handling and Privacy
 
-<!doctype html>
-<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-red-team/troubleshooting/data-handling" data-has-hydrated="false">
-<head>
-<meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.9.2">
-<title data-rh="true">Data Handling and Privacy | Promptfoo</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.promptfoo.dev/img/og/docs-red-team-troubleshooting-data-handling--og.png"><meta data-rh="true" name="twitter:image" content="https://www.promptfoo.dev/img/og/docs-red-team-troubleshooting-data-handling--og.png"><meta data-rh="true" property="og:url" content="https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Data Handling and Privacy | Promptfoo"><meta data-rh="true" name="description" content="Understand what data promptfoo transmits during red team testing and how to configure privacy settings."><meta data-rh="true" property="og:description" content="Understand what data promptfoo transmits during red team testing and how to configure privacy settings."><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://VPUDC1V4TA-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Data handling","item":"https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Promptfoo RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Promptfoo Atom Feed">
+This page explains what data leaves your machine during red team testing and how to control it.
 
+## Data Flow Overview
 
+Red team testing involves three distinct operations, each with different data requirements:
 
+| Operation | What Runs | Data Sent Externally |
+| --- | --- | --- |
+| **Target evaluation** | Always local | Only to your configured LLM provider |
+| **Test generation** | Local or remote | Depends on configuration (see below) |
+| **Result grading** | Local or remote | Depends on configuration (see below) |
 
-<link rel="search" type="application/opensearchdescription+xml" title="Promptfoo" href="/opensearch.xml">
+Your target model is always evaluated locally. Promptfoo never receives your target's responses unless you're using remote grading.
 
+## Default Behavior (No API Key)
 
-<link rel="preconnect" href="https://www.google-analytics.com">
-<link rel="preconnect" href="https://www.googletagmanager.com">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TS8QLZQ93"></script>
-<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-3TS8QLZQ93",{anonymize_ip:!0}),gtag("config","G-3YM29CN26E",{anonymize_ip:!0}),gtag("config","AW-17347444171",{anonymize_ip:!0})</script>
+Without an `OPENAI_API_KEY`, promptfoo uses hosted inference for test generation and grading. The following data is sent to `api.promptfoo.app`:
 
+### For test generation:
 
+- Application purpose (from your config's `purpose` field)
+- Plugin configuration and settings
+- Your email (for usage tracking)
 
+### For grading:
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap">
-<script src="/js/scripts.js" async></script><link rel="stylesheet" href="/assets/css/styles.de7eafd7.css">
-<script src="/assets/js/runtime~main.8ef058f4.js" defer="defer"></script>
-<script src="/assets/js/main.3e1bf4a4.js" defer="defer"></script>
-</head>
-<body class="navigation-with-keyboard">
-<svg style="display: none;"><defs>
-<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
-</defs></svg>
-<script>document.documentElement.setAttribute("data-theme","light"),document.documentElement.setAttribute("data-theme-choice","light"),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo-panda.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_oPtH" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--light_hHel"><img src="/img/logo-panda.svg" alt="promptfoo logo" class="themedComponent_siVc themedComponent--dark_yETr"></div><b class="navbar__title text--truncate">promptfoo</b></a><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Products<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/red-teaming/"><div class="navMenuCardItemTitle_w7Zb">Red Teaming</div><div class="navMenuCardItemDescription_ZlX1">Proactively identify and fix vulnerabilities in your AI applications</div></a><a class="navMenuCardItem__hM1" href="/guardrails/"><div class="navMenuCardItemTitle_w7Zb">Guardrails</div><div class="navMenuCardItemDescription_ZlX1">Real-time protection against jailbreaks and adversarial attacks</div></a><a class="navMenuCardItem__hM1" href="/model-security/"><div class="navMenuCardItemTitle_w7Zb">Model Security</div><div class="navMenuCardItemDescription_ZlX1">Comprehensive security testing and monitoring for AI models</div></a><a class="navMenuCardItem__hM1" href="/mcp/"><div class="navMenuCardItemTitle_w7Zb">MCP Proxy</div><div class="navMenuCardItemDescription_ZlX1">Secure proxy for Model Context Protocol communications</div></a><a class="navMenuCardItem__hM1" href="/code-scanning/"><div class="navMenuCardItemTitle_w7Zb">Code Scanning</div><div class="navMenuCardItemDescription_ZlX1">Find LLM vulnerabilities in your IDE and CI/CD</div></a><a class="navMenuCardItem__hM1" href="/docs/getting-started/"><div class="navMenuCardItemTitle_w7Zb">Evaluations</div><div class="navMenuCardItemDescription_ZlX1">Test and evaluate your prompts, models, and RAG pipelines</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Solutions<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardSectionTitle_r2uM">By Industry</div><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/solutions/healthcare/"><div class="navMenuCardItemTitle_w7Zb">Healthcare</div><div class="navMenuCardItemDescription_ZlX1">HIPAA-compliant medical AI security</div></a><a class="navMenuCardItem__hM1" href="/solutions/finance/"><div class="navMenuCardItemTitle_w7Zb">Financial Services</div><div class="navMenuCardItemDescription_ZlX1">FINRA-aligned security testing</div></a><a class="navMenuCardItem__hM1" href="/solutions/insurance/"><div class="navMenuCardItemTitle_w7Zb">Insurance</div><div class="navMenuCardItemDescription_ZlX1">PHI protection &amp; compliance</div></a></div></div></div></div></div><div class="navMenuCard_gbxm"><div class="navMenuCardButton_ymam navbar__link" role="button" tabindex="0" aria-expanded="false" aria-haspopup="true">Company<svg class="navMenuCardIcon_auzk" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></div><div class="navMenuCardDropdown_iu1u"><div class="navMenuCardContainer_O1hF"><div class="navMenuCardSection_dSaY"><div class="navMenuCardGrid_IZE2"><a class="navMenuCardItem__hM1" href="/about/"><div class="navMenuCardItemTitle_w7Zb">About</div><div class="navMenuCardItemDescription_ZlX1">Learn about our mission and team</div></a><a class="navMenuCardItem__hM1" href="/press/"><div class="navMenuCardItemTitle_w7Zb">Press</div><div class="navMenuCardItemDescription_ZlX1">Media coverage and press releases</div></a><a class="navMenuCardItem__hM1" href="/events/"><div class="navMenuCardItemTitle_w7Zb">Events</div><div class="navMenuCardItemDescription_ZlX1">Meet the team at conferences and events</div></a><a class="navMenuCardItem__hM1" href="/careers/"><div class="navMenuCardItemTitle_w7Zb">Careers</div><div class="navMenuCardItemDescription_ZlX1">Join our growing team</div></a><a class="navMenuCardItem__hM1" href="/store/"><div class="navMenuCardItemTitle_w7Zb">Swag</div><div class="navMenuCardItemDescription_ZlX1">Official Promptfoo merch and swag</div></a></div></div></div></div></div><a class="navbar__item navbar__link" href="/docs/intro/">Docs</a><a class="navbar__item navbar__link" href="/blog/">Blog</a><a class="navbar__item navbar__link" href="/pricing/">Pricing</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a class="navbar__item navbar__link header-book-demo-link" aria-label="Book a Demo" href="/contact/">Book a Demo</a><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link" aria-label="Promptfoo App">Log in</a><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="githubStars_ekUx" aria-label="9k stars on GitHub"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="githubIcon_Gy4v" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg><span class="starCount_kuMA">9k</span></a><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-discord-link" aria-label="Discord community"></a><div class="navbarSearchContainer_bzqh"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_MB5r"><div class="docsWrapper__sE8"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_iEvu" type="button"></button><div class="docRoot_DfVB"><aside class="theme-doc-sidebar-container docSidebarContainer_c7NB"><div class="sidebarViewport_KYo0"><div class="sidebar_CUen"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_jmj1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/"><span title="Intro" class="linkLabel_fEdy">Intro</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/quickstart/"><span title="Quickstart" class="linkLabel_fEdy">Quickstart</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/configuration/"><span title="Configuration" class="linkLabel_fEdy">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/architecture/"><span title="Architecture" class="linkLabel_fEdy">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/llm-vulnerability-types/"><span title="Types of LLM vulnerabilities" class="linkLabel_fEdy">Types of LLM vulnerabilities</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/red-team/risk-scoring/"><span title="Risk Scoring" class="linkLabel_fEdy">Risk Scoring</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/plugins/"><span title="Plugins" class="categoryLinkLabel_ufhF">Plugins</span></a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist" href="/docs/red-team/strategies/"><span title="Strategies" class="categoryLinkLabel_ufhF">Strategies</span></a><button aria-label="Expand sidebar category &#x27;Strategies&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/nist-ai-rmf/"><span title="Frameworks" class="categoryLinkLabel_ufhF">Frameworks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/red-team/discovery/"><span title="Tools" class="categoryLinkLabel_ufhF">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/red-team/troubleshooting/overview/"><span title="Troubleshooting" class="categoryLinkLabel_ufhF">Troubleshooting</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/overview/"><span title="Overview" class="linkLabel_fEdy">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/attack-generation/"><span title="Attack Generation" class="linkLabel_fEdy">Attack Generation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/best-practices/"><span title="Best Practices" class="linkLabel_fEdy">Best Practices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/connecting-to-targets/"><span title="Connecting to Targets" class="linkLabel_fEdy">Connecting to Targets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/red-team/troubleshooting/data-handling/"><span title="Data handling" class="linkLabel_fEdy">Data handling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/false-positives/"><span title="False Positives" class="linkLabel_fEdy">False Positives</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/grading-results/"><span title="Configuring the Grader" class="linkLabel_fEdy">Configuring the Grader</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/inference-limit/"><span title="Configuring Inference" class="linkLabel_fEdy">Configuring Inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/linking-targets/"><span title="Link to Cloud Targets" class="linkLabel_fEdy">Link to Cloud Targets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/multi-turn-sessions/"><span title="Multi-Turn Session Management" class="linkLabel_fEdy">Multi-Turn Session Management</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/multiple-response-types/"><span title="Handling Multiple Response Types like Guardrails" class="linkLabel_fEdy">Handling Multiple Response Types like Guardrails</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/red-team/troubleshooting/remote-generation/"><span title="Remote Generation Errors" class="linkLabel_fEdy">Remote Generation Errors</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_ROYx menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/llm-redteaming/"><span title="Guides" class="categoryLinkLabel_ufhF">Guides</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_a9sJ"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_Qr34"><div class="docItemContainer_tjFy"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_T5ub" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_sfvy"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Troubleshooting</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Data handling</span></li></ul></nav><div class="tocCollapsible_wXna theme-doc-toc-mobile tocMobile_Ojys"><button type="button" class="clean-btn tocCollapsibleButton_iI2p">On this page</button></div><div class="theme-doc-markdown markdown"><div style="position:relative"><header><h1>Data Handling and Privacy</h1></header>
-<p>This page explains what data leaves your machine during red team testing and how to control it.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="data-flow-overview">Data Flow Overview<a href="#data-flow-overview" class="hash-link" aria-label="Direct link to Data Flow Overview" title="Direct link to Data Flow Overview" translate="no">​</a></h2>
-<p>Red team testing involves three distinct operations, each with different data requirements:</p>
-<table><thead><tr><th>Operation</th><th>What Runs</th><th>Data Sent Externally</th></tr></thead><tbody><tr><td><strong>Target evaluation</strong></td><td>Always local</td><td>Only to your configured LLM provider</td></tr><tr><td><strong>Test generation</strong></td><td>Local or remote</td><td>Depends on configuration (see below)</td></tr><tr><td><strong>Result grading</strong></td><td>Local or remote</td><td>Depends on configuration (see below)</td></tr></tbody></table>
-<p>Your target model is always evaluated locally. Promptfoo never receives your target&#x27;s responses unless you&#x27;re using remote grading.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="default-behavior-no-api-key">Default Behavior (No API Key)<a href="#default-behavior-no-api-key" class="hash-link" aria-label="Direct link to Default Behavior (No API Key)" title="Direct link to Default Behavior (No API Key)" translate="no">​</a></h2>
-<p>Without an <code>OPENAI_API_KEY</code>, promptfoo uses hosted inference for test generation and grading. The following data is sent to <code>api.promptfoo.app</code>:</p>
-<p><strong>For test generation:</strong></p>
-<ul>
-<li class="">Application purpose (from your config&#x27;s <code>purpose</code> field)</li>
-<li class="">Plugin configuration and settings</li>
-<li class="">Your email (for usage tracking)</li>
-</ul>
-<p><strong>For grading:</strong></p>
-<ul>
-<li class="">The prompt sent to your target</li>
-<li class="">Your target&#x27;s response</li>
-<li class="">Grading criteria</li>
-</ul>
-<p><strong>Never sent:</strong></p>
-<ul>
-<li class="">API keys or credentials</li>
-<li class="">Your promptfooconfig.yaml file</li>
-<li class="">Model weights or training data</li>
-<li class="">Files from your filesystem (unless explicitly configured in prompts)</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="with-your-own-api-key">With Your Own API Key<a href="#with-your-own-api-key" class="hash-link" aria-label="Direct link to With Your Own API Key" title="Direct link to With Your Own API Key" translate="no">​</a></h2>
-<p>Setting <code>OPENAI_API_KEY</code> routes generation and grading through your OpenAI account instead of promptfoo servers:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">OPENAI_API_KEY</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">sk-</span><span class="token punctuation" style="color:#393A34">..</span><span class="token plain">.</span><br></span></code></pre></div></div>
-<p>Or configure a different provider for grading:</p>
-<div class="language-yaml codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-yaml codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">redteam</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">provider</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> anthropic</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">messages</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">claude</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">sonnet</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">4</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">20250514</span><br></span></code></pre></div></div>
-<p>With this configuration, promptfoo servers receive only <a href="#telemetry" class="">telemetry</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="remote-only-plugins">Remote-Only Plugins<a href="#remote-only-plugins" class="hash-link" aria-label="Direct link to Remote-Only Plugins" title="Direct link to Remote-Only Plugins" translate="no">​</a></h2>
-<p>Some plugins require promptfoo&#x27;s hosted inference and cannot run locally. These are marked with 🌐 in the <a class="" href="/docs/red-team/plugins/">plugin documentation</a>.</p>
-<p>Remote-only plugins include:</p>
-<ul>
-<li class="">Harmful content plugins (<code>harmful:*</code>)</li>
-<li class="">Bias plugins</li>
-<li class="">Domain-specific plugins (medical, financial, insurance, pharmacy, ecommerce)</li>
-<li class="">Security plugins: <code>ssrf</code>, <code>bola</code>, <code>bfla</code>, <code>indirect-prompt-injection</code>, <code>ascii-smuggling</code></li>
-<li class="">Others: <code>competitors</code>, <code>hijacking</code>, <code>off-topic</code>, <code>system-prompt-override</code></li>
-</ul>
-<p>Remote-only strategies include: <code>audio</code>, <code>citation</code>, <code>gcg</code>, <code>goat</code>, <code>jailbreak:composite</code>, <code>jailbreak:hydra</code>, <code>jailbreak:likert</code>, <code>jailbreak:meta</code></p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="disabling-remote-generation">Disabling Remote Generation<a href="#disabling-remote-generation" class="hash-link" aria-label="Direct link to Disabling Remote Generation" title="Direct link to Disabling Remote Generation" translate="no">​</a></h2>
-<p>To run entirely locally:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_DISABLE_REMOTE_GENERATION</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span></code></pre></div></div>
-<p>This disables all remote-only plugins and strategies. You must provide your own <code>OPENAI_API_KEY</code> or configure a local model for generation and grading.</p>
-<p>For red-team-specific control (keeps SimulatedUser remote generation enabled):</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">true</span><br></span></code></pre></div></div>
-<p>See <a class="" href="/docs/red-team/troubleshooting/inference-limit/">Configuring Inference</a> for detailed setup.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="telemetry">Telemetry<a href="#telemetry" class="hash-link" aria-label="Direct link to Telemetry" title="Direct link to Telemetry" translate="no">​</a></h2>
-<p>Promptfoo collects anonymous usage telemetry:</p>
-<ul>
-<li class="">Commands run (<code>redteam generate</code>, <code>redteam run</code>, etc.)</li>
-<li class="">Plugin and strategy types used (not content)</li>
-<li class="">Assertion types</li>
-</ul>
-<p>No prompt content, responses, or personally identifiable information is included.</p>
-<p>To disable:</p>
-<div class="language-bash codeBlockContainer_mQmQ theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_t_Hd"><pre tabindex="0" class="prism-code language-bash codeBlock_RMoD thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_AclH"><span class="token-line" style="color:#393A34"><span class="token builtin class-name">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">PROMPTFOO_DISABLE_TELEMETRY</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">1</span><br></span></code></pre></div></div>
-<p>See <a class="" href="/docs/configuration/telemetry/">Telemetry Configuration</a> for details.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="network-requirements">Network Requirements<a href="#network-requirements" class="hash-link" aria-label="Direct link to Network Requirements" title="Direct link to Network Requirements" translate="no">​</a></h2>
-<p>When using remote generation, promptfoo requires access to:</p>
-<table><thead><tr><th>Domain</th><th>Purpose</th></tr></thead><tbody><tr><td><code>api.promptfoo.app</code></td><td>Test generation and grading</td></tr><tr><td><code>api.promptfoo.dev</code></td><td>Consent tracking for harmful plugins</td></tr><tr><td><code>a.promptfoo.app</code></td><td>Telemetry (PostHog)</td></tr></tbody></table>
-<p>If blocked by your firewall, see <a class="" href="/docs/red-team/troubleshooting/remote-generation/">Remote Generation Troubleshooting</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="enterprise-deployment">Enterprise Deployment<a href="#enterprise-deployment" class="hash-link" aria-label="Direct link to Enterprise Deployment" title="Direct link to Enterprise Deployment" translate="no">​</a></h2>
-<p>For organizations requiring complete network isolation:</p>
-<p><strong><a class="" href="/docs/enterprise/">Promptfoo Enterprise On-Prem</a></strong> provides:</p>
-<ul>
-<li class="">Dedicated runner within your network perimeter</li>
-<li class="">Full air-gapped operation</li>
-<li class="">Self-hosted inference for all plugins</li>
-<li class="">No data transmission to external servers</li>
-</ul>
-<p>See the <a class="" href="/docs/enterprise/">Enterprise Overview</a> for deployment options.</p>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="configuration-summary">Configuration Summary<a href="#configuration-summary" class="hash-link" aria-label="Direct link to Configuration Summary" title="Direct link to Configuration Summary" translate="no">​</a></h2>
-<table><thead><tr><th>Requirement</th><th>Configuration</th></tr></thead><tbody><tr><td>No data to promptfoo servers</td><td>Set <code>OPENAI_API_KEY</code> + <code>PROMPTFOO_DISABLE_TELEMETRY=1</code></td></tr><tr><td>Local generation only</td><td>Set <code>PROMPTFOO_DISABLE_REMOTE_GENERATION=true</code> + configure local provider</td></tr><tr><td>Air-gapped deployment</td><td>Use <a class="" href="/docs/enterprise/">Enterprise On-Prem</a></td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_tleR" id="related-documentation">Related Documentation<a href="#related-documentation" class="hash-link" aria-label="Direct link to Related Documentation" title="Direct link to Related Documentation" translate="no">​</a></h2>
-<ul>
-<li class=""><a class="" href="/privacy/">Privacy Policy</a></li>
-<li class=""><a class="" href="/docs/configuration/telemetry/">Telemetry Configuration</a></li>
-<li class=""><a class="" href="/docs/red-team/configuration/#remote-generation">Remote Generation Configuration</a></li>
-<li class=""><a class="" href="/docs/red-team/troubleshooting/inference-limit/">Configuring Inference</a></li>
-<li class=""><a class="" href="/docs/usage/self-hosting/">Self-Hosting</a></li>
-</ul></div></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_QeZL"><a href="https://github.com/promptfoo/promptfoo/tree/main/site/docs/red-team/troubleshooting/data-handling.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_bHB7" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_ydrU"><span class="theme-last-updated">Last updated<!-- --> on <b><time datetime="2025-12-31T17:26:49.000Z" itemprop="dateModified">Dec 31, 2025</time></b> by <b>Justin Beckwith</b></span></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/red-team/troubleshooting/connecting-to-targets/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Connecting to Targets</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/red-team/troubleshooting/false-positives/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">False Positives</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_XG6w thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#data-flow-overview" class="table-of-contents__link toc-highlight">Data Flow Overview</a></li><li><a href="#default-behavior-no-api-key" class="table-of-contents__link toc-highlight">Default Behavior (No API Key)</a></li><li><a href="#with-your-own-api-key" class="table-of-contents__link toc-highlight">With Your Own API Key</a></li><li><a href="#remote-only-plugins" class="table-of-contents__link toc-highlight">Remote-Only Plugins</a></li><li><a href="#disabling-remote-generation" class="table-of-contents__link toc-highlight">Disabling Remote Generation</a></li><li><a href="#telemetry" class="table-of-contents__link toc-highlight">Telemetry</a></li><li><a href="#network-requirements" class="table-of-contents__link toc-highlight">Network Requirements</a></li><li><a href="#enterprise-deployment" class="table-of-contents__link toc-highlight">Enterprise Deployment</a></li><li><a href="#configuration-summary" class="table-of-contents__link toc-highlight">Configuration Summary</a></li><li><a href="#related-documentation" class="table-of-contents__link toc-highlight">Related Documentation</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Product</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/red-teaming/">Red Teaming</a></li><li class="footer__item"><a class="footer__link-item" href="/guardrails/">Guardrails</a></li><li class="footer__item"><a class="footer__link-item" href="/model-security/">Model Security</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started/">Evaluations</a></li><li class="footer__item"><a class="footer__link-item" href="/pricing/">Enterprise</a></li><li class="footer__item"><a class="footer__link-item" href="/mcp/">MCP Proxy</a></li><li class="footer__item"><a href="https://status.promptfoo.app/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Status<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Solutions</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/solutions/healthcare/">Healthcare</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/finance/">Financial Services</a></li><li class="footer__item"><a class="footer__link-item" href="/solutions/insurance/">Insurance</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/api-reference/">API Reference</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/red-team/">LLM Red Teaming</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/models/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Foundation Model Reports</a></li><li class="footer__item"><a href="https://www.promptfoo.dev/lm-security-db/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Language Model Security DB</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/llama2-uncensored-benchmark-ollama/">Running Benchmarks</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/factuality-eval/">Evaluating Factuality</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/evaluate-rag/">Evaluating RAGs</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/prevent-llm-hallucinations/">Minimizing Hallucinations</a></li><li class="footer__item"><a class="footer__link-item" href="/validator/">Config Validator</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/about/">About</a></li><li class="footer__item"><a class="footer__link-item" href="/blog/">Blog</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/releases/">Release Notes</a></li><li class="footer__item"><a class="footer__link-item" href="/press/">Press</a></li><li class="footer__item"><a class="footer__link-item" href="/events/">Events</a></li><li class="footer__item"><a class="footer__link-item" href="/contact/">Contact</a></li><li class="footer__item"><a class="footer__link-item" href="/careers/">Careers</a></li><li class="footer__item"><a class="footer__link-item" href="/store/">Swag</a></li><li class="footer__item"><a href="https://promptfoo.app" target="_blank" rel="noopener noreferrer" class="footer__link-item">Log in</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Legal &amp; Social</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/promptfoo/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discord.gg/promptfoo" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/company/promptfoo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/privacy/">Privacy Policy</a></li><li class="footer__item"><a class="footer__link-item" href="/terms-of-service/">Terms of Service</a></li><li class="footer__item"><a href="https://trust.promptfoo.dev" target="_blank" rel="noopener noreferrer" class="footer__link-item">Trust Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPrP"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item">
-                <div style="display: flex; gap: 16px; align-items: center; margin-top: 12px;">
-                  <img loading="lazy" src="/img/badges/soc2.png" alt="SOC2 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/iso27001.png" alt="ISO 27001 Certified" style="width:80px; height: auto">
-                  <img loading="lazy" src="/img/badges/hipaa.png" alt="HIPAA Compliant" style="width:80px; height: auto">
-                </div>
-                </li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© 2025 Promptfoo, Inc.</div></div></div></footer><style data-emotion="css 14yoxd">.css-14yoxd{z-index:1200;}</style></div>
-<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c4bd5e1107e49379a47b948d21d50e1"}'></script><!-- Cloudflare Pages Analytics --></body>
-</html>
+- The prompt sent to your target
+- Your target's response
+- Grading criteria
+
+### Never sent:
+
+- API keys or credentials
+- Your promptfooconfig.yaml file
+- Model weights or training data
+- Files from your filesystem (unless explicitly configured in prompts)
+
+## With Your Own API Key
+
+Setting `OPENAI_API_KEY` routes generation and grading through your OpenAI account instead of promptfoo servers:
+
+```bash
+export OPENAI_API_KEY=sk-...
+```
+
+Or configure a different provider for grading:
+
+```yaml
+redteam:
+  provider: anthropic:messages:claude-sonnet-4-20250514
+```
+
+With this configuration, promptfoo servers receive only [telemetry](#telemetry).
+
+## Remote-Only Plugins
+
+Some plugins require promptfoo's hosted inference and cannot run locally. These are marked with 🌐 in the [plugin documentation](/docs/red-team/plugins/).
+
+Remote-only plugins include:
+
+- Harmful content plugins (`harmful:*`)
+- Bias plugins
+- Domain-specific plugins (medical, financial, insurance, pharmacy, ecommerce)
+- Security plugins: `ssrf`, `bola`, `bfla`, `indirect-prompt-injection`, `ascii-smuggling`
+- Others: `competitors`, `hijacking`, `off-topic`, `system-prompt-override`
+
+Remote-only strategies include: `audio`, `citation`, `gcg`, `goat`, `jailbreak:composite`, `jailbreak:hydra`, `jailbreak:likert`, `jailbreak:meta`
+
+## Disabling Remote Generation
+
+To run entirely locally:
+
+```bash
+export PROMPTFOO_DISABLE_REMOTE_GENERATION=true
+```
+
+This disables all remote-only plugins and strategies. You must provide your own `OPENAI_API_KEY` or configure a local model for generation and grading.
+
+For red-team-specific control (keeps SimulatedUser remote generation enabled):
+
+```bash
+export PROMPTFOO_DISABLE_REDTEAM_REMOTE_GENERATION=true
+```
+
+See [Configuring Inference](/docs/red-team/troubleshooting/inference-limit/) for detailed setup.
+
+## Telemetry
+
+Promptfoo collects anonymous usage telemetry:
+
+- Commands run (`redteam generate`, `redteam run`, etc.)
+- Plugin and strategy types used (not content)
+- Assertion types
+
+No prompt content, responses, or personally identifiable information is included.
+
+To disable:
+
+```bash
+export PROMPTFOO_DISABLE_TELEMETRY=1
+```
+
+See [Telemetry Configuration](/docs/configuration/telemetry/) for details.
+
+## Network Requirements
+
+When using remote generation, promptfoo requires access to:
+
+| Domain | Purpose |
+| --- | --- |
+| `api.promptfoo.app` | Test generation and grading |
+| `api.promptfoo.dev` | Consent tracking for harmful plugins |
+| `a.promptfoo.app` | Telemetry (PostHog) |
+
+If blocked by your firewall, see [Remote Generation Troubleshooting](/docs/red-team/troubleshooting/remote-generation/).
+
+## Enterprise Deployment
+
+For organizations requiring complete network isolation:
+
+**[Promptfoo Enterprise On-Prem](/docs/enterprise/)** provides:
+
+- Dedicated runner within your network perimeter
+- Full air-gapped operation
+- Self-hosted inference for all plugins
+- No data transmission to external servers
+
+See the [Enterprise Overview](/docs/enterprise/) for deployment options.
+
+## Configuration Summary
+
+| Requirement | Configuration |
+| --- | --- |
+| No data to promptfoo servers | Set `OPENAI_API_KEY` + `PROMPTFOO_DISABLE_TELEMETRY=1` |
+| Local generation only | Set `PROMPTFOO_DISABLE_REMOTE_GENERATION=true` + configure local provider |
+| Air-gapped deployment | Use [Enterprise On-Prem](/docs/enterprise/) |
+
+## Related Documentation
+
+- [Privacy Policy](/privacy/)
+- [Telemetry Configuration](/docs/configuration/telemetry/)
+- [Remote Generation Configuration](/docs/red-team/configuration/#remote-generation)
+- [Configuring Inference](/docs/red-team/troubleshooting/inference-limit/)
+- [Self-Hosting](/docs/usage/self-hosting/)

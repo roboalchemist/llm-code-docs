@@ -1,317 +1,248 @@
-# Source: https://preactjs.com/guide/v10/preact-testing-library
+# Testing with Preact Testing Library
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="icon" href="/favicon.ico">
-		<title>Testing with Preact Testing Library – Preact Guide</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
-		<meta name="color-scheme" content="dark light">
-		<meta name="theme-color" content="#673AB8">
-		<link rel="alternate" type="application/rss+xml" href="https://preactjs.com/feed.xml">
-		<link rel="alternate" type="application/atom+xml" href="https://preactjs.com/feed.atom">
-		<meta property="og:image" content="https://preactjs.com/app-icon.png">
-		<meta name="twitter:card" content="summary">
-		<link href="https://esm.sh" rel="preconnect" crossorigin="anonymous">
-		<link href="https://www.google-analytics.com" rel="preconnect" crossorigin="anonymous">
-		<script type="module" crossorigin src="/assets/index-nodqeQT7.js"></script>
-		<link rel="stylesheet" crossorigin href="/assets/index-CzbcAXL9.css">
-	<meta name="description" content="Testing Preact applications made easy with testing-library">
-<meta property="og:url" content="https://preactjs.com/guide/v10/preact-testing-library">
-<meta property="og:title" content="Testing with Preact Testing Library – Preact Guide">
-<meta property="og:description" content="Testing Preact applications made easy with testing-library">
-<link rel="preload" href="/.netlify/functions/release?repo=preact" as="fetch" fetchpriority="low">
-<link rel="preload" href="/contributors.json" as="fetch" fetchpriority="low">
-<link rel="preload" href="/content/en/guide/v10/preact-testing-library.json" as="fetch" fetchpriority="low">
-<script>ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga('set','dimension1','master');onerror=function(e,f,l,c){ga('send','event','exception',e,f+':'+l+':'+c)}</script></head>
-	<body class="banner">
-		<div id="app"><header class="_header_nxrmc_38 "><div class="_banner_nxrmc_1"><a href="https://www.stopputin.net/">We stand with Ukraine. <b>Show your support</b> 🇺🇦</a></div><div class="_outer_nxrmc_24"><div class="_inner_nxrmc_301"><nav><a href="/" class="home" aria-label="Home"><svg aria-label="Preact Logo" width="34px" height="34px" viewBox="-256 -256 512 512" style="display:inline-block; margin:-.25em 0 0; vertical-align:middle;"><path d="M0,-256 221.7025033688164,-128 221.7025033688164,128 0,256 -221.7025033688164,128 -221.7025033688164,-128z" fill="white"></path><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(52)"></ellipse><ellipse cx="0" cy="0" rx="75px" ry="196px" stroke-width="16px" stroke-dasharray="387 60" stroke-dashoffset="0" fill="none" stroke="#673ab8" transform="rotate(-52)"></ellipse><circle cx="0" cy="0" r="34" fill="#673ab8"></circle></svg>Preact</a><a href="/tutorial">Tutorial</a><a href="/guide/v10/getting-started" class="_current_nxrmc_92 ">Guide</a><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false">About</button><nav aria-label="submenu" aria-hidden="true"><a href="/about/we-are-using">Companies using Preact</a><a href="/about/libraries-addons">Libraries &amp; Add-ons</a><a href="/about/demos-examples">Demos &amp; Examples</a><a href="/about/project-goals">Project Goals</a><a href="/about/browser-support">Browser Support</a></nav></div><a href="/blog">Blog</a><a href="/repl">REPL</a></nav><div class="_search_nxrmc_479"><button type="button" aria-label="Search" class="DocSearch DocSearch-Button"><span class="DocSearch-Button-Container"><span class="DocSearch-Button-Placeholder">Search</span></span></button></div><div class="_social_nxrmc_321"><a href="https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0" class="_socialItem_nxrmc_357 _release_nxrmc_396">v11.0.0-beta.0</a><a class="_socialItem_nxrmc_357" aria-label="Browse the code on GitHub" href="https://github.com/preactjs/preact" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#github"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Twitter" href="https://twitter.com/preactjs" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 34 27.646"><use href="/icons.svg#twitter"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Follow us on Bluesky" href="https://bsky.app/profile/preactjs.com" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 568 501"><use href="/icons.svg#bluesky"></use></svg></a><a class="_socialItem_nxrmc_357" aria-label="Chat with us on Slack" href="http://chat.preactjs.com/" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="/icons.svg#slack"></use></svg></a></div><div class="_translation_nxrmc_322"><div class="_navGroup_nxrmc_78" data-open="false"><button aria-haspopup="true" aria-expanded="false" aria-label="Select your language"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="/icons.svg#i18n"></use></svg></button><nav aria-label="submenu" aria-hidden="true"></nav></div></div><div class="_hamburger_nxrmc_402" data-open="false"><div class="_hb1_nxrmc_444"></div><div class="_hb2_nxrmc_445"></div><div class="_hb3_nxrmc_446"></div></div></div></div><a href="https://opencollective.com/preact" target="_blank" rel="noopener noreferrer" class="_corner_1vho8_1"><div class="_cornerText_1vho8_31">Help<br>Support Us</div></a></header><main><loading-bar></loading-bar><!--$s--><div class="_page_sqynl_1 _withSidebar_sqynl_119"><div class="_outer_sqynl_111"><div class="_sidebarWrap_sqynl_115"><div class="_wrapper_14rnv_1" data-open="false"><button class="_toggle_14rnv_6">Guide</button><aside class="_sidebar_14rnv_58"><div class="_sidebarInner_14rnv_93"><label class="_root_1cgs3_1">Version: <select class="_select_1cgs3_8"><option value="v11">11.x (preview)</option><option selected value="v10">10.x (current)</option><option value="v8">8.x</option></select></label><nav class="_toc_1ttwe_1 "><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Introduction</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/getting-started" class="_link_1ttwe_16  ">Getting Started</a><a href="/guide/v10/whats-new" class="_link_1ttwe_16  ">What's new?</a><a href="/guide/v10/upgrade-guide" class="_link_1ttwe_16  ">Upgrading from 8.x</a><a href="/guide/v10/differences-to-react" class="_link_1ttwe_16  ">Differences to React</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Essentials</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/components" class="_link_1ttwe_16  ">Components</a><a href="/guide/v10/hooks" class="_link_1ttwe_16  ">Hooks</a><a href="/guide/v10/signals" class="_link_1ttwe_16  ">Signals</a><a href="/guide/v10/forms" class="_link_1ttwe_16  ">Forms</a><a href="/guide/v10/refs" class="_link_1ttwe_16  ">References</a><a href="/guide/v10/context" class="_link_1ttwe_16  ">Context</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Debug &amp; Test</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/debugging" class="_link_1ttwe_16  ">Debugging Tools</a><a href="/guide/v10/preact-testing-library" class="_link_1ttwe_16 _linkActive_1ttwe_43 ">Preact Testing Library</a><a href="/guide/v10/unit-testing-with-enzyme" class="_link_1ttwe_16  ">Unit Testing with Enzyme</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Advanced</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/api-reference" class="_link_1ttwe_16  ">API Reference</a><a href="/guide/v10/web-components" class="_link_1ttwe_16  ">Web Components</a><a href="/guide/v10/server-side-rendering" class="_link_1ttwe_16  ">Server-Side Rendering</a><a href="/guide/v10/options" class="_link_1ttwe_16  ">Option Hooks</a><a href="/guide/v10/typescript" class="_link_1ttwe_16  ">TypeScript</a><a href="/guide/v10/no-build-workflows" class="_link_1ttwe_16  ">No-Build Workflows</a></div><h3 class="_category_1ttwe_50 _level-2_1ttwe_79">Libraries</h3><div class="_accordionBody_1ttwe_68"><a href="/guide/v10/preact-iso" class="_link_1ttwe_16  ">preact-iso</a><a href="/guide/v10/preact-custom-element" class="_link_1ttwe_16  ">preact-custom-element</a><a href="/guide/v10/preact-root-fragment" class="_link_1ttwe_16  ">preact-root-fragment</a></div></nav></div></aside></div></div><div class="_inner_sqynl_59"><div class="_wrapper_1gw8e_1"><a class="_edit_1gw8e_13" href="https://github.com/preactjs/preact-www/tree/master/content/en/guide/v10/preact-testing-library.md" target="_blank" rel="noopener noreferrer">Edit this Page</a></div><content-region name="/guide/v10/preact-testing-library" can-edit><div class="markup"><h1>Testing with Preact Testing Library</h1><p>The <a href="https://github.com/testing-library/preact-testing-library" target="_blank" rel="noopener noreferrer">Preact Testing Library</a> is a lightweight wrapper around <code>preact/test-utils</code>. It provides a set of query methods for accessing the rendered DOM in a way similar to how a user finds elements on a page. This approach allows you to write tests that do not rely on implementation details. Consequently, this makes tests easier to maintain and more resilient when the component being tested is refactored.</p>
-<p>Unlike <a href="/guide/v10/unit-testing-with-enzyme">Enzyme</a>, Preact Testing Library must be called inside a DOM environment.</p>
-<hr>
-<nav><ul><li><a href="#installation">Installation</a></li><li><a href="#usage">Usage</a></li><li><a href="#finding-elements">Finding Elements</a><ul><li><a href="#using-content">Using Content</a></li><li><a href="#using-test-ids">Using Test IDs</a></li></ul></li><li><a href="#debugging-tests">Debugging Tests</a></li><li><a href="#supplying-custom-context-providers">Supplying custom Context Providers</a></li><li><a href="#testing-preact-hooks">Testing Preact Hooks</a></li></ul></nav><hr>
+The [Preact Testing Library](https://github.com/testing-library/preact-testing-library) is a lightweight wrapper around `preact/test-utils`. It provides a set of query methods for accessing the rendered DOM in a way similar to how a user finds elements on a page. This approach allows you to write tests that do not rely on implementation details. Consequently, this makes tests easier to maintain and more resilient when the component being tested is refactored.
 
-				<h2 id="installation">
-					<a class="fragment-link" href="#installation">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Installation (#installation)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Installation</span>
-				</h2><p>Install the testing-library Preact adapter via the following command:</p>
+Unlike [Enzyme](https://preactjs.com/guide/v10/unit-testing-with-enzyme), Preact Testing Library must be called inside a DOM environment.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @testing-library/preact</code></pre>
-					
-				</div>
-			<blockquote>
-<p>Note: This library relies on a DOM environment being present. If you're using <a href="https://github.com/facebook/jest" target="_blank" rel="noopener noreferrer">Jest</a> it's already included and enabled by default. If you're using another test runner like <a href="https://github.com/mochajs/mocha" target="_blank" rel="noopener noreferrer">Mocha</a> or <a href="https://github.com/jasmine/jasmine" target="_blank" rel="noopener noreferrer">Jasmine</a> you can add a DOM environment to node by installing <a href="https://github.com/jsdom/jsdom" target="_blank" rel="noopener noreferrer">jsdom</a>.</p>
-</blockquote>
+---
 
-				<h2 id="usage">
-					<a class="fragment-link" href="#usage">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Usage (#usage)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Usage</span>
-				</h2><p>Suppose we have a <code>Counter</code> component which displays an initial value, with a button to update it:</p>
+*   [Installation](#installation)
+*   [Usage](#usage)
+*   [Finding Elements](#finding-elements)
+    *   [Using Content](#using-content)
+    *   [Using Test IDs](#using-test-ids)
+*   [Debugging Tests](#debugging-tests)
+*   [Supplying custom Context Providers](#supplying-custom-context-providers)
+*   [Testing Preact Hooks](#testing-preact-hooks)
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact/hooks'</span><span class="token punctuation">;</span>
+---
 
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> initialCount <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>initialCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">const</span> <span class="token function-variable function">increment</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+## Installation
 
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
-			Current value: </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>increment<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Increment</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
-		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-					
-				</div>
-			<p>We want to verify that our Counter displays the initial count and that clicking the button will increment it. Using the test runner of your choice, like <a href="https://github.com/facebook/jest" target="_blank" rel="noopener noreferrer">Jest</a> or <a href="https://github.com/mochajs/mocha" target="_blank" rel="noopener noreferrer">Mocha</a>, we can write these two scenarios down:</p>
+Install the testing-library Preact adapter via the following command:
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> expect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'expect'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> h <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> fireEvent<span class="token punctuation">,</span> screen<span class="token punctuation">,</span> waitFor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/preact'</span><span class="token punctuation">;</span>
+```bash
+npm install --save-dev @testing-library/preact
+```
 
-<span class="token keyword">import</span> Counter <span class="token keyword">from</span> <span class="token string">'../src/Counter'</span><span class="token punctuation">;</span>
+> Note: This library relies on a DOM environment being present. If you're using [Jest](https://github.com/facebook/jest) it's already included and enabled by default. If you're using another test runner like [Mocha](https://github.com/mochajs/mocha) or [Jasmine](https://github.com/jasmine/jasmine) you can add a DOM environment to node by installing [jsdom](https://github.com/jsdom/jsdom).
 
-<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Counter'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should display initial count'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token keyword">const</span> <span class="token punctuation">{</span> container <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token attr-name">initialCount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token function">expect</span><span class="token punctuation">(</span>container<span class="token punctuation">.</span>textContent<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toMatch</span><span class="token punctuation">(</span><span class="token string">'Current value: 5'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+## Usage
 
-	<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should increment after &quot;Increment&quot; button is clicked'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token attr-name">initialCount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Suppose we have a `Counter` component which displays an initial value, with a button to update it:
 
-		fireEvent<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">'Increment'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">await</span> <span class="token function">waitFor</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-			<span class="token comment">// .toBeInTheDocument() is an assertion that comes from jest-dom.</span>
-			<span class="token comment">// Otherwise you could use .toBeDefined().</span>
-			<span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">'Current value: 6'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>You may have noticed the <code>waitFor()</code> call there. We need this to ensure that Preact had enough time to render to the DOM and flush all pending effects.</p>
+```jsx
+import { h } from 'preact';
+import { useState } from 'preact/hooks';
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span>'should increment counter&quot;<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token attr-name">initialCount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span><span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+export function Counter({ initialCount }) {
+	const [count, setCount] = useState(initialCount);
+	const increment = () => setCount(count + 1);
 
-  fireEvent<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">'Increment'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment">// WRONG: Preact likely won't have finished rendering here</span>
-  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">&quot;Current value: 6&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Under the hood, <code>waitFor</code> repeatedly calls the passed callback function until it doesn't throw an error anymore or a timeout runs out (default: 1000ms). In the above example we know that the update is completed, when the counter is incremented and the new value is rendered into the DOM.</p>
-<p>We can also write tests in an async-first way by using the &quot;findBy&quot; version of the queries instead of &quot;getBy&quot;. Async queries retry using <code>waitFor</code> under the hood, and return Promises, so you need to await them.</p>
+	return (
+		<div>
+			Current value: {count}
+			<button onClick={() => setCount(count + 1)}>
+				Increment
+			</button>
+		</div>
+	);
+}
+```
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span>'should increment counter&quot;<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token attr-name">initialCount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span><span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+We want to verify that our Counter displays the initial count and that clicking the button will increment it. Using the test runner of your choice, like [Jest](https://github.com/facebook/jest) or [Mocha](https://github.com/mochajs/mocha), we can write these two scenarios down:
 
-  fireEvent<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">'Increment'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+```jsx
+import { expect } from 'expect';
+import { h } from 'preact';
+import { render, fireEvent, screen, waitFor } from '@testing-library/preact';
 
-  <span class="token keyword">await</span> screen<span class="token punctuation">.</span><span class="token function">findByText</span><span class="token punctuation">(</span><span class="token string">'Current value: 6'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// waits for changed element</span>
+import Counter from '../src/Counter';
 
-  <span class="token function">expect</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">&quot;Current value: 6&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeInTheDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// passes</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h2 id="finding-elements">
-					<a class="fragment-link" href="#finding-elements">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Finding Elements (#finding-elements)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Finding Elements</span>
-				</h2><p>With a full DOM environment in place, we can verify our DOM nodes directly. Commonly tests check for attributes being present like an input value or that an element appeared/disappeared. To do this, we need to be able to locate elements in the DOM.</p>
+describe('Counter', () => {
+	test('should display initial count', () => {
+		const { container } = render(<Counter initialCount={5} />);
+		expect(container.textContent).toMatch('Current value: 5');
+	});
 
-				<h3 id="using-content">
-					<a class="fragment-link" href="#using-content">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using Content (#using-content)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Using Content</span>
-				</h3><p>The Testing Library philosophy is that &quot;the more your tests resemble the way your software is used, the more confidence they can give you&quot;.</p>
-<p>The recommended way to interact with a page is by finding elements the way a user does, through the text content.</p>
-<p>You can find a guide to picking the right query on the <a href="https://testing-library.com/docs/guide-which-query" target="_blank" rel="noopener noreferrer">'Which query should I use'</a> page of the Testing Library docs. The simplest query is <code>getByText</code>, which looks at elements' <code>textContent</code>. There are also queries for label text, placeholder, title attributes, etc. The <code>getByRole</code> query is the most powerful in that it abstracts over the DOM and allows you to find elements in the accessibility tree, which is how your page is read by a screen reader. Combining <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques" target="_blank" rel="noopener noreferrer">`role`</a> and <a href="https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_name" target="_blank" rel="noopener noreferrer">`accessible name`</a> covers many common DOM traversals in a single query.</p>
+	test('should increment after "Increment" button is clicked', async () => {
+		render(<Counter initialCount={5} />);
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> render<span class="token punctuation">,</span> fireEvent<span class="token punctuation">,</span> screen <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/preact'</span><span class="token punctuation">;</span>
+		fireEvent.click(screen.getByText('Increment'));
+		await waitFor(() => {
+			// .toBeInTheDocument() is an assertion that comes from jest-dom.
+			// Otherwise you could use .toBeDefined().
+			expect(screen.getByText('Current value: 6')).toBeInTheDocument();
+		});
+	});
+});
+```
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should be able to sign in'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyLoginForm</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+You may have noticed the `waitFor()` call there. We need this to ensure that Preact had enough time to render to the DOM and flush all pending effects.
 
-	<span class="token comment">// Locate the input using textbox role and the accessible name,</span>
-	<span class="token comment">// which is stable no matter if you use a label element, aria-label, or</span>
-	<span class="token comment">// aria-labelledby relationship</span>
-	<span class="token keyword">const</span> field <span class="token operator">=</span> <span class="token keyword">await</span> screen<span class="token punctuation">.</span><span class="token function">findByRole</span><span class="token punctuation">(</span><span class="token string">'textbox'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Sign In'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+```jsx
+test('should increment counter', async () => {
+  render(<Counter initialCount={5} />);
 
-	<span class="token comment">// type in the field</span>
-	fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>field<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">'user123'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Sometimes using text content directly creates friction when the content changes a lot, or if you use an internationalization framework that translates text into different languages. You can work around this by treating text as data that you snapshot, making it easy to update but keeping the source of truth outside the test.</p>
+  fireEvent.click(screen.getByText('Increment'));
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should be able to sign in'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyLoginForm</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  await screen.findByText('Current value: 6'); // waits for changed element
 
-	<span class="token comment">// What if we render the app in another language, or change the text? Test fails.</span>
-	<span class="token keyword">const</span> field <span class="token operator">=</span> <span class="token keyword">await</span> screen<span class="token punctuation">.</span><span class="token function">findByRole</span><span class="token punctuation">(</span><span class="token string">'textbox'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Sign In'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>field<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">'user123'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Even if you don't use a translation framework, you can keep your strings in a separate file and use the same strategy as in the example below:</p>
+  expect(screen.getByText("Current value: 6")).toBeInTheDocument(); // passes
+});
+```
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should be able to sign in'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyLoginForm</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Under the hood, `waitFor` repeatedly calls the passed callback function until it doesn't throw an error anymore or a timeout runs out (default: 1000ms). In the above example we know that the update is completed, when the counter is incremented and the new value is rendered into the DOM.
 
-	<span class="token comment">// We can use our translation function directly in the test</span>
-	<span class="token keyword">const</span> label <span class="token operator">=</span> <span class="token function">translate</span><span class="token punctuation">(</span><span class="token string">'signinpage.label'</span><span class="token punctuation">,</span> <span class="token string">'en-US'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token comment">// Snapshot the result so we know what's going on</span>
-	<span class="token function">expect</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toMatchInlineSnapshot</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Sign In</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+We can also write tests in an async-first way by using the "findBy" version of the queries instead of "getBy". Async queries retry using `waitFor` under the hood, and return Promises, so you need to await them.
 
-	<span class="token keyword">const</span> field <span class="token operator">=</span> <span class="token keyword">await</span> screen<span class="token punctuation">.</span><span class="token function">findByRole</span><span class="token punctuation">(</span><span class="token string">'textbox'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> label <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	fireEvent<span class="token punctuation">.</span><span class="token function">change</span><span class="token punctuation">(</span>field<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> <span class="token string">'user123'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h3 id="using-test-ids">
-					<a class="fragment-link" href="#using-test-ids">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Using Test IDs (#using-test-ids)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Using Test IDs</span>
-				</h3><p>Test IDs are data attributes added to DOM elements to help in cases where selecting content is ambiguous or unpredictable, or to decouple from implementation
-details like DOM structure. They can be used when none of the other methods of finding elements make sense.</p>
+```jsx
+test('should increment counter', async () => {
+  render(<Counter initialCount={5} />);
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">Foo</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> onClick <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token punctuation">(</span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onClick<span class="token punctuation">}</span></span> <span class="token attr-name">data-testid</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  fireEvent.click(screen.getByText('Increment'));
+
+  await screen.findByText('Current value: 6'); // waits for changed element
+
+  expect(screen.getByText("Current value: 6")).toBeInTheDocument(); // passes
+});
+```
+
+## Finding Elements
+
+With a full DOM environment in place, we can verify our DOM nodes directly. Commonly tests check for attributes being present like an input value or that an element appeared/disappeared. To do this, we need to be able to locate elements in the DOM.
+
+### Using Content
+
+The Testing Library philosophy is that "the more your tests resemble the way your software is used, the more confidence they can give you".
+
+The recommended way to interact with a page is by finding elements the way a user does, through the text content.
+
+You can find a guide to picking the right query on the ['Which query should I use'](https://testing-library.com/docs/guide-which-query) page of the Testing Library docs. The simplest query is `getByText`, which looks at elements' `textContent`. There are also queries for label text, placeholder, title attributes, etc. The `getByRole` query is the most powerful in that it abstracts over the DOM and allows you to find elements in the accessibility tree, which is how your page is read by a screen reader. Combining [`role`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques) and [`accessible name`](https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_name) covers many common DOM traversals in a single query.
+
+```jsx
+import { render, fireEvent, screen } from '@testing-library/preact';
+
+test('should be able to sign in', async () => {
+	render(<MyLoginForm />);
+
+	// Locate the input using textbox role and the accessible name,
+	// which is stable no matter if you use a label element, aria-label, or
+	// aria-labelledby relationship
+	const field = await screen.findByRole('textbox', { name: 'Sign In' });
+
+	// type in the field
+	fireEvent.change(field, { value: 'user123' });
+});
+```
+
+Sometimes using text content directly creates friction when the content changes a lot, or if you use an internationalization framework that translates text into different languages. You can work around this by treating text as data that you snapshot, making it easy to update but keeping the source of truth outside the test.
+
+Even if you don't use a translation framework, you can keep your strings in a separate file and use the same strategy as in the example below:
+
+```jsx
+test('should be able to sign in', async () => {
+	render(<MyLoginForm />);
+
+	// We can use our translation function directly in the test
+	const label = translate('signinpage.label', 'en-US');
+	// Snapshot the result so we know what's going on
+ expect(label).toMatchInlineSnapshot(`Sign In`);
+
+	const field = await screen.findByRole('textbox', { name: label });
+	fireEvent.change(field, { value: 'user123' });
+});
+```
+
+### Using Test IDs
+
+Test IDs are data attributes added to DOM elements to help in cases where selecting content is ambiguous or unpredictable, or to decouple from implementation details like DOM structure. They can be used when none of the other methods of finding elements make sense.
+
+```jsx
+function Foo({ onClick }) {
+	return (
+		<button onClick={onClick} data-testid="foo">
 			click here
-		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+		</button>
+	);
+}
 
-<span class="token comment">// Only works if the text stays the same</span>
-fireEvent<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByText</span><span class="token punctuation">(</span><span class="token string">'click here'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+// Only works if the text stays the same
+fireEvent.click(screen.getByText('click here'));
 
-<span class="token comment">// Works if we change the text</span>
-fireEvent<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span>screen<span class="token punctuation">.</span><span class="token function">getByTestId</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h2 id="debugging-tests">
-					<a class="fragment-link" href="#debugging-tests">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Debugging Tests (#debugging-tests)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Debugging Tests</span>
-				</h2><p>To debug the current DOM state you can use the <code>debug()</code> function to print out a prettified version of the DOM.</p>
+// Works if we change the text
+fireEvent.click(screen.getByTestId('foo'));
+```
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">const</span> <span class="token punctuation">{</span> debug <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+## Debugging Tests
 
-<span class="token comment">// Prints out a prettified version of the DOM</span>
-<span class="token function">debug</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h2 id="supplying-custom-context-providers">
-					<a class="fragment-link" href="#supplying-custom-context-providers">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Supplying custom Context Providers (#supplying-custom-context-providers)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Supplying custom Context Providers</span>
-				</h2><p>Quite often you'll end up with a component which depends on shared context state. Common Providers typically range from Routers, State, to sometimes Themes and other ones that are global for your specific app. This can become tedious to set up for each test case repeatedly, so we recommend creating a custom <code>render</code> function by wrapping the one from <code>@testing-library/preact</code>.</p>
+To debug the current DOM state you can use the `debug()` function to print out a prettified version of the DOM.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token comment">// helpers.js</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token keyword">as</span> originalRender <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/preact'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> createMemoryHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'history'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> FooContext <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./foo'</span><span class="token punctuation">;</span>
+```jsx
+const { debug } = render(<App />);
 
-<span class="token keyword">const</span> history <span class="token operator">=</span> <span class="token function">createMemoryHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+// Prints out a prettified version of the DOM
+debug();
+```
 
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">vnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-	<span class="token keyword">return</span> <span class="token function">originalRender</span><span class="token punctuation">(</span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FooContext.Provider</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>foo<span class="token punctuation">&quot;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Router</span></span> <span class="token attr-name">history</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>history<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>vnode<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Router</span></span><span class="token punctuation">></span></span><span class="token plain-text">
-		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">FooContext.Provider</span></span><span class="token punctuation">></span></span>
-	<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+## Supplying custom Context Providers
 
-<span class="token comment">// Usage like usual. Look ma, no providers!</span>
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyComponent</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			
-				<h2 id="testing-preact-hooks">
-					<a class="fragment-link" href="#testing-preact-hooks">
-						<svg width="16" height="16" viewBox="0 0 24 24" aria-label="Link to: Testing Preact Hooks (#testing-preact-hooks)">
-							<use href="/icons.svg#link"></use>
-						</svg>
-					</a>
-					<span>Testing Preact Hooks</span>
-				</h2><p>With <code>@testing-library/preact</code> we can also test the implementation of our hooks!
-Imagine that we want to re-use the counter functionality for multiple components (I know we love counters!) and have extracted it to a hook. And we now want to test it.</p>
+Quite often you'll end up with a component which depends on shared context state. Common Providers typically range from Routers, State, to sometimes Themes and other ones that are global for your specific app. This can become tedious to set up for each test case repeatedly, so we recommend creating a custom `render` function by wrapping the one from `@testing-library/preact`.
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useCallback <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact/hooks'</span><span class="token punctuation">;</span>
+```jsx
+// helpers.js
+import { render as originalRender } from '@testing-library/preact';
+import { createMemoryHistory } from 'history';
+import { FooContext } from './foo';
 
-<span class="token keyword">const</span> <span class="token function-variable function">useCounter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">const</span> increment <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token parameter">c</span> <span class="token operator">=></span> c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">return</span> <span class="token punctuation">{</span> count<span class="token punctuation">,</span> increment <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>Like before, the approach behind it is similar: We want to verify that we can increment our counter. So we need to somehow call our hook. This can be done with the <code>renderHook()</code>-function, which automatically creates a surrounding component internally. The function returns the current hook return value under <code>result.current</code>, which we can use to do our verifications:</p>
+const history = createMemoryHistory();
 
-				<div class="highlight-container">
-					<pre class="highlight"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> renderHook<span class="token punctuation">,</span> act <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@testing-library/preact'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> useCounter <span class="token keyword">from</span> <span class="token string">'./useCounter'</span><span class="token punctuation">;</span>
+export function render(vnode) {
+	return originalRender(
+		<FooContext.Provider value="foo">
+			<Router history={history}>{vnode}</Router></FooContext.Provider>
+		</vnode>;
+}
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should increment counter'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-	<span class="token keyword">const</span> <span class="token punctuation">{</span> result <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">renderHook</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">useCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+// Usage like usual. Look ma, no providers!
+render(<MyComponent />);
+```
 
-	<span class="token comment">// Initially the counter should be 0</span>
-	<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>current<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+## Testing Preact Hooks
 
-	<span class="token comment">// Let's update the counter by calling a hook callback</span>
-	<span class="token function">act</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-		result<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+With `@testing-library/preact` we can also test the implementation of our hooks! Imagine that we want to re-use the counter functionality for multiple components (I know we love counters!) and have extracted it to a hook. And we now want to test it.
 
-	<span class="token comment">// Check that the hook return value reflects the new state.</span>
-	<span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>current<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-					
-				</div>
-			<p>For more information about <code>@testing-library/preact</code> check out <a href="https://github.com/testing-library/preact-testing-library" target="_blank" rel="noopener noreferrer">https://github.com/testing-library/preact-testing-library</a> .</p>
-</div></content-region><footer class="_footer_8z8ez_1"><div><p><label>Language: <select><option selected value="en">English</option><option value="de">German</option><option value="es">Spanish</option><option value="fr">French</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="kr">Korean</option><option value="pt-br">Brazilian Portuguese</option><option value="ru">Русский</option><option value="tr">Turkish</option><option value="zh">简体中文</option></select><code>?lang=en</code></label></p><p style="line-height: 1">Built by a bunch of <a href="https://github.com/preactjs/preact/graphs/contributors" target="_blank" rel="noopener noreferrer">lovely people</a>  like <a href="https://github.com/ForsakenHarmony" target="_blank" rel="noopener noreferrer">@ForsakenHarmony</a>.</p></div></footer></div></div></div><!--/$s--></main><script type="isodata"></script><script async defer src="https://www.google-analytics.com/analytics.js"></script><script type="application/json" id="prerender-data">{"preactVersion":"11.0.0-beta.0","preactReleaseURL":"https://github.com/preactjs/preact/releases/tag/11.0.0-beta.0","preactOrgRepos":[{"html_url":"https://github.com/preactjs/preact","full_name":"preactjs/preact","stargazers_count":38228,"description":"⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM."},{"html_url":"https://github.com/preactjs/wmr","full_name":"preactjs/wmr","stargazers_count":4936,"description":"👩‍🚀 The tiny all-in-one development tool for modern web apps."},{"html_url":"https://github.com/preactjs/preact-cli","full_name":"preactjs/preact-cli","stargazers_count":4688,"description":"😺 Your next Preact PWA starts in 30 seconds."},{"html_url":"https://github.com/preactjs/signals","full_name":"preactjs/signals","stargazers_count":4331,"description":"Manage state with style in every framework"},{"html_url":"https://github.com/preactjs/awesome-preact","full_name":"preactjs/awesome-preact","stargazers_count":965,"description":"A curated list of amazingly awesome things regarding Preact ecosystem :star2:"}]}</script></div>
-	</body>
-</html>
+```jsx
+import { useState, useCallback } from 'preact/hooks';
+
+const useCounter = () => {
+	const [count, setCount] = useState(0);
+	const increment = useCallback((()) => setCount(c => c + 1), []);
+
+	return { count, increment };
+};
+```
+
+Like before, the approach behind it is similar: We want to verify that we can increment our counter. So we need to somehow call our hook. This can be done with the `renderHook()`-function, which automatically creates a surrounding component internally. The function returns the current hook return value under `result.current`, which we can use to do our verifications:
+
+```jsx
+import { renderHook, act } from '@testing-library/preact';
+import useCounter from './useCounter';
+
+test('should increment counter', () => {
+	const { result } = renderHook(() => useCounter());
+
+	// Initially the counter should be 0
+	expect(result.current.count).toBe(0);
+
+	// Let's update the counter by calling a hook callback
+	act(() => {
+		result.current.increment();
+	});
+
+	// Check that the hook return value reflects the new state.
+ expect(result.current.count).toBe(1);
+});
+```
+
+For more information about `@testing-library/preact` check out [https://github.com/testing-library/preact-testing-library](https://github.com/testing-library/preact-testing-library).

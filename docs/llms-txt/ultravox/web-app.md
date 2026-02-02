@@ -1,25 +1,20 @@
-# Source: https://docs.ultravox.ai/gettingstarted/quickstart/web-app.md
-
 # Web Quickstart
 
 > Create calls with an agent in the browser in under 2 minutes
 
-<Danger>
-  This quickstart uses [X-Unsafe-API-Key](/api-reference/introduction#x-api-key-header) which is not safe for production.
+**Danger**
+This quickstart uses [X-Unsafe-API-Key](/api-reference/introduction#x-api-key-header) which is not safe for production.
 
-  See the [nextjs-ts](https://github.com/fixie-ai/ultravox-examples/tree/main/web/nextjs-ts) example for a more robust example.
-</Danger>
+See the [nextjs-ts](https://github.com/fixie-ai/ultravox-examples/tree/main/web/nextjs-ts) example for a more robust example.
 
 ## TL;DR
 
-<Steps>
-  <Step title="Steal this code">Save the following code locally as `index.html`.</Step>
-  <Step title="Open in browser">Open `index.html` in your browser.</Step>
-  <Step title="Add API key">Add your Ultravox API key.</Step>
-  <Step title="Start call">Click the button.</Step>
-</Steps>
+1. Save the following code locally as `index.html`.
+2. Open `index.html` in your browser.
+3. Add API key.
+4. Click the button.
 
-```html  theme={null}
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,8 +179,3 @@
 ## Next Steps
 
 1. Check out the [nextjs-ts](https://github.com/fixie-ai/ultravox-examples/tree/main/web/nextjs-ts) example for a more complete, production ready web app.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

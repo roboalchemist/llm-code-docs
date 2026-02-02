@@ -1,10 +1,6 @@
 # Source: https://react.dev/reference/react-dom/server/renderToPipeableStream
 
----
-title: renderToPipeableStream
----
-
-<Intro>
+## Intro
 
 `renderToPipeableStream` renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
 
@@ -12,21 +8,11 @@ title: renderToPipeableStream
 const { pipe, abort } = renderToPipeableStream(reactNode, options?)
 ```
 
-</Intro>
-
-<InlineToc />
-
-<Note>
-
 This API is specific to Node.js. Environments with [Web Streams,](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) like Deno and modern edge runtimes, should use [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) instead.
 
-</Note>
+## Reference
 
----
-
-## Reference {/*reference*/}
-
-### `renderToPipeableStream(reactNode, options?)` {/*rendertopipeablestream*/}
+### `renderToPipeableStream(reactNode, options?)` `rendertopipeablestream`
 
 Call `renderToPipeableStream` to render your React tree as HTML into a [Node.js Stream.](https://nodejs.org/api/stream.html#writable-streams)
 
@@ -46,10 +32,9 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
 
 [See more examples below.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Parameters
 
 * `reactNode`: A React node you want to render to HTML. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
-
 * **optional** `options`: An object with streaming options.
   * **optional** `bootstrapScriptContent`: If specified, this string will be placed in an inline `<script>` tag.
   * **optional** `bootstrapScripts`: An array of string URLs for the `<script>` tags to emit on the page. Use this to include the `<script>` that calls [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot) Omit it if you don't want to run React on the client at all.
@@ -60,26 +45,24 @@ On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to 
   * **optional** `onAllReady`: A callback that fires when all rendering is complete, including both the [shell](#specifying-what-goes-into-the-shell) and all additional [content.](#streaming-more-content-as-it-loads) You can use this instead of `onShellReady` [for crawlers and static generation.](#waiting-for-all-content-to-load-for-crawlers-and-static-generation) If you start streaming here, you won't get any progressive loading. The stream will contain the final HTML.
   * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](#recovering-from-errors-outside-the-shell) or [not.](#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](#logging-crashes-on-the-server) make sure that you still call `console.error`. You can also use it to [adjust the status code](#setting-the-status-code) before the shell is emitted.
   * **optional** `onShellReady`: A callback that fires right after the [initial shell](#specifying-what-goes-into-the-shell) has been rendered. You can [set the status code](#setting-the-status-code) and call `pipe` here to start streaming. React will [stream the additional content](#streaming-more-content-as-it-loads) after the shell along with the inline `<script>` tags that replace the HTML loading fallbacks with the content.
-  * **optional** `onShellError`: A callback that fires if there was an error rendering the initial shell.  It receives the error as an argument. No bytes were emitted from the stream yet, and neither `onShellReady` nor `onAllReady` will get called, so you can [output a fallback HTML shell.](#recovering-from-errors-inside-the-shell)
+  * **optional** `onShellError`: A callback that fires if there was an error rendering the initial shell. It receives the error as an argument. No bytes were emitted from the stream yet, and neither `onShellReady` nor `onAllReady` will get called, so you can [output a fallback HTML shell.](#recovering-from-errors-inside-the-shell)
   * **optional** `progressiveChunkSize`: The number of bytes in a chunk. [Read more about the default heuristic.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
 
-
-#### Returns {/*returns*/}
+#### Returns
 
 `renderToPipeableStream` returns an object with two methods:
 
 * `pipe` outputs the HTML into the provided [Writable Node.js Stream.](https://nodejs.org/api/stream.html#writable-streams) Call `pipe` in `onShellReady` if you want to enable streaming, or in `onAllReady` for crawlers and static generation.
 * `abort` lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
 
----
+## Usage
 
-## Usage {/*usage*/}
-
-### Rendering a React tree as HTML to a Node.js Stream {/*rendering-a-react-tree-as-html-to-a-nodejs-stream*/}
+### Rendering a React tree as HTML to a Node.js Stream
 
 Call `renderToPipeableStream` to render your React tree as HTML into a [Node.js Stream:](https://nodejs.org/api/stream.html#writable-streams)
 
-```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
+```js
+[[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { renderToPipeableStream } from 'react-dom/server';
 
 // The route handler syntax depends on your backend framework
@@ -98,7 +81,8 @@ Along with the <CodeStep step={1}>root component</CodeStep>, you need to provide
 
 For example, it might look like this:
 
-```js [[1, 1, "App"]]
+```js
+[[1, 1, "App"]]
 export default function App() {
   return (
     <html>
@@ -118,7 +102,8 @@ export default function App() {
 
 React will inject the [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype) and your <CodeStep step={2}>bootstrap `<script>` tags</CodeStep> into the resulting HTML stream:
 
-```html [[2, 5, "/main.js"]]
+```html
+[[2, 5, "/main.js"]]
 <!DOCTYPE html>
 <html>
   <!-- ... HTML from your components ... -->
@@ -126,9 +111,10 @@ React will inject the [doctype](https://developer.mozilla.org/en-US/docs/Glossar
 <script src="/main.js" async=""></script>
 ```
 
-On the client, your bootstrap script should [hydrate the entire `document` with a call to `hydrateRoot`:](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document)
+On the client, your bootstrap script should [hydrate the entire `document` with a call to `hydrateRoot:`](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document)
 
-```js [[1, 4, "<App />"]]
+```js
+[[1, 4, "<App />"]]
 import { hydrateRoot } from 'react-dom/client';
 import App from './App.js';
 
@@ -137,87 +123,7 @@ hydrateRoot(document, <App />);
 
 This will attach event listeners to the server-generated HTML and make it interactive.
 
-<DeepDive>
-
-#### Reading CSS and JS asset paths from the build output {/*reading-css-and-js-asset-paths-from-the-build-output*/}
-
-The final asset URLs (like JavaScript and CSS files) are often hashed after the build. For example, instead of `styles.css` you might end up with `styles.123456.css`. Hashing static asset filenames guarantees that every distinct build of the same asset will have a different filename. This is useful because it lets you safely enable long-term caching for static assets: a file with a certain name would never change content.
-
-However, if you don't know the asset URLs until after the build, there's no way for you to put them in the source code. For example, hardcoding `"/styles.css"` into JSX like earlier wouldn't work. To keep them out of your source code, your root component can read the real filenames from a map passed as a prop:
-
-```js {1,6}
-export default function App({ assetMap }) {
-  return (
-    <html>
-      <head>
-        ...
-        <link rel="stylesheet" href={assetMap['styles.css']}></link>
-        ...
-      </head>
-      ...
-    </html>
-  );
-}
-```
-
-On the server, render `<App assetMap={assetMap} />` and pass your `assetMap` with the asset URLs:
-
-```js {1-5,8,9}
-// You'd need to get this JSON from your build tooling, e.g. read it from the build output.
-const assetMap = {
-  'styles.css': '/styles.123456.css',
-  'main.js': '/main.123456.js'
-};
-
-app.use('/', (request, response) => {
-  const { pipe } = renderToPipeableStream(<App assetMap={assetMap} />, {
-    bootstrapScripts: [assetMap['main.js']],
-    onShellReady() {
-      response.setHeader('content-type', 'text/html');
-      pipe(response);
-    }
-  });
-});
-```
-
-Since your server is now rendering `<App assetMap={assetMap} />`, you need to render it with `assetMap` on the client too to avoid hydration errors. You can serialize and pass `assetMap` to the client like this:
-
-```js {9-10}
-// You'd need to get this JSON from your build tooling.
-const assetMap = {
-  'styles.css': '/styles.123456.css',
-  'main.js': '/main.123456.js'
-};
-
-app.use('/', (request, response) => {
-  const { pipe } = renderToPipeableStream(<App assetMap={assetMap} />, {
-    // Careful: It's safe to stringify() this because this data isn't user-generated.
-    bootstrapScriptContent: `window.assetMap = ${JSON.stringify(assetMap)};`,
-    bootstrapScripts: [assetMap['main.js']],
-    onShellReady() {
-      response.setHeader('content-type', 'text/html');
-      pipe(response);
-    }
-  });
-});
-```
-
-In the example above, the `bootstrapScriptContent` option adds an extra inline `<script>` tag that sets the global `window.assetMap` variable on the client. This lets the client code read the same `assetMap`:
-
-```js {4}
-import { hydrateRoot } from 'react-dom/client';
-import App from './App.js';
-
-hydrateRoot(document, <App assetMap={window.assetMap} />);
-```
-
-Both client and server render `App` with the same `assetMap` prop, so there are no hydration errors.
-
-</DeepDive>
-
----
-
-### Streaming more content as it loads {/*streaming-more-content-as-it-loads*/}
+### Streaming more content as it loads
 
 Streaming allows the user to start seeing the content even before all the data has loaded on the server. For example, consider a profile page that shows a cover, a sidebar with friends and photos, and a list of posts:
 
@@ -238,17 +144,19 @@ function ProfilePage() {
 
 Imagine that loading data for `<Posts />` takes some time. Ideally, you'd want to show the rest of the profile page content to the user without waiting for the posts. To do this, [wrap `Posts` in a `<Suspense>` boundary:](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)
 
-```js {9,11}
+```js
 function ProfilePage() {
   return (
     <ProfileLayout>
       <ProfileCover />
-      <Sidebar>
-        <Friends />
-        <Photos />
-      </Sidebar>
       <Suspense fallback={<PostsGlimmer />}>
-        <Posts />
+        <Sidebar>
+          <Friends />
+          <Photos />
+        </Sidebar>
+        <Suspense fallback={<PostsGlimmer />}>
+          <Posts />
+        </Suspense>
       </Suspense>
     </ProfileLayout>
   );
@@ -259,7 +167,7 @@ This tells React to start streaming the HTML before `Posts` loads its data. Reac
 
 You can further [nest `<Suspense>` boundaries](/reference/react/Suspense#revealing-nested-content-as-it-loads) to create a more granular loading sequence:
 
-```js {5,13}
+```js
 function ProfilePage() {
   return (
     <ProfileLayout>
@@ -296,17 +204,15 @@ Suspense **does not** detect when data is fetched inside an Effect or event hand
 
 The exact way you would load data in the `Posts` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
 
-Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React.
 
 </Note>
 
----
+### Specifying what goes into the shell
 
-### Specifying what goes into the shell {/*specifying-what-goes-into-the-shell*/}
+The part of your app outside of any `<Suspense>` boundaries is called *the shell:*:
 
-The part of your app outside of any `<Suspense>` boundaries is called *the shell:*
-
-```js {3-5,13,14}
+```js
 function ProfilePage() {
   return (
     <ProfileLayout>
@@ -327,7 +233,7 @@ function ProfilePage() {
 
 It determines the earliest loading state that the user may see:
 
-```js {3-5,13
+```js
 <ProfileLayout>
   <ProfileCover />
   <BigSpinner />
@@ -338,7 +244,7 @@ If you wrap the whole app into a `<Suspense>` boundary at the root, the shell wi
 
 The `onShellReady` callback fires when the entire shell has been rendered. Usually, you'll start streaming then:
 
-```js {3-6}
+```js
 const { pipe } = renderToPipeableStream(<App />, {
   bootstrapScripts: ['/main.js'],
   onShellReady() {
@@ -350,13 +256,11 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 By the time `onShellReady` fires, components in nested `<Suspense>` boundaries might still be loading data.
 
----
-
-### Logging crashes on the server {/*logging-crashes-on-the-server*/}
+### Logging crashes on the server
 
 By default, all errors on the server are logged to console. You can override this behavior to log crash reports:
 
-```js {7-10}
+```js
 const { pipe } = renderToPipeableStream(<App />, {
   bootstrapScripts: ['/main.js'],
   onShellReady() {
@@ -372,13 +276,11 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 If you provide a custom `onError` implementation, don't forget to also log errors to the console like above.
 
----
-
-### Recovering from errors inside the shell {/*recovering-from-errors-inside-the-shell*/}
+### Recovering from errors inside the shell
 
 In this example, the shell contains `ProfileLayout`, `ProfileCover`, and `PostsGlimmer`:
 
-```js {3-5,7-8}
+```js
 function ProfilePage() {
   return (
     <ProfileLayout>
@@ -393,7 +295,7 @@ function ProfilePage() {
 
 If an error occurs while rendering those components, React won't have any meaningful HTML to send to the client. Override `onShellError` to send a fallback HTML that doesn't rely on server rendering as the last resort:
 
-```js {7-11}
+```js
 const { pipe } = renderToPipeableStream(<App />, {
   bootstrapScripts: ['/main.js'],
   onShellReady() {
@@ -414,13 +316,11 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 If there is an error while generating the shell, both `onError` and `onShellError` will fire. Use `onError` for error reporting and use `onShellError` to send the fallback HTML document. Your fallback HTML does not have to be an error page. Instead, you may include an alternative shell that renders your app on the client only.
 
----
-
-### Recovering from errors outside the shell {/*recovering-from-errors-outside-the-shell*/}
+### Recovering from errors outside the shell
 
 In this example, the `<Posts />` component is wrapped in `<Suspense>` so it is *not* a part of the shell:
 
-```js {6}
+```js
 function ProfilePage() {
   return (
     <ProfileLayout>
@@ -443,15 +343,13 @@ If retrying rendering `Posts` on the client *also* fails, React will throw the e
 
 If retrying rendering `Posts` on the client succeeds, the loading fallback from the server will be replaced with the client rendering output. The user will not know that there was a server error. However, the server `onError` callback and the client [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) callbacks will fire so that you can get notified about the error.
 
----
-
-### Setting the status code {/*setting-the-status-code*/}
+### Setting the status code
 
 Streaming introduces a tradeoff. You want to start streaming the page as early as possible so that the user can see the content sooner. However, once you start streaming, you can no longer set the response status code.
 
 By [dividing your app](#specifying-what-goes-into-the-shell) into the shell (above all `<Suspense>` boundaries) and the rest of the content, you've already solved a part of this problem. If the shell errors, you'll get the `onShellError` callback which lets you set the error status code. Otherwise, you know that the app may recover on the client, so you can send "OK".
 
-```js {4}
+```js
 const { pipe } = renderToPipeableStream(<App />, {
   bootstrapScripts: ['/main.js'],
   onShellReady() {
@@ -475,38 +373,7 @@ If a component *outside* the shell (i.e. inside a `<Suspense>` boundary) throws 
 
 However, if you'd like, you can use the fact that something has errored to set the status code:
 
-```js {1,6,16}
-let didError = false;
-
-const { pipe } = renderToPipeableStream(<App />, {
-  bootstrapScripts: ['/main.js'],
-  onShellReady() {
-    response.statusCode = didError ? 500 : 200;
-    response.setHeader('content-type', 'text/html');
-    pipe(response);
-  },
-  onShellError(error) {
-    response.statusCode = 500;
-    response.setHeader('content-type', 'text/html');
-    response.send('<h1>Something went wrong</h1>'); 
-  },
-  onError(error) {
-    didError = true;
-    console.error(error);
-    logServerCrashReport(error);
-  }
-});
-```
-
-This will only catch errors outside the shell that happened while generating the initial shell content, so it's not exhaustive. If knowing whether an error occurred for some content is critical, you can move it up into the shell.
-
----
-
-### Handling different errors in different ways {/*handling-different-errors-in-different-ways*/}
-
-You can [create your own `Error` subclasses](https://javascript.info/custom-errors) and use the [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator to check which error is thrown. For example, you can define a custom `NotFoundError` and throw it from your component. Then your `onError`, `onShellReady`, and `onShellError` callbacks can do something different depending on the error type:
-
-```js {2,4-14,19,24,30}
+```js
 let didError = false;
 let caughtError = null;
 
@@ -530,9 +397,52 @@ const { pipe } = renderToPipeableStream(<App />, {
     pipe(response);
   },
   onShellError(error) {
-   response.statusCode = getStatusCode();
-   response.setHeader('content-type', 'text/html');
-   response.send('<h1>Something went wrong</h1>'); 
+    response.statusCode = 500;
+    response.setHeader('content-type', 'text/html');
+    response.send('<h1>Something went wrong</h1>'); 
+  },
+  onError(error) {
+    didError = true;
+    caughtError = error;
+    console.error(error);
+    logServerCrashReport(error);
+  }
+});
+```
+
+This will only catch errors outside the shell that happened while generating the initial shell content, so it's not exhaustive. If knowing whether an error occurred for some content is critical, you can move it up into the shell.
+
+### Handling different errors in different ways
+
+You can [create your own `Error` subclasses](https://javascript.info/custom-errors) and use the [`instanceof`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof) operator to check which error is thrown. For example, you can define a custom `NotFoundError` and throw it from your component. Then your `onError`, `onShellReady`, and `onShellError` callbacks can do something different depending on the error type:
+
+```js
+let didError = false;
+let caughtError = null;
+
+function getStatusCode() {
+  if (didError) {
+    if (caughtError instanceof NotFoundError) {
+      return 404;
+    } else {
+      return 500;
+    }
+  } else {
+    return 200;
+  }
+}
+
+const { pipe } = renderToPipeableStream(<App />, {
+  bootstrapScripts: ['/main.js'],
+  onShellReady() {
+    response.statusCode = getStatusCode();
+    response.setHeader('content-type', 'text/html');
+    pipe(response);
+  },
+  onShellError(error) {
+    response.statusCode = 500;
+    response.setHeader('content-type', 'text/html');
+    response.send('<h1>Something went wrong</h1>'); 
   },
   onError(error) {
     didError = true;
@@ -545,9 +455,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 Keep in mind that once you emit the shell and start streaming, you can't change the status code.
 
----
-
-### Waiting for all content to load for crawlers and static generation {/*waiting-for-all-content-to-load-for-crawlers-and-static-generation*/}
+### Waiting for all content to load for crawlers and static generation
 
 Streaming offers a better user experience because the user can see the content as it becomes available.
 
@@ -555,8 +463,7 @@ However, when a crawler visits your page, or if you're generating the pages at t
 
 You can wait for all the content to load using the `onAllReady` callback:
 
-
-```js {2,7,11,18-24}
+```js
 let didError = false;
 let isCrawler = // ... depends on your bot detection strategy ...
 
@@ -591,13 +498,11 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 A regular visitor will get a stream of progressively loaded content. A crawler will receive the final HTML output after all the data loads. However, this also means that the crawler will have to wait for *all* data, some of which might be slow to load or error. Depending on your app, you could choose to send the shell to the crawlers too.
 
----
-
-### Aborting server rendering {/*aborting-server-rendering*/}
+### Aborting server rendering
 
 You can force the server rendering to "give up" after a timeout:
 
-```js {1,5-7}
+```js
 const { pipe, abort } = renderToPipeableStream(<App />, {
   // ...
 });

@@ -1,6 +1,6 @@
 # Source: https://rsbuild.dev/config/output/inline-scripts.md
 
-# output.inlineScripts
+## output.inlineScripts
 
 * **Type:**
 

@@ -1,55 +1,54 @@
-# Source: https://upstash.com/docs/redis/quickstarts/vercel-python-runtime.md
-
 # Vercel Python Runtime
 
-<Card title="GitHub Repository" icon="github" href="https://github.com/upstash/redis-js/tree/main/examples/vercel-python-runtime-django" horizontal>
-  You can find the project source code on GitHub.
-</Card>
+You can find the project source code on GitHub.
 
-<Info>
-  This quickstart uses django but you can easily adapt it to Flask, FastAPI or plain Python, see [Vercel Python Templates](https://vercel.com/templates?framework=python).
-</Info>
+This quickstart uses django but you can easily adapt it to Flask, FastAPI or plain Python, see [Vercel Python Templates](https://vercel.com/templates?framework=python).
 
-### Project Setup
+## Project Setup
 
 Let's create a new django application from Vercel's template.
 
-```shell  theme={"system"}
+```shell
+theme={"system"}
 npx create-next-app vercel-django --example "https://github.com/vercel/examples/tree/main/python/django"
 cd vercel-django
 ```
 
-### Database Setup
+## Database Setup
 
 Create a Redis database using [Upstash Console](https://console.upstash.com) or [Upstash CLI](https://github.com/upstash/cli) and export `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to your environment.
 
-```shell  theme={"system"}
+```shell
+theme={"system"}
 export UPSTASH_REDIS_REST_URL=<YOUR_URL>
 export UPSTASH_REDIS_REST_TOKEN=<YOUR_TOKEN>
 ```
 
-### Environment Setup
+## Environment Setup
 
 Update `requirements.txt` to include `upstash-redis`.
 
-```txt requirements.txt theme={"system"}
+```txt
+requirements.txt
+theme={"system"}
 Django==4.1.3
 upstash-redis
 ```
 
 We will create a Conda environment with python version `3.12` to match Vercel Python Runtime and avoid conflicts on deployment, you can use any other environment management system.
 
-```shell  theme={"system"}
+```shell
+theme={"system"}
 conda create --name vercel-django python=3.12
 conda activate vercel-django
 pip install -r requirements.txt
 ```
 
-### View Setup
+## View Setup
 
 Update `/example/views.py`:
 
-```py /example/views.py theme={"system"}
+```py /example/views.py
 from datetime import datetime
 
 from django.http import HttpResponse
@@ -63,22 +62,21 @@ def index(request):
     html = f'''
     <html>
         <body>
-            <h1>Counter: { count }</h1p>
+            <h1>Counter: {count}</h1>
         </body>
     </html>
     '''
     return HttpResponse(html)
 ```
 
-### Run & Deploy
+## Run & Deploy
 
-Run the app locally with `python manage.py runserver`, check `http://localhost:8000/`
+Run the app locally with `python manage.py runserver`, check `http://localhost:8000/`.
 
-Deploy your app with `vercel`
+Deploy your app with `vercel`.
 
 Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in your project's Settings -> Environment Variables. Redeploy from Deployments tab.
 
 <Info>
-  You can also integrate your Vercel projects with Upstash using Vercel
-  Integration module. Check [this article](../howto/vercelintegration).
+  You can also integrate your Vercel projects with Upstash using Vercel Integration module. Check [this article](../howto/vercelintegration).
 </Info>

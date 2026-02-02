@@ -1,7 +1,4 @@
-# Source: https://nextjs.org/docs/pages/api-reference/components/head.md
-
 # Head
-
 
 We expose a built-in component for appending elements to the `head` of the page:
 

@@ -2,32 +2,29 @@
 
 # CSS Layers
 
-Learn how to generate Material UI styles with cascade layers.
+Learn how to generate Material UI styles with cascade layers.
 
 ## What are cascade layers?
 
-Cascade layers are an advanced CSS feature that make it possible to control the order in which styles are applied to elements.
-If you're not familiar with cascade layers, visit the [MDN documentation](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) for a detailed overview.
+Cascade layers are an advanced CSS feature that make it possible to control the order in which styles are applied to elements. If you're not familiar with cascade layers, visit the [MDN documentation](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) for a detailed overview.
 
-Benefits of using cascade layers include:
+### Benefits of using cascade layers include:
 
 - **Improved specificity**: Cascade layers let you control the order of the styles, which can help avoid specificity conflicts. For example, you can theme a component without hitting the default specificity of the styles.
-- **Better integration with CSS frameworks**: With cascade layers, you can use Tailwind CSS v4 utility classes to override Material UI styles without the need for the `!important` directive.
+- **Better integration with CSS frameworks**: With cascade layers, you can use Tailwind CSS v4 utility classes to override Material UI styles without the need for the `!important` directive.
 - **Better debuggability**: Cascade layers appear in the browser's dev tools, making it easier to see which styles are applied and in what order.
 
 ## Implementing a single cascade layer
 
-This method creates a single layer, namely `@layer mui`, for all Material UI components and global styles.
-This is suitable for integrating with other styling solutions, such as Tailwind CSS v4, that use the `@layer` directive.
+This method creates a single layer, namely `@layer mui`, for all Material UI components and global styles. This is suitable for integrating with other styling solutions, such as Tailwind CSS v4, that use the `@layer` directive.
 
 ### Next.js App Router
 
-Start by configuring Material UI with Next.js in the [App Router integration guide](/material-ui/integrations/nextjs/#app-router).
-Then follow these steps:
+Start by configuring Material UI with Next.js in the [App Router integration guide](/material-ui/integrations/nextjs/#app-router). Then follow these steps:
 
 1. Enable the [CSS layer feature](/material-ui/integrations/nextjs/#using-other-styling-solutions) in the root layout:
 
-```tsx title="src/app/layout.tsx"
+```tsx
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 export default function RootLayout() {
@@ -43,20 +40,19 @@ export default function RootLayout() {
 }
 ```
 
-2. Configure the layer order at the top of a CSS file to work with Tailwind CSS v4:
+2. Configure the layer order at the top of a CSS file to work with Tailwind CSS v4:
 
-```css title="src/app/globals.css"
+```css
 @layer theme, base, mui, components, utilities;
 ```
 
 ### Next.js Pages Router
 
-Start by configuring Material UI with Next.js in the [Pages Router integration guide](/material-ui/integrations/nextjs/#pages-router).
-Then follow these steps:
+Start by configuring Material UI with Next.js in the [Pages Router integration guide](/material-ui/integrations/nextjs/#pages-router). Then follow these steps:
 
 1. Enable the [CSS layer feature](/material-ui/integrations/nextjs/#configuration-2) in a custom `_document`:
 
-```tsx title="pages/_document.tsx"
+```tsx
 import {
   createCache,
   documentGetInitialProps,
@@ -72,9 +68,9 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 };
 ```
 
-2. Configure the layer order with the `GlobalStyles` component to work with Tailwind CSS v4—it must be the first child of the `AppCacheProvider`:
+2. Configure the layer order with the `GlobalStyles` component to work with Tailwind CSS v4—it must be the first child of the `AppCacheProvider`:
 
-```tsx title="pages/_app.tsx"
+```tsx
 import { AppCacheProvider } from '@mui/material-nextjs/v15-pagesRouter';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
@@ -94,9 +90,9 @@ export default function MyApp(props: AppProps) {
 Make the following changes in `src/main.tsx`:
 
 1. Pass the `enableCssLayer` prop to the `StyledEngineProvider` component.
-2. Configure the layer order with the `GlobalStyles` component to work with Tailwind CSS v4.
+2. Configure the layer order with the `GlobalStyles` component to work with Tailwind CSS v4.
 
-```tsx title="main.tsx"
+```tsx
 import { StyledEngineProvider } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
 
@@ -112,14 +108,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ## Implementing multiple cascade layers
 
-After you've set up a [single cascade layer](#implementing-a-single-cascade-layer), you can split the styles into multiple layers to better organize them within Material UI.
-This makes it simpler to apply theming and override styles with the `sx` prop.
+After you've set up a [single cascade layer](#implementing-a-single-cascade-layer), you can split the styles into multiple layers to better organize them within Material UI. This makes it simpler to apply theming and override styles with the `sx` prop.
 
-First, follow the steps from the [previous section](#implementing-a-single-cascade-layer) to enable the CSS layer feature.
-Then, create a new file and export the component that wraps the `ThemeProvider` from Material UI.
-Finally, pass the `modularCssLayers: true` option to the `createTheme` function:
+First, follow the steps from the [previous section](#implementing-a-single-cascade-layer) to enable the CSS layer feature. Then, create a new file and export the component that wraps the `ThemeProvider` from Material UI. Finally, pass the `modularCssLayers: true` option to the `createTheme` function:
 
-```tsx title="src/theme.tsx"
+```tsx
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -140,7 +133,6 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 const theme = createTheme({
   modularCssLayers: true,
-  cssVariables: true,
 });
 
 export default function CssLayersInput() {
@@ -175,22 +167,21 @@ export default function CssLayersInput() {
     </ThemeProvider>
   );
 }
-
 ```
 
-When this feature is enabled, Material UI generates these layers:
+When this feature is enabled, Material UI generates these layers:
 
 - `@layer mui.global`: Global styles from the `GlobalStyles` and `CssBaseline` components.
-- `@layer mui.components`: Base styles for all Material UI components.
-- `@layer mui.theme`: Theme styles for all Material UI components.
-- `@layer mui.custom`: Custom styles for non-Material UI styled components.
+- `@layer mui.components`: Base styles for all Material UI components.
+- `@layer mui.theme`: Theme styles for all Material UI components.
+- `@layer mui.custom`: Custom styles for non-Material UI styled components.
 - `@layer mui.sx`: Styles from the `sx` prop.
 
-The sections below demonstrate how to set up multiple cascade layers for Material UI with common React frameworks.
+The sections below demonstrate how to set up multiple cascade layers for Material UI with common React frameworks.
 
 ### Next.js App Router
 
-```tsx title="src/theme.tsx"
+```tsx
 'use client';
 import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -204,25 +195,54 @@ export default function AppTheme({ children }: { children: React.ReactNode }) {
 }
 ```
 
-```tsx title="src/app/layout.tsx"
-import AppTheme from '../theme';
+```tsx
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import FormHelperText from '@mui/material/FormHelperText';
 
-export default function RootLayout() {
+const theme = createTheme({
+  modularCssLayers: true,
+});
+
+export default function CssLayersInput() {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <AppTheme>{/* Your app */}</AppTheme>
-        </AppRouterCacheProvider>
-      </body>
-    </html>
+    <ThemeProvider theme={theme}>
+      <FormControl variant="outlined">
+        <InputLabel
+          shrink
+          htmlFor="css-layers-input"
+          sx={{
+            width: 'fit-content',
+            transform: 'none',
+            position: 'relative',
+            mb: 0.25,
+            fontWeight: 'medium',
+            pointerEvents: 'auto',
+          }}
+        >
+          Label
+        </InputLabel>
+        <OutlinedInput
+          id="css-layers-input"
+          placeholder="Type something"
+          slotProps={{
+            input: {
+              sx: { py: 1.5, height: '2.5rem', boxSizing: 'border-box' },
+            },
+          }}
+        />
+        <FormHelperText sx={{ marginLeft: 0 }}>Helper text goes here</FormHelperText>
+      </FormControl>
+    </ThemeProvider>
   );
 }
 ```
 
 ### Next.js Pages Router
 
-```tsx title="src/theme.tsx"
+```tsx
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -234,8 +254,8 @@ export default function AppTheme({ children }: { children: ReactNode }) {
 }
 ```
 
-```tsx title="pages/_app.tsx"
-import AppTheme from '../src/theme';
+```tsx
+import AppTheme from '../theme';
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -249,11 +269,8 @@ export default function MyApp(props: AppProps) {
 }
 ```
 
-```tsx title="pages/_document.tsx"
-import {
-  createCache,
-  documentGetInitialProps,
-} from '@mui/material-nextjs/v15-pagesRouter';
+```tsx
+import { createCache, documentGetInitialProps } from '@mui/material-nextjs/v15-pagesRouter';
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   const finalProps = await documentGetInitialProps(ctx, {
@@ -265,7 +282,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
 ### Vite or any other SPA
 
-```tsx title="src/theme.tsx"
+```tsx
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -277,7 +294,7 @@ export default function AppTheme({ children }: { children: ReactNode }) {
 }
 ```
 
-```tsx title="src/main.tsx"
+```tsx
 import AppTheme from './theme';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -291,11 +308,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ### Usage with other styling solutions
 
-To integrate with other styling solutions, such as Tailwind CSS v4, replace the boolean value for `modularCssLayers` with a string specifying the layer order.
-Material UI will look for the `mui` identifier and generate the layers in the correct order:
+To integrate with other styling solutions, such as Tailwind CSS v4, replace the boolean value for `modularCssLayers` with a string specifying the layer order. Material UI will look for the `mui` identifier and generate the layers in the correct order:
 
-```diff title="src/theme.tsx"
- const theme = createTheme({
+```diff
+const theme = createTheme({
 -  modularCssLayers: true,
 +  modularCssLayers: '@layer theme, base, mui, components, utilities;',
  });
@@ -416,5 +432,4 @@ export default function CssLayersCaveat() {
     </div>
   );
 }
-
 ```
