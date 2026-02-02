@@ -5,6 +5,7 @@ This directory contains documentation for Jina AI integrations with popular fram
 ## Integration Categories
 
 ### LangChain Integration
+
 Jina AI provides embeddings and reranking capabilities through LangChain:
 
 - **JinaEmbeddings** - Text embedding model integration for Python and JavaScript
@@ -26,11 +27,13 @@ Jina AI provides embeddings and reranking capabilities through LangChain:
 ## Installation
 
 ### LangChain Python
+
 ```bash
 pip install langchain-community langchain jina
 ```
 
 ### LangChain JavaScript
+
 ```bash
 npm install @langchain/community @langchain/core
 ```
@@ -38,6 +41,7 @@ npm install @langchain/community @langchain/core
 ## Usage Examples
 
 ### Python - JinaEmbeddings
+
 ```python
 from langchain_community.embeddings.jina import JinaEmbeddings
 
@@ -47,11 +51,13 @@ embeddings = JinaEmbeddings(
 )
 
 # Embed text
+
 text = "Hello, world!"
 embedding = embeddings.embed_query(text)
 ```
 
 ### Python - JinaReranker
+
 ```python
 from langchain_community.document_compressors.jina_rerank import JinaRerank
 
@@ -61,6 +67,7 @@ reranker = JinaRerank(
 )
 
 # Rerank documents
+
 reranked_docs = reranker.compress_documents(docs, query)
 ```
 
@@ -75,6 +82,7 @@ reranked_docs = reranker.compress_documents(docs, query)
 Get your Jina API key for free at: https://jina.ai/?sui=apikey
 
 Set the environment variable:
+
 ```bash
 export JINA_API_KEY="your-api-key"
 ```

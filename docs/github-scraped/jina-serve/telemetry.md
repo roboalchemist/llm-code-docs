@@ -4,6 +4,7 @@
 
 ```{warning}
 To opt out from telemetry, set the `JINA_OPTOUT_TELEMETRY=1` as an environment variable.
+
 ```
 
 Telemetry is the process of collecting data about the usage of a system. This data can be used to improve the system by understanding how it is being used and what areas need improvement.
@@ -14,11 +15,10 @@ Telemetry is important for Jina-serve because it allows the team to understand h
 
 The data collected include:
 
-- Jina-serve and its dependencies versions;
-- A hashed unique user identifier;
-- A hashed unique session identifier;
-- Boolean events: start of a Flow, Gateway, Runtime, Client.
-
+* Jina-serve and its dependencies versions;
+* A hashed unique user identifier;
+* A hashed unique session identifier;
+* Boolean events: start of a Flow, Gateway, Runtime, Client.
 
 ## Example payload
 
@@ -29,6 +29,7 @@ from jina import Flow
 
 with Flow().add() as f:
     pass
+
 ```
 
 ```python
@@ -116,4 +117,5 @@ with Flow().add() as f:
     'uid': 94731629138370,
     'uptime': '2022-08-21T18:53:59.681842',
 }
+
 ```

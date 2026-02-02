@@ -1,12 +1,12 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/serving/gateway/health-check.md
 
 (health-check-gateway)=
+
 # Health Check
 
 Just like each individual Executors, the Gateway also exposes a health check endpoint.
 
 In contrast to Executors however, a Gateway can use gRPC, HTTP, or WebSocketss, and the health check endpoint changes accordingly.
-
 
 ## Using gRPC
 
@@ -16,14 +16,15 @@ With the same Flow as before, you can use the same way to check the Gateway stat
 
 ```bash
 docker run --network='host' fullstorydev/grpcurl -plaintext 127.0.0.1:12345 grpc.health.v1.Health/Check
+
 ```
 
 ```json
 {
   "status": "SERVING"
 }
-```
 
+```
 
 ## Using HTTP or WebSockets
 
@@ -32,6 +33,7 @@ docker run --network='host' fullstorydev/grpcurl -plaintext 127.0.0.1:12345 grpc
 For Gateways running with HTTP or WebSockets, the gRPC health check response codes outlined {ref}`above <health-check-microservices>` do not apply.
 
 Instead, an error free response signifies healthiness.
+
 ````
 
 When using HTTP or WebSockets as the Gateway protocol, you can query the endpoint `'/'` to check the status.
@@ -44,13 +46,19 @@ from jina import Flow
 f = Flow(protocol='http', port=12345).add()
 with f:
     f.block()
+
 ```
+
 Then query the "empty" endpoint:
+
 ```bash
 curl http://localhost:12345
+
 ```
 
 You get a valid empty response indicating the Gateway's ability to serve:
+
 ```json
 {}
+
 ```

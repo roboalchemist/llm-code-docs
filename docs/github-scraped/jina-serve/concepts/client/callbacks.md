@@ -1,23 +1,22 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/client/callbacks.md
 
 (callback-functions)=
+
 # Callbacks
 
 After performing {meth}`~jina.clients.mixin.PostMixin.post`, you may want to further process the obtained results.
 
 For this purpose, Jina-serve implements a promise-like interface, letting you specify three kinds of callback functions:
 
-- `on_done` is executed while streaming, after successful completion of each request
-- `on_error` is executed while streaming, whenever an error occurs in each request
-- `on_always` is always performed while streaming, no matter the success or failure of each request
-
+* `on_done` is executed while streaming, after successful completion of each request
+* `on_error` is executed while streaming, whenever an error occurs in each request
+* `on_always` is always performed while streaming, no matter the success or failure of each request
 
 Note that these callbacks only work for requests (and failures) *inside the stream*, for example inside an Executor.
-If the failure is due to an error happening outside of 
+If the failure is due to an error happening outside of
 streaming, then these callbacks will not be triggered.
 For example, a `SIGKILL` from the client OS during the handling of the request, or a networking issue,
 will not trigger the callback.
-
 
 Callback functions in Jina-serve expect a `Response` of the type {class}`~jina.types.request.data.DataRequest`, which contains resulting Documents,
 parameters, and other information.
@@ -34,37 +33,45 @@ can return DataRequests.
 The request header.
 
 ```python
+
 from pprint import pprint
 
 from jina import Client
 
 Client().post(on='/', on_done=lambda x: pprint(x.header))
+
 ```
 
 ```console
+
 request_id: "ea504823e9de415d890a85d1d00ccbe9"
 exec_endpoint: "/"
 target_executor: ""
+
 ```
 
 ````
 
 ````{tab} parameters
 
-The input parameters of the associated request. In particular, `DataRequest.parameters['__results__']` is a 
-reserved field that gets populated by Executors returning a Python `dict`. 
+The input parameters of the associated request. In particular, `DataRequest.parameters['__results__']` is a
+reserved field that gets populated by Executors returning a Python `dict`.
 Information in those returned `dict`s gets collected here, behind each Executor ID.
 
 ```python
+
 from pprint import pprint
 
 from jina import Client
 
 Client().post(on='/', on_done=lambda x: pprint(x.parameters))
+
 ```
 
 ```console
+
 {'__results__': {}}
+
 ```
 
 ````
@@ -75,14 +82,17 @@ The routing information of the data request. It contains the which Executors hav
 The timing and latency of each Executor is also recorded.
 
 ```python
+
 from pprint import pprint
 
 from jina import Client
 
 Client().post(on='/', on_done=lambda x: pprint(x.routes))
+
 ```
 
 ```console
+
 [executor: "gateway"
 start_time {
   seconds: 1662637747
@@ -111,20 +121,23 @@ end_time {
 The DocList being passed between and returned by the Executors. These are the Documents usually processed in a callback function, and are often the main payload.
 
 ```python
+
 from pprint import pprint
 
 from jina import Client
 
 Client().post(on='/', on_done=lambda x: pprint(x.docs))
+
 ```
 
 ```console
+
 <DocList (length=0)>
 
 ```
+
 ````
 
-  
 Accordingly, a callback that processing documents can be defined as:
 
 ```{code-block} python
@@ -135,6 +148,7 @@ from jina.types.request.data import DataRequest
 
 def my_callback(resp: DataRequest):
     foo(resp.docs)
+
 ```
 
 ## Handle exceptions in callbacks
@@ -146,18 +160,16 @@ from pprint import pprint
 
 from jina import Flow, Client, Executor, requests
 
-
 class MyExec1(Executor):
     @requests
     def foo(self, **kwargs):
         raise NotImplementedError
 
-
 with Flow(port=12345).add(uses=MyExec1) as f:
     c = Client(port=f.port)
     c.post(on='/', on_error=lambda x: pprint(x.header.status))
-```
 
+```
 
 ```text
 code: ERROR
@@ -174,9 +186,8 @@ exception {
   stacks: "NotImplementedError\n"
   executor: "MyExec1"
 }
+
 ```
-
-
 
 In the example below, our Flow passes the message then prints the result when successful.
 If something goes wrong, it beeps. Finally, the result is written to output.txt.
@@ -185,13 +196,11 @@ If something goes wrong, it beeps. Finally, the result is written to output.txt.
 from jina import Flow, Client
 from docarray import BaseDoc
 
-
 def beep(*args):
     # make a beep sound
     import sys
 
     sys.stdout.write('\a')
-
 
 with Flow().add() as f, open('output.txt', 'w') as fp:
     client = Client(port=f.port)
@@ -202,6 +211,7 @@ with Flow().add() as f, open('output.txt', 'w') as fp:
         on_error=beep,
         on_always=lambda x: x.docs.save(fp),
     )
+
 ```
 
 ````{admonition} What errors can be handled by the callback?
@@ -209,6 +219,8 @@ with Flow().add() as f, open('output.txt', 'w') as fp:
 Callbacks can handle errors that are caused by Executors raising an Exception.
 
 A callback will not receive exceptions:
-- from the Gateway having connectivity errors with the Executors.
-- between the Client and the Gateway.
+
+* from the Gateway having connectivity errors with the Executors.
+* between the Client and the Gateway.
+
 ````

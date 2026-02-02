@@ -1,15 +1,17 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/serving/executor/create.md
 
 (create-executor)=
+
 # Create
 
 ## Introduction
 
 ```{tip}
 Executors use `docarray.BaseDoc` and docarray.DocList` as their input and output data structure. [Read DocArray's docs](https://docs.docarray.org) to see how it works.
+
 ```
 
-An {class}`~jina.Executor` is a self-contained microservice exposed using a gRPC or HTTP protocol. 
+An {class}`~jina.Executor` is a self-contained microservice exposed using a gRPC or HTTP protocol.
 It contains functions (decorated with `@requests`) that process `Documents`. Executors follow these principles:
 
 1. An Executor should subclass directly from the `jina.Executor` class.
@@ -23,6 +25,7 @@ To create your {class}`~jina.Executor`, run:
 
 ```bash
 jina hub new
+
 ```
 
 You can ignore the advanced configuration and just provide the Executor name and path. For instance, choose `MyExecutor`.
@@ -35,9 +38,11 @@ MyExecutor/
 ├── config.yml
 ├── README.md
 └── requirements.txt
+
 ```
 
-- `executor.py` contains your Executor's main logic. The command should generate the following boilerplate code:
+* `executor.py` contains your Executor's main logic. The command should generate the following boilerplate code:
+
 ```python
 from jina import Executor, requests
 from docarray import DocList, BaseDoc
@@ -46,41 +51,46 @@ class MyExecutor(Executor):
     @requests
     def foo(self, docs: DocList[BaseDoc], **kwargs) -> DocList[BaseDoc]:
         pass
+
 ```
-- `config.yml` is the Executor's {ref}`configuration <executor-yaml-spec>` file, where you can define `__init__` arguments using the `with` keyword.
-- `requirements.txt` describes the Executor's Python dependencies.
-- `README.md` describes how to use your Executor.
+
+* `config.yml` is the Executor's {ref}`configuration <executor-yaml-spec>` file, where you can define `__init__` arguments using the `with` keyword.
+* `requirements.txt` describes the Executor's Python dependencies.
+* `README.md` describes how to use your Executor.
 
 For a more detailed breakdown of the file structure, see {ref}`here <executor-file-structure>`.
 
 (executor-constructor)=
+
 ## Constructor
 
 You only need to implement `__init__` if your Executor contains initial state.
 
-If your Executor has `__init__`, it needs to carry `**kwargs` in the signature and call `super().__init__(**kwargs)` 
+If your Executor has `__init__`, it needs to carry `**kwargs` in the signature and call `super().__init__(**kwargs)`
 in the body:
 
 ```python
 from jina import Executor
-
 
 class MyExecutor(Executor):
     def __init__(self, foo: str, bar: int, **kwargs):
         super().__init__(**kwargs)
         self.bar = bar
         self.foo = foo
+
 ```
 
-````{admonition} What is inside kwargs? 
+````{admonition} What is inside kwargs?
 :class: hint
 Here, `kwargs` are reserved for Jina-serve to inject `metas` and `requests` (representing the request-to-function mapping) values when the Executor is used inside a {ref}`Flow <flow-cookbook>`.
 
 You can access the values of these arguments in the `__init__` body via `self.metas`/`self.requests`/`self.runtime_args`, or modify their values before passing them to `super().__init__()`.
+
 ````
 
-Since Executors are runnable through {ref}`YAML configurations <executor-yaml-spec>`, user-defined constructor arguments 
+Since Executors are runnable through {ref}`YAML configurations <executor-yaml-spec>`, user-defined constructor arguments
 can be overridden using the {ref}`Executor YAML with keyword<executor-with-keyword>`.
+
 ## Destructor
 
 You might need to execute some logic when your Executor's destructor is called.
@@ -94,25 +104,25 @@ You can think of this as Jina using the Executor as a context manager, making su
 ```python
 from jina import Executor
 
-
 class MyExec(Executor):
     def close(self):
         print('closing...')
+
 ```
 
 ## Attributes
 
 When implementing an Executor, if your Executor overrides `__init__`, it needs to carry `**kwargs` in the signature and call `super().__init__(**kwargs)`
-                                 
+
 ```python
 from jina import Executor
-
 
 class MyExecutor(Executor):
     def __init__(self, foo: str, bar: int, **kwargs):
         super().__init__(**kwargs)
         self.bar = bar
         self.foo = foo
+
 ```
 
 This is important because when an Executor is instantiated (whether with {class}`~jina.Deployment` or {class}`~jina.flow`), Jina adds extra arguments.
@@ -121,8 +131,8 @@ Some of these arguments can be used when developing the internal logic of the Ex
 
 These `special` arguments are `workspace`, `requests`, `metas`, `runtime_args`.
 
-
 (executor-workspace)=
+
 ### `workspace`
 
 Each Executor has a special *workspace* that is reserved for that specific Executor instance.
@@ -136,52 +146,59 @@ This can be provided to the Executor via the Python API or {ref}`YAML API <execu
 ````{admonition} Hint: Default workspace
 :class: hint
 If you haven't provided a workspace, the Executor uses a default workspace, defined in `~/.cache/jina-serve/`.
+
 ````
 
 (executor-requests)=
+
 ### `requests`
 
-By default, an Executor object contains {attr}`~.jina-serve.serve.executors.BaseExecutor.requests` as an attribute when loaded. This attribute is a `Dict` describing the mapping between Executor methods and network endpoints: It holds endpoint strings as keys, and pointers to functions as values. 
+By default, an Executor object contains {attr}`~.jina-serve.serve.executors.BaseExecutor.requests` as an attribute when loaded. This attribute is a `Dict` describing the mapping between Executor methods and network endpoints: It holds endpoint strings as keys, and pointers to functions as values.
 
 These can be provided to the Executor via the Python API or {ref}`YAML API <executor-yaml-spec>`.
 
 (executor-metas)=
+
 ### `metas`
 
-An Executor object contains `metas` as an attribute when loaded from the Flow. It is of [`SimpleNamespace`](https://docs.python.org/3/library/types.html#types.SimpleNamespace) type and contains some key-value information. 
+An Executor object contains `metas` as an attribute when loaded from the Flow. It is of [`SimpleNamespace`](https://docs.python.org/3/library/types.html#types.SimpleNamespace) type and contains some key-value information.
 
 The list of the `metas` are:
 
-- `name`: Name given to the Executor;
-- `description`: Description of the Executor (optional, reserved for future-use in auto-docs);
+* `name`: Name given to the Executor;
+* `description`: Description of the Executor (optional, reserved for future-use in auto-docs);
 
 These can be provided to the Executor via Python or {ref}`YAML API <executor-yaml-spec>`.
 
 (executor-runtime-args)=
+
 ### `runtime_args`
 
-By default, an Executor object contains `runtime_args` as an attribute when loaded. It is of [`SimpleNamespace`](https://docs.python.org/3/library/types.html#types.SimpleNamespace) type and contains information in key-value format. 
+By default, an Executor object contains `runtime_args` as an attribute when loaded. It is of [`SimpleNamespace`](https://docs.python.org/3/library/types.html#types.SimpleNamespace) type and contains information in key-value format.
 As the name suggests, `runtime_args` are dynamically determined during runtime, meaning that you don't know the value before running the Executor. These values are often related to the system/network environment around the Executor, and less about the Executor itself, like `shard_id` and `replicas`.
 
 The list of the `runtime_args` is:
 
-- `name`: Name given to the Executor. This is dynamically adapted from the `name` in `metas` and depends on some additional arguments like `shard_id`. 
-- `replicas`: Number of {ref}`replicas <replicate-executors>` of the same Executor deployed.
-- `shards`: Number of {ref}`shards <partition-data-by-using-shards>` of the same Executor deployed.
-- `shard_id`: Identifier of the `shard` corresponding to the given Executor instance.
-- `workspace`: Path to be used by the Executor. Note that the actual workspace directory used by the Executor is obtained by appending `'/<executor_name>/<shard_id>/'` to this value.
-- `py_modules`: Python package path e.g. `foo.bar.package.module` or file path to the modules needed to import the Executor.
+* `name`: Name given to the Executor. This is dynamically adapted from the `name` in `metas` and depends on some additional arguments like `shard_id`.
+* `replicas`: Number of {ref}`replicas <replicate-executors>` of the same Executor deployed.
+* `shards`: Number of {ref}`shards <partition-data-by-using-shards>` of the same Executor deployed.
+* `shard_id`: Identifier of the `shard` corresponding to the given Executor instance.
+* `workspace`: Path to be used by the Executor. Note that the actual workspace directory used by the Executor is obtained by appending `'/<executor_name>/<shard_id>/'` to this value.
+* `py_modules`: Python package path e.g. `foo.bar.package.module` or file path to the modules needed to import the Executor.
 
 You **cannot** provide these through any API. They are generated by the orchestration mechanism, be it a {class}`~jina.Deployment` or a {class}`~jina.Flow`.
 
 ## Tips
 
-* Use `jina hub new` CLI to create an Executor: To create an Executor, always use this command and follow the instructions. This ensures the correct file 
+* Use `jina hub new` CLI to create an Executor: To create an Executor, always use this command and follow the instructions. This ensures the correct file
+
 structure.
+
 * You don't need to manually write a Dockerfile: The build system automatically generates an optimized Dockerfile according to your Executor package.
 
 ```{tip}
 In the `jina hub new` wizard you can choose from four Dockerfile templates: `cpu`, `tf-gpu`, `torch-gpu`, and `jax-gpu`.
+
 ```
 
 ## Stateful-Executor (Beta)
@@ -199,14 +216,15 @@ such that other endpoints can serve independently of the replica that is hit.
 :class: note
 
 Another factor to consider is that the Executor's inner state must evolve in a deterministic manner if we want `replicas` to behave consistently.
+
 ````
 
 By considering this, {ref}`Executors can be scaled in a consistent manner<scale-consensus>`.
 
 ### Snapshots and restoring
 
-In a Stateful Executor Jina uses the RAFT consensus algorithm to guarantee that every replica eventually holds the same inner state. 
-RAFT writes the incoming requests as logs to local storage in every replica to ensure this is achieved. 
+In a Stateful Executor Jina uses the RAFT consensus algorithm to guarantee that every replica eventually holds the same inner state.
+RAFT writes the incoming requests as logs to local storage in every replica to ensure this is achieved.
 
 This could become problematic if the Executor runs for a long time as log files could grow indefinitely. However, you can avoid this problem
 by describing the methods `def snapshot(self, snapshot_dir)` and `def restore(self, snapshot_dir)` that are triggered via the RAFT protocol, allowing the Executor

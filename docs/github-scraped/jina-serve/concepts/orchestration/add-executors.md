@@ -1,6 +1,7 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/orchestration/add-executors.md
 
 (add-executors)=
+
 # Add Executors
 
 ## Define Executor with `uses`
@@ -8,18 +9,27 @@
 An {class}`~jina.Executor`'s type is defined by the `uses` keyword:
 
 ````{tab} Deployment
+
 ```python
+
 from jina import Deployment
 
 dep = Deployment(uses=MyExec)
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 from jina import Flow
 
 f = Flow().add(uses=MyExec)
+
 ```
+
 ````
 
 Note that some usages are not supported on JCloud due to security reasons and the nature of facilitating local debugging.
@@ -33,7 +43,6 @@ Note that some usages are not supported on JCloud due to security reasons and th
 | ✅         | ✅      | `'jinaai+docker://jina-ai/TransformerTorchEncoder'`  | Use an Executor as a Docker container from Executor Hub.                                                      |
 | ✅         | ❌      | `'docker://sentence-encoder'`                 | Use a pre-built Executor as a Docker container.                                                           |
 
-
 ````{admonition} Hint: Load multiple Executors from the same directory
 :class: hint
 
@@ -41,6 +50,7 @@ You don't need to specify the parent directory for each Executor.
 Instead, you can configure a common search path for all Executors:
 
 ```
+
 .
 ├── app
 │   └── ▶ main.py
@@ -48,24 +58,30 @@ Instead, you can configure a common search path for all Executors:
     ├── config1.yml
     ├── config2.yml
     └── my_executor.py
+
 ```
 
 ```{code-block} python
+
 dep = Deployment(extra_search_paths=['../executor']).add(uses='config1.yml')) # Deployment
 f = Flow(extra_search_paths=['../executor']).add(uses='config1.yml').add(uses='config2.yml') # Flow
+
 ```
 
 ````
 
-
 (flow-configure-executors)=
+
 ## Configure Executors
+
 You can set and override {class}`~jina.Executor` configuration when adding them to an Orchestration.
 
 This example shows how to start a Flow with an Executor using the Python API:
 
 ````{tab} Deployment
+
 ```python
+
 from jina import Deployment
 
 dep = Deployment(
@@ -82,10 +98,15 @@ dep = Deployment(
 
 with dep:
     ...
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 from jina import Flow
 
 f = Flow().add(
@@ -98,30 +119,33 @@ f = Flow().add(
     },
     uses_requests={"/index": "my_index", "/search": "my_search", "/random": "foo"},
     workspace="some_custom_path",
-) 
+)
 
 with f:
     ...
+
 ```
+
 ````
 
-- `py_modules` is a list of strings that defines the Executor's Python dependencies;
-- `uses_with` is a key-value map that defines the {ref}`arguments of the Executor'<executor-args>` `__init__` method.
-- `uses_requests` is a key-value map that defines the {ref}`mapping from endpoint to class method<executor-requests>`. This is useful to overwrite the default endpoint-to-method mapping defined in the Executor python implementation.
-- `uses_metas` is a key-value map that defines some of the Executor's {ref}`internal attributes<executor-metas>`. It contains the following fields:
-    - `name` is a string that defines the name of the Executor;
-    - `description` is a string that defines the description of this Executor. It is used in the automatic docs UI;
-- `workspace` is a string that defines the {ref}`workspace <executor-workspace>`.
+* `py_modules` is a list of strings that defines the Executor's Python dependencies;
+* `uses_with` is a key-value map that defines the {ref}`arguments of the Executor'<executor-args>` `__init__` method.
+* `uses_requests` is a key-value map that defines the {ref}`mapping from endpoint to class method<executor-requests>`. This is useful to overwrite the default endpoint-to-method mapping defined in the Executor python implementation.
+* `uses_metas` is a key-value map that defines some of the Executor's {ref}`internal attributes<executor-metas>`. It contains the following fields:
+  * `name` is a string that defines the name of the Executor;
+  * `description` is a string that defines the description of this Executor. It is used in the automatic docs UI;
+* `workspace` is a string that defines the {ref}`workspace <executor-workspace>`.
 
 ### Set `with` via `uses_with`
 
-To set/override an Executor's `with` configuration, use `uses_with`. The `with` configuration refers to user-defined 
+To set/override an Executor's `with` configuration, use `uses_with`. The `with` configuration refers to user-defined
 constructor kwargs.
 
 ````{tab} Deployment
-```python
-from jina import Executor, requests, Deployment
 
+```python
+
+from jina import Executor, requests, Deployment
 
 class MyExecutor(Executor):
     def __init__(self, param1=1, param2=2, param3=3, *args, **kwargs):
@@ -135,30 +159,36 @@ class MyExecutor(Executor):
         print('param1:', self.param1)
         print('param2:', self.param2)
         print('param3:', self.param3)
-
 
 dep = Deployment(uses=MyExecutor, uses_with={'param1': 10, 'param3': 30})
 
 with dep:
     dep.post('/')
+
 ```
+
 ```text
+
       executor0@219662[L]:ready and listening
         gateway@219662[L]:ready and listening
            Deployment@219662[I]:🎉 Deployment is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:32825
-	🔒 Private network:	192.168.1.101:32825
-	🌐 Public address:	197.28.82.165:32825
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:32825
+    🔒 Private network:    192.168.1.101:32825
+    🌐 Public address:    197.28.82.165:32825
 param1: 10
 param2: 2
 param3: 30
-```
-````
-````{tab} Flow
-```python
-from jina import Executor, requests, Flow
 
+```
+
+````
+
+````{tab} Flow
+
+```python
+
+from jina import Executor, requests, Flow
 
 class MyExecutor(Executor):
     def __init__(self, param1=1, param2=2, param3=3, *args, **kwargs):
@@ -173,40 +203,45 @@ class MyExecutor(Executor):
         print('param2:', self.param2)
         print('param3:', self.param3)
 
-
 f = Flow().add(uses=MyExecutor, uses_with={'param1': 10, 'param3': 30})
 
 with f:
     f.post('/')
+
 ```
+
 ```text
+
       executor0@219662[L]:ready and listening
         gateway@219662[L]:ready and listening
            Flow@219662[I]:🎉 Flow is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:32825
-	🔒 Private network:	192.168.1.101:32825
-	🌐 Public address:	197.28.82.165:32825
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:32825
+    🔒 Private network:    192.168.1.101:32825
+    🌐 Public address:    197.28.82.165:32825
 param1: 10
 param2: 2
 param3: 30
+
 ```
+
 ````
 
 ### Set `requests` via `uses_requests`
 
-You can set/override an Executor's `requests` configuration and bind methods to custom endpoints. 
+You can set/override an Executor's `requests` configuration and bind methods to custom endpoints.
 In the following code:
 
-- We replace the endpoint `/foo` bound to the `foo()` function with both `/non_foo` and `/alias_foo`. 
-- We add a new endpoint `/bar` for binding `bar()`. 
+* We replace the endpoint `/foo` bound to the `foo()` function with both `/non_foo` and `/alias_foo`.
+* We add a new endpoint `/bar` for binding `bar()`.
 
 Note the `all_req()` function is bound to **all** endpoints except those explicitly bound to other functions, i.e. `/non_foo`, `/alias_foo` and `/bar`.
 
 ````{tab} Deployment
-```python
-from jina import Executor, requests, Deployment
 
+```python
+
+from jina import Executor, requests, Deployment
 
 class MyExecutor(Executor):
     @requests
@@ -219,7 +254,6 @@ class MyExecutor(Executor):
 
     def bar(self, parameters, **kwargs):
         print(f'bar {parameters.get("recipient")}')
-
 
 dep = Deployment(
     uses=MyExecutor,
@@ -235,26 +269,32 @@ with dep
     dep.post('/non_foo', parameters={'recipient': 'foo()'})
     dep.post('/foo', parameters={'recipient': 'all_req()'})
     dep.post('/alias_foo', parameters={'recipient': 'foo()'})
+
 ```
 
 ```text
+
       executor0@221058[L]:ready and listening
         gateway@221058[L]:ready and listening
            Deployment@221058[I]:🎉 Deployment is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:36507
-	🔒 Private network:	192.168.1.101:36507
-	🌐 Public address:	197.28.82.165:36507
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:36507
+    🔒 Private network:    192.168.1.101:36507
+    🌐 Public address:    197.28.82.165:36507
 bar bar()
 foo foo()
 all req all_req()
 foo foo()
-```
-````
-````{tab} Flow
-```python
-from jina import Executor, requests, Flow
 
+```
+
+````
+
+````{tab} Flow
+
+```python
+
+from jina import Executor, requests, Flow
 
 class MyExecutor(Executor):
     @requests
@@ -267,7 +307,6 @@ class MyExecutor(Executor):
 
     def bar(self, parameters, **kwargs):
         print(f'bar {parameters.get("recipient")}')
-
 
 f = Flow().add(
     uses=MyExecutor,
@@ -282,21 +321,25 @@ with f:
     f.post('/non_foo', parameters={'recipient': 'foo()'})
     f.post('/foo', parameters={'recipient': 'all_req()'})
     f.post('/alias_foo', parameters={'recipient': 'foo()'})
+
 ```
 
 ```text
+
       executor0@221058[L]:ready and listening
         gateway@221058[L]:ready and listening
            Flow@221058[I]:🎉 Flow is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:36507
-	🔒 Private network:	192.168.1.101:36507
-	🌐 Public address:	197.28.82.165:36507
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:36507
+    🔒 Private network:    192.168.1.101:36507
+    🌐 Public address:    197.28.82.165:36507
 bar bar()
 foo foo()
 all req all_req()
 foo foo()
+
 ```
+
 ````
 
 ### Set `metas` via `uses_metas`
@@ -304,15 +347,15 @@ foo foo()
 To set/override an Executor's `metas` configuration, use `uses_metas`:
 
 ````{tab} Deployment
-```python
-from jina import Executor, requests, Deployment
 
+```python
+
+from jina import Executor, requests, Deployment
 
 class MyExecutor(Executor):
     @requests
     def foo(self, docs, **kwargs):
         print(self.metas.name)
-
 
 dep = Deployment(
     uses=MyExecutor,
@@ -321,28 +364,33 @@ dep = Deployment(
 
 with dep:
     dep.post('/')
+
 ```
 
 ```text
+
       executor0@219291[L]:ready and listening
         gateway@219291[L]:ready and listening
            Deployment@219291[I]:🎉 Deployment is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:58827
-	🔒 Private network:	192.168.1.101:58827
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:58827
+    🔒 Private network:    192.168.1.101:58827
 different_name
-```
-````
-````{tab} Flow
-```python
-from jina import Executor, requests, Flow
 
+```
+
+````
+
+````{tab} Flow
+
+```python
+
+from jina import Executor, requests, Flow
 
 class MyExecutor(Executor):
     @requests
     def foo(self, docs, **kwargs):
         print(self.metas.name)
-
 
 flow = Flow().add(
     uses=MyExecutor,
@@ -350,20 +398,25 @@ flow = Flow().add(
 )
 with flow as f:
     f.post('/')
+
 ```
 
 ```text
+
       executor0@219291[L]:ready and listening
         gateway@219291[L]:ready and listening
            Flow@219291[I]:🎉 Flow is ready to use!
-	🔗 Protocol: 		GRPC
-	🏠 Local access:	0.0.0.0:58827
-	🔒 Private network:	192.168.1.101:58827
+    🔗 Protocol:         GRPC
+    🏠 Local access:    0.0.0.0:58827
+    🔒 Private network:    192.168.1.101:58827
 different_name
+
 ```
+
 ````
 
 (external-executors)=
+
 ## Use external Executors
 
 Usually an Orchestration starts and stops its own Executor(s). External Executors are owned by *other* Orchestrations, meaning they can reside on any machine and their lifetime are controlled by others.
@@ -375,7 +428,9 @@ Both {ref}`served and shared Executors <serve-executor-standalone>` can be used 
 When you add an external Executor, you have to provide a `host` and `port`, and enable the `external` flag:
 
 ````{tab} Deployment
+
 ```python
+
 from jina import Deployment
 
 Deployment(host='123.45.67.89', port=12345, external=True)
@@ -383,18 +438,25 @@ Deployment(host='123.45.67.89', port=12345, external=True)
 # or
 
 Deployment(host='123.45.67.89:12345', external=True)
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 from jina import Flow
 
 Flow().add(host='123.45.67.89', port=12345, external=True)
 
-# or
+# or (2)
 
 Flow().add(host='123.45.67.89:12345', external=True)
+
 ```
+
 ````
 
 The Orchestration doesn't start or stop this Executor and assumes that it is externally managed and available at `123.45.67.89:12345`.
@@ -406,32 +468,44 @@ Despite the lifetime control, the external Executor behaves just like a regular 
 You can also use external Executors with `tls`:
 
 ````{tab} Deployment
+
 ```python
+
 from jina import Deployment
 
 Deployment(host='123.45.67.89:443', external=True, tls=True)
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 from jina import Flow
 
 Flow().add(host='123.45.67.89:443', external=True, tls=True)
+
 ```
+
 ````
 
 After that, the external Executor behaves just like an internal one. You can even add the same Executor to multiple Orchestrations.
 
-```{hint} 
+```{hint}
 Using `tls` to connect to the External Executor is especially needed to use an external Executor deployed with JCloud. See the JCloud {ref}`documentation <jcloud>` for further details
+
 ```
 
 ### Pass arguments
 
-External Executors may require extra configuration to run. Think about an Executor that requires authentication to run. You can pass the `grpc_metadata` parameter to the Executor. `grpc_metadata` is a dictionary of key-value pairs to be passed along with every gRPC request sent to that Executor. 
+External Executors may require extra configuration to run. Think about an Executor that requires authentication to run. You can pass the `grpc_metadata` parameter to the Executor. `grpc_metadata` is a dictionary of key-value pairs to be passed along with every gRPC request sent to that Executor.
 
 ````{tab} Deployment
+
 ```python
+
 from jina import Deployment
 
 Deployment(
@@ -440,10 +514,15 @@ Deployment(
     external=True,
     grpc_metadata={'authorization': '<TOKEN>'},
 )
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 from jina import Flow
 
 Flow().add(
@@ -452,9 +531,12 @@ Flow().add(
     external=True,
     grpc_metadata={'authorization': '<TOKEN>'},
 )
+
 ```
+
 ````
 
 ```{hint}
 The `grpc_metadata` parameter here follows the `metadata` concept in gRPC. See [gRPC documentation](https://grpc.io/docs/what-is-grpc/core-concepts/#metadata) for details.
+
 ```

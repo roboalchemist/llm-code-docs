@@ -1,22 +1,26 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/orchestration/troubleshooting-on-multiprocess.md
 
 (multiprocessing-spawn)=
+
 # Troubleshooting on Multiprocessing
 
-When running an Orchestration locally, you may encounter errors caused by the `multiprocessing` package depending on your operating system and Python version. 
+When running an Orchestration locally, you may encounter errors caused by the `multiprocessing` package depending on your operating system and Python version.
 
 ```{admonition} Troubleshooting a Flow
 :class: information
 
 In this section we show an example showing a {ref}`Deployment <deployment>`. However, exactly the same methodology applies to troubleshooting a Flow.
+
 ```
 
 Here are some suggestions:
 
-- Define and start the Orchestration via an explicit function call inside `if __name__ == '__main__'`, **especially when using `spawn` multiprocessing start method**. For example
+* Define and start the Orchestration via an explicit function call inside `if __name__ == '__main__'`, **especially when using `spawn` multiprocessing start method**. For example
 
     ````{tab} ✅ Do
+
     ```{code-block} python
+
     ---
     emphasize-lines: 13, 14
     ---
@@ -35,11 +39,15 @@ Here are some suggestions:
 
     if __name__ == '__main__':
         main()
+
     ```
+
     ````
 
     ````{tab} 😔 Don't
+
     ```{code-block} python
+
     ---
     emphasize-lines: 2
     ---
@@ -69,14 +77,17 @@ Here are some suggestions:
     is not going to be frozen to produce an executable.
 
     """
+
     ```
 
     ````
 
-- Declare Executors on the top-level of the module 
+* Declare Executors on the top-level of the module
 
     ````{tab} ✅ Do
+
     ```{code-block} python
+
     ---
     emphasize-lines: 1
     ---
@@ -92,10 +103,13 @@ Here are some suggestions:
             ...
 
     ```
+
     ````
 
     ````{tab} 😔 Don't
+
     ```{code-block} python
+
     ---
     emphasize-lines: 2
     ---
@@ -109,10 +123,12 @@ Here are some suggestions:
         dep = Deployment(uses=Executor)
         with dep:
             ...
+
     ```
+
     ````
 
-- **Always provide absolute path**
+* **Always provide absolute path**
 
     While passing filepaths to different Jina arguments (e.g.- `uses`, `py_modules`), always pass the absolute path.
 
@@ -122,14 +138,17 @@ When you encounter this error,
 
 ```console
 Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method
+
 ```
 
-- Please set `JINA_MP_START_METHOD=spawn` before starting the Python script to enable this.
+* Please set `JINA_MP_START_METHOD=spawn` before starting the Python script to enable this.
 
     ````{hint}
-    There's no need to set this for Windows, as it only supports spawn method for multiprocessing. 
+    There's no need to set this for Windows, as it only supports spawn method for multiprocessing.
+
     ````
-- **Avoid un-picklable objects**
+
+* **Avoid un-picklable objects**
 
     [Here's a list of types that can be pickled in Python](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled). Since `spawn` relies on pickling, we should avoid using code that cannot be pickled.
 
@@ -137,14 +156,15 @@ Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing
     Here are a few errors which indicates that you are using some code that is not pickable.
 
     ```text
+
     pickle.PicklingError: Can't pickle: it's not the same object
     AssertionError: can only join a started process
+
     ```
 
     ````
 
     Inline functions, such as nested or lambda functions are not picklable. Use `functools.partial` instead.
-
 
 ## Using Multiprocessing Fork on macOS
 
@@ -155,6 +175,7 @@ For example, the Flow may not be able to start properly with error messages simi
 ```bash
 objc[20337]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called.
 objc[20337]: +[__NSCFConstantString initialize] may have been in progress in another thread when fork() was called. We cannot safely call it or ignore it in the fork() child process. Crashing instead. Set a breakpoint on objc_initializeAfterForkError to debug.```
+
 ```
 
 You can define the environment variable `OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES` to get around this issue.

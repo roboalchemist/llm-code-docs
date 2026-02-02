@@ -10,6 +10,7 @@ Iterable of Documents:
 ````{tab} A single Document
 
 ```{code-block} python
+
 ---
 emphasize-lines: 6
 ---
@@ -19,6 +20,7 @@ d1 = TextDoc(text='hello')
 client = Client(...)
 
 client.post('/endpoint', d1)
+
 ```
 
 ````
@@ -26,6 +28,7 @@ client.post('/endpoint', d1)
 ````{tab} A list of Documents
 
 ```{code-block} python
+
 ---
 emphasize-lines: 7
 ---
@@ -36,6 +39,7 @@ d2 = TextDoc(text='world')
 client = Client(...)
 
 client.post('/endpoint', inputs=[d1, d2])
+
 ```
 
 ````
@@ -43,6 +47,7 @@ client.post('/endpoint', inputs=[d1, d2])
 ````{tab} A DocList
 
 ```{code-block} python
+
 ---
 emphasize-lines: 6
 ---
@@ -54,6 +59,7 @@ da = DocList[TextDoc]([d1, d2])
 client = Client(...)
 
 client.post('/endpoint', da)
+
 ```
 
 ````
@@ -61,6 +67,7 @@ client.post('/endpoint', da)
 ````{tab} A Generator of Document
 
 ```{code-block} python
+
 ---
 emphasize-lines: 3-5, 9
 ---
@@ -69,10 +76,11 @@ from docarray.documents import TextDoc
 def doc_gen():
     for j in range(10):
         yield TextDoc(content=f'hello {j}')
-        
+
 client = Client(...)
 
 client.post('/endpoint', doc_gen)
+
 ```
 
 ````
@@ -80,12 +88,14 @@ client.post('/endpoint', doc_gen)
 ````{tab} No Document
 
 ```{code-block} python
+
 ---
 emphasize-lines: 3
 ---
 client = Client(...)
 
 client.post('/endpoint')
+
 ```
 
 ````
@@ -95,9 +105,11 @@ client.post('/endpoint')
 `Flow` and `Deployment` also provide a `.post()` method that follows the same interface as `client.post()`.
 However, once your solution is deployed remotely, these objects are not present anymore.
 Hence, `deployment.post()` and `flow.post()` are not recommended outside of testing or debugging use cases.
+
 ```
 
 (request-size-client)=
+
 ## Send data in batches
 
 Especially during indexing, a Client can send up to thousands or millions of Documents to a {class}`~jina.Flow`.
@@ -115,6 +127,7 @@ from docarray import DocList, BaseDoc
 with Deployment() as dep:
     client = Client(port=f.port)
     client.post('/', DocList[BaseDoc](BaseDoc() for _ in range(100)), request_size=10)
+
 ```
 
 ## Send data asynchronously
@@ -133,21 +146,19 @@ import asyncio
 from jina import Client, Deployment
 from docarray import BaseDoc
 
-
 async def async_inputs():
     for _ in range(10):
         yield BaseDoc()
         await asyncio.sleep(0.1)
-
 
 async def run_client(port):
     client = Client(port=port, asyncio=True)
     async for resp in client.post('/', async_inputs, request_size=1):
         print(resp)
 
-
 with Deployment() as dep:  # Using it as a Context Manager will start the Deployment
     asyncio.run(run_client(dep.port))
+
 ```
 
 Async send is useful when calling an external service from an Executor.
@@ -156,13 +167,13 @@ Async send is useful when calling an external service from an Executor.
 from jina import Client, Executor, requests
 from docarray import DocList, BaseDoc
 
-
 class DummyExecutor(Executor):
     c = Client(host='grpc://0.0.0.0:51234', asyncio=True)
 
     @requests
     async def process(self, docs: DocList[BaseDoc], **kwargs) -> DocList[BaseDoc]:
         return self.c.post('/', docs, return_type=DocList[BaseDoc])
+
 ```
 
 ## Send data to specific Executors
@@ -177,7 +188,6 @@ from jina import Client, Executor, Flow, requests
 from docarray import DocList
 from docarray.documents import TextDoc
 
-
 class FooExecutor(Executor):
     @requests
     async def foo(self, docs: DocList[TextDoc], **kwargs) -> DocList[TextDoc]:
@@ -190,7 +200,6 @@ class BarExecutor(Executor):
         for doc in docs:
             doc.text = f'bar was here and got {len(docs)} document'
 
-
 f = (
     Flow()
         .add(uses=FooExecutor, name='fooExecutor')
@@ -201,6 +210,7 @@ with f:  # Using it as a Context Manager will start the Flow
     client = Client(port=f.port)
     docs = client.post(on='/', inputs=TextDoc(text=''), target_executor='bar*', return_type=DocList[TextDoc])
     print(docs.text)
+
 ```
 
 This will send the request to all Executors whose names start with 'bar', such as 'barExecutor'.
@@ -222,6 +232,7 @@ There might be performance penalties when using the streaming RPC in the Python 
 This option is only valid for **gRPC** protocol.
 
 Refer to the gRPC [Performance Best Practices](https://grpc.io/docs/guides/performance/#general) guide for more implementations details and considerations.
+
 ```
 
 (client-grpc-channel-options)=
@@ -232,21 +243,32 @@ The `Client` supports the `grpc_channel_options` parameter which allows more cus
 construction. The `grpc_channel_options` parameter accepts a dictionary of **gRPC** configuration options which will be
 used to overwrite the default options. The default **gRPC** options are:
 
-```
-('grpc.max_send_message_length', -1),
+```python
 ('grpc.max_receive_message_length', -1),
 ('grpc.keepalive_time_ms', 9999),
+
 # send keepalive ping every 9 second, default is 2 hours.
+
 ('grpc.keepalive_timeout_ms', 4999),
+
 # keepalive ping time out after 4 seconds, default is 20 seconds
+
 ('grpc.keepalive_permit_without_calls', True),
+
 # allow keepalive pings when there's no gRPC calls
+
 ('grpc.http1.max_pings_without_data', 0),
+
 # allow unlimited amount of keepalive pings without data
+
 ('grpc.http1.min_time_between_pings_ms', 10000),
+
 # allow grpc pings from client every 9 seconds
+
 ('grpc.http1.min_ping_interval_without_data_ms', 5000),
+
 # allow grpc pings from client without data every 4 seconds
+
 ```
 
 If the `max_attempts` is greater than 1 on the {meth}`~jina.clients.mixin.PostMixin.post` method,
@@ -259,6 +281,7 @@ the full list of available **gRPC** options.
 ```{hint}
 :class: seealso
 Refer to the {ref}`Configure Executor gRPC options <executor-grpc-server-options>` section for configuring the `Executor` **gRPC** options.
+
 ```
 
 ## Returns
@@ -272,6 +295,7 @@ If a callback function is provided, `client.post()` will return none.
 ````{tab} Return as DocList objects
 
 ```python
+
 from jina import Deployment, Client
 from docarray import DocList
 from docarray.documents import TextDoc
@@ -281,10 +305,14 @@ with Deployment() as dep:
     docs = client.post(on='', inputs=TextDoc(text='Hi there!'), return_type=DocList[TextDoc])
     print(docs)
     print(docs.text)
+
 ```
-```console  
+
+```console
+
 <DocList[TextDoc] (length=1)>
 ['Hi there!']
+
 ```
 
 ````
@@ -292,6 +320,7 @@ with Deployment() as dep:
 ````{tab} Return as Response objects
 
 ```python
+
 from docarray import DocList
 from docarray.documents import TextDoc
 
@@ -300,10 +329,14 @@ with Deployment() as dep:
     resp = client.post(on='', inputs=TextDoc(text='Hi there!'), return_type=DocList[TextDoc], return_responses=True)
     print(resp)
     print(resp[0].docs.text)
+
 ```
-```console 
+
+```console
+
 [<jina.types.request.data.DataRequest ('header', 'parameters', 'routes', 'data') at 140619524354592>]
 ['Hi there!']
+
 ```
 
 ````
@@ -311,6 +344,7 @@ with Deployment() as dep:
 ````{tab} Handle response via callback
 
 ```python
+
 from jina import Flow, Client
 from docarray import DocList
 from docarray.documents import TextDoc
@@ -323,23 +357,26 @@ with Deployment() as dep:
         on_done=lambda resp: print(resp.docs.texts),
     )
     print(resp)
+
 ```
+
 ```console
+
 ['Hi there!']
 None
+
 ```
 
 ````
 
 ### Return type
 
-{meth}`~jina.clients.mixin.PostMixin.post` returns the Documents as the server sends them back. In order for the client to 
+{meth}`~jina.clients.mixin.PostMixin.post` returns the Documents as the server sends them back. In order for the client to
 return the user's expected document type, the `return_type` argument is required.
 
 The `return_type` can be a parametrized `DocList` or a single `BaseDoc` type. If the return type parameter is a `BaseDoc` type,
 the results will be returned as a `DocList[T]` except if the result contains a single Document, in that case the only Document in the list is returned
 instead of the DocList.
-
 
 ### Callbacks vs returns
 
@@ -366,13 +403,11 @@ from jina import Deployment, Executor, requests, Client
 from docarray import DocList
 from docarray.documents import TextDoc
 
-
 class RandomSleepExecutor(Executor):
     @requests
     def foo(self, *args, **kwargs):
         rand_sleep = random.uniform(0.1, 1.3)
         time.sleep(rand_sleep)
-
 
 dep = Deployment(uses=RandomSleepExecutor, replicas=3)
 input_text = [f'ordinal-{i}' for i in range(180)]
@@ -383,6 +418,5 @@ with f:
     output_da = c.post('/', inputs=input_da, request_size=10, return_type=DocList[TextDoc], results_in_order=True)
     for input, output in zip(input_da, output_da):
         assert input.text == output.text
+
 ```
-
-

@@ -10,14 +10,15 @@ To ensure you are using the right terminal, run:
 
 ```bash
 uname -m
+
 ```
 
 It should return:
 
 ```text
 arm64
-```
 
+```
 
 ## Install Homebrew
 
@@ -25,22 +26,26 @@ arm64
 
 ```bash
 which brew
+
 ```
 
 ```text
 /opt/homebrew/bin/brew
+
 ```
 
 If it's installed under `/usr/local/` instead of `/opt/homebrew/`, it means your `brew` is installed for Rosetta not for Apple Silicon. You need to [reinstall it](https://apple.stackexchange.com/a/410829).
 
 ```{danger}
 Reinstalling `brew` can be a destructive operation. Ensure you have backed up your data before proceeding.
+
 ```
 
 To (re)install brew, run:
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 ```
 
 You can observe the output to check if it contains `/opt/homebrew` to ensure you are installing for Apple Silicon.
@@ -53,19 +58,21 @@ Python also has to be installed for Apple Silicon. It is possible it is installe
 import platform
 
 platform.machine()
+
 ```
 
 This should output:
 
 ```text
 'arm64'
+
 ```
 
 If not, then you are using Python under Rosetta, and you need to install Python for Apple Silicon with `brew`:
 
-
 ```bash
 brew install python3
+
 ```
 
 As of August 2022, this will install Python 3.10 natively for Apple Silicon.
@@ -78,6 +85,7 @@ There are some core dependencies that Jina-serve needs to run, whose wheels are 
 
 ```bash
 brew install protobuf numpy
+
 ```
 
 ## Install Jina-serve
@@ -86,6 +94,7 @@ Now we can install Jina-serve via `pip`. Ensure you use the correct `pip`:
 
 ```bash
 /opt/homebrew/opt/python@3.10/libexec/bin/pip install jina
+
 ```
 
 `grpcio` requires building the wheels, it will take some time.
@@ -95,37 +104,40 @@ Note: If the previous step fails, adding the environment variables below might s
 ```bash
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
 ```
 
 After all the dependencies are installed, you can run Jina-serve CLI and check the system information.
 
 ```bash
 jina -vf
+
 ```
 
 ```{code-block} text
 ---
 emphasize-lines: 13-15
 ---
-- jina 3.7.14
-- docarray 0.15.4
-- jcloud 0.0.35
-- jina-hubble-sdk 0.16.1
-- jina-proto 0.1.13
-- protobuf 3.20.1
-- proto-backend python
-- grpcio 1.47.0
-- pyyaml 6.0
-- python 3.10.6
-- platform Darwin
-- platform-release 21.6.0
-- platform-version Darwin Kernel Version 21.6.0: Sat Jun 18 17:07:28 PDT 2022; root:xnu-8020.140.41~1/RELEASE_ARM64_T8110
-- architecture arm64
-- processor arm
-- uid 94731629138370
-- session-id 49497356-254e-11ed-9624-56286d1a91c2
-- uptime 2022-08-26T16:49:28.279723
-- ci-vendor (unset)
+
+* jina 3.7.14
+* docarray 0.15.4
+* jcloud 0.0.35
+* jina-hubble-sdk 0.16.1
+* jina-proto 0.1.13
+* protobuf 3.20.1
+* proto-backend python
+* grpcio 1.47.0
+* pyyaml 6.0
+* python 3.10.6
+* platform Darwin
+* platform-release 21.6.0
+* platform-version Darwin Kernel Version 21.6.0: Sat Jun 18 17:07:28 PDT 2022; root:xnu-8020.140.41~1/RELEASE_ARM64_T8110
+* architecture arm64
+* processor arm
+* uid 94731629138370
+* session-id 49497356-254e-11ed-9624-56286d1a91c2
+* uptime 2022-08-26T16:49:28.279723
+* ci-vendor (unset)
 * JINA_DEFAULT_HOST (unset)
 * JINA_DEFAULT_TIMEOUT_CTRL (unset)
 * JINA_DEPLOYMENT_NAME (unset)
@@ -143,21 +155,19 @@ emphasize-lines: 13-15
 * JINA_OPTOUT_TELEMETRY (unset)
 * JINA_RANDOM_PORT_MAX (unset)
 * JINA_RANDOM_PORT_MIN (unset)
+
 ```
 
-
 Congratulations! You have successfully installed Jina-serve on Apple Silicon.
-
 
 ````{tip}
 
 To install MPS-enabled PyTorch, run:
 
 ```bash
+
 /opt/homebrew/opt/python@3.10/libexec/bin/pip install -U --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+
 ```
+
 ````
-
-
-
-

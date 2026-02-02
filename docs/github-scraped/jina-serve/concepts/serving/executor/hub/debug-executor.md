@@ -1,11 +1,13 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/concepts/serving/executor/hub/debug-executor.md
 
 (debug-executor)=
+
 # Debug
 
 ````{admonition} Not applicable to containerized Executors
 :class: caution
 This does not work for containerized Executors.
+
 ````
 
 In this tutorial you will learn how to debug [Hello Executor](https://cloud.jina.ai/executor/9o9yjq1q) step by step.
@@ -15,6 +17,7 @@ In this tutorial you will learn how to debug [Hello Executor](https://cloud.jina
 
 While using docarray>0.30.0, Executors do not have a fix schema and each Executor defines its own. Make sure you know
 those schemas when using Executors from the Hub.
+
 ````
 
 ## Pull the Executor
@@ -22,16 +25,25 @@ those schemas when using Executors from the Hub.
 Pull the source code of the Executor you want to debug:
 
 ````{tab} via Command Line Interface
+
 ```shell
+
 jina hub pull jinaai://jina-ai/Hello
+
 ```
+
 ````
+
 ````{tab} via Python code
+
 ```python
+
 from jina import Executor
 
 Executor.from_hub('jinaai://jina-ai/Hello')
+
 ```
+
 ````
 
 ## Set breakpoints
@@ -45,17 +57,25 @@ Once you locate the source, you can set the breakpoints as you always do.
 You can debug your Executor like any Python code. You can either use the Executor on its own or inside a Deployment:
 
 ````{tab} Executor on its own
+
 ```python
+
 from jina import Executor
 
 exec = Executor.from_hub('jinaai://jina-ai/Hello')
 
 # Set breakpoint as needed
+
 exec.foo()
+
 ```
+
 ````
+
 ````{tab} Executor inside a Deployment
+
 ```python
+
 from jina import Deployment
 from docarray.documents.legacy import LegacyDocument
 
@@ -64,5 +84,7 @@ dep = Deployment(uses='jinaai://jina-ai/Hello')
 with dep:
     res = dep.post('/', inputs=LegacyDocument(text='hello'), return_results=True)
     print(res)
+
 ```
+
 ````

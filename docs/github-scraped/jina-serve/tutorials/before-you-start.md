@@ -1,6 +1,7 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/tutorials/before-you-start.md
 
 (before-start)=
+
 # Before you start
 
 Before you jump in to any tutorials, we recommend you do the following:
@@ -19,6 +20,7 @@ For most purposes, you can install Jina-serve with:
 
 ```shell
 pip install jina
+
 ```
 
 For more installation options, see {ref}`our installation guide <install>`.

@@ -14,14 +14,23 @@ Use `${{ CONTEXT.VAR }}` to refer to the context variable `VAR`.
 Context variables can be passed in the form of a Python dictionary:
 
 ````{tab} Deployment
+
 ```python
+
 dep = Deployment.load_config('deployment.yml', context={...})
+
 ```
+
 ````
+
 ````{tab} Flow
+
 ```python
+
 f = Flow.load_config('flow.yml', context={...})
+
 ```
+
 ````
 
 ### Relative paths
@@ -32,4 +41,5 @@ Use `${{root.path.to.var}}` to refer to the variable `var` within the same YAML 
 :class: tip
 
 The only difference between environment variable syntax and relative path syntax is the omission of spaces in the latter.
+
 ```

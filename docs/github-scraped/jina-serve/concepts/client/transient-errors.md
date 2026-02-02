@@ -7,9 +7,9 @@
 Most transient errors can be attributed to network issues between the client and target server or between a server's
 dependencies like a database. The errors can be:
 
-- ignored if an operation produced by a generator or sequence of operations isn't relevant to the overall success.
-- retried up to a certain limit which assumes that the recovery logic kicks in to repair transient errors.
-- accept that the operation cannot be successfully completed.
+* ignored if an operation produced by a generator or sequence of operations isn't relevant to the overall success.
+* retried up to a certain limit which assumes that the recovery logic kicks in to repair transient errors.
+* accept that the operation cannot be successfully completed.
 
 ## Transient fault handling with retries
 
@@ -36,15 +36,18 @@ the **gRPC** server side streaming RPC method will be invoked. If set to `False`
 be invoked. Some important implication of
 using retries with **gRPC** are:
 
-- The built-in **gRPC** retries are limited in scope and are implemented to work under certain circumstances. More
+* The built-in **gRPC** retries are limited in scope and are implemented to work under certain circumstances. More
+
   details are specified in the [design document](https://github.com/grpc/proposal/blob/master/A6-client-retries.md).
-- If the `stream` parameter is set to True and if the `inputs` parameters is a `GeneratorType` or
+
+* If the `stream` parameter is set to True and if the `inputs` parameters is a `GeneratorType` or
+
   an `Iterable`, the retry must be handled as below because the result must be consumed to check for errors in the
   stream of responses. The **gRPC** service retry is still configured but cannot be guaranteed.
 
    ```python
    from jina import Client
-   from dorcarray import BaseDoc 
+   from dorcarray import BaseDoc
    from jina.clients.base.retry import wait_or_raise_err
    from jina.helper import run_async
 
@@ -55,11 +58,9 @@ using retries with **gRPC** are:
    backoff_multiplier = 1.5
    max_backoff = 5
 
-
    def input_generator():
        for _ in range(10):
            yield BaseDoc()
-
 
    for attempt in range(1, max_attempts + 1):
        try:
@@ -80,17 +81,22 @@ using retries with **gRPC** are:
                initial_backoff=initial_backoff,
                max_backoff=max_backoff,
            )
+
    ```
 
-- If the `stream` parameter is set to True and the `inputs` parameter is a `Document` or a `DocList`, the retry is
+* If the `stream` parameter is set to True and the `inputs` parameter is a `Document` or a `DocList`, the retry is
+
   handled internally on the `max_attempts`, `initial_backoff`, `backoff_multiplier` and `max_backoff`
   parameters.
-- If the `stream` parameter is set to False, the {meth}`~jina.clients.mixin.PostMixin.post` method invokes the unary
+
+* If the `stream` parameter is set to False, the {meth}`~jina.clients.mixin.PostMixin.post` method invokes the unary
+
   RPC method and the
   retry is handled internally.
 
 ```{hint}
 The retry parameters `max_attempts`, `initial_backoff`, `backoff_multiplier` and `max_backoff` of the {meth}`~jina.clients.mixin.PostMixin.post` method will be used to set the **gRPC** retry service options. This improves the chances of success if the gRPC retry conditions are met.
+
 ```
 
 ## Continue streaming when an Executor error occurs
@@ -110,6 +116,7 @@ Gateway and Executor communication.
 
 ```{hint}
 Refer to {ref}`Network Errors <flow-error-handling>` section for more information.
+
 ```
 
 ## Retries with a large inputs or long-running operations
@@ -123,4 +130,5 @@ The **HTTP** and **WebSocket**
 
 ```{hint}
 Refer to {ref}`Callbacks <callback-functions>` section for dealing with success and failures after retries.
+
 ```

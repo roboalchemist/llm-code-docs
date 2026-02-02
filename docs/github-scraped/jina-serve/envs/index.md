@@ -1,38 +1,48 @@
 # Source: https://github.com/jina-ai/serve/blob/master/docs/envs/index.md
 
 (jina-env-vars)=
+
 # {octicon}`list-unordered` Environment Variables
 
 Jina-serve uses environment variables to determine different behaviours. To see all supported environment variables and their current values, run:
 
 ```bash
 jina -vf
+
 ```
 
 If you use containerized Executors (including {ref}`Kubernetes <kubernetes>` and {ref}`Docker Compose <docker-compose>`), you can pass separate environment variables to each Executor in the following way:
 
-
 `````{tab} FLow YAML
 
 ```yaml
+
 jtype: Flow
 with: {}
 executors:
-- name: executor0
+
+* name: executor0
+
   port: 49583
   env:
     JINA_LOG_LEVEL: DEBUG
     MYSECRET: ${{ ENV.MYSECRET }}
-- name: executor1
+
+* name: executor1
+
   port: 62156
   env:
     JINA_LOG_LEVEL: INFO
     CUDA_VISIBLE_DEVICES: 1
+
 ```
+
 `````
+
 `````{tab} Deployment YAML
 
 ```yaml
+
 jtype: Deployment
 with:
   name: executor0
@@ -40,11 +50,15 @@ with:
   env:
     JINA_LOG_LEVEL: DEBUG
     MYSECRET: ${{ ENV.MYSECRET }}
+
 ```
+
 `````
+
 ````{tab} Python API
 
 ```python
+
 from jina import Flow
 import os
 
@@ -55,7 +69,9 @@ f = (
     .add(env={'JINA_LOG_LEVEL': 'INFO', 'CUDA_VISIBLE_DEVICES': 1})
 )
 f.save_config("envflow.yml")
+
 ```
+
 ````
 
 The following environment variables are used internally in Jina:

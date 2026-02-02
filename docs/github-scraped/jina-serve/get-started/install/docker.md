@@ -6,28 +6,29 @@ Our universal Docker image is ready-to-use on linux/amd64 and linux/arm64. The D
 
 ```text
 jinaai/jina:{version}{python_version}{extra}
+
 ```
 
-- `{version}`: The version of Jina-serve. Possible values:
-    - `latest`: the last release;
-    - `master`: the master branch of `jina-ai/jina` repository;
-    - `x.y.z`: the release of a particular version;
-    - `x.y`: the alias to the last `x.y.z` patch release, i.e. `x.y` = `x.y.max(z)`;
-- `{python_version}`: The Python version of the image. Possible values:
-    - ` `, `-py37`: Python 3.7;
-    - `-py38` for Python 3.8;
-    - `-py39` for Python 3.9;
-- `{extra}`: the extra dependency installed along with Jina-serve. Possible values:
-    - ` `: Jina is installed inside the image with minimum dependencies `pip install jina`;
-    - `-perf`: Jina is installed inside the image via `pip install jina`. It includes all performance dependencies; 
-    - `-standard`: Jina is installed inside the image via `pip install jina`. It includes all recommended dependencies;  
-    - `-devel`: Jina is installed inside the image via `pip install "jina[devel]"`. It includes `standard` plus some extra dependencies;
+* `{version}`: The version of Jina-serve. Possible values:
+  * `latest`: the last release;
+  * `master`: the master branch of `jina-ai/jina` repository;
+  * `x.y.z`: the release of a particular version;
+  * `x.y`: the alias to the last `x.y.z` patch release, i.e. `x.y` = `x.y.max(z)`;
+* `{python_version}`: The Python version of the image. Possible values:
+  * ` `, `-py37`: Python 3.7;
+  * `-py38` for Python 3.8;
+  * `-py39` for Python 3.9;
+* `{extra}`: the extra dependency installed along with Jina-serve. Possible values:
+  * ` `: Jina is installed inside the image with minimum dependencies `pip install jina`;
+  * `-perf`: Jina is installed inside the image via `pip install jina`. It includes all performance dependencies;
+  * `-standard`: Jina is installed inside the image via `pip install jina`. It includes all recommended dependencies;
+  * `-devel`: Jina is installed inside the image via `pip install "jina[devel]"`. It includes `standard` plus some extra dependencies;
 
 Examples:
 
-- `jinaai/jina:0.9.6`: the `0.9.6` release with Python 3.7 and the entrypoint of `jina`.
-- `jinaai/jina:latest`: the latest release with Python 3.7 and the entrypoint of `jina`
-- `jinaai/jina:master`: the master with Python 3.7 and the entrypoint of `jina`
+* `jinaai/jina:0.9.6`: the `0.9.6` release with Python 3.7 and the entrypoint of `jina`.
+* `jinaai/jina:latest`: the latest release with Python 3.7 and the entrypoint of `jina`
+* `jinaai/jina:master`: the master with Python 3.7 and the entrypoint of `jina`
 
 ## Image alias and updates
 
@@ -37,14 +38,15 @@ Examples:
 | On `x.y.z` release | `jinaai/jina:x.y.z{python_version}{extra}` | `jinaai/jina:latest{python_version}{extra}`, `jinaai/jina:x.y{python_version}{extra}` |
 
 12 images are built, i.e. taking the combination of:
-  - `{python_version} = ["-py37", "-py38", "-py39"]`
-  - `{extra} = ["", "-devel", "-standard", "-perf"]`
 
+* `{python_version} = ["-py37", "-py38", "-py39"]`
+* `{extra} = ["", "-devel", "-standard", "-perf"]`
 
 ## Image size on different tags
 
 ```{warning}
 [Due to a known bug in shields.io/Docker Hub API](https://github.com/badges/shields/issues/7583), the following badge may show "invalid" status randomly.
+
 ```
 
 |Image Size|
