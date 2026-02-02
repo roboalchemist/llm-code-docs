@@ -34,27 +34,34 @@ def is_html_content(content: str) -> bool:
 
 
 def convert_html_to_markdown(html: str, model, tokenizer) -> str:
-    """Convert HTML to markdown using ReaderLM-v2."""
+    """Convert HTML to markdown using ReaderLM-v2 with proper chat template."""
     from mlx_lm import generate
 
-    prompt = f"""Extract the main content from the following HTML and convert it to clean Markdown format.
-Preserve headings, code blocks, lists, and links. Remove navigation, ads, and boilerplate.
+    # Use the correct ReaderLM-v2 prompt format with chat template
+    instruction = "Extract the main content from the given HTML and transform it to Markdown format."
+    prompt_content = f"{instruction}\n```html\n{html}\n```"
 
-```html
-{html[:30000]}
-```
-
-Markdown:"""
+    messages = [{"role": "user", "content": prompt_content}]
+    prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
     response = generate(
         model,
         tokenizer,
         prompt=prompt,
         max_tokens=8192,
-        verbose=False
+        verbose=False,
     )
 
-    return response.strip()
+    # Clean up the response - strip markdown code fences if present
+    result = response.strip()
+    if result.startswith('```markdown'):
+        result = result[len('```markdown'):].strip()
+    if result.startswith('```'):
+        result = result[3:].strip()
+    if result.endswith('```'):
+        result = result[:-3].strip()
+
+    return result
 
 
 def find_html_files(docs_root: Path, site: str = None) -> list[Path]:
@@ -130,11 +137,13 @@ def main():
             markdown = convert_html_to_markdown(html_content, model, tokenizer)
 
             if markdown and len(markdown) > 100:
-                # Add source header if not present
-                if not markdown.startswith('# Source:'):
+                # Add title if model didn't generate one
+                if not markdown.startswith('#'):
                     # Try to extract title from HTML
                     title_match = re.search(r'<title>([^<]+)</title>', html_content, re.IGNORECASE)
                     title = title_match.group(1) if title_match else rel_path.stem
+                    # Clean title (remove " | Site Name" suffixes)
+                    title = re.sub(r'\s*\|.*$', '', title).strip()
                     markdown = f"# {title}\n\n{markdown}"
 
                 html_file.write_text(markdown, encoding='utf-8')
