@@ -23,11 +23,9 @@ This is comprehensive documentation for the **Ubiquiti UniFi Network API**, the 
    - Advanced features
    - Production patterns
 
-3. **[OpenAPI Reference](openapi-reference.md)** - Complete endpoint documentation
-   - All available endpoints
-   - Request/response formats
-   - Data schemas
-   - Error codes
+3. **[OpenAPI Spec](openapi.yaml)** - OpenAPI 3.1.0 specification
+   - Use with Swagger UI, code generators, or read directly
+   - Source: https://github.com/ubiquiti-community/unifi-api
 
 ### Quick Links
 
@@ -122,7 +120,7 @@ curl -H "X-API-Key: $UNIFI_API_KEY" https://api.ui.com/v1/sites
 
 - **New to the API?** → [Quickstart Guide](quickstart.md)
 - **Building an app?** → [Architecture Guide](architecture.md)
-- **Need exact endpoints?** → [OpenAPI Reference](openapi-reference.md)
+- **Need exact endpoints?** → [OpenAPI Spec](openapi.yaml)
 
 ## Support
 
