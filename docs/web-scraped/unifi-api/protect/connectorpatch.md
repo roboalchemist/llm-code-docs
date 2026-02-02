@@ -1,0 +1,5 @@
+# connectorpatch
+
+Source: https://developer.ui.com/protect/v6.2.83/connectorpatch
+
+UniFi APIEndpoints combined into Ansible Modules for customized workflows.Connector - PATCHPATCH/v1/connector/consoles/{id}/*pathForward PATCH requests to UniFi applications using RESTful HTTP methods. Request Flow: The request is proxied through api.ui.com cloud endpoint to the remote console at http://127.0.0.1/proxy/[path] with PATCH method. Requirements: - Console firmware version must >= 5.0.3- For non-organization API keys: Limited to API key owner's consoles only (cannot access other admins' consoles)- For organization API keys: Can access any console within the organizationAPI Documentation: - Network API: https://developer.ui.com/network- Protect API: https://developer.ui.com/protectResponse: On success, the upstream API response is passed through directly. On error, a standardized error schema is returned.path Parametersrequest BodyResponses200400401403408429500502Response Schema: application/json

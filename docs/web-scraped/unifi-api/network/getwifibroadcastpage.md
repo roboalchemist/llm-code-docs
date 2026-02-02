@@ -1,0 +1,6 @@
+# getwifibroadcastpage
+
+Source: https://developer.ui.com/network/v10.1.68/getwifibroadcastpage
+
+UniFi APIEndpoints combined into Ansible Modules for customized workflows.List Wifi BroadcastsGET/v1/sites/{siteId}/wifi/broadcastsRetrieve a paginated list of all Wifi Broadcasts on a site.
+Filterable properties (click to expand)NameTypeAllowed functionstypeSTRINGeq ne in notInidUUIDeq ne in notInenabledBOOLEANeq nenameSTRINGeq ne in notIn likebroadcastingFrequenciesGHzSET(DECIMAL)contains containsAny containsAll containsExactlymetadata.originSTRINGeq ne in notInnetwork.typeSTRINGeq ne in notIn isNull isNotNullnetwork.networkIdUUIDeq ne in notInsecurityConfiguration.typeSTRINGeq ne in notInbroadcastingDeviceFilter.typeSTRINGeq ne in notIn isNull isNotNullbroadcastingDeviceFilter.deviceIdsSET(UUID)contains containsAny containsAll containsExactlybroadcastingDeviceFilter.deviceTagIdsSET(UUID)contains containsAny containsAll containsExactlyhotspotConfiguration.typeSTRINGeq ne in notInpath Parametersquery ParametersResponses200Response Schema: application/json

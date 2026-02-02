@@ -1,0 +1,5 @@
+# createnetwork
+
+Source: https://developer.ui.com/network/v10.1.68/createnetwork
+
+UniFi APIEndpoints combined into Ansible Modules for customized workflows.Create NetworkPOST/v1/sites/{siteId}/networksCreate a new network on a site.path ParameterssiteIdrequiredstringrequest BodymanagementrequiredstringUNMANAGEDGATEWAYSWITCHnamerequiredstringenabledrequiredbooleanvlanIdrequiredintegerdhcpGuardingExpandobjectDHCP Guarding settings for this Network. If this field is omitted or null, the feature is disabledResponses201Response Schema: application/jsonmanagementrequiredstringUNMANAGEDGATEWAYSWITCHidrequiredstringnamerequiredstringenabledrequiredbooleanvlanIdrequiredintegermetadataExpandrequiredobject (User or system defined or orchestrated entity metadata)Orchestrated or System-defined configurable network supportdhcpGuardingExpandobjectDHCP Guarding settings for this Network. If this field is omitted or null, the feature is disabled

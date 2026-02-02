@@ -1,0 +1,5 @@
+# updatenetwork
+
+Source: https://developer.ui.com/network/v10.1.68/updatenetwork
+
+UniFi APIEndpoints combined into Ansible Modules for customized workflows.Update NetworkPUT/v1/sites/{siteId}/networks/{networkId}Update an existing network on a site.path ParametersnetworkIdrequiredstringsiteIdrequiredstringrequest BodymanagementrequiredstringUNMANAGEDGATEWAYSWITCHnamerequiredstringenabledrequiredbooleanvlanIdrequiredintegerdhcpGuardingExpandobjectDHCP Guarding settings for this Network. If this field is omitted or null, the feature is disabledResponses200Response Schema: application/jsonmanagementrequiredstringUNMANAGEDGATEWAYSWITCHidrequiredstringnamerequiredstringenabledrequiredbooleanvlanIdrequiredintegermetadataExpandrequiredobject (User or system defined or orchestrated entity metadata)Orchestrated or System-defined configurable network supportdhcpGuardingExpandobjectDHCP Guarding settings for this Network. If this field is omitted or null, the feature is disabled
