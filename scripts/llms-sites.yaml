@@ -8,8 +8,7 @@ sites:
   rate_limit_seconds: 5
 - name: agent
   base_url: https://docs.agent.ai/
-  description: '... docs.agent.ai/ai-agents-explained.md): Understanding the basics
-    of AI agents for beginners - [Co'
+  description: Agent AI documentation for building and understanding AI agents
 - name: agent-domain
   base_url: https://agentdomain.xyz/
   description: Agent Domain (.agent TLD) AI ecosystem
@@ -63,10 +62,6 @@ sites:
 - name: aporia
   base_url: https://docs.aporia.com/
   description: Aporia ML observability and monitoring platform
-- name: apollo-graphql
-  base_url: https://www.apollographql.com/docs/
-  description: Apollo GraphQL platform - GraphQL client and server tools including
-    Apollo Client, Apollo Server, and GraphOS
 - name: appwrite
   base_url: https://appwrite.io/
   description: Open-source backend-as-a-service platform for web and mobile apps
@@ -322,9 +317,6 @@ sites:
 - name: fastcore
   base_url: https://fastcore.fast.ai/
   description: llms.txt - fastcore - Fast.ai
-- name: fasthtml
-  base_url: https://docs.fastht.ml/
-  description: FastHTML Python web framework
 - name: fern
   base_url: https://buildwithfern.com/
   description: Fern API documentation and SDK generation
@@ -382,8 +374,8 @@ sites:
   description: Glide no-code app builder
 - name: gofastmcp
   base_url: https://gofastmcp.com/
-  description: '... [LLM Sampling](https://gofastmcp.com/clients/sampling.md): Handle
-    ... python-sdk/fastmcp-cli-__i'
+  description: GoFastMCP - Fast Model Context Protocol (MCP) client implementation
+    in Go
 - name: gradio
   base_url: https://www.gradio.app/
   description: Python library for building ML web apps with comprehensive API reference
@@ -422,8 +414,7 @@ sites:
   description: Hugging Face Diffusers for image generation
 - name: huggingface-docs-hub
   base_url: https://huggingface.co/docs/hub/
-  description: '... Text Generation with T5](https://huggingface.co/docs/hub/spaces-sdks-docker
-    ... llm.md) - [Use O'
+  description: Hugging Face Hub documentation for models, datasets, spaces, and repositories
 - name: huggingface-hub
   base_url: https://huggingface-projects-docs-llms-txt.hf.space/huggingface_hub/
   description: Hugging Face Hub Python client
