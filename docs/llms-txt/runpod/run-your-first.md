@@ -1,0 +1,188 @@
+# Source: https://docs.runpod.io/tutorials/serverless/run-your-first.md
+
+# Source: https://docs.runpod.io/tutorials/pods/run-your-first.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Run LLMs with JupyterLab using the transformers library
+
+> Learn how to run inference on the SmolLM3 model in JupyterLab using the transformers library.
+
+This tutorial shows how to deploy a Pod and use JupyterLab to generate text with the SmolLM3 model using the Python `transformers` library.
+
+[SmolLM3](https://huggingface.co/docs/transformers/en/model_doc/smollm3) is a family of small language models developed by Hugging Face that provides strong performance while being efficient enough to run on modest hardware.
+The 3B parameter model we'll use in this tutorial requires only 24 GB of VRAM, making it accessible for experimentation and development.
+
+## What you'll learn
+
+In this tutorial, you'll learn how to:
+
+* Deploy a Pod with the PyTorch template.
+* Access the web terminal and JupyterLab services.
+* Install the transformers and accelerate libraries.
+* Use SmolLM3 for text generation in a Python notebook.
+* Configure model parameters for different use cases.
+
+## Requirements
+
+Before you begin, you'll need:
+
+* A [Runpod account](/get-started/manage-accounts).
+* At least \$5 in Runpod credits.
+* Basic familiarity with Python and Jupyter notebooks.
+
+## Step 1: Deploy a Pod with PyTorch template
+
+First, you'll deploy a Pod using the official Runpod PyTorch template:
+
+1. Navigate to the [Pods page](https://console.runpod.io/pods) in the Runpod console.
+2. Click **Deploy** to create a new Pod.
+3. In the template selection, choose latest the **Runpod PyTorch** template (this should be the default setting).
+4. For GPU selection, choose any GPU with 24 GB or more VRAM. Good options include:
+   * RTX 4090 (24 GB VRAM)
+   * RTX A5000 (24 GB VRAM)
+   * L40 (48 GB VRAM)
+5. Keep all the other settings on their defaults.
+6. Click **Deploy On-Demand** to create your Pod.
+
+Wait for your Pod to initialize. This typically takes 2-5 minutes.
+
+## Step 2: Install required packages
+
+Once your Pod is running, you'll need to install the `transformers` and `accelerate` Python libraries:
+
+1. In the Runpod console, find and expand your deployed Pod and click **Connect**.
+2. Under **Web Terminal**, click **Start** to start the terminal service.
+3. Click **Open Web Terminal** to open a terminal session in your browser.
+4. In the terminal, install the required packages by running:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+pip install transformers accelerate
+```
+
+## Step 3: Open JupyterLab
+
+Next we'll prepare our JupyterLab coding environment:
+
+1. Go back to the Runpod console and click **Connect** on your Pod again.
+2. Under **HTTP Services**, click **Connect to HTTP Service \[Port 8888]** to open JupyterLab.
+3. If the JupyterLab service shows as "Not Ready", wait a moment and refresh the page.
+
+JupyterLab will open in a new browser tab, providing you with an interactive Python environment.
+
+## Step 4: Create and run your SmolLM3 notebook
+
+In JupyterLab, create a new notebook to perform inference using the SmolLM3 model:
+
+1. In JupyterLab, click **File** > **New** > **Notebook**.
+2. Select **Python 3 (ipykernel)** when prompted for the kernel.
+3. In the first cell of your notebook, enter the following code:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+import torch
+from transformers import pipeline
+
+# Create a text generation pipeline with SmolLM3
+pipe = pipeline(
+    task="text-generation",
+    model="HuggingFaceTB/SmolLM3-3B",
+    torch_dtype=torch.bfloat16,
+    device_map=0
+)
+
+# Define a conversation with system and user messages
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "I'm a developer interested in LLMs. Can you suggest some research topics to get started?"},
+]
+
+# Generate text with the model
+outputs = pipe(messages, max_new_tokens=500, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
+
+# Print the generated response
+print(outputs[0]["generated_text"][-1]['content'])
+```
+
+4. Run the cell by pressing <kbd>Cmd</kbd> + <kbd>Enter</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>Enter</kbd> (Windows) or clicking the **Run** button.
+
+The first time you run this code, it will download the SmolLM3 model (approximately 6 GB), which may take a minute or two depending on your Pod's internet connection. Subsequent runs will be much faster, as the model will be cached locally.
+
+Most likely the response will be truncated—you can increase `max_new_tokens` and run the cell again to get a longer response (it will just take longer to run).
+
+## Step 5: Understanding the code
+
+Let's break down the key components of the code we just ran:
+
+* `pipeline()`: Creates a high-level interface for text generation.
+* `model="HuggingFaceTB/SmolLM3-3B"`: Specifies the model to use.
+* `torch_dtype=torch.bfloat16`: Uses 16-bit floating point for memory efficiency.
+* `device_map=0`: Automatically places the model on the first available GPU.
+* `messages`: Defines a chat-like conversation with system and user roles.
+
+For more detailed information about SmolLM3's capabilities and parameters, see the [official SmolLM3 documentation](https://huggingface.co/docs/transformers/en/model_doc/smollm3?usage=Pipeline#transformers.SmolLM3Model).
+
+## Step 6: Experiment with different prompts and parameters
+
+Once your model is loaded, you can experiment with different prompts and generation parameters:
+
+### Try different conversation topics
+
+Try running the following code in a new cell:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+# Example: Ask for creative writing
+messages = [
+    {"role": "system", "content": "You are a creative writing assistant."},
+    {"role": "user", "content": "Write the opening paragraph for a mystery story that begins in a library after closing time."},
+]
+
+outputs = pipe(messages, max_new_tokens=300, do_sample=True, temperature=0.8)
+print(outputs[0]["generated_text"][-1]['content'])
+```
+
+### Adjust generation parameters
+
+You can modify various parameters to control the model's output:
+
+* `max_new_tokens`: Controls the maximum length of the generated text
+* `temperature`: Controls randomness (0.1 = more focused, 1.0 = more creative)
+* `top_k`: Limits the vocabulary to the top K most likely tokens
+* `top_p`: Uses nucleus sampling to control diversity
+
+Try running this in a new cell to see how the output changes:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+# More focused and deterministic output
+outputs = pipe(messages, max_new_tokens=150, do_sample=True, temperature=0.3, top_p=0.9)
+print(outputs[0]["generated_text"][-1]['content'])
+```
+
+### Use single-turn prompts
+
+You can also use SmolLM3 for simple text completion without the chat format:
+
+```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+# Simple text completion
+prompt = "The process of photosynthesis is crucial for life on Earth because it allows plants to convert"
+outputs = pipe(prompt, max_new_tokens=100, do_sample=True, temperature=0.3)
+print(outputs[0]["generated_text"])
+```
+
+## Troubleshooting
+
+Here are solutions to common issues:
+
+* **Out of memory errors**: Ensure you're using a GPU with at least 24 GB VRAM, or try reducing the batch size.
+* **Model download fails**: Check your internet connection and try running the cell again.
+* **JupyterLab not accessible**: Wait a few minutes after Pod deployment for services to fully start. If the JupyterLab tab is blank when you open it, try stopping and then restarting the Pod.
+* **Import errors**: Make sure you installed the packages in step 2 using the web terminal.
+
+## Next steps
+
+Now that you have SmolLM3 running, you can explore more advanced use cases:
+
+* **Integration with applications**: Use SmolLM3 as part of larger applications by integrating it with web frameworks or APIs.
+* **Model comparison**: Try other models in the SmolLM3 family or compare with other small language models to find the best fit for your use case.
+* **Persistent storage**: If you plan to work with SmolLM3 regularly, consider using a [network volume](/storage/network-volumes) to persist your models and notebooks across Pod sessions.

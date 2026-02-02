@@ -1,0 +1,98 @@
+# Source: https://docs.runpod.io/serverless/vllm/get-started.md
+
+# Source: https://docs.runpod.io/get-started.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Deploy your first Pod
+
+> Run code on a remote GPU in minutes.
+
+Follow this guide to learn how to create an account, deploy your first GPU Pod, and use it to execute code remotely.
+
+## Step 1: Create an account
+
+Start by creating a Runpod account:
+
+1. [Sign up here](https://www.console.runpod.io/signup).
+2. Verify your email address.
+3. Set up two-factor authentication (recommended for security).
+
+<Tip>
+  Planning to share compute resources with your team? You can convert your personal account to a team account later. See [Manage accounts](/get-started/manage-accounts) for details.
+</Tip>
+
+## Step 2: Deploy a Pod
+
+Now that you've created your account, you're ready to deploy your first Pod:
+
+1. Open the [Pods page](https://www.console.runpod.io/pods) in the web interface.
+2. Click the **Deploy** button.
+3. Select **A40** from the list of graphics cards.
+4. In the field under **Pod Name**, enter the name **quickstart-pod**.
+5. Keep all other fields (Pod Template, GPU Count, and Instance Pricing) on their default settings.
+6. Click **Deploy On-Demand** to deploy and start your Pod. You'll be redirected back to the Pods page after a few seconds.
+
+<Note>
+  If you haven't set up payments yet, you'll be prompted to add a payment method and purchase credits for your account.
+</Note>
+
+## Step 3: Explore the Pod detail pane
+
+On the [Pods page](https://www.console.runpod.io/pods), click the Pod you just created to open the Pod detail pane. The pane opens onto the **Connect** tab, where you'll find options for connecting to your Pod so you can execute code on your GPU (after it's done initializing).
+
+Take a minute to explore the other tabs:
+
+* **Details**: Information about your Pod, such as hardware specs, pricing, and storage.
+* **Telemetry**: Realtime utilization metrics for your Pod's CPU, memory, and storage.
+* **Logs**: Logs streamed from your container (including stdout from any applications inside) and the Pod management system.
+* **Template Readme**: Details about the template your Pod is running. Your Pod is configured with the latest official Runpod PyTorch template.
+
+## Step 4: Execute code on your Pod with JupyterLab
+
+1. Go back to the **Connect** tab, and under **HTTP Services**, click **Jupyter Lab** to open a JupyterLab workspace on your Pod.
+2. Under **Notebook**, select **Python 3 (ipykernel)**.
+3. Type `print("Hello, world!")` in the first line of the notebook.
+4. Click the play button to run your code.
+
+And that's it—congrats! You just ran your first line of code on Runpod.
+
+## Step 5: Clean up
+
+To avoid incurring unnecessary charges, follow these steps to clean up your Pod resources:
+
+1. Return to the [Pods page](https://www.console.runpod.io/pods) and click your running Pod.
+2. Click the **Stop** button (pause icon) to stop your Pod.
+3. Click **Stop Pod** in the modal that opens to confirm.
+
+You'll still be charged a small amount for storage on stopped Pods (\$0.20 per GB per month). If you don't need to retain any data on your Pod, you should terminate it completely.
+
+To terminate your Pod:
+
+1. Click the **Terminate** button (trash icon).
+2. Click **Terminate Pod** to confirm.
+
+<Warning>
+  Terminating a Pod permanently deletes all data that isn't stored in a [network volume](/storage/network-volumes). Be sure that you've saved any data you might need to access again.
+
+  To learn more about how storage works, see the [Pod storage overview](/pods/storage/types).
+</Warning>
+
+## Next steps
+
+Now that you've learned the basics, you're ready to:
+
+* [Generate API keys](/get-started/api-keys) for programmatic resource management.
+* Experiment with various options for [accessing and managing Runpod resources](/get-started/connect-to-runpod).
+* Learn how to [choose the right Pod](/pods/choose-a-pod) for your workload.
+* Review options for [Pod pricing](/pods/pricing).
+* [Explore our tutorials](/tutorials/introduction/overview) for specific AI/ML use cases.
+* Start building production-ready applications with [Runpod Serverless](/serverless/overview).
+
+## Need help?
+
+* Join the Runpod community [on Discord](https://discord.gg/cUpRmau42V).
+* Submit a support request using our [contact page](https://contact.runpod.io/hc/requests/new).
+* Reach out to us via [email](mailto:help@runpod.io).
