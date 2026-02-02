@@ -14,7 +14,7 @@ The Runpod SDK includes a built-in validation utility that ensures your handler 
 
 To use the validation features, import the `validate` function from the utils module:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 from runpod.serverless.utils.rp_validator import validate
 ```
 
@@ -22,7 +22,7 @@ from runpod.serverless.utils.rp_validator import validate
 
 You define your validation rules using a dictionary where each key represents an expected input field. This schema dictates the data types, necessity, and constraints for the incoming data.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 schema = {
     "text": {
         "type": str,
@@ -48,7 +48,7 @@ The schema supports several configuration keys:
 
 When implementing validation in your handler, pass the input object and your schema to the `validate` function. The function returns a dictionary containing either an `errors` key or a `validated_input` key.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import runpod
 from runpod.serverless.utils.rp_validator import validate
 

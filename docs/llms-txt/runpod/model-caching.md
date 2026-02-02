@@ -1,6 +1,7 @@
 # Source: https://docs.runpod.io/serverless/endpoints/model-caching.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -72,7 +73,8 @@ If no cached host machines are available, the system delays starting your worker
       style Ready2 fill:#ecc94b,stroke:#ecc94b,color:#000000,stroke-width:2px
 
       linkStyle default stroke-width:2px,stroke:#5F4CFE
-  ```
+  ```mermaid
+
 </div>
 
 ## Enable cached models
@@ -123,13 +125,13 @@ Cached models are available to your workers at `/runpod-volume/huggingface-cache
 
 The path structure follows this pattern:
 
-```
+```text
 /runpod-volume/huggingface-cache/hub/models--HF_ORGANIZATION--MODEL_NAME/snapshots/VERSION_HASH/
 ```
 
 For example, the model `gensyn/qwen2.5-0.5b-instruct` would be stored at:
 
-```
+```text
 /runpod-volume/huggingface-cache/hub/models--gensyn--qwen2.5-0.5b-instruct/snapshots/317b7eb96312eda0c431d1dab1af958a308cb35e/
 ```
 

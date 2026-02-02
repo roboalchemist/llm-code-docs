@@ -172,7 +172,7 @@ To use this method, your Pod must have a public IP address and expose TCP port 2
 
 To quickly set up password-based SSH, run this command to download and execute a [helper script](https://github.com/justinwlin/Runpod-SSH-Password/blob/main/passwordrunpod.sh) for password setup:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash}
 wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/main/passwordrunpod.sh && chmod +x passwordrunpod.sh && ./passwordrunpod.sh
 ```
 
@@ -184,7 +184,7 @@ wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/main/passw
 
 After running the script and entering a password, you'll see example commands for SSH or SCP which you can use to connect to your Pod and transfer files from your local machine:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash}
 ========================================
 SSH CONNECTION
 ========================================

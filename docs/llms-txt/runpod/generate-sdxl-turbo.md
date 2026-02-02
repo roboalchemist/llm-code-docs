@@ -1,6 +1,6 @@
 # Source: https://docs.runpod.io/tutorials/serverless/generate-sdxl-turbo.md
 
-> ## Documentation Index
+
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 

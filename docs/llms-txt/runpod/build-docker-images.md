@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/tutorials/pods/build-docker-images.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Build Docker Images on Runpod with Bazel
+
+## Build Docker Images on Runpod with Bazel
 
 Runpod's GPU Pods use custom Docker images to run your code. This means you can't directly spin up your own Docker instance or build Docker containers on a GPU Pod. Tools like Docker Compose are also unavailable.
 
@@ -14,7 +16,7 @@ Fortunately, many use cases can be addressed by creating a custom template with 
 
 In this tutorial, you'll learn how to use the [Bazel](https://bazel.build) build tool to build and push Docker images from inside a Runpod container.
 
-By the end of this tutorial, you’ll be able to build custom Docker images on Runpod and push them to Docker Hub for use in your own templates.
+By the end of this tutorial, you'll be able to build custom Docker images on Runpod and push them to Docker Hub for use in your own templates.
 
 ## Prerequisites
 

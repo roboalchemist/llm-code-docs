@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-update.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# update
+## update
 
 Update `runpodctl` to the latest version to access new features and bug fixes.
 

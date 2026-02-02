@@ -39,14 +39,14 @@ Before you begin you'll need:
 
 Start by creating a new directory for your project:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 mkdir vllm_worker
 cd vllm_worker
 ```
 
 Then, create the following files and directories:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 touch Dockerfile
 touch requirements.txt
 mkdir src
@@ -57,7 +57,7 @@ touch src/utils.py
 
 Your project structure should now look like this:
 
-```
+```text
 vllm_worker/
 ├── Dockerfile
 ├── requirements.txt
@@ -73,7 +73,7 @@ We'll start by creating the data models that define the structure of your API. T
 
 Add the following code to `src/models.py`:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 from typing import Optional, List, Union, Literal
 from pydantic import BaseModel, Field
 
@@ -123,7 +123,7 @@ Next, we'll create a few helper functions to support the main application. These
 
 Add the following code to `src/utils.py`:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 from typing import List
 from transformers import AutoTokenizer
 from .models import ChatMessage, ErrorResponse
@@ -175,7 +175,7 @@ Now we'll build the main application file, `src/handler.py`. This file acts as t
 
 Add the following code to `src/handler.py`:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 from fastapi import FastAPI, HTTPException, status
 from fastapi.responses import StreamingResponse, JSONResponse
 from contextlib import asynccontextmanager
@@ -466,7 +466,7 @@ With the application code complete, we still need to define its dependencies and
 
 1. Add the following dependencies to `requirements.txt`:
 
-   ```
+   ```text
    ray
    pandas
    pyarrow
@@ -482,7 +482,7 @@ With the application code complete, we still need to define its dependencies and
 
 2. Add the following build steps to your `Dockerfile`:
 
-   ```dockerfile  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```dockerfile
    FROM nvidia/cuda:12.1.0-base-ubuntu22.04 
 
    RUN apt-get update -y \
@@ -517,7 +517,7 @@ With the application code complete, we still need to define its dependencies and
 
 Build and push your Docker image to a container registry:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 # Build the image
 docker build --platform linux/amd64 -t YOUR_DOCKER_USERNAME/vllm-loadbalancer:v1.0 . 
 
@@ -533,9 +533,11 @@ Now, let's deploy our application to a Serverless endpoint:
 2. Click **New Endpoint**
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL:
-   ```
+
+   ```text
    YOUR_DOCKER_USERNAME/vllm-loadbalancer:v1.0
    ```
+
    Then click **Next**.
 5. Give your endpoint a name.
 6. Under **Endpoint Type**, select **Load Balancer**.
@@ -551,7 +553,7 @@ Now, let's deploy our application to a Serverless endpoint:
 
 Once your endpoint has finished deploying, you can access your vLLM APIs at:
 
-```
+```text
 https://ENDPOINT_ID.api.runpod.ai/PATH
 ```
 
@@ -565,7 +567,7 @@ Use the curl commands below to make test requests to your vLLM load balancer, re
 
 To run a health check:
 
-```bash ping theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 curl -X GET "https://ENDPOINT_ID.api.runpod.ai/ping" \
     -H 'Authorization: Bearer RUNPOD_API_KEY' \
     -H "Content-Type: application/json" \
@@ -573,7 +575,7 @@ curl -X GET "https://ENDPOINT_ID.api.runpod.ai/ping" \
 
 For text completions:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 curl -X POST "https://ENDPOINT_ID.api.runpod.ai/v1/completions" \
      -H 'Authorization: Bearer RUNPOD_API_KEY' \
      -H 'Content-Type: application/json' \
@@ -582,7 +584,7 @@ curl -X POST "https://ENDPOINT_ID.api.runpod.ai/v1/completions" \
 
 For chat completions:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 curl -X POST "https://ENDPOINT_ID.api.runpod.ai/v1/chat/completions" \
      -H 'Authorization: Bearer RUNPOD_API_KEY' \
      -H 'Content-Type: application/json' \

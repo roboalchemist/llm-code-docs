@@ -30,7 +30,7 @@ Each vLLM command-line argument has a corresponding environment variable. Conver
 
 To launch a Mistral model using the vLLM CLI, you would run a command similar to this:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 vllm serve mistralai/Ministral-8B-Instruct-2410 \
   --tokenizer_mode mistral \
   --config_format mistral \

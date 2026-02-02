@@ -26,7 +26,7 @@ The logging levels available are:
 
 The easiest way to write logs is using Python's `logging` library. Logs written to stdout or stderr are automatically captured by Runpod and displayed in the console.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import logging
 import os
 import runpod
@@ -111,7 +111,7 @@ Endpoint logs are retained for 90 days, after which they are automatically remov
 
 Write logs to a network volume attached to your endpoint for long-term retention.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import logging
 import os
 import runpod
@@ -189,7 +189,7 @@ To access logs stored in network volumes:
 
 Structured logging outputs logs in a machine-readable format (typically JSON) that makes it easier to parse, search, and analyze logs programmatically. This is especially useful when exporting logs to external services or analyzing large volumes of logs.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import logging
 import json
 import runpod
@@ -240,7 +240,7 @@ runpod.serverless.start({"handler": handler})
 
 This produces logs in this format:
 
-```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```json}
 {"level": "INFO", "message": "Processing request", "request_id": "abc123", "input_keys": ["prompt", "max_length"]}
 {"level": "INFO", "message": "Request completed", "request_id": "abc123", "execution_time_ms": 123}
 ```

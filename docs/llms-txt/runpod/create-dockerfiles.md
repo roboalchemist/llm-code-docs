@@ -1,14 +1,14 @@
 # Source: https://docs.runpod.io/tutorials/introduction/containers/create-dockerfiles.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Dockerfile
 
 In the previous step, you ran a command that prints the container's uptime. Now you'll create a Dockerfile to customize the contents of your own Docker image.
 
-### Create a Dockerfile
+## Create a Dockerfile
 
 Create a new file called `Dockerfile` and add the following items.
 
@@ -31,29 +31,31 @@ echo "The time is: $(date)"
 ```
 
 <Info>
-  While we named this script `entrypoint.sh` you will see a variety of naming conventions; such as:
 
-  * `start.sh`
-  * `CMD.sh`
-  * `entry_path.sh`
+While we named this script `entrypoint.sh` you will see a variety of naming conventions; such as:
 
-  These files are normally placed in a folder called `script` but it is dependent on the maintainers of that repository.
+- `start.sh`
+- `CMD.sh`
+- `entry_path.sh`
+
+These files are normally placed in a folder called `script` but it is dependent on the maintainers of that repository.
+
 </Info>
 
 This is a simple script that will print the current time when the container starts.
 
 ### Why an entrypoint script:
 
-* It lets you customize what command gets run when a container starts from your image.
-* For example, our script runs date to print the time.
-* Without it, containers would exit immediately after starting.
-* Entrypoints make images executable and easier to reuse.
+- It lets you customize what command gets run when a container starts from your image.
+- For example, our script runs date to print the time.
+- Without it, containers would exit immediately after starting.
+- Entrypoints make images executable and easier to reuse.
 
 ## Build the image
 
 With those files created, we can now build a Docker image using our Dockerfile:
 
-```
+```bash
 docker image build -t my-time-image .
 ```
 
@@ -61,19 +63,19 @@ This will build the image named `my-time-image` from the Dockerfile in the curre
 
 ### Why build a custom image:
 
-* Lets you package up custom dependencies and configurations.
-* For example you can install extra software needed for your app.
-* Makes deploying applications more reliable and portable.
-* Instead of installing things manually on every server, just use your image.
-* Custom images can be shared and reused easily across environments.
-* Building images puts your application into a standardized unit that "runs anywhere".
-* You can version images over time as you update configurations.
+- Lets you package up custom dependencies and configurations.
+- For example you can install extra software needed for your app.
+- Makes deploying applications more reliable and portable.
+- Instead of installing things manually on every server, just use your image.
+- Custom images can be shared and reused easily across environments.
+- Building images puts your application into a standardized unit that "runs anywhere".
+- You can version images over time as you update configurations.
 
 ## Run the image
 
 Finally, let's run a container from our new image:
 
-```
+```bash
 docker run my-time-image
 ```
 

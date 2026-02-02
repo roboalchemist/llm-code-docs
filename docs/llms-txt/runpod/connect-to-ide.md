@@ -35,19 +35,19 @@ Before you can connect to a Pod, you'll need an SSH key that is paired with your
 
 1. Generate an SSH key using this command on your local terminal:
 
-   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```sh
    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "YOUR_EMAIL@DOMAIN.COM"
    ```
 
 2. To retrieve your public SSH key, run this command:
 
-   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```sh
    cat ~/.ssh/id_ed25519.pub
    ```
 
    This will output something similar to this:
 
-   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```sh
    ssh-ed25519 AAAAC4NzaC1lZDI1JTE5AAAAIGP+L8hnjIcBqUb8NRrDiC32FuJBvRA0m8jLShzgq6BQ YOUR_EMAIL@DOMAIN.COM
    ```
 
@@ -58,7 +58,7 @@ Before you can connect to a Pod, you'll need an SSH key that is paired with your
 
   If your Pod is already running when you upload the key, the system will not perform this injection. To enable SSH access, you'll need to either terminate/redeploy the Pod, or open a [web terminal](/pods/connect-to-a-pod#web-terminal-connection) on the running Pod and run the following commands:
 
-  ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+  ```sh
   export PUBLIC_KEY="<the value you cat out locally>"
   echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys
   ```
@@ -86,7 +86,7 @@ Next, you'll configure SSH access to your Pod using the Remote-SSH extension. Th
 
     3. Copy the second command, under **SSH over exposed TCP**. It will look similar to this:
 
-       ```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+       ```bash
        ssh root@123.456.789.80 -p 12345 -i ~/.ssh/id_ed25519
        ```
 
@@ -204,6 +204,6 @@ If the VSCode/Cursor server fails to install:
 1. Check that your Pod has sufficient disk space.
 2. Ensure your Pod has internet connectivity.
 3. Try manually removing the `.vscode-server` or `.cursor-server` directory and reconnecting:
-   ```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```sh
    rm -rf ~/.vscode-server
    ```

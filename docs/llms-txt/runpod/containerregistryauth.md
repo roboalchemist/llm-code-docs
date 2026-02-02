@@ -10,8 +10,6 @@
 
 > Returns a list of container registry auths.
 
-
-
 ## OpenAPI
 
 ````yaml GET /containerregistryauth

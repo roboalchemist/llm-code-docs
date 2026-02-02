@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-ssh-add-key.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# ssh add-key
+## ssh add-key
 
 Add an SSH public key to your Runpod account for secure Pod access. If no key is provided, a new key pair will be generated automatically.
 

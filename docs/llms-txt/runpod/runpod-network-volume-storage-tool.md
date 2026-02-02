@@ -1,12 +1,12 @@
 # Source: https://docs.runpod.io/community-solutions/runpod-network-volume-storage-tool.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Network volume storage tool
+## Network volume storage tool
 
-> A command-line tool for managing Runpod network storage volumes and files
+A command-line tool for managing Runpod network storage volumes and files
 
 GitHub repository: [github.com/justinwlin/Runpod-Network-Volume-Storage-Tool](https://github.com/justinwlin/Runpod-Network-Volume-Storage-Tool)
 

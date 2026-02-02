@@ -28,7 +28,7 @@ import torch
 from diffusers import StableDiffusionPipeline
 from io import BytesIO
 import base64
-```
+```text
 
 Here’s a breakdown of the imports:
 
@@ -43,7 +43,7 @@ Next, confirm that CUDA is available, as the model requires a GPU to function ef
 assert (
     torch.cuda.is_available()
 ), "CUDA is not available. Make sure you have a GPU instance."
-```
+```text
 
 This assertion checks whether a compatible NVIDIA GPU is available for PyTorch to use.
 
@@ -57,7 +57,7 @@ def load_model():
     pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
     pipe = pipe.to("cuda")
     return pipe
-```
+```text
 
 Here's what this function does:
 
@@ -74,7 +74,7 @@ def image_to_base64(image):
     buffered = BytesIO()
     image.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
-```
+```text
 
 Explanation:
 
@@ -111,7 +111,7 @@ def stable_diffusion_handler(event):
 
     except Exception as e:
         return {"error": str(e)}
-```
+```text
 
 Key steps in the function:
 
@@ -127,7 +127,7 @@ Now, we'll start the serverless worker using the Runpod SDK.
 
 ```python stable_diffusion.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": stable_diffusion_handler})
-```
+```text
 
 This command starts the serverless worker and specifies the `stable_diffusion_handler` function to handle incoming requests.
 
@@ -183,7 +183,7 @@ def stable_diffusion_handler(event):
 
 
 runpod.serverless.start({"handler": stable_diffusion_handler})
-```
+```text
 
 ## Testing Locally
 
@@ -195,13 +195,13 @@ Before deploying on Runpod, you might want to test the script locally. Create a 
     "prompt": "A serene landscape with mountains and a lake at sunset"
   }
 }
-```
+```text
 
 Run the script with the following command:
 
-```
+```text
 python stable_diffusion.py --rp_server_api
-```
+```text
 
 Note: Local testing may not work optimally without a suitable GPU. If issues arise, proceed to deploy and test on Runpod.
 

@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/tutorials/sdks/python/101/aggregate.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Aggregating outputs in Runpod serverless functions
+
+## Aggregating outputs in Runpod serverless functions
 
 This tutorial will guide you through using the `return_aggregate_stream` feature in Runpod to simplify result handling in your serverless functions. Using `return_aggregate_stream` allows you to automatically collect and aggregate all yielded results from a generator handler into a single response. This simplifies result handling, making it easier to manage and return a consolidated set of results from asynchronous tasks, such as concurrent sentiment analysis or object detection, without needing additional code to collect and format the results manually.
 

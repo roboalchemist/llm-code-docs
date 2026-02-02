@@ -17,13 +17,13 @@ If you see a "Token authentication is enabled" screen when trying to access your
 3. Click **Start**, then open the web terminal.
 4. In the terminal, run the following command to get the JupyterLab server token:
 
-   ```
+   ```bash
    jupyter server list
    ```
 
 You should see output similar to this:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 root@2779b5db68b8:/# jupyter server list
 Currently running servers:
 http://localhost:8888/?token=ua5nw5fwkdzseqpp5apj :: /

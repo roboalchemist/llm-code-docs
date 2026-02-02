@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/serverless/workers/deploy.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Deploy workers from Docker Hub
 

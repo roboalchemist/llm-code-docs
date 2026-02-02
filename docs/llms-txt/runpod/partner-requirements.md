@@ -12,11 +12,11 @@ This document outlines the specifications required to be a Runpod secure cloud p
 
 Meeting these technical and operational requirements does not guarantee selection.
 
-*New partners*
+### New partners
 
 * All specifications will apply to new partners on November 1, 2024.
 
-*Existing partners*
+### Existing partners
 
 * Hardware specifications (Sections 1, 2, 3, 4) will apply to new servers deployed by existing partners on December 15, 2024.
 * Compliance specification (Section 5) will apply to existing partners on April 1, 2025.
@@ -151,7 +151,7 @@ Once a storage cluster exceeds 90% single core CPU on the leader node during pea
 
 Each datacenter should have a CPU server that to accommodate CPU-only Pods and Serverless workers. Runpod will also use this server to host additional features for which a GPU is not required (e.g., the [S3-compatible API](/serverless/storage/s3-api)).
 
-### Baseline Cluster Specifications
+### Multi-Datacenter Cluster Specifications
 
 | Component            | Requirement                                   |
 | -------------------- | --------------------------------------------- |
@@ -160,14 +160,14 @@ Each datacenter should have a CPU server that to accommodate CPU-only Pods and S
 | Connectivity         | 200 Gbps between servers/data-plane           |
 | Network              | Private subnet; public IP and >990 ports open |
 
-### Server Specifications
+### Cluster Server Specifications
 
 | Component | Requirement                                                                      |
 | --------- | -------------------------------------------------------------------------------- |
 | CPU       | AMD EPYC 9004 'Genoa' Zen 4 or better with minimum 32 cores. 3+ GHz clock speed. |
 | RAM       | 1 TB or higher, DDR5/ECC                                                         |
 
-#### Storage
+#### Server Storage
 
 | Component                          | Requirement                          |
 | ---------------------------------- | ------------------------------------ |

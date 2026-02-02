@@ -1,6 +1,7 @@
 # Source: https://docs.runpod.io/references/troubleshooting/manage-payment-cards.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -10,7 +11,7 @@
 
 Payment card declines can occur when adding funds to your Runpod account. Credit card processors apply stringent fraud detection standards, particularly for international transactions. This document provides guidance to help you troubleshoot payment issues.
 
-**Keep your balance topped up**
+## Keep your balance topped up
 
 To prevent service interruptions, refresh your balance at least a few days before it runs out. This gives you time to address any payment delays.
 

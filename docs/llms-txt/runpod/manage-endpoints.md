@@ -1,6 +1,7 @@
 # Source: https://docs.runpod.io/sdks/graphql/manage-endpoints.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -209,7 +210,7 @@ Note that your endpoint's min and max workers must both be set to zero for your 
   <Tab title="cURL">
     ```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
-    	--header 'content-type: application/json' \
+      --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { deleteEndpoint(id: \"i02xupws21hp6i\") }"}'
     ```

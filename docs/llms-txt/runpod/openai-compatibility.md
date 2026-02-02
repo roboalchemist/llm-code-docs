@@ -151,7 +151,7 @@ print()
 
 The `/completions` endpoint is designed for base LLMs and text completion tasks.
 
-#### Non-streaming request
+#### Non-streaming text completion request
 
 Here's how you can make a text completion request:
 
@@ -168,7 +168,7 @@ response = client.completions.create(
 print(response.choices[0].text)
 ```
 
-#### Response format
+#### Text completion response format
 
 The API returns responses in this JSON format:
 
@@ -194,7 +194,7 @@ The API returns responses in this JSON format:
 }
 ```
 
-#### Streaming request
+#### Streaming text completion request
 
 ```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 # Create a completion stream
@@ -221,7 +221,7 @@ list_of_models = [model.id for model in models_response]
 print(list_of_models)
 ```
 
-#### Response format
+#### Models list response format
 
 ```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 {

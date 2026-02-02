@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/tutorials/sdks/python/101/error.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Implementing error handling and logging in Runpod serverless functions
 

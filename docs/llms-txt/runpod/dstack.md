@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/integrations/dstack.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Manage Pods with dstack on Runpod
 
@@ -23,10 +23,12 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 * These instructions are applicable for macOS, Linux, and Windows systems.
 
 <Info>
-  **Windows Users**
 
-  * It's recommended to use [WSL (Windows Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install) or tools like [Git Bash](https://gitforwindows.org/) to follow along with the Unix-like commands used in this tutorial
-  * Alternatively, Windows users can use PowerShell or Command Prompt and adjust commands accordingly
+### Windows Users
+
+* It's recommended to use [WSL (Windows Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install) or tools like [Git Bash](https://gitforwindows.org/) to follow along with the Unix-like commands used in this tutorial
+* Alternatively, Windows users can use PowerShell or Command Prompt and adjust commands accordingly
+
 </Info>
 
 ## Installation
@@ -334,7 +336,7 @@ dstack apply
 
 * Wait until you see logs indicating that vLLM is serving the model, such as:
 
-  ```
+  ```bash
   INFO: Started server process [1]
   INFO: Waiting for application startup.
   INFO: Application startup complete.
@@ -445,7 +447,7 @@ In the terminal where you ran `dstack apply`, you can stop the task by pressing 
 
 You'll be prompted:
 
-```
+```bash
 Stop the run vllm-llama-3.1-8b-instruct before detaching? [y/n]:
 ```
 

@@ -24,7 +24,7 @@ vLLM endpoints support both synchronous and asynchronous requests.
 
 Use `/run` to submit a job that processes in the background. You'll receive a job ID immediately, then poll for results using the `/status` endpoint.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 
 import requests
 
@@ -54,7 +54,7 @@ print(f"Job ID: {job_id}")
 
 Use `/runsync` to wait for the complete response in a single request. The client blocks until processing is complete.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import requests
 
 # Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
@@ -88,7 +88,7 @@ vLLM workers accept two input formats for text generation.
 
 Use the messages format for instruction-tuned models that expect conversation history. The worker automatically applies the model's chat template.
 
-```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```json}
 {
   "input": {
     "messages": [
@@ -107,7 +107,7 @@ Use the messages format for instruction-tuned models that expect conversation hi
 
 Use the prompt format for base models or when you want to provide raw text without a chat template.
 
-```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```json}
 {
   "input": {
     "prompt": "The capital of France is",
@@ -123,7 +123,7 @@ Use the prompt format for base models or when you want to provide raw text witho
 
 If you use the prompt format but want the model's chat template applied, set `apply_chat_template` to `true`.
 
-```json  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```json}
 {
   "input": {
     "prompt": "What is the capital of France?",
@@ -182,7 +182,7 @@ Sampling parameters control how the model generates text. Include them in the `s
 
 Enable streaming to receive tokens as they're generated instead of waiting for the complete response.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import requests
 import json
 
@@ -221,7 +221,7 @@ For more information on streaming, see the [stream operation documentation](/ser
 
 Implement proper error handling to manage network timeouts, rate limiting, worker initialization delays, and model loading errors.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python}
 import requests
 import time
 

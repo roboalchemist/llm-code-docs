@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/serverless/load-balancing/build-a-worker.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Build a load balancing worker
+
+## Build a load balancing worker
 
 > Learn how to implement and deploy a load balancing worker with FastAPI.
 
@@ -99,8 +101,8 @@ This simple application defines the following endpoints:
 
 Now, let's create a `Dockerfile` to package our application:
 
-```
-FROM nvidia/cuda:12.1.0-base-ubuntu22.04 
+```dockerfile
+FROM nvidia/cuda:12.1.0-base-ubuntu22.04
 
 RUN apt-get update -y \
     && apt-get install -y python3-pip
@@ -120,7 +122,7 @@ CMD ["python3", "app.py"]
 
 You'll also need to create a `requirements.txt` file:
 
-```
+```text
 fastapi==0.95.1
 uvicorn==0.22.0
 pydantic==1.10.7
@@ -146,9 +148,11 @@ Now, let's deploy our application to a Serverless endpoint:
 2. Click **New Endpoint**
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL:
-   ```
+
+   ```text
    YOUR_DOCKER_USERNAME/loadbalancer-example:v1.0
    ```
+
    Then click **Next**.
 5. Give your endpoint a name.
 6. Under **Endpoint Type**, select **Load Balancer**.
@@ -160,7 +164,7 @@ Now, let's deploy our application to a Serverless endpoint:
 
 Once your endpoint is created, you can access your custom APIs at:
 
-```
+```text
 https://ENDPOINT_ID.api.runpod.ai/PATH
 ```
 
@@ -191,6 +195,7 @@ Try running one or more of these commands, replacing `ENDPOINT_ID` and `RUNPOD_A
       -H 'Authorization: Bearer RUNPOD_API_KEY' \
       -H "Content-Type: application/json" \
   ```
+
 </CodeGroup>
 
 After sending a request, your workers will take some time to initialize. You can track their progress by checking the logs in the **Workers** tab of your endpoint page.

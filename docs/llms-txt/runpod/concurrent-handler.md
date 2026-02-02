@@ -27,7 +27,7 @@ In this guide you will learn how to:
 
 First, set up a virtual environment and install the necessary packages:
 
-```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```sh
 # Create a Python virtual environment
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
@@ -38,7 +38,7 @@ pip install runpod asyncio
 
 Create a file named `concurrent_handler.py` and add the following code:
 
-```python concurrent_handler.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 import runpod
 import asyncio
 import random
@@ -54,18 +54,17 @@ async def process_request(job):
     #
     # Returns:
     #     str: The processed result
- 
-    
+
     # Extract input data
     job_input = job["input"]
     delay = job_input.get("delay", 1)
-    
+
     # Simulate an asynchronous task (like a database query or API call)
     await asyncio.sleep(delay)
-    
+
     return f"Processed: {job_input}"
 
-# Placeholder code for a dynamic concurrency adjustment function 
+# Placeholder code for a dynamic concurrency adjustment function
 def adjust_concurrency(current_concurrency):
     return 50
 
@@ -96,7 +95,7 @@ Let's enhance our handler with dynamic concurrency adjustment. This will allow y
 
 Replace the placeholder `adjust_concurrency` function with this improved version:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 def adjust_concurrency(current_concurrency):
     # Dynamically adjust the worker's concurrency level based on request load.
     #
@@ -107,23 +106,23 @@ def adjust_concurrency(current_concurrency):
     #     int: The new concurrency level
 
     global request_rate
-    
+
     # In production, this would use real metrics
     update_request_rate()
-    
+
     max_concurrency = 10  # Maximum allowable concurrency
     min_concurrency = 1   # Minimum concurrency to maintain
     high_request_rate_threshold = 50  # Threshold for high request volume
-    
+
     # Increase concurrency if under max limit and request rate is high
-    if (request_rate > high_request_rate_threshold and 
+    if (request_rate > high_request_rate_threshold and
         current_concurrency < max_concurrency):
         return current_concurrency + 1
     # Decrease concurrency if above min limit and request rate is low
-    elif (request_rate <= high_request_rate_threshold and 
+    elif (request_rate <= high_request_rate_threshold and
           current_concurrency > min_concurrency):
         return current_concurrency - 1
-    
+
     return current_concurrency
 ```
 
@@ -139,8 +138,8 @@ Let's break down how this function works:
 
 2. **Scaling up logic**:
 
-   ```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
-   if (request_rate > high_request_rate_threshold and 
+   ```python
+   if (request_rate > high_request_rate_threshold and
        current_concurrency < max_concurrency):
        return current_concurrency + 1
    ```
@@ -152,8 +151,8 @@ Let's break down how this function works:
 
 3. **Scaling down logic**:
 
-   ```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
-   elif (request_rate <= high_request_rate_threshold and 
+   ```python
+   elif (request_rate <= high_request_rate_threshold and
          current_concurrency > min_concurrency):
        return current_concurrency - 1
    ```
@@ -165,7 +164,7 @@ Let's break down how this function works:
 
 4. **Default behavior**:
 
-   ```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+   ```python
    return current_concurrency
    ```
 
@@ -177,7 +176,7 @@ With these enhancements, your concurrent handler will now dynamically adjust its
 
 Now we're ready to test our handler. Create a file named `test_input.json` to test your handler locally:
 
-```json test_input.json theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```json
 {
     "input": {
         "message": "Test concurrent processing",
@@ -190,13 +189,13 @@ Now we're ready to test our handler. Create a file named `test_input.json` to te
 
 Run your handler to verify that it works correctly:
 
-```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```sh
 python concurrent_handler.py
 ```
 
 You should see output similar to this:
 
-```sh  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```sh
 --- Starting Serverless Worker |  Version 1.7.9 ---
 INFO   | Using test_input.json as job input.
 DEBUG  | Retrieved local job: {'input': {'message': 'Test concurrent processing', 'delay': 0.5}, 'id': 'local_test'}
@@ -212,7 +211,7 @@ INFO   | Local testing complete, exiting.
 
 In a production environment, you should to replace the `update_request_rate` function with real metrics collection. Here is an example how you could build this functionality:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 def update_request_rate(request_history):
     # Collects real metrics about request patterns.
     #
@@ -223,16 +222,16 @@ def update_request_rate(request_history):
     #     int: The new request rate
 
     global request_rate
-    
+
     # Option 1: Track request count over a time window
     current_time = time.time()
     # Count requests in the last minute
     recent_requests = [r for r in request_history if r > current_time - 60]
     request_rate = len(recent_requests)
-    
+
     # Option 2: Use an exponential moving average
     # request_rate = 0.9 * request_rate + 0.1 * new_requests
-    
+
     # Option 3: Read from a shared metrics service like Redis
     # request_rate = redis_client.get('recent_request_rate')
 ```

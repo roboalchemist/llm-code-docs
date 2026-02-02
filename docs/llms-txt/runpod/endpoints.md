@@ -10,14 +10,13 @@
 
 # Source: https://docs.runpod.io/api-reference/billing/GET/billing/endpoints.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Serverless billing history
 
 > Retrieve billing information about your Serverless endpoints.
-
 
 
 ## OpenAPI

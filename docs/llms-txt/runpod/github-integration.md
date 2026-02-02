@@ -1,6 +1,6 @@
 # Source: https://docs.runpod.io/serverless/workers/github-integration.md
 
-> ## Documentation Index
+
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -93,7 +93,7 @@ For detailed instructions on creating releases, see the [GitHub documentation](h
 
 Roll back your endpoint to any previous build directly from the Runpod console. This restores your endpoint to an earlier version without waiting for a new GitHub release.
 
-### Requirements
+### Rollback requirements
 
 To roll back an endpoint, you need:
 

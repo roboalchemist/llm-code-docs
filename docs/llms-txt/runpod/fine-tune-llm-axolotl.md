@@ -1,13 +1,15 @@
 # Source: https://docs.runpod.io/tutorials/pods/fine-tune-llm-axolotl.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Fine tune an LLM with Axolotl on Runpod
 
 <Info>
-  Runpod provides an easier method to fine tune an LLM. For more information, see [Fine tune a model](/fine-tune/).
+
+Runpod provides an easier method to fine tune an LLM. For more information, see [Fine tune a model](/fine-tune/).
+
 </Info>
 
 [axolotl](https://github.com/OpenAccess-AI-Collective/axolotl) is a tool that simplifies the process of training large language models (LLMs). It provides a streamlined workflow that makes it easier to fine-tune AI models on various configurations and architectures. When combined with Runpod's GPU resources, Axolotl enables you to harness the power needed to efficiently train LLMs.
@@ -16,7 +18,7 @@ In addition to its user-friendly interface, Axolotl offers a comprehensive set o
 
 In this tutorial, we'll walk through the steps of training an LLM using Axolotl on Runpod and uploading your model to Hugging Face.
 
-### Setting up the environment
+## Setting up the environment
 
 Fine-tuning a large language model (LLM) can take up a lot of compute power. Because of this, we recommend fine-tuning using Runpod's GPUs.
 
@@ -31,7 +33,9 @@ To do this, you'll need to create a Pod, specify a container, then you can begin
    5. Select **Deploy**.
 
 <Note>
-  For optimal compatibility, we recommend using A100, H100, V100, or RTX 3090 Pods for Axolotl fine-tuning.
+
+For optimal compatibility, we recommend using A100, H100, V100, or RTX 3090 Pods for Axolotl fine-tuning.
+
 </Note>
 
 Now that you have your Pod set up and running, connect to it over secure SSH.
@@ -48,20 +52,22 @@ Now that you have your Pod set up and running, connect to it over secure SSH.
    Follow the on-screen prompts to SSH into your Pod.
 
 <Info>
-  You should use the SSH connection to your Pod as it is a persistent connection. The Web UI terminal shouldn't be relied on for long-running processes, as it will be disconnected after a period of inactivity.
+
+You should use the SSH connection to your Pod as it is a persistent connection. The Web UI terminal shouldn't be relied on for long-running processes, as it will be disconnected after a period of inactivity.
+
 </Info>
 
 With the Pod deployed and connected via SSH, we're ready to move on to preparing our dataset.
 
-### Preparing the dataset
+## Preparing the dataset
 
 The dataset you provide to your LLM is crucial, as it's the data your model will learn from during fine-tuning. You can make your own dataset that will then be used to fine-tune your own model, or you can use a pre-made one.
 
 To continue, use either a [local dataset](#using-a-local-dataset) or one [stored on Hugging Face](#using-a-hugging-face-dataset).
 
-#### Using a local dataset
+### Using a local dataset
 
-To use a local dataset, you'll need to transfer it to your Runpod instance. You can do this using Runpod CLI to securely transfer files from your local machine to the one hosted by Runpod. All Pods automatically come with `runpodctl` installed with a Pod-scoped API key. **To send a file**
+To use a local dataset, you'll need to transfer it to your Runpod instance. You can do this using Runpod CLI to securely transfer files from your local machine to the one hosted by Runpod. All Pods automatically come with `runpodctl` installed with a Pod-scoped API key. ### To send a file
 
 <Tabs>
   <Tab title="runpodctl">
@@ -83,7 +89,7 @@ To use a local dataset, you'll need to transfer it to your Runpod instance. You 
   </Tab>
 </Tabs>
 
-**To receive a file**
+### To receive a file
 
 <Tabs>
   <Tab title="runpodctl">
@@ -108,7 +114,7 @@ To use a local dataset, you'll need to transfer it to your Runpod instance. You 
 
 Once the local dataset is transferred to your Runpod machine, we can proceed to updating requirements and preprocessing the data.
 
-#### Using a Hugging Face dataset
+### Using a Hugging Face dataset
 
 If your dataset is stored on Hugging Face, you can specify its path in the `lora.yaml` configuration file under the `datasets` key. Axolotl will automatically download the dataset during the preprocessing step.
 
@@ -116,17 +122,19 @@ Review the [configuration file](https://github.com/OpenAccess-AI-Collective/axol
 
 Now update your Runpod machine's requirement and preprocess your data.
 
-### Updating requirements and preprocessing data
+## Updating requirements and preprocessing data
 
 Before you can start training, you'll need to install the necessary dependencies and preprocess our dataset.
 
 <Info>
-  In some cases, your Pod will not contain the Axolotl repository. To add the required repository, run the following commands and then continue with the tutorial:
 
-  ```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
-  git clone https://github.com/OpenAccess-AI-Collective/axolotl
-  cd axolotl
-  ```
+In some cases, your Pod will not contain the Axolotl repository. To add the required repository, run the following commands and then continue with the tutorial:
+
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+git clone https://github.com/OpenAccess-AI-Collective/axolotl
+cd axolotl
+```
+
 </Info>
 
 1. Install the required packages by running the following commands:

@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/tutorials/introduction/containers/docker-commands.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Docker commands
 
@@ -14,7 +14,7 @@ The following is a reference sheet to some of the most commonly used Docker comm
 
 Log in to a registry (like Docker Hub) from the CLI. This saves credentials locally.
 
-```
+```bash
 docker login
 docker login -u myusername
 ```
@@ -34,7 +34,7 @@ docker rmi <image>              # Remove/delete image
 
 `docker run` - Launches a new container from a Docker image. `docker ps` - Prints out a list of containers currently running. `docker logs` - Shows stdout/stderr logs for a specific container. `docker stop/rm` - Stops or totally removes a running container.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run        # Start new container from image
 docker ps         # List running containers
 docker logs       # Print logs from container
@@ -46,13 +46,15 @@ docker rm         # Remove/delete container
 
 `docker build` - Builds a Docker image by reading build instructions from a Dockerfile.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker build                         # Build image from Dockerfile
 docker build --platform=linux/amd64  # Build for specific architecture
 ```
 
 <Info>
-  For the purposes of using Docker with Runpod, you should ensure your build command uses the `--platform=linux/amd64` flag to build for the correct architecture.
+
+For the purposes of using Docker with Runpod, you should ensure your build command uses the `--platform=linux/amd64` flag to build for the correct architecture.
+
 </Info>
 
 ## Volumes
@@ -63,7 +65,7 @@ docker build --platform=linux/amd64  # Build for specific architecture
 
 `docker volume create` - Creates a persisted and managed volume that can outlive containers. `docker run -v` - Mounts a volume into a specific container to allow persisting data past container lifecycle.
 
-```ruby  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker volume create         # Create volume
 docker run -v <vol>:/data    # Mount volume into container
 ```
@@ -72,7 +74,7 @@ docker run -v <vol>:/data    # Mount volume into container
 
 `docker network create` - Creates a custom virtual network for containers to communicate over. `docker run --network=<name>` - Connects a running container to a Docker user-defined network.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker network create           # Create user-defined network
 docker run --network=<name>     # Connect container
 ```

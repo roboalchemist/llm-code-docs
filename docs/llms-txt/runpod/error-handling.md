@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/serverless/development/error-handling.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Error handling
 
@@ -82,7 +82,9 @@ runpod.serverless.start({"handler": handler})
 ## Timeout handling
 
 <Tip>
-  You can also set an execution timeout in your [endpoint settings](/serverless/endpoints/endpoint-configurations#execution-timeout) to automatically terminate a job after a certain amount of time.
+
+You can also set an execution timeout in your [endpoint settings](/serverless/endpoints/endpoint-configurations#execution-timeout) to automatically terminate a job after a certain amount of time.
+
 </Tip>
 
 For long-running operations, you may want to implement timeout logic within your handler. This prevents a job from hanging indefinitely and consuming credits without producing a result.

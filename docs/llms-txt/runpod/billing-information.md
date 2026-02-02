@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/references/billing-information.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Billing information
+
+## Billing information
 
 > Understand how billing works for Pods, storage, network volumes, refunds, and spending limits.
 

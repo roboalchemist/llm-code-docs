@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/serverless/endpoints/endpoint-configurations.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Endpoint settings
 
@@ -11,7 +11,9 @@
 This guide details the configuration options available for Runpod Serverless endpoints. These settings control how your endpoint scales, how it utilizes hardware, and how it manages request lifecycles.
 
 <Note>
-  Some settings can only be updated after deploying your endpoint. For instructions on modifying an existing endpoint, see [Edit an endpoint](/serverless/endpoints/overview#edit-an-endpoint).
+
+Some settings can only be updated after deploying your endpoint. For instructions on modifying an existing endpoint, see [Edit an endpoint](/serverless/endpoints/overview#edit-an-endpoint).
+
 </Note>
 
 ## General configuration

@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-remove-pods.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# remove pods
+## remove pods
 
 Terminate multiple Pods that share the same name. This is useful for cleaning up groups of Pods created with the `create pods` command.
 

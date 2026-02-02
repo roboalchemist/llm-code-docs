@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/serverless/development/dual-mode-worker.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Pod-first development
 
@@ -13,7 +13,9 @@ Developing machine learning applications often requires powerful GPUs, making lo
 This "Pod-first" workflow lets you develop and test interactively in a GPU environment, then seamlessly transition to Serverless for production. You'll use a Pod as your cloud-based development machine with tools like Jupyter Notebooks and SSH, catching issues early before deploying your worker to Serverless.
 
 <Tip>
-  To get started quickly, you can [clone this repository](https://github.com/justinwlin/Runpod-GPU-And-Serverless-Base) for a pre-configured template for a dual-mode worker.
+
+To get started quickly, you can [clone this repository](https://github.com/justinwlin/Runpod-GPU-And-Serverless-Base) for a pre-configured template for a dual-mode worker.
+
 </Tip>
 
 ## What you'll learn

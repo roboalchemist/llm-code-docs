@@ -10,8 +10,6 @@
 
 > Delete a container registry auth.
 
-
-
 ## OpenAPI
 
 ````yaml DELETE /containerregistryauth/{containerRegistryAuthId}

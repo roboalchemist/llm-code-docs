@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-send.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# send
+## send
 
 Transfer files or folders from your local machine to a Pod or another computer using a secure peer-to-peer connection.
 

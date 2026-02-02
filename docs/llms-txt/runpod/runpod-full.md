@@ -100,7 +100,7 @@ Create a new endpoint.
 
 
 
-# Update an endpoint
+# Update an endpoint (2)
 Source: https://docs.runpod.io/api-reference/endpoints/POST/endpoints/endpointId/update
 
 POST /endpoints/{endpointId}/update
@@ -148,7 +148,7 @@ Create a new network volume.
 
 
 
-# Update a network volume
+# Update a network volume (2)
 Source: https://docs.runpod.io/api-reference/network-volumes/POST/networkvolumes/networkVolumeId/update
 
 POST /networkvolumes/{networkVolumeId}/update
@@ -196,10 +196,12 @@ You can get the complete OpenAPI specification for the Runpod API using the `/op
 The schema includes all available endpoints, request and response formats, authentication requirements, and data models.
 
 <CodeGroup>
+
   ```bash cURL theme={"theme":{"light":"github-light","dark":"github-dark"}}
   curl --request GET \
     --url https://rest.runpod.io/v1/openapi.json \
     --header 'Authorization: Bearer RUNPOD_API_KEY'
+
   ```
 
   ```python Python theme={"theme":{"light":"github-light","dark":"github-dark"}}
@@ -209,7 +211,9 @@ The schema includes all available endpoints, request and response formats, authe
   headers = {"Authorization": "Bearer RUNPOD_API_KEY"}
   response = requests.get(url, headers=headers)
   print(response.json())
+
   ```
+
 </CodeGroup>
 
 The endpoint returns the OpenAPI 3.0 specification in JSON format. You can use it with tools like Swagger UI, Postman, or code generation utilities.
@@ -289,7 +293,7 @@ Stop a Pod.
 
 
 
-# Update a Pod
+# Update a Pod (2)
 Source: https://docs.runpod.io/api-reference/pods/POST/pods/podId/update
 
 POST /pods/{podId}/update
@@ -337,7 +341,7 @@ Create a new template.
 
 
 
-# Update a template
+# Update a template (2)
 Source: https://docs.runpod.io/api-reference/templates/POST/templates/templateId/update
 
 POST /templates/{templateId}/update
@@ -458,7 +462,7 @@ For more details on managing deployments and monitoring builds, see [Deploy work
 <AccordionGroup>
   <Accordion title="Wrong workflow export format">
     **Problem:** The tool shows an error or doesn't detect my workflow properly.
-    **Solution:**
+### Solution:
 
     1. Make sure you exported using **Comfy → File → Export** (not the API
        export).
@@ -474,7 +478,7 @@ For more details on managing deployments and monitoring builds, see [Deploy work
     **Problem:** The generated Dockerfile doesn't include all your custom nodes
     or models.
 
-    **Solution:**
+### Solution: (2)
 
     1. Review the analysis results to see what was detected.
 
@@ -516,7 +520,7 @@ For a video demonstration, you can watch the [creator's YouTube tutorial](https:
   Check the repository for additional features, updates, and documentation: [github.com/9001/copyparty](https://github.com/9001/copyparty)
 </Note>
 
-## Requirements
+## Requirements (2)
 
 To use CopyParty on Runpod, you need:
 
@@ -555,7 +559,7 @@ Navigate to your Pod page and locate the settings:
 ### Step 2: Add an HTTP port
 
 <Warning>
-  **Adding a new port will restart your Pod and erase any data not stored in `/workspace`**
+### Adding a new port will restart your Pod and erase any data not stored in `/workspace`
 
   Before proceeding, ensure all important files are saved in `/workspace` or backed up elsewhere. Any installed libraries or files outside of `/workspace` will be lost.
 </Warning>
@@ -574,6 +578,7 @@ Run CopyParty directly (the session will end if you close the terminal):
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 curl -LsSf https://astral.sh/uv/install.sh | sh && source $HOME/.local/bin/env && uv tool run copyparty -p 8000 --allow-csrf
+
 ```
 
 Replace `-p 8000` with your chosen port number if different.
@@ -584,10 +589,11 @@ To keep CopyParty running even after closing the terminal, use `tmux`:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 apt-get update && apt-get install tmux -y && tmux new-session -d -s copyparty 'curl -LsSf https://astral.sh/uv/install.sh | sh && source $HOME/.local/bin/env && uv tool run copyparty -p 8000 --allow-csrf' && tmux attach -t copyparty
+
 ```
 
 <Info>
-  **What is tmux?**
+### What is tmux?
 
   `tmux` (terminal multiplexer) is a tool that lets you run terminal sessions in the background. Think of it as a way to keep programs running even after you close your terminal window, like minimizing an app instead of closing it. This is particularly useful on Runpod where you want CopyParty to keep running even if you disconnect.
 
@@ -602,11 +608,11 @@ This command:
 4. Attaches you to the session to see the output
 
 <Tip>
-  **Quick tmux Commands**
+### Quick tmux Commands
 
-  * To detach from tmux and leave CopyParty running: Press `Ctrl+B` then `D`
-  * To reattach to the session later: `tmux attach -t copyparty`
-  * To stop CopyParty: Reattach and press `Ctrl+C`
+* To detach from tmux and leave CopyParty running: Press `Ctrl+B` then `D`
+* To reattach to the session later: `tmux attach -t copyparty`
+* To stop CopyParty: Reattach and press `Ctrl+C`
 </Tip>
 
 ### Step 4: Access the CopyParty interface
@@ -635,8 +641,8 @@ To download files:
 
 1. Click on files to select them (they'll be highlighted in pink)
 2. Use the buttons in the bottom right:
-   * **"dl"** - Download individual files
-   * **"zip"** - Download multiple files as a zip archive
+* **"dl"** - Download individual files
+* **"zip"** - Download multiple files as a zip archive
 
 <img alt="Download Files" />
 
@@ -646,7 +652,7 @@ To download files:
 2. **Port Selection**: Choose a port that doesn't conflict with other services (avoid 8888 if using Jupyter)
 3. **Large Files**: CopyParty handles large file transfers well, making it ideal for model weights and datasets
 
-## Troubleshooting
+## Troubleshooting (2)
 
 ### Session ends when terminal closes
 
@@ -691,7 +697,7 @@ While OhMyRunPod includes various features, **the SFTP setup functionality** is 
   </Card>
 </CardGroup>
 
-## Requirements
+## Requirements (3)
 
 Before getting started with OhMyRunPod, make sure you have:
 
@@ -705,6 +711,7 @@ Install OhMyRunPod using pip:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 pip install OhMyRunPod
+
 ```
 
 ## Quick start: file transfer
@@ -732,7 +739,9 @@ The most common use case for OhMyRunPod is transferring files between your local
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     OhMyRunpod --file-transfer
+
     ```
+
   </Step>
 
   <Step title="Choose a transfer method">
@@ -778,13 +787,13 @@ Once SFTP is configured, you can:
 * **Backup files**: Regular backups of important work
 * **Use any SFTP client**: FileZilla, WinSCP, or command line tools
 
-## Troubleshooting
+## Troubleshooting (3)
 
 <AccordionGroup>
   <Accordion title="Connection refused on port 22">
     **Problem:** Cannot connect via SFTP, getting "Connection refused" error
 
-    **Solution:**
+### Solution: (3)
 
     1. Ensure port 22 is exposed in your Pod (Pod > Edit Pod > TCP Ports > Add 22)
     2. Restart your Pod after adding the port
@@ -794,7 +803,7 @@ Once SFTP is configured, you can:
   <Accordion title="Permission denied when connecting">
     **Problem:** Getting "Permission denied" when trying to connect via SFTP
 
-    **Solution:**
+### Solution: (4)
 
     1. Check that you're using the correct password from `/workspace/root_password.txt`
     2. Ensure you're using username `root`
@@ -804,7 +813,7 @@ Once SFTP is configured, you can:
   <Accordion title="SFTP client can't find host">
     **Problem:** SFTP client cannot resolve the host address
 
-    **Solution:**
+### Solution: (5)
 
     1. Verify your Pod is running and not stopped
     2. Check that you're using the correct IP address and port from the connection details
@@ -879,13 +888,13 @@ GitHub repository: [github.com/justinwlin/Runpod-Network-Volume-Storage-Tool](ht
 
 Runpod provides an [S3-compatible layer](/serverless/storage/s3-api) for network volumes, enabling object storage operations on your network storage. This community tool makes it easy to interact with that S3 layer through three interfaces: a command-line interface, a Python SDK for programmatic access, and a self-hosted REST API server for integration with other applications.
 
-## Requirements
+## Requirements (4)
 
 * Python 3.8 or higher.
 * Runpod API key from [console settings](https://console.runpod.io/user/settings).
 * S3 API keys (access key and secret key) for file operations.
 
-## Installation
+## Installation (2)
 
 Clone the repository and install dependencies:
 
@@ -895,6 +904,7 @@ cd Runpod-Network-Volume-Storage-Tool
 
 # Install dependencies with uv
 uv sync
+
 ```
 
 ## Configuration
@@ -905,6 +915,7 @@ Set your API credentials as environment variables:
 export RUNPOD_API_KEY="your_runpod_api_key"
 export RUNPOD_S3_ACCESS_KEY="your_s3_access_key"
 export RUNPOD_S3_SECRET_KEY="your_s3_secret_key"
+
 ```
 
 ## Interactive mode
@@ -913,6 +924,7 @@ The interactive mode provides a menu-driven interface:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 uv run runpod-storage interactive
+
 ```
 
 Features include volume management, file upload/download, and an interactive file browser with navigation and selection modes.
@@ -934,6 +946,7 @@ uv run runpod-storage upload /path/to/directory volume-id
 
 # Download files
 uv run runpod-storage download volume-id remote/file.txt
+
 ```
 
 ## Python SDK
@@ -945,7 +958,7 @@ from runpod_storage import RunpodStorageAPI
 
 api = RunpodStorageAPI()
 
-# List volumes
+# List volumes (2)
 volumes = api.list_volumes()
 
 # Create volume
@@ -969,6 +982,7 @@ api.upload_directory(
     "projects/my_project/",
     progress_callback=progress_callback
 )
+
 ```
 
 ## API server
@@ -977,6 +991,7 @@ Run a REST API server that proxies to Runpod's API:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 uv run runpod-storage-server --host 0.0.0.0 --port 8000
+
 ```
 
 
@@ -1004,17 +1019,17 @@ When Runpod users encounter issues like:
 
 This tool provides a simple solution for transferring your files to a new Pod.
 
-## Requirements
+## Requirements (5)
 
 Before using these tools, make sure you have:
 
 1. **Terminal access** on your Runpod instances:
-   * Web Terminal in Runpod's interface, or
-   * Terminal in Jupyter Notebook/Lab
+* Web Terminal in Runpod's interface, or
+* Terminal in Jupyter Notebook/Lab
 
 2. **Port 22 exposed** on destination Pod / source Pod:
-   * Go to: **Pod > Edit Pod > TCP Ports**
-   * Add port `22` if not present
+* Go to: **Pod > Edit Pod > TCP Ports**
+* Add port `22` if not present
    <Warning>
      **Important**: Changing TCP ports will restart your Pod and **erase all data outside of `/workspace`**. Make sure all important files are stored in `/workspace` (the default persistent directory) before making port changes.
    </Warning>
@@ -1029,13 +1044,16 @@ Before using these tools, make sure you have:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/main/passwordrunpod.sh && chmod +x passwordrunpod.sh && ./passwordrunpod.sh
+
     ```
 
     The script will prompt you to set a password. After setup, it displays your connection details:
 
     ```
+
     You can now connect using: ssh root@213.173.105.86 -p 17958
     Password: [the password you just set]
+
     ```
 
     **Save these details** - you'll need them in Step 4.
@@ -1046,7 +1064,9 @@ Before using these tools, make sure you have:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/refs/heads/main/SCPMigration -O scp_migration.py && python3 scp_migration.py
+
     ```
+
   </Step>
 
   <Step title="Navigate and select files">
@@ -1055,6 +1075,7 @@ Before using these tools, make sure you have:
     **Navigation Mode** - Browse directories:
 
     ```
+
     Current directory: /workspace
 
     Navigate by entering a number:
@@ -1064,21 +1085,27 @@ Before using these tools, make sure you have:
      
     Navigate to: 1    (enters models folder)
     Navigate to: s    (switch to selection mode)
+
     ```
 
     **Selection Mode** - Choose what to transfer:
 
     ```
+
     Select item: 1    (selects folder/file)
+
     ```
+
   </Step>
 
   <Step title="Enter connection and transfer">
     Enter the SSH details from Step 1:
 
     ```
+
     Enter SSH command: ssh root@213.173.105.86 -p 17958
     Enter password: [the password you set in Step 1]
+
     ```
 
     The tool will:
@@ -1088,7 +1115,7 @@ Before using these tools, make sure you have:
   </Step>
 </Steps>
 
-## Key features
+## Key features (2)
 
 * **Interactive navigation**: Browse files with simple number selection
 * **Smart compression**: Automatically zips folders for reliable transfer
@@ -1124,7 +1151,7 @@ To start fine-tuning, you'll need to choose a base model from Hugging Face:
 
 2. Enter the Hugging Face model ID in the **Base Model** field
 
-   * Example: `NousResearch/Meta-Llama-3-8B`
+* Example: `NousResearch/Meta-Llama-3-8B`
 
 3. For gated models (requiring special access):
 
@@ -1137,7 +1164,7 @@ You can choose a dataset from Hugging Face for fine-tuning:
 
 1. Browse available datasets on [Hugging Face](https://huggingface.co/datasets?task_categories=task_categories:text-generation\&sort=trending)
 2. Enter your chosen dataset identifier in the **Dataset** field
-   * Example: `tatsu-lab/alpaca`
+* Example: `tatsu-lab/alpaca`
 
 ## Deploy the fine-tuning pod
 
@@ -1147,8 +1174,8 @@ Follow these steps to set up your training environment:
 
 2. Select a GPU instance based on your model's requirements:
 
-   * Smaller models: Choose GPUs with less memory
-   * Larger models/datasets: Choose GPUs with higher memory capacity
+* Smaller models: Choose GPUs with less memory
+* Larger models/datasets: Choose GPUs with higher memory capacity
 
 3. Monitor the system logs for deployment progress
 
@@ -1162,9 +1189,9 @@ After your pod is deployed and active, you can connect using any of these method
 
 2. Click **Connect** and choose your preferred connection method:
 
-   * **Jupyter Notebook**: Browser-based notebook interface
-   * **Web Terminal**: Browser-based terminal
-   * **SSH**: Local machine terminal connection
+* **Jupyter Notebook**: Browser-based notebook interface
+* **Web Terminal**: Browser-based terminal
+* **SSH**: Local machine terminal connection
 
 <Info>
   To use SSH, add your public SSH key in your account settings. The system automatically adds your key to the pod's `authorized_keys` file.
@@ -1188,6 +1215,7 @@ The `config.yaml` file controls your fine-tuning parameters. Here's how to custo
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    nano config.yaml
+
    ```
 
 2. Review and adjust the parameters based on your specific use case
@@ -1204,7 +1232,7 @@ strict: false
 
 # Dataset configuration
 datasets:
-  - path: tatsu-lab/alpaca
+- path: tatsu-lab/alpaca
     type: alpaca
 dataset_prepared_path: last_run_prepared
 val_set_size: 0.05
@@ -1257,6 +1285,7 @@ fsdp:
 fsdp_config:
 special_tokens:
   pad_token: <|end_of_text|>
+
 ```
 
 <Info>
@@ -1273,6 +1302,7 @@ Once your configuration is ready, follow these steps:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    axolotl train config.yaml
+
    ```
 
 2. Monitor the training progress in your terminal
@@ -1285,6 +1315,7 @@ After completing the fine-tuning process, you can share your model:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    huggingface-cli login
+
    ```
 
 2. Create a new repository on Hugging Face if needed
@@ -1293,6 +1324,7 @@ After completing the fine-tuning process, you can share your model:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    huggingface-cli upload <your-username>/<model-name> ./output
+
    ```
 
 Replace `<your-username>` with your Hugging Face username and `<model-name>` with your desired model name.
@@ -1416,10 +1448,10 @@ Follow these steps to create a new Runpod API key:
 
 3. Give your key a name and set its permissions (**All**, **Restricted**, or **Read Only**). If you choose **Restricted**, you can customize access for each Runpod API:
 
-   * **None**: No access
-   * **Restricted**: Customize access for each of your [Serverless endpoints](/serverless/overview). (Default: None.)
-   * **Read/Write**: Full access to your endpoints.
-   * **Read Only**: Read access without write access.
+* **None**: No access
+* **Restricted**: Customize access for each of your [Serverless endpoints](/serverless/overview). (Default: None.)
+* **Read/Write**: Full access to your endpoints.
+* **Read Only**: Read access without write access.
 
 4. Select **Create**, then select your newly-generated key to copy it to your clipboard.
 
@@ -1659,7 +1691,7 @@ For enhanced security, use the principle of least privilege by assigning the min
 
 Monitor audit logs periodically to ensure compliance with your organization's policies and identify any unauthorized activities early.
 
-## Next steps
+## Next steps (2)
 
 After setting up your account and team you can:
 
@@ -1680,12 +1712,14 @@ Stop the Runpod agent by running:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sudo systemctl stop runpod
+
 ```
 
 Then you can kick off a gpu-burn run by typing:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run --gpus all --rm jorghi21/gpu-burn-test 172800
+
 ```
 
 You should also verify that your memory, CPU, and disk are up to the task. You can use the [ngstress library](https://wiki.ubuntu.com/Kernel/Reference/stress-ngstress) to accomplish this.
@@ -1694,6 +1728,7 @@ When everything is verified okay, start the Runpod agent again by running
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sudo systemctl start runpod
+
 ```
 
 Then, on your [machine dashboard](https://www.console.runpod.io/host/machines), self rent your machine to ensure it's working well with most popular templates.
@@ -1737,7 +1772,7 @@ Based on approximately 43200 minutes per month and a 10 minute buffer. We includ
 Machines with less than **98%** reliability are **automatically removed** from the available GPU pool and can only be accessed by clients that already had their data on it.
 
 
-# Overview
+# Overview (2)
 Source: https://docs.runpod.io/hosting/overview
 
 
@@ -1762,22 +1797,22 @@ Runpod offers a diverse range of GPUs, made possible through proprietary servers
 * Rental Rates: We do not make utilization data publicly available. However, we are more than happy to provide statistics and information about popular GPU models when directly discussing with you. Furthermore, lots of different variables can impact occupancy. We are more than happy to provide you with in-depth data about how different hardware quality levels can impact your revenue.
 
 
-# Runpod Secure Cloud partner requirements (2025)
+# Runpod Secure Cloud partner requirements
 Source: https://docs.runpod.io/hosting/partner-requirements
 
 
 
-## Introduction
+## Introduction (2)
 
 This document outlines the specifications required to be a Runpod secure cloud partner. These requirements establish the baseline, however for new partners, Runpod will perform a due diligence process prior to selection encompassing business health, prior performance, and corporate alignment.
 
 Meeting these technical and operational requirements does not guarantee selection.
 
-*New partners*
+### New partners
 
 * All specifications will apply to new partners on November 1, 2024.
 
-*Existing partners*
+### Existing partners
 
 * Hardware specifications (Sections 1, 2, 3, 4) will apply to new servers deployed by existing partners on December 15, 2024.
 * Compliance specification (Section 5) will apply to existing partners on April 1, 2025.
@@ -1912,7 +1947,7 @@ Once a storage cluster exceeds 90% single core CPU on the leader node during pea
 
 Each datacenter should have a CPU server that to accommodate CPU-only Pods and Serverless workers. Runpod will also use this server to host additional features for which a GPU is not required (e.g., the [S3-compatible API](/serverless/storage/s3-api)).
 
-### Baseline Cluster Specifications
+### Baseline Cluster Specifications (2)
 
 | Component            | Requirement                                   |
 | -------------------- | --------------------------------------------- |
@@ -1921,14 +1956,14 @@ Each datacenter should have a CPU server that to accommodate CPU-only Pods and S
 | Connectivity         | 200 Gbps between servers/data-plane           |
 | Network              | Private subnet; public IP and >990 ports open |
 
-### Server Specifications
+### Server Specifications (2)
 
 | Component | Requirement                                                                      |
 | --------- | -------------------------------------------------------------------------------- |
 | CPU       | AMD EPYC 9004 'Genoa' Zen 4 or better with minimum 32 cores. 3+ GHz clock speed. |
 | RAM       | 1 TB or higher, DDR5/ECC                                                         |
 
-#### Storage
+#### Storage (2)
 
 | Component                          | Requirement                          |
 | ---------------------------------- | ------------------------------------ |
@@ -2038,7 +2073,7 @@ For detailed information on maintenance scheduling, power system management, and
 * 2025-11-01: Initial release.
 
 
-# Overview
+# Overview (3)
 Source: https://docs.runpod.io/hub/overview
 
 Discover, deploy, and share preconfigured AI repos using the Runpod Hub.
@@ -2129,6 +2164,7 @@ data = {
 }
 
 response = requests.post('https://POD_ID-80.proxy.runpod.net/v2/LOCAL/run', headers=headers, json=data)
+
 ```
 
 Where `POD_ID` is your Pod's actual ID.
@@ -2232,6 +2268,7 @@ Flux Dev is optimized for high-quality, detailed image generation. The model acc
     "image_format": "png"
   }
 }
+
 ```
 
 | Parameter             | Type    | Required | Default | Range           | Description                                                                                  |
@@ -2260,6 +2297,7 @@ Flux Schnell is optimized for speed and real-time applications:
     "seed": 123
   }
 }
+
 ```
 
 | Parameter             | Type    | Required | Default | Range           | Description                                                                                  |
@@ -2303,6 +2341,7 @@ IBM Granite-4.0-H-Small is a 32B parameter long-context instruct model.
     }
   }
 }
+
 ```
 
 | Parameter                     | Type    | Required | Default | Range   | Description                                                                        |
@@ -2333,6 +2372,7 @@ Here are some examples of how to use the Qwen3 32B AWQ model with the OpenAI API
 
 <AccordionGroup>
   <Accordion title="OpenAI API request example">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     from openai import OpenAI
     import os
@@ -2359,7 +2399,9 @@ Here are some examples of how to use the Qwen3 32B AWQ model with the OpenAI API
         messages=messages,
         max_tokens=525,
     )
+
     ```
+
   </Accordion>
 
   <Accordion title="OpenAI API streaming example">
@@ -2392,10 +2434,13 @@ Here are some examples of how to use the Qwen3 32B AWQ model with the OpenAI API
         max_tokens=525,
         stream=True
     )
+
     ```
+
   </Accordion>
 
   <Accordion title="Response format">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "delayTime": 25,
@@ -2420,7 +2465,9 @@ Here are some examples of how to use the Qwen3 32B AWQ model with the OpenAI API
       "status": "COMPLETED",
       "workerId": "pkej0t9bbyjrgy"
     }
+
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -2438,6 +2485,7 @@ Qwen Image is an image generation foundation model with advanced text rendering 
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default      | Description                                                |
@@ -2467,6 +2515,7 @@ Qwen Image with LoRA support allows you to customize generation with fine-tuned 
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default      | Description                                                |
@@ -2492,6 +2541,7 @@ Seedream 3.0 is a native high-resolution bilingual image generation model suppor
     "size": "1024x1024"
   }
 }
+
 ```
 
 | Parameter  | Type    | Required | Default     | Description                                                |
@@ -2515,6 +2565,7 @@ Seedream 4.0 is a new-generation image creation model that integrates both gener
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default      | Description                                                |
@@ -2540,6 +2591,7 @@ Google's Nano Banana Edit is a state-of-the-art image editing model that combine
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default | Description                                                 |
@@ -2563,6 +2615,7 @@ Qwen Image Edit extends the text rendering capabilities to image editing tasks, 
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default | Description                                                |
@@ -2589,6 +2642,7 @@ Seedream 4.0 Edit provides advanced image editing capabilities with the same uni
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default      | Description                                                 |
@@ -2612,6 +2666,7 @@ InfiniteTalk is an audio-driven video generation model that creates talking or s
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default | Description                                                   |
@@ -2637,6 +2692,7 @@ Kling 2.1 Pro generates videos from static images with additional control parame
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default | Description                            |
@@ -2662,6 +2718,7 @@ Seedance 1.0 Pro is a high-performance video generation model with multi-shot st
     "image": ""
   }
 }
+
 ```
 
 | Parameter  | Type    | Required | Default     | Description                                              |
@@ -2684,6 +2741,7 @@ OpenAI's Sora 2 is a video and audio generation model.
     "duration": 4
   }
 }
+
 ```
 
 | Parameter  | Type    | Required | Default | Description                                                                                     |
@@ -2705,6 +2763,7 @@ OpenAI's Sora 2 Pro is a professional-grade video and audio generation model.
     "duration": 4
   }
 }
+
 ```
 
 | Parameter  | Type    | Required | Default | Description                                                                                     |
@@ -2725,6 +2784,7 @@ Whisper V3 Large is a state-of-the-art automatic speech recognition model that t
     "audio": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/f981a3dca8204b14ab24151fa0532c26/1.mp3"
   }
 }
+
 ```
 
 | Parameter | Type   | Required | Default | Description                                        |
@@ -2749,6 +2809,7 @@ Minimax Speech 02 HD is a high-definition text-to-speech model with emotional co
     "default_audio_url": "https://d1q70pf5vjeyhc.cloudfront.net/predictions/f981a3dca8204b14ab24151fa0532c26/1.mp3"
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default       | Description                               |
@@ -2780,6 +2841,7 @@ A 12 billion parameter model for editing images based on text instructions.
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter               | Type    | Required | Default      | Range           | Description                                                                                  |
@@ -2811,6 +2873,7 @@ WAN 2.5 generates videos from static images.
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                 | Type    | Required | Default     | Description                                                |
@@ -2850,6 +2913,7 @@ Wan 2.2 is an open-source video generation model with LoRA support for customize
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                  | Type    | Required | Default | Description                                                |
@@ -2886,6 +2950,7 @@ An open-source image-to-video generation model that creates 720p video content f
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                    | Type    | Required | Default     | Range    | Description                                                                                  |
@@ -2921,6 +2986,7 @@ Open-source model for generating 720p videos from text prompts.
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                    | Type    | Required | Default     | Range    | Description                                                                                  |
@@ -2956,6 +3022,7 @@ Open-source image-to-video generation model that converts static images into 720
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                    | Type    | Required | Default     | Range    | Description                                                                                  |
@@ -2991,6 +3058,7 @@ An open-source video generation model for creating 720p videos from text prompts
     "enable_safety_checker": true
   }
 }
+
 ```
 
 | Parameter                    | Type    | Required | Default     | Range    | Description                                                                                  |
@@ -3007,7 +3075,7 @@ An open-source video generation model for creating 720p videos from text prompts
 | `enable_safety_checker`      | boolean | No       | true        | -        | Whether to run safety checks on the output.                                                  |
 
 
-# Overview
+# Overview (4)
 Source: https://docs.runpod.io/hub/public-endpoints
 
 Test and deploy production-ready AI models using Public Endpoints.
@@ -3022,7 +3090,7 @@ Runpod Public Endpoints provide instant access to state-of-the-art AI models thr
   Public Endpoints are pre-deployed models hosted by Runpod. If you want to deploy your own AI/ML APIs, use [Runpod Serverless](/serverless/overview).
 </Tip>
 
-## Available models
+## Available models (2)
 
 For a list of available models and model-specific parameters, see the [Public Endpoint model reference](/hub/public-endpoint-reference).
 
@@ -3098,6 +3166,7 @@ curl -X POST "https://api.runpod.ai/v2/black-forest-labs-flux-1-dev/runsync" \
       "guidance": 7.5
     }
   }'
+
 ```
 
 ### Asynchronous request example
@@ -3117,6 +3186,7 @@ curl -X POST "https://api.runpod.ai/v2/black-forest-labs-flux-1-dev/run" \
       "guidance": 8.0
     }
   }'
+
 ```
 
 You can check the status and retrieve results using the `/status` endpoint, replacing `{job-id}` with the job ID returned from the `/run` request:
@@ -3124,6 +3194,7 @@ You can check the status and retrieve results using the `/status` endpoint, repl
 ```bash curl theme={"theme":{"light":"github-light","dark":"github-dark"}}
 curl -X GET "https://api.runpod.ai/v2/black-forest-labs-flux-1-dev/status/{job-id}" \
   -H "Authorization: Bearer RUNPOD_API_KEY"
+
 ```
 
 ### Response format
@@ -3142,6 +3213,7 @@ All endpoints return a consistent JSON response format:
   "status": "COMPLETED",
   "workerId": "oqk7ao1uomckye"
 }
+
 ```
 
 <Warning>
@@ -3174,6 +3246,7 @@ response = requests.post(
     headers=headers,
     json=data,
 )
+
 ```
 
 You can generate Public Endpoints API requests for Python and other programming languages using the [Public Endpoints playground](#public-endpoints-playground).
@@ -3186,6 +3259,7 @@ Run this command to install the package:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 npm install @runpod/ai-sdk-provider ai
+
 ```
 
 To call a Public Endpoint for text generation:
@@ -3198,6 +3272,7 @@ const { text } = await generateText({
   model: runpod('qwen3-32b-awq'),
   prompt: 'Write a Python function that sorts a list:',
 });
+
 ```
 
 For image generation:
@@ -3211,6 +3286,7 @@ const { image } = await generateImage({
   prompt: 'A serene mountain landscape at sunset',
   aspectRatio: '4:3',
 });
+
 ```
 
 For comprehensive documentation and examples, see the [Node package documentation](https://www.npmjs.com/package/@runpod/ai-sdk-provider).
@@ -3234,11 +3310,11 @@ Public Endpoints use transparent, usage-based pricing. For example:
 Here are some pricing examples that demonstrate how you can estimate costs for image generation:
 
 * 512×512 image (0.25 megapixels)
-  * Flux Dev: (512 \* 512 / 1,000,000) \* \$0.02 = \$0.00524288
-  * Flux Schnell: (512 \* 512 / 1,000,000) \* \$0.0024 = \$0.0006291456
+* Flux Dev: (512 \* 512 / 1,000,000) \* \$0.02 = \$0.00524288
+* Flux Schnell: (512 \* 512 / 1,000,000) \* \$0.0024 = \$0.0006291456
 * 1024×1024 image (1 megapixel)
-  * Flux Dev: (1024 \* 1024 / 1,000,000) \* \$0.02 = \$0.02097152
-  * Flux Schnell: (1024 \* 1024 / 1,000,000) \* \$0.0024 = \$0.0025165824
+* Flux Dev: (1024 \* 1024 / 1,000,000) \* \$0.02 = \$0.02097152
+* Flux Schnell: (1024 \* 1024 / 1,000,000) \* \$0.0024 = \$0.0025165824
 
 <Note>
   Runpod's billing system rounds up after the first 10 decimal places.
@@ -3246,7 +3322,7 @@ Here are some pricing examples that demonstrate how you can estimate costs for i
 
 For complete pricing information for each model, see the [Public Endpoint model reference](/hub/public-endpoint-reference) page.
 
-## Best practices
+## Best practices (2)
 
 When working with Public Endpoints, following best practices will help you achieve better results and optimize performance.
 
@@ -3347,6 +3423,7 @@ Environment variables can be defined in several ways:
      "key": "API_KEY",
      "value": "default-api-key-value"
    }
+
    ```
 
 2. **String inputs**: User-entered text fields. For example:
@@ -3362,6 +3439,7 @@ Environment variables can be defined in several ways:
        "advanced": false
      }
    }
+
    ```
 
 3. **Hugging Face inputs:** Fields for model selection from Hugging Face Hub. For example:
@@ -3377,6 +3455,7 @@ Environment variables can be defined in several ways:
        "required": true
      }
    }
+
    ```
 
 4. **Option inputs**: User selected option fields. For example:
@@ -3396,6 +3475,7 @@ Environment variables can be defined in several ways:
        "default": "fp16"
      }
    }
+
    ```
 
 5. **Number Inputs**: User-entered numeric fields. For example:
@@ -3412,6 +3492,7 @@ Environment variables can be defined in several ways:
        "default": 1024
      }
    }
+
    ```
 
 6. **Boolean Inputs**: User-toggled boolean fields. For example:
@@ -3428,6 +3509,7 @@ Environment variables can be defined in several ways:
        "falseValue": "false"
      }
    }
+
    ```
 
 Advanced options will be hidden by default. Hide an option by setting: `"advanced": true` .
@@ -3461,6 +3543,7 @@ Here are some example presets:
     }
   }
 ]
+
 ```
 
 ## hub.json template
@@ -3610,6 +3693,7 @@ Here’s an example `tests.json` file that you can use as a starting point:
     ]
   }
 }
+
 ```
 
 
@@ -3641,7 +3725,7 @@ Revenue tiers reset monthly based on the total compute hours generated by all yo
 
 For example, if users generate 2,500 compute hours using your repositories in a month, you would earn \$75 in Runpod credits from those hours (3% of the total compute revenue).
 
-### Requirements
+### Requirements (6)
 
 To participate in the revenue sharing program, you must:
 
@@ -3654,7 +3738,7 @@ To participate in the revenue sharing program, you must:
 Credits are deposited into your Runpod account balance during the first week of each month. Revenue is calculated based on the previous month's activity.
 
 
-# Overview
+# Overview (5)
 Source: https://docs.runpod.io/instant-clusters
 
 Fully managed compute clusters for multi-node training and AI inference.
@@ -3667,7 +3751,7 @@ Runpod Instant Clusters provide fully managed compute clusters with high-perform
 
 <iframe title="Introduction to Instant Clusters" />
 
-## Key features
+## Key features (3)
 
 * High-speed networking from 1600 to 3200 Gbps within a single data center.
 * On-demand clusters are available from 2-8 nodes (16-64 GPUs)
@@ -3717,7 +3801,7 @@ High-bandwidth interfaces (`ens1`, `ens2`, etc.) handle communication between no
 
 Instant Clusters support up to 8 interfaces per node. Each interface (`ens1` - `ens8`) provides a private network connection for inter-node communication, made available to distributed backends such as NCCL or GLOO.
 
-## Environment variables
+## Environment variables (2)
 
 The following environment variables are present in all nodes in an Instant Cluster:
 
@@ -3747,6 +3831,7 @@ For distributed training frameworks like PyTorch, you must explicitly configure 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 export NCCL_SOCKET_IFNAME=ens1
+
 ```
 
 <Warning>
@@ -3757,6 +3842,7 @@ When troubleshooting multi-node communication issues, also consider adding debug
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 export NCCL_DEBUG=INFO
+
 ```
 
 ## When to use Instant Clusters
@@ -3800,12 +3886,14 @@ Follow the steps below to deploy a cluster and start training your models effici
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    git clone https://github.com/axolotl-ai-cloud/axolotl
+
    ```
 
 5. Navigate to the `axolotl` directory:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    cd axolotl
+
    ```
 
 6. Install the required packages:
@@ -3813,12 +3901,14 @@ Follow the steps below to deploy a cluster and start training your models effici
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    pip3 install -U packaging setuptools wheel ninja
    pip3 install --no-build-isolation -e '.[flash-attn,deepspeed]'
+
    ```
 
 7. Navigate to the `examples/llama-3` directory:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    cd examples/llama-3
+
    ```
 
 Repeat these steps for **each Pod** in your cluster.
@@ -3835,6 +3925,7 @@ torchrun \
     --rdzv_id "myjob" \
     --rdzv_backend static \
     --rdzv_endpoint "$PRIMARY_ADDR:$PRIMARY_PORT" -m axolotl.cli.train lora-1b.yml
+
 ```
 
 <Info>
@@ -3856,6 +3947,7 @@ After running the command on the last Pod, you should see output similar to this
 
 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 67/67 [01:00<00:00,  1.11it/s]
 [2025-04-01 19:24:22,603] [INFO] [axolotl.train.save_trained_model:211] [PID:1009] [RANK:0] Training completed! Saving pre-trained model to ./outputs/lora-out.
+
 ```
 
 Congrats! You've successfully trained a model using Axolotl on an Instant Cluster. Your fine-tuned model has been saved to the `./outputs/lora-out` directory. You can now use this model for inference or continue training with different parameters.
@@ -3868,7 +3960,7 @@ If you no longer need your cluster, make sure you return to the [Instant Cluster
   You can monitor your cluster usage and spending using the **Billing Explorer** at the bottom of the [Billing page](https://www.console.runpod.io/user/billing) section under the **Cluster** tab.
 </Info>
 
-## Next steps
+## Next steps (3)
 
 Now that you've successfully deployed and tested an Axolotl distributed training job on an Instant Cluster, you can:
 
@@ -3888,7 +3980,7 @@ This tutorial demonstrates how to use Instant Clusters with [PyTorch](http://pyt
 
 Follow the steps below to deploy a cluster and start running distributed PyTorch workloads efficiently.
 
-## Step 1: Deploy an Instant Cluster
+## Step 1: Deploy an Instant Cluster (2)
 
 1. Open the [Instant Clusters page](https://www.console.runpod.io/cluster) on the Runpod web interface.
 2. Click **Create Cluster**.
@@ -3907,6 +3999,7 @@ Follow the steps below to deploy a cluster and start running distributed PyTorch
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    git clone https://github.com/murat-runpod/torch-demo.git
+
    ```
 
 Repeat these steps for **each Pod** in your cluster.
@@ -3953,6 +4046,7 @@ def main():
    
 if __name__ == "__main__":
    main()
+
 ```
 
 This is the minimal code necessary for initializing a distributed environment. The `main()` function prints the local and global rank for each GPU process (this is also where you can add your own code). `LOCAL_RANK` is assigned dynamically to each process by PyTorch. All other environment variables are set automatically by Runpod during deployment.
@@ -3971,6 +4065,7 @@ torchrun \
   --master_addr=$MASTER_ADDR \
   --master_port=$MASTER_PORT \
 torch-demo/main.py
+
 ```
 
 This command launches eight `main.py` processes per node (one per GPU in the Pod).
@@ -3990,6 +4085,7 @@ Running on rank 13/15 (local rank: 5), device: cuda:5
 Running on rank 11/15 (local rank: 3), device: cuda:3
 Running on rank 14/15 (local rank: 6), device: cuda:6
 Running on rank 10/15 (local rank: 2), device: cuda:2
+
 ```
 
 The first number refers to the global rank of the thread, spanning from `0` to `WORLD_SIZE-1` (`WORLD_SIZE` = the total number of GPUs in the cluster). In our example there are two Pods of eight GPUs, so the global rank spans from 0-15. The second number is the local rank, which defines the order of GPUs within a single Pod (0-7 for this example).
@@ -4002,7 +4098,7 @@ This diagram illustrates how local and global ranks are distributed across multi
   <img />
 </Frame>
 
-## Step 5: Clean up
+## Step 5: Clean up (2)
 
 If you no longer need your cluster, make sure you return to the [Instant Clusters page](https://www.console.runpod.io/cluster) and delete your cluster to avoid incurring extra charges.
 
@@ -4010,7 +4106,7 @@ If you no longer need your cluster, make sure you return to the [Instant Cluster
   You can monitor your cluster usage and spending using the **Billing Explorer** at the bottom of the [Billing page](https://www.console.runpod.io/user/billing) section under the **Cluster** tab.
 </Info>
 
-## Next steps
+## Next steps (4)
 
 Now that you've successfully deployed and tested a PyTorch distributed application on an Instant Cluster, you can:
 
@@ -4035,13 +4131,13 @@ This tutorial demonstrates how to configure Runpod Instant Clusters with [Slurm]
 
 Follow the steps below to deploy a cluster and start running distributed Slurm workloads efficiently.
 
-## Requirements
+## Requirements (7)
 
 * You've created a [Runpod account](https://www.console.runpod.io/home) and funded it with sufficient credits.
 * You have basic familiarity with Linux command line.
 * You're comfortable working with [Pods](/pods/overview) and understand the basics of [Slurm](https://slurm.schedmd.com/).
 
-## Step 1: Deploy an Instant Cluster
+## Step 1: Deploy an Instant Cluster (3)
 
 1. Open the [Instant Clusters page](https://www.console.runpod.io/cluster) on the Runpod web interface.
 2. Click **Create Cluster**.
@@ -4055,7 +4151,7 @@ To connect to a Pod:
 1. On the Instant Clusters page, click on the cluster you created to expand the list of Pods.
 2. Click on a Pod, for example `CLUSTERNAME-pod-0`, to expand the Pod.
 
-**On each Pod:**
+### On each Pod:
 
 1. Click **Connect**, then click **Web Terminal**.
 
@@ -4063,12 +4159,14 @@ To connect to a Pod:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    git clone https://github.com/pandyamarut/slurm_example.git && cd slurm_example
+
    ```
 
 3. Run this command to install Slurm:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    apt update && apt install -y slurm-wlm slurm-client munge
+
    ```
 
 ## Step 3: Overview of Slurm demo scripts
@@ -4086,6 +4184,7 @@ Now run the installation script **on each Pod**, replacing `[MUNGE_SECRET_KEY]` 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 ./install.sh "[MUNGE_SECRET_KEY]" node-0 node-1 10.65.0.2 10.65.0.3
+
 ```
 
 This script automates the complex process of configuring a two-node Slurm cluster with GPU support, handling everything from system dependencies to authentication and resource configuration. It implements the necessary setup for both the primary (i.e. master/control) and secondary (i.e compute/worker) nodes.
@@ -4100,18 +4199,21 @@ This script automates the complex process of configuring a two-node Slurm cluste
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    slurmctld -D
+
    ```
 
 2. Use the web interface to open a second terminal **on the primary node** and run:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    slurmd -D
+
    ```
 
 3. **On the secondary node** (`node-1`), run:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    slurmd -D
+
    ```
 
 After running these commands, you should see output indicating that the services have started successfully. The `-D` flag keeps the services running in the foreground, so each command needs its own terminal.
@@ -4122,6 +4224,7 @@ After running these commands, you should see output indicating that the services
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    sinfo
+
    ```
 
    You should see output showing both nodes in your cluster, with a state of "idle" if everything is working correctly.
@@ -4130,6 +4233,7 @@ After running these commands, you should see output indicating that the services
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    srun --nodes=2 --gres=gpu:1 nvidia-smi -L
+
    ```
 
    This command should list all GPUs across both nodes.
@@ -4140,6 +4244,7 @@ Run the following command **on the primary node** (`node-0`) to submit the test 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sbatch test_batch.sh
+
 ```
 
 Check the output file created by the test (`test_simple_[JOBID].out`) and look for the hostnames of both nodes. This confirms that the job ran successfully across the cluster.
@@ -4152,7 +4257,7 @@ If you no longer need your cluster, make sure you return to the [Instant Cluster
   You can monitor your cluster usage and spending using the **Billing Explorer** at the bottom of the [Billing page](https://www.console.runpod.io/user/billing) section under the **Cluster** tab.
 </Tip>
 
-## Next steps
+## Next steps (5)
 
 Now that you've successfully deployed and tested a Slurm cluster on Runpod, you can:
 
@@ -4171,7 +4276,7 @@ Runpod Slurm Clusters provide a managed high-performance computing and schedulin
 
 For more information on working with Slurm, refer to the [Slurm documentation](https://slurm.schedmd.com/documentation.html).
 
-## Key features
+## Key features (4)
 
 Slurm Clusters eliminate the traditional complexity of cluster orchestration by providing:
 
@@ -4191,12 +4296,12 @@ Slurm Clusters eliminate the traditional complexity of cluster orchestration by 
 2. Click **Create Cluster**.
 3. Select **Slurm Cluster** from the cluster type dropdown menu.
 4. Configure your cluster specifications:
-   * **Cluster name**: Enter a descriptive name for your cluster.
-   * **Pod count**: Choose the number of Pods in your cluster.
-   * **GPU type**: Select your preferred [GPU type](/references/gpu-types).
-   * **Region**: Choose your deployment region.
-   * **Network volume** (optional): Add a [network volume](/storage/network-volumes) for persistent/shared storage. If using a network volume, ensure the region matches your cluster region.
-   * **Pod template**: Select a [Pod template](/pods/templates/overview) or click **Edit Template** to customize start commands, environment variables, ports, or [container/volume disk](/pods/storage/types) capacity.
+* **Cluster name**: Enter a descriptive name for your cluster.
+* **Pod count**: Choose the number of Pods in your cluster.
+* **GPU type**: Select your preferred [GPU type](/references/gpu-types).
+* **Region**: Choose your deployment region.
+* **Network volume** (optional): Add a [network volume](/storage/network-volumes) for persistent/shared storage. If using a network volume, ensure the region matches your cluster region.
+* **Pod template**: Select a [Pod template](/pods/templates/overview) or click **Edit Template** to customize start commands, environment variables, ports, or [container/volume disk](/pods/storage/types) capacity.
      <Warning>
        Slurm Clusters currently only support official Runpod Pytorch images. If you deploy using a different image, the Slurm process will not start.
      </Warning>
@@ -4218,24 +4323,28 @@ Check cluster status and available resources:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sinfo
+
 ```
 
 Submit a job to the cluster from the Slurm controller node:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sbatch your-job-script.sh
+
 ```
 
 Monitor job queue and status:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 squeue
+
 ```
 
 View detailed job information from the Slurm controller node:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 scontrol show job JOB_ID
+
 ```
 
 You can find the output of Slurm agents in their individual container logs.
@@ -4251,7 +4360,7 @@ Access Slurm configuration files in their standard locations:
 
 Modify these files as needed for your specific requirements.
 
-## Troubleshooting
+## Troubleshooting (4)
 
 If you encounter issues with your Slurm Cluster, try the following:
 
@@ -4270,26 +4379,26 @@ Source: https://docs.runpod.io/integrations/dstack
 
 In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with Runpod to deploy [vLLM](https://github.com/vllm-project/vllm). We'll serve the `meta-llama/Llama-3.1-8B-Instruct` model from Hugging Face using a Python environment.
 
-## Prerequisites
+## Prerequisites (2)
 
 * [A Runpod account with an API key](/get-started/api-keys)
 
 * On your local machine:
 
-  * Python 3.8 or higher
-  * `pip` (or `pip3` on macOS)
-  * Basic utilities: `curl`
+* Python 3.8 or higher
+* `pip` (or `pip3` on macOS)
+* Basic utilities: `curl`
 
 * These instructions are applicable for macOS, Linux, and Windows systems.
 
 <Info>
-  **Windows Users**
+### Windows Users
 
-  * It's recommended to use [WSL (Windows Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install) or tools like [Git Bash](https://gitforwindows.org/) to follow along with the Unix-like commands used in this tutorial
-  * Alternatively, Windows users can use PowerShell or Command Prompt and adjust commands accordingly
+* It's recommended to use [WSL (Windows Subsystem for Linux)](https://docs.microsoft.com/en-us/windows/wsl/install) or tools like [Git Bash](https://gitforwindows.org/) to follow along with the Unix-like commands used in this tutorial
+* Alternatively, Windows users can use PowerShell or Command Prompt and adjust commands accordingly
 </Info>
 
-## Installation
+## Installation (3)
 
 ### Setting Up the dstack Server
 
@@ -4300,39 +4409,49 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    mkdir runpod-dstack-tutorial
    cd runpod-dstack-tutorial
+
    ```
 
 2. **Set Up a Python Virtual Environment**
 
    <Tabs>
      <Tab title="macOS">
+
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        python3 -m venv .venv
        source .venv/bin/activate
+
        ```
+
      </Tab>
 
      <Tab title="Linux">
+
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        python3 -m venv .venv
        source .venv/bin/activate
+
        ```
+
      </Tab>
 
      <Tab title="Windows">
-       **Command Prompt:**
+### Command Prompt:
 
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        python -m venv .venv
        .venv\Scripts\activate
+
        ```
 
-       **PowerShell:**
+### PowerShell:
 
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        python -m venv .venv
        .venv\Scripts\Activate.ps1
+
        ```
+
      </Tab>
    </Tabs>
 
@@ -4342,23 +4461,31 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 
    <Tabs>
      <Tab title="macOS">
+
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        pip3 install -U "dstack[all]"
+
        ```
 
        **Note:** If `pip3` is not available, you may need to install it or use `pip`.
      </Tab>
 
      <Tab title="Linux">
+
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        pip install -U "dstack[all]"
+
        ```
+
      </Tab>
 
      <Tab title="Windows">
+
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        pip install -U "dstack[all]"
+
        ```
+
      </Tab>
    </Tabs>
 
@@ -4368,53 +4495,70 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 
    The following `config.yml` file is a **global configuration** used by [dstack](https://dstack.ai/) for all deployments on your computer. It's essential to place it in the correct configuration directory.
 
-   * **Create the configuration directory:**
+* **Create the configuration directory:**
 
      <Tabs>
        <Tab title="macOS">
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          mkdir -p ~/.dstack/server
+
          ```
+
        </Tab>
 
        <Tab title="Linux">
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          mkdir -p ~/.dstack/server
+
          ```
+
        </Tab>
 
        <Tab title="Windows">
-         **Command Prompt or PowerShell:**
+### Command Prompt or PowerShell:
 
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          mkdir %USERPROFILE%\.dstack\server
+
          ```
+
        </Tab>
      </Tabs>
 
-   * **Navigate to the configuration directory:**
+* **Navigate to the configuration directory:**
 
      <Tabs>
        <Tab title="macOS">
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          cd ~/.dstack/server
+
          ```
+
        </Tab>
 
        <Tab title="Linux">
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          cd ~/.dstack/server
+
          ```
+
        </Tab>
 
        <Tab title="Windows">
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          cd %USERPROFILE%\.dstack\server
+
          ```
+
        </Tab>
      </Tabs>
 
-   * **Create the `config.yml` File**
+* **Create the `config.yml` File**
 
      In the configuration directory, create a file named `config.yml` with the following content:
 
@@ -4426,6 +4570,7 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
              creds:
                type: api_key
                api_key: YOUR_RUNPOD_API_KEY
+
      ```
 
      Replace `YOUR_RUNPOD_API_KEY` with the API key you obtained from Runpod.
@@ -4436,6 +4581,7 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    dstack server
+
    ```
 
    You should see output indicating that the server is running:
@@ -4444,6 +4590,7 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 [INFO] Applying ~/.dstack/server/config.yml...
 [INFO] The admin token is ADMIN-TOKEN
 [INFO] The dstack server is running at http://127.0.0.1:3000
+
 ```
 
 <Info>
@@ -4472,35 +4619,45 @@ In this guide, we'll walk through setting up [dstack](https://dstack.ai/) with R
 
   ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
   cd runpod-dstack-tutorial
+
   ```
 
 * **Activate the Python Virtual Environment**
 
   <Tabs>
     <Tab title="macOS">
+
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       source .venv/bin/activate
+
       ```
+
     </Tab>
 
     <Tab title="Linux">
+
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       source .venv/bin/activate
+
       ```
+
     </Tab>
 
     <Tab title="Windows">
-      **Command Prompt:**
+### Command Prompt: (2)
 
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       .venv\Scripts\activate
+
       ```
 
-      **PowerShell:**
+### PowerShell: (2)
 
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       .venv\Scripts\Activate.ps1
+
       ```
+
     </Tab>
   </Tabs>
 
@@ -4511,6 +4668,7 @@ Create and navigate to a new directory for the deployment task:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 mkdir task-vllm-llama
 cd task-vllm-llama
+
 ```
 
 3. **Create the dstack Configuration File**
@@ -4538,6 +4696,7 @@ cd task-vllm-llama
       name: "RTX4090"
       memory: "24GB"
     cpu: 16..
+
   ```
 
 <Info>
@@ -4552,6 +4711,7 @@ Run the following command **in the directory where your `.dstack.yml` file is lo
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 dstack init
+
 ```
 
 2. **Apply the Configuration**
@@ -4560,6 +4720,7 @@ Deploy the task by applying the configuration:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 dstack apply
+
 ```
 
 * You will see an output summarizing the deployment configuration and available instances.
@@ -4568,6 +4729,7 @@ dstack apply
 
   ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
   Submit the run vllm-llama-3.1-8b-instruct? [y/n]:
+
   ```
 
   Type `y` and press `Enter` to confirm.
@@ -4578,11 +4740,11 @@ dstack apply
 
 * After executing `dstack apply`, you'll see all the steps that dstack performs:
 
-  * Provisioning the pod on Runpod.
-  * Downloading the Docker image.
-  * Installing required packages.
-  * Downloading the model from Hugging Face.
-  * Starting the vLLM server.
+* Provisioning the pod on Runpod.
+* Downloading the Docker image.
+* Installing required packages.
+* Downloading the model from Hugging Face.
+* Starting the vLLM server.
 
 * The logs of vLLM will be displayed in the terminal.
 
@@ -4590,15 +4752,18 @@ dstack apply
 
   ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
   dstack logs vllm-llama-3.1-8b-instruct
+
   ```
 
 * Wait until you see logs indicating that vLLM is serving the model, such as:
 
   ```
+
   INFO: Started server process [1]
   INFO: Waiting for application startup.
   INFO: Application startup complete.
   INFO: Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
   ```
 
 ### Step 3: Test the Model Server
@@ -4613,6 +4778,7 @@ Use the following `curl` command to test the deployed model:
 
 <Tabs>
   <Tab title="macOS">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl -X POST http://localhost:8000/v1/chat/completions \
          -H "Content-Type: application/json" \
@@ -4625,10 +4791,13 @@ Use the following `curl` command to test the deployed model:
               "temperature": 0,
               "max_tokens": 150
             }'
+
     ```
+
   </Tab>
 
   <Tab title="Linux">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl -X POST http://localhost:8000/v1/chat/completions \
          -H "Content-Type: application/json" \
@@ -4641,23 +4810,28 @@ Use the following `curl` command to test the deployed model:
               "temperature": 0,
               "max_tokens": 150
             }'
+
     ```
+
   </Tab>
 
   <Tab title="Windows">
-    **Command Prompt:**
+### Command Prompt: (3)
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl -X POST http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d "{ \"model\": \"meta-llama/Llama-3.1-8B-Instruct\", \"messages\": [ {\"role\": \"system\", \"content\": \"You are Poddy, a helpful assistant.\"}, {\"role\": \"user\", \"content\": \"What is your name?\"} ], \"temperature\": 0, \"max_tokens\": 150 }"
+
     ```
 
-    **PowerShell:**
+### PowerShell: (3)
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl.exe -Method Post http://localhost:8000/v1/chat/completions `
       -Headers @{ "Content-Type" = "application/json" } `
       -Body '{ "model": "meta-llama/Llama-3.1-8B-Instruct", "messages": [ {"role": "system", "content": "You are Poddy, a helpful assistant."}, {"role": "user", "content": "What is your name?"} ], "temperature": 0, "max_tokens": 150 }'
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -4691,6 +4865,7 @@ You should receive a JSON response similar to the following:
   },
   "prompt_logprobs": null
 }
+
 ```
 
 This confirms that the model is running and responding as expected.
@@ -4706,7 +4881,9 @@ In the terminal where you ran `dstack apply`, you can stop the task by pressing 
 You'll be prompted:
 
 ```
+
 Stop the run vllm-llama-3.1-8b-instruct before detaching? [y/n]:
+
 ```
 
 Type `y` and press `Enter` to confirm stopping the task.
@@ -4719,6 +4896,7 @@ If you wish to ensure the instance is terminated immediately, you can run:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 dstack stop vllm-llama-3.1-8b-instruct
+
 ```
 
 3. **Verify Termination**
@@ -4742,6 +4920,7 @@ region: EUR-IS-1
 
 # Required size
 size: 100GB
+
 ```
 
 <Info>
@@ -4752,6 +4931,7 @@ Apply the volume configuration:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 dstack apply -f volume.dstack.yml
+
 ```
 
 This will create the volume named `llama31-volume`.
@@ -4764,6 +4944,7 @@ Modify your `.dstack.yml` file to include the volume:
 volumes:
 - name: llama31-volume
  path: /data
+
 ```
 
 This configuration will mount the volume to the `/data` directory inside your container.
@@ -4796,16 +4977,16 @@ To start using Mods, follow these step-by-step instructions:
 
 1. **Obtain Your API Key**:
 
-   * Visit the [Runpod Settings](https://www.console.runpod.io/user/settings) page to retrieve your API key.
-   * If you haven't created an account yet, you'll need to sign up before obtaining the key.
+* Visit the [Runpod Settings](https://www.console.runpod.io/user/settings) page to retrieve your API key.
+* If you haven't created an account yet, you'll need to sign up before obtaining the key.
 
 2. **Install Mods**:
 
-   * Refer to the different installation methods for [Mods](https://github.com/charmbracelet/mods) based on your preferred approach.
+* Refer to the different installation methods for [Mods](https://github.com/charmbracelet/mods) based on your preferred approach.
 
 3. **Configure Runpod**:
 
-   * Update the `config_template.yml` file to use your Runpod configuration. Here's an example:
+* Update the `config_template.yml` file to use your Runpod configuration. Here's an example:
 
      ```yml theme={"theme":{"light":"github-light","dark":"github-dark"}}
      runpod:
@@ -4818,29 +4999,31 @@ To start using Mods, follow these step-by-step instructions:
          openchat/openchat-3.5-1210:
            aliases: ["openchat"]
            max-input-chars: 8192
+
      ```
 
-   * `base-url`: Update your base-url with your specific endpoint.
+* `base-url`: Update your base-url with your specific endpoint.
 
-   * `api-key-env`: Add your Runpod API key.
+* `api-key-env`: Add your Runpod API key.
 
-   * `openchat/openchat-3.5-1210`: Replace with the name of the model you want to use.
+* `openchat/openchat-3.5-1210`: Replace with the name of the model you want to use.
 
-   * `aliases: ["openchat"]`: Replace with your preferred model alias.
+* `aliases: ["openchat"]`: Replace with your preferred model alias.
 
-   * `max-input-chars`: Update the maximum input characters allowed for your model.
+* `max-input-chars`: Update the maximum input characters allowed for your model.
 
 4. **Verify Your Setup**:
 
-   * To ensure everything is set up correctly, pipe any command line output and pass it to `mods`.
+* To ensure everything is set up correctly, pipe any command line output and pass it to `mods`.
 
-   * Specify the Runpod API and model you want to use.
+* Specify the Runpod API and model you want to use.
 
      ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
      ls ~/Downloads | mods --api runpod --model openchat -f "tell my fortune based on these files" | glow
+
      ```
 
-   * This command will list the files in your `~/Downloads` directory, pass them to Mods using the Runpod API and the specified model, and format the response as a fortune based on the files. The output will then be piped to `glow` for a visually appealing display.
+* This command will list the files in your `~/Downloads` directory, pass them to Mods using the Runpod API and the specified model, and format the response as a fortune based on the files. The output will then be piped to `glow` for a visually appealing display.
 
 
 # Running Runpod on SkyPilot
@@ -4852,7 +5035,7 @@ Source: https://docs.runpod.io/integrations/skypilot
 
 This integration leverages the Runpod CLI infrastructure, streamlining the process of spinning up on-demand pods and deploying serverless endpoints with SkyPilot.
 
-## Getting started
+## Getting started (2)
 
 To begin using Runpod with SkyPilot, follow these steps:
 
@@ -4862,6 +5045,7 @@ To begin using Runpod with SkyPilot, follow these steps:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    pip install "runpod>=1.6"
+
    ```
 
 3. **Configure Runpod**: Enter `runpod config` in your CLI and paste your API key when prompted.
@@ -4870,6 +5054,7 @@ To begin using Runpod with SkyPilot, follow these steps:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    pip install "skypilot-nightly[runpod]"
+
    ```
 
 5. **Verify Your Setup**: Run `sky check` to ensure your credentials are correctly set up and you're ready to proceed.
@@ -4904,6 +5089,7 @@ After setting up your environment, you can seamlessly spin up a cluster in minut
    run: |
      echo "Hello, SkyPilot!"
      conda env list
+
    ```
 
 4. **Launch Your Project**: With your configuration file created, launch your project on the cluster by running `sky launch -c mycluster hello_sky.yaml`.
@@ -4920,7 +5106,7 @@ Explore our guides and examples to deploy your AI/ML application on Runpod.
 
 Runpod is a cloud computing platform built for AI, machine learning, and general compute needs. Whether you're running deep learning models, training AI, or deploying cloud-based applications, Runpod provides scalable, high-performance GPU and CPU resources to power your workloads.
 
-## Get started
+## Get started (2)
 
 If you're new to Runpod, start here to learn the essentials and deploy your first GPU.
 
@@ -4990,7 +5176,7 @@ Pods give you dedicated GPU or CPU instances for containerized AI/ML workloads. 
   </Card>
 </CardGroup>
 
-## Public Endpoints
+## Public Endpoints (2)
 
 Public Endpoints provide instant API access to pre-deployed AI models for image, video, and text generation without zero setup. You only pay for what you generate, making it easy to integrate AI into your applications without managing infrastructure.
 
@@ -5110,7 +5296,7 @@ Secure Cloud operates in T3/T4 data centers with high reliability, redundancy, s
 
 Community Cloud connects individual compute providers to users through a peer-to-peer GPU computing platform. Hosts are invite-only and vetted to maintain quality standards. Community Cloud offers competitive pricing with good server quality, though with less redundancy for power and networking compared to Secure Cloud.
 
-## Next steps
+## Next steps (6)
 
 Once you've determined your resource requirements, you can learn how to:
 
@@ -5128,13 +5314,13 @@ Set up remote development on your Pod using VSCode or Cursor.
 
 This guide explains how to connect directly to your Pod through VSCode or Cursor using the Remote-SSH extension, allowing you to work within your Pod's volume directories as if the files were stored on your local machine.
 
-## Requirements
+## Requirements (8)
 
 Before you begin, you'll need:
 
 * A local development environment with VSCode or Cursor installed.
-  * [Download VSCode](https://code.visualstudio.com/download).
-  * [Download Cursor](https://cursor.sh/).
+* [Download VSCode](https://code.visualstudio.com/download).
+* [Download Cursor](https://cursor.sh/).
 * Familiarity with basic command-line operations and SSH.
 
 ## Step 1: Install the Remote-SSH extension
@@ -5144,8 +5330,8 @@ To connect to a Pod, you'll need to install the Remote-SSH extension for your ID
 1. Open VSCode or Cursor and navigate to the **Extensions** view (Ctrl+Shift+X or Cmd+Shift+X).
 
 2. Search for and install the Remote-SSH extension:
-   * VSCode: **Remote - SSH** by **ms-vscode-remote**.
-   * Cursor: **Remote-SSH** by **Anysphere**.
+* VSCode: **Remote - SSH** by **ms-vscode-remote**.
+* Cursor: **Remote-SSH** by **Anysphere**.
 
 ## Step 2: Generate an SSH key
 
@@ -5155,18 +5341,21 @@ Before you can connect to a Pod, you'll need an SSH key that is paired with your
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C "YOUR_EMAIL@DOMAIN.COM"
+
    ```
 
 2. To retrieve your public SSH key, run this command:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    cat ~/.ssh/id_ed25519.pub
+
    ```
 
    This will output something similar to this:
 
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    ssh-ed25519 AAAAC4NzaC1lZDI1JTE5AAAAIGP+L8hnjIcBqUb8NRrDiC32FuJBvRA0m8jLShzgq6BQ YOUR_EMAIL@DOMAIN.COM
+
    ```
 
 3. Copy and paste the output into the **SSH Public Keys** field in your [Runpod user account settings](https://www.runpod.io/console/user/settings).
@@ -5179,7 +5368,9 @@ Before you can connect to a Pod, you'll need an SSH key that is paired with your
   ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
   export PUBLIC_KEY="<the value you cat out locally>"
   echo "$PUBLIC_KEY" >> ~/.ssh/authorized_keys
+
   ```
+
 </Warning>
 
 ## Step 3: Deploy a Pod
@@ -5206,6 +5397,7 @@ Next, you'll configure SSH access to your Pod using the Remote-SSH extension. Th
 
        ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
        ssh root@123.456.789.80 -p 12345 -i ~/.ssh/id_ed25519
+
        ```
 
        <Warning>
@@ -5225,7 +5417,9 @@ Next, you'll configure SSH access to your Pod using the Remote-SSH extension. Th
     3. Under **Direct TCP Ports**, look for a line similar to:
 
        ```
+
        TCP port ->  69.48.159.6:25634 -> :22
+
        ```
 
        <Warning>
@@ -5244,11 +5438,13 @@ Next, you'll configure SSH access to your Pod using the Remote-SSH extension. Th
     5. Add the following to the SSH config file:
 
        ```
+
        Host POD_NAME
            HostName POD_IP
            User root
            Port POD_PORT
            IdentityFile ~/.ssh/id_ed25519
+
        ```
 
        Replace:
@@ -5260,11 +5456,13 @@ Next, you'll configure SSH access to your Pod using the Remote-SSH extension. Th
        So, for the example Pod, the SSH config file will look like:
 
        ```
+
        Host my-pod
            HostName 69.48.159.6
            User root
            Port 25634
            IdentityFile ~/.ssh/id_ed25519
+
        ```
 
        <Note>
@@ -5309,7 +5507,7 @@ Here are some important directories to be aware of:
 * `/tmp`: Temporary files (cleared when Pod stops).
 * `/root`: Home directory for the root user.
 
-## Troubleshooting
+## Troubleshooting (5)
 
 If you can't connect to your Pod:
 
@@ -5322,8 +5520,10 @@ If the VSCode/Cursor server fails to install:
 1. Check that your Pod has sufficient disk space.
 2. Ensure your Pod has internet connectivity.
 3. Try manually removing the `.vscode-server` or `.cursor-server` directory and reconnecting:
+
    ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
    rm -rf ~/.vscode-server
+
    ```
 
 
@@ -5342,6 +5542,7 @@ For example, if you run a web API inside your Pod on port 4000 like this:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 uvicorn main:app --host 0.0.0.0 --port 4000
+
 ```
 
 The external port users connect to will be different, depending on your chosen exposure method.
@@ -5363,7 +5564,9 @@ You can also configure HTTP ports for a Pod template in the [My Templates](https
 Once your Pod is running and your service is active, access it using the proxy URL format:
 
 ```
+
 https://[POD_ID]-[INTERNAL_PORT].proxy.runpod.net
+
 ```
 
 Replace `[POD_ID]` with your Pod's unique identifier and `[INTERNAL_PORT]` with your service's internal port. For example:
@@ -5383,7 +5586,9 @@ Replace `[POD_ID]` with your Pod's unique identifier and `[INTERNAL_PORT]` with 
 The HTTP proxy route includes several intermediaries that affect connection behavior:
 
 ```
+
 User → Cloudflare → Runpod Load Balancer → Your Pod
+
 ```
 
 This architecture introduces important limitations:
@@ -5416,7 +5621,9 @@ In your Pod or template configuration, follow the same steps as for [HTTP ports]
 After your Pod starts, check the **Connect** menu to find your assigned public IP and external port mapping under **Direct TCP Ports**. For example:
 
 ```
+
 TCP port   213.173.109.39:13007 -> :22
+
 ```
 
 <Warning>
@@ -5442,11 +5649,12 @@ Your application can discover assigned ports through environment variables. For 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 echo $RUNPOD_TCP_PORT_70000
 echo $RUNPOD_TCP_PORT_70001
+
 ```
 
 You can use these environment variables in your application configuration to automatically adapt to assigned ports:
 
-**Python example:**
+### Python example:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import os
@@ -5454,17 +5662,19 @@ import os
 # Get the assigned port or use a default
 port = os.environ.get('RUNPOD_TCP_PORT_70000', '8000')
 app.run(host='0.0.0.0', port=int(port))
+
 ```
 
-**Configuration file example:**
+### Configuration file example:
 
 ```yaml theme={"theme":{"light":"github-light","dark":"github-dark"}}
 server:
   host: 0.0.0.0
   port: ${RUNPOD_TCP_PORT_70000}
+
 ```
 
-## Best practices
+## Best practices (3)
 
 When exposing ports from your Pods, follow these guidelines for security and reliability:
 
@@ -5474,7 +5684,7 @@ When exposing ports from your Pods, follow these guidelines for security and rel
 * **Use HTTPS for sensitive data**: While the proxy automatically provides HTTPS, TCP connections do not. Implement TLS in your application when handling sensitive data over TCP.
 * **Validate input**: Public endpoints are targets for malicious traffic. Implement robust input validation and rate limiting.
 
-### Performance optimization
+### Performance optimization (2)
 
 * **Choose the right method**: Use HTTP proxy for web services and TCP for everything else. The proxy adds latency but provides automatic HTTPS and load balancing.
 * **Handle timeouts gracefully**: Design your application to work within the 100-second proxy timeout or use TCP for long-running connections.
@@ -5495,7 +5705,7 @@ Different types of applications benefit from different exposure methods:
 * **Database connections**: Use TCP with proper security measures. Consider using Runpod's global networking for internal-only databases.
 * **Development environments**: HTTP proxy works well for web-based IDEs and development servers.
 
-## Troubleshooting
+## Troubleshooting (6)
 
 Try these fixes if you're having issues with port exposure:
 
@@ -5505,7 +5715,7 @@ Try these fixes if you're having issues with port exposure:
 * **Port already in use**: Check that no other services in your Pod are using the same port.
 * **Unstable connections**: For Community Cloud Pods, implement reconnection logic to handle IP address changes.
 
-## Next steps
+## Next steps (7)
 
 Once you've exposed your ports, consider:
 
@@ -5533,6 +5743,7 @@ You can also SSH into a Pod using a [password-based method](#password-based-ssh)
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh-keygen -t ed25519 -C "YOUR_EMAIL@DOMAIN.COM"
+
     ```
 
     This saves a public/private key pair on your local machine to `~/.ssh/id_ed25519.pub` and `~/.ssh/id_ed25519` respectively.
@@ -5547,13 +5758,16 @@ You can also SSH into a Pod using a [password-based method](#password-based-ssh)
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     cat ~/.ssh/id_ed25519.pub
+
     ```
 
     This will output something similar to this:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh-ed25519 AAAAC4NzaC1lZDI1JTE5AAAAIGP+L8hnjIcBqUb8NRrDiC32FuJBvRA0m8jLShzgq6BQ YOUR_EMAIL@DOMAIN.COM
+
     ```
+
   </Step>
 
   <Step title="Add the key to your Runpod account">
@@ -5587,6 +5801,7 @@ All Pods provide a basic SSH connection that is proxied through Runpod's systems
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh 8y5rumuyb50m78-6441103b@ssh.runpod.io -i ~/.ssh/id_ed25519
+
     ```
 
     <Warning>
@@ -5617,6 +5832,7 @@ echo "$PUBLIC_KEY" >> authorized_keys; \
 chmod 700 authorized_keys; \
 service ssh start; \
 sleep infinity'
+
 ```
 
 Once you're sure that the SSH daemon is running, you can connect to your Pod by following these steps:
@@ -5639,6 +5855,7 @@ Once you're sure that the SSH daemon is running, you can connect to your Pod by 
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh root@213.173.108.12 -p 17445 -i ~/.ssh/id_ed25519
+
     ```
 
     <Warning>
@@ -5655,6 +5872,7 @@ The SSH command above has the following structure:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 ssh root@[POD_IP_ADDRESS] -p [SSH_PORT] -i [PATH_TO_SSH_KEY]
+
 ```
 
 Where:
@@ -5685,6 +5903,7 @@ To quickly set up password-based SSH, run this command to download and execute a
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 wget https://raw.githubusercontent.com/justinwlin/Runpod-SSH-Password/main/passwordrunpod.sh && chmod +x passwordrunpod.sh && ./passwordrunpod.sh
+
 ```
 
 <Warning>
@@ -5713,6 +5932,7 @@ scp -P 32061 root@38.80.152.73:/workspace/yourfile.txt .
 
 Copy entire folder TO pod:
 scp -P 32061 -r yourfolder root@38.80.152.73:/workspace/
+
 ```
 
 ## Video tutorial (Windows)
@@ -5786,6 +6006,7 @@ Run the following command, replacing `RUNPOD_API_KEY` with your API key:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl config --apiKey RUNPOD_API_KEY
+
 ```
 
 ## Deploy a Pod
@@ -5811,7 +6032,7 @@ runpodctl config --apiKey RUNPOD_API_KEY
     5. Click **Deploy On-Demand** to deploy and start your Pod.
 
     <Warning>
-      **CUDA Version Compatibility**
+### CUDA Version Compatibility
 
       When using templates (especially community templates like `runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04`), ensure the host machine's CUDA driver version matches or exceeds the template's requirements.
 
@@ -5847,7 +6068,9 @@ runpodctl config --apiKey RUNPOD_API_KEY
       --containerDiskSize 10 \
       --volumeSize 100 \
       --args "bash -c 'mkdir /testdir1 && /start.sh'"
+
     ```
+
   </Tab>
 
   <Tab title="REST API">
@@ -5905,6 +6128,7 @@ runpodctl config --apiKey RUNPOD_API_KEY
       "volumeInGb": 20,
       "volumeMountPath": "/workspace"
     }'
+
     ```
 
     For complete API documentation and parameter details, see the [Pod API reference](/api-reference/pods/POST/pods).
@@ -5922,7 +6146,7 @@ With custom templates, you can:
 * Create [portable Docker images](/tutorials/introduction/containers) that work consistently across deployments.
 * Share environments with team members for collaborative work.
 
-## Stop a Pod
+## Stop a Pod (2)
 
 <Tip>
   If your Pod has a [network volume](/storage/network-volumes) attached, it cannot be stopped, only terminated. When you terminate the Pod, data in the `/workspace` directory will be preserved in the network volume, and you can regain access by deploying a new Pod with the same network volume attached.
@@ -5951,13 +6175,16 @@ By stopping a Pod you are effectively releasing the GPU on the machine, and you 
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl stop pod $RUNPOD_POD_ID
+
     ```
 
     Example output:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     pod "gq9xijdra9hwyd" stopped
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -5971,6 +6198,7 @@ You can also stop a Pod after a specified period of time. The examples below sho
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     sleep 2h; runpodctl stop pod $RUNPOD_POD_ID &
+
     ```
 
     This command uses sleep to wait for 2 hours before executing the `runpodctl stop pod` command to stop the Pod. The `&` at the end runs the command in the background, allowing you to continue using the SSH session.
@@ -5981,6 +6209,7 @@ You can also stop a Pod after a specified period of time. The examples below sho
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     nohup bash -c "sleep 2h; runpodctl stop pod $RUNPOD_POD_ID" &
+
     ```
 
     `nohup` ensures the process continues running if you close the web terminal window.
@@ -6005,13 +6234,16 @@ Pods start as soon as they are created, but you can resume a Pod that has been s
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl start pod $RUNPOD_POD_ID
+
     ```
 
     Example output:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     pod "wu5ekmn69oh1xr" started with $0.290 / hr
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -6037,25 +6269,30 @@ Pods start as soon as they are created, but you can resume a Pod that has been s
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl remove pod $RUNPOD_POD_ID
+
     ```
 
     Example output:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     pod "wu5ekmn69oh1xr" removed
+
     ```
 
     You can also remove Pods in bulk. For example, the following command terminates up to 40 Pods with the name `my-bulk-task`.
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl remove pods my-bulk-task --podCount 40
+
     ```
 
     You can also terminate a Pod by name:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl remove pods [POD_NAME]
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -6067,12 +6304,14 @@ If you're using the CLI, use the following command to list your Pods:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl get pod
+
 ```
 
 Or use this command to get the details of a single Pod:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl get pod [POD_ID]
+
 ```
 
 ## Access logs
@@ -6084,7 +6323,7 @@ Pods provide two types of logs to help you monitor and troubleshoot your workloa
 
 To view your logs, open the [Pods page](https://www.console.runpod.io/pods), expand your Pod, and click the **Logs** button. This gives you real-time access to both container and system logs, making it easy to diagnose issues or monitor your Pod's activity.
 
-## Troubleshooting
+## Troubleshooting (7)
 
 Below are some common issues and solutions for troubleshooting Pod deployments.
 
@@ -6146,7 +6385,9 @@ Once deployed, your Pod receives a private IP address and DNS name visible in th
 Each Pod with global networking enabled can be accessed by other Pods using its internal DNS name:
 
 ```
+
 POD_ID.runpod.internal
+
 ```
 
 Replace `POD_ID` with the target Pod's ID. For example, if your Pod ID is `abc123xyz`, other Pods can reach it at `abc123xyz.runpod.internal`.
@@ -6158,6 +6399,7 @@ Verify network connectivity between Pods by opening a web terminal in one Pod an
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 # To install ping on your Pod, run: apt-get install -y iputils-ping
 ping POD_ID.runpod.internal
+
 ```
 
 This confirms the private network connection is working correctly.
@@ -6169,7 +6411,9 @@ Services running on networked Pods are automatically accessible to other Pods wi
 For example, a database on Pod `abc123xyz` listening on port 5432 would be accessible to other Pods at:
 
 ```
+
 abc123xyz.runpod.internal:5432
+
 ```
 
 Each service communicates privately through the internal network, reducing attack surface and improving security.
@@ -6208,7 +6452,7 @@ Choose data centers strategically based on:
 * Compliance requirements for data residency
 * Availability of specific GPU types
 
-## Next steps
+## Next steps (8)
 
 With global networking configured, explore these related features:
 
@@ -6219,7 +6463,7 @@ With global networking configured, explore these related features:
 For additional support or enterprise networking requirements, [contact our customer service team](https://contact.runpod.io/hc/en-us/requests/new).
 
 
-# Overview
+# Overview (6)
 Source: https://docs.runpod.io/pods/overview
 
 Get on-demand access to powerful computing resources.
@@ -6241,9 +6485,9 @@ Each Pod consists of these core components:
 * **Container environment**: An Ubuntu Linux-based container that can run almost any compatible software.
 * **Unique identifier**: Each Pod receives a dynamic ID (e.g., `2s56cp0pof1rmt`) for management and access.
 * [Storage](#storage-options):
-  * **Container volume**: Houses the operating system and temporary storage.
-  * **Disk volume**: Persistent storage that is preserved between Pod starts and stops.
-  * **Network volume (optional)**: Permanent, portable storage that can be moved between machines and persists even after Pod deletion.
+* **Container volume**: Houses the operating system and temporary storage.
+* **Disk volume**: Persistent storage that is preserved between Pod starts and stops.
+* **Network volume (optional)**: Permanent, portable storage that can be moved between machines and persists even after Pod deletion.
 * **Hardware resources**: Allocated vCPU, system RAM, and multiple GPUs (based on your selection).
 * **Network connectivity**: A proxy connection enabling web access to any [exposed port](/pods/configuration/expose-ports) on your container.
 
@@ -6255,7 +6499,7 @@ Templates eliminate the need to manually set up environments, saving time and re
 
 To learn how to create your own custom templates, see [Build a custom Pod template](/pods/templates/create-custom-template).
 
-## Storage
+## Storage (3)
 
 Pods offer three types of storage to match different use cases:
 
@@ -6311,7 +6555,7 @@ Runpod offers two types of Pod:
 * **Secure Cloud:** Operates in T3/T4 data centers, providing high reliability and security for enterprise and production workloads.
 * **Community Cloud:** Connects individual compute providers to users through a vetted, secure peer-to-peer system, with competitive pricing options.
 
-## Deploy a Pod
+## Deploy a Pod (2)
 
 Follow these steps to deploy a Pod:
 
@@ -6321,7 +6565,7 @@ Follow these steps to deploy a Pod:
 4. Launch your Pod and connect using SSH, JupyterLab, or your preferred remote access method.
 5. [Manage your Pod](/pods/manage-pods) through the Runpod console.
 
-## Pricing
+## Pricing (2)
 
 Pods are billed by the minute with no fees for ingress/egress. Runpod also offers long-term [savings plans](/pods/pricing#savings-plans) for extended usage patterns. See [Pod pricing](/pods/pricing) for details.
 
@@ -6333,7 +6577,7 @@ Pods are billed by the minute with no fees for ingress/egress. Runpod also offer
 
 **Windows support:** Pods do not currently support Windows.
 
-## Next steps
+## Next steps (9)
 
 Ready to get started? Explore these pages to learn more:
 
@@ -6345,7 +6589,7 @@ Ready to get started? Explore these pages to learn more:
 * Configure [global networking](/pods/networking) for your applications.
 
 
-# Pricing
+# Pricing (3)
 Source: https://docs.runpod.io/pods/pricing
 
 Explore pricing options for Pods, including on-demand, savings plans, and spot instances.
@@ -6386,13 +6630,13 @@ On-demand instances are designed for non-interruptible workloads. When you deplo
   You must have at least one hour's worth of time in your balance for your selected Pod configuration to rent an on-demand instance. If your balance is completely drained, all Pods are subject to deletion at the discretion of the Runpod system.
 </Warning>
 
-**Benefits:**
+### Benefits:
 
 * **Flexibility:** Ideal for workloads with unpredictable durations or for short-term tasks, development, and testing.
 * **No upfront commitment:** Start using resources immediately without any long-term contracts (beyond ensuring sufficient balance).
 * **Reliability:** On-demand instances are non-interruptible, providing a stable environment for your applications.
 
-**Use on-demand pricing for:**
+### Use on-demand pricing for:
 
 * Short-term projects or experiments.
 * Development and testing environments.
@@ -6417,13 +6661,13 @@ When you stop a Pod, the savings plan associated with it applies to your next de
   Savings plans require an upfront payment for the entire committed term and are generally non-refundable. Stopping your Pod does not extend the duration of your savings plan; each plan has a fixed expiration date set at the time of purchase.
 </Warning>
 
-**Benefits:**
+### Benefits: (2)
 
 * **Significant cost reduction:** Offers substantial discounts on hourly rates compared to standard on-demand pricing.
 * **Budget predictability:** Lock in compute costs for your long-running workloads with a fixed upfront payment and known discounted rates.
 * **Flexible application:** If you stop a Pod with an active savings plan, the plan's benefits automatically apply to the next Pod you deploy using the same GPU type.
 
-**Use savings plans for:**
+### Use savings plans for:
 
 * Long-running projects with predictable compute needs.
 * Production workloads where cost optimization over time is crucial.
@@ -6441,17 +6685,17 @@ While resources are dedicated to your Pod when it's running, the instance can be
   It is crucial to periodically save your work to a volume disk or push data to cloud storage, especially within the 5-second window after a SIGTERM signal. Your volume disk is retained even if your Spot instance is interrupted.
 </Warning>
 
-**Benefits:**
+### Benefits: (3)
 
 * **Lowest cost:** Provides the most budget-friendly option for running compute workloads.
 * **Scalability for tolerant jobs:** Enables large-scale, parallel processing tasks at a fraction of the on-demand cost.
 
-**Risks and considerations:**
+### Risks and considerations:
 
 * **Interruptibility:** Spot instances can be terminated with only a 5-second warning. Your application must be designed to handle such interruptions gracefully.
 * **Data persistence:** It is crucial to periodically save your work to a volume disk or push data to cloud storage, especially within the 5-second window after a SIGTERM signal. Your volume disk is retained even if your Spot instance is interrupted.
 
-**Use spot instances for:**
+### Use spot instances for:
 
 * Fault-tolerant workloads that can withstand interruptions.
 * Stateless applications or those that can quickly resume from a saved state.
@@ -6478,10 +6722,10 @@ You can select your preferred pricing model directly from the Runpod console whe
 2. Configure your Pod (see [Create a Pod](/pods/manage-pods#create-a-pod)).
 
 3. Under **Instance Pricing**, select one of the following options:
-   * **On-demand**: Deploys your Pod with standard, non-interruptible pricing.
-   * **3 month savings plan**: Deploys your Pod with a 3-month upfront commitment for discounted rates.
-   * **6 month savings plan**: Deploys your Pod with a 6-month upfront commitment for even greater discounted rates.
-   * **Spot**: Deploys your Pod as an interruptible instance at the lowest cost.
+* **On-demand**: Deploys your Pod with standard, non-interruptible pricing.
+* **3 month savings plan**: Deploys your Pod with a 3-month upfront commitment for discounted rates.
+* **6 month savings plan**: Deploys your Pod with a 6-month upfront commitment for even greater discounted rates.
+* **Spot**: Deploys your Pod as an interruptible instance at the lowest cost.
 
 4. Review your Pod's configuration details, including the terms of the selected pricing model. The combined cost of the Pod's GPU and storage will be displayed during deployment under **Pricing Summary**.
 
@@ -6507,7 +6751,7 @@ Container and volume disk storage will be included in your Pod's displayed hourl
 
 When you [stop a Pod](/pods/manage-pods#stop-a-pod), you will no longer be charged for the Pod's hourly GPU cost, but will continue to be charged for the Pod's volume disk at a rate of \$0.20 per GB per month.
 
-## Account spend limits
+## Account spend limits (2)
 
 By default, Runpod accounts have a spend limit of \$80 per hour across all resources. This limit protects your account from unexpected charges. If your workload requires higher spending capacity, you can [contact support](https://www.runpod.io/contact) to increase it.
 
@@ -6531,7 +6775,7 @@ Cloud Sync supports syncing data with these cloud storage providers:
 * Dropbox
 * Backblaze B2 Cloud Storage
 
-## Security best practices
+## Security best practices (2)
 
 When using Cloud Sync, follow these security guidelines to protect your data and credentials:
 
@@ -6707,7 +6951,7 @@ While Cloud Sync provides the easiest way to sync data with cloud providers, you
 
 For detailed instructions on these methods, see our [file transfer guide](/pods/storage/transfer-files).
 
-## Troubleshooting
+## Troubleshooting (8)
 
 If you encounter issues during syncing:
 
@@ -6773,6 +7017,7 @@ From the source machine (your local computer or a Pod), run:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl send YOUR_FILE
+
 ```
 
 You'll see output like this:
@@ -6783,6 +7028,7 @@ Code is: 8338-galileo-collect-fidel
 On the other computer run
 
 runpodctl receive 8338-galileo-collect-fidel
+
 ```
 
 The code `8338-galileo-collect-fidel` is your unique, one-time transfer code.
@@ -6793,6 +7039,7 @@ On the destination machine, use the code provided by the send command:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl receive 8338-galileo-collect-fidel
+
 ```
 
 You'll see confirmation of the transfer:
@@ -6802,6 +7049,7 @@ Receiving 'YOUR_FILE' (5 B)
 
 Receiving (<-149.36.0.243:8692)
 data.txt 100% |████████████████████| ( 5/ 5B, 0.040 kB/s)
+
 ```
 
 ## Transfer with SCP
@@ -6814,6 +7062,7 @@ The general format for SCP commands (replace `43201` and `194.26.196.6` with you
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 scp -P 43201 -i ~/.ssh/id_ed25519 /local/file/path root@194.26.196.6:/destination/file/path
+
 ```
 
 <Tip>
@@ -6826,12 +7075,14 @@ Transfer a single file:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 scp -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example.txt root@194.26.196.6:/root/example.txt
+
 ```
 
 Transfer a directory (use `-r` for recursive copying):
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 scp -r -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example_dir root@194.26.196.6:/root/example_dir
+
 ```
 
 ### Download files from your Pod
@@ -6840,6 +7091,7 @@ Simply reverse the source and destination:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 scp -P 43201 -i ~/.ssh/id_ed25519 root@194.26.196.6:/root/example.txt ~/documents/example.txt
+
 ```
 
 ## Transfer with rsync
@@ -6850,10 +7102,11 @@ scp -P 43201 -i ~/.ssh/id_ed25519 root@194.26.196.6:/root/example.txt ~/document
   `rsync` requires a Linux environment or WSL on Windows.
 </Warning>
 
-### Basic syntax
+### Basic syntax (2)
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 rsync -e "ssh -p 43201" /source/file/path root@194.26.196.6:/destination/file/path
+
 ```
 
 ### Essential flags
@@ -6864,18 +7117,20 @@ rsync -e "ssh -p 43201" /source/file/path root@194.26.196.6:/destination/file/pa
 * `-p` (progress) - Displays transfer progress
 * `-d` (delete) - Removes files from destination that don't exist in source
 
-### Send files to your Pod
+### Send files to your Pod (2)
 
 Transfer with progress and compression:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
+
 ```
 
 ### Download from your Pod
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 rsync -avz -e "ssh -p 43201" root@194.26.196.6:/root/example.txt ~/documents/example.txt
+
 ```
 
 ### Directory synchronization
@@ -6884,12 +7139,14 @@ Transfer directory contents only (note the trailing slash):
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 rsync -avz -e "ssh -p 43201" ~/documents/example_dir/ root@194.26.196.6:/root/example_dir/
+
 ```
 
 Transfer the directory itself (no trailing slash):
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 rsync -avz -e "ssh -p 43201" ~/documents/example_dir root@194.26.196.6:/root/
+
 ```
 
 ### Incremental transfers
@@ -6906,6 +7163,7 @@ example.txt
 
 sent 243 bytes  received 35 bytes  185.33 bytes/sec
 total size is 119  speedup is 0.43
+
 ```
 
 Second transfer (minimal data):
@@ -6916,6 +7174,7 @@ sending incremental file list
 
 sent 120 bytes  received 12 bytes  88.00 bytes/sec
 total size is 119  speedup is 0.90
+
 ```
 
 ## Sync with cloud storage
@@ -6937,23 +7196,23 @@ You can also use these Colab notebooks to transfer files between Pods and Google
 * [Send files](https://colab.research.google.com/drive/1UaODD9iGswnKF7SZfsvwHDGWWwLziOsr#scrollTo=2nlcIAY3gGLt)
 * [Receive files](https://colab.research.google.com/drive/1ot8pODgystx1D6_zvsALDSvjACBF1cj6#scrollTo=RF1bMqhBOpSZ)
 
-## Troubleshooting
+## Troubleshooting (9)
 
 Here are some common issues and possible fixes:
 
-**Connection refused errors:**
+### Connection refused errors:
 
 * Verify SSH is properly configured on your Pod.
 * Check that the correct port and IP address are being used.
 * Ensure port 22 is exposed in your Pod configuration.
 
-**Permission denied:**
+### Permission denied:
 
 * Confirm your SSH key is correctly specified with `-i`
 * Verify the key has appropriate permissions (`chmod 600 ~/.ssh/id_ed25519`)
 * Try password-based authentication for quick tests.
 
-**Large file transfers timing out:**
+### Large file transfers timing out:
 
 * Use `rsync` instead of SCP for better reliability.
 * Add the `-z` flag to compress data during transfer.
@@ -7027,7 +7286,7 @@ To update the size of a Pod's container or volume disk:
 
 You can upload data from your Pod to AWS S3, Google Cloud Storage, Azure, Dropbox, and more by clicking the **Cloud Sync** button on the Pod page. For detailed instructions on connecting to these services, see [Export data](/pods/storage/cloud-sync).
 
-## Next steps
+## Next steps (10)
 
 * Learn how to [create a network volume](/storage/network-volumes).
 * Learn how to [choose the right Pod](/pods/choose-a-pod) for your workload.
@@ -7048,7 +7307,7 @@ This tutorial shows how to build a custom Pod template from the ground up. You'l
 
 By creating custom templates, you can package everything your project needs into a reusable Docker image. Once built, you can deploy your workload in seconds instead of reinstalling dependencies every time you start a new Pod. You can also share your template with members of your team and the wider Runpod community.
 
-## What you'll learn
+## What you'll learn (2)
 
 In this tutorial, you'll learn how to:
 
@@ -7060,7 +7319,7 @@ In this tutorial, you'll learn how to:
 * Create a custom Pod template in the Runpod console
 * Deploy a Pod using your custom template.
 
-## Requirements
+## Requirements (9)
 
 Before you begin, you'll need:
 
@@ -7080,7 +7339,9 @@ First, create a directory for your custom template and the necessary files.
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mkdir my-custom-pod-template
     cd my-custom-pod-template
+
     ```
+
   </Step>
 
   <Step title="Create required files">
@@ -7088,16 +7349,20 @@ First, create a directory for your custom template and the necessary files.
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     touch Dockerfile requirements.txt main.py
+
     ```
 
     Your project structure should now look like this:
 
     ```
+
     my-custom-pod-template/
     ├── Dockerfile
     ├── requirements.txt
     └── main.py
+
     ```
+
   </Step>
 </Steps>
 
@@ -7142,6 +7407,7 @@ Runpod offers base images with PyTorch, CUDA, and common dependencies pre-instal
 
     # Copy application files
     COPY . /app
+
     ```
 
     This basic Dockerfile:
@@ -7167,6 +7433,7 @@ Now define the Python packages your application needs.
     numpy>=1.24.0
     requests>=2.31.0
     transformers>=4.40.0
+
     ```
 
     These packages will be installed when you build your Docker image. Add any additional libraries your application requires.
@@ -7179,15 +7446,15 @@ Runpod base images come with built-in services like Jupyter and SSH. You can cho
 
 There are three ways to configure how your container starts:
 
-**Option 1: Keep all base image services (default)**
+### Option 1: Keep all base image services (default)
 
 The base image automatically starts Jupyter and SSH based on your template settings. This is the default behavior and is ideal for interactive development and remote access.
 
-**Option 2: Run your application after services start**
+### Option 2: Run your application after services start
 
 This option starts Jupyter/SSH in the background, then runs your application. You'll use a startup script for this.
 
-**Option 3: Application only (no Jupyter or SSH)**
+### Option 3: Application only (no Jupyter or SSH)
 
 This runs only your application with minimal overhead, which is ideal for production deployments where you don't need interactive access.
 
@@ -7206,12 +7473,14 @@ If you want to run your application alongside Jupyter/SSH services, add these li
 COPY run.sh /app/run.sh
 RUN chmod +x /app/run.sh
 CMD ["/app/run.sh"]
+
 ```
 
 Create a new file named `run.sh` in the same directory as your `Dockerfile`:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 touch run.sh
+
 ```
 
 Then add the following content to it:
@@ -7229,6 +7498,7 @@ python /app/main.py
 
 # Wait for background processes
 wait
+
 ```
 
 This script starts the base services in the background, then runs your application.
@@ -7241,6 +7511,7 @@ For production deployments where you don't need Jupyter or SSH, add these lines 
 # Clear entrypoint and run application only
 ENTRYPOINT []
 CMD ["python", "/app/main.py"]
+
 ```
 
 This overrides the base image entrypoint and runs only your Python application.
@@ -7272,6 +7543,7 @@ ENV HF_HUB_ENABLE_HF_TRANSFER=0
 
 # Pre-download model during build
 RUN python -c "from transformers import pipeline; pipeline('sentiment-analysis', model='distilbert-base-uncased-finetuned-sst-2-english')"
+
 ```
 
 During the build, Python will download the model and cache it in `/app/models`. When you deploy Pods with this template, the model loads instantly from the cache.
@@ -7290,6 +7562,7 @@ RUN mkdir -p /app/models/distilbert-model && \
     wget -q https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/model.safetensors && \
     wget -q https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/tokenizer_config.json && \
     wget -q https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english/resolve/main/vocab.txt
+
 ```
 
 ***
@@ -7380,6 +7653,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 ```
 
 <Warning>
@@ -7396,6 +7670,7 @@ Now that your template is configured, you can build and test your Docker image l
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker build --platform linux/amd64 -t my-custom-template:latest .
+
     ```
 
     The `--platform linux/amd64` flag ensures compatibility with Runpod's infrastructure, and is required if you're building on a Mac or ARM system.
@@ -7416,13 +7691,16 @@ Now that your template is configured, you can build and test your Docker image l
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker images | grep my-custom-template
+
     ```
 
     You should see your image listed with the `latest` tag, similar to this:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     my-custom-template                latest    54c3d1f97912   10 seconds ago   10.9GB
+
     ```
+
   </Step>
 
   <Step title="Test the container locally">
@@ -7430,6 +7708,7 @@ Now that your template is configured, you can build and test your Docker image l
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker run --rm -it --platform linux/amd64 my-custom-template:latest /bin/bash
+
     ```
 
     This starts the container and connects you to a shell inside it, exactly like the Runpod web terminal but running locally on your machine.
@@ -7444,6 +7723,7 @@ Now that your template is configured, you can build and test your Docker image l
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python main.py
+
     ```
 
     You should see output from the application in your terminal, including the model loading and inference results.
@@ -7462,6 +7742,7 @@ To use your template with Runpod, push to Docker Hub (or another container regis
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker tag my-custom-template:latest YOUR_DOCKER_USERNAME/my-custom-template:latest
+
     ```
 
     Replace `YOUR_DOCKER_USERNAME` with your actual Docker Hub username.
@@ -7472,6 +7753,7 @@ To use your template with Runpod, push to Docker Hub (or another container regis
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker login
+
     ```
 
     If you aren't already logged in to Docker Hub, you'll be prompted to enter your Docker Hub username and password.
@@ -7482,6 +7764,7 @@ To use your template with Runpod, push to Docker Hub (or another container regis
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker push YOUR_DOCKER_USERNAME/my-custom-template:latest
+
     ```
 
     This uploads your image to Docker Hub, making it accessible to Runpod. Large images may take several minutes to upload.
@@ -7545,6 +7828,7 @@ Now you can deploy and test your template on a Pod:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python main.py
+
     ```
 
     You should see output from the application in your terminal, including the model loading and inference results.
@@ -7555,7 +7839,7 @@ Now you can deploy and test your template on a Pod:
   </Step>
 </Steps>
 
-## Next steps
+## Next steps (11)
 
 Congratulations! You've built a custom Pod template and deployed it to Runpod.
 
@@ -7573,7 +7857,7 @@ For more information on working with templates, see the [Manage Pod templates](/
 For more advanced template management, you can use the [Runpod REST API](/api-reference/templates/POST/templates) to programmatically create and update templates.
 
 
-# Environment variables
+# Environment variables (3)
 Source: https://docs.runpod.io/pods/templates/environment-variables
 
 Learn how to use environment variables in Runpod Pods for configuration, security, and automation
@@ -7603,6 +7887,7 @@ Environment variables offer several key benefits for containerized applications:
 MODEL_NAME=llama-2-7b-chat
 API_ENDPOINT=https://api.example.com/v1
 MAX_BATCH_SIZE=32
+
 ```
 
 **Security**: Sensitive information such as API keys, database passwords, or authentication tokens can be injected as environment variables, keeping them out of your codebase and container images. This prevents accidental exposure in version control or public repositories.
@@ -7634,8 +7919,10 @@ You can configure up to 50 environment variables per Pod through the Runpod inte
 For sensitive data, you can reference [Runpod secrets](/pods/templates/secrets) in environment variables using the `RUNPOD_SECRET_` prefix. For example:
 
 ```
+
 API_KEY={{ RUNPOD_SECRET_my_api_key }}
 DATABASE_PASSWORD={{ RUNPOD_SECRET_db_password }}
+
 ```
 
 ## Updating environment variables
@@ -7669,34 +7956,38 @@ env
 
 # Search for specific variables
 env | grep RUNPOD
+
 ```
 
 ### Accessing variables in your applications
 
 Different programming languages provide various ways to access environment variables:
 
-**Python:**
+### Python:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import os
 
 model_name = os.environ.get('MODEL_NAME', 'default-model')
 api_key = os.environ['API_KEY']  # Raises error if not found
+
 ```
 
-**Node.js:**
+### Node.js:
 
 ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
 const modelName = process.env.MODEL_NAME || 'default-model';
 const apiKey = process.env.API_KEY;
+
 ```
 
-**Bash scripts:**
+### Bash scripts:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 #!/bin/bash
 MODEL_NAME=${MODEL_NAME:-"default-model"}
 echo "Using model: $MODEL_NAME"
+
 ```
 
 ## Runpod-provided environment variables
@@ -7720,7 +8011,7 @@ Runpod automatically sets several environment variables that provide information
 | `PYTORCH_VERSION`     | The version of PyTorch installed in your Pod environment.                    |
 | `PWD`                 | The current working directory inside your Pod.                               |
 
-## Common use cases
+## Common use cases (2)
 
 Environment variables are particularly useful for:
 
@@ -7731,6 +8022,7 @@ MODEL_NAME=gpt-3.5-turbo
 MODEL_PATH=/workspace/models
 MAX_TOKENS=2048
 TEMPERATURE=0.7
+
 ```
 
 **Service configuration**: Set up web services and APIs with flexible configuration:
@@ -7740,6 +8032,7 @@ API_PORT=8000
 DEBUG_MODE=false
 LOG_LEVEL=INFO
 CORS_ORIGINS=https://myapp.com,https://staging.myapp.com
+
 ```
 
 **Database and external service connections**: Connect to databases and external APIs securely:
@@ -7748,6 +8041,7 @@ CORS_ORIGINS=https://myapp.com,https://staging.myapp.com
 DATABASE_URL=postgresql://user:pass@host:5432/db
 REDIS_URL=redis://localhost:6379
 API_BASE_URL=https://api.external-service.com
+
 ```
 
 **Development vs. production settings**: Use different configurations for different environments:
@@ -7757,13 +8051,14 @@ ENVIRONMENT=production
 CACHE_ENABLED=true
 RATE_LIMIT=1000
 MONITORING_ENABLED=true
+
 ```
 
 **Port management**: When configuring symmetrical ports, your application can discover assigned ports through environment variables. This is particularly useful for services that need to know their external port numbers.
 
 For more details, see [Expose ports](/pods/configuration/expose-ports#symmetrical-port-mapping).
 
-## Best practices
+## Best practices (4)
 
 Follow these guidelines when working with environment variables:
 
@@ -7884,6 +8179,7 @@ When creating a template, you'll configure several key components:
       "volumeInGb": 20,
       "volumeMountPath": "/workspace"
     }'
+
     ```
 
     For more details, see the [API reference](/api-reference/templates/POST/templates).
@@ -7923,13 +8219,15 @@ Runpod automatically provides several [predefined environment variables](/pods/r
 For sensitive information like passwords and API keys, use [Runpod secrets](/pods/templates/secrets) instead of plain environment variables. Secrets are encrypted and can be referenced in your templates using the format:
 
 ```
+
 {{ RUNPOD_SECRET_secret_name }}
+
 ```
 
 This approach ensures sensitive data is properly protected while still being accessible to your Pod.
 
 
-# Overview
+# Overview (7)
 Source: https://docs.runpod.io/pods/templates/overview
 
 Streamline your Pod deployments with templates, bundling prebuilt container images with hardware specs and network settings.
@@ -7966,7 +8264,7 @@ Community templates are created by users and promoted based on community usage. 
   Runpod does not maintain or provide customer support for community templates. If you encounter issues, contact the template creator directly or seek help on the [community Discord](https://discord.gg/runpod).
 </Warning>
 
-### Custom templates
+### Custom templates (2)
 
 You can create custom templates for your own specialized workloads. These can be private (visible only to you or your team) or made public for the community to use.
 
@@ -8006,7 +8304,9 @@ Secrets are encrypted strings that store sensitive information separately from y
 After creating a secret, you can safely reference it in your templates without exposing any sensitive data in plain text:
 
 ```
+
 {{ RUNPOD_SECRET_secret_name }}
+
 ```
 
 This approach offers several advantages:
@@ -8029,9 +8329,9 @@ You can create secrets through the Runpod web interface to securely store sensit
 1. Go to the [Secrets](https://www.console.runpod.io/user/secrets) section in the Runpod console.
 2. Click **Create Secret** to open the creation form.
 3. Provide the required information:
-   * **Secret Name**: A unique identifier for your secret (e.g., `huggingface_token`, `database_password`).
-   * **Secret Value**: The actual sensitive data you want to store.
-   * **Description** (optional): A helpful description of what this secret contains or how it's used.
+* **Secret Name**: A unique identifier for your secret (e.g., `huggingface_token`, `database_password`).
+* **Secret Value**: The actual sensitive data you want to store.
+* **Description** (optional): A helpful description of what this secret contains or how it's used.
 4. Click **Create Secret** to save your encrypted secret.
 
 <Note>
@@ -8081,13 +8381,17 @@ Once you've created secrets, you can reference them in your Pod templates to pro
 Reference your secrets directly in the [environment variables section](/pods/templates/environment-variables) of your Pod template using the `RUNPOD_SECRET_` prefix followed by your secret name:
 
 ```
+
 {{ RUNPOD_SECRET_secret_name }}
+
 ```
 
 For example, if you created a secret named `huggingface_token`, you would reference it as:
 
 ```
+
 {{ RUNPOD_SECRET_huggingface_token }}
+
 ```
 
 This syntax tells Runpod to substitute the encrypted secret value when the Pod starts, making it available as an environment variable inside your container.
@@ -8104,10 +8408,14 @@ When creating or editing a Pod template through the web interface, you can also:
 
 * **Naming conventions**: Use descriptive names that clearly indicate the secret's purpose (e.g., `openai_api_key`, `database_password`, `github_token`).
 * **Environment variable mapping**: Map secrets to appropriately named environment variables in your templates:
+
   ```
+
   API_KEY={{ RUNPOD_SECRET_openai_key }}
   DATABASE_URL={{ RUNPOD_SECRET_db_connection }}
+
   ```
+
 * **Minimal exposure**: Only include secrets in templates that actually need them to reduce the attack surface.
 * **Regular rotation**: Periodically update secret values, especially for long-lived credentials like API keys.
 
@@ -8119,7 +8427,7 @@ Understand how billing works for Pods, storage, network volumes, refunds, and sp
 
 All billing, including per-hour compute and storage billing, is charged per minute.
 
-## How billing works
+## How billing works (2)
 
 Every Pod has an hourly cost based on [GPU type](/references/gpu-types). Your Runpod credits are charged every minute the Pod is running. If you run out of credits, your Pods are automatically stopped and you'll receive an email notification. Pods are eventually terminated if you don't refill your credits.
 
@@ -8129,7 +8437,7 @@ Every Pod has an hourly cost based on [GPU type](/references/gpu-types). Your Ru
 
 You must have at least one hour's worth of runtime in your balance to rent a Pod at your given spec. If your balance is insufficient, consider renting the Pod on Spot, depositing additional funds, or lowering your GPU spec requirements.
 
-## Storage billing
+## Storage billing (2)
 
 Storage billing varies depending on Pod state. Running Pods are charged \$0.10 per GB per month for all storage, while stopped Pods are charged \$0.20 per GB per month for volume storage.
 
@@ -8470,7 +8778,7 @@ Explore the GPUs available on Runpod.
 
 For information on pricing, see [GPU pricing](https://www.runpod.io/gpu-instance/pricing).
 
-## GPU types
+## GPU types (2)
 
 This table lists all GPU types available on Runpod:
 
@@ -8560,9 +8868,9 @@ When someone signs up using your referral link and starts spending on Runpod, yo
 * **5% commission** on all Serverless spend for the first 6 months.
 * **3% commission** on all Pod spend for the first 6 months.
 * **Bonus credits** for both you and your referral after they load \$10 on their account. The bonus amount depends on your location:
-  * **Non-European customers** receive a random weighted bonus between \$5 and \$500.
-  * **European customers** receive a fixed \$5 bonus.
-  * **Cross-region referrals**: If a European customer refers a non-European customer, the European customer receives \$5 and the non-European customer receives the random weighted bonus (\$5-\$500). If a non-European customer refers a European customer, the non-European customer receives the random weighted bonus and the European customer receives \$5.
+* **Non-European customers** receive a random weighted bonus between \$5 and \$500.
+* **European customers** receive a fixed \$5 bonus.
+* **Cross-region referrals**: If a European customer refers a non-European customer, the European customer receives \$5 and the non-European customer receives the random weighted bonus (\$5-\$500). If a non-European customer refers a European customer, the non-European customer receives the random weighted bonus and the European customer receives \$5.
 
 If you referred users before June 16, 2025, you're part of our beta program group. This means you'll continue earning commissions on their spend indefinitely, not just for 6 months.
 
@@ -8586,7 +8894,7 @@ For beta program participants (users referred before June 26, 2025), a special a
 
 The creator program rewards users who build popular [Pod templates](/pods/templates/overview) that others use on the platform. Every time someone runs a Pod using your template, you earn a percentage of their spend.
 
-### How it works
+### How it works (2)
 
 Template creators earn **1% in Runpod Credits** for every dollar spent using their templates. This creates a passive income stream that grows with your template's popularity.
 
@@ -8614,7 +8922,7 @@ Understanding how these programs work will help you maximize your earnings:
 2. **New accounts only.** Referral links only work for brand new Runpod users. If someone already has an account, referring them won't generate commissions.
 3. **Bonus credit distribution varies by location.** Non-European customers receive credits through a weighted random system between \$5 and \$500, while European customers receive a fixed \$5 bonus. For non-European customers, most will receive a bonus of \$5, with about 96% receiving \$10 or less.
 
-## Support
+## Support (2)
 
 Have questions about maximizing your earnings or need help with any of these programs? [Contact our support team](https://contact.runpod.io/hc/en-us/requests/new) for assistance.
 
@@ -8701,8 +9009,8 @@ Wait at least 30 to 60 seconds after starting your Pod before opening JupyterLab
 1. Wait on the blank screen for at least 60 seconds to allow JupyterLab to finish starting.
 
 2. Try a hard refresh:
-   * Windows/Linux: Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
-   * Mac: Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
+* Windows/Linux: Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
+* Mac: Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>
 
 3. Open the JupyterLab link in a private or incognito browser window to rule out browser caching.
 
@@ -8753,6 +9061,7 @@ mv checkpoints checkpoint
 
 # After working with the files, rename back
 mv checkpoint checkpoints
+
 ```
 
 The `mv` command only renames the folder, it doesn't delete any data.
@@ -8774,6 +9083,7 @@ cp /path/to/model.safetensors checkpoints/
 
 # Move files in
 mv ~/downloaded-model.ckpt checkpoints/
+
 ```
 
 ## Related information
@@ -8810,7 +9120,7 @@ Learn how to troubleshoot declined payment cards and prevent service interruptio
 
 Payment card declines can occur when adding funds to your Runpod account. Credit card processors apply stringent fraud detection standards, particularly for international transactions. This document provides guidance to help you troubleshoot payment issues.
 
-**Keep your balance topped up**
+### Keep your balance topped up
 
 To prevent service interruptions, refresh your balance at least a few days before it runs out. This gives you time to address any payment delays.
 
@@ -8894,6 +9204,7 @@ When encountering a storage full, the first step is to check your container’s 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 df -h
+
 ```
 
 Example output:
@@ -8914,6 +9225,7 @@ tmpfs                         252G     0  252G   0% /proc/acpi
 tmpfs                         252G     0  252G   0% /proc/scsi
 tmpfs                         252G     0  252G   0% /sys/firmware
 tmpfs                         252G     0  252G   0% /sys/devices/virtual/powercap
+
 ```
 
 ## Key areas to check
@@ -8923,6 +9235,7 @@ tmpfs                         252G     0  252G   0% /sys/devices/virtual/powerca
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 Filesystem                    Size  Used Avail Use% Mounted on
 overlay                        20G   16M   20G   1% /
+
 ```
 
 You can use the command `du -sh .` to check the space usage of the current directory.
@@ -8933,6 +9246,7 @@ By default, the volume disk or network volume is mounted at `/workspace`, You ca
 root@9b8e325167b2:/# cd workspace/
 root@9b8e325167b2:/workspace# du -sh .
 194M    .
+
 ```
 
 **Identifying Large Files**: To identify the top 10 largest files in your `/workspace`, you can run the following command:
@@ -8944,6 +9258,7 @@ root@9b8e325167b2:/# find /workspace -type f -exec du -h {} + | sort -rh | head 
 1.0K    /workspace/c.txt
 512     /workspace/b.txt
 512     /workspace/a.txt
+
 ```
 
 ## Removing files and directories
@@ -8960,6 +9275,7 @@ rm /path/to/file
 
 # To remove an entire directory and its contents, use the rm -r command:
 rm -r /path/to/directory
+
 ```
 
 ## JupyterLab hidden trash bin
@@ -8972,6 +9288,7 @@ Check if trash directories exist:
 
 ```bash Check for trash directories theme={"theme":{"light":"github-light","dark":"github-dark"}}
 { ls -lah $HOME/.local/share/Trash/ 2>/dev/null && echo "✓ Found: $HOME/.local/share/Trash/"; ls -lah /workspace/.Trash* 2>/dev/null && echo "✓ Found: /workspace/.Trash*"; } || echo "✗ No trash directories found"
+
 ```
 
 If trash was found above, clear it:
@@ -8979,6 +9296,7 @@ If trash was found above, clear it:
 ```bash Clear trash directories theme={"theme":{"light":"github-light","dark":"github-dark"}}
 [ -d "$HOME/.local/share/Trash" ] && rm -rf $HOME/.local/share/Trash/* && echo "✓ Cleared home trash" || echo "✗ No home trash to clear"
 ls -d /workspace/.Trash* 2>/dev/null && rm -rf /workspace/.Trash* && echo "✓ Cleared workspace trash" || echo "✗ No workspace trash to clear"
+
 ```
 
 ## Additional storage
@@ -9003,7 +9321,9 @@ If you see a "Token authentication is enabled" screen when trying to access your
 4. In the terminal, run the following command to get the JupyterLab server token:
 
    ```
+
    jupyter server list
+
    ```
 
 You should see output similar to this:
@@ -9013,6 +9333,7 @@ root@2779b5db68b8:/# jupyter server list
 Currently running servers:
 http://localhost:8888/?token=ua5nw5fwkdzseqpp5apj :: /
 root@2779b5db68b8:/#
+
 ```
 
 The token you need is the string of characters that appears after the `=` sign, such as `ua5nw5fwkdzseqpp5apj` in the example above.
@@ -9103,223 +9424,223 @@ New features, fixes, and improvements for the Runpod platform.
 <Update label="January 2026">
   ## GitHub release rollback is now generally available
 
-  * [GitHub release rollback](/serverless/workers/github-integration#roll-back-to-a-previous-build): Roll back your Serverless endpoint to any previous build from the console. Restore an earlier version when you encounter issues without waiting for a new GitHub release.
+* [GitHub release rollback](/serverless/workers/github-integration#roll-back-to-a-previous-build): Roll back your Serverless endpoint to any previous build from the console. Restore an earlier version when you encounter issues without waiting for a new GitHub release.
 </Update>
 
 <Update label="December 2025">
   ## Pod migration in beta and Serverless development guides
 
-  * [Pod migration (beta)](/references/troubleshooting/pod-migration): Migrate your Pod to a new machine when your stopped Pod's GPU is occupied. Provisions a new Pod with the same specifications and automatically transfers your data to an available machine.
-  * [New Serverless development guides](/serverless/overview): We've added a comprehensive new set of guides for developing, testing, and debugging Serverless endpoints.
+* [Pod migration (beta)](/references/troubleshooting/pod-migration): Migrate your Pod to a new machine when your stopped Pod's GPU is occupied. Provisions a new Pod with the same specifications and automatically transfers your data to an available machine.
+* [New Serverless development guides](/serverless/overview): We've added a comprehensive new set of guides for developing, testing, and debugging Serverless endpoints.
 </Update>
 
 <Update label="September 2025">
   ## Slurm Clusters GA, cached models in beta, and new Public Endpoints available
 
-  * [Slurm Clusters are now generally available](/instant-clusters/slurm-clusters): Deploy production-ready HPC clusters in seconds. These clusters support multi-node performance for distributed training and large-scale simulations with pay-as-you-go billing and no idle costs.
-  * [Cached models are now in beta](/serverless/endpoints/model-caching): Eliminate model download times when starting workers. The system places cached models on host machines before workers start, prioritizing hosts with your model already available for instant startup.
-  * [New Public Endpoints available](/hub/public-endpoints): Wan 2.5 combines image and audio to create lifelike videos, while Nano Banana merges multiple images for composite creations.
+* [Slurm Clusters are now generally available](/instant-clusters/slurm-clusters): Deploy production-ready HPC clusters in seconds. These clusters support multi-node performance for distributed training and large-scale simulations with pay-as-you-go billing and no idle costs.
+* [Cached models are now in beta](/serverless/endpoints/model-caching): Eliminate model download times when starting workers. The system places cached models on host machines before workers start, prioritizing hosts with your model already available for instant startup.
+* [New Public Endpoints available](/hub/public-endpoints): Wan 2.5 combines image and audio to create lifelike videos, while Nano Banana merges multiple images for composite creations.
 </Update>
 
 <Update label="August 2025">
   ## Hub revenue sharing launches and Pods UI gets refreshed
 
-  * [Hub revenue share model](/hub/revenue-sharing): Publish to the Runpod Hub and earn credits when others deploy your repo. Earn up to 7% of compute revenue through monthly tiers with credits auto-deposited into your account.
-  * [Pods UI updated](/pods/overview): Refreshed modern interface for interacting with Runpod Pods.
+* [Hub revenue share model](/hub/revenue-sharing): Publish to the Runpod Hub and earn credits when others deploy your repo. Earn up to 7% of compute revenue through monthly tiers with credits auto-deposited into your account.
+* [Pods UI updated](/pods/overview): Refreshed modern interface for interacting with Runpod Pods.
 </Update>
 
 <Update label="July 2025">
   ## Public Endpoints arrive, Slurm Clusters in beta
 
-  * [Public Endpoints](/hub/public-endpoints): Access state-of-the-art AI models through simple API calls with an integrated playground. Available endpoints include Whisper-V3-Large, Seedance 1.0 pro, Seedream 3.0, Qwen Image Edit, FLUX.1 Kontext, Deep Cogito v2 Llama 70B, and Minimax Speech.
-  * [Slurm Clusters (beta)](/instant-clusters/slurm-clusters): Create on-demand multi-node clusters instantly with full Slurm scheduling support.
+* [Public Endpoints](/hub/public-endpoints): Access state-of-the-art AI models through simple API calls with an integrated playground. Available endpoints include Whisper-V3-Large, Seedance 1.0 pro, Seedream 3.0, Qwen Image Edit, FLUX.1 Kontext, Deep Cogito v2 Llama 70B, and Minimax Speech.
+* [Slurm Clusters (beta)](/instant-clusters/slurm-clusters): Create on-demand multi-node clusters instantly with full Slurm scheduling support.
 </Update>
 
 <Update label="June 2025">
   ## S3-compatible storage and updated referral program
 
-  * [S3-compatible API for network volumes](/storage/s3-api): Upload and retrieve files from your network volumes without compute using AWS S3 CLI or Boto3. Integrate Runpod storage into any AI pipeline with zero-config ease and object-level control.
-  * [Referral program revamp](/references/referrals): Updated rewards and tiers with clearer dashboards to track performance.
+* [S3-compatible API for network volumes](/storage/s3-api): Upload and retrieve files from your network volumes without compute using AWS S3 CLI or Boto3. Integrate Runpod storage into any AI pipeline with zero-config ease and object-level control.
+* [Referral program revamp](/references/referrals): Updated rewards and tiers with clearer dashboards to track performance.
 </Update>
 
 <Update label="May 2025">
   ## Port labeling, price drops, Runpod Hub, and Tetra beta test
 
-  * [Port labeling](/pods/overview): Name exposed ports in the UI and API to help team members identify services like Jupyter or TensorBoard.
-  * [Price drops](/pods/pricing): Additional price reductions on popular GPU SKUs to lower training and inference costs.
-  * [Runpod Hub](/hub/overview): A curated catalog of one-click endpoints and templates for deploying community projects without starting from scratch.
-  * **Tetra beta test**: A Python library for running code on GPU with Runpod. Add a `@remote()` decorator to functions that need GPU power while the rest of your code runs locally.
+* [Port labeling](/pods/overview): Name exposed ports in the UI and API to help team members identify services like Jupyter or TensorBoard.
+* [Price drops](/pods/pricing): Additional price reductions on popular GPU SKUs to lower training and inference costs.
+* [Runpod Hub](/hub/overview): A curated catalog of one-click endpoints and templates for deploying community projects without starting from scratch.
+* **Tetra beta test**: A Python library for running code on GPU with Runpod. Add a `@remote()` decorator to functions that need GPU power while the rest of your code runs locally.
 </Update>
 
 <Update label="April 2025">
   ## GitHub login, RTX 5090s, and global networking expansion
 
-  * **Login with GitHub**: OAuth sign-in and linking for faster onboarding and repo-driven workflows.
-  * **RTX 5090s on Runpod**: High-performance RTX 5090 availability for cost-efficient training and inference.
-  * [Global networking expansion](/pods/networking): Rollout to additional data centers approaching full global coverage.
+* **Login with GitHub**: OAuth sign-in and linking for faster onboarding and repo-driven workflows.
+* **RTX 5090s on Runpod**: High-performance RTX 5090 availability for cost-efficient training and inference.
+* [Global networking expansion](/pods/networking): Rollout to additional data centers approaching full global coverage.
 </Update>
 
 <Update label="March 2025">
   ## Enterprise features arrive, REST API goes GA, Instant Clusters in beta, and APAC expansion
 
-  * [CPU Pods get network storage access](/storage/network-volumes): GA support for network volumes on CPU Pods for persistent, shareable storage.
-  * **SOC 2 Type I certification**: Independent attestation of security controls for enterprise readiness.
-  * [REST API release](/api-reference/overview): REST API GA with broad resource coverage for full infrastructure-as-code workflows.
-  * [Instant Clusters](/instant-clusters): Spin up multi-node GPU clusters in minutes with private interconnect and per-second billing.
-  * **Bare metal**: Reserve dedicated GPU servers for maximum control, performance, and long-term savings.
-  * **AP-JP-1**: New Fukushima region for low-latency APAC access and in-country data residency.
+* [CPU Pods get network storage access](/storage/network-volumes): GA support for network volumes on CPU Pods for persistent, shareable storage.
+* **SOC 2 Type I certification**: Independent attestation of security controls for enterprise readiness.
+* [REST API release](/api-reference/overview): REST API GA with broad resource coverage for full infrastructure-as-code workflows.
+* [Instant Clusters](/instant-clusters): Spin up multi-node GPU clusters in minutes with private interconnect and per-second billing.
+* **Bare metal**: Reserve dedicated GPU servers for maximum control, performance, and long-term savings.
+* **AP-JP-1**: New Fukushima region for low-latency APAC access and in-country data residency.
 </Update>
 
 <Update label="February 2025">
   ## REST API enters beta with full-time community manager
 
-  * [REST API beta test](/api-reference/overview): RESTful endpoints for Pods, endpoints, and volumes for simpler automation than GraphQL.
-  * **Full-time community manager hire**: Dedicated programs, content, and faster community response.
-  * [Serverless GitHub integration release](/serverless/workers/github-integration): GA for GitHub-based Serverless deploys with production-ready stability.
+* [REST API beta test](/api-reference/overview): RESTful endpoints for Pods, endpoints, and volumes for simpler automation than GraphQL.
+* **Full-time community manager hire**: Dedicated programs, content, and faster community response.
+* [Serverless GitHub integration release](/serverless/workers/github-integration): GA for GitHub-based Serverless deploys with production-ready stability.
 </Update>
 
 <Update label="January 2025">
   ## New silicon and LLM-focused Serverless upgrades
 
-  * **CPU Pods v2**: Docker runtime parity with GPU Pods for faster starts with network volume support.
-  * [H200s on Runpod](/references/gpu-types): NVIDIA H200 GPUs available for larger models and higher memory bandwidth.
-  * [Serverless upgrades](/serverless/overview): Higher GPU counts per worker, new quick-deploy runtimes, and simpler model selection.
+* **CPU Pods v2**: Docker runtime parity with GPU Pods for faster starts with network volume support.
+* [H200s on Runpod](/references/gpu-types): NVIDIA H200 GPUs available for larger models and higher memory bandwidth.
+* [Serverless upgrades](/serverless/overview): Higher GPU counts per worker, new quick-deploy runtimes, and simpler model selection.
 </Update>
 
 <Update label="November 2024">
   ## Global networking expands and GitHub deploys enter beta
 
-  * [Global networking expansion](/pods/networking): Added to CA-MTL-3, US-GA-1, US-GA-2, and US-KS-2 for expanded private mesh coverage.
-  * [Serverless GitHub integration beta test](/serverless/workers/github-integration): Deploy endpoints directly from GitHub repos with automatic builds.
-  * **Scoped API keys**: Least-privilege tokens with fine-grained scopes and expirations for safer automation.
-  * **Passkey auth**: Passwordless WebAuthn sign-in for phishing-resistant account access.
+* [Global networking expansion](/pods/networking): Added to CA-MTL-3, US-GA-1, US-GA-2, and US-KS-2 for expanded private mesh coverage.
+* [Serverless GitHub integration beta test](/serverless/workers/github-integration): Deploy endpoints directly from GitHub repos with automatic builds.
+* **Scoped API keys**: Least-privilege tokens with fine-grained scopes and expirations for safer automation.
+* **Passkey auth**: Passwordless WebAuthn sign-in for phishing-resistant account access.
 </Update>
 
 <Update label="August 2024">
   ## Storage expansion and private cross-data-center connectivity
 
-  * [US-GA-2 added to network storage](/storage/network-volumes): Enable network volumes in US-GA-2.
-  * [Global networking](/pods/networking): Private cross-data-center networking with internal DNS for secure service-to-service traffic.
+* [US-GA-2 added to network storage](/storage/network-volumes): Enable network volumes in US-GA-2.
+* [Global networking](/pods/networking): Private cross-data-center networking with internal DNS for secure service-to-service traffic.
 </Update>
 
 <Update label="July 2024">
   ## Storage coverage grows with major price cuts and revamped referrals
 
-  * **US-TX-3 and EUR-IS-1 added to network storage**: Network volumes available in more regions for local persistence.
-  * **Runpod slashes GPU prices**: Broad GPU price reductions to lower training and inference total cost of ownership.
-  * [Referral program revamp](/references/referrals): Updated commissions and bonuses with an affiliate tier and improved tracking.
+* **US-TX-3 and EUR-IS-1 added to network storage**: Network volumes available in more regions for local persistence.
+* **Runpod slashes GPU prices**: Broad GPU price reductions to lower training and inference total cost of ownership.
+* [Referral program revamp](/references/referrals): Updated commissions and bonuses with an affiliate tier and improved tracking.
 </Update>
 
 <Update label="May 2024">
   ## \$20M seed round, community event, and broader Serverless options
 
-  * **\$20M seed by Intel Capital and Dell Technologies Capital**: Funds infrastructure expansion and product acceleration.
-  * **First in-person hackathon**: Community projects, workshops, and real-world feedback.
-  * [Serverless CPU Pods](/references/cpu-types): Scale-to-zero CPU endpoints for services that don't need a GPU.
-  * [AMD GPUs](/references/gpu-types): AMD ROCm-compatible GPU SKUs as cost and performance alternatives to NVIDIA.
+* **\$20M seed by Intel Capital and Dell Technologies Capital**: Funds infrastructure expansion and product acceleration.
+* **First in-person hackathon**: Community projects, workshops, and real-world feedback.
+* [Serverless CPU Pods](/references/cpu-types): Scale-to-zero CPU endpoints for services that don't need a GPU.
+* [AMD GPUs](/references/gpu-types): AMD ROCm-compatible GPU SKUs as cost and performance alternatives to NVIDIA.
 </Update>
 
 <Update label="February 2024">
   ## CPU compute and first-class automation tooling
 
-  * **CPU Pods**: CPU-only instances with the same networking and storage primitives for cheaper non-GPU stages.
-  * [runpodctl](/runpodctl/overview): Official CLI for Pods, endpoints, and volumes to enable scripting and CI/CD workflows.
+* **CPU Pods**: CPU-only instances with the same networking and storage primitives for cheaper non-GPU stages.
+* [runpodctl](/runpodctl/overview): Official CLI for Pods, endpoints, and volumes to enable scripting and CI/CD workflows.
 </Update>
 
 <Update label="January 2024">
   ## Console navigation overhaul and documentation refresh
 
-  * **New navigational changes to Runpod UI**: Consolidated menus, consistent action placement, and fewer clicks for common tasks.
-  * **Docs revamp**: New information architecture, improved search, and more runnable examples and quickstarts.
-  * **Zhen AMA**: Roadmap Q\&A and community feedback session.
+* **New navigational changes to Runpod UI**: Consolidated menus, consistent action placement, and fewer clicks for common tasks.
+* **Docs revamp**: New information architecture, improved search, and more runnable examples and quickstarts.
+* **Zhen AMA**: Roadmap Q\&A and community feedback session.
 </Update>
 
 <Update label="December 2023">
   ## New regions and investment in community support
 
-  * **US-OR-1**: Additional US region for lower latency and more capacity in the Pacific Northwest.
-  * **CA-MTL-1**: New Canadian region to improve latency and meet in-country data needs.
-  * **First community manager hire**: Dedicated community programs and faster feedback loops.
-  * **Building out the support team**: Expanded coverage and expertise for complex issues.
+* **US-OR-1**: Additional US region for lower latency and more capacity in the Pacific Northwest.
+* **CA-MTL-1**: New Canadian region to improve latency and meet in-country data needs.
+* **First community manager hire**: Dedicated community programs and faster feedback loops.
+* **Building out the support team**: Expanded coverage and expertise for complex issues.
 </Update>
 
 <Update label="October 2023">
   ## Faster template starts and better multi-region hygiene
 
-  * **Serverless quick deploy**: One-click deploy of curated model templates with sensible defaults.
-  * **EU domain for Serverless**: EU-specific domain briefly offered for data residency, superseded by other region controls.
-  * **Data-center filter for Serverless**: Filter and manage endpoints by region for multi-region fleets.
+* **Serverless quick deploy**: One-click deploy of curated model templates with sensible defaults.
+* **EU domain for Serverless**: EU-specific domain briefly offered for data residency, superseded by other region controls.
+* **Data-center filter for Serverless**: Filter and manage endpoints by region for multi-region fleets.
 </Update>
 
 <Update label="September 2023">
   ## Self-service upgrades, clearer metrics, new pricing model, and cost visibility
 
-  * **Self-service worker upgrade**: Rebuild and roll workers from the dashboard without support tickets.
-  * **Edit template from endpoint page**: Inline edit and redeploy the underlying template directly from the endpoint view.
-  * **Improved Serverless metrics page**: Refinements to charts and filters for quicker root-cause analysis.
-  * [Flex and active workers](/serverless/pricing): Discounted always-on "active" capacity for baseline load with on-demand "flex" workers for bursts.
-  * **Billing explorer**: Inspect costs by resource, region, and time to identify optimization opportunities.
+* **Self-service worker upgrade**: Rebuild and roll workers from the dashboard without support tickets.
+* **Edit template from endpoint page**: Inline edit and redeploy the underlying template directly from the endpoint view.
+* **Improved Serverless metrics page**: Refinements to charts and filters for quicker root-cause analysis.
+* [Flex and active workers](/serverless/pricing): Discounted always-on "active" capacity for baseline load with on-demand "flex" workers for bursts.
+* **Billing explorer**: Inspect costs by resource, region, and time to identify optimization opportunities.
 </Update>
 
 <Update label="August 2023">
   ## Team governance, storage expansion, and better debugging
 
-  * [Teams](/get-started/manage-accounts): Organization workspaces with role-based access control for Pods, endpoints, and billing.
-  * [Savings plans](/pods/pricing): Plans surfaced prominently in console with easier purchase and management for steady usage.
-  * **Network storage to US-KS-1**: Enable network volumes in US-KS-1 for local, persistent data workflows.
-  * [Serverless log view](/serverless/development/logs): Stream worker stdout and stderr in the UI and API for real-time debugging.
-  * **Serverless health endpoint**: Lightweight /health probe returning endpoint and worker status without creating a billable job.
-  * **SOC 2 Type II compliant**: Security and compliance certification for enterprise customers.
+* [Teams](/get-started/manage-accounts): Organization workspaces with role-based access control for Pods, endpoints, and billing.
+* [Savings plans](/pods/pricing): Plans surfaced prominently in console with easier purchase and management for steady usage.
+* **Network storage to US-KS-1**: Enable network volumes in US-KS-1 for local, persistent data workflows.
+* [Serverless log view](/serverless/development/logs): Stream worker stdout and stderr in the UI and API for real-time debugging.
+* **Serverless health endpoint**: Lightweight /health probe returning endpoint and worker status without creating a billable job.
+* **SOC 2 Type II compliant**: Security and compliance certification for enterprise customers.
 </Update>
 
 <Update label="June 2023">
   ## Observability, top-tier GPUs, and commitment-based savings
 
-  * **Serverless metrics page**: Time-series charts for pXX latencies, queue delay, throughput, and worker states for faster debugging and tuning.
-  * [H100s on Runpod](/references/gpu-types): NVIDIA H100 instances for higher throughput and larger model footprints.
-  * [Savings plans](/pods/pricing): Commitment-based discounts for predictable workloads to lower effective hourly rates.
+* **Serverless metrics page**: Time-series charts for pXX latencies, queue delay, throughput, and worker states for faster debugging and tuning.
+* [H100s on Runpod](/references/gpu-types): NVIDIA H100 instances for higher throughput and larger model footprints.
+* [Savings plans](/pods/pricing): Commitment-based discounts for predictable workloads to lower effective hourly rates.
 </Update>
 
 <Update label="May 2023">
   ## Smoother auth and multi-region Serverless with persistent storage
 
-  * **The new and improved Runpod login experience**: Streamlined sign-in and team access for faster, more consistent auth flows.
-  * [Network volumes added to Serverless](/storage/network-volumes): Attach persistent storage to Serverless workers to retain models and artifacts across restarts and speed cold starts through caching.
-  * **Serverless region support**: Pin or allow specific regions for endpoints to reduce latency and meet data-residency needs.
+* **The new and improved Runpod login experience**: Streamlined sign-in and team access for faster, more consistent auth flows.
+* [Network volumes added to Serverless](/storage/network-volumes): Attach persistent storage to Serverless workers to retain models and artifacts across restarts and speed cold starts through caching.
+* **Serverless region support**: Pin or allow specific regions for endpoints to reduce latency and meet data-residency needs.
 </Update>
 
 <Update label="April 2023">
   ## Deeper autoscaling controls, richer metrics, persistent storage, and job cancellation
 
-  * **Serverless scaling strategies**: Scale by queue delay and/or concurrency with min/max worker bounds to balance latency and cost.
-  * **Queue delay**: Expose time-in-queue as a first-class metric to drive autoscaling and SLO monitoring.
-  * **Request count**: Track success and failure totals over windows for quick health checks and alerting.
-  * **runsync**: Synchronous invocation path that returns results in the same HTTP call for short-running jobs.
-  * **Network storage beta**: Region-scoped, attachable volumes shareable across Pods and endpoints for model caches and datasets.
-  * **Job cancel API**: Programmatically terminate queued or running jobs to free capacity and enforce client timeouts.
+* **Serverless scaling strategies**: Scale by queue delay and/or concurrency with min/max worker bounds to balance latency and cost.
+* **Queue delay**: Expose time-in-queue as a first-class metric to drive autoscaling and SLO monitoring.
+* **Request count**: Track success and failure totals over windows for quick health checks and alerting.
+* **runsync**: Synchronous invocation path that returns results in the same HTTP call for short-running jobs.
+* **Network storage beta**: Region-scoped, attachable volumes shareable across Pods and endpoints for model caches and datasets.
+* **Job cancel API**: Programmatically terminate queued or running jobs to free capacity and enforce client timeouts.
 </Update>
 
 <Update label="April 1, 2023">
   ## Serverless platform hardens with cleaner API
 
-  * **Serverless API v2**: Revised request and response schema with improved error semantics and new endpoints for better control over job lifecycle and observability.
+* **Serverless API v2**: Revised request and response schema with improved error semantics and new endpoints for better control over job lifecycle and observability.
 </Update>
 
 <Update label="February 1, 2023">
   ## Better control over notifications and GPU allocation
 
-  * **Notification preferences**: Configure which platform events trigger alerts to reduce noise for teams and CI systems.
-  * **GPU priorities**: Influence scheduling by marking workloads as higher priority to reduce queue time for critical jobs.
+* **Notification preferences**: Configure which platform events trigger alerts to reduce noise for teams and CI systems.
+* **GPU priorities**: Influence scheduling by marking workloads as higher priority to reduce queue time for critical jobs.
 </Update>
 
 <Update label="July 1, 2022">
   ## Encrypted volumes for persistent data
 
-  * **Runpod now offers encrypted volumes**: Enable at-rest encryption for persistent volumes with no application changes required using platform-managed keys.
+* **Runpod now offers encrypted volumes**: Enable at-rest encryption for persistent volumes with no application changes required using platform-managed keys.
 </Update>
 
 
-# Overview
+# Overview (8)
 Source: https://docs.runpod.io/runpodctl/overview
 
 
@@ -9336,43 +9657,56 @@ Choose the installation method that matches your operating system.
 
 <Tabs>
   <Tab title="macOS">
-    **Homebrew:**
+### Homebrew:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     brew install runpod/runpodctl/runpodctl
+
     ```
 
-    **ARM (Apple Silicon):**
+### ARM (Apple Silicon):
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget --quiet --show-progress https://github.com/runpod/runpodctl/releases/download/v1.14.3/runpodctl-darwin-arm64 -O runpodctl && chmod +x runpodctl && sudo mv runpodctl /usr/local/bin/runpodctl
+
     ```
 
-    **AMD (Intel):**
+### AMD (Intel):
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget --quiet --show-progress https://github.com/runpod/runpodctl/releases/download/v1.14.3/runpodctl-darwin-amd64 -O runpodctl && chmod +x runpodctl && sudo mv runpodctl /usr/local/bin/runpodctl
+
     ```
+
   </Tab>
 
   <Tab title="Linux">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget --quiet --show-progress https://github.com/Run-Pod/runpodctl/releases/download/v1.14.3/runpodctl-linux-amd64 -O runpodctl && chmod +x runpodctl && sudo cp runpodctl /usr/bin/runpodctl
+
     ```
+
   </Tab>
 
   <Tab title="Windows">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     wget https://github.com/runpod/runpodctl/releases/download/v1.14.3/runpodctl-windows-amd64.exe -O runpodctl.exe
+
     ```
+
   </Tab>
 
   <Tab title="Google Colab / Jupyter Notebook">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     !wget --quiet --show-progress https://github.com/Run-Pod/runpodctl/releases/download/v1.14.3/runpodctl-linux-amd -O runpodctl
     !chmod +x runpodctl
     !cp runpodctl /usr/bin/runpodctl
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -9386,12 +9720,14 @@ Run the following command to add your API key to `runpodctl`, replacing `YOUR_AP
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl config --apiKey YOUR_API_KEY
+
 ```
 
 After running the command, you should see a confirmation message similar to this:
 
 ```text theme={"theme":{"light":"github-light","dark":"github-dark"}}
 saved apiKey into config file: /Users/runpod/.runpod/config.toml
+
 ```
 
 ### Step 3: Verify installation
@@ -9400,12 +9736,14 @@ To verify that `runpodctl` installed successfully, run this command:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl version
+
 ```
 
 You should see which version is installed:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl v1.14.4
+
 ```
 
 ## Help and reference
@@ -9414,12 +9752,14 @@ Learn how to use Runpod CLI commands by browsing the CLI reference using the sid
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl help
+
 ```
 
 Learn more about a particular command by running:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl [command] help
+
 ```
 
 
@@ -9431,9 +9771,12 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-config
 Configure the Runpod CLI with your API credentials and API URL to enable programmatic access to your Runpod resources.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl config [flags]
+
   ```
+
 </RequestExample>
 
 ## Example
@@ -9443,6 +9786,7 @@ Configure the CLI with your API key:
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl config \
   --apiKey "rpaPOIUYYULKDSALVIUT3Q2ZRKZ98IUYTSK2OQQ2CWQxkd01"
+
 ```
 
 ## Flags
@@ -9464,12 +9808,15 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-create-pod
 Create and start a new Pod on Runpod with configuration options for GPU type, storage, networking, and cloud tier.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl create pod [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (2)
 
 Create a Pod with 2 RTX 4090 GPUs in the Secure Cloud with a custom container image:
 
@@ -9482,9 +9829,10 @@ runpodctl create pod \
   --imageName "runpod/pytorch:2.0.1-py3.10-cuda11.8.0-devel" \
   --containerDiskSize 50 \
   --volumeSize 100
+
 ```
 
-## Flags
+## Flags (2)
 
 <ResponseField name="--name" type="string">
   A custom name for your Pod to make it easy to identify and reference.
@@ -9567,12 +9915,15 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-create-pods
 Create multiple Pods at once with identical configurations (useful for parallel workloads or distributed training).
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl create pods [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (3)
 
 Create 3 identical Pods with the name "training-worker" in the Secure Cloud:
 
@@ -9584,9 +9935,10 @@ runpodctl create pods \
   --gpuCount 1 \
   --secureCloud \
   --imageName "runpod/pytorch:2.0.1-py3.10-cuda11.8.0-devel"
+
 ```
 
-## Flags
+## Flags (3)
 
 <ResponseField name="--name" type="string">
   A custom name for the Pods. All Pods in the group will share this base name.
@@ -9660,7 +10012,7 @@ runpodctl create pods \
   Ports to expose from the containers. Maximum of 1 HTTP port and 1 TCP port allowed per Pod.
 </ResponseField>
 
-## Related commands
+## Related commands (2)
 
 * [`runpodctl create pod`](/runpodctl/reference/runpodctl-create-pod)
 
@@ -9673,17 +10025,21 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-get-cloud
 List all GPUs currently available in the Runpod cloud, with options for filtering by GPU count, memory/disk size, and cloud type.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl get cloud <gpuCount> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (4)
 
 List all Secure Cloud GPUs with at least 4 instances available:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl get cloud 4 --secure
+
 ```
 
 ## Arguments
@@ -9692,7 +10048,7 @@ runpodctl get cloud 4 --secure
   The minimum number of GPUs that must be available for each option listed.
 </ResponseField>
 
-## Flags
+## Flags (4)
 
 <ResponseField name="--disk" type="integer">
   Filter for GPUs with a minimum disk size (in gigabytes).
@@ -9723,26 +10079,30 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-get-pod
 List all your Pods or retrieve details about a specific Pod by its ID.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl get pod <podId> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (5)
 
 List all your Pods with complete field information:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl get pod --allfields
+
 ```
 
-## Arguments
+## Arguments (2)
 
 <ResponseField name="<pod_id>" type="string">
   The ID of a specific Pod to retrieve. If no ID is provided, all Pods will be listed.
 </ResponseField>
 
-## Flags
+## Flags (5)
 
 <ResponseField name="-a, --allfields">
   Include all available fields in the output, providing complete Pod information.
@@ -9757,26 +10117,30 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-receive
 Receive files or folders sent from another machine using a secure peer-to-peer connection established with a connection code.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl receive <code> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (6)
 
 Receive files using a connection code.
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl receive rainbow-unicorn-42
+
 ```
 
-## Arguments
+## Arguments (3)
 
 <ResponseField name="<code>" type="string">
   The connection code phrase that matches the code used by the sender with the `send` command. If not provided, you'll be prompted to enter it.
 </ResponseField>
 
-## Related commands
+## Related commands (3)
 
 * [`runpodctl send`](/runpodctl/reference/runpodctl-send)
 * [`runpodctl`](/runpodctl/reference/runpodctl)
@@ -9790,26 +10154,30 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-remove-pod
 Permanently delete a Pod and all its associated data. This action cannot be undone.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl remove pod <podId>
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (7)
 
 Terminate a Pod by its ID.
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl remove pod abc123xyz456
+
 ```
 
-## Arguments
+## Arguments (4)
 
 <ResponseField name="<podId>" type="string">
   The ID of the Pod to terminate. You can find Pod IDs using the `runpodctl get pod` command.
 </ResponseField>
 
-## Related commands
+## Related commands (4)
 
 * [`runpodctl remove pods`](/runpodctl/reference/runpodctl-remove-pods)
 * [`runpodctl get pod`](/runpodctl/reference/runpodctl-get-pod)
@@ -9823,32 +10191,36 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-remove-pods
 Terminate multiple Pods that share the same name. This is useful for cleaning up groups of Pods created with the `create pods` command.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl remove pods <name> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (8)
 
 Terminate all Pods named "training-worker":
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl remove pods training-worker
+
 ```
 
-## Arguments
+## Arguments (5)
 
 <ResponseField name="<name>" type="string">
   The name of the Pods to terminate. All Pods with this exact name will be removed.
 </ResponseField>
 
-## Flags
+## Flags (6)
 
 <ResponseField name="--podCount" type="integer">
   The number of Pods with the specified name to terminate. This limits the removal to a specific count rather than removing all matching Pods.
 </ResponseField>
 
-## Related commands
+## Related commands (5)
 
 * [`runpodctl remove pod`](/runpodctl/reference/runpodctl-remove-pod)
 * [`runpodctl get pod`](/runpodctl/reference/runpodctl-get-pod)
@@ -9862,32 +10234,36 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-send
 Transfer files or folders from your local machine to a Pod or another computer using a secure peer-to-peer connection.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl send <fileOrFolder> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (9)
 
 Send a folder to a Pod using a connection code:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl send ./my-dataset --code rainbow-unicorn-42
+
 ```
 
-## Arguments
+## Arguments (6)
 
 <ResponseField name="<fileOrFolder>" type="string">
   The path to the file or folder you want to send. Can be a single file or an entire directory.
 </ResponseField>
 
-## Flags
+## Flags (7)
 
 <ResponseField name="--code" type="string">
   A custom code phrase used to establish the secure connection between sender and receiver. The receiver must use the same code with the `receive` command.
 </ResponseField>
 
-## Related commands
+## Related commands (6)
 
 * [`runpodctl receive`](/runpodctl/reference/runpodctl-receive)
 * [`runpodctl`](/runpodctl/reference/runpodctl)
@@ -9901,20 +10277,24 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-ssh-add-key
 Add an SSH public key to your Runpod account for secure Pod access. If no key is provided, a new key pair will be generated automatically.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl ssh add-key [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (10)
 
 Add an SSH key from a file:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl ssh add-key --key-file ~/.ssh/id_rsa.pub
+
 ```
 
-## Flags
+## Flags (8)
 
 <ResponseField name="--key" type="string">
   The SSH public key content to add to your account. This should be the full public key string.
@@ -9924,7 +10304,7 @@ runpodctl ssh add-key --key-file ~/.ssh/id_rsa.pub
   The path to a file containing the SSH public key to add. This is typically a `.pub` file from your SSH key pair.
 </ResponseField>
 
-## Related commands
+## Related commands (7)
 
 * [`runpodctl ssh list-keys`](/runpodctl/reference/runpodctl-ssh-list-keys)
 
@@ -9937,20 +10317,24 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-ssh-list-keys
 Display all SSH keys associated with your Runpod account.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl ssh list-keys [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (11)
 
 List all your SSH keys:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl ssh list-keys
+
 ```
 
-## Related commands
+## Related commands (8)
 
 * [`runpodctl ssh add-key`](/runpodctl/reference/runpodctl-ssh-add-key)
 
@@ -9963,32 +10347,36 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-start-pod
 Start a stopped Pod, resuming compute and billing. Use this to restart Pods that were previously stopped.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl start pod <podId> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (12)
 
 Start a stopped Pod with a custom bid price for spot instances:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl start pod abc123xyz456 --bid 0.50
+
 ```
 
-## Arguments
+## Arguments (7)
 
 <ResponseField name="<podId>" type="string">
   The ID of the Pod to start. You can find Pod IDs using the `runpodctl get pod` command.
 </ResponseField>
 
-## Flags
+## Flags (9)
 
 <ResponseField name="--bid" type="float">
   The bid price per GPU in dollars per hour for spot instance pricing. This only applies to Community Cloud Pods.
 </ResponseField>
 
-## Related commands
+## Related commands (9)
 
 * [`runpodctl stop pod`](/runpodctl/reference/runpodctl-stop-pod)
 * [`runpodctl get pod`](/runpodctl/reference/runpodctl-get-pod)
@@ -10002,26 +10390,30 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-stop-pod
 Stop a running Pod to pause compute operations. The Pod's persistent storage will be retained, but you'll continue to be charged for storage until the Pod is removed.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl stop pod <podId> [flags]
+
   ```
+
 </RequestExample>
 
-## Example
+## Example (13)
 
 Stop a running Pod.
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpodctl stop pod abc123xyz456
+
 ```
 
-## Arguments
+## Arguments (8)
 
 <ResponseField name="<podId>" type="string">
   The ID of the Pod to stop. You can find Pod IDs using the `runpodctl get pod` command.
 </ResponseField>
 
-## Related commands
+## Related commands (10)
 
 * [`runpodctl start pod`](/runpodctl/reference/runpodctl-start-pod)
 * [`runpodctl get pod`](/runpodctl/reference/runpodctl-get-pod)
@@ -10035,12 +10427,15 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-update
 Update `runpodctl` to the latest version to access new features and bug fixes.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl update
+
   ```
+
 </RequestExample>
 
-## Related commands
+## Related commands (11)
 
 * [`runpodctl version`](/runpodctl/reference/runpodctl-version)
 
@@ -10053,12 +10448,15 @@ Source: https://docs.runpod.io/runpodctl/reference/runpodctl-version
 Display the current version of `runpodctl` installed on your system.
 
 <RequestExample>
+
   ```sh Command theme={"theme":{"light":"github-light","dark":"github-dark"}}
   runpodctl version
+
   ```
+
 </RequestExample>
 
-## Related commands
+## Related commands (12)
 
 * [`runpodctl update`](/runpodctl/reference/runpodctl-update)
 
@@ -10070,7 +10468,7 @@ Source: https://docs.runpod.io/sdks/go/endpoints
 
 Interacting with Runpod's Endpoints is a core feature of the SDK, enabling the execution of tasks and the retrieval of results. This section covers the synchronous and asynchronous execution methods, along with checking the status of operations.
 
-## Prerequisites
+## Prerequisites (3)
 
 Before using the Runpod Go SDK, ensure that you have:
 
@@ -10085,31 +10483,32 @@ Set your Runpod API key and your Endpoint Id as environment variables.
 package main
 
 import (
-	"log"
-	"os"
+    "log"
+    "os"
 
-	"github.com/runpod/go-sdk/pkg/sdk"
-	"github.com.runpod/go-sdk/pkg/sdk/config"
-	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+    "github.com/runpod/go-sdk/pkg/sdk"
+    "github.com.runpod/go-sdk/pkg/sdk/config"
+    rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
 )
 
 func main() {
-	// Retrieve the API key and base URL from environment variables
-	apiKey := os.Getenv("RUNPOD_API_KEY")
-	baseURL := os.Getenv("RUNPOD_BASE_URL")
+    // Retrieve the API key and base URL from environment variables
+    apiKey := os.Getenv("RUNPOD_API_KEY")
+    baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-	// Check if environment variables are set
-	if apiKey == "" {
-		log.Fatalf("Environment variable RUNPOD_API_KEY is not set")
-	}
-	if baseURL == "" {
-		log.Fatalf("Environment variable RUNPOD_BASE_URL is not set")
-	}
+    // Check if environment variables are set
+    if apiKey == "" {
+        log.Fatalf("Environment variable RUNPOD_API_KEY is not set")
+    }
+    if baseURL == "" {
+        log.Fatalf("Environment variable RUNPOD_BASE_URL is not set")
+    }
 
 
     // Use the endpoint object
     // ...
 }
+
 ```
 
 This allows all calls to pass through your Endpoint Id with a valid API key.
@@ -10138,53 +10537,57 @@ To execute an endpoint synchronously and wait for the result, use the `runSync` 
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com.runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com.runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunSyncInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    		Timeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunSyncInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+            Timeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.RunSync(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.RunSync(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "delayTime": 18,
@@ -10201,7 +10604,9 @@ To execute an endpoint synchronously and wait for the result, use the `runSync` 
       "completed": true,
       "succeeded": true
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10213,59 +10618,65 @@ For non-blocking operations, use the `run` method on the endpoint. This method a
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"mock_delay": 95,
-    			},
-    		},
-    		RequestTimeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "mock_delay": 95,
+                },
+            },
+            RequestTimeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.Run(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "d4e960f6-073f-4219-af24-cbae6b532c31-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10275,93 +10686,99 @@ The following example shows how to get the results of an asynchronous run.
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
-    	"time"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
+        "time"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	// Initiate the asynchronous run
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{"mock_delay": 95},
-    		},
-    		RequestTimeout: sdk.Int(120),
-    	}
-    	runOutput, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		log.Fatalf("Failed to initiate the run: %v", err)
-    	}
+        // Initiate the asynchronous run
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{"mock_delay": 95},
+            },
+            RequestTimeout: sdk.Int(120),
+        }
+        runOutput, err := endpoint.Run(&jobInput)
+        if err != nil {
+            log.Fatalf("Failed to initiate the run: %v", err)
+        }
 
-    	// Extract the ID from the run output
-    	runID := *runOutput.Id
-    	fmt.Printf("Run ID: %s\n", runID)
+        // Extract the ID from the run output
+        runID := *runOutput.Id
+        fmt.Printf("Run ID: %s\n", runID)
 
-    	// Prepare the input for status polling
-    	statusInput := rpEndpoint.StatusInput{
-    		Id: sdk.String(runID),
-    	}
+        // Prepare the input for status polling
+        statusInput := rpEndpoint.StatusInput{
+            Id: sdk.String(runID),
+        }
 
-    	// Poll the status until it completes or fails
-    	var statusOutput *rpEndpoint.StatusOutput
-    	for {
-    		statusOutput, err = endpoint.Status(&statusInput)
-    		if err != nil {
-    			log.Printf("Error checking status: %v", err)
-    			time.Sleep(5 * time.Second)
-    			continue
-    		}
+        // Poll the status until it completes or fails
+        var statusOutput *rpEndpoint.StatusOutput
+        for {
+            statusOutput, err = endpoint.Status(&statusInput)
+            if err != nil {
+                log.Printf("Error checking status: %v", err)
+                time.Sleep(5 * time.Second)
+                continue
+            }
 
-    		statusJSON, _ := json.Marshal(statusOutput)
-    		fmt.Printf("Status: %s\n", statusJSON)
+            statusJSON, _ := json.Marshal(statusOutput)
+            fmt.Printf("Status: %s\n", statusJSON)
 
-    		if *statusOutput.Status == "COMPLETED" || *statusOutput.Status == "FAILED" {
-    			break
-    		}
+            if *statusOutput.Status == "COMPLETED" || *statusOutput.Status == "FAILED" {
+                break
+            }
 
-    		time.Sleep(5 * time.Second)
-    	}
+            time.Sleep(5 * time.Second)
+        }
 
-    	// Retrieve the final result (assuming it's available in the status output)
-    	if *statusOutput.Status == "COMPLETED" {
-    		fmt.Println("Run completed successfully!")
-    		// Handle the completed run's output if needed
-    	} else {
-    		fmt.Println("Run failed!")
-    		// Handle the failed run if needed
-    	}
+        // Retrieve the final result (assuming it's available in the status output)
+        if *statusOutput.Status == "COMPLETED" {
+            fmt.Println("Run completed successfully!")
+            // Handle the completed run's output if needed
+        } else {
+            fmt.Println("Run failed!")
+            // Handle the failed run if needed
+        }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Run ID: 353b1e99-2f35-43a8-8a8b-001d59df8aa1-u1
     Status: {"id":"353b1e99-2f35-43a8-8a8b-001d59df8aa1-u1","status":"IN_QUEUE"}
     Status: {"delayTime":536,"executionTime":239,"id":"353b1e99-2f35-43a8-8a8b-001d59df8aa1-u1","output":"69.30.85.167","status":"COMPLETED"}
     Run completed successfully!
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10371,65 +10788,69 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	request, err := endpoint.Run(&rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    	})
-    	if err != nil {
-    		panic(err)
-    	}
+        request, err := endpoint.Run(&rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+        })
+        if err != nil {
+            panic(err)
+        }
 
-    	streamChan := make(chan rpEndpoint.StreamResult, 100)
+        streamChan := make(chan rpEndpoint.StreamResult, 100)
 
-    	err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
-    	if err != nil {
-    		// timeout reached, if we want to get the data that has been streamed
-    		if err.Error() == "ctx timeout reached" {
-    			for data := range streamChan {
-    				dt, _ := json.Marshal(data)
-    				fmt.Printf("output:%s\n", dt)
-    			}
-    		}
-    		panic(err)
-    	}
+        err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
+        if err != nil {
+            // timeout reached, if we want to get the data that has been streamed
+            if err.Error() == "ctx timeout reached" {
+                for data := range streamChan {
+                    dt, _ := json.Marshal(data)
+                    fmt.Printf("output:%s\n", dt)
+                }
+            }
+            panic(err)
+        }
 
-    	for data := range streamChan {
-    		dt, _ := json.Marshal(data)
-    		fmt.Printf("output:%s\n", dt)
-    	}
+        for data := range streamChan {
+            dt, _ := json.Marshal(data)
+            fmt.Printf("output:%s\n", dt)
+        }
 
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     { id: 'cb68890e-436f-4234-955d-001db6afe972-u1', status: 'IN_QUEUE' }
     {
@@ -10472,7 +10893,9 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
       "output": "!"
     }
     done streaming
+
     ```
+
   </Tab>
 
   <Tab title="Handler">
@@ -10497,7 +10920,9 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
             "return_aggregate_stream": True,  # Ensures aggregated results are streamed back
         }
     )
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10511,47 +10936,51 @@ Monitor the health of an endpoint by checking its status, including jobs complet
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	healthInput := rpEndpoint.StatusInput{
-    		Id: sdk.String("20aad8ef-9c86-4fcd-a349-579ce38e8bfd-u1"),
-    	}
-    	output, err := endpoint.Status(&healthInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        healthInput := rpEndpoint.StatusInput{
+            Id: sdk.String("20aad8ef-9c86-4fcd-a349-579ce38e8bfd-u1"),
+        }
+        output, err := endpoint.Status(&healthInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	healthData, _ := json.Marshal(output)
-    	fmt.Printf("health output: %s\n", healthData)
+        healthData, _ := json.Marshal(output)
+        fmt.Printf("health output: %s\n", healthData)
 
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "jobs": {
@@ -10569,7 +10998,9 @@ Monitor the health of an endpoint by checking its status, including jobs complet
         "throttled": 0
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10579,46 +11010,50 @@ Use the `status` method and specify the `id` of the run to get the status of a r
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
-    	input := rpEndpoint.StatusInput{
-    		Id: sdk.String("5efff030-686c-4179-85bb-31b9bf97b944-u1"),
-    	}
-    	output, err := endpoint.Status(&input)
-    	if err != nil {
-    		panic(err)
-    	}
-    	dt, _ := json.Marshal(output)
-    	fmt.Printf("output:%s\n", dt)
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
+        input := rpEndpoint.StatusInput{
+            Id: sdk.String("5efff030-686c-4179-85bb-31b9bf97b944-u1"),
+        }
+        output, err := endpoint.Status(&input)
+        if err != nil {
+            panic(err)
+        }
+        dt, _ := json.Marshal(output)
+        fmt.Printf("output:%s\n", dt)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "delayTime": 18,
@@ -10628,7 +11063,9 @@ Use the `status` method and specify the `id` of the run to get the status of a r
       "completed": false,
       "succeeded": false
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10638,53 +11075,59 @@ You can cancel a Job request by using the `cancel()` function on the run request
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	cancelInput := rpEndpoint.CancelInput{
-    		Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
-    	}
-    	output, err := endpoint.Cancel(&cancelInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        cancelInput := rpEndpoint.CancelInput{
+            Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
+        }
+        output, err := endpoint.Cancel(&cancelInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	healthData, _ := json.Marshal(output)
-    	fmt.Printf("health output: %s\n", healthData)
+        healthData, _ := json.Marshal(output)
+        fmt.Printf("health output: %s\n", healthData)
 
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "5fb6a8db-a8fa-41a1-ad81-f5fad9755f9e-u1",
       "status": "CANCELLED"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10694,56 +11137,62 @@ You can set the maximum time to wait for a response from the endpoint using the 
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}
-    		RequestTimeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}
+            RequestTimeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.Run(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "43309f93-0422-4eac-92cf-e385dee36e99-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10753,60 +11202,66 @@ You can specify the TTL (Time-to-Live) and ExecutionTimeout values for the job u
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"ttl":               3600, // Set the TTL value, e.g., 3600 seconds (1 hour)
-    				"execution_timeout": 300,  // Set the ExecutionTimeout value, e.g., 300 seconds (5 minutes)
-    			},
-    		},
-    		RequestTimeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "ttl":               3600, // Set the TTL value, e.g., 3600 seconds (1 hour)
+                    "execution_timeout": 300,  // Set the ExecutionTimeout value, e.g., 300 seconds (5 minutes)
+                },
+            },
+            RequestTimeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.Run(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "21bd3763-dcbf-4091-84ee-85b80907a020-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -10820,63 +11275,69 @@ Create an instance of the `PurgeQueueInput` struct and set the desired values. C
 
 <Tabs>
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"fmt"
-    	"log"
-    	"os"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	purgeQueueInput := rpEndpoint.PurgeQueueInput{
-    		RequestTimeout: sdk.Int(5), // Set the request timeout to 5 seconds
-    	}
+        purgeQueueInput := rpEndpoint.PurgeQueueInput{
+            RequestTimeout: sdk.Int(5), // Set the request timeout to 5 seconds
+        }
 
-    	purgeQueueOutput, err := endpoint.PurgeQueue(&purgeQueueInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        purgeQueueOutput, err := endpoint.PurgeQueue(&purgeQueueInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	fmt.Printf("Status: %s\n", *purgeQueueOutput.Status)
-    	fmt.Printf("Removed: %d\n", *purgeQueueOutput.Removed)
+        fmt.Printf("Status: %s\n", *purgeQueueOutput.Status)
+        fmt.Printf("Removed: %d\n", *purgeQueueOutput.Removed)
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Status: completed
     Removed: 1
+
     ```
+
   </Tab>
 </Tabs>
 
 
-# Overview
+# Overview (9)
 Source: https://docs.runpod.io/sdks/go/overview
 
 
 
 Get started with setting up your Runpod projects using Go. Whether you're building web applications, server-side implementations, or automating tasks, the Runpod Go SDK provides the tools you need. This guide outlines the steps to get your development environment ready and integrate Runpod into your Go projects.
 
-## Prerequisites
+## Prerequisites (4)
 
 Before you begin, ensure that you have the following:
 
@@ -10891,12 +11352,14 @@ To install the Runpod SDK, run the following `go get` command in your project di
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 go get github.com/runpod/go-sdk
+
 ```
 
 This command installs the `runpod-sdk` package. Then run the following command to install the dependencies:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 go mod tidy
+
 ```
 
 For more details about the package, visit the [Go package page](https://pkg.go.dev/github.com/runpod/go-sdk/pkg/sdk) or the [GitHub repository](https://github.com/runpod/go-sdk).
@@ -10920,6 +11383,7 @@ func main() {
     // Use the endpoint object
     // ...
 }
+
 ```
 
 This snippet demonstrates how to import the SDK, initialize it with your API key, and reference a specific endpoint using its ID.
@@ -11000,15 +11464,19 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { saveEndpoint(input: { gpuIds: \"AMPERE_16\", idleTimeout: 5, locations: \"US\", name: \"Generated Endpoint -fb\", networkVolumeId: \"\", scalerType: \"QUEUE_DELAY\", scalerValue: 4, templateId: \"xkhgg72fuo\", workersMax: 3, workersMin: 0 }) { gpuIds id idleTimeout locations name scalerType scalerValue templateId workersMax workersMin } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveEndpoint(input: {
@@ -11041,10 +11509,13 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         workersMin
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11062,7 +11533,9 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11070,15 +11543,19 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { saveEndpoint(input: { id: \"i02xupws21hp6i\", gpuIds: \"AMPERE_16\", name: \"Generated Endpoint -fb\", templateId: \"xkhgg72fuo\", workersMax: 0 }) { id gpuIds name templateId workersMax } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveEndpoint(input: {
@@ -11098,10 +11575,13 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         workersMax
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11114,7 +11594,9 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11122,15 +11604,19 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
          --header 'content-type: application/json' \
          --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
          --data '{"query": "query Endpoints { myself { endpoints { gpuIds id idleTimeout locations name networkVolumeId pods { desiredStatus } scalerType scalerValue templateId workersMax workersMin } serverlessDiscount { discountFactor type expirationDate } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query Endpoints {
       myself {
@@ -11157,10 +11643,13 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11185,7 +11674,9 @@ Source: https://docs.runpod.io/sdks/graphql/manage-endpoints
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11195,30 +11686,39 @@ Note that your endpoint's min and max workers must both be set to zero for your 
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
-    	--header 'content-type: application/json' \
+        --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { deleteEndpoint(id: \"i02xupws21hp6i\") }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       deleteEndpoint(id: "i02xupws21hp6i")
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
         "deleteEndpoint": null
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11251,15 +11751,19 @@ If your container image is private, you can also specify Docker login credential
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { saveTemplate(input: { containerDiskInGb: 5, dockerArgs: \"sleep infinity\", env: [ { key: \"key1\", value: \"value1\" }, { key: \"key2\", value: \"value2\" } ], imageName: \"ubuntu:latest\", name: \"Generated Template\", ports: \"8888/http,22/tcp\", readme: \"## Hello, World!\", volumeInGb: 15, volumeMountPath: \"/workspace\" }) { containerDiskInGb dockerArgs env { key value } id imageName name ports readme volumeInGb volumeMountPath } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveTemplate(input: {
@@ -11297,10 +11801,13 @@ If your container image is private, you can also specify Docker login credential
         volumeMountPath
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11327,7 +11834,9 @@ If your container image is private, you can also specify Docker login credential
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11337,15 +11846,19 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { saveTemplate(input: { containerDiskInGb: 5, dockerArgs: \"python handler.py\", env: [ { key: \"key1\", value: \"value1\" }, { key: \"key2\", value: \"value2\" } ], imageName: \"runpod/serverless-hello-world:latest\", isServerless: true, name: \"Generated Serverless Template\", readme: \"## Hello, World!\", volumeInGb: 0 }) { containerDiskInGb dockerArgs env { key value } id imageName isServerless name readme } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveTemplate(input: {
@@ -11380,10 +11893,13 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         readme
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11408,7 +11924,9 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11418,15 +11936,19 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { saveTemplate(input: { id: \"wphkv67a0p\", containerDiskInGb: 5, dockerArgs: \"sleep infinity\", env: [ { key: \"key1\", value: \"value1\" }, { key: \"key2\", value: \"value2\" } ], imageName: \"ubuntu:latest\", name: \"Generated Template\", volumeInGb: 15, readme: \"## Goodbye, World!\" }) { id containerDiskInGb dockerArgs env { key value } imageName name volumeInGb readme } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveTemplate(input: {
@@ -11461,10 +11983,13 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         readme
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11489,7 +12014,9 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11497,6 +12024,7 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
@@ -11504,10 +12032,13 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
       --data '{"query": "mutation { saveTemplate(input: { id: \"xkhgg72fuo\", containerDisk
 
     InGb: 5, dockerArgs: \"python handler.py\", env: [ { key: \"key1\", value: \"value1\" }, { key: \"key2\", value: \"value2\" } ], imageName: \"runpod/serverless-hello-world:latest\", name: \"Generated Serverless Template\", volumeInGb: 0, readme: \"## Goodbye, World!\" }) { id containerDiskInGb dockerArgs env { key value } imageName name readme } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       saveTemplate(input: {
@@ -11541,10 +12072,13 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         readme
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11568,7 +12102,9 @@ For Serverless templates, always pass `0` for `volumeInGb`, since Serverless wor
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11580,30 +12116,39 @@ The same mutation is used for deleting both Pod and Serverless templates.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { deleteTemplate(templateName: \"Generated Template\") }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       deleteTemplate(templateName: "Generated Template")
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
         "deleteTemplate": null
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11613,15 +12158,19 @@ To create a secret, you need to send a GraphQL mutation request. This request wi
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { secretCreate(input: { value: \"i am a test secret\", name: \"i-am-a-secret\" }) { id name description } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       secretCreate(input: {
@@ -11633,12 +12182,14 @@ To create a secret, you need to send a GraphQL mutation request. This request wi
         description
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
 
-# Manage Pods
+# Manage Pods (2)
 Source: https://docs.runpod.io/sdks/graphql/manage-pods
 
 
@@ -11663,13 +12214,13 @@ A Pod consists of the following resources:
 
 * Container Disk
 
-  * It's temporary and removed when the pod is stopped or terminated.
-  * You only pay for the container disk when the pod is running.
+* It's temporary and removed when the pod is stopped or terminated.
+* You only pay for the container disk when the pod is running.
 
 * Instance Volume
 
-  * Data persists even when you reset or stop a Pod. Volume is removed when the Pod is terminated.
-  * You pay for volume storage even when the Pod is stopped.
+* Data persists even when you reset or stop a Pod. Volume is removed when the Pod is terminated.
+* You pay for volume storage even when the Pod is stopped.
 
 * Global Networking
 
@@ -11677,15 +12228,19 @@ A Pod consists of the following resources:
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { podFindAndDeployOnDemand( input: { cloudType: ALL, gpuCount: 1, volumeInGb: 40, containerDiskInGb: 40, minVcpuCount: 2, minMemoryInGb: 15, gpuTypeId: \"NVIDIA RTX A6000\", name: \"Runpod Tensorflow\", imageName: \"runpod/tensorflow\", dockerArgs: \"\", ports: \"8888/http\", volumeMountPath: \"/workspace\", env: [{ key: \"JUPYTER_PASSWORD\", value: \"rn51hunbpgtltcpac3ol\" }] } ) { id imageName env machineId machine { podHostId } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podFindAndDeployOnDemand(
@@ -11714,10 +12269,13 @@ A Pod consists of the following resources:
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11734,7 +12292,9 @@ A Pod consists of the following resources:
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11742,15 +12302,19 @@ A Pod consists of the following resources:
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { podRentInterruptable( input: { bidPerGpu: 0.2, cloudType: SECURE, gpuCount: 1, volumeInGb: 40, containerDiskInGb: 40, minVcpuCount: 2, minMemoryInGb: 15, gpuTypeId: \"NVIDIA RTX A6000\", name: \"Runpod Pytorch\", imageName: \"runpod/pytorch\", dockerArgs: \"\", ports: \"8888/http\", volumeMountPath: \"/workspace\", env: [{ key: \"JUPYTER_PASSWORD\", value: \"vunw9ybnzqwpia2795p2\" }] } ) { id imageName env machineId machine { podHostId } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podRentInterruptable(
@@ -11780,10 +12344,13 @@ A Pod consists of the following resources:
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11800,7 +12367,9 @@ A Pod consists of the following resources:
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11812,6 +12381,7 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
@@ -11819,10 +12389,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
       --data '{
         "query": "mutation { podResume( input: { podId: \"inzk6tzuz833h5\", gpuCount: 1, allowedCudaVersions: [\"12.0\", \"12.1\", \"12.2\", \"12.3\"] } ) { id desiredStatus imageName env machineId machine { podHostId } } }"
       }'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podResume(input: {
@@ -11840,10 +12413,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11861,7 +12437,9 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11871,15 +12449,19 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { podResume( input: { podId: \"inzk6tzuz833h5\", gpuCount: 1 } ) { id desiredStatus imageName env machineId machine { podHostId } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podResume(input: {podId: "inzk6tzuz833h5", gpuCount: 1}) {
@@ -11893,10 +12475,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11914,7 +12499,9 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -11922,15 +12509,19 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { podBidResume( input: { podId: \"d62t7qg9n5vtan\", bidPerGpu: 0.2, gpuCount: 1 } ) { id desiredStatus imageName env machineId machine { podHostId } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podBidResume(input: {podId: "d62t7qg9n5vtan", bidPerGpu: 0.2, gpuCount: 1}) {
@@ -11944,10 +12535,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -11965,11 +12559,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-### Filter by CUDA version
+### Filter by CUDA version (2)
 
 You can pass in the `allowedCudaVersions` as a list of CUDA versions that you want to allow for the GPU in the pod.
 
@@ -11977,6 +12573,7 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
@@ -11984,10 +12581,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
       --data '{
         "query": "mutation { podRentInterruptable( input: { bidPerGpu: 0.2, cloudType: SECURE, gpuCount: 1, volumeInGb: 40, containerDiskInGb: 40, minVcpuCount: 2, minMemoryInGb: 15, gpuTypeId: \"NVIDIA RTX A6000\", name: \"Runpod Pytorch\", imageName: \"runpod/pytorch\", dockerArgs: \"\", ports: \"8888/http\", volumeMountPath: \"/workspace\", env: [{ key: \"JUPYTER_PASSWORD\", value: \"vunw9ybnzqwpia2795p2\" }], allowedCudaVersions: [\"12.0\", \"12.1\", \"12.2\", \"12.3\"] } ) { id imageName env machineId machine { podHostId } } }"
       }'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podRentInterruptable(input: {
@@ -12016,10 +12616,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12036,7 +12639,9 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12044,15 +12649,19 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "mutation { podStop(input: {podId: \"riixlu8oclhp\"}) { id desiredStatus } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     mutation {
       podStop(input: {podId: "riixlu8oclhp"}) {
@@ -12060,10 +12669,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         desiredStatus
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12073,25 +12685,31 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-## List Pods
+## List Pods (2)
 
 ### List all Pods
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "query Pods { myself { pods { id name runtime { uptimeInSeconds ports { ip isIpPublic privatePort publicPort type } gpus { id gpuUtilPercent memoryUtilPercent } container { cpuPercent memoryPercent } } } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query Pods {
       myself {
@@ -12120,10 +12738,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12179,7 +12800,9 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12187,15 +12810,19 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "query Pod { pod(input: {podId: \"ldl1dxirsim64n\"}) { id name runtime { uptimeInSeconds ports { ip isIpPublic privatePort publicPort type } gpus { id gpuUtilPercent memoryUtilPercent } container { cpuPercent memoryPercent } } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query Pod {
       pod(input: {podId: "ldl1dxirsim64n"}) {
@@ -12222,10 +12849,13 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12258,7 +12888,9 @@ This helps in specifying the compatible CUDA versions for your GPU setup.
         }
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12268,15 +12900,19 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "query GpuTypes { gpuTypes { id displayName memoryInGb } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query GpuTypes {
       gpuTypes {
@@ -12285,10 +12921,13 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
         memoryInGb
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12311,7 +12950,9 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
         ]
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12319,15 +12960,19 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "query GpuTypes { gpuTypes(input: {id: \"NVIDIA GeForce RTX 3090\"}) { id displayName memoryInGb secureCloud communityCloud lowestPrice(input: {gpuCount: 1}) { minimumBidPrice uninterruptablePrice } } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query GpuTypes {
       gpuTypes(input: {id: "NVIDIA GeForce RTX 3090"}) {
@@ -12342,10 +12987,13 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
         }
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12364,7 +13012,9 @@ When creating a Pod, you will need to pass GPU type IDs. These queries can help 
         ]
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12378,15 +13028,19 @@ You can check if a specific [GPU type](/references/gpu-types) is available in th
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
       --header 'content-type: application/json' \
       --url 'https://api.runpod.io/graphql?api_key=${YOUR_API_KEY}' \
       --data '{"query": "query { gpuTypes(input: { id: \"NVIDIA RTX A4000\" }) { lowestPrice(input: { compliance: null, dataCenterId: null, globalNetwork: false, gpuCount: 1, minDisk: 0, minMemoryInGb: 8, minVcpuCount: 2, secureCloud: true }) { minimumBidPrice uninterruptablePrice minVcpu minMemory stockStatus compliance maxUnreservedGpuCount availableGpuCounts __typename } id displayName memoryInGb securePrice communityPrice oneMonthPrice oneWeekPrice threeMonthPrice sixMonthPrice secureSpotPrice __typename } }"}'
+
     ```
+
   </Tab>
 
   <Tab title="GraphQL">
+
     ```GraphQL theme={"theme":{"light":"github-light","dark":"github-dark"}}
     query {
       gpuTypes(input: { id: "NVIDIA RTX A4000" }) {
@@ -12423,10 +13077,13 @@ You can check if a specific [GPU type](/references/gpu-types) is available in th
         __typename
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Example output (high stock)">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12458,10 +13115,13 @@ You can check if a specific [GPU type](/references/gpu-types) is available in th
         ]
       }
     }
+
     ```
+
   </Tab>
 
   <Tab title="Example output (low stock)">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "data": {
@@ -12493,26 +13153,28 @@ You can check if a specific [GPU type](/references/gpu-types) is available in th
         ]
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
 
-# Endpoints
+# Endpoints (2)
 Source: https://docs.runpod.io/sdks/javascript/endpoints
 
 
 
 Interacting with Runpod's endpoints is a core feature of the SDK, enabling the execution of tasks and the retrieval of results. This section covers the synchronous and asynchronous execution methods, along with checking the status of operations.
 
-## Prerequisites
+## Prerequisites (5)
 
 Before using the Runpod JavaScript, ensure that you have:
 
 * Installed the Runpod JavaScript SDK.
 * Configured your API key.
 
-## Set your Endpoint Id
+## Set your Endpoint Id (2)
 
 Set your Runpod API key and your Endpoint Id as environment variables.
 
@@ -12522,6 +13184,7 @@ import runpodSdk from "runpod-sdk";
 
 const runpod = runpodSdk(RUNPOD_API_KEY);
 const endpoint = runpod.endpoint(ENDPOINT_ID);
+
 ```
 
 This allows all calls to pass through your Endpoint Id with a valid API key.
@@ -12533,18 +13196,19 @@ In most situations, you'll set a variable name `endpoint` on the `Endpoint` clas
 * [runSync](#run-synchronously)
 * [run](#run-asynchronously)
 
-## Run the Endpoint
+## Run the Endpoint (2)
 
 Run the Endpoint with the either the asynchronous `run` or synchronous `runSync` method.
 
 Choosing between asynchronous and synchronous execution hinges on your task's needs and application design.
 
-### Run synchronously
+### Run synchronously (2)
 
 To execute an endpoint synchronously and wait for the result, use the `runSync` method on your endpoint. This method blocks the execution until the endpoint run is complete or until it times out.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12558,10 +13222,13 @@ To execute an endpoint synchronously and wait for the result, use the `runSync` 
     });
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       delayTime: 18,
@@ -12573,11 +13240,13 @@ To execute an endpoint synchronously and wait for the result, use the `runSync` 
       completed: true,
       succeeded: true
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-## Run asynchronously
+## Run asynchronously (2)
 
 Asynchronous execution allows for non-blocking operations, enabling your code to perform other tasks while waiting for an operation to complete.
 
@@ -12585,6 +13254,7 @@ For non-blocking operations, use the `run` method on the endpoint. This method a
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12598,25 +13268,31 @@ For non-blocking operations, use the `run` method on the endpoint. This method a
     });
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "d4e960f6-073f-4219-af24-cbae6b532c31-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-### Get results from an asynchronous run
+### Get results from an asynchronous run (2)
 
 The following example shows how to get the results of an asynchronous run.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12666,10 +13342,13 @@ The following example shows how to get the results of an asynchronous run.
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     run response
     { id: 'c671a352-78e6-4eba-b2c8-2ea537c00897-u1', status: 'IN_QUEUE' }
@@ -12695,7 +13374,9 @@ The following example shows how to get the results of an asynchronous run.
     }
     Operation completed successfully.
     [ { choices: [ [Object] ], usage: { input: 5, output: 16 } } ]
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12705,6 +13386,7 @@ Uses `await endpoint.status(id)` to check the status of the operation repeatedly
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12753,26 +13435,32 @@ Uses `await endpoint.status(id)` to check the status of the operation repeatedly
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Current status: IN_QUEUE
     Current status: IN_PROGRESS
     Current status: COMPLETED
     Operation completed.
     Hello, World!
+
     ```
+
   </Tab>
 </Tabs>
 
-## Stream
+## Stream (2)
 
 Stream allows you to stream the output of an Endpoint run. To enable streaming, your handler must support the `"return_aggregate_stream": True` option on the `start` method of your Handler. Once enabled, use the `stream` method to receive data as it becomes available.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12796,10 +13484,13 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     { id: 'cb68890e-436f-4234-955d-001db6afe972-u1', status: 'IN_QUEUE' }
     {
@@ -12842,7 +13533,9 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
       "output": "!"
     }
     done streaming
+
     ```
+
   </Tab>
 
   <Tab title="Handler">
@@ -12867,7 +13560,9 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
             "return_aggregate_stream": True,  # Ensures aggregated results are streamed back
         }
     )
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -12875,12 +13570,13 @@ Stream allows you to stream the output of an Endpoint run. To enable streaming, 
   The maximum size for a payload that can be sent using yield to stream results is 1 MB.
 </Info>
 
-## Health check
+## Health check (2)
 
 Monitor the health of an endpoint by checking its status, including jobs completed, failed, in progress, in queue, and retried, as well as the status of workers.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12890,10 +13586,13 @@ Monitor the health of an endpoint by checking its status, including jobs complet
 
     const health = await endpoint.health();
     console.log(health);
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "jobs": {
@@ -12911,16 +13610,19 @@ Monitor the health of an endpoint by checking its status, including jobs complet
         "throttled": 0
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-## Status
+## Status (2)
 
 Use the `status` method and specify the `id` of the run to get the status of a run.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -12949,10 +13651,13 @@ Use the `status` method and specify the `id` of the run to get the status of a r
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "delayTime": 18,
@@ -12962,16 +13667,19 @@ Use the `status` method and specify the `id` of the run to get the status of a r
       "completed": false,
       "succeeded": false
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-## Cancel
+## Cancel (2)
 
 You can cancel a Job request by using the `cancel()` function on the run request. You might want to cancel a Job because it's stuck with a status of `IN_QUEUE` or `IN_PROGRESS`, or because you no longer need the result.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -13000,25 +13708,31 @@ You can cancel a Job request by using the `cancel()` function on the run request
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "5fb6a8db-a8fa-41a1-ad81-f5fad9755f9e-u1",
       "status": "CANCELLED"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-### Timeout
+### Timeout (2)
 
 To set a timeout on a run, pass a timeout value to the `run` method. Time is measured in milliseconds.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -13032,25 +13746,31 @@ To set a timeout on a run, pass a timeout value to the `run` method. Time is mea
     }, 5000);
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "43309f93-0422-4eac-92cf-e385dee36e99-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
-### Execution policy
+### Execution policy (2)
 
 You can set the maximum time to wait for a response from the endpoint in the `policy` parameter.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -13067,16 +13787,21 @@ You can set the maximum time to wait for a response from the endpoint in the `po
     });
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "21bd3763-dcbf-4091-84ee-85b80907a020-u1",
       "status": "IN_QUEUE"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13090,6 +13815,7 @@ You can purge all jobs from a queue by using the `purgeQueue()` function.
 
 <Tabs>
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -13112,28 +13838,33 @@ You can purge all jobs from a queue by using the `purgeQueue()` function.
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "removed": 1,
       "status": "completed"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
 
-# Overview
+# Overview (10)
 Source: https://docs.runpod.io/sdks/javascript/overview
 
 
 
 Get started with setting up your Runpod projects using JavaScript. Whether you're building web applications, server-side implementations, or automating tasks, the Runpod JavaScript SDK provides the tools you need. This guide outlines the steps to get your development environment ready and integrate Runpod into your JavaScript projects.
 
-## Install the Runpod SDK
+## Install the Runpod SDK (2)
 
 Before integrating Runpod into your project, you'll need to install the SDK. Using Node.js and npm (Node Package Manager) simplifies this process. Ensure you have Node.js and npm installed on your system before proceeding.
 
@@ -13143,11 +13874,12 @@ To install the Runpod SDK, run the following npm command in your project directo
 npm install --save runpod-sdk
 # or
 yarn add runpod-sdk
+
 ```
 
 This command installs the `runpod-sdk` package and adds it to your project's `package.json` dependencies. For more details about the package, visit the [npm package page](https://www.npmjs.com/package/runpod-sdk) or the [GitHub repository](https://github.com/runpod/js-sdk).
 
-## Add your API key
+## Add your API key (2)
 
 To use the Runpod SDK in your project, you first need to import it and configure it with your API key and endpoint ID. Ensure these values are securely stored, preferably as environment variables.
 
@@ -13159,11 +13891,12 @@ import runpodSdk from "runpod-sdk";
 
 const runpod = runpodSdk(RUNPOD_API_KEY);
 const endpoint = runpod.endpoint(ENDPOINT_ID);
+
 ```
 
 This snippet demonstrates how to import the SDK, initialize it with your API key, and reference a specific endpoint using its ID. Remember, the Runpod SDK uses the ES Module (ESM) system and supports asynchronous operations, making it compatible with modern JavaScript development practices.
 
-### Secure your API key
+### Secure your API key (2)
 
 When working with the Runpod SDK, it's essential to secure your API key. Storing the API key in environment variables is recommended, as shown in the initialization example. This method keeps your key out of your source code and reduces the risk of accidental exposure.
 
@@ -13200,6 +13933,7 @@ endpoints = runpod.get_endpoints()
 
 # Displaying the list of endpoints
 print(endpoints)
+
 ```
 
 ## Create Template
@@ -13208,6 +13942,7 @@ Templates in Runpod serve as predefined configurations for setting up environmen
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -13225,10 +13960,13 @@ Templates in Runpod serve as predefined configurations for setting up environmen
         # Handling potential errors during template creation
         print(err)
         print(err.query)
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "n6m0htekvq",
@@ -13242,7 +13980,9 @@ Templates in Runpod serve as predefined configurations for setting up environmen
       "env": [],
       "isServerless": false
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13252,6 +13992,7 @@ Creating a new endpoint with the `create_endpoint()` function. This function req
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -13283,10 +14024,13 @@ Creating a new endpoint with the `create_endpoint()` function. This function req
         # Handling potential errors during endpoint creation
         print(err)
         print(err.query)
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "id": "Unique_Id",
@@ -13313,7 +14057,9 @@ Creating a new endpoint with the `create_endpoint()` function. This function req
       "workersMin": 0,
       "workersMax": 1
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13323,6 +14069,7 @@ For understanding the computational resources available, the `get_gpus()` functi
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import json
@@ -13335,10 +14082,13 @@ For understanding the computational resources available, the `get_gpus()` functi
 
     # Displaying the GPUs in a formatted manner
     print(json.dumps(gpus, indent=2))
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     [
       {
@@ -13353,7 +14103,9 @@ For understanding the computational resources available, the `get_gpus()` functi
       }
       // Additional GPUs omitted for brevity
     ]
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13363,6 +14115,7 @@ Use `get_gpu()` and pass in a GPU Id to retrieve details about a specific GPU mo
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import json
@@ -13373,10 +14126,13 @@ Use `get_gpu()` and pass in a GPU Id to retrieve details about a specific GPU mo
     gpus = runpod.get_gpu("NVIDIA A100 80GB PCIe")
 
     print(json.dumps(gpus, indent=2))
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "maxGpuCount": 8,
@@ -13399,28 +14155,30 @@ Use `get_gpu()` and pass in a GPU Id to retrieve details about a specific GPU mo
         "uninterruptablePrice": 1.59
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
 Through these functionalities, the Runpod API enables efficient and flexible management of computational resources, catering to a wide range of project requirements.
 
 
-# Endpoints
+# Endpoints (3)
 Source: https://docs.runpod.io/sdks/python/endpoints
 
 
 
 This documentation provides detailed instructions on how to use the Runpod Python SDK to interact with various endpoints. You can perform synchronous and asynchronous operations, stream data, and check the health status of endpoints.
 
-## Prerequisites
+## Prerequisites (6)
 
 Before using the Runpod Python, ensure that you have:
 
 * Installed the Runpod Python SDK.
 * Configured your API key.
 
-## Set your Endpoint Id
+## Set your Endpoint Id (3)
 
 Pass your Endpoint Id on the `Endpoint` class.
 
@@ -13431,6 +14189,7 @@ import os
 runpod.api_key = os.getenv("RUNPOD_API_KEY")
 
 endpoint = runpod.Endpoint("YOUR_ENDPOINT_ID")
+
 ```
 
 This allows all calls to pass through your Endpoint Id with a valid API key.
@@ -13442,7 +14201,7 @@ In most situations, you'll set a variable name `endpoint` on the `Endpoint` clas
 * [run\_sync](#run-synchronously)
 * [run](#run-asynchronously)
 
-## Run the Endpoint
+## Run the Endpoint (3)
 
 Run the Endpoint with the either the asynchronous `run` or synchronous `run_sync` method.
 
@@ -13450,17 +14209,17 @@ Choosing between asynchronous and synchronous execution hinges on your task's ne
 
 * **Asynchronous methods**: Choose the asynchronous method for handling tasks efficiently, especially when immediate feedback isn't crucial. They allow your application to stay responsive by running time-consuming operations in the background, ideal for:
 
-  * **Non-blocking calls**: Keep your application active while waiting on long processes.
-  * **Long-running operations**: Avoid timeouts on tasks over 30 seconds, letting your app's workflow continue smoothly.
-  * **Job tracking**: Get a Job Id to monitor task status, useful for complex or delayed-result operations.
+* **Non-blocking calls**: Keep your application active while waiting on long processes.
+* **Long-running operations**: Avoid timeouts on tasks over 30 seconds, letting your app's workflow continue smoothly.
+* **Job tracking**: Get a Job Id to monitor task status, useful for complex or delayed-result operations.
 
 * **Synchronous methods**: Choose the synchronous method for these when your application requires immediate results from operations. They're best for:
 
-  * **Immediate results**: Necessary for operations where quick outcomes are essential to continue with your app's logic.
-  * **Short operations**: Ideal for tasks under 30 seconds to prevent application delays.
-  * **Simplicity and control**: Provides a straightforward execution process, with timeout settings for better operational control.
+* **Immediate results**: Necessary for operations where quick outcomes are essential to continue with your app's logic.
+* **Short operations**: Ideal for tasks under 30 seconds to prevent application delays.
+* **Simplicity and control**: Provides a straightforward execution process, with timeout settings for better operational control.
 
-### Run synchronously
+### Run synchronously (3)
 
 To execute an endpoint synchronously and wait for the result, use the `run_sync` method. This method blocks the execution until the endpoint run is complete or until it times out.
 
@@ -13483,9 +14242,10 @@ try:
     print(run_request)
 except TimeoutError:
     print("Job timed out.")
+
 ```
 
-### Run asynchronously
+### Run asynchronously (3)
 
 Asynchronous execution allows for non-blocking operations, enabling your code to perform other tasks while waiting for an operation to complete. Runpod supports both standard asynchronous execution and advanced asynchronous programming with Python's [asyncio](https://docs.python.org/3/library/asyncio.html) framework.
 
@@ -13499,6 +14259,7 @@ This executes a standard Python environment without requiring an asynchronous ev
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -13520,14 +14281,19 @@ This executes a standard Python environment without requiring an asynchronous ev
     else:
         output = run_request.output()
     print(f"Job output: {output}")
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Initial job status: IN_QUEUE
     Job output: {'input_tokens': 24, 'output_tokens': 16, 'text': ["Hello! How may I assist you today?\n"]}
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13537,6 +14303,7 @@ Use Python's `asyncio` library for handling concurrent Endpoint calls efficientl
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import asyncio
     import aiohttp
@@ -13575,25 +14342,31 @@ Use Python's `asyncio` library for handling concurrent Endpoint calls efficientl
 
     if __name__ == "__main__":
         asyncio.run(main())
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Current job status: IN_QUEUE
     Job in queue or processing. Waiting 3 seconds...
     Current job status: COMPLETED
     Job output: {'input_tokens': 24, 'output_tokens': 16, 'text': ['Hello! How may I assist you today?\n']}
+
     ```
+
   </Tab>
 </Tabs>
 
-## Health check
+## Health check (3)
 
 Monitor the health of an endpoint by checking its status, including jobs completed, failed, in progress, in queue, and retried, as well as the status of workers.
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import json
@@ -13606,10 +14379,13 @@ Monitor the health of an endpoint by checking its status, including jobs complet
     endpoint_health = endpoint.health()
 
     print(json.dumps(endpoint_health, indent=2))
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "jobs": {
@@ -13627,7 +14403,9 @@ Monitor the health of an endpoint by checking its status, including jobs complet
         "throttled": 0
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13637,6 +14415,7 @@ To enable streaming, your handler must support the `"return_aggregate_stream": T
 
 <Tabs>
   <Tab title="Endpoint">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
 
@@ -13654,10 +14433,13 @@ To enable streaming, your handler must support the `"return_aggregate_stream": T
 
     for output in run_request.stream():
         print(output)
+
     ```
+
   </Tab>
 
   <Tab title="Handler">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     from time import sleep
     import runpod
@@ -13677,7 +14459,9 @@ To enable streaming, your handler must support the `"return_aggregate_stream": T
             "return_aggregate_stream": True,  # Ensures aggregated results are streamed back
         }
     )
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13685,12 +14469,13 @@ To enable streaming, your handler must support the `"return_aggregate_stream": T
   The maximum size for a payload that can be sent using yield to stream results is 1 MB.
 </Info>
 
-## Status
+## Status (3)
 
 Returns the status of the Job request. Set the `status()` function on the run request to return the status of the Job.
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
 
@@ -13712,18 +14497,23 @@ Returns the status of the Job request. Set the `status()` function on the run re
         output = run_request.output()
     print(f"Job output: {output}")
     print(f"An error occurred: {e}")
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Initial job status: IN_QUEUE
     Job output: Hello, World!
+
     ```
+
   </Tab>
 </Tabs>
 
-## Cancel
+## Cancel (3)
 
 You can cancel a Job request by using the `cancel()` function on the run request. You might want to cancel a Job because it's stuck with a status of `IN_QUEUE` or `IN_PROGRESS`, or because you no longer need the result.
 
@@ -13733,6 +14523,7 @@ This sends a `SIGINT` signal to the running Job by catching the `KeyboardInterru
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import time
     import runpod
@@ -13772,20 +14563,25 @@ This sends a `SIGINT` signal to the running Job by catching the `KeyboardInterru
         if run_request:  # Check if a job is active
             run_request.cancel()
         print("Job canceled.")
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Current job status: IN_QUEUE
     Current job status: IN_PROGRESS
     KeyboardInterrupt detected. Canceling the job...
     Job canceled.
+
     ```
+
   </Tab>
 </Tabs>
 
-### Timeout
+### Timeout (3)
 
 Use the `cancel()` function and the `timeout` argument to cancel the Job after a specified time.
 
@@ -13793,6 +14589,7 @@ In the previous `cancel()` example, the Job is canceled due to an external condi
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     from time import sleep
     import runpod
@@ -13824,19 +14621,24 @@ In the previous `cancel()` example, the Job is canceled due to an external condi
     # Check and print the job status after the sleep period
     final_status = run_request.status()
     print(f"Final job status: {final_status}")
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Initial job status: IN_QUEUE
     Sleeping for 3 seconds to allow for job cancellation...
     Final job status: CANCELLED
+
     ```
+
   </Tab>
 </Tabs>
 
-## Purge queue
+## Purge queue (2)
 
 You can purge all jobs from a queue by using the `purge_queue()` function. You can provide the `timeout` parameter to specify how long to wait for the server to respond before purging the queue.
 
@@ -13851,17 +14653,18 @@ runpod.api_key = os.getenv("RUNPOD_API_KEY")
 endpoint = runpod.Endpoint("YOUR_ENDPOINT_ID")
 
 endpoint.purge_queue(timeout=3)
+
 ```
 
 
-# Overview
+# Overview (11)
 Source: https://docs.runpod.io/sdks/python/overview
 
 
 
 Get started with setting up your Runpod projects using Python. Depending on the specific needs of your project, there are various ways to interact with the Runpod platform. This guide provides an approach to get you up and running.
 
-## Install the Runpod SDK
+## Install the Runpod SDK (3)
 
 Create a Python virtual environment to install the Runpod SDK library. Virtual environments allow you to manage dependencies for different projects separately, avoiding conflicts between project requirements.
 
@@ -13874,7 +14677,9 @@ To get started, install setup a virtual environment then install the Runpod SDK 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python3 -m venv env
     source env/bin/activate
+
     ```
+
   </Tab>
 
   <Tab title="Windows">
@@ -13883,7 +14688,9 @@ To get started, install setup a virtual environment then install the Runpod SDK 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python -m venv env
     env\Scripts\activate
+
     ```
+
   </Tab>
 
   <Tab title="Linux">
@@ -13892,7 +14699,9 @@ To get started, install setup a virtual environment then install the Runpod SDK 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python3 -m venv env
     source env/bin/activate
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13900,6 +14709,7 @@ To install the SDK, run the following command from the terminal.
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python -m pip install runpod
+
 ```
 
 You should have the Runpod SDK installed and ready to use.
@@ -13914,13 +14724,16 @@ To ensure you've setup your Runpod SDK in Python, choose from one of the followi
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     pip show runpod
+
     ```
 
     You should see something similar to the following output.
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpod==1.7.9
+
     ```
+
   </Tab>
 
   <Tab title="Shell">
@@ -13928,7 +14741,9 @@ To ensure you've setup your Runpod SDK in Python, choose from one of the followi
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python3 -c "import runpod; print(runpod.__version__)"
+
     ```
+
   </Tab>
 
   <Tab title="Python">
@@ -13940,13 +14755,16 @@ To ensure you've setup your Runpod SDK in Python, choose from one of the followi
     version = runpod.version.get_version()
 
     print(f"Runpod version number: {version}")
+
     ```
 
     You should see something similar to the following output.
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Runpod version number: 1.X.0
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -13954,7 +14772,7 @@ You can find the latest version of the Runpod Python SDK on [GitHub](https://git
 
 Now that you've installed the Runpod SDK, add your API key.
 
-## Add your API key
+## Add your API key (3)
 
 Set `api_key` and reference its variable in your Python application. This authenticates your requests to the Runpod platform and allows you to access the [Runpod API](/sdks/python/apis).
 
@@ -13963,6 +14781,7 @@ import runpod
 import os
 
 runpod.api_key = os.getenv("RUNPOD_API_KEY")
+
 ```
 
 <Info>
@@ -13998,6 +14817,7 @@ curl -X POST https://api.runpod.ai/v2/YOUR_ENDPOINT_ID/run \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{"input": {"prompt": "Hello, world!"}}'
+
 ```
 
 This returns a JSON object containing the request ID. Poll the `/status` endpoint to get the delay time and execution time:
@@ -14006,6 +14826,7 @@ This returns a JSON object containing the request ID. Poll the `/status` endpoin
 curl -X GET https://api.runpod.ai/v2/YOUR_ENDPOINT_ID/status/REQUEST_ID \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_API_KEY"
+
 ```
 
 This returns a JSON object:
@@ -14017,6 +14838,7 @@ This returns a JSON object:
   "delayTime": 1000,
   "executionTime": 2000
 }
+
 ```
 
 ### Automate benchmarking
@@ -14073,6 +14895,7 @@ def run_benchmark(num_requests=5):
 
 if __name__ == "__main__":
     run_benchmark(num_requests=5)
+
 ```
 
 
@@ -14089,6 +14912,7 @@ To use the `clean()` function, import it from the `utils.rp_cleanup` module:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 from runpod.serverless.utils.rp_cleanup import clean
+
 ```
 
 ## Default behavior
@@ -14108,6 +14932,7 @@ If your handler generates files in non-standard directories, you can override th
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 clean(folder_list=["temp_images", "cache", "downloads"])
+
 ```
 
 ## Use `clean()` in your handler
@@ -14156,9 +14981,10 @@ def handler(event):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
-## Best practices
+## Best practices (5)
 
 To ensure reliability, always call `clean()` at the end of your handler execution. We recommend wrapping your cleanup calls in a `try...except` or `finally` block so that disk space is recovered even if your main processing logic fails.
 
@@ -14178,7 +15004,7 @@ This "Pod-first" workflow lets you develop and test interactively in a GPU envir
   To get started quickly, you can [clone this repository](https://github.com/justinwlin/Runpod-GPU-And-Serverless-Base) for a pre-configured template for a dual-mode worker.
 </Tip>
 
-## What you'll learn
+## What you'll learn (3)
 
 In this tutorial you'll learn how to:
 
@@ -14188,13 +15014,13 @@ In this tutorial you'll learn how to:
 * Build a Docker image that works in both Pod and Serverless environments.
 * Deploy and test your worker in both environments.
 
-## Requirements
+## Requirements (10)
 
 * You've [created a Runpod account](/get-started/manage-accounts).
 * You've installed [Python 3.x](https://www.python.org/downloads/) and [Docker](https://docs.docker.com/get-started/get-docker/) and configured them for your command line.
 * Basic understanding of Docker concepts and shell scripting.
 
-## Step 1: Set up your project structure
+## Step 1: Set up your project structure (2)
 
 Create a directory for your project and the necessary files:
 
@@ -14202,6 +15028,7 @@ Create a directory for your project and the necessary files:
 mkdir dual-mode-worker
 cd dual-mode-worker
 touch handler.py start.sh Dockerfile requirements.txt
+
 ```
 
 This creates:
@@ -14255,8 +15082,8 @@ Key features:
 * `MODE_TO_RUN = os.getenv("MODE_TO_RUN", "pod")`: Reads the mode from an environment variable, defaulting to `pod`.
 * `async def handler(event)`: Your core logic.
 * `if mode_to_run == "pod" ... else`: This conditional controls what happens when the script is executed directly.
-  * In `pod` mode, it runs a sample test call to your `handler` function, allowing for quick iteration.
-  * In `serverless`" mode, it starts the Runpod Serverless worker.
+* In `pod` mode, it runs a sample test call to your `handler` function, allowing for quick iteration.
+* In `serverless`" mode, it starts the Runpod Serverless worker.
 
 ## Step 3: Create the `start.sh` script
 
@@ -14330,8 +15157,8 @@ call_python_handler() {
 }
 
 # ---------------------------------------------------------------------------- #
-#                               Main Program                                   #
-# ---------------------------------------------------------------------------- #
+# Main Program                                   #
+# ---------------------------------------------------------------------------- # (2)
 
 start_nginx
 
@@ -14359,6 +15186,7 @@ export_env_vars
 echo "Start script(s) finished"
 
 sleep infinity
+
 ```
 
 Here are some key features of this script:
@@ -14375,7 +15203,7 @@ Create a `Dockerfile` that includes your handler and startup script:
 # Use an official Runpod base image
 FROM runpod/pytorch:2.0.1-py3.10-cuda11.8.0-devel-ubuntu22.04
 
-# Environment variables
+# Environment variables (4)
 ENV PYTHONUNBUFFERED=1 
 
 # Supported modes: pod, serverless
@@ -14430,6 +15258,7 @@ RUN ls -la $WORKSPACE_DIR/start.sh
 
 # depot build -t justinrunpod/pod-server-base:1.0 . --push --platform linux/amd64
 CMD $WORKSPACE_DIR/start.sh
+
 ```
 
 Key features of this `Dockerfile`:
@@ -14456,14 +15285,17 @@ Now you're ready to build your Docker image and push it to Docker Hub:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker build --platform linux/amd64 --tag YOUR_USERNAME/dual-mode-worker .
+
     ```
 
     The `--platform linux/amd64` flag is important for compatibility with Runpod's infrastructure.
   </Step>
 
   <Step title="Push the image to your container registry">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker push YOUR_USERNAME/dual-mode-worker:latest
+
     ```
 
     <Note>
@@ -14483,8 +15315,8 @@ Deploy the image to a Pod by following these steps:
 3. Select your preferred GPU.
 4. Under **Container Image**, enter `YOUR_USERNAME/dual-mode-worker:latest`.
 5. Under **Public Environment Variables**, select **Add environment variable** and add:
-   * Key: `MODE_TO_RUN`
-   * Value: `pod`
+* Key: `MODE_TO_RUN`
+* Value: `pod`
 6. Click **Deploy**.
 
 Once your Pod is running, you can:
@@ -14503,8 +15335,8 @@ Once you're confident with your `handler.py` logic tested in Pod mode, you're re
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL: `docker.io/YOUR_USERNAME/dual-mode-worker:latest`, then click *Next*\*\*\*.
 5. Under **Environment Variables**, add:
-   * Key: `MODE_TO_RUN`
-   * Value: `serverless`
+* Key: `MODE_TO_RUN`
+* Value: `serverless`
 6. Configure your endpoint settings (GPU type, workers, etc.).
 7. Click **Deploy Endpoint**.
 
@@ -14524,6 +15356,7 @@ After deploying your endpoint in to Serverless mode, you can test it by sending 
         "prompt": "Hello World!",
     }
 }
+
 ```
 
 4. Click **Run**.
@@ -14540,6 +15373,7 @@ After a few moments for initialization and processing, you should see output sim
     },
     "status": "COMPLETED"
 }
+
 ```
 
 ## Explore the Pod-first development workflow
@@ -14578,7 +15412,7 @@ Congratulations! You've successfully built, deployed, and tested a dual-mode Ser
 This iterative loop (write your handler, update the Docker image, test in Pod mode, then deploy to Serverless) enables you to rapidly develop and debug your Serverless workers.
 
 
-# Environment variables
+# Environment variables (5)
 Source: https://docs.runpod.io/serverless/development/environment-variables
 
 Configure your Serverless endpoints with environment variables.
@@ -14619,6 +15453,7 @@ def handler(job):
     return {"output": result}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Build-time vs runtime variables
@@ -14638,6 +15473,7 @@ ENV DEFAULT_TEMPERATURE="0.7"
 
 COPY handler.py /handler.py
 CMD ["python", "-u", "/handler.py"]
+
 ```
 
 Build-time variables are useful for setting default configuration values, values that rarely change, and non-sensitive information.
@@ -14653,7 +15489,7 @@ Runtime variables are useful for:
 * Values that change frequently.
 * Sensitive information that shouldn't be in your image.
 
-## Common use cases
+## Common use cases (3)
 
 ### API keys and secrets
 
@@ -14678,6 +15514,7 @@ def handler(event):
     return {"output": result}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 <Warning>
@@ -14708,6 +15545,7 @@ def handler(event):
     return {"output": {"image_url": image_url}}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 Set these variables in the Runpod console:
@@ -14742,6 +15580,7 @@ def handler(event):
     return {"output": result}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ### Model configuration
@@ -14769,9 +15608,10 @@ def handler(event):
     return {"output": result}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
-## Best practices
+## Best practices (6)
 
 ### Use defaults
 
@@ -14785,6 +15625,7 @@ service_url = os.environ.get("SERVICE_URL", "https://api.example.com")
 api_key = os.environ.get("API_KEY")
 if not api_key:
     raise ValueError("API_KEY environment variable is required")
+
 ```
 
 ### Validate on startup
@@ -14807,6 +15648,7 @@ def handler(event):
     pass
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ### Document your variables
@@ -14821,6 +15663,7 @@ Document the environment variables your handler expects in your README:
 | `API_KEY` | Yes | N/A | Your API key for the external service |
 | `SERVICE_URL` | No | `https://api.example.com` | The service endpoint URL |
 | `MAX_WORKERS` | No | `4` | Maximum number of concurrent workers |
+
 ```
 
 ### Separate secrets from config
@@ -14859,6 +15702,7 @@ def handler(job):
         return {"error": f"An error occurred: {str(e)}"}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Structured error responses
@@ -14905,6 +15749,7 @@ def handler(job):
         }
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Timeout handling
@@ -14945,6 +15790,7 @@ def handler(job):
         return {"error": str(e)}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 
@@ -14965,6 +15811,7 @@ Pass test input directly via the command line:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --test_input '{"input": {"prompt": "Hello, world!"}}'
+
 ```
 
 This runs your handler with the specified input and displays the output in your terminal.
@@ -14979,12 +15826,14 @@ For more complex or reusable test inputs, create a `test_input.json` file in the
     "prompt": "This is a test input from a JSON file"
   }
 }
+
 ```
 
 Run your handler without any arguments:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python main.py
+
 ```
 
 The SDK automatically detects and uses the `test_input.json` file.
@@ -15001,6 +15850,7 @@ Start the local server:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --rp_serve_api
+
 ```
 
 This starts a FastAPI server on `http://localhost:8000`.
@@ -15013,6 +15863,7 @@ Once your local server is running, send HTTP `POST` requests from another termin
 curl -X POST http://localhost:8000/runsync \
      -H "Content-Type: application/json" \
      -d '{"input": {"prompt": "Hello, world!"}}'
+
 ```
 
 <Note>
@@ -15027,6 +15878,7 @@ This command starts your local server with 4 concurrent workers:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python main.py --rp_serve_api --rp_api_concurrency 4
+
 ```
 
 <Warning>
@@ -15043,6 +15895,7 @@ for i in {1..10}; do
          -H "Content-Type: application/json" \
          -d '{"input": {}}' &
 done
+
 ```
 
 ### Handling concurrency in your code
@@ -15065,6 +15918,7 @@ def handler(event):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Debugging
@@ -15075,6 +15929,7 @@ Control the verbosity of console output with the `--rp_log_level` flag:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --rp_serve_api --rp_log_level DEBUG
+
 ```
 
 Available log levels:
@@ -15090,6 +15945,7 @@ Use the `--rp_debugger` flag for detailed troubleshooting:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --rp_serve_api --rp_debugger
+
 ```
 
 This enables the Runpod debugger, which provides additional diagnostic information to help you troubleshoot issues.
@@ -15104,6 +15960,7 @@ Set a custom port (default is 8000):
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --rp_serve_api --rp_api_port 8080
+
 ```
 
 ### Host
@@ -15112,6 +15969,7 @@ Set the hostname (default is "localhost"):
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --rp_serve_api --rp_api_host 0.0.0.0
+
 ```
 
 <Warning>
@@ -15142,6 +16000,7 @@ python handler.py --rp_serve_api \
     --rp_api_concurrency 4 \
     --rp_log_level DEBUG \
     --rp_debugger
+
 ```
 
 This command:
@@ -15204,7 +16063,7 @@ To view worker logs:
 4. Use the search and filtering capabilities to find specific log entries.
 5. Download logs as text files for offline analysis.
 
-## Troubleshooting
+## Troubleshooting (10)
 
 ### Missing logs
 
@@ -15298,7 +16157,7 @@ SSH into running workers for debugging and troubleshooting.
 
 You can connect directly to running workers via SSH for debugging and troubleshooting. By connecting to a worker, you can inspect logs, file systems, and environment variables in real-time.
 
-## Generate an SSH key and add it to your Runpod account
+## Generate an SSH key and add it to your Runpod account (2)
 
 Before you can connect to a worker, you'll need to generate an SSH key and add it to your Runpod account.
 
@@ -15308,6 +16167,7 @@ Before you can connect to a worker, you'll need to generate an SSH key and add i
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh-keygen -t ed25519 -C "YOUR_EMAIL@DOMAIN.COM"
+
     ```
 
     This saves a public/private key pair on your local machine to `~/.ssh/id_ed25519.pub` and `~/.ssh/id_ed25519` respectively.
@@ -15322,13 +16182,16 @@ Before you can connect to a worker, you'll need to generate an SSH key and add i
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     cat ~/.ssh/id_ed25519.pub
+
     ```
 
     This will output something similar to this:
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh-ed25519 AAAAC4NzaC1lZDI1JTE5AAAAIGP+L8hnjIcBqUb8NRrDiC32FuJBvRA0m8jLShzgq6BQ YOUR_EMAIL@DOMAIN.COM
+
     ```
+
   </Step>
 
   <Step title="Add the key to your Runpod account">
@@ -15375,6 +16238,7 @@ Before you can connect to a worker, you'll need to generate an SSH key and add i
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     ssh root@worker-id-xyz -i ~/.ssh/id_ed25519
+
     ```
 
     <Note>
@@ -15395,7 +16259,7 @@ Before you can connect to a worker, you'll need to generate an SSH key and add i
   </Step>
 </Steps>
 
-## Troubleshooting SSH key authentication
+## Troubleshooting SSH key authentication (2)
 
 If you're asked for a password when connecting to your worker via SSH, this means something is not set up correctly. Runpod does not require a password for SSH connections, as authentication is handled entirely through your SSH key pair.
 
@@ -15422,6 +16286,7 @@ To use the validation features, import the `validate` function from the utils mo
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 from runpod.serverless.utils.rp_validator import validate
+
 ```
 
 ## Define a schema
@@ -15441,6 +16306,7 @@ schema = {
         "constraints": lambda x: x > 0,
     },
 }
+
 ```
 
 The schema supports several configuration keys:
@@ -15492,6 +16358,7 @@ def handler(event):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Test the validator
@@ -15500,6 +16367,7 @@ You can test your validation logic locally without deploying. Save your handler 
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python your_handler.py --test_input '{"input": {"text": "Hello, world!", "max_length": 5}}'
+
 ```
 
 Alternatively, you can define your test case in a JSON file and pass it to the handler to simulate a real request.
@@ -15511,6 +16379,7 @@ Alternatively, you can define your test case in a JSON file and pass it to the h
     "max_length": 50
   }
 }
+
 ```
 
 
@@ -15612,6 +16481,7 @@ def handler(job):
 # Start the Serverless worker
 if __name__ == "__main__":
     runpod.serverless.start({"handler": handler})
+
 ```
 
 ## Persistent log storage
@@ -15687,6 +16557,7 @@ def handler(job):
 
 if __name__ == "__main__":
     runpod.serverless.start({"handler": handler})
+
 ```
 
 ### Accessing stored logs
@@ -15747,6 +16618,7 @@ def handler(event):
         return {"error": str(e)}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 This produces logs in this format:
@@ -15754,6 +16626,7 @@ This produces logs in this format:
 ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
 {"level": "INFO", "message": "Processing request", "request_id": "abc123", "input_keys": ["prompt", "max_length"]}
 {"level": "INFO", "message": "Request completed", "request_id": "abc123", "execution_time_ms": 123}
+
 ```
 
 ### Benefits of structured logging
@@ -15765,7 +16638,7 @@ Structured logging provides several advantages:
 * **Analytics**: Analyze trends, patterns, and metrics from log data.
 * **Integration**: Export to external services like Datadog, Splunk, or Elasticsearch.
 
-## Best practices
+## Best practices (7)
 
 Follow these best practices when writing logs:
 
@@ -15940,13 +16813,14 @@ Cached models work with any model hosted on Hugging Face, including:
   Cached models aren't suitable if your model is private and not hosted on Hugging Face. In that case, [bake it into your Docker image](/serverless/workers/deploy#including-models-and-external-files) instead.
 </Tip>
 
-## How it works
+## How it works (3)
 
 When you select a cached model for your endpoint, Runpod automatically tries to start your workers on hosts that already contain the selected model.
 
 If no cached host machines are available, the system delays starting your workers until the model is downloaded onto the machine where your workers will run, ensuring you still won't be charged for the download time.
 
 <div>
+
   ```mermaid theme={"theme":{"light":"github-light","dark":"github-dark"}}
   %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#9289FE','primaryTextColor':'#fff','primaryBorderColor':'#9289FE','lineColor':'#5F4CFE','secondaryColor':'#AE6DFF','tertiaryColor':'#FCB1FF','edgeLabelBackground':'#5F4CFE', 'fontSize':'15px','fontFamily':'font-inter'}}}%%
 
@@ -15982,7 +16856,9 @@ If no cached host machines are available, the system delays starting your worker
       style Ready2 fill:#ecc94b,stroke:#ecc94b,color:#000000,stroke-width:2px
 
       linkStyle default stroke-width:2px,stroke:#5F4CFE
+
   ```
+
 </div>
 
 ## Enable cached models
@@ -16034,13 +16910,17 @@ Cached models are available to your workers at `/runpod-volume/huggingface-cache
 The path structure follows this pattern:
 
 ```
+
 /runpod-volume/huggingface-cache/hub/models--HF_ORGANIZATION--MODEL_NAME/snapshots/VERSION_HASH/
+
 ```
 
 For example, the model `gensyn/qwen2.5-0.5b-instruct` would be stored at:
 
 ```
+
 /runpod-volume/huggingface-cache/hub/models--gensyn--qwen2.5-0.5b-instruct/snapshots/317b7eb96312eda0c431d1dab1af958a308cb35e/
+
 ```
 
 ### Programmatically locate cached models
@@ -16082,6 +16962,7 @@ if model_path:
     print(f"Model found at: {model_path}")
 else:
     print("Model not found in cache")
+
 ```
 
 ### Custom worker examples
@@ -16097,7 +16978,7 @@ The following sample applications demonstrate how you can integrate cached model
 * If a Hugging Face repository contains multiple quantization versions of a model (for example, 4-bit AWQ and 8-bit GPTQ versions), the system currently downloads all quantization versions. The ability to select specific quantizations will be available in a future update.
 
 
-# Overview
+# Overview (12)
 Source: https://docs.runpod.io/serverless/endpoints/overview
 
 Deploy and manage Serverless endpoints using the Runpod console or REST API.
@@ -16127,7 +17008,7 @@ Load balancing endpoints don't require a handler function, allowing you to defin
 
 To learn more, see the [Load balancing endpoints](/serverless/load-balancing/overview) page.
 
-## Key features
+## Key features (5)
 
 ### Auto-scaling
 
@@ -16201,6 +17082,7 @@ Before creating an endpoint make sure you have a working [handler function](/ser
       "workersMax": 3,
       "workersMin": 0
     }'
+
     ```
 
     For complete API documentation and parameter details, see the [Serverless endpoint API reference](/api-reference/endpoints/POST/endpoints).
@@ -16227,7 +17109,7 @@ You can modify your endpoint's configuration at any time:
 
 Changes to some settings (like GPU types or worker counts) may require restarting active workers to take effect.
 
-## Delete an endpoint
+## Delete an endpoint (2)
 
 To delete an endpoint:
 
@@ -16240,7 +17122,7 @@ To delete an endpoint:
   Deleting an endpoint permanently removes all configuration, logs, and job history. This action cannot be undone.
 </Warning>
 
-## Next steps
+## Next steps (12)
 
 * [Send requests to your endpoint](/serverless/endpoints/send-requests)
 * [Configure endpoint settings](/serverless/endpoints/endpoint-configurations)
@@ -16276,15 +17158,15 @@ Queue-based endpoints provide a fixed set of operations for submitting and manag
 When you submit a job request, it can be either synchronous or asynchronous depending on which `POST` operation you use:
 
 * `/runsync` submits a synchronous job.
-  * Client waits for the job to complete before returning the result.
-  * A response is returned as soon as the job is complete.
-  * Results are available for 1 minute by default (5 minutes max).
-  * Ideal for quick responses and interactive applications.
+* Client waits for the job to complete before returning the result.
+* A response is returned as soon as the job is complete.
+* Results are available for 1 minute by default (5 minutes max).
+* Ideal for quick responses and interactive applications.
 * `/run` submits an asynchronous job.
-  * The job is processed in the background.
-  * Retrieve the result by sending a `GET` request to the `/status` endpoint.
-  * Results are available for 30 minutes after completion.
-  * Ideal for long-running tasks and batch processing.
+* The job is processed in the background.
+* Retrieve the result by sending a `GET` request to the `/status` endpoint.
+* Results are available for 30 minutes after completion.
+* Ideal for long-running tasks and batch processing.
 
 ## Request input structure
 
@@ -16296,6 +17178,7 @@ When submitting a job with `/runsync` or `/run`, your request must include a JSO
     "prompt": "Your input here"
   }
 }
+
 ```
 
 The exact parameters required in the `input` object depend on your specific worker implementation (e.g. `prompt` commonly used for endpoints serving LLMs, but not all workers accept it). Check your worker's documentation for a list of required and optional parameters.
@@ -16317,6 +17200,7 @@ The initial response will look something like this:
   "id": "6de99fd1-4474-4565-9243-694ffeb65218-u1",
   "status": "IN_QUEUE"
 }
+
 ```
 
 You'll see the full response after the job completes. If there are any errors, the console will display error logs to help you troubleshoot.
@@ -16361,6 +17245,7 @@ npm install --save runpod-sdk
 
 # Go
 go get github.com/runpod/go-sdk && go mod tidy
+
 ```
 
 You should also set your [API key](/get-started/api-keys) and endpoint ID (found on the Overview tab for your endpoint in the Runpod console) as environment variables. Run the following commands in your local terminal, replacing `YOUR_API_KEY` and `YOUR_ENDPOINT_ID` with your actual API key and endpoint ID:
@@ -16368,6 +17253,7 @@ You should also set your [API key](/get-started/api-keys) and endpoint ID (found
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 export RUNPOD_API_KEY="YOUR_API_KEY"
 export ENDPOINT_ID="YOUR_ENDPOINT_ID"
+
 ```
 
 ### `/runsync`
@@ -16382,6 +17268,7 @@ For example, `?wait=120000` will keep your results available for 2 minutes:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
+
 ```
 
 <Note>
@@ -16390,6 +17277,7 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
 
 <Tabs>
   <Tab title="cURL">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/runsync \
@@ -16397,10 +17285,13 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
          -H "authorization: $RUNPOD_API_KEY" \
          -H "content-type: application/json" \
          -d '{ "input": {  "prompt": "Hello, world!" }}'
+
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -16416,10 +17307,13 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
         print(run_request)
     except TimeoutError:
         print("Job timed out.")
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -16436,54 +17330,59 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
     });
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com.runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com.runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunSyncInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    		Timeout: sdk.Int(60), // Client timeout in seconds
-    	}
+        jobInput := rpEndpoint.RunSyncInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+            Timeout: sdk.Int(60), // Client timeout in seconds
+        }
 
-    	output, err := endpoint.RunSync(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.RunSync(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -16502,6 +17401,7 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
   ],
   "status": "COMPLETED"
 }
+
 ```
 
 ### `/run`
@@ -16514,6 +17414,7 @@ Job results are available for 30 minutes after completion.
 
 <Tabs>
   <Tab title="cURL">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/run \
@@ -16521,10 +17422,13 @@ Job results are available for 30 minutes after completion.
          -H "authorization: $RUNPOD_API_KEY" \
          -H "content-type: application/json" \
         -d '{"input": {"prompt": "Hello, world!"}}'
+
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -16545,10 +17449,13 @@ Job results are available for 30 minutes after completion.
     else:
         output = run_request.output()
     print(f"Job output: {output}")
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -16563,53 +17470,58 @@ Job results are available for 30 minutes after completion.
     });
 
     console.log(result);
+
     ```
+
   </Tab>
 
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
-    	
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
+        
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	client := sdk.New(&config.Config{
-    		ApiKey:  os.Getenv("RUNPOD_API_KEY"),
-    		BaseURL: os.Getenv("RUNPOD_BASE_URL"),
-    	})
-    	
-    	endpoint, err := client.NewEndpoint("YOUR_ENDPOINT_ID")
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        client := sdk.New(&config.Config{
+            ApiKey:  os.Getenv("RUNPOD_API_KEY"),
+            BaseURL: os.Getenv("RUNPOD_BASE_URL"),
+        })
+        
+        endpoint, err := client.NewEndpoint("YOUR_ENDPOINT_ID")
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    		RequestTimeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+            RequestTimeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.Run(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -16620,6 +17532,7 @@ Job results are available for 30 minutes after completion.
   "id": "eaebd6e7-6a92-4bb8-a911-f996ac5ea99d",
   "status": "IN_QUEUE"
 }
+
 ```
 
 Further results must be retrieved using the `/status` operation.
@@ -16642,7 +17555,9 @@ Check the current state, execution statistics, and results of previously submitt
     curl --request GET \
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/status/YOUR_JOB_ID \
          -H "authorization: $RUNPOD_API_KEY" \
+
     ```
+
   </Tab>
 
   <Tab title="Python">
@@ -16672,6 +17587,7 @@ Check the current state, execution statistics, and results of previously submitt
     print(f"An error occurred: {e}")
 
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
@@ -16705,7 +17621,9 @@ Check the current state, execution statistics, and results of previously submitt
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Go">
@@ -16716,39 +17634,41 @@ Check the current state, execution statistics, and results of previously submitt
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
-    	input := rpEndpoint.StatusInput{
-    		Id: sdk.String("YOUR_JOB_ID"),
-    	}
-    	output, err := endpoint.Status(&input)
-    	if err != nil {
-    		panic(err)
-    	}
-    	dt, _ := json.Marshal(output)
-    	fmt.Printf("output:%s\n", dt)
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
+        input := rpEndpoint.StatusInput{
+            Id: sdk.String("YOUR_JOB_ID"),
+        }
+        output, err := endpoint.Status(&input)
+        if err != nil {
+            panic(err)
+        }
+        dt, _ := json.Marshal(output)
+        fmt.Printf("output:%s\n", dt)
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -16766,6 +17686,7 @@ Check the current state, execution statistics, and results of previously submitt
   },
   "status": "COMPLETED"
 }
+
 ```
 
 ### `/stream`
@@ -16785,10 +17706,13 @@ For implementation details, see [Streaming handlers](/serverless/workers/handler
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/stream/YOUR_JOB_ID \
          -H "accept: application/json" \
          -H "authorization: $RUNPOD_API_KEY" \
+
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
 
@@ -16805,10 +17729,13 @@ For implementation details, see [Streaming handlers](/serverless/workers/handler
 
     for output in run_request.stream():
         print(output)
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -16832,66 +17759,71 @@ For implementation details, see [Streaming handlers](/serverless/workers/handler
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	request, err := endpoint.Run(&rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    	})
-    	if err != nil {
-    		panic(err)
-    	}
+        request, err := endpoint.Run(&rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+        })
+        if err != nil {
+            panic(err)
+        }
 
-    	streamChan := make(chan rpEndpoint.StreamResult, 100)
+        streamChan := make(chan rpEndpoint.StreamResult, 100)
 
-    	err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
-    	if err != nil {
-    		// timeout reached, if we want to get the data that has been streamed
-    		if err.Error() == "ctx timeout reached" {
-    			for data := range streamChan {
-    				dt, _ := json.Marshal(data)
-    				fmt.Printf("output:%s\n", dt)
-    			}
-    		}
-    		panic(err)
-    	}
+        err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
+        if err != nil {
+            // timeout reached, if we want to get the data that has been streamed
+            if err.Error() == "ctx timeout reached" {
+                for data := range streamChan {
+                    dt, _ := json.Marshal(data)
+                    fmt.Printf("output:%s\n", dt)
+                }
+            }
+            panic(err)
+        }
 
-    	for data := range streamChan {
-    		dt, _ := json.Marshal(data)
-    		fmt.Printf("output:%s\n", dt)
-    	}
+        for data := range streamChan {
+            dt, _ := json.Marshal(data)
+            fmt.Printf("output:%s\n", dt)
+        }
 
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -16924,6 +17856,7 @@ Streaming response format:
     }
   }
 ]
+
 ```
 
 ### `/cancel`
@@ -16938,7 +17871,9 @@ Stop jobs that are no longer needed or taking too long to complete. This operati
     curl --request POST \
       --url https://api.runpod.ai/v2/$ENDPOINT_ID/cancel/YOUR_JOB_ID \
       -H "authorization: $RUNPOD_API_KEY" \
+
     ```
+
   </Tab>
 
   <Tab title="Python">
@@ -16978,7 +17913,9 @@ Stop jobs that are no longer needed or taking too long to complete. This operati
       if run_request:  # Check if a job is active
         run_request.cancel()
       print("Job canceled.")
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
@@ -17012,48 +17949,53 @@ Stop jobs that are no longer needed or taking too long to complete. This operati
     }
 
     main();
+
     ```
+
   </Tab>
 
   <Tab title="Go">
+
     ```go theme={"theme":{"light":"github-light","dark":"github-dark"}}
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	cancelInput := rpEndpoint.CancelInput{
-    		Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
-    	}
-    	output, err := endpoint.Cancel(&cancelInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        cancelInput := rpEndpoint.CancelInput{
+            Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
+        }
+        output, err := endpoint.Cancel(&cancelInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	healthData, _ := json.Marshal(output)
-    	fmt.Printf("health output: %s\n", healthData)
+        healthData, _ := json.Marshal(output)
+        fmt.Printf("health output: %s\n", healthData)
 
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -17064,6 +18006,7 @@ Stop jobs that are no longer needed or taking too long to complete. This operati
   "id": "724907fe-7bcc-4e42-998d-52cb93e1421f-u1",
   "status": "CANCELLED"
 }
+
 ```
 
 ### `/retry`
@@ -17076,6 +18019,7 @@ Replace `YOUR_JOB_ID` with the actual job ID you received in the response to the
 curl --request POST \
      --url https://api.runpod.ai/v2/$ENDPOINT_ID/retry/YOUR_JOB_ID \
      -H "authorization: $RUNPOD_API_KEY"
+
 ```
 
 You'll see the job status updated to `IN_QUEUE` when the job is retried:
@@ -17085,6 +18029,7 @@ You'll see the job status updated to `IN_QUEUE` when the job is retried:
   "id": "60902e6c-08a1-426e-9cb9-9eaec90f5e2b-u1",
   "status": "IN_QUEUE"
 }
+
 ```
 
 <Note>
@@ -17097,15 +18042,19 @@ Remove all pending jobs from the queue when you need to reset or handle multiple
 
 <Tabs>
   <Tab title="cURL">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request POST \
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/purge-queue \
          -H "authorization: $RUNPOD_API_KEY"
         -H 'Authorization: Bearer RUNPOD_API_KEY'
+
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import os
@@ -17114,10 +18063,13 @@ Remove all pending jobs from the queue when you need to reset or handle multiple
     endpoint = runpod.Endpoint(os.getenv("ENDPOINT_ID"))
 
     endpoint.purge_queue(timeout=3)
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -17140,7 +18092,9 @@ Remove all pending jobs from the queue when you need to reset or handle multiple
     }
 
     main();
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -17155,6 +18109,7 @@ Remove all pending jobs from the queue when you need to reset or handle multiple
   "removed": 2,
   "status": "completed"
 }
+
 ```
 
 ### `/health`
@@ -17163,14 +18118,18 @@ Get a quick overview of your endpoint's operational status including worker avai
 
 <Tabs>
   <Tab title="cURL">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl --request GET \
          --url https://api.runpod.ai/v2/$ENDPOINT_ID/health \
          -H "authorization: $RUNPOD_API_KEY"
+
     ```
+
   </Tab>
 
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import runpod
     import json
@@ -17181,10 +18140,13 @@ Get a quick overview of your endpoint's operational status including worker avai
 
     endpoint_health = endpoint.health()
     print(json.dumps(endpoint_health, indent=2))
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     const { RUNPOD_API_KEY, ENDPOINT_ID } = process.env;
     import runpodSdk from "runpod-sdk";
@@ -17194,7 +18156,9 @@ Get a quick overview of your endpoint's operational status including worker avai
 
     const health = await endpoint.health();
     console.log(health);
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -17214,6 +18178,7 @@ Get a quick overview of your endpoint's operational status including worker avai
     "running": 0
   }
 }
+
 ```
 
 ## Advanced options
@@ -17231,6 +18196,7 @@ Receive notifications when jobs complete by specifying a webhook URL. When your 
   },
   "webhook": "https://your-webhook-url.com"
 }
+
 ```
 
 Your webhook should return a `200` status code to acknowledge receipt. If the call fails, Runpod will retry up to 2 more times with a 10-second delay between attempts.
@@ -17250,6 +18216,7 @@ Control job execution behavior with custom policies. By default, jobs automatica
     "ttl": 3600000
   }
 }
+
 ```
 
 Policy options:
@@ -17280,6 +18247,7 @@ Configure S3-compatible storage for endpoints working with large files. This con
     "endpointUrl": "BUCKET_ENDPOINT_URL"
   }
 }
+
 ```
 
 Your worker must contain logic to use this information for storage operations.
@@ -17322,14 +18290,14 @@ For example, if an endpoint has:
 
 The effective rate limit would be `max(2000, 20 × 50) = 2000` requests per 10 seconds (base limit applies). With 50 running workers, it would scale to `max(2000, 50 × 50) = 2500` requests per 10 seconds (worker-based limit applies).
 
-**Key points:**
+### Key points:
 
 * Rate limiting is based on request count per 10-second time windows
 * The system automatically uses whichever limit gives you more requests
 
 Implement appropriate retry logic with exponential backoff to handle rate limiting gracefully.
 
-## Best practices
+## Best practices (8)
 
 Follow these practices to optimize your queue-based endpoint usage:
 
@@ -17373,7 +18341,7 @@ Learn how to implement and deploy a load balancing worker with FastAPI.
 
 This tutorial shows how to build a load balancing worker using FastAPI and deploy it as a Serverless endpoint on Runpod.
 
-## What you'll learn
+## What you'll learn (4)
 
 In this tutorial you'll learn how to:
 
@@ -17382,7 +18350,7 @@ In this tutorial you'll learn how to:
 * Deploy your application as a load balancing Serverless endpoint.
 * Test and interact with your custom APIs.
 
-## Requirements
+## Requirements (11)
 
 Before you begin you'll need:
 
@@ -17450,6 +18418,7 @@ if __name__ == "__main__":
 
     # Start the server
     uvicorn.run(app, host="0.0.0.0", port=port)
+
 ```
 
 This simple application defines the following endpoints:
@@ -17463,6 +18432,7 @@ This simple application defines the following endpoints:
 Now, let's create a `Dockerfile` to package our application:
 
 ```
+
 FROM nvidia/cuda:12.1.0-base-ubuntu22.04 
 
 RUN apt-get update -y \
@@ -17479,14 +18449,17 @@ COPY app.py .
 
 # Start the handler
 CMD ["python3", "app.py"]
+
 ```
 
 You'll also need to create a `requirements.txt` file:
 
 ```
+
 fastapi==0.95.1
 uvicorn==0.22.0
 pydantic==1.10.7
+
 ```
 
 ## Step 3: Build and push the Docker image
@@ -17499,6 +18472,7 @@ docker build --platform linux/amd64 -t YOUR_DOCKER_USERNAME/loadbalancer-example
 
 # Push to Docker Hub
 docker push YOUR_DOCKER_USERNAME/loadbalancer-example:v1.0
+
 ```
 
 ## Step 4: Deploy to Runpod
@@ -17509,9 +18483,13 @@ Now, let's deploy our application to a Serverless endpoint:
 2. Click **New Endpoint**
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL:
+
    ```
+
    YOUR_DOCKER_USERNAME/loadbalancer-example:v1.0
+
    ```
+
    Then click **Next**.
 5. Give your endpoint a name.
 6. Under **Endpoint Type**, select **Load Balancer**.
@@ -17524,7 +18502,9 @@ Now, let's deploy our application to a Serverless endpoint:
 Once your endpoint is created, you can access your custom APIs at:
 
 ```
+
 https://ENDPOINT_ID.api.runpod.ai/PATH
+
 ```
 
 For example, the load balancing worker we defined in step 1 exposes these endpoints:
@@ -17536,24 +18516,29 @@ For example, the load balancing worker we defined in step 1 exposes these endpoi
 Try running one or more of these commands, replacing `ENDPOINT_ID` and `RUNPOD_API_KEY` with your actual endpoint ID and API key:
 
 <CodeGroup>
+
   ```bash generate theme={"theme":{"light":"github-light","dark":"github-dark"}}
   curl -X POST "https://ENDPOINT_ID.api.runpod.ai/generate" \
       -H 'Authorization: Bearer RUNPOD_API_KEY' \
       -H "Content-Type: application/json" \
       -d '{"prompt": "Hello, world!"}'
+
   ```
 
   ```bash ping theme={"theme":{"light":"github-light","dark":"github-dark"}}
   curl -X GET "https://ENDPOINT_ID.api.runpod.ai/ping" \
       -H 'Authorization: Bearer RUNPOD_API_KEY' \
       -H "Content-Type: application/json" \
+
   ```
 
   ```bash stats theme={"theme":{"light":"github-light","dark":"github-dark"}}
   curl -X GET "https://ENDPOINT_ID.api.runpod.ai/stats" \
       -H 'Authorization: Bearer RUNPOD_API_KEY' \
       -H "Content-Type: application/json" \
+
   ```
+
 </CodeGroup>
 
 After sending a request, your workers will take some time to initialize. You can track their progress by checking the logs in the **Workers** tab of your endpoint page.
@@ -17617,7 +18602,7 @@ async def health_check():
 
 ```
 
-## Troubleshooting
+## Troubleshooting (11)
 
 Here are some common issues and methods for troubleshooting:
 
@@ -17627,12 +18612,12 @@ Here are some common issues and methods for troubleshooting:
 * **Port issues**: Make sure the environment variable for `PORT` matches what your application is using, and that the `PORT_HEALTH` variable is set to a different port.
 * **Model errors**: Check your model's requirements and whether it's compatible with your GPU.
 
-## Next steps
+## Next steps (13)
 
 Now that you've learned how to build a basic load balancing worker, you can try [implementing a real model with vLLM](/serverless/load-balancing/vllm-worker).
 
 
-# Overview
+# Overview (13)
 Source: https://docs.runpod.io/serverless/load-balancing/overview
 
 Deploy custom direct-access REST APIs with load balancing Serverless endpoints.
@@ -17644,16 +18629,18 @@ Unlike traditional queue-based endpoints that process requests sequentially, loa
 When building a load balancer, you're no longer limited to the standard `/run` or `/runsync` endpoints. Instead, you can create custom REST endpoints that are accessible via a unique URL:
 
 ```
+
 https://ENDPOINT_ID.api.runpod.ai/YOUR_CUSTOM_PATH
+
 ```
 
-## Get started
+## Get started (3)
 
 When you're ready to get started, follow this tutorial to learn how to [build and deploy a load balancing worker](/serverless/load-balancing/build-a-worker).
 
 Or, if you're ready for a more advanced use case, you can jump straight into [building a vLLM load balancer](/serverless/load-balancing/vllm-worker).
 
-## Key features
+## Key features (6)
 
 * **Direct HTTP access**: Connect directly to worker HTTP servers, bypassing queue infrastructure for lower latency.
 * **Custom REST API endpoints**: Define your own API paths, methods, and contracts to match your specific application needs.
@@ -17709,6 +18696,7 @@ def handler(job):
     return {"generated_text": result}
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 With traditional endpoints:
@@ -17753,8 +18741,10 @@ if __name__ == "__main__":
 Once deployed, this example would expose two custom endpoints on each Serverless worker:
 
 ```
+
 https://ENDPOINT_ID.api.runpod.ai/ping
 https://ENDPOINT_ID.api.runpod.ai/generate
+
 ```
 
 With load balancing endpoints:
@@ -17787,7 +18777,7 @@ Unhealthy workers are automatically removed from the routing pool.
   When calculating endpoint metrics, Runpod calculates the cold start time for load balancing workers by measuring the time it takes between  `/ping`  first returning `204` until it first returns `200`.
 </Note>
 
-## Environment variables
+## Environment variables (6)
 
 You can use environment variables to configure ports and other settings for your load balancing worker.
 
@@ -17864,6 +18854,7 @@ if health_check_with_retry(base_url, api_key):
     print(response.json())
 else:
     print("Worker failed to initialize")
+
 ```
 
 The `health_check_with_retry` function:
@@ -17897,7 +18888,7 @@ Learn how to deploy a custom vLLM server to a load balancing Serverless endpoint
 
 This tutorial shows how to build a vLLM application using FastAPI and deploy it as a load balancing Serverless endpoint on Runpod.
 
-## What you'll learn
+## What you'll learn (5)
 
 <Tip>
   To get a basic understanding of how to build a load balancing worker (or for more general use cases), see [Build a load balancing worker](/serverless/load-balancing/build-a-worker).
@@ -17910,7 +18901,7 @@ In this tutorial you'll learn how to:
 * Deploy your vLLM application as a load balancing Serverless endpoint.
 * Test and interact with your vLLM APIs.
 
-## Requirements
+## Requirements (12)
 
 Before you begin you'll need:
 
@@ -17929,6 +18920,7 @@ Start by creating a new directory for your project:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 mkdir vllm_worker
 cd vllm_worker
+
 ```
 
 Then, create the following files and directories:
@@ -17940,11 +18932,13 @@ mkdir src
 touch src/handler.py
 touch src/models.py
 touch src/utils.py
+
 ```
 
 Your project structure should now look like this:
 
 ```
+
 vllm_worker/
 ├── Dockerfile
 ├── requirements.txt
@@ -17952,6 +18946,7 @@ vllm_worker/
     ├── handler.py
     ├── models.py
     └── utils.py
+
 ```
 
 ## Step 2: Define data models
@@ -17998,6 +18993,7 @@ class ErrorResponse(BaseModel):
     error: str
     detail: str
     request_id: Optional[str] = None
+
 ```
 
 The `GenerationRequest` and `ChatCompletionRequest` models specify what data clients need to send, while `GenerationResponse` and `ErrorResponse` define what they'll receive back.
@@ -18050,6 +19046,7 @@ def format_chat_prompt(messages: List[ChatMessage], model_name: str) -> str:
 
 def create_error_response(error: str, detail: str, request_id: str = None) -> ErrorResponse:
     return ErrorResponse(error=error, detail=detail, request_id=request_id)
+
 ```
 
 The `format_chat_prompt` function converts chat-style conversations into the text format expected by language models. It first tries to use the model's built-in chat template, then falls back to a generic format if that's not available.
@@ -18337,6 +19334,7 @@ if __name__ == "__main__":
         port=port,
         log_level="info"
     )
+
 ```
 
 This file creates a FastAPI server that manages the vLLM engine and exposes three API endpoints:
@@ -18354,6 +19352,7 @@ With the application code complete, we still need to define its dependencies and
 1. Add the following dependencies to `requirements.txt`:
 
    ```
+
    ray
    pandas
    pyarrow
@@ -18365,6 +19364,7 @@ With the application code complete, we still need to define its dependencies and
    pydantic-settings
    hf-transfer
    transformers<4.54.0
+
    ```
 
 2. Add the following build steps to your `Dockerfile`:
@@ -18398,6 +19398,7 @@ With the application code complete, we still need to define its dependencies and
    WORKDIR /src
 
    CMD ["python3", "handler.py"]
+
    ```
 
 ## Step 6: Build and push your Docker image
@@ -18405,11 +19406,12 @@ With the application code complete, we still need to define its dependencies and
 Build and push your Docker image to a container registry:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
-# Build the image
+# Build the image (2)
 docker build --platform linux/amd64 -t YOUR_DOCKER_USERNAME/vllm-loadbalancer:v1.0 . 
 
-# Push to Docker Hub
+# Push to Docker Hub (2)
 docker push YOUR_DOCKER_USERNAME/vllm-loadbalancer:v1.0
+
 ```
 
 ## Step 7: Deploy to Runpod
@@ -18420,9 +19422,13 @@ Now, let's deploy our application to a Serverless endpoint:
 2. Click **New Endpoint**
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL:
+
    ```
+
    YOUR_DOCKER_USERNAME/vllm-loadbalancer:v1.0
+
    ```
+
    Then click **Next**.
 5. Give your endpoint a name.
 6. Under **Endpoint Type**, select **Load Balancer**.
@@ -18439,7 +19445,9 @@ Now, let's deploy our application to a Serverless endpoint:
 Once your endpoint has finished deploying, you can access your vLLM APIs at:
 
 ```
+
 https://ENDPOINT_ID.api.runpod.ai/PATH
+
 ```
 
 For example, the vLLM application we defined in step 4 exposes these endpoints:
@@ -18456,6 +19464,7 @@ To run a health check:
 curl -X GET "https://ENDPOINT_ID.api.runpod.ai/ping" \
     -H 'Authorization: Bearer RUNPOD_API_KEY' \
     -H "Content-Type: application/json" \
+
 ```
 
 For text completions:
@@ -18465,6 +19474,7 @@ curl -X POST "https://ENDPOINT_ID.api.runpod.ai/v1/completions" \
      -H 'Authorization: Bearer RUNPOD_API_KEY' \
      -H 'Content-Type: application/json' \
      -d '{"prompt": "Once upon a time", "max_tokens": 50, "temperature": 0.8}'
+
 ```
 
 For chat completions:
@@ -18480,6 +19490,7 @@ curl -X POST "https://ENDPOINT_ID.api.runpod.ai/v1/chat/completions" \
        "max_tokens": 100,
        "temperature": 0.8
      }'
+
 ```
 
 After sending a request, your workers will take some time to initialize. You can track their progress by checking the logs in the **Workers** tab of your endpoint page.
@@ -18492,7 +19503,7 @@ After sending a request, your workers will take some time to initialize. You can
 
 Congrats! You've created a load balancing vLLM endpoint and used it to serve a large language model.
 
-## Next steps
+## Next steps (14)
 
 Now that you've deployed a load balancing vLLM endpoint, you can try:
 
@@ -18502,7 +19513,7 @@ Now that you've deployed a load balancing vLLM endpoint, you can try:
 * Optimizing your application for performance and reliability.
 
 
-# Overview
+# Overview (14)
 Source: https://docs.runpod.io/serverless/overview
 
 Pay-as-you-go compute for AI models and compute-intensive workloads.
@@ -18517,7 +19528,7 @@ Runpod Serverless is a cloud computing platform that lets you run AI models and 
 * Cost efficiency: Pay only for what you use, with per-second billing and no costs when idle.
 * Fast deployment: Get your code running in the cloud in minutes with minimal configuration.
 
-## Get started
+## Get started (4)
 
 To get started with Serverless, follow one of the following guides to deploy your first endpoint.
 
@@ -18535,7 +19546,7 @@ You can also watch the following video for a quick overview of the endpoint depl
 
 <iframe title="Runpod Serverless Made Simple - Introduction To Serverless Functions and Workers" />
 
-## Concepts
+## Concepts (2)
 
 ### [Endpoints](/serverless/endpoints/overview)
 
@@ -18563,6 +19574,7 @@ def handler(event):
     return result
 
 runpod.serverless.start({"handler": handler})  # Required
+
 ```
 
 <Note>
@@ -18583,6 +19595,7 @@ When a user/client sends a request to your endpoint:
 6. Idle workers eventually shut down if no new requests arrive.
 
 <div>
+
   ```mermaid theme={"theme":{"light":"github-light","dark":"github-dark"}}
   %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#9289FE','primaryTextColor':'#fff','primaryBorderColor':'#9289FE','lineColor':'#5F4CFE','secondaryColor':'#AE6DFF','tertiaryColor':'#FCB1FF','edgeLabelBackground':'#5F4CFE', 'fontSize':'15px','fontFamily':'font-inter'}}}%%
 
@@ -18612,7 +19625,9 @@ When a user/client sends a request to your endpoint:
       style End fill:#5F4CFE,stroke:#5F4CFE,color:#FFFFFF,stroke-width:2px
 
       linkStyle default stroke-width:2px
+
   ```
+
 </div>
 
 ### Cold starts
@@ -18635,13 +19650,14 @@ Here's a typical Serverless development workflow:
 2. [Test it locally](/serverless/development/local-testing) using the Runpod SDK.
 3. [Create a Dockerfile](/serverless/workers/create-dockerfile) to package the handler function and all its dependencies.
 4. [Build and push](/serverless/workers/deploy) the worker image to Docker Hub (or another container registry).
-   * ... or [deploy directly from a GitHub repository](/serverless/workers/github-integration).
+* ... or [deploy directly from a GitHub repository](/serverless/workers/github-integration).
 5. Deploy the worker image to a [Serverless endpoint](/serverless/endpoints/overview).
 6. [Monitor logs](/serverless/development/logs), debug running workers [with SSH](/serverless/development/ssh-into-workers).
 7. Adjust your [endpoint settings](/serverless/endpoints/endpoint-configurations) to [optimize performance and cost](/serverless/development/optimization).
 8. To update your endpoint logic, go back to step 1 and repeat the process.
 
 <div>
+
   ```mermaid theme={"theme":{"light":"github-light","dark":"github-dark"}}
   %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#9289FE','primaryTextColor':'#fff','primaryBorderColor':'#9289FE','lineColor':'#5F4CFE','secondaryColor':'#AE6DFF','tertiaryColor':'#FCB1FF','edgeLabelBackground':'#5F4CFE', 'fontSize':'15px','fontFamily':'font-inter'}}}%%
 
@@ -18681,7 +19697,9 @@ Here's a typical Serverless development workflow:
       style Production fill:#1B0656,stroke:#5F4CFE,color:#FFFFFF,stroke-dasharray: 5 5
 
       linkStyle default stroke-width:2px,stroke:#5F4CFE
+
   ```
+
 </div>
 
 <Tip>
@@ -18749,7 +19767,7 @@ Runpod maintains a collection of [Public Endpoints](/hub/public-endpoints) that 
 
 [Browse Public Endpoints →](https://console.runpod.io/hub?tabSelected=public_endpoints)
 
-## Next steps
+## Next steps (15)
 
 Ready to get started with Runpod Serverless?
 
@@ -18762,7 +19780,7 @@ Ready to get started with Runpod Serverless?
 * [Learn how to send requests to your endpoints.](/serverless/endpoints/send-requests)
 
 
-# Pricing
+# Pricing (4)
 Source: https://docs.runpod.io/serverless/pricing
 
 Learn how Serverless billing works to optimize your costs.
@@ -18781,7 +19799,7 @@ Serverless offers two pricing tiers:
 
 **On-demand workers** that scale to zero when not in use, so you only pay when processing requests. Flex workers are ideal for variable workloads, non-time-sensitive applications, and maximizing cost efficiency for sporadic usage.
 
-### Active workers
+### Active workers (2)
 
 **Always-on workers** that run 24/7. Active workers receive a 20-30% discount compared to flex workers, but you are charged continuously regardless of usage. Use active workers for consistent workloads, latency-sensitive applications, and high-volume processing.
 
@@ -18803,7 +19821,7 @@ The price of flex/active workers depends on the GPU type and worker configuratio
 
 For the latest pricing information, visit the [Runpod pricing page](https://www.runpod.io/pricing).
 
-## How billing works
+## How billing works (3)
 
 Serverless billing operates on a precise pay-as-you-go model with specific timing mechanisms.
 
@@ -18844,7 +19862,7 @@ Set reasonable [execution timeout limits](/serverless/endpoints/endpoint-configu
 
 After completing a request, workers remain active for a specified period before scaling down. This reduces response times for subsequent requests but incurs additional charges. The default idle timeout is 5 seconds, but you can configure this in your [endpoint settings](/serverless/endpoints/endpoint-configurations#idle-timeout).
 
-## Account spend limits
+## Account spend limits (3)
 
 By default, Runpod accounts have a spend limit of \$80 per hour across all resources. This limit protects your account from unexpected charges. If your workload requires higher spending capacity, you can [contact support](https://www.runpod.io/contact) to increase it.
 
@@ -18868,7 +19886,7 @@ Write a handler function, build a worker image, create an endpoint, and send you
   For an even faster start, clone or download the [worker-basic](https://github.com/runpod-workers/worker-basic) repository for a pre-configured template for building and deploying Serverless workers. After cloning the repository, skip to [step 6 of this tutorial](#step-6%3A-build-and-push-your-docker-image) to deploy and test the endpoint.
 </Tip>
 
-## What you'll learn
+## What you'll learn (6)
 
 In this tutorial you'll learn how to:
 
@@ -18880,7 +19898,7 @@ In this tutorial you'll learn how to:
 * Deploy your worker to a Serverless endpoint using the Runpod console.
 * Send a test request to your endpoint.
 
-## Requirements
+## Requirements (13)
 
 * You've [created a Runpod account](/get-started/manage-accounts).
 * You've installed [Python 3.x](https://www.python.org/downloads/) and [Docker](https://docs.docker.com/get-started/get-docker/) on your local machine and configured them for your command line.
@@ -18896,29 +19914,40 @@ First, set up a virtual environment to manage your project dependencies.
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     # Create a Python virtual environment
     python3 -m venv venv
+
     ```
+
   </Step>
 
   <Step title="Activate the virtual environment">
     <Tabs>
       <Tab title="macOS/Linux">
+
         ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
         source venv/bin/activate
+
         ```
+
       </Tab>
 
       <Tab title="Windows">
+
         ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
         venv\Scripts\activate
+
         ```
+
       </Tab>
     </Tabs>
   </Step>
 
   <Step title="Install the Runpod SDK">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     pip install runpod
+
     ```
+
   </Step>
 </Steps>
 
@@ -18931,13 +19960,13 @@ import runpod
 import time  
 
 def handler(event):
-#   This function processes incoming requests to your Serverless endpoint.
+# This function processes incoming requests to your Serverless endpoint.
 #
-#    Args:
-#        event (dict): Contains the input data and request metadata
+# Args:
+# event (dict): Contains the input data and request metadata
 #       
-#    Returns:
-#       Any: The result to be returned to the client
+# Returns:
+# Any: The result to be returned to the client
     
     # Extract input data
     print(f"Worker Start")
@@ -18957,6 +19986,7 @@ def handler(event):
 # Start the Serverless function when the script is run
 if __name__ == '__main__':
     runpod.serverless.start({'handler': handler })
+
 ```
 
 This is a bare-bones handler that processes a JSON object and outputs a `prompt` string contained in the `input` object. You can replace the `time.sleep(seconds)` call with your own Python code for generating images, text, or running any machine learning workload.
@@ -18971,6 +20001,7 @@ You'll need to create an input file to properly test your handler locally. Creat
         "prompt": "Hey there!"
     }
 }
+
 ```
 
 ## Step 4: Test your handler function locally
@@ -18979,6 +20010,7 @@ Run your handler function to verify that it works correctly:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py
+
 ```
 
 You should see output similar to this:
@@ -18996,6 +20028,7 @@ DEBUG  | local_test | run_job return: {'output': 'Hey there!'}
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': 'Hey there!'}
 INFO   | Local testing complete, exiting.
+
 ```
 
 ## Step 5: Create a Dockerfile
@@ -19015,6 +20048,7 @@ COPY handler.py /
 
 # Start the container
 CMD ["python3", "-u", "handler.py"]
+
 ```
 
 ## Step 6: Build and push your worker image
@@ -19031,13 +20065,18 @@ Before you can deploy your worker on Runpod Serverless, you need to push it to D
 
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker build --platform linux/amd64 --tag [YOUR_USERNAME]/serverless-test .
+
     ```
+
   </Step>
 
   <Step title="Push the image to your container registry">
+
     ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
     docker push [YOUR_USERNAME]/serverless-test:latest
+
     ```
+
   </Step>
 </Steps>
 
@@ -19051,15 +20090,15 @@ To deploy your worker to a Serverless endpoint:
 4. In the **Container Image** field, enter your Docker image URL: `docker.io/yourusername/serverless-test:latest`.
 5. Click **Next** to proceed to endpoint configuration.
 6. Configure your endpoint settings:
-   * (Optional) Enter a custom name for your endpoint, or use the randomly generated name.
-   * Make sure the **Endpoint Type** is set to **Queue**.
-   * Under **GPU Configuration**, check the box for **16 GB** GPUs.
-   * Leave the rest of the settings at their defaults.
+* (Optional) Enter a custom name for your endpoint, or use the randomly generated name.
+* Make sure the **Endpoint Type** is set to **Queue**.
+* Under **GPU Configuration**, check the box for **16 GB** GPUs.
+* Leave the rest of the settings at their defaults.
 7. Click **Deploy Endpoint**.
 
 The system will redirect you to a dedicated detail page for your new endpoint.
 
-## Step 8: Test your endpoint
+## Step 8: Test your endpoint (2)
 
 To test your endpoint, click the **Requests** tab in the endpoint detail page:
 
@@ -19075,6 +20114,7 @@ On the left you should see the default test request:
         "prompt": "Hello World"
     }
 }
+
 ```
 
 Leave the default input as is and click **Run**. The system will take a few minutes to initialize your workers.
@@ -19090,11 +20130,12 @@ When the workers finish processing your request, you should see output on the ri
     "status": "COMPLETED",
     "workerId": "uhbbfre73gqjwh"
 }
+
 ```
 
 Congratulations! You've successfully deployed and tested your first Serverless endpoint.
 
-## Next steps
+## Next steps (16)
 
 Now that you've learned the basics, you're ready to:
 
@@ -19104,7 +20145,7 @@ Now that you've learned the basics, you're ready to:
 * [Manage your Serverless endpoints in the Runpod console.](/serverless/endpoints/overview)
 
 
-# Storage options
+# Storage options (2)
 Source: https://docs.runpod.io/serverless/storage/overview
 
 Explore storage options for your Serverless workers, including container volumes, network volumes, and S3-compatible storage.
@@ -19121,13 +20162,13 @@ Container volumes provide fast read and write speeds since they are locally atta
 
 Any data saved by a worker's handler function will be stored in the container disk by default. To persist data beyond the current worker session, use a network volume or S3-compatible storage.
 
-### Network volume
+### Network volume (2)
 
 [Network volumes](/storage/network-volumes) provide persistent storage that can be attached to different workers and even shared between multiple workers. Network volumes are ideal for sharing datasets between workers, storing large models that need to be accessed by multiple workers, and preserving data that needs to outlive any individual worker.
 
 To learn how to attach a network volume to your endpoint, see [Network volumes for Serverless](/storage/network-volumes#network-volumes-for-serverless).
 
-### S3-compatible storage integration
+### S3-compatible storage integration (2)
 
 <Tip>
   Runpod's S3 integration works with any S3-compatible storage provider, not just AWS S3. You can use MinIO, Backblaze B2, DigitalOcean Spaces, and other compatible providers.
@@ -19201,6 +20242,7 @@ vllm serve mistralai/Ministral-8B-Instruct-2410 \
   --load_format mistral \
   --enable-auto-tool-choice \
   --tool-call-parser mistral
+
 ```
 
 On Runpod, set these options as environment variables when configuring your endpoint:
@@ -19439,7 +20481,7 @@ Configure concurrency and logging for Serverless deployments.
 | `DISABLE_LOG_STATS`    | `False` | `bool`  | If `False`, enables vLLM stats logging.                                                                                                                                                           |
 | `DISABLE_LOG_REQUESTS` | `False` | `bool`  | If `False`, enables vLLM request logging.                                                                                                                                                         |
 
-## Advanced settings
+## Advanced settings (2)
 
 Additional configuration options for specialized use cases.
 
@@ -19480,7 +20522,7 @@ Create a Serverless endpoint to serve LLM inference via API request.
 
 This tutorial shows how to deploy a large language model using Runpod's vLLM worker. At the end, you'll have a fully functional Serverless endpoint that can handle LLM inference requests.
 
-## What you'll learn
+## What you'll learn (7)
 
 In this tutorial, you'll learn how to:
 
@@ -19490,7 +20532,7 @@ In this tutorial, you'll learn how to:
 * Test your endpoint using the Runpod API.
 * Troubleshoot common issues that might arise during deployment.
 
-## Requirements
+## Requirements (14)
 
 * You've [created a Runpod account](/get-started/manage-accounts).
 * (For gated models) You've created a [Hugging Face access token](https://huggingface.co/docs/hub/en/security-tokens).
@@ -19557,6 +20599,7 @@ On the left you should see the default test request:
         "prompt": "Hello World"
     }
 }
+
 ```
 
 Leave the default input as is and click **Run**. The system will take a few minutes to initialize your workers.
@@ -19584,6 +20627,7 @@ When the workers finish processing your request, you should see output on the ri
   "status": "COMPLETED",
   "workerId": "0e7o8fgmm9xgty"
 }
+
 ```
 
 ## Step 5: Customize your deployment with environment variables (optional)
@@ -19608,7 +20652,7 @@ For a complete list of available environment variables, see the [vLLM environmen
 
 You may also wish to adjust the input parameters for your request. For example, use the `max_tokens` parameter to increase the maximum number of tokens generated per response. To learn more, see [Send vLLM requests](/serverless/vllm/vllm-requests).
 
-## Troubleshooting
+## Troubleshooting (12)
 
 If you encounter issues with your deployment:
 
@@ -19617,7 +20661,7 @@ If you encounter issues with your deployment:
 * **Out of memory errors**: Try increasing GPU size or reducing `MAX_MODEL_LEN`.
 * **API errors**: Verify your endpoint ID and API key are correct.
 
-## Next steps
+## Next steps (17)
 
 Congratulations! You've successfully deployed a vLLM worker on Runpod Serverless. You now have a powerful, scalable LLM inference API that's compatible with both the OpenAI client and Runpod's native API.
 
@@ -19641,7 +20685,9 @@ Runpod's vLLM workers implement OpenAI API compatibility, allowing you to use fa
 You can make OpenAI-compatible API requests to your vLLM workers by sending requests to this base URL pattern:
 
 ```
+
 https://api.runpod.ai/v2/ENDPOINT_ID/openai/v1
+
 ```
 
 ## Supported APIs
@@ -19677,6 +20723,7 @@ client = OpenAI(
     api_key="RUNPOD_API_KEY",
     base_url="https://api.runpod.ai/v2/ENDPOINT_ID/openai/v1",
 )
+
 ```
 
 ## Send requests
@@ -19699,7 +20746,7 @@ Here's how you can make a basic chat completion request:
 from openai import OpenAI
 MODEL_NAME = "YOUR_MODEL_NAME"  # Replace with your actual model
 
-# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
+# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values (2)
 client = OpenAI(
     api_key="RUNPOD_API_KEY",
     base_url="https://api.runpod.ai/v2/ENDPOINT_ID/openai/v1",
@@ -19718,9 +20765,10 @@ response = client.chat.completions.create(
 
 # Print the response
 print(response.choices[0].message.content)
+
 ```
 
-#### Response format
+#### Response format (2)
 
 The API returns responses in this JSON format:
 
@@ -19746,6 +20794,7 @@ The API returns responses in this JSON format:
     "total_tokens": 47
   }
 }
+
 ```
 
 #### Streaming request
@@ -19771,13 +20820,14 @@ for chunk in stream:
     if chunk.choices[0].delta.content:
         print(chunk.choices[0].delta.content, end="", flush=True)
 print()
+
 ```
 
 ### Text completions
 
 The `/completions` endpoint is designed for base LLMs and text completion tasks.
 
-#### Non-streaming request
+#### Non-streaming request (2)
 
 Here's how you can make a text completion request:
 
@@ -19790,11 +20840,12 @@ response = client.completions.create(
     max_tokens=150
 )
 
-# Print the response
+# Print the response (2)
 print(response.choices[0].text)
+
 ```
 
-#### Response format
+#### Response format (3)
 
 The API returns responses in this JSON format:
 
@@ -19818,9 +20869,10 @@ The API returns responses in this JSON format:
     "total_tokens": 47
   }
 }
+
 ```
 
-#### Streaming request
+#### Streaming request (2)
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 # Create a completion stream
@@ -19835,6 +20887,7 @@ response_stream = client.completions.create(
 # Stream the response
 for response in response_stream:
     print(response.choices[0].text or "", end="", flush=True)
+
 ```
 
 ### List available models
@@ -19845,9 +20898,10 @@ The `/models` endpoint allows you to get a list of available models on your endp
 models_response = client.models.list()
 list_of_models = [model.id for model in models_response]
 print(list_of_models)
+
 ```
 
-#### Response format
+#### Response format (4)
 
 ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
 {
@@ -19861,6 +20915,7 @@ print(list_of_models)
     }
   ]
 }
+
 ```
 
 ## Chat completion parameters
@@ -19925,7 +20980,7 @@ Here are all available parameters for the `/completions` endpoint:
 
 Text completions support the same additional vLLM parameters as chat completions (see the Additional vLLM parameters section above).
 
-## Environment variables
+## Environment variables (7)
 
 Use these environment variables to customize the OpenAI compatibility:
 
@@ -19941,13 +20996,13 @@ For a complete list of all vLLM environment variables, see the [vLLM environment
 
 The OpenAI-compatible API works with standard [OpenAI client libraries](https://platform.openai.com/docs/libraries):
 
-### Python
+### Python (2)
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 from openai import OpenAI
 MODEL_NAME = "YOUR_MODEL_NAME"  # Replace with your actual model name
 
-# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
+# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values (3)
 client = OpenAI(
     api_key="RUNPOD_API_KEY",
     base_url="https://api.runpod.ai/v2/ENDPOINT_ID/openai/v1"
@@ -19960,9 +21015,10 @@ response = client.chat.completions.create(
         {"role": "user", "content": "Hello!"}
     ]
 )
+
 ```
 
-### JavaScript
+### JavaScript (2)
 
 ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import { OpenAI } from "openai";
@@ -19981,6 +21037,7 @@ const response = await openai.chat.completions.create({
     { role: "user", content: "Hello!" }
   ]
 });
+
 ```
 
 ## Implementation differences
@@ -19995,7 +21052,7 @@ While the vLLM worker aims for high compatibility, there are some differences fr
 
 **Rate limits** follow Runpod's endpoint policies rather than OpenAI's rate limiting structure.
 
-### Current limitations
+### Current limitations (2)
 
 The vLLM worker has a few limitations:
 
@@ -20003,7 +21060,7 @@ The vLLM worker has a few limitations:
 * Some OpenAI-specific features like moderation endpoints are not available.
 * Vision models and multimodal capabilities depend on the underlying model support in vLLM.
 
-## Troubleshooting
+## Troubleshooting (13)
 
 Common issues and their solutions:
 
@@ -20015,7 +21072,7 @@ Common issues and their solutions:
 | Incompatible responses    | Set `RAW_OPENAI_OUTPUT=1` in your environment variables.               |
 | Different response format | Some models may have different output formatting; use a chat template. |
 
-## Next steps
+## Next steps (18)
 
 * [Learn how to send vLLM requests using Runpod's native API](/serverless/vllm/vllm-requests).
 * [Explore environment variables for customization](/serverless/vllm/environment-variables).
@@ -20023,7 +21080,7 @@ Common issues and their solutions:
 * [Explore the OpenAI API documentation](https://platform.openai.com/docs/api-reference).
 
 
-# Overview
+# Overview (15)
 Source: https://docs.runpod.io/serverless/vllm/overview
 
 Deploy scalable LLM inference endpoints using vLLM workers.
@@ -20095,7 +21152,7 @@ Runpod Serverless automatically scales your vLLM workers from zero to many based
 
 vLLM workers come with features that make them suitable for production deployments, including streaming responses, configurable context lengths, quantization support (AWQ, GPTQ), multi-GPU tensor parallelism, and comprehensive error handling.
 
-## Deployment options
+## Deployment options (2)
 
 There are two ways to deploy vLLM workers on Runpod.
 
@@ -20115,11 +21172,11 @@ vLLM supports most model architectures available on Hugging Face. You can deploy
 
 For a complete and up-to-date list of supported model architectures, see the [vLLM supported models documentation](https://docs.vllm.ai/en/latest/models/supported_models.html).
 
-## Configuration
+## Configuration (2)
 
 vLLM supports hundreds of models, but default settings only work out of the box for a subset of them. Depending on the model you're deploying, you may need to [configure your endpoint](/serverless/vllm/configuration) with additional [environment variables](/serverless/vllm/environment-variables) (which map directly to `vllm serve` command line flags) to get it working properly. You will likely need to consult the README for your model on Hugging Face and the [vLLM documentation](https://docs.vllm.ai/en/latest/usage/) for more details.
 
-## Use cases
+## Use cases (2)
 
 vLLM workers are ideal for several types of applications.
 
@@ -20133,7 +21190,7 @@ vLLM workers are ideal for several types of applications.
 
 **Development and experimentation** is cheaper with pay-per-second billing. You can test multiple models and configurations without worrying about idle costs.
 
-## Next steps
+## Next steps (19)
 
 Ready to deploy your first vLLM worker? Start with the [get started guide](/serverless/vllm/get-started) to deploy a model in minutes.
 
@@ -20167,7 +21224,7 @@ Use `/run` to submit a job that processes in the background. You'll receive a jo
 
 import requests
 
-# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
+# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values (4)
 url = "https://api.runpod.ai/v2/ENDPOINT_ID/run"
 headers = {
     "Authorization": "Bearer RUNPOD_API_KEY",
@@ -20187,6 +21244,7 @@ data = {
 response = requests.post(url, headers=headers, json=data)
 job_id = response.json()["id"]
 print(f"Job ID: {job_id}")
+
 ```
 
 ### Synchronous requests with `/runsync`
@@ -20196,7 +21254,7 @@ Use `/runsync` to wait for the complete response in a single request. The client
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import requests
 
-# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
+# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values (5)
 url = "https://api.runpod.ai/v2/ENDPOINT_ID/runsync"
 headers = {
     "Authorization": "Bearer RUNPOD_API_KEY",
@@ -20215,6 +21273,7 @@ data = {
 
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
+
 ```
 
 For more details on request operations, see [Send API requests to Serverless endpoints](/serverless/endpoints/send-requests).
@@ -20240,6 +21299,7 @@ Use the messages format for instruction-tuned models that expect conversation hi
     }
   }
 }
+
 ```
 
 ### Prompt format (for text completion)
@@ -20256,6 +21316,7 @@ Use the prompt format for base models or when you want to provide raw text witho
     }
   }
 }
+
 ```
 
 ### Applying chat templates to prompts
@@ -20273,6 +21334,7 @@ If you use the prompt format but want the model's chat template applied, set `ap
     }
   }
 }
+
 ```
 
 ## Request input parameters
@@ -20325,7 +21387,7 @@ Enable streaming to receive tokens as they're generated instead of waiting for t
 import requests
 import json
 
-# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values
+# Replace ENDPOINT_ID and RUNPOD_API_KEY with your actual values (6)
 url = "https://api.runpod.ai/v2/ENDPOINT_ID/run"
 headers = {
     "Authorization": "Bearer RUNPOD_API_KEY",
@@ -20352,11 +21414,12 @@ with requests.get(stream_url, headers=headers, stream=True) as r:
     for line in r.iter_lines():
         if line:
             print(json.loads(line))
+
 ```
 
 For more information on streaming, see the [stream operation documentation](/serverless/endpoints/send-requests#stream).
 
-## Error handling
+## Error handling (2)
 
 Implement proper error handling to manage network timeouts, rate limiting, worker initialization delays, and model loading errors.
 
@@ -20393,9 +21456,10 @@ def send_vllm_request(url, headers, payload, max_retries=3):
 
 # Usage
 result = send_vllm_request(url, headers, data)
+
 ```
 
-## Best practices
+## Best practices (9)
 
 Follow these best practices when sending requests to vLLM workers.
 
@@ -20413,7 +21477,7 @@ Follow these best practices when sending requests to vLLM workers.
 
 **Cache common requests** when appropriate to reduce redundant API calls and improve response times.
 
-## Next steps
+## Next steps (20)
 
 * [Learn about OpenAI API compatibility](/serverless/vllm/openai-compatibility).
 * [Explore environment variables for customization](/serverless/vllm/environment-variables).
@@ -20425,7 +21489,7 @@ Source: https://docs.runpod.io/serverless/workers/concurrent-handler
 
 Build a concurrent handler function to process multiple requests simultaneously on a single worker.
 
-## What you'll learn
+## What you'll learn (8)
 
 In this guide you will learn how to:
 
@@ -20434,7 +21498,7 @@ In this guide you will learn how to:
 * Optimize worker resources based on request patterns.
 * Test your concurrent handler locally.
 
-## Requirements
+## Requirements (15)
 
 * You've [created a Runpod account](/get-started/manage-accounts).
 * You've installed the Runpod SDK (`pip install runpod`).
@@ -20449,6 +21513,7 @@ First, set up a virtual environment and install the necessary packages:
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install runpod asyncio
+
 ```
 
 ## Step 2: Create a concurrent handler file
@@ -20482,7 +21547,7 @@ async def process_request(job):
     
     return f"Processed: {job_input}"
 
-# Placeholder code for a dynamic concurrency adjustment function 
+# Placeholder code for a dynamic concurrency adjustment function
 def adjust_concurrency(current_concurrency):
     return 50
 
@@ -20491,12 +21556,13 @@ def update_request_rate():
     global request_rate
     request_rate = random.randint(20, 100)
 
-# Start the Serverless function when the script is run
+# Start the Serverless function when the script is run (2)
 if __name__ == "__main__":
     runpod.serverless.start({
         "handler": process_request,
         "concurrency_modifier": adjust_concurrency
     })
+
 ```
 
 The `process_request` function uses the `async` keyword, enabling it to use non-blocking I/O operations with `await`. This allows the function to pause during I/O operations (simulated with `asyncio.sleep()`) and handle other requests while waiting.
@@ -20542,15 +21608,16 @@ def adjust_concurrency(current_concurrency):
         return current_concurrency - 1
     
     return current_concurrency
+
 ```
 
 Let's break down how this function works:
 
 1. **Control parameters**:
 
-   * `max_concurrency = 10`: Sets an upper limit on concurrency to prevent resource exhaustion.
-   * `min_concurrency = 1`: Ensures at least one request can be processed at a time.
-   * `high_request_rate_threshold = 50`: Defines when to consider traffic "high".
+* `max_concurrency = 10`: Sets an upper limit on concurrency to prevent resource exhaustion.
+* `min_concurrency = 1`: Ensures at least one request can be processed at a time.
+* `high_request_rate_threshold = 50`: Defines when to consider traffic "high".
 
    You can adjust these parameters based on your specific workload.
 
@@ -20560,12 +21627,13 @@ Let's break down how this function works:
    if (request_rate > high_request_rate_threshold and 
        current_concurrency < max_concurrency):
        return current_concurrency + 1
+
    ```
 
    This increases concurrency by 1 when:
 
-   * The request rate exceeds our threshold (50 requests).
-   * We haven't reached our maximum concurrency limit.
+* The request rate exceeds our threshold (50 requests).
+* We haven't reached our maximum concurrency limit.
 
 3. **Scaling down logic**:
 
@@ -20573,17 +21641,19 @@ Let's break down how this function works:
    elif (request_rate <= high_request_rate_threshold and 
          current_concurrency > min_concurrency):
        return current_concurrency - 1
+
    ```
 
    This decreases concurrency by 1 when:
 
-   * The request rate is at or below our threshold.
-   * We're above our minimum concurrency level.
+* The request rate is at or below our threshold.
+* We're above our minimum concurrency level.
 
 4. **Default behavior**:
 
    ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
    return current_concurrency
+
    ```
 
    If neither condition is met, maintain the current concurrency level.
@@ -20601,6 +21671,7 @@ Now we're ready to test our handler. Create a file named `test_input.json` to te
         "delay": 0.5
     }
 }
+
 ```
 
 ## Step 5: Test your handler locally
@@ -20609,6 +21680,7 @@ Run your handler to verify that it works correctly:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python concurrent_handler.py
+
 ```
 
 You should see output similar to this:
@@ -20623,6 +21695,7 @@ DEBUG  | local_test | run_job return: {'output': "Processed: {'message': 'Test c
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': "Processed: {'message': 'Test concurrent processing', 'delay': 0.5}"}
 INFO   | Local testing complete, exiting.
+
 ```
 
 ## (Optional) Step 6: Implement real metrics collection
@@ -20652,9 +21725,10 @@ def update_request_rate(request_history):
     
     # Option 3: Read from a shared metrics service like Redis
     # request_rate = redis_client.get('recent_request_rate')
+
 ```
 
-## Next steps
+## Next steps (21)
 
 Now that you've created a concurrent handler, you're ready to:
 
@@ -20676,12 +21750,14 @@ A Dockerfile defines the build process for a Docker image containing your handle
 Organize your project files in a clear directory structure:
 
 ```
+
 project_directory
 ├── Dockerfile              # Instructions for building the Docker image
 ├── src
 │   └── handler.py          # Your handler function
 └── builder
     └── requirements.txt    # Dependencies required by your handler
+
 ```
 
 Your `requirements.txt` file should list all Python packages your handler needs:
@@ -20692,6 +21768,7 @@ runpod~=1.7.6
 torch==2.0.1
 pillow==9.5.0
 transformers==4.30.2
+
 ```
 
 ## Basic Dockerfile structure
@@ -20712,6 +21789,7 @@ COPY src/handler.py .
 
 # Command to run when the container starts
 CMD ["python", "-u", "/handler.py"]
+
 ```
 
 This Dockerfile:
@@ -20732,6 +21810,7 @@ Recommended for most use cases. These images are smaller and faster to download:
 
 ```dockerfile theme={"theme":{"light":"github-light","dark":"github-dark"}}
 FROM python:3.11.1-slim
+
 ```
 
 ### Python full images
@@ -20740,6 +21819,7 @@ Include more system tools and libraries but are larger:
 
 ```dockerfile theme={"theme":{"light":"github-light","dark":"github-dark"}}
 FROM python:3.11.1
+
 ```
 
 ### CUDA images
@@ -20751,6 +21831,7 @@ FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
 
 # Install Python
 RUN apt-get update && apt-get install -y python3.11 python3-pip
+
 ```
 
 ### Custom base images
@@ -20759,6 +21840,7 @@ You can build on top of specialized images for specific frameworks:
 
 ```dockerfile theme={"theme":{"light":"github-light","dark":"github-dark"}}
 FROM pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
+
 ```
 
 ## Including models and files
@@ -20776,7 +21858,7 @@ FROM python:3.11.1-slim
 
 WORKDIR /
 
-# Copy and install requirements
+# Copy and install requirements (2)
 COPY builder/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -20787,8 +21869,9 @@ COPY models/ /models/
 # Set environment variables if needed
 ENV MODEL_PATH=/models/my_model.pt
 
-# Command to run when the container starts
+# Command to run when the container starts (2)
 CMD ["python", "-u", "/handler.py"]
+
 ```
 
 ### Downloading models during build
@@ -20801,9 +21884,10 @@ RUN wget -q URL_TO_YOUR_MODEL -O /models/my_model.pt
 
 # Or use a script to download from Hugging Face
 RUN python -c "from transformers import AutoModel; AutoModel.from_pretrained('model-name')"
+
 ```
 
-## Environment variables
+## Environment variables (8)
 
 Set environment variables to configure your application without hardcoding values:
 
@@ -20811,6 +21895,7 @@ Set environment variables to configure your application without hardcoding value
 ENV MODEL_PATH=/models/my_model.pt
 ENV LOG_LEVEL=INFO
 ENV MAX_BATCH_SIZE=4
+
 ```
 
 You can override these at runtime through the Runpod console when configuring your endpoint.
@@ -20841,6 +21926,7 @@ COPY --from=builder /build/packages /usr/local/lib/python3.11/site-packages
 COPY src/handler.py .
 
 CMD ["python", "-u", "/handler.py"]
+
 ```
 
 ### Clean up build artifacts
@@ -20853,6 +21939,7 @@ RUN apt-get update && apt-get install -y build-essential \
     && apt-get remove -y build-essential \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
+
 ```
 
 ### Use .dockerignore
@@ -20868,9 +21955,10 @@ tests/
 __pycache__/
 .venv/
 venv/
+
 ```
 
-## Next steps
+## Next steps (22)
 
 After creating your Dockerfile, you can:
 
@@ -20886,7 +21974,7 @@ Build, test, and deploy your worker image from Docker Hub.
 
 After [creating a Dockerfile](/serverless/workers/create-dockerfile) for your worker, you can build the image, test it locally, and deploy it to a Serverless endpoint.
 
-## Requirements
+## Requirements (16)
 
 * A [Dockerfile](/serverless/workers/create-dockerfile) that packages your handler function.
 * [Docker](https://docs.docker.com/get-started/get-docker/) installed on your development machine.
@@ -20899,6 +21987,7 @@ From your terminal, navigate to your project directory and build the Docker imag
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker build --platform linux/amd64 \
     -t DOCKER_USERNAME/WORKER_NAME:VERSION .
+
 ```
 
 Replace `DOCKER_USERNAME` with your Docker Hub username, `WORKER_NAME` with a descriptive name for your worker, and `VERSION` with an appropriate version tag.
@@ -20913,6 +22002,7 @@ Before pushing it to the registry, you should test your Docker image locally:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run -it DOCKER_USERNAME/WORKER_NAME:VERSION
+
 ```
 
 If your handler is properly configured with a [test input](/serverless/workers/handler-functions#local-testing), you should see it process the test input and provide output.
@@ -20927,6 +22017,7 @@ docker login
 
 # Push the image
 docker push DOCKER_USERNAME/WORKER_NAME:VERSION
+
 ```
 
 Once your image is in the Docker container registry, you can [create a Serverless endpoint](/serverless/endpoints/overview#create-an-endpoint) through the Runpod console.
@@ -20941,6 +22032,7 @@ docker inspect --format='{{index .RepoDigests 0}}' DOCKER_USERNAME/WORKER_NAME:V
 
 # Use the SHA when deploying
 # DOCKER_USERNAME/WORKER_NAME:VERSION@sha256:4d3d4b3c5a5c2b3a5a5c3b2a5a4d2b3a2b3c5a3b2a5d2b3a3b4c3d3b5c3d4a3
+
 ```
 
 Versioning best practices:
@@ -20963,10 +22055,10 @@ You can deploy your worker image directly from a Docker registry through the Run
 3. Click **Import from Docker Registry**.
 4. In the **Container Image** field, enter your Docker image URL (e.g., `docker.io/yourusername/worker-name:v1.0.0`), then click **Next**.
 5. Configure your endpoint settings:
-   * Enter an **Endpoint Name**.
-   * Choose your **Endpoint Type**: select **Queue** for traditional queue-based processing or **Load Balancer** for direct HTTP access (see [Load balancing endpoints](/serverless/load-balancing/overview) for details).
-   * Under **GPU Configuration**, select the appropriate GPU types for your workload.
-   * Configure [other settings](/serverless/endpoints/endpoint-configurations) as needed (active/max workers, timeouts, environment variables).
+* Enter an **Endpoint Name**.
+* Choose your **Endpoint Type**: select **Queue** for traditional queue-based processing or **Load Balancer** for direct HTTP access (see [Load balancing endpoints](/serverless/load-balancing/overview) for details).
+* Under **GPU Configuration**, select the appropriate GPU types for your workload.
+* Configure [other settings](/serverless/endpoints/endpoint-configurations) as needed (active/max workers, timeouts, environment variables).
 6. Click **Deploy Endpoint** to deploy your worker.
 
 ## Troubleshoot deployment issues
@@ -20989,7 +22081,7 @@ Runpod's GitHub integration simplifies your workflow by pulling your code and Do
 
 <iframe title="Deploy workers from GitHub" />
 
-## Requirements
+## Requirements (17)
 
 To deploy a worker from GitHub, you need:
 
@@ -21013,8 +22105,8 @@ Before deploying from GitHub, you need to authorize Runpod to access your reposi
 
 4. Choose which repositories Runpod can access:
 
-   * **All repositories:** Access to all current and future repositories.
-   * **Only select repositories:** Choose specific repositories.
+* **All repositories:** Access to all current and future repositories.
+* **Only select repositories:** Choose specific repositories.
 
 5. Click **Save**.
 
@@ -21032,16 +22124,16 @@ To deploy a worker from a GitHub repository:
 
 4. Configure your deployment options:
 
-   * **Branch:** Select which branch to deploy from.
-   * **Dockerfile Path:** Specify the path to your Dockerfile (if not in root).
+* **Branch:** Select which branch to deploy from.
+* **Dockerfile Path:** Specify the path to your Dockerfile (if not in root).
 
    Then click **Next**.
 
 5. Configure your endpoint settings:
-   * Enter an **Endpoint Name**.
-   * Choose your **Endpoint Type**: select **Queue** for traditional queue-based processing or **Load Balancer** for direct HTTP access (see [Load balancing endpoints](/serverless/load-balancing/overview) for details).
-   * Under **GPU Configuration**, select the appropriate GPU types for your workload.
-   * Configure [other settings](/serverless/endpoints/endpoint-configurations) as needed (active/max workers, timeouts, environment variables).
+* Enter an **Endpoint Name**.
+* Choose your **Endpoint Type**: select **Queue** for traditional queue-based processing or **Load Balancer** for direct HTTP access (see [Load balancing endpoints](/serverless/load-balancing/overview) for details).
+* Under **GPU Configuration**, select the appropriate GPU types for your workload.
+* Configure [other settings](/serverless/endpoints/endpoint-configurations) as needed (active/max workers, timeouts, environment variables).
 
 6. Click **Deploy Endpoint** to deploy your worker.
 
@@ -21070,7 +22162,7 @@ For detailed instructions on creating releases, see the [GitHub documentation](h
 
 Roll back your endpoint to any previous build directly from the Runpod console. This restores your endpoint to an earlier version without waiting for a new GitHub release.
 
-### Requirements
+### Requirements (18)
 
 To roll back an endpoint, you need:
 
@@ -21162,6 +22254,7 @@ You can enhance your workflow with GitHub Actions for testing before deployment:
          runpod-api-key: ${{ secrets.RUNPOD_API_KEY }} # Add your API key to a GitHub secret
          test-filename: .github/tests.json
          request-timeout: 300
+
    ```
 
    <Tip>
@@ -21190,9 +22283,10 @@ You can enhance your workflow with GitHub Actions for testing before deployment:
       }
    }
    ]
+
    ```
 
-## Troubleshoot deployment issues
+## Troubleshoot deployment issues (2)
 
 If your worker fails to deploy or process requests:
 
@@ -21212,7 +22306,7 @@ To disconnect your GitHub account from Runpod:
 4. Scroll down to the Danger Zone.
 5. Uninstall "Runpod Inc."
 
-## Limitations
+## Limitations (2)
 
 Runpod has the following limitations when using the GitHub integration to deploy your worker:
 
@@ -21224,7 +22318,7 @@ Runpod has the following limitations when using the GitHub integration to deploy
 * **Single GitHub connection**: Each Runpod account can link to only one GitHub account. This connection cannot be shared among team members, requiring separate Runpod accounts for collaborative projects.
 
 
-# Overview
+# Overview (16)
 Source: https://docs.runpod.io/serverless/workers/handler-functions
 
 Write custom handler functions to process incoming requests to your queue-based endpoints.
@@ -21246,6 +22340,7 @@ Before writing a handler function, make sure you understand the structure of the
         "key": "value" 
     }
 }
+
 ```
 
 `id` is a unique identifier for the job randomly generated by Runpod, while `input` contains data sent by the client for your handler function to process.
@@ -21267,11 +22362,12 @@ def handler(job):
     return "Your job results"
 
 runpod.serverless.start({"handler": handler})  # Required
+
 ```
 
 The handler takes extracts the input from the job request, processes it, and returns a result. The `runpod.serverless.start()` function launches your serverless application with the specified handler.
 
-## Local testing
+## Local testing (2)
 
 To test your handler locally, you can create a `test_input.json` file with the input data you want to test:
 
@@ -21281,18 +22377,21 @@ To test your handler locally, you can create a `test_input.json` file with the i
         "prompt": "Hey there!"
     }
 }
+
 ```
 
 Then run your handler function using your local terminal:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py
+
 ```
 
 Instead of creating a `test_input.json` file, you can also provide test input directly in the command line prompt:
 
 ```sh theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python handler.py --test_input '{"input": {"prompt": "Test prompt"}}'
+
 ```
 
 For more information on local testing, including command-line flags and starting a local API server, see [Local testing](/serverless/development/local-testing).
@@ -21320,6 +22419,7 @@ def handler(job):
     return prompt
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 ### Streaming handlers
@@ -21338,6 +22438,7 @@ runpod.serverless.start({
     "handler": streaming_handler,
     "return_aggregate_stream": True  # Optional, makes results available via /run
 })
+
 ```
 
 By default, outputs from streaming handlers are only available using the `/stream` operation. Set `return_aggregate_stream` to `True` to make outputs available from the `/run` and `/runsync` operations as well.
@@ -21363,6 +22464,7 @@ runpod.serverless.start({
     "handler": async_handler,
     "return_aggregate_stream": True
 })
+
 ```
 
 Async handlers allow your code to handle multiple tasks concurrently without waiting for each operation to complete. This approach offers excellent scalability for applications that deal with high-frequency requests, allowing your workers to remain responsive even under heavy load. Async handlers are also useful for streaming data scenarios and long-running tasks that produce incremental outputs.
@@ -21381,7 +22483,7 @@ When increasing concurrency, it's crucial to monitor memory usage carefully and 
 
 Learn how to build a concurrent handler by [following this guide](/serverless/workers/concurrent-handler).
 
-## Error handling
+## Error handling (3)
 
 When an exception occurs in your handler function, the Runpod SDK automatically captures it, marks the [job status](/serverless/endpoints/job-states) as `FAILED` and returns the exception details in the job results.
 
@@ -21403,6 +22505,7 @@ def handler(job):
     return "Input validation successful."
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 Exercise caution when using `try/except` blocks to avoid unintentionally suppressing errors. Either return the error for a graceful failure or raise it to flag the job as `FAILED`.
@@ -21425,6 +22528,7 @@ def handler(job):
     return "done"
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 Progress updates will be available when the job status is polled.
@@ -21459,6 +22563,7 @@ runpod.serverless.start(
         "return_aggregate_stream": True,  # Optional: Aggregate results are accessible via /run operation
     }
 )
+
 ```
 
 Your handler must return a dictionary that contains the `refresh_worker` flag. This flag will be removed before the remaining job output is returned.
@@ -21487,13 +22592,14 @@ A short list of best practices to keep in mind as you build your handler functio
        # ...
 
    runpod.serverless.start({"handler": handler})
+
    ```
 
 2. **Input validation**: [Validate inputs](#error-handling) before processing to avoid errors during execution.
 
 3. **Local testing**: [Test your handlers locally](/serverless/development/local-testing) before deployment.
 
-## Payload limits
+## Payload limits (2)
 
 Be aware of payload size limits when designing your handler:
 
@@ -21502,7 +22608,7 @@ Be aware of payload size limits when designing your handler:
 
 If your results exceed these limits, consider stashing them in cloud storage and returning links instead.
 
-## Next steps
+## Next steps (23)
 
 Once you've created your handler function, you can:
 
@@ -21511,7 +22617,7 @@ Once you've created your handler function, you can:
 * [Deploy your worker image to a Serverless endpoint.](/serverless/workers/deploy)
 
 
-# Overview
+# Overview (17)
 Source: https://docs.runpod.io/serverless/workers/overview
 
 Package your handler function for deployment.
@@ -21603,7 +22709,7 @@ By default, each Runpod account can allocate a maximum of 5 workers (flex + acti
 
 If your workload requires additional capacity beyond 60 workers, [contact our support team](https://www.runpod.io/contact).
 
-## Best practices
+## Best practices (10)
 
 Follow these best practices when deploying workers:
 
@@ -21613,7 +22719,7 @@ Follow these best practices when deploying workers:
 * **Handle errors gracefully**: Implement proper error handling to prevent worker crashes. See [Error handling](/serverless/development/error-handling).
 * **Debug using logs and SSH**: Use logs and SSH to debug and optimize your workers. See [Monitor logs](/serverless/development/logs) and [SSH into workers](/serverless/development/ssh-into-workers).
 
-## Next steps
+## Next steps (24)
 
 * [Write a handler function](/serverless/workers/handler-functions) to define your worker's logic.
 * [Create a Dockerfile](/serverless/workers/create-dockerfile) to package your handler function and all its dependencies.
@@ -21621,7 +22727,7 @@ Follow these best practices when deploying workers:
 * [Deploy from GitHub](/serverless/workers/github-integration) to automatically build your worker image from your repository.
 
 
-# Network volumes
+# Network volumes (2)
 Source: https://docs.runpod.io/storage/network-volumes
 
 Persistent, portable storage for your AI workloads.
@@ -21639,7 +22745,7 @@ Consider using network volumes when you need:
 * **Portable storage**: Move your working environment and data between different compute resources.
 * **Efficient data management**: Store frequently used models or large datasets to avoid re-downloading them for each new Pod or worker, saving time, bandwidth, and reducing cold start times.
 
-## Pricing
+## Pricing (5)
 
 Network volumes are billed hourly at a rate of \$0.07 per GB per month for the first 1TB, and \$0.05 per GB per month for additional storage beyond that.
 
@@ -21680,6 +22786,7 @@ Network volumes are billed hourly at a rate of \$0.07 per GB per month for the f
       "size": 100,
       "dataCenterId": "US-KS-2"
     }'
+
     ```
 
     For complete API documentation and parameter details, see the [network volumes API reference](/api-reference/network-volumes/POST/networkvolumes).
@@ -21812,7 +22919,9 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     cd workspace
+
     ```
+
   </Step>
 
   <Step title="Start the transfer">
@@ -21820,6 +22929,7 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl send *
+
     ```
 
     You can also specify specific files or directories instead of `*`.
@@ -21830,7 +22940,9 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl receive 8338-galileo-collect-fidel
+
     ```
+
   </Step>
 
   <Step title="Open the destination volume">
@@ -21838,7 +22950,9 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     cd workspace
+
     ```
+
   </Step>
 
   <Step title="Receive your files">
@@ -21846,6 +22960,7 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl receive 8338-galileo-collect-fidel
+
     ```
 
     The transfer will begin and show progress as it copies files from the source to the destination volume.
@@ -21883,6 +22998,7 @@ Before you begin, you'll need:
     apt update && apt install -y vim rsync && \
     ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -q && \
     cat ~/.ssh/id_ed25519.pub
+
     ```
 
     Copy the public key that appears in the terminal output.
@@ -21897,6 +23013,7 @@ Before you begin, you'll need:
     port=$(printenv RUNPOD_TCP_PORT_22) && \
     echo "rsync -avzP --inplace -e \"ssh -p $port\" /workspace/ root@$ip:/workspace" && \
     vi ~/.ssh/authorized_keys
+
     ```
 
     In the editor that opens, paste the public key you copied from the source Pod, then save and exit (press `Esc`, type `:wq`, and press `Enter`).
@@ -21913,6 +23030,7 @@ Before you begin, you'll need:
 
     # Example:
     rsync -avzP --inplace -e "ssh -p 18598" /workspace/ root@157.66.254.13:/workspace
+
     ```
 
     The `rsync` command displays progress as it transfers files. Depending on the size of your data, this may take some time.
@@ -21923,6 +23041,7 @@ Before you begin, you'll need:
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     du -sh /workspace
+
     ```
 
     The destination Pod should show similar disk usage to the source Pod if all files transferred successfully.
@@ -21934,7 +23053,7 @@ Before you begin, you'll need:
 </Steps>
 
 
-# S3-compatible API
+# S3-compatible API (2)
 Source: https://docs.runpod.io/storage/s3-api
 
 Use Runpod's S3-compatible API to access and manage your network volumes.
@@ -22007,6 +23126,7 @@ Create your network volume in a supported datacenter to use the S3-compatible AP
 
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       aws configure list
+
       ```
 
       This command displays which credentials are currently active, the source of each credential (such as the config file or environment variables), and whether all required credentials are properly set.
@@ -22022,21 +23142,28 @@ Create your network volume in a supported datacenter to use the S3-compatible AP
       If you have environment variables set from a previous session, they will override your config file settings. To resolve this:
 
       1. Check for existing environment variables:
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          echo $AWS_ACCESS_KEY_ID
          echo $AWS_SECRET_ACCESS_KEY
+
          ```
 
       2. If outdated environment variables are set, unset them:
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          unset AWS_ACCESS_KEY_ID
          unset AWS_SECRET_ACCESS_KEY
+
          ```
 
       3. Verify your configuration again:
+
          ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
          aws configure list
+
          ```
+
     </Accordion>
   </Step>
 </Steps>
@@ -22054,9 +23181,9 @@ Standard AWS CLI operations such as `ls`, `cp`, `mv`, and `rm` work as expected 
 <Accordion title="Network volume path mapping">
   Network volumes are mounted to Serverless workers at `/runpod-volume` and to Pods at `/workspace` by default. The S3-compatible API maps file paths as follows:
 
-  * **Pod filesystem path**: `/workspace/my-folder/file.txt`
-  * **Serverless worker path**: `/runpod-volume/my-folder/file.txt`
-  * **S3 API path**: `s3://NETWORK_VOLUME_ID/my-folder/file.txt`
+* **Pod filesystem path**: `/workspace/my-folder/file.txt`
+* **Serverless worker path**: `/runpod-volume/my-folder/file.txt`
+* **S3 API path**: `s3://NETWORK_VOLUME_ID/my-folder/file.txt`
 </Accordion>
 
 ## s3 CLI examples
@@ -22073,6 +23200,7 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
     aws s3 ls --region DATACENTER \
         --endpoint-url https://s3api-DATACENTER.runpod.io/ \ 
         s3://NETWORK_VOLUME_ID/REMOTE_DIR
+
     ```
 
     Unlike standard S3 buckets, `ls` and `ListObjects` operations will list empty directories.
@@ -22090,6 +23218,7 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
         --endpoint-url https://s3api-DATACENTER.runpod.io/ \
         LOCAL_FILE \
         s3://NETWORK_VOLUME_ID
+
     ```
 
     Use `cp` to copy a file from a network volume to a local directory:
@@ -22098,7 +23227,9 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
     aws s3 cp --region DATACENTER \
         --endpoint-url https://s3api-DATACENTER.runpod.io/ \
         s3://NETWORK_VOLUME_ID/remote-file.txt LOCAL_DIR
+
     ```
+
   </Accordion>
 
   <Accordion title="Remove files">
@@ -22108,6 +23239,7 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
     aws s3 rm --region DATACENTER \
         --endpoint-url https://s3api-DATACENTER.runpod.io/ \
         s3://NETWORK_VOLUME_ID/remote-file.txt
+
     ```
 
     <Tip>
@@ -22116,7 +23248,9 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
       ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
       export AWS_RETRY_MODE=standard
       export AWS_MAX_ATTEMPTS=10
+
       ```
+
     </Tip>
   </Accordion>
 
@@ -22128,7 +23262,9 @@ Unlike traditional S3 key-value stores, object names in the Runpod S3-compatible
         --endpoint-url https://s3api-DATACENTER.runpod.io/ \
         LOCAL_DIR \
         s3://NETWORK_VOLUME_ID/REMOTE_DIR
+
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -22144,6 +23280,7 @@ aws s3api get-object --bucket NETWORK_VOLUME_ID \
     --region DATACENTER \
     --endpoint-url https://s3api-DATACENTER.runpod.io/ \
     LOCAL_FILE
+
 ```
 
 Replace `LOCAL_FILE` with the desired path and name of the file after download—for example: `~/local-dir/my-file.txt`.
@@ -22270,7 +23407,9 @@ The script below demonstrates how to upload a file to a Runpod network volume us
 
     if __name__ == "__main__":
         main()
+
     ```
+
   </Accordion>
 
   <Accordion title="Example usage">
@@ -22289,7 +23428,9 @@ The script below demonstrates how to upload a file to a Runpod network volume us
         --bucket 'network_volume_id' \
         --object 'remote_directory/file.txt' \
         --file 'local_directory/file.txt'
+
     ```
+
   </Accordion>
 </AccordionGroup>
 
@@ -22308,6 +23449,7 @@ Here's an example of how to run the script using command line arguments:
      --secret_key YOUR_SECRET_ACCESS_KEY \
      --endpoint https://s3api-eur-is-1.runpod.io/ \
      --region EUR-IS-1
+
 ```
 
 ## S3 API compatibility reference
@@ -22402,6 +23544,7 @@ For detailed information on these operations, refer to the [AWS S3 API documenta
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     "fatal error: Error during pagination: The same next token was received twice: ..."
+
     ```
 
     This occurs because Runpod must compute and cache the MD5 checksum (i.e., ETag) for files created without the S3-compatible API. This computation can take several minutes for large directories or files, as the `ListObjects` request must wait until the checksum is ready.
@@ -22449,6 +23592,7 @@ For detailed information on these operations, refer to the [AWS S3 API documenta
         ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
         # Sets the timeout to 7200 seconds (2 hours)
         aws s3 cp large-file.zip s3://your-volume-name/ --cli-read-timeout 7200 --endpoint-url https://storage.datacenter.runpod.io
+
         ```
 
         Or, configure timeout in `~/.aws/config`:
@@ -22456,7 +23600,9 @@ For detailed information on these operations, refer to the [AWS S3 API documenta
         ```ini theme={"theme":{"light":"github-light","dark":"github-dark"}}
         [default]
         cli_read_timeout = 7200
+
         ```
+
       </Tab>
 
       <Tab title="Boto3">
@@ -22473,7 +23619,9 @@ For detailed information on these operations, refer to the [AWS S3 API documenta
 
         # Create S3 client with custom timeout
         s3_client = boto3.client('s3', config=custom_config)
+
         ```
+
       </Tab>
     </Tabs>
   </Accordion>
@@ -22499,7 +23647,7 @@ TMUX is a terminal multiplexer that creates persistent terminal sessions on your
 
 While you can run long-running tasks in JupyterLab notebooks, the kernel can crash unexpectedly, losing hours or days of computation. TMUX runs your commands in persistent terminal sessions that continue even if JupyterLab crashes or you disconnect.
 
-## Requirements
+## Requirements (19)
 
 To use TMUX, you need terminal access to your Runpod Pod (SSH, web terminal, or JupyterLab terminal).
 
@@ -22513,6 +23661,7 @@ TMUX is not installed by default on Runpod Pods. To install it, run:
 
 ```bash Install TMUX theme={"theme":{"light":"github-light","dark":"github-dark"}}
 apt-get update && apt-get install -y tmux
+
 ```
 
 <Note>
@@ -22538,6 +23687,7 @@ python train.py --epochs 100 --batch-size 32
 
 # Later, reconnect to the Pod and reattach
 tmux attach -t model_training
+
 ```
 
 ## Command reference
@@ -22548,6 +23698,7 @@ Create a new TMUX session with a descriptive name:
 
 ```bash Create named session theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux new -s training
+
 ```
 
 ### Detaching from a session
@@ -22555,7 +23706,9 @@ tmux new -s training
 To detach from a session and leave it running in the background, press:
 
 ```
+
 Ctrl+B, then D
+
 ```
 
 Your processes will continue running even if you disconnect from the Pod.
@@ -22566,6 +23719,7 @@ View all active TMUX sessions:
 
 ```bash List sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux ls
+
 ```
 
 ### Reattaching to a session
@@ -22574,6 +23728,7 @@ Reconnect to a previously created session:
 
 ```bash Reattach to session theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux attach -t training
+
 ```
 
 ### Killing a session
@@ -22582,6 +23737,7 @@ End a session when you no longer need it:
 
 ```bash Kill session theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux kill-session -t training
+
 ```
 
 ### Killing all sessions
@@ -22590,12 +23746,14 @@ If you need to restart fresh and kill all TMUX sessions:
 
 ```bash Kill all sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux kill-server
+
 ```
 
 Alternatively, you can kill all sessions except the current one:
 
 ```bash Kill other sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
 tmux kill-session -a
+
 ```
 
 ## Advanced TMUX features
@@ -22626,7 +23784,7 @@ To scroll through terminal output:
 2. Use arrow keys or Page Up/Down to scroll
 3. Press `q` to exit copy mode
 
-## Best practices
+## Best practices (11)
 
 When using TMUX on Runpod Pods, keep these tips in mind:
 
@@ -22636,12 +23794,12 @@ When using TMUX on Runpod Pods, keep these tips in mind:
 * Use TMUX for any process that takes longer than a few minutes to complete.
 * Consider creating a TMUX session immediately when connecting to a Pod for important work.
 
-## Troubleshooting
+## Troubleshooting (14)
 
 If you can't reattach to a session after reconnecting to a Pod, the Pod may have been restarted. TMUX sessions don't persist across Pod restarts, so ensure you save your work regularly and use network volumes for persistent storage.
 
 
-# Overview
+# Overview (18)
 Source: https://docs.runpod.io/tutorials/introduction/containers
 
 Learn about containers and how to use them with Runpod
@@ -22700,7 +23858,9 @@ For the best installation experience, see Docker's [official documentation](http
 Now that you've installed Docker, open a terminal window and run the following command:
 
 ```
+
 docker version
+
 ```
 
 You should see something similar to the following output.
@@ -22733,12 +23893,14 @@ Server: Docker Desktop 4.26.1 (131620)
   GitCommit:        v1.1.10-0-g18a0cb0
  docker-init:
   Version:          0.19.0
+
 ```
 
 If at any point you need help with a command, you can use the `--help` flag to see documentation on the command you're running.
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker --help
+
 ```
 
 Let's run `busybox` from the command line to print out today's date.
@@ -22746,6 +23908,7 @@ Let's run `busybox` from the command line to print out today's date.
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run busybox sh -c 'echo "The time is: $(date)"'
 # The time is: Thu Jan 11 06:35:39 UTC 2024
+
 ```
 
 * `busybox` is a lightweight Docker image with the bare minimum Linux utilities installed, including `echo`
@@ -22761,7 +23924,7 @@ Source: https://docs.runpod.io/tutorials/introduction/containers/create-dockerfi
 
 In the previous step, you ran a command that prints the container's uptime. Now you'll create a Dockerfile to customize the contents of your own Docker image.
 
-### Create a Dockerfile
+### Create a Dockerfile (2)
 
 Create a new file called `Dockerfile` and add the following items.
 
@@ -22770,6 +23933,7 @@ FROM busybox
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
 ```
 
 This Dockerfile starts from the `busybox` image like we used before. It then adds a custom `entrypoint.sh` script, makes it executable, and configures it as the entrypoint.
@@ -22781,14 +23945,15 @@ Now let's create `entrypoint.sh` with the following contents:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 #!/bin/sh
 echo "The time is: $(date)"
+
 ```
 
 <Info>
   While we named this script `entrypoint.sh` you will see a variety of naming conventions; such as:
 
-  * `start.sh`
-  * `CMD.sh`
-  * `entry_path.sh`
+* `start.sh`
+* `CMD.sh`
+* `entry_path.sh`
 
   These files are normally placed in a folder called `script` but it is dependent on the maintainers of that repository.
 </Info>
@@ -22802,12 +23967,14 @@ This is a simple script that will print the current time when the container star
 * Without it, containers would exit immediately after starting.
 * Entrypoints make images executable and easier to reuse.
 
-## Build the image
+## Build the image (3)
 
 With those files created, we can now build a Docker image using our Dockerfile:
 
 ```
+
 docker image build -t my-time-image .
+
 ```
 
 This will build the image named `my-time-image` from the Dockerfile in the current directory.
@@ -22827,7 +23994,9 @@ This will build the image named `my-time-image` from the Dockerfile in the curre
 Finally, let's run a container from our new image:
 
 ```
+
 docker run my-time-image
+
 ```
 
 We should see the same output as before printing the current time!
@@ -22851,8 +24020,10 @@ The following is a reference sheet to some of the most commonly used Docker comm
 Log in to a registry (like Docker Hub) from the CLI. This saves credentials locally.
 
 ```
+
 docker login
 docker login -u myusername
+
 ```
 
 ## Images
@@ -22864,6 +24035,7 @@ docker push myuser/myimage:v1   # Push custom image
 docker pull someimage           # Pull shared image
 docker images                   # List downloaded images
 docker rmi <image>              # Remove/delete image
+
 ```
 
 ## Containers
@@ -22876,15 +24048,17 @@ docker ps         # List running containers
 docker logs       # Print logs from container
 docker stop       # Stop running container
 docker rm         # Remove/delete container
+
 ```
 
-## Dockerfile
+## Dockerfile (2)
 
 `docker build` - Builds a Docker image by reading build instructions from a Dockerfile.
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker build                         # Build image from Dockerfile
 docker build --platform=linux/amd64  # Build for specific architecture
+
 ```
 
 <Info>
@@ -22902,6 +24076,7 @@ docker build --platform=linux/amd64  # Build for specific architecture
 ```ruby theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker volume create         # Create volume
 docker run -v <vol>:/data    # Mount volume into container
+
 ```
 
 ## Network
@@ -22911,6 +24086,7 @@ docker run -v <vol>:/data    # Mount volume into container
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker network create           # Create user-defined network
 docker run --network=<name>     # Connect container
+
 ```
 
 ## Execute
@@ -22920,6 +24096,7 @@ docker run --network=<name>     # Connect container
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker exec
 docker exec mycontainer ls -l /etc     # List files in container
+
 ```
 
 
@@ -22946,6 +24123,7 @@ So running something like:
 
 ```csharp theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run busybox date > file.txt
+
 ```
 
 Would only write the date to `file.txt` temporarily inside that container. As soon as the container shuts down, that file and data is destroyed. This isn't great when you're training data and want your information to persist past your LLM training.
@@ -22959,7 +24137,9 @@ Because of this, we need to persist data outside the container. Let's take a loo
 First, we'll create a named volume to represent the external storage:
 
 ```
+
 docker volume create date-volume
+
 ```
 
 ### Update Dockerfile
@@ -22973,6 +24153,7 @@ RUN touch current_date.txt
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+
 ```
 
 This sets the working directory to `/data`, touches a file called `current_date.txt`, and copies our script.
@@ -22984,6 +24165,7 @@ The `entrypoint.sh` script is updated:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 #!/bin/sh
 date > /data/current_date.txt
+
 ```
 
 This will write the date to the `/data/current_date.txt` file instead of printing it.
@@ -22996,6 +24178,7 @@ Finally, we can mount the named volume to this data directory:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run -v date-volume:/data my-time-image
+
 ```
 
 This runs a container from my-time-image and mounts the `date-volume` Docker volume to the /data directory in the container. Anything written to `/data` inside the container will now be written to the `date-volume` on the host instead of the container's ephemeral file system. This allows the data to persist. Once the container exits, the date output file is safely stored on the host volume.
@@ -23004,6 +24187,7 @@ After the container exits, we can exec into another container sharing the volume
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker run --rm -v date-volume:/data busybox cat /data/current_date.txt
+
 ```
 
 This runs a new busybox container and also mounts the `date-volume`.
@@ -23029,7 +24213,7 @@ Step-by-step guides for building and deploying AI applications on Runpod.
 
 This section includes step-by-step guides to help you build and deploy example applications on the Runpod platform, covering basic concepts and advanced implementations.
 
-## Get started
+## Get started (5)
 
 If you're new to Runpod, start with these foundational examples to understand the platform and deploy your first application:
 
@@ -23081,7 +24265,7 @@ This guide assumes you are operating within a Linux terminal environment and hav
 
 By following this streamlined process, you'll be able to simplify the migration and deployment of your Cog image.
 
-### Prerequisites
+### Prerequisites (7)
 
 * Docker installed on your system
 * Familiarity with the Cog framework
@@ -23095,6 +24279,7 @@ Before we begin, let's set up the necessary environment. You will need to clone 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 git clone https://github.com/runpod-workers/cog-worker.git
 cd cog-worker/
+
 ```
 
 The cog-worker repository contains essential scripts and configuration files required for the migration.
@@ -23123,6 +24308,7 @@ Build the Docker image by providing the necessary arguments for your model. Once
 # replace user, model_name, and model_version with the appropriate values
 docker build -platform=linux/amd64 --tag <username>/<repo>:<tag> --build-arg COG_REPO=user --build-arg COG_MODEL=model_name --build-arg COG_VERSION=model_version .
 docker push <username>/<repo>:<tag>
+
 ```
 
 The `--tag` option allows you to specify a name and tag for your image, while the `--build-arg` options provide the necessary information for building the image.
@@ -23153,7 +24339,7 @@ To create and deploy a serverless endpoint on Runpod:
 
    vi. Enter the name of your Docker image.
 
-   * For example `<username>/<repo>:<tag>`.
+* For example `<username>/<repo>:<tag>`.
 
    vii. Specify enough memory for your Docker image.
 
@@ -23163,7 +24349,7 @@ Now, let's send a request to your [Endpoint](/serverless/endpoints/overview).
 
 Once your endpoint is set up and deployed, you'll be able to start receiving requests and utilize your Cog model in a serverless context.
 
-## Conclusion
+## Conclusion (2)
 
 Congratulations, you have successfully migrated your Cog model from Replicate to Runpod and set up a serverless endpoint. As you continue to develop your models and applications, consider exploring additional features and capabilities offered by Runpod to further enhance your projects.
 
@@ -23194,6 +24380,7 @@ To update your codebase, you need to replace the following:
 
 <Tabs>
   <Tab title="Python">
+
     ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 
     from openai import OpenAI
@@ -23210,10 +24397,13 @@ To update your codebase, you need to replace the following:
     temperature=0,
     max_tokens=100,
     )
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
+
     ```JavaScript theme={"theme":{"light":"github-light","dark":"github-dark"}}
     import OpenAI from 'openai'
 
@@ -23227,7 +24417,9 @@ To update your codebase, you need to replace the following:
        messages: [{'role': 'user', 'content': 'Why is Runpod the best platform?'}],
 
     });
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -23255,7 +24447,7 @@ In this tutorial, you'll learn how to use the [Bazel](https://bazel.build) build
 
 By the end of this tutorial, you’ll be able to build custom Docker images on Runpod and push them to Docker Hub for use in your own templates.
 
-## Prerequisites
+## Prerequisites (8)
 
 Before you begin this guide you'll need the following:
 
@@ -23293,9 +24485,10 @@ Clone the example code repository that demonstrates building Docker images with 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 git clone https://github.com/therealadityashankar/build-docker-in-runpod.git && cd build-docker-in-runpod
+
 ```
 
-## Install dependencies
+## Install dependencies (2)
 
 Install the required dependencies inside the Runpod container:
 
@@ -23303,12 +24496,14 @@ Update packages and install sudo:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 apt update && apt install -y sudo
+
 ```
 
 Install Docker using the convenience script:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh
+
 ```
 
 Log in to Docker using an access token:
@@ -23320,6 +24515,7 @@ Log in to Docker using an access token:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker login -u <your-username>
+
 ```
 
 When prompted, paste in the access token you copied instead of your password.
@@ -23330,6 +24526,7 @@ Install Bazel via the Bazelisk version manager:
 wget https://github.com/bazelbuild/bazelisk/releases/download/v1.20.0/bazelisk-linux-amd64
 chmod +x bazelisk-linux-amd64  
 sudo cp ./bazelisk-linux-amd64 /usr/local/bin/bazel
+
 ```
 
 ## Configure the Bazel Build
@@ -23339,6 +24536,7 @@ First, install nano if it’s not already installed and open the `BUILD.bazel` f
 ```bash BUILD.bazel theme={"theme":{"light":"github-light","dark":"github-dark"}}
 sudo apt install nano
 nano BUILD.bazel
+
 ```
 
 Replace the `{YOUR_USERNAME}` placeholder with your Docker Hub username in the `BUILD.bazel` file:
@@ -23351,6 +24549,7 @@ oci_push(
     repository = "index.docker.io/{YOUR_USERNAME}/custom_image",
     remote_tags = ["latest"]
 )
+
 ```
 
 ## Build and Push the Docker Image
@@ -23359,13 +24558,14 @@ Run the bazel command to build the Docker image and push it to your Docker Hub a
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 bazel run //:push_custom_image
+
 ```
 
 Once the command completes, go to [https://hub.docker.com/](https://hub.docker.com/) and log in. You should see a new repository called `custom_image` containing the Docker image you just built.
 
 You can now reference this custom image in your own Runpod templates.
 
-## Conclusion
+## Conclusion (3)
 
 In this tutorial, you learned how to use Bazel to build and push Docker images from inside Runpod containers. By following the steps outlined, you can now create and utilize custom Docker images for your Runpod templates. The techniques demonstrated can be further expanded to build more complex images, providing a flexible solution for your containerization needs on Runpod.
 
@@ -23387,7 +24587,7 @@ This tutorial uses the [SDXL-Turbo](https://huggingface.co/stabilityai/sdxl-turb
   For example, if you load a workflow created for the Flux Dev model and try to use it with SDXL-Turbo, the workflow might run, but with poor speed or image quality.
 </Tip>
 
-## What you'll learn
+## What you'll learn (9)
 
 In this tutorial, you'll learn how to:
 
@@ -23397,7 +24597,7 @@ In this tutorial, you'll learn how to:
 * Install new models to your Pod.
 * Generate an image.
 
-## Requirements
+## Requirements (20)
 
 Before you begin, you'll need:
 
@@ -23539,7 +24739,7 @@ Your workflow is now ready! Follow these steps to generate an image:
 
 Congratulations! You've just generated your first image with ComfyUI on Runpod.
 
-## Troubleshooting
+## Troubleshooting (15)
 
 Here are some common issues you may encounter and possbile solutions:
 
@@ -23548,7 +24748,7 @@ Here are some common issues you may encounter and possbile solutions:
 * **Out of memory errors**: Reduce image resolution or batch size in your workflow.
 * **Slow generation**: Make sure you're using an appropriate GPU for your selected model. See [Choose a Pod](/pods/choose-a-pod) for guidance.
 
-## Next steps
+## Next steps (25)
 
 Once you're comfortable with basic image generation, explore the [ComfyUI documentation](https://docs.comfy.org/) to learn how to build more advanced workflows.
 
@@ -23621,6 +24821,7 @@ Now that you have your Pod set up and running, connect to it over secure SSH.
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    ssh <username>@<pod-ip-address> -p <ssh-port> -i <path-to-ssh-key>  string
+
    ```
 
    Follow the on-screen prompts to SSH into your Pod.
@@ -23647,21 +24848,26 @@ To use a local dataset, you'll need to transfer it to your Runpod instance. You 
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl send data.jsonl
+
     ```
+
   </Tab>
 
   <Tab title="output">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     Sending 'data.jsonl' (5 B)
     Code is: 8338-galileo-collect-fidel
     On the other computer run
 
     runpodctl receive 8338-galileo-collect-fidel
+
     ```
+
   </Tab>
 </Tabs>
 
-**To receive a file**
+### To receive a file
 
 <Tabs>
   <Tab title="runpodctl">
@@ -23669,7 +24875,9 @@ To use a local dataset, you'll need to transfer it to your Runpod instance. You 
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     runpodctl receive 8338-galileo-collect-fidel
+
     ```
+
   </Tab>
 
   <Tab title="output">
@@ -23680,7 +24888,9 @@ To use a local dataset, you'll need to transfer it to your Runpod instance. You 
 
     Receiving (<-149.36.0.243:8692)
     data.jsonl 100% |████████████████████| ( 5/ 5B, 0.040 kB/s)
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -23704,7 +24914,9 @@ Before you can start training, you'll need to install the necessary dependencies
   ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
   git clone https://github.com/OpenAccess-AI-Collective/axolotl
   cd axolotl
+
   ```
+
 </Info>
 
 1. Install the required packages by running the following commands:
@@ -23712,6 +24924,7 @@ Before you can start training, you'll need to install the necessary dependencies
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 pip3 install packaging ninja
 pip3 install -e '.[flash-attn,deepspeed]'
+
 ```
 
 2. Update the `lora.yml` configuration file with your dataset path and other training settings. You can use any of the examples in the `examples` folder as a starting point.
@@ -23720,6 +24933,7 @@ pip3 install -e '.[flash-attn,deepspeed]'
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 CUDA_VISIBLE_DEVICES=""
 python -m axolotl.cli.preprocess examples/openllama-3b/lora.yml
+
 ```
 
 This step converts your dataset into a format that Axolotl can use for training.
@@ -23734,6 +24948,7 @@ Run the following command to fine-tune the base model.
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 accelerate launch -m axolotl.cli.train examples/openllama-3b/lora.yml
+
 ```
 
 This will start the training process using the settings specified in your `lora.yml` file. The training time will depend on factors like your model size, dataset size, and GPU type. Be prepared to wait a while, especially for larger models and datasets.
@@ -23746,6 +24961,7 @@ Once training is complete, you can test your fine-tuned model using the inferenc
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 accelerate launch -m axolotl.cli.inference examples/openllama-3b/lora.yml --lora_model_dir="./lora-out"
+
 ```
 
 This will allow you to interact with your model and see how it performs on new prompts. If you're satisfied with your model's performance, you can merge the LoRA weights with the base model using the `merge_lora` script.
@@ -23759,6 +24975,7 @@ Run the following command:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python3 -m axolotl.cli.merge_lora examples/openllama-3b/lora.yml \
     --lora_model_dir="./lora-out"
+
 ```
 
 This creates a standalone model that doesn't require LoRA layers for inference.
@@ -23771,23 +24988,26 @@ Finally, you can share your fine-tuned model with others by uploading it to Hugg
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 huggingface-cli login
+
 ```
 
 2. Create a new model repository on Hugging Face using `huggingface-cli`.
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 huggingface-cli repo create your_model_name --type model
+
 ```
 
 3. Then, use the `huggingface-cli upload` command to upload your merged model to the repository.
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 huggingface-cli upload your_model_name path_to_your_model
+
 ```
 
 With our model uploaded to Hugging Face, we've successfully completed the fine-tuning process and made our work available for others to use and build upon.
 
-## Conclusion
+## Conclusion (4)
 
 By following these steps and leveraging the power of Axolotl and Runpod, you can efficiently fine-tune LLMs to suit your specific use cases. The combination of Axolotl's user-friendly interface and Runpod's GPU resources makes the process more accessible and streamlined. Remember to explore the provided YAML examples to gain a deeper understanding of the various parameters and make appropriate adjustments for your own projects. With practice and experimentation, you can unlock the full potential of fine-tuned LLMs and create powerful, customized AI models.
 
@@ -23797,7 +25017,7 @@ Source: https://docs.runpod.io/tutorials/pods/run-fooocus
 
 
 
-## Overview
+## Overview (19)
 
 Fooocus is an open-source image generating model.
 
@@ -23805,7 +25025,7 @@ In this tutorial, you'll run Fooocus in a Jupyter Notebook and then launch the G
 
 Time to complete: \~5 minutes
 
-## Prerequisites
+## Prerequisites (9)
 
 The minimal requirement to run Fooocus is:
 
@@ -23820,8 +25040,8 @@ The minimal requirement to run Fooocus is:
 
 3. Search for a template that includes **Jupyter Notebook** and select **Deploy**.
 
-   * Select **Runpod Pytorch 2**.
-   * Ensure **Start Jupyter Notebook** is selected.
+* Select **Runpod Pytorch 2**.
+* Ensure **Start Jupyter Notebook** is selected.
 
 4. Select **Choose** and then **Deploy**.
 
@@ -23838,6 +25058,7 @@ The minimal requirement to run Fooocus is:
 !git clone https://github.com/lllyasviel/Fooocus.git
 %cd /workspace/Fooocus
 !python entry_with_update.py --share
+
 ```
 
 ## Launch UI
@@ -23846,6 +25067,7 @@ Look for the line:
 
 ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
 App started successful. Use the app with ....
+
 ```
 
 And select the link.
@@ -23866,7 +25088,7 @@ However, not everyone has access to the compute power needed to run these models
 
 In the following tutorial, you'll set up a Pod on a GPU, install and serve the Ollama model, and interact with it on the CLI.
 
-## Prerequisites
+## Prerequisites (10)
 
 The tutorial assumes you have a Runpod account with credits. No other prior knowledge is needed to complete this tutorial.
 
@@ -23907,12 +25129,14 @@ Now that your Pod is running, you can Log in to the web terminal. The web termin
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 apt update
 apt install lshw
+
 ```
 
 5. Run the following command to install Ollama and send to the background:
 
 ```javascript theme={"theme":{"light":"github-light","dark":"github-dark"}}
 (curl -fsSL https://ollama.com/install.sh | sh && ollama serve > ollama.log 2>&1) &
+
 ```
 
 This command fetches the Ollama installation script and executes it, setting up Ollama on your Pod. The `ollama serve` part starts the Ollama server, making it ready to serve AI models.
@@ -23927,6 +25151,7 @@ To run an AI model using Ollama, pass the model name to the `ollama run` command
 ollama run [model name]
 # ollama run llama2
 # ollama run mistral
+
 ```
 
 Replace `[model name]` with the name of the AI model you wish to deploy. For a complete list of models, see the [Ollama Library](https://ollama.com/library).
@@ -23939,21 +25164,24 @@ Optionally, you can set up an HTTP API request to interact with Ollama. This is 
 
 With Ollama set up and running, you can now interact with it using HTTP API requests. In step 1.4, you configured Ollama to listen on all network interfaces. This means you can use your Pod as a server to receive requests.
 
-**Get a list of models**
+### Get a list of models
 
 To list the local models available in Ollama, you can use the following GET request:
 
 <Tabs>
   <Tab title="cURl">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl https://{POD_ID}-11434.proxy.runpod.net/api/tags
     # curl https://cmko4ns22b84xo-11434.proxy.runpod.net/api/tags
+
     ```
 
     Replace `[your-pod-id]` with your actual Pod Id.
   </Tab>
 
   <Tab title="Output">
+
     ```json theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "models": [
@@ -23976,13 +25204,15 @@ To list the local models available in Ollama, you can use the following GET requ
         }
       ]
     }
+
     ```
+
   </Tab>
 </Tabs>
 
 Getting a list of available models is great, but how do you send an HTTP request to your Pod?
 
-**Make requests**
+### Make requests
 
 To make an HTTP request against your Pod, you can use the Ollama interface with your Pod Id.
 
@@ -23991,6 +25221,7 @@ curl -X POST https://{POD_ID}-11434.proxy.runpod.net/api/generate -d '{
   "model": "mistral",
   "prompt":"Here is a story about llamas eating grass"
  }'
+
 ```
 
 Replace `[your-pod-id]` with your actual Pod Id.
@@ -24019,7 +25250,7 @@ This tutorial shows how to deploy a Pod and use JupyterLab to generate text with
 [SmolLM3](https://huggingface.co/docs/transformers/en/model_doc/smollm3) is a family of small language models developed by Hugging Face that provides strong performance while being efficient enough to run on modest hardware.
 The 3B parameter model we'll use in this tutorial requires only 24 GB of VRAM, making it accessible for experimentation and development.
 
-## What you'll learn
+## What you'll learn (10)
 
 In this tutorial, you'll learn how to:
 
@@ -24029,7 +25260,7 @@ In this tutorial, you'll learn how to:
 * Use SmolLM3 for text generation in a Python notebook.
 * Configure model parameters for different use cases.
 
-## Requirements
+## Requirements (21)
 
 Before you begin, you'll need:
 
@@ -24045,9 +25276,9 @@ First, you'll deploy a Pod using the official Runpod PyTorch template:
 2. Click **Deploy** to create a new Pod.
 3. In the template selection, choose latest the **Runpod PyTorch** template (this should be the default setting).
 4. For GPU selection, choose any GPU with 24 GB or more VRAM. Good options include:
-   * RTX 4090 (24 GB VRAM)
-   * RTX A5000 (24 GB VRAM)
-   * L40 (48 GB VRAM)
+* RTX 4090 (24 GB VRAM)
+* RTX A5000 (24 GB VRAM)
+* L40 (48 GB VRAM)
 5. Keep all the other settings on their defaults.
 6. Click **Deploy On-Demand** to create your Pod.
 
@@ -24064,6 +25295,7 @@ Once your Pod is running, you'll need to install the `transformers` and `acceler
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 pip install transformers accelerate
+
 ```
 
 ## Step 3: Open JupyterLab
@@ -24107,6 +25339,7 @@ outputs = pipe(messages, max_new_tokens=500, do_sample=True, temperature=0.7, to
 
 # Print the generated response
 print(outputs[0]["generated_text"][-1]['content'])
+
 ```
 
 4. Run the cell by pressing <kbd>Cmd</kbd> + <kbd>Enter</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>Enter</kbd> (Windows) or clicking the **Run** button.
@@ -24144,6 +25377,7 @@ messages = [
 
 outputs = pipe(messages, max_new_tokens=300, do_sample=True, temperature=0.8)
 print(outputs[0]["generated_text"][-1]['content'])
+
 ```
 
 ### Adjust generation parameters
@@ -24161,6 +25395,7 @@ Try running this in a new cell to see how the output changes:
 # More focused and deterministic output
 outputs = pipe(messages, max_new_tokens=150, do_sample=True, temperature=0.3, top_p=0.9)
 print(outputs[0]["generated_text"][-1]['content'])
+
 ```
 
 ### Use single-turn prompts
@@ -24172,9 +25407,10 @@ You can also use SmolLM3 for simple text completion without the chat format:
 prompt = "The process of photosynthesis is crucial for life on Earth because it allows plants to convert"
 outputs = pipe(prompt, max_new_tokens=100, do_sample=True, temperature=0.3)
 print(outputs[0]["generated_text"])
+
 ```
 
-## Troubleshooting
+## Troubleshooting (16)
 
 Here are solutions to common issues:
 
@@ -24183,7 +25419,7 @@ Here are solutions to common issues:
 * **JupyterLab not accessible**: Wait a few minutes after Pod deployment for services to fully start. If the JupyterLab tab is blank when you open it, try stopping and then restarting the Pod.
 * **Import errors**: Make sure you installed the packages in step 2 using the web terminal.
 
-## Next steps
+## Next steps (26)
 
 Now that you have SmolLM3 running, you can explore more advanced use cases:
 
@@ -24213,6 +25449,7 @@ First, import the necessary libraries:
 import runpod
 import time
 import random
+
 ```
 
 ### Create Helper Functions
@@ -24234,6 +25471,7 @@ def detect_objects(image_url):
     detected = random.sample(objects, random.randint(1, 4))
     confidences = [random.uniform(0.7, 0.99) for _ in detected]
     return [f"{obj}: {conf:.2f}" for obj, conf in zip(detected, confidences)]
+
 ```
 
 These functions:
@@ -24266,6 +25504,7 @@ def handler(job):
         yield result
 
     return results
+
 ```
 
 This handler:
@@ -24292,6 +25531,7 @@ def start_handler():
 
 if __name__ == "__main__":
     start_handler()
+
 ```
 
 This setup:
@@ -24359,6 +25599,7 @@ def start_handler():
 
 if __name__ == "__main__":
     start_handler()
+
 ```
 
 ## Testing your Serverless Function
@@ -24379,6 +25620,7 @@ python your_script.py --test_input '
     ]
   }
 }'
+
 ```
 
 For object detection:
@@ -24395,6 +25637,7 @@ python your_script.py --test_input '
     ]
   }
 }'
+
 ```
 
 ### Understanding the output
@@ -24411,6 +25654,7 @@ DEBUG  | local_test | run_job return: {'output': ['Sentiment: Positive, Score: 0
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': ['Sentiment: Positive, Score: 0.85', 'Sentiment: Negative, Score: -0.72', 'Sentiment: Neutral, Score: 0.12']}
 INFO   | Local testing complete, exiting.
+
 ```
 
 This output demonstrates:
@@ -24419,7 +25663,7 @@ This output demonstrates:
 2. The handler generating results for each input item
 3. The aggregation of results into a single list
 
-## Conclusion
+## Conclusion (5)
 
 You've now created a serverless function using Runpod's Python SDK that demonstrates efficient output aggregation for both local testing and production environments. This approach simplifies result handling and ensures consistent behavior across different execution contexts.
 
@@ -24443,7 +25687,7 @@ Use asynchronous functions to handle multiple concurrent operations efficiently,
 
 We'll use an async generator handler to stream results incrementally, demonstrating how to manage multiple concurrent operations efficiently in a serverless environment.
 
-## Setting up your Serverless Function
+## Setting up your Serverless Function (2)
 
 Let's break down the process of creating our weather data simulator into steps.
 
@@ -24457,6 +25701,7 @@ import asyncio
 import random
 import json
 import sys
+
 ```
 
 ### Create the Weather Data Fetcher
@@ -24473,6 +25718,7 @@ async def fetch_weather_data(city, delay):
         "temperature": round(temperature, 1),
         "humidity": round(humidity, 1)
     }
+
 ```
 
 This function:
@@ -24509,6 +25755,7 @@ async def async_generator_handler(job):
         await asyncio.sleep(update_interval)
 
     yield {"status": "completed", "message": "Weather monitoring completed"}
+
 ```
 
 This handler:
@@ -24536,11 +25783,12 @@ if __name__ == "__main__":
             "handler": async_generator_handler,
             "return_aggregate_stream": True
         })
+
 ```
 
 This block allows for both local testing and deployment as a Runpod serverless function.
 
-## Complete code example
+## Complete code example (2)
 
 Here's the full code for our serverless weather data simulator:
 
@@ -24606,6 +25854,7 @@ if __name__ == "__main__":
             "handler": async_generator_handler,
             "return_aggregate_stream": True
         })
+
 ```
 
 ## Testing Your Serverless Function
@@ -24622,9 +25871,10 @@ python your_script.py --test_input '
   },
   "id": "local_test"
 }'
+
 ```
 
-### Understanding the output
+### Understanding the output (2)
 
 When you run the test, you'll see output similar to this:
 
@@ -24637,6 +25887,7 @@ Monitoring cities: New York, London, Tokyo, Paris, Sydney
 {"timestamp": 1.8, "data": {"city": "Sydney", "temperature": 26.8, "humidity": 91.0}}
 {"timestamp": 1.99, "data": {"city": "New York", "temperature": 35.9, "humidity": 27.5}}
 {"status": "completed", "message": "Weather monitoring completed"}
+
 ```
 
 This output demonstrates:
@@ -24645,7 +25896,7 @@ This output demonstrates:
 2. Real-time updates with timestamps
 3. A completion message when the monitoring duration is reached
 
-## Conclusion
+## Conclusion (6)
 
 You've now created a serverless function using Runpod's Python SDK that simulates concurrent weather data fetching for multiple cities. This example showcases how to handle multiple asynchronous operations and stream results incrementally in a serverless environment.
 
@@ -24669,7 +25920,7 @@ Proper error handling ensures that your serverless functions can handle unexpect
 
 We'll create a simulated image classification model to demonstrate these crucial practices, ensuring your serverless deployments are robust and maintainable.
 
-## Setting up your Serverless Function
+## Setting up your Serverless Function (3)
 
 Let's break down the process of creating our error-aware image classifier into steps.
 
@@ -24684,9 +25935,10 @@ import time
 import random
 
 log = RunPodLogger()
+
 ```
 
-### Create Helper Functions
+### Create Helper Functions (2)
 
 Define functions to simulate various parts of the image classification process:
 
@@ -24711,6 +25963,7 @@ def classify_image(model, preprocessed_image):
     confidence = random.uniform(0.7, 0.99)
     predicted_class = random.choice(classes)
     return predicted_class, confidence
+
 ```
 
 These functions:
@@ -24778,6 +26031,7 @@ def handler(job):
     except Exception as e:
         log.error(f"An error occurred: {str(e)}")
         return {"error": str(e)}
+
 ```
 
 This handler:
@@ -24793,9 +26047,10 @@ Finally, start the Runpod serverless function:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": handler})
+
 ```
 
-## Complete code example
+## Complete code example (3)
 
 Here's the full code for our error-aware image classification simulator:
 
@@ -24887,9 +26142,10 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
-## Testing Your Serverless Function
+## Testing Your Serverless Function (2)
 
 To test your function locally, use this command:
 
@@ -24906,9 +26162,10 @@ python your_script.py --test_input '{
         "mock_error": false
     }
 }'
+
 ```
 
-### Understanding the output
+### Understanding the output (3)
 
 When you run the test, you'll see output similar to this:
 
@@ -24933,6 +26190,7 @@ When you run the test, you'll see output similar to this:
     }
   ]
 }
+
 ```
 
 This output demonstrates:
@@ -24941,7 +26199,7 @@ This output demonstrates:
 2. Random classification results for each image
 3. The overall success status of the job
 
-## Conclusion
+## Conclusion (7)
 
 You've now created a serverless function using Runpod's Python SDK that demonstrates effective error handling and logging practices. This approach ensures that your serverless functions are robust, maintainable, and easier to debug.
 
@@ -24963,11 +26221,11 @@ This tutorial will guide you through creating a serverless function using Runpod
 
 A streaming handler in the Runpod's Python SDK is a special type of function that allows you to iterate over a sequence of values lazily. Instead of returning a single value and exiting, a streaming handler yields multiple values, one at a time, pausing the function's state between each yield. This is particularly useful for handling large data streams or long-running tasks, as it allows the function to produce and return results incrementally, rather than waiting until the entire process is complete.
 
-## Setting up your Serverless Function
+## Setting up your Serverless Function (4)
 
 Let's break down the process of creating our TTS simulator into steps.
 
-### Import required libraries
+### Import required libraries (2)
 
 First, import the necessary libraries:
 
@@ -24977,6 +26235,7 @@ import time
 import re
 import json
 import sys
+
 ```
 
 ### Create the TTS Simulator
@@ -24992,6 +26251,7 @@ def text_to_speech_simulator(text, chunk_size=5, delay=0.5):
         audio_chunk = f"Audio chunk {i//chunk_size + 1}: {' '.join(chunk)}"
         time.sleep(delay)  # Simulate processing time
         yield audio_chunk
+
 ```
 
 This function:
@@ -25019,6 +26279,7 @@ def streaming_handler(job):
         yield {"status": "processing", "chunk": audio_chunk}
     
     yield {"status": "completed", "message": "Text-to-speech conversion completed"}
+
 ```
 
 This handler:
@@ -25038,11 +26299,12 @@ if __name__ == "__main__":
         # Code for local testing (see full example)
     else:
         runpod.serverless.start({"handler": streaming_handler, "return_aggregate_stream": True})
+
 ```
 
 This block allows for both local testing and deployment as a Runpod serverless function.
 
-## Complete code example
+## Complete code example (4)
 
 Here's the full code for our serverless TTS simulator using a streaming handler:
 
@@ -25092,9 +26354,10 @@ if __name__ == "__main__":
             print("Error: --test_input requires a JSON string argument")
     else:
         runpod.serverless.start({"handler": streaming_handler, "return_aggregate_stream": True})
+
 ```
 
-## Testing your Serverless Function
+## Testing your Serverless Function (2)
 
 To test your function locally, use this command:
 
@@ -25108,9 +26371,10 @@ python your_script.py --test_input '
   },
   "id": "local_test"
 }'
+
 ```
 
-### Understanding the output
+### Understanding the output (4)
 
 When you run the test, you'll see output similar to this:
 
@@ -25123,6 +26387,7 @@ When you run the test, you'll see output similar to this:
 {"status": "processing", "chunk": "Audio chunk 6: and simulates audio"}
 {"status": "processing", "chunk": "Audio chunk 7: generation"}
 {"status": "completed", "message": "Text-to-speech conversion completed"}
+
 ```
 
 This output demonstrates:
@@ -25131,7 +26396,7 @@ This output demonstrates:
 2. Real-time status updates for each chunk
 3. A completion message when the entire text is processed
 
-## Conclusion
+## Conclusion (8)
 
 You've now created a serverless function using Runpod's Python SDK that simulates a streaming text-to-speech process. This example showcases how to handle long-running tasks and stream results incrementally in a serverless environment.
 
@@ -25163,6 +26428,7 @@ Import the Runpod library:
 
 ```python is_even.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import runpod
+
 ```
 
 ### Define your function
@@ -25178,6 +26444,7 @@ def is_even(job):
         return {"error": "Please provide an integer."}
 
     return the_number % 2 == 0
+
 ```
 
 This function:
@@ -25193,11 +26460,12 @@ Wrap your function with `runpod.serverless.start()`:
 
 ```python is_even.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": is_even})
+
 ```
 
 This line initializes the serverless function with your specified handler.
 
-## Complete code example
+## Complete code example (5)
 
 Here's the full code for our serverless function:
 
@@ -25216,14 +26484,16 @@ def is_even(job):
 
 
 runpod.serverless.start({"handler": is_even})
+
 ```
 
-## Testing your Serverless Function
+## Testing your Serverless Function (3)
 
 To test your function locally, use the following command:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python is_even.py --test_input '{"input": {"number": 2}}'
+
 ```
 
 When you run the test, you'll see output similar to this:
@@ -25238,6 +26508,7 @@ DEBUG  | some-id | run_job return: {'output': True}
 INFO   | Job some-id completed successfully.
 INFO   | Job result: {'output': True}
 INFO   | Local testing complete, exiting.
+
 ```
 
 This output indicates that:
@@ -25247,7 +26518,7 @@ This output indicates that:
 3. The function processed the input and returned `True` (as 2 is even)
 4. The job completed successfully
 
-## Conclusion
+## Conclusion (9)
 
 You've now created a basic serverless function using Runpod's Python SDK. This approach allows for efficient, scalable deployment of functions without the need to manage infrastructure.
 
@@ -25267,7 +26538,7 @@ Source: https://docs.runpod.io/tutorials/sdks/python/101/local-server-testing
 
 This tutorial will guide you through creating a basic serverless function using Runpod's Python SDK. We'll build a function that reverses a given string, demonstrating the simplicity and flexibility of Runpod's serverless architecture.
 
-## Setting up your Serverless Function
+## Setting up your Serverless Function (5)
 
 Let's break down the process of creating our string reversal function into steps.
 
@@ -25277,6 +26548,7 @@ First, import the Runpod library:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import runpod
+
 ```
 
 ### Define utility function
@@ -25286,6 +26558,7 @@ Create a utility function to reverse the string:
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 def reverse_string(s):
     return s[::-1]
+
 ```
 
 This function uses Python's slicing feature to efficiently reverse the input string.
@@ -25309,6 +26582,7 @@ def handler(job):
     job_output = {"original_text": input_string, "reversed_text": reversed_string}
 
     return job_output
+
 ```
 
 This handler:
@@ -25319,17 +26593,18 @@ This handler:
 4. Reverses the string using our utility function
 5. Prepares and returns the output
 
-### Start the Serverless Function
+### Start the Serverless Function (2)
 
 Finally, start the Runpod serverless worker:
 
 ```python theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": handler})
+
 ```
 
 This line registers our handler function with Runpod's serverless infrastructure.
 
-## Complete code example
+## Complete code example (6)
 
 Here's the full code for our serverless string reversal function:
 
@@ -25358,9 +26633,10 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
-## Testing Your Serverless Function
+## Testing Your Serverless Function (3)
 
 Runpod provides multiple ways to test your serverless function locally before deployment. We'll explore two methods: using command-line arguments and running a local test server.
 
@@ -25370,6 +26646,7 @@ To quickly test your function using command-line arguments, use this command:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python your_script.py --test_input '{"input": {"text": "Hello, Runpod!"}}'
+
 ```
 
 When you run this test, you'll see output similar to:
@@ -25385,6 +26662,7 @@ DEBUG  | local_test | run_job return: {'output': {'original_text': 'Hello, Runpo
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': {'original_text': 'Hello, Runpod!', 'reversed_text': '!doPnuR ,olleH'}}
 INFO   | Local testing complete, exiting.
+
 ```
 
 This output shows the serverless worker starting, processing the job, and returning the result.
@@ -25397,6 +26675,7 @@ To start the local test server, use the `--rp_serve_api` flag:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python your_script.py --rp_serve_api
+
 ```
 
 This command starts a FastAPI server on your local machine, accessible at `http://localhost:8000`.
@@ -25411,6 +26690,7 @@ Example using `curl`:
 curl -X POST http://localhost:8000/run \
      -H "Content-Type: application/json" \
      -d '{"input": {"text": "Hello, Runpod!"}}'
+
 ```
 
 This will send a POST request to your local server with the input data, simulating how your function would be called in a production environment.
@@ -25427,11 +26707,12 @@ string-reverser | Starting job local_test
 DEBUG    | local_test | Handler output: {'original_text': 'Hello, Runpod!', 'reversed_text': '!doPnuR ,olleH'}
 DEBUG    | local_test | run_job return: {'output': {'original_text': 'Hello, Runpod!', 'reversed_text': '!doPnuR ,olleH'}}
 INFO     | Job local_test completed successfully.
+
 ```
 
 This output provides detailed information about how your function processes the request, which can be invaluable for debugging and optimizing your serverless function.
 
-## Conclusion
+## Conclusion (10)
 
 You've now created a basic serverless function using Runpod's Python SDK that reverses input strings and learned how to test it using both command-line arguments and a local test server. This example demonstrates how easy it is to deploy and validate simple text processing tasks as serverless functions.
 
@@ -25461,6 +26742,7 @@ Execute the following command in your terminal to install the required libraries
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 pip install torch transformers
+
 ```
 
 This command installs the `torch` and `transformers` libraries. `torch` is used for creating and running models, and `transformers` provides pre-trained models.
@@ -25472,6 +26754,7 @@ Next, we need to import the libraries into our Python script. Create a new Pytho
 ```python sentiment_analysis.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 import runpod
 from transformers import pipeline
+
 ```
 
 These imports bring in the `runpod` SDK for serverless functions and the `pipeline` method from `transformers`, which allows us to use pre-trained models.
@@ -25485,6 +26768,7 @@ def load_model():
     return pipeline(
         "sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english"
     )
+
 ```
 
 In this function, we use the `pipeline` method from `transformers` to load a pre-trained sentiment analysis model. The `distilbert-base-uncased-finetuned-sst-2-english` model is a distilled version of BERT fine-tuned for sentiment analysis tasks.
@@ -25512,6 +26796,7 @@ def sentiment_analysis_handler(event):
     result = model(text)[0]
 
     return {"sentiment": result["label"], "score": float(result["score"])}
+
 ```
 
 This function performs the following steps:
@@ -25528,6 +26813,7 @@ To run our sentiment analysis function as a serverless worker, we need to start 
 
 ```python sentiment_analysis.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": sentiment_analysis_handler})
+
 ```
 
 This command starts the serverless worker and specifies `sentiment_analysis_handler` as the handler function for incoming requests.
@@ -25564,6 +26850,7 @@ def sentiment_analysis_handler(event):
 
 
 runpod.serverless.start({"handler": sentiment_analysis_handler})
+
 ```
 
 ### Testing Locally
@@ -25576,12 +26863,15 @@ To test this function locally, create a file named `test_input.json` with the fo
     "text": "I love using Runpod for serverless machine learning!"
   }
 }
+
 ```
 
 Run the following command in your terminal to test the function:
 
 ```
+
 python sentiment_analysis.py --rp_server_api
+
 ```
 
 You should see output similar to the following, indicating that the sentiment analysis function is working correctly:
@@ -25600,9 +26890,10 @@ DEBUG  | local_test | run_job return: {'output': {'sentiment': 'POSITIVE', 'scor
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': {'sentiment': 'POSITIVE', 'score': 0.9889019727706909}}
 INFO   | Local testing complete, exiting.
+
 ```
 
-## Conclusion
+## Conclusion (11)
 
 In this tutorial, you learned how to integrate a pre-trained Hugging Face model into a Runpod serverless function to perform sentiment analysis on text input.
 
@@ -25622,7 +26913,7 @@ Text-to-image generation using advanced AI models offers a unique way to bring t
 
 By the end of this guide, you will have a fully functional text-to-image generation system deployed on a Runpod serverless environment.
 
-## Prerequisites
+## Prerequisites (11)
 
 Before diving into the setup, ensure you have the following:
 
@@ -25630,7 +26921,7 @@ Before diving into the setup, ensure you have the following:
 * A GPU instance configured on Runpod
 * Basic knowledge of Python programming
 
-## Import required libraries
+## Import required libraries (3)
 
 To start, we need to import several essential libraries. These will provide the functionalities required for serverless operation and image generation.
 
@@ -25640,6 +26931,7 @@ import torch
 from diffusers import StableDiffusionPipeline
 from io import BytesIO
 import base64
+
 ```
 
 Here’s a breakdown of the imports:
@@ -25655,6 +26947,7 @@ Next, confirm that CUDA is available, as the model requires a GPU to function ef
 assert (
     torch.cuda.is_available()
 ), "CUDA is not available. Make sure you have a GPU instance."
+
 ```
 
 This assertion checks whether a compatible NVIDIA GPU is available for PyTorch to use.
@@ -25669,6 +26962,7 @@ def load_model():
     pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
     pipe = pipe.to("cuda")
     return pipe
+
 ```
 
 Here's what this function does:
@@ -25686,6 +26980,7 @@ def image_to_base64(image):
     buffered = BytesIO()
     image.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode("utf-8")
+
 ```
 
 Explanation:
@@ -25693,7 +26988,7 @@ Explanation:
 * `BytesIO`: Creates an in-memory binary stream to which the image is saved.
 * `base64.b64encode`: Encodes the binary data to a base64 format, which is then decoded to a UTF-8 string.
 
-## Define the Handler Function
+## Define the Handler Function (2)
 
 The handler function will be responsible for managing image generation requests. It includes loading the model (if not already loaded), validating inputs, generating images, and converting them to base64 strings.
 
@@ -25723,6 +27018,7 @@ def stable_diffusion_handler(event):
 
     except Exception as e:
         return {"error": str(e)}
+
 ```
 
 Key steps in the function:
@@ -25733,17 +27029,18 @@ Key steps in the function:
 * Uses the `model` to generate an image.
 * Converts the image to base64 and prepares the response.
 
-## Start the Serverless Worker
+## Start the Serverless Worker (2)
 
 Now, we'll start the serverless worker using the Runpod SDK.
 
 ```python stable_diffusion.py theme={"theme":{"light":"github-light","dark":"github-dark"}}
 runpod.serverless.start({"handler": stable_diffusion_handler})
+
 ```
 
 This command starts the serverless worker and specifies the `stable_diffusion_handler` function to handle incoming requests.
 
-## Complete Code
+## Complete Code (2)
 
 For your convenience, here is the entire code consolidated:
 
@@ -25795,9 +27092,10 @@ def stable_diffusion_handler(event):
 
 
 runpod.serverless.start({"handler": stable_diffusion_handler})
+
 ```
 
-## Testing Locally
+## Testing Locally (2)
 
 Before deploying on Runpod, you might want to test the script locally. Create a `test_input.json` file with the following content:
 
@@ -25807,12 +27105,15 @@ Before deploying on Runpod, you might want to test the script locally. Create a 
     "prompt": "A serene landscape with mountains and a lake at sunset"
   }
 }
+
 ```
 
 Run the script with the following command:
 
 ```
+
 python stable_diffusion.py --rp_server_api
+
 ```
 
 Note: Local testing may not work optimally without a suitable GPU. If issues arise, proceed to deploy and test on Runpod.
@@ -25826,7 +27127,7 @@ Note: Local testing may not work optimally without a suitable GPU. If issues ari
 5. Ensure necessary dependencies (like `torch`, `diffusers`) are included in your environment or requirements file when deploying.
 6. The generated image is returned as a base64-encoded string. For practical applications, consider saving it to a file or cloud storage.
 
-### Conclusion
+### Conclusion (12)
 
 In this tutorial, you learned how to use the Runpod serverless platform with Stable Diffusion to create a text-to-image generation system. This project showcases the potential for deploying resource-intensive AI models in a serverless architecture using the Runpod Python SDK. You now have the skills to create and deploy sophisticated AI applications on Runpod. What will you create next?
 
@@ -25857,6 +27158,7 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
 ```
 
 Let's break this down:
@@ -25879,7 +27181,7 @@ And there you have it! You've just created your first Runpod serverless function
 * You can easily access input data from the job parameter.
 * The `runpod.serverless.start()` function gets your serverless worker up and running.
 
-## Next steps
+## Next steps (27)
 
 You've now got a basic `Hello, World!` Runpod serverless function up and running. You've learned how to handle input and output in a serverless environment and how to start your application.
 
@@ -25897,7 +27199,7 @@ The Runpod Python SDK helps you develop Serverless AI applications so that you c
 
 This series of tutorials will deepen your understanding of Serverless principles and the practical knowledge to use the Runpod Python SDK in your AI applications.
 
-## Prerequisites
+## Prerequisites (12)
 
 To follow along with this guide, you should have:
 
@@ -25925,59 +27227,59 @@ Here's a brief overview of each tutorial:
 
 1. [Prerequisites and setup](/tutorials/sdks/python/get-started/prerequisites):
 
-   * Installing Python and setting up a virtual environment
-   * Installing the Runpod SDK
-   * Configuring your Runpod account
+* Installing Python and setting up a virtual environment
+* Installing the Runpod SDK
+* Configuring your Runpod account
 
 2. [Hello World: Your first Runpod function](/tutorials/sdks/python/get-started/hello-world):
 
-   * Creating a basic handler function
-   * Understanding job input and output
-   * Starting the Serverless worker
+* Creating a basic handler function
+* Understanding job input and output
+* Starting the Serverless worker
 
 3. [Running and testing locally](/tutorials/sdks/python/get-started/running-locally):
 
-   * Testing with JSON input files
-   * Interpreting local test output
+* Testing with JSON input files
+* Interpreting local test output
 
 4. [Runpod functions](/tutorials/sdks/python/101/hello):
 
-   * Creating a basic handler function
-   * Understanding job input and output
-   * Starting the Serverless worker
-   * Testing with command-line arguments
+* Creating a basic handler function
+* Understanding job input and output
+* Starting the Serverless worker
+* Testing with command-line arguments
 
 5. [Using a Local Server](/tutorials/sdks/python/101/local-server-testing):
 
-   * Setting up a local test server
-   * Sending HTTP requests to your local function
-   * Understanding server output and debugging
-   * Comparing command-line and server-based testing
+* Setting up a local test server
+* Sending HTTP requests to your local function
+* Understanding server output and debugging
+* Comparing command-line and server-based testing
 
 6. [Building a Generator Handler for Streaming Results](/tutorials/sdks/python/101/generator):
 
-   * Understanding generator functions in Runpod's SDK
-   * Creating a text-to-speech simulator with streaming output
-   * Implementing a generator handler for incremental processing
-   * Testing and debugging generator-based Serverless functions
+* Understanding generator functions in Runpod's SDK
+* Creating a text-to-speech simulator with streaming output
+* Implementing a generator handler for incremental processing
+* Testing and debugging generator-based Serverless functions
 
 7. [Advanced Handler Techniques](/tutorials/sdks/python/101/async):
 
-   * Synchronous vs asynchronous handlers
-   * Using generator functions for streaming output
-   * Handling multiple inputs and complex data structures
+* Synchronous vs asynchronous handlers
+* Using generator functions for streaming output
+* Handling multiple inputs and complex data structures
 
 8. [Error Handling and Logging](/tutorials/sdks/python/101/error):
 
-   * Implementing try-except blocks in handlers
-   * Using Runpod's logging system
-   * Best practices for error management in Serverless functions
+* Implementing try-except blocks in handlers
+* Using Runpod's logging system
+* Best practices for error management in Serverless functions
 
 9. [Hugging Face Integration](/tutorials/sdks/python/102/huggingface-models):
 
-   * Installing and importing external libraries
-   * Loading and using a Hugging Face model
-   * Optimizing model loading for Serverless environments
+* Installing and importing external libraries
+* Loading and using a Hugging Face model
+* Optimizing model loading for Serverless environments
 
 10. [Stable Diffusion](/tutorials/sdks/python/102/stable-diffusion-text-to-image):
 
@@ -25987,7 +27289,7 @@ Here's a brief overview of each tutorial:
 Now, move on to the [prerequisites](/tutorials/sdks/python/get-started/prerequisites) and then set up [your first “Hello World”](/tutorials/sdks/python/get-started/hello-world) application with Runpod Python SDK.
 
 
-# Prerequisites
+# Prerequisites (13)
 Source: https://docs.runpod.io/tutorials/sdks/python/get-started/prerequisites
 
 
@@ -25998,14 +27300,14 @@ In this guide, you will learn how to the Runpod library.
 
 When you're finished, you'll have a fully prepared environment to begin developing your serverless AI applications with Runpod.
 
-## Prerequisites
+## Prerequisites (14)
 
 Before beginning, ensure your system meets the following requirements:
 
 * **Python 3.8 or later**: This is the programming language in which you'll be writing your Runpod applications.
 * **Access to a terminal or command prompt**: This will be used to run various commands throughout this tutorial.
 
-## Install Python
+## Install Python (2)
 
 First, you need to have Python installed on your system. Python is a programming language that's widely used in various types of software development and what is used to develop with the Runpod Python SDK.
 
@@ -26031,28 +27333,32 @@ Here’s how you can set up a virtual environment:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    cd path/to/your/project
+
    ```
 
 3. Create a virtual environment named `venv` by running the following command:
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    python -m venv venv
+
    ```
 
 This command uses Python's built-in `venv` module to create a virtual environment.
 
 4. Activate the virtual environment:
 
-   * On Windows, use:
+* On Windows, use:
 
      ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
      venv\Scripts\activate
+
      ```
 
-   * On macOS and Linux, use:
+* On macOS and Linux, use:
 
      ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
      source venv/bin/activate
+
      ```
 
 Activating the virtual environment ensures that any Python packages you install will be confined to this environment.
@@ -26067,6 +27373,7 @@ To install the Runpod library, execute:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 pip install runpod
+
 ```
 
 This command uses `pip`, Python's package installer, to download and install the latest version of the Runpod SDK.
@@ -26077,6 +27384,7 @@ It's essential to confirm that the Runpod library has been installed correctly. 
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python -c "import runpod; print(runpod.__version__)"
+
 ```
 
 If everything is set up correctly, this command will output the version number of the installed Runpod SDK.
@@ -26084,7 +27392,9 @@ If everything is set up correctly, this command will output the version number o
 For example:
 
 ```
+
 1.6.2
+
 ```
 
 You have now successfully set up your development environment. Your system is equipped with Python, a virtual environment, and the Runpod library.
@@ -26115,7 +27425,7 @@ When you run your code locally using the Runpod Python SDK, here's what happens 
 
 Let's walk through how to run your serverless functions locally using the Runpod Python SDK.
 
-**Options for Passing Information to Your API**
+### Options for Passing Information to Your API
 
 The Runpod Python SDK offers two main methods for sending data to your local FastAPI server:
 
@@ -26136,6 +27446,7 @@ Both methods allow you to simulate how your function would receive data in the a
        "name": "World"
      }
    }
+
    ```
 
 2. Run the serverless function:
@@ -26144,6 +27455,7 @@ Both methods allow you to simulate how your function would receive data in the a
 
    ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
    python hello_world.py --rp_server_api
+
    ```
 
    The SDK will automatically look for and use the `test_input.json` file in the current directory.
@@ -26154,11 +27466,12 @@ You can also pass your test data directly via the command line:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python hello_world.py --test_input '{"input": {"name": "World"}}'
+
 ```
 
 This method is useful for quick tests or when you want to vary the input without editing a file.
 
-### Understanding the output
+### Understanding the output (5)
 
 When you run your function locally, you'll see output similar to this:
 
@@ -26172,6 +27485,7 @@ DEBUG  | local_test | run_job return: {'output': 'Hello World!'}
 INFO   | Job local_test completed successfully.
 INFO   | Job result: {'output': 'Hello World!'}
 INFO   | Local testing complete, exiting.
+
 ```
 
 This output provides valuable information:
@@ -26183,7 +27497,7 @@ This output provides valuable information:
 
 By analyzing this output, you can verify that your function is behaving as expected and debug any issues that arise.
 
-### Key Takeaways
+### Key Takeaways (2)
 
 * Local testing with the Runpod Python SDK allows you to simulate the cloud environment on your machine.
 * The SDK creates a FastAPI server to mock the serverless function execution.
@@ -26202,7 +27516,7 @@ In this tutorial, you will learn how to deploy a Serverless endpoint running [Co
 
 [Runpod's Serverless platform](/serverless/overview) allows you to run AI/ML models in the cloud without managing infrastructure, automatically scaling resources as needed. ComfyUI is a powerful node-based interface for Stable Diffusion that provides fine-grained control over the image generation process through customizable workflows.
 
-## What you'll learn
+## What you'll learn (11)
 
 In this tutorial you'll learn:
 
@@ -26212,7 +27526,7 @@ In this tutorial you'll learn:
 * How to generate images using the FLUX.1-dev-fp8 model.
 * How to decode the base64 output to retrieve the generated image.
 
-## Requirements
+## Requirements (22)
 
 Before starting this tutorial you'll need:
 
@@ -26230,11 +27544,11 @@ Before starting this tutorial you'll need:
 
   If you want to use a different model, you can also [deploy the endpoint](https://github.com/runpod-workers/worker-comfyui/blob/main/docs/deployment.md) using one of these pre-defined Docker images:
 
-  * `runpod/worker-comfyui:<version>-base` - Clean ComfyUI install with no models.
-  * `runpod/worker-comfyui:<version>-flux1-schnell` - FLUX.1 schnell model.
-  * `runpod/worker-comfyui:<version>-flux1-dev` - FLUX.1 dev model.
-  * `runpod/worker-comfyui:<version>-sdxl` - Stable Diffusion XL model.
-  * `runpod/worker-comfyui:<version>-sd3` - Stable Diffusion 3 medium model.
+* `runpod/worker-comfyui:<version>-base` - Clean ComfyUI install with no models.
+* `runpod/worker-comfyui:<version>-flux1-schnell` - FLUX.1 schnell model.
+* `runpod/worker-comfyui:<version>-flux1-dev` - FLUX.1 dev model.
+* `runpod/worker-comfyui:<version>-sdxl` - Stable Diffusion XL model.
+* `runpod/worker-comfyui:<version>-sd3` - Stable Diffusion 3 medium model.
 
   Replace `<version>` with the latest release version from GitHub Releases.
 
@@ -26367,6 +27681,7 @@ On your local machine, create a file called `comfyui_workflow.json` with the fol
     }
   }
 }
+
 ```
 
 This workflow defines a complete image generation pipeline using the FLUX.1-dev-fp8 model. Key components include:
@@ -26390,6 +27705,7 @@ curl -X POST https://api.runpod.ai/v2/ENDPOINT_ID/run \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_API_KEY' \
     -d @comfyui_workflow.json
+
 ```
 
 The API will respond immediately with a job ID and status. You'll receive a response similar to this:
@@ -26399,6 +27715,7 @@ The API will respond immediately with a job ID and status. You'll receive a resp
   "id": "c80ffee4-f315-4e25-a146-0f3d98cf024b",
   "status": "IN_QUEUE"
 }
+
 ```
 
 The job ID is crucial for tracking your request's progress. Save this ID as you'll need it to check the status and retrieve results.
@@ -26413,6 +27730,7 @@ Use the following command to check your job's progress, replacing the placeholde
 curl https://api.runpod.ai/v2/ENDPOINT_ID/status/JOB_ID \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_API_KEY'
+
 ```
 
 While your job is processing, you'll receive a response indicating the current status:
@@ -26433,6 +27751,7 @@ While your job is processing, you'll receive a response indicating the current s
   },
   "status": "IN_PROGRESS"
 }
+
 ```
 
 The `delayTime` field shows how long the job waited in the queue before processing began, measured in milliseconds.
@@ -26454,6 +27773,7 @@ When your job finishes successfully, you'll receive a response containing the ou
   },
   "status": "COMPLETED"
 }
+
 ```
 
 The `executionTime` field shows how long the actual image generation took, while `delayTime` indicates the initial queue wait time. Both values are in milliseconds.
@@ -26464,6 +27784,7 @@ To save the complete response for processing, use this command:
 curl https://api.runpod.ai/v2/ENDPOINT_ID/status/JOB_ID \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_API_KEY' | jq . > comfyui_output.json
+
 ```
 
 <Warning>
@@ -26529,12 +27850,14 @@ def decode_comfyui_json_and_save_image(json_filepath, output_filename="comfyui_g
 
 # Process the comfyui_output.json file
 decode_comfyui_json_and_save_image("comfyui_output.json", "comfyui_generated_image.png")
+
 ```
 
 Run the script to decode the image data and save it as a PNG file:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python decode_comfyui_image.py
+
 ```
 
 You should see the following output:
@@ -26542,6 +27865,7 @@ You should see the following output:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 ComfyUI image successfully saved as 'comfyui_generated_image.png'
 Image path: /Users/path/to/your/project/comfyui_generated_image.png
+
 ```
 
 Congratulations! You've successfully used Runpod's Serverless platform to generate an AI image using ComfyUI with the FLUX.1-dev-fp8 model. You now understand the complete workflow for submitting ComfyUI jobs, monitoring their progress, and retrieving results.
@@ -26558,7 +27882,7 @@ You can create custom workflows by modifying node parameters or [opening the Com
 
 To learn more about creating your own ComfyUI workflows, see the [ComfyUI documentation](https://docs.comfy.org/development/core-concepts/workflow).
 
-## Next steps
+## Next steps (28)
 
 Now that you've learned how to generate images with ComfyUI on Serverless, you can explore advanced configuration options for the ComfyUI Serverless worker on the [runpod-workers/worker-comfyui](https://github.com/runpod-workers/worker-comfyui) GitHub repository.
 
@@ -26576,7 +27900,7 @@ By the end of this tutorial, you'll have an understanding of running a Serverles
 
 You can proceed with the tutorial by following the build steps outlined here or skip directly to [Deploy a Serverless Endpoint](#deploy-a-serverless-endpoint) section.
 
-## Prerequisites
+## Prerequisites (15)
 
 This section presumes you have an understanding of the terminal and can execute commands from your terminal.
 
@@ -26617,24 +27941,28 @@ Building a Docker image allows you to specify the container when creating a Work
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 gh repo clone runpod-workers/worker-sdxl-turbo
+
 ```
 
 2. Navigate to the root of the cloned repo:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 cd worker-sdxl-turbo
+
 ```
 
 3. Build the Docker image:
 
 ```html theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker build --tag <username>/<repo>:<tag> .
+
 ```
 
 4. Push your container registry:
 
 ```html theme={"theme":{"light":"github-light","dark":"github-dark"}}
 docker push <username>/<repo>:<tag>
+
 ```
 
 Now that you've pushed your container registry, you're ready to deploy your Serverless Endpoint to Runpod.
@@ -26672,6 +28000,7 @@ Run the following command:
 
 <Tabs>
   <Tab title="cURL">
+
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     curl -X POST "https://api.runpod.ai/v2/${YOUR_ENDPOINT}/runsync" \
          -H "accept: application/json" \
@@ -26690,10 +28019,13 @@ Run the following command:
                 "num_images": 1
             }
          }'
+
     ```
+
   </Tab>
 
   <Tab title="Output">
+
     ```JSON theme={"theme":{"light":"github-light","dark":"github-dark"}}
     {
       "delayTime": 168,
@@ -26702,7 +28034,9 @@ Run the following command:
       "output": "BASE_64",
       "status": "COMPLETED"
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -26756,7 +28090,9 @@ To do that, you'll create two files:
         <script src="script.js"></script>
     </body>
     </html>
+
     ```
+
   </Tab>
 
   <Tab title="JavaScript">
@@ -26811,7 +28147,9 @@ To do that, you'll create two files:
         alert("Error generating image");
       }
     }
+
     ```
+
   </Tab>
 </Tabs>
 
@@ -26831,11 +28169,13 @@ You can run a server through Python or by opening the `index.html` page in your 
 
     ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
     python -m http.server 8000
+
     ```
+
   </Tab>
 
   <Tab title="File explorer">
-    **Open the File in a Browser**
+### Open the File in a Browser
 
     Open the `index.html` file directly in your web browser.
 
@@ -26855,7 +28195,7 @@ Source: https://docs.runpod.io/tutorials/serverless/run-gemma-7b
 
 This tutorial walks you through running Google's Gemma model using Runpod's vLLM Worker. Throughout this tutorial, you'll learn to set up a Serverless Endpoint with a gated large language model (LLM).
 
-## Prerequisites
+## Prerequisites (16)
 
 Before diving into the deployment process, gather the necessary tokens and accepting Google's terms. This step ensures that you have access to the model and are in compliance with usage policies.
 
@@ -26864,7 +28204,7 @@ Before diving into the deployment process, gather the necessary tokens and accep
 
 The next section will guide you through Setting up your Serverless Endpoint with Runpod.
 
-## Get started
+## Get started (6)
 
 To begin, we'll deploy a vLLM Worker as a Serverless Endpoint. Runpod simplifies the process of running large language models, offering an alternative to the more complex Docker and Kubernetes deployment methods.
 
@@ -26919,13 +28259,16 @@ client = OpenAI(
     base_url=os.environ.get("RUNPOD_BASE_URL"),
     api_key=os.environ.get("RUNPOD_API_KEY"),
 )
+
 ```
 
 <Info>
   Set your environment variables `RUNPOD_BASE_URL` and `RUNPOD_API_KEY` to your Runpod API key and base URL. Your `RUNPOD_BASE_URL` will be in the form of:
 
   ```
+
   https://api.runpod.ai/v2/${RUNPOD_ENDPOINT_ID}/openai/v1
+
   ```
 
   Where `${RUNPOD_ENDPOINT_ID}` is the ID of your Serverless Endpoint.
@@ -26976,6 +28319,7 @@ while True:
 
     response = get_assistant_response(messages)
     messages.append({"role": "assistant", "content": response})
+
 ```
 
 Congratulations! You've successfully set up a Serverless Endpoint and interacted with Google's Gemma model. This tutorial has shown you the essentials of deploying a model on Runpod and creating a simple application to communicate with it. You've taken important steps towards integrating large language models into your projects.
@@ -27025,6 +28369,7 @@ After your endpoint is deployed and the model is downloaded, you can send a run 
        }
      }
    }
+
    ```
 
 3. Select **Run** to execute the request.
@@ -27053,11 +28398,12 @@ After your endpoint is deployed and the model is downloaded, you can send a run 
      },
      "status": "COMPLETED"
    }
+
    ```
 
 With your Endpoint set up, you can now integrate it into your application just like any other request.
 
-## Conclusion
+## Conclusion (13)
 
 In this tutorial, you have successfully set up and run an Ollama server on a Runpod CPU. Now you can handle inference requests using your deployed model.
 
@@ -27076,7 +28422,7 @@ In this tutorial, you will learn how to deploy a Serverless endpoint running [St
 
 [Runpod's Serverless platform](/serverless/overview) allows you to run AI/ML models in the cloud without managing infrastructure, automatically scaling resources as needed. SDXL is a powerful AI model that generates high-quality images from text prompts.
 
-## What you'll learn
+## What you'll learn (12)
 
 In this tutorial you'll learn:
 
@@ -27085,7 +28431,7 @@ In this tutorial you'll learn:
 * How to generate an image using SDXL.
 * How to decode the base64 output to retrieve the image.
 
-## Requirements
+## Requirements (23)
 
 Before starting this tutorial you'll need:
 
@@ -27123,6 +28469,7 @@ curl -X POST https://api.runpod.ai/v2/ENDPOINT_ID/run \
     -H 'Content-Type: application/json'                             \
     -H 'Authorization: Bearer YOUR_API_KEY' \
     -d '{"input": {"prompt": "A cute fluffy white dog in the style of a Pixar animation 3D drawing."}}'
+
 ```
 
 The API will respond immediately with a job ID and status. You'll receive a response similar to this:
@@ -27132,6 +28479,7 @@ The API will respond immediately with a job ID and status. You'll receive a resp
   "id": "c80ffee4-f315-4e25-a146-0f3d98cf024b",
   "status": "IN_QUEUE"
 }
+
 ```
 
 The job ID is crucial for tracking your request's progress. Save this ID as you'll need it to check the status and retrieve results.
@@ -27146,6 +28494,7 @@ Use the following command to check your job's progress, replacing the placeholde
 curl https://api.runpod.ai/v2/ENDPOINT_ID/status/JOB_ID \
 -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_API_KEY'
+
 ```
 
 While your job is processing, you'll receive a response indicating the current status:
@@ -27159,6 +28508,7 @@ While your job is processing, you'll receive a response indicating the current s
   },
   "status": "IN_PROGRESS"
 }
+
 ```
 
 The `delayTime` field shows how long the job waited in the queue before processing began, measured in milliseconds.
@@ -27183,6 +28533,7 @@ When your job finishes successfully, you'll receive a response containing the ou
   "status": "COMPLETED"
   "workerId": "qebsdrm4qidkl3"
 }
+
 ```
 
 The `executionTime` field shows how long the actual image generation took, while `delayTime` indicates the initial queue wait time. Both values are in milliseconds.
@@ -27193,6 +28544,7 @@ To save the complete response for processing, use this command:
 curl https://api.runpod.ai/v2/ENDPOINT_ID/status/JOB_ID \
     -H 'Content-Type: application/json' \
     -H 'Authorization: Bearer YOUR_API_KEY' | jq . > output.json
+
 ```
 
 <Warning>
@@ -27258,12 +28610,14 @@ def decode_json_and_save_image(json_filepath, output_filename="decoded_image.png
 
 # Process the output.json file
 decode_json_and_save_image("output.json", "generated_image.png")
+
 ```
 
 Run the script to decode the image data and save it as a PNG file:
 
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 python decode_image.py
+
 ```
 
 You should see the following output:
@@ -27271,11 +28625,12 @@ You should see the following output:
 ```bash theme={"theme":{"light":"github-light","dark":"github-dark"}}
 Image successfully saved as 'generated_image.png'
 Image path: /Users/path/to/your/project/generated_image.png
+
 ```
 
 Congratulations! You've successfully used Runpod's Serverless platform to generate an AI image using SDXL. You now understand the complete workflow of submitting asynchronous jobs, monitoring their progress, and retrieving results.
 
-## Next steps
+## Next steps (29)
 
 Now that you've learned how to generate images with Serverless, consider exploring these advanced topics:
 

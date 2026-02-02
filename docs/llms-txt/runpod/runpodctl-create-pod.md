@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-create-pod.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# create pod
+## create pod
 
 Create and start a new Pod on Runpod with configuration options for GPU type, storage, networking, and cloud tier.
 

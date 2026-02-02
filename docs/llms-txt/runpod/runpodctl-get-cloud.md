@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/runpodctl/reference/runpodctl-get-cloud.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# get cloud
+## get cloud
 
 List all GPUs currently available in the Runpod cloud, with options for filtering by GPU count, memory/disk size, and cloud type.
 

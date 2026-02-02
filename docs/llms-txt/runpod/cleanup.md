@@ -14,7 +14,7 @@ The Runpod SDK's `clean()` function helps maintain the health of your Serverless
 
 To use the `clean()` function, import it from the `utils.rp_cleanup` module:
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 from runpod.serverless.utils.rp_cleanup import clean
 ```
 
@@ -33,7 +33,7 @@ These are standard locations used by various SDK operations, and cleaning them e
 
 If your handler generates files in non-standard directories, you can override the default behavior by passing a list of folder names to the `folder_list` parameter.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 clean(folder_list=["temp_images", "cache", "downloads"])
 ```
 
@@ -41,7 +41,7 @@ clean(folder_list=["temp_images", "cache", "downloads"])
 
 You should integrate cleanup logic into your handler's lifecycle, typically within a `finally` block or right before returning the result.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```python
 import runpod
 from runpod.serverless.utils.rp_cleanup import clean
 import requests

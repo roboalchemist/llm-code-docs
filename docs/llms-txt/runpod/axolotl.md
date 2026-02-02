@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/instant-clusters/axolotl.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Deploy an Instant Cluster with Axolotl
+
+## Deploy an Instant Cluster with Axolotl
 
 This tutorial demonstrates how to use Instant Clusters with [Axolotl](https://axolotl.ai/) to fine-tune large language models (LLMs) across multiple GPUs. By leveraging PyTorch's distributed training capabilities and Runpod's high-speed networking infrastructure, you can significantly accelerate your training process compared to single-GPU setups.
 

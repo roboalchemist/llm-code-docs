@@ -1,10 +1,10 @@
 # Source: https://docs.runpod.io/pods/templates/create-custom-template.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
-# Build a custom Pod template
+## Build a custom Pod template
 
 > A step-by-step guide to extending Runpod's official templates.
 
@@ -146,18 +146,6 @@ Now define the Python packages your application needs.
 Runpod base images come with built-in services like Jupyter and SSH. You can choose how your container starts: whether to keep all the base image services running, run your application alongside those services, or run only your application.
 
 There are three ways to configure how your container starts:
-
-**Option 1: Keep all base image services (default)**
-
-The base image automatically starts Jupyter and SSH based on your template settings. This is the default behavior and is ideal for interactive development and remote access.
-
-**Option 2: Run your application after services start**
-
-This option starts Jupyter/SSH in the background, then runs your application. You'll use a startup script for this.
-
-**Option 3: Application only (no Jupyter or SSH)**
-
-This runs only your application with minimal overhead, which is ideal for production deployments where you don't need interactive access.
 
 ### Option 1: Keep all base image services (no changes needed)
 

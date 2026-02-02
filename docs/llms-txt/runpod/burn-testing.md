@@ -1,10 +1,12 @@
 # Source: https://docs.runpod.io/hosting/burn-testing.md
 
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Burn testing
+
+## Burn testing
 
 Machines should be thoroughly tested before they are listed on the Runpod platform. Here is a simple guide to running a burn test for a few days.
 

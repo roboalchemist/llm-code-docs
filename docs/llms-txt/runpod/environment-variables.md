@@ -4,9 +4,9 @@
 
 # Source: https://docs.runpod.io/pods/templates/environment-variables.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Environment variables
 
@@ -67,7 +67,7 @@ You can configure up to 50 environment variables per Pod through the Runpod inte
 
 For sensitive data, you can reference [Runpod secrets](/pods/templates/secrets) in environment variables using the `RUNPOD_SECRET_` prefix. For example:
 
-```
+```bash
 API_KEY={{ RUNPOD_SECRET_my_api_key }}
 DATABASE_PASSWORD={{ RUNPOD_SECRET_db_password }}
 ```
@@ -83,7 +83,9 @@ To update environment variables in your Pod:
 5. Click **Save** to save your changes.
 
 <Warning>
-  When you update environment variables your Pod will restart, clearing all data outside of your volume mount path (`/workspace` by default).
+
+When you update environment variables your Pod will restart, clearing all data outside of your volume mount path (`/workspace` by default).
+
 </Warning>
 
 ## Accessing environment variables

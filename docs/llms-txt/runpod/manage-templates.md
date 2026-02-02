@@ -1,6 +1,7 @@
 # Source: https://docs.runpod.io/pods/templates/manage-templates.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -140,7 +141,7 @@ Runpod automatically provides several [predefined environment variables](/pods/r
 
 For sensitive information like passwords and API keys, use [Runpod secrets](/pods/templates/secrets) instead of plain environment variables. Secrets are encrypted and can be referenced in your templates using the format:
 
-```
+```text
 {{ RUNPOD_SECRET_secret_name }}
 ```
 

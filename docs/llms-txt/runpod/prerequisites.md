@@ -12,7 +12,7 @@ In this guide, you will learn how to the Runpod library.
 
 When you're finished, you'll have a fully prepared environment to begin developing your serverless AI applications with Runpod.
 
-## Prerequisites
+## Requirements
 
 Before beginning, ensure your system meets the following requirements:
 

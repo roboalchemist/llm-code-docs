@@ -55,13 +55,13 @@ The [Runpod CLI](/runpodctl/overview) offers the most straightforward approach t
 
 From the source machine (your local computer or a Pod), run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 runpodctl send YOUR_FILE
 ```
 
 You'll see output like this:
 
-```text  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```text
 Sending 'YOUR_FILE' (5 B)
 Code is: 8338-galileo-collect-fidel
 On the other computer run
@@ -75,13 +75,13 @@ The code `8338-galileo-collect-fidel` is your unique, one-time transfer code.
 
 On the destination machine, use the code provided by the send command:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 runpodctl receive 8338-galileo-collect-fidel
 ```
 
 You'll see confirmation of the transfer:
 
-```text  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```text
 Receiving 'YOUR_FILE' (5 B)
 
 Receiving (<-149.36.0.243:8692)
@@ -96,7 +96,7 @@ SCP provides reliable file transfer over SSH connections. Use this method when y
 
 The general format for SCP commands (replace `43201` and `194.26.196.6` with your Pod's port and IP):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 scp -P 43201 -i ~/.ssh/id_ed25519 /local/file/path root@194.26.196.6:/destination/file/path
 ```
 
@@ -108,13 +108,13 @@ scp -P 43201 -i ~/.ssh/id_ed25519 /local/file/path root@194.26.196.6:/destinatio
 
 Transfer a single file:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 scp -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example.txt root@194.26.196.6:/root/example.txt
 ```
 
 Transfer a directory (use `-r` for recursive copying):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 scp -r -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example_dir root@194.26.196.6:/root/example_dir
 ```
 
@@ -122,7 +122,7 @@ scp -r -P 43201 -i ~/.ssh/id_ed25519 ~/documents/example_dir root@194.26.196.6:/
 
 Simply reverse the source and destination:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 scp -P 43201 -i ~/.ssh/id_ed25519 root@194.26.196.6:/root/example.txt ~/documents/example.txt
 ```
 
@@ -134,9 +134,9 @@ scp -P 43201 -i ~/.ssh/id_ed25519 root@194.26.196.6:/root/example.txt ~/document
   `rsync` requires a Linux environment or WSL on Windows.
 </Warning>
 
-### Basic syntax
+### Command syntax
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -e "ssh -p 43201" /source/file/path root@194.26.196.6:/destination/file/path
 ```
 
@@ -148,17 +148,17 @@ rsync -e "ssh -p 43201" /source/file/path root@194.26.196.6:/destination/file/pa
 * `-p` (progress) - Displays transfer progress
 * `-d` (delete) - Removes files from destination that don't exist in source
 
-### Send files to your Pod
+### Upload files to your Pod
 
 Transfer with progress and compression:
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
 ```
 
 ### Download from your Pod
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" root@194.26.196.6:/root/example.txt ~/documents/example.txt
 ```
 
@@ -166,13 +166,13 @@ rsync -avz -e "ssh -p 43201" root@194.26.196.6:/root/example.txt ~/documents/exa
 
 Transfer directory contents only (note the trailing slash):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" ~/documents/example_dir/ root@194.26.196.6:/root/example_dir/
 ```
 
 Transfer the directory itself (no trailing slash):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" ~/documents/example_dir root@194.26.196.6:/root/
 ```
 
@@ -182,7 +182,7 @@ rsync's key advantage is intelligent synchronization. Files that already exist a
 
 First transfer (full copy):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
 sending incremental file list
 example.txt
@@ -194,7 +194,7 @@ total size is 119  speedup is 0.43
 
 Second transfer (minimal data):
 
-```bash  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 rsync -avz -e "ssh -p 43201" ~/documents/example.txt root@194.26.196.6:/root/example.txt
 sending incremental file list
 

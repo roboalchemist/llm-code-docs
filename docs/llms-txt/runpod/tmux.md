@@ -24,7 +24,7 @@ For a comprehensive video guide on using TMUX, check out this excellent tutorial
 
 TMUX is not installed by default on Runpod Pods. To install it, run:
 
-```bash Install TMUX theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 apt-get update && apt-get install -y tmux
 ```
 
@@ -36,7 +36,7 @@ apt-get update && apt-get install -y tmux
 
 Here's a typical workflow for running long-duration model training:
 
-```bash Training workflow theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 # Start a new TMUX session
 tmux new -s model_training
 
@@ -59,7 +59,7 @@ tmux attach -t model_training
 
 Create a new TMUX session with a descriptive name:
 
-```bash Create named session theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux new -s training
 ```
 
@@ -67,7 +67,7 @@ tmux new -s training
 
 To detach from a session and leave it running in the background, press:
 
-```
+```text
 Ctrl+B, then D
 ```
 
@@ -77,7 +77,7 @@ Your processes will continue running even if you disconnect from the Pod.
 
 View all active TMUX sessions:
 
-```bash List sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux ls
 ```
 
@@ -85,7 +85,7 @@ tmux ls
 
 Reconnect to a previously created session:
 
-```bash Reattach to session theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux attach -t training
 ```
 
@@ -93,7 +93,7 @@ tmux attach -t training
 
 End a session when you no longer need it:
 
-```bash Kill session theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux kill-session -t training
 ```
 
@@ -101,13 +101,13 @@ tmux kill-session -t training
 
 If you need to restart fresh and kill all TMUX sessions:
 
-```bash Kill all sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux kill-server
 ```
 
 Alternatively, you can kill all sessions except the current one:
 
-```bash Kill other sessions theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 tmux kill-session -a
 ```
 

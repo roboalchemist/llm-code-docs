@@ -85,7 +85,7 @@ Optionally, you can set up an HTTP API request to interact with Ollama. This is 
 
 With Ollama set up and running, you can now interact with it using HTTP API requests. In step 1.4, you configured Ollama to listen on all network interfaces. This means you can use your Pod as a server to receive requests.
 
-**Get a list of models**
+### Get a list of models
 
 To list the local models available in Ollama, you can use the following GET request:
 
@@ -128,7 +128,7 @@ To list the local models available in Ollama, you can use the following GET requ
 
 Getting a list of available models is great, but how do you send an HTTP request to your Pod?
 
-**Make requests**
+### Make requests
 
 To make an HTTP request against your Pod, you can use the Ollama interface with your Pod Id.
 

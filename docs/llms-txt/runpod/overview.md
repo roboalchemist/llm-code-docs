@@ -103,6 +103,7 @@ The schema includes all available endpoints, request and response formats, authe
   response = requests.get(url, headers=headers)
   print(response.json())
   ```
+
 </CodeGroup>
 
 The endpoint returns the OpenAPI 3.0 specification in JSON format. You can use it with tools like Swagger UI, Postman, or code generation utilities.

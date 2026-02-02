@@ -16,9 +16,9 @@ Secrets are encrypted strings that store sensitive information separately from y
 
 After creating a secret, you can safely reference it in your templates without exposing any sensitive data in plain text:
 
-```
+```json
 {{ RUNPOD_SECRET_secret_name }}
-```
+```text
 
 This approach offers several advantages:
 
@@ -91,15 +91,15 @@ Once you've created secrets, you can reference them in your Pod templates to pro
 
 Reference your secrets directly in the [environment variables section](/pods/templates/environment-variables) of your Pod template using the `RUNPOD_SECRET_` prefix followed by your secret name:
 
-```
+```json
 {{ RUNPOD_SECRET_secret_name }}
-```
+```text
 
 For example, if you created a secret named `huggingface_token`, you would reference it as:
 
-```
+```json
 {{ RUNPOD_SECRET_huggingface_token }}
-```
+```text
 
 This syntax tells Runpod to substitute the encrypted secret value when the Pod starts, making it available as an environment variable inside your container.
 
@@ -115,9 +115,11 @@ When creating or editing a Pod template through the web interface, you can also:
 
 * **Naming conventions**: Use descriptive names that clearly indicate the secret's purpose (e.g., `openai_api_key`, `database_password`, `github_token`).
 * **Environment variable mapping**: Map secrets to appropriately named environment variables in your templates:
-  ```
+
+  ```text
   API_KEY={{ RUNPOD_SECRET_openai_key }}
   DATABASE_URL={{ RUNPOD_SECRET_db_connection }}
   ```
+
 * **Minimal exposure**: Only include secrets in templates that actually need them to reduce the attack surface.
 * **Regular rotation**: Periodically update secret values, especially for long-lived credentials like API keys.

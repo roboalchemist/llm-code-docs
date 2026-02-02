@@ -199,44 +199,44 @@ https://api.runpod.ai/v2/$ENDPOINT_ID/runsync?wait=120000
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com.runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com.runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunSyncInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    		Timeout: sdk.Int(60), // Client timeout in seconds
-    	}
+        jobInput := rpEndpoint.RunSyncInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+            Timeout: sdk.Int(60), // Client timeout in seconds
+        }
 
-    	output, err := endpoint.RunSync(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.RunSync(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
     ```
   </Tab>
@@ -326,43 +326,43 @@ Job results are available for 30 minutes after completion.
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
-    	
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
+        
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
-    	client := sdk.New(&config.Config{
-    		ApiKey:  os.Getenv("RUNPOD_API_KEY"),
-    		BaseURL: os.Getenv("RUNPOD_BASE_URL"),
-    	})
-    	
-    	endpoint, err := client.NewEndpoint("YOUR_ENDPOINT_ID")
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
+        client := sdk.New(&config.Config{
+            ApiKey:  os.Getenv("RUNPOD_API_KEY"),
+            BaseURL: os.Getenv("RUNPOD_BASE_URL"),
+        })
+        
+        endpoint, err := client.NewEndpoint("YOUR_ENDPOINT_ID")
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
 
-    	jobInput := rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    		RequestTimeout: sdk.Int(120),
-    	}
+        jobInput := rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+            RequestTimeout: sdk.Int(120),
+        }
 
-    	output, err := endpoint.Run(&jobInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        output, err := endpoint.Run(&jobInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	data, _ := json.Marshal(output)
-    	fmt.Printf("output: %s\n", data)
+        data, _ := json.Marshal(output)
+        fmt.Printf("output: %s\n", data)
     }
     ```
   </Tab>
@@ -471,37 +471,37 @@ Check the current state, execution statistics, and results of previously submitt
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
-    	"log"
-    	"os"
+        "encoding/json"
+        "fmt"
+        "log"
+        "os"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		log.Fatalf("Failed to create endpoint: %v", err)
-    	}
-    	input := rpEndpoint.StatusInput{
-    		Id: sdk.String("YOUR_JOB_ID"),
-    	}
-    	output, err := endpoint.Status(&input)
-    	if err != nil {
-    		panic(err)
-    	}
-    	dt, _ := json.Marshal(output)
-    	fmt.Printf("output:%s\n", dt)
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            log.Fatalf("Failed to create endpoint: %v", err)
+        }
+        input := rpEndpoint.StatusInput{
+            Id: sdk.String("YOUR_JOB_ID"),
+        }
+        output, err := endpoint.Status(&input)
+        if err != nil {
+            panic(err)
+        }
+        dt, _ := json.Marshal(output)
+        fmt.Printf("output:%s\n", dt)
     }
     ```
   </Tab>
@@ -595,55 +595,55 @@ For implementation details, see [Streaming handlers](/serverless/workers/handler
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	request, err := endpoint.Run(&rpEndpoint.RunInput{
-    		JobInput: &rpEndpoint.JobInput{
-    			Input: map[string]interface{}{
-    				"prompt": "Hello World",
-    			},
-    		},
-    	})
-    	if err != nil {
-    		panic(err)
-    	}
+        request, err := endpoint.Run(&rpEndpoint.RunInput{
+            JobInput: &rpEndpoint.JobInput{
+                Input: map[string]interface{}{
+                    "prompt": "Hello World",
+                },
+            },
+        })
+        if err != nil {
+            panic(err)
+        }
 
-    	streamChan := make(chan rpEndpoint.StreamResult, 100)
+        streamChan := make(chan rpEndpoint.StreamResult, 100)
 
-    	err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
-    	if err != nil {
-    		// timeout reached, if we want to get the data that has been streamed
-    		if err.Error() == "ctx timeout reached" {
-    			for data := range streamChan {
-    				dt, _ := json.Marshal(data)
-    				fmt.Printf("output:%s\n", dt)
-    			}
-    		}
-    		panic(err)
-    	}
+        err = endpoint.Stream(&rpEndpoint.StreamInput{Id: request.Id}, streamChan)
+        if err != nil {
+            // timeout reached, if we want to get the data that has been streamed
+            if err.Error() == "ctx timeout reached" {
+                for data := range streamChan {
+                    dt, _ := json.Marshal(data)
+                    fmt.Printf("output:%s\n", dt)
+                }
+            }
+            panic(err)
+        }
 
-    	for data := range streamChan {
-    		dt, _ := json.Marshal(data)
-    		fmt.Printf("output:%s\n", dt)
-    	}
+        for data := range streamChan {
+            dt, _ := json.Marshal(data)
+            fmt.Printf("output:%s\n", dt)
+        }
 
     }
     ```
@@ -775,37 +775,37 @@ Stop jobs that are no longer needed or taking too long to complete. This operati
     package main
 
     import (
-    	"encoding/json"
-    	"fmt"
+        "encoding/json"
+        "fmt"
 
-    	"github.com/runpod/go-sdk/pkg/sdk"
-    	"github.com/runpod/go-sdk/pkg/sdk/config"
-    	rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
+        "github.com/runpod/go-sdk/pkg/sdk"
+        "github.com/runpod/go-sdk/pkg/sdk/config"
+        rpEndpoint "github.com/runpod/go-sdk/pkg/sdk/endpoint"
     )
 
     func main() {
 
-    	apiKey := os.Getenv("RUNPOD_API_KEY")
-    	baseURL := os.Getenv("RUNPOD_BASE_URL")
+        apiKey := os.Getenv("RUNPOD_API_KEY")
+        baseURL := os.Getenv("RUNPOD_BASE_URL")
 
-    	endpoint, err := rpEndpoint.New(
-    		&config.Config{ApiKey: &apiKey},
-    		&rpEndpoint.Option{EndpointId: &baseURL},
-    	)
-    	if err != nil {
-    		panic(err)
-    	}
+        endpoint, err := rpEndpoint.New(
+            &config.Config{ApiKey: &apiKey},
+            &rpEndpoint.Option{EndpointId: &baseURL},
+        )
+        if err != nil {
+            panic(err)
+        }
 
-    	cancelInput := rpEndpoint.CancelInput{
-    		Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
-    	}
-    	output, err := endpoint.Cancel(&cancelInput)
-    	if err != nil {
-    		panic(err)
-    	}
+        cancelInput := rpEndpoint.CancelInput{
+            Id: sdk.String("00edfd03-8094-46da-82e3-ea47dd9566dc-u1"),
+        }
+        output, err := endpoint.Cancel(&cancelInput)
+        if err != nil {
+            panic(err)
+        }
 
-    	healthData, _ := json.Marshal(output)
-    	fmt.Printf("health output: %s\n", healthData)
+        healthData, _ := json.Marshal(output)
+        fmt.Printf("health output: %s\n", healthData)
 
     }
     ```

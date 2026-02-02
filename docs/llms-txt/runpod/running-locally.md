@@ -22,7 +22,7 @@ When you run your code locally using the Runpod Python SDK, here's what happens 
 
 Let's walk through how to run your serverless functions locally using the Runpod Python SDK.
 
-**Options for Passing Information to Your API**
+### Options for Passing Information to Your API
 
 The Runpod Python SDK offers two main methods for sending data to your local FastAPI server:
 

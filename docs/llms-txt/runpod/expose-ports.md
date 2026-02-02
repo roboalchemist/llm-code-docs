@@ -1,8 +1,8 @@
 # Source: https://docs.runpod.io/pods/configuration/expose-ports.md
 
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
-> Use this file to discover all available pages before exploring further.
+<!-- Documentation Index: See llms.txt -->
+<!-- See llms.txt for complete documentation index -->
+<!-- Use this for finding documentation -->
 
 # Expose ports
 
@@ -38,7 +38,7 @@ You can also configure HTTP ports for a Pod template in the [My Templates](https
 
 Once your Pod is running and your service is active, access it using the proxy URL format:
 
-```
+```bash
 https://[POD_ID]-[INTERNAL_PORT].proxy.runpod.net
 ```
 
@@ -49,16 +49,18 @@ Replace `[POD_ID]` with your Pod's unique identifier and `[INTERNAL_PORT]` with 
 * Access URL: `https://abc123xyz-4000.proxy.runpod.net`
 
 <Warning>
-  A Pod that's listed as **Running** in the console (with a green dot in the Pod UI) may not be ready to use. The best way to check if your Pod is ready is by checking the **Telemetry** tab in the Pod details page in the Runpod console.
 
-  If a Pod is receiving telemetry, it should be ready to use, but individual services (JupyterLab, HTTP services, etc.) may take a few minutes to start up.
+A Pod that's listed as **Running** in the console (with a green dot in the Pod UI) may not be ready to use. The best way to check if your Pod is ready is by checking the **Telemetry** tab in the Pod details page in the Runpod console.
+
+If a Pod is receiving telemetry, it should be ready to use, but individual services (JupyterLab, HTTP services, etc.) may take a few minutes to start up.
+
 </Warning>
 
 ### Proxy limitations and behavior
 
 The HTTP proxy route includes several intermediaries that affect connection behavior:
 
-```
+```bash
 User → Cloudflare → Runpod Load Balancer → Your Pod
 ```
 
@@ -78,7 +80,9 @@ Design your application with these constraints in mind. For long-running operati
 ## TCP access via public IP
 
 <Warning>
-  Pods do not support UDP connections. If your application relies on UDP, you'll need to modify your application to use TCP-based communication instead.
+
+Pods do not support UDP connections. If your application relies on UDP, you'll need to modify your application to use TCP-based communication instead.
+
 </Warning>
 
 For services requiring direct TCP connections, lower latency, or protocols other than HTTP, use TCP port exposure with public IP addresses.
@@ -91,14 +95,16 @@ In your Pod or template configuration, follow the same steps as for [HTTP ports]
 
 After your Pod starts, check the **Connect** menu to find your assigned public IP and external port mapping under **Direct TCP Ports**. For example:
 
-```
+```bash
 TCP port   213.173.109.39:13007 -> :22
 ```
 
 <Warning>
-  Public IP addresses may change for Community Cloud Pods if your Pod is migrated or restarted, but they should remain stable for Secure Cloud Pods.
 
-  External port mappings change whenever your Pod resets.
+Public IP addresses may change for Community Cloud Pods if your Pod is migrated or restarted, but they should remain stable for Secure Cloud Pods.
+
+External port mappings change whenever your Pod resets.
+
 </Warning>
 
 ## Symmetrical port mapping

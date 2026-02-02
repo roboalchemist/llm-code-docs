@@ -123,9 +123,9 @@ Standard AWS CLI operations such as `ls`, `cp`, `mv`, and `rm` work as expected 
 <Accordion title="Network volume path mapping">
   Network volumes are mounted to Serverless workers at `/runpod-volume` and to Pods at `/workspace` by default. The S3-compatible API maps file paths as follows:
 
-  * **Pod filesystem path**: `/workspace/my-folder/file.txt`
-  * **Serverless worker path**: `/runpod-volume/my-folder/file.txt`
-  * **S3 API path**: `s3://NETWORK_VOLUME_ID/my-folder/file.txt`
+* **Pod filesystem path**: `/workspace/my-folder/file.txt`
+* **Serverless worker path**: `/runpod-volume/my-folder/file.txt`
+* **S3 API path**: `s3://NETWORK_VOLUME_ID/my-folder/file.txt`
 </Accordion>
 
 ## s3 CLI examples

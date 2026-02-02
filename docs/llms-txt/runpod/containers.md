@@ -61,13 +61,13 @@ For the best installation experience, see Docker's [official documentation](http
 
 Now that you've installed Docker, open a terminal window and run the following command:
 
-```
+```bash
 docker version
 ```
 
 You should see something similar to the following output.
 
-```swift  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 docker version
 Client: Docker Engine - Community
  Version:           24.0.7
@@ -99,13 +99,13 @@ Server: Docker Desktop 4.26.1 (131620)
 
 If at any point you need help with a command, you can use the `--help` flag to see documentation on the command you're running.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 docker --help
 ```
 
 Let's run `busybox` from the command line to print out today's date.
 
-```python  theme={"theme":{"light":"github-light","dark":"github-dark"}}
+```bash
 docker run busybox sh -c 'echo "The time is: $(date)"'
 # The time is: Thu Jan 11 06:35:39 UTC 2024
 ```
