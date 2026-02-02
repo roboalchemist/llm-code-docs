@@ -1,55 +1,49 @@
-# Headscale - Self-hosted Tailscale Control Server
+# Access Azure Windows VMs Privately Using Tailscale
 
 **Source:** https://tailscale.com/kb/1143/headscale
 
 ---
 
-Docs›Integrations›Cloud servers›Azure Windows VMsAccess Azure Windows VMs privately using TailscaleMicrosoft Azure is a cloud service provider offering Linux and Windows virtual machines, to which Tailscale can be used to provide secure connectivity. This topic covers Windows VMs running within Azure. For Linux VMs, refer to Access Azure Linux VMs privately using Tailscale.
-Prerequisites
-Before you begin this guide, you'll need a Tailscale network set up and
-configured with at least one existing device. Read our getting started guide
-if you need help with this.
-Step 1: Set up the Tailscale client for Windows VMs
-First, create a Virtual Machine
-running Windows Datacenter Edition.
-If at least one side of a tunnel has "easy NAT," where Tailscale can determine the UDP port
-number on the far side of the NAT device, then it will make
-direct connections to minimize latency.
-We ensure that the Azure nodes can make direct connections by allowing UDP port 41641 to
-ingress through the firewall.
-In the Networking step while creating the VM choose Advanced for the NIC network security group,
-and create a network security policy to allow UDP port 41641 to ingress.
-For the initial setup it is helpful to also allow RDP and/or SSH. Once Tailscale is installed, public
-access can be removed in favor of going through Tailscale.
-Then RDP to the system, and download the latest Windows installer.
-It is possible to log in using a browser as described in
-install Tailscale on Windows, as Windows
-Datacenter Edition does include a GUI and web browser.
-However this tends not to work as well
-for a Cloud VM where one is likely not already logged in from the browser.
-Alternately, one can use a cmd.exe shell to run the Tailscale CLI command and use an auth key:
-tailscale up --accept-dns=false --auth-key=tskey-0123456789abcdef
-For Azure VMs it is generally best to let Azure handle the DNS configuration,
-not have Tailscale override it, so we added --accept-dns=false.
-Step 2: Advertise routes from the VM
-For the benefit of the other nodes in the tailnet we'll set up
-split DNS to allow
-use of the same DNS names as are used inside of Azure. The
-Azure DNS server address is 168.63.129.16, which is an anycast address that will go
-to the nearest DNS server within Azure.
-We'll use cmd.exe to have our VM advertise routes for both the subnet it sits on as well as the
-Azure DNS server. For example, if the subnet address range is 10.1.0.0/24, the command would be:
+## Overview
+
+This guide demonstrates how to securely connect Windows virtual machines running on Microsoft Azure to a Tailscale network for private access and connectivity.
+
+## Prerequisites
+
+You'll need an active Tailscale network with at least one device already configured. Reference the official getting started materials if you're new to Tailscale setup.
+
+## Setup Steps
+
+### Step 1: Configure the Windows VM
+
+Create a Windows Datacenter Edition virtual machine in Azure. During the networking configuration phase:
+
+- Select **Advanced** for the network security group
+- Create a policy permitting UDP port 41641 ingress to enable direct connections and reduce latency
+- Consider temporarily allowing RDP and SSH for initial setup
+
+Download the Windows installer and either:
+- Use browser-based login (if the system has GUI access), or
+- Execute the CLI command via `cmd.exe` with an authentication key, specifying `--accept-dns=false` to preserve Azure's DNS configuration
+
+### Step 2: Configure Route Advertisement
+
+From `cmd.exe`, advertise both your subnet and Azure's DNS server:
+
+```shell
 tailscale set --advertise-routes=10.1.0.0/24,168.63.129.16/32 --accept-dns=false
-Step 3: Add Azure DNS for your tailnet
-In the DNS page of the admin console we add a nameserver
-restricted to the internal.cloudapp.net domain, pointing to the Azure DNS server which we
-made available through our VM.
-Now the same hostnames which work between nodes running within Azure will also be available
-to all nodes on our tailnet.
-Step 4: Remove public SSH access
-As we can now SSH to the system over the private Tailscale network, there is no reason to leave
-the SSH port open on a public IP address. In the Settings > Network tab select the ingress
-rule for "SSH" and delete it.
-4via6 subnet routers
-If your network has subnets with overlapping IPv4 addresses, you can use the 4via6 subnet routers
-feature to ensure traffic from each node in your tailnet is routed to the correct device.
+```
+
+(Replace the subnet address with your actual range)
+
+### Step 3: Set Up Split DNS
+
+In the admin console's DNS section, add the Azure DNS server as a resolver "restricted to the `internal.cloudapp.net` domain" to make internal hostnames accessible across your Tailscale network.
+
+### Step 4: Remove Public Access
+
+Once connected through Tailscale, delete the public SSH ingress rule from your network security settings.
+
+## Advanced: 4via6 Subnet Routers
+
+For networks with overlapping IPv4 address ranges, implement 4via6 subnet routing to direct traffic appropriately.
