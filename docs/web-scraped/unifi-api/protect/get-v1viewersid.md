@@ -1,6 +1,6 @@
-# patch-v1viewersid
+# get-v1viewersid
 
-Source: https://developer.ui.com/protect/v6.2.83/patch-v1viewersid
+Source: https://developer.ui.com/protect/v6.2.83/get-v1viewersid
 
 ---
 
@@ -8,11 +8,11 @@ UniFi API
 
 Endpoints combined into Ansible Modules for customized workflows.
 
-# Patch viewer settings
+# Get viewer details
 
-PATCH`/v1/viewers/{id}`
+GET`/v1/viewers/{id}`
 
-Patch the settings for a specific viewer
+Get detailed information about a specific viewer
 
 path Parameters
 
@@ -23,18 +23,6 @@ required
 string
 
 The primary key of viewer
-
-request Body
-
-name
-
-string
-
-The name of the model
-
-liveviewExpand
-
-object
 
 ## Responses
 

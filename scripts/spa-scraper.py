@@ -19,7 +19,7 @@ Usage:
     python spa-scraper.py https://example.com/sitemap.xml --output docs/web-scraped/example/ --force
 
 Dependencies:
-    pip install playwright
+    pip install playwright markdownify
     playwright install chromium
 """
 
@@ -35,6 +35,12 @@ try:
     from playwright.async_api import async_playwright
 except ImportError:
     print("Error: playwright not installed. Run: pip install playwright && playwright install chromium")
+    sys.exit(1)
+
+try:
+    from markdownify import markdownify as md
+except ImportError:
+    print("Error: markdownify not installed. Run: pip install markdownify")
     sys.exit(1)
 
 
@@ -72,8 +78,33 @@ def url_to_filename(url: str) -> str:
     return f"{slug or 'index'}.md"
 
 
+def html_to_markdown(html: str) -> str:
+    """Convert HTML to clean markdown."""
+    markdown = md(
+        html,
+        heading_style="ATX",
+        code_language="",
+        strip=['script', 'style', 'nav', 'header', 'footer'],
+    )
+
+    # Clean up excessive whitespace
+    lines = markdown.split('\n')
+    cleaned = []
+    prev_empty = False
+
+    for line in lines:
+        line = line.rstrip()
+        is_empty = not line.strip()
+        if is_empty and prev_empty:
+            continue
+        cleaned.append(line)
+        prev_empty = is_empty
+
+    return '\n'.join(cleaned).strip()
+
+
 async def scrape_page(context, url: str, output_path: Path, force: bool = False) -> str:
-    """Scrape a single page and save to file."""
+    """Scrape a single page, convert to markdown, and save to file."""
     filename = url_to_filename(url)
     filepath = output_path / filename
 
@@ -85,8 +116,8 @@ async def scrape_page(context, url: str, output_path: Path, force: bool = False)
         await page.goto(url, wait_until="domcontentloaded", timeout=30000)
         await asyncio.sleep(0.5)  # Let JS render
 
-        # Extract main content, removing navigation elements
-        content = await page.evaluate("""() => {
+        # Extract main content as HTML, removing navigation elements
+        html = await page.evaluate("""() => {
             const selectors = ['main', 'article', '[role="main"]', '.content', '.docs-content'];
             let main = null;
             for (const sel of selectors) {
@@ -97,15 +128,18 @@ async def scrape_page(context, url: str, output_path: Path, force: bool = False)
 
             const clone = main.cloneNode(true);
             clone.querySelectorAll('nav, header, footer, script, style, .sidebar, .navigation, [role="navigation"]').forEach(el => el.remove());
-            return clone.innerText;
+            return clone.innerHTML;
         }""")
 
-        if content and len(content.strip()) > 100:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(f"# {filename.replace('.md', '')}\n\n")
-                f.write(f"Source: {url}\n\n")
-                f.write(content.strip())
-            return f"ok:{filename}"
+        if html and len(html.strip()) > 100:
+            content = html_to_markdown(html)
+
+            if content and len(content) > 50:
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(f"# {filename.replace('.md', '')}\n\n")
+                    f.write(f"Source: {url}\n\n---\n\n")
+                    f.write(content)
+                return f"ok:{filename}"
         return f"empty:{filename}"
 
     except Exception as e:

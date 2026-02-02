@@ -34,6 +34,12 @@ except ImportError:
     print("Error: playwright not installed. Run: pip install playwright && playwright install chromium")
     sys.exit(1)
 
+try:
+    from markdownify import markdownify as md
+except ImportError:
+    print("Error: markdownify not installed. Run: pip install markdownify")
+    sys.exit(1)
+
 OUTPUT_DIR = Path(__file__).parent.parent / "docs" / "web-scraped" / "unifi-api"
 SITEMAP_URL = "https://developer.ui.com/sitemap.xml"
 OPENAPI_URL = "https://raw.githubusercontent.com/ubiquiti-community/unifi-api/main/assets/openapi.yaml"
@@ -81,8 +87,37 @@ def url_to_filename(url: str) -> str:
     return f"{slug}.md"
 
 
+def html_to_markdown(html: str) -> str:
+    """Convert HTML to clean markdown."""
+    # Convert HTML to markdown
+    markdown = md(
+        html,
+        heading_style="ATX",
+        code_language="",
+        strip=['script', 'style', 'nav', 'header', 'footer'],
+    )
+
+    # Clean up excessive whitespace
+    lines = markdown.split('\n')
+    cleaned = []
+    prev_empty = False
+
+    for line in lines:
+        line = line.rstrip()
+        is_empty = not line.strip()
+
+        # Skip multiple consecutive empty lines
+        if is_empty and prev_empty:
+            continue
+
+        cleaned.append(line)
+        prev_empty = is_empty
+
+    return '\n'.join(cleaned).strip()
+
+
 async def scrape_page(context, url: str, output_dir: Path, force: bool = False) -> str:
-    """Scrape a single page."""
+    """Scrape a single page and convert to markdown."""
     filename = url_to_filename(url)
     filepath = output_dir / filename
 
@@ -92,21 +127,25 @@ async def scrape_page(context, url: str, output_dir: Path, force: bool = False) 
     page = await context.new_page()
     try:
         await page.goto(url, wait_until="domcontentloaded", timeout=20000)
-        await asyncio.sleep(0.3)
+        await asyncio.sleep(0.5)
 
-        content = await page.evaluate("""() => {
+        # Get innerHTML instead of innerText to preserve structure
+        html = await page.evaluate("""() => {
             const main = document.querySelector('main') || document.querySelector('article') || document.body;
             const clone = main.cloneNode(true);
-            clone.querySelectorAll('nav, header, footer, script, style, .sidebar').forEach(el => el.remove());
-            return clone.innerText;
+            clone.querySelectorAll('nav, header, footer, script, style, .sidebar, [role="navigation"]').forEach(el => el.remove());
+            return clone.innerHTML;
         }""")
 
-        if content and len(content.strip()) > 100:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(f"# {filename.replace('.md', '')}\n\n")
-                f.write(f"Source: {url}\n\n")
-                f.write(content.strip())
-            return f"ok:{filename}"
+        if html and len(html.strip()) > 100:
+            content = html_to_markdown(html)
+
+            if content and len(content) > 50:
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(f"# {filename.replace('.md', '')}\n\n")
+                    f.write(f"Source: {url}\n\n---\n\n")
+                    f.write(content)
+                return f"ok:{filename}"
         return f"empty:{filename}"
 
     except Exception as e:

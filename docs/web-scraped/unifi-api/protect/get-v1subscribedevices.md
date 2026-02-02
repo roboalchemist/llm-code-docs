@@ -2,4 +2,34 @@
 
 Source: https://developer.ui.com/protect/v6.2.83/get-v1subscribedevices
 
-UniFi APIEndpoints combined into Ansible Modules for customized workflows.Get update messages about devicesGET/v1/subscribe/devicesA WebSocket subscription which broadcasts all changes happening to Protect-managed hardware devicesResponses200Response Schema: application/json
+---
+
+UniFi API
+
+Endpoints combined into Ansible Modules for customized workflows.
+
+# Get update messages about devices
+
+GET`/v1/subscribe/devices`
+
+A WebSocket subscription which broadcasts all changes happening to Protect-managed hardware devices
+
+## Responses
+
+200
+
+Response Schema: application/json
+
+type
+
+required
+
+string
+
+addupdateremove
+
+itemExpand
+
+required
+
+object (device)
