@@ -1,0 +1,72 @@
+# Mac Automation Scripting Guide: Making a Systemwide Service
+
+## Making a Systemwide Service
+In OSÂ X,serviceslet you access functionality in one app from within another app. An app that provides a service advertises the operations it can perform on a particular type of data. Services are triggered from the Application Name > Services menu, or from contextual menus that appear when you Control-click on text, files, and other kinds of data. When youâre manipulating a particular type of data, related services becomes available. For example, Mail provides a service that creates a new email from selected text.
+
+### Making a Script Available as a Service
+A script can be made available as a service by embedding it in an Automator service workflow.
+- Launch Automator, found in/Applications/.
+Launch Automator, found in/Applications/.
+- Create a new Automator document.
+Create a new Automator document.
+- When prompted, choose a document type of Service and click Choose.
+When prompted, choose a document type of Service and click Choose.
+- At the top of the Automator document, configure the service.If the service will process a specific type of data, such as text, files, or images, select the appropriate type. Otherwise, select âno input.âIf the service will be available within the context of a specific app only, select the appropriate app. Otherwise, select âany application.âIf the service will replace selected text with processed text, select the âOutput replaces selected textâ checkbox.
+At the top of the Automator document, configure the service.
+If the service will process a specific type of data, such as text, files, or images, select the appropriate type. Otherwise, select âno input.â
+If the service will be available within the context of a specific app only, select the appropriate app. Otherwise, select âany application.â
+If the service will replace selected text with processed text, select the âOutput replaces selected textâ checkbox.
+- Typerunin the search field above the action library pane to filter the action library.A list of actions for running AppleScripts, JavaScripts, UNIX shell scripts, and more are displayed.
+Typerunin the search field above the action library pane to filter the action library.
+A list of actions for running AppleScripts, JavaScripts, UNIX shell scripts, and more are displayed.
+- Drag an action, such as Run AppleScript or Run JavaScript, to the workflow area.An interface for the action appears.
+Drag an action, such as Run AppleScript or Run JavaScript, to the workflow area.
+An interface for the action appears.
+- Write the script code and add it to the action. If the action contains additional configuration options, adjust them as needed.For AppleScripts and JavaScripts, use the actionâs run handler template to process input data when the service runs, such as text or files. For workflows that replace selected text with processed text, be sure your workflow results in a text value. SeeExample Service Workflow Scripts.
+Write the script code and add it to the action. If the action contains additional configuration options, adjust them as needed.
+For AppleScripts and JavaScripts, use the actionâs run handler template to process input data when the service runs, such as text or files. For workflows that replace selected text with processed text, be sure your workflow results in a text value. SeeExample Service Workflow Scripts.
+- Save the Automator document.When prompted, enter a name for the service.
+Save the Automator document.
+When prompted, enter a name for the service.
+
+### Example Service Workflow Scripts
+Listing 40-1andListing 40-2provide example code that can be pasted into the Run AppleScript and Run JavaScript Automator actions to convert selected text to uppercase.
+APPLESCRIPT
+Open in Script Editor
+- on run {input, parameters}
+- set input to changeCaseOfText(input as string, "upper")
+- return input
+- end run
+- on changeCaseOfText(theText, theCaseToSwitchTo)
+- if theCaseToSwitchTo contains "lower" then
+- set theComparisonCharacters to "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+- set theSourceCharacters to "abcdefghijklmnopqrstuvwxyz"
+- else if theCaseToSwitchTo contains "upper" then
+- set theComparisonCharacters to "abcdefghijklmnopqrstuvwxyz"
+- set theSourceCharacters to "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+- else
+- return theText
+- end if
+- set theAlteredText to ""
+- repeat with aCharacter in theText
+- set theOffset to offset of aCharacter in theComparisonCharacters
+- if theOffset is not 0 then
+- set theAlteredText to (theAlteredText & character theOffset of theSourceCharacters) as string
+- else
+- set theAlteredText to (theAlteredText & aCharacter) as string
+- end if
+- end repeat
+- return theAlteredText
+- end changeCaseOfText
+JAVASCRIPT
+Open in Script Editor
+- function run(input, parameters) {
+- var selectedText = input[0]
+- return selectedText.toUpperCase()
+- }
+
+### Triggering Service Workflows
+Saved Automator service workflows automatically appear in services menus throughout the system at the appropriate time. For example, text processing workflows become available when you select text in an app. To run a service, select Application Name > Services > Service Workflow Name from the menu bar, or select Services > Service Workflow Name from a contextual menu.
+Calling Command-Line Tools
+Using the Systemwide Script Menu
+Copyright © 2018 Apple Inc. All rights reserved.Terms of Use|Privacy Policy|Updated: 2016-06-13

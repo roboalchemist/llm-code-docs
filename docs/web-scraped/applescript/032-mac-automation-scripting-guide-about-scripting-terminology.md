@@ -1,0 +1,14 @@
+# Mac Automation Scripting Guide: About Scripting Terminology
+
+## About Scripting Terminology
+AppleScript and JavaScript possess core language commands, classes, and properties that make scripting possible. For AppleScript, core terminology is documented inAppleScript Language Guide. For JavaScript, seeJavaScript for Automation Release NotesandMozillaâs official JavaScript documentation.
+Each scriptable app introduces additional terminology that extends the core language. For example, Mail introduces terminology for creating and sending email messages. iTunes introduces terminology for working with music and playlists. In order to write a script that controls an app, you need to familiarize yourself with that appâs terminology.
+The terminology for an app is found in itsscripting dictionary, an.sdeffile stored in the app bundle. The dictionary describes the commands, classes, and properties an app supports. This information is used by the scripting components of the operating system, the app itself, and any other apps or scripts that interact with the app through scripting. It also serves as a reference, which you can consult in Script Editor for guidance as you write a script. SeeFigure 10-1.
+Not every OSÂ X app supports scripting, but many apps do, including Mail, Address Book, Calendar, iTunes, and Messages. To determine if a particular app is scriptable, see if it has a scripting dictionary. SeeOpening a Scripting Dictionary.
+Scripting terminology can vary extensively from app to app. While some apps may have extensive scripting support, others may have very limited scripting support. If an app doesnât meet your scripting needs, reach out to the app developer and request improved support in a future version. To request scripting enhancements for Apple apps, submit abug reportthat specifies the app and communicates your specific needs.
+Also, keep in mind that scripting terminology can change from one version of an app or OSÂ X to the next. Always test essential scripts when upgrading to a new app or system version.
+Note
+OSÂ X also supports scripting additions, packages of terminology that extend the core AppleScript language. In fact, OSÂ X comes with Standard Additions, a scripting addition that implements a range of commonly performed functions, such as displaying alerts and dialogs, speaking text, and reading and writing files. Scripting additions are installed in/System/ScriptingAdditions/,/Library/ScriptingAdditions/, or~/Library/ScriptingAdditions/, and have dictionaries just like scriptable apps.
+Configuring Scripting Preferences
+Opening a Scripting Dictionary
+Copyright © 2018 Apple Inc. All rights reserved.Terms of Use|Privacy Policy|Updated: 2016-06-13
