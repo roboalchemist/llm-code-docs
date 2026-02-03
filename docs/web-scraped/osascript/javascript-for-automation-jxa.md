@@ -1,6 +1,7 @@
 # JavaScript for Automation (JXA)
 
 # Source: https://github.com/JXA-Cookbook/JXA-Cookbook/wiki/Using-JavaScript-for-Automation
+
 # Source: https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/
 
 JavaScript for Automation (JXA) is a JavaScript-based scripting interface for macOS that provides peer functionality to AppleScript. It was introduced in OS X 10.10 (Yosemite) and uses the same automation framework as AppleScript.
@@ -67,11 +68,13 @@ osascript -l JavaScript -e 'Application("Safari").activate()'
 ### From File
 
 Create `script.js`:
+
 ```javascript
 Application("Safari").activate()
 ```
 
 Run with osascript:
+
 ```bash
 osascript -l JavaScript script.js
 ```
@@ -79,6 +82,7 @@ osascript -l JavaScript script.js
 ### Executable Script (Shebang)
 
 Create `script.js` with shebang:
+
 ```javascript
 #!/usr/bin/osascript -l JavaScript
 
@@ -86,6 +90,7 @@ Application("Safari").activate()
 ```
 
 Make executable:
+
 ```bash
 chmod +x script.js
 ./script.js
@@ -98,6 +103,7 @@ osascript -i -l JavaScript
 ```
 
 Then type commands directly:
+
 ```javascript
 > Application("Safari").activate()
 ```

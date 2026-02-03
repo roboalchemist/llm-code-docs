@@ -1,8 +1,10 @@
 # osascript - macOS AppleScript and JXA Execution
 
-# Source: https://developer.apple.com/library/archive/documentation/AppleScript/
-# Source: https://ss64.com/mac/osascript.html
-# Source: https://www.manpagez.com/man/1/osascript/
+## Source References
+
+- https://developer.apple.com/library/archive/documentation/AppleScript/
+- https://ss64.com/mac/osascript.html
+- https://www.manpagez.com/man/1/osascript/
 
 osascript is the command-line tool for executing AppleScript and JavaScript for Automation (JXA) scripts on macOS. It enables automation of Mac applications and system tasks.
 
@@ -25,12 +27,14 @@ osascript [-l language] [-s flags] [-e statement | programfile] [argument ...]
 ## Common Options
 
 ### Language Selection
+
 - **`-l language`** - Override the default language for plain text files
   - Default language is AppleScript
   - Can specify `JavaScript` for JXA scripts
   - Used when processing plain text files, not compiled scripts
 
 ### Script Input
+
 - **`-e statement`** - Enter one line of script code
   - Multiple `-e` flags can be combined to build multi-line scripts
   - Useful for quick one-liners from shell
@@ -42,6 +46,7 @@ osascript [-l language] [-s flags] [-e statement | programfile] [argument ...]
   - Use for larger scripts or reusable script files
 
 ### Output Formatting
+
 - **`-s flags`** - Modify output formatting using modifier characters:
   - **`h`** - Human-readable form (default, without quotes or escape sequences)
   - **`s`** - Source form (recompilable, with escape sequences and quotes)
@@ -49,6 +54,7 @@ osascript [-l language] [-s flags] [-e statement | programfile] [argument ...]
   - **`o`** - Errors to stdout
 
 ### Interactive Mode
+
 - **`-i`** - Interactive mode with line-by-line prompts
   - Shows input/output for debugging
   - Useful for testing script snippets
@@ -100,11 +106,13 @@ osascript -e 'display dialog "Enter your name:" default answer "" buttons {"Canc
 ### System Control Examples
 
 **Adjust system volume:**
+
 ```bash
 osascript -e 'set volume output volume 75'
 ```
 
 **Toggle dark mode:**
+
 ```bash
 osascript -e 'tell application "System Events"' \
           -e '  tell appearance preferences' \
@@ -114,11 +122,13 @@ osascript -e 'tell application "System Events"' \
 ```
 
 **Get current date and time:**
+
 ```bash
 osascript -e 'current date'
 ```
 
 **Get system information:**
+
 ```bash
 osascript -e 'system info'
 ```
@@ -126,16 +136,19 @@ osascript -e 'system info'
 ### Working with Files and Clipboard
 
 **Get clipboard contents:**
+
 ```bash
 osascript -e 'the clipboard'
 ```
 
 **Set clipboard contents:**
+
 ```bash
 osascript -e 'set the clipboard to "Hello World"'
 ```
 
 **Get file information:**
+
 ```bash
 osascript -e 'info for (path to home folder)'
 ```
@@ -164,6 +177,7 @@ osascript -e 'say "Hello, I am speaking to you"'
 ```
 
 With specific voice:
+
 ```bash
 osascript -e 'say "Hello" using "Victoria"'
 ```
@@ -206,6 +220,7 @@ safari.activate()
 ```
 
 Make executable and run:
+
 ```bash
 chmod +x script.js
 ./script.js
@@ -237,7 +252,7 @@ sys.appearancePreferences.darkMode()
 sys.processes.whose({ visible: true })()
 ```
 
-### File Operations
+### JXA File Operations
 
 ```javascript
 // Read file content
@@ -252,7 +267,7 @@ var manager = $.NSFileManager.defaultManager
 manager.fileExistsAtPath(Path)
 ```
 
-### User Interaction
+### JXA User Interaction
 
 ```javascript
 // Alert dialog
@@ -289,7 +304,7 @@ alert.informativeText = "Message"
 alert.runModal
 ```
 
-## Output Formatting
+## Output Formatting with osascript
 
 ### Default Human-Readable Format
 
@@ -307,14 +322,16 @@ $ osascript -s 's' -e 'return {1, 2, 3}'
 
 Useful for capturing output that can be re-compiled.
 
-### Error Handling
+### Error Redirection
 
 Default (errors to stderr):
+
 ```bash
 osascript -e 'error "test error"' 2>/dev/null
 ```
 
 Redirect errors to stdout:
+
 ```bash
 osascript -s 'o' -e 'error "test error"'
 ```
@@ -345,6 +362,7 @@ set myRecord to {name:"John", age:30}
 ### Control Flow
 
 **If statements:**
+
 ```applescript
 if x > 5 then
     display dialog "Greater than 5"
@@ -354,6 +372,7 @@ end if
 ```
 
 **Repeat loops:**
+
 ```applescript
 repeat 5 times
     beep
@@ -387,7 +406,7 @@ end tell
 
 AppleScript has standard scripting additions that provide built-in commands:
 
-### File Operations
+### File Operations (Scripting Additions)
 
 ```applescript
 -- Read a file
@@ -405,7 +424,7 @@ info for file "/path/to/file"
 list folder "/path/to/folder"
 ```
 
-### User Interaction
+### User Interaction (Scripting Additions)
 
 ```applescript
 -- Dialogs
@@ -691,15 +710,18 @@ end tell
 ## Additional Resources
 
 ### Official Documentation
+
 - Apple AppleScript Language Guide: https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/
 - Mac Automation Scripting Guide: https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/
 
 ### Community Resources
+
 - JXA Cookbook: https://github.com/JXA-Cookbook/JXA-Cookbook
 - MacScripter Forums: https://www.macscripter.net/
 - AppleScript User Manual: https://developer.apple.com/library/archive/documentation/AppleScript/
 
 ### Practical Guides
+
 - SS64 osascript reference: https://ss64.com/mac/osascript.html
 - O'Reilly AppleScript: The Definitive Guide (available online)
 - DEVONtechnologies JXA Guide: https://www.devontechnologies.com/blog/20211005-jxa-javascript-for-applications
