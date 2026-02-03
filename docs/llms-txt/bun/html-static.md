@@ -126,7 +126,8 @@ ready in 6.62ms
 → http://localhost:3000/
 Routes:
   / ./index.html
-  /about ./about.html
+  /about ./about/index.html
+  /about/foo ./about/foo/index.html
 Press h + Enter to show shortcuts
 ```
 

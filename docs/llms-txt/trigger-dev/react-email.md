@@ -1,5 +1,3 @@
-# Source: https://trigger.dev/docs/guides/examples/react-email.md
-
 # Send emails using React Email
 
 > Learn how to send beautiful emails using React Email and Trigger.dev.

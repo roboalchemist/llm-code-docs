@@ -1,8 +1,6 @@
 # HTML
 
-import LiveCodes from '../../src/components/LiveCodes.tsx';
-
-HTML (HyperText Markup Language) is the standard markup language for creating web pages and web applications. It defines the structure and content of web pages.
+HyperText Markup Language (HTML) is the standard markup language for creating web pages and web applications. It defines the structure and content of web pages.
 
 ## Usage
 

@@ -18,6 +18,7 @@ This can also be used with hot module reloading and/or watch mode to force Bun t
   }
 }
 ```
+
 ```json
 {
   "type": "hot-module-reload",
@@ -30,3 +31,4 @@ This can also be used with hot module reloading and/or watch mode to force Bun t
     }
   ]
 }
+```

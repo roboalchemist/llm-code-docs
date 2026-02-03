@@ -1,6 +1,6 @@
 # Breadcrumbs
 
-A breadcrumbs is a list of links that help visualize a page's location within a site's hierarchical structure, it allows navigation up to any of the ancestors.
+A breadcrumbs is a list of links that help visualize a page's location within a site's hierarchical structure; it allows navigation up to any of the ancestors.
 
 ## Basic breadcrumbs
 
@@ -205,10 +205,10 @@ export default function CollapsedBreadcrumbs() {
         </Link>
         <Link underline="hover" color="inherit" href="#">
           Catalog
-        </Link>
+        </link>
         <Link underline="hover" color="inherit" href="#">
           Accessories
-        </Link>
+        </link>
         <Link underline="hover" color="inherit" href="#">
           New Collection
         </link>
@@ -261,13 +261,13 @@ export default function CondensedWithMenu() {
       <Breadcrumbs aria-label="breadcrumbs">
         <Link color="primary" href="#condensed-with-menu">
           Breadcrumb 1
-        </Link>
+        </link>
         <IconButton color="primary" size="small" onClick={handleClick}>
           <MoreHorizIcon />
         </IconButton>
         <Link color="primary" href="#condensed-with-menu">
           Breadcrumb 5
-        </Link>
+        </link>
         <Link color="primary" href="#condensed-with-menu">
           Breadcrumb 6
         </link>

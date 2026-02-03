@@ -4,8 +4,7 @@ Experience a conversation in a custom Daily UI — styled to match your preferen
 
 You can **customize your conversation interface** to match your style by updating Daily's Prebuilt UI. Here’s an example showing how to customize the conversation UI by adding leave and fullscreen buttons, changing the language, and adjusting the UI color.
 
->Note`
-For more options, check the [Daily theme configuration reference](https://docs.daily.co/guides/products/prebuilt/customizing-daily-prebuilt-calls-with-color-themes) and [Daily Call Properties](https://docs.daily.co/reference/daily-js/daily-call-client/properties).
+> For more options, check the [Daily theme configuration reference](https://docs.daily.co/guides/products/prebuilt/customizing-daily-prebuilt-calls-with-color-themes) and [Daily Call Properties](https://docs.daily.co/reference/daily-js/daily-call-client/properties).
 
 ## Customization Example Guide
 
