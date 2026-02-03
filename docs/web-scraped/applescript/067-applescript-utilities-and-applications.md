@@ -1,6 +1,5 @@
 # AppleScript Utilities and Applications
 
-# AppleScript Utilities and Applications
 Apple provides a number of utilities and applications in OS X to enhance the features of AppleScript and your scripts. You can get additional information on some items described in this section by searching in Mac Help in the Finder or by going to theAppleScriptwebsite.
 
 ## AppleScript Utility

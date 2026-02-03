@@ -1,9 +1,11 @@
 # Mac Automation Scripting Guide: Prompting for a Color
 
 ## Prompting for a Color
+
 Use the Standard Additions scripting additionâschoose colorcommand to ask the user to select a color from a color picker dialog like the one shown inFigure 29-1. The command accepts an optionaldefault colorparameter, and produces an RGB color value as its result.Listing 29-1andListing 29-2display a color picker, create a TextEdit document containing some text, and apply the chosen color to the text.
 APPLESCRIPT
 Open in Script Editor
+
 - set theColor to choose color default color {0, 65535, 0}
 - --> Result: {256, 40421, 398}
 - tell application "TextEdit"
@@ -13,6 +15,7 @@ Open in Script Editor
 - end tell
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var color = app.chooseColor({defaultColor: [0, 1, 0]})

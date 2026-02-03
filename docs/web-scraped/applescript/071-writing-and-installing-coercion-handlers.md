@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Writing and Installing Coercion Handlers
 Coercionis the process of converting a descriptor and the data it contains from one type to another. When coercing between types, by definition the descriptor type is changed to the new type. However, if the underlying data representation is the same, data conversion is not required.
 Functions that perform coercions are referred to ascoercion handlers. The Mac OS provides default coercion handlers to convert between many different descriptor types. Default handlers can, for example, convert aliases to file system specifications, integers to Boolean data types, and characters to numeric data types. These handlers may be implemented by the Apple Event Manager, the Open Scripting framework, or other frameworks.Table C-2lists descriptor types and the available default coercions.
 You can also provide your own coercion handlers to perform coercions that the default handlers donât support. This chapter describes how to write coercion handlers and how to install them so that they are available to your application.
@@ -44,18 +43,31 @@ There are two types of coercion handlers. The first, which matches the format de
 The examples in this chapter show how to work with a coercion handler that uses descriptors. However the differences in working with the pointer-based type are fairly straight-forward.
 To write a a coercion handler namedCoerceApplesToOranges, based on theAECoerceDescProcPtrdata type, you would declare the handler as shown inListing 7-1.
 Listing 7-1Declaring a coercion handler
+
+```applescript
+OSErr CoerceApplesToOranges (
 ```
-OSErr CoerceApplesToOranges (```
+
+```applescript
+    const AEDesc * fromDesc,// 1
 ```
-    const AEDesc * fromDesc,// 1```
+
+```applescript
+    DescType toType,// 2
 ```
-    DescType toType,// 2```
+
+```applescript
+    long handlerRefcon,// 3
 ```
-    long handlerRefcon,// 3```
+
+```applescript
+    AEDesc * toDesc// 4
 ```
-    AEDesc * toDesc// 4```
+
+```applescript
+);
 ```
-);```
+
 The following are descriptions of the numbered parameters:
 - A pointer to the descriptor to be coerced.
 A pointer to the descriptor to be coerced.
@@ -68,62 +80,118 @@ A descriptor pointer where the handler will store the coerced descriptor.
 This routine creates a new descriptor, so it is up to the calling routine to dispose of the descriptor.
 Suppose that you want to write a coercion handler to convert text strings into your internal âbarâ data type. ThetypeBartype is defined as shown inListing 7-2.
 Listing 7-2An application-defined data type
+
+```applescript
+enum {
 ```
-enum {```
+
+```applescript
+  typeBar = 'bar!'
 ```
-  typeBar = 'bar!'```
+
+```applescript
+};
 ```
-};```
+
 Listing 7-3provides a slightly simplified version of the handler you might write.
 Listing 7-3A simple coercion handler
+
+```applescript
+static OSErr TextToBarCoercionHandler(const AEDesc* fromDesc, DescType toType, long handlerRefcon, AEDesc* toDesc)
 ```
-static OSErr TextToBarCoercionHandler(const AEDesc* fromDesc, DescType toType, long handlerRefcon, AEDesc* toDesc)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    require_noerr((fromDesc->descriptorType != typeChar),CoercionFailed);// 1
 ```
-    require_noerr((fromDesc->descriptorType != typeChar),CoercionFailed);// 1```
+
+```applescript
+    require_noerr((toType != typeBar), CoercionFailed);
 ```
-    require_noerr((toType != typeBar), CoercionFailed);```
+
+```applescript
+    require_noerr((handlerRefcon != 1234), CoercionFailed);// 2
 ```
-    require_noerr((handlerRefcon != 1234), CoercionFailed);// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    long dataSize = AEGetDescDataSize(fromDesc);// 3
 ```
-    long dataSize = AEGetDescDataSize(fromDesc);// 3```
+
+```applescript
+    char dataPtr[dataSize];
 ```
-    char dataPtr[dataSize];```
+
+```applescript
+    OSErr err = AEGetDescData(fromDesc, dataPtr, dataSize);
 ```
-    OSErr err = AEGetDescData(fromDesc, dataPtr, dataSize);```
+
+```applescript
+    require_noerr(err, CoercionFailed);
 ```
-    require_noerr(err, CoercionFailed);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    long result = 0;
 ```
-    long result = 0;```
+
+```applescript
+    const char* pChar = (const char*) dataPtr;
 ```
-    const char* pChar = (const char*) dataPtr;```
+
+```applescript
+    while (dataSize-- > 0)// 4
 ```
-    while (dataSize-- > 0)// 4```
+
+```applescript
+        result += *pChar++;
 ```
-        result += *pChar++;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AECreateDesc(typeBar, &result, sizeof(result), toDesc);// 5
 ```
-    err = AECreateDesc(typeBar, &result, sizeof(result), toDesc);// 5```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (err != noErr)// 6
 ```
-    if (err != noErr)// 6```
+
+```applescript
+        err = errAECoercionFail;
 ```
-        err = errAECoercionFail;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+CoercionFailed:// 7
 ```
-CoercionFailed:// 7```
+
+```applescript
+        return err;
 ```
-        return err;```
+
+```applescript
+}
 ```
-}```
+
 Hereâs what the code inTextToBarCoercionHandlerdoes:
 - Checks the passed parameters to validate that it can handle the requested coercion, using the macrorequire_noerr, which jumps to the error labelCoercionFailedif a value isnât supported.Coercion handlers that support multiple types will have additional work to do here.
 Checks the passed parameters to validate that it can handle the requested coercion, using the macrorequire_noerr, which jumps to the error labelCoercionFailedif a value isnât supported.
@@ -149,22 +217,39 @@ When obtaining the data to convert, you use the size and type information to ext
 ## Installing a Coercion Handler
 To install a coercion handler, you use theAEInstallCoercionHandlerfunction, which is declared as shown inListing 7-4.
 Listing 7-4Declaration of AEInstallCoercionHandler
+
+```applescript
+OSErr AEInstallCoercionHandler (
 ```
-OSErr AEInstallCoercionHandler (```
+
+```applescript
+    DescType fromType,// 1
 ```
-    DescType fromType,// 1```
+
+```applescript
+    DescType toType,// 2
 ```
-    DescType toType,// 2```
+
+```applescript
+    AECoercionHandlerUPP handler,// 3
 ```
-    AECoercionHandlerUPP handler,// 3```
+
+```applescript
+    long handlerRefcon,// 4
 ```
-    long handlerRefcon,// 4```
+
+```applescript
+    Boolean fromTypeIsDesc,// 5
 ```
-    Boolean fromTypeIsDesc,// 5```
+
+```applescript
+    Boolean isSysHandler// 6
 ```
-    Boolean isSysHandler// 6```
+
+```applescript
+);
 ```
-);```
+
 You specify as parameters to this function:
 - The descriptor type of the data coerced by the handler. You can passtypeWildCardto accept all types.
 The descriptor type of the data coerced by the handler. You can passtypeWildCardto accept all types.
@@ -180,20 +265,35 @@ A Boolean value that indicates whether your coercion handler expects the data to
 A Boolean value that indicates whether your coercion handler should be added to your applicationâs coercion dispatch table or the system coercion dispatch table.
 To call theTextToBarCoercionHandlerhandler defined inListing 7-3, you can use code like that shown inListing 7-5.
 Listing 7-5Installing a coercion handler
+
+```applescript
+OSErr err = AEInstallCoercionHandler(
 ```
-OSErr err = AEInstallCoercionHandler(```
+
+```applescript
+                typeChar, // Coerce from this type
 ```
-                typeChar, // Coerce from this type```
+
+```applescript
+                typeBar, // to this type,
 ```
-                typeBar, // to this type,```
+
+```applescript
+                TextToBarCoercionHandler, //using this handler,
 ```
-                TextToBarCoercionHandler, //using this handler,```
+
+```applescript
+                1234,   //  passing this reference constant.
 ```
-                1234,   //  passing this reference constant.```
+
+```applescript
+                true,   //  The handler operates on descriptors,
 ```
-                true,   //  The handler operates on descriptors,```
+
+```applescript
+                false); //  and resides in the application table.
 ```
-                false); //  and resides in the application table.```
+
 Hereâs what the parameters in this call specify:
 - Coerce from type'TEXT'.
 Coerce from type'TEXT'.
@@ -211,34 +311,63 @@ The handler resides in the applicationâs coercion dispatch table.
 ## Testing a Coercion Handler
 You can use code like that shown inListing 7-6to test theTextToBarCoercionHandlerhandler defined inListing 7-3.
 Listing 7-6Testing a coercion handler
+
+```applescript
+    AEDesc textDesc;
 ```
-    AEDesc textDesc;```
+
+```applescript
+    const char* kText = "1234";
 ```
-    const char* kText = "1234";```
+
+```applescript
+    OSErr err = AECreateDesc(typeChar, kText, strlen(kText), &textDesc);// 1
 ```
-    OSErr err = AECreateDesc(typeChar, kText, strlen(kText), &textDesc);// 1```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    AEDesc barDesc;
 ```
-    AEDesc barDesc;```
+
+```applescript
+    err = AECoerceDesc(&textDesc, typeBar, &barDesc);// 2
 ```
-    err = AECoerceDesc(&textDesc, typeBar, &barDesc);// 2```
+
+```applescript
+    if (err == noErr)
 ```
-    if (err == noErr)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        // Use the descriptor as needed.
 ```
-        // Use the descriptor as needed.```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        // Dispose of the descriptor when finished with it.
 ```
-        // Dispose of the descriptor when finished with it.```
+
+```applescript
+        err = AEDisposeDesc(&barDesc);// 3
 ```
-        err = AEDisposeDesc(&barDesc);// 3```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    err = AEDisposeDesc(&textDesc);// 4
 ```
-    err = AEDisposeDesc(&textDesc);// 4```
+
 Here is what the code in this snippet does:
 - Creates a descriptor containing the text string â1234â.
 Creates a descriptor containing the text string â1234â.

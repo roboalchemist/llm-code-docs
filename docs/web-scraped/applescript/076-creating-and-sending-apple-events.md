@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Creating and Sending Apple Events
 This chapter provides information and sample code that will help you create and send Apple events and handle Apple events you receive in response to those you send. Before reading this chapter, you should be familiar with the information inBuilding an Apple Event.
 Applications most commonly create and send Apple events for one of the reasons described inWhen Applications Use Apple Events: to communicate directly with other applications or to support recording in a scriptable application. And as described inTwo Approaches to Creating an Apple Event, you can create an Apple event in one step with theAEBuildAppleEventfunction, or you can create a possibly incomplete Apple event withAECreateAppleEvent, then add attributes and parameters to complete the event.
 Note:Two Approaches to Creating an Apple Eventalso briefly describes a third approach, using stream-oriented calling conventions, and points to documentation for that approach.
@@ -27,26 +26,47 @@ The fastest way for your application to send an Apple event to itself is to use 
 ### Creating a Target Address Descriptor
 If you want to create an Apple event with theAECreateAppleEventfunction, you need to create a target address descriptor to pass to the function. You can do so by calling theAECreateDescfunction.Listing 6-1shows how to create an address descriptor for a process serial number (typeProcessSerialNumber). Other target address descriptor types are shown inAddress Descriptor Type Constants.
 Listing 6-1Creating an address descriptor using a process serial number
+
+```applescript
+OSErr               err;
 ```
-OSErr               err;```
+
+```applescript
+ProcessSerialNumber thePSN;
 ```
-ProcessSerialNumber thePSN;```
+
+```applescript
+AEAddressDesc       addressDesc;
 ```
-AEAddressDesc       addressDesc;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+err = GetProcessNumber(&thePSN);// 1
 ```
-err = GetProcessNumber(&thePSN);// 1```
+
+```applescript
+if (err == noErr)
 ```
-if (err == noErr)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    err = AECreateDesc(typeProcessSerialNumber,
 ```
-    err = AECreateDesc(typeProcessSerialNumber,```
+
+```applescript
+                        &thePSN, sizeof(thePSN), &addressDesc);// 2
 ```
-                        &thePSN, sizeof(thePSN), &addressDesc);// 2```
+
+```applescript
+}
 ```
-}```
+
 Hereâs a description of how this code snippet works:
 - It calls an application-defined function,GetProcessNumber, to obtain the process serial number of another process.To create a target address descriptor for the current process, seeListing 6-2.
 It calls an application-defined function,GetProcessNumber, to obtain the process serial number of another process.
@@ -64,16 +84,27 @@ For a code example that usesAEBuildAppleEvent, seeListing 6-4.
 Applications typically send Apple events to themselves to support recordability, discussed briefly inWhen Applications Use Apple Events. The best way for your application to send Apple events to itself is to use an address descriptor oftypeProcessSerialNumberwith thelowLongOfPSNfield set tokCurrentProcessand thehighLongOfPSNfield set to 0.Listing 6-2shows how to do this.
 When you send an Apple event with this type of target address descriptor, the Apple Event Manager jumps directly to the appropriate Apple event handler without going through the normal event-processing sequence. This is not only more efficient, it avoids the situation in which an Apple event sent in response to a user action arrives in the event queue after some other event that really occurred later than the user action. For example, suppose a user chooses Cut from the Edit menu and then clicks in another window. If thecutApple event arrives in the queue after the window activate event, a selection in the wrong window might be cut.
 Listing 6-2Creating an address descriptor that specifies the current application
+
+```applescript
+    AEAddressDesc addressDesc;
 ```
-    AEAddressDesc addressDesc;```
+
+```applescript
+    ProcessSerialNumber selfPSN = { 0, kCurrentProcess };// 1
 ```
-    ProcessSerialNumber selfPSN = { 0, kCurrentProcess };// 1```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    OSErr err = AECreateDesc(typeProcessSerialNumber, &selfPSN,
 ```
-    OSErr err = AECreateDesc(typeProcessSerialNumber, &selfPSN,```
+
+```applescript
+                                sizeof(selfPSN), &addressDesc);// 2
 ```
-                                sizeof(selfPSN), &addressDesc);// 2```
+
 Hereâs a description of how this code snippet works:
 - Sets up a process serial number for the current process, as described above.
 Sets up a process serial number for the current process, as described above.
@@ -113,10 +144,15 @@ TheAEBuildAppleEventfunction provides a mechanism for converting a specially for
 TheAEBuildAppleEventfunction is similar to theprintffamily of routines in the standard C library. The syntax for the format string defines an Apple event as a sequence of name-value pairs, with optional parameters preceded with a tilde (~) character. For details, see Technical Note TN2106,AEBuild*, AEPrint*, and Friends.
 The next two code listings show how you might useAEBuildAppleEventto create an Apple event that tells the Finder to reveal the startup disk (make it visible on the desktop).
 Listing 6-3Constants used in creating a reveal Apple event for the Finder
+
+```applescript
+const CFStringRef startupDiskPath = CFSTR("/");// 1
 ```
-const CFStringRef startupDiskPath = CFSTR("/");// 1```
+
+```applescript
+const OSType finderSignature = 'MACS';// 2
 ```
-const OSType finderSignature = 'MACS';// 2```
+
 Hereâs a description of these constants, which are defined inAERegistry.hand used by the Finder in its Apple event support:
 - Defines a string reference for the POSIX-style path of the startup disk.
 Defines a string reference for the POSIX-style path of the startup disk.
@@ -125,74 +161,143 @@ Defines the application signature for the Mac OS Finder application.
 Because the Finder is always running in Mac OS X, it is generally safe to send it an Apple event without first making sure it has been launched.
 Listing 6-4shows a function that creates an Apple event to reveal the startup disk in the Finder.
 Listing 6-4Creating a reveal Apple event with AEBuildAppleEvent
+
+```applescript
+OSErr BuildRevealStartupDiskAE (AppleEvent * revealEvent)// 1
 ```
-OSErr BuildRevealStartupDiskAE (AppleEvent * revealEvent)// 1```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    FSRef startupDiskFSRef;
 ```
-    FSRef startupDiskFSRef;```
+
+```applescript
+    AliasHandle startupDiskAlias;
 ```
-    AliasHandle startupDiskAlias;```
+
+```applescript
+    OSErr err = noErr;
 ```
-    OSErr err = noErr;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    CFURLRef startupURLRef =
 ```
-    CFURLRef startupURLRef =```
+
+```applescript
+        CFURLCreateWithFileSystemPath(kCFAllocatorDefault,
 ```
-        CFURLCreateWithFileSystemPath(kCFAllocatorDefault,```
+
+```applescript
+            startupDiskPath, kCFURLPOSIXPathStyle, true);// 2
 ```
-            startupDiskPath, kCFURLPOSIXPathStyle, true);// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (CFURLGetFSRef(startupURLRef, &startupDiskFSRef))// 3
 ```
-    if (CFURLGetFSRef(startupURLRef, &startupDiskFSRef))// 3```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        err = FSNewAlias(NULL, &startupDiskFSRef, &startupDiskAlias);// 4
 ```
-        err = FSNewAlias(NULL, &startupDiskFSRef, &startupDiskAlias);// 4```
+
+```applescript
+        if (err == noErr)
 ```
-        if (err == noErr)```
+
+```applescript
+        {
 ```
-        {```
+
+```applescript
+            err = AEBuildAppleEvent(// 5
 ```
-            err = AEBuildAppleEvent(// 5```
+
+```applescript
+                    kAEMiscStandards,// 6
 ```
-                    kAEMiscStandards,// 6```
+
+```applescript
+                    kAEMakeObjectsVisible,// 7
 ```
-                    kAEMakeObjectsVisible,// 7```
+
+```applescript
+                    typeApplSignature,// 8
 ```
-                    typeApplSignature,// 8```
+
+```applescript
+                    &finderSignature,// 9
 ```
-                    &finderSignature,// 9```
+
+```applescript
+                    sizeof(finderSignature),// 10
 ```
-                    sizeof(finderSignature),// 10```
+
+```applescript
+                    kAutoGenerateReturnID, // 11
 ```
-                    kAutoGenerateReturnID, // 11```
+
+```applescript
+                    kAnyTransactionID,// 12
 ```
-                    kAnyTransactionID,// 12```
+
+```applescript
+                    revealEvent,// 13
 ```
-                    revealEvent,// 13```
+
+```applescript
+                    NULL,// 14
 ```
-                    NULL,// 14```
+
+```applescript
+                    "'----':[alis(@@)]",// 15
 ```
-                    "'----':[alis(@@)]",// 15```
+
+```applescript
+                    startupDiskAlias);// 16
 ```
-                    startupDiskAlias);// 16```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    else
 ```
-    else```
+
+```applescript
+        err = memFullErr;// 17
 ```
-        err = memFullErr;// 17```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    return err;// 18
 ```
-    return err;// 18```
+
+```applescript
+}
 ```
-}```
+
 Hereâs a description of how theBuildRevealStartupDiskAEfunction works:
 - It is passed a pointer to an Apple event data structure for the event to be created.
 It is passed a pointer to an Apple event data structure for the event to be created.
@@ -244,24 +349,43 @@ CallAECreateAppleEventto create the Apple event, passing the event class, event 
 If necessary, call other Apple Event Manager functions to add additional information to the event, until it contains all the information required for the task you want to perform.
 For example, suppose your application wants to send aquitApple event to another application. It might do this to terminate an application it launched previously, or perhaps to make sure an application is not running so it can perform an update.Listing 6-5shows how to create aquitapplication Apple event.
 Listing 6-5Creating a quit Apple event with AECreateAppleEvent
+
+```applescript
+AppleEvent someAE;
 ```
-AppleEvent someAE;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+err = AECreateAppleEvent(// 1
 ```
-err = AECreateAppleEvent(// 1```
+
+```applescript
+        kCoreEventClass,// 2
 ```
-        kCoreEventClass,// 2```
+
+```applescript
+        kAEQuitApplication,// 3
 ```
-        kAEQuitApplication,// 3```
+
+```applescript
+        &theTarget,// 4
 ```
-        &theTarget,// 4```
+
+```applescript
+        kAutoGenerateReturnID,// 5
 ```
-        kAutoGenerateReturnID,// 5```
+
+```applescript
+        kAnyTransactionID,// 6
 ```
-        kAnyTransactionID,// 6```
+
+```applescript
+        &someAE);// 7
 ```
-        &someAE);// 7```
+
 Hereâs how the code inListing 6-5works:
 - It callsAECreateAppleEventto create the Apple event. The following items describe the parameters you pass to that function.
 It callsAECreateAppleEventto create the Apple event. The following items describe the parameters you pass to that function.
@@ -279,14 +403,23 @@ Passes the Apple Event Manager constantkAnyTransactionID, indicating the event i
 It passes the address of an Apple event data structure for the event to be created.
 Thatâs all you need to do to create aquitApple event. However, to create a more complicated Apple event, you typically need to add attributes or parameters to the event. For example, your application might receive aget dataApple event for which it returns some specified text as the direct parameter of the reply Apple event.Listing 6-6shows how to add such a direct parameter, using a previously defined function.
 Listing 6-6Adding a direct parameter to an Apple event
+
+```applescript
+OSErr anErr = AEPutParamString(// 1
 ```
-OSErr anErr = AEPutParamString(// 1```
+
+```applescript
+                    reply,// 2
 ```
-                    reply,// 2```
+
+```applescript
+                    keyDirectObject,// 3
 ```
-                    keyDirectObject,// 3```
+
+```applescript
+                    textStringRef);// 4
 ```
-                    textStringRef);// 4```
+
 Hereâs how the code inListing 6-6works:
 - It calls the application-defined functionAEPutParamString, shown inListing 5-3. The following items describe the parameters you pass to add a direct parameter to the Apple event.
 It calls the application-defined functionAEPutParamString, shown inListing 5-3. The following items describe the parameters you pass to add a direct parameter to the Apple event.
@@ -347,40 +480,75 @@ The server application specifies its own preferences for user interaction by spe
 ### Sending an Apple Event With AESend
 Listing 6-7shows how you can build an Apple event withAEBuildAppleEventand send the event withAESend.
 Listing 6-7Sending an Apple event with the AESend function
+
+```applescript
+    OSErr err = noErr;
 ```
-    OSErr err = noErr;```
+
+```applescript
+    AppleEvent revealEvent;
 ```
-    AppleEvent revealEvent;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = BuildRevealStartupDiskAE(&revealEvent);// 1
 ```
-    err = BuildRevealStartupDiskAE(&revealEvent);// 1```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (err == noErr)
 ```
-    if (err == noErr)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        err = AESend(&revealEvent,// 2
 ```
-        err = AESend(&revealEvent,// 2```
+
+```applescript
+                    NULL,       // No reply event needed.// 3
 ```
-                    NULL,       // No reply event needed.// 3```
+
+```applescript
+                    kAENoReply | kAECanInteract,// 4
 ```
-                    kAENoReply | kAECanInteract,// 4```
+
+```applescript
+                    kAENormalPriority,// Normal priority.// 5
 ```
-                    kAENormalPriority,// Normal priority.// 5```
+
+```applescript
+                    kAEDefaultTimeout,// Let AE Mgr decide on timeout.// 6
 ```
-                    kAEDefaultTimeout,// Let AE Mgr decide on timeout.// 6```
+
+```applescript
+                    NULL,           // No idle function.// 7
 ```
-                    NULL,           // No idle function.// 7```
+
+```applescript
+                    NULL);          // No filter function.// 8
 ```
-                    NULL);          // No filter function.// 8```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        err = AEDisposeDesc(&revealEvent);// 9
 ```
-        err = AEDisposeDesc(&revealEvent);// 9```
+
+```applescript
+    }
 ```
-    }```
+
 Hereâs how the code inListing 6-7works:
 - Calls the application-defined functionBuildRevealStartupDiskAE, shown inListing 6-4, to build an Apple event that tells the Finder to reveal the startup disk.
 Calls the application-defined functionBuildRevealStartupDiskAE, shown inListing 6-4, to build an Apple event that tells the Finder to reveal the startup disk.
@@ -408,34 +576,63 @@ As noted inSpecifying a Reply in the Send Mode Parameter, even in the case where
 ### Sending an Apple Event With AESendMessage
 Listing 6-8shows how you can send an Apple event withAESendMessage.
 Listing 6-8Sending an Apple event with the AESendMessage function
+
+```applescript
+    OSErr err = noErr;
 ```
-    OSErr err = noErr;```
+
+```applescript
+    AppleEvent revealEvent;
 ```
-    AppleEvent revealEvent;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = BuildRevealStartupDiskAE(&revealEvent);// 1
 ```
-    err = BuildRevealStartupDiskAE(&revealEvent);// 1```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (err == noErr)
 ```
-    if (err == noErr)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        err = AESendMessage(&revealEvent,// 2
 ```
-        err = AESendMessage(&revealEvent,// 2```
+
+```applescript
+                    NULL,// 3
 ```
-                    NULL,// 3```
+
+```applescript
+                    kAENoReply | kAENeverInteract,// 4
 ```
-                    kAENoReply | kAENeverInteract,// 4```
+
+```applescript
+                    kAEDefaultTimeout);// 5
 ```
-                    kAEDefaultTimeout);// 5```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        err = AEDisposeDesc(&revealEvent);// 6
 ```
-        err = AEDisposeDesc(&revealEvent);// 6```
+
+```applescript
+    }
 ```
-    }```
+
 Hereâs how the code inListing 6-7works:
 - Calls the application-defined functionBuildRevealStartupDiskAE, shown inListing 6-4, to build an Apple event that tells the Finder to reveal the startup disk.
 Calls the application-defined functionBuildRevealStartupDiskAE, shown inListing 6-4, to build an Apple event that tells the Finder to reveal the startup disk.

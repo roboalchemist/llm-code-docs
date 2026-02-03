@@ -1,6 +1,7 @@
 # Mac Automation Scripting Guide: Displaying Progress
 
 ## Displaying Progress
+
 Many scripts perform large and time-consuming processing operations. All too often, they do this invisibly; they simply run and the user has no idea how long processing will take. A more user-friendly approach is to provide progress information during script operation. At a basic level, this can be done by displaying periodic dialogs or notifications. SeeDisplaying Dialogs and AlertsandDisplaying Notifications. At a complex level, this can be done by designing a fully-custom interface that provides processing feedback.
 AppleScript and JavaScript can also report progress graphically and textually. For script apps, this progress reporting takes the form of a dialog window containing a progress bar, descriptive text, and a Stop button. SeeFigure 30-1.
 For scripts running in Script Editor, this progress reporting appears at the bottom of the script window. SeeFigure 30-2.
@@ -29,6 +30,7 @@ Additional text to display when reporting progress. Use this is an opportunity t
 Listing 30-1andListing 30-2demonstrate how these properties can be used to provide progress information while processing a set of images.
 APPLESCRIPT
 Open in Script Editor
+
 - set theImages to choose file with prompt "Please select some images to process:" of type {"public.image"} with multiple selections allowed
 - -- Update the initial progress information
 - set theImageCount to length of theImages
@@ -52,6 +54,7 @@ Open in Script Editor
 - set progress additional description to ""
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var images = app.chooseFile({

@@ -1,6 +1,5 @@
 # Open Scripting Architecture
 
-# Open Scripting Architecture
 TheOpen Scripting Architecture (OSA)provides a standard and extensible mechanism for interapplication communication in OS X. Communication takes place through the exchange of Apple events, a type of message designed to encapsulate commands and data of any complexity.
 Apple events provide an event dispatching and data transport mechanism that can be used within a single application, between applications on the same computer, and between applications on different computers. The OSA defines data structures, a set of common terms, and a library of functions, so that applications can more easily create and send Apple events, as well as receive them and extract data from them.
 Note:Apple events are not always the most efficient or appropriate mechanism for communicating between processes. OS X offers other mechanisms, including distributed objects, notifications, sockets, ports, streams, shared memory, and Mach messaging. These mechanisms are described in âIPC and Notification Mechanismsâ inKernel and Device Drivers LayerinMac Technology Overview.
@@ -53,8 +52,11 @@ Developers can extend AppleScript by creating bundles that provide command handl
 ### Coercions
 Coercionis the process of converting the information in an Apple event from one type to another. Acoercion handleris a function that provides coercion between two (or possibly more) data types. OS X provides default coercion between many standard types. For a complete listing, seeDefault Coercion HandlersinApple Events Programming Guide.
 Coercion is available to both scripts and applications. In a script, for example, the following statement coerces the numeric value 1234 to the string value â1234â.
+
+```applescript
+set myString to 1234 as text
 ```
-set myString to 1234 as text```
+
 A scriptable application can specify a type when it uses an Apple Event Manager function to extract data from an Apple event. If the data is not already in the specified type, the Apple Event Manager will attempt to coerce it to that type. An application can provide coercion handlers for its own data types, as described inWriting and Installing Coercion HandlersinApple Events Programming Guide.
 
 ### Scripting Additions

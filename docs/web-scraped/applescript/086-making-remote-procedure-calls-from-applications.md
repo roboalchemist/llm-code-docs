@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Making Remote Procedure Calls From Applications
 Starting with OS X version 10.1, the Apple Event Manager provides support for using the XML-RPC and SOAP protocols to make remote procedure calls from AppleScript scripts and from applications. This chapter provides sample code that show how to make remote procedure calls from applications or other code.
 This chapter assumes you are familiar with the conceptual material inIntroduction to XML-RPC and SOAP Programming Guide. To test any of the sample code shown in this book, you must have an Internet connection.
 
@@ -25,8 +24,11 @@ Replace the code in the automatically generated main.cpp file with the sample co
 Use Add Frameworks from the Project menu to addCarbon.frameworkto the project.
 Once youâve built the tool, you can run it in Project Builder and examine its output in the Console pane, or run it in a Terminal window.
 You can also build this code directly in a Terminal window with the following compile line:
+
+```applescript
+cc -g -o xmlrpc xmlrpc.cp -framework Carbon
 ```
-cc -g -o xmlrpc xmlrpc.cp -framework Carbon```
+
 If you want to compile with a C compiler, rather than a C++ compiler, youâll have to modify the code so that all variables are declared at the beginning of functions, rather than where they are used.
 
 ### Includes, Constants, and Declarations
@@ -40,36 +42,66 @@ defines constants that specify the server and method name to call to get state n
 - declares a debug function that is defined later
 declares a debug function that is defined later
 Listing 3-1Includes, constants, and declarations for making an XML-RPC call.
+
+```applescript
+#include <Carbon/Carbon.h>
 ```
-#include <Carbon/Carbon.h>```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Define a simple error macro that just shows the error and line number
 ```
-// Define a simple error macro that just shows the error and line number```
+
+```applescript
+#define checkErr(err) \
 ```
-#define checkErr(err) \```
+
+```applescript
+    while (err != noErr) \
 ```
-    while (err != noErr) \```
+
+```applescript
+        { fprintf(stderr, "Failed at line %d, error %d\n", __LINE__, err);\
 ```
-        { fprintf(stderr, "Failed at line %d, error %d\n", __LINE__, err);\```
+
+```applescript
+         exit(-1); }
 ```
-         exit(-1); }```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Define constants for the XML-RPC server and method.
 ```
-// Define constants for the XML-RPC server and method.```
+
+```applescript
+static const char* serverURL = "http://betty.userland.com/RPC2";
 ```
-static const char* serverURL = "http://betty.userland.com/RPC2";```
+
+```applescript
+static const char* methodName = "examples.getStateName";
 ```
-static const char* methodName = "examples.getStateName";```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Declare our debug function.
 ```
-// Declare our debug function.```
+
+```applescript
+static void dumpDebug(const char* msg, const AppleEvent* replyEvent,
 ```
-static void dumpDebug(const char* msg, const AppleEvent* replyEvent,```
+
+```applescript
+    OSType debugDataKey);
 ```
-    OSType debugDataKey);```
 
 ### A Main Function That Makes an XML-RPC Call
 Listing 4-2shows amainfunction that prepares an XML-RPC Apple event, sends it, and displays information from the reply Apple event. To do so, it performs the following steps:
@@ -98,188 +130,367 @@ It callsAESendto send the Apple event, passingkAEWaitReplyto indicate it will wa
 - If the previous call succeeds, it callsAEGetParamPtrwith keykeyDirectObjectand desired type oftypeCharto extract the direct object of the reply Apple event. For a successful call with state index 41, the returned value is the string âSouth Dakotaâ.It callsfprintfto display the state name. For exampleState is South Dakota!Note:Starting in OS X version 10.3,typeCharis deprecated in favor of one of the Unicode string types. For details, see the descriptions fortypeCharand for the Unicode string types inApple Event Manager Reference.
 If the previous call succeeds, it callsAEGetParamPtrwith keykeyDirectObjectand desired type oftypeCharto extract the direct object of the reply Apple event. For a successful call with state index 41, the returned value is the string âSouth Dakotaâ.
 It callsfprintfto display the state name. For example
+
+```applescript
+    State is South Dakota!
 ```
-    State is South Dakota!```
+
 Note:Starting in OS X version 10.3,typeCharis deprecated in favor of one of the Unicode string types. For details, see the descriptions fortypeCharand for the Unicode string types inApple Event Manager Reference.
 - The main function then calls the functiondumpDebug, shown inListing 4-3, once each to display the header and data for the original XML-RPC request and for the reply from the server.Listing 4-4shows the possible result of these calls.
 The main function then calls the functiondumpDebug, shown inListing 4-3, once each to display the header and data for the original XML-RPC request and for the reply from the server.Listing 4-4shows the possible result of these calls.
 Listing 3-2main function to send an XML-RPC Apple event.
+
+```applescript
+//------------------------- main ----------------------------------
+```
+
+```applescript
+// Builds and sends an XML-RPC Apple event.
+```
+
+```applescript
+// Sends the Apple event to a server that returns the state
+```
+
+```applescript
+//   name corresponding to the passed number; e.g., the number
+```
+
+```applescript
+//   5 corresponds to the state California.
+```
+
+```applescript
+// Prints the returned state name, then calls function
+```
+
+```applescript
+//   to dump debug information from reply
+```
+
+```applescript
+int main()
+```
+
+```applescript
+{
+```
+
+```applescript
+    OSErr err;
+```
+
+```applescript
+    AEDesc targetAddress;
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create the target address.
+```
+
+```applescript
+    //   Using type typeApplicationURL makes it a remote procedure call event.
+```
+
+```applescript
+    err = AECreateDesc(typeApplicationURL, serverURL, strlen(serverURL), &targetAddress);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create an XML-RPC Apple event
+```
+
+```applescript
+    AppleEvent xmlrpcEvent;
+```
+
+```applescript
+    err = AECreateAppleEvent(kAERPCClass, kAEXMLRPCScheme, &targetAddress,
+```
+
+```applescript
+            kAutoGenerateReturnID, kAnyTransactionID, &xmlrpcEvent);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&targetAddress);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create the parameters for the event - the direct object is a record
+```
+
+```applescript
+    //   that contains the method name, and a list of parameters
+```
+
+```applescript
+    AEDesc directObject;
+```
+
+```applescript
+    err = AECreateList(NULL, 0, true, &directObject);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Insert the method name
+```
+
+```applescript
+    err = AEPutParamPtr(&directObject, keyRPCMethodName, typeChar,
+```
+
+```applescript
+        methodName, strlen(methodName));
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create the list for the actual parameters
+```
+
+```applescript
+    AEDesc paramList;
+```
+
+```applescript
+    err = AECreateList(NULL, 0, false, &paramList);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the state index into the parameter array
+```
+
+```applescript
+    SInt32 stateIndex = 41; // Should correspond to South Dakota
+```
+
+```applescript
+    err = AEPutPtr(&paramList, 0, typeSInt32, &stateIndex,
+```
+
+```applescript
+        sizeof(stateIndex));
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the parameter list into the direct object
+```
+
+```applescript
+    err = AEPutParamDesc(&directObject, keyRPCMethodParam, &paramList);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&paramList);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the direct object into the event
+```
+
+```applescript
+    err = AEPutParamDesc(&xmlrpcEvent, keyDirectObject, &directObject);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&directObject);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Request all available debugging information. That will include
+```
+
+```applescript
+    //   the header and body for both the XML-RPC request and the reply
+```
+
+```applescript
+    //   from the server.
+```
+
+```applescript
+    SInt32 debugAttr = kAEDebugXMLDebugAll;
+```
+
+```applescript
+    err = AEPutAttributePtr(&xmlrpcEvent, keyXMLDebuggingAttr, typeSInt32,
+```
+
+```applescript
+        &debugAttr, sizeof(debugAttr));
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Send the event
 ```
-//------------------------- main ----------------------------------```
+
+```applescript
+    AppleEvent replyEvent;
 ```
-// Builds and sends an XML-RPC Apple event.```
+
+```applescript
+    AEInitializeDescInline(&replyEvent);
 ```
-// Sends the Apple event to a server that returns the state```
+
+```applescript
+    err = AESend(&xmlrpcEvent, &replyEvent, kAEWaitReply, kAENormalPriority,
 ```
-//   name corresponding to the passed number; e.g., the number```
+
+```applescript
+        kAEDefaultTimeout, NULL, NULL);
 ```
-//   5 corresponds to the state California.```
+
+```applescript
+    checkErr(err);
 ```
-// Prints the returned state name, then calls function```
+
+```applescript
+ 
 ```
-//   to dump debug information from reply```
+
+```applescript
+    // The direct object of the reply Apple event contains
 ```
-int main()```
+
+```applescript
+    // our result (the name of the state)
 ```
-{```
+
+```applescript
+    char buffer[255];
 ```
-    OSErr err;```
+
+```applescript
+    Size actualSize;
 ```
-    AEDesc targetAddress;```
+
+```applescript
+    err = AEGetParamPtr(&replyEvent, keyDirectObject, typeChar, NULL,
 ```
- ```
+
+```applescript
+        buffer, sizeof(buffer), &actualSize);
 ```
-    // Create the target address.```
+
+```applescript
+    checkErr(err);
 ```
-    //   Using type typeApplicationURL makes it a remote procedure call event.```
+
+```applescript
+ 
 ```
-    err = AECreateDesc(typeApplicationURL, serverURL, strlen(serverURL), &targetAddress);```
+
+```applescript
+    fprintf(stderr, "State is %.*s!\n", actualSize, buffer);
 ```
-    checkErr(err);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // Dump debug information
 ```
-    // Create an XML-RPC Apple event```
+
+```applescript
+    dumpDebug("HTTP POST header", &replyEvent, keyAEPOSTHeaderData);
 ```
-    AppleEvent xmlrpcEvent;```
+
+```applescript
+    dumpDebug("XML Request", &replyEvent, keyAEXMLRequestData);
 ```
-    err = AECreateAppleEvent(kAERPCClass, kAEXMLRPCScheme, &targetAddress,```
+
+```applescript
+    dumpDebug("HTTP Reply header", &replyEvent, keyAEReplyHeaderData);
 ```
-            kAutoGenerateReturnID, kAnyTransactionID, &xmlrpcEvent);```
+
+```applescript
+    dumpDebug("XML Reply", &replyEvent, keyAEXMLReplyData);
 ```
-    checkErr(err);```
+
+```applescript
+ 
 ```
-    AEDisposeDesc(&targetAddress);```
+
+```applescript
+    return 0;
 ```
- ```
+
+```applescript
+}
 ```
-    // Create the parameters for the event - the direct object is a record```
-```
-    //   that contains the method name, and a list of parameters```
-```
-    AEDesc directObject;```
-```
-    err = AECreateList(NULL, 0, true, &directObject);```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Insert the method name```
-```
-    err = AEPutParamPtr(&directObject, keyRPCMethodName, typeChar,```
-```
-        methodName, strlen(methodName));```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Create the list for the actual parameters```
-```
-    AEDesc paramList;```
-```
-    err = AECreateList(NULL, 0, false, &paramList);```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Put the state index into the parameter array```
-```
-    SInt32 stateIndex = 41; // Should correspond to South Dakota```
-```
-    err = AEPutPtr(&paramList, 0, typeSInt32, &stateIndex,```
-```
-        sizeof(stateIndex));```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Put the parameter list into the direct object```
-```
-    err = AEPutParamDesc(&directObject, keyRPCMethodParam, &paramList);```
-```
-    checkErr(err);```
-```
-    AEDisposeDesc(&paramList);```
-```
- ```
-```
-    // Put the direct object into the event```
-```
-    err = AEPutParamDesc(&xmlrpcEvent, keyDirectObject, &directObject);```
-```
-    checkErr(err);```
-```
-    AEDisposeDesc(&directObject);```
-```
- ```
-```
-    // Request all available debugging information. That will include```
-```
-    //   the header and body for both the XML-RPC request and the reply```
-```
-    //   from the server.```
-```
-    SInt32 debugAttr = kAEDebugXMLDebugAll;```
-```
-    err = AEPutAttributePtr(&xmlrpcEvent, keyXMLDebuggingAttr, typeSInt32,```
-```
-        &debugAttr, sizeof(debugAttr));```
-```
- ```
-```
-    // Send the event```
-```
-    AppleEvent replyEvent;```
-```
-    AEInitializeDescInline(&replyEvent);```
-```
-    err = AESend(&xmlrpcEvent, &replyEvent, kAEWaitReply, kAENormalPriority,```
-```
-        kAEDefaultTimeout, NULL, NULL);```
-```
-    checkErr(err);```
-```
- ```
-```
-    // The direct object of the reply Apple event contains```
-```
-    // our result (the name of the state)```
-```
-    char buffer[255];```
-```
-    Size actualSize;```
-```
-    err = AEGetParamPtr(&replyEvent, keyDirectObject, typeChar, NULL,```
-```
-        buffer, sizeof(buffer), &actualSize);```
-```
-    checkErr(err);```
-```
- ```
-```
-    fprintf(stderr, "State is %.*s!\n", actualSize, buffer);```
-```
- ```
-```
-    // Dump debug information```
-```
-    dumpDebug("HTTP POST header", &replyEvent, keyAEPOSTHeaderData);```
-```
-    dumpDebug("XML Request", &replyEvent, keyAEXMLRequestData);```
-```
-    dumpDebug("HTTP Reply header", &replyEvent, keyAEReplyHeaderData);```
-```
-    dumpDebug("XML Reply", &replyEvent, keyAEXMLReplyData);```
-```
- ```
-```
-    return 0;```
-```
-}```
 
 ### Displaying XML-RPC Debug Information
 Listing 4-3shows a function that extracts debug information from a passed Apple event and displays it withfprintf. The information displayed depends on the key passed in thedebugDataKeyparameter. To display debug data, this function:
@@ -290,182 +501,350 @@ The possible debug keys are shown inApple Event Manager API for Remote Procedure
 If step 1 fails, it usesfprintfto display an error message.
 Otherwise, it formats the retrieved character data to show tabs, carriage returns, and line feeds, and displays it withfprintf.
 Listing 3-3A function to display debug information from an XML-RPC reply Apple event.
+
+```applescript
+// ------------------------- dumpDebug ----------------------------------
 ```
-// ------------------------- dumpDebug ----------------------------------```
+
+```applescript
+// Extract and display debug information from a reply Apple event.
 ```
-// Extract and display debug information from a reply Apple event.```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+static void dumpDebug(const char* msg, const AppleEvent* replyEvent,
 ```
-static void dumpDebug(const char* msg, const AppleEvent* replyEvent,```
+
+```applescript
+    OSType debugDataKey)
 ```
-    OSType debugDataKey)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    fprintf(stderr, "%s:\n", msg);
 ```
-    fprintf(stderr, "%s:\n", msg);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    AEDesc paramDesc;
 ```
-    AEDesc paramDesc;```
+
+```applescript
+    OSErr err = AEGetParamDesc(replyEvent, debugDataKey,
 ```
-    OSErr err = AEGetParamDesc(replyEvent, debugDataKey,```
+
+```applescript
+                                typeChar, &paramDesc);
 ```
-                                typeChar, &paramDesc);```
+
+```applescript
+    if (err != noErr)
 ```
-    if (err != noErr)```
+
+```applescript
+        fprintf(stderr, "\tCan't get debug data %4.4s - %d returned\n",
 ```
-        fprintf(stderr, "\tCan't get debug data %4.4s - %d returned\n",```
+
+```applescript
+            &debugDataKey, err);
 ```
-            &debugDataKey, err);```
+
+```applescript
+    else
 ```
-    else```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        int len = AEGetDescDataSize(&paramDesc);
 ```
-        int len = AEGetDescDataSize(&paramDesc);```
+
+```applescript
+        char* buffer = new char[len];
 ```
-        char* buffer = new char[len];```
+
+```applescript
+        AEGetDescData(&paramDesc, buffer, len);
 ```
-        AEGetDescData(&paramDesc, buffer, len);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        char* p = buffer;
 ```
-        char* p = buffer;```
+
+```applescript
+        char* pEnd = buffer + len;
 ```
-        char* pEnd = buffer + len;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        while (p < pEnd)
 ```
-        while (p < pEnd)```
+
+```applescript
+        {
 ```
-        {```
+
+```applescript
+            char* pNext = strpbrk(p, "\r\n");
 ```
-            char* pNext = strpbrk(p, "\r\n");```
+
+```applescript
+            if (pNext == NULL)
 ```
-            if (pNext == NULL)```
+
+```applescript
+                pNext = pEnd;
 ```
-                pNext = pEnd;```
+
+```applescript
+            else
 ```
-            else```
+
+```applescript
+            {
 ```
-            {```
+
+```applescript
+                while (pNext < pEnd && (*pNext == '\r' || *pNext == '\n'))
 ```
-                while (pNext < pEnd && (*pNext == '\r' || *pNext == '\n'))```
+
+```applescript
+                {
 ```
-                {```
+
+```applescript
+                    *pNext++ = '\0';
 ```
-                    *pNext++ = '\0';```
+
+```applescript
+                }
 ```
-                }```
+
+```applescript
+            }
 ```
-            }```
+
+```applescript
+            fprintf(stderr, "\t%.*s\n", pNext - p, p);
 ```
-            fprintf(stderr, "\t%.*s\n", pNext - p, p);```
+
+```applescript
+            p = pNext;
 ```
-            p = pNext;```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        AEDisposeDesc(&paramDesc);
 ```
-        AEDisposeDesc(&paramDesc);```
+
+```applescript
+        delete[] buffer;
 ```
-        delete[] buffer;```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    fprintf(stderr, "\n\n");
 ```
-    fprintf(stderr, "\n\n");```
+
+```applescript
+}
 ```
-}```
+
 The following listing shows sample output from thedumpDebugfunction for an XML-RPC Apple event.
 Listing 3-4Sample header and data from an XML-RPC post and the reply.
+
+```applescript
+HTTP POST header:
 ```
-HTTP POST header:```
+
+```applescript
+    POST /RPC2 HTTP/1.0
 ```
-    POST /RPC2 HTTP/1.0```
+
+```applescript
+    User-Agent: OS X; AEServer (1.0)
 ```
-    User-Agent: OS X; AEServer (1.0)```
+
+```applescript
+    Host: betty.userland.com
 ```
-    Host: betty.userland.com```
+
+```applescript
+    Content-Type: text/xml
 ```
-    Content-Type: text/xml```
+
+```applescript
+    Content-length: 216
 ```
-    Content-length: 216```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+XML Request:
 ```
-XML Request:```
+
+```applescript
+    <?xml version="1.0" encoding="UTF-8"?>
 ```
-    <?xml version="1.0" encoding="UTF-8"?>```
+
+```applescript
+        <methodCall>
 ```
-        <methodCall>```
+
+```applescript
+            <methodName>examples.getStateName</methodName>
 ```
-            <methodName>examples.getStateName</methodName>```
+
+```applescript
+            <params>
 ```
-            <params>```
+
+```applescript
+                <param>
 ```
-                <param>```
+
+```applescript
+                    <value>
 ```
-                    <value>```
+
+```applescript
+                        <i4>41</i4>
 ```
-                        <i4>41</i4>```
+
+```applescript
+                    </value>
 ```
-                    </value>```
+
+```applescript
+                </param>
 ```
-                </param>```
+
+```applescript
+            </params>
 ```
-            </params>```
+
+```applescript
+        </methodCall>
 ```
-        </methodCall>```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+HTTP Reply header:
 ```
-HTTP Reply header:```
+
+```applescript
+    HTTP/1.1 200 OK
 ```
-    HTTP/1.1 200 OK```
+
+```applescript
+    Connection: close
 ```
-    Connection: close```
+
+```applescript
+    Content-Length: 141
 ```
-    Content-Length: 141```
+
+```applescript
+    Content-Type: text/xml
 ```
-    Content-Type: text/xml```
+
+```applescript
+    Date: Mon, 13 Aug 2001 03:56:34 GMT
 ```
-    Date: Mon, 13 Aug 2001 03:56:34 GMT```
+
+```applescript
+    Server: UserLand Frontier/7.0.1-WinNT
 ```
-    Server: UserLand Frontier/7.0.1-WinNT```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+XML Reply:
 ```
-XML Reply:```
+
+```applescript
+    <?xml version="1.0"?>
 ```
-    <?xml version="1.0"?>```
+
+```applescript
+    <methodResponse>
 ```
-    <methodResponse>```
+
+```applescript
+        <params>
 ```
-        <params>```
+
+```applescript
+            <param>
 ```
-            <param>```
+
+```applescript
+                <value>South Dakota</value>
 ```
-                <value>South Dakota</value>```
+
+```applescript
+                </param>
 ```
-                </param>```
+
+```applescript
+            </params>
 ```
-            </params>```
+
+```applescript
+        </methodResponse>
 ```
-        </methodResponse>```
 
 ## Making a SOAP Request
 To make a SOAP request from an application or other code, you create an Apple event that describes the request, use theAESendfunction to send it, and extract any returned information from the reply Apple event. This process, along with the Apple Event Manager API you use, is described inRemote Procedure Calls From Applications.
 This section provides sample code for sending a SOAP request to a server. Like the sample code inMaking an XML-RPC Call, it makes a request to an Internet server that returns the state name for the passed state index. That is, for an index value of 1 it returns Alabama, for 2 it returns Alaska, and so on. In this case, however, the sample code calls thegetStateNamemethod, a SOAP method on an entirely different server.
 
-### Setting Up a Project
 You can use the sample code in this task in a number of ways. The following steps show how to create a C++ tool with Project Builder:
 - Launch Project Builder.
 Launch Project Builder.
@@ -479,11 +858,13 @@ Replace the code in the automatically generated main.cpp file with the sample co
 Use Add Frameworks from the Project menu to addCarbon.frameworkto the project.
 Once youâve built the tool, you can run it in Project Builder and examine its output in the Console pane, or run it in a Terminal window.
 You can also build this code directly in a Terminal window with the following compile line:
+
+```applescript
+cc -g -o soap soap.cp -framework Carbon
 ```
-cc -g -o soap soap.cp -framework Carbon```
+
 If you want to compile with a C compiler, rather than a C++ compiler, youâll have to modify the code so that all variables are declared at the beginning of functions, rather than where they are used.
 
-### Includes, Constants, and Declarations
 Listing 4-5shows include statements, constants, and declarations to place at the beginning of your code file. This code
 - includes Carbon.h to gain access to the scripting API it needs
 includes Carbon.h to gain access to the scripting API it needs
@@ -496,36 +877,66 @@ declares a function (defined later) that creates a parameter list record
 - declares a debug function that is defined later
 declares a debug function that is defined later
 Listing 3-5Includes, constants, and declarations for making a SOAP request.
+
+```applescript
+#include <Carbon/Carbon.h>
 ```
-#include <Carbon/Carbon.h>```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+#define checkErr(err) \
 ```
-#define checkErr(err) \```
+
+```applescript
+    while (err != noErr) \
 ```
-    while (err != noErr) \```
+
+```applescript
+    { fprintf(stderr, "Failed at line %d, error %d\n", __LINE__, err); \
 ```
-    { fprintf(stderr, "Failed at line %d, error %d\n", __LINE__, err); \```
+
+```applescript
+    exit(-1); }
 ```
-    exit(-1); }```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+static const char* serverURL = "http://www.soapware.org/examples";
 ```
-static const char* serverURL = "http://www.soapware.org/examples";```
+
+```applescript
+static const char* methodName = "getStateName";
 ```
-static const char* methodName = "getStateName";```
+
+```applescript
+static const char* methodNameSpaceURI = "http://www.soapware.org/";
 ```
-static const char* methodNameSpaceURI = "http://www.soapware.org/";```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+static OSStatus createUserRecord(AEDesc* desc, const char* paramName,
 ```
-static OSStatus createUserRecord(AEDesc* desc, const char* paramName,```
+
+```applescript
+    OSType dataType, const void* data, UInt32 dataSize);
 ```
-    OSType dataType, const void* data, UInt32 dataSize);```
+
+```applescript
+static void dumpDebug(const char* msg, const AppleEvent* reply,
 ```
-static void dumpDebug(const char* msg, const AppleEvent* reply,```
+
+```applescript
+    OSType debugDataKey);
 ```
-    OSType debugDataKey);```
 
 ### A Main Function That Makes a SOAP Request
 Listing 4-2shows amainfunction that prepares a SOAP request Apple event, sends it, and displays information from the reply Apple event. To do so, it performs the following steps:
@@ -554,209 +965,410 @@ It callsAESendto send the Apple event, passingkAEWaitReplyto indicate it will wa
 - If the previous call succeeds, it callsAEGetParamPtrwith keykeyDirectObjectand desired type oftypeCharto extract the direct object of the reply Apple event. For a successful call with state index 41, the returned value is the string âSouth Dakotaâ.It callsfprintfto display the state name. For exampleState is South Dakota!
 If the previous call succeeds, it callsAEGetParamPtrwith keykeyDirectObjectand desired type oftypeCharto extract the direct object of the reply Apple event. For a successful call with state index 41, the returned value is the string âSouth Dakotaâ.
 It callsfprintfto display the state name. For example
+
+```applescript
+    State is South Dakota!
 ```
-    State is South Dakota!```
+
 - The main function then calls the functiondumpDebug, shown inListing 4-3, once each to display the header and data for the original XML-RPC request and for the reply from the server.Listing 4-8shows the possible result of these calls.
 The main function then calls the functiondumpDebug, shown inListing 4-3, once each to display the header and data for the original XML-RPC request and for the reply from the server.Listing 4-8shows the possible result of these calls.
 Listing 3-6main function to send a SOAP Apple event.
+
+```applescript
+//------------------------- main ----------------------------------
+```
+
+```applescript
+// Builds and sends a SOAP request Apple event.
+```
+
+```applescript
+// Sends the Apple event to a server that returns the state
+```
+
+```applescript
+//   name corresponding to the passed number; e.g., the number
+```
+
+```applescript
+//   5 corresponds to the state California.
+```
+
+```applescript
+// Prints the returned state name, then calls function
+```
+
+```applescript
+//   to dump debug information from reply
+```
+
+```applescript
+int main()
+```
+
+```applescript
+{
+```
+
+```applescript
+    OSErr err;
+```
+
+```applescript
+    AEDesc targetAddress;
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create the target address
+```
+
+```applescript
+    //   Using type typeApplicationURL makes it a remote procedure
+```
+
+```applescript
+    //   call event.
+```
+
+```applescript
+    err = AECreateDesc(typeApplicationURL, serverURL, strlen(serverURL),
+```
+
+```applescript
+        &targetAddress);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create a SOAP request Apple event
+```
+
+```applescript
+    AppleEvent event;
+```
+
+```applescript
+    err = AECreateAppleEvent(kAERPCClass, kAESOAPScheme, &targetAddress,
+```
+
+```applescript
+        kAutoGenerateReturnID, kAnyTransactionID, &event);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&targetAddress);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Create the parameters for the event - the direct object is a
+```
+
+```applescript
+    // record that contains the method name, and a list of parameters
+```
+
+```applescript
+ 
+```
+
+```applescript
+    AEDesc directObject;
+```
+
+```applescript
+    err = AECreateList(NULL, 0, true, &directObject);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the method name
+```
+
+```applescript
+    err = AEPutParamPtr(&directObject, keyRPCMethodName, typeChar,
+```
+
+```applescript
+        methodName, strlen(methodName));
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // The parameters for a SOAP request are a record. We use the
+```
+
+```applescript
+    // "AppleScript" format for records that contain user readable
+```
+
+```applescript
+    // names, and call a helper routine to construct this record.
+```
+
+```applescript
+    AEDesc paramRecord;
+```
+
+```applescript
+    SInt32 stateIndex = 41;
+```
+
+```applescript
+    err = createUserRecord(&paramRecord, "statenum", typeSInt32,
+```
+
+```applescript
+        &stateIndex, sizeof(stateIndex));
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the parameter record into the direct object
+```
+
+```applescript
+    err = AEPutParamDesc(&directObject, keyRPCMethodParam,
+```
+
+```applescript
+        &paramRecord);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&paramRecord);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Additional pieces for soap are the SOAP schema, method
+```
+
+```applescript
+    //      namespaceURI and SOAPAction.
+```
+
+```applescript
+    // If the SOAP schema is not explicitly specified, it defaults
+```
+
+```applescript
+    //      to kSOAP1999Schema for the 1999 schema
+```
+
+```applescript
+    //      (corresponding to the 1.1 specification).
+```
+
+```applescript
+    // If the SOAPAction is not explicitly specified, it will be
+```
+
+```applescript
+    //    the path part of the URL (in this case, "/examples")
+```
+
+```applescript
+ 
+```
+
+```applescript
+    err = AEPutParamPtr(&directObject, keySOAPMethodNameSpaceURI,
+```
+
+```applescript
+        typeChar, methodNameSpaceURI, strlen(methodNameSpaceURI));
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Put the direct object into the event
+```
+
+```applescript
+    err = AEPutParamDesc(&event, keyDirectObject, &directObject);
+```
+
+```applescript
+    checkErr(err);
+```
+
+```applescript
+    AEDisposeDesc(&directObject);
+```
+
+```applescript
+ 
+```
+
+```applescript
+    // Request debugging information
+```
+
+```applescript
+    SInt32 debugAttr = kAEDebugXMLDebugAll;
+```
+
+```applescript
+    err = AEPutAttributePtr(&event, keyXMLDebuggingAttr, typeSInt32,
+```
+
+```applescript
+        &debugAttr, sizeof(debugAttr));
+```
+
+```applescript
+ 
 ```
-//------------------------- main ----------------------------------```
+
+```applescript
+    // Send the event
 ```
-// Builds and sends a SOAP request Apple event.```
+
+```applescript
+    AppleEvent reply;
 ```
-// Sends the Apple event to a server that returns the state```
+
+```applescript
+    AEInitializeDescInline(&reply);
 ```
-//   name corresponding to the passed number; e.g., the number```
+
+```applescript
+    err = AESend(&event, &reply, kAEWaitReply, kAENormalPriority,
 ```
-//   5 corresponds to the state California.```
+
+```applescript
+        kAEDefaultTimeout, NULL, NULL);
 ```
-// Prints the returned state name, then calls function```
+
+```applescript
+    checkErr(err);
 ```
-//   to dump debug information from reply```
+
+```applescript
+ 
 ```
-int main()```
+
+```applescript
+    // The direct object contains our result (the name of the state)
 ```
-{```
+
+```applescript
+    char buffer[255];
 ```
-    OSErr err;```
+
+```applescript
+    Size actualSize;
 ```
-    AEDesc targetAddress;```
+
+```applescript
+    err = AEGetParamPtr(&reply, keyDirectObject, typeChar, NULL,
 ```
- ```
+
+```applescript
+        buffer, sizeof(buffer), &actualSize);
 ```
-    // Create the target address```
+
+```applescript
+    checkErr(err);
 ```
-    //   Using type typeApplicationURL makes it a remote procedure```
+
+```applescript
+ 
 ```
-    //   call event.```
+
+```applescript
+    fprintf(stderr, "State is %.*s!\n", actualSize, buffer);
 ```
-    err = AECreateDesc(typeApplicationURL, serverURL, strlen(serverURL),```
+
+```applescript
+ 
 ```
-        &targetAddress);```
+
+```applescript
+    // Dump debug information
 ```
-    checkErr(err);```
+
+```applescript
+    dumpDebug("HTTP POST header", &reply, keyAEPOSTHeaderData);
 ```
- ```
+
+```applescript
+    dumpDebug("XML Request", &reply, keyAEXMLRequestData);
 ```
-    // Create a SOAP request Apple event```
+
+```applescript
+    dumpDebug("HTTP Reply header", &reply, keyAEReplyHeaderData);
 ```
-    AppleEvent event;```
+
+```applescript
+    dumpDebug("XML Reply", &reply, keyAEXMLReplyData);
 ```
-    err = AECreateAppleEvent(kAERPCClass, kAESOAPScheme, &targetAddress,```
+
+```applescript
+ 
 ```
-        kAutoGenerateReturnID, kAnyTransactionID, &event);```
+
+```applescript
+    return 0;
 ```
-    checkErr(err);```
+
+```applescript
+}
 ```
-    AEDisposeDesc(&targetAddress);```
-```
- ```
-```
-    // Create the parameters for the event - the direct object is a```
-```
-    // record that contains the method name, and a list of parameters```
-```
- ```
-```
-    AEDesc directObject;```
-```
-    err = AECreateList(NULL, 0, true, &directObject);```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Put the method name```
-```
-    err = AEPutParamPtr(&directObject, keyRPCMethodName, typeChar,```
-```
-        methodName, strlen(methodName));```
-```
-    checkErr(err);```
-```
- ```
-```
-    // The parameters for a SOAP request are a record. We use the```
-```
-    // "AppleScript" format for records that contain user readable```
-```
-    // names, and call a helper routine to construct this record.```
-```
-    AEDesc paramRecord;```
-```
-    SInt32 stateIndex = 41;```
-```
-    err = createUserRecord(&paramRecord, "statenum", typeSInt32,```
-```
-        &stateIndex, sizeof(stateIndex));```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Put the parameter record into the direct object```
-```
-    err = AEPutParamDesc(&directObject, keyRPCMethodParam,```
-```
-        &paramRecord);```
-```
-    checkErr(err);```
-```
-    AEDisposeDesc(&paramRecord);```
-```
- ```
-```
-    // Additional pieces for soap are the SOAP schema, method```
-```
-    //      namespaceURI and SOAPAction.```
-```
-    // If the SOAP schema is not explicitly specified, it defaults```
-```
-    //      to kSOAP1999Schema for the 1999 schema```
-```
-    //      (corresponding to the 1.1 specification).```
-```
-    // If the SOAPAction is not explicitly specified, it will be```
-```
-    //    the path part of the URL (in this case, "/examples")```
-```
- ```
-```
-    err = AEPutParamPtr(&directObject, keySOAPMethodNameSpaceURI,```
-```
-        typeChar, methodNameSpaceURI, strlen(methodNameSpaceURI));```
-```
-    checkErr(err);```
-```
- ```
-```
-    // Put the direct object into the event```
-```
-    err = AEPutParamDesc(&event, keyDirectObject, &directObject);```
-```
-    checkErr(err);```
-```
-    AEDisposeDesc(&directObject);```
-```
- ```
-```
-    // Request debugging information```
-```
-    SInt32 debugAttr = kAEDebugXMLDebugAll;```
-```
-    err = AEPutAttributePtr(&event, keyXMLDebuggingAttr, typeSInt32,```
-```
-        &debugAttr, sizeof(debugAttr));```
-```
- ```
-```
-    // Send the event```
-```
-    AppleEvent reply;```
-```
-    AEInitializeDescInline(&reply);```
-```
-    err = AESend(&event, &reply, kAEWaitReply, kAENormalPriority,```
-```
-        kAEDefaultTimeout, NULL, NULL);```
-```
-    checkErr(err);```
-```
- ```
-```
-    // The direct object contains our result (the name of the state)```
-```
-    char buffer[255];```
-```
-    Size actualSize;```
-```
-    err = AEGetParamPtr(&reply, keyDirectObject, typeChar, NULL,```
-```
-        buffer, sizeof(buffer), &actualSize);```
-```
-    checkErr(err);```
-```
- ```
-```
-    fprintf(stderr, "State is %.*s!\n", actualSize, buffer);```
-```
- ```
-```
-    // Dump debug information```
-```
-    dumpDebug("HTTP POST header", &reply, keyAEPOSTHeaderData);```
-```
-    dumpDebug("XML Request", &reply, keyAEXMLRequestData);```
-```
-    dumpDebug("HTTP Reply header", &reply, keyAEReplyHeaderData);```
-```
-    dumpDebug("XML Reply", &reply, keyAEXMLReplyData);```
-```
- ```
-```
-    return 0;```
-```
-}```
 
 ### Creating Parameter List Records
 Listing 4-7shows a function that creates a record containing the parameter name and value for a SOAP method with one parameter.
@@ -773,156 +1385,305 @@ CallsAEPutPtragain to insert the passed parameter data in the parameter name and
 It callsAEPutParamDescto add the parameter name and value list to the parameter list record.
 If you need to create a parameter list record for a SOAP request with multiple parameters, you can define a function with a variable length argument list. The function can iterate over the arguments, performing steps 3 and 4 (adding the name and data) for each pair of parameter arguments.
 Listing 3-7A function to create a parameter list record for a SOAP request Apple event.
+
+```applescript
+// -------------------- createUserRecord -----------------------------
 ```
-// -------------------- createUserRecord -----------------------------```
+
+```applescript
+// Creates a record containing the parameters for a SOAP request.
 ```
-// Creates a record containing the parameters for a SOAP request.```
+
+```applescript
+// Uses the "AppleScript" format for records that contain user readable
 ```
-// Uses the "AppleScript" format for records that contain user readable```
+
+```applescript
+// names.
 ```
-// names.```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+static OSStatus createUserRecord(AEDesc* desc, const char* paramName,
 ```
-static OSStatus createUserRecord(AEDesc* desc, const char* paramName,```
+
+```applescript
+    OSType dataType, const void* data, UInt32 dataSize)
 ```
-    OSType dataType, const void* data, UInt32 dataSize)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    OSErr err = AECreateList(0, NULL, true, desc);
 ```
-    OSErr err = AECreateList(0, NULL, true, desc);```
+
+```applescript
+    if (err == noErr) {
 ```
-    if (err == noErr) {```
+
+```applescript
+        AEDesc termsList;
 ```
-        AEDesc termsList;```
+
+```applescript
+        err = AECreateList(0, NULL, false, &termsList);
 ```
-        err = AECreateList(0, NULL, false, &termsList);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        if (err == noErr)
 ```
-        if (err == noErr)```
+
+```applescript
+            err = AEPutPtr(&termsList, 0, typeChar,
 ```
-            err = AEPutPtr(&termsList, 0, typeChar,```
+
+```applescript
+                paramName, strlen(paramName));
 ```
-                paramName, strlen(paramName));```
+
+```applescript
+        if (err == noErr)
 ```
-        if (err == noErr)```
+
+```applescript
+            err = AEPutPtr(&termsList, 0, dataType,
 ```
-            err = AEPutPtr(&termsList, 0, dataType,```
+
+```applescript
+                data, dataSize);
 ```
-                data, dataSize);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        if (err == noErr)
 ```
-        if (err == noErr)```
+
+```applescript
+            err = AEPutParamDesc(desc, keyASUserRecordFields,
 ```
-            err = AEPutParamDesc(desc, keyASUserRecordFields,```
+
+```applescript
+                &termsList);
 ```
-                &termsList);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        AEDisposeDesc(&termsList);
 ```
-        AEDisposeDesc(&termsList);```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    return err;
 ```
-    return err;```
+
+```applescript
+}
 ```
-}```
 
 ### Displaying SOAP Request Debug Information
 The sample code to display debug information from a SOAP request Apple event uses the samedumpDebugfunction as the sample code for making an XML-RPC call. That code is shown inListing 4-3. However, because the XML-RPC and SOAP protocols are different, the requests, the Apple events that represent them, and the debug output are all different. ListingListing 4-8shows sample output from thedumpDebugfunction for a SOAP request Apple event.
 Listing 3-8Sample header and data from a SOAP post and the reply.
+
+```applescript
+HTTP POST header:
 ```
-HTTP POST header:```
+
+```applescript
+    POST /examples HTTP/1.0
 ```
-    POST /examples HTTP/1.0```
+
+```applescript
+    Host: www.soapware.org
 ```
-    Host: www.soapware.org```
+
+```applescript
+    SOAPAction: "/examples"
 ```
-    SOAPAction: "/examples"```
+
+```applescript
+    User-Agent: OS X; AEServer (1.0)
 ```
-    User-Agent: OS X; AEServer (1.0)```
+
+```applescript
+    Content-Type: text/xml
 ```
-    Content-Type: text/xml```
+
+```applescript
+    Content-length: 538
 ```
-    Content-length: 538```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+XML Request:
 ```
-XML Request:```
+
+```applescript
+    <?xml version="1.0" encoding="UTF-8"?>
 ```
-    <?xml version="1.0" encoding="UTF-8"?>```
+
+```applescript
+    <SOAP-ENV:Envelope
 ```
-    <SOAP-ENV:Envelope```
+
+```applescript
+        xmlns:xsd="http://www.w3.org/1999/XMLSchema"
 ```
-        xmlns:xsd="http://www.w3.org/1999/XMLSchema"```
+
+```applescript
+        xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
 ```
-        xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"```
+
+```applescript
+        SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
 ```
-        SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"```
+
+```applescript
+        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
 ```
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"```
+
+```applescript
+        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
 ```
-        xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">```
+
+```applescript
+        <SOAP-ENV:Body>
 ```
-        <SOAP-ENV:Body>```
+
+```applescript
+            <m:getStateName xmlns:m="http://www.soapware.org/">
 ```
-            <m:getStateName xmlns:m="http://www.soapware.org/">```
+
+```applescript
+                    <statenum xsi:type="xsd:int">41</statenum>
 ```
-                    <statenum xsi:type="xsd:int">41</statenum>```
+
+```applescript
+            </m:getStateName>
 ```
-            </m:getStateName>```
+
+```applescript
+        </SOAP-ENV:Body>
 ```
-        </SOAP-ENV:Body>```
+
+```applescript
+    </SOAP-ENV:Envelope>
 ```
-    </SOAP-ENV:Envelope>```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+HTTP Reply header:
 ```
-HTTP Reply header:```
+
+```applescript
+    HTTP/1.1 200 OK
 ```
-    HTTP/1.1 200 OK```
+
+```applescript
+    Connection: close
 ```
-    Connection: close```
+
+```applescript
+    Content-Length: 499
 ```
-    Content-Length: 499```
+
+```applescript
+    Content-Type: text/xml; charset="us-ascii"
 ```
-    Content-Type: text/xml; charset="us-ascii"```
+
+```applescript
+    Date: Mon, 13 Aug 2001 05:07:46 GMT
 ```
-    Date: Mon, 13 Aug 2001 05:07:46 GMT```
+
+```applescript
+    Server: UserLand Frontier/7.0.1-WinNT
 ```
-    Server: UserLand Frontier/7.0.1-WinNT```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+XML Reply:
 ```
-XML Reply:```
+
+```applescript
+    <?xml version="1.0"?>
 ```
-    <?xml version="1.0"?>```
+
+```applescript
+    <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
 ```
-    <SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"```
+
+```applescript
+        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://
 ```
-        xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://```
+
+```applescript
+        schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/1999/XMLSchema"
 ```
-        schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/1999/XMLSchema"```
+
+```applescript
+        xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">
 ```
-        xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance">```
+
+```applescript
+        <SOAP-ENV:Body>
 ```
-        <SOAP-ENV:Body>```
+
+```applescript
+            <getStateNameResponse>
 ```
-            <getStateNameResponse>```
+
+```applescript
+                <Result xsi:type="xsd:string">South Dakota</Result>
 ```
-                <Result xsi:type="xsd:string">South Dakota</Result>```
+
+```applescript
+                </getStateNameResponse>
 ```
-                </getStateNameResponse>```
+
+```applescript
+            </SOAP-ENV:Body>
 ```
-            </SOAP-ENV:Body>```
+
+```applescript
+        </SOAP-ENV:Envelope>
 ```
-        </SOAP-ENV:Envelope>```
+
 Copyright © 2001, 2014 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2014-07-15

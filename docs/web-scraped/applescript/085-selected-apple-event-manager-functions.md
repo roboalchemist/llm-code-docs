@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Selected Apple Event Manager Functions
 This appendix provides a table of functions that you use to work with the data in Apple event data structures. For complete descriptions of these functions (and the underlying data types), seeApple Event Manager Reference.
 
 ## Functions for Working With Apple Event Data Structures

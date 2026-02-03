@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Apple Event Dispatching
 This chapter shows how your application works with the Apple Event Manager to register the Apple events it supports and dispatch those events to the appropriate Apple event handlers. AnApple event handleris an application-defined function that extracts pertinent data from an Apple event, performs the requested action, returns a result code, and if necessary, returns information in a reply Apple event.
 Note:For information on how Apple events are dispatched in Cocoa applications, seeHow Cocoa Applications Handle Apple EventsinCocoa Scripting Guide.
 
@@ -68,42 +67,79 @@ Your application also responds to any Apple events it has specified for working 
 Listing 3-1shows how your application callsAEInstallEventHandlerto install an Apple event handler function. The listing assumes that you have defined the functionInstallMacOSEventHandlersto install handlers for Apple events that are sent by the Mac OSâthat function is shown inListing 5-6.
 Listing 3-1also assumes you have defined the functionsHandleGraphicAEandHandleSpecialGraphicAEto handle Apple events that operate on graphic objects used by your application. That function is not shown, but other event handlers are described inResponding to Apple Events.
 Listing 3-1Installing event handlers for various Apple events
+
+```applescript
+static  OSErr   InstallAppleEventHandlers(void)
 ```
-static  OSErr   InstallAppleEventHandlers(void)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    OSErr   err;
 ```
-    OSErr   err;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = InstallMacOSEventHandlers();
 ```
-    err = InstallMacOSEventHandlers();```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AEInstallEventHandler(kMyGraphicEventClass, kSpecialID,
 ```
-    err = AEInstallEventHandler(kMyGraphicEventClass, kSpecialID,```
+
+```applescript
+            NewAEEventHandlerUPP(HandleSpecialGraphicAE), 0, false);// 1
 ```
-            NewAEEventHandlerUPP(HandleSpecialGraphicAE), 0, false);// 1```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AEInstallEventHandler(kMyGraphicEventClass, typeWildCard,
 ```
-    err = AEInstallEventHandler(kMyGraphicEventClass, typeWildCard,```
+
+```applescript
+                NewAEEventHandlerUPP(HandleGraphicAE), 0, false);// 2
 ```
-                NewAEEventHandlerUPP(HandleGraphicAE), 0, false);// 2```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+CantInstallAppleEventHandler:
 ```
-CantInstallAppleEventHandler:```
+
+```applescript
+    return err;
 ```
-    return err;```
+
+```applescript
+}
 ```
-}```
+
 InListing 3-1, the application-defined functionInstallAppleEventHandlersuses the macrorequire_noerr(defined inAssertMacros.h) to check the return value of each function. If an error occurs, it jumps to an error label. The function always returns an error value, which can benoErrif no error occurred.
 The following descriptions apply to the numbered lines inListing 3-1:
 - The application-defined functionHandleSpecialGraphicAEhandles Apple events that deal with one specific type of graphic object supported by the application, identified by the event classkMyGraphicEventClassand event IDkSpecialID.
@@ -123,14 +159,23 @@ The following sections describe in detail how an application calls theAEProcessA
 An application that uses the Carbon event modelreceives each Apple event as a Carbon event of type{kEventClassAppleEvent, kEventAppleEvent}. For applications that call theRunApplicationEventLoopfunction to process Carbon events, theAEProcessAppleEventfunction is called automatically, and dispatches received Apple events as shown inFigure 3-1.
 Applications that use the Carbon event model but do not callRunApplicationEventLoopmust install a Carbon event handler to process Apple events.Listing 3-2shows how you might install such a handlerâin this case, namedAEHandler.
 Listing 3-2Installing a Carbon event handler to handle Apple events
+
+```applescript
+const EventTypeSpec kEvents[] = {{kEventClassAppleEvent, kEventAppleEvent}};
 ```
-const EventTypeSpec kEvents[] = {{kEventClassAppleEvent, kEventAppleEvent}};```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+InstallApplicationEventHandler(NewEventHandlerUPP(AEHandler),
 ```
-InstallApplicationEventHandler(NewEventHandlerUPP(AEHandler),```
+
+```applescript
+    GetEventTypeCount(kEvents), kEvents, 0, NULL);
 ```
-    GetEventTypeCount(kEvents), kEvents, 0, NULL);```
+
 Your Carbon event handler for Apple events must perform these steps:
 - Remove the Carbon event of type{kEventClassAppleEvent, kEventAppleEvent}from the event queue before dispatching the Apple Event inside it.The process of removing the event from the queue triggers a synchronization with the Apple Event Manager that allows the next call toAEProcessAppleEventto dispatch the Apple event properly. If the handler doesnât remove the Carbon event from the queue, the application will end up dispatching the wrong Apple event.
 Remove the Carbon event of type{kEventClassAppleEvent, kEventAppleEvent}from the event queue before dispatching the Apple Event inside it.
@@ -143,139 +188,268 @@ CallAEProcessAppleEvent.
 ReturnnoErrto indicate the Carbon event has been handled (which does not depend on whether the dispatched Apple event is handled by the application).
 Listing 3-3shows a version of theAEHandlerfunction.
 Listing 3-3A handler for a Carbon event that represents an Apple event
+
+```applescript
+OSStatus AEHandler(EventHandlerCallRef inCaller, EventRef inEvent, void* inRefcon)
 ```
-OSStatus AEHandler(EventHandlerCallRef inCaller, EventRef inEvent, void* inRefcon)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    Boolean     release = false;
 ```
-    Boolean     release = false;```
+
+```applescript
+    EventRecord eventRecord;
 ```
-    EventRecord eventRecord;```
+
+```applescript
+    OSErr       ignoreErrForThisSample;
 ```
-    OSErr       ignoreErrForThisSample;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // Events of type kEventAppleEvent must be removed from the queue
 ```
-    // Events of type kEventAppleEvent must be removed from the queue```
+
+```applescript
+    //  before being passed to AEProcessAppleEvent.
 ```
-    //  before being passed to AEProcessAppleEvent.```
+
+```applescript
+    if (IsEventInQueue(GetMainEventQueue(), inEvent))
 ```
-    if (IsEventInQueue(GetMainEventQueue(), inEvent))```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        // RemoveEventFromQueue will release the event, which will
 ```
-        // RemoveEventFromQueue will release the event, which will```
+
+```applescript
+        //  destroy it if we don't retain it first.
 ```
-        //  destroy it if we don't retain it first.```
+
+```applescript
+        RetainEvent(inEvent);
 ```
-        RetainEvent(inEvent);```
+
+```applescript
+        release = true;
 ```
-        release = true;```
+
+```applescript
+        RemoveEventFromQueue(GetMainEventQueue(), inEvent);
 ```
-        RemoveEventFromQueue(GetMainEventQueue(), inEvent);```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // Convert the event ref to the type AEProcessAppleEvent expects.
 ```
-    // Convert the event ref to the type AEProcessAppleEvent expects.```
+
+```applescript
+    ConvertEventRefToEventRecord(inEvent, &eventRecord);
 ```
-    ConvertEventRefToEventRecord(inEvent, &eventRecord);```
+
+```applescript
+    ignoreErrForThisSample = AEProcessAppleEvent(&eventRecord);
 ```
-    ignoreErrForThisSample = AEProcessAppleEvent(&eventRecord);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (release)
 ```
-    if (release)```
+
+```applescript
+        ReleaseEvent(inEvent);
 ```
-        ReleaseEvent(inEvent);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // This Carbon event has been handled, even if no AppleEvent handlers
 ```
-    // This Carbon event has been handled, even if no AppleEvent handlers```
+
+```applescript
+    //  were installed for the Apple event.
 ```
-    //  were installed for the Apple event.```
+
+```applescript
+    return noErr;
 ```
-    return noErr;```
+
+```applescript
+}
 ```
-}```
+
 If your application has not installed a handler for a received Apple event, the event may be handled by a handler installed by the system. For example, if your application callsRunApplicationEventLoop, a simplequit applicationhandler is installed automatically. But if you callAEProcessAppleEventfor an event for which there is no handler installed, the event is ignored.
 
 #### Processing Apple Events With WaitNextEvent
 A Carbon application that uses theWaitNextEventfunction, rather than the Carbon event model, receives an Apple event in its event loop as a standard event record (typeEventRecord), identified by the constantkHighLevelEvent. The application passes these events toAEProcessAppleEvent, as shown in the following code listings.
 Listing 3-4shows a simplified main event loop function which continually loops, getting events and calling theHandleEventfunction (inListing 3-5) to process them.
 Listing 3-4A main event loop
+
+```applescript
+static void MainEventLoop()
 ```
-static void MainEventLoop()```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    RgnHandle       cursorRgn;
 ```
-    RgnHandle       cursorRgn;```
+
+```applescript
+    Boolean         gotEvent;
 ```
-    Boolean         gotEvent;```
+
+```applescript
+    EventRecord     event;
 ```
-    EventRecord     event;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    cursorRgn = NULL;
 ```
-    cursorRgn = NULL;```
+
+```applescript
+    while(!gQuit)
 ```
-    while(!gQuit)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        gotEvent = WaitNextEvent(everyEvent, &event, 32767L, cursorRgn);
 ```
-        gotEvent = WaitNextEvent(everyEvent, &event, 32767L, cursorRgn);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        if (gotEvent)
 ```
-        if (gotEvent)```
+
+```applescript
+        {
 ```
-        {```
+
+```applescript
+            HandleEvent(&event);
 ```
-            HandleEvent(&event);```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+}
 ```
-}```
+
 Listing 3-5shows a standard approach for processing event records. When the value in thewhatfield of the event record iskHighLevelEvent, the function callsAEProcessAppleEvent, which dispatches the event as shown inFigure 3-1.
 Listing 3-5A function that processes Apple events
+
+```applescript
+static void HandleEvent(EventRecord *event)
 ```
-static void HandleEvent(EventRecord *event)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    switch (event->what)
 ```
-    switch (event->what)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        case mouseDown:
 ```
-        case mouseDown:```
+
+```applescript
+            HandleMouseDown(event);
 ```
-            HandleMouseDown(event);```
+
+```applescript
+            break;
 ```
-            break;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        case keyDown:
 ```
-        case keyDown:```
+
+```applescript
+        case autoKey:
 ```
-        case autoKey:```
+
+```applescript
+            HandleKeyPress(event);
 ```
-            HandleKeyPress(event);```
+
+```applescript
+            break;
 ```
-            break;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        case kHighLevelEvent:
 ```
-        case kHighLevelEvent:```
+
+```applescript
+            AEProcessAppleEvent(event);
 ```
-            AEProcessAppleEvent(event);```
+
+```applescript
+            break;
 ```
-            break;```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+}
 ```
-}```
+
 Listing 3-4andListing 3-5are based on functions in the Xcode projectAppearanceSample, located in/Developer/Examples/Carbon.
 Copyright © 2005, 2007 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2007-10-31

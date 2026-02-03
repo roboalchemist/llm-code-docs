@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# About Apple Events
 This chapter provides an overview of when and how applications use Apple events, with links to more detailed information on those topics. It also provides a brief description of the framework and language support available for working with Apple events in Mac OS X.
 AnApple eventis a type of interprocess message that can encapsulate commands and data of arbitrary complexity. Apple events provide a data transport and event dispatching mechanism that can be used within a single application, between applications on the same computer, and between applications on different computers connected to a network. The Mac OS uses Apple events to communicate with applications.
 Apple events are part of theOpen Scripting Architecture (OSA), which provides a standard and extensible mechanism for interapplication communication in Mac OS X. The OSA is described inAppleScript Overview.

@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Default Coercion Handlers
 This appendix lists the type conversions performed by the default coercion handlers provided by the Mac OS. These handlers may be implemented by the Apple Event Manager, the Open Scripting framework, or other frameworks.
 Support for the following  coercions was added in Mac OS X version 10.4:
 - Between these types:typeStyledText,typeUnicodeText,typeUTF8Text, andtypeUTF16ExternalRepresentationand these types:typeType,typeEnumerated, and the numeric typestypeSInt16,typeSInt32,typeUInt32,typeSInt64,typeIEEE32BitFloatingPoint,typeIEEE64BitFloatingPoint, andtypeExtended.Important:See the description for thetypePixelMapenum inApple Event Manager Referencefor important information about restrictions on coercions involving typeStyledText.See tableTable C-1for a mapping  between the preferred and non-preferred numeric constant names.

@@ -1,66 +1,88 @@
 # Mac Automation Scripting Guide: Watching Folders
 
 ## Watching Folders
+
 The ability to watch folders and take action on incoming items is a powerful automation technique that enables the creation of fully unattended workflows. A watched folder might be used, for example, to watermark incoming photos, convert them to PDF, and email them to clients for review. Many companies set up script serversâdedicated robot machines that watch folders and process detected items, allowing employees to offload tedious and repetitious work in order to focus on other important tasks.
 In OSÂ X, there are two primary ways to set up scripting-based watched folders: folder actions and stay open script apps.
 
 ### Using Folder Actions to Watch Folders
+
 Folder actions is a feature in OSÂ X that lets you connect scripts to folders on your Mac. A folder action script includes one or more event handlers that run in response to certain events, such as opening, closing, or adding items to the connected folder. With folder actions, you can create automated workflows that:
+
 - Notify you when new files and folders arrive in a folder
 Notify you when new files and folders arrive in a folder
+
 - Notify you when existing files and folders are removed from a folder
 Notify you when existing files and folders are removed from a folder
+
 - Perform processing of newly detected files and folders
 Perform processing of newly detected files and folders
+
 - Initiate any automated task when a new file or folder is detected
 Initiate any automated task when a new file or folder is detected
+
 - Adjust or reset the view properties of a folderâs window when itâs opened, closed, or resized
 Adjust or reset the view properties of a folderâs window when itâs opened, closed, or resized
 
 ### Write a Folder Action Script
+
 The event handlers supported by folder actions are defined in the Standard Additions scripting addition that comes with OSÂ X. They are:
 Folder event
 Event handler
 Parameters
 Itemsâfiles or foldersâare added to the folder
 adding folder items to
+
 - Direct parameterâThe connected folder.
 Direct parameterâThe connected folder.
+
 - after receivingâA list of items added to the folder.
 after receivingâA list of items added to the folder.
 Items are removed from the folder
 removing folder items from
+
 - Direct parameterâThe connected folder.
 Direct parameterâThe connected folder.
+
 - after losingâA list of items removed from the folder. For items that were deleted, names of the removed items are provided.
 after losingâA list of items removed from the folder. For items that were deleted, names of the removed items are provided.
 The folder is opened in a new Finder window
 opening folder
+
 - Direct parameterâThe connected folder.
 Direct parameterâThe connected folder.
 The window of a folder is closed
 closing folder window for
+
 - Direct parameterâThe connected folder.
 Direct parameterâThe connected folder.
 The window of a folder is moved
 moving folder window for
+
 - Direct parameterâThe connected folder.
 Direct parameterâThe connected folder.
+
 - fromâThe coordinates of the folderâs window before it was moved.
 fromâThe coordinates of the folderâs window before it was moved.
+
 - Create a Script Editor document.
 Create a Script Editor document.
+
 - Add one or more folder action event handlers to the document.
 Add one or more folder action event handlers to the document.
+
 - Save the document as a compiled script to one of the following folders:/Library/Scripts/Folder Action Scripts/âThe script can be used by any user.~/Library/Scripts/Folder Action Scripts/âThe script can be used by the current user only.
 Save the document as a compiled script to one of the following folders:
+
 - /Library/Scripts/Folder Action Scripts/âThe script can be used by any user.
 /Library/Scripts/Folder Action Scripts/âThe script can be used by any user.
+
 - ~/Library/Scripts/Folder Action Scripts/âThe script can be used by the current user only.
 ~/Library/Scripts/Folder Action Scripts/âThe script can be used by the current user only.
 The following examples demonstrate how to use different folder action event handlers.
 APPLESCRIPT
 Open in Script Editor
+
 - on opening folder theAttachedFolder
 - -- Get the name of the attached folder
 - tell application "Finder"
@@ -72,6 +94,7 @@ Open in Script Editor
 - end opening folder
 APPLESCRIPT
 Open in Script Editor
+
 - on closing folder window for theAttachedFolder
 - -- Get the name of the attached folder
 - tell application "Finder"
@@ -83,6 +106,7 @@ Open in Script Editor
 - end closing folder window for
 APPLESCRIPT
 Open in Script Editor
+
 - on adding folder items to theAttachedFolder after receiving theNewItems
 - -- Get the name of the attached folder
 - tell application "Finder"
@@ -101,6 +125,7 @@ Open in Script Editor
 - end adding folder items to
 APPLESCRIPT
 Open in Script Editor
+
 - on removing folder items from theAttachedFolder after losing theRemovedItems
 - -- Get the name of the attached folder
 - tell application "Finder"
@@ -118,14 +143,19 @@ Open in Script Editor
 - end removing folder items from
 
 ### Attaching a Folder Action Script to a Folder
+
 A folder action script must be connected to a folder in order to use it. This is done with Folder Actions Setup, an app thatâs launched from the Finderâs contextual menu.
+
 - Control-click the folder in Finder.
 Control-click the folder in Finder.
+
 - Choose Folder Actions Setup from the contextual menu.The Folder Actions Setup app launches, the folder is automatically added to the Folders with Actions list, and youâre prompted to select a script.
 Choose Folder Actions Setup from the contextual menu.
 The Folder Actions Setup app launches, the folder is automatically added to the Folders with Actions list, and youâre prompted to select a script.
+
 - Choose a script to connect to the folder and click Attach.
 Choose a script to connect to the folder and click Attach.
+
 - Make sure the Enable Folder Actions checkbox is selected, as well as the On checkboxes next to the folder.
 Make sure the Enable Folder Actions checkbox is selected, as well as the On checkboxes next to the folder.
 Once the script and folder are connected, the folder action event handlers in the script should run when the corresponding actions occur.
@@ -134,9 +164,11 @@ Folder Actions Setup can also be used to disable or remove folder action scripts
 The Folder Actions Setup app itself resides in/System/Library/CoreServices/.
 
 ### Watching Folders Using an Idle Loop and a Stay Open Script App
+
 Although folder actions provide efficient folder watching capabilities, some scripters prefer to implement customized folder watching workflows that provide more control over the folder watching process. This is typically done by creating a stay-open script with anidlehandler that checks a folder at regular intervals for new items to process.Listing 18-5demonstrates anidlehandler-based script that watches an Input folder on the Desktop.
 APPLESCRIPT
 Open in Script Editor
+
 - on idle
 - -- Locate the folder to watch
 - set theFolder to locateAndCreateFolder(path to desktop folder, "Input")
@@ -171,13 +203,18 @@ Open in Script Editor
 - end locateAndCreateFolder
 
 ### Folder Watching Best Practices
+
 Regardless of what method you use for folder watching, follow these best practices to produce an efficient and reliable workflow:
+
 - Wait for items to finish writing to disk before processing them.
 Wait for items to finish writing to disk before processing them.
+
 - Move processed items to an output folder so the same items arenât detected and processed a second time.
 Move processed items to an output folder so the same items arenât detected and processed a second time.
+
 - Handle errors gracefully, such as by moving problematic items to an error folder so other processing can proceed.
 Handle errors gracefully, such as by moving problematic items to an error folder so other processing can proceed.
+
 - Bring dialogs and alerts to the front so theyâre visible and can be addressed.
 Bring dialogs and alerts to the front so theyâre visible and can be addressed.
 Processing Dropped Files and Folders

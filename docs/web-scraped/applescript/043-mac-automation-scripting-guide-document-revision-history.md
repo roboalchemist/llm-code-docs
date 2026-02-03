@@ -1,6 +1,7 @@
 # Mac Automation Scripting Guide: Document Revision History
 
 ## Document Revision History
+
 This table describes the changes toMac Automation Scripting Guide.
 Date
 Notes

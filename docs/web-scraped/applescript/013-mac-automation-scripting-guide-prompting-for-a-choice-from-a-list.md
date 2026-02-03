@@ -1,15 +1,18 @@
 # Mac Automation Scripting Guide: Prompting for a Choice from a List
 
 ## Prompting for a Choice from a List
+
 Use the Standard Additions scripting additionâschoose from listcommand to prompt the user to select from a list of strings.Listing 28-1andListing 28-2ask the user to select a favorite fruit, as seen inFigure 28-1.
 APPLESCRIPT
 Open in Script Editor
+
 - set theFruitChoices to {"Apple", "Banana", "Orange"}
 - set theFavoriteFruit to choose from list theFruitChoices with prompt "Select your favorite fruit:" default items {"Apple"}
 - theFavoriteFruit
 - --> Result: {"Apple"}
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var fruitChoices = ["Apple", "Banana", "Orange"]

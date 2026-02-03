@@ -1,13 +1,16 @@
 # Mac Automation Scripting Guide: Displaying Notifications
 
 ## Displaying Notifications
+
 Notification Center offers another opportunity for providing feedback during script execution. Use the Standard Additions scripting additionâsdisplay notificationcommand to show notifications, such as status updates as files are processed. Notifications are shown as alerts or banners, depending on the userâs settings in System Preferences > Notifications. SeeFigure 24-1andFigure 24-2.
 To show a notification, provide thedisplay notificationcommand with a string to display. Optionally, provide values for thewith title,subtitle, andsound nameparameters to provide additional information and an audible alert when the notification appears, as shown inListing 24-1andListing 24-2.
 APPLESCRIPT
 Open in Script Editor
+
 - display notification "All graphics have been converted." with title "My Graphic Processing Script" subtitle "Processing is complete." sound name "Frog"
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - app.displayNotification("All graphics have been converted.", {

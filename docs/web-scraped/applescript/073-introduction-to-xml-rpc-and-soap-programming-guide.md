@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Introduction to XML-RPC and SOAP Programming Guide
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 Note:This document was previously titled âXML-RPC and SOAP Support.â
 XML-RPC and SOAP Programming Guidedescribes how to use Apple Script and the Apple Event Manager in OS X to make remote procedure calls using the XML-RPC and SOAP (Simple Object Access Protocol) protocols.

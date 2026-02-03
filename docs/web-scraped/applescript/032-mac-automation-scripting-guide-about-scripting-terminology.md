@@ -1,6 +1,7 @@
 # Mac Automation Scripting Guide: About Scripting Terminology
 
 ## About Scripting Terminology
+
 AppleScript and JavaScript possess core language commands, classes, and properties that make scripting possible. For AppleScript, core terminology is documented inAppleScript Language Guide. For JavaScript, seeJavaScript for Automation Release NotesandMozillaâs official JavaScript documentation.
 Each scriptable app introduces additional terminology that extends the core language. For example, Mail introduces terminology for creating and sending email messages. iTunes introduces terminology for working with music and playlists. In order to write a script that controls an app, you need to familiarize yourself with that appâs terminology.
 The terminology for an app is found in itsscripting dictionary, an.sdeffile stored in the app bundle. The dictionary describes the commands, classes, and properties an app supports. This information is used by the scripting components of the operating system, the app itself, and any other apps or scripts that interact with the app through scripting. It also serves as a reference, which you can consult in Script Editor for guidance as you write a script. SeeFigure 10-1.

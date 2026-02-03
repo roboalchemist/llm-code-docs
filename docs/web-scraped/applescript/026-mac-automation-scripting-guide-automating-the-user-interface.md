@@ -1,20 +1,28 @@
 # Mac Automation Scripting Guide: Automating the User Interface
 
 ## Automating the User Interface
+
 Unfortunately, not every Mac app has scripting support, and those that do may not always have scripting support for every task you want to automate. You can often work around such limitations, however, by writing a user interface script, commonly called a UI or GUI script. A user interface script simulates user interaction, such as mouse clicks and keystrokes, allowing the script to select menu items, push buttons, enter text into text fields, and more.
 
 ### Enabling User Interface Scripting
+
 User interface scripting relies upon the OSÂ X accessibility frameworks that provide alternative methods of querying and controlling the interfaces of apps and the system. By default, accessibility control of apps is disabled. For security and privacy reasons, the user must manually enable it on an app-by-app (including script apps) basis.
+
 - Launch System Preferences and click Security & Privacy.
 Launch System Preferences and click Security & Privacy.
+
 - Click the Privacy tab.
 Click the Privacy tab.
+
 - Click Accessibility.
 Click Accessibility.
+
 - Click the Add button (+).
 Click the Add button (+).
+
 - Choose an app and click Open.
 Choose an app and click Open.
+
 - Select the checkbox to the left of the app.
 Select the checkbox to the left of the app.
 When running an app that requires accessibility control for the first time, the system prompts you to enable it. SeeFigure 37-1.
@@ -24,9 +32,11 @@ To run a user interface script in Script Editor, you must enable accessibility f
 Admin credentials are required to perform enable user interface scripting.
 
 ### Targeting an App
+
 User interface scripting terminology is found in the Processes Suite of the System Events scripting dictionary. This suite includes terminology for interacting with most types of user interface elements, including windows, buttons, checkboxes, menus, radio buttons, text fields, and more. In System Events, theprocessclass represents a running app.Listing 37-1shows how to target an app using this class.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - tell process "Safari"
 - -- Perform user interface scripting tasks
@@ -35,6 +45,7 @@ Open in Script Editor
 To control the user interface of an app, you must first inspect the app and determine its element hierarchy. This can be done by querying the app. For example,Listing 37-2asks Safari for a list of menus in the menu bar.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - tell process "Safari"
 - name of every menu of menu bar 1
@@ -45,9 +56,11 @@ Accessibility Inspector (Figure 37-3) makes it even easier to identify user inte
 Once you know how an element fits into an interface, you  target it within that hierarchy. For example,button X of window Y of process Z.
 
 ### Clicking a Button
+
 Use theclickcommand to click a button.Listing 37-3clicks a button in the Safari toolbar to toggle the sidebar between open and closed.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - tell process "Safari"
 - tell toolbar of window 1
@@ -58,9 +71,11 @@ Open in Script Editor
 - --> Result: {button 1 of toolbar 1 of window "AppleScript: Graphic User Interface (GUI) Scripting" of application process "Safari" of application "System Events"}
 
 ### Choosing a Menu Item
+
 Menu items can have a fairly deep hierarchy within the interface of an app. A menu item generally resides within a menu, which resides within a menu bar. In scripting, they must be addressed as such.Listing 37-4selects the Pin Tab menu item in the Window menu of Safari.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - tell process "Safari"
 - set frontmost to true
@@ -72,6 +87,7 @@ Note
 Scripting the user interface of an app can be tedious and repetitious. To streamline the process, consider creating handlers to perform common functions. For example,Listing 37-5shows a handler that can be used to choose any menu item of any menu in any running app.
 APPLESCRIPT
 Open in Script Editor
+
 - on chooseMenuItem(theAppName, theMenuName, theMenuItemName)
 - try
 - -- Bring the target app to the front
@@ -101,12 +117,15 @@ Open in Script Editor
 Listing 37-6calls the handler inListing 37-5to select the Pin Tab menu item in the Window menu of Safari.
 APPLESCRIPT
 Open in Script Editor
+
 - chooseMenuItem("Safari", "Window", "Pin Tab")
 
 ### Choosing a Submenu Item
+
 Some menus contain other menus. In these cases, it may be necessary to select a menu item in a submenu of a menu.Listing 37-7demonstrates how this would be done by selecting a submenu item in Safari.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - tell process "Safari"
 - set frontmost to true

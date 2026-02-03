@@ -1,44 +1,60 @@
 # AppleScript Lexical Conventions
 
-# AppleScript Lexical Conventions
 This chapter provides an overview of the vocabulary and conventions of the AppleScript Language. It starts with the character set and introduces elements of increasing complexity.
 After reading this chapter, you should have an understanding of the basic language components used to construct AppleScript expressions and statements.
 AppleScript Lexical Conventions contains the following sections:
+
 - Character Set
 Character Set
+
 - Identifiers
 Identifiers
+
 - Keywords
 Keywords
+
 - Comments
 Comments
+
 - The Continuation Character
 The Continuation Character
+
 - Literals and Constants
 Literals and Constants
+
 - Operators
 Operators
+
 - Variables
 Variables
+
 - Expressions
 Expressions
+
 - Statements
 Statements
+
 - Commands
 Commands
+
 - Results
 Results
+
 - Raw Codes
 Raw Codes
 
 ## Character Set
+
 Starting in OS X v10.5 (AppleScript 2.0),the character set for AppleScript is Unicode. AppleScript preserves all characters correctly worldwide, and comments and text constants in scripts may contain any Unicode characters.
 AppleScript syntax uses several non-ASCII characters, which can be typed using special key combinations. For information on characters that AppleScript treats specially, see the sectionsIdentifiers,Comments,Text,The Continuation Character, andRaw Codesin this chapter, as well asTable 9-1inOperators Reference.
 
 ## Identifiers
+
 An AppleScriptidentifieris a series of characters that identifies a class name, variable, or other language element, such as labels for properties and handlers.
 An identifier must begin with a letter and can contain any of these characters:
+
 ```
+
 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_```
 Identifiers are not case sensitive. For example, the identifiersmyvariableandMyVariableare equivalent.
 AppleScript remembers and enforces the first capitalization it comes across for an identifier. So if it first encounters an identifier asmyAccount, it will later, during compilation, change versions such asMyAccountandmyaccounttomyAccount.
@@ -50,6 +66,7 @@ The following are legal identifiers:|back&forth|,|Right*Now!|.
 An identifier can contain additional vertical bars preceded by a backslash (\) character, as in the identifier|This\|Or\|That|. Use of the backslash character is described further in the Special String Characters section of thetextclass.
 
 ## Keywords
+
 Akeywordis a reserved word in the AppleScript language. Keywords consist of lower-case, alphabetic characters:abcdefghijklmnopqrstuvwxyz. In a few cases, such asaside from, they come in pairs.
 Important:You should not attempt to reuse keywords in your scripts for variable names or other purposes. Developers should not re-define keywords in the terminology for their scriptable applications.
 Table 1-1lists the keywords reserved in AppleScript 2.0 (which are the same as those used in AppleScript 1.x). For additional information, seeTable A-1, which provides a brief description for each keyword and points to related information, where available.
@@ -131,83 +148,129 @@ with
 without
 
 ## Comments
+
 Acommentis text that is ignored by AppleScript when a script is executed. You can use comments to describe what is happening in the script or make other kinds of notes. There are three kinds of comments:
+
 - A block comment begins with the characters(*and ends with the characters*). Block comments must be placed between other statements. That means they can be placed on the same line at the beginning or end of a statement, but cannot be embedded within a simple (one-line) statement.
 A block comment begins with the characters(*and ends with the characters*). Block comments must be placed between other statements. That means they can be placed on the same line at the beginning or end of a statement, but cannot be embedded within a simple (one-line) statement.
+
 - An end-of-line comment begins with the characters--(two hyphens) and ends with the end of the line:--end-of-line comments extend to the end of the line
 An end-of-line comment begins with the characters--(two hyphens) and ends with the end of the line:
+
 ```
+
 --end-of-line comments extend to the end of the line```
+
 - Starting in version 2.0, AppleScript also supports use of the # symbol as an end-of-line comment. This allows you to make a plain AppleScript script into aUnix executable by beginning it with the following line and giving it execute permission:#!/usr/bin/osascriptCompiled scripts that use#will run normally on pre-2.0 systems, and if edited will display using--. Executable text scripts using#!/usr/bin/osascriptwill not run on pre-2.0 systems, since the#will be considered a syntax error.
 Starting in version 2.0, AppleScript also supports use of the # symbol as an end-of-line comment. This allows you to make a plain AppleScript script into aUnix executable by beginning it with the following line and giving it execute permission:
+
 ```
+
 #!/usr/bin/osascript```
 Compiled scripts that use#will run normally on pre-2.0 systems, and if edited will display using--. Executable text scripts using#!/usr/bin/osascriptwill not run on pre-2.0 systems, since the#will be considered a syntax error.
 You can nest commentsâthat is, comments can contain other comments, as in this example:
+
 ```
+
 (*  Here are some```
+
 ```
+
     --nested comments```
+
 ```
+
     (* another comment within a comment *)```
+
 ```
+
 *)```
 
 ## The Continuation Character
+
 A simple AppleScript statement must normally be entered on a single line. You can extend a statement to the next line by ending it with thecontinuation character, Â¬. With a U.S. keyboard, you can enter this character by typing Option-l (lower-case L). In Script Editor, you can type Option-Return, which inserts the continuation character and moves the insertion point to the next line.
 Here is a single statement displayed on two lines:
+
 ```
+
 display dialog "This is just a test." buttons {"Great", "OK"} Â¬```
+
 ```
+
 default button "OK" giving up after 3```
 A continuation character within a quoted text string is treated like any other character.
 
 ## Literals and Constants
+
 Aliteralis a value that evaluates to itselfâthat is, it is interpreted just as it is written. In AppleScript, for example,"Hello"is a text literal. Aconstantis a word with a predefined value. For example, AppleScript defines a number of enumerated constants for use with thepath to (folder)command, each of which specifies a location for which to obtain the path.
 
 ### Boolean
+
 AppleScript defines theBoolean valuestrueandfalseand supplies thebooleanclass.
 
 ### Constant
+
 Global Constants in AppleScriptdescribes constants that can be used throughout your scripts. For related information, see theconstantclass.
 
 ### List
+
 A list defines an ordered collection of values, known as items, of any class. As depicted in a script, a list consists of a series of expressions contained within braces and separated by commas, such as the following:
+
 ```
+
 {1, 7, "Beethoven", 4.5}```
 A list can contain other lists. An empty list (containing no items) is represented by a pair of empty braces:{}.
 AppleScript provides thelistclass for working with lists.
 
 ### Number
+
 Anumeric literal is a sequence of digits, possibly including other characters, such as a unary minus sign, period (in reals), or"E+"(in exponential notation). The following are some numeric literals:
+
 ```
+
 -94596```
+
 ```
+
 3.1415```
+
 ```
+
 9.9999999999E+10```
 AppleScript defines classes for working withrealandintegervalues, as well as thenumberclass, which serves as a synonym for eitherrealorinteger.
 
 ### Record
+
 A record is an unordered collection of labeled properties. A record appears in a script as a series of property definitions contained within braces and separated by commas. Each property definition consists of a unique label, a colon, and a value for the property. For example, the following is a record with two properties:
+
 ```
+
 {product:"pen", price:2.34}```
 
 ### Text
+
 Atextliteral consists of a series of Unicode characters enclosed in a pair of double quote marks, as in the following example:
+
 ```
+
 "A basic string."```
 AppleScripttextobjects are instances of thetextclass, which provides mechanisms for working with text. The Special String Characters section of that class describes how to use white space, backslash characters, and double quotes in text.
 
 ## Operators
+
 Anoperatoris a symbol, word, or phrase that derives a value from another value or pair of values. For example, the multiplication operator (*) multiplies two numeric operands, while the concatenation operator (&) joins two objects (such as text strings). Theis equaloperator performs a test on two Boolean values.
 For detailed information on AppleScriptâs operators, seeOperators Reference.
 
 ## Variables
+
 Avariableis a named container in which to store a value. Its name, which you specify when you create the variable, follows the rules described inIdentifiers. You can declare and initialize a variable at the same time with acopyorsetcommand. For example:
+
 ```
+
 set myName to "John"```
+
 ```
+
 copy 33 to myAge```
 Statements that assign values to variables are known asassignment statements.
 When AppleScript encounters a variable, it evaluates the variable by getting its value. A variable is contained in a script and its value is normally lost when you close the script that contains it.
@@ -215,45 +278,66 @@ AppleScript variables can hold values of any class. For example, you can assign 
 For more information, seeVariables and Properties.
 
 ## Expressions
+
 Anexpressionis any series of lexical elements that has a value. Expressions are used in scripts to represent or derive values. The simplest kinds of expressions, called literal expressions, are representations of values in scripts. More complex expressions typically combine literals, variables, operators, and object specifiers.
 When you run a script, AppleScript converts its expressions into values. This process is known asevaluation. For example, when the following simple expression is evaluated, the result is 21:
+
 ```
+
 3 * 7 --result: 21```
 An object specifierspecifies some or all of the information needed to find another object. For example, the following object specifier specifies a named document:
+
 ```
+
 document named "FavoritesList"```
 For more information, seeObject Specifiers.
 
 ## Statements
+
 Astatementis a series of lexical elements that follows a particular AppleScript syntax. Statements can include keywords, variables, operators, constants, expressions, and so on.
 Every script consists of statements. When AppleScript executes a script, it reads the statements in order and carries out their instructions.
 Acontrol statementis a statement that determines when and how other statements are executed. AppleScript defines standard control statements such asif,repeat, andwhilestatements, which are described in detail inControl Statements Reference.
 Asimple statementis one that can be written on a single line:
+
 ```
+
 set averageTemp to 63 as degrees Fahrenheit```
 Note:You can use a continuation character (Â¬) to extend a simple statement onto a second line.
 Acompound statementis written on more than one line, can contain other statements, and has the wordend(followed, optionally, by the first word of the statement) in its last line. For example the following is a compoundtellstatement:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     set savedName to name of front window```
+
 ```
+
     close window savedName```
+
 ```
+
 end tell```
 A compound statement can contain other compound statements.
 
 ## Commands
+
 Acommandis a word or series of words used in an AppleScript statement to request an action. Every command is directed at atarget, which is the object that responds to the command. The target is usually an application object or an object in macOS, but it can also be ascriptobject or a value in the current script.
 The following statement uses AppleScriptâsgetcommand to obtain the name of a window; the target is the front window of the Finder application:
+
 ```
+
 get name of front window of application "Finder"```
 For more information on command types, parameters, and targets, seeCommands Overview.
 
 ## Results
+
 Theresultof a statement is the value generated, if any, when the statement is executed. For example, executing the statement3 + 4results in the value7. The result of the statementset myText to "keyboard"is the text object"keyboard". A result can be of any class. AppleScript stores the result in the globally available propertyresult, described inAppleScript Constant.
 
 ## Raw Codes
+
 When you open, compile, edit, or run scripts with a script editor, you may occasionally see terms enclosed in double angle brackets, or chevrons(Â«Â»), in a script window or in another window. These terms are calledraw formatorraw codes, because they represent the underlying Apple event codesthat AppleScript uses to represent scripting terms.
 For compatibility with Asian national encodings, âãâ and âãâ are allowed as synonyms for âÂ«â and âÂ»â ( (Option- \ and Option-Shift- \, respectively, on a U.S. keyboard), since the latter do not exist in some Asian encodings.
 For more information on raw codes, seeDouble Angle Brackets.

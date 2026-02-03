@@ -1,15 +1,18 @@
 # Mac Automation Scripting Guide: Manipulating Text
 
 ## Manipulating Text
+
 Manipulating text is one of the most common tasks performed in scripts. AppleScript and JavaScript both possess some basic text manipulation functions and properties that allow you to concatenate text, get the length of a string, and more. Overall, JavaScript has a much wider-range of built-in language-level text manipulation functions. Custom scripting is usually required to manipulate text with AppleScript.
 Note
 For general information about working with text in AppleScript, see thetextclass reference documentation inAppleScript Language Guide.
 In JavaScript, theStringobject provides a range of text processing functions. Information about this object can be foundhere. JavaScript also provides aRegExpconstructor, which can be used for pattern matching. Information about this constructor can be foundhere.
 
 ### Changing the Case of Text
+
 The handlers inListing 19-1andListing 19-2convert text to uppercase or lowercase. To use these handlers, provide some source text and a case to applyâupperorlower.
 APPLESCRIPT
 Open in Script Editor
+
 - on changeCaseOfText(theText, theCaseToSwitchTo)
 - if theCaseToSwitchTo contains "lower" then
 - set theComparisonCharacters to "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -33,6 +36,7 @@ Open in Script Editor
 - end changeCaseOfText
 JAVASCRIPT
 Open in Script Editor
+
 - function changeCaseOfText(text, caseToSwitchTo) {
 - var alteredText = text
 - if (caseToSwitchTo === "lower") {
@@ -46,25 +50,30 @@ Open in Script Editor
 Listing 19-3andListing 19-4show how to call the handlers inListing 19-1andListing 19-2to convert text to uppercase.
 APPLESCRIPT
 Open in Script Editor
+
 - changeCaseOfText("scripting is awesome!", "upper")
 - --> Result: "SCRIPTING IS AWESOME!"
 JAVASCRIPT
 Open in Script Editor
+
 - changeCaseOfText("scripting is awesome!", "upper")
 - // Result: "SCRIPTING IS AWESOME!"
 Listing 19-5andListing 19-6show how to call the handlers inListing 19-1andListing 19-2to convert text to lowercase.
 APPLESCRIPT
 Open in Script Editor
+
 - changeCaseOfText("DOING REPETITIVE WORK IS BORING", "lower")
 - --> Result: "doing repetitive work is boring"
 JAVASCRIPT
 Open in Script Editor
+
 - changeCaseOfText("DOING REPETITIVE WORK IS BORING", "lower")
 - // Result: "doing repetitive work is boring"
 Note
 When you use AppleScriptObjC or JavaScriptObjC, you can use methods of theNSStringclass to change the case of text.Listing 19-7andListing 19-8demonstrate how to do this.
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on changeCaseOfText(theText, theCase)
 - -- Create an NSString object from the passed text
@@ -82,6 +91,7 @@ Open in Script Editor
 - end changeCaseOfText
 JAVASCRIPT
 Open in Script Editor
+
 - function changeCaseOfText(text, caseToSwitchTo) {
 - // Convert the passed text to an NSString object
 - var alteredText = $(text)
@@ -97,9 +107,11 @@ Open in Script Editor
 - }
 
 ### Finding and Replacing Text in a String
+
 The handler inListing 19-9can be used to find and replace text in a string. To use it, provide some source text, a string to find, and a replacement string. This handler replaces any found instances of the specified search string.
 APPLESCRIPT
 Open in Script Editor
+
 - on findAndReplaceInText(theText, theSearchString, theReplacementString)
 - set AppleScript's text item delimiters to theSearchString
 - set theTextItems to every text item of theText
@@ -111,18 +123,21 @@ Open in Script Editor
 Listing 19-10shows how to call the handler inListing 19-9.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "On Tuesday, I told you to have the report ready by next Tuesday."
 - set theText to findAndReplaceInText(theText, "Tuesday", "Friday")
 - --> Result: "On Friday, I told you to have the report ready by next Friday."
 In JavaScript, theStringobjectâsreplace()method is used to find and replace text in a string, as shown inListing 19-11. Unlike the previous AppleScript example, this function replaces only the first occurrence of the found text.
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "On Tuesday, I told you to have the report ready by next Tuesday."
 - text = text.replace("Tuesday", "Friday")
 - // Result: "On Friday, I told you to have the report ready by next Tuesday."
 Thereplace()method can be combined with a regular expression to replace every occurrence of the found text, as shown inListing 19-12.
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "On Tuesday, I told you to have the report ready by next Tuesday."
 - text = text.replace(/Tuesday/g, "Friday")
 - // Result: "On Friday, I told you to have the report ready by next Friday."
@@ -130,6 +145,7 @@ Note
 When you use AppleScriptObjC or JavaScriptObjC, you can use methods of theNSStringclass to perform a find and replace in text. The handlers inListing 19-13andListing 19-14demonstrate how to do this.
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on findAndReplaceInText(theText, theSearchString, theReplacementString)
 - -- Create an NSString object from the passed AppleScript string
@@ -141,6 +157,7 @@ Open in Script Editor
 - end findAndReplaceInText
 JAVASCRIPT
 Open in Script Editor
+
 - function findAndReplaceInText(text, searchString, replacementString) {
 - // Create an NSString object from the passed string
 - var alteredText = $(text)
@@ -151,54 +168,70 @@ Open in Script Editor
 - }
 
 ### Getting the Characters of a String
+
 Listing 19-15andListing 19-16show how to get a list of characters in a string.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "The quick brown fox jumps over a lazy dog."
 - characters of theText
 - --> Result: {"T", "h", "e", " ", "q", "u", "i", "c", "k", " ", "b", "r", "o", "w", "n", " ", "f", "o", "x", " ", "j", "u", "m", "p", "s", " ", "o", "v", "e", "r", " ", "a", " ", "l", "a", "z", "y", " ", "d", "o", "g", "."}
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "The quick brown fox jumps over a lazy dog."
 - text.split("")
 - // Result: ["T", "h", "e", " ", "q", "u", "i", "c", "k", " ", "b", "r", "o", "w", "n", " ", "f", "o", "x", " ", "j", "u", "m", "p", "s", " ", "o", "v", "e", "r", " ", "a", " ", "l", "a", "z", "y", " ", "d", "o", "g", "."]
 
 ### Getting the Length of String
+
 Listing 19-17andListing 19-18show how to get the length ofâthe number of characters inâa string.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "The quick brown fox jumps over a lazy dog."
 - length of theText
 - --> Result: 42
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "The quick brown fox jumps over a lazy dog."
 - text.length
 - // Result: 42
 
 ### Getting the Paragraphs of a String
+
 Listing 19-19andListing 19-20show how to get a list of paragraphs in a string.
 APPLESCRIPT
 Open in Script Editor
-- set theText to "* Sal
-- * Ben
-- * Chris
-- * David"
-- paragraphs of theText
-- --> Result: {"* Sal", "* Ben", "* Chris", "* David"}
+
+```applescript
+set theText to "* Sal
+* Ben
+* Chris
+* David"
+paragraphs of theText
+-- Result: {"* Sal", "* Ben", "* Chris", "* David"}
+```
+
 JAVASCRIPT
 Open in Script Editor
-- var text = `* Sal
-- * Ben
-- * Chris
-- * David`
-- text.split("\n")
-- // Result: ["* Sal", "* Ben", "* Chris", "* David"]
+
+```javascript
+var text = `* Sal
+* Ben
+* Chris
+* David`
+text.split("\n")
+// Result: ["* Sal", "* Ben", "* Chris", "* David"]
+```
 
 ### Getting the Position of Text in a String
+
 To determine the position of text within a string in AppleScript, request itsoffset, as shown inListing 19-21. This provides the character number where the first instance of the text begins.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "The quick brown fox jumps over a lazy dog."
 - offset of "quick" in theText
 - --> Result: 5
@@ -207,6 +240,7 @@ In AppleScript, character positions start at1; the first character in a string h
 To determine the position of text within a string in JavaScript, call theindexOf()method of the text object, as shown inListing 19-22.
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "The quick brown fox jumps over a lazy dog."
 - text.indexOf("quick")
 - // Result: 4
@@ -214,9 +248,11 @@ Note
 In JavaScript, character positions start at0; the first character in a string has an index of0. If the string doesnât include the text provided, then an offset of-1is returned.
 
 ### Splitting Text
+
 The handler inListing 19-23splits text into a list, based on a specific delimiter.
 APPLESCRIPT
 Open in Script Editor
+
 - on splitText(theText, theDelimiter)
 - set AppleScript's text item delimiters to theDelimiter
 - set theTextItems to every text item of theText
@@ -226,12 +262,14 @@ Open in Script Editor
 Listing 19-24shows how to call the handler inListing 19-23.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "The quick brown fox jumps over a lazy dog."
 - splitText(theText, space)
 - --> Result: {"The", "quick", "brown", "fox", "jumps", "over", "a", "lazy", "dog."}
 In JavaScript, theStringobjectâssplit()method is used to split text based on a delimiter, as shown inListing 19-25.
 JAVASCRIPT
 Open in Script Editor
+
 - var text = "The quick brown fox jumps over a lazy dog."
 - text.split(" ")
 - // Result: ["The", "quick", "brown", "fox", "jumps", "over", "a", "lazy", "dog."]
@@ -239,9 +277,11 @@ Note
 SeeConverting a List to a Stringto learn how to merge strings back together.
 
 ### Trimming Text
+
 The handlers inListing 19-26andListing 19-27trim text from the beginning or end of a string. To use these examples, provide some source text, characters to trim, and a trim directionâbeginning(trim from the beginning),end(trim from the end), orboth(trim from both the beginning and end).
 APPLESCRIPT
 Open in Script Editor
+
 - on trimText(theText, theCharactersToTrim, theTrimDirection)
 - set theTrimLength to length of theCharactersToTrim
 - if theTrimDirection is in {"beginning", "both"} then
@@ -268,6 +308,7 @@ Open in Script Editor
 - end trimText
 JAVASCRIPT
 Open in Script Editor
+
 - function trimText(text, charsToTrim, direction) {
 - var result = text
 - var regexString = charsToTrim.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -284,34 +325,41 @@ Open in Script Editor
 Listing 19-28andListing 19-29show how to call the handlers inListing 19-26andListing 19-27to trim text from the beginning of a string.
 APPLESCRIPT
 Open in Script Editor
+
 - trimText("----1----", "-", "beginning")
 - --> Result: "1----"
 JAVASCRIPT
 Open in Script Editor
+
 - trimText("----1----", "-", "beginning")
 - // Result: "1----"
 Listing 19-30andListing 19-31show how to call the handlers inListing 19-26andListing 19-27to trim text from the end of a string.
 APPLESCRIPT
 Open in Script Editor
+
 - trimText("12345.txt", ".txt", "end")
 - --> Result: "12345"
 JAVASCRIPT
 Open in Script Editor
+
 - trimText("12345.txt", ".txt", "end")
 - // Result: "12345"
 Listing 19-32andListing 19-33show how to call the handlers inListing 19-26andListing 19-27to trim text from the beginning and end of a string.
 APPLESCRIPT
 Open in Script Editor
+
 - trimText("*-*-Ben*-*-", "*-", "both")
 - --> Result: "Ben"
 JAVASCRIPT
 Open in Script Editor
+
 - trimText("*-*-Ben*-*-", "*-", "both")
 - // Result: "Ben"
 Note
 When you use AppleScriptObjC or JavaScriptObjC, you can use methods of theNSStringclass to remove whitespace around text. The handlers inListing 19-34andListing 19-35demonstrate how to do this.
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on trimWhiteSpaceAroundString(theText)
 - -- Create an NSString object from an AppleScript string
@@ -324,6 +372,7 @@ Open in Script Editor
 - end trimWhiteSpaceAroundString
 JAVASCRIPT
 Open in Script Editor
+
 - function trimWhiteSpaceAroundString(text) {
 - // Create an NSString object from the text
 - var alteredText = $(text)
@@ -333,11 +382,13 @@ Open in Script Editor
 - }
 
 ### Trimming Paragraphs of Text
+
 The handlers inListing 19-36andListing 19-37remove unwanted characters from multiple paragraphs.
 Note
 This handler calls thetrimText()handler. SeeListing 19-26.
 APPLESCRIPT
 Open in Script Editor
+
 - on trimParagraphsOfText(theText, theCharactersToTrim, theTrimDirection)
 - set theParagraphs to every paragraph of theText
 - repeat with a from 1 to count of paragraphs of theText
@@ -351,6 +402,7 @@ Open in Script Editor
 - end trimParagraphsOfText
 JAVASCRIPT
 Open in Script Editor
+
 - function trimParagraphsOfText(text, charsToTrim, direction) {
 - var paragraphs = text.split("\n")
 - for (var i = 0; i < paragraphs.length; i++) {
@@ -362,26 +414,34 @@ Open in Script Editor
 Listing 19-38andListing 19-39show how to call the handlers inListing 19-36andListing 19-37.
 APPLESCRIPT
 Open in Script Editor
-- set theText to "* Sal
-- * Ben
-- * Chris
-- * David"
-- trimParagraphsOfText(theText, "* ", "beginning")
-- --> Result:
-- (*
-- "Sal
-- Ben
-- Chris
-- David"
-- *)
+
+```applescript
+set theText to "* Sal
+* Ben
+* Chris
+* David"
+trimParagraphsOfText(theText, "* ", "beginning")
+-- Result:
+(*
+"Sal
+Ben
+Chris
+David"
+*)
+```
+
 JAVASCRIPT
 Open in Script Editor
-- var text = `* Sal
-- * Ben
-- * Chris
-- * David`
-- trimParagraphsOfText(text, "* ", "beginning")
-- // Result: "Sal\nBen\nChris\nDavid"
+
+```javascript
+var text = `* Sal
+* Ben
+* Chris
+* David`
+trimParagraphsOfText(text, "* ", "beginning")
+// Result: "Sal\nBen\nChris\nDavid"
+```
+
 Note
 In JavaScript,\nrepresents a newline character.
 Watching Folders

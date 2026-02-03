@@ -1,9 +1,10 @@
 # Reference Forms
 
-# Reference Forms
 This chapter describes AppleScript reference forms.Areference formspecifies the syntax for identifying an object or group of objects in an application or other containerâthat is, the syntax for constructing an object specifier (described inObject Specifiers).
 For example, the following object specifier (from a script targeting the Finder) uses several index reference forms, which identify an object by its number within a container:
+
 ```
+
 item 1 of second folder of disk 1```
 Important:When you use a reference form, you specify the container in which the referenced object or objects reside. This takes the formreferenceFormofcontainerObject. You can also enclose a reference form in atellstatement, which then serves to specify the outer container. For more information, seeAbsolute and Relative Object Specifiers.
 Some of the examples of reference forms shown in this chapter will not compile as shown. To compile them, you may need to add an enclosingtellstatement, targeting the Finder or the word processing application TextEdit.
@@ -11,155 +12,257 @@ Specifies an arbitrary object in a container. This form is useful whenever rando
 Because an arbitrary item is, by its nature, random, this form is not useful for operations such as processing each item in a group of files, words, or other objects.
 
 ##### Syntax
+
 ```
+
 some  class```
 
 ##### Placeholders
+
 The class for an arbitrary object.
 
 ##### Examples
+
 The following creates a new Mail message with a random signature (and depends on the user having at least one signature):
+
 ```
+
 tell application "Mail"```
+
 ```
+
     activate```
+
 ```
+
     set randomSignature to some signature```
+
 ```
+
     set newMessage to make new outgoing message Â¬```
+
 ```
+
         at end of outgoing messages with properties Â¬```
+
 ```
+
         {subject:"Guess who?", content:"Welcome aboard.", visible:true}```
+
 ```
+
     set message signature of newMessage to randomSignature```
+
 ```
+
 end tell```
 The following simply gets a random word from a TextEdit document:
+
 ```
+
 tell application "TextEdit"```
+
 ```
+
     some word of document 1 -- any word from the first document```
+
 ```
+
 end tell```
 Specifies every object of a particular class in a container.
 
 ##### Syntax
+
 ```
 
 every  class 
 pluralClass```
 
 ##### Placeholders
+
 A singular class (such aswordorparagraph).
 The plural form for a class (such aswordsorparagraphs).
 
 ##### Value
+
 The value of aneveryobject specifier is a list of the objects from the container. If the container does not contain any objects of the specified class, the list is an empty list: {}. For example, the value of the expressionevery word of {1, 2, 3}is the empty list{}.
 
 ##### Examples
+
 The following example uses aneveryobject specifier to specify every word contained in a text string:
+
 ```
+
 set myText to "That's all, folks"```
+
 ```
+
 every word of myText --result: {"That's", "all", "folks"} (a list of three words)```
 The following object specifier specifies the same list:
+
 ```
+
 words of myText```
 The following example specifies a list of all the items in the Users folder of the startup disk (boot partition):
+
 ```
+
 tell application "Finder"```
+
 ```
+
     every item of folder "Users" of startup disk```
+
 ```
+
 end tell```
 The following specifies the same list as the previous example:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     items of folder "Users" of startup disk```
+
 ```
+
 end tell```
 
 ##### Discussion
+
 Use of theeveryreference form implies the existence of anindexproperty for the specified objects.
 If you specify aneveryobject specifier as the container from which to obtain a property or object, the result is a list containing the specified property or object for each object of the container. The number of items in the list is the same as the number of objects in the container.
 Specifies all objects in a container that match a condition, or test, specified by a Boolean expression.
 The filter form specifies application objects only. It cannot be used to filter the AppleScript objectslist,record, ortext. A term that uses the filter form is also known as awhoseclause.
 Note:You can use the wordswhereorthatassynonyms forwhose.
 A filter reference form can often be replaced by arepeatstatement, or vice versa. For example, the following script closes every TextEdit window that isnât named"Old Report.rtf":
+
 ```
+
 tell application "TextEdit"```
+
 ```
+
     close every window whose name is not "Old Report.rtf"```
+
 ```
+
 end tell```
 You could instead obtain a list of open windows and set up arepeatstatement that checks the name of each window and closes the window if it isnât named"Old Report.rtf". However, awhoseclause is often the fastest way to obtain the desired information.
 The following is an abbreviated form of the previous script:
+
 ```
+
 windows of application "TextEdit" whose name is not "Old Report.rtf"```
 For related information, seerepeat Statements.
 
 ##### Syntax
+
 ```
 
 objectSpecifier  ( whose | where )  booleanTest ```
 
 ##### Placeholders
+
 Specifies the container in which to look for objects that match the Boolean test.
 These words have the same meaning, and refer to all of the objects in the specified container that match the conditions in the specified Boolean expression.
 Any Boolean expression (see thebooleanclass definition).
 
 ##### Value
+
 The value of a filter reference form is a list of the objects that pass the test. If no objects pass the test, the list is an empty list: {}.
 
 ##### Examples
+
 The following example shows an object specifier for all open Finder windows that do not have the name"AppleScript Language Guide".
+
 ```
+
 tell application "Finder"```
+
 ```
+
     every window whose name is not "AppleScript Language Guide"```
+
 ```
+
 end tell```
 
 ##### Discussion
+
 In effect, a filter reduces the number of objects in a container. Instead of specifyingeveryFinder window, the following object specifier specifies just the windows that are currently zoomed:
+
 ```
+
 every window whose zoomed is true```
 To specify a container after a filter, you must enclose the filter and the object specifier it applies to in parentheses, as in this example:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     (files whose file type is not "APPL") in folder "HD:SomeFolder:"```
+
 ```
+
 end tell```
 Within a test in a filter reference, the direct object is the object being tested. Though it isnât generally needed, this implicit target can be specified explicitly using the keywordit, which is described inThe it and me Keywords.
 The following example shows several equivalent ways of constructing a filter reference to find all the files in a folder that whose name contains the word âAppleScriptâ. While the termitrefers to the Finder application outside of the filter statements, within themof itrefers to the current file being tested. The result of each filter test is the same and is not changed by including or omitting the termof it:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     it --result: application "Finder" (target of tell statement)```
+
 ```
+
     set myFolder to path to home folder```
+
 ```
+
         --result: alias "Leopard:Users:myUser:"```
+
 ```
+
     files in myFolder --result: a list of Finder document files```
+
 ```
+
     files in myFolder where name of it contains "AppleScript"```
+
 ```
+
     (* result: document file "AppleScriptLG.pdf" of folder "myUser"```
+
 ```
+
         of folder "Users" of startup disk of application "Finder"}*)```
+
 ```
+
     files in myFolder where name contains "AppleScript" -- same result```
+
 ```
+
     every file in myFolder whose name contains "AppleScript" -- same result```
+
 ```
+
     every file in myFolder where name of it contains "AppleScript"```
+
 ```
+
         -- same result```
+
 ```
+
 end tell```
 A filter reference form includes one or more tests. Each test is a Boolean expression that compares a property or element of each object being tested, or the objects themselves, with another object or value.Table 8-1shows some filter references, the Boolean expressions they contain, and what is being tested in each reference.
 Filter reference form
@@ -175,32 +278,49 @@ files whose creator type is "OMGR"
 creator type is "OMGR"
 Thecreator typeproperty of each file
 A test can be any Boolean expression. You can link multiple tests, as in the following statement:
+
 ```
+
 windows whose zoomed is true and floating is false```
 Specifies an object by the value of itsidproperty.
 You can use the ID reference form only with application objects that have an ID property.
 
 ##### Syntax
+
 ```
+
 class id  expression```
 
 ##### Placeholders
+
 The id value.
 
 ##### Examples
+
 The following examples use the ID reference form to specify anapplicationby ID and adiskobject by ID.
+
 ```
+
 tell application id "com.apple.finder"```
+
 ```
+
 -- specifies an application (Finder) by its ID```
+
 ```
+
 disk id -100 -- specifies a Finder disk object by ID```
+
 ```
+
 name of disk id -100 --result: "Leopard_GM" (gets name from ID specifier)```
+
 ```
+
 end tell```
 
 ##### Discussion
+
 Use of theidreference form implies the existence of aidproperty for the specified objects.
 Althoughidproperties are most often integers, anidproperty can belong to any class. An application that supportsidproperties for its scriptable objects must guarantee that the IDs are unique within a container. Some applications may also provide additional guarantees, such as ensuring the uniqueness of an ID among all objects.
 The value of anidproperty is not typically modifiable. It does not change even if the object is moved within the container. This allows you to save an objectâs ID and use it to refer to the object for as long as the object exists. In some scripts you may wish to refer to an object by its ID, rather than by a property such as its name, which may change. Similarly, you could keep track of an item by its index, but indexes can change when items in a container are added, deleted, or even renamed.
@@ -211,6 +331,7 @@ Specifies an object by describing its position with respect to the beginning or 
 For related information, seeRelative.
 
 ##### Syntax
+
 ```
 
 class [ index ] integer
@@ -219,6 +340,7 @@ integer (st | nd | rd | th ) class
 ( last | front | back ) class```
 
 ##### Placeholders
+
 The class of the indexed object to obtain.
 An integer that describes the position of the object in relation to the beginning of the container (if integer is a positive integer) or the end of the container (if integer is a negative integer).
 Appended to the appropriate integer to form an index. For example,1st,2nd,3rd.
@@ -227,119 +349,185 @@ The formsfirst,second, and so on are equivalent to the corresponding integer for
 Thefrontform (for example,front window) is equivalent toclass 1(window 1) orfirst class(first window). Thelastandbackforms (for example,last wordandback window) refer to the last object in a container. They are equivalent toclass -1(for example,window -1).
 
 ##### Examples
+
 Each of the following object specifiers specifies the first item on the startup disk:
+
 ```
+
 item 1 of the startup disk```
+
 ```
+
 item index 1 of the startup disk -- "index" is usually omitted```
+
 ```
+
 the first item of the startup disk```
 The following object specifiers specify the second word from the beginning of the third paragraph:
+
 ```
+
 word 2 of paragraph 3```
+
 ```
+
 2nd word of paragraph 3```
+
 ```
+
 second word of paragraph 3```
 The following object specifiers specify the last word in the third paragraph:
+
 ```
+
 word â1 of paragraph 3```
+
 ```
+
 last word of paragraph 3```
 The following object specifiers specify the next-to-last word in the third paragraph.
+
 ```
+
 word â2 of paragraph 3```
+
 ```
+
 -2th word of paragraph 3```
 
 ##### Discussion
+
 Indexes are volatile. Changing some other property of the object may change its index, as well as the index of other like objects. For example, after deletingword 4from a paragraph, the word no longer exists. But there may still be aword 4âthe word that was formerlyword 5. Afterword 4is deleted, any words with an index higher than 4 will also have a new index. So the object an index specifies can change.
 For a unique, persistent object specifier, you can use theidreference form (seeID), if the application supports it for the class of object you are working with. And for keeping track of a file, you can use analiasobject.
 Specifies the middle object of a particular class in a container. This form is rarely used.
 
 ##### Syntax
+
 ```
 
 middle  class ```
 
 ##### Placeholders
+
 The class of the middle object to obtain.
 
 ##### Examples
+
 ```
+
 tell application "TextEdit"```
+
 ```
+
     middle paragraph of front document```
+
 ```
+
 end tell```
+
 ```
+
 middle item of {1, "doughnut", 33} --result: "doughnut"```
+
 ```
+
 middle item of {1, "doughnut", 22, 33} --result: "doughnut"```
+
 ```
+
 middle item of {1, "doughnut", 11, 22, 33} --result: 11```
 
 ##### Discussion
+
 Themiddlereference form generally works only when theindexform also works.
 AppleScript calculates the middle object by taking half the count, then rounding up. For example, the middle word of a paragraph containing ten words is the fifth word; the middle of eleven words is the sixth.
 Specifies an object by name.
 
 ##### Syntax
+
 ```
 
 class  [ named ]  nameText ```
 
 ##### Placeholders
+
 The class for the specified object.
 The value of the objectâs name property.
 
 ##### Examples
+
 The following statements identify objects by name:
+
 ```
+
 document "Report.rtf"```
+
 ```
+
 window named "logs"```
 
 ##### Discussion
+
 Use of thenamereference form implies the existence of anameproperty for the specified objects.
 In some applications, it is possible to have multiple objects of the same class in the same container with the same name. For example, if there are two drives named âHard Diskâ, the following statement is ambiguous (at least to the reader):
+
 ```
+
 tell application "Finder"```
+
 ```
+
     item 1 of disk "Hard Disk"```
+
 ```
+
 end tell```
 In such cases, it is up to the application to determine which object is specified by anamereference.
 Specifies a property of an object.
 
 ##### Syntax
+
 ```
 
 propertyLabel```
 
 ##### Placeholders
+
 The label for the property.
 
 ##### Examples
+
 The following example is an object specifier to a property of a Finder window. It lists the label for the windowâs property (zoomed) and its container (front window).zoomedis a Boolean property.
+
 ```
+
 zoomed of front window -- e.g., false, if the window isn't zoomed```
 For many objects, you can obtain a list of properties:
+
 ```
+
 tell app "Finder"```
+
 ```
+
      properties of window 1 --result: a list of properties and their values```
+
 ```
+
 end tell```
 The following example is an object specifier to theUnitPriceproperty of arecordobject. The label of the property isUnitPriceand the container is therecordobject.
+
 ```
+
 UnitPrice of {Product:"Super Snack", UnitPrice:0.85, Quantity:10} --result: 0.85```
 
 ##### Discussion
+
 Property labels are listed in class definitions in application dictionaries. Because a propertyâs label is unique among the properties of an object, the label is all you need to specify the propertyâthere is no need to specify the class of the property.
 Specifies a series of objects of the same class in the same container. You can specify the objects with a pair of indexes (such aswords 12 thru 24) or with a pair of boundary objects (integers from integer 1 to integer 3).
 
 ##### Syntax
+
 ```
 
 every  class  from  boundarySpecifier1  to  boundarySpecifier2 
@@ -348,6 +536,7 @@ class  startIndex  ( thru | through )  stopIndex
 pluralClass  startIndex  ( thru | through )  stopIndex```
 
 ##### Placeholders
+
 A singular class (such aswindoworword).
 A plural class (such aswindowsorwords).
 Specifiers to objects that bound the range. The range includes the boundary objects. You can use the reserved wordbeginningin place ofboundarySpecifier1to indicate the position before the first object of the container. Similarly, you can use the reserved wordendin place ofboundarySpecifier2to indicate the position after the last object in the container.
@@ -355,49 +544,78 @@ The indexes of the first and last object of the range (such as1and10inwords 1 th
 Though integer indexes are the most common class, the start and stop indexes can be of any class. An application determines which index classes are meaningful to it.
 
 ##### Value
+
 The value of a range reference form is a list of the objects in the range. If the specified container does not contain objects of the specified class, or if the range is out of bounds, an error is returned. For example, the following range specifier results in an error because there are no words in the list:
+
 ```
+
 words 1 thru 3 of {1, 2, 3} --result: an error```
 
 ##### Examples
+
 The following example shows the boundary object form of a range specifier. When you compile this statement, Script Editor convertsfrom integer 1 to integer 2to the formintegers 1 thru 2.
+
 ```
+
 set intList to integers from integer 1 to integer 2 of {17, 33, 24}```
+
 ```
+
      --result: {17, 33}```
 In the next example, the phrasefolders 3 thru 4is a range specifier that specifies a list of two folders in the containerstartup disk:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     folders 3 thru 4 of startup disk```
+
 ```
+
 end tell```
+
 ```
+
 --result: a list of folders (depends on contents of startup disk)```
 
 ##### Discussion
+
 If you specify a range specifier as the container for a property or object, as in
+
 ```
+
 name of folders 2 thru 3 of startup disk```
 the result is a list containing the specified property or object for each object of the container. The number of items in the list is the same as the number of objects in the container.
 To obtain a contiguous series of charactersâinstead of a listâfrom atextobject, use thetextclass:
+
 ```
+
 text from word 1 to word 4 of "We're all in this together"```
+
 ```
+
 --result: "We're all in this"```
+
 ```
+
 words 1 thru 4 of "We're all in this together"```
+
 ```
+
 --result: {"We're", "all", "in", "this"}```
 Specifies an object or an insertion point in a container by describing a position in relation to another object, known as the base, in the same container.
 
 ##### Syntax
+
 ```
 
 [ class ] ( before | [in] front of ) baseSpecifier
 [ class ] ( after | [in] back of | behind ) baseSpecifier```
 
 ##### Placeholders
+
 The class identifier of the specified object. If you omit this parameter, the specifier refers to an insertion point.
 A specifier for the object.
 These forms are equivalent, and refer to the object immediately preceding the base object.
@@ -407,28 +625,48 @@ These forms are equivalent, and refer to the last insertion point of the contain
 Although terms such asbeginningandendsound like absolute positions, they are relative to the existing contents of a container (that is, before or after the existing contents).
 
 ##### Examples
+
 The two relative specifiers in the followingtellblock specify the same file by identifying its position relative to another file on a disk:
+
 ```
+
 tell application "Finder"```
+
 ```
+
     item before item 3 of startup disk --result: e.g., a specifier```
+
 ```
+
     item after item 1 of startup disk --result: e.g., a specifier```
+
 ```
+
 end tell```
 The following example shows how to use various relative specifiers in a word processing document:
+
 ```
+
 tell first document of application "TextEdit"```
+
 ```
+
     copy word 1 to before paragraph 3```
+
 ```
+
     copy word 3 to in back of paragraph 4```
+
 ```
+
     copy word 1 of the last paragraph to behind the third paragraph```
+
 ```
+
 end tell```
 
 ##### Discussion
+
 Therelativereference form generally works only when theindexform also works.
 You can specify only a single object with a relative specifierâan object that is either before or after the base object.
 Copyright © 2016 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2016-01-25

@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Making Remote Procedure Calls From Scripts
 Starting with OS X version 10.1, the Apple Event Manager provides support for using the XML-RPC and SOAP protocols to make remote procedure calls from AppleScript scripts and from applications. This chapter provides sample scripts that show how to make remote procedure calls from scripts.
 This chapter assumes you are familiar with the material inIntroduction to XML-RPC and SOAP Programming Guide. To test any of the scripts shown in this chapter, you must have an Internet connection.
 Warning:The script examples in this chapter may not work because the web services they rely on may no longer be available. You can find additional script samples that make use of web services at/Library/Scripts/Internet Services. For example, theStock Quotescript uses a web service to look up the price for a stock specified by its symbol, while theCurrent Temperature by Zipcodescript looks up the temperature for a specified Zip code.
@@ -12,158 +11,311 @@ Warning:The script examples in this chapter may not work because the web service
 To make an XML-RPC request from a script, you use the AppleScript termcall xmlrpc. The syntax for this term is described inXML-RPC Script Statements. You can find available XML-RPC services at sites such as XMethods athttp://www.xmethods.net/. There you can also find information about the parameters and return values for remote procedure calls to these services.
 Listing 3-1shows a script that prompts a user for text, makes an XML-RPC request to an Internet server to check the spelling for that text, prompts the user to correct any words that may have been misspelled, and displays the final text.
 Listing 2-1A script that makes an XML-RPC request to check the spelling of a text phrase.
-```
----- Main script ----------------------------------------```
-```
--- Supply default text to spell check.```
-```
-set spellCheckText to "My frst naem is John"```
-```
- ```
-```
-----Query user for different text to check.```
-```
-set dialogResult to display dialog Â¬```
-```
-    "Enter a phrase to spell check:" default answer spellCheckText```
-```
- ```
-```
-if button returned of dialogResult is "OK" then```
-```
-    set spellCheckText to text returned of dialogResult```
-```
-    -- Call spellCheck handler.```
-```
-    set resultList to spellCheck(spellCheckText)```
-```
-    (*```
-```
-    The returned data looks something like this:```
-```
-        {{suggestions:{"fast", "fest", "first", "fist", "Forst",```
-```
-        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},```
-```
-        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",```
-```
-        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",```
-```
-        "nam", "name", "neem"}, location:9, |word|:"naem"}}```
-```
-    *)```
-```
-    -- Make list of words to spellcheck.```
-```
-    set wordList to every word of spellCheckText```
-```
- ```
-```
-    -- Give user chance to correct each misspelled word.```
-```
-    repeat with eachItem in resultList```
-```
-        set newWord to choose from list suggestions of eachItem Â¬```
-```
-            with prompt "You misspelled \"" & |word| of eachItem & Â¬```
-```
-            "\"" without multiple selections allowed```
-```
- ```
-```
-        -- If user selected a corrected word, insert it into list```
-```
-        if (newWord as string) is not equal to "false" then```
-```
-            set wordIndex to Â¬```
-```
-                findIt(every word of spellCheckText, location of eachItem)```
-```
-            copy newWord to item wordIndex of wordList```
-```
-        end if```
-```
-    end repeat```
-```
- ```
-```
-    -- Display corrected text.```
-```
-    set spellCheckText to ""```
-```
-    repeat with oneWord in wordList```
-```
-        set spellCheckText to spellCheckText & oneWord & " "```
-```
-    end repeat```
-```
- ```
-```
-    display dialog "Corrected text: " & spellCheckText```
-```
-end if```
-```
- ```
-```
--- spellCheck handler ------------------------------------------```
-```
--- This handler makes the remote procedure call.```
-```
-on spellCheck(sentence)```
-```
-    tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"```
-```
-        return call xmlrpc {method name:"speller.spellCheck", Â¬```
-```
-        parameters:sentence}```
-```
-    end tell```
-```
-end spellCheck```
-```
- ```
-```
- ```
-```
--- findIt handler ------------------------------------```
-```
--- The "textList" parameter is a list of the words in the original text.```
-```
--- The "index" parameter is the character index of a misspelled word.```
-```
--- This handler returns the word at that index.```
-```
--- For example, the misspelled word at character index four is "frst".```
-```
---      Its word index is 2 (the 2nd word in the original text).```
-```
-on findIt(textList, index)```
-```
-    set curLength to 0```
-```
-    set ixWord to 1```
-```
- ```
-```
-    repeat with oneWord in textList```
-```
-        set curLength to curLength + (length of oneWord) + 1```
-```
-        if curLength â¥ index then```
-```
-            exit repeat```
-```
-        end if```
-```
-        set ixWord to ixWord + 1```
-```
-    end repeat```
-```
-    log ixWord```
-```
-    return ixWord```
-```
-end findIt```
+
+```applescript
+---- Main script ----------------------------------------
+```
+
+```applescript
+-- Supply default text to spell check.
+```
+
+```applescript
+set spellCheckText to "My frst naem is John"
+```
+
+```applescript
+ 
+```
+
+```applescript
+----Query user for different text to check.
+```
+
+```applescript
+set dialogResult to display dialog Â¬
+```
+
+```applescript
+    "Enter a phrase to spell check:" default answer spellCheckText
+```
+
+```applescript
+ 
+```
+
+```applescript
+if button returned of dialogResult is "OK" then
+```
+
+```applescript
+    set spellCheckText to text returned of dialogResult
+```
+
+```applescript
+    -- Call spellCheck handler.
+```
+
+```applescript
+    set resultList to spellCheck(spellCheckText)
+```
+
+```applescript
+    (*
+```
+
+```applescript
+    The returned data looks something like this:
+```
+
+```applescript
+        {{suggestions:{"fast", "fest", "first", "fist", "Forst",
+```
+
+```applescript
+        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},
+```
+
+```applescript
+        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",
+```
+
+```applescript
+        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",
+```
+
+```applescript
+        "nam", "name", "neem"}, location:9, |word|:"naem"}}
+```
+
+```applescript
+    *)
+```
+
+```applescript
+    -- Make list of words to spellcheck.
+```
+
+```applescript
+    set wordList to every word of spellCheckText
+```
+
+```applescript
+ 
+```
+
+```applescript
+    -- Give user chance to correct each misspelled word.
+```
+
+```applescript
+    repeat with eachItem in resultList
+```
+
+```applescript
+        set newWord to choose from list suggestions of eachItem Â¬
+```
+
+```applescript
+            with prompt "You misspelled \"" & |word| of eachItem & Â¬
+```
+
+```applescript
+            "\"" without multiple selections allowed
+```
+
+```applescript
+ 
+```
+
+```applescript
+        -- If user selected a corrected word, insert it into list
+```
+
+```applescript
+        if (newWord as string) is not equal to "false" then
+```
+
+```applescript
+            set wordIndex to Â¬
+```
+
+```applescript
+                findIt(every word of spellCheckText, location of eachItem)
+```
+
+```applescript
+            copy newWord to item wordIndex of wordList
+```
+
+```applescript
+        end if
+```
+
+```applescript
+    end repeat
+```
+
+```applescript
+ 
+```
+
+```applescript
+    -- Display corrected text.
+```
+
+```applescript
+    set spellCheckText to ""
+```
+
+```applescript
+    repeat with oneWord in wordList
+```
+
+```applescript
+        set spellCheckText to spellCheckText & oneWord & " "
+```
+
+```applescript
+    end repeat
+```
+
+```applescript
+ 
+```
+
+```applescript
+    display dialog "Corrected text: " & spellCheckText
+```
+
+```applescript
+end if
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- spellCheck handler ------------------------------------------
+```
+
+```applescript
+-- This handler makes the remote procedure call.
+```
+
+```applescript
+on spellCheck(sentence)
+```
+
+```applescript
+    tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"
+```
+
+```applescript
+        return call xmlrpc {method name:"speller.spellCheck", Â¬
+```
+
+```applescript
+        parameters:sentence}
+```
+
+```applescript
+    end tell
+```
+
+```applescript
+end spellCheck
+```
+
+```applescript
+ 
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- findIt handler ------------------------------------
+```
+
+```applescript
+-- The "textList" parameter is a list of the words in the original text.
+```
+
+```applescript
+-- The "index" parameter is the character index of a misspelled word.
+```
+
+```applescript
+-- This handler returns the word at that index.
+```
+
+```applescript
+-- For example, the misspelled word at character index four is "frst".
+```
+
+```applescript
+--      Its word index is 2 (the 2nd word in the original text).
+```
+
+```applescript
+on findIt(textList, index)
+```
+
+```applescript
+    set curLength to 0
+```
+
+```applescript
+    set ixWord to 1
+```
+
+```applescript
+ 
+```
+
+```applescript
+    repeat with oneWord in textList
+```
+
+```applescript
+        set curLength to curLength + (length of oneWord) + 1
+```
+
+```applescript
+        if curLength â¥ index then
+```
+
+```applescript
+            exit repeat
+```
+
+```applescript
+        end if
+```
+
+```applescript
+        set ixWord to ixWord + 1
+```
+
+```applescript
+    end repeat
+```
+
+```applescript
+    log ixWord
+```
+
+```applescript
+    return ixWord
+```
+
+```applescript
+end findIt
+```
+
 This script has a main section and two handlers. In the main section, it performs the following actions:
 - It sets a default text string to be checked.
 It sets a default text string to be checked.
@@ -172,18 +324,31 @@ It displays a dialog that prompts the user to enter different text.
 - If the user accepts the dialog, it calls thespellCheckhandler to check the spelling. That handler, described below, contains the only script statements needed to make a remote procedure call to a spell-checking server.The handler returns a list that contains, for each misspelled word, a list of suggested corrections, the character location of the word in the text, and the misspelled word itself. The returned list looks something like this:The returned data looks something like this:{{suggestions:{"fast", "fest", "first", "fist", "Forst","frat", "fret", "frist", "frit", "frost", "frot", "fust"},location:4, |word|:"frst"}, {suggestions:{"haem", "na em","na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim","nam", "name", "neem"}, location:9, |word|:"naem"}}Note that this is not the raw data returned from the remote procedure call. Rather, the Apple Event Manager has interpreted the XML returned by the procedure call and built an Apple event to encapsulate it. This list of records is the result. Becausewordis a reserved word in AppleScript, it is enclosed in vertical bars (|word|) when used as an identifier (in this case as a label in a record).
 If the user accepts the dialog, it calls thespellCheckhandler to check the spelling. That handler, described below, contains the only script statements needed to make a remote procedure call to a spell-checking server.
 The handler returns a list that contains, for each misspelled word, a list of suggested corrections, the character location of the word in the text, and the misspelled word itself. The returned list looks something like this:
+
+```applescript
+The returned data looks something like this:
 ```
-The returned data looks something like this:```
+
+```applescript
+        {{suggestions:{"fast", "fest", "first", "fist", "Forst",
 ```
-        {{suggestions:{"fast", "fest", "first", "fist", "Forst",```
+
+```applescript
+        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},
 ```
-        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},```
+
+```applescript
+        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",
 ```
-        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",```
+
+```applescript
+        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",
 ```
-        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",```
+
+```applescript
+        "nam", "name", "neem"}, location:9, |word|:"naem"}}
 ```
-        "nam", "name", "neem"}, location:9, |word|:"naem"}}```
+
 Note that this is not the raw data returned from the remote procedure call. Rather, the Apple Event Manager has interpreted the XML returned by the procedure call and built an Apple event to encapsulate it. This list of records is the result. Becausewordis a reserved word in AppleScript, it is enclosed in vertical bars (|word|) when used as an identifier (in this case as a label in a record).
 - For each word (if any) in the returned list of misspelled words, it lets the user choose a correction (using the standard scripting additionchoose from list).It then calls thefindIthandler to find the location of the misspelled word in the text phrase and replaces it with the user choice.
 For each word (if any) in the returned list of misspelled words, it lets the user choose a correction (using the standard scripting additionchoose from list).
@@ -207,64 +372,123 @@ To make a SOAP request from a script, you use the AppleScript termcall soap. The
 ### A Simple Translation Script
 Listing 3-2shows a script that prompts a user for text, makes a SOAP request to an Internet server to translate that text to French, and displays the translated text.
 Listing 2-2A simple script that calls a SOAP translation server.
+
+```applescript
+---- Main script ----------------------------------------
 ```
----- Main script ----------------------------------------```
+
+```applescript
+-- Supply default text to translate.
 ```
--- Supply default text to translate.```
+
+```applescript
+set defaultText to "The spirit is willing but the mind is weak"
 ```
-set defaultText to "The spirit is willing but the mind is weak"```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+--Display dialog and let user type different text to translate.
 ```
---Display dialog and let user type different text to translate.```
+
+```applescript
+display dialog "Enter the text to translate into French:" Â¬
 ```
-display dialog "Enter the text to translate into French:" Â¬```
+
+```applescript
+    default answer defaultText
 ```
-    default answer defaultText```
+
+```applescript
+set this_text to the text returned of the result
 ```
-set this_text to the text returned of the result```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+-- Call translation handler
 ```
--- Call translation handler```
+
+```applescript
+set the new_text to translate("en_fr", this_text)
 ```
-set the new_text to translate("en_fr", this_text)```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+--Show translated text and allow user to copy it to Clipboard.
 ```
---Show translated text and allow user to copy it to Clipboard.```
+
+```applescript
+display dialog new_text buttons {"Clipboard", "OK"} default button 2
 ```
-display dialog new_text buttons {"Clipboard", "OK"} default button 2```
+
+```applescript
+if the button returned of the result is "Clipboard" then
 ```
-if the button returned of the result is "Clipboard" then```
+
+```applescript
+    set the clipboard to new_text
 ```
-    set the clipboard to new_text```
+
+```applescript
+end if
 ```
-end if```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+-- translate handler ------------------------------------------
 ```
--- translate handler ------------------------------------------```
+
+```applescript
+-- This handler makes the SOAP request.
 ```
--- This handler makes the SOAP request.```
+
+```applescript
+on translate(direction, theText)
 ```
-on translate(direction, theText)```
+
+```applescript
+    tell application "http://services.xmethods.net:80/perl/soaplite.cgi"
 ```
-    tell application "http://services.xmethods.net:80/perl/soaplite.cgi"```
+
+```applescript
+        return call soap {method name:"BabelFish", Â¬
 ```
-        return call soap {method name:"BabelFish", Â¬```
+
+```applescript
+        method namespace uri:"urn:xmethodsBabelFish", Â¬
 ```
-        method namespace uri:"urn:xmethodsBabelFish", Â¬```
+
+```applescript
+        parameters:{translationmode:direction as string, Â¬
 ```
-        parameters:{translationmode:direction as string, Â¬```
+
+```applescript
+        sourcedata:theText as string}, Â¬
 ```
-        sourcedata:theText as string}, Â¬```
+
+```applescript
+        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}
 ```
-        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}```
+
+```applescript
+    end tell
 ```
-    end tell```
+
+```applescript
+end translate
 ```
-end translate```
+
 This script starts has a main section and one handler to make the translation SOAP request. In the main section, it performs the following actions:
 - It sets a default text string to be translated from English to French.
 It sets a default text string to be translated from English to French.
@@ -303,140 +527,277 @@ The main script also shows how to use atryblock to handle errors. In this case, 
 - It defines property values to make the script more readable and easier to modify.
 It defines property values to make the script more readable and easier to modify.
 Listing 2-3A more detailed script that calls a SOAP translation server.
-```
--- Use properties to store default values.```
-```
-property SOAP_app : "http://services.xmethods.net:80/perl/soaplite.cgi"```
-```
-property method_name : "BabelFish"```
-```
-property method_namespace_URI : "urn:xmethodsBabelFish"```
-```
-property SOAP_action : "urn:xmethodsBabelFish#BabelFish"```
-```
-property English_to_French : "en_fr"```
-```
- ```
-```
----- Main script ----------------------------------------```
-```
---Query user for text to translate.```
-```
-set this_text to "Hello my friend!"```
-```
-repeat```
-```
-    try```
-```
-        display dialog Â¬```
-```
-            "Enter the text to translate into French:" Â¬```
-```
-            default answer this_text```
-```
-        set this_text to the text returned of the result```
-```
-        if this_text is not "" then```
-```
-            set this_text to this_text as string```
-```
-            exit repeat```
-```
-        end if```
-```
-    on error number error_number```
-```
-        -- Don't show error if user just cancelled.```
-```
-        if the error_number is -128 then error number -128```
-```
-        beep```
-```
-    end try```
-```
-end repeat```
-```
- ```
-```
--- Create the parameter record.```
-```
-set the method_parameters to {translationmode:English_to_French, Â¬```
-```
-     sourcedata:this_text}```
-```
- ```
-```
--- Call the SOAP handler.```
-```
-copy my SOAP_call(SOAP_app, method_name, Â¬```
-```
-    method_namespace_URI, method_parameters, SOAP_action) Â¬```
-```
-    to {call_indicator, call_result}```
-```
- ```
-```
--- Check for error return from SOAP handler.```
-```
-if the call_indicator is false then```
-```
-    beep```
-```
-    display dialog "An error occurred." & return & return Â¬```
-```
-        & call_result buttons {"Cancel"} default button 1```
-```
-else```
-```
-    --Show translated text and allow user to copy it to Clipboard.```
-```
-    display dialog call_result buttons {"Clipboard", "OK"} Â¬```
-```
-        default button 2```
-```
-    if the button returned of the result is "Clipboard" then```
-```
-        set the clipboard to the call_result```
-```
-    end if```
-```
-end if```
-```
- ```
-```
--- SOAP translation handler ------------------------------```
-```
-on SOAP_call(SOAP_app, method_name, Â¬```
-```
-    method_namespace_URI, method_parameters, SOAP_action)```
-```
-    try```
-```
-        using terms from application "http://www.apple.com/placebo"```
-```
-            tell application SOAP_app```
-```
-                set this_result to call soap Â¬```
-```
-                    {method name:method_name Â¬```
-```
-                        , method namespace uri:method_namespace_URI Â¬```
-```
-                        , parameters:method_parameters Â¬```
-```
-                        , SOAPAction:SOAP_action}```
-```
-            end tell```
-```
-        end using terms from```
-```
-        return {true, this_result}```
-```
-    on error error_message```
-```
-        return {false, error_message}```
-```
-    end try```
-```
-end SOAP_call```
+
+```applescript
+-- Use properties to store default values.
+```
+
+```applescript
+property SOAP_app : "http://services.xmethods.net:80/perl/soaplite.cgi"
+```
+
+```applescript
+property method_name : "BabelFish"
+```
+
+```applescript
+property method_namespace_URI : "urn:xmethodsBabelFish"
+```
+
+```applescript
+property SOAP_action : "urn:xmethodsBabelFish#BabelFish"
+```
+
+```applescript
+property English_to_French : "en_fr"
+```
+
+```applescript
+ 
+```
+
+```applescript
+---- Main script ----------------------------------------
+```
+
+```applescript
+--Query user for text to translate.
+```
+
+```applescript
+set this_text to "Hello my friend!"
+```
+
+```applescript
+repeat
+```
+
+```applescript
+    try
+```
+
+```applescript
+        display dialog Â¬
+```
+
+```applescript
+            "Enter the text to translate into French:" Â¬
+```
+
+```applescript
+            default answer this_text
+```
+
+```applescript
+        set this_text to the text returned of the result
+```
+
+```applescript
+        if this_text is not "" then
+```
+
+```applescript
+            set this_text to this_text as string
+```
+
+```applescript
+            exit repeat
+```
+
+```applescript
+        end if
+```
+
+```applescript
+    on error number error_number
+```
+
+```applescript
+        -- Don't show error if user just cancelled.
+```
+
+```applescript
+        if the error_number is -128 then error number -128
+```
+
+```applescript
+        beep
+```
+
+```applescript
+    end try
+```
+
+```applescript
+end repeat
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- Create the parameter record.
+```
+
+```applescript
+set the method_parameters to {translationmode:English_to_French, Â¬
+```
+
+```applescript
+     sourcedata:this_text}
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- Call the SOAP handler.
+```
+
+```applescript
+copy my SOAP_call(SOAP_app, method_name, Â¬
+```
+
+```applescript
+    method_namespace_URI, method_parameters, SOAP_action) Â¬
+```
+
+```applescript
+    to {call_indicator, call_result}
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- Check for error return from SOAP handler.
+```
+
+```applescript
+if the call_indicator is false then
+```
+
+```applescript
+    beep
+```
+
+```applescript
+    display dialog "An error occurred." & return & return Â¬
+```
+
+```applescript
+        & call_result buttons {"Cancel"} default button 1
+```
+
+```applescript
+else
+```
+
+```applescript
+    --Show translated text and allow user to copy it to Clipboard.
+```
+
+```applescript
+    display dialog call_result buttons {"Clipboard", "OK"} Â¬
+```
+
+```applescript
+        default button 2
+```
+
+```applescript
+    if the button returned of the result is "Clipboard" then
+```
+
+```applescript
+        set the clipboard to the call_result
+```
+
+```applescript
+    end if
+```
+
+```applescript
+end if
+```
+
+```applescript
+ 
+```
+
+```applescript
+-- SOAP translation handler ------------------------------
+```
+
+```applescript
+on SOAP_call(SOAP_app, method_name, Â¬
+```
+
+```applescript
+    method_namespace_URI, method_parameters, SOAP_action)
+```
+
+```applescript
+    try
+```
+
+```applescript
+        using terms from application "http://www.apple.com/placebo"
+```
+
+```applescript
+            tell application SOAP_app
+```
+
+```applescript
+                set this_result to call soap Â¬
+```
+
+```applescript
+                    {method name:method_name Â¬
+```
+
+```applescript
+                        , method namespace uri:method_namespace_URI Â¬
+```
+
+```applescript
+                        , parameters:method_parameters Â¬
+```
+
+```applescript
+                        , SOAPAction:SOAP_action}
+```
+
+```applescript
+            end tell
+```
+
+```applescript
+        end using terms from
+```
+
+```applescript
+        return {true, this_result}
+```
+
+```applescript
+    on error error_message
+```
+
+```applescript
+        return {false, error_message}
+```
+
+```applescript
+    end try
+```
+
+```applescript
+end SOAP_call
+```
+
 Copyright © 2001, 2014 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2014-07-15

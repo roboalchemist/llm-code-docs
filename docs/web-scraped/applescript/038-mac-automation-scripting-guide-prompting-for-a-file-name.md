@@ -1,13 +1,16 @@
 # Mac Automation Scripting Guide: Prompting for a File Name
 
 ## Prompting for a File Name
+
 Use the Standard Additions scripting additionâschoose file namecommand to display a save dialog that lets the user enter a file name and choose an output folder, such as the one produced byListing 27-1andListing 27-2, shown inFigure 27-1.
 APPLESCRIPT
 Open in Script Editor
+
 - set theNewFilePath to choose file name with prompt "Save the document as:"
 - --> Result: file "Macintosh HD:Users:yourUserName:Desktop:ImportantDocument"
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var newFilePath = app.chooseFileName({
@@ -20,6 +23,7 @@ The result of thechoose file namecommand is a path to a potential file. This fil
 Listing 27-3andListing 27-4ask the user to type some text as a note and choose an file name and output folder, and then save the note in the specified file.
 APPLESCRIPT
 Open in Script Editor
+
 - set theResponse to display dialog "Enter a note:" default answer ""
 - set theNote to text returned of theResponse
 - set theNewFilePath to choose file name with prompt "Save the document as:"
@@ -50,6 +54,7 @@ Open in Script Editor
 - end writeTextToFile
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var response = app.displayDialog("Enter a note:", {

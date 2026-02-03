@@ -1,6 +1,5 @@
 # Unsupported Terms
 
-# Unsupported Terms
 This appendix lists scripting terms that are not supported by AppleScript. Though you may see these terms in a dictionary, script, or scripting addition, you should not count on their behavior.
 
 ## List of Unsupported Terms

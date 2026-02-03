@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Introduction to Apple Events Programming Guide
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 Apple Events Programming Guideprovides conceptual information and programming examples for working with Apple events.
 AnApple eventis a type of interprocess message that can specify complex operations and data. Apple events allow you to gather all the data necessary to accomplish a high level task into a single package that can be passed across process boundaries, evaluated, and returned with results. The Mac OS uses Apple events to communicate with applications. Apple events are also an essential part of the AppleScript scripting system, which allows users to automate actions usingscriptable applicationsâapplications that can respond to a variety of Apple events by performing operations or supplying data.

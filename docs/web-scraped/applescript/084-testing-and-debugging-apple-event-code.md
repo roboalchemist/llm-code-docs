@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Testing and Debugging Apple Event Code
 To test and debug your Apple event code you can generally use the same techniques and tools you use with any code. For example, Xcode contains a full-featured source-level debugger that lets you set breakpoints and step through your code line by line. For C, C++, and Objective-C code, Xcode uses GDB, the debugger from theGNU Project. You can use Xcodeâs graphical interface to GDB or you can enter commands directly into the GDB console. For more information, see âDebuggingâ in Xcode Help andDebugging With GDB.
 The remainder of this chapter provides tips that are specific to debugging code that works with Apple events.
 
@@ -15,8 +14,11 @@ You can create and send events that target your application from within the appl
 You can use Script Editor to send Apple events to your application.
 For example, you can execute this one-line script to send your application aquitevent:
 Listing 8-1A simple script to quit an application
+
+```applescript
+    tell app "MyApplication" to quit
 ```
-    tell app "MyApplication" to quit```
+
 If your application is scriptable, you may prefer to set up a test suite of scripts to thoroughly exercise the events you support, rather than perform the same task in a test application.
 For additional information on sending Apple events with Script Editor, seeScript Editor is an Apple Event Test Tool.
 - You can use the Mac OS to send Apple events to your application.For example, you can select an application document in the Finder and double-click it to send anopen documentsevent to the application. SeeHandling Apple Events Sent by the Mac OSfor a list of the events the Mac OS sends to applications.
@@ -30,15 +32,25 @@ The Script Editor application, located in/Applications/AppleScript, is a useful 
 Even if your application is not fully scriptable, you can use Script Editor to send it events such as theopen applicationandquitevents that your application usually receives from the Mac OS.Listing 8-1shows an example of this.
 In addition, you can use Script Editor to construct and send Apple events using raw format, in which you enclose actual four-character codes in special characters to specify an event. For example,Listing 8-2shows how to use the raw format to send anopen locationcommand to the Safari application and open the specified web page.
 Listing 8-2Sending a raw event to open an URL
+
+```applescript
+tell application "Safari"
 ```
-tell application "Safari"```
+
+```applescript
+    Â«event GURLGURLÂ» "http://www.apple.com/"
 ```
-    Â«event GURLGURLÂ» "http://www.apple.com/"```
+
+```applescript
+end tell
 ```
-end tell```
+
 When you compile this script, Script Editor examines Safariâs scripting dictionary and converts the second line to this:
+
+```applescript
+    open location "http://www.apple.com/"
 ```
-    open location "http://www.apple.com/"```
+
 However, for an application that doesnât have a scripting dictionary, the raw code is not replaced by an equivalent term, but the Apple event can still be sent and understood (if the application supports it).
 You enter the special characters that surround the raw code (called double angle brackets or guillemets) by typing Option-\ and Option-Shift-\. For additional information, seeDouble Angle Brackets in Results and ScriptsinAppleScript Language Guide.
 Turning on Apple Event Loggingshows how you can examine the Apple events Script Editor sends and receives.
@@ -52,85 +64,160 @@ There are several available mechanisms for examining the contents of Apple event
 ### Turning on Apple Event Logging
 You can set environment variables in a Terminal window so that any Apple events sent or received by an application launched in that window are logged to the window in a human-readable format.Listing 8-4shows how you would do this if youâre working with the C shell.
 Listing 8-3Turning on logging for sent and received Apple events in the C shell
+
+```applescript
+%setenv AEDebugSends 1; setenv AEDebugReceives 1
 ```
-%setenv AEDebugSends 1; setenv AEDebugReceives 1```
+
 If you are using thebashshell you, you can use the form shown inListing 8-4.
 Listing 8-4Turning on Apple event logging in the Bash shell
+
+```applescript
+%export AEDebugSends=1; export AEDebugReceives=1
 ```
-%export AEDebugSends=1; export AEDebugReceives=1```
+
 To see which Apple events an application sends and receives, you set these environment variables, then launch the application in a Terminal window. For example, to see what events the Script Editor application sends, you can execute the line inListing 8-5. Once the Script Editor launches, you can compile and execute scripts and examine, in the Terminal window, the Apple events that are generated.
 Listing 8-5Launching Script Editor in Terminal
+
+```applescript
+% /Applications/AppleScript/Script\ Editor.app/Contents/MacOS/Script\ Editor
 ```
-% /Applications/AppleScript/Script\ Editor.app/Contents/MacOS/Script\ Editor```
+
 Important:To launch an application in Terminal, you provide the full path to its executable, which is typically located inside the application bundle, rather than the path to the application itself.
 Listing 8-6shows how to perform the same task with the Finder, a scriptable application that may send Apple events to your application.
 Listing 8-6Launching Finder in Terminal
+
+```applescript
+% /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
 ```
-% /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder```
+
 This technique for examining Apple events works for both Carbon and Cocoa applications. For example,Listing 8-7shows the output for areopenApple event sent to a Carbon application when you click on its icon in the Dock.
 Listing 8-7Output of a reopen Apple event in Terminal
+
+```applescript
+AE2000 (968): Received an event:
 ```
-AE2000 (968): Received an event:```
+
+```applescript
+------oo start of event oo------
 ```
-------oo start of event oo------```
+
+```applescript
+{ 1 } 'aevt':  aevt/rapp (ppc ){
 ```
-{ 1 } 'aevt':  aevt/rapp (ppc ){```
+
+```applescript
+          return id: 22609967 (0x159002f)
 ```
-          return id: 22609967 (0x159002f)```
+
+```applescript
+     transaction id: 0 (0x0)
 ```
-     transaction id: 0 (0x0)```
+
+```applescript
+  interaction level: 112 (0x70)
 ```
-  interaction level: 112 (0x70)```
+
+```applescript
+     reply required: 0 (0x0)
 ```
-     reply required: 0 (0x0)```
+
+```applescript
+             remote: 0 (0x0)
 ```
-             remote: 0 (0x0)```
+
+```applescript
+  target:
 ```
-  target:```
+
+```applescript
+    { 1 } 'psn ':  8 bytes {
 ```
-    { 1 } 'psn ':  8 bytes {```
+
+```applescript
+      { 0x0, 0x60001 } (Dock)
 ```
-      { 0x0, 0x60001 } (Dock)```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+  optional attributes:
 ```
-  optional attributes:```
+
+```applescript
+    { 1 } 'reco':  - 1 items {
 ```
-    { 1 } 'reco':  - 1 items {```
+
+```applescript
+      key 'optk' -
 ```
-      key 'optk' -```
+
+```applescript
+        { 1 } 'list':  - 1 elements {
 ```
-        { 1 } 'list':  - 1 elements {```
+
+```applescript
+          { 1 } 'keyw':  4 bytes {
 ```
-          { 1 } 'keyw':  4 bytes {```
+
+```applescript
+            'frnt'
 ```
-            'frnt'```
+
+```applescript
+          }
 ```
-          }```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+  event data:
 ```
-  event data:```
+
+```applescript
+    { 1 } 'aevt':  - 1 items {
 ```
-    { 1 } 'aevt':  - 1 items {```
+
+```applescript
+      key 'frnt' -
 ```
-      key 'frnt' -```
+
+```applescript
+        { 1 } 'bool':  1 bytes {
 ```
-        { 1 } 'bool':  1 bytes {```
+
+```applescript
+          false
 ```
-          false```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+}
 ```
-}```
+
+```applescript
+------oo  end of event  oo------
 ```
-------oo  end of event  oo------```
+
 From the formatted output inListing 8-7, you can identify various information in the Apple event. For example,aevt/rappis the event class/event ID pair for the event. You can look up these values in the Apple Event Manager headers and see that'rapp'is the value of the constantkAEReopenApplication, defined inAERegistry.h. For this event, no reply is required (reply required: 0), but if a reply were required, the target would be the Dock (target: { 1 } 'psn ':  8 bytes { { 0x0, 0x60001 } (Dock) }), which sent the Apple event.
 Although Apple event log information can be somewhat cryptic, you can see that the event contains an optional attribute containing boolean data with the value false and the key'frnt'. This indicates that the application was not frontmost at the time thereopenevent was sent (when you clicked the application icon in the Dock). If the application is in front, the event data will contain the valuefalse.
 Note:For Cocoa applications, you can display additional formatted output for Apple events using the mechanism described in âTurn On Debugging Output for Scriptingâ inKey Steps for Creating Scriptable ApplicationsinCocoa Scripting Guide.

@@ -1,6 +1,5 @@
 # Introduction to AppleScript Overview
 
-# Introduction to AppleScript Overview
 Important:This document is no longer being updated. For the latest information about Apple SDKs, visit thedocumentation website.
 AppleScript Overviewprovides a high-level overview of AppleScript and its related technologies to help you determine where you can use them in your work.
 Note:For information on the universe of scripting technologies available on OS X, seeGetting Started With Scripting & Automation.

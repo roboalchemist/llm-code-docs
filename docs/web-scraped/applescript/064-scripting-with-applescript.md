@@ -1,31 +1,48 @@
 # Scripting with AppleScript
 
-# Scripting with AppleScript
 The following is a brief introduction to AppleScript scripts, tools for working with them, and information on using AppleScript scripts together with other scripting systems. For related documents, see the learning paths inGetting Started with AppleScript.
 
 ## Script Editor and AppleScript Scripts
 An AppleScript script consists of one or more statements, written in a syntax described inAppleScript Language Guide(and in a number of third-party books). AppleScript defines some scripting terms, while scriptable applications and parts of the Mac OS specify additional terms for scriptable features they support. Scripting terminologies generally use common English words, resulting in scripts that are easier to read. For example, the following is a valid script statement:
+
+```applescript
+display dialog "Welcome to AppleScript."
 ```
-display dialog "Welcome to AppleScript."```
+
 Users can compile and execute scripts with theScript Editorapplication and can save them in various executable formats, including as stand-alone applications.
 
 ### A Simple AppleScript Script
 Listing 1shows an AppleScript script that simply returns the number of files in theApplicationsfolder on the current system disk (denoted bystartup disk, a term understood by the Finder). If the folder cannot be found, the script returns a count of zero. This script counts just files in the specified folder, not folders or the files they might contain.
 Listing 1A script that counts the files in the Applications folder
+
+```applescript
+tell application "Finder"
 ```
-tell application "Finder"```
+
+```applescript
+    if folder "Applications" of startup disk exists then
 ```
-    if folder "Applications" of startup disk exists then```
+
+```applescript
+        return count files in folder "Applications" of startup disk
 ```
-        return count files in folder "Applications" of startup disk```
+
+```applescript
+    else
 ```
-    else```
+
+```applescript
+        return 0
 ```
-        return 0```
+
+```applescript
+    end if
 ```
-    end if```
+
+```applescript
+end tell
 ```
-end tell```
+
 When a script is compiled and executed, some statements perform basic operations, such as assigning a variable or returning a value. A statement that targets a scriptable application results in an Apple event being sent to that application. The application can return information to the script in a reply Apple event.
 The script inListing 1causes an Apple event to be sent to the Finder, which locates the Applications folder on the startup disk, counts the files in it, and returns that value. Theif...then...elsestructure is one of several standard programming language features that AppleScript supports.
 
@@ -64,24 +81,32 @@ OS X supports a UNIX-like shell environment that is familiar to many developers.
 
 ### Executing Shell Commands From AppleScript Scripts
 AppleScript provides thedo shell scriptcommand to support executing a shell command as part of an AppleScript script. For example, the following script statement uses ado shell scriptcommand to change the directory to the current userâs home directory and obtain a list of the files found there. The list information is stored in the AppleScript variablefileInfo:
+
+```applescript
+set fileInfo to do shell script "cd ~; ls"
 ```
-set fileInfo to do shell script "cd ~; ls"```
+
 Thedo shell scriptcommand is primarily of use to scripters. Although applications can execute AppleScript scripts that use thedo shell scriptcommand, they have more efficient options for executing shell commands, as described inSupport for Carbon ApplicationsandSupport for Cocoa Applications. For more information on thedo shell scriptcommand, see Technical Note TN2065,do shell script in AppleScript.
 
 ### Executing AppleScript Scripts as Shell Commands
 To execute AppleScript scripts as shell commands in a Terminal window or shell script file, you can use theosacompilecommand and theosascriptcommand (located in/usr/bin). The former compiles an AppleScript script, while the latter executes a plain text or a compiled AppleScript script. Man pages provide documentation for these commands. For example, typeman osascriptin a Terminal window to get information on theosascriptcommand.
 Starting in OS X version 10.5, there is a command-line tool to display compiled scripts as text,osadecompile. Again, see the man page for details.
 Also starting in Mac OX X v10.5, AppleScript allows use of the # symbol as a comment-to-end-of-line token (the traditional double hyphen (--) is also still supported). This means that you can make a plain AppleScript script into a Unix executable by beginning it with the following line and giving it execute permission.
+
+```applescript
+#!/usr/bin/osascript
 ```
-#!/usr/bin/osascript```
 
 ### Scripting the Terminal Application
 The Terminal application is itself scriptable. For example, you can use thedo scriptcommand to execute text as a shell script or command. To see the operations Terminal supports, you can examine its scripting dictionary with Script Editor.
 
 ### Using Other Scripting Languages
 For those who have experience with various scripting languages and environments, the previous sections have probably already provided an urge to start experimenting. And you do have a lot of options for combining features from the scripting tools, languages, and environments that are most appropriate for specific kinds of tasks. For example, the following one-line shell script statement combines Perl, AppleScript, and various tools to find duplicate entries in the Address Book application.
+
+```applescript
+osascript -e 'tell app "Address Book" to get the name of every person' | perl -pe 's/, /\n/g' | sort | uniq -d
 ```
-osascript -e 'tell app "Address Book" to get the name of every person' | perl -pe 's/, /\n/g' | sort | uniq -d```
+
 This statement usesosascriptto execute an inline AppleScript script ('tell app "Address Book" to get the name of every person') that returns the names of every address entry from the Address Book application. It pipes the output of this script through theperltool, and with a series of other commands and pipes, obtains and formats a (possibly empty) list of duplicate names.
 For additional information about working with AppleScript from languages such as Ruby and Python, seeScripting Bridge.
 Copyright © 2002, 2007 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2007-10-31

@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# About AppleScriptâs Support for XML-RPC and SOAP
 Starting with OS X version 10.1, AppleScript and the Apple Event Manager provide XML-RPC and SOAP support such that:
 - Scripters can make XML-RPC calls and SOAP requests from scripts.
 Scripters can make XML-RPC calls and SOAP requests from scripts.
@@ -50,96 +49,180 @@ The next sections describe how to use AppleScriptâs remote procedure call t
 
 #### XML-RPC Script Statements
 To make an XML-RPC request from a script, you must specify an XML-RPC server as the target application for the request. To do so, you use a statement like the following, which specifies an XML-RPC server that provides spell-checking services over the Internet:
+
+```applescript
+tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"
 ```
-tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"```
+
 In this statement, the XML-RPC server application isspeller-rpc.cgiand the remote location is specified by the URLhttp://www.stuffeddog.com/speller/. You can also use the following alternate syntax (where the symbolÂ¬(Option-l) denotes a continuation of one script statement onto more than one line), but this form is converted to the above form when the script is compiled:
+
+```applescript
+tell application "speller-rpc.cgi" of machine Â¬
 ```
-tell application "speller-rpc.cgi" of machine Â¬```
+
+```applescript
+     "http://www.stuffeddog.com/speller"
 ```
-     "http://www.stuffeddog.com/speller"```
+
 Once you have specified an XML-RPC server, you can make remote procedure calls within a script block (such as a Tell statement) that specifies that server:
+
+```applescript
+tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"
 ```
-tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"```
+
+```applescript
+    -- remote procedure calls here
 ```
-    -- remote procedure calls here```
+
+```applescript
+end tell
 ```
-end tell```
+
 To specify a name and parameters for the remote procedure call, you use script statements like the following:
+
+```applescript
+set returnValue toÂ¬
 ```
-set returnValue toÂ¬```
+
+```applescript
+    call xmlrpc {method name:"someMethod",Â¬
 ```
-    call xmlrpc {method name:"someMethod",Â¬```
+
+```applescript
+        parameters: {parameter1, parameter2} }
 ```
-        parameters: {parameter1, parameter2} }```
+
 This statement specifies a remote procedure call with two parameters. (You use the same terminology,method name:, whether specifying a function or method.) The parameters are represented as a list. The returned information is stored in the variablereturnValue. Because XML-RPC parameter syntax is positional, you donât need to provide the parameter names for a given procedure call. An XML-RPC server returns an error if the passed XML is not properly formatted.
 The following example combines a Tell block with a remote procedure call to the spell-checking server specified earlier.
+
+```applescript
+set myText to "My frst naem is John"
 ```
-set myText to "My frst naem is John"```
+
+```applescript
+tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"
 ```
-tell application "http://www.stuffeddog.com/speller/speller-rpc.cgi"```
+
+```applescript
+    set returnValue to call xmlrpc {method name:"speller.spellCheck",Â¬
 ```
-    set returnValue to call xmlrpc {method name:"speller.spellCheck",Â¬```
+
+```applescript
+        parameters: {myText} }
 ```
-        parameters: {myText} }```
+
+```applescript
+end tell
 ```
-end tell```
+
 This sample shows how easy it can be to set up a remote procedure call from a script. The first line sets a local variable to a text string to be checked. Then the Tell statement specifies an Internet spell-checking server. The single statement in the Tell block calls thespeller.spellCheckfunction, passing the local string variable as the single parameter (the text to be checked) and storing the result in a second local variable. This particular remote procedure returns a list that contains, for each misspelled word, a list of suggested corrections, the location of the word in the text, and the misspelled word itself.Listing 2-1shows an example of such a list.
 Listing 1-1Sample list of misspelled words returned by spellCheck remote procedure call.
+
+```applescript
+        {{suggestions:{"fast", "fest", "first", "fist", "Forst",
 ```
-        {{suggestions:{"fast", "fest", "first", "fist", "Forst",```
+
+```applescript
+        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},
 ```
-        "frat", "fret", "frist", "frit", "frost", "frot", "fust"},```
+
+```applescript
+        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",
 ```
-        location:4, |word|:"frst"}, {suggestions:{"haem", "na em",```
+
+```applescript
+        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",
 ```
-        "na-em", "naam", "nae", "nae m", "nae-m", "nael", "Naim",```
+
+```applescript
+        "nam", "name", "neem"}, location:9, |word|:"naem"}}
 ```
-        "nam", "name", "neem"}, location:9, |word|:"naem"}}```
+
 Note that this is not the raw data returned from the remote procedure call. When you execute the script shown above, the AppleScript component calls on the Apple Event Manager to convert thecall xmlrpcstatement to an Apple event and send the event to the specified server. The Apple Event Manager recognizes the event and processes it by formatting the remote procedure call into proper XML, opening a connection, sending the message, waiting for a reply, formatting the returned XML into an Apple event, and returning the event.
 For a complete script that uses remote procedure calls to check spelling, seeScripting an XML-RPC Call.
 
 #### SOAP Script Statements
 The process for making SOAP requests in AppleScript scripts is very similar to the process for XML-RPC, though it uses the termcall soaprather thancall xmlrpc. To specify a SOAP server as the target application for a SOAP request, you use a statement like the following:
+
+```applescript
+tell application "http://services.xmethods.net:80/perl/soaplite.cgi"
 ```
-tell application "http://services.xmethods.net:80/perl/soaplite.cgi"```
+
 In this statement, the SOAP server application issoaplite.cgi, a server that can perform English to French translation, and the remote location is specified by the URLhttp://services.xmethods.net:80/perl/. Once you have specified a SOAP server on a remote machine, you can make SOAP requests within a script block that specifies that server:
+
+```applescript
+tell application "http://services.xmethods.net:80/perl/soaplite.cgi"
 ```
-tell application "http://services.xmethods.net:80/perl/soaplite.cgi"```
+
+```applescript
+    -- SOAP requests here
 ```
-    -- SOAP requests here```
+
+```applescript
+end tell
 ```
-end tell```
+
 To specify a method name and parameters for the SOAP request, you use script statements like the following (where the symbolÂ¬(Option-l) denotes a continuation of one script statement onto more than one line):
+
+```applescript
+    set returnValue to call soap {method name:"BabelFish", Â¬
 ```
-    set returnValue to call soap {method name:"BabelFish", Â¬```
+
+```applescript
+        method namespace uri:"urn:xmethodsBabelFish", Â¬
 ```
-        method namespace uri:"urn:xmethodsBabelFish", Â¬```
+
+```applescript
+        parameters:{translationmode:direction as string, Â¬
 ```
-        parameters:{translationmode:direction as string, Â¬```
+
+```applescript
+        sourcedata:theText as string}, Â¬
 ```
-        sourcedata:theText as string}, Â¬```
+
+```applescript
+        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}
 ```
-        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}```
+
 This statement specifies a SOAP request to a method namedBabelFishwith two parameters,translationmode(such as English to French) andsourcedata(the text to be translated). The returned information (translated text) is stored in the variablereturnValue. Unlike the case with XML-RPC calls, for a SOAP request you must specify the names of the parameters for the specified method. While an XML-RPC call represents parameters as a list, a SOAP request represents them as a record. The server will return an error if the passed XML is not properly formatted.
 The following example combines a Tell block with a SOAP request to the translation server specified earlier.
+
+```applescript
+set theText to "The spirit is willing but the flesh is weak."
 ```
-set theText to "The spirit is willing but the flesh is weak."```
+
+```applescript
+set direction to "en_fr"
 ```
-set direction to "en_fr"```
+
+```applescript
+tell application "http://services.xmethods.net:80/perl/soaplite.cgi"
 ```
-tell application "http://services.xmethods.net:80/perl/soaplite.cgi"```
+
+```applescript
+    set resultText to call soap {method name:"BabelFish", Â¬
 ```
-    set resultText to call soap {method name:"BabelFish", Â¬```
+
+```applescript
+        method namespace uri:"urn:xmethodsBabelFish", Â¬
 ```
-        method namespace uri:"urn:xmethodsBabelFish", Â¬```
+
+```applescript
+        parameters:{translationmode:direction as string, Â¬
 ```
-        parameters:{translationmode:direction as string, Â¬```
+
+```applescript
+        sourcedata:theText as string}, Â¬
 ```
-        sourcedata:theText as string}, Â¬```
+
+```applescript
+        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}
 ```
-        SOAPAction:"urn:xmethodsBabelFish#BabelFish"}```
+
+```applescript
+end tell
 ```
-end tell```
+
 The first two lines set local variables for the text to be translated and the direction of translation (from English to French). The Tell statement specifies an Internet language translation server. Thecall soapstatement in the Tell block calls theBabelFishfunction, specifying two parameters by name (translationmodeandsourcedata), and passing the local variables as the parameter values. All the terms shown in thecall soapstatement in this example are required exceptparameters:(because a SOAP method may have no parameters). The resulting translated text is stored in another local variable.
 You obtain values for themethod namespace uri:andSOAPAction:terms from the services themselves. For example, many SOAP services publish the information needed to use their services at sites such as XMethods athttp://www.xmethods.net/. You can learn more about SOAP name spaces and SOAPAction in the SOAP specification athttp://www.w3.org/TR/.
 When you execute this script, AppleScript and the Apple Event Manager take care of formatting the SOAP request into proper XML, opening a connection, sending the message, waiting for a reply, formatting the returned XML into an Apple event, and returning the event.
@@ -169,39 +252,70 @@ There is some overhead in creating Apple events to send remote procedure calls a
 This section describes some of the key constants used to construct remote procedure call Apple events. These constants are defined inAEDataModel.h(inAE.framework, a subframework ofApplicationServices.framework). For step-by-step instructions that show how to create Apple events using these constants, seeMaking Remote Procedure Calls From Applications.
 The Apple Event Manager defines one event class constant and two event ID constants for remote procedure call Apple events. These constants are shown inListing 2-2. You use the constantkAERPCClassas the event class for both XML-RPC and SOAP requests. To specify the request type, you use eitherkAEXMLRPCSchemeorkAESOAPSchemefor the event ID.
 Listing 1-2Event class and event ID constants for remote procedure call Apple events.
+
+```applescript
+    kAERPCClass     = 'rpc ', /* for outgoing XML events */
 ```
-    kAERPCClass     = 'rpc ', /* for outgoing XML events */```
+
+```applescript
+    kAEXMLRPCScheme = 'RPC2', /* event ID: send to XMLRPC endpoint */
 ```
-    kAEXMLRPCScheme = 'RPC2', /* event ID: send to XMLRPC endpoint */```
+
+```applescript
+    kAESOAPScheme   = 'SOAP', /* event ID: send to SOAP endpoint */
 ```
-    kAESOAPScheme   = 'SOAP', /* event ID: send to SOAP endpoint */```
+
 Listing 2-3shows the constanttypeApplicationURL. An Apple event for a remote procedure call must have an address descriptor of this type that specifies the target for the request. The Apple Event Manager recognizes this type as a remote procedure call and processes it appropriately.
 Listing 1-3Address descriptor type for remote procedure call Apple events.
+
+```applescript
+enum {
 ```
-enum {```
+
+```applescript
+    //...some constants not shown
 ```
-    //...some constants not shown```
+
+```applescript
+    typeApplicationURL = 'aprl',
 ```
-    typeApplicationURL = 'aprl',```
+
+```applescript
+    //...
 ```
-    //...```
+
+```applescript
+};
 ```
-};```
+
 The SOAP specification defines a schema for encoding (or serializing) information. The Apple Event Manager can work with both the 1999 (or SOAP specification version 1.1) and 2001 (SOAP specification version 1.2) schemas.Listing 2-4shows the constants for specifying the SOAP schema used to format the SOAP request in a remote procedure call Apple event.
 You can specify a serialization schema by adding a parameter of typetypeTypeand keykeySOAPSchemaVersionto the direct object of a SOAP request Apple event. If you do not specify a schema, the default iskSOAP1999Schema.
 Listing 1-4Constants for specifying a SOAP schema.
+
+```applescript
+enum {
 ```
-enum {```
+
+```applescript
+    kSOAP1999Schema = 'ss99',
 ```
-    kSOAP1999Schema = 'ss99',```
+
+```applescript
+    kSOAP2001Schema = 'ss01',
 ```
-    kSOAP2001Schema = 'ss01',```
+
+```applescript
+    //...
 ```
-    //...```
+
+```applescript
+    keySOAPSchemaVersion = 'ssch'
 ```
-    keySOAPSchemaVersion = 'ssch'```
+
+```applescript
+};
 ```
-};```
+
 Listing 2-5shows some of the constants you use to identify the components of an XML-RPC or SOAP request. When you create a remote procedure call Apple event, you use these constants to add various information about the request to the direct object of the Apple event:
 - You use the keykeyRPCMethodNameto add an Apple event parameter that specifies the procedure or method name for the request.
 You use the keykeyRPCMethodNameto add an Apple event parameter that specifies the procedure or method name for the request.
@@ -212,40 +326,72 @@ For a SOAP request, you add the required SOAPAction header to the direct object 
 - For a SOAP request, you add the required SOAP name space URI to the direct object using the keykeySOAPMethodNameSpaceURI.
 For a SOAP request, you add the required SOAP name space URI to the direct object using the keykeySOAPMethodNameSpaceURI.
 Listing 1-5Constants used in constructing an XML-RPC or SOAP request in a remote procedure call Apple event.
+
+```applescript
+    keyRPCMethodName    = 'meth', /* name of the method to call */
 ```
-    keyRPCMethodName    = 'meth', /* name of the method to call */```
+
+```applescript
+    keyRPCMethodParam   = 'parm', /* the list (or structure) of parameters*/
 ```
-    keyRPCMethodParam   = 'parm', /* the list (or structure) of parameters*/```
+
+```applescript
+    keySOAPAction       = 'sact', /* the SOAPAction header */
 ```
-    keySOAPAction       = 'sact', /* the SOAPAction header */```
+
+```applescript
+    keySOAPMethodNameSpaceURI= 'mspu',/* Required namespace URI */
 ```
-    keySOAPMethodNameSpaceURI= 'mspu',/* Required namespace URI */```
+
 Listing 2-6shows constants you can specify in an attribute to a remote procedure call Apple event to turn on Apple Event Manager debugging. Depending on which debug information you specify with these constants, the reply Apple event from an XML-RPC or SOAP request can supply the header or the body of the outgoing request, or of the reply.
 Listing 1-6Constants for turning on the Apple Event Managerâs remote procedure call debugging.
+
+```applescript
+enum {
 ```
-enum {```
+
+```applescript
+    kAEDebugPOSTHeader = (1 << 0), /* headers of the HTTP post - typeChar */
 ```
-    kAEDebugPOSTHeader = (1 << 0), /* headers of the HTTP post - typeChar */```
+
+```applescript
+    kAEDebugReplyHeader = (1 << 1), /* headers returned by the server */
 ```
-    kAEDebugReplyHeader = (1 << 1), /* headers returned by the server */```
+
+```applescript
+    kAEDebugXMLRequest = (1 << 2), /* the XML request we sent */
 ```
-    kAEDebugXMLRequest = (1 << 2), /* the XML request we sent */```
+
+```applescript
+    kAEDebugXMLResponse = (1 << 3), /* the XML reply from the server */
 ```
-    kAEDebugXMLResponse = (1 << 3), /* the XML reply from the server */```
+
+```applescript
+    kAEDebugXMLDebugAll = 0xffffffff/* everything! */
 ```
-    kAEDebugXMLDebugAll = 0xffffffff/* everything! */```
+
+```applescript
+};
 ```
-};```
+
 Depending on which debugging flags you specify with the constants shown inListing 2-6, one or more attributes is added to the Apple event. You can extract those attributes using the keys shown inListing 2-7.
 Listing 1-7Key constants for remote procedure call debugging attributes.
+
+```applescript
+    keyAEPOSTHeaderData = 'phed', /* header of request to the server */
 ```
-    keyAEPOSTHeaderData = 'phed', /* header of request to the server */```
+
+```applescript
+    keyAEReplyHeaderData = 'rhed', /* header of server reply */
 ```
-    keyAEReplyHeaderData = 'rhed', /* header of server reply */```
+
+```applescript
+    keyAEXMLRequestData = 'xreq', /* body of request to the server */
 ```
-    keyAEXMLRequestData = 'xreq', /* body of request to the server */```
+
+```applescript
+    keyAEXMLReplyData = 'xrep', /* body of server reply */
 ```
-    keyAEXMLReplyData = 'xrep', /* body of server reply */```
 
 #### Sending an XML-RPC Apple Event
 To make an XML-RPC request from your application or other code, youâll need to create an Apple event that encapsulates the procedure call and callAESendto send it. This section describes the steps you need to follow. To see those steps implemented in code, seeMaking an XML-RPC Call.

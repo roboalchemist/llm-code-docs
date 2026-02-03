@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Building an Apple Event
 This chapter provides an overview of Apple event data structures and describes how to build an Apple event.
 An Apple event is capable of describing complex commands and the data necessary to carry them out. For example, an Apple event might request that a database application return data from records that meet certain criteria. An event sent by the Mac OS might request that the receiving application print a specified list of documents. The Apple Event Manager provides a relatively small number of Apple event data structures that together can be used to represent commands of great complexity.
 Your application typically works with Apple events and the data they contain when:
@@ -40,26 +39,47 @@ The Apple Event Manager uses four-character codes (also referred to as Apple eve
 The Apple Event Manager defines four-character-code constants for many common commands (or verbs) and data objects (or nouns) that can be used in Apple events. These constants are defined primarily in the header filesAppleEvents.handAERegistry.hin the AE framework. They are documented inApple Event Manager Reference. A subset of these constants is described inSelected Apple Event Constantsin this document.
 Listing 2-1shows some constants fromAERegistry.h. Each constant definition includes a comment showing the actual numeric value as a hex number.
 Listing 2-1Some four-character codes from AERegistry.h
+
+```applescript
+enum {
 ```
-enum {```
+
+```applescript
+  cApplication                  = 'capp', /*  0x63617070  */
 ```
-  cApplication                  = 'capp', /*  0x63617070  */```
+
+```applescript
+  cArc                          = 'carc', /*  0x63617263  */
 ```
-  cArc                          = 'carc', /*  0x63617263  */```
+
+```applescript
+  cBoolean                      = 'bool', /*  0x626f6f6c  */
 ```
-  cBoolean                      = 'bool', /*  0x626f6f6c  */```
+
+```applescript
+  cCell                         = 'ccel', /*  0x6363656c  */
 ```
-  cCell                         = 'ccel', /*  0x6363656c  */```
+
+```applescript
+  cChar                         = 'cha ', /*  0x63686120  */
 ```
-  cChar                         = 'cha ', /*  0x63686120  */```
+
+```applescript
+  cDocument                     = 'docu', /*  0x646f6375  */
 ```
-  cDocument                     = 'docu', /*  0x646f6375  */```
+
+```applescript
+  cGraphicLine                  = 'glin', /*  0x676c696e  */
 ```
-  cGraphicLine                  = 'glin', /*  0x676c696e  */```
+
+```applescript
+...
 ```
-...```
+
+```applescript
+};
 ```
-};```
+
 For the Apple event support in your application, you should use existing constants wherever they make sense, rather than defining new constants. For example, if your application supports an Apple event to get the name of a document, you can use the constantcDocumentto denote a document.
 Apple reserves all values that consist entirely of lowercase letters and spaces. You can generally avoid conflicts with Apple-defined constants by including at least one uppercase letter when defining a four-character code.
 

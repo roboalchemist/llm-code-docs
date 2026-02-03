@@ -1,9 +1,11 @@
 # Mac Automation Scripting Guide: Removing HTML Markup from Text
 
 ## Removing HTML Markup from Text
+
 When parsing HTML content, itâs often necessary to remove markup entirely. The handler inListing 34-1removes all HTML tags from the text provided, returning only the remaining textâthe contents of the tags.
 APPLESCRIPT
 Open in Script Editor
+
 - on removeMarkupFromText(theText)
 - set tagDetected to false
 - set theCleanText to ""
@@ -22,6 +24,7 @@ Open in Script Editor
 Listing 34-2shows how to call the handler inListing 34-1.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to "<a href=\"http://www.apple.com/mac\">This is a <B>great</B> time to own a Mac!</a>"
 - removeMarkupFromText(theText)
 - --> Result: "This is a great time to own a Mac!"

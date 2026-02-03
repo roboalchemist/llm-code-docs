@@ -1,6 +1,5 @@
 # Scriptable Applications
 
-# Scriptable Applications
 Ascriptable applicationis one that goes beyond the basics of responding to Apple events sent by the Mac OS to make its most important data and operations available to AppleScript scripts or to other applications. To do this, the application must provide both a terminology for scripters to use and the underlying Apple event code to support it. Both Carbon and Cocoa applications can be scriptable, and the Cocoa framework contains built-in support that minimizes the amount of code you have to write.
 
 ## Specifying Scripting Terminology

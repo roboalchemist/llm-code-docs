@@ -1,6 +1,7 @@
 # Mac Automation Scripting Guide: Types of Scripts
 
 ## Types of Scripts
+
 There are many different types of scripts on the Mac.
 AppletsâA script thatâs been saved as an app. It behaves like other apps. Double-click it to launch and run it. When an applet is launched, any code in itsrunhandler executes. If a script doesnât contain an explicitrunhandler, then the top level of the script is treated as an implicitrunhandler and any code there executes.
 DropletsâA script applet that has been configured to accept dropped files and folders. Double-click it to launch and run itâexecute itsrunhandler. Or, drag and drop files and folders onto it to process them. In a droplet, dropped files and folders are passed directly to an AppleScriptopenhandler or JavaScriptopenDocumentsfunction for processing.

@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Selected Apple Event Constants
 This appendix describes some commonly used Apple event constants. For more complete documentation, seeApple Event Manager Reference.
 
 ## Event Class Constants

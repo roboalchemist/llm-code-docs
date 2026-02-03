@@ -1,6 +1,5 @@
 # Glossary
 
-# Glossary
 - absolute object specifierAn object specifier that has enough information to identify an object or objects uniquely. For an object specifier to an application object to be complete, its outermost container must be the application itself. Seerelative object specifier.
 An object specifier that has enough information to identify an object or objects uniquely. For an object specifier to an application object to be complete, its outermost container must be the application itself. Seerelative object specifier.
 - Apple eventAn interprocess message that encapsulates a command in a form that can be passed across process boundaries, performed, and responded to with a reply event. When an AppleScript script is executed, a statement that targets a scriptable application may result in an Apple event being sent to that application.

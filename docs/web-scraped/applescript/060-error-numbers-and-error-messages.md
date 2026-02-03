@@ -1,9 +1,9 @@
 # Error Numbers and Error Messages
 
-# Error Numbers and Error Messages
 This appendix describes error numbers and error messages provided by AppleScript and macOS.
 
 ## AppleScript Errors
+
 An AppleScript error is an error that occurs when AppleScript processes script statements. Nearly all of these are of interest to users. For errors returned by an application, see the documentation for that application.
 Error number
 Error message
@@ -59,6 +59,7 @@ Tell statements are nested too deeply.
 No result was returned for some argument of this expression.
 
 ## Operating System Errors
+
 An operating system error is an error that occurs when AppleScript or an application requests services from the Mac OS. They are rare, and often there is nothing you can do about them in a script, other than report them. A few, such as"User canceled", make sense for scripts to handleâas shown, for an example, in the Examples section for thedisplay dialogcommand.
 Error number
 Error message
@@ -117,6 +118,7 @@ Canât find remote machine.
 Invalid date and time <date string>.
 
 ## Apple Event Errors
+
 An Apple event error may occur when an app attempts to process an event sent by a script or a script attempts to process the reply.
 Error number
 Error message
@@ -222,6 +224,7 @@ The specified class canât be an element of the specified container, such as
 An invalid combination of properties was provided, such as for theset,make, orduplicatecommand.
 
 ## Open Scripting Architecture Errors
+
 An Open Scripting Architecture error may occur when the scripting system itself encounters an error.
 Error number
 Error message

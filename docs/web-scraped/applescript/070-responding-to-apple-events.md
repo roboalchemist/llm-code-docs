@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Responding to Apple Events
 Your application must be able to respond to certain Apple events sent by the Mac OS, such as theopen applicationandquitevents. If your application has defined additional Apple events that it supports, either to supply services to other applications or to make itself scriptable, it must be ready to respond to those events as well.
 This chapter describes how you write handlers to respond to the Apple events your application receives. It also provides an overview of how Carbon applications work with Apple events sent by the Mac OS.
 
@@ -15,14 +14,23 @@ As a result, your event handlers should generally be called only for events they
 ### Definition of an Apple Event Handler
 When you declare an Apple event handler, the syntax must match theAEEventHandlerProcPtrdata type, which is described in detail inApple Event Manager Reference.Listing 5-1shows the declaration for a function that handles theopen documentsApple eventâall your handler declarations use a similar declaration.
 Listing 5-1Definition for an Apple event handler
+
+```applescript
+static pascal OSErr HandleOpenDocAE (// 1
 ```
-static pascal OSErr HandleOpenDocAE (// 1```
+
+```applescript
+    const AppleEvent * theAppleEvent,// 2
 ```
-    const AppleEvent * theAppleEvent,// 2```
+
+```applescript
+    AppleEvent * reply,// 3
 ```
-    AppleEvent * reply,// 3```
+
+```applescript
+    SInt32 handlerRefcon);// 4
 ```
-    SInt32 handlerRefcon);// 4```
+
 Hereâs a description of this function declaration:
 - Thepascalkeyword ensures proper ordering of parameters on the stack.
 Thepascalkeyword ensures proper ordering of parameters on the stack.
@@ -110,36 +118,67 @@ Rather than just returning an error code, your handler itself can add error info
 Note:Handlers can return several additional types of error information. For details, see theOSAScriptErrorfunction and the constant section âOSAScriptError Selectorsâ inOpen Scripting Architecture Reference.
 To directly add an error number parameter to a reply Apple event, your handler can call a function like the one inListing 5-2.
 Listing 5-2A function to add an error number to a reply Apple event
+
+```applescript
+static void AddErrNumberToEvent(OSStatus err, AppleEvent* reply)// 1
 ```
-static void AddErrNumberToEvent(OSStatus err, AppleEvent* reply)// 1```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    OSStatus returnVal = errAEEventFailed;// 2
 ```
-    OSStatus returnVal = errAEEventFailed;// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    if (reply->descriptorType != typeNull)// 3
 ```
-    if (reply->descriptorType != typeNull)// 3```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        returnVal = AESizeOfParam(reply, keyErrorNumber, NULL, NULL);
 ```
-        returnVal = AESizeOfParam(reply, keyErrorNumber, NULL, NULL);```
+
+```applescript
+        if (returnVal != noErr))// 4
 ```
-        if (returnVal != noErr))// 4```
+
+```applescript
+        {
 ```
-        {```
+
+```applescript
+            AEPutParamPtr(reply, keyErrorNumber,
 ```
-            AEPutParamPtr(reply, keyErrorNumber,```
+
+```applescript
+                        typeSInt32, &err, sizeof(err));// 5
 ```
-                        typeSInt32, &err, sizeof(err));// 5```
+
+```applescript
+        }
 ```
-        }```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    return returnVal;
 ```
-    return returnVal;```
+
+```applescript
+}
 ```
-}```
+
 Hereâs a description of how this function works:
 - It receives an error number and a pointer to the reply Apple event to modify.
 It receives an error number and a pointer to the reply Apple event to modify.
@@ -160,58 +199,111 @@ errspecifies the error number to store in the added parameter.
 In addition to returning a result code, your handler can return an error string in thekeyErrorStringparameter of the reply Apple event. Your handler should provide meaningful text in thekeyErrorStringparameter, so that the client can display this string to the user if desired.
 Listing 5-3shows a function that adds a parameter, from a string reference that refers to Unicode text, to a passed descriptor. You pass the desired keyword to identify the parameter to add. TheAEPutParamStringfunction callsAEPutParamPtr, which adds a parameter to an Apple event record or an Apple event, so those are the types of descriptors you should pass to it. (Descriptors, Descriptor Lists, and Apple Eventsdescribes the inheritance relationship between common Apple event data types.)
 Listing 5-3A function that adds a string parameter to a descriptor
+
+```applescript
+OSErr AEPutParamString(AppleEvent *event,
 ```
-OSErr AEPutParamString(AppleEvent *event,```
+
+```applescript
+                    AEKeyword keyword, CFStringRef stringRef)// 1
 ```
-                    AEKeyword keyword, CFStringRef stringRef)// 1```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    UInt8 *textBuf;
 ```
-    UInt8 *textBuf;```
+
+```applescript
+    CFIndex length, maxBytes, actualBytes;
 ```
-    CFIndex length, maxBytes, actualBytes;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    length = CFStringGetLength(stringRef);// 2
 ```
-    length = CFStringGetLength(stringRef);// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    maxBytes = CFStringGetMaximumSizeForEncoding(length,
 ```
-    maxBytes = CFStringGetMaximumSizeForEncoding(length,```
+
+```applescript
+                                    kCFStringEncodingUTF8);// 3
 ```
-                                    kCFStringEncodingUTF8);// 3```
+
+```applescript
+    textBuf = malloc(maxBytes);// 4
 ```
-    textBuf = malloc(maxBytes);// 4```
+
+```applescript
+    if (textBuf)
 ```
-    if (textBuf)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        CFStringGetBytes(stringRef, CFRangeMake(0, length),
 ```
-        CFStringGetBytes(stringRef, CFRangeMake(0, length),```
+
+```applescript
+                kCFStringEncodingUTF8, 0, true,
 ```
-                kCFStringEncodingUTF8, 0, true,```
+
+```applescript
+                (UInt8 *) textBuf, maxBytes, &actualBytes);// 5
 ```
-                (UInt8 *) textBuf, maxBytes, &actualBytes);// 5```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        OSErr err = AEPutParamPtr(event, keyword,
 ```
-        OSErr err = AEPutParamPtr(event, keyword,```
+
+```applescript
+                typeUTF8Text, textBuf, actualBytes);// 6
 ```
-                typeUTF8Text, textBuf, actualBytes);// 6```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        free(textBuf);// 7
 ```
-        free(textBuf);// 7```
+
+```applescript
+        return err;
 ```
-        return err;```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    else
 ```
-    else```
+
+```applescript
+        return memFullErr;
 ```
-        return memFullErr;```
+
+```applescript
+}
 ```
-}```
+
 Hereâs a description of how this function works:
 - It receives a pointer to a descriptor to add a parameter to, a key word to identify the parameter, and a string reference from which to obtain the text for the parameter.
 It receives a pointer to a descriptor to add a parameter to, a key word to identify the parameter, and a string reference from which to obtain the text for the parameter.
@@ -229,10 +321,15 @@ It adds the text as a parameter to the passed descriptor. (If called with the ke
 It frees its local buffer.
 Listing 5-4shows how you could callAEPutParamStringto add an error string to a reply Apple event.
 Listing 5-4Adding an error string to an Apple event with AEPutParamString
+
+```applescript
+CFStringRef errStringRef = getLocalizedErrMsgForErrNumber(err);
 ```
-CFStringRef errStringRef = getLocalizedErrMsgForErrNumber(err);```
+
+```applescript
+OSErr anErr = AEPutParamString(reply, keyErrorString, errStringRef);
 ```
-OSErr anErr = AEPutParamString(reply, keyErrorString, errStringRef);```
+
 Hereâs a description of how this code snippet works:
 - It calls an application-defined function to obtain a localized error message as a string reference, based on a passed error number. (For information on localized strings, seeWorking With Localized StringsinBundle Programming Guide.)
 It calls an application-defined function to obtain a localized error message as a string reference, based on a passed error number. (For information on localized strings, seeWorking With Localized StringsinBundle Programming Guide.)
@@ -242,70 +339,135 @@ It callsAEPutParamString, passing the event (obtained previously) to add the err
 ### A Handler for the Open Documents Apple Event
 Listing 5-5shows a handler that responds to theopen documentsApple event.
 Listing 5-5An Apple event handler for the open documents event
+
+```applescript
+static pascal OSErrOpenDocumentsAE(const AppleEvent *theAppleEvent, AppleEvent *reply, long handlerRefcon)
 ```
-static pascal OSErrOpenDocumentsAE(const AppleEvent *theAppleEvent, AppleEvent *reply, long handlerRefcon)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    AEDescList  docList;
 ```
-    AEDescList  docList;```
+
+```applescript
+    FSRef       theFSRef;
 ```
-    FSRef       theFSRef;```
+
+```applescript
+    long        index;
 ```
-    long        index;```
+
+```applescript
+    long        count = 0;
 ```
-    long        count = 0;```
+
+```applescript
+    OSErr       err = AEGetParamDesc(theAppleEvent,
 ```
-    OSErr       err = AEGetParamDesc(theAppleEvent,```
+
+```applescript
+                            keyDirectObject, typeAEList, &docList);// 1
 ```
-                            keyDirectObject, typeAEList, &docList);// 1```
+
+```applescript
+    require_noerr(err, CantGetDocList);// 2
 ```
-    require_noerr(err, CantGetDocList);// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AECountItems(&docList, &count);// 3
 ```
-    err = AECountItems(&docList, &count);// 3```
+
+```applescript
+    require_noerr(err, CantGetCount);
 ```
-    require_noerr(err, CantGetCount);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    for(index = 1; index <= count; index++)// 4
 ```
-    for(index = 1; index <= count; index++)// 4```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        err = AEGetNthPtr(&docList, index, typeFSRef,
 ```
-        err = AEGetNthPtr(&docList, index, typeFSRef,```
+
+```applescript
+                        NULL, NULL, &theFSRef, sizeof(FSRef), NULL);// 5
 ```
-                        NULL, NULL, &theFSRef, sizeof(FSRef), NULL);// 5```
+
+```applescript
+        require_noerr(err, CantGetDocDescPtr);
 ```
-        require_noerr(err, CantGetDocDescPtr);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        err = OpenDocument(&theFSRef);// 6
 ```
-        err = OpenDocument(&theFSRef);// 6```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    AEDisposeDesc(&docList);// 7
 ```
-    AEDisposeDesc(&docList);// 7```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+CantGetDocList:
 ```
-CantGetDocList:```
+
+```applescript
+CantGetCount:
 ```
-CantGetCount:```
+
+```applescript
+CantGetDocDescPtr:
 ```
-CantGetDocDescPtr:```
+
+```applescript
+    if (err != noErr)// 8
 ```
-    if (err != noErr)// 8```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        // For handlers that expect a reply, add error information here.
 ```
-        // For handlers that expect a reply, add error information here.```
+
+```applescript
+    }
 ```
-    }```
+
+```applescript
+    return(err);// 9
 ```
-    return(err);// 9```
+
+```applescript
+}
 ```
-}```
+
 Hereâs a description of how thisopen documentshandler works:
 - It calls an Apple Event Manager function (AEGetParamDesc) to obtain a descriptor list from the direct object of the received Apple event. This is a list of file aliases, one for each document to open.
 It calls an Apple Event Manager function (AEGetParamDesc) to obtain a descriptor list from the direct object of the received Apple event. This is a list of file aliases, one for each document to open.
@@ -376,53 +538,102 @@ Received by an application that launched another application when the launched a
 Listing 5-6shows how your application installs handlers for various Apple events that are sent by the Mac OS. The listing assumes that you have defined the functionsOpenApplicationAE,ReopenApplicationAE,OpenDocumentsAE, andPrintDocumentsAEto handle the Apple eventsopen application,reopen,open documents, andprint documents, respectively.
 This function doesnât install handlers for theopen contentsandquitApple events, so the application will rely on the default handlers for those events (described previously inCommon Apple Events Sent by the Mac OS).
 Listing 5-6Installing event handlers for Apple events from the Mac OS
+
+```applescript
+static  OSErr   InstallMacOSEventHandlers(void)
 ```
-static  OSErr   InstallMacOSEventHandlers(void)```
+
+```applescript
+{
 ```
-{```
+
+```applescript
+    OSErr       err;
 ```
-    OSErr       err;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err     = AEInstallEventHandler(kCoreEventClass, kAEOpenApplication,
 ```
-    err     = AEInstallEventHandler(kCoreEventClass, kAEOpenApplication,```
+
+```applescript
+                NewAEEventHandlerUPP(OpenApplicationAE), 0, false);
 ```
-                NewAEEventHandlerUPP(OpenApplicationAE), 0, false);```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err     = AEInstallEventHandler(kCoreEventClass, kAEReopenApplication,
 ```
-    err     = AEInstallEventHandler(kCoreEventClass, kAEReopenApplication,```
+
+```applescript
+                NewAEEventHandlerUPP(ReopenApplicationAE), 0, false);
 ```
-                NewAEEventHandlerUPP(ReopenApplicationAE), 0, false);```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err     = AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,
 ```
-    err     = AEInstallEventHandler(kCoreEventClass, kAEOpenDocuments,```
+
+```applescript
+                NewAEEventHandlerUPP(OpenDocumentsAE), 0, false);
 ```
-                NewAEEventHandlerUPP(OpenDocumentsAE), 0, false);```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err     = AEInstallEventHandler(kCoreEventClass, kAEPrintDocuments,
 ```
-    err     = AEInstallEventHandler(kCoreEventClass, kAEPrintDocuments,```
+
+```applescript
+                NewAEEventHandlerUPP(PrintDocumentsAE), 0, false);
 ```
-                NewAEEventHandlerUPP(PrintDocumentsAE), 0, false);```
+
+```applescript
+    require_noerr(err, CantInstallAppleEventHandler);
 ```
-    require_noerr(err, CantInstallAppleEventHandler);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+CantInstallAppleEventHandler:
 ```
-CantInstallAppleEventHandler:```
+
+```applescript
+    return err;
 ```
-    return err;```
+
+```applescript
+}
 ```
-}```
+
 For a description of the parameters you pass to theAEInstallEventHandlerfunction, seeInstalling Apple Event Handlers.
 Copyright © 2005, 2007 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2007-10-31

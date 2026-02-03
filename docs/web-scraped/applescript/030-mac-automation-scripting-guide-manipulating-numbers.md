@@ -1,28 +1,34 @@
 # Mac Automation Scripting Guide: Manipulating Numbers
 
 ## Manipulating Numbers
+
 Working with and manipulating numbers is an important and regular occurrence in scripting. Basic mathematic operationsâsuch as addition, subtraction, multiplication, and divisionâare language-level features, but some other commonly performed operations require custom scripting.
 Note
 AppleScriptâs language-level mathematical operators are listed inOperators ReferenceinAppleScript Language Guide.
 JavaScriptâs language-level arithmetic operators can be foundhere. JavaScript also includes a built-inMathobject, which provides a variety of properties and methods for performing common mathematical operations. Information about this object can be foundhere. Several of the JavaScript examples in this chapter call theMath.abs()method to get the absolute value of a number. AppleScript does not have an equivalent method.
 
 ### Converting a Number to a String
+
 Scripts often need to convert numbers to string format to display information to the user or populate a document. In AppleScript, this conversion can be accomplished most of the time simply by using the coercion operatoras, as shown inListing 20-1.
 APPLESCRIPT
 Open in Script Editor
+
 - 12 as string
 - --> Result: "12"
 In JavaScript, the same conversion can be accomplished by calling thetoString()method, as shown inListing 20-2.
 JAVASCRIPT
 Open in Script Editor
+
 - num = 12
 - num.toString()
 - // Result: "12"
 
 ### Converting a Long Number to a String
+
 In AppleScript, long numeric values are displayed in scientific notation. For example,1234000000is displayed by a script as1.234E+9. When this value is coerced to a string, it becomes:"1.234E+9". The handler inListing 20-3converts a number, regardless of length, to a string of numeric characters instead of a numeric string in scientific notation.
 APPLESCRIPT
 Open in Script Editor
+
 - on convertNumberToString(theNumber)
 - set theNumberString to theNumber as string
 - set theOffset to offset of "E" in theNumberString
@@ -67,13 +73,16 @@ Open in Script Editor
 Listing 20-3shows how to call the handler inListing 20-3.
 APPLESCRIPT
 Open in Script Editor
+
 - convertNumberToString(8.72124243234E+11)
 - --> Result: "872124243234"
 
 ### Adding a Descriptive Suffix to a Number
+
 The handlersListing 20-5andListing 20-6convert a number to a string and appends a suffix of"st","nd","rd", or"th", resulting in strings such as"1st","2nd","3rd", and"4th".
 APPLESCRIPT
 Open in Script Editor
+
 - on addDescriptiveSuffixToNumber(theNumber)
 - -- Determine the suffix to add, based on the last two digits
 - set theLastDigit to theNumber mod 10
@@ -91,6 +100,7 @@ Open in Script Editor
 - end addDescriptiveSuffixToNumber
 JAVASCRIPT
 Open in Script Editor
+
 - function addDescriptiveSuffixToNumber(num) {
 - // Convert the number to absolute value
 - var integer = Math.abs(num)
@@ -113,6 +123,7 @@ Open in Script Editor
 Listing 20-7andListing 20-8show how to test the handlers inListing 20-5andListing 20-6by looping through a range of positive and negative numbers.
 APPLESCRIPT
 Open in Script Editor
+
 - set theTestResults to ""
 - repeat with a from -10 to 10
 - set theTestResults to theTestResults & addDescriptiveSuffixToNumber(a)
@@ -122,6 +133,7 @@ Open in Script Editor
 - --> Result: "-10th, -9th, -8th, -7th, -6th, -5th, -4th, -3rd, -2nd, -1st, 0, 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th"
 JAVASCRIPT
 Open in Script Editor
+
 - var testResults = ""
 - for (var i = -10; i <= 10; i++) {
 - testResults += addDescriptiveSuffixToNumber(i)
@@ -134,6 +146,7 @@ Open in Script Editor
 Listing 20-9andListing 20-10show how to call the handlers inListing 20-5andListing 20-6to identify positions of items in a list.
 APPLESCRIPT
 Open in Script Editor
+
 - set thePersonList to {"Sal", "Ben", "Chris", "David"}
 - set theListLength to length of thePersonList
 - repeat with a from 1 to theListLength
@@ -143,6 +156,7 @@ Open in Script Editor
 - end repeat
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var personList = ["Sal", "Ben", "Chris", "David"]
@@ -154,9 +168,11 @@ Open in Script Editor
 - }
 
 ### Adding Leading Zeros to a Number
+
 The handlers inListing 20-11andListing 20-12convert a number to a string and prepends it with leading zeros until it reaches a certain length. They accept two parametersâthe number to add leading zeros to and the maximum number of leading zeros to add. For example, if the maximum number of leading zeros is set to2, the results range from001to999. If the maximum number of leading zeros is3, the results range from0001to9999, and so on.
 APPLESCRIPT
 Open in Script Editor
+
 - on addLeadingZerosToNumber(theNumber, theMaxLeadingZeroCount)
 - -- Determine if the number is negative
 - set isNegative to theNumber is less than 0
@@ -185,6 +201,7 @@ Open in Script Editor
 - end addLeadingZerosToNumber
 JAVASCRIPT
 Open in Script Editor
+
 - function addLeadingZerosToNumber(num, maxLeadingZeroCount) {
 - var leadingZeros = ""
 - // Convert the number to absolute value
@@ -212,19 +229,23 @@ Open in Script Editor
 Listing 20-13andListing 20-14show how to call the handlers inListing 20-11andListing 20-12.
 APPLESCRIPT
 Open in Script Editor
+
 - addLeadingZerosToNumber(9, 3)
 - --> Result: "0009"
 JAVASCRIPT
 Open in Script Editor
+
 - addLeadingZerosToNumber(9, 3)
 - // Result: "0009"
 
 ### Comma-Delimiting a Number
+
 The handlersListing 20-15andListing 20-16comma-delimit a numeric value and converts it to a string.
 Note
 These handlers call theconvertNumberToString()handler. SeeListing 20-3.
 APPLESCRIPT
 Open in Script Editor
+
 - on convertNumberToCommaDelimitedString(theNumber)
 - -- Convert the number to a string
 - set theNumber to convertNumberToString(theNumber)
@@ -246,6 +267,7 @@ Open in Script Editor
 - end convertNumberToCommaDelimitedString
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToCommaDelimitedString(num) {
 - // Convert the number to a string
 - var numString = num.toString()
@@ -271,10 +293,12 @@ Open in Script Editor
 Listing 20-17andListing 20-18shows how to call the handlers inListing 20-15andListing 20-16.
 APPLESCRIPT
 Open in Script Editor
+
 - convertNumberToCommaDelimitedString(872124243234)
 - --> Result: "872,124,243,234"
 JAVASCRIPT
 Open in Script Editor
+
 - convertNumberToCommaDelimitedString(872124243234)
 - // Result: "872,124,243,234"
 Note
@@ -282,6 +306,7 @@ When you use AppleScriptObjC or JavaScriptObjC, you can use methods of theNSNumb
 The handlers inListing 20-19andListing 20-20convert a number to a string by returning a comma-delimited, rounded, localized decimal value. For example: (3.64525432506E+5at 0 places converts to"364525",3.64525432506E+5at 3 places converts to"364525.433", and0.2375at 2 places converts"0.24".
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on convertNumberToDecimalString(theNumber, theNumberOfDecimalPlaces)
 - if theNumberOfDecimalPlaces is greater than 0 then
@@ -299,6 +324,7 @@ Open in Script Editor
 - end convertNumberToDecimalString
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToDecimalString(number, numberOfDecimalPlaces) {
 - var decimalIndicators = ""
 - if (numberOfDecimalPlaces > 0) {
@@ -315,6 +341,7 @@ Open in Script Editor
 The handlers inListing 20-21andListing 20-22convert a number to a string by returning a comma-delimited, rounded, localized percentage value. For example:0.2345to"23%"or0.2375to"24%".
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on convertNumberToPercentageString(theNumber)
 - set theStyle to NSNumberFormatterPercentStyle of current application
@@ -323,6 +350,7 @@ Open in Script Editor
 - end convertNumberToPercentageString
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToPercentageString(number) {
 - var style = $.NSNumberFormatterPercentStyle
 - var formattedNumber = $.NSNumberFormatter.localizedStringFromNumberNumberStyle(number, style)
@@ -331,6 +359,7 @@ Open in Script Editor
 The handlers inListing 20-23andListing 20-24convert a number to a string by returning a comma-delimited, rounded, localized currency value. For example:9128to"$9,128.00"or9978.2485to"$9,978.25".
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on convertNumberToCurrencyString(theNumber)
 - set theStyle to NSNumberFormatterCurrencyStyle of current application
@@ -339,6 +368,7 @@ Open in Script Editor
 - end convertNumberToCurrencyString
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToCurrencyString(number) {
 - var style = $.NSNumberFormatterCurrencyStyle
 - var formattedNumber = $.NSNumberFormatter.localizedStringFromNumberNumberStyle(number, style)
@@ -347,6 +377,7 @@ Open in Script Editor
 The handlers inListing 20-25andListing 20-26convert a number to a string by returning a string of a numeric value in words. For example:23to âtwenty-three",23.75to"twenty-three point seven five".
 APPLESCRIPT
 Open in Script Editor
+
 - use framework "Foundation"
 - on convertNumberToWords(theNumber)
 - set theStyle to NSNumberFormatterSpellOutStyle of current application
@@ -355,6 +386,7 @@ Open in Script Editor
 - end convertNumberToWords
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToWords(number) {
 - var style = $.NSNumberFormatterSpellOutStyle
 - var formattedNumber = $.NSNumberFormatter.localizedStringFromNumberNumberStyle(number, style)
@@ -363,6 +395,7 @@ Open in Script Editor
 In JavaScript,regular expressionscan also be used to convert a number to a comma-delimited string even more efficiently, as shown inListing 20-27.
 JAVASCRIPT
 Open in Script Editor
+
 - function convertNumberToCommaDelimitedString(num) {
 - var numPieces = num.toString().split(".")
 - numPieces[0] = numPieces[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -370,9 +403,11 @@ Open in Script Editor
 - }
 
 ### Determining if a Number is an Odd Number
+
 The handlers inListing 20-28andListing 20-29determine whether a whole number is even or odd. A returned value offalseindicates the passed number is even; a returned value oftrueindicates the passed number is odd.
 APPLESCRIPT
 Open in Script Editor
+
 - on isNumberOdd(theNumber)
 - if theNumber mod 2 is not 0 then
 - return true
@@ -382,21 +417,25 @@ Open in Script Editor
 - end isNumberOdd
 JAVASCRIPT
 Open in Script Editor
+
 - function isNumberOdd(num) {
 - return num % 2 !== 0
 - }
 Listing 20-30andListing 20-31show how to call the handlers inListing 20-28andListing 20-29.
 APPLESCRIPT
 Open in Script Editor
+
 - isNumberOdd(3)
 - --> Result: true
 JAVASCRIPT
 Open in Script Editor
+
 - isNumberOdd(3)
 - // Result: true
 Listing 20-32andListing 20-33show how to call the handlers inListing 20-28andListing 20-29by prompting the user to enter an even number.
 APPLESCRIPT
 Open in Script Editor
+
 - repeat
 - display dialog "Enter an even integer:" default answer ""
 - try
@@ -406,6 +445,7 @@ Open in Script Editor
 - end repeat
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - while (true) {
@@ -420,11 +460,13 @@ Open in Script Editor
 - }
 
 ### Rounding and Truncating a Number
+
 The handlers inListing 20-34andListing 20-35round and truncate a numeric value, and convert it to a string. Provide a numeric value and indicate a number of decimal places.
 Note
 These handlers call theconvertNumberToString()handler. SeeListing 20-3.
 APPLESCRIPT
 Open in Script Editor
+
 - on roundAndTruncateNumber(theNumber, numberOfDecimalPlaces)
 - if numberOfDecimalPlaces is 0 then
 - set theNumber to theNumber + 0.5
@@ -454,6 +496,7 @@ Open in Script Editor
 - end roundAndTruncateNumber
 JAVASCRIPT
 Open in Script Editor
+
 - function roundAndTruncateNumber(num, numDecimalPlaces) {
 - if (numDecimalPlaces === 0) {
 - num = num + 0.5
@@ -485,6 +528,7 @@ Open in Script Editor
 Listing 20-36shows how to call the handler inListing 20-34.
 APPLESCRIPT
 Open in Script Editor
+
 - roundAndTruncateNumber(1.04575, 3)
 - --> Result: "1.046"
 Manipulating Text

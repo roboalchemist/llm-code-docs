@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Document Revision History
 This table describes the changes toXML-RPC and SOAP Programming Guide.
 Moved to Retired Documents Library.
 Made minor changes to first two chapters. Changed title from "XML-RPC and SOAP Support."

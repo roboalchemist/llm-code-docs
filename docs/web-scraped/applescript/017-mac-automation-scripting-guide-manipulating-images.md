@@ -1,15 +1,21 @@
 # Mac Automation Scripting Guide: Manipulating Images
 
 ## Manipulating Images
+
 Image Events is a scriptable background app in OSÂ X that can be used to automate the manipulation of images without the need for a fully-featured image editor. You can use Image Events to:
+
 - Read image properties
 Read image properties
+
 - Flip and rotate images
 Flip and rotate images
+
 - Crop and add padding to images
 Crop and add padding to images
+
 - Resize images
 Resize images
+
 - Convert images from one type to another
 Convert images from one type to another
 The Image Events app is located in/System/Library/CoreServices/. You can access its dictionary from the Library palette in Script Editor. SeeOpening a Scripting Dictionary.
@@ -17,22 +23,30 @@ Note
 Image Events can read and save most standard image formats, including.bmp,.jpg,.png,.psd, and.tif. Image Events can read.pdffiles, but cannot save them.
 
 ### The Image Events Workflow
+
 To manipulate an image with Image Events, a script typically performs the following sequential steps:
+
 - Open the Image Events app.
 Open the Image Events app.
+
 - Open an image file.
 Open an image file.
+
 - Access image properties or manipulate the image.
 Access image properties or manipulate the image.
+
 - Save the modified image as a new image file or overwriting the original image file.
 Save the modified image as a new image file or overwriting the original image file.
+
 - Close the image.
 Close the image.
 
 ### Opening an Image
+
 An image must be opened before Image Events can interact with it. To open an image, use theopencommand and provide the imageâs path, as shown inListing 38-1.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Launch Image Events and open the image
@@ -46,9 +60,11 @@ Note
 When working with Image Events, use thelaunchcommand to make sure itâs running rather than theactivatecommand, which is reserved for apps with interfaces.
 
 ### Reading Image Properties
+
 Like all scriptable objects, images have attributes that define them, such as dimensions, color space, and resolution. Theimageclass in the Image Events scripting dictionary contains a variety of properties for key attributes.Listing 38-2shows how to access some of these properties. First, it retrieves a record of available properties for a selected image. Next, it retrieves some individual properties.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Launch Image Events
@@ -73,11 +89,13 @@ Open in Script Editor
 - end tell
 
 ### Flipping an Image
+
 Theflipcommand reverses the axis of an image. It has two options for the required parameter:horizontalfor changing the axis of the image on a horizontal plane, andverticalfor changing the axis of the image on a vertical plane.Listing 38-3flips an image both horizontally and vertically.
 Important
 The script inListing 38-3saves a chosen image as a new file with a prefix oftemp-. If another file exists with this same name, it is overwritten.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Locate an output folder
@@ -103,11 +121,13 @@ Open in Script Editor
 - end tell
 
 ### Rotating an Image
+
 Therotatecommand rotates an image around its center point. To rotate an image clockwise, provide the commandâsto angleparameter with an integer value between1to359(seeListing 38-4). To rotate an image counter-clockwise, provide a negative value, such as-90.
 Important
 The script inListing 38-4saves a chosen image as a new file with a prefix oftemp-. If another file exists with this same name, it is overwritten.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Locate an output folder
@@ -131,11 +151,14 @@ Open in Script Editor
 - end tell
 
 ### Scaling an Image
+
 Scaling an image proportionally increases or decreases its dimensions. Thescalecommand can resize images in one of two ways:
+
 - To scale an image by percentage, provide a decimal value for theby factorparameter.  The value1is equivalent to 100%. The value.5is 50%. The value1.5is 150% and so on.Use the following formula to determine the scaling factor:Â«percentageÂ» * .01
 To scale an image by percentage, provide a decimal value for theby factorparameter.  The value1is equivalent to 100%. The value.5is 50%. The value1.5is 150% and so on.
 Use the following formula to determine the scaling factor:
 Â«percentageÂ» * .01
+
 - To scale an image to a specific size, provide an integer value for theto sizeparameter. This value indicates the maximum number of pixels for the resized image on its longest side.
 To scale an image to a specific size, provide an integer value for theto sizeparameter. This value indicates the maximum number of pixels for the resized image on its longest side.
 Scaling doesnât change the resolution of an image. For example, a 72 dpi image that has been scaled to 50% of its original dimensions still has a resolution of 72 dpi.
@@ -144,6 +167,7 @@ Important
 The script inListing 38-5saves a chosen image as a new file with a prefix oftemp-. If another file exists with this same name, it is overwritten.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Locate an output folder
@@ -174,11 +198,13 @@ Open in Script Editor
 - end tell
 
 ### Cropping an Image
+
 Cropping an image removes pixels around all of its sides, centering the remaining area. Theto dimensionsrequired parameter takes a list of two integers: the new width and height, in pixels. InListing 38-6, an image is cropped to 100 by 100 pixels.
 Important
 The script inListing 38-6saves a chosen image as a new file with a prefix oftemp-. If another file exists with this same name, it is overwritten.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Locate an output folder
@@ -202,11 +228,13 @@ Open in Script Editor
 - end tell
 
 ### Padding an Image
+
 Padding an image adds space around its sides. Itâs essentially the reverse of cropping an image, although negative padding an image produces cropping. Theto dimensionsrequired parameter takes a list of two integers: the new width and height, in pixels. The optionalwith pad colorparameter can be used to specify the color of the padding. InListing 38-7, 20 pixels of padding is added around an image.
 Important
 The script inListing 38-7saves a chosen image as a new file with a prefix oftemp-. If another file exists with this same name, it is overwritten.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Prompt for a color
@@ -236,9 +264,11 @@ Note
 Images containing transparency result in transparent padding, regardless of whether a color is specified.
 
 ### Converting an Image from One Type to Another
+
 To convert an image from one type to another, open it and save it in another format.Listing 38-8saves a chosen image in.jpg,.psd, and.tifformat.
 APPLESCRIPT
 Open in Script Editor
+
 - -- Prompt for an image
 - set theImageFile to choose file of type "public.image" with prompt ""
 - -- Locate an output folder

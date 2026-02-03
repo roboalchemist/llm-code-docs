@@ -1,12 +1,15 @@
 # Mac Automation Scripting Guide: Working with Property List Files
 
 ## Working with Property List Files
+
 Many apps store settings in property list files (also called plists). Scripts can also store and retrieve data in plists. The terminology for interacting with plists is found in the Property List Suite of the System Events scripting dictionary (seeFigure 35-1).
 
 ### Creating a New Property List File
+
 Listing 35-1demonstrates how to create a new property list file. First, an empty plist file (classproperty list file) is created. Next, individual property list items (classproperty list item) of varying type (Boolean, date, list, number, record, string) are added to the file.
 APPLESCRIPT
 Open in Script Editor
+
 - tell application "System Events"
 - -- Create an empty property list dictionary item
 - set theParentDictionary to make new property list item with properties {kind:record}
@@ -29,6 +32,7 @@ Open in Script Editor
 - end tell
 - end tell
 Listing 35-2shows the contents of a property list file created by the script inListing 35-1.
+
 - <?xml version="1.0" encoding="UTF-8"?>
 - <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 - <plist version="1.0">
@@ -49,8 +53,10 @@ Listing 35-2shows the contents of a property list file created by the script inL
 - </plist>
 
 ### Reading a Property List Key Value
+
 Listing 35-3shows how to read a value of a key in a property list file.
 Open in Script Editor
+
 - tell application "System Events"
 - tell property list file thePropertyListFilePath
 - return value of property list item "stringKey"
@@ -59,8 +65,10 @@ Open in Script Editor
 - --> Result: "string value"
 
 ### Changing a Property List Key Value
+
 Listing 35-4shows how to change the value of a key in a property list file.
 Open in Script Editor
+
 - tell application "System Events"
 - tell property list file thePropertyListFilePath
 - set value of property list item "stringKey" to "new string value"
@@ -68,8 +76,10 @@ Open in Script Editor
 - end tell
 
 ### Adding a New Property List Item
+
 Listing 35-3shows how to add a new key and value to a property list file.
 Open in Script Editor
+
 - tell application "System Events"
 - tell property list items of property list file thePropertyListFilePath
 - make new property list item at end with properties {kind:string, name:"newStringKey", value:"new string value"}

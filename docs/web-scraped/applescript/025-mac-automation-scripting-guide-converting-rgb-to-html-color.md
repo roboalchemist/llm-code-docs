@@ -1,9 +1,11 @@
 # Mac Automation Scripting Guide: Converting RGB to HTML Color
 
 ## Converting RGB to HTML Color
+
 In HTML documents, colors are typically represented as hex values. The handlers inListing 31-1andListing 31-2show how to convert 8-bit or 256 color-based RGB values to hex values. Provide an RGB color represented by a list of three numbers, each with a value between0and65535.
 APPLESCRIPT
 Open in Script Editor
+
 - on convertRGBColorToHexValue(theRGBValues)
 - set theHexList to {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"}
 - set theHexValue to ""
@@ -18,6 +20,7 @@ Open in Script Editor
 - end convertRGBColorToHexValue
 JAVASCRIPT
 Open in Script Editor
+
 - function convertRGBColorToHexValue(rgbValues) {
 - var r = parseInt(rgbValues[0], 10).toString(16).slice(-2)
 - if (r.length == 1)
@@ -33,11 +36,13 @@ Open in Script Editor
 Listing 31-3shows how to call the handlers inListing 31-1to convert a specified RGB color to a hex value for use in HTML.
 APPLESCRIPT
 Open in Script Editor
+
 - set theRGBValues to (choose color default color {65535, 0, 0})
 - convertRGBColorToHexValue(theRGBValues)
 - --> Result: "#FF0000"
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - var color = app.chooseColor({defaultColor: [1, 0, 0]})

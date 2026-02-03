@@ -1,12 +1,15 @@
 # Mac Automation Scripting Guide: Reading and Writing Files
 
 ## Reading and Writing Files
+
 Scripts are often designed to write data to files such as logs or backups. The Standard Additions scripting addition contains a number of commands that make it possible to read and write files.
 
 ### Writing to a File
+
 The handlers inListing 16-1andListing 16-2safely write data to disk, creating a new file if the targeted file doesnât already exist. Provide the text to write, a target file path, and indicate whether to overwrite existing content. If you choose not to overwrite existing content, then the text provided is appended to any existing content.
 APPLESCRIPT
 Open in Script Editor
+
 - on writeTextToFile(theText, theFile, overwriteExistingContent)
 - try
 - -- Convert the file to a string
@@ -33,6 +36,7 @@ Open in Script Editor
 - end writeTextToFile
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - function writeTextToFile(text, file, overwriteExistingContent) {
@@ -68,11 +72,13 @@ Open in Script Editor
 Listing 16-3andListing 16-4show how to call the handlers inListing 16-1andListing 16-2to write text content to a file on the Desktop, replacing any existing content in the file.
 APPLESCRIPT
 Open in Script Editor
+
 - set this_story to "Once upon a time in Silicon Valley..."
 - set theFile to (((path to desktop folder) as string) & "MY STORY.txt")
 - writeTextToFile(this_story, theFile, true)
 JAVASCRIPT
 Open in Script Editor
+
 - var story = "Once upon a time in Silicon Valley..."
 - var desktopString = app.pathTo("desktop").toString()
 - var file = `${desktopString}/MY STORY.txt`
@@ -80,11 +86,13 @@ Open in Script Editor
 Listing 16-5andListing 16-6show howListing 16-1andListing 16-2could be called to insert dated log entries into a log file.
 APPLESCRIPT
 Open in Script Editor
+
 - set theText to ((current date) as string) & space & "STATUS OK" & return
 - set theFile to (((path to desktop folder) as string) & "MY LOG FILE.log")
 - writeTextToFile(theText, theFile, false)
 JAVASCRIPT
 Open in Script Editor
+
 - var dateString = Date().toString()
 - var desktopString = app.pathTo("desktop").toString()
 - var text = `${dateString} STATUS OK\n\n`
@@ -93,6 +101,7 @@ Open in Script Editor
 In practice, this technique could be used to maintain a log when script errors occur.Listing 16-7andListing 16-8are try statements, which can be wrapped around custom script code in order to log any script errors to a file in the~/Library/Logs/folder of the current userâs home directory.
 APPLESCRIPT
 Open in Script Editor
+
 - try
 - -- Your custom script code goes here
 - on error theErrorMessage number theErrorNumber
@@ -102,6 +111,7 @@ Open in Script Editor
 - end try
 JAVASCRIPT
 Open in Script Editor
+
 - try {
 - // Your custom script code goes here
 - }
@@ -112,9 +122,11 @@ Open in Script Editor
 - }
 
 ### Reading a File
+
 The handlers inListing 16-9andListing 16-10read the contents of a specified file.
 APPLESCRIPT
 Open in Script Editor
+
 - on readFile(theFile)
 - -- Convert the file to a string
 - set theFile to theFile as string
@@ -123,6 +135,7 @@ Open in Script Editor
 - end readFile
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - function readFile(file) {
@@ -134,11 +147,13 @@ Open in Script Editor
 Listing 16-11andListing 16-12show how to call the handlers inListing 16-9andListing 16-10to read a specified text file.
 APPLESCRIPT
 Open in Script Editor
+
 - set theFile to choose file of type "txt" with prompt "Please select a text file to read:"
 - readFile(theFile)
 - --> Result: "Contents of the chosen file."
 JAVASCRIPT
 Open in Script Editor
+
 - var file = app.chooseFile({
 - ofType: "txt",
 - withPrompt: "Please select a text file to read:"
@@ -147,9 +162,11 @@ Open in Script Editor
 - // Result: "Contents of the chosen file."
 
 ### Reading and Splitting a File
+
 The handlers inListing 16-13andListing 16-14read the contents of a specified text file, using a delimiter to split it into a list.
 APPLESCRIPT
 Open in Script Editor
+
 - on readAndSplitFile(theFile, theDelimiter)
 - -- Convert the file to a string
 - set theFile to theFile as string
@@ -158,6 +175,7 @@ Open in Script Editor
 - end readAndSplitFile
 JAVASCRIPT
 Open in Script Editor
+
 - var app = Application.currentApplication()
 - app.includeStandardAdditions = true
 - function readAndSplitFile(file, delimiter) {
@@ -169,11 +187,13 @@ Open in Script Editor
 Listing 16-15andListing 16-16shows how to call the handlers inListing 16-13andListing 16-14to read the paragraphs of a chosen log file.
 APPLESCRIPT
 Open in Script Editor
+
 - set theFile to choose file of type "log" with prompt "Please select a log file:"
 - readAndSplitFile(theFile, return)
 - --> Result: {"Log entry 1", "Log entry 2", ... }
 JAVASCRIPT
 Open in Script Editor
+
 - var file = app.chooseFile({
 - ofType: "log",
 - withPrompt: "Please select a log file:"

@@ -1,6 +1,5 @@
 # AppleScript Keywords
 
-# AppleScript Keywords
 This appendix lists AppleScript keywords (orreserved words), provides a brief description for each, and points to related information, where available. (See alsoKeywordsinAppleScript Lexical Conventions.)
 The keywords inTable A-1are part of the AppleScript language. You should not attempt to reuse them in your scripts for variable names or other purposes. Developers should not re-define keywords in the terminology for their scriptable applications. You can view many additional scripting terms defined by Apple, but not part of the AppleScript language, inAppleScript Terminology and Apple Event Codes.
 about

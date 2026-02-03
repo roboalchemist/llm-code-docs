@@ -3,7 +3,6 @@
 # Retired Document
 Important:This document may not represent best practices for current development. Links to downloads and other resources may no longer be valid.
 
-# Working With the Data in an Apple Event
 This chapter describes how your application gets various kinds of data from Apple events and the data structures that comprise them.
 Your application responds to Apple events in the Apple event handlers it registers, or in routines your handlers call. Within a handler, you know that the passed Apple event matches the expected event class and event ID, although there can be some variation if the handler is registered with one or more wildcards. In either case, your handler has at least a general idea of what information the Apple event should contain. In the case of a wildcard handler, it can obtain information from the Apple event to identify the type more closely.
 
@@ -30,32 +29,59 @@ This chapter provides examples of how to work with some of these functions, whil
 Coercionis the process of converting a descriptor and, if necessary, the data it contains, from one type to another. When your handler receives an Apple event, you typically use one or more of the functionsAEGetParamPtr,AEGetAttributePtr,AEGetParamDesc,AEGetAttributeDesc,AEGetNthPtr, andAEGetNthDescto get data from the Apple event. Each of these Apple Event Manager functions allows your application to specify a desired descriptor type for the resulting data. If the original data is of a different type, the Apple Event Manager attempts to coerce the data to the requested descriptor type. To prevent coercion and ensure that the descriptor type of the result is of the same type as the original, you specifytypeWildCardfor the desired type.
 The following code snippet shows how to specify a desired descriptor type when calling the functionAEGetParamPtr.
 Listing 4-1Getting and coercing an Apple event parameter
+
+```applescript
+    DescType        returnedType;
 ```
-    DescType        returnedType;```
+
+```applescript
+    long            multResult;
 ```
-    long            multResult;```
+
+```applescript
+    Size            actualSize;
 ```
-    Size            actualSize;```
+
+```applescript
+    OSErr           err;
 ```
-    OSErr           err;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AEGetParamPtr(
 ```
-    err = AEGetParamPtr(```
+
+```applescript
+            theAppleEvent,// 1
 ```
-            theAppleEvent,// 1```
+
+```applescript
+            keyMultResult,// 2
 ```
-            keyMultResult,// 2```
+
+```applescript
+            typeSInt32,// 3
 ```
-            typeSInt32,// 3```
+
+```applescript
+            &returnedType,// 4
 ```
-            &returnedType,// 4```
+
+```applescript
+            &multResult,// 5
 ```
-            &multResult,// 5```
+
+```applescript
+            sizeof(multResult),// 6
 ```
-            sizeof(multResult),// 6```
+
+```applescript
+            &actualSize);// 7
 ```
-            &actualSize);// 7```
+
 Hereâs a description of the parameters used in this call:
 - A pointer to the Apple event to get the parameter data from.
 A pointer to the Apple event to get the parameter data from.
@@ -78,26 +104,47 @@ By default, the Apple Event Manager can coerce between many different data types
 Apple event parameters are keyword-specified descriptors. You can use theAEGetParamDescfunction to get the descriptor for a parameter or to extract the descriptor list from a parameter; you can useAEGetParamPtrto get the data from the descriptor for a parameter. In general, use the former to extract data of variable length, and the latter to extract data of fixed length or known maximum length.
 Listing 4-2shows how to callAEGetParamDescto extract a parameter descriptor from an Apple event such as anopen documentsevent.
 Listing 4-2Getting a parameter as a descriptor
+
+```applescript
+    AEDescList  docList;
 ```
-    AEDescList  docList;```
+
+```applescript
+    OSErr       myErr;
 ```
-    OSErr       myErr;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    myErr = AEGetParamDesc( theAppleEvent,// 1
 ```
-    myErr = AEGetParamDesc( theAppleEvent,// 1```
+
+```applescript
+                            keyDirectObject,// 2
 ```
-                            keyDirectObject,// 2```
+
+```applescript
+                            typeAEList,// 3
 ```
-                            typeAEList,// 3```
+
+```applescript
+                            &docList);// 4
 ```
-                            &docList);// 4```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // Check the returned value from AEGetParamDesc for any error.
 ```
-    // Check the returned value from AEGetParamDesc for any error.```
+
+```applescript
+    // (Not shown.)
 ```
-    // (Not shown.)```
+
 Hereâs a description of the parameters used in this call:
 - A pointer to the Apple event to get the parameter descriptor from (obtained previously).
 A pointer to the Apple event to get the parameter descriptor from (obtained previously).
@@ -115,36 +162,67 @@ If an Apple event parameter contains an object specifier, your handler should us
 To get the descriptor for an attribute or to get the data from an attribute you use routines that are similar to those you use with parameters: theAEGetAttributePtrandAEGetAttributeDescfunctions.
 For example,Listing 4-3shows how to useAEGetAttributePtrto get the data from thekeyEventSourceAttrattribute of an Apple event.
 Listing 4-3Getting a value from an attribute
+
+```applescript
+    DescType        returnedType;
 ```
-    DescType        returnedType;```
+
+```applescript
+    AEEventSource   sourceOfAE;
 ```
-    AEEventSource   sourceOfAE;```
+
+```applescript
+    Size            actualSize;
 ```
-    Size            actualSize;```
+
+```applescript
+    OSErr           myErr;
 ```
-    OSErr           myErr;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+myErr = AEGetAttributePtr( theAppleEvent,// 1
 ```
-myErr = AEGetAttributePtr( theAppleEvent,// 1```
+
+```applescript
+                            keyEventSourceAttr,// 2
 ```
-                            keyEventSourceAttr,// 2```
+
+```applescript
+                            typeShortInteger,// 3
 ```
-                            typeShortInteger,// 3```
+
+```applescript
+                            &returnedType,// 4
 ```
-                            &returnedType,// 4```
+
+```applescript
+                            (void *) &sourceOfAE,// 5
 ```
-                            (void *) &sourceOfAE,// 5```
+
+```applescript
+                            sizeof (sourceOfAE),// 6
 ```
-                            sizeof (sourceOfAE),// 6```
+
+```applescript
+                            &actualSize);// 7
 ```
-                            &actualSize);// 7```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    // Check the returned value from AEGetParamDesc for any error.
 ```
-    // Check the returned value from AEGetParamDesc for any error.```
+
+```applescript
+    // (Not shown.)
 ```
-    // (Not shown.)```
+
 Hereâs a description of the parameters used in this call:
 - A pointer to the Apple event to get the attribute data from (obtained previously).
 A pointer to the Apple event to get the attribute data from (obtained previously).
@@ -166,26 +244,47 @@ The address of a variable in which the function stores the actual size of the re
 Because the data within a descriptor is opaque, you use Apple Event Manager functions to extract it. In some cases, such as the example shown inListing 4-3, the data is of known type and size, or can be coerced to a known type, and you can store it in a variable of that type.
 It is common, however, for a descriptor to contain data, such as text or an image, of unknown size. In situations of that type, you can call theAEGetDescDataSizefunction to find out how much memory you will need to store the data, allocate a buffer of that size, then callAEGetDescDatato get the actual data from the descriptor. The code snippet inListing 4-4shows how you might use these functions to get data into a buffer.
 Listing 4-4Determining the size, then obtaining descriptor data
+
+```applescript
+    Size dataSize = AEGetDescDataSize(desc);// 1
 ```
-    Size dataSize = AEGetDescDataSize(desc);// 1```
+
+```applescript
+    UInt8* buffer = malloc(dataSize);// 2
 ```
-    UInt8* buffer = malloc(dataSize);// 2```
+
+```applescript
+    if (buffer)
 ```
-    if (buffer)```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        OSErr err = AEGetDescData(desc, buffer, dataSize);// 3
 ```
-        OSErr err = AEGetDescData(desc, buffer, dataSize);// 3```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        // If no error, use the data.// 4
 ```
-        // If no error, use the data.// 4```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        free(buffer);// 5
 ```
-        free(buffer);// 5```
+
+```applescript
+    }
 ```
-    }```
+
 Hereâs a description of what this code does:
 - Calls an Apple Event Manager function to get the data size for the descriptor.
 Calls an Apple Event Manager function to get the data size for the descriptor.
@@ -213,44 +312,83 @@ If you allocated memory for the buffer, free it when you are finished with it.
 To get descriptors and their data from a descriptor list, you can call theAECountItemsfunction to get the number of descriptors in the list, then set up a loop that callsAEGetNthDescorAEGetNthPtrto get the data from each descriptor.
 For example, anopen documentsevent contains a direct parameter that specifies a list of documents to open. The parameter contains a descriptor list in which each descriptor specifies an alias to a file to open.Listing 4-5shows how you can extract the descriptor list from the parameter, determine the number of items it contains, and extract each descriptor from the list.
 Listing 4-5Getting a descriptor list and its items
+
+```applescript
+    AEDescList  docList;
 ```
-    AEDescList  docList;```
+
+```applescript
+    FSRef       theFSRef;
 ```
-    FSRef       theFSRef;```
+
+```applescript
+    long        index;
 ```
-    long        index;```
+
+```applescript
+    long        count = 0;
 ```
-    long        count = 0;```
+
+```applescript
+    OSErr       err;
 ```
-    OSErr       err;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AEGetParamDesc(theAppleEvent, keyDirectObject,
 ```
-    err = AEGetParamDesc(theAppleEvent, keyDirectObject,```
+
+```applescript
+                         typeAEList, &docList);// 1
 ```
-                         typeAEList, &docList);// 1```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    err = AECountItems(&docList, &count);// 2
 ```
-    err = AECountItems(&docList, &count);// 2```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    for(index = 1; index <= count; index++)// 3
 ```
-    for(index = 1; index <= count; index++)// 3```
+
+```applescript
+    {
 ```
-    {```
+
+```applescript
+        err = AEGetNthPtr(&docList, index, typeFSRef,
 ```
-        err = AEGetNthPtr(&docList, index, typeFSRef,```
+
+```applescript
+                        NULL, NULL, &theFSRef,
 ```
-                        NULL, NULL, &theFSRef,```
+
+```applescript
+                        sizeof(theFSRef), NULL);// 4
 ```
-                        sizeof(theFSRef), NULL);// 4```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+        // Call routine to open document with current reference.// 5
 ```
-        // Call routine to open document with current reference.// 5```
+
+```applescript
+    }
 ```
-    }```
+
 Hereâs a description of what this code does:
 - CallsAEGetParamDescto obtain, in the variabledocList, a copy of the descriptor list from the direct parameter of the Apple event. Passes the constantkeyDirectObjectto identify the direct parameter and the constanttypeAEListto indicate the desired descriptor type. (theAppleEventis a pointer to the Apple event, obtained previously, to get the parameter descriptor from).
 CallsAEGetParamDescto obtain, in the variabledocList, a copy of the descriptor list from the direct parameter of the Apple event. Passes the constantkeyDirectObjectto identify the direct parameter and the constanttypeAEListto indicate the desired descriptor type. (theAppleEventis a pointer to the Apple event, obtained previously, to get the parameter descriptor from).
@@ -270,39 +408,74 @@ For a more complete version of this code, including simple error handling, seeLi
 If you create a descriptor, you must dispose of it when you are finished with it to prevent memory leaks. For example, when you extract a descriptor using theAEGetParamDesc,AEGetAttributeDesc,AEGetNthDesc, orAEGetKeyDescfunction, you get a copy of the descriptor. You call theAEDisposeDescfunction to dispose of your copy, thereby deallocating the memory used by its data.
 Listing 4-6shows how to dispose of a descriptor list returned byAEGetParamDesc.
 Listing 4-6Disposing of a descriptor list obtained from the direct object of an Apple event
+
+```applescript
+AEDescList  docList;
 ```
-AEDescList  docList;```
+
+```applescript
+OSErr       err;
 ```
-OSErr       err;```
+
+```applescript
+err = AEGetParamDesc(theAppleEvent, keyDirectObject, typeAEList, &docList);
 ```
-err = AEGetParamDesc(theAppleEvent, keyDirectObject, typeAEList, &docList);```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Check for error, then perform operations on the descriptor list here.
 ```
-// Check for error, then perform operations on the descriptor list here.```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+AEDisposeDesc(&docList);
 ```
-AEDisposeDesc(&docList);```
+
 You can safely callAEDisposeDescon a null descriptor (but not on a null pointer!) Anull descriptoris one that has been initialized as shown in the following code snippet.
+
+```applescript
+AEDesc      someDesc = { typeNull, 0L };
 ```
-AEDesc      someDesc = { typeNull, 0L };```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Code to obtain a descriptor, which may fail.
 ```
-// Code to obtain a descriptor, which may fail.```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+// Safe to dispose, whether or not previous code succeeded.
 ```
-// Safe to dispose, whether or not previous code succeeded.```
+
+```applescript
+AEDisposeDesc(&someDesc);
 ```
-AEDisposeDesc(&someDesc);```
+
 You can perform the same initialization using theAEInitializeDescfunction, as shown in this code snippet.
+
+```applescript
+    AEDesc      someDesc;
 ```
-    AEDesc      someDesc;```
+
+```applescript
+ 
 ```
- ```
+
+```applescript
+    AEInitializeDesc(&someDesc);
 ```
-    AEInitializeDesc(&someDesc);```
+
 When you obtain a copy of a descriptor with one of the buffer-based functions, such asAEGetAttributePtrorAEGetNthPtr, the data is copied into a buffer provided by your application. You must then free any allocated memory when finished with the buffer.
 Copyright © 2005, 2007 Apple Inc. All Rights Reserved.Terms of Use|Privacy Policy|  Updated: 2007-10-31
